@@ -20,7 +20,7 @@ To deploy the model, choose one of the following options\.
   %%time
   
   kmeans_predictor = kmeans.deploy(initial_instance_count=1,
-                                   instance_type='ml.c4.xlarge')
+                                   instance_type='ml.m4.xlarge')
   ```
 
   The `sagemaker.amazon.kmeans.KMeans` instance knows the registry path of the image that contains the k\-means inference code, so you don't need to provide it\. 
