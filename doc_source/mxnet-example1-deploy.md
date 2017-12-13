@@ -16,7 +16,7 @@ Copy, paste, and run the following code:
 %%time
 
 predictor = mnist_estimator.deploy(initial_instance_count=1,
-                                   instance_type='ml.c4.xlarge')
+                                   instance_type='ml.m4.xlarge')
 ```
 
 When the status of the endpoint is INSERVICE the API returns an `MXNetPredictor` object\. Use the `predict` method of this object to obtain inferences\.

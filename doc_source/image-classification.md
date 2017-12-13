@@ -35,7 +35,7 @@ For more details on training and inference, see the image classification sample 
 
 ## EC2 Instance Recommendation<a name="IC-instances"></a>
 
-For image classification, we recommend GPU instances for training\. However, both CPU and GPU instances can be used for the inference\. The following instances would be recommended for training: `ml.p2.xlarge`, `ml.p2.8xlarge`, and `ml.p2.16xlarge`\. We recommend using GPU instances with more memory for training with large batch size\. For hosting, C4 CPU instances and P2 GPU instances can be used\. You can also run the algorithm on multi\-GPU and multi\-machine settings for distributed training\.
+ For image classification, we support the following GPU instances for training: `ml.p2.xlarge`, `ml.p2.8xlarge`, and `ml.p2.16xlarge`\. However, both CPU and GPU instances can be used for the inference\. We recommend using GPU instances with more memory for training with large batch sizes\. For hosting, C4 CPU instances and P2 GPU instances can be used\. You can also run the algorithm on multi\-GPU and multi\-machine settings for distributed training\. 
 
 
 + [Input/Output Interface](#IC-inputoutput)

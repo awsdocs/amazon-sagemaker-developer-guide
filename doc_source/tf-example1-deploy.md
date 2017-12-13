@@ -16,7 +16,7 @@ To deploy the model, copy, paste, and run the following code:
 %%time
 
 iris_predictor = iris_estimator.deploy(initial_instance_count=1,
-                                       instance_type='ml.c4.xlarge')
+                                       instance_type='ml.m4.xlarge')
 ```
 
 When the status of the endpoint is INSERVICE, your model had been deployed\. The API returns a `TensorFlowPredictor` object\. To get inferences, you will use the `predict` method of this object\.

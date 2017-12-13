@@ -3,8 +3,8 @@
 
 | Parameter Name | Description | 
 | --- | --- | 
-| max\_seq\_len\_source | Maximum length for the source sequence length\. Sequences more than this length is truncated to this length\. Valid values: positive integer Default value: 100  | 
-| max\_seq\_len\_target | Maximum length for the target sequence length\. Sequences more than this length is truncated to this length\. Valid values: positive integer Default value: 100 | 
+| max\_seq\_len\_source | Maximum length for the source sequence length\. Sequences longer than this length are truncated to this length\. Valid values: positive integer Default value: 100  | 
+| max\_seq\_len\_target | Maximum length for the target sequence length\. Sequences longer than this length are truncated to this length\. Valid values: positive integer Default value: 100 | 
 | encoder\_type | Encoder type\. The *rnn* architecture is based on attention mechanism by Bahdanau et al\. and *cnn* architecture is based on Gehring et al\. Valid values: String\. Either *rnn* or *cnn*\. Default value: *rnn* | 
 | decoder\_type | Decoder type\. Valid values: String\. Either *rnn* or *cnn*\. Default value: *rnn* | 
 | num\_layers\_encoder | Number of layers for Encoder *rnn* or *cnn*\. Valid values: positive integer Default value: 1 | 
@@ -17,7 +17,7 @@
 | cnn\_kernel\_width\_encoder | Kernel width for the *cnn* encoder\. Valid values: positive integer Default value: 3 | 
 | cnn\_kernel\_width\_decoder | Kernel width for the *cnn* decoder\. Valid values: positive integer Default value: 5 | 
 | cnn\_num\_hidden | Number of *cnn* hidden units for encoder and decoder\. Valid values: positive integer Default value: 512 | 
-| cnn\_activation\_type | The *cnn* activation type to be used\. Valid values: String\. One of *glu*, *relu*, *softrelu*, *sigmoid*,or *tanh*\. Default value: *glu* | 
+| cnn\_activation\_type | The *cnn* activation type to be used\. Valid values: String\. One of *glu*, *relu*, *softrelu*, *sigmoid*, or *tanh*\. Default value: *glu* | 
 | cnn\_hidden\_dropout | Dropout probability for dropout between convolutional layers\. Valid values: Float\. Range in \[0,1\]\. Default value: 0 | 
 | num\_embed\_source | Embedding size for source tokens\. Valid values: positive integer Default value: 512 | 
 | num\_embed\_target | Embedding size for target tokens\. Valid values: positive integer Default value: 512 | 
@@ -28,9 +28,9 @@
 | rnn\_attention\_in\_upper\_layers | Pass the attention to upper layers of *rnn*, like Google NMT paper\. Only applicable if more than one layer is used\. Valid values: boolean \(*true* or *false*\) Default value: *true* | 
 | rnn\_decoder\_hidden\_dropout | Dropout probability for hidden state that combines the context with the *rnn* hidden state in the decoder\. Valid values: Float\. Range in \[0,1\]\. Default value: 0 | 
 | batch\_size | Mini batch size for gradient descent\. Valid values: positive integer Default value: 64 | 
-| bucketing\_enabled | Set *false* to disable bucketing, unroll to maximum length\. Valid values: boolean \(*true* or *false*\) Default value: *true* | 
+| bucketing\_enabled | Set to *false* to disable bucketing, unroll to maximum length\. Valid values: *true* or *false* Default value: *true* | 
 | bucket\_width | Returns \(source,target\) buckets up to \(`max_seq_len_source`, `max_seq_len_target`\)\. The longer side of the data uses steps of `bucket_width` while the shorter side uses steps scaled down by the average target/source length ratio\. If one sided reaches its maximum length before the other, width of extra buckets on that side is fixed to that side of `max_len`\. Valid values: positive integer Default value: 10 | 
-| loss\_type | Loss function for training\. Valid values: string \(*cross\-entropy*\) Default value: *cross\-entropy* | 
+| loss\_type | Loss function for training\. Valid values: String \(*cross\-entropy*\) Default value: *cross\-entropy* | 
 | training\_metric | Metrics to track on training on validation data\. Valid values: String\. Either *perplexity* or *accuracy*\. Default value: *perplexity* | 
 | optimized\_metric | Metrics to optimize with early stopping\. Valid values: String\. One of *perplexity*, *accuracy*, or *bleu*\. Default value: *perplexity* | 
 | bleu\_sample\_size | Number of instances to pick from validation dataset to decode and compute *bleu* score during training\. Set to \-1 to use full validation set \(if *bleu* is chosen as `optimized_metric`\)\. Valid values: integer Default value: 0 | 
