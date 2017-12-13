@@ -1,0 +1,3 @@
+# Example: Using Your Own Algorithms<a name="adv-bring-own-examples"></a>
+
+An example of packaging scikit\-learn for use with Amazon SageMaker is available at [https://github\.com/awslabs/amazon\-sagemaker\-examples/blob/master/advanced\_functionality/scikit\_bring\_your\_own/scikit\_bring\_your\_own\.ipynb](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/advanced_functionality/scikit_bring_your_own/scikit_bring_your_own.ipynb) 

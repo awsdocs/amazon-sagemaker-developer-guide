@@ -1,0 +1,119 @@
+# ListEndpointConfigs<a name="API_ListEndpointConfigs"></a>
+
+Lists endpoint configurations\.
+
+## Request Syntax<a name="API_ListEndpointConfigs_RequestSyntax"></a>
+
+```
+{
+   "CreationTimeAfter": number,
+   "CreationTimeBefore": number,
+   "MaxResults": number,
+   "NameContains": "string",
+   "NextToken": "string",
+   "SortBy": "string",
+   "SortOrder": "string"
+}
+```
+
+## Request Parameters<a name="API_ListEndpointConfigs_RequestParameters"></a>
+
+For information about the parameters that are common to all actions, see Common Parameters\.
+
+The request accepts the following data in JSON format\.
+
+ ** CreationTimeAfter **   
+A filter that returns only endpoint configurations created after the specified time \(timestamp\)\.  
+Type: Timestamp  
+Required: No
+
+ ** CreationTimeBefore **   
+A filter that returns only endpoint configurations created before the specified time \(timestamp\)\.  
+Type: Timestamp  
+Required: No
+
+ ** MaxResults **   
+The maximum number of training jobs to return in the response\.  
+Type: Integer  
+Valid Range: Minimum value of 1\. Maximum value of 100\.  
+Required: No
+
+ ** NameContains **   
+A string in the endpoint configuration name\. This filter returns only endpoint configurations whose name contains the specified string\.   
+Type: String  
+Pattern: `[a-zA-Z0-9-]+`   
+Required: No
+
+ ** NextToken **   
+If the result of the previous `ListEndpointConfig` request was truncated, the response includes a `NextToken`\. To retrieve the next set of endpoint configurations, use the token in the next request\.   
+Type: String  
+Length Constraints: Maximum length of 8192\.  
+Required: No
+
+ ** SortBy **   
+The field to sort results by\. The default is `CreationTime`\.  
+Type: String  
+Valid Values:` Name | CreationTime`   
+Required: No
+
+ ** SortOrder **   
+The sort order for results\. The default is `Ascending`\.  
+Type: String  
+Valid Values:` Ascending | Descending`   
+Required: No
+
+## Response Syntax<a name="API_ListEndpointConfigs_ResponseSyntax"></a>
+
+```
+{
+   "EndpointConfigs": [ 
+      { 
+         "CreationTime": number,
+         "EndpointConfigArn": "string",
+         "EndpointConfigName": "string"
+      }
+   ],
+   "NextToken": "string"
+}
+```
+
+## Response Elements<a name="API_ListEndpointConfigs_ResponseElements"></a>
+
+If the action is successful, the service sends back an HTTP 200 response\.
+
+The following data is returned in JSON format by the service\.
+
+ ** EndpointConfigs **   
+An array of endpoint configurations\.  
+Type: Array of [EndpointConfigSummary](API_EndpointConfigSummary.md) objects
+
+ ** NextToken **   
+ If the response is truncated, Amazon SageMaker returns this token\. To retrieve the next set of endpoint configurations, use it in the subsequent request   
+Type: String  
+Length Constraints: Maximum length of 8192\.
+
+## Errors<a name="API_ListEndpointConfigs_Errors"></a>
+
+For information about the errors that are common to all actions, see [Common Errors](CommonErrors.md)\.
+
+## See Also<a name="API_ListEndpointConfigs_SeeAlso"></a>
+
+For more information about using this API in one of the language\-specific AWS SDKs, see the following:
+
++  [AWS Command Line Interface](http://docs.aws.amazon.com/goto/aws-cli/sagemaker-2017-07-24/ListEndpointConfigs) 
+
++  [AWS SDK for \.NET](http://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/ListEndpointConfigs) 
+
++  [AWS SDK for C\+\+](http://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/ListEndpointConfigs) 
+
++  [AWS SDK for Go](http://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/ListEndpointConfigs) 
+
++  [AWS SDK for Java](http://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/ListEndpointConfigs) 
+
++  [AWS SDK for JavaScript](http://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/ListEndpointConfigs) 
+
++  [AWS SDK for PHP V3](http://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/ListEndpointConfigs) 
+
++  [AWS SDK for Python](http://docs.aws.amazon.com/goto/boto3/sagemaker-2017-07-24/ListEndpointConfigs) 
+
++  [AWS SDK for Ruby V2](http://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/ListEndpointConfigs) 

@@ -1,0 +1,143 @@
+# ListNotebookInstances<a name="API_ListNotebookInstances"></a>
+
+Returns a list of the Amazon SageMaker notebook instances in the requester's account in an AWS Region\. 
+
+## Request Syntax<a name="API_ListNotebookInstances_RequestSyntax"></a>
+
+```
+{
+   "CreationTimeAfter": number,
+   "CreationTimeBefore": number,
+   "LastModifiedTimeAfter": number,
+   "LastModifiedTimeBefore": number,
+   "MaxResults": number,
+   "NameContains": "string",
+   "NextToken": "string",
+   "SortBy": "string",
+   "SortOrder": "string",
+   "StatusEquals": "string"
+}
+```
+
+## Request Parameters<a name="API_ListNotebookInstances_RequestParameters"></a>
+
+For information about the parameters that are common to all actions, see Common Parameters\.
+
+The request accepts the following data in JSON format\.
+
+ ** CreationTimeAfter **   
+A filter that returns only notebook instances that were created after the specified time \(timestamp\)\.  
+Type: Timestamp  
+Required: No
+
+ ** CreationTimeBefore **   
+A filter that returns only notebook instances that were created before the specified time \(timestamp\)\.   
+Type: Timestamp  
+Required: No
+
+ ** LastModifiedTimeAfter **   
+A filter that returns only notebook instances that were modified after the specified time \(timestamp\)\.  
+Type: Timestamp  
+Required: No
+
+ ** LastModifiedTimeBefore **   
+A filter that returns only notebook instances that were modified before the specified time \(timestamp\)\.  
+Type: Timestamp  
+Required: No
+
+ ** MaxResults **   
+The maximum number of notebook instances to return\.  
+Type: Integer  
+Valid Range: Minimum value of 1\. Maximum value of 100\.  
+Required: No
+
+ ** NameContains **   
+A string in the notebook instances' name\. This filter returns only notebook instances whose name contains the specified string\.   
+Type: String  
+Pattern: `[a-zA-Z0-9-]+`   
+Required: No
+
+ ** NextToken **   
+ If the previous call to the `ListNotebookInstances` is truncated, the response includes a `NextToken`\. You can use this token in your subsequent `ListNotebookInstances` request to fetch the next set of notebook instances\.   
+ You might specify a filter or a sort order in your request\. When response is truncated, you must use the same values for the filer and sort order in the next request\. 
+Type: String  
+Length Constraints: Maximum length of 8192\.  
+Required: No
+
+ ** SortBy **   
+The field to sort results by\. The default is `Name`\.  
+Type: String  
+Valid Values:` Name | CreationTime | Status`   
+Required: No
+
+ ** SortOrder **   
+The sort order for results\.   
+Type: String  
+Valid Values:` Ascending | Descending`   
+Required: No
+
+ ** StatusEquals **   
+A filter that returns only notebook instances with the specified status\.  
+Type: String  
+Valid Values:` Pending | InService | Stopping | Stopped | Failed | Deleting`   
+Required: No
+
+## Response Syntax<a name="API_ListNotebookInstances_ResponseSyntax"></a>
+
+```
+{
+   "NextToken": "string",
+   "NotebookInstances": [ 
+      { 
+         "CreationTime": number,
+         "InstanceType": "string",
+         "LastModifiedTime": number,
+         "NotebookInstanceArn": "string",
+         "NotebookInstanceName": "string",
+         "NotebookInstanceStatus": "string",
+         "Url": "string"
+      }
+   ]
+}
+```
+
+## Response Elements<a name="API_ListNotebookInstances_ResponseElements"></a>
+
+If the action is successful, the service sends back an HTTP 200 response\.
+
+The following data is returned in JSON format by the service\.
+
+ ** NextToken **   
+If the response to the previous `ListNotebookInstances` request was truncated, Amazon SageMaker returns this token\. To retrieve the next set of notebook instances, use the token in the next request\.  
+Type: String  
+Length Constraints: Maximum length of 8192\.
+
+ ** NotebookInstances **   
+An array of `NotebookInstanceSummary` objects, one for each notebook instance\.  
+Type: Array of [NotebookInstanceSummary](API_NotebookInstanceSummary.md) objects
+
+## Errors<a name="API_ListNotebookInstances_Errors"></a>
+
+For information about the errors that are common to all actions, see [Common Errors](CommonErrors.md)\.
+
+## See Also<a name="API_ListNotebookInstances_SeeAlso"></a>
+
+For more information about using this API in one of the language\-specific AWS SDKs, see the following:
+
++  [AWS Command Line Interface](http://docs.aws.amazon.com/goto/aws-cli/sagemaker-2017-07-24/ListNotebookInstances) 
+
++  [AWS SDK for \.NET](http://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/ListNotebookInstances) 
+
++  [AWS SDK for C\+\+](http://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/ListNotebookInstances) 
+
++  [AWS SDK for Go](http://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/ListNotebookInstances) 
+
++  [AWS SDK for Java](http://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/ListNotebookInstances) 
+
++  [AWS SDK for JavaScript](http://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/ListNotebookInstances) 
+
++  [AWS SDK for PHP V3](http://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/ListNotebookInstances) 
+
++  [AWS SDK for Python](http://docs.aws.amazon.com/goto/boto3/sagemaker-2017-07-24/ListNotebookInstances) 
+
++  [AWS SDK for Ruby V2](http://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/ListNotebookInstances) 

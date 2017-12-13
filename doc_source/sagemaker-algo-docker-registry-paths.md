@@ -1,0 +1,30 @@
+# Algorithms Provided by Amazon SageMaker: Common Parameters<a name="sagemaker-algo-docker-registry-paths"></a>
+
+The following table lists parameters for each of the algorithms provided by Amazon SageMaker\. The Registry paths use *<latest>*, for example: /kmeans:1\. 
+
+
+| Algorithm Name | Channel Name | Training Image and Inference Image Registry Path | Training Input Mode | File Type | Instance Class | 
+| --- | --- | --- | --- | --- | --- | 
+| k\-means  | train and \(optionally\) test |  *<ecr\_path>*/kmeans:*latest*  |  File  | recordIO\-protobuf or CSV | CPU | 
+| PCA | train and \(optionally\) test |  *<ecr\_path>*/pca:*latest*  |  File  | recordIO\-protobuf or CSV | GPU or CPU | 
+|  LDA  | train and \(optionally\) test |  *<ecr\_path>*/lda:*latest*  |  File  | recordIO\-protobuf or CSV | CPU \(single instance only\) | 
+| Factorization Machines | train and \(optionally\) test |  *<ecr\_path>*/factorization\-machines:*latest*  |  File  | recordIO\-protobuf | CPU \(GPU for dense data\) | 
+| Linear Learner | train and \(optionally\) validation and/or test | <ecr\_path>/linear\-learner:latest |  File  | recordIO\-protobuf or CSV | CPU or GPU | 
+| Neural Topic Model | train and \(optionally\) test |  *<ecr\_path>*/ntm:*latest*  |  File  | recordIO\-protobuf or CSV | GPU or CPU | 
+|  Seq2Seq Modeling  | train, validation, and vocab | <ecr\_path>/seq2seq:latest |  File  | recordIO\-protobuf | GPU \(single instance only\) | 
+| XGBoost | train and \(optionally\) validation |  *<ecr\_path>*/xgboost:*latest*  |  File  | CSV or LibSVM | CPU | 
+| Image Classification | train and validation, \(optionally\) train\_lst and validation\_lst |  *<ecr\_path>*/image\-classification:*latest*  |  File  | recordIO or image files \(\.jpg or \.png\)  | GPU | 
+
+For the **Training Image and Inference Image Registry Path** column, depending on algorithm and region use one of the following values for *<ecr\_path>\.*
+
+[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html)
+
+Using the `:latest` tag in the registry path always provides you with the most up\-to\-date version of the algorithm, but could cause problems with backward compatibility\. To ensure that you are using a stable major version of the algorithm, use the `:1` tag\.
+
+Use the paths and training input mode as follows:
+
++ To create a training job \(with a request to the [CreateTrainingJob](API_CreateTrainingJob.md) API\), specify the Docker Registry path and the training input mode for the training image\. You create a training job to train a model using a specific dataset\. 
+
+   
+
++ To create a model \(with a [CreateModel](API_CreateModel.md) request\), specify the Docker Registry path for the inference image\. Amazon SageMaker launches machine learning compute instances that are based on the endpoint configuration and deploys the model, which includes the artifacts \(the result of model training\)\.
