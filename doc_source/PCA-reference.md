@@ -5,9 +5,9 @@ In the `CreateTrainingJob` request, you specify the training algorithm\. You can
 
 | Parameter Name | Description | 
 | --- | --- | 
-| algorithm\_mode |  Mode for computing the principal components\.  Valid values: `regular` or `randomized` Default values: `regular`  | 
-| num\_components |  The number of principal components to compute\.  Valid values: Positive integer Default values: \-  | 
-| subtract\_mean |  Indicates whether the data should be unbiased both during training and at inference\.  Valid values: One of *true* or *false* Default values: `true`  | 
-| extra\_components |  As the value increases, the solution becomes more accurate but the runtime and memory consumption increase linearly\. The default, `-1`, means the maximum of 10 and `num_components`\. Valid for `randomized` mode only Valid values: Non\-negative integer or \-1 Default values: \-1  | 
-| feature\_dim |  Input dimension\. Valid values: Positive integer Default values: \-  | 
-| mini\_batch\_size |  Number of rows in a mini\-batch\.  Valid values: Positive integer Default values: \-  | 
+| num\_components |  The number of principal components to compute\. Required\. Valid values: Positive integer Default value: \-  | 
+| feature\_dim |  Input dimension\. Required\. Valid values: Positive integer Default value: \-  | 
+| mini\_batch\_size |  Number of rows in a mini\-batch\. Required\. Valid values: Positive integer Default value: \-  | 
+| algorithm\_mode |  Mode for computing the principal components\.  Valid values: *regular* or *randomized* Default value: *regular*  | 
+| subtract\_mean |  Indicates whether the data should be unbiased both during training and at inference\.  Valid values: One of *true* or *false* Default value: *true*  | 
+| extra\_components |  As the value increases, the solution becomes more accurate but the runtime and memory consumption increase linearly\. The default, \-1, means the maximum of 10 and `num_components`\. Valid for *randomized* mode only Valid values: Non\-negative integer or \-1 Default value: \-1  | 

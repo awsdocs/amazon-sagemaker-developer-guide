@@ -5,10 +5,10 @@ In the `CreateTrainingJob` request, you specify the training algorithm\. You can
 
 | Parameter Name | Description | 
 | --- | --- | 
-| num\_topics |  The number of topics for LDA to find within the data\. Required\. Valid values: Positive integer Default values: \-  | 
-| feature\_dim |  The size of the vocabulary of the input document corpus\. Required\. Valid values: Positive integer Default values: \-  | 
-| mini\_batch\_size |  The total number of documents in the input document corpus\. Required\. Valid values: Positive integer Default values: \-  | 
-| alpha0 |  Initial guess for the concentration parameter: the sum of the elements of the Dirichlet prior\. Small values are more likely to generate sparse topic mixtures and large values \(greater than 1\.0\) produce more uniform mixtures\.  Valid values: Positive float Default values: 0\.1  | 
-| max\_restarts |  The number of restarts to perform during the Alternating Least Squares \(ALS\) spectral decomposition phase of the algorithm\. Can be used to find better quality local minima at the expense of additional computation, but typically should not be adjusted\.  Valid values: Positive integer Default values: 10  | 
-| max\_iterations |  The maximum number of iterations to perform during the ALS phase of the algorithm\. Can be used to find better quality minima at the expense of additional computation, but typically should not be adjusted\.  Valid values: Positive integer Default values: 1000  | 
-| tol |  Target error tolerance for the ALS phase of the algorithm\. Can be used to find better quality minima at the expense of additional computation, but typically should not be adjusted\.  Valid values: Positive float Default values: 1e\-8  | 
+| num\_topics |  The number of topics for LDA to find within the data\. Required\. Valid values: Positive integer Default value: \-  | 
+| feature\_dim |  The size of the vocabulary of the input document corpus\. Required\. Valid values: Positive integer Default value: \-  | 
+| mini\_batch\_size |  The total number of documents in the input document corpus\. Required\. Valid values: Positive integer Default value: \-  | 
+| alpha0 |  Initial guess for the concentration parameter: the sum of the elements of the Dirichlet prior\. Small values are more likely to generate sparse topic mixtures and large values \(greater than 1\.0\) produce more uniform mixtures\.  Valid values: Positive float Default value: 0\.1  | 
+| max\_restarts |  The number of restarts to perform during the Alternating Least Squares \(ALS\) spectral decomposition phase of the algorithm\. Can be used to find better quality local minima at the expense of additional computation, but typically should not be adjusted\.  Valid values: Positive integer Default value: 10  | 
+| max\_iterations |  The maximum number of iterations to perform during the ALS phase of the algorithm\. Can be used to find better quality minima at the expense of additional computation, but typically should not be adjusted\.  Valid values: Positive integer Default value: 1000  | 
+| tol |  Target error tolerance for the ALS phase of the algorithm\. Can be used to find better quality minima at the expense of additional computation, but typically should not be adjusted\.  Valid values: Positive float Default value: 1e\-8  | 
