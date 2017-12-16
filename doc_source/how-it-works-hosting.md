@@ -1,6 +1,6 @@
 # Deploying a Model on Amazon SageMaker Hosting Services<a name="how-it-works-hosting"></a>
 
-Test chagne #4... Amazon SageMaker also provides model hosting services for model deployment, as shown in the following diagram\. Amazon SageMaker provides an HTTPS endpoint where your machine learning model is available to provide inferences\. 
+Test 8.....Test chagne #4... Amazon SageMaker also provides model hosting services for model deployment, as shown in the following diagram\. Amazon SageMaker provides an HTTPS endpoint where your machine learning model is available to provide inferences\. 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/ironman-architecture.png)
 
