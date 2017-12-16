@@ -1,6 +1,6 @@
 # AlgorithmSpecification<a name="API_AlgorithmSpecification"></a>
 
-Specifies the training algorithm to use in a [CreateTrainingJob](http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateTrainingJob.html) request\. 
+Randy says -change 10.....Specifies the training algorithm to use in a [CreateTrainingJob](http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateTrainingJob.html) request\. 
 
 For more information about algorithms provided by Amazon SageMaker, see [Algorithms](http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)\. For information about using your own algorithms, see [Bring Your Own Algorithms ](http://docs.aws.amazon.com/sagemaker/latest/dg/adv-topics-own-algo.html)\. 
 
