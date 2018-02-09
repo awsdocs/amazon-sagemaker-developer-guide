@@ -9,7 +9,7 @@ The Amazon SageMaker implementation of factorization machines considers only pai
 
 The factorization machines algorithm can be run in either in binary classification mode or regression mode\. In both modes, a dataset can be provided to the test channel along with the train channel dataset\. In regression mode, the testing dataset is scored using RMSE \(Root Mean Square Error\)\. In binary classification mode, the test dataset is scored using Binary Cross Entropy \(Log Loss\), Accuracy \(at threshold=0\.5\) and F1 Score \(at threshold =0\.5\)\.
 
-The factorization machines algorithm currently supports training only on the `recordIO-protobuf` format\. Because their use case is predominantly on sparse data, `CSV` is not a good candidate\.
+The factorization machines algorithm currently supports training only on the `recordIO-protobuf` format with `Float32` tensors\. Because their use case is predominantly on sparse data, `CSV` is not a good candidate\.
 
 For inference, factorization machines support the `application/json` and `x-recordio-protobuf` formats\. For binary classification models, both the score and the predicted label are returned\. For regression, just the score is returned\.
 
@@ -17,7 +17,7 @@ Please see example notebooks for more details on training and inference file for
 
 ## EC2 Instance Recommendation<a name="fm-instances"></a>
 
-We recommend training and inference with CPU instances for both sparse and dense datasets\. In some circumstances, training with GPUs on dense data might provide some benefit\.
+We recommend training and inference with CPU instances for both sparse and dense datasets\. In some circumstances, training with GPUs on dense data might provide some benefit\. Training with GPUs is available only on dense data\. Use CPU instances for sparse data\.
 
 
 + [Input/Output Interface](#fm-inputoutput)

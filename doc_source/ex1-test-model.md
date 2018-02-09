@@ -87,7 +87,7 @@ In the k\-means implementation, the cluster numbers and digit they represent don
          numpy.savetxt(csv, arr, delimiter=',', fmt='%g')
          return csv.getvalue().decode().rstrip()
      
-     runtime = boto3.Session().client('runtime.sagemaker')
+     runtime = boto3.Session().client('sagemaker-runtime')
      
      payload = np2csv(train_set[0][30:31])
      

@@ -63,3 +63,13 @@ The following actions are supported by Amazon SageMaker Service:
 The following actions are supported by Amazon SageMaker Runtime:
 
 +  [InvokeEndpoint](API_runtime_InvokeEndpoint.md) 
+
+The following actions are supported by AWS SageMakerHPO:
+
++  [CreateTuningJob](API_hpo_CreateTuningJob.md) 
+
++  [DescribeTuningJob](API_hpo_DescribeTuningJob.md) 
+
++  [ListTrainingJobsForTuningJob](API_hpo_ListTrainingJobsForTuningJob.md) 
+
++  [StopTuningJob](API_hpo_StopTuningJob.md) 

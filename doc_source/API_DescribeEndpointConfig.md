@@ -30,6 +30,7 @@ Required: Yes
    "CreationTime": number,
    "EndpointConfigArn": "string",
    "EndpointConfigName": "string",
+   "KmsKeyId": "string",
    "ProductionVariants": [ 
       { 
          "InitialInstanceCount": number,
@@ -62,6 +63,11 @@ Name of the Amazon SageMaker endpoint configuration\.
 Type: String  
 Length Constraints: Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*` 
+
+ ** KmsKeyId **   
+AWS KMS key ID Amazon SageMaker uses to encrypt data when storing it on the ML storage volume attached to the instance\.  
+Type: String  
+Length Constraints: Maximum length of 2048\.
 
  ** ProductionVariants **   
 An array of `ProductionVariant` objects, one for each model that you want to host at this endpoint\.  

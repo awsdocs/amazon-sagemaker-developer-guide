@@ -1,6 +1,6 @@
 # StartNotebookInstance<a name="API_StartNotebookInstance"></a>
 
-Launches an ML compute instance with the latest version of the libraries and attaches your ML storage volume\. After configuring the notebook instance, Amazon SageMaker sets the notebook instance status to `InService`\. A notebook instance's status must be `InService` \(is this same as "Running" in the console?\) before you can connect to your Jupyter notebook\. 
+Launches an ML compute instance with the latest version of the libraries and attaches your ML storage volume\. After configuring the notebook instance, Amazon SageMaker sets the notebook instance status to `InService`\. A notebook instance's status must be `InService` before you can connect to your Jupyter notebook\. 
 
 ## Request Syntax<a name="API_StartNotebookInstance_RequestSyntax"></a>
 

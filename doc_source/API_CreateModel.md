@@ -6,7 +6,7 @@ Use this API to create a model only if you want to use Amazon SageMaker hosting 
 
 Amazon SageMaker then deploys all of the containers that you defined for the model in the hosting environment\. 
 
-In the `CreateModel` request, you must define at least one container with the `PrimaryContainer` parameter\. You can optionally specify additional containers with the `SupplementalContainers` parameter\. 
+In the `CreateModel` request, you must define a container with the `PrimaryContainer` parameter\. 
 
 In the request, you also provide an IAM role that Amazon SageMaker can assume to access model artifacts and docker image for deployment on ML compute hosting instances\. In addition, you also use the IAM role to manage permissions the inference code needs\. For example, if the inference code access any other AWS resources, you grant necessary permissions via this role\.
 
@@ -24,16 +24,6 @@ In the request, you also provide an IAM role that Amazon SageMaker can assume to
       "Image": "string",
       "ModelDataUrl": "string"
    },
-   "SupplementalContainers": [ 
-      { 
-         "ContainerHostname": "string",
-         "Environment": { 
-            "string" : "string" 
-         },
-         "Image": "string",
-         "ModelDataUrl": "string"
-      }
-   ],
    "Tags": [ 
       { 
          "Key": "string",
@@ -54,7 +44,7 @@ The Amazon Resource Name \(ARN\) of the IAM role that Amazon SageMaker can assum
 Type: String  
 Length Constraints: Minimum length of 20\. Maximum length of 2048\.  
 Pattern: `^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$`   
-Required: No
+Required: Yes
 
  ** ModelName **   
 The name of the new model\.  
@@ -67,12 +57,6 @@ Required: Yes
 The location of the primary docker image containing inference code, associated artifacts, and custom environment map that the inference code uses when the model is deployed into production\.   
 Type: [ContainerDefinition](API_ContainerDefinition.md) object  
 Required: Yes
-
- ** SupplementalContainers **   
-The additional optional containers to deploy\.  
-Type: Array of [ContainerDefinition](API_ContainerDefinition.md) objects  
-Array Members: Maximum number of 5 items\.  
-Required: No
 
  ** Tags **   
 An array of key\-value pairs\. For more information, see [Using Cost Allocation Tags](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what) in the *AWS Billing and Cost Management User Guide*\.   

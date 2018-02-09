@@ -62,6 +62,7 @@ Required: Yes
    "ResourceConfig": { 
       "InstanceCount": number,
       "InstanceType": "string",
+      "VolumeKmsKeyId": "string",
       "VolumeSizeInGB": number
    },
    "RoleArn": "string",

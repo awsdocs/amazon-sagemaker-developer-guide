@@ -39,6 +39,7 @@ The request accepts the following binary data\.
 
  ** Body **   
 Provides input data, in the format specified in the `ContentType` request header\. Amazon SageMaker passes all of the data in the body to the model\.   
+For information about the format of the request body, see [Common Data Formats—Inference](http://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html)\.  
 Length Constraints: Maximum length of 5242880\.
 
 ## Response Syntax<a name="API_runtime_InvokeEndpoint_ResponseSyntax"></a>
@@ -69,6 +70,7 @@ The response returns the following as the HTTP body\.
 
  ** Body **   
 Includes the inference provided by the model\.  
+For information about the format of the response body, see [Common Data Formats—Inference](http://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html)\.  
 Length Constraints: Maximum length of 5242880\.
 
 ## Errors<a name="API_runtime_InvokeEndpoint_Errors"></a>

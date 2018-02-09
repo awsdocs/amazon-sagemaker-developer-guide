@@ -129,7 +129,7 @@ To train the model, choose one of the following options\.
   print(status)
   
   try:
-      sagemaker.get_waiter('TrainingJob_Created').wait(TrainingJobName=job_name)
+      sagemaker.get_waiter('training_job_completed_or_stopped').wait(TrainingJobName=job_name)
   finally:
       status = sagemaker.describe_training_job(TrainingJobName=job_name)['TrainingJobStatus']
       print("Training job ended with status: " + status)

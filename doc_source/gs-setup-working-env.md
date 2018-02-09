@@ -69,9 +69,12 @@ If necessary, you can change the notebook instance settings, including the ML co
 
          
 
-   + Choosing a VPC is optional for this exercise\. 
+   + Choosing a Virtual Private Cloud \(VPC\) is optional for this exercise\. 
 **Note**  
-If you want to access resources in your VPC from the notebook instance, choose a VPC and a **SubnetId**\. For **Security Group**, choose the default security group of the selected VPC\. The inbound and outbound rules of the default security group are sufficient for the exercises in this guide\. 
+If you want to access resources in your VPC from the notebook instance, choose a VPC and a **SubnetId**\. For **Security Group**, choose the default security group of the selected VPC\. The inbound and outbound rules of the default security group are sufficient for the exercises in this guide\.   
+To connect to a resource in your VPC, the resource must resolve to a private IP address in your VPC\. For example, to ensure that an Amazon Redshift DNS name resolves to a private IP address, ensure one of the following:   
+The Amazon Redshift cluster is not publicly accessible\.
+If the Amazon Redshift cluster is publicly accessible, set the `DNS resolution` and `DNS hostnames` VPC parameters to `true`\. For information on how to set those parameters, see [Managing Clusters in an Amazon Virtual Private Cloud \(VPC\)](http://docs.aws.amazon.com//redshift/latest/mgmt/managing-clusters-vpc.html) 
 
    + Specifying a KMS encryption key is optional for this exercise\. Specify one if you want Amazon SageMaker to use the key to encrypt data in the ML storage volume attached to the notebook instance\.
 

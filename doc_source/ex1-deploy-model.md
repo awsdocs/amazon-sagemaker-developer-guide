@@ -94,7 +94,7 @@ To deploy the model, choose one of the following options\.
      print("Status: " + status)
      
      try:
-         sagemaker.get_waiter('Endpoint_Created').wait(EndpointName=endpoint_name)
+         sagemaker.get_waiter('endpoint_in_service').wait(EndpointName=endpoint_name)
      finally:
          resp = sagemaker.describe_endpoint(EndpointName=endpoint_name)
          status = resp['EndpointStatus']

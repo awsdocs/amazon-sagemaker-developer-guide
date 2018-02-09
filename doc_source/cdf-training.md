@@ -25,121 +25,128 @@ The schema for the protocol buffers is:
 
 ```
 syntax = "proto2";
-package AmazonAIAlgorithmsIO;
-
-// A sparse or dense rank-R tensor that stores data as doubles (float64).
-message Float32Tensor {
-    // Each value in the vector. If keys is empty, this is treated as a
-    // dense vector.
-    repeated float values = 1 [packed = true];
-
-    // If not empty, then the vector is treated as sparse with
-    // each key specifying the location of the value in the sparse vector.
-    repeated uint64 keys = 2 [packed = true];
-
-    // Optional shape which allows the vector to represent a matrix.
-    // For example, if shape = [ 10, 20 ], then floor(keys[i] / 10) gives the row
-    //      and keys[i] %, 20 gives the column.
-    // This also supports n-dimensonal tensors.
-    // Note: This must be specified if the tensor is sparse.
-    repeated uint64 shape = 3 [packed = true];
-}
-
-// A sparse or dense rank-R tensor that stores data as doubles (float64).
-message Float64Tensor {
-    // Each value in the vector. If keys is empty, this is treated as a
-    // dense vector.
-    repeated double values = 1 [packed = true];
-
-    // If not empty, then the vector is treated as sparse with
-    // each key specifying the location of the value in the sparse vector.
-    repeated uint64 keys = 2 [packed = true];
-
-    // Optional shape that allows the vector to represent a matrix.
-    // For example, if shape = [ 10, 20 ], then floor(keys[i] / 10) gives the row
-    //      and keys[i] %, 20 gives the column.
-    // This also supports n-dimensonal tensors.
-    // Note: This must be specified if the tensor is sparse.
-    repeated uint64 shape = 3 [packed = true];
-}
-
-// A sparse or dense rank-R tensor that stores data as 32-bit ints (int32).
-message Int32Tensor {
-    // Each value in the vector. If keys is empty, this is treated as a
-    // dense vector.
-    repeated int32 values = 1 [packed = true];
-
-    // If not empty, then the vector is treated as sparse with
-    // each key specifying the location of the value in the sparse vector.
-    repeated uint64 keys = 2 [packed = true];
-
-    // Optional shape that allows the vector to represent a matrix.
-    // For example, if shape = [ 10, 20 ], then floor(keys[i] / 10) gives the row
-    //      and keys[i] %, 20 gives the column.
-    // This also supports n-dimensonal tensors.
-    // Note: This must be specified if the tensor is sparse.
-    repeated uint64 shape = 3 [packed = true];
-}
-
-// Support for storing binary data for parsing in other ways (such as JPEG, etc.).
-// This is an example of another type of value, and it might not immediately be supported.
-message Bytes {
-  repeated byte value          = 1 [packed = true];
-  // Stores the content type of the data, if known.
-  // This allows the possibility of using decoders for common formats
-  // in the future.
-  optional string content_type = 2;
-}
-
-message Value {
-  oneof value {
-    // The numbering assumes the possible use of:
-    //   - float16, float128
-    //   - int8, int16, int64
-    Float32Tensor float32_tensor  = 2;
-    Float64Tensor float64_tensor  = 3;
-    Int32Tensor   int64_tensor    = 7;
-    Bytes         bytes           = 9;
-  }
-}
-
-message Record {
-  // Map from the name of the feature to the value.
-  //
-  // For vectors and libsvm-like datasets,
-  // a single feature with the name `values`
-  // should be specified.
-  map<string, Value> features = 1;
-
-  // Optional set of labels for this record.
-  map<string, Value> label    = 2;
-
-  // Unique identifier for this record in the dataset.
-  //
-  // Although it's not necessary, this allows better
-  // debugging where there are data issues.
-  //
-  // This is not used by the algorithm directly.
-  optional string uid         = 3;
-
-  // Textual metadata describing the record.
-  //
-  // This might include JSON-serialized information
-  // about the source of the record.
-  //
-  // This is not used by the algorithm directly.
-  optional string metadata    = 4;
-
-  // Optional serialized JSON object that allows per-record
-  // hyperparameters, configuration, or other information to be set.
-  //
-  // The meaning and interpretation of this field is defined by
-  // the algorithm author and might not be supported.
-  //
-  // This is used to pass additional inference configuration
-  // when batch inference is used (for example, types of scores to return).
-  optional string configuration = 5;
-}
+ 
+ package aialgs.data;
+ 
+ option java_package = "com.amazonaws.aialgorithms.proto";
+ option java_outer_classname = "RecordProtos";
+ 
+ // A sparse or dense rank-R tensor that stores data as doubles (float64).
+ message Float32Tensor   {
+     // Each value in the vector. If keys is empty this is treated as a
+     // dense vector.
+     repeated float values = 1 [packed = true];
+ 
+     // If not empty then the vector is treated as sparse with
+     // each key specifying the location of the value in the sparse vector.
+     repeated uint64 keys = 2 [packed = true];
+ 
+     // Optional shape which will allow the vector to represent a matrix.
+     // e.g. if shape = [ 10, 20 ] then floor(keys[i] / 10) will give the row
+     // and keys[i] % 20 will give the column.
+     // This also supports n-dimensonal tensors.
+     // NB. this must be specified if the tensor is sparse.
+     repeated uint64 shape = 3 [packed = true];
+ }
+ 
+ // A sparse or dense rank-R tensor that stores data as doubles (float64).
+ message Float64Tensor {
+     // Each value in the vector. If keys is empty this is treated as a
+     // dense vector.
+     repeated double values = 1 [packed = true];
+ 
+     // If not empty then the vector is treated as sparse with
+     // each key specifying the location of the value in the sparse vector.
+     repeated uint64 keys = 2 [packed = true];
+ 
+     // Optional shape which will allow the vector to represent a matrix.
+     // e.g. if shape = [ 10, 20 ] then floor(keys[i] / 10) will give the row
+     // and keys[i] % 20 will give the column.
+     // This also supports n-dimensonal tensors.
+     // NB. this must be specified if the tensor is sparse.
+     repeated uint64 shape = 3 [packed = true];
+ }
+ 
+ // A sparse or dense rank-R tensor that stores data as 32-bit ints (int32).
+ message Int32Tensor {
+     // Each value in the vector. If keys is empty this is treated as a
+     // dense vector.
+     repeated int32 values = 1 [packed = true];
+ 
+     // If not empty then the vector is treated as sparse with
+     // each key specifying the location of the value in the sparse vector.
+     repeated uint64 keys = 2 [packed = true];
+ 
+     // Optional shape which will allow the vector to represent a matrix.
+     // e.g. if shape = [ 10, 20 ] then floor(keys[i] / 10) will give the row
+     // and keys[i] % 20 will give the column.
+     // This also supports n-dimensonal tensors.
+     // NB. this must be specified if the tensor is sparse.
+     repeated uint64 shape = 3 [packed = true];
+ }
+ 
+ // Support for storing binary data for parsing in other ways (such as JPEG/etc).
+ // This is an example of another type of value and may not immediately be supported.
+ message Bytes {
+     repeated bytes value = 1;
+ 
+     // Stores the content type of the data if known.
+     // This will allow the possibility of using decoders for common formats
+     // in the future.
+     optional string content_type = 2;
+ }
+ 
+ message Value {
+     oneof value {
+         // The numbering assumes the possible use of:
+         // - float16, float128
+         // - int8, int16, int32
+         Float32Tensor float32_tensor = 2;
+         Float64Tensor float64_tensor = 3;
+         Int32Tensor int32_tensor = 7;
+         Bytes bytes = 9;
+     }
+ }
+ 
+ message Record {
+     // Map from the name of the feature to the value.
+     //
+     // For vectors and libsvm-like datasets,
+     // a single feature with the name `values`
+     // should be specified.
+     map<string, Value> features = 1;
+ 
+     // Optional set of labels for this record.
+     // Similar to features field above, the key used for
+     // generic scalar / vector labels should ve 'values'
+     map<string, Value> label = 2;
+ 
+     // Unique identifier for this record in the dataset.
+     //
+     // Whilst not necessary, this allows better
+     // debugging where there are data issues.
+     //
+     // This is not used by the algorithm directly.
+     optional string uid = 3;
+ 
+     // Textual metadata describing the record.
+     //
+     // This may include JSON-serialized information
+     // about the source of the record.
+     //
+     // This is not used by the algorithm directly.
+     optional string metadata = 4;
+ 
+     // Optional serialized JSON object that allows per-record
+     // hyper-parameters/configuration/other information to be set.
+     //
+     // The meaning/interpretation of this field is defined by
+     // the algorithm author and may not be supported.
+     //
+     // This is used to pass additional inference configuration
+     // when batch inference is used (e.g. types of scores to return).
+     optional string configuration = 5;
+ }
 ```
 
 After creating the protocol buffer is created, store it in an S3 location that is accessible by Amazon SageMaker, and passed as part of `InputDataConfig` in `create_training_job`\. 

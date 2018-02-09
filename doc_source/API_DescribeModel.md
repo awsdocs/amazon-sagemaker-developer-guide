@@ -38,17 +38,7 @@ Required: Yes
       },
       "Image": "string",
       "ModelDataUrl": "string"
-   },
-   "SupplementalContainers": [ 
-      { 
-         "ContainerHostname": "string",
-         "Environment": { 
-            "string" : "string" 
-         },
-         "Image": "string",
-         "ModelDataUrl": "string"
-      }
-   ]
+   }
 }
 ```
 
@@ -82,11 +72,6 @@ Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`
  ** PrimaryContainer **   
 The location of the primary inference code, associated artifacts, and custom environment map that the inference code uses when it is deployed in production\.   
 Type: [ContainerDefinition](API_ContainerDefinition.md) object
-
- ** SupplementalContainers **   
-The description of additional optional containers that you defined when creating the model\.  
-Type: Array of [ContainerDefinition](API_ContainerDefinition.md) objects  
-Array Members: Maximum number of 5 items\.
 
 ## Errors<a name="API_DescribeModel_Errors"></a>
 

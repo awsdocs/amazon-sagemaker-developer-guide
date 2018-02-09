@@ -57,6 +57,7 @@ In the request body, you provide the following:
    "ResourceConfig": { 
       "InstanceCount": number,
       "InstanceType": "string",
+      "VolumeKmsKeyId": "string",
       "VolumeSizeInGB": number
    },
    "RoleArn": "string",

@@ -57,6 +57,8 @@ If you want access to the intermediate model artifacts after Amazon SageMaker st
 
 + You can't use the `tini` initializer as your entry point in Amazon SageMaker containers because it gets confused by the train and serve arguments\.
 
++ `/opt/ml` and all sub\-directories are reserved by Amazon SageMaker training\. When building your algorithm’s docker image, please ensure you don't place any data required by your algorithm under them as the data may no longer be visible during training\.
+
 ## How Amazon SageMaker Provides Training Information<a name="your-algorithms-training-algo-running-container"></a>
 
 This section explains how Amazon SageMaker makes training information, such as training data, hyperparameters, and other configuration information, available to your Docker container\. 
@@ -112,7 +114,7 @@ The `TrainingInputMode` parameter in a `CreateTrainingJob` request specifies how
 
      
 
-+  `PIPE` mode—Amazon SageMaker makes data for the channel available from the named pipe: `/opt/amazon/input/data/channel_name_epoch_number`\. For example, if you have three channels named `training`, `validation`, and `testing`, you will need to read from the following pipes:
++  `PIPE` mode—Amazon SageMaker makes data for the channel available from the named pipe: `/opt/ml/input/data/channel_name_epoch_number`\. For example, if you have three channels named `training`, `validation`, and `testing`, you will need to read from the following pipes:
 
   + `/opt/ml/input/data/training_0,/opt/ml/input/data/training_1, ...`
 

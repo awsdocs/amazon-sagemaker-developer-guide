@@ -10,7 +10,7 @@ iris_predictor.predict([6.4, 3.2, 4.5, 1.5]) #expected label to be 1
 
 For more information about the input features, see [About the Training Dataset](tf-example1.md#tf-script-own-algo-ex1-about-dataset)\. 
 
-The model predicts that the flower species is Iris versicolor \(label 1\) with a probability of 89%:
+The model predicts that the flower species is Iris versicolor \(label 1\) with a probability of 97%:
 
 ```
 {u'result': {u'classifications': [{u'classes': [{u'label': u'0',

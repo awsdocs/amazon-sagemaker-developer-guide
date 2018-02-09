@@ -81,3 +81,5 @@ In addition to these general\-purpose algorithms, Amazon SageMaker provides algo
 + [Principal Component Analysis \(PCA\)](pca.md)
 + [Latent Dirichlet Allocation \(LDA\)](lda.md)
 + [Neural Topic Model \(NTM\)](ntm.md)
++ [DeepAR Forecasting](deepar.md)
++ [BlazingText](blazingtext.md)

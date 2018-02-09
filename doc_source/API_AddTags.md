@@ -1,6 +1,6 @@
 # AddTags<a name="API_AddTags"></a>
 
-Test 9.... Adds or overwrites one or more tags for the specified Amazon SageMaker resource\. You can add tags to notebook instances, training jobs, models, endpoint configurations, and endpoints\. 
+Adds or overwrites one or more tags for the specified Amazon SageMaker resource\. You can add tags to notebook instances, training jobs, models, endpoint configurations, and endpoints\. 
 
 Each tag consists of a key and an optional value\. Tag keys must be unique per resource\. For more information about tags, see [Using Cost Allocation Tags](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what) in the *AWS Billing and Cost Management User Guide*\. 
 

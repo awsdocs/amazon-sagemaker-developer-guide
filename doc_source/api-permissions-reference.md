@@ -15,12 +15,12 @@ If you see an expand arrow \(**↗**\) in the upper\-right corner of the table, 
 | Amazon SageMaker API Operations | Required Permissions \(API Actions\) | Resources | 
 | --- | --- | --- | 
 |  [AddTags](API_AddTags.md)  |  `sagemaker:AddTags`  |  `arn:aws:sagemaker:region:account-id:*`  | 
-|  [CreateEndpoint](API_CreateEndpoint.md)  |  `sagemaker:CreateEndpoint`  |  `arn:aws:sagemaker:region:account-id:endpoint/endpointName`  | 
+|  [CreateEndpoint](API_CreateEndpoint.md)  |  `sagemaker:CreateEndpoint` `kms:CreateGrant` \(required only if the associated `EndPointConfig` has a `KmsKeyId` specified\)  |  `arn:aws:sagemaker:region:account-id:endpoint/endpointName`  | 
 |  [CreateEndpointConfig](API_CreateEndpointConfig.md)  |  `sagemaker:CreateEndpointConfig`  |  `arn:aws:sagemaker:region:account-id:endpoint-config/endpointConfigName`  | 
 |  [CreatePresignedNotebookInstanceUrl](API_CreatePresignedNotebookInstanceUrl.md)  |  `sagemaker:CreatePresignedNotebookInstanceUrl`  |  `arn:aws:sagemaker:region:account-id:notebook-instance/notebookInstanceName`  | 
 |  [CreateModel](API_CreateModel.md)  |  `sagemaker:CreateModel` `iam:PassRole`  |  `arn:aws:sagemaker:region:account-id:model/modelName`  | 
-|  [CreateNotebookInstance](API_CreateNotebookInstance.md)  |  `sagemaker:CreateNotebookInstance` `iam:PassRole` `ec2:CreateNetworkInterface` `ec2:AttachNetworkInterface` `ec2:ModifyNetworkInterfaceAttribute` `ec2:DescribeAvailabilityZones` `ec2:DescribeInternetGateways` `ec2:DescribeSecurityGroups` `ec2:DescribeSubnets` `ec2:DescribeVpcs` `kms:CreateGrant `  |  `arn:aws:sagemaker:region:account-id:notebook-instance/notebookInstanceName`  | 
-|  [CreateTrainingJob](API_CreateTrainingJob.md)  |  `sagemaker:CreateTrainingJob` `iam:PassRole`  |  `arn:aws:sagemaker:region:account-id:training-job/trainingJobName`  | 
+|  [CreateNotebookInstance](API_CreateNotebookInstance.md)  |  `sagemaker:CreateNotebookInstance` `iam:PassRole` `ec2:CreateNetworkInterface` `ec2:AttachNetworkInterface` `ec2:ModifyNetworkInterfaceAttribute` `ec2:DescribeAvailabilityZones` `ec2:DescribeInternetGateways` `ec2:DescribeSecurityGroups` `ec2:DescribeSubnets` `ec2:DescribeVpcs` `kms:CreateGrant` \(required only if you specify a `KmsKeyId`\)  |  `arn:aws:sagemaker:region:account-id:notebook-instance/notebookInstanceName`  | 
+|  [CreateTrainingJob](API_CreateTrainingJob.md)  |  `sagemaker:CreateTrainingJob` `iam:PassRole` `kms:CreateGrant` \(required only if you specify a `KmsKeyId`\)  |  `arn:aws:sagemaker:region:account-id:training-job/trainingJobName`  | 
 |  [DeleteEndpoint](API_DeleteEndpoint.md)  |  `sagemaker:DeleteEndpoint`  |  `arn:aws:sagemaker:region:account-id:endpoint/endpointName`  | 
 |  [DeleteEndpointConfig](API_DeleteEndpointConfig.md)  |  `sagemaker:DeleteEndpointConfig`  |  `arn:aws:sagemaker:region:account-id:endpoint-config/endpointConfigName`  | 
 |  [DeleteModel](API_DeleteModel.md)  |  `sagemaker:DeleteModel`  |  `arn:aws:sagemaker:region:account-id:model/modelName`  | 

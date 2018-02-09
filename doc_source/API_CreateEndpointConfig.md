@@ -14,6 +14,7 @@ If you are hosting multiple models, you also assign a `VariantWeight` to specify
 ```
 {
    "EndpointConfigName": "string",
+   "KmsKeyId": "string",
    "ProductionVariants": [ 
       { 
          "InitialInstanceCount": number,
@@ -44,6 +45,12 @@ Type: String
 Length Constraints: Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: Yes
+
+ ** KmsKeyId **   
+The Amazon Resource Name \(ARN\) of a AWS Key Management Service key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance that hosts the endpoint\.  
+Type: String  
+Length Constraints: Maximum length of 2048\.  
+Required: No
 
  ** ProductionVariants **   
 An array of `ProductionVariant` objects, one for each model that you want to host at this endpoint\.  

@@ -17,11 +17,19 @@ For more information on convolutional networks, see:
 
 ## Input/Output Interface<a name="IC-inputoutput"></a>
 
-The data needed for training has to be specified in two channels: train and validation for recordio format as part of the `CreateTrainingJob` API parameters\. The content\-type for the train and validation channels should be `application/x-recordio` for recordIO files\.
+The Amazon SageMaker Image Classification algorithm supports both RecordIO \(`application/x-recordio`\) and image \(`application/x-image`\) content types for training\. The algorithm supports only `application/x-image` for inference\.
 
-When the training data is provided as individual files \(content\-type is `application/x-image`\), the individual image data should be in the train and the validation subfolders, as specified for the recordIO file\. You also need to specify two additional channels, `train_lst` and `validation_lst`, in case of individual images\. These additional channels specify the path for the first file for training and validation data respectively\. 
+### Training with RecordIO Format<a name="IC-recordio-training"></a>
 
-A sample first file follows\. The first column is the image index, followed by the label index for the image, and then the image's path\. The three entries are separated by tabs\. 
+ If you use the RecordIO format for training, specify both `train` and `validation` channels as values for the `InputDataConfig` parameter of the [CreateTrainingJob](API_CreateTrainingJob.md) request\. Specify one RecordIO \(`.rec`\) file in the `train` channel and one RecordIO file in the `validation` channel\. Set the content type for both channels to `application/x-recordio`\. 
+
+### Training with Image Format<a name="IC-image-training"></a>
+
+ If you use the Image format for training, specify `train`, `validation`, `train_lst`, and `validation_lst` channels as values for the `InputDataConfig` parameter of the [CreateTrainingJob](API_CreateTrainingJob.md) request\. Specify the individual image data \(`.jpg` or `.png` files\) for the `train` and `validation` channels\. Specify one `.lst` file in each of the `train_lst` and `validation_lst` channels\. Set the content type for all four channels to `application/x-image`\. 
+
+ A `.lst` file is a tab\-separated file with three columns that contains a list of image files\. The first column specifies the image index, the second column specifies the class label index for the image, and the third column specifies the relative path of the image file\. The image index in the first column must be unique across all of the images\. 
+
+ The following is an example of a `.lst` file: 
 
 ```
 5      2   your_image_directory/train_img_dog1.jpg
@@ -29,7 +37,11 @@ A sample first file follows\. The first column is the image index, followed by t
 22     2   your_image_directory/train_img_dog2.jpg
 ```
 
-The generated models can be hosted for inference and supports encoded \.jpg image formats as `application/x-image` content\-type\. The output is the probability values for all classes encoded in JSON format\.
+ For example, if your training images are stored in `s3://<your_bucket>/train/class_dog`, `s3://<your_bucket>/train/class_cat`, and so on, specify the path for your `train` channel as `s3://<your_bucket>/train`, which is the top\-level directory for your data\. In the `.lst` file, specify the relative path for an individual file named `train_image_dog1.jpg` in the `class_dog` class directory as `class_dog/train_image_dog1.jpg`\. You can also store all your image files under one subdirectory inside the `train` directory\. In that case, use that subdirectory for the relative path\. For example, `s3://<your_bucket>/train/your_image_directory`\. 
+
+### Inference with Image Format<a name="IC-inference"></a>
+
+The generated models can be hosted for inference and support encoded `.jpg` and `.png` image formats as `application/x-image` content\-type\. The output is the probability values for all classes encoded in JSON format\.
 
 For more details on training and inference, see the image classification sample notebook instances\.
 

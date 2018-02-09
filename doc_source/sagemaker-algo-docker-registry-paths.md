@@ -9,11 +9,13 @@ The following table lists parameters for each of the algorithms provided by Amaz
 | PCA | train and \(optionally\) test |  *<ecr\_path>*/pca:*latest*  |  File  | recordIO\-protobuf or CSV | GPU or CPU | 
 |  LDA  | train and \(optionally\) test |  *<ecr\_path>*/lda:*latest*  |  File  | recordIO\-protobuf or CSV | CPU \(single instance only\) | 
 | Factorization Machines | train and \(optionally\) test |  *<ecr\_path>*/factorization\-machines:*latest*  |  File  | recordIO\-protobuf | CPU \(GPU for dense data\) | 
-| Linear Learner | train and \(optionally\) validation and/or test | <ecr\_path>/linear\-learner:latest |  File  | recordIO\-protobuf or CSV | CPU or GPU | 
-| Neural Topic Model | train and \(optionally\) test |  *<ecr\_path>*/ntm:*latest*  |  File  | recordIO\-protobuf or CSV | GPU or CPU | 
+| Linear Learner | train and \(optionally\) validation, test, or both | <ecr\_path>/linear\-learner:latest |  File  | recordIO\-protobuf or CSV | CPU or GPU | 
+| Neural Topic Model | train and \(optionally\) validation,  test, or both |  *<ecr\_path>*/ntm:*latest*  |  File  | recordIO\-protobuf or CSV | GPU or CPU | 
 |  Seq2Seq Modeling  | train, validation, and vocab | <ecr\_path>/seq2seq:latest |  File  | recordIO\-protobuf | GPU \(single instance only\) | 
 | XGBoost | train and \(optionally\) validation |  *<ecr\_path>*/xgboost:*latest*  |  File  | CSV or LibSVM | CPU | 
 | Image Classification | train and validation, \(optionally\) train\_lst and validation\_lst |  *<ecr\_path>*/image\-classification:*latest*  |  File  | recordIO or image files \(\.jpg or \.png\)  | GPU | 
+| DeepAR Forecasting | train and \(optionally\) test |  *<ecr\_path>*/forecasting\-deepar:*latest*  |  File  | JSON Lines or Parquet | GPU or CPU | 
+| BlazingText | train |  *<ecr\_path>*/blazingtext:*latest*  |  File  | Text file \(one sentence per line with with space\-separated tokens\)  | GPU \(single instance only\) or CPU | 
 
 For the **Training Image and Inference Image Registry Path** column, depending on algorithm and region use one of the following values for *<ecr\_path>\.*
 

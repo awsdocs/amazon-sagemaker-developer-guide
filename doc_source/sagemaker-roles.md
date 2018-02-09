@@ -177,11 +177,7 @@ In the preceding policy, you scope the policy as follows:
 
   + Scope to the `AlgorithmSpecification.TrainingImage` value that you specify in a `CreateTrainingJob` request\.
 
-  + Scope to the following values that you specify in a `CreateModel` request:
-
-    `PrimaryContainer.Image`
-
-    `SupplementalContainers.Image`
+  + Scope to the `PrimaryContainer.Image` value that you specify in a `CreateModel` request:
 
 The `cloudwatch` and `logs` actions are applicable for "\*" resources\. For more information, see [CloudWatch Resources and Operations](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/iam-access-control-overview-cw.html#CloudWatch_ARN_Format) in the Amazon CloudWatch User Guide\.
 
@@ -354,7 +350,7 @@ Instead of the specifying `"Resource": "*"`, you can scope these permissions to 
 }
 ```
 
-If `CreateModel.PrimaryContainer.Image` or the `CreateModel.SupplemenatalContainers.Image` need to access other data sources, such as Amazon DynamoDB or Amazon RDS resources, add relevant permissions to this policy\.
+If `CreateModel.PrimaryContainer.Image` need to access other data sources, such as Amazon DynamoDB or Amazon RDS resources, add relevant permissions to this policy\.
 
 In the preceding policy, you scope the policy as follows:
 
