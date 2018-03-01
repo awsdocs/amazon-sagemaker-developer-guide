@@ -9,17 +9,17 @@ When you delete a notebook instance, you lose all of your data\. Amazon SageMake
 
 ```
 {
-   "NotebookInstanceName": "string"
+   "[NotebookInstanceName](#SageMaker-DeleteNotebookInstance-request-NotebookInstanceName)": "string"
 }
 ```
 
 ## Request Parameters<a name="API_DeleteNotebookInstance_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** NotebookInstanceName **   
+ ** [NotebookInstanceName](#API_DeleteNotebookInstance_RequestSyntax) **   <a name="SageMaker-DeleteNotebookInstance-request-NotebookInstanceName"></a>
 The name of the Amazon SageMaker notebook instance to delete\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  

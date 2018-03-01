@@ -6,17 +6,17 @@ Returns the description of an endpoint\.
 
 ```
 {
-   "EndpointName": "string"
+   "[EndpointName](#SageMaker-DescribeEndpoint-request-EndpointName)": "string"
 }
 ```
 
 ## Request Parameters<a name="API_DescribeEndpoint_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** EndpointName **   
+ ** [EndpointName](#API_DescribeEndpoint_RequestSyntax) **   <a name="SageMaker-DescribeEndpoint-request-EndpointName"></a>
 The name of the endpoint\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
@@ -27,20 +27,20 @@ Required: Yes
 
 ```
 {
-   "CreationTime": number,
-   "EndpointArn": "string",
-   "EndpointConfigName": "string",
-   "EndpointName": "string",
-   "EndpointStatus": "string",
-   "FailureReason": "string",
-   "LastModifiedTime": number,
-   "ProductionVariants": [ 
+   "[CreationTime](#SageMaker-DescribeEndpoint-response-CreationTime)": number,
+   "[EndpointArn](#SageMaker-DescribeEndpoint-response-EndpointArn)": "string",
+   "[EndpointConfigName](#SageMaker-DescribeEndpoint-response-EndpointConfigName)": "string",
+   "[EndpointName](#SageMaker-DescribeEndpoint-response-EndpointName)": "string",
+   "[EndpointStatus](#SageMaker-DescribeEndpoint-response-EndpointStatus)": "string",
+   "[FailureReason](#SageMaker-DescribeEndpoint-response-FailureReason)": "string",
+   "[LastModifiedTime](#SageMaker-DescribeEndpoint-response-LastModifiedTime)": number,
+   "[ProductionVariants](#SageMaker-DescribeEndpoint-response-ProductionVariants)": [ 
       { 
-         "CurrentInstanceCount": number,
-         "CurrentWeight": number,
-         "DesiredInstanceCount": number,
-         "DesiredWeight": number,
-         "VariantName": "string"
+         "[CurrentInstanceCount](API_ProductionVariantSummary.md#SageMaker-Type-ProductionVariantSummary-CurrentInstanceCount)": number,
+         "[CurrentWeight](API_ProductionVariantSummary.md#SageMaker-Type-ProductionVariantSummary-CurrentWeight)": number,
+         "[DesiredInstanceCount](API_ProductionVariantSummary.md#SageMaker-Type-ProductionVariantSummary-DesiredInstanceCount)": number,
+         "[DesiredWeight](API_ProductionVariantSummary.md#SageMaker-Type-ProductionVariantSummary-DesiredWeight)": number,
+         "[VariantName](API_ProductionVariantSummary.md#SageMaker-Type-ProductionVariantSummary-VariantName)": "string"
       }
    ]
 }
@@ -52,42 +52,42 @@ If the action is successful, the service sends back an HTTP 200 response\.
 
 The following data is returned in JSON format by the service\.
 
- ** CreationTime **   
+ ** [CreationTime](#API_DescribeEndpoint_ResponseSyntax) **   <a name="SageMaker-DescribeEndpoint-response-CreationTime"></a>
 A timestamp that shows when the endpoint was created\.  
 Type: Timestamp
 
- ** EndpointArn **   
+ ** [EndpointArn](#API_DescribeEndpoint_ResponseSyntax) **   <a name="SageMaker-DescribeEndpoint-response-EndpointArn"></a>
 The Amazon Resource Name \(ARN\) of the endpoint\.  
 Type: String  
 Length Constraints: Minimum length of 20\. Maximum length of 2048\.
 
- ** EndpointConfigName **   
+ ** [EndpointConfigName](#API_DescribeEndpoint_ResponseSyntax) **   <a name="SageMaker-DescribeEndpoint-response-EndpointConfigName"></a>
 The name of the endpoint configuration associated with this endpoint\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*` 
 
- ** EndpointName **   
+ ** [EndpointName](#API_DescribeEndpoint_ResponseSyntax) **   <a name="SageMaker-DescribeEndpoint-response-EndpointName"></a>
 Name of the endpoint\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*` 
 
- ** EndpointStatus **   
+ ** [EndpointStatus](#API_DescribeEndpoint_ResponseSyntax) **   <a name="SageMaker-DescribeEndpoint-response-EndpointStatus"></a>
 The status of the endpoint\.  
 Type: String  
 Valid Values:` OutOfService | Creating | Updating | RollingBack | InService | Deleting | Failed` 
 
- ** FailureReason **   
+ ** [FailureReason](#API_DescribeEndpoint_ResponseSyntax) **   <a name="SageMaker-DescribeEndpoint-response-FailureReason"></a>
 If the status of the endpoint is `Failed`, the reason why it failed\.   
 Type: String  
 Length Constraints: Maximum length of 1024\.
 
- ** LastModifiedTime **   
+ ** [LastModifiedTime](#API_DescribeEndpoint_ResponseSyntax) **   <a name="SageMaker-DescribeEndpoint-response-LastModifiedTime"></a>
 A timestamp that shows when the endpoint was last modified\.  
 Type: Timestamp
 
- ** ProductionVariants **   
+ ** [ProductionVariants](#API_DescribeEndpoint_ResponseSyntax) **   <a name="SageMaker-DescribeEndpoint-response-ProductionVariants"></a>
  An array of ProductionVariant objects, one for each model hosted behind this endpoint\.   
 Type: Array of [ProductionVariantSummary](API_ProductionVariantSummary.md) objects  
 Array Members: Minimum number of 1 item\.

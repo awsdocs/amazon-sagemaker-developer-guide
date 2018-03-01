@@ -4,19 +4,19 @@ Specifies weight and capacity values for a production variant\.
 
 ## Contents<a name="API_DesiredWeightAndCapacity_Contents"></a>
 
- **DesiredInstanceCount**   
+ **DesiredInstanceCount**   <a name="SageMaker-Type-DesiredWeightAndCapacity-DesiredInstanceCount"></a>
 The variant's capacity\.  
 Type: Integer  
 Valid Range: Minimum value of 1\.  
 Required: No
 
- **DesiredWeight**   
+ **DesiredWeight**   <a name="SageMaker-Type-DesiredWeightAndCapacity-DesiredWeight"></a>
 The variant's weight\.  
 Type: Float  
 Valid Range: Minimum value of 0\.  
 Required: No
 
- **VariantName**   
+ **VariantName**   <a name="SageMaker-Type-DesiredWeightAndCapacity-VariantName"></a>
 The name of the variant to update\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  

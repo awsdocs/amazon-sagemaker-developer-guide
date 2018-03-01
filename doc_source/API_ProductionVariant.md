@@ -4,32 +4,32 @@ Identifies a model that you want to host and the resources to deploy for hosting
 
 ## Contents<a name="API_ProductionVariant_Contents"></a>
 
- **InitialInstanceCount**   
+ **InitialInstanceCount**   <a name="SageMaker-Type-ProductionVariant-InitialInstanceCount"></a>
 Number of instances to launch initially\.  
 Type: Integer  
 Valid Range: Minimum value of 1\.  
 Required: Yes
 
- **InitialVariantWeight**   
+ **InitialVariantWeight**   <a name="SageMaker-Type-ProductionVariant-InitialVariantWeight"></a>
 Determines initial traffic distribution among all of the models that you specify in the endpoint configuration\. The traffic to a production variant is determined by the ratio of the `VariantWeight` to the sum of all `VariantWeight` values across all ProductionVariants\. If unspecified, it defaults to 1\.0\.   
 Type: Float  
 Valid Range: Minimum value of 0\.  
 Required: No
 
- **InstanceType**   
+ **InstanceType**   <a name="SageMaker-Type-ProductionVariant-InstanceType"></a>
 The ML compute instance type\.  
 Type: String  
 Valid Values:` ml.c4.2xlarge | ml.c4.8xlarge | ml.c4.xlarge | ml.c5.2xlarge | ml.c5.9xlarge | ml.c5.xlarge | ml.m4.xlarge | ml.p2.xlarge | ml.p3.2xlarge | ml.t2.medium`   
 Required: Yes
 
- **ModelName**   
+ **ModelName**   <a name="SageMaker-Type-ProductionVariant-ModelName"></a>
 The name of the model that you want to host\. This is the name that you specified when creating the model\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: Yes
 
- **VariantName**   
+ **VariantName**   <a name="SageMaker-Type-ProductionVariant-VariantName"></a>
 The name of the production variant\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  

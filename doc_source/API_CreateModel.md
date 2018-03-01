@@ -14,20 +14,20 @@ In the request, you also provide an IAM role that Amazon SageMaker can assume to
 
 ```
 {
-   "ExecutionRoleArn": "string",
-   "ModelName": "string",
-   "PrimaryContainer": { 
-      "ContainerHostname": "string",
-      "Environment": { 
+   "[ExecutionRoleArn](#SageMaker-CreateModel-request-ExecutionRoleArn)": "string",
+   "[ModelName](#SageMaker-CreateModel-request-ModelName)": "string",
+   "[PrimaryContainer](#SageMaker-CreateModel-request-PrimaryContainer)": { 
+      "[ContainerHostname](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-ContainerHostname)": "string",
+      "[Environment](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-Environment)": { 
          "string" : "string" 
       },
-      "Image": "string",
-      "ModelDataUrl": "string"
+      "[Image](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-Image)": "string",
+      "[ModelDataUrl](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-ModelDataUrl)": "string"
    },
-   "Tags": [ 
+   "[Tags](#SageMaker-CreateModel-request-Tags)": [ 
       { 
-         "Key": "string",
-         "Value": "string"
+         "[Key](API_Tag.md#SageMaker-Type-Tag-Key)": "string",
+         "[Value](API_Tag.md#SageMaker-Type-Tag-Value)": "string"
       }
    ]
 }
@@ -35,30 +35,30 @@ In the request, you also provide an IAM role that Amazon SageMaker can assume to
 
 ## Request Parameters<a name="API_CreateModel_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** ExecutionRoleArn **   
+ ** [ExecutionRoleArn](#API_CreateModel_RequestSyntax) **   <a name="SageMaker-CreateModel-request-ExecutionRoleArn"></a>
 The Amazon Resource Name \(ARN\) of the IAM role that Amazon SageMaker can assume to access model artifacts and docker image for deployment on ML compute instances\. Deploying on ML compute instances is part of model hosting\. For more information, see [Amazon SageMaker Roles](http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html)\.   
 Type: String  
 Length Constraints: Minimum length of 20\. Maximum length of 2048\.  
 Pattern: `^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$`   
 Required: Yes
 
- ** ModelName **   
+ ** [ModelName](#API_CreateModel_RequestSyntax) **   <a name="SageMaker-CreateModel-request-ModelName"></a>
 The name of the new model\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: Yes
 
- ** PrimaryContainer **   
+ ** [PrimaryContainer](#API_CreateModel_RequestSyntax) **   <a name="SageMaker-CreateModel-request-PrimaryContainer"></a>
 The location of the primary docker image containing inference code, associated artifacts, and custom environment map that the inference code uses when the model is deployed into production\.   
 Type: [ContainerDefinition](API_ContainerDefinition.md) object  
 Required: Yes
 
- ** Tags **   
+ ** [Tags](#API_CreateModel_RequestSyntax) **   <a name="SageMaker-CreateModel-request-Tags"></a>
 An array of key\-value pairs\. For more information, see [Using Cost Allocation Tags](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what) in the *AWS Billing and Cost Management User Guide*\.   
 Type: Array of [Tag](API_Tag.md) objects  
 Array Members: Minimum number of 0 items\. Maximum number of 50 items\.  
@@ -68,7 +68,7 @@ Required: No
 
 ```
 {
-   "ModelArn": "string"
+   "[ModelArn](#SageMaker-CreateModel-response-ModelArn)": "string"
 }
 ```
 
@@ -78,7 +78,7 @@ If the action is successful, the service sends back an HTTP 200 response\.
 
 The following data is returned in JSON format by the service\.
 
- ** ModelArn **   
+ ** [ModelArn](#API_CreateModel_ResponseSyntax) **   <a name="SageMaker-CreateModel-response-ModelArn"></a>
 The ARN of the model created in Amazon SageMaker\.  
 Type: String  
 Length Constraints: Minimum length of 20\. Maximum length of 2048\.

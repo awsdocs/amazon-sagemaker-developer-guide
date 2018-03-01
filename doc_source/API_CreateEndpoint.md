@@ -17,12 +17,12 @@ For an example, see [Exercise 1: Using the K\-Means Algorithm Provided by Amazon
 
 ```
 {
-   "EndpointConfigName": "string",
-   "EndpointName": "string",
-   "Tags": [ 
+   "[EndpointConfigName](#SageMaker-CreateEndpoint-request-EndpointConfigName)": "string",
+   "[EndpointName](#SageMaker-CreateEndpoint-request-EndpointName)": "string",
+   "[Tags](#SageMaker-CreateEndpoint-request-Tags)": [ 
       { 
-         "Key": "string",
-         "Value": "string"
+         "[Key](API_Tag.md#SageMaker-Type-Tag-Key)": "string",
+         "[Value](API_Tag.md#SageMaker-Type-Tag-Value)": "string"
       }
    ]
 }
@@ -30,25 +30,25 @@ For an example, see [Exercise 1: Using the K\-Means Algorithm Provided by Amazon
 
 ## Request Parameters<a name="API_CreateEndpoint_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** EndpointConfigName **   
+ ** [EndpointConfigName](#API_CreateEndpoint_RequestSyntax) **   <a name="SageMaker-CreateEndpoint-request-EndpointConfigName"></a>
 The name of an endpoint configuration\. For more information, see [CreateEndpointConfig](http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html)\.   
 Type: String  
 Length Constraints: Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: Yes
 
- ** EndpointName **   
+ ** [EndpointName](#API_CreateEndpoint_RequestSyntax) **   <a name="SageMaker-CreateEndpoint-request-EndpointName"></a>
 The name of the endpoint\. The name must be unique within an AWS Region in your AWS account\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: Yes
 
- ** Tags **   
+ ** [Tags](#API_CreateEndpoint_RequestSyntax) **   <a name="SageMaker-CreateEndpoint-request-Tags"></a>
 An array of key\-value pairs\. For more information, see [Using Cost Allocation Tags](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)in the *AWS Billing and Cost Management User Guide*\.   
 Type: Array of [Tag](API_Tag.md) objects  
 Array Members: Minimum number of 0 items\. Maximum number of 50 items\.  
@@ -58,7 +58,7 @@ Required: No
 
 ```
 {
-   "EndpointArn": "string"
+   "[EndpointArn](#SageMaker-CreateEndpoint-response-EndpointArn)": "string"
 }
 ```
 
@@ -68,7 +68,7 @@ If the action is successful, the service sends back an HTTP 200 response\.
 
 The following data is returned in JSON format by the service\.
 
- ** EndpointArn **   
+ ** [EndpointArn](#API_CreateEndpoint_ResponseSyntax) **   <a name="SageMaker-CreateEndpoint-response-EndpointArn"></a>
 The Amazon Resource Name \(ARN\) of the endpoint\.  
 Type: String  
 Length Constraints: Minimum length of 20\. Maximum length of 2048\.

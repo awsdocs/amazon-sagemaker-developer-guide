@@ -6,17 +6,17 @@ Launches an ML compute instance with the latest version of the libraries and att
 
 ```
 {
-   "NotebookInstanceName": "string"
+   "[NotebookInstanceName](#SageMaker-StartNotebookInstance-request-NotebookInstanceName)": "string"
 }
 ```
 
 ## Request Parameters<a name="API_StartNotebookInstance_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** NotebookInstanceName **   
+ ** [NotebookInstanceName](#API_StartNotebookInstance_RequestSyntax) **   <a name="SageMaker-StartNotebookInstance-request-NotebookInstanceName"></a>
 The name of the notebook instance to start\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  

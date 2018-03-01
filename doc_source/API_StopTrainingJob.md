@@ -10,17 +10,17 @@ When it receives a `StopTrainingJob` request, Amazon SageMaker changes the statu
 
 ```
 {
-   "TrainingJobName": "string"
+   "[TrainingJobName](#SageMaker-StopTrainingJob-request-TrainingJobName)": "string"
 }
 ```
 
 ## Request Parameters<a name="API_StopTrainingJob_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** TrainingJobName **   
+ ** [TrainingJobName](#API_StopTrainingJob_RequestSyntax) **   <a name="SageMaker-StopTrainingJob-request-TrainingJobName"></a>
 The name of the training job to stop\.  
 Type: String  
 Length Constraints: Minimum length of 1\. Maximum length of 63\.  

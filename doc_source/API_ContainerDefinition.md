@@ -4,14 +4,14 @@ Describes the container, as part of model definition\.
 
 ## Contents<a name="API_ContainerDefinition_Contents"></a>
 
- **ContainerHostname**   
+ **ContainerHostname**   <a name="SageMaker-Type-ContainerDefinition-ContainerHostname"></a>
 The DNS host name for the container after Amazon SageMaker deploys it\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: No
 
- **Environment**   
+ **Environment**   <a name="SageMaker-Type-ContainerDefinition-Environment"></a>
 The environment variables to set in the Docker container\. Each key and value in the `Environment` string to string map can have length of up to 1024\. We support up to 16 entries in the map\.   
 Type: String to string map  
 Key Length Constraints: Maximum length of 1024\.  
@@ -19,14 +19,14 @@ Key Pattern: `[a-zA-Z_][a-zA-Z0-9_]*`
 Value Length Constraints: Maximum length of 1024\.  
 Required: No
 
- **Image**   
+ **Image**   <a name="SageMaker-Type-ContainerDefinition-Image"></a>
 The Amazon EC2 Container Registry \(Amazon ECR\) path where inference code is stored\. If you are using your own custom algorithm instead of an algorithm provided by Amazon SageMaker, the inference code must meet Amazon SageMaker requirements\. For more information, see [Using Your Own Algorithms with Amazon SageMaker](http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html)   
 Type: String  
 Length Constraints: Maximum length of 255\.  
 Pattern: `[\S]+`   
 Required: Yes
 
- **ModelDataUrl**   
+ **ModelDataUrl**   <a name="SageMaker-Type-ContainerDefinition-ModelDataUrl"></a>
 The S3 path where the model artifacts, which result from model training, are stored\. This path must point to a single gzip compressed tar archive \(\.tar\.gz suffix\)\.   
 Type: String  
 Length Constraints: Maximum length of 1024\.  

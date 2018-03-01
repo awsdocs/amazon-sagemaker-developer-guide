@@ -6,13 +6,13 @@ For more information about algorithms provided by Amazon SageMaker, see [Algorit
 
 ## Contents<a name="API_AlgorithmSpecification_Contents"></a>
 
- **TrainingImage**   
+ **TrainingImage**   <a name="SageMaker-Type-AlgorithmSpecification-TrainingImage"></a>
 The registry path of the Docker image that contains the training algorithm\. For information about using your own algorithms, see [Docker Registry Paths for Algorithms Provided by Amazon SageMaker ](http://docs.aws.amazon.com/sagemaker/latest/dg/algos-docker-registry-paths.html)\.   
 Type: String  
 Length Constraints: Maximum length of 255\.  
 Required: Yes
 
- **TrainingInputMode**   
+ **TrainingInputMode**   <a name="SageMaker-Type-AlgorithmSpecification-TrainingInputMode"></a>
 The input mode that the algorithm supports\. For the input modes that Amazon SageMaker algorithms support, see [Algorithms](http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)\. If an algorithm supports the `File` input mode, Amazon SageMaker downloads the training data from S3 to the provisioned ML storage Volume, and mounts the directory to docker volume for training container\. If an algorithm supports the `Pipe` input mode, Amazon SageMaker streams data directly from S3 to the container\.   
  In File mode, make sure you provision ML storage volume with sufficient capacity to accomodate the data download from S3\. In addition to the training data, the ML storage volume also stores the output model\. The algorithm container use ML storage volume to also store intermediate information, if any\.   
  For distributed algorithms using File mode, training data is distributed uniformly, and your training duration is predictable if the input data objects size is approximately same\. Amazon SageMaker does not split the files any further for model training\. If the object sizes are skewed, training won't be optimal as the data distribution is also skewed where one host in a training cluster is overloaded, thus becoming bottleneck in training\.   

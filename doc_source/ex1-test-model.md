@@ -11,7 +11,7 @@ To validate your model, choose one of the following options\.
   1. Get an inference for the 30th image of a handwritten number in the `valid_set` dataset\.
 
      ```
-     result = kmeans_predictor.predict(train_set[0][30:31])
+     result = kmeans_predictor.predict(valid_set[0][30:31])
      print(result)
      ```
 

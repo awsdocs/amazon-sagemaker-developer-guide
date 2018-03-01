@@ -6,17 +6,17 @@ Deletes a model\. The `DeleteModel` API deletes only the model entry that was cr
 
 ```
 {
-   "ModelName": "string"
+   "[ModelName](#SageMaker-DeleteModel-request-ModelName)": "string"
 }
 ```
 
 ## Request Parameters<a name="API_DeleteModel_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** ModelName **   
+ ** [ModelName](#API_DeleteModel_RequestSyntax) **   <a name="SageMaker-DeleteModel-request-ModelName"></a>
 The name of the model to delete\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  

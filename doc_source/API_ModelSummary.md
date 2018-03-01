@@ -4,18 +4,18 @@ Provides summary information about a model\.
 
 ## Contents<a name="API_ModelSummary_Contents"></a>
 
- **CreationTime**   
+ **CreationTime**   <a name="SageMaker-Type-ModelSummary-CreationTime"></a>
 A timestamp that indicates when the model was created\.  
 Type: Timestamp  
 Required: Yes
 
- **ModelArn**   
+ **ModelArn**   <a name="SageMaker-Type-ModelSummary-ModelArn"></a>
 The Amazon Resource Name \(ARN\) of the model\.  
 Type: String  
 Length Constraints: Minimum length of 20\. Maximum length of 2048\.  
 Required: Yes
 
- **ModelName**   
+ **ModelName**   <a name="SageMaker-Type-ModelSummary-ModelName"></a>
 The name of the model that you want a summary for\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  

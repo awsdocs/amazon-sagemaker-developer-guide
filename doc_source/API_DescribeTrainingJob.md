@@ -6,17 +6,17 @@ Returns information about a training job\.
 
 ```
 {
-   "TrainingJobName": "string"
+   "[TrainingJobName](#SageMaker-DescribeTrainingJob-request-TrainingJobName)": "string"
 }
 ```
 
 ## Request Parameters<a name="API_DescribeTrainingJob_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** TrainingJobName **   
+ ** [TrainingJobName](#API_DescribeTrainingJob_RequestSyntax) **   <a name="SageMaker-DescribeTrainingJob-request-TrainingJobName"></a>
 The name of the training job\.  
 Type: String  
 Length Constraints: Minimum length of 1\. Maximum length of 63\.  
@@ -27,54 +27,54 @@ Required: Yes
 
 ```
 {
-   "AlgorithmSpecification": { 
-      "TrainingImage": "string",
-      "TrainingInputMode": "string"
+   "[AlgorithmSpecification](#SageMaker-DescribeTrainingJob-response-AlgorithmSpecification)": { 
+      "[TrainingImage](API_AlgorithmSpecification.md#SageMaker-Type-AlgorithmSpecification-TrainingImage)": "string",
+      "[TrainingInputMode](API_AlgorithmSpecification.md#SageMaker-Type-AlgorithmSpecification-TrainingInputMode)": "string"
    },
-   "CreationTime": number,
-   "FailureReason": "string",
-   "HyperParameters": { 
+   "[CreationTime](#SageMaker-DescribeTrainingJob-response-CreationTime)": number,
+   "[FailureReason](#SageMaker-DescribeTrainingJob-response-FailureReason)": "string",
+   "[HyperParameters](#SageMaker-DescribeTrainingJob-response-HyperParameters)": { 
       "string" : "string" 
    },
-   "InputDataConfig": [ 
+   "[InputDataConfig](#SageMaker-DescribeTrainingJob-response-InputDataConfig)": [ 
       { 
-         "ChannelName": "string",
-         "CompressionType": "string",
-         "ContentType": "string",
-         "DataSource": { 
-            "S3DataSource": { 
-               "S3DataDistributionType": "string",
-               "S3DataType": "string",
-               "S3Uri": "string"
+         "[ChannelName](API_Channel.md#SageMaker-Type-Channel-ChannelName)": "string",
+         "[CompressionType](API_Channel.md#SageMaker-Type-Channel-CompressionType)": "string",
+         "[ContentType](API_Channel.md#SageMaker-Type-Channel-ContentType)": "string",
+         "[DataSource](API_Channel.md#SageMaker-Type-Channel-DataSource)": { 
+            "[S3DataSource](API_DataSource.md#SageMaker-Type-DataSource-S3DataSource)": { 
+               "[S3DataDistributionType](API_S3DataSource.md#SageMaker-Type-S3DataSource-S3DataDistributionType)": "string",
+               "[S3DataType](API_S3DataSource.md#SageMaker-Type-S3DataSource-S3DataType)": "string",
+               "[S3Uri](API_S3DataSource.md#SageMaker-Type-S3DataSource-S3Uri)": "string"
             }
          },
-         "RecordWrapperType": "string"
+         "[RecordWrapperType](API_Channel.md#SageMaker-Type-Channel-RecordWrapperType)": "string"
       }
    ],
-   "LastModifiedTime": number,
-   "ModelArtifacts": { 
-      "S3ModelArtifacts": "string"
+   "[LastModifiedTime](#SageMaker-DescribeTrainingJob-response-LastModifiedTime)": number,
+   "[ModelArtifacts](#SageMaker-DescribeTrainingJob-response-ModelArtifacts)": { 
+      "[S3ModelArtifacts](API_ModelArtifacts.md#SageMaker-Type-ModelArtifacts-S3ModelArtifacts)": "string"
    },
-   "OutputDataConfig": { 
-      "KmsKeyId": "string",
-      "S3OutputPath": "string"
+   "[OutputDataConfig](#SageMaker-DescribeTrainingJob-response-OutputDataConfig)": { 
+      "[KmsKeyId](API_OutputDataConfig.md#SageMaker-Type-OutputDataConfig-KmsKeyId)": "string",
+      "[S3OutputPath](API_OutputDataConfig.md#SageMaker-Type-OutputDataConfig-S3OutputPath)": "string"
    },
-   "ResourceConfig": { 
-      "InstanceCount": number,
-      "InstanceType": "string",
-      "VolumeKmsKeyId": "string",
-      "VolumeSizeInGB": number
+   "[ResourceConfig](#SageMaker-DescribeTrainingJob-response-ResourceConfig)": { 
+      "[InstanceCount](API_ResourceConfig.md#SageMaker-Type-ResourceConfig-InstanceCount)": number,
+      "[InstanceType](API_ResourceConfig.md#SageMaker-Type-ResourceConfig-InstanceType)": "string",
+      "[VolumeKmsKeyId](API_ResourceConfig.md#SageMaker-Type-ResourceConfig-VolumeKmsKeyId)": "string",
+      "[VolumeSizeInGB](API_ResourceConfig.md#SageMaker-Type-ResourceConfig-VolumeSizeInGB)": number
    },
-   "RoleArn": "string",
-   "SecondaryStatus": "string",
-   "StoppingCondition": { 
-      "MaxRuntimeInSeconds": number
+   "[RoleArn](#SageMaker-DescribeTrainingJob-response-RoleArn)": "string",
+   "[SecondaryStatus](#SageMaker-DescribeTrainingJob-response-SecondaryStatus)": "string",
+   "[StoppingCondition](#SageMaker-DescribeTrainingJob-response-StoppingCondition)": { 
+      "[MaxRuntimeInSeconds](API_StoppingCondition.md#SageMaker-Type-StoppingCondition-MaxRuntimeInSeconds)": number
    },
-   "TrainingEndTime": number,
-   "TrainingJobArn": "string",
-   "TrainingJobName": "string",
-   "TrainingJobStatus": "string",
-   "TrainingStartTime": number
+   "[TrainingEndTime](#SageMaker-DescribeTrainingJob-response-TrainingEndTime)": number,
+   "[TrainingJobArn](#SageMaker-DescribeTrainingJob-response-TrainingJobArn)": "string",
+   "[TrainingJobName](#SageMaker-DescribeTrainingJob-response-TrainingJobName)": "string",
+   "[TrainingJobStatus](#SageMaker-DescribeTrainingJob-response-TrainingJobStatus)": "string",
+   "[TrainingStartTime](#SageMaker-DescribeTrainingJob-response-TrainingStartTime)": number
 }
 ```
 
@@ -84,78 +84,78 @@ If the action is successful, the service sends back an HTTP 200 response\.
 
 The following data is returned in JSON format by the service\.
 
- ** AlgorithmSpecification **   
+ ** [AlgorithmSpecification](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-AlgorithmSpecification"></a>
 Information about the algorithm used for training, and algorithm metadata\.   
 Type: [AlgorithmSpecification](API_AlgorithmSpecification.md) object
 
- ** CreationTime **   
+ ** [CreationTime](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-CreationTime"></a>
 A timestamp that indicates when the training job was created\.  
 Type: Timestamp
 
- ** FailureReason **   
+ ** [FailureReason](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-FailureReason"></a>
 If the training job failed, the reason it failed\.   
 Type: String  
 Length Constraints: Maximum length of 1024\.
 
- ** HyperParameters **   
+ ** [HyperParameters](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-HyperParameters"></a>
 Algorithm\-specific parameters\.   
 Type: String to string map  
 Key Length Constraints: Maximum length of 256\.  
 Value Length Constraints: Maximum length of 256\.
 
- ** InputDataConfig **   
+ ** [InputDataConfig](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-InputDataConfig"></a>
 An array of `Channel` objects that describes each data input channel\.   
 Type: Array of [Channel](API_Channel.md) objects  
 Array Members: Minimum number of 1 item\. Maximum number of 8 items\.
 
- ** LastModifiedTime **   
+ ** [LastModifiedTime](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-LastModifiedTime"></a>
 A timestamp that indicates when the status of the training job was last modified\.  
 Type: Timestamp
 
- ** ModelArtifacts **   
+ ** [ModelArtifacts](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-ModelArtifacts"></a>
 Information about the Amazon S3 location that is configured for storing model artifacts\.   
 Type: [ModelArtifacts](API_ModelArtifacts.md) object
 
- ** OutputDataConfig **   
+ ** [OutputDataConfig](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-OutputDataConfig"></a>
 The S3 path where model artifacts that you configured when creating the job are stored\. Amazon SageMaker creates subfolders for model artifacts\.   
 Type: [OutputDataConfig](API_OutputDataConfig.md) object
 
- ** ResourceConfig **   
+ ** [ResourceConfig](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-ResourceConfig"></a>
 Resources, including ML compute instances and ML storage volumes, that are configured for model training\.   
 Type: [ResourceConfig](API_ResourceConfig.md) object
 
- ** RoleArn **   
+ ** [RoleArn](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-RoleArn"></a>
 The AWS Identity and Access Management \(IAM\) role configured for the training job\.   
 Type: String  
 Length Constraints: Minimum length of 20\. Maximum length of 2048\.  
 Pattern: `^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$` 
 
- ** SecondaryStatus **   
+ ** [SecondaryStatus](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-SecondaryStatus"></a>
  Provides granular information about the system state\. For more information, see `TrainingJobStatus`\.   
 Type: String  
 Valid Values:` Starting | Downloading | Training | Uploading | Stopping | Stopped | MaxRuntimeExceeded | Completed | Failed` 
 
- ** StoppingCondition **   
+ ** [StoppingCondition](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-StoppingCondition"></a>
 The condition under which to stop the training job\.   
 Type: [StoppingCondition](API_StoppingCondition.md) object
 
- ** TrainingEndTime **   
+ ** [TrainingEndTime](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-TrainingEndTime"></a>
 A timestamp that indicates when model training ended\.  
 Type: Timestamp
 
- ** TrainingJobArn **   
+ ** [TrainingJobArn](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-TrainingJobArn"></a>
 The Amazon Resource Name \(ARN\) of the training job\.  
 Type: String  
 Length Constraints: Maximum length of 256\.  
 Pattern: `arn:aws:sagemaker:[\p{Alnum}\-]*:[0-9]{12}:training-job/.*` 
 
- ** TrainingJobName **   
+ ** [TrainingJobName](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-TrainingJobName"></a>
  Name of the model training job\.   
 Type: String  
 Length Constraints: Minimum length of 1\. Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*` 
 
- ** TrainingJobStatus **   
+ ** [TrainingJobStatus](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-TrainingJobStatus"></a>
 The status of the training job\.   
 For the `InProgress` status, Amazon SageMaker can return these secondary statuses:  
 
@@ -172,7 +172,7 @@ For the `Stopped` training status, Amazon SageMaker can return these secondary s
 Type: String  
 Valid Values:` InProgress | Completed | Failed | Stopping | Stopped` 
 
- ** TrainingStartTime **   
+ ** [TrainingStartTime](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-TrainingStartTime"></a>
 A timestamp that indicates when training started\.  
 Type: Timestamp
 

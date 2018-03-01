@@ -32,6 +32,10 @@ When hosting models using Amazon SageMaker hosting services, consider the follow
 
    
 
++ You can configure a `ProductionVariant` to use Application Auto Scaling\. For information about configuring automatic scaling, see [Automatically Scaling Amazon SageMaker Models](endpoint-auto-scaling.md)\.
+
+   
+
 + You can modify an endpoint without taking models that are already deployed into production out of service\. For example, you can add new model variants, update the ML Compute instance configurations of existing model variants, or change the distribution of traffic among model variants\. To modify an endpoint, you provide a new endpoint configuration\. Amazon SageMaker implements the changes without any downtime\. For more information see, [UpdateEndpoint](API_UpdateEndpoint.md) and [UpdateEndpointWeightsAndCapacities](API_UpdateEndpointWeightsAndCapacities.md)\. 
 
    

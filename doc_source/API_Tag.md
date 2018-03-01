@@ -4,14 +4,14 @@ Describes a tag\.
 
 ## Contents<a name="API_Tag_Contents"></a>
 
- **Key**   
+ **Key**   <a name="SageMaker-Type-Tag-Key"></a>
 The tag key\.  
 Type: String  
 Length Constraints: Minimum length of 1\. Maximum length of 128\.  
 Pattern: `^((?!aws:)[\p{L}\p{Z}\p{N}_.:/=+\-@]*)$`   
 Required: Yes
 
- **Value**   
+ **Value**   <a name="SageMaker-Type-Tag-Value"></a>
 The tag value\.  
 Type: String  
 Length Constraints: Minimum length of 0\. Maximum length of 256\.  

@@ -6,57 +6,57 @@ Lists endpoint configurations\.
 
 ```
 {
-   "CreationTimeAfter": number,
-   "CreationTimeBefore": number,
-   "MaxResults": number,
-   "NameContains": "string",
-   "NextToken": "string",
-   "SortBy": "string",
-   "SortOrder": "string"
+   "[CreationTimeAfter](#SageMaker-ListEndpointConfigs-request-CreationTimeAfter)": number,
+   "[CreationTimeBefore](#SageMaker-ListEndpointConfigs-request-CreationTimeBefore)": number,
+   "[MaxResults](#SageMaker-ListEndpointConfigs-request-MaxResults)": number,
+   "[NameContains](#SageMaker-ListEndpointConfigs-request-NameContains)": "string",
+   "[NextToken](#SageMaker-ListEndpointConfigs-request-NextToken)": "string",
+   "[SortBy](#SageMaker-ListEndpointConfigs-request-SortBy)": "string",
+   "[SortOrder](#SageMaker-ListEndpointConfigs-request-SortOrder)": "string"
 }
 ```
 
 ## Request Parameters<a name="API_ListEndpointConfigs_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** CreationTimeAfter **   
+ ** [CreationTimeAfter](#API_ListEndpointConfigs_RequestSyntax) **   <a name="SageMaker-ListEndpointConfigs-request-CreationTimeAfter"></a>
 A filter that returns only endpoint configurations created after the specified time \(timestamp\)\.  
 Type: Timestamp  
 Required: No
 
- ** CreationTimeBefore **   
+ ** [CreationTimeBefore](#API_ListEndpointConfigs_RequestSyntax) **   <a name="SageMaker-ListEndpointConfigs-request-CreationTimeBefore"></a>
 A filter that returns only endpoint configurations created before the specified time \(timestamp\)\.  
 Type: Timestamp  
 Required: No
 
- ** MaxResults **   
+ ** [MaxResults](#API_ListEndpointConfigs_RequestSyntax) **   <a name="SageMaker-ListEndpointConfigs-request-MaxResults"></a>
 The maximum number of training jobs to return in the response\.  
 Type: Integer  
 Valid Range: Minimum value of 1\. Maximum value of 100\.  
 Required: No
 
- ** NameContains **   
+ ** [NameContains](#API_ListEndpointConfigs_RequestSyntax) **   <a name="SageMaker-ListEndpointConfigs-request-NameContains"></a>
 A string in the endpoint configuration name\. This filter returns only endpoint configurations whose name contains the specified string\.   
 Type: String  
 Pattern: `[a-zA-Z0-9-]+`   
 Required: No
 
- ** NextToken **   
+ ** [NextToken](#API_ListEndpointConfigs_RequestSyntax) **   <a name="SageMaker-ListEndpointConfigs-request-NextToken"></a>
 If the result of the previous `ListEndpointConfig` request was truncated, the response includes a `NextToken`\. To retrieve the next set of endpoint configurations, use the token in the next request\.   
 Type: String  
 Length Constraints: Maximum length of 8192\.  
 Required: No
 
- ** SortBy **   
+ ** [SortBy](#API_ListEndpointConfigs_RequestSyntax) **   <a name="SageMaker-ListEndpointConfigs-request-SortBy"></a>
 The field to sort results by\. The default is `CreationTime`\.  
 Type: String  
 Valid Values:` Name | CreationTime`   
 Required: No
 
- ** SortOrder **   
+ ** [SortOrder](#API_ListEndpointConfigs_RequestSyntax) **   <a name="SageMaker-ListEndpointConfigs-request-SortOrder"></a>
 The sort order for results\. The default is `Ascending`\.  
 Type: String  
 Valid Values:` Ascending | Descending`   
@@ -66,14 +66,14 @@ Required: No
 
 ```
 {
-   "EndpointConfigs": [ 
+   "[EndpointConfigs](#SageMaker-ListEndpointConfigs-response-EndpointConfigs)": [ 
       { 
-         "CreationTime": number,
-         "EndpointConfigArn": "string",
-         "EndpointConfigName": "string"
+         "[CreationTime](API_EndpointConfigSummary.md#SageMaker-Type-EndpointConfigSummary-CreationTime)": number,
+         "[EndpointConfigArn](API_EndpointConfigSummary.md#SageMaker-Type-EndpointConfigSummary-EndpointConfigArn)": "string",
+         "[EndpointConfigName](API_EndpointConfigSummary.md#SageMaker-Type-EndpointConfigSummary-EndpointConfigName)": "string"
       }
    ],
-   "NextToken": "string"
+   "[NextToken](#SageMaker-ListEndpointConfigs-response-NextToken)": "string"
 }
 ```
 
@@ -83,11 +83,11 @@ If the action is successful, the service sends back an HTTP 200 response\.
 
 The following data is returned in JSON format by the service\.
 
- ** EndpointConfigs **   
+ ** [EndpointConfigs](#API_ListEndpointConfigs_ResponseSyntax) **   <a name="SageMaker-ListEndpointConfigs-response-EndpointConfigs"></a>
 An array of endpoint configurations\.  
 Type: Array of [EndpointConfigSummary](API_EndpointConfigSummary.md) objects
 
- ** NextToken **   
+ ** [NextToken](#API_ListEndpointConfigs_ResponseSyntax) **   <a name="SageMaker-ListEndpointConfigs-response-NextToken"></a>
  If the response is truncated, Amazon SageMaker returns this token\. To retrieve the next set of endpoint configurations, use it in the subsequent request   
 Type: String  
 Length Constraints: Maximum length of 8192\.

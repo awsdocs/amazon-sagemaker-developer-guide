@@ -8,17 +8,17 @@ To access data on the ML storage volume for a notebook instance that has been te
 
 ```
 {
-   "NotebookInstanceName": "string"
+   "[NotebookInstanceName](#SageMaker-StopNotebookInstance-request-NotebookInstanceName)": "string"
 }
 ```
 
 ## Request Parameters<a name="API_StopNotebookInstance_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** NotebookInstanceName **   
+ ** [NotebookInstanceName](#API_StopNotebookInstance_RequestSyntax) **   <a name="SageMaker-StopNotebookInstance-request-NotebookInstanceName"></a>
 The name of the notebook instance to terminate\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  

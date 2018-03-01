@@ -6,57 +6,57 @@ Lists models created with the [CreateModel](http://docs.aws.amazon.com/sagemaker
 
 ```
 {
-   "CreationTimeAfter": number,
-   "CreationTimeBefore": number,
-   "MaxResults": number,
-   "NameContains": "string",
-   "NextToken": "string",
-   "SortBy": "string",
-   "SortOrder": "string"
+   "[CreationTimeAfter](#SageMaker-ListModels-request-CreationTimeAfter)": number,
+   "[CreationTimeBefore](#SageMaker-ListModels-request-CreationTimeBefore)": number,
+   "[MaxResults](#SageMaker-ListModels-request-MaxResults)": number,
+   "[NameContains](#SageMaker-ListModels-request-NameContains)": "string",
+   "[NextToken](#SageMaker-ListModels-request-NextToken)": "string",
+   "[SortBy](#SageMaker-ListModels-request-SortBy)": "string",
+   "[SortOrder](#SageMaker-ListModels-request-SortOrder)": "string"
 }
 ```
 
 ## Request Parameters<a name="API_ListModels_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** CreationTimeAfter **   
+ ** [CreationTimeAfter](#API_ListModels_RequestSyntax) **   <a name="SageMaker-ListModels-request-CreationTimeAfter"></a>
 A filter that returns only models created after the specified time \(timestamp\)\.  
 Type: Timestamp  
 Required: No
 
- ** CreationTimeBefore **   
+ ** [CreationTimeBefore](#API_ListModels_RequestSyntax) **   <a name="SageMaker-ListModels-request-CreationTimeBefore"></a>
 A filter that returns only models created before the specified time \(timestamp\)\.  
 Type: Timestamp  
 Required: No
 
- ** MaxResults **   
+ ** [MaxResults](#API_ListModels_RequestSyntax) **   <a name="SageMaker-ListModels-request-MaxResults"></a>
 The maximum number of models to return in the response\.  
 Type: Integer  
 Valid Range: Minimum value of 1\. Maximum value of 100\.  
 Required: No
 
- ** NameContains **   
+ ** [NameContains](#API_ListModels_RequestSyntax) **   <a name="SageMaker-ListModels-request-NameContains"></a>
 A string in the training job name\. This filter returns only models in the training job whose name contains the specified string\.  
 Type: String  
 Pattern: `[a-zA-Z0-9-]+`   
 Required: No
 
- ** NextToken **   
+ ** [NextToken](#API_ListModels_RequestSyntax) **   <a name="SageMaker-ListModels-request-NextToken"></a>
 If the response to a previous `ListModels` request was truncated, the response includes a `NextToken`\. To retrieve the next set of models, use the token in the next request\.  
 Type: String  
 Length Constraints: Maximum length of 8192\.  
 Required: No
 
- ** SortBy **   
+ ** [SortBy](#API_ListModels_RequestSyntax) **   <a name="SageMaker-ListModels-request-SortBy"></a>
 Sorts the list of results\. The default is `CreationTime`\.  
 Type: String  
 Valid Values:` Name | CreationTime`   
 Required: No
 
- ** SortOrder **   
+ ** [SortOrder](#API_ListModels_RequestSyntax) **   <a name="SageMaker-ListModels-request-SortOrder"></a>
 The sort order for results\. The default is `Ascending`\.  
 Type: String  
 Valid Values:` Ascending | Descending`   
@@ -66,14 +66,14 @@ Required: No
 
 ```
 {
-   "Models": [ 
+   "[Models](#SageMaker-ListModels-response-Models)": [ 
       { 
-         "CreationTime": number,
-         "ModelArn": "string",
-         "ModelName": "string"
+         "[CreationTime](API_ModelSummary.md#SageMaker-Type-ModelSummary-CreationTime)": number,
+         "[ModelArn](API_ModelSummary.md#SageMaker-Type-ModelSummary-ModelArn)": "string",
+         "[ModelName](API_ModelSummary.md#SageMaker-Type-ModelSummary-ModelName)": "string"
       }
    ],
-   "NextToken": "string"
+   "[NextToken](#SageMaker-ListModels-response-NextToken)": "string"
 }
 ```
 
@@ -83,11 +83,11 @@ If the action is successful, the service sends back an HTTP 200 response\.
 
 The following data is returned in JSON format by the service\.
 
- ** Models **   
+ ** [Models](#API_ListModels_ResponseSyntax) **   <a name="SageMaker-ListModels-response-Models"></a>
 An array of `ModelSummary` objects, each of which lists a model\.  
 Type: Array of [ModelSummary](API_ModelSummary.md) objects
 
- ** NextToken **   
+ ** [NextToken](#API_ListModels_ResponseSyntax) **   <a name="SageMaker-ListModels-response-NextToken"></a>
  If the response is truncated, Amazon SageMaker returns this token\. To retrieve the next set of models, use it in the subsequent request\.   
 Type: String  
 Length Constraints: Maximum length of 8192\.

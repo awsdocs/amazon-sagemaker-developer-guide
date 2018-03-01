@@ -6,32 +6,32 @@ Updates a notebook instance\. NotebookInstance updates include upgrading or down
 
 ```
 {
-   "InstanceType": "string",
-   "NotebookInstanceName": "string",
-   "RoleArn": "string"
+   "[InstanceType](#SageMaker-UpdateNotebookInstance-request-InstanceType)": "string",
+   "[NotebookInstanceName](#SageMaker-UpdateNotebookInstance-request-NotebookInstanceName)": "string",
+   "[RoleArn](#SageMaker-UpdateNotebookInstance-request-RoleArn)": "string"
 }
 ```
 
 ## Request Parameters<a name="API_UpdateNotebookInstance_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** InstanceType **   
+ ** [InstanceType](#API_UpdateNotebookInstance_RequestSyntax) **   <a name="SageMaker-UpdateNotebookInstance-request-InstanceType"></a>
 The Amazon ML compute instance type\.  
 Type: String  
 Valid Values:` ml.t2.medium | ml.m4.xlarge | ml.p2.xlarge`   
 Required: No
 
- ** NotebookInstanceName **   
+ ** [NotebookInstanceName](#API_UpdateNotebookInstance_RequestSyntax) **   <a name="SageMaker-UpdateNotebookInstance-request-NotebookInstanceName"></a>
 The name of the notebook instance to update\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: Yes
 
- ** RoleArn **   
+ ** [RoleArn](#API_UpdateNotebookInstance_RequestSyntax) **   <a name="SageMaker-UpdateNotebookInstance-request-RoleArn"></a>
 Amazon Resource Name \(ARN\) of the IAM role to associate with the instance\.  
 Type: String  
 Length Constraints: Minimum length of 20\. Maximum length of 2048\.  

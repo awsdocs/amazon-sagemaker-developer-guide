@@ -167,7 +167,7 @@ As your algorithm runs in a container, it generates output including the status 
 
    
 
-+ `/opt/ml/model`—Your algorithm should write all final model artifacts to this directory\. Amazon SageMaker copies this data as a single object in compressed tar format to the S3 location that you specified in the `CreateTrainingJob` request\.  If multiple containers in a single training job write to this directory they should ensure no `file/directory` names clash\. Amazon SageMaker aggregates the result in a tar file and uploads to s3\. 
++ `/opt/ml/model/data`—Your algorithm should write all final model artifacts to this directory\. Amazon SageMaker copies this data as a single object in compressed tar format to the S3 location that you specified in the `CreateTrainingJob` request\.  If multiple containers in a single training job write to this directory they should ensure no `file/directory` names clash\. Amazon SageMaker aggregates the result in a tar file and uploads to s3\. 
 
 ## Next Step<a name="byota-next-step"></a>
 

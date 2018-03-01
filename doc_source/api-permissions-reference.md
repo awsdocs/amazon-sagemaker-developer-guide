@@ -42,4 +42,5 @@ If you see an expand arrow \(**↗**\) in the upper\-right corner of the table, 
 |  [StopNotebookInstance](API_StopNotebookInstance.md)  |  `sagemaker:StopNotebookInstance`  |  `arn:aws:sagemaker:region:account-id:notebook-instance/notebookInstanceName`  | 
 |  [StopTrainingJob](API_StopTrainingJob.md)  |  `sagemaker:StopTrainingJob`  |  `arn:aws:sagemaker:region:account-id:training-job/trainingJobName`  | 
 |  [UpdateEndpoint](API_UpdateEndpoint.md)  |  `sagemaker:UpdateEndpoint`  |  `arn:aws:sagemaker:region:account-id:endpoint/endpointName`  | 
+|  [UpdateEndpointWeightsAndCapacities](API_UpdateEndpointWeightsAndCapacities.md)  |  `sagemaker:UpdateEndpointWeightsAndCapacities`  |  `arn:aws:sagemaker:region:account-id:endpoint/endpointName`  | 
 |  [UpdateNotebookInstance](API_UpdateNotebookInstance.md)  |  `sagemaker:UpdateNotebookInstance` `iam:PassRole`  |  `arn:aws:sagemaker:region:account-id:notebook-instance/notebookInstanceName`  | 

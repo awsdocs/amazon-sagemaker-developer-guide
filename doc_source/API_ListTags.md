@@ -6,31 +6,31 @@ Returns the tags for the specified Amazon SageMaker resource\.
 
 ```
 {
-   "MaxResults": number,
-   "NextToken": "string",
-   "ResourceArn": "string"
+   "[MaxResults](#SageMaker-ListTags-request-MaxResults)": number,
+   "[NextToken](#SageMaker-ListTags-request-NextToken)": "string",
+   "[ResourceArn](#SageMaker-ListTags-request-ResourceArn)": "string"
 }
 ```
 
 ## Request Parameters<a name="API_ListTags_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** MaxResults **   
+ ** [MaxResults](#API_ListTags_RequestSyntax) **   <a name="SageMaker-ListTags-request-MaxResults"></a>
 Maximum number of tags to return\.  
 Type: Integer  
 Valid Range: Minimum value of 50\.  
 Required: No
 
- ** NextToken **   
+ ** [NextToken](#API_ListTags_RequestSyntax) **   <a name="SageMaker-ListTags-request-NextToken"></a>
  If the response to the previous `ListTags` request is truncated, Amazon SageMaker returns this token\. To retrieve the next set of tags, use it in the subsequent request\.   
 Type: String  
 Length Constraints: Maximum length of 8192\.  
 Required: No
 
- ** ResourceArn **   
+ ** [ResourceArn](#API_ListTags_RequestSyntax) **   <a name="SageMaker-ListTags-request-ResourceArn"></a>
 The Amazon Resource Name \(ARN\) of the resource whose tags you want to retrieve\.  
 Type: String  
 Length Constraints: Maximum length of 256\.  
@@ -40,11 +40,11 @@ Required: Yes
 
 ```
 {
-   "NextToken": "string",
-   "Tags": [ 
+   "[NextToken](#SageMaker-ListTags-response-NextToken)": "string",
+   "[Tags](#SageMaker-ListTags-response-Tags)": [ 
       { 
-         "Key": "string",
-         "Value": "string"
+         "[Key](API_Tag.md#SageMaker-Type-Tag-Key)": "string",
+         "[Value](API_Tag.md#SageMaker-Type-Tag-Value)": "string"
       }
    ]
 }
@@ -56,12 +56,12 @@ If the action is successful, the service sends back an HTTP 200 response\.
 
 The following data is returned in JSON format by the service\.
 
- ** NextToken **   
+ ** [NextToken](#API_ListTags_ResponseSyntax) **   <a name="SageMaker-ListTags-response-NextToken"></a>
  If response is truncated, Amazon SageMaker includes a token in the response\. You can use this token in your subsequent request to fetch next set of tokens\.   
 Type: String  
 Length Constraints: Maximum length of 8192\.
 
- ** Tags **   
+ ** [Tags](#API_ListTags_ResponseSyntax) **   <a name="SageMaker-ListTags-response-Tags"></a>
 An array of `Tag` objects, each with a tag key and a value\.  
 Type: Array of [Tag](API_Tag.md) objects  
 Array Members: Minimum number of 0 items\. Maximum number of 50 items\.

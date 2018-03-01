@@ -4,7 +4,7 @@ Describes the location of the channel data\.
 
 ## Contents<a name="API_DataSource_Contents"></a>
 
- **S3DataSource**   
+ **S3DataSource**   <a name="SageMaker-Type-DataSource-S3DataSource"></a>
 The S3 location of the data source that is associated with a channel\.  
 Type: [S3DataSource](API_S3DataSource.md) object  
 Required: Yes

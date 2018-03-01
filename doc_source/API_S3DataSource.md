@@ -4,7 +4,7 @@ Describes the S3 data source\.
 
 ## Contents<a name="API_S3DataSource_Contents"></a>
 
- **S3DataDistributionType**   
+ **S3DataDistributionType**   <a name="SageMaker-Type-S3DataSource-S3DataDistributionType"></a>
 If you want Amazon SageMaker to replicate the entire dataset on each ML compute instance that is launched for model training, specify `FullyReplicated`\.   
 If you want Amazon SageMaker to replicate a subset of data on each ML compute instance that is launched for model training, specify `ShardedByS3Key`\. If there are *n* ML compute instances launched for a training job, each instance gets approximately 1/*n* of the number of S3 objects\. In this case, model training on each machine uses only the subset of training data\.   
 Don't choose more ML compute instances for training than available S3 objects\. If you do, some nodes won't get any data and you will pay for nodes that aren't getting any training data\. This applies in both FILE and PIPE modes\. Keep this in mind when developing algorithms\.   
@@ -13,14 +13,14 @@ Type: String
 Valid Values:` FullyReplicated | ShardedByS3Key`   
 Required: No
 
- **S3DataType**   
+ **S3DataType**   <a name="SageMaker-Type-S3DataSource-S3DataType"></a>
 If you choose `S3Prefix`, `S3Uri` identifies a key name prefix\. Amazon SageMaker uses all objects with the specified key name prefix for model training\.   
 If you choose `ManifestFile`, `S3Uri` identifies an object that is a manifest file containing a list of object keys that you want Amazon SageMaker to use for model training\.   
 Type: String  
 Valid Values:` ManifestFile | S3Prefix`   
 Required: Yes
 
- **S3Uri**   
+ **S3Uri**   <a name="SageMaker-Type-S3DataSource-S3Uri"></a>
 Depending on the value specified for the `S3DataType`, identifies either a key name prefix or a manifest\. For example:   
 
 +  A key name prefix might look like this: `s3://bucketname/exampleprefix`\. 

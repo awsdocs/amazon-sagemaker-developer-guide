@@ -6,17 +6,17 @@ Deletes an endpoint\. Amazon SageMaker frees up all of the resources that were d
 
 ```
 {
-   "EndpointName": "string"
+   "[EndpointName](#SageMaker-DeleteEndpoint-request-EndpointName)": "string"
 }
 ```
 
 ## Request Parameters<a name="API_DeleteEndpoint_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** EndpointName **   
+ ** [EndpointName](#API_DeleteEndpoint_RequestSyntax) **   <a name="SageMaker-DeleteEndpoint-request-EndpointName"></a>
 The name of the endpoint that you want to delete\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  

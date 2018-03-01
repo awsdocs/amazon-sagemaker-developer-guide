@@ -4,42 +4,42 @@ Provides summary information for an Amazon SageMaker notebook instance\.
 
 ## Contents<a name="API_NotebookInstanceSummary_Contents"></a>
 
- **CreationTime**   
+ **CreationTime**   <a name="SageMaker-Type-NotebookInstanceSummary-CreationTime"></a>
 A timestamp that shows when the notebook instance was created\.  
 Type: Timestamp  
 Required: No
 
- **InstanceType**   
+ **InstanceType**   <a name="SageMaker-Type-NotebookInstanceSummary-InstanceType"></a>
 The type of ML compute instance that the notebook instance is running on\.  
 Type: String  
 Valid Values:` ml.t2.medium | ml.m4.xlarge | ml.p2.xlarge`   
 Required: No
 
- **LastModifiedTime**   
+ **LastModifiedTime**   <a name="SageMaker-Type-NotebookInstanceSummary-LastModifiedTime"></a>
 A timestamp that shows when the notebook instance was last modified\.  
 Type: Timestamp  
 Required: No
 
- **NotebookInstanceArn**   
+ **NotebookInstanceArn**   <a name="SageMaker-Type-NotebookInstanceSummary-NotebookInstanceArn"></a>
 The Amazon Resource Name \(ARN\) of the notebook instance\.  
 Type: String  
 Length Constraints: Maximum length of 256\.  
 Required: Yes
 
- **NotebookInstanceName**   
+ **NotebookInstanceName**   <a name="SageMaker-Type-NotebookInstanceSummary-NotebookInstanceName"></a>
 The name of the notebook instance that you want a summary for\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: Yes
 
- **NotebookInstanceStatus**   
+ **NotebookInstanceStatus**   <a name="SageMaker-Type-NotebookInstanceSummary-NotebookInstanceStatus"></a>
 The status of the notebook instance\.  
 Type: String  
 Valid Values:` Pending | InService | Stopping | Stopped | Failed | Deleting`   
 Required: No
 
- **Url**   
+ **Url**   <a name="SageMaker-Type-NotebookInstanceSummary-Url"></a>
 The URL that you use to connect to the Jupyter instance running in your notebook instance\.   
 Type: String  
 Required: No

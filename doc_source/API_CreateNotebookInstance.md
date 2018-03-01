@@ -24,16 +24,16 @@ For more information, see [How It Works](http://docs.aws.amazon.com/sagemaker/la
 
 ```
 {
-   "InstanceType": "string",
-   "KmsKeyId": "string",
-   "NotebookInstanceName": "string",
-   "RoleArn": "string",
-   "SecurityGroupIds": [ "string" ],
-   "SubnetId": "string",
-   "Tags": [ 
+   "[InstanceType](#SageMaker-CreateNotebookInstance-request-InstanceType)": "string",
+   "[KmsKeyId](#SageMaker-CreateNotebookInstance-request-KmsKeyId)": "string",
+   "[NotebookInstanceName](#SageMaker-CreateNotebookInstance-request-NotebookInstanceName)": "string",
+   "[RoleArn](#SageMaker-CreateNotebookInstance-request-RoleArn)": "string",
+   "[SecurityGroupIds](#SageMaker-CreateNotebookInstance-request-SecurityGroupIds)": [ "string" ],
+   "[SubnetId](#SageMaker-CreateNotebookInstance-request-SubnetId)": "string",
+   "[Tags](#SageMaker-CreateNotebookInstance-request-Tags)": [ 
       { 
-         "Key": "string",
-         "Value": "string"
+         "[Key](API_Tag.md#SageMaker-Type-Tag-Key)": "string",
+         "[Value](API_Tag.md#SageMaker-Type-Tag-Value)": "string"
       }
    ]
 }
@@ -41,50 +41,50 @@ For more information, see [How It Works](http://docs.aws.amazon.com/sagemaker/la
 
 ## Request Parameters<a name="API_CreateNotebookInstance_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** InstanceType **   
+ ** [InstanceType](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-InstanceType"></a>
 The type of ML compute instance to launch for the notebook instance\.  
 Type: String  
 Valid Values:` ml.t2.medium | ml.m4.xlarge | ml.p2.xlarge`   
 Required: Yes
 
- ** KmsKeyId **   
+ ** [KmsKeyId](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-KmsKeyId"></a>
  If you provide a AWS KMS key ID, Amazon SageMaker uses it to encrypt data at rest on the ML storage volume that is attached to your notebook instance\.   
 Type: String  
 Length Constraints: Maximum length of 2048\.  
 Required: No
 
- ** NotebookInstanceName **   
+ ** [NotebookInstanceName](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-NotebookInstanceName"></a>
 The name of the new notebook instance\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: Yes
 
- ** RoleArn **   
+ ** [RoleArn](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-RoleArn"></a>
  When you send any requests to AWS resources from the notebook instance, Amazon SageMaker assumes this role to perform tasks on your behalf\. You must grant this role necessary permissions so Amazon SageMaker can perform these tasks\. The policy must allow the Amazon SageMaker service principal \(sagemaker\.amazonaws\.com\) permissions to assume this role\. For more information, see [Amazon SageMaker Roles](http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html)\.   
 Type: String  
 Length Constraints: Minimum length of 20\. Maximum length of 2048\.  
 Pattern: `^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$`   
 Required: Yes
 
- ** SecurityGroupIds **   
+ ** [SecurityGroupIds](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-SecurityGroupIds"></a>
 The VPC security group IDs, in the form sg\-xxxxxxxx\. The security groups must be for the same VPC as specified in the subnet\.   
 Type: Array of strings  
 Array Members: Maximum number of 5 items\.  
 Length Constraints: Maximum length of 32\.  
 Required: No
 
- ** SubnetId **   
+ ** [SubnetId](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-SubnetId"></a>
 The ID of the subnet in a VPC to which you would like to have a connectivity from your ML compute instance\.   
 Type: String  
 Length Constraints: Maximum length of 32\.  
 Required: No
 
- ** Tags **   
+ ** [Tags](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-Tags"></a>
 A list of tags to associate with the notebook instance\. You can add tags later by using the `CreateTags` API\.  
 Type: Array of [Tag](API_Tag.md) objects  
 Array Members: Minimum number of 0 items\. Maximum number of 50 items\.  
@@ -94,7 +94,7 @@ Required: No
 
 ```
 {
-   "NotebookInstanceArn": "string"
+   "[NotebookInstanceArn](#SageMaker-CreateNotebookInstance-response-NotebookInstanceArn)": "string"
 }
 ```
 
@@ -104,7 +104,7 @@ If the action is successful, the service sends back an HTTP 200 response\.
 
 The following data is returned in JSON format by the service\.
 
- ** NotebookInstanceArn **   
+ ** [NotebookInstanceArn](#API_CreateNotebookInstance_ResponseSyntax) **   <a name="SageMaker-CreateNotebookInstance-response-NotebookInstanceArn"></a>
 The Amazon Resource Name \(ARN\) of the notebook instance\.   
 Type: String  
 Length Constraints: Maximum length of 256\.

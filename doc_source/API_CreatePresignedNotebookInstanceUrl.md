@@ -6,25 +6,25 @@ Returns a URL that you can use to connect to the Juypter server from a notebook 
 
 ```
 {
-   "NotebookInstanceName": "string",
-   "SessionExpirationDurationInSeconds": number
+   "[NotebookInstanceName](#SageMaker-CreatePresignedNotebookInstanceUrl-request-NotebookInstanceName)": "string",
+   "[SessionExpirationDurationInSeconds](#SageMaker-CreatePresignedNotebookInstanceUrl-request-SessionExpirationDurationInSeconds)": number
 }
 ```
 
 ## Request Parameters<a name="API_CreatePresignedNotebookInstanceUrl_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** NotebookInstanceName **   
+ ** [NotebookInstanceName](#API_CreatePresignedNotebookInstanceUrl_RequestSyntax) **   <a name="SageMaker-CreatePresignedNotebookInstanceUrl-request-NotebookInstanceName"></a>
 The name of the notebook instance\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: Yes
 
- ** SessionExpirationDurationInSeconds **   
+ ** [SessionExpirationDurationInSeconds](#API_CreatePresignedNotebookInstanceUrl_RequestSyntax) **   <a name="SageMaker-CreatePresignedNotebookInstanceUrl-request-SessionExpirationDurationInSeconds"></a>
 The duration of the session, in seconds\. The default is 12 hours\.  
 Type: Integer  
 Valid Range: Minimum value of 1800\. Maximum value of 43200\.  
@@ -34,7 +34,7 @@ Required: No
 
 ```
 {
-   "AuthorizedUrl": "string"
+   "[AuthorizedUrl](#SageMaker-CreatePresignedNotebookInstanceUrl-response-AuthorizedUrl)": "string"
 }
 ```
 
@@ -44,7 +44,7 @@ If the action is successful, the service sends back an HTTP 200 response\.
 
 The following data is returned in JSON format by the service\.
 
- ** AuthorizedUrl **   
+ ** [AuthorizedUrl](#API_CreatePresignedNotebookInstanceUrl_ResponseSyntax) **   <a name="SageMaker-CreatePresignedNotebookInstanceUrl-response-AuthorizedUrl"></a>
 A JSON object that contains the URL string\.   
 Type: String
 

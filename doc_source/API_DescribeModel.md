@@ -6,17 +6,17 @@ Describes a model that you created using the `CreateModel` API\.
 
 ```
 {
-   "ModelName": "string"
+   "[ModelName](#SageMaker-DescribeModel-request-ModelName)": "string"
 }
 ```
 
 ## Request Parameters<a name="API_DescribeModel_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** ModelName **   
+ ** [ModelName](#API_DescribeModel_RequestSyntax) **   <a name="SageMaker-DescribeModel-request-ModelName"></a>
 The name of the model\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
@@ -27,17 +27,17 @@ Required: Yes
 
 ```
 {
-   "CreationTime": number,
-   "ExecutionRoleArn": "string",
-   "ModelArn": "string",
-   "ModelName": "string",
-   "PrimaryContainer": { 
-      "ContainerHostname": "string",
-      "Environment": { 
+   "[CreationTime](#SageMaker-DescribeModel-response-CreationTime)": number,
+   "[ExecutionRoleArn](#SageMaker-DescribeModel-response-ExecutionRoleArn)": "string",
+   "[ModelArn](#SageMaker-DescribeModel-response-ModelArn)": "string",
+   "[ModelName](#SageMaker-DescribeModel-response-ModelName)": "string",
+   "[PrimaryContainer](#SageMaker-DescribeModel-response-PrimaryContainer)": { 
+      "[ContainerHostname](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-ContainerHostname)": "string",
+      "[Environment](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-Environment)": { 
          "string" : "string" 
       },
-      "Image": "string",
-      "ModelDataUrl": "string"
+      "[Image](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-Image)": "string",
+      "[ModelDataUrl](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-ModelDataUrl)": "string"
    }
 }
 ```
@@ -48,28 +48,28 @@ If the action is successful, the service sends back an HTTP 200 response\.
 
 The following data is returned in JSON format by the service\.
 
- ** CreationTime **   
+ ** [CreationTime](#API_DescribeModel_ResponseSyntax) **   <a name="SageMaker-DescribeModel-response-CreationTime"></a>
 A timestamp that shows when the model was created\.  
 Type: Timestamp
 
- ** ExecutionRoleArn **   
+ ** [ExecutionRoleArn](#API_DescribeModel_ResponseSyntax) **   <a name="SageMaker-DescribeModel-response-ExecutionRoleArn"></a>
 The Amazon Resource Name \(ARN\) of the IAM role that you specified for the model\.  
 Type: String  
 Length Constraints: Minimum length of 20\. Maximum length of 2048\.  
 Pattern: `^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$` 
 
- ** ModelArn **   
+ ** [ModelArn](#API_DescribeModel_ResponseSyntax) **   <a name="SageMaker-DescribeModel-response-ModelArn"></a>
 The Amazon Resource Name \(ARN\) of the model\.  
 Type: String  
 Length Constraints: Minimum length of 20\. Maximum length of 2048\.
 
- ** ModelName **   
+ ** [ModelName](#API_DescribeModel_ResponseSyntax) **   <a name="SageMaker-DescribeModel-response-ModelName"></a>
 Name of the Amazon SageMaker model\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*` 
 
- ** PrimaryContainer **   
+ ** [PrimaryContainer](#API_DescribeModel_ResponseSyntax) **   <a name="SageMaker-DescribeModel-response-PrimaryContainer"></a>
 The location of the primary inference code, associated artifacts, and custom environment map that the inference code uses when it is deployed in production\.   
 Type: [ContainerDefinition](API_ContainerDefinition.md) object
 

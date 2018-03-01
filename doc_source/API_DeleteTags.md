@@ -8,24 +8,24 @@ To list a resource's tags, use the `ListTags` API\.
 
 ```
 {
-   "ResourceArn": "string",
-   "TagKeys": [ "string" ]
+   "[ResourceArn](#SageMaker-DeleteTags-request-ResourceArn)": "string",
+   "[TagKeys](#SageMaker-DeleteTags-request-TagKeys)": [ "string" ]
 }
 ```
 
 ## Request Parameters<a name="API_DeleteTags_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** ResourceArn **   
+ ** [ResourceArn](#API_DeleteTags_RequestSyntax) **   <a name="SageMaker-DeleteTags-request-ResourceArn"></a>
 The Amazon Resource Name \(ARN\) of the resource whose tags you want to delete\.  
 Type: String  
 Length Constraints: Maximum length of 256\.  
 Required: Yes
 
- ** TagKeys **   
+ ** [TagKeys](#API_DeleteTags_RequestSyntax) **   <a name="SageMaker-DeleteTags-request-TagKeys"></a>
 An array or one or more tag keys to delete\.  
 Type: Array of strings  
 Array Members: Minimum number of 1 item\. Maximum number of 50 items\.  

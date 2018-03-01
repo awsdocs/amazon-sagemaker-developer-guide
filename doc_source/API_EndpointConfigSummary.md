@@ -4,18 +4,18 @@ Provides summary information for an endpoint configuration\.
 
 ## Contents<a name="API_EndpointConfigSummary_Contents"></a>
 
- **CreationTime**   
+ **CreationTime**   <a name="SageMaker-Type-EndpointConfigSummary-CreationTime"></a>
 A timestamp that shows when the endpoint configuration was created\.  
 Type: Timestamp  
 Required: Yes
 
- **EndpointConfigArn**   
+ **EndpointConfigArn**   <a name="SageMaker-Type-EndpointConfigSummary-EndpointConfigArn"></a>
 The Amazon Resource Name \(ARN\) of the endpoint configuration\.  
 Type: String  
 Length Constraints: Minimum length of 20\. Maximum length of 2048\.  
 Required: Yes
 
- **EndpointConfigName**   
+ **EndpointConfigName**   <a name="SageMaker-Type-EndpointConfigSummary-EndpointConfigName"></a>
 The name of the endpoint configuration\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  

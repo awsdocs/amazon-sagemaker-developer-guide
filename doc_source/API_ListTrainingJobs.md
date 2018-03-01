@@ -6,77 +6,77 @@ Lists training jobs\.
 
 ```
 {
-   "CreationTimeAfter": number,
-   "CreationTimeBefore": number,
-   "LastModifiedTimeAfter": number,
-   "LastModifiedTimeBefore": number,
-   "MaxResults": number,
-   "NameContains": "string",
-   "NextToken": "string",
-   "SortBy": "string",
-   "SortOrder": "string",
-   "StatusEquals": "string"
+   "[CreationTimeAfter](#SageMaker-ListTrainingJobs-request-CreationTimeAfter)": number,
+   "[CreationTimeBefore](#SageMaker-ListTrainingJobs-request-CreationTimeBefore)": number,
+   "[LastModifiedTimeAfter](#SageMaker-ListTrainingJobs-request-LastModifiedTimeAfter)": number,
+   "[LastModifiedTimeBefore](#SageMaker-ListTrainingJobs-request-LastModifiedTimeBefore)": number,
+   "[MaxResults](#SageMaker-ListTrainingJobs-request-MaxResults)": number,
+   "[NameContains](#SageMaker-ListTrainingJobs-request-NameContains)": "string",
+   "[NextToken](#SageMaker-ListTrainingJobs-request-NextToken)": "string",
+   "[SortBy](#SageMaker-ListTrainingJobs-request-SortBy)": "string",
+   "[SortOrder](#SageMaker-ListTrainingJobs-request-SortOrder)": "string",
+   "[StatusEquals](#SageMaker-ListTrainingJobs-request-StatusEquals)": "string"
 }
 ```
 
 ## Request Parameters<a name="API_ListTrainingJobs_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** CreationTimeAfter **   
+ ** [CreationTimeAfter](#API_ListTrainingJobs_RequestSyntax) **   <a name="SageMaker-ListTrainingJobs-request-CreationTimeAfter"></a>
 A filter that only training jobs created after the specified time \(timestamp\)\.  
 Type: Timestamp  
 Required: No
 
- ** CreationTimeBefore **   
+ ** [CreationTimeBefore](#API_ListTrainingJobs_RequestSyntax) **   <a name="SageMaker-ListTrainingJobs-request-CreationTimeBefore"></a>
 A filter that returns only training jobs created before the specified time \(timestamp\)\.  
 Type: Timestamp  
 Required: No
 
- ** LastModifiedTimeAfter **   
+ ** [LastModifiedTimeAfter](#API_ListTrainingJobs_RequestSyntax) **   <a name="SageMaker-ListTrainingJobs-request-LastModifiedTimeAfter"></a>
 A filter that returns only training jobs modified after the specified time \(timestamp\)\.  
 Type: Timestamp  
 Required: No
 
- ** LastModifiedTimeBefore **   
+ ** [LastModifiedTimeBefore](#API_ListTrainingJobs_RequestSyntax) **   <a name="SageMaker-ListTrainingJobs-request-LastModifiedTimeBefore"></a>
 A filter that returns only training jobs modified before the specified time \(timestamp\)\.  
 Type: Timestamp  
 Required: No
 
- ** MaxResults **   
+ ** [MaxResults](#API_ListTrainingJobs_RequestSyntax) **   <a name="SageMaker-ListTrainingJobs-request-MaxResults"></a>
 The maximum number of training jobs to return in the response\.  
 Type: Integer  
 Valid Range: Minimum value of 1\. Maximum value of 100\.  
 Required: No
 
- ** NameContains **   
+ ** [NameContains](#API_ListTrainingJobs_RequestSyntax) **   <a name="SageMaker-ListTrainingJobs-request-NameContains"></a>
 A string in the training job name\. This filter returns only models whose name contains the specified string\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
 Pattern: `[a-zA-Z0-9\-]+`   
 Required: No
 
- ** NextToken **   
+ ** [NextToken](#API_ListTrainingJobs_RequestSyntax) **   <a name="SageMaker-ListTrainingJobs-request-NextToken"></a>
 If the result of the previous `ListTrainingJobs` request was truncated, the response includes a `NextToken`\. To retrieve the next set of training jobs, use the token in the next request\.   
 Type: String  
 Length Constraints: Maximum length of 8192\.  
 Required: No
 
- ** SortBy **   
+ ** [SortBy](#API_ListTrainingJobs_RequestSyntax) **   <a name="SageMaker-ListTrainingJobs-request-SortBy"></a>
 The field to sort results by\. The default is `CreationTime`\.  
 Type: String  
 Valid Values:` Name | CreationTime | Status`   
 Required: No
 
- ** SortOrder **   
+ ** [SortOrder](#API_ListTrainingJobs_RequestSyntax) **   <a name="SageMaker-ListTrainingJobs-request-SortOrder"></a>
 The sort order for results\. The default is `Ascending`\.  
 Type: String  
 Valid Values:` Ascending | Descending`   
 Required: No
 
- ** StatusEquals **   
+ ** [StatusEquals](#API_ListTrainingJobs_RequestSyntax) **   <a name="SageMaker-ListTrainingJobs-request-StatusEquals"></a>
 A filter that retrieves only training jobs with a specific status\.  
 Type: String  
 Valid Values:` InProgress | Completed | Failed | Stopping | Stopped`   
@@ -86,15 +86,15 @@ Required: No
 
 ```
 {
-   "NextToken": "string",
-   "TrainingJobSummaries": [ 
+   "[NextToken](#SageMaker-ListTrainingJobs-response-NextToken)": "string",
+   "[TrainingJobSummaries](#SageMaker-ListTrainingJobs-response-TrainingJobSummaries)": [ 
       { 
-         "CreationTime": number,
-         "LastModifiedTime": number,
-         "TrainingEndTime": number,
-         "TrainingJobArn": "string",
-         "TrainingJobName": "string",
-         "TrainingJobStatus": "string"
+         "[CreationTime](API_TrainingJobSummary.md#SageMaker-Type-TrainingJobSummary-CreationTime)": number,
+         "[LastModifiedTime](API_TrainingJobSummary.md#SageMaker-Type-TrainingJobSummary-LastModifiedTime)": number,
+         "[TrainingEndTime](API_TrainingJobSummary.md#SageMaker-Type-TrainingJobSummary-TrainingEndTime)": number,
+         "[TrainingJobArn](API_TrainingJobSummary.md#SageMaker-Type-TrainingJobSummary-TrainingJobArn)": "string",
+         "[TrainingJobName](API_TrainingJobSummary.md#SageMaker-Type-TrainingJobSummary-TrainingJobName)": "string",
+         "[TrainingJobStatus](API_TrainingJobSummary.md#SageMaker-Type-TrainingJobSummary-TrainingJobStatus)": "string"
       }
    ]
 }
@@ -106,12 +106,12 @@ If the action is successful, the service sends back an HTTP 200 response\.
 
 The following data is returned in JSON format by the service\.
 
- ** NextToken **   
+ ** [NextToken](#API_ListTrainingJobs_ResponseSyntax) **   <a name="SageMaker-ListTrainingJobs-response-NextToken"></a>
 If the response is truncated, Amazon SageMaker returns this token\. To retrieve the next set of training jobs, use it in the subsequent request\.  
 Type: String  
 Length Constraints: Maximum length of 8192\.
 
- ** TrainingJobSummaries **   
+ ** [TrainingJobSummaries](#API_ListTrainingJobs_ResponseSyntax) **   <a name="SageMaker-ListTrainingJobs-response-TrainingJobSummaries"></a>
 An array of `TrainingJobSummary` objects, each listing a training job\.  
 Type: Array of [TrainingJobSummary](API_TrainingJobSummary.md) objects
 

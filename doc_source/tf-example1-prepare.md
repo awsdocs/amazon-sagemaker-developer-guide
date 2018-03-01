@@ -12,7 +12,7 @@ In this section, you create a Jupyter notebook in your Amazon SageMaker notebook
 
    1. Open the notebook instance by choosing `Open` next to its name\. The Jupyter notebook server page appears\.
 
-   1. To create a notebook, choose **Files**, **New**, and **conda\_tensorflow\_p27**\. This pre\-installed environment includes the default Anaconda installation, Python 3, and TensorFlow\.
+   1. To create a notebook, choose **Files**, **New**, and **conda\_tensorflow\_p36**\. This pre\-installed environment includes the default Anaconda installation, Python 3, and TensorFlow\.
 
    1. Name the notebook\.
 

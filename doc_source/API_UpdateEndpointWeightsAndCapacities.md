@@ -6,30 +6,30 @@ Updates variant weight of one or more variants associated with an existing endpo
 
 ```
 {
-   "DesiredWeightsAndCapacities": [ 
+   "[DesiredWeightsAndCapacities](#SageMaker-UpdateEndpointWeightsAndCapacities-request-DesiredWeightsAndCapacities)": [ 
       { 
-         "DesiredInstanceCount": number,
-         "DesiredWeight": number,
-         "VariantName": "string"
+         "[DesiredInstanceCount](API_DesiredWeightAndCapacity.md#SageMaker-Type-DesiredWeightAndCapacity-DesiredInstanceCount)": number,
+         "[DesiredWeight](API_DesiredWeightAndCapacity.md#SageMaker-Type-DesiredWeightAndCapacity-DesiredWeight)": number,
+         "[VariantName](API_DesiredWeightAndCapacity.md#SageMaker-Type-DesiredWeightAndCapacity-VariantName)": "string"
       }
    ],
-   "EndpointName": "string"
+   "[EndpointName](#SageMaker-UpdateEndpointWeightsAndCapacities-request-EndpointName)": "string"
 }
 ```
 
 ## Request Parameters<a name="API_UpdateEndpointWeightsAndCapacities_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** DesiredWeightsAndCapacities **   
+ ** [DesiredWeightsAndCapacities](#API_UpdateEndpointWeightsAndCapacities_RequestSyntax) **   <a name="SageMaker-UpdateEndpointWeightsAndCapacities-request-DesiredWeightsAndCapacities"></a>
 An object that provides new capacity and weight values for a variant\.  
 Type: Array of [DesiredWeightAndCapacity](API_DesiredWeightAndCapacity.md) objects  
 Array Members: Minimum number of 1 item\.  
 Required: Yes
 
- ** EndpointName **   
+ ** [EndpointName](#API_UpdateEndpointWeightsAndCapacities_RequestSyntax) **   <a name="SageMaker-UpdateEndpointWeightsAndCapacities-request-EndpointName"></a>
 The name of an existing Amazon SageMaker endpoint\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
@@ -40,7 +40,7 @@ Required: Yes
 
 ```
 {
-   "EndpointArn": "string"
+   "[EndpointArn](#SageMaker-UpdateEndpointWeightsAndCapacities-response-EndpointArn)": "string"
 }
 ```
 
@@ -50,7 +50,7 @@ If the action is successful, the service sends back an HTTP 200 response\.
 
 The following data is returned in JSON format by the service\.
 
- ** EndpointArn **   
+ ** [EndpointArn](#API_UpdateEndpointWeightsAndCapacities_ResponseSyntax) **   <a name="SageMaker-UpdateEndpointWeightsAndCapacities-response-EndpointArn"></a>
 The Amazon Resource Name \(ARN\) of the updated endpoint\.  
 Type: String  
 Length Constraints: Minimum length of 20\. Maximum length of 2048\.

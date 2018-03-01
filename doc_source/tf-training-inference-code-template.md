@@ -2,7 +2,7 @@
 
 To train a model on Amazon SageMaker using custom TensorFlow code and deploy it on Amazon SageMaker, you need to implement training and inference code interfaces in your code\. 
 
-Your TensorFlow training script must be a Python 2\.7 source file\. The current supported TensorFlow version is 1\.4\.0\. This training/inference script must contain the following functions:
+Your TensorFlow training script must be a Python 2\.7 source file\. The current default TensorFlow version is 1\.5\. This training/inference script must contain the following functions:
 
 + `model_fn`: Defines the model that will be trained\.
 

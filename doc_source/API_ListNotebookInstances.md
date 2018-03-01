@@ -6,77 +6,77 @@ Returns a list of the Amazon SageMaker notebook instances in the requester's acc
 
 ```
 {
-   "CreationTimeAfter": number,
-   "CreationTimeBefore": number,
-   "LastModifiedTimeAfter": number,
-   "LastModifiedTimeBefore": number,
-   "MaxResults": number,
-   "NameContains": "string",
-   "NextToken": "string",
-   "SortBy": "string",
-   "SortOrder": "string",
-   "StatusEquals": "string"
+   "[CreationTimeAfter](#SageMaker-ListNotebookInstances-request-CreationTimeAfter)": number,
+   "[CreationTimeBefore](#SageMaker-ListNotebookInstances-request-CreationTimeBefore)": number,
+   "[LastModifiedTimeAfter](#SageMaker-ListNotebookInstances-request-LastModifiedTimeAfter)": number,
+   "[LastModifiedTimeBefore](#SageMaker-ListNotebookInstances-request-LastModifiedTimeBefore)": number,
+   "[MaxResults](#SageMaker-ListNotebookInstances-request-MaxResults)": number,
+   "[NameContains](#SageMaker-ListNotebookInstances-request-NameContains)": "string",
+   "[NextToken](#SageMaker-ListNotebookInstances-request-NextToken)": "string",
+   "[SortBy](#SageMaker-ListNotebookInstances-request-SortBy)": "string",
+   "[SortOrder](#SageMaker-ListNotebookInstances-request-SortOrder)": "string",
+   "[StatusEquals](#SageMaker-ListNotebookInstances-request-StatusEquals)": "string"
 }
 ```
 
 ## Request Parameters<a name="API_ListNotebookInstances_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** CreationTimeAfter **   
+ ** [CreationTimeAfter](#API_ListNotebookInstances_RequestSyntax) **   <a name="SageMaker-ListNotebookInstances-request-CreationTimeAfter"></a>
 A filter that returns only notebook instances that were created after the specified time \(timestamp\)\.  
 Type: Timestamp  
 Required: No
 
- ** CreationTimeBefore **   
+ ** [CreationTimeBefore](#API_ListNotebookInstances_RequestSyntax) **   <a name="SageMaker-ListNotebookInstances-request-CreationTimeBefore"></a>
 A filter that returns only notebook instances that were created before the specified time \(timestamp\)\.   
 Type: Timestamp  
 Required: No
 
- ** LastModifiedTimeAfter **   
+ ** [LastModifiedTimeAfter](#API_ListNotebookInstances_RequestSyntax) **   <a name="SageMaker-ListNotebookInstances-request-LastModifiedTimeAfter"></a>
 A filter that returns only notebook instances that were modified after the specified time \(timestamp\)\.  
 Type: Timestamp  
 Required: No
 
- ** LastModifiedTimeBefore **   
+ ** [LastModifiedTimeBefore](#API_ListNotebookInstances_RequestSyntax) **   <a name="SageMaker-ListNotebookInstances-request-LastModifiedTimeBefore"></a>
 A filter that returns only notebook instances that were modified before the specified time \(timestamp\)\.  
 Type: Timestamp  
 Required: No
 
- ** MaxResults **   
+ ** [MaxResults](#API_ListNotebookInstances_RequestSyntax) **   <a name="SageMaker-ListNotebookInstances-request-MaxResults"></a>
 The maximum number of notebook instances to return\.  
 Type: Integer  
 Valid Range: Minimum value of 1\. Maximum value of 100\.  
 Required: No
 
- ** NameContains **   
+ ** [NameContains](#API_ListNotebookInstances_RequestSyntax) **   <a name="SageMaker-ListNotebookInstances-request-NameContains"></a>
 A string in the notebook instances' name\. This filter returns only notebook instances whose name contains the specified string\.   
 Type: String  
 Pattern: `[a-zA-Z0-9-]+`   
 Required: No
 
- ** NextToken **   
+ ** [NextToken](#API_ListNotebookInstances_RequestSyntax) **   <a name="SageMaker-ListNotebookInstances-request-NextToken"></a>
  If the previous call to the `ListNotebookInstances` is truncated, the response includes a `NextToken`\. You can use this token in your subsequent `ListNotebookInstances` request to fetch the next set of notebook instances\.   
  You might specify a filter or a sort order in your request\. When response is truncated, you must use the same values for the filer and sort order in the next request\. 
 Type: String  
 Length Constraints: Maximum length of 8192\.  
 Required: No
 
- ** SortBy **   
+ ** [SortBy](#API_ListNotebookInstances_RequestSyntax) **   <a name="SageMaker-ListNotebookInstances-request-SortBy"></a>
 The field to sort results by\. The default is `Name`\.  
 Type: String  
 Valid Values:` Name | CreationTime | Status`   
 Required: No
 
- ** SortOrder **   
+ ** [SortOrder](#API_ListNotebookInstances_RequestSyntax) **   <a name="SageMaker-ListNotebookInstances-request-SortOrder"></a>
 The sort order for results\.   
 Type: String  
 Valid Values:` Ascending | Descending`   
 Required: No
 
- ** StatusEquals **   
+ ** [StatusEquals](#API_ListNotebookInstances_RequestSyntax) **   <a name="SageMaker-ListNotebookInstances-request-StatusEquals"></a>
 A filter that returns only notebook instances with the specified status\.  
 Type: String  
 Valid Values:` Pending | InService | Stopping | Stopped | Failed | Deleting`   
@@ -86,16 +86,16 @@ Required: No
 
 ```
 {
-   "NextToken": "string",
-   "NotebookInstances": [ 
+   "[NextToken](#SageMaker-ListNotebookInstances-response-NextToken)": "string",
+   "[NotebookInstances](#SageMaker-ListNotebookInstances-response-NotebookInstances)": [ 
       { 
-         "CreationTime": number,
-         "InstanceType": "string",
-         "LastModifiedTime": number,
-         "NotebookInstanceArn": "string",
-         "NotebookInstanceName": "string",
-         "NotebookInstanceStatus": "string",
-         "Url": "string"
+         "[CreationTime](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-CreationTime)": number,
+         "[InstanceType](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-InstanceType)": "string",
+         "[LastModifiedTime](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-LastModifiedTime)": number,
+         "[NotebookInstanceArn](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-NotebookInstanceArn)": "string",
+         "[NotebookInstanceName](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-NotebookInstanceName)": "string",
+         "[NotebookInstanceStatus](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-NotebookInstanceStatus)": "string",
+         "[Url](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-Url)": "string"
       }
    ]
 }
@@ -107,12 +107,12 @@ If the action is successful, the service sends back an HTTP 200 response\.
 
 The following data is returned in JSON format by the service\.
 
- ** NextToken **   
+ ** [NextToken](#API_ListNotebookInstances_ResponseSyntax) **   <a name="SageMaker-ListNotebookInstances-response-NextToken"></a>
 If the response to the previous `ListNotebookInstances` request was truncated, Amazon SageMaker returns this token\. To retrieve the next set of notebook instances, use the token in the next request\.  
 Type: String  
 Length Constraints: Maximum length of 8192\.
 
- ** NotebookInstances **   
+ ** [NotebookInstances](#API_ListNotebookInstances_ResponseSyntax) **   <a name="SageMaker-ListNotebookInstances-response-NotebookInstances"></a>
 An array of `NotebookInstanceSummary` objects, one for each notebook instance\.  
 Type: Array of [NotebookInstanceSummary](API_NotebookInstanceSummary.md) objects
 

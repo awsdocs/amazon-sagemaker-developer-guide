@@ -8,25 +8,25 @@ When Amazon SageMaker receives the request, it sets the endpoint status to `Upda
 
 ```
 {
-   "EndpointConfigName": "string",
-   "EndpointName": "string"
+   "[EndpointConfigName](#SageMaker-UpdateEndpoint-request-EndpointConfigName)": "string",
+   "[EndpointName](#SageMaker-UpdateEndpoint-request-EndpointName)": "string"
 }
 ```
 
 ## Request Parameters<a name="API_UpdateEndpoint_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** EndpointConfigName **   
+ ** [EndpointConfigName](#API_UpdateEndpoint_RequestSyntax) **   <a name="SageMaker-UpdateEndpoint-request-EndpointConfigName"></a>
 The name of the new endpoint configuration\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: Yes
 
- ** EndpointName **   
+ ** [EndpointName](#API_UpdateEndpoint_RequestSyntax) **   <a name="SageMaker-UpdateEndpoint-request-EndpointName"></a>
 The name of the endpoint whose configuration you want to update\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
@@ -37,7 +37,7 @@ Required: Yes
 
 ```
 {
-   "EndpointArn": "string"
+   "[EndpointArn](#SageMaker-UpdateEndpoint-response-EndpointArn)": "string"
 }
 ```
 
@@ -47,7 +47,7 @@ If the action is successful, the service sends back an HTTP 200 response\.
 
 The following data is returned in JSON format by the service\.
 
- ** EndpointArn **   
+ ** [EndpointArn](#API_UpdateEndpoint_ResponseSyntax) **   <a name="SageMaker-UpdateEndpoint-response-EndpointArn"></a>
 The Amazon Resource Name \(ARN\) of the endpoint\.  
 Type: String  
 Length Constraints: Minimum length of 20\. Maximum length of 2048\.

@@ -4,31 +4,31 @@ Describes weight and capacities for a production variant associated with an endp
 
 ## Contents<a name="API_ProductionVariantSummary_Contents"></a>
 
- **CurrentInstanceCount**   
+ **CurrentInstanceCount**   <a name="SageMaker-Type-ProductionVariantSummary-CurrentInstanceCount"></a>
 The number of instances associated with the variant\.  
 Type: Integer  
 Valid Range: Minimum value of 1\.  
 Required: No
 
- **CurrentWeight**   
+ **CurrentWeight**   <a name="SageMaker-Type-ProductionVariantSummary-CurrentWeight"></a>
 The weight associated with the variant\.  
 Type: Float  
 Valid Range: Minimum value of 0\.  
 Required: No
 
- **DesiredInstanceCount**   
+ **DesiredInstanceCount**   <a name="SageMaker-Type-ProductionVariantSummary-DesiredInstanceCount"></a>
 The number of instances requested in the `UpdateWeightAndCapacities` request\.   
 Type: Integer  
 Valid Range: Minimum value of 1\.  
 Required: No
 
- **DesiredWeight**   
+ **DesiredWeight**   <a name="SageMaker-Type-ProductionVariantSummary-DesiredWeight"></a>
 The requested weight, as specified in the `UpdateWeightAndCapacities` request\.   
 Type: Float  
 Valid Range: Minimum value of 0\.  
 Required: No
 
- **VariantName**   
+ **VariantName**   <a name="SageMaker-Type-ProductionVariantSummary-VariantName"></a>
 The name of the variant\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  

@@ -6,17 +6,17 @@ Deletes an endpoint configuration\. The `DeleteEndpoingConfig` API deletes only 
 
 ```
 {
-   "EndpointConfigName": "string"
+   "[EndpointConfigName](#SageMaker-DeleteEndpointConfig-request-EndpointConfigName)": "string"
 }
 ```
 
 ## Request Parameters<a name="API_DeleteEndpointConfig_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** EndpointConfigName **   
+ ** [EndpointConfigName](#API_DeleteEndpointConfig_RequestSyntax) **   <a name="SageMaker-DeleteEndpointConfig-request-EndpointConfigName"></a>
 The name of the endpoint configuration that you want to delete\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  

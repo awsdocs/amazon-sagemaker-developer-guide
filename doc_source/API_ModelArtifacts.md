@@ -4,7 +4,7 @@ Provides information about the location that is configured for storing model art
 
 ## Contents<a name="API_ModelArtifacts_Contents"></a>
 
- **S3ModelArtifacts**   
+ **S3ModelArtifacts**   <a name="SageMaker-Type-ModelArtifacts-S3ModelArtifacts"></a>
 The path of the S3 object that contains the model artifacts\. For example, `s3://bucket-name/keynameprefix/model.tar.gz`\.  
 Type: String  
 Length Constraints: Maximum length of 1024\.  

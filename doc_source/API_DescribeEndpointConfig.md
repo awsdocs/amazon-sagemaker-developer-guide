@@ -6,17 +6,17 @@ Returns the description of an endpoint configuration created using the `CreateEn
 
 ```
 {
-   "EndpointConfigName": "string"
+   "[EndpointConfigName](#SageMaker-DescribeEndpointConfig-request-EndpointConfigName)": "string"
 }
 ```
 
 ## Request Parameters<a name="API_DescribeEndpointConfig_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** EndpointConfigName **   
+ ** [EndpointConfigName](#API_DescribeEndpointConfig_RequestSyntax) **   <a name="SageMaker-DescribeEndpointConfig-request-EndpointConfigName"></a>
 The name of the endpoint configuration\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
@@ -27,17 +27,17 @@ Required: Yes
 
 ```
 {
-   "CreationTime": number,
-   "EndpointConfigArn": "string",
-   "EndpointConfigName": "string",
-   "KmsKeyId": "string",
-   "ProductionVariants": [ 
+   "[CreationTime](#SageMaker-DescribeEndpointConfig-response-CreationTime)": number,
+   "[EndpointConfigArn](#SageMaker-DescribeEndpointConfig-response-EndpointConfigArn)": "string",
+   "[EndpointConfigName](#SageMaker-DescribeEndpointConfig-response-EndpointConfigName)": "string",
+   "[KmsKeyId](#SageMaker-DescribeEndpointConfig-response-KmsKeyId)": "string",
+   "[ProductionVariants](#SageMaker-DescribeEndpointConfig-response-ProductionVariants)": [ 
       { 
-         "InitialInstanceCount": number,
-         "InitialVariantWeight": number,
-         "InstanceType": "string",
-         "ModelName": "string",
-         "VariantName": "string"
+         "[InitialInstanceCount](API_ProductionVariant.md#SageMaker-Type-ProductionVariant-InitialInstanceCount)": number,
+         "[InitialVariantWeight](API_ProductionVariant.md#SageMaker-Type-ProductionVariant-InitialVariantWeight)": number,
+         "[InstanceType](API_ProductionVariant.md#SageMaker-Type-ProductionVariant-InstanceType)": "string",
+         "[ModelName](API_ProductionVariant.md#SageMaker-Type-ProductionVariant-ModelName)": "string",
+         "[VariantName](API_ProductionVariant.md#SageMaker-Type-ProductionVariant-VariantName)": "string"
       }
    ]
 }
@@ -49,27 +49,27 @@ If the action is successful, the service sends back an HTTP 200 response\.
 
 The following data is returned in JSON format by the service\.
 
- ** CreationTime **   
+ ** [CreationTime](#API_DescribeEndpointConfig_ResponseSyntax) **   <a name="SageMaker-DescribeEndpointConfig-response-CreationTime"></a>
 A timestamp that shows when the endpoint configuration was created\.  
 Type: Timestamp
 
- ** EndpointConfigArn **   
+ ** [EndpointConfigArn](#API_DescribeEndpointConfig_ResponseSyntax) **   <a name="SageMaker-DescribeEndpointConfig-response-EndpointConfigArn"></a>
 The Amazon Resource Name \(ARN\) of the endpoint configuration\.  
 Type: String  
 Length Constraints: Minimum length of 20\. Maximum length of 2048\.
 
- ** EndpointConfigName **   
+ ** [EndpointConfigName](#API_DescribeEndpointConfig_ResponseSyntax) **   <a name="SageMaker-DescribeEndpointConfig-response-EndpointConfigName"></a>
 Name of the Amazon SageMaker endpoint configuration\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*` 
 
- ** KmsKeyId **   
+ ** [KmsKeyId](#API_DescribeEndpointConfig_ResponseSyntax) **   <a name="SageMaker-DescribeEndpointConfig-response-KmsKeyId"></a>
 AWS KMS key ID Amazon SageMaker uses to encrypt data when storing it on the ML storage volume attached to the instance\.  
 Type: String  
 Length Constraints: Maximum length of 2048\.
 
- ** ProductionVariants **   
+ ** [ProductionVariants](#API_DescribeEndpointConfig_ResponseSyntax) **   <a name="SageMaker-DescribeEndpointConfig-response-ProductionVariants"></a>
 An array of `ProductionVariant` objects, one for each model that you want to host at this endpoint\.  
 Type: Array of [ProductionVariant](API_ProductionVariant.md) objects  
 Array Members: Minimum number of 1 item\.

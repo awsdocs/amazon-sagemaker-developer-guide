@@ -20,15 +20,15 @@ Body
 
 The request requires the following URI parameters\.
 
- ** Accept **   
+ ** [Accept](#API_runtime_InvokeEndpoint_RequestSyntax) **   <a name="SageMaker-runtime_InvokeEndpoint-request-Accept"></a>
 The desired MIME type of the inference in the response\.  
 Length Constraints: Maximum length of 1024\.
 
- ** ContentType **   
+ ** [ContentType](#API_runtime_InvokeEndpoint_RequestSyntax) **   <a name="SageMaker-runtime_InvokeEndpoint-request-ContentType"></a>
 The MIME type of the input data in the request body\.  
 Length Constraints: Maximum length of 1024\.
 
- ** EndpointName **   
+ ** [EndpointName](#API_runtime_InvokeEndpoint_RequestSyntax) **   <a name="SageMaker-runtime_InvokeEndpoint-request-EndpointName"></a>
 The name of the endpoint that you specified when you created the endpoint using the [CreateEndpoint](http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html) API\.   
 Length Constraints: Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*` 
@@ -37,7 +37,7 @@ Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`
 
 The request accepts the following binary data\.
 
- ** Body **   
+ ** [Body](#API_runtime_InvokeEndpoint_RequestSyntax) **   <a name="SageMaker-runtime_InvokeEndpoint-request-Body"></a>
 Provides input data, in the format specified in the `ContentType` request header\. Amazon SageMaker passes all of the data in the body to the model\.   
 For information about the format of the request body, see [Common Data Formats—Inference](http://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html)\.  
 Length Constraints: Maximum length of 5242880\.
@@ -58,17 +58,17 @@ If the action is successful, the service sends back an HTTP 200 response\.
 
 The response returns the following HTTP headers\.
 
- ** ContentType **   
+ ** [ContentType](#API_runtime_InvokeEndpoint_ResponseSyntax) **   <a name="SageMaker-runtime_InvokeEndpoint-response-ContentType"></a>
 The MIME type of the inference returned in the response body\.  
 Length Constraints: Maximum length of 1024\.
 
- ** InvokedProductionVariant **   
+ ** [InvokedProductionVariant](#API_runtime_InvokeEndpoint_ResponseSyntax) **   <a name="SageMaker-runtime_InvokeEndpoint-response-InvokedProductionVariant"></a>
 Identifies the production variant that was invoked\.  
 Length Constraints: Maximum length of 1024\.
 
 The response returns the following as the HTTP body\.
 
- ** Body **   
+ ** [Body](#API_runtime_InvokeEndpoint_ResponseSyntax) **   <a name="SageMaker-runtime_InvokeEndpoint-response-Body"></a>
 Includes the inference provided by the model\.  
 For information about the format of the response body, see [Common Data Formats—Inference](http://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html)\.  
 Length Constraints: Maximum length of 5242880\.

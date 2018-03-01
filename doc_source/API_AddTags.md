@@ -8,11 +8,11 @@ Each tag consists of a key and an optional value\. Tag keys must be unique per r
 
 ```
 {
-   "ResourceArn": "string",
-   "Tags": [ 
+   "[ResourceArn](#SageMaker-AddTags-request-ResourceArn)": "string",
+   "[Tags](#SageMaker-AddTags-request-Tags)": [ 
       { 
-         "Key": "string",
-         "Value": "string"
+         "[Key](API_Tag.md#SageMaker-Type-Tag-Key)": "string",
+         "[Value](API_Tag.md#SageMaker-Type-Tag-Value)": "string"
       }
    ]
 }
@@ -20,17 +20,17 @@ Each tag consists of a key and an optional value\. Tag keys must be unique per r
 
 ## Request Parameters<a name="API_AddTags_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** ResourceArn **   
+ ** [ResourceArn](#API_AddTags_RequestSyntax) **   <a name="SageMaker-AddTags-request-ResourceArn"></a>
 The Amazon Resource Name \(ARN\) of the resource that you want to tag\.   
 Type: String  
 Length Constraints: Maximum length of 256\.  
 Required: Yes
 
- ** Tags **   
+ ** [Tags](#API_AddTags_RequestSyntax) **   <a name="SageMaker-AddTags-request-Tags"></a>
 An array of `Tag` objects\. Each tag is a key\-value pair\. Only the `key` parameter is required\. If you don't specify a value, Amazon SageMaker sets the value to an empty string\.   
 Type: Array of [Tag](API_Tag.md) objects  
 Array Members: Minimum number of 0 items\. Maximum number of 50 items\.  
@@ -40,10 +40,10 @@ Required: Yes
 
 ```
 {
-   "Tags": [ 
+   "[Tags](#SageMaker-AddTags-response-Tags)": [ 
       { 
-         "Key": "string",
-         "Value": "string"
+         "[Key](API_Tag.md#SageMaker-Type-Tag-Key)": "string",
+         "[Value](API_Tag.md#SageMaker-Type-Tag-Value)": "string"
       }
    ]
 }
@@ -55,7 +55,7 @@ If the action is successful, the service sends back an HTTP 200 response\.
 
 The following data is returned in JSON format by the service\.
 
- ** Tags **   
+ ** [Tags](#API_AddTags_ResponseSyntax) **   <a name="SageMaker-AddTags-response-Tags"></a>
 A list of tags associated with the Amazon SageMaker resource\.  
 Type: Array of [Tag](API_Tag.md) objects  
 Array Members: Minimum number of 0 items\. Maximum number of 50 items\.

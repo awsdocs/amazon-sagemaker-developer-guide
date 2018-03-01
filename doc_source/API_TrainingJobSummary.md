@@ -4,36 +4,36 @@ Provides summary information about a training job\.
 
 ## Contents<a name="API_TrainingJobSummary_Contents"></a>
 
- **CreationTime**   
+ **CreationTime**   <a name="SageMaker-Type-TrainingJobSummary-CreationTime"></a>
 A timestamp that shows when the training job was created\.  
 Type: Timestamp  
 Required: Yes
 
- **LastModifiedTime**   
+ **LastModifiedTime**   <a name="SageMaker-Type-TrainingJobSummary-LastModifiedTime"></a>
  Timestamp when the training job was last modified\.   
 Type: Timestamp  
 Required: No
 
- **TrainingEndTime**   
+ **TrainingEndTime**   <a name="SageMaker-Type-TrainingJobSummary-TrainingEndTime"></a>
 A timestamp that shows when the training job ended\. This field is set only if the training job has one of the terminal statuses \(`Completed`, `Failed`, or `Stopped`\)\.   
 Type: Timestamp  
 Required: No
 
- **TrainingJobArn**   
+ **TrainingJobArn**   <a name="SageMaker-Type-TrainingJobSummary-TrainingJobArn"></a>
 The Amazon Resource Name \(ARN\) of the training job\.  
 Type: String  
 Length Constraints: Maximum length of 256\.  
 Pattern: `arn:aws:sagemaker:[\p{Alnum}\-]*:[0-9]{12}:training-job/.*`   
 Required: Yes
 
- **TrainingJobName**   
+ **TrainingJobName**   <a name="SageMaker-Type-TrainingJobSummary-TrainingJobName"></a>
 The name of the training job that you want a summary for\.  
 Type: String  
 Length Constraints: Minimum length of 1\. Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: Yes
 
- **TrainingJobStatus**   
+ **TrainingJobStatus**   <a name="SageMaker-Type-TrainingJobSummary-TrainingJobStatus"></a>
 The status of the training job\.  
 Type: String  
 Valid Values:` InProgress | Completed | Failed | Stopping | Stopped`   

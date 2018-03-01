@@ -4,31 +4,31 @@ Provides summary information for an endpoint\.
 
 ## Contents<a name="API_EndpointSummary_Contents"></a>
 
- **CreationTime**   
+ **CreationTime**   <a name="SageMaker-Type-EndpointSummary-CreationTime"></a>
 A timestamp that shows when the endpoint was created\.  
 Type: Timestamp  
 Required: Yes
 
- **EndpointArn**   
+ **EndpointArn**   <a name="SageMaker-Type-EndpointSummary-EndpointArn"></a>
 The Amazon Resource Name \(ARN\) of the endpoint\.  
 Type: String  
 Length Constraints: Minimum length of 20\. Maximum length of 2048\.  
 Required: Yes
 
- **EndpointName**   
+ **EndpointName**   <a name="SageMaker-Type-EndpointSummary-EndpointName"></a>
 The name of the endpoint\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: Yes
 
- **EndpointStatus**   
+ **EndpointStatus**   <a name="SageMaker-Type-EndpointSummary-EndpointStatus"></a>
 The status of the endpoint\.  
 Type: String  
 Valid Values:` OutOfService | Creating | Updating | RollingBack | InService | Deleting | Failed`   
 Required: Yes
 
- **LastModifiedTime**   
+ **LastModifiedTime**   <a name="SageMaker-Type-EndpointSummary-LastModifiedTime"></a>
 A timestamp that shows when the endpoint was last modified\.  
 Type: Timestamp  
 Required: Yes

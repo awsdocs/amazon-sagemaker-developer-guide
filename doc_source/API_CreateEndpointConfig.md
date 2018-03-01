@@ -13,21 +13,21 @@ If you are hosting multiple models, you also assign a `VariantWeight` to specify
 
 ```
 {
-   "EndpointConfigName": "string",
-   "KmsKeyId": "string",
-   "ProductionVariants": [ 
+   "[EndpointConfigName](#SageMaker-CreateEndpointConfig-request-EndpointConfigName)": "string",
+   "[KmsKeyId](#SageMaker-CreateEndpointConfig-request-KmsKeyId)": "string",
+   "[ProductionVariants](#SageMaker-CreateEndpointConfig-request-ProductionVariants)": [ 
       { 
-         "InitialInstanceCount": number,
-         "InitialVariantWeight": number,
-         "InstanceType": "string",
-         "ModelName": "string",
-         "VariantName": "string"
+         "[InitialInstanceCount](API_ProductionVariant.md#SageMaker-Type-ProductionVariant-InitialInstanceCount)": number,
+         "[InitialVariantWeight](API_ProductionVariant.md#SageMaker-Type-ProductionVariant-InitialVariantWeight)": number,
+         "[InstanceType](API_ProductionVariant.md#SageMaker-Type-ProductionVariant-InstanceType)": "string",
+         "[ModelName](API_ProductionVariant.md#SageMaker-Type-ProductionVariant-ModelName)": "string",
+         "[VariantName](API_ProductionVariant.md#SageMaker-Type-ProductionVariant-VariantName)": "string"
       }
    ],
-   "Tags": [ 
+   "[Tags](#SageMaker-CreateEndpointConfig-request-Tags)": [ 
       { 
-         "Key": "string",
-         "Value": "string"
+         "[Key](API_Tag.md#SageMaker-Type-Tag-Key)": "string",
+         "[Value](API_Tag.md#SageMaker-Type-Tag-Value)": "string"
       }
    ]
 }
@@ -35,30 +35,30 @@ If you are hosting multiple models, you also assign a `VariantWeight` to specify
 
 ## Request Parameters<a name="API_CreateEndpointConfig_RequestParameters"></a>
 
-For information about the parameters that are common to all actions, see Common Parameters\.
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
 
- ** EndpointConfigName **   
+ ** [EndpointConfigName](#API_CreateEndpointConfig_RequestSyntax) **   <a name="SageMaker-CreateEndpointConfig-request-EndpointConfigName"></a>
 The name of the endpoint configuration\. You specify this name in a [CreateEndpoint](http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html) request\.   
 Type: String  
 Length Constraints: Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: Yes
 
- ** KmsKeyId **   
+ ** [KmsKeyId](#API_CreateEndpointConfig_RequestSyntax) **   <a name="SageMaker-CreateEndpointConfig-request-KmsKeyId"></a>
 The Amazon Resource Name \(ARN\) of a AWS Key Management Service key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance that hosts the endpoint\.  
 Type: String  
 Length Constraints: Maximum length of 2048\.  
 Required: No
 
- ** ProductionVariants **   
+ ** [ProductionVariants](#API_CreateEndpointConfig_RequestSyntax) **   <a name="SageMaker-CreateEndpointConfig-request-ProductionVariants"></a>
 An array of `ProductionVariant` objects, one for each model that you want to host at this endpoint\.  
 Type: Array of [ProductionVariant](API_ProductionVariant.md) objects  
 Array Members: Minimum number of 1 item\.  
 Required: Yes
 
- ** Tags **   
+ ** [Tags](#API_CreateEndpointConfig_RequestSyntax) **   <a name="SageMaker-CreateEndpointConfig-request-Tags"></a>
 An array of key\-value pairs\. For more information, see [Using Cost Allocation Tags](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what) in the *AWS Billing and Cost Management User Guide*\.   
 Type: Array of [Tag](API_Tag.md) objects  
 Array Members: Minimum number of 0 items\. Maximum number of 50 items\.  
@@ -68,7 +68,7 @@ Required: No
 
 ```
 {
-   "EndpointConfigArn": "string"
+   "[EndpointConfigArn](#SageMaker-CreateEndpointConfig-response-EndpointConfigArn)": "string"
 }
 ```
 
@@ -78,7 +78,7 @@ If the action is successful, the service sends back an HTTP 200 response\.
 
 The following data is returned in JSON format by the service\.
 
- ** EndpointConfigArn **   
+ ** [EndpointConfigArn](#API_CreateEndpointConfig_ResponseSyntax) **   <a name="SageMaker-CreateEndpointConfig-response-EndpointConfigArn"></a>
 The Amazon Resource Name \(ARN\) of the endpoint configuration\.   
 Type: String  
 Length Constraints: Minimum length of 20\. Maximum length of 2048\.
