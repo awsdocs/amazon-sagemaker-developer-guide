@@ -4,7 +4,7 @@ Amazon SageMaker DeepAR is a supervised learning algorithm for forecasting scala
 
 For the training phase, the dataset consists of one or more time series, and, optionally a categorical grouping variable that the time series is a member of\. The model learns entirely from these values\. The DeepAR algorithm accepts no other external features \. The model is then trained by randomly selecting time points from the provided time series and using them as training examples\.
 
-For inference, the trained model takes as input an individual time series, \(which might or might not have been used during training, and generates a forecast for the time series\. This forecast takes into account what typically happened for similar time series in the training set\. 
+For inference, the trained model takes as input an individual time series, which might or might not have been used during training, and generates a forecast for the time series\. This forecast takes into account what typically happened for similar time series in the training set\. 
 
 ## Input/Output Interface<a name="deepar-inputoutput"></a>
 
