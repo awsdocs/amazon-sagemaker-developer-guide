@@ -54,9 +54,9 @@ Here, *q**i*,*t*\(τ\) is the τ\-quantile of the distribution that the model pr
 
 If you have a set of time series, as simple way to prepare, test, and train datasets is as follows:
 
-+ Use the full dataset in the test channel\.
-
 + In the train channel, remove the last `prediction_length` points from each time series\.
+
++ Use the full dataset in the test channel\.
 
 This ensures that the model does not see the removed points during training, and then those points are used for calculating the accuracy of the model\.
 
