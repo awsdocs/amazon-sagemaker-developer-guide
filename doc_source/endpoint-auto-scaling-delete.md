@@ -42,7 +42,7 @@ aws application-autoscaling delete-scaling-policy \
     --policy-name myscalablepolicy \
     --resource-id endpoint/MyEndpoint/variant/MyVariant \
     --service-namespace sagemaker \
-    --scalable-dimension sagemaker:variant:DesiredInstanceCount \
+    --scalable-dimension sagemaker:variant:DesiredInstanceCount
 ```
 
 ### Deleting a Scaling Policy \(Application Auto Scaling API\)<a name="endpoint-auto-scaling-delete-code-api"></a>

@@ -19,7 +19,7 @@ Required: No
  **InstanceType**   <a name="SageMaker-Type-ProductionVariant-InstanceType"></a>
 The ML compute instance type\.  
 Type: String  
-Valid Values:` ml.c4.2xlarge | ml.c4.8xlarge | ml.c4.xlarge | ml.c5.2xlarge | ml.c5.9xlarge | ml.c5.xlarge | ml.m4.xlarge | ml.p2.xlarge | ml.p3.2xlarge | ml.t2.medium`   
+Valid Values:` ml.c4.2xlarge | ml.c4.8xlarge | ml.c4.xlarge | ml.c5.2xlarge | ml.c5.9xlarge | ml.c5.xlarge | ml.m4.xlarge | ml.m5.xlarge | ml.m5.12xlarge | ml.p2.xlarge | ml.p3.2xlarge | ml.t2.medium`   
 Required: Yes
 
  **ModelName**   <a name="SageMaker-Type-ProductionVariant-ModelName"></a>

@@ -61,7 +61,7 @@ Length Constraints: Maximum length of 1024\.
  ** [InstanceType](#API_DescribeNotebookInstance_ResponseSyntax) **   <a name="SageMaker-DescribeNotebookInstance-response-InstanceType"></a>
 The type of ML compute instance running on the notebook instance\.  
 Type: String  
-Valid Values:` ml.t2.medium | ml.m4.xlarge | ml.p2.xlarge` 
+Valid Values:` ml.t2.medium | ml.m4.xlarge | ml.p2.xlarge | ml.p3.2xlarge` 
 
  ** [KmsKeyId](#API_DescribeNotebookInstance_ResponseSyntax) **   <a name="SageMaker-DescribeNotebookInstance-response-KmsKeyId"></a>
  AWS KMS key ID Amazon SageMaker uses to encrypt data when storing it on the ML storage volume attached to the instance\.   

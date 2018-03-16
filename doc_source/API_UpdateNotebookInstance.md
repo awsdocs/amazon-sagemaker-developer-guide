@@ -21,7 +21,7 @@ The request accepts the following data in JSON format\.
  ** [InstanceType](#API_UpdateNotebookInstance_RequestSyntax) **   <a name="SageMaker-UpdateNotebookInstance-request-InstanceType"></a>
 The Amazon ML compute instance type\.  
 Type: String  
-Valid Values:` ml.t2.medium | ml.m4.xlarge | ml.p2.xlarge`   
+Valid Values:` ml.t2.medium | ml.m4.xlarge | ml.p2.xlarge | ml.p3.2xlarge`   
 Required: No
 
  ** [NotebookInstanceName](#API_UpdateNotebookInstance_RequestSyntax) **   <a name="SageMaker-UpdateNotebookInstance-request-NotebookInstanceName"></a>

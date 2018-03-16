@@ -91,7 +91,7 @@ aws application-autoscaling register-scalable-target \
     --resource-id endpoint/MyEndPoint/variant/MyVariant \
     --scalable-dimension sagemaker:variant:DesiredInstanceCount \
     --min-capacity 1 \
-    --max-capacity 8 \
+    --max-capacity 8
 ```
 
 #### Register a Variant \(Application Auto Scaling API\)<a name="endpoint-auto-scaling-add-code-register-api"></a>

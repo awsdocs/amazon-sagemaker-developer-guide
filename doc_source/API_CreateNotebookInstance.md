@@ -48,7 +48,7 @@ The request accepts the following data in JSON format\.
  ** [InstanceType](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-InstanceType"></a>
 The type of ML compute instance to launch for the notebook instance\.  
 Type: String  
-Valid Values:` ml.t2.medium | ml.m4.xlarge | ml.p2.xlarge`   
+Valid Values:` ml.t2.medium | ml.m4.xlarge | ml.p2.xlarge | ml.p3.2xlarge`   
 Required: Yes
 
  ** [KmsKeyId](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-KmsKeyId"></a>

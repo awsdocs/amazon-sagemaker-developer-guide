@@ -2,7 +2,7 @@
 
 Amazon SageMaker supports automatic scaling for production variants\. *Automatic scaling* dynamically adjusts the number of instances provisioned for a production variant in response to changes in your workload\. When the workload increases, automatic scaling brings more instances online\. When the workload decreases, automatic scaling removes unnecessary instances so that you don't pay for provisioned variant instances that you aren't using\.
 
-To use automatical scaling for a production variant, you define and apply a scaling policy that uses Amazon CloudWatch metrics and target values that you assign\. Automatic scaling uses the policy to adjust the number of instances up or down in response to actual workloads\.
+To use automatic scaling for a production variant, you define and apply a scaling policy that uses Amazon CloudWatch metrics and target values that you assign\. Automatic scaling uses the policy to adjust the number of instances up or down in response to actual workloads\.
 
 You can use the AWS Management Console to apply a scaling policy based on a predefined metric\. A *predefined metric* is defined in an enumeration so that you can specify it by name in code or use it in the AWS Management Console\. Alternatively, you can use either the AWS Command Line Interface \(AWS CLI\) or the Application Auto Scaling API to apply a scaling policy based on a predefined or custom metric\. We strongly recommend that you load testg your automatic scaling configuration to ensure that it works correctly before using it to manage production traffic\.
 
@@ -44,7 +44,7 @@ If you are using a custom permission policy, you must include the following perm
 	"Action": [ 
 		"sagemaker:DescribeEndpoint", 
 		"sagemaker:DescribeEndpointConfig", 
-		"sagemaker:UpdateWeightsAndCapacities" 
+		"sagemaker:UpdateEndpointWeightsAndCapacities" 
 	], 
 	"Resource": "*"  
 }

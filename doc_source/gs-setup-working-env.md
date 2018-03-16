@@ -49,7 +49,7 @@ If necessary, you can change the notebook instance settings, including the ML co
 
      1. Choose **Create role**\.
 
-        Amazon SageMaker creates an IAM role\. The role name has this form: `AmazonSageMaker-ExecutionRole-YYYYMMDDTHHmmSS`\. For example, `AmazonSageMaker-ExecutionRole-20171125T090800`\.
+        Amazon SageMaker creates an IAM role\. The role name has this form: `AmazonSageMaker-ExecutionRole-YYYYMMDDTHHmmSS`\. For example, `AmazonSageMaker-ExecutionRole-201711125T090800`\.
 
          
 

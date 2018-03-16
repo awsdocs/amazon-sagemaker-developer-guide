@@ -12,7 +12,7 @@ Required: No
  **InstanceType**   <a name="SageMaker-Type-NotebookInstanceSummary-InstanceType"></a>
 The type of ML compute instance that the notebook instance is running on\.  
 Type: String  
-Valid Values:` ml.t2.medium | ml.m4.xlarge | ml.p2.xlarge`   
+Valid Values:` ml.t2.medium | ml.m4.xlarge | ml.p2.xlarge | ml.p3.2xlarge`   
 Required: No
 
  **LastModifiedTime**   <a name="SageMaker-Type-NotebookInstanceSummary-LastModifiedTime"></a>
