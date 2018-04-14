@@ -1,29 +1,23 @@
 # How It Works<a name="ll_how-it-works"></a>
 
 **Note**  
-We assume that the input data is shuffled\. If not, for example if the data is ordered by label, the method fails\. 
+For best results ensure your data is shuffled before training\. Training with unshuffled data may cause training to fail\. 
 
 ## Step 1: Preprocessing<a name="step1-preprocessing"></a>
 
-If the option is turned on, the algorithm first goes over a small sample of the data to learn its characteristics\. For every feature and for the label, you learn the mean value and the standard deviation\. 
+Normalization, or feature scaling, is an important preprocessing step for certain loss functions to ensure the resulting model does not become dominated by the weight of a single feature\. The SageMaker Linear Learner algorithm has a normalization option to assist with this preprocessing step\. If normalization is turned on the algorithm first goes over a small sample of the data to learn the mean value and standard deviation for each feature and the label\. The data is then shifted to have mean zero and scaled to have unit standard deviation\. 
 
-This information is used during training\. Based on the configuration, you normalize the data\. That is, you shift it to have mean zero and scale it to have unit standard deviation\. When the *auto* \(default\) value is specified to decide the normalization you: 
-
-+ Shift and scale the label for regression problems, and leave it as is for classification problems
-
-+ Always scale the features
-
-+ Shift the features only for dense data
+Normalization is enabled by default for both features and labels\. If enabled for binary classification only the features are normalized\.
 
 ## Step 2: Training<a name="step2-training"></a>
 
-You training using a distributed implementation of stochastic gradient descent\. The input allows you to control specifics of the optimization procedure by choosing the exact optimization algorithm, for example, Adam, Adagrad, SGD, and so on, and their parameters, such as momentum, learning rate, and the learning rate schedule\. Without specified details, choose a default option that works for the majority of datasets\. 
+Training is done via a distributed implementation of stochastic gradient descent\. Options for training include the loss function to optimize such as squared loss, huber loss, absolute loss, etc, and hyperparameters such as momentum, learning rate, and L1/L2 regularization terms\. 
 
-During training, you simultaneously optimize multiple models, each with slightly different objectives: in other words, vary L1 or L2 regularization and try out different optimizer settings\. 
+If you are unsure of how to tune your hyperparameters when starting out try using the default values but setting the **num_models** option to an integer value between 1 and 32\. This option allows the SageMaker Linear Learner algorithm to train up to the specified number of models in parallel using different values of hyperparameters with each to try to find the most optimal model\.
 
 ## Step 3: Validation and Setting the Threshold<a name="step3-validation"></a>
 
-When the training is done, evaluate the different models on a validation set\. For regression problems, output the model obtaining the best score on the validation set\. When the objective is classification, use a sample of \(raw prediction, label\) pairs to tune the threshold for a provided objective\. The raw prediction is the output of the trained linear function\. Allow classification objectives based on the predicted label, such as F1 measure, accuracy, precision@recall, and so on\. Choose the model that achieves the best score on the validation set\. 
+When training multiple models in parallel the models are evaluated against a validation set to select the most optimal model once training is complete\. For regression the most optimal model is the one that achieves the best loss on the validation set\. For classification a sample of the validation set is used to calibrate the classification threshold and the most optimal model is selected as the one that achieves the best binary classification selection criteria on the validation set, such as the F1 measure, accuracy, cross-entropy loss, and so on\. 
 
 **Note**  
-If you don't provide a validation set, the algorithm optimizes over the training set\. In such a scenario, avoid exploring different regularization procedures\. 
+If the algorithm is not provided a validation set is not provided then selecting the evaluating and selecting the most optimal model is not possible\. To take advantage of parallel training and model selection ensure you provide a validation set to the algorithm\. 
