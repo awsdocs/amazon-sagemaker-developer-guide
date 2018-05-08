@@ -20,10 +20,9 @@ The following diagram illustrates the typical workflow for creating a machine le
 
    1. **Prepare or transform the data**—You might perform additional data transformations to improve performance\. For example, you might choose to combine attributes\. If your model predicts the conditions that require de\-icing an aircraft, instead of using temperature and humidity attributes separately, you might combine them into a new attribute to get a better model\. 
 
-   In Amazon SageMaker, you preprocess example data in a Jupyter notebook on your notebook instance\. You use your notebook to fetch your dataset, explore, it and prepare it for model training\. For more information, see [Notebook Instances and Notebooks](how-it-works-notebooks-instances.md)\. For more information about data preparation in AWS Marketplace, see [data preparation](https://aws.amazon.com/marketplace/search/results?searchTerms=data+preparation&spellCheck=false&page=1)\. 
+   In Amazon SageMaker, you preprocess example data in a Jupyter notebook on your notebook instance\. You use your notebook to fetch your dataset, explore it and prepare it for model training\. For more information, see [Notebook Instances and Notebooks](how-it-works-notebooks-instances.md)\. For more information about data preparation in AWS Marketplace, see [data preparation](https://aws.amazon.com/marketplace/search/results?searchTerms=data+preparation&spellCheck=false&page=1)\. 
 
 1. **Train a model**—Model training includes both training and evaluating the model, as follows: 
-
    + **Training the model**— To train a model, you need an algorithm\. The algorithm you choose depends on a number of factors\. For a quick, out\-of\-the\-box solution, you might be able to use one of the algorithms that Amazon SageMaker provides\. For a list of algorithms provided by Amazon SageMaker and related considerations, see [Using Built\-in Algorithms with Amazon SageMaker](algos.md)\.
 
       
@@ -31,7 +30,6 @@ The following diagram illustrates the typical workflow for creating a machine le
      You also need compute resources for training\. Depending on the size of your training dataset and how quickly you need the results, you can use resources ranging from a single, small general purpose instance to a distributed cluster of GPU instances\. For more information, see [Training a Model with Amazon SageMaker ](how-it-works-training.md)\.
 
       
-
    + **Evaluating the model**—After you've trained your model, you evaluate it to determine whether the accuracy of the inferences is acceptable\. In Amazon SageMaker, you use either the AWS SDK for Python \(Boto\) or the high\-level Python library that Amazon SageMaker provides to send requests to the model for inferences\. 
 
      You use a Jupyter notebook in your Amazon SageMaker notebook instance to train and evaluate your model\. 

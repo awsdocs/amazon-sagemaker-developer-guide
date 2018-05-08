@@ -22,9 +22,7 @@ Required: Yes
 
  **S3Uri**   <a name="SageMaker-Type-S3DataSource-S3Uri"></a>
 Depending on the value specified for the `S3DataType`, identifies either a key name prefix or a manifest\. For example:   
-
 +  A key name prefix might look like this: `s3://bucketname/exampleprefix`\. 
-
 +  A manifest might look like this: `s3://bucketname/example.manifest` 
 
    The manifest is an S3 object which is a JSON file with the following format: 
@@ -58,11 +56,7 @@ Required: Yes
 ## See Also<a name="API_S3DataSource_SeeAlso"></a>
 
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
-
 +  [AWS SDK for C\+\+](http://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/S3DataSource) 
-
 +  [AWS SDK for Go](http://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/S3DataSource) 
-
 +  [AWS SDK for Java](http://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/S3DataSource) 
-
 +  [AWS SDK for Ruby V2](http://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/S3DataSource) 

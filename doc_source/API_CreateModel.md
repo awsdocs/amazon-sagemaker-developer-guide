@@ -29,7 +29,11 @@ In the request, you also provide an IAM role that Amazon SageMaker can assume to
          "[Key](API_Tag.md#SageMaker-Type-Tag-Key)": "string",
          "[Value](API_Tag.md#SageMaker-Type-Tag-Value)": "string"
       }
-   ]
+   ],
+   "[VpcConfig](#SageMaker-CreateModel-request-VpcConfig)": { 
+      "[SecurityGroupIds](API_VpcConfig.md#SageMaker-Type-VpcConfig-SecurityGroupIds)": [ "string" ],
+      "[Subnets](API_VpcConfig.md#SageMaker-Type-VpcConfig-Subnets)": [ "string" ]
+   }
 }
 ```
 
@@ -64,6 +68,11 @@ Type: Array of [Tag](API_Tag.md) objects
 Array Members: Minimum number of 0 items\. Maximum number of 50 items\.  
 Required: No
 
+ ** [VpcConfig](#API_CreateModel_RequestSyntax) **   <a name="SageMaker-CreateModel-request-VpcConfig"></a>
+A [VpcConfig](API_VpcConfig.md) object that specifies the VPC that you want your model to connect to\. Control access to and from your training container by configuring the VPC\. For more information, see [Protect Models by Using an Amazon Virtual Private Cloud](host-vpc.md)\.  
+Type: [VpcConfig](API_VpcConfig.md) object  
+Required: No
+
 ## Response Syntax<a name="API_CreateModel_ResponseSyntax"></a>
 
 ```
@@ -94,21 +103,12 @@ HTTP Status Code: 400
 ## See Also<a name="API_CreateModel_SeeAlso"></a>
 
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
-
 +  [AWS Command Line Interface](http://docs.aws.amazon.com/goto/aws-cli/sagemaker-2017-07-24/CreateModel) 
-
 +  [AWS SDK for \.NET](http://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/CreateModel) 
-
 +  [AWS SDK for C\+\+](http://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/CreateModel) 
-
 +  [AWS SDK for Go](http://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/CreateModel) 
-
 +  [AWS SDK for Java](http://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/CreateModel) 
-
 +  [AWS SDK for JavaScript](http://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/CreateModel) 
-
 +  [AWS SDK for PHP V3](http://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/CreateModel) 
-
 +  [AWS SDK for Python](http://docs.aws.amazon.com/goto/boto3/sagemaker-2017-07-24/CreateModel) 
-
 +  [AWS SDK for Ruby V2](http://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/CreateModel) 

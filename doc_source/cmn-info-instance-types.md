@@ -1,11 +1,8 @@
 # Algorithms Provided by Amazon SageMaker: Suggested Instance Types<a name="cmn-info-instance-types"></a>
 
 For training and hosting Amazon SageMaker algorithms, we recommend using the following EC2 instance types:
-
 +  m4\.xlarge, m4\.4xlarge, and m4\.10xlarge
-
 +  c4\.xlarge, c4\.2xlarge, and c4\.8xlarge 
-
 +  p2\.xlarge, p2\.8xlarge, and p2\.16xlarge 
 
 Most Amazon SageMaker algorithms have been engineered to take advantage of GPU computing for training\. Despite higher per\-instance costs, GPUs train more quickly, making them more cost effective\. Exceptions, such as XGBoost, are noted in this guide\. \(XGBoost implements an open\-source algorithm that has been optimized for CPU computation\.\)

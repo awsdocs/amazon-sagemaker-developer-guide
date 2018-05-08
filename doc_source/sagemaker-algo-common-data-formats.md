@@ -2,6 +2,6 @@
 
 The following topics explain the data formats for the algorithms provided by Amazon SageMaker\.
 
-
+**Topics**
 + [Common Data Formats—Training](cdf-training.md)
 + [Common Data Formats—Inference](cdf-inference.md)

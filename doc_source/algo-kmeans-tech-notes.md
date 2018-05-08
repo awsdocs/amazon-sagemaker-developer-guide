@@ -28,7 +28,7 @@ In the following topics, *K* clusters refer to *k \* x*, where you specify *k* a
 
 The following sections also explain some of the parameters that a data scientist might specify to configure a model training job as part of the `HyperParameters` string map\. 
 
-
+**Topics**
 + [Step 1: Determine the Initial Cluster Centers](#kmeans-step1)
 + [Step 2: Iterate over the Training Dataset and Calculate Cluster Centers](#kmeans-step2)
 + [Step 3: Reduce the Clusters from *K* to *k*](#kmeans-step3)
@@ -36,19 +36,15 @@ The following sections also explain some of the parameters that a data scientist
 ## Step 1: Determine the Initial Cluster Centers<a name="kmeans-step1"></a>
 
 When using k\-means in Amazon SageMaker, the initial cluster centers are chosen from the observations in a small, randomly sampled batch\. Choose one of the following strategies to determine how these initial cluster centers are selected:
-
 + The random approach—Randomly choose *K* observations in your input dataset as cluster centers\. For example, you might choose a cluster center that points to the 784\-dimensional space that corresponds to any 10 images in the MNIST training dataset\.
 
    
-
 + The k\-means\+\+ approach, which works as follows: 
 
   1. Start with one cluster and determine its center\. You randomly select an observation from your training dataset and use the point corresponding to the observation as the cluster center\. For example, in the MNIST dataset, randomly choose a handwritten digit image\. Then choose the point in the 784\-dimensional space that corresponds to the image as your cluster center\. This is cluster center 1\.
 
   1. Determine the center for cluster 2\. From the remaining observations in the training dataset, pick an observation at random\. Choose one that is different than the one you previously selected\. This observation corresponds to a point that is far away from cluster center 1\. Using the MNIST dataset as an example, you do the following:
-
      + For each of the remaining images, find the distance of the corresponding point from cluster center 1\. Square the distance and assign a probability that is proportional to the square of the distance\. That way, an image that is different from the one that you previously selected has a higher probability of getting selected as cluster center 2\. 
-
      + Choose one of the images randomly, based on probabilities assigned in the previous step\. The point that corresponds to the image is cluster center 2\.
 
   1. Repeat Step 2 to find cluster center 3\. This time, find the distances of the remaining images from cluster center 2\.
@@ -56,11 +52,8 @@ When using k\-means in Amazon SageMaker, the initial cluster centers are chosen 
   1. Repeat the process until you have the *K* cluster centers\.
 
 To train a model in Amazon SageMaker, you create a training job\. In the request, you provide configuration information by specifying the following `HyperParameters` string maps:
-
 + To specify the number of clusters to create, add the `k` string\.
-
 + For greater accuracy, add the optional `extra_center_factor` string\. 
-
 + To specify the strategy that you want to use to determine the initial cluster centers, add the `init_method` string and set its value to `random` or `k-means++`\.
 
 For more information, see [CreateTrainingJob](API_CreateTrainingJob.md)\. For an example, see [Step 3\.3\.2: Create a Training Job](ex1-train-model-create-training-job.md)\. 

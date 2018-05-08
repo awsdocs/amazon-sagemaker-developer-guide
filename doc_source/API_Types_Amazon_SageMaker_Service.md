@@ -1,39 +1,38 @@
 # Amazon SageMaker Service<a name="API_Types_Amazon_SageMaker_Service"></a>
 
 The following data types are supported by Amazon SageMaker Service:
-
 +  [AlgorithmSpecification](API_AlgorithmSpecification.md) 
-
++  [CategoricalParameterRange](API_CategoricalParameterRange.md) 
 +  [Channel](API_Channel.md) 
-
 +  [ContainerDefinition](API_ContainerDefinition.md) 
-
++  [ContinuousParameterRange](API_ContinuousParameterRange.md) 
 +  [DataSource](API_DataSource.md) 
-
 +  [DesiredWeightAndCapacity](API_DesiredWeightAndCapacity.md) 
-
 +  [EndpointConfigSummary](API_EndpointConfigSummary.md) 
-
 +  [EndpointSummary](API_EndpointSummary.md) 
-
++  [FinalHyperParameterTuningJobObjectiveMetric](API_FinalHyperParameterTuningJobObjectiveMetric.md) 
++  [HyperParameterAlgorithmSpecification](API_HyperParameterAlgorithmSpecification.md) 
++  [HyperParameterTrainingJobDefinition](API_HyperParameterTrainingJobDefinition.md) 
++  [HyperParameterTrainingJobSummary](API_HyperParameterTrainingJobSummary.md) 
++  [HyperParameterTuningJobConfig](API_HyperParameterTuningJobConfig.md) 
++  [HyperParameterTuningJobObjective](API_HyperParameterTuningJobObjective.md) 
++  [HyperParameterTuningJobSummary](API_HyperParameterTuningJobSummary.md) 
++  [IntegerParameterRange](API_IntegerParameterRange.md) 
++  [MetricDefinition](API_MetricDefinition.md) 
 +  [ModelArtifacts](API_ModelArtifacts.md) 
-
 +  [ModelSummary](API_ModelSummary.md) 
-
++  [NotebookInstanceLifecycleConfigSummary](API_NotebookInstanceLifecycleConfigSummary.md) 
++  [NotebookInstanceLifecycleHook](API_NotebookInstanceLifecycleHook.md) 
 +  [NotebookInstanceSummary](API_NotebookInstanceSummary.md) 
-
 +  [OutputDataConfig](API_OutputDataConfig.md) 
-
++  [ParameterRanges](API_ParameterRanges.md) 
 +  [ProductionVariant](API_ProductionVariant.md) 
-
 +  [ProductionVariantSummary](API_ProductionVariantSummary.md) 
-
 +  [ResourceConfig](API_ResourceConfig.md) 
-
++  [ResourceLimits](API_ResourceLimits.md) 
 +  [S3DataSource](API_S3DataSource.md) 
-
 +  [StoppingCondition](API_StoppingCondition.md) 
-
 +  [Tag](API_Tag.md) 
-
++  [TrainingJobCounters](API_TrainingJobCounters.md) 
 +  [TrainingJobSummary](API_TrainingJobSummary.md) 
++  [VpcConfig](API_VpcConfig.md) 

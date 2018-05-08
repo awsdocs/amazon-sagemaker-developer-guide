@@ -11,7 +11,6 @@ Deploying a model in Amazon SageMaker is a 3\-step process:
 The low\-level AWS SDK for Python provides corresponding methods\. However, the high\-level Python library provides the `deploy` method that does all these tasks for you\. 
 
 To deploy the model, choose one of the following options\. 
-
 + **Use the high\-level Python library provided by Amazon SageMaker**\.
 
   The `sagemaker.amazon.kmeans.KMeans` class provides the `deploy` method for deploying a model\. It performs all three steps of the model deployment process\. 
@@ -26,7 +25,6 @@ To deploy the model, choose one of the following options\.
   The `sagemaker.amazon.kmeans.KMeans` instance knows the registry path of the image that contains the k\-means inference code, so you don't need to provide it\. 
 
   This is a synchronous operation\. The method waits until the deployment completes before returning\. It returns a `kmeans_predictor`\. 
-
 + **Use the SDK for Python**\. 
 
   The low\-level SDK for Python provides methods that map to the underlying Amazon SageMaker API\. To deploy the model, you make three calls\.

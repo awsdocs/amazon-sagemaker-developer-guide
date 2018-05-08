@@ -20,9 +20,7 @@ show_digit(train_set[0][30], 'This is a {}'.format(train_set[1][30]))
 ```
 
 `train_set` contains the following data:
-
 + `train_set[0]` contains images\. 
-
 + `train_set[1]` contains labels\. 
 
 The code uses the `matplotlib` library to get and display the 31th image from the training dataset\.

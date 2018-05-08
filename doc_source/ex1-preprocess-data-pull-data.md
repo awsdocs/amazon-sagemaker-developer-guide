@@ -17,11 +17,8 @@ The code does the following:
 1. Downloads the MNIST dataset \(`mnist.pkl.gz`\) from the deeplearning\.net website to your Amazon SageMaker notebook instance\. 
 
 1. Unzips the file and reads the following three datasets into the notebook's memory:
-
    + `train_set`—You use these images of handwritten numbers to train a model\.
-
    + `valid_set`—After you train the model, you validate it using the images in this dataset\. 
-
    + `test_set`—You don't use this dataset in this exercise\.
 
 **Next Step**  

@@ -9,11 +9,8 @@ To learn more about CloudTrail, including how to configure and enable it, see th
 All Amazon SageMaker actions except the Amazon SageMaker Runtime action `InvokeEndpoint` are logged by CloudTrail \. For example, calls to the `CreateTrainingJob`, `CreateModel`, and `CreateEndpoint` actions generate entries in the CloudTrail log files\. 
 
 Every event or log entry contains information about who generated the request\. This information helps you determine the following: 
-
 + Whether the request was made with root or IAM user credentials\.
-
 + Whether the request was made with temporary security credentials for a role or federated user\.
-
 + Whether the request was made by another AWS service\.
 
 For more information, see the [CloudTrail userIdentity Element](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html)\.

@@ -21,6 +21,9 @@ iris_predictor = iris_estimator.deploy(initial_instance_count=1,
 
 When the status of the endpoint is INSERVICE, your model had been deployed\. The API returns a `TensorFlowPredictor` object\. To get inferences, you will use the `predict` method of this object\.
 
+**Note**  
+You can deploy your model to an endpoint hosted on your local computer by specifying `local` as the value for `train_instance_type` and `1` as the value for `train_instance_count`\. For more information about local mode, see [https://github.com/aws/sagemaker-python-sdk#local-mode](https://github.com/aws/sagemaker-python-sdk#local-mode) in the *Amazon SageMaker Python SDK*\.
+
 ## Next Step<a name="tf-example1-deploy-nexttopic"></a>
 
  [Step 4: Invoke the Endpoint to Get Inferences](tf-example1-invoke.md) 

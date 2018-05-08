@@ -9,7 +9,7 @@
 | decoder\_type | Decoder type\. Valid values: String\. Either *rnn* or *cnn*\. Default value: *rnn* | 
 | num\_layers\_encoder | Number of layers for Encoder *rnn* or *cnn*\. Valid values: positive integer Default value: 1 | 
 | num\_layers\_decoder | Number of layers for Decoder *rnn* or *cnn*\. Valid values: positive integer Default value: 1 | 
-| rnn\_num\_hidden | Number of *rnn* hidden units for encoder and decoder\. Valid values: positive integer Default value: 1024 | 
+| rnn\_num\_hidden | The number of rnn hidden units for encoder and decoder\. This must be a multiple of 2 because the algorithm uses bi\-directional LSTM by default\.Valid values: positive integerDefault value: 1024 | 
 | rnn\_cell\_type | Specific type of *rnn* architecture\. Valid values: String\. Either *lstm* or *gru*\. Default value: *lstm* | 
 | rnn\_decoder\_state\_init | How to initialize *rnn* decoder states from encoders\. Valid values: String\. One of *last*, *avg*, or *zero*\. Default value: *last* | 
 | rnn\_residual\_connections | Add residual connection to stacked *rnn*\. Number of layers should be more than 1\. Valid values: boolean \(*true* or *false*\) Default value: *false* | 

@@ -12,7 +12,7 @@ Required: No
  **InstanceType**   <a name="SageMaker-Type-NotebookInstanceSummary-InstanceType"></a>
 The type of ML compute instance that the notebook instance is running on\.  
 Type: String  
-Valid Values:` ml.t2.medium | ml.m4.xlarge | ml.p2.xlarge | ml.p3.2xlarge`   
+Valid Values:` ml.t2.medium | ml.t2.large | ml.t2.xlarge | ml.t2.2xlarge | ml.m4.xlarge | ml.m4.2xlarge | ml.m4.4xlarge | ml.m4.10xlarge | ml.m4.16xlarge | ml.p2.xlarge | ml.p2.8xlarge | ml.p2.16xlarge | ml.p3.2xlarge | ml.p3.8xlarge | ml.p3.16xlarge`   
 Required: No
 
  **LastModifiedTime**   <a name="SageMaker-Type-NotebookInstanceSummary-LastModifiedTime"></a>
@@ -25,6 +25,14 @@ The Amazon Resource Name \(ARN\) of the notebook instance\.
 Type: String  
 Length Constraints: Maximum length of 256\.  
 Required: Yes
+
+ **NotebookInstanceLifecycleConfigName**   <a name="SageMaker-Type-NotebookInstanceSummary-NotebookInstanceLifecycleConfigName"></a>
+The name of a notebook instance lifecycle configuration associated with this notebook instance\.  
+For information about notebook instance lifestyle configurations, see [Step 2\.1: \(Optional\) Customize a Notebook Instance ](notebook-lifecycle-config.md)\.  
+Type: String  
+Length Constraints: Maximum length of 63\.  
+Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
+Required: No
 
  **NotebookInstanceName**   <a name="SageMaker-Type-NotebookInstanceSummary-NotebookInstanceName"></a>
 The name of the notebook instance that you want a summary for\.  
@@ -47,11 +55,7 @@ Required: No
 ## See Also<a name="API_NotebookInstanceSummary_SeeAlso"></a>
 
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
-
 +  [AWS SDK for C\+\+](http://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/NotebookInstanceSummary) 
-
 +  [AWS SDK for Go](http://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/NotebookInstanceSummary) 
-
 +  [AWS SDK for Java](http://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/NotebookInstanceSummary) 
-
 +  [AWS SDK for Ruby V2](http://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/NotebookInstanceSummary) 

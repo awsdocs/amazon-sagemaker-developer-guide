@@ -1,11 +1,9 @@
 # Principal Component Analysis \(PCA\)<a name="pca"></a>
 
-PCA is an unsupervised learning algorithm that attempts to reduce the dimensionality \(number of features\) within a dataset while still retaining as much information as possible\. This is done by finding a new set of features called *components*, which are composites of the original features that are uncorrelated with one another\. They are also constrained so that the first component accounts for the largest possible variability in the data, the second component the second most variability, and so on\.
+PCA is an unsupervised machine learning algorithm that attempts to reduce the dimensionality \(number of features\) within a dataset while still retaining as much information as possible\. This is done by finding a new set of features called *components*, which are composites of the original features that are uncorrelated with one another\. They are also constrained so that the first component accounts for the largest possible variability in the data, the second component the second most variability, and so on\.
 
 In Amazon SageMaker, PCA operates in two modes, depending on the scenario: 
-
 + **regular**: For datasets with sparse data and a moderate number of observations and features\.
-
 + **randomized**: For datasets with both a large number of observations and features\. This mode uses an approximation algorithm\. 
 
 PCA uses tabular data\. 
@@ -24,7 +22,7 @@ Please refer to the example notebooks for additional details on training and inf
 
 PCA supports both GPU and CPU computation\. Which instance type is most performant depends heavily on the specifics of the input data\.
 
-
+**Topics**
 + [Input/Output Interface](#pca-inputoutput)
 + [EC2 Instance Recommendation](#pca-instances)
 + [How PCA Works](how-pca-works.md)

@@ -13,11 +13,8 @@ If you are a first\-time user of Amazon SageMaker, we recommend that you do the 
 1. **Try a model training exercise** – This exercise walks you through training your first model\. You use training algorithms provided by Amazon SageMaker\. For more information, see [Step 3: Train a Model with a Built\-in Algorithm and Deploy It](ex1.md)\. 
 
 1. **Explore other topics** – Depending on your needs, do the following:
-
    + **Submit Python code to train with deep learning frameworks** – In Amazon SageMaker, you can use your own TensorFlow or Apache MXNet scripts to train models\. For an example, see [TensorFlow Example 1: Using the tf\.estimator ](tf-example1.md) and [Apache MXNet Example 1: Using the Module API ](mxnet-example1.md)\.
-
    + **Use Amazon SageMaker directly from Apache Spark** – For information, see [Using Apache Spark with Amazon SageMaker](apache-spark.md)\.
-
    + **Use Amazon AI to train and/or deploy your own custom algorithms** – Package your custom algorithms with Docker so you can train and/or deploy them in Amazon SageMaker\. See [Using Your Own Algorithms with Amazon SageMaker](your-algorithms.md) to learn how Amazon SageMaker interacts with Docker containers, and for the Amazon SageMaker requirements for Docker images\. 
 
 1. **See the [API Reference](API_Reference.md) ** – This section describes the Amazon SageMaker API operations\.

@@ -5,7 +5,7 @@ This topic provides examples of identity\-based policies that demonstrate how an
 **Important**  
 We recommend that you first review the introductory topics that explain the basic concepts and options available to manage access to your Amazon SageMaker resources\. For more information, see [Overview of Managing Access Permissions to Your Amazon SageMaker Resources](access-control-overview.md)\. 
 
-
+**Topics**
 + [Permissions Required to Use the Amazon SageMaker Console](#console-permissions)
 + [AWS Managed \(Predefined\) Policies for Amazon SageMaker](#access-policy-aws-managed-policies)
 
@@ -36,9 +36,7 @@ The following is an example of a basic permissions policy:
 ```
 
 The policy has two statements:
-
 + The first statement grants permission for three Amazon SageMaker actions \(`sagemaker:CreateModel`, `sagemaker:DescribeModel`, and `sagemaker:DeleteModel`\) within an Amazon SageMaker notebook instance\. Using the wildcard character \(\*\) as the resource grants universal permissions for these actions across all AWS Regions and models owned by this account\.
-
 + The second statement grants permission for the `iam:PassRole` action, which is needed for the Amazon SageMaker action `sagemaker:CreateModel`, which is allowed by the first statement\.
 
 The policy doesn't specify the `Principal` element because in an identity\-based policy you don't specify the principal who gets the permission\. When you attach the policy to a user, the user is the implicit principal\. When you attach a permissions policy to an IAM role, the principal identified in the role's trust policy gets the permissions\. 
@@ -88,15 +86,11 @@ To use the Amazon SageMaker console, you need to grant permissions for additiona
 AWS addresses many common use cases by providing standalone IAM policies that are created and administered by AWS\. These AWS managed policies grant necessary permissions for common use cases so that you can avoid having to investigate which permissions are needed\. For more information, see [AWS Managed Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) in the *IAM User Guide*\. 
 
 The following AWS managed policies, which you can attach to users in your account, are specific to Amazon SageMaker:
-
 + **AmazonSageMakerReadOnly** – Grants read\-only access to Amazon SageMaker resources\. 
-
 + **AmazonSageMakerFullAccess** – Grants full access to Amazon SageMaker resources and the supported operations\. \(This does not provide unrestricted S3 access, but supports buckets/objects with specific sagemaker tags\.\)
 
 The following AWS managed policies can also be attached to users in your account:
-
 + [AdministratorAccess](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.html#jf_administrator) – Grants all actions for all AWS services and for all resources in the account\. 
-
 + [DataScientist](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.html#jf_data-scientist) – Grants a wide range of permissions to cover most of the use cases \(primarily for analytics and business intelligence\) encountered by data scientists\.
 
 You can review these permissions policies by signing in to the IAM console and searching for them\.
