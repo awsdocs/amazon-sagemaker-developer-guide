@@ -13,6 +13,7 @@ Returns a list of the Amazon SageMaker notebook instances in the requester's acc
    "[MaxResults](#SageMaker-ListNotebookInstances-request-MaxResults)": number,
    "[NameContains](#SageMaker-ListNotebookInstances-request-NameContains)": "string",
    "[NextToken](#SageMaker-ListNotebookInstances-request-NextToken)": "string",
+   "[NotebookInstanceLifecycleConfigNameContains](#SageMaker-ListNotebookInstances-request-NotebookInstanceLifecycleConfigNameContains)": "string",
    "[SortBy](#SageMaker-ListNotebookInstances-request-SortBy)": "string",
    "[SortOrder](#SageMaker-ListNotebookInstances-request-SortOrder)": "string",
    "[StatusEquals](#SageMaker-ListNotebookInstances-request-StatusEquals)": "string"
@@ -52,7 +53,7 @@ Valid Range: Minimum value of 1\. Maximum value of 100\.
 Required: No
 
  ** [NameContains](#API_ListNotebookInstances_RequestSyntax) **   <a name="SageMaker-ListNotebookInstances-request-NameContains"></a>
-A string in the notebook instances' name\. This filter returns only notebook instances whose name contains the specified string\.   
+A string in the notebook instances' name\. This filter returns only notebook instances whose name contains the specified string\.  
 Type: String  
 Pattern: `[a-zA-Z0-9-]+`   
 Required: No
@@ -62,6 +63,13 @@ Required: No
  You might specify a filter or a sort order in your request\. When response is truncated, you must use the same values for the filer and sort order in the next request\. 
 Type: String  
 Length Constraints: Maximum length of 8192\.  
+Required: No
+
+ ** [NotebookInstanceLifecycleConfigNameContains](#API_ListNotebookInstances_RequestSyntax) **   <a name="SageMaker-ListNotebookInstances-request-NotebookInstanceLifecycleConfigNameContains"></a>
+A string in the name of a notebook instances lifecycle configuration associated with this notebook instance\. This filter returns only notebook instances associated with a lifecycle configuration with a name that contains the specified string\.  
+Type: String  
+Length Constraints: Maximum length of 63\.  
+Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: No
 
  ** [SortBy](#API_ListNotebookInstances_RequestSyntax) **   <a name="SageMaker-ListNotebookInstances-request-SortBy"></a>
@@ -93,6 +101,7 @@ Required: No
          "[InstanceType](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-InstanceType)": "string",
          "[LastModifiedTime](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-LastModifiedTime)": number,
          "[NotebookInstanceArn](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-NotebookInstanceArn)": "string",
+         "[NotebookInstanceLifecycleConfigName](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-NotebookInstanceLifecycleConfigName)": "string",
          "[NotebookInstanceName](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-NotebookInstanceName)": "string",
          "[NotebookInstanceStatus](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-NotebookInstanceStatus)": "string",
          "[Url](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-Url)": "string"
@@ -123,21 +132,12 @@ For information about the errors that are common to all actions, see [Common Err
 ## See Also<a name="API_ListNotebookInstances_SeeAlso"></a>
 
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
-
 +  [AWS Command Line Interface](http://docs.aws.amazon.com/goto/aws-cli/sagemaker-2017-07-24/ListNotebookInstances) 
-
 +  [AWS SDK for \.NET](http://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/ListNotebookInstances) 
-
 +  [AWS SDK for C\+\+](http://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/ListNotebookInstances) 
-
 +  [AWS SDK for Go](http://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/ListNotebookInstances) 
-
 +  [AWS SDK for Java](http://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/ListNotebookInstances) 
-
 +  [AWS SDK for JavaScript](http://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/ListNotebookInstances) 
-
 +  [AWS SDK for PHP V3](http://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/ListNotebookInstances) 
-
 +  [AWS SDK for Python](http://docs.aws.amazon.com/goto/boto3/sagemaker-2017-07-24/ListNotebookInstances) 
-
 +  [AWS SDK for Ruby V2](http://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/ListNotebookInstances) 

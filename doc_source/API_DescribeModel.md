@@ -38,6 +38,10 @@ Required: Yes
       },
       "[Image](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-Image)": "string",
       "[ModelDataUrl](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-ModelDataUrl)": "string"
+   },
+   "[VpcConfig](#SageMaker-DescribeModel-response-VpcConfig)": { 
+      "[SecurityGroupIds](API_VpcConfig.md#SageMaker-Type-VpcConfig-SecurityGroupIds)": [ "string" ],
+      "[Subnets](API_VpcConfig.md#SageMaker-Type-VpcConfig-Subnets)": [ "string" ]
    }
 }
 ```
@@ -73,6 +77,10 @@ Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`
 The location of the primary inference code, associated artifacts, and custom environment map that the inference code uses when it is deployed in production\.   
 Type: [ContainerDefinition](API_ContainerDefinition.md) object
 
+ ** [VpcConfig](#API_DescribeModel_ResponseSyntax) **   <a name="SageMaker-DescribeModel-response-VpcConfig"></a>
+A [VpcConfig](API_VpcConfig.md) object that specifies the VPC that this model has access to\. For more information, see [Protect Models by Using an Amazon Virtual Private Cloud](host-vpc.md)   
+Type: [VpcConfig](API_VpcConfig.md) object
+
 ## Errors<a name="API_DescribeModel_Errors"></a>
 
 For information about the errors that are common to all actions, see [Common Errors](CommonErrors.md)\.
@@ -80,21 +88,12 @@ For information about the errors that are common to all actions, see [Common Err
 ## See Also<a name="API_DescribeModel_SeeAlso"></a>
 
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
-
 +  [AWS Command Line Interface](http://docs.aws.amazon.com/goto/aws-cli/sagemaker-2017-07-24/DescribeModel) 
-
 +  [AWS SDK for \.NET](http://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/DescribeModel) 
-
 +  [AWS SDK for C\+\+](http://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/DescribeModel) 
-
 +  [AWS SDK for Go](http://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/DescribeModel) 
-
 +  [AWS SDK for Java](http://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/DescribeModel) 
-
 +  [AWS SDK for JavaScript](http://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/DescribeModel) 
-
 +  [AWS SDK for PHP V3](http://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/DescribeModel) 
-
 +  [AWS SDK for Python](http://docs.aws.amazon.com/goto/boto3/sagemaker-2017-07-24/DescribeModel) 
-
 +  [AWS SDK for Ruby V2](http://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/DescribeModel) 

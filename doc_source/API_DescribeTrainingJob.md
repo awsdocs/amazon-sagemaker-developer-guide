@@ -74,7 +74,11 @@ Required: Yes
    "[TrainingJobArn](#SageMaker-DescribeTrainingJob-response-TrainingJobArn)": "string",
    "[TrainingJobName](#SageMaker-DescribeTrainingJob-response-TrainingJobName)": "string",
    "[TrainingJobStatus](#SageMaker-DescribeTrainingJob-response-TrainingJobStatus)": "string",
-   "[TrainingStartTime](#SageMaker-DescribeTrainingJob-response-TrainingStartTime)": number
+   "[TrainingStartTime](#SageMaker-DescribeTrainingJob-response-TrainingStartTime)": number,
+   "[VpcConfig](#SageMaker-DescribeTrainingJob-response-VpcConfig)": { 
+      "[SecurityGroupIds](API_VpcConfig.md#SageMaker-Type-VpcConfig-SecurityGroupIds)": [ "string" ],
+      "[Subnets](API_VpcConfig.md#SageMaker-Type-VpcConfig-Subnets)": [ "string" ]
+   }
 }
 ```
 
@@ -147,7 +151,7 @@ Type: Timestamp
 The Amazon Resource Name \(ARN\) of the training job\.  
 Type: String  
 Length Constraints: Maximum length of 256\.  
-Pattern: `arn:aws:sagemaker:[\p{Alnum}\-]*:[0-9]{12}:training-job/.*` 
+Pattern: `arn:aws[a-z\-]*:sagemaker:[\p{Alnum}\-]*:[0-9]{12}:training-job/.*` 
 
  ** [TrainingJobName](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-TrainingJobName"></a>
  Name of the model training job\.   
@@ -158,16 +162,11 @@ Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`
  ** [TrainingJobStatus](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-TrainingJobStatus"></a>
 The status of the training job\.   
 For the `InProgress` status, Amazon SageMaker can return these secondary statuses:  
-
 + Starting \- Preparing for training\.
-
 + Downloading \- Optional stage for algorithms that support File training input mode\. It indicates data is being downloaded to ML storage volumes\.
-
 + Training \- Training is in progress\.
-
 + Uploading \- Training is complete and model upload is in progress\.
 For the `Stopped` training status, Amazon SageMaker can return these secondary statuses:  
-
 + MaxRuntimeExceeded \- Job stopped as a result of maximum allowed runtime exceeded\.
 Type: String  
 Valid Values:` InProgress | Completed | Failed | Stopping | Stopped` 
@@ -175,6 +174,10 @@ Valid Values:` InProgress | Completed | Failed | Stopping | Stopped`
  ** [TrainingStartTime](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-TrainingStartTime"></a>
 A timestamp that indicates when training started\.  
 Type: Timestamp
+
+ ** [VpcConfig](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-VpcConfig"></a>
+A [VpcConfig](API_VpcConfig.md) object that specifies the VPC that this training job has access to\. For more information, see [Protect Training Jobs by Using an Amazon Virtual Private Cloud](train-vpc.md)\.  
+Type: [VpcConfig](API_VpcConfig.md) object
 
 ## Errors<a name="API_DescribeTrainingJob_Errors"></a>
 
@@ -187,21 +190,12 @@ HTTP Status Code: 400
 ## See Also<a name="API_DescribeTrainingJob_SeeAlso"></a>
 
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
-
 +  [AWS Command Line Interface](http://docs.aws.amazon.com/goto/aws-cli/sagemaker-2017-07-24/DescribeTrainingJob) 
-
 +  [AWS SDK for \.NET](http://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/DescribeTrainingJob) 
-
 +  [AWS SDK for C\+\+](http://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/DescribeTrainingJob) 
-
 +  [AWS SDK for Go](http://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/DescribeTrainingJob) 
-
 +  [AWS SDK for Java](http://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/DescribeTrainingJob) 
-
 +  [AWS SDK for JavaScript](http://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/DescribeTrainingJob) 
-
 +  [AWS SDK for PHP V3](http://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/DescribeTrainingJob) 
-
 +  [AWS SDK for Python](http://docs.aws.amazon.com/goto/boto3/sagemaker-2017-07-24/DescribeTrainingJob) 
-
 +  [AWS SDK for Ruby V2](http://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/DescribeTrainingJob) 

@@ -30,7 +30,5 @@ Although Amazon SageMaker automatic scaling supports using Application Auto Scal
 If a variant’s traffic becomes zero, Amazon SageMaker automatic scaling doesn't scale down\. This is because Amazon SageMaker doesn't emit metrics with a value of zero\.
 
 As a workaround, do either of the following:
-
 + Send requests to the variant until automatic scaling scales down to the minimum capacity
-
 + Change the policy to reduce the maximum provisioned capacity to match the minimum provisioned capacity

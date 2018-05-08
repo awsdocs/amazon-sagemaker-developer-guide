@@ -39,11 +39,8 @@ This example provides an HTML canvas that you can use to draw a number using you
    ```
 
 In the result:
-
 + The **Raw prediction result** is a list of 10 probability values that the model returned as inference, corresponding to the digits 0 through 9\. From these values, the input digit is 7 based on the highest probability value \(0\.7383657097816467\)\.
-
 + The values are listed in order, one value for each digit \(0 through 9\)\. The model added labels to it and returned **Labeled predictions**\.
-
 + Based on the highest probability, our code returned the **Most likely answer** \(digit 7\)\. 
 
 You can now delete the resources that you created in this exercise\. For more information, see [Step 4: Clean up](ex1-cleanup.md)\.

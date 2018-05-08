@@ -24,7 +24,7 @@ Please see the example notebooks for more detail on training and inference forma
 
 LDA currently only supports single\-instance CPU training\. CPU instances are recommended for hosting/inference\.
 
-
+**Topics**
 + [Input/Output Interface](#lda-inputoutput)
 + [EC2 Instance Recommendation](#lda-instances)
 + [How LDA Works](lda-how-it-works.md)

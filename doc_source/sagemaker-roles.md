@@ -28,7 +28,7 @@ Instead of managing permissions by crafting a permission policy, you can use the
 
 For more information about IAM roles, see [IAM Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in the *IAM User Guide*\.
 
-
+**Topics**
 + [CreateNotebookInstance API: Execution Role Permissions](#sagemaker-roles-createnotebookinstance-perms)
 + [CreateTrainingJob API: Execution Role Permissions](#sagemaker-roles-createtrainingjob-perms)
 + [CreateModel API: Execution Role Permissions](#sagemaker-roles-createmodel-perms)
@@ -156,27 +156,20 @@ To tighten the permissions, limit them to specific Amazon S3 and Amazon ECR reso
 If you plan to access other resources, such as Amazon DynamoDB or Amazon Relational Database Service, add the relevant permissions to this policy\.
 
 In the preceding policy, you scope the policy as follows:
-
 + Scope the `s3:ListBucket` permission to the specific bucket that you specify as `InputDataConfig.DataSource.S3DataSource.S3Uri` in a `CreateTrainingJob` request\.
-
 + Scope `s3:GetObject `, `s3:PutObject`, and `s3:DeleteObject` permissions as follows:
-
   + Scope to the following values that you specify in a `CreateTrainingJob` request:
 
     `InputDataConfig.DataSource.S3DataSource.S3Uri`
 
     `OutputDataConfig.S3OutputPath`
-
   + Scope to the following values that you specify in a `CreateModel` request:
 
     `PrimaryContainer.ModelDataUrl`
 
     `SuplementalContainers.ModelDataUrl`
-
 + Scope `ecr` permissions as follows:
-
   + Scope to the `AlgorithmSpecification.TrainingImage` value that you specify in a `CreateTrainingJob` request\.
-
   + Scope to the `PrimaryContainer.Image` value that you specify in a `CreateModel` request:
 
 The `cloudwatch` and `logs` actions are applicable for "\*" resources\. For more information, see [CloudWatch Resources and Operations](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/iam-access-control-overview-cw.html#CloudWatch_ARN_Format) in the Amazon CloudWatch User Guide\.
@@ -265,18 +258,32 @@ Instead of the specifying `"Resource": "*"`, you could scope these permissions t
 If `CreateTrainingJob.AlgorithSpecifications.TrainingImage` needs to access other data sources, such as DynamoDB or Amazon RDS resources, add relevant permissions to this policy\.
 
 In the preceding policy, you scope the policy as follows:
-
 + Scope the `s3:ListBucket` permission to a specific bucket that you specify as the `InputDataConfig.DataSource.S3DataSource.S3Uri` in a `CreateTrainingJob` request\.
-
 + Scope the `s3:GetObject `and `s3:PutObject` permissions to the following objects that you specify in the input and output data configuration in a `CreateTrainingJob` request:
 
   `InputDataConfig.DataSource.S3DataSource.S3Uri`
 
   `OutputDataConfig.S3OutputPath`
-
 + Scope Amazon ECR permissions to the registry path \(`AlgorithmSpecification.TrainingImage`\) that you specify in a `CreateTrainingJob` request\.
 
 The `cloudwatch` and `logs` actions are applicable for "\*" resources\. For more information, see [CloudWatch Resources and Operations](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/iam-access-control-overview-cw.html#CloudWatch_ARN_Format) in the Amazon CloudWatch User Guide\.
+
+If you specify a private VPC for your training job, add the following permissions:
+
+```
+{
+            "Effect": "Allow",
+            "Action": [
+            "ec2:CreateNetworkInterface",
+            "ec2:CreateNetworkInterfacePermission",
+            "ec2:DeleteNetworkInterface",
+            "ec2:DeleteNetworkInterfacePermission",
+            "ec2:DescribeNetworkInterfaces",
+            "ec2:DescribeVpcs",
+            "ec2:DescribeDhcpOptions",
+            "ec2:DescribeSubnets",
+            "ec2:DescribeSecurityGroups"
+```
 
 ## CreateModel API: Execution Role Permissions<a name="sagemaker-roles-createmodel-perms"></a>
 
@@ -353,31 +360,40 @@ Instead of the specifying `"Resource": "*"`, you can scope these permissions to 
 If `CreateModel.PrimaryContainer.Image` need to access other data sources, such as Amazon DynamoDB or Amazon RDS resources, add relevant permissions to this policy\.
 
 In the preceding policy, you scope the policy as follows:
-
 + Scope S3 permissions to objects that you specify in the `PrimaryContainer.ModelDataUrl` in a [CreateModel](API_CreateModel.md) request\.
-
 + Scope Amazon ECR permissions to a specific registry path that you specify as the `PrimaryContainer.Image` and `SecondaryContainer.Image` in a `CreateModel` request\.
 
 The `cloudwatch` and `logs` actions are applicable for "\*" resources\. For more information, see [CloudWatch Resources and Operations](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/iam-access-control-overview-cw.html#CloudWatch_ARN_Format) in the Amazon CloudWatch User Guide\.
 
+If you specify a private VPC for your model, add the following permissions:
+
+```
+{
+            "Effect": "Allow",
+            "Action": [
+            "ec2:CreateNetworkInterface",
+            "ec2:CreateNetworkInterfacePermission",
+            "ec2:DeleteNetworkInterface",
+            "ec2:DeleteNetworkInterfacePermission",
+            "ec2:DescribeNetworkInterfaces",
+            "ec2:DescribeVpcs",
+            "ec2:DescribeDhcpOptions",
+            "ec2:DescribeSubnets",
+            "ec2:DescribeSecurityGroups"
+```
+
 ## Using the AWS Managed Permission Policy \(AmazonSageMakerFullAccess\) for an Execution Role<a name="sagemaker-roles-amazonsagemakerfullaccess-policy"></a>
 
 You can create an execution role one of two ways:
-
 + In the Amazon SageMaker console when you create a notebook instance, training job, or model\.
-
 + In the AWS Identity and Access Management \(IAM\) console\. You then specify the role as you follow the notebook instance, training job, and model creation workflows in the Amazon SageMaker console\.
 
 Regardless of how you create an execution role, you can attach the AWS\-managed permission policy \(AmazonSageMakerFullAccess\) to the role\.
 
 When attaching the AmazonSageMakerFullAccess policy to a role, you must do one of the following to allow Amazon SageMaker to access your S3 bucket:
-
 + Include the string `"SageMaker"` or `"sagemaker"` in the name of the bucket where you store training data, or the model artifacts resulting from model training, or both\.
-
 + Include the string `"SageMaker"` or `"sagemaker"` in the object name of the training data object\(s\)\.
-
 + Tag the S3 object with "sagemaker=true"\. The key and value are case sensitive\. For more information, see [Object Tagging](http://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html) in the Amazon Simple Storage Service Developer Guide\.
-
 + Add a bucket policy that allows access for the execution role\. For more information, see [Using Bucket Policies and User Policies](http://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html) in the Amazon Simple Storage Service Developer Guide\. 
 
 You can attach additional policies that specify the resources for which you want to grant permissions for the `s3:GetObject`, `s3:PutObject`, and `s3:ListBucket` actions\. In the IAM console, you can attach a customer managed policy or an inline policy to your execution role\(s\)\. Alternatively, when you create a role in the Amazon SageMaker console, you can attach a customer managed policy that specifies the S3 buckets\. This resulting execution role has the prefix `"AmazonSageMaker-ExecutionRole-"`\.

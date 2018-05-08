@@ -11,9 +11,7 @@ Given the input of a matrix with rows ![\[x_1,…,x_n\]](http://docs.aws.amazon.
 **Modes**
 
 The Amazon SageMaker PCA algorithm uses either of two modes to calculate these summaries, depending on the situation:
-
 + **regular**: for datasets with sparse data and a moderate number of observations and features\.
-
 + **randomized**: for datasets with both a large number of observations and features\. This mode uses an approximation algorithm\. 
 
 As the algorithm's last step, it performs the singular value decomposition on the unified solution, from which the principal components are then derived\.

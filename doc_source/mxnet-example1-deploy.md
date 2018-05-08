@@ -21,6 +21,9 @@ predictor = mnist_estimator.deploy(initial_instance_count=1,
 
 When the status of the endpoint is INSERVICE the API returns an `MXNetPredictor` object\. Use the `predict` method of this object to obtain inferences\.
 
+**Note**  
+You can deploy a model to an endpoint hosted on your local computer by specifying `local` as the value for `train_instance_type` and `1` as the value for `train_instance_count`\. For more information about local mode, see [https://github.com/aws/sagemaker-python-sdk#local-mode](https://github.com/aws/sagemaker-python-sdk#local-mode) in the *Amazon SageMaker Python SDK*\.
+
 ## Next Step<a name="mxnet-example1-deploy-nexttopic"></a>
 
  [Step 4 : Invoke the Endpoint to Get Inferences ](mxnet-example-invoke.md) 

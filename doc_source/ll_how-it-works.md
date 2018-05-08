@@ -8,11 +8,8 @@ We assume that the input data is shuffled\. If not, for example if the data is o
 If the option is turned on, the algorithm first goes over a small sample of the data to learn its characteristics\. For every feature and for the label, you learn the mean value and the standard deviation\. 
 
 This information is used during training\. Based on the configuration, you normalize the data\. That is, you shift it to have mean zero and scale it to have unit standard deviation\. When the *auto* \(default\) value is specified to decide the normalization you: 
-
 + Shift and scale the label for regression problems, and leave it as is for classification problems
-
 + Always scale the features
-
 + Shift the features only for dense data
 
 ## Step 2: Training<a name="step2-training"></a>

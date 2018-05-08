@@ -9,87 +9,73 @@ If necessary, you can change the notebook instance settings, including the ML co
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\. 
 
-1. Choose **Notebook instances**, and then choose **Create notebook instance**\.  
+1. Choose **Notebook instances**, then choose **Create notebook instance**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/create-workspace-10.png)
 
 1. On the **Create notebook instance** page, provide the following information: 
 
-   + For **Notebook instance name**, type **ExampleNotebookInstance**\.
+   1. For **Notebook instance name**, type **ExampleNotebookInstance**\.
 
-   + For **Instance type**, choose **ml\.t2\.medium**\.
+   1. For **Instance type**, choose **ml\.t2\.medium**\.
 
-   + For **IAM role**, create an IAM role\.
+   1. For **IAM role**, create an IAM role\.
 
-     1. Choose **Create a new role**\.   
+      1. Choose **Create a new role**\.   
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/create-workspace-20.png)
 
-     1. Choose additional S3 buckets that you want to use with Amazon SageMaker\. 
+      1. \(Optional\) If you want to use S3 buckets other than the one you created in Step 1 of this tutorial to store your input data and output, choose them\. 
 
-         
+         In Step 1 of this tutorial, you created an S3 bucket with `sagemaker` in its name\. This IAM role automatically has permissions to use that bucket\. The `AmazonSageMakerFullAccess` policy, which Amazon SageMaker attaches to the role, gives the role those permissions\. 
 
-        In the preceding section, you created a bucket with `sagemaker` in its name\. This IAM role automatically has the S3 permissions to use that bucket through the `AmazonSageMakerFullAccess` policy that Amazon SageMaker attaches to the role\. The bucket you created is sufficient for the model training exercise in Getting Started\. However, as you explore Amazon SageMaker, you might access other S3 buckets from your notebook instance\. Amazon SageMaker will need permissions to access those buckets\.
+         The bucket that you created in Step 1 is sufficient for the model training exercise in Getting Started\. However, as you explore Amazon SageMaker, you might want to access other S3 buckets from your notebook instance\. Give Amazon SageMaker permissions to access those buckets\.
 
-         
+         **To access more S3 buckets from your Amazon SageMaker notebook instance**
 
-        You can also choose to access additional S3 buckets from your Amazon SageMaker notebook instance:
+         1. If you're not concerned about users in your AWS account accessing your data, choose **Any S3 bucket**\.
 
-         
+         1. If your account has sensitive data \(such as Human Resources information\), restrict access by choosing **Specific S3 buckets**\. You can update the permissions policy attached to the role you are creating later\.
 
-        + If you're not concerned about users in your AWS account accessing your data, choose **Any S3 bucket**\.
+            To explicitly control access, Restrict access by choosing **None**\. use bucket and object names and tags as supported by the `AmazonSageMakerFullAccess` policy\. For more information, see [Using the AWS Managed Permission Policy \(AmazonSageMakerFullAccess\) for an Execution Role](sagemaker-roles.md#sagemaker-roles-amazonsagemakerfullaccess-policy)\.
 
-           
+      1. Choose **Create role**\.
 
-        + If your account has sensitive data \(such as Human Resources information\), restrict access by choosing **Specific S3 buckets**\. You can update the permissions policy attached to the role you are creating later\.
+         Amazon SageMaker creates an IAM role named `AmazonSageMaker-ExecutionRole-YYYYMMDDTHHmmSS`\. For example, `AmazonSageMaker-ExecutionRole-20171125T090800`\.
 
-           
+         To see the policies that are attached to the role, use the IAM console\. Open the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\. The following policies are attached to the role:
+         + A trust policy that allows Amazon SageMaker to assume the role\. 
+         + The `AmazonSageMakerFullAccess` AWS managed policy\. 
+         + If you specified access to additional S3 bucket\(s\) when creating theis role, the customer managed policy attached to the role\. The name of the customer managed policy is `AmazonSageMaker-ExecutionPolicy-YYYYMMDDTHHmmSS`\. 
 
-        + Restrict access by choosing **None**\. To explicitly control access, use bucket and object names and tags as supported by the `AmazonSageMakerFullAccess` policy\. For more information, see [Using the AWS Managed Permission Policy \(AmazonSageMakerFullAccess\) for an Execution Role](sagemaker-roles.md#sagemaker-roles-amazonsagemakerfullaccess-policy)\.
+         For more information about creating your own IAM role, see [Amazon SageMaker Roles ](sagemaker-roles.md)\. 
 
-         
+   1. \(Optional\) Choose to access resources in a Virtual Private Cloud \(VPC\)\. 
 
-     1. Choose **Create role**\.
+      **To access resources in your VPC from the notebook instance**
 
-        Amazon SageMaker creates an IAM role\. The role name has this form: `AmazonSageMaker-ExecutionRole-YYYYMMDDTHHmmSS`\. For example, `AmazonSageMaker-ExecutionRole-201711125T090800`\.
+      1. Choose the **VPC** and a **SubnetId**\.
 
-         
+      1. For **Security Group**, choose your VPCs default security group\. For the exercises in this guide, the inbound and outbound rules of the default security group are sufficient\. 
 
-        You can view this role in the IAM console\. Observe the following policies attached to the role:
+      1. To enable connecting to a resource in your VPC, ensure that the resource resolves to a private IP address in your VPC\. For example, to ensure that an Amazon Redshift DNS name resolves to a private IP address, do one of the following: 
+         + Ensure that the Amazon Redshift cluster is not publicly accessible\. 
+         + If the Amazon Redshift cluster is publicly accessible, set the `DNS resolution` and `DNS hostnames` VPC parameters to `true`\. For more information, see [Managing Clusters in an Amazon Virtual Private Cloud \(VPC\)](http://docs.aws.amazon.com//redshift/latest/mgmt/managing-clusters-vpc.html) 
 
-         
+   1. If you chose to access resources from your VPC, enable direct internet access\. For **Direct internet access**, choose **Enable**\. Otherwise, this notebook instance won't have internet access\. Without internet access, you can't train or host models from notebooks on this notebook instance unless your VPC has a NAT gateway and your security group allows outbound connections\. For more information, see [Notebook Instances Are Enabled with Internet Access by Default](appendix-additional-considerations.md#appendix-notebook-and-internet-access)\. 
 
-        + The trust policy allows Amazon SageMaker to assume the role\. 
+   1. \(Optional\) To use shell scripts that run when you create or start the instance, specify a lifecycle configuration\. For information, see [Step 2\.1: \(Optional\) Customize a Notebook Instance ](notebook-lifecycle-config.md)
 
-        + The role has the `AmazonSageMakerFullAccess` AWS managed policy attached\. 
+   1. \(Optional\) If you want Amazon SageMaker to use an AWS Key Management Service key to encrypt data in the ML storage volume attached to the notebook instance, specify the key\. 
 
-           
+   1. Choose **Create notebook instance**\. 
 
-          If you specified additional S3 bucket\(s\) when creating the IAM role, view the customer managed policy attached to the role\. The name of the customer managed policy has this form: `AmazonSageMaker-ExecutionPolicy-YYYYMMDDTHHmmSS`\. 
+      In a few minutes, Amazon SageMaker launches an ML compute instance—in this case, a notebook instance—and attaches an ML storage volume to it\. The notebook instance has a preconfigured Jupyter notebook server and a set of Anaconda libraries\. For more information, see the [CreateNotebookInstance](API_CreateNotebookInstance.md) API\. 
 
-        For more information about creating your own IAM role, see [Amazon SageMaker Roles ](sagemaker-roles.md)\. 
-
-         
-
-   + Choosing a Virtual Private Cloud \(VPC\) is optional for this exercise\. 
-**Note**  
-If you want to access resources in your VPC from the notebook instance, choose a VPC and a **SubnetId**\. For **Security Group**, choose the default security group of the selected VPC\. The inbound and outbound rules of the default security group are sufficient for the exercises in this guide\.   
-To connect to a resource in your VPC, the resource must resolve to a private IP address in your VPC\. For example, to ensure that an Amazon Redshift DNS name resolves to a private IP address, ensure one of the following:   
-The Amazon Redshift cluster is not publicly accessible\.
-If the Amazon Redshift cluster is publicly accessible, set the `DNS resolution` and `DNS hostnames` VPC parameters to `true`\. For information on how to set those parameters, see [Managing Clusters in an Amazon Virtual Private Cloud \(VPC\)](http://docs.aws.amazon.com//redshift/latest/mgmt/managing-clusters-vpc.html) 
-
-   + Specifying a KMS encryption key is optional for this exercise\. Specify one if you want Amazon SageMaker to use the key to encrypt data in the ML storage volume attached to the notebook instance\.
-
-1. Choose **Create notebook instance**\. 
-
-   This launches a ML compute instance, in this case, a notebook instance, and attaches an ML storage volume to it\. For more information, see the [CreateNotebookInstance](API_CreateNotebookInstance.md) API\. 
-
-1. It takes a few minutes to create the notebook instance\. The notebook instance provides you with a preconfigured Jupyter notebook server and a set of Anaconda libraries\. When the status of the notebook instance is `InService`, choose **Open** next to the notebook instance's name\. The Juypter dashboard appears:  
+1. When the status of the notebook instance is `InService`, choose **Open** next to its name to open the Juypter dashboard\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/ironman-jupyter-home-page.png)
 
-   The following are available in the dashboard:
-
-   + In **Files**, there is a `sample_notebook` folder, which contains a number of sample notebooks\. For more information about them, see [GitHub repository](https://github.com/awslabs/amazon-sagemaker-examples)\.
-
-   + Amazon SageMaker provides several kernels for Jupyter, including ones that provide support for Python 2 and 3, MXNet, TensorFlow, and PySpark\. To choose a kernel for your notebook, use the **New** menu\. 
+   The dashboard provides access to:
+   + A folder that contains sample notebooks\. To use a sample notebook, on the **Files** tab, choose the `sample_notebook` folder\. For information about the sample notebooks, see the Amazon SageMaker [GitHub repository](https://github.com/awslabs/amazon-sagemaker-examples)\.
+   + The kernels for Jupyter, including those that provide support for Python 2 and 3, Apache MXNet, TensorFlow, and PySpark\. To choose a kernel for your notebook instance, use the **New** menu\. 
 
    For more information, see [The Jupyter notebook](https://jupyter-notebook.readthedocs.io/en/stable/)\.
 

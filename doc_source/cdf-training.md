@@ -5,16 +5,14 @@ To prepare for training, you can preprocess your data using a variety of AWS ser
 When using Amazon SageMaker in the training portion of the algorithm, make sure to upload all data at once\. If more data is added to that location, a new training call would need to be made to construct a brand new model\.
 
  For training, it needs to go through a series of conversions and transformations, including: 
-
 + Training data serialization \(handled by you\) 
-
 + Training data deserialization \(handled by the algorithm\) 
-
 + Training model serialization \(handled by the algorithm\) 
-
 + Trained model deserialization \(optional, handled by you\) 
 
 ## Training Data Serialization<a name="td-serialization"></a>
+
+Many Amazon SageMaker algorithms support training with data in the CSV format\. Please see the individual algorithm pages, or this [page](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html) for a summary of supported data formats by algorithm\. To use CSVs for training, please specify a [ContentType](https://docs.aws.amazon.com/sagemaker/latest/dg/API_Channel.html#SageMaker-Type-Channel-ContentType) of 'text/csv' in the input data channel specification\. Amazon SageMakerr requires the CSV to not have a header record and assumes the target variable is in the first column, with features in subsequent columns\. This can be changed for unsupervised learning tasks like k\-means, which do not have a target column, by specifying the number of label columns in the content type\. For example, 'text/csv;label\_size=0'\. 
 
 Amazon SageMaker algorithms work best with the optimized protobuf [recordIO]( https://mxnet.incubator.apache.org/architecture/note_data_loading.html#data-format ) format\. In the following code, each observation in the dataset is converted into a binary representation as a set of 4\-byte floats and is then loaded to the protobuf “values” field\. 
 
@@ -149,7 +147,7 @@ syntax = "proto2";
  }
 ```
 
-After creating the protocol buffer is created, store it in an S3 location that is accessible by Amazon SageMaker, and passed as part of `InputDataConfig` in `create_training_job`\. 
+After creating the protocol buffer, store it in an S3 location that is accessible by Amazon SageMaker, and passed as part of `InputDataConfig` in `create_training_job`\. 
 
 **Note**  
 For all Amazon SageMaker algorithms, the `ChannelName` in `InputDataConfig` must be set to `train`\. Some algorithms also support a validation `input channel`\. 

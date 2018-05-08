@@ -17,9 +17,9 @@ Please see example notebooks for more details on training and inference file for
 
 ## EC2 Instance Recommendation<a name="fm-instances"></a>
 
-We recommend training and inference with CPU instances for both sparse and dense datasets\. In some circumstances, training with GPUs on dense data might provide some benefit\. Training with GPUs is available only on dense data\. Use CPU instances for sparse data\.
+Amazon SageMaker's Factorization Machines algorithm is highly scalable and can train across distributed instances\. We recommend training and inference with CPU instances for both sparse and dense datasets\. In some circumstances, training with one or more GPUs on dense data might provide some benefit\. Training with GPUs is available only on dense data\. Use CPU instances for sparse data\.
 
-
+**Topics**
 + [Input/Output Interface](#fm-inputoutput)
 + [EC2 Instance Recommendation](#fm-instances)
 + [How Factorization Machines Work](fact-machines-howitworks.md)

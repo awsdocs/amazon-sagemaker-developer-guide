@@ -5,21 +5,14 @@
 If you choose to host your model using Amazon SageMaker hosting services, you can use the resulting model artifacts as part of the model\. You can also use the artifacts in a deep learning service other than Amazon SageMaker, provided that you know how to use them for inferences\. 
 
 In the request body, you provide the following: 
-
 +  `AlgorithmSpecification` \- Identifies the training algorithm to use\. 
-
 +  `HyperParameters` \- Specify these algorithm\-specific parameters to influence the quality of the final model\. For a list of hyperparameters for each training algorithm provided by Amazon SageMaker, see [Algorithms](http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)\. 
-
 +  `InputDataConfig` \- Describes the training dataset and the Amazon S3 location where it is stored\.
-
 +  `OutputDataConfig` \- Identifies the Amazon S3 location where you want Amazon SageMaker to save the results of model training\. 
 
   
-
 +  `ResourceConfig` \- Identifies the resources, ML compute instances, and ML storage volumes to deploy for model training\. In distributed training, you specify more than one instance\. 
-
 +  `RoleARN` \- The Amazon Resource Number \(ARN\) that Amazon SageMaker assumes to perform tasks on your behalf during model training\. You must grant this role the necessary permissions so that Amazon SageMaker can successfully complete model training\. 
-
 +  `StoppingCondition` \- Sets a duration for training\. Use this parameter to cap model training costs\. 
 
  For more information about Amazon SageMaker, see [How It Works](http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html)\. 
@@ -70,7 +63,11 @@ In the request body, you provide the following:
          "[Value](API_Tag.md#SageMaker-Type-Tag-Value)": "string"
       }
    ],
-   "[TrainingJobName](#SageMaker-CreateTrainingJob-request-TrainingJobName)": "string"
+   "[TrainingJobName](#SageMaker-CreateTrainingJob-request-TrainingJobName)": "string",
+   "[VpcConfig](#SageMaker-CreateTrainingJob-request-VpcConfig)": { 
+      "[SecurityGroupIds](API_VpcConfig.md#SageMaker-Type-VpcConfig-SecurityGroupIds)": [ "string" ],
+      "[Subnets](API_VpcConfig.md#SageMaker-Type-VpcConfig-Subnets)": [ "string" ]
+   }
 }
 ```
 
@@ -81,7 +78,7 @@ For information about the parameters that are common to all actions, see [Common
 The request accepts the following data in JSON format\.
 
  ** [AlgorithmSpecification](#API_CreateTrainingJob_RequestSyntax) **   <a name="SageMaker-CreateTrainingJob-request-AlgorithmSpecification"></a>
-The registry path of the Docker image that contains the training algorithm and algorithm\-specific metadata, including the input mode\. For more information about algorithms provided by Amazon SageMaker, see [Algorithms](http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)\. For information about providing your own algorithms, see [Bring Your Own Algorithms ](http://docs.aws.amazon.com/sagemaker/latest/dg/adv-topics-own-algo.html)\.   
+The registry path of the Docker image that contains the training algorithm and algorithm\-specific metadata, including the input mode\. For more information about algorithms provided by Amazon SageMaker, see [Algorithms](http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)\. For information about providing your own algorithms, see [Using Your Own Algorithms with Amazon SageMaker](your-algorithms.md)\.   
 Type: [AlgorithmSpecification](API_AlgorithmSpecification.md) object  
 Required: Yes
 
@@ -139,6 +136,11 @@ Length Constraints: Minimum length of 1\. Maximum length of 63\.
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: Yes
 
+ ** [VpcConfig](#API_CreateTrainingJob_RequestSyntax) **   <a name="SageMaker-CreateTrainingJob-request-VpcConfig"></a>
+A [VpcConfig](API_VpcConfig.md) object that specifies the VPC that you want your training job to connect to\. Control access to and from your training container by configuring the VPC\. For more information, see [Protect Training Jobs by Using an Amazon Virtual Private Cloud](train-vpc.md)   
+Type: [VpcConfig](API_VpcConfig.md) object  
+Required: No
+
 ## Response Syntax<a name="API_CreateTrainingJob_ResponseSyntax"></a>
 
 ```
@@ -157,7 +159,7 @@ The following data is returned in JSON format by the service\.
 The Amazon Resource Name \(ARN\) of the training job\.  
 Type: String  
 Length Constraints: Maximum length of 256\.  
-Pattern: `arn:aws:sagemaker:[\p{Alnum}\-]*:[0-9]{12}:training-job/.*` 
+Pattern: `arn:aws[a-z\-]*:sagemaker:[\p{Alnum}\-]*:[0-9]{12}:training-job/.*` 
 
 ## Errors<a name="API_CreateTrainingJob_Errors"></a>
 
@@ -174,21 +176,12 @@ HTTP Status Code: 400
 ## See Also<a name="API_CreateTrainingJob_SeeAlso"></a>
 
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
-
 +  [AWS Command Line Interface](http://docs.aws.amazon.com/goto/aws-cli/sagemaker-2017-07-24/CreateTrainingJob) 
-
 +  [AWS SDK for \.NET](http://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/CreateTrainingJob) 
-
 +  [AWS SDK for C\+\+](http://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/CreateTrainingJob) 
-
 +  [AWS SDK for Go](http://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/CreateTrainingJob) 
-
 +  [AWS SDK for Java](http://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/CreateTrainingJob) 
-
 +  [AWS SDK for JavaScript](http://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/CreateTrainingJob) 
-
 +  [AWS SDK for PHP V3](http://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/CreateTrainingJob) 
-
 +  [AWS SDK for Python](http://docs.aws.amazon.com/goto/boto3/sagemaker-2017-07-24/CreateTrainingJob) 
-
 +  [AWS SDK for Ruby V2](http://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/CreateTrainingJob) 

@@ -1,17 +1,13 @@
 # Step 3\.3\.2: Create a Training Job<a name="ex1-train-model-create-training-job"></a>
 
 To train a model, Amazon SageMaker provides the [CreateTrainingJob](API_CreateTrainingJob.md) API\. You provide the following information when making this API call:
-
 + The training algorithm—Specify the registry path of the Docker image that contains the training code\. For the registry paths for the algorithms provided by Amazon SageMaker, see [Algorithms Provided by Amazon SageMaker: Common Parameters ](sagemaker-algo-docker-registry-paths.md)\. In the following examples, when using the high\-level Python library, you don't need to explicitly specify this path\. The `sagemaker.amazon.kmeans.KMeans` object knows the path\.
-
 + Algorithm\-specific hyperparameters—Specify algorithm\-specific hyperparameters to influence the final quality of the model\. For information, see [K\-Means Hyperparameters](k-means-api-config.md)\.
-
 + The input and output configuration—Provide the S3 bucket where training data is stored and where Amazon SageMaker saves the results of model training \(the model artifacts\)\. 
 
 The low\-level AWS SDK for Python provides the corresponding `create_training_job` method and the high\-level Python library provide the `fit` method\. 
 
 To train the model, choose one of the following options\. 
-
 + **Use the high\-level Python library provided by Amazon SageMaker**\.
 
   This Python library provides the `KMeans` estimator, which is a class in the `sagemaker.amazon.kmeans.KMeans` module\. To start model training, call the `fit` method\. 
@@ -36,15 +32,10 @@ To train the model, choose one of the following options\.
      ```
 
      In the constructor, you specify the following parameters:
-
      + `role`— The IAM role that Amazon SageMaker can assume to perform tasks on your behalf \(for example, reading training results, called model artifacts, from the S3 bucket and writing training results to Amazon S3\)\.
-
      + `output_path`—The S3 location where Amazon SageMaker stores the training results\.
-
      + `train_instance_count` and `train_instance_type`—The type and number of ML compute instances to use for model training\.
-
      + `k`—The number of clusters to create\. For more information, see [K\-Means Hyperparameters](k-means-api-config.md)\.
-
      + `data_location`—The S3 location where the high\-level library uploads the transformed training data\. 
 
   1. To start model training, call the `KMeans` estimator's `fit` method\. 
@@ -58,7 +49,6 @@ To train the model, choose one of the following options\.
      This is a synchronous operation\. The method displays progress logs and waits until training completes before returning\. For more information about model training, see [Training a Model with Amazon SageMaker ](how-it-works-training.md)\.
 
      The model training in this example takes about 15 minutes\.
-
 + **Use the SDK for Python**\.
 
   This low\-level SDK for Python provides the `create_training_job` method, which maps to the [CreateTrainingJob](API_CreateTrainingJob.md) Amazon SageMaker API\. 
