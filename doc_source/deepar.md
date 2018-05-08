@@ -22,16 +22,16 @@ The following is an example of JSON data:
 ```
 {"start":"2009-11-01 00:00:00", "target": [4.3, 10.3, ...], "cat": 0}
 {"start":"2012-01-30 00:00:00", "target": [1.0, -5.0, ...], "cat": 2}
-{"start":"1999-01-30 00:00:00", "target": [2.0, 1.0], "cat": 0}
+{"start":"1999-01-30 00:00:00", "target": [2.0, 1.0], "cat": 1}
 ```
 
 For Parquet, you use the same three fields as columns\. In addition, `"start"` can be the `datetime` type\. `gzip` and `snappy` compression types are also supported\.
 
 For training data:
 + All time series must have the same time unit: minutes, hours, days, weeks, or months\.
-+ To train an accurate model, the training set should contain a sufficient number of time series \(typically at least a few hundred\) and should cover a representative time range\. For example, one or more years when yearly seasonal patterns occur\.\.
++ To train an accurate model, the training set should contain a sufficient number of time series \(typically at least a few hundred\) and should cover a representative time range\. For example, one or more years when yearly seasonal patterns occur\.
 + The training file should be shuffled\. In other words, the time series should occur in a random order in the file\.
-+ If you use the categorical feature \(`"cat"`\), all time series must have this feature\. It's required that you provide the largest value of \(`"cat"`\), and all values between 0 and this largest value must be present in the training data\.
++ If you use the categorical feature \(`"cat"`\), all time series must have this feature\. It's required that you provide the range of `"cat"` \(see [DeepAR Hyperparameters](deepar_hyperparameters.md)\), and all values in such range must be present in the training data\.
 
 If you specify optional test channel data, the DeepAR algorithm evaluates the trained model with different accuracy metrics\. The algorithm calculates the root mean square error \(RMSE\) over the test data as follows:
 
@@ -45,9 +45,9 @@ In addition, the accuracy of the forecast distribution is evaluated using weight
 
 Here, *q**i*,*t*\(τ\) is the τ\-quantile of the distribution that the model predicts\. Set the *test\_quantiles* hyperparameter to specify which quantiles for which the algorithm calculates quantile loss\. For information, see [DeepAR Hyperparameters](deepar_hyperparameters.md)\. 
 
-If you have a set of time series, as simple way to prepare, test, and train datasets is as follows:
-+ Use the full dataset in the training channel\.
-+ In the test channel, remove the last `prediction_length` points from each time series\.
+If you have a set of time series, a simple way to prepare train and test datasets is as follows:
++ Use the full dataset in the test channel\.
++ In the train channel, remove the last `prediction_length` points from each time series\.
 
 This ensures that the model does not see the removed points during training, and then those points are used for calculating the accuracy of the model\.
 
@@ -65,13 +65,13 @@ For information on the mathematics behind DeepAR, see [DeepAR: Probabilistic For
 
 No, unobserved, missing values, and nan values are not currently supported\. 
 
-**Q: Do all time\-series require the same length or the same starting point?**
+**Q: Do all time series require the same length or the same starting point?**
 
-No, the time\-series can have arbitrary starting points and arbitrary length\. \(Note, however, that time series shorter than `prediction_length` are ignored during training\)\.
+No, the time series can have arbitrary starting points and arbitrary length\. \(Note, however, that time series shorter than `prediction_length` are ignored during training\)\.
 
 **Q: Is there a one\-to\-one relation between the training set and the test set?**
 
-No, time\-series in the training set are used to train the model\. After that, the trained model can be used to generate forecasts for the future of the time series used in the training set, or for other time series that were not previously included\.
+No, time series in the training set are used to train the model\. After that, the trained model can be used to generate forecasts for the future of the time series used in the training set, or for other time series that were not previously included\.
 
 **Q: Do I need to train one model per time series?**
 
@@ -83,19 +83,19 @@ Currently, only signel categorical features are supported\. In particular we do 
 
 **Q: How do I use the categorical feature?**
 
-The categorical feature `cat` can be used to encode a grouping\. If the time\-series belong to `N` different groups, you can encode each such group by a number \(`0 to N - 1`\)\. The model can then use the categorical feature to generate better forecasts\. To use this feature, the parameter `cardinality` has to be set to the number of groups \(e\.g\. `N`\) and the `embedding_dimension` parameter also has to be set\. The embedding dimension is typically smaller than `cardinality`, for instance `log(N)`\. It is important to remember that, in the training set, all categories from `0 to N - 1` must be present in the training data or an otherwise an exception will be thrown\. This is occurs because during inference, we can only forecast for categories which we have previously seen in training\.
+The categorical feature `cat` can be used to encode a grouping\. If the time series belong to `N` different groups, you can encode each such group by a number \(`0 to N - 1`\)\. The model can then use the categorical feature to generate better forecasts\. To use this feature, the parameter `cardinality` has to be set to the number of groups \(e\.g\. `N`\) and the `embedding_dimension` parameter also has to be set\. If any of these two hyperparameters are not set, then the `cat` field will be ignored. The embedding dimension is typically smaller than `cardinality`, for instance `log(N)`\. It is important to remember that, in the training set, all categories from `0 to N - 1` must be present in the training data or an otherwise an exception will be thrown\. This is occurs because during inference, we can only forecast for categories which we have previously seen in training\.
 
 **Q: Can I pass multiple files?**
 
 Yes\. The training folder and the test folder can each contain multiple files\. The file names can be arbitrary, but the file ending should be `.json`, `.gz.json` or `.parquet`\. For example: `s3://mybucket/myfolder/train/data-1.parquet` or `s3://mybucket/myfolder/train/data-2.parquet`\. 
 
-**Q: Can I use this to train on a single time\-series?**
+**Q: Can I use this to train on a single time series?**
 
-Models need sufficient data in order to learn typical behavior\. A single or small number of time\-series are typically not sufficient for training the neural network \(unless the time\-series are very long\)\. While a DeepAR model trained on a single time\-series will usually still generate sensible forecasts, standard forecasting methods such as ARIMA or ETS may be more accurate and stable\. Where the DeepAR approach starts to outperform the standard methods is when your dataset contains hundreds of time\-series and thus can be significantly more accurate with more data\. 
+Models need sufficient data in order to learn typical behavior\. A single or small number of time series are typically not sufficient for training the neural network \(unless the time series are very long\)\. While a DeepAR model trained on a single time series will usually still generate sensible forecasts, standard forecasting methods such as ARIMA or ETS may be more accurate and stable\. Where the DeepAR approach starts to outperform the standard methods is when your dataset contains hundreds of time series and thus can be significantly more accurate with more data\. 
 
 **Q: Do I need to split data into train/test set for evaluation?**
 
-It can be useful\. The time series in the `train` channel is used for training the model\. The time\-series in the `test` channel are used for evaluation after the model is trained\. For the evaluation, the last `prediction_length` points of each time\-series in the test set are withheld and a prediction is generated\. The forecast is then compared with the actual last `prediction_length` points\. Starting from a dataset of time\-series, the simplest train / test split can be created by using the entire dataset in the test channel \(in other words, all\-time series of full length\)\. For the train channel you can then remove the last `prediction_length` points from each time\-series so that the model does not see these points during training\. You can create more complex evaluations by repeating time\-series multiple times in the test set, but cutting them at different end points, resulting in accuracy metrics that are averaged over multiple forecasts from different time points\. 
+It is not necessary, but can be useful\. The time series in the `train` channel is used for training the model\. The time series in the `test` channel are used for evaluation after the model is trained\. For the evaluation, the last `prediction_length` points of each time series in the test set are withheld and a prediction is generated\. The forecast is then compared with the actual last `prediction_length` points\. Starting from a dataset of time series, the simplest train / test split can be created by using the entire dataset in the test channel \(in other words, all\-time series of full length\)\. For the train channel you can then remove the last `prediction_length` points from each time series so that the model does not see these points during training\. You can create more complex evaluations by repeating time series multiple times in the test set, but cutting them at different end points, resulting in accuracy metrics that are averaged over multiple forecasts from different time points\. 
 
 **Q: Can the forecast horizon be changed later?**
 
