@@ -10,7 +10,7 @@ For inference, the trained model takes as input an individual time series, which
 
 DeepAR supports two data channels\. The train channel is used for training a model and is required\. The test channel is optional\. If the test channel is present, the algorithm uses it to calculate accuracy metrics for the model after training\. You can provide datasets as JSON or [Parquet](https://parquet.apache.org/) files\.
 
-By default, the model determines the input format from the file extension \(either `.json` or `.parquet`\. If you provide input files with different extensions, you can specify the file type by setting the `ContentType` parameter of the [Channel](API_Channel.md) data type\. 
+By default, the model determines the input format from the file extension \(either `.json` or `.parquet`\). If you provide input files with different extensions, you can specify the file type by setting the `ContentType` parameter of the [Channel](API_Channel.md) data type\. 
 
 If you use a JSON file, it must be in the [JSON Lines](http://jsonlines.org/) format, where each record contains the following fields:
 + `"start"` whose value is a string of the format `YYYY-MM-DD HH:MM:SS`\.
@@ -45,7 +45,7 @@ In addition, the accuracy of the forecast distribution is evaluated using weight
 
 Here, *q**i*,*t*\(τ\) is the τ\-quantile of the distribution that the model predicts\. Set the *test\_quantiles* hyperparameter to specify which quantiles for which the algorithm calculates quantile loss\. For information, see [DeepAR Hyperparameters](deepar_hyperparameters.md)\. 
 
-If you have a set of time series, as simple way to prepare, test, and train datasets is as follows:
+If you have a set of time series, a simple way to prepare, test, and train datasets is as follows:
 + Use the full dataset in the training channel\.
 + In the test channel, remove the last `prediction_length` points from each time series\.
 
