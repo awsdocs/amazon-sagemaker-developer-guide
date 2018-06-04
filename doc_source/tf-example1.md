@@ -27,9 +27,7 @@ The Iris flower training dataset used in this exercise contains 150 rows of data
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/iris-dataset.png)
 
 For this exercise, the dataset is randomized and split into two \.csv files:
-
 + A training dataset of 120 samples \(`iris_training.csv`\)
-
 + A test dataset of 30 samples \(`iris_test.csv`\)
 
 ### Next Step<a name="tf-example1-nexttopic"></a>

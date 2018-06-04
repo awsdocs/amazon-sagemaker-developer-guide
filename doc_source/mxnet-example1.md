@@ -20,7 +20,7 @@ In this example, you do the following
 
 1. Test the model\. The example provides an HTML canvas in the notebook where you can write a single\-digit number using your mouse\. The image of the number is then sent to the model for inference\. 
 
-
+**Topics**
 + [Step 1: Create a Notebook and Initialize Variables](mxnet-example1-prepare.md)
 + [Step 2: Train a Model on Amazon SageMaker Using Apache MXNet Custom Code](mxnet-part1-train.md)
 + [Step 3 : Deploy the Trained Model](mxnet-example1-deploy.md)

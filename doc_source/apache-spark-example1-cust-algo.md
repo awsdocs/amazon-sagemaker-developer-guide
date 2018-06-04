@@ -27,21 +27,16 @@ val estimator = new SageMakerEstimator(
 ```
 
 In the code, the parameters in the `SageMakerEstimator` constructor include:
-
 + `trainingImage` —Identifies the Docker registry path to the training image containing your custom code\.
-
 + `modelImage` —Identifies the Docker registry path to the image containing inference code\.
-
 + `requestRowSerializer` —Implements `com.amazonaws.services.sagemaker.sparksdk.transformation.RequestRowSerializer`\.
 
   This parameter serializes rows in the input `DataFrame` to send them to the model hosted in Amazon SageMaker for inference\.
-
 + `responseRowDeserializer` —Implements 
 
   `com.amazonaws.services.sagemaker.sparksdk.transformation.ResponseRowDeserializer`\.
 
   This parameter deserializes responses from the model, hosted in Amazon SageMaker, back into a `DataFrame`\.
-
 + `trainingSparkDataFormat` —Specifies the data format that Spark uses when uploading training data from a `DataFrame` to S3\. For example, "sagemaker" for protobuf format, "csv" for comma separated values, and "libsvm" for LibSVM format\. 
 
 You can implement your own `RequestRowSerializer` and `ResponseRowDeserializer` to serialize and deserialize rows from a data format that your inference code supports, such as libsvm or \.csv\.

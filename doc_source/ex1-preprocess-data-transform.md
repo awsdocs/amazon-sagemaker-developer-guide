@@ -6,11 +6,9 @@ For efficient model training, transform the dataset from the `numpy.array` forma
 For this and subsequent steps, you can choose to use the high\-level Python library provided by Amazon SageMaker or the low\-level AWS SDK for Python \(Boto\)\. If you're a first\-time user of Amazon SageMaker, we recommend that you follow the code examples for the high\-level Python library\. 
 
 To transform the dataset, choose one of the following options
-
 + **Use the high\-level Python library provided by Amazon SageMaker**
 
   If you are using the high\-level Python library, you skip this step and go to the next step\. In the next section, you use the `fit` method for model training, which performs the necessary transformation and upload to S3 before starting a model training job\.
-
 + **Use the SDK for Python**
 
   The following code first uses the high\-level Python library function, `write_numpy_to_dense_tensor`, to convert the training data into the protobuf format, which is efficient for model training\. Then the code uses the SDK for Python low\-level API to upload data to S3\. 

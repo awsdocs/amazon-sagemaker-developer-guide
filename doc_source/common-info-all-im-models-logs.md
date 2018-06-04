@@ -6,13 +6,9 @@ Amazon SageMaker algorithms produce Amazon CloudWatch logs, which provide detail
 If a job fails and logs do not appear in CloudWatch, it's likely that an error occurred before the start of training\. Reasons include specifying the wrong training image or S3 location\.
 
 The contents of logs vary by algorithms\. However, you can typically find the following information:
-
 + Confirmation of arguments provided at the beginning of the log
-
 + Errors that occurred during training
-
 + Measurement of an algorithms accuracy or numerical performance
-
 + Timings for the algorithm, and any major stages within the algorithm
 
 ## Example Errors<a name="example-errors"></a>

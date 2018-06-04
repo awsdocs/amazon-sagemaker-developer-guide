@@ -2,7 +2,7 @@
 
 You can configure automatic scaling for a variant with the AWS Management Console, the AWS CLI, or the Application Auto Scaling API\.
 
-
+**Topics**
 + [Configure Automatic Scaling for a Variant \(Console\)](#endpoint-auto-scaling-add-console)
 + [Configure Automatic Scaling for a Variant \(AWS CLI or the Application Auto Scaling API\)](#endpoint-auto-scaling-add-code)
 
@@ -39,14 +39,11 @@ You can configure automatic scaling for a variant with the AWS Management Consol
 1. Choose **Save**\.
 
 This procedure registers a variant as a scalable target with Application Auto Scaling\. When you register a variant, Application Auto Scaling performs validation checks to ensure the following:
-
 + The variant exists
-
 + The permissions are sufficient
-
-+ You aren't registering a variant with an instance that is a burstable performance instance
++ You aren't registering a variant with an instance that is a burstable performance instance such as T2
 **Note**  
-Amazon SageMaker automatic scaling doesn't support automatic scaling for burstable instances, because they already allow for increased capacity under increased workloads\. For information about burstable performance instances, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
+Amazon SageMaker automatic scaling doesn't support automatic scaling for burstable instances such as T2, because they already allow for increased capacity under increased workloads\. For information about burstable performance instances, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
 
 ## Configure Automatic Scaling for a Variant \(AWS CLI or the Application Auto Scaling API\)<a name="endpoint-auto-scaling-add-code"></a>
 
@@ -59,27 +56,19 @@ To define the scaling limits for the variant, register your variant with Applica
 To register your variant, you can use either the AWS CLI or the Application Auto Scaling API\. 
 
 When you register a variant, Application Auto Scaling performs validation checks to ensure the following:
-
 + The variant resource exists
-
 + The permissions are sufficient
-
-+ You aren't registering a variant with an instance that is a Burstable Performance Instance
++ You aren't registering a variant with an instance that is a Burstable Performance Instance such as T2
 **Note**  
-Amazon SageMaker automatic scaling doesn't support automatic scaling for burstable instances, because burstable instances already allow for increased capacity under increased workloads\. For information about Burstable Performance Instances, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
+Amazon SageMaker automatic scaling doesn't support automatic scaling for burstable instances such as T2, because burstable instances already allow for increased capacity under increased workloads\. For information about Burstable Performance Instances, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
 
 #### Register a Variant \(AWS CLI\)<a name="endpoint-auto-scaling-add-code-register-cli"></a>
 
 To register your endpoint, use the [http://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/register-scalable-target.html](http://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/register-scalable-target.html) AWS CLI command with the following parameters:
-
 + `--service-namespace`—Set this value to `sagemaker`\.
-
 + `--resource-id`—The resource identifier for the production variant\. For this parameter, the resource type is `endpoint` and the unique identifier is the name of the variant\. For example `endpoint/MyEndpoint/variant/MyVariant`\.
-
 + `--scalable-dimension`—Set this value to `sagemaker:variant:DesiredInstanceCount`\.
-
 + `--min-capacity`—The minimum number of instances that Application Auto Scaling must manage for this endpoint\. Set `min-capacity` to at least 1\. It must be equal to or less than the value specified for `max-capacity`\.
-
 + `--max-capacity`—The maximum number of instances that Application Auto Scaling should manage\. Set `max-capacity` to a minimum of 1, It must be equal to or greater than the value specified for `min-capacity`\.
 
 **Example**  
@@ -91,21 +80,16 @@ aws application-autoscaling register-scalable-target \
     --resource-id endpoint/MyEndPoint/variant/MyVariant \
     --scalable-dimension sagemaker:variant:DesiredInstanceCount \
     --min-capacity 1 \
-    --max-capacity 8 \
+    --max-capacity 8
 ```
 
 #### Register a Variant \(Application Auto Scaling API\)<a name="endpoint-auto-scaling-add-code-register-api"></a>
 
 To register your endpoint variant with Application Auto Scaling, use the [http://docs.aws.amazon.com//autoscaling/application/APIReference/API_RegisterScalableTarget.html](http://docs.aws.amazon.com//autoscaling/application/APIReference/API_RegisterScalableTarget.html) Application Auto Scaling API action with the following parameters:
-
 + `ServiceNamespace`—Set this value to `sagemaker`\.
-
 + `ResourceID`—The resource identifier for the production variant\. For this parameter, the resource type is `endpoint` and the unique identifier is the name of the variant, for example `endpoint/MyEndPoint/variant/MyVariant`\.
-
 + `ScalableDimension`—Set this value to `sagemaker:variant:DesiredInstanceCount`\.
-
 + `MinCapacity`—The minimum number of instances to be managed by Application Auto Scaling\. This value must be set to at least 1 and must be equal to or less than the value specified for `MaxCapacity`\.
-
 + `MaxCapacity`—The maximum number of instances to be managed by Application Auto Scaling\. This value must be set to at least 1 and must be equal to or greater than the value specified for `MinCapacity`\.
 
 **Example**  
@@ -138,7 +122,7 @@ Scaling policy configuration is represented by a JSON block\. You save your scal
 
  The following options are available for defining a target\-tracking scaling policy configuration\.
 
-
+**Topics**
 + [Using a Predefined Metric](#endpoint-auto-scaling-add-code-predefined)
 + [Using a Custom Metric](#endpoint-auto-scaling-add-code-custom)
 + [Adding a Cooldown Period](#endpoint-auto-scaling-add-code-cooldown)
@@ -238,17 +222,11 @@ After registering your variant and defining a scaling policy, apply the scaling 
 #### Applying a Scaling Policy \(AWS CLI\)<a name="endpoint-auto-scaling-add-code-apply-api"></a>
 
 To apply a scaling policy to your variant, use the [http://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/put-scaling-policy.html](http://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/put-scaling-policy.html) AWS CLI command with the following parameters:
-
 + `--policy-name`—The name of the scaling policy\.
-
 + `--policy-type`—Set this value to `TargetTrackingScaling`\.
-
 + `--resource-id`—The resource identifier for the variant\. For this parameter, the resource type is `endpoint` and the unique identifier is the name of the variant\. For example `endpoint/MyEndpoint/variant/MyVariant`\.
-
 + `--service-namespace`—Set this value to `sagemaker`\.
-
 + `--scalable-dimension`—Set this value to `sagemaker:variant:DesiredInstanceCount`\.
-
 + `--target-tracking-scaling-policy-configuration`—The target\-tracking scaling policy configuration to use for the variant\.
 
 **Example**  
@@ -267,17 +245,11 @@ aws application-autoscaling put-scaling-policy \
 #### Applying a Scaling Policy \(Application Auto Scaling API\)<a name="endpoint-auto-scaling-add-code-apply-api"></a>
 
 To apply a scaling policy to a variant with the Application Auto Scaling API, use the [http://docs.aws.amazon.com//autoscaling/application/APIReference/API_PutScalingPolicy.html](http://docs.aws.amazon.com//autoscaling/application/APIReference/API_PutScalingPolicy.html) Application Auto Scaling API action with the following parameters:
-
 + `PolicyName`—The name of the scaling policy\.
-
 + `ServiceNamespace`—Set this value to `sagemaker`\.
-
 + `ResourceID`—The resource identifier for the variant\. For this parameter, the resource type is `endpoint` and the unique identifier is the name of the variant\. For example, `endpoint/MyEndpoint/variant/MyVariant`\.
-
 + `ScalableDimension`—Set this value to `sagemaker:variant:DesiredInstanceCount`\.
-
 + `PolicyType`—Set this value to `TargetTrackingScaling`\.
-
 + `TargetTrackingScalingPolicyConfiguration`—The target\-tracking scaling policy configuration to use for the variant\.
 
 **Example**  

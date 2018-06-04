@@ -1,16 +1,16 @@
 # CreateNotebookInstance<a name="API_CreateNotebookInstance"></a>
 
-Creates an Amazon SageMaker notebook instance\. A notebook instance is an ML compute instance running on a Jupyter notebook\. 
+Creates an Amazon SageMaker notebook instance\. A notebook instance is a machine learning \(ML\) compute instance running on a Jupyter notebook\. 
 
-In a `CreateNotebookInstance` request, you specify the type of ML compute instance that you want to run\. Amazon SageMaker launches the instance, installs common libraries that you can use to explore datasets for model training, and attaches an ML storage volume to the notebook instance\. 
+In a `CreateNotebookInstance` request, specify the type of ML compute instance that you want to run\. Amazon SageMaker launches the instance, installs common libraries that you can use to explore datasets for model training, and attaches an ML storage volume to the notebook instance\. 
 
-Amazon SageMaker also provides a set of example notebooks\. Each notebook demonstrates how to use Amazon SageMaker with a specific an algorithm or with a machine learning framework\. 
+Amazon SageMaker also provides a set of example notebooks\. Each notebook demonstrates how to use Amazon SageMaker with a specific algorithm or with a machine learning framework\. 
 
 After receiving the request, Amazon SageMaker does the following:
 
 1. Creates a network interface in the Amazon SageMaker VPC\.
 
-1. \(Option\) If you specified `SubnetId`, creates a network interface in your own VPC, which is inferred from the subnet ID that you provide in the input\. When creating this network interface, Amazon SageMaker attaches the security group that you specified in the request to the network interface that it creates in your VPC\.
+1. \(Option\) If you specified `SubnetId`, Amazon SageMaker creates a network interface in your own VPC, which is inferred from the subnet ID that you provide in the input\. When creating this network interface, Amazon SageMaker attaches the security group that you specified in the request to the network interface that it creates in your VPC\.
 
 1. Launches an EC2 instance of the type specified in the request in the Amazon SageMaker VPC\. If you specified `SubnetId` of your VPC, Amazon SageMaker specifies both network interfaces when launching this instance\. This enables inbound traffic from your own VPC to the notebook instance, assuming that the security groups allow it\.
 
@@ -24,8 +24,10 @@ For more information, see [How It Works](http://docs.aws.amazon.com/sagemaker/la
 
 ```
 {
+   "[DirectInternetAccess](#SageMaker-CreateNotebookInstance-request-DirectInternetAccess)": "string",
    "[InstanceType](#SageMaker-CreateNotebookInstance-request-InstanceType)": "string",
    "[KmsKeyId](#SageMaker-CreateNotebookInstance-request-KmsKeyId)": "string",
+   "[LifecycleConfigName](#SageMaker-CreateNotebookInstance-request-LifecycleConfigName)": "string",
    "[NotebookInstanceName](#SageMaker-CreateNotebookInstance-request-NotebookInstanceName)": "string",
    "[RoleArn](#SageMaker-CreateNotebookInstance-request-RoleArn)": "string",
    "[SecurityGroupIds](#SageMaker-CreateNotebookInstance-request-SecurityGroupIds)": [ "string" ],
@@ -45,16 +47,30 @@ For information about the parameters that are common to all actions, see [Common
 
 The request accepts the following data in JSON format\.
 
+ ** [DirectInternetAccess](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-DirectInternetAccess"></a>
+Sets whether Amazon SageMaker provides internet access to the notebook instance\. If you set this to `Disabled` this notebook instance will be able to access resources only in your VPC, and will not be able to connect to Amazon SageMaker training and endpoint services unless your configure a NAT Gateway in your VPC\.  
+For more information, see [Notebook Instances Are Enabled with Internet Access by Default](appendix-additional-considerations.md#appendix-notebook-and-internet-access)\. You can set the value of this parameter to `Disabled` only if you set a value for the `SubnetId` parameter\.  
+Type: String  
+Valid Values:` Enabled | Disabled`   
+Required: No
+
  ** [InstanceType](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-InstanceType"></a>
 The type of ML compute instance to launch for the notebook instance\.  
 Type: String  
-Valid Values:` ml.t2.medium | ml.m4.xlarge | ml.p2.xlarge`   
+Valid Values:` ml.t2.medium | ml.t2.large | ml.t2.xlarge | ml.t2.2xlarge | ml.m4.xlarge | ml.m4.2xlarge | ml.m4.4xlarge | ml.m4.10xlarge | ml.m4.16xlarge | ml.p2.xlarge | ml.p2.8xlarge | ml.p2.16xlarge | ml.p3.2xlarge | ml.p3.8xlarge | ml.p3.16xlarge`   
 Required: Yes
 
  ** [KmsKeyId](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-KmsKeyId"></a>
  If you provide a AWS KMS key ID, Amazon SageMaker uses it to encrypt data at rest on the ML storage volume that is attached to your notebook instance\.   
 Type: String  
 Length Constraints: Maximum length of 2048\.  
+Required: No
+
+ ** [LifecycleConfigName](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-LifecycleConfigName"></a>
+The name of a lifecycle configuration to associate with the notebook instance\. For information about lifestyle configurations, see [Step 2\.1: \(Optional\) Customize a Notebook Instance ](notebook-lifecycle-config.md)\.  
+Type: String  
+Length Constraints: Maximum length of 63\.  
+Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: No
 
  ** [NotebookInstanceName](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-NotebookInstanceName"></a>
@@ -120,21 +136,12 @@ HTTP Status Code: 400
 ## See Also<a name="API_CreateNotebookInstance_SeeAlso"></a>
 
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
-
 +  [AWS Command Line Interface](http://docs.aws.amazon.com/goto/aws-cli/sagemaker-2017-07-24/CreateNotebookInstance) 
-
 +  [AWS SDK for \.NET](http://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/CreateNotebookInstance) 
-
 +  [AWS SDK for C\+\+](http://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/CreateNotebookInstance) 
-
 +  [AWS SDK for Go](http://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/CreateNotebookInstance) 
-
 +  [AWS SDK for Java](http://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/CreateNotebookInstance) 
-
 +  [AWS SDK for JavaScript](http://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/CreateNotebookInstance) 
-
 +  [AWS SDK for PHP V3](http://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/CreateNotebookInstance) 
-
 +  [AWS SDK for Python](http://docs.aws.amazon.com/goto/boto3/sagemaker-2017-07-24/CreateNotebookInstance) 
-
 +  [AWS SDK for Ruby V2](http://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/CreateNotebookInstance) 

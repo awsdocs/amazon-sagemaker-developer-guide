@@ -4,7 +4,7 @@ Perform load tests to choose an automatic scaling configuration that works the w
 
 The following guidelines for load testing assume you are using an automatic scaling policy that uses the predefined target metric `SageMakerVariantInvocationsPerInstance`\.
 
-
+**Topics**
 + [Determine the Performance Characteristics of a Variant](#endpoint-scaling-loadtest-variant)
 + [Calculate the Target `SageMakerVariantInvocationsPerInstance`](#endpoint-scaling-loadtest-calc)
 

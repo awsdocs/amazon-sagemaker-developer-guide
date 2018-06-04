@@ -22,20 +22,16 @@ The high\-level Python library provides the `TensorFlow` class, which has two me
    Some of these constructor parameters are sent in the `fit` method call for model training in the next step\. 
 
    Details:
-
    + `entry_point`—The example uses only one source file \(`iris_dnn_classifier.py`\) and it is already provided for you on your notebook instance\. If your custom training code is stored in a single file, specify only the `entry_point` parameter\. If it's stored in multiple files, also add the `source_dir` parameter\. 
 **Note**  
 Specify only the source file that contains your custom code\. The `sagemaker.tensorflow.TensorFlow` object determines which Docker image to use for model training when you call the `fit` method in the next step\.
-
    + `output_path`—Identifies the S3 location where you want to save the result of model training \(model artifacts\)\. 
-
    + `code_location`—S3 location where you want the `fit` method \(in the next step\) to upload the tar archive of your custom TensorFlow code\.
-
    + `role`—Identifies the IAM role that Amazon SageMaker assumes when performing tasks on your behalf, such as downloading training data from an S3 bucket for model training and uploading training results to an S3 bucket\.
-
    + `hyperparameters` \- Any hyperparameters that you specify to influence the final quality of the model\. Your custom training code uses these parameters\.
-
    + `train_instance_type` and `train_instance_count`—Identify the type and number of ML Compute instances to launch for model training\.
+
+     You can also train your model on your local computer by specifying `local` as the value for `train_instance_type` and `1` as the value for `train_instance_count`\. For more information about local mode, see [https://github.com/aws/sagemaker-python-sdk#local-mode](https://github.com/aws/sagemaker-python-sdk#local-mode) in the *Amazon SageMaker Python SDK*\.
 
 1. Start model training by copying, pasting, and running the following code: 
 
@@ -97,25 +93,16 @@ You can get the training job information by calling the [DescribeTrainingJob](AP
 ```
 
 Details:
-
 + `TrainingImage`—Amazon SageMaker runs this image to create a container for model training\. You don't explicitly identify this image in your request\. The `fit` method dynamically chooses the correct image by inspecting the Python version in the interpreter and the GPU capability of the ML compute instance type that you specified when creating the TensorFlow object\. 
-
 + `Hyperparameters`—The request includes the hyperparameters that you specified when you created the `sagemaker.tensorflow.TensorFlow` object\. It also includes the following additional hyperparameters, which have the prefix `sagemaker`\. Amazon SageMaker uses these hyperparameters to set up the training environment\. 
-
   + `sagemaker_submit_directory`—Identifies the S3 location of the custom training code\. 
 
     The high\-level Python library does several things for you\. In this case, the `fit` method creates a gzipped tar archive from the custom code file\(s\), and uploads the archive to an S3 bucket\. You specify this archive in this hyperparameter\. 
-
   + `sagemaker_program`—Identifies the primary module that your training functions will be loaded from\. This is the `entry_point` parameter that you specified when you created the `sagemaker.tensorflow.TensorFlow` object\.
-
   + `sagemaker_container_log_level`—Sets the Python logging level\. 
-
   + `sagemaker_job_name`—Amazon SageMaker uses the job name to publish CloudWatch metrics in your account\.
-
   + `sagemaker_checkpoint_path`—In distributed training, TensorFlow uses this S3 location as a shared file system for the ML compute instances running the training\.
-
 + `InputDataConfig`—Specifies one channel\. A channel is a named input source that the training code consumes\. 
-
 + `OutputDataConfig`—Identifies the S3 location where you want to save training results \(model artifacts\)\. 
 
 By default, the training job runs synchronously \(you see the output in the notebook\)\. If you want it to run asynchronously, set the `wait` value to `false` in the call to the `fit` method or when you create the `sagemaker.tensorflow.TensorFlow` instance\. 

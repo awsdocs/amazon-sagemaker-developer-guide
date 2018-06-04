@@ -1,13 +1,9 @@
 # Common Data Formats—Inference<a name="cdf-inference"></a>
 
 Amazon SageMaker algorithms accept and produce several different MIME types for the http payloads used in retrieving online and mini\-batch predictions\. You can use various AWS services to transform or preprocess records prior to running inference\. At a minimum, you need to convert the data for the following:
-
 + Inference request serialization \(handled by you\) 
-
 + Inference request deserialization \(handled by the algorithm\) 
-
 + Inference response serialization \(handled by the algorithm\) 
-
 + Inference response deserialization \(handled by you\) 
 
 ## Inference Request Serialization<a name="ir-serialization"></a>
@@ -209,13 +205,8 @@ CSV support is not available for factorization machines\.
 Content\-type: application/x\-recordio\-protobuf
 
 For more information on response formats for specific algorithms, see the following:
-
 + [PCA Response Formats](PCA-in-formats.md)
-
 + [Linear Learner Response Formats](LL-in-formats.md)
-
 + [NTM Response Formats](ntm-in-formats.md)
-
 + [k\-means Response Formats](km-in-formats.md)
-
 + [Factorization Machine Response Formats](fm-in-formats.md)

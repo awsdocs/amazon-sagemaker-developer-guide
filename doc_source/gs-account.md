@@ -2,7 +2,7 @@
 
 Before you use Amazon SageMaker for the first time, complete the following tasks: 
 
-
+**Topics**
 + [Step 1\.1\.1: Create an AWS Account](#gs-account-create)
 + [Step 1\.1\.2: Create an IAM Administrator User and Sign In](#gs-account-user)
 

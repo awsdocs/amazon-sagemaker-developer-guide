@@ -9,6 +9,7 @@ import org.apache.spark.sql.SparkSession
 import com.amazonaws.services.sagemaker.sparksdk.IAMRole
 import com.amazonaws.services.sagemaker.sparksdk.algorithms
 import com.amazonaws.services.sagemaker.sparksdk.algorithms.KMeansSageMakerEstimator
+import com.amazonaws.services.sagemaker.sparksdk.transformation.serializers.ProtobufRequestRowSerializer
 
 val spark = SparkSession.builder.getOrCreate
 
@@ -30,7 +31,7 @@ val pcaEstimator = new PCA()
   .setK(50)
 
 val kMeansSageMakerEstimator = new KMeansSageMakerEstimator(
-  sagemakerRole = IAMRole(integTestingRole),
+  sagemakerRole = IAMRole(roleArn),
   requestRowSerializer =
     new ProtobufRequestRowSerializer(featuresColumnName = "projectedFeatures"),
   trainingSparkDataFormatOptions = Map("featuresColumnName" -> "projectedFeatures"),

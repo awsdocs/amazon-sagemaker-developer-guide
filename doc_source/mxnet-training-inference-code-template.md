@@ -1,7 +1,6 @@
 # Writing Custom Apache MXNet Model Training and Inference Code<a name="mxnet-training-inference-code-template"></a>
 
 To train a model on Amazon SageMaker using custom Apache MXNet code and deploy it on Amazon SageMaker, your code must implement the following training code interface and inference code interface\.
-
 + Implement the following training code interface:
 
   ```
@@ -93,7 +92,6 @@ To train a model on Amazon SageMaker using custom Apache MXNet code and deploy i
       """
       pass
   ```
-
 + Implement the following inference code interface:
 
   ```

@@ -28,12 +28,14 @@ Required: Yes
 ```
 {
    "[CreationTime](#SageMaker-DescribeNotebookInstance-response-CreationTime)": number,
+   "[DirectInternetAccess](#SageMaker-DescribeNotebookInstance-response-DirectInternetAccess)": "string",
    "[FailureReason](#SageMaker-DescribeNotebookInstance-response-FailureReason)": "string",
    "[InstanceType](#SageMaker-DescribeNotebookInstance-response-InstanceType)": "string",
    "[KmsKeyId](#SageMaker-DescribeNotebookInstance-response-KmsKeyId)": "string",
    "[LastModifiedTime](#SageMaker-DescribeNotebookInstance-response-LastModifiedTime)": number,
    "[NetworkInterfaceId](#SageMaker-DescribeNotebookInstance-response-NetworkInterfaceId)": "string",
    "[NotebookInstanceArn](#SageMaker-DescribeNotebookInstance-response-NotebookInstanceArn)": "string",
+   "[NotebookInstanceLifecycleConfigName](#SageMaker-DescribeNotebookInstance-response-NotebookInstanceLifecycleConfigName)": "string",
    "[NotebookInstanceName](#SageMaker-DescribeNotebookInstance-response-NotebookInstanceName)": "string",
    "[NotebookInstanceStatus](#SageMaker-DescribeNotebookInstance-response-NotebookInstanceStatus)": "string",
    "[RoleArn](#SageMaker-DescribeNotebookInstance-response-RoleArn)": "string",
@@ -53,15 +55,21 @@ The following data is returned in JSON format by the service\.
 A timestamp\. Use this parameter to return the time when the notebook instance was created  
 Type: Timestamp
 
+ ** [DirectInternetAccess](#API_DescribeNotebookInstance_ResponseSyntax) **   <a name="SageMaker-DescribeNotebookInstance-response-DirectInternetAccess"></a>
+Describes whether Amazon SageMaker provides internet access to the notebook instance\. If this value is set to *Disabled, he notebook instance does not have internet access, and cannot connect to Amazon SageMaker training and endpoint services*\.  
+For more information, see [Notebook Instances Are Enabled with Internet Access by Default](appendix-additional-considerations.md#appendix-notebook-and-internet-access)\.  
+Type: String  
+Valid Values:` Enabled | Disabled` 
+
  ** [FailureReason](#API_DescribeNotebookInstance_ResponseSyntax) **   <a name="SageMaker-DescribeNotebookInstance-response-FailureReason"></a>
-If staus is failed, the reason it failed\.  
+If status is failed, the reason it failed\.  
 Type: String  
 Length Constraints: Maximum length of 1024\.
 
  ** [InstanceType](#API_DescribeNotebookInstance_ResponseSyntax) **   <a name="SageMaker-DescribeNotebookInstance-response-InstanceType"></a>
 The type of ML compute instance running on the notebook instance\.  
 Type: String  
-Valid Values:` ml.t2.medium | ml.m4.xlarge | ml.p2.xlarge` 
+Valid Values:` ml.t2.medium | ml.t2.large | ml.t2.xlarge | ml.t2.2xlarge | ml.m4.xlarge | ml.m4.2xlarge | ml.m4.4xlarge | ml.m4.10xlarge | ml.m4.16xlarge | ml.p2.xlarge | ml.p2.8xlarge | ml.p2.16xlarge | ml.p3.2xlarge | ml.p3.8xlarge | ml.p3.16xlarge` 
 
  ** [KmsKeyId](#API_DescribeNotebookInstance_ResponseSyntax) **   <a name="SageMaker-DescribeNotebookInstance-response-KmsKeyId"></a>
  AWS KMS key ID Amazon SageMaker uses to encrypt data when storing it on the ML storage volume attached to the instance\.   
@@ -80,6 +88,13 @@ Type: String
 The Amazon Resource Name \(ARN\) of the notebook instance\.  
 Type: String  
 Length Constraints: Maximum length of 256\.
+
+ ** [NotebookInstanceLifecycleConfigName](#API_DescribeNotebookInstance_ResponseSyntax) **   <a name="SageMaker-DescribeNotebookInstance-response-NotebookInstanceLifecycleConfigName"></a>
+Returns the name of a notebook instance lifecycle configuration\.  
+For information about notebook instance lifestyle configurations, see [Step 2\.1: \(Optional\) Customize a Notebook Instance ](notebook-lifecycle-config.md)\.  
+Type: String  
+Length Constraints: Maximum length of 63\.  
+Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*` 
 
  ** [NotebookInstanceName](#API_DescribeNotebookInstance_ResponseSyntax) **   <a name="SageMaker-DescribeNotebookInstance-response-NotebookInstanceName"></a>
  Name of the Amazon SageMaker notebook instance\.   
@@ -120,21 +135,12 @@ For information about the errors that are common to all actions, see [Common Err
 ## See Also<a name="API_DescribeNotebookInstance_SeeAlso"></a>
 
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
-
 +  [AWS Command Line Interface](http://docs.aws.amazon.com/goto/aws-cli/sagemaker-2017-07-24/DescribeNotebookInstance) 
-
 +  [AWS SDK for \.NET](http://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/DescribeNotebookInstance) 
-
 +  [AWS SDK for C\+\+](http://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/DescribeNotebookInstance) 
-
 +  [AWS SDK for Go](http://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/DescribeNotebookInstance) 
-
 +  [AWS SDK for Java](http://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/DescribeNotebookInstance) 
-
 +  [AWS SDK for JavaScript](http://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/DescribeNotebookInstance) 
-
 +  [AWS SDK for PHP V3](http://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/DescribeNotebookInstance) 
-
 +  [AWS SDK for Python](http://docs.aws.amazon.com/goto/boto3/sagemaker-2017-07-24/DescribeNotebookInstance) 
-
 +  [AWS SDK for Ruby V2](http://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/DescribeNotebookInstance) 

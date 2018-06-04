@@ -19,7 +19,7 @@ Required: No
  **InstanceType**   <a name="SageMaker-Type-ProductionVariant-InstanceType"></a>
 The ML compute instance type\.  
 Type: String  
-Valid Values:` ml.c4.2xlarge | ml.c4.8xlarge | ml.c4.xlarge | ml.c5.2xlarge | ml.c5.9xlarge | ml.c5.xlarge | ml.m4.xlarge | ml.p2.xlarge | ml.p3.2xlarge | ml.t2.medium`   
+Valid Values:` ml.t2.medium | ml.t2.large | ml.t2.xlarge | ml.t2.2xlarge | ml.m4.xlarge | ml.m4.2xlarge | ml.m4.4xlarge | ml.m4.10xlarge | ml.m4.16xlarge | ml.m5.large | ml.m5.xlarge | ml.m5.2xlarge | ml.m5.4xlarge | ml.m5.12xlarge | ml.m5.24xlarge | ml.c4.large | ml.c4.xlarge | ml.c4.2xlarge | ml.c4.4xlarge | ml.c4.8xlarge | ml.p2.xlarge | ml.p2.8xlarge | ml.p2.16xlarge | ml.p3.2xlarge | ml.p3.8xlarge | ml.p3.16xlarge | ml.c5.large | ml.c5.xlarge | ml.c5.2xlarge | ml.c5.4xlarge | ml.c5.9xlarge | ml.c5.18xlarge`   
 Required: Yes
 
  **ModelName**   <a name="SageMaker-Type-ProductionVariant-ModelName"></a>
@@ -39,11 +39,7 @@ Required: Yes
 ## See Also<a name="API_ProductionVariant_SeeAlso"></a>
 
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
-
 +  [AWS SDK for C\+\+](http://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/ProductionVariant) 
-
 +  [AWS SDK for Go](http://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/ProductionVariant) 
-
 +  [AWS SDK for Java](http://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/ProductionVariant) 
-
 +  [AWS SDK for Ruby V2](http://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/ProductionVariant) 
