@@ -35,7 +35,7 @@ The Amazon SageMaker XGBoost algorithm is an implementation of the open\-source 
 | one\_drop | When this flag is enabled, at least one tree is always dropped during the dropout\. Valid values: 0 or 1 Default value: 0  | 
 | skip\_drop | Probability of skipping the dropout procedure during a boosting iteration\. Valid values: Float\. Range: \[0\.0, 1\.0\]\. Default value: 0\.0  | 
 | lambda\_bias | L2 regularization term on bias\. Valid values: Float\. Range: \[0\.0, 1\.0\]\. Default value: 0  | 
-| tweedie\_variance\_power | Parameter that controls the variance of the Tweedie distribution\. Valid values: Float\. Range: \[1, 2\]\. Default value: 1\.5  | 
+| tweedie\_variance\_power | Parameter that controls the variance of the Tweedie distribution\. Valid values: Float\. Range: \(1, 2\)\. Default value: 1\.5  | 
 | objective | Specifies the learning task and the corresponding learning objective\. Examples: *reg:linear*, *reg:logistic*, *multi:softmax*\. For a full list of valid inputs, please refer to [XGBoost Parameters](https://github.com/dmlc/xgboost/blob/master/doc/parameter.md)\. Valid values: string Default value: *reg:linear*  | 
 | base\_score | The initial prediction score of all instances, global bias\. Valid values: float Default value: 0\.5  | 
 | eval\_metric | Evaluation metrics for validation data\. A default metric is assigned according to the objective \(*rmse* for regression, *error* for classification, and *map* for ranking\)\. For a list of valid inputs, see [XGBoost Parameters](https://github.com/dmlc/xgboost/blob/master/doc/parameter.md)\. Valid values: string Default value: Default according to objective\.  | 

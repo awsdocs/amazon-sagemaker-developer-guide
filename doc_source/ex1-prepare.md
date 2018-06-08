@@ -1,4 +1,4 @@
-# Step 3\.1: Create a Juypter Notebook and Initialize Variables<a name="ex1-prepare"></a>
+# Step 3\.1: Create a Jupyter Notebook and Initialize Variables<a name="ex1-prepare"></a>
 
 In this section, you create a Jupyter notebook in your Amazon SageMaker notebook instance and initialize variables\.
 

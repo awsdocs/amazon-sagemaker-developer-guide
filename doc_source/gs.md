@@ -4,7 +4,7 @@ In this section, you set up an AWS account, create your first Amazon SageMaker n
 
 You use this notebook instance for all of the exercises in this guide\. 
 
-If you're new to Amazon SageMaker, we recommend that you read [How It Works](how-it-works.md) before creating your notebook instance\. For general information about notebook instances, see [Notebook Instances and Notebooks](how-it-works-notebooks-instances.md)\. 
+If you're new to Amazon SageMaker, we recommend that you read [How It Works](how-it-works.md) before creating your notebook instance\. For general information about notebook instances, see [Explore and Preprocess Data](how-it-works-notebooks-instances.md)\. 
 
 **Topics**
 + [Step 1: Setting Up](gs-set-up.md)

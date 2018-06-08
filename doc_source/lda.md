@@ -1,8 +1,8 @@
 # Latent Dirichlet Allocation \(LDA\)<a name="lda"></a>
 
-Amazon SageMaker LDA is an unsupervised learning algorithm that attempts to describe a set of observations as a mixture of distinct categories\. LDA is most commonly used to discover a user\-specified number of topics shared by documents within a text corpus\. Here each observation is a document, the features are the presence \(or occurrence count\) of each word, and the categories are the topics\. Since the method is unsupervised, the topics are not specified up front, and are not guaranteed to align with how a human may naturally categorize documents\. The topics are learned as a probability distribution over the words that occur in each document\. Each document, in turn, is described as a mixture of topics\.
+The Amazon SageMaker Latent Dirichlet Allocation \(LDA\) algorithm is an unsupervised learning algorithm that attempts to describe a set of observations as a mixture of distinct categories\. LDA is most commonly used to discover a user\-specified number of topics shared by documents within a text corpus\. Here each observation is a document, the features are the presence \(or occurrence count\) of each word, and the categories are the topics\. Since the method is unsupervised, the topics are not specified up front, and are not guaranteed to align with how a human may naturally categorize documents\. The topics are learned as a probability distribution over the words that occur in each document\. Each document, in turn, is described as a mixture of topics\.
 
-The exact content of two different documents with similar topic mixtures will not be the same\. But overall, youd expect these documents to more frequently use a shared subset of words, than when compared with a document from a different topic mixture\. This allows LDA to discover these word groups and use them to form topics\. As an extremely simple example, given a set of documents where the only words that occur within them are: *eat*, *sleep*, *play*, *meow*, and *bark*, LDA might produce topics like the following:
+The exact content of two documents with similar topic mixtures will not be the same\. But overall, you would expect these documents to more frequently use a shared subset of words, than when compared with a document from a different topic mixture\. This allows LDA to discover these word groups and use them to form topics\. As an extremely simple example, given a set of documents where the only words that occur within them are: *eat*, *sleep*, *play*, *meow*, and *bark*, LDA might produce topics like the following:
 
 
 | **Topic** | *eat* | *sleep*  | *play* | *meow* | *bark* | 
@@ -14,7 +14,7 @@ You can infer that documents that are more likely to fall into Topic 1 are about
 
 ## Input/Output Interface<a name="lda-inputoutput"></a>
 
-LDA expects data to be provided on the train channel, and optionally supports a test channel, which is scored by the final model\. LDA supports both `recordIO-wrapped-protobuf` \(dense and sparse\) and `CSV` file formats\. For `CSV`, the data must be dense, and be of dimension *number of records \* vocabulary size*\.
+LDA expects data to be provided on the train channel, and optionally supports a test channel, which is scored by the final model\. LDA supports both `recordIO-wrapped-protobuf` \(dense and sparse\) and `CSV` file formats\. For `CSV`, the data must be dense and have dimension equal to *number of records \* vocabulary size*\. LDA can be trained in File or Pipe mode when using recordIO\-wrapped protobuf, but only in File mode for the `CSV` format\.
 
 For inference, `text/csv`, `application/json`, and `application/x-recordio-protobuf` content types are supported\. Sparse data can also be passed for `application/json` and `application/x-recordio-protobuf`\. LDA inference returns `application/json` or `application/x-recordio-protobuf` *predictions*, which include the `topic_mixture` vector for each observation\.
 
@@ -29,3 +29,4 @@ LDA currently only supports single\-instance CPU training\. CPU instances are re
 + [EC2 Instance Recommendation](#lda-instances)
 + [How LDA Works](lda-how-it-works.md)
 + [LDA Hyperparameters](lda_hyperparameters.md)
++ [Tuning an LDA Model](lda-tuning.md)

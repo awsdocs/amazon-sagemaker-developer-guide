@@ -21,7 +21,7 @@ You have the following options for downloading the Spark library provided by Ama
     ```
     $ pip install sagemaker_pyspark
     ```
-  + If you are using a Jupyter notebook on your Amazon SageMaker notebook instance to develop applications, the PySpark library is also available on your notebook instance\. 
+  + In a notebook instance, create a new notebook that uses either the `Sparkmagic (PySpark)` or the `Sparkmagic (PySpark3)` kernel and connect to a remote &Amazon EMR cluster\. For more information, see [Build Amazon SageMaker notebooks backed by Spark in Amazon EMR](http://aws.amazon.com/blogs/machine-learning/build-amazon-sagemaker-notebooks-backed-by-spark-in-amazon-emr/)
 
      
 + You can get the Scala library from Maven\. Add the Spark library to your project by adding the following dependency to your pom\.xml file:

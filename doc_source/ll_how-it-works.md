@@ -14,7 +14,7 @@ This information is used during training\. Based on the configuration, you norma
 
 ## Step 2: Training<a name="step2-training"></a>
 
-You training using a distributed implementation of stochastic gradient descent\. The input allows you to control specifics of the optimization procedure by choosing the exact optimization algorithm, for example, Adam, Adagrad, SGD, and so on, and their parameters, such as momentum, learning rate, and the learning rate schedule\. Without specified details, choose a default option that works for the majority of datasets\. 
+You train using a distributed implementation of stochastic gradient descent\. The input allows you to control specifics of the optimization procedure by choosing the exact optimization algorithm, for example, Adam, Adagrad, SGD, and so on, and their parameters, such as momentum, learning rate, and the learning rate schedule\. Without specified details, choose a default option that works for the majority of datasets\. 
 
 During training, you simultaneously optimize multiple models, each with slightly different objectives: in other words, vary L1 or L2 regularization and try out different optimizer settings\. 
 

@@ -10,16 +10,16 @@ When using Amazon SageMaker in the training portion of the algorithm, make sure 
 + Training model serialization \(handled by the algorithm\) 
 + Trained model deserialization \(optional, handled by you\) 
 
-## Training Data Serialization<a name="td-serialization"></a>
+## Training Data Formats<a name="td-serialization"></a>
 
-Many Amazon SageMaker algorithms support training with data in the CSV format\. Please see the individual algorithm pages, or this [page](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html) for a summary of supported data formats by algorithm\. To use CSVs for training, please specify a [ContentType](https://docs.aws.amazon.com/sagemaker/latest/dg/API_Channel.html#SageMaker-Type-Channel-ContentType) of 'text/csv' in the input data channel specification\. Amazon SageMakerr requires the CSV to not have a header record and assumes the target variable is in the first column, with features in subsequent columns\. This can be changed for unsupervised learning tasks like k\-means, which do not have a target column, by specifying the number of label columns in the content type\. For example, 'text/csv;label\_size=0'\. 
+Many Amazon SageMaker algorithms support training with data in CSV format\. To use data in CSV format for training, in the input data channel specification, specify **text/csv** as the [ContentType](https://docs.aws.amazon.com/sagemaker/latest/dg/API_Channel.html#SageMaker-Type-Channel-ContentType)\. Amazon SageMaker requires that a CSV file doesn't have a header record and that the target variable is in the first column\. To run unsupervised learning algorithms that don't have a target, specify the number of label columns in the content type\. For example, in this case **'text/csv;label\_size=0'**\. 
 
-Amazon SageMaker algorithms work best with the optimized protobuf [recordIO]( https://mxnet.incubator.apache.org/architecture/note_data_loading.html#data-format ) format\. In the following code, each observation in the dataset is converted into a binary representation as a set of 4\-byte floats and is then loaded to the protobuf “values” field\. 
+Most Amazon SageMaker algorithms work best when you use the optimized protobuf [recordIO]( https://mxnet.incubator.apache.org/architecture/note_data_loading.html#data-format ) format for the training data\. Using this format allows you to take advantage of *Pipe mode* when training the algorithms that support it\. *File mode* loads all of your data from Amazon Simple Storage Service \(Amazon S3\) to the training instance volumes\. In *Pipe mode*, your training job streams data directly from Amazon S3\. Streaming can provide faster start times for training jobs and better throughput\. With Pipe mode, you also reduce the size of the Amazon Elastic Block Store volumes for your training instances\. Pipe mode needs only enough disk space to store your final model artifacts\. File mode needs disk space to store both your final model artifacts and your full training dataset\. See the [AlgorithmSpecification](API_AlgorithmSpecification.md) for additional details on the training input mode\. For a summary of the data formats supported by each algorithm, see the documentation for the individual algorithms or this [table](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html)\. 
 
 **Note**  
- [Step 3\.2\.3: Transform the Training Dataset and Upload It to S3](ex1-preprocess-data-transform.md) shows how to convert a numPy array into the protobuf recordIO format\. 
+ For an example that shows how to convert the commonly used numPy array into the protobuf recordIO format, see [Step 3\.2\.3: Transform the Training Dataset and Upload It to S3](ex1-preprocess-data-transform.md) \. 
 
-The schema for the protocol buffers is: 
+In the protobuf recordIO format, Amazon SageMaker converts each observation in the dataset into a binary representation as a set of 4\-byte floats and is then loads it to the protobuf values field\. If you are using Python for your data preparation, we strongly recommend that you use these existing transformations\. However, if you are using another language, the protobuf definition file below provides the schema that you use to convert your data into SageMaker's protobuf format\.
 
 ```
 syntax = "proto2";
@@ -31,55 +31,55 @@ syntax = "proto2";
  
  // A sparse or dense rank-R tensor that stores data as doubles (float64).
  message Float32Tensor   {
-     // Each value in the vector. If keys is empty this is treated as a
+     // Each value in the vector. If keys is empty, this is treated as a
      // dense vector.
      repeated float values = 1 [packed = true];
  
-     // If not empty then the vector is treated as sparse with
+     // If key is not empty, the vector is treated as sparse, with
      // each key specifying the location of the value in the sparse vector.
      repeated uint64 keys = 2 [packed = true];
  
-     // Optional shape which will allow the vector to represent a matrix.
-     // e.g. if shape = [ 10, 20 ] then floor(keys[i] / 10) will give the row
-     // and keys[i] % 20 will give the column.
+     // An optional shape that allows the vector to represent a matrix.
+     // For example, if shape = [ 10, 20 ], floor(keys[i] / 10) gives the row,
+     // and keys[i] % 20 gives the column.
      // This also supports n-dimensonal tensors.
-     // NB. this must be specified if the tensor is sparse.
+     // Note: If the tensor is sparse, you must specify this value.
      repeated uint64 shape = 3 [packed = true];
  }
  
  // A sparse or dense rank-R tensor that stores data as doubles (float64).
  message Float64Tensor {
-     // Each value in the vector. If keys is empty this is treated as a
+     // Each value in the vector. If keys is empty, this is treated as a
      // dense vector.
      repeated double values = 1 [packed = true];
  
-     // If not empty then the vector is treated as sparse with
+     // If this is not empty, the vector is treated as sparse, with
      // each key specifying the location of the value in the sparse vector.
      repeated uint64 keys = 2 [packed = true];
  
-     // Optional shape which will allow the vector to represent a matrix.
-     // e.g. if shape = [ 10, 20 ] then floor(keys[i] / 10) will give the row
-     // and keys[i] % 20 will give the column.
+     // An optional shape that allows the vector to represent a matrix.
+     // For example, if shape = [ 10, 20 ], floor(keys[i] / 10) gives the row,
+     // and keys[i] % 20 gives the column.
      // This also supports n-dimensonal tensors.
-     // NB. this must be specified if the tensor is sparse.
+     // Note: If the tensor is sparse, you must specify this value.
      repeated uint64 shape = 3 [packed = true];
  }
  
  // A sparse or dense rank-R tensor that stores data as 32-bit ints (int32).
  message Int32Tensor {
-     // Each value in the vector. If keys is empty this is treated as a
+     // Each value in the vector. If keys is empty, this is treated as a
      // dense vector.
      repeated int32 values = 1 [packed = true];
  
-     // If not empty then the vector is treated as sparse with
+     // If this is not empty, the vector is treated as sparse with
      // each key specifying the location of the value in the sparse vector.
      repeated uint64 keys = 2 [packed = true];
  
-     // Optional shape which will allow the vector to represent a matrix.
-     // e.g. if shape = [ 10, 20 ] then floor(keys[i] / 10) will give the row
-     // and keys[i] % 20 will give the column.
+     // An optional shape that allows the vector to represent a matrix.
+     // For Exmple, if shape = [ 10, 20 ], floor(keys[i] / 10) gives the row,
+     // and keys[i] % 20 gives the column.
      // This also supports n-dimensonal tensors.
-     // NB. this must be specified if the tensor is sparse.
+     // Note: If the tensor is sparse, you must specify this value.
      repeated uint64 shape = 3 [packed = true];
  }
  
@@ -88,8 +88,8 @@ syntax = "proto2";
  message Bytes {
      repeated bytes value = 1;
  
-     // Stores the content type of the data if known.
-     // This will allow the possibility of using decoders for common formats
+     // If the content type of the data is known, stores it.
+     // This allows for the possibility of using decoders for common formats
      // in the future.
      optional string content_type = 2;
  }
@@ -114,12 +114,12 @@ syntax = "proto2";
      // should be specified.
      map<string, Value> features = 1;
  
-     // Optional set of labels for this record.
-     // Similar to features field above, the key used for
-     // generic scalar / vector labels should ve 'values'
+     // An optional set of labels for this record.
+     // Similar to the features field above, the key used for
+     // generic scalar / vector labels should ve 'values'.
      map<string, Value> label = 2;
  
-     // Unique identifier for this record in the dataset.
+     // A unique identifier for this record in the dataset.
      //
      // Whilst not necessary, this allows better
      // debugging where there are data issues.
@@ -135,7 +135,7 @@ syntax = "proto2";
      // This is not used by the algorithm directly.
      optional string metadata = 4;
  
-     // Optional serialized JSON object that allows per-record
+     // An optional serialized JSON object that allows per-record
      // hyper-parameters/configuration/other information to be set.
      //
      // The meaning/interpretation of this field is defined by
@@ -147,7 +147,7 @@ syntax = "proto2";
  }
 ```
 
-After creating the protocol buffer, store it in an S3 location that is accessible by Amazon SageMaker, and passed as part of `InputDataConfig` in `create_training_job`\. 
+After creating the protocol buffer, store it in an Amazon S3 location that Amazon SageMaker can access and that can be passed as part of `InputDataConfig` in `create_training_job`\. 
 
 **Note**  
 For all Amazon SageMaker algorithms, the `ChannelName` in `InputDataConfig` must be set to `train`\. Some algorithms also support a validation `input channel`\. 

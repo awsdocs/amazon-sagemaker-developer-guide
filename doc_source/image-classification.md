@@ -54,3 +54,4 @@ Both P2 and P3 instances are supported in the image classification algorithm\.
 + [EC2 Instance Recommendation](#IC-instances)
 + [How Image Classification Works](IC-HowItWorks.md)
 + [Hyperparameters](IC-Hyperparameter.md)
++ [Tuning an Image Classification Model](IC-tuning.md)

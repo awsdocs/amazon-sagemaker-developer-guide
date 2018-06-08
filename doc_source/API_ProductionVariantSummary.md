@@ -16,6 +16,10 @@ Type: Float
 Valid Range: Minimum value of 0\.  
 Required: No
 
+ **DeployedImages**   <a name="SageMaker-Type-ProductionVariantSummary-DeployedImages"></a>
+Type: Array of [DeployedImage](API_DeployedImage.md) objects  
+Required: No
+
  **DesiredInstanceCount**   <a name="SageMaker-Type-ProductionVariantSummary-DesiredInstanceCount"></a>
 The number of instances requested in the `UpdateEndpointWeightsAndCapacities` request\.   
 Type: Integer  
@@ -38,7 +42,7 @@ Required: Yes
 ## See Also<a name="API_ProductionVariantSummary_SeeAlso"></a>
 
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
-+  [AWS SDK for C\+\+](http://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/ProductionVariantSummary) 
-+  [AWS SDK for Go](http://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/ProductionVariantSummary) 
-+  [AWS SDK for Java](http://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/ProductionVariantSummary) 
-+  [AWS SDK for Ruby V2](http://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/ProductionVariantSummary) 
++  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/ProductionVariantSummary) 
++  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/ProductionVariantSummary) 
++  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/ProductionVariantSummary) 
++  [AWS SDK for Ruby V2](https://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/ProductionVariantSummary) 

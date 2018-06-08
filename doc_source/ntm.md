@@ -10,7 +10,7 @@ For more information on the mathematics behind NTM, see [Neural Variational Infe
 
 ## Input/Output Interface<a name="NTM-inputoutput"></a>
 
-Amazon SageMaker Neural Topic Model supports three data channels: train, validation, and test\. The validation and test data channels are optional\. If you specify the validation channel, the test channel, or both, set the value of the `S3DataDistributionType` parameter for each of these channels to `FullyReplicated`\. If you provide validation data, the loss on this data is logged at every epoch, and the model stops training as soon as it detects that the validation loss is not improving\. If you don't provide validation data, the algorithm stops early based on the training data, but this can be less efficient\. If you provide test data, the algorithm reports the test loss from the final model\. NTM supports both `recordIO-wrapped-protobuf` \(dense and sparse\) and `CSV` file formats\. For `CSV` format, each row must be represented densely with zero counts for words not present in the corresponding document , and have the dimension `number of records * vocabulary size`\.
+Amazon SageMaker Neural Topic Model supports three data channels: train, validation, and test\. The validation and test data channels are optional\. If you specify the validation channel, the test channel, or both, set the value of the `S3DataDistributionType` parameter for each of these channels to `FullyReplicated`\. If you provide validation data, the loss on this data is logged at every epoch, and the model stops training as soon as it detects that the validation loss is not improving\. If you don't provide validation data, the algorithm stops early based on the training data, but this can be less efficient\. If you provide test data, the algorithm reports the test loss from the final model\. NTM supports both `recordIO-wrapped-protobuf` \(dense and sparse\) and `CSV` file formats\. For `CSV` format, each row must be represented densely with zero counts for words not present in the corresponding document , and have dimension equal to `number of records * vocabulary size`\. NTM can be trained in File or Pipe mode when using recordIO\-wrapped protobuf, but only in File mode for the `CSV` format\.
 
 For inference, `text/csv`, `application/json`, and `application/x-recordio-protobuf` content types are supported\. Sparse data can also be passed for `application/json` and `application/x-recordio-protobuf`\. NTM inference returns `application/json` or `application/x-recordio-protobuf` *predictions*, which include the `topic_weights` vector for each observation\.
 
@@ -24,4 +24,5 @@ NTM training supports both GPU and CPU instance types\. We recommend GPU instanc
 + [Input/Output Interface](#NTM-inputoutput)
 + [EC2 Instance Recommendation](#NTM-instances)
 + [NTM Hyperparameters](ntm_hyperparameters.md)
++ [Tuning an NTM Model](ntm-tuning.md)
 + [NTM Response Formats](ntm-in-formats.md)

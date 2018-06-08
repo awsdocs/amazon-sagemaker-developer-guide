@@ -5,12 +5,13 @@ The following table lists parameters for each of the algorithms provided by Amaz
 
 | Algorithm Name | Channel Name | Training Image and Inference Image Registry Path | Training Input Mode | File Type | Instance Class | 
 | --- | --- | --- | --- | --- | --- | 
-| k\-means  | train and \(optionally\) test |  *<ecr\_path>*/kmeans:*<tag>*  |  File  | recordIO\-protobuf or CSV | CPU | 
-| PCA | train and \(optionally\) test |  *<ecr\_path>*/pca:*<tag>*  |  File  | recordIO\-protobuf or CSV | GPU or CPU | 
-|  LDA  | train and \(optionally\) test |  *<ecr\_path>*/lda:*<tag>*  |  File  | recordIO\-protobuf or CSV | CPU \(single instance only\) | 
-| Factorization Machines | train and \(optionally\) test |  *<ecr\_path>*/factorization\-machines:*<tag>*  |  File  | recordIO\-protobuf | CPU \(GPU for dense data\) | 
-| Linear Learner | train and \(optionally\) validation, test, or both | <ecr\_path>/linear\-learner:<tag> |  File  | recordIO\-protobuf or CSV | CPU or GPU | 
-| Neural Topic Model | train and \(optionally\) validation,  test, or both |  *<ecr\_path>*/ntm:*<tag>*  |  File  | recordIO\-protobuf or CSV | GPU or CPU | 
+| k\-means  | train and \(optionally\) test |  *<ecr\_path>*/kmeans:*<tag>*  |  File or Pipe  | recordIO\-protobuf or CSV | CPU or GPU \(single GPU device on one or more instances\) | 
+| PCA | train and \(optionally\) test |  *<ecr\_path>*/pca:*<tag>*  |  File or Pipe  | recordIO\-protobuf or CSV | GPU or CPU | 
+|  LDA  | train and \(optionally\) test |  *<ecr\_path>*/lda:*<tag>*  |  File or Pipe  | recordIO\-protobuf or CSV | CPU \(single instance only\) | 
+| Factorization Machines | train and \(optionally\) test |  *<ecr\_path>*/factorization\-machines:*<tag>*  |  File or Pipe  | recordIO\-protobuf | CPU \(GPU for dense data\) | 
+| Linear Learner | train and \(optionally\) validation, test, or both | <ecr\_path>/linear\-learner:<tag> |  File or Pipe  | recordIO\-protobuf or CSV | CPU or GPU | 
+| Neural Topic Model | train and \(optionally\) validation, test, or both |  *<ecr\_path>*/ntm:*<tag>*  |  File or Pipe  | recordIO\-protobuf or CSV | GPU or CPU | 
+| Random Cut Forest | train and \(optionally\) test |  *<ecr\_path>*/randomcutforest:*<tag>*  |  File or Pipe  | recordIO\-protobuf or CSV | CPU | 
 |  Seq2Seq Modeling  | train, validation, and vocab | <ecr\_path>/seq2seq:<tag> |  File  | recordIO\-protobuf | GPU \(single instance only\) | 
 | XGBoost | train and \(optionally\) validation |  *<ecr\_path>*/xgboost:*<tag>*  |  File  | CSV or LibSVM | CPU | 
 | Image Classification | train and validation, \(optionally\) train\_lst and validation\_lst |  *<ecr\_path>*/image\-classification:*<tag>*  |  File  | recordIO or image files \(\.jpg or \.png\)  | GPU | 

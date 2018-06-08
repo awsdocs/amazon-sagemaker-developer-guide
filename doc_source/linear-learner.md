@@ -10,7 +10,7 @@ The linear learner expects a data matrix, with rows representing the observation
 
 Amazon SageMaker linear learner supports three data channels: train, validation, and test\. The validation data channel is optional\. If you provide validation data, it should be `FullyReplicated`\. The validation loss is logged at every epoch, and a sample of the validation data is used to calibrate and select the best model\. If you don't provide validation data, the final model calibration and selection uses a sample of the training data\. The test data channel is also optional\. If test data is provided, the algorithm logs contain the test score for the final model\.
 
-Linear learner supports both `recordIO wrapped protobuf` and `CSV`\. For input type `x-recordio-protobuf`, only Float32 tensors are supported\. For input type `text/csv`, the first column is assumed to be the label \(target variable for prediction\)\.
+Linear learner supports both `recordIO wrapped protobuf` and `CSV`\. For input type `x-recordio-protobuf`, only Float32 tensors are supported\. For input type `text/csv`, the first column is assumed to be the label, which is the target variable for prediction\. Linear learner can be trained in File or Pipe mode when using recordIO\-wrapped protobuf, but only in File mode for the `CSV` format\.
 
 For inference, Linear Learner supports the `application/json`, `x-recordio-protobuf`, and `text/csv` formats\. For binary classification models, both the score and the predicted label are returned\. For regression, just the score is returned\.
 

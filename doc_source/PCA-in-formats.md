@@ -26,7 +26,7 @@ Accept—application/x\-recordio\-protobuf
 [
     Record = {
         features = {},
-        labels = {
+        label = {
             'projection': {
                 keys: [],
                 values: [1.0, 2.0, 3.0, 4.0, 5.0]
@@ -35,7 +35,7 @@ Accept—application/x\-recordio\-protobuf
     },
     Record = {
         features = {},
-        labels = {
+        label = {
             'projection': {
                 keys: [],
                 values: [1.0, 2.0, 3.0, 4.0, 5.0]

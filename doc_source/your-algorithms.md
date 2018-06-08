@@ -13,14 +13,8 @@ Amazon SageMaker algorithms are packaged as Docker images\. This gives you the f
 You can provide separate Docker images for the training algorithm and inference code, or you can combine them into a single Docker image\. When creating Docker images for use with Amazon SageMaker, consider the following:
 + Providing two Docker images can increase storage requirements and cost because common libraries might be duplicated\.
 + In general, smaller containers start faster for both training and hosting\. Models train faster and the hosting service can react to increases in traffic by automatically scaling more quickly\.
-
-   
 + You might be able to write an inference container that is significantly smaller than the training container\. This is especially common when you use GPUs for training, but your inference code is optimized for CPUs\.
-
-   
 +  Amazon SageMaker requires that Docker containers run without privileged access\.
-
-   
 + Docker containers might send messages to the `Stdout` and `Stderr` files\. Amazon SageMaker sends these messages to Amazon CloudWatch logs in your AWS account\.
 
 The following sections provide detailed information about how Amazon SageMaker interacts with Docker containers and explain Amazon SageMaker requirements for Docker images\. Use this information when creating your own containers\. For general information about Docker containers, see [Docker Basics](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html) in the *Amazon Elastic Container Service Developer Guide*\.

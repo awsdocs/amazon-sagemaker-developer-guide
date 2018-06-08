@@ -17,6 +17,7 @@ If you see an expand arrow \(**↗**\) in the upper\-right corner of the table, 
 |  [AddTags](API_AddTags.md)  |  `sagemaker:AddTags`  |  `arn:aws:sagemaker:region:account-id:*`  | 
 |  [CreateEndpoint](API_CreateEndpoint.md)  |  `sagemaker:CreateEndpoint` `kms:CreateGrant` \(required only if the associated `EndPointConfig` has a `KmsKeyId` specified\)  |  `arn:aws:sagemaker:region:account-id:endpoint/endpointName`  | 
 |  [CreateEndpointConfig](API_CreateEndpointConfig.md)  |  `sagemaker:CreateEndpointConfig`  |  `arn:aws:sagemaker:region:account-id:endpoint-config/endpointConfigName`  | 
+|  [CreateHyperParameterTuningJob](API_CreateHyperParameterTuningJob.md)  |  `sagemaker:CreateHyperParameterTuningJob` `iam:PassRole` `kms:CreateGrant` \(required only if the associated `HyperParameterTuningJob` has a `KmsKeyId` specified\)  |  `arn:aws:sagemaker:region:account-id:hyper-parameter-tuning-job/hyperParameterTuningJobName`  | 
 |  [CreatePresignedNotebookInstanceUrl](API_CreatePresignedNotebookInstanceUrl.md)  |  `sagemaker:CreatePresignedNotebookInstanceUrl`  |  `arn:aws:sagemaker:region:account-id:notebook-instance/notebookInstanceName`  | 
 |  [CreateModel](API_CreateModel.md)  |  `sagemaker:CreateModel` `iam:PassRole`  |  `arn:aws:sagemaker:region:account-id:model/modelName`  | 
 |  [CreateNotebookInstance](API_CreateNotebookInstance.md)  |  `sagemaker:CreateNotebookInstance` `iam:PassRole` `ec2:CreateNetworkInterface` `ec2:AttachNetworkInterface` `ec2:ModifyNetworkInterfaceAttribute` `ec2:DeleteNetworkInterface` `ec2:DescribeAvailabilityZones` `ec2:DescribeInternetGateways` `ec2:DescribeNetworkInterfaces` `ec2:DescribeSecurityGroups` `ec2:DescribeSubnets` `ec2:DescribeVpcs` `kms:CreateGrant` \(required only if you specify a `KmsKeyId`\)  |  `arn:aws:sagemaker:region:account-id:notebook-instance/notebookInstanceName`  | 
@@ -28,17 +29,21 @@ If you see an expand arrow \(**↗**\) in the upper\-right corner of the table, 
 |  [DeleteTags](API_DeleteTags.md)  |  `sagemaker:DeleteTags`  |  `arn:aws:sagemaker:region:account-id:*`  | 
 |  [DescribeEndpoint](API_DescribeEndpoint.md)  |  `sagemaker:DescribeEndpoint`  |  `arn:aws:sagemaker:region:account-id:endpoint/endpointName`  | 
 |  [DescribeEndpointConfig](API_DescribeEndpointConfig.md)  |  `sagemaker:DescribeEndpointConfig`  |  `arn:aws:sagemaker:region:account-id:endpoint-config/endpointConfigName`  | 
+|  [DescribeHyperParameterTuningJob](API_DescribeHyperParameterTuningJob.md)  |  `sagemaker:DescribeHyperParameterTuningJob`  |  `arn:aws:sagemaker:region:account-id:hyper-parameter-tuning-job/hyperParameterTuningJob`  | 
 |  [DescribeModel](API_DescribeModel.md)  |  `sagemaker:DescribeModel`  |  `arn:aws:sagemaker:region:account-id:model/modelName`  | 
 |  [DescribeNotebookInstance](API_DescribeNotebookInstance.md)  |  `sagemaker:DescribeNotebookInstance `  |  `arn:aws:sagemaker:region:account-id:notebook-instance/notebookInstanceName`  | 
 |  [DescribeTrainingJob](API_DescribeTrainingJob.md)  |  `sagemaker:DescribeTrainingJob`  |  `arn:aws:sagemaker:region:account-id:training-job/trainingjobname`  | 
 |  [InvokeEndpoint](API_runtime_InvokeEndpoint.md)  |  `sagemaker:InvokeEndpoint`  |  `arn:aws:sagemaker:region:account-id:endpoint/endpointName`  | 
 |  [ListEndpointConfigs](API_ListEndpointConfigs.md)  |  `sagemaker:ListEndpointConfigs`  |  `*`  | 
 |  [ListEndpoints](API_ListEndpoints.md)  |  `sagemaker:ListEndpoints`  |  `*`  | 
+|  [ListHyperParameterTuningJobs](API_ListHyperParameterTuningJobs.md)  |  `sagemaker:ListHyperParameterTuningJobs`  |  `arn:aws:sagemaker:region:account-id:hyper-parameter-tuning-job/hyperParameterTuningJob`  | 
 |  [ListModels](API_ListModels.md)  |  `sagemaker:ListModels`  |  `*`  | 
 |  [ListNotebookInstances](API_ListNotebookInstances.md)  |  `sagemaker:ListNotebookInstances`  |  `*`  | 
 |  [ListTags](API_ListTags.md)  |  `sagemaker:ListTags`  |  `arn:aws:sagemaker:region:account-id:*`  | 
 |  [ListTrainingJobs](API_ListTrainingJobs.md)  |  `sagemaker:ListTrainingJobs`  |  `*`  | 
+|  [ListTrainingJobsForHyperParameterTuningJob](API_ListTrainingJobsForHyperParameterTuningJob.md)  |  `sagemaker:ListTrainingJobsForHyperParameterTuningJob`  |  `arn:aws:sagemaker:region:account-id:hyper-parameter-tuning-job/hyperParameterTuningJob`  | 
 |  [StartNotebookInstance](API_StartNotebookInstance.md)  |  `sagemaker:StartNotebookInstance`  |  `arn:aws:sagemaker:region:account-id:notebook-instance/notebookInstanceName`  | 
+|  [StopHyperParameterTuningJob](API_StopHyperParameterTuningJob.md)  |  `sagemaker:StopHyperParameterTuningJob`  |  `arn:aws:sagemaker:region:account-id:hyper-parameter-tuning-job/hyperParameterTuningJob`  | 
 |  [StopNotebookInstance](API_StopNotebookInstance.md)  |  `sagemaker:StopNotebookInstance`  |  `arn:aws:sagemaker:region:account-id:notebook-instance/notebookInstanceName`  | 
 |  [StopTrainingJob](API_StopTrainingJob.md)  |  `sagemaker:StopTrainingJob`  |  `arn:aws:sagemaker:region:account-id:training-job/trainingJobName`  | 
 |  [UpdateEndpoint](API_UpdateEndpoint.md)  |  `sagemaker:UpdateEndpoint`  |  `arn:aws:sagemaker:region:account-id:endpoint/endpointName`  | 

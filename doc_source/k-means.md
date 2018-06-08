@@ -8,7 +8,7 @@ The k\-means algorithm expects tabular data, where rows represent the observatio
 
 ## Input/Output Interface<a name="km-inputoutput"></a>
 
-The k\-means algorithm expects data to be provided in the *train* channel \(recommended S3DataDistributionType=ShardedByS3Key\), with an optional *test* channel \(recommended S3DataDistributionType=FullyReplicated\) to score the data on\. Both `recordIO-wrapped-protobuf` and `CSV` are supported for training\.
+The k\-means algorithm expects data to be provided in the *train* channel \(recommended S3DataDistributionType=ShardedByS3Key\), with an optional *test* channel \(recommended S3DataDistributionType=FullyReplicated\) to score the data on\. Both `recordIO-wrapped-protobuf` and `CSV` formats are supported for training\. k\-means can be trained in File or Pipe mode when using recordIO\-wrapped protobuf, but only in File mode for the `CSV` format\.
 
 For inference, `text/csv`, `application/json`, and `application/x-recordio-protobuf` are supported\. k\-means returns a `closest_cluster` label and the `distance_to_cluster` for each observation\.
 

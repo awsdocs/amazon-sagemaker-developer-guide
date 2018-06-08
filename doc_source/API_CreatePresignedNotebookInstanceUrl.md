@@ -1,6 +1,6 @@
 # CreatePresignedNotebookInstanceUrl<a name="API_CreatePresignedNotebookInstanceUrl"></a>
 
-Returns a URL that you can use to connect to the Juypter server from a notebook instance\. In the Amazon SageMaker console, when you choose `Open` next to a notebook instance, Amazon SageMaker opens a new tab showing the Jupyter server home page from the notebook instance\. The console uses this API to get the URL and show the page\. 
+Returns a URL that you can use to connect to the Jupyter server from a notebook instance\. In the Amazon SageMaker console, when you choose `Open` next to a notebook instance, Amazon SageMaker opens a new tab showing the Jupyter server home page from the notebook instance\. The console uses this API to get the URL and show the page\. 
 
 ## Request Syntax<a name="API_CreatePresignedNotebookInstanceUrl_RequestSyntax"></a>
 
@@ -55,12 +55,12 @@ For information about the errors that are common to all actions, see [Common Err
 ## See Also<a name="API_CreatePresignedNotebookInstanceUrl_SeeAlso"></a>
 
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
-+  [AWS Command Line Interface](http://docs.aws.amazon.com/goto/aws-cli/sagemaker-2017-07-24/CreatePresignedNotebookInstanceUrl) 
-+  [AWS SDK for \.NET](http://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/CreatePresignedNotebookInstanceUrl) 
-+  [AWS SDK for C\+\+](http://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/CreatePresignedNotebookInstanceUrl) 
-+  [AWS SDK for Go](http://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/CreatePresignedNotebookInstanceUrl) 
-+  [AWS SDK for Java](http://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/CreatePresignedNotebookInstanceUrl) 
-+  [AWS SDK for JavaScript](http://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/CreatePresignedNotebookInstanceUrl) 
-+  [AWS SDK for PHP V3](http://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/CreatePresignedNotebookInstanceUrl) 
-+  [AWS SDK for Python](http://docs.aws.amazon.com/goto/boto3/sagemaker-2017-07-24/CreatePresignedNotebookInstanceUrl) 
-+  [AWS SDK for Ruby V2](http://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/CreatePresignedNotebookInstanceUrl) 
++  [AWS Command Line Interface](https://docs.aws.amazon.com/goto/aws-cli/sagemaker-2017-07-24/CreatePresignedNotebookInstanceUrl) 
++  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/CreatePresignedNotebookInstanceUrl) 
++  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/CreatePresignedNotebookInstanceUrl) 
++  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/CreatePresignedNotebookInstanceUrl) 
++  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/CreatePresignedNotebookInstanceUrl) 
++  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/CreatePresignedNotebookInstanceUrl) 
++  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/CreatePresignedNotebookInstanceUrl) 
++  [AWS SDK for Python](https://docs.aws.amazon.com/goto/boto3/sagemaker-2017-07-24/CreatePresignedNotebookInstanceUrl) 
++  [AWS SDK for Ruby V2](https://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/CreatePresignedNotebookInstanceUrl) 

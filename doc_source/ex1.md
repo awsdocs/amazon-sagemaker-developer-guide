@@ -29,7 +29,7 @@ There are two ways to use this exercise:
   `sample-notebooks/sagemaker-python-sdk/1P_kmeans_lowlevel`
 
 **Topics**
-+ [Step 3\.1: Create a Juypter Notebook and Initialize Variables](ex1-prepare.md)
++ [Step 3\.1: Create a Jupyter Notebook and Initialize Variables](ex1-prepare.md)
 + [Step 3\.2: Download, Explore, and Transform the Training Data](ex1-preprocess-data.md)
 + [Step 3\.3: Train a Model](ex1-train-model.md)
 + [Step 3\.4: Deploy the Model to Amazon SageMaker Hosting Services](ex1-deploy-model.md)

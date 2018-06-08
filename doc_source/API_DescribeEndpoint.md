@@ -38,6 +38,13 @@ Required: Yes
       { 
          "[CurrentInstanceCount](API_ProductionVariantSummary.md#SageMaker-Type-ProductionVariantSummary-CurrentInstanceCount)": number,
          "[CurrentWeight](API_ProductionVariantSummary.md#SageMaker-Type-ProductionVariantSummary-CurrentWeight)": number,
+         "[DeployedImages](API_ProductionVariantSummary.md#SageMaker-Type-ProductionVariantSummary-DeployedImages)": [ 
+            { 
+               "[ResolutionTime](API_DeployedImage.md#SageMaker-Type-DeployedImage-ResolutionTime)": number,
+               "[ResolvedImage](API_DeployedImage.md#SageMaker-Type-DeployedImage-ResolvedImage)": "string",
+               "[SpecifiedImage](API_DeployedImage.md#SageMaker-Type-DeployedImage-SpecifiedImage)": "string"
+            }
+         ],
          "[DesiredInstanceCount](API_ProductionVariantSummary.md#SageMaker-Type-ProductionVariantSummary-DesiredInstanceCount)": number,
          "[DesiredWeight](API_ProductionVariantSummary.md#SageMaker-Type-ProductionVariantSummary-DesiredWeight)": number,
          "[VariantName](API_ProductionVariantSummary.md#SageMaker-Type-ProductionVariantSummary-VariantName)": "string"
@@ -99,12 +106,12 @@ For information about the errors that are common to all actions, see [Common Err
 ## See Also<a name="API_DescribeEndpoint_SeeAlso"></a>
 
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
-+  [AWS Command Line Interface](http://docs.aws.amazon.com/goto/aws-cli/sagemaker-2017-07-24/DescribeEndpoint) 
-+  [AWS SDK for \.NET](http://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/DescribeEndpoint) 
-+  [AWS SDK for C\+\+](http://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/DescribeEndpoint) 
-+  [AWS SDK for Go](http://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/DescribeEndpoint) 
-+  [AWS SDK for Java](http://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/DescribeEndpoint) 
-+  [AWS SDK for JavaScript](http://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/DescribeEndpoint) 
-+  [AWS SDK for PHP V3](http://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/DescribeEndpoint) 
-+  [AWS SDK for Python](http://docs.aws.amazon.com/goto/boto3/sagemaker-2017-07-24/DescribeEndpoint) 
-+  [AWS SDK for Ruby V2](http://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/DescribeEndpoint) 
++  [AWS Command Line Interface](https://docs.aws.amazon.com/goto/aws-cli/sagemaker-2017-07-24/DescribeEndpoint) 
++  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/DescribeEndpoint) 
++  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/DescribeEndpoint) 
++  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/DescribeEndpoint) 
++  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/DescribeEndpoint) 
++  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/DescribeEndpoint) 
++  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/DescribeEndpoint) 
++  [AWS SDK for Python](https://docs.aws.amazon.com/goto/boto3/sagemaker-2017-07-24/DescribeEndpoint) 
++  [AWS SDK for Ruby V2](https://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/DescribeEndpoint) 

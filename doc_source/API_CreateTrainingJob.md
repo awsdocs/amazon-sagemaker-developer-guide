@@ -1,12 +1,12 @@
 # CreateTrainingJob<a name="API_CreateTrainingJob"></a>
 
- Starts a model training job\. After training completes, Amazon SageMaker saves the resulting model artifacts to an Amazon S3 location that you specify\. 
+Starts a model training job\. After training completes, Amazon SageMaker saves the resulting model artifacts to an Amazon S3 location that you specify\. 
 
 If you choose to host your model using Amazon SageMaker hosting services, you can use the resulting model artifacts as part of the model\. You can also use the artifacts in a deep learning service other than Amazon SageMaker, provided that you know how to use them for inferences\. 
 
 In the request body, you provide the following: 
 +  `AlgorithmSpecification` \- Identifies the training algorithm to use\. 
-+  `HyperParameters` \- Specify these algorithm\-specific parameters to influence the quality of the final model\. For a list of hyperparameters for each training algorithm provided by Amazon SageMaker, see [Algorithms](http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)\. 
++  `HyperParameters` \- Specify these algorithm\-specific parameters to influence the quality of the final model\. For a list of hyperparameters for each training algorithm provided by Amazon SageMaker, see [Algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)\. 
 +  `InputDataConfig` \- Describes the training dataset and the Amazon S3 location where it is stored\.
 +  `OutputDataConfig` \- Identifies the Amazon S3 location where you want Amazon SageMaker to save the results of model training\. 
 
@@ -15,7 +15,7 @@ In the request body, you provide the following:
 +  `RoleARN` \- The Amazon Resource Number \(ARN\) that Amazon SageMaker assumes to perform tasks on your behalf during model training\. You must grant this role the necessary permissions so that Amazon SageMaker can successfully complete model training\. 
 +  `StoppingCondition` \- Sets a duration for training\. Use this parameter to cap model training costs\. 
 
- For more information about Amazon SageMaker, see [How It Works](http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html)\. 
+ For more information about Amazon SageMaker, see [How It Works](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html)\. 
 
 ## Request Syntax<a name="API_CreateTrainingJob_RequestSyntax"></a>
 
@@ -78,12 +78,12 @@ For information about the parameters that are common to all actions, see [Common
 The request accepts the following data in JSON format\.
 
  ** [AlgorithmSpecification](#API_CreateTrainingJob_RequestSyntax) **   <a name="SageMaker-CreateTrainingJob-request-AlgorithmSpecification"></a>
-The registry path of the Docker image that contains the training algorithm and algorithm\-specific metadata, including the input mode\. For more information about algorithms provided by Amazon SageMaker, see [Algorithms](http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)\. For information about providing your own algorithms, see [Using Your Own Algorithms with Amazon SageMaker](your-algorithms.md)\.   
+The registry path of the Docker image that contains the training algorithm and algorithm\-specific metadata, including the input mode\. For more information about algorithms provided by Amazon SageMaker, see [Algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)\. For information about providing your own algorithms, see [Using Your Own Algorithms with Amazon SageMaker](your-algorithms.md)\.   
 Type: [AlgorithmSpecification](API_AlgorithmSpecification.md) object  
 Required: Yes
 
  ** [HyperParameters](#API_CreateTrainingJob_RequestSyntax) **   <a name="SageMaker-CreateTrainingJob-request-HyperParameters"></a>
-Algorithm\-specific parameters\. You set hyperparameters before you start the learning process\. Hyperparameters influence the quality of the model\. For a list of hyperparameters for each training algorithm provided by Amazon SageMaker, see [Algorithms](http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)\.   
+Algorithm\-specific parameters that influence the quality of the model\. You set hyperparameters before you start the learning process\. For a list of hyperparameters for each training algorithm provided by Amazon SageMaker, see [Algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)\.   
 You can specify a maximum of 100 hyperparameters\. Each hyperparameter is a key\-value pair\. Each key and value is limited to 256 characters, as specified by the `Length Constraint`\.   
 Type: String to string map  
 Key Length Constraints: Maximum length of 256\.  
@@ -111,7 +111,8 @@ Required: Yes
 
  ** [RoleArn](#API_CreateTrainingJob_RequestSyntax) **   <a name="SageMaker-CreateTrainingJob-request-RoleArn"></a>
 The Amazon Resource Name \(ARN\) of an IAM role that Amazon SageMaker can assume to perform tasks on your behalf\.   
-During model training, Amazon SageMaker needs your permission to read input data from an S3 bucket, download a Docker image that contains training code, write model artifacts to an S3 bucket, write logs to Amazon CloudWatch Logs, and publish metrics to Amazon CloudWatch\. You grant permissions for all of these tasks to an IAM role\. For more information, see [Amazon SageMaker Roles](http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html)\.   
+During model training, Amazon SageMaker needs your permission to read input data from an S3 bucket, download a Docker image that contains training code, write model artifacts to an S3 bucket, write logs to Amazon CloudWatch Logs, and publish metrics to Amazon CloudWatch\. You grant permissions for all of these tasks to an IAM role\. For more information, see [Amazon SageMaker Roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html)\.   
+To be able to pass this role to Amazon SageMaker, the caller of this API must have the `iam:PassRole` permission\.
 Type: String  
 Length Constraints: Minimum length of 20\. Maximum length of 2048\.  
 Pattern: `^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$`   
@@ -124,7 +125,7 @@ Type: [StoppingCondition](API_StoppingCondition.md) object
 Required: Yes
 
  ** [Tags](#API_CreateTrainingJob_RequestSyntax) **   <a name="SageMaker-CreateTrainingJob-request-Tags"></a>
-An array of key\-value pairs\. For more information, see [Using Cost Allocation Tags](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what) in the *AWS Billing and Cost Management User Guide*\.   
+An array of key\-value pairs\. For more information, see [Using Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what) in the *AWS Billing and Cost Management User Guide*\.   
 Type: Array of [Tag](API_Tag.md) objects  
 Array Members: Minimum number of 0 items\. Maximum number of 50 items\.  
 Required: No
@@ -159,7 +160,7 @@ The following data is returned in JSON format by the service\.
 The Amazon Resource Name \(ARN\) of the training job\.  
 Type: String  
 Length Constraints: Maximum length of 256\.  
-Pattern: `arn:aws[a-z\-]*:sagemaker:[\p{Alnum}\-]*:[0-9]{12}:training-job/.*` 
+Pattern: `arn:aws[a-z\-]*:sagemaker:[a-z0-9\-]*:[0-9]{12}:training-job/.*` 
 
 ## Errors<a name="API_CreateTrainingJob_Errors"></a>
 
@@ -176,12 +177,12 @@ HTTP Status Code: 400
 ## See Also<a name="API_CreateTrainingJob_SeeAlso"></a>
 
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
-+  [AWS Command Line Interface](http://docs.aws.amazon.com/goto/aws-cli/sagemaker-2017-07-24/CreateTrainingJob) 
-+  [AWS SDK for \.NET](http://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/CreateTrainingJob) 
-+  [AWS SDK for C\+\+](http://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/CreateTrainingJob) 
-+  [AWS SDK for Go](http://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/CreateTrainingJob) 
-+  [AWS SDK for Java](http://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/CreateTrainingJob) 
-+  [AWS SDK for JavaScript](http://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/CreateTrainingJob) 
-+  [AWS SDK for PHP V3](http://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/CreateTrainingJob) 
-+  [AWS SDK for Python](http://docs.aws.amazon.com/goto/boto3/sagemaker-2017-07-24/CreateTrainingJob) 
-+  [AWS SDK for Ruby V2](http://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/CreateTrainingJob) 
++  [AWS Command Line Interface](https://docs.aws.amazon.com/goto/aws-cli/sagemaker-2017-07-24/CreateTrainingJob) 
++  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/CreateTrainingJob) 
++  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/CreateTrainingJob) 
++  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/CreateTrainingJob) 
++  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/CreateTrainingJob) 
++  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/CreateTrainingJob) 
++  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/CreateTrainingJob) 
++  [AWS SDK for Python](https://docs.aws.amazon.com/goto/boto3/sagemaker-2017-07-24/CreateTrainingJob) 
++  [AWS SDK for Ruby V2](https://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/CreateTrainingJob) 

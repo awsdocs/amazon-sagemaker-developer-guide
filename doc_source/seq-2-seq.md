@@ -42,3 +42,4 @@ Currently Amazon SageMaker seq2seq is only set up to train on a single machine, 
 + [EC2 Instance Recommendation](#s2s-instances)
 + [How Sequence2Sequence Works](seq-2-seq-howitworks.md)
 + [Sequence2Sequence Hyperparameters](seq-2-seq-hyperparameters.md)
++ [Tuning a Sequence to Sequence Model](seq-2-seq-tuning.md)

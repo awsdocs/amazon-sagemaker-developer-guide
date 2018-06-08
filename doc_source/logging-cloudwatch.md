@@ -10,3 +10,6 @@ To help you debug your training jobs, endpoints, and notebook instance lifecycle
 | /aws/sagemaker/TrainingJobs |  `[training-job-name]/algo-[instance-number-in-cluster]-[epoch_timestamp]`  | 
 | /aws/sagemaker/Endpoints/\[EndpointName\] |  `[production-variant-name]/[instance-id]`  | 
 | /aws/sagemaker/NotebookInstances |  `[notebook-instance-name]/[LifecycleConfigHook]`  | 
+
+**Note**  
+The `/aws/sagemaker/NotebookInstances` log group is made when you create a Notebook Instance with a Lifecycle configuration\. For more information, see [Step 2\.1: \(Optional\) Customize a Notebook Instance ](notebook-lifecycle-config.md)\.

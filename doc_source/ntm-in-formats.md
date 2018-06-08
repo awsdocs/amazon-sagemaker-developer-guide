@@ -17,7 +17,7 @@
 [
     Record = {
         features = {},
-        labels = {
+        label = {
             'topic_weights': {
                 keys: [],
                 values: [0.25, 0.067, 0, ...]  # float32
@@ -26,7 +26,7 @@
     },
     Record = {
         features = {},
-        labels = {
+        label = {
             'topic_weights': {
                 keys: [],
                 values: [0.25, 0.067, 0, ...]  # float32

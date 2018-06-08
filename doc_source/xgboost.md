@@ -19,11 +19,14 @@ For CSV training input mode, the total memory available to the algorithm \(Insta
 
 SageMaker XGBoost uses the Python pickle module to serialize/deserialize the model, which can be used for saving/loading the model\.
 
-**To retrieve a Booster object from a model trained with SageMaker XGBoost**
+**To use a model trained with SageMaker XGBoost in open source XGBoost**
 + Use the following Python code:
 
   ```
-  pickle as pkl model = pkl.load(open(model_file_path, 'rb'))
+  import pickle as pkl 
+  model = pkl.load(open(model_file_path, 'rb'))
+  # prediction with test data
+  pred = model.predict(dtest)
   ```
 
 ## EC2 Instance Recommendation<a name="Instance-XGBoost"></a>
@@ -35,3 +38,4 @@ Amazon SageMaker XGBoost currently only trains using CPUs\. It is a memory\-boun
 + [EC2 Instance Recommendation](#Instance-XGBoost)
 + [How XGBoost Works](xgboost-HowItWorks.md)
 + [XGBoost Hyperparameters](xgboost_hyperparameters.md)
++ [Tuning a XGBoost Model](xgboost-tuning.md)

@@ -44,7 +44,7 @@ Required: Yes
  **NotebookInstanceStatus**   <a name="SageMaker-Type-NotebookInstanceSummary-NotebookInstanceStatus"></a>
 The status of the notebook instance\.  
 Type: String  
-Valid Values:` Pending | InService | Stopping | Stopped | Failed | Deleting`   
+Valid Values:` Pending | InService | Stopping | Stopped | Failed | Deleting | Updating`   
 Required: No
 
  **Url**   <a name="SageMaker-Type-NotebookInstanceSummary-Url"></a>
@@ -55,7 +55,7 @@ Required: No
 ## See Also<a name="API_NotebookInstanceSummary_SeeAlso"></a>
 
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
-+  [AWS SDK for C\+\+](http://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/NotebookInstanceSummary) 
-+  [AWS SDK for Go](http://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/NotebookInstanceSummary) 
-+  [AWS SDK for Java](http://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/NotebookInstanceSummary) 
-+  [AWS SDK for Ruby V2](http://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/NotebookInstanceSummary) 
++  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/NotebookInstanceSummary) 
++  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/NotebookInstanceSummary) 
++  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/NotebookInstanceSummary) 
++  [AWS SDK for Ruby V2](https://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/NotebookInstanceSummary) 

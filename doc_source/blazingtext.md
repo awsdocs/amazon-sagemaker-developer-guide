@@ -30,3 +30,4 @@ For more information about the mathematics behind BlazingText, see [BlazingText:
 + [Input/Output Interface](#bt-inputoutput)
 + [EC2 Instance Recommendation](#blazingtext-instances)
 + [BlazingText Hyperparameters](blazingtext_hyperparameters.md)
++ [Tuning a BlazingText Model](blazingtext-tuning.md)

@@ -10,7 +10,7 @@ For inference, the trained model takes as input an individual time series, which
 
 DeepAR supports two data channels\. The train channel is used for training a model and is required\. The test channel is optional\. If the test channel is present, the algorithm uses it to calculate accuracy metrics for the model after training\. You can provide datasets as JSON or [Parquet](https://parquet.apache.org/) files\.
 
-By default, the model determines the input format from the file extension \(either `.json` or `.parquet`\). If you provide input files with different extensions, you can specify the file type by setting the `ContentType` parameter of the [Channel](API_Channel.md) data type\. 
+By default, the model determines the input format from the file extension \(either `.json` or `.parquet`\)\. If you provide input files with different extensions, you can specify the file type by setting the `ContentType` parameter of the [Channel](API_Channel.md) data type\. 
 
 If you use a JSON file, it must be in the [JSON Lines](http://jsonlines.org/) format, where each record contains the following fields:
 + `"start"` whose value is a string of the format `YYYY-MM-DD HH:MM:SS`\.
@@ -43,11 +43,11 @@ In addition, the accuracy of the forecast distribution is evaluated using weight
 
 ![\[quantile loss\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/deepar-2.png)
 
-Here, *q**i*,*t*\(τ\) is the τ\-quantile of the distribution that the model predicts\. Set the *test\_quantiles* hyperparameter to specify which quantiles for which the algorithm calculates quantile loss\. For information, see [DeepAR Hyperparameters](deepar_hyperparameters.md)\. 
+Here, *q**i*,*t*\(τ\) is the τ\-quantile of the distribution that the model predicts\. Set the *test\_quantiles* hyperparameter to specify which quantiles for which the algorithm calculates quantile loss\. In addition to these, the average of the prescribed quantile losses is reported as part of the training logs\. For information, see [DeepAR Hyperparameters](deepar_hyperparameters.md)\. 
 
-If you have a set of time series, a simple way to prepare, test, and train datasets is as follows:
-+ Use the full dataset in the training channel\.
-+ In the test channel, remove the last `prediction_length` points from each time series\.
+If you have a set of time series, a simple way to prepare training and test datasets is as follows:
++ Use the full dataset in the test channel\.
++ In the training channel, remove the last `prediction_length` points from each time series\.
 
 This ensures that the model does not see the removed points during training, and then those points are used for calculating the accuracy of the model\.
 
@@ -83,7 +83,7 @@ Currently, only signel categorical features are supported\. In particular we do 
 
 **Q: How do I use the categorical feature?**
 
-The categorical feature `cat` can be used to encode a grouping\. If the time\-series belong to `N` different groups, you can encode each such group by a number \(`0 to N - 1`\)\. The model can then use the categorical feature to generate better forecasts\. To use this feature, the parameter `cardinality` has to be set to the number of groups \(e\.g\. `N`\) and the `embedding_dimension` parameter also has to be set\. The embedding dimension is typically smaller than `cardinality`, for instance `log(N)`\. It is important to remember that, in the training set, all categories from `0 to N - 1` must be present in the training data or an otherwise an exception will be thrown\. This is occurs because during inference, we can only forecast for categories which we have previously seen in training\.
+The categorical feature `cat` can be used to encode a grouping\. If the time\-series belong to `N` different groups, you can encode each such group by a number \(`0 to N - 1`\)\. The model can then use the categorical feature to generate better forecasts\. To use this feature, the parameter `cardinality` has to be set to the number of groups \(e\.g\. `N`\) and the `embedding_dimension` parameter also has to be set\. If either of these two hyperparameters is not set, then the cat field in train/test time series is ignored\. The embedding dimension is typically smaller than `cardinality`, for instance `log(N)`\. It is important to remember that, in the training set, all categories from `0 to N - 1` must be present in the training data or an otherwise an exception will be thrown\. This is occurs because during inference, we can only forecast for categories which we have previously seen in training\.
 
 **Q: Can I pass multiple files?**
 
@@ -118,4 +118,5 @@ The `context_length` corresponds to the number of data points the algorithm gets
 + [DeepAR Instance Recommendations](#deepar-instances)
 + [DeepAR Common Questions](#deepar-faq)
 + [DeepAR Hyperparameters](deepar_hyperparameters.md)
++ [Tuning a DeepAR Model](deepar-tuning.md)
 + [DeepAR Request and Response Formats](deepar-in-formats.md)

@@ -37,7 +37,8 @@
 | max\_num\_batches | Maximum number of updates/batches to process\. \-1 for infinite\. Valid values: integer Default value: \-1 | 
 | checkpoint\_frequency\_num\_batches | Checkpoint and evaluate every x batches\. Valid values: positive integer Default value: 1000 | 
 | checkpoint\_threshold | Maximum number of checkpoints model is allowed to not improve in `optimized_metric` on validation dataset before training is stopped\. Valid values: positive integer Default value: 3 | 
-| max\_num\_epochs | Maximum number of epochs to pass through training data before fitting is stopped\. Training continues until this number of epochs even if validation accuracy is not improving if this parameter is passed\. Ignored if not passed\. Valid values: positive integer Default value: none | 
+| min\_num\_epochs | Minimum number of epochs the training must run before it is stopped via `early_stopping` conditions\. Valid values: positive integer Default value: 0 | 
+| max\_num\_epochs | Maximum number of epochs to pass through training data before fitting is stopped\. Training continues until this number of epochs even if validation accuracy is not improving if this parameter is passed\. Ignored if not passed\. Valid values: Positive integer and less than or equal to max\_num\_epochs\. Default value: none | 
 | optimizer\_type | Optimizer to choose from\. Valid values: String\. One of *adam*, *sgd*, or *rmsprop*\. Default value: *adam* | 
 | weight\_init\_type | Type of weight initialization\.  Valid values: String\. Either *uniform* or *xavier*\. Default value: *xavier* | 
 | weight\_init\_scale | Weight initialization scale \(for *uniform* and *xavier* initialization\)\.  Valid values: float Default value: 2\.34 | 

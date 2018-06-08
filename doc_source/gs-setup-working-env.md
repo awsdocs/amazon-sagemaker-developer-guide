@@ -1,6 +1,6 @@
 # Step 2: Create an Amazon SageMaker Notebook Instance<a name="gs-setup-working-env"></a>
 
-An Amazon SageMaker notebook instance is a fully managed machine learning \(ML\) EC2 compute instance running the Jupyter Notebook App\. For more information, see [Notebook Instances and Notebooks](how-it-works-notebooks-instances.md)\. 
+An Amazon SageMaker notebook instance is a fully managed machine learning \(ML\) EC2 compute instance running the Jupyter Notebook App\. For more information, see [Explore and Preprocess Data](how-it-works-notebooks-instances.md)\. 
 
 **Note**  
 If necessary, you can change the notebook instance settings, including the ML compute instance type, later\.
@@ -70,7 +70,7 @@ If necessary, you can change the notebook instance settings, including the ML co
 
       In a few minutes, Amazon SageMaker launches an ML compute instance—in this case, a notebook instance—and attaches an ML storage volume to it\. The notebook instance has a preconfigured Jupyter notebook server and a set of Anaconda libraries\. For more information, see the [CreateNotebookInstance](API_CreateNotebookInstance.md) API\. 
 
-1. When the status of the notebook instance is `InService`, choose **Open** next to its name to open the Juypter dashboard\.  
+1. When the status of the notebook instance is `InService`, choose **Open** next to its name to open the Jupyter dashboard\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/ironman-jupyter-home-page.png)
 
    The dashboard provides access to:

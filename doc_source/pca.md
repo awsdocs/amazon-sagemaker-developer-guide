@@ -12,7 +12,7 @@ The rows represent observations you want to embed in a lower dimensional space\.
 
 ## Input/Output Interface<a name="pca-inputoutput"></a>
 
-PCA expects data provided in the train channel, and optionally supports a dataset passed to the test dataset, which is scored by the final algorithm\. Both `recordIO-wrapped-protobuf` and `CSV` file formats are supported\.
+PCA expects data provided in the train channel, and optionally supports a dataset passed to the test dataset, which is scored by the final algorithm\. Both `recordIO-wrapped-protobuf` and `CSV` file formats are supported\. PCA can be trained in File or Pipe mode when using recordIO\-wrapped protobuf, but only in File mode for the `CSV` format\.
 
 For inference, PCA supports `text/csv`, `application/json`, and `application/x-recordio-protobuf`\. Results are returned in either `application/json` or `application/x-recordio-protobuf` format with a vector of "projections\."
 
