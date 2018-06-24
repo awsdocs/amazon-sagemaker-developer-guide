@@ -4,7 +4,7 @@ Amazon SageMaker supports automatic scaling for production variants\. *Automatic
 
 To use automatic scaling for a production variant, you define and apply a scaling policy that uses Amazon CloudWatch metrics and target values that you assign\. Automatic scaling uses the policy to adjust the number of instances up or down in response to actual workloads\.
 
-You can use the AWS Management Console to apply a scaling policy based on a predefined metric\. A *predefined metric* is defined in an enumeration so that you can specify it by name in code or use it in the AWS Management Console\. Alternatively, you can use either the AWS Command Line Interface \(AWS CLI\) or the Application Auto Scaling API to apply a scaling policy based on a predefined or custom metric\. We strongly recommend that you load testg your automatic scaling configuration to ensure that it works correctly before using it to manage production traffic\.
+You can use the AWS Management Console to apply a scaling policy based on a predefined metric\. A *predefined metric* is defined in an enumeration so that you can specify it by name in code or use it in the AWS Management Console\. Alternatively, you can use either the AWS Command Line Interface \(AWS CLI\) or the Application Auto Scaling API to apply a scaling policy based on a predefined or custom metric\. We strongly recommend that you load test your automatic scaling configuration to ensure that it works correctly before using it to manage production traffic\.
 
 For information about deploying trained models as endpoints, see [Step 3\.4: Deploy the Model to Amazon SageMaker Hosting Services ](ex1-deploy-model.md)\. 
 
