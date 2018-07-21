@@ -55,11 +55,11 @@ In the k\-means implementation, the cluster numbers and digit they represent don
      for cluster in range(10):
          print('\n\n\nCluster {}:'.format(int(cluster)))
          digits = [ img for l, img in zip(clusters, valid_set[0]) if int(l) == cluster ]
-         height=((len(digits)-1)//5)+1
-         width=5
+         height = ((len(digits)-1)//5) + 1
+         width = 5
          plt.rcParams["figure.figsize"] = (width,height)
          _, subplots = plt.subplots(height, width)
-         subplots=numpy.ndarray.flatten(subplots)
+         subplots = numpy.ndarray.flatten(subplots)
          for subplot, image in zip(subplots, digits):
              show_digit(image, subplot=subplot)
          for subplot in subplots[len(digits):]:
@@ -69,7 +69,7 @@ In the k\-means implementation, the cluster numbers and digit they represent don
      ```
 
      This code takes the first100 images of handwritten numbers from the `valid_set` dataset and generates inferences for them\. The result is a set of clusters that group similar images\. The following visualization shows four of the clusters that the model returned:   
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/ironman-validate-kmeans-model-10.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sagemaker-validate-kmeans-model-10.png)
 + **Use the SDK for Python**\. 
 
   To send requests to the endpoint, use the `invoke_endpoint` method\. 
@@ -117,11 +117,11 @@ In the k\-means implementation, the cluster numbers and digit they represent don
      for cluster in range(10):
          print('\n\n\nCluster {}:'.format(int(cluster)))
          digits = [ img for l, img in zip(clusters, valid_set[0]) if int(l) == cluster ]
-         height=((len(digits)-1)//5)+1
-         width=5
+         height = ((len(digits)-1)//5) + 1
+         width = 5
          plt.rcParams["figure.figsize"] = (width,height)
          _, subplots = plt.subplots(height, width)
-         subplots=numpy.ndarray.flatten(subplots)
+         subplots = numpy.ndarray.flatten(subplots)
          for subplot, image in zip(subplots, digits):
              show_digit(image, subplot=subplot)
          for subplot in subplots[len(digits):]:
@@ -131,7 +131,7 @@ In the k\-means implementation, the cluster numbers and digit they represent don
      ```
 
      The result is a set of clusters that group similar images\. The following visualization shows four of the clusters that the model returned:   
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/ironman-validate-kmeans-model-10.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sagemaker-validate-kmeans-model-10.png)
 
   1. To get an idea of how accurate the model is, review the clusters and the numbers in them to see how well the model clustered similar looking digits\. To improve the model, you might make the following changes to the training job:
      + Change the model training parameters—For example, increase the number of epochs or tweak hyperparameters, such `extra_center_factor`\. For more information, see [K\-Means Hyperparameters](k-means-api-config.md)\.

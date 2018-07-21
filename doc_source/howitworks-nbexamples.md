@@ -9,3 +9,6 @@ To view a read\-only version of an example notebook, on the **SageMaker Examples
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/nbexample-preview-use.png)
 
 For more information about the example notebooks, see the [Amazon SageMaker examples GitHub repository](https://github.com/awslabs/amazon-sagemaker-examples)\.
+
+**Note**  
+Example notebooks typically download datasets from the internet\. If you disable Amazon SageMaker\-provided internet access when you create you notebook instance, example notebooks might not work\. For more information, see [Notebook Instances Are Internet\-Enabled by Default](appendix-additional-considerations.md#appendix-notebook-and-internet-access)\.

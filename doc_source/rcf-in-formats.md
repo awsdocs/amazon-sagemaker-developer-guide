@@ -15,6 +15,15 @@ ACCEPT: application/json\.
     }
 ```
 
+### JSONLINES<a name="RCF-jsonlines"></a>
+
+ACCEPT: application/jsonlines\.
+
+```
+{"score": 0.02},
+{"score": 0.25}
+```
+
 ## RECORDIO<a name="rcf-recordio"></a>
 
 ACCEPT: application/x\-recordio\-protobuf\.

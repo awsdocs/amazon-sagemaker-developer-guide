@@ -46,7 +46,7 @@ Type: Timestamp
 Required: No
 
  ** [MaxResults](#API_ListHyperParameterTuningJobs_RequestSyntax) **   <a name="SageMaker-ListHyperParameterTuningJobs-request-MaxResults"></a>
-The maximum number of tuning jobs to return\.  
+The maximum number of tuning jobs to return\. The default value is 10\.  
 Type: Integer  
 Valid Range: Minimum value of 1\. Maximum value of 100\.  
 Required: No

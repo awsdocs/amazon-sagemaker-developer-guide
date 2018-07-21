@@ -3,13 +3,13 @@
 To monitor the progress of a hyperparameter tuning job and the training jobs that it launches, use the Amazon SageMaker console\.
 
 **Topics**
-+ [View Hyperparameter Tuning Jobs Status](#automatic-model-tuning-monitor-tuning)
++ [View the Hyperparameter Tuning Job Status](#automatic-model-tuning-monitor-tuning)
 + [View the Status of the Training Jobs](#automatic-model-tuning-monitor-training)
 + [View the Best Training Job](#automatic-model-tuning-best-training-job)
 
-## View Hyperparameter Tuning Jobs Status<a name="automatic-model-tuning-monitor-tuning"></a>
+## View the Hyperparameter Tuning Job Status<a name="automatic-model-tuning-monitor-tuning"></a>
 
-**To view the status of the hyperparameter tuning jobs**
+**To view the status of the hyperparameter tuning job**
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)
 
@@ -20,7 +20,7 @@ To monitor the progress of a hyperparameter tuning job and the training jobs tha
    + `Completed`—The hyperparameter tuning job successfully completed\.
    + `InProgress`—The hyperparameter tuning job is in progress\. One or more training jobs are still running\.
    + `Failed`—The hyperparameter tuning job failed\.
-   + `Stopped`—The hyperparameter tuning job was manually stopped\. All training jobs that the hyperparameter tuning job launched are stopped\.
+   + `Stopped`—The hyperparameter tuning job was manually stopped before it completed\. All training jobs that the hyperparameter tuning job launched are stopped\.
    + `Stopping`—The hyperparameter tuning job is in the process of stopping\.
 
 ## View the Status of the Training Jobs<a name="automatic-model-tuning-monitor-training"></a>
@@ -32,7 +32,7 @@ To monitor the progress of a hyperparameter tuning job and the training jobs tha
 1. Choose **Training jobs**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/hyperparameter-training-jobs.png)
 
-1. View the status of each training job\. To see more details about a job, choose it\. To view a summary of the status of all of the training jobs that the hyperparameter tuning job launched, see **Training job status counter**\.
+1. View the status of each training job\. To see more details about a job, choose it in the list of training jobs\. To view a summary of the status of all of the training jobs that the hyperparameter tuning job launched, see **Training job status counter**\.
 
    A training job can be:
    + `Completed`—The training job successfully completed\.

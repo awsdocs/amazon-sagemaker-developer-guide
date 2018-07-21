@@ -20,13 +20,6 @@ Type: String
 Length Constraints: Maximum length of 256\.  
 Required: Yes
 
- **NotebookInstanceLifecycleConfigName**   <a name="SageMaker-Type-NotebookInstanceLifecycleConfigSummary-NotebookInstanceLifecycleConfigName"></a>
-The name of the lifecycle configuration\.  
-Type: String  
-Length Constraints: Maximum length of 63\.  
-Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
-Required: Yes
-
 ## See Also<a name="API_NotebookInstanceLifecycleConfigSummary_SeeAlso"></a>
 
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:

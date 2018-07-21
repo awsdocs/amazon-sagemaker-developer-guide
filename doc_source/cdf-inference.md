@@ -133,9 +133,18 @@ Multi\-record inference with protobuf input:
     }
   },
   "uid": "abc123",
-  "metadata": "{ created_at: '2017-06-03' }"
+  "metadata": "{ "created_at": '2017-06-03' }"
 }
 ```
+
+Amazon SageMaker algorithms also support jsonlines format, where the per\-record response content is same as that in JSON format\. The multi\-record structure is a concatenation of per\-record response objects separated by newline characters\. The response content for the built\-in KMeans algorithm for 2 input data points is:
+
+```
+{"distance_to_cluster": 23.40593910217285, "closest_cluster": 0.0}
+{"distance_to_cluster": 27.250282287597656, "closest_cluster": 0.0}
+```
+
+While running batch transform, it is recommended to use `jsonlines` response type by setting the `Accept` field in the `CreateTransformJobRequest` to `application/jsonlines`\.
 
 ## Common Request Formats for All Algorithms<a name="common-in-formats"></a>
 
@@ -151,7 +160,7 @@ Dense Format
 let request =   {
     "instances":    [
         {
-            "features": [   1.5,    16.0,   14.0,   23.0    ]
+            "features": [1.5, 16.0, 14.0, 23.0]
         }
     ]
 }
@@ -162,7 +171,7 @@ let request =   {
         {
             "data": {
                 "features": {
-                    "values": [   1.5,    16.0,   14.0,   23.0    ]
+                    "values": [ 1.5, 16.0, 14.0, 23.0]
                 }
             }
         }
@@ -178,19 +187,53 @@ Sparse Format
 		{"data": {"features": {
 					"keys": [26, 182, 232, 243, 431],
 					"shape": [2000],
-					"values": [1, 1, 1, 4,1]
+					"values": [1, 1, 1, 4, 1]
 				}
 			}
 		},
 		{"data": {"features": {
 					"keys": [0, 182, 232, 243, 431],
 					"shape": [2000],
-					"values": [13, 1, 1, 4,1]
+					"values": [13, 1, 1, 4, 1]
 				}
 			}
 		},
 	]
 }
+```
+
+### JSONLINES<a name="cm-jsonlines"></a>
+
+Content\-type: application/jsonlines
+
+Dense Format
+
+A single record in dense format can be represented as either:
+
+```
+{ "features": [1.5, 16.0, 14.0, 23.0] }
+```
+
+or:
+
+```
+{ "data": { "features": { "values": [ 1.5, 16.0, 14.0, 23.0] } }
+```
+
+Sparse Format
+
+A single record in sparse format is represented as:
+
+```
+{"data": {"features": { "keys": [26, 182, 232, 243, 431], "shape": [2000], "values": [1, 1, 1, 4, 1] } } }
+```
+
+Multiple records are represented as a concatination of the above single\-record representations, separated by newline characters:
+
+```
+{"data": {"features": { "keys": [0, 1, 3], "shape": [4], "values": [1, 4, 1] } } }
+{ "data": { "features": { "values": [ 1.5, 16.0, 14.0, 23.0] } }
+{ "features": [1.5, 16.0, 14.0, 23.0] }
 ```
 
 ### CSV<a name="cm-csv"></a>
@@ -203,6 +246,27 @@ CSV support is not available for factorization machines\.
 ### RECORDIO<a name="cm-recordio"></a>
 
 Content\-type: application/x\-recordio\-protobuf
+
+## Using Batch Transform with Build\-in Algorithms<a name="cm-batch"></a>
+
+While running batch transform, it's recommended to use jsonlines response type instead of JSON, if supported by the algorithm\. This is accomplished by setting the `Accept` field in the `CreateTransformJobRequest` to `application/jsonlines`\.
+
+When you create a transform job, the `SplitType` must be set according to the `ContentType` of the input data\. Similarly, depending on the `Accept` field in the `CreateTransformJobRequest`, `AssembleWith` must be set accordingly\. Please use the following table to help appropriately set these fields:
+
+
+| ContentType | Recommended SplitType | 
+| --- | --- | 
+| Accept | Recommended AssembleWith | 
+| --- | --- | 
+| application/x\-recordio\-protobuf | RecordIO | 
+| text/csv | Line | 
+| application/jsonlines | Line | 
+| application/json | None | 
+| application/x\-image | None | 
+| image/\* | None | 
+| application/x\-recordio\-protobuf | None | 
+| application/json | None | 
+| application/jsonlines | Line | 
 
 For more information on response formats for specific algorithms, see the following:
 + [PCA Response Formats](PCA-in-formats.md)

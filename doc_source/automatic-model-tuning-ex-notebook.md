@@ -7,7 +7,7 @@ Create a Jupyter notebook that contains a preinstalled environment with the defa
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
 1. Open a running  notebook instance, by choosing **Open** next to its name\. The Jupyter notebook server page appears:  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/ironman-jupyter-home-page-ex.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/notebook-dashboard.png)
 
 1. To create a notebook, choose **Files**, **New**, and **conda\_python3**\. \.
 

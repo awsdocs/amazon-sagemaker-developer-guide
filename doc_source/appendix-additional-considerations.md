@@ -3,12 +3,12 @@
 Note the following security considerations for notebook instances\.
 
 **Topics**
-+ [Notebook Instances Are Enabled with Internet Access by Default](#appendix-notebook-and-internet-access)
++ [Notebook Instances Are Internet\-Enabled by Default](#appendix-notebook-and-internet-access)
 + [Notebook Instances Provide the Best Experience for a Single User](#appendix-notebook-and-single-user)
 
-## Notebook Instances Are Enabled with Internet Access by Default<a name="appendix-notebook-and-internet-access"></a>
+## Notebook Instances Are Internet\-Enabled by Default<a name="appendix-notebook-and-internet-access"></a>
 
-Amazon SageMaker notebook instances are Internet\-enabled\. This allows data scientists to download popular packages and notebooks, customize their development environment, and work efficiently\. However, if you connect a notebook instance to your VPC, the notebook instance provides an additional avenue for unauthorized access to your data\. For example, a malicious user or code that you accidentally install on the computer \(in the form of a publicly available notebook or a publicly available source code library\) could access your data\.
+Amazon SageMaker notebook instances are internet\-enabled\. This allows data scientists to download popular packages and notebooks, customize their development environment, and work efficiently\. However, if you connect a notebook instance to your VPC, the notebook instance provides an additional avenue for unauthorized access to your data\. For example, a malicious user or code that you accidentally install on the computer \(in the form of a publicly available notebook or a publicly available source code library\) could access your data\.
 
 If you do not want Amazon SageMaker to provide internet access to your notebook instance, you can disable direct internet access when you specify a VPC for your notebook instance\. If you disable direct internet access, the notebook instance won't be able to train or host models unless your VPC has a NAT gateway and your security groups allow outbound connections\. For information about setting up a NAT gateway for your VPC, see [Scenario 2: VPC with Public and Private Subnets \(NAT\)](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Scenario2.html) in the in the *Amazon Virtual Private Cloud User Guide*\. For information about security groups, see [Security Groups for Your VPC](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html)\. 
 

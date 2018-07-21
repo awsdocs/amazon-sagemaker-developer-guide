@@ -26,6 +26,7 @@ The following data types are supported by Amazon SageMaker Service:
 +  [NotebookInstanceLifecycleHook](API_NotebookInstanceLifecycleHook.md) 
 +  [NotebookInstanceSummary](API_NotebookInstanceSummary.md) 
 +  [ObjectiveStatusCounters](API_ObjectiveStatusCounters.md) 
++  [ObjectProgress](API_ObjectProgress.md) 
 +  [OutputDataConfig](API_OutputDataConfig.md) 
 +  [ParameterRanges](API_ParameterRanges.md) 
 +  [ProductionVariant](API_ProductionVariant.md) 
@@ -37,6 +38,10 @@ The following data types are supported by Amazon SageMaker Service:
 +  [Tag](API_Tag.md) 
 +  [TrainingJobStatusCounters](API_TrainingJobStatusCounters.md) 
 +  [TrainingJobSummary](API_TrainingJobSummary.md) 
++  [TransformInput](API_TransformInput.md) 
++  [TransformJobSummary](API_TransformJobSummary.md) 
++  [TransformOutput](API_TransformOutput.md) 
++  [TransformResources](API_TransformResources.md) 
 +  [VpcConfig](API_VpcConfig.md) 
 
 The following data types are supported by Amazon SageMaker Runtime:

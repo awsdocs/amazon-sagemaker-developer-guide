@@ -15,6 +15,19 @@ let response =   {
 }
 ```
 
+Multiclass classification
+
+```
+let response =   {
+    "predictions":    [
+        {
+            "score": [0.1, 0.2, 0.4, 0.3],
+            "predicted_label": 2
+        } 
+    ]
+}
+```
+
 Regression
 
 ```
@@ -24,7 +37,35 @@ let response =   {
             "score": 0.4
         } 
     ]
+            "predicted_label":  {
+                    "values":   [3]
+            }
+       },
+    "uid":  "abc123",
+    "metadata": "{created_at: '2017-06-03'}"
+   }
+]
 }
+```
+
+## JSONLINES<a name="LL-jsonlines"></a>
+
+Binary classification
+
+```
+{"score": 0.4, "predicted_label": 0}
+```
+
+Multiclass classification
+
+```
+{"score": 0.4, "predicted_label": 0}
+```
+
+Regression
+
+```
+{"score": 0.4}
 ```
 
 ## RECORDIO<a name="LL-recordio"></a>
@@ -46,6 +87,26 @@ Binary classification
             }
         }
     }
+]
+```
+
+Multiclass classification
+
+```
+[
+    Record = {
+    "features": [],
+    "label":    {
+            "score":  {
+                    "values":   [0.1, 0.2, 0.3, 0.4]   
+            },
+            "predicted_label":  {
+                    "values":   [3]
+            }
+       },
+    "uid":  "abc123",
+    "metadata": "{created_at: '2017-06-03'}"
+   }
 ]
 ```
 

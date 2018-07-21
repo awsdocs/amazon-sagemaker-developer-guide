@@ -1,4 +1,4 @@
-# Step 3\.4: Deploy the Model to Amazon SageMaker Hosting Services<a name="ex1-deploy-model"></a>
+# Step 3\.4\.1: Deploy the Model to Amazon SageMaker Hosting Services<a name="ex1-deploy-model"></a>
 
 Deploying a model in Amazon SageMaker is a 3\-step process: 
 

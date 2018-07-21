@@ -9,7 +9,7 @@ In this section, you create a Jupyter notebook in your Amazon SageMaker notebook
    1. Sign in to the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\. 
 
    1. Open the notebook instance, by choosing **Open** next to its name\. The Jupyter notebook server page appears:  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/ironman-jupyter-home-page-ex.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sagemaker-jupyter-home-page-ex.png)
 
    1. To create a notebook, in the **Files** tab, choose **New**, and **conda\_python3**\. This pre\-installed environment includes the default Anaconda installation and Python 3\.
 
@@ -21,7 +21,7 @@ In this section, you create a Jupyter notebook in your Amazon SageMaker notebook
    from sagemaker import get_execution_role
    
    role = get_execution_role()
-   bucket='bucket-name'
+   bucket = 'bucket-name'
    ```
 
 ## <a name="ex1-prepare-2"></a>

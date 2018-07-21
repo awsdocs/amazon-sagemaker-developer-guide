@@ -6,17 +6,16 @@ For more information about model tuning, see [Automatic Model Tuning](automatic-
 
 ## Metrics Computed by the Image Classification Algorithm<a name="IC-metrics"></a>
 
-The image classification algorithm is a supervised algorithm\. It reports an accuracy metric that is computed during training\. When tuning the model, choose one of these metrics as the objective\. To avoid overfitting, we recommend tuning the model against a validation metric instead of a training metric\.
+The image classification algorithm is a supervised algorithm\. It reports an accuracy metric that is computed during training\. When tuning the model, choose this metric as the objective metric\.
 
 
 | Metric Name | Description | Optimization Direction | 
 | --- | --- | --- | 
-| train:accuracy | The ratio of the number of correct predictions to the total number of predictions made\. | Maximize | 
 | validation:accuracy | The ratio of the number of correct predictions to the total number of predictions made\. | Maximize | 
 
 ## Tunable Hyperparameters<a name="IC-tunable-hyperparameters"></a>
 
-Tune a mage classification model with the following hyperparameters\. The hyperparameters that have the greatest impact on image classification objective metrics are: `mini_batch_size`, `learning_rate`, and `optimizer`\. Tune the optimizer\-related hyperparameters, such as `momentum`, `weight_decay`, `beta_1`, `beta_2`, `eps`, and `gamma`, based on the selected `optimizer`\. For example, use `beta_1` and `beta_2` only when `adam` is the `optimizer`\.
+Tune an image classification model with the following hyperparameters\. The hyperparameters that have the greatest impact on image classification objective metrics are: `mini_batch_size`, `learning_rate`, and `optimizer`\. Tune the optimizer\-related hyperparameters, such as `momentum`, `weight_decay`, `beta_1`, `beta_2`, `eps`, and `gamma`, based on the selected `optimizer`\. For example, use `beta_1` and `beta_2` only when `adam` is the `optimizer`\.
 
 For more information about which hyperparameters are used in each optimizer, see [Hyperparameters](IC-Hyperparameter.md)\.
 

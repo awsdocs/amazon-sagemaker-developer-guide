@@ -123,6 +123,7 @@ To enable inter\-container communication, this JSON file contains information fo
 + `current_host`—The name of the current container on the container network\. For example, `algo-1`\. Host values can change at any time\. Don't write code with specific values for this variable\.
 + `hosts`—The list of names of all containers on the container network, sorted lexicographically\. For example, `["algo-1", "algo-2", "algo-3"]` for a three\-node cluster\. Containers can use these names to address other containers on the container network\. Host values can change at any time\. Don't write code with specific values for these variables\.
 + Do not use the information in `/etc/hostname` or `/etc/hosts` because it might be inaccurate\.
++ Hostname information may not be immediately available to the algorithm container\. We recommend adding a retry policy on hostname resolution operations as nodes become available in the cluster\.
 
 The following is an example file on node 1 in a three\-node cluster:
 
@@ -151,4 +152,4 @@ As your algorithm runs in a container, it generates output including the status 
 
 ## Next Step<a name="byota-next-step"></a>
 
- [Using Your Own Inference Code](your-algorithms-inference-code.md) 
+ [Using Your Own Inference Code \(Hosting Services\)](your-algorithms-inference-code.md) 

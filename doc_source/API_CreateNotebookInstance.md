@@ -27,7 +27,6 @@ For more information, see [How It Works](https://docs.aws.amazon.com/sagemaker/l
    "[DirectInternetAccess](#SageMaker-CreateNotebookInstance-request-DirectInternetAccess)": "string",
    "[InstanceType](#SageMaker-CreateNotebookInstance-request-InstanceType)": "string",
    "[KmsKeyId](#SageMaker-CreateNotebookInstance-request-KmsKeyId)": "string",
-   "[LifecycleConfigName](#SageMaker-CreateNotebookInstance-request-LifecycleConfigName)": "string",
    "[NotebookInstanceName](#SageMaker-CreateNotebookInstance-request-NotebookInstanceName)": "string",
    "[RoleArn](#SageMaker-CreateNotebookInstance-request-RoleArn)": "string",
    "[SecurityGroupIds](#SageMaker-CreateNotebookInstance-request-SecurityGroupIds)": [ "string" ],
@@ -49,7 +48,7 @@ The request accepts the following data in JSON format\.
 
  ** [DirectInternetAccess](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-DirectInternetAccess"></a>
 Sets whether Amazon SageMaker provides internet access to the notebook instance\. If you set this to `Disabled` this notebook instance will be able to access resources only in your VPC, and will not be able to connect to Amazon SageMaker training and endpoint services unless your configure a NAT Gateway in your VPC\.  
-For more information, see [Notebook Instances Are Enabled with Internet Access by Default](appendix-additional-considerations.md#appendix-notebook-and-internet-access)\. You can set the value of this parameter to `Disabled` only if you set a value for the `SubnetId` parameter\.  
+For more information, see [Notebook Instances Are Internet\-Enabled by Default](appendix-additional-considerations.md#appendix-notebook-and-internet-access)\. You can set the value of this parameter to `Disabled` only if you set a value for the `SubnetId` parameter\.  
 Type: String  
 Valid Values:` Enabled | Disabled`   
 Required: No
@@ -64,13 +63,6 @@ Required: Yes
  If you provide a AWS KMS key ID, Amazon SageMaker uses it to encrypt data at rest on the ML storage volume that is attached to your notebook instance\.   
 Type: String  
 Length Constraints: Maximum length of 2048\.  
-Required: No
-
- ** [LifecycleConfigName](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-LifecycleConfigName"></a>
-The name of a lifecycle configuration to associate with the notebook instance\. For information about lifestyle configurations, see [Step 2\.1: \(Optional\) Customize a Notebook Instance ](notebook-lifecycle-config.md)\.  
-Type: String  
-Length Constraints: Maximum length of 63\.  
-Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: No
 
  ** [NotebookInstanceName](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-NotebookInstanceName"></a>

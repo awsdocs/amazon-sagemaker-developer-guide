@@ -14,9 +14,11 @@ The following table lists parameters for each of the algorithms provided by Amaz
 | Random Cut Forest | train and \(optionally\) test |  *<ecr\_path>*/randomcutforest:*<tag>*  |  File or Pipe  | recordIO\-protobuf or CSV | CPU | 
 |  Seq2Seq Modeling  | train, validation, and vocab | <ecr\_path>/seq2seq:<tag> |  File  | recordIO\-protobuf | GPU \(single instance only\) | 
 | XGBoost | train and \(optionally\) validation |  *<ecr\_path>*/xgboost:*<tag>*  |  File  | CSV or LibSVM | CPU | 
+| Object Detection | train and validation, \(optionally\) train\_json and validation\_json |  *<ecr\_path>*/object\-detection:*<tag>*  |  File  | recordIO or image files \(\.jpg or \.png\)  | GPU | 
 | Image Classification | train and validation, \(optionally\) train\_lst and validation\_lst |  *<ecr\_path>*/image\-classification:*<tag>*  |  File  | recordIO or image files \(\.jpg or \.png\)  | GPU | 
 | DeepAR Forecasting | train and \(optionally\) test |  *<ecr\_path>*/forecasting\-deepar:*<tag>*  |  File  | JSON Lines or Parquet | GPU or CPU | 
 | BlazingText | train |  *<ecr\_path>*/blazingtext:*<tag>*  |  File  | Text file \(one sentence per line with with space\-separated tokens\)  | GPU \(single instance only\) or CPU | 
+| k\-nearest\-neighbor \(k\-NN\) | train and \(optionally\) test |  *<ecr\_path>*/knn:*<tag>*  |  File or Pipe  | recordIO\-protobuf or CSV | CPU or GPU \(single GPU device on one or more instances\) | 
 
 For the **Training Image and Inference Image Registry Path** column, use the `:1` version tag to ensure that you are using a stable version of the algorithm\. You can reliably host a model trained using an image with the `:1` tag on an inference image that has the `:1` tag\. Using the `:latest` tag in the registry path provides you with the most up\-to\-date version of the algorithm, but might cause problems with backward compatibility\. Avoid using the `:latest` tag for production purposes\.
 

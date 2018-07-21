@@ -1,6 +1,6 @@
-# Using Your Own Inference Code<a name="your-algorithms-inference-code"></a>
+# Using Your Own Inference Code \(Hosting Services\)<a name="your-algorithms-inference-code"></a>
 
-This section explains how Amazon SageMaker interacts with a Docker container that runs your own inference code\. Use this information to write inference code and create a Docker image\. 
+This section explains how Amazon SageMaker interacts with a Docker container that runs your own inference code for hosting services\. Use this information to write inference code and create a Docker image\. 
 
 **Topics**
 + [How Amazon SageMaker Runs Your Inference Image](#your-algorithms-inference-code-run-image)

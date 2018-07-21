@@ -27,6 +27,20 @@ let response =   {
 }
 ```
 
+## JSONLINES<a name="fm-jsonlines"></a>
+
+Binary classification
+
+```
+{"score": 0.4, "predicted_label": 0}
+```
+
+Regression
+
+```
+{"score": 0.4}
+```
+
 ## RECORDIO<a name="fm-recordio"></a>
 
 Binary classification

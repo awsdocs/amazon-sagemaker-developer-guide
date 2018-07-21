@@ -19,16 +19,16 @@ Metric definitions have the following structure:
 ```
 [
   {
-   "metricName": "validation:rmse",
-   "metricRegex": ".*\\[[0-9]+\\].*#011validation-rmse:(\\S+)"
+   "Name": "validation:rmse",
+   "Regex": ".*\\[[0-9]+\\].*#011validation-rmse:(\\S+)"
   },
   {
-   "metricName": "validation:auc",
-   "metricRegex": ".*\\[[0-9]+\\].*#011validation-auc:(\\S+)"
+   "Name": "validation:auc",
+   "Regex": ".*\\[[0-9]+\\].*#011validation-auc:(\\S+)"
   },
   {
-   "metricName": "train:auc",
-   "metricRegex": ".*\\[[0-9]+\\]#011train-auc:(\\S+).*"
+   "Name": "train:auc",
+   "Regex": ".*\\[[0-9]+\\]#011train-auc:(\\S+).*"
   }
  ]
 ```

@@ -11,6 +11,13 @@
 }
 ```
 
+## JSONLINES<a name="ntm-jsonlines"></a>
+
+```
+{"topic_weights": [0.02, 0.1, 0,...]}
+{"topic_weights": [0.25, 0.067, 0,...]}
+```
+
 ## RECORDIO<a name="ntm-recordio"></a>
 
 ```

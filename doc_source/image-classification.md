@@ -39,7 +39,14 @@ The Amazon SageMaker Image Classification algorithm supports both RecordIO \(`ap
 
 ### Inference with Image Format<a name="IC-inference"></a>
 
-The generated models can be hosted for inference and support encoded `.jpg` and `.png` image formats as `application/x-image` content\-type\. The output is the probability values for all classes encoded in JSON format\.
+The generated models can be hosted for inference and support encoded `.jpg` and `.png` image formats as `application/x-image` content\-type\. The output is the probability values for all classes encoded in JSON format, or in JSON Lines format for batch transform\. The following is an example of a response in JSON lines format:
+
+```
+accept: application/jsonlines
+ 
+ {"prediction": [prob_00, prob_01, prob_02, prob_03, ...]}
+ {"prediction": [prob_10, prob_11, prob_12, prob_13, ...]}
+```
 
 For more details on training and inference, see the image classification sample notebook instances\.
 

@@ -17,6 +17,7 @@ Valid Range: Minimum value of 0\.
 Required: No
 
  **DeployedImages**   <a name="SageMaker-Type-ProductionVariantSummary-DeployedImages"></a>
+An array of `DeployedImage` objects that specify the Amazon EC2 Container Registry paths of the inference images deployed on instances of this `ProductionVariant`\.  
 Type: Array of [DeployedImage](API_DeployedImage.md) objects  
 Required: No
 

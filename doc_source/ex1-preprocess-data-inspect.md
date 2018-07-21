@@ -9,9 +9,9 @@ plt.rcParams["figure.figsize"] = (2,10)
 
 
 def show_digit(img, caption='', subplot=None):
-    if subplot==None:
-        _,(subplot)=plt.subplots(1,1)
-    imgr=img.reshape((28,28))
+    if subplot == None:
+        _, (subplot) = plt.subplots(1,1)
+    imgr = img.reshape((28,28))
     subplot.axis('off')
     subplot.imshow(imgr, cmap='gray')
     plt.title(caption)
@@ -23,9 +23,9 @@ show_digit(train_set[0][30], 'This is a {}'.format(train_set[1][30]))
 + `train_set[0]` contains images\. 
 + `train_set[1]` contains labels\. 
 
-The code uses the `matplotlib` library to get and display the 31th image from the training dataset\.
+The code uses the `matplotlib` library to get and display the 31st image from the training dataset\.
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/ironman-30th-image-trainset.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sagemaker-30th-image-trainset.png)
 
 **Next Step**  
 [Step 3\.2\.3: Transform the Training Dataset and Upload It to S3](ex1-preprocess-data-transform.md)

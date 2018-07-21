@@ -61,6 +61,7 @@ In addition to these general\-purpose algorithms, Amazon SageMaker provides algo
 + [Factorization Machines](fact-machines.md)
 + [XGBoost Algorithm](xgboost.md)
 + [Image Classification Algorithm](image-classification.md)
++ [Object Detection Algorithm](object-detection.md)
 + [Sequence2Sequence](seq-2-seq.md)
 + [K\-Means Algorithm](k-means.md)
 + [Principal Component Analysis \(PCA\)](pca.md)
@@ -69,3 +70,4 @@ In addition to these general\-purpose algorithms, Amazon SageMaker provides algo
 + [DeepAR Forecasting](deepar.md)
 + [BlazingText](blazingtext.md)
 + [Random Cut Forest](randomcutforest.md)
++ [K\-Nearest Neighbors](k-nearest-neighbors.md)

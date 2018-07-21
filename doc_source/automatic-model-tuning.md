@@ -6,7 +6,7 @@ For example, suppose that you want to solve a binary classiﬁcation problem on 
 
 You can use Amazon SageMaker automatic model tuning with built\-in algorithms, custom algorithms, and Amazon SageMaker pre\-built containers for machine learning frameworks\.
 
-Before you start using hyperparameter tuning, you a well\-defined machine learning problem, including the following:
+Before you start using hyperparameter tuning, you should have a well\-defined machine learning problem, including the following:
 + A dataset
 + An understanding of the type of algorithm you need to train
 + A clear understanding of how you measure success

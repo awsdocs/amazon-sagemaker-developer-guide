@@ -95,7 +95,7 @@ A timestamp that shows when the endpoint was last modified\.
 Type: Timestamp
 
  ** [ProductionVariants](#API_DescribeEndpoint_ResponseSyntax) **   <a name="SageMaker-DescribeEndpoint-response-ProductionVariants"></a>
- An array of ProductionVariant objects, one for each model hosted behind this endpoint\.   
+ An array of [ProductionVariantSummary](API_ProductionVariantSummary.md) objects, one for each model hosted behind this endpoint\.   
 Type: Array of [ProductionVariantSummary](API_ProductionVariantSummary.md) objects  
 Array Members: Minimum number of 1 item\.
 

@@ -26,14 +26,6 @@ Type: String
 Length Constraints: Maximum length of 256\.  
 Required: Yes
 
- **NotebookInstanceLifecycleConfigName**   <a name="SageMaker-Type-NotebookInstanceSummary-NotebookInstanceLifecycleConfigName"></a>
-The name of a notebook instance lifecycle configuration associated with this notebook instance\.  
-For information about notebook instance lifestyle configurations, see [Step 2\.1: \(Optional\) Customize a Notebook Instance ](notebook-lifecycle-config.md)\.  
-Type: String  
-Length Constraints: Maximum length of 63\.  
-Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
-Required: No
-
  **NotebookInstanceName**   <a name="SageMaker-Type-NotebookInstanceSummary-NotebookInstanceName"></a>
 The name of the notebook instance that you want a summary for\.  
 Type: String  

@@ -25,11 +25,29 @@ If the algorithm doesn't find data in any of these three channels, training resu
 
 **Inference**
 
-Inference supports two data formats\. To perform inference using space separated text tokens, use the `application/json` format\. Otherwise, use the `recordio-protobuf` format to work with the integer encoded data\. Both mode supports batching of input data\. `application/json` format also allows you to visualize the attention matrix\.
+For hosted endpoints, inference supports two data formats\. To perform inference using space separated text tokens, use the `application/json` format\. Otherwise, use the `recordio-protobuf` format to work with the integer encoded data\. Both mode supports batching of input data\. `application/json` format also allows you to visualize the attention matrix\.
 + `application/json`: Expects the input in JSON format and returns the output in JSON format\. Both content and accept types should be `application/json`\. Each sequence is expected to be a string with whitespace separated tokens\. This format is recommended when the number of source sequences in the batch is small\. It also supports the following additional configuration options:
 
   `configuration`: \{`attention_matrix`: `true`\}: Returns the attention matrix for the particular input sequence\.
 + `application/x-recordio-protobuf`: Expects the input in `recordio-protobuf` format and returns the output in `recordio-protobuf format`\. Both content and accept types should be `applications/x-recordio-protobuf`\. For this format, the source sequences must be converted into a list of integers for subsequent protobuf encoding\. This format is recommended for bulk inference\.
+
+For batch transform, inference supports JSON Lines format\. Batch transform expects the input in JSON Lines format and returns the output in JSON Lines format\. Both content and accept types should be `application/jsonlines`\. The format for input is as follows:
+
+```
+content-type: application/jsonlines
+
+{"source": "source_sequence_0"}
+{"source": "source_sequence_1"}
+```
+
+The format for response is as follows:
+
+```
+accept: application/jsonlines
+
+{"target": "predicted_sequence_0"}
+{"target": "predicted_sequence_1"}
+```
 
 Please refer to the notebook for additional details on how to serialize and deserialize the inputs and outputs to specific formats for inference\.
 

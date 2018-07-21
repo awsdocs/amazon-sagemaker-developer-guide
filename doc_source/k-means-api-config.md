@@ -5,15 +5,15 @@ In the [CreateTrainingJob](API_CreateTrainingJob.md) request, you specify the tr
 
 | Parameter Name | Description | 
 | --- | --- | 
-| k | Number of required clusters \(also known as *k*\)\. Required\.  Valid values: positive integer Default value: \-  | 
-| feature\_dim | Dimension of the input vectors\. Required\.  Valid values: positive integer Default value: \-  | 
-| mini\_batch\_size | Number of examples in a mini\-batch\. Required\.  Valid values: positive integer Default value: 5000  | 
-| init\_method | The method by which we choose the initial centers\. Valid values: Either *random* or *kmeans\+\+*\. Default value: *random*  | 
-| extra\_center\_factor | The algorithm creates `num_clusters` \* `extra_center_factor` as it runs and reduces the number of centers to `k` when finalizing\. Valid values: Either a positive integer or *auto*\. Default value: *auto*  | 
-| local\_lloyd\_max\_iter | Maximum iterations for Lloyds EM procedure in the local kmeans used in the finalize stage\. Valid values: positive integer Default value: 300  | 
-| local\_lloyd\_tol | Tolerance for change in ssd for early stopping in local kmeans\. Valid values: Float\. Range in \[0, 1\]\. Default value: 0\.0001  | 
-| local\_lloyd\_init\_method | Initialization method for local version\. Valid values: Either *random* or *kmeans\+\+*\. Default value: *kmeans\+\+*  | 
-| local\_lloyd\_num\_trials | Local version is run multiple times and the one with the best loss is chosen\. This determines how many times\. Valid values: Either a positive integer or *auto*\. Default value: *auto*  | 
-| half\_life\_time\_size | The points can have a decayed weight\. When a point is observed its weight, with regard to the computation of the cluster mean is 1\. This weight decays exponentially as we observe more points\. The exponent coefficient is chosen so that after observing `half_life_time_size` points after the mentioned point, its weight will become 1/2\. If set to 0, there is no decay\. Valid values: non\-negative integer Default value: 0  | 
-| epochs | Number of passes done over the training data\. Valid values: positive integer Default value: 1  | 
-| eval\_metrics |  Valid values: Either *msd* or *ssd*\. Default value: *msd*  | 
+| k | Number of required clusters\. Required\.  Valid values: positive integer Default value: \-  | 
+| feature\_dim | Number of features in the input data\. Required\.  Valid values: positive integer Default value: \-  | 
+| mini\_batch\_size | Number of observations per mini\-batch for the data iterator\. Optional\.  Valid values: positive integer Default value: 5000  | 
+| init\_method | Method by which the algorithm chooses the initial cluster centers\. The standard k\-means approach chooses them at random\. An alternative k\-means\+\+ method chooses the first cluster center at random\. Then it spreads out the position of the remaining initial clusters by weighting the selection of centers with a probability distribution that is proportional to the square of the distance of the remaining data points from existing centers\. Optional\. Valid values: Either *random* or *kmeans\+\+*\. Default value: *random*  | 
+| extra\_center\_factor | The algorithm creates K centers = `num_clusters` \* `extra_center_factor` as it runs and reduces the number of centers from K to `k` when finalizing the model\. Optional Valid values: Either a positive integer or *auto*\. Default value: *auto*  | 
+| local\_lloyd\_max\_iter | Maximum number of iterations for Lloyd's expectation\-maximization \(EM\) procedure used to build the final model containing `k` centers\. Optional\. Valid values: positive integer Default value: 300  | 
+| local\_lloyd\_tol | Tolerance for change in loss for early stopping of Lloyd's EM procedure used to build the final model containing `k` centers\. Optional\. \. Valid values: Float\. Range in \[0, 1\]\. Default value: 0\.0001  | 
+| local\_lloyd\_init\_method | Initialization method for Lloyd's EM procedure used to build the final model containing `k` centers\. Optional\. Valid values: Either *random* or *kmeans\+\+*\. Default value: *kmeans\+\+*  | 
+| local\_lloyd\_num\_trials | How many times the Lloyd's EM procedure with the least loss is run when building the final model containing `k` centers\. Valid values: Either a positive integer or *auto*\. Default value: *auto*  | 
+| half\_life\_time\_size | Used to determine the weight given to an observation when computing a cluster mean\. This weight decays exponentially as more points are observed\. When a point is first observed, it is assigned a weight of 1 when computing the cluster mean\. The decay constant for the exponential decay function is chosen so that after observing `half_life_time_size` points, its weight is 1/2\. If set to 0, there is no decay\. Optional Valid values: non\-negative integer Default value: 0  | 
+| epochs | Number of passes done over the training data\. Optional\. Valid values: positive integer Default value: 1  | 
+| eval\_metrics | JSON list of metric types used to report a score for the model\. Allowed values are "msd" for Means Square Error and "ssd" for Sum of square distance\. If test data is provided, the score is reported for each of the metrics requested\.  Valid values: Either `[\"msd\"]` or `[\"ssd\"]` or `[\"msd\",\"ssd\"]` \. Default value: `[\"msd\"]`  | 

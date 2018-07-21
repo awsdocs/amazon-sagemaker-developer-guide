@@ -2,7 +2,7 @@
 
 *Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an objective metric\. You choose the objective metric from the metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the objective metric\. 
 
-The linear learner algorithm also has an internal mechanism for tuning hyperparameters separate from the automatic model tuning feature described here\. By default, the linear learner algorithm tunes hyperparameters by training multiple models in parallel\. When you use hyperparameter optimization, the linear learner internal tuning mechanism is turned off automatically, which sets the number of parallel models, `num_models`, to 1\. The algorithm ignores any value that you set for `num_models`\.
+The linear learner algorithm also has an internal mechanism for tuning hyperparameters separate from the automatic model tuning feature described here\. By default, the linear learner algorithm tunes hyperparameters by training multiple models in parallel\. When you use automatic model tuning, the linear learner internal tuning mechanism is turned off automatically, which sets the number of parallel models, `num_models`, to 1\. The algorithm ignores any value that you set for `num_models`\.
 
 For more information about model tuning, see [Automatic Model Tuning](automatic-model-tuning.md)\.
 
@@ -20,7 +20,7 @@ The linear learner algorithm reports five metrics, which are computed during tra
 | test:recall |  Recall of the final model on the test dataset\. If you choose this metric as the objective, we recommend setting a target precision by setting the `binary_classifier_model_selection` hyperparameter to `recall_at_target_precision` and setting the value for the `target_precison` hyperparameter\.  |  Maximize  | 
 | validation:objective\_loss |  Mean value of the objective loss function on the validation dataset every epoch\. By default, the loss is logistic loss for binary classification and squared loss for regression\. To set loss to other types, use the `loss` hyperparameter\.  |  Minimize  | 
 | validation:binary\_classific ation\_accuracy |  Accuracy of the final model on the validation dataset\.  |  Maximize  | 
-| validation:binary\_f\_beta |  F\_beta score of the final model on the validation dataset\. By default, it is the F1 score, which is the harmonic mean of precision and recall\.  |  Maximize  | 
+| validation:binary\_f\_beta |  F\_beta score of the final model on the validation dataset\. By default, it is the F1 score, which is the harmonic mean of the `validation:precision` and `validation:recall` metrics\.  |  Maximize  | 
 | validation:precision |  Precision of the final model on the test dataset\. If you choose this metric as the objective, we recommend setting a target recall by setting the `binary_classifier_model_selection` hyperparameter to `precision_at_target_recall` and setting the value for the `target_recall` hyperparameter\.  |  Maximize  | 
 | validation:recall |  Recall of the final model on the test dataset\. If you choose this metric as the objective, we recommend setting a target precision by setting the `binary_classifier_model_selection` hyperparameter to `recall_at_target_precision` and setting the value for the `target_precison` hyperparameter\.  |  Maximize  | 
 

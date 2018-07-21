@@ -29,7 +29,7 @@ Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`
 Required: Yes
 
  ** [MaxResults](#API_ListTrainingJobsForHyperParameterTuningJob_RequestSyntax) **   <a name="SageMaker-ListTrainingJobsForHyperParameterTuningJob-request-MaxResults"></a>
-The maximum number of training jobs to return\.  
+The maximum number of training jobs to return\. The default value is 10\.  
 Type: Integer  
 Valid Range: Minimum value of 1\. Maximum value of 100\.  
 Required: No

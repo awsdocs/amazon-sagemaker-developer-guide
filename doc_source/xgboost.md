@@ -7,8 +7,8 @@
 Gradient boosting operates on tabular data, with the rows representing observations, one column representing the target variable or label, and the remaining columns representing features\. 
 
 Amazon SageMaker’s implementation of XGBoost supports CSV and libsvm formats for training and inference:
-+ For Training ContentType, valid inputs are *libsvm* or *csv*\.
-+ For Inference ContentType, valid inputs are `text/x-libsvm` or `text/csv`\.
++ For Training ContentType, valid inputs are *text/ibsvm* \(default\) or *text/csv*\.
++ For Inference ContentType, valid inputs are *text/ibsvm* or *text/csv*\.
 
 **Note**  
 For CSV training, the algorithm assumes that the target variable is in the first column and that the CSV does not have a header record\. For CSV inference, the algorithm assumes that CSV input does not have the label column\. 
@@ -28,6 +28,9 @@ SageMaker XGBoost uses the Python pickle module to serialize/deserialize the mod
   # prediction with test data
   pred = model.predict(dtest)
   ```
+
+**To differentiate instance importance use Instance Weight Support**
++  Amazon SageMaker XGBoost allows customers to differentiate the importance of instances by assigning each instance a weight value\. For *text/libsvm* input, customers can assign weight values to instances by attaching them after the labels\. For example, `label:weight idx_0:val_0 idx_1:val_1...`\. For *text/csv* input, customers need to turn on the `csv_weights` flag in the parameters and attach weight values in the column after labels\. For example: `label,weight,val_0,val_1,...`\)\.
 
 ## EC2 Instance Recommendation<a name="Instance-XGBoost"></a>
 

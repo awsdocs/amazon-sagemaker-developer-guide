@@ -60,7 +60,7 @@ If necessary, you can change the notebook instance settings, including the ML co
          + Ensure that the Amazon Redshift cluster is not publicly accessible\. 
          + If the Amazon Redshift cluster is publicly accessible, set the `DNS resolution` and `DNS hostnames` VPC parameters to `true`\. For more information, see [Managing Clusters in an Amazon Virtual Private Cloud \(VPC\)](http://docs.aws.amazon.com//redshift/latest/mgmt/managing-clusters-vpc.html) 
 
-   1. If you chose to access resources from your VPC, enable direct internet access\. For **Direct internet access**, choose **Enable**\. Otherwise, this notebook instance won't have internet access\. Without internet access, you can't train or host models from notebooks on this notebook instance unless your VPC has a NAT gateway and your security group allows outbound connections\. For more information, see [Notebook Instances Are Enabled with Internet Access by Default](appendix-additional-considerations.md#appendix-notebook-and-internet-access)\. 
+   1. If you chose to access resources from your VPC, enable direct internet access\. For **Direct internet access**, choose **Enable**\. Otherwise, this notebook instance won't have internet access\. Without internet access, you can't train or host models from notebooks on this notebook instance unless your VPC has a NAT gateway and your security group allows outbound connections\. For more information, see [Notebook Instances Are Internet\-Enabled by Default](appendix-additional-considerations.md#appendix-notebook-and-internet-access)\. 
 
    1. \(Optional\) To use shell scripts that run when you create or start the instance, specify a lifecycle configuration\. For information, see [Step 2\.1: \(Optional\) Customize a Notebook Instance ](notebook-lifecycle-config.md)
 
@@ -71,10 +71,10 @@ If necessary, you can change the notebook instance settings, including the ML co
       In a few minutes, Amazon SageMaker launches an ML compute instance—in this case, a notebook instance—and attaches an ML storage volume to it\. The notebook instance has a preconfigured Jupyter notebook server and a set of Anaconda libraries\. For more information, see the [CreateNotebookInstance](API_CreateNotebookInstance.md) API\. 
 
 1. When the status of the notebook instance is `InService`, choose **Open** next to its name to open the Jupyter dashboard\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/ironman-jupyter-home-page.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/notebook-dashboard.png)
 
    The dashboard provides access to:
-   + A folder that contains sample notebooks\. To use a sample notebook, on the **Files** tab, choose the `sample_notebook` folder\. For information about the sample notebooks, see the Amazon SageMaker [GitHub repository](https://github.com/awslabs/amazon-sagemaker-examples)\.
+   + A tab that contains sample notebooks\. To use a sample notebook, on the **SageMaker Examples** tab, choose the sample notebook you want to use, and choose **use**\. For information about the sample notebooks, see the Amazon SageMaker [GitHub repository](https://github.com/awslabs/amazon-sagemaker-examples)\.
    + The kernels for Jupyter, including those that provide support for Python 2 and 3, Apache MXNet, TensorFlow, and PySpark\. To choose a kernel for your notebook instance, use the **New** menu\. 
 
    For more information, see [The Jupyter notebook](https://jupyter-notebook.readthedocs.io/en/stable/)\.

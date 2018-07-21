@@ -16,7 +16,6 @@ For information about notebook instance lifestyle configurations, see [Step 2\.1
 
 ```
 {
-   "[NotebookInstanceLifecycleConfigName](#SageMaker-CreateNotebookInstanceLifecycleConfig-request-NotebookInstanceLifecycleConfigName)": "string",
    "[OnCreate](#SageMaker-CreateNotebookInstanceLifecycleConfig-request-OnCreate)": [ 
       { 
          "[Content](API_NotebookInstanceLifecycleHook.md#SageMaker-Type-NotebookInstanceLifecycleHook-Content)": "string"
@@ -35,13 +34,6 @@ For information about notebook instance lifestyle configurations, see [Step 2\.1
 For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
 
 The request accepts the following data in JSON format\.
-
- ** [NotebookInstanceLifecycleConfigName](#API_CreateNotebookInstanceLifecycleConfig_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstanceLifecycleConfig-request-NotebookInstanceLifecycleConfigName"></a>
-The name of the lifecycle configuration\.  
-Type: String  
-Length Constraints: Maximum length of 63\.  
-Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
-Required: Yes
 
  ** [OnCreate](#API_CreateNotebookInstanceLifecycleConfig_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstanceLifecycleConfig-request-OnCreate"></a>
 A shell script that runs only once, when you create a notebook instance\.  

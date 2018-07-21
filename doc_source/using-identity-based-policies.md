@@ -8,6 +8,7 @@ We recommend that you first review the introductory topics that explain the basi
 **Topics**
 + [Permissions Required to Use the Amazon SageMaker Console](#console-permissions)
 + [AWS Managed \(Predefined\) Policies for Amazon SageMaker](#access-policy-aws-managed-policies)
++ [Control Access to Amazon SageMaker Resources by Using Tags](#access-tag-policy)
 
 The following is an example of a basic permissions policy:
 
@@ -96,3 +97,117 @@ The following AWS managed policies can also be attached to users in your account
 You can review these permissions policies by signing in to the IAM console and searching for them\.
 
 You can also create your own custom IAM policies to allow permissions for Amazon SageMaker actions and resources as you need them\. You can attach these custom policies to the IAM users or groups that require them\. 
+
+## Control Access to Amazon SageMaker Resources by Using Tags<a name="access-tag-policy"></a>
+
+Control access to groups of Amazon SageMaker resources by attaching tags to the resources and specifying `ResourceTag` conditions in IAM policies\. For example, suppose you've defined two different IAM groups, named `DevTeam1` and `DevTeam2`, in your AWS account\. Suppose also that you've created 10 notebook instances, 5 of which are used for one project, and 5 of which are used for a second project\. You want to allow members of `DevTeam1` to make API calls on notebook instances used for the first project, and members of `DevTeam2` to make API calls on notebook instances used for the second project\. You can control access to API calls by completing the following steps:
+
+1. Add a tag with the key `Project` and value `A` to the notebook instances used for the first project\. For information about adding tags to Amazon SageMaker resources, see [AddTags](API_AddTags.md)\. 
+
+1. Add a tag with the key `Project` and value `B` to the notebook instances used for the second project\.
+
+1. Create an IAM policy with a `ResourceTag` condition that denies access to the notebook instances used for the second project, and attach that policy to `DevTeam1`\. The following is an example of a policy that denies all API calls on any notebook instance that has a tag with a key of `Project` and a value of `B`:
+
+   ```
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Action": "sagemaker:*",
+         "Resource": "*"
+       },
+       {
+         "Effect": "Deny",
+         "Action": "sagemaker:*",
+         "Resource": "*",
+         "Condition": {
+           "StringEquals": {
+             "sagemaker:ResourceTag/Project": "B"
+           }
+         }
+       },
+       {
+         "Effect": "Deny",
+         "Action": [
+           "sagemaker:CreateTags",
+           "sagemaker:DeleteTags"
+         ],
+         "Resource": "*"
+       }
+     ]
+   }
+   ```
+
+   For information about creating IAM policies and attaching them to identities, see [Controlling Access Using Policies](http://docs.aws.amazon.com//IAM/latest/UserGuide/access_controlling.html) in the *AWS Identity and Access Management User Guide*\.
+
+1. Create an IAM policy with a `ResourceTag` condition that denies access to the notebook instances used for the first project, and attach that policy to `DevTeam2`\. The following is an example of a policy that denies all API calls on any notebook instance that has a tag with a key of `Project` and a value of `B`:
+
+   ```
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Action": "*",
+         "Resource": "*"
+       },
+       {
+         "Effect": "Deny",
+         "Action": "sagemaker:*",
+         "Resource": "*",
+         "Condition": {
+           "StringEquals": {
+             "sagemaker:ResourceTag/Project": "A"
+           }
+         }
+       },
+       {
+         "Effect": "Deny",
+         "Action": [
+           "sagemaker:CreateTags",
+           "sagemaker:DeleteTags"
+         ],
+         "Resource": "*"
+       }
+     ]
+   }
+   ```
+
+**Note**  
+You cannot use tags to either allow or deny calls to [InvokeEndpoint](API_runtime_InvokeEndpoint.md)
+
+### Require the Presence or Absence of Tags for API Calls<a name="resource-tag"></a>
+
+Require the presence or absence of specific tags or specific tag values by using `RequestTag` condition keys in an IAM policy\. For example, if you want to require that every endpoint created by any member of an IAM group to be created with a tag with the key `environment` and value `dev`, create a policy as follows:
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "*",
+      "Resource": "*"
+    },
+    {
+      "Effect": "Deny",
+      "Action": "sagemaker:CreateEndpoint",
+      "Resource": [
+        "arn:aws:sagemaker:*:*:endpoint/*"
+      ]
+    {
+      "Effect": "Allow",
+      "Action": "sagemaker:CreateEndpoint",
+      "Resource": [
+        "arn:aws:sagemaker:*:*:endpoint/*"
+      ],
+      "Condition": {
+        "StringEquals": {
+          "aws:RequestTag/environment": "dev"
+        }
+      }
+    }
+  ]
+}
+```

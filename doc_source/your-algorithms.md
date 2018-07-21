@@ -21,5 +21,5 @@ The following sections provide detailed information about how Amazon SageMaker i
 
 **Topics**
 + [Using Your Own Training Algorithms](your-algorithms-training-algo.md)
-+ [Using Your Own Inference Code](your-algorithms-inference-code.md)
++ [Using Your Own Inference Code](your-algorithms-inference-main.md)
 + [Example: Using Your Own Algorithms](adv-bring-own-examples.md)

@@ -2,7 +2,7 @@
 
 Amazon SageMaker also provides model hosting services for model deployment, as shown in the following diagram\. Amazon SageMaker provides an HTTPS endpoint where your machine learning model is available to provide inferences\. 
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/ironman-architecture.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sagemaker-architecture.png)
 
  Deploying a model using Amazon SageMaker hosting services is a three\-step process:
 
@@ -35,6 +35,9 @@ When hosting models using Amazon SageMaker hosting services, consider the follow
 
    
 + Changing or deleting model artifacts or changing inference code after deploying a model produces unpredictable results\. If you need to change or delete model artifacts or change inference code, modify the endpoint by providing a new endpoint configuration\. Once you provide the new endpoint configuration, you can change or delete the model artifacts corresponding to the old endpoint configuration\.
+
+   
++ If you want to get inferences on entire datasets, consider using batch transform as an alternative to hosting services\. For information see [Getting Inferences by Using Amazon SageMaker Batch Transform](how-it-works-batch.md) 
 
 ## How It Works: Next Topic<a name="how-it-works-hosting-next-topic"></a>
 

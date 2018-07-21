@@ -1,27 +1,48 @@
-# DeepAR Request and Response Formats<a name="deepar-in-formats"></a>
+# DeepAR Inference Formats<a name="deepar-in-formats"></a>
+
+## DeepAR JSON Request Formats<a name="deepar-json-request"></a>
 
 Query a trained model by using the model's endpoint\. The endpoint takes the following JSON request format\. 
 
-## <a name="ntm-json"></a>
+In the request, the `instances` field corresponds to the time series that should be forecast by the model\. 
+
+If the model was trained with categories, you must provide a `cat` for each instance\. If the model was trained without the `cat` field, it should be omitted\.
+
+If the model was trained with custom feature time series \(`dynamic_feat`\), the same number of `dynamic_feat` have to be provided for each instance\. Each of them should have a length given by `length(target) + prediction_length`, where the last `prediction_length` values correspond to the time points in the future that will be predicted\. If the model was trained without custom feature time series, the field should not be included in the request\.
 
 ```
 {
- "instances": [
-  { "start": "2009-11-01 00:00:00", "target": [4.0, 10.0, 50.0, 100.0, 113.0], "cat": 0},
-  { "start": "2012-01-30", "target": [1.0], "cat": 2 },
-  { "start": "1999-01-30", "target": [2.0, 1.0], "cat": 1 }
- ],
- "configuration": {
-  "num_samples": 50,
-  "output_types": ["mean", "quantiles", "samples"],
-  "quantiles": ["0.5", "0.9"]
- }
+    "instances": [
+        {
+            "start": "2009-11-01 00:00:00",
+            "target": [4.0, 10.0, "NaN", 100.0, 113.0],
+            "cat": [0, 1],
+            "dynamic_feat": [[1.0, 1.1, 2.1, 0.5, 3.1, 4.1, 1.2, 5.0, ...]]
+        },
+        {
+            "start": "2012-01-30",
+            "target": [1.0],
+            "cat": [2, 1],
+            "dynamic_feat": [[2.0, 3.1, 4.5, 1.5, 1.8, 3.2, 0.1, 3.0, ...]]
+        },
+        {
+            "start": "1999-01-30",
+            "target": [2.0, 1.0],
+            "cat": [1, 3],
+            "dynamic_feat": [[1.0, 0.1, -2.5, 0.3, 2.0, -1.2, -0.1, -3.0, ...]]
+        }
+    ],
+    "configuration": {
+         "num_samples": 50,
+         "output_types": ["mean", "quantiles", "samples"],
+         "quantiles": ["0.5", "0.9"]
+    }
 }
 ```
 
-In the request, the `instances` field corresponds to the time series that should be forecast by the model\. If the model was trained with categories \(`embedding_dimension` and `cardinality` > 0\), you must provide `cat` in the request\. If the model was trained without the `cat` field, it can be omitted\.
-
 The `configuration` field is optional\. `configuration.num_samples` sets the number of sample paths that the model generates to estimate the mean and quantiles\. `configuration.output_types` describes the information that will be returned in the request\. Valid values are `"mean"` `"quantiles"` and `"samples"`\. If you specify `"quantiles"`, each of the quantile values in `configuration.quantiles` is returned as a time series\. If you specify `"samples"`, the model also returns the raw samples used to calculate the other outputs\.
+
+## DeepAR JSON Response Formats<a name="deepar-json-response"></a>
 
 The following is the format of a response, where `[...]` are arrays of numbers:
 
@@ -54,4 +75,38 @@ The following is the format of a response, where `[...]` are arrays of numbers:
         }
     ]
 }
+```
+
+DeepAR has a response timeout of 60 seconds\. When passing multiple time series in a single request, the forecasts are generated sequentially\. Since the forecast for each time series typically takes somewhere around 300 \- 1000 milliseconds, or longer depending on the model size, passing too many time series in a single request may lead to timeouts\. In this case, it is better to send fewer time series per request and send more requests\. Since DeepAR uses multiple workers per instance one can achieve much higher throughput by sending multiple requests in parallel\.
+
+By default DeepAR uses one worker per CPU for inference, if there is sufficient memory per CPU\. If the model size is large and there is not enough memory to run a model on each CPU, the number of workers is reduced\. The number of workers used for inference can be overwritten using the environment variable `MODEL_SERVER_WORKERS` For example, by setting `MODEL_SERVER_WORKERS=1`\) when calling SageMaker's [CreateModel](API_CreateModel.md) API\.
+
+## Batch Transform<a name="deepar-batch"></a>
+
+DeepAR forecasting supports getting inferences by using batch transform using the JSON lines format where each record is represented on a single line as a JSON object, and lines are separated by newline characters\. The format is identical to the JSON Lines format used for model training\. For information, see [Input/Output Interface](deepar.md#deepar-inputoutput)\. For example:
+
+```
+{"start": "2009-11-01 00:00:00", "target": [4.3, "NaN", 5.1, ...], "cat": [0, 1], "dynamic_feat": [[1.1, 1.2, 0.5, ..]]}
+{"start": "2012-01-30 00:00:00", "target": [1.0, -5.0, ...], "cat": [2, 3], "dynamic_feat": [[1.1, 2.05, ...]]}
+{"start": "1999-01-30 00:00:00", "target": [2.0, 1.0], "cat": [1, 4], "dynamic_feat": [[1.3, 0.4]]}
+```
+
+Similar to the hosted endpoint inference request format, the `cat` and the `dynamic_feat` fields for each instance are required if both of the following are true:
++ The model is trained on a dataset that contained both the `cat` and the `dynamic_feat` fields\.
++ The corresponding `cardinality` and `num_dynamic_feat` values used in the training job are not set to ""\.
+
+Unlike hosted endpoint inference, the configuration field is set once for the entire batch inference job using an environment variable named `DEEPAR_INFERENCE_CONFIG`\. The value of `DEEPAR_INFERENCE_CONFIG` can be passed when the model is created by calling [CreateTransformJob](API_CreateTransformJob.md) API\. If `DEEPAR_INFERENCE_CONFIG` is missing in the container environment, the inference container uses the following default:
+
+```
+{
+    "num_samples": 100,
+    "output_types": ["mean", "quantiles"],
+    "quantiles": ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9"]
+}
+```
+
+The output is also is in JSON Lines format, with one line per prediction, in an order identical to the instance order in the corresponding input file\. Predictions are encoded as objects identical to the ones returned by responses in online inference mode\. For example:
+
+```
+{ "quantiles": { "0.1": [...], "0.2": [...] }, "samples": [...], "mean": [...] }
 ```

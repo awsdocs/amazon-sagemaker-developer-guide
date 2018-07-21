@@ -8,7 +8,7 @@ For more information about model tuning, see [Automatic Model Tuning](automatic-
 
 ## Metrics Computed by the K\-Means Algorithm<a name="km-metrics"></a>
 
-The k\-means algorithm computes the following metrics dururing training\. When tuning a model, choose one of these metrics as the objective metric\. 
+The k\-means algorithm computes the following metrics during training\. When tuning a model, choose one of these metrics as the objective metric\. 
 
 
 | Metric Name | Description | Optimization Direction | 

@@ -19,7 +19,14 @@
 }
 ```
 
-## RECORDIO<a name="ntm-recordio"></a>
+## JSONLINES<a name="km-jsonlines"></a>
+
+```
+{"closest_cluster": 1.0, "distance_to_cluster": 3.0}
+{"closest_cluster": 2.0, "distance_to_cluster": 5.0}
+```
+
+## RECORDIO<a name="km-recordio"></a>
 
 ```
 [

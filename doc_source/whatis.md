@@ -2,6 +2,8 @@
 
 Amazon SageMaker is a fully managed machine learning service\. With Amazon SageMaker, data scientists and developers can quickly and easily build and train machine learning models, and then directly deploy them into a production\-ready hosted environment\. It provides an integrated Jupyter authoring notebook instance for easy access to your data sources for exploration and analysis, so you don't have to manage servers\. It also provides common machine learning algorithms that are optimized to run efficiently against extremely large data in a distributed environment\. With native support for bring\-your\-own\-algorithms and frameworks, Amazon SageMaker offers flexible distributed training options that adjust to your specific workflows\. Deploy a model into a secure and scalable environment by launching it with a single click from the Amazon SageMaker console\. Training and hosting are billed by minutes of usage, with no minimum fees and no upfront commitments\.
 
+ This is a HIPAA Eligible Service\. For more information about AWS, U\.S\. Health Insurance Portability and Accountability Act of 1996 \(HIPAA\), and using AWS services to process, store, and transmit protected health information \(PHI\), see [HIPAA Overview](https://aws.amazon.com/compliance/hipaa-compliance/)\.
+
 ## Are You a First\-time User of Amazon SageMaker?<a name="first-time-user"></a>
 
 If you are a first\-time user of Amazon SageMaker, we recommend that you do the following: 

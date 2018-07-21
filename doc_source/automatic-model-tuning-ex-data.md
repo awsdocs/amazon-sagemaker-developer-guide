@@ -2,7 +2,7 @@
 
 For this example, you use a training dataset of information about bank customers that includes the customer's job, marital status, and how they were contacted during the bank's direct marketing campaign\. To use a dataset for a hyperparameter tuning job, you download it, transform the data, and then upload it to an Amazon S3 bucket\.
 
-For more information about the dataset and the data transformation that the example performs, see the *Xgboost\_direct\_marketing\_low\_level* notebook in the `sample-notebooks/hyperparameter_tuning` folder in your notebook instance\.
+For more information about the dataset and the data transformation that the example performs, see the *hpo\_xgboost\_direct\_marketing\_sagemaker\_APIs* notebook in the **Hyperparameter Tuning** section of the **SageMaker Examples** tab in your notebook instance\.
 
 ## Download and Explore the Training Dataset<a name="automatic-model-tuning-ex-data-download"></a>
 

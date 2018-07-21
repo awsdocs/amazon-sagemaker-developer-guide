@@ -70,7 +70,7 @@ In this JSON object, you specify:
 Specify metrics only when you use a custom training algorithm\. Because this example uses a built\-in algorithm, you don't specify metrics\.
 + The container image that specifies the training algorithm\.
 + The input configuration for your training and test data\.
-+ The configuration for the algorithm's output\. Specify the S3 bucket where you want to store the output of the training jobs\.
++ The storage location for the algorithm's output\. Specify the S3 bucket where you want to store the output of the training jobs\.
 + The values of algorithm hyperparameters that are not tuned in the tuning job\.
 + The type of instance to use for the training jobs\.
 + The stopping condition for the training jobs\. This is the maximum duration for each training job\.
@@ -81,6 +81,10 @@ In this example, we set static values for the `eval_metric`, `num_round`, `objec
 containers = {'us-west-2': '433757028032.dkr.ecr.us-west-2.amazonaws.com/xgboost:latest',
               'us-east-1': '811284229777.dkr.ecr.us-east-1.amazonaws.com/xgboost:latest',
               'us-east-2': '825641698319.dkr.ecr.us-east-2.amazonaws.com/xgboost:latest',
+              'ap-northeast-1': '501404015308.dkr.ecr.ap-northeast-1.amazonaws.com/xgboost:latest',
+              'ap-northeast-2': '306986355934.dkr.ecr.ap-northeast-2.amazonaws.com/xgboost:latest',
+              'ap-southeast-2': '544295431143.dkr.ecr.ap-southeast-2.amazonaws.com/xgboost:latest',
+              'eu-central-1': '813361260812.dkr.ecr.eu-central-1.amazonaws.com/xgboost:latest',
               'eu-west-1': '685385470294.dkr.ecr.eu-west-1.amazonaws.com/xgboost:latest'}
            
 training_image = containers[region]

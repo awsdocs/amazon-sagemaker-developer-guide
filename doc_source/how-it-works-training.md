@@ -2,7 +2,7 @@
 
 The following diagram shows how you train and deploy a model with Amazon SageMaker: 
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/ironman-architecture.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sagemaker-architecture.png)
 
 The area labeled Amazon SageMaker highlights the two components of Amazon SageMaker: model training and model deployment\.
 
@@ -24,4 +24,4 @@ You can create a training job with the Amazon SageMaker console or the API\. For
 
 ## How It Works: Next Topic<a name="how-it-works-training-next-topic"></a>
 
-[Deploying a Model on Amazon SageMaker Hosting Services](how-it-works-hosting.md)
+[Model Deployment in Amazon SageMaker](how-it-works-deployment.md)

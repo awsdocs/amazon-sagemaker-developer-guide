@@ -4,27 +4,6 @@ Returns a description of a notebook instance lifecycle configuration\.
 
 For information about notebook instance lifestyle configurations, see [Step 2\.1: \(Optional\) Customize a Notebook Instance ](notebook-lifecycle-config.md)\.
 
-## Request Syntax<a name="API_DescribeNotebookInstanceLifecycleConfig_RequestSyntax"></a>
-
-```
-{
-   "[NotebookInstanceLifecycleConfigName](#SageMaker-DescribeNotebookInstanceLifecycleConfig-request-NotebookInstanceLifecycleConfigName)": "string"
-}
-```
-
-## Request Parameters<a name="API_DescribeNotebookInstanceLifecycleConfig_RequestParameters"></a>
-
-For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
-
-The request accepts the following data in JSON format\.
-
- ** [NotebookInstanceLifecycleConfigName](#API_DescribeNotebookInstanceLifecycleConfig_RequestSyntax) **   <a name="SageMaker-DescribeNotebookInstanceLifecycleConfig-request-NotebookInstanceLifecycleConfigName"></a>
-The name of the lifecycle configuration to describe\.  
-Type: String  
-Length Constraints: Maximum length of 63\.  
-Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
-Required: Yes
-
 ## Response Syntax<a name="API_DescribeNotebookInstanceLifecycleConfig_ResponseSyntax"></a>
 
 ```
@@ -32,7 +11,6 @@ Required: Yes
    "[CreationTime](#SageMaker-DescribeNotebookInstanceLifecycleConfig-response-CreationTime)": number,
    "[LastModifiedTime](#SageMaker-DescribeNotebookInstanceLifecycleConfig-response-LastModifiedTime)": number,
    "[NotebookInstanceLifecycleConfigArn](#SageMaker-DescribeNotebookInstanceLifecycleConfig-response-NotebookInstanceLifecycleConfigArn)": "string",
-   "[NotebookInstanceLifecycleConfigName](#SageMaker-DescribeNotebookInstanceLifecycleConfig-response-NotebookInstanceLifecycleConfigName)": "string",
    "[OnCreate](#SageMaker-DescribeNotebookInstanceLifecycleConfig-response-OnCreate)": [ 
       { 
          "[Content](API_NotebookInstanceLifecycleHook.md#SageMaker-Type-NotebookInstanceLifecycleHook-Content)": "string"
@@ -64,12 +42,6 @@ Type: Timestamp
 The Amazon Resource Name \(ARN\) of the lifecycle configuration\.  
 Type: String  
 Length Constraints: Maximum length of 256\.
-
- ** [NotebookInstanceLifecycleConfigName](#API_DescribeNotebookInstanceLifecycleConfig_ResponseSyntax) **   <a name="SageMaker-DescribeNotebookInstanceLifecycleConfig-response-NotebookInstanceLifecycleConfigName"></a>
-The name of the lifecycle configuration\.  
-Type: String  
-Length Constraints: Maximum length of 63\.  
-Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*` 
 
  ** [OnCreate](#API_DescribeNotebookInstanceLifecycleConfig_ResponseSyntax) **   <a name="SageMaker-DescribeNotebookInstanceLifecycleConfig-response-OnCreate"></a>
 The shell script that runs only once, when you create a notebook instance\.  

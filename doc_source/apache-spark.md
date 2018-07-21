@@ -1,6 +1,6 @@
 # Using Apache Spark with Amazon SageMaker<a name="apache-spark"></a>
 
-This section provides information for developers who want to use Apache Spark for preprocessing data and Amazon SageMaker for model training and hosting\. For information about supported versions of Apache Spark, see [Supported Versions](supported-versions.md)\. 
+This section provides information for developers who want to use Apache Spark for preprocessing data and Amazon SageMaker for model training and hosting\. For information about supported versions of Apache Spark, see [https://github\.com/aws/sagemaker\-spark\#getting\-sagemaker\-spark](https://github.com/aws/sagemaker-spark#getting-sagemaker-spark)\.
 
 Amazon SageMaker provides an Apache Spark library, in both Python and Scala, that you can use to easily train models in Amazon SageMaker using `org.apache.spark.sql.DataFrame`s in your Spark clusters\. After model training, you can also host the model using Amazon SageMaker hosting services\. 
 

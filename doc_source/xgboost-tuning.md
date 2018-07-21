@@ -6,20 +6,11 @@ For more information about model tuning, see [Automatic Model Tuning](automatic-
 
 ## Metrics Computed by the XGBoost Algorithm<a name="xgboost-metrics"></a>
 
-The XGBoost algorithm computes the following nine metrics during training\. When tuning the model, choose one of these metrics as the objective\. To avoid overfitting, we recommend tuning the model against a validation metric instead of a training metric\.
+The XGBoost algorithm computes the following nine metrics during training\. When tuning the model, choose one of these metrics as the objective\. 
 
 
 | Metric Name | Description | Optimization Direction | 
 | --- | --- | --- | 
-| train:rmse |  Root mean square error\.  |  Minimize  | 
-| train:mae |  Mean absolute error\.  |  Minimize  | 
-| train:logloss |  Negative log\-likelihood\.  |  Minimize  | 
-| train:error |  Binary classification error rate, calculated as \#\(wrong cases\)/\#\(all cases\)\.\.  |  Minimize  | 
-| train:merror |  Multiclass classification error rate, calculated as \#\(wrong cases\)/\#\(all cases\)\.  |  Minimize  | 
-| train:mlogloss |  Negative log\-likelihood for multiclass classification\.  |  Minimize  | 
-| train:auc |  Area under the curve\.  |  Maximize  | 
-| train:ndcg |  Normalized Discounted Cumulative Gain\.  |  Maximize  | 
-| train:map |  Mean average precision\.  |  Maximize  | 
 | validation:rmse |  Root mean square error\.  |  Minimize  | 
 | validation:mae |  Mean absolute error\.  |  You must choose one of them as an objective to optimize when tuning the algorithm with hyperparameter values\.>Minimize  | 
 | validation:logloss |  Negative log\-likelihood\.  |  Minimize  | 

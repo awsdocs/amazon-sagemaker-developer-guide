@@ -31,7 +31,7 @@ When configuring the private VPC for your Amazon SageMaker training jobs, use th
 
 ### Ensure That Subnets Have Enough IP Addresses<a name="train-vpc-ip"></a>
 
-Your VPC subnets should have at least two available private IP addresses for each instance in a training job\. For more information, see [VPC and Subnet Sizing for IPv4](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html#vpc-sizing-ipv4) in the *Amazon VPC User Guide*\.
+Your VPC subnets should have at least two private IP addresses for each instance in a training job\. For more information, see [VPC and Subnet Sizing for IPv4](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html#vpc-sizing-ipv4) in the *Amazon VPC User Guide*\.
 
 ### Create an Amazon S3 VPC Endpoint<a name="train-vpc-s3"></a>
 

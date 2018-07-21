@@ -1,6 +1,6 @@
 # Linear Learner<a name="linear-learner"></a>
 
-Linear models are supervised learning algorithms used for solving either classification or regression problems\. As input the model is given labeled examples \(**x**, **y**\)\. **x** is a high dimensional vector and **y** is a numeric label\. For \(binary\) classification problems, the algorithm expects the label to be either 0 or 1\. For regression problems, **y** is a real number\. The algorithm learns a linear function, or linear threshold function for classification, mapping a vector **x** to an approximation of the label **y**\. 
+Linear models are supervised learning algorithms used for solving either classification or regression problems\. As input the model is given labeled examples \(**x**, **y**\)\. **x** is a high dimensional vector and **y** is a numeric label\. For binary classification problems, the algorithm expects the label to be either 0 or 1\. For multiclass classification problems, the algorithm expects the labels to be from 0 to `num_classes` \- 1\. For regression problems, **y** is a real number\. The algorithm learns a linear function, or linear threshold function for classification, mapping a vector **x** to an approximation of the label **y**\. 
 
 The Amazon SageMaker linear learner algorithm provides a solution for both classification and regression problems\. This allows you to simultaneously explore different training objectives and choose the best solution from a validation set\. It also allows you to explore a large number of models and choose the best, which optimizes either continuous objectives—such as mean square error, cross entropy loss, absolute error, and so on—or discrete objectives suited for classification, such as F1 measure, precision@recall, or accuracy\. When compared with solutions providing a solution to only continuous objectives, the implementation provides a significant increase in speed over naive hyperparameter optimization techniques and added convenience\. 
 
@@ -19,3 +19,11 @@ For more details on training and inference file formats, see example notebooks\.
 ## EC2 Instance Recommendation<a name="ll-instances"></a>
 
 Linear learner can be trained on single\- or multi\-machine CPU and GPU instances\. During our testing, we have not found substantial evidence to multi\-GPU to be faster than single GPU, but results vary depending on the specific use case\.
+
+**Topics**
++ [Input/Output Interface](#ll-input_output)
++ [EC2 Instance Recommendation](#ll-instances)
++ [How It Works](ll_how-it-works.md)
++ [Linear Learner Hyperparameters](ll_hyperparameters.md)
++ [Tuning a Linear Learner Model](linear-learner-tuning.md)
++ [Linear Learner Response Formats](LL-in-formats.md)

@@ -6,7 +6,7 @@ To use automatic scaling for a production variant, you define and apply a scalin
 
 You can use the AWS Management Console to apply a scaling policy based on a predefined metric\. A *predefined metric* is defined in an enumeration so that you can specify it by name in code or use it in the AWS Management Console\. Alternatively, you can use either the AWS Command Line Interface \(AWS CLI\) or the Application Auto Scaling API to apply a scaling policy based on a predefined or custom metric\. We strongly recommend that you load test your automatic scaling configuration to ensure that it works correctly before using it to manage production traffic\.
 
-For information about deploying trained models as endpoints, see [Step 3\.4: Deploy the Model to Amazon SageMaker Hosting Services ](ex1-deploy-model.md)\. 
+For information about deploying trained models as endpoints, see [Step 3\.4\.1: Deploy the Model to Amazon SageMaker Hosting Services ](ex1-deploy-model.md)\. 
 
 **Topics**
 + [Automatic Scaling Components](#endpoint-auto-scaling-policy)
@@ -108,7 +108,7 @@ If instances are not being added quickly enough to address increased traffic, co
 
 ## Before You Begin<a name="endpoint-auto-scaling-target-byb"></a>
 
-Before you can use automatically scaled model deployment, create an Amazon SageMaker model deployment\. For more information about deploying a model endpoint, see [Step 3\.4: Deploy the Model to Amazon SageMaker Hosting Services ](ex1-deploy-model.md)\.
+Before you can use automatically scaled model deployment, create an Amazon SageMaker model deployment\. For more information about deploying a model endpoint, see [Step 3\.4\.1: Deploy the Model to Amazon SageMaker Hosting Services ](ex1-deploy-model.md)\.
 
 When automatic scaling adds a new variant instance, it is the same instance class as the one used by the primary instance\.
 
