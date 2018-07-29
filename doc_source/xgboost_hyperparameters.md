@@ -1,6 +1,6 @@
 # XGBoost Hyperparameters<a name="xgboost_hyperparameters"></a>
 
-The Amazon SageMaker XGBoost algorithm is an implementation of the open\-source XGBoost package\. For more detail about hyperparameter configurations, see [here](https://github.com/dmlc/xgboost/blob/master/doc/parameter.md)\. 
+The Amazon SageMaker XGBoost algorithm is an implementation of the open\-source XGBoost package\. For more detail about hyperparameter configurations, see [here](https://github.com/dmlc/xgboost/blob/master/doc/parameter.rst)\. 
 
 
 | Parameter Name | Description | 
@@ -23,7 +23,7 @@ The Amazon SageMaker XGBoost algorithm is an implementation of the open\-source 
 | tree\_method | The tree construction algorithm used in *XGBoost*\. Valid values: One of *auto*, *exact*, *approx*, or *hist*\. Default value: *auto*  | 
 | sketch\_eps | Used only for approximate greedy algorithm\. This translates into O\(1 / `sketch_eps`\) number of bins\. Compared to directly select number of bins, this comes with theoretical guarantee with sketch accuracy\. Valid values: Float, Range: \[0, 1\]\. Default value: 0\.03  | 
 | scale\_pos\_weight | Controls the balance of positive and negative weights\. It's useful for unbalanced classes\. A typical value to consider: `sum(negative cases)` / `sum(positive cases)`\. Valid values: float Default value: 1  | 
-| updater | A comma\-separated string that defines the sequence of tree updaters to run\. This provides a modular way to construct and to modify the trees\. For a full list of valid inputs, please refer to [XGBoost Parameters](https://github.com/dmlc/xgboost/blob/master/doc/parameter.md)\. Valid values: comma\-separated string\. Default value: `grow_colmaker`, prune  | 
+| updater | A comma\-separated string that defines the sequence of tree updaters to run\. This provides a modular way to construct and to modify the trees\. For a full list of valid inputs, please refer to [XGBoost Parameters](https://github.com/dmlc/xgboost/blob/master/doc/parameter.rst)\. Valid values: comma\-separated string\. Default value: `grow_colmaker`, prune  | 
 | refresh\_leaf | This is a parameter of the 'refresh' updater plugin\. When set to `true`, tree leaves and tree node stats are updated\. When set to `false`, only tree node stats are updated\. Valid values: 0/1 Default value: 1  | 
 | process\_type | The type of boosting process to run\. Valid values: String\. Either *default* or *update*\. Default value: *default*  | 
 | grow\_policy | Controls the way that new nodes are added to the tree\. Currently supported only if `tree_method` is set to *hist*\. Valid values: String\. Either *depthwise* or *lossguide*\. Default value: *depthwise*  | 
@@ -36,9 +36,9 @@ The Amazon SageMaker XGBoost algorithm is an implementation of the open\-source 
 | skip\_drop | Probability of skipping the dropout procedure during a boosting iteration\. Valid values: Float\. Range: \[0\.0, 1\.0\]\. Default value: 0\.0  | 
 | lambda\_bias | L2 regularization term on bias\. Valid values: Float\. Range: \[0\.0, 1\.0\]\. Default value: 0  | 
 | tweedie\_variance\_power | Parameter that controls the variance of the Tweedie distribution\. Valid values: Float\. Range: \(1, 2\)\. Default value: 1\.5  | 
-| objective | Specifies the learning task and the corresponding learning objective\. Examples: *reg:linear*, *reg:logistic*, *multi:softmax*\. For a full list of valid inputs, please refer to [XGBoost Parameters](https://github.com/dmlc/xgboost/blob/master/doc/parameter.md)\. Valid values: string Default value: *reg:linear*  | 
+| objective | Specifies the learning task and the corresponding learning objective\. Examples: *reg:linear*, *reg:logistic*, *multi:softmax*\. For a full list of valid inputs, please refer to [XGBoost Parameters](https://github.com/dmlc/xgboost/blob/master/doc/parameter.rst)\. Valid values: string Default value: *reg:linear*  | 
 | base\_score | The initial prediction score of all instances, global bias\. Valid values: float Default value: 0\.5  | 
-| eval\_metric | Evaluation metrics for validation data\. A default metric is assigned according to the objective \(*rmse* for regression, *error* for classification, and *map* for ranking\)\. For a list of valid inputs, see [XGBoost Parameters](https://github.com/dmlc/xgboost/blob/master/doc/parameter.md)\. Valid values: string Default value: Default according to objective\.  | 
+| eval\_metric | Evaluation metrics for validation data\. A default metric is assigned according to the objective \(*rmse* for regression, *error* for classification, and *map* for ranking\)\. For a list of valid inputs, see [XGBoost Parameters](https://github.com/dmlc/xgboost/blob/master/doc/parameter.rst)\. Valid values: string Default value: Default according to objective\.  | 
 | seed | Random number seed\. Valid values: integer Default value: 0  | 
 | early\_stopping\_rounds | The model will train until the validation score stops improving\. Validation error needs to decrease at least every `early_stopping_rounds` to continue training\. Amazon SageMaker hosting will use the best model for inference\. Valid values: integer Default value: \-  | 
 | csv\_weights | When this flag is enabled, XGBoost differentiates the importance of instances for csv input by taking the second column \(the column after labels\) in training data as the instance weights\. Valid values: 0 or 1 Default value: 0  | 
