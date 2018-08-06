@@ -6,7 +6,7 @@ For an overview of Amazon SageMaker, see [How It Works](https://docs.aws.amazon.
 
 Amazon SageMaker strips all POST headers except those supported by the API\. Amazon SageMaker might add additional headers\. You should not rely on the behavior of headers outside those enumerated in the request syntax\. 
 
-Cals to `InvokeEndpoint` are authenticated by using AWS Signature Version 4\. For information, see [Authenticating Requests \(AWS Signature Version 4\)](http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html) in the *Amazon S3 API Reference*\.
+Calls to `InvokeEndpoint` are authenticated by using AWS Signature Version 4\. For information, see [Authenticating Requests \(AWS Signature Version 4\)](http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html) in the *Amazon S3 API Reference*\.
 
 **Note**  
 Endpoints are scoped to an individual account, and are not public\. The URL does not contain the account ID, but Amazon SageMaker determines the account ID from the authentication token that is supplied by the caller\.
