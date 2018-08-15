@@ -6,4 +6,4 @@ When using [gradient boosting]( https://en.wikipedia.org/wiki/Gradient_boosting)
 
 **For more detail on XGBoost, see:**
 + [XGBoost: A Scalable Tree Boosting System](https://arxiv.org/pdf/1603.02754.pdf)
-+ [Introduction to Boosted Trees](http://xgboost.readthedocs.io/en/latest/model.html)
++ [Introduction to Boosted Trees](https://xgboost.readthedocs.io/en/latest/tutorials/model.html)

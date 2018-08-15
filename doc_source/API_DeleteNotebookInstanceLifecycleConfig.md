@@ -2,6 +2,27 @@
 
 Deletes a notebook instance lifecycle configuration\.
 
+## Request Syntax<a name="API_DeleteNotebookInstanceLifecycleConfig_RequestSyntax"></a>
+
+```
+{
+   "[NotebookInstanceLifecycleConfigName](#SageMaker-DeleteNotebookInstanceLifecycleConfig-request-NotebookInstanceLifecycleConfigName)": "string"
+}
+```
+
+## Request Parameters<a name="API_DeleteNotebookInstanceLifecycleConfig_RequestParameters"></a>
+
+For information about the parameters that are common to all actions, see [Common Parameters](CommonParameters.md)\.
+
+The request accepts the following data in JSON format\.
+
+ ** [NotebookInstanceLifecycleConfigName](#API_DeleteNotebookInstanceLifecycleConfig_RequestSyntax) **   <a name="SageMaker-DeleteNotebookInstanceLifecycleConfig-request-NotebookInstanceLifecycleConfigName"></a>
+The name of the lifecycle configuration to delete\.  
+Type: String  
+Length Constraints: Maximum length of 63\.  
+Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
+Required: Yes
+
 ## Response Elements<a name="API_DeleteNotebookInstanceLifecycleConfig_ResponseElements"></a>
 
 If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body\.

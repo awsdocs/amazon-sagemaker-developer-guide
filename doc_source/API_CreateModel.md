@@ -1,14 +1,16 @@
 # CreateModel<a name="API_CreateModel"></a>
 
-Creates a model in Amazon SageMaker\. In the request, you name the model and describe one or more containers\. For each container, you specify the docker image containing inference code, artifacts \(from prior training\), and custom environment map that the inference code uses when you deploy the model into production\. 
+Creates a model in Amazon SageMaker\. In the request, you name the model and describe a primary container\. For the primary container, you specify the docker image containing inference code, artifacts \(from prior training\), and custom environment map that the inference code uses when you deploy the model for predictions\.
 
-Use this API to create a model only if you want to use Amazon SageMaker hosting services\. To host your model, you create an endpoint configuration with the `CreateEndpointConfig` API, and then create an endpoint with the `CreateEndpoint` API\. 
+Use this API to create a model if you want to use Amazon SageMaker hosting services or run a batch transform job\.
 
-Amazon SageMaker then deploys all of the containers that you defined for the model in the hosting environment\. 
+To host your model, you create an endpoint configuration with the `CreateEndpointConfig` API, and then create an endpoint with the `CreateEndpoint` API\. Amazon SageMaker then deploys all of the containers that you defined for the model in the hosting environment\. 
 
-In the `CreateModel` request, you must define a container with the `PrimaryContainer` parameter\. 
+To run a batch transform using your model, you start a job with the `CreateTransformJob` API\. Amazon SageMaker uses your model and your dataset to get inferences which are then saved to a specified S3 location\.
 
-In the request, you also provide an IAM role that Amazon SageMaker can assume to access model artifacts and docker image for deployment on ML compute hosting instances\. In addition, you also use the IAM role to manage permissions the inference code needs\. For example, if the inference code access any other AWS resources, you grant necessary permissions via this role\.
+In the `CreateModel` request, you must define a container with the `PrimaryContainer` parameter\.
+
+In the request, you also provide an IAM role that Amazon SageMaker can assume to access model artifacts and docker image for deployment on ML compute hosting instances or for batch transform jobs\. In addition, you also use the IAM role to manage permissions the inference code needs\. For example, if the inference code access any other AWS resources, you grant necessary permissions via this role\.
 
 ## Request Syntax<a name="API_CreateModel_RequestSyntax"></a>
 
@@ -44,7 +46,7 @@ For information about the parameters that are common to all actions, see [Common
 The request accepts the following data in JSON format\.
 
  ** [ExecutionRoleArn](#API_CreateModel_RequestSyntax) **   <a name="SageMaker-CreateModel-request-ExecutionRoleArn"></a>
-The Amazon Resource Name \(ARN\) of the IAM role that Amazon SageMaker can assume to access model artifacts and docker image for deployment on ML compute instances\. Deploying on ML compute instances is part of model hosting\. For more information, see [Amazon SageMaker Roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html)\.   
+The Amazon Resource Name \(ARN\) of the IAM role that Amazon SageMaker can assume to access model artifacts and docker image for deployment on ML compute instances or for batch transform jobs\. Deploying on ML compute instances is part of model hosting\. For more information, see [Amazon SageMaker Roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html)\.   
 To be able to pass this role to Amazon SageMaker, the caller of this API must have the `iam:PassRole` permission\.
 Type: String  
 Length Constraints: Minimum length of 20\. Maximum length of 2048\.  
@@ -59,7 +61,7 @@ Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`
 Required: Yes
 
  ** [PrimaryContainer](#API_CreateModel_RequestSyntax) **   <a name="SageMaker-CreateModel-request-PrimaryContainer"></a>
-The location of the primary docker image containing inference code, associated artifacts, and custom environment map that the inference code uses when the model is deployed into production\.   
+The location of the primary docker image containing inference code, associated artifacts, and custom environment map that the inference code uses when the model is deployed for predictions\.   
 Type: [ContainerDefinition](API_ContainerDefinition.md) object  
 Required: Yes
 
@@ -70,7 +72,7 @@ Array Members: Minimum number of 0 items\. Maximum number of 50 items\.
 Required: No
 
  ** [VpcConfig](#API_CreateModel_RequestSyntax) **   <a name="SageMaker-CreateModel-request-VpcConfig"></a>
-A [VpcConfig](API_VpcConfig.md) object that specifies the VPC that you want your model to connect to\. Control access to and from your model container by configuring the VPC\. For more information, see [Protect Models by Using an Amazon Virtual Private Cloud](host-vpc.md)\.  
+A [VpcConfig](API_VpcConfig.md) object that specifies the VPC that you want your model to connect to\. Control access to and from your model container by configuring the VPC\. `VpcConfig` is currently used in hosting services but not in batch transform\. For more information, see [Protect Models by Using an Amazon Virtual Private Cloud](host-vpc.md)\.  
 Type: [VpcConfig](API_VpcConfig.md) object  
 Required: No
 

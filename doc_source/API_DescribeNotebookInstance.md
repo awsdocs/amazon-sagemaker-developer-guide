@@ -35,6 +35,7 @@ Required: Yes
    "[LastModifiedTime](#SageMaker-DescribeNotebookInstance-response-LastModifiedTime)": number,
    "[NetworkInterfaceId](#SageMaker-DescribeNotebookInstance-response-NetworkInterfaceId)": "string",
    "[NotebookInstanceArn](#SageMaker-DescribeNotebookInstance-response-NotebookInstanceArn)": "string",
+   "[NotebookInstanceLifecycleConfigName](#SageMaker-DescribeNotebookInstance-response-NotebookInstanceLifecycleConfigName)": "string",
    "[NotebookInstanceName](#SageMaker-DescribeNotebookInstance-response-NotebookInstanceName)": "string",
    "[NotebookInstanceStatus](#SageMaker-DescribeNotebookInstance-response-NotebookInstanceStatus)": "string",
    "[RoleArn](#SageMaker-DescribeNotebookInstance-response-RoleArn)": "string",
@@ -87,6 +88,13 @@ Type: String
 The Amazon Resource Name \(ARN\) of the notebook instance\.  
 Type: String  
 Length Constraints: Maximum length of 256\.
+
+ ** [NotebookInstanceLifecycleConfigName](#API_DescribeNotebookInstance_ResponseSyntax) **   <a name="SageMaker-DescribeNotebookInstance-response-NotebookInstanceLifecycleConfigName"></a>
+Returns the name of a notebook instance lifecycle configuration\.  
+For information about notebook instance lifestyle configurations, see [Step 2\.1: \(Optional\) Customize a Notebook Instance ](notebook-lifecycle-config.md)\.  
+Type: String  
+Length Constraints: Maximum length of 63\.  
+Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*` 
 
  ** [NotebookInstanceName](#API_DescribeNotebookInstance_ResponseSyntax) **   <a name="SageMaker-DescribeNotebookInstance-response-NotebookInstanceName"></a>
  Name of the Amazon SageMaker notebook instance\.   

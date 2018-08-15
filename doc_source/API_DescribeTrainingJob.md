@@ -67,6 +67,14 @@ Required: Yes
    },
    "[RoleArn](#SageMaker-DescribeTrainingJob-response-RoleArn)": "string",
    "[SecondaryStatus](#SageMaker-DescribeTrainingJob-response-SecondaryStatus)": "string",
+   "[SecondaryStatusTransitions](#SageMaker-DescribeTrainingJob-response-SecondaryStatusTransitions)": [ 
+      { 
+         "[EndTime](API_SecondaryStatusTransition.md#SageMaker-Type-SecondaryStatusTransition-EndTime)": number,
+         "[StartTime](API_SecondaryStatusTransition.md#SageMaker-Type-SecondaryStatusTransition-StartTime)": number,
+         "[Status](API_SecondaryStatusTransition.md#SageMaker-Type-SecondaryStatusTransition-Status)": "string",
+         "[StatusMessage](API_SecondaryStatusTransition.md#SageMaker-Type-SecondaryStatusTransition-StatusMessage)": "string"
+      }
+   ],
    "[StoppingCondition](#SageMaker-DescribeTrainingJob-response-StoppingCondition)": { 
       "[MaxRuntimeInSeconds](API_StoppingCondition.md#SageMaker-Type-StoppingCondition-MaxRuntimeInSeconds)": number
    },
@@ -137,8 +145,22 @@ Pattern: `^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$`
 
  ** [SecondaryStatus](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-SecondaryStatus"></a>
  Provides granular information about the system state\. For more information, see `TrainingJobStatus`\.   
++  `Starting` \- starting the training job\.
++  `Downloading` \- downloading the input data\.
++  `Training` \- model training is in progress\.
++  `Uploading` \- uploading the trained model\.
++  `Stopping` \- stopping the training job\.
++  `Stopped` \- the training job has stopped\.
++  `MaxRuntimeExceeded` \- the training job exceeded the specified max run time and has been stopped\.
++  `Completed` \- the training job has completed\.
++  `Failed` \- the training job has failed\. The failure reason is stored in the `FailureReason` field of `DescribeTrainingJobResponse`\.
+The valid values for `SecondaryStatus` are subject to change\. They primarily provide information on the progress of the training job\.
 Type: String  
-Valid Values:` Starting | Downloading | Training | Uploading | Stopping | Stopped | MaxRuntimeExceeded | Completed | Failed` 
+Valid Values:` Starting | LaunchingMLInstances | PreparingTrainingStack | Downloading | DownloadingTrainingImage | Training | Uploading | Stopping | Stopped | MaxRuntimeExceeded | Completed | Failed` 
+
+ ** [SecondaryStatusTransitions](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-SecondaryStatusTransitions"></a>
+To give an overview of the training job lifecycle, `SecondaryStatusTransitions` is a log of time\-ordered secondary statuses that a training job has transitioned\.  
+Type: Array of [SecondaryStatusTransition](API_SecondaryStatusTransition.md) objects
 
  ** [StoppingCondition](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-StoppingCondition"></a>
 The condition under which to stop the training job\.   

@@ -42,7 +42,7 @@ If you see an expand arrow \(**↗**\) in the upper\-right corner of the table, 
 |  [ListTags](API_ListTags.md)  |  `sagemaker:ListTags`  |  `arn:aws:sagemaker:region:account-id:*`  | 
 |  [ListTrainingJobs](API_ListTrainingJobs.md)  |  `sagemaker:ListTrainingJobs`  |  `*`  | 
 |  [ListTrainingJobsForHyperParameterTuningJob](API_ListTrainingJobsForHyperParameterTuningJob.md)  |  `sagemaker:ListTrainingJobsForHyperParameterTuningJob`  |  `arn:aws:sagemaker:region:account-id:hyper-parameter-tuning-job/hyperParameterTuningJob`  | 
-|  [StartNotebookInstance](API_StartNotebookInstance.md)  |  `sagemaker:StartNotebookInstance`  |  `arn:aws:sagemaker:region:account-id:notebook-instance/notebookInstanceName`  | 
+|  [StartNotebookInstance](API_StartNotebookInstance.md)  |  `sagemaker:StartNotebookInstance` `iam:PassRole` `ec2:CreateNetworkInterface` `ec2:AttachNetworkInterface` `ec2:ModifyNetworkInterfaceAttribute` `ec2:DescribeAvailabilityZones` `ec2:DescribeInternetGateways` `ec2:DescribeSecurityGroups` `ec2:DescribeSubnets` `ec2:DescribeVpcs` `kms:CreateGrant`  |  `arn:aws:sagemaker:region:account-id:notebook-instance/notebookInstanceName`  | 
 |  [StopHyperParameterTuningJob](API_StopHyperParameterTuningJob.md)  |  `sagemaker:StopHyperParameterTuningJob`  |  `arn:aws:sagemaker:region:account-id:hyper-parameter-tuning-job/hyperParameterTuningJob`  | 
 |  [StopNotebookInstance](API_StopNotebookInstance.md)  |  `sagemaker:StopNotebookInstance`  |  `arn:aws:sagemaker:region:account-id:notebook-instance/notebookInstanceName`  | 
 |  [StopTrainingJob](API_StopTrainingJob.md)  |  `sagemaker:StopTrainingJob`  |  `arn:aws:sagemaker:region:account-id:training-job/trainingJobName`  | 

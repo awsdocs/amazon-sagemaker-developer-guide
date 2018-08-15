@@ -131,7 +131,7 @@ Array Members: Minimum number of 0 items\. Maximum number of 50 items\.
 Required: No
 
  ** [TrainingJobName](#API_CreateTrainingJob_RequestSyntax) **   <a name="SageMaker-CreateTrainingJob-request-TrainingJobName"></a>
-The name of the training job\. The name must be unique within an AWS Region in an AWS account\. It appears in the Amazon SageMaker console\.   
+The name of the training job\. The name must be unique within an AWS Region in an AWS account\.   
 Type: String  
 Length Constraints: Minimum length of 1\. Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   

@@ -1,6 +1,9 @@
 # XGBoost Hyperparameters<a name="xgboost_hyperparameters"></a>
 
-The Amazon SageMaker XGBoost algorithm is an implementation of the open\-source XGBoost package\. For more detail about hyperparameter configurations, see [here](https://github.com/dmlc/xgboost/blob/master/doc/parameter.md)\. 
+The Amazon SageMaker XGBoost algorithm is an implementation of the open\-source XGBoost package\. For more detail about hyperparameter configurations for available versions, see: 
++ [Latest](http://xgboost.readthedocs.io/en/latest/parameter.html)
++ [0\.80 stable](https://xgboost.readthedocs.io/en/release_0.80/parameter.html)
++ [0\.72 stable](https://xgboost.readthedocs.io/en/release_0.72/parameter.html)
 
 
 | Parameter Name | Description | 

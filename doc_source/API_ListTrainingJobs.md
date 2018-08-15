@@ -26,7 +26,7 @@ For information about the parameters that are common to all actions, see [Common
 The request accepts the following data in JSON format\.
 
  ** [CreationTimeAfter](#API_ListTrainingJobs_RequestSyntax) **   <a name="SageMaker-ListTrainingJobs-request-CreationTimeAfter"></a>
-A filter that only training jobs created after the specified time \(timestamp\)\.  
+A filter that returns only training jobs created after the specified time \(timestamp\)\.  
 Type: Timestamp  
 Required: No
 

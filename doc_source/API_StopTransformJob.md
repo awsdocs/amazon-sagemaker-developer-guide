@@ -1,5 +1,9 @@
 # StopTransformJob<a name="API_StopTransformJob"></a>
 
+Stops a transform job\.
+
+When Amazon SageMaker receives a `StopTransformJob` request, the status of the job changes to `Stopping`\. After Amazon SageMaker stops the job, the status is set to `Stopped`\. When you stop a transform job before it is completed, Amazon SageMaker doesn't store the job's output in Amazon S3\.
+
 ## Request Syntax<a name="API_StopTransformJob_RequestSyntax"></a>
 
 ```
@@ -15,6 +19,7 @@ For information about the parameters that are common to all actions, see [Common
 The request accepts the following data in JSON format\.
 
  ** [TransformJobName](#API_StopTransformJob_RequestSyntax) **   <a name="SageMaker-StopTransformJob-request-TransformJobName"></a>
+The name of the transform job to stop\.  
 Type: String  
 Length Constraints: Minimum length of 1\. Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   

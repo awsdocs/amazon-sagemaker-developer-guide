@@ -1,6 +1,8 @@
 # CreatePresignedNotebookInstanceUrl<a name="API_CreatePresignedNotebookInstanceUrl"></a>
 
-Returns a URL that you can use to connect to the Jupyter server from a notebook instance\. In the Amazon SageMaker console, when you choose `Open` next to a notebook instance, Amazon SageMaker opens a new tab showing the Jupyter server home page from the notebook instance\. The console uses this API to get the URL and show the page\. 
+Returns a URL that you can use to connect to the Jupyter server from a notebook instance\. In the Amazon SageMaker console, when you choose `Open` next to a notebook instance, Amazon SageMaker opens a new tab showing the Jupyter server home page from the notebook instance\. The console uses this API to get the URL and show the page\.
+
+You can restrict access to this API and to the URL that it returns to a list of IP addresses that you specify\. To restrict access, attach an IAM policy that denies access to this API unless the call comes from an IP address in the specified list to every AWS Identity and Access Management user, group, or role used to access the notebook instance\. Use the `NotIpAddress` condition operator and the `aws:SourceIP` condition context key to specify the list of IP addresses that you want to have access to the notebook instance\. For more information, see [Limit Access to a Notebook Instance by IP Address](howitworks-access-ws.md#nbi-ip-filter)\.
 
 ## Request Syntax<a name="API_CreatePresignedNotebookInstanceUrl_RequestSyntax"></a>
 

@@ -10,6 +10,7 @@ To define hyperparameter ranges by using the low\-level API, you specify the nam
         {
           "Name": "tree_method",
           "Values": ["auto", "exact", "approx", "hist"]
+        }          
       ],
       "ContinuousParameterRanges": [
         {

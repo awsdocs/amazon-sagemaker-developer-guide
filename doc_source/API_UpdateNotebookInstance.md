@@ -6,7 +6,9 @@ Updates a notebook instance\. NotebookInstance updates include upgrading or down
 
 ```
 {
+   "[DisassociateLifecycleConfig](#SageMaker-UpdateNotebookInstance-request-DisassociateLifecycleConfig)": boolean,
    "[InstanceType](#SageMaker-UpdateNotebookInstance-request-InstanceType)": "string",
+   "[LifecycleConfigName](#SageMaker-UpdateNotebookInstance-request-LifecycleConfigName)": "string",
    "[NotebookInstanceName](#SageMaker-UpdateNotebookInstance-request-NotebookInstanceName)": "string",
    "[RoleArn](#SageMaker-UpdateNotebookInstance-request-RoleArn)": "string"
 }
@@ -18,10 +20,20 @@ For information about the parameters that are common to all actions, see [Common
 
 The request accepts the following data in JSON format\.
 
+ ** [DisassociateLifecycleConfig](#API_UpdateNotebookInstance_RequestSyntax) **   <a name="SageMaker-UpdateNotebookInstance-request-DisassociateLifecycleConfig"></a>
+Type: Boolean  
+Required: No
+
  ** [InstanceType](#API_UpdateNotebookInstance_RequestSyntax) **   <a name="SageMaker-UpdateNotebookInstance-request-InstanceType"></a>
 The Amazon ML compute instance type\.  
 Type: String  
 Valid Values:` ml.t2.medium | ml.t2.large | ml.t2.xlarge | ml.t2.2xlarge | ml.m4.xlarge | ml.m4.2xlarge | ml.m4.4xlarge | ml.m4.10xlarge | ml.m4.16xlarge | ml.p2.xlarge | ml.p2.8xlarge | ml.p2.16xlarge | ml.p3.2xlarge | ml.p3.8xlarge | ml.p3.16xlarge`   
+Required: No
+
+ ** [LifecycleConfigName](#API_UpdateNotebookInstance_RequestSyntax) **   <a name="SageMaker-UpdateNotebookInstance-request-LifecycleConfigName"></a>
+Type: String  
+Length Constraints: Maximum length of 63\.  
+Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: No
 
  ** [NotebookInstanceName](#API_UpdateNotebookInstance_RequestSyntax) **   <a name="SageMaker-UpdateNotebookInstance-request-NotebookInstanceName"></a>

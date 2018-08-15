@@ -83,7 +83,8 @@ Required: No
       { 
          "[CreationTime](API_NotebookInstanceLifecycleConfigSummary.md#SageMaker-Type-NotebookInstanceLifecycleConfigSummary-CreationTime)": number,
          "[LastModifiedTime](API_NotebookInstanceLifecycleConfigSummary.md#SageMaker-Type-NotebookInstanceLifecycleConfigSummary-LastModifiedTime)": number,
-         "[NotebookInstanceLifecycleConfigArn](API_NotebookInstanceLifecycleConfigSummary.md#SageMaker-Type-NotebookInstanceLifecycleConfigSummary-NotebookInstanceLifecycleConfigArn)": "string"
+         "[NotebookInstanceLifecycleConfigArn](API_NotebookInstanceLifecycleConfigSummary.md#SageMaker-Type-NotebookInstanceLifecycleConfigSummary-NotebookInstanceLifecycleConfigArn)": "string",
+         "[NotebookInstanceLifecycleConfigName](API_NotebookInstanceLifecycleConfigSummary.md#SageMaker-Type-NotebookInstanceLifecycleConfigSummary-NotebookInstanceLifecycleConfigName)": "string"
       }
    ]
 }

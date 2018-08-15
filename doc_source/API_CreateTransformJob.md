@@ -1,12 +1,28 @@
 # CreateTransformJob<a name="API_CreateTransformJob"></a>
 
+Starts a transform job\. A transform job uses a trained model to get inferences on a dataset and saves these results to an Amazon S3 location that you specify\.
+
+To perform batch transformations, you create a transform job and use the data that you have readily available\.
+
+In the request body, you provide the following:
++  `TransformJobName` \- Identifies the transform job\. The name must be unique within an AWS Region in an AWS account\.
++  `ModelName` \- Identifies the model to use\. `ModelName` must be the name of an existing Amazon SageMaker model in the same AWS Region and AWS account\. For information on creating a model, see [CreateModel](API_CreateModel.md)\.
++  `TransformInput` \- Describes the dataset to be transformed and the Amazon S3 location where it is stored\.
++  `TransformOutput` \- Identifies the Amazon S3 location where you want Amazon SageMaker to save the results from the transform job\.
++  `TransformResources` \- Identifies the ML compute instances for the transform job\.
+
+ For more information about how batch transformation works Amazon SageMaker, see [How It Works](https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html)\. 
+
 ## Request Syntax<a name="API_CreateTransformJob_RequestSyntax"></a>
 
 ```
 {
+   "[BatchStrategy](#SageMaker-CreateTransformJob-request-BatchStrategy)": "string",
+   "[Environment](#SageMaker-CreateTransformJob-request-Environment)": { 
+      "string" : "string" 
+   },
    "[MaxConcurrentTransforms](#SageMaker-CreateTransformJob-request-MaxConcurrentTransforms)": number,
    "[MaxPayloadInMB](#SageMaker-CreateTransformJob-request-MaxPayloadInMB)": number,
-   "[MaxRecordsPerBatch](#SageMaker-CreateTransformJob-request-MaxRecordsPerBatch)": number,
    "[ModelName](#SageMaker-CreateTransformJob-request-ModelName)": "string",
    "[Tags](#SageMaker-CreateTransformJob-request-Tags)": [ 
       { 
@@ -18,18 +34,17 @@
       "[CompressionType](API_TransformInput.md#SageMaker-Type-TransformInput-CompressionType)": "string",
       "[ContentType](API_TransformInput.md#SageMaker-Type-TransformInput-ContentType)": "string",
       "[DataSource](API_TransformInput.md#SageMaker-Type-TransformInput-DataSource)": { 
-         "[S3DataSource](API_DataSource.md#SageMaker-Type-DataSource-S3DataSource)": { 
-            "[S3DataDistributionType](API_S3DataSource.md#SageMaker-Type-S3DataSource-S3DataDistributionType)": "string",
-            "[S3DataType](API_S3DataSource.md#SageMaker-Type-S3DataSource-S3DataType)": "string",
-            "[S3Uri](API_S3DataSource.md#SageMaker-Type-S3DataSource-S3Uri)": "string"
+         "[S3DataSource](API_TransformDataSource.md#SageMaker-Type-TransformDataSource-S3DataSource)": { 
+            "[S3DataType](API_TransformS3DataSource.md#SageMaker-Type-TransformS3DataSource-S3DataType)": "string",
+            "[S3Uri](API_TransformS3DataSource.md#SageMaker-Type-TransformS3DataSource-S3Uri)": "string"
          }
       },
       "[SplitType](API_TransformInput.md#SageMaker-Type-TransformInput-SplitType)": "string"
    },
    "[TransformJobName](#SageMaker-CreateTransformJob-request-TransformJobName)": "string",
    "[TransformOutput](#SageMaker-CreateTransformJob-request-TransformOutput)": { 
+      "[Accept](API_TransformOutput.md#SageMaker-Type-TransformOutput-Accept)": "string",
       "[AssembleWith](API_TransformOutput.md#SageMaker-Type-TransformOutput-AssembleWith)": "string",
-      "[CompressionType](API_TransformOutput.md#SageMaker-Type-TransformOutput-CompressionType)": "string",
       "[KmsKeyId](API_TransformOutput.md#SageMaker-Type-TransformOutput-KmsKeyId)": "string",
       "[S3OutputPath](API_TransformOutput.md#SageMaker-Type-TransformOutput-S3OutputPath)": "string"
    },
@@ -46,47 +61,65 @@ For information about the parameters that are common to all actions, see [Common
 
 The request accepts the following data in JSON format\.
 
+ ** [BatchStrategy](#API_CreateTransformJob_RequestSyntax) **   <a name="SageMaker-CreateTransformJob-request-BatchStrategy"></a>
+Determines the number of records included in a single mini\-batch\. `SingleRecord` means only one record is used per mini\-batch\. `MultiRecord` means a mini\-batch is set to contain as many records that can fit within the `MaxPayloadInMB` limit\.  
+Batch transform will automatically split your input data into whatever payload size is specified if you set `SplitType` to `Line` and `BatchStrategy` to `MultiRecord`\. There's no need to split the dataset into smaller files or to use larger payload sizes unless the records in your dataset are very large\.  
+Type: String  
+Valid Values:` MultiRecord | SingleRecord`   
+Required: No
+
+ ** [Environment](#API_CreateTransformJob_RequestSyntax) **   <a name="SageMaker-CreateTransformJob-request-Environment"></a>
+The environment variables to set in the Docker container\. We support up to 16 key and values entries in the map\.  
+Type: String to string map  
+Key Length Constraints: Maximum length of 1024\.  
+Key Pattern: `[a-zA-Z_][a-zA-Z0-9_]*`   
+Value Length Constraints: Maximum length of 10240\.  
+Required: No
+
  ** [MaxConcurrentTransforms](#API_CreateTransformJob_RequestSyntax) **   <a name="SageMaker-CreateTransformJob-request-MaxConcurrentTransforms"></a>
+The maximum number of parallel requests that can be sent to each instance in a transform job\. This is good for algorithms that implement multiple workers on larger instances \. The default value is `1`\. To allow Amazon SageMaker to determine the appropriate number for `MaxConcurrentTransforms`, set the value to `0`\.  
 Type: Integer  
 Valid Range: Minimum value of 0\.  
 Required: No
 
  ** [MaxPayloadInMB](#API_CreateTransformJob_RequestSyntax) **   <a name="SageMaker-CreateTransformJob-request-MaxPayloadInMB"></a>
-Type: Integer  
-Valid Range: Minimum value of 0\.  
-Required: No
-
- ** [MaxRecordsPerBatch](#API_CreateTransformJob_RequestSyntax) **   <a name="SageMaker-CreateTransformJob-request-MaxRecordsPerBatch"></a>
+The maximum payload size allowed, in MB\. A payload is the data portion of a record \(without metadata\)\. The value in `MaxPayloadInMB` must be greater or equal to the size of a single record\. You can approximate the size of a record by dividing the size of your dataset by the number of records\. Then multiply this value by the number of records you want in a mini\-batch\. It is recommended to enter a value slightly larger than this to ensure the records fit within the maximum payload size\. The default value is `6` MB\. For an unlimited payload size, set the value to `0`\.  
 Type: Integer  
 Valid Range: Minimum value of 0\.  
 Required: No
 
  ** [ModelName](#API_CreateTransformJob_RequestSyntax) **   <a name="SageMaker-CreateTransformJob-request-ModelName"></a>
+The name of the model that you want to use for the transform job\. `ModelName` must be the name of an existing Amazon SageMaker model within an AWS Region in an AWS account\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: Yes
 
  ** [Tags](#API_CreateTransformJob_RequestSyntax) **   <a name="SageMaker-CreateTransformJob-request-Tags"></a>
+An array of key\-value pairs\. Adding tags is optional\. For more information, see [Using Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what) in the *AWS Billing and Cost Management User Guide*\.  
 Type: Array of [Tag](API_Tag.md) objects  
 Array Members: Minimum number of 0 items\. Maximum number of 50 items\.  
 Required: No
 
  ** [TransformInput](#API_CreateTransformJob_RequestSyntax) **   <a name="SageMaker-CreateTransformJob-request-TransformInput"></a>
+Describes the input source and the way the transform job consumes it\.  
 Type: [TransformInput](API_TransformInput.md) object  
 Required: Yes
 
  ** [TransformJobName](#API_CreateTransformJob_RequestSyntax) **   <a name="SageMaker-CreateTransformJob-request-TransformJobName"></a>
+The name of the transform job\. The name must be unique within an AWS Region in an AWS account\.   
 Type: String  
 Length Constraints: Minimum length of 1\. Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: Yes
 
  ** [TransformOutput](#API_CreateTransformJob_RequestSyntax) **   <a name="SageMaker-CreateTransformJob-request-TransformOutput"></a>
+Describes the results of the transform job\.  
 Type: [TransformOutput](API_TransformOutput.md) object  
 Required: Yes
 
  ** [TransformResources](#API_CreateTransformJob_RequestSyntax) **   <a name="SageMaker-CreateTransformJob-request-TransformResources"></a>
+Describes the resources, including ML instance types and ML instance count, to use for the transform job\.  
 Type: [TransformResources](API_TransformResources.md) object  
 Required: Yes
 
@@ -105,6 +138,7 @@ If the action is successful, the service sends back an HTTP 200 response\.
 The following data is returned in JSON format by the service\.
 
  ** [TransformJobArn](#API_CreateTransformJob_ResponseSyntax) **   <a name="SageMaker-CreateTransformJob-response-TransformJobArn"></a>
+The Amazon Resource Name \(ARN\) of the transform job\.  
 Type: String  
 Length Constraints: Maximum length of 256\.  
 Pattern: `arn:aws[a-z\-]*:sagemaker:[a-z0-9\-]*:[0-9]{12}:transform-job/.*` 

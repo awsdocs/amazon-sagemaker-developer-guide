@@ -111,7 +111,7 @@ The following shows how to create a transform job using the High\-level Python L
 
 The following examples demonstrate how to interact with transform jobs using The Amazon SageMaker Low\-level SDK:
 
-#### Using CreateTransformJob<a name="w3ab1c13c16c27c11b9c11b5"></a>
+#### Using CreateTransformJob<a name="w4ab1c13c16c27c11b9c11b5"></a>
 
 To start using batch transform, you need to create a transform job\. First, import the needed libraries \(`boto3`\) and classes \(`gtime` and `strftime` from the time library\)\. Second, set the needed variables \(`job_name`, `bucket`, `prefix`, `sm`, and `model_name`\)\. The `sm`, variable is especially important as it allows us to use the Amazon SageMaker API\. Third you write the request for `CreateTransformJob`\. To help prevent errors and improve readability, use the variables you created in the previous step in creating the request\. Finally, use the request with `CreateTransformJob` to start a batch transform job\. The following code shows how to use the `CreateTransformJob` operation:
 
@@ -152,7 +152,7 @@ To start using batch transform, you need to create a transform job\. First, impo
     response = sm.CreateTransformJob(**request)
 ```
 
-#### Using DescribeTransformJob<a name="w3ab1c13c16c27c11b9c11b7"></a>
+#### Using DescribeTransformJob<a name="w4ab1c13c16c27c11b9c11b7"></a>
 
 To see the details of a specific transform job, specify the name in a `DescribeTransformJob` request\. The following code shows how to use the `DescribeTransformJob` method:
 
@@ -160,7 +160,7 @@ To see the details of a specific transform job, specify the name in a `DescribeT
     response = sm.DescribeTransformJob(TransformJobName=job_name)
 ```
 
-#### Using ListTransformJobs<a name="w3ab1c13c16c27c11b9c11b9"></a>
+#### Using ListTransformJobs<a name="w4ab1c13c16c27c11b9c11b9"></a>
 
 To list previous transform jobs, specify criteria to list and to sort the list\. The following code shows how to use the `ListTransformJobs` method:
 
@@ -182,7 +182,7 @@ To list previous transform jobs, specify criteria to list and to sort the list\.
 **Tip**  
 When using the `ListTransformJobs` method, you can specify any or all of the members in the request structure\. For more information, see [ListTransformJobs](API_ListTransformJobs.md)\.
 
-#### Using StopTransformJob<a name="w3ab1c13c16c27c11b9c11c11"></a>
+#### Using StopTransformJob<a name="w4ab1c13c16c27c11b9c11c11"></a>
 
 To stop a transform job, specify the name in the `StopTransformJob` request\. The following code shows how to use the `StopTransformJob` method:
 

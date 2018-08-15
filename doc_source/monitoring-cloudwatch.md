@@ -25,43 +25,26 @@ Metrics are available at a 1\-minute frequency\.
 
 | Dimension | Description | 
 | --- | --- | 
-| EndpointName, VariantName |  Filters endpoint invocation metrics for a ProductionVariant of the specified endpoint and variant\.  | 
+| EndpointName, VariantName |  Filters endpoint invocation metrics for a `ProductionVariant` of the specified endpoint and variant\.  | 
 
-**Training Job and Endpoint Instance Metrics**
+**Training Job, Batch Transform Job, and Endpoint Instance Metrics**
 
-The `/aws/sagemaker/TrainingJobs` and `/aws/sagemaker/Endpoints` namespaces include the following metrics for the training jobs and endpoint instances\.
-
-Metrics are available at a 1\-minute frequency\.
-
-
-| Metric | Description | 
-| --- | --- | 
-| CPUUtilization |  The percentage of CPU units that are used by the containers on an instance\. The value can range between 0 and 100, and is multiplied by the number of CPUs\. For example, if there are four CPUs, `CPUUtilization` can range from 0% to 400%\. For endpoint variants, the value is the sum of the CPU utilization of the primary and supplementary containers on the instance\. For training jobs, the value is the CPU utilization of the Algorithm container on the instance\. Units: Percent  | 
-| MemoryUtilizaton |  The percentage of memory that is used by the containers on an instance\. This value can range between 0% and 100%\. For endpoint variants, the value is the sum of the memory utilization of the primary and supplementary containers on the instance\. For training jobs, the value is the memory utilization of the Algorithm container on the instance\. Units: Percent  | 
-| GPUUtilization |  The percentage of GPU units that are used by the containers on an instance\. The value can range between 0 and 100 and is multiplied by the number of GPUs\. For example, if there are four GPUs, `GPUUtilization` can range from 0% to 400%\. For endpoint variants, the value is the sum of the GPU utilization of the primary and supplementary containers on the instance\. For training jobs, the value is the GPU utilization of the Algorithm container on the instance\. Units: Percent  | 
-| GPUMemoryUtilization |  The percentage of GPU memory used by the containers on an instance\. The value can range between 0 and 100 and is multiplied by the number of GPUs\. For example, if there are four GPUs, `GPUMemoryUtilization` can range from 0% to 400%\. For endpoint variants, the value is the sum of the GPU memory utilization of the primary and supplementary containers on the instance\. For training jobs, the value is the GPU memory utilization of the Algorithm container on the instance\. Units: Percent  | 
-
-**Dimensions for Training Job and Endpoint Instance Metrics**
-
-
-| Dimension | Description | 
-| --- | --- | 
-| Host |  For training jobs, the value for this dimension has the format `[training-job-name]/algo-[instance-number-in-cluster]`\. Use this dimension to filter instance metrics for the specified training job and instance\. This dimension format is present only in the `/aws/sagemaker/TrainingJobs` namespace\. For endpoints, the value for this dimension has the format `[endpoint-name]/[ production-variant-name ]/[instance-id]`\. Use this dimension to filter instance metrics for the specified endpoint, variant, and instance\. This dimension format is present only in the `/aws/sagemaker/Endpoints` namespace\.  | 
-
-**Training Job Instance Metrics**
-
-The `/aws/sagemaker/TrainingJobs` namespace includes the following metrics for the training jobs instance\.
+The `/aws/sagemaker/TrainingJobs`, `/aws/sagemaker/TransformJobs` and `/aws/sagemaker/Endpoints` namespaces include the following metrics for the training jobs and endpoint instances\.
 
 Metrics are available at a 1\-minute frequency\.
 
 
 | Metric | Description | 
 | --- | --- | 
-| DiskUtilization |  The percentage of disk space that the algorithm container on an instance uses\. This value can range between 0% and 100%\. Units: Percent  | 
+| CPUUtilization |  The percentage of CPU units that are used by the containers on an instance\. The value can range between 0 and 100, and is multiplied by the number of CPUs\. For example, if there are four CPUs, `CPUUtilization` can range from 0% to 400%\. For training jobs, the value is the CPU utilization of the algorithm container on the instance\. For batch transform jobs, the value is the CPU utilization of the transform container on the instance\. For endpoint variants, the value is the sum of the CPU utilization of the primary and supplementary containers on the instance\. Units: Percent  | 
+| MemoryUtilizaton |  The percentage of memory that is used by the containers on an instance\. This value can range between 0% and 100%\. For training jobs, the value is the memory utilization of the algorithm container on the instance\. For batch transform jobs, the value is the memory utilization of the transform container on the instance\. For endpoint variants, the value is the sum of the memory utilization of the primary and supplementary containers on the instance\. Units: Percent  | 
+| GPUUtilization |  The percentage of GPU units that are used by the containers on an instance\. The value can range between 0 and 100 and is multiplied by the number of GPUs\. For example, if there are four GPUs, `GPUUtilization` can range from 0% to 400%\. For training jobs, the value is the GPU utilization of the algorithm container on the instance\. For batch transform jobs, the value is the GPU utilization of the transform container on the instance\. For endpoint variants, the value is the sum of the GPU utilization of the primary and supplementary containers on the instance\. Units: Percent  | 
+| GPUMemoryUtilization |  The percentage of GPU memory used by the containers on an instance\. The value can range between 0 and 100 and is multiplied by the number of GPUs\. For example, if there are four GPUs, `GPUMemoryUtilization` can range from 0% to 400%\. For training jobs, the value is the GPU memory utilization of the algorithm container on the instance\. For batch transform jobs, the value is the GPU memory utilization of the transform container on the instance\. For endpoint variants, the value is the sum of the GPU memory utilization of the primary and supplementary containers on the instance\. Units: Percent  | 
+| DiskUtilization |  The percentage of disk space used by the containers on an instance uses\. This value can range between 0% and 100%\. This metric is not supported for batch transform jobs\. For training jobs, the value is the disk space utilization of the algorithm container on the instance\. For endpoint variants, the value is the sum of the disk space utilization of the primary and supplementary containers on the instance\. Units: Percent  | 
 
-**Dimensions for Training Job Metrics**
+**Dimensions for Training Job, Batch Transform Job, and Endpoint Instance Metrics**
 
 
 | Dimension | Description | 
 | --- | --- | 
-| Host |  The value for this dimension has the format `[training-job-name]/algo-[instance-number-in-cluster]`\. Use this dimension to filter instance metrics for the specified training job and instance\. This dimension format is present only in the `/aws/sagemaker/TrainingJobs` namespace\.  | 
+| Host |  For training jobs, the value for this dimension has the format `[training-job-name]/algo-[instance-number-in-cluster]`\. Use this dimension to filter instance metrics for the specified training job and instance\. This dimension format is present only in the `/aws/sagemaker/TrainingJobs` namespace\. For batch transform jobs, the value for this dimension has the format `[transform-job-name]/[instance-id]`\. Use this dimension to filter instance metrics for the specified batch transform job and instance\. This dimension format is present only in the `/aws/sagemaker/TransformJobs` namespace\. For endpoints, the value for this dimension has the format `[endpoint-name]/[ production-variant-name ]/[instance-id]`\. Use this dimension to filter instance metrics for the specified endpoint, variant, and instance\. This dimension format is present only in the `/aws/sagemaker/Endpoints` namespace\.  | 

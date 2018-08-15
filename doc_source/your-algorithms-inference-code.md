@@ -51,7 +51,7 @@ To configure a container to run as an executable, use an `ENTRYPOINT` instructio
 + Amazon SageMaker uses the container definition that you provided in your [CreateModel](API_CreateModel.md) request to set environment variables and the DNS hostname for the container as follows:
 
    
-  + It sets environment variables using the `ContainerDefintion.Environment` string\-to\-string map\.
+  + It sets environment variables using the `ContainerDefinition.Environment` string\-to\-string map\.
   + It sets the DNS hostname using the `ContainerDefinition.ContainerHostname`\.
 
      

@@ -67,7 +67,7 @@ To train the model, choose one of the following options\.
             'ap-northeast-1': '351501993468.dkr.ecr.ap-northeast-1.amazonaws.com/kmeans:latest',
             'ap-northeast-2': '835164637446.dkr.ecr.ap-northeast-2.amazonaws.com/kmeans:latest',
             'ap-southeast-2': '712309505854.dkr.ecr.ap-southeast-2.amazonaws.com/kmeans:latest',
-            'eu-central-1': '438346466558.dkr.ecr.eu-central-1.amazonaws.com/kmeans:latest'
+            'eu-central-1': '438346466558.dkr.ecr.eu-central-1.amazonaws.com/kmeans:latest',
             'eu-west-1': '664544806723.dkr.ecr.eu-west-1.amazonaws.com/kmeans:latest'}
   image = images[boto3.Session().region_name]
   

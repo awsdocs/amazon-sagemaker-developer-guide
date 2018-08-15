@@ -1,37 +1,46 @@
 # TransformJobSummary<a name="API_TransformJobSummary"></a>
 
+Provides a summary information for a transform job\. Multiple TransformJobSummary objects are returned as a list after calling [ListTransformJobs](API_ListTransformJobs.md)\.
+
 ## Contents<a name="API_TransformJobSummary_Contents"></a>
 
  **CreationTime**   <a name="SageMaker-Type-TransformJobSummary-CreationTime"></a>
+A timestamp that shows when the transform Job was created\.  
 Type: Timestamp  
 Required: Yes
 
  **FailureReason**   <a name="SageMaker-Type-TransformJobSummary-FailureReason"></a>
+If the transform job failed, the reason it failed\.  
 Type: String  
 Length Constraints: Maximum length of 1024\.  
 Required: No
 
  **LastModifiedTime**   <a name="SageMaker-Type-TransformJobSummary-LastModifiedTime"></a>
+Indicates when the transform job was last modified\.  
 Type: Timestamp  
 Required: No
 
  **TransformEndTime**   <a name="SageMaker-Type-TransformJobSummary-TransformEndTime"></a>
+Indicates when the transform job ends on compute instances\. For successful jobs and stopped jobs, this is the exact time recorded after the results are uploaded\. For failed jobs, this is when Amazon SageMaker detected that the job failed\.  
 Type: Timestamp  
 Required: No
 
  **TransformJobArn**   <a name="SageMaker-Type-TransformJobSummary-TransformJobArn"></a>
+The Amazon Resource Name \(ARN\) of the transform job\.  
 Type: String  
 Length Constraints: Maximum length of 256\.  
 Pattern: `arn:aws[a-z\-]*:sagemaker:[a-z0-9\-]*:[0-9]{12}:transform-job/.*`   
 Required: Yes
 
  **TransformJobName**   <a name="SageMaker-Type-TransformJobSummary-TransformJobName"></a>
+The name of the transform job\.  
 Type: String  
 Length Constraints: Minimum length of 1\. Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: Yes
 
  **TransformJobStatus**   <a name="SageMaker-Type-TransformJobSummary-TransformJobStatus"></a>
+The status of the transform job\.  
 Type: String  
 Valid Values:` InProgress | Completed | Failed | Stopping | Stopped`   
 Required: Yes

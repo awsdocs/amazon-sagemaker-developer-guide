@@ -150,7 +150,7 @@ syntax = "proto2";
 After creating the protocol buffer, store it in an Amazon S3 location that Amazon SageMaker can access and that can be passed as part of `InputDataConfig` in `create_training_job`\. 
 
 **Note**  
-For all Amazon SageMaker algorithms, the `ChannelName` in `InputDataConfig` must be set to `train`\. Some algorithms also support a validation `input channel`\. 
+For all Amazon SageMaker algorithms, the `ChannelName` in `InputDataConfig` must be set to `train`\. Some algorithms also support a validation or test `input channels`\. These are typically used to evaluate the model's performance by using a hold\-out dataset\. Hold\-out datasets are not used in the initial training but can be used to further tune the model\.
 
 ## Trained Model Deserialization<a name="td-deserialization"></a>
 

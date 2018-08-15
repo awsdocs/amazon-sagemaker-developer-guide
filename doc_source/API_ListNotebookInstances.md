@@ -13,6 +13,7 @@ Returns a list of the Amazon SageMaker notebook instances in the requester's acc
    "[MaxResults](#SageMaker-ListNotebookInstances-request-MaxResults)": number,
    "[NameContains](#SageMaker-ListNotebookInstances-request-NameContains)": "string",
    "[NextToken](#SageMaker-ListNotebookInstances-request-NextToken)": "string",
+   "[NotebookInstanceLifecycleConfigNameContains](#SageMaker-ListNotebookInstances-request-NotebookInstanceLifecycleConfigNameContains)": "string",
    "[SortBy](#SageMaker-ListNotebookInstances-request-SortBy)": "string",
    "[SortOrder](#SageMaker-ListNotebookInstances-request-SortOrder)": "string",
    "[StatusEquals](#SageMaker-ListNotebookInstances-request-StatusEquals)": "string"
@@ -64,6 +65,13 @@ Type: String
 Length Constraints: Maximum length of 8192\.  
 Required: No
 
+ ** [NotebookInstanceLifecycleConfigNameContains](#API_ListNotebookInstances_RequestSyntax) **   <a name="SageMaker-ListNotebookInstances-request-NotebookInstanceLifecycleConfigNameContains"></a>
+A string in the name of a notebook instances lifecycle configuration associated with this notebook instance\. This filter returns only notebook instances associated with a lifecycle configuration with a name that contains the specified string\.  
+Type: String  
+Length Constraints: Maximum length of 63\.  
+Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
+Required: No
+
  ** [SortBy](#API_ListNotebookInstances_RequestSyntax) **   <a name="SageMaker-ListNotebookInstances-request-SortBy"></a>
 The field to sort results by\. The default is `Name`\.  
 Type: String  
@@ -93,6 +101,7 @@ Required: No
          "[InstanceType](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-InstanceType)": "string",
          "[LastModifiedTime](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-LastModifiedTime)": number,
          "[NotebookInstanceArn](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-NotebookInstanceArn)": "string",
+         "[NotebookInstanceLifecycleConfigName](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-NotebookInstanceLifecycleConfigName)": "string",
          "[NotebookInstanceName](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-NotebookInstanceName)": "string",
          "[NotebookInstanceStatus](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-NotebookInstanceStatus)": "string",
          "[Url](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-Url)": "string"

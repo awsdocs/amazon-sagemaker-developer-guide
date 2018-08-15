@@ -11,7 +11,7 @@ For information about deploying trained models as endpoints, see [Step 3\.4\.1: 
 **Topics**
 + [Automatic Scaling Components](#endpoint-auto-scaling-policy)
 + [Before You Begin](#endpoint-auto-scaling-target-byb)
-+ [Related Topics](#w3ab1c29c21)
++ [Related Topics](#w4ab1c29c21)
 + [Configure Automatic Scaling for a Variant](endpoint-auto-scaling-add-policy.md)
 + [Editing a Scaling Policy](endpoint-auto-scaling-edit.md)
 + [Deleting a Scaling Policy](endpoint-auto-scaling-delete.md)
@@ -112,5 +112,5 @@ Before you can use automatically scaled model deployment, create an Amazon SageM
 
 When automatic scaling adds a new variant instance, it is the same instance class as the one used by the primary instance\.
 
-## Related Topics<a name="w3ab1c29c21"></a>
+## Related Topics<a name="w4ab1c29c21"></a>
 + [What Is Application Auto Scaling?](http://docs.aws.amazon.com//autoscaling/application/userguide/what-is-application-auto-scaling.html)

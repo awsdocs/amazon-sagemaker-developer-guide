@@ -4,6 +4,6 @@ This section provides guidelines for securing notebook instances, connecting to 
 
 **Topics**
 + [Notebook Instance Security](appendix-additional-considerations.md)
-+ [Connect to Amazon SageMaker Runtime Through a VPC Interface Endpoint](interface-vpc-endpoint.md)
++ [Connect to Amazon SageMaker Through a VPC Interface Endpoint](interface-vpc-endpoint.md)
 + [Protect Training Jobs by Using an Amazon Virtual Private Cloud](train-vpc.md)
 + [Protect Models by Using an Amazon Virtual Private Cloud](host-vpc.md)
