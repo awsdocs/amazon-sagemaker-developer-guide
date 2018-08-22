@@ -87,7 +87,7 @@ To run a batch transform, you create a transform job with the `CreateTransformJo
 The following shows how to create a transform job using the High\-level Python Library:
 
 ```
-    import sagemaker
+    from sagemaker.transformer import Transformer
     from time import gmtime, strftime
     
     job_name = 'Batch-Transform-' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
@@ -97,9 +97,12 @@ The following shows how to create a transform job using the High\-level Python L
     
     # Initialize the transformer object
     transformer = Transformer(model_name=my_model_name,
-                            transform_job_name=job_name,
+                            instance_count=1,
+                            instance_type='ml.m4.xlarge',
+                            base_transform_job_name=job_name,
                             output_path="s3://{}/{}/Batch-Transform/".format(bucket,prefix)
-                            )
+                            ) 
+
     # To start a transform job:                        
     transformer.transform("s3://{}/{}/Batch-Transform/".format(bucket,prefix)”/output”)
     
