@@ -24,25 +24,25 @@ The factorization machines algorithm reports three binary classification metrics
 
 ## Tunable Hyperparameters<a name="fm-tunable-hyperparameters"></a>
 
-You can tune the following hyperparameters for the factorization machines algorithm\. The initialization parameters that contain the terms bias, linear, and factorization depend on their initialization method\. There are three initialization methods: `uniform`, `normal`, and `constant`\. The initialization methods themselves are not tunable\. You must set the method before the optimization procedure\. For example, if the initialization method is `uniform`, then only the `scale` parameters are tunable\. FSpecifically, if `bias_init_method==uniform`, `bias_init_scale`, `linear_init_scale`, and `factors_init_scale` are tunable\. Similarly, if the initialization method is `normal`, then only `sigma` parameters are tunable\. If the initialization method is `constant`, then only `value` parameters are tunable\. These dependencies are listed in the following table\. 
+You can tune the following hyperparameters for the factorization machines algorithm\. The initialization parameters that contain the terms bias, linear, and factorization depend on their initialization method\. There are three initialization methods: `uniform`, `normal`, and `constant`\. These initialization methods are not themselves tunable\. The parameters that are tunable are dependent on this choice of the initialization method\. For example, if the initialization method is `uniform`, then only the `scale` parameters are tunable\. Specifically, if `bias_init_method==uniform`, then `bias_init_scale`, `linear_init_scale`, and `factors_init_scale` are tunable\. Similarly, if the initialization method is `normal`, then only `sigma` parameters are tunable\. If the initialization method is `constant`, then only `value` parameters are tunable\. These dependencies are listed in the following table\. 
 
 
 | Parameter Name | Parameter Type | Recommended Ranges | Dependency | 
 | --- | --- | --- | --- | 
-| mini\_batch\_size | IntegerParameterRange | MinValue: 100, MaxValue: 10000 | None | 
-| epoch | IntegerParameterRange | MinValue: 1, MaxValue: 1000 | None | 
-| bias\_lr | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512 | None | 
-| linear\_lr | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512 | None | 
-| factors\_lr | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512 | None | 
-| bias\_wd | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512 | None | 
-| linear\_wd | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512 | None | 
-| factors\_wd | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512\] | None | 
 | bias\_init\_scale | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512 | bias\_init\_method==uniform | 
 | bias\_init\_sigma | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512 | bias\_init\_method==normal | 
 | bias\_init\_value | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512 | bias\_init\_method==constant | 
-| linear\_init\_scale | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512 | bias\_init\_method==uniform | 
-| linear\_init\_sigma | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512 | bias\_init\_method==normal | 
-| linear\_init\_value | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512 | bias\_init\_method==constant | 
+| bias\_lr | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512 | None | 
+| bias\_wd | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512 | None | 
+| epoch | IntegerParameterRange | MinValue: 1, MaxValue: 1000 | None | 
 | factors\_init\_scale | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512 | bias\_init\_method==uniform | 
 | factors\_init\_sigma | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512 | bias\_init\_method==normal | 
 | factors\_init\_value | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512 | bias\_init\_method==constant | 
+| factors\_lr | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512 | None | 
+| factors\_wd | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512\] | None | 
+| linear\_init\_scale | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512 | bias\_init\_method==uniform | 
+| linear\_init\_sigma | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512 | bias\_init\_method==normal | 
+| linear\_init\_value | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512 | bias\_init\_method==constant | 
+| linear\_lr | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512 | None | 
+| linear\_wd | ContinuousParameterRange | MinValue: 1e\-8, MaxValue: 512 | None | 
+| mini\_batch\_size | IntegerParameterRange | MinValue: 100, MaxValue: 10000 | None | 

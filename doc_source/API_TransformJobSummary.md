@@ -1,6 +1,6 @@
 # TransformJobSummary<a name="API_TransformJobSummary"></a>
 
-Provides a summary information for a transform job\. Multiple TransformJobSummary objects are returned as a list after calling [ListTransformJobs](API_ListTransformJobs.md)\.
+Provides a summary of a transform job\. Multiple `TransformJobSummary` objects are returned as a list after in response to a [ListTransformJobs](API_ListTransformJobs.md) call\.
 
 ## Contents<a name="API_TransformJobSummary_Contents"></a>
 

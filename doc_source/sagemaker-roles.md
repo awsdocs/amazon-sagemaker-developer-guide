@@ -52,6 +52,9 @@ The permissions that you grant to the execution role for calling the `CreateNote
                 "ecr:BatchGetImage",
                 "ecr:BatchCheckLayerAvailability",
                 "cloudwatch:PutMetricData",
+                "cloudwatch:GetMetricData",
+                "cloudwatch:GetMetricStatistics",
+                "cloudwatch:ListMetrics",
                 "logs:CreateLogGroup",
                 "logs:CreateLogStream",
                 "logs:DescribeLogStreams",
@@ -62,10 +65,28 @@ The permissions that you grant to the execution role for calling the `CreateNote
                 "s3:GetBucketLocation",
                 "s3:GetObject",
                 "s3:PutObject",
-                "s3:DeleteObject"
+                "s3:DeleteObject",
+                "robomaker:CreateSimulationApplication",
+                "robomaker:DescribeSimulationApplication",
+                "robomaker:DeleteSimulationApplication",
+                "robomaker:CreateSimulationJob",
+                "robomaker:DescribeSimulationJob",
+                "robomaker:CancelSimulationJob"
             ],
             "Resource": "*"
         },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "codecommit:GitPull",
+                "codecommit:GitPush"
+            ],
+            "Resource": [
+                "arn:aws:codecommit:*:*:*sagemaker*",
+                "arn:aws:codecommit:*:*:*SageMaker*",
+                "arn:aws:codecommit:*:*:*Sagemaker*"
+            ]
+        }
         {
             "Effect": "Allow",
             "Action": [

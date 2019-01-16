@@ -2,7 +2,7 @@
 
 Returns a description of a notebook instance lifecycle configuration\.
 
-For information about notebook instance lifestyle configurations, see [Step 2\.1: \(Optional\) Customize a Notebook Instance ](notebook-lifecycle-config.md)\.
+For information about notebook instance lifestyle configurations, see [Step 2\.1: \(Optional\) Customize a Notebook Instance](https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html)\.
 
 ## Request Syntax<a name="API_DescribeNotebookInstanceLifecycleConfig_RequestSyntax"></a>
 

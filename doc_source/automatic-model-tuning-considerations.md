@@ -6,7 +6,7 @@ Hyperparameter optimization is not a fully\-automated process\. To improve optim
 + [Choosing the Number of Hyperparameters](#automatic-model-tuning-num-hyperparameters)
 + [Choosing Hyperparameter Ranges](#automatic-model-tuning-choosing-ranges)
 + [Use Logarithmic Scales for Hyperparameters](#automatic-model-tuning-log-scales)
-+ [Choosing the Best Degree of Parallelism](#automatic-model-tuning-parallelism)
++ [Choosing the Best Number of Concurrent Training Jobs](#automatic-model-tuning-parallelism)
 + [Running Training Jobs on Multiple Instances](#automatic-model-tuning-distributed-metrics)
 
 ## Choosing the Number of Hyperparameters<a name="automatic-model-tuning-num-hyperparameters"></a>
@@ -21,9 +21,9 @@ The ranges for hyperparameters that you choose to search can significantly affec
 
 During hyperparameter tuning, Amazon SageMaker attempts to ﬁgure out if your hyperparameters are log\-scaled or linear\-scaled\. Initially, it assumes that hyperparameters are linear\-scaled\. If they should be log\-scaled, it might take some time for Amazon SageMaker to discover that\. If you know that a hyperparameter should be log\-scaled and can convert it yourself, doing so could improve hyperparameter optimization\.
 
-## Choosing the Best Degree of Parallelism<a name="automatic-model-tuning-parallelism"></a>
+## Choosing the Best Number of Concurrent Training Jobs<a name="automatic-model-tuning-parallelism"></a>
 
-Running more hyperparameter tuning jobs in parallel gets more work done quickly, but a tuning job improves only through successive rounds of experiments\. Typically, running one training job at a time achieves the best results with the least amount of compute time\.
+Running more hyperparameter tuning jobs concurrently gets more work done quickly, but a tuning job improves only through successive rounds of experiments\. Typically, running one training job at a time achieves the best results with the least amount of compute time\.
 
 ## Running Training Jobs on Multiple Instances<a name="automatic-model-tuning-distributed-metrics"></a>
 

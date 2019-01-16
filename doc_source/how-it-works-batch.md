@@ -20,13 +20,12 @@ The following diagram illustrates the workflow of a batch transform job:
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/batch-transform.png)
 
-You can create a transform job by using the Amazon SageMaker console or the API\. For more information, see [CreateTransformJob](API_CreateTransformJob.md) API\.
-
-After you create a transform job, Amazon SageMaker launches the ML compute instances and uses the model you specify to transform the input data\. It stores the results and other output in the S3 bucket that you specified\.
-
-If you have multiple variants of a model, you can create a separate transform job for each\. This is useful for testing variations of a model in production\. You specify a different `ModelName` and a unique `S3OutputPath` location for each transform job\.
-
-For large datasets or data of indeterminate size, such as a video stream, you can create an *infinite stream*\. An infinite stream is when a transform Job is set to continuously input and transform data\. The transform job completes either when all the data is transformed or when it is instructed to stop\. This approach works only with models from supported algorithms\. To create an infinite stream using the API, in the `CreateTransformJob` request: set `SplitType` to `None` and set `MaxPayloadInMB` to 0\. To create an infinite stream using the console, choose **None** for **Split type** and set **Max payload size \(MB\)** to 0\. Amazon SageMaker interprets a `MaxPayloadInMB` of 0 as no limit on the payload size\.
+## Considerations for Using Amazon SageMaker Batch Transform<a name="considerations-batch"></a>
++ You can create a transform job by using the Amazon SageMaker console or the API\. For more information, see [CreateTransformJob](API_CreateTransformJob.md) API\.
++ After you create a transform job, Amazon SageMaker launches the ML compute instances and uses the model you specify to transform the input data\. It stores the results and other output in the S3 bucket that you specified\.
++ Amazon SageMaker uses [Multipart Upload API](https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html) to upload output data results from a transform job to S3\. Typically all multipart uploads run to completion\. In case of an error, the multipart upload is stopped and then removed from S3\. However there are cases such as a network outage where a multipart upload remains incomplete in S3\. To avoid extra storage charges in these cases, we recommend that you add the [S3 bucket policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config) to remove incomplete multipart uploads that are stored in the output S3 buckets\.
++ For testing model variants, create separate transform jobs for each variant using a validation data set\. You can then analyze the results using metrics\. Make sure you specify a different `ModelName` and a unique `S3OutputPath` location for each transform job\.
++ For large datasets or data of indeterminate size, such as a video stream, you can create an *infinite stream*\. An infinite stream is when a transform Job is set to continuously input and transform data\. The transform job completes either when all the data is transformed or when it is instructed to stop\. This approach works only with models from supported algorithms\. To create an infinite stream using the API, in the `CreateTransformJob` request: set `SplitType` to `None` and set `MaxPayloadInMB` to 0\. To create an infinite stream using the console, choose **None** for **Split type** and set **Max payload size \(MB\)** to 0\. Amazon SageMaker interprets a `MaxPayloadInMB` of 0 as no limit on the payload size\.
 
 ## How It Works: Next Topic<a name="how-it-works-batch-next-topic"></a>
 

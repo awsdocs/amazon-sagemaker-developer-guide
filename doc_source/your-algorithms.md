@@ -6,7 +6,7 @@ You can easily package your own algorithms for use with Amazon SageMaker, regard
 + Use a suitable algorithm provided by Amazon SageMaker for model training and your own inference code, such as code for embedded applications, or devices, or both\.
 + Use your own training algorithm and inference code provided by Amazon SageMaker\. 
 + Use your own training algorithm and your own inference code\. You package the algorithm and inference code in Docker images, and use the images to train a model and deploy it with Amazon SageMaker\.
-+ Use deep learning containers provided by Amazon SageMaker for model training and your own inference code\. You provide a script written for the deepV learning framework, such as Apache MXNet or TensorFlow\. For more information about training, see [Using Apache MXNet with Amazon SageMaker](mxnet.md) and [Using TensorFlow with Amazon SageMaker](tf.md)\. 
++ Use deep learning containers provided by Amazon SageMaker for model training and your own inference code\. You provide a script written for the deep learning framework, such as Apache MXNet or TensorFlow\. For more information about training, see [Using Apache MXNet with Amazon SageMaker](mxnet.md) and [Using TensorFlow with Amazon SageMaker](tf.md)\. 
 
 Amazon SageMaker algorithms are packaged as Docker images\. This gives you the flexibility to use almost any algorithm code with Amazon SageMaker, regardless of implementation language, dependent libraries, frameworks, and so on\. For more information on creating Docker images, see [The Dockerfile instructions](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#the-dockerfile-instructions)\.
 
@@ -23,3 +23,5 @@ The following sections provide detailed information about how Amazon SageMaker i
 + [Using Your Own Training Algorithms](your-algorithms-training-algo.md)
 + [Using Your Own Inference Code](your-algorithms-inference-main.md)
 + [Example: Using Your Own Algorithms](adv-bring-own-examples.md)
++ [Create Algorithm and Model Package Resources](sagemaker-mkt-create.md)
++ [Using Algorithm and Model Package Resources](sagemaker-mkt-buy.md)

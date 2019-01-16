@@ -16,6 +16,18 @@ Type: String
 Valid Values:` ml.m4.xlarge | ml.m4.2xlarge | ml.m4.4xlarge | ml.m4.10xlarge | ml.m4.16xlarge | ml.c4.xlarge | ml.c4.2xlarge | ml.c4.4xlarge | ml.c4.8xlarge | ml.p2.xlarge | ml.p2.8xlarge | ml.p2.16xlarge | ml.p3.2xlarge | ml.p3.8xlarge | ml.p3.16xlarge | ml.c5.xlarge | ml.c5.2xlarge | ml.c5.4xlarge | ml.c5.9xlarge | ml.c5.18xlarge | ml.m5.large | ml.m5.xlarge | ml.m5.2xlarge | ml.m5.4xlarge | ml.m5.12xlarge | ml.m5.24xlarge`   
 Required: Yes
 
+ **VolumeKmsKeyId**   <a name="SageMaker-Type-TransformResources-VolumeKmsKeyId"></a>
+The AWS Key Management Service \(AWS KMS\) key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance\(s\) that run the batch transform job\. The `VolumeKmsKeyId` can be any of the following formats:  
++ // KMS Key ID
+
+   `"1234abcd-12ab-34cd-56ef-1234567890ab"` 
++ // Amazon Resource Name \(ARN\) of a KMS Key
+
+   `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"` 
+Type: String  
+Length Constraints: Maximum length of 2048\.  
+Required: No
+
 ## See Also<a name="API_TransformResources_SeeAlso"></a>
 
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:

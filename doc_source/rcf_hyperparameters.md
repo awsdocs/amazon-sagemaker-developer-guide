@@ -5,7 +5,7 @@ In the [https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateTrainingJob.ht
 
 | Parameter Name | Description | 
 | --- | --- | 
-| num\_samples\_per\_tree |  Number of random samples given to each tree from the training data set\. Valid values: Positive integer \(min: 1, max: 2048\) Default value: 256  | 
-| num\_trees |  Number of trees in the forest\. Valid values: Positive integer \(min: 50, max: 1000\) Default value: 100  | 
-| feature\_dim |  Number of features in the data set\. Valid values: Positive integer \(min: 1, max: 10000\) Default value: \-  | 
-| eval\_metics |  List of metrics used to score a labeled test data set\. The following metrics can be selected for output: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/rcf_hyperparameters.html) Valid values: a list with possible values taken from `accuracy`, `precision_recall_fscore`\.  Default value: `accuracy`, `precision_recall_fscore`  | 
+| feature\_dim |  The number of features in the data set\. \(If you are using the client libraries through a notebook, this value is calculated for you and need not be specified\.\) **Required** \(When the job is run through the console\.\) Valid values: Positive integer \(min: 1, max: 10000\)  | 
+| eval\_metrics |  A list of metrics used to score a labeled test data set\. The following metrics can be selected for output: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/rcf_hyperparameters.html) **Optional** Valid values: a list with possible values taken from `accuracy` or `precision_recall_fscore`\.  Default value: Both `accuracy`, `precision_recall_fscore` are calculated\.  | 
+| num\_samples\_per\_tree |  Number of random samples given to each tree from the training data set\. **Optional** Valid values: Positive integer \(min: 1, max: 2048\) Default value: 256  | 
+| num\_trees |  Number of trees in the forest\. **Optional** Valid values: Positive integer \(min: 50, max: 1000\) Default value: 100  | 

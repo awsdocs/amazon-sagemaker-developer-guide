@@ -18,7 +18,7 @@ To train the model, choose one of the following options\.
      from sagemaker import KMeans
      
      data_location = 's3://{}/kmeans_highlevel_example/data'.format(bucket)
-     output_location = 's3://{}/kmeans_example/output'.format(bucket)
+     output_location = 's3://{}/kmeans_highlevel_example/output'.format(bucket)
      
      print('training data will be uploaded to: {}'.format(data_location))
      print('training artifacts will be uploaded to: {}'.format(output_location))
@@ -61,17 +61,10 @@ To train the model, choose one of the following options\.
   job_name = 'kmeans-lowlevel-' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
   print("Training job", job_name)
   
-  images = {'us-west-2': '174872318107.dkr.ecr.us-west-2.amazonaws.com/kmeans:latest',
-            'us-east-1': '382416733822.dkr.ecr.us-east-1.amazonaws.com/kmeans:latest',
-            'us-east-2': '404615174143.dkr.ecr.us-east-2.amazonaws.com/kmeans:latest',
-            'ap-northeast-1': '351501993468.dkr.ecr.ap-northeast-1.amazonaws.com/kmeans:latest',
-            'ap-northeast-2': '835164637446.dkr.ecr.ap-northeast-2.amazonaws.com/kmeans:latest',
-            'ap-southeast-2': '712309505854.dkr.ecr.ap-southeast-2.amazonaws.com/kmeans:latest',
-            'eu-central-1': '438346466558.dkr.ecr.eu-central-1.amazonaws.com/kmeans:latest',
-            'eu-west-1': '664544806723.dkr.ecr.eu-west-1.amazonaws.com/kmeans:latest'}
-  image = images[boto3.Session().region_name]
+  from sagemaker.amazon.amazon_estimator import get_image_uri
+  image = get_image_uri(boto3.Session().region_name, 'kmeans')
   
-  output_location = 's3://{}/kmeans_example/output'.format(bucket)
+  output_location = 's3://{}/kmeans_lowlevel_example/output'.format(bucket)
   print('training artifacts will be uploaded to: {}'.format(output_location))
   
   create_training_params = \

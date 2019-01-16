@@ -6,4 +6,4 @@ The following topics provide information common to all of the algorithms provide
 + [Algorithms Provided by Amazon SageMaker: Common Parameters](sagemaker-algo-docker-registry-paths.md)
 + [Algorithms Provided by Amazon SageMaker: Common Data Formats](sagemaker-algo-common-data-formats.md)
 + [Algorithms Provided by Amazon SageMaker: Suggested Instance Types](cmn-info-instance-types.md)
-+ [Algorithms Provided by Amazon SageMaker: Logs](common-info-all-im-models-logs.md)
++ [Algorithms Provided by Amazon SageMaker: Logs](common-info-all-sagemaker-models-logs.md)

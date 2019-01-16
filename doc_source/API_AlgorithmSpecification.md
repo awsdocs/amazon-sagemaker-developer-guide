@@ -2,15 +2,28 @@
 
 Specifies the training algorithm to use in a [CreateTrainingJob](https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateTrainingJob.html) request\.
 
-For more information about algorithms provided by Amazon SageMaker, see [Algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)\. For information about using your own algorithms, see [Using Your Own Algorithms with Amazon SageMaker](your-algorithms.md)\. 
+For more information about algorithms provided by Amazon SageMaker, see [Algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)\. For information about using your own algorithms, see [Using Your Own Algorithms with Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html)\. 
 
 ## Contents<a name="API_AlgorithmSpecification_Contents"></a>
 
+ **AlgorithmName**   <a name="SageMaker-Type-AlgorithmSpecification-AlgorithmName"></a>
+The name of the algorithm resource to use for the training job\. This must be an algorithm resource that you created or subscribe to on AWS Marketplace\. If you specify a value for this parameter, you can't specify a value for `TrainingImage`\.  
+Type: String  
+Length Constraints: Minimum length of 1\. Maximum length of 170\.  
+Pattern: `(arn:aws[a-z\-]*:sagemaker:[a-z0-9\-]*:[0-9]{12}:[a-z\-]*\/)?([a-zA-Z0-9]([a-zA-Z0-9-]){0,62})(?<!-)$`   
+Required: No
+
+ **MetricDefinitions**   <a name="SageMaker-Type-AlgorithmSpecification-MetricDefinitions"></a>
+A list of metric definition objects\. Each object specifies the metric name and regular expressions used to parse algorithm logs\. Amazon SageMaker publishes each metric to Amazon CloudWatch\.  
+Type: Array of [MetricDefinition](API_MetricDefinition.md) objects  
+Array Members: Minimum number of 0 items\. Maximum number of 20 items\.  
+Required: No
+
  **TrainingImage**   <a name="SageMaker-Type-AlgorithmSpecification-TrainingImage"></a>
-The registry path of the Docker image that contains the training algorithm\. For information about docker registry paths for built\-in algorithms, see [Algorithms Provided by Amazon SageMaker: Common Parameters ](sagemaker-algo-docker-registry-paths.md)\.  
+The registry path of the Docker image that contains the training algorithm\. For information about docker registry paths for built\-in algorithms, see [Algorithms Provided by Amazon SageMaker: Common Parameters](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html)\.  
 Type: String  
 Length Constraints: Maximum length of 255\.  
-Required: Yes
+Required: No
 
  **TrainingInputMode**   <a name="SageMaker-Type-AlgorithmSpecification-TrainingInputMode"></a>
 The input mode that the algorithm supports\. For the input modes that Amazon SageMaker algorithms support, see [Algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)\. If an algorithm supports the `File` input mode, Amazon SageMaker downloads the training data from S3 to the provisioned ML storage Volume, and mounts the directory to docker volume for training container\. If an algorithm supports the `Pipe` input mode, Amazon SageMaker streams data directly from S3 to the container\.   

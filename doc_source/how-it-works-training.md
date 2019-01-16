@@ -17,10 +17,18 @@ You have the following options for a training algorithm:
 + **Use Apache Spark with Amazon SageMaker**—Amazon SageMaker provides a library that you can use in Apache Spark to train models with Amazon SageMaker\. Using the library provided by Amazon SageMaker is similar to using Apache Spark MLLib\. For more information, see [Using Apache Spark with Amazon SageMaker](apache-spark.md)\.
 + **Submit custom code to train with deep learning frameworks**—You can submit custom Python code that uses TensorFlow or Apache MXNet for model training\. For more information, see [Using TensorFlow with Amazon SageMaker](tf.md) and [Using Apache MXNet with Amazon SageMaker](mxnet.md)\.
 + **Use your own custom algorithms**—Put your code together as a Docker image and specify the registry path of the image in an Amazon SageMaker `CreateTrainingJob` API call\. For more information, see [Using Your Own Algorithms with Amazon SageMaker](your-algorithms.md)\.
++ **Use an algorithm that you subscribe to from AWS Marketplace**—For information, see [Find and Subscribe to Algorithms and Model Packages on AWS Marketplace](sagemaker-mkt-find-subscribe.md)\.
 
 After you create the training job, Amazon SageMaker launches the ML compute instances and uses the training code and the training dataset to train the model\. It saves the resulting model artifacts and other output in the S3 bucket you specified for that purpose\. 
 
 You can create a training job with the Amazon SageMaker console or the API\. For information about creating a training job with the API, see the [CreateTrainingJob](API_CreateTrainingJob.md) API\. 
+
+When you create a training job with the API, Amazon SageMaker replicates the entire dataset on ML compute instances by default\. To make Amazon SageMaker replicate a subset of the data on each ML compute instance, you must set the `S3DataDistributionType` field to `ShardedByS3Key`\. You can set this field using the low\-level SDK\. For more information, see `S3DataDistributionType` in [S3DataSource](API_S3DataSource.md)\. 
+
+**Important**  
+To prevent your algorithm container from contending for memory, you should reserve some memory for Amazon SageMaker critical system processes on your ML compute instances\. If the algorithm container is allowed to use memory needed for system processes, it can trigger a system failure\.
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sagemaker-architecture-training-2.png)
 
 ## How It Works: Next Topic<a name="how-it-works-training-next-topic"></a>
 

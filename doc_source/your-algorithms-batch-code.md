@@ -34,15 +34,12 @@ To configure a container to run as an executable, use an `ENTRYPOINT` instructio
 
    
 + Amazon SageMaker sets environment variables specified in [CreateModel](API_CreateModel.md) and [CreateTransformJob](API_CreateTransformJob.md) on your container\. Additionally, the following environment variables will be populated:
-
-   
   + `SAGEMAKER_BATCH` is always set to `true` when the container runs in Batch Transform\.
   + `SAGEMAKER_MAX_PAYLOAD_IN_MB` is set to the largest size payload that will be sent to the container via HTTP\.
   + `SAGEMAKER_BATCH_STRATEGY` will be set to `SINGLE_RECORD` when the container will be sent a single record per call to invocations and `MULTI_RECORD` when the container will get as many records as will fit in the payload\.
   + `SAGEMAKER_MAX_CONCURRENT_TRANSFORMS` is set to the maximum number of `/invocations` requests that can be opened simultaneously\.
 **Note**  
-The last three environment variables come from the API call made by the user\. If the user doesn’t set values to them then they will not be passed\. At which case, either the default values or the values requested by the algorithm \(in response to the `/execution-parameters`\) are used\.  
- 
+The last three environment variables come from the API call made by the user\. If the user doesn’t set values for them,  they aren't passed\. In that case, either the default values or the values requested by the algorithm \(in response to the `/execution-parameters`\) are used\.
 + If you plan to use GPU devices for model inferences \(by specifying GPU\-based ML compute instances in your `CreateTransformJob` request\), make sure that your containers are nvidia\-docker compatible\. Don't bundle NVIDIA drivers with the image\. For more information about nvidia\-docker, see [NVIDIA/nvidia\-docker](https://github.com/NVIDIA/nvidia-docker)\. 
 
    
@@ -52,9 +49,9 @@ The last three environment variables come from the API call made by the user\. I
 
 In your [CreateModel](API_CreateModel.md) request, the container definition includes the `ModelDataUrl` parameter, which identifies the S3 location where model artifacts are stored\. Amazon SageMaker uses this information to determine where to copy the model artifacts from\. It copies the artifacts to the `/opt/ml/model` directory for use by your inference code\.
 
-The `ModelDataUrl` must point to a tar\.gz file, or else it will fail to download the file\. 
+The `ModelDataUrl` must point to a tar\.gz file\. Otherwise, it Amazon SageMaker doesn't download the file\. 
 
- Amazon SageMaker stores the model artifacts as a single compressed tar file in Amazon S3\. Amazon SageMaker decompresses this tar file into the `/opt/ml/model` directory before your container starts\. If you used Amazon SageMaker to train a model, the tar file will be stored in S3\.
+ Amazon SageMaker stores the model artifacts as a single compressed tar file in Amazon S3\. Amazon SageMaker decompresses this tar file into the `/opt/ml/model` directory before your container starts\. If you used Amazon SageMaker to train a model, the tar file is stored in Amazon S3\.
 
 ## How Containers Serve Requests<a name="your-algorithms-batch-code-how-containe-serves-requests"></a>
 

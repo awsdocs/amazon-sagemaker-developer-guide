@@ -1,0 +1,3 @@
+# Amazon SageMaker Scans AWS Marketplace Training and Inference Containers for Security Vulnerabilities<a name="mkt-container-scan"></a>
+
+To meet our security requirements, algorithms and model packages listed in AWS Marketplace are scanned for Common Vulnerabilities and Exposures \(CVE\)\. CVE is a list of publicly known information about security vulnerability and exposure\. The National Vulnerability Database \(NVD\) provides CVE details such as severity, impact rating, and fix information\. Both CVE and NVD are available for public consumption and free for security tools and services to use\. For more information, see [http://cve\.mitre\.org/about/faqs\.html\#what\_is\_cve](http://cve.mitre.org/about/faqs.html#what_is_cve)\. 

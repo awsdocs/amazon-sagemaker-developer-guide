@@ -41,6 +41,7 @@ Required: No
  ** [NameContains](#API_ListEndpointConfigs_RequestSyntax) **   <a name="SageMaker-ListEndpointConfigs-request-NameContains"></a>
 A string in the endpoint configuration name\. This filter returns only endpoint configurations whose name contains the specified string\.   
 Type: String  
+Length Constraints: Maximum length of 63\.  
 Pattern: `[a-zA-Z0-9-]+`   
 Required: No
 

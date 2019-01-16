@@ -64,7 +64,7 @@ Amazon SageMaker automatic scaling doesn't support automatic scaling for burstab
 
 #### Register a Variant \(AWS CLI\)<a name="endpoint-auto-scaling-add-code-register-cli"></a>
 
-To register your endpoint, use the [http://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/register-scalable-target.html](http://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/register-scalable-target.html) AWS CLI command with the following parameters:
+To register your endpoint, use the [https://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/register-scalable-target.html](https://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/register-scalable-target.html) AWS CLI command with the following parameters:
 + `--service-namespace`—Set this value to `sagemaker`\.
 + `--resource-id`—The resource identifier for the production variant\. For this parameter, the resource type is `endpoint` and the unique identifier is the name of the variant\. For example `endpoint/MyEndpoint/variant/MyVariant`\.
 + `--scalable-dimension`—Set this value to `sagemaker:variant:DesiredInstanceCount`\.
@@ -85,7 +85,7 @@ aws application-autoscaling register-scalable-target \
 
 #### Register a Variant \(Application Auto Scaling API\)<a name="endpoint-auto-scaling-add-code-register-api"></a>
 
-To register your endpoint variant with Application Auto Scaling, use the [http://docs.aws.amazon.com//autoscaling/application/APIReference/API_RegisterScalableTarget.html](http://docs.aws.amazon.com//autoscaling/application/APIReference/API_RegisterScalableTarget.html) Application Auto Scaling API action with the following parameters:
+To register your endpoint variant with Application Auto Scaling, use the [https://docs.aws.amazon.com//autoscaling/application/APIReference/API_RegisterScalableTarget.html](https://docs.aws.amazon.com//autoscaling/application/APIReference/API_RegisterScalableTarget.html) Application Auto Scaling API action with the following parameters:
 + `ServiceNamespace`—Set this value to `sagemaker`\.
 + `ResourceID`—The resource identifier for the production variant\. For this parameter, the resource type is `endpoint` and the unique identifier is the name of the variant, for example `endpoint/MyEndPoint/variant/MyVariant`\.
 + `ScalableDimension`—Set this value to `sagemaker:variant:DesiredInstanceCount`\.
@@ -118,7 +118,7 @@ Authorization: AUTHPARAMS
 
 To specify the metrics and target values for a scaling policy, you configure a target\-tracking scaling policy\. You can use either a predefined metric or a custom metric\.
 
-Scaling policy configuration is represented by a JSON block\. You save your scaling policy configuration as a JSON block in a text file\. You use that text file when invoking the AWS CLI or the Application Auto Scaling API\. For more information about policy configuration syntax, see [http://docs.aws.amazon.com//autoscaling/application/APIReference/API_TargetTrackingScalingPolicyConfiguration.html](http://docs.aws.amazon.com//autoscaling/application/APIReference/API_TargetTrackingScalingPolicyConfiguration.html) in the *Application Auto Scaling API Reference*\.
+Scaling policy configuration is represented by a JSON block\. You save your scaling policy configuration as a JSON block in a text file\. You use that text file when invoking the AWS CLI or the Application Auto Scaling API\. For more information about policy configuration syntax, see [https://docs.aws.amazon.com//autoscaling/application/APIReference/API_TargetTrackingScalingPolicyConfiguration.html](https://docs.aws.amazon.com//autoscaling/application/APIReference/API_TargetTrackingScalingPolicyConfiguration.html) in the *Application Auto Scaling API Reference*\.
 
  The following options are available for defining a target\-tracking scaling policy configuration\.
 
@@ -178,7 +178,7 @@ The following example is a target\-tracking configuration for a scaling policy\.
 
 #### Adding a Cooldown Period<a name="endpoint-auto-scaling-add-code-cooldown"></a>
 
-To add a cooldown period for scaling out your variant, specify a value, in seconds, for `ScaleOutCooldown` \. Similarly, to add a cooldown period for scaling in your variant, add a value, in seconds, for `ScaleInCooldown` \. For more information about `ScaleInCooldown` and `ScaleOutCooldown`, see [http://docs.aws.amazon.com//autoscaling/application/APIReference/API_TargetTrackingScalingPolicyConfiguration.html](http://docs.aws.amazon.com//autoscaling/application/APIReference/API_TargetTrackingScalingPolicyConfiguration.html) in the *Application Auto Scaling API Reference*\. 
+To add a cooldown period for scaling out your variant, specify a value, in seconds, for `ScaleOutCooldown` \. Similarly, to add a cooldown period for scaling in your variant, add a value, in seconds, for `ScaleInCooldown` \. For more information about `ScaleInCooldown` and `ScaleOutCooldown`, see [https://docs.aws.amazon.com//autoscaling/application/APIReference/API_TargetTrackingScalingPolicyConfiguration.html](https://docs.aws.amazon.com//autoscaling/application/APIReference/API_TargetTrackingScalingPolicyConfiguration.html) in the *Application Auto Scaling API Reference*\. 
 
 **Example**  
 The following is an example of a target\-tracking policy configuration for a scaling policy\. In this configuration, the `SageMakerVariantInvocationsPerInstance` predefined metric is used to adjust a variant based on an average of 70 across all instances of that variant\. The configuration provides a scale\-in cooldown period of 10 minutes and a scale\-out cooldown period of 5 minutes\.   
@@ -199,7 +199,7 @@ The following is an example of a target\-tracking policy configuration for a sca
 
 You can prevent the target\-tracking scaling policy configuration from scaling in your variant by disabling scale\-in activity\. Disabling scale\-in activity prevents the scaling policy from deleting instances, while still allowing it to create them as needed\.
 
-To enable or disable scale\-in activity for your variant, specify a Boolean value for `DisableScaleIn`\. For more information about `DisableScaleIn`, see [http://docs.aws.amazon.com//autoscaling/application/APIReference/API_TargetTrackingScalingPolicyConfiguration.html](http://docs.aws.amazon.com//autoscaling/application/APIReference/API_TargetTrackingScalingPolicyConfiguration.html) in the *Application Auto Scaling API Reference*\. 
+To enable or disable scale\-in activity for your variant, specify a Boolean value for `DisableScaleIn`\. For more information about `DisableScaleIn`, see [https://docs.aws.amazon.com//autoscaling/application/APIReference/API_TargetTrackingScalingPolicyConfiguration.html](https://docs.aws.amazon.com//autoscaling/application/APIReference/API_TargetTrackingScalingPolicyConfiguration.html) in the *Application Auto Scaling API Reference*\. 
 
 **Example**  
 The following is an example of a target\-tracking configuration for a scaling policy\. In this configuration, the `SageMakerVariantInvocationsPerInstance` predefined metric adjusts a variant based on an average of 70 across all instances of that variant\. The configuration disables scale\-in activity for the scaling policy\.  
@@ -221,7 +221,7 @@ After registering your variant and defining a scaling policy, apply the scaling 
 
 #### Applying a Scaling Policy \(AWS CLI\)<a name="endpoint-auto-scaling-add-code-apply-api"></a>
 
-To apply a scaling policy to your variant, use the [http://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/put-scaling-policy.html](http://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/put-scaling-policy.html) AWS CLI command with the following parameters:
+To apply a scaling policy to your variant, use the [https://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/put-scaling-policy.html](https://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/put-scaling-policy.html) AWS CLI command with the following parameters:
 + `--policy-name`—The name of the scaling policy\.
 + `--policy-type`—Set this value to `TargetTrackingScaling`\.
 + `--resource-id`—The resource identifier for the variant\. For this parameter, the resource type is `endpoint` and the unique identifier is the name of the variant\. For example `endpoint/MyEndpoint/variant/MyVariant`\.
@@ -244,7 +244,7 @@ aws application-autoscaling put-scaling-policy \
 
 #### Applying a Scaling Policy \(Application Auto Scaling API\)<a name="endpoint-auto-scaling-add-code-apply-api"></a>
 
-To apply a scaling policy to a variant with the Application Auto Scaling API, use the [http://docs.aws.amazon.com//autoscaling/application/APIReference/API_PutScalingPolicy.html](http://docs.aws.amazon.com//autoscaling/application/APIReference/API_PutScalingPolicy.html) Application Auto Scaling API action with the following parameters:
+To apply a scaling policy to a variant with the Application Auto Scaling API, use the [https://docs.aws.amazon.com//autoscaling/application/APIReference/API_PutScalingPolicy.html](https://docs.aws.amazon.com//autoscaling/application/APIReference/API_PutScalingPolicy.html) Application Auto Scaling API action with the following parameters:
 + `PolicyName`—The name of the scaling policy\.
 + `ServiceNamespace`—Set this value to `sagemaker`\.
 + `ResourceID`—The resource identifier for the variant\. For this parameter, the resource type is `endpoint` and the unique identifier is the name of the variant\. For example, `endpoint/MyEndpoint/variant/MyVariant`\.

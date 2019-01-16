@@ -1,6 +1,6 @@
 # VpcConfig<a name="API_VpcConfig"></a>
 
-Specifies a VPC that your training jobs and hosted models have access to\. Control access to and from your training and model containers by configuring the VPC\. For more information, see [Protect Models by Using an Amazon Virtual Private Cloud](host-vpc.md) and [Protect Training Jobs by Using an Amazon Virtual Private Cloud](train-vpc.md)\.
+Specifies a VPC that your training jobs and hosted models have access to\. Control access to and from your training and model containers by configuring the VPC\. For more information, see [Protect Endpoints by Using an Amazon Virtual Private Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html) and [Protect Training Jobs by Using an Amazon Virtual Private Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html)\. 
 
 ## Contents<a name="API_VpcConfig_Contents"></a>
 
@@ -12,7 +12,7 @@ Length Constraints: Maximum length of 32\.
 Required: Yes
 
  **Subnets**   <a name="SageMaker-Type-VpcConfig-Subnets"></a>
-The ID of the subnets in the VPC to which you want to connect your training job or model\.  
+The ID of the subnets in the VPC to which you want to connect your training job or model\.   
 Type: Array of strings  
 Array Members: Minimum number of 1 item\. Maximum number of 16 items\.  
 Length Constraints: Maximum length of 32\.  

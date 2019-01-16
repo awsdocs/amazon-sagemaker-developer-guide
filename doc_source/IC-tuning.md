@@ -22,12 +22,12 @@ For more information about which hyperparameters are used in each optimizer, see
 
 | Parameter Name | Parameter Type | Recommended Ranges | 
 | --- | --- | --- | 
-| mini\_batch\_size | IntegerParameterRanges | MinValue: 8, MaxValue: 512 | 
-| learning\_rate | ContinuousParameterRanges | MinValue: 1e\-6, MaxValue: 0\.5 | 
-| optimizer | CategoricalParameterRanges | \['sgd', ‘adam’, ‘rmsprop’, 'nag'\] | 
-| momentum | ContinuousParameterRanges | MinValue: 0\.0, MaxValue: 0\.999 | 
-| weight\_decay | ContinuousParameterRanges | MinValue: 0\.0, MaxValue: 0\.999 | 
 | beta\_1 | ContinuousParameterRanges | MinValue: 1e\-6, MaxValue: 0\.999 | 
 | beta\_2 | ContinuousParameterRanges | MinValue: 1e\-6, MaxValue: 0\.999 | 
 | eps | ContinuousParameterRanges | MinValue: 1e\-8, MaxValue: 1\.0 | 
 | gamma | ContinuousParameterRanges | MinValue: 1e\-8, MaxValue: 0\.999 | 
+| learning\_rate | ContinuousParameterRanges | MinValue: 1e\-6, MaxValue: 0\.5 | 
+| mini\_batch\_size | IntegerParameterRanges | MinValue: 8, MaxValue: 512 | 
+| momentum | ContinuousParameterRanges | MinValue: 0\.0, MaxValue: 0\.999 | 
+| optimizer | CategoricalParameterRanges | \['sgd', ‘adam’, ‘rmsprop’, 'nag'\] | 
+| weight\_decay | ContinuousParameterRanges | MinValue: 0\.0, MaxValue: 0\.999 | 

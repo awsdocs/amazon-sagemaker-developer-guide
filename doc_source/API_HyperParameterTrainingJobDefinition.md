@@ -5,15 +5,26 @@ Defines the training jobs launched by a hyperparameter tuning job\.
 ## Contents<a name="API_HyperParameterTrainingJobDefinition_Contents"></a>
 
  **AlgorithmSpecification**   <a name="SageMaker-Type-HyperParameterTrainingJobDefinition-AlgorithmSpecification"></a>
-The [HyperParameterAlgorithmSpecification](API_HyperParameterAlgorithmSpecification.md) object that specifies the algorithm to use for the training jobs that the tuning job launches\.  
+The [HyperParameterAlgorithmSpecification](API_HyperParameterAlgorithmSpecification.md) object that specifies the resource algorithm to use for the training jobs that the tuning job launches\.  
 Type: [HyperParameterAlgorithmSpecification](API_HyperParameterAlgorithmSpecification.md) object  
 Required: Yes
+
+ **EnableInterContainerTrafficEncryption**   <a name="SageMaker-Type-HyperParameterTrainingJobDefinition-EnableInterContainerTrafficEncryption"></a>
+To encrypt all communications between ML compute instances in distributed training, choose `True`\. Encryption provides greater security for distributed training, but training might take longer\. How long it takes depends on the amount of communication between compute instances, especially if you use a deep learning algorithm in distributed training\.  
+Type: Boolean  
+Required: No
+
+ **EnableNetworkIsolation**   <a name="SageMaker-Type-HyperParameterTrainingJobDefinition-EnableNetworkIsolation"></a>
+Isolates the training container\. No inbound or outbound network calls can be made, except for calls between peers within a training cluster for distributed training\. If network isolation is used for training jobs that are configured to use a VPC, Amazon SageMaker downloads and uploads customer data and model artifacts through the specified VPC, but the training container does not have network access\.  
+The Semantic Segmentation built\-in algorithm does not support network isolation\.
+Type: Boolean  
+Required: No
 
  **InputDataConfig**   <a name="SageMaker-Type-HyperParameterTrainingJobDefinition-InputDataConfig"></a>
 An array of [Channel](API_Channel.md) objects that specify the input for the training jobs that the tuning job launches\.  
 Type: Array of [Channel](API_Channel.md) objects  
 Array Members: Minimum number of 1 item\. Maximum number of 8 items\.  
-Required: Yes
+Required: No
 
  **OutputDataConfig**   <a name="SageMaker-Type-HyperParameterTrainingJobDefinition-OutputDataConfig"></a>
 Specifies the path to the Amazon S3 bucket where you store model artifacts from the training jobs that the tuning job launches\.  
@@ -48,7 +59,7 @@ Type: [StoppingCondition](API_StoppingCondition.md) object
 Required: Yes
 
  **VpcConfig**   <a name="SageMaker-Type-HyperParameterTrainingJobDefinition-VpcConfig"></a>
-The [VpcConfig](API_VpcConfig.md) object that specifies the VPC that you want the training jobs that this hyperparameter tuning job launches to connect to\. Control access to and from your training container by configuring the VPC\. For more information, see [Protect Training Jobs by Using an Amazon Virtual Private Cloud](train-vpc.md)\.  
+The [VpcConfig](API_VpcConfig.md) object that specifies the VPC that you want the training jobs that this hyperparameter tuning job launches to connect to\. Control access to and from your training container by configuring the VPC\. For more information, see [Protect Training Jobs by Using an Amazon Virtual Private Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html)\.  
 Type: [VpcConfig](API_VpcConfig.md) object  
 Required: No
 

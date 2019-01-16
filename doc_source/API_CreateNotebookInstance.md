@@ -24,6 +24,9 @@ For more information, see [How It Works](https://docs.aws.amazon.com/sagemaker/l
 
 ```
 {
+   "[AcceleratorTypes](#SageMaker-CreateNotebookInstance-request-AcceleratorTypes)": [ "string" ],
+   "[AdditionalCodeRepositories](#SageMaker-CreateNotebookInstance-request-AdditionalCodeRepositories)": [ "string" ],
+   "[DefaultCodeRepository](#SageMaker-CreateNotebookInstance-request-DefaultCodeRepository)": "string",
    "[DirectInternetAccess](#SageMaker-CreateNotebookInstance-request-DirectInternetAccess)": "string",
    "[InstanceType](#SageMaker-CreateNotebookInstance-request-InstanceType)": "string",
    "[KmsKeyId](#SageMaker-CreateNotebookInstance-request-KmsKeyId)": "string",
@@ -37,7 +40,8 @@ For more information, see [How It Works](https://docs.aws.amazon.com/sagemaker/l
          "[Key](API_Tag.md#SageMaker-Type-Tag-Key)": "string",
          "[Value](API_Tag.md#SageMaker-Type-Tag-Value)": "string"
       }
-   ]
+   ],
+   "[VolumeSizeInGB](#SageMaker-CreateNotebookInstance-request-VolumeSizeInGB)": number
 }
 ```
 
@@ -47,9 +51,30 @@ For information about the parameters that are common to all actions, see [Common
 
 The request accepts the following data in JSON format\.
 
+ ** [AcceleratorTypes](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-AcceleratorTypes"></a>
+A list of Elastic Inference \(EI\) instance types to associate with this notebook instance\. Currently, only one instance type can be associated with a notebook instance\. For more information, see [Using Elastic Inference in Amazon SageMaker](http://docs.aws.amazon.com/sagemaker/latest/dg/ei.html)\.  
+Type: Array of strings  
+Valid Values:` ml.eia1.medium | ml.eia1.large | ml.eia1.xlarge`   
+Required: No
+
+ ** [AdditionalCodeRepositories](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-AdditionalCodeRepositories"></a>
+An array of up to three Git repositories to associate with the notebook instance\. These can be either the names of Git repositories stored as resources in your account, or the URL of Git repositories in [AWS CodeCommit](http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html) or in any other Git repository\. These repositories are cloned at the same level as the default repository of your notebook instance\. For more information, see [Associating Git Repositories with Amazon SageMaker Notebook Instances](http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html)\.  
+Type: Array of strings  
+Array Members: Maximum number of 3 items\.  
+Length Constraints: Minimum length of 1\. Maximum length of 1024\.  
+Pattern: `^https://([^/]+)/?(.*)$|^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
+Required: No
+
+ ** [DefaultCodeRepository](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-DefaultCodeRepository"></a>
+A Git repository to associate with the notebook instance as its default code repository\. This can be either the name of a Git repository stored as a resource in your account, or the URL of a Git repository in [AWS CodeCommit](http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html) or in any other Git repository\. When you open a notebook instance, it opens in the directory that contains this repository\. For more information, see [Associating Git Repositories with Amazon SageMaker Notebook Instances](http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html)\.  
+Type: String  
+Length Constraints: Minimum length of 1\. Maximum length of 1024\.  
+Pattern: `^https://([^/]+)/?(.*)$|^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
+Required: No
+
  ** [DirectInternetAccess](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-DirectInternetAccess"></a>
 Sets whether Amazon SageMaker provides internet access to the notebook instance\. If you set this to `Disabled` this notebook instance will be able to access resources only in your VPC, and will not be able to connect to Amazon SageMaker training and endpoint services unless your configure a NAT Gateway in your VPC\.  
-For more information, see [Notebook Instances Are Internet\-Enabled by Default](appendix-additional-considerations.md#appendix-notebook-and-internet-access)\. You can set the value of this parameter to `Disabled` only if you set a value for the `SubnetId` parameter\.  
+For more information, see [Notebook Instances Are Internet\-Enabled by Default](https://docs.aws.amazon.com/sagemaker/latest/dg/appendix-additional-considerations.html#appendix-notebook-and-internet-access)\. You can set the value of this parameter to `Disabled` only if you set a value for the `SubnetId` parameter\.  
 Type: String  
 Valid Values:` Enabled | Disabled`   
 Required: No
@@ -57,17 +82,17 @@ Required: No
  ** [InstanceType](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-InstanceType"></a>
 The type of ML compute instance to launch for the notebook instance\.  
 Type: String  
-Valid Values:` ml.t2.medium | ml.t2.large | ml.t2.xlarge | ml.t2.2xlarge | ml.m4.xlarge | ml.m4.2xlarge | ml.m4.4xlarge | ml.m4.10xlarge | ml.m4.16xlarge | ml.p2.xlarge | ml.p2.8xlarge | ml.p2.16xlarge | ml.p3.2xlarge | ml.p3.8xlarge | ml.p3.16xlarge`   
+Valid Values:` ml.t2.medium | ml.t2.large | ml.t2.xlarge | ml.t2.2xlarge | ml.t3.medium | ml.t3.large | ml.t3.xlarge | ml.t3.2xlarge | ml.m4.xlarge | ml.m4.2xlarge | ml.m4.4xlarge | ml.m4.10xlarge | ml.m4.16xlarge | ml.m5.xlarge | ml.m5.2xlarge | ml.m5.4xlarge | ml.m5.12xlarge | ml.m5.24xlarge | ml.c4.xlarge | ml.c4.2xlarge | ml.c4.4xlarge | ml.c4.8xlarge | ml.c5.xlarge | ml.c5.2xlarge | ml.c5.4xlarge | ml.c5.9xlarge | ml.c5.18xlarge | ml.c5d.xlarge | ml.c5d.2xlarge | ml.c5d.4xlarge | ml.c5d.9xlarge | ml.c5d.18xlarge | ml.p2.xlarge | ml.p2.8xlarge | ml.p2.16xlarge | ml.p3.2xlarge | ml.p3.8xlarge | ml.p3.16xlarge`   
 Required: Yes
 
  ** [KmsKeyId](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-KmsKeyId"></a>
- If you provide a AWS KMS key ID, Amazon SageMaker uses it to encrypt data at rest on the ML storage volume that is attached to your notebook instance\.   
+ If you provide a AWS KMS key ID, Amazon SageMaker uses it to encrypt data at rest on the ML storage volume that is attached to your notebook instance\. The KMS key you provide must be enabled\. For information, see [Enabling and Disabling Keys](http://docs.aws.amazon.com/kms/latest/developerguide/enabling-keys.html) in the *AWS Key Management Service Developer Guide*\.  
 Type: String  
 Length Constraints: Maximum length of 2048\.  
 Required: No
 
  ** [LifecycleConfigName](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-LifecycleConfigName"></a>
-The name of a lifecycle configuration to associate with the notebook instance\. For information about lifestyle configurations, see [Step 2\.1: \(Optional\) Customize a Notebook Instance ](notebook-lifecycle-config.md)\.  
+The name of a lifecycle configuration to associate with the notebook instance\. For information about lifestyle configurations, see [Step 2\.1: \(Optional\) Customize a Notebook Instance](https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html)\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
@@ -105,6 +130,12 @@ Required: No
 A list of tags to associate with the notebook instance\. You can add tags later by using the `CreateTags` API\.  
 Type: Array of [Tag](API_Tag.md) objects  
 Array Members: Minimum number of 0 items\. Maximum number of 50 items\.  
+Required: No
+
+ ** [VolumeSizeInGB](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-VolumeSizeInGB"></a>
+The size, in GB, of the ML storage volume to attach to the notebook instance\. The default value is 5 GB\.  
+Type: Integer  
+Valid Range: Minimum value of 5\. Maximum value of 16384\.  
 Required: No
 
 ## Response Syntax<a name="API_CreateNotebookInstance_ResponseSyntax"></a>

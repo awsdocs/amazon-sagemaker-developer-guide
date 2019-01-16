@@ -1,8 +1,11 @@
 # AddTags<a name="API_AddTags"></a>
 
-Adds or overwrites one or more tags for the specified Amazon SageMaker resource\. You can add tags to notebook instances, training jobs, models, endpoint configurations, and endpoints\. 
+Adds or overwrites one or more tags for the specified Amazon SageMaker resource\. You can add tags to notebook instances, training jobs, hyperparameter tuning jobs, models, endpoint configurations, and endpoints\.
 
-Each tag consists of a key and an optional value\. Tag keys must be unique per resource\. For more information about tags, see [Using Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what) in the *AWS Billing and Cost Management User Guide*\. 
+Each tag consists of a key and an optional value\. Tag keys must be unique per resource\. For more information about tags, see For more information, see [AWS Tagging Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/)\.
+
+**Note**  
+Tags that you add to a hyperparameter tuning job by calling this API are also added to any training jobs that the hyperparameter tuning job launches after you call this API, but not to training jobs that the hyperparameter tuning job launched before you called this API\. To make sure that the tags associated with a hyperparameter tuning job are also added to all training jobs that the hyperparameter tuning job launches, add the tags when you first create the tuning job by specifying them in the `Tags` parameter of [CreateHyperParameterTuningJob](API_CreateHyperParameterTuningJob.md) 
 
 ## Request Syntax<a name="API_AddTags_RequestSyntax"></a>
 

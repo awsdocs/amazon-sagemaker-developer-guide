@@ -1,14 +1,12 @@
 # Common Data Formats—Training<a name="cdf-training"></a>
 
 To prepare for training, you can preprocess your data using a variety of AWS services, including AWS Glue, Amazon EMR, Amazon Redshift, Amazon Relational Database Service, and Amazon Athena\. After preprocessing, publish the data to an Amazon S3 bucket\. For training, the data need to go through a series of conversions and transformations, including: 
-
-When using Amazon SageMaker in the training portion of the algorithm, make sure to upload all data at once\. If more data is added to that location, a new training call would need to be made to construct a brand new model\.
-
- For training, it needs to go through a series of conversions and transformations, including: 
 + Training data serialization \(handled by you\) 
 + Training data deserialization \(handled by the algorithm\) 
 + Training model serialization \(handled by the algorithm\) 
 + Trained model deserialization \(optional, handled by you\) 
+
+When using Amazon SageMaker in the training portion of the algorithm, make sure to upload all data at once\. If more data is added to that location, a new training call would need to be made to construct a brand new model\.
 
 ## Training Data Formats<a name="td-serialization"></a>
 
@@ -19,7 +17,7 @@ Most Amazon SageMaker algorithms work best when you use the optimized protobuf [
 **Note**  
  For an example that shows how to convert the commonly used numPy array into the protobuf recordIO format, see [Step 3\.2\.3: Transform the Training Dataset and Upload It to S3](ex1-preprocess-data-transform.md) \. 
 
-In the protobuf recordIO format, Amazon SageMaker converts each observation in the dataset into a binary representation as a set of 4\-byte floats and is then loads it to the protobuf values field\. If you are using Python for your data preparation, we strongly recommend that you use these existing transformations\. However, if you are using another language, the protobuf definition file below provides the schema that you use to convert your data into SageMaker's protobuf format\.
+In the protobuf recordIO format, Amazon SageMaker converts each observation in the dataset into a binary representation as a set of 4\-byte floats and is then loads it to the protobuf values field\. If you are using Python for your data preparation, we strongly recommend that you use these existing transformations\. However, if you are using another language, the protobuf definition file below provides the schema that you use to convert your data into Amazon SageMaker protobuf format\.
 
 ```
 syntax = "proto2";

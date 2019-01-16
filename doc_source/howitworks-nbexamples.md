@@ -1,6 +1,6 @@
 # Using Example Notebooks<a name="howitworks-nbexamples"></a>
 
-Your notebook instance contains example notebooks provided by Amazon SageMaker\. The example notebooks contain code that shows how to apply machine learning solutions by using Amazon SageMaker\. Notebook instances use the `nbexamples` Jupyter extension, which enables you to view a read\-only version of an example notebook or create a copy of it so that you can modify and run it\. For more information about the `nbexamples` extension, see [https://github\.com/danielballan/nbexamples](https://github.com/danielballan/nbexamples)\. To view or use the example notebooks, choose the **SageMaker Examples** tab\.
+Your notebook instance contains example notebooks provided by Amazon SageMaker\. The example notebooks contain code that shows how to apply machine learning solutions by using Amazon SageMaker\. Notebook instances use the `nbexamples` Jupyter extension\. This enables you to view a read\-only version of an example notebook or create a copy of it so that you can modify and run it\. For more information about the `nbexamples` extension, see [https://github\.com/danielballan/nbexamples](https://github.com/danielballan/nbexamples)\. To view or use the example notebooks, choose the **SageMaker Examples** tab\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/console-nbexamples.png)
 

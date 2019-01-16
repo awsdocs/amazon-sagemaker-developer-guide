@@ -2,7 +2,7 @@
 
 This example shows how to create a new notebook for configuring and launching a hyperparameter tuning job\. The tuning job uses the [XGBoost Algorithm](xgboost.md) to train a model to predict whether a customer will enroll for a term deposit at a bank after being contacted by phone\.
 
-You use the low\-level AWS SDK for Python \(Boto\)to configure and launch the hyperparameter tuning job, and the AWS Management Console to monitor the status of hyperparameter training jobs\. You can also use the Amazon SageMaker high\-level Amazon SageMaker Python SDK to configure, run, monitor, and analyze hyperparameter tuning jobs\. For more information, see [https://github\.com/aws/sagemaker\-python\-sdk](https://github.com/aws/sagemaker-python-sdk)\.
+You use the low\-level AWS SDK for Python \(Boto\) to configure and launch the hyperparameter tuning job, and the AWS Management Console to monitor the status of hyperparameter training jobs\. You can also use the Amazon SageMaker high\-level Amazon SageMaker Python SDK to configure, run, monitor, and analyze hyperparameter tuning jobs\. For more information, see [https://github\.com/aws/sagemaker\-python\-sdk](https://github.com/aws/sagemaker-python-sdk)\.
 
 ## Prerequisites<a name="automatic-model-tuning-ex-prereq"></a>
 

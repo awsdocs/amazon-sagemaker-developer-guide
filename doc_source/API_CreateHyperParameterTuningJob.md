@@ -1,6 +1,6 @@
 # CreateHyperParameterTuningJob<a name="API_CreateHyperParameterTuningJob"></a>
 
-Starts a hyperparameter tuning job\.
+Starts a hyperparameter tuning job\. A hyperparameter tuning job finds the best version of a model by running many training jobs on your dataset using the algorithm you choose and values for hyperparameters within ranges that you specify\. It then chooses the hyperparameter values that result in a model that performs the best, as measured by an objective metric that you choose\.
 
 ## Request Syntax<a name="API_CreateHyperParameterTuningJob_RequestSyntax"></a>
 
@@ -37,7 +37,8 @@ Starts a hyperparameter tuning job\.
          "[MaxNumberOfTrainingJobs](API_ResourceLimits.md#SageMaker-Type-ResourceLimits-MaxNumberOfTrainingJobs)": number,
          "[MaxParallelTrainingJobs](API_ResourceLimits.md#SageMaker-Type-ResourceLimits-MaxParallelTrainingJobs)": number
       },
-      "[Strategy](API_HyperParameterTuningJobConfig.md#SageMaker-Type-HyperParameterTuningJobConfig-Strategy)": "string"
+      "[Strategy](API_HyperParameterTuningJobConfig.md#SageMaker-Type-HyperParameterTuningJobConfig-Strategy)": "string",
+      "[TrainingJobEarlyStoppingType](API_HyperParameterTuningJobConfig.md#SageMaker-Type-HyperParameterTuningJobConfig-TrainingJobEarlyStoppingType)": "string"
    },
    "[HyperParameterTuningJobName](#SageMaker-CreateHyperParameterTuningJob-request-HyperParameterTuningJobName)": "string",
    "[Tags](#SageMaker-CreateHyperParameterTuningJob-request-Tags)": [ 
@@ -48,6 +49,7 @@ Starts a hyperparameter tuning job\.
    ],
    "[TrainingJobDefinition](#SageMaker-CreateHyperParameterTuningJob-request-TrainingJobDefinition)": { 
       "[AlgorithmSpecification](API_HyperParameterTrainingJobDefinition.md#SageMaker-Type-HyperParameterTrainingJobDefinition-AlgorithmSpecification)": { 
+         "[AlgorithmName](API_HyperParameterAlgorithmSpecification.md#SageMaker-Type-HyperParameterAlgorithmSpecification-AlgorithmName)": "string",
          "[MetricDefinitions](API_HyperParameterAlgorithmSpecification.md#SageMaker-Type-HyperParameterAlgorithmSpecification-MetricDefinitions)": [ 
             { 
                "[Name](API_MetricDefinition.md#SageMaker-Type-MetricDefinition-Name)": "string",
@@ -57,6 +59,8 @@ Starts a hyperparameter tuning job\.
          "[TrainingImage](API_HyperParameterAlgorithmSpecification.md#SageMaker-Type-HyperParameterAlgorithmSpecification-TrainingImage)": "string",
          "[TrainingInputMode](API_HyperParameterAlgorithmSpecification.md#SageMaker-Type-HyperParameterAlgorithmSpecification-TrainingInputMode)": "string"
       },
+      "[EnableInterContainerTrafficEncryption](API_HyperParameterTrainingJobDefinition.md#SageMaker-Type-HyperParameterTrainingJobDefinition-EnableInterContainerTrafficEncryption)": boolean,
+      "[EnableNetworkIsolation](API_HyperParameterTrainingJobDefinition.md#SageMaker-Type-HyperParameterTrainingJobDefinition-EnableNetworkIsolation)": boolean,
       "[InputDataConfig](API_HyperParameterTrainingJobDefinition.md#SageMaker-Type-HyperParameterTrainingJobDefinition-InputDataConfig)": [ 
          { 
             "[ChannelName](API_Channel.md#SageMaker-Type-Channel-ChannelName)": "string",
@@ -64,12 +68,17 @@ Starts a hyperparameter tuning job\.
             "[ContentType](API_Channel.md#SageMaker-Type-Channel-ContentType)": "string",
             "[DataSource](API_Channel.md#SageMaker-Type-Channel-DataSource)": { 
                "[S3DataSource](API_DataSource.md#SageMaker-Type-DataSource-S3DataSource)": { 
+                  "[AttributeNames](API_S3DataSource.md#SageMaker-Type-S3DataSource-AttributeNames)": [ "string" ],
                   "[S3DataDistributionType](API_S3DataSource.md#SageMaker-Type-S3DataSource-S3DataDistributionType)": "string",
                   "[S3DataType](API_S3DataSource.md#SageMaker-Type-S3DataSource-S3DataType)": "string",
                   "[S3Uri](API_S3DataSource.md#SageMaker-Type-S3DataSource-S3Uri)": "string"
                }
             },
-            "[RecordWrapperType](API_Channel.md#SageMaker-Type-Channel-RecordWrapperType)": "string"
+            "[InputMode](API_Channel.md#SageMaker-Type-Channel-InputMode)": "string",
+            "[RecordWrapperType](API_Channel.md#SageMaker-Type-Channel-RecordWrapperType)": "string",
+            "[ShuffleConfig](API_Channel.md#SageMaker-Type-Channel-ShuffleConfig)": { 
+               "[Seed](API_ShuffleConfig.md#SageMaker-Type-ShuffleConfig-Seed)": number
+            }
          }
       ],
       "[OutputDataConfig](API_HyperParameterTrainingJobDefinition.md#SageMaker-Type-HyperParameterTrainingJobDefinition-OutputDataConfig)": { 
@@ -93,6 +102,14 @@ Starts a hyperparameter tuning job\.
          "[SecurityGroupIds](API_VpcConfig.md#SageMaker-Type-VpcConfig-SecurityGroupIds)": [ "string" ],
          "[Subnets](API_VpcConfig.md#SageMaker-Type-VpcConfig-Subnets)": [ "string" ]
       }
+   },
+   "[WarmStartConfig](#SageMaker-CreateHyperParameterTuningJob-request-WarmStartConfig)": { 
+      "[ParentHyperParameterTuningJobs](API_HyperParameterTuningJobWarmStartConfig.md#SageMaker-Type-HyperParameterTuningJobWarmStartConfig-ParentHyperParameterTuningJobs)": [ 
+         { 
+            "[HyperParameterTuningJobName](API_ParentHyperParameterTuningJob.md#SageMaker-Type-ParentHyperParameterTuningJob-HyperParameterTuningJobName)": "string"
+         }
+      ],
+      "[WarmStartType](API_HyperParameterTuningJobWarmStartConfig.md#SageMaker-Type-HyperParameterTuningJobWarmStartConfig-WarmStartType)": "string"
    }
 }
 ```
@@ -104,19 +121,20 @@ For information about the parameters that are common to all actions, see [Common
 The request accepts the following data in JSON format\.
 
  ** [HyperParameterTuningJobConfig](#API_CreateHyperParameterTuningJob_RequestSyntax) **   <a name="SageMaker-CreateHyperParameterTuningJob-request-HyperParameterTuningJobConfig"></a>
-The [HyperParameterTuningJobConfig](API_HyperParameterTuningJobConfig.md) object that describes the tuning job, including the search strategy, metric used to evaluate training jobs, ranges of parameters to search, and resource limits for the tuning job\.  
+The [HyperParameterTuningJobConfig](API_HyperParameterTuningJobConfig.md) object that describes the tuning job, including the search strategy, the objective metric used to evaluate training jobs, ranges of parameters to search, and resource limits for the tuning job\. For more information, see [Automatic Model Tuning](automatic-model-tuning.md)   
 Type: [HyperParameterTuningJobConfig](API_HyperParameterTuningJobConfig.md) object  
 Required: Yes
 
  ** [HyperParameterTuningJobName](#API_CreateHyperParameterTuningJob_RequestSyntax) **   <a name="SageMaker-CreateHyperParameterTuningJob-request-HyperParameterTuningJobName"></a>
-The name of the tuning job\. This name is the prefix for the names of all training jobs that this tuning job launches\. The name must be unique within the same AWS account and AWS Region\. Names are not case sensitive, and must be between 1\-32 characters\.  
+The name of the tuning job\. This name is the prefix for the names of all training jobs that this tuning job launches\. The name must be unique within the same AWS account and AWS Region\. The name must have \{ \} to \{ \} characters\. Valid characters are a\-z, A\-Z, 0\-9, and : \+ = @ \_ % \- \(hyphen\)\. The name is not case sensitive\.  
 Type: String  
 Length Constraints: Minimum length of 1\. Maximum length of 32\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: Yes
 
  ** [Tags](#API_CreateHyperParameterTuningJob_RequestSyntax) **   <a name="SageMaker-CreateHyperParameterTuningJob-request-Tags"></a>
-An array of key\-value pairs\. You can use tags to categorize your AWS resources in different ways, for example, by purpose, owner, or environment\. For more information, see [Using Cost Allocation Tags](http://docs.aws.amazon.com//awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what) in the *AWS Billing and Cost Management User Guide*\.  
+An array of key\-value pairs\. You can use tags to categorize your AWS resources in different ways, for example, by purpose, owner, or environment\. For more information, see [AWS Tagging Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/)\.  
+Tags that you specify for the tuning job are also added to all training jobs that the tuning job launches\.  
 Type: Array of [Tag](API_Tag.md) objects  
 Array Members: Minimum number of 0 items\. Maximum number of 50 items\.  
 Required: No
@@ -125,6 +143,13 @@ Required: No
 The [HyperParameterTrainingJobDefinition](API_HyperParameterTrainingJobDefinition.md) object that describes the training jobs that this tuning job launches, including static hyperparameters, input data configuration, output data configuration, resource configuration, and stopping condition\.  
 Type: [HyperParameterTrainingJobDefinition](API_HyperParameterTrainingJobDefinition.md) object  
 Required: Yes
+
+ ** [WarmStartConfig](#API_CreateHyperParameterTuningJob_RequestSyntax) **   <a name="SageMaker-CreateHyperParameterTuningJob-request-WarmStartConfig"></a>
+Specifies the configuration for starting the hyperparameter tuning job using one or more previous tuning jobs as a starting point\. The results of previous tuning jobs are used to inform which combinations of hyperparameters to search over in the new tuning job\.  
+All training jobs launched by the new hyperparameter tuning job are evaluated by using the objective metric\. If you specify `IDENTICAL_DATA_AND_ALGORITHM` as the `WarmStartType` value for the warm start configuration, the training job that performs the best in the new tuning job is compared to the best training jobs from the parent tuning jobs\. From these, the training job that performs the best as measured by the objective metric is returned as the overall best training job\.  
+All training jobs launched by parent hyperparameter tuning jobs and the new hyperparameter tuning jobs count against the limit of training jobs for the tuning job\.
+Type: [HyperParameterTuningJobWarmStartConfig](API_HyperParameterTuningJobWarmStartConfig.md) object  
+Required: No
 
 ## Response Syntax<a name="API_CreateHyperParameterTuningJob_ResponseSyntax"></a>
 
@@ -141,7 +166,7 @@ If the action is successful, the service sends back an HTTP 200 response\.
 The following data is returned in JSON format by the service\.
 
  ** [HyperParameterTuningJobArn](#API_CreateHyperParameterTuningJob_ResponseSyntax) **   <a name="SageMaker-CreateHyperParameterTuningJob-response-HyperParameterTuningJobArn"></a>
-The Amazon Resource Name \(ARN\) of the tuning job\.  
+The Amazon Resource Name \(ARN\) of the tuning job\. Amazon SageMaker assigns an ARN to a hyperparameter tuning job when you create it\.  
 Type: String  
 Length Constraints: Maximum length of 256\.  
 Pattern: `arn:aws[a-z\-]*:sagemaker:[a-z0-9\-]*:[0-9]{12}:hyper-parameter-tuning-job/.*` 

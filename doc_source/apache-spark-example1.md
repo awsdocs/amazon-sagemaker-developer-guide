@@ -146,13 +146,13 @@ The `KMeansSageMakerEstimator` extends the Amazon SageMaker `SageMakerEstimator`
      
   + `sagemakerRole`—Amazon SageMaker assumes this IAM role to perform tasks on your behalf\. For example, for model training, it reads data from S3 and writes training results \(model artifacts\) to S3\. 
 **Note**  
-This example implicitly creates an Amazon SageMaker client\. To create this client, you must provide your credentials\. The API uses these credentials to authenticate requests, such as requests to create a training job and API calls for deploying the model using Amazon SageMaker hosting services, to Amazon SageMaker\.
+This example implicitly creates an Amazon SageMaker client\. To create this client, you must provide your credentials\. The API uses these credentials to authenticate requests to Amazon SageMaker\. For example, it uses the credentials to authenticate requests to create a training job and API calls for deploying the model using Amazon SageMaker hosting services\.
   + After the `KMeansSageMakerEstimator` object has been created, you set the following parameters, are used in model training: 
-    + The number of clusters that the k\-means algorithm should create during model training\. You specify 10 clusters, one for each digit, 0\-9\. 
+    + The number of clusters that the k\-means algorithm should create during model training\. You specify 10 clusters, one for each digit, 0 through 9\. 
     + Identifies that each input image has 784 features \(each handwritten number is a 28 x 28\-pixel image, making 784 features\)\.
 
      
-+ Call the estimator `fit` method
++ Calls the estimator `fit` method
 
   ```
   // train
@@ -214,4 +214,4 @@ This example implicitly creates an Amazon SageMaker client\. To create this clie
   + A handwritten number with the `label` 4 belongs to cluster 4\.
   + A handwritten number with the `label` 1 belongs to cluster 1\.
 
- SageMaker Spark Github Readme provides information on how to run these examples\. For more information, see [https://github\.com/aws/sagemaker\-spark/blob/master/README\.md](https://github.com/aws/sagemaker-spark/blob/master/README.md)\.
+For more information on how to run these examples, see [https://github\.com/aws/sagemaker\-spark/blob/master/README\.md](https://github.com/aws/sagemaker-spark/blob/master/README.md) on GitHub\.

@@ -9,8 +9,7 @@ If necessary, you can change the notebook instance settings, including the ML co
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\. 
 
-1. Choose **Notebook instances**, then choose **Create notebook instance**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/create-workspace-10.png)
+1. Choose **Notebook instances**, then choose **Create notebook instance**\.
 
 1. On the **Create notebook instance** page, provide the following information: 
 
@@ -44,7 +43,7 @@ If necessary, you can change the notebook instance settings, including the ML co
          To see the policies that are attached to the role, use the IAM console\. Open the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\. The following policies are attached to the role:
          + A trust policy that allows Amazon SageMaker to assume the role\. 
          + The `AmazonSageMakerFullAccess` AWS managed policy\. 
-         + If you specified access to additional S3 bucket\(s\) when creating theis role, the customer managed policy attached to the role\. The name of the customer managed policy is `AmazonSageMaker-ExecutionPolicy-YYYYMMDDTHHmmSS`\. 
+         + If you specified access to additional S3 bucket\(s\) when creating this role, the customer managed policy attached to the role\. The name of the customer managed policy is `AmazonSageMaker-ExecutionPolicy-YYYYMMDDTHHmmSS`\. 
 
          For more information about creating your own IAM role, see [Amazon SageMaker Roles ](sagemaker-roles.md)\. 
 
@@ -58,13 +57,17 @@ If necessary, you can change the notebook instance settings, including the ML co
 
       1. To enable connecting to a resource in your VPC, ensure that the resource resolves to a private IP address in your VPC\. For example, to ensure that an Amazon Redshift DNS name resolves to a private IP address, do one of the following: 
          + Ensure that the Amazon Redshift cluster is not publicly accessible\. 
-         + If the Amazon Redshift cluster is publicly accessible, set the `DNS resolution` and `DNS hostnames` VPC parameters to `true`\. For more information, see [Managing Clusters in an Amazon Virtual Private Cloud \(VPC\)](http://docs.aws.amazon.com//redshift/latest/mgmt/managing-clusters-vpc.html) 
+         + If the Amazon Redshift cluster is publicly accessible, set the `DNS resolution` and `DNS hostnames` VPC parameters to `true`\. For more information, see [Managing Clusters in an Amazon Virtual Private Cloud \(VPC\)](https://docs.aws.amazon.com//redshift/latest/mgmt/managing-clusters-vpc.html) 
 
    1. If you chose to access resources from your VPC, enable direct internet access\. For **Direct internet access**, choose **Enable**\. Otherwise, this notebook instance won't have internet access\. Without internet access, you can't train or host models from notebooks on this notebook instance unless your VPC has a NAT gateway and your security group allows outbound connections\. For more information, see [Notebook Instances Are Internet\-Enabled by Default](appendix-additional-considerations.md#appendix-notebook-and-internet-access)\. 
 
    1. \(Optional\) To use shell scripts that run when you create or start the instance, specify a lifecycle configuration\. For information, see [Step 2\.1: \(Optional\) Customize a Notebook Instance ](notebook-lifecycle-config.md)
 
    1. \(Optional\) If you want Amazon SageMaker to use an AWS Key Management Service key to encrypt data in the ML storage volume attached to the notebook instance, specify the key\. 
+
+   1. Specify the size, in GB, of the ML storage volume that is attached to the notebook instance\. You can choose a size between 5 GB and 16384 GB, in 1 GB increments\.
+
+   1. \(Optional\) To associate git repositories with the notebook instance, choose a default repository and up to 3 additional repositories\. For more information, see [Associating Git Repositories with Amazon SageMaker Notebook Instances](nbi-git-repo.md)\.
 
    1. Choose **Create notebook instance**\. 
 

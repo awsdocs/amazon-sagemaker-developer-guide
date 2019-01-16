@@ -8,7 +8,7 @@ Describes the S3 data source\.
 If you choose `S3Prefix`, `S3Uri` identifies a key name prefix\. Amazon SageMaker uses all objects with the specified key name prefix for batch transform\.   
 If you choose `ManifestFile`, `S3Uri` identifies an object that is a manifest file containing a list of object keys that you want Amazon SageMaker to use for batch transform\.   
 Type: String  
-Valid Values:` ManifestFile | S3Prefix`   
+Valid Values:` ManifestFile | S3Prefix | AugmentedManifestFile`   
 Required: Yes
 
  **S3Uri**   <a name="SageMaker-Type-TransformS3DataSource-S3Uri"></a>

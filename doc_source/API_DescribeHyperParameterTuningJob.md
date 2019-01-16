@@ -43,7 +43,8 @@ Required: Yes
       "[TrainingStartTime](API_HyperParameterTrainingJobSummary.md#SageMaker-Type-HyperParameterTrainingJobSummary-TrainingStartTime)": number,
       "[TunedHyperParameters](API_HyperParameterTrainingJobSummary.md#SageMaker-Type-HyperParameterTrainingJobSummary-TunedHyperParameters)": { 
          "string" : "string" 
-      }
+      },
+      "[TuningJobName](API_HyperParameterTrainingJobSummary.md#SageMaker-Type-HyperParameterTrainingJobSummary-TuningJobName)": "string"
    },
    "[CreationTime](#SageMaker-DescribeHyperParameterTuningJob-response-CreationTime)": number,
    "[FailureReason](#SageMaker-DescribeHyperParameterTuningJob-response-FailureReason)": "string",
@@ -80,7 +81,8 @@ Required: Yes
          "[MaxNumberOfTrainingJobs](API_ResourceLimits.md#SageMaker-Type-ResourceLimits-MaxNumberOfTrainingJobs)": number,
          "[MaxParallelTrainingJobs](API_ResourceLimits.md#SageMaker-Type-ResourceLimits-MaxParallelTrainingJobs)": number
       },
-      "[Strategy](API_HyperParameterTuningJobConfig.md#SageMaker-Type-HyperParameterTuningJobConfig-Strategy)": "string"
+      "[Strategy](API_HyperParameterTuningJobConfig.md#SageMaker-Type-HyperParameterTuningJobConfig-Strategy)": "string",
+      "[TrainingJobEarlyStoppingType](API_HyperParameterTuningJobConfig.md#SageMaker-Type-HyperParameterTuningJobConfig-TrainingJobEarlyStoppingType)": "string"
    },
    "[HyperParameterTuningJobName](#SageMaker-DescribeHyperParameterTuningJob-response-HyperParameterTuningJobName)": "string",
    "[HyperParameterTuningJobStatus](#SageMaker-DescribeHyperParameterTuningJob-response-HyperParameterTuningJobStatus)": "string",
@@ -90,8 +92,28 @@ Required: Yes
       "[Pending](API_ObjectiveStatusCounters.md#SageMaker-Type-ObjectiveStatusCounters-Pending)": number,
       "[Succeeded](API_ObjectiveStatusCounters.md#SageMaker-Type-ObjectiveStatusCounters-Succeeded)": number
    },
+   "[OverallBestTrainingJob](#SageMaker-DescribeHyperParameterTuningJob-response-OverallBestTrainingJob)": { 
+      "[CreationTime](API_HyperParameterTrainingJobSummary.md#SageMaker-Type-HyperParameterTrainingJobSummary-CreationTime)": number,
+      "[FailureReason](API_HyperParameterTrainingJobSummary.md#SageMaker-Type-HyperParameterTrainingJobSummary-FailureReason)": "string",
+      "[FinalHyperParameterTuningJobObjectiveMetric](API_HyperParameterTrainingJobSummary.md#SageMaker-Type-HyperParameterTrainingJobSummary-FinalHyperParameterTuningJobObjectiveMetric)": { 
+         "[MetricName](API_FinalHyperParameterTuningJobObjectiveMetric.md#SageMaker-Type-FinalHyperParameterTuningJobObjectiveMetric-MetricName)": "string",
+         "[Type](API_FinalHyperParameterTuningJobObjectiveMetric.md#SageMaker-Type-FinalHyperParameterTuningJobObjectiveMetric-Type)": "string",
+         "[Value](API_FinalHyperParameterTuningJobObjectiveMetric.md#SageMaker-Type-FinalHyperParameterTuningJobObjectiveMetric-Value)": number
+      },
+      "[ObjectiveStatus](API_HyperParameterTrainingJobSummary.md#SageMaker-Type-HyperParameterTrainingJobSummary-ObjectiveStatus)": "string",
+      "[TrainingEndTime](API_HyperParameterTrainingJobSummary.md#SageMaker-Type-HyperParameterTrainingJobSummary-TrainingEndTime)": number,
+      "[TrainingJobArn](API_HyperParameterTrainingJobSummary.md#SageMaker-Type-HyperParameterTrainingJobSummary-TrainingJobArn)": "string",
+      "[TrainingJobName](API_HyperParameterTrainingJobSummary.md#SageMaker-Type-HyperParameterTrainingJobSummary-TrainingJobName)": "string",
+      "[TrainingJobStatus](API_HyperParameterTrainingJobSummary.md#SageMaker-Type-HyperParameterTrainingJobSummary-TrainingJobStatus)": "string",
+      "[TrainingStartTime](API_HyperParameterTrainingJobSummary.md#SageMaker-Type-HyperParameterTrainingJobSummary-TrainingStartTime)": number,
+      "[TunedHyperParameters](API_HyperParameterTrainingJobSummary.md#SageMaker-Type-HyperParameterTrainingJobSummary-TunedHyperParameters)": { 
+         "string" : "string" 
+      },
+      "[TuningJobName](API_HyperParameterTrainingJobSummary.md#SageMaker-Type-HyperParameterTrainingJobSummary-TuningJobName)": "string"
+   },
    "[TrainingJobDefinition](#SageMaker-DescribeHyperParameterTuningJob-response-TrainingJobDefinition)": { 
       "[AlgorithmSpecification](API_HyperParameterTrainingJobDefinition.md#SageMaker-Type-HyperParameterTrainingJobDefinition-AlgorithmSpecification)": { 
+         "[AlgorithmName](API_HyperParameterAlgorithmSpecification.md#SageMaker-Type-HyperParameterAlgorithmSpecification-AlgorithmName)": "string",
          "[MetricDefinitions](API_HyperParameterAlgorithmSpecification.md#SageMaker-Type-HyperParameterAlgorithmSpecification-MetricDefinitions)": [ 
             { 
                "[Name](API_MetricDefinition.md#SageMaker-Type-MetricDefinition-Name)": "string",
@@ -101,6 +123,8 @@ Required: Yes
          "[TrainingImage](API_HyperParameterAlgorithmSpecification.md#SageMaker-Type-HyperParameterAlgorithmSpecification-TrainingImage)": "string",
          "[TrainingInputMode](API_HyperParameterAlgorithmSpecification.md#SageMaker-Type-HyperParameterAlgorithmSpecification-TrainingInputMode)": "string"
       },
+      "[EnableInterContainerTrafficEncryption](API_HyperParameterTrainingJobDefinition.md#SageMaker-Type-HyperParameterTrainingJobDefinition-EnableInterContainerTrafficEncryption)": boolean,
+      "[EnableNetworkIsolation](API_HyperParameterTrainingJobDefinition.md#SageMaker-Type-HyperParameterTrainingJobDefinition-EnableNetworkIsolation)": boolean,
       "[InputDataConfig](API_HyperParameterTrainingJobDefinition.md#SageMaker-Type-HyperParameterTrainingJobDefinition-InputDataConfig)": [ 
          { 
             "[ChannelName](API_Channel.md#SageMaker-Type-Channel-ChannelName)": "string",
@@ -108,12 +132,17 @@ Required: Yes
             "[ContentType](API_Channel.md#SageMaker-Type-Channel-ContentType)": "string",
             "[DataSource](API_Channel.md#SageMaker-Type-Channel-DataSource)": { 
                "[S3DataSource](API_DataSource.md#SageMaker-Type-DataSource-S3DataSource)": { 
+                  "[AttributeNames](API_S3DataSource.md#SageMaker-Type-S3DataSource-AttributeNames)": [ "string" ],
                   "[S3DataDistributionType](API_S3DataSource.md#SageMaker-Type-S3DataSource-S3DataDistributionType)": "string",
                   "[S3DataType](API_S3DataSource.md#SageMaker-Type-S3DataSource-S3DataType)": "string",
                   "[S3Uri](API_S3DataSource.md#SageMaker-Type-S3DataSource-S3Uri)": "string"
                }
             },
-            "[RecordWrapperType](API_Channel.md#SageMaker-Type-Channel-RecordWrapperType)": "string"
+            "[InputMode](API_Channel.md#SageMaker-Type-Channel-InputMode)": "string",
+            "[RecordWrapperType](API_Channel.md#SageMaker-Type-Channel-RecordWrapperType)": "string",
+            "[ShuffleConfig](API_Channel.md#SageMaker-Type-Channel-ShuffleConfig)": { 
+               "[Seed](API_ShuffleConfig.md#SageMaker-Type-ShuffleConfig-Seed)": number
+            }
          }
       ],
       "[OutputDataConfig](API_HyperParameterTrainingJobDefinition.md#SageMaker-Type-HyperParameterTrainingJobDefinition-OutputDataConfig)": { 
@@ -144,6 +173,14 @@ Required: Yes
       "[NonRetryableError](API_TrainingJobStatusCounters.md#SageMaker-Type-TrainingJobStatusCounters-NonRetryableError)": number,
       "[RetryableError](API_TrainingJobStatusCounters.md#SageMaker-Type-TrainingJobStatusCounters-RetryableError)": number,
       "[Stopped](API_TrainingJobStatusCounters.md#SageMaker-Type-TrainingJobStatusCounters-Stopped)": number
+   },
+   "[WarmStartConfig](#SageMaker-DescribeHyperParameterTuningJob-response-WarmStartConfig)": { 
+      "[ParentHyperParameterTuningJobs](API_HyperParameterTuningJobWarmStartConfig.md#SageMaker-Type-HyperParameterTuningJobWarmStartConfig-ParentHyperParameterTuningJobs)": [ 
+         { 
+            "[HyperParameterTuningJobName](API_ParentHyperParameterTuningJob.md#SageMaker-Type-ParentHyperParameterTuningJob-HyperParameterTuningJobName)": "string"
+         }
+      ],
+      "[WarmStartType](API_HyperParameterTuningJobWarmStartConfig.md#SageMaker-Type-HyperParameterTuningJobWarmStartConfig-WarmStartType)": "string"
    }
 }
 ```
@@ -200,6 +237,10 @@ Type: Timestamp
 The [ObjectiveStatusCounters](API_ObjectiveStatusCounters.md) object that specifies the number of training jobs, categorized by the status of their final objective metric, that this tuning job launched\.  
 Type: [ObjectiveStatusCounters](API_ObjectiveStatusCounters.md) object
 
+ ** [OverallBestTrainingJob](#API_DescribeHyperParameterTuningJob_ResponseSyntax) **   <a name="SageMaker-DescribeHyperParameterTuningJob-response-OverallBestTrainingJob"></a>
+If the hyperparameter tuning job is an warm start tuning job with a `WarmStartType` of `IDENTICAL_DATA_AND_ALGORITHM`, this is the [TrainingJobSummary](API_TrainingJobSummary.md) for the training job with the best objective metric value of all training jobs launched by this tuning job and all parent jobs specified for the warm start tuning job\.  
+Type: [HyperParameterTrainingJobSummary](API_HyperParameterTrainingJobSummary.md) object
+
  ** [TrainingJobDefinition](#API_DescribeHyperParameterTuningJob_ResponseSyntax) **   <a name="SageMaker-DescribeHyperParameterTuningJob-response-TrainingJobDefinition"></a>
 The [HyperParameterTrainingJobDefinition](API_HyperParameterTrainingJobDefinition.md) object that specifies the definition of the training jobs that this tuning job launches\.  
 Type: [HyperParameterTrainingJobDefinition](API_HyperParameterTrainingJobDefinition.md) object
@@ -207,6 +248,10 @@ Type: [HyperParameterTrainingJobDefinition](API_HyperParameterTrainingJobDefinit
  ** [TrainingJobStatusCounters](#API_DescribeHyperParameterTuningJob_ResponseSyntax) **   <a name="SageMaker-DescribeHyperParameterTuningJob-response-TrainingJobStatusCounters"></a>
 The [TrainingJobStatusCounters](API_TrainingJobStatusCounters.md) object that specifies the number of training jobs, categorized by status, that this tuning job launched\.  
 Type: [TrainingJobStatusCounters](API_TrainingJobStatusCounters.md) object
+
+ ** [WarmStartConfig](#API_DescribeHyperParameterTuningJob_ResponseSyntax) **   <a name="SageMaker-DescribeHyperParameterTuningJob-response-WarmStartConfig"></a>
+The configuration for starting the hyperparameter parameter tuning job using one or more previous tuning jobs as a starting point\. The results of previous tuning jobs are used to inform which combinations of hyperparameters to search over in the new tuning job\.  
+Type: [HyperParameterTuningJobWarmStartConfig](API_HyperParameterTuningJobWarmStartConfig.md) object
 
 ## Errors<a name="API_DescribeHyperParameterTuningJob_Errors"></a>
 

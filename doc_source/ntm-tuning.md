@@ -2,7 +2,7 @@
 
 *Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an objective metric\. You choose the objective metric from the metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the objective metric\.
 
-Amazon SageMaker NTM is an unsupervised learning algorithm that learns latent representations of large collections of discrete data, such as a corpus of documents\. Automatic model tuning on NTM helps you find the model that minimizes loss over the training or validation data\. *Training loss* measures how well the model can fit the training data\. *Validation loss* measures how well the model can generalize to data that it is not trained on\. Low training loss indicates that a model is a good fit to the training data\. Low validation loss indicates that a model is generalizable, that it doesn't overfit too much to the training data\. Usually, it's preferable to have both losses be small\. However, minimizing training loss too much might result in overfitting and increase validation loss, which reduces the generality of the model\. 
+Amazon SageMaker NTM is an unsupervised learning algorithm that learns latent representations of large collections of discrete data, such as a corpus of documents\. Latent representations use inferred variables that are not directly measured to model the observations in a dataset\. Automatic model tuning on NTM helps you find the model that minimizes loss over the training or validation data\. *Training loss* measures how well the model fits the training data\. *Validation loss* measures how well the model can generalize to data that it is not trained on\. Low training loss indicates that a model is a good fit to the training data\. Low validation loss indicates that a model has not overfit the training data and so should be able to model documents on which is has not been trained successfully\. Usually, it's preferable to have both losses be small\. However, minimizing training loss too much might result in overfitting and increase validation loss, which would reduce the generality of the model\. 
 
 For more information about model tuning, see [Automatic Model Tuning](automatic-model-tuning.md)\.
 
@@ -22,9 +22,9 @@ You can tune the following hyperparameters for the NTM algorithm\. Usually setti
 
 | Parameter Name | Parameter Type | Recommended Ranges | 
 | --- | --- | --- | 
-| mini\_batch\_size |  IntegerParameterRanges  |  MinValue: 16, MaxValue:2048  | 
 | encoder\_layers\_activation |  CategoricalParameterRanges  |  \['sigmoid', 'tanh', 'relu'\]  | 
-| optimizer |  CategoricalParameterRanges  |  \['sgd', 'adam', 'adadelta'\]  | 
 | learning\_rate |  ContinuousParameterRange  |  MinValue: 1e\-4, MaxValue: 0\.1  | 
+| mini\_batch\_size |  IntegerParameterRanges  |  MinValue: 16, MaxValue:2048  | 
+| optimizer |  CategoricalParameterRanges  |  \['sgd', 'adam', 'adadelta'\]  | 
 | rescale\_gradient |  ContinuousParameterRange  |  MinValue: 0\.1, MaxValue: 1\.0  | 
 | weight\_decay |  ContinuousParameterRange  |  MinValue: 0\.0, MaxValue: 1\.0  | 

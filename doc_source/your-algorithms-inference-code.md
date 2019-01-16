@@ -64,7 +64,7 @@ To configure a container to run as an executable, use an `ENTRYPOINT` instructio
 
 In your [CreateModel](API_CreateModel.md) request, the container definition includes the `ModelDataUrl` parameter, which identifies the S3 location where model artifacts are stored\. Amazon SageMaker uses this information to determine where to copy the model artifacts from\. It copies the artifacts to the `/opt/ml/model` directory for use by your inference code\.
 
-The `ModelDataUrl` must point to a tar\.gz file, anything else will result in failure to download the file\. 
+The `ModelDataUrl` must point to a tar\.gz file\. Otherwise, Amazon SageMaker won't download the file\. 
 
  Amazon SageMaker stores the model artifact as a single compressed tar file in Amazon S3\. Amazon SageMaker uncompresses this tar file into the `/opt/ml/model` directory before your container starts\. If you used Amazon SageMaker to train the model, the files will appear just as you left them\.
 
@@ -77,6 +77,8 @@ Containers need to implement a web server that responds to `/invocations` and `/
 To obtain inferences, the client application sends a POST request to the Amazon SageMaker endpoint\. For more information, see the [InvokeEndpoint](API_runtime_InvokeEndpoint.md) API\. Amazon SageMaker passes the request to the container, and returns the inference result from the container to the client\. Note the following:
 + Amazon SageMaker strips all `POST` headers except those supported by `InvokeEndpoint`\. Amazon SageMaker might add additional headers\. Inference containers must be able to safely ignore these additional headers\.
 + To receive inference requests, the container must have a web server listening on port 8080 and must accept `POST` requests to the `/invocations` endpoint\. 
++ A customer's model containers must accept socket connection requests within 250 ms\.
++ A customer's model containers must respond to requests within 60 seconds\. The model itself can have a maximum processing time of 60 seconds before responding to the /invocations\. If your model is going to take 50\-60 seconds of processing time, the SDK socket timeout should be set to be 70 seconds\.
 
 ## How Your Container Should Respond to Health Check \(Ping\) Requests<a name="your-algorithms-inference-algo-ping-requests"></a>
 

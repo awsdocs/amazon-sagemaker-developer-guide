@@ -18,7 +18,7 @@ Amazon SageMaker notebook instances come with multiple environments already inst
 
 1. In the Jupyter dashboard page, choose **New**\. **R** now appears as a **Notebook** option\.
 
-Notebook instances come with git installed\. You can use git to install projects from GitHub\.
+Notebook instances come with Git installed\. You can use Git to install projects from GitHub\.
 
 **For example, to install the Scala kernel:**
 

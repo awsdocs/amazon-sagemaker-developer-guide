@@ -19,7 +19,7 @@ To transform the dataset, choose one of the following options
   import io
   import boto3
   
-  bucket = <your_s3_bucket_name_here>
+  bucket = 'bucket-name' # Use the name of your s3 bucket here
   data_key = 'kmeans_lowlevel_example/data'
   data_location = 's3://{}/{}'.format(bucket, data_key)
   print('training data will be uploaded to: {}'.format(data_location))

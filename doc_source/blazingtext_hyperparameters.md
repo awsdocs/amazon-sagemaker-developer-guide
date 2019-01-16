@@ -1,6 +1,6 @@
 # BlazingText Hyperparameters<a name="blazingtext_hyperparameters"></a>
 
-When you start a training job with a `CreateTrainingJob` request, you specify a training algorithm\. You can also specify algorithm\-specific hyperparameters as string\-to\-string maps\. As BlazingText can be used in two different modes, *Word2Vec \(unsupervised\)* and *Text Classification \(supervised\)*, the hyper\-parameters are itemized in separate sections\.
+When you start a training job with a `CreateTrainingJob` request, you specify a training algorithm\. You can also specify algorithm\-specific hyperparameters as string\-to\-string maps\. The hyperparameters for the BlazingText algorithm depend on which mode you use: Word2Vec \(unsupervised\) and Text Classification \(supervised\)\.
 
 ## Word2Vec Hyperparameters<a name="blazingtext_hyperparameters_word2vec"></a>
 
@@ -9,20 +9,20 @@ The following table lists the hyperparameters for the BlazingText training algor
 
 | Parameter Name | Description | 
 | --- | --- | 
-| mode |  The Word2vec architecture used for training\. Required\. Valid values: `batch_skipgram`, `skipgram`, or `cbow` Default value: \-  | 
-| min\_count |  Discard words that appear less than `min_count` times\. Valid values: Non\-negative integer Default value: 5  | 
-| learning\_rate |  Step size used for parameter updates\.  Valid values: Positive float Default value: 0\.05  | 
-| window\_size |  The size of the context window\. The context window is the number of words surrounding the target word used for training\. Valid values: Positive integer Default value: 5  | 
-| vector\_dim |  The dimension of the word vectors that the algorithm learns\. Valid values: Positive integer Default value: 100  | 
-| epochs |  The number of complete passes through the training data\. Valid values: Positive integer Default value: 5  | 
-| negative\_samples | Number of negative samples for the negative sample sharing strategy\.Valid values: Positive integerDefault value: 5 | 
-| batch\_size |  The size of each batch when `mode` is set to `batch_skipgram`\. Set to a number between 10 and 20\. Valid values: Positive integer Default value: 11  | 
-| sampling\_threshold |  Threshold for occurrence of words\. Those that appear with higher frequency in the training data are randomly down\-sampled\. Valid values: Positive fraction\. Recommended range is \(0, 1e\-3\] Default value: 0\.0001  | 
-| subwords |  Whether to learn subword embeddings on not\. Valid values: \(Boolean\) `True` or `False` Default value: `False`  | 
-| buckets |  Number of hash buckets to use for subwords\. Valid values: positive integer Default value: 2000000  | 
-| min\_char |  Minimum number of characters to use for subwords/character n\-grams\. Valid values: positive integer Default value: 3  | 
-| max\_char |  Maximum number of characters to use for subwords/character n\-grams Valid values: positive integer Default value: 6  | 
-| evaluation |  Whether the trained model is evaluated using the [WordSimilarity\-353 Test](https://www.cs.technion.ac.il/~gabr/resources/data/wordsim353/)\. Valid values: \(Boolean\) `True` or `False` Default value: `True`  | 
+| mode |  The Word2vec architecture used for training\. **Required** Valid values: `batch_skipgram`, `skipgram`, or `cbow`  | 
+| batch\_size |  The size of each batch when `mode` is set to `batch_skipgram`\. Set to a number between 10 and 20\. **Optional** Valid values: Positive integer Default value: 11  | 
+| buckets |  The number of hash buckets to use for subwords\. **Optional** Valid values: positive integer Default value: 2000000  | 
+| epochs |  The number of complete passes through the training data\. **Optional** Valid values: Positive integer Default value: 5  | 
+| evaluation |  Whether the trained model is evaluated using the [WordSimilarity\-353 Test](https://www.cs.technion.ac.il/~gabr/resources/data/wordsim353/)\. **Optional** Valid values: \(Boolean\) `True` or `False` Default value: `True`  | 
+| learning\_rate |  The step size used for parameter updates\. **Optional** Valid values: Positive float Default value: 0\.05  | 
+| min\_char |  The minimum number of characters to use for subwords/character n\-grams\. **Optional** Valid values: positive integer Default value: 3  | 
+| min\_count |  Words that appear less than `min_count` times are discarded\. **Optional** Valid values: Non\-negative integer Default value: 5  | 
+| max\_char |  The maximum number of characters to use for subwords/character n\-grams **Optional** Valid values: positive integer Default value: 6  | 
+| negative\_samples |  The number of negative samples for the negative sample sharing strategy\. **Optional** Valid values: Positive integer Default value: 5  | 
+| sampling\_threshold |  The threshold for the occurrence of words\. Words that appear with higher frequency in the training data are randomly down\-sampled\. **Optional** Valid values: Positive fraction\. The recommended range is \(0, 1e\-3\] Default value: 0\.0001  | 
+| subwords |  Whether to learn subword embeddings on not\. **Optional** Valid values: \(Boolean\) `True` or `False` Default value: `False`  | 
+| vector\_dim |  The dimension of the word vectors that the algorithm learns\. **Optional** Valid values: Positive integer Default value: 100  | 
+| window\_size |  The size of the context window\. The context window is the number of words surrounding the target word used for training\. **Optional** Valid values: Positive integer Default value: 5  | 
 
 ## Text Classification Hyperparameters<a name="blazingtext_hyperparameters_text_class"></a>
 
@@ -34,13 +34,13 @@ Although some of the parameters are common between the Text Classification and W
 
 | Parameter Name | Description | 
 | --- | --- | 
-| mode |  Training mode\. Required\. Valid values: `supervised` Default value: \-  | 
-| min\_count |  Discard words that appear less than `min_count` times\. Valid values: Non\-negative integer Default value: 5  | 
-| learning\_rate |  Step size used for parameter updates\.  Valid values: Positive float Default value: 0\.05  | 
-| vector\_dim |  Dimension of embedding layer\. Valid values: Positive integer Default value: 100  | 
-| epochs |  The maximum number of complete passes through the training data\. Valid values: positive integer Default value: 5  | 
-| word\_ngrams |  Number of word n\-grams features to use\. Valid values: positive integer Default value: 2  | 
-| buckets |  Number of hash buckets to use for word n\-grams\. Valid values: positive integer Default value: 2000000  | 
-| early\_stopping |  Whether to stop training if validation accuracy doesn't improve after an `patience` number of epochs\. Valid values: \(Boolean\) `True` or `False` Default value: `False`  | 
-| min\_epochs |  Minimum number of epochs to train before early stopping logic is invoked\. Valid values: positive integer Default value: 5  | 
-| patience |  Number of epochs to wait before early stop if no progress is made on the validation set\. Used only when `early_stopping` is `True`\. Valid values: positive integer Default value: 4  | 
+| mode |  The training mode\. **Required** Valid values: `supervised`  | 
+| buckets |  The number of hash buckets to use for word n\-grams\. **Optional** Valid values: Positive integer Default value: 2000000  | 
+| early\_stopping |  Whether to stop training if validation accuracy doesn't improve after a `patience` number of epochs\. **Optional** Valid values: \(Boolean\) `True` or `False` Default value: `False`  | 
+| epochs |  The maximum number of complete passes through the training data\. **Optional** Valid values: Positive integer Default value: 5  | 
+| learning\_rate |  The step size used for parameter updates\. **Optional** Valid values: Positive float Default value: 0\.05  | 
+| min\_count |  Words that appear less than `min_count` times are discarded\. **Optional** Valid values: Non\-negative integer Default value: 5  | 
+| min\_epochs |  The minimum number of epochs to train before early stopping logic is invoked\. **Optional** Valid values: Positive integer Default value: 5  | 
+| patience |  The number of epochs to wait before applying early stopping when no progress is made on the validation set\. Used only when `early_stopping` is `True`\. **Optional** Valid values: Positive integer Default value: 4  | 
+| vector\_dim |  The dimension of the embedding layer\. **Optional** Valid values: Positive integer Default value: 100  | 
+| word\_ngrams |  The number of word n\-gram features to use\. **Optional** Valid values: Positive integer Default value: 2  | 

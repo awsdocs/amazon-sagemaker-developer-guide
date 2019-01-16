@@ -50,7 +50,8 @@ In the request body, you provide the following:
    },
    "[TransformResources](#SageMaker-CreateTransformJob-request-TransformResources)": { 
       "[InstanceCount](API_TransformResources.md#SageMaker-Type-TransformResources-InstanceCount)": number,
-      "[InstanceType](API_TransformResources.md#SageMaker-Type-TransformResources-InstanceType)": "string"
+      "[InstanceType](API_TransformResources.md#SageMaker-Type-TransformResources-InstanceType)": "string",
+      "[VolumeKmsKeyId](API_TransformResources.md#SageMaker-Type-TransformResources-VolumeKmsKeyId)": "string"
    }
 }
 ```
@@ -62,8 +63,8 @@ For information about the parameters that are common to all actions, see [Common
 The request accepts the following data in JSON format\.
 
  ** [BatchStrategy](#API_CreateTransformJob_RequestSyntax) **   <a name="SageMaker-CreateTransformJob-request-BatchStrategy"></a>
-Determines the number of records included in a single mini\-batch\. `SingleRecord` means only one record is used per mini\-batch\. `MultiRecord` means a mini\-batch is set to contain as many records that can fit within the `MaxPayloadInMB` limit\.  
-Batch transform will automatically split your input data into whatever payload size is specified if you set `SplitType` to `Line` and `BatchStrategy` to `MultiRecord`\. There's no need to split the dataset into smaller files or to use larger payload sizes unless the records in your dataset are very large\.  
+Determines the number of records to include in a mini\-batch\. If you want to include only one record in a mini\-batch, specify `SingleRecord`\.\. If you want mini\-batches to contain a maximum of the number of records specified in the `MaxPayloadInMB` parameter, specify `MultiRecord`\.  
+ If you set `SplitType` to `Line` and `BatchStrategy` to `MultiRecord`, a batch transform automatically splits your input data into the specified payload size\. There's no need to split the dataset into smaller files or to use larger payload sizes unless the records in your dataset are very large\.  
 Type: String  
 Valid Values:` MultiRecord | SingleRecord`   
 Required: No
@@ -77,13 +78,14 @@ Value Length Constraints: Maximum length of 10240\.
 Required: No
 
  ** [MaxConcurrentTransforms](#API_CreateTransformJob_RequestSyntax) **   <a name="SageMaker-CreateTransformJob-request-MaxConcurrentTransforms"></a>
-The maximum number of parallel requests that can be sent to each instance in a transform job\. This is good for algorithms that implement multiple workers on larger instances \. The default value is `1`\. To allow Amazon SageMaker to determine the appropriate number for `MaxConcurrentTransforms`, set the value to `0`\.  
+The maximum number of parallel requests that can be sent to an algorithm container on an instance\. This is good for algorithms that implement multiple workers on larger instances \. The default value is `1`\. To allow Amazon SageMaker to determine the appropriate number for `MaxConcurrentTransforms`, do not set the value in the API\.  
 Type: Integer  
 Valid Range: Minimum value of 0\.  
 Required: No
 
  ** [MaxPayloadInMB](#API_CreateTransformJob_RequestSyntax) **   <a name="SageMaker-CreateTransformJob-request-MaxPayloadInMB"></a>
-The maximum payload size allowed, in MB\. A payload is the data portion of a record \(without metadata\)\. The value in `MaxPayloadInMB` must be greater or equal to the size of a single record\. You can approximate the size of a record by dividing the size of your dataset by the number of records\. Then multiply this value by the number of records you want in a mini\-batch\. It is recommended to enter a value slightly larger than this to ensure the records fit within the maximum payload size\. The default value is `6` MB\. For an unlimited payload size, set the value to `0`\.  
+The maximum payload size allowed, in MB\. A payload is the data portion of a record \(without metadata\)\. The value in `MaxPayloadInMB` must be greater or equal to the size of a single record\. You can approximate the size of a record by dividing the size of your dataset by the number of records\. Then multiply this value by the number of records you want in a mini\-batch\. We recommend to enter a slightly larger value than this to ensure the records fit within the maximum payload size\. The default value is `6` MB\.   
+For cases where the payload might be arbitrarily large and is transmitted using HTTP chunked encoding, set the value to `0`\. This feature only works in supported algorithms\. Currently, Amazon SageMaker built\-in algorithms do not support this feature\.  
 Type: Integer  
 Valid Range: Minimum value of 0\.  
 Required: No
@@ -96,7 +98,7 @@ Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`
 Required: Yes
 
  ** [Tags](#API_CreateTransformJob_RequestSyntax) **   <a name="SageMaker-CreateTransformJob-request-Tags"></a>
-An array of key\-value pairs\. Adding tags is optional\. For more information, see [Using Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what) in the *AWS Billing and Cost Management User Guide*\.  
+\(Optional\) An array of key\-value pairs\. For more information, see [Using Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what) in the *AWS Billing and Cost Management User Guide*\.  
 Type: Array of [Tag](API_Tag.md) objects  
 Array Members: Minimum number of 0 items\. Maximum number of 50 items\.  
 Required: No

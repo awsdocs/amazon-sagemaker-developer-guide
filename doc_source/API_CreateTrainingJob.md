@@ -22,9 +22,18 @@ In the request body, you provide the following:
 ```
 {
    "[AlgorithmSpecification](#SageMaker-CreateTrainingJob-request-AlgorithmSpecification)": { 
+      "[AlgorithmName](API_AlgorithmSpecification.md#SageMaker-Type-AlgorithmSpecification-AlgorithmName)": "string",
+      "[MetricDefinitions](API_AlgorithmSpecification.md#SageMaker-Type-AlgorithmSpecification-MetricDefinitions)": [ 
+         { 
+            "[Name](API_MetricDefinition.md#SageMaker-Type-MetricDefinition-Name)": "string",
+            "[Regex](API_MetricDefinition.md#SageMaker-Type-MetricDefinition-Regex)": "string"
+         }
+      ],
       "[TrainingImage](API_AlgorithmSpecification.md#SageMaker-Type-AlgorithmSpecification-TrainingImage)": "string",
       "[TrainingInputMode](API_AlgorithmSpecification.md#SageMaker-Type-AlgorithmSpecification-TrainingInputMode)": "string"
    },
+   "[EnableInterContainerTrafficEncryption](#SageMaker-CreateTrainingJob-request-EnableInterContainerTrafficEncryption)": boolean,
+   "[EnableNetworkIsolation](#SageMaker-CreateTrainingJob-request-EnableNetworkIsolation)": boolean,
    "[HyperParameters](#SageMaker-CreateTrainingJob-request-HyperParameters)": { 
       "string" : "string" 
    },
@@ -35,12 +44,17 @@ In the request body, you provide the following:
          "[ContentType](API_Channel.md#SageMaker-Type-Channel-ContentType)": "string",
          "[DataSource](API_Channel.md#SageMaker-Type-Channel-DataSource)": { 
             "[S3DataSource](API_DataSource.md#SageMaker-Type-DataSource-S3DataSource)": { 
+               "[AttributeNames](API_S3DataSource.md#SageMaker-Type-S3DataSource-AttributeNames)": [ "string" ],
                "[S3DataDistributionType](API_S3DataSource.md#SageMaker-Type-S3DataSource-S3DataDistributionType)": "string",
                "[S3DataType](API_S3DataSource.md#SageMaker-Type-S3DataSource-S3DataType)": "string",
                "[S3Uri](API_S3DataSource.md#SageMaker-Type-S3DataSource-S3Uri)": "string"
             }
          },
-         "[RecordWrapperType](API_Channel.md#SageMaker-Type-Channel-RecordWrapperType)": "string"
+         "[InputMode](API_Channel.md#SageMaker-Type-Channel-InputMode)": "string",
+         "[RecordWrapperType](API_Channel.md#SageMaker-Type-Channel-RecordWrapperType)": "string",
+         "[ShuffleConfig](API_Channel.md#SageMaker-Type-Channel-ShuffleConfig)": { 
+            "[Seed](API_ShuffleConfig.md#SageMaker-Type-ShuffleConfig-Seed)": number
+         }
       }
    ],
    "[OutputDataConfig](#SageMaker-CreateTrainingJob-request-OutputDataConfig)": { 
@@ -78,9 +92,20 @@ For information about the parameters that are common to all actions, see [Common
 The request accepts the following data in JSON format\.
 
  ** [AlgorithmSpecification](#API_CreateTrainingJob_RequestSyntax) **   <a name="SageMaker-CreateTrainingJob-request-AlgorithmSpecification"></a>
-The registry path of the Docker image that contains the training algorithm and algorithm\-specific metadata, including the input mode\. For more information about algorithms provided by Amazon SageMaker, see [Algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)\. For information about providing your own algorithms, see [Using Your Own Algorithms with Amazon SageMaker](your-algorithms.md)\.   
+The registry path of the Docker image that contains the training algorithm and algorithm\-specific metadata, including the input mode\. For more information about algorithms provided by Amazon SageMaker, see [Algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)\. For information about providing your own algorithms, see [Using Your Own Algorithms with Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html)\.   
 Type: [AlgorithmSpecification](API_AlgorithmSpecification.md) object  
 Required: Yes
+
+ ** [EnableInterContainerTrafficEncryption](#API_CreateTrainingJob_RequestSyntax) **   <a name="SageMaker-CreateTrainingJob-request-EnableInterContainerTrafficEncryption"></a>
+To encrypt all communications between ML compute instances in distributed training, choose `True`\. Encryption provides greater security for distributed training, but training might take longer\. How long it takes depends on the amount of communication between compute instances, especially if you use a deep learning algorithm in distributed training\.  
+Type: Boolean  
+Required: No
+
+ ** [EnableNetworkIsolation](#API_CreateTrainingJob_RequestSyntax) **   <a name="SageMaker-CreateTrainingJob-request-EnableNetworkIsolation"></a>
+Isolates the training container\. No inbound or outbound network calls can be made, except for calls between peers within a training cluster for distributed training\. If you enable network isolation for training jobs that are configured to use a VPC, Amazon SageMaker downloads and uploads customer data and model artifacts through the specified VPC, but the training container does not have network access\.  
+The Semantic Segmentation built\-in algorithm does not support network isolation\.
+Type: Boolean  
+Required: No
 
  ** [HyperParameters](#API_CreateTrainingJob_RequestSyntax) **   <a name="SageMaker-CreateTrainingJob-request-HyperParameters"></a>
 Algorithm\-specific parameters that influence the quality of the model\. You set hyperparameters before you start the learning process\. For a list of hyperparameters for each training algorithm provided by Amazon SageMaker, see [Algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)\.   
@@ -96,7 +121,7 @@ Algorithms can accept input data from one or more channels\. For example, an alg
 Depending on the input mode that the algorithm supports, Amazon SageMaker either copies input data files from an S3 bucket to a local directory in the Docker container, or makes it available as input streams\.   
 Type: Array of [Channel](API_Channel.md) objects  
 Array Members: Minimum number of 1 item\. Maximum number of 8 items\.  
-Required: Yes
+Required: No
 
  ** [OutputDataConfig](#API_CreateTrainingJob_RequestSyntax) **   <a name="SageMaker-CreateTrainingJob-request-OutputDataConfig"></a>
 Specifies the path to the S3 bucket where you want to store model artifacts\. Amazon SageMaker creates subfolders for the artifacts\.   
@@ -138,7 +163,7 @@ Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`
 Required: Yes
 
  ** [VpcConfig](#API_CreateTrainingJob_RequestSyntax) **   <a name="SageMaker-CreateTrainingJob-request-VpcConfig"></a>
-A [VpcConfig](API_VpcConfig.md) object that specifies the VPC that you want your training job to connect to\. Control access to and from your training container by configuring the VPC\. For more information, see [Protect Training Jobs by Using an Amazon Virtual Private Cloud](train-vpc.md)   
+A [VpcConfig](API_VpcConfig.md) object that specifies the VPC that you want your training job to connect to\. Control access to and from your training container by configuring the VPC\. For more information, see [Protect Training Jobs by Using an Amazon Virtual Private Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html)\.  
 Type: [VpcConfig](API_VpcConfig.md) object  
 Required: No
 

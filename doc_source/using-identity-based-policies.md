@@ -7,6 +7,7 @@ We recommend that you first review the introductory topics that explain the basi
 
 **Topics**
 + [Permissions Required to Use the Amazon SageMaker Console](#console-permissions)
++ [Permissions Required to Use the Amazon SageMaker Ground Truth Console](#groundtruth-console-policy)
 + [AWS Managed \(Predefined\) Policies for Amazon SageMaker](#access-policy-aws-managed-policies)
 + [Control Access to Amazon SageMaker Resources by Using Tags](#access-tag-policy)
 
@@ -54,10 +55,18 @@ To use the Amazon SageMaker console, you need to grant permissions for additiona
 {
     "Version": "2012-10-17",
     "Statement": [
-        // Populate customer VPCs, Subnets, and Security Groups for CreateNotebookInstance form
-        // These permissions needed to create the notebook instance in the console
+        // SageMaker API's
         {
-          "Sid": "CreateNotebookInstanceForm",
+          "Sid": "SageMakerApis",
+          "Effect": "Allow",
+          "Action": [
+            "sagemaker:*"
+          ],
+          "Resource": "*"
+        },
+        // Populate customer VPCs, Subnets, and Security Groups for Create forms
+        {
+          "Sid": "VpcConfigurationForCreateForms",
           "Effect": "Allow",
           "Action": [
             "ec2:DescribeVpcs",
@@ -66,17 +75,120 @@ To use the Amazon SageMaker console, you need to grant permissions for additiona
           ],
           "Resource": "*"
         },
-        // Create execution roles for CreateNotebookInstance, CreateTrainingJob, and CreateModel
-        // Needed if creating an IAM role (for example, as part of creating a notebook instance)
+        // Populate customer KMS keys for Create forms
         {
-          "Sid": "CreateExecutionRoles",
+            "Sid":"KmsKeysForCreateForms",
+            "Effect":"Allow",
+            "Action":[
+              "kms:DescribeKey",
+              "kms:ListAliases"
+            ],
+            "Resource":"*"
+        }
+        // View Subscriptions in AWS Marketplace for Algorithms and ModelPackages.
+        {
+          "Sid": "AccessAwsMarketplaceSubscritions",
           "Effect": "Allow",
           "Action": [
+            "aws-marketplace:ViewSubscriptions"
+          ],
+          "Resource": "*"
+        }
+        // View and create CodeCommit Repositories
+        {
+          "Effect": "Allow",
+          "Action": [
+            "codecommit:BatchGetRepositories",
+            "codecommit:CreateRepository",
+            "codecommit:GetRepository",
+            "codecommit:ListRepositories",
+            "codecommit:ListBranches"
+            "secretsmanager:CreateSecret",
+            "secretsmanager:DescribeSecret",
+            "secretsmanager:ListSecrets"
+          ],
+          "Resource": "*"
+        }
+        // List/create execution roles for Create forms
+        {
+          "Sid":"ListAndCreateExecutionRoles",
+          "Effect":"Allow",
+          "Action":[
+            "iam:ListRoles",
+            "iam:CreateRole",
             "iam:CreateRole",
             "iam:CreatePolicy",
             "iam:AttachRolePolicy"
           ],
-          "Resource": "*"
+          "Resource":"*"
+        },
+        // PassRole permissions as required by CreateNotebookInstance, CreateTrainingJob, and CreateModel.
+        {
+          "Sid": "PassRoleForExecutionRoles",
+          "Effect": "Allow",
+          "Action": [
+            "iam:PassRole"
+          ],
+          "Resource": "*",
+          "Condition": {
+            "StringEquals": {
+                "iam:PassedToService": "sagemaker.amazonaws.com"
+            }
+          }
+        }
+    ]
+}
+```
+
+## Permissions Required to Use the Amazon SageMaker Ground Truth Console<a name="groundtruth-console-policy"></a>
+
+To use the Amazon SageMaker Ground Truth console, you need to grant permissions for additional resources\. Specifically, the console needs permissions for the AWS Marketplace to view subscriptions, Amazon Cognito operations to manage your private workforce, Amazon S3 actions for access to your input and output files, and AWS Lambda actions to list and invoke functions\. Grant these permissions with the following permissions policy:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "GroundTruthConsole",
+            "Effect": "Allow",
+            "Action": [
+                "aws-marketplace:DescribeListings",
+                "aws-marketplace:ViewSubscriptions",
+                
+                "cognito-idp:AdminAddUserToGroup",
+                "cognito-idp:AdminCreateUser",
+                "cognito-idp:AdminDeleteUser",
+                "cognito-idp:AdminDisableUser",
+                "cognito-idp:AdminEnableUser",
+                "cognito-idp:AdminRemoveUserFromGroup",
+                "cognito-idp:CreateGroup",
+                "cognito-idp:CreateUserPool",
+                "cognito-idp:CreateUserPoolClient",
+                "cognito-idp:CreateUserPoolDomain",
+                "cognito-idp:DescribeUserPool",
+                "cognito-idp:DescribeUserPoolClient",
+                "cognito-idp:ListGroups",
+                "cognito-idp:ListIdentityProviders",
+                "cognito-idp:ListUsers",
+                "cognito-idp:ListUsersInGroup",
+                "cognito-idp:ListUserPoolClients",
+                "cognito-idp:ListUserPools",
+                "cognito-idp:UpdateUserPool",
+                "cognito-idp:UpdateUserPoolClient",
+                
+                "groundtruthlabeling:DescribeConsoleJob",
+                "groundtruthlabeling:ListDatasetObjects",
+                "groundtruthlabeling:RunFilterOrSampleManifestJob",
+                "groundtruthlabeling:RunGenerateManifestByCrawlingJob",
+                
+                "lambda:InvokeFunction",
+                "lambda:ListFunctions",
+                
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:SelectObjectContent"
+            ],
+            "Resource": "*"
         }
     ]
 }
@@ -84,7 +196,7 @@ To use the Amazon SageMaker console, you need to grant permissions for additiona
 
 ## AWS Managed \(Predefined\) Policies for Amazon SageMaker<a name="access-policy-aws-managed-policies"></a>
 
-AWS addresses many common use cases by providing standalone IAM policies that are created and administered by AWS\. These AWS managed policies grant necessary permissions for common use cases so that you can avoid having to investigate which permissions are needed\. For more information, see [AWS Managed Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) in the *IAM User Guide*\. 
+AWS addresses many common use cases by providing standalone IAM policies that are created and administered by AWS\. These AWS managed policies grant necessary permissions for common use cases so that you can avoid having to investigate which permissions are needed\. For more information, see [AWS Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) in the *IAM User Guide*\. 
 
 The following AWS managed policies, which you can attach to users in your account, are specific to Amazon SageMaker:
 + **AmazonSageMakerReadOnly** – Grants read\-only access to Amazon SageMaker resources\. 
@@ -139,9 +251,9 @@ Control access to groups of Amazon SageMaker resources by attaching tags to the 
    }
    ```
 
-   For information about creating IAM policies and attaching them to identities, see [Controlling Access Using Policies](http://docs.aws.amazon.com//IAM/latest/UserGuide/access_controlling.html) in the *AWS Identity and Access Management User Guide*\.
+   For information about creating IAM policies and attaching them to identities, see [Controlling Access Using Policies](https://docs.aws.amazon.com//IAM/latest/UserGuide/access_controlling.html) in the *AWS Identity and Access Management User Guide*\.
 
-1. Create an IAM policy with a `ResourceTag` condition that denies access to the notebook instances used for the first project, and attach that policy to `DevTeam2`\. The following is an example of a policy that denies all API calls on any notebook instance that has a tag with a key of `Project` and a value of `B`:
+1. Create an IAM policy with a `ResourceTag` condition that denies access to the notebook instances used for the first project, and attach that policy to `DevTeam2`\. The following is an example of a policy that denies all API calls on any notebook instance that has a tag with a key of `Project` and a value of `A`:
 
    ```
    {
@@ -173,9 +285,6 @@ Control access to groups of Amazon SageMaker resources by attaching tags to the 
      ]
    }
    ```
-
-**Note**  
-You cannot use tags to either allow or deny calls to [InvokeEndpoint](API_runtime_InvokeEndpoint.md)
 
 ### Require the Presence or Absence of Tags for API Calls<a name="resource-tag"></a>
 
@@ -210,4 +319,20 @@ Require the presence or absence of specific tags or specific tag values by using
     }
   ]
 }
+```
+
+### Using Tags with Hyperparameter Tuning Jobs<a name="resource-tag-tuning"></a>
+
+You can add tags to a hyperparameter tuning job when you create the tuning job by specifying the tags as the `Tags` parameter when you call [CreateHyperParameterTuningJob](API_CreateHyperParameterTuningJob.md)\. If you do this, the tags you specify for the hyperparameter tuning job are also added to all training jobs that the hyperparameter tuning job launches\.
+
+If you add tags to a hyperparameter tuning job by calling [AddTags](API_AddTags.md), the tags you add are also added to any training jobs that the hyperparameter tuning job launches after you call `AddTags`, but are not added to training jobs the hyperparameter tuning jobs launched before you called `AddTags`\. Similarly, when you remove tags from a hyperparameter tuning job by calling [DeleteTags](API_DeleteTags.md), those tags are not removed from training jobs that the hyperparameter tuning job launched previously\. Because of this, the tags associated with training jobs can be out of sync with the tags associated with the hyperparameter tuning job that launched them\. If you use tags to control access to a hyperparameter tuning job and the training jobs it launches, you might want to keep the tags in sync\. To make sure the tags associated with training jobs stay sync with the tags associated with the hyperparameter tuning job that launched them, first call [ListTrainingJobsForHyperParameterTuningJob](API_ListTrainingJobsForHyperParameterTuningJob.md) for the hyperparameter tuning job to get a list of the training jobs that the hyperparameter tuning job launched\. Then, call `AddTags` or `DeleteTags` for the hyperparameter tuning job and for each of the training jobs in the list of training jobs to add or delete the same set of tags for all of the jobs\. The following Python example demonstrates this:
+
+```
+tuning_job_arn = smclient.describe_hyper_parameter_tuning_job(HyperParameterTuningJobName='MyTuningJob')['HyperParameterTuningJobArn']
+smclient.add_tags(ResourceArn=tuning_job_arn, Tags=[{'Key':'Env', 'Value':'Dev'}])
+training_jobs = smclient.list_training_jobs_for_hyper_parameter_tuning_job(
+    HyperParameterTuningJobName='MyTuningJob')['TrainingJobSummaries']
+    for training_job in training_jobs:
+       time.sleep(1) # Wait for 1 second between calls to avoid being throttled
+       smclient.add_tags(ResourceArn=training_job['TrainingJobArn'], Tags=[{'Key':'Env', 'Value':'Dev'}])
 ```

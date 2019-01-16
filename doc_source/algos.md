@@ -47,7 +47,7 @@ In addition to these general\-purpose algorithms, Amazon SageMaker provides algo
 + [Image Classification Algorithm](image-classification.md)—Use this algorithm to classify images\. It uses example data with answers \(referred to as *supervised algorithm*\)\.
 
    
-+ [Sequence2Sequence ](seq-2-seq.md)—This supervised algorithm is commonly used for neural machine translation\. 
++ [Sequence to Sequence ](seq-2-seq.md)—This supervised algorithm is commonly used for neural machine translation\. 
 
    
 + [Latent Dirichlet Allocation \(LDA\)](lda.md)—This algorithm is suitable for determining topics in a set of documents\. It is an *unsupervised algorithm*, which means that it doesn't use example data with answers during training\.
@@ -57,17 +57,20 @@ In addition to these general\-purpose algorithms, Amazon SageMaker provides algo
 
 **Topics**
 + [Algorithms Provided by Amazon SageMaker: Common Information](common-info-all-im-models.md)
-+ [Linear Learner](linear-learner.md)
-+ [Factorization Machines](fact-machines.md)
-+ [XGBoost Algorithm](xgboost.md)
-+ [Image Classification Algorithm](image-classification.md)
-+ [Object Detection Algorithm](object-detection.md)
-+ [Sequence2Sequence](seq-2-seq.md)
-+ [K\-Means Algorithm](k-means.md)
-+ [Principal Component Analysis \(PCA\)](pca.md)
-+ [Latent Dirichlet Allocation \(LDA\)](lda.md)
-+ [Neural Topic Model \(NTM\)](ntm.md)
-+ [DeepAR Forecasting](deepar.md)
 + [BlazingText](blazingtext.md)
-+ [Random Cut Forest](randomcutforest.md)
++ [DeepAR Forecasting](deepar.md)
++ [Factorization Machines](fact-machines.md)
++ [Image Classification Algorithm](image-classification.md)
++ [IP Insights Algorithm](ip-insights.md)
++ [K\-Means Algorithm](k-means.md)
 + [K\-Nearest Neighbors](k-nearest-neighbors.md)
++ [Latent Dirichlet Allocation \(LDA\)](lda.md)
++ [Linear Learner](linear-learner.md)
++ [Neural Topic Model \(NTM\)](ntm.md)
++ [Object2Vec](object2vec.md)
++ [Object Detection Algorithm](object-detection.md)
++ [Principal Component Analysis \(PCA\)](pca.md)
++ [Random Cut Forest](randomcutforest.md)
++ [Semantic Segmentation](semantic-segmentation.md)
++ [Sequence to Sequence](seq-2-seq.md)
++ [XGBoost Algorithm](xgboost.md)

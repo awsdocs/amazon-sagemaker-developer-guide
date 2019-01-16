@@ -12,6 +12,14 @@ The exact content of two documents with similar topic mixtures will not be the s
 
 You can infer that documents that are more likely to fall into Topic 1 are about cats \(who are more likely to *meow* and *sleep*\), and documents that fall into Topic 2 are about dogs \(who prefer to *play* and *bark*\)\. These topics can be found even though the words dog and cat never appear in any of the texts\. 
 
+**Topics**
++ [Input/Output Interface](#lda-inputoutput)
++ [EC2 Instance Recommendation](#lda-instances)
++ [LDA Sample Notebooks](#LDA-sample-notebooks)
++ [How LDA Works](lda-how-it-works.md)
++ [LDA Hyperparameters](lda_hyperparameters.md)
++ [Tuning an LDA Model](lda-tuning.md)
+
 ## Input/Output Interface<a name="lda-inputoutput"></a>
 
 LDA expects data to be provided on the train channel, and optionally supports a test channel, which is scored by the final model\. LDA supports both `recordIO-wrapped-protobuf` \(dense and sparse\) and `CSV` file formats\. For `CSV`, the data must be dense and have dimension equal to *number of records \* vocabulary size*\. LDA can be trained in File or Pipe mode when using recordIO\-wrapped protobuf, but only in File mode for the `CSV` format\.
@@ -24,9 +32,6 @@ Please see the example notebooks for more detail on training and inference forma
 
 LDA currently only supports single\-instance CPU training\. CPU instances are recommended for hosting/inference\.
 
-**Topics**
-+ [Input/Output Interface](#lda-inputoutput)
-+ [EC2 Instance Recommendation](#lda-instances)
-+ [How LDA Works](lda-how-it-works.md)
-+ [LDA Hyperparameters](lda_hyperparameters.md)
-+ [Tuning an LDA Model](lda-tuning.md)
+## LDA Sample Notebooks<a name="LDA-sample-notebooks"></a>
+
+For a sample notebook that shows how to train the Amazon SageMaker Latent Dirichlet Allocation algorithm on a dataset and then how to deploy the trained model to perform inferences about the topic mixtures in input documents, see the [An Introduction to SageMaker LDA](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/lda_topic_modeling/LDA-Introduction.ipynb)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Using Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the Amazon SageMaker samples\. The topic modeling example notebooks using the NTM algorithms are located in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.

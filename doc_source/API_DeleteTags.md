@@ -4,6 +4,9 @@ Deletes the specified tags from an Amazon SageMaker resource\.
 
 To list a resource's tags, use the `ListTags` API\. 
 
+**Note**  
+When you call this API to delete tags from a hyperparameter tuning job, the deleted tags are not removed from training jobs that the hyperparameter tuning job launched before you called this API\.
+
 ## Request Syntax<a name="API_DeleteTags_RequestSyntax"></a>
 
 ```
@@ -30,7 +33,7 @@ An array or one or more tag keys to delete\.
 Type: Array of strings  
 Array Members: Minimum number of 1 item\. Maximum number of 50 items\.  
 Length Constraints: Minimum length of 1\. Maximum length of 128\.  
-Pattern: `^((?!aws:)[\p{L}\p{Z}\p{N}_.:/=+\-@]*)$`   
+Pattern: `^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$`   
 Required: Yes
 
 ## Response Elements<a name="API_DeleteTags_ResponseElements"></a>

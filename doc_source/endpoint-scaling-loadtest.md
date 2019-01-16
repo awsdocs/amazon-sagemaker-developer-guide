@@ -2,6 +2,8 @@
 
 Perform load tests to choose an automatic scaling configuration that works the way you want\.
 
+For an example of load testing to optimize automatic scaling for a Amazon SageMaker endpoint, see [Load test and optimize an Amazon SageMaker endpoint using automatic scaling](https://aws.amazon.com//blogs/machine-learning/load-test-and-optimize-an-amazon-sagemaker-endpoint-using-automatic-scaling/)\.
+
 The following guidelines for load testing assume you are using an automatic scaling policy that uses the predefined target metric `SageMakerVariantInvocationsPerInstance`\.
 
 **Topics**

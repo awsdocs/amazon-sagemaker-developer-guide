@@ -9,7 +9,7 @@ Training algorithms provided by Amazon SageMaker automatically saves the interme
 ## Contents<a name="API_StoppingCondition_Contents"></a>
 
  **MaxRuntimeInSeconds**   <a name="SageMaker-Type-StoppingCondition-MaxRuntimeInSeconds"></a>
-The maximum length of time, in seconds, that the training job can run\. If model training does not complete during this time, Amazon SageMaker ends the job\. If value is not specified, default value is 1 day\. Maximum value is 5 days\.  
+The maximum length of time, in seconds, that the training job can run\. If model training does not complete during this time, Amazon SageMaker ends the job\. If value is not specified, default value is 1 day\. Maximum value is 28 days\.  
 Type: Integer  
 Valid Range: Minimum value of 1\.  
 Required: No

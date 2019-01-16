@@ -15,7 +15,7 @@ For regression tasks, the model is trained by minimizing the squared error betwe
 
 ![\[An image containing the equation for square loss.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/FM2.jpg)
 
-For a classification task, the model is trained by minimizing the crosss entropy loss, also known as the log loss: 
+For a classification task, the model is trained by minimizing the cross entropy loss, also known as the log loss: 
 
 ![\[An image containing the equation for log loss.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/FM3.jpg)
 
@@ -23,4 +23,4 @@ where:
 
 ![\[An image containing the logistic function of the predicted values.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/FM4.jpg)
 
-For more information about loss founctions for classification, see [Loss functions for classification](https://en.wikipedia.org/wiki/Loss_functions_for_classification)\.
+For more information about loss functions for classification, see [Loss functions for classification](https://en.wikipedia.org/wiki/Loss_functions_for_classification)\.

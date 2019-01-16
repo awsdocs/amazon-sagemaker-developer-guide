@@ -5,7 +5,7 @@ The numbers of training jobs launched by a hyperparameter tuning job, categorize
 ## Contents<a name="API_TrainingJobStatusCounters_Contents"></a>
 
  **Completed**   <a name="SageMaker-Type-TrainingJobStatusCounters-Completed"></a>
-The number of completed training jobs launched by a hyperparameter tuning job\.  
+The number of completed training jobs launched by the hyperparameter tuning job\.  
 Type: Integer  
 Valid Range: Minimum value of 0\.  
 Required: No

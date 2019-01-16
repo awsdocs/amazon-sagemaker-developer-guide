@@ -2,7 +2,7 @@
 
 This section provides information for developers who want to use Apache Spark for preprocessing data and Amazon SageMaker for model training and hosting\. For information about supported versions of Apache Spark, see [https://github\.com/aws/sagemaker\-spark\#getting\-sagemaker\-spark](https://github.com/aws/sagemaker-spark#getting-sagemaker-spark)\.
 
-Amazon SageMaker provides an Apache Spark library, in both Python and Scala, that you can use to easily train models in Amazon SageMaker using `org.apache.spark.sql.DataFrame`s in your Spark clusters\. After model training, you can also host the model using Amazon SageMaker hosting services\. 
+Amazon SageMaker provides an Apache Spark library, in both Python and Scala, that you can use to easily train models in Amazon SageMaker using `org.apache.spark.sql.DataFrame` data frames in your Spark clusters\. After model training, you can also host the model using Amazon SageMaker hosting services\. 
 
 The Amazon SageMaker Spark library, `com.amazonaws.services.sagemaker.sparksdk`, provides the following classes, among others:
 + `SageMakerEstimator`—Extends the `org.apache.spark.ml.Estimator` interface\. You can use this estimator for model training in Amazon SageMaker\.
@@ -21,10 +21,10 @@ You have the following options for downloading the Spark library provided by Ama
     ```
     $ pip install sagemaker_pyspark
     ```
-  + In a notebook instance, create a new notebook that uses either the `Sparkmagic (PySpark)` or the `Sparkmagic (PySpark3)` kernel and connect to a remote &Amazon EMR cluster\. For more information, see [Build Amazon SageMaker notebooks backed by Spark in Amazon EMR](http://aws.amazon.com/blogs/machine-learning/build-amazon-sagemaker-notebooks-backed-by-spark-in-amazon-emr/)
+  + In a notebook instance, create a new notebook that uses either the `Sparkmagic (PySpark)` or the `Sparkmagic (PySpark3)` kernel and connect to a remote Amazon EMR cluster\. For more information, see [Build Amazon SageMaker Notebooks Backed by Spark in Amazon EMR](http://aws.amazon.com/blogs/machine-learning/build-amazon-sagemaker-notebooks-backed-by-spark-in-amazon-emr/)\.
 
      
-+ You can get the Scala library from Maven\. Add the Spark library to your project by adding the following dependency to your pom\.xml file:
++ You can get the Scala library from Maven\. Add the Spark library to your project by adding the following dependency to your `pom.xml` file:
 
   ```
   <dependency>
@@ -54,7 +54,7 @@ Load your data into a `DataFrame` and preprocess it so that you have a `features
 
    1. Starts model training in Amazon SageMaker by sending an Amazon SageMaker [CreateTrainingJob](API_CreateTrainingJob.md) request\. After model training has completed, Amazon SageMaker saves the model artifacts to an S3 bucket\. 
 
-      Amazon SageMaker assumes the IAM role that you specified for model training to perform tasks on your behalf, for example, to read training data from an S3 bucket and to write model artifacts to an S3 bucket\. 
+      Amazon SageMaker assumes the IAM role that you specified for model training to perform tasks on your behalf\. For example, it uses the role to read training data from an S3 bucket and to write model artifacts to a bucket\. 
 
    1. Creates and returns a `SageMakerModel` object\. The constructor does the following tasks, which are related to deploying your model to Amazon SageMaker\. 
 
@@ -66,4 +66,4 @@ Load your data into a `DataFrame` and preprocess it so that you have a `features
 
 1. You can get inferences from your model hosted in Amazon SageMaker with the `SageMakerModel.transform`\. 
 
-   Provide an input `DataFrame` with features as input\. The `transform` method transforms it to a `DataFrame` containing inferences\. Internally, the `transform` methods sends a request to the [InvokeEndpoint](API_runtime_InvokeEndpoint.md) Amazon SageMaker API to get inferences\. The `transform` method appends the inferences to the input `DataFrame`\.
+   Provide an input `DataFrame` with features as input\. The `transform` method transforms it to a `DataFrame` containing inferences\. Internally, the `transform` method sends a request to the [InvokeEndpoint](API_runtime_InvokeEndpoint.md) Amazon SageMaker API to get inferences\. The `transform` method appends the inferences to the input `DataFrame`\.

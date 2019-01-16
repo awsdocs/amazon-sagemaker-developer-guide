@@ -22,11 +22,52 @@ Each row in this \.json file contains an array that represents a detected object
 
 To avoid unreliable detection results, you might want to filter out the detection results with low confidence scores\. In the sample notebook, we provide scripts to remove the low confidence detections\. Scripts are also provided to plot the bounding boxes on the original image\.
 
-For batch transform, the response is in JSON Lines format, where the format is identical to the JSON format described above, but with each record represented as a JSON object, and records are separated by newline characters\. For example:
+For batch transform, the response is in JSON format, where the format is identical to the JSON format described above\. The detection results of each image is represented as a JSON file\. For example:
 
 ```
 {"prediction": [[label_id, confidence_score, xmin, ymin, xmax, ymax], [label_id, confidence_score, xmin, ymin, xmax, ymax]]}
-{"prediction": [[label_id, confidence_score, xmin, ymin, xmax, ymax], [label_id, confidence_score, xmin, ymin, xmax, ymax]]}
 ```
 
-For more details on training and inference, see the object detection sample notebooks\.
+For more details on training and inference, see the [object detection sample notebooks](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/introduction_to_amazon_algorithms/object_detection_pascalvoc_coco)\.
+
+## OUTPUT: JSON<a name="object-detection-output-json"></a>
+
+accept: application/json;annotation=1
+
+```
+{
+   "image_size": [
+      {
+         "width": 500,
+         "height": 400,
+         "depth": 3
+      }
+   ],
+   "annotations": [
+      {
+         "class_id": 0,
+         "score": 0.943,
+         "left": 111,
+         "top": 134,
+         "width": 61,
+         "height": 128
+      },
+      {
+         "class_id": 0,
+         "score": 0.0013,
+         "left": 161,
+         "top": 250,
+         "width": 79,
+         "height": 143
+      },
+      {
+         "class_id": 1,
+         "score": 0.0133,
+         "left": 101,
+         "top": 185,
+         "width": 42,
+         "height": 130
+      }
+   ]
+}
+```

@@ -2,7 +2,7 @@
 
 Amazon SageMaker automatic model tuning, also known as hyperparameter tuning, finds the best version of a model by running many training jobs on your dataset using the algorithm and ranges of hyperparameters that you specify\. It then chooses the hyperparameter values that result in a model that performs the best, as measured by a metric that you choose\.
 
-For example, suppose that you want to solve a binary classiﬁcation problem on a marketing dataset\. Your goal is to maximimize the area under the curve \(auc\) metric of the algorithm by training an [XGBoost Algorithm](xgboost.md) model\. You don't know which values of the `eta`, `alpha`, `min_child_weight`, and `max_depth` hyperparameters to use to train the best model\. To find the best values for these hyperparameters, you can specify ranges of values to search\. Hyperparameter tuning launches training jobs that use hyperparameter values in the ranges that you specified, and returns the training job with highest auc\. You can then deploy the trained model that training job created\.
+For example, suppose that you want to solve a *[binary classification](https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#binary-classification-model)* problem on a marketing dataset\. Your goal is to maximize the *[area under the curve \(auc\)](https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#AUC)* metric of the algorithm by training an [XGBoost Algorithm](xgboost.md) model\. You don't know which values of the `eta`, `alpha`, `min_child_weight`, and `max_depth` hyperparameters to use to train the best model\. To find the best values for these hyperparameters, you can specify ranges of values that Amazon SageMaker hyperparameter tuning searches to find the combination of values that results in the training job that performs the best as measured by the objective metric that you chose\. Hyperparameter tuning launches training jobs that use hyperparameter values in the ranges that you specified, and returns the training job with highest auc\.
 
 You can use Amazon SageMaker automatic model tuning with built\-in algorithms, custom algorithms, and Amazon SageMaker pre\-built containers for machine learning frameworks\.
 
@@ -18,4 +18,6 @@ You should also prepare your dataset and algorithm so that they work in Amazon S
 + [Defining Objective Metrics](automatic-model-tuning-define-metrics.md)
 + [Defining Hyperparameter Ranges](automatic-model-tuning-define-ranges.md)
 + [Example: Hyperparameter Tuning Job](automatic-model-tuning-ex.md)
++ [Stop Training Jobs Early](automatic-model-tuning-early-stopping.md)
++ [Run a Warm Start Hyperparameter Tuning Job](automatic-model-tuning-warm-start.md)
 + [Design Considerations](automatic-model-tuning-considerations.md)

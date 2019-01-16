@@ -11,14 +11,25 @@ Length Constraints: Maximum length of 256\.
 Required: No
 
  **AssembleWith**   <a name="SageMaker-Type-TransformOutput-AssembleWith"></a>
-Defines how to assemble the results of the transform job as a single S3 object\. You should select a format that is most convenient to you\. To concatenate the results in binary format, specify `None`\. To add a newline character at the end of every transformed record, specify `Line`\. To assemble the output in RecordIO format, specify `RecordIO`\. The default value is `None`\.  
-For information about the `RecordIO` format, see [Data Format](http://mxnet.io/architecture/note_data_loading.html#data-format)\.  
+Defines how to assemble the results of the transform job as a single S3 object\. Choose a format that is most convenient to you\. To concatenate the results in binary format, specify `None`\. To add a newline character at the end of every transformed record, specify `Line`\.  
 Type: String  
 Valid Values:` None | Line`   
 Required: No
 
  **KmsKeyId**   <a name="SageMaker-Type-TransformOutput-KmsKeyId"></a>
-The AWS Key Management Service \(AWS KMS\) key for Amazon S3 server\-side encryption that Amazon SageMaker uses to encrypt the transformed data\.  
+The AWS Key Management Service \(AWS KMS\) key that Amazon SageMaker uses to encrypt the model artifacts at rest using Amazon S3 server\-side encryption\. The `KmsKeyId` can be any of the following formats:   
++ // KMS Key ID
+
+   `"1234abcd-12ab-34cd-56ef-1234567890ab"` 
++ // Amazon Resource Name \(ARN\) of a KMS Key
+
+   `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"` 
++ // KMS Key Alias
+
+   `"alias/ExampleAlias"` 
++ // Amazon Resource Name \(ARN\) of a KMS Key Alias
+
+   `"arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias"` 
 If you don't provide a KMS key ID, Amazon SageMaker uses the default KMS key for Amazon S3 for your role's account\. For more information, see [KMS\-Managed Encryption Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html) in the *Amazon Simple Storage Service Developer Guide\.*   
 The KMS key policy must grant permission to the IAM role that you specify in your `CreateTramsformJob` request\. For more information, see [Using Key Policies in AWS KMS](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html) in the *AWS Key Management Service Developer Guide*\.  
 Type: String  
@@ -27,7 +38,7 @@ Required: No
 
  **S3OutputPath**   <a name="SageMaker-Type-TransformOutput-S3OutputPath"></a>
 The Amazon S3 path where you want Amazon SageMaker to store the results of the transform job\. For example, `s3://bucket-name/key-name-prefix`\.  
-For every S3 object used as input for the transform job, the transformed data is stored in a corresponding subfolder in the location under the output prefix\. For example, the input data `s3://bucket-name/input-name-prefix/dataset01/data.csv` will have the transformed data stored at `s3://bucket-name/key-name-prefix/dataset01/`, based on the original name, as a series of \.part files \(\.part0001, part0002, etc\)\.  
+For every S3 object used as input for the transform job, the transformed data is stored in a corresponding subfolder in the location under the output prefix\. For example, for the input data `s3://bucket-name/input-name-prefix/dataset01/data.csv` the transformed data is stored at `s3://bucket-name/key-name-prefix/dataset01/`\. This is based on the original name, as a series of \.part files \(\.part0001, part0002, etc\.\)\.  
 Type: String  
 Length Constraints: Maximum length of 1024\.  
 Pattern: `^(https|s3)://([^/]+)/?(.*)$`   

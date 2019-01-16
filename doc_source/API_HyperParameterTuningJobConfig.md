@@ -25,6 +25,16 @@ Type: String
 Valid Values:` Bayesian`   
 Required: Yes
 
+ **TrainingJobEarlyStoppingType**   <a name="SageMaker-Type-HyperParameterTuningJobConfig-TrainingJobEarlyStoppingType"></a>
+Specifies whether to use early stopping for training jobs launched by the hyperparameter tuning job\. This can be one of the following values \(the default value is `OFF`\):    
+OFF  
+Training jobs launched by the hyperparameter tuning job do not use early stopping\.  
+AUTO  
+Amazon SageMaker stops training jobs launched by the hyperparameter tuning job when they are unlikely to perform better than previously completed training jobs\. For more information, see [Stop Training Jobs Early](http://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-early-stopping.html)\.
+Type: String  
+Valid Values:` Off | Auto`   
+Required: No
+
 ## See Also<a name="API_HyperParameterTuningJobConfig_SeeAlso"></a>
 
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:

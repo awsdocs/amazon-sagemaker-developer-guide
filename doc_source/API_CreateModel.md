@@ -16,6 +16,18 @@ In the request, you also provide an IAM role that Amazon SageMaker can assume to
 
 ```
 {
+   "[Containers](#SageMaker-CreateModel-request-Containers)": [ 
+      { 
+         "[ContainerHostname](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-ContainerHostname)": "string",
+         "[Environment](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-Environment)": { 
+            "string" : "string" 
+         },
+         "[Image](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-Image)": "string",
+         "[ModelDataUrl](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-ModelDataUrl)": "string",
+         "[ModelPackageName](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-ModelPackageName)": "string"
+      }
+   ],
+   "[EnableNetworkIsolation](#SageMaker-CreateModel-request-EnableNetworkIsolation)": boolean,
    "[ExecutionRoleArn](#SageMaker-CreateModel-request-ExecutionRoleArn)": "string",
    "[ModelName](#SageMaker-CreateModel-request-ModelName)": "string",
    "[PrimaryContainer](#SageMaker-CreateModel-request-PrimaryContainer)": { 
@@ -24,7 +36,8 @@ In the request, you also provide an IAM role that Amazon SageMaker can assume to
          "string" : "string" 
       },
       "[Image](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-Image)": "string",
-      "[ModelDataUrl](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-ModelDataUrl)": "string"
+      "[ModelDataUrl](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-ModelDataUrl)": "string",
+      "[ModelPackageName](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-ModelPackageName)": "string"
    },
    "[Tags](#SageMaker-CreateModel-request-Tags)": [ 
       { 
@@ -45,6 +58,18 @@ For information about the parameters that are common to all actions, see [Common
 
 The request accepts the following data in JSON format\.
 
+ ** [Containers](#API_CreateModel_RequestSyntax) **   <a name="SageMaker-CreateModel-request-Containers"></a>
+Specifies the containers in the inference pipeline\.  
+Type: Array of [ContainerDefinition](API_ContainerDefinition.md) objects  
+Array Members: Maximum number of 5 items\.  
+Required: No
+
+ ** [EnableNetworkIsolation](#API_CreateModel_RequestSyntax) **   <a name="SageMaker-CreateModel-request-EnableNetworkIsolation"></a>
+Isolates the model container\. No inbound or outbound network calls can be made to or from the model container\.  
+The Semantic Segmentation built\-in algorithm does not support network isolation\.
+Type: Boolean  
+Required: No
+
  ** [ExecutionRoleArn](#API_CreateModel_RequestSyntax) **   <a name="SageMaker-CreateModel-request-ExecutionRoleArn"></a>
 The Amazon Resource Name \(ARN\) of the IAM role that Amazon SageMaker can assume to access model artifacts and docker image for deployment on ML compute instances or for batch transform jobs\. Deploying on ML compute instances is part of model hosting\. For more information, see [Amazon SageMaker Roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html)\.   
 To be able to pass this role to Amazon SageMaker, the caller of this API must have the `iam:PassRole` permission\.
@@ -63,7 +88,7 @@ Required: Yes
  ** [PrimaryContainer](#API_CreateModel_RequestSyntax) **   <a name="SageMaker-CreateModel-request-PrimaryContainer"></a>
 The location of the primary docker image containing inference code, associated artifacts, and custom environment map that the inference code uses when the model is deployed for predictions\.   
 Type: [ContainerDefinition](API_ContainerDefinition.md) object  
-Required: Yes
+Required: No
 
  ** [Tags](#API_CreateModel_RequestSyntax) **   <a name="SageMaker-CreateModel-request-Tags"></a>
 An array of key\-value pairs\. For more information, see [Using Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what) in the *AWS Billing and Cost Management User Guide*\.   
@@ -72,7 +97,7 @@ Array Members: Minimum number of 0 items\. Maximum number of 50 items\.
 Required: No
 
  ** [VpcConfig](#API_CreateModel_RequestSyntax) **   <a name="SageMaker-CreateModel-request-VpcConfig"></a>
-A [VpcConfig](API_VpcConfig.md) object that specifies the VPC that you want your model to connect to\. Control access to and from your model container by configuring the VPC\. `VpcConfig` is currently used in hosting services but not in batch transform\. For more information, see [Protect Models by Using an Amazon Virtual Private Cloud](host-vpc.md)\.  
+A [VpcConfig](API_VpcConfig.md) object that specifies the VPC that you want your model to connect to\. Control access to and from your model container by configuring the VPC\. `VpcConfig` is used in hosting services and in batch transform\. For more information, see [Protect Endpoints by Using an Amazon Virtual Private Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html) and [Protect Data in Batch Transform Jobs by Using an Amazon Virtual Private Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html)\.  
 Type: [VpcConfig](API_VpcConfig.md) object  
 Required: No
 

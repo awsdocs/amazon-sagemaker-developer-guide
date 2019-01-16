@@ -6,14 +6,14 @@ For more information about model tuning, see [Automatic Model Tuning](automatic-
 
 ## Metrics Computed by the DeepAR Algorithm<a name="deepar-metrics"></a>
 
-The DeepAR algorithm reports three metrics, which are computed during training\. When tuning a model, choose one of these as the objective\. For the objective, use either the forecast accuracy on a provided test channel \(recommended\) or the training loss\. For recommendations for the training/test split for the DeepAR algorithm, see [ Recommended Best Practices ](deepar.md#deepar_best_practices)\. 
+The DeepAR algorithm reports three metrics, which are computed during training\. When tuning a model, choose one of these as the objective\. For the objective, use either the forecast accuracy on a provided test channel \(recommended\) or the training loss\. For recommendations for the training/test split for the DeepAR algorithm, see [ Best Practices ](deepar.md#deepar_best_practices)\. 
 
 
 | Metric Name | Description | Optimization Direction | 
 | --- | --- | --- | 
-| test:RMSE |  Root mean square error between forecast and actual target computed on the test set\.  |  Minimize  | 
-| test:mean\_wQuantileLoss |  Average overall quantile losses computed on the test set\. Setting the `test_quantiles` hyperparameter controls which quantiles are used\.   |  Minimize  | 
-| train:final\_loss |  Training negative log\-likelihood loss averaged over the last training epoch for the model\.  |  Minimize  | 
+| test:RMSE |  The root mean square error between the forecast and the actual target computed on the test set\.  |  Minimize  | 
+| test:mean\_wQuantileLoss |  The average overall quantile losses computed on the test set\. To control which quantiles are used, set the `test_quantiles` hyperparameter\.   |  Minimize  | 
+| train:final\_loss |  The training negative log\-likelihood loss averaged over the last training epoch for the model\.  |  Minimize  | 
 
 ## Tunable Hyperparameters<a name="deepar-tunable-hyperparameters"></a>
 
@@ -22,11 +22,11 @@ Tune a DeepAR model with the following hyperparameters\. The hyperparameters tha
 
 | Parameter Name | Parameter Type | Recommended Ranges | 
 | --- | --- | --- | 
-| mini\_batch\_size |  IntegerParameterRanges  |  MinValue: 32, MaxValue: 1028  | 
-| epochs |  IntegerParameterRanges  |  MinValue: 1, MaxValue: 1000  | 
-| context\_length |  IntegerParameterRanges  |  MinValue: 1, MaxValue: 200  | 
-| num\_cells |  IntegerParameterRanges  |  MinValue: 30, MaxValue: 200  | 
-| num\_layers |  IntegerParameterRanges  |  MinValue: 1, MaxValue: 8  | 
-| dropout\_rate |  ContinuousParameterRange  |  MinValue: 0\.00, MaxValue: 0\.2  | 
-| embedding\_dimension |  IntegerParameterRanges  |  MinValue: 1, MaxValue: 50  | 
-| learning\_rate |  ContinuousParameterRange  |  MinValue: 1e\-5, MaxValue: 1e\-1  | 
+| mini\_batch\_size |  `IntegerParameterRanges`  |  MinValue: 32, MaxValue: 1028  | 
+| epochs |  `IntegerParameterRanges`  |  MinValue: 1, MaxValue: 1000  | 
+| context\_length |  `IntegerParameterRanges`  |  MinValue: 1, MaxValue: 200  | 
+| num\_cells |  `IntegerParameterRanges`  |  MinValue: 30, MaxValue: 200  | 
+| num\_layers |  `IntegerParameterRanges`  |  MinValue: 1, MaxValue: 8  | 
+| dropout\_rate |  `ContinuousParameterRange`  |  MinValue: 0\.00, MaxValue: 0\.2  | 
+| embedding\_dimension |  `IntegerParameterRanges`  |  MinValue: 1, MaxValue: 50  | 
+| learning\_rate |  `ContinuousParameterRange`  |  MinValue: 1e\-5, MaxValue: 1e\-1  | 

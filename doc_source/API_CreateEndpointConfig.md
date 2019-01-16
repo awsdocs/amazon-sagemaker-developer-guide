@@ -17,6 +17,7 @@ If you are hosting multiple models, you also assign a `VariantWeight` to specify
    "[KmsKeyId](#SageMaker-CreateEndpointConfig-request-KmsKeyId)": "string",
    "[ProductionVariants](#SageMaker-CreateEndpointConfig-request-ProductionVariants)": [ 
       { 
+         "[AcceleratorType](API_ProductionVariant.md#SageMaker-Type-ProductionVariant-AcceleratorType)": "string",
          "[InitialInstanceCount](API_ProductionVariant.md#SageMaker-Type-ProductionVariant-InitialInstanceCount)": number,
          "[InitialVariantWeight](API_ProductionVariant.md#SageMaker-Type-ProductionVariant-InitialVariantWeight)": number,
          "[InstanceType](API_ProductionVariant.md#SageMaker-Type-ProductionVariant-InstanceType)": "string",

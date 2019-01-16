@@ -21,7 +21,7 @@ In this section, you create a Jupyter notebook in your Amazon SageMaker notebook
    from sagemaker import get_execution_role
    
    role = get_execution_role()
-   bucket = <your_s3_bucket_name_here>
+   bucket = 'bucket-name' # Use the name of your s3 bucket here
    ```
 
 ## <a name="ex1-prepare-2"></a>

@@ -53,6 +53,7 @@ Required: No
  ** [NameContains](#API_ListNotebookInstanceLifecycleConfigs_RequestSyntax) **   <a name="SageMaker-ListNotebookInstanceLifecycleConfigs-request-NameContains"></a>
 A string in the lifecycle configuration name\. This filter returns only lifecycle configurations whose name contains the specified string\.  
 Type: String  
+Length Constraints: Maximum length of 63\.  
 Pattern: `[a-zA-Z0-9-]+`   
 Required: No
 

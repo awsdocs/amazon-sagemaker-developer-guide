@@ -81,7 +81,8 @@ Required: No
          "[TrainingStartTime](API_HyperParameterTrainingJobSummary.md#SageMaker-Type-HyperParameterTrainingJobSummary-TrainingStartTime)": number,
          "[TunedHyperParameters](API_HyperParameterTrainingJobSummary.md#SageMaker-Type-HyperParameterTrainingJobSummary-TunedHyperParameters)": { 
             "string" : "string" 
-         }
+         },
+         "[TuningJobName](API_HyperParameterTrainingJobSummary.md#SageMaker-Type-HyperParameterTrainingJobSummary-TuningJobName)": "string"
       }
    ]
 }

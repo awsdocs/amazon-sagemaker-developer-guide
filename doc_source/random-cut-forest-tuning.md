@@ -22,5 +22,5 @@ You can tune a RCF model with the following hyperparameters\.
 
 | Parameter Name | Parameter Type | Recommended Ranges | 
 | --- | --- | --- | 
-| num\_trees | IntegerParameterRanges | MinValue: 50, MaxValue:1000 | 
 | num\_samples\_per\_tree | IntegerParameterRanges | MinValue: 1, MaxValue:2048 | 
+| num\_trees | IntegerParameterRanges | MinValue: 50, MaxValue:1000 | 

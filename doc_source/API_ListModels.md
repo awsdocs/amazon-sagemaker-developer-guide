@@ -41,6 +41,7 @@ Required: No
  ** [NameContains](#API_ListModels_RequestSyntax) **   <a name="SageMaker-ListModels-request-NameContains"></a>
 A string in the training job name\. This filter returns only models in the training job whose name contains the specified string\.  
 Type: String  
+Length Constraints: Maximum length of 63\.  
 Pattern: `[a-zA-Z0-9-]+`   
 Required: No
 

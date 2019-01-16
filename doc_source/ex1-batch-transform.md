@@ -1,6 +1,6 @@
 # Step 3\.4\.2: Deploy the Model to Amazon SageMaker Batch Transform<a name="ex1-batch-transform"></a>
 
-Amazon SageMaker offers the ability to use batch transform either through the console or by using the API\. For more information, see [Getting Inferences by Using Amazon SageMaker Batch Transform](how-it-works-batch.md)\. The following examples assume that you have already run a training job to create a model\. See [Step 3\.3: Train a Model](ex1-train-model.md)\.
+Amazon SageMaker offers the ability to use batch transform either through the console or by using the API\. For more information, see [Getting Inferences by Using Amazon SageMaker Batch Transform](how-it-works-batch.md)\. The following examples assume that you have already run a training job to create a model \(see [Step 3\.3: Train a Model](ex1-train-model.md)\) and created a Model based on the training output \(see [Step 3\.4\.1: Deploy the Model to Amazon SageMaker Hosting Services ](ex1-deploy-model.md)\)\.
 
 **Topics**
 + [Using Batch Transform \(Console\)](#ex1-batch-transform-console)
@@ -78,117 +78,158 @@ You can stop a batch transform job from the **Batch transform job** page or from
 
 ## Using the Batch Transform API<a name="ex1-batch-transform-api-examples"></a>
 
-There are several ways to interact with transform jobs\. For more information, see [CreateTransformJob](API_CreateTransformJob.md)\. You can use the High\-level Python Library or the Low\-level SDK \(boto3\)\.
+There are several ways to interact with transform jobs\. For more information, see [CreateTransformJob](API_CreateTransformJob.md)\. You can use the high\-level Python library or the low\-level SDK \(boto3\)\.
 
-To run a batch transform, you create a transform job with the `CreateTransformJob` operation\. 
+### Using the high\-level Python Library<a name="ex1-batch-transform-api-high-level"></a>
 
-### Using the High\-level Python Library<a name="ex1-batch-transform-api-high-level"></a>
-
-The following shows how to create a transform job using the High\-level Python Library:
+The following shows how to create a transform job using the high\-level Python library:
 
 ```
-    import sagemaker
-    from time import gmtime, strftime
-    
-    job_name = 'Batch-Transform-' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
-    bucket = <your_s3_bucket_name_here>
-    prefix = <sagemaker/project_name>
-    my_model_name = <your_model_name_here>
-    
-    # Initialize the transformer object
-    transformer = Transformer(model_name=my_model_name,
-                            transform_job_name=job_name,
-                            output_path="s3://{}/{}/Batch-Transform/".format(bucket,prefix)
-                            )
-    # To start a transform job:                        
-    transformer.transform("s3://{}/{}/Batch-Transform/".format(bucket,prefix)”/output”)
-    
-    # To stop a transform job:
-    transformer.stop_transform_job()
+import boto3
+import sagemaker
+import json
+
+input_key = 'kmeans_batch_example/input/valid-data.csv'
+input_location = 's3://{}/{}'.format(bucket, input_key)
+output_location = 's3://{}/kmeans_batch_example/output'.format(bucket)
+
+### Convert the validation set numpy array to a csv file and upload to s3
+numpy.savetxt('valid-data.csv', valid_set[0], delimiter=',', fmt='%g')
+s3_client = boto3.client('s3')
+s3_client.upload_file('valid-data.csv', bucket, input_key)
+
+# Initialize the transformer object
+transformer =sagemaker.transformer.Transformer(
+    base_transform_job_name='Batch-Transform',
+    model_name=model_name,
+    instance_count=1,
+    instance_type='ml.c4.xlarge',
+    output_path=output_location
+    )
+# To start a transform job:
+transformer.transform(input_location, content_type='text/csv', split_type='Line')
+# Then wait until transform job is completed
+transformer.wait()
+
+# To fetch validation result 
+s3_client.download_file(bucket, 'kmeans_batch_example/output/valid-data.csv.out', 'valid-result')
+with open('valid-result') as f:
+    results = f.readlines()   
+print("Sample transform result: {}".format(results[0]))
 ```
 
-### Using the Low\-level SDK \(boto3\)<a name="ex1-batch-transform-api-low-level"></a>
+### Using the low\-level SDK \(boto3\)<a name="ex1-batch-transform-api-low-level"></a>
 
-The following examples demonstrate how to interact with transform jobs using The Amazon SageMaker Low\-level SDK:
+The following examples demonstrate how to interact with transform jobs using The Amazon SageMaker low\-level SDK:
 
-#### Using CreateTransformJob<a name="w4ab1c13c16c27c11b9c11b5"></a>
+#### Using CreateTransformJob<a name="w8aac13c16c27c11b9c11b5"></a>
 
-To start using batch transform, you need to create a transform job\. First, import the needed libraries \(`boto3`\) and classes \(`gtime` and `strftime` from the time library\)\. Second, set the needed variables \(`job_name`, `bucket`, `prefix`, `sm`, and `model_name`\)\. The `sm`, variable is especially important as it allows us to use the Amazon SageMaker API\. Third you write the request for `CreateTransformJob`\. To help prevent errors and improve readability, use the variables you created in the previous step in creating the request\. Finally, use the request with `CreateTransformJob` to start a batch transform job\. The following code shows how to use the `CreateTransformJob` operation:
+To start using batch transform, you need to create a transform job\. The low\-level AWS SDK for Python provides the corresponding `create_transform_job` method\. First, import the needed libraries \(`boto3`\) and classes \(`gtime` and `strftime` from the time library\)\. Second, set the needed variables \(`job_name`, `bucket`, `prefix`, `sm`, and `model_name`\)\. The `sm`, variable is especially important as it allows us to use the Amazon SageMaker API\. Third you write the request\. For information, see [CreateTransformJob](API_CreateTransformJob.md)\.
+
+To help prevent errors and improve readability, use the variables you created in the previous step in creating the request\. Finally, use the request with `create_transform_job` to start a batch transform job\. The following code shows how to use the `create_transform_job` operation:
 
 ```
-    import boto3
-    from time import gmtime, strftime
-    
-    job_name = 'Batch-Transform-' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
-    bucket = <your_s3_bucket_name_here>
-    prefix = <sagemaker/project_name>
-    sm = boto3.client('SageMaker')
-    model_name = <your_model_name_here>
-    
-    request = \
-    {
-        “TransformJobName”: job_name,
-        “ModelName”: model_name,
-        “MaxConcurrentTransforms”: 1,
-        “MaxRecordsPerBatch”: 1,
-        “TransformOutput”: {
-            “S3OutputPath”: "s3://{}/{}/Batch-Transform/".format(bucket,prefix),
-        }
-        “TransformInput”: {
-            “DataSource”: {
-                “S3DataSource”: {
-                    “S3DataType”: ”S3Prefix”,
-                    “S3Uri”: "s3://{}/{}/Batch-Transform/".format(bucket,prefix)”/output”,
-                    “S3DataDistributionType”: “ShardedByS3Key”
-                }
+import boto3
+import sagemaker
+import json
+from urllib.parse import urlparse
+from time import gmtime, strftime
+
+batch_job_name = 'Batch-Transform-' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
+input_location = 's3://{}/kmeans_batch_example/input'.format(bucket)
+output_location = 's3://{}/kmeans_batch_example/output'.format(bucket)
+
+### Convert the validation set numpy array to a csv file and upload to s3
+numpy.savetxt('valid-data.csv', valid_set[0], delimiter=',', fmt='%g')
+s3_client = boto3.client('s3')
+input_key = "{}/valid_data.csv".format(urlparse(input_location).path.lstrip('/'))
+s3_client.upload_file('valid-data.csv', bucket, input_key)
+
+### Create a transform job
+sm = boto3.client('sagemaker')
+
+request = \
+{
+    "TransformJobName": batch_job_name,
+    "ModelName": model_name,
+    "MaxConcurrentTransforms": 4,
+    "MaxPayloadInMB": 6,
+    "BatchStrategy": "MultiRecord",
+    "TransformOutput": {
+        "S3OutputPath": output_location
+    },
+    "TransformInput": {
+        "DataSource": {
+            "S3DataSource": {
+                "S3DataType": "S3Prefix",
+                "S3Uri": input_location 
             }
-        }
-        “TransformResources”: {
-                “InstanceType”: ”ml.m4.xlarge”,
-                “InstanceCount”: 1
-        }
+        },
+        "ContentType": "text/csv",
+        "SplitType": "Line",
+        "CompressionType": "None"
+    },
+    "TransformResources": {
+            "InstanceType": "ml.m4.xlarge",
+            "InstanceCount": 1
     }
-                            
-    response = sm.CreateTransformJob(**request)
+}
+
+sm.create_transform_job(**request)
+
+print("Created Transform job with name: ", batch_job_name)
+
+### Wait until job completion
+while(True):
+    response = sm.describe_transform_job(TransformJobName=batch_job_name)
+    status = response['TransformJobStatus']
+    if  status == 'Completed':
+        print("Transform job ended with status: " + status)
+        break
+    if status == 'Failed':
+        message = response['FailureReason']
+        print('Transform failed with the following error: {}'.format(message))
+        raise Exception('Transform job failed') 
+    print("Transform job is still in status: " + status)    
+    time.sleep(30)    
+
+### Fetch transform output
+output_key = "{}/valid_data.csv.out".format(urlparse(output_location).path.lstrip('/'))
+s3_client.download_file(bucket, output_key, 'valid-result')
+with open('valid-result') as f:
+    results = f.readlines()   
+print("Sample transform result: {}".format(results[0]))
 ```
 
-#### Using DescribeTransformJob<a name="w4ab1c13c16c27c11b9c11b7"></a>
+#### Using DescribeTransformJob<a name="w8aac13c16c27c11b9c11b7"></a>
 
-To see the details of a specific transform job, specify the name in a `DescribeTransformJob` request\. The following code shows how to use the `DescribeTransformJob` method:
-
-```
-    response = sm.DescribeTransformJob(TransformJobName=job_name)
-```
-
-#### Using ListTransformJobs<a name="w4ab1c13c16c27c11b9c11b9"></a>
-
-To list previous transform jobs, specify criteria to list and to sort the list\. The following code shows how to use the `ListTransformJobs` method:
+To see the details of a specific transform job, specify the name in a describe transform jobs request\. The low\-level AWS SDK for Python provides the corresponding `describe_transform_jobs` method\. The following code shows how to use the `describe_transform_job` method:
 
 ```
-    import boto3
-    from time import gmtime, strftime
+response = sm.describe_transform_job(TransformJobName=job_name)
+```
 
-    request = \
-    {
- 	  "StatusEquals": “Completed”,
- 	  "SortBy": “CreationTime”,
- 	  "SortOrder": “Descending”,
- 	  "MaxResults": 20,
-    }
+#### Using ListTransformJobs<a name="w8aac13c16c27c11b9c11b9"></a>
 
-    response = sm.ListTransformJobs(**request)
+To list previous transform jobs, specify criteria to list and to sort the list\. The low\-level AWS SDK for Python provides the corresponding `list_transform_jobs` method\. The following code shows how to use the `list_transform_jobs` method:
+
+```
+import boto3
+from time import gmtime, strftime
+
+request = \
+{
+   "StatusEquals": "Completed",
+   "SortBy": "CreationTime",
+   "SortOrder": "Descending",
+   "MaxResults": 20,
+}
+
+response = sm.list_transform_jobs(**request)
 ```
 
 **Tip**  
-When using the `ListTransformJobs` method, you can specify any or all of the members in the request structure\. For more information, see [ListTransformJobs](API_ListTransformJobs.md)\.
-
-#### Using StopTransformJob<a name="w4ab1c13c16c27c11b9c11c11"></a>
-
-To stop a transform job, specify the name in the `StopTransformJob` request\. The following code shows how to use the `StopTransformJob` method:
-
-```
-    response = sm.StopTransformJob(TransformJobName=job_name)
-```
+When using the `list_transform_jobs` method, you can specify any or all of the members in the request structure\. For more information, see [ListTransformJobs](API_ListTransformJobs.md)\.
 
 **Next Step**  
 [Step 3\.5: Validate the Model](ex1-test-model.md)

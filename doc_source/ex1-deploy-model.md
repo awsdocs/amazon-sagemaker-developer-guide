@@ -37,7 +37,7 @@ To deploy the model, choose one of the following options\.
      from time import gmtime, strftime
      
      
-     model_name=job_name
+     model_name = job_name
      print(model_name)
      
      info = sagemaker.describe_training_job(TrainingJobName=job_name)
@@ -101,7 +101,7 @@ To deploy the model, choose one of the following options\.
      
          if status != 'InService':
              message = sagemaker.describe_endpoint(EndpointName=endpoint_name)['FailureReason']
-             print('Training failed with the following error: {}'.format(message))
+             print('Create endpoint failed with the following error: {}'.format(message))
              raise Exception('Endpoint creation did not succeed')
      ```
 

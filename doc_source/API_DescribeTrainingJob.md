@@ -28,11 +28,27 @@ Required: Yes
 ```
 {
    "[AlgorithmSpecification](#SageMaker-DescribeTrainingJob-response-AlgorithmSpecification)": { 
+      "[AlgorithmName](API_AlgorithmSpecification.md#SageMaker-Type-AlgorithmSpecification-AlgorithmName)": "string",
+      "[MetricDefinitions](API_AlgorithmSpecification.md#SageMaker-Type-AlgorithmSpecification-MetricDefinitions)": [ 
+         { 
+            "[Name](API_MetricDefinition.md#SageMaker-Type-MetricDefinition-Name)": "string",
+            "[Regex](API_MetricDefinition.md#SageMaker-Type-MetricDefinition-Regex)": "string"
+         }
+      ],
       "[TrainingImage](API_AlgorithmSpecification.md#SageMaker-Type-AlgorithmSpecification-TrainingImage)": "string",
       "[TrainingInputMode](API_AlgorithmSpecification.md#SageMaker-Type-AlgorithmSpecification-TrainingInputMode)": "string"
    },
    "[CreationTime](#SageMaker-DescribeTrainingJob-response-CreationTime)": number,
+   "[EnableInterContainerTrafficEncryption](#SageMaker-DescribeTrainingJob-response-EnableInterContainerTrafficEncryption)": boolean,
+   "[EnableNetworkIsolation](#SageMaker-DescribeTrainingJob-response-EnableNetworkIsolation)": boolean,
    "[FailureReason](#SageMaker-DescribeTrainingJob-response-FailureReason)": "string",
+   "[FinalMetricDataList](#SageMaker-DescribeTrainingJob-response-FinalMetricDataList)": [ 
+      { 
+         "[MetricName](API_MetricData.md#SageMaker-Type-MetricData-MetricName)": "string",
+         "[Timestamp](API_MetricData.md#SageMaker-Type-MetricData-Timestamp)": number,
+         "[Value](API_MetricData.md#SageMaker-Type-MetricData-Value)": number
+      }
+   ],
    "[HyperParameters](#SageMaker-DescribeTrainingJob-response-HyperParameters)": { 
       "string" : "string" 
    },
@@ -43,14 +59,20 @@ Required: Yes
          "[ContentType](API_Channel.md#SageMaker-Type-Channel-ContentType)": "string",
          "[DataSource](API_Channel.md#SageMaker-Type-Channel-DataSource)": { 
             "[S3DataSource](API_DataSource.md#SageMaker-Type-DataSource-S3DataSource)": { 
+               "[AttributeNames](API_S3DataSource.md#SageMaker-Type-S3DataSource-AttributeNames)": [ "string" ],
                "[S3DataDistributionType](API_S3DataSource.md#SageMaker-Type-S3DataSource-S3DataDistributionType)": "string",
                "[S3DataType](API_S3DataSource.md#SageMaker-Type-S3DataSource-S3DataType)": "string",
                "[S3Uri](API_S3DataSource.md#SageMaker-Type-S3DataSource-S3Uri)": "string"
             }
          },
-         "[RecordWrapperType](API_Channel.md#SageMaker-Type-Channel-RecordWrapperType)": "string"
+         "[InputMode](API_Channel.md#SageMaker-Type-Channel-InputMode)": "string",
+         "[RecordWrapperType](API_Channel.md#SageMaker-Type-Channel-RecordWrapperType)": "string",
+         "[ShuffleConfig](API_Channel.md#SageMaker-Type-Channel-ShuffleConfig)": { 
+            "[Seed](API_ShuffleConfig.md#SageMaker-Type-ShuffleConfig-Seed)": number
+         }
       }
    ],
+   "[LabelingJobArn](#SageMaker-DescribeTrainingJob-response-LabelingJobArn)": "string",
    "[LastModifiedTime](#SageMaker-DescribeTrainingJob-response-LastModifiedTime)": number,
    "[ModelArtifacts](#SageMaker-DescribeTrainingJob-response-ModelArtifacts)": { 
       "[S3ModelArtifacts](API_ModelArtifacts.md#SageMaker-Type-ModelArtifacts-S3ModelArtifacts)": "string"
@@ -105,10 +127,24 @@ Type: [AlgorithmSpecification](API_AlgorithmSpecification.md) object
 A timestamp that indicates when the training job was created\.  
 Type: Timestamp
 
+ ** [EnableInterContainerTrafficEncryption](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-EnableInterContainerTrafficEncryption"></a>
+To encrypt all communications between ML compute instances in distributed training, choose `True`\. Encryption provides greater security for distributed training, but training might take longer\. How long it takes depends on the amount of communication between compute instances, especially if you use a deep learning algorithm in distributed training\.  
+Type: Boolean
+
+ ** [EnableNetworkIsolation](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-EnableNetworkIsolation"></a>
+If you want to allow inbound or outbound network calls, except for calls between peers within a training cluster for distributed training, choose `True`\. If you enable network isolation for training jobs that are configured to use a VPC, Amazon SageMaker downloads and uploads customer data and model artifacts through the specified VPC, but the training container does not have network access\.  
+The Semantic Segmentation built\-in algorithm does not support network isolation\.
+Type: Boolean
+
  ** [FailureReason](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-FailureReason"></a>
 If the training job failed, the reason it failed\.   
 Type: String  
 Length Constraints: Maximum length of 1024\.
+
+ ** [FinalMetricDataList](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-FinalMetricDataList"></a>
+A collection of `MetricData` objects that specify the names, values, and dates and times that the training algorithm emitted to Amazon CloudWatch\.  
+Type: Array of [MetricData](API_MetricData.md) objects  
+Array Members: Minimum number of 0 items\. Maximum number of 20 items\.
 
  ** [HyperParameters](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-HyperParameters"></a>
 Algorithm\-specific parameters\.   
@@ -120,6 +156,12 @@ Value Length Constraints: Maximum length of 256\.
 An array of `Channel` objects that describes each data input channel\.   
 Type: Array of [Channel](API_Channel.md) objects  
 Array Members: Minimum number of 1 item\. Maximum number of 8 items\.
+
+ ** [LabelingJobArn](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-LabelingJobArn"></a>
+The Amazon Resource Name \(ARN\) of the Amazon SageMaker Ground Truth labeling job that created the transform or training job\.  
+Type: String  
+Length Constraints: Maximum length of 2048\.  
+Pattern: `arn:aws[a-z\-]*:sagemaker:[a-z0-9\-]*:[0-9]{12}:labeling-job/.*` 
 
  ** [LastModifiedTime](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-LastModifiedTime"></a>
 A timestamp that indicates when the status of the training job was last modified\.  
@@ -144,22 +186,32 @@ Length Constraints: Minimum length of 20\. Maximum length of 2048\.
 Pattern: `^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$` 
 
  ** [SecondaryStatus](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-SecondaryStatus"></a>
- Provides granular information about the system state\. For more information, see `TrainingJobStatus`\.   
-+  `Starting` \- starting the training job\.
-+  `Downloading` \- downloading the input data\.
-+  `Training` \- model training is in progress\.
-+  `Uploading` \- uploading the trained model\.
-+  `Stopping` \- stopping the training job\.
-+  `Stopped` \- the training job has stopped\.
-+  `MaxRuntimeExceeded` \- the training job exceeded the specified max run time and has been stopped\.
-+  `Completed` \- the training job has completed\.
-+  `Failed` \- the training job has failed\. The failure reason is stored in the `FailureReason` field of `DescribeTrainingJobResponse`\.
-The valid values for `SecondaryStatus` are subject to change\. They primarily provide information on the progress of the training job\.
+ Provides detailed information about the state of the training job\. For detailed information on the secondary status of the training job, see `StatusMessage` under [SecondaryStatusTransition](API_SecondaryStatusTransition.md)\.  
+Amazon SageMaker provides primary statuses and secondary statuses that apply to each of them:    
+InProgress  
++  `Starting` \- Starting the training job\.
++  `Downloading` \- An optional stage for algorithms that support `File` training input mode\. It indicates that data is being downloaded to the ML storage volumes\.
++  `Training` \- Training is in progress\.
++  `Uploading` \- Training is complete and the model artifacts are being uploaded to the S3 location\.  
+Completed  
++  `Completed` \- The training job has completed\.  
+Failed  
++  `Failed` \- The training job has failed\. The reason for the failure is returned in the `FailureReason` field of `DescribeTrainingJobResponse`\.  
+Stopped  
++  `MaxRuntimeExceeded` \- The job stopped because it exceeded the maximum allowed runtime\.
++  `Stopped` \- The training job has stopped\.  
+Stopping  
++  `Stopping` \- Stopping the training job\.
+Valid values for `SecondaryStatus` are subject to change\. 
+We no longer support the following secondary statuses:  
++  `LaunchingMLInstances` 
++  `PreparingTrainingStack` 
++  `DownloadingTrainingImage` 
 Type: String  
 Valid Values:` Starting | LaunchingMLInstances | PreparingTrainingStack | Downloading | DownloadingTrainingImage | Training | Uploading | Stopping | Stopped | MaxRuntimeExceeded | Completed | Failed` 
 
  ** [SecondaryStatusTransitions](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-SecondaryStatusTransitions"></a>
-To give an overview of the training job lifecycle, `SecondaryStatusTransitions` is a log of time\-ordered secondary statuses that a training job has transitioned\.  
+A history of all of the secondary statuses that the training job has transitioned through\.  
 Type: Array of [SecondaryStatusTransition](API_SecondaryStatusTransition.md) objects
 
  ** [StoppingCondition](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-StoppingCondition"></a>
@@ -183,14 +235,14 @@ Length Constraints: Minimum length of 1\. Maximum length of 63\.
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*` 
 
  ** [TrainingJobStatus](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-TrainingJobStatus"></a>
-The status of the training job\.   
-For the `InProgress` status, Amazon SageMaker can return these secondary statuses:  
-+ Starting \- Preparing for training\.
-+ Downloading \- Optional stage for algorithms that support File training input mode\. It indicates data is being downloaded to ML storage volumes\.
-+ Training \- Training is in progress\.
-+ Uploading \- Training is complete and model upload is in progress\.
-For the `Stopped` training status, Amazon SageMaker can return these secondary statuses:  
-+ MaxRuntimeExceeded \- Job stopped as a result of maximum allowed runtime exceeded\.
+The status of the training job\.  
+Amazon SageMaker provides the following training job statuses:  
++  `InProgress` \- The training is in progress\.
++  `Completed` \- The training job has completed\.
++  `Failed` \- The training job has failed\. To see the reason for the failure, see the `FailureReason` field in the response to a `DescribeTrainingJobResponse` call\.
++  `Stopping` \- The training job is stopping\.
++  `Stopped` \- The training job has stopped\.
+For more detailed information, see `SecondaryStatus`\.   
 Type: String  
 Valid Values:` InProgress | Completed | Failed | Stopping | Stopped` 
 
@@ -205,7 +257,7 @@ Length Constraints: Maximum length of 256\.
 Pattern: `arn:aws[a-z\-]*:sagemaker:[a-z0-9\-]*:[0-9]{12}:hyper-parameter-tuning-job/.*` 
 
  ** [VpcConfig](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-VpcConfig"></a>
-A [VpcConfig](API_VpcConfig.md) object that specifies the VPC that this training job has access to\. For more information, see [Protect Training Jobs by Using an Amazon Virtual Private Cloud](train-vpc.md)\.  
+A [VpcConfig](API_VpcConfig.md) object that specifies the VPC that this training job has access to\. For more information, see [Protect Training Jobs by Using an Amazon Virtual Private Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html)\.  
 Type: [VpcConfig](API_VpcConfig.md) object
 
 ## Errors<a name="API_DescribeTrainingJob_Errors"></a>

@@ -11,31 +11,31 @@ The XGBoost algorithm computes the following nine metrics during training\. When
 
 | Metric Name | Description | Optimization Direction | 
 | --- | --- | --- | 
-| validation:rmse |  Root mean square error\.  |  Minimize  | 
-| validation:mae |  Mean absolute error\.  |  You must choose one of them as an objective to optimize when tuning the algorithm with hyperparameter values\.>Minimize  | 
-| validation:logloss |  Negative log\-likelihood\.  |  Minimize  | 
+| validation:auc |  Area under the curve\.  |  Maximize  | 
 | validation:error |  Binary classification error rate, calculated as \#\(wrong cases\)/\#\(all cases\)\.  |  Minimize  | 
+| validation:logloss |  Negative log\-likelihood\.  |  Minimize  | 
+| validation:mae |  Mean absolute error\.  |  You must choose one of them as an objective to optimize when tuning the algorithm with hyperparameter values\.>Minimize  | 
+| validation:map |  Mean average precision\.  |  Maximize  | 
 | validation:merror |  Multiclass classification error rate, calculated as \#\(wrong cases\)/\#\(all cases\)\.  |  Minimize  | 
 | validation:mlogloss |  Negative log\-likelihood for multiclass classification\.  |  Minimize  | 
-| validation:auc |  Area under the curve\.  |  Maximize  | 
 | validation:ndcg |  Normalized Discounted Cumulative Gain\.  |  Maximize  | 
-| validation:map |  Mean average precision\.  |  Maximize  | 
+| validation:rmse |  Root mean square error\.  |  Minimize  | 
 
 ## Tunable Hyperparameters<a name="xgboost-tunable-hyperparameters"></a>
 
-Tune the XGBoost model with the following hyperparameters\. The hyperparameters that have the greatest effect on XGBoost objective metrics are: `alpha`, `min_child_weight`, `subsample`, `eta`, and `nrounds`\. 
+Tune the XGBoost model with the following hyperparameters\. The hyperparameters that have the greatest effect on XGBoost objective metrics are: `alpha`, `min_child_weight`, `subsample`, `eta`, and `num_round`\. 
 
 
 | Parameter Name | Parameter Type | Recommended Ranges | 
 | --- | --- | --- | 
-| num\_round |  IntegerParameterRanges  |  \[1, 4000\]  | 
+| alpha |  ContinuousParameterRanges  |  MinValue: 0, MaxValue: 1000  | 
+| colsample\_bylevel |  ContinuousParameterRanges  |  MinValue: 0\.1, MaxValue: 1  | 
+| colsample\_bytree |  ContinuousParameterRanges  |  MinValue: 0\.5, MaxValue: 1  | 
 | eta |  ContinuousParameterRanges  |  MinValue: 0\.1, MaxValue: 0\.5  | 
 | gamma |  ContinuousParameterRanges  |  MinValue: 0, MaxValue: 5  | 
+| lambda |  ContinuousParameterRanges  |  MinValue: 0, MaxValue: 1000  | 
+| max\_delta\_step |  IntegerParameterRanges  |  \[0, 10\]  | 
 | max\_depth |  IntegerParameterRanges  |  \[0, 10\]  | 
 | min\_child\_weight |  ContinuousParameterRanges  |  MinValue: 0, MaxValue: 120  | 
-| max\_delta\_step |  IntegerParameterRanges  |  \[0, 10\]  | 
+| num\_round |  IntegerParameterRanges  |  \[1, 4000\]  | 
 | subsample |  ContinuousParameterRanges  |  MinValue: 0\.5, MaxValue: 1  | 
-| colsample\_bytree |  ContinuousParameterRanges  |  MinValue: 0\.5, MaxValue: 1  | 
-| colsample\_bylevel |  ContinuousParameterRanges  |  MinValue: 0\.1, MaxValue: 1  | 
-| lambda |  ContinuousParameterRanges  |  MinValue: 0, MaxValue: 1000  | 
-| alpha |  ContinuousParameterRanges  |  MinValue: 0, MaxValue: 1000  | 

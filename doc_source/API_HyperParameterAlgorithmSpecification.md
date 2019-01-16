@@ -4,6 +4,13 @@ Specifies which training algorithm to use for training jobs that a hyperparamete
 
 ## Contents<a name="API_HyperParameterAlgorithmSpecification_Contents"></a>
 
+ **AlgorithmName**   <a name="SageMaker-Type-HyperParameterAlgorithmSpecification-AlgorithmName"></a>
+The name of the resource algorithm to use for the hyperparameter tuning job\. If you specify a value for this parameter, do not specify a value for `TrainingImage`\.  
+Type: String  
+Length Constraints: Minimum length of 1\. Maximum length of 170\.  
+Pattern: `(arn:aws[a-z\-]*:sagemaker:[a-z0-9\-]*:[0-9]{12}:[a-z\-]*\/)?([a-zA-Z0-9]([a-zA-Z0-9-]){0,62})(?<!-)$`   
+Required: No
+
  **MetricDefinitions**   <a name="SageMaker-Type-HyperParameterAlgorithmSpecification-MetricDefinitions"></a>
 An array of [MetricDefinition](API_MetricDefinition.md) objects that specify the metrics that the algorithm emits\.  
 Type: Array of [MetricDefinition](API_MetricDefinition.md) objects  
@@ -11,10 +18,10 @@ Array Members: Minimum number of 0 items\. Maximum number of 20 items\.
 Required: No
 
  **TrainingImage**   <a name="SageMaker-Type-HyperParameterAlgorithmSpecification-TrainingImage"></a>
- The registry path of the Docker image that contains the training algorithm\. For information about Docker registry paths for built\-in algorithms, see [Algorithms Provided by Amazon SageMaker: Common Parameters ](sagemaker-algo-docker-registry-paths.md)\.  
+ The registry path of the Docker image that contains the training algorithm\. For information about Docker registry paths for built\-in algorithms, see [Algorithms Provided by Amazon SageMaker: Common Parameters](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html)\.  
 Type: String  
 Length Constraints: Maximum length of 255\.  
-Required: Yes
+Required: No
 
  **TrainingInputMode**   <a name="SageMaker-Type-HyperParameterAlgorithmSpecification-TrainingInputMode"></a>
 The input mode that the algorithm supports: File or Pipe\. In File input mode, Amazon SageMaker downloads the training data from Amazon S3 to the storage volume that is attached to the training instance and mounts the directory to the Docker volume for the training container\. In Pipe input mode, Amazon SageMaker streams data directly from Amazon S3 to the container\.   

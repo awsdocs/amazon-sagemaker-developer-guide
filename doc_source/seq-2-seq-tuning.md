@@ -12,12 +12,12 @@ The sequence to sequence algorithm reports three metrics that are computed durin
 | Metric Name | Description | Optimization Direction | 
 | --- | --- | --- | 
 | validation:accuracy |  Accuracy computed on the validation dataset\.  |  Maximize  | 
-| validation:perplexity |  Perplexity computed on the validation dataset\.  |  Minimize  | 
 | validation:bleu |  [Bleu﻿](https://en.wikipedia.org/wiki/BLEU) score computed on the validation dataset\. Because BLEU computation is expensive, you can choose to compute BLEU on a random subsample of the validation dataset to speed up the overall training process\. Use the `bleu_sample_size` parameter to specify the subsample\.  |  Maximize  | 
+| validation:perplexity |  [Perplexity](https://en.wikipedia.org/wiki/Perplexity), is a loss function computed on the validation dataset\. Perplexity measures the cross\-entropy between an empirical sample and the distribution predicted by a model and so provides a measure of how well a model predicts the sample values, Models that are good at predicting a sample have a low perplexity\.  |  Minimize  | 
 
 ## Tunable Hyperparameters<a name="seq-2-seq-tunable-hyperparameters"></a>
 
-You can tune the following hyperparameters for the &IMlong; sequence to sequence algorithm\. The hyperparameters that have the greatest impact on sequence to sequence objective metrics are: `batch_size`, `optimizer_type`, `learning_rate`, `num_layers_encoder`, and `num_layers_decoder`\.
+You can tune the following hyperparameters for the Amazon SageMaker Sequence to Sequence algorithm\. The hyperparameters that have the greatest impact on sequence to sequence objective metrics are: `batch_size`, `optimizer_type`, `learning_rate`, `num_layers_encoder`, and `num_layers_decoder`\.
 
 
 | Parameter Name | Parameter Type | Recommended Ranges | 

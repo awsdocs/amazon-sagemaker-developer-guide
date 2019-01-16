@@ -10,7 +10,7 @@ View CloudWatch Logs for notebook instance lifecycle configurations in log group
 
 Lifecycle configuration scripts cannot run for longer than 5 minutes\. If a script runs for longer than 5 minutes, it fails and the notebook instance is not created or started\.
 
-For information about notebook instance lifestyle configurations, see [Step 2\.1: \(Optional\) Customize a Notebook Instance ](notebook-lifecycle-config.md)\.
+For information about notebook instance lifestyle configurations, see [Step 2\.1: \(Optional\) Customize a Notebook Instance](https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html)\.
 
 ## Request Syntax<a name="API_CreateNotebookInstanceLifecycleConfig_RequestSyntax"></a>
 
@@ -44,13 +44,13 @@ Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`
 Required: Yes
 
  ** [OnCreate](#API_CreateNotebookInstanceLifecycleConfig_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstanceLifecycleConfig-request-OnCreate"></a>
-A shell script that runs only once, when you create a notebook instance\.  
+A shell script that runs only once, when you create a notebook instance\. The shell script must be a base64\-encoded string\.  
 Type: Array of [NotebookInstanceLifecycleHook](API_NotebookInstanceLifecycleHook.md) objects  
 Array Members: Maximum number of 1 item\.  
 Required: No
 
  ** [OnStart](#API_CreateNotebookInstanceLifecycleConfig_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstanceLifecycleConfig-request-OnStart"></a>
-A shell script that runs every time you start a notebook instance, including when you create the notebook instance\.  
+A shell script that runs every time you start a notebook instance, including when you create the notebook instance\. The shell script must be a base64\-encoded string\.  
 Type: Array of [NotebookInstanceLifecycleHook](API_NotebookInstanceLifecycleHook.md) objects  
 Array Members: Maximum number of 1 item\.  
 Required: No

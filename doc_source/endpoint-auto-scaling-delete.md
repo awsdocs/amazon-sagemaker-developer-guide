@@ -24,7 +24,7 @@ You can use the AWS CLI or the Application Auto Scaling API to delete a scaling 
 
 ### Deleting a Scaling Policy \(AWS CLI\)<a name="endpoint-auto-scaling-delete-code-cli"></a>
 
-To delete a scaling policy from a variant, use the [http://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/delete-scaling-policy.html](http://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/delete-scaling-policy.html) AWS CLI command with the following parameters:
+To delete a scaling policy from a variant, use the [https://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/delete-scaling-policy.html](https://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/delete-scaling-policy.html) AWS CLI command with the following parameters:
 + `--policy-name`—The name of the scaling policy\.
 + `--resource-id`—The resource identifier for the variant\. For this parameter, the resource type is `endpoint` and the unique identifier is the name of the variant\. For example, `endpoint/MyEndpoint/variant/MyVariant`\.
 + `--service-namespace`—Set this value to `sagemaker`\.
@@ -43,7 +43,7 @@ aws application-autoscaling delete-scaling-policy \
 
 ### Deleting a Scaling Policy \(Application Auto Scaling API\)<a name="endpoint-auto-scaling-delete-code-api"></a>
 
-To delete a scaling policy from your variant, use the [http://docs.aws.amazon.com//autoscaling/application/APIReference/API_DeleteScalingPolicy.html](http://docs.aws.amazon.com//autoscaling/application/APIReference/API_DeleteScalingPolicy.html) Application Auto Scaling API action with the following parameters:
+To delete a scaling policy from your variant, use the [https://docs.aws.amazon.com//autoscaling/application/APIReference/API_DeleteScalingPolicy.html](https://docs.aws.amazon.com//autoscaling/application/APIReference/API_DeleteScalingPolicy.html) Application Auto Scaling API action with the following parameters:
 + `PolicyName`—The name of the scaling policy\.
 + `ServiceNamespace`—Set this value to `sagemaker`\.
 + `ResourceID`—The resource identifier for the variant\. For this parameter, the resource type is `endpoint` and the unique identifier is the name of the variant,\. For example, `endpoint/MyEndpoint/variant/MyVariant`\.

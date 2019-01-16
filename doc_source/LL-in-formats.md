@@ -2,7 +2,9 @@
 
 ## JSON<a name="LL-json"></a>
 
-Binary classification
+All Amazon SageMaker built\-in algorithms adhere to the common input inference format described in [Common Data Formats \- Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html)\. The following are the available output formats for the Amazon SageMaker linear learner algorithm\.
+
+**Binary Classification**
 
 ```
 let response =   {
@@ -15,7 +17,7 @@ let response =   {
 }
 ```
 
-Multiclass classification
+**Multiclass Classification**
 
 ```
 let response =   {
@@ -28,7 +30,7 @@ let response =   {
 }
 ```
 
-Regression
+**Regression**
 
 ```
 let response =   {
@@ -37,32 +39,24 @@ let response =   {
             "score": 0.4
         } 
     ]
-            "predicted_label":  {
-                    "values":   [3]
-            }
-       },
-    "uid":  "abc123",
-    "metadata": "{created_at: '2017-06-03'}"
-   }
-]
 }
 ```
 
 ## JSONLINES<a name="LL-jsonlines"></a>
 
-Binary classification
+**Binary Classification**
 
 ```
 {"score": 0.4, "predicted_label": 0}
 ```
 
-Multiclass classification
+**Multiclass Classification**
 
 ```
 {"score": 0.4, "predicted_label": 0}
 ```
 
-Regression
+**Regression**
 
 ```
 {"score": 0.4}
@@ -70,7 +64,7 @@ Regression
 
 ## RECORDIO<a name="LL-recordio"></a>
 
-Binary classification
+**Binary Classification**
 
 ```
 [
@@ -90,7 +84,7 @@ Binary classification
 ]
 ```
 
-Multiclass classification
+**Multiclass Classification**
 
 ```
 [
@@ -110,7 +104,7 @@ Multiclass classification
 ]
 ```
 
-Regression
+**Regression**
 
 ```
 [

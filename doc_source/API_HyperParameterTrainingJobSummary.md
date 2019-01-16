@@ -30,7 +30,7 @@ Valid Values:` Succeeded | Pending | Failed`
 Required: No
 
  **TrainingEndTime**   <a name="SageMaker-Type-HyperParameterTrainingJobSummary-TrainingEndTime"></a>
-The date and time that the training job ended\.  
+Specifies the time when the training job ends on training instances\. You are billed for the time interval between the value of `TrainingStartTime` and this time\. For successful jobs and stopped jobs, this is the time after model artifacts are uploaded\. For failed jobs, this is the time when Amazon SageMaker detects a job failure\.  
 Type: Timestamp  
 Required: No
 
@@ -65,6 +65,13 @@ Type: String to string map
 Key Length Constraints: Maximum length of 256\.  
 Value Length Constraints: Maximum length of 256\.  
 Required: Yes
+
+ **TuningJobName**   <a name="SageMaker-Type-HyperParameterTrainingJobSummary-TuningJobName"></a>
+The HyperParameter tuning job that launched the training job\.  
+Type: String  
+Length Constraints: Minimum length of 1\. Maximum length of 32\.  
+Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
+Required: No
 
 ## See Also<a name="API_HyperParameterTrainingJobSummary_SeeAlso"></a>
 

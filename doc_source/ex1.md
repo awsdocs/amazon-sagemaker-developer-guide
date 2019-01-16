@@ -22,7 +22,7 @@ The high\-level library abstracts several implementation details, and is easy to
 
 There are two ways to use this exercise:
 + Follow the steps to create, deploy, and validate the model\. You create a Jupyter notebook in your Amazon SageMaker notebook instance, and copy code, paste it into the notebook, and run it\. 
-+ If you're familiar with using sample notebooks, open and run the follwing example notebooks that Amazon SageMaker provides in the **SageMaker Python SDK** section of the **SageMaker Examples** tab of your notebook instance:
++ If you're familiar with using sample notebooks, open and run the following example notebooks that Amazon SageMaker provides in the **SageMaker Python SDK** section of the **SageMaker Examples** tab of your notebook instance:
 
   `kmeans_mnist.ipynb`
 

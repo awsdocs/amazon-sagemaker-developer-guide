@@ -10,7 +10,7 @@ View CloudWatch Logs for notebook instance lifecycle configurations in log group
 
 Lifecycle configuration scripts cannot run for longer than 5 minutes\. If a script runs for longer than 5 minutes, it fails and the notebook instance is not created or started\.
 
-For information about notebook instance lifestyle configurations, see [Step 2\.1: \(Optional\) Customize a Notebook Instance ](notebook-lifecycle-config.md)\.
+For information about notebook instance lifestyle configurations, see [Step 2\.1: \(Optional\) Customize a Notebook Instance](https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html)\.
 
 ## Contents<a name="API_NotebookInstanceLifecycleHook_Contents"></a>
 

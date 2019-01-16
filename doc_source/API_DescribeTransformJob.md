@@ -33,6 +33,7 @@ Required: Yes
       "string" : "string" 
    },
    "[FailureReason](#SageMaker-DescribeTransformJob-response-FailureReason)": "string",
+   "[LabelingJobArn](#SageMaker-DescribeTransformJob-response-LabelingJobArn)": "string",
    "[MaxConcurrentTransforms](#SageMaker-DescribeTransformJob-response-MaxConcurrentTransforms)": number,
    "[MaxPayloadInMB](#SageMaker-DescribeTransformJob-response-MaxPayloadInMB)": number,
    "[ModelName](#SageMaker-DescribeTransformJob-response-ModelName)": "string",
@@ -59,7 +60,8 @@ Required: Yes
    },
    "[TransformResources](#SageMaker-DescribeTransformJob-response-TransformResources)": { 
       "[InstanceCount](API_TransformResources.md#SageMaker-Type-TransformResources-InstanceCount)": number,
-      "[InstanceType](API_TransformResources.md#SageMaker-Type-TransformResources-InstanceType)": "string"
+      "[InstanceType](API_TransformResources.md#SageMaker-Type-TransformResources-InstanceType)": "string",
+      "[VolumeKmsKeyId](API_TransformResources.md#SageMaker-Type-TransformResources-VolumeKmsKeyId)": "string"
    },
    "[TransformStartTime](#SageMaker-DescribeTransformJob-response-TransformStartTime)": number
 }
@@ -72,7 +74,7 @@ If the action is successful, the service sends back an HTTP 200 response\.
 The following data is returned in JSON format by the service\.
 
  ** [BatchStrategy](#API_DescribeTransformJob_ResponseSyntax) **   <a name="SageMaker-DescribeTransformJob-response-BatchStrategy"></a>
-SingleRecord means only one record was used per a batch\. `MultiRecord` means batches contained as many records that could possibly fit within the `MaxPayloadInMB` limit\.  
+ If you want to include only one record in a batch, specify `SingleRecord`\.\. If you want batches to contain a maximum of the number of records specified in the `MaxPayloadInMB` parameter, specify `MultiRecord`\.S  
 Type: String  
 Valid Values:` MultiRecord | SingleRecord` 
 
@@ -91,13 +93,19 @@ If the transform job failed, the reason that it failed\.
 Type: String  
 Length Constraints: Maximum length of 1024\.
 
+ ** [LabelingJobArn](#API_DescribeTransformJob_ResponseSyntax) **   <a name="SageMaker-DescribeTransformJob-response-LabelingJobArn"></a>
+The Amazon Resource Name \(ARN\) of the Amazon SageMaker Ground Truth labeling job that created the transform or training job\.  
+Type: String  
+Length Constraints: Maximum length of 2048\.  
+Pattern: `arn:aws[a-z\-]*:sagemaker:[a-z0-9\-]*:[0-9]{12}:labeling-job/.*` 
+
  ** [MaxConcurrentTransforms](#API_DescribeTransformJob_ResponseSyntax) **   <a name="SageMaker-DescribeTransformJob-response-MaxConcurrentTransforms"></a>
 The maximum number of parallel requests on each instance node that can be launched in a transform job\. The default value is 1\.  
 Type: Integer  
 Valid Range: Minimum value of 0\.
 
  ** [MaxPayloadInMB](#API_DescribeTransformJob_ResponseSyntax) **   <a name="SageMaker-DescribeTransformJob-response-MaxPayloadInMB"></a>
-The maximum payload size , in MB used in the transform job\.  
+The maximum payload size, in MB, used in the transform job\.  
 Type: Integer  
 Valid Range: Minimum value of 0\.
 
@@ -108,7 +116,7 @@ Length Constraints: Maximum length of 63\.
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*` 
 
  ** [TransformEndTime](#API_DescribeTransformJob_ResponseSyntax) **   <a name="SageMaker-DescribeTransformJob-response-TransformEndTime"></a>
-Indicates when the transform job is `Completed`, `Stopped`, or `Failed`\. You are billed for the time interval between this time and the value of `TransformStartTime`\.  
+Indicates when the transform job has been completed, or has stopped or failed\. You are billed for the time interval between this time and the value of `TransformStartTime`\.  
 Type: Timestamp
 
  ** [TransformInput](#API_DescribeTransformJob_ResponseSyntax) **   <a name="SageMaker-DescribeTransformJob-response-TransformInput"></a>

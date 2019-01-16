@@ -27,7 +27,19 @@ Required: Yes
 
 ```
 {
+   "[Containers](#SageMaker-DescribeModel-response-Containers)": [ 
+      { 
+         "[ContainerHostname](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-ContainerHostname)": "string",
+         "[Environment](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-Environment)": { 
+            "string" : "string" 
+         },
+         "[Image](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-Image)": "string",
+         "[ModelDataUrl](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-ModelDataUrl)": "string",
+         "[ModelPackageName](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-ModelPackageName)": "string"
+      }
+   ],
    "[CreationTime](#SageMaker-DescribeModel-response-CreationTime)": number,
+   "[EnableNetworkIsolation](#SageMaker-DescribeModel-response-EnableNetworkIsolation)": boolean,
    "[ExecutionRoleArn](#SageMaker-DescribeModel-response-ExecutionRoleArn)": "string",
    "[ModelArn](#SageMaker-DescribeModel-response-ModelArn)": "string",
    "[ModelName](#SageMaker-DescribeModel-response-ModelName)": "string",
@@ -37,7 +49,8 @@ Required: Yes
          "string" : "string" 
       },
       "[Image](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-Image)": "string",
-      "[ModelDataUrl](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-ModelDataUrl)": "string"
+      "[ModelDataUrl](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-ModelDataUrl)": "string",
+      "[ModelPackageName](API_ContainerDefinition.md#SageMaker-Type-ContainerDefinition-ModelPackageName)": "string"
    },
    "[VpcConfig](#SageMaker-DescribeModel-response-VpcConfig)": { 
       "[SecurityGroupIds](API_VpcConfig.md#SageMaker-Type-VpcConfig-SecurityGroupIds)": [ "string" ],
@@ -52,9 +65,19 @@ If the action is successful, the service sends back an HTTP 200 response\.
 
 The following data is returned in JSON format by the service\.
 
+ ** [Containers](#API_DescribeModel_ResponseSyntax) **   <a name="SageMaker-DescribeModel-response-Containers"></a>
+The containers in the inference pipeline\.  
+Type: Array of [ContainerDefinition](API_ContainerDefinition.md) objects  
+Array Members: Maximum number of 5 items\.
+
  ** [CreationTime](#API_DescribeModel_ResponseSyntax) **   <a name="SageMaker-DescribeModel-response-CreationTime"></a>
 A timestamp that shows when the model was created\.  
 Type: Timestamp
+
+ ** [EnableNetworkIsolation](#API_DescribeModel_ResponseSyntax) **   <a name="SageMaker-DescribeModel-response-EnableNetworkIsolation"></a>
+If `True`, no inbound or outbound network calls can be made to or from the model container\.  
+The Semantic Segmentation built\-in algorithm does not support network isolation\.
+Type: Boolean
 
  ** [ExecutionRoleArn](#API_DescribeModel_ResponseSyntax) **   <a name="SageMaker-DescribeModel-response-ExecutionRoleArn"></a>
 The Amazon Resource Name \(ARN\) of the IAM role that you specified for the model\.  
@@ -78,7 +101,7 @@ The location of the primary inference code, associated artifacts, and custom env
 Type: [ContainerDefinition](API_ContainerDefinition.md) object
 
  ** [VpcConfig](#API_DescribeModel_ResponseSyntax) **   <a name="SageMaker-DescribeModel-response-VpcConfig"></a>
-A [VpcConfig](API_VpcConfig.md) object that specifies the VPC that this model has access to\. For more information, see [Protect Models by Using an Amazon Virtual Private Cloud](host-vpc.md)   
+A [VpcConfig](API_VpcConfig.md) object that specifies the VPC that this model has access to\. For more information, see [Protect Endpoints by Using an Amazon Virtual Private Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html)   
 Type: [VpcConfig](API_VpcConfig.md) object
 
 ## Errors<a name="API_DescribeModel_Errors"></a>

@@ -20,8 +20,8 @@ Tune the Amazon SageMaker object detection model with the following hyperparamet
 
 | Parameter Name | Parameter Type | Recommended Ranges | 
 | --- | --- | --- | 
-| mini\_batch\_size |  IntegerParameterRanges  |  MinValue: 8, MaxValue: 64  | 
 | learning\_rate |  ContinuousParameterRange  |  MinValue: 1e\-6, MaxValue: 0\.5  | 
-| optimizer |  CategoricalParameterRanges  |  \['sgd', 'adam', 'rmsprop', 'adadelta'\]  | 
+| mini\_batch\_size |  IntegerParameterRanges  |  MinValue: 8, MaxValue: 64  | 
 | momentum |  ContinuousParameterRange  |  MinValue: 0\.0, MaxValue: 0\.999  | 
+| optimizer |  CategoricalParameterRanges  |  \['sgd', 'adam', 'rmsprop', 'adadelta'\]  | 
 | weight\_decay |  ContinuousParameterRange  |  MinValue: 0\.0, MaxValue: 0\.999  | 

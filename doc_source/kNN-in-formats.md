@@ -1,4 +1,6 @@
-# K\-Nearest Neighbors Training Input Data Formats<a name="kNN-in-formats"></a>
+# Data Formats for K\-Nearest Neighbors Training Input<a name="kNN-in-formats"></a>
+
+All Amazon SageMaker built\-in algorithms adhere to the common input training formats described in [Common Data Formats \- Training](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-training.html)\. This topic contains a list of the available input formats for the Amazon SageMaker k\-nearest\-neighbor algorithm\.
 
 ## CSV<a name="kNN-training-data-csv"></a>
 

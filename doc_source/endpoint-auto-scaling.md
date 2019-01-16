@@ -11,7 +11,7 @@ For information about deploying trained models as endpoints, see [Step 3\.4\.1: 
 **Topics**
 + [Automatic Scaling Components](#endpoint-auto-scaling-policy)
 + [Before You Begin](#endpoint-auto-scaling-target-byb)
-+ [Related Topics](#w4ab1c29c21)
++ [Related Topics](#w8aac40c21)
 + [Configure Automatic Scaling for a Variant](endpoint-auto-scaling-add-policy.md)
 + [Editing a Scaling Policy](endpoint-auto-scaling-edit.md)
 + [Deleting a Scaling Policy](endpoint-auto-scaling-delete.md)
@@ -74,11 +74,11 @@ If you are using a custom permission policy, you must include the following perm
 
 ### Service\-Linked Role<a name="endpoint-auto-scaling-slr"></a>
 
-A service\-linked role is a unique type of IAM role that is linked directly to an AWS service\. Service\-linked roles are predefined by the service and include all of the permissions that the service requires to call other AWS services on your behalf\. Automatic scaling uses the `AWSServiceRoleForApplicationAutoScaling_SageMakerEndpoint` service\-linked role\. For more information, see [Service\-Linked Roles for Application Auto Scaling](http://docs.aws.amazon.com//autoscaling/application/userguide/application-autoscaling-service-linked-roles.html) in the *Application Auto Scaling User Guide*\.
+A service\-linked role is a unique type of IAM role that is linked directly to an AWS service\. Service\-linked roles are predefined by the service and include all of the permissions that the service requires to call other AWS services on your behalf\. Automatic scaling uses the `AWSServiceRoleForApplicationAutoScaling_SageMakerEndpoint` service\-linked role\. For more information, see [Service\-Linked Roles for Application Auto Scaling](https://docs.aws.amazon.com//autoscaling/application/userguide/application-autoscaling-service-linked-roles.html) in the *Application Auto Scaling User Guide*\.
 
 ### Target Metric<a name="endpoint-auto-scaling-target-metric"></a>
 
-Amazon SageMaker automatic scaling uses target\-tracking scaling policies\. You configure the *target\-tracking scaling policy* by specifying a predefined or custom metric and a target value for the metric \. For more information, see [Target Tracking Scaling Policies](http://docs.aws.amazon.com//autoscaling/application/userguide/application-auto-scaling-target-tracking.html)\. 
+Amazon SageMaker automatic scaling uses target\-tracking scaling policies\. You configure the *target\-tracking scaling policy* by specifying a predefined or custom metric and a target value for the metric \. For more information, see [Target Tracking Scaling Policies](https://docs.aws.amazon.com//autoscaling/application/userguide/application-auto-scaling-target-tracking.html)\. 
 
 Amazon CloudWatch alarms trigger the scaling policy , which calculate how to adjust scaling based on the metric and target value that you set\. The scaling policy adds or removes endpoint instances as required to keep the metric at, or close to, the specified target value\. In addition, a target\-tracking scaling policy also adjusts to fluctuations in the metric when a workload changes\. The policy minimizes rapid fluctuations in the number of available instances for your variant\.
 
@@ -112,5 +112,5 @@ Before you can use automatically scaled model deployment, create an Amazon SageM
 
 When automatic scaling adds a new variant instance, it is the same instance class as the one used by the primary instance\.
 
-## Related Topics<a name="w4ab1c29c21"></a>
-+ [What Is Application Auto Scaling?](http://docs.aws.amazon.com//autoscaling/application/userguide/what-is-application-auto-scaling.html)
+## Related Topics<a name="w8aac40c21"></a>
++ [What Is Application Auto Scaling?](https://docs.aws.amazon.com//autoscaling/application/userguide/what-is-application-auto-scaling.html)

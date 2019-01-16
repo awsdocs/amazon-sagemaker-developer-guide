@@ -4,6 +4,12 @@ Identifies a model that you want to host and the resources to deploy for hosting
 
 ## Contents<a name="API_ProductionVariant_Contents"></a>
 
+ **AcceleratorType**   <a name="SageMaker-Type-ProductionVariant-AcceleratorType"></a>
+The size of the Elastic Inference \(EI\) instance to use for the production variant\. EI instances provide on\-demand GPU computing for inference\. For more information, see [Using Elastic Inference in Amazon SageMaker](http://docs.aws.amazon.com/sagemaker/latest/dg/ei.html)\. For more information, see [Using Elastic Inference in Amazon SageMaker](http://docs.aws.amazon.com/sagemaker/latest/dg/ei.html)\.  
+Type: String  
+Valid Values:` ml.eia1.medium | ml.eia1.large | ml.eia1.xlarge`   
+Required: No
+
  **InitialInstanceCount**   <a name="SageMaker-Type-ProductionVariant-InitialInstanceCount"></a>
 Number of instances to launch initially\.  
 Type: Integer  

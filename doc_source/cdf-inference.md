@@ -228,7 +228,7 @@ A single record in sparse format is represented as:
 {"data": {"features": { "keys": [26, 182, 232, 243, 431], "shape": [2000], "values": [1, 1, 1, 4, 1] } } }
 ```
 
-Multiple records are represented as a concatination of the above single\-record representations, separated by newline characters:
+Multiple records are represented as a concatenation of the above single\-record representations, separated by newline characters:
 
 ```
 {"data": {"features": { "keys": [0, 1, 3], "shape": [4], "values": [1, 4, 1] } } }

@@ -6,8 +6,10 @@ Returns a list of the Amazon SageMaker notebook instances in the requester's acc
 
 ```
 {
+   "[AdditionalCodeRepositoryEquals](#SageMaker-ListNotebookInstances-request-AdditionalCodeRepositoryEquals)": "string",
    "[CreationTimeAfter](#SageMaker-ListNotebookInstances-request-CreationTimeAfter)": number,
    "[CreationTimeBefore](#SageMaker-ListNotebookInstances-request-CreationTimeBefore)": number,
+   "[DefaultCodeRepositoryContains](#SageMaker-ListNotebookInstances-request-DefaultCodeRepositoryContains)": "string",
    "[LastModifiedTimeAfter](#SageMaker-ListNotebookInstances-request-LastModifiedTimeAfter)": number,
    "[LastModifiedTimeBefore](#SageMaker-ListNotebookInstances-request-LastModifiedTimeBefore)": number,
    "[MaxResults](#SageMaker-ListNotebookInstances-request-MaxResults)": number,
@@ -26,6 +28,13 @@ For information about the parameters that are common to all actions, see [Common
 
 The request accepts the following data in JSON format\.
 
+ ** [AdditionalCodeRepositoryEquals](#API_ListNotebookInstances_RequestSyntax) **   <a name="SageMaker-ListNotebookInstances-request-AdditionalCodeRepositoryEquals"></a>
+A filter that returns only notebook instances with associated with the specified git repository\.  
+Type: String  
+Length Constraints: Minimum length of 1\. Maximum length of 1024\.  
+Pattern: `^https://([^/]+)/?(.*)$|^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
+Required: No
+
  ** [CreationTimeAfter](#API_ListNotebookInstances_RequestSyntax) **   <a name="SageMaker-ListNotebookInstances-request-CreationTimeAfter"></a>
 A filter that returns only notebook instances that were created after the specified time \(timestamp\)\.  
 Type: Timestamp  
@@ -34,6 +43,13 @@ Required: No
  ** [CreationTimeBefore](#API_ListNotebookInstances_RequestSyntax) **   <a name="SageMaker-ListNotebookInstances-request-CreationTimeBefore"></a>
 A filter that returns only notebook instances that were created before the specified time \(timestamp\)\.   
 Type: Timestamp  
+Required: No
+
+ ** [DefaultCodeRepositoryContains](#API_ListNotebookInstances_RequestSyntax) **   <a name="SageMaker-ListNotebookInstances-request-DefaultCodeRepositoryContains"></a>
+A string in the name or URL of a Git repository associated with this notebook instance\. This filter returns only notebook instances associated with a git repository with a name that contains the specified string\.  
+Type: String  
+Length Constraints: Maximum length of 1024\.  
+Pattern: `[a-zA-Z0-9-]+`   
 Required: No
 
  ** [LastModifiedTimeAfter](#API_ListNotebookInstances_RequestSyntax) **   <a name="SageMaker-ListNotebookInstances-request-LastModifiedTimeAfter"></a>
@@ -55,12 +71,13 @@ Required: No
  ** [NameContains](#API_ListNotebookInstances_RequestSyntax) **   <a name="SageMaker-ListNotebookInstances-request-NameContains"></a>
 A string in the notebook instances' name\. This filter returns only notebook instances whose name contains the specified string\.  
 Type: String  
+Length Constraints: Maximum length of 63\.  
 Pattern: `[a-zA-Z0-9-]+`   
 Required: No
 
  ** [NextToken](#API_ListNotebookInstances_RequestSyntax) **   <a name="SageMaker-ListNotebookInstances-request-NextToken"></a>
  If the previous call to the `ListNotebookInstances` is truncated, the response includes a `NextToken`\. You can use this token in your subsequent `ListNotebookInstances` request to fetch the next set of notebook instances\.   
- You might specify a filter or a sort order in your request\. When response is truncated, you must use the same values for the filer and sort order in the next request\. 
+You might specify a filter or a sort order in your request\. When response is truncated, you must use the same values for the filer and sort order in the next request\. 
 Type: String  
 Length Constraints: Maximum length of 8192\.  
 Required: No
@@ -97,7 +114,9 @@ Required: No
    "[NextToken](#SageMaker-ListNotebookInstances-response-NextToken)": "string",
    "[NotebookInstances](#SageMaker-ListNotebookInstances-response-NotebookInstances)": [ 
       { 
+         "[AdditionalCodeRepositories](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-AdditionalCodeRepositories)": [ "string" ],
          "[CreationTime](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-CreationTime)": number,
+         "[DefaultCodeRepository](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-DefaultCodeRepository)": "string",
          "[InstanceType](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-InstanceType)": "string",
          "[LastModifiedTime](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-LastModifiedTime)": number,
          "[NotebookInstanceArn](API_NotebookInstanceSummary.md#SageMaker-Type-NotebookInstanceSummary-NotebookInstanceArn)": "string",

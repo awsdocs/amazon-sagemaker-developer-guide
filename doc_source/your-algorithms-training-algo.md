@@ -60,6 +60,7 @@ When you send a [CreateTrainingJob](API_CreateTrainingJob.md) request to Amazon 
 
 **Topics**
 + [Hyperparameters](#your-algorithms-training-algo-running-container-hyperparameters)
++ [Environment Variables](#your-algorithms-training-algo-running-container-environment-variables)
 + [Input Data Configuration](#your-algorithms-training-algo-running-container-inputdataconfig)
 + [Training Data](#your-algorithms-training-algo-running-container-trainingdata)
 + [Distributed Training Configuration](#your-algorithms-training-algo-running-container-dist-training)
@@ -67,6 +68,9 @@ When you send a [CreateTrainingJob](API_CreateTrainingJob.md) request to Amazon 
 ### Hyperparameters<a name="your-algorithms-training-algo-running-container-hyperparameters"></a>
 
  Amazon SageMaker makes the hyperparameters in a `CreateTrainingJob` request available in the Docker container in the `/opt/ml/input/config/hyperparameters.json` file\.
+
+### Environment Variables<a name="your-algorithms-training-algo-running-container-environment-variables"></a>
++ TRAINING\_JOB\_NAME—The training job name stored in the `TrainingJobName` parameter in a [CreateTrainingJob](API_CreateTrainingJob.md) request\.
 
 ### Input Data Configuration<a name="your-algorithms-training-algo-running-container-inputdataconfig"></a>
 
@@ -152,4 +156,4 @@ As your algorithm runs in a container, it generates output including the status 
 
 ## Next Step<a name="byota-next-step"></a>
 
- [Using Your Own Inference Code \(Hosting Services\)](your-algorithms-inference-code.md) 
+ [Using Your Own Inference Code](your-algorithms-inference-main.md) 

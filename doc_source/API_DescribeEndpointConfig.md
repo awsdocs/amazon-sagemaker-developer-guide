@@ -33,6 +33,7 @@ Required: Yes
    "[KmsKeyId](#SageMaker-DescribeEndpointConfig-response-KmsKeyId)": "string",
    "[ProductionVariants](#SageMaker-DescribeEndpointConfig-response-ProductionVariants)": [ 
       { 
+         "[AcceleratorType](API_ProductionVariant.md#SageMaker-Type-ProductionVariant-AcceleratorType)": "string",
          "[InitialInstanceCount](API_ProductionVariant.md#SageMaker-Type-ProductionVariant-InitialInstanceCount)": number,
          "[InitialVariantWeight](API_ProductionVariant.md#SageMaker-Type-ProductionVariant-InitialVariantWeight)": number,
          "[InstanceType](API_ProductionVariant.md#SageMaker-Type-ProductionVariant-InstanceType)": "string",

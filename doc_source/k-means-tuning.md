@@ -13,8 +13,8 @@ The k\-means algorithm computes the following metrics during training\. When tun
 
 | Metric Name | Description | Optimization Direction | 
 | --- | --- | --- | 
-| test:ssd | Sum of the squared distances between each record in the test set and the closest center of the model\. | Minimize | 
 | test:msd | Mean squared distances between each record in the test set and the closest center of the model\. | Minimize | 
+| test:ssd | Sum of the squared distances between each record in the test set and the closest center of the model\. | Minimize | 
 
 ## Tunable Hyperparameters<a name="km-tunable-hyperparameters"></a>
 
@@ -23,7 +23,7 @@ Tune the Amazon SageMaker k\-means model with the following hyperparameters\. Th
 
 | Parameter Name | Parameter Type | Recommended Ranges | 
 | --- | --- | --- | 
-| mini\_batch\_size | IntegerParameterRanges | MinValue: 3000, MaxValue:15000 | 
+| epochs | IntegerParameterRanges | MinValue: 1, MaxValue:10 | 
 | extra\_center\_factor | IntegerParameterRanges | MinValue: 4, MaxValue:10 | 
 | init\_method | CategoricalParameterRanges | \['kmeans\+\+', 'random'\] | 
-| epochs | IntegerParameterRanges | MinValue: 1, MaxValue:10 | 
+| mini\_batch\_size | IntegerParameterRanges | MinValue: 3000, MaxValue:15000 | 

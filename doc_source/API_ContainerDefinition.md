@@ -24,14 +24,21 @@ The Amazon EC2 Container Registry \(Amazon ECR\) path where inference code is st
 Type: String  
 Length Constraints: Maximum length of 255\.  
 Pattern: `[\S]+`   
-Required: Yes
+Required: No
 
  **ModelDataUrl**   <a name="SageMaker-Type-ContainerDefinition-ModelDataUrl"></a>
 The S3 path where the model artifacts, which result from model training, are stored\. This path must point to a single gzip compressed tar archive \(\.tar\.gz suffix\)\.   
-If you provide a value for this parameter, Amazon SageMaker uses AWS Security Token Service to download model artifacts from the S3 path you provide\. AWS STS is activated in your IAM user account by default\. If you previously deactivated AWS STS for a region, you need to reactivate AWS STS for that region\. For more information, see [Activating and Deactivating AWS STS i an AWS Region](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html) in the *AWS Identity and Access Management User Guide*\.  
+If you provide a value for this parameter, Amazon SageMaker uses AWS Security Token Service to download model artifacts from the S3 path you provide\. AWS STS is activated in your IAM user account by default\. If you previously deactivated AWS STS for a region, you need to reactivate AWS STS for that region\. For more information, see [Activating and Deactivating AWS STS in an AWS Region](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html) in the *AWS Identity and Access Management User Guide*\.  
 Type: String  
 Length Constraints: Maximum length of 1024\.  
 Pattern: `^(https|s3)://([^/]+)/?(.*)$`   
+Required: No
+
+ **ModelPackageName**   <a name="SageMaker-Type-ContainerDefinition-ModelPackageName"></a>
+The name of the model package to use to create the model\.  
+Type: String  
+Length Constraints: Minimum length of 1\. Maximum length of 170\.  
+Pattern: `(arn:aws[a-z\-]*:sagemaker:[a-z0-9\-]*:[0-9]{12}:[a-z\-]*\/)?([a-zA-Z0-9]([a-zA-Z0-9-]){0,62})(?<!-)$`   
 Required: No
 
 ## See Also<a name="API_ContainerDefinition_SeeAlso"></a>

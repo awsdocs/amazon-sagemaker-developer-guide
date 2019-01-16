@@ -17,7 +17,13 @@ Valid Values:` ml.m4.xlarge | ml.m4.2xlarge | ml.m4.4xlarge | ml.m4.10xlarge | m
 Required: Yes
 
  **VolumeKmsKeyId**   <a name="SageMaker-Type-ResourceConfig-VolumeKmsKeyId"></a>
-The Amazon Resource Name \(ARN\) of a AWS Key Management Service key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance\(s\) that run the training job\.  
+The AWS Key Management Service \(AWS KMS\) key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance\(s\) that run the training job\. The `VolumeKmsKeyId` can be any of the following formats:  
++ // KMS Key ID
+
+   `"1234abcd-12ab-34cd-56ef-1234567890ab"` 
++ // Amazon Resource Name \(ARN\) of a KMS Key
+
+   `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"` 
 Type: String  
 Length Constraints: Maximum length of 2048\.  
 Required: No
