@@ -132,7 +132,10 @@ train_data = sagemaker.session.s3_input(your_augmented_manifest_file,
                                         distribution='FullyReplicated',
                                         content_type='image/jpeg',
                                         s3_data_type='AugmentedManifestFile',
-                                        attribute_names=['source-ref', 'annotations']) 
+                                        attribute_names=['source-ref', 'annotations'],
+                                        input_mode='Pipe',
+                                        record_wrapping='RecordIO')
+                                        
 data_channels = {'train': train_data}
 
 # Train a model.
