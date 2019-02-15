@@ -29,6 +29,30 @@ For inference, the linear learner algorithm supports the `application/json`, `ap
 
 For more information on input and output file formats, see [Linear Learner Response Formats](LL-in-formats.md) for inference, and the [Linear Learner Sample Notebooks](#ll-sample-notebooks)\.
 
+**To use a model trained with SageMaker Linear Learner in MXNet**
++ Use the following Python code:
+
+  ```
+  import mxnet as mx
+  import tarfile
+
+  t = tarfile.open('model.tar.gz', 'r:gz')
+  t.extractall()
+  
+  # Load the mxnet module from the model files
+  mod = mx.module.Module.load('mx-mod', 0)
+  # model's weights
+  mod._arg_params['fc0_weight'].asnumpy().flatten()
+  
+  # model bias
+  mod._arg_params['fc0_bias'].asnumpy().flatten()
+
+  mod.bind(data_shapes=data_iter.provide_data) #data_iter is an iterator configured with your test data
+
+  #perform inference
+  result = mod.predict(data_iter)
+  ```
+
 ## EC2 Instance Recommendation<a name="ll-instances"></a>
 
 You can train the linear learner algorithm on single\- or multi\-machine CPU and GPU instances\. During testing, we have not found substantial evidence that multi\-GPU computers are faster than single\-GPU computers\. Results can vary, depending on your specific use case\.
