@@ -66,7 +66,7 @@ estimator =
                 sagemaker_session=sagemaker_session,
                 metric_definitions=[
                    {'Name': 'train:error', 'Regex': '.*\\[[0-9]+\\]#011train-error:(\\S+).*'},
-                   {'Name': 'validation:error, 'Regex': '.*\\[[0-9]+\\]#011validation-error:(\\S+).*'
+                   {'Name': 'validation:error', 'Regex': '.*\\[[0-9]+\\]#011validation-error:(\\S+).*'
                 ]
             )
 ```
