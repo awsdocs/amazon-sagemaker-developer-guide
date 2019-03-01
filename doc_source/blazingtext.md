@@ -151,6 +151,18 @@ If you have passed the value of k to be more than 1, then response will be in th
 ```
 
 For both supervised \(text classification\) and unsupervised \(Word2Vec\) modes, the binaries \(*\*\.bin*\) produced by BlazingText can be cross\-consumed by fastText and vice versa\. You can use binaries produced by BlazingText by fastText\. Likewise, you can host the model binaries created with fastText using BlazingText\.
+This is an example of how to use a model generated with BlazingText with fastText:
+
+```
+#Download the model artifact from S3
+aws s3 cp s3://<YOUR_S3_BUCKET>/<PREFIX>/model.tar.gz model.tar.gz
+
+#Unzip the model archive
+tar -xzf model.tar.gz
+
+#Use the model archive with fastText
+fasttext predict ./model.bin test.txt
+```
 
 For more details on dataset formats and model hosting, see the example notebooks [here](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/blazingtext_text_classification_dbpedia/blazingtext_text_classification_dbpedia.ipynb), [here](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/blazingtext_hosting_pretrained_fasttext/blazingtext_hosting_pretrained_fasttext.ipynb), and [here](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/blazingtext_word2vec_subwords_text8/blazingtext_word2vec_subwords_text8.ipynb)\.
 
