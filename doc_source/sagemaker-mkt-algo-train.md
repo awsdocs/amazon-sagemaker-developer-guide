@@ -9,7 +9,7 @@ You can create use an algorithm resource to create a training job by using the A
 
 ## Use an Algorithm to Run a Training Job \(Console\)<a name="sagemaker-mkt-algo-train-console"></a>
 
-**To use an algorithm to run a training job in the Amazon SageMaker console:**
+**To use an algorithm to run a training job \(console\)**
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
@@ -73,7 +73,7 @@ You use the model artifacts stored at this location to create a model or model p
 
 ## Use an Algorithm to Run a Training Job \(API\)<a name="sagemaker-mkt-algo-train-api"></a>
 
-To use an algorithm to run a training job by using the Amazon SageMaker API, specify either the name or the Amazon Resource Name \(ARN\) as the `AlgorithmName` field of the [AlgorithmSpecification](API_AlgorithmSpecification.md) object that you pass to [CreateTrainingJob](API_CreateTrainingJob.md)\. For information about training models in Amazon SageMaker, see [Training a Model with Amazon SageMaker ](how-it-works-training.md)\.
+To use an algorithm to run a training job by using the Amazon SageMaker API, specify either the name or the Amazon Resource Name \(ARN\) as the `AlgorithmName` field of the [AlgorithmSpecification](API_AlgorithmSpecification.md) object that you pass to [CreateTrainingJob](API_CreateTrainingJob.md)\. For information about training models in Amazon SageMaker, see [Train a Model with Amazon SageMaker ](how-it-works-training.md)\.
 
 ## Use an Algorithm to Run a Training Job \(Amazon SageMaker Python SDK\)<a name="sagemaker-mkt-algo-train-sdk"></a>
 

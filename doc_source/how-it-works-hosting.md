@@ -1,4 +1,4 @@
-# Deploying a Model on Amazon SageMaker Hosting Services<a name="how-it-works-hosting"></a>
+# Deploy a Model on Amazon SageMaker Hosting Services<a name="how-it-works-hosting"></a>
 
 Amazon SageMaker also provides model hosting services for model deployment, as shown in the following diagram\. Amazon SageMaker provides an HTTPS endpoint where your machine learning model is available to provide inferences\. 
 
@@ -14,9 +14,12 @@ Amazon SageMaker also provides model hosting services for model deployment, as s
 
 1. **Create an HTTPS endpoint**—Provide the endpoint configuration to Amazon SageMaker\. The service launches the ML compute instances and deploys the model or models as specified in the configuration\. For more information, see the [CreateEndpoint](API_CreateEndpoint.md) API\. To get inferences from the model, client applications send requests to the Amazon SageMaker Runtime HTTPS endpoint\. For more information about the API, see the [InvokeEndpoint](API_runtime_InvokeEndpoint.md) API\. 
 
+**Note**  
+When you create an endpoint, Amazon SageMaker attaches an Amazon EBS storage volume to each ML compute instance that hosts the endpoint\. The size of the storage volume depends on the instance type\. For a list of instance types that Amazon SageMaker hosting service supports, see [AWS Service Limits](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_sagemaker)\. For a list of the sizes of the storage volumes that Amazon SageMaker attaches to each instance, see [Amazon SageMaker ML Instance Types](https://aws.amazon.com/sagemaker/pricing/instance-types/)\.
+
 To increase a model's accuracy, you might choose to save the user's input data and ground truth, if available, as part of the training data\. You can then retrain the model periodically with a larger, improved training dataset\.
 
-## Considerations for Deploying Models on Amazon SageMaker Hosting Services<a name="how-it-works-hosting-related-considerations"></a>
+## Best Practices for Deploying Models on Amazon SageMaker Hosting Services<a name="how-it-works-hosting-related-considerations"></a>
 
 When hosting models using Amazon SageMaker hosting services, consider the following:
 + Typically, a client application sends requests to the Amazon SageMaker HTTPS endpoint to obtain inferences from a deployed model\. You can also send requests to this endpoint from your Jupyter notebook during testing\.
@@ -28,7 +31,7 @@ When hosting models using Amazon SageMaker hosting services, consider the follow
 + You can deploy multiple variants of a model to the same Amazon SageMaker HTTPS endpoint\. This is useful for testing variations of a model in production\. For example, suppose that you've deployed a model into production\. You want to test a variation of the model by directing a small amount of traffic, say 5%, to the new model\. To do this, create an endpoint configuration that describes both variants of the model\. You specify the `ProductionVariant` in your request to the `CreateEndPointConfig`\. For more information, see [ProductionVariant](API_ProductionVariant.md)\. 
 
    
-+ You can configure a `ProductionVariant` to use Application Auto Scaling\. For information about configuring automatic scaling, see [Automatically Scaling Amazon SageMaker Models](endpoint-auto-scaling.md)\.
++ You can configure a `ProductionVariant` to use Application Auto Scaling\. For information about configuring automatic scaling, see [Automatically Scale Amazon SageMaker Models](endpoint-auto-scaling.md)\.
 
    
 + You can modify an endpoint without taking models that are already deployed into production out of service\. For example, you can add new model variants, update the ML Compute instance configurations of existing model variants, or change the distribution of traffic among model variants\. To modify an endpoint, you provide a new endpoint configuration\. Amazon SageMaker implements the changes without any downtime\. For more information see, [UpdateEndpoint](API_UpdateEndpoint.md) and [UpdateEndpointWeightsAndCapacities](API_UpdateEndpointWeightsAndCapacities.md)\. 
@@ -37,8 +40,8 @@ When hosting models using Amazon SageMaker hosting services, consider the follow
 + Changing or deleting model artifacts or changing inference code after deploying a model produces unpredictable results\. If you need to change or delete model artifacts or change inference code, modify the endpoint by providing a new endpoint configuration\. Once you provide the new endpoint configuration, you can change or delete the model artifacts corresponding to the old endpoint configuration\.
 
    
-+ If you want to get inferences on entire datasets, consider using batch transform as an alternative to hosting services\. For information see [Getting Inferences by Using Amazon SageMaker Batch Transform](how-it-works-batch.md) 
++ If you want to get inferences on entire datasets, consider using batch transform as an alternative to hosting services\. For information see [Get Inferences for an Entire Dataset with Batch Transform](how-it-works-batch.md) 
 
 ## How It Works: Next Topic<a name="how-it-works-hosting-next-topic"></a>
 
-[Validating Machine Learning Models](how-it-works-model-validation.md)
+[Validate a Machine Learning Model](how-it-works-model-validation.md)

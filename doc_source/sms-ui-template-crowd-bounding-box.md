@@ -22,7 +22,7 @@ The name of this widget\. It's used as a key for the widget's input in the form 
 
 The URL of the image on which to draw bounding boxes\. 
 
-### initialValue<a name="bounding-box-attributes-initialValue"></a>
+### initial\-value<a name="bounding-box-attributes-initialValue"></a>
 
 An array of JSON objects, each of which sets a bounding box when the component is loaded\. Each JSON object in the array contains the following properties\.
 + **height** – The height of the box in pixels\.

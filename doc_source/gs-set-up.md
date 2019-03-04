@@ -1,7 +1,10 @@
-# Step 1: Setting Up<a name="gs-set-up"></a>
+# Set Up Amazon SageMaker<a name="gs-set-up"></a>
 
-In this section, you set up an AWS account and create an Amazon S3 bucket\. You use this bucket to store training data and the results of model training, called model artifacts\.
+In this section, you sign up for an AWS account and then create an IAM user, a security group, and create an Amazon S3 bucket\. 
+
+If you're new to Amazon SageMaker, we recommend that you read [How Amazon SageMaker Works](how-it-works.md)\.
 
 **Topics**
-+ [Step 1\.1: Create an AWS Account and an Administrator User](gs-account.md)
-+ [Step 1\.2: Create an S3 Bucket](gs-config-permissions.md)
++ [Step 1: Create an AWS Account](gs-account.md)
++ [Step 2: Create an IAM Administrator User and Group](gs-account-user.md)
++ [Step 3: Create an Amazon S3 Bucket](gs-config-permissions.md)

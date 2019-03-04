@@ -9,7 +9,7 @@ Use a model package to create a deployable model that you can use to get real\-t
 
 ## Use a Model Package to Create a Model \(Console\)<a name="sagemaker-mkt-model-pkg-model-console"></a>
 
-**To create a deployable model from a model package in the Amazon SageMaker console:**
+**To create a deployable model from a model package \(console\)**
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
@@ -33,13 +33,13 @@ Use a model package to create a deployable model that you can use to get real\-t
 
 1. Choose **Create model**\.
 
-After you create a deployable model, you can use it to set up an endpoint for real\-time inference or create a batch transform job to get inferences on entire datasets\. For information about hosted endpoints in Amazon SageMaker, see [Step 3\.4\.1: Deploy the Model to Amazon SageMaker Hosting Services ](ex1-deploy-model.md)\. For information about batch transform jobs, see [Step 3\.4\.2: Deploy the Model to Amazon SageMaker Batch Transform ](ex1-batch-transform.md)\.
+After you create a deployable model, you can use it to set up an endpoint for real\-time inference or create a batch transform job to get inferences on entire datasets\. For information about hosted endpoints in Amazon SageMaker, see [Step 2\.4\.1: Deploy the Model to Amazon SageMaker Hosting Services ](ex1-deploy-model.md)\. For information about batch transform jobs, see [Step 2\.4\.2: Deploy the Model with Batch Transform ](ex1-batch-transform.md)\.
 
 ## Use a Model Package to Create a Model \(API\)<a name="sagemaker-mkt-model-pkg-model-api"></a>
 
 To use a model package to create a deployable model by using the Amazon SageMaker API, specify the name or the Amazon Resource Name \(ARN\) of the model package as the `ModelPackageName` field of the [ContainerDefinition](API_ContainerDefinition.md) object that you pass to the [CreateModel](API_CreateModel.md) API\.
 
-After you create a deployable model, you can use it to set up an endpoint for real\-time inference or create a batch transform job to get inferences on entire datasets\. For information about hosted endpoints in Amazon SageMaker, see [Step 3\.4\.1: Deploy the Model to Amazon SageMaker Hosting Services ](ex1-deploy-model.md)\. For information about batch transform jobs, see [Step 3\.4\.2: Deploy the Model to Amazon SageMaker Batch Transform ](ex1-batch-transform.md)\.
+After you create a deployable model, you can use it to set up an endpoint for real\-time inference or create a batch transform job to get inferences on entire datasets\. For information about hosted endpoints in Amazon SageMaker, see [Step 2\.4\.1: Deploy the Model to Amazon SageMaker Hosting Services ](ex1-deploy-model.md)\. For information about batch transform jobs, see [Step 2\.4\.2: Deploy the Model with Batch Transform ](ex1-batch-transform.md)\.
 
 ## Use a Model Package to Create a Model \(Amazon SageMaker Python SDK\)<a name="sagemaker-mkt-model-pkg-model-sdk"></a>
 
@@ -52,4 +52,4 @@ model = ModelPackage(role='SageMakerRole',
                      sagemaker_session=sagemaker_session)
 ```
 
-After you create a deployable model, you can use it to set up an endpoint for real\-time inference or create a batch transform job to get inferences on entire datasets\. For information about hosted endpoints in Amazon SageMaker, see [Step 3\.4\.1: Deploy the Model to Amazon SageMaker Hosting Services ](ex1-deploy-model.md)\. For information about batch transform jobs, see [Step 3\.4\.2: Deploy the Model to Amazon SageMaker Batch Transform ](ex1-batch-transform.md)\.
+After you create a deployable model, you can use it to set up an endpoint for real\-time inference or create a batch transform job to get inferences on entire datasets\. For information about hosted endpoints in Amazon SageMaker, see [Step 2\.4\.1: Deploy the Model to Amazon SageMaker Hosting Services ](ex1-deploy-model.md)\. For information about batch transform jobs, see [Step 2\.4\.2: Deploy the Model with Batch Transform ](ex1-batch-transform.md)\.

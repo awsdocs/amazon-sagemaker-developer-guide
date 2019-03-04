@@ -1,10 +1,17 @@
 # How Object2Vec Works<a name="object2vec-howitworks"></a>
 
-## Step 1: Data Processing<a name="object2vec-step-1-data-preprocessing"></a>
+There are three tasks to complete when using the Amazon SageMaker Object2Vec algorithm: process the data, train the model, and produce inferences\. 
+
+**Topics**
++ [Step 1: Process Data](#object2vec-step-1-data-preprocessing)
++ [Step 2: Train a Model](#object2vec-step-2-training-model)
++ [Step 3: Produce Inferences](#object2vec-step-3-inference)
+
+## Step 1: Process Data<a name="object2vec-step-1-data-preprocessing"></a>
 
 The data must be converted to the [JSON Lines](http://jsonlines.org/) text file format specified in the [ Data Formats for Object2Vec Training](object2vec-training-formats.md) section during preprocessing\. Also, to ensure obtaining the best accuracy from training, the data needs to be randomly shuffled before feeding it into the model\.
 
-## Step 2: Model Training<a name="object2vec-step-2-training-model"></a>
+## Step 2: Train a Model<a name="object2vec-step-2-training-model"></a>
 
 The architecture of Amazon SageMaker Object2Vec consists of following main components:
 + *Two input channels*—The 2 input channels take a pair of objects of same or different types as inputs, and pass them to independent and customizable encoders\. An example of the input objects could be sequence pairs, tokens pairs, or sequence and tokens pairs\.
@@ -15,7 +22,7 @@ At training time, the algorithm accepts pairs of objects and their relationship 
 
 ![\[General Architecture of Object2Vec: from data inputs to scores.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/object2vec-training-image.png)
 
-## Step 3: Inference<a name="object2vec-step-3-inference"></a>
+## Step 3: Produce Inferences<a name="object2vec-step-3-inference"></a>
 
 After the model has been trained, you can use the trained encoder to perform inference in two modes:
 + To convert singleton input objects into fixed length embeddings using the corresponding encoder

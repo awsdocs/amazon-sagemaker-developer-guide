@@ -1,4 +1,4 @@
-# Getting Inferences by Using Amazon SageMaker Batch Transform<a name="how-it-works-batch"></a>
+# Get Inferences for an Entire Dataset with Batch Transform<a name="how-it-works-batch"></a>
 
  Get inferences for an entire dataset by using Amazon SageMaker batch transform\. Batch transform uses a trained model to get inferences on a dataset that is stored in Amazon S3, and saves the inferences in an S3 bucket that you specify when you create a batch transform job\. Batch transform manages all compute resources necessary to get inferences\. This includes launching instances and deleting them after the transform job completes\. 
 
@@ -8,7 +8,7 @@ To perform a batch transform, create a transform job, which includes the followi
 + The path to the S3 bucket where you want to store the output of the job\.
 + The name of the model that you want to use in the transform job\.
 
-For examples on how to use batch transform, see [Step 3\.4\.2: Deploy the Model to Amazon SageMaker Batch Transform ](ex1-batch-transform.md)\.
+For examples on how to use batch transform, see [Step 2\.4\.2: Deploy the Model with Batch Transform ](ex1-batch-transform.md)\.
 
 Batch transform is ideal for situations where:
 + You want to get inferences for an entire dataset and store them online\.
@@ -20,7 +20,7 @@ The following diagram illustrates the workflow of a batch transform job:
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/batch-transform.png)
 
-## Considerations for Using Amazon SageMaker Batch Transform<a name="considerations-batch"></a>
+## Best Practices for Using Batch Transform<a name="considerations-batch"></a>
 + You can create a transform job by using the Amazon SageMaker console or the API\. For more information, see [CreateTransformJob](API_CreateTransformJob.md) API\.
 + After you create a transform job, Amazon SageMaker launches the ML compute instances and uses the model you specify to transform the input data\. It stores the results and other output in the S3 bucket that you specified\.
 + Amazon SageMaker uses [Multipart Upload API](https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html) to upload output data results from a transform job to S3\. Typically all multipart uploads run to completion\. In case of an error, the multipart upload is stopped and then removed from S3\. However there are cases such as a network outage where a multipart upload remains incomplete in S3\. To avoid extra storage charges in these cases, we recommend that you add the [S3 bucket policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config) to remove incomplete multipart uploads that are stored in the output S3 buckets\.
@@ -29,4 +29,4 @@ The following diagram illustrates the workflow of a batch transform job:
 
 ## How It Works: Next Topic<a name="how-it-works-batch-next-topic"></a>
 
-[Validating Machine Learning Models](how-it-works-model-validation.md)
+[Validate a Machine Learning Model](how-it-works-model-validation.md)

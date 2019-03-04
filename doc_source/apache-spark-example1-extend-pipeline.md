@@ -1,4 +1,4 @@
-# Using the SageMakerEstimator in a Spark Pipeline<a name="apache-spark-example1-extend-pipeline"></a>
+# Use the SageMakerEstimator in a Spark Pipeline<a name="apache-spark-example1-extend-pipeline"></a>
 
 You can use `org.apache.spark.ml.Estimator` estimators and `org.apache.spark.ml.Model` models, and `SageMakerEstimator` estimators and `SageMakerModel` models in `org.apache.spark.ml.Pipeline` pipelines, as shown in the following example:
 

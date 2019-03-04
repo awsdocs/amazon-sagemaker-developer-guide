@@ -1,4 +1,4 @@
-# Step 2: Create an Amazon SageMaker Notebook Instance<a name="gs-setup-working-env"></a>
+# Step 1: Create an Amazon SageMaker Notebook Instance<a name="gs-setup-working-env"></a>
 
 An Amazon SageMaker notebook instance is a fully managed machine learning \(ML\) EC2 compute instance running the Jupyter Notebook App\. For more information, see [Explore and Preprocess Data](how-it-works-notebooks-instances.md)\. 
 
@@ -61,13 +61,13 @@ If necessary, you can change the notebook instance settings, including the ML co
 
    1. If you chose to access resources from your VPC, enable direct internet access\. For **Direct internet access**, choose **Enable**\. Otherwise, this notebook instance won't have internet access\. Without internet access, you can't train or host models from notebooks on this notebook instance unless your VPC has a NAT gateway and your security group allows outbound connections\. For more information, see [Notebook Instances Are Internet\-Enabled by Default](appendix-additional-considerations.md#appendix-notebook-and-internet-access)\. 
 
-   1. \(Optional\) To use shell scripts that run when you create or start the instance, specify a lifecycle configuration\. For information, see [Step 2\.1: \(Optional\) Customize a Notebook Instance ](notebook-lifecycle-config.md)
+   1. \(Optional\) To use shell scripts that run when you create or start the instance, specify a lifecycle configuration\. For information, see [Step 1\.1: \(Optional\) Customize a Notebook Instance ](notebook-lifecycle-config.md)
 
    1. \(Optional\) If you want Amazon SageMaker to use an AWS Key Management Service key to encrypt data in the ML storage volume attached to the notebook instance, specify the key\. 
 
    1. Specify the size, in GB, of the ML storage volume that is attached to the notebook instance\. You can choose a size between 5 GB and 16384 GB, in 1 GB increments\.
 
-   1. \(Optional\) To associate git repositories with the notebook instance, choose a default repository and up to 3 additional repositories\. For more information, see [Associating Git Repositories with Amazon SageMaker Notebook Instances](nbi-git-repo.md)\.
+   1. \(Optional\) To associate git repositories with the notebook instance, choose a default repository and up to 3 additional repositories\. For more information, see [Associate Git Repositories with Amazon SageMaker Notebook Instances](nbi-git-repo.md)\.
 
    1. Choose **Create notebook instance**\. 
 
@@ -84,4 +84,4 @@ If necessary, you can change the notebook instance settings, including the ML co
 
 ## Next Step<a name="gs-setup-working-env-nextstep"></a>
 
-You are now ready to train your first model\. For step\-by\-step instructions, see [Step 3: Train a Model with a Built\-in Algorithm and Deploy It](ex1.md)\.
+You are now ready to train your first model\. For step\-by\-step instructions, see [Step 2: Train a Model with a Built\-in Algorithm and Deploy It](ex1.md)\.

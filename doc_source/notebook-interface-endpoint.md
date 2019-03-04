@@ -7,7 +7,7 @@ Amazon SageMaker notebook instances support [Amazon Virtual Private Cloud](https
 **Note**  
 Before you create an interface VPC endpoint to connect to a notebook instance, create an interface VPC endpoint to connect to the Amazon SageMaker API\. That way, when users call [CreatePresignedNotebookInstanceUrl](API_CreatePresignedNotebookInstanceUrl.md) to get the URL to connect to the notebook instance, that call also goes through the interface VPC endpoint\. For information, see [Connect to Amazon SageMaker Through a VPC Interface Endpoint](interface-vpc-endpoint.md)\.
 
-You can create an interface endpoint to connect to your notebook instance with either the AWS console or AWS Command Line Interface \(AWS CLI\) commands\. For instructions, see [Creating an Interface Endpoint](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpce-interface.html#create-interface-endpoint)\.
+You can create an interface endpoint to connect to your notebook instance with either the AWS console or AWS Command Line Interface \(AWS CLI\) commands\. For instructions, see [Creating an Interface Endpoint](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpce-interface.html#create-interface-endpoint)\. Make sure that you create an interface endpoint for all of the subnets in your VPC from which you want to connect to the notebook instance\.
 
 When you create the interface endpoint, specify **aws\.sagemaker\.*region*\.notebook** as the service name\. We recommend that you enable private DNS hostnames for your VPC endpoint\. If you don't enable private DNS hostnames, users that connect to the notebook instance through the console will not connect through the interface endpoint\. In other words, the console will attempt to connect over the internet\.
 
@@ -29,6 +29,9 @@ Even if you set up an interface endpoint in your VPC, individuals outside the VP
 If you apply an IAM policy similar to one of the following, users can't access the specified Amazon SageMaker APIs or the notebook instance through the console\.
 
 To restrict access to only connections made from within your VPC, create an AWS Identity and Access Management policy that restricts access to only calls that come from within your VPC\. Then add that policy to every AWS Identity and Access Management user, group, or role used to access the notebook instance\.
+
+**Note**  
+This policy allows connections only to callers within a subnet where you created an interface endpoint\.
 
 ```
 {

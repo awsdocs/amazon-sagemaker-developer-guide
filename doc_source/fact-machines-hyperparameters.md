@@ -4,7 +4,7 @@
 | Parameter Name | Description | 
 | --- | --- | 
 | feature\_dim | The dimension of the input feature space\. This could be very high with sparse input\. **Required** Valid values: Positive integer\. Suggested value range: \[10000,10000000\]  | 
-| num\_factors | The dimensionality of factorization\. **Required** Valid values: Positive integer\. Suggested value range: \[2,1000\], 64 usually optimal\.  | 
+| num\_factors | The dimensionality of factorization\. **Required** Valid values: Positive integer\. Suggested value range: \[2,1000\], 64 is usually optimal\.  | 
 | predictor\_type | The type of predictor\. [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/fact-machines-hyperparameters.html) **Required** Valid values: String: `binary_classifier` or `regressor`  | 
 | bias\_init\_method | The initialization method for the bias term: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/fact-machines-hyperparameters.html) **Optional** Valid values: `uniform`, `normal`, or `constant` Default value: `normal`  | 
 | bias\_init\_scale | Range for initialization of the bias term\. Takes effect if `bias_init_method` is set to `uniform`\.  **Optional** Valid values: Non\-negative float\. Suggested value range: \[1e\-8, 512\]\. Default value: None  | 
@@ -14,7 +14,7 @@
 | bias\_wd | The weight decay for the bias term\.  **Optional** Valid values: Non\-negative float\. Suggested value range: \[1e\-8, 512\]\. Default value: 0\.01  | 
 | clip\_gradient | Gradient clipping optimizer parameter\. Clips the gradient by projecting onto the interval \[\-`clip_gradient`, \+`clip_gradient`\]\.  **Optional** Valid values: Float Default value: None  | 
 | epochs | The number of training epochs to run\.  **Optional** Valid values: Positive integer Default value: 1  | 
-| eps | Epsilon  parameter to avoid division by 0\. **Optional** Valid values: Float\. Suggested value: small\. Default value: None  | 
+| eps | Epsilon parameter to avoid division by 0\. **Optional** Valid values: Float\. Suggested value: small\. Default value: None  | 
 | factors\_init\_method | The initialization method for factorization terms: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/fact-machines-hyperparameters.html) **Optional** Valid values: `uniform`, `normal`, or `constant`\. Default value: `normal`  | 
 | factors\_init\_scale  | The range for initialization of factorization terms\. Takes effect if `factors_init_method` is set to `uniform`\.  **Optional** Valid values: Non\-negative float\. Suggested value range: \[1e\-8, 512\]\. Default value: None  | 
 | factors\_init\_sigma | The standard deviation for initialization of factorization terms\. Takes effect if `factors_init_method` is set to `normal`\.  **Optional** Valid values: Non\-negative float\. Suggested value range: \[1e\-8, 512\]\. Default value: 0\.001  | 

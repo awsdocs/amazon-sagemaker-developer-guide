@@ -2,7 +2,7 @@
 
 Starts a model training job\. After training completes, Amazon SageMaker saves the resulting model artifacts to an Amazon S3 location that you specify\. 
 
-If you choose to host your model using Amazon SageMaker hosting services, you can use the resulting model artifacts as part of the model\. You can also use the artifacts in a deep learning service other than Amazon SageMaker, provided that you know how to use them for inferences\. 
+If you choose to host your model using Amazon SageMaker hosting services, you can use the resulting model artifacts as part of the model\. You can also use the artifacts in a machine learning service other than Amazon SageMaker, provided that you know how to use them for inferences\. 
 
 In the request body, you provide the following: 
 +  `AlgorithmSpecification` \- Identifies the training algorithm to use\. 
@@ -97,7 +97,7 @@ Type: [AlgorithmSpecification](API_AlgorithmSpecification.md) object
 Required: Yes
 
  ** [EnableInterContainerTrafficEncryption](#API_CreateTrainingJob_RequestSyntax) **   <a name="SageMaker-CreateTrainingJob-request-EnableInterContainerTrafficEncryption"></a>
-To encrypt all communications between ML compute instances in distributed training, choose `True`\. Encryption provides greater security for distributed training, but training might take longer\. How long it takes depends on the amount of communication between compute instances, especially if you use a deep learning algorithm in distributed training\.  
+To encrypt all communications between ML compute instances in distributed training, choose `True`\. Encryption provides greater security for distributed training, but training might take longer\. How long it takes depends on the amount of communication between compute instances, especially if you use a deep learning algorithm in distributed training\. For more information, see [Protect Communications Between ML Compute Instances in a Distributed Training Job](https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html)\.  
 Type: Boolean  
 Required: No
 

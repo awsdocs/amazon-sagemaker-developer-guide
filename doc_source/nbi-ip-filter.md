@@ -7,31 +7,34 @@ For example, the following policy allows access to a notebook instance only from
 ```
 {
     "Version": "2012-10-17",
-    "Statement": {
-        "Effect": "Deny",
-        "Action": "sagemaker:CreatePresignedNotebookInstanceUrl",
-        "Resource": "*",
-        "Condition": {
-            "NotIpAddress": {
-                "aws:SourceIp": [
-                    "192.0.2.0/24",
-                    "203.0.113.0/24"
-                ]
+    "Statement": [
+        {
+            "Effect": "Deny",
+            "Action": "sagemaker:CreatePresignedNotebookInstanceUrl",
+            "Resource": "*",
+            "Condition": {
+                "NotIpAddress": {
+                    "aws:SourceIp": [
+                        "192.0.2.0/24",
+                        "203.0.113.0/24"
+                    ]
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": "sagemaker:CreatePresignedNotebookInstanceUrl",
+            "Resource": "*",
+            "Condition": {
+                "IpAddress": {
+                    "aws:SourceIp": [
+                        "192.0.2.0/24",
+                        "203.0.113.0/24"
+                    ]
+                }
             }
         }
-    "Statement": {
-        "Effect": "Allow",
-        "Action": "sagemaker:CreatePresignedNotebookInstanceUrl",
-        "Resource": "*",
-        "Condition": {
-            "IpAddress": {
-                "aws:SourceIp": [
-                    "192.0.2.0/24",
-                    "203.0.113.0/24"
-                ]
-            }
-        }
-    }
+    ]
 }
 ```
 

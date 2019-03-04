@@ -84,7 +84,7 @@ To use the Amazon SageMaker console, you need to grant permissions for additiona
               "kms:ListAliases"
             ],
             "Resource":"*"
-        }
+        },
         // View Subscriptions in AWS Marketplace for Algorithms and ModelPackages.
         {
           "Sid": "AccessAwsMarketplaceSubscritions",
@@ -93,7 +93,7 @@ To use the Amazon SageMaker console, you need to grant permissions for additiona
             "aws-marketplace:ViewSubscriptions"
           ],
           "Resource": "*"
-        }
+        },
         // View and create CodeCommit Repositories
         {
           "Effect": "Allow",
@@ -102,13 +102,13 @@ To use the Amazon SageMaker console, you need to grant permissions for additiona
             "codecommit:CreateRepository",
             "codecommit:GetRepository",
             "codecommit:ListRepositories",
-            "codecommit:ListBranches"
+            "codecommit:ListBranches",
             "secretsmanager:CreateSecret",
             "secretsmanager:DescribeSecret",
             "secretsmanager:ListSecrets"
           ],
           "Resource": "*"
-        }
+        },
         // List/create execution roles for Create forms
         {
           "Sid":"ListAndCreateExecutionRoles",
@@ -121,6 +121,15 @@ To use the Amazon SageMaker console, you need to grant permissions for additiona
             "iam:AttachRolePolicy"
           ],
           "Resource":"*"
+        },
+        // Permissions required for ECR
+        {
+          "Sid": "DescribeECRMetaData",
+          "Effect": "Allow",
+          "Action": [
+              "ecr:Describe*"
+          ],
+          "Resource": "*"
         },
         // PassRole permissions as required by CreateNotebookInstance, CreateTrainingJob, and CreateModel.
         {
@@ -321,7 +330,7 @@ Require the presence or absence of specific tags or specific tag values by using
 }
 ```
 
-### Using Tags with Hyperparameter Tuning Jobs<a name="resource-tag-tuning"></a>
+### Use Tags with Hyperparameter Tuning Jobs<a name="resource-tag-tuning"></a>
 
 You can add tags to a hyperparameter tuning job when you create the tuning job by specifying the tags as the `Tags` parameter when you call [CreateHyperParameterTuningJob](API_CreateHyperParameterTuningJob.md)\. If you do this, the tags you specify for the hyperparameter tuning job are also added to all training jobs that the hyperparameter tuning job launches\.
 

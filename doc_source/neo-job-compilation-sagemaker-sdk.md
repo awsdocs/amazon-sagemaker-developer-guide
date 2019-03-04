@@ -1,6 +1,6 @@
-# Compile Machine Learning Models with the Amazon SageMaker SDK<a name="neo-job-compilation-sagemaker-sdk"></a>
+# Compile a Model \(Amazon SageMaker SDK\)<a name="neo-job-compilation-sagemaker-sdk"></a>
 
-Follow the steps described in the [Neo MXNet Part 1](https://docs.aws.amazon.com/sagemaker/latest/dg/mxnet-part1-train.html) sample to produce a machine learning model train using Amazon SageMaker\. Then you can use Neo to further optimize the model with the following code: 
+Follow the steps described in the **Running the Training Job** section of the [MNIST Training, Compilation and Deployment with MXNet Module](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/mxnet_mnist/mxnet_mnist_neo.ipynb) sample to produce a machine learning model train using Amazon SageMaker\. Then you can use Neo to further optimize the model with the following code: 
 
 ```
 output_path = ‘/’.join( mnist_estimator.output_path.split(‘/’)[:-1])

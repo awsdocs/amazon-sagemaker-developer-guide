@@ -5,7 +5,7 @@ Describes the container, as part of model definition\.
 ## Contents<a name="API_ContainerDefinition_Contents"></a>
 
  **ContainerHostname**   <a name="SageMaker-Type-ContainerDefinition-ContainerHostname"></a>
-The DNS host name for the container after Amazon SageMaker deploys it\.  
+This parameter is ignored\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   

@@ -1,4 +1,4 @@
-# Using Your Own Inference Code \(Hosting Services\)<a name="your-algorithms-inference-code"></a>
+# Using Your Own Inference Code with Amazon SageMaker Hosting Services<a name="your-algorithms-inference-code"></a>
 
 This section explains how Amazon SageMaker interacts with a Docker container that runs your own inference code for hosting services\. Use this information to write inference code and create a Docker image\. 
 
@@ -66,7 +66,7 @@ In your [CreateModel](API_CreateModel.md) request, the container definition incl
 
 The `ModelDataUrl` must point to a tar\.gz file\. Otherwise, Amazon SageMaker won't download the file\. 
 
- Amazon SageMaker stores the model artifact as a single compressed tar file in Amazon S3\. Amazon SageMaker uncompresses this tar file into the `/opt/ml/model` directory before your container starts\. If you used Amazon SageMaker to train the model, the files will appear just as you left them\.
+If you trained your model in Amazon SageMaker, the model artifacts are saved as a single compressed tar file in Amazon S3\. If you trained your model outside Amazon SageMaker, you need to create this single compressed tar file and save it in a S3 location\. Amazon SageMaker decompresses this tar file into /opt/ml/model directory before your container starts\.
 
 ## How Containers Serve Requests<a name="your-algorithms-inference-code-how-containe-serves-requests"></a>
 

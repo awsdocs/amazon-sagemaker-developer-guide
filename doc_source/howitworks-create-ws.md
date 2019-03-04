@@ -1,6 +1,6 @@
-# Creating a Notebook Instance<a name="howitworks-create-ws"></a>
+# Create a Notebook Instance<a name="howitworks-create-ws"></a>
 
-To create a notebook instance, use either the Amazon SageMaker console or the [CreateNotebookInstance](API_CreateNotebookInstance.md) API\. For an example of using the Amazon SageMaker console to create a notebook instance, see [Step 2: Create an Amazon SageMaker Notebook Instance](gs-setup-working-env.md)\.
+To create a notebook instance, use either the Amazon SageMaker console or the [CreateNotebookInstance](API_CreateNotebookInstance.md) API\. For an example of using the Amazon SageMaker console to create a notebook instance, see [Step 1: Create an Amazon SageMaker Notebook Instance](gs-setup-working-env.md)\.
 
 After receiving the request, Amazon SageMaker does the following:
 + **Creates a network interface**—If you choose the optional VPC configuration, it creates the network interface in your VPC\. It uses the subnet ID that you provide in the request to determine which Availability Zone to create the subnet in\. Amazon SageMaker associates the security group that you provide in the request with the subnet\. For more information, see [Notebook Instance Security](appendix-additional-considerations.md)\. 

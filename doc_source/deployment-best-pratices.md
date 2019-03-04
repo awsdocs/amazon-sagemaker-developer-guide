@@ -1,4 +1,4 @@
-# Deployment<a name="deployment-best-pratices"></a>
+# Deploy Multiple Instances Across Avalibility Zones<a name="deployment-best-pratices"></a>
 
 **Create robust endpoints when hosting your model\.** Amazon SageMaker endpoints can help protect your application from [Availability Zone](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) outages and instance failures\. If an outage occurs or an instance fails, Amazon SageMaker automatically attempts to distribute your instances across Availability Zones\. For this reason, we strongly recommended that you deploy multiple instances for each production endpoint\. 
 

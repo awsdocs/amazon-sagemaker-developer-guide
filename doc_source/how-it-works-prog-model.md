@@ -18,18 +18,18 @@ Making API calls directly from code is cumbersome, and requires you to write cod
     + To deploy your model, you call only the `deploy()` method\. The method creates an Amazon SageMaker model, an endpoint configuration, and an endpoint\.
 
        
-    + If you use a custom framework script for model training, you call the `fit()` method\. The method creates a \.gzip file of your script, uploads it to an Amazon S3 location, and then runs it for model training, and other tasks\. For more information, see [Using Machine Learning Frameworks with Amazon SageMaker](frameworks.md)\.
+    + If you use a custom framework script for model training, you call the `fit()` method\. The method creates a \.gzip file of your script, uploads it to an Amazon S3 location, and then runs it for model training, and other tasks\. For more information, see [Use Machine Learning Frameworks with Amazon SageMaker](frameworks.md)\.
 
        
   + **The AWS SDK** —The SDKs provide methods that correspond to the Amazon SageMaker API \(see [Actions](API_Operations.md)\)\. Use the SDKs to programmatically start a model training job and host the model in Amazon SageMaker\. SDK clients authenticate your requests by using your access keys, so you don't need to write authentication code\. They are available in multiple languages and platforms\. For more information, see [SDKs](https://aws.amazon.com/tools/)\. 
 
      
 
-  In [Getting Started](gs.md), you train and deploy a model using an algorithm provided by Amazon SageMaker\. That exercise shows how to use both of these libraries\. For more information, see [Getting Started](gs.md)\.
+  In [Get Started](gs.md), you train and deploy a model using an algorithm provided by Amazon SageMaker\. That exercise shows how to use both of these libraries\. For more information, see [Get Started](gs.md)\.
 
    
-+ **Integrate Amazon SageMaker into your Apache Spark workflow**—Amazon SageMaker provides a library for calling its APIs from Apache Spark\. With it, you can use Amazon SageMaker\-based estimators in an Apache Spark pipeline\. For more information, see [Using Apache Spark with Amazon SageMaker](apache-spark.md)\.
++ **Integrate Amazon SageMaker into your Apache Spark workflow**—Amazon SageMaker provides a library for calling its APIs from Apache Spark\. With it, you can use Amazon SageMaker\-based estimators in an Apache Spark pipeline\. For more information, see [Use Apache Spark with Amazon SageMaker](apache-spark.md)\.
 
 ## How It Works: Next Topic<a name="howitwork-prog-model-nextstep"></a>
 
- [Getting Started](gs.md) 
+ [Get Started](gs.md) 

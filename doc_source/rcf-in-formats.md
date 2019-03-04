@@ -2,7 +2,7 @@
 
 All Amazon SageMaker built\-in algorithms adhere to the common input inference format described in [Common Data Formats \- Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html)\. Note that Amazon SageMaker Random Cut Forest supports both dense and sparse JSON and RecordIO formats\. This topic contains a list of the available output formats for the Amazon SageMaker RCF algorithm\.
 
-## JSON<a name="RCF-json"></a>
+## JSON Response Format<a name="RCF-json"></a>
 
 ACCEPT: application/json\.
 
@@ -15,7 +15,7 @@ ACCEPT: application/json\.
     }
 ```
 
-### JSONLINES<a name="RCF-jsonlines"></a>
+### JSONLINES Response Format<a name="RCF-jsonlines"></a>
 
 ACCEPT: application/jsonlines\.
 
@@ -24,7 +24,7 @@ ACCEPT: application/jsonlines\.
 {"score": 0.25}
 ```
 
-## RECORDIO<a name="rcf-recordio"></a>
+## RECORDIO Response Format<a name="rcf-recordio"></a>
 
 ACCEPT: application/x\-recordio\-protobuf\.
 

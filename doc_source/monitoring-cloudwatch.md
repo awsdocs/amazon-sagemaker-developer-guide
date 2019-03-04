@@ -1,4 +1,4 @@
-# Monitoring Amazon SageMaker with Amazon CloudWatch<a name="monitoring-cloudwatch"></a>
+# Monitor Amazon SageMaker with Amazon CloudWatch<a name="monitoring-cloudwatch"></a>
 
 You can monitor Amazon SageMaker using Amazon CloudWatch, which collects raw data and processes it into readable, near real\-time metrics\. These statistics are kept for 15 months, so that you can access historical information and gain a better perspective on how your web application or service is performing\. However, the Amazon CloudWatch console limits the search to metrics that were updated in the last 2 weeks\. This limitation ensures that the most current jobs are shown in your namespace\. To graph metrics without using a search, specify its exact name in the source view\. You can also set alarms that watch for certain thresholds, and send notifications or take actions when those thresholds are met\. For more information, see the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/)\.
 
@@ -37,7 +37,7 @@ Metrics are available at a 1\-minute frequency\.
 | Metric | Description | 
 | --- | --- | 
 | CPUUtilization |  The percentage of CPU units that are used by the containers on an instance\. The value can range between 0 and 100, and is multiplied by the number of CPUs\. For example, if there are four CPUs, `CPUUtilization` can range from 0% to 400%\. For training jobs, the value is the CPU utilization of the algorithm container on the instance\. For batch transform jobs, the value is the CPU utilization of the transform container on the instance\. For endpoint variants, the value is the sum of the CPU utilization of the primary and supplementary containers on the instance\. Units: Percent  | 
-| MemoryUtilizaton |  The percentage of memory that is used by the containers on an instance\. This value can range between 0% and 100%\. For training jobs, the value is the memory utilization of the algorithm container on the instance\. For batch transform jobs, the value is the memory utilization of the transform container on the instance\. For endpoint variants, the value is the sum of the memory utilization of the primary and supplementary containers on the instance\. Units: Percent  | 
+| MemoryUtilization |  The percentage of memory that is used by the containers on an instance\. This value can range between 0% and 100%\. For training jobs, the value is the memory utilization of the algorithm container on the instance\. For batch transform jobs, the value is the memory utilization of the transform container on the instance\. For endpoint variants, the value is the sum of the memory utilization of the primary and supplementary containers on the instance\. Units: Percent  | 
 | GPUUtilization |  The percentage of GPU units that are used by the containers on an instance\. The value can range between 0 and 100 and is multiplied by the number of GPUs\. For example, if there are four GPUs, `GPUUtilization` can range from 0% to 400%\. For training jobs, the value is the GPU utilization of the algorithm container on the instance\. For batch transform jobs, the value is the GPU utilization of the transform container on the instance\. For endpoint variants, the value is the sum of the GPU utilization of the primary and supplementary containers on the instance\. Units: Percent  | 
 | GPUMemoryUtilization |  The percentage of GPU memory used by the containers on an instance\. The value can range between 0 and 100 and is multiplied by the number of GPUs\. For example, if there are four GPUs, `GPUMemoryUtilization` can range from 0% to 400%\. For training jobs, the value is the GPU memory utilization of the algorithm container on the instance\. For batch transform jobs, the value is the GPU memory utilization of the transform container on the instance\. For endpoint variants, the value is the sum of the GPU memory utilization of the primary and supplementary containers on the instance\. Units: Percent  | 
 | DiskUtilization |  The percentage of disk space used by the containers on an instance uses\. This value can range between 0% and 100%\. This metric is not supported for batch transform jobs\. For training jobs, the value is the disk space utilization of the algorithm container on the instance\. For endpoint variants, the value is the sum of the disk space utilization of the primary and supplementary containers on the instance\. Units: Percent  | 
@@ -49,7 +49,7 @@ Metrics are available at a 1\-minute frequency\.
 | --- | --- | 
 | Host |  For training jobs, the value for this dimension has the format `[training-job-name]/algo-[instance-number-in-cluster]`\. Use this dimension to filter instance metrics for the specified training job and instance\. This dimension format is present only in the `/aws/sagemaker/TrainingJobs` namespace\. For batch transform jobs, the value for this dimension has the format `[transform-job-name]/[instance-id]`\. Use this dimension to filter instance metrics for the specified batch transform job and instance\. This dimension format is present only in the `/aws/sagemaker/TransformJobs` namespace\. For endpoints, the value for this dimension has the format `[endpoint-name]/[ production-variant-name ]/[instance-id]`\. Use this dimension to filter instance metrics for the specified endpoint, variant, and instance\. This dimension format is present only in the `/aws/sagemaker/Endpoints` namespace\.  | 
 
-**Amazon SageMaker Ground Truth metrics**
+**Amazon SageMaker Ground Truth Metrics**
 
 
 | Metric | Description | 
@@ -62,7 +62,7 @@ Metrics are available at a 1\-minute frequency\.
 | JobsStopped |  The number of labeling jobs that were stopped\. To get the total number of labeling jobs that were stopped, use the Sum statistic\. Units: None Valid statistics: Sum, Sample Count  | 
 | TotalDatasetObjectsLabeled |  The number of dataset objects labeled successfully in a labeling job\. To view the labeling job progress, use the Max metric\. Units: None Valid statistics: Max  | 
 
-**Dimensions for dataset object metrics**
+**Dimensions for Dataset Object Metrics**
 
 
 | Dimension | Description | 

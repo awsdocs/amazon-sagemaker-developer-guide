@@ -5,7 +5,7 @@ This section explains how Amazon SageMaker interacts with a Docker container tha
 **Topics**
 + [How Amazon SageMaker Runs Your Training Image](#your-algorithms-training-algo-dockerfile)
 + [How Amazon SageMaker Provides Training Information](#your-algorithms-training-algo-running-container)
-+ [Signalling Algorithm Success and Failure](#your-algorithms-training-signal-success-failure)
++ [How Amazon SageMaker Signals Algorithm Success and Failure](#your-algorithms-training-signal-success-failure)
 + [How Amazon SageMaker Processes Training Output](#your-algorithms-training-algo-envvariables)
 + [Next Step](#byota-next-step)
 
@@ -126,6 +126,7 @@ If you're performing distributed training with multiple containers, Amazon SageM
 To enable inter\-container communication, this JSON file contains information for all containers\. Amazon SageMaker makes this file available for both FILE and PIPE mode algorithms\. The file provides the following information:
 + `current_host`—The name of the current container on the container network\. For example, `algo-1`\. Host values can change at any time\. Don't write code with specific values for this variable\.
 + `hosts`—The list of names of all containers on the container network, sorted lexicographically\. For example, `["algo-1", "algo-2", "algo-3"]` for a three\-node cluster\. Containers can use these names to address other containers on the container network\. Host values can change at any time\. Don't write code with specific values for these variables\.
++ `network_interface_name`—The name of the network interface that is exposed to your container\. For example, containers running the Message Passing Interface \(MPI\) can use this information to set the network interface name\.
 + Do not use the information in `/etc/hostname` or `/etc/hosts` because it might be inaccurate\.
 + Hostname information may not be immediately available to the algorithm container\. We recommend adding a retry policy on hostname resolution operations as nodes become available in the cluster\.
 
@@ -134,11 +135,12 @@ The following is an example file on node 1 in a three\-node cluster:
 ```
 {
 "current_host": "algo-1",
-"hosts": ["algo-1","algo-2","algo-3"]
+"hosts": ["algo-1","algo-2","algo-3"],
+"network_interface_name":"eth1"
 }
 ```
 
-## Signalling Algorithm Success and Failure<a name="your-algorithms-training-signal-success-failure"></a>
+## How Amazon SageMaker Signals Algorithm Success and Failure<a name="your-algorithms-training-signal-success-failure"></a>
 
 A training algorithm indicates whether it succeeded or failed using the exit code of its process\. 
 

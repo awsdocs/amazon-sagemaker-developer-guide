@@ -2,7 +2,7 @@
 
 All Amazon SageMaker built\-in algorithms adhere to the common input inference format described in [Common Data Formats \- Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html)\. This topic contains a list of the available output formats for the Amazon SageMaker PCA algorithm\.
 
-## JSON<a name="PCA-json"></a>
+## JSON Response Format<a name="PCA-json"></a>
 
 Accept—application/json
 
@@ -20,7 +20,7 @@ Accept—application/json
 }
 ```
 
-## JSONLINES<a name="PCA-jsonlines"></a>
+## JSONLINES Response Format<a name="PCA-jsonlines"></a>
 
 Accept—application/jsonlines
 
@@ -29,7 +29,7 @@ Accept—application/jsonlines
 { "projection": [6.0, 7.0, 8.0, 9.0, 0.0] }
 ```
 
-## RECORDIO<a name="PCA-recordio"></a>
+## RECORDIO Response Format<a name="PCA-recordio"></a>
 
 Accept—application/x\-recordio\-protobuf
 

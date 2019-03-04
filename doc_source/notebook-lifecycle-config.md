@@ -1,4 +1,4 @@
-# Step 2\.1: \(Optional\) Customize a Notebook Instance<a name="notebook-lifecycle-config"></a>
+# Step 1\.1: \(Optional\) Customize a Notebook Instance<a name="notebook-lifecycle-config"></a>
 
 To install packages or sample notebooks on your notebook instance, configure networking and security for it, or otherwise use a shell script to customize it, use a lifecycle configuration\. A *lifecycle configuration* provides shell scripts that run only when you create the notebook instance or whenever you start one\. When you create a notebook instance, you can create a new lifecycle configuration and the scripts it uses or apply one that you already have\.
 
@@ -18,7 +18,7 @@ Scripts cannot run for longer than 5 minutes\. If a script runs for longer than 
 
 1. In the **Start notebook** editor, type the script\.
 
-1. \(Optional\) To create a script that runs only once, when you create the notebook,, choose **Create notebook**\.
+1. \(Optional\) To create a script that runs only once, when you create the notebook, choose **Create notebook**\.
 
 1. In the **Create notebook** editor, type the script configure networking\.
 
@@ -35,12 +35,13 @@ The following are best practices for using lifecycle configurations:
   For example, if you want to install a package only in for the `python3` environment, use the following code:
 
   ```
+  #!/bin/bash
   sudo -u ec2-user -i <<'EOF'
   
   # This will affect only the Jupyter kernel called "conda_python3".
   source activate python3
   
-  # Replace myPackage with the name of the package you want to install..
+  # Replace myPackage with the name of the package you want to install.
   pip install myPackage
   # You can also perform "conda install" here as well.
   
@@ -52,6 +53,7 @@ The following are best practices for using lifecycle configurations:
   If you want to install a package in all conda environments in the notebook instance, use the following code:
 
   ```
+  #!/bin/bash
   sudo -u ec2-user -i <<'EOF'
   
   # Note that "base" is special environment name, include it there as well.
@@ -74,6 +76,9 @@ The following are best practices for using lifecycle configurations:
   EOF
   ```
 
+**Important**  
+When you create or change a script file, we recommend you use **Create notebook** editor or a text editor that allows for Unix style line breaks\. Copying text from a non Linux operating system might include incompatible line breaks and result in an unexpected error\.
+
 ## Next Step<a name="gs-setup-working-env-nextstep"></a>
 
-You are now ready to train your first model\. For step\-by\-step instructions, see [Step 3: Train a Model with a Built\-in Algorithm and Deploy It](ex1.md)\.
+You are now ready to train your first model\. For step\-by\-step instructions, see [Step 2: Train a Model with a Built\-in Algorithm and Deploy It](ex1.md)\.

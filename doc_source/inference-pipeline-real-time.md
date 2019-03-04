@@ -1,4 +1,4 @@
-# Real\-time Processing with Amazon SageMaker Inference Pipelines<a name="inference-pipeline-real-time"></a>
+# Make Real\-time Predictions with an Inference Pipeline<a name="inference-pipeline-real-time"></a>
 
 Trained models can be used in an inference pipeline for making real\-time predictions directly without any external pre\-processing\. As part of the pipeline, customers can choose to use the built\-in feature transformers already available in Amazon SageMaker, or they can implement their own transformation logic using just a few lines of scikit\-learn or Spark code\. This section contains examples for each of these cases\.
 

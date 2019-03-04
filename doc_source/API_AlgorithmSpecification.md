@@ -20,7 +20,7 @@ Array Members: Minimum number of 0 items\. Maximum number of 20 items\.
 Required: No
 
  **TrainingImage**   <a name="SageMaker-Type-AlgorithmSpecification-TrainingImage"></a>
-The registry path of the Docker image that contains the training algorithm\. For information about docker registry paths for built\-in algorithms, see [Algorithms Provided by Amazon SageMaker: Common Parameters](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html)\.  
+The registry path of the Docker image that contains the training algorithm\. For information about docker registry paths for built\-in algorithms, see [Algorithms Provided by Amazon SageMaker: Common Parameters](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html)\. Amazon SageMaker supports both `registry/repository[:tag]` and `registry/repository[@digest]` image path formats\. For more information, see [Using Your Own Algorithms with Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html)\.  
 Type: String  
 Length Constraints: Maximum length of 255\.  
 Required: No

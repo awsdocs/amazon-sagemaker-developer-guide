@@ -1,4 +1,4 @@
-# Common Data Formats—Inference<a name="cdf-inference"></a>
+# Common Data Formats for Inference<a name="cdf-inference"></a>
 
 Amazon SageMaker algorithms accept and produce several different MIME types for the http payloads used in retrieving online and mini\-batch predictions\. You can use various AWS services to transform or preprocess records prior to running inference\. At a minimum, you need to convert the data for the following:
 + Inference request serialization \(handled by you\) 
@@ -6,7 +6,7 @@ Amazon SageMaker algorithms accept and produce several different MIME types for 
 + Inference response serialization \(handled by the algorithm\) 
 + Inference response deserialization \(handled by you\) 
 
-## Inference Request Serialization<a name="ir-serialization"></a>
+## Convert Data for Inference Request Serialization<a name="ir-serialization"></a>
 
 Content type options for Amazon SageMaker algorithm inference requests include: `text/csv`, `application/json`, and `application/x-recordio-protobuf`\. Algorithms that don't support these types, such as XGBoost, which is incompatible, support other types, such as `text/x-libsvm`\.
 
@@ -75,7 +75,7 @@ let request = {
 }
 ```
 
-## Inference Response Deserialization<a name="ir-deserialization"></a>
+## Convert Data for Inference Response Deserialization<a name="ir-deserialization"></a>
 
 Amazon SageMaker algorithms return JSON in several layouts\. At a high level, the structure is:
 
@@ -150,7 +150,7 @@ While running batch transform, it is recommended to use `jsonlines` response typ
 
 Most algorithms use several of the following inference request formats\.
 
-### JSON<a name="cm-json"></a>
+### JSON Request Format<a name="cm-json"></a>
 
 Content\-type: application/json
 
@@ -202,7 +202,7 @@ Sparse Format
 }
 ```
 
-### JSONLINES<a name="cm-jsonlines"></a>
+### JSONLINES Request Format<a name="cm-jsonlines"></a>
 
 Content\-type: application/jsonlines
 
@@ -236,18 +236,18 @@ Multiple records are represented as a concatenation of the above single\-record 
 { "features": [1.5, 16.0, 14.0, 23.0] }
 ```
 
-### CSV<a name="cm-csv"></a>
+### CSV Request Format<a name="cm-csv"></a>
 
 Content\-type: text/csv;label\_size=0
 
 **Note**  
 CSV support is not available for factorization machines\.
 
-### RECORDIO<a name="cm-recordio"></a>
+### RECORDIO Request Format<a name="cm-recordio"></a>
 
 Content\-type: application/x\-recordio\-protobuf
 
-## Using Batch Transform with Build\-in Algorithms<a name="cm-batch"></a>
+## Use Batch Transform with Build\-in Algorithms<a name="cm-batch"></a>
 
 While running batch transform, it's recommended to use jsonlines response type instead of JSON, if supported by the algorithm\. This is accomplished by setting the `Accept` field in the `CreateTransformJobRequest` to `application/jsonlines`\.
 
@@ -272,5 +272,5 @@ For more information on response formats for specific algorithms, see the follow
 + [PCA Response Formats](PCA-in-formats.md)
 + [Linear Learner Response Formats](LL-in-formats.md)
 + [NTM Response Formats](ntm-in-formats.md)
-+ [k\-means Response Formats](km-in-formats.md)
++ [K\-Means Response Formats](km-in-formats.md)
 + [Factorization Machine Response Formats](fm-in-formats.md)

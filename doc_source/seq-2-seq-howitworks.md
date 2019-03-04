@@ -1,4 +1,4 @@
-# How Sequence to Sequence Works<a name="seq-2-seq-howitworks"></a>
+# How Sequence\-to\-Sequence Works<a name="seq-2-seq-howitworks"></a>
 
 Typically, a neural network for sequence\-to\-sequence modeling consists of a few layers, including: 
 + An **embedding layer**\. In this layer, the input matrix, which is input tokens encoded in a sparse way \(for example, one\-hot encoded\) are mapped to a dense feature layer\. This is required because a high\-dimensional feature vector is more capable of encoding information regarding a particular token \(word for text corpora\) than a simple one\-hot\-encoded vector\. It is also a standard practice to initialize this embedding layer with a pre\-trained word vector like [FastText](https://fasttext.cc/) or [Glove](https://nlp.stanford.edu/projects/glove/) or to initialize it randomly and learn the parameters during training\. 

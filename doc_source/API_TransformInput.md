@@ -22,9 +22,10 @@ Type: [TransformDataSource](API_TransformDataSource.md) object
 Required: Yes
 
  **SplitType**   <a name="SageMaker-Type-TransformInput-SplitType"></a>
-The method to use to split the transform job's data into smaller batches\. If you don't want to split the data, specify `None`\. If you want to split records on a newline character boundary, specify `Line`\. To split records according to the RecordIO format, specify `RecordIO`\. The default value is `None`\.   
-Amazon SageMaker sends the maximum number of records per batch in each request up to the MaxPayloadInMB limit\. For more information, see [RecordIO data format](http://mxnet.io/architecture/note_data_loading.html#data-format)\.  
-For information about the `RecordIO` format, see [Data Format](http://mxnet.io/architecture/note_data_loading.html#data-format)\.
+The method to use to split the transform job's data files into smaller batches\. Splitting is necessary when the total size of each object is too large to fit in a single request\. You can also use data splitting to improve performance by processing multiple concurrent mini\-batches\. The default value for `SplitType` is `None`, which indicates that input data files are not split, and request payloads contain the entire contents of an input object\. Set the value of this parameter to `Line` to split records on a newline character boundary\. `SplitType` also supports a number of record\-oriented binary data formats\.  
+When splitting is enabled, the size of a mini\-batch depends on the values of the `BatchStrategy` and `MaxPayloadInMB` parameters\. When the value of `BatchStrategy` is `MultiRecord`, Amazon SageMaker sends the maximum number of records in each request, up to the `MaxPayloadInMB` limit\. If the value of `BatchStrategy` is `SingleRecord`, Amazon SageMaker sends individual records in each request\.  
+Some data formats represent a record as a binary payload wrapped with extra padding bytes\. When splitting is applied to a binary data format, padding is removed if the value of `BatchStrategy` is set to `SingleRecord`\. Padding is not removed if the value of `BatchStrategy` is set to `MultiRecord`\.  
+For more information about the RecordIO, see [Data Format](http://mxnet.io/architecture/note_data_loading.html#data-format) in the MXNet documentation\. For more information about the TFRecord, see [Consuming TFRecord data](https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data) in the TensorFlow documentation\.
 Type: String  
 Valid Values:` None | Line | RecordIO | TFRecord`   
 Required: No

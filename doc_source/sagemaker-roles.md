@@ -51,6 +51,15 @@ The permissions that you grant to the execution role for calling the `CreateNote
                 "ecr:GetDownloadUrlForLayer",
                 "ecr:BatchGetImage",
                 "ecr:BatchCheckLayerAvailability",
+                "ecr:SetRepositoryPolicy",
+                "ecr:CompleteLayerUpload",
+                "ecr:BatchDeleteImage",
+                "ecr:UploadLayerPart",
+                "ecr:DeleteRepositoryPolicy",
+                "ecr:InitiateLayerUpload",
+                "ecr:DeleteRepository",
+                "ecr:PutImage",
+                "ecr:CreateRepository",
                 "cloudwatch:PutMetricData",
                 "cloudwatch:GetMetricData",
                 "cloudwatch:GetMetricStatistics",
@@ -71,7 +80,9 @@ The permissions that you grant to the execution role for calling the `CreateNote
                 "robomaker:DeleteSimulationApplication",
                 "robomaker:CreateSimulationJob",
                 "robomaker:DescribeSimulationJob",
-                "robomaker:CancelSimulationJob"
+                "robomaker:CancelSimulationJob",
+                "ec2:CreateVpcEndpoint",
+                "ec2:DescribeRouteTables"
             ],
             "Resource": "*"
         },

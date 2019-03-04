@@ -1,4 +1,4 @@
-# Tuning a Factorization Machines Model<a name="fm-tuning"></a>
+# Tune a Factorization Machines Model<a name="fm-tuning"></a>
 
 *Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an objective metric\. You choose the objective metric from the metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the objective metric\.
 
@@ -22,7 +22,7 @@ The factorization machines algorithm reports three binary classification metrics
 | test:binary\_classification\_cross\_entropy | Cross Entropy | Minimize | 
 | test:binary\_f\_beta | Beta | Maximize | 
 
-## Tunable Hyperparameters<a name="fm-tunable-hyperparameters"></a>
+## Tunable Factorization Machines Hyperparameters<a name="fm-tunable-hyperparameters"></a>
 
 You can tune the following hyperparameters for the factorization machines algorithm\. The initialization parameters that contain the terms bias, linear, and factorization depend on their initialization method\. There are three initialization methods: `uniform`, `normal`, and `constant`\. These initialization methods are not themselves tunable\. The parameters that are tunable are dependent on this choice of the initialization method\. For example, if the initialization method is `uniform`, then only the `scale` parameters are tunable\. Specifically, if `bias_init_method==uniform`, then `bias_init_scale`, `linear_init_scale`, and `factors_init_scale` are tunable\. Similarly, if the initialization method is `normal`, then only `sigma` parameters are tunable\. If the initialization method is `constant`, then only `value` parameters are tunable\. These dependencies are listed in the following table\. 
 

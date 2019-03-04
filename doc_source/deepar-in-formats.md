@@ -81,15 +81,17 @@ DeepAR has a response timeout of 60 seconds\. When passing multiple time series 
 
 By default, DeepAR uses one worker per CPU for inference, if there is sufficient memory per CPU\. If the model is large and there isn't enough memory to run a model on each CPU, the number of workers is reduced\. The number of workers used for inference can be overwritten using the environment variable `MODEL_SERVER_WORKERS` For example, by setting `MODEL_SERVER_WORKERS=1`\) when calling the Amazon SageMaker [CreateModel](API_CreateModel.md) API\.
 
-## Batch Transform<a name="deepar-batch"></a>
+## Batch Transform with the DeepAR Algorithm<a name="deepar-batch"></a>
 
-DeepAR forecasting supports getting inferences by using batch transform using the JSON Lines format\. In this format, each record is represented on a single line as a JSON object, and lines are separated by newline characters\. The format is identical to the JSON Lines format used for model training\. For information, see [Input/Output Interface](deepar.md#deepar-inputoutput)\. For example:
+DeepAR forecasting supports getting inferences by using batch transform from data using the JSON Lines format\. In this format, each record is represented on a single line as a JSON object, and lines are separated by newline characters\. The format is identical to the JSON Lines format used for model training\. For information, see [Input/Output Interface for the DeepAR Algorithm](deepar.md#deepar-inputoutput)\. For example:
 
 ```
 {"start": "2009-11-01 00:00:00", "target": [4.3, "NaN", 5.1, ...], "cat": [0, 1], "dynamic_feat": [[1.1, 1.2, 0.5, ..]]}
 {"start": "2012-01-30 00:00:00", "target": [1.0, -5.0, ...], "cat": [2, 3], "dynamic_feat": [[1.1, 2.05, ...]]}
 {"start": "1999-01-30 00:00:00", "target": [2.0, 1.0], "cat": [1, 4], "dynamic_feat": [[1.3, 0.4]]}
 ```
+
+Note that in the [TransformInput](API_TransformInput.md) configuration of the Amazon SageMaker [CreateTransformJob](API_CreateTransformJob.md) request clients must explicitly set the `SplitType` value to `Line`, as the default value `None` causes runtime failures\.
 
 Similar to the hosted endpoint inference request format, the `cat` and the `dynamic_feat` fields for each instance are required if both of the following are true:
 + The model is trained on a dataset that contained both the `cat` and the `dynamic_feat` fields\.
@@ -109,4 +111,30 @@ The output is also in JSON Lines format, with one line per prediction, in an ord
 
 ```
 { "quantiles": { "0.1": [...], "0.2": [...] }, "samples": [...], "mean": [...] }
+```
+
+Note that in the [TransformInput](API_TransformInput.md) configuration of the Amazon SageMaker [CreateTransformJob](API_CreateTransformJob.md) request clients must explicitly set the `AssembleWith` value to `Line`, as the default value `None` concatenates all JSON objects on the same line\.
+
+If your batch transform job fails due to container timeout errors, you can either set the `BatchStrategy` value to `SingleRecord` or use `MultiRecord` in conjunction with a small value of `MaxPayloadInMB` \(for example, `1`\)\. We also advise against using an explicit value of `MaxConcurrentTransforms`, as the DeepAR container is capable of inferring a suitable value based on the used instance type\.
+
+For example, here is an Amazon SageMaker [CreateTransformJob](API_CreateTransformJob.md) request for a DeepAR job with a custom `DEEPAR_INFERENCE_CONFIG`:
+
+```
+{
+   "BatchStrategy": "MultiRecord",
+   "MaxPayloadInMB": 1,
+   "Environment": { 
+      "DEEPAR_INFERENCE_CONFIG" : "{ \"num_samples\": 200, \"output_types\": [\"mean\"] }",
+      ...
+   },
+   "TransformInput": {
+      "SplitType": "Line",
+      ...
+   },
+   "TransformOutput": { 
+      "AssembleWith": "Line",
+      ...
+   },
+   ...
+}
 ```

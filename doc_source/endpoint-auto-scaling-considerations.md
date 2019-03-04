@@ -1,8 +1,8 @@
-# Additional Considerations for Configuring Automatic Scaling<a name="endpoint-auto-scaling-considerations"></a>
+# Best Practices for Configuring Automatic Scaling<a name="endpoint-auto-scaling-considerations"></a>
 
  When configuring automatic scaling, consider the following general guidelines\.
 
-## Test Your Automatic Scaling Configuration<a name="endpoint-scaling-always-test"></a>
+## Testing Your Automatic Scaling Configuration<a name="endpoint-scaling-always-test"></a>
 
 It is important that you test your automatic scaling configuration to confirm that it works with your model the way you expect it to\.
 
@@ -13,6 +13,8 @@ When you update an endpoint, Application Auto Scaling checks to see whether any 
 In the AWS Management Console, you see a warning that you must deregister the variant from automatic scaling before you can update it\. If you are trying to update the endpoint by calling the [UpdateEndpoint](API_UpdateEndpoint.md) API, the call fails\. Before you update the endpoint, delete any scaling policies configured for it by calling the [DeleteScalingPolicy](https://docs.aws.amazon.com//autoscaling/application/APIReference/API_DeleteScalingPolicy.html) Application Auto Scaling API action, then call [DeregisterScalableTarget](https://docs.aws.amazon.com//autoscaling/application/APIReference/API_DeregisterScalableTarget.html) to deregister the variant as a scalable target\. After you update the endpoint, you can register the variant as a scalable target and attach an automatic scaling policy to the updated variant\.
 
 There is one exception\. If you change the model for a variant that is configured for automatic scaling, Amazon SageMaker automatic scaling allows the update\. This is because changing the model doesn't typically affect performance enough to change automatic scaling behavior\. If you do update a model for a variant configured for automatic scaling, ensure that the change to the model doesn't significantly affect performance and automatic scaling behavior\.
+
+For instructions on how to update an endpoint that uses automatic scaling, see [Update Endpoints that Use Automatic Scaling](endpoint-scaling-update.md)\.
 
 ## Deleting Endpoints Configured for Automatic Scaling<a name="endpoint-delete-with-scaling"></a>
 

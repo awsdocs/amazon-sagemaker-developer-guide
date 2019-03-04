@@ -3,11 +3,11 @@
 This section contains information about how to understand and prevent common errors, the error messages they generate, and guidance on how to resolve these errors\. It also contains lists of the frameworks and the operations in each of those frameworks that Neo supports\. 
 
 **Topics**
-+ [Preventing Neo Input Errors](#neo-troubleshooting-errors-preventing)
-+ [Understanding Neo Errors](#neo-troubleshooting-errors-understanding)
-+ [Resolving Neo Errors](#neo-errors-resolving)
++ [Prevent Neo Input Errors](#neo-troubleshooting-errors-preventing)
++ [Neo Error Messages](#neo-troubleshooting-errors-understanding)
++ [Resolve Neo Errors](#neo-errors-resolving)
 
-## Preventing Neo Input Errors<a name="neo-troubleshooting-errors-preventing"></a>
+## Prevent Neo Input Errors<a name="neo-troubleshooting-errors-preventing"></a>
 
 Some of the most common errors are due to invalid inputs\. This section contains information arranged in question and answer form to help you avoid these errors\.
 
@@ -148,11 +148,11 @@ Neo expects the name and shape of the expected data inputs for your trained mode
   + Example for two inputs in list format: `[[1,3,224,224], [1,3,224,224]]`
 + `XGBOOST`: input data name and shape are not needed\.
 
-## Understanding Neo Errors<a name="neo-troubleshooting-errors-understanding"></a>
+## Neo Error Messages<a name="neo-troubleshooting-errors-understanding"></a>
 
 This section lists and classifies Neo errors and error messages\.
 
-### Catalog of Neo Error Messages<a name="neo-error-messages"></a>
+### Neo Error Messages<a name="neo-error-messages"></a>
 
 This list catalogs the user and system error messages you can receive from Neo deployments\.
 + **User error messages**
@@ -182,7 +182,7 @@ This list catalogs the user and system error messages you can receive from Neo d
   + For system errors, Neo shows only one error message similar to the following: There was an unexpected error during compilation, check your inputs and try again in a few minutes\.
   + This covers all unexpected errors and errors that are not user errors\.
 
-### Classification of Neo Errors<a name="neo-errors"></a>
+### Neo Error Classifications<a name="neo-errors"></a>
 
 This list classifies the *user errors* you can receive from Neo\. These include access and permission errors and load errors for each of the supported frameworks\. All other errors are *system errors*\.
 + **Client permission error**: Neo passes the errors for these straight through from the dependent service\.
@@ -203,7 +203,7 @@ This list classifies the *user errors* you can receive from Neo\. These include 
   + **OperatorAttributeRequired**: An attribute is required for an internal symbol graph, but it is not listed in the user input model graph\.
   + **OperatorAttributeValueNotValid**: The value of the attribute in the specific operator is not valid\.
 
-## Resolving Neo Errors<a name="neo-errors-resolving"></a>
+## Resolve Neo Errors<a name="neo-errors-resolving"></a>
 
 This section provides guidance on troubleshooting common issues with Neo\. These include permission, load, compilation, and system errors and errors involving invalid inputs and unsupported operations\.
 + **Catalog of Known Issues**:

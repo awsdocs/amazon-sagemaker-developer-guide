@@ -1,4 +1,4 @@
-# Tuning a K\-Means Model<a name="k-means-tuning"></a>
+# Tune a K\-Means Model<a name="k-means-tuning"></a>
 
 *Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an objective metric\. You choose the objective metric from the metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the objective metric\.
 
@@ -16,7 +16,7 @@ The k\-means algorithm computes the following metrics during training\. When tun
 | test:msd | Mean squared distances between each record in the test set and the closest center of the model\. | Minimize | 
 | test:ssd | Sum of the squared distances between each record in the test set and the closest center of the model\. | Minimize | 
 
-## Tunable Hyperparameters<a name="km-tunable-hyperparameters"></a>
+## Tunable K\-Means Hyperparameters<a name="km-tunable-hyperparameters"></a>
 
 Tune the Amazon SageMaker k\-means model with the following hyperparameters\. The hyperparameters that have the greatest impact on k\-means objective metrics are: `mini_batch_size`, `extra_center_factor`, and `init_method`\. Tuning the hyperparameter `epochs` generally results in minor improvements\.
 

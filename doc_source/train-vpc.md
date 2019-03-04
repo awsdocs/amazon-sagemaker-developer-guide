@@ -6,7 +6,7 @@ To control access to your data and training containers, we recommend that you cr
 
 You specify your private VPC configuration when you create training jobs by specifying subnets and security groups\. When you specify the subnets and security groups, Amazon SageMaker creates *elastic network interfaces* \(ENIs\) that are associated with your security groups in one of the subnets\. ENIs allow your training containers to connect to resources in your VPC\. For information about ENIs, see [Elastic Network Interfaces](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ElasticNetworkInterfaces.html) in the *Amazon VPC User Guide*\.
 
-## Configuring a Training Job for Amazon VPC Access<a name="train-vpc-configure"></a>
+## Configure a Training Job for Amazon VPC Access<a name="train-vpc-configure"></a>
 
 To specify subnets and security groups in your private VPC, use the `VpcConfig` request parameter of the [CreateTrainingJob](API_CreateTrainingJob.md) API, or provide this information when you create a training job in the Amazon SageMaker console\. Amazon SageMaker uses this information to create ENIs and attach them to your training containers\. The ENIs provide your training containers with a network connection within your VPC that is not connected to the internet\. They also enable your training job to connect to resources in your private VPC\.
 
@@ -25,7 +25,7 @@ VpcConfig: {
             }
 ```
 
-## Configuring Your Private VPC for Amazon SageMaker Training<a name="train-vpc-vpc"></a>
+## Configure Your Private VPC for Amazon SageMaker Training<a name="train-vpc-vpc"></a>
 
 When configuring the private VPC for your Amazon SageMaker training jobs, use the following guidelines\. For information about setting up a VPC, see [Working with VPCs and Subnets](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/working-with-vpcs.html) in the *Amazon VPC User Guide*\.
 
@@ -103,7 +103,7 @@ The default endpoint policy allows users to install packages from the Amazon Lin
 
 In distributed training, you must allow communication between the different containers in the same training job\. To do that, configure a rule for your security group that allows inbound connections between members of the same security group For information, see [Security Group Rules](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html#SecurityGroupRules)\.
 
-### Connecting to Resources Outside Your VPC<a name="train-vpc-nat"></a>
+### Connect to Resources Outside Your VPC<a name="train-vpc-nat"></a>
 
 If you configure your VPC so that it doesn't have internet access, training jobs that use that VPC do not have access to resources outside your VPC\. If your training jobs needs access to resources outside your VPC, provide access with one of the following options:
 + If your training job needs access to an AWS service that supports interface VPC endpoints, create an endpoint to connect to that service\. For a list of services that support interface endpoints, see [VPC Endpoints](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html) in the *Amazon VPC User Guide*\. For information about creating an interface VPC endpoint, see [Interface VPC Endpoints \(AWS PrivateLink\)](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpce-interface.html) in the *Amazon VPC User Guide*\.

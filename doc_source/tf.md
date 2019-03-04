@@ -1,4 +1,4 @@
-# Using TensorFlow with Amazon SageMaker<a name="tf"></a>
+# Use TensorFlow with Amazon SageMaker<a name="tf"></a>
 
 You can use Amazon SageMaker to train and deploy a model using custom TensorFlow code\. The Amazon SageMaker Python SDK TensorFlow estimators and models and the Amazon SageMaker open\-source TensorFlow container make writing a TensorFlow script and running it in Amazon SageMaker easier\. For information about writing TensorFlow training scripts and using TensorFlow estimators and models with Amazon SageMaker, see [https://github\.com/aws/sagemaker\-python\-sdk\#tensorflow\-sagemaker\-estimators](https://github.com/aws/sagemaker-python-sdk#tensorflow-sagemaker-estimators)\.
 

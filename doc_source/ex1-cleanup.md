@@ -1,4 +1,4 @@
-# Step 4: Clean up<a name="ex1-cleanup"></a>
+# Step 3: Clean up<a name="ex1-cleanup"></a>
 
 To avoid incurring unnecessary charges, use the AWS Management Console to delete the resources that you created for this exercise\. 
 
