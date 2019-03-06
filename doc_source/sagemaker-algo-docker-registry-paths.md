@@ -1,4 +1,4 @@
-# Algorithms Provided by Amazon SageMaker: Common Parameters<a name="sagemaker-algo-docker-registry-paths"></a>
+# Common Parameters for Built\-In Algorithms<a name="sagemaker-algo-docker-registry-paths"></a>
 
 The following table lists parameters for each of the algorithms provided by Amazon SageMaker\.
 

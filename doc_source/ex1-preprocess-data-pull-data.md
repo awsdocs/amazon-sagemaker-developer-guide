@@ -1,4 +1,4 @@
-# Step 3\.2\.1: Download the MNIST Dataset<a name="ex1-preprocess-data-pull-data"></a>
+# Step 2\.2\.1: Download the MNIST Dataset<a name="ex1-preprocess-data-pull-data"></a>
 
 To download the MNIST dataset, copy and paste the following code into the notebook and run it: 
 
@@ -22,4 +22,4 @@ The code does the following:
    + `test_set`—You don't use this dataset in this exercise\.
 
 **Next Step**  
-[Step 3\.2\.2: Explore the Training Dataset](ex1-preprocess-data-inspect.md)
+[Step 2\.2\.2: Explore the Training Dataset](ex1-preprocess-data-inspect.md)

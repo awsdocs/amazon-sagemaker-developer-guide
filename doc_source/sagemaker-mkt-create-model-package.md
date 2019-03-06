@@ -11,6 +11,8 @@ To create a model package resource that you can use to create deployable models 
   The validation procedure uses your validation profile and sample data to run the following validations tasks:
 
   1. Create a model in your account using the model package's inference image and the optional model artifacts that are stored in Amazon S3\.
+**Note**  
+A model package is specific to the region in which you create it\. The S3 bucket where the model artifacts are stored must be in the same region where your created the model package\.
 
   1. Create a transform job in your account using the model to verify that your inference image works with Amazon SageMaker\.
 

@@ -5,5 +5,5 @@ You can use Amazon SageMaker to interact with Docker containers and run your own
 + To use your own inference code to get predictions for an entire dataset, use Amazon SageMaker batch transform\.
 
 **Topics**
-+ [Using Your Own Inference Code \(Hosting Services\)](your-algorithms-inference-code.md)
-+ [Using Your Own Inference Code \(Batch Transform\)](your-algorithms-batch-code.md)
++ [Using Your Own Inference Code with Amazon SageMaker Hosting Services](your-algorithms-inference-code.md)
++ [Using Your Own Inference Code with Batch Transform](your-algorithms-batch-code.md)

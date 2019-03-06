@@ -9,7 +9,7 @@ In k\-means clustering, each cluster has a center\. During model training, the k
 
 For example, suppose that you want to create a model to recognize handwritten digits and you choose the MNIST dataset for training\. The dataset provides thousands of images of handwritten digits \(0 through 9\)\. In this example, you might choose to create 10 clusters, one for each digit \(0, 1, …, 9\)\. As part of model training, the k\-means algorithm groups the input images into 10 clusters\.
 
-Each image in the MINST dataset is a 28x28\-pixel image, with a total of 784 pixels\. Each image corresponds to a point in a 784\-dimensional space, similar to a point in a 2\-dimensional space \(x,y\)\. To find a cluster to which a point belongs, the k\-means algorithm finds the distance of that point from all of the cluster centers\. It then chooses the cluster with the closest center as the cluster to which the image belongs\. 
+Each image in the MNIST dataset is a 28x28\-pixel image, with a total of 784 pixels\. Each image corresponds to a point in a 784\-dimensional space, similar to a point in a 2\-dimensional space \(x,y\)\. To find a cluster to which a point belongs, the k\-means algorithm finds the distance of that point from all of the cluster centers\. It then chooses the cluster with the closest center as the cluster to which the image belongs\. 
 
 **Note**  
 Amazon SageMaker uses a customized version of the algorithm where, instead of specifying that the algorithm create *k* clusters, you might choose to improve model accuracy by specifying extra cluster centers *\(K = k\*x\)*\. However, the algorithm ultimately reduces these to *k* clusters\.
@@ -56,7 +56,7 @@ To train a model in Amazon SageMaker, you create a training job\. In the request
 + For greater accuracy, add the optional `extra_center_factor` string\. 
 + To specify the strategy that you want to use to determine the initial cluster centers, add the `init_method` string and set its value to `random` or `k-means++`\.
 
-For more information, see [CreateTrainingJob](API_CreateTrainingJob.md)\. For an example, see [Step 3\.3\.2: Create a Training Job](ex1-train-model-create-training-job.md)\. 
+For more information, see [CreateTrainingJob](API_CreateTrainingJob.md)\. For an example, see [Step 2\.3\.2: Create a Training Job](ex1-train-model-create-training-job.md)\. 
 
 You now have an initial set of cluster centers\. 
 

@@ -1,4 +1,4 @@
-# Tuning an Object2Vec Model<a name="object2vec-tuning"></a>
+# Tune an Object2Vec Model<a name="object2vec-tuning"></a>
 
 *Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an objective metric\. You choose the objective metric from the metrics that the algorithm computes\. Automatic model tuning searches the chosen hyperparameters to find the combination of values that result in the model that optimizes the objective metric\.
 
@@ -30,7 +30,7 @@ The Object2Vec algorithm reports accuracy and cross\-entropy classification metr
 | validation:accuracy | Accuracy | Maximize | 
 | validation:cross\_entropy | Cross\-entropy | Minimize | 
 
-## Tunable Hyperparameters<a name="object2vec-tunable-hyperparameters"></a>
+## Tunable Object2Vec Hyperparameters<a name="object2vec-tunable-hyperparameters"></a>
 
 You can tune the following hyperparameters for the Object2Vec algorithm\.
 

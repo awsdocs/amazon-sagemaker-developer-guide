@@ -59,7 +59,7 @@ To see the log streams, choose **MyInferencePipelinesEndpoint** in the CloudWatc
 
 ![\[An image of the CloudWatch log stream.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pipeline-log-streams-2.png)
 
-For a listing on all of the logs provided by Amazon SageMaker, see [Logs and Metrics](inference-pipeline-logs-metrics.md)\.
+For a listing on all of the logs provided by Amazon SageMaker, see [Use Logs and Metrics to Monitor an Inference Pipeline](inference-pipeline-logs-metrics.md)\.
 
 ## Troubleshoot with Inference Pipelines Error Messages<a name="inference-pipeline-troubleshoot-errors"></a>
 

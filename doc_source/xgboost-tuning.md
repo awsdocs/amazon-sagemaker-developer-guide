@@ -1,4 +1,4 @@
-# Tuning a XGBoost Model<a name="xgboost-tuning"></a>
+# Tune an XGBoost Model<a name="xgboost-tuning"></a>
 
 *Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an objective metric\. You choose the objective metric from the metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the objective metric\. 
 
@@ -21,7 +21,7 @@ The XGBoost algorithm computes the following nine metrics during training\. When
 | validation:ndcg |  Normalized Discounted Cumulative Gain\.  |  Maximize  | 
 | validation:rmse |  Root mean square error\.  |  Minimize  | 
 
-## Tunable Hyperparameters<a name="xgboost-tunable-hyperparameters"></a>
+## Tunable XGBoost Hyperparameters<a name="xgboost-tunable-hyperparameters"></a>
 
 Tune the XGBoost model with the following hyperparameters\. The hyperparameters that have the greatest effect on XGBoost objective metrics are: `alpha`, `min_child_weight`, `subsample`, `eta`, and `num_round`\. 
 

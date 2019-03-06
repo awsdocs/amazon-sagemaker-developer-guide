@@ -1,4 +1,4 @@
-# Tuning an Image Classification Model<a name="IC-tuning"></a>
+# Tune an Image Classification Model<a name="IC-tuning"></a>
 
 *Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an objective metric\. You choose the objective metric from the metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the objective metric\.
 
@@ -13,11 +13,11 @@ The image classification algorithm is a supervised algorithm\. It reports an acc
 | --- | --- | --- | 
 | validation:accuracy | The ratio of the number of correct predictions to the total number of predictions made\. | Maximize | 
 
-## Tunable Hyperparameters<a name="IC-tunable-hyperparameters"></a>
+## Tunable Image Classification Hyperparameters<a name="IC-tunable-hyperparameters"></a>
 
 Tune an image classification model with the following hyperparameters\. The hyperparameters that have the greatest impact on image classification objective metrics are: `mini_batch_size`, `learning_rate`, and `optimizer`\. Tune the optimizer\-related hyperparameters, such as `momentum`, `weight_decay`, `beta_1`, `beta_2`, `eps`, and `gamma`, based on the selected `optimizer`\. For example, use `beta_1` and `beta_2` only when `adam` is the `optimizer`\.
 
-For more information about which hyperparameters are used in each optimizer, see [Hyperparameters](IC-Hyperparameter.md)\.
+For more information about which hyperparameters are used in each optimizer, see [Image Classification Hyperparameters](IC-Hyperparameter.md)\.
 
 
 | Parameter Name | Parameter Type | Recommended Ranges | 

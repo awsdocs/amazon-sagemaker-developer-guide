@@ -74,7 +74,8 @@ If the action is successful, the service sends back an HTTP 200 response\.
 The following data is returned in JSON format by the service\.
 
  ** [BatchStrategy](#API_DescribeTransformJob_ResponseSyntax) **   <a name="SageMaker-DescribeTransformJob-response-BatchStrategy"></a>
- If you want to include only one record in a batch, specify `SingleRecord`\.\. If you want batches to contain a maximum of the number of records specified in the `MaxPayloadInMB` parameter, specify `MultiRecord`\.S  
+Specifies the number of records to include in a mini\-batch for an HTTP inference request\. A *record* ** is a single unit of input data that inference can be made on\. For example, a single line in a CSV file is a record\.   
+To enable the batch strategy, you must set `SplitType` to `Line`, `RecordIO`, or `TFRecord`\.  
 Type: String  
 Valid Values:` MultiRecord | SingleRecord` 
 
@@ -83,13 +84,14 @@ A timestamp that shows when the transform Job was created\.
 Type: Timestamp
 
  ** [Environment](#API_DescribeTransformJob_ResponseSyntax) **   <a name="SageMaker-DescribeTransformJob-response-Environment"></a>
+The environment variables to set in the Docker container\. We support up to 16 key and values entries in the map\.  
 Type: String to string map  
 Key Length Constraints: Maximum length of 1024\.  
 Key Pattern: `[a-zA-Z_][a-zA-Z0-9_]*`   
 Value Length Constraints: Maximum length of 10240\.
 
  ** [FailureReason](#API_DescribeTransformJob_ResponseSyntax) **   <a name="SageMaker-DescribeTransformJob-response-FailureReason"></a>
-If the transform job failed, the reason that it failed\.  
+If the transform job failed, `FailureReason` describes why it failed\. A transform job creates a log file, which includes error messages, and stores it as an Amazon S3 object\. For more information, see [Log Amazon SageMaker Events with Amazon CloudWatch](http://docs.aws.amazon.com/sagemaker/latest/dg/logging-cloudwatch.html)\.  
 Type: String  
 Length Constraints: Maximum length of 1024\.
 

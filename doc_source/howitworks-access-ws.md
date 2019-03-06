@@ -1,4 +1,4 @@
-# Accessing Notebook Instances<a name="howitworks-access-ws"></a>
+# Access Notebook Instances<a name="howitworks-access-ws"></a>
 
 To access your Amazon SageMaker notebook instances, choose one of the following options: 
 + Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.

@@ -1,4 +1,4 @@
-# Tuning an NTM Model<a name="ntm-tuning"></a>
+# Tune an NTM Model<a name="ntm-tuning"></a>
 
 *Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an objective metric\. You choose the objective metric from the metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the objective metric\.
 
@@ -15,7 +15,7 @@ The NTM algorithm reports a single metric that is computed during training: `val
 | --- | --- | --- | 
 | validation:total\_loss |  Total Loss on validation set  |  Minimize  | 
 
-## Tunable Hyperparameters<a name="ntm-tunable-hyperparameters"></a>
+## Tunable NTM Hyperparameters<a name="ntm-tunable-hyperparameters"></a>
 
 You can tune the following hyperparameters for the NTM algorithm\. Usually setting low `mini_batch_size` and small `learning_rate` values results in lower validation losses, although it might take longer to train\. Low validation losses don't necessarily produce more coherent topics as interpreted by humans\. The effect of other hyperparameters on training and validation loss can vary from dataset to dataset\. To see which values are compatible, see [NTM Hyperparameters](ntm_hyperparameters.md)\.
 

@@ -78,7 +78,7 @@ Length Constraints: Minimum length of 1\. Maximum length of 1024\.
 Pattern: `^https://([^/]+)/?(.*)$|^[a-zA-Z0-9](-*[a-zA-Z0-9])*` 
 
  ** [DirectInternetAccess](#API_DescribeNotebookInstance_ResponseSyntax) **   <a name="SageMaker-DescribeNotebookInstance-response-DirectInternetAccess"></a>
-Describes whether Amazon SageMaker provides internet access to the notebook instance\. If this value is set to *Disabled, he notebook instance does not have internet access, and cannot connect to Amazon SageMaker training and endpoint services*\.  
+Describes whether Amazon SageMaker provides internet access to the notebook instance\. If this value is set to *Disabled*, the notebook instance does not have internet access, and cannot connect to Amazon SageMaker training and endpoint services\.  
 For more information, see [Notebook Instances Are Internet\-Enabled by Default](https://docs.aws.amazon.com/sagemaker/latest/dg/appendix-additional-considerations.html#appendix-notebook-and-internet-access)\.  
 Type: String  
 Valid Values:` Enabled | Disabled` 

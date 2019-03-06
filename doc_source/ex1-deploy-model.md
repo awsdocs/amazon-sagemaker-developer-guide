@@ -1,12 +1,12 @@
-# Step 3\.4\.1: Deploy the Model to Amazon SageMaker Hosting Services<a name="ex1-deploy-model"></a>
+# Step 2\.4\.1: Deploy the Model to Amazon SageMaker Hosting Services<a name="ex1-deploy-model"></a>
 
-Deploying a model in Amazon SageMaker is a 3\-step process: 
+Deploying a model in Amazon SageMaker is a three\-step process: 
 
-1. Create a model in Amazon SageMaker— Send a [CreateModel](API_CreateModel.md) request to provide information such as the location of the S3 bucket that contains your model artifacts and the registry path of the image that contains inference code\. In the next step, you provide the model when you create an endpoint configuration\.
+1. Create a model in Amazon SageMaker— Send a [CreateModel](API_CreateModel.md) request to provide information such as the location of the S3 bucket that contains your model artifacts and the registry path of the image that contains inference code\.
 
-1. Create an endpoint configuration— Send a [CreateEndpointConfig](API_CreateEndpointConfig.md) request to provide the resource configuration for hosting\. This includes the type and number of ML compute instances to launch for deploying the model\. In the next step, you create an endpoint with the [CreateEndpoint](API_CreateEndpoint.md) API using this endpoint configuration\.
+1. Create an endpoint configuration— Send a [CreateEndpointConfig](API_CreateEndpointConfig.md) request to provide the resource configuration for hosting\. This includes the type and number of ML compute instances to launch for deploying the model\. 
 
-1. Create an endpoint— Send a [CreateEndpoint](API_CreateEndpoint.md) request to create an endpoint\. Amazon SageMaker launches the ML compute instances and deploys the model\. In the response, Amazon SageMaker returns an endpoint\. Applications can send requests to this endpoint to get inferences from the model\.
+1. Create an endpoint— Send a [CreateEndpoint](API_CreateEndpoint.md) request to create an endpoint\. Amazon SageMaker launches the ML compute instances and deploys the model\. In the response, Amazon SageMaker returns an endpoint\. Applications can send requests for inference to this endpoint\.
 
 The low\-level AWS SDK for Python provides corresponding methods\. However, the high\-level Python library provides the `deploy` method that does all these tasks for you\. 
 
@@ -106,4 +106,4 @@ To deploy the model, choose one of the following options\.
      ```
 
 **Next Step**  
-[Step 3\.5: Validate the Model](ex1-test-model.md)
+[Step 2\.5: Validate the Model](ex1-test-model.md)

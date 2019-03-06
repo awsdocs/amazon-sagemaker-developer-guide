@@ -1,4 +1,4 @@
-# Setting up to use Elastic Inference \(EI\)<a name="ei-setup"></a>
+# Set Up to Use EI<a name="ei-setup"></a>
 
 Use the instructions in this topic only if one of the following applies to you:
 + You want to use a customized role or permission policy\.
@@ -8,10 +8,10 @@ Use the instructions in this topic only if one of the following applies to you:
 If you already have an execution role that has the `AmazonSageMakerFullAccess` managed policy attached \(this is true for any IAM role that you create when you create a notebook instance, training job, or model in the console\) and you are not connecting to an EI model or notebook instance in a VPC, you do not need to make any of these changes to use EI in Amazon SageMaker\.
 
 **Topics**
-+ [Set up Required Permissions](#ei-setup-permissions)
++ [Set Up Required Permissions](#ei-setup-permissions)
 + [Use a Custom VPC to Connect to EI](#ei-setup-custom-vpc)
 
-## Set up Required Permissions<a name="ei-setup-permissions"></a>
+## Set Up Required Permissions<a name="ei-setup-permissions"></a>
 
 To use EI in Amazon SageMaker, the role that you use to open a notebook instance or create a deployable model must have a policy with the required permissions attached\. You can attach the `AmazonSageMakerFullAccess` managed policy, which contains the required permissions, to the role, or you can add a custom policy that has the required permissions\. For information about creating an IAM role, see [Creating a Role for an AWS Service \(Console\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-service.html#roles-creatingrole-service-console) in the *AWS Identity and Access Management User Guide*\. For information about attaching a policy to a role, see [Adding and Removing IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html) \.
 

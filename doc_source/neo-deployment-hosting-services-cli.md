@@ -1,13 +1,13 @@
-# Deploy Neo\-Compiled Models with the CLI<a name="neo-deployment-hosting-services-cli"></a>
+# Deploy a Model Compiled with Neo \(AWS CLI\)<a name="neo-deployment-hosting-services-cli"></a>
 
 The deployment of a Neo\-compiled model with the CLI has three steps\.
 
 **Topics**
-+ [Create Neo\-Compiled Model with the CLI](#neo-deployment-hosting-services-cli-create-model)
-+ [Create the Endpoint Configuration with the CLI](#neo-deployment-hosting-services-cli-create-endpoint-config)
-+ [Create Endpoint with the CLI](#neo-deployment-hosting-services-cli-create-endpoint)
++ [Create a Model That Was Compiled with Neo \(AWS CLI\)](#neo-deployment-hosting-services-cli-create-model)
++ [Create the Endpoint Configuration \(AWS CLI\)](#neo-deployment-hosting-services-cli-create-endpoint-config)
++ [Create an Endpoint \(AWS CLI\)](#neo-deployment-hosting-services-cli-create-endpoint)
 
-## Create Neo\-Compiled Model with the CLI<a name="neo-deployment-hosting-services-cli-create-model"></a>
+## Create a Model That Was Compiled with Neo \(AWS CLI\)<a name="neo-deployment-hosting-services-cli-create-model"></a>
 
 For the full syntax of the `CreateModel` API, see [CreateModel](API_CreateModel.md)\.
 
@@ -52,10 +52,10 @@ The script must be packaged as a `*.tar.gz` file\. The `*.tar.gz` file must cont
 
 Neither of these two functions use any functionalities of MXNet, Pytorch, or Tensorflow\. See the [Amazon SageMaker Neo Sample Notebooks](neo.md#neo-sample-notebooks) for examples using these functions\.
 
-## Create the Endpoint Configuration with the CLI<a name="neo-deployment-hosting-services-cli-create-endpoint-config"></a>
+## Create the Endpoint Configuration \(AWS CLI\)<a name="neo-deployment-hosting-services-cli-create-endpoint-config"></a>
 
 For the full syntax of the `CreateEndpointConfig` API, see [CreateEndpointConfig](API_CreateEndpointConfig.md)\. You must specify the correct instance type in `ProductionVariants`/`InstanceType`\. It is imperative that this value matches the instance type specified in your compilation job\.
 
-## Create Endpoint with the CLI<a name="neo-deployment-hosting-services-cli-create-endpoint"></a>
+## Create an Endpoint \(AWS CLI\)<a name="neo-deployment-hosting-services-cli-create-endpoint"></a>
 
 For the full syntax of the `CreateEndpoint` API, see [CreateEndpoint](API_CreateEndpoint.md)\. 

@@ -9,14 +9,14 @@ When you enable early stopping for a hyperparameter tuning job, Amazon SageMaker
 + Compute the running average of the objective metric for all previous training jobs up to the same epoch, and then compute the median of all of the running averages\.
 + If the value of the objective metric for the current training job is worse \(higher when minimizing or lower when maximizing the objective metric\) than the median value of running averages of the objective metric for previous training jobs up to the same epoch, Amazon SageMaker stops the current training job\.
 
-## Algorithms that Support Early Stopping<a name="automatic-tuning-early-stopping-algos"></a>
+## Algorithms That Support Early Stopping<a name="automatic-tuning-early-stopping-algos"></a>
 
 To support early stopping, an algorithm must emit objective metrics for each epoch\. The following built\-in Amazon SageMaker algorithms support early stopping:
-+ [Linear Learner](linear-learner.md)—Supported only if you use `objective_loss` as the objective metric\.
++ [Linear Learner Algorithm](linear-learner.md)—Supported only if you use `objective_loss` as the objective metric\.
 + [XGBoost Algorithm](xgboost.md)
 + [Image Classification Algorithm](image-classification.md)
 + [Object Detection Algorithm](object-detection.md)
-+ [Sequence to Sequence ](seq-2-seq.md)
++ [Sequence\-to\-Sequence Algorithm](seq-2-seq.md)
 + [IP Insights Algorithm](ip-insights.md)
 
 **Note**  

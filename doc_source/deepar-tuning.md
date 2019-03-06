@@ -1,4 +1,4 @@
-# Tuning a DeepAR Model<a name="deepar-tuning"></a>
+# Tune a DeepAR Model<a name="deepar-tuning"></a>
 
 *Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an objective metric\. You choose the objective metric from the metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the objective metric\.
 
@@ -6,7 +6,7 @@ For more information about model tuning, see [Automatic Model Tuning](automatic-
 
 ## Metrics Computed by the DeepAR Algorithm<a name="deepar-metrics"></a>
 
-The DeepAR algorithm reports three metrics, which are computed during training\. When tuning a model, choose one of these as the objective\. For the objective, use either the forecast accuracy on a provided test channel \(recommended\) or the training loss\. For recommendations for the training/test split for the DeepAR algorithm, see [ Best Practices ](deepar.md#deepar_best_practices)\. 
+The DeepAR algorithm reports three metrics, which are computed during training\. When tuning a model, choose one of these as the objective\. For the objective, use either the forecast accuracy on a provided test channel \(recommended\) or the training loss\. For recommendations for the training/test split for the DeepAR algorithm, see [ Best Practices for Using the DeepAR Algorithm](deepar.md#deepar_best_practices)\. 
 
 
 | Metric Name | Description | Optimization Direction | 
@@ -15,7 +15,7 @@ The DeepAR algorithm reports three metrics, which are computed during training\.
 | test:mean\_wQuantileLoss |  The average overall quantile losses computed on the test set\. To control which quantiles are used, set the `test_quantiles` hyperparameter\.   |  Minimize  | 
 | train:final\_loss |  The training negative log\-likelihood loss averaged over the last training epoch for the model\.  |  Minimize  | 
 
-## Tunable Hyperparameters<a name="deepar-tunable-hyperparameters"></a>
+## Tunable Hyperparameters for the DeepAR Algorithm<a name="deepar-tunable-hyperparameters"></a>
 
 Tune a DeepAR model with the following hyperparameters\. The hyperparameters that have the greatest impact, listed in order from the most to least impactful, on DeepAR objective metrics are: `epochs`, `context_length`, `mini_batch_size`, `learning_rate`, and `num_cells`\.
 

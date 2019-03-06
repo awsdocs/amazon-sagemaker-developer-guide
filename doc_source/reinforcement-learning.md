@@ -1,14 +1,14 @@
 # Reinforcement Learning with Amazon SageMaker RL<a name="reinforcement-learning"></a>
 
-Reinforcement learning \(RL\) is a machine learning technique that attempts to learn a strategy, called a policy, that optimizes an objective for an agent acting in an environment\. For example, the agent might be a robot, the environment might be a maze, and the goal might be to successfully navigate the maze in the smallest amount of time\. In RL, the agent takes an action, observes the state of the environment, and gets a reward based on the value of the current state of the environment\. The goal is to maximize the long\-term reward that the agent receives as a result of its actions\. RL is well\-suited or solving problems where an agent can make autonomous decisions\.
+Reinforcement learning \(RL\) is a machine learning technique that attempts to learn a strategy, called a policy, that optimizes an objective for an agent acting in an environment\. For example, the agent might be a robot, the environment might be a maze, and the goal might be to successfully navigate the maze in the smallest amount of time\. In RL, the agent takes an action, observes the state of the environment, and gets a reward based on the value of the current state of the environment\. The goal is to maximize the long\-term reward that the agent receives as a result of its actions\. RL is well\-suited for solving problems where an agent can make autonomous decisions\.
 
 **Topics**
 + [Why is Reinforcement Learning Important?](#rl-why)
 + [Markov Decision Process \(MDP\)](#rl-terms)
-+ [Amazon SageMaker RL Key Features](#sagemaker-rl)
++ [Key Features of Amazon SageMaker RL](#sagemaker-rl)
 + [Sample RL Workflow Using Amazon SageMaker RL](sagemaker-rl-workflow.md)
 + [RL Environments in Amazon SageMaker](sagemaker-rl-environments.md)
-+ [Distributed training with Amazon SageMaker RL](sagemaker-rl-distributed.md)
++ [Distributed Training with Amazon SageMaker RL](sagemaker-rl-distributed.md)
 + [Hyperparameter Tuning with Amazon SageMaker RL](sagemaker-rl-tuning.md)
 
 ## Why is Reinforcement Learning Important?<a name="rl-why"></a>
@@ -36,7 +36,7 @@ Information about the state of the environment that is available to the agent at
 
 Typically, training in RL consists of many *episodes*\. An episode consists of all of the time steps in an MDP from the initial state until the environment reaches the terminal state\.
 
-## Amazon SageMaker RL Key Features<a name="sagemaker-rl"></a>
+## Key Features of Amazon SageMaker RL<a name="sagemaker-rl"></a>
 
 To train RL models in Amazon SageMaker RL, use the following components: 
 + A deep learning \(DL\) framework\. Currently, Amazon SageMaker supports RL in TensorFlow and Apache MXNet\.

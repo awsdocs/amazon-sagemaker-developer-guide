@@ -1,4 +1,4 @@
-# Using PyTorch with Amazon SageMaker<a name="pytorch"></a>
+# Use PyTorch with Amazon SageMaker<a name="pytorch"></a>
 
 You can use Amazon SageMaker to train and deploy a model using custom PyTorch code\. The Amazon SageMaker Python SDK PyTorch estimators and models and the Amazon SageMaker open\-source PyTorch container make writing a PyTorch script and running it in Amazon SageMaker easier\. For information about writing PyTorch training scripts and using PyTorch estimators and models with Amazon SageMaker, see [https://github\.com/aws/sagemaker\-python\-sdk\#pytorch\-sagemaker\-estimators](https://github.com/aws/sagemaker-python-sdk#pytorch-sagemaker-estimators)\.
 

@@ -1,4 +1,4 @@
-# Algorithms Provided by Amazon SageMaker: Logs<a name="common-info-all-sagemaker-models-logs"></a>
+# Logs for Built\-In Algorithms<a name="common-info-all-sagemaker-models-logs"></a>
 
 Amazon SageMaker algorithms produce Amazon CloudWatch logs, which provide detailed information on the training process\. To see the logs, in the AWS management console, choose **CloudWatch**, choose **Logs**, and then choose the /aws/sagemaker/TrainingJobs **log group**\. Each training job has one log stream per node that it was trained on\. The log stream’s name begins with the value specified in the `TrainingJobName` parameter when the job was created\.
 
@@ -11,7 +11,7 @@ The contents of logs vary by algorithms\. However, you can typically find the fo
 + Measurement of an algorithms accuracy or numerical performance
 + Timings for the algorithm, and any major stages within the algorithm
 
-## Example Errors<a name="example-errors"></a>
+## Common Errors<a name="example-errors"></a>
 
 If a training job fails, some details about the failure are provided by the `FailureReason` return value in the training job description, as follows:
 

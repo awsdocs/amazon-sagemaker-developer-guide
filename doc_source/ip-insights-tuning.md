@@ -1,4 +1,4 @@
-# Tuning an IP Insights Model<a name="ip-insights-tuning"></a>
+# Tune an IP Insights Model<a name="ip-insights-tuning"></a>
 
 *Automatic model tuning*, also called hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an objective metric\. You choose the objective metric from the metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the objective metric\.
 
@@ -15,7 +15,7 @@ The IP Insights algorithm computes a `validation:discriminator_auc` metric durin
 | --- | --- | --- | 
 | validation:discriminator\_auc |  Area under the ROC curve on the validation dataset\. The validation dataset is not labeled\. AUC is a metric that describes the model's ability to discriminate validation data points from randomly generated data points\.  |  Maximize  | 
 
-## Tunable Hyperparameters<a name="ip-insights-tunable-hyperparameters"></a>
+## Tunable IP Insights Hyperparameters<a name="ip-insights-tunable-hyperparameters"></a>
 
 You can tune the following hyperparameters for the Amazon SageMaker IP Insights algorithm\. 
 

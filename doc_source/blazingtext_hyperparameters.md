@@ -4,7 +4,7 @@ When you start a training job with a `CreateTrainingJob` request, you specify a 
 
 ## Word2Vec Hyperparameters<a name="blazingtext_hyperparameters_word2vec"></a>
 
-The following table lists the hyperparameters for the BlazingText training algorithm provided by Amazon SageMaker\.
+The following table lists the hyperparameters for the BlazingText Word2Vec training algorithm provided by Amazon SageMaker\.
 
 
 | Parameter Name | Description | 

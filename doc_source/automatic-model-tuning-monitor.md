@@ -3,11 +3,11 @@
 To monitor the progress of a hyperparameter tuning job and the training jobs that it launches, use the Amazon SageMaker console\.
 
 **Topics**
-+ [View the Hyperparameter Tuning Job Status](#automatic-model-tuning-monitor-tuning)
++ [View the Status of the Hyperparameter Tuning Job](#automatic-model-tuning-monitor-tuning)
 + [View the Status of the Training Jobs](#automatic-model-tuning-monitor-training)
 + [View the Best Training Job](#automatic-model-tuning-best-training-job)
 
-## View the Hyperparameter Tuning Job Status<a name="automatic-model-tuning-monitor-tuning"></a>
+## View the Status of the Hyperparameter Tuning Job<a name="automatic-model-tuning-monitor-tuning"></a>
 
 **To view the status of the hyperparameter tuning job**
 
@@ -25,7 +25,7 @@ To monitor the progress of a hyperparameter tuning job and the training jobs tha
 
 ## View the Status of the Training Jobs<a name="automatic-model-tuning-monitor-training"></a>
 
-**To view the status of the training jobs that the hyperparameter tuning job launched:**
+**To view the status of the training jobs that the hyperparameter tuning job launched**
 
 1. In the list of hyperparameter tuning jobs, choose the job that you launched\.
 

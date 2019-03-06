@@ -1,4 +1,4 @@
-# Compile Machine Learning Models from the Amazon SageMaker Console<a name="neo-job-compilation-console"></a>
+# Compile a Model \(Console\)<a name="neo-job-compilation-console"></a>
 
 You can create a Neo compilation job in the Amazon SageMaker console\. In the **Amazon SageMaker** console, choose **Compilation jobs**, and then choose **Create compilation job**\.
 

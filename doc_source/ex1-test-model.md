@@ -1,9 +1,9 @@
-# Step 3\.5: Validate the Model<a name="ex1-test-model"></a>
+# Step 2\.5: Validate the Model<a name="ex1-test-model"></a>
 
 You now have a model that is deployed in Amazon SageMaker\. To validate the model, send sample requests and get inferences\. To send requests to an Amazon SageMaker endpoint, use the [InvokeEndpoint](API_runtime_InvokeEndpoint.md) API\. 
 
 To validate your model, choose one of the following options\. 
-+ **Use the high\-level Python library provided by Amazon SageMaker**\. 
++ **Validate the model \(High\-level Python Library Provided by Amazon SageMaker**\)
 
   The `kmeans_predictor` returned by the `deploy` call in the preceding step provides the `predict` method\. To get inferences from the model, call this method\. 
 
@@ -70,7 +70,7 @@ In the k\-means implementation, the cluster numbers and digit they represent don
 
      This code takes the first100 images of handwritten numbers from the `valid_set` dataset and generates inferences for them\. The result is a set of clusters that group similar images\. The following visualization shows four of the clusters that the model returned:   
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sagemaker-validate-kmeans-model-10.png)
-+ **Use the SDK for Python**\. 
++ Validate the Model \(**SDK for Python**
 
   To send requests to the endpoint, use the `invoke_endpoint` method\. 
 
@@ -135,9 +135,9 @@ In the k\-means implementation, the cluster numbers and digit they represent don
 
   1. To get an idea of how accurate the model is, review the clusters and the numbers in them to see how well the model clustered similar looking digits\. To improve the model, you might make the following changes to the training job:
      + Change the model training parameters—For example, increase the number of epochs or tweak hyperparameters, such `extra_center_factor`\. For more information, see [K\-Means Hyperparameters](k-means-api-config.md)\.
-     + Consider switching the algorithm—The images in the MNIST dataset include information that identifies the digits, called labels\. Similarly, you might be able to label your training data for other problems\. You might then use the label information and a supervised algorithm, such as the linear learner algorithm provided by Amazon SageMaker\. For more information, see [Linear Learner](linear-learner.md)\.
+     + Consider switching the algorithm—The images in the MNIST dataset include information that identifies the digits, called labels\. Similarly, you might be able to label your training data for other problems\. You might then use the label information and a supervised algorithm, such as the linear learner algorithm provided by Amazon SageMaker\. For more information, see [Linear Learner Algorithm](linear-learner.md)\.
      + Try a more specialized algorithm—Try a specialized algorithm, such as the image classification algorithm provided by Amazon SageMaker instead of the linear learner algorithm\. For more information, see [Image Classification Algorithm](image-classification.md)\. 
-     + Use a custom algorithm—Consider using a custom neural network algorithm built on Apache MXNet or TensorFlow\. For more information, see [Using Apache MXNet with Amazon SageMaker](mxnet.md) and [Using TensorFlow with Amazon SageMaker](tf.md)\.
+     + Use a custom algorithm—Consider using a custom neural network algorithm built on Apache MXNet or TensorFlow\. For more information, see [Use Apache MXNet with Amazon SageMaker](mxnet.md) and [Use TensorFlow with Amazon SageMaker](tf.md)\.
 
 **Next Step**  
-[Step 4: Clean up](ex1-cleanup.md)
+[Step 3: Clean up](ex1-cleanup.md)

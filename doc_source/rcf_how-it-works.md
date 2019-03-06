@@ -4,7 +4,7 @@ Amazon SageMaker Random Cut Forest \(RCF\) is an unsupervised algorithm for dete
 
 The main idea behind the RCF algorithm is to create a forest of trees where each tree is obtained using a partition of a sample of the training data\. For example, a random sample of the input data is first determined\. The random sample is then partitioned according to the number of trees in the forest\. Each tree is given such a partition and organizes that subset of points into a k\-d tree\. The anomaly score assigned to a data point by the tree is defined as the expected change in complexity of the tree as a result adding that point to the tree; which, in approximation, is inversely proportional to the resulting depth of the point in the tree\. The random cut forest assigns an anomaly score by computing the average score from each constituent tree and scaling the result with respect to the sample size\. The RCF algorithm is based on the one described in reference \[1\]\.
 
-## Randomly Sampling Data<a name="rcf-rndm-sample-data"></a>
+## Sample Data Randomly<a name="rcf-rndm-sample-data"></a>
 
 The first step in the RCF algorithm is to obtain a random sample of the training data\. In particular, suppose we want a sample of size ![\[TBD\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/rcf13.jpg) from ![\[TBD\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/rcf14.jpg) total data points\. If the training data is small enough, the entire dataset can be used, and we could randomly draw ![\[TBD\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/rcf13.jpg) elements from this set\. However, frequently the training data is too large to fit all at once, and this approach isn't feasible\. Instead, we use a technique called reservoir sampling\.
 
@@ -21,7 +21,7 @@ The first step in the RCF algorithm is to obtain a random sample of the training
 
 This algorithm selects a random sample such that ![\[TBD\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/rcf10.jpg) for all ![\[TBD\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/rcf11.jpg)\. When ![\[TBD\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/rcf12.jpg) the algorithm is more complicated\. Additionally, a distinction must be made between random sampling that is with and without replacement\. RCF performs an augmented reservoir sampling without replacement on the training data based on the algorithms described in \[2\]\.
 
-## Training and Inference<a name="rcf-training-inference"></a>
+## Train a RFC Model and Produce Inferences<a name="rcf-training-inference"></a>
 
 The next step in RCF is to construct a random cut forest using the random sample of data\. First, the sample is partitioned into a number of equal\-sized partitions equal to the number of trees in the forest\. Then, each partition is sent to an individual tree\. The tree recursively organizes its partition into a binary tree by partitioning the data domain into bounding boxes\.
 
@@ -37,7 +37,7 @@ Bounding boxes are then computed for the left and right halves of the data and t
 
 When performing inference using a trained RCF model the final anomaly score is reported as the average across scores reported by each tree\. Note that it is often the case that the new data point does not already reside in the tree\. To determine the score associated with the new point the data point is inserted into the given tree and the tree is efficiently \(and temporarily\) reassembled in a manner equivalent to the training process described above\. That is, the resulting tree is as if the input data point were a member of the sample used to construct the tree in the first place\. The reported score is inversely proportional to the depth of the input point within the tree\.
 
-## Choosing Hyperparameters<a name="rcf-choose-hyperparam"></a>
+## Choose Hyperparameters<a name="rcf-choose-hyperparam"></a>
 
 The primary hyperparameters used to tune the RCF model are `num_trees` and `num_samples_per_tree`\. Increasing `num_trees` has the effect of reducing the noise observed in anomaly scores since the final score is the average of the scores reported by each tree\. While the optimal value is application\-dependent we recommend using 100 trees to begin with as a balance between score noise and model complexity\. Note that inference time is proportional to the number of trees\. Although training time is also affected it is dominated by the reservoir sampling algorithm describe above\.
 

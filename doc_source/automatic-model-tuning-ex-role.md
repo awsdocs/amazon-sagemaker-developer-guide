@@ -5,7 +5,7 @@ Get the execution role for the notebook instance\. This is the IAM role that you
 ```
 from sagemaker import get_execution_role
 
-role = sagemaker.get_execution_role()
+role = get_execution_role()
 print(role)
 ```
 

@@ -1,4 +1,4 @@
-# Tuning an LDA Model<a name="lda-tuning"></a>
+# Tune an LDA Model<a name="lda-tuning"></a>
 
 *Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an objective metric\. You choose the objective metric from the metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the objective metric\.
 
@@ -15,7 +15,7 @@ The LDA algorithm reports on a single metric during training: `test:pwll`\. When
 | --- | --- | --- | 
 | test:pwll | Per\-word log\-likelihood on the test dataset\. The likelihood that the test dataset is accurately described by the learned LDA model\. | Maximize | 
 
-## Tunable Hyperparameters<a name="lda-tunable-hyperparameters"></a>
+## Tunable LDA Hyperparameters<a name="lda-tunable-hyperparameters"></a>
 
 You can tune the following hyperparameters for the LDA algorithm\. Both hyperparameters, `alpha0` and `num_topics`, can affect the LDA objective metric \(`test:pwll`\)\. If you don't already know the optimal values for these hyperparameters, which maximize per\-word log\-likelihood and produce an accurate LDA model, automatic model tuning can help find them\.
 

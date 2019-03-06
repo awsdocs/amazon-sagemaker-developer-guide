@@ -6,7 +6,7 @@ To avoid making your data and model containers accessible over internet, we reco
 
 You specify your VPC configuration when you create a model by specifying subnets and security groups\. When you specify your subnets and security groups, Amazon SageMaker creates *elastic network interfaces* \(ENIs\) that are associated with your security groups in one of the specified subnets\. ENIs allow your model containers to connect to resources in your VPC\. For information about ENIs, see [Elastic Network Interfaces](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ElasticNetworkInterfaces.html) in the *Amazon VPC User Guide*\.
 
-## Configuring a Model for Amazon VPC Access<a name="host-vpc-configure"></a>
+## Configure a Model for Amazon VPC Access<a name="host-vpc-configure"></a>
 
 To specify subnets and security groups in your private VPC, use the `VpcConfig` request parameter of the [CreateModel](API_CreateModel.md) API or when you create a model in the Amazon SageMaker console\. Amazon SageMaker uses this information to create ENIs and then attaches them to your model containers\. The ENIs provide your model containers with a network connection within your VPC that is not connected to the internet\. It also enables your model to connect to resources in your private VPC\.
 
@@ -28,7 +28,7 @@ VpcConfig: {
             }
 ```
 
-## Configuring Your Private VPC for Amazon SageMaker Hosting<a name="host-vpc-vpc"></a>
+## Configure Your Private VPC for Amazon SageMaker Hosting<a name="host-vpc-vpc"></a>
 
 Use the following guidelines to configure a private VPC for your Amazon SageMaker hosting jobs \. For information about setting up a VPC, see [Working with VPCs and Subnets](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/working-with-vpcs.html) in the *Amazon VPC User Guide*\.
 

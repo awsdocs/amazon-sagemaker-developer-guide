@@ -1,4 +1,4 @@
-# Hyperparameters<a name="IC-Hyperparameter"></a>
+# Image Classification Hyperparameters<a name="IC-Hyperparameter"></a>
 
 
 | Parameter Name | Description | 
@@ -22,7 +22,7 @@
 | lr\_scheduler\_factor | The ratio to reduce learning rate used in conjunction with the `lr_scheduler_step` parameter, defined as `lr_new` = `lr_old` \* `lr_scheduler_factor`\. **Optional** Valid values: float\. Range in \[0, 1\]\. Default value: 0\.1 | 
 | lr\_scheduler\_step | The epochs at which to reduce the learning rate\. As explained in the `lr_scheduler_factor` parameter, the learning rate is reduced by `lr_scheduler_factor` at these epochs\. For example, if the value is set to "10, 20", then the learning rate is reduced by `lr_scheduler_factor` after 10th epoch and again by `lr_scheduler_factor` after 20th epoch\. The epochs are delimited by ","\. **Optional** Valid values: string Default value: no default value | 
 | mini\_batch\_size | The batch size for training\. In a single\-machine multi\-GPU setting, each GPU handles `mini_batch_size`/num\_gpu training samples\. For the multi\-machine training in dist\_sync mode, the actual batch size is `mini_batch_size`\*number of machines\. See MXNet docs for more details\. **Optional** Valid values: positive integer Default value: 32 | 
-| momentum | The momentum for `sgd` and `nag`, ignored for other optimizers\. **Optional** Valid values: float\. Range in \[0, 1\]\. Default value: 0 | 
+| momentum | The momentum for `sgd` and `nag`, ignored for other optimizers\. **Optional** Valid values: float\. Range in \[0, 1\]\. Default value: 0\.9 | 
 | multi\_label |  Flag to use for multi\-label classification where each sample can be assigned multiple labels\. Average accuracy across all classes is logged\. **Optional** Valid values: 0 or 1 Default value: 0  | 
 | num\_layers | Number of layers for the network\. For data with large image size \(for example, 224x224 \- like ImageNet\), we suggest selecting the number of layers from the set \[18, 34, 50, 101, 152, 200\]\. For data with small image size \(for example, 28x28 \- like CIFAR\), we suggest selecting the number of layers from the set \[20, 32, 44, 56, 110\]\. The number of layers in each set is based on the ResNet paper\. For transfer learning, the number of layers defines the architecture of base network and hence can only be selected from the set \[18, 34, 50, 101, 152, 200\]\. **Optional** Valid values: positive integer in \[18, 34, 50, 101, 152, 200\] or \[20, 32, 44, 56, 110\] Default value: 152 | 
 | optimizer | The optimizer type\. For more details of the parameters for the optimizers, please refer to MXNet's API\. **Optional** Valid values: One of `sgd`, `adam`, `rmsprop`, or `nag`\. [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/IC-Hyperparameter.html) Default value: `sgd` | 
