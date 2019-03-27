@@ -8,7 +8,7 @@ Amazon SageMaker is a fully managed machine learning service\. With Amazon SageM
 
 If you are a first\-time user of Amazon SageMaker, we recommend that you do the following: 
 
-1. **Read [How Amazon SageMaker Works](how-it-works.md) ** – This section provides an overview of Amazon SageMaker, explains key concepts, and describes the core components involved in building AI solutions with Amazon SageMaker\. We recommend that you read this topic in the order presented\. 
+1. **Read [How Amazon SageMaker Works](how-it-works.md)** – This section provides an overview of Amazon SageMaker, explains key concepts, and describes the core components involved in building AI solutions with Amazon SageMaker\. We recommend that you read this topic in the order presented\. 
 
 1. **Read [Get Started](gs.md)** – This section explains how to set up your account and create your first Amazon SageMaker notebook instance\.
 
@@ -19,4 +19,4 @@ If you are a first\-time user of Amazon SageMaker, we recommend that you do the 
    + **Use Amazon SageMaker directly from Apache Spark** – For information, see [Use Apache Spark with Amazon SageMaker](apache-spark.md)\.
    + **Use Amazon AI to train and/or deploy your own custom algorithms** – Package your custom algorithms with Docker so you can train and/or deploy them in Amazon SageMaker\. See [Use Your Own Algorithms with Amazon SageMaker](your-algorithms.md) to learn how Amazon SageMaker interacts with Docker containers, and for the Amazon SageMaker requirements for Docker images\. 
 
-1. **See the [API Reference](API_Reference.md) ** – This section describes the Amazon SageMaker API operations\.
+1. **See the [API Reference](API_Reference.md)** – This section describes the Amazon SageMaker API operations\.
