@@ -91,7 +91,7 @@ from time import gmtime, strftime
 endpoint_config_name = 'ImageClassificationEndpointConfig-' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
 print(endpoint_config_name)
 create_endpoint_config_response = sagemaker.create_endpoint_config(
-    EndpointConfigName = "MyEIEndpointConfig",
+    EndpointConfigName = endpoint_config_name,
     ProductionVariants=[{
         'InstanceType':'ml.m4.xlarge',
         'InitialInstanceCount':1,
@@ -107,7 +107,10 @@ print("Endpoint Config Arn: " + create_endpoint_config_response['EndpointConfigA
 After you create an endpoint configuration with an accelerator type, you can proceed to create an endpoint\.
 
 ```
-endpoint_response = sagemaker.create_endpoint("MyEIEndpointConfig")
+endpoint_name = 'ImageClassificationEndpoint-' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
+endpoint_response = sagemaker.create_endpoint(
+    EndpointName=endpoint_name,
+    EndpointConfigName=endpoint_config_name)
 ```
 
 After the endpoint is created you can invoke it using the invoke\_endpoint method in a boto3 runtime object as you would any other endpoint\.
