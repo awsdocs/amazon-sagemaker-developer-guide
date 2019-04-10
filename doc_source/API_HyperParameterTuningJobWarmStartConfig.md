@@ -10,7 +10,7 @@ All training jobs launched by parent hyperparameter tuning jobs and the new hype
 ## Contents<a name="API_HyperParameterTuningJobWarmStartConfig_Contents"></a>
 
  **ParentHyperParameterTuningJobs**   <a name="SageMaker-Type-HyperParameterTuningJobWarmStartConfig-ParentHyperParameterTuningJobs"></a>
-An array of hyperparameter tuning jobs that are used as the starting point for the new hyperparameter tuning job\. For more information about warm starting a hyperparameter tuning job, see [Using a Previous Hyperparameter Tuning Job as a Starting Point](http://docs.aws.amazon.com/automatic-model-tuning-incremental)\.  
+An array of hyperparameter tuning jobs that are used as the starting point for the new hyperparameter tuning job\. For more information about warm starting a hyperparameter tuning job, see [Using a Previous Hyperparameter Tuning Job as a Starting Point](http://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-warm-start.html)\.  
 Hyperparameter tuning jobs created before October 1, 2018 cannot be used as parent jobs for warm start tuning jobs\.  
 Type: Array of [ParentHyperParameterTuningJob](API_ParentHyperParameterTuningJob.md) objects  
 Array Members: Minimum number of 1 item\. Maximum number of 5 items\.  
@@ -31,5 +31,6 @@ Required: Yes
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/HyperParameterTuningJobWarmStartConfig) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/HyperParameterTuningJobWarmStartConfig) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/HyperParameterTuningJobWarmStartConfig) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/HyperParameterTuningJobWarmStartConfig) 
 +  [AWS SDK for Ruby V2](https://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/HyperParameterTuningJobWarmStartConfig) 

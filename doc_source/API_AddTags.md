@@ -1,6 +1,6 @@
 # AddTags<a name="API_AddTags"></a>
 
-Adds or overwrites one or more tags for the specified Amazon SageMaker resource\. You can add tags to notebook instances, training jobs, hyperparameter tuning jobs, models, endpoint configurations, and endpoints\.
+Adds or overwrites one or more tags for the specified Amazon SageMaker resource\. You can add tags to notebook instances, training jobs, hyperparameter tuning jobs, batch transform jobs, models, labeling jobs, work teams, endpoint configurations, and endpoints\.
 
 Each tag consists of a key and an optional value\. Tag keys must be unique per resource\. For more information about tags, see For more information, see [AWS Tagging Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/)\.
 
@@ -31,6 +31,7 @@ The request accepts the following data in JSON format\.
 The Amazon Resource Name \(ARN\) of the resource that you want to tag\.  
 Type: String  
 Length Constraints: Maximum length of 256\.  
+Pattern: `arn:.*`   
 Required: Yes
 
  ** [Tags](#API_AddTags_RequestSyntax) **   <a name="SageMaker-AddTags-request-Tags"></a>
@@ -74,6 +75,7 @@ For more information about using this API in one of the language\-specific AWS S
 +  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/AddTags) 
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/AddTags) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/AddTags) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/AddTags) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/AddTags) 
 +  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/AddTags) 
 +  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/AddTags) 

@@ -62,6 +62,7 @@ Required: No
 If the result of the previous `ListHyperParameterTuningJobs` request was truncated, the response includes a `NextToken`\. To retrieve the next set of tuning jobs, use the token in the next request\.  
 Type: String  
 Length Constraints: Maximum length of 8192\.  
+Pattern: `.*`   
 Required: No
 
  ** [SortBy](#API_ListHyperParameterTuningJobs_RequestSyntax) **   <a name="SageMaker-ListHyperParameterTuningJobs-request-SortBy"></a>
@@ -130,7 +131,8 @@ Type: Array of [HyperParameterTuningJobSummary](API_HyperParameterTuningJobSumma
  ** [NextToken](#API_ListHyperParameterTuningJobs_ResponseSyntax) **   <a name="SageMaker-ListHyperParameterTuningJobs-response-NextToken"></a>
 If the result of this `ListHyperParameterTuningJobs` request was truncated, the response includes a `NextToken`\. To retrieve the next set of tuning jobs, use the token in the next request\.  
 Type: String  
-Length Constraints: Maximum length of 8192\.
+Length Constraints: Maximum length of 8192\.  
+Pattern: `.*` 
 
 ## Errors<a name="API_ListHyperParameterTuningJobs_Errors"></a>
 
@@ -143,6 +145,7 @@ For more information about using this API in one of the language\-specific AWS S
 +  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/ListHyperParameterTuningJobs) 
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/ListHyperParameterTuningJobs) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/ListHyperParameterTuningJobs) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/ListHyperParameterTuningJobs) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/ListHyperParameterTuningJobs) 
 +  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/ListHyperParameterTuningJobs) 
 +  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/ListHyperParameterTuningJobs) 

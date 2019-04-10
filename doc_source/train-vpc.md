@@ -6,6 +6,9 @@ To control access to your data and training containers, we recommend that you cr
 
 You specify your private VPC configuration when you create training jobs by specifying subnets and security groups\. When you specify the subnets and security groups, Amazon SageMaker creates *elastic network interfaces* \(ENIs\) that are associated with your security groups in one of the subnets\. ENIs allow your training containers to connect to resources in your VPC\. For information about ENIs, see [Elastic Network Interfaces](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ElasticNetworkInterfaces.html) in the *Amazon VPC User Guide*\.
 
+**Note**  
+For training jobs, you can only configure subnets with a default tenancy VPC in which your instance runs on shared hardware\. For more information on the tenancy attribute for VPCs, see [Dedicated Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html)\.
+
 ## Configure a Training Job for Amazon VPC Access<a name="train-vpc-configure"></a>
 
 To specify subnets and security groups in your private VPC, use the `VpcConfig` request parameter of the [CreateTrainingJob](API_CreateTrainingJob.md) API, or provide this information when you create a training job in the Amazon SageMaker console\. Amazon SageMaker uses this information to create ENIs and attach them to your training containers\. The ENIs provide your training containers with a network connection within your VPC that is not connected to the internet\. They also enable your training job to connect to resources in your private VPC\.

@@ -8,6 +8,7 @@ Describes the results of a transform job\.
 The MIME type used to specify the output data\. Amazon SageMaker uses the MIME type with each http call to transfer data from the transform job\.  
 Type: String  
 Length Constraints: Maximum length of 256\.  
+Pattern: `.*`   
 Required: No
 
  **AssembleWith**   <a name="SageMaker-Type-TransformOutput-AssembleWith"></a>
@@ -34,6 +35,7 @@ If you don't provide a KMS key ID, Amazon SageMaker uses the default KMS key for
 The KMS key policy must grant permission to the IAM role that you specify in your `CreateTramsformJob` request\. For more information, see [Using Key Policies in AWS KMS](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html) in the *AWS Key Management Service Developer Guide*\.  
 Type: String  
 Length Constraints: Maximum length of 2048\.  
+Pattern: `.*`   
 Required: No
 
  **S3OutputPath**   <a name="SageMaker-Type-TransformOutput-S3OutputPath"></a>
@@ -49,5 +51,6 @@ Required: Yes
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/TransformOutput) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/TransformOutput) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/TransformOutput) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/TransformOutput) 
 +  [AWS SDK for Ruby V2](https://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/TransformOutput) 

@@ -6,7 +6,7 @@ You will first need to visit the AWS Lambda console or use AWS Lambda's APIs to 
 
 Select your lambdas from the **Lambda functions** section that comes after the code editor for your custom HTML in the Ground Truth console\.
 
-If you need an example, there is an end\-to\-end demo, including Python code for the Lambdas, in the "[Demo Template: Bounding Box](sms-custom-templates-step2-demo1.md)" document\.
+If you need an example, there is an end\-to\-end demo, including Python code for the Lambdas, in the "[Demo Template: Annotation of Images with `crowd-bounding-box`](sms-custom-templates-step2-demo1.md)" document\.
 
 ## Pre\-labeling task Lambda<a name="sms-custom-templates-step3-prelambda"></a>
 
@@ -33,11 +33,14 @@ In return, Ground Truth will require a response formatted like this:
 ```
 {
     "taskInput": <json object>,
-    "humanAnnotationRequired": <boolean> # Optional
+    "isHumanAnnotationRequired": <boolean> # Optional
 }
 ```
 
 That `<json object>` may be a bit deceiving\. It needs to contain *all* the data your custom form will need\. If you're doing a bounding box task where the instructions stay the same all the time, it may just be the HTTP\(S\) or S3 resource for your image file\. If it's a sentiment analysis task and different objects may have different choices, it would be the object reference as a string and the choices as an array of strings\.
+
+**Implications of `isHumanAnnotationRequired`**  
+ This value is optional because it will default to `true`\. The primary use case for explicitly setting it is when you want to exclude this data object from being labeled by human workers\. 
 
 **The pre\-processing Lambda runs first**  
  Before any tasks are available to workers, your entire manifest will be processed into an intermediate form, using your Lambda\. This means you won't be able to change your Lambda part of the way through a labeling job and see that have an impact on the remaining tasks\. 
@@ -104,7 +107,20 @@ In return, Ground Truth will require a response formatted like this:
                 }
             }
         }
+    },
+   {        
+        "datasetObjectId": <string>,
+        "consolidatedAnnotation": {
+            "content": {
+                "<labelattributename>": {
+                    # ... label content
+                }
+            }
+        }
     }
+    .
+    .
+    .
 ]
 ```
 At this point, all the data you're sending to your S3 bucket, other than the `datasetObjectId` will be in the `content` object\.

@@ -112,7 +112,9 @@ Algorithm\-specific parameters that influence the quality of the model\. You set
 You can specify a maximum of 100 hyperparameters\. Each hyperparameter is a key\-value pair\. Each key and value is limited to 256 characters, as specified by the `Length Constraint`\.   
 Type: String to string map  
 Key Length Constraints: Maximum length of 256\.  
+Key Pattern: `.*`   
 Value Length Constraints: Maximum length of 256\.  
+Value Pattern: `.*`   
 Required: No
 
  ** [InputDataConfig](#API_CreateTrainingJob_RequestSyntax) **   <a name="SageMaker-CreateTrainingJob-request-InputDataConfig"></a>
@@ -206,6 +208,7 @@ For more information about using this API in one of the language\-specific AWS S
 +  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/CreateTrainingJob) 
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/CreateTrainingJob) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/CreateTrainingJob) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/CreateTrainingJob) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/CreateTrainingJob) 
 +  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/CreateTrainingJob) 
 +  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/CreateTrainingJob) 

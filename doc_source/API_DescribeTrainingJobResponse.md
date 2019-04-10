@@ -39,7 +39,9 @@ Required: No
 Algorithm\-specific parameters\.   
 Type: String to string map  
 Key Length Constraints: Maximum length of 256\.  
+Key Pattern: `.*`   
 Value Length Constraints: Maximum length of 256\.  
+Value Pattern: `.*`   
 Required: No
 
  **InputDataConfig**   <a name="SageMaker-Type-DescribeTrainingJobResponse-InputDataConfig"></a>
@@ -172,5 +174,6 @@ Required: No
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/DescribeTrainingJobResponse) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/DescribeTrainingJobResponse) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/DescribeTrainingJobResponse) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/DescribeTrainingJobResponse) 
 +  [AWS SDK for Ruby V2](https://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/DescribeTrainingJobResponse) 

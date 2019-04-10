@@ -20,9 +20,9 @@ Type: [ResourceLimits](API_ResourceLimits.md) object
 Required: Yes
 
  **Strategy**   <a name="SageMaker-Type-HyperParameterTuningJobConfig-Strategy"></a>
-Specifies the search strategy for hyperparameters\. Currently, the only valid value is `Bayesian`\.  
+Specifies how hyperparameter tuning chooses the combinations of hyperparameter values to use for the training job it launches\. To use the Bayesian search stategy, set this to `Bayesian`\. To randomly search, set it to `Random`\. For information about search strategies, see [How Hyperparameter Tuning Works](http://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html)\.  
 Type: String  
-Valid Values:` Bayesian`   
+Valid Values:` Bayesian | Random`   
 Required: Yes
 
  **TrainingJobEarlyStoppingType**   <a name="SageMaker-Type-HyperParameterTuningJobConfig-TrainingJobEarlyStoppingType"></a>
@@ -40,5 +40,6 @@ Required: No
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/HyperParameterTuningJobConfig) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/HyperParameterTuningJobConfig) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/HyperParameterTuningJobConfig) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/HyperParameterTuningJobConfig) 
 +  [AWS SDK for Ruby V2](https://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/HyperParameterTuningJobConfig) 

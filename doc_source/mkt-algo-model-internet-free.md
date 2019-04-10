@@ -7,4 +7,6 @@ Network isolation is not supported by the following managed Amazon SageMaker con
 + MXNet
 + Chainer
 + PyTorch
++ Scikit\-learn
++ Amazon SageMaker Reiniforcement Learning
 + Semantic Segmentation Algorithm

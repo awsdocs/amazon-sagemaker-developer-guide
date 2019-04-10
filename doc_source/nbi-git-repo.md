@@ -12,6 +12,7 @@ There are two ways to associate a Git repository with a notebook instance:
 **Topics**
 + [Add a Git Repository to Your Amazon SageMaker Account](#nbi-git-resource)
 + [Create a Notebook Instance with an Associated Git Repository](#nbi-git-create)
++ [Associate a CodeCommit Repository in a Different AWS Account with a Notebook Instance](#nbi-git-cross)
 + [Use Git Repositories in a Notebook Instance](#git-nbi-use)
 
 ## Add a Git Repository to Your Amazon SageMaker Account<a name="nbi-git-resource"></a>
@@ -110,6 +111,9 @@ You can associate Git repositories with a notebook instance when you create the 
 **Note**  
 You can use the Amazon SageMaker API [CreateNotebookInstance](API_CreateNotebookInstance.md) to associate Git repositories with a notebook instance, but step\-by\-step instructions are not provided here\.
 
+**Note**  
+If you want to use a CodeCommit repository that is in a different AWS than the notebook instance,set up cross\-account access for the repository\. For information, see [Associate a CodeCommit Repository in a Different AWS Account with a Notebook Instance](#nbi-git-cross)\.
+
 **Topics**
 + [Create a Notebook Instance with an Associated Git Repository \(Console\)](#nbi-git-create-console)
 + [Create a Notebook Instance with an Associated Git Repository \(CLI\)](#nbi-git-create-cli)
@@ -147,6 +151,62 @@ aws sagemaker create-notebook-instance \
 
 **Note**  
 If you use an AWS CodeCommit repository that does not contain "SageMaker" in its name, add the `codecommit:GitPull` and `codecommit:GitPush` permissions to the role that you pass as the `role-arn` argument to the `create-notebook-instance` command\. For information about how to add permissions to a role, see [Adding and Removing IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html) in the *AWS Identity and Access Management User Guide*\. 
+
+## Associate a CodeCommit Repository in a Different AWS Account with a Notebook Instance<a name="nbi-git-cross"></a>
+
+To associate a CodeCommit repository in a different AWS account with your notebook instance, set up cross\-account access for the CodeCommit repository\.
+
+**To set up cross\-account access for a CodeCommit repository and associate it with a notebook instance:**
+
+1. In the AWS account that contains the CodeCommit repository, create an IAM policy that allows access to the repository from users in the account that contains your notebook instance\. For information, see [Step 1: Create a Policy for Repository Access in AccountA](https://docs.aws.amazon.com/codecommit/latest/userguide/cross-account-administrator-a.html#cross-account-create-policy-a) in the *CodeCommit User Guide*\.
+
+1. In the AWS account that contains the CodeCommit repository, create an IAM role, and attach the policy that you created in the previous step to that role\. For information, see [Step 2: Create a Role for Repository Access in AccountA](https://docs.aws.amazon.com/codecommit/latest/userguide/cross-account-administrator-a.html#cross-account-create-role-a) in the *CodeCommit User Guide*\.
+
+1. Create a profile in the notebook instance that uses the role that you created in the previous step:
+
+   1. Open the notebook instance\.
+
+   1. Open a terminal in the notebook instance\.
+
+   1. Edit a new profile by typing the following in the terminal:
+
+      ```
+      vi /home/ec2-user/.aws/config
+      ```
+
+   1. Edit the file with the following profile information:
+
+      ```
+      [profile CrossAccountAccessProfile]
+      region = us-west-2
+      role_arn = arn:aws:iam::CodeCommitAccount:role/CrossAccountRepositoryContributorRole
+      credential_source=Ec2InstanceMetadata
+      output = json
+      ```
+
+      Where *CodeCommitAccount* is the account that contains the CodeCommit repository, *CrossAccountAccessProfile* is the name of the new profile, and *CrossAccountRepositoryContributorRole* is the name of the role you created in the previous step\.
+
+1. On the notebook instance, configure git to use the profile you created in the previous step:
+
+   1. Open the notebook instance\.
+
+   1. Open a terminal in the notebook instance\.
+
+   1. Edit the Git configuration file typing the following in the terminal:
+
+      ```
+      vi /home/ec2-user/.gitconfig
+      ```
+
+   1. Edit the file with the following profile information:
+
+      ```
+      [credential]
+              helper = !aws codecommit credential-helper --profile CrossAccountAccessProfile $@
+              UseHttpPath = true
+      ```
+
+      Where *CrossAccountAccessProfile* is the name of the profile that you created in the previous step\.
 
 ## Use Git Repositories in a Notebook Instance<a name="git-nbi-use"></a>
 

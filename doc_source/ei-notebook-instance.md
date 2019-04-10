@@ -50,15 +50,6 @@ To use EI locally in an endpoint hosted on a notebook instance, use local mode w
 
 To use EI with TensorFlow in local mode, specify `local` for `instance_type` and `local_sagemaker_notebook` for `accelerator_type` when you call the `deploy` method of an estimator or a model object\. For more information about Amazon SageMaker Python SDK TensorFlow estimators and models, see [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/tensorflow/README\.rst](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/tensorflow/README.rst)\.
 
-The following code shows how to use local mode with an estimator object\. To call the `deploy` method, you must have previously called the `fit` method to train a model\.
-
-```
-# Deploys the model to a local endpoint
-tf_predictor = tf_estimator.deploy(initial_instance_count=1,
-                                   instance_type='local',
-                                   accelerator_type='local_sagemaker_notebook')
-```
-
 The following code shows how to use local mode with an estimator object\. To call the `deploy` method, you must have previously either:
 + Trained the model by calling the `fit` method of an estimator\.
 + Pass a model artifact when you initialize the model object\.

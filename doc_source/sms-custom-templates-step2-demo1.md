@@ -1,4 +1,4 @@
-# Demo Template: Bounding Box<a name="sms-custom-templates-step2-demo1"></a>
+# Demo Template: Annotation of Images with `crowd-bounding-box`<a name="sms-custom-templates-step2-demo1"></a>
 
 After you have selected to use a custom template, you'll reach the **Custom labeling task panel**\. There you can choose from multiple base templates that represent some of the more common tasks and will provide a sample to work from in building your customized labeling task's template\.
 
@@ -82,7 +82,7 @@ Your manifest file should key to the variables you're using in your template\. Y
 {"source-ref": "<S3 image URI>"}
 ```
 
-**Example : Your pre\-processing Lambda**  
+**Example : Your Pre\-labeling task Lambda function**  
 As part of the job set\-up, you'll need to provide the ARN of an AWS Lambda that can be called to process your manifest entries and pass them to the template engine\. The AmazonSageMakerFullAccess policy is restricted to invoking AWS Lambda functions with one of the following four strings as part of the function name: `SageMaker`, `Sagemaker`, `sagemaker`, or `LabelingFunction`\. This applies to both your pre\-processing and post\-processing Lambdas\. If you choose to use names without those strings, you must explicitly provide `lambda:InvokeFunction` permission to the IAM role used for creating the labeling job\.   
 This applies to both your pre\-processing and post\-processing Lambdas\.  
 When you're using the console, if you have Lambdas that are owned by your account, a drop\-down list of functions meeting the naming requirements will be provided to choose one\.  
@@ -100,7 +100,7 @@ def lambda_handler(event, context):
 ```
 The API contract for the request and response is provided on the page about [pre\-processing and post\-processing Lambdas](sms-custom-templates-step3.md)\. The JSON object from your manifest will be provided as a child of the `event` object\. In this demonstration, it is a simple passthrough of one variable, but you might want to have a custom header per object, custom examples, etc\. The properties inside the `taskInput` object will be available as variables to your template\.
 
-**Example : Your post\-processing Lambda**  
+**Example : Your Post\-labeling task Lambda function**  
 As part of the job set\-up, you'll need to provide the ARN of an AWS Lambda that can be called to process the form data when a worker completes a task\. This can be as simple or complex as you want\. If you want to do answer consolidation and scoring as it comes in, you can apply the scoring and/or consolidation algorithms of your choice\. If you want to store the raw data for offline processing, that is an option\.  
 The annotation data will be in a file designated by the `s3Uri` string in the `payload` object\. To process the annotations as they come in, even for a simple passthrough function, you need to assign `S3ReadOnly` access to your Lambda so it can read the annotation files\.  
 In the Console page for creating your Lambda, scroll to the **Execution role** panel\. Select **Create a new role from one or more templates**\. Give the role a name\. From the **Policy templates** drop\-down, choose **Amazon S3 object read\-only permissions**\. Save the Lambda and the role will be saved and selected\.  

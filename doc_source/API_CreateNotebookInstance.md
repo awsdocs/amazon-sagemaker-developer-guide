@@ -33,6 +33,7 @@ For more information, see [How It Works](https://docs.aws.amazon.com/sagemaker/l
    "[LifecycleConfigName](#SageMaker-CreateNotebookInstance-request-LifecycleConfigName)": "string",
    "[NotebookInstanceName](#SageMaker-CreateNotebookInstance-request-NotebookInstanceName)": "string",
    "[RoleArn](#SageMaker-CreateNotebookInstance-request-RoleArn)": "string",
+   "[RootAccess](#SageMaker-CreateNotebookInstance-request-RootAccess)": "string",
    "[SecurityGroupIds](#SageMaker-CreateNotebookInstance-request-SecurityGroupIds)": [ "string" ],
    "[SubnetId](#SageMaker-CreateNotebookInstance-request-SubnetId)": "string",
    "[Tags](#SageMaker-CreateNotebookInstance-request-Tags)": [ 
@@ -89,6 +90,7 @@ Required: Yes
  If you provide a AWS KMS key ID, Amazon SageMaker uses it to encrypt data at rest on the ML storage volume that is attached to your notebook instance\. The KMS key you provide must be enabled\. For information, see [Enabling and Disabling Keys](http://docs.aws.amazon.com/kms/latest/developerguide/enabling-keys.html) in the *AWS Key Management Service Developer Guide*\.  
 Type: String  
 Length Constraints: Maximum length of 2048\.  
+Pattern: `.*`   
 Required: No
 
  ** [LifecycleConfigName](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-LifecycleConfigName"></a>
@@ -113,17 +115,26 @@ Length Constraints: Minimum length of 20\. Maximum length of 2048\.
 Pattern: `^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$`   
 Required: Yes
 
+ ** [RootAccess](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-RootAccess"></a>
+Whether root access is enabled or disabled for users of the notebook instance\. The default value is `Enabled`\.  
+Lifecycle configurations need root access to be able to set up a notebook instance\. Because of this, lifecycle configurations associated with a notebook instance always run with root access even if you disable root access for users\.
+Type: String  
+Valid Values:` Enabled | Disabled`   
+Required: No
+
  ** [SecurityGroupIds](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-SecurityGroupIds"></a>
 The VPC security group IDs, in the form sg\-xxxxxxxx\. The security groups must be for the same VPC as specified in the subnet\.   
 Type: Array of strings  
 Array Members: Maximum number of 5 items\.  
 Length Constraints: Maximum length of 32\.  
+Pattern: `[-0-9a-zA-Z]+`   
 Required: No
 
  ** [SubnetId](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-SubnetId"></a>
 The ID of the subnet in a VPC to which you would like to have a connectivity from your ML compute instance\.   
 Type: String  
 Length Constraints: Maximum length of 32\.  
+Pattern: `[-0-9a-zA-Z]+`   
 Required: No
 
  ** [Tags](#API_CreateNotebookInstance_RequestSyntax) **   <a name="SageMaker-CreateNotebookInstance-request-Tags"></a>
@@ -172,6 +183,7 @@ For more information about using this API in one of the language\-specific AWS S
 +  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/CreateNotebookInstance) 
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/CreateNotebookInstance) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/CreateNotebookInstance) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/CreateNotebookInstance) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/CreateNotebookInstance) 
 +  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/CreateNotebookInstance) 
 +  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/CreateNotebookInstance) 

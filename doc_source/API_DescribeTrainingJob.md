@@ -150,7 +150,9 @@ Array Members: Minimum number of 0 items\. Maximum number of 20 items\.
 Algorithm\-specific parameters\.   
 Type: String to string map  
 Key Length Constraints: Maximum length of 256\.  
-Value Length Constraints: Maximum length of 256\.
+Key Pattern: `.*`   
+Value Length Constraints: Maximum length of 256\.  
+Value Pattern: `.*` 
 
  ** [InputDataConfig](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-InputDataConfig"></a>
 An array of `Channel` objects that describes each data input channel\.   
@@ -275,6 +277,7 @@ For more information about using this API in one of the language\-specific AWS S
 +  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/DescribeTrainingJob) 
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/DescribeTrainingJob) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/DescribeTrainingJob) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/DescribeTrainingJob) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/DescribeTrainingJob) 
 +  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/DescribeTrainingJob) 
 +  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/DescribeTrainingJob) 

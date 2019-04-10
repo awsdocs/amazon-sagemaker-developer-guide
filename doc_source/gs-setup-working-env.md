@@ -47,6 +47,8 @@ If necessary, you can change the notebook instance settings, including the ML co
 
          For more information about creating your own IAM role, see [Amazon SageMaker Roles ](sagemaker-roles.md)\. 
 
+   1. For **Root Access**, choose **Enabled** to enable root access for users, or choose **Disabled** to disable root access for users\. If you disable root access for users, lifecycle configurations associated with the notebook instance still run as the root user\.
+
    1. \(Optional\) Choose to access resources in a Virtual Private Cloud \(VPC\)\. 
 
       **To access resources in your VPC from the notebook instance**

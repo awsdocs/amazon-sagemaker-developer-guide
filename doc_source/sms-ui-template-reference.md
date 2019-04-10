@@ -6,6 +6,7 @@ Amazon SageMaker Ground Truth provides customers with the ability to design thei
 + [crowd\-bounding\-box](sms-ui-template-crowd-bounding-box.md)
 + [crowd\-image\-classifier](sms-ui-template-crowd-image-classifier.md)
 + [crowd\-classifier](sms-ui-template-crowd-classifier.md)
++ [crowd\-instance\-segmentation](sms-ui-template-crowd-instance-segmentation.md)
 + [crowd\-semantic\-segmentation](sms-ui-template-crowd-semantic-segmentation.md)
 + [crowd\-alert](sms-ui-template-crowd-alert.md)
 + [crowd\-badge](sms-ui-template-crowd-badge.md)

@@ -62,7 +62,7 @@ The following are best practices for using lifecycle configurations:
   
       # Installing packages in the Jupyter system environment can affect stability of your SageMaker
       # Notebook Instance.  You can remove this check if you'd like to install Jupyter extensions, etc.
-      if [ $env != 'JupyterSystemEnv' ]; then
+      if [ $env = 'JupyterSystemEnv' ]; then
         continue
       fi
   

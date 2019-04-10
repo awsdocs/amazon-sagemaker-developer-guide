@@ -64,14 +64,4 @@ To help you debug your training jobs, endpoints, and notebook instance lifecycle
 
 ## Use Logs to Monitor an Inference Pipeline<a name="inference-pipeline-logs"></a>
 
-The following table lists all of the logs provided by Amazon SageMaker\.
-
-**Logs**
-
-[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipeline-logs-metrics.html)
-
-**Note**  
-1\. The `/aws/sagemaker/NotebookInstances` log group is created when you create a notebook instance with a lifecycle configuration\. For more information, see [Step 1\.1: \(Optional\) Customize a Notebook Instance ](notebook-lifecycle-config.md)\.  
-2\. For Inference Pipelines, if you don't provide container names, the platform uses \*\*container\-1, container\-2\*\*, and so on, corresponding to the order provided in the Amazon SageMaker model\.
-
-For more information on Amazon SageMaker logging, see [Log Amazon SageMaker Events with Amazon CloudWatch](logging-cloudwatch.md)\. 
+For a table that lists the logs used to monitor endpoints and transform jobs in an inference pipeline, and the rest of the logs provided by Amazon SageMaker to help with debugging and monitoring progress, see [Log Amazon SageMaker Events with Amazon CloudWatch](logging-cloudwatch.md)\.

@@ -30,6 +30,7 @@ The request accepts the following data in JSON format\.
 An updated description for the work team\.  
 Type: String  
 Length Constraints: Minimum length of 1\. Maximum length of 200\.  
+Pattern: `.+`   
 Required: No
 
  ** [MemberDefinitions](#API_UpdateWorkteam_RequestSyntax) **   <a name="SageMaker-UpdateWorkteam-request-MemberDefinitions"></a>
@@ -95,6 +96,7 @@ For more information about using this API in one of the language\-specific AWS S
 +  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/UpdateWorkteam) 
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/UpdateWorkteam) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/UpdateWorkteam) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/UpdateWorkteam) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/UpdateWorkteam) 
 +  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/UpdateWorkteam) 
 +  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/UpdateWorkteam) 

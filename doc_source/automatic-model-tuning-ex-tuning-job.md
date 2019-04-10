@@ -67,7 +67,7 @@ To configure the training jobs that the tuning job launches, define a JSON objec
 In this JSON object, you specify:
 + Optional—Metrics that the training jobs emit\.
 **Note**  
-Define metrics only when you use a custom training algorithm\. Because this example uses a built\-in algorithm, you don't specify metrics\. For information about defining metrics, see [Define Objective Metrics](automatic-model-tuning-define-metrics.md)\.
+Define metrics only when you use a custom training algorithm\. Because this example uses a built\-in algorithm, you don't specify metrics\. For information about defining metrics, see [Define Metrics](automatic-model-tuning-define-metrics.md)\.
 + The container image that specifies the training algorithm\.
 + The input configuration for your training and test data\.
 + The storage location for the algorithm's output\. Specify the S3 bucket where you want to store the output of the training jobs\.

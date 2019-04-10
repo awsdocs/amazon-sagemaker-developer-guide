@@ -14,6 +14,11 @@ A timestamp that indicates when the training job was created\.
 Type: Timestamp  
 Required: No
 
+ **EnableInterContainerTrafficEncryption**   <a name="SageMaker-Type-TrainingJob-EnableInterContainerTrafficEncryption"></a>
+To encrypt all communications between ML compute instances in distributed training, choose `True`\. Encryption provides greater security for distributed training, but training might take longer\. How long it takes depends on the amount of communication between compute instances, especially if you use a deep learning algorithm in distributed training\.  
+Type: Boolean  
+Required: No
+
  **EnableNetworkIsolation**   <a name="SageMaker-Type-TrainingJob-EnableNetworkIsolation"></a>
 If the `TrainingJob` was created with network isolation, the value is set to `true`\. If network isolation is enabled, nodes can't communicate beyond the VPC they run in\.  
 Type: Boolean  
@@ -35,7 +40,9 @@ Required: No
 Algorithm\-specific parameters\.  
 Type: String to string map  
 Key Length Constraints: Maximum length of 256\.  
+Key Pattern: `.*`   
 Value Length Constraints: Maximum length of 256\.  
+Value Pattern: `.*`   
 Required: No
 
  **InputDataConfig**   <a name="SageMaker-Type-TrainingJob-InputDataConfig"></a>
@@ -174,5 +181,6 @@ Required: No
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/TrainingJob) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/TrainingJob) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/TrainingJob) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/TrainingJob) 
 +  [AWS SDK for Ruby V2](https://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/TrainingJob) 

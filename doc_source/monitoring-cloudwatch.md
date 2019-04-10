@@ -10,6 +10,8 @@ The `AWS/SageMaker` namespace includes the following request metrics from calls 
 
 Metrics are available at a 1\-minute frequency\.
 
+For information about how long CloudWatch metrics are retained for, see [GetMetricStatistics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html) in the *Amazon CloudWatch API Reference*\.
+
 
 | Metric | Description | 
 | --- | --- | 

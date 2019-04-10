@@ -98,7 +98,7 @@ When preparing your time series data, follow these best practices to achieve the
 
 ## EC2 Instance Recommendations for the DeepAR Algorithm<a name="deepar-instances"></a>
 
-You can train DeepAR on both GPU and CPU instances and in both single and multi\-machine settings\. We recommend starting with a single CPU instance \(for example, ml\.c4\.xlarge or ml\.c4\.2xlarge\), and switching to GPU instances and multiple machines only when necessary\. Using GPUs and multiple machines improves throughput only for larger models \(with many cells per layer and many layers\) and for large mini\-batch sizes \(for example, greater than 512\)\.
+You can train DeepAR on both GPU and CPU instances and in both single and multi\-machine settings\. We recommend starting with a single CPU instance \(for example, ml\.c4\.2xlarge or ml\.c4\.4xlarge\), and switching to GPU instances and multiple machines only when necessary\. Using GPUs and multiple machines improves throughput only for larger models \(with many cells per layer and many layers\) and for large mini\-batch sizes \(for example, greater than 512\)\.
 
 For inference, DeepAR supports only CPU instances\.
 

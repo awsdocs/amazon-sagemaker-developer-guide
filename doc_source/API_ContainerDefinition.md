@@ -5,7 +5,8 @@ Describes the container, as part of model definition\.
 ## Contents<a name="API_ContainerDefinition_Contents"></a>
 
  **ContainerHostname**   <a name="SageMaker-Type-ContainerDefinition-ContainerHostname"></a>
-This parameter is ignored\.  
+This parameter is ignored for models that contain only a `PrimaryContainer`\.  
+When a `ContainerDefinition` is part of an inference pipeline, the value of ths parameter uniquely identifies the container for the purposes of logging and metrics\. For information, see [Use Logs and Metrics to Monitor an Inference Pipeline](http://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipeline-logs-metrics.html)\. If you don't specify a value for this parameter for a `ContainerDefinition` that is part of an inference pipeline, a unique name is automatically assigned based on the position of the `ContainerDefinition` in the pipeline\. If you specify a value for the `ContainerHostName` for any `ContainerDefinition` that is part of an inference pipeline, you must specify a value for the `ContainerHostName` parameter of every `ContainerDefinition` in that pipeline\.  
 Type: String  
 Length Constraints: Maximum length of 63\.  
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
@@ -17,6 +18,7 @@ Type: String to string map
 Key Length Constraints: Maximum length of 1024\.  
 Key Pattern: `[a-zA-Z_][a-zA-Z0-9_]*`   
 Value Length Constraints: Maximum length of 1024\.  
+Value Pattern: `[\S\s]*`   
 Required: No
 
  **Image**   <a name="SageMaker-Type-ContainerDefinition-Image"></a>
@@ -46,5 +48,6 @@ Required: No
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/ContainerDefinition) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/ContainerDefinition) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/ContainerDefinition) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/ContainerDefinition) 
 +  [AWS SDK for Ruby V2](https://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/ContainerDefinition) 

@@ -170,7 +170,7 @@ The tweet text that was in the prior sample is now replaced with an object\. The
 ## End\-to\-end demos<a name="sms-custom-templates-step2-moredemos"></a>
 
 You can view the following end\-to\-end demos which include sample manifests and sample Lambdas:
-+ [Demo Template: Bounding Box](sms-custom-templates-step2-demo1.md)
++ [Demo Template: Annotation of Images with `crowd-bounding-box`](sms-custom-templates-step2-demo1.md)
 
 ## Next<a name="templates-step2-next"></a>
 

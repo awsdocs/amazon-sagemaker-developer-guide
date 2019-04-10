@@ -18,7 +18,7 @@ The following diagram illustrates the typical workflow for creating a machine le
 
    1. **Clean the data**—To improve model training, inspect the data and clean it up as needed\. For example, if your data has a `country name` attribute with values `United States` and `US`, you might want to edit the data to be consistent\. 
 
-   1. **Prepare or transform the data**—To improve performance, you might perform additional data transformations\. For example, you might choose to combine attributes\. If your model predicts the conditions that require de\-icing an aircraft instead of using temperature and humidity attributes separately, you might combine those attributes into a new attribute to get a better model\. 
+   1. **Prepare or transform the data**—To improve performance, you might perform additional data transformations\. For example, you might choose to combine attributes\. If your model predicts the conditions that require de\-icing an aircraft, instead of using temperature and humidity attributes separately, you might combine those attributes into a new attribute to get a better model\. 
 
    In Amazon SageMaker, you preprocess example data in a Jupyter notebook on your notebook instance\. You use your notebook to fetch your dataset, explore it and prepare it for model training\. For more information, see [Explore and Preprocess Data](how-it-works-notebooks-instances.md)\. For more information about preparing data in AWS Marketplace, see [data preparation](https://aws.amazon.com/marketplace/search/results?searchTerms=data+preparation&spellCheck=false&page=1)\. 
 
@@ -36,7 +36,7 @@ The following diagram illustrates the typical workflow for creating a machine le
 
 1. **Deploy the model**— You traditionally re\-engineer a model before you integrate it with your application and deploy it\. With Amazon SageMaker hosting services, you can deploy your model independently, decoupling it from your application code\. For more information, see [Deploy a Model on Amazon SageMaker Hosting Services](how-it-works-hosting.md)\.
 
-Machine learning is a continuous cycle\. After deploying a model, you monitor the inferences, then collect "ground truth," and evaluate the model to identify drift\. You then increase the accuracy of your inferences by updating your training data to include the newly collected ground truth, by retraining the model with the new dataset\. As more and more example data becomes available, you continue retraining your model to increase accuracy\.
+Machine learning is a continuous cycle\. After deploying a model, you monitor the inferences, then collect "ground truth," and evaluate the model to identify drift\. You then increase the accuracy of your inferences by updating your training data to include the newly collected ground truth\. You do this by retraining the model with the new dataset\. As more and more example data becomes available, you continue retraining your model to increase accuracy\.
 
 ## How It Works: Next Topic<a name="howitwork-mlconcepts-nextstep"></a>
 

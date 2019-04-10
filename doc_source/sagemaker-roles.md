@@ -318,6 +318,39 @@ If you specify a private VPC for your hyperparameter tuning job, add the followi
             "ec2:DescribeSecurityGroups"
 ```
 
+If your input is encrypted using server\-side encryption with an AWS KMS–managed key \(SSE\-KMS\), add the following permissions:
+
+```
+{
+    "Effect": "Allow",
+    "Action": [
+    "kms:Decrypt"
+    ]
+}
+```
+
+If you specify a KMS key in the output configuration of your hyperparameter tuning job, add the following permissions:
+
+```
+{
+    "Effect": "Allow",
+    "Action": [
+    "kms:Encrypt"
+    ]
+}
+```
+
+If you specify a volume KMS key in the resource configuration of your hyperparameter tuning job, add the following permissions:
+
+```
+{
+    "Effect": "Allow",
+    "Action": [
+    "kms:CreateGrant"
+    ]
+}
+```
+
 ## CreateTrainingJob API: Execution Role Permissions<a name="sagemaker-roles-createtrainingjob-perms"></a>
 
 For an execution role that you can pass in a `CreateTrainingJob` API request, you can attach the following permission policy to the role:
@@ -427,6 +460,39 @@ If you specify a private VPC for your training job, add the following permission
             "ec2:DescribeDhcpOptions",
             "ec2:DescribeSubnets",
             "ec2:DescribeSecurityGroups"
+```
+
+If your input is encrypted using server\-side encryption with an AWS KMS–managed key \(SSE\-KMS\), add the following permissions:
+
+```
+{
+    "Effect": "Allow",
+    "Action": [
+    "kms:Decrypt"
+    ]
+}
+```
+
+If you specify a KMS key in the output configuration of your training job, add the following permissions:
+
+```
+{
+    "Effect": "Allow",
+    "Action": [
+    "kms:Encrypt"
+    ]
+}
+```
+
+If you specify a volume KMS key in the resource configuration of your training job, add the following permissions:
+
+```
+{
+    "Effect": "Allow",
+    "Action": [
+    "kms:CreateGrant"
+    ]
+}
 ```
 
 ## CreateModel API: Execution Role Permissions<a name="sagemaker-roles-createmodel-perms"></a>
