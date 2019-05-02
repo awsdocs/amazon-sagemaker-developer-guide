@@ -10,7 +10,7 @@ For information about running training jobs in a private VPC, see [Protect Train
 
 ## Enable Inter\-Container Traffic Encryption \(API\)<a name="train-encrypt-api"></a>
 
-Before enabling inter\-container traffic encryption on training or hyperparameter tuning jobs with APIs, you need to add inbound and outbound rules to your privat VPC's security group\.
+Before enabling inter\-container traffic encryption on training or hyperparameter tuning jobs with APIs, you need to add inbound and outbound rules to your private VPC's security group\.
 
 **To enable inter\-container traffic encryption \(API\)**
 
