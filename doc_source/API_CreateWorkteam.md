@@ -18,6 +18,9 @@ You cannot create more than 25 work teams in an account and region\.
          }
       }
    ],
+   "[NotificationConfiguration](#SageMaker-CreateWorkteam-request-NotificationConfiguration)": { 
+      "[NotificationTopicArn](API_NotificationConfiguration.md#SageMaker-Type-NotificationConfiguration-NotificationTopicArn)": "string"
+   },
    "[Tags](#SageMaker-CreateWorkteam-request-Tags)": [ 
       { 
          "[Key](API_Tag.md#SageMaker-Type-Tag-Key)": "string",
@@ -47,6 +50,11 @@ All of the `CognitoMemberDefinition` objects that make up the member definition 
 Type: Array of [MemberDefinition](API_MemberDefinition.md) objects  
 Array Members: Minimum number of 1 item\. Maximum number of 10 items\.  
 Required: Yes
+
+ ** [NotificationConfiguration](#API_CreateWorkteam_RequestSyntax) **   <a name="SageMaker-CreateWorkteam-request-NotificationConfiguration"></a>
+Configures notification of workers regarding available or expiring work items\.  
+Type: [NotificationConfiguration](API_NotificationConfiguration.md) object  
+Required: No
 
  ** [Tags](#API_CreateWorkteam_RequestSyntax) **   <a name="SageMaker-CreateWorkteam-request-Tags"></a>
 Type: Array of [Tag](API_Tag.md) objects  

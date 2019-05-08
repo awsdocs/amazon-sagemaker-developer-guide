@@ -14,7 +14,7 @@ To run the code in this example, you need
 **Topics**
 + [Prerequisites](#automatic-model-tuning-ex-prereq)
 + [Create a Notebook](automatic-model-tuning-ex-notebook.md)
-+ [Get the an Amazon Sagemaker Boto 3 Client](automatic-model-tuning-ex-client.md)
++ [Get the Amazon Sagemaker Boto 3 Client](automatic-model-tuning-ex-client.md)
 + [Get the Amazon SageMaker Execution Role](automatic-model-tuning-ex-role.md)
 + [Specify a Bucket and Data Output Location](automatic-model-tuning-ex-bucket.md)
 + [Download, Prepare, and Upload Training Data](automatic-model-tuning-ex-data.md)

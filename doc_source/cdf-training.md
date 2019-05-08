@@ -8,6 +8,16 @@ To prepare for training, you can preprocess your data using a variety of AWS ser
 
 When using Amazon SageMaker in the training portion of the algorithm, make sure to upload all data at once\. If more data is added to that location, a new training call would need to be made to construct a brand new model\.
 
+The following table lists supported [ContentType](https://docs.aws.amazon.com/sagemaker/latest/dg/API_Channel.html#SageMaker-Type-Channel-ContentType) values:
+
+
+****  
+
+| Content Type | Definition | 
+| --- | --- | 
+| text/csv; label\_size=n | Comma\-separated values, where n specifies the number of starting columns in a row that are labels\. The default value for n is 1\. | 
+| application/x\-recordio\-protobuf |  A protobuf message wrapped in a RecordIO record\.  | 
+
 ## Training Data Formats<a name="td-serialization"></a>
 
 Many Amazon SageMaker algorithms support training with data in CSV format\. To use data in CSV format for training, in the input data channel specification, specify **text/csv** as the [ContentType](https://docs.aws.amazon.com/sagemaker/latest/dg/API_Channel.html#SageMaker-Type-Channel-ContentType)\. Amazon SageMaker requires that a CSV file doesn't have a header record and that the target variable is in the first column\. To run unsupervised learning algorithms that don't have a target, specify the number of label columns in the content type\. For example, in this case **'text/csv;label\_size=0'**\. 
@@ -15,7 +25,7 @@ Many Amazon SageMaker algorithms support training with data in CSV format\. To u
 Most Amazon SageMaker algorithms work best when you use the optimized protobuf [recordIO]( https://mxnet.incubator.apache.org/architecture/note_data_loading.html#data-format ) format for the training data\. Using this format allows you to take advantage of *Pipe mode* when training the algorithms that support it\. *File mode* loads all of your data from Amazon Simple Storage Service \(Amazon S3\) to the training instance volumes\. In *Pipe mode*, your training job streams data directly from Amazon S3\. Streaming can provide faster start times for training jobs and better throughput\. With Pipe mode, you also reduce the size of the Amazon Elastic Block Store volumes for your training instances\. Pipe mode needs only enough disk space to store your final model artifacts\. File mode needs disk space to store both your final model artifacts and your full training dataset\. See the [AlgorithmSpecification](API_AlgorithmSpecification.md) for additional details on the training input mode\. For a summary of the data formats supported by each algorithm, see the documentation for the individual algorithms or this [table](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html)\. 
 
 **Note**  
- For an example that shows how to convert the commonly used numPy array into the protobuf recordIO format, see [Step 2\.2\.3: Transform the Training Dataset and Upload It to Amazon S3](ex1-preprocess-data-transform.md) \. 
+ For an example that shows how to convert the commonly used numPy array into the protobuf recordIO format, see [Step 4\.3: Transform the Training Dataset and Upload It to Amazon S3](ex1-preprocess-data-transform.md) \. 
 
 In the protobuf recordIO format, Amazon SageMaker converts each observation in the dataset into a binary representation as a set of 4\-byte floats and is then loads it to the protobuf values field\. If you are using Python for your data preparation, we strongly recommend that you use these existing transformations\. However, if you are using another language, the protobuf definition file below provides the schema that you use to convert your data into Amazon SageMaker protobuf format\.
 

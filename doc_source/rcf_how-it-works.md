@@ -21,7 +21,7 @@ The first step in the RCF algorithm is to obtain a random sample of the training
 
 This algorithm selects a random sample such that ![\[TBD\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/rcf10.jpg) for all ![\[TBD\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/rcf11.jpg)\. When ![\[TBD\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/rcf12.jpg) the algorithm is more complicated\. Additionally, a distinction must be made between random sampling that is with and without replacement\. RCF performs an augmented reservoir sampling without replacement on the training data based on the algorithms described in \[2\]\.
 
-## Train a RFC Model and Produce Inferences<a name="rcf-training-inference"></a>
+## Train a RCF Model and Produce Inferences<a name="rcf-training-inference"></a>
 
 The next step in RCF is to construct a random cut forest using the random sample of data\. First, the sample is partitioned into a number of equal\-sized partitions equal to the number of trees in the forest\. Then, each partition is sent to an individual tree\. The tree recursively organizes its partition into a binary tree by partitioning the data domain into bounding boxes\.
 

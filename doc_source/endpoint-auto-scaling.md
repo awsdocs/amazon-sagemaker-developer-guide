@@ -6,12 +6,12 @@ To use automatic scaling for a production variant, you define and apply a scalin
 
 You can use the AWS Management Console to apply a scaling policy based on a predefined metric\. A *predefined metric* is defined in an enumeration so that you can specify it by name in code or use it in the AWS Management Console\. Alternatively, you can use either the AWS Command Line Interface \(AWS CLI\) or the Application Auto Scaling API to apply a scaling policy based on a predefined or custom metric\. We strongly recommend that you load test your automatic scaling configuration to ensure that it works correctly before using it to manage production traffic\.
 
-For information about deploying trained models as endpoints, see [Step 2\.4\.1: Deploy the Model to Amazon SageMaker Hosting Services ](ex1-deploy-model.md)\. 
+For information about deploying trained models as endpoints, see [Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services ](ex1-deploy-model.md)\. 
 
 **Topics**
 + [Automatic Scaling Components](#endpoint-auto-scaling-policy)
 + [Before You Begin](#endpoint-auto-scaling-target-byb)
-+ [Related Topics](#w4aac24c19c21)
++ [Related Topics](#w4aac23c19c21)
 + [Configure Automatic Scaling for a Production Variant](endpoint-auto-scaling-add-policy.md)
 + [Edit a Scaling Policy](endpoint-auto-scaling-edit.md)
 + [Delete a Scaling Policy](endpoint-auto-scaling-delete.md)
@@ -109,9 +109,9 @@ If instances are not being added quickly enough to address increased traffic, co
 
 ## Before You Begin<a name="endpoint-auto-scaling-target-byb"></a>
 
-Before you can use automatically scaled model deployment, create an Amazon SageMaker model deployment\. For more information about deploying a model endpoint, see [Step 2\.4\.1: Deploy the Model to Amazon SageMaker Hosting Services ](ex1-deploy-model.md)\.
+Before you can use automatically scaled model deployment, create an Amazon SageMaker model deployment\. For more information about deploying a model endpoint, see [Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services ](ex1-deploy-model.md)\.
 
 When automatic scaling adds a new variant instance, it is the same instance class as the one used by the primary instance\.
 
-## Related Topics<a name="w4aac24c19c21"></a>
+## Related Topics<a name="w4aac23c19c21"></a>
 + [What Is Application Auto Scaling?](https://docs.aws.amazon.com//autoscaling/application/userguide/what-is-application-auto-scaling.html)

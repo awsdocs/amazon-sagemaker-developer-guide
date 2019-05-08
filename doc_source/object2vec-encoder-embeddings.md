@@ -22,7 +22,7 @@ Content\-type: application/jsonlines
 {"in0": [774, 14, 21, 206]}
 ```
 
-In both these formats, you specify only one input type, either `“in0”` or `“in1.”` The inference service then invokes the corresponding encoder and outputs the embeddings for each of the instances\. 
+In both of these formats, you specify only one input type: `“in0”` or `“in1.”` The inference service then invokes the corresponding encoder and outputs the embeddings for each of the instances\. 
 
 ## OUTPUT: ENCODER EMBEDDINGS<a name="object2vec-out-encoder-embeddings-data"></a>
 
@@ -44,4 +44,4 @@ Content\-type: application/jsonlines
 {"embeddings":[0.150190666317939,0.05145975202322,0.098204270005226,0.064249359071254,0.056249320507049,0.01513972133398,0.047553978860378,0.0,0.0,0.011533712036907,0.011472506448626,0.010696629062294,0.0,0.0,0.0,0.008508535102009]}
 ```
 
-The vector length of the embeddings output by the inference service is equal to the value of one of the hyperparameters, which you specify at training time: `enc0_token_embedding_dim`, `enc1_token_embedding_dim`, or `enc_dim`\.
+The vector length of the embeddings output by the inference service is equal to the value of one of the following hyperparameters that you specify at training time: `enc0_token_embedding_dim`, `enc1_token_embedding_dim`, or `enc_dim`\.

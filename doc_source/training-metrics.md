@@ -83,7 +83,7 @@ Define the metrics that you want to send to CloudWatch by specifying a list of m
     ]}
 ```
 
-For more information about defining and running a training job by using the low\-level Amazon SageMaker API, see [Step 2\.3\.2: Create a Training Job](ex1-train-model-create-training-job.md)\.
+For more information about defining and running a training job by using the low\-level Amazon SageMaker API, see [Create and Run a Training Job \(AWS SDK for Python \(Boto 3\)\)](ex1-train-model.md#ex1-train-model-create-training-job)\.
 
 ### Defining Training Metrics \(Amazon SageMaker Python SDK\)<a name="define-train-metrics-sdk"></a>
 
@@ -163,7 +163,7 @@ Typically, you split the data that you train your model on into training and val
 
 Viewing a graph that shows the accuracy for both the training and validation sets over time can help you to improve the performance of your model\. For example, if training accuracy continues to increase over time, but, at some point, validation accuracy starts to decrease, you are likely overfitting your model\. To address this, you can make adjustments to your model, such as increasing [regularization](https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#regularization)\.
 
-For this example, you can use the **Image\-classification\-full\-training** example that is in the **Example notebooks** section of your Amazon SageMaker notebook instance\. If you don't have an Amazon SageMaker notebook instance, create one by following the instructions at [Step 1: Create an Amazon SageMaker Notebook Instance](gs-setup-working-env.md)\. If you prefer, you can follow along with the [End\-to\-End Multiclass Image Classification Example](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-fulltraining.ipynb) in the example notebook on GitHub\. You also need an Amazon S3 bucket to store the training data and for the model output\. If you haven't created a bucket to use with Amazon SageMaker, create one by following the instructions at [Step 3: Create an Amazon S3 Bucket](gs-config-permissions.md)\.
+For this example, you can use the **Image\-classification\-full\-training** example that is in the **Example notebooks** section of your Amazon SageMaker notebook instance\. If you don't have an Amazon SageMaker notebook instance, create one by following the instructions at [Step 2: Create an Amazon SageMaker Notebook Instance](gs-setup-working-env.md)\. If you prefer, you can follow along with the [End\-to\-End Multiclass Image Classification Example](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-fulltraining.ipynb) in the example notebook on GitHub\. You also need an Amazon S3 bucket to store the training data and for the model output\. If you haven't created a bucket to use with Amazon SageMaker, create one by following the instructions at [Step 1: Create an Amazon S3 Bucket](gs-config-permissions.md)\.
 
 **To view training and validation error curves**
 

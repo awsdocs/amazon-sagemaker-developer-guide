@@ -69,6 +69,7 @@ The following data types are supported by Amazon SageMaker Service:
 +  [NotebookInstanceLifecycleConfigSummary](API_NotebookInstanceLifecycleConfigSummary.md) 
 +  [NotebookInstanceLifecycleHook](API_NotebookInstanceLifecycleHook.md) 
 +  [NotebookInstanceSummary](API_NotebookInstanceSummary.md) 
++  [NotificationConfiguration](API_NotificationConfiguration.md) 
 +  [ObjectiveStatusCounters](API_ObjectiveStatusCounters.md) 
 +  [OutputConfig](API_OutputConfig.md) 
 +  [OutputDataConfig](API_OutputDataConfig.md) 

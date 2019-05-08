@@ -59,6 +59,8 @@ You can use the Amazon SageMaker API [CreateCodeRepository](API_CreateCodeReposi
    1. Enter a name to use for the repository in Amazon SageMaker\. The name must be 1 to 63 characters\. Valid characters are a\-z, A\-Z, 0\-9, and \- \(hyphen\)\.
 
    1. Enter the URL for the repository\.
+**Note**  
+Do not provide a user name in the URL\. Add the username and password in AWS Secrets Manager as described in the next step\.
 
    1. For **Git credentials**, choose the credentials to use to authenticate to the repository\. This is necessary only if the Git repository is private\.
 **Note**  
@@ -86,6 +88,8 @@ For GitHub repositories, we recommend using a personal access token instead of y
 Use the `create-code-repository` AWS CLI command\. Specify a name for the repository as the value of the `code-repository-name` argument\. The name must be 1 to 63 characters\. Valid characters are a\-z, A\-Z, 0\-9, and \- \(hyphen\)\. Also specify the following:
 + The default branch
 + The URL of the Git repository
+**Note**  
+Do not provide a user name in the URL\. Add the username and password in AWS Secrets Manager as described in the next step\.
 + The Amazon Resource Name \(ARN\) of an AWS Secrets Manager secret that contains the credentials to use to authenticate the repository as the value of the `git-config` argument
 
 For information about creating and storing a secret, see [Creating a Basic Secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage_create-basic-secret.html) in the *AWS Secrets Manager User Guide*\. The following command creates a new repository named `MyRespository` in your Amazon SageMaker account that points to a Git repository hosted at `https://github.com/myprofile/my-repo"`\.
@@ -122,7 +126,7 @@ If you want to use a CodeCommit repository that is in a different AWS than the n
 
 **To create a notebook instance and associate Git repositories in the AWS Management Console**
 
-1. Follow the instructions at [Step 1: Create an Amazon SageMaker Notebook Instance](gs-setup-working-env.md)\.
+1. Follow the instructions at [Step 2: Create an Amazon SageMaker Notebook Instance](gs-setup-working-env.md)\.
 
 1. For **Git repositories**, choose Git repositories to associate with the notebook instance\.
 

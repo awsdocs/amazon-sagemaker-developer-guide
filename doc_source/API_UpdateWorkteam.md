@@ -16,6 +16,9 @@ Updates an existing work team with new member definitions or description\.
          }
       }
    ],
+   "[NotificationConfiguration](#SageMaker-UpdateWorkteam-request-NotificationConfiguration)": { 
+      "[NotificationTopicArn](API_NotificationConfiguration.md#SageMaker-Type-NotificationConfiguration-NotificationTopicArn)": "string"
+   },
    "[WorkteamName](#SageMaker-UpdateWorkteam-request-WorkteamName)": "string"
 }
 ```
@@ -37,6 +40,11 @@ Required: No
 A list of `MemberDefinition` objects that contain the updated work team members\.  
 Type: Array of [MemberDefinition](API_MemberDefinition.md) objects  
 Array Members: Minimum number of 1 item\. Maximum number of 10 items\.  
+Required: No
+
+ ** [NotificationConfiguration](#API_UpdateWorkteam_RequestSyntax) **   <a name="SageMaker-UpdateWorkteam-request-NotificationConfiguration"></a>
+Configures SNS topic notifications for available or expiring work items  
+Type: [NotificationConfiguration](API_NotificationConfiguration.md) object  
 Required: No
 
  ** [WorkteamName](#API_UpdateWorkteam_RequestSyntax) **   <a name="SageMaker-UpdateWorkteam-request-WorkteamName"></a>
@@ -63,6 +71,9 @@ Required: Yes
             }
          }
       ],
+      "[NotificationConfiguration](API_Workteam.md#SageMaker-Type-Workteam-NotificationConfiguration)": { 
+         "[NotificationTopicArn](API_NotificationConfiguration.md#SageMaker-Type-NotificationConfiguration-NotificationTopicArn)": "string"
+      },
       "[ProductListingIds](API_Workteam.md#SageMaker-Type-Workteam-ProductListingIds)": [ "string" ],
       "[SubDomain](API_Workteam.md#SageMaker-Type-Workteam-SubDomain)": "string",
       "[WorkteamArn](API_Workteam.md#SageMaker-Type-Workteam-WorkteamArn)": "string",

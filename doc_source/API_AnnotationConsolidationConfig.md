@@ -18,6 +18,8 @@ For the built\-in bounding box, image classification, semantic segmentation, and
    `arn:aws:lambda:eu-west-1:568282634449:function:ACS-BoundingBox` 
 
    `arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-BoundingBox` 
+
+   `arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-BoundingBox` 
 +  *Image classification* \- Uses a variant of the Expectation Maximization approach to estimate the true class of an image based on annotations from individual workers\.
 
    `arn:aws:lambda:us-east-1:432418664414:function:ACS-ImageMultiClass` 
@@ -29,6 +31,8 @@ For the built\-in bounding box, image classification, semantic segmentation, and
    `arn:aws:lambda:eu-west-1:568282634449:function:ACS-ImageMultiClass` 
 
    `arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-ImageMultiClass` 
+
+   `arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-ImageMultiClass` 
 +  *Semantic segmentation* \- Treats each pixel in an image as a multi\-class classification and treats pixel annotations from workers as "votes" for the correct label\.
 
    `arn:aws:lambda:us-east-1:432418664414:function:ACS-SemanticSegmentation` 
@@ -40,6 +44,8 @@ For the built\-in bounding box, image classification, semantic segmentation, and
    `arn:aws:lambda:eu-west-1:568282634449:function:ACS-SemanticSegmentation` 
 
    `arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-SemanticSegmentation` 
+
+   `arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-SemanticSegmentation` 
 +  *Text classification* \- Uses a variant of the Expectation Maximization approach to estimate the true class of text based on annotations from individual workers\.
 
    `arn:aws:lambda:us-east-1:432418664414:function:ACS-TextMultiClass` 
@@ -51,6 +57,8 @@ For the built\-in bounding box, image classification, semantic segmentation, and
    `arn:aws:lambda:eu-west-1:568282634449:function:ACS-TextMultiClass` 
 
    `arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-TextMultiClass` 
+
+   `arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-TextMultiClass` 
 For more information, see [Annotation Consolidation](http://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html)\.  
 Type: String  
 Length Constraints: Maximum length of 2048\.  

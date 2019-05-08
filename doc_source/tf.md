@@ -15,7 +15,7 @@ For TensorFlow versions 1\.11 and later, the Amazon SageMaker Python SDK support
 + Script mode supports both Python 2\.7\- andPython 3\.6\-compatible source files\.
 + Script mode supports Horovod for distributed training\.
 
- For information about writing TensorFlow script mode training scripts and using TensorFlow script mode estimators and models with Amazon SageMaker, see [https://github\.com/aws/sagemaker\-python\-sdk\#tensorflow\-sagemaker\-estimators](https://github.com/aws/sagemaker-python-sdk#tensorflow-sagemaker-estimators)\.
+ For information about writing TensorFlow script mode training scripts and using TensorFlow script mode estimators and models with Amazon SageMaker, see [https://sagemaker\.readthedocs\.io/en/stable/using\_tf\.html](https://sagemaker.readthedocs.io/en/stable/using_tf.html)\.
 
 For information about TensorFlow versions supported by the Amazon SageMaker TensorFlow container, see [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/tensorflow/README\.rst](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/tensorflow/README.rst)\.
 

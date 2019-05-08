@@ -1,5 +1,7 @@
 # Linear Learner Hyperparameters<a name="ll_hyperparameters"></a>
 
+The following table contains the hyperparameters for the learner learner algorithm\. These are parameters that are set by users to facilitate the estimation of model parameters from data\. The required hyperparameters that must be set are listed first, in alphabetical order\. The optional hyperparameters that can be set are listed next, also in alphabetical order\.
+
 
 | Parameter Name | Description | 
 | --- | --- | 
@@ -33,7 +35,7 @@
 | mini\_batch\_size |  The number of observations per mini\-batch for the data iterator\. **Optional** Valid values: Positive integer Default value: 1000  | 
 | momentum |  The momentum of the `sgd` optimizer\. **Optional** Valid values: `auto` or a floating\-point integer between 0 and 1\.0 Default value: `auto`  | 
 | normalize\_data |  Normalizes the features before training to achieve a `std_dev` value of 1\. **Optional** Valid values: `auto`, `true`, or `false` Default value: `true`  | 
-| normalize\_label |  Normalizes the label\. For regression problems, the label is normalized\. For classification problems, it is not normalized\. If you set the `normalize_label` hyperparameter to `true` for classification problems, the algorithm ignores it\. **Optional** Valid values: `auto`, `true`, or `false` Default value: `auto`  | 
+| normalize\_label |  Normalizes the label\. The `auto` default value normalizes the label for regression problems but does not for classification problems\. If you set the `normalize_label` hyperparameter to `true` for classification problems, the algorithm ignores it\. **Optional** Valid values: `auto`, `true`, or `false` Default value: `auto`  | 
 | num\_calibration\_samples |  The number of observations from the validation dataset to use for model calibration \(when finding the best threshold\)\. **Optional** Valid values: `auto` or positive integer Default value: `auto`  | 
 | num\_models |  The number of models to train in parallel\. For the default, `auto`, the algorithm decides the number of parallel models to train\. One model is trained according to the given training parameter \(regularization, optimizer, loss\), and the rest by close parameters\. **Optional** Valid values: `auto` or positive integer Default values: `auto`  | 
 | num\_point\_for\_scaler |  The number of data points to use for calculating normalization or unbiasing of terms\. **Optional** Valid values: Positive integer Default value: 10,000  | 

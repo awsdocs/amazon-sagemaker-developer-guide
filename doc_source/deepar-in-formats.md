@@ -91,7 +91,8 @@ DeepAR forecasting supports getting inferences by using batch transform from dat
 {"start": "1999-01-30 00:00:00", "target": [2.0, 1.0], "cat": [1, 4], "dynamic_feat": [[1.3, 0.4]]}
 ```
 
-Note that in the [TransformInput](API_TransformInput.md) configuration of the Amazon SageMaker [CreateTransformJob](API_CreateTransformJob.md) request clients must explicitly set the `SplitType` value to `Line`, as the default value `None` causes runtime failures\.
+**Note**  
+When creating the transformation job with [CreateTransformJob](API_CreateTransformJob.md), set the `BatchStrategy` value to `SingleRecord` and set the `SplitType` value in the [TransformInput](API_TransformInput.md) configuration to `Line`, as the default values currently cause runtime failures\.
 
 Similar to the hosted endpoint inference request format, the `cat` and the `dynamic_feat` fields for each instance are required if both of the following are true:
 + The model is trained on a dataset that contained both the `cat` and the `dynamic_feat` fields\.
@@ -115,14 +116,11 @@ The output is also in JSON Lines format, with one line per prediction, in an ord
 
 Note that in the [TransformInput](API_TransformInput.md) configuration of the Amazon SageMaker [CreateTransformJob](API_CreateTransformJob.md) request clients must explicitly set the `AssembleWith` value to `Line`, as the default value `None` concatenates all JSON objects on the same line\.
 
-If your batch transform job fails due to container timeout errors, you can either set the `BatchStrategy` value to `SingleRecord` or use `MultiRecord` in conjunction with a small value of `MaxPayloadInMB` \(for example, `1`\)\. We also advise against using an explicit value of `MaxConcurrentTransforms`, as the DeepAR container is capable of inferring a suitable value based on the used instance type\.
-
 For example, here is an Amazon SageMaker [CreateTransformJob](API_CreateTransformJob.md) request for a DeepAR job with a custom `DEEPAR_INFERENCE_CONFIG`:
 
 ```
 {
-   "BatchStrategy": "MultiRecord",
-   "MaxPayloadInMB": 1,
+   "BatchStrategy": "SingleRecord",
    "Environment": { 
       "DEEPAR_INFERENCE_CONFIG" : "{ \"num_samples\": 200, \"output_types\": [\"mean\"] }",
       ...

@@ -27,6 +27,11 @@ Type: Array of [MemberDefinition](API_MemberDefinition.md) objects
 Array Members: Minimum number of 1 item\. Maximum number of 10 items\.  
 Required: Yes
 
+ **NotificationConfiguration**   <a name="SageMaker-Type-Workteam-NotificationConfiguration"></a>
+Configures SNS notifications of available or expiring work items for work teams\.  
+Type: [NotificationConfiguration](API_NotificationConfiguration.md) object  
+Required: No
+
  **ProductListingIds**   <a name="SageMaker-Type-Workteam-ProductListingIds"></a>
 The Amazon Marketplace identifier for a vendor's work team\.  
 Type: Array of strings  

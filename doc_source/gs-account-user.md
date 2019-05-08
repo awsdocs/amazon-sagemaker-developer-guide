@@ -15,4 +15,4 @@ We assume that you use administrator user credentials for the exercises and proc
    To sign in to the AWS console as a IAM user, you must use a special URL\. For more information, see [How Users Sign In to Your Account](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_how-users-sign-in.html) in the *IAM User Guide*\.
 
 **Next Step**  
-[Step 3: Create an Amazon S3 Bucket](gs-config-permissions.md)
+[Step 1: Create an Amazon S3 Bucket](gs-config-permissions.md)

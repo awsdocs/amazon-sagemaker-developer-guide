@@ -16,7 +16,8 @@ The following is an example of a basic permissions policy:
 ```
 {
    "Version": "2012-10-17",
-   "Statement": [{
+   "Statement": [
+      {
       "Sid": "AllowCreate-Describe-Delete-Models",
       "Effect": "Allow",
       "Action": [
@@ -24,9 +25,8 @@ The following is an example of a basic permissions policy:
          "sagemaker:DescribeModel",
          "sagemaker:DeleteModel"],
       "Resource": "*"
-      }
-   ],
-     "Statement": [{
+      },
+      {
       "Sid": "AdditionalIamPermission",
       "Effect": "Allow",
       "Action": [

@@ -8,7 +8,7 @@ For more information about model tuning, see [Automatic Model Tuning](automatic-
 
 ## Metrics Computed by the Linear Learner Algorithm<a name="linear-learner-metrics"></a>
 
-The linear learner algorithm reports five metrics, which are computed during training\. Choose one of them as the objective metric\. To avoid overfitting, we recommend tuning the model against a validation metric instead of a training metric\.
+The linear learner algorithm reports the metrics in the following table, which are computed during training\. Choose one of them as the objective metric\. To avoid overfitting, we recommend tuning the model against a validation metric instead of a training metric\.
 
 
 | Metric Name | Description | Optimization Direction | 

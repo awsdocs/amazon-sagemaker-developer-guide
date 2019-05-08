@@ -1,13 +1,15 @@
 # How Linear Learner Works<a name="ll_how-it-works"></a>
 
-**Note**  
-Input data for the linear learner algorithm must be shuffled\. If it isn't—for example, if the data is ordered by label—the method fails\. 
+There are three steps involved in the implementation of the linear learner algorithm: preprocess, train, and validate\. 
 
 ## Step 1: Preprocess<a name="step1-preprocessing"></a>
 
 If the option is turned on, the algorithm first goes over a small sample of the data to learn its characteristics\. The algorithm learns the mean value and the standard deviation for every feature and label\. It uses this information during training\. 
 
-You can configure the algorithm to normalize the data\. Normalization shifts the label to have a mean of zero and scales it to have unit standard deviation\. If you want the algorithm to normalize the data for you, specify the `auto` \(default\) value\. When auto normalization is enabled, the algorithm does the following: 
+**Note**  
+Input data for the linear learner algorithm must be shuffled\. If it isn't—for example, if the data is ordered by label—the algorithm fails\. 
+
+You can configure the algorithm to normalize the data with the \(`normalize_label`\) hyperparameter\. Label normalizationshifts the label to have a mean of zero and scales it to have unit standard deviation\. If you want the algorithm to normalize the data for you, specify the `auto` \(default\) value for the `normalize_data` hyperparameter\. When auto normalization is enabled, the algorithm does the following: 
 + For regression problems, shifts and scales the label\. For classification problems, leaves the label as is\.
 + Always scales the features\.
 + Shifts the features only for dense data\.
@@ -23,4 +25,4 @@ During training, you simultaneously optimize multiple models, each with slightly
 When training is done, you can evaluate the models on a validation set\. For regression problems, output the model that gets the best score on the validation set\. For classification problems, use a sample of \(raw prediction, label\) pairs to tune the threshold for a provided objective\. The raw prediction is the output of the trained linear function\. Allow classification objectives based on the predicted label, such as F1 measure, accuracy, precision@recall, and so on\. Choose the model that achieves the best score on the validation set\. 
 
 **Note**  
-If you don't provide a validation set, the algorithm optimizes over the training set\. In that case, don't explore different regularization procedures\. 
+If you don't provide a validation set, the algorithm optimizes over the training set\. In that case, you do not need to explore other regularization procedures\. 

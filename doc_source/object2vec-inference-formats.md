@@ -57,4 +57,4 @@ Accept: application/jsonlines
 {"scores":[0.280087798833847,0.368331134319305,0.351581096649169]}
 ```
 
-In both the classification and regression formats, the scores correspond to each of the labels\. 
+In both the classification and regression formats, the scores apply to individual labels\. 

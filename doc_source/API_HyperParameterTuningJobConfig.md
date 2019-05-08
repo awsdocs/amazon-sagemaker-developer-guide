@@ -7,12 +7,12 @@ Configures a hyperparameter tuning job\.
  **HyperParameterTuningJobObjective**   <a name="SageMaker-Type-HyperParameterTuningJobConfig-HyperParameterTuningJobObjective"></a>
 The [HyperParameterTuningJobObjective](API_HyperParameterTuningJobObjective.md) object that specifies the objective metric for this tuning job\.  
 Type: [HyperParameterTuningJobObjective](API_HyperParameterTuningJobObjective.md) object  
-Required: Yes
+Required: No
 
  **ParameterRanges**   <a name="SageMaker-Type-HyperParameterTuningJobConfig-ParameterRanges"></a>
 The [ParameterRanges](API_ParameterRanges.md) object that specifies the ranges of hyperparameters that this tuning job searches\.  
 Type: [ParameterRanges](API_ParameterRanges.md) object  
-Required: Yes
+Required: No
 
  **ResourceLimits**   <a name="SageMaker-Type-HyperParameterTuningJobConfig-ResourceLimits"></a>
 The [ResourceLimits](API_ResourceLimits.md) object that specifies the maximum number of training jobs and parallel training jobs for this tuning job\.  

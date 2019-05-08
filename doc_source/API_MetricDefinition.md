@@ -15,6 +15,7 @@ Required: Yes
 A regular expression that searches the output of a training job and gets the value of the metric\. For more information about using regular expressions to define metrics, see [Defining Objective Metrics](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-define-metrics.html)\.  
 Type: String  
 Length Constraints: Minimum length of 1\. Maximum length of 500\.  
+Pattern: `.+`   
 Required: Yes
 
 ## See Also<a name="API_MetricDefinition_SeeAlso"></a>

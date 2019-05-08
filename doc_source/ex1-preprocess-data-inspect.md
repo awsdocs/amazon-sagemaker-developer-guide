@@ -1,31 +1,31 @@
-# Step 2\.2\.2: Explore the Training Dataset<a name="ex1-preprocess-data-inspect"></a>
+# Step 4\.2: Explore the Training Dataset<a name="ex1-preprocess-data-inspect"></a>
 
-Typically, you explore training data to determine what you need to clean up and which transformations to apply to improve model training\. For this exercise, you don't need to clean up the MNIST dataset\. Simply display one of the images in the `train_set` dataset\.
+Typically, you explore training data to determine what you need to clean up and which transformations to apply to improve model training\. For this exercise, you don't need to clean up the MNIST dataset\. 
 
-```
-%matplotlib inline
-import matplotlib.pyplot as plt
-plt.rcParams["figure.figsize"] = (2,10)
+**To explore the dataset**
++ Display the first 10 images in `train_set`:\.
 
+  ```
+  %matplotlib inline
+  import matplotlib.pyplot as plt
+  
+  plt.rcParams["figure.figsize"] = (2,10)
+  
+  for i in range(0, 10):
+      img = train_set[0][i]
+      label = train_set[1][i]
+      img_reshape = img.reshape((28,28))
+      imgplot = plt.imshow(img_reshape, cmap='gray')
+      print('This is a {}'.format(label))
+      plt.show()
+  ```
 
-def show_digit(img, caption='', subplot=None):
-    if subplot == None:
-        _, (subplot) = plt.subplots(1,1)
-    imgr = img.reshape((28,28))
-    subplot.axis('off')
-    subplot.imshow(imgr, cmap='gray')
-    plt.title(caption)
+  `train_set` contains the following files:
+  + `train_set[0]` –  Contains images\. 
+  + `train_set[1]` – Contains labels\. 
 
-show_digit(train_set[0][30], 'This is a {}'.format(train_set[1][30]))
-```
-
-`train_set` contains the following data:
-+ `train_set[0]` contains images\. 
-+ `train_set[1]` contains labels\. 
-
-The code uses the `matplotlib` library to get and display the 31st image from the training dataset\.
-
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sagemaker-30th-image-trainset.png)
+  The code uses the `matplotlib` library to get and display the first 10 images from the training dataset\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sagemaker-10-images.png)
 
 **Next Step**  
-[Step 2\.2\.3: Transform the Training Dataset and Upload It to Amazon S3](ex1-preprocess-data-transform.md)
+[Step 4\.3: Transform the Training Dataset and Upload It to Amazon S3](ex1-preprocess-data-transform.md)

@@ -14,6 +14,7 @@ Required: Yes
 
  **Subnets**   <a name="SageMaker-Type-VpcConfig-Subnets"></a>
 The ID of the subnets in the VPC to which you want to connect your training job or model\.   
+Amazon EC2 P3 accelerated computing instances are not available in the c/d/e availability zones of region us\-east\-1\. If you want to create endpoints with P3 instances in VPC mode in region us\-east\-1, create subnets in a/b/f availability zones instead\.
 Type: Array of strings  
 Array Members: Minimum number of 1 item\. Maximum number of 16 items\.  
 Length Constraints: Maximum length of 32\.  

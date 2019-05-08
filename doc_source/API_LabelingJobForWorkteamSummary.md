@@ -28,6 +28,12 @@ Length Constraints: Minimum length of 1\. Maximum length of 63\.
 Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`   
 Required: No
 
+ **NumberOfHumanWorkersPerDataObject**   <a name="SageMaker-Type-LabelingJobForWorkteamSummary-NumberOfHumanWorkersPerDataObject"></a>
+The configured number of workers per data object\.  
+Type: Integer  
+Valid Range: Minimum value of 1\. Maximum value of 9\.  
+Required: No
+
  **WorkRequesterAccountId**   <a name="SageMaker-Type-LabelingJobForWorkteamSummary-WorkRequesterAccountId"></a>
 Type: String  
 Pattern: `^\d+$`   

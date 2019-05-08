@@ -32,7 +32,7 @@ The different Jupyter kernels in Amazon SageMaker notebook instances are separat
 
 ## Maintain a Sandboxed Python Environment<a name="nbi-isolated-environment"></a>
 
-Amazon SageMaker periodically updates the Python and dependency versions in the environments installed on a notebook instance\. To maintain an isolated Python environment that does not change versions, create a lifecycle configuration that runs each time you start your notebook instance\. For information about creating lifecycle configurations, see [Step 1\.1: \(Optional\) Customize a Notebook Instance ](notebook-lifecycle-config.md)\.
+Amazon SageMaker periodically updates the Python and dependency versions in the environments installed on a notebook instance\. To maintain an isolated Python environment that does not change versions, create a lifecycle configuration that runs each time you start your notebook instance\. For information about creating lifecycle configurations, see [Customize a Notebook Instance ](notebook-lifecycle-config.md)\.
 
 The following example lifecycle configuration script installs Miniconda on your notebook instance\. This allows you to create environments in your notebook instance with specific versions of Python and dependencies that Amazon SageMaker does not update:
 

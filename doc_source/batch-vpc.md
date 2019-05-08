@@ -28,7 +28,7 @@ VpcConfig: {
 ```
 
 **Note**  
-For training jobs, you can only configure subnets with a default tenancy VPC in which your instance runs on shared hardware\. For more information on the tenancy attribute for VPCs, see [Dedicated Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html)\.
+For batch transform jobs, you can only configure subnets with a default tenancy VPC in which your instance runs on shared hardware\. For more information on the tenancy attribute for VPCs, see [Dedicated Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html)\.
 
 ## Configure Your Private VPC for Amazon SageMaker Batch Transform<a name="batch-vpc-vpc"></a>
 

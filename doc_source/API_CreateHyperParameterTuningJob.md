@@ -144,7 +144,7 @@ Required: No
  ** [TrainingJobDefinition](#API_CreateHyperParameterTuningJob_RequestSyntax) **   <a name="SageMaker-CreateHyperParameterTuningJob-request-TrainingJobDefinition"></a>
 The [HyperParameterTrainingJobDefinition](API_HyperParameterTrainingJobDefinition.md) object that describes the training jobs that this tuning job launches, including static hyperparameters, input data configuration, output data configuration, resource configuration, and stopping condition\.  
 Type: [HyperParameterTrainingJobDefinition](API_HyperParameterTrainingJobDefinition.md) object  
-Required: Yes
+Required: No
 
  ** [WarmStartConfig](#API_CreateHyperParameterTuningJob_RequestSyntax) **   <a name="SageMaker-CreateHyperParameterTuningJob-request-WarmStartConfig"></a>
 Specifies the configuration for starting the hyperparameter tuning job using one or more previous tuning jobs as a starting point\. The results of previous tuning jobs are used to inform which combinations of hyperparameters to search over in the new tuning job\.  

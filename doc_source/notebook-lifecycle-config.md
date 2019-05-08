@@ -1,4 +1,4 @@
-# Step 1\.1: \(Optional\) Customize a Notebook Instance<a name="notebook-lifecycle-config"></a>
+# Customize a Notebook Instance<a name="notebook-lifecycle-config"></a>
 
 To install packages or sample notebooks on your notebook instance, configure networking and security for it, or otherwise use a shell script to customize it, use a lifecycle configuration\. A *lifecycle configuration* provides shell scripts that run only when you create the notebook instance or whenever you start one\. When you create a notebook instance, you can create a new lifecycle configuration and the scripts it uses or apply one that you already have\.
 
@@ -6,7 +6,10 @@ To install packages or sample notebooks on your notebook instance, configure net
 Each script has a limit of 16384 characters\.  
 The value of the `$PATH` environment variable that is available to both scripts is `/sbin:bin:/usr/sbin:/usr/bin`\.  
 View CloudWatch Logs for notebook instance lifecycle configurations in log group `/aws/sagemaker/NotebookInstances` in log stream `[notebook-instance-name]/[LifecycleConfigHook]`\.  
-Scripts cannot run for longer than 5 minutes\. If a script runs for longer than 5 minutes, it fails and the notebook instance is not created or started\.
+Scripts cannot run for longer than 5 minutes\. If a script runs for longer than 5 minutes, it fails and the notebook instance is not created or started\. To help decrease the run time of scripts, try the following:  
+Cut down on necessary steps\. For example, limit which conda environments in which to install large packages\.
+Run tasks in parallel processes\.
+Use the `nohup` command in your script\.
 
 **To create a lifecycle configuration**
 
@@ -78,7 +81,3 @@ The following are best practices for using lifecycle configurations:
 
 **Important**  
 When you create or change a script file, we recommend you use **Create notebook** editor or a text editor that allows for Unix style line breaks\. Copying text from a non Linux operating system might include incompatible line breaks and result in an unexpected error\.
-
-## Next Step<a name="gs-setup-working-env-nextstep"></a>
-
-You are now ready to train your first model\. For step\-by\-step instructions, see [Step 2: Train a Model with a Built\-in Algorithm and Deploy It](ex1.md)\.

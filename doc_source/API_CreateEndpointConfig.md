@@ -55,13 +55,13 @@ Pattern: `.*`
 Required: No
 
  ** [ProductionVariants](#API_CreateEndpointConfig_RequestSyntax) **   <a name="SageMaker-CreateEndpointConfig-request-ProductionVariants"></a>
-An array of `ProductionVariant` objects, one for each model that you want to host at this endpoint\.  
+An list of `ProductionVariant` objects, one for each model that you want to host at this endpoint\.  
 Type: Array of [ProductionVariant](API_ProductionVariant.md) objects  
 Array Members: Minimum number of 1 item\.  
 Required: Yes
 
  ** [Tags](#API_CreateEndpointConfig_RequestSyntax) **   <a name="SageMaker-CreateEndpointConfig-request-Tags"></a>
-An array of key\-value pairs\. For more information, see [Using Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what) in the *AWS Billing and Cost Management User Guide*\.   
+A list of key\-value pairs\. For more information, see [Using Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what) in the * AWS Billing and Cost Management User Guide*\.   
 Type: Array of [Tag](API_Tag.md) objects  
 Array Members: Minimum number of 0 items\. Maximum number of 50 items\.  
 Required: No

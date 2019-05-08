@@ -6,9 +6,11 @@ You can easily package your own algorithms for use with Amazon SageMaker, regard
 + Use a suitable algorithm provided by Amazon SageMaker for model training and your own inference code, such as code for embedded applications, or devices, or both\.
 + Use your own training algorithm and inference code provided by Amazon SageMaker\. 
 + Use your own training algorithm and your own inference code\. You package the algorithm and inference code in Docker images, and use the images to train a model and deploy it with Amazon SageMaker\.
-+ Use deep learning containers provided by Amazon SageMaker for model training and your own inference code\. You provide a script written for the deep learning framework, such as Apache MXNet or TensorFlow\. For more information about training, see [Use Apache MXNet with Amazon SageMaker](mxnet.md) and [Use TensorFlow with Amazon SageMaker](tf.md)\. 
++ Use deep learning containers provided by Amazon SageMaker for model training and your own inference code\. You provide a script written for the deep learning framework, such as Apache MXNet or TensorFlow\. For more information about training, see [Use Apache MXNet with Amazon SageMaker](mxnet.md) and [Use TensorFlow with Amazon SageMaker](tf.md)\.
 
 Amazon SageMaker algorithms are packaged as Docker images\. This gives you the flexibility to use almost any algorithm code with Amazon SageMaker, regardless of implementation language, dependent libraries, frameworks, and so on\. For more information on creating Docker images, see [The Dockerfile instructions](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#the-dockerfile-instructions)\.
+
+Amazon SageMaker provides *pre\-built Dockerfiles* provided by Amazon SageMaker that install the deep learning frameworks or other libraries with the dependencies needed to build SageMaker\-compatible Docker images using the Amazon SageMaker Python SDK\. For more information, see [Pre\-built Amazon SageMaker Docker Images for Tensorflow, MXNet, Chainer,and PyTorch](pre-built-docker-containers-frameworks-deep-learning.md)\.
 
 You can provide separate Docker images for the training algorithm and inference code, or you can combine them into a single Docker image\. When creating Docker images for use with Amazon SageMaker, consider the following:
 + Providing two Docker images can increase storage requirements and cost because common libraries might be duplicated\.
@@ -20,6 +22,8 @@ You can provide separate Docker images for the training algorithm and inference 
 The following sections provide detailed information about how Amazon SageMaker interacts with Docker containers and explain Amazon SageMaker requirements for Docker images\. Use this information when creating your own containers\. For general information about Docker containers, see [Docker Basics](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html) in the *Amazon Elastic Container Service Developer Guide*\.
 
 **Topics**
++ [Pre\-built Amazon SageMaker Docker Images for Tensorflow, MXNet, Chainer,and PyTorch](pre-built-docker-containers-frameworks-deep-learning.md)
++ [Pre\-built Amazon SageMaker Docker Images for Scikit\-learn and Spark ML](pre-built-docker-containers-frameworks.md)
 + [Using Your Own Training Algorithms](your-algorithms-training-algo.md)
 + [Using Your Own Inference Code](your-algorithms-inference-main.md)
 + [Using Your Own Algorithm Sample Notebooks](adv-bring-own-examples.md)

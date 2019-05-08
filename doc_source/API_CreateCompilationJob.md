@@ -59,7 +59,7 @@ Type: [OutputConfig](API_OutputConfig.md) object
 Required: Yes
 
  ** [RoleArn](#API_CreateCompilationJob_RequestSyntax) **   <a name="SageMaker-CreateCompilationJob-request-RoleArn"></a>
-The Amazon Resource Name \(ARN\) of an IIAMAM role that enables Amazon SageMaker to perform tasks on your behalf\.   
+The Amazon Resource Name \(ARN\) of an IAM role that enables Amazon SageMaker to perform tasks on your behalf\.   
 During model compilation, Amazon SageMaker needs your permission to:  
 + Read input data from an S3 bucket
 + Write model artifacts to an S3 bucket

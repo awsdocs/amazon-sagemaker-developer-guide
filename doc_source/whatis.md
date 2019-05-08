@@ -12,7 +12,7 @@ If you are a first\-time user of Amazon SageMaker, we recommend that you do the 
 
 1. **Read [Get Started](gs.md)** – This section explains how to set up your account and create your first Amazon SageMaker notebook instance\.
 
-1. **Try a model training exercise** – This exercise walks you through training your first model\. You use training algorithms provided by Amazon SageMaker\. For more information, see [Step 2: Train a Model with a Built\-in Algorithm and Deploy It](ex1.md)\. 
+1. **Try a model training exercise** – This exercise walks you through training your first model\. You use training algorithms provided by Amazon SageMaker\. For more information, see [Get Started](gs.md)\. 
 
 1. **Explore other topics** – Depending on your needs, do the following:
    + **Submit Python code to train with deep learning frameworks** – In Amazon SageMaker, you can use your own training scripts to train models\. For information, see [Use Machine Learning Frameworks with Amazon SageMaker](frameworks.md)\.

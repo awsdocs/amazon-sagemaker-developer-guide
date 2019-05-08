@@ -30,7 +30,7 @@ An example of input file input1.csv content:
                 RecordN-Attribute1, RecordN-Attribute2, RecordN-Attribute3, ..., RecordN-AttributeM
 ```
 
-For an example of how to use batch transform, see [Step 2\.4\.2: Deploy the Model with Batch Transform ](ex1-batch-transform.md)\.
+For an example of how to use batch transform, see [Step 6\.2: Deploy the Model with Batch Transform](ex1-batch-transform.md)\.
 
 ## Use Batch Transform with Large Datasets<a name="large-datasets-batch"></a>
 
@@ -57,7 +57,7 @@ An example of output file input1.csv.out content:
 
 To combine the results, set the [AssembleWith](https://docs.aws.amazon.com/sagemaker/latest/dg/API_TransformOutput.html#SageMaker-Type-TransformOutput-AssembleWith) hyperparameter to `Line`\.
 
-For more information about using the API to create a batch transform job, see the [CreateTransformJob](API_CreateTransformJob.md) API\. For more information about the correlation between batch transform input and output objects, see [OutputDataConfig](https://docs.aws.amazon.com/sagemaker/latest/dg/API_OutputDataConfig.html)\. For examples of how to use batch transform, see [Step 2\.4\.2: Deploy the Model with Batch Transform ](ex1-batch-transform.md)\.
+For more information about using the API to create a batch transform job, see the [CreateTransformJob](API_CreateTransformJob.md) API\. For more information about the correlation between batch transform input and output objects, see [OutputDataConfig](https://docs.aws.amazon.com/sagemaker/latest/dg/API_OutputDataConfig.html)\. For examples of how to use batch transform, see [Step 6\.2: Deploy the Model with Batch Transform](ex1-batch-transform.md)\.
 
 ## Use Batch Transform to Preprocess Data<a name="preprocessing-batch"></a>
 

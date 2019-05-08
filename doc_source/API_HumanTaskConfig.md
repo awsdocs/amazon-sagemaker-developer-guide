@@ -49,6 +49,11 @@ For the built\-in bounding box, image classification, semantic segmentation, and
 +  `arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-ImageMultiClass` 
 +  `arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-SemanticSegmentation` 
 +  `arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-TextMultiClass` 
+ **Asia Pacific \(Sydney \(ap\-southeast\-1\):**   
++  `arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-BoundingBox` 
++  `arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-ImageMultiClass` 
++  `arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-SemanticSegmentation` 
++  `arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-TextMultiClass` 
 Type: String  
 Length Constraints: Maximum length of 2048\.  
 Pattern: `arn:aws[a-z\-]*:lambda:[a-z]{2}-[a-z]+-\d{1}:\d{12}:function:[a-zA-Z0-9-_\.]+(:(\$LATEST|[a-zA-Z0-9-_]+))?`   
