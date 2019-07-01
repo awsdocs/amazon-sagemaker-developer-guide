@@ -10,6 +10,7 @@ We recommend that you first review the introductory topics that explain the basi
 + [Permissions Required to Use the Amazon SageMaker Ground Truth Console](#groundtruth-console-policy)
 + [AWS Managed \(Predefined\) Policies for Amazon SageMaker](#access-policy-aws-managed-policies)
 + [Control Access to Amazon SageMaker Resources by Using Tags](#access-tag-policy)
++ [Control Access to the Amazon SageMaker API by Using Identity\-based Policies](#api-access-policy)
 
 The following is an example of a basic permissions policy:
 
@@ -344,4 +345,113 @@ training_jobs = smclient.list_training_jobs_for_hyper_parameter_tuning_job(
     for training_job in training_jobs:
        time.sleep(1) # Wait for 1 second between calls to avoid being throttled
        smclient.add_tags(ResourceArn=training_job['TrainingJobArn'], Tags=[{'Key':'Env', 'Value':'Dev'}])
+```
+
+## Control Access to the Amazon SageMaker API by Using Identity\-based Policies<a name="api-access-policy"></a>
+
+To control access to Amazon SageMaker API calls and calls to Amazon SageMaker hosted endpoints, use identity\-based IAM policies\.
+
+**Topics**
++ [Restrict Access to Amazon SageMaker API and Runtime to Calls from Within Your VPC](#api-access-policy-vpc)
++ [Limit Access to Amazon SageMaker API and Runtime Calls by IP Address](#api-ip-filter)
+
+### Restrict Access to Amazon SageMaker API and Runtime to Calls from Within Your VPC<a name="api-access-policy-vpc"></a>
+
+If you set up an interface endpoint in your VPC, individuals outside the VPC can still connect to the Amazon SageMaker API and runtime over the internet unless you attach an IAM policy that restricts access to calls coming from within the VPC to all users and groups that have access to your Amazon SageMaker resources\. For information about creating a VPC interface endpoint for the Amazon SageMaker API and runtime, see [Connect to Amazon SageMaker Through a VPC Interface Endpoint](interface-vpc-endpoint.md)\.
+
+**Important**  
+If you apply an IAM policy similar to one of the following, users can't access the specified Amazon SageMaker APIs through the console\.
+
+To restrict access to only connections made from within your VPC, create an AWS Identity and Access Management policy that restricts access to only calls that come from within your VPC\. Then add that policy to every AWS Identity and Access Management user, group, or role used to access the Amazon SageMaker API or runtime\.
+
+**Note**  
+This policy allows connections only to callers within a subnet where you created an interface endpoint\.
+
+```
+{
+    "Id": "api-example-1",
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Enable API Access",
+            "Effect": "Allow",
+            "Action": [
+                "sagemaker:*
+            ],
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:SourceVpc": "vpc-111bbaaa"
+                }
+            }
+        }
+    ]
+}
+```
+
+If you want to restrict access to the API to only calls made using the interface endpoint, use the `aws:SourceVpce` condition key instead of `aws:SourceVpc`:
+
+```
+{
+    "Id": "api-example-1",
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Enable API Access",
+            "Effect": "Allow",
+            "Action": [
+                "sagemaker:CreatePresignedNotebookInstanceUrl"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "ForAllValues:StringEquals": {
+                    "aws:sourceVpce": [
+                        "vpce-111bbccc",
+                        "vpce-111bbddd"
+                    ]
+                }
+            }
+        }
+    ]
+}
+```
+
+### Limit Access to Amazon SageMaker API and Runtime Calls by IP Address<a name="api-ip-filter"></a>
+
+To allow access to Amazon SageMaker API calls and runtime invocations only from IP addresses in a list that you specify, attach an IAM policy that denies access to the API unless the call comes from an IP address in the list to every AWS Identity and Access Management user, group, or role used to access the API or runtime\. For information about creating IAM policies, see [Creating IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html) in the *AWS Identity and Access Management User Guide*\. To specify the list of IP addresses that you want to have access to the API call, use the `NotIpAddress` condition operator and the `aws:SourceIP` condition context key\. For information about IAM condition operators, see [IAM JSON Policy Elements: Condition Operators](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html) in the *AWS Identity and Access Management User Guide*\. For information about IAM condition context keys, see [AWS Global Condition Context Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html)\.
+
+For example, the following policy allows access to the [CreateTrainingJob](API_CreateTrainingJob.md) only from IP addresses in the ranges `192.0.2.0`\-`192.0.2.255` and `203.0.113.0`\-`203.0.113.255`:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Deny",
+            "Action": "sagemaker:CreateTrainingJob",
+            "Resource": "*",
+            "Condition": {
+                "NotIpAddress": {
+                    "aws:SourceIp": [
+                        "192.0.2.0/24",
+                        "203.0.113.0/24"
+                    ]
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": "sagemaker:CreateTrainingJob",
+            "Resource": "*",
+            "Condition": {
+                "IpAddress": {
+                    "aws:SourceIp": [
+                        "192.0.2.0/24",
+                        "203.0.113.0/24"
+                    ]
+                }
+            }
+        }
+    ]
+}
 ```

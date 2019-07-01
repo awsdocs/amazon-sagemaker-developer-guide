@@ -1,6 +1,6 @@
 # MetricDefinition<a name="API_MetricDefinition"></a>
 
-Specifies a metric that the training algorithm writes to `stderr` or `stdout`\. Amazon SageMakerhyperparameter tuning captures all defined metrics\. You specify one metric that a hyperparameter tuning job uses as its objective metric to choose the best training job\.
+Specifies a metric that the training algorithm writes to `stderr` or `stdout` \. Amazon SageMakerhyperparameter tuning captures all defined metrics\. You specify one metric that a hyperparameter tuning job uses as its objective metric to choose the best training job\.
 
 ## Contents<a name="API_MetricDefinition_Contents"></a>
 

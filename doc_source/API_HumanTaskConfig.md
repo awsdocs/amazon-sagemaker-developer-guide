@@ -44,12 +44,12 @@ For the built\-in bounding box, image classification, semantic segmentation, and
 +  `arn:aws:lambda:eu-west-1:568282634449:function:PRE-ImageMultiClass` 
 +  `arn:aws:lambda:eu-west-1:568282634449:function:PRE-SemanticSegmentation` 
 +  `arn:aws:lambda:eu-west-1:568282634449:function:PRE-TextMultiClass` 
- **Asia Pacific \(Tokyo \(ap\-northeast\-1\):**   
+ **Asia Pacific \(Tokyo\) \(ap\-northeast\-1\):**   
 +  `arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-BoundingBox` 
 +  `arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-ImageMultiClass` 
 +  `arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-SemanticSegmentation` 
 +  `arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-TextMultiClass` 
- **Asia Pacific \(Sydney \(ap\-southeast\-1\):**   
+ **Asia Pacific \(Sydney\) \(ap\-southeast\-1\):**   
 +  `arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-BoundingBox` 
 +  `arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-ImageMultiClass` 
 +  `arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-SemanticSegmentation` 
@@ -65,7 +65,7 @@ Type: [PublicWorkforceTaskPrice](API_PublicWorkforceTaskPrice.md) object
 Required: No
 
  **TaskAvailabilityLifetimeInSeconds**   <a name="SageMaker-Type-HumanTaskConfig-TaskAvailabilityLifetimeInSeconds"></a>
-The length of time that a task remains available for labelling by human workers\.  
+The length of time that a task remains available for labeling by human workers\. **If you choose the public workforce, the maximum is 12 hours \(43200\)**\. For private and vendor workforces, the maximum is as listed\.  
 Type: Integer  
 Valid Range: Minimum value of 1\. Maximum value of 864000\.  
 Required: No
@@ -88,7 +88,7 @@ Required: No
  **TaskTimeLimitInSeconds**   <a name="SageMaker-Type-HumanTaskConfig-TaskTimeLimitInSeconds"></a>
 The amount of time that a worker has to complete a task\.  
 Type: Integer  
-Valid Range: Minimum value of 1\. Maximum value of 3600\.  
+Valid Range: Minimum value of 1\. Maximum value of 28800\.  
 Required: Yes
 
  **TaskTitle**   <a name="SageMaker-Type-HumanTaskConfig-TaskTitle"></a>

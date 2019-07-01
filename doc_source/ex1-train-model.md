@@ -46,7 +46,7 @@ The Amazon SageMaker Python SDK includes the `sagemaker.estimator.Estimator` est
    xgb_model = sagemaker.estimator.Estimator(container,
                                             role, 
                                             train_instance_count=1, 
-                                            train_instance_type='ml.m4.10xlarge',
+                                            train_instance_type='ml.m4.xlarge',
                                             train_volume_size = 5,
                                             output_path=s3_output_location,
                                             sagemaker_session=sagemaker.Session())
@@ -131,7 +131,7 @@ When using this method, you provide the following information:
        },
        "ResourceConfig": {
            "InstanceCount": 1,   
-           "InstanceType": "ml.m4.10xlarge",
+           "InstanceType": "ml.m4.xlarge",
            "VolumeSizeInGB": 5
        },
        "HyperParameters": {

@@ -3,6 +3,7 @@
 **Topics**
 + [Starting with a base template](#sms-custom-templates-step2-base)
 + [Developing templates locally](#sms-custom-template-step2-UI-local)
++ [Using External Assets](#sms-custom-template-step2-UI-external)
 + [Track your variables](#sms-custom-template-step2-UI-vars)
 + [A simple sample](#sms-custom-templates-step2-sample)
 + [Adding automation with Liquid](#sms-custom-templates-step2-automate)
@@ -25,9 +26,26 @@ While you need to be in the console to test how your template will process incom
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
 ```
 
-This loads the necessary code to render the custom HTML elements\. Use this if you prefer to develop your template's look and feel in your preferred editor rather than in the console\.
+This loads the necessary code to render the custom HTML elements\. Use this if you want to develop your template's look and feel in your preferred editor rather than in the console\.
 
 Remember, though, this will not parse your variables\. You may want to replace them with sample content while developing locally\.
+
+## Using External Assets<a name="sms-custom-template-step2-UI-external"></a>
+
+Amazon SageMaker Ground Truth custom templates allow external scripts and style sheets to be embedded\.
+
+**Example**  
+
+```
+<script src="https://www.example.com/my-enhancment-script.js"></script>
+<link rel="stylesheet" type="text/css" href="https://www.example.com/my-enhancement-styles.css">
+```
+
+If you encounter errors, ensure that your originating server is sending the correct MIME type and encoding headers with the assets\.
+
+For example, the MIME and encoding types for remote scripts: `application/javascript;CHARSET=UTF-8`\.
+
+The MIME and encoding type for remote stylesheets: `text/css;CHARSET=UTF-8`\.
 
 ## Track your variables<a name="sms-custom-template-step2-UI-vars"></a>
 

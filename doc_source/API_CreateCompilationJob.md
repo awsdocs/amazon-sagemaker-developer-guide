@@ -72,7 +72,7 @@ Pattern: `^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$`
 Required: Yes
 
  ** [StoppingCondition](#API_CreateCompilationJob_RequestSyntax) **   <a name="SageMaker-CreateCompilationJob-request-StoppingCondition"></a>
-The duration allowed for model compilation\.  
+Specifies a limit to how long a model compilation job can run\. When the job reaches the time limit, Amazon SageMaker ends the compilation job\. Use this API to cap model training costs\.  
 Type: [StoppingCondition](API_StoppingCondition.md) object  
 Required: Yes
 

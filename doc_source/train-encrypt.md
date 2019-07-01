@@ -6,11 +6,11 @@ Enabling inter\-container traffic encryption can increase training time, especia
 
 You can enable inter\-container traffic encryption for training jobs or hyperparameter tuning jobs\. You can use Amazon SageMaker APIs or console to enable inter\-container traffic encryption\.
 
-For information about running training jobs in a private VPC, see [Protect Training Jobs by Using an Amazon Virtual Private Cloud](train-vpc.md)\.
+For information about running training jobs in a private VPC, see [Give Amazon SageMaker Training Jobs Access to Resources in Your Amazon VPC](train-vpc.md)\.
 
 ## Enable Inter\-Container Traffic Encryption \(API\)<a name="train-encrypt-api"></a>
 
-Before enabling inter\-container traffic encryption on training or hyperparameter tuning jobs with APIs, you need to add inbound and outbound rules to your privat VPC's security group\.
+Before enabling inter\-container traffic encryption on training or hyperparameter tuning jobs with APIs, you need to add inbound and outbound rules to your private VPC's security group\.
 
 **To enable inter\-container traffic encryption \(API\)**
 

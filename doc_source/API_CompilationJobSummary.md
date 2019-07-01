@@ -37,7 +37,7 @@ Required: No
  **CompilationTargetDevice**   <a name="SageMaker-Type-CompilationJobSummary-CompilationTargetDevice"></a>
 The type of device that the model will run on after compilation has completed\.  
 Type: String  
-Valid Values:` lambda | ml_m4 | ml_m5 | ml_c4 | ml_c5 | ml_p2 | ml_p3 | jetson_tx1 | jetson_tx2 | jetson_nano | rasp3b | deeplens | rk3399 | rk3288`   
+Valid Values:` lambda | ml_m4 | ml_m5 | ml_c4 | ml_c5 | ml_p2 | ml_p3 | jetson_tx1 | jetson_tx2 | jetson_nano | rasp3b | deeplens | rk3399 | rk3288 | sbe_c`   
 Required: Yes
 
  **CreationTime**   <a name="SageMaker-Type-CompilationJobSummary-CreationTime"></a>

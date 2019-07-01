@@ -53,7 +53,7 @@ When training a model using the Object2Vec algorithm on a CPU, start with an ml\
 
 ### Instance Recommendation for Inference<a name="object2vec--instances-inference"></a>
 
-For inference with a trained Object 2Vec model on CPU, we recommend using an ml\.m4\.xlarge instance\. Inference requests from CPUs generally have a lower average latency than requests from GPUs because there is a tax on CPU\-to\-GPU communication when you use GPU hardware\. However, GPUs generally have higher throughput for larger batches\.
+For inference with a trained Object2Vec model that has a deep neural network, we recommend using ml\.p3\.2xlarge GPU instance\. Due to GPU memory scarcity, the `INFERENCE_PREFERRED_MODE` environment variable can be specified to optimize on whether the [GPU optimization: Classification or Regression](object2vec-inference-formats.md#object2vec-inference-gpu-optimize-classification) or [GPU optimization: Encoder Embeddings](object2vec-encoder-embeddings.md#object2vec-inference-gpu-optimize-encoder-embeddings) inference network is loaded into GPU\.
 
 ## Object2Vec Sample Notebooks<a name="object2vec-sample-notebooks"></a>
 

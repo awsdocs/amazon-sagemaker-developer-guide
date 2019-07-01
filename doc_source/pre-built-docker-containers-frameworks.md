@@ -1,14 +1,14 @@
-# Pre\-built Amazon SageMaker Docker Images for Scikit\-learn and Spark ML<a name="pre-built-docker-containers-frameworks"></a>
+# Prebuilt Amazon SageMaker Docker Images for Scikit\-learn and Spark ML<a name="pre-built-docker-containers-frameworks"></a>
 
-Amazon SageMaker provides *pre\-built Dockerfiles* that install the scikit\-learn and Spark ML frameworks and the dependencies they need to build SageMaker\-compatible Docker images using the Amazon SageMaker Python SDK\. With the SDK, you can use scikit\-learn for machine learning tasks and Spark ML to create and tune machine learning pipelines\. For instructions on installing and using the SDK, see [SageMaker Python SDK](https://github.com/aws/sagemaker-python-sdk#installing-the-sagemaker-python-sdk)\. The following table contains links to the github repositories with the pre\-built Dockerfiles for scikit\-learn and Spark ML frameworks, and to instructions that show how use them\.
+Amazon SageMaker provides prebuilt Docker images that install the scikit\-learn and Spark ML libraries and the dependencies they need to build Docker images that are compatible with Amazon SageMaker using the Amazon SageMaker Python SDK\. With the SDK, you can use scikit\-learn for machine learning tasks and use Spark ML to create and tune machine learning pipelines\. For instructions on installing and using the SDK, see [SageMaker Python SDK](https://github.com/aws/sagemaker-python-sdk#installing-the-sagemaker-python-sdk)\. The following table contains links to the GitHub repositories with the source code and the Dockerfiles for scikit\-learn and Spark ML frameworks and to instructions that show how use the Python SDK estimators to run your own training algorithms on Amazon SageMaker Learner and your own models on Amazon SageMaker Hosting\.
 
 
-| Framework | Pre\-built Dockerfiles | Instructions | 
+| Library | Prebuilt Docker Image Source Code | Instructions | 
 | --- | --- | --- | 
-| Scikit\-learn |  [SageMaker Scikit\-learn Containers](https://github.com/aws/sagemaker-scikit-learn-container)  |  [Using Scikit\-learn with the SageMaker Python](https://sagemaker.readthedocs.io/en/stable/using_sklearn.html)  | 
-| Spark ML |  [SageMaker SparkML Serving Containers](https://github.com/aws/sagemaker-sparkml-serving-container)  |  [SparkML Serving](https://sagemaker.readthedocs.io/en/stable/sagemaker.sparkml.html)  | 
+| scikit\-learn |  [SageMaker Scikit\-learn Containers](https://github.com/aws/sagemaker-scikit-learn-container)  |  [Using Scikit\-learn with the Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/using_sklearn.html)  | 
+| Spark ML |  [SageMaker Spark ML Serving Containers](https://github.com/aws/sagemaker-sparkml-serving-container)  |  [SparkML Serving](https://sagemaker.readthedocs.io/en/stable/sagemaker.sparkml.html)  | 
 
-The Amazon SageMaker pre\-built Docker images are stored in the Amazon ECR\. They be pushed or pulled using their fullname registry addresses\. Here are the Docker Image URL Patterns used by Amazon SageMaker for scikit\-learn and Spark ML:
+If you are not using the SM Python SDK and one of its estimators to manage the container, you have to retrieve the relevant pre\-build container\. The Amazon SageMaker prebuilt Docker images are stored in Amazon Elastic Container Registry \(Amazon ECR\)\. You can push or pull them using their fullname registry addresses\. Amazon SageMaker uses the following Docker Image URL patterns for scikit\-learn and Spark M:
 + `<ACCOUNT_ID>.dkr.ecr.<REGION_NAME>.amazonaws.com/sagemaker-scikit-learn`
 
   For example, `746614075791.dkr.ecr.us-west-1.amazonaws.com/sagemaker-scikit-learn`
@@ -16,7 +16,7 @@ The Amazon SageMaker pre\-built Docker images are stored in the Amazon ECR\. The
 
   For example, `341280168497.dkr.ecr.ca-central-1.amazonaws.com/sagemaker-sparkml-serving`
 
-Here are the supported values for the account IDs and region names are provided in the following table\.
+The following table lists the supported values for account IDs and corresponding AWS Region names\.
 
 
 | ACCOUNT\_ID | REGION\_NAME | 
@@ -36,8 +36,8 @@ Here are the supported values for the account IDs and region names are provided 
 | 341280168497 | ca\-central\-1 | 
 | 414596584902 | us\-gov\-west\-1 | 
 
-These supported values itemized in the table are also provided on the [fw\_registry\.py](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/fw_registry.py) page\.
+The supported values listed in the table are also available on the [fw\_registry\.py](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/fw_registry.py) page of the Amazon SageMaker Python SDK GitHub repository\.
 
-Amazon SageMaker also provides pre\-built Docker images for popular deep learning frameworks\. For information on Docker images that enable deep learning frameworks to be used in Amazon SageMaker, see [Pre\-built Amazon SageMaker Docker Images for Tensorflow, MXNet, Chainer,and PyTorch](pre-built-docker-containers-frameworks-deep-learning.md)\.
+Amazon SageMaker also provides prebuilt Docker images for popular deep learning frameworks\. For information about Docker images that enable using deep learning frameworks in Amazon SageMaker, see [Prebuilt Amazon SageMaker Docker Images for TensorFlow, MXNet, Chainer, and PyTorch](pre-built-containers-frameworks-deep-learning.md)\.
 
-For information on Docker images that enable Reinforcement Learning \(RL\) solutions to be used in Amazon SageMaker, see [Amazon SageMaker RL Containers](https://github.com/aws/sagemaker-rl-container)\.
+For information on Docker images for developing reinforcement learning \(RL\) solutions in Amazon SageMaker, see [Amazon SageMaker RL Containers](https://github.com/aws/sagemaker-rl-container)\.

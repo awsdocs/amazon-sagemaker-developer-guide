@@ -24,6 +24,5 @@ For information about TensorFlow versions supported by the Amazon SageMaker Tens
 Use legacy mode TensorFlow training scripts to run TensorFlow jobs in Amazon SageMaker if:
 + You have existing legacy mode scripts that you do not want to convert to script mode\.
 + You want to use a TensorFlow version earlier than 1\.11\.
-+ You need to deploy your model to a Python\-based endpoint\. For information, see [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/tensorflow/deploying\_python\.rst](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/tensorflow/deploying_python.rst)\.
 
-For iformation about writing legacy mode TensorFlow scipts to use with the Amazon SageMaker Python SDK, see [https://github\.com/aws/sagemaker\-python\-sdk/tree/v1\.12\.0/src/sagemaker/tensorflow\#tensorflow\-sagemaker\-estimators\-and\-models](https://github.com/aws/sagemaker-python-sdk/tree/v1.12.0/src/sagemaker/tensorflow#tensorflow-sagemaker-estimators-and-models)\.
+For information about writing legacy mode TensorFlow scipts to use with the Amazon SageMaker Python SDK, see [https://github\.com/aws/sagemaker\-python\-sdk/tree/v1\.12\.0/src/sagemaker/tensorflow\#tensorflow\-sagemaker\-estimators\-and\-models](https://github.com/aws/sagemaker-python-sdk/tree/v1.12.0/src/sagemaker/tensorflow#tensorflow-sagemaker-estimators-and-models)\.

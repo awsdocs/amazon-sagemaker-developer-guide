@@ -4,9 +4,8 @@ Amazon SageMaker training and deployed inference containers are internet\-enable
 
 Network isolation is not supported by the following managed Amazon SageMaker containers as they require access to Amazon S3: 
 + TensorFlow
-+ MXNet
 + Chainer
 + PyTorch
 + Scikit\-learn
-+ Amazon SageMaker Reiniforcement Learning
++ Amazon SageMaker Reinforcement Learning
 + Semantic Segmentation Algorithm

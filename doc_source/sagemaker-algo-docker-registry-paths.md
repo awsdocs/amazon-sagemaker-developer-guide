@@ -9,7 +9,7 @@ The following table lists parameters for each of the algorithms provided by Amaz
 | DeepAR Forecasting | train and \(optionally\) test |  *<ecr\_path>*/forecasting\-deepar:*<tag>*  | File | JSON Lines or Parquet | GPU or CPU | Yes | 
 | Factorization Machines | train and \(optionally\) test |  *<ecr\_path>*/factorization\-machines:*<tag>*  | File or Pipe | recordIO\-protobuf | CPU \(GPU for dense data\) | Yes | 
 | Image Classification | train and validation, \(optionally\) train\_lst, validation\_lst, and model |  *<ecr\_path>*/image\-classification:*<tag>*  | File or Pipe | recordIO or image files \(\.jpg or \.png\)  | GPU | Yes | 
-| IP Insights | train and \(optionally\) validation |  *<ecr\_path>*/ipinsights:*<tag>*  | File | CSV | GPU or GPU | Yes | 
+| IP Insights | train and \(optionally\) validation |  *<ecr\_path>*/ipinsights:*<tag>*  | File | CSV | CPU or GPU | Yes | 
 | k\-means  | train and \(optionally\) test |  *<ecr\_path>*/kmeans:*<tag>*  | File or Pipe | recordIO\-protobuf or CSV | CPU or GPUCommon \(single GPU device on one or more instances\) | No | 
 | k\-nearest\-neighbor \(k\-NN\) | train and \(optionally\) test |  *<ecr\_path>*/knn:*<tag>*  | File or Pipe | recordIO\-protobuf or CSV | CPU or GPU \(single GPU device on one or more instances\) | Yes | 
 |  LDA  | train and \(optionally\) test |  *<ecr\_path>*/lda:*<tag>*  | File or Pipe | recordIO\-protobuf or CSV | CPU \(single instance only\) | No | 

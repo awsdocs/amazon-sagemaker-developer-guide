@@ -20,7 +20,7 @@ The code does the following:
 
 1. Unzips the file and reads the following datasets into the notebook's memory:
    + `train_set` – You use these images of handwritten numbers to train a model\.
-   + `valid_set`filename> – The [XGBoost Algorithm](xgboost.md) uses these images to evaluate the progress of the model during training\.
+   + `valid_set` – The [XGBoost Algorithm](xgboost.md) uses these images to evaluate the progress of the model during training\.
    + `test_set` – You use this set to get inferences to test the deployed model\.
 
 **Next Step**  

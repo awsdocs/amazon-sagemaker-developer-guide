@@ -32,7 +32,7 @@ Amazon SageMaker hyperparameter tuning chooses the best scale for the hyperparam
 Linear  
 Hyperparameter tuning searches the values in the hyperparameter range by using a linear scale\.  
 Logarithmic  
-Hyperparemeter tuning searches the values in the hyperparameter range by using a logarithmic scale\.  
+Hyperparameter tuning searches the values in the hyperparameter range by using a logarithmic scale\.  
 Logarithmic scaling works only for ranges that have only values greater than 0\.  
 ReverseLogarithmic  
 Hyperparemeter tuning searches the values in the hyperparameter range by using a reverse logarithmic scale\.  

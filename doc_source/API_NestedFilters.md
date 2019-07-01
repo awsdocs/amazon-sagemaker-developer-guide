@@ -17,7 +17,7 @@ Array Members: Minimum number of 1 item\. Maximum number of 20 items\.
 Required: Yes
 
  **NestedPropertyName**   <a name="SageMaker-Type-NestedFilters-NestedPropertyName"></a>
-The name of the property to use in the nested filters\. The value must match a listed property name, such as `InputDataConfig`\.  
+The name of the property to use in the nested filters\. The value must match a listed property name, such as `InputDataConfig` \.  
 Type: String  
 Length Constraints: Minimum length of 1\. Maximum length of 255\.  
 Pattern: `.+`   

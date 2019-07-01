@@ -52,7 +52,7 @@ Training
 + Downloading the training image\.
 + Training image download completed\. Training in progress\.
 Status messages are subject to change\. Therefore, we recommend not including them in code that programmatically initiates actions\. For examples, don't use status messages in if statements\.
-To have an overview of your training job's progress, view `TrainingJobStatus` and `SecondaryStatus` in [DescribeTrainingJobResponse](API_DescribeTrainingJobResponse.md), and `StatusMessage` together\. For example, at the start of a training job, you might see the following:  
+To have an overview of your training job's progress, view `TrainingJobStatus` and `SecondaryStatus` in [DescribeTrainingJob](API_DescribeTrainingJob.md), and `StatusMessage` together\. For example, at the start of a training job, you might see the following:  
 +  `TrainingJobStatus` \- InProgress
 +  `SecondaryStatus` \- Training
 +  `StatusMessage` \- Downloading the training image

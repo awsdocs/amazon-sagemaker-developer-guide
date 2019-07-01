@@ -33,10 +33,9 @@ Create a Jupyter notebook in the notebook instance you created in [Step 2: Creat
    
    region = boto3.Session().region_name
    
-   bucket='bucket-name' # Put your s3 bucket name here
-   prefix = 'sagemaker/xgboost-mnist2' # Used as part of the path in the bucket where you store data
-   # customize to your bucket where you will store data
-   bucket_path = 'https://s3-{}.amazonaws.com/{}'.format(region,bucket)
+   bucket='bucket-name' # Replace with your s3 bucket name
+   prefix = 'sagemaker/xgboost-mnist' # Used as part of the path in the bucket where you store data
+   bucket_path = 'https://s3-{}.amazonaws.com/{}'.format(region,bucket) # The URL to access the bucket
    ```
 
 ## <a name="ex1-prepare-2"></a>

@@ -3,7 +3,7 @@
 Typically, you explore training data to determine what you need to clean up and which transformations to apply to improve model training\. For this exercise, you don't need to clean up the MNIST dataset\. 
 
 **To explore the dataset**
-+ Display the first 10 images in `train_set`:\.
++ Type the folloiwing code in a cell in your notebook and run the cell to display the first 10 images in `train_set`:\.
 
   ```
   %matplotlib inline
@@ -20,8 +20,8 @@ Typically, you explore training data to determine what you need to clean up and 
       plt.show()
   ```
 
-  `train_set` contains the following files:
-  + `train_set[0]` –  Contains images\. 
+  `train_set` contains the following structures:
+  + `train_set[0]` – Contains images\. 
   + `train_set[1]` – Contains labels\. 
 
   The code uses the `matplotlib` library to get and display the first 10 images from the training dataset\.  

@@ -38,7 +38,7 @@ You now have a file in Amazon S3 that contains inferences that you got by runnin
 1. Get the first 10 results from the batch transform job\.
 
    ```
-   with open('batch_results2') as f:
+   with open('batch_results') as f:
        results = f.readlines()
    for j in range (0, 10):
        print(results[j])

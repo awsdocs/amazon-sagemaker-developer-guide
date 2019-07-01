@@ -10,3 +10,4 @@ An *Amazon SageMaker notebook instance* is a fully managed ML compute instance r
 + [Set the Notebook Kernel](howitworks-set-kernel.md)
 + [Install External Libraries and Kernels in Notebook Instances](nbi-add-external.md)
 + [Associate Git Repositories with Amazon SageMaker Notebook Instances](nbi-git-repo.md)
++ [Get Notebook Instance Metadata](nbi-metadata.md)

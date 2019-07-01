@@ -5,13 +5,13 @@ Describes the resources, including ML instance types and ML instance count, to u
 ## Contents<a name="API_TransformResources_Contents"></a>
 
  **InstanceCount**   <a name="SageMaker-Type-TransformResources-InstanceCount"></a>
-The number of ML compute instances to use in the transform job\. For distributed transform, provide a value greater than 1\. The default value is `1`\.  
+The number of ML compute instances to use in the transform job\. For distributed transform jobs, specify a value greater than 1\. The default value is `1`\.  
 Type: Integer  
 Valid Range: Minimum value of 1\.  
 Required: Yes
 
  **InstanceType**   <a name="SageMaker-Type-TransformResources-InstanceType"></a>
-The ML compute instance type for the transform job\. For using built\-in algorithms to transform moderately sized datasets, ml\.m4\.xlarge or `ml.m5.large` should suffice\. There is no default value for `InstanceType`\.  
+The ML compute instance type for the transform job\. If you are using built\-in algorithms to transform moderately sized datasets, we recommend using ml\.m4\.xlarge or `ml.m5.large` instance types\.  
 Type: String  
 Valid Values:` ml.m4.xlarge | ml.m4.2xlarge | ml.m4.4xlarge | ml.m4.10xlarge | ml.m4.16xlarge | ml.c4.xlarge | ml.c4.2xlarge | ml.c4.4xlarge | ml.c4.8xlarge | ml.p2.xlarge | ml.p2.8xlarge | ml.p2.16xlarge | ml.p3.2xlarge | ml.p3.8xlarge | ml.p3.16xlarge | ml.c5.xlarge | ml.c5.2xlarge | ml.c5.4xlarge | ml.c5.9xlarge | ml.c5.18xlarge | ml.m5.large | ml.m5.xlarge | ml.m5.2xlarge | ml.m5.4xlarge | ml.m5.12xlarge | ml.m5.24xlarge`   
 Required: Yes

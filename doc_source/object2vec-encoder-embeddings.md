@@ -1,6 +1,20 @@
 # Encoder Embeddings for Object2Vec<a name="object2vec-encoder-embeddings"></a>
 
-## INPUT: ENCODER EMBEDDINGS<a name="object2vec-in-encoder-embeddings-data"></a>
+## GPU optimization: Encoder Embeddings<a name="object2vec-inference-gpu-optimize-encoder-embeddings"></a>
+
+Due to GPU memory scarcity, the `INFERENCE_PREFERRED_MODE` environment variable can be specified to optimize on whether the [ Data Formats for Object2Vec Inference](object2vec-inference-formats.md) or the encoder embedding inference network is loaded into GPU\. If the majority of your inference is for encoder embeddings, specify `INFERENCE_PREFERRED_MODE=embedding`\. The following is a Batch Transform example of using 4 instances of p3\.2xlarge that optimizes for encoder embedding inference:
+
+```
+transformer = o2v.transformer(instance_count=4, 
+                              instance_type="ml.p2.xlarge", 
+                              max_concurrent_transforms=2,
+                              max_payload=1,  # 1MB
+                              strategy='MultiRecord',
+                              env={'INFERENCE_PREFERRED_MODE': 'embedding'},  # only useful with GPU
+                              output_path=output_s3_path)
+```
+
+## Input: Encoder Embeddings<a name="object2vec-in-encoder-embeddings-data"></a>
 
 Content\-type: application/json
 
@@ -24,7 +38,7 @@ Content\-type: application/jsonlines
 
 In both of these formats, you specify only one input type: `“in0”` or `“in1.”` The inference service then invokes the corresponding encoder and outputs the embeddings for each of the instances\. 
 
-## OUTPUT: ENCODER EMBEDDINGS<a name="object2vec-out-encoder-embeddings-data"></a>
+## Output: Encoder Embeddings<a name="object2vec-out-encoder-embeddings-data"></a>
 
 Content\-type: application/json
 

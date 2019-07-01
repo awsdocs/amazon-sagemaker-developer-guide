@@ -1,6 +1,6 @@
 # Data Formats for Object2Vec Training<a name="object2vec-training-formats"></a>
 
-## INPUT: JSONLINES Request Format<a name="object2vec-in-training-data-jsonlines"></a>
+## Input: JSON Lines Request Format<a name="object2vec-in-training-data-jsonlines"></a>
 
 Content\-type: application/jsonlines
 

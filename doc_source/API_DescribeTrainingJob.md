@@ -128,7 +128,7 @@ A timestamp that indicates when the training job was created\.
 Type: Timestamp
 
  ** [EnableInterContainerTrafficEncryption](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-EnableInterContainerTrafficEncryption"></a>
-To encrypt all communications between ML compute instances in distributed training, choose `True`\. Encryption provides greater security for distributed training, but training might take longer\. How long it takes depends on the amount of communication between compute instances, especially if you use a deep learning algorithm in distributed training\.  
+To encrypt all communications between ML compute instances in distributed training, choose `True`\. Encryption provides greater security for distributed training, but training might take longer\. How long it takes depends on the amount of communication between compute instances, especially if you use a deep learning algorithms in distributed training\.  
 Type: Boolean
 
  ** [EnableNetworkIsolation](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-EnableNetworkIsolation"></a>
@@ -157,7 +157,7 @@ Value Pattern: `.*`
  ** [InputDataConfig](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-InputDataConfig"></a>
 An array of `Channel` objects that describes each data input channel\.   
 Type: Array of [Channel](API_Channel.md) objects  
-Array Members: Minimum number of 1 item\. Maximum number of 8 items\.
+Array Members: Minimum number of 1 item\. Maximum number of 20 items\.
 
  ** [LabelingJobArn](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-LabelingJobArn"></a>
 The Amazon Resource Name \(ARN\) of the Amazon SageMaker Ground Truth labeling job that created the transform or training job\.  
@@ -217,7 +217,8 @@ A history of all of the secondary statuses that the training job has transitione
 Type: Array of [SecondaryStatusTransition](API_SecondaryStatusTransition.md) objects
 
  ** [StoppingCondition](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-StoppingCondition"></a>
-The condition under which to stop the training job\.   
+Specifies a limit to how long a model training job can run\. When the job reaches the time limit, Amazon SageMaker ends the training job\. Use this API to cap model training costs\.  
+To stop a job, Amazon SageMaker sends the algorithm the `SIGTERM` signal, which delays job termination for 120 seconds\. Algorithms can use this 120\-second window to save the model artifacts, so the results of training are not lost\.   
 Type: [StoppingCondition](API_StoppingCondition.md) object
 
  ** [TrainingEndTime](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-TrainingEndTime"></a>

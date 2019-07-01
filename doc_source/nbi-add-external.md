@@ -62,7 +62,7 @@ source "$WORKING_DIR/miniconda/bin/deactivate"
 rm -rf "$WORKING_DIR/miniconda.sh"
 ```
 
-You can also add a sandboxed Python installation as a kernel that you can use in a Jupyer notebook by including the following code to the above lifecycle configuration:
+You can also add a sandboxed Python installation as a kernel that you can use in a Jupyter notebook by including the following code to the above lifecycle configuration:
 
 ```
 source "$WORKING_DIR/miniconda/bin/activate" 
