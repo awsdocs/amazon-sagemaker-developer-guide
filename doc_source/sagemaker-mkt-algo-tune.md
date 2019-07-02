@@ -35,7 +35,7 @@ You can create use an algorithm resource to create a hyperparameter tuning job b
 
    1. For **IAM role**, choose an IAM role that has the required permissions to run hyperparameter tuning jobs in Amazon SageMaker, or choose **Create a new role** to allow Amazon SageMaker to create a role that has the `AmazonSageMakerFullAccess` managed policy attached\. For information, see [Amazon SageMaker Roles ](sagemaker-roles.md)\.
 
-   1. For **VPC**, choose a Amazon VPC that you want to allow the training jobs that the tuning job launches to access\. For more information, see [Protect Training Jobs by Using an Amazon Virtual Private Cloud](train-vpc.md)\.
+   1. For **VPC**, choose a Amazon VPC that you want to allow the training jobs that the tuning job launches to access\. For more information, see [Give Amazon SageMaker Training Jobs Access to Resources in Your Amazon VPC](train-vpc.md)\.
 
    1. Choose **Next**\.
 

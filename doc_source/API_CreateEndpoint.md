@@ -3,7 +3,8 @@
 Creates an endpoint using the endpoint configuration specified in the request\. Amazon SageMaker uses the endpoint to provision resources and deploy models\. You create the endpoint configuration with the [CreateEndpointConfig](https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html) API\. 
 
 **Note**  
- Use this API only for hosting models using Amazon SageMaker hosting services\. 
+ Use this API only for hosting models using Amazon SageMaker hosting services\.   
+ You must not delete an `EndpointConfig` in use by an endpoint that is live or while the `UpdateEndpoint` or `CreateEndpoint` operations are being performed on the endpoint\. To update an endpoint, you must create a new `EndpointConfig`\.
 
 The endpoint name must be unique within an AWS Region in your AWS account\. 
 

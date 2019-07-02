@@ -56,7 +56,7 @@ To train a model in Amazon SageMaker, you create a training job\. In the request
 + For greater accuracy, add the optional `extra_center_factor` string\. 
 + To specify the strategy that you want to use to determine the initial cluster centers, add the `init_method` string and set its value to `random` or `k-means++`\.
 
-For more information, see [CreateTrainingJob](API_CreateTrainingJob.md)\. For an example, see [Step 2\.3\.2: Create a Training Job](ex1-train-model-create-training-job.md)\. 
+For more information, see [CreateTrainingJob](API_CreateTrainingJob.md)\. For an example, see [Create and Run a Training Job \(AWS SDK for Python \(Boto 3\)\)](ex1-train-model.md#ex1-train-model-create-training-job)\. 
 
 You now have an initial set of cluster centers\. 
 

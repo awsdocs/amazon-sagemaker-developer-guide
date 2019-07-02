@@ -1,6 +1,20 @@
 # Data Formats for Object2Vec Inference<a name="object2vec-inference-formats"></a>
 
-## INPUT: CLASSIFICATION OR REGRESSION Request Format<a name="object2vec-in-inference-data"></a>
+## GPU optimization: Classification or Regression<a name="object2vec-inference-gpu-optimize-classification"></a>
+
+Due to GPU memory scarcity, the `INFERENCE_PREFERRED_MODE` environment variable can be specified to optimize on whether the classification/regression or the [Output: Encoder Embeddings](object2vec-encoder-embeddings.md#object2vec-out-encoder-embeddings-data) inference network is loaded into GPU\. If the majority of your inference is for classification or regression, specify `INFERENCE_PREFERRED_MODE=classification`\. The following is a Batch Transform example of using 4 instances of p3\.2xlarge that optimizes for classification/regression inference:
+
+```
+transformer = o2v.transformer(instance_count=4, 
+                              instance_type="ml.p2.xlarge", 
+                              max_concurrent_transforms=2,
+                              max_payload=1,  # 1MB
+                              strategy='MultiRecord',
+                              env={'INFERENCE_PREFERRED_MODE': 'classification'},  # only useful with GPU
+                              output_path=output_s3_path)
+```
+
+## Input: Classification or Regression Request Format<a name="object2vec-in-inference-data"></a>
 
 Content\-type: application/json
 
@@ -24,7 +38,7 @@ Content\-type: application/jsonlines
 
 For classification problems, the length of the scores vector corresponds to `num_classes`\. For regression problems, the length is 1\.
 
-## OUTPUT: CLASSIFICATION OR REGRESSION Response Format<a name="object2vec-out-inference-data"></a>
+## Ouput: Classification or Regression Response Format<a name="object2vec-out-inference-data"></a>
 
 Accept: application/json
 
@@ -57,4 +71,4 @@ Accept: application/jsonlines
 {"scores":[0.280087798833847,0.368331134319305,0.351581096649169]}
 ```
 
-In both the classification and regression formats, the scores correspond to each of the labels\. 
+In both the classification and regression formats, the scores apply to individual labels\. 

@@ -12,7 +12,7 @@ This element has the following parent and child elements\.
 
 ## Element Events<a name="form-element-events"></a>
 
-The `crowd-form` element extends the [standard HTML `form` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) and inherits its events, sucn as `onclick` and `onsubmit`\.
+The `crowd-form` element extends the [standard HTML `form` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) and inherits its events, such as `onclick` and `onsubmit`\.
 
 ## See Also<a name="form-see-also"></a>
 

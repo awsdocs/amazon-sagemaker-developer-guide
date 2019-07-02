@@ -1,36 +1,45 @@
-# Step 2\.2\.3: Transform the Training Dataset and Upload It to Amazon S3<a name="ex1-preprocess-data-transform"></a>
+# Step 4\.3: Transform the Training Dataset and Upload It to Amazon S3<a name="ex1-preprocess-data-transform"></a>
 
-For efficient model training, transform the dataset from the `numpy.array` format to the `RecordIO protobuf` format\. The `RecordIO protobuf` format is more efficient for all of the algorithms provided by Amazon SageMaker\.
+The [XGBoost Algorithm](xgboost.md) expects comma\-separated values \(CSV\) for its training input\. The format of the training dataset is numpy\.array\. Transform the dataset from numpy\.array format to the CSV format\. Then upload it to the Amazon S3 bucket that you created in [Step 1: Create an Amazon S3 Bucket](gs-config-permissions.md)
 
-**Important**  
-For this and subsequent steps, you can choose to use the high\-level Python library provided by Amazon SageMaker or the low\-level AWS SDK for Python \(Boto\)\. If you're a first\-time user of Amazon SageMaker, we recommend that you follow the code examples for the high\-level Python library\. 
-
-To transform the dataset, choose one of the following options:
-+ **Use the high\-level Python library provided by Amazon SageMaker**
-
-  In the next step, you use the `fit` method for model training\. The `fit` method performs the necessary transformation and uploads to Amazon S3before starting a model training job\.
-+ **Use the SDK for Python**
-
-  The following code first uses the high\-level Python library function, `write_numpy_to_dense_tensor`, to convert the training data into the `protobuf` format, which is efficient for model training\. Then the code uses the SDK for Python low\-level API to upload data to Amazon S3\. 
+**To convert the dataset to CSV format and upload it**
++ Type the following code into a cell in your notebook and then run the cell\.
 
   ```
   %%time
-  from sagemaker.amazon.common import write_numpy_to_dense_tensor
+  
+  import struct
   import io
+  import csv
   import boto3
-  
-  bucket = 'bucket-name' # Use the name of your s3 bucket here
-  data_key = 'kmeans_lowlevel_example/data'
-  data_location = 's3://{}/{}'.format(bucket, data_key)
-  print('training data will be uploaded to: {}'.format(data_location))
-  
-  # Convert the training data into the format required by the SageMaker KMeans algorithm
-  buf = io.BytesIO()
-  write_numpy_to_dense_tensor(buf, train_set[0], train_set[1])
-  buf.seek(0)
-  
-  boto3.resource('s3').Bucket(bucket).Object(data_key).upload_fileobj(buf)
+          
+  def convert_data():
+      data_partitions = [('train', train_set), ('validation', valid_set), ('test', test_set)]
+      for data_partition_name, data_partition in data_partitions:
+          print('{}: {} {}'.format(data_partition_name, data_partition[0].shape, data_partition[1].shape))
+          labels = [t.tolist() for t in data_partition[1]]
+          features = [t.tolist() for t in data_partition[0]]
+          
+          if data_partition_name != 'test':
+              examples = np.insert(features, 0, labels, axis=1)
+          else:
+              examples = features
+          #print(examples[50000,:])
+          
+          
+          np.savetxt('data.csv', examples, delimiter=',')
+          
+          
+          
+          key = "{}/{}/examples".format(prefix,data_partition_name)
+          url = 's3n://{}/{}'.format(bucket, key)
+          boto3.Session().resource('s3').Bucket(bucket).Object(key).upload_file('data.csv')
+          print('Done writing to {}'.format(url))
+          
+  convert_data()
   ```
 
+  After it converts the dataset to the CSV format, ,the code uploads the CSV file to the S3 bucket\. 
+
 **Next Step**  
-[Step 2\.3: Train a Model](ex1-train-model.md)
+[Step 5: Train a Model](ex1-train-model.md)

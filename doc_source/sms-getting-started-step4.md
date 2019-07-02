@@ -1,6 +1,6 @@
 # Step 4: Configure the Bounding Box Tool\.<a name="sms-getting-started-step4"></a>
 
-Finally you configure the bounding box tool to give instructions to your workers\. You can configure a task title that describes the task and provides high\-level instructions for the workers\. You can provide both quick instructions that are displayed next to the image to be labeled and full instructions that contain detailed instructions for completing the task\. In this example you only provide quick instructions, you can see an example of full instructions by choosing **Full instructions** at the bottom of the section\.
+Finally you configure the bounding box tool to give instructions to your workers\. You can configure a task title that describes the task and provides high\-level instructions for the workers\. You can provide both quick instructions and full instructions\. Quick instructions are displayed next to the image to be labeled\. Full instructions contain detailed instructions for completing the task\. In this example, you only provide quick instructions\. You can see an example of full instructions by choosing **Full instructions** at the bottom of the section\.
 
 **To configure the bounding box tool**
 
@@ -12,7 +12,7 @@ Finally you configure the bounding box tool to give instructions to your workers
 
 1. In the **Labels** field, type a category name for the objects that the worker should draw a bounding box around\. For example, if you are asking the worker to draw boxes around football players, you could use "FootballPlayer" in this field\.
 
-1. The **Short instructions** section enables you to create instructions that are displayed on screen with the image that your workers are labeling\. We suggest that you include an example of a correctly drawn bounding box and an example of an incorrectly drawn box\. To create your own instructions, use these steps:
+1. The **Short instructions** section enables you to create instructions that are displayed on the page with the image that your workers are labeling\. We suggest that you include an example of a correctly drawn bounding box and an example of an incorrectly drawn box\. To create your own instructions, use these steps:
 
    1. Select the text between **GOOD EXAMPLE** and the image placeholder\. Replace it with the following text:
 
@@ -30,7 +30,7 @@ Finally you configure the bounding box tool to give instructions to your workers
 
    1. Choose the image button and then enter the HTTPS URL of the other image that you created in step 1\.
 
-Configuration of your labeling job is complete\. Choose **Submit** to start your job\.
+Configuration of your labeling job is complete\. To start your job, choose **Submit**\.
 
 ## Next<a name="step4-next"></a>
 

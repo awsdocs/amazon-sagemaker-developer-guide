@@ -97,7 +97,7 @@ Array Members: Minimum number of 0 items\. Maximum number of 50 items\.
 Required: No
 
  ** [VpcConfig](#API_CreateModel_RequestSyntax) **   <a name="SageMaker-CreateModel-request-VpcConfig"></a>
-A [VpcConfig](API_VpcConfig.md) object that specifies the VPC that you want your model to connect to\. Control access to and from your model container by configuring the VPC\. `VpcConfig` is used in hosting services and in batch transform\. For more information, see [Protect Endpoints by Using an Amazon Virtual Private Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html) and [Protect Data in Batch Transform Jobs by Using an Amazon Virtual Private Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html)\.  
+A [VpcConfig](https://docs.aws.amazon.com/sagemaker/latest/dg/API_VpcConfig.html) object that specifies the VPC that you want your model to connect to\. Control access to and from your model container by configuring the VPC\. `VpcConfig` is used in hosting services and in batch transform\. For more information, see [Protect Endpoints by Using an Amazon Virtual Private Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html) and [Protect Data in Batch Transform Jobs by Using an Amazon Virtual Private Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html)\.  
 Type: [VpcConfig](API_VpcConfig.md) object  
 Required: No
 

@@ -40,6 +40,9 @@ Required: Yes
             }
          }
       ],
+      "[NotificationConfiguration](API_Workteam.md#SageMaker-Type-Workteam-NotificationConfiguration)": { 
+         "[NotificationTopicArn](API_NotificationConfiguration.md#SageMaker-Type-NotificationConfiguration-NotificationTopicArn)": "string"
+      },
       "[ProductListingIds](API_Workteam.md#SageMaker-Type-Workteam-ProductListingIds)": [ "string" ],
       "[SubDomain](API_Workteam.md#SageMaker-Type-Workteam-SubDomain)": "string",
       "[WorkteamArn](API_Workteam.md#SageMaker-Type-Workteam-WorkteamArn)": "string",

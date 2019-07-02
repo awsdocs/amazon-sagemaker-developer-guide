@@ -16,6 +16,8 @@ In this JSON object, you specify:
 + The ranges of hyperparameters that you want to tune\. For more information, see [Define Hyperparameter Ranges](automatic-model-tuning-define-ranges.md)
 + The limits of the resource that the hyperparameter tuning job can consume\.
 + The objective metric for the hyperparameter tuning job\. An *objective metric* is the metric that the hyperparameter tuning job uses to evaluate the training job that it launches\.
+**Note**  
+To use your own algorithm for hyperparameter tuning, you need to define metrics for your algorithm\. For information,see [Define Metrics](automatic-model-tuning-define-metrics.md)\.
 
 The hyperparameter tuning job defines ranges for the `eta`, `alpha`, `min_child_weight`, and `max_depth` hyperparameters of the [XGBoost Algorithm](xgboost.md) built\-in algorithm\. The objective metric for the hyperparameter tuning job maximizes the `validation:auc` metric that the algorithm sends to CloudWatch Logs\.
 

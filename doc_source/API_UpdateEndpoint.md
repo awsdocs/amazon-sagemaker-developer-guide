@@ -5,7 +5,7 @@ Deploys the new `EndpointConfig` specified in the request, switches to using new
 When Amazon SageMaker receives the request, it sets the endpoint status to `Updating`\. After updating the endpoint, it sets the status to `InService`\. To check the status of an endpoint, use the [DescribeEndpoint](https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html) API\. 
 
 **Note**  
-You cannot update an endpoint with the current `EndpointConfig`\. To update an endpoint, you must create a new `EndpointConfig`\.
+You must not delete an `EndpointConfig` in use by an endpoint that is live or while the `UpdateEndpoint` or `CreateEndpoint` operations are being performed on the endpoint\. To update an endpoint, you must create a new `EndpointConfig`\.
 
 ## Request Syntax<a name="API_UpdateEndpoint_RequestSyntax"></a>
 

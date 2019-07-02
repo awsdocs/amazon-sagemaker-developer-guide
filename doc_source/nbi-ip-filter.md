@@ -38,7 +38,7 @@ For example, the following policy allows access to a notebook instance only from
 }
 ```
 
-The policy restricts access to both the call to `CreatePresignedNotebookInstanceUrl` and to the URL that the call returns\. The policy also restricts access to opening a notebook instance in the console\.
+The policy restricts access to both the call to `CreatePresignedNotebookInstanceUrl` and to the URL that the call returns\. The policy also restricts access to opening a notebook instance in the console and is enforced for every HTTP request and WebSocket frame that attempts to connect to the notebook instance\.
 
 **Note**  
 Using this method to filter by IP address is incompatible when [connecting to Amazon SageMaker through a VPC interface endpoint\.](https://docs.aws.amazon.com/sagemaker/latest/dg/interface-vpc-endpoint.html)\. For information about restricting access to a notebook instance when connecting through a VPC interface endpoint, see [Connect to a Notebook Instance Through a VPC Interface Endpoint](notebook-interface-endpoint.md)\.

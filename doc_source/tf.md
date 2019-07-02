@@ -15,7 +15,7 @@ For TensorFlow versions 1\.11 and later, the Amazon SageMaker Python SDK support
 + Script mode supports both Python 2\.7\- andPython 3\.6\-compatible source files\.
 + Script mode supports Horovod for distributed training\.
 
- For information about writing TensorFlow script mode training scripts and using TensorFlow script mode estimators and models with Amazon SageMaker, see [https://github\.com/aws/sagemaker\-python\-sdk\#tensorflow\-sagemaker\-estimators](https://github.com/aws/sagemaker-python-sdk#tensorflow-sagemaker-estimators)\.
+ For information about writing TensorFlow script mode training scripts and using TensorFlow script mode estimators and models with Amazon SageMaker, see [https://sagemaker\.readthedocs\.io/en/stable/using\_tf\.html](https://sagemaker.readthedocs.io/en/stable/using_tf.html)\.
 
 For information about TensorFlow versions supported by the Amazon SageMaker TensorFlow container, see [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/tensorflow/README\.rst](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/tensorflow/README.rst)\.
 
@@ -24,6 +24,6 @@ For information about TensorFlow versions supported by the Amazon SageMaker Tens
 Use legacy mode TensorFlow training scripts to run TensorFlow jobs in Amazon SageMaker if:
 + You have existing legacy mode scripts that you do not want to convert to script mode\.
 + You want to use a TensorFlow version earlier than 1\.11\.
-+ You need to deploy your model to a Python\-based endpoint\. For information, see [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/tensorflow/deploying\_python\.rst](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/tensorflow/deploying_python.rst)\.
+
 
 For information about writing legacy mode TensorFlow scipts to use with the Amazon SageMaker Python SDK, see [https://github\.com/aws/sagemaker\-python\-sdk/tree/v1\.12\.0/src/sagemaker/tensorflow\#tensorflow\-sagemaker\-estimators\-and\-models](https://github.com/aws/sagemaker-python-sdk/tree/v1.12.0/src/sagemaker/tensorflow#tensorflow-sagemaker-estimators-and-models)\.

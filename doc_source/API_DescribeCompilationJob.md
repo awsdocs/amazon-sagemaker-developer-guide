@@ -120,7 +120,7 @@ Length Constraints: Minimum length of 20\. Maximum length of 2048\.
 Pattern: `^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$` 
 
  ** [StoppingCondition](#API_DescribeCompilationJob_ResponseSyntax) **   <a name="SageMaker-DescribeCompilationJob-response-StoppingCondition"></a>
-The duration allowed for model compilation\.  
+Specifies a limit to how long a model compilation job can run\. When the job reaches the time limit, Amazon SageMaker ends the compilation job\. Use this API to cap model training costs\.  
 Type: [StoppingCondition](API_StoppingCondition.md) object
 
 ## Errors<a name="API_DescribeCompilationJob_Errors"></a>

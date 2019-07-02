@@ -1,11 +1,19 @@
 # Demo Template: Labeling Intents with `crowd-classifier`<a name="sms-custom-templates-step2-demo2"></a>
 
-After you have selected to use a custom template, you'll reach the **Custom labeling task panel**\. There you can choose from multiple starter templates that represent some of the more common tasks and will provide a starting point to work from in building your customized labeling task's template\.
+If you choose a custom template, you'll reach the **Custom labeling task panel**\. There you can select from multiple starter templates that represent some of the more common tasks\. The templates provide a starting point to work from in building your customized labeling task's template\.
 
-In this demonstration, you'll work with the **Intent Detection** template, which uses the `[crowd\-classifier](sms-ui-template-crowd-classifier.md)` element, and the AWS Lambda functions needed for processing your data before and after the task\.
+In this demonstration, you work with the **Intent Detection** template, which uses the `[crowd\-classifier](sms-ui-template-crowd-classifier.md)` element, and the AWS Lambda functions needed for processing your data before and after the task\.
 
-**Example : Starter Intent Detection Template**  
-This is the intent detection template that is provided as a starting point\.  
+**Topics**
++ [Starter Intent Detection custom template](#sms-custom-templates-step2-demo2-base-template)
++ [Your Intent Detection custom template](#sms-custom-templates-step2-demo2-your-template)
++ [Your pre\-annotation Lambda function](#sms-custom-templates-step2-demo2-pre-lambda)
++ [Your post\-annotation Lambda function](#sms-custom-templates-step2-demo2-post-lambda)
++ [Your labeling job output](#sms-custom-templates-step2-demo2-job-output)
+
+## Starter Intent Detection custom template<a name="sms-custom-templates-step2-demo2-base-template"></a>
+
+This is the intent detection template that is provided as a starting point\.
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
@@ -35,13 +43,15 @@ This is the intent detection template that is provided as a starting point\.
 </crowd-form>
 ```
 
-The custom templates use the [Liquid template language](https://shopify.github.io/liquid/), and each of the items between double curly braces is a variable\. The pre\-processing AWS Lambda function should provide an object named `taskInput` and that object's properties can be accessed as `{{ task.input.<property name> }}` in your template\.
+The custom templates use the [Liquid template language](https://shopify.github.io/liquid/), and each of the items between double curly braces is a variable\. The pre\-annotation AWS Lambda function should provide an object named `taskInput` and that object's properties can be accessed as `{{ task.input.<property name> }}` in your template\.
+
+## Your Intent Detection custom template<a name="sms-custom-templates-step2-demo2-your-template"></a>
 
 In the starter template, there are two variables: the `task.input.labels` property in the `crowd-classifier` element opening tag and the `task.input.utterance` in the `classification-target` region's content\.
 
 Unless you need to offer different sets of labels with different utterances, avoiding a variable and just using text will save processing time and creates less possibility of error\. The template used in this demonstration will remove that variable, but variables and filters like `to_json` are explained in more detail in the [`crowd-bounding-box` demonstration]() article\.
 
-## Styling Your Elements<a name="sms-custom-templates-step2-demo2-instructions"></a>
+### Styling Your Elements<a name="sms-custom-templates-step2-demo2-instructions"></a>
 
 Two parts of these custom elements that sometimes get overlooked are the `<full-instructions>` and `<short-instructions>` regions\. Good instructions generate good results\.
 
@@ -181,7 +191,7 @@ This uses the [example `<crowd-classifier>` task](https://jsfiddle.net/MTGT_Fidd
 ```
 
 **Example : Your manifest file**  
-If you are preparing your manifest file manually for a text\-classification task like this, you'll need to have your data formatted in the following manner:\.  
+If you are preparing your manifest file manually for a text\-classification task like this, have your data formatted in the following manner\.  
 
 ```
 {"source": "Roses are red"}
@@ -190,14 +200,19 @@ If you are preparing your manifest file manually for a text\-classification task
 {"source": "And so are you"}
 ```
 
-This differs from the manifest file used for the "[Demo Template: Annotation of Images with `crowd-bounding-box`](sms-custom-templates-step2-demo1.md)" demonstration in that `source-ref` was used as the property name instead of `source`\. The use of `source-ref` designates S3 URIs that must be converted to HTTP\. Otherwise, `source` should be used like it is with the text strings above\.
+This differs from the manifest file used for the "[Demo Template: Annotation of Images with `crowd-bounding-box`](sms-custom-templates-step2-demo1.md)" demonstration in that `source-ref` was used as the property name instead of `source`\. The use of `source-ref` designates S3 URIs for images or other files that must be converted to HTTP\. Otherwise, `source` should be used like it is with the text strings above\.
 
-**Example : Your Pre\-labeling task Lambda function**  
-As part of the job set\-up, you'll need to provide the ARN of an AWS Lambda that can be called to process your manifest entries and pass them to the template engine\.   
-This Lambda function is required to have one of the following four strings as part of the function name: `SageMaker`, `Sagemaker`, `sagemaker`, or `LabelingFunction`\.  
-This applies to both your pre\-processing and post\-processing Lambdas\.  
-When you're using the console, if you have Lambdas that are owned by your account, a drop\-down list of functions meeting the naming requirements will be provided to choose one\.  
-In this very basic sample, where you have only one variable, it's primarily a pass\-through function\. Here's a sample pre\-labeling Lambda using Python 3\.7\.  
+## Your pre\-annotation Lambda function<a name="sms-custom-templates-step2-demo2-pre-lambda"></a>
+
+As part of the job set\-up, provide the ARN of an AWS Lambda that can be called to process your manifest entries and pass them to the template engine\. 
+
+This Lambda function is required to have one of the following four strings as part of the function name: `SageMaker`, `Sagemaker`, `sagemaker`, or `LabelingFunction`\.
+
+This applies to both your pre\-annotation and post\-annotation Lambdas\.
+
+When you're using the console, if you have Lambdas that are owned by your account, a drop\-down list of functions meeting the naming requirements will be provided to choose one\.
+
+In this very basic sample, where you have only one variable, it's primarily a pass\-through function\. Here's a sample pre\-labeling Lambda using Python 3\.7\.
 
 ```
 import json
@@ -207,14 +222,20 @@ def lambda_handler(event, context):
         "taskInput":  event['dataObject']
     }
 ```
-The `dataObject` property of the `event` contains the `source` property from a data object in your manifest\.  
-In this demonstration, which is a simple passthrough of one variable, you just pass that straight through as the `taskInput` value\. But you might want to have a custom header per object, custom examples, etc\. If you add properties with those values to the `event['dataObject']` object, they will be available to your HTML template as Liquid variables with the format `{{ task.input.<property name> }}`\.
 
-**Example : Your Post\-labeling task Lambda function**  
-As part of the job set\-up, you'll also need to provide the ARN of an AWS Lambda that can be called to process the form data when a worker completes a task\. This can be as simple or complex as you want\. If you want to do answer\-consolidation and scoring as data comes in, you can apply the scoring and/or consolidation algorithms of your choice\. If you want to store the raw data for offline processing, that is an option\.  
-The annotation data will be in a file designated by the `s3Uri` string in the `payload` object\. To process the annotations as they come in, even for a simple passthrough function, you need to assign `S3ReadOnly` access to your Lambda so it can read the annotation files\.  
-In the Console page for creating your Lambda, scroll to the **Execution role** panel\. Select **Create a new role from one or more templates**\. Give the role a name\. From the **Policy templates** drop\-down, choose **Amazon S3 object read\-only permissions**\. Save the Lambda and the role will be saved and selected\.  
-The following sample is for Python 3\.7\.  
+The `dataObject` property of the `event` contains the properties from a data object in your manifest\.
+
+In this demonstration, which is a simple pass through, you just pass that straight through as the `taskInput` value\. If you add properties with those values to the `event['dataObject']` object, they will be available to your HTML template as Liquid variables with the format `{{ task.input.<property name> }}`\.
+
+## Your post\-annotation Lambda function<a name="sms-custom-templates-step2-demo2-post-lambda"></a>
+
+As part of the job set up, provide the ARN of an Lambda function that can be called to process the form data when a worker completes a task\. This can be as simple or complex as you want\. If you want to do answer\-consolidation and scoring as data comes in, you can apply the scoring or consolidation algorithms of your choice\. If you want to store the raw data for offline processing, that is an option\.
+
+**Set permissions for your post\-annotation Lambda function**  
+The annotation data will be in a file designated by the `s3Uri` string in the `payload` object\. To process the annotations as they come in, even for a simple pass through function, you need to assign `S3ReadOnly` access to your Lambda so it can read the annotation files\.  
+In the Console page for creating your Lambda, scroll to the **Execution role** panel\. Select **Create a new role from one or more templates**\. Give the role a name\. From the **Policy templates** drop\-down, choose **Amazon S3 object read\-only permissions**\. Save the Lambda and the role will be saved and selected\.
+
+The following sample is for Python 3\.7\.
 
 ```
 import json
@@ -250,11 +271,13 @@ def lambda_handler(event, context):
     return consolidated_labels
 ```
 
-The post\-processing Lambda will often receive batches of task results in the event object\. That batch will be the `payload` object the Lambda should iterate through\.
+## Your labeling job output<a name="sms-custom-templates-step2-demo2-job-output"></a>
+
+The post\-annotation Lambda will often receive batches of task results in the event object\. That batch will be the `payload` object the Lambda should iterate through\.
 
 You'll find the output of the job in a folder named after your labeling job in the target S3 bucket you specified\. It will be in a subfolder named `manifests`\.
 
-For an intent detection task, the output you'll find in the output manifest will look a bit like the demo below\. The example has been cleaned up and spaced out to be easier for humans to read\. The actual output will be more compressed for machine reading\.
+For an intent detection task, the output in the output manifest will look a bit like the demo below\. The example has been cleaned up and spaced out to be easier for humans to read\. The actual output will be more compressed for machine reading\.
 
 **Example : JSON in your output manifest**  
 
@@ -312,4 +335,5 @@ For an intent detection task, the output you'll find in the output manifest will
      ...
 ]
 ```
+
 This should help you create and use your own custom template\.

@@ -1,4 +1,4 @@
-# Step 4: Integrating Amazon SageMaker Endpoints into Internet\-facing Applications<a name="getting-started-client-app"></a>
+# Step 9: Integrating Amazon SageMaker Endpoints into Internet\-facing Applications<a name="getting-started-client-app"></a>
 
 In a production environment, you might have an internet\-facing application sending requests to the endpoint for inference\. The following high\-level example shows how to integrate your model endpoint into your application\.
 

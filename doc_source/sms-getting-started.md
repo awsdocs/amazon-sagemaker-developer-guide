@@ -1,10 +1,10 @@
 # Getting started<a name="sms-getting-started"></a>
 
-To get started using Amazon SageMaker Ground Truth, follow the instructions in the following sections\. You'll use the console to create a labeling job, assign a public or private workforce, and publish the labeling job to your workforce\. You'll also learn how to monitor the progress of a labeling job\.
+To get started using Amazon SageMaker Ground Truth, follow the instructions in the following sections\. The sections here explain how to use the console to create a labeling job, assign a public or private workforce, and send the labeling job to your workforce\. You can also learn how to monitor the progress of a labeling job\.
 
 If you want to create a custom labeling job, see [Creating Custom Labeling Workflows](sms-custom-templates.md) for instructions\.
 
-Before you create a labeling job, you must upload your dataset to an Amazon S3 bucket\. for more information, see [Using Input and Output Data](sms-data.md)\.
+Before you create a labeling job, you must upload your dataset to an Amazon S3 bucket\. For more information, see [Using Input and Output Data](sms-data.md)\.
 
 **Topics**
 + [Step 1: Before You Begin](sms-getting-started-step1.md)

@@ -16,7 +16,7 @@ Required: No
  **InputDataConfig**   <a name="SageMaker-Type-TrainingJobDefinition-InputDataConfig"></a>
 An array of `Channel` objects, each of which specifies an input source\.  
 Type: Array of [Channel](API_Channel.md) objects  
-Array Members: Minimum number of 1 item\. Maximum number of 8 items\.  
+Array Members: Minimum number of 1 item\. Maximum number of 20 items\.  
 Required: Yes
 
  **OutputDataConfig**   <a name="SageMaker-Type-TrainingJobDefinition-OutputDataConfig"></a>
@@ -30,8 +30,8 @@ Type: [ResourceConfig](API_ResourceConfig.md) object
 Required: Yes
 
  **StoppingCondition**   <a name="SageMaker-Type-TrainingJobDefinition-StoppingCondition"></a>
-Sets a duration for training\. Use this parameter to cap model training costs\.  
-To stop a job, Amazon SageMaker sends the algorithm the SIGTERM signal, which delays job termination for 120 seconds\. Algorithms might use this 120\-second window to save the model artifacts\.  
+Specifies a limit to how long a model training job can run\. When the job reaches the time limit, Amazon SageMaker ends the training job\. Use this API to cap model training costs\.  
+To stop a job, Amazon SageMaker sends the algorithm the SIGTERM signal, which delays job termination for 120 seconds\. Algorithms can use this 120\-second window to save the model artifacts\.  
 Type: [StoppingCondition](API_StoppingCondition.md) object  
 Required: Yes
 

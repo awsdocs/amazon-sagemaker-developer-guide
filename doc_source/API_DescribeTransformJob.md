@@ -29,6 +29,11 @@ Required: Yes
 {
    "[BatchStrategy](#SageMaker-DescribeTransformJob-response-BatchStrategy)": "string",
    "[CreationTime](#SageMaker-DescribeTransformJob-response-CreationTime)": number,
+   "[DataProcessing](#SageMaker-DescribeTransformJob-response-DataProcessing)": { 
+      "[InputFilter](API_DataProcessing.md#SageMaker-Type-DataProcessing-InputFilter)": "string",
+      "[JoinSource](API_DataProcessing.md#SageMaker-Type-DataProcessing-JoinSource)": "string",
+      "[OutputFilter](API_DataProcessing.md#SageMaker-Type-DataProcessing-OutputFilter)": "string"
+   },
    "[Environment](#SageMaker-DescribeTransformJob-response-Environment)": { 
       "string" : "string" 
    },
@@ -82,6 +87,10 @@ Valid Values:` MultiRecord | SingleRecord`
  ** [CreationTime](#API_DescribeTransformJob_ResponseSyntax) **   <a name="SageMaker-DescribeTransformJob-response-CreationTime"></a>
 A timestamp that shows when the transform Job was created\.  
 Type: Timestamp
+
+ ** [DataProcessing](#API_DescribeTransformJob_ResponseSyntax) **   <a name="SageMaker-DescribeTransformJob-response-DataProcessing"></a>
+The data structure used to specify the data to be used for inference in a batch transform job and to associate the data that is relevant to the prediction results in the output\. The input filter provided allows you to exclude input data that is not needed for inference in a batch transform job\. The output filter provided allows you to include input data relevant to interpreting the predictions in the output from the job\. For more information, see [Associate Prediction Results with their Corresponding Input Records](http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-data-processing.html)\.  
+Type: [DataProcessing](API_DataProcessing.md) object
 
  ** [Environment](#API_DescribeTransformJob_ResponseSyntax) **   <a name="SageMaker-DescribeTransformJob-response-Environment"></a>
 The environment variables to set in the Docker container\. We support up to 16 key and values entries in the map\.  

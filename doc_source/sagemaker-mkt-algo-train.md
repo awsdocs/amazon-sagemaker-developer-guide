@@ -39,7 +39,7 @@ You can create use an algorithm resource to create a training job by using the A
 
       1. For **Stopping condition**, specify the maximum amount of time in seconds, minutes, hours, or days, that you want the training job to run\.
 
-   1. For **VPC**, choose a Amazon VPC that you want to allow your training container to access\. For more information, see [Protect Training Jobs by Using an Amazon Virtual Private Cloud](train-vpc.md)\.
+   1. For **VPC**, choose a Amazon VPC that you want to allow your training container to access\. For more information, see [Give Amazon SageMaker Training Jobs Access to Resources in Your Amazon VPC](train-vpc.md)\.
 
    1. For **Hyperparameters**, specify the values of the hyperparameters to use for the training job\.
 

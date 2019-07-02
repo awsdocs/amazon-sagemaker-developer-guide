@@ -14,7 +14,7 @@ Required: Yes
  **TargetDevice**   <a name="SageMaker-Type-OutputConfig-TargetDevice"></a>
 Identifies the device that you want to run your model on after it has been compiled\. For example: ml\_c5\.  
 Type: String  
-Valid Values:` lambda | ml_m4 | ml_m5 | ml_c4 | ml_c5 | ml_p2 | ml_p3 | jetson_tx1 | jetson_tx2 | rasp3b | deeplens | rk3399 | rk3288`   
+Valid Values:` lambda | ml_m4 | ml_m5 | ml_c4 | ml_c5 | ml_p2 | ml_p3 | jetson_tx1 | jetson_tx2 | jetson_nano | rasp3b | deeplens | rk3399 | rk3288 | sbe_c`   
 Required: Yes
 
 ## See Also<a name="API_OutputConfig_SeeAlso"></a>

@@ -86,6 +86,7 @@ Required: Yes
             "[Total](API_LabelCountersForWorkteam.md#SageMaker-Type-LabelCountersForWorkteam-Total)": number
          },
          "[LabelingJobName](API_LabelingJobForWorkteamSummary.md#SageMaker-Type-LabelingJobForWorkteamSummary-LabelingJobName)": "string",
+         "[NumberOfHumanWorkersPerDataObject](API_LabelingJobForWorkteamSummary.md#SageMaker-Type-LabelingJobForWorkteamSummary-NumberOfHumanWorkersPerDataObject)": number,
          "[WorkRequesterAccountId](API_LabelingJobForWorkteamSummary.md#SageMaker-Type-LabelingJobForWorkteamSummary-WorkRequesterAccountId)": "string"
       }
    ],

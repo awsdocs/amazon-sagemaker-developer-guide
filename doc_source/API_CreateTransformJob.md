@@ -18,6 +18,11 @@ In the request body, you provide the following:
 ```
 {
    "[BatchStrategy](#SageMaker-CreateTransformJob-request-BatchStrategy)": "string",
+   "[DataProcessing](#SageMaker-CreateTransformJob-request-DataProcessing)": { 
+      "[InputFilter](API_DataProcessing.md#SageMaker-Type-DataProcessing-InputFilter)": "string",
+      "[JoinSource](API_DataProcessing.md#SageMaker-Type-DataProcessing-JoinSource)": "string",
+      "[OutputFilter](API_DataProcessing.md#SageMaker-Type-DataProcessing-OutputFilter)": "string"
+   },
    "[Environment](#SageMaker-CreateTransformJob-request-Environment)": { 
       "string" : "string" 
    },
@@ -69,6 +74,11 @@ To use only one record when making an HTTP invocation request to a container, se
 To fit as many records in a mini\-batch as can fit within the `MaxPayloadInMB` limit, set `BatchStrategy` to `MultiRecord` and `SplitType` to `Line`\.  
 Type: String  
 Valid Values:` MultiRecord | SingleRecord`   
+Required: No
+
+ ** [DataProcessing](#API_CreateTransformJob_RequestSyntax) **   <a name="SageMaker-CreateTransformJob-request-DataProcessing"></a>
+The data structure used to specify the data to be used for inference in a batch transform job and to associate the data that is relevant to the prediction results in the output\. The input filter provided allows you to exclude input data that is not needed for inference in a batch transform job\. The output filter provided allows you to include input data relevant to interpreting the predictions in the output from the job\. For more information, see [Associate Prediction Results with their Corresponding Input Records](http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-data-processing.html)\.  
+Type: [DataProcessing](API_DataProcessing.md) object  
 Required: No
 
  ** [Environment](#API_CreateTransformJob_RequestSyntax) **   <a name="SageMaker-CreateTransformJob-request-Environment"></a>

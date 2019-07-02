@@ -10,6 +10,28 @@ The following attributes are supported by this element\.
 
 The text to display above the image\. This is typically a question or simple instruction for the worker\.
 
+### initial\-value<a name="keypoint-attributes-initial"></a>
+
+An array, in JSON format, of keypoints to be applied to the image on start\. For example:
+
+```
+initial-value="[
+  {
+    'label': 'Left Eye',
+    'x': 1022,
+    'y': 429
+  },
+  {
+    'label': 'Beak',
+    'x': 941,
+    'y': 403
+  }
+]
+```
+
+**Note**  
+Please note that label values used in this attribute must have a matching value in the `labels` attribute or the point will not be rendered\.
+
 ### labels<a name="keypoint-attributes-labels"></a>
 
 An array, in JSON format, of strings to be used as keypoint annotation labels\.

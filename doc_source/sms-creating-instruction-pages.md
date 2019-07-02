@@ -33,3 +33,14 @@ You can create full instructions using an editor in the Ground Truth console\. A
 + Full instructions should supplement the short instructions\. Don't repeat information that appears in the short instructions\.
 
 The Ground Truth console provides an editor so that you can create your full instructions\. Replace the placeholder text and images with instructions for your task\. Preview the full instruction page by choosing **Preview**\. The preview will open in a new window, be sure to turn off pop\-up blocking so that the window will show\.
+
+## Add example images to your instructions<a name="sms-using-s3-images"></a>
+
+Images provide useful examples for your workers\. To add a publicly accessible image to your instructions:
++ Place the cursor where the image should go in the instructions editor\.
++ Click the image icon in the editor toolbar\.
++ Enter the URL of your image\.
+
+If your instruction image in Amazon S3 is not publicly accessible:
++ As the image URL, enter: `{{ 'https://s3.amazonaws.com/your-bucket-name/image-file-name' | grant_read_access }}`\.
++ This renders the image URL with a short\-lived, one\-time access code appended so the worker's browser can display it\. A broken image icon is displayed in the instructions editor, but previewing the tool displays the image in the rendered preview\.

@@ -59,7 +59,7 @@ At inference time, you can request predictions for targets with `cat` values tha
 
 ```
 { "start": ..., "target": ..., "cat": [0, 1], ... } # red dress
-{ "start": ..., "target": ..., "cat": [1, 0], ... } # blue dress
+{ "start": ..., "target": ..., "cat": [1, 1], ... } # blue dress
 ```
 
 The following guidelines apply to training data:

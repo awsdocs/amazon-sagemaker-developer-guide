@@ -23,7 +23,7 @@ Required: No
  **InputDataConfig**   <a name="SageMaker-Type-HyperParameterTrainingJobDefinition-InputDataConfig"></a>
 An array of [Channel](API_Channel.md) objects that specify the input for the training jobs that the tuning job launches\.  
 Type: Array of [Channel](API_Channel.md) objects  
-Array Members: Minimum number of 1 item\. Maximum number of 8 items\.  
+Array Members: Minimum number of 1 item\. Maximum number of 20 items\.  
 Required: No
 
  **OutputDataConfig**   <a name="SageMaker-Type-HyperParameterTrainingJobDefinition-OutputDataConfig"></a>
@@ -54,9 +54,7 @@ Value Pattern: `.*`
 Required: No
 
  **StoppingCondition**   <a name="SageMaker-Type-HyperParameterTrainingJobDefinition-StoppingCondition"></a>
-Sets a maximum duration for the training jobs that the tuning job launches\. Use this parameter to limit model training costs\.   
-To stop a job, Amazon SageMaker sends the algorithm the `SIGTERM` signal\. This delays job termination for 120 seconds\. Algorithms might use this 120\-second window to save the model artifacts\.  
-When Amazon SageMaker terminates a job because the stopping condition has been met, training algorithms provided by Amazon SageMaker save the intermediate results of the job\.  
+Specifies a limit to how long a model hyperparameter training job can run\. When the job reaches the time limit, Amazon SageMaker ends the training job\. Use this API to cap model training costs\.  
 Type: [StoppingCondition](API_StoppingCondition.md) object  
 Required: Yes
 
