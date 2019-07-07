@@ -44,7 +44,7 @@ For each of the following steps, paste the code in a cell in the Jupyter noteboo
    ```
    model_name = training_job_name + '-mod'
    
-   info = sm.describe_training_job(TrainingJobName=training_job_name
+   info = sm.describe_training_job(TrainingJobName=training_job_name)
    model_data = info['ModelArtifacts']['S3ModelArtifacts']
    print(model_data)
    
