@@ -44,11 +44,16 @@ For the built\-in bounding box, image classification, semantic segmentation, and
 +  `arn:aws:lambda:eu-west-1:568282634449:function:PRE-ImageMultiClass` 
 +  `arn:aws:lambda:eu-west-1:568282634449:function:PRE-SemanticSegmentation` 
 +  `arn:aws:lambda:eu-west-1:568282634449:function:PRE-TextMultiClass` 
- **Asia Pacific \(Tokyo \(ap\-northeast\-1\):**   
+ **Asia Pacific \(Tokyo\) \(ap\-northeast\-1\):**   
 +  `arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-BoundingBox` 
 +  `arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-ImageMultiClass` 
 +  `arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-SemanticSegmentation` 
 +  `arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-TextMultiClass` 
+ **Asia Pacific \(Sydney\) \(ap\-southeast\-1\):**   
++  `arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-BoundingBox` 
++  `arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-ImageMultiClass` 
++  `arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-SemanticSegmentation` 
++  `arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-TextMultiClass` 
 Type: String  
 Length Constraints: Maximum length of 2048\.  
 Pattern: `arn:aws[a-z\-]*:lambda:[a-z]{2}-[a-z]+-\d{1}:\d{12}:function:[a-zA-Z0-9-_\.]+(:(\$LATEST|[a-zA-Z0-9-_]+))?`   
@@ -60,15 +65,16 @@ Type: [PublicWorkforceTaskPrice](API_PublicWorkforceTaskPrice.md) object
 Required: No
 
  **TaskAvailabilityLifetimeInSeconds**   <a name="SageMaker-Type-HumanTaskConfig-TaskAvailabilityLifetimeInSeconds"></a>
-The length of time that a task remains available for labelling by human workers\.  
+The length of time that a task remains available for labeling by human workers\. **If you choose the public workforce, the maximum is 12 hours \(43200\)**\. For private and vendor workforces, the maximum is as listed\.  
 Type: Integer  
-Valid Range: Minimum value of 1\. Maximum value of 345600\.  
+Valid Range: Minimum value of 1\. Maximum value of 864000\.  
 Required: No
 
  **TaskDescription**   <a name="SageMaker-Type-HumanTaskConfig-TaskDescription"></a>
 A description of the task for your human workers\.  
 Type: String  
 Length Constraints: Minimum length of 1\. Maximum length of 255\.  
+Pattern: `.+`   
 Required: Yes
 
  **TaskKeywords**   <a name="SageMaker-Type-HumanTaskConfig-TaskKeywords"></a>
@@ -82,7 +88,7 @@ Required: No
  **TaskTimeLimitInSeconds**   <a name="SageMaker-Type-HumanTaskConfig-TaskTimeLimitInSeconds"></a>
 The amount of time that a worker has to complete a task\.  
 Type: Integer  
-Valid Range: Minimum value of 1\. Maximum value of 3600\.  
+Valid Range: Minimum value of 1\. Maximum value of 28800\.  
 Required: Yes
 
  **TaskTitle**   <a name="SageMaker-Type-HumanTaskConfig-TaskTitle"></a>
@@ -109,5 +115,6 @@ Required: Yes
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/HumanTaskConfig) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/HumanTaskConfig) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/HumanTaskConfig) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/HumanTaskConfig) 
 +  [AWS SDK for Ruby V2](https://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/HumanTaskConfig) 

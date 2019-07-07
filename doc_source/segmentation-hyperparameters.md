@@ -28,7 +28,7 @@ The following tables list the hyperparameters supported by the Amazon SageMaker 
 | early\_stopping |  Whether to use early stopping logic during training\. **Optional** Valid values: `True`, `False` Default value: `False`  | 
 | early\_stopping\_min\_epochs |  The minimum number of epochs that must be run\. **Optional** Valid values: integer Default value: 5  | 
 | early\_stopping\_patience |  The number of epochs that meet the tolerance for lower performance before the algorithm enforces an early stop\. **Optional** Valid values: integer Default value: 4  | 
-| early\_stopping\_tolerance |  If the relative improvement of the mIOU is smaller than this value, early stopping considers the epoch as not improved\. This is used only when `early_stopping` = `True`\. **Optional** Valid values: 0 ≤ float ≤ 1 Default value: 0\.0  | 
+| early\_stopping\_tolerance |  If the relative improvement of the score of the training job, the mIOU, is smaller than this value, early stopping considers the epoch as not improved\. This is used only when `early_stopping` = `True`\. **Optional** Valid values: 0 ≤ float ≤ 1 Default value: 0\.0  | 
 | epochs |  The number of epochs with which to train\. **Optional** Valid values: positive integer Default value: 30  | 
 | gamma1 |  The decay factor for the moving average of the squared gradient for `rmsprop`\. Used only for `rmsprop`\. **Optional** Valid values: 0 ≤ float ≤ 1 Default value: 0\.9  | 
 | gamma2 |  The momentum factor for `rmsprop`\. **Optional** Valid values: 0 ≤ float ≤ 1 Default value: 0\.9  | 

@@ -1,6 +1,6 @@
 # Run a Warm Start Hyperparameter Tuning Job<a name="automatic-model-tuning-warm-start"></a>
 
-Use warm start to start a hyperparameter tuning job using one or more previous tuning jobs as a starting point\. The results of previous tuning jobs are used to inform which combinations of hyperparameters to search over in the new tuning job\. Hyperparameter tuning uses Bayesian search to choose combinations of hyperparameter values from ranges that you specify\. For more information, see [How Hyperparameter Tuning Works](automatic-model-tuning-how-it-works.md)\. Using information from previous hyperparameter tuning jobs can help increase the performance of the new hyperparameter tuning job by making the search for the best combination of hyperparameters more efficient\.
+Use warm start to start a hyperparameter tuning job using one or more previous tuning jobs as a starting point\. The results of previous tuning jobs are used to inform which combinations of hyperparameters to search over in the new tuning job\. Hyperparameter tuning uses either Bayesian or random search to choose combinations of hyperparameter values from ranges that you specify\. For more information, see [How Hyperparameter Tuning Works](automatic-model-tuning-how-it-works.md)\. Using information from previous hyperparameter tuning jobs can help increase the performance of the new hyperparameter tuning job by making the search for the best combination of hyperparameters more efficient\.
 
 **Note**  
 Warm start tuning jobs typically take longer to start than standard hyperparameter tuning jobs, because the results from the parent jobs have to be loaded before the job can start\. The increased time depends on the total number of training jobs launched by the parent jobs\.
@@ -43,17 +43,17 @@ The following restrictions apply to all warm start tuning jobs:
 
 ## Warm Start Tuning Sample Notebook<a name="warm-start-tuning-sample-notebooks"></a>
 
-For a sample notebook that shows how to use warm start tuning, see [https://github\.com/awslabs/amazon\-sagemaker\-examples/blob/master/hyperparameter\_tuning/image\_classification\_warmstart/hpo\_image\_classification\_warmstart\.ipynb](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/hyperparameter_tuning/image_classification_warmstart/hpo_image_classification_warmstart.ipynb)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Using Example Notebooks](howitworks-nbexamples.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the Amazon SageMaker samples\. The warm start tuning example notebook is located in the **Hyperparameter tuning** section, and is named `hpo_image_classification_warmstart.ipynb`\. To open a notebook, click on its **Use** tab and select **Create copy**\.
+For a sample notebook that shows how to use warm start tuning, see [https://github\.com/awslabs/amazon\-sagemaker\-examples/blob/master/hyperparameter\_tuning/image\_classification\_warmstart/hpo\_image\_classification\_warmstart\.ipynb](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/hyperparameter_tuning/image_classification_warmstart/hpo_image_classification_warmstart.ipynb)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Example Notebooks](howitworks-nbexamples.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the Amazon SageMaker samples\. The warm start tuning example notebook is located in the **Hyperparameter tuning** section, and is named `hpo_image_classification_warmstart.ipynb`\. To open a notebook, click on its **Use** tab and select **Create copy**\.
 
 ## Create a Warm Start Tuning Job<a name="warm-start-tuning-example"></a>
 
 You can use either the low\-level AWS SDK for Python \(Boto 3\) or the high\-level Amazon SageMaker Python SDK to create a warm start tuning job\.
 
 **Topics**
-+ [Create a Warm Start Tuning Job by Using Boto 3](#warm-start-tuning-example-boto)
-+ [Create a Warm Start Tuning Job by Using the Amazon SageMaker Python SDK](#warm-start-tuning-example-sdk)
++ [Create a Warm Start Tuning Job \( Low\-level Amazon SageMaker API for Python \(Boto 3\)\)](#warm-start-tuning-example-boto)
++ [Create a Warm Start Tuning Job \(Amazon SageMaker Python SDK\)](#warm-start-tuning-example-sdk)
 
-### Create a Warm Start Tuning Job by Using Boto 3<a name="warm-start-tuning-example-boto"></a>
+### Create a Warm Start Tuning Job \( Low\-level Amazon SageMaker API for Python \(Boto 3\)\)<a name="warm-start-tuning-example-boto"></a>
 
 To use warm start tuning, you specify the values of a [HyperParameterTuningJobWarmStartConfig](API_HyperParameterTuningJobWarmStartConfig.md) object, and pass that as the `WarmStartConfig` field in a call to [CreateHyperParameterTuningJob](API_CreateHyperParameterTuningJob.md)\.
 
@@ -80,7 +80,7 @@ smclient.create_hyper_parameter_tuning_job(HyperParameterTuningJobName = 'MyWarm
    WarmStartConfig = warm_start_config)
 ```
 
-### Create a Warm Start Tuning Job by Using the Amazon SageMaker Python SDK<a name="warm-start-tuning-example-sdk"></a>
+### Create a Warm Start Tuning Job \(Amazon SageMaker Python SDK\)<a name="warm-start-tuning-example-sdk"></a>
 
 To use the Amazon SageMaker Python SDK to run a warm start tuning job, you:
 + Specify the parent jobs and the warm start type by using a `WarmStartConfig` object\.
@@ -89,7 +89,7 @@ To use the Amazon SageMaker Python SDK to run a warm start tuning job, you:
 
 For more information about using the Amazon SageMaker Python SDK for hyperparameter tuning, see [https://github\.com/aws/sagemaker\-python\-sdk\#sagemaker\-automatic\-model\-tuning](https://github.com/aws/sagemaker-python-sdk#sagemaker-automatic-model-tuning)\.
 
-This example uses an estimator that uses the [Image Classification Algorithm](image-classification.md) algorithm for training\. The following code sets the hyperparameter ranges that the warm start tuning job searches within to find the best combination of values\. For information about setting hyperparameter ranges, see [Defining Hyperparameter Ranges](automatic-model-tuning-define-ranges.md)\.
+This example uses an estimator that uses the [Image Classification Algorithm](image-classification.md) algorithm for training\. The following code sets the hyperparameter ranges that the warm start tuning job searches within to find the best combination of values\. For information about setting hyperparameter ranges, see [Define Hyperparameter Ranges](automatic-model-tuning-define-ranges.md)\.
 
 ```
 hyperparameter_ranges = {'learning_rate': ContinuousParameter(0.0, 0.1),

@@ -29,6 +29,11 @@ Required: Yes
 {
    "[BatchStrategy](#SageMaker-DescribeTransformJob-response-BatchStrategy)": "string",
    "[CreationTime](#SageMaker-DescribeTransformJob-response-CreationTime)": number,
+   "[DataProcessing](#SageMaker-DescribeTransformJob-response-DataProcessing)": { 
+      "[InputFilter](API_DataProcessing.md#SageMaker-Type-DataProcessing-InputFilter)": "string",
+      "[JoinSource](API_DataProcessing.md#SageMaker-Type-DataProcessing-JoinSource)": "string",
+      "[OutputFilter](API_DataProcessing.md#SageMaker-Type-DataProcessing-OutputFilter)": "string"
+   },
    "[Environment](#SageMaker-DescribeTransformJob-response-Environment)": { 
       "string" : "string" 
    },
@@ -74,7 +79,8 @@ If the action is successful, the service sends back an HTTP 200 response\.
 The following data is returned in JSON format by the service\.
 
  ** [BatchStrategy](#API_DescribeTransformJob_ResponseSyntax) **   <a name="SageMaker-DescribeTransformJob-response-BatchStrategy"></a>
- If you want to include only one record in a batch, specify `SingleRecord`\.\. If you want batches to contain a maximum of the number of records specified in the `MaxPayloadInMB` parameter, specify `MultiRecord`\.S  
+Specifies the number of records to include in a mini\-batch for an HTTP inference request\. A *record* ** is a single unit of input data that inference can be made on\. For example, a single line in a CSV file is a record\.   
+To enable the batch strategy, you must set `SplitType` to `Line`, `RecordIO`, or `TFRecord`\.  
 Type: String  
 Valid Values:` MultiRecord | SingleRecord` 
 
@@ -82,14 +88,20 @@ Valid Values:` MultiRecord | SingleRecord`
 A timestamp that shows when the transform Job was created\.  
 Type: Timestamp
 
+ ** [DataProcessing](#API_DescribeTransformJob_ResponseSyntax) **   <a name="SageMaker-DescribeTransformJob-response-DataProcessing"></a>
+The data structure used to specify the data to be used for inference in a batch transform job and to associate the data that is relevant to the prediction results in the output\. The input filter provided allows you to exclude input data that is not needed for inference in a batch transform job\. The output filter provided allows you to include input data relevant to interpreting the predictions in the output from the job\. For more information, see [Associate Prediction Results with their Corresponding Input Records](http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-data-processing.html)\.  
+Type: [DataProcessing](API_DataProcessing.md) object
+
  ** [Environment](#API_DescribeTransformJob_ResponseSyntax) **   <a name="SageMaker-DescribeTransformJob-response-Environment"></a>
+The environment variables to set in the Docker container\. We support up to 16 key and values entries in the map\.  
 Type: String to string map  
 Key Length Constraints: Maximum length of 1024\.  
 Key Pattern: `[a-zA-Z_][a-zA-Z0-9_]*`   
-Value Length Constraints: Maximum length of 10240\.
+Value Length Constraints: Maximum length of 10240\.  
+Value Pattern: `[\S\s]*` 
 
  ** [FailureReason](#API_DescribeTransformJob_ResponseSyntax) **   <a name="SageMaker-DescribeTransformJob-response-FailureReason"></a>
-If the transform job failed, the reason that it failed\.  
+If the transform job failed, `FailureReason` describes why it failed\. A transform job creates a log file, which includes error messages, and stores it as an Amazon S3 object\. For more information, see [Log Amazon SageMaker Events with Amazon CloudWatch](http://docs.aws.amazon.com/sagemaker/latest/dg/logging-cloudwatch.html)\.  
 Type: String  
 Length Constraints: Maximum length of 1024\.
 
@@ -167,6 +179,7 @@ For more information about using this API in one of the language\-specific AWS S
 +  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/DescribeTransformJob) 
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/DescribeTransformJob) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/DescribeTransformJob) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/DescribeTransformJob) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/DescribeTransformJob) 
 +  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/DescribeTransformJob) 
 +  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/DescribeTransformJob) 

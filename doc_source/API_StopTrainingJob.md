@@ -2,8 +2,6 @@
 
 Stops a training job\. To stop a job, Amazon SageMaker sends the algorithm the `SIGTERM` signal, which delays job termination for 120 seconds\. Algorithms might use this 120\-second window to save the model artifacts, so the results of the training is not lost\. 
 
-Training algorithms provided by Amazon SageMaker save the intermediate results of a model training job\. This intermediate data is a valid model artifact\. You can use the model artifacts that are saved when Amazon SageMaker stops a training job to create a model\. 
-
 When it receives a `StopTrainingJob` request, Amazon SageMaker changes the status of the job to `Stopping`\. After Amazon SageMaker stops the job, it sets the status to `Stopped`\.
 
 ## Request Syntax<a name="API_StopTrainingJob_RequestSyntax"></a>
@@ -46,6 +44,7 @@ For more information about using this API in one of the language\-specific AWS S
 +  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/StopTrainingJob) 
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/StopTrainingJob) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/StopTrainingJob) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/StopTrainingJob) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/StopTrainingJob) 
 +  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/StopTrainingJob) 
 +  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/StopTrainingJob) 

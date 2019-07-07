@@ -51,16 +51,17 @@ Required: Yes
 The Amazon Resource Name \(ARN\) of a AWS Key Management Service key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance that hosts the endpoint\.  
 Type: String  
 Length Constraints: Maximum length of 2048\.  
+Pattern: `.*`   
 Required: No
 
  ** [ProductionVariants](#API_CreateEndpointConfig_RequestSyntax) **   <a name="SageMaker-CreateEndpointConfig-request-ProductionVariants"></a>
-An array of `ProductionVariant` objects, one for each model that you want to host at this endpoint\.  
+An list of `ProductionVariant` objects, one for each model that you want to host at this endpoint\.  
 Type: Array of [ProductionVariant](API_ProductionVariant.md) objects  
 Array Members: Minimum number of 1 item\.  
 Required: Yes
 
  ** [Tags](#API_CreateEndpointConfig_RequestSyntax) **   <a name="SageMaker-CreateEndpointConfig-request-Tags"></a>
-An array of key\-value pairs\. For more information, see [Using Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what) in the *AWS Billing and Cost Management User Guide*\.   
+A list of key\-value pairs\. For more information, see [Using Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what) in the * AWS Billing and Cost Management User Guide*\.   
 Type: Array of [Tag](API_Tag.md) objects  
 Array Members: Minimum number of 0 items\. Maximum number of 50 items\.  
 Required: No
@@ -82,7 +83,8 @@ The following data is returned in JSON format by the service\.
  ** [EndpointConfigArn](#API_CreateEndpointConfig_ResponseSyntax) **   <a name="SageMaker-CreateEndpointConfig-response-EndpointConfigArn"></a>
 The Amazon Resource Name \(ARN\) of the endpoint configuration\.   
 Type: String  
-Length Constraints: Minimum length of 20\. Maximum length of 2048\.
+Length Constraints: Minimum length of 20\. Maximum length of 2048\.  
+Pattern: `arn:aws[a-z\-]*:sagemaker:[a-z0-9\-]*:[0-9]{12}:endpoint-config/.*` 
 
 ## Errors<a name="API_CreateEndpointConfig_Errors"></a>
 
@@ -99,6 +101,7 @@ For more information about using this API in one of the language\-specific AWS S
 +  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/CreateEndpointConfig) 
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/CreateEndpointConfig) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/CreateEndpointConfig) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/CreateEndpointConfig) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/CreateEndpointConfig) 
 +  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/CreateEndpointConfig) 
 +  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/CreateEndpointConfig) 

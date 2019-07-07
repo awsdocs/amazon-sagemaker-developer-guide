@@ -1,10 +1,5 @@
 # Manage Machine Learning Experiments with Search<a name="search"></a>
 
-
-|  | 
-| --- |
-| Search is in preview release for Amazon SageMaker and is subject to change\. | 
-
 To find, organize, and evaluate experiments, use Amazon SageMaker search\. Search can help you to manage your training jobs, models and resources\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/search-1.png)
@@ -22,7 +17,7 @@ Amazon SageMaker search is ideal for:
 
 To find a specific training job, model, or resource, use Amazon SageMaker search as you would any search engine\. Amazon SageMaker searches for the keyword in all searchable items, which include training jobs, models, hyperparameters, metadata, tags, and URLs\. You can use search with tags to help organize your training jobs\. To help refine your search results, you can search using multiple search criteria\.
 
-  To create a model, you need to experiment\. When you perform an experiment, you might test a different algorithm, tune a hyperparameter, or use a different dataset\. You make changes in steps, then study their effect on the model’s performance\. Eventually, you need to evaluate all of your models against one or several metrics and choose the best one\. You can use a search result to list models and evaluate them\. 
+ To create a model, you need to experiment\. When you perform an experiment, you might test a different algorithm, tune a hyperparameter, or use a different dataset\. You make changes in steps, then study their effect on the model’s performance\. Eventually, you need to evaluate all of your models against one or several metrics and choose the best one\. You can use a search result to list models and evaluate them\. 
 
 ### Find Training Jobs \(Console\)<a name="search-organize-console"></a>
 

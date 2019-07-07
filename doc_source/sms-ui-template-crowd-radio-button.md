@@ -18,9 +18,8 @@ A Boolean switch that, if present, displays the button as disabled and prevents 
 
 A string that is used to identify the answer submitted by the worker\. This value will match a key in the JSON object that specifies the answer\.
 
-### required<a name="radio-button-attributes-required"></a>
-
-A Boolean switch that, if present, requires the worker to provide input\.
+**Note**  
+If you use the buttons outside of a [crowd\-radio\-group](sms-ui-template-crowd-radio-group.md) element, but with the same `name` string and different `value` strings, the `name` object in the output will contain a Boolean value for each `value` string\. To ensure that only one button in a group is selected, make them children of a [crowd\-radio\-group](sms-ui-template-crowd-radio-group.md) element and use different name values\.
 
 ### value<a name="radio-button-attributes-value"></a>
 

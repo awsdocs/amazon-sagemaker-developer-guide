@@ -9,7 +9,7 @@ You can create use an algorithm resource to create a training job by using the A
 
 ## Use an Algorithm to Run a Training Job \(Console\)<a name="sagemaker-mkt-algo-train-console"></a>
 
-**To use an algorithm to run a training job in the Amazon SageMaker console:**
+**To use an algorithm to run a training job \(console\)**
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
@@ -39,7 +39,7 @@ You can create use an algorithm resource to create a training job by using the A
 
       1. For **Stopping condition**, specify the maximum amount of time in seconds, minutes, hours, or days, that you want the training job to run\.
 
-   1. For **VPC**, choose a Amazon VPC that you want to allow your training container to access\. For more information, see [Protect Training Jobs by Using an Amazon Virtual Private Cloud](train-vpc.md)\.
+   1. For **VPC**, choose a Amazon VPC that you want to allow your training container to access\. For more information, see [Give Amazon SageMaker Training Jobs Access to Resources in Your Amazon VPC](train-vpc.md)\.
 
    1. For **Hyperparameters**, specify the values of the hyperparameters to use for the training job\.
 
@@ -73,7 +73,7 @@ You use the model artifacts stored at this location to create a model or model p
 
 ## Use an Algorithm to Run a Training Job \(API\)<a name="sagemaker-mkt-algo-train-api"></a>
 
-To use an algorithm to run a training job by using the Amazon SageMaker API, specify either the name or the Amazon Resource Name \(ARN\) as the `AlgorithmName` field of the [AlgorithmSpecification](API_AlgorithmSpecification.md) object that you pass to [CreateTrainingJob](API_CreateTrainingJob.md)\. For information about training models in Amazon SageMaker, see [Training a Model with Amazon SageMaker ](how-it-works-training.md)\.
+To use an algorithm to run a training job by using the Amazon SageMaker API, specify either the name or the Amazon Resource Name \(ARN\) as the `AlgorithmName` field of the [AlgorithmSpecification](API_AlgorithmSpecification.md) object that you pass to [CreateTrainingJob](API_CreateTrainingJob.md)\. For information about training models in Amazon SageMaker, see [Train a Model with Amazon SageMaker ](how-it-works-training.md)\.
 
 ## Use an Algorithm to Run a Training Job \(Amazon SageMaker Python SDK\)<a name="sagemaker-mkt-algo-train-sdk"></a>
 

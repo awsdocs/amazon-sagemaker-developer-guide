@@ -29,4 +29,42 @@ If you enable private DNS hostnames for your VPC endpoint, you don't need to spe
 
 The Amazon SageMaker API and Runtime support VPC endpoints in all AWS Regions where both [Amazon VPC](https://docs.aws.amazon.com/general/latest/gr/rande.html#vpc_region) and [Amazon SageMaker](https://docs.aws.amazon.com/general/latest/gr/rande.html#sagemaker_region) are available\. Amazon SageMaker supports making calls to all of its [Actions](API_Operations.md) inside your VPC\. The result `AuthorizedUrl` from the [CreatePresignedNotebookInstanceUrl](API_CreatePresignedNotebookInstanceUrl.md) is not supported by Private Link\. For information about how to enable PrivateLink for the authorized URL that users use to connect to a notebook instance, see [Connect to a Notebook Instance Through a VPC Interface Endpoint](notebook-interface-endpoint.md)\.
 
-To learn more about AWS PrivateLink, see the [AWS PrivateLink documentation](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Introduction.html#what-is-privatelink) and visit the AWS Blog\. Refer to [VPC Pricing](https://aws.amazon.com/vpc/pricing/) for the price of VPC Endpoints\. To learn more about VPC and Endpoints, see [Amazon VPC](https://aws.amazon.com/vpc/)\.
+To learn more about AWS PrivateLink, see the [AWS PrivateLink documentation](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Introduction.html#what-is-privatelink) \. Refer to [VPC Pricing](https://aws.amazon.com/vpc/pricing/) for the price of VPC Endpoints\. To learn more about VPC and Endpoints, see [Amazon VPC](https://aws.amazon.com/vpc/)\. For information about how to use identity\-based AWS Identity and Access Management policies to restrict access to the Amazon SageMaker API and runtime, see [Control Access to the Amazon SageMaker API by Using Identity\-based Policies](using-identity-based-policies.md#api-access-policy)\.
+
+## Create a VPC Endpoint Policy for Amazon SageMaker<a name="api-private-link-policy"></a>
+
+You can create a policy for Amazon VPC endpoints for Amazon SageMaker to specify the following:
++ The principal that can perform actions\.
++ The actions that can be performed\.
++ The resources on which actions can be performed\.
+
+For more information, see [Controlling Access to Services with VPC Endpoints](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints-access.html) in the *Amazon VPC User Guide*\.
+
+**Note**  
+VPC endpoint policies aren't supported for Federal Information Processing Standard \(FIPS\) Amazon SageMaker runtime endpoints for [InvokeEndpoint](API_runtime_InvokeEndpoint.md)\.
+
+The following example VPC endpoint policy specifies that all users who have access to the VPC interface endpoint are allowed to invoke the Amazon SageMaker hosted endpoint named `myEndpoint`\.
+
+```
+{
+  "Statement": [
+      {
+          "Action": "sagemaker:InvokeEndpoint",
+          "Effect": "Allow",
+          "Resource": "arn:aws:sagemaker:us-west-2:123456789012:endpoint/myEndpoint",
+          "Principal": "*"
+      }
+  ]
+}
+```
+
+In this example, the following are denied:
++ Other Amazon SageMaker API actions, such as `sagemaker:CreateEndpoint` and `sagemaker:CreateTrainingJob`\.
++ Invoking Amazon SageMaker hosted endpoints other than `myEndpoint`\.
+
+**Note**  
+In this example, users can still take other Amazon SageMaker API actions from outside the VPC\. For information about how to restrict API calls to those from within the VPC, see [Control Access to the Amazon SageMaker API by Using Identity\-based Policies](using-identity-based-policies.md#api-access-policy)\.
+
+## Connect Your Private Network to Your VPC<a name="notebook-private-link-vpn"></a>
+
+To call the Amazon SageMaker API and runtime through your VPC, you have to connect from an instance that is inside the VPC or connect your private network to your VPC by using an Amazon Virtual Private Network \(VPN\) or AWS Direct Connect\. For information about Amazon VPN, see [VPN Connections](https://docs.aws.amazon.com/vpc/latest/userguide/vpn-connections.html) in the *Amazon Virtual Private Cloud User Guide*\. For information about AWS Direct Connect, see [Creating a Connection](https://docs.aws.amazon.com/directconnect/latest/UserGuide/create-connection.html) in the *AWS Direct Connect User Guide*\.

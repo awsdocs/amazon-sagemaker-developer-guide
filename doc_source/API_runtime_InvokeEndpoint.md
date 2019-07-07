@@ -160,6 +160,7 @@ For more information about using this API in one of the language\-specific AWS S
 +  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/runtime.sagemaker-2017-05-13/InvokeEndpoint) 
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/runtime.sagemaker-2017-05-13/InvokeEndpoint) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/runtime.sagemaker-2017-05-13/InvokeEndpoint) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/runtime.sagemaker-2017-05-13/InvokeEndpoint) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/runtime.sagemaker-2017-05-13/InvokeEndpoint) 
 +  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/runtime.sagemaker-2017-05-13/InvokeEndpoint) 
 +  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/runtime.sagemaker-2017-05-13/InvokeEndpoint) 

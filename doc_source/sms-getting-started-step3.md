@@ -14,7 +14,7 @@ You can create a private workforce to test Amazon SageMaker Ground Truth\. Use e
 
 1. In the **Contact email** field enter an email address that members of the workforce use to report problems with the task\.
 
-If you choose to use the public workforce to label the dataset you will be charged for labeling tasks completed on the dataset\.
+If you choose to use the public workforce to label the dataset, you are charged for labeling tasks completed on the dataset\.
 
 **To use a public workforce**
 
@@ -22,7 +22,7 @@ If you choose to use the public workforce to label the dataset you will be charg
 
 1. Choose **The dataset does not contain PII** to acknowledge that the dataset does not contain any personally identifiable information\.
 
-1. Choose **The dataset does not contain adult content\.** The sample dataset doesn' contain adult content\.
+1. Choose **The dataset does not contain adult content\.** to acknowledge that the sample dataset has no adult content\.
 
 1. Review and accept the statement that the dataset will be viewed by the public workforce\.
 

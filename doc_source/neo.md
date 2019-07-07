@@ -11,13 +11,13 @@ You can create a Neo compilation job from either the Amazon SageMaker console, A
 **Note**  
 Neo currently supports image classification models exported as frozen graphs from TensorFlow, MXNet, or PyTorch, and XGBoost models\. Neo is available in the following AWS Regions:   
 US East \(N\. Virginia\), us\-east\-1
-US West \(Oregon\), us\-west\-21
+US West \(Oregon\), us\-west\-2
 EU \(Ireland\), eu\-west\-1
 
 **Topics**
 + [Amazon SageMaker Neo Sample Notebooks](#neo-sample-notebooks)
-+ [Neo User Guide for Model Compilation](neo-job-compilation.md)
-+ [Deploy Machine Learning Models with Neo](neo-deployment.md)
++ [Use Neo to Compile a Model](neo-job-compilation.md)
++ [Deploy a Model](neo-deployment.md)
 + [Request Inferences from a Deployed Service](neo-requests.md)
 + [Troubleshooting Neo Compilation Errors](neo-troubleshooting.md)
 
@@ -29,4 +29,4 @@ For sample notebooks that uses Amazon SageMaker Neo to train, compile, optimize,
 + [Model Optimization with an Image Classification Example](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-fulltraining-highlevel-neo.ipynb)
 + [Model Optimization with XGBoost Example ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_applying_machine_learning/xgboost_customer_churn/xgboost_customer_churn_neo.ipynb)
 
-For instructions how to create and access Jupyter notebook instances that you can use to run the examples in Amazon SageMaker, see [Using Notebook Instances](nbi.md)\. After you have created and opened a notebook instance, choose the **Amazon SageMaker Examples** tab to see a list of all of the Amazon SageMaker samples\. To open a notebook, choose its **Use** tab, then choose **Create copy**\.
+For instructions on how to run these example notebooks in Amazon SageMaker, see [Use Example Notebooks](howitworks-nbexamples.md)\. If you need intructions on how to create a notebook instance to run these examples, see Amazon SageMaker, see [Use Notebook Instances](nbi.md)\. To navigate to the relevant example in your notebook instance, choose the **Amazon SageMaker Examples** tab to see a list of all of the Amazon SageMaker samples\. To open a notebook, choose its **Use** tab, then choose **Create copy**\.

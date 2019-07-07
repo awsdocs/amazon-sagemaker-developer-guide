@@ -13,9 +13,11 @@ To configure and launch a hyperparameter tuning job, complete the following step
 To specify settings for the hyperparameter tuning job, you define a JSON object\. You pass the object as the value of the `HyperParameterTuningJobConfig` parameter to [CreateHyperParameterTuningJob](API_CreateHyperParameterTuningJob.md) when you create the tuning job\.
 
 In this JSON object, you specify:
-+ The ranges of hyperparameters that you want to tune\. For more information, see [Defining Hyperparameter Ranges](automatic-model-tuning-define-ranges.md)
++ The ranges of hyperparameters that you want to tune\. For more information, see [Define Hyperparameter Ranges](automatic-model-tuning-define-ranges.md)
 + The limits of the resource that the hyperparameter tuning job can consume\.
 + The objective metric for the hyperparameter tuning job\. An *objective metric* is the metric that the hyperparameter tuning job uses to evaluate the training job that it launches\.
+**Note**  
+To use your own algorithm for hyperparameter tuning, you need to define metrics for your algorithm\. For information,see [Define Metrics](automatic-model-tuning-define-metrics.md)\.
 
 The hyperparameter tuning job defines ranges for the `eta`, `alpha`, `min_child_weight`, and `max_depth` hyperparameters of the [XGBoost Algorithm](xgboost.md) built\-in algorithm\. The objective metric for the hyperparameter tuning job maximizes the `validation:auc` metric that the algorithm sends to CloudWatch Logs\.
 
@@ -67,7 +69,7 @@ To configure the training jobs that the tuning job launches, define a JSON objec
 In this JSON object, you specify:
 + Optional—Metrics that the training jobs emit\.
 **Note**  
-Specify metrics only when you use a custom training algorithm\. Because this example uses a built\-in algorithm, you don't specify metrics\.
+Define metrics only when you use a custom training algorithm\. Because this example uses a built\-in algorithm, you don't specify metrics\. For information about defining metrics, see [Define Metrics](automatic-model-tuning-define-metrics.md)\.
 + The container image that specifies the training algorithm\.
 + The input configuration for your training and test data\.
 + The storage location for the algorithm's output\. Specify the S3 bucket where you want to store the output of the training jobs\.

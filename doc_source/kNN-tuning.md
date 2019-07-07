@@ -1,4 +1,4 @@
-# Tuning a K\-Nearest Neighbors Model<a name="kNN-tuning"></a>
+# Tune a K\-nn Model<a name="kNN-tuning"></a>
 
 The Amazon SageMaker k\-nearest neighbors algorithm is a supervised algorithm\. The algorithm consumes a test data set and emits a metric about the accuracy for a classification task or about the mean squared error for a regression task\. These accuracy metrics compare the model predictions for their respective task to the ground truth provided by the empirical test data\. To find the best model that reports the highest accuracy or lowest error on the test dataset, run a hyperparameter tuning job for k\-NN\. 
 
@@ -6,7 +6,7 @@ The Amazon SageMaker k\-nearest neighbors algorithm is a supervised algorithm\. 
 
 For more information about model tuning, see [Automatic Model Tuning](automatic-model-tuning.md)\.
 
-## Metrics Computed by the K\-Nearest Neighbors Algorithm<a name="km-metrics"></a>
+## Metrics Computed by the K\-nn Algorithm<a name="km-metrics"></a>
 
 The k\-nearest neighbors algorithm computes one of two metrics in the following table during training depending on the type of task specified by the `predictor_type` hyper\-parameter\. 
 + *classifier* specifies a classification task and computes `test:accuracy` 
@@ -20,7 +20,7 @@ Choose the `predictor_type` value appropriate for the type of task undertaken to
 | test:accuracy |  When `predictor_type` is set to *classifier*, k\-NN compares the predicted label, based on the average of the k\-nearest neighbors' labels, to the ground truth label provided in the test channel data\. The accuracy reported ranges from 0\.0 \(0%\) to 1\.0 \(100%\)\.  |  Maximize  | 
 | test:mse |  When `predictor_type` is set to *regressor*, k\-NN compares the predicted label, based on the average of the k\-nearest neighbors' labels, to the ground truth label provided in the test channel data\. The mean squared error is computed by comparing the two labels\.  |  Minimize  | 
 
-## Tunable Hyperparameters<a name="km-tunable-hyperparameters"></a>
+## Tunable K\-nn Hyperparameters<a name="km-tunable-hyperparameters"></a>
 
 Tune the Amazon SageMaker k\-nearest neighbor model with the following hyperparameters\.
 

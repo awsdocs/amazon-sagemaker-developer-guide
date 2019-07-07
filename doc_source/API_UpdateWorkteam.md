@@ -16,6 +16,9 @@ Updates an existing work team with new member definitions or description\.
          }
       }
    ],
+   "[NotificationConfiguration](#SageMaker-UpdateWorkteam-request-NotificationConfiguration)": { 
+      "[NotificationTopicArn](API_NotificationConfiguration.md#SageMaker-Type-NotificationConfiguration-NotificationTopicArn)": "string"
+   },
    "[WorkteamName](#SageMaker-UpdateWorkteam-request-WorkteamName)": "string"
 }
 ```
@@ -30,12 +33,18 @@ The request accepts the following data in JSON format\.
 An updated description for the work team\.  
 Type: String  
 Length Constraints: Minimum length of 1\. Maximum length of 200\.  
+Pattern: `.+`   
 Required: No
 
  ** [MemberDefinitions](#API_UpdateWorkteam_RequestSyntax) **   <a name="SageMaker-UpdateWorkteam-request-MemberDefinitions"></a>
 A list of `MemberDefinition` objects that contain the updated work team members\.  
 Type: Array of [MemberDefinition](API_MemberDefinition.md) objects  
 Array Members: Minimum number of 1 item\. Maximum number of 10 items\.  
+Required: No
+
+ ** [NotificationConfiguration](#API_UpdateWorkteam_RequestSyntax) **   <a name="SageMaker-UpdateWorkteam-request-NotificationConfiguration"></a>
+Configures SNS topic notifications for available or expiring work items  
+Type: [NotificationConfiguration](API_NotificationConfiguration.md) object  
 Required: No
 
  ** [WorkteamName](#API_UpdateWorkteam_RequestSyntax) **   <a name="SageMaker-UpdateWorkteam-request-WorkteamName"></a>
@@ -62,6 +71,9 @@ Required: Yes
             }
          }
       ],
+      "[NotificationConfiguration](API_Workteam.md#SageMaker-Type-Workteam-NotificationConfiguration)": { 
+         "[NotificationTopicArn](API_NotificationConfiguration.md#SageMaker-Type-NotificationConfiguration-NotificationTopicArn)": "string"
+      },
       "[ProductListingIds](API_Workteam.md#SageMaker-Type-Workteam-ProductListingIds)": [ "string" ],
       "[SubDomain](API_Workteam.md#SageMaker-Type-Workteam-SubDomain)": "string",
       "[WorkteamArn](API_Workteam.md#SageMaker-Type-Workteam-WorkteamArn)": "string",
@@ -95,6 +107,7 @@ For more information about using this API in one of the language\-specific AWS S
 +  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/UpdateWorkteam) 
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/UpdateWorkteam) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/UpdateWorkteam) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/UpdateWorkteam) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/UpdateWorkteam) 
 +  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/UpdateWorkteam) 
 +  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/UpdateWorkteam) 

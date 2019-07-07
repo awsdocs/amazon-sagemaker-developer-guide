@@ -18,6 +18,9 @@ You cannot create more than 25 work teams in an account and region\.
          }
       }
    ],
+   "[NotificationConfiguration](#SageMaker-CreateWorkteam-request-NotificationConfiguration)": { 
+      "[NotificationTopicArn](API_NotificationConfiguration.md#SageMaker-Type-NotificationConfiguration-NotificationTopicArn)": "string"
+   },
    "[Tags](#SageMaker-CreateWorkteam-request-Tags)": [ 
       { 
          "[Key](API_Tag.md#SageMaker-Type-Tag-Key)": "string",
@@ -38,6 +41,7 @@ The request accepts the following data in JSON format\.
 A description of the work team\.  
 Type: String  
 Length Constraints: Minimum length of 1\. Maximum length of 200\.  
+Pattern: `.+`   
 Required: Yes
 
  ** [MemberDefinitions](#API_CreateWorkteam_RequestSyntax) **   <a name="SageMaker-CreateWorkteam-request-MemberDefinitions"></a>
@@ -46,6 +50,11 @@ All of the `CognitoMemberDefinition` objects that make up the member definition 
 Type: Array of [MemberDefinition](API_MemberDefinition.md) objects  
 Array Members: Minimum number of 1 item\. Maximum number of 10 items\.  
 Required: Yes
+
+ ** [NotificationConfiguration](#API_CreateWorkteam_RequestSyntax) **   <a name="SageMaker-CreateWorkteam-request-NotificationConfiguration"></a>
+Configures notification of workers regarding available or expiring work items\.  
+Type: [NotificationConfiguration](API_NotificationConfiguration.md) object  
+Required: No
 
  ** [Tags](#API_CreateWorkteam_RequestSyntax) **   <a name="SageMaker-CreateWorkteam-request-Tags"></a>
 Type: Array of [Tag](API_Tag.md) objects  
@@ -98,6 +107,7 @@ For more information about using this API in one of the language\-specific AWS S
 +  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/CreateWorkteam) 
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/CreateWorkteam) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/CreateWorkteam) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/CreateWorkteam) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/CreateWorkteam) 
 +  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/CreateWorkteam) 
 +  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/CreateWorkteam) 

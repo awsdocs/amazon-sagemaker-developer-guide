@@ -1,4 +1,4 @@
-# Using Apache Spark with Amazon SageMaker<a name="apache-spark"></a>
+# Use Apache Spark with Amazon SageMaker<a name="apache-spark"></a>
 
 This section provides information for developers who want to use Apache Spark for preprocessing data and Amazon SageMaker for model training and hosting\. For information about supported versions of Apache Spark, see [https://github\.com/aws/sagemaker\-spark\#getting\-sagemaker\-spark](https://github.com/aws/sagemaker-spark#getting-sagemaker-spark)\.
 
@@ -9,7 +9,7 @@ The Amazon SageMaker Spark library, `com.amazonaws.services.sagemaker.sparksdk`,
 + `KMeansSageMakerEstimator`, `PCASageMakerEstimator`, and `XGBoostSageMakerEstimator`—Extend the `SageMakerEstimator` class\. 
 + `SageMakerModel`—Extends the `org.apache.spark.ml.Model` class\. You can use this `SageMakerModel` for model hosting and obtaining inferences in Amazon SageMaker\.
 
-## Downloading the Amazon SageMaker Spark Library<a name="spark-sdk-download"></a>
+## Download the Amazon SageMaker Spark Library<a name="spark-sdk-download"></a>
 
 You have the following options for downloading the Spark library provided by Amazon SageMaker:
 + You can download the source code for both PySpark and Scala libraries from GitHub at [https://github\.com/aws/sagemaker\-spark](https://github.com/aws/sagemaker-spark)\. 
@@ -22,6 +22,8 @@ You have the following options for downloading the Spark library provided by Ama
     $ pip install sagemaker_pyspark
     ```
   + In a notebook instance, create a new notebook that uses either the `Sparkmagic (PySpark)` or the `Sparkmagic (PySpark3)` kernel and connect to a remote Amazon EMR cluster\. For more information, see [Build Amazon SageMaker Notebooks Backed by Spark in Amazon EMR](http://aws.amazon.com/blogs/machine-learning/build-amazon-sagemaker-notebooks-backed-by-spark-in-amazon-emr/)\.
+**Note**  
+The EMR cluster must be configured with an IAM role that has the `AmazonSageMakerFullAccess` policy attached\. For information about configuring roles for an EMR cluster, see [Configure IAM Roles for Amazon EMR Permissions to AWS Services](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-iam-roles.html) in the *Amazon EMR Management Guide*\.
 
      
 + You can get the Scala library from Maven\. Add the Spark library to your project by adding the following dependency to your `pom.xml` file:
@@ -34,7 +36,7 @@ You have the following options for downloading the Spark library provided by Ama
   </dependency>
   ```
 
-## Integrating Your Apache Spark Application with Amazon SageMaker<a name="spark-sdk-common-process"></a>
+## Integrate Your Apache Spark Application with Amazon SageMaker<a name="spark-sdk-common-process"></a>
 
 The following is high\-level summary of the steps for integrating your Apache Spark application with Amazon SageMaker\.
 

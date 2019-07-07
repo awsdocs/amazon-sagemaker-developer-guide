@@ -61,6 +61,7 @@ Required: No
 If the result of a `ListNotebookInstanceLifecycleConfigs` request was truncated, the response includes a `NextToken`\. To get the next set of lifecycle configurations, use the token in the next request\.  
 Type: String  
 Length Constraints: Maximum length of 8192\.  
+Pattern: `.*`   
 Required: No
 
  ** [SortBy](#API_ListNotebookInstanceLifecycleConfigs_RequestSyntax) **   <a name="SageMaker-ListNotebookInstanceLifecycleConfigs-request-SortBy"></a>
@@ -100,7 +101,8 @@ The following data is returned in JSON format by the service\.
  ** [NextToken](#API_ListNotebookInstanceLifecycleConfigs_ResponseSyntax) **   <a name="SageMaker-ListNotebookInstanceLifecycleConfigs-response-NextToken"></a>
 If the response is truncated, Amazon SageMaker returns this token\. To get the next set of lifecycle configurations, use it in the next request\.   
 Type: String  
-Length Constraints: Maximum length of 8192\.
+Length Constraints: Maximum length of 8192\.  
+Pattern: `.*` 
 
  ** [NotebookInstanceLifecycleConfigs](#API_ListNotebookInstanceLifecycleConfigs_ResponseSyntax) **   <a name="SageMaker-ListNotebookInstanceLifecycleConfigs-response-NotebookInstanceLifecycleConfigs"></a>
 An array of `NotebookInstanceLifecycleConfiguration` objects, each listing a lifecycle configuration\.  
@@ -117,6 +119,7 @@ For more information about using this API in one of the language\-specific AWS S
 +  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/ListNotebookInstanceLifecycleConfigs) 
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/ListNotebookInstanceLifecycleConfigs) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/ListNotebookInstanceLifecycleConfigs) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/ListNotebookInstanceLifecycleConfigs) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/ListNotebookInstanceLifecycleConfigs) 
 +  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/ListNotebookInstanceLifecycleConfigs) 
 +  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/ListNotebookInstanceLifecycleConfigs) 

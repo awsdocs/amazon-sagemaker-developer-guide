@@ -4,7 +4,7 @@ Before you begin using the Amazon SageMaker console to create a labeling job, yo
 
 1. Save two images at publicly available HTTP URLs\. The images are used when creating instructions for completing a labeling task\. The images should have an aspect ratio of around 2:1\. For this exercise, the content of the images is not important\.
 
-1. Create an Amazon S3 bucket to hold the input and output files\. The bucket must be in the same region as you are running Ground Truth\. Make a note of the bucket name because you will use it during step 2\.
+1. Create an Amazon S3 bucket to hold the input and output files\. The bucket must be in the same Region where you are running Ground Truth\. Make a note of the bucket name because you use it during step 2\.
 
 1. Place 5–10 PNG images in the bucket\.
 
@@ -26,7 +26,7 @@ It is not necessary to store the manifest file in the same bucket as the source 
 
    For more information, see [Input Data](sms-data-input.md)\.
 
-You also need to assign the following permissions policy to the user that is creating the labeling job:
+Assign the following permissions policy to the user that is creating the labeling job:
 
 ```
 {

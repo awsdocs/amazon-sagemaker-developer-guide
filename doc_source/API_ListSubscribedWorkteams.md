@@ -35,6 +35,7 @@ Required: No
 If the result of the previous `ListSubscribedWorkteams` request was truncated, the response includes a `NextToken`\. To retrieve the next set of labeling jobs, use the token in the next request\.  
 Type: String  
 Length Constraints: Maximum length of 8192\.  
+Pattern: `.*`   
 Required: No
 
 ## Response Syntax<a name="API_ListSubscribedWorkteams_ResponseSyntax"></a>
@@ -63,7 +64,8 @@ The following data is returned in JSON format by the service\.
  ** [NextToken](#API_ListSubscribedWorkteams_ResponseSyntax) **   <a name="SageMaker-ListSubscribedWorkteams-response-NextToken"></a>
 If the response is truncated, Amazon SageMaker returns this token\. To retrieve the next set of work teams, use it in the subsequent request\.  
 Type: String  
-Length Constraints: Maximum length of 8192\.
+Length Constraints: Maximum length of 8192\.  
+Pattern: `.*` 
 
  ** [SubscribedWorkteams](#API_ListSubscribedWorkteams_ResponseSyntax) **   <a name="SageMaker-ListSubscribedWorkteams-response-SubscribedWorkteams"></a>
 An array of `Workteam` objects, each describing a work team\.  
@@ -80,6 +82,7 @@ For more information about using this API in one of the language\-specific AWS S
 +  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/ListSubscribedWorkteams) 
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/ListSubscribedWorkteams) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/ListSubscribedWorkteams) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/ListSubscribedWorkteams) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/ListSubscribedWorkteams) 
 +  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/ListSubscribedWorkteams) 
 +  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/ListSubscribedWorkteams) 

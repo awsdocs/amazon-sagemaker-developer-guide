@@ -1,4 +1,4 @@
-# Sequence to Sequence Hyperparameters<a name="seq-2-seq-hyperparameters"></a>
+# Sequence\-to\-Sequence Hyperparameters<a name="seq-2-seq-hyperparameters"></a>
 
 
 | Parameter Name | Description | 

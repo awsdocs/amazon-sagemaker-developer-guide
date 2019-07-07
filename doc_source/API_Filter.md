@@ -33,6 +33,7 @@ To define a tag filter, enter a value with the form `"Tags.<key>"`\.
 A property name\. For example, `TrainingJobName`\. For the list of valid property names returned in a search result for each supported resource, see [TrainingJob](API_TrainingJob.md) properties\. You must specify a valid property name for the resource\.  
 Type: String  
 Length Constraints: Minimum length of 1\. Maximum length of 255\.  
+Pattern: `.+`   
 Required: Yes
 
  **Operator**   <a name="SageMaker-Type-Filter-Operator"></a>
@@ -60,6 +61,7 @@ Required: No
 A value used with `Resource` and `Operator` to determine if objects satisfy the filter's condition\. For numerical properties, `Value` must be an integer or floating\-point decimal\. For timestamp properties, `Value` must be an ISO 8601 date\-time string of the following format: `YYYY-mm-dd'T'HH:MM:SS`\.  
 Type: String  
 Length Constraints: Minimum length of 1\. Maximum length of 1024\.  
+Pattern: `.+`   
 Required: No
 
 ## See Also<a name="API_Filter_SeeAlso"></a>
@@ -67,5 +69,6 @@ Required: No
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/Filter) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/Filter) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/Filter) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/Filter) 
 +  [AWS SDK for Ruby V2](https://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/Filter) 

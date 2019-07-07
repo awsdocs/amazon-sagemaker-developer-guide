@@ -192,7 +192,7 @@ For an example notebook, see [object\_detection\_augmented\_manifest\_training\.
 
 The following is the output from a semantic segmentation labeling job\. The value of the label for this job is a reference to a PNG file in an S3 bucket\.
 
-In addition to the standard elements, the metadata for the label includes a color map that defines which color was used to label the image, the class name associated with the color, and the confidence score for each color\. For more information, see [Semantic Segmentation](semantic-segmentation.md)\.
+In addition to the standard elements, the metadata for the label includes a color map that defines which color was used to label the image, the class name associated with the color, and the confidence score for each color\. For more information, see [Semantic Segmentation Algorithm](semantic-segmentation.md)\.
 
 ```
 {
@@ -217,4 +217,4 @@ In addition to the standard elements, the metadata for the label includes a colo
 }
 ```
 
-After you create an augmented manifest file, you can use it in a training job\. For more information, see [Providing Dataset Metadata to Training Jobs](augmented-manifest.md)\.
+After you create an augmented manifest file, you can use it in a training job\. For more information, see [Provide Dataset Metadata to Training Jobs with an Augmented Manifest File](augmented-manifest.md)\.

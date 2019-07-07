@@ -17,6 +17,7 @@ Type: String to string map
 Key Length Constraints: Maximum length of 1024\.  
 Key Pattern: `[a-zA-Z_][a-zA-Z0-9_]*`   
 Value Length Constraints: Maximum length of 10240\.  
+Value Pattern: `[\S\s]*`   
 Required: No
 
  **MaxConcurrentTransforms**   <a name="SageMaker-Type-TransformJobDefinition-MaxConcurrentTransforms"></a>
@@ -51,5 +52,6 @@ Required: Yes
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/TransformJobDefinition) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/TransformJobDefinition) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/TransformJobDefinition) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/TransformJobDefinition) 
 +  [AWS SDK for Ruby V2](https://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/TransformJobDefinition) 

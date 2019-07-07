@@ -6,6 +6,8 @@ The input data are the data objects that you send to your workforce to be labele
 
 The manifest is a UTF\-8 encoded file where each line is a complete and valid JSON object\. Each line is delimited by a standard line break, \\n or \\r\\n\. Since each line must be a valid JSON object, you can't have unescaped line break characters\. For more information about the data format, see [JSON Lines](http://jsonlines.org/)\.
 
+**Limits:** Each JSON object in the manifest file can be no larger than 100k characters and no single attribute within the object can be larger than 20,000 characters\. Attribute names cannot begin with `$` \(dollar sign\)\.
+
 Each JSON object in the manifest file must contain a key, either `source-ref` or `source`\. The value of the keys are interpreted as follows:
 + source\-ref—The source of the object is the S3 object specified in the value\. This can be used when the object is a binary object, such as an image, or when you have text in individual files\.
 + source—The source of the object is the value\. This can be used when the object is a text value\.

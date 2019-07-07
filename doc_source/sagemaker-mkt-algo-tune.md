@@ -11,7 +11,7 @@ You can create use an algorithm resource to create a hyperparameter tuning job b
 
 ## Use an Algorithm to Run a Hyperparameter Tuning Job \(Console\)<a name="sagemaker-mkt-algo-tune-console"></a>
 
-**To use an algorithm to run a hyperparameter tuning job in the Amazon SageMaker console:**
+**To use an algorithm to run a hyperparameter tuning job \(console\)**
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
@@ -35,13 +35,13 @@ You can create use an algorithm resource to create a hyperparameter tuning job b
 
    1. For **IAM role**, choose an IAM role that has the required permissions to run hyperparameter tuning jobs in Amazon SageMaker, or choose **Create a new role** to allow Amazon SageMaker to create a role that has the `AmazonSageMakerFullAccess` managed policy attached\. For information, see [Amazon SageMaker Roles ](sagemaker-roles.md)\.
 
-   1. For **VPC**, choose a Amazon VPC that you want to allow the training jobs that the tuning job launches to access\. For more information, see [Protect Training Jobs by Using an Amazon Virtual Private Cloud](train-vpc.md)\.
+   1. For **VPC**, choose a Amazon VPC that you want to allow the training jobs that the tuning job launches to access\. For more information, see [Give Amazon SageMaker Training Jobs Access to Resources in Your Amazon VPC](train-vpc.md)\.
 
    1. Choose **Next**\.
 
    1. For **Objective metric**, choose the metric that the hyperparameter tuning job uses to determine the best combination of hyperparameters, and choose whether to minimize or maximize this metric\. For more information, see [View the Best Training Job](automatic-model-tuning-monitor.md#automatic-model-tuning-best-training-job)\.
 
-   1. For **Hyperparameter configuration**, choose ranges for the tunable hyperparameters that you want the tuning job to search, and set static values for hyperparameters that you want to remain constant in all training jobs that the hyperparameter tuning job launches\. For more information, see [Defining Hyperparameter Ranges](automatic-model-tuning-define-ranges.md)\.
+   1. For **Hyperparameter configuration**, choose ranges for the tunable hyperparameters that you want the tuning job to search, and set static values for hyperparameters that you want to remain constant in all training jobs that the hyperparameter tuning job launches\. For more information, see [Define Hyperparameter Ranges](automatic-model-tuning-define-ranges.md)\.
 
    1. Choose **Next**\.
 

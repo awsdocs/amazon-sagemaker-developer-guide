@@ -1,6 +1,6 @@
-# How DeepAR Works<a name="deepar_how-it-works"></a>
+# How the DeepAR Algorithm Works<a name="deepar_how-it-works"></a>
 
-During training, DeepAR accepts a training dataset and an optional test dataset\. It uses the test dataset to evaluate the trained model\. In general, the datasets don't have to contain the same set of time series\. You can use a model trained on a given training set to generate forecasts for the future of the time series in the training set, and for other time series\. Both the training and the test datasets consist of one or, preferably, more target time series\. Each target time series can optionally be associated with a vector of feature time series and a vector of categorical features\. For more information, see [Input/Output Interface](deepar.md#deepar-inputoutput)\. 
+During training, DeepAR accepts a training dataset and an optional test dataset\. It uses the test dataset to evaluate the trained model\. In general, the datasets don't have to contain the same set of time series\. You can use a model trained on a given training set to generate forecasts for the future of the time series in the training set, and for other time series\. Both the training and the test datasets consist of one or, preferably, more target time series\. Each target time series can optionally be associated with a vector of feature time series and a vector of categorical features\. For more information, see [Input/Output Interface for the DeepAR Algorithm](deepar.md#deepar-inputoutput)\. 
 
 For example, the following is an element of a training set indexed by *i* which consists of a target time series, *Zi,t*, and two associated feature time series, *Xi,1,t* and *Xi,2,t*:
 
@@ -10,7 +10,7 @@ The target time series might contain missing values, which are represented by li
 
 Each target time series can also be associated with a number of categorical features\. You can use these features to encode which groupings a time series belongs to\. Categorical features allow the model to learn typical behavior for groups, which it can use to increase model accuracy\. DeepAR implements this by learning an embedding vector for each group that captures the common properties of all time series in the group\. 
 
-## How Feature Time Series Work<a name="deepar_under-the-hood"></a>
+## How Feature Time Series Work in the DeepAR Algorithm<a name="deepar_under-the-hood"></a>
 
 To facilitate learning time\-dependent patterns, such as spikes during weekends, DeepAR automatically creates feature time series based on the frequency of the target time series\. For example, DeepAR creates two feature time series \(day of the month and day of the year\) for a weekly time series frequency\. It uses these derived feature time series with the custom feature time series that you provide during training and inference\. The following figure shows two of these derived time series features: *ui,1,t* represents the hour of the day and *ui,2,t* the day of the week\.
 

@@ -1,4 +1,4 @@
-# Tuning a BlazingText Model<a name="blazingtext-tuning"></a>
+# Tune a BlazingText Model<a name="blazingtext-tuning"></a>
 
 *Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an objective metric\. You choose the objective metric from the metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the objective metric\.
 
@@ -18,7 +18,7 @@ The BlazingText Text Classification algorithm \(`supervised` mode\), also report
 
 ## Tunable BlazingText Hyperparameters<a name="blazingtext-tunable-hyperparameters"></a>
 
-### Tunable Hyperparameters for Word2Vec<a name="blazingtext-tunable-hyperparameters-word2vec"></a>
+### Tunable Hyperparameters for the Word2Vec Algorithm<a name="blazingtext-tunable-hyperparameters-word2vec"></a>
 
 Tune an Amazon SageMaker BlazingText Word2Vec model with the following hyperparameters\. The hyperparameters that have the greatest impact on Word2Vec objective metrics are: `mode`, ` learning_rate`, `window_size`, `vector_dim`, and `negative_samples`\.
 
@@ -35,7 +35,7 @@ Tune an Amazon SageMaker BlazingText Word2Vec model with the following hyperpara
 | vector\_dim |  `IntegerParameterRange`  |  \[32\-300\]  | 
 | window\_size |  `IntegerParameterRange`  |  \[1\-10\]  | 
 
-### Tunable Hyperparameters for Text Classification<a name="blazingtext-tunable-hyperparameters-text_class"></a>
+### Tunable Hyperparameters for the Text Classification Algorithm<a name="blazingtext-tunable-hyperparameters-text_class"></a>
 
 Tune an Amazon SageMaker BlazingText text classification model with the following hyperparameters\.
 

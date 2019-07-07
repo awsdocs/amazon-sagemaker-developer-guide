@@ -1,4 +1,4 @@
-# Using Your Own Inference Code \(Hosting Services\)<a name="your-algorithms-inference-code"></a>
+# Use Your Own Inference Code with Amazon SageMaker Hosting Services<a name="your-algorithms-inference-code"></a>
 
 This section explains how Amazon SageMaker interacts with a Docker container that runs your own inference code for hosting services\. Use this information to write inference code and create a Docker image\. 
 
@@ -45,7 +45,7 @@ To configure a container to run as an executable, use an `ENTRYPOINT` instructio
 
    
 
-  If you update the endpoint \(by calling the [UpdateEndpoint](API_UpdateEndpoint.md) API\), Amazon SageMaker launches another set of ML compute instances and runs the Docker containers that contain your inference code on them\. Then it runs a command to stop the previous Docker container\. To stop the Docker container, command sends the `SIGTERM` signal, then it sends the `SIGKILL` signal thirty seconds later\. 
+  If you update the endpoint \(by calling the [UpdateEndpoint](API_UpdateEndpoint.md) API\), Amazon SageMaker launches another set of ML compute instances and runs the Docker containers that contain your inference code on them\. Then it runs a command to stop the previous Docker containers\. To stop a Docker container, command sends the `SIGTERM` signal, then it sends the `SIGKILL` signal thirty seconds later\. 
 
    
 + Amazon SageMaker uses the container definition that you provided in your [CreateModel](API_CreateModel.md) request to set environment variables and the DNS hostname for the container as follows:
@@ -66,7 +66,7 @@ In your [CreateModel](API_CreateModel.md) request, the container definition incl
 
 The `ModelDataUrl` must point to a tar\.gz file\. Otherwise, Amazon SageMaker won't download the file\. 
 
- Amazon SageMaker stores the model artifact as a single compressed tar file in Amazon S3\. Amazon SageMaker uncompresses this tar file into the `/opt/ml/model` directory before your container starts\. If you used Amazon SageMaker to train the model, the files will appear just as you left them\.
+If you trained your model in Amazon SageMaker, the model artifacts are saved as a single compressed tar file in Amazon S3\. If you trained your model outside Amazon SageMaker, you need to create this single compressed tar file and save it in a S3 location\. Amazon SageMaker decompresses this tar file into /opt/ml/model directory before your container starts\.
 
 ## How Containers Serve Requests<a name="your-algorithms-inference-code-how-containe-serves-requests"></a>
 
@@ -86,6 +86,6 @@ The `CreateEndpoint` and `UpdateEndpoint` API calls result in Amazon SageMaker s
 
 The simplest requirement on the container is to respond with an HTTP 200 status code and an empty body\. This indicates to Amazon SageMaker that the container is ready to accept inference requests at the /invocations endpoint\.
 
-If the container does not begin to consistently respond with 200s during the first 30 seconds after startup, the `CreateEndPoint` and `UpdateEndpoint` APIs will fail\.
+If the container does not begin to pass health checks, by consistently responding with 200s, during the 4 minutes after startup, `CreateEndPoint` will fail, leaving Endpoint in a failed state, and the update requested by `UpdateEndpoint` will not be completed\.
 
 While the minimum bar is for the container to return a static 200, a container developer can use this functionality to perform deeper checks\. The request timeout on /ping attempts is 2 seconds\.

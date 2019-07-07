@@ -1,4 +1,4 @@
-# Step 4: Clean up<a name="ex1-cleanup"></a>
+# Step 8: Clean Up<a name="ex1-cleanup"></a>
 
 To avoid incurring unnecessary charges, use the AWS Management Console to delete the resources that you created for this exercise\. 
 
@@ -6,10 +6,10 @@ To avoid incurring unnecessary charges, use the AWS Management Console to delete
 If you plan to explore other exercises in this guide, you might want to keep some of these resources, such as your notebook instance, S3 bucket, and IAM role\.
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) and delete the following resources:
-   + The endpoint\. This also deletes the ML compute instance or instances\.
+   + The endpoint\. Deleting the endpoint also deletes the ML compute instance or instances that support it\.
    + The endpoint configuration\.
    + The model\.
-   + The notebook instance\. You will need to stop the instance before deleting it\. 
+   + The notebook instance\. Before deleting the notebook instance, stop it\. 
 
 1. Open the Amazon S3 console at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/) and delete the bucket that you created for storing model artifacts and the training dataset\. 
 

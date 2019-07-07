@@ -1,4 +1,4 @@
-# Tuning a RCF Model<a name="random-cut-forest-tuning"></a>
+# Tune an RCF Model<a name="random-cut-forest-tuning"></a>
 
 *Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an objective metric\. You choose the objective metric from the metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the objective metric\.
 
@@ -15,7 +15,7 @@ The RCF algorithm computes the following metric during training\. When tuning th
 | --- | --- | --- | 
 | test:f1 | F1 score on the test dataset, based on the difference between calculated labels and actual labels\. | Maximize | 
 
-## Tunable Hyperparameters<a name="random-cut-forest-tunable-hyperparameters"></a>
+## Tunable RCF Hyperparameters<a name="random-cut-forest-tunable-hyperparameters"></a>
 
 You can tune a RCF model with the following hyperparameters\.
 

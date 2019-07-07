@@ -1,8 +1,8 @@
-# Attaching Elastic Inference \(EI\) to a Notebook Instance<a name="ei-notebook-instance"></a>
+# Attach EI to a Notebook Instance<a name="ei-notebook-instance"></a>
 
 To test and evaluate inference performance using EI, you can attach EI to a notebook instance when you create or update a notebook instance\. You can then use EI in local mode to host a model at an endpoint hosted on the notebook instance\. You should test various sizes of notebook instances and EI accelerators to evaluate the configuration that works best for your use case\.
 
-## Setting up to use Elastic Inference \(SageMaker\)<a name="ei-notebook-instance-console"></a>
+## Set Up to Use EI<a name="ei-notebook-instance-console"></a>
 
 To use EI locally in a notebook instance, create a notebook instance with an EI instance\. To do this:
 
@@ -22,7 +22,7 @@ To use EI locally in a notebook instance, create a notebook instance with an EI 
 
 1. \(Optional\) For **VPC \- Optional**, if you want the notebook instance to use a VPC, choose one from the available list, otherwise leave it as **No VPC**\. If you use a VPC follow the instructions at [Use a Custom VPC to Connect to EI](ei-setup.md#ei-setup-custom-vpc)\.
 
-1. \(Optional\) For **Lifecycle configuration \- optional**, either leave it as **No configuration** or choose a lifecycle configuration\. For more information, see [Step 2\.1: \(Optional\) Customize a Notebook Instance ](notebook-lifecycle-config.md)\.
+1. \(Optional\) For **Lifecycle configuration \- optional**, either leave it as **No configuration** or choose a lifecycle configuration\. For more information, see [Customize a Notebook Instance ](notebook-lifecycle-config.md)\.
 
 1. \(Optional\) For **Encryption key \- optional**, Optional\) If you want Amazon SageMaker to use an AWS Key Management Service key to encrypt data in the ML storage volume attached to the notebook instance, specify the key\.
 
@@ -35,29 +35,20 @@ To use EI locally in a notebook instance, create a notebook instance with an EI 
 After you create your notebook instance with EI attached, you can create a Jupyter notebook and set up an EI endpoint that is hosted locally on the notebook instance\.
 
 **Topics**
-+ [Setting up to use Elastic Inference \(SageMaker\)](#ei-notebook-instance-console)
-+ [Using EI in Local Mode in Amazon SageMaker](#ei-notebook-instance-local)
++ [Set Up to Use EI](#ei-notebook-instance-console)
++ [Use EI in Local Mode in Amazon SageMaker](#ei-notebook-instance-local)
 
-## Using EI in Local Mode in Amazon SageMaker<a name="ei-notebook-instance-local"></a>
+## Use EI in Local Mode in Amazon SageMaker<a name="ei-notebook-instance-local"></a>
 
 To use EI locally in an endpoint hosted on a notebook instance, use local mode with the Amazon SageMaker Python SDK versions of either the TensorFlow or MXNet estimators or models\. For more information about local mode support in the Amazon SageMaker Python SDK, see [https://github\.com/aws/sagemaker\-python\-sdk\#sagemaker\-python\-sdk\-overview](https://github.com/aws/sagemaker-python-sdk#sagemaker-python-sdk-overview)\.
 
 **Topics**
-+ [Using EI in Local Mode with Amazon SageMaker TensorFlow Estimators and Models](#ei-notebook-instance-local-tensorflow)
-+ [Using EI in Local Mode with Amazon SageMaker MXNet Estimators and Models](#ei-notebook-instance-local-mxnet)
++ [Use EI in Local Mode with Amazon SageMaker TensorFlow Estimators and Models](#ei-notebook-instance-local-tensorflow)
++ [Use EI in Local Mode with Amazon SageMaker Apache MXNet Estimators and Models](#ei-notebook-instance-local-mxnet)
 
-### Using EI in Local Mode with Amazon SageMaker TensorFlow Estimators and Models<a name="ei-notebook-instance-local-tensorflow"></a>
+### Use EI in Local Mode with Amazon SageMaker TensorFlow Estimators and Models<a name="ei-notebook-instance-local-tensorflow"></a>
 
 To use EI with TensorFlow in local mode, specify `local` for `instance_type` and `local_sagemaker_notebook` for `accelerator_type` when you call the `deploy` method of an estimator or a model object\. For more information about Amazon SageMaker Python SDK TensorFlow estimators and models, see [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/tensorflow/README\.rst](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/tensorflow/README.rst)\.
-
-The following code shows how to use local mode with an estimator object\. To call the `deploy` method, you must have previously called the `fit` method to train a model\.
-
-```
-# Deploys the model to a local endpoint
-tf_predictor = tf_estimator.deploy(initial_instance_count=1,
-                                   instance_type='local',
-                                   accelerator_type='local_sagemaker_notebook')
-```
 
 The following code shows how to use local mode with an estimator object\. To call the `deploy` method, you must have previously either:
 + Trained the model by calling the `fit` method of an estimator\.
@@ -72,7 +63,7 @@ tf_predictor = tf_model.deploy(initial_instance_count=1,
 
 For a complete example of using EI in local mode with TensorFlow, see the sample notebook at [https://github\.com/awslabs/amazon\-sagemaker\-examples/blob/master/sagemaker\-python\-sdk/tensorflow\_iris\_dnn\_classifier\_using\_estimators/tensorflow\_iris\_dnn\_classifier\_using\_estimators\_elastic\_inference\_local\.ipynb ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/tensorflow_iris_dnn_classifier_using_estimators/tensorflow_iris_dnn_classifier_using_estimators_elastic_inference_local.ipynb) 
 
-### Using EI in Local Mode with Amazon SageMaker MXNet Estimators and Models<a name="ei-notebook-instance-local-mxnet"></a>
+### Use EI in Local Mode with Amazon SageMaker Apache MXNet Estimators and Models<a name="ei-notebook-instance-local-mxnet"></a>
 
 To use EI with MXNet in local mode, specify `local` for `instance_type` and `local_sagemaker_notebook` for `accelerator_type` when you call the `deploy` method of an estimator or a model object\. For more information about Amazon SageMaker Python SDK MXNet estimators and models, see [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/mxnet/README\.rst](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/mxnet/README.rst)\. 
 

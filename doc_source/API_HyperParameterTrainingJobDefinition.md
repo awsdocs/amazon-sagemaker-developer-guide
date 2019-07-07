@@ -23,7 +23,7 @@ Required: No
  **InputDataConfig**   <a name="SageMaker-Type-HyperParameterTrainingJobDefinition-InputDataConfig"></a>
 An array of [Channel](API_Channel.md) objects that specify the input for the training jobs that the tuning job launches\.  
 Type: Array of [Channel](API_Channel.md) objects  
-Array Members: Minimum number of 1 item\. Maximum number of 8 items\.  
+Array Members: Minimum number of 1 item\. Maximum number of 20 items\.  
 Required: No
 
  **OutputDataConfig**   <a name="SageMaker-Type-HyperParameterTrainingJobDefinition-OutputDataConfig"></a>
@@ -48,13 +48,13 @@ Required: Yes
 Specifies the values of hyperparameters that do not change for the tuning job\.  
 Type: String to string map  
 Key Length Constraints: Maximum length of 256\.  
+Key Pattern: `.*`   
 Value Length Constraints: Maximum length of 256\.  
+Value Pattern: `.*`   
 Required: No
 
  **StoppingCondition**   <a name="SageMaker-Type-HyperParameterTrainingJobDefinition-StoppingCondition"></a>
-Sets a maximum duration for the training jobs that the tuning job launches\. Use this parameter to limit model training costs\.   
-To stop a job, Amazon SageMaker sends the algorithm the `SIGTERM` signal\. This delays job termination for 120 seconds\. Algorithms might use this 120\-second window to save the model artifacts\.  
-When Amazon SageMaker terminates a job because the stopping condition has been met, training algorithms provided by Amazon SageMaker save the intermediate results of the job\.  
+Specifies a limit to how long a model hyperparameter training job can run\. When the job reaches the time limit, Amazon SageMaker ends the training job\. Use this API to cap model training costs\.  
 Type: [StoppingCondition](API_StoppingCondition.md) object  
 Required: Yes
 
@@ -68,5 +68,6 @@ Required: No
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/HyperParameterTrainingJobDefinition) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/HyperParameterTrainingJobDefinition) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/HyperParameterTrainingJobDefinition) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/HyperParameterTrainingJobDefinition) 
 +  [AWS SDK for Ruby V2](https://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/HyperParameterTrainingJobDefinition) 

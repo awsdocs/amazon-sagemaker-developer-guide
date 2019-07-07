@@ -1,8 +1,8 @@
-# Neo CLI User Guide for Model Compilation<a name="neo-job-compilation-cli"></a>
+# Compile a Model \(API\)<a name="neo-job-compilation-cli"></a>
 
 This section shows how to manage compilation jobs for machine learning models\. You can create, describe, stop, and list compilation jobs\. 
 
-**Create Compilation Job**
+**Create a Compilation Job**
 
 As shown in the following JSON file, you specify the data input format, the S3 bucket where you stored your model, the S3 bucket where you want to write the compiled model, and the target hardware:
 
@@ -33,7 +33,7 @@ aws sagemaker create-compilation-job \
 # You should get CompilationJobArn
 ```
 
-**Describe Compilation Job**
+**Describe a Compilation Job**
 
 ```
 aws sagemaker describe-compilation-job \
@@ -41,7 +41,7 @@ aws sagemaker describe-compilation-job \
 --region us-west-2
 ```
 
-**Stop Compilation Job**
+**Stop a Compilation Job**
 
 ```
 aws sagemaker stop-compilation-job \
@@ -51,7 +51,7 @@ aws sagemaker stop-compilation-job \
 # There is no output for compilation-job operation
 ```
 
-**List Compilation Job**
+**List a Compilation Job**
 
 ```
 aws sagemaker list-compilation-jobs \

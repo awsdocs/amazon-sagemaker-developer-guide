@@ -1,6 +1,6 @@
 # UpdateNotebookInstance<a name="API_UpdateNotebookInstance"></a>
 
-Updates a notebook instance\. NotebookInstance updates include upgrading or downgrading the ML compute instance used for your notebook instance to accommodate changes in your workload requirements\. You can also update the VPC security groups\.
+Updates a notebook instance\. NotebookInstance updates include upgrading or downgrading the ML compute instance used for your notebook instance to accommodate changes in your workload requirements\.
 
 ## Request Syntax<a name="API_UpdateNotebookInstance_RequestSyntax"></a>
 
@@ -17,6 +17,7 @@ Updates a notebook instance\. NotebookInstance updates include upgrading or down
    "[LifecycleConfigName](#SageMaker-UpdateNotebookInstance-request-LifecycleConfigName)": "string",
    "[NotebookInstanceName](#SageMaker-UpdateNotebookInstance-request-NotebookInstanceName)": "string",
    "[RoleArn](#SageMaker-UpdateNotebookInstance-request-RoleArn)": "string",
+   "[RootAccess](#SageMaker-UpdateNotebookInstance-request-RootAccess)": "string",
    "[VolumeSizeInGB](#SageMaker-UpdateNotebookInstance-request-VolumeSizeInGB)": number
 }
 ```
@@ -49,22 +50,22 @@ Pattern: `^https://([^/]+)/?(.*)$|^[a-zA-Z0-9](-*[a-zA-Z0-9])*`
 Required: No
 
  ** [DisassociateAcceleratorTypes](#API_UpdateNotebookInstance_RequestSyntax) **   <a name="SageMaker-UpdateNotebookInstance-request-DisassociateAcceleratorTypes"></a>
-A list of the Elastic Inference \(EI\) instance types to remove from this notebook instance\.  
+A list of the Elastic Inference \(EI\) instance types to remove from this notebook instance\. This operation is idempotent\. If you specify an accelerator type that is not associated with the notebook instance when you call this method, it does not throw an error\.  
 Type: Boolean  
 Required: No
 
  ** [DisassociateAdditionalCodeRepositories](#API_UpdateNotebookInstance_RequestSyntax) **   <a name="SageMaker-UpdateNotebookInstance-request-DisassociateAdditionalCodeRepositories"></a>
-A list of names or URLs of the default Git repositories to remove from this notebook instance\.  
+A list of names or URLs of the default Git repositories to remove from this notebook instance\. This operation is idempotent\. If you specify a Git repository that is not associated with the notebook instance when you call this method, it does not throw an error\.  
 Type: Boolean  
 Required: No
 
  ** [DisassociateDefaultCodeRepository](#API_UpdateNotebookInstance_RequestSyntax) **   <a name="SageMaker-UpdateNotebookInstance-request-DisassociateDefaultCodeRepository"></a>
-The name or URL of the default Git repository to remove from this notebook instance\.  
+The name or URL of the default Git repository to remove from this notebook instance\. This operation is idempotent\. If you specify a Git repository that is not associated with the notebook instance when you call this method, it does not throw an error\.  
 Type: Boolean  
 Required: No
 
  ** [DisassociateLifecycleConfig](#API_UpdateNotebookInstance_RequestSyntax) **   <a name="SageMaker-UpdateNotebookInstance-request-DisassociateLifecycleConfig"></a>
-Set to `true` to remove the notebook instance lifecycle configuration currently associated with the notebook instance\.  
+Set to `true` to remove the notebook instance lifecycle configuration currently associated with the notebook instance\. This operation is idempotent\. If you specify a lifecycle configuration that is not associated with the notebook instance when you call this method, it does not throw an error\.  
 Type: Boolean  
 Required: No
 
@@ -96,8 +97,15 @@ Length Constraints: Minimum length of 20\. Maximum length of 2048\.
 Pattern: `^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$`   
 Required: No
 
+ ** [RootAccess](#API_UpdateNotebookInstance_RequestSyntax) **   <a name="SageMaker-UpdateNotebookInstance-request-RootAccess"></a>
+Whether root access is enabled or disabled for users of the notebook instance\. The default value is `Enabled`\.  
+If you set this to `Disabled`, users don't have root access on the notebook instance, but lifecycle configuration scripts still run with root permissions\.
+Type: String  
+Valid Values:` Enabled | Disabled`   
+Required: No
+
  ** [VolumeSizeInGB](#API_UpdateNotebookInstance_RequestSyntax) **   <a name="SageMaker-UpdateNotebookInstance-request-VolumeSizeInGB"></a>
-The size, in GB, of the ML storage volume to attach to the notebook instance\. The default value is 5 GB\.  
+The size, in GB, of the ML storage volume to attach to the notebook instance\. The default value is 5 GB\. ML storage volumes are encrypted, so Amazon SageMaker can't determine the amount of available free space on the volume\. Because of this, you can increase the volume size when you update a notebook instance, but you can't decrease the volume size\. If you want to decrease the size of the ML storage volume in use, create a new notebook instance with the desired size\.  
 Type: Integer  
 Valid Range: Minimum value of 5\. Maximum value of 16384\.  
 Required: No
@@ -121,6 +129,7 @@ For more information about using this API in one of the language\-specific AWS S
 +  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/UpdateNotebookInstance) 
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/UpdateNotebookInstance) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/UpdateNotebookInstance) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/UpdateNotebookInstance) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/UpdateNotebookInstance) 
 +  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/UpdateNotebookInstance) 
 +  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/UpdateNotebookInstance) 

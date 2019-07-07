@@ -2,18 +2,18 @@
 
 Starts a model training job\. After training completes, Amazon SageMaker saves the resulting model artifacts to an Amazon S3 location that you specify\. 
 
-If you choose to host your model using Amazon SageMaker hosting services, you can use the resulting model artifacts as part of the model\. You can also use the artifacts in a deep learning service other than Amazon SageMaker, provided that you know how to use them for inferences\. 
+If you choose to host your model using Amazon SageMaker hosting services, you can use the resulting model artifacts as part of the model\. You can also use the artifacts in a machine learning service other than Amazon SageMaker, provided that you know how to use them for inferences\. 
 
 In the request body, you provide the following: 
 +  `AlgorithmSpecification` \- Identifies the training algorithm to use\. 
-+  `HyperParameters` \- Specify these algorithm\-specific parameters to influence the quality of the final model\. For a list of hyperparameters for each training algorithm provided by Amazon SageMaker, see [Algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)\. 
++  `HyperParameters` \- Specify these algorithm\-specific parameters to enable the estimation of model parameters during training\. Hyperparameters can be tuned to optimize this learning process\. For a list of hyperparameters for each training algorithm provided by Amazon SageMaker, see [Algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)\. 
 +  `InputDataConfig` \- Describes the training dataset and the Amazon S3 location where it is stored\.
 +  `OutputDataConfig` \- Identifies the Amazon S3 location where you want Amazon SageMaker to save the results of model training\. 
 
   
 +  `ResourceConfig` \- Identifies the resources, ML compute instances, and ML storage volumes to deploy for model training\. In distributed training, you specify more than one instance\. 
 +  `RoleARN` \- The Amazon Resource Number \(ARN\) that Amazon SageMaker assumes to perform tasks on your behalf during model training\. You must grant this role the necessary permissions so that Amazon SageMaker can successfully complete model training\. 
-+  `StoppingCondition` \- Sets a duration for training\. Use this parameter to cap model training costs\. 
++  `StoppingCondition` \- Sets a time limit for training\. Use this parameter to cap model training costs\. 
 
  For more information about Amazon SageMaker, see [How It Works](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html)\. 
 
@@ -97,7 +97,7 @@ Type: [AlgorithmSpecification](API_AlgorithmSpecification.md) object
 Required: Yes
 
  ** [EnableInterContainerTrafficEncryption](#API_CreateTrainingJob_RequestSyntax) **   <a name="SageMaker-CreateTrainingJob-request-EnableInterContainerTrafficEncryption"></a>
-To encrypt all communications between ML compute instances in distributed training, choose `True`\. Encryption provides greater security for distributed training, but training might take longer\. How long it takes depends on the amount of communication between compute instances, especially if you use a deep learning algorithm in distributed training\.  
+To encrypt all communications between ML compute instances in distributed training, choose `True`\. Encryption provides greater security for distributed training, but training might take longer\. How long it takes depends on the amount of communication between compute instances, especially if you use a deep learning algorithm in distributed training\. For more information, see [Protect Communications Between ML Compute Instances in a Distributed Training Job](https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html)\.  
 Type: Boolean  
 Required: No
 
@@ -112,7 +112,9 @@ Algorithm\-specific parameters that influence the quality of the model\. You set
 You can specify a maximum of 100 hyperparameters\. Each hyperparameter is a key\-value pair\. Each key and value is limited to 256 characters, as specified by the `Length Constraint`\.   
 Type: String to string map  
 Key Length Constraints: Maximum length of 256\.  
+Key Pattern: `.*`   
 Value Length Constraints: Maximum length of 256\.  
+Value Pattern: `.*`   
 Required: No
 
  ** [InputDataConfig](#API_CreateTrainingJob_RequestSyntax) **   <a name="SageMaker-CreateTrainingJob-request-InputDataConfig"></a>
@@ -120,7 +122,7 @@ An array of `Channel` objects\. Each channel is a named input source\. `InputDat
 Algorithms can accept input data from one or more channels\. For example, an algorithm might have two channels of input data, `training_data` and `validation_data`\. The configuration for each channel provides the S3 location where the input data is stored\. It also provides information about the stored data: the MIME type, compression method, and whether the data is wrapped in RecordIO format\.   
 Depending on the input mode that the algorithm supports, Amazon SageMaker either copies input data files from an S3 bucket to a local directory in the Docker container, or makes it available as input streams\.   
 Type: Array of [Channel](API_Channel.md) objects  
-Array Members: Minimum number of 1 item\. Maximum number of 8 items\.  
+Array Members: Minimum number of 1 item\. Maximum number of 20 items\.  
 Required: No
 
  ** [OutputDataConfig](#API_CreateTrainingJob_RequestSyntax) **   <a name="SageMaker-CreateTrainingJob-request-OutputDataConfig"></a>
@@ -144,8 +146,8 @@ Pattern: `^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$`
 Required: Yes
 
  ** [StoppingCondition](#API_CreateTrainingJob_RequestSyntax) **   <a name="SageMaker-CreateTrainingJob-request-StoppingCondition"></a>
-Sets a duration for training\. Use this parameter to cap model training costs\. To stop a job, Amazon SageMaker sends the algorithm the `SIGTERM` signal, which delays job termination for 120 seconds\. Algorithms might use this 120\-second window to save the model artifacts\.   
-When Amazon SageMaker terminates a job because the stopping condition has been met, training algorithms provided by Amazon SageMaker save the intermediate results of the job\. This intermediate data is a valid model artifact\. You can use it to create a model using the `CreateModel` API\.   
+Specifies a limit to how long a model training job can run\. When the job reaches the time limit, Amazon SageMaker ends the training job\. Use this API to cap model training costs\.  
+To stop a job, Amazon SageMaker sends the algorithm the `SIGTERM` signal, which delays job termination for 120 seconds\. Algorithms can use this 120\-second window to save the model artifacts, so the results of training are not lost\.   
 Type: [StoppingCondition](API_StoppingCondition.md) object  
 Required: Yes
 
@@ -206,6 +208,7 @@ For more information about using this API in one of the language\-specific AWS S
 +  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/CreateTrainingJob) 
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/CreateTrainingJob) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/CreateTrainingJob) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/CreateTrainingJob) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/CreateTrainingJob) 
 +  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/CreateTrainingJob) 
 +  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/CreateTrainingJob) 
