@@ -62,6 +62,7 @@ Required: No
 If the result of the previous `ListTrainingJobs` request was truncated, the response includes a `NextToken`\. To retrieve the next set of training jobs, use the token in the next request\.   
 Type: String  
 Length Constraints: Maximum length of 8192\.  
+Pattern: `.*`   
 Required: No
 
  ** [SortBy](#API_ListTrainingJobs_RequestSyntax) **   <a name="SageMaker-ListTrainingJobs-request-SortBy"></a>
@@ -109,7 +110,8 @@ The following data is returned in JSON format by the service\.
  ** [NextToken](#API_ListTrainingJobs_ResponseSyntax) **   <a name="SageMaker-ListTrainingJobs-response-NextToken"></a>
 If the response is truncated, Amazon SageMaker returns this token\. To retrieve the next set of training jobs, use it in the subsequent request\.  
 Type: String  
-Length Constraints: Maximum length of 8192\.
+Length Constraints: Maximum length of 8192\.  
+Pattern: `.*` 
 
  ** [TrainingJobSummaries](#API_ListTrainingJobs_ResponseSyntax) **   <a name="SageMaker-ListTrainingJobs-response-TrainingJobSummaries"></a>
 An array of `TrainingJobSummary` objects, each listing a training job\.  
@@ -126,6 +128,7 @@ For more information about using this API in one of the language\-specific AWS S
 +  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/ListTrainingJobs) 
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/ListTrainingJobs) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/ListTrainingJobs) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/ListTrainingJobs) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/ListTrainingJobs) 
 +  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/ListTrainingJobs) 
 +  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/ListTrainingJobs) 

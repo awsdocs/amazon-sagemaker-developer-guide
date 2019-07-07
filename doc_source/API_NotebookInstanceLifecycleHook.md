@@ -18,6 +18,7 @@ For information about notebook instance lifestyle configurations, see [Step 2\.1
 A base64\-encoded string that contains a shell script for a notebook instance lifecycle configuration\.  
 Type: String  
 Length Constraints: Minimum length of 1\. Maximum length of 16384\.  
+Pattern: `[\S\s]+`   
 Required: No
 
 ## See Also<a name="API_NotebookInstanceLifecycleHook_SeeAlso"></a>
@@ -25,5 +26,6 @@ Required: No
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/NotebookInstanceLifecycleHook) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/NotebookInstanceLifecycleHook) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/NotebookInstanceLifecycleHook) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/NotebookInstanceLifecycleHook) 
 +  [AWS SDK for Ruby V2](https://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/NotebookInstanceLifecycleHook) 

@@ -20,7 +20,7 @@ The Amazon SageMaker implementation of XGBoost supports CSV and libsvm formats f
 
 **Note**  
 For CSV training, the algorithm assumes that the target variable is in the first column and that the CSV does not have a header record\. For CSV inference, the algorithm assumes that CSV input does not have the label column\.   
-For libsvm training, the algorithm assumes that the label is in the first column\. Subsequent columns contain the index value pairs for features\. So each row has the format: <label> <index1>:<value1> <index2>:<value2> \.\.\. Inference requests for libsvm may or may not have labels in the libsvm format\.
+For libsvm training, the algorithm assumes that the label is in the first column\. Subsequent columns contain the zero\-based index value pairs for features\. So each row has the format: <label> <index0>:<value0> <index1>:<value1> \.\.\. Inference requests for libsvm may or may not have labels in the libsvm format\.
 
 This differs from other Amazon SageMaker algorithms, which use the protobuf training input format to maintain greater consistency with standard XGBoost data formats\.
 

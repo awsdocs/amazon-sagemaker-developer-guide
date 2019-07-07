@@ -101,11 +101,11 @@ To restart a stopped training job, use the URL to the model artifacts that are s
 
 1. Choose **Create training job**\. Amazon SageMaker creates and runs training job\.
 
-After the training job has completed, the newly trained model artifacts are stored under the **S3 output path** that you provided in the **Output data configuration** field\. To deploy the model to get predictions, see [Step 2\.4: Deploy the Model to Amazon SageMaker](ex1-model-deployment.md)\.
+After the training job has completed, the newly trained model artifacts are stored under the **S3 output path** that you provided in the **Output data configuration** field\. To deploy the model to get predictions, see [Step 6: Deploy the Model to Amazon SageMaker](ex1-model-deployment.md)\.
 
 ## Perform Incremental Training \(API\)<a name="incremental-training-api"></a>
 
-This example shows how to use Amazon SageMaker APIs to train a model using the Amazon SageMaker image classification algorithm and the  [Caltech 256 Image Dataset](http://data.mxnet.io/data/caltech-256/), then train a new model using the first one\. Please see the [incremental training sample notebook](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/object_detection_pascalvoc_coco/object_detection_incremental_training.ipynb) for more details on using incremental training\.
+This example shows how to use Amazon SageMaker APIs to train a model using the Amazon SageMaker image classification algorithm and the [Caltech 256 Image Dataset](http://www.vision.caltech.edu/Image_Datasets/Caltech256/), then train a new model using the first one\. Please see the [incremental training sample notebook](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/object_detection_pascalvoc_coco/object_detection_incremental_training.ipynb) for more details on using incremental training\.
 
 **Note**  
 In this example we used the original datasets in the incremental training, however you can use different datasets, such as ones that contain newly added samples\. Upload the new datasets to S3 and make adjustments to the `data_channels` variable used to train the new model\.
@@ -234,4 +234,4 @@ incr_ic = sagemaker.estimator.Estimator(training_image,
 incr_ic.fit(inputs=data_channels, logs=True)
 ```
 
-After the training job has completed, the newly trained model artifacts are stored under the `S3 output path` that you provided in `Output_path`\. To deploy the model to get predictions, see [Step 2\.4: Deploy the Model to Amazon SageMaker](ex1-model-deployment.md)\.
+After the training job has completed, the newly trained model artifacts are stored under the `S3 output path` that you provided in `Output_path`\. To deploy the model to get predictions, see [Step 6: Deploy the Model to Amazon SageMaker](ex1-model-deployment.md)\.

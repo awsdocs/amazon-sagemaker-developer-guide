@@ -90,4 +90,8 @@ You can also create a work team in the Ground Truth console and add members from
 
    If you chose **Create a team by importing existing Amazon Cognito user groups**, choose the user groups that are part of the new team\.
 
-After you have created a work team, you can choose its name in the list of work teams to see more information about the team\. Teams made from more than one imported user group must be edited in the Amazon Cognito console; otherwise you can add and remove workers using the team detail page\.
+1. If you select an **SNS topic**, all workers added to the team are subscribed to the Amazon SNS topic and notified when new work items are available to the team\. Select from a list of your existing Ground Truth related Amazon SNS topics or select **Create new topic** to open a topic\-creation dialog\.
+
+   Workers in a workteam subscribed to a topic receive notifications when a new job for that team becomes available and when one is about to expire\.
+
+After you have created a work team, you can choose its name in the list of work teams to see more information about the team and change or set the Amazon SNS topic to which its members are subscribed\. Teams made from more than one imported user group must be edited in the Amazon Cognito console; otherwise you can add and remove workers using the team detail page\.

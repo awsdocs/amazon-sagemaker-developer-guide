@@ -74,7 +74,7 @@ To use EI with a model in a custom container that you build, use the low\-level 
 
 ### Import the EI Version of TensorFlow or MXNet into Your Docker Container<a name="ei-docker-container"></a>
 
-To use EI with your own container, you need to import either the Amazon EI TensorFlow Serving library or the Amazon EI Apache MXNet library into your container\. The EI\-enabled versions of TensorFlow and MXNet are currently available as binary files stored in Amazon S3 locations\. You can download the EI\-enabled binary for TensorFlow from the Amazon S3 bucket at [ https://s3\.console\.aws\.amazon\.com/s3/buckets/amazonei\-tensorflow](                         https://s3.console.aws.amazon.com/s3/buckets/amazonei-tensorflow)\. For information about building a container that uses the EI\-enabled version of TensorFlow, see [https://github\.com/aws/sagemaker\-tensorflow\-container\#building\-the\-sagemaker\-elastic\-inference\-tensorflow\-serving\-container](https://github.com/aws/sagemaker-tensorflow-container#building-the-sagemaker-elastic-inference-tensorflow-serving-container)\. You can download the EI\-enabled binary for Apache MXNet from the public Amazon S3 bucket at [https://s3\.console\.aws\.amazon\.com/s3/buckets/amazonei\-apachemxnet](https://s3.console.aws.amazon.com/s3/buckets/amazonei-apachemxnet)\. For information about buidling a container that uses the EI\-enabled version of MXNet, see [https://github\.com/aws/sagemaker\-mxnet\-container\#building\-the\-sagemaker\-elastic\-inference\-mxnet\-container](https://github.com/aws/sagemaker-mxnet-container#building-the-sagemaker-elastic-inference-mxnet-container)\.
+To use EI with your own container, you need to import either the Amazon EI TensorFlow Serving library or the Amazon EI Apache MXNet library into your container\. The EI\-enabled versions of TensorFlow and MXNet are currently available as binary files stored in Amazon S3 locations\. You can download the EI\-enabled binary for TensorFlow from the Amazon S3 bucket at [ https://s3\.console\.aws\.amazon\.com/s3/buckets/amazonei\-tensorflow](                         https://s3.console.aws.amazon.com/s3/buckets/amazonei-tensorflow)\. For information about building a container that uses the EI\-enabled version of TensorFlow, see [https://github\.com/aws/sagemaker\-tensorflow\-container\#building\-the\-sagemaker\-elastic\-inference\-tensorflow\-serving\-container](https://github.com/aws/sagemaker-tensorflow-container#building-the-sagemaker-elastic-inference-tensorflow-serving-container)\. You can download the EI\-enabled binary for Apache MXNet from the public Amazon S3 bucket at [https://s3\.console\.aws\.amazon\.com/s3/buckets/amazonei\-apachemxnet](https://s3.console.aws.amazon.com/s3/buckets/amazonei-apachemxnet)\. For information about building a container that uses the EI\-enabled version of MXNet, see [https://github\.com/aws/sagemaker\-mxnet\-container\#building\-the\-sagemaker\-elastic\-inference\-mxnet\-container](https://github.com/aws/sagemaker-mxnet-container#building-the-sagemaker-elastic-inference-mxnet-container)\.
 
 ### Create an EI Endpoint with Boto 3<a name="ei-create-endpoint-boto"></a>
 
@@ -91,7 +91,7 @@ from time import gmtime, strftime
 endpoint_config_name = 'ImageClassificationEndpointConfig-' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
 print(endpoint_config_name)
 create_endpoint_config_response = sagemaker.create_endpoint_config(
-    EndpointConfigName = "MyEIEndpointConfig",
+    EndpointConfigName = endpoint_config_name,
     ProductionVariants=[{
         'InstanceType':'ml.m4.xlarge',
         'InitialInstanceCount':1,
@@ -107,7 +107,10 @@ print("Endpoint Config Arn: " + create_endpoint_config_response['EndpointConfigA
 After you create an endpoint configuration with an accelerator type, you can proceed to create an endpoint\.
 
 ```
-endpoint_response = sagemaker.create_endpoint("MyEIEndpointConfig")
+endpoint_name = 'ImageClassificationEndpoint-' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
+endpoint_response = sagemaker.create_endpoint(
+    EndpointName=endpoint_name,
+    EndpointConfigName=endpoint_config_name)
 ```
 
 After the endpoint is created you can invoke it using the invoke\_endpoint method in a boto3 runtime object as you would any other endpoint\.

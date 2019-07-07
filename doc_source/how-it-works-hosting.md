@@ -8,14 +8,14 @@ Amazon SageMaker also provides model hosting services for model deployment, as s
 
 1. **Create a model in Amazon SageMaker**—By creating a model, you tell Amazon SageMaker where it can find the model components\. This includes the S3 path where the model artifacts are stored and the Docker registry path for the image that contains the inference code\. In subsequent deployment steps, you specify the model by name\. For more information, see the [CreateModel](API_CreateModel.md) API\. 
 
-1. **Create an endpoint configuration for an HTTPS endpoint**—You specify the name of one or more models in production variants and the ML compute instances that you want Amazon SageMaker to launch to host them\.
+1. **Create an endpoint configuration for an HTTPS endpoint**—You specify the name of one or more models in production variants and the ML compute instances that you want Amazon SageMaker to launch to host each production variant\.
 
    When hosting models in production, you can configure the endpoint to elastically scale the deployed ML compute instances\. For each production variant, you specify the number of ML compute instances that you want to deploy\. When you specify two or more instances, Amazon SageMaker launches them in multiple Availability Zones\. This ensures continuous availability\. Amazon SageMaker manages deploying the instances\. For more information, see the [CreateEndpointConfig](API_CreateEndpointConfig.md) API\.
 
 1. **Create an HTTPS endpoint**—Provide the endpoint configuration to Amazon SageMaker\. The service launches the ML compute instances and deploys the model or models as specified in the configuration\. For more information, see the [CreateEndpoint](API_CreateEndpoint.md) API\. To get inferences from the model, client applications send requests to the Amazon SageMaker Runtime HTTPS endpoint\. For more information about the API, see the [InvokeEndpoint](API_runtime_InvokeEndpoint.md) API\. 
 
 **Note**  
-When you create an endpoint, Amazon SageMaker attaches an Amazon EBS storage volume to each ML compute instance that hosts the endpoint\. The size of the storage volume depends on the instance type\. For a list of instance types that Amazon SageMaker hosting service supports, see [AWS Service Limits](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_sagemaker)\. For a list of the sizes of the storage volumes that Amazon SageMaker attaches to each instance, see [Amazon SageMaker ML Instance Types](https://aws.amazon.com/sagemaker/pricing/instance-types/)\.
+When you create an endpoint, Amazon SageMaker attaches an Amazon EBS storage volume to each ML compute instance that hosts the endpoint\. The size of the storage volume depends on the instance type\. For a list of instance types that Amazon SageMaker hosting service supports, see [AWS Service Limits](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_sagemaker)\. For a list of the sizes of the storage volumes that Amazon SageMaker attaches to each instance, see [Hosting Instance Storage Volumes](host-instance-storage.md)\.
 
 To increase a model's accuracy, you might choose to save the user's input data and ground truth, if available, as part of the training data\. You can then retrain the model periodically with a larger, improved training dataset\.
 
@@ -40,7 +40,7 @@ When hosting models using Amazon SageMaker hosting services, consider the follow
 + Changing or deleting model artifacts or changing inference code after deploying a model produces unpredictable results\. If you need to change or delete model artifacts or change inference code, modify the endpoint by providing a new endpoint configuration\. Once you provide the new endpoint configuration, you can change or delete the model artifacts corresponding to the old endpoint configuration\.
 
    
-+ If you want to get inferences on entire datasets, consider using batch transform as an alternative to hosting services\. For information see [Get Inferences for an Entire Dataset with Batch Transform](how-it-works-batch.md) 
++ If you want to get inferences on entire datasets, consider using batch transform as an alternative to hosting services\. For information, see [Get Inferences for an Entire Dataset with Batch Transform](how-it-works-batch.md) 
 
 ## How It Works: Next Topic<a name="how-it-works-hosting-next-topic"></a>
 

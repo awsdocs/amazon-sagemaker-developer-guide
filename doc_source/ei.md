@@ -28,8 +28,8 @@ In the table, the throughput in teraflops \(TFLOPS\) is listed for both single\-
 | Accelerator Type | F32 Throughput in TFLOPS | F16 Throughput in TFLOPS | Memory in GB | 
 | --- | --- | --- | --- | 
 | ml\.eia1\.medium | 1 | 8 | 1 | 
-| mld\.eia1\.large | 2 | 16 | 2 | 
-| mld\.eia1\.xlarge | 4 | 32 | 4 | 
+| ml\.eia1\.large | 2 | 16 | 2 | 
+| ml\.eia1\.xlarge | 4 | 32 | 4 | 
 
 ## Choose an EI Accelerator Type<a name="ei-choose-type"></a>
 
@@ -67,4 +67,4 @@ The following Sample notebooks provide examples of using EI in Amazon SageMaker:
 +  [https://github\.com/awslabs/amazon\-sagemaker\-examples/blob/master/sagemaker\-python\-sdk/tensorflow\_iris\_dnn\_classifier\_using\_estimators/tensorflow\_iris\_dnn\_classifier\_using\_estimators\_elastic\_inference\_local\.ipynb ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/tensorflow_iris_dnn_classifier_using_estimators/tensorflow_iris_dnn_classifier_using_estimators_elastic_inference_local.ipynb) 
 + [https://github\.com/awslabs/amazon\-sagemaker\-examples/blob/master/sagemaker\-python\-sdk/mxnet\_mnist/mxnet\_mnist\_elastic\_inference\.ipynb ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/mxnet_mnist/mxnet_mnist_elastic_inference.ipynb)
 + [https://github\.com/awslabs/amazon\-sagemaker\-examples/blob/master/sagemaker\-python\-sdk/mxnet\_mnist/mxnet\_mnist\_elastic\_inference\_local\.ipynb ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/mxnet_mnist/mxnet_mnist_elastic_inference_local.ipynb) 
-+ [https://github\.com/awslabs/amazon\-sagemaker\-examples/blob/master/sagemaker\-python\-sdk/tensorflow\_using\_elastic\_inference\_with\_your\_own\_model/tensorflow\_pretrained\_model\_elastic\_inference\.ipynb \.ipynb ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/tensorflow_using_elastic_inference_with_your_own_model/tensorflow_pretrained_model_elastic_inference.ipynb                     .ipynb                     )
++ [https://github\.com/awslabs/amazon\-sagemaker\-examples/blob/master/sagemaker\-python\-sdk/tensorflow\_serving\_using\_elastic\_inference\_with\_your\_own\_model/tensorflow\_serving\_pretrained\_model\_elastic\_inference\.ipynb](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/tensorflow_serving_using_elastic_inference_with_your_own_model/tensorflow_serving_pretrained_model_elastic_inference.ipynb)

@@ -52,7 +52,7 @@ Training
 + Downloading the training image\.
 + Training image download completed\. Training in progress\.
 Status messages are subject to change\. Therefore, we recommend not including them in code that programmatically initiates actions\. For examples, don't use status messages in if statements\.
-To have an overview of your training job's progress, view `TrainingJobStatus` and `SecondaryStatus` in [DescribeTrainingJobResponse](API_DescribeTrainingJobResponse.md), and `StatusMessage` together\. For example, at the start of a training job, you might see the following:  
+To have an overview of your training job's progress, view `TrainingJobStatus` and `SecondaryStatus` in [DescribeTrainingJob](API_DescribeTrainingJob.md), and `StatusMessage` together\. For example, at the start of a training job, you might see the following:  
 +  `TrainingJobStatus` \- InProgress
 +  `SecondaryStatus` \- Training
 +  `StatusMessage` \- Downloading the training image
@@ -64,5 +64,6 @@ Required: No
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/SecondaryStatusTransition) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/SecondaryStatusTransition) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/SecondaryStatusTransition) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/SecondaryStatusTransition) 
 +  [AWS SDK for Ruby V2](https://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/SecondaryStatusTransition) 

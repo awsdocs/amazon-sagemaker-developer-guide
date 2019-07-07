@@ -8,6 +8,7 @@ Defines a hyperparameter to be used by an algorithm\.
 The default value for this hyperparameter\. If a default value is specified, a hyperparameter cannot be required\.  
 Type: String  
 Length Constraints: Maximum length of 256\.  
+Pattern: `.*`   
 Required: No
 
  **Description**   <a name="SageMaker-Type-HyperParameterSpecification-Description"></a>
@@ -31,6 +32,7 @@ Required: No
 The name of this hyperparameter\. The name must be unique\.  
 Type: String  
 Length Constraints: Maximum length of 256\.  
+Pattern: `[\p{L}\p{M}\p{Z}\p{S}\p{N}\p{P}]*`   
 Required: Yes
 
  **Range**   <a name="SageMaker-Type-HyperParameterSpecification-Range"></a>
@@ -49,5 +51,6 @@ Required: Yes
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/HyperParameterSpecification) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/HyperParameterSpecification) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/HyperParameterSpecification) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/HyperParameterSpecification) 
 +  [AWS SDK for Ruby V2](https://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/HyperParameterSpecification) 

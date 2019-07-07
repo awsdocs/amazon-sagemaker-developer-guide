@@ -8,13 +8,15 @@ Defines the input needed to run a training job using the algorithm\.
 The hyperparameters used for the training job\.  
 Type: String to string map  
 Key Length Constraints: Maximum length of 256\.  
+Key Pattern: `.*`   
 Value Length Constraints: Maximum length of 256\.  
+Value Pattern: `.*`   
 Required: No
 
  **InputDataConfig**   <a name="SageMaker-Type-TrainingJobDefinition-InputDataConfig"></a>
 An array of `Channel` objects, each of which specifies an input source\.  
 Type: Array of [Channel](API_Channel.md) objects  
-Array Members: Minimum number of 1 item\. Maximum number of 8 items\.  
+Array Members: Minimum number of 1 item\. Maximum number of 20 items\.  
 Required: Yes
 
  **OutputDataConfig**   <a name="SageMaker-Type-TrainingJobDefinition-OutputDataConfig"></a>
@@ -28,8 +30,8 @@ Type: [ResourceConfig](API_ResourceConfig.md) object
 Required: Yes
 
  **StoppingCondition**   <a name="SageMaker-Type-TrainingJobDefinition-StoppingCondition"></a>
-Sets a duration for training\. Use this parameter to cap model training costs\.  
-To stop a job, Amazon SageMaker sends the algorithm the SIGTERM signal, which delays job termination for 120 seconds\. Algorithms might use this 120\-second window to save the model artifacts\.  
+Specifies a limit to how long a model training job can run\. When the job reaches the time limit, Amazon SageMaker ends the training job\. Use this API to cap model training costs\.  
+To stop a job, Amazon SageMaker sends the algorithm the SIGTERM signal, which delays job termination for 120 seconds\. Algorithms can use this 120\-second window to save the model artifacts\.  
 Type: [StoppingCondition](API_StoppingCondition.md) object  
 Required: Yes
 
@@ -45,5 +47,6 @@ Required: Yes
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/TrainingJobDefinition) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/TrainingJobDefinition) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/TrainingJobDefinition) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/TrainingJobDefinition) 
 +  [AWS SDK for Ruby V2](https://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/TrainingJobDefinition) 

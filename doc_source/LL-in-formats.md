@@ -53,7 +53,7 @@ let response =   {
 **Multiclass Classification**
 
 ```
-{"score": 0.4, "predicted_label": 0}
+{"score": [0.1, 0.2, 0.4, 0.3], "predicted_label": 2}
 ```
 
 **Regression**

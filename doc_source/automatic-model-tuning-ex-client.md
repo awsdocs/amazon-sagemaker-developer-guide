@@ -1,4 +1,4 @@
-# Get the an Amazon Sagemaker Boto 3 Client<a name="automatic-model-tuning-ex-client"></a>
+# Get the Amazon Sagemaker Boto 3 Client<a name="automatic-model-tuning-ex-client"></a>
 
 Import libraries and get a Boto3 client, which you use to call the hyperparameter tuning APIs\.
 

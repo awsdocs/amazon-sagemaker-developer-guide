@@ -7,4 +7,3 @@ If you're new to Amazon SageMaker, we recommend that you read [How Amazon SageMa
 **Topics**
 + [Step 1: Create an AWS Account](gs-account.md)
 + [Step 2: Create an IAM Administrator User and Group](gs-account-user.md)
-+ [Step 3: Create an Amazon S3 Bucket](gs-config-permissions.md)

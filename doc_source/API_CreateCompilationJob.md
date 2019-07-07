@@ -59,7 +59,7 @@ Type: [OutputConfig](API_OutputConfig.md) object
 Required: Yes
 
  ** [RoleArn](#API_CreateCompilationJob_RequestSyntax) **   <a name="SageMaker-CreateCompilationJob-request-RoleArn"></a>
-The Amazon Resource Name \(ARN\) of an IIAMAM role that enables Amazon SageMaker to perform tasks on your behalf\.   
+The Amazon Resource Name \(ARN\) of an IAM role that enables Amazon SageMaker to perform tasks on your behalf\.   
 During model compilation, Amazon SageMaker needs your permission to:  
 + Read input data from an S3 bucket
 + Write model artifacts to an S3 bucket
@@ -72,7 +72,7 @@ Pattern: `^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$`
 Required: Yes
 
  ** [StoppingCondition](#API_CreateCompilationJob_RequestSyntax) **   <a name="SageMaker-CreateCompilationJob-request-StoppingCondition"></a>
-The duration allowed for model compilation\.  
+Specifies a limit to how long a model compilation job can run\. When the job reaches the time limit, Amazon SageMaker ends the compilation job\. Use this API to cap model training costs\.  
 Type: [StoppingCondition](API_StoppingCondition.md) object  
 Required: Yes
 
@@ -116,6 +116,7 @@ For more information about using this API in one of the language\-specific AWS S
 +  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/CreateCompilationJob) 
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/CreateCompilationJob) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/CreateCompilationJob) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/CreateCompilationJob) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/CreateCompilationJob) 
 +  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/CreateCompilationJob) 
 +  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/CreateCompilationJob) 

@@ -22,7 +22,7 @@ To use EI locally in a notebook instance, create a notebook instance with an EI 
 
 1. \(Optional\) For **VPC \- Optional**, if you want the notebook instance to use a VPC, choose one from the available list, otherwise leave it as **No VPC**\. If you use a VPC follow the instructions at [Use a Custom VPC to Connect to EI](ei-setup.md#ei-setup-custom-vpc)\.
 
-1. \(Optional\) For **Lifecycle configuration \- optional**, either leave it as **No configuration** or choose a lifecycle configuration\. For more information, see [Step 1\.1: \(Optional\) Customize a Notebook Instance ](notebook-lifecycle-config.md)\.
+1. \(Optional\) For **Lifecycle configuration \- optional**, either leave it as **No configuration** or choose a lifecycle configuration\. For more information, see [Customize a Notebook Instance ](notebook-lifecycle-config.md)\.
 
 1. \(Optional\) For **Encryption key \- optional**, Optional\) If you want Amazon SageMaker to use an AWS Key Management Service key to encrypt data in the ML storage volume attached to the notebook instance, specify the key\.
 
@@ -49,15 +49,6 @@ To use EI locally in an endpoint hosted on a notebook instance, use local mode w
 ### Use EI in Local Mode with Amazon SageMaker TensorFlow Estimators and Models<a name="ei-notebook-instance-local-tensorflow"></a>
 
 To use EI with TensorFlow in local mode, specify `local` for `instance_type` and `local_sagemaker_notebook` for `accelerator_type` when you call the `deploy` method of an estimator or a model object\. For more information about Amazon SageMaker Python SDK TensorFlow estimators and models, see [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/tensorflow/README\.rst](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/tensorflow/README.rst)\.
-
-The following code shows how to use local mode with an estimator object\. To call the `deploy` method, you must have previously called the `fit` method to train a model\.
-
-```
-# Deploys the model to a local endpoint
-tf_predictor = tf_estimator.deploy(initial_instance_count=1,
-                                   instance_type='local',
-                                   accelerator_type='local_sagemaker_notebook')
-```
 
 The following code shows how to use local mode with an estimator object\. To call the `deploy` method, you must have previously either:
 + Trained the model by calling the `fit` method of an estimator\.

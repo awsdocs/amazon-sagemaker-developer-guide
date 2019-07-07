@@ -24,7 +24,7 @@ To deploy the trained model for inference, use the Amazon SageMaker hosting serv
 
 ## Semantic Segmentation Sample Notebooks<a name="semantic-segmentation-sample-notebooks"></a>
 
-For a sample Jupyter notebook that uses the Amazon SageMaker semantic segmentation algorithm to train a model and deploy it to perform inferences, see the [Semantic Segmentation Example](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/semantic-segmentation-final-notebook.ipynb)\. For instructions on how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Notebook Instances](nbi.md)\. 
+For a sample Jupyter notebook that uses the Amazon SageMaker semantic segmentation algorithm to train a model and deploy it to perform inferences, see the [Semantic Segmentation Example](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/semantic_segmentation_pascalvoc/semantic_segmentation_pascalvoc.ipynb)\. For instructions on how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Notebook Instances](nbi.md)\. 
 
 To see a list of all of the Amazon SageMaker samples, create and open a notebook instance, and choose the **SageMaker Examples** tab\. The example semantic segmentation notebooks are located under **Introduction to Amazon algorithms**\. To open a notebook, choose its **Use** tab, and choose **Create copy**\.
 
@@ -114,7 +114,7 @@ Amazon SageMaker Semantic Segmentation requires access to the internet and does 
 
 The augmented manifest format enables you to do training in Pipe mode using image files without needing to create RecordIO files\. The augmented manifest file contains data objects and should be in [JSON Lines](http://jsonlines.org/) format, as described in the [CreateTrainingJob](API_CreateTrainingJob.md) request API\. Each line in the manifest is an entry containing the Amazon S3 URI for the image and the URI for the annotation image\.
 
-Each JSON object in the manifest file must contain a `source-ref` key\. The `source-ref` key should contain the value of the Amazon S3 URI to the image\. The labels are provided under the `AttributeName` parameter value as specified in the [CreateTrainingJob](API_CreateTrainingJob.md) request\. It can also contain additional metadata under the metadata tag, but these are ignored by the algorithm\. In the example below, the `AttributeName` is `city-streets`\.
+Each JSON object in the manifest file must contain a `source-ref` key\. The `source-ref` key should contain the value of the Amazon S3 URI to the image\. The labels are provided under the `AttributeNames` parameter value as specified in the [CreateTrainingJob](API_CreateTrainingJob.md) request\. It can also contain additional metadata under the metadata tag, but these are ignored by the algorithm\. In the example below, the `AttributeNames` are contained in the list of image and annotation references `["source-ref", "city-streets-ref"]`\. These names must have `-ref` appended to them\. When using the Semantic Segmentation algorithm with Augmented Manifest, the value of the `RecordWrapperType` parameter must be `"RecordIO"` and value of the `ContentType` parameter must be `application/x-recordio`\.
 
 ```
 {"source-ref": "S3 bucket location", "city-streets-ref": "S3 bucket location", "city-streets-metadata": {"job-name": "label-city-streets", }}

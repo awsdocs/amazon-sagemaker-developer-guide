@@ -7,6 +7,8 @@ To access your Amazon SageMaker notebook instances, choose one of the following 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/ws-notebook-10.png)
 
   The console uses your sign\-in credentials to send a [CreatePresignedNotebookInstanceUrl](API_CreatePresignedNotebookInstanceUrl.md) API request to Amazon SageMaker\. Amazon SageMaker returns the URL for your notebook instance, and the console opens the URL in another browser tab and displays the Jupyter notebook dashboard\. 
+**Note**  
+The URL that you get from a call to [CreatePresignedNotebookInstanceUrl](API_CreatePresignedNotebookInstanceUrl.md) is valid only for 5 minutes\. If you try to use the URL after the 5\-minute limit expires, you are directed to the AWS Management Console sign\-in page\.
 + Use the API\.
 
   To get the URL for the notebook instance, call the [CreatePresignedNotebookInstanceUrl](API_CreatePresignedNotebookInstanceUrl.md) API and use the URL that the API returns to open the notebook instance\.

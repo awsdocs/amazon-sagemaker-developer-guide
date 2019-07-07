@@ -5,9 +5,9 @@ This section provides guidelines for securing notebook instances, connecting to 
 **Topics**
 + [Notebook Instance Security](appendix-additional-considerations.md)
 + [Connect to Amazon SageMaker Through a VPC Interface Endpoint](interface-vpc-endpoint.md)
-+ [Protect Training Jobs by Using an Amazon Virtual Private Cloud](train-vpc.md)
++ [Give Amazon SageMaker Training Jobs Access to Resources in Your Amazon VPC](train-vpc.md)
 + [Protect Communications Between ML Compute Instances in a Distributed Training Job](train-encrypt.md)
-+ [Protect Endpoints by Using an Amazon Virtual Private Cloud](host-vpc.md)
-+ [Protect Data in Batch Transform Jobs by Using an Amazon Virtual Private Cloud](batch-vpc.md)
++ [Give Amazon SageMaker Hosted Endpoints Access to Resources in Your Amazon VPC](host-vpc.md)
++ [Give Batch Transform Jobs Access to Resources in Your Amazon VPC](batch-vpc.md)
 + [Training and Inference Containers Run in Internet\-Free Mode](mkt-algo-model-internet-free.md)
 + [Amazon SageMaker Scans AWS Marketplace Training and Inference Containers for Security Vulnerabilities](mkt-container-scan.md)

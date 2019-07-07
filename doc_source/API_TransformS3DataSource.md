@@ -7,6 +7,8 @@ Describes the S3 data source\.
  **S3DataType**   <a name="SageMaker-Type-TransformS3DataSource-S3DataType"></a>
 If you choose `S3Prefix`, `S3Uri` identifies a key name prefix\. Amazon SageMaker uses all objects with the specified key name prefix for batch transform\.   
 If you choose `ManifestFile`, `S3Uri` identifies an object that is a manifest file containing a list of object keys that you want Amazon SageMaker to use for batch transform\.   
+The following values are compatible: `ManifestFile`, `S3Prefix`   
+The following value is not compatible: `AugmentedManifestFile`   
 Type: String  
 Valid Values:` ManifestFile | S3Prefix | AugmentedManifestFile`   
 Required: Yes
@@ -49,5 +51,6 @@ Required: Yes
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/TransformS3DataSource) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/TransformS3DataSource) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/TransformS3DataSource) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/TransformS3DataSource) 
 +  [AWS SDK for Ruby V2](https://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/TransformS3DataSource) 

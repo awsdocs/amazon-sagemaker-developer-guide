@@ -13,6 +13,7 @@ Required: No
 A description of the work team\.  
 Type: String  
 Length Constraints: Minimum length of 1\. Maximum length of 200\.  
+Pattern: `.+`   
 Required: Yes
 
  **LastUpdatedDate**   <a name="SageMaker-Type-Workteam-LastUpdatedDate"></a>
@@ -25,6 +26,11 @@ The Amazon Cognito user groups that make up the work team\.
 Type: Array of [MemberDefinition](API_MemberDefinition.md) objects  
 Array Members: Minimum number of 1 item\. Maximum number of 10 items\.  
 Required: Yes
+
+ **NotificationConfiguration**   <a name="SageMaker-Type-Workteam-NotificationConfiguration"></a>
+Configures SNS notifications of available or expiring work items for work teams\.  
+Type: [NotificationConfiguration](API_NotificationConfiguration.md) object  
+Required: No
 
  **ProductListingIds**   <a name="SageMaker-Type-Workteam-ProductListingIds"></a>
 The Amazon Marketplace identifier for a vendor's work team\.  
@@ -55,5 +61,6 @@ Required: Yes
 For more information about using this API in one of the language\-specific AWS SDKs, see the following:
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/Workteam) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/Workteam) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/Workteam) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/Workteam) 
 +  [AWS SDK for Ruby V2](https://docs.aws.amazon.com/goto/SdkForRubyV2/sagemaker-2017-07-24/Workteam) 

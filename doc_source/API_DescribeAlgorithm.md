@@ -243,7 +243,9 @@ Type: [InferenceSpecification](API_InferenceSpecification.md) object
 
  ** [ProductId](#API_DescribeAlgorithm_ResponseSyntax) **   <a name="SageMaker-DescribeAlgorithm-response-ProductId"></a>
 The product identifier of the algorithm\.  
-Type: String
+Type: String  
+Length Constraints: Maximum length of 256\.  
+Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*$` 
 
  ** [TrainingSpecification](#API_DescribeAlgorithm_ResponseSyntax) **   <a name="SageMaker-DescribeAlgorithm-response-TrainingSpecification"></a>
 Details about training jobs run by this algorithm\.  
@@ -264,6 +266,7 @@ For more information about using this API in one of the language\-specific AWS S
 +  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/DescribeAlgorithm) 
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/DescribeAlgorithm) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/DescribeAlgorithm) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/DescribeAlgorithm) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/DescribeAlgorithm) 
 +  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/DescribeAlgorithm) 
 +  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/DescribeAlgorithm) 

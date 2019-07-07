@@ -11,11 +11,11 @@ Before you start using hyperparameter tuning, you should have a well\-defined ma
 + An understanding of the type of algorithm you need to train
 + A clear understanding of how you measure success
 
-You should also prepare your dataset and algorithm so that they work in Amazon SageMaker and successfully run a training job at least once\. For information about setting up and running a training job, see [Train a Model with a Built\-in Algorithm and Deploy It](ex1.md)\.
+You should also prepare your dataset and algorithm so that they work in Amazon SageMaker and successfully run a training job at least once\. For information about setting up and running a training job, see [Get Started](gs.md)\.
 
 **Topics**
 + [How Hyperparameter Tuning Works](automatic-model-tuning-how-it-works.md)
-+ [Define Objective Metrics](automatic-model-tuning-define-metrics.md)
++ [Define Metrics](automatic-model-tuning-define-metrics.md)
 + [Define Hyperparameter Ranges](automatic-model-tuning-define-ranges.md)
 + [Example: Hyperparameter Tuning Job](automatic-model-tuning-ex.md)
 + [Stop Training Jobs Early](automatic-model-tuning-early-stopping.md)

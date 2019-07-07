@@ -37,6 +37,7 @@ Required: No
 If the result of the previous `ListWorkteams` request was truncated, the response includes a `NextToken`\. To retrieve the next set of labeling jobs, use the token in the next request\.  
 Type: String  
 Length Constraints: Maximum length of 8192\.  
+Pattern: `.*`   
 Required: No
 
  ** [SortBy](#API_ListWorkteams_RequestSyntax) **   <a name="SageMaker-ListWorkteams-request-SortBy"></a>
@@ -70,6 +71,9 @@ Required: No
                }
             }
          ],
+         "[NotificationConfiguration](API_Workteam.md#SageMaker-Type-Workteam-NotificationConfiguration)": { 
+            "[NotificationTopicArn](API_NotificationConfiguration.md#SageMaker-Type-NotificationConfiguration-NotificationTopicArn)": "string"
+         },
          "[ProductListingIds](API_Workteam.md#SageMaker-Type-Workteam-ProductListingIds)": [ "string" ],
          "[SubDomain](API_Workteam.md#SageMaker-Type-Workteam-SubDomain)": "string",
          "[WorkteamArn](API_Workteam.md#SageMaker-Type-Workteam-WorkteamArn)": "string",
@@ -88,7 +92,8 @@ The following data is returned in JSON format by the service\.
  ** [NextToken](#API_ListWorkteams_ResponseSyntax) **   <a name="SageMaker-ListWorkteams-response-NextToken"></a>
 If the response is truncated, Amazon SageMaker returns this token\. To retrieve the next set of work teams, use it in the subsequent request\.  
 Type: String  
-Length Constraints: Maximum length of 8192\.
+Length Constraints: Maximum length of 8192\.  
+Pattern: `.*` 
 
  ** [Workteams](#API_ListWorkteams_ResponseSyntax) **   <a name="SageMaker-ListWorkteams-response-Workteams"></a>
 An array of `Workteam` objects, each describing a work team\.  
@@ -105,6 +110,7 @@ For more information about using this API in one of the language\-specific AWS S
 +  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/ListWorkteams) 
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/ListWorkteams) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/ListWorkteams) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/ListWorkteams) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/ListWorkteams) 
 +  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/ListWorkteams) 
 +  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/ListWorkteams) 

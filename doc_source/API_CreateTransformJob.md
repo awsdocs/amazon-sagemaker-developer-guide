@@ -18,6 +18,11 @@ In the request body, you provide the following:
 ```
 {
    "[BatchStrategy](#SageMaker-CreateTransformJob-request-BatchStrategy)": "string",
+   "[DataProcessing](#SageMaker-CreateTransformJob-request-DataProcessing)": { 
+      "[InputFilter](API_DataProcessing.md#SageMaker-Type-DataProcessing-InputFilter)": "string",
+      "[JoinSource](API_DataProcessing.md#SageMaker-Type-DataProcessing-JoinSource)": "string",
+      "[OutputFilter](API_DataProcessing.md#SageMaker-Type-DataProcessing-OutputFilter)": "string"
+   },
    "[Environment](#SageMaker-CreateTransformJob-request-Environment)": { 
       "string" : "string" 
    },
@@ -71,16 +76,22 @@ Type: String
 Valid Values:` MultiRecord | SingleRecord`   
 Required: No
 
+ ** [DataProcessing](#API_CreateTransformJob_RequestSyntax) **   <a name="SageMaker-CreateTransformJob-request-DataProcessing"></a>
+The data structure used to specify the data to be used for inference in a batch transform job and to associate the data that is relevant to the prediction results in the output\. The input filter provided allows you to exclude input data that is not needed for inference in a batch transform job\. The output filter provided allows you to include input data relevant to interpreting the predictions in the output from the job\. For more information, see [Associate Prediction Results with their Corresponding Input Records](http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-data-processing.html)\.  
+Type: [DataProcessing](API_DataProcessing.md) object  
+Required: No
+
  ** [Environment](#API_CreateTransformJob_RequestSyntax) **   <a name="SageMaker-CreateTransformJob-request-Environment"></a>
 The environment variables to set in the Docker container\. We support up to 16 key and values entries in the map\.  
 Type: String to string map  
 Key Length Constraints: Maximum length of 1024\.  
 Key Pattern: `[a-zA-Z_][a-zA-Z0-9_]*`   
 Value Length Constraints: Maximum length of 10240\.  
+Value Pattern: `[\S\s]*`   
 Required: No
 
  ** [MaxConcurrentTransforms](#API_CreateTransformJob_RequestSyntax) **   <a name="SageMaker-CreateTransformJob-request-MaxConcurrentTransforms"></a>
-The maximum number of parallel requests that can be sent to each instance in a transform job\. The default value is `1`\. To allow Amazon SageMaker to determine the appropriate number for `MaxConcurrentTransforms`, set the value to `0`\.  
+The maximum number of parallel requests that can be sent to each instance in a transform job\. If `MaxConcurrentTransforms` is set to `0` or left unset, Amazon SageMaker checks the optional execution\-parameters to determine the optimal settings for your chosen algorithm\. If the execution\-parameters endpoint is not enabled, the default value is `1`\. For more information on execution\-parameters, see [How Containers Serve Requests](http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests)\. For built\-in algorithms, you don't need to set a value for `MaxConcurrentTransforms`\.  
 Type: Integer  
 Valid Range: Minimum value of 0\.  
 Required: No
@@ -166,6 +177,7 @@ For more information about using this API in one of the language\-specific AWS S
 +  [AWS SDK for \.NET](https://docs.aws.amazon.com/goto/DotNetSDKV3/sagemaker-2017-07-24/CreateTransformJob) 
 +  [AWS SDK for C\+\+](https://docs.aws.amazon.com/goto/SdkForCpp/sagemaker-2017-07-24/CreateTransformJob) 
 +  [AWS SDK for Go](https://docs.aws.amazon.com/goto/SdkForGoV1/sagemaker-2017-07-24/CreateTransformJob) 
++  [AWS SDK for Go \- Pilot](https://docs.aws.amazon.com/goto/SdkForGoPilot/sagemaker-2017-07-24/CreateTransformJob) 
 +  [AWS SDK for Java](https://docs.aws.amazon.com/goto/SdkForJava/sagemaker-2017-07-24/CreateTransformJob) 
 +  [AWS SDK for JavaScript](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sagemaker-2017-07-24/CreateTransformJob) 
 +  [AWS SDK for PHP V3](https://docs.aws.amazon.com/goto/SdkForPHPV3/sagemaker-2017-07-24/CreateTransformJob) 

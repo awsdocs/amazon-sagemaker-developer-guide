@@ -1,4 +1,4 @@
-# Define Objective Metrics<a name="automatic-model-tuning-define-metrics"></a>
+# Define Metrics<a name="automatic-model-tuning-define-metrics"></a>
 
 **Note**  
 When you use one of the Amazon SageMaker built\-in algorithms, you don't need to define metrics\. Built\-in algorithms automatically send metrics to hyperparameter tuning\. You do need to choose one of the metrics that the built\-in algorithm emits as the objective metric for the tuning job\. For a list of metrics that a built\-in algorithm emits, see the *Metrics* table for the algorithm in [Use Amazon SageMaker Built\-in Algorithms ](algos.md)\.
@@ -10,9 +10,12 @@ These are the same metrics that Amazon SageMaker sends to CloudWatch Logs\. For 
 
 If you use your own algorithm for hyperparameter tuning, make sure that your algorithm emits at least one metric by writing evaluation data to `stderr` or `stdout`\.
 
+**Note**  
+Hyperparameter tuning sends an additional hyperparameter, `_tuning_objective_metric` to the training algorithm\. This hyperparameter specifies the objective metric being used for the hyperparameter tuning job, so that your algorithm can use that information during training\.
+
 You can define up to 20 metrics for your tuning job to monitor\. You choose one of those metrics to be the objective metric, which hyperparameter tuning uses to evaluate the training jobs\. The hyperparameter tuning job returns the training job that returned the best value for the objective metric as the best training job\.
 
-You define metrics for a tuning job by specifying a name and a regular expression for each metric that your tuning job monitors\. Design the regular expressions to to capture the values of metrics that your algorithm emits\. You pass these metrics to the [CreateHyperParameterTuningJob](API_CreateHyperParameterTuningJob.md) operation in the `TrainingJobDefinition` parameter as the `MetricDefinitions` field of the `AlgorithmSpecification` field\.
+You define metrics for a tuning job by specifying a name and a regular expression for each metric that your tuning job monitors\. Design the regular expressions to capture the values of metrics that your algorithm emits\. You pass these metrics to the [CreateHyperParameterTuningJob](API_CreateHyperParameterTuningJob.md) operation in the `TrainingJobDefinition` parameter as the `MetricDefinitions` field of the `AlgorithmSpecification` field\.
 
 The following example defines 4 metrics:
 

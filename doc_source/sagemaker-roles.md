@@ -318,6 +318,39 @@ If you specify a private VPC for your hyperparameter tuning job, add the followi
             "ec2:DescribeSecurityGroups"
 ```
 
+If your input is encrypted using server\-side encryption with an AWS KMS–managed key \(SSE\-KMS\), add the following permissions:
+
+```
+{
+    "Effect": "Allow",
+    "Action": [
+    "kms:Decrypt"
+    ]
+}
+```
+
+If you specify a KMS key in the output configuration of your hyperparameter tuning job, add the following permissions:
+
+```
+{
+    "Effect": "Allow",
+    "Action": [
+    "kms:Encrypt"
+    ]
+}
+```
+
+If you specify a volume KMS key in the resource configuration of your hyperparameter tuning job, add the following permissions:
+
+```
+{
+    "Effect": "Allow",
+    "Action": [
+    "kms:CreateGrant"
+    ]
+}
+```
+
 ## CreateTrainingJob API: Execution Role Permissions<a name="sagemaker-roles-createtrainingjob-perms"></a>
 
 For an execution role that you can pass in a `CreateTrainingJob` API request, you can attach the following permission policy to the role:
@@ -429,6 +462,39 @@ If you specify a private VPC for your training job, add the following permission
             "ec2:DescribeSecurityGroups"
 ```
 
+If your input is encrypted using server\-side encryption with an AWS KMS–managed key \(SSE\-KMS\), add the following permissions:
+
+```
+{
+    "Effect": "Allow",
+    "Action": [
+    "kms:Decrypt"
+    ]
+}
+```
+
+If you specify a KMS key in the output configuration of your training job, add the following permissions:
+
+```
+{
+    "Effect": "Allow",
+    "Action": [
+    "kms:Encrypt"
+    ]
+}
+```
+
+If you specify a volume KMS key in the resource configuration of your training job, add the following permissions:
+
+```
+{
+    "Effect": "Allow",
+    "Action": [
+    "kms:CreateGrant"
+    ]
+}
+```
+
 ## CreateModel API: Execution Role Permissions<a name="sagemaker-roles-createmodel-perms"></a>
 
 For an execution role that you can pass in a `CreateModel` API request, you can attach the following permission policy to the role:
@@ -537,7 +603,7 @@ Regardless of how you create an execution role, you can attach the AWS\-managed 
 When attaching the AmazonSageMakerFullAccess policy to a role, you must do one of the following to allow Amazon SageMaker to access your S3 bucket:
 + Include the string `"SageMaker"` or `"sagemaker"` in the name of the bucket where you store training data, or the model artifacts resulting from model training, or both\.
 + Include the string `"SageMaker"` or `"sagemaker"` in the object name of the training data object\(s\)\.
-+ Tag the S3 object with "sagemaker=true"\. The key and value are case sensitive\. For more information, see [Object Tagging](http://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html) in the Amazon Simple Storage Service Developer Guide\.
++ Tag the S3 object with "SageMaker=true"\. The key and value are case sensitive\. For more information, see [Object Tagging](http://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html) in the Amazon Simple Storage Service Developer Guide\.
 + Add a bucket policy that allows access for the execution role\. For more information, see [Using Bucket Policies and User Policies](http://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html) in the Amazon Simple Storage Service Developer Guide\. 
 
 You can attach additional policies that specify the resources for which you want to grant permissions for the `s3:GetObject`, `s3:PutObject`, and `s3:ListBucket` actions\. In the IAM console, you can attach a customer managed policy or an inline policy to your execution role\(s\)\. Alternatively, when you create a role in the Amazon SageMaker console, you can attach a customer managed policy that specifies the S3 buckets\. This resulting execution role has the prefix `"AmazonSageMaker-ExecutionRole-"`\.

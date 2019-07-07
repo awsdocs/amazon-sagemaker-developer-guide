@@ -16,11 +16,13 @@ The Amazon SageMaker implementation of factorization machines considers only pai
 
 ## Input/Output Interface for the Factorization Machines Algorithm<a name="fm-inputoutput"></a>
 
-The factorization machine algorithm can be run in either in binary classification mode or regression mode\. In each mode, a dataset can be provided to the test channel along with the train channel dataset\. In regression mode, the testing dataset is scored using Root Mean Square Error \(RMSE\)\. In binary classification mode, the test dataset is scored using Binary Cross Entropy \(Log Loss\), Accuracy \(at threshold=0\.5\) and F1 Score \(at threshold =0\.5\)\.
+The factorization machine algorithm can be run in either in binary classification mode or regression mode\. In each mode, a dataset can be provided to the **test** channel along with the train channel dataset\. The scoring depends on the mode used\. In regression mode, the testing dataset is scored using Root Mean Square Error \(RMSE\)\. In binary classification mode, the test dataset is scored using Binary Cross Entropy \(Log Loss\), Accuracy \(at threshold=0\.5\) and F1 Score \(at threshold =0\.5\)\.
 
-The factorization machines algorithm currently supports training only on the `recordIO-protobuf` format with `Float32` tensors\. Because their use case is predominantly on sparse data, `CSV` is not a good candidate\. Both File and Pipe mode training are supported for recordIO\-wrapped protobuf\.
+For **training**, the factorization machines algorithm currently supports only the `recordIO-protobuf` format with `Float32` tensors\. Because their use case is predominantly on sparse data, `CSV` is not a good candidate\. Both File and Pipe mode training are supported for recordIO\-wrapped protobuf\.
 
-For inference, factorization machines support the `application/json` and `x-recordio-protobuf` formats\. For binary classification models, both the score and the predicted label are returned\. For regression, just the score is returned\.
+For **inference**, factorization machines support the `application/json` and `x-recordio-protobuf` formats\. 
++ For the **binary classification** problem, the algorithm predicts a score and a label\. The label is a number and can be either `0` or `1`\. The score is a number that indicates how strongly the algorithm believes that the label should be `1`\. The algorithm computes score first and then derives the label from the score value\. If the score is greater than or equal to 0\.5, the label is `1`\.
++ For the **regression** problem, just a score is returned and it is the predicted value\. For example, if Factorization Machines is used to predict a movie rating, score is the predicted rating value\.
 
 Please see [Factorization Machines Sample Notebooks](#fm-sample-notebooks) for more details on training and inference file formats\.
 
