@@ -97,7 +97,7 @@ The permissions that you grant to the execution role for calling the `CreateNote
                 "arn:aws:codecommit:*:*:*SageMaker*",
                 "arn:aws:codecommit:*:*:*Sagemaker*"
             ]
-        }
+        },
         {
             "Effect": "Allow",
             "Action": [
