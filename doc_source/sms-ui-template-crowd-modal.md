@@ -14,10 +14,6 @@ The text to display for opening the modal\. The default is "Click to open modal"
 
 A string that specifies the type of trigger for the modal\. The possible values are "link" \(default\) and "button"\.
 
-### size<a name="modal-attributes-size"></a>
-
-A string that specifies the size of the modal\. The possible values are "small" \(default\), "large", and "fullscreen"\.
-
 ## Element Hierarchy<a name="modal-element-hierarchy"></a>
 
 This element has the following parent and child elements\.

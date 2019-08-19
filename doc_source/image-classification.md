@@ -22,7 +22,7 @@ For more information on convolutional networks, see:
 
 ## Input/Output Interface for the Image Classification Algorithm<a name="IC-inputoutput"></a>
 
-The Amazon SageMaker Image Classification algorithm supports both RecordIO \(`application/x-recordio`\) and image \(`image/png`, `image/jpeg`, and `application/x-image`\) content types for training in file mode and supports RecordIO \(`application/x-recordio`\) content type for training in pipe mode\. However you can also train in pipe mode using the image files \(`image/png`, `image/jpeg`, and `application/x-image`\), without creating RecordIO files, by using the augmented manifest format\. The algorithm supports `image/png`, `image/jpeg`, and `application/x-image` for inference\.
+The Amazon SageMaker Image Classification algorithm supports both RecordIO \(`application/x-recordio`\) and image \(`image/png`, `image/jpeg`, and `application/x-image`\) content types for training in file mode and supports RecordIO \(`application/x-recordio`\) content type for training in pipe mode\. However you can also train in pipe mode using the image files \(`image/png`, `image/jpeg`, and `application/x-image`\), without creating RecordIO files, by using the augmented manifest format\. Distributed training is currently not supported in pipe mode and can only be used in file mode\. The algorithm supports `image/png`, `image/jpeg`, and `application/x-image` for inference\.
 
 ### Train with RecordIO Format<a name="IC-recordio-training"></a>
 

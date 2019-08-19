@@ -24,7 +24,7 @@ You attach the following trust policy to the IAM role which grants Amazon SageMa
 The permissions that you need to grant to the role vary depending on the API that you call\. The following sections explain these permissions\.
 
 **Note**  
-Instead of managing permissions by crafting a permission policy, you can use the AWS\-managed `AmazonSageMakerFullAccess` permission policy\. The permissions in this policy are fairly well scoped to the actions you need to perform\. For more information see [Using the AWS Managed Permission Policy \(AmazonSageMakerFullAccess\) for an Execution Role](#sagemaker-roles-amazonsagemakerfullaccess-policy)\. If you prefer to create custom policies and manage permissions, see the following topics\. 
+Instead of managing permissions by crafting a permission policy, you can use the AWS\-managed `AmazonSageMakerFullAccess` permission policy\. The permissions in this policy are fairly broad, to allow for any actions you might want to perform in Amazon SageMaker\. For a listing of the policy including information about the reasons for adding many of the permisions, see [AmazonSageMakerFullAccess Policy](#sagemaker-roles-amazonsagemakerfullaccess-policy)\. If you prefer to create custom policies and manage permissions to scope the permissions only to the actions you need to perform with the execution role, see the following topics\.
 
 For more information about IAM roles, see [IAM Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in the *IAM User Guide*\.
 
@@ -33,7 +33,7 @@ For more information about IAM roles, see [IAM Roles](http://docs.aws.amazon.com
 + [CreateHyperParameterTuningJob API: Execution Role Permissions](#sagemaker-roles-createhyperparametertiningjob-perms)
 + [CreateTrainingJob API: Execution Role Permissions](#sagemaker-roles-createtrainingjob-perms)
 + [CreateModel API: Execution Role Permissions](#sagemaker-roles-createmodel-perms)
-+ [Using the AWS Managed Permission Policy \(AmazonSageMakerFullAccess\) for an Execution Role](#sagemaker-roles-amazonsagemakerfullaccess-policy)
++ [AmazonSageMakerFullAccess Policy](#sagemaker-roles-amazonsagemakerfullaccess-policy)
 
 ## CreateNotebookInstance API: Execution Role Permissions<a name="sagemaker-roles-createnotebookinstance-perms"></a>
 
@@ -592,18 +592,50 @@ If you specify a private VPC for your model, add the following permissions:
             "ec2:DescribeSecurityGroups"
 ```
 
-## Using the AWS Managed Permission Policy \(AmazonSageMakerFullAccess\) for an Execution Role<a name="sagemaker-roles-amazonsagemakerfullaccess-policy"></a>
+## AmazonSageMakerFullAccess Policy<a name="sagemaker-roles-amazonsagemakerfullaccess-policy"></a>
 
-You can create an execution role one of two ways:
-+ In the Amazon SageMaker console when you create a notebook instance, training job, or model\.
-+ In the AWS Identity and Access Management \(IAM\) console\. You then specify the role as you follow the notebook instance, training job, and model creation workflows in the Amazon SageMaker console\.
+The [AmazonSageMakerFullAccess](https://console.amazonaws.cn/iam/home#policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) managed policy includes all of the necessary permissions to perform most actions in Amazon SageMaker\. You can use attach this policy to any role that you pass to an Amazon SageMaker execution role\. You can also create more narrowly\-scoped policies if you want more granular control of the permissions that you grant to your execution role\.
 
-Regardless of how you create an execution role, you can attach the AWS\-managed permission policy \(AmazonSageMakerFullAccess\) to the role\.
+The following list explains why some of the categories of permissions in the `AmazonSageMakerFullAccess` policy are needed\.
 
-When attaching the AmazonSageMakerFullAccess policy to a role, you must do one of the following to allow Amazon SageMaker to access your S3 bucket:
-+ Include the string `"SageMaker"` or `"sagemaker"` in the name of the bucket where you store training data, or the model artifacts resulting from model training, or both\.
-+ Include the string `"SageMaker"` or `"sagemaker"` in the object name of the training data object\(s\)\.
-+ Tag the S3 object with "SageMaker=true"\. The key and value are case sensitive\. For more information, see [Object Tagging](http://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html) in the Amazon Simple Storage Service Developer Guide\.
-+ Add a bucket policy that allows access for the execution role\. For more information, see [Using Bucket Policies and User Policies](http://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html) in the Amazon Simple Storage Service Developer Guide\. 
+`application-autoscaling`  
+Needed for automatically scaling an Amazon SageMaker real\-time inference endpoint\.
 
-You can attach additional policies that specify the resources for which you want to grant permissions for the `s3:GetObject`, `s3:PutObject`, and `s3:ListBucket` actions\. In the IAM console, you can attach a customer managed policy or an inline policy to your execution role\(s\)\. Alternatively, when you create a role in the Amazon SageMaker console, you can attach a customer managed policy that specifies the S3 buckets\. This resulting execution role has the prefix `"AmazonSageMaker-ExecutionRole-"`\.
+`aws-marketplace`  
+Needed to view AWS AI Marketplace subscriptions\.
+
+`cloudwatch`  
+Needed to post CloudWatch metrics, interact with alarms, and upload CloudWatch Logs logs in your account\.
+
+`codecommit`  
+Needed for AWS CodeCommit integration with Amazon SageMaker notebook instances\.
+
+`cognito`  
+Needed for Amazon SageMaker Ground Truth to define your private workforce and work teams\.
+
+`ec2`  
+Needed to manage elastic network interfaces when you specify a Amazon VPC for your Amazon SageMaker jobs and notebook instances\.
+
+`ec2:DescribeVpcs`  
+All Amazon SageMaker services launch Amazon EC2 instances and require this permission set\.
+
+`ecr`  
+Needed to pull and store Docker artifacts for training and inference\. This is required only if you use your own container in Amazon SageMaker\.
+
+`elastic-inference`  
+Needed to integrate Amazon Elastic Inference with Amazon SageMaker\.
+
+`glue`  
+Needed for inference pipeline pre\-processing from within Amazon SageMaker notebook instances\.
+
+`groundtruthlabeling`  
+Needed for Amazon SageMaker Ground Truth\.
+
+`iam:ListRoles`  
+Needed to give the Amazon SageMaker console access to list available roles\.
+
+`kms`  
+Needed to give the Amazon SageMaker console access to list the avialable AWS KMS keys\.
+
+`logs`  
+Needed to allow Amazon SageMaker jobs and endpoints to publish log streams\.

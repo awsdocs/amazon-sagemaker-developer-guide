@@ -35,8 +35,6 @@ A string that is displayed inside a text field\.
 
 This text shrinks and rises up above a text field when the worker starts typing in the field or when the *value* attribute is set\.
 
-### list<a name="input-attributes-list"></a>
-
 ### max\-length<a name="input-attributes-max-length"></a>
 
  A maximum number of characters the input will accept\. Input beyond this limit is ignored\.
@@ -52,10 +50,6 @@ A minimum length for the input in the field
 ### placeholder<a name="input-attributes-placeholder"></a>
 
 A string value that is used as placeholder text, displayed until the worker starts entering data into the input, It is not used as a default value\.
-
-### read\-only<a name="input-attributes-read-only"></a>
-
-A Boolean switch that, if present, prevents the field from being changed\.
 
 ### required<a name="input-attributes-required"></a>
 

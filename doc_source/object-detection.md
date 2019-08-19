@@ -421,7 +421,7 @@ For more information on augmented manifest files, see [Provide Dataset Metadata 
 
 ### Incremental Training<a name="object-detection-incremental-training"></a>
 
-You can also seed the training of a new model with the artifacts from a model that you trained previously with Amazon SageMaker\. Incremental training saves training time when you want to train a new model with the same or similar data\. Amazon SageMaker object detection models can be seeded only with another build\-in object detection model trained in Amazon SageMaker\.
+You can also seed the training of a new model with the artifacts from a model that you trained previously with Amazon SageMaker\. Incremental training saves training time when you want to train a new model with the same or similar data\. Amazon SageMaker object detection models can be seeded only with another built\-in object detection model trained in Amazon SageMaker\.
 
 To use a pretrained model, in the [CreateTrainingJob](API_CreateTrainingJob.md) request, specify the `ChannelName` as "model" in the `InputDataConfig` parameter\. Set the `ContentType` for the model channel to `application/x-sagemaker-model`\. The input hyperparameters of both the new model and the pretrained model that you upload to the model channel must have the same settings for the `base_network` and `num_classes` input parameters\. These parameters define the network architecture\. For the pretrained model file, use the compressed model artifacts \(in \.tar\.gz format\) output by Amazon SageMaker\. You can use either RecordIO or image formats for input data\.
 

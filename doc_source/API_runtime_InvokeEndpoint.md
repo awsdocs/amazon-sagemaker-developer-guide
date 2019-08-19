@@ -80,7 +80,8 @@ Length Constraints: Maximum length of 1024\.
 Pattern: `\p{ASCII}*` 
 
  ** [CustomAttributes](#API_runtime_InvokeEndpoint_ResponseSyntax) **   <a name="SageMaker-runtime_InvokeEndpoint-response-CustomAttributes"></a>
-Provides additional information in the response about the inference returned by a model hosted at an Amazon SageMaker endpoint\. The information is an opaque value that is forwarded verbatim\. You could use this value, for example, to return an ID received in the `CustomAttributes` header of a request or other metadata that a service endpoint was programmed to produce\. The value must consist of no more than 1024 visible US\-ASCII characters as specified in [Section 3\.3\.6\. Field Value Components](https://tools.ietf.org/html/rfc7230#section-3.2.6) of the Hypertext Transfer Protocol \(HTTP/1\.1\)\. This feature is currently supported in the AWS SDKs but not in the Amazon SageMaker Python SDK\.  
+Provides additional information in the response about the inference returned by a model hosted at an Amazon SageMaker endpoint\. The information is an opaque value that is forwarded verbatim\. You could use this value, for example, to return an ID received in the `CustomAttributes` header of a request or other metadata that a service endpoint was programmed to produce\. The value must consist of no more than 1024 visible US\-ASCII characters as specified in [Section 3\.3\.6\. Field Value Components](https://tools.ietf.org/html/rfc7230#section-3.2.6) of the Hypertext Transfer Protocol \(HTTP/1\.1\)\. If the customer wants the custom attribute returned, the model must set the custom attribute to be included on the way back\.   
+This feature is currently supported in the AWS SDKs but not in the Amazon SageMaker Python SDK\.  
 Length Constraints: Maximum length of 1024\.  
 Pattern: `\p{ASCII}*` 
 
@@ -105,7 +106,7 @@ For information about the errors that are common to all actions, see [Common Err
 HTTP Status Code: 500
 
  **ModelError**   
- Model \(owned by the customer in the container\) returned an error 500\.   
+ Model \(owned by the customer in the container\) returned 4xx or 5xx error code\.   
 HTTP Status Code: 424
 
  **ServiceUnavailable**   

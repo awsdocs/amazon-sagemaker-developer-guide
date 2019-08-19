@@ -57,7 +57,7 @@ Required: No
  ** [ProductionVariants](#API_CreateEndpointConfig_RequestSyntax) **   <a name="SageMaker-CreateEndpointConfig-request-ProductionVariants"></a>
 An list of `ProductionVariant` objects, one for each model that you want to host at this endpoint\.  
 Type: Array of [ProductionVariant](API_ProductionVariant.md) objects  
-Array Members: Minimum number of 1 item\.  
+Array Members: Minimum number of 1 item\. Maximum number of 10 items\.  
 Required: Yes
 
  ** [Tags](#API_CreateEndpointConfig_RequestSyntax) **   <a name="SageMaker-CreateEndpointConfig-request-Tags"></a>

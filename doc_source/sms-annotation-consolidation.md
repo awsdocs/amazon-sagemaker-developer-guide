@@ -7,6 +7,7 @@ You can decide how many workers should annotate each object in your dataset\. Mo
 + **Image classification**—3 workers
 + **Bounding boxes**—5 workers
 + **Semantic segmentation**—3 workers
++ **Named entity recognition**—3 workers
 
 You can override the default number of workers that label a data object using the console or the [CreateLabelingJob](API_CreateLabelingJob.md) operation\.
 
@@ -14,6 +15,10 @@ Ground Truth provides an annotation consolidation function for each of its prede
 + Multi\-class annotation consolidation for image and text classification uses a variant of the Expectation Maximization approach to annotations\. It estimates parameters for each worker and uses Bayesian inference to estimate the true class based on the class annotations from individual workers\.
 + Bounding box annotation consolidates bounding boxes from multiple workers\. This function finds the most similar boxes from different workers based on the Jaccard index, or intersection over union, of the boxes and averages them\.
 + Semantic segmentation annotation consolidation treats each pixel in a single image as a multi\-class classification\. This function treats the pixel annotations from workers as "votes," with more information from surrounding pixels incorporated by applying a smoothing function to the image\.
++ Named entity recognition clusters text selections by Jaccard similarity and calculates selection boundaries based on the mode, or median if the mode isn't clear\. The label resolves to the most assigned entity label in the cluster, breaking ties by random selection\.
+
+**Note**  
+If you want to run worker responses through different algorithms on your own, that data is stored in the `[project-name]/annotations/worker-response` folder of the Amazon S3 bucket where you direct the job output\.
 
 ## Creating Your Own Annotation Consolidation Function<a name="consolidation-lambda"></a>
 

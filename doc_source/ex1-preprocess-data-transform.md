@@ -32,7 +32,7 @@ The [XGBoost Algorithm](xgboost.md) expects comma\-separated values \(CSV\) for 
           
           
           key = "{}/{}/examples".format(prefix,data_partition_name)
-          url = 's3n://{}/{}'.format(bucket, key)
+          url = 's3://{}/{}'.format(bucket, key)
           boto3.Session().resource('s3').Bucket(bucket).Object(key).upload_file('data.csv')
           print('Done writing to {}'.format(url))
           

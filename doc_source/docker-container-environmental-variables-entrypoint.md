@@ -19,7 +19,7 @@ For example, the container used in the example in [Get Started: Use Amazon SageM
 ENV SAGEMAKER_PROGRAM train.py
 ```
 
- The Amazon SageMaker [PyTorch](https://github.com/aws/sagemaker-mxnet-container/blob/master/docker/1.3.0/final/Dockerfile.cpu#L63) container sets the `ENV` variable as follows\.
+ The Amazon SageMaker PyTorch container sets the `ENV` variable as follows\.
 
 ```
 ENV SAGEMAKER_PROGRAM cifar10.py
@@ -29,7 +29,7 @@ In the example, cifar10\.py is the program that implements the training algorith
 
 `SAGEMAKER_TRAINING_MODULE`
 
-When training an algorithm, specify the location of the module that contains the training logic by setting the `SAGEMAKER_TRAINING_MODULE` environment variable\. An Amazon SageMaker container invokes this module when the container starts training\. For example, you set this environment variable in [MXNet](https://github.com/aws/sagemaker-mxnet-container/blob/master/docker/1.3.0/final/Dockerfile.cpu#L63) as follows\.
+When training an algorithm, specify the location of the module that contains the training logic by setting the `SAGEMAKER_TRAINING_MODULE` environment variable\. An Amazon SageMaker container invokes this module when the container starts training\. For example, you set this environment variable in MXNet as follows\.
 
 ```
 ENV SAGEMAKER_TRAINING_MODULE sagemaker_mxnet_container.training:main

@@ -99,7 +99,7 @@ estimator =
                 sagemaker_session=sagemaker_session,
                 metric_definitions=[
                    {'Name': 'train:error', 'Regex': 'Train_error=(.*?);'},
-                   {'Name': 'validation:error, 'Regex': 'Valid_error=(.*?);'
+                   {'Name': 'validation:error', 'Regex': 'Valid_error=(.*?);'
                 ]
             )
 ```

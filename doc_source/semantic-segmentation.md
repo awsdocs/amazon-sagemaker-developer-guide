@@ -108,8 +108,6 @@ mapped_label = [1, 0, 2]
 
 With label mappings, you can use different annotation systems and annotation software to obtain data without a lot of preprocessing\. You can provide one label map per channel\. The files for a label map in the `label_map` channel must follow the naming conventions for the four directory structure\. If you don't provide a label map, the algorithm assumes a scale of 1 \(the default\)\.
 
-Amazon SageMaker Semantic Segmentation requires access to the internet and does not support *Network Isolation Mode*\. If a VpcConfig was used, the subnet and security groups must allow outbound access to the internet for the algorithm to work\.
-
 ### Training with the Augmented Manifest Format<a name="semantic-segmentation-inputoutput-training-augmented-manifest"></a>
 
 The augmented manifest format enables you to do training in Pipe mode using image files without needing to create RecordIO files\. The augmented manifest file contains data objects and should be in [JSON Lines](http://jsonlines.org/) format, as described in the [CreateTrainingJob](API_CreateTrainingJob.md) request API\. Each line in the manifest is an entry containing the Amazon S3 URI for the image and the URI for the annotation image\.

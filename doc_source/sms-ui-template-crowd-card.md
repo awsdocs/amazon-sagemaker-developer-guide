@@ -6,10 +6,6 @@ A box with an elevated appearance for displaying information\.
 
 The following attributes are supported by this element\.
 
-### alt<a name="card-attributes-alt"></a>
-
-The text that displays when the mouse hovers over the box\.
-
 ### heading<a name="card-attributes-heading"></a>
 
 The text displayed at the top of the box\.

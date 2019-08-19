@@ -15,6 +15,8 @@ For more information, see [Managing Your Workforce](sms-workforce-management.md)
 
 You store your datasets in Amazon S3 buckets\. The buckets contain three things: The data to be labeled, an input manifest file that Ground Truth uses to read the data files, and an output manifest file\. The output file contains the results of the labeling job\. For more information, see [Using Input and Output Data](sms-data.md)\.
 
+Events from your labeling jobs appear in Amazon CloudWatch under the `/aws/sagemaker/LabelingJobs` group\. CloudWatch uses the labeling job name as the name for the log stream\.
+
 ## Are You a First\-time User of Ground Truth?<a name="what-first-time"></a>
 
 If you are a first\-time user of Ground Truth, we recommend that you do the following:

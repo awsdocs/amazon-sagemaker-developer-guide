@@ -36,7 +36,7 @@ Each notebook instance's /tmp directory provides a minimum of 10 GB of storage i
          To give access to other S3 buckets from your notebook instance
          + If you're not concerned about users in your AWS account accessing your data, choose **Any S3 bucket**\.
          + If your account has sensitive data \(such as Human Resources information\), restrict access to certain buckets by choosing **Specific S3 buckets**\. You can update the permissions policy attached to the role you are creating later\.
-         + To explicitly control access, restrict access by choosing **None**\. Use bucket and object names and tags as supported by the `AmazonSageMakerFullAccess` policy\. For more information, see [Using the AWS Managed Permission Policy \(AmazonSageMakerFullAccess\) for an Execution Role](sagemaker-roles.md#sagemaker-roles-amazonsagemakerfullaccess-policy)\.
+         + To explicitly control access, restrict access by choosing **None**\. Use bucket and object names and tags as supported by the `AmazonSageMakerFullAccess` policy\. For more information, see [AmazonSageMakerFullAccess Policy](sagemaker-roles.md#sagemaker-roles-amazonsagemakerfullaccess-policy)\.
 
       1. Choose **Create role**\.
 
@@ -89,6 +89,6 @@ If you disable root access, you will still be able to set up lifecycle configura
 
    The dashboard provides access to:
    + Sample notebooks\. Amazon SageMaker provides sample notebooks that contain complete code walkthroughs\. These walkthroughs show how to use Amazon SageMaker to perform common machine learning tasks\. For more information, see [Use Example Notebooks](howitworks-nbexamples.md)\.
-   + The kernels for Jupyter, including those that provide support for Python 2 and 3, Apache MXNet, TensorFlow, and PySpark\. To create a new notebook and choose a kernel for that notebook, use the **New** menu\.
+   + The kernels for Jupyter, including those that provide support for Python 2 and 3, Apache MXNet, TensorFlow, PySpark, and R\. To create a new notebook and choose a kernel for that notebook, use the **New** menu\.
 
    For more information about Jupyter notebooks, see [The Jupyter notebook](https://jupyter-notebook.readthedocs.io/en/stable/)\.

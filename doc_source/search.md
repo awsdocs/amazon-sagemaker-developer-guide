@@ -1,31 +1,65 @@
-# Manage Machine Learning Experiments with Search<a name="search"></a>
+# Manage Machine Learning Experiments with Amazon SageMaker Model Tracking Capability<a name="search"></a>
 
-To find, organize, and evaluate experiments, use Amazon SageMaker search\. Search can help you to manage your training jobs, models and resources\.
+To organize, find, and evaluate machine leaning model experiments, use Amazon SageMaker model tracking capabilities\. Developing models typically requires extensive experimenting with different datasets, algorithms, and parameter values\. Using the model tracking capability, you can search, filter and sort through hundreds and possibly thousands of experiments using model attributes such as parameters, metrics and tags\. This helps you find the best model for your use case quickly\.
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/search-1.png)
+Amazon SageMaker model tracking capability can be used to:
++ Find, organize, or evaluate training jobs using properties, hyperparameters, performance metrics, or any other metadata\.
++ Find the best performing model by ranking the results of training jobs and models based on metrics, such as training loss or validation accuracy\.
++ Trace the lineage of a model back to the training job and its related resources, such as the training datasets\.
 
-Amazon SageMaker search is ideal for:
-+ Finding, organizing, or evaluating training jobs using properties, hyperparameters, or any other metadata
-+ Using a search result to rank training jobs and models based on metrics, such as training loss or validation accuracy to find the best performing one
-+ Tracing the lineage of a model back to the training job and its related resources, such as the training datasets
+## Sample Notebooks that Manage ML Experiments with Amazon SageMaker Model Tracking Capability<a name="search-sample-notebooks"></a>
+
+For a sample notebook that uses Amazon SageMaker model tracking capability to manage ML experiments, see [Managing ML Experimentation using Amazon SageMaker Model Tracking Capability](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/advanced_functionality/search/ml_experiment_management_using_search.ipynb)\. For instructions on how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Notebook Instances](nbi.md)\. After you have created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all of the Amazon SageMaker samples\. The notebook managing ML experiments is located in the **Advanced Functionality** section\. To open a notebook, choose its **Use** tab and choose **Create copy**\. If you have questions, post them on our [developer forum](https://forums.aws.amazon.com/forum.jspa?forumID=285)\.
 
 **Topics**
-+ [Use Search to Find, Organize, and Evaluate Training Jobs](#search-organize)
-+ [Search for Information About Related Resources](#search-lineage)
++ [Sample Notebooks that Manage ML Experiments with Amazon SageMaker Model Tracking Capability](#search-sample-notebooks)
++ [Use Model Tracking to Find, Organize, and Evaluate Training Jobs \(Console\)](#search-organize-console)
++ [Use Model Tracking to Find and Evaluate Training Jobs \(API\)](#search-organize-api)
++ [Verify the Contents of Your Training Jobs](#search-verify)
++ [Trace the Lineage of your Models](#search-lineage)
 
-## Use Search to Find, Organize, and Evaluate Training Jobs<a name="search-organize"></a>
+## Use Model Tracking to Find, Organize, and Evaluate Training Jobs \(Console\)<a name="search-organize-console"></a>
 
-To find a specific training job, model, or resource, use Amazon SageMaker search as you would any search engine\. Amazon SageMaker searches for the keyword in all searchable items, which include training jobs, models, hyperparameters, metadata, tags, and URLs\. You can use search with tags to help organize your training jobs\. To help refine your search results, you can search using multiple search criteria\.
+To create and test a model, you need to conduct experiments\. You can perform an experiment to test different algorithms, tune hyperparameters, or use different datasets\. Typically, you study the effect of the changes made in these experiments on the performance of a model\. You can organize these experiments by tagging them with key/ value pairs that are seaerchable\.
 
- To create a model, you need to experiment\. When you perform an experiment, you might test a different algorithm, tune a hyperparameter, or use a different dataset\. You make changes in steps, then study their effect on the model’s performance\. Eventually, you need to evaluate all of your models against one or several metrics and choose the best one\. You can use a search result to list models and evaluate them\. 
+To find a specific training job, model, or resource, use Amazon SageMaker model tracking to search on keywords in any items that are searchable\. Searchable items include training jobs, models, hyperparameters, metadata, tags, and URLs\. You can use model tracking with tags to help organize your training jobs\. To refine your tracking results, you can search using multiple criteria\.
 
-### Find Training Jobs \(Console\)<a name="search-organize-console"></a>
+To choose the optimal model for deployment, you need to evaluate how they performed against one or more metrics\. You can use model tracking results to list, sort, and evaluate the performance of the models in your experiments\. 
 
-**To use search \(console\)**
+**Topics**
++ [Use Tags to Track Training Jobs \(Console\)](#search-tags-console)
++ [Find Training Jobs \(Console\)](#search-find-jobs-console)
++ [Evaluate Models Returned by a Search \(Console\)](#search-evaluate-console)
+
+### Use Tags to Track Training Jobs \(Console\)<a name="search-tags-console"></a>
+
+You can use tags as search criteria\. To group training jobs, create tags with descriptive keys and value\. For example, create tag keys for: project, owner, customer, and industry\. 
+
+**Add tags to training job and search for taged jobs \(console\)**
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker](https://console.aws.amazon.com/sagemaker)\.
 
-1. In the navigation pane, choose **Search**\.
+1. In the left navigation pane, choose **Training jobs** and select **Create training job**\. 
+
+1. Scroll down to the bottom of the page to enter the Key and Value for the tag\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/search-1-chooose-unque-label.png)
+
+1. To add more tags to the search, choose **Add tag** and add a another tag key\-value pair for each new tag that you want to add\.
+
+1. After you have trained models that have been tagged, you can search for the models that had them added\. In the left navigation pane, choose **Search**\.
+
+1. For **Property**, enter a tag key and a tag value\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/search-2-find-training-jobs-2.png)
+
+When you use tags in a search, in the results, the key is a column name and the values are entries in rows\.
+
+### Find Training Jobs \(Console\)<a name="search-find-jobs-console"></a>
+
+**To use Amazon SageMaker model tracking capability \(console\)**
+
+1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker](https://console.aws.amazon.com/sagemaker)\.
+
+1. In the left navigation pane, choose **Search**\.
 
 1. For **Resource type**, choose **Training jobs**\.
 
@@ -41,29 +75,18 @@ To find a specific training job, model, or resource, use Amazon SageMaker search
 
 1. Choose **Search**\.
 
-#### Use Tags to Search for Training Jobs<a name="search-tags-console"></a>
-
-You can use tags as search criteria\. To group training jobs, create tags with descriptive keys and value\. For example, create tag keys for: project, owner, customer, and industry\. 
-
-**To use tags in a search**
-
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker](https://console.aws.amazon.com/sagemaker)\.
-
-1.  In the navigation pane, choose **Search**\. 
-
-1. For **Tags**, enter a tag key and a tag value\.
-
-1. To add more tags to the search, choose **Add tag** and add a another tag key\-value pair for each new tag that you want to add\.
-
-When you use tags in a search, in the results, the key is a column name and the values are entries in rows\.
-
-#### Evaluate Models Returned by a Search<a name="search-evaluate-console"></a>
+### Evaluate Models Returned by a Search \(Console\)<a name="search-evaluate-console"></a>
 
 To evaluate different models, find their metrics with a search\. To highlight metrics, adjust the view to show only metrics and important hyperparameters\. 
 
 **To change the viewable metadata, hyperparameters, and metrics:**
 
-1. After performing a search, at the search results table, choose the cog icon to show the preferences window\.
+1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker](https://console.aws.amazon.com/sagemaker)\.
+
+1. In the left navigation pane, choose **Search** and run a search on training jobs for relevant parameters\. The results are displayed in a table\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/search-3-sort-on-performance.png)
+
+1. After performing a search, choose the cog icon at the search results table to show the preferences window\.
 
 1. To show or hide a **Hyperparameter** or **Metric**, use its toggle switch\.
 
@@ -71,9 +94,18 @@ To evaluate different models, find their metrics with a search\. To highlight me
 
 After viewing metrics and important hyperparameters, you can compare and contrast the result\. From there, you can choose the best model to host or investigate the models that are performing poorly\.
 
-### Use Search to Find Training Jobs \(API\)<a name="search-api"></a>
+## Use Model Tracking to Find and Evaluate Training Jobs \(API\)<a name="search-organize-api"></a>
 
- To use search, create a search parameter, then use the search function found in `smclient` of the low\-level SDK for Python \(Boto 3\)\. 
+You can also use [Search](API_Search.md) to the find and evaluate training jobs or to get suggestions for items used in experiments that are searchable\.
+
+**Topics**
++ [Use Search to Find Training Jobs Tagged with Specific Values \(API\)](#search-api)
++ [Evaluate Models \(API\)](#search-organize-api)
++ [Get Suggestions for a Search \(API\)](#search-suggestion-api)
+
+### Use Search to Find Training Jobs Tagged with Specific Values \(API\)<a name="search-api"></a>
+
+To use Amazon SageMaker model tracking capability, create a search parameter, `search_params`, then use the search function found in the `smclient` of the AWS SDK for Python \(Boto 3\)\. 
 
 The following example shows how to use search using the API: 
 
@@ -99,9 +131,9 @@ results = smclient.search(**search_params)
 
 ### Evaluate Models \(API\)<a name="search-organize-api"></a>
 
-To evaluate different models, see the metrics in a search result\. To evaluate models using the low\-level SDK for Python \(Boto 3\), create a table and plot it\.
+To evaluate different models, see the metrics in a search result\. To evaluate models using the AWS SDK for Python \(Boto 3\), create a table and plot it\.
 
-The following example shows how to use search to evaluate models and show the results in a table:
+The following example shows how to use model tracking capability to evaluate models and to display the results in a table:
 
 ```
 import pandas
@@ -125,9 +157,9 @@ from IPython.display import display, HTMLdisplay(HTML(df.to_html()))
 
 ### Get Suggestions for a Search \(API\)<a name="search-suggestion-api"></a>
 
-To get suggestions for a search, use `get_search_suggestions` function in the API\.
+To get suggestions for a search, use [GetSearchSuggestions](API_GetSearchSuggestions.md) in the API\.
 
-The following code example shows a `get_search_suggestions` request syntax:
+The following code example for AWS SDK for Python \(Boto 3\) shows a `get_search_suggestions` request for items containing "linear":
 
 ```
 search_suggestion_params={
@@ -140,7 +172,7 @@ search_suggestion_params={
 }
 ```
 
-The following code example shows an expected `get_search_suggestions` response syntax:
+The following code shows an example of an expected response for `get_search_suggestions`:
 
 ```
 {
@@ -154,33 +186,27 @@ The following code example shows an expected `get_search_suggestions` response s
 
 After you get the search suggestions, you can use one of the property names in a search\.
 
-### Verify the Contents of Your Training Jobs<a name="search-verify"></a>
+## Verify the Contents of Your Training Jobs<a name="search-verify"></a>
 
-You can use Amazon SageMaker search to verify which datasets were used in training, where the holdout datasets were used, and other details about training jobs\. For example, if you need to verify that a dataset was used in a training job for an audit or to verify compliance, use Amazon SageMaker search\.
+You can use Amazon SageMaker model tracking capability to verify which datasets were used in training, where the holdout datasets were used, and other details about training jobs\. Use it, for example, if you need to verify that a dataset was used in a training job for an audit or to verify compliance\.
 
-To check if a holdout dataset or any other dataset was used in a training job, search for its Amazon S3 URL\. Amazon SageMaker uses the dataset as a search parameter and lists the training jobs that used the dataset\. If your search result is empty, it proves that the dataset was not used in a training job\.
+To check if a holdout dataset or any other dataset was used in a training job, search for its Amazon S3 URL\. Amazon SageMaker model tracking uses the dataset as a search parameter and lists the training jobs that used the dataset\. If your search result is empty, it means that the dataset was not used in a training job\.
 
-## Search for Information About Related Resources<a name="search-lineage"></a>
+## Trace the Lineage of your Models<a name="search-lineage"></a>
 
-You can use Amazon SageMaker search to see information about training jobs and the related model or resources\. For example, if you find that a hosted model's performance has declined, you can review its training job and the resources used to determine what's causing the problem\.
+You can use Amazon SageMaker model tracking to trace information about the lineage of training jobs and model resources related to it, including the dataset, algorithm, hyperparameters, and metrics used\. For example, if you find that the performance of a hosted model has declined, you can review its training job and the resources it used to determine what is causing the problem\. This investigation can be done from the console or by using the API\.
 
-There are three types of investigations:
-+ You can investigate a model, navigate to review the details for the training job, and then review the job's dataset, algorithm, hyperparameters, and metrics\.
-+ You can investigate a dataset, then inspect the training job and its related settings, investigate the model, and finally investigate the endpoint\.
-+ You can investigate a model's containers\. A model might be composed of a single model container or multiple model containers\. A model made of multiple model containers is called a *pipeline model\.* Each model container is a distinct model that contains links to the training job, dataset, and associated environment variables\.
+### Use Single\-click on the Amazon SageMaker Console to Trace the Lineage of Your Models \(Console\)<a name="search-lineage-console"></a>
 
-**Note**  
-In Amazon SageMaker, a pipeline model can have up to three model containers\. These pipelines also support the deployment of a linear sequence of pretrained model containers, where the output of one machine learning model provides the input to the next\. A pipeline model is useful for solving classification problems, where each supervised model is trained using a specific subset of a dataset that is designated as a class\. When generating inference on a pipeline model, you get results from each model container\.
+In the left navigation pane of the Amazon SageMaker, choose **Endpoints**, and select the relevant endpoint from the list of your deployed endpoints\. Scroll to **Endpoint Configuration Settings**, which lists all the model versions deployed at the endpoint\. Here you have access to a hyperlink to the Model Training Job that created that model in the first place\. For an example that used a linear\-learner model, you would see:
 
-### Search for Information About Related Resources \(Console\)<a name="search-lineage-console"></a>
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/search-4-trace-model-lineage.png)
 
-To see a list of URLs to a model or training job's resources, see the details page for the model or training job\. To access the details page, choose **Training jobs** or **Models** in the navigation pane\.
-
-### Search for Information About Related Resources \(API\)<a name="search-lineage-api"></a>
+### Use Code to Trace the Lineage of Your Models \(API\)<a name="search-lineage-api"></a>
 
 To trace a model's lineage, you need to obtain the model's name, then use it to search for training jobs\.
 
-The following example shows how to use search to trace a model's lineage using the API:
+The following example shows how to use model tracking capability to trace a model's lineage using the API:
 
 ```
 # Get the name of model deployed at endpoint

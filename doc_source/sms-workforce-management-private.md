@@ -46,9 +46,7 @@ You provide the following information to create the workforce and work team\.
 
 When you create the labeling job an email is sent to each worker inviting them to join the workforce\. Once the workforce is created, you can add, delete, and disable workers using the Amazon SageMaker console or the Amazon Cognito console\.
 
-### Creating a workforce using the console<a name="create-console"></a>
-
-You can add up to 100 workers when you create the workforce, and then add additional workers if necessary\.
+### Creating a private workforce using the console<a name="create-console"></a>
 
 **To create a private workforce using the console**
 
@@ -56,13 +54,24 @@ You can add up to 100 workers when you create the workforce, and then add additi
 
 1. Choose **Labeling workforces** from the left menu\.
 
-1. Under **Add workers using Amazon Cognito**, choose **Create a new Amazon Cognito user pool with worker email addresses**\.
+1. Select the **Private** tab\.
 
-1. Under **Email addresses**, add the email addresses of your private workforce\. You can add up to 100 addresses\. Email addresses are case\-sensitive\. Your workers must log in using the same case as the address was initially entered\. If you want to add more addresses, you can update the workforce to include them later\.
+1. Click the **Create private team** button\. This process will create a private workforce and a work team\.
 
-1. Under **Invitation content**, enter information to customize the email that is sent to your private workforce to invite them to participate\. Choose **Preview invitation** to see a preview of the email that is sent to invite your workforce\.
+1. Choose to **Invite new workers by email** or **Import workers from existing Amazon Cognito user groups**\.
 
-1. Choose **Create private workforce** to start creating your private workforce\.
+1. **To invite new workers by email**\.
+   + Paste or type a list of email addresses, separated by commas, into the email addresses box\. You may have up to 50 email addresses in this list\.
+   + Enter an organization name and contact email\.
+   + Optionally select an SNS topic to which to subscribe the team so workers are notified by email when new labeling jobs become available\.
+   + Click the **Create private team** button\.
+
+1. **To Import workers from existing Amazon Cognito user groups**\.
+   + Choose a user pool you have created\. User pools require a domain and an existing user group\. If you get an error that the domain is missing, set it in the **Domain name** options within the **App integration** section of the Amazon Cognito control console for your group\.
+   + Select an app client\. We recommend using a SageMaker generated client\.
+   + Select a user group from your pool to import its members\.
+   + Optionally select an SNS topic to which to subscribe the team so workers are notified by email when new labeling jobs become available\.
+   + Click the **Create private team** button\.
 
 After you have created the workforce, Ground Truth automatically creates a work team called **Everyone\-in\-private\-workforce**\. You can use this work team to assign a labeling job to your entire workforce\.
 
@@ -94,4 +103,6 @@ You can also create a work team in the Ground Truth console and add members from
 
    Workers in a workteam subscribed to a topic receive notifications when a new job for that team becomes available and when one is about to expire\.
 
-After you have created a work team, you can choose its name in the list of work teams to see more information about the team and change or set the Amazon SNS topic to which its members are subscribed\. Teams made from more than one imported user group must be edited in the Amazon Cognito console; otherwise you can add and remove workers using the team detail page\.
+   Read [Create and manage Amazon SNS topics for your work teams](sms-workforce-management-private-sns.md) for more information on creating and managing the Amazon SNS topic\.
+
+After you have created a work team, you can choose its name in the list of work teams to see more information about the team and change or set the Amazon SNS topic to which its members are subscribed\. Any members of the team who were added to the team prior to the team being subscribed to a topic will need to be subscribed to that topic manually\. Teams made from more than one imported user group must be edited in the Amazon Cognito console; otherwise you can add and remove workers using the team detail page\.

@@ -75,7 +75,7 @@ Pattern: `.*`
  ** [ProductionVariants](#API_DescribeEndpointConfig_ResponseSyntax) **   <a name="SageMaker-DescribeEndpointConfig-response-ProductionVariants"></a>
 An array of `ProductionVariant` objects, one for each model that you want to host at this endpoint\.  
 Type: Array of [ProductionVariant](API_ProductionVariant.md) objects  
-Array Members: Minimum number of 1 item\.
+Array Members: Minimum number of 1 item\. Maximum number of 10 items\.
 
 ## Errors<a name="API_DescribeEndpointConfig_Errors"></a>
 

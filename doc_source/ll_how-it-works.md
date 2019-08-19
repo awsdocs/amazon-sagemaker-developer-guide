@@ -4,15 +4,12 @@ There are three steps involved in the implementation of the linear learner algor
 
 ## Step 1: Preprocess<a name="step1-preprocessing"></a>
 
-If the option is turned on, the algorithm first goes over a small sample of the data to learn its characteristics\. The algorithm learns the mean value and the standard deviation for every feature and label\. It uses this information during training\. 
+Normalization, or feature scaling, is an important preprocessing step for certain loss functions that ensures the model being trained on a dataset does not become dominated by the weight of a single feature\. The Amazon SageMaker Linear Learner algorithm has a normalization option to assist with this preprocessing step\. If normalization is turned on, the algorithm first goes over a small sample of the data to learn the mean value and standard deviation for each feature and for the label\. Each of the features in the full dataset is then shifted to have mean of zero and scaled to have a unit standard deviation\.
 
 **Note**  
-Input data for the linear learner algorithm must be shuffled\. If it isn't—for example, if the data is ordered by label—the algorithm fails\. 
+For best results, ensure your data is shuffled before training\. Training with unshuffled data may cause training to fail\. 
 
-You can configure the algorithm to normalize the data with the \(`normalize_label`\) hyperparameter\. Label normalizationshifts the label to have a mean of zero and scales it to have unit standard deviation\. If you want the algorithm to normalize the data for you, specify the `auto` \(default\) value for the `normalize_data` hyperparameter\. When auto normalization is enabled, the algorithm does the following: 
-+ For regression problems, shifts and scales the label\. For classification problems, leaves the label as is\.
-+ Always scales the features\.
-+ Shifts the features only for dense data\.
+You can configure whether the linear learner algorithm normalizes the feature data and the labels using the `normalize_data` and `normalize_label`\) hyperparameters respectively\. Normalization is enabled by default for both features and labels for regression\. Only the features can be normalized for binary classification and this is the default behavior\. 
 
 ## Step 2: Train<a name="step2-training"></a>
 
@@ -22,7 +19,7 @@ During training, you simultaneously optimize multiple models, each with slightly
 
 ## Step 3: Validate and Set the Threshold<a name="step3-validation"></a>
 
-When training is done, you can evaluate the models on a validation set\. For regression problems, output the model that gets the best score on the validation set\. For classification problems, use a sample of \(raw prediction, label\) pairs to tune the threshold for a provided objective\. The raw prediction is the output of the trained linear function\. Allow classification objectives based on the predicted label, such as F1 measure, accuracy, precision@recall, and so on\. Choose the model that achieves the best score on the validation set\. 
+When training multiple models in parallel, the models are evaluated against a validation set to select the most optimal model once training is complete\. For regression, the most optimal model is the one that achieves the best loss on the validation set\. For classification, a sample of the validation set is used to calibrate the classification threshold\. The most optimal model selected is the one that achieves the best binary classification selection criteria on the validation set\. Examples of such such criteria include the F1 measure, accuracy, and cross\-entropy loss\. 
 
 **Note**  
-If you don't provide a validation set, the algorithm optimizes over the training set\. In that case, you do not need to explore other regularization procedures\. 
+If the algorithm is not provided a validation set, then evaluating and selecting the most optimal model is not possible\. To take advantage of parallel training and model selection ensure you provide a validation set to the algorithm\. 

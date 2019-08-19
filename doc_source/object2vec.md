@@ -49,7 +49,7 @@ The type of Amazon Elastic Compute Cloud \(Amazon EC2\) instance that you use de
 
 ### Instance Recommendation for Training<a name="object2vec--instances-training"></a>
 
-When training a model using the Object2Vec algorithm on a CPU, start with an ml\.m5\.2xlarge instance\. For training on a GPU, start with an ml\.p2\.xlarge instance\. If the training takes too long on this instance, you can use a larger instance, such as an ml\.m5\.4xlarge or an ml\.m5\.6xlarge instance Currently, the Object2Vec algorithm can train only on a single machine\. However, it does offer support for multiple GPUs\.
+When training a model using the Object2Vec algorithm on a CPU, start with an ml\.m5\.2xlarge instance\. For training on a GPU, start with an ml\.p2\.xlarge instance\. If the training takes too long on this instance, you can use a larger instance, such as an ml\.m5\.4xlarge or an ml\.m5\.12xlarge instance Currently, the Object2Vec algorithm can train only on a single machine\. However, it does offer support for multiple GPUs\.
 
 ### Instance Recommendation for Inference<a name="object2vec--instances-inference"></a>
 

@@ -14,10 +14,6 @@ A Boolean switch that, if present, allows the message to be closed by the worker
 
 A string that specifies the type of message to be displayed\. The possible values are "info" \(the default\), "success", "error", and "warning"\.
 
-### visible<a name="alert-attributes-visible"></a>
-
-A Boolean switch that, if present, prevents the message from being displayed\.
-
 ## Element Hierarchy<a name="alert-element-hierarchy"></a>
 
 This element has the following parent and child elements\.

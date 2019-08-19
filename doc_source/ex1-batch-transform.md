@@ -2,7 +2,7 @@
 
 To get inference for an entire dataset, use batch transform\. Amazon SageMaker stores the results in Amazon S3\.
 
-For information about batch transforms, see [Get Inferences for an Entire Dataset with Batch Transform](how-it-works-batch.md)\. For an example that uses batch transform, see the batch transform sample notebook at [https://github\.com/awslabs/amazon\-sagemaker\-examples/tree/master/advanced\_functionality/batch\_transform](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/advanced_functionality/batch_transform)\.
+For information about batch transforms, see [Get Inferences for an Entire Dataset with Batch Transform](how-it-works-batch.md)\. For an example that uses batch transform, see the batch transform sample notebook at [https://github\.com/awslabs/amazon\-sagemaker\-examples/tree/master/sagemaker\_batch\_transform/introduction\_to\_batch\_transform](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker_batch_transform/introduction_to_batch_transform)\.
 
 **Topics**
 + [Deploy a Model with Batch Transform \(Amazon SageMaker High\-level Python Library\)](#ex1-batch-transform-api-high-level)
@@ -41,7 +41,7 @@ To run a batch transform job, call the `create_transform_job`\. method using the
 
 For each of the following steps, paste the code in a cell in the Jupyter notebook you created in [Step 3: Create a Jupyter Notebook](ex1-prepare.md) and run the cell\.
 
-1. Name the batch transform job and specify where the input data \(the test dataset\) is stored and where to store the job;s output\.
+1. Name the batch transform job and specify where the input data \(the test dataset\) is stored and where to store the job's output\.
 
    ```
    batch_job_name = 'xgboost-mnist-batch' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())

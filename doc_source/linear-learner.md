@@ -3,8 +3,8 @@
 *Linear models* are supervised learning algorithms used for solving either classification or regression problems\. For input, you give the model labeled examples \(*x*, *y*\)\. *x* is a high\-dimensional vector and *y* is a numeric label\. For binary classification problems, the label must be either 0 or 1\. For multiclass classification problems, the labels must be from 0 to `num_classes` \- 1\. For regression problems, *y* is a real number\. The algorithm learns a linear function, or, for classification problems, a linear threshold function, and maps a vector *x* to an approximation of the label *y*\. 
 
 The Amazon SageMaker linear learner algorithm provides a solution for both classification and regression problems\. With the Amazon SageMaker algorithm, you can simultaneously explore different training objectives and choose the best solution from a validation set\. You can also explore a large number of models and choose the best\. The best model optimizes either of the following:
-+ Continuous objective, such as mean square error, cross entropy loss, absolute error, and so on 
-+ Discrete objectives suited for classification, such as F1 measure, precision@recall, or accuracy 
++ Continuous objectives, such as mean square error, cross entropy loss, absolute error\.
++ Discrete objectives suited for classification, such as F1 measure, precision, recall, or accuracy\. 
 
 Compared with methods that provide a solution for only continuous objectives, the Amazon SageMaker linear learner algorithm provides a significant increase in speed over naive hyperparameter optimization techniques\. It is also more convenient\. 
 

@@ -6,10 +6,6 @@ A button with an image placed in the center\. When the user touches the button, 
 
 The following attributes are supported by this element\.
 
-### alt<a name="icon-button-attributes-alt"></a>
-
-The text that displays when the mouse hovers over the box\.
-
 ### disabled<a name="icon-button-attributes-disabled"></a>
 
 A Boolean switch that, if present, displays the button as disabled and prevents clicks\.

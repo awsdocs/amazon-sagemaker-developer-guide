@@ -13,13 +13,13 @@ The following table provides links to the GitHub repositories that contain the s
 | PyTorch |  [Amazon SageMaker PyTorch Containers](https://github.com/aws/sagemaker-python-sdk#pytorch-sagemaker-estimators )  |  [SageMaker PyTorch Estimators and Models](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/pytorch/README.rst)  | 
 
 If you are not using the Amazon SageMaker Python SDK and one of its estimators to manage the container, you have to retrieve the relevant pre\-built container\. The Amazon SageMaker prebuilt Docker images are stored in Amazon Elastic Container Registry \(Amazon ECR\)\. To pull an image from an Amazon ECR repo or to push an image to an Amazon ECR repo, use fullname registry address of the image\. Amazon SageMaker uses the following URL patterns for the Deep Learning container images:
-+ URL pattern for Python 3 images for training with TensorFlow\-1\.13 or for training or serving with MXNet\-1\.4\.1 \(except for the Elastic Inference containers `sagemaker-tensorflow-eia` and `sagemaker-mxnet-serving-eia`\):
++ URL pattern for Python 3 images for training with TensorFlow\-1\.13 and later or for training or serving with MXNet\-1\.4\.1 and later \(except for the Elastic Inference containers `sagemaker-tensorflow-eia` and `sagemaker-mxnet-serving-eia`\):
   + `763104351884.dkr.ecr.<region>.amazonaws.com/<ECR repo name>:<framework version>-<processing unit type>-<python version>` 
 
     **Example** of an Amazon ECR URI for the MXNet 1\.4\.1 training image:
 
      `763104351884.dkr.ecr.us-east-1.amazonaws.com/mxnet-training:1.4.1-gpu-py3`\.
-+ URL pattern for Python 3 images for serving with TensorFlow\-1\.13:
++ URL pattern for Python 3 images for serving with TensorFlow\-1\.13 and later:
   + `763104351884.dkr.ecr.<region>.amazonaws.com/tensorflow-inference:<framework version>-<processing unit type>`
 
     **Example** of an Amazon ECR URI for the TensorFlow 1\.13 serving image:
@@ -37,7 +37,7 @@ For the supported values for the components in the URL addresses, see the follow
 
 | URL Component | Description | Supported Values | 
 | --- | --- | --- | 
-| <ECR repo name> |  Specifies the public repository owned by Amazon SageMaker in the Amazon ECR\.  |  Python 3 containers for TensorFlow\-1\.13 and MXNet\-1\.4\.1 and above: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/pre-built-containers-frameworks-deep-learning.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/pre-built-containers-frameworks-deep-learning.html)  | 
+| <ECR repo name> |  Specifies the public repository owned by Amazon SageMaker in the Amazon ECR\.  |  Python 3 containers for TensorFlow\-1\.13 and later and MXNet\-1\.4\.1 and later: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/pre-built-containers-frameworks-deep-learning.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/pre-built-containers-frameworks-deep-learning.html)  | 
 | <framework version> |  Specifies the framework and links to documentation for the estimators for each of the frameworks that explains how to specify the supported versions\.  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/pre-built-containers-frameworks-deep-learning.html)  | 
 | <processing unit type> |  Specifies whether to use a GPU or CPU for training or hosting\.  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/pre-built-containers-frameworks-deep-learning.html)  | 
 | <python version> |  Specifies the version of Python used\. \(Optional if you are using the `tensorflow-inference` container for serving\.\)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/pre-built-containers-frameworks-deep-learning.html)  | 

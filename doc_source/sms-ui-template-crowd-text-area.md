@@ -6,10 +6,6 @@ A field for text input\.
 
 The following attributes are supported by this element\.
 
-### allowed\-pattern<a name="text-area-attributes-allowed-pattern"></a>
-
-A regular expression that is used with the *auto\-validate* attribute to ignore non\-matching characters as the worker types\.
-
 ### auto\-focus<a name="text-area-attributes-auto-focus"></a>
 
 A Boolean switch that, if present, puts the cursor in this element on\-load so that users can immediately begin typing without having to click inside the element\.
@@ -51,10 +47,6 @@ A string used to represent the element's data in the output\.
 ### placeholder<a name="text-area-attributes-placeholder"></a>
 
 A string presented to the user as placeholder text\. It disappears after the user puts something in the input area\.
-
-### read\-only<a name="text-area-attributes-read-only"></a>
-
-A Boolean switch that, when present, disables editing the contents of the element, but allows content to be highlighted and copied\.
 
 ### rows<a name="text-area-attributes-rows"></a>
 

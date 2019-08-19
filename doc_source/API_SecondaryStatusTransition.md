@@ -36,7 +36,7 @@ We no longer support the following secondary statuses:
 +  `PreparingTrainingStack` 
 +  `DownloadingTrainingImage` 
 Type: String  
-Valid Values:` Starting | LaunchingMLInstances | PreparingTrainingStack | Downloading | DownloadingTrainingImage | Training | Uploading | Stopping | Stopped | MaxRuntimeExceeded | Completed | Failed`   
+Valid Values:` Starting | LaunchingMLInstances | PreparingTrainingStack | Downloading | DownloadingTrainingImage | Training | Uploading | Stopping | Stopped | MaxRuntimeExceeded | Completed | Failed | Interrupted | MaxWaitTimeExceeded`   
 Required: Yes
 
  **StatusMessage**   <a name="SageMaker-Type-SecondaryStatusTransition-StatusMessage"></a>

@@ -44,10 +44,6 @@ When you use the `href` attribute to make the button act as a hyperlink to a spe
 
 The general style of the button\. Use "primary" for primary buttons, "normal" for secondary buttons, "link" for tertiary buttons, or "icon" to display only the icon without text\.
 
-### wrap\-text<a name="button-attributes-wrap-text"></a>
-
-A Boolean switch that, if present, prevents the button's text from wrapping\.
-
 ## Element Hierarchy<a name="button-element-hierarchy"></a>
 
 This element has the following parent and child elements\.

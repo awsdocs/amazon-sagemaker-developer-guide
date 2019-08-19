@@ -222,7 +222,33 @@ You can also create your own custom IAM policies to allow permissions for Amazon
 
 ## Control Access to Amazon SageMaker Resources by Using Tags<a name="access-tag-policy"></a>
 
-Control access to groups of Amazon SageMaker resources by attaching tags to the resources and specifying `ResourceTag` conditions in IAM policies\. For example, suppose you've defined two different IAM groups, named `DevTeam1` and `DevTeam2`, in your AWS account\. Suppose also that you've created 10 notebook instances, 5 of which are used for one project, and 5 of which are used for a second project\. You want to allow members of `DevTeam1` to make API calls on notebook instances used for the first project, and members of `DevTeam2` to make API calls on notebook instances used for the second project\. You can control access to API calls by completing the following steps:
+Control access to groups of Amazon SageMaker resources by attaching tags to the resources and specifying `ResourceTag` conditions in IAM policies\.
+
+**Note**  
+Tag\-based policies do not work to restrict the following API calls:  
+ListAlgorithms
+ListCodeRepositories
+ListCompilationJobs
+ListEndpointConfigs
+ListEndpoints
+ListHyperparameterTuningJobs
+ListLabelingJobs
+ListLabelingJobsForWorkteam
+ListModelPackages
+ListModels
+ListNotebookInstanceLifecycleConfigs
+ListNotebookInstances
+ListSubscribedWorkteams
+ListTags
+ListTrainingJobs
+ListTrainingJobsForHyperParameterTuningJob
+ListTransformJobs
+ListWorkteams
+Search
+
+For example, suppose you've defined two different IAM groups, named `DevTeam1` and `DevTeam2`, in your AWS account\. Suppose also that you've created 10 notebook instances, 5 of which are used for one project, and 5 of which are used for a second project\. You want to allow members of `DevTeam1` to make API calls on notebook instances used for the first project, and members of `DevTeam2` to make API calls on notebook instances used for the second project\.
+
+You can control access to API calls by completing the following steps:
 
 1. Add a tag with the key `Project` and value `A` to the notebook instances used for the first project\. For information about adding tags to Amazon SageMaker resources, see [AddTags](API_AddTags.md)\. 
 

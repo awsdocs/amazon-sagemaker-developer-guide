@@ -4,15 +4,7 @@ A group of radio buttons\. Only one radio button within the group can be selecte
 
 ## Attributes<a name="radio-group-attributes"></a>
 
-The following attributes are supported by this element\.
-
-### allow\-empty\-selection<a name="radio-group-attributes-allow-empty-selection"></a>
-
-A Boolean switch that, if present, allows no radio button to be checked\.
-
-### disabled<a name="radio-group-attributes-disabled"></a>
-
-A Boolean switch that, if present, displays the radio group as disabled and prevents buttons in the group from being checked\.
+No special attributes are supported by this element\.
 
 ## Element Hierarchy<a name="radio-group-element-hierarchy"></a>
 

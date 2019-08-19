@@ -34,13 +34,13 @@ Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9])*`
 Required: Yes
 
  ** [OnCreate](#API_UpdateNotebookInstanceLifecycleConfig_RequestSyntax) **   <a name="SageMaker-UpdateNotebookInstanceLifecycleConfig-request-OnCreate"></a>
-The shell script that runs only once, when you create a notebook instance  
+The shell script that runs only once, when you create a notebook instance\. The shell script must be a base64\-encoded string\.  
 Type: Array of [NotebookInstanceLifecycleHook](API_NotebookInstanceLifecycleHook.md) objects  
 Array Members: Maximum number of 1 item\.  
 Required: No
 
  ** [OnStart](#API_UpdateNotebookInstanceLifecycleConfig_RequestSyntax) **   <a name="SageMaker-UpdateNotebookInstanceLifecycleConfig-request-OnStart"></a>
-The shell script that runs every time you start a notebook instance, including when you create the notebook instance\.  
+The shell script that runs every time you start a notebook instance, including when you create the notebook instance\. The shell script must be a base64\-encoded string\.  
 Type: Array of [NotebookInstanceLifecycleHook](API_NotebookInstanceLifecycleHook.md) objects  
 Array Members: Maximum number of 1 item\.  
 Required: No

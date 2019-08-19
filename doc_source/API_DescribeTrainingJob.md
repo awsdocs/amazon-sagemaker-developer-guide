@@ -210,7 +210,7 @@ We no longer support the following secondary statuses:
 +  `PreparingTrainingStack` 
 +  `DownloadingTrainingImage` 
 Type: String  
-Valid Values:` Starting | LaunchingMLInstances | PreparingTrainingStack | Downloading | DownloadingTrainingImage | Training | Uploading | Stopping | Stopped | MaxRuntimeExceeded | Completed | Failed` 
+Valid Values:` Starting | LaunchingMLInstances | PreparingTrainingStack | Downloading | DownloadingTrainingImage | Training | Uploading | Stopping | Stopped | MaxRuntimeExceeded | Completed | Failed | Interrupted | MaxWaitTimeExceeded` 
 
  ** [SecondaryStatusTransitions](#API_DescribeTrainingJob_ResponseSyntax) **   <a name="SageMaker-DescribeTrainingJob-response-SecondaryStatusTransitions"></a>
 A history of all of the secondary statuses that the training job has transitioned through\.  

@@ -14,7 +14,7 @@ After receiving the request, Amazon SageMaker does the following:
 
 1. Launches an EC2 instance of the type specified in the request in the Amazon SageMaker VPC\. If you specified `SubnetId` of your VPC, Amazon SageMaker specifies both network interfaces when launching this instance\. This enables inbound traffic from your own VPC to the notebook instance, assuming that the security groups allow it\.
 
-After creating the notebook instance, Amazon SageMaker returns its Amazon Resource Name \(ARN\)\.
+After creating the notebook instance, Amazon SageMaker returns its Amazon Resource Name \(ARN\)\. You can't change the name of a notebook instance after you create it\.
 
 After Amazon SageMaker creates the notebook instance, you can connect to the Jupyter server and work in Jupyter notebooks\. For example, you can write code to explore a dataset that you can use for model training, train a model, host models by creating Amazon SageMaker endpoints, and validate hosted models\. 
 
