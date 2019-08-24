@@ -27,4 +27,4 @@ Running more hyperparameter tuning jobs concurrently gets more work done quickly
 
 ## Running Training Jobs on Multiple Instances<a name="automatic-model-tuning-distributed-metrics"></a>
 
-When a training job runs on multiple instances, hyperparameter tuning uses the last\-reported objective metric from all instances of that training job as the value of the objective metric for that training job\. Design distributed training jobs so that you get they report the objective metric that you want\.
+When a training job runs on multiple instances, hyperparameter tuning uses the last\-reported objective metric from all instances of that training job as the value of the objective metric for that training job\. Design distributed training jobs so that you get  the objective metric that you want\.
