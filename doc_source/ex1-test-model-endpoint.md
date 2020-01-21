@@ -43,7 +43,7 @@ To validate the model by using the Amazon SageMaker Python SDK, use the `sagemak
    with open('test_data', 'r') as f:
        for j in range(0,10):
            single_test = f.readline()
-           result = xgb_predictor.predict(single_test)
+           result = xgb_predictor.predict(single_test, {'ContentType':'text/csv'})
            print(result)
    ```
 
