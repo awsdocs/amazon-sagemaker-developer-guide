@@ -4,7 +4,7 @@ Amazon SageMaker is integrated with AWS CloudTrail, a service that provides a re
 
 To learn more about CloudTrail, see the [AWS CloudTrail User Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/)\.
 
-By default, log data is stored in CloudWatch Logs indefinitely\. Howerver, you can configure how long to store log data in a log group\. For information, see [Change Log Data Retention in CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html#SettingLogRetention) in the *Amazon CloudWatch Logs User Guide*\.
+By default, log data is stored in CloudWatch Logs indefinitely\. However, you can configure how long to store log data in a log group\. For information, see [Change Log Data Retention in CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html#SettingLogRetention) in the *Amazon CloudWatch Logs User Guide*\.
 
 ## Amazon SageMaker Information in CloudTrail<a name="sagemaker-info-in-cloudtrail"></a>
 
