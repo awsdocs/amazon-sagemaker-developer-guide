@@ -10,9 +10,9 @@ You can create a Neo compilation job from either the Amazon SageMaker console, A
 
 **Note**  
 Neo currently supports image classification models exported as frozen graphs from TensorFlow, MXNet, or PyTorch, and XGBoost models\. Neo is available in the following AWS Regions:   
-US East \(N\. Virginia\), us\-east\-1
-US West \(Oregon\), us\-west\-2
-EU \(Ireland\), eu\-west\-1
++ US East \(N\. Virginia\), us\-east\-1
++ US West \(Oregon\), us\-west\-2
++ EU \(Ireland\), eu\-west\-1
 
 **Topics**
 + [Amazon SageMaker Neo Sample Notebooks](#neo-sample-notebooks)
