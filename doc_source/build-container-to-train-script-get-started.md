@@ -114,7 +114,7 @@ To run an arbitrary script\-based program in a Docker container using the Amazon
 
 **To test the container locally**
 
-1. Use Local Mode the test the container locally\. Replace the `'SageMakerRole'` value with the ARN for the role with the IAM role you created when configuring the notebook instance\. The ARN should look like:` 'arn:aws:iam::109225375568:role/service-role/AmazonSageMaker-ExecutionRole-20190429T110788'`\.
+1. Use Local Mode to test the container locally\. Replace the `'SageMakerRole'` value with the ARN for the role with the IAM role you created when configuring the notebook instance\. The ARN should look like:` 'arn:aws:iam::109225375568:role/service-role/AmazonSageMaker-ExecutionRole-20190429T110788'`\.
 
    ```
    from sagemaker.estimator import Estimator 
