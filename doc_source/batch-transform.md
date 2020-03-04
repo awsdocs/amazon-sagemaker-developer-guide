@@ -45,7 +45,7 @@ Inference1-Attribute1, Inference1-Attribute2, Inference1-Attribute3, ..., Infere
 Inference2-Attribute1, Inference2-Attribute2, Inference2-Attribute3, ..., Inference2-AttributeM
 Inference3-Attribute1, Inference3-Attribute2, Inference3-Attribute3, ..., Inference3-AttributeM
 ...
-InferenceN-Attribute1, Inference3-Attribute2, Inference3-Attribute3, ..., InferenceN-AttributeM
+InferenceN-Attribute1, InferenceN-Attribute2, InferenceN-Attribute3, ..., InferenceN-AttributeM
 ```
 
 To combine the results of multiple output files into a single output file, set the [AssembleWith](https://docs.aws.amazon.com/sagemaker/latest/dg/API_TransformOutput.html#SageMaker-Type-TransformOutput-AssembleWith) parameter to `Line`\.
