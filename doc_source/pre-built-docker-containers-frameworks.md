@@ -38,6 +38,20 @@ The following table lists the supported values for account IDs and corresponding
 
 The supported values listed in the table are also available on the [fw\_registry\.py](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/fw_registry.py) page of the Amazon SageMaker Python SDK GitHub repository\.
 
+## Finding the Images
+
+To find out which versions of the image are available follwoing commands can be used, for example for ca-central-1 and image name sagemaker-sparkml-serving:
+
+    $ aws \
+
+        --region ca-central-1 \
+
+        ecr describe-images \
+
+        --registry-id 341280168497 \
+
+        --repository-name sagemaker-sparkml-serving
+
 Amazon SageMaker also provides prebuilt Docker images for popular deep learning frameworks\. For information about Docker images that enable using deep learning frameworks in Amazon SageMaker, see [Prebuilt Amazon SageMaker Docker Images for TensorFlow, MXNet, Chainer, and PyTorch](pre-built-containers-frameworks-deep-learning.md)\.
 
 For information on Docker images for developing reinforcement learning \(RL\) solutions in Amazon SageMaker, see [Amazon SageMaker RL Containers](https://github.com/aws/sagemaker-rl-container)\.
