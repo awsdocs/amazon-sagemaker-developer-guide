@@ -87,7 +87,7 @@ The Amazon SageMaker Python SDK includes the `sagemaker.estimator.Estimator` est
    xgb_model.fit(inputs=data_channels,  logs=True)
    ```
 
-   This is a synchronous operation\. The method displays progress logs and waits until training completes before returning\. For more information about model training, see [Train a Model with Amazon SageMaker ](how-it-works-training.md)\.
+   This is a synchronous operation\. The method displays progress logs and waits until training completes before returning\. For more information about model training, see [Train a Model with Amazon SageMaker](how-it-works-training.md)\.
 
    Model training for this exercise can take up to 15 minutes\.
 
@@ -96,7 +96,7 @@ The Amazon SageMaker Python SDK includes the `sagemaker.estimator.Estimator` est
 
 ## Create and Run a Training Job \(AWS SDK for Python \(Boto 3\)\)<a name="ex1-train-model-create-training-job"></a>
 
-To train a model, Amazon SageMaker uses the [CreateTrainingJob](API_CreateTrainingJob.md) API\. The AWS SDK for Python \(Boto 3\) provides the corresponding `create_training_job` method\. 
+To train a model, Amazon SageMaker uses the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) API\. The AWS SDK for Python \(Boto 3\) provides the corresponding `create_training_job` method\. 
 
 When using this method, you provide the following information:
 + The training algorithm – Specify the registry path of the Docker image that contains the training code\. For the registry paths for the algorithms provided by Amazon SageMaker, see [Common Parameters for Built\-In Algorithms ](sagemaker-algo-docker-registry-paths.md)\.
@@ -115,7 +115,7 @@ When using this method, you provide the following information:
    container = get_image_uri(boto3.Session().region_name, 'xgboost')
    ```
 
-1. Set up the training information for the job\. You pass this information when you call `create_training_job`\. For more information about the information that you need to send to a training job, see [CreateTrainingJob](API_CreateTrainingJob.md)\.
+1. Set up the training information for the job\. You pass this information when you call `create_training_job`\. For more information about the information that you need to send to a training job, see [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html)\.
 
    ```
    #Ensure that the train and validation data folders generated above are reflected in the "InputDataConfig" parameter below.

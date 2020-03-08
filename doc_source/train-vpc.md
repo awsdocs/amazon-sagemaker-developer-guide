@@ -11,7 +11,7 @@ For training jobs, you can configure only subnets with a default tenancy VPC in 
 
 ## Configure a Training Job for Amazon VPC Access<a name="train-vpc-configure"></a>
 
-To specify subnets and security groups in your private VPC, use the `VpcConfig` request parameter of the [CreateTrainingJob](API_CreateTrainingJob.md) API, or provide this information when you create a training job in the Amazon SageMaker console\. Amazon SageMaker uses this information to create ENIs and attach them to your training containers\. The ENIs provide your training containers with a network connection within your VPC that is not connected to the internet\. They also enable your training job to connect to resources in your private VPC\.
+To specify subnets and security groups in your private VPC, use the `VpcConfig` request parameter of the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) API, or provide this information when you create a training job in the Amazon SageMaker console\. Amazon SageMaker uses this information to create ENIs and attach them to your training containers\. The ENIs provide your training containers with a network connection within your VPC that is not connected to the internet\. They also enable your training job to connect to resources in your private VPC\.
 
 The following is an example of the `VpcConfig` parameter that you include in your call to `CreateTrainingJob`:
 
@@ -22,10 +22,10 @@ VpcConfig: {
           "subnet-0123456789abcdef1",
           "subnet-0123456789abcdef2"
           ],
-          "SecurityGroupIds": [
-              "sg-0123456789abcdef0"
-              ]
-            }
+      "SecurityGroupIds": [
+          "sg-0123456789abcdef0"
+          ]
+        }
 ```
 
 ## Configure Your Private VPC for Amazon SageMaker Training<a name="train-vpc-vpc"></a>

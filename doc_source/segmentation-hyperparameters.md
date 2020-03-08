@@ -1,6 +1,6 @@
 # Semantic Segmentation Hyperparameters<a name="segmentation-hyperparameters"></a>
 
-The following tables list the hyperparameters supported by the Amazon SageMaker semantic segmentation algorithm for network architecture, data inputs, and training\. You specify Semantic Segmentation for training in the `AlgorithmName` of the [CreateTrainingJob](API_CreateTrainingJob.md) request\.
+The following tables list the hyperparameters supported by the Amazon SageMaker semantic segmentation algorithm for network architecture, data inputs, and training\. You specify Semantic Segmentation for training in the `AlgorithmName` of the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) request\.
 
 **Network Architecture Hyperparameters**
 
@@ -18,7 +18,7 @@ The following tables list the hyperparameters supported by the Amazon SageMaker 
 | --- | --- | 
 | num\_classes |  The number of classes to segment\. **Required** Valid values: 2 ≤ positive integer ≤ 254  | 
 | num\_training\_samples |  The number of samples in the training data\. The algorithm uses this value to set up the learning rate scheduler\. **Required** Valid values: positive integer  | 
-| crop\_size |  The image size for input images\. We rescale the input image to a square image to this `crop_size`\. We do this by rescaling the shorter side to match this parameter while maintaining the aspect ratio, and then take a random crop along the longer side\.  **Optional** Valid values: positive integer > 16 Default value: 480  | 
+| crop\_size |  The image size for input during training\. We randomly rescale the input image while preserving the aspect ratio and then take a random square crop with side length `crop_size`\. Input crop\_sizes will be automatically rounded up to multiples of 8\. **Optional** Valid values: positive integer > 16 Default value: 480  | 
 
 **Training Hyperparameters**
 

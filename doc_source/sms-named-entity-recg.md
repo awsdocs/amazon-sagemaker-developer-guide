@@ -1,0 +1,11 @@
+# Named Entity Recoginition<a name="sms-named-entity-recg"></a>
+
+To extract information from unstructured text and classify it into predefined categories, use an Amazon SageMaker Ground Truth named entity recognition \(NER\) labeling task\. Traditionally, NER involves sifting through text data to locate noun phrases, called *named entities*, and categorizing each with a label, such as "person," "organization," or "brand\." You can broaden this task to label longer spans of text and categorize those sequences with predefined labels that you specify\. 
+
+When tasked with a named entity recognition labeling job, workers apply your labels to specific words or phrases within a larger text block\. They choose a label, then apply it by using the cursor to highlight the part of the text to which the label applies\. Workers can't apply multiple labels to the same text, and labels can't overlap\. 
+
+You create a named entity recoginition labeling job using the Ground Truth section of the Amazon SageMaker console or the [CreateLabelingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. Ground Truth provides a worker console similar to the following for labeling tasks\. When you create the labeling job with the console, you can modify the images and content that are shown\. If you create a labeling job using the API, you must supply a custom\-built template\. To learn how to create a custom template, see [Creating Custom Labeling Workflows](sms-custom-templates.md)\. To see examples of custom templates that can be used for named entity recognition labeling job types, see this [Github Repository](https://github.com/aws-samples/amazon-sagemaker-ground-truth-task-uis/tree/master/text)\. 
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/named-entity-rec-example.png)
+
+You can create a named entity recognition labeling job using the Amazon SageMaker console or API\. To learn how to start a named entity recognition labeling job using on the console, see [Getting started](sms-getting-started.md)\. To use the API, see [CreateLabelingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)\.

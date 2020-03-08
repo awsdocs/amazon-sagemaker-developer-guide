@@ -6,7 +6,7 @@ The Amazon SageMaker Python SDK abstracts several implementation details, and is
 
 **Topics**
 + [Deploy the Model to Amazon SageMaker Hosting Services \(Amazon SageMaker Python SDK\)](#ex1-deploy-model-sdk)
-+ [Deploy the Model to Amazon SageMaker Hosting Services \(AWS SDK for Python \(Boto 3\)\.\)](#ex1-deploy-model-boto)
++ [Deploy the Model to Amazon SageMaker Hosting Services \(AWS SDK for Python \(Boto 3\)\)\.](#ex1-deploy-model-boto)
 
 ## Deploy the Model to Amazon SageMaker Hosting Services \(Amazon SageMaker Python SDK\)<a name="ex1-deploy-model-sdk"></a>
 
@@ -14,7 +14,8 @@ Deploy the model that you trained in [Create and Run a Training Job \(Amazon Sag
 
 ```
 xgb_predictor = xgb_model.deploy(initial_instance_count=1,
-                                instance_type='ml.m4.xlarge',
+                                content_type='text/csv',
+                                instance_type='ml.t2.medium'
                                 )
 ```
 
@@ -25,15 +26,15 @@ It also returns a `sagemaker.predictor.RealTimePredictor` object, which you can 
 **Next Step**  
 [Step 7: Validate the Model](ex1-test-model.md)
 
-## Deploy the Model to Amazon SageMaker Hosting Services \(AWS SDK for Python \(Boto 3\)\.\)<a name="ex1-deploy-model-boto"></a>
+## Deploy the Model to Amazon SageMaker Hosting Services \(AWS SDK for Python \(Boto 3\)\)\.<a name="ex1-deploy-model-boto"></a>
 
 Deploying a model using the AWS SDK for Python \(Boto 3\) is a three\-step process: 
 
-1. Create a model in Amazon SageMaker – Send a [CreateModel](API_CreateModel.md) request to provide information such as the location of the S3 bucket that contains your model artifacts and the registry path of the image that contains inference code\.
+1. Create a model in Amazon SageMaker – Send a [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) request to provide information such as the location of the S3 bucket that contains your model artifacts and the registry path of the image that contains inference code\.
 
-1. Create an endpoint configuration – Send a [CreateEndpointConfig](API_CreateEndpointConfig.md) request to provide the resource configuration for hosting\. This includes the type and number of ML compute instances to launch to deploy the model\. 
+1. Create an endpoint configuration – Send a [ `CreateEndpointConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html) request to provide the resource configuration for hosting\. This includes the type and number of ML compute instances to launch to deploy the model\. 
 
-1. Create an endpoint – Send a [CreateEndpoint](API_CreateEndpoint.md) request to create an endpoint\. Amazon SageMaker launches the ML compute instances and deploys the model\. Amazon SageMaker returns an endpoint\. Applications can send requests for inference to this endpoint\.
+1. Create an endpoint – Send a [ `CreateEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html) request to create an endpoint\. Amazon SageMaker launches the ML compute instances and deploys the model\. Amazon SageMaker returns an endpoint\. Applications can send requests for inference to this endpoint\.
 
 **To deploy the model \(AWS SDK for Python \(Boto 3\)\)**
 

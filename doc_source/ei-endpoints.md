@@ -12,7 +12,7 @@ To use Elastic Inference \(EI\) in Amazon SageMaker with a hosted endpoint for r
 
 ## Use EI with an Amazon SageMaker TensorFlow Container<a name="ei-endpoints-tensorflow"></a>
 
-To use TensorFlow with EI in Amazon SageMaker, you need to call the `deploy` method of either the [Estimator](https://sagemaker.readthedocs.io/en/latest/sagemaker.tensorflow.html#tensorflow-estimator) or [Model](https://sagemaker.readthedocs.io/en/latest/sagemaker.tensorflow.html#tensorflow-model) objects\. You then specify an accelerator type using the accelerator\_type input argument\. For information on using TensorFlow in the Amazon SageMaker Python SDK, see: [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/tensorflow/README\.rst](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/tensorflow/README.rst)\.
+To use TensorFlow with EI in Amazon SageMaker, you need to call the `deploy` method of either the [Estimator](https://sagemaker.readthedocs.io/en/stable/sagemaker.tensorflow.html#tensorflow-estimator) or [Model](https://sagemaker.readthedocs.io/en/stable/sagemaker.tensorflow.html#tensorflow-model) objects\. You then specify an accelerator type using the accelerator\_type input argument\. For information on using TensorFlow in the Amazon SageMaker Python SDK, see: [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/tensorflow/README\.rst](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/tensorflow/README.rst)\.
 
 Amazon SageMaker provides default model training and inference code for your convenience\. For custom file formats, you might need to implement custom model training and inference code\.
 
@@ -24,7 +24,7 @@ To use an estimator object with EI, include the `accelerator_type` input argumen
 # Deploy an estimator using EI (using the accelerator_type input argument)
 predictor = estimator.deploy(initial_instance_count=1,
                              instance_type='ml.m4.xlarge',
-                             accelerator_type='ml.eia1.medium')
+                             accelerator_type='ml.eia2.medium')
 ```
 
 ### Use a Model Object<a name="ei-endpoints-tensorflow-model"></a>
@@ -35,12 +35,12 @@ To use a model object with EI, include the `accelerator_type` input argument whe
 # Deploy a model using EI (using the accelerator_type input argument)
 predictor = model.deploy(initial_instance_count=1,
                              instance_type='ml.m4.xlarge',
-                             accelerator_type='ml.eia1.medium')
+                             accelerator_type='ml.eia2.medium')
 ```
 
 ## Use EI with an Amazon SageMaker MXNet Container<a name="ei-endpoints-mxnet"></a>
 
-To use MXNet with EI in Amazon SageMaker, you need to call the `deploy` method of either the [Estimator](https://sagemaker.readthedocs.io/en/latest/sagemaker.mxnet.html#mxnet-estimator) or [Model](https://sagemaker.readthedocs.io/en/latest/sagemaker.mxnet.html#mxnet-model) objects\. You then specify an accelerator type using the accelerator\_type input argument\. For information on using MXNet in the Amazon SageMaker Python SDK, see [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/mxnet/README\.rst](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/mxnet/README.rst)
+To use MXNet with EI in Amazon SageMaker, you need to call the `deploy` method of either the [Estimator](https://sagemaker.readthedocs.io/en/stable/sagemaker.mxnet.html#mxnet-estimator) or [Model](https://sagemaker.readthedocs.io/en/stable/sagemaker.mxnet.html#mxnet-model) objects\. You then specify an accelerator type using the accelerator\_type input argument\. For information on using MXNet in the Amazon SageMaker Python SDK, see [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/mxnet/README\.rst](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/mxnet/README.rst)
 
 Amazon SageMaker provides default model training and inference code for your convenience\. For custom file formats, you might need to implement custom model training and inference code\.
 
@@ -52,7 +52,7 @@ To use an estimator object with EI, include the `accelerator_type` input argumen
 # Deploy an estimator using EI (using the accelerator_type input argument)
 predictor = estimator.deploy(initial_instance_count=1,
                              instance_type='ml.m4.xlarge',
-                             accelerator_type='ml.eia1.medium')
+                             accelerator_type='ml.eia2.medium')
 ```
 
 ### Use a Model Object<a name="ei-endpoints-mxnet-model"></a>
@@ -63,7 +63,7 @@ To use a model object with EI, include the `accelerator_type` input argument whe
 # Deploy a model using EI (using the accelerator_type input argument)
 predictor = model.deploy(initial_instance_count=1,
                              instance_type='ml.m4.xlarge',
-                             accelerator_type='ml.eia1.medium')
+                             accelerator_type='ml.eia2.medium')
 ```
 
 For a complete example of using EI with MXNet in Amazon SageMaker, see the sample notebook at [https://github\.com/awslabs/amazon\-sagemaker\-examples/blob/master/sagemaker\-python\-sdk/mxnet\_mnist/mxnet\_mnist\_elastic\_inference\.ipynb ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/mxnet_mnist/mxnet_mnist_elastic_inference.ipynb)
@@ -97,7 +97,7 @@ create_endpoint_config_response = sagemaker.create_endpoint_config(
         'InitialInstanceCount':1,
         'ModelName':model_name,
         'VariantName':'AllTraffic',
-        'AcceleratorType':'ml.eia1.medium'}])
+        'AcceleratorType':'ml.eia2.medium'}])
 
 print("Endpoint Config Arn: " + create_endpoint_config_response['EndpointConfigArn'])
 ```

@@ -1,0 +1,6 @@
+# Choose an Algorithm<a name="algorithms-choose"></a>
+
+A machine learning algorithm uses example data to create a generalized solution \(a "model"\) that addresses the business question you are trying to answer\. After you create a model using example data, you can use it to answer the same business question for a new set of data\. You have several choices when choosing an algorithm to use with Amazon SageMaker\. These choices include:
++ Amazon SageMaker provides several built\-in machine learning algorithms that you can use for a variety of problem types\. For more information on Amazon SageMaker built\-in algorithms, see \.
++ You can use your code to access the most popular machine learning and deep learning framework algorithms to build models in Amazon SageMaker\. For more information on the machine learning and deep learning frameworks supported by Amazon SageMaker, see \.
++ You can use your own algorithm or model with Amazon SageMaker\. For more information on using your own algorithms with Amazon SageMaker, see [Use Your Own Algorithms or Models with Amazon SageMaker ](your-algorithms.md)\.

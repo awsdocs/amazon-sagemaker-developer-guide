@@ -29,17 +29,17 @@ Use a model package to create a deployable model that you can use to get real\-t
 
 1. For environment variables, provide the names and values of environment variables you want to pass to the model container\.
 
-1. For **Tags**, specify one or more tags to manage the model\. Each tag consists of a key and an optional value\. Tag keys must be unique per resource\. For more information about tags, see For more information, see [AWS Tagging Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/)\.
+1. For **Tags**, specify one or more tags to manage the model\. Each tag consists of a key and an optional value\. Tag keys must be unique per resource\.
 
 1. Choose **Create model**\.
 
-After you create a deployable model, you can use it to set up an endpoint for real\-time inference or create a batch transform job to get inferences on entire datasets\. For information about hosted endpoints in Amazon SageMaker, see [Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services ](ex1-deploy-model.md)\. For information about batch transform jobs, see [Step 6\.2: Deploy the Model with Batch Transform](ex1-batch-transform.md)\.
+After you create a deployable model, you can use it to set up an endpoint for real\-time inference or create a batch transform job to get inferences on entire datasets\. For information about hosted endpoints in Amazon SageMaker, see [Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services](ex1-deploy-model.md)\. For information about batch transform jobs, see [Step 6\.2: Deploy the Model with Batch Transform](ex1-batch-transform.md)\.
 
 ## Use a Model Package to Create a Model \(API\)<a name="sagemaker-mkt-model-pkg-model-api"></a>
 
-To use a model package to create a deployable model by using the Amazon SageMaker API, specify the name or the Amazon Resource Name \(ARN\) of the model package as the `ModelPackageName` field of the [ContainerDefinition](API_ContainerDefinition.md) object that you pass to the [CreateModel](API_CreateModel.md) API\.
+To use a model package to create a deployable model by using the Amazon SageMaker API, specify the name or the Amazon Resource Name \(ARN\) of the model package as the `ModelPackageName` field of the [ `ContainerDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ContainerDefinition.html) object that you pass to the [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) API\.
 
-After you create a deployable model, you can use it to set up an endpoint for real\-time inference or create a batch transform job to get inferences on entire datasets\. For information about hosted endpoints in Amazon SageMaker, see [Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services ](ex1-deploy-model.md)\. For information about batch transform jobs, see [Step 6\.2: Deploy the Model with Batch Transform](ex1-batch-transform.md)\.
+After you create a deployable model, you can use it to set up an endpoint for real\-time inference or create a batch transform job to get inferences on entire datasets\. For information about hosted endpoints in Amazon SageMaker, see [Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services](ex1-deploy-model.md)\. For information about batch transform jobs, see [Step 6\.2: Deploy the Model with Batch Transform](ex1-batch-transform.md)\.
 
 ## Use a Model Package to Create a Model \(Amazon SageMaker Python SDK\)<a name="sagemaker-mkt-model-pkg-model-sdk"></a>
 
@@ -48,8 +48,8 @@ To use a model package to create a deployable model by using the Amazon SageMake
 ```
 from sagemaker import ModelPackage
 model = ModelPackage(role='SageMakerRole',
-                     model_package_arn='training-job-scikit-decision-trees-1542660466-6f92',
-                     sagemaker_session=sagemaker_session)
+         model_package_arn='training-job-scikit-decision-trees-1542660466-6f92',
+         sagemaker_session=sagemaker_session)
 ```
 
-After you create a deployable model, you can use it to set up an endpoint for real\-time inference or create a batch transform job to get inferences on entire datasets\. For information about hosted endpoints in Amazon SageMaker, see [Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services ](ex1-deploy-model.md)\. For information about batch transform jobs, see [Step 6\.2: Deploy the Model with Batch Transform](ex1-batch-transform.md)\.
+After you create a deployable model, you can use it to set up an endpoint for real\-time inference or create a batch transform job to get inferences on entire datasets\. For information about hosted endpoints in Amazon SageMaker, see [Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services](ex1-deploy-model.md)\. For information about batch transform jobs, see [Step 6\.2: Deploy the Model with Batch Transform](ex1-batch-transform.md)\.

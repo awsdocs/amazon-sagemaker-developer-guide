@@ -8,11 +8,25 @@ The [XGBoost Algorithm](xgboost.md) expects comma\-separated values \(CSV\) for 
   ```
   %%time
   
-  import struct
-  import io
-  import csv
+  import os
   import boto3
-          
+  import re
+  import copy
+  import time
+  import io
+  import struct
+  from time import gmtime, strftime
+  from sagemaker import get_execution_role
+  
+  role = get_execution_role()
+  
+  region = boto3.Session().region_name
+  
+  bucket='myBucket' # Replace with your s3 bucket name
+  prefix = 'sagemaker/xgboost-mnist' # Used as part of the path in the bucket where you store data
+  bucket_path = 'https://s3-{}.amazonaws.com/{}'.format(region,bucket) # The URL to access the bucket
+  
+  
   def convert_data():
       data_partitions = [('train', train_set), ('validation', valid_set), ('test', test_set)]
       for data_partition_name, data_partition in data_partitions:
@@ -39,7 +53,7 @@ The [XGBoost Algorithm](xgboost.md) expects comma\-separated values \(CSV\) for 
   convert_data()
   ```
 
-  After it converts the dataset to the CSV format, ,the code uploads the CSV file to the S3 bucket\. 
+  After it converts the dataset to the CSV format, the code uploads the CSV file to the S3 bucket\. 
 
 **Next Step**  
 [Step 5: Train a Model](ex1-train-model.md)

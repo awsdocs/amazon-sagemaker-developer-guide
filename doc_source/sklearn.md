@@ -2,7 +2,11 @@
 
 You can use Amazon SageMaker to train and deploy a model using custom Scikit\-learn code\. The Amazon SageMaker Python SDK Scikit\-learn estimators and models and the Amazon SageMaker open\-source Scikit\-learn container make writing a Scikit\-learn script and running it in Amazon SageMaker easier\.
 
-What do you want to do?
+## What do you want to do?<a name="sklearn-intent"></a>
+
+I want to use Scikit\-learn for data processing, feature engineering, or model evaluation in Amazon SageMaker\.  
+For a sample Jupyter notebook, see [https://github\.com/awslabs/amazon\-sagemaker\-examples/tree/master/sagemaker\_processing/scikit\_learn\_data\_processing\_and\_model\_evaluation](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker_processing/scikit_learn_data_processing_and_model_evaluation)\.  
+For documentation, see [Amazon SageMaker Python SDK ReadTheDocs](https://sagemaker.readthedocs.io/en/stable/)
 
 I want to train a custom Scikit\-learn model in Amazon SageMaker\.  
 For a sample Jupyter notebook, see [https://github\.com/awslabs/amazon\-sagemaker\-examples/tree/master/sagemaker\-python\-sdk/scikit\_learn\_iris](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker-python-sdk/scikit_learn_iris)\.  

@@ -2,7 +2,7 @@
 
 You can use Amazon SageMaker to train and deploy a model using custom Chainer code\. The Amazon SageMaker Python SDK Chainer estimators and models and the Amazon SageMaker open\-source Chainer container make writing a Chainer script and running it in Amazon SageMaker easier\.
 
-What do you want to do?
+## What do you want to do?<a name="chainer-intent"></a>
 
 I want to train a custom Chainer model in Amazon SageMaker\.  
 For a sample Jupyter notebook, see [https://github\.com/awslabs/amazon\-sagemaker\-examples/tree/master/sagemaker\-python\-sdk/chainer\_mnist](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker-python-sdk/chainer_mnist)\.  

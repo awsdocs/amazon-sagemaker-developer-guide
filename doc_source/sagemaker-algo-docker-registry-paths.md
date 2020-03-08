@@ -30,7 +30,7 @@ For the **Training Image and Inference Image Registry Path** column, depending o
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html)
 
 Use the paths and training input mode as follows:
-+ To create a training job \(with a request to the [CreateTrainingJob](API_CreateTrainingJob.md) API\), specify the Docker Registry path and the training input mode for the training image\. You create a training job to train a model using a specific dataset\. 
++ To create a training job \(with a request to the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) API\), specify the Docker Registry path and the training input mode for the training image\. You create a training job to train a model using a specific dataset\. 
 
    
-+ To create a model \(with a [CreateModel](API_CreateModel.md) request\), specify the Docker Registry path for the inference image\. Amazon SageMaker launches machine learning compute instances that are based on the endpoint configuration and deploys the model, which includes the artifacts \(the result of model training\)\.
++ To create a model \(with a [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) request\), specify the Docker Registry path for the inference image\. Amazon SageMaker launches machine learning compute instances that are based on the endpoint configuration and deploys the model, which includes the artifacts \(the result of model training\)\.

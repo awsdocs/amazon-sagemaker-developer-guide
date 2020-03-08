@@ -16,13 +16,13 @@ To use EI locally in a notebook instance, create a notebook instance with an EI 
 
 1. For **notebook instance type**, choose a CPU instance such as ml\.t2\.medium\.
 
-1. For **Elastic Inference \(EI\)**, choose an instance from the list, such as **ml\.eia1\.medium**\.
+1. For **Elastic Inference \(EI\)**, choose an instance from the list, such as **ml\.eia2\.medium**\.
 
 1. For **IAM role**, choose an IAM role that has the required permissions to use Amazon SageMaker and EI\.
 
 1. \(Optional\) For **VPC \- Optional**, if you want the notebook instance to use a VPC, choose one from the available list, otherwise leave it as **No VPC**\. If you use a VPC follow the instructions at [Use a Custom VPC to Connect to EI](ei-setup.md#ei-setup-custom-vpc)\.
 
-1. \(Optional\) For **Lifecycle configuration \- optional**, either leave it as **No configuration** or choose a lifecycle configuration\. For more information, see [Customize a Notebook Instance ](notebook-lifecycle-config.md)\.
+1. \(Optional\) For **Lifecycle configuration \- optional**, either leave it as **No configuration** or choose a lifecycle configuration\. For more information, see [Customize a Notebook Instance Using a Lifecycle Configuration Script](notebook-lifecycle-config.md)\.
 
 1. \(Optional\) For **Encryption key \- optional**, Optional\) If you want Amazon SageMaker to use an AWS Key Management Service key to encrypt data in the ML storage volume attached to the notebook instance, specify the key\.
 

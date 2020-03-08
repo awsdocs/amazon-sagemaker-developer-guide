@@ -2,7 +2,7 @@
 
 Perform load tests to choose an automatic scaling configuration that works the way you want\.
 
-For an example of load testing to optimize automatic scaling for a Amazon SageMaker endpoint, see [Load test and optimize an Amazon SageMaker endpoint using automatic scaling](https://aws.amazon.com//blogs/machine-learning/load-test-and-optimize-an-amazon-sagemaker-endpoint-using-automatic-scaling/)\.
+For an example of load testing to optimize automatic scaling for a Amazon SageMaker endpoint, see [Load test and optimize an Amazon SageMaker endpoint using automatic scaling](https://aws.amazon.com/blogs/machine-learning/load-test-and-optimize-an-amazon-sagemaker-endpoint-using-automatic-scaling/)\.
 
 The following guidelines for load testing assume you are using an automatic scaling policy that uses the predefined target metric `SageMakerVariantInvocationsPerInstance`\.
 
@@ -18,7 +18,7 @@ This value depends on the instance type chosen, payloads that clients of your va
 
 **To find the peak requests\-per\-second \(RPS\) your variant can handle and latency of requests**
 
-1. Set up an endpoint with your variant using a single instance\. For information about how to set up an endpoint, see [Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services ](ex1-deploy-model.md)\.
+1. Set up an endpoint with your variant using a single instance\. For information about how to set up an endpoint, see [Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services](ex1-deploy-model.md)\.
 
 1. Use a load testing tool to generate an increasing number of parallel requests, and monitor the RPS and model latency in the out put of the load testing tool\. 
 **Note**  

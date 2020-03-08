@@ -15,11 +15,11 @@ The following code creates a `sagemaker.transformer.Transformer` object from the
 Paste the following code in a cell in the Jupyter notebook you created in [Step 3: Create a Jupyter Notebook](ex1-prepare.md) and run the cell\.
 
 ```
-batch_input =
-                's3://{}/{}/test/examples'.format(bucket, prefix) # The location of the test dataset
+# The location of the test dataset
+batch_input = 's3://{}/{}/test/examples'.format(bucket, prefix)
 
-batch_output = 's3://{}/{}/batch-inference'.format(bucket, prefix) # The location to store the
-results of the batch transform job
+# The location to store the results of the batch transform job
+batch_output = 's3://{}/{}/batch-inference'.format(bucket, prefix)
 
 transformer = xgb_model.transformer(instance_count=1, instance_type='ml.m4.xlarge', output_path=batch_output)
 
@@ -81,7 +81,7 @@ For each of the following steps, paste the code in a cell in the Jupyter noteboo
    }
    ```
 
-   For more information about the parameters, see [CreateTransformJob](API_CreateTransformJob.md)\.
+   For more information about the parameters, see [ `CreateTransformJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html)\.
 
 1. Call the `create_transform_job` method, passing in the parameters that you configured in the previous step\. Then call the `describe_transform_job` method in a loop until it completes\.
 

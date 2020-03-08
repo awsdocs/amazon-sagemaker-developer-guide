@@ -8,12 +8,12 @@ Use incremental training to:
 + Resume a training job that was stopped\.
 + Train several variants of a model, either with different hyperparameter settings or using different datasets\.
 
-For more information about training jobs, see [Train a Model with Amazon SageMaker ](how-it-works-training.md)\.
+For more information about training jobs, see [Train a Model with Amazon SageMaker](how-it-works-training.md)\.
 
 You can train incrementally using the Amazon SageMaker console or the Amazon SageMaker Python SDK\.
 
 **Important**  
-Only two built\-in algorithms currently support incremental training: [Object Detection Algorithm](object-detection.md) and [Image Classification Algorithm](image-classification.md)\.
+Only three built\-in algorithms currently support incremental training: [Object Detection Algorithm](object-detection.md), [Image Classification Algorithm](image-classification.md), and [Semantic Segmentation Algorithm](semantic-segmentation.md)\.
 
 **Topics**
 + [Perform Incremental Training \(Console\)](#incremental-training-console)
@@ -105,7 +105,7 @@ After the training job has completed, the newly trained model artifacts are stor
 
 ## Perform Incremental Training \(API\)<a name="incremental-training-api"></a>
 
-This example shows how to use Amazon SageMaker APIs to train a model using the Amazon SageMaker image classification algorithm and the [Caltech 256 Image Dataset](http://www.vision.caltech.edu/Image_Datasets/Caltech256/), then train a new model using the first one\. Please see the [incremental training sample notebook](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/object_detection_pascalvoc_coco/object_detection_incremental_training.ipynb) for more details on using incremental training\.
+This example shows how to use Amazon SageMaker APIs to train a model using the Amazon SageMaker image classification algorithm and the [Caltech 256 Image Dataset](http://www.vision.caltech.edu/Image_Datasets/Caltech256/), then train a new model using the first one\. It uses Amazon S3 for input and output sources\. Please see the [incremental training sample notebook](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/object_detection_pascalvoc_coco/object_detection_incremental_training.ipynb) for more details on using incremental training\.
 
 **Note**  
 In this example we used the original datasets in the incremental training, however you can use different datasets, such as ones that contain newly added samples\. Upload the new datasets to S3 and make adjustments to the `data_channels` variable used to train the new model\.
