@@ -15,7 +15,7 @@ Unless your training job will complete quickly, we recommend you use checkpointi
 
 ## Using Managed Spot Training<a name="model-managed-spot-training-using"></a>
 
-To use managed spot training, create a training job\. Set `EnableManagedSpotTraining` to `True` and specify the `MaxWaitTimeInSecods`\. `MaxWaitTimeInSeconds` must be larger than `MaxRuntimeInSeconds`\. For more information about creating a training job, see [DescribeTrainingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html)\. 
+To use managed spot training, create a training job\. Set `EnableManagedSpotTraining` to `True` and specify the `MaxWaitTimeInSeconds`\. `MaxWaitTimeInSeconds` must be larger than `MaxRuntimeInSeconds`\. For more information about creating a training job, see [DescribeTrainingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html)\. 
 
 You can calculate the savings from using managed spot training using the formula `(1 - BillableTimeInSeconds / TrainingTimeInSeconds) * 100`\. For example, if `BillableTimeInSeconds` is 100 and `TrainingTimeInSeconds` is 500, the savings is 80%\.
 
