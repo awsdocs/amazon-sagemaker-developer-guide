@@ -39,4 +39,4 @@ Notebooks are opened based on the sender’s instance type and environments \(th
 
 ## Manage Your Storage Volume<a name="notebooks-personal-storage-manage"></a>
 
- When you set up Amazon SageMaker Studio, an Amazon Elastic File System \(Amazon EFS\) file system is created in your AWS account\. This volume contains all of the home directories for all of the users in your AWS SSO domain\. This is where notebook files and data files are stored\. Users can’t directly access each other’s home directories\.  Don’t delete the Amazon EFS file system\.  If you do, your AWS SSO domain is longer functional, and all of your users will lose their work\. 
+ When you set up Amazon SageMaker Studio, an Amazon Elastic File System \(Amazon EFS\) file system is created in your AWS account\. This volume contains all of the home directories for all of the users in your AWS SSO domain\. This is where notebook files and data files are stored\. Users can’t directly access each other’s home directories\.  Don’t delete the Amazon EFS file system\.  If you do, your AWS SSO domain is no longer functional, and all of your users will lose their work\. 
