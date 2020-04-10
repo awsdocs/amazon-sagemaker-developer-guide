@@ -1,4 +1,4 @@
-# Load Testing for Production Variant Automatic Scaling<a name="endpoint-scaling-loadtest"></a>
+# Load testing your autoscaling configuration<a name="endpoint-scaling-loadtest"></a>
 
 Perform load tests to choose an automatic scaling configuration that works the way you want\.
 
@@ -7,26 +7,26 @@ For an example of load testing to optimize automatic scaling for a Amazon SageMa
 The following guidelines for load testing assume you are using an automatic scaling policy that uses the predefined target metric `SageMakerVariantInvocationsPerInstance`\.
 
 **Topics**
-+ [Determine the Performance Characteristics of a Production Variant](#endpoint-scaling-loadtest-variant)
-+ [Calculate the Target SageMakerVariantInvocationsPerInstance](#endpoint-scaling-loadtest-calc)
++ [Determine the performance characteristics](#endpoint-scaling-loadtest-variant)
++ [Calculate the target load](#endpoint-scaling-loadtest-calc)
 
-## Determine the Performance Characteristics of a Production Variant<a name="endpoint-scaling-loadtest-variant"></a>
+## Determine the performance characteristics<a name="endpoint-scaling-loadtest-variant"></a>
 
- Perform load testing to find the peak `InvocationsPerInstance` that your variant instance can handle, and the latency of requests, as concurrency increases\.
+Perform load testing to find the peak `InvocationsPerInstance` that your model's production variant can handle, and the latency of requests, as concurrency increases\.
 
-This value depends on the instance type chosen, payloads that clients of your variant typically send, and the performance of any external dependencies your variant has\.
+This value depends on the instance type chosen, payloads that clients of your model typically send, and the performance of any external dependencies your model has\.
 
-**To find the peak requests\-per\-second \(RPS\) your variant can handle and latency of requests**
+**To find the peak requests\-per\-second \(RPS\) your model's production variant can handle and latency of requests**
 
-1. Set up an endpoint with your variant using a single instance\. For information about how to set up an endpoint, see [Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services](ex1-deploy-model.md)\.
+1. Set up an endpoint with your model using a single instance\. For information about how to set up an endpoint, see [Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services](ex1-deploy-model.md)\.
 
 1. Use a load testing tool to generate an increasing number of parallel requests, and monitor the RPS and model latency in the out put of the load testing tool\. 
 **Note**  
 You can also monitor requests\-per\-minute instead of RPS\. In that case don't multiply by 60 in the equation to calculate `SageMakerVariantInvocationsPerInstance` shown below\.
 
-    When the model latency increases or the proportion of successful transactions decreases, this is the peak RPS that your variant can handle\.
+   When the model latency increases or the proportion of successful transactions decreases, this is the peak RPS that your model can handle\.
 
-## Calculate the Target SageMakerVariantInvocationsPerInstance<a name="endpoint-scaling-loadtest-calc"></a>
+## Calculate the target load<a name="endpoint-scaling-loadtest-calc"></a>
 
 After you find the performance characteristics of the variant, you can determine the maximum RPS we should allow to be sent to an instance\. The threshold used for scaling must be less than this maximum value\. Use the following equation in combination with load testing to determine the correct value for the `SageMakerVariantInvocationsPerInstance` target metric in your automatic scaling configuration\.
 

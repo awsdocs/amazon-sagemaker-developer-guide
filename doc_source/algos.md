@@ -1,4 +1,4 @@
-# Use Amazon SageMaker Built\-in Algorithms<a name="algos"></a>
+# Use Amazon SageMaker built\-in algorithms<a name="algos"></a>
 
 A machine learning algorithm uses example data to create a generalized solution \(a *model*\) that addresses the business question you are trying to answer\. After you create a model using example data, you can use it to answer the same business question for a new set of data\. This is also referred to as obtaining inferences\.
 
@@ -56,7 +56,7 @@ In addition to these general\-purpose algorithms, Amazon SageMaker provides algo
 + [Neural Topic Model \(NTM\) Algorithm](ntm.md)—Another unsupervised technique for determining topics in a set of documents, using a neural network approach\.
 
 **Topics**
-+ [Common Elements of Built\-in Algorithms](common-info-all-im-models.md)
++ [Common elements of built\-in algorithms](common-info-all-im-models.md)
 + [BlazingText Algorithm](blazingtext.md)
 + [DeepAR Forecasting Algorithm](deepar.md)
 + [Factorization Machines Algorithm](fact-machines.md)

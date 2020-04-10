@@ -65,7 +65,7 @@ To complete this procedure, you need:
 
 1. Provide a name for the training job\. The name must be unique within an AWS Region in an AWS account\. It can have 1 to 63 characters\. Valid characters: a\-z, A\-Z, 0\-9, and \. : \+ = @ \_ % \- \(hyphen\)\.
 
-1. Choose the algorithm that you want to use\. For information about supported built\-in algorithms, see [Use Amazon SageMaker Built\-in Algorithms ](algos.md)\. If you want to use a custom algorithm, make sure that it is compatible with Pipe mode\.
+1. Choose the algorithm that you want to use\. For information about supported built\-in algorithms, see [Use Amazon SageMaker built\-in algorithms](algos.md)\. If you want to use a custom algorithm, make sure that it is compatible with Pipe mode\.
 
 1. \(Optional\) For **Resource configuration**, either accept the default values or, to reduce computation time, increase the resource consumption\.
 

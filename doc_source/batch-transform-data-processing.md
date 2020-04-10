@@ -36,7 +36,7 @@ When creating a batch transform job with [ `CreateTransformJob`](https://docs.aw
    + For JSON\- or JSON Lines\-formatted input files, Amazon SageMaker either adds the `SageMakerOutput` attribute to the input file or creates a new JSON output file with the `SageMakerInput` and `SageMakerOutput` attributes\. For more information, see [ `DataProcessing`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DataProcessing.html)\. 
    + For CSV\-formatted input files, the joined input data is followed by the transformed data and the output is a CSV file\.
 
-If you use an algorithm with the `DataProcessing` structure, it must support your chosen format for *both* input and output files\. For example, with the [ `TransformOutput`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformOutput.html) field of the `CreateTransformJob` API, you must set both the [ `Content Type`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Channel.html#SageMaker-Type-Channel-ContentType) and [ `Accept`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformOutput.html#SageMaker-Type-TransformOutput-Accept) parameters to one of the following values: `text/csv`, `application/json`, or `application/jsonlines`\. The syntax for specifying columns in a CSV file and specifying attributes in a JSON file are different\. Using the wrong syntax causes an error\. For more information, see [Batch Transform Examples](#batch-transform-data-processing-examples)\. For more information about input and output file formats for built\-in algorithms, see [Use Amazon SageMaker Built\-in Algorithms ](algos.md)\.
+If you use an algorithm with the `DataProcessing` structure, it must support your chosen format for *both* input and output files\. For example, with the [ `TransformOutput`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformOutput.html) field of the `CreateTransformJob` API, you must set both the [ `Content Type`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Channel.html#SageMaker-Type-Channel-ContentType) and [ `Accept`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformOutput.html#SageMaker-Type-TransformOutput-Accept) parameters to one of the following values: `text/csv`, `application/json`, or `application/jsonlines`\. The syntax for specifying columns in a CSV file and specifying attributes in a JSON file are different\. Using the wrong syntax causes an error\. For more information, see [Batch Transform Examples](#batch-transform-data-processing-examples)\. For more information about input and output file formats for built\-in algorithms, see [Use Amazon SageMaker built\-in algorithms](algos.md)\.
 
 The record delimiters for the input and output must also be consistent with your chosen file input\. The [ `SplitType`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformInput.html#SageMaker-Type-TransformInput-SplitType) parameter indicates how to split the records in the input dataset\. The [ `AssembleWith`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformOutput.html#SageMaker-Type-TransformOutput-AssembleWith                     ) parameter indicates how to reassemble the records for the output\. If you set input and output formats to `text/csv`, you must also set the `SplitType` and `AssemblyType` parameters to `line`\. If you set the input and output formats to `application/jsonlines`, you can set both `SplitType` and `AssemblyType` to `line`\.
 
@@ -74,7 +74,7 @@ The following examples show some common ways to join input data with prediction 
 
 By default, the [ `DataProcessing`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html#SageMaker-CreateTransformJob-request-DataProcessing) parameter doesn't join inference results with input\. It outputs only the inference results\.
 
-If you want to explicitly specify to not join results with input, use the Amazon SageMaker Python SDK and specify the following settings in a transformer call\.
+If you want to explicitly specify to not join results with input, use the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) and specify the following settings in a transformer call\.
 
 ```
 sm_transformer = sagemaker.transformer.Transformer(…)
@@ -95,7 +95,7 @@ To output inferences using the AWS SDK for Python, add the following code to you
 
 ### Example: Output Input Data and Inferences<a name="batch-transform-data-processing-example-all"></a>
 
-If you're using the Amazon SageMaker Python SDK, to combine the input data with the inferences in the output file, specify `"Input"` for the [ `JoinSource`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html#SageMaker-Type-DataProcessing-JoinSource                         ) parameter in a transformer call\.
+If you're using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), to combine the input data with the inferences in the output file, specify `"Input"` for the [ `JoinSource`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html#SageMaker-Type-DataProcessing-JoinSource                         ) parameter in a transformer call\.
 
 ```
 sm_transformer = sagemaker.transformer.Transformer(…)
@@ -131,7 +131,7 @@ For a CSV file, for example, if the record is `[1,2,3]`, and the label result is
 
 ### Example: Output an ID Column with Results and Exclude the ID Column from the Input \(CSV\)<a name="batch-transform-data-processing-example-select-csv"></a>
 
-If you are using the Amazon SageMaker Python SDK, to include results or an ID column in the output, specify indexes of the joined dataset in a transformer call\. For example, if your data includes five columns and the first one is the ID column, use the following transformer request\.
+If you are using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), to include results or an ID column in the output, specify indexes of the joined dataset in a transformer call\. For example, if your data includes five columns and the first one is the ID column, use the following transformer request\.
 
 ```
 sm_transformer = sagemaker.transformer.Transformer(…)
@@ -158,7 +158,7 @@ If you omit the number after the colon, for example, `[5:]`, the subset includes
 
 ### Example: Output an ID Attribute with Results and Exclude the ID Attribute from the Input \(JSON\)<a name="batch-transform-data-processing-example-select-json"></a>
 
-If you are using the Amazon SageMaker Python SDK, include results of an ID attribute in the output by specifying it in a transformer call\. For example, if you store data in the `features` attribute and the record ID in the `ID` attribute, you would use the following transformer request\.
+If you are using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), include results of an ID attribute in the output by specifying it in a transformer call\. For example, if you store data in the `features` attribute and the record ID in the `ID` attribute, you would use the following transformer request\.
 
 ```
 sm_transformer = sagemaker.transformer.Transformer(…)

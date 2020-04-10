@@ -64,7 +64,7 @@ For information about how long CloudWatch metrics are retained for, see [GetMetr
 
 | Metric | Description | 
 | --- | --- | 
-| LoadedModelCount  |  The number of models loaded in the containers of the multi\-model endpoint\. This metric is emitted per instance\. The Average statistic with a period of 1 minute tells you the average number of models loaded per instance\. The Sum statistic tells you the total number of models loaded across all instances in the endpoint\. The models that this metric tracks are not necessarily uniquebecause a model might be loaded in multiple containers at the endpoint\. Units: None Valid statistics: Average, Sum, Min, Max, Sample Count  | 
+| LoadedModelCount  |  The number of models loaded in the containers of the multi\-model endpoint\. This metric is emitted per instance\. The Average statistic with a period of 1 minute tells you the average number of models loaded per instance\. The Sum statistic tells you the total number of models loaded across all instances in the endpoint\. The models that this metric tracks are not necessarily unique because a model might be loaded in multiple containers at the endpoint\. Units: None Valid statistics: Average, Sum, Min, Max, Sample Count  | 
 
 **Dimensions for Multi\-Model Endpoint Model Loading Metrics**
 
@@ -93,7 +93,7 @@ Metrics are available at a 1\-minute frequency\.
 
 | Dimension | Description | 
 | --- | --- | 
-| Host |  For processing jobs, the value for this dimension has the format `[processing-job-name]/algo-[instance-number-in-cluster]`\. Use this dimension to filter instance metrics for the specified processing job and instance\. This dimension format is present only in the `/aws/sagemaker/ProcessingJobs` namespace\.  For training jobs, the value for this dimension has the format `[training-job-name]/algo-[instance-number-in-cluster]`\. Use this dimension to filter instance metrics for the specified training job and instance\. This dimension format is present only in the `/aws/sagemaker/TrainingJobs` namespace\.  For batch transform jobs, the value for this dimension has the format `[transform-job-name]/[instance-id]`\. Use this dimension to filter instance metrics for the specified batch transform job and instance\. This dimension format is present only in the `/aws/sagemaker/TransformJobs` namespace\.  | 
+| Host |  For processing jobs, the value for this dimension has the format `[processing-job-name]/algo-[instance-number-in-cluster]`\. Use this dimension to filter instance metrics for the specified processing job and instance\. This dimension format is present only in the `/aws/sagemaker/ProcessingJobs` namespace\. For training jobs, the value for this dimension has the format `[training-job-name]/algo-[instance-number-in-cluster]`\. Use this dimension to filter instance metrics for the specified training job and instance\. This dimension format is present only in the `/aws/sagemaker/TrainingJobs` namespace\. For batch transform jobs, the value for this dimension has the format `[transform-job-name]/[instance-id]`\. Use this dimension to filter instance metrics for the specified batch transform job and instance\. This dimension format is present only in the `/aws/sagemaker/TransformJobs` namespace\.  | 
 
 **Amazon SageMaker Ground Truth Metrics**
 

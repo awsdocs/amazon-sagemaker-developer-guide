@@ -96,5 +96,5 @@ This means any code built to parse these results should be able to handle the pr
 ### See Also<a name="input-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth for Labeling](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [HTML Elements Reference](sms-ui-template-reference.md)

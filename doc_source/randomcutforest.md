@@ -39,7 +39,7 @@ Also note that the train channel only supports `S3DataDistributionType=ShardedBy
 
 See the [ `S3DataSource`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_S3DataSource.html) for more information on customizing the S3 data source attributes\. Finally, in order to take advantage of multi\-instance training the training data must be partitioned into at least as many files as instances\.
 
-For inference, RCF supports `application/x-recordio-protobuf`, `text/csv` and `application/json` input data content types\. See the [Common Data Formats for Built\-in Algorithms ](sagemaker-algo-common-data-formats.md) documentation for more information\. RCF inference returns `application/x-recordio-protobuf` or `application/json` formatted output\. Each record in these output data contains the corresponding anomaly scores for each input data point\. See [Common Data Formats\-\-Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html) for more information\.
+For inference, RCF supports `application/x-recordio-protobuf`, `text/csv` and `application/json` input data content types\. See the [Common data formats for built\-in algorithms](sagemaker-algo-common-data-formats.md) documentation for more information\. RCF inference returns `application/x-recordio-protobuf` or `application/json` formatted output\. Each record in these output data contains the corresponding anomaly scores for each input data point\. See [Common Data Formats\-\-Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html) for more information\.
 
 For more information on input and output file formats, see [RCF Response Formats](rcf-in-formats.md) for inference and the [RCF Sample Notebooks](#rcf-sample-notebooks)\.
 

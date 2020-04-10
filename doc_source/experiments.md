@@ -6,14 +6,14 @@ Machine learning is an iterative process\. You need to experiment with multiple 
 
 Amazon SageMaker Experiments automatically tracks the inputs, parameters, configurations, and results of your iterations as *trials*\. You can assign, group, and organize these trials into *experiments*\. Experiments is integrated with Amazon SageMaker Studio providing a visual interface to browse your active and past experiments, compare trials on key performance metrics, and identify the best performing models\.
 
-Amazon SageMaker Experiments comes with the Amazon SageMaker Python SDK which makes the search and analytics capabilities easily accessible in Amazon SageMaker Notebooks\. Because Experiments enables tracking of all the steps and artifacts that went into creating a model, you can quickly revisit the origins of a model when you are troubleshooting issues in production, or auditing your models for compliance verifications\.
+Amazon SageMaker Experiments comes with its own [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) which makes the analytics capabilities easily accessible in Amazon SageMaker Notebooks\. Because Experiments enables tracking of all the steps and artifacts that went into creating a model, you can quickly revisit the origins of a model when you are troubleshooting issues in production, or auditing your models for compliance verifications\.
 
 **Topics**
 + [Organize Experiments](#exp-mgmt-organize)
 + [Track Experiments](#exp-mgmt-track)
 + [Compare and Evaluate Experiments](#exp-mgmt-compare)
 + [Amazon SageMaker Autopilot](#exp-mgmt-automl)
-+ [Track and Evaluate a Model Training Experiment](experiments-mnist.md)
++ [Track and compare trials in Amazon SageMaker Studio](experiments-mnist.md)
 + [Search](search.md)
 
 ## Organize Experiments<a name="exp-mgmt-organize"></a>
@@ -26,13 +26,13 @@ The goal of an experiment is to determine the trial that produces the best model
 
 Amazon SageMaker Experiments enables tracking of experiments\.
 
-### Automated Tracking<a name="w739aac29c11c15b5"></a>
+### Automated Tracking<a name="w698aac29c11c15b5"></a>
 
 Amazon SageMaker Experiments automatically tracks Amazon SageMaker Autopilot jobs as experiments with their underlying training jobs tracked as trials\. Experiments also automatically tracks Amazon SageMaker independently executed training, batch transform, and processing jobs as trial components, whether assigned to a trial or left unassigned\. Unassigned trial components can be associated with a trial at a later time\. All experiment artifacts including datasets, algorithms, hyperparameters, and model metrics are tracked and recorded\. This data allows customers to trace the complete lineage of a model which helps with model governance, auditing, and compliance verifications\.
 
-### Manual Tracking<a name="w739aac29c11c15b7"></a>
+### Manual Tracking<a name="w698aac29c11c15b7"></a>
 
-Amazon SageMaker Experiments provides tracking APIs in the Amazon SageMaker Python SDK for recording and tracking machine learning workflows running locally on Amazon SageMaker Studio notebooks, including classic Amazon SageMaker notebooks\. These experiments must be part of an Amazon SageMaker training, batch transform, or processing job\.
+Amazon SageMaker Experiments provides tracking APIs in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) for recording and tracking machine learning workflows running locally on Amazon SageMaker Studio notebooks, including classic Amazon SageMaker notebooks\. These experiments must be part of an Amazon SageMaker training, batch transform, or processing job\.
 
 ## Compare and Evaluate Experiments<a name="exp-mgmt-compare"></a>
 

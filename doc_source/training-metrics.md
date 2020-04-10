@@ -104,7 +104,7 @@ estimator =
             )
 ```
 
-For more information about training by using Amazon SageMaker Python SDK estimators, see [https://github\.com/aws/sagemaker\-python\-sdk\#sagemaker\-python\-sdk\-overview](https://github.com/aws/sagemaker-python-sdk#sagemaker-python-sdk-overview)\.
+For more information about training by using [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) estimators, see [https://github\.com/aws/sagemaker\-python\-sdk\#sagemaker\-python\-sdk\-overview](https://github.com/aws/sagemaker-python-sdk#sagemaker-python-sdk-overview)\.
 
 ### Define Training Metrics \(Console\)<a name="define-train-metrics-console"></a>
 

@@ -4,7 +4,7 @@ Amazon SageMaker is integrated with AWS CloudTrail, a service that provides a re
 
 To learn more about CloudTrail, see the [AWS CloudTrail User Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/)\.
 
-By default, log data is stored in CloudWatch Logs indefinitely\. Howerver, you can configure how long to store log data in a log group\. For information, see [Change Log Data Retention in CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html#SettingLogRetention) in the *Amazon CloudWatch Logs User Guide*\.
+By default, log data is stored in CloudWatch Logs indefinitely\. However, you can configure how long to store log data in a log group\. For information, see [Change Log Data Retention in CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html#SettingLogRetention) in the *Amazon CloudWatch Logs User Guide*\.
 
 ## Amazon SageMaker Information in CloudTrail<a name="sagemaker-info-in-cloudtrail"></a>
 
@@ -27,7 +27,7 @@ For more information, see the [CloudTrail userIdentity Element](https://docs.aws
 
 ## Operations Performed by Automatic Model Tuning<a name="automatic-tuning-secondary"></a>
 
-Amazon SageMaker supports logging non\-API service events to your CloudTrail log files,for automatic model tuning jobs\. These events are related to your tuning jobs but, are not the direct result of a customer request to the public AWS API\. For example, when you create a hyperparameter tuning job by calling [ `CreateHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html), Amazon SageMaker creates training jobs to evaluate various combinations of hyperparameters to find the best result\. Similarly, when you call [ `StopHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_StopHyperParameterTuningJob.html) to stop a hyperparameter tuning job, Amazon SageMaker might stop any of the associated running training jobs\. Non\-API events for your tuning jobs are logged to CloudTrail to help you improve governance, compliance, and operational and risk auditing of your AWS account\.
+Amazon SageMaker supports logging non\-API service events to your CloudTrail log files for automatic model tuning jobs\. These events are related to your tuning jobs but, are not the direct result of a customer request to the public AWS API\. For example, when you create a hyperparameter tuning job by calling [ `CreateHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html), Amazon SageMaker creates training jobs to evaluate various combinations of hyperparameters to find the best result\. Similarly, when you call [ `StopHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_StopHyperParameterTuningJob.html) to stop a hyperparameter tuning job, Amazon SageMaker might stop any of the associated running training jobs\. Non\-API events for your tuning jobs are logged to CloudTrail to help you improve governance, compliance, and operational and risk auditing of your AWS account\.
 
 Log entries that result from non\-API service events have an `eventType` of `AwsServiceEvent` instead of `AwsApiCall`\.
 

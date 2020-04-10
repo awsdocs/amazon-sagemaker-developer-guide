@@ -1,16 +1,16 @@
 # Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services<a name="ex1-deploy-model"></a>
 
-To deploy a model in Amazon SageMaker, hosting services, you can use either the Amazon SageMaker Python SDK or the AWS SDK for Python \(Boto 3\)\. This exercise provides code examples for both libraries\. 
+To deploy a model in Amazon SageMaker, hosting services, you can use either the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) or the AWS SDK for Python \(Boto 3\)\. This exercise provides code examples for both libraries\. 
 
-The Amazon SageMaker Python SDK abstracts several implementation details, and is easy to use\. If you're a first\-time Amazon SageMaker user, we recommend that you use it\. For more information, see [https://sagemaker\.readthedocs\.io/en/stable/overview\.html](https://sagemaker.readthedocs.io/en/stable/overview.html)\.
+The [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) abstracts several implementation details, and is easy to use\. If you're a first\-time Amazon SageMaker user, we recommend that you use it\. For more information, see [https://sagemaker\.readthedocs\.io/en/stable/overview\.html](https://sagemaker.readthedocs.io/en/stable/overview.html)\.
 
 **Topics**
-+ [Deploy the Model to Amazon SageMaker Hosting Services \(Amazon SageMaker Python SDK\)](#ex1-deploy-model-sdk)
++ [Deploy the Model to Amazon SageMaker Hosting Services \([Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\)](#ex1-deploy-model-sdk)
 + [Deploy the Model to Amazon SageMaker Hosting Services \(AWS SDK for Python \(Boto 3\)\)\.](#ex1-deploy-model-boto)
 
-## Deploy the Model to Amazon SageMaker Hosting Services \(Amazon SageMaker Python SDK\)<a name="ex1-deploy-model-sdk"></a>
+## Deploy the Model to Amazon SageMaker Hosting Services \([Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\)<a name="ex1-deploy-model-sdk"></a>
 
-Deploy the model that you trained in [Create and Run a Training Job \(Amazon SageMaker Python SDK\)](ex1-train-model.md#ex1-train-model-sdk) by calling the `deploy` method of the `sagemaker.estimator.Estimator` object\. This is the same object that you used to train the model\. When you call the `deploy` method, specify the number and type of ML instances that you want to use to host the endpoint\.
+Deploy the model that you trained in [Create and Run a Training Job \([Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\)](ex1-train-model.md#ex1-train-model-sdk) by calling the `deploy` method of the `sagemaker.estimator.Estimator` object\. This is the same object that you used to train the model\. When you call the `deploy` method, specify the number and type of ML instances that you want to use to host the endpoint\.
 
 ```
 xgb_predictor = xgb_model.deploy(initial_instance_count=1,

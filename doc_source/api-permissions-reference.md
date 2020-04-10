@@ -1,13 +1,11 @@
 # Amazon SageMaker API Permissions: Actions, Permissions, and Resources Reference<a name="api-permissions-reference"></a>
 
-When you are setting up access control and writing a permissions policy that you can attach to an IAM identity \(an identity\-based policy\), use the following table as a reference\. The table lists each Amazon SageMaker API operation, the corresponding actions for which you can grant permissions to perform the action, and the AWS resource for which you can grant the permissions\. You specify the actions in the policy's `Action` field, and you specify the resource value in the policy's `Resource` field\. 
+When you are setting up access control and writing a permissions policy that you can attach to an IAM identity \(an identity\-based policy\), use the following as a reference\. The each Amazon SageMaker API operation, the corresponding actions for which you can grant permissions to perform the action, and the AWS resource for which you can grant the permissions\. You specify the actions in the policy's `Action` field, and you specify the resource value in the policy's `Resource` field\. 
 
 **Note**  
 Except for the `ListTags` API, resource\-level restrictions are not available on `List-` calls \. Any user calling a `List-` API will see all resources of that type in the account\.
 
 To express conditions in your Amazon SageMaker policies, you can use AWS\-wide condition keys\. For a complete list of AWS\-wide keys, see [Available Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html#AvailableKeys) in the *IAM User Guide*\. 
-
-If you see an expand arrow \(**↗**\) in the upper\-right corner of the table, you can open the table in a new window\. To close the window, choose the close button \(**X**\) in the lower\-right corner\.
 
 
 **Amazon SageMaker API Operations and Required Permissions for Actions**  

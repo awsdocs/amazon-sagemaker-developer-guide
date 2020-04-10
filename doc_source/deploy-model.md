@@ -1,7 +1,7 @@
 # Deploy Models<a name="deploy-model"></a>
 
 After you build and train your models, you can deploy them to get predictions in one of two ways:
-+ To set up a persistent endpoint to get predictions from you models, use Amazon SageMaker hosting services\. For an overview on deploying a single model or multiple models with Amazon SageMaker hosting services, see [Deploy a Model on Amazon SageMaker Hosting Services](how-it-works-hosting.md)\.
++ To set up a persistent endpoint to get predictions from your models, use Amazon SageMaker hosting services\. For an overview on deploying a single model or multiple models with Amazon SageMaker hosting services, see [Deploy a Model on Amazon SageMaker Hosting Services](how-it-works-hosting.md)\.
 + To get predictions for an entire dataset, use Amazon SageMaker batch transform\. For an overview on deploying a model with Amazon SageMaker batch transform, see [Get Inferences for an Entire Dataset with Batch Transform](how-it-works-batch.md)\.
 
 ## Prerequisites<a name="deploy-model-prereqs"></a>
@@ -23,7 +23,7 @@ Amazon SageMaker provides features to manage resources and optimize inference pe
 For guidance on managing model deployments, including monitoring, troubleshooting, and best practices, and for information on storage associated with inference hosting instances:
 + For tools that can be used to monitor model deployments, see [Monitor Amazon SageMaker](monitoring-overview.md)\.
 + For troubleshooting model deployments, see [Troubleshoot Amazon SageMaker Model Deployments](deploy-model-troubleshoot.md)\.
-+ For model deployment best practices, see [Deployment Best Practices](best-pratices.md)\.
++ For model deployment best practices, see [Deployment Best Practices](best-practices.md)\.
 + For information about the size of storage volumes provided for different sizes of hosting instances, see [Host Instance Storage Volumes](host-instance-storage.md)\.
 
 ## Deploy Your Own Inference Code<a name="deploy-model-advanced"></a>

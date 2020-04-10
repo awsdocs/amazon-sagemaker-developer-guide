@@ -1,12 +1,12 @@
 # Host Multiple Models with Multi\-Model Endpoints<a name="multi-model-endpoints"></a>
 
-To create an endpoint that can host multiple models, use multi\-model endpoints\. Multi\-model endpoints provide a scalable and cost\-effective solution to deploying large numbers of models\. They use a shared serving container that is enabled to host multiple models\. This reduces hosting costs by improving endpoint utilization compared with using single\-model endpoints\. It also reduces deployment overhead because Amazon SageMaker manages loading models in memory and scaling them based on the traffic patterns to them\. 
+To create an endpoint that can host multiple models, use multi\-model endpoints\. Multi\-model endpoints provide a scalable and cost\-effective solution to deploying large numbers of models\. They use a shared serving container that is enabled to host multiple models\. This reduces hosting costs by improving endpoint utilization compared with using single\-model endpoints\. It also reduces deployment overhead because Amazon SageMaker manages loading models in memory and scaling them based on the traffic patterns to them\.
 
-Multi\-model endpoints also enable time\-sharing of memory resources across your models\. This works best when the models are fairly similar in size and invocation latency\. When this is the case, multi\-model endpoints can effectively use instances across all models\. If you have models that have significantly higher transactions per second \(TPS\) or latency requirements, we recommend hosting them on dedicated endpoints\. Multi\-model endpoints are also well suited to cases that can tolerate occasional cold\-start\-related latency penalties that occur when invoking infrequently used models\.
+Multi\-model endpoints also enable time\-sharing of memory resources across your models\. This works best when the models are fairly similar in size and invocation latency\. When this is the case, multi\-model endpoints can effectively use instances across all models\. If you have models that have significantly higher transactions per second \(TPS\) or latency requirements, we recommend hosting them on dedicated endpoints\. Multi\-model endpoints are also well suited to scenarios that can tolerate occasional cold\-start\-related latency penalties that occur when invoking infrequently used models\.
 
 Multi\-model endpoints support A/B testing\. They work with Auto Scaling and AWS PrivateLink\. However, you can't use multi\-model\-enabled containers with serial inference pipelines or with Amazon Elastic Inference \(EIA\)\.
 
-You can use the AWS SDK for Python \(Boto\) or the Amazon SageMaker console to create a multi\-model endpoint\. You can use multi\-model endpoints with custom\-built containers by integrating the [Multi Model Server](https://github.com/awslabs/multi-model-server) library\. 
+You can use the AWS SDK for Python \(Boto\) or the Amazon SageMaker console to create a multi\-model endpoint\. You can use multi\-model endpoints with custom\-built containers by integrating the [Multi Model Server](https://github.com/awslabs/multi-model-server) library\.
 
 **Topics**
 + [Sample Notebooks for Multi\-Model Endpoints](#multi-model-endpoint-sample-notebooks)
@@ -27,7 +27,7 @@ For a sample notebook that uses Amazon SageMaker to deploy multiple XGBoost mode
 
 Amazon SageMaker manages the lifecycle of models hosted on multi\-model endpoints in the container's memory\. Instead of downloading all of the models from an Amazon S3 bucket to the container when you create the endpoint, Amazon SageMaker dynamically loads them when you invoke them\. When Amazon SageMaker receives an invocation request for a particular model, it does the following:
 
-1. Routes the request to a single Amazon EC2 instance behind the endpoint\.
+1. Routes the request to an instance behind the endpoint\.
 
 1. Downloads the model from the S3 bucket to that instance's storage volume\.
 
@@ -37,9 +37,9 @@ Amazon SageMaker continues to route requests for a model to the instance where t
 
 When an instance's memory utilization is high and Amazon SageMaker needs to load another model into memory, it unloads unused models from that instance's container to ensure that there is enough memory to load the model\. Models that are unloaded remain on the instance's storage volume and can be loaded into the container's memory later without being downloaded again from the S3 bucket\. If the instance's storage volume reaches its capacity, Amazon SageMaker deletes any unused models from the storage volume\.
 
-Adding models to, and deleting them from, a multi\-model endpoint doesn't require updating the endpoint itself\. To add a model, you upload it to the S3 bucket and invoke it\. To delete a model, stop sending requests and delete it from the S3 bucket\. Amazon SageMaker provides multi\-model endpoint capability in a serving container\. You don’t need code changes to use it\.
+To delete a model, stop sending requests and delete it from the S3 bucket\. Amazon SageMaker provides multi\-model endpoint capability in a serving container\. Adding models to, and deleting them from, a multi\-model endpoint doesn't require updating the endpoint itself\. To add a model, you upload it to the S3 bucket and invoke it\. You don’t need code changes to use it\.
 
-When you update a multi\-model endpoint, [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html) invocation requests on the endpoint might experience higher latencies as traffic is directed to the instances in the updated endpoint\.
+When you update a multi\-model endpoint, invocation requests on the endpoint might experience higher latencies as traffic is directed to the instances in the updated endpoint\.
 
 ## Multi\-Model Endpoint Security<a name="multi-model-endpoint-security"></a>
 
@@ -52,14 +52,15 @@ An IAM principal with [ `InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/
 There are several items to consider when selecting a SageMaker ML instance type for a multi\-model endpoint\. Provision sufficient [Amazon Elastic Block Store \(Amazon EBS\)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html) capacity for all of the models that need to be served\. Balance performance \(minimize cold starts\) and cost \(don’t over\-provision instance capacity\)\. For information about the size of the storage volume that Amazon SageMaker attaches for each instance type for an endpoint and for a multi\-model endpoint, see [Host Instance Storage Volumes](host-instance-storage.md)\. For a container configured to run in `MultiModel` mode, the storage volume provisioned for its instances has more memory\. This allows more models to be cached on the instance storage volume\. 
 
 When choosing an Amazon SageMaker ML instance type, consider the following:
-+ The traffic distribution \(access patterns\) to the models that you want to host behind the multi\-model endpoint, along with the model size \(how many models could be loaded in memory on the instance\)\.:
++ Multi\-model endpoints are not supported on GPU instance types\.
++ The traffic distribution \(access patterns\) to the models that you want to host behind the multi\-model endpoint, along with the model size \(how many models could be loaded in memory on the instance\):
   + Think of the amount of memory on an instance as the cache space for models to be loaded\. Think of the number of vCPUs as the concurrency limit to perform inference on the loaded models \(assuming that invoking a model is bound to CPU\)\.
   +  A higher amount of instance memory allows you to have more models loaded and ready to serve inference requests\. You don't need to waste time loading the model\.
   + A higher amount of vCPUs allows you to invoke more unique models concurrently \(again assuming that inference is bound to CPU\)\.
   + Have some "slack" memory available so that unused models can be unloaded, and especially for multi\-model endpoints with multiple instances\. If an instance or an Availability Zone fails, the models on those instances will be rerouted to other instances behind the endpoint\.
 + Tolerance to loading/downloading times:
   + d instance type families \(for example, m5d, c5d, or r5d\) come with an NVMe \(non\-volatile memory express\) SSD, which offers high I/O performance and might reduce the time it takes to download models to the storage volume and for the container to load the model from the storage volume\.
-  + Because d instance types come with an NVMe SSD storage, Amazon SageMaker does not attach an Amazon EBS storage volume to these ML compute instances that hosts the multi\-model endpoint\. \.
+  + Because d instance types come with an NVMe SSD storage, Amazon SageMaker does not attach an Amazon EBS storage volume to these ML compute instances that hosts the multi\-model endpoint\. Auto scaling works best when the models are simarlarly sized and homogenous, that is when they have similar inference latency andresource requirements\.
 
 In some cases, you might opt to reduce costs by choosing an instance type that can't hold all of the targeted models in memory at once\. Amazon SageMaker dynamically unloads models when it runs out of memory to make room for a newly targeted model\. For infrequently requested models, you are going to pay a price with the dynamic load latency\. In cases with more stringent latency needs, you might opt for larger instance types or more instances\. Investing time up front for proper performance testing and analysis will pay great dividends in successful production deployments\.
 

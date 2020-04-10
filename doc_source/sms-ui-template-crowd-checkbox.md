@@ -41,9 +41,9 @@ Provides a JSON object\. The `name` string is the object name and the `value`str
 
 ```
 <!-- INPUT -->
-<div><crowd-checkbox name="myformbit" value="Red"> Red </div>
-<div><crowd-checkbox name="myformbit" value="Yellow"> Yellow </div>
-<div><crowd-checkbox name="myformbit" value="Green"> Green </div>
+<div><crowd-checkbox name="myformbit" value="Red"> Red </crowd-checkbox></div>
+<div><crowd-checkbox name="myformbit" value="Yellow"> Yellow </crowd-checkbox></div>
+<div><crowd-checkbox name="myformbit" value="Green"> Green </crowd-checkbox></div>
 ```
 
 ```
@@ -63,9 +63,9 @@ Note that all three color values are properties of a single object\.
 
 ```
 <!-- INPUT -->
-<div><crowd-checkbox name="Stop" value="Red"> Red </div>
-<div><crowd-checkbox name="Slow" value="Yellow"> Yellow </div>
-<div><crowd-checkbox name="Go" value="Green"> Green </div>
+<div><crowd-checkbox name="Stop" value="Red"> Red </crowd-checkbox></div>
+<div><crowd-checkbox name="Slow" value="Yellow"> Yellow </crowd-checkbox></div>
+<div><crowd-checkbox name="Go" value="Green"> Green </crowd-checkbox></div>
 ```
 
 ```
@@ -88,5 +88,5 @@ Note that all three color values are properties of a single object\.
 ### See Also<a name="checkbox-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth for Labeling](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [HTML Elements Reference](sms-ui-template-reference.md)

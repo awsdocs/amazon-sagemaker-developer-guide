@@ -82,12 +82,12 @@ smclient.create_hyper_parameter_tuning_job(HyperParameterTuningJobName = 'MyWarm
 
 ### Create a Warm Start Tuning Job \(Amazon SageMaker Python SDK\)<a name="warm-start-tuning-example-sdk"></a>
 
-To use the Amazon SageMaker Python SDK to run a warm start tuning job, you:
+To use the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) to run a warm start tuning job, you:
 + Specify the parent jobs and the warm start type by using a `WarmStartConfig` object\.
 + Pass the `WarmStartConfig` object as the value of the `warm_start_config` argument of a [HyperparameterTuner](https://sagemaker.readthedocs.io/en/latest/tuner.html) object\.
 + Call the `fit` method of the `HyperparameterTuner` object\.
 
-For more information about using the Amazon SageMaker Python SDK for hyperparameter tuning, see [https://github\.com/aws/sagemaker\-python\-sdk\#sagemaker\-automatic\-model\-tuning](https://github.com/aws/sagemaker-python-sdk#sagemaker-automatic-model-tuning)\.
+For more information about using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) for hyperparameter tuning, see [https://github\.com/aws/sagemaker\-python\-sdk\#sagemaker\-automatic\-model\-tuning](https://github.com/aws/sagemaker-python-sdk#sagemaker-automatic-model-tuning)\.
 
 This example uses an estimator that uses the [Image Classification Algorithm](image-classification.md) algorithm for training\. The following code sets the hyperparameter ranges that the warm start tuning job searches within to find the best combination of values\. For information about setting hyperparameter ranges, see [Define Hyperparameter Ranges](automatic-model-tuning-define-ranges.md)\.
 

@@ -21,7 +21,7 @@
 
 ## Use the File Menu to Create a New Notebook<a name="notebooks-create-notebook-file-menu"></a>
 
- When you create a new notebook from the File menu, you will be asked to choose a kernel from a dropdown first, before your notebook is created\. 
+ When you create a new notebook from the File menu, you will be asked to choose a kernel from a menu first, before your notebook is created\. 
 
 ## Use the Launcher to Create a New Notebook<a name="notebooks-create-notebook-launcher"></a>
 

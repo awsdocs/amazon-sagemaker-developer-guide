@@ -1,4 +1,4 @@
-# Amazon SageMaker Studio Features<a name="studio-features"></a>
+# Amazon SageMaker Studio features<a name="studio-features"></a>
 
 Amazon SageMaker Studio includes the following features\.
 
@@ -16,7 +16,7 @@ Amazon SageMaker Studio Notebooks is the next generation of Amazon SageMaker not
 + Fast start\-up times
 + Ability to share notebooks with a single click
 
-For more information, see [Use Amazon SageMaker Notebooks](notebooks.md)\.
+For more information, see [Use Amazon SageMaker Studio notebooks](notebooks.md)\.
 
 **Note**  
 Because Amazon SageMaker Studio Notebooks is in preview, visual elements of Amazon SageMaker Studio might be impacted\.

@@ -1,11 +1,11 @@
 # Use an Algorithm to Run a Training Job<a name="sagemaker-mkt-algo-train"></a>
 
-You can create use an algorithm resource to create a training job by using the Amazon SageMaker console, the low\-level Amazon SageMaker API, or the Amazon SageMaker Python SDK\.
+You can create use an algorithm resource to create a training job by using the Amazon SageMaker console, the low\-level Amazon SageMaker API, or the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.
 
 **Topics**
 + [Use an Algorithm to Run a Training Job \(Console\)](#sagemaker-mkt-algo-train-console)
 + [Use an Algorithm to Run a Training Job \(API\)](#sagemaker-mkt-algo-train-api)
-+ [Use an Algorithm to Run a Training Job \(Amazon SageMaker Python SDK\)](#sagemaker-mkt-algo-train-sdk)
++ [Use an Algorithm to Run a Training Job \([Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\)](#sagemaker-mkt-algo-train-sdk)
 
 ## Use an Algorithm to Run a Training Job \(Console\)<a name="sagemaker-mkt-algo-train-console"></a>
 
@@ -75,7 +75,7 @@ You use the model artifacts stored at this location to create a model or model p
 
 To use an algorithm to run a training job by using the Amazon SageMaker API, specify either the name or the Amazon Resource Name \(ARN\) as the `AlgorithmName` field of the [ `AlgorithmSpecification`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AlgorithmSpecification.html) object that you pass to [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html)\. For information about training models in Amazon SageMaker, see [Train a Model with Amazon SageMaker](how-it-works-training.md)\.
 
-## Use an Algorithm to Run a Training Job \(Amazon SageMaker Python SDK\)<a name="sagemaker-mkt-algo-train-sdk"></a>
+## Use an Algorithm to Run a Training Job \([Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\)<a name="sagemaker-mkt-algo-train-sdk"></a>
 
 Use an algorithm that you created or subscribed to on AWS Marketplace to create a training job, create an `AlgorithmEstimator` object and specify either the Amazon Resource Name \(ARN\) or the name of the algorithm as the value of the `algorithm_arn` argument\. Then call the `fit` method of the estimator\. For example:
 

@@ -2,6 +2,72 @@
 
 A widget for identifying individual instances of specific objects within an image and creating a colored overlay for each labeled instance\.
 
+The following is an example of a Liquid template that uses the `<crowd-instance-segmentation>` element and allows annotators to add additional labels\. You can save this template and preview it in any browser\.
+
+```
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+<crowd-form>
+  <crowd-instance-segmentation
+    id="annotator"
+    name="myTexts"
+    src="{{ task.input.taskObject | grant_read_access }}"
+    header="Please add labels and annotate each item"
+    labels="['placeholder']"
+  >
+    <short-instructions>
+      Describe your task here.
+
+      <br><br><br>
+      <h3>
+        Add new label
+      </h3>
+      
+      <crowd-input name="_customLabel" id="customLabel"></crowd-input>
+      <br>
+      <crowd-button id="addLabel">Add</crowd-button>
+      
+      <br><br><br>
+      <h3>
+      Manage labels
+      </h3>
+      <div id="labelsSection"></div>
+    </short-instructions>
+    
+    <full-instructions>
+      Describe your task in more detail here.
+    </full-instructions>
+  </crowd-instance-segmentation>
+</crowd-form>
+
+<script>
+  document.addEventListener('all-crowd-elements-ready', function(event) {
+    document.querySelector('crowd-instance-segmentation').labels = [];  
+  });
+  
+  function populateLabelsSection() {
+    labelsSection.innerHTML = '';
+    annotator.labels.forEach(function(label) {
+      const labelContainer = document.createElement('div');
+      labelContainer.innerHTML = label + ' <a href="javascript:void(0)">(Delete)</a>';
+      labelContainer.querySelector('a').onclick = function() {
+        annotator.labels = annotator.labels.filter(function(l) {
+          return l !== label;
+        });
+        populateLabelsSection();
+      };
+      labelsSection.appendChild(labelContainer);
+    });
+  }
+
+  addLabel.onclick = function() {
+    annotator.labels = annotator.labels.concat([customLabel.value]);
+    customLabel.value = null;
+    
+    populateLabelsSection();
+  };
+</script>
+```
+
 ### Attributes<a name="instance-segmentation-attributes"></a>
 
 The following attributes are supported by this element\.
@@ -61,7 +127,7 @@ A JSON object that specifies the dimensions of the image that is being annotated
 + **width** – The width, in pixels, of the image\.
 
 **Example : Sample Element Outputs**  
-The following is a sample of output from this element\.  
+The following is an example of output from this element\.  
 
 ```
 [
@@ -96,5 +162,5 @@ The following is a sample of output from this element\.
 ### See Also<a name="instance-segmentation-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth for Labeling](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [HTML Elements Reference](sms-ui-template-reference.md)

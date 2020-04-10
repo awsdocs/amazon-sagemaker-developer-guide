@@ -40,9 +40,9 @@ To run an arbitrary script\-based program in a Docker container using the Amazon
 
 1. When the status of the notebook instance is `InService`, from **Actions**, choose **Open Jupyter**\.
 
-   For **New**, choose **conda\_tensorflw\_p36**\. This is the kernel you need\.
+   For **New**, choose **conda\_tensorflow\_p36**\. This is the kernel you need\.
 
-1. To name the notebook, choose **File**, **Rename**, enter t**Run\-Python\-Script**, and then choose **Rename**\.
+1. To name the notebook, choose **File**, **Rename**, enter **Run\-Python\-Script**, and then choose **Rename**\.
 
 **To create and upload the Dockerfile and Python scripts**
 
@@ -110,6 +110,12 @@ To run an arbitrary script\-based program in a Docker container using the Amazon
 
    ```
    !docker build -t tf-2.0 .
+   ```
+
+   If you get an error that it can't find the file, remember that `docker` is looking for a file called `Dockerfile` in the current directory\. If you named it something else, you can pass in the filename manually with the `-f` argument\. For example: 
+
+   ```
+   !docker build -t tf-2.0 -f Dockerfile.txt .
    ```
 
 **To test the container locally**

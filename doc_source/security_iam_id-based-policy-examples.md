@@ -569,39 +569,37 @@ This example shows how you might create a policy that allows IAM users to view t
 
 ```
 {
-       "Version": "2012-10-17",
-       "Statement": [
-           {
-               "Sid": "ViewOwnUserInfo",
-               "Effect": "Allow",
-               "Action": [
-                   "iam:GetUserPolicy",
-                   "iam:ListGroupsForUser",
-                   "iam:ListAttachedUserPolicies",
-                   "iam:ListUserPolicies",
-                   "iam:GetUser"
-               ],
-               "Resource": [
-                   "arn:aws:iam::*:user/${aws:username}"
-               ]
-           },
-           {
-               "Sid": "NavigateInConsole",
-               "Effect": "Allow",
-               "Action": [
-                   "iam:GetGroupPolicy",
-                   "iam:GetPolicyVersion",
-                   "iam:GetPolicy",
-                   "iam:ListAttachedGroupPolicies",
-                   "iam:ListGroupPolicies",
-                   "iam:ListPolicyVersions",
-                   "iam:ListPolicies",
-                   "iam:ListUsers"
-               ],
-               "Resource": "*"
-           }
-       ]
-   }
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ViewOwnUserInfo",
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetUserPolicy",
+                "iam:ListGroupsForUser",
+                  "iam:ListAttachedUserPolicies",
+                "iam:ListUserPolicies",
+                "iam:GetUser"
+            ],
+            "Resource": ["arn:aws:iam::*:user/${aws:username}"]
+        },
+        {
+            "Sid": "NavigateInConsole",
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetGroupPolicy",
+                "iam:GetPolicyVersion",
+                "iam:GetPolicy",
+                "iam:ListAttachedGroupPolicies",
+                "iam:ListGroupPolicies",
+                "iam:ListPolicyVersions",
+                "iam:ListPolicies",
+                "iam:ListUsers"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
 ```
 
 ## Control Creation of Amazon SageMaker Resources with Condition Keys<a name="sagemaker-condition-examples"></a>
@@ -609,32 +607,6 @@ This example shows how you might create a policy that allows IAM users to view t
 Control fine\-grained access to allow the creation of Amazon SageMaker resources by using Amazon SageMaker\-specific condition keys\. For information about using condition keys in IAM policies, see [IAM JSON Policy Elements: Condition](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html) in the *IAM User Guide*\.
 
 The following table lists the Amazon SageMaker condition keys\. The condition keys, along with related API actions, and links to relevant documentation are also listed in [Condition Keys for Amazon SageMaker](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonsagemaker.html#amazonsagemaker-policy-keys) in the *IAM User Guide*\.
-
-
-**Amazon SageMaker File System Condition Keys**  
-
-| Condition Key | Value Type | Description | 
-| --- | --- | --- | 
-|  `sagemaker:AcceleratorTypes`  |  List of strings  |  A list of Amazon Elastic Inference accelerator types\.  | 
-|  `sagemaker:DirectInternetAccess`  |  String  |  The direct internet access setting associated with the request\.  Valid values: `Enabled`, `Disabled`  | 
-|  `sagemaker:InstanceTypes`  |  List of strings  | A list of ML instance types\. | 
-|  `sagemaker:InterContainerTrafficEncryption`  |  Boolean  |  Whether inter\-container traffic encryption is associated with the resource in the request\.  Valid values: `true`\. `false`  | 
-| sagemaker:FileSystemId |  String  |  The file system ID\.  | 
-|  `sagemaker:FileSystemType`  |  String  |  The file system type\. For example, `EFS` or `FSxLustre`\.  | 
-|  `sagemaker:FileSystemDirectoryPath`  |  String  |  The directory path associated with the file system\.  | 
-|  `sagemaker:FileSystemAccessMode`  |  String  |  The access mode of the mount of the directory associated with the channel\.  Valid values: `ro` \(read\-only\), `rw` \(read\-write\)  | 
-|  `sagemaker:MaxRuntimeInSeconds`  |  Numeric  |  The maximum runtime of the stopping condition associated with the request, in seconds\.  | 
-|  `sagemaker:ModelArn`  |  ARN  |  The model Amazon Resource Name \(ARN\) specified in the request\.  | 
-|  `sagemaker:NetworkIsolation`  |  Boolean  |  The network isolation setting associated with the resource in the request\.  Valid values: true, false  | 
-|  `sagemaker:OutputKmsKey`  |  ARN  |  The AWS Key Management Service \(AWS KMS\) key ARN or alias ARN specified in the request\.  | 
-|  `sagemaker:ResourceTag/`  |  String  |  The preface string for a tag key\-value pair attached to a resource\.  | 
-|  `sagemaker:ResourceTag/${TagKey}`  |  String  |  A tag key\-value pair\.  | 
-|  `sagemaker:RootAccess`  |  String  |  The root access mode associated with the request\.  Valid values: `Enabled`, `Disabled`  | 
-|  `sagemaker:VolumeKmsKey`  |  ARN  |  The AWS KMS key ARN or alias ARN specified in the request\.  | 
-|  `sagemaker:VpcSecurityGroupIds`  |  List of strings  |  A list of VPC security groups\.  | 
-|  `sagemaker:VpcSubnets`  |  List of strings  |  A list of VPC subnets\.  | 
-|  `sagemaker:WorkteamArn`  |  ARN  |  The workteam ARN associated with the request\.  | 
-|  `sagemaker:WorkteamType`  |  String  |  The work team type associated with the request\. All work teams fall into one of three types: public\-crowd, private\-crowd or vendor\-crowd\.  | 
 
 The following examples show how to use the Amazon SageMaker condition keys to control access\.
 
@@ -807,7 +779,7 @@ The following example uses the `sagemaker:WorkteamType` condition key with the `
 }
 ```
 
-The following policies show how to restrict access to a public work team using the `sagemaker:WorkteamArn` condition key\. The first shows how to use it with a valid IAM regex\-varient of the work team ARN and the `ArnLike` condition operator\. The second shows how to use it with the `ArnEquals` condition operator and the work team ARN\.
+The following policies show how to restrict access to a public work team using the `sagemaker:WorkteamArn` condition key\. The first shows how to use it with a valid IAM regex\-variant of the work team ARN and the `ArnLike` condition operator\. The second shows how to use it with the `ArnEquals` condition operator and the work team ARN\.
 
 ```
 {

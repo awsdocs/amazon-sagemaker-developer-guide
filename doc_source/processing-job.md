@@ -14,7 +14,7 @@ You can run an Amazon SageMaker Processing Job to process data from Amazon Simpl
 
 ## Amazon SageMaker Processing Sample Notebooks<a name="processing-job-sample-notebooks"></a>
 
-For a sample notebook that shows how to run scikit\-learn scripts to do data preprocessing and model evaluation with the Amazon SageMaker Python SDK for Processing, see [scikit\-learn Processing](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker_processing/scikit_learn_data_processing_and_model_evaluation)\. This notebook also shows how to bring your own container to run processing workloads with your own dependencies\.
+For a sample notebook that shows how to run scikit\-learn scripts to do data preprocessing and model evaluation with the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) for Processing, see [scikit\-learn Processing](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker_processing/scikit_learn_data_processing_and_model_evaluation)\. This notebook also shows how to bring your own container to run processing workloads with your own dependencies\.
 
 For a sample notebook that shows how to use Processing to do distributed data processing with Spark, see [Distributed Processing \(Spark\)](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker_processing/feature_transformation_with_sagemaker_processing)\.
 

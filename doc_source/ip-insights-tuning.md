@@ -6,14 +6,14 @@ For more information about model tuning, see [Perform Automatic Model Tuning](au
 
 ## Metrics Computed by the IP Insights Algorithm<a name="ip-insights-metrics"></a>
 
-The Amazon SageMaker IP Insights algorithm is an unsupervised learning algorithm that learns associations between IP addresses and entities\. The algorithm trains a discriminator model , which learns to separate observed data points \(*positive samples*\) from randomly generated data points \(*negative samples*\)\. Automatic model tuning on IP Insights helps you find the model that can most accurately distinguish between unlabeled validation data and automatically generated negative samples\. The model accuracy on the validation dataset is measured by the area under the receiver operating characteristic \(ROC\) curve\. This `validation:discriminator_auc` metric can take values between 0\.0 and 1\.0, where 1\.0 indicates perfect accuracy\.
+The Amazon SageMaker IP Insights algorithm is an unsupervised learning algorithm that learns associations between IP addresses and entities\. The algorithm trains a discriminator model , which learns to separate observed data points \(*positive samples*\) from randomly generated data points \(*negative samples*\)\. Automatic model tuning on IP Insights helps you find the model that can most accurately distinguish between unlabeled validation data and automatically generated negative samples\. The model accuracy on the validation dataset is measured by the area under the receiver operating characteristic curve\. This `validation:discriminator_auc` metric can take values between 0\.0 and 1\.0, where 1\.0 indicates perfect accuracy\.
 
 The IP Insights algorithm computes a `validation:discriminator_auc` metric during validation, the value of which is used as the objective function to optimize for hyperparameter tuning\.
 
 
 | Metric Name | Description | Optimization Direction | 
 | --- | --- | --- | 
-| validation:discriminator\_auc |  Area under the ROC curve on the validation dataset\. The validation dataset is not labeled\. AUC is a metric that describes the model's ability to discriminate validation data points from randomly generated data points\.  |  Maximize  | 
+| validation:discriminator\_auc |  Area under the receiver operating characteristic curve on the validation dataset\. The validation dataset is not labeled\. Area Under the Curve \(AUC\) is a metric that describes the model's ability to discriminate validation data points from randomly generated data points\.  |  Maximize  | 
 
 ## Tunable IP Insights Hyperparameters<a name="ip-insights-tunable-hyperparameters"></a>
 
