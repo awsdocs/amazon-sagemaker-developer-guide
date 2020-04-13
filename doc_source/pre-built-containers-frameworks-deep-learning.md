@@ -7,9 +7,10 @@ The following table provides links to the GitHub repositories that contain the s
 
 | Framework | Prebuilt Docker Image Source Code | Instructions | 
 | --- | --- | --- | 
+
 | TensorFlow |  [Amazon SageMaker TensorFlow Containers](https://github.com/aws/sagemaker-tensorflow-container) [Amazon SageMaker TensorFlow Serving Containers](https://github.com/aws/sagemaker-tensorflow-serving-container)  |  [Using TensorFlow with the SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/using_tf.html)  | 
 | MXNet |  [Amazon SageMaker MXNet Containers](https://github.com/aws/sagemaker-mxnet-container) [Amazon SageMaker MXNet Serving Containers](https://github.com/aws/sagemaker-mxnet-serving-container)  |  [Using MXNet with the SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/using_mxnet.html)  | 
-| PyTorch |  [Amazon SageMaker PyTorch Containers](https://github.com/aws/sagemaker-python-sdk#pytorch-sagemaker-estimators) [Amazon SageMaker PyTorch Serving Containers](https://github.com/aws/sagemaker-pytorch-serving-container)  |  [Using PyTorch with the SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/using_pytorch.html)  | 
+| PyTorch |  [Amazon SageMaker PyTorch Containers](https://github.com/aws/sagemaker-pytorch-container) [Amazon SageMaker PyTorch Serving Containers](https://github.com/aws/sagemaker-pytorch-serving-container)  |  [Using PyTorch with the SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/using_pytorch.html)  | 
 | Chainer |  [Amazon SageMaker Chainer SageMaker Containers](https://github.com/aws/sagemaker-chainer-container)  |  [Using Chainer with the SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/using_chainer.html)  | 
 
 If you are not using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) and one of its estimators to retrieve the pre\-built images, you have to retrieve them yourself\. The Amazon SageMaker prebuilt Docker images are stored in Amazon Elastic Container Registry \(Amazon ECR\)\. For a complete list of the available pre\-built Docker containers, see [Deep Learning Containers Images](https://docs.aws.amazon.com/dlami/latest/devguide/deep-learning-containers-images.html)\.
