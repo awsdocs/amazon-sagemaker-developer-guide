@@ -1,7 +1,7 @@
 # Define Metrics<a name="automatic-model-tuning-define-metrics"></a>
 
 **Note**  
-When you use one of the Amazon SageMaker built\-in algorithms, you don't need to define metrics\. Built\-in algorithms automatically send metrics to hyperparameter tuning\. You do need to choose one of the metrics that the built\-in algorithm emits as the objective metric for the tuning job\. For a list of metrics that a built\-in algorithm emits, see the *Metrics* table for the algorithm in [Use Amazon SageMaker Built\-in Algorithms ](algos.md)\.
+When you use one of the Amazon SageMaker built\-in algorithms, you don't need to define metrics\. Built\-in algorithms automatically send metrics to hyperparameter tuning\. You do need to choose one of the metrics that the built\-in algorithm emits as the objective metric for the tuning job\. For a list of metrics that a built\-in algorithm emits, see the *Metrics* table for the algorithm in [Use Amazon SageMaker built\-in algorithms](algos.md)\.
 
 To optimize hyperparameters for a machine learning model, a tuning job evaluates the training jobs it launches by using a metric that the training algorithm writes to logs\. Amazon SageMaker hyperparameter tuning parses your algorithm’s `stdout` and `stderr` streams to find algorithm metrics, such as loss or validation\-accuracy, that show how well the model is performing on the dataset 
 

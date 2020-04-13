@@ -18,7 +18,7 @@ This procedure describes how to onboard to Amazon SageMaker using the standard s
 
 1. Choose **Amazon SageMaker Studio** at the top left of the page\.
 
-1. On the **Amazon SageMaker Studio** page, under **Get started**, choose **Standard setup**\.
+1. On the **Amazon SageMaker Studio Control Panel**, under **Get started**, choose **Standard setup**\.
 
 1. For **Authentication method**, choose **AWS Identity and Access Management \(IAM\)**\.
 
@@ -30,7 +30,7 @@ This procedure describes how to onboard to Amazon SageMaker using the standard s
 
 1. Choose **Submit**\.
 
-   On the **Amazon SageMaker Studio Control Panel** page, under **Studio Summary**, wait for **Status** to change to **Ready** and the **Add user** button to be enabled\.
+   On the **Amazon SageMaker Studio Control Panel**, under **Studio Summary**, wait for **Status** to change to **Ready** and the **Add user** button to be enabled\.
 
 1. Choose **Add user**\.
 
@@ -38,7 +38,7 @@ This procedure describes how to onboard to Amazon SageMaker using the standard s
 
    For **Execution role**, choose an option from the role selector\.
 
-1. Choose **Submit**\. The Studio Control Panel home page opens with the new user listed and chosen\. The **Delete user** button and the **Open Studio** link are both enabled\.
+1. Choose **Submit**\. The **Amazon SageMaker Studio Control Panel** opens with the new user listed\. The **Delete user** button and the **Open Studio** link are both enabled\.
 
 1. To add more users, repeat steps 7 through 9\.
 
@@ -56,6 +56,6 @@ Now that you've onboarded to Amazon SageMaker Studio, use the following steps to
 
 1. Choose **Amazon SageMaker Studio** at the top left of the page\.
 
-1. On the **Amazon SageMaker Studio Control Panel** page, choose your user name and then choose **Open Studio**\.
+1. On the **Amazon SageMaker Studio Control Panel**, choose your user name and then choose **Open Studio**\.
 
 For information about using Amazon SageMaker Studio, see [Get Started with Studio](gs-studio.md)\.

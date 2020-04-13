@@ -108,6 +108,8 @@ To create a flow definition using the Amazon SageMaker API, you use the `CreateF
 
    If you are using a custom task type, `HumanLoopActivationConfig` is disabled\. To learn how to control when tasks are sent to human workers using a custom task type, see [Use Amazon Augmented AI with Custom Task Types](a2i-task-types-custom.md)\.
 
+1. \(Optional\) If you are using a built in task type, specify the integration source \(for example, Amazon Rekognition or Amazon Textract\) in the [HumanLoopRequestSource](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanLoopRequestSource.html) parameter\.
+
 1. For `OutputConfig`, indicate where in Amazon Simple Storage Service \(Amazon S3\) to store the output of the human loop\.
 
 1. \(Optional\) Use `Tags` to enter key value pairs to help you categorize and organize a flow definition\. Each tag consists of a key and a value, both of which you define\.
@@ -117,10 +119,10 @@ The following is an example of a request to create an Amazon Rekognition human l
 ```
 response = client.create_flow_definition(
     FlowDefinitionName='string',
+    HumanLoopRequestSource={
+         'AwsManagedHumanLoopRequestSource': 'AWS/Rekognition/DetectModerationLabels/Image/V3'
+    }, 
     HumanLoopActivationConfig={
-        'HumanLoopRequestSource': {
-            'AwsManagedHumanLoopRequestSource': 'AWS/Rekognition/DetectModerationLabels/Image/V3'
-        },
         'HumanLoopActivationConditionsConfig': {
             'HumanLoopActivationConditions': 'string'
         }

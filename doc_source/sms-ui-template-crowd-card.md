@@ -23,5 +23,5 @@ This element has the following parent and child elements\.
 ### See Also<a name="card-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth for Labeling](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [HTML Elements Reference](sms-ui-template-reference.md)

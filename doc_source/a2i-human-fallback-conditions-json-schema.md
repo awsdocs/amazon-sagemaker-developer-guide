@@ -12,7 +12,7 @@ The `HumanLoopActivationConditions` is an input parameter of the [ `CreateFlowDe
 The following is the schema for the JSON\. At the top level, the `HumanLoopActivationConditions` has a JSON array, `Conditions`\. Each member of this array is an independent condition that, if evaluated to true, will result in Amazon A2I creating a human loop\. Each such independent condition can be a primitive condition or a complex condition\. A simple condition has the following attributes:
 + `ConditionType`: This attribute identifies the type of condition\. Each AWS AI service API that integrates with Amazon A2I defines its own set of allowed `ConditionTypes`\. 
   + Rekognition `DetectModerationLabels` – This API supports the `ModerationLabelConfidenceCheck` and `Sampling` `ConditionType` values\.
-  + Textract `AnalyzeDocument` – This API supports the `ImportantFormKeyConfidenceCheck` and `Sampling` `ConditionType` values\.
+  + Textract `AnalyzeDocument` – This API supports the `ImportantFormKeyConfidenceCheck`, `MissingImportantFormKey` and `Sampling` `ConditionType` values\.
 + `ConditionParameters` – This is a JSON object that parameterizes the condition\. The set of allowed attributes of this object is dependent on the value of the `ConditionType`\. Each `ConditionType` defines its own set of `ConditionParameters`\. 
 
 A member of the `Conditions` array can model a complex condition\. This is accomplished by logically connecting primitive conditions using the `And` and `Or` logical operators and nesting the underlying primitive conditions\. Up to two levels of nesting are supported\. 

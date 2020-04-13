@@ -1122,10 +1122,10 @@ For more information, see [Regions and Availability Zones](https://docs.aws.amaz
 | ml\.r5\.12xlarge | None | None | None | 
 | ml\.r5\.24xlarge | None | None | None | 
 | ml\.c4\.large | None | None | None | 
-| ml\.c4\.xlarge | Training | Training | Training | 
-| ml\.c4\.2xlarge | Training | Training | Training | 
-| ml\.c4\.4xlarge | Training | Training | Training | 
-| ml\.c4\.8xlarge | Training | Training | Training | 
+| ml\.c4\.xlarge | None | None | None | 
+| ml\.c4\.2xlarge | None | None | None | 
+| ml\.c4\.4xlarge | None | None | None | 
+| ml\.c4\.8xlarge | None | None | None | 
 | ml\.c5\.large | Endpoint | Endpoint | Endpoint | 
 | ml\.c5\.xlarge | Notebook, Training, Endpoint | Notebook, Training, Endpoint | Notebook, Training, Endpoint | 
 | ml\.c5\.2xlarge | Notebook, Training, Endpoint | Notebook, Training, Endpoint | Notebook, Training, Endpoint | 
@@ -1137,12 +1137,12 @@ For more information, see [Regions and Availability Zones](https://docs.aws.amaz
 | ml\.c5d\.4xlarge | Notebook, Endpoint | Notebook, Endpoint | Notebook, Endpoint | 
 | ml\.c5d\.9xlarge | Notebook, Endpoint | Notebook, Endpoint | Notebook, Endpoint | 
 | ml\.c5d\.18xlarge | Notebook, Endpoint | Notebook, Endpoint | Notebook, Endpoint | 
-| ml\.p2\.xlarge | Training | Training | Training | 
-| ml\.p2\.8xlarge | Training | Training | Training | 
-| ml\.p2\.16xlarge | Training | Training | Training | 
-| ml\.p3\.2xlarge | Training | Training | Training | 
-| ml\.p3\.8xlarge | Training | Training | Training | 
-| ml\.p3\.16xlarge | Training | Training | Training | 
+| ml\.p2\.xlarge | None | None | None | 
+| ml\.p2\.8xlarge | None | None | None | 
+| ml\.p2\.16xlarge | None | None | None | 
+| ml\.p3\.2xlarge | None | None | None | 
+| ml\.p3\.8xlarge | None | None | None | 
+| ml\.p3\.16xlarge | None | None | None | 
 | ml\.p3dn\.24xlarge | None | None | None | 
 | ml\.g4dn\.xlarge | None | None | None | 
 | ml\.g4dn\.2xlarge | None | None | None | 

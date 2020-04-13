@@ -48,8 +48,6 @@ To create and manage your private workforce, you can use the **Labeling workforc
 
 1.  Enter an organization name and contact email\. 
 
-1.  Enter an organization name and contact email\. 
-
 1. Optionally choose an SNS topic to which to subscribe the team so workers are notified by email when new labeling jobs become available\. 
 
 1.  Click the **Create private team** button\. 

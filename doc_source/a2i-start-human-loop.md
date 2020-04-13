@@ -1,5 +1,12 @@
 # Create and Start a Human Loop<a name="a2i-start-human-loop"></a>
 
+
+****  
+
+|  | 
+| --- |
+|  Amazon Augmented AI is in preview release and is subject to change\. We do not recommend using this product in production environments\. | 
+
 A *human loop* starts your human review workflow and sends data review tasks to human workers\. When you use one of the Amazon A2I built\-in task types, the corresponding AWS service creates and starts a human loop on your behalf when the conditions specified in your flow definition are met\. If no conditions were specified in your flow definition, a human loop is created for each object\. When using Amazon A2I for a custom task, a human loops starts when `StartHumanLoop` is called in your application\. 
 
 Use the following instructions to configure a human loop with Amazon Rekognition or Amazon Textract built\-in task types and custom task types\. 
@@ -30,7 +37,7 @@ After you run the `DetectModerationLabels` with a human loop configured, Amazon 
 
 ## Create and Start a Human Loop for a Custom Task Type<a name="a2i-instructions-starthumanloop"></a>
 
-To configure a human loop for a custom human review task, use the `StartHumanLoop` operation within your application\. This section provides an example of a human loop request using the AWS SDK for Python \(Boto 3\) and the AWS Command Line Interface \(AWS CLI\)\. For documentation on other language specific SDK's that support `StartHumanLoop`, use the [ See Also]() section of [StartHumanLoop](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_StartHumanLoop.html) in the Amazon Augmented AI Runtime API documentation\. 
+To configure a human loop for a custom human review task, use the `StartHumanLoop` operation within your application\. This section provides an example of a human loop request using the AWS SDK for Python \(Boto 3\) and the AWS Command Line Interface \(AWS CLI\)\. For documentation on other language specific SDK's that support `StartHumanLoop`, use the **See Also** section of [StartHumanLoop](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_StartHumanLoop.html) in the Amazon Augmented AI Runtime API documentation\. 
 
 **Prerequisites**
 

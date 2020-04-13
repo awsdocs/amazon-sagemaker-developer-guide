@@ -5,7 +5,7 @@ Hyperparameters are parameters that are set before a machine learning model begi
 
 | Parameter Name | Description | 
 | --- | --- | 
-| num\_classes | Number of output classes\. This parameter defines the dimensions of the network output and is typically set to the number of classes in the dataset\. **Required** Valid values: positive integer  | 
+| num\_classes | Number of output classes\. This parameter defines the dimensions of the network output and is typically set to the number of classes in the dataset\. Besides multi\-class classification, multi\-label classification is supported too\. Please refer to [Input/Output Interface for the Image Classification Algorithm](image-classification.md#IC-inputoutput) for details on how to work with multi\-label classification with augmented manifest files\.  **Required** Valid values: positive integer  | 
 | num\_training\_samples | Number of training examples in the input dataset\. If there is a mismatch between this value and the number of samples in the training set, then the behavior of the `lr_scheduler_step` parameter is undefined and distributed training accuracy might be affected\. **Required** Valid values: positive integer  | 
 | augmentation\_type |  Data augmentation type\. The input images can be augmented in multiple ways as specified below\. [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/IC-Hyperparameter.html) **Optional**  Valid values: `crop`, `crop_color`, or `crop_color_transform`\. Default value: no default value  | 
 | beta\_1 | The beta1 for `adam`, that is the exponential decay rate for the first moment estimates\. **Optional**  Valid values: float\. Range in \[0, 1\]\. Default value: 0\.9 | 

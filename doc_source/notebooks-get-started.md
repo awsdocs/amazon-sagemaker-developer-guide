@@ -13,11 +13,11 @@
 
 ## Login<a name="notebooks-get-started-login"></a>
 
- Logging in to an Amazon SageMaker notebook is the same as logging in to Amazon SageMaker Studio\. When you receive a shared notebook or if you want to create a new notebook, or run experiments, it is all the same process\. Use the console or the link provided to you in an invite email to log in to Amazon SageMaker Studio\. 
+ Logging in to an Amazon SageMaker Studio notebook is the same as logging in to Amazon SageMaker Studio\. When you receive a shared notebook or if you want to create a new notebook, or run experiments, it is all the same process\. Use the console or the link provided to you in an invite email to log in to Amazon SageMaker Studio\. 
 
 **To log in from the console**
 
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/]()\. 
+1. Open the Amazon SageMaker [console](https://console.aws.amazon.com/sagemaker/)\.
 
 1. Choose **Amazon SageMaker Studio**\.
 

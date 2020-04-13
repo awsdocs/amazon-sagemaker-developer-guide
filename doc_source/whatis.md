@@ -2,6 +2,8 @@
 
 Amazon SageMaker is a fully managed machine learning service\. With Amazon SageMaker, data scientists and developers can quickly and easily build and train machine learning models, and then directly deploy them into a production\-ready hosted environment\. It provides an integrated Jupyter authoring notebook instance for easy access to your data sources for exploration and analysis, so you don't have to manage servers\. It also provides common machine learning algorithms that are optimized to run efficiently against extremely large data in a distributed environment\. With native support for bring\-your\-own\-algorithms and frameworks, Amazon SageMaker offers flexible distributed training options that adjust to your specific workflows\. Deploy a model into a secure and scalable environment by launching it with a single click from the Amazon SageMaker console\. Training and hosting are billed by minutes of usage, with no minimum fees and no upfront commitments\.
 
+This guide includes information and tutorials on Amazon SageMaker features\. To learn how to build, train, and deploy models using Amazon SageMaker, see [Amazon SageMaker developer resources](https://aws.amazon.com/sagemaker/developer-resources/)\. 
+
 **Topics**
 + [Amazon SageMaker Features](#whatis-features)
 + [Amazon SageMaker Pricing](#whatis-pricing)

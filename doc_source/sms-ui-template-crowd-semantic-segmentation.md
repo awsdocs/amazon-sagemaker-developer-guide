@@ -2,6 +2,33 @@
 
 A widget for segmenting an image and assigning a label to each image segment\.
 
+The following is an example of a Liquid template that uses the `<crowd-semantic-segmentation>` element\. You can save this template and preview it in any browser\.
+
+```
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<crowd-form>
+  <crowd-semantic-segmentation
+    name="annotatedResult"
+    src="{{ task.input.taskObject | grant_read_access }}"
+    header="Please label each of the requested objects in this image"
+    labels="['Cat', 'Dog', 'Bird']"
+  >
+    <full-instructions header="Segmentation Instructions">
+      <ol>
+          <li><strong>Read</strong> the task carefully and inspect the image.</li>
+          <li><strong>Read</strong> the options and review the examples provided to understand more about the labels.</li>
+          <li><strong>Choose</strong> the appropriate label that best suits the image.</li>
+      </ol>
+    </full-instructions>
+
+    <short-instructions>
+      <p>Use the tools to label the requested items in the image</p>
+    </short-instructions>
+  </crowd-semantic-segmentation>
+</crowd-form>
+```
+
 ### Attributes<a name="semantic-segmentation-attributes"></a>
 
 The following attributes are supported by this element\.
@@ -141,5 +168,5 @@ The following is a sample of output from this element\.
 ### See Also<a name="semantic-segmentation-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth for Labeling](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [HTML Elements Reference](sms-ui-template-reference.md)

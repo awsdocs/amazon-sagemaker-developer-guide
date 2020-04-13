@@ -12,7 +12,7 @@ import com.amazonaws.services.sagemaker.sparksdk.algorithms.KMeansSageMakerEstim
 
 val spark = SparkSession.builder.getOrCreate
 
-// load mnist data as a dataframe from libsvm 
+// load mnist data as a dataframe from libsvm
 val region = "us-east-1"
 val trainingData = spark.read.format("libsvm")
   .option("numFeatures", "784")

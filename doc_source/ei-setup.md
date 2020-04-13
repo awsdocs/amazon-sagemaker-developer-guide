@@ -15,7 +15,7 @@ If you already have an execution role that has the `AmazonSageMakerFullAccess` m
 
 To use EI in Amazon SageMaker, the role that you use to open a notebook instance or create a deployable model must have a policy with the required permissions attached\. You can attach the `AmazonSageMakerFullAccess` managed policy, which contains the required permissions, to the role, or you can add a custom policy that has the required permissions\. For information about creating an IAM role, see [Creating a Role for an AWS Service \(Console\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-service.html#roles-creatingrole-service-console) in the *AWS Identity and Access Management User Guide*\. For information about attaching a policy to a role, see [Adding and Removing IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html) \.
 
-Add these permissions specifically for connecting EI in an IAM policy:
+Add these permissions specifically for connecting EI in an IAM policy\.
 
 ```
 {
@@ -28,7 +28,7 @@ Add these permissions specifically for connecting EI in an IAM policy:
 }
 ```
 
-The following IAM policy is the complete list of required permissions to use EI in Amazon SageMaker:
+The following IAM policy is the complete list of required permissions to use EI in Amazon SageMaker\.
 
 ```
 {
@@ -158,7 +158,7 @@ To use EI within a VPC, you need to create two security groups:
 + A security group to control access to the VPC interface endpoint that you will set up for EI\.
 + A security group that allows Amazon SageMaker to call into the first security group\.
 
-Complete the following steps to configure the two security groups:
+**To configure the two security groups**
 
 1. Create a security group with no outbound connections\. You will attach this to the VPC endpoint interface you create in the next section\.
 

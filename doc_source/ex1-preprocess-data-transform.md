@@ -24,8 +24,6 @@ The [XGBoost Algorithm](xgboost.md) expects comma\-separated values \(CSV\) for 
   
   bucket='myBucket' # Replace with your s3 bucket name
   prefix = 'sagemaker/xgboost-mnist' # Used as part of the path in the bucket where you store data
-  bucket_path = 'https://s3-{}.amazonaws.com/{}'.format(region,bucket) # The URL to access the bucket
-  
   
   def convert_data():
       data_partitions = [('train', train_set), ('validation', valid_set), ('test', test_set)]

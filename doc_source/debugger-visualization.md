@@ -12,7 +12,7 @@ The following screenshot shows visualizations of loss curves for training\. The 
 
 Amazon SageMaker Studio allows simple comparison across multiple jobs \- in this case the loss\. This helps identify the best\-performing training jobs\.
 
-![\[Comparing loss curves..\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/degubber-analyze-training-loss-curves.png)
+![\[Comparing loss curves.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/degubber-analyze-training-loss-curves.png)
 
 **Rules triggering \+ logs from Debugger Jobs**
 

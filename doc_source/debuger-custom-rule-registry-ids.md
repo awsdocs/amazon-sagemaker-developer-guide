@@ -1,6 +1,6 @@
-# Amazon SageMaker Custom Rule Evaluator Registry Ids<a name="debuger-custom-rule-registry-ids"></a>
+# Amazon SageMaker Debugger Registry URLs for Custom Rule Evaluators<a name="debuger-custom-rule-registry-ids"></a>
 
-The following table itemizes the supported values for the URL components of the registry addresses for the images providing custom rule evaluators\.
+Use the following values for the components of the registry URL for the images that provide custom rule evaluators for Amazon SageMaker Debugger \. For account IDs, see the following table\.
 
 **ECR Repository Name**: sagemaker\-debugger\-rule\-evaluator 
 
@@ -10,10 +10,12 @@ The following table itemizes the supported values for the URL components of the 
 
 `552407032007.dkr.ecr.ap-south-1.amazonaws.com/sagemaker-debugger-rule-evaluator:latest`
 
+one set for evaluating rules provided by Amazon SageMaker \(built\-in rules\) and one set for evaluating custom rules provided in Python source files\. 
 
-**Table: Regions and Custom Rule Evaluator Registry IDs**  
 
-| Regions | Registry IDs | 
+**Account IDs for Custom Rules Container Images by AWS Region**  
+
+| Region | account\_id | 
 | --- | --- | 
 | ap\-east\-1 |  645844755771  | 
 | ap\-northeast\-1 |  670969264625   | 

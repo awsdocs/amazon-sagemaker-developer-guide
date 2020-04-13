@@ -87,3 +87,9 @@ predictor = RealTimePredictor(endpoint=endpoint_name, sagemaker_session=sess, se
 
 print(predictor.predict(payload))
 ```
+
+The response you get from `predictor.predict(payload)` is the model's inference result\.
+
+## Realtime inference pipeline example<a name="inference-pipeline-example"></a>
+
+You can run this [example notebook using the SKLearn predictor](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/scikit_learn_randomforest/Sklearn_on_SageMaker_end2end.ipynb) that shows how to deploy an endpoint, run an inference request, then deserialize the response\. Find this notebook and more examples in the [Amazon SageMaker example GitHub repository](https://github.com/awslabs/amazon-sagemaker-examples)\.

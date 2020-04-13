@@ -1,6 +1,25 @@
 # crowd\-toggle\-button<a name="sms-ui-template-crowd-toggle-button"></a>
 
-A button that acts as an ON/OFF switch, toggling a state\.
+A button that acts as an ON/OFF switch, toggling a state\. The following example shows different ways you can use to use the `<crowd-toggle-button>` HTML element\.
+
+```
+<crowd-form>
+  <!--Toggle button without value-->
+  <crowd-toggle-button name="toggleButtonWithoutValue"></crowd-toggle-button>
+
+  <!--Toggle button with value-->
+  <crowd-toggle-button name="toggleButtonWithValue" value="someValue"></crowd-toggle-button>
+
+  <!--Toggle button disabled-->
+  <crowd-toggle-button name="toggleButtonDisabled" disabled></crowd-toggle-button>
+
+  <!--Toggle button marked invalid-->
+  <crowd-toggle-button name="toggleButtonInvalid" invalid></crowd-toggle-button>
+
+  <!--Toggle button marked required-->
+  <crowd-toggle-button name="toggleButtonRequired" required></crowd-toggle-button>
+</crowd-form>
+```
 
 ### Attributes<a name="toggle-button-attributes"></a>
 
@@ -55,5 +74,5 @@ This element outputs the `name` as the name of an object, containing the `value`
 ### See Also<a name="toggle-button-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth for Labeling](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [HTML Elements Reference](sms-ui-template-reference.md)

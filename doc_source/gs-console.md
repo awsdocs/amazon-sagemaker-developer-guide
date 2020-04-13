@@ -1,4 +1,4 @@
-# Get Started with the Amazon SageMaker Console<a name="gs-console"></a>
+# Get Started with Amazon SageMaker Notebook Instances and SDKs<a name="gs-console"></a>
 
 The best way to learn how to use Amazon SageMaker is to create, train, and deploy a simple machine learning model\. To do this, you need the following:
 + A dataset\. You use the MNIST \(Modified National Institute of Standards and Technology database\) dataset of images of handwritten, single digit numbers\. This dataset provides a training set of 50,000 example images of handwritten single\-digit numbers, a validation set of 10,000 images, and a test dataset of 10,000 images\. You provide this dataset to the algorithm for model training\. For more information about the MNIST dataset, see [MNIST Dataset](http://yann.lecun.com/exdb/mnist/)\.
@@ -13,9 +13,9 @@ In this exercise, you learn how to create all of the resources that you need to 
 
 **Important**  
 For model training, deployment, and validation, you can use either of the following:  
-The high\-level Amazon SageMaker Python SDK
+The high\-level [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)
 The AWS SDK for Python \(Boto 3\)
-The Amazon SageMaker Python SDK abstracts several implementation details, and is easy to use\. This exercise provides code examples for both libraries\. If you're a first\-time Amazon SageMaker user, we recommend that you use the Amazon SageMaker Python SDK\. For more information, see [https://sagemaker\.readthedocs\.io/en/stable/overview\.html](https://sagemaker.readthedocs.io/en/stable/overview.html)\.
+The [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) abstracts several implementation details, and is easy to use\. This exercise provides code examples for both libraries\. If you're a first\-time Amazon SageMaker user, we recommend that you use the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.
 
 If you're new to Amazon SageMaker, we recommend that you read [How Amazon SageMaker Works](how-it-works.md) before starting this exercise\.
 

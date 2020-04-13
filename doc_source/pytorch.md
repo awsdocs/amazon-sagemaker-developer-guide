@@ -14,7 +14,7 @@ I have a PyTorch model that I trained in Amazon SageMaker, and I want to deploy 
 I have a PyTorch model that I trained outside of Amazon SageMaker, and I want to deploy it to an Amazon SageMaker endpoint  
 [Deploy Endpoints from Model Data](https://sagemaker.readthedocs.io/en/stable/using_pytorch.html#deploy-endpoints-from-model-data)\.
 
-I want to see the API documentation for Amazon SageMaker Python SDK PyTorch classes\.  
+I want to see the API documentation for [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) PyTorch classes\.  
 [PyTorch Classes](https://sagemaker.readthedocs.io/en/stable/sagemaker.pytorch.html)
 
 I want to see information about Amazon SageMaker PyTorch containers\.  

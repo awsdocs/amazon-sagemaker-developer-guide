@@ -4,7 +4,7 @@ Amazon SageMaker provides a built\-in container sagemaker\-model\-monitor\-analy
 
 `<ACCOUNT_ID>.dkr.ecr.<REGION_NAME>.amazonaws.com/sagemaker-model-monitor-analyzer`
 
-For example: `159807026194.dkr.ecr.us-west-1.amazonaws.com/sagemaker-model-monitor-analyzer`
+For example: `159807026194.dkr.ecr.us-west-2.amazonaws.com/sagemaker-model-monitor-analyzer`
 
 The following table lists the supported values for account IDs and corresponding AWS Region names\.
 
@@ -14,7 +14,7 @@ The following table lists the supported values for account IDs and corresponding
 | 895015795356 | eu\-north\-1 | 
 | 607024016150 | me\-south\-1 | 
 | 126357580389 | ap\-south\-1 | 
-| 680080141114 | us\-east\-2 | 
+| 680080141114 | eu\-west\-3 | 
 | 777275614652 | us\-east\-2 | 
 | 468650794304 | eu\-west\-1 | 
 | 048819808253 | eu\-central\-1 | 

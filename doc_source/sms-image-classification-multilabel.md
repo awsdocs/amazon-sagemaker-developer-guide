@@ -36,7 +36,7 @@ To create a multi\-label image classification labeling job, use the instructions
 
 ## Create a Multi\-Label Image Classification Labeling Job \(API\)<a name="sms-create-multi-select-image-classification-job-console"></a>
 
-To create a multi\-image label classification labeling job using the Amazon SageMaker API, you use the []() operation\. To use this operation, you need:
+To create a multi\-image label classification labeling job using the Amazon SageMaker API, you use the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. To use this operation, you need:
 + A custom worker task template\. For information, see [Create a Custom Template for Multi\-label Image Classification](#custom-template-multi-image-label-classification)\.
 + At least one Amazon Simple Storage Service \(Amazon S3\) bucket to store your input and output data\. 
 + An input manifest file that specifies your input data\. For information about creating an input manifest, see [Input Data](sms-data-input.md)\. 

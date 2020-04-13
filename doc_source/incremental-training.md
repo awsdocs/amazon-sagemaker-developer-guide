@@ -10,7 +10,7 @@ Use incremental training to:
 
 For more information about training jobs, see [Train a Model with Amazon SageMaker](how-it-works-training.md)\.
 
-You can train incrementally using the Amazon SageMaker console or the Amazon SageMaker Python SDK\.
+You can train incrementally using the Amazon SageMaker console or the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.
 
 **Important**  
 Only three built\-in algorithms currently support incremental training: [Object Detection Algorithm](object-detection.md), [Image Classification Algorithm](image-classification.md), and [Semantic Segmentation Algorithm](semantic-segmentation.md)\.
@@ -24,7 +24,7 @@ Only three built\-in algorithms currently support incremental training: [Object 
 To complete this procedure, you need:
 + The URL of the Amazon Simple Storage Service \(Amazon S3\) bucket where you've stored the training data\.
 + The URL of the S3 bucket where you want to store the output of the job\. 
-+ The Amazon Elastic Container Registry path where the training code is stored\. For more information, see [Common Parameters for Built\-In Algorithms ](sagemaker-algo-docker-registry-paths.md)\.
++ The Amazon Elastic Container Registry path where the training code is stored\. For more information, see [Common parameters for built\-in algorithms](sagemaker-algo-docker-registry-paths.md)\.
 + The URL of the S3 bucket where you've stored the model artifacts that you want to use in incremental training\. To find the URL for the model artifacts, see the details page of the training job used to create the model\. To find the details page, in the Amazon SageMaker console, choose **Inference**, choose **Models**, and then choose the model\.
 
 To restart a stopped training job, use the URL to the model artifacts that are stored in the details page as you would with a model or a completed training job\.
@@ -39,7 +39,7 @@ To restart a stopped training job, use the URL to the model artifacts that are s
 
 1. Provide a name for the training job\. The name must be unique within an AWS Region in an AWS account\. The training job name must have 1 to 63 characters\. Valid characters: a\-z, A\-Z, 0\-9, and \. : \+ = @ \_ % \- \(hyphen\)\.
 
-1. Choose the algorithm that you want to use\. For information about algorithms, see [Use Amazon SageMaker Built\-in Algorithms ](algos.md)\. 
+1. Choose the algorithm that you want to use\. For information about algorithms, see [Use Amazon SageMaker built\-in algorithms](algos.md)\. 
 
 1. \(Optional\) For **Resource configuration**, either leave the default values or increase the resource consumption to reduce computation time\.
 

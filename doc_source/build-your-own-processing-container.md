@@ -141,7 +141,7 @@ Do not write sensitive data to this file\. If the data in this file is not UTF\-
 
 ## How You Can Run Your Processing Container Using the SageMaker Python SDK<a name="byoc-run"></a>
 
-You can use the Amazon SageMaker Python SDK to run your own processing image by using the `Processor` class\. The following example shows how to run your own processing container with one input from Amazon Simple Storage Service \(Amazon S3\), and one output to Amazon S3\.
+You can use the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) to run your own processing image by using the `Processor` class\. The following example shows how to run your own processing container with one input from Amazon Simple Storage Service \(Amazon S3\), and one output to Amazon S3\.
 
 ```
 from sagemaker.processing import Processor, ProcessingInput, ProcessingOutput
@@ -162,4 +162,4 @@ processor.run(inputs=[ProcessingInput(
 
 Instead of building your processing code into your processing image, you can provide a `ScriptProcessor` with your own image and the command that you want to run, along with the code that you want to run inside that container, as in the [Run Scripts with Your Own Processing Container](processing-container-run-scripts.md) example\.
 
-You can also use the scikit\-learn image that Processing provides through `SKLearnProcessor` to run scikit\-learn scripts, as in [Data Processing and Model Evaluation with Scikit\-Learn](use-scikit-learn-processing-container.md)\. To learn more about using the Amazon SageMaker Python SDK with Processing containers, see [SageMaker Python SDK ReadTheDocs](https://sagemaker.readthedocs.io/en/stable/)\.
+You can also use the scikit\-learn image that Processing provides through `SKLearnProcessor` to run scikit\-learn scripts, as in [Data Processing and Model Evaluation with Scikit\-Learn](use-scikit-learn-processing-container.md)\. To learn more about using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) with Processing containers, see [SageMaker Python SDK ReadTheDocs](https://sagemaker.readthedocs.io/en/stable/)\.

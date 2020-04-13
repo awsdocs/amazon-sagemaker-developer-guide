@@ -112,6 +112,12 @@ To run an arbitrary script\-based program in a Docker container using the Amazon
    !docker build -t tf-2.0 .
    ```
 
+   If you get an error that it can't find the file, remember that `docker` is looking for a file called `Dockerfile` in the current directory\. If you named it something else, you can pass in the filename manually with the `-f` argument\. For example: 
+
+   ```
+   !docker build -t tf-2.0 -f Dockerfile.txt .
+   ```
+
 **To test the container locally**
 
 1. Use Local Mode to test the container locally\. Replace the `'SageMakerRole'` value with the ARN for the role with the IAM role you created when configuring the notebook instance\. The ARN should look like:` 'arn:aws:iam::109225375568:role/service-role/AmazonSageMaker-ExecutionRole-20190429T110788'`\.

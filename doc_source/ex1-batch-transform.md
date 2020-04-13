@@ -10,7 +10,7 @@ For information about batch transforms, see [Get Inferences for an Entire Datase
 
 ## Deploy a Model with Batch Transform \(Amazon SageMaker High\-level Python Library\)<a name="ex1-batch-transform-api-high-level"></a>
 
-The following code creates a `sagemaker.transformer.Transformer` object from the model that you trained in [Create and Run a Training Job \(Amazon SageMaker Python SDK\)](ex1-train-model.md#ex1-train-model-sdk)\. Then it calls that object's `transform` method to create a transform job\. When you create the `sagemaker.transformer.Transformer` object, you specify the number and type of ML instances to use to perform the batch transform job, and the location in Amazon S3 where you want to store the inferences\. 
+The following code creates a `sagemaker.transformer.Transformer` object from the model that you trained in [Create and Run a Training Job \([Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\)](ex1-train-model.md#ex1-train-model-sdk)\. Then it calls that object's `transform` method to create a transform job\. When you create the `sagemaker.transformer.Transformer` object, you specify the number and type of ML instances to use to perform the batch transform job, and the location in Amazon S3 where you want to store the inferences\. 
 
 Paste the following code in a cell in the Jupyter notebook you created in [Step 3: Create a Jupyter Notebook](ex1-prepare.md) and run the cell\.
 
@@ -35,7 +35,7 @@ transformer.wait()
 
 ## Deploy a Model with Batch Transform \(SDK for Python \(Boto 3\)\)<a name="ex1-batch-transform-api-low-level"></a>
 
-To run a batch transform job, call the `create_transform_job`\. method using the model that you trained in [Create and Run a Training Job \(AWS SDK for Python \(Boto 3\)\)](ex1-train-model.md#ex1-train-model-create-training-job)\.
+To run a batch transform job, call the `create_transform_job`\. method using the model that you trained in [Deploy the Model to Amazon SageMaker Hosting Services \(AWS SDK for Python \(Boto 3\)\)\.](ex1-deploy-model.md#ex1-deploy-model-boto)\.
 
 **To create a batch transform job \(SDK for Python \(Boto 3\)\)**
 

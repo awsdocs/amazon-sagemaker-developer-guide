@@ -18,7 +18,7 @@ This procedure describes how to onboard to Amazon SageMaker using the **Quick st
 
 1. Choose **Amazon SageMaker Studio** at the top left of the page\.
 
-1. On the **Amazon SageMaker Studio** page, under **Get started**, choose **Quick start**\.
+1. On the **Amazon SageMaker Studio Control Panel**, under **Get started**, choose **Quick start**\.
 
 1. For **User name**, keep the default name or create a new name\. The name can be up to 63 characters\. Valid characters: A\-Z, a\-z, 0\-9, and \- \(hyphen\)\. 
 
@@ -32,7 +32,7 @@ This procedure describes how to onboard to Amazon SageMaker using the **Quick st
 
 1. Choose **Submit**\.
 
-   On the **Amazon SageMaker Studio Control Panel** page, under **Studio Summary**, wait for **Status** to change to **Ready**\.
+   On the **Amazon SageMaker Studio Control Panel**, under **Studio Summary**, wait for **Status** to change to **Ready**\.
 
    When **Status** is **Ready**, the user name that you specified is enabled and chosen\. The **Add user** and **Delete user** buttons, and the **Open Studio** link are also enabled\.
 
@@ -48,7 +48,7 @@ Now that you've onboarded to Amazon SageMaker Studio, use the following steps to
 
 1. Choose **Amazon SageMaker Studio** at the top left of the page\.
 
-1. On the **Amazon SageMaker Studio Control Panel** page, choose your user name and then choose **Open Studio**\.
+1. On the **Amazon SageMaker Studio Control Panel**, choose your user name and then choose **Open Studio**\.
 
 **To add more users**
 

@@ -11,11 +11,11 @@
 
  **To share a notebook** 
 
-On the  menu directly above your notebook, choose the camera icon to create a shareable screenshot\.
+On the  menu directly above your notebook, choose the camera icon to create a shareable notebook\.
 
 Choose any of the following options: 
-+ **Include github information** \- If available, the GitHub repository associated with the notebook\. This enables you and your recipient to collaborate and contribute to the same git repository\. 
-+ **Include outputs** \- You can share a clean notebook, or include the output of your notebook’s last run\. Check this if you want to share the last run result, especially if the notebook takes long to run\. 
++ **Include Git repo information** \- If available, information on the Git repository associated with the notebook is included\. This enables you and your recipient to collaborate and contribute to the same Git repository\. 
++ **Include output** \- You can share a clean notebook, or include the output of your notebook’s last run\. Check this if you want to share the last run result, especially if the notebook takes long to run\. 
 **Note**  
 If you don’t see some or any of these options, your administrator probably disabled the feature\. Contact your administrator\. 
 

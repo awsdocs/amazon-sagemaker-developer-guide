@@ -87,15 +87,15 @@ Image file resolution refers to the number of pixels in an image, and determines
 
 | Labeling Job | **Resolution Quota \- Non Active Learning** | Resolution Quota \- Active Learning | 
 | --- | --- | --- | 
-| Image classification | 7680 × 4320 pixels \(8 KB\) | 3840 x 2160 pixels \(4 KB\) | 
-| Object detection \(Bounding box\) | 7680 × 4320 pixels \(8 KB\) | 3840 x 2160 pixels \(4 KB\) | 
-| Semantic segmentation | 3840 x 2160 pixels \(4 KB\) | 1920 x 1080 pixels \(1080 p\) | 
-| Image classification label adjustment | 7680 × 4320 pixels \(8 KB\) | 3840 x 2160 pixels \(4 KB\) | 
-| Object detection label adjustment | 7680 × 4320 pixels \(8 KB\) | 3840 x 2160 pixels \(4 KB\) | 
-| Semantic segmentation label adjustment | 3840 x 2160 pixels \(4 KB\) | 1920 x 1080 pixels \(1080 p\) | 
-| Image classification label verification | 7680 × 4320 pixels \(8 KB\) | Not available | 
-| Object detection label verification | 7680 × 4320 pixels \(8 KB\) | Not available | 
-| Semantic segmentation label verification | 3840 x 2160 pixels \(4 KB\) | Not available | 
+| Image classification | 7680 × 4320 pixels \(8 K\) | 3840 x 2160 pixels \(4 K\) | 
+| Object detection \(Bounding box\) | 7680 × 4320 pixels \(8 K\) | 3840 x 2160 pixels \(4 K\) | 
+| Semantic segmentation | 7680 × 4320 pixels \(8 K\) | 1920 x 1080 pixels \(1080 p\) | 
+| Image classification label adjustment | 7680 × 4320 pixels \(8 K\) | 3840 x 2160 pixels \(4 K\) | 
+| Object detection label adjustment | 7680 × 4320 pixels \(8 K\) | 3840 x 2160 pixels \(4 K\) | 
+| Semantic segmentation label adjustment | 7680 × 4320 pixels \(8 K\) | 1920 x 1080 pixels \(1080 p\) | 
+| Image classification label verification | 7680 × 4320 pixels \(8 K\) | Not available | 
+| Object detection label verification | 7680 × 4320 pixels \(8 K\) | Not available | 
+| Semantic segmentation label verification | 7680 × 4320 pixels \(8 K\) | Not available | 
 
 **Note**  
 Active learning isn't available for label verification jobs\.
