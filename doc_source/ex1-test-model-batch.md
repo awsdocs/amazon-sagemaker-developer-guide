@@ -49,4 +49,4 @@ You now have a file in Amazon S3 that contains inferences that you got by runnin
 You have now trained, deployed, and validated your first model in Amazon SageMaker\.
 
 **Next Step**  
-[Step 8: Clean Up](ex1-cleanup.md)
+[Step 8: Integrating Amazon SageMaker Endpoints into Internet\-facing Applications](getting-started-client-app.md)

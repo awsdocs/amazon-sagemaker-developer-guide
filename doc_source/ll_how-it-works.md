@@ -19,7 +19,7 @@ During training, you simultaneously optimize multiple models, each with slightly
 
 ## Step 3: Validate and Set the Threshold<a name="step3-validation"></a>
 
-When training multiple models in parallel, the models are evaluated against a validation set to select the most optimal model once training is complete\. For regression, the most optimal model is the one that achieves the best loss on the validation set\. For classification, a sample of the validation set is used to calibrate the classification threshold\. The most optimal model selected is the one that achieves the best binary classification selection criteria on the validation set\. Examples of such such criteria include the F1 measure, accuracy, and cross\-entropy loss\. 
+When training multiple models in parallel, the models are evaluated against a validation set to select the most optimal model once training is complete\. For regression, the most optimal model is the one that achieves the best loss on the validation set\. For classification, a sample of the validation set is used to calibrate the classification threshold\. The most optimal model selected is the one that achieves the best binary classification selection criteria on the validation set\. Examples of such criteria include the F1 measure, accuracy, and cross\-entropy loss\. 
 
 **Note**  
 If the algorithm is not provided a validation set, then evaluating and selecting the most optimal model is not possible\. To take advantage of parallel training and model selection ensure you provide a validation set to the algorithm\. 

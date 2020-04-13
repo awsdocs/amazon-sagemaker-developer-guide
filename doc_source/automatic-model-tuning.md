@@ -1,4 +1,4 @@
-# Automatic Model Tuning<a name="automatic-model-tuning"></a>
+# Perform Automatic Model Tuning<a name="automatic-model-tuning"></a>
 
 Amazon SageMaker automatic model tuning, also known as hyperparameter tuning, finds the best version of a model by running many training jobs on your dataset using the algorithm and ranges of hyperparameters that you specify\. It then chooses the hyperparameter values that result in a model that performs the best, as measured by a metric that you choose\.
 
@@ -11,7 +11,7 @@ Before you start using hyperparameter tuning, you should have a well\-defined ma
 + An understanding of the type of algorithm you need to train
 + A clear understanding of how you measure success
 
-You should also prepare your dataset and algorithm so that they work in Amazon SageMaker and successfully run a training job at least once\. For information about setting up and running a training job, see [Get Started](gs.md)\.
+You should also prepare your dataset and algorithm so that they work in Amazon SageMaker and successfully run a training job at least once\. For information about setting up and running a training job, see [Get Started with Amazon SageMaker](gs.md)\.
 
 **Topics**
 + [How Hyperparameter Tuning Works](automatic-model-tuning-how-it-works.md)
@@ -35,7 +35,7 @@ Every possible value in a categorical hyperparameter counts against this limit\.
 + Number of training jobs per hyperparameter tuning job \- 500
 + Maximum run time for a hyperparameter tuning job \- 30 days
 
- When you plan hyperparameter tuning jobs, you also have to take the limits on training resources into account\. For information about the default resource limits for Amazon SageMaker training jobs, see [Amazon SageMaker Limits](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_sagemaker)\. Every concurrent training instance that all of your hyperparameter tuning jobs run on count against the total number of training instances allowed\. For example, suppose you run 10 concurrent hyperparameter tuning jobs\. Each of those hyperparameter tuning jobs runs 100 total training jobs, and runs 20 concurrent training jobs\. Each of those traning jobs runs on one **ml\.m4\.xlarge** instance\. The following limits apply: 
+ When you plan hyperparameter tuning jobs, you also have to take the limits on training resources into account\. For information about the default resource limits for Amazon SageMaker training jobs, see [Amazon SageMaker Limits](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_sagemaker)\. Every concurrent training instance that all of your hyperparameter tuning jobs run on count against the total number of training instances allowed\. For example, suppose you run 10 concurrent hyperparameter tuning jobs\. Each of those hyperparameter tuning jobs runs 100 total training jobs, and runs 20 concurrent training jobs\. Each of those training jobs runs on one **ml\.m4\.xlarge** instance\. The following limits apply: 
 + Number of concurrent hyperparameter tuning jobs \- You don't need to increase the limit, because 10 tuning jobs is below the limit of 100\.
 + Number of training jobs per hyperparameter tuning job \- You don't need to increase the limit, because 100 training jobs is below the limit of 500\.
 + Number of concurrent training jobs per hyperparameter tuning job \- You need to request a limit increase to 20, because the default limit is 10\.

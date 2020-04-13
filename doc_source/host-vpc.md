@@ -8,7 +8,7 @@ You specify your private VPC configuration when you create a model by specifying
 
 ## Configure a Model for Amazon VPC Access<a name="host-vpc-configure"></a>
 
-To specify subnets and security groups in your private VPC, use the `VpcConfig` request parameter of the [CreateModel](API_CreateModel.md) API, or provide this information when you create a model in the Amazon SageMaker console\. Amazon SageMaker uses this information to create ENIs and attach them to your model containers\. The ENIs provide your model containers with a network connection within your VPC that is not connected to the internet\. They also enable your model to connect to resources in your private VPC\.
+To specify subnets and security groups in your private VPC, use the `VpcConfig` request parameter of the [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) API, or provide this information when you create a model in the Amazon SageMaker console\. Amazon SageMaker uses this information to create ENIs and attach them to your model containers\. The ENIs provide your model containers with a network connection within your VPC that is not connected to the internet\. They also enable your model to connect to resources in your private VPC\.
 
 **Note**  
 You must create at least two subnets in different availability zones in your private VPC, even if you have only one hosting instance\.
@@ -22,10 +22,10 @@ VpcConfig: {
           "subnet-0123456789abcdef1",
           "subnet-0123456789abcdef2"
           ],
-          "SecurityGroupIds": [
-              "sg-0123456789abcdef0"
-              ]
-            }
+      "SecurityGroupIds": [
+          "sg-0123456789abcdef0"
+          ]
+       }
 ```
 
 ## Configure Your Private VPC for Amazon SageMaker Hosting<a name="host-vpc-vpc"></a>

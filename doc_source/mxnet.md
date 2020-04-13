@@ -1,8 +1,8 @@
 # Use Apache MXNet with Amazon SageMaker<a name="mxnet"></a>
 
-You can use Amazon SageMaker to train and deploy a model using custom MXNet code\. The Amazon SageMaker Python SDK MXNet estimators and models and the Amazon SageMaker open\-source MXNet container make writing a MXNet script and running it in Amazon SageMaker easier\.
+You can use Amazon SageMaker to train and deploy a model using custom MXNet code\. The [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) MXNet estimators and models and the Amazon SageMaker open\-source MXNet container make writing a MXNet script and running it in Amazon SageMaker easier\.
 
-What do you want to do?
+## What do you want to do?<a name="mxnet-intent"></a>
 
 I want to train a custom MXNet model in Amazon SageMaker\.  
 For a sample Jupyter notebook, see [https://github\.com/awslabs/amazon\-sagemaker\-examples/tree/master/sagemaker\-python\-sdk/mxnet\_mnist](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker-python-sdk/mxnet_mnist)\.  
@@ -14,7 +14,7 @@ I have an MXNet model that I trained in Amazon SageMaker, and I want to deploy i
 I have an MXNet model that I trained outside of Amazon SageMaker, and I want to deploy it to an Amazon SageMaker endpoint  
 [Deploy Endpoints from Model Data](https://sagemaker.readthedocs.io/en/stable/using_mxnet.html#deploy-endpoints-from-model-data)\.
 
-I want to see the API documentation for Amazon SageMaker Python SDK MXNet classes\.  
+I want to see the API documentation for [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) MXNet classes\.  
 [MXNet Classes](https://sagemaker.readthedocs.io/en/stable/sagemaker.mxnet.html)
 
 I want to see information about Amazon SageMaker MXNet containers\.  

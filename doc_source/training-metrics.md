@@ -1,6 +1,6 @@
 # Monitor and Analyze Training Jobs Using Metrics<a name="training-metrics"></a>
 
-An Amazon SageMaker training job is an iterative process that teaches a model to make predictions by presenting examples from a training dataset\. Typically, a training algorithm computes several metrics, such as training error and prediction accuracy\. These metrics help diagnose whether the model is learning well and will generalize well for making predictions on unseen data\. The training algorithm writes the values of these metrics to logs, which Amazon SageMaker monitors and sends to Amazon CloudWatch in real time\. To analyze the performance of your training job, you can view graphs of these metrics in CloudWatch\. When a training job has completed, you can also get a list of the metric values that it computes in its final iteration by calling the [DescribeTrainingJob](API_DescribeTrainingJob.md) operation\.
+An Amazon SageMaker training job is an iterative process that teaches a model to make predictions by presenting examples from a training dataset\. Typically, a training algorithm computes several metrics, such as training error and prediction accuracy\. These metrics help diagnose whether the model is learning well and will generalize well for making predictions on unseen data\. The training algorithm writes the values of these metrics to logs, which Amazon SageMaker monitors and sends to Amazon CloudWatch in real time\. To analyze the performance of your training job, you can view graphs of these metrics in CloudWatch\. When a training job has completed, you can also get a list of the metric values that it computes in its final iteration by calling the [ `DescribeTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html) operation\.
 
 **Topics**
 + [Training Metrics Sample Notebooks](#training-metrics-sample-notebooks)
@@ -64,7 +64,7 @@ In the regex for the `train:error` metric defined above, the first part of the r
 
 ### Defining Training Metrics \(Low\-level Amazon SageMaker API\)<a name="define-train-metrics-api"></a>
 
-Define the metrics that you want to send to CloudWatch by specifying a list of metric names and regular expressions in the `MetricDefinitions` field of the [AlgorithmSpecification](API_AlgorithmSpecification.md) input parameter that you pass to the [CreateTrainingJob](API_CreateTrainingJob.md) operation\. For example, if you want to monitor both the `train:error` and `validation:error` metrics in CloudWatch, your `AlgorithmSpecification` would look like the following:
+Define the metrics that you want to send to CloudWatch by specifying a list of metric names and regular expressions in the `MetricDefinitions` field of the [ `AlgorithmSpecification`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AlgorithmSpecification.html) input parameter that you pass to the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) operation\. For example, if you want to monitor both the `train:error` and `validation:error` metrics in CloudWatch, your `AlgorithmSpecification` would look like the following:
 
 ```
 "AlgorithmSpecification": {
@@ -99,12 +99,12 @@ estimator =
                 sagemaker_session=sagemaker_session,
                 metric_definitions=[
                    {'Name': 'train:error', 'Regex': 'Train_error=(.*?);'},
-                   {'Name': 'validation:error', 'Regex': 'Valid_error=(.*?);'
+                   {'Name': 'validation:error', 'Regex': 'Valid_error=(.*?);'}
                 ]
             )
 ```
 
-For more information about training by using Amazon SageMaker Python SDK estimators, see [https://github\.com/aws/sagemaker\-python\-sdk\#sagemaker\-python\-sdk\-overview](https://github.com/aws/sagemaker-python-sdk#sagemaker-python-sdk-overview)\.
+For more information about training by using [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) estimators, see [https://github\.com/aws/sagemaker\-python\-sdk\#sagemaker\-python\-sdk\-overview](https://github.com/aws/sagemaker-python-sdk#sagemaker-python-sdk-overview)\.
 
 ### Define Training Metrics \(Console\)<a name="define-train-metrics-console"></a>
 
@@ -123,7 +123,7 @@ For example, if you want to monitor both the `train:error` and `validation:error
             "Regex": "Valid_error=(.*?);"
         }
         
-    ]}
+    ]
 ```
 
 ## Monitoring Training Job Metrics \( Console\)<a name="view-train-metrics-cw"></a>

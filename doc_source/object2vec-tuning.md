@@ -2,7 +2,7 @@
 
 *Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an objective metric\. For the objective metric, you use one of the metrics that the algorithm computes\. Automatic model tuning searches the chosen hyperparameters to find the combination of values that result in the model that optimizes the objective metric\.
 
-For more information about model tuning, see [Automatic Model Tuning](automatic-model-tuning.md)\.
+For more information about model tuning, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
 
 ## Metrics Computed by the Object2Vec Algorithm<a name="object2vec-metrics"></a>
 
