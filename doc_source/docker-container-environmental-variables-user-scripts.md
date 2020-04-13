@@ -76,7 +76,7 @@ When you write a script to run in a container, you are likely to use the followi
   ```
   import json
   
-  hyperparameters = json.loads(os.environ['SM_HPS']))
+  hyperparameters = json.loads(os.environ['SM_HPS'])
   # {"batch-size": 256, "learning-rate": 0.0001, "communicator": "pure_nccl"}
   ```
 + `SM_HP_ {hyperparameter_name}`

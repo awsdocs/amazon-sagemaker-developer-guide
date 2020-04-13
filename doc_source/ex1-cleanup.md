@@ -1,4 +1,4 @@
-# Step 8: Clean Up<a name="ex1-cleanup"></a>
+# Step 9: Clean Up<a name="ex1-cleanup"></a>
 
 To avoid incurring unnecessary charges, use the AWS Management Console to delete the resources that you created for this exercise\. 
 
@@ -9,7 +9,7 @@ If you plan to explore other exercises in this guide, you might want to keep som
    + The endpoint\. Deleting the endpoint also deletes the ML compute instance or instances that support it\.
    + The endpoint configuration\.
    + The model\.
-   + The notebook instance\. Before deleting the notebook instance, stop it\. 
+   + The notebook instance\. Before deleting the notebook instance, stop it\.
 
 1. Open the Amazon S3 console at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/) and delete the bucket that you created for storing model artifacts and the training dataset\. 
 

@@ -1,16 +1,17 @@
 # XGBoost Hyperparameters<a name="xgboost_hyperparameters"></a>
 
-The following table contains the hyperparameters for the XGBoost algorithm\. These are parameters that are set by users to facilitate the estimation of model parameters from data\. The required hyperparameters that must be set are listed first, in alphabetical order\. The optional hyperparameters that can be set are listed next, also in alphabetical order\. The Amazon SageMaker XGBoost algorithm is an implementation of the open\-source XGBoost package\. Currently Amazon SageMaker supports version 0\.72\. For more detail about hyperparameter configuration for this version of XGBoost, see [Release 0\.72 XGBoost Parameters](https://xgboost.readthedocs.io/en/release_0.72/parameter.html)\.
+The following table contains the subset of hyperparameters that are required or most commonly used for the Amazon SageMaker XGBoost algorithm\. These are parameters that are set by users to facilitate the estimation of model parameters from data\. The required hyperparameters that must be set are listed first, in alphabetical order\. The optional hyperparameters that can be set are listed next, also in alphabetical order\. The Amazon SageMaker XGBoost algorithm is an implementation of the open\-source DMLC XGBoost package\. Currently Amazon SageMaker supports version 0\.90\. For details about full set of hyperparameter that can be configured for this version of XGBoost, see [ XGBoost Parameters](https://xgboost.readthedocs.io/en/release_0.90/parameter.html)\.
 
 
 | Parameter Name | Description | 
 | --- | --- | 
-| num\_class | The number of classes\. **Required** if `objective` is set to *multi:softmax* or *multi:softprob*\. Valid values: integer  | 
 | num\_round | The number of rounds to run the training\. **Required** Valid values: integer  | 
-| alpha | L1 regularization term on weights\. Increasing this value makes models more conservative\. **Optional** Valid values: float Default value: 1  | 
+| num\_class | The number of classes\. **Required** if `objective` is set to *multi:softmax* or *multi:softprob*\. Valid values: integer Default value:   | 
+| alpha | L1 regularization term on weights\. Increasing this value makes models more conservative\. **Optional** Valid values: float Default value: 0  | 
 | base\_score | The initial prediction score of all instances, global bias\. **Optional** Valid values: float Default value: 0\.5  | 
 | booster | Which booster to use\. The `gbtree` and `dart` values use a tree\-based model, while `gblinear` uses a linear function\. **Optional** Valid values: String\. One of `gbtree`, `gblinear`, or `dart`\. Default value: `gbtree`  | 
 | colsample\_bylevel | Subsample ratio of columns for each split, in each level\. **Optional** Valid values: Float\. Range: \[0,1\]\. Default value: 1  | 
+| colsample\_bynode | Subsample ratio of columns from each node\. **Optional** Valid values: Float\. Range: \(0,1\]\. Default value: 1  | 
 | colsample\_bytree | Subsample ratio of columns when constructing each tree\. **Optional** Valid values: Float\. Range: \[0,1\]\. Default value: 1 | 
 | csv\_weights | When this flag is enabled, XGBoost differentiates the importance of instances for csv input by taking the second column \(the column after labels\) in training data as the instance weights\. **Optional** Valid values: 0 or 1 Default value: 0  | 
 | early\_stopping\_rounds | The model trains until the validation score stops improving\. Validation error needs to decrease at least every `early_stopping_rounds` to continue training\. Amazon SageMaker hosting uses the best model for inference\. **Optional** Valid values: integer Default value: \-  | 
@@ -22,16 +23,16 @@ The following table contains the hyperparameters for the XGBoost algorithm\. The
 | lambda\_bias | L2 regularization term on bias\. **Optional** Valid values: Float\. Range: \[0\.0, 1\.0\]\. Default value: 0  | 
 | max\_bin | Maximum number of discrete bins to bucket continuous features\. Used only if `tree_method` is set to `hist`\.  **Optional** Valid values: integer Default value: 256  | 
 | max\_delta\_step | Maximum delta step allowed for each tree's weight estimation\. When a positive integer is used, it helps make the update more conservative\. The preferred option is to use it in logistic regression\. Set it to 1\-10 to help control the update\.  **Optional** Valid values: Integer\. Range: \[0,∞\)\. Default value: 0  | 
-| max\_depth | Maximum depth of a tree\. Increasing this value makes the model more complex and likely to be overfitted\. 0 indicates no limit\. A limit is required when `grow_policy`=`depth-wise`\. **Optional** Valid values: Integer\. Range: \[0,∞\) Default value: 6  | 
+| max\_depth | Maximum depth of a tree\. Increasing this value makes the model more complex and likely to be overfit\. 0 indicates no limit\. A limit is required when `grow_policy`=`depth-wise`\. **Optional** Valid values: Integer\. Range: \[0,∞\) Default value: 6  | 
 | max\_leaves | Maximum number of nodes to be added\. Relevant only if `grow_policy` is set to `lossguide`\. **Optional** Valid values: integer Default value: 0  | 
 | min\_child\_weight | Minimum sum of instance weight \(hessian\) needed in a child\. If the tree partition step results in a leaf node with the sum of instance weight less than `min_child_weight`, the building process gives up further partitioning\. In linear regression models, this simply corresponds to a minimum number of instances needed in each node\. The larger the algorithm, the more conservative it is\. **Optional** Valid values: Float\. Range: \[0,∞\)\. Default value: 1  | 
 | normalize\_type | Type of normalization algorithm\. **Optional** Valid values: Either *tree* or *forest*\. Default value: *tree*  | 
 | nthread | Number of parallel threads used to run *xgboost*\. **Optional** Valid values: integer Default value: Maximum number of threads\.  | 
-| objective | Specifies the learning task and the corresponding learning objective\. Examples: `reg:linear`, `reg:logistic`, `multi:softmax`\. For a full list of valid inputs, please refer to [XGBoost Parameters](https://github.com/dmlc/xgboost/blob/master/doc/parameter.rst)\. **Optional** Valid values: string Default value: `reg:linear`  | 
+| objective | Specifies the learning task and the corresponding learning objective\. Examples: `reg:logistic`, `multi:softmax`, `reg:squarederror`\. For a full list of valid inputs, refer to [XGBoost Parameters](https://github.com/dmlc/xgboost/blob/master/doc/parameter.rst)\. **Optional** Valid values: string Default value: `reg:squarederror`  | 
 | one\_drop | When this flag is enabled, at least one tree is always dropped during the dropout\. **Optional** Valid values: 0 or 1 Default value: 0  | 
 | process\_type | The type of boosting process to run\. **Optional** Valid values: String\. Either `default` or `update`\. Default value: `default`  | 
 | rate\_drop | The dropout rate that specifies the fraction of previous trees to drop during the dropout\. **Optional** Valid values: Float\. Range: \[0\.0, 1\.0\]\. Default value: 0\.0  | 
-| refresh\_leaf | This is a parameter of the 'refresh' updater plugin\. When set to `true` \(1\), tree leaves and tree node stats are updated\. When set to `false`\(0\), only tree node stats are updated\. **Optional** Valid values: 0/1 Default value: 1  | 
+| refresh\_leaf | This is a parameter of the 'refresh' updater plug\-in\. When set to `true` \(1\), tree leaves and tree node stats are updated\. When set to `false`\(0\), only tree node stats are updated\. **Optional** Valid values: 0/1 Default value: 1  | 
 | sample\_type | Type of sampling algorithm\. **Optional** Valid values: Either `uniform` or `weighted`\. Default value: `uniform`  | 
 | scale\_pos\_weight | Controls the balance of positive and negative weights\. It's useful for unbalanced classes\. A typical value to consider: `sum(negative cases)` / `sum(positive cases)`\. **Optional** Valid values: float Default value: 1  | 
 | seed | Random number seed\. **Optional** Valid values: integer Default value: 0  | 

@@ -8,7 +8,7 @@ Amazon SageMaker algorithms accept and produce several different MIME types for 
 
 ## Convert Data for Inference Request Serialization<a name="ir-serialization"></a>
 
-Content type options for Amazon SageMaker algorithm inference requests include: `text/csv`, `application/json`, and `application/x-recordio-protobuf`\. Algorithms that don't support these types, such as XGBoost, which is incompatible, support other types, such as `text/x-libsvm`\.
+Content type options for Amazon SageMaker algorithm inference requests include: `text/csv`, `application/json`, and `application/x-recordio-protobuf`\. Algorithms that don't support all of these types can support other types\. XGBoost, for example, only supports `text/csv` from this list, but also supports `text/libsvm`\.
 
 For `text/csv` the value for the Body argument to `invoke_endpoint` should be a string with commas separating the values for each feature\. For example, a record for a model with four features might look like: `1.5,16.0,14,23.0`\. Any transformations performed on the training data should also be performed on the data before obtaining inference\. The order of the features matters, and must remain unchanged\. 
 

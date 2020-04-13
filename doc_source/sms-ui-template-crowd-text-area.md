@@ -2,75 +2,67 @@
 
 A field for text input\.
 
-## Attributes<a name="text-area-attributes"></a>
+### Attributes<a name="text-area-attributes"></a>
 
 The following attributes are supported by this element\.
 
-### allowed\-pattern<a name="text-area-attributes-allowed-pattern"></a>
-
-A regular expression that is used with the *auto\-validate* attribute to ignore non\-matching characters as the worker types\.
-
-### auto\-focus<a name="text-area-attributes-auto-focus"></a>
+#### auto\-focus<a name="text-area-attributes-auto-focus"></a>
 
 A Boolean switch that, if present, puts the cursor in this element on\-load so that users can immediately begin typing without having to click inside the element\.
 
-### auto\-validate<a name="text-area-attributes-auto-validate"></a>
+#### auto\-validate<a name="text-area-attributes-auto-validate"></a>
 
 A Boolean switch that, if present, turns on input validation\. The behavior of the validator can be modified by the *error\-message* and *allowed\-pattern* attributes\.
 
-### char\-counter<a name="text-area-attributes-char-counter"></a>
+#### char\-counter<a name="text-area-attributes-char-counter"></a>
 
 A Boolean switch that, if present, puts a small text field beneath the lower\-right corner of the element, displaying the number of characters inside the element\.
 
-### disabled<a name="text-area-attributes-disabled"></a>
+#### disabled<a name="text-area-attributes-disabled"></a>
 
 A Boolean switch that, if present, displays the input area as disabled\.
 
-### error\-message<a name="text-area-attributes-error-message"></a>
+#### error\-message<a name="text-area-attributes-error-message"></a>
 
 The text to be displayed below the input field, on the left side, if validation fails\.
 
-### label<a name="text-area-attributes-label"></a>
+#### label<a name="text-area-attributes-label"></a>
 
 A string that is displayed inside a text field\.
 
 This text shrinks and rises up above a text field when the worker starts typing in the field or when the *value* attribute is set\.
 
-### max\-length<a name="text-area-attributes-max-length"></a>
+#### max\-length<a name="text-area-attributes-max-length"></a>
 
 An integer that specifies the maximum number of characters allowed by the element\. Characters typed or pasted beyond the maximum are ignored\.
 
-### max\-rows<a name="text-area-attributes-max-rows"></a>
+#### max\-rows<a name="text-area-attributes-max-rows"></a>
 
 An integer that specifies the maximum number of rows of text that are allowed within a crowd\-text\-area\. Normally the element expands to accommodate new rows\. If this is set, after the number of rows exceeds it, content scrolls upward out of view and a scrollbar control appears\.
 
-### name<a name="text-area-attributes-name"></a>
+#### name<a name="text-area-attributes-name"></a>
 
 A string used to represent the element's data in the output\.
 
-### placeholder<a name="text-area-attributes-placeholder"></a>
+#### placeholder<a name="text-area-attributes-placeholder"></a>
 
 A string presented to the user as placeholder text\. It disappears after the user puts something in the input area\.
 
-### read\-only<a name="text-area-attributes-read-only"></a>
-
-A Boolean switch that, when present, disables editing the contents of the element, but allows content to be highlighted and copied\.
-
-### rows<a name="text-area-attributes-rows"></a>
+#### rows<a name="text-area-attributes-rows"></a>
 
 An integer that specifies the height of the element in rows of text\.
 
-### value<a name="text-area-attributes-value"></a>
+#### value<a name="text-area-attributes-value"></a>
 
 A preset that becomes the default if the worker does not provide input\. The preset appears in a text field\.
 
-## Element Hierarchy<a name="text-area-element-hierarchy"></a>
+### Element Hierarchy<a name="text-area-element-hierarchy"></a>
 
 This element has the following parent and child elements\.
 + **Parent elements**: [crowd\-form](sms-ui-template-crowd-form.md)
 + **Child elements**: none
 
-## Output<a name="text-area-output"></a>
+### Output<a name="text-area-output"></a>
 
 This element outputs the `name` as a property name and the element's text contents as the value\. Carriage returns in the text are represented as `\n`\.
 
@@ -84,8 +76,8 @@ This element outputs the `name` as a property name and the element's text conten
 ]
 ```
 
-## See Also<a name="text-area-see-also"></a>
+### See Also<a name="text-area-see-also"></a>
 
 For more information, see the following\.
-+ [Amazon SageMaker Ground Truth](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [HTML Elements Reference](sms-ui-template-reference.md)

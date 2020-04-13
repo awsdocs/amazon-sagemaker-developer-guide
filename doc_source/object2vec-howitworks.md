@@ -9,11 +9,11 @@ When using the Amazon SageMaker Object2Vec algorithm, you follow the standard wo
 
 ## Step 1: Process Data<a name="object2vec-step-1-data-preprocessing"></a>
 
-During preprocessing, convert the data to the [JSON Lines](http://jsonlines.org/) text file format specified in [ Data Formats for Object2Vec Training](object2vec-training-formats.md) \. To get the highest accuracy during training, also randomly shuffle the data before feeding it into the model\. How you generate random permutations depends on the language\. For python, you could use `np.randon.shuffle`; for Unix, `shuf`\.
+During preprocessing, convert the data to the [JSON Lines](http://jsonlines.org/) text file format specified in [ Data Formats for Object2Vec Training](object2vec-training-formats.md) \. To get the highest accuracy during training, also randomly shuffle the data before feeding it into the model\. How you generate random permutations depends on the language\. For python, you could use `np.random.shuffle`; for Unix, `shuf`\.
 
 ## Step 2: Train a Model<a name="object2vec-step-2-training-model"></a>
 
-TheAmazon SageMaker Object2Vec algorithm has the following main components:
+The Amazon SageMaker Object2Vec algorithm has the following main components:
 + **Two input channels** – The input channels take a pair of objects of the same or different types as inputs, and pass them to independent and customizable encoders\.
 + **Two encoders** – The two encoders, enc0 and enc1, convert each object into a fixed\-length embedding vector\. The encoded embeddings of the objects in the pair are then passed into a comparator\.
 + **A comparator** – The comparator compares the embeddings in different ways and outputs scores that indicate the strength of the relationship between the paired objects\. In the output score for a sentence pair\. For example, 1 indicates a strong relationship between a sentence pair, and 0 represents a weak relationship\. 
@@ -26,7 +26,7 @@ Pairs of objects are passed through independent, customizable encoders that are 
 
 ## Step 3: Produce Inferences<a name="object2vec-step-3-inference"></a>
 
-After the model is trained, you can use the trained encoder in one of two to perform two types of inference:
+After the model is trained, you can use the trained encoder to preprocess input objects or to perform two types of inference:
 + To convert singleton input objects into fixed\-length embeddings using the corresponding encoder
 + To predict the relationship label or score between a pair of input objects
 

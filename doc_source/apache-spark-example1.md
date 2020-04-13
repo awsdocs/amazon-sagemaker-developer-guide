@@ -209,9 +209,9 @@ This example implicitly creates an Amazon SageMaker client\. To create this clie
   ```
 
   You can interpret the data, as follows:
-  + A handwritten number with the `label` 5 belongs to cluster 5 \(`closest_cluster`\)\.
-  + A handwritten number with the `label` 0 belongs to cluster 2\.
-  + A handwritten number with the `label` 4 belongs to cluster 4\.
-  + A handwritten number with the `label` 1 belongs to cluster 1\.
+  + A handwritten number with the `label` 5 belongs to cluster 4 \(`closest_cluster`\)\.
+  + A handwritten number with the `label` 0 belongs to cluster 5\.
+  + A handwritten number with the `label` 4 belongs to cluster 9\.
+  + A handwritten number with the `label` 1 belongs to cluster 6\.
 
 For more information on how to run these examples, see [https://github\.com/aws/sagemaker\-spark/blob/master/README\.md](https://github.com/aws/sagemaker-spark/blob/master/README.md) on GitHub\.

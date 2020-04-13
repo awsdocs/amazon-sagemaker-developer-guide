@@ -1,6 +1,6 @@
 # IP Insights Inference Data Formats<a name="ip-insights-inference-data-formats"></a>
 
-The following are the available input and output formats for the IP Insights algorithm\. Amazon SageMaker built\-in algorithms adhere to the common input inference format described in [Common Data Formats for Inference ](cdf-inference.md)\. However, the Amazon SageMaker IP Insights algorithm does not currently support RecordIO format\.
+The following are the available input and output formats for the IP Insights algorithm\. Amazon SageMaker built\-in algorithms adhere to the common input inference format described in [Common Data Formats for Inference](cdf-inference.md)\. However, the Amazon SageMaker IP Insights algorithm does not currently support RecordIO format\.
 
 ## IP Insights Input Request Formats<a name="ip-insights-input-format-requests"></a>
 
@@ -17,7 +17,7 @@ entity_id_2, 10.10.1.2
 
 ### INPUT: JSON Format<a name="ip-insights-input-json"></a>
 
-JSON data can be provided in different formats\. IP Insights follows the common Amazon SageMaker formats\. For more information about inference formats, see [Common Data Formats for Inference ](cdf-inference.md)\.
+JSON data can be provided in different formats\. IP Insights follows the common Amazon SageMaker formats\. For more information about inference formats, see [Common Data Formats for Inference](cdf-inference.md)\.
 
 content\-type: application/json
 
@@ -32,7 +32,7 @@ content\-type: application/json
 
 ### INPUT: JSONLINES Format<a name="ip-insights-input-jsonlines"></a>
 
-The JSON Lines content type is useful for running batch transform jobs\. For more information on Amazon SageMaker inference formats, see [Common Data Formats for Inference ](cdf-inference.md)\. For more information on running batch transform jobs, see [Get Inferences for an Entire Dataset with Batch Transform](how-it-works-batch.md)\.
+The JSON Lines content type is useful for running batch transform jobs\. For more information on Amazon SageMaker inference formats, see [Common Data Formats for Inference](cdf-inference.md)\. For more information on running batch transform jobs, see [Get Inferences for an Entire Dataset with Batch Transform](how-it-works-batch.md)\.
 
 content\-type: application/jsonlines
 
