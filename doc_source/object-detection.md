@@ -103,6 +103,15 @@ For a sample notebook that shows how to use incremental training with the Amazon
 
 For object detection, we support the following GPU instances for training: `ml.p2.xlarge`, `ml.p2.8xlarge`, `ml.p2.16xlarge`, `ml.p3.2xlarge`, `ml.p3.8xlarge` and `ml.p3.16xlarge`\. We recommend using GPU instances with more memory for training with large batch sizes\. You can also run the algorithm on multi\-GPU and multi\-machine settings for distributed training\. However, both CPU \(such as C5 and M5\) and GPU \(such as P2 and P3\) instances can be used for the inference\. All the supported instance types for inference are itemized on [Amazon SageMaker ML Instance Types](https://aws.amazon.com/sagemaker/pricing/instance-types/)\.
 
+
 ## Object Detection Sample Notebooks<a name="object-detection-sample-notebooks"></a>
 
-For a sample notebook that shows how to use the Amazon SageMaker Object Detection algorithm to train and host a model on the COCO dataset using the Single Shot multibox Detector algorithm, see [Object Detection using the Image and JSON format](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/object_detection_pascalvoc_coco/object_detection_image_json_format.ipynb)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the Amazon SageMaker samples\. The topic modeling example notebooks using the NTM algorithms are located in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.
+For a sample notebook that shows how to use the Amazon SageMaker Object Detection algorithm to train and host a 
+model on the COCO dataset using the Single Shot multibox Detector algorithm, 
+see [Object Detection using the Image and JSON format](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/object_detection_pascalvoc_coco/object_detection_image_json_format.ipynb)\. 
+For instructions how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, 
+see [Use Amazon SageMaker Notebook Instances](nbi.md). 
+Once you have created a notebook instance and opened it, 
+select the **SageMaker Examples** tab to see a list of all the Amazon SageMaker samples. 
+The object detection example notebook using the Object Detection algorithm is located in the Introduction to Amazon algorithms section.
+To open a notebook, click on its **Use** tab and select **Create copy**.
