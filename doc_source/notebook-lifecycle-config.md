@@ -1,8 +1,10 @@
-# Customize a Notebook Instance<a name="notebook-lifecycle-config"></a>
+# Customize a Notebook Instance Using a Lifecycle Configuration Script<a name="notebook-lifecycle-config"></a>
 
 To install packages or sample notebooks on your notebook instance, configure networking and security for it, or otherwise use a shell script to customize it, use a lifecycle configuration\. A *lifecycle configuration* provides shell scripts that run only when you create the notebook instance or whenever you start one\. When you create a notebook instance, you can create a new lifecycle configuration and the scripts it uses or apply one that you already have\.
 
-The Amazon SageMaker team maintains a public repository of notebook intance lifecycle configurations that address common use cases for customizing notebook instances at [https://github\.com/aws\-samples/amazon\-sagemaker\-notebook\-instance\-lifecycle\-configuration\-samples](https://github.com/aws-samples/amazon-sagemaker-notebook-instance-lifecycle-configuration-samples)\.
+You can also use a lifecycle configuration script to access AWS services from your notebook\. For example, you can create a script that lets you use your notebook to control other AWS resources, such as an Amazon EMR instance\.
+
+We maintain a public repository of notebook lifecycle configuration scripts that address common use cases for customizing notebook instances at [https://github\.com/aws\-samples/amazon\-sagemaker\-notebook\-instance\-lifecycle\-configuration\-samples](https://github.com/aws-samples/amazon-sagemaker-notebook-instance-lifecycle-configuration-samples)\.
 
 **Note**  
 Each script has a limit of 16384 characters\.  
@@ -17,7 +19,7 @@ Use the `nohup` command in your script\.
 
 1. For **Lifecycle configuration \- *Optional***, choose **Create a new lifecycle configuration**\.
 
-1. For **Name**, type a name\.
+1. For **Name**, type a name using alphanumeric characters and "\-", but no spaces\. The name can have a maximum of 63 characters\.
 
 1. \(Optional\) To create a script that runs when you create the notebook and every time you start it, choose **Start notebook**\.
 
@@ -34,10 +36,10 @@ You can see a list of notebook instance lifecycle configurations you previously 
 ## Lifecycle Configuration Best Practices<a name="nbi-lifecycle-config-install"></a>
 
 The following are best practices for using lifecycle configurations:
-+ Lifecycle configurations run as the `root` user\. If your script makes any changes within the `/home/ec2-user/SageMaker` directory, \(for example, installing a package with `pip`\), use the command `sudo -u ec2-user` command to run as the `ec2-user` user\. This is the same user that Amazon SageMaker runs as\.
++ Lifecycle configurations run as the `root` user\. If your script makes any changes within the `/home/ec2-user/SageMaker` directory, \(for example, installing a package with `pip`\), use the command `sudo -u ec2-user` to run as the `ec2-user` user\. This is the same user that Amazon SageMaker runs as\.
 + Amazon SageMaker notebook instances use `conda` environments to implement different kernels for Jupyter notebooks\. If you want to install packages that are available to one or more notebook kernels, enclose the commands to install the packages with `conda` environment commands that activate the conda environment that contains the kernel where you want to install the packages\.
 
-  For example, if you want to install a package only in for the `python3` environment, use the following code:
+  For example, if you want to install a package only for the `python3` environment, use the following code:
 
   ```
   #!/bin/bash
@@ -80,6 +82,7 @@ The following are best practices for using lifecycle configurations:
   
   EOF
   ```
++ You must store all conda environments in the default environments folder \(/home/user/anaconda3/envs\)\.
 
 **Important**  
-When you create or change a script file, we recommend you use **Create notebook** editor or a text editor that allows for Unix style line breaks\. Copying text from a non Linux operating system might include incompatible line breaks and result in an unexpected error\.
+When you create or change a script, we recommend that you use a text editor that provides Unix\-style line breaks, such as the text editor avaiable in the console when you create a notebook\. Copying text from a non\-Linux operating system might introduce incompatible line breaks and result in an unexpected error\.

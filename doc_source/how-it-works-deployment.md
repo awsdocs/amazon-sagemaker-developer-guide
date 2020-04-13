@@ -8,4 +8,3 @@ After you train your model, you can deploy it to get predictions in one of two w
 + [Deploy a Model on Amazon SageMaker Hosting Services](how-it-works-hosting.md)
 + [Get Inferences for an Entire Dataset with Batch Transform](how-it-works-batch.md)
 + [Validate a Machine Learning Model](how-it-works-model-validation.md)
-+ [The Amazon SageMaker Programming Model](how-it-works-prog-model.md)

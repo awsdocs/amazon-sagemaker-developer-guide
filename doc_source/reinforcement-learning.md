@@ -1,4 +1,4 @@
-# Reinforcement Learning with Amazon SageMaker RL<a name="reinforcement-learning"></a>
+# Use Reinforcement Learning with Amazon SageMaker<a name="reinforcement-learning"></a>
 
 Reinforcement learning \(RL\) is a machine learning technique that attempts to learn a strategy, called a policy, that optimizes an objective for an agent acting in an environment\. For example, the agent might be a robot, the environment might be a maze, and the goal might be to successfully navigate the maze in the smallest amount of time\. In RL, the agent takes an action, observes the state of the environment, and gets a reward based on the value of the current state of the environment\. The goal is to maximize the long\-term reward that the agent receives as a result of its actions\. RL is well\-suited for solving problems where an agent can make autonomous decisions\.
 

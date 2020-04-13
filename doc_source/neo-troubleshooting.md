@@ -13,6 +13,7 @@ Some of the most common errors are due to invalid inputs\. This section contains
 
 ***Which frameworks does Neo support?***
 + [TensorFlow](https://aws.amazon.com/tensorflow/)
++ [Keras](https://keras.io/)
 + [PyTorch](https://pytorch.org/)
 + [Apache MXNET](https://aws.amazon.com/mxnet/)
 + [XGBoost](https://github.com/dmlc/xgboost)
@@ -115,6 +116,7 @@ The file needs to be formatted as a tar\.gz file that includes additional files 
   For *saved models*, Neo expects one \.pb or one \.pbtxt file and a variables directory that contains variables\. 
 
   For *frozen models*, Neo expect only one \.pb or \.pbtxt file\.
++ **Keras**: Neo expects one \.h5 file containing the model definition\.
 + **PyTorch**: Neo expects one \.pth file containing the model definition\.
 + **MXNET**: Neo expects one symbol file \(\.json\) and one parameter file \(\.params\)\.
 + **XGBoost**: Neo expects one XGBoost model file \(\.model\) where the number of nodes in a tree can't exceed 2^31\.
@@ -130,6 +132,13 @@ Neo expects the name and shape of the expected data inputs for your trained mode
   + Examples for two inputs:
     + If using the console, `{"data1": [1,28,28,1], "data2":[1,28,28,1]}`
     + If using the CLI, `{\"data1\": [1,28,28,1], \"data2\":[1,28,28,1]}`
++ `KERAS`: You must specify the name and shape \(NCHW format\) of expected data inputs using a dictionary format for your trained model\. Note that while Keras model artifacts should be uploaded in NHWC \(channel\-last\) format, `DataInputConfig` should be specified in NCHW \(channel\-first\) format\. The dictionary formats required for the console and CLI are different\.
+  + Examples for one input:
+    + If using the console, `{"input_1":[1,3,224,224]}`
+    + If using the CLI, `{\"input_1\":[1,3,224,224]}`
+  + Examples for two inputs:
+    + If using the console, `{"input_1": [1,3,224,224], "input_2":[1,3,224,224]} `
+    + If using the CLI, `{\"input_1\": [1,3,224,224], \"input_2\":[1,3,224,224]}`
 + `MXNET/ONNX`: You must specify the name and shape \(NCHW format\) of the expected data inputs in order using a dictionary format for your trained model\. The dictionary formats required for the console and CLI are different\.
   + Examples for one input:
     + If using the console, `{"data":[1,3,1024,1024]}`

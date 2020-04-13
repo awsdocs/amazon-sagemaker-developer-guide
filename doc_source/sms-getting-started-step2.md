@@ -1,6 +1,6 @@
 # Step 2: Create a Labeling Job<a name="sms-getting-started-step2"></a>
 
-In this step you use the console to create a labeling job\. You tell Amazon SageMaker Ground Truth the Amazon S3 bucket where the manifest file is stored and configure the parameters for the job\. For more information about storing data in an Amazon S3 bucket, see [Using Input and Output Data](sms-data.md)\.
+In this step you use the console to create a labeling job\. You tell Amazon SageMaker Ground Truth the Amazon S3 bucket where the manifest file is stored and configure the parameters for the job\. For more information about storing data in an Amazon S3 bucket, see [Use Input and Output Data](sms-data.md)\.
 
 **To create a labeling job**
 

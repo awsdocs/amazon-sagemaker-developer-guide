@@ -1,0 +1,9 @@
+# Text Classification<a name="sms-text-classification"></a>
+
+To categorize articles and text into predefined categories, use text classification\. For example, you can use text classification to identify the sentiment conveyed in a review or the emotion underlying a section of text\. Use Amazon SageMaker Ground Truth text classification to have workers sort text into categories that you define\. 
+
+You create a text classification labeling job using the Ground Truth section of the Amazon SageMaker console or the [ `CreateLabelingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. Ground Truth provides a worker console similar to the following for labeling tasks\. When you create the labeling job with the console, you can modify the images and content that are shown\. If you create a labeling job using the API, you must supply a custom\-built template\. To learn how to create a custom template, see [Creating Custom Labeling Workflows](sms-custom-templates.md)\. To see examples of custom templates that can be used for text classification job types, see this [Github Repository](https://github.com/aws-samples/amazon-sagemaker-ground-truth-task-uis/tree/master/text)\. 
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/text-classification-example.png)
+
+You can create a text classification labeling job using the Amazon SageMaker console or API\. To learn how to start a text classification labeling job on the console, see [Getting started](sms-getting-started.md)\. To use the API, see [ `CreateLabelingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)\.

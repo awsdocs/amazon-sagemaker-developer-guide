@@ -4,9 +4,10 @@ Amazon SageMaker is a fully managed service that enables you to quickly and easi
 
 **Topics**
 + [Machine Learning with Amazon SageMaker](how-it-works-mlconcepts.md)
-+ [Explore and Preprocess Data](how-it-works-notebooks-instances.md)
++ [Explore, Analyze, and Process Data](how-it-works-notebooks-instances.md)
 + [Train a Model with Amazon SageMaker](how-it-works-training.md)
 + [Deploy a Model in Amazon SageMaker](how-it-works-deployment.md)
++ [Monitoring a Model in Production](how-it-works-model-monitor.md)
 
 **How It Works: Next Topic**  
 [Machine Learning with Amazon SageMaker](how-it-works-mlconcepts.md)

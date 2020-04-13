@@ -36,4 +36,4 @@ response = runtime.invoke_endpoint(EndpointName=endpoint, ContentType='text/csv'
 result = json.loads(response['Body'].read().decode())
 ```
 
-Note that BYOM allows for a custom content type\. For more information, see [InvokeEndpoint](API_runtime_InvokeEndpoint.md)\.
+Note that BYOM allows for a custom content type\. For more information, see [ `runtime_InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html)\.

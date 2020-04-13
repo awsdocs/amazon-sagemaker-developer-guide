@@ -14,7 +14,7 @@
 
 To get you started, the **Task type** starts with a drop\-down menu listing a number of our more common task types, plus a custom type\. Choose one and the code editor area will be filled with a sample template for that task type\. If you prefer not to start with a sample, choose **Custom HTML** for a minimal template skeleton\.
 
-If you've already created a template, upload the file directly using the **Upload file** button in the upper right of the task setup area or paste your template code into the editor area\.
+If you've already created a template, upload the file directly using the **Upload file** button in the upper right of the task setup area or paste your template code into the editor area\. For a repository of demo templates for a variety of labeling job task types, see [Amazon SageMaker Ground Truth Sample Task UIs ](https://github.com/aws-samples/amazon-sagemaker-ground-truth-task-uis)\.
 
 ## Developing templates locally<a name="sms-custom-template-step2-UI-local"></a>
 

@@ -15,7 +15,7 @@ All Amazon SageMaker built\-in algorithms adhere to the common input inference f
             "closest_cluster": 2.0,
             "distance_to_cluster": 5.0,
         },
- 
+
         ....
     ]
 }
