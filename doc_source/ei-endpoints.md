@@ -143,3 +143,4 @@ endpoint_response = sagemaker.create_endpoint(
 ```
 
 After creating the endpoint, you can invoke it using the `invoke_endpoint` method in a Boto3 runtime object, as you would any other endpoint\.
+

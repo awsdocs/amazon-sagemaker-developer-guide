@@ -4,6 +4,7 @@ To get inference for an entire dataset, use batch transform\. Amazon SageMaker s
 
 For information about batch transforms, see [Get Inferences for an Entire Dataset with Batch Transform](how-it-works-batch.md)\. For an example that uses batch transform, see the batch transform sample notebook at [https://github\.com/awslabs/amazon\-sagemaker\-examples/tree/master/sagemaker\_batch\_transform/introduction\_to\_batch\_transform](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker_batch_transform/introduction_to_batch_transform)\.
 
+
 **Topics**
 + [Deploy a Model with Batch Transform \(Amazon SageMaker High\-level Python Library\)](#ex1-batch-transform-api-high-level)
 + [Deploy a Model with Batch Transform \(SDK for Python \(Boto 3\)\)](#ex1-batch-transform-api-low-level)

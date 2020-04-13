@@ -782,3 +782,4 @@ Needed to give the Amazon SageMaker console access to list the available AWS KMS
 
 `logs`  
 Needed to allow Amazon SageMaker jobs and endpoints to publish log streams\.
+

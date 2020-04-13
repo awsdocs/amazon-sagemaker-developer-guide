@@ -20,6 +20,7 @@ The following diagram illustrates the typical workflow for creating a machine le
 
    1. **Prepare or transform the data**—To improve performance, you might perform additional data transformations\. For example, you might choose to combine attributes\. If your model predicts the conditions that require de\-icing an aircraft, instead of using temperature and humidity attributes separately, you might combine those attributes into a new attribute to get a better model\. 
 
+
    In Amazon SageMaker, you preprocess example data in a Jupyter notebook on your notebook instance\. You use your notebook to fetch your dataset, explore it, and prepare it for model training\. For more information, see [Explore, Analyze, and Process Data](how-it-works-notebooks-instances.md)\. For more information about preparing data in AWS Marketplace, see [data preparation](https://aws.amazon.com/marketplace/search/results?searchTerms=data+preparation&spellCheck=false&page=1)\. 
 
 1. **Train a model**—Model training includes both training and evaluating the model, as follows: 
@@ -29,12 +30,16 @@ The following diagram illustrates the typical workflow for creating a machine le
 
      You also need compute resources for training\. Depending on the size of your training dataset and how quickly you need the results, you can use resources ranging from a single general\-purpose instance to a distributed cluster of GPU instances\. For more information, see [Train a Model with Amazon SageMaker](how-it-works-training.md)\.
 
+
       
    + **Evaluating the model**—After you've trained your model, you evaluate it to determine whether the accuracy of the inferences is acceptable\. In Amazon SageMaker, you use either the AWS SDK for Python \(Boto\) or the high\-level Python library that Amazon SageMaker provides to send requests to the model for inferences\. 
 
+      
+
      You use a Jupyter notebook in your Amazon SageMaker notebook instance to train and evaluate your model\. 
 
-1. **Deploy the model**— You traditionally re\-engineer a model before you integrate it with your application and deploy it\. With Amazon SageMaker hosting services, you can deploy your model independently, decoupling it from your application code\. For more information, see [Deploy a Model on Amazon SageMaker Hosting Services](how-it-works-hosting.md)\.
+1. **Deploy the model**— You traditionally re\-engineer a model before you integrate it with your application and deploy\. With Amazon SageMaker hosting services, you can deploy your model independently, decoupling it from your application code\. For more information, see [Deploy a Model on Amazon SageMaker Hosting Services](how-it-works-hosting.md)\.
+
 
 Machine learning is a continuous cycle\. After deploying a model, you monitor the inferences, collect "ground truth," and evaluate the model to identify drift\. You then increase the accuracy of your inferences by updating your training data to include the newly collected ground truth\. You do this by retraining the model with the new dataset\. As more and more example data becomes available, you continue retraining your model to increase accuracy\.
 

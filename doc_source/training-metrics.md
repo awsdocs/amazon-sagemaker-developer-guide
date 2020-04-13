@@ -100,6 +100,7 @@ estimator =
                 metric_definitions=[
                    {'Name': 'train:error', 'Regex': 'Train_error=(.*?);'},
                    {'Name': 'validation:error', 'Regex': 'Valid_error=(.*?);'}
+
                 ]
             )
 ```
@@ -191,5 +192,5 @@ For this example, you can use the **Image\-classification\-full\-training** exam
 
 1. On the **All metrics** tab, choose the **train:accuracy** and **validation:accuracy** metrics for the training job that you created in the notebook\.
 
-1. On the graph, choose an area that the metric's values to zoom in\. You should see something like the following:  
+1. On the graph, choose a region where you see the values of the metric to zoom in on that section\. You should see something like the following:  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/train-valid-acc.png)
