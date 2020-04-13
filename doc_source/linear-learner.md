@@ -1,29 +1,42 @@
-# Linear Learner<a name="linear-learner"></a>
+# Linear Learner Algorithm<a name="linear-learner"></a>
 
-Linear models are supervised learning algorithms used for solving either classification or regression problems\. As input the model is given labeled examples \(**x**, **y**\)\. **x** is a high dimensional vector and **y** is a numeric label\. For binary classification problems, the algorithm expects the label to be either 0 or 1\. For multiclass classification problems, the algorithm expects the labels to be from 0 to `num_classes` \- 1\. For regression problems, **y** is a real number\. The algorithm learns a linear function, or linear threshold function for classification, mapping a vector **x** to an approximation of the label **y**\. 
+*Linear models* are supervised learning algorithms used for solving either classification or regression problems\. For input, you give the model labeled examples \(*x*, *y*\)\. *x* is a high\-dimensional vector and *y* is a numeric label\. For binary classification problems, the label must be either 0 or 1\. For multiclass classification problems, the labels must be from 0 to `num_classes` \- 1\. For regression problems, *y* is a real number\. The algorithm learns a linear function, or, for classification problems, a linear threshold function, and maps a vector *x* to an approximation of the label *y*\. 
 
-The Amazon SageMaker linear learner algorithm provides a solution for both classification and regression problems\. This allows you to simultaneously explore different training objectives and choose the best solution from a validation set\. It also allows you to explore a large number of models and choose the best, which optimizes either continuous objectives—such as mean square error, cross entropy loss, absolute error, and so on—or discrete objectives suited for classification, such as F1 measure, precision@recall, or accuracy\. When compared with solutions providing a solution to only continuous objectives, the implementation provides a significant increase in speed over naive hyperparameter optimization techniques and added convenience\. 
+The Amazon SageMaker linear learner algorithm provides a solution for both classification and regression problems\. With the Amazon SageMaker algorithm, you can simultaneously explore different training objectives and choose the best solution from a validation set\. You can also explore a large number of models and choose the best\. The best model optimizes either of the following:
++ Continuous objectives, such as mean square error, cross entropy loss, absolute error\.
++ Discrete objectives suited for classification, such as F1 measure, precision, recall, or accuracy\. 
 
-The linear learner expects a data matrix, with rows representing the observations, and columns the dimensions of the features\. It also requires an additional column containing the labels that match the data points\. At a minimum, Amazon SageMaker linear learner requires you to specify input and output data locations, and objective type \(classification or regression\) as arguments\. The feature dimension is also required\. For more information, see [CreateTrainingJob](API_CreateTrainingJob.md)\. You can specify additional parameters in the HyperParameters string map of the request body\. These parameters control the optimization procedure, or specifics of the objective function on which you train\. Examples include the number of epochs, regularization, and loss type\. 
+Compared with methods that provide a solution for only continuous objectives, the Amazon SageMaker linear learner algorithm provides a significant increase in speed over naive hyperparameter optimization techniques\. It is also more convenient\. 
 
-## Input/Output Interface<a name="ll-input_output"></a>
-
-Amazon SageMaker linear learner supports three data channels: train, validation, and test\. The validation data channel is optional\. If you provide validation data, it should be `FullyReplicated`\. The validation loss is logged at every epoch, and a sample of the validation data is used to calibrate and select the best model\. If you don't provide validation data, the final model calibration and selection uses a sample of the training data\. The test data channel is also optional\. If test data is provided, the algorithm logs contain the test score for the final model\.
-
-Linear learner supports both `recordIO wrapped protobuf` and `CSV`\. For input type `x-recordio-protobuf`, only Float32 tensors are supported\. For input type `text/csv`, the first column is assumed to be the label, which is the target variable for prediction\. Linear learner can be trained in File or Pipe mode when using recordIO\-wrapped protobuf, but only in File mode for the `CSV` format\.
-
-For inference, Linear Learner supports the `application/json`, `x-recordio-protobuf`, and `text/csv` formats\. For binary classification models, both the score and the predicted label are returned\. For regression, just the score is returned\.
-
-For more details on training and inference file formats, see example notebooks\.
-
-## EC2 Instance Recommendation<a name="ll-instances"></a>
-
-Linear learner can be trained on single\- or multi\-machine CPU and GPU instances\. During our testing, we have not found substantial evidence to multi\-GPU to be faster than single GPU, but results vary depending on the specific use case\.
+The linear learner algorithm requires a data matrix, with rows representing the observations, and columns representing the dimensions of the features\. It also requires an additional column that contains the labels that match the data points\. At a minimum, Amazon SageMaker linear learner requires you to specify input and output data locations, and objective type \(classification or regression\) as arguments\. The feature dimension is also required\. For more information, see [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html)\. You can specify additional parameters in the `HyperParameters` string map of the request body\. These parameters control the optimization procedure, or specifics of the objective function that you train on\. For example, the number of epochs, regularization, and loss type\. 
 
 **Topics**
-+ [Input/Output Interface](#ll-input_output)
-+ [EC2 Instance Recommendation](#ll-instances)
-+ [How It Works](ll_how-it-works.md)
++ [Input/Output Interface for the Linear Learner Algorithm](#ll-input_output)
++ [EC2 Instance Recommendation for the Linear Learner Algorithm](#ll-instances)
++ [Linear Learner Sample Notebooks](#ll-sample-notebooks)
++ [How Linear Learner Works](ll_how-it-works.md)
 + [Linear Learner Hyperparameters](ll_hyperparameters.md)
-+ [Tuning a Linear Learner Model](linear-learner-tuning.md)
++ [Tune a Linear Learner Model](linear-learner-tuning.md)
 + [Linear Learner Response Formats](LL-in-formats.md)
+
+## Input/Output Interface for the Linear Learner Algorithm<a name="ll-input_output"></a>
+
+The Amazon SageMaker linear learner algorithm supports three data channels: train, validation \(optional\), and test \(optional\)\. If you provide validation data, it should be `FullyReplicated`\. The algorithm logs validation loss at every epoch, and uses a sample of the validation data to calibrate and select the best model\. If you don't provide validation data, the algorithm uses a sample of the training data to calibrate and select the model\. If you provide test data, the algorithm logs include the test score for the final model\.
+
+**For training**, the linear learner algorithm supports both `recordIO-wrapped protobuf` and `CSV` formats\. For the `application/x-recordio-protobuf` input type, only Float32 tensors are supported\. For the `text/csv` input type, the first column is assumed to be the label, which is the target variable for prediction\. You can use either File mode or Pipe mode to train linear learner models on data that is formatted as `recordIO-wrapped-protobuf` or as `CSV`\.
+
+**For inference**, the linear learner algorithm supports the `application/json`, `application/x-recordio-protobuf`, and `text/csv` formats\. When you make predictions on new data, the format of the response depends on the type of model\. **For regression** \(`predictor_type='regressor'`\), the `score` is the prediction produced by the model\. **For classification** \(`predictor_type='binary_classifier'` or `predictor_type='multiclass_classifier'`\), the model returns a `score` and also a `predicted_label`\. The `predicted_label` is the class predicted by the model and the `score` measures the strength of that prediction\. 
++ **For binary classification**, `predicted_label` is `0` or `1`, and score is a single floating point number correspond class\. 
++ **For multiclass classification**, the `predicted_class` will be an integer from `0` to `num_classes-1`, and the score will be a list of one floating point number per class\. 
+
+To interpret the `score` in classification problems, you have to consider the loss function used\. If the `loss` hyperparameter value is `logistic` for binary classification or `softmax_loss` for multiclass classification, then the `score` can be interpreted as the probability of the corresponding class\. These are the loss values used by the linear learner when the `loss` value is `auto` default value\. But if the loss is set to `hinge_loss`, then the score cannot be interpreted as a probability\. This is because hinge loss corresponds to a Support Vector Classifier, which does not produce probability estimates\.
+
+For more information on input and output file formats, see [Linear Learner Response Formats](LL-in-formats.md)\. For more information on inference formats, and the [Linear Learner Sample Notebooks](#ll-sample-notebooks)\.
+
+## EC2 Instance Recommendation for the Linear Learner Algorithm<a name="ll-instances"></a>
+
+You can train the linear learner algorithm on single\- or multi\-machine CPU and GPU instances\. During testing, we have not found substantial evidence that multi\-GPU computers are faster than single\-GPU computers\. Results can vary, depending on your specific use case\.
+
+## Linear Learner Sample Notebooks<a name="ll-sample-notebooks"></a>
+
+For a sample notebook that uses the Amazon SageMaker linear learner algorithm to analyze the images of handwritten digits from zero to nine in the MNIST dataset, see [An Introduction to Linear Learner with MNIST](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/linear_learner_mnist/linear_learner_mnist.ipynb)\. For instructions on how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. After you have created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all of the Amazon SageMaker samples\. The topic modeling example notebooks using the linear learning algorithm are located in the **Introduction to Amazon algorithms** section\. To open a notebook, choose its **Use** tab and choose **Create copy**\.

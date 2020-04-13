@@ -1,6 +1,6 @@
 # Factorization Machine Response Formats<a name="fm-in-formats"></a>
 
-## JSON<a name="fm-json"></a>
+## JSON Response Format<a name="fm-json"></a>
 
 Binary classification
 
@@ -27,7 +27,7 @@ let response =   {
 }
 ```
 
-## JSONLINES<a name="fm-jsonlines"></a>
+## JSONLINES Response Format<a name="fm-jsonlines"></a>
 
 Binary classification
 
@@ -41,7 +41,7 @@ Regression
 {"score": 0.4}
 ```
 
-## RECORDIO<a name="fm-recordio"></a>
+## RECORDIO Response Format<a name="fm-recordio"></a>
 
 Binary classification
 

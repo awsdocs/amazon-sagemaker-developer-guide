@@ -1,4 +1,4 @@
-# Validating Machine Learning Models<a name="how-it-works-model-validation"></a>
+# Validate a Machine Learning Model<a name="how-it-works-model-validation"></a>
 
 After training a model, evaluate it to determine whether its performance and accuracy allow you to achieve your business goals\. You might generate multiple models using different methods and evaluate each\. For example, you could apply different business rules for each model, and then apply various measures to determine each model's suitability\. You might consider whether your model needs to be more sensitive than specific \(or vice versa\)\. 
 
@@ -32,4 +32,4 @@ Options for offline model evaluation include:
 
 ## How It Works: Next Topic<a name="howitwork-validation-nextstep"></a>
 
- [The Amazon SageMaker Programming Model ](how-it-works-prog-model.md) 
+ [Programming Model for Amazon SageMaker](api-and-sdk-reference.md#how-it-works-prog-model) 

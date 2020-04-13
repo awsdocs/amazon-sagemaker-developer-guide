@@ -1,11 +1,20 @@
-# Explore and Preprocess Data<a name="how-it-works-notebooks-instances"></a>
+# Explore, Analyze, and Process Data<a name="how-it-works-notebooks-instances"></a>
 
-Before using a dataset to train a model, data scientists typically explore and preprocess it\. For example, in one of the exercises in this guide, you use the MNIST dataset, a commonly available dataset of handwritten numbers, for model training\. Before you begin training, you transform the data into a format that is more efficient for training\. For more information, see [Step 3\.2\.3: Transform the Training Dataset and Upload It to S3](ex1-preprocess-data-transform.md)\. 
+Before using a dataset to train a model, data scientists typically explore, analyze, and preprocess it\. For example, in one of the exercises in this guide, you use the MNIST dataset, a commonly available dataset of handwritten numbers, for model training\. Before you begin training, you transform the data into a format that is more efficient for training\. For more information, see [Step 4\.3: Transform the Training Dataset and Upload It to Amazon S3](ex1-preprocess-data-transform.md)\. 
 
 To preprocess data use one of the following methods:
-+ Use a Jupyter notebook on an Amazon SageMaker notebook instance\. You can also use the notebook instance to write code to create model training jobs, deploy models to Amazon SageMaker hosting, and test or validate your models\. For more information, see [Using Notebook Instances](nbi.md) 
-+  You can use a model to transform data by using Amazon SageMaker batch transform\. For more information, see [Step 3\.4\.2: Deploy the Model to Amazon SageMaker Batch Transform ](ex1-batch-transform.md)\. 
++ Use a Jupyter notebook on an Amazon SageMaker notebook instance\. You can also use the notebook instance to do the following:
+  + Write code to create model training jobs 
+  + Deploy models to Amazon SageMaker hosting 
+  + Test or validate your models
+
+  For more information, see [Use Amazon SageMaker Notebook Instances](nbi.md) 
++  You can use a model to transform data by using Amazon SageMaker batch transform\. For more information, see [Step 6\.2: Deploy the Model with Batch Transform](ex1-batch-transform.md)\. 
+
+Amazon SageMaker Processing enables running jobs to preprocess and postprocess data, perform feature engineering, and evaluate models on Amazon SageMaker easily and at scale\. When combined with the other critical machine learning tasks provided by Amazon SageMaker, such as training and hosting, Processing provides you with the benefits of a fully managed machine learning environment, including all the security and compliance support built into Amazon SageMaker\. With Processing, you have the flexibility to use the built\-in data processing containers or to bring your own containers and submit custom jobs to run on managed infrastructure\. After you submit a job, Amazon SageMaker launches the compute instances, processes and analyzes the input data, and releases the resources upon completion\. For more information, see [Process Data and Evaluate Models](processing-job.md)\.
++ For information about how to run your own data processing scripts, [Data Processing and Model Evaluation with Scikit\-Learn](use-scikit-learn-processing-container.md)\.
++ For information about how to build your own processing container to run scripts, see [Build Your Own Processing Container](build-your-own-processing-container.md)\.
 
 ## How It Works: Next Topic<a name="howitwork-ws-notebook-nextstep"></a>
 
- [Training a Model with Amazon SageMaker ](how-it-works-training.md) 
+ [Train a Model with Amazon SageMaker](how-it-works-training.md) 

@@ -5,9 +5,9 @@ In the `CreateTrainingJob` request, you specify the training algorithm\. You can
 
 | Parameter Name | Description | 
 | --- | --- | 
-| num\_components |  The number of principal components to compute\. Required\. Valid values: Positive integer Default value: \-  | 
-| feature\_dim |  Input dimension\. Required\. Valid values: Positive integer Default value: \-  | 
-| mini\_batch\_size |  Number of rows in a mini\-batch\. Required\. Valid values: Positive integer Default value: \-  | 
-| algorithm\_mode |  Mode for computing the principal components\.  Valid values: *regular* or *randomized* Default value: *regular*  | 
-| subtract\_mean |  Indicates whether the data should be unbiased both during training and at inference\.  Valid values: One of *true* or *false* Default value: *true*  | 
-| extra\_components |  As the value increases, the solution becomes more accurate but the runtime and memory consumption increase linearly\. The default, \-1, means the maximum of 10 and `num_components`\. Valid for *randomized* mode only Valid values: Non\-negative integer or \-1 Default value: \-1  | 
+| feature\_dim |  Input dimension\. **Required** Valid values: positive integer  | 
+| mini\_batch\_size |  Number of rows in a mini\-batch\. **Required** Valid values: positive integer  | 
+| num\_components |  The number of principal components to compute\. **Required** Valid values: positive integer  | 
+| algorithm\_mode |  Mode for computing the principal components\.  **Optional** Valid values: *regular* or *randomized* Default value: *regular*  | 
+| extra\_components |  As the value increases, the solution becomes more accurate but the runtime and memory consumption increase linearly\. The default, \-1, means the maximum of 10 and `num_components`\. Valid for *randomized* mode only\. **Optional** Valid values: Non\-negative integer or \-1 Default value: \-1  | 
+| subtract\_mean |  Indicates whether the data should be unbiased both during training and at inference\.  **Optional** Valid values: One of *true* or *false* Default value: *true*  | 

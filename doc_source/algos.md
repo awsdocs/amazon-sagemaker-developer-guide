@@ -1,4 +1,4 @@
-# Using Built\-in Algorithms with Amazon SageMaker<a name="algos"></a>
+# Use Amazon SageMaker built\-in algorithms<a name="algos"></a>
 
 A machine learning algorithm uses example data to create a generalized solution \(a *model*\) that addresses the business question you are trying to answer\. After you create a model using example data, you can use it to answer the same business question for a new set of data\. This is also referred to as obtaining inferences\.
 
@@ -15,7 +15,7 @@ Because you create a model to address a business question, your first step is to
 
      
 
-  For this type of discrete classification problem, Amazon SageMaker provides two algorithms: [Linear Learner](linear-learner.md) and the [XGBoost Algorithm](xgboost.md)\. You set the following hyperparameters to direct these algorithms to produce discrete results:
+  For this type of discrete classification problem, Amazon SageMaker provides two algorithms: [Linear Learner Algorithm](linear-learner.md) and the [XGBoost Algorithm](xgboost.md)\. You set the following hyperparameters to direct these algorithms to produce discrete results:
 
    
   + For the Linear Learner algorithm, set the `predictor_type` hyperparameter to `binary_classifier`\. 
@@ -24,7 +24,7 @@ Because you create a model to address a business question, your first step is to
   + For the XGBoost algorithm, set the `objective` hyperparameter to `reg:logistic`\.
 
    
-+ Answers that are quantitative—Consider this question: "Based on the return on investment \(ROI\) from past mailings, what is the ROI for mailing this customer?” In this case, you use the ROI to target customers for the mail campaign\. For these quantitative analysis problems, you can also use the [Linear Learner](linear-learner.md) or the [XGBoost Algorithm](xgboost.md) algorithms\. You set the following hyperparameters to direct these algorithms to produce quantitative results:
++ Answers that are quantitative—Consider this question: "Based on the return on investment \(ROI\) from past mailings, what is the ROI for mailing this customer?” In this case, you use the ROI to target customers for the mail campaign\. For these quantitative analysis problems, you can also use the [Linear Learner Algorithm](linear-learner.md) or the [XGBoost Algorithm](xgboost.md) algorithms\. You set the following hyperparameters to direct these algorithms to produce quantitative results:
 
    
   + For the Linear Learner algorithm, set the `predictor_type` hyperparameter to `regressor`\. 
@@ -33,7 +33,7 @@ Because you create a model to address a business question, your first step is to
   + For the XGBoost algorithm, set the `objective` hyperparameter to `reg:linear`\.
 
    
-+ Answers in the form of discrete recommendations—Consider this question: "Based on past responses to mailings, what is the recommended content for each customer?" In this case, you are looking for a recommendation on what to mail, not whether to mail, the customer\. For this problem, Amazon SageMaker provides the [Factorization Machines](fact-machines.md) algorithm\.
++ Answers in the form of discrete recommendations—Consider this question: "Based on past responses to mailings, what is the recommended content for each customer?" In this case, you are looking for a recommendation on what to mail, not whether to mail, the customer\. For this problem, Amazon SageMaker provides the [Factorization Machines Algorithm](fact-machines.md) algorithm\.
 
    
 
@@ -41,33 +41,36 @@ All of the questions in the preceding examples rely on having example data that 
 + "I want to group current and prospective customers into 10 groups based on their attributes\. How should I group them? " You might choose to send the mailing to customers in the group that has the highest percentage of current customers\. That is, prospective customers that most resemble current customers based on the same set of attributes\. For this type of question, Amazon SageMaker provides the [K\-Means Algorithm](k-means.md)\.
 
    
-+ "What are the attributes that differentiate these customers, and what are the values for each customer along those dimensions\." You use these answers to simplify the view of current and prospective customers, and, maybe, to better understand these customer attributes\. For this type of question, Amazon SageMaker provides the [Principal Component Analysis \(PCA\)](pca.md) algorithm\.
++ "What are the attributes that differentiate these customers, and what are the values for each customer along those dimensions\." You use these answers to simplify the view of current and prospective customers, and, maybe, to better understand these customer attributes\. For this type of question, Amazon SageMaker provides the [Principal Component Analysis \(PCA\) Algorithm](pca.md) algorithm\.
 
 In addition to these general\-purpose algorithms, Amazon SageMaker provides algorithms that are tailored to specific use cases\. These include:
 + [Image Classification Algorithm](image-classification.md)—Use this algorithm to classify images\. It uses example data with answers \(referred to as *supervised algorithm*\)\.
 
    
-+ [Sequence2Sequence ](seq-2-seq.md)—This supervised algorithm is commonly used for neural machine translation\. 
++ [Sequence\-to\-Sequence Algorithm](seq-2-seq.md)—This supervised algorithm is commonly used for neural machine translation\. 
 
    
-+ [Latent Dirichlet Allocation \(LDA\)](lda.md)—This algorithm is suitable for determining topics in a set of documents\. It is an *unsupervised algorithm*, which means that it doesn't use example data with answers during training\.
++ [Latent Dirichlet Allocation \(LDA\) Algorithm](lda.md)—This algorithm is suitable for determining topics in a set of documents\. It is an *unsupervised algorithm*, which means that it doesn't use example data with answers during training\.
 
    
-+ [Neural Topic Model \(NTM\)](ntm.md)—Another unsupervised technique for determining topics in a set of documents, using a neural network approach\.
++ [Neural Topic Model \(NTM\) Algorithm](ntm.md)—Another unsupervised technique for determining topics in a set of documents, using a neural network approach\.
 
 **Topics**
-+ [Algorithms Provided by Amazon SageMaker: Common Information](common-info-all-im-models.md)
-+ [Linear Learner](linear-learner.md)
-+ [Factorization Machines](fact-machines.md)
-+ [XGBoost Algorithm](xgboost.md)
++ [Common elements of built\-in algorithms](common-info-all-im-models.md)
++ [BlazingText Algorithm](blazingtext.md)
++ [DeepAR Forecasting Algorithm](deepar.md)
++ [Factorization Machines Algorithm](fact-machines.md)
 + [Image Classification Algorithm](image-classification.md)
-+ [Object Detection Algorithm](object-detection.md)
-+ [Sequence2Sequence](seq-2-seq.md)
++ [IP Insights Algorithm](ip-insights.md)
 + [K\-Means Algorithm](k-means.md)
-+ [Principal Component Analysis \(PCA\)](pca.md)
-+ [Latent Dirichlet Allocation \(LDA\)](lda.md)
-+ [Neural Topic Model \(NTM\)](ntm.md)
-+ [DeepAR Forecasting](deepar.md)
-+ [BlazingText](blazingtext.md)
-+ [Random Cut Forest](randomcutforest.md)
-+ [K\-Nearest Neighbors](k-nearest-neighbors.md)
++ [K\-Nearest Neighbors \(k\-NN\) Algorithm](k-nearest-neighbors.md)
++ [Latent Dirichlet Allocation \(LDA\) Algorithm](lda.md)
++ [Linear Learner Algorithm](linear-learner.md)
++ [Neural Topic Model \(NTM\) Algorithm](ntm.md)
++ [Object2Vec Algorithm](object2vec.md)
++ [Object Detection Algorithm](object-detection.md)
++ [Principal Component Analysis \(PCA\) Algorithm](pca.md)
++ [Random Cut Forest \(RCF\) Algorithm](randomcutforest.md)
++ [Semantic Segmentation Algorithm](semantic-segmentation.md)
++ [Sequence\-to\-Sequence Algorithm](seq-2-seq.md)
++ [XGBoost Algorithm](xgboost.md)

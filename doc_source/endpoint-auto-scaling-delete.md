@@ -1,10 +1,10 @@
-# Deleting a Scaling Policy<a name="endpoint-auto-scaling-delete"></a>
+# Delete a scaling policy<a name="endpoint-auto-scaling-delete"></a>
 
-You can delete a scaling policy with the AWS Management Console, the AWS CLI, or the Application Auto Scaling API\.
+You can delete a scaling policy with the AWS Management Console, the AWS CLI, or the Application Auto Scaling API\. You must delete a scaling policy if you wish to update a model's endpoint\.
 
-## Deleting a Scaling Policy \(Console\)<a name="endpoint-auto-scaling-delete-console"></a>
+## Delete a scaling policy \(Console\)<a name="endpoint-auto-scaling-delete-console"></a>
 
-**To delete an automatic scaling policy for a variant \(console\)**
+**To delete an automatic scaling policy \(console\)**
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
@@ -18,13 +18,13 @@ You can delete a scaling policy with the AWS Management Console, the AWS CLI, or
 
 1. Choose **Deregister auto scaling**\.
 
-## Deleting a Scaling Policy \(AWS CLI or Application Auto Scaling API\)<a name="endpoint-auto-scaling-delete-code"></a>
+## Delete a scaling policy \(AWS CLI or Application Auto Scaling API\)<a name="endpoint-auto-scaling-delete-code"></a>
 
 You can use the AWS CLI or the Application Auto Scaling API to delete a scaling policy from a variant\.
 
-### Deleting a Scaling Policy \(AWS CLI\)<a name="endpoint-auto-scaling-delete-code-cli"></a>
+### Delete a scaling policy \(AWS CLI\)<a name="endpoint-auto-scaling-delete-code-cli"></a>
 
-To delete a scaling policy from a variant, use the [http://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/delete-scaling-policy.html](http://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/delete-scaling-policy.html) AWS CLI command with the following parameters:
+To delete a scaling policy from a variant, use the [https://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/delete-scaling-policy.html](https://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/delete-scaling-policy.html) AWS CLI command with the following parameters:
 + `--policy-name`—The name of the scaling policy\.
 + `--resource-id`—The resource identifier for the variant\. For this parameter, the resource type is `endpoint` and the unique identifier is the name of the variant\. For example, `endpoint/MyEndpoint/variant/MyVariant`\.
 + `--service-namespace`—Set this value to `sagemaker`\.
@@ -41,9 +41,9 @@ aws application-autoscaling delete-scaling-policy \
     --scalable-dimension sagemaker:variant:DesiredInstanceCount
 ```
 
-### Deleting a Scaling Policy \(Application Auto Scaling API\)<a name="endpoint-auto-scaling-delete-code-api"></a>
+### Delete a scaling policy \(Application Auto Scaling API\)<a name="endpoint-auto-scaling-delete-code-api"></a>
 
-To delete a scaling policy from your variant, use the [http://docs.aws.amazon.com//autoscaling/application/APIReference/API_DeleteScalingPolicy.html](http://docs.aws.amazon.com//autoscaling/application/APIReference/API_DeleteScalingPolicy.html) Application Auto Scaling API action with the following parameters:
+To delete a scaling policy from your variant, use the [https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DeleteScalingPolicy.html](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DeleteScalingPolicy.html) Application Auto Scaling API action with the following parameters:
 + `PolicyName`—The name of the scaling policy\.
 + `ServiceNamespace`—Set this value to `sagemaker`\.
 + `ResourceID`—The resource identifier for the variant\. For this parameter, the resource type is `endpoint` and the unique identifier is the name of the variant,\. For example, `endpoint/MyEndpoint/variant/MyVariant`\.

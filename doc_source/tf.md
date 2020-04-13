@@ -1,11 +1,37 @@
-# Using TensorFlow with Amazon SageMaker<a name="tf"></a>
+# Use TensorFlow with Amazon SageMaker<a name="tf"></a>
 
-You can use Amazon SageMaker to train a model using custom TensorFlow code\. If you choose to deploy your code using Amazon SageMaker hosting services, you can also provide custom TensorFlow inference code\. This section provides guidelines for writing custom TensorFlow code for both model training and inference, and an example that includes sample TensorFlow code and instructions for model training and deployment\.
+You can use Amazon SageMaker to train and deploy a model using custom TensorFlow code\. The Amazon SageMaker Python SDK TensorFlow estimators and models and the Amazon SageMaker open\-source TensorFlow containers make writing a TensorFlow script and running it in Amazon SageMaker easier\.
 
-Amazon SageMaker supports using pipe mode in TensorFlow containers\. For information, see [https://github\.com/aws/sagemaker\-tensorflow\-extensions/blob/master/README\.rst](https://github.com/aws/sagemaker-tensorflow-extensions/blob/master/README.rst)
+## Use TensorFlow Version 1\.11 and Later<a name="tf-script-mode"></a>
 
-For information about TensorFlow supported versions, see [https://github\.com/aws/sagemaker\-python\-sdk\#tensorflow\-sagemaker\-estimators](https://github.com/aws/sagemaker-python-sdk#tensorflow-sagemaker-estimators)\. The container source code can be found at the GitHub repository at [https://github\.com/aws/sagemaker\-tensorflow\-containers](https://github.com/aws/sagemaker-tensorflow-containers)\.
+For TensorFlow versions 1\.11 and later, the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) supports script mode training scripts\.
 
-**Topics**
-+ [Writing Custom TensorFlow Model Training and Inference Code](tf-training-inference-code-template.md)
-+ [Examples: Using Amazon SageMaker with TensorFlow](tf-examples.md)
+### What do you want to do?<a name="tf-intent"></a>
+
+I want to train a custom TensorFlow model in Amazon SageMaker\.  
+For a sample Jupyter notebook, see [TensorFlow script mode training and serving](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/tensorflow_script_mode_training_and_serving/tensorflow_script_mode_training_and_serving.ipynb)\.  
+For documentation, see [Train a Model with TensorFlow](https://sagemaker.readthedocs.io/en/stable/using_tf.html#train-a-model-with-tensorflow)\.
+
+I have a TensorFlow model that I trained in Amazon SageMaker, and I want to deploy it to a hosted endpoint\.  
+[Deploy TensorFlow Serving models](https://sagemaker.readthedocs.io/en/stable/using_tf.html#deploy-tensorflow-serving-models)\.
+
+I have a TensorFlow model that I trained outside of Amazon SageMaker, and I want to deploy it to an Amazon SageMaker endpoint  
+[Deploying directly from model artifacts](https://sagemaker.readthedocs.io/en/stable/using_tf.html#deploying-directly-from-model-artifacts)\.
+
+I want to see the API documentation for [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) TensorFlow classes\.  
+[TensorFlow Estimator](https://sagemaker.readthedocs.io/en/stable/sagemaker.tensorflow.html)
+
+I want to see information about Amazon SageMaker TensorFlow containers\.  
+[https://github\.com/aws/sagemaker\-tensorflow\-container](https://github.com/aws/sagemaker-tensorflow-container)\.
+
+ For general information about writing TensorFlow script mode training scripts and using TensorFlow script mode estimators and models with Amazon SageMaker, see [Using TensorFlow with the SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/using_tf.html)\.
+
+For information about TensorFlow versions supported by the Amazon SageMaker TensorFlow container, see [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/tensorflow/README\.rst](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/tensorflow/README.rst)\.
+
+## Use TensorFlow Legacy Mode for Versions 1\.11 and Earlier<a name="tf-legacy-mode"></a>
+
+The [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) provides a legacy mode that supports TensorFlow versions 1\.11 and earlier\. Use legacy mode TensorFlow training scripts to run TensorFlow jobs in Amazon SageMaker if:
++ You have existing legacy mode scripts that you do not want to convert to script mode\.
++ You want to use a TensorFlow version earlier than 1\.11\.
+
+For information about writing legacy mode TensorFlow scripts to use with the Amazon SageMaker Python SDK, see [https://github\.com/aws/sagemaker\-python\-sdk/tree/v1\.12\.0/src/sagemaker/tensorflow\#tensorflow\-sagemaker\-estimators\-and\-models](https://github.com/aws/sagemaker-python-sdk/tree/v1.12.0/src/sagemaker/tensorflow#tensorflow-sagemaker-estimators-and-models)\.

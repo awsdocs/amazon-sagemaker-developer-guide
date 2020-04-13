@@ -1,10 +1,10 @@
-# Example 1: Using Amazon SageMaker for Training and Inference with Apache Spark<a name="apache-spark-example1"></a>
+# Example 1: Use Amazon SageMaker for Training and Inference with Apache Spark<a name="apache-spark-example1"></a>
 
 **Topics**
-+ [Using Custom Algorithms for Model Training and Hosting on Amazon SageMaker with Apache Spark](apache-spark-example1-cust-algo.md)
-+ [Using the SageMakerEstimator in a Spark Pipeline](apache-spark-example1-extend-pipeline.md)
++ [Use Custom Algorithms for Model Training and Hosting on Amazon SageMaker with Apache Spark](apache-spark-example1-cust-algo.md)
++ [Use the SageMakerEstimator in a Spark Pipeline](apache-spark-example1-extend-pipeline.md)
 
-Amazon SageMaker provides an Apache Spark library \(in both Python and Scala\) that you can use to integrate your Apache Spark applications with Amazon SageMaker\. For example, you might use Apache Spark for data preprocessing and Amazon SageMaker for model training and hosting\. For more information, see [Using Apache Spark with Amazon SageMaker](apache-spark.md)\. This section provides example code that uses the Apache Spark Scala library provided by Amazon SageMaker to train a model in Amazon SageMaker using `DataFrame`s in your Spark cluster\. The example also hosts the resulting model artifacts using Amazon SageMaker hosting services\. Specifically, this example does the following:
+Amazon SageMaker provides an Apache Spark library \(in both Python and Scala\) that you can use to integrate your Apache Spark applications with Amazon SageMaker\. For example, you might use Apache Spark for data preprocessing and Amazon SageMaker for model training and hosting\. For more information, see [Use Apache Spark with Amazon SageMaker](apache-spark.md)\. This section provides example code that uses the Apache Spark Scala library provided by Amazon SageMaker to train a model in Amazon SageMaker using `DataFrame`s in your Spark cluster\. The example also hosts the resulting model artifacts using Amazon SageMaker hosting services\. Specifically, this example does the following:
 + Uses the `KMeansSageMakerEstimator` to fit \(or train\) a model on data
 
    
@@ -146,20 +146,20 @@ The `KMeansSageMakerEstimator` extends the Amazon SageMaker `SageMakerEstimator`
      
   + `sagemakerRole`—Amazon SageMaker assumes this IAM role to perform tasks on your behalf\. For example, for model training, it reads data from S3 and writes training results \(model artifacts\) to S3\. 
 **Note**  
-This example implicitly creates an Amazon SageMaker client\. To create this client, you must provide your credentials\. The API uses these credentials to authenticate requests, such as requests to create a training job and API calls for deploying the model using Amazon SageMaker hosting services, to Amazon SageMaker\.
+This example implicitly creates an Amazon SageMaker client\. To create this client, you must provide your credentials\. The API uses these credentials to authenticate requests to Amazon SageMaker\. For example, it uses the credentials to authenticate requests to create a training job and API calls for deploying the model using Amazon SageMaker hosting services\.
   + After the `KMeansSageMakerEstimator` object has been created, you set the following parameters, are used in model training: 
-    + The number of clusters that the k\-means algorithm should create during model training\. You specify 10 clusters, one for each digit, 0\-9\. 
+    + The number of clusters that the k\-means algorithm should create during model training\. You specify 10 clusters, one for each digit, 0 through 9\. 
     + Identifies that each input image has 784 features \(each handwritten number is a 28 x 28\-pixel image, making 784 features\)\.
 
      
-+ Call the estimator `fit` method
++ Calls the estimator `fit` method
 
   ```
   // train
   val model = estimator.fit(trainingData)
   ```
 
-  You pass the input `DataFrame` as a parameter\. The model does all the work of training the model and deploying it to Amazon SageMaker\. For more information see, [Integrating Your Apache Spark Application with Amazon SageMaker](apache-spark.md#spark-sdk-common-process)\. In response, you get a `SageMakerModel` object, which you can use to get inferences from your model deployed in Amazon SageMaker\. 
+  You pass the input `DataFrame` as a parameter\. The model does all the work of training the model and deploying it to Amazon SageMaker\. For more information see, [Integrate Your Apache Spark Application with Amazon SageMaker](apache-spark.md#spark-sdk-common-process)\. In response, you get a `SageMakerModel` object, which you can use to get inferences from your model deployed in Amazon SageMaker\. 
 
    
 
@@ -209,9 +209,9 @@ This example implicitly creates an Amazon SageMaker client\. To create this clie
   ```
 
   You can interpret the data, as follows:
-  + A handwritten number with the `label` 5 belongs to cluster 5 \(`closest_cluster`\)\.
-  + A handwritten number with the `label` 0 belongs to cluster 2\.
-  + A handwritten number with the `label` 4 belongs to cluster 4\.
-  + A handwritten number with the `label` 1 belongs to cluster 1\.
+  + A handwritten number with the `label` 5 belongs to cluster 4 \(`closest_cluster`\)\.
+  + A handwritten number with the `label` 0 belongs to cluster 5\.
+  + A handwritten number with the `label` 4 belongs to cluster 9\.
+  + A handwritten number with the `label` 1 belongs to cluster 6\.
 
- SageMaker Spark Github Readme provides information on how to run these examples\. For more information, see [https://github\.com/aws/sagemaker\-spark/blob/master/README\.md](https://github.com/aws/sagemaker-spark/blob/master/README.md)\.
+For more information on how to run these examples, see [https://github\.com/aws/sagemaker\-spark/blob/master/README\.md](https://github.com/aws/sagemaker-spark/blob/master/README.md) on GitHub\.

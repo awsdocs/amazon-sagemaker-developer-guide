@@ -5,17 +5,19 @@ To configure and launch a hyperparameter tuning job, complete the following step
 **Topics**
 + [Specify the Hyperparameter Tuning Job Settings](#automatic-model-tuning-ex-low-tuning-config)
 + [Configure the Training Jobs](#automatic-model-tuning-ex-low-training-def)
-+ [Launch the Hyperparameter Tuning Job](#automatic-model-tuning-ex-low-launch)
++ [Name and Launch the Hyperparameter Tuning Job](#automatic-model-tuning-ex-low-launch)
 + [Next Step](#automatic-model-tuning-ex-next-monitor)
 
 ## Specify the Hyperparameter Tuning Job Settings<a name="automatic-model-tuning-ex-low-tuning-config"></a>
 
-To specify settings for the hyperparameter tuning job, you define a JSON object\. You pass the object as the value of the `HyperParameterTuningJobConfig` parameter to the [CreateHyperParameterTuningJob](API_CreateHyperParameterTuningJob.md) call\.
+To specify settings for the hyperparameter tuning job, you define a JSON object\. You pass the object as the value of the `HyperParameterTuningJobConfig` parameter to [ `CreateHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html) when you create the tuning job\.
 
 In this JSON object, you specify:
-+ The ranges of hyperparameters that you want to tune\.
++ The ranges of hyperparameters that you want to tune\. For more information, see [Define Hyperparameter Ranges](automatic-model-tuning-define-ranges.md)
 + The limits of the resource that the hyperparameter tuning job can consume\.
 + The objective metric for the hyperparameter tuning job\. An *objective metric* is the metric that the hyperparameter tuning job uses to evaluate the training job that it launches\.
+**Note**  
+To use your own algorithm for hyperparameter tuning, you need to define metrics for your algorithm\. For information,see [Define Metrics](automatic-model-tuning-define-metrics.md)\.
 
 The hyperparameter tuning job defines ranges for the `eta`, `alpha`, `min_child_weight`, and `max_depth` hyperparameters of the [XGBoost Algorithm](xgboost.md) built\-in algorithm\. The objective metric for the hyperparameter tuning job maximizes the `validation:auc` metric that the algorithm sends to CloudWatch Logs\.
 
@@ -62,12 +64,12 @@ tuning_job_config = {
 
 ## Configure the Training Jobs<a name="automatic-model-tuning-ex-low-training-def"></a>
 
-To configure the training jobs that the tuning job launches, define a JSON object that you pass as the value of the `TrainingJobDefinition` parameter of the [CreateHyperParameterTuningJob](API_CreateHyperParameterTuningJob.md) call\.
+To configure the training jobs that the tuning job launches, define a JSON object that you pass as the value of the `TrainingJobDefinition` parameter of the [ `CreateHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html) call\.
 
 In this JSON object, you specify:
 + Optional—Metrics that the training jobs emit\.
 **Note**  
-Specify metrics only when you use a custom training algorithm\. Because this example uses a built\-in algorithm, you don't specify metrics\.
+Define metrics only when you use a custom training algorithm\. Because this example uses a built\-in algorithm, you don't specify metrics\. For information about defining metrics, see [Define Metrics](automatic-model-tuning-define-metrics.md)\.
 + The container image that specifies the training algorithm\.
 + The input configuration for your training and test data\.
 + The storage location for the algorithm's output\. Specify the S3 bucket where you want to store the output of the training jobs\.
@@ -78,16 +80,8 @@ Specify metrics only when you use a custom training algorithm\. Because this exa
 In this example, we set static values for the `eval_metric`, `num_round`, `objective`, `rate_drop`, and `tweedie_variance_power` parameters of the [XGBoost Algorithm](xgboost.md) built\-in algorithm\.
 
 ```
-containers = {'us-west-2': '433757028032.dkr.ecr.us-west-2.amazonaws.com/xgboost:latest',
-              'us-east-1': '811284229777.dkr.ecr.us-east-1.amazonaws.com/xgboost:latest',
-              'us-east-2': '825641698319.dkr.ecr.us-east-2.amazonaws.com/xgboost:latest',
-              'ap-northeast-1': '501404015308.dkr.ecr.ap-northeast-1.amazonaws.com/xgboost:latest',
-              'ap-northeast-2': '306986355934.dkr.ecr.ap-northeast-2.amazonaws.com/xgboost:latest',
-              'ap-southeast-2': '544295431143.dkr.ecr.ap-southeast-2.amazonaws.com/xgboost:latest',
-              'eu-central-1': '813361260812.dkr.ecr.eu-central-1.amazonaws.com/xgboost:latest',
-              'eu-west-1': '685385470294.dkr.ecr.eu-west-1.amazonaws.com/xgboost:latest'}
-           
-training_image = containers[region]
+from sagemaker.amazon.amazon_estimator import get_image_uri
+training_image = get_image_uri(boto3.Session().region_name, 'xgboost')
 
 s3_input_train = 's3://{}/{}/train'.format(bucket, prefix)
 s3_input_validation ='s3://{}/{}/validation/'.format(bucket, prefix)
@@ -145,14 +139,15 @@ training_job_definition = {
 }
 ```
 
-## Launch the Hyperparameter Tuning Job<a name="automatic-model-tuning-ex-low-launch"></a>
+## Name and Launch the Hyperparameter Tuning Job<a name="automatic-model-tuning-ex-low-launch"></a>
 
-Now you can launch the hyperparameter tuning job by calling the [CreateHyperParameterTuningJob](API_CreateHyperParameterTuningJob.md) API\. Pass the name and JSON objects that you created in previous steps as the values of the parameters\.
+Now you can provide a name for the hyperparameter tuning job and then launch it by calling the [ `CreateHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html) API\. Pass `tuning_job_config`, and `training_job_definition` that you created in previous steps as the values of the parameters\.
 
 ```
+tuning_job_name = "MyTuningJob"
 smclient.create_hyper_parameter_tuning_job(HyperParameterTuningJobName = tuning_job_name,
-                                            HyperParameterTuningJobConfig = tuning_job_config,
-                                            TrainingJobDefinition = training_job_definition)
+                                           HyperParameterTuningJobConfig = tuning_job_config,
+                                           TrainingJobDefinition = training_job_definition)
 ```
 
 ## Next Step<a name="automatic-model-tuning-ex-next-monitor"></a>
