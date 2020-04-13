@@ -2,32 +2,32 @@
 
 An icon that floats over the top right corner of another element to which it is attached\.
 
-## Attributes<a name="badge-attributes"></a>
+### Attributes<a name="badge-attributes"></a>
 
 The following attributes are supported by this element\.
 
-### for<a name="badge-attributes-for"></a>
+#### for<a name="badge-attributes-for"></a>
 
 A string that specifies the ID of the element to which the badge is attached\.
 
-### icon<a name="badge-attributes-icon"></a>
+#### icon<a name="badge-attributes-icon"></a>
 
 A string that specifies the icon to be displayed in the badge\. The string must be either the name of an icon from the open\-source *[iron\-icons](https://github.com/PolymerElements/iron-icons)* set, which is pre\-loaded, or the URL to a custom icon\.
 
 This attribute overrides the *label* attribute\.
 
-### label<a name="badge-attributes-label"></a>
+#### label<a name="badge-attributes-label"></a>
 
 The text to display in the badge\. Three characters or less is recommended because text that is too large will overflow the badge area\. An icon can be displayed instead of text by setting the *icon* attribute\.
 
-## Element Hierarchy<a name="badge-element-hierarchy"></a>
+### Element Hierarchy<a name="badge-element-hierarchy"></a>
 
 This element has the following parent and child elements\.
 + **Parent elements**: [crowd\-form](sms-ui-template-crowd-form.md)
 + **Child elements**: none
 
-## See Also<a name="badge-see-also"></a>
+### See Also<a name="badge-see-also"></a>
 
 For more information, see the following\.
-+ [Amazon SageMaker Ground Truth](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [HTML Elements Reference](sms-ui-template-reference.md)

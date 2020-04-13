@@ -1,4 +1,4 @@
-# Step 1: Create an AWS Account<a name="gs-account"></a>
+# Create an AWS Account<a name="gs-account"></a>
 
 In this section, you sign up for an AWS account\. If you already have an AWS account, skip this step\.
 

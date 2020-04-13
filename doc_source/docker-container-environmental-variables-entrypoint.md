@@ -1,7 +1,7 @@
 # Environmental Variables used by Amazon SageMaker Containers to Define Entry Points<a name="docker-container-environmental-variables-entrypoint"></a>
 
 When creating a Dockerfile, you must define an entry point that specifies the location of the code to run when the container starts\. Amazon SageMaker Containers does this by setting an `ENV` environment variable\. The environment variable that you need to set depends on the job you want to do: 
-+ To run a script,specify the `SAGEMAKER_PROGRAM` `ENV` variable\.
++ To run a script, specify the `SAGEMAKER_PROGRAM` `ENV` variable\.
 + To train an algorithm, specify the `SAGEMAKER_TRAINING_MODULE` `ENV` variable\.
 + To host a model, specify the `SAGEMAKER_SERVING_MODULE` `ENV` variable\.
 
@@ -45,7 +45,7 @@ The code that implements this logic is in [Amazon SageMaker Containers](https://
 
 `SAGEMAKER_SERVING_MODULE`
 
-To locate the module that contains the hosting logic when deploying a model, set the `SAGEMAKER_SERVING_MODULE` environmental variable\. An Amazon SageMaker container invokes this module when it starts hosting\. For [MXNet](https://github.com/aws/sagemaker-mxnet-container/blob/master/docker/1.3.0/final/Dockerfile), set this environment as follows\.
+To locate the module that contains the hosting logic when deploying a model, set the `SAGEMAKER_SERVING_MODULE` environmental variable\. An Amazon SageMaker container invokes this module when it starts hosting\. 
 
 ```
 ENV SAGEMAKER_SERVING_MODULE sagemaker_mxnet_container.serving:main

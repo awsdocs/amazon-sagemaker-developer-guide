@@ -17,7 +17,7 @@ To perform a batch transform, create a batch transform job using either the Amaz
 + The path to the S3 bucket where you've stored the data that you want to transform\.
 + The compute resources that you want Amazon SageMaker to use for the transform job\. *Compute resources* are machine learning \(ML\) compute instances that are managed by Amazon SageMaker\.
 + The path to the S3 bucket where you want to store the output of the job\.
-+ The name of the Amazon SageMaker model that you want to use to create inferences\. You must use a model that you have already created either with the [CreateModel](API_CreateModel.md) operation or the console\.
++ The name of the Amazon SageMaker model that you want to use to create inferences\. You must use a model that you have already created either with the [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) operation or the console\.
 
 The following is an example of what a dataset file might look like\. 
 
@@ -30,7 +30,7 @@ An example of input file content:
                 RecordN-Attribute1, RecordN-Attribute2, RecordN-Attribute3, ..., RecordN-AttributeM
 ```
 
-A record is a single input data unit, for information on how to delimit records for batch transform jobs, see `SplitType` in [TransformInput](API_TransformInput.md)\.
+A record is a single input data unit\. For information about how to delimit records for batch transform jobs, see [ `SplitType`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformInput.html#SageMaker-Type-TransformInput-SplitType)\.
 
 For an example of how to use batch transform, see [Step 6\.2: Deploy the Model with Batch Transform](ex1-batch-transform.md)\.
 
