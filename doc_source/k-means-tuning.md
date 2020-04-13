@@ -4,7 +4,7 @@
 
 The Amazon SageMaker k\-means algorithm is an unsupervised algorithm that groups data into clusters whose members are as similar as possible\. Because it is unsupervised, it doesn't use a validation dataset that hyperparameters can optimize against\. But it does take a test dataset and emits metrics that depend on the squared distance between the data points and the final cluster centroids at the end of each training run\. To find the model that reports the tightest clusters on the test dataset, you can use a hyperparameter tuning job\. The clusters optimize the similarity of their members\.
 
-For more information about model tuning, see [Automatic Model Tuning](automatic-model-tuning.md)\.
+For more information about model tuning, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
 
 ## Metrics Computed by the K\-Means Algorithm<a name="km-metrics"></a>
 

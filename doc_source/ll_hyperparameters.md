@@ -1,6 +1,6 @@
 # Linear Learner Hyperparameters<a name="ll_hyperparameters"></a>
 
-The following table contains the hyperparameters for the learner learner algorithm\. These are parameters that are set by users to facilitate the estimation of model parameters from data\. The required hyperparameters that must be set are listed first, in alphabetical order\. The optional hyperparameters that can be set are listed next, also in alphabetical order\.
+The following table contains the hyperparameters for the linear learner algorithm\. These are parameters that are set by users to facilitate the estimation of model parameters from data\. The required hyperparameters that must be set are listed first, in alphabetical order\. The optional hyperparameters that can be set are listed next, also in alphabetical order\.
 
 
 | Parameter Name | Description | 

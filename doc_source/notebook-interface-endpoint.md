@@ -5,7 +5,7 @@ You can connect to your notebook instance from your VPC through an [interface en
 Amazon SageMaker notebook instances support [Amazon Virtual Private Cloud](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Introduction.html) \(Amazon VPC\) interface endpoints that are powered by [AWS PrivateLink](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Introduction.html#what-is-privatelink)\. Each VPC endpoint is represented by one or more [Elastic Network Interfaces](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html) \(ENIs\) with private IP addresses in your VPC subnets\.
 
 **Note**  
-Before you create an interface VPC endpoint to connect to a notebook instance, create an interface VPC endpoint to connect to the Amazon SageMaker API\. That way, when users call [CreatePresignedNotebookInstanceUrl](API_CreatePresignedNotebookInstanceUrl.md) to get the URL to connect to the notebook instance, that call also goes through the interface VPC endpoint\. For information, see [Connect to Amazon SageMaker Through a VPC Interface Endpoint](interface-vpc-endpoint.md)\.
+Before you create an interface VPC endpoint to connect to a notebook instance, create an interface VPC endpoint to connect to the Amazon SageMaker API\. That way, when users call [  `CreatePresignedNotebookInstanceUrl`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreatePresignedNotebookInstanceUrl.html) to get the URL to connect to the notebook instance, that call also goes through the interface VPC endpoint\. For information, see [Connect to Amazon SageMaker Through a VPC Interface Endpoint](interface-vpc-endpoint.md)\.
 
 You can create an interface endpoint to connect to your notebook instance with either the AWS console or AWS Command Line Interface \(AWS CLI\) commands\. For instructions, see [Creating an Interface Endpoint](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpce-interface.html#create-interface-endpoint)\. Make sure that you create an interface endpoint for all of the subnets in your VPC from which you want to connect to the notebook instance\.
 
@@ -113,7 +113,7 @@ If you want to restrict access to the notebook instance to only connections made
 
 Both of these policy examples assume that you have also created an interface endpoint for the Amazon SageMaker API\. For more information, see [Connect to Amazon SageMaker Through a VPC Interface Endpoint](interface-vpc-endpoint.md)\. In the second example, one of the values for `aws:SourceVpce` is the ID of the interface endpoint for the notebook instance\. The other is the ID of the interface endpoint for the Amazon SageMaker API\.
 
-The policy examples here include [DescribeNotebookInstance](API_DescribeNotebookInstance.md) because typically you would call `DescribeNotebookInstance` to make sure that the `NotebookInstanceStatus` is `InService` before you try to connect to it\. For example:
+The policy examples here include [  `DescribeNotebookInstance`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeNotebookInstance.html) because typically you would call `DescribeNotebookInstance` to make sure that the `NotebookInstanceStatus` is `InService` before you try to connect to it\. For example:
 
 ```
 aws sagemaker describe-notebook-instance \
