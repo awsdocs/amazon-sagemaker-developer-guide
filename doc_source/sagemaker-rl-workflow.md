@@ -22,9 +22,9 @@ For complete code examples, see the sample notebooks at [https://github\.com/aws
 
 1. **Write the training code**—Write training code as a Python script and pass the script to an Amazon SageMaker training job\. In your training code, import the environment files and the preset files, and then define the `main()` function\.
 
-1. **Train the RL Model**— Use the Amazon SageMaker `RLEstimator` in the Amazon SageMaker Python SDK to start an RL training job\. If you are using local mode, the training job runs on the notebook instance\. When you use Amazon SageMaker for training, you can select GPU or CPU instances\. Store the output from the training job in a local directory if you train in local mode, or on Amazon S3 if you use Amazon SageMaker training\.
+1. **Train the RL Model**— Use the Amazon SageMaker `RLEstimator` in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) to start an RL training job\. If you are using local mode, the training job runs on the notebook instance\. When you use Amazon SageMaker for training, you can select GPU or CPU instances\. Store the output from the training job in a local directory if you train in local mode, or on Amazon S3 if you use Amazon SageMaker training\.
 
-   For information about using the Amazon SageMaker Python SDK for RL, see [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/rl/README\.rst ](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/rl/README.rst                     )\.
+   For information about using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) for RL, see [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/rl/README\.rst ](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/rl/README.rst                     )\.
 
    The `RLEstimator` requires the following information as parameters\. 
 
@@ -38,7 +38,7 @@ For complete code examples, see the sample notebooks at [https://github\.com/aws
 
    1. Metric definitions that you want to capture in your logs\. These can also be visualized in CloudWatch and in Amazon SageMaker notebooks\.
 
-1. **Visualize training metrics and output**—After a training job that uses an RL model completes, you can view the metrics you defined in the training jobs in CloudWatch,\. You can also plot the metrics in a notebook by using the Amazon SageMaker Python SDK analytics library\. Visualizing metrics helps you understand how the performance of the model as measured by the reward improves over time\.
+1. **Visualize training metrics and output**—After a training job that uses an RL model completes, you can view the metrics you defined in the training jobs in CloudWatch,\. You can also plot the metrics in a notebook by using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) analytics library\. Visualizing metrics helps you understand how the performance of the model as measured by the reward improves over time\.
 **Note**  
 If you train in local mode, you can't visualize metrics in CloudWatch\.
 

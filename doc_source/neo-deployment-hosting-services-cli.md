@@ -9,7 +9,7 @@ The deployment of a Neo\-compiled model with the CLI has three steps\.
 
 ## Create a Model That Was Compiled with Neo \(AWS CLI\)<a name="neo-deployment-hosting-services-cli-create-model"></a>
 
-For the full syntax of the `CreateModel` API, see [CreateModel](API_CreateModel.md)\.
+For the full syntax of the `CreateModel` API, see [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html)\.
 
 For Neo\-compiled models, use one of the following values for `PrimaryContainer`/`ContainerHostname`, depending on your region and applications: 
 + **Amazon SageMaker Image Classification**
@@ -54,8 +54,8 @@ Neither of these two functions use any functionalities of MXNet, Pytorch, or Ten
 
 ## Create the Endpoint Configuration \(AWS CLI\)<a name="neo-deployment-hosting-services-cli-create-endpoint-config"></a>
 
-For the full syntax of the `CreateEndpointConfig` API, see [CreateEndpointConfig](API_CreateEndpointConfig.md)\. You must specify the correct instance type in `ProductionVariants`/`InstanceType`\. It is imperative that this value matches the instance type specified in your compilation job\.
+For the full syntax of the `CreateEndpointConfig` API, see [ `CreateEndpointConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html)\. You must specify the correct instance type in `ProductionVariants`/`InstanceType`\. It is imperative that this value matches the instance type specified in your compilation job\.
 
 ## Create an Endpoint \(AWS CLI\)<a name="neo-deployment-hosting-services-cli-create-endpoint"></a>
 
-For the full syntax of the `CreateEndpoint` API, see [CreateEndpoint](API_CreateEndpoint.md)\. 
+For the full syntax of the `CreateEndpoint` API, see [ `CreateEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html)\. 

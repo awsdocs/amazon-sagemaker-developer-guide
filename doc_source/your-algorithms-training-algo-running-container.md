@@ -2,7 +2,7 @@
 
 This section explains how Amazon SageMaker makes training information, such as training data, hyperparameters, and other configuration information, available to your Docker container\. 
 
-When you send a [CreateTrainingJob](API_CreateTrainingJob.md) request to Amazon SageMaker to start model training, you specify the Amazon Elastic Container Registry path of the Docker image that contains the training algorithm\. You also specify the Amazon Simple Storage Service \(Amazon S3\) location where training data is stored and algorithm\-specific parameters\. Amazon SageMaker makes this information available to the Docker container so that your training algorithm can use it\. This section explains how we make this information available to your Docker container\. For information about creating a training job, see `CreateTrainingJob`\.
+When you send a [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) request to Amazon SageMaker to start model training, you specify the Amazon Elastic Container Registry path of the Docker image that contains the training algorithm\. You also specify the Amazon Simple Storage Service \(Amazon S3\) location where training data is stored and algorithm\-specific parameters\. Amazon SageMaker makes this information available to the Docker container so that your training algorithm can use it\. This section explains how we make this information available to your Docker container\. For information about creating a training job, see `CreateTrainingJob`\.
 
 **Topics**
 + [Hyperparameters](#your-algorithms-training-algo-running-container-hyperparameters)
@@ -16,7 +16,8 @@ When you send a [CreateTrainingJob](API_CreateTrainingJob.md) request to Amazon 
  Amazon SageMaker makes the hyperparameters in a `CreateTrainingJob` request available in the Docker container in the `/opt/ml/input/config/hyperparameters.json` file\.
 
 ## Environment Variables<a name="your-algorithms-training-algo-running-container-environment-variables"></a>
-+ TRAINING\_JOB\_NAME—The training job name stored in the `TrainingJobName` parameter in a [CreateTrainingJob](API_CreateTrainingJob.md) request\.
++ TRAINING\_JOB\_NAME—The training job name stored in the `TrainingJobName` parameter in a [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) request\.
++ TRAINING\_JOB\_ARN—The Amazon Resource Name \(ARN\) of the training job returned as the `TrainingJobArn` response element for [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html)\.
 
 ## Input Data Configuration<a name="your-algorithms-training-algo-running-container-inputdataconfig"></a>
 
@@ -26,22 +27,22 @@ For example, suppose that you specify three data channels \(`train`, `evaluation
 
 ```
 {
-"train" : {"ContentType":  "trainingContentType", 
-           "TrainingInputMode": "File", 
-           "S3DistributionType": "FullyReplicated", 
+"train" : {"ContentType":  "trainingContentType",
+           "TrainingInputMode": "File",
+           "S3DistributionType": "FullyReplicated",
            "RecordWrapperType": "None"},
-"evaluation" : {"ContentType":  "evalContentType", 
-                "TrainingInputMode": "File", 
-                "S3DistributionType": "FullyReplicated", 
+"evaluation" : {"ContentType":  "evalContentType",
+                "TrainingInputMode": "File",
+                "S3DistributionType": "FullyReplicated",
                 "RecordWrapperType": "None"},
-"validation" : {"TrainingInputMode": "File", 
-                "S3DistributionType": "FullyReplicated", 
+"validation" : {"TrainingInputMode": "File",
+                "S3DistributionType": "FullyReplicated",
                 "RecordWrapperType": "None"}
 }
 ```
 
 **Note**  
-Amazon SageMaker provides only relevant information about each data channel \(for example, the channel name and the content type\) to the container, as shown\. 
+Amazon SageMaker provides only relevant information about each data channel \(for example, the channel name and the content type\) to the container, as shown\. `S3DistributionType` will be set as `FullyReplicated` if specify EFS or FSxLustre as input data sources\.
 
 ## Training Data<a name="your-algorithms-training-algo-running-container-trainingdata"></a>
 
@@ -50,8 +51,9 @@ The `TrainingInputMode` parameter in a `CreateTrainingJob` request specifies how
   + `/opt/ml/input/data/training`
   + `/opt/ml/input/data/validation`
   + `/opt/ml/input/data/testing`
-
-     
+  + 
+**Note**  
+Channels that use file system data sources such as Amazon Elastic File System \(EFS\) and Amazon FSx must use FILE mode\. Also to utilize an FSx file server, you must specify a path that begins with `/fsx`\. If a file system is specified, the directory path provided in the channel is mounted at `/opt/ml/input/data/channel_name`\.
 +  `PIPE` mode—Amazon SageMaker makes data for the channel available from the named pipe: `/opt/ml/input/data/channel_name_epoch_number`\. For example, if you have three channels named `training`, `validation`, and `testing`, you will need to read from the following pipes:
   + `/opt/ml/input/data/training_0,/opt/ml/input/data/training_1, ...`
   + `/opt/ml/input/data/validation_0, /opt/ml/input/data/validation_1, ...`
@@ -59,9 +61,9 @@ The `TrainingInputMode` parameter in a `CreateTrainingJob` request specifies how
 
   Read the pipes sequentially\. For example, if you have a channel called **training**, read the pipes in this sequence: 
 
-  1. Open `/opt/ml/input/data/training_0` in read mode and read it to EOF \(or if you are done with the first epoch, close the file early\)\. 
+  1. Open `/opt/ml/input/data/training_0` in read mode and read it to end\-of\-file \(EOF\), or if you are done with the first epoch, close the pipe file early\. 
 
-  1. After closing the first pipe file, look for `/opt/ml/input/data/training_1` and read it to go through the second epoch, and so on\.
+  1. After closing the first pipe file, look for `/opt/ml/input/data/training_1` and read it until you have completed the second epoch, and so on\.
 
   If the file for a given epoch doesn't exist yet, your code may need to retry until the pipe is created\. There is no sequencing restriction across channel types\. That is, you can read multiple epochs for the **training** channel, for example, and only start reading the **validation** channel when you are ready\. Or, you can read them simultaneously if your algorithm requires that\. 
 

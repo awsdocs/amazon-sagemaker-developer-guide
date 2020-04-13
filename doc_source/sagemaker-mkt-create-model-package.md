@@ -82,10 +82,10 @@ To publish your model package on AWS Marketplace, your model package must be val
 
    1. For **Validation profile**, specify the following:
       + A name for the validation profile\.
-      + A **Transform job definition**\. This is a JSON block that describes a batch transform job\. This is in the same format as the [TransformJobDefinition](API_TransformJobDefinition.md)input parameter of the [CreateAlgorithm](API_CreateAlgorithm.md) API\.
+      + A **Transform job definition**\. This is a JSON block that describes a batch transform job\. This is in the same format as the [ `TransformJobDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformJobDefinition.html) input parameter of the [ `CreateAlgorithm`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAlgorithm.html) API\.
 
 1. Choose **Create model package**\.
 
 ## Create a Model Package Resource \(API\)<a name="sagemaker-mkt-create-model-pkg-api"></a>
 
-To create a model package by using the Amazon SageMaker API, call the [CreateModelPackage](API_CreateModelPackage.md) API\. 
+To create a model package by using the Amazon SageMaker API, call the [ `CreateModelPackage`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModelPackage.html) API\. 

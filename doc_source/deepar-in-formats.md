@@ -79,7 +79,7 @@ The following is the format of a response, where `[...]` are arrays of numbers:
 
 DeepAR has a response timeout of 60 seconds\. When passing multiple time series in a single request, the forecasts are generated sequentially\. Because the forecast for each time series typically takes about 300 to 1000 milliseconds or longer, depending on the model size, passing too many time series in a single request can cause time outs\. It's better to send fewer time series per request and send more requests\. Because the DeepAR algorithm uses multiple workers per instance, you can achieve much higher throughput by sending multiple requests in parallel\.
 
-By default, DeepAR uses one worker per CPU for inference, if there is sufficient memory per CPU\. If the model is large and there isn't enough memory to run a model on each CPU, the number of workers is reduced\. The number of workers used for inference can be overwritten using the environment variable `MODEL_SERVER_WORKERS` For example, by setting `MODEL_SERVER_WORKERS=1`\) when calling the Amazon SageMaker [CreateModel](API_CreateModel.md) API\.
+By default, DeepAR uses one worker per CPU for inference, if there is sufficient memory per CPU\. If the model is large and there isn't enough memory to run a model on each CPU, the number of workers is reduced\. The number of workers used for inference can be overwritten using the environment variable `MODEL_SERVER_WORKERS` For example, by setting `MODEL_SERVER_WORKERS=1`\) when calling the Amazon SageMaker [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) API\.
 
 ## Batch Transform with the DeepAR Algorithm<a name="deepar-batch"></a>
 
@@ -92,13 +92,13 @@ DeepAR forecasting supports getting inferences by using batch transform from dat
 ```
 
 **Note**  
-When creating the transformation job with [CreateTransformJob](API_CreateTransformJob.md), set the `BatchStrategy` value to `SingleRecord` and set the `SplitType` value in the [TransformInput](API_TransformInput.md) configuration to `Line`, as the default values currently cause runtime failures\.
+When creating the transformation job with [ `CreateTransformJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html), set the `BatchStrategy` value to `SingleRecord` and set the `SplitType` value in the [ `TransformInput`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformInput.html) configuration to `Line`, as the default values currently cause runtime failures\.
 
 Similar to the hosted endpoint inference request format, the `cat` and the `dynamic_feat` fields for each instance are required if both of the following are true:
 + The model is trained on a dataset that contained both the `cat` and the `dynamic_feat` fields\.
 + The corresponding `cardinality` and `num_dynamic_feat` values used in the training job are not set to `"".`
 
-Unlike hosted endpoint inference, the configuration field is set once for the entire batch inference job using an environment variable named `DEEPAR_INFERENCE_CONFIG`\. The value of `DEEPAR_INFERENCE_CONFIG` can be passed when the model is created by calling [CreateTransformJob](API_CreateTransformJob.md) API\. If `DEEPAR_INFERENCE_CONFIG` is missing in the container environment, the inference container uses the following default:
+Unlike hosted endpoint inference, the configuration field is set once for the entire batch inference job using an environment variable named `DEEPAR_INFERENCE_CONFIG`\. The value of `DEEPAR_INFERENCE_CONFIG` can be passed when the model is created by calling [ `CreateTransformJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html) API\. If `DEEPAR_INFERENCE_CONFIG` is missing in the container environment, the inference container uses the following default:
 
 ```
 {
@@ -114,9 +114,9 @@ The output is also in JSON Lines format, with one line per prediction, in an ord
 { "quantiles": { "0.1": [...], "0.2": [...] }, "samples": [...], "mean": [...] }
 ```
 
-Note that in the [TransformInput](API_TransformInput.md) configuration of the Amazon SageMaker [CreateTransformJob](API_CreateTransformJob.md) request clients must explicitly set the `AssembleWith` value to `Line`, as the default value `None` concatenates all JSON objects on the same line\.
+Note that in the [ `TransformInput`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformInput.html) configuration of the Amazon SageMaker [ `CreateTransformJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html) request clients must explicitly set the `AssembleWith` value to `Line`, as the default value `None` concatenates all JSON objects on the same line\.
 
-For example, here is an Amazon SageMaker [CreateTransformJob](API_CreateTransformJob.md) request for a DeepAR job with a custom `DEEPAR_INFERENCE_CONFIG`:
+For example, here is an Amazon SageMaker [ `CreateTransformJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html) request for a DeepAR job with a custom `DEEPAR_INFERENCE_CONFIG`:
 
 ```
 {

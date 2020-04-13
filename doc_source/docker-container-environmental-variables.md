@@ -102,16 +102,16 @@ The following build\-time environment `` variables are also defined by default w
 
   ```
   SM_INPUT_DATA_CONFIG='{
-      "testing": {
-          "RecordWrapperType": "None",
-          "S3DistributionType": "FullyReplicated",
-          "TrainingInputMode": "File"
-      },
-      "training": {
-          "RecordWrapperType": "None",
-          "S3DistributionType": "FullyReplicated",
-          "TrainingInputMode": "File"
-      }
+  "testing": {
+  "RecordWrapperType": "None",
+  "S3DistributionType": "FullyReplicated",
+  "TrainingInputMode": "File"
+  },
+  "training": {
+  "RecordWrapperType": "None",
+  "S3DistributionType": "FullyReplicated",
+  "TrainingInputMode": "File"
+  }
   }'
   ```
 
@@ -123,51 +123,51 @@ The following build\-time environment `` variables are also defined by default w
   ```
   SM_TRAINING_ENV='
   {
-      "channel_input_dirs": {
-          "test": "/opt/ml/input/data/testing",
-          "train": "/opt/ml/input/data/training"
-      },
-      "current_host": "algo-1",
-      "framework_module": "sagemaker_chainer_container.training:main",
-      "hosts": [
-          "algo-1",
-          "algo-2"
-      ],
-      "hyperparameters": {
-          "batch-size": 10000,
-          "epochs": 1
-      },
-      "input_config_dir": "/opt/ml/input/config",
-      "input_data_config": {
-          "test": {
-              "RecordWrapperType": "None",
-              "S3DistributionType": "FullyReplicated",
-              "TrainingInputMode": "File"
-          },
-          "train": {
-              "RecordWrapperType": "None",
-              "S3DistributionType": "FullyReplicated",
-              "TrainingInputMode": "File"
-          }
-      },
-      "input_dir": "/opt/ml/input",
-      "job_name": "preprod-chainer-2018-05-31-06-27-15-511",
-      "log_level": 20,
-      "model_dir": "/opt/ml/model",
-      "module_dir": "s3://sagemaker-{aws-region}-{aws-id}/{training-job-name}/source/sourcedir.tar.gz",
-      "module_name": "user_script",
-      "network_interface_name": "ethwe",
-      "num_cpus": 4,
-      "num_gpus": 1,
-      "output_data_dir": "/opt/ml/output/data/algo-1",
-      "output_dir": "/opt/ml/output",
-      "resource_config": {
-          "current_host": "algo-1",
-          "hosts": [
-              "algo-1",
-              "algo-2"
-          ]
-      }
+  "channel_input_dirs": {
+  "test": "/opt/ml/input/data/testing",
+  "train": "/opt/ml/input/data/training"
+  },
+  "current_host": "algo-1",
+  "framework_module": "sagemaker_chainer_container.training:main",
+  "hosts": [
+  "algo-1",
+  "algo-2"
+  ],
+  "hyperparameters": {
+  "batch-size": 10000,
+  "epochs": 1
+  },
+  "input_config_dir": "/opt/ml/input/config",
+  "input_data_config": {
+  "test": {
+      "RecordWrapperType": "None",
+      "S3DistributionType": "FullyReplicated",
+      "TrainingInputMode": "File"
+  },
+  "train": {
+      "RecordWrapperType": "None",
+      "S3DistributionType": "FullyReplicated",
+      "TrainingInputMode": "File"
+  }
+  },
+  "input_dir": "/opt/ml/input",
+  "job_name": "preprod-chainer-2018-05-31-06-27-15-511",
+  "log_level": 20,
+  "model_dir": "/opt/ml/model",
+  "module_dir": "s3://sagemaker-{aws-region}-{aws-id}/{training-job-name}/source/sourcedir.tar.gz",
+  "module_name": "user_script",
+  "network_interface_name": "ethwe",
+  "num_cpus": 4,
+  "num_gpus": 1,
+  "output_data_dir": "/opt/ml/output/data/algo-1",
+  "output_dir": "/opt/ml/output",
+  "resource_config": {
+  "current_host": "algo-1",
+  "hosts": [
+      "algo-1",
+      "algo-2"
+  ]
+  }
   }'
   ```
 
