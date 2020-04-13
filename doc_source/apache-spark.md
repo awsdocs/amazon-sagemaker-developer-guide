@@ -21,7 +21,7 @@ You have the following options for downloading the Spark library provided by Ama
     ```
     $ pip install sagemaker_pyspark
     ```
-  + In a notebook instance, create a new notebook that uses either the `Sparkmagic (PySpark)` or the `Sparkmagic (PySpark3)` kernel and connect to a remote Amazon EMR cluster\. For more information, see [Build Amazon SageMaker Notebooks Backed by Spark in Amazon EMR](http://aws.amazon.com/blogs/machine-learning/build-amazon-sagemaker-notebooks-backed-by-spark-in-amazon-emr/)\.
+  + In a notebook instance, create a new notebook that uses either the `Sparkmagic (PySpark)` or the `Sparkmagic (PySpark3)` kernel and connect to a remote Amazon EMR cluster\. 
 **Note**  
 The EMR cluster must be configured with an IAM role that has the `AmazonSageMakerFullAccess` policy attached\. For information about configuring roles for an EMR cluster, see [Configure IAM Roles for Amazon EMR Permissions to AWS Services](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-iam-roles.html) in the *Amazon EMR Management Guide*\.
 
@@ -40,9 +40,7 @@ The EMR cluster must be configured with an IAM role that has the `AmazonSageMake
 
 The following is high\-level summary of the steps for integrating your Apache Spark application with Amazon SageMaker\.
 
-1. Continue data preprocessing using the Apache Spark library that you are familiar with\. Your dataset remains a `DataFrame` in your Spark cluster\. 
-**Note**  
-Load your data into a `DataFrame` and preprocess it so that you have a `features` column with `org.apache.spark.ml.linalg.Vector` of `Doubles`, and an optional `label` column with values of `Double`​ type\.
+1. Continue data preprocessing using the Apache Spark library that you are familiar with\. Your dataset remains a `DataFrame` in your Spark cluster\. Load your data into a `DataFrame` and preprocess it so that you have a `features` column with `org.apache.spark.ml.linalg.Vector` of `Doubles`, and an optional `label` column with values of `Double`​ type\.
 
 1. Use the estimator in the Amazon SageMaker Spark library to train your model\. For example, if you choose the k\-means algorithm provided by Amazon SageMaker for model training, you call the `KMeansSageMakerEstimator.fit` method\. 
 
@@ -54,18 +52,18 @@ Load your data into a `DataFrame` and preprocess it so that you have a `features
 
    1. Converts the input `DataFrame` to the protobuf format by selecting the `features` and `label` columns from the input `DataFrame` and uploading the protobuf data to an Amazon S3 bucket\. The protobuf format is efficient for model training in Amazon SageMaker\.
 
-   1. Starts model training in Amazon SageMaker by sending an Amazon SageMaker [CreateTrainingJob](API_CreateTrainingJob.md) request\. After model training has completed, Amazon SageMaker saves the model artifacts to an S3 bucket\. 
+   1. Starts model training in Amazon SageMaker by sending an Amazon SageMaker [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) request\. After model training has completed, Amazon SageMaker saves the model artifacts to an S3 bucket\. 
 
       Amazon SageMaker assumes the IAM role that you specified for model training to perform tasks on your behalf\. For example, it uses the role to read training data from an S3 bucket and to write model artifacts to a bucket\. 
 
    1. Creates and returns a `SageMakerModel` object\. The constructor does the following tasks, which are related to deploying your model to Amazon SageMaker\. 
 
-      1. Sends a [CreateModel](API_CreateModel.md) request to Amazon SageMaker\. 
+      1. Sends a [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) request to Amazon SageMaker\. 
 
-      1. Sends a [CreateEndpointConfig](API_CreateEndpointConfig.md) request to Amazon SageMaker\.
+      1. Sends a [ `CreateEndpointConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html) request to Amazon SageMaker\.
 
-      1. Sends a [CreateEndpoint](API_CreateEndpoint.md) request to Amazon SageMaker, which then launches the specified resources, and hosts the model on them\. 
+      1. Sends a [ `CreateEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html) request to Amazon SageMaker, which then launches the specified resources, and hosts the model on them\. 
 
 1. You can get inferences from your model hosted in Amazon SageMaker with the `SageMakerModel.transform`\. 
 
-   Provide an input `DataFrame` with features as input\. The `transform` method transforms it to a `DataFrame` containing inferences\. Internally, the `transform` method sends a request to the [InvokeEndpoint](API_runtime_InvokeEndpoint.md) Amazon SageMaker API to get inferences\. The `transform` method appends the inferences to the input `DataFrame`\.
+   Provide an input `DataFrame` with features as input\. The `transform` method transforms it to a `DataFrame` containing inferences\. Internally, the `transform` method sends a request to the [ `InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html) Amazon SageMaker API to get inferences\. The `transform` method appends the inferences to the input `DataFrame`\.

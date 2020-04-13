@@ -58,8 +58,8 @@ If the model is conditioned on the `cat` and `dynamic_feat` feature data provide
 At inference time, you can request predictions for targets with `cat` values that are combinations of the `cat` values observed in the training data, for example:
 
 ```
-{ "start": ..., "target": ..., "cat": [0, 1], ... } # red dress
-{ "start": ..., "target": ..., "cat": [1, 1], ... } # blue dress
+{ "start": ..., "target": ..., "cat": [0, 1], ... } # blue shoes
+{ "start": ..., "target": ..., "cat": [1, 0], ... } # red dress
 ```
 
 The following guidelines apply to training data:
@@ -106,4 +106,4 @@ Specifying large values for `context_length`, `prediction_length`, `num_cells`, 
 
 ## DeepAR Sample Notebooks<a name="deepar-sample-notebooks"></a>
 
-For a sample notebook that shows how to prepare a time series dataset for training the Amazon SageMaker DeepAR algorithm and how to deploy the trained model for performing inferences, see [Time series forecasting with DeepAR \- Synthetic data](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/deepar_synthetic/deepar_synthetic.ipynb) as well as [DeepAR demo on electricity dataset](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/deepar_electricity/DeepAR-Electricity.ipynb), which illustrates the advanced features of DeepAR on a real world dataset\. For instructions on creating and accessing Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Notebook Instances](nbi.md)\. After creating and opening a notebook instance, choose the **SageMaker Examples** tab to see a list of all of the Amazon SageMaker examples\. To open a notebook, choose its **Use** tab, and choose **Create copy**\.
+For a sample notebook that shows how to prepare a time series dataset for training the Amazon SageMaker DeepAR algorithm and how to deploy the trained model for performing inferences, see [Time series forecasting with DeepAR \- Synthetic data](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/deepar_synthetic/deepar_synthetic.ipynb) as well as [DeepAR demo on electricity dataset](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/deepar_electricity/DeepAR-Electricity.ipynb), which illustrates the advanced features of DeepAR on a real world dataset\. For instructions on creating and accessing Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. After creating and opening a notebook instance, choose the **SageMaker Examples** tab to see a list of all of the Amazon SageMaker examples\. To open a notebook, choose its **Use** tab, and choose **Create copy**\.

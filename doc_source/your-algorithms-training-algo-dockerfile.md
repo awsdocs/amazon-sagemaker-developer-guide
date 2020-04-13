@@ -10,7 +10,7 @@ To configure a Docker container to run as an executable, use an `ENTRYPOINT` ins
    Amazon SageMaker overrides any default `CMD` statement in a container by specifying the `train` argument after the image name\. The `train` argument also overrides arguments that you provide using `CMD` in the Dockerfile\. 
 
    
-+ Use the `exec` form of the `ENTRYPOINT` instruction: 
++ In your dockerfile, use the `exec` form of the `ENTRYPOINT` instruction: 
 
   ```
   ENTRYPOINT ["executable", "param1", "param2", ...]
@@ -25,10 +25,10 @@ To configure a Docker container to run as an executable, use an `ENTRYPOINT` ins
   The `exec` form of the `ENTRYPOINT` instruction starts the executable directly, not as a child of `/bin/sh`\. This enables it to receive signals like `SIGTERM` and `SIGKILL` from Amazon SageMaker APIs\. Note the following:
 
    
-  + The [CreateTrainingJob](API_CreateTrainingJob.md) API has a stopping condition that directs Amazon SageMaker to stop model training after a specific time\. 
+  + The [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) API has a stopping condition that directs Amazon SageMaker to stop model training after a specific time\. 
 
      
-  + The [StopTrainingJob](API_StopTrainingJob.md) API issues the equivalent of the `docker stop`, with a 2 minute timeout, command to gracefully stop the specified container:
+  + The [ `StopTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_StopTrainingJob.html) API issues the equivalent of the `docker stop`, with a 2 minute timeout, command to gracefully stop the specified container:
 
     ```
     docker stop -t120

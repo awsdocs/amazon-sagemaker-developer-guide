@@ -33,7 +33,7 @@ OpenJDK Runtime Environment (build 1.8.0_191-8u191-b12-2ubuntu0.16.04.1-b12)
 OpenJDK 64-Bit Server VM (build 25.191-b12, mixed mode)
 ```
 
-Many of the JVMs affected by this issue have an option to disable this behavior and reestablish full access to all of the CPUs on the instance\. Disable the unwanted behaviour and establish full access to all instance CPUs by including the `-XX:-UseContainerSupport` parameter when starting Java applications\. For example, run the `java` command to start your JVM as follows:
+Many of the JVMs affected by this issue have an option to disable this behavior and reestablish full access to all of the CPUs on the instance\. Disable the unwanted behavior and establish full access to all instance CPUs by including the `-XX:-UseContainerSupport` parameter when starting Java applications\. For example, run the `java` command to start your JVM as follows:
 
 ```
 java -XX:-UseContainerSupport -XX:+UnlockDiagnosticVMOptions -XX:+PrintActiveCpus -version

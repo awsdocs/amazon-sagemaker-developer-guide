@@ -8,7 +8,7 @@ You specify your private VPC configuration when you create a model by specifying
 
 ## Configure a Batch Transform Job for Amazon VPC Access<a name="batch-vpc-configure"></a>
 
-To specify subnets and security groups in your private VPC, use the `VpcConfig` request parameter of the [CreateModel](API_CreateModel.md) API, or provide this information when you create a transform job in the Amazon SageMaker console\. Then specify the same model in the `ModelName` request parameter of the [CreateTransformJob](API_CreateTransformJob.md) API, or when you create a transform job in the Amazon SageMaker console\. Amazon SageMaker uses this information to create ENIs and attach them to your model containers\. The ENIs provide your model containers with a network connection within your VPC that is not connected to the internet\. They also enable your transform job to connect to resources in your private VPC\.
+To specify subnets and security groups in your private VPC, use the `VpcConfig` request parameter of the [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) API, or provide this information when you create a model in the Amazon SageMaker console\. Then specify the same model in the `ModelName` request parameter of the [ `CreateTransformJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html) API, or in the **Model name** field when you create a transform job in the Amazon SageMaker console\. Amazon SageMaker uses this information to create ENIs and attach them to your model containers\. The ENIs provide your model containers with a network connection within your VPC that is not connected to the internet\. They also enable your transform job to connect to resources in your private VPC\.
 
 The following is an example of the `VpcConfig` parameter that you include in your call to `CreateModel`:
 
@@ -19,10 +19,29 @@ VpcConfig: {
           "subnet-0123456789abcdef1",
           "subnet-0123456789abcdef2"
           ],
-          "SecurityGroupIds": [
-              "sg-0123456789abcdef0"
-              ]
-            }
+      "SecurityGroupIds": [
+          "sg-0123456789abcdef0"
+          ]
+        }
+```
+
+If you are creating a model using the `CreateModel` API operation, the IAM execution role that you use to create your model must include the permissions described in [CreateModel API: Execution Role Permissions](sagemaker-roles.md#sagemaker-roles-createmodel-perms), including the following permissions required for a private VPC\. 
+
+When creating a model in the console, if you select **Create a new role** in the **Model Settings** section, the [AmazonSageMakerFullAccess ](https://console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess$jsonEditor) policy used to create the role will already contain these permissions\. If you select **Enter a custom IAM role ARN** or **Use existing role**, the role ARN that you specify must have an execution policy attached with the following permissions\. 
+
+```
+{
+            "Effect": "Allow",
+            "Action": [
+            "ec2:CreateNetworkInterface",
+            "ec2:CreateNetworkInterfacePermission",
+            "ec2:DeleteNetworkInterface",
+            "ec2:DeleteNetworkInterfacePermission",
+            "ec2:DescribeNetworkInterfaces",
+            "ec2:DescribeVpcs",
+            "ec2:DescribeDhcpOptions",
+            "ec2:DescribeSubnets",
+            "ec2:DescribeSecurityGroups"
 ```
 
 ## Configure Your Private VPC for Amazon SageMaker Batch Transform<a name="batch-vpc-vpc"></a>

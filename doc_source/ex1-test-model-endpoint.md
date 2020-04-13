@@ -1,6 +1,6 @@
 # Step 7\.1: Validate a Model Deployed to Amazon SageMaker Hosting Services<a name="ex1-test-model-endpoint"></a>
 
-If you deployed a model to Amazon SageMaker hosting services in [Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services ](ex1-deploy-model.md), you now have an endpoint that you can invoke to get inferences in real time\. To validate the model, invoke the endpoint with example images from the test dataset and check whether the inferences you get match the actual labels of the images\.
+If you deployed a model to Amazon SageMaker hosting services in [Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services](ex1-deploy-model.md), you now have an endpoint that you can invoke to get inferences in real time\. To validate the model, invoke the endpoint with example images from the test dataset and check whether the inferences you get match the actual labels of the images\.
 
 **Topics**
 + [Validate a Model Deployed to Amazon SageMaker Hosting Services \(Amazon SageMaker Python SDK\)](#ex1-test-model-endpoint-sdk)
@@ -8,9 +8,9 @@ If you deployed a model to Amazon SageMaker hosting services in [Step 6\.1: Depl
 
 ## Validate a Model Deployed to Amazon SageMaker Hosting Services \(Amazon SageMaker Python SDK\)<a name="ex1-test-model-endpoint-sdk"></a>
 
-To validate the model by using the Amazon SageMaker Python SDK, use the `sagemaker.predictor.RealTimePredictor` object that you created in [Deploy the Model to Amazon SageMaker Hosting Services \(Amazon SageMaker Python SDK\)](ex1-deploy-model.md#ex1-deploy-model-sdk)\. For information, see [https://sagemaker\.readthedocs\.io/en/stable/predictors\.html\#sagemaker\.predictor\.RealTimePredictor](https://sagemaker.readthedocs.io/en/stable/predictors.html#sagemaker.predictor.RealTimePredictor)\.
+To validate the model by using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), use the `sagemaker.predictor.RealTimePredictor` object that you created in [Deploy the Model to Amazon SageMaker Hosting Services \([Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\)](ex1-deploy-model.md#ex1-deploy-model-sdk)\. For information, see [https://sagemaker\.readthedocs\.io/en/stable/predictors\.html\#sagemaker\.predictor\.RealTimePredictor](https://sagemaker.readthedocs.io/en/stable/predictors.html#sagemaker.predictor.RealTimePredictor)\.
 
-**To validate the model \(Amazon SageMaker Python SDK\)**
+**To validate the model \([Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\)**
 
 1. Download the test data from Amazon S3\.
 
@@ -52,11 +52,11 @@ To validate the model by using the Amazon SageMaker Python SDK, use the `sagemak
 You have now trained, deployed, and validated your first model in Amazon SageMaker\.
 
 **Next Step**  
-[Step 8: Clean Up](ex1-cleanup.md)
+[Step 9: Clean Up](ex1-cleanup.md)
 
 ## Validate a Model Deployed to Amazon SageMaker Hosting Services \(AWS SDK for Python \(Boto 3\)\)<a name="ex1-test-model-endpoint-boto"></a>
 
-To use the AWS SDK for Python \(Boto 3\) to validate the model, call the `invoke_endpoint` method\. This method corresponds to the [InvokeEndpoint](API_runtime_InvokeEndpoint.md) API provided by the Amazon SageMaker runtime\.
+To use the AWS SDK for Python \(Boto 3\) to validate the model, call the `invoke_endpoint` method\. This method corresponds to the [ `InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html) API provided by the Amazon SageMaker runtime\.
 
 **To validate the model \(AWS SDK for Python \(Boto 3\)\)**
 
@@ -110,4 +110,6 @@ To use the AWS SDK for Python \(Boto 3\) to validate the model, call the `invoke
 You have now trained, deployed, and validated your first model in Amazon SageMaker\.
 
 **Next Step**  
-[Step 8: Clean Up](ex1-cleanup.md)
+
+[Step 9: Clean Up](ex1-cleanup.md)
+

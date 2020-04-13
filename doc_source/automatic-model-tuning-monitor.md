@@ -11,7 +11,7 @@ To monitor the progress of a hyperparameter tuning job and the training jobs tha
 
 **To view the status of the hyperparameter tuning job**
 
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)
+1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
 1. Choose **Hyperparameter tuning jobs**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/console-tuning-jobs.png)

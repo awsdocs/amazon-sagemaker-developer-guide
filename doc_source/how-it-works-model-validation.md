@@ -32,4 +32,4 @@ Options for offline model evaluation include:
 
 ## How It Works: Next Topic<a name="howitwork-validation-nextstep"></a>
 
- [The Amazon SageMaker Programming Model ](how-it-works-prog-model.md) 
+ [Programming Model for Amazon SageMaker](api-and-sdk-reference.md#how-it-works-prog-model) 
