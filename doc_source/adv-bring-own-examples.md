@@ -2,7 +2,7 @@
 
 The following sample notebooks show how to use your own algorithms or pretrained models from an Amazon SageMaker notebook instance\. \. After you have created a notebook instance and opened it, choose the **SageMaker Examples** tab for a list of all Amazon SageMaker example notebooks\. You can open the sample notebooks from the **Advanced Functionality** section in your notebook instance or in GitHub at the provided links\. To open a notebook, choose its **Use** tab, then choose **Create copy**\.
 
-For instructions on how to create and access Jupyter notebook instances, see [Use Notebook Instances](nbi.md)
+For instructions on how to create and access Jupyter notebook instances, see [Use Amazon SageMaker Notebook Instances](nbi.md)
 
 To learn how to **host models trained in scikit\-learn** for making predictions in Amazon SageMaker by injecting them first\-party k\-means and XGBoost containers, see the following sample notebooks\.
 + kmeans\_bring\_your\_own\_model \- [https://github\.com/awslabs/amazon\-sagemaker\-examples/tree/master/advanced\_functionality/kmeans\_bring\_your\_own\_model](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/advanced_functionality/kmeans_bring_your_own_model)

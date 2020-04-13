@@ -2,24 +2,24 @@
 
 To train, deploy, and validate a model in Amazon SageMaker, you can use either the Amazon SageMaker Python SDK or the AWS SDK for Python \(Boto 3\)\. \(You can also use the console, but for this exercise, you will use the notebook instance and one of the SDKs\.\) This exercise provides code examples for each library\. 
 
-The Amazon SageMaker Python SDK abstracts several implementation details, and is easy to use\. If you're a first\-time Amazon SageMaker user, we recommend that you use it to train, deploy, and validate the model\. For more information, see [https://sagemaker\.readthedocs\.io/en/stable/overview\.html](https://sagemaker.readthedocs.io/en/stable/overview.html)\.
+The [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) abstracts several implementation details, and is easy to use\. If you're a first\-time Amazon SageMaker user, we recommend that you use it to train, deploy, and validate the model\. For more information, see [https://sagemaker\.readthedocs\.io/en/stable/overview\.html](https://sagemaker.readthedocs.io/en/stable/overview.html)\.
 
 **Topics**
 + [Choose the Training Algorithm](#ex1-train-model-select-algorithm)
-+ [Create and Run a Training Job \(Amazon SageMaker Python SDK\)](#ex1-train-model-sdk)
++ [Create and Run a Training Job \([Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\)](#ex1-train-model-sdk)
 + [Create and Run a Training Job \(AWS SDK for Python \(Boto 3\)\)](#ex1-train-model-create-training-job)
 
 ## Choose the Training Algorithm<a name="ex1-train-model-select-algorithm"></a>
 
-To choose the right algorithm for your model, you typically follow an evaluation process\. For this exercise, you use the [XGBoost Algorithm](xgboost.md) provided by Amazon SageMaker, so no evaluation is required\. For information about choosing algorithms, see [Use Amazon SageMaker Built\-in Algorithms ](algos.md)\.
+To choose the right algorithm for your model, you typically follow an evaluation process\. For this exercise, you use the [XGBoost Algorithm](xgboost.md) provided by Amazon SageMaker, so no evaluation is required\. For information about choosing algorithms, see [Use Amazon SageMaker built\-in algorithms](algos.md)\.
 
-## Create and Run a Training Job \(Amazon SageMaker Python SDK\)<a name="ex1-train-model-sdk"></a>
+## Create and Run a Training Job \([Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\)<a name="ex1-train-model-sdk"></a>
 
-The Amazon SageMaker Python SDK includes the `sagemaker.estimator.Estimator` estimator\. You can use this class, in the `sagemaker.estimator` module, with any algorithm\. For more information, see [https://sagemaker\.readthedocs\.io/en/stable/estimators\.html\#sagemaker\.estimator\.Estimator](https://sagemaker.readthedocs.io/en/stable/estimators.html#sagemaker.estimator.Estimator)\. 
+The [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) includes the `sagemaker.estimator.Estimator` estimator\. You can use this class, in the `sagemaker.estimator` module, with any algorithm\. For more information, see [https://sagemaker\.readthedocs\.io/en/stable/estimators\.html\#sagemaker\.estimator\.Estimator](https://sagemaker.readthedocs.io/en/stable/estimators.html#sagemaker.estimator.Estimator)\. 
 
-**To run a model training job \(Amazon SageMaker Python SDK\)**
+**To run a model training job \([Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\)**
 
-1. Import the Amazon SageMaker Python SDK and get the XGBoost container\.
+1. Import the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) and get the XGBoost container\.
 
    ```
    import sagemaker
@@ -87,7 +87,7 @@ The Amazon SageMaker Python SDK includes the `sagemaker.estimator.Estimator` est
    xgb_model.fit(inputs=data_channels,  logs=True)
    ```
 
-   This is a synchronous operation\. The method displays progress logs and waits until training completes before returning\. For more information about model training, see [Train a Model with Amazon SageMaker ](how-it-works-training.md)\.
+   This is a synchronous operation\. The method displays progress logs and waits until training completes before returning\. For more information about model training, see [Train a Model with Amazon SageMaker](how-it-works-training.md)\.
 
    Model training for this exercise can take up to 15 minutes\.
 
@@ -96,16 +96,16 @@ The Amazon SageMaker Python SDK includes the `sagemaker.estimator.Estimator` est
 
 ## Create and Run a Training Job \(AWS SDK for Python \(Boto 3\)\)<a name="ex1-train-model-create-training-job"></a>
 
-To train a model, Amazon SageMaker uses the [CreateTrainingJob](API_CreateTrainingJob.md) API\. The AWS SDK for Python \(Boto 3\) provides the corresponding `create_training_job` method\. 
+To train a model, Amazon SageMaker uses the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) API\. The AWS SDK for Python \(Boto 3\) provides the corresponding `create_training_job` method\. 
 
 When using this method, you provide the following information:
-+ The training algorithm – Specify the registry path of the Docker image that contains the training code\. For the registry paths for the algorithms provided by Amazon SageMaker, see [Common Parameters for Built\-In Algorithms ](sagemaker-algo-docker-registry-paths.md)\.
++ The training algorithm – Specify the registry path of the Docker image that contains the training code\. For the registry paths for the algorithms provided by Amazon SageMaker, see [Common parameters for built\-in algorithms](sagemaker-algo-docker-registry-paths.md)\.
 + Algorithm\-specific hyperparameters – Specify algorithm\-specific hyperparameters to influence the final quality of the model\. For information, see [XGBoost Hyperparameters](xgboost_hyperparameters.md)\.
 + The input and output configuration – Provide the S3 bucket where training data is stored and where Amazon SageMaker saves the results of model training \(the model artifacts\)\. 
 
 **To run a model training job \(AWS SDK for Python \(Boto 3\)\)**
 
-1. Import the `get_image_url` utility function Amazon SageMaker Python SDK and get the location of the XGBoost container\.
+1. Import the `get_image_url` utility function [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) and get the location of the XGBoost container\.
 
    ```
    import sagemaker
@@ -115,7 +115,7 @@ When using this method, you provide the following information:
    container = get_image_uri(boto3.Session().region_name, 'xgboost')
    ```
 
-1. Set up the training information for the job\. You pass this information when you call `create_training_job`\. For more information about the information that you need to send to a training job, see [CreateTrainingJob](API_CreateTrainingJob.md)\.
+1. Set up the training information for the job\. You pass this information when you call `create_training_job`\. For more information about the information that you need to send to a training job, see [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html)\.
 
    ```
    #Ensure that the train and validation data folders generated above are reflected in the "InputDataConfig" parameter below.

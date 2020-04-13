@@ -1,4 +1,4 @@
-# Best Practices for Deploying Amazon SageMaker Models<a name="best-pratices"></a>
+# Deployment Best Practices<a name="best-pratices"></a>
 
 This topic provides guidance on best practices for deploying machine learning models in Amazon SageMaker\.
 

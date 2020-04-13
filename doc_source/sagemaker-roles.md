@@ -2,7 +2,7 @@
 
 As a managed service, Amazon SageMaker performs operations on your behalf on the AWS hardware that is managed by Amazon SageMaker\. Amazon SageMaker can perform only operations that the user permits\.
 
-An Amazon SageMaker user can grant these permissions with an IAM role \(referred to as an execution role\)\. The user passes the role when making these API calls: [CreateNotebookInstance](API_CreateNotebookInstance.md), [CreateHyperParameterTuningJob](API_CreateHyperParameterTuningJob.md), [CreateTrainingJob](API_CreateTrainingJob.md), and [CreateModel](API_CreateModel.md)\.
+An Amazon SageMaker user can grant these permissions with an IAM role \(referred to as an execution role\)\. The user passes the role when making these API calls: [ `CreateNotebookInstance`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstance.html), [ `CreateHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html), [ `CreateProcessingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateProcessingJob.html), [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html), and [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html)\.
 
 You attach the following trust policy to the IAM role which grants Amazon SageMaker principal permissions to assume the role, and is the same for all of the execution roles: 
 
@@ -24,13 +24,14 @@ You attach the following trust policy to the IAM role which grants Amazon SageMa
 The permissions that you need to grant to the role vary depending on the API that you call\. The following sections explain these permissions\.
 
 **Note**  
-Instead of managing permissions by crafting a permission policy, you can use the AWS\-managed `AmazonSageMakerFullAccess` permission policy\. The permissions in this policy are fairly broad, to allow for any actions you might want to perform in Amazon SageMaker\. For a listing of the policy including information about the reasons for adding many of the permisions, see [AmazonSageMakerFullAccess Policy](#sagemaker-roles-amazonsagemakerfullaccess-policy)\. If you prefer to create custom policies and manage permissions to scope the permissions only to the actions you need to perform with the execution role, see the following topics\.
+Instead of managing permissions by crafting a permission policy, you can use the AWS\-managed `AmazonSageMakerFullAccess` permission policy\. The permissions in this policy are fairly broad, to allow for any actions you might want to perform in Amazon SageMaker\. For a listing of the policy including information about the reasons for adding many of the permissions, see [AmazonSageMakerFullAccess Policy](#sagemaker-roles-amazonsagemakerfullaccess-policy)\. If you prefer to create custom policies and manage permissions to scope the permissions only to the actions you need to perform with the execution role, see the following topics\.
 
 For more information about IAM roles, see [IAM Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in the *IAM User Guide*\.
 
 **Topics**
 + [CreateNotebookInstance API: Execution Role Permissions](#sagemaker-roles-createnotebookinstance-perms)
 + [CreateHyperParameterTuningJob API: Execution Role Permissions](#sagemaker-roles-createhyperparametertiningjob-perms)
++ [CreateProcessingJob API: Execution Role Permissions](#sagemaker-roles-createprocessingjob-perms)
 + [CreateTrainingJob API: Execution Role Permissions](#sagemaker-roles-createtrainingjob-perms)
 + [CreateModel API: Execution Role Permissions](#sagemaker-roles-createmodel-perms)
 + [AmazonSageMakerFullAccess Policy](#sagemaker-roles-amazonsagemakerfullaccess-policy)
@@ -82,7 +83,9 @@ The permissions that you grant to the execution role for calling the `CreateNote
                 "robomaker:DescribeSimulationJob",
                 "robomaker:CancelSimulationJob",
                 "ec2:CreateVpcEndpoint",
-                "ec2:DescribeRouteTables"
+                "ec2:DescribeRouteTables",
+                "fsx:DescribeFileSystem",
+                "elasticfilesystem:DescribeMountTargets"
             ],
             "Resource": "*"
         },
@@ -97,7 +100,7 @@ The permissions that you grant to the execution role for calling the `CreateNote
                 "arn:aws:codecommit:*:*:*SageMaker*",
                 "arn:aws:codecommit:*:*:*Sagemaker*"
             ]
-        }
+        },
         {
             "Effect": "Allow",
             "Action": [
@@ -114,7 +117,7 @@ The permissions that you grant to the execution role for calling the `CreateNote
 }
 ```
 
-To tighten the permissions, limit them to specific Amazon S3 and Amazon ECR resources, by replacing `"Resource": "*"`, as follows:
+To tighten the permissions, limit them to specific Amazon S3 and Amazon ECR resources, by restricting `"Resource": "*"`, as follows:
 
 ```
 {
@@ -351,6 +354,146 @@ If you specify a volume KMS key in the resource configuration of your hyperparam
 }
 ```
 
+## CreateProcessingJob API: Execution Role Permissions<a name="sagemaker-roles-createprocessingjob-perms"></a>
+
+For an execution role that you can pass in a `CreateProcessingJob` API request, you can attach the following permission policy to the role:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cloudwatch:PutMetricData",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents",
+                "logs:CreateLogGroup",
+                "logs:DescribeLogStreams",
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:ListBucket",
+                "ecr:GetAuthorizationToken",
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:BatchGetImage"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+Instead of the specifying `"Resource": "*"`, you could scope these permissions to specific Amazon S3 and Amazon ECR resources:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cloudwatch:PutMetricData",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents",
+                "logs:CreateLogGroup",
+                "logs:DescribeLogStreams",
+                "ecr:GetAuthorizationToken"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::inputbucket"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::inputbucket/object",
+                "arn:aws:s3:::outputbucket/path"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:BatchGetImage"
+            ],
+            "Resource": "arn:aws:ecr:::repository/my-repo"
+        }
+    ]
+}
+```
+
+If `CreateProcessingJob.AppSpecification.ImageUri` needs to access other data sources, such as DynamoDB or Amazon RDS resources, add relevant permissions to this policy\.
+
+In the preceding policy, you scope the policy as follows:
++ Scope the `s3:ListBucket` permission to a specific bucket that you specify as the `ProcessingInputs` in a `CreateProcessingJob` request\.
++ Scope the `s3:GetObject `and `s3:PutObject` permissions to the objects that will be downloaded or uploaded in the `ProcessingInputs` and `ProcessingOutputConfig` in a `CreateProcessingJob` request\.
++ Scope Amazon ECR permissions to the registry path \(`AppSpecification.ImageUri`\) that you specify in a `CreateProcessingJob` request\.
+
+The `cloudwatch` and `logs` actions are applicable for "\*" resources\. For more information, see [CloudWatch Resources and Operations](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/iam-access-control-overview-cw.html#CloudWatch_ARN_Format) in the Amazon CloudWatch User Guide\.
+
+If you specify a private VPC for your processing job, add the following permissions:
+
+```
+{
+            "Effect": "Allow",
+            "Action": [
+            "ec2:CreateNetworkInterface",
+            "ec2:CreateNetworkInterfacePermission",
+            "ec2:DeleteNetworkInterface",
+            "ec2:DeleteNetworkInterfacePermission",
+            "ec2:DescribeNetworkInterfaces",
+            "ec2:DescribeVpcs",
+            "ec2:DescribeDhcpOptions",
+            "ec2:DescribeSubnets",
+            "ec2:DescribeSecurityGroups"
+```
+
+If your input is encrypted using server\-side encryption with an AWS KMS–managed key \(SSE\-KMS\), add the following permissions:
+
+```
+{
+    "Effect": "Allow",
+    "Action": [
+    "kms:Decrypt"
+    ]
+}
+```
+
+If you specify a KMS key in the output configuration of your processing job, add the following permissions:
+
+```
+{
+    "Effect": "Allow",
+    "Action": [
+    "kms:Encrypt"
+    ]
+}
+```
+
+If you specify a volume KMS key in the resource configuration of your processing job, add the following permissions:
+
+```
+{
+    "Effect": "Allow",
+    "Action": [
+    "kms:CreateGrant"
+    ]
+}
+```
+
 ## CreateTrainingJob API: Execution Role Permissions<a name="sagemaker-roles-createtrainingjob-perms"></a>
 
 For an execution role that you can pass in a `CreateTrainingJob` API request, you can attach the following permission policy to the role:
@@ -570,7 +713,7 @@ Instead of the specifying `"Resource": "*"`, you can scope these permissions to 
 If `CreateModel.PrimaryContainer.Image` need to access other data sources, such as Amazon DynamoDB or Amazon RDS resources, add relevant permissions to this policy\.
 
 In the preceding policy, you scope the policy as follows:
-+ Scope S3 permissions to objects that you specify in the `PrimaryContainer.ModelDataUrl` in a [CreateModel](API_CreateModel.md) request\.
++ Scope S3 permissions to objects that you specify in the `PrimaryContainer.ModelDataUrl` in a [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) request\.
 + Scope Amazon ECR permissions to a specific registry path that you specify as the `PrimaryContainer.Image` and `SecondaryContainer.Image` in a `CreateModel` request\.
 
 The `cloudwatch` and `logs` actions are applicable for "\*" resources\. For more information, see [CloudWatch Resources and Operations](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/iam-access-control-overview-cw.html#CloudWatch_ARN_Format) in the Amazon CloudWatch User Guide\.
@@ -594,7 +737,7 @@ If you specify a private VPC for your model, add the following permissions:
 
 ## AmazonSageMakerFullAccess Policy<a name="sagemaker-roles-amazonsagemakerfullaccess-policy"></a>
 
-The [AmazonSageMakerFullAccess](https://console.amazonaws.cn/iam/home#policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) managed policy includes all of the necessary permissions to perform most actions in Amazon SageMaker\. You can use attach this policy to any role that you pass to an Amazon SageMaker execution role\. You can also create more narrowly\-scoped policies if you want more granular control of the permissions that you grant to your execution role\.
+The [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) managed policy includes all of the necessary permissions to perform most actions in Amazon SageMaker\. You can use attach this policy to any role that you pass to an Amazon SageMaker execution role\. You can also create more narrowly\-scoped policies if you want more granular control of the permissions that you grant to your execution role\.
 
 The following list explains why some of the categories of permissions in the `AmazonSageMakerFullAccess` policy are needed\.
 
@@ -635,7 +778,7 @@ Needed for Amazon SageMaker Ground Truth\.
 Needed to give the Amazon SageMaker console access to list available roles\.
 
 `kms`  
-Needed to give the Amazon SageMaker console access to list the avialable AWS KMS keys\.
+Needed to give the Amazon SageMaker console access to list the available AWS KMS keys\.
 
 `logs`  
 Needed to allow Amazon SageMaker jobs and endpoints to publish log streams\.

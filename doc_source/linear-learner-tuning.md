@@ -4,7 +4,7 @@
 
 The linear learner algorithm also has an internal mechanism for tuning hyperparameters separate from the automatic model tuning feature described here\. By default, the linear learner algorithm tunes hyperparameters by training multiple models in parallel\. When you use automatic model tuning, the linear learner internal tuning mechanism is turned off automatically\. This sets the number of parallel models, `num_models`, to 1\. The algorithm ignores any value that you set for `num_models`\.
 
-For more information about model tuning, see [Automatic Model Tuning](automatic-model-tuning.md)\.
+For more information about model tuning, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
 
 ## Metrics Computed by the Linear Learner Algorithm<a name="linear-learner-metrics"></a>
 
@@ -21,8 +21,8 @@ The linear learner algorithm reports the metrics in the following table, which a
 | validation:objective\_loss |  The mean value of the objective loss function on the validation dataset every epoch\. By default, the loss is logistic loss for binary classification and squared loss for regression\. To set loss to other types, use the `loss` hyperparameter\.  |  Minimize  | 
 | validation:binary\_classific ation\_accuracy |  The accuracy of the final model on the validation dataset\.  |  Maximize  | 
 | validation:binary\_f\_beta |  The F\_beta score of the final model on the validation dataset\. By default, the F\_beta score is the F1 score, which is the harmonic mean of the `validation:precision` and `validation:recall` metrics\.  |  Maximize  | 
-| validation:precision |  The precision of the final model on the test dataset\. If you choose this metric as the objective, we recommend setting a target recall by setting the `binary_classifier_model_selection` hyperparameter to `precision_at_target_recall` and setting the value for the `target_recall` hyperparameter\.  |  Maximize  | 
-| validation:recall |  The recall of the final model on the test dataset\. If you choose this metric as the objective, we recommend setting a target precision by setting the `binary_classifier_model_selection` hyperparameter to `recall_at_target_precision` and setting the value for the `target_precison` hyperparameter\.  |  Maximize  | 
+| validation:precision |  The precision of the final model on the validation dataset\. If you choose this metric as the objective, we recommend setting a target recall by setting the `binary_classifier_model_selection` hyperparameter to `precision_at_target_recall` and setting the value for the `target_recall` hyperparameter\.  |  Maximize  | 
+| validation:recall |  The recall of the final model on the validation dataset\. If you choose this metric as the objective, we recommend setting a target precision by setting the `binary_classifier_model_selection` hyperparameter to `recall_at_target_precision` and setting the value for the `target_precison` hyperparameter\.  |  Maximize  | 
 
 ## Tuning Linear Learner Hyperparameters<a name="linear-learner-tunable-hyperparameters"></a>
 

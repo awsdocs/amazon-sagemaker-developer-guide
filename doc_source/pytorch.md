@@ -2,7 +2,7 @@
 
 You can use Amazon SageMaker to train and deploy a model using custom PyTorch code\. The Amazon SageMaker Python SDK PyTorch estimators and models and the Amazon SageMaker open\-source PyTorch container make writing a PyTorch script and running it in Amazon SageMaker easier\.
 
-What do you want to do?
+## What do you want to do?<a name="pytorch-intent"></a>
 
 I want to train a custom PyTorch model in Amazon SageMaker\.  
 For a sample Jupyter notebook, see [https://github\.com/awslabs/amazon\-sagemaker\-examples/tree/master/sagemaker\-python\-sdk/pytorch\_mnist](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker-python-sdk/pytorch_mnist)\.  
@@ -14,7 +14,7 @@ I have a PyTorch model that I trained in Amazon SageMaker, and I want to deploy 
 I have a PyTorch model that I trained outside of Amazon SageMaker, and I want to deploy it to an Amazon SageMaker endpoint  
 [Deploy Endpoints from Model Data](https://sagemaker.readthedocs.io/en/stable/using_pytorch.html#deploy-endpoints-from-model-data)\.
 
-I want to see the API documentation for Amazon SageMaker Python SDK PyTorch classes\.  
+I want to see the API documentation for [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) PyTorch classes\.  
 [PyTorch Classes](https://sagemaker.readthedocs.io/en/stable/sagemaker.pytorch.html)
 
 I want to see information about Amazon SageMaker PyTorch containers\.  
