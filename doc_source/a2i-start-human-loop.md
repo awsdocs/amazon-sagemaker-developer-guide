@@ -48,7 +48,7 @@ To complete this procedure, you need:
 
 **To configure the human loop**
 
-1. For `DataAttributes`, specify a set of `ContentClassifiers` related to the input provided to the `StartHumanLoop` operation\. Use content classifiers to decalre that your content is free of personally identifiable information or adult content\. 
+1. For `DataAttributes`, specify a set of `ContentClassifiers` related to the input provided to the `StartHumanLoop` operation\. Use content classifiers to declare that your content is free of personally identifiable information or adult content\. 
 
    To use Amazon Mechanical Turk, ensure your data is free of Personally Identifiable Information and include the `FreeOfPersonallyIdentifiableInformation` content classifier\. If you data is free of adult content, also include the `'FreeOfAdultContent'` classifier\. If you do not use these content classifiers, Amazon SageMaker may restrict the Mechanical Turk workers that can view your task\.
 
