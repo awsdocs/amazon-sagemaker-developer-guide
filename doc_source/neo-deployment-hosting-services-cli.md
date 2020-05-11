@@ -17,26 +17,95 @@ For Neo\-compiled models, use one of the following values for `PrimaryContainer`
   + `785573368785.dkr.ecr.us-east-1.amazonaws.com/image-classification-neo:latest`
   + `007439368137.dkr.ecr.us-east-2.amazonaws.com/image-classification-neo:latest`
   + `802834080501.dkr.ecr.eu-west-1.amazonaws.com/image-classification-neo:latest`
+  + `601324751636.dkr.ecr.eu-north-1.amazonaws.com/image-classification-neo:latest` 
+  + `836785723513.dkr.ecr.me-south-1.amazonaws.com/image-classification-neo:latest` 
+  + `763008648453.dkr.ecr.ap-south-1.amazonaws.com/image-classification-neo:latest` 
+  + `254080097072.dkr.ecr.eu-west-3.amazonaws.com/image-classification-neo:latest` 
+  + `746233611703.dkr.ecr.eu-central-1.amazonaws.com/image-classification-neo:latest` 
+  + `756306329178.dkr.ecr.sa-east-1.amazonaws.com/image-classification-neo:latest` 
+  + `110948597952.dkr.ecr.ap-east-1.amazonaws.com/image-classification-neo:latest` 
+  + `151534178276.dkr.ecr.ap-northeast-2.amazonaws.com/image-classification-neo:latest` 
+  + `205493899709.dkr.ecr.eu-west-2.amazonaws.com/image-classification-neo:latest` 
+  + `710691900526.dkr.ecr.us-west-1.amazonaws.com/image-classification-neo:latest` 
+  + `324986816169.dkr.ecr.ap-southeast-1.amazonaws.com/image-classification-neo:latest` 
+  + `355873309152.dkr.ecr.ap-southeast-2.amazonaws.com/image-classification-neo:latest` 
+  + `710691900526.dkr.ecr.ca-cental-1.amazonaws.com/image-classification-neo:latest` 
 + **Amazon SageMaker XGBoost**
   + `301217895009.dkr.ecr.us-west-2.amazonaws.com/xgboost-neo:latest` 
   + `785573368785.dkr.ecr.us-east-1.amazonaws.com/xgboost-neo:latest` 
   + `007439368137.dkr.ecr.us-east-2.amazonaws.com/xgboost-neo:latest` 
   + `802834080501.dkr.ecr.eu-west-1.amazonaws.com/xgboost-neo:latest` 
+  + `601324751636.dkr.ecr.eu-north-1.amazonaws.com/xgboost-neo:latest` 
+  + `836785723513.dkr.ecr.me-south-1.amazonaws.com/xgboost-neo:latest` 
+  + `763008648453.dkr.ecr.ap-south-1.amazonaws.com/xgboost-neo:latest` 
+  + `254080097072.dkr.ecr.eu-west-3.amazonaws.com/xgboost-neo:latest` 
+  + `746233611703.dkr.ecr.eu-central-1.amazonaws.com/xgboost-neo:latest` 
+  + `756306329178.dkr.ecr.sa-east-1.amazonaws.com/xgboost-neo:latest` 
+  + `110948597952.dkr.ecr.ap-east-1.amazonaws.com/xgboost-neo:latest` 
+  + `151534178276.dkr.ecr.ap-northeast-2.amazonaws.com/xgboost-neo:latest` 
+  + `205493899709.dkr.ecr.eu-west-2.amazonaws.com/xgboost-neo:latest` 
+  + `710691900526.dkr.ecr.us-west-1.amazonaws.com/xgboost-neo:latest` 
+  + `324986816169.dkr.ecr.ap-southeast-1.amazonaws.com/xgboost-neo:latest` 
+  + `355873309152.dkr.ecr.ap-southeast-2.amazonaws.com/xgboost-neo:latest` 
+  + `710691900526.dkr.ecr.ca-cental-1.amazonaws.com/xgboost-neo:latest` 
 + **TensorFlow **: The TensorFlow version used must be in [TensorFlow SageMaker Estimators](https://github.com/aws/sagemaker-python-sdk#tensorflow-sagemaker-estimators) list\.
   + `301217895009.dkr.ecr.us-west-2.amazonaws.com/sagemaker-neo-tensorflow:[tensorflow-version]-[cpu/gpu]-py3`
   + `785573368785.dkr.ecr.us-east-1.amazonaws.com/sagemaker-neo-tensorflow:[tensorflow-version]-[cpu/gpu]-py3`
   + `007439368137.dkr.ecr.us-east-2.amazonaws.com/sagemaker-neo-tensorflow:[tensorflow-version]-[cpu/gpu]-py3`
   + `802834080501.dkr.ecr.eu-west-1.amazonaws.com/sagemaker-neo-tensorflow:[tensorflow-version]-[cpu/gpu]-py3`
+  + `601324751636.dkr.ecr.eu-north-1.amazonaws.com/sagemaker-neo-tensorflow:[tensorflow-version]-[cpu/gpu]-py3` 
+  + `836785723513.dkr.ecr.me-south-1.amazonaws.com/sagemaker-neo-tensorflow:[tensorflow-version]-[cpu/gpu]-py3` 
+  + `763008648453.dkr.ecr.ap-south-1.amazonaws.com/sagemaker-neo-tensorflow:[tensorflow-version]-[cpu/gpu]-py3` 
+  + `254080097072.dkr.ecr.eu-west-3.amazonaws.com/sagemaker-neo-tensorflow:[tensorflow-version]-[cpu/gpu]-py3` 
+  + `746233611703.dkr.ecr.eu-central-1.amazonaws.com/sagemaker-neo-tensorflow:[tensorflow-version]-[cpu/gpu]-py3` 
+  + `756306329178.dkr.ecr.sa-east-1.amazonaws.com/sagemaker-neo-tensorflow:[tensorflow-version]-[cpu/gpu]-py3` 
+  + `110948597952.dkr.ecr.ap-east-1.amazonaws.com/sagemaker-neo-tensorflow:[tensorflow-version]-[cpu/gpu]-py3` 
+  + `151534178276.dkr.ecr.ap-northeast-2.amazonaws.com/sagemaker-neo-tensorflow:[tensorflow-version]-[cpu/gpu]-py3` 
+  + `205493899709.dkr.ecr.eu-west-2.amazonaws.com/sagemaker-neo-tensorflow:[tensorflow-version]-[cpu/gpu]-py3` 
+  + `710691900526.dkr.ecr.us-west-1.amazonaws.com/sagemaker-neo-tensorflow:[tensorflow-version]-[cpu/gpu]-py3` 
+  + `324986816169.dkr.ecr.ap-southeast-1.amazonaws.com/sagemaker-neo-tensorflow:[tensorflow-version]-[cpu/gpu]-py3` 
+  + `355873309152.dkr.ecr.ap-southeast-2.amazonaws.com/sagemaker-neo-tensorflow:[tensorflow-version]-[cpu/gpu]-py3` 
+  + `710691900526.dkr.ecr.ca-cental-1.amazonaws.com/sagemaker-neo-tensorflow:[tensorflow-version]-[cpu/gpu]-py3` 
+  + `301217895009.dkr.ecr.us-west-2.amazonaws.com/sagemaker-neo-tensorflow:1.15.0-inf-py3` 
+  + `785573368785.dkr.ecr.us-east-1.amazonaws.com/sagemaker-neo-tensorflow:1.15.0-inf-py3` 
 + **MXNet **The MXNet version used must be in [MXNet SageMaker Estimators](https://github.com/aws/sagemaker-python-sdk#mxnet-sagemaker-estimators) list\.
   + `301217895009.dkr.ecr.us-west-2.amazonaws.com/sagemaker-neo-mxnet:[mxnet-version]-[cpu/gpu]-py3`
   + `785573368785.dkr.ecr.us-east-1.amazonaws.com/sagemaker-neo-mxnet:[mxnet-version]-[cpu/gpu]-py3`
   + `007439368137.dkr.ecr.us-east-2.amazonaws.com/sagemaker-neo-mxnet:[mxnet-version]-[cpu/gpu]-py3`
   + `802834080501.dkr.ecr.eu-west-1.amazonaws.com/sagemaker-neo-mxnet:[mxnet-version]-[cpu/gpu]-py3`
+  + `601324751636.dkr.ecr.eu-north-1.amazonaws.com/sagemaker-neo-mxnet:[mxnet-version]-[cpu/gpu]-py3` 
+  + `836785723513.dkr.ecr.me-south-1.amazonaws.com/sagemaker-neo-mxnet:[mxnet-version]-[cpu/gpu]-py3` 
+  + `763008648453.dkr.ecr.ap-south-1.amazonaws.com/sagemaker-neo-mxnet:[mxnet-version]-[cpu/gpu]-py3` 
+  + `254080097072.dkr.ecr.eu-west-3.amazonaws.com/sagemaker-neo-mxnet:[mxnet-version]-[cpu/gpu]-py3` 
+  + `746233611703.dkr.ecr.eu-central-1.amazonaws.com/sagemaker-neo-mxnet:[mxnet-version]-[cpu/gpu]-py3` 
+  + `756306329178.dkr.ecr.sa-east-1.amazonaws.com/sagemaker-neo-mxnet:[mxnet-version]-[cpu/gpu]-py3` 
+  + `110948597952.dkr.ecr.ap-east-1.amazonaws.com/sagemaker-neo-mxnet:[mxnet-version]-[cpu/gpu]-py3` 
+  + `151534178276.dkr.ecr.ap-northeast-2.amazonaws.com/sagemaker-neo-mxnet:[mxnet-version]-[cpu/gpu]-py3` 
+  + `205493899709.dkr.ecr.eu-west-2.amazonaws.com/sagemaker-neo-mxnet:[mxnet-version]-[cpu/gpu]-py3` 
+  + `710691900526.dkr.ecr.us-west-1.amazonaws.com/sagemaker-neo-mxnet:[mxnet-version]-[cpu/gpu]-py3` 
+  + `324986816169.dkr.ecr.ap-southeast-1.amazonaws.com/sagemaker-neo-mxnet:[mxnet-version]-[cpu/gpu]-py3` 
+  + `355873309152.dkr.ecr.ap-southeast-2.amazonaws.com/sagemaker-neo-mxnet:[mxnet-version]-[cpu/gpu]-py3` 
+  + `710691900526.dkr.ecr.ca-cental-1.amazonaws.com/sagemaker-neo-mxnet:[mxnet-version]-[cpu/gpu]-py3` 
+  + `301217895009.dkr.ecr.us-west-2.amazonaws.com/sagemaker-neo-mxnet:1.5.1-inf-py3` 
+  + `785573368785.dkr.ecr.us-east-1.amazonaws.com/sagemaker-neo-mxnet:1.5.1-inf-py3` 
 + **Pytorch **The Pytorch version used must be in [Pytorch SageMaker Estimators](https://github.com/aws/sagemaker-python-sdk#pytorch-sagemaker-estimators) list\.
   + `301217895009.dkr.ecr.us-west-2.amazonaws.com/sagemaker-neo-pytorch:[pytorch-version]-[cpu/gpu]-py3`
   + `785573368785.dkr.ecr.us-east-1.amazonaws.com/sagemaker-neo-pytorch:[pytorch-version]-[cpu/gpu]-py3`
   + `007439368137.dkr.ecr.us-east-2.amazonaws.com/sagemaker-neo-pytorch:[pytorch-version]-[cpu/gpu]-py3`
   + `802834080501.dkr.ecr.eu-west-1.amazonaws.com/sagemaker-neo-pytorch:[pytorch-version]-[cpu/gpu]-py3`
+  + `601324751636.dkr.ecr.eu-north-1.amazonaws.com/sagemaker-neo-pytorch:[pytorch-version]-[cpu/gpu]-py3` 
+  + `836785723513.dkr.ecr.me-south-1.amazonaws.com/sagemaker-neo-pytorch:[pytorch-version]-[cpu/gpu]-py3` 
+  + `763008648453.dkr.ecr.ap-south-1.amazonaws.com/sagemaker-neo-pytorch:[pytorch-version]-[cpu/gpu]-py3` 
+  + `254080097072.dkr.ecr.eu-west-3.amazonaws.com/sagemaker-neo-pytorch:[pytorch-version]-[cpu/gpu]-py3` 
+  + `746233611703.dkr.ecr.eu-central-1.amazonaws.com/sagemaker-neo-pytorch:[pytorch-version]-[cpu/gpu]-py3` 
+  + `756306329178.dkr.ecr.sa-east-1.amazonaws.com/sagemaker-neo-pytorch:[pytorch-version]-[cpu/gpu]-py3` 
+  + `110948597952.dkr.ecr.ap-east-1.amazonaws.com/sagemaker-neo-pytorch:[pytorch-version]-[cpu/gpu]-py3` 
+  + `151534178276.dkr.ecr.ap-northeast-2.amazonaws.com/sagemaker-neo-pytorch:[pytorch-version]-[cpu/gpu]-py3` 
+  + `205493899709.dkr.ecr.eu-west-2.amazonaws.com/sagemaker-neo-pytorch:[pytorch-version]-[cpu/gpu]-py3` 
+  + `710691900526.dkr.ecr.us-west-1.amazonaws.com/sagemaker-neo-pytorch:[pytorch-version]-[cpu/gpu]-py3` 
+  + `324986816169.dkr.ecr.ap-southeast-1.amazonaws.com/sagemaker-neo-pytorch:[pytorch-version]-[cpu/gpu]-py3` 
+  + `355873309152.dkr.ecr.ap-southeast-2.amazonaws.com/sagemaker-neo-pytorch:[pytorch-version]-[cpu/gpu]-py3` 
+  + `710691900526.dkr.ecr.ca-cental-1.amazonaws.com/sagemaker-neo-pytorch:[pytorch-version]-[cpu/gpu]-py3` 
 
 Also, if you are using **TensorFlow**, **Pytorch**, or **MXNet**, add the following key\-value pair to `PrimaryContainer`/`Environment`:
 

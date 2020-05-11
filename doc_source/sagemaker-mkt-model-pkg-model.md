@@ -1,11 +1,11 @@
 # Use a Model Package to Create a Model<a name="sagemaker-mkt-model-pkg-model"></a>
 
-Use a model package to create a deployable model that you can use to get real\-time inferences by creating a hosted endpoint or to run batch transform jobs\. You can create a deployable model from a model package by using the Amazon SageMaker console, the low\-level Amazon SageMaker API\), or the Amazon SageMaker Python SDK\.
+Use a model package to create a deployable model that you can use to get real\-time inferences by creating a hosted endpoint or to run batch transform jobs\. You can create a deployable model from a model package by using the Amazon SageMaker console, the low\-level Amazon SageMaker API\), or the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.
 
 **Topics**
 + [Use a Model Package to Create a Model \(Console\)](#sagemaker-mkt-model-pkg-model-console)
 + [Use a Model Package to Create a Model \(API\)](#sagemaker-mkt-model-pkg-model-api)
-+ [Use a Model Package to Create a Model \(Amazon SageMaker Python SDK\)](#sagemaker-mkt-model-pkg-model-sdk)
++ [Use a Model Package to Create a Model \([Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\)](#sagemaker-mkt-model-pkg-model-sdk)
 
 ## Use a Model Package to Create a Model \(Console\)<a name="sagemaker-mkt-model-pkg-model-console"></a>
 
@@ -41,7 +41,7 @@ To use a model package to create a deployable model by using the Amazon SageMake
 
 After you create a deployable model, you can use it to set up an endpoint for real\-time inference or create a batch transform job to get inferences on entire datasets\. For information about hosted endpoints in Amazon SageMaker, see [Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services](ex1-deploy-model.md)\. For information about batch transform jobs, see [Step 6\.2: Deploy the Model with Batch Transform](ex1-batch-transform.md)\.
 
-## Use a Model Package to Create a Model \(Amazon SageMaker Python SDK\)<a name="sagemaker-mkt-model-pkg-model-sdk"></a>
+## Use a Model Package to Create a Model \([Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\)<a name="sagemaker-mkt-model-pkg-model-sdk"></a>
 
 To use a model package to create a deployable model by using the Amazon SageMaker Python SDK, initialize a `ModelPackage` object, and pass the Amazon Resource Name \(ARN\) of the model package as the `model_package_arn` argument\. For example:
 

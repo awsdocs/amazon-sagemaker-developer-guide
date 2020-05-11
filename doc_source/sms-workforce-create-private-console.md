@@ -34,7 +34,7 @@ When you create the labeling job, an email is sent to each worker inviting them 
 
 To create and manage your private workforce, you can use the **Labeling workforces** page\. When following the instructions below, you will have the option to create a private workforce by entering worker emails or importing a pre\-existing workforce from an Amazon Cognito user pool\. To import a workforce, see [Create a Private Workforce \(Amazon Cognito Console\)](sms-workforce-create-private-cognito.md)\. 
 
-**To create a private workforce \(worker emails\)**
+**To create a private workforce using worker emails**
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\. 
 
@@ -48,9 +48,7 @@ To create and manage your private workforce, you can use the **Labeling workforc
 
 1.  Enter an organization name and contact email\. 
 
-1.  Enter an organization name and contact email\. 
-
-1. Optionally choose an SNS topic to which to subscribe the team so workers are notified by email when new labeling jobs become available\. 
+1. Optionally choose an SNS topic to which to subscribe the team so workers are notified by email when new Ground Truth labeling jobs become available\. Amazon SNS notifications are supported by Ground Truth and are not supported by Augmented AI\. If you subscribe workers to receive SNS notifications, they will only receive notifications about Ground Truth labeling jobs\. They will not receive notifications about Augmented AI tasks\. 
 
 1.  Click the **Create private team** button\. 
 

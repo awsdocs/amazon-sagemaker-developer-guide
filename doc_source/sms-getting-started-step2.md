@@ -11,11 +11,11 @@ In this step you use the console to create a labeling job\. You tell Amazon Sage
 1. Choose **Create labeling job** to start the job creation process\.
 
 1. In the **Job overview** section, provide the following information:
-   + **Job name** — Give the labeling job a name that describes the job\. This name is shown in your job list\. The name must be unique in your account in an AWS Region\.
-   + **Label attribute name** — Leave this unchecked as the default value is the best option for this introductory job\.
-   + **Input dataset location** — Enter the S3 location of the manifest file that you created in step 1\.
-   + **Output dataset location** — the location where your output data is written\.
-   + **IAM role** — Create or choose an IAM role with the SageMakerFullAccess IAM policy attached\.
+   + **Job name** – Give the labeling job a name that describes the job\. This name is shown in your job list\. The name must be unique in your account in an AWS Region\.
+   + **Label attribute name** – Leave this unchecked as the default value is the best option for this introductory job\.
+   + **Input dataset location** – Enter the S3 location of the manifest file that you created in step 1\.
+   + **Output dataset location** – The location where your output data is written\.
+   + **IAM role** – Create or choose an IAM role with the SageMakerFullAccess IAM policy attached\.
 
 1. In the **Task type** section, for the **Dataset type** field, choose **Bounding box** as the task type\.
 

@@ -1,12 +1,5 @@
 # Creating Good Worker Instructions<a name="a2i-creating-good-instructions-guide"></a>
 
-
-****  
-
-|  | 
-| --- |
-|  Amazon Augmented AI is in preview release and is subject to change\. We do not recommend using this product in production environments\. | 
-
 Creating good instructions for your human review jobs improves your worker's accuracy in completing their task\. You can modify the default instructions that are provided in the console when creating a human review workflow, or you can use the console to create a custom worker template and include your instructions in this template\. The instructions are shown to the worker on the UI page where they complete their labeling task\.
 
 ## Create Good Worker Instructions<a name="a2i-good-instructions-console"></a>

@@ -1,19 +1,14 @@
-# Create a Custom Worker Template \(Console\)<a name="create-worker-template-console"></a>
+# Create a Custom Worker Template \(Console\)<a name="a2i-create-worker-template-console"></a>
 
+You can use a worker template to customize the interface and instructions that your workers see when working on your tasks\. Use the instructions on this page to create a worker task template in the Augmented AI area of the Amazon SageMaker console\. A starter template is provided for Amazon Textract and Amazon Rekognition tasks\. To learn how to customize your template using HTML crowd elements, see [Create Custom Worker Templates](a2i-custom-templates.md)\.
 
-****  
-
-|  | 
-| --- |
-|  Amazon Augmented AI is in preview release and is subject to change\. We do not recommend using this product in production environments\. | 
-
-You can use a worker template to customize the interface and instructions that your workers see when working on your tasks\. Use the procedures in this topic to create a worker task template in the Amazon SageMaker console\. A starter template is provided for Amazon Textract and Amazon Rekognition tasks\. Using this procedures to create a worker template will allow you to choose this template when creating a flow definition in the console\. The procedure will also produce a worker template ARN that can be used to create a flow definition using the API operation [ `CreateFlowDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html)\.
+When you create a worker template in the Worker task templates page of the Augmented AI area of the Amazon SageMaker console, a worker task template ARN will be generated\. Use this ARN as the input to `HumanTaskUiArn`when you create a flow definition using the API operation [ `CreateFlowDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html)\. You can choose this template when creating a flow definition on the Human review workflows page of the console\. 
 
 If you are creating a template for an Amazon Textract or Amazon Rekognition task type, and you want to preview your worker template, you will need to attach the policy described in [Enable Worker Task Template Previews ](a2i-permissions-security.md#permissions-for-worker-task-templates-augmented-ai) to the IAM role that you use in this procedure\. 
 
 **To create a worker task template in the Amazon SageMaker console**
 
-1. Open the Amazon SageMaker console at [https://console.aws.amazon.com/](https://console.aws.amazon.com/)\.
+1. Open the Amazon SageMaker console at [https://console.aws.amazon.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
 1. In Amazon Augmented AI in the left navigation pane, choose **Worker task templates**\.
 
@@ -39,4 +34,4 @@ If you are creating a template for an Amazon Textract or Amazon Rekognition task
 
 1. When you're satisfied with your template, choose **Create**\.
 
-After you've created your template, you can select that template when you create a human review workflow in the console\. Your template also appears in the Amazon Augmented AI section of the Amazon SageMaker console under **Worker task templates**\. Choose your template to view its ARN\.
+After you've created your template, you can select that template when you create a human review workflow in the console\. Your template also appears in the Amazon Augmented AI section of the Amazon SageMaker console under **Worker task templates**\. Choose your template to view its ARN\. Use this ARN when using the API operation [ `CreateFlowDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html)\. 

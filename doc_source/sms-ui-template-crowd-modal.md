@@ -1,6 +1,17 @@
 # crowd\-modal<a name="sms-ui-template-crowd-modal"></a>
 
-A small window that pops up on the display when it is opened\.
+A small window that pops up on the display when it is opened\. 
+
+The following is an example of the syntax that you can use with the `<crowd-modal>` element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+
+```
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<crowd-modal
+link-text = "See Examples"
+link-type = "button">
+Example Modal Text</crowd-modal>
+```
 
 ### Attributes<a name="modal-attributes"></a>
 
@@ -23,5 +34,5 @@ This element has the following parent and child elements\.
 ### See Also<a name="modal-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth for Labeling](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [HTML Elements Reference](sms-ui-template-reference.md)

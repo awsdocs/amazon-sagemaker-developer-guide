@@ -1,20 +1,12 @@
-# How Are These Notebooks Different from Instance\-based Amazon SageMaker Notebooks?<a name="notebooks-comparison"></a>
+# How Are Studio Notebooks Different from Notebook Instances?<a name="notebooks-comparison"></a>
 
+When you're starting a new notebook, we recommend that you create the notebook in Amazon SageMaker Studio instead of launching a notebook instance from the Amazon SageMaker console\. There are many benefits to using a SageMaker Studio notebook, including the following:
++ Starting a Studio notebook is faster than launching an instance\-based notebook\. Typically, it is 5\-10 times faster than instance\-based notebooks\.
++ Notebook sharing is an integrated feature in SageMaker Studio\. Users can generate a shareable link that reproduces the notebook code and also the SageMaker image required to execute it, in just a few clicks\.
++ SageMaker Studio notebooks come pre\-installed with the latest [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.
++ SageMaker Studio notebooks are accessed from within Studio\. This enables you to build, train, debug, track, and monitor your models without leaving Studio\.
++ Each member of a Studio team gets their own home directory to store their notebooks and other files\. The directory is automatically mounted onto all instances and kernels as they're started, so their notebooks and other files are always available\. The home directories are stored in Amazon Elastic File System \(Amazon EFS\) so that you can access them from other services\.
++ When using AWS SSO, you use your SSO credentials through a unique URL to directly access SageMaker Studio\. You don't have to interact with the AWS Management Console to run your notebooks\.
++ Studio notebooks are equipped with a set of predefined SageMaker image settings to get your started faster\.
 
-****  
-
-|  | 
-| --- |
-| Amazon SageMaker Studio Notebooks is in preview release and is subject to change\. | 
-
- When starting a new notebook, we recommend that you use the notebook feature in Amazon SageMaker Studio instead of launching a notebook instance from the console\. There are many benefits to using an Amazon SageMaker Studio notebook: 
-+ Starting an Amazon SageMaker Studio notebook is faster than launching an instance\-based notebook\. Typically, it is 5\-10 times faster than instance\-based notebooks\. 
-+ Notebook sharing is an integrated feature in Amazon SageMaker Studio\. Users can generate a shareable link that reproduces not only the notebook code, but also the environment required to execute it, in just a few clicks\.  You can also share the environment that hosts\.  
-+ Amazon SageMaker Studio notebooks come pre\-installed with the latest Amazon SageMaker SDK and can be accessed within the studio’s IDE, allowing you to build, train, debug, track, and monitor your models\. 
-+ As a member of an Amazon SageMaker Studio team, you get a home directory independent of a particular instance\. This directory is automatically mounted into all notebook servers and kernels as they’re started, so you always have your notebooks and other files\. The home directories are in your account in EFS so that you can access them from other services\. 
-+ When using AWS SSO, you use your AWS domain credentials and have a unique URL for your team\. You never have to interact with the AWS Management Console to run your notebooks\. 
-+ Amazon SageMaker Studio Notebooks are equipped with a set of predefined environments to get your organization started on data science projects faster\. 
-
- When you open a notebook in Amazon SageMaker Studio, the default view is a JuypterLab interface\. The primary features are the same, however, so what you can expect to find the typical features of a Jupyter notebook and JupyterLab, you will find here as well\.  
-
- If you’re unfamiliar with JupyterLab features, it is recommended that you take a tour of the [JupyterLab user interface features in the JupyterLab documentation](https://jupyterlab.readthedocs.io/en/latest/user/interface.html)\. 
+When you open a notebook in SageMaker Studio, the view is an extension of the JupyterLab interface\. The primary features are the same, so you'll find the typical features of a Jupyter notebook and JupyterLab\. For more information about the Studio interface, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.

@@ -4,7 +4,12 @@ The [XGBoost](https://github.com/dmlc/xgboost) \(eXtreme Gradient Boosting\) is 
 
 This current release of the XGBoost algorithm makes upgrades from the open source XGBoost code base easy to install and use in Amazon SageMaker\. Customers can use this release of the XGBoost algorithm either as an Amazon SageMaker built\-in algorithm, as with the previous 0\.72\-based version, or as a framework to run training scripts in their local environments as they would typically do, for example, with a TensorFlow deep learning framework\. This implementation has a smaller memory footprint, better logging, improved hyperparameter validation, and an expanded set of metrics than the original 0\.72\-based version\. It also provides an XGBoost `estimator` that executes a training script in a managed XGBoost environment\. The current release of Amazon SageMaker XGBoost is based on version 0\.90 and will be upgradeable to future releases\. The previous implementation [XGBoost Release 0\.72](xgboost-72.md) is still available to customers if they need to postpone migrating to the current version\. But this previous implementation will remain tied to the 0\.72 release of XGBoost\.
 
+## Supported versions<a name="xgboost-supported-versions"></a>
++ Framework \(open source\) mode \- 0\.90\-1, 0\.90\-2
++ Algorithm mode \- 0\.72 \(see [XGBoost Release 0\.72](xgboost-72.md)\)\. 0\.90
+
 **Topics**
++ [Supported versions](#xgboost-supported-versions)
 + [How to Use Amazon SageMaker XGBoost](#xgboost-modes)
 + [Input/Output Interface for the XGBoost Algorithm](#InputOutput-XGBoost)
 + [EC2 Instance Recommendation for the XGBoost Algorithm](#Instance-XGBoost)
@@ -19,7 +24,7 @@ This current release of the XGBoost algorithm makes upgrades from the open sourc
 The XGBoost algorithm can be used as a built\-in algorithm or as a framework such as TensorFlow\. Using XGBoost as a framework provides more flexible than using it as a built\-in algorithm as it enables more advanced scenarios that allow pre\-processing and post\-processing scripts to be incorporated into your training script\. Using XGBoost as a built\-in Amazon SageMaker algorithm is how you had to use the original [XGBoost Release 0\.72](xgboost-72.md) version and nothing changes here except the version of XGBoost that you use\.
 + **Use XGBoost as a framework**
 
-  Use XGBoost as a framework to run scripts that can incorporate additional data processing into your training jobs\. This way of using XGBoost should be to familiar to users who have worked with the open source [XGBoost](https://github.com/dmlc/xgboost) and other Amazon SageMaker frameworks such as Scikit\-learn\. You use the Amazon SageMaker Python SDK as you would for other frameworks such as TensorFlow\. One change from other Amazon SageMaker frameworks is that the `framework_version` field of the `estimator` for `XGBoost` is mandatory and is not set by default\. Note that the first part of the version refers to the upstream module version \(aka, 0\.90\), while the second part refers to the Amazon SageMaker version for the container\. An error is generated if the `framework_version` is not set\.
+  Use XGBoost as a framework to run scripts that can incorporate additional data processing into your training jobs\. This way of using XGBoost should be to familiar to users who have worked with the open source [XGBoost](https://github.com/dmlc/xgboost) and other Amazon SageMaker frameworks such as Scikit\-learn\. You use the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) as you would for other frameworks such as TensorFlow\. One change from other Amazon SageMaker frameworks is that the `framework_version` field of the `estimator` for `XGBoost` is mandatory and is not set by default\. Note that the first part of the version refers to the upstream module version \(aka, 0\.90\), while the second part refers to the Amazon SageMaker version for the container\. An error is generated if the `framework_version` is not set\.
 
   ```
   import sagemaker.xgboost
@@ -39,7 +44,7 @@ The XGBoost algorithm can be used as a built\-in algorithm or as a framework suc
   The AWS SDK for Python \(Boto 3\) and the CLI also require this field\.
 + **Use XGBoost as a built\-in algorithm**
 
-  Use XGBoost to train and deploy a model as you would other built\-in Amazon SageMaker algorithms\. Using the current version of XGBoost as a built\-in algorithm will be familiar to users who have used the original [XGBoost Release 0\.72](xgboost-72.md) version with the Amazon SageMaker Python SDK and want to continue using the same procedures\.
+  Use XGBoost to train and deploy a model as you would other built\-in Amazon SageMaker algorithms\. Using the current version of XGBoost as a built\-in algorithm will be familiar to users who have used the original [XGBoost Release 0\.72](xgboost-72.md) version with the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) and want to continue using the same procedures\.
 
   ```
   import sagemaker
@@ -91,4 +96,4 @@ Amazon SageMaker XGBoost currently only trains using CPUs\. It is a memory\-boun
 
 ## XGBoost Sample Notebooks<a name="xgboost-sample-notebooks"></a>
 
-For a sample notebook that shows how to use Amazon SageMaker XGBoost as a built\-in algorithm to train and host a regression model, see [Regression with the Amazon SageMaker XGBoost algorithm](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_abalone.ipynb)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the Amazon SageMaker samples\. The topic modeling example notebooks using the NTM algorithms are located in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.
+For a sample notebook that shows how to use Amazon SageMaker XGBoost as a built\-in algorithm to train and host a regression model, see [Regression with the Amazon SageMaker XGBoost algorithm](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_abalone.ipynb)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the Amazon SageMaker samples\. The topic modeling example notebooks using the XGBoost algorithms are located in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.

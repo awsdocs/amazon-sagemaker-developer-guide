@@ -15,4 +15,4 @@
 
 1. Choose **Create model**\.
 
-1. Deploy your multi\-model endpoint as you would a single model endpoint\.
+1. Deploy your multi\-model endpoint as you would a single model endpoint\. For instructions, see [Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services](ex1-deploy-model.md)\.

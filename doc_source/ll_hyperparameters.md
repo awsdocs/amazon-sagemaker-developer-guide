@@ -1,11 +1,11 @@
 # Linear Learner Hyperparameters<a name="ll_hyperparameters"></a>
 
-The following table contains the hyperparameters for the linear learner algorithm\. These are parameters that are set by users to facilitate the estimation of model parameters from data\. The required hyperparameters that must be set are listed first, in alphabetical order\. The optional hyperparameters that can be set are listed next, also in alphabetical order\.
+The following table contains the hyperparameters for the linear learner algorithm\. These are parameters that are set by users to facilitate the estimation of model parameters from data\. The required hyperparameters that must be set are listed first, in alphabetical order\. The optional hyperparameters that can be set are listed next, also in alphabetical order\. When a hyperparameter is set to `auto`, Amazon SageMaker will automatically calculate and set the value of that hyperparameter\. 
 
 
 | Parameter Name | Description | 
 | --- | --- | 
-| feature\_dim |  The number of features in the input data\. **Required** Valid values: Positive integer  | 
+| feature\_dim |  The number of features in the input data\.  **Optional** Valid values: `auto` or positive integer Default values: `auto`  | 
 | num\_classes |  The number of classes for the response variable\. The algorithm assumes that classes are labeled `0`, \.\.\., `num_classes - 1`\. **Required** when `predictor_type` is `multiclass_classifier`\. Otherwise, the algorithm ignores it\. Valid values: Integers from 3 to 1,000,000  | 
 | predictor\_type |  Specifies the type of target variable as a binary classification, multiclass classification, or regression\. **Required** Valid values: `binary_classifier`, `multiclass_classifier`, or `regressor`  | 
 | accuracy\_top\_k |  When computing the top\-k accuracy metric for multiclass classification, the value of *k*\. If the model assigns one of the top\-k scores to the true label, an example is scored as correct\. **Optional** Valid values: Positive integers Default value: 3   | 

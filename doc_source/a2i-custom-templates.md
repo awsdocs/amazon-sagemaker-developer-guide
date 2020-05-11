@@ -1,12 +1,5 @@
 # Create Custom Worker Templates<a name="a2i-custom-templates"></a>
 
-
-****  
-
-|  | 
-| --- |
-|  Amazon Augmented AI is in preview release and is subject to change\. We do not recommend using this product in production environments\. | 
-
 *Crowd HTML elements* are web components that provide a number of task widgets and design elements that you can tailor to the question you want to ask\. You can use these crowd elements to create a custom worker template and integrate it with an Amazon Augmented AI \(Amazon A2I\) human review workflow to customize the worker console and instructions\. 
 
 For a list of all HTML crowd elements available to Amazon A2I users, see [HTML Elements Reference](sms-ui-template-reference.md)\. To see examples of templates, see the [AWS Github repository](https://github.com/aws-samples/amazon-a2i-sample-task-uis), which contains over 60 sample custom task templates\.

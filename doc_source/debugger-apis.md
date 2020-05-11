@@ -4,7 +4,7 @@ Amazon SageMaker Debugger has APIs in several locations that are used to impleme
 
 Amazon SageMaker Debugger provides an open source *smdebug* Python Library at [awslabs/sagemaker\-debugger](https://github.com/awslabs/sagemaker-debugger/tree/master/smdebug) that is used to configure built\-in rules or to define custom rules used to analyze the tensor data from training jobs\.
 
-The [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/) is a high level SDK focused on machine learning experimentation\. The SDK can be used to deploy built\-in or custom rules defined with the*smdebug* Python Library to monitor and analyse these tensors using Amazon SageMaker estimators\.
+The [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/) is a high level SDK focused on machine learning experimentation\. The SDK can be used to deploy built\-in or custom rules defined with the*smdebug* Python Library to monitor and analyze these tensors using Amazon SageMaker estimators\.
 
 Debugger has added operations and types to the Amazon SageMaker API that enable the platform to use Debugger when training a model and to manage the configuration of inputs and outputs\. Here is a list of the APIs to hook up Debugger\.
 +  [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) and [ `DescribeTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html) use the following types to configure tensor and rule configurations, hook up the *smdebug* library, and manage the storage of TensorBoard outputs:

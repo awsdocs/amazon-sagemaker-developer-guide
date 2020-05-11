@@ -6,6 +6,33 @@ A styled button that represents some action\.
 
 The following attributes are supported by this element\.
 
+The following is an example of a template that uses the `<crowd-button>` element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+
+```
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<crowd-form>
+  <crowd-image-classifier
+    name="crowd-image-classifier"
+    src="https://unsplash.com/photos/NLUkAA-nDdE"
+    header="Please select the correct category for this image"
+    categories="['Person', 'Umbrella', 'Chair', 'Dolphin']"
+  >
+    <full-instructions header="Classification Instructions">
+      <p>Read the task carefully and inspect the image.</p>
+      <p>Choose the appropriate label that best suits the image.</p>
+    </full-instructions>
+    <short-instructions>
+      <p>Read the task carefully and inspect the image.</p>
+      <p>Choose the appropriate label that best suits the image.</p>
+      <crowd-button>
+        <iron-icon icon="question-answer"/>
+      </crowd-button>
+    </short-instructions>
+  </crowd-image-classifier>
+</crowd-form>
+```
+
 #### disabled<a name="button-attributes-disabled"></a>
 
 A Boolean switch that, if present, displays the button as disabled and prevents clicks\.
@@ -24,7 +51,7 @@ A string that specifies the icon to be displayed next to the button's text\. The
 
 ```
 <crowd-button>
-    <iron-icon icon="search"></iron-icon>
+    <iron-icon icon="search"/>
 </crowd-button>
 ```
 
@@ -61,5 +88,5 @@ This element has the following parent and child elements\.
 ### See Also<a name="button-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth for Labeling](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [HTML Elements Reference](sms-ui-template-reference.md)

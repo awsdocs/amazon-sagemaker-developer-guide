@@ -1,6 +1,8 @@
 # crowd\-classifier\-multi\-select<a name="sms-ui-template-crowd-classifier-multi-select"></a>
 
-A widget for classifying various forms of content—such as audio, video, or text—into one or more categories\. The content to classify is referred to as an *object*\. The following is an example of an HTML worker task template built using this crowd element\.
+A widget for classifying various forms of content—such as audio, video, or text—into one or more categories\. The content to classify is referred to as an *object*\. 
+
+The following is an example of an HTML worker task template built using this crowd element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
@@ -94,5 +96,5 @@ The following is a sample of output from this element\.
 
 For more information, see the following:
 + [Text Classification \(Multi\-label\)](sms-text-classification-multilabel.md)
-+ [Use Amazon SageMaker Ground Truth for Labeling](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [HTML Elements Reference](sms-ui-template-reference.md)

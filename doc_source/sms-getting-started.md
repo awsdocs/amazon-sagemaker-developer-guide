@@ -10,5 +10,5 @@ Before you create a labeling job, you must upload your dataset to an Amazon S3 b
 + [Step 1: Before You Begin](sms-getting-started-step1.md)
 + [Step 2: Create a Labeling Job](sms-getting-started-step2.md)
 + [Step 3: Select Workers](sms-getting-started-step3.md)
-+ [Step 4: Configure the Bounding Box Tool\.](sms-getting-started-step4.md)
++ [Step 4: Configure the Bounding Box Tool](sms-getting-started-step4.md)
 + [Step 5: Monitoring Your Labeling Job](sms-getting-started-step5.md)

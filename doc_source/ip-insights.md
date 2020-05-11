@@ -23,7 +23,7 @@ The Amazon SageMaker IP Insights algorithm supports training and validation data
 
 **Inference**
 
-For inference, IP Insights supports `text/csv`, `application/json`, and `application/jsonlines` data content types\. For more information about the common data formats for inference provided by Amazon SageMaker, see [Common Data Formats for Inference ](cdf-inference.md)\. IP Insights inference returns output formatted as either `application/json` or `application/jsonlines`\. Each record in the output data contains the corresponding `dot_product` \(or compatibility score\) for each input data point\. For more information and some examples, see [IP Insights Inference Data Formats](ip-insights-inference-data-formats.md)\.
+For inference, IP Insights supports `text/csv`, `application/json`, and `application/jsonlines` data content types\. For more information about the common data formats for inference provided by Amazon SageMaker, see [Common Data Formats for Inference](cdf-inference.md)\. IP Insights inference returns output formatted as either `application/json` or `application/jsonlines`\. Each record in the output data contains the corresponding `dot_product` \(or compatibility score\) for each input data point\. For more information and some examples, see [IP Insights Inference Data Formats](ip-insights-inference-data-formats.md)\.
 
 ## EC2 Instance Recommendation for the IP Insights Algorithm<a name="ip-insights-instances"></a>
 

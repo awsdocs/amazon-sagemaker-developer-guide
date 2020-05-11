@@ -1,15 +1,16 @@
-# Use Human Loop Activation Conditions JSON Schema with Amazon Textract<a name="json-humantaskactivationconditions-textract-example"></a>
+# Use Human Loop Activation Conditions JSON Schema with Amazon Textract<a name="a2i-json-humantaskactivationconditions-textract-example"></a>
 
 When used with Amazon A2I, the `AnalyzeDocument` operation supports the following inputs in the `ConditionType` parameter:
 + `ImportantFormKeyConfidenceCheck` – Use this condition to create a human loop when inference confidence is within a specified range for document form keys and word blocks\. A *form key* is any word in a document that is associated with an input\. The input is called a *value*\. Together, form keys and values are referred to as *key\-value pairs*\. A *word block* refers to the words that Amazon Textract recognizes inside of a detected block of text\. To learn more about Amazon Textract document blocks, see [Documents and Block Objects](https://docs.aws.amazon.com/textract/latest/dg/how-it-works-document-layout.html) in the *Amazon Textract Developer Guide*\.
-+ `Sampling` – Use this condition to specify a percentage of inferences to send to humans for review, regardless of confidence scores\. Use this condition to:
-  + Audit your ML model by randomly sampling all of your model's inferences and sending a specified percentage to humans for review\.
-  + \(With the `ImportantFormKeyConfidenceCheck` condition\) Randomly sample a percentage of the inferences that met the conditions specified in `ImportantFormKeyConfidenceCheck` to start a human loop and send only the specified percentage to humans for review\. 
++ `MissingImportantFormKey` – Use this condition to create a human loop when Textract did not identify the key or its associated aliases within the document\. 
++ `Sampling` – Use this condition to specify a percentage of forms to send to humans for review, regardless of inference confidence scores\. Use this condition to do the following:
+  + Audit your ML model by randomly sampling all forms analyzed by your model and sending a specified percentage to humans for review\.
+  + Using the `ImportantFormKeyConfidenceCheck` condition, randomly sample a percentage of the inferences that met the conditions specified in `ImportantFormKeyConfidenceCheck` to start a human loop and send only the specified percentage to humans for review\. 
 
 **Note**  
 If you send the same request to `AnalyzeDocument` multiple times, the result of `Sampling` will not change for the inference of that input\. For example, if you make an `AnalyzeDocument` request once, and `Sampling` doesn't trigger a HumanLoop, subsequent requests to `AnalyzeDocument` with the same configuration will not trigger a human loop\.
 
-## ImportantFormKey Inputs and Results<a name="a2i-textract-importantformkeycofidencecheck"></a>
+## ImportantFormKeyConfidenceCheck Inputs and Results<a name="a2i-textract-importantformkeycofidencecheck"></a>
 
 The `ImportantFormKeyConfidenceCheck` `ConditionType` supports the following `ConditionParameters`:
 + `ImportantFormKey` – A string representing a key in a key\-value pair detected by Amazon Textract that needs to be reviewed by human workers\. If the value of this parameter is the special catch\-all value \(\*\), then all keys are considered to be matched to the condition\. You can use this to model the case where any key\-value pair satisfying certain confidence thresholds needs human review\.
@@ -27,7 +28,17 @@ The `ImportantFormKeyConfidenceCheck` `ConditionType` supports the following `Co
 
 When you use the `ImportantFormKeyConfidenceCheck` `ConditionType`, Amazon A2I sends the key\-value block and word block inferences of the key\-value blocks and associated aliases that you specified in `ImportantFormKey` and `ImportantFormKeyAliases` for human review\.
 
-If you use the default worker task template that is provided in the **Human review workflows** section of the Amazon SageMaker console, these inferences are included in the worker UI when a worker opens your task\. If you use a custom worker task template, you need to include the `<task.input.selectedAiServiceResponse.blocks>` custom HTML element to access these inferences\. For an example of a custom template that uses this HTML element, see [Custom Template Example for Amazon Textract](a2i-custom-templates.md#a2i-custom-templates-textract-sample)\.
+When creating a flow definition, if you use the default worker task template that is provided in the **Human review workflows** section of the Amazon SageMaker console, key\-value and block inferences sent for human review by this activation condition are included in the worker UI\. If you use a custom worker task template, you need to include the `{{ task.input.selectedAiServiceResponse.blocks }}` element to include initial\-value input data \(inferences\) from Amazon Textract\. For an example of a custom template that uses this input element, see [Custom Template Example for Amazon Textract](a2i-custom-templates.md#a2i-custom-templates-textract-sample)\.
+
+## MissingImportantFormKey Inputs and Results<a name="a2i-textract-missingimportantformkey"></a>
+
+The `MissingImportantFormKey` `ConditionType` supports the following `ConditionParameters`:
++ `ImportantFormKey` – A string representing a key in a key\-value pair detected by Amazon Textract that needs to be reviewed by human workers\.
++ `ImportantFormKeyAliases` – An array that represents alternate spellings or logical equivalents for the important form key\. 
+
+When you use the `MissingImportantFormKey` `ConditionType`, if the key in `ImportantFormKey` or aliases in `ImportantFormKeyAliases` are not included in Amazon Textract inference, that form will be sent to human for review and no predicted key\-value pairs will be included\. For example, if Amazon Textract only identified `Address` and `Phone` in a form, but was missing the `ImportantFormKey` `Name` \(in the `MissingImportantFormKey` condition type\) that form would be sent to humans for review without any of the form keys detected \(`Address` and `Phone`\)\.
+
+If you use the default worker task template that is provided in the Amazon SageMaker console, a task will be created asking workers identify the key in `ImportantFormKey` and associated value\. If you use a custom worker task template, you need to include the `<task.input.humanLoopContext>` custom HTML element to configure this task\. 
 
 ## Sampling Inputs and Results<a name="a2i-textract-randomsamplingpercentage"></a>
 
@@ -35,7 +46,7 @@ The `Sampling` `ConditionType` supports the `RandomSamplingPercentage` `Conditio
 
 If you specify the `Sampling` condition without any other condition type, all key\-value and block inferences are sent to workers for review\. 
 
-If you use the default worker task template that is provided in the **Human review workflows** section of the Amazon SageMaker console, inferences are included in the worker UI when a worker opens your task\. If you use a custom worker task template, you need to include the `<task.input.selectedAiServiceResponse.blocks>` custom HTML element to access these inferences\. For an example of a custom template that uses this HTML element, see [Custom Template Example for Amazon Textract](a2i-custom-templates.md#a2i-custom-templates-textract-sample)\.
+When creating a flow definition, if you use the default worker task template that is provided in the **Human review workflows** section of the Amazon SageMaker console, all key\-value and block inferences sent for human review by this activation condition are included in the worker UI\. If you use a custom worker task template, you need to include the `{{ task.input.selectedAiServiceResponse.blocks }}` element to include initial\-value input data \(inferences\) from Amazon Textract\. For an example of a custom template that uses this input element, see [Custom Template Example for Amazon Textract](a2i-custom-templates.md#a2i-custom-templates-textract-sample)\.
 
 ## Examples<a name="a2i-json-activation-condition-examples"></a>
 
@@ -113,7 +124,7 @@ In the following example, if Amazon Textract detects a key\-value pair whose con
 
 **Example 3: Use Sampling**
 
-In the following example, 5\.2% of inferences resulting from an Amazon Textract `AnalyzeDocument` request will be sent to human workers for review\. All detected key\-value pairs returned by Amazon Textract are sent to workers for review\.
+In the following example, 5% of inferences resulting from an Amazon Textract `AnalyzeDocument` request will be sent to human workers for review\. All detected key\-value pairs returned by Amazon Textract are sent to workers for review\.
 
 ```
 {
@@ -121,16 +132,30 @@ In the following example, 5\.2% of inferences resulting from an Amazon Textract 
     {
       "ConditionType": "Sampling",
       "ConditionParameters": {
-        "RandomSamplingPercentage": 5.2
+        "RandomSamplingPercentage": 5
       }
     }
   ]
 }
 ```
 
-**Example 4: Use Sampling and ImportantFormKeyConfidenceCheck with the And operator**
+**Example 4: Use MissingImportantFormKey**
 
-In this example, 5\.2% of key\-value pairs detected by Amazon Textract whose key is one of `Pay Date`, `PayDate`, `DateOfPay`, or `pay-date`, with the confidence of the key\-value block less than 65 and the confidences of each of the word blocks making up the key and value less than 85 are sent to workers for review\.
+In the following example, if `Mailing Address` or its alias, `Mailing Address:` is missing from keys detected by Amazon Textract, a human review will be triggered\. When using the default worker task template, the worker UI asks workers to identify the key `Mailing Address` or `Mailing Address:` and its associated value\. 
+
+```
+{
+    "ConditionType": "MissingImportantFormKey",
+    "ConditionParameters": {
+        "ImportantFormKey": "Mailing Address",
+        "ImportantFormKeyAliases": ["Mailing Address:"]
+    }
+}
+```
+
+**Example 5: Use Sampling and ImportantFormKeyConfidenceCheck with the And operator**
+
+In this example, 5% of key\-value pairs detected by Amazon Textract whose key is one of `Pay Date`, `PayDate`, `DateOfPay`, or `pay-date`, with the confidence of the key\-value block less than 65 and the confidences of each of the word blocks making up the key and value less than 85 are sent to workers for review\.
 
 ```
 {
@@ -140,7 +165,7 @@ In this example, 5\.2% of key\-value pairs detected by Amazon Textract whose key
         {
           "ConditionType": "Sampling",
           "ConditionParameters": {
-            "RandomSamplingPercentage": 5.2
+            "RandomSamplingPercentage": 5
           }
         },
         {
@@ -162,13 +187,13 @@ In this example, 5\.2% of key\-value pairs detected by Amazon Textract whose key
 }
 ```
 
-**Example 5: Use Sampling and ImportantFormKeyConfidenceCheck with the And operator**
+**Example 6: Use Sampling and ImportantFormKeyConfidenceCheck with the And operator**
 
 Use this example to configure your human review workflow to always send low confidence inferences of a specified key\-value pair for human review and sample high confidence inference of a key\-value pair at a specified rate\. 
 
 In the following example, a human review is triggered in one of the following ways: 
-+ Key\-value pairs detected whose key is one of `Pay Date`, `PayDate`, `DateOfPay`, or `pay-date`, with key\-value and word block confidences less than 60 will be sent for human review\. Only the `Pay Date` form key \(and its aliases\) and associated values are sent to workers to reveiw\. 
-+ 5\.2% of key\-value pairs detected whose key is one of `Pay Date`, `PayDate`, `DateOfPay`, or `pay-date`, with key\-value and word block confidences greater than 90 will be sent for human review\. Only the `Pay Date` form key \(and its aliases\) and associated values are sent to workers to reveiw\. 
++ Key\-value pairs detected whose key is one of `Pay Date`, `PayDate`, `DateOfPay`, or `pay-date`, with key\-value and word block confidences less than 60 will be sent for human review\. Only the `Pay Date` form key \(and its aliases\) and associated values are sent to workers to review\. 
++ 5% of key\-value pairs detected whose key is one of `Pay Date`, `PayDate`, `DateOfPay`, or `pay-date`, with key\-value and word block confidences greater than 90 will be sent for human review\. Only the `Pay Date` form key \(and its aliases\) and associated values are sent to workers to review\. 
 
 ```
 {
@@ -193,7 +218,7 @@ In the following example, a human review is triggered in one of the following wa
                 {
                     "ConditionType": "Sampling",
                     "ConditionParameters": {
-                        "RandomSamplingPercentage": 5.2
+                        "RandomSamplingPercentage": 5
                     }
                 },
                 {
@@ -217,9 +242,9 @@ In the following example, a human review is triggered in one of the following wa
 }
 ```
 
-**Example 6: Use Sampling and ImportantFormKeyConfidenceCheck with the Or operator**
+**Example 7: Use Sampling and ImportantFormKeyConfidenceCheck with the Or operator**
 
-In the following example, the Amazon Textract `AnalyzeDocument` operation returns a key\-value pair whose key is one of `Pay Date`, `PayDate`, `DateOfPay`, or `pay-date`, with the confidence of the key\-value block less than 65 and the confidences of each of the word blocks making up the key and value less than 85\. Additionally, 5\.2% of all other key\-value pairs detected are randomly chosen to start a human loop\.
+In the following example, the Amazon Textract `AnalyzeDocument` operation returns a key\-value pair whose key is one of `Pay Date`, `PayDate`, `DateOfPay`, or `pay-date`, with the confidence of the key\-value block less than 65 and the confidences of each of the word blocks making up the key and value less than 85\. Additionally, 5% of all other forms will trigger a human loop\. For each form randomly chosen, all key\-value pairs detected for that form will be sent to humans for review\.
 
 ```
 {
@@ -229,7 +254,7 @@ In the following example, the Amazon Textract `AnalyzeDocument` operation return
         {
           "ConditionType": "Sampling",
           "ConditionParameters": {
-            "RandomSamplingPercentage": 5.2
+            "RandomSamplingPercentage": 5
           }
         },
         {

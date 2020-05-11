@@ -2,6 +2,38 @@
 
 A widget for drawing polygons on an image and assigning a label to the portion of the image that is enclosed in each polygon\.
 
+The following is an example of a Liquid template that uses the `<crowd-polygon>` element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+
+```
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<crowd-form>
+  <crowd-polygon
+    name="annotatedResult"
+    src="{{ task.input.taskObject | grant_read_access }}"
+    header="Draw a polygon around each of the requested target(s) of interest"
+    labels="['Cat', 'Dog', 'Bird']"
+  >
+    <full-instructions header="Polygon instructions">
+      <ul>
+        <li>Make the polygon tight around the object</li>
+        <li>You need to select a label before starting a polygon</li>
+        <li>You will need to select a label again after completing a polygon</li>
+        <li>To select a polygon, you can click on its borders</li>
+        <li>You can start drawing a polygon from inside another polygon</li>
+        <li>You can undo and redo while you're drawing a polygon to go back and forth between points you've placed</li>
+        <li>You are prevented from drawing lines that overlap other lines from the same polygon</li>
+      </ul>
+    </full-instructions>
+
+    <short-instructions>
+      <p>Draw a polygon around each of the requested target(s) of interest</p>
+      <p>Make the polygon tight around the object</p>
+    </short-instructions>
+  </crowd-polygon>
+</crowd-form>
+```
+
 ### Attributes<a name="polygon-attributes"></a>
 
 The following attributes are supported by this element\.
@@ -293,5 +325,5 @@ You could have many labels available, but only the ones that are used appear in 
 ### See Also<a name="polygon-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth for Labeling](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [HTML Elements Reference](sms-ui-template-reference.md)

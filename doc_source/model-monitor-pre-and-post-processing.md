@@ -27,9 +27,9 @@ The Amazon SageMaker Model Monitor container works only with tabular or flattene
 
 ```
 def preprocess_handler(inference_record):
-    event_data = inference_record.event_data
-    input_data = {}
-    output_data = {}
+    
+    input_data = inference_record.endpoint_input.data
+    output_data = inference_record.endpoint_output.data
 
     input_data['feature0'] = random.randint(1, 3)
     input_data['feature1'] = random.uniform(0, 1.6)

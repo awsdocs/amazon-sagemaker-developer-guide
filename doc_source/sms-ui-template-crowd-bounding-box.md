@@ -2,6 +2,44 @@
 
 A widget for drawing rectangles on an image and assigning a label to the portion of the image that is enclosed in each rectangle\.
 
+The following is an example of a Liquid template that uses the `<crowd-bounding-box>` element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. For more examples, see this [GitHub repository](https://github.com/aws-samples/amazon-sagemaker-ground-truth-task-uis/tree/master/images)\. 
+
+```
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<crowd-form>
+  <crowd-bounding-box
+    name="annotatedResult"
+    src="{{ task.input.taskObject | grant_read_access }}"
+    header="Draw bounding boxes around all the cats and dogs in this image"
+    labels="['Cat', 'Dog']"
+  >
+    <full-instructions header="Bounding Box Instructions" >
+      <p>Use the bounding box tool to draw boxes around the requested target of interest:</p>
+      <ol>
+        <li>Draw a rectangle using your mouse over each instance of the target.</li>
+        <li>Make sure the box does not cut into the target, leave a 2 - 3 pixel margin</li>
+        <li>
+          When targets are overlapping, draw a box around each object,
+          include all contiguous parts of the target in the box.
+          Do not include parts that are completely overlapped by another object.
+        </li>
+        <li>
+          Do not include parts of the target that cannot be seen,
+          even though you think you can interpolate the whole shape of the target.
+        </li>
+        <li>Avoid shadows, they're not considered as a part of the target.</li>
+        <li>If the target goes off the screen, label up to the edge of the image.</li>
+      </ol>
+    </full-instructions>
+
+    <short-instructions>
+      Draw boxes around the requested target of interest.
+    </short-instructions>
+  </crowd-bounding-box>
+</crowd-form>
+```
+
 ### Attributes<a name="bounding-box-attributes"></a>
 
 The following attributes are supported by this element\.
@@ -176,5 +214,5 @@ You could have many labels available, but only the ones that are used appear in 
 ### See Also<a name="bounding-box-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth for Labeling](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [HTML Elements Reference](sms-ui-template-reference.md)

@@ -1,19 +1,27 @@
-# Use Amazon SageMaker Notebooks<a name="notebooks"></a>
+# Use Amazon SageMaker Studio Notebooks<a name="notebooks"></a>
 
+Amazon SageMaker Studio notebooks are collaborative notebooks that you can launch quickly because you don't need to set up compute instances and file storage beforehand\. A set of instance types, known as *Fast launch* types are designed to launch in under two minutes\. SageMaker Studio notebooks provide persistent storage, which enables you to view and share notebooks even if the instances that the notebooks run on are shut down\.
 
-****  
+You can share your notebooks with others, so that they can easily reproduce your results and collaborate while building models and exploring your data\. You provide access to a read\-only copy of the notebook through a secure URL\. Dependencies for your notebook are included in the notebook's metadata\. When your colleagues copy the notebook, it opens in the same environment as the original notebook\.
 
-|  | 
-| --- |
-| Amazon SageMaker Studio Notebooks is in preview release and is subject to change\. | 
+A SageMaker Studio notebook runs in an environment defined by the following:
++ Instance type – The hardware configuration the notebook runs on\. The configuration includes the number and type of processors \(vCPU and GPU\), and the amount and type of memory\. The instance type determines the pricing rate\.
++ SageMaker image – A container image that is compatible with SageMaker Studio\. The image consists of the kernels, language packages, and other files required to run a notebook in Studio\.
++ Kernel – The process that runs the code contained in the notebook\. A kernel is defined by a Conda environment\.
 
- Amazon SageMaker Studio notebooks are collaborative notebooks that are built into Amazon SageMaker Studio that you can launch quickly\. You can access your notebooks without setting up compute instances and file storage so you can get started fast\. You pay only for the resources consumed when you run the notebooks\. 
+You can change any of these resources from within the notebook\.
 
- After your organization is set up with Amazon SageMaker Studio, your organization’s data scientists, developers, and other SageMaker users can start working on notebooks within seconds without having to provision any compute resources\.  Each of your users is automatically assigned their own instance to execute the code of the notebooks, but they can also have multiple instances for different notebooks\. Amazon SageMaker Studio notebooks provides persistent storage for your users’ notebooks, which enables them to view and share notebooks even if the instances are shut down\. 
+Sample SageMaker Studio notebooks are available in the [aws\_sagemaker\_studio](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/aws_sagemaker_studio) folder of the [Amazon SageMaker example GitHub repository](https://github.com/awslabs/amazon-sagemaker-examples)\. Each notebook comes with the necessary SageMaker image that opens the notebook with the appropriate kernel\.
 
- You can share your notebooks with others in your organization, so that they can easily reproduce your results and collaborate while building models and exploring your data\. Dependencies for your notebook are included in the notebooks’ environment settings, so sharing is seamless\. Sharing publishes a reproducible snapshot of your notebook environments through secure sharable URLs\. 
+We recommend that you familiarize yourself with the Amazon SageMaker Studio interface before creating or using a SageMaker Studio notebook\. For more information, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
 
- To get started, you or your organization’s administrator need to complete the Amazon SageMaker Studio setup for the team\. There are two modes for authentication: AWS Single Sign\-On \(AWS SSO\) and AWS Identity and Access Management \(IAM\) \. When choosing the appropriate method for your team, you must carefully consider the advantages of each method\. Switching to another authentication method after you set up the domain requires a manual migration of the team’s notebooks so you want to make sure you choose the appropriate method for your organization at the start\. For more information, see the [setup documentation](gs-set-up.html)\. 
-
-**Note**  
-Because Amazon SageMaker Studio Notebooks is in preview, visual elements of Amazon SageMaker Studio might be impacted\.
+**Topics**
++ [How Are Studio Notebooks Different from Notebook Instances?](notebooks-comparison.md)
++ [Get Started](notebooks-get-started.md)
++ [Create an Amazon SageMaker Studio Notebook](notebooks-create-notebook.md)
++ [Manage and Share Amazon SageMaker Studio Notebooks](notebooks-run-and-manage.md)
++ [Manage Your Storage Volume](notebooks-personal-storage-manage.md)
++ [Create a Custom Kernel](notebooks-create-custom-kernel.md)
++ [Shut Down Resources](notebooks-run-and-manage-shut-down.md)
++ [Usage Metering](notebooks-usage-metering.md)
++ [Available Resources](notebooks-resources.md)

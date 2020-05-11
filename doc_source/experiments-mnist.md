@@ -1,19 +1,21 @@
-# Track and Evaluate a Model Training Experiment<a name="experiments-mnist"></a>
+# Track and compare trials in Amazon SageMaker Studio<a name="experiments-mnist"></a>
 
-This tutorial demonstrates how to visually track, compare, and evaluate a model training experiment using Amazon SageMaker Studio\. The basis of the tutorial is the MNIST Handwritten Digits Classification Experiment \(MNIST\) example notebook\.
+This tutorial demonstrates how to visually track and compare trials in a model training experiment using Amazon SageMaker Studio\. The basis of the tutorial is the MNIST Handwritten Digits Classification Experiment \(MNIST\) example notebook\.
 
-It is intended that this topic be viewed alongside Studio with the MNIST notebook open\. As you run through the cells, the sections highlight the relevant code and show you how to observe the results in Studio\. Some of the code snippets have been edited for brevity\.
+It is intended that this topic be viewed alongside Studio with the MNIST notebook open\. As you run through the cells, the sections in this document highlight the relevant code and show you how to observe the results in Studio\. Some of the code snippets have been edited for brevity\.
+
+For a tutorial that showcases additional features of Studio, see [Amazon SageMaker Studio tour](gs-studio-end-to-end.md)\.
 
 **Prerequisites**
-+ A local copy of the [MNIST](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/aws_sagemaker_studio/sagemaker_experiments/mnist-handwritten-digits-classification-experiment.ipynb) example notebook and the companion [mnist\.py](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/aws_sagemaker_studio/sagemaker_experiments/mnist.py) file\. Both are available from the [awslabs/amazon\-sagemaker\-examples](https://github.com/awslabs/amazon-sagemaker-examples) repository\. To download the files, select each link, right\-click on the **Raw** button, and then choose **Save as**\.
++ A local copy of the [MNIST](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/aws_sagemaker_studio/sagemaker_experiments/mnist-handwritten-digits-classification-experiment.ipynb) example notebook and the companion [mnist\.py](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/aws_sagemaker_studio/sagemaker_experiments/mnist.py) file\. Both are available from the [awslabs/amazon\-sagemaker\-examples](https://github.com/awslabs/amazon-sagemaker-examples) repository\. To download the files, choose each link, right\-click on the **Raw** button, and then choose **Save as**\.
 + An AWS SSO or IAM account to sign\-on to Amazon SageMaker Studio\. For more information, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
 
 **Topics**
 + [Open the Notebook in Studio](#experiments-mnist-notebook)
-+ [Set Up Amazon SageMaker Experiments](#experiments-mnist-setup)
++ [Install the Experiments SDK and Import Modules](#experiments-mnist-setup)
++ [Transform and Track the Input Data](#experiments-mnist-s3bucket)
 + [Create and Track an Experiment](#experiments-mnist-experiment)
-+ [Compare Trials and Analyze](#experiments-mnist-compare-trials)
-+ [Deploy the Top Model](#experiments-mnist-deploy)
++ [Compare and Analyze Trials](#experiments-mnist-compare-trials)
 + [Clean Up Resources](#experiments-mnist-cleanup)
 
 ## Open the Notebook in Studio<a name="experiments-mnist-notebook"></a>
@@ -22,65 +24,61 @@ It is intended that this topic be viewed alongside Studio with the MNIST noteboo
 
 1. Sign\-on to Studio\.
 
-1. In the left sidebar, select the **File Browser** icon\.
+1. In the left sidebar, choose the **File Browser** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/File_browser_squid.png) \)\.
 
-1. At the top of the File Browser, select the **Up arrow** icon and then a **File Upload** dialog opens\. Browse to and select your local versions of the *mnist\-handwritten\-digits\-classification\-experiment\.ipynb* and *mnist\.py* files, and then choose **Open**\.
+1. At the top of the file browser pane, choose the **Up arrow** icon and then a **File Upload** dialog opens\. Browse to and choose your local versions of the *mnist\-handwritten\-digits\-classification\-experiment\.ipynb* and *mnist\.py* files, and then choose **Open**\.
 
-1. Double\-click the uploaded notebook file to open the notebook in a new tab\.
+1. The two files are listed in the file browser\. Double\-click the uploaded notebook file to open the notebook in a new tab\.
 
-## Set Up Amazon SageMaker Experiments<a name="experiments-mnist-setup"></a>
+1. At the top right of the notebook, make sure the kernel is **Python 3 \(Data Science\)**\. If not, choose the current kernel name to open the **Select Kernel** dropdown\. Choose **Python 3 \(Data Science\)** and then choose **Select**\.
 
-The Amazon SageMaker Experiments SDK is separate from the Amazon SageMaker Python SDK\. In the following steps you install the Experiments SDK and import the relevant modules\. For more information on the Experiments SDK, see [sagemaker\-experiments](https://github.com/aws/sagemaker-experiments)\.
+## Install the Experiments SDK and Import Modules<a name="experiments-mnist-setup"></a>
 
-**To install the SDK and import modules**
+The Amazon SageMaker Experiments SDK is separate from the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), which comes preinstalled in Amazon SageMaker Studio\. Run the first few cells in the notebook to install the Experiments SDK and import the Experiments modules\. The relevant sections of the notebook cells are displayed below\. For more information on the Experiments SDK, see [sagemaker\-experiments](https://github.com/aws/sagemaker-experiments)\.
 
-1. Install the Experiments SDK\.
+```
+import sys
+!{sys.executable} -m pip install sagemaker-experiments
+```
 
-   ```
-   !{sys.executable} -m pip install sagemaker-experiments
-   ```
+```
+import sagemaker
+from sagemaker import get_execution_role
+from sagemaker.session import Session
+from sagemaker.analytics import ExperimentAnalytics
 
-1. Import the Amazon SageMaker and Experiments modules\.
+from smexperiments.experiment import Experiment
+from smexperiments.trial import Trial
+from smexperiments.trial_component import TrialComponent
+from smexperiments.tracker import Tracker
+```
 
-   ```
-   import sagemaker
-   from sagemaker import get_execution_role
-   from sagemaker.session import Session
-   from sagemaker.analytics import ExperimentAnalytics
-   
-   from smexperiments.experiment import Experiment
-   from smexperiments.trial import Trial
-   from smexperiments.trial_component import TrialComponent
-   from smexperiments.tracker import Tracker
-   ```
+## Transform and Track the Input Data<a name="experiments-mnist-s3bucket"></a>
 
-1. Run the remaining cells until you come to the last cell in the **Dataset** section\.
+The next few cells create an Amazon S3 bucket and a folder in the bucket named *mnist*\. In Studio, the file browser displays the *mnist* folder\. The input data is downloaded to the *mnist/MNIST/raw* folder, normalized, and then the transformed data is uploaded to the *mnist/MNIST/processed* folder\. You can drill down into the *mnist* folder to display, but not open, the data files\.
+
+Your screen should look similar to the following:
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-mnist-s3-files.png)
+
+The last cell in the **Dataset** section creates a [Tracker](https://github.com/aws/sagemaker-experiments/blob/master/src/smexperiments/tracker.py) for the transform job\. The tracker logs the normalization parameters and the URI of the Amazon S3 bucket where the transformed dataset is stored\. In a later section, we show how to find this information in Studio\. In the next section, the tracker is used to track the experiment and trial runs\.
+
+```
+with Tracker.create(display_name="Preprocessing", sagemaker_boto_client=sm) as tracker:
+    tracker.log_parameters({
+        "normalization_mean": 0.1307,
+        "normalization_std": 0.3081,
+    })
+    tracker.log_input(name="mnist-dataset", media_type="s3/uri", value=inputs)
+```
 
 ## Create and Track an Experiment<a name="experiments-mnist-experiment"></a>
 
-The following code creates and tracks an experiment\. First, a [Tracker](https://github.com/aws/sagemaker-experiments/blob/master/src/smexperiments/tracker.py) is created and used to track the dataset transform job\. Next, an experiment is created and then 5 trials are created inside a loop, one for each value of the `num_hidden_channel` hyperparameter you're testing\.
+The following procedure creates and tracks an experiment to determine the effect of the model's `num_hidden_channel` hyperparameter\. As part of the experiment, five trials are created inside a loop, one for each value of the `num_hidden_channel` hyperparameter\. Later in the notebook, you'll compare the results of these five trials\.
 
-1. In the left sidebar, select the **SageMaker Experiment List** icon to display the experiments browser\.
+1. In the left sidebar of Studio, choose the **SageMaker Experiment List** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Experiment_list_squid.png) \) to display the experiments browser\.
 
-1. In the notebook, create a `Tracker` as a preprocessing step to track the transform job for the dataset\. The tracker logs the normalization parameters and the URI to the Amazon S3 bucket where the transformed dataset is uploaded\.
-
-   ```
-   with Tracker.create(display_name="Preprocessing", sagemaker_boto_client=sm) as tracker:
-       tracker.log_parameters({
-           "normalization_mean": 0.1307,
-           "normalization_std": 0.3081,
-       })
-       tracker.log_input(name="mnist-dataset", media_type="s3/uri", value=inputs)
-   ```
-
-   ```
-   preprocessing_trial_component = tracker.trial_component
-   ```
-
-   After the previous code runs, the experiments list contains an entry named **Unassigned trial components**\. This is the preprocessing step just created\. Your screen should look similar to the following:  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-mnist-unassigned-tc.png)
-
-1. Create and start tracking an experiment\.
+1. Run the following cell\.
 
    ```
    mnist_experiment = Experiment.create(
@@ -90,6 +88,8 @@ The following code creates and tracks an experiment\. First, a [Tracker](https:/
    print(mnist_experiment)
    ```
 
+   Output:
+
    ```
    Experiment(sagemaker_boto_client=<botocore.client.SageMaker object at 0x7f7152b326d8>,
               experiment_name='mnist-hand-written-digits-classification-1575947870',
@@ -97,12 +97,21 @@ The following code creates and tracks an experiment\. First, a [Tracker](https:/
               experiment_arn='arn:aws:sagemaker:us-east-2:acct-id:experiment/mnist-hand-written-digits-classification-1575947870')
    ```
 
-   After the previous code runs, the experiments list contains an entry for the experiment\. It might take a moment to display\. Your screen should look similar to the following:  
+   After the code runs, the experiments list contains an entry for the experiment\. It might take a moment to display and you might have to refresh the experiments list\. Your screen should look similar to the following:  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-mnist-experiment.png)
 
-1. Double\-click on your experiment to display a list of the trials in the experiment\. Initially the list is empty\.
+1. Run the following cell\.
 
-1. Create trials for the experiment\. Each trial trains a model using a different number for the `hidden_channels` hyperparameter\. The preprocessing trial component is added to each trial for complete tracking \(for example, for auditing purposes\)\. The code also specifies definitions for the following metrics:
+   ```
+   preprocessing_trial_component = tracker.trial_component
+   ```
+
+   After the code runs, the experiments list contains an entry labeled **Unassigned trial components**\. The trial component entry is the data preprocessing step previously created\. Double\-click the trial component for verification\. The trial component isn't associated with an experiment at this time\. Your screen should look similar to the following:  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-mnist-unassigned-tc-preprocess.png)
+
+1. Choose the `Home` icon in the navigation breadcrumb at the top on the experiments browser\. From there, double\-click on your experiment to display a list of the trials in the experiment\.
+
+1. The following code create trials for the experiment\. Each trial trains a model using a different number for the `num_hidden_channel` hyperparameter\. The preprocessing trial component is added to each trial for complete tracking \(for example, for auditing purposes\)\. The code also specifies definitions for the following metrics:
    + Train loss
    + Test loss
    + Test accuracy
@@ -151,32 +160,46 @@ The following code creates and tracks an experiment\. First, a [Tracker](https:/
    The trial list automatically updates as each training job runs\. It takes a few minutes for each trial to be displayed\. Your screen should look similar to the following:  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-mnist-trials.png)
 
-## Compare Trials and Analyze<a name="experiments-mnist-compare-trials"></a>
+## Compare and Analyze Trials<a name="experiments-mnist-compare-trials"></a>
 
-This section deviates from the notebook and show you how to compare and analyze the trained models using the Amazon SageMaker Studio UI\.
+This section deviates from the notebook and shows you how to compare and analyze the trained models using the Amazon SageMaker Studio UI\.
 
-**To view a list of training jobs ordered by `test:accuracy`**
+**To view the details of a trial**
 
-1. Select all 5 trials, right\-click the selection, and then choose **Open in trial component list**\. A new tab opens that displays a list of the components for all trials\. There's a preprocessing job and training job for each trial\.
+1. Double\-click one of the trials to display a list of the trial components associated with the trial\. There's a preprocessing job and training job for each trial\. Double\-click one of the components to open a new tab that displays information about each component\.
 
-1. If the **TABLE PROPERTIES** pane isn't open, select the gear icon in the upper right corner to open it\. Unselect the **Created on** and **Last modified** checkboxes\.
+1. Under **Trial stages**, choose **Preprocessing**\. On the **Describe Trial Component** menu, choose **Parameters** to display the normalization parameters that were previously logged\. Next, choose **Artifacts** to display the URI of the Amazon S3 bucket where the transformed dataset was stored\.
 
-1. Right\-click the **test:accuracy** column header, choose **Data aggregation**, and then choose **Maximum**\. Choose the **test:accuracy** column header to sort the list by decreasing maximum test accuracy\. You can see that the models trained with the `hidden_channels` hyperparameter set to 2 and 20 give the highest test accuracy\. Due to the randomness of model training and the closeness of the accuracies, your results might differ\. Your screen should look similar to the following:  
+1. Under **Trial stages**, choose **Training**\. On the **Describe Trial Component** menu, choose the following items to display information about the training job trial component\.
+   + **Metrics** – `test:loss`, `test:accuracy`, and `train:loss`
+   + **Parameters** – hyperparameter values and instance information
+   + **Artifacts** – Amazon S3 storage for the input dataset and the output model
+   + **AWS Settings** – job name, ARN, status, creation time, training time, billable time, instance information, and others
+
+**To view a list of trials ordered by `test:accuracy`**
+
+1. Choose the experiment name on the navigation breadcrumb above **TRIAL COMPONENTS** to display the trial list\.
+
+1. Choose all five trials\. Hold down the CTRL/CMD key and select each trial\. Right\-click the selection and then choose **Open in trial component list**\. A new tab opens that displays each trial and trial component\.
+
+1. If the **TABLE PROPERTIES** pane isn't open, choose the gear icon in the upper right corner to open it\. Deselect everything except **Trial**, **Metrics**, and **Training job**\. Choose the gear icon to close the pane\.
+
+1.  Choose the **test:accuracy** column header to sort the list by decreasing maximum test accuracy\. Your screen should look similar to the following:  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-mnist-trials-accuracy.png)
 
-## Deploy the Top Model<a name="experiments-mnist-deploy"></a>
+**To view a chart of `test:loss` versus `num_hidden_channel`**
 
-Now that you've determined the most accurate training job, deploy the associated model to an Amazon SageMaker endpoint\.
+1. In the **TRIAL COMPONENTS** pane, choose all five trials and then choose **Add chart**\. Select inside the chart area to open the preferences pane for **CHART PROPERTIES**\.
 
-**To deploy the model**
+1. In **CHART PROPERTIES**, choose the following:
+   + **Data type** \- **Summary statistics**
+   + **Chart type** \- **Line**
+   + **X\-axis** \- **hidden\-channels**
+   + **Y\-axis** \- **test:lost\_last**
+   + **Color** \- **None**
 
-1. In the left sidebar, select the **SageMaker Endpoint List** icon to display the endpoints browser\.
-
-1. Right\-click the top training job in the trial components list and choose **Deploy model**\. A new tab opens that displays the **Deploy model** page\.
-
-1. Under **REQUIRED SETTINGS**, enter a name for the endpoint\. Keep the default values of `ml.m5.xlarge` for **Instance type** and `1` for **Instance count**\.
-
-1. Choose **Deploy model**\.
+   Your screen should look similar to the following:  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-mnist-test-lost-chart-props.png)
 
 ## Clean Up Resources<a name="experiments-mnist-cleanup"></a>
 
@@ -186,6 +209,8 @@ To delete the experiment, first you must delete all trials in the experiment\. T
 
 **Note**  
 Trial components can exist independent of trials and experiments\. You might want keep them if you plan on further exploration\. If so, comment out `tc.delete()`
+
+**To cleanup `mnist_experiment`**
 
 ```
 def cleanup(experiment):
@@ -210,12 +235,22 @@ def cleanup(experiment):
 cleanup(mnist_experiment)
 ```
 
+**To cleanup any experiment**
+
+```
+experiment_to_cleanup = Experiment.load(
+    experiment_name=f"experiment-name", 
+    sagemaker_boto_client=sm)
+
+cleanup(experiment_to_cleanup)
+```
+
 For information on deleting your Amazon S3 buckets, see [How Do I Delete an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/delete-bucket.html)\.
 
 **To delete the notebook**
 
-1. Select the file browser\.
+1. Choose the notebook tab\.
 
-1. Right\-click the notebook file and choose **Shut Down Kernel**\.
+1. On the top menu, choose **File** and then choose **Close and Shutdown Notebook**\.
 
 1. Right\-click the notebook file and choose **Delete**\.

@@ -103,9 +103,9 @@ This prevents workers from editing the polygons of annotations passed through `i
 + Parent elements – crowd\-form
 + Child elements – [full\-instructions](#textract-full-instructions), [short\-instructions](#textract-short-instructions) 
 
-### AWS Regions<a name="textract-crowd-regions"></a>
+### Regions<a name="textract-crowd-regions"></a>
 
-The following AWS Regions are supported by this element\. You can use custom HTML and CSS code within these Regions to format your instructions to workers\. For example, use the `short-instructions` section to provide good and bad examples of how to complete a task\. 
+The following regions are supported by this element\. You can use custom HTML and CSS code within these regions to format your instructions to workers\. For example, use the `short-instructions` section to provide good and bad examples of how to complete a task\. 
 
 #### full\-instructions<a name="textract-full-instructions"></a>
 

@@ -7,7 +7,7 @@ Except for the `ListTags` API, resource\-level restrictions are not available on
 
 To express conditions in your Amazon SageMaker policies, you can use AWS\-wide condition keys\. For a complete list of AWS\-wide keys, see [Available Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html#AvailableKeys) in the *IAM User Guide*\. 
 
-If you see an expand arrow \(**↗**\) in the upper\-right corner of the table, you can open the table in a new window\. To close the window, choose the close button \(**X**\) in the lower\-right corner\.
+Use the scroll bars to see the rest of the table\.
 
 
 **Amazon SageMaker API Operations and Required Permissions for Actions**  

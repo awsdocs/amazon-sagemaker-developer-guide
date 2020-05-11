@@ -1,6 +1,8 @@
 # crowd\-image\-classifier\-multi\-select<a name="sms-ui-template-crowd-image-classifier-multi"></a>
 
-A widget for classifying an image into one ore more categories\. The image can be a JPG, PNG, or GIF file, and has no size limit\. The following is an example of an HTML worker task template built using this crowd element\. 
+A widget for classifying an image into one ore more categories\. The image can be a JPG, PNG, or GIF file, and has no size limit\. 
+
+The following is an example of an HTML worker task template built using this crowd element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
@@ -89,5 +91,5 @@ The following is a sample of output from this element\.
 
 For more information, see the following:
 + [Image Classification \(Multi\-label\)](sms-image-classification-multilabel.md)
-+ [Use Amazon SageMaker Ground Truth for Labeling](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [HTML Elements Reference](sms-ui-template-reference.md)

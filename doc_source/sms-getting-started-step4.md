@@ -1,4 +1,4 @@
-# Step 4: Configure the Bounding Box Tool\.<a name="sms-getting-started-step4"></a>
+# Step 4: Configure the Bounding Box Tool<a name="sms-getting-started-step4"></a>
 
 Finally you configure the bounding box tool to give instructions to your workers\. You can configure a task title that describes the task and provides high\-level instructions for the workers\. You can provide both quick instructions and full instructions\. Quick instructions are displayed next to the image to be labeled\. Full instructions contain detailed instructions for completing the task\. In this example, you only provide quick instructions\. You can see an example of full instructions by choosing **Full instructions** at the bottom of the section\.
 

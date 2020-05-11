@@ -1,6 +1,8 @@
 # HTML Elements Reference<a name="sms-ui-template-reference"></a>
 
-Crowd HTML Elements are web components, a web standard that abstracts HTML markup, CSS, and JavaScript functionality into an HTML tag or set of tags\. Amazon SageMaker provides customers with the ability to design their own custom task templates in HTML\. For more information about how to implement custom templates in Amazon SageMaker Ground Truth, see [Creating Custom Labeling Workflows](sms-custom-templates.md)\. To learn more about custom templates in Amazon Augmented AI, see [Create Custom Worker Templates](a2i-custom-templates.md)\.
+Crowd HTML Elements are web components, a web standard that abstracts HTML markup, CSS, and JavaScript functionality into an HTML tag or set of tags\. Amazon SageMaker provides customers with the ability to design their own custom task templates in HTML\. 
+
+For more information about how to implement custom templates in Amazon SageMaker Ground Truth, see [Creating Custom Labeling Workflows](sms-custom-templates.md)\. To learn more about custom templates in Amazon Augmented AI, see [Create Custom Worker Templates](a2i-custom-templates.md)\.
 
 ## Amazon SageMaker crowd\-elements<a name="general-topiclist"></a>
 

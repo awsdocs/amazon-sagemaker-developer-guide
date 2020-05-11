@@ -1,6 +1,16 @@
-# Amazon SageMaker Studio Features<a name="studio-features"></a>
+# Amazon SageMaker Studio<a name="studio"></a>
 
-Amazon SageMaker Studio includes the following features\.
+Amazon SageMaker Studio is an integrated machine learning environment where you can build, train, deploy, and analyze your models all in the same application\.
+
+Amazon SageMaker Studio is available in the following AWS Regions:
++ US East \(Ohio\), us\-east\-2
++ US East \(N\. Virginia\), us\-east\-1
++ US West \(N\. Oregon\), us\-west\-2
++ China \(Beijing\), cn\-north\-1
++ China \(Ningxia\), cn\-northwest\-1
++ EU \(Ireland\), eu\-west\-1
+
+SageMaker Studio includes the following features:
 
 **Topics**
 + [Amazon SageMaker Studio Notebooks](#studio-features-notebook2)
@@ -8,22 +18,23 @@ Amazon SageMaker Studio includes the following features\.
 + [Amazon SageMaker Autopilot](#studio-features-autopilot)
 + [Amazon SageMaker Debugger](#studio-features-debugger)
 + [Amazon SageMaker Model Monitor](#studio-features-model-monitor)
++ [Amazon SageMaker Studio UI Overview](studio-ui.md)
++ [Perform Common Tasks in Amazon SageMaker Studio](studio-tasks.md)
++ [Search using Amazon SageMaker Studio](studio-search.md)
++ [Amazon SageMaker Studio Pricing](studio-pricing.md)
 
 ## Amazon SageMaker Studio Notebooks<a name="studio-features-notebook2"></a>
 
 Amazon SageMaker Studio Notebooks is the next generation of Amazon SageMaker notebooks\. These notebooks include the following new features:
 + AWS Single Sign\-On \(AWS SSO\) integration
 + Fast start\-up times
-+ Ability to share notebooks with a single click
++ Ability to share notebooks with a few clicks
 
-For more information, see [Use Amazon SageMaker Notebooks](notebooks.md)\.
-
-**Note**  
-Because Amazon SageMaker Studio Notebooks is in preview, visual elements of Amazon SageMaker Studio might be impacted\.
+For more information, see [Use Amazon SageMaker Studio Notebooks](notebooks.md)\.
 
 ## Amazon SageMaker Experiments<a name="studio-features-experiments"></a>
 
-Amazon SageMaker provides experiment management and tracking\. Users can organize their experiments and artifacts in a centralized location using a structured organization scheme\.
+Amazon SageMaker Experiments provides experiment management and tracking\. Users can organize their experiments and artifacts in a centralized location using a structured organization scheme\.
 
 An experiment is a collection of machine learning iterations called trials\. A trial is a set of steps called trial components\. A trial takes a combination of inputs such as a dataset, an algorithm, and parameters, and produces specific outputs such as a model, metrics, and checkpoints\.
 
@@ -35,7 +46,7 @@ For more information, see [Manage Machine Learning with Amazon SageMaker Experim
 
 Amazon SageMaker Autopilot provides automatic machine learning that allows users without machine learning knowledge to quickly build classification and regression models\. Users only need to provide a tabular dataset and select the target column to predict\. Autopilot automatically explores machine learning solutions with different combinations of data preprocessors, algorithms, and algorithm parameters, to find the best model\.
 
-When a user runs an Autopilot job, Amazon SageMaker creates an experiment for the job and then creates a trial for each combination and stores all data and results\. After the best model is determined, the user can drill down to view each trial and see which features had the most influence on the result\.
+When a user runs an Autopilot job, SageMaker Studio creates an experiment for the job and then creates a trial for each combination and stores all data and results\. After the best model is determined, the user can drill down to view each trial and see which features had the most influence on the result\.
 
 For more information, see [Use Amazon SageMaker Autopilot to Automate Model Development](autopilot-automate-model-development.md)\.
 

@@ -2,6 +2,34 @@
 
 A widget for classifying an image, which can be a JPG, PNG, or GIF, with no size limit\.
 
+The following is an example of an image classification template that uses the `<crowd-image-classifier>` element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+
+```
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+<crowd-form>
+    <crowd-image-classifier 
+        src="${image_url}"
+        categories="['Cat', 'Dog', 'Bird', 'None of the Above']"
+        header="Choose the correct category for the image"
+        name="category">
+
+
+        <short-instructions>
+            <p>Read the task carefully and inspect the image.</p>
+            <p>Choose the appropriate label that best suits the image.</p>
+        </short-instructions>
+
+ 
+        <full-instructions header="Classification Instructions">
+            <p>Read the task carefully and inspect the image.</p>
+            <p>Choose the appropriate label that best suits the image. 
+            Use the <b>None of the Above</b> option if none of the other labels suit the image.</p>
+        </full-instructions>
+
+    </crowd-image-classifier>
+</crowd-form>
+```
+
 ### Attributes<a name="image-classifier-attributes"></a>
 
 The following attributes are required by this element\.
@@ -52,7 +80,7 @@ An example of a `crowd-image-classifier` element with attributes for verifying a
       "src": "URL of overlay image",
     }
   }'
->
+> ... </crowd-image-classifier>
 ```
 
 A bounding\-box verification task would use the `overlay` value like follows:
@@ -85,7 +113,7 @@ A bounding\-box verification task would use the `overlay` value like follows:
             ]
         },
     }'
->
+> ... </crowd-image-classifier>
 ```
 
 #### src<a name="image-classifier-attributes-src"></a>
@@ -155,5 +183,5 @@ The following is a sample of output from this element\.
 ### See Also<a name="image-classifier-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth for Labeling](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [HTML Elements Reference](sms-ui-template-reference.md)

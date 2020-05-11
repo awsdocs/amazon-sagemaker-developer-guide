@@ -28,4 +28,4 @@ If you choose to use the Amazon Mechanical Turk workforce to label the dataset, 
 
 ## Next<a name="step3-next"></a>
 
-[Step 4: Configure the Bounding Box Tool\.](sms-getting-started-step4.md)
+[Step 4: Configure the Bounding Box Tool](sms-getting-started-step4.md)

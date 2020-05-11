@@ -30,7 +30,7 @@ After you run the `DetectModerationLabels` with a human loop configured, Amazon 
 
 ## Create and Start a Human Loop for a Custom Task Type<a name="a2i-instructions-starthumanloop"></a>
 
-To configure a human loop for a custom human review task, use the `StartHumanLoop` operation within your application\. This section provides an example of a human loop request using the AWS SDK for Python \(Boto 3\) and the AWS Command Line Interface \(AWS CLI\)\. For documentation on other language specific SDK's that support `StartHumanLoop`, use the [ See Also]() section of [StartHumanLoop](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_StartHumanLoop.html) in the Amazon Augmented AI Runtime API documentation\. 
+To configure a human loop for a custom human review task, use the `StartHumanLoop` operation within your application\. This section provides an example of a human loop request using the AWS SDK for Python \(Boto 3\) and the AWS Command Line Interface \(AWS CLI\)\. For documentation on other language specific SDK's that support `StartHumanLoop`, use the **See Also** section of [StartHumanLoop](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_StartHumanLoop.html) in the Amazon Augmented AI Runtime API documentation\. 
 
 **Prerequisites**
 
@@ -82,7 +82,10 @@ The following request example uses the AWS CLI\. For more information, see [star
 ```
 $ InputContent=string
 ContentClassifiers="FreeOfPersonallyIdentifiableInformation","FreeOfAdultContent" 
-start-human-loop --human-loop-name example-humanloop --flow-definition-arn arn:aws:sagemaker:us-west-2:111111111111:flow-definition/flowdef-nov-12  --human-loop-input InputContent --data-attributes ContentClassifiers
+start-human-loop --human-loop-name example-humanloop 
+                 --flow-definition-arn arn:aws:sagemaker:us-west-2:111111111111:flow-definition/flowdef-nov-12  
+                 --human-loop-input InputContent 
+                 --data-attributes ContentClassifiers
 ```
 
 ------

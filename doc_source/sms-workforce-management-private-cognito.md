@@ -24,6 +24,8 @@ You can't delete work teams from the Amazon Cognito console\. Deleting a Amazon 
 1. For **Add workers, **choose **Import existing Amazon Cognito user groups**, and choose one or more user groups that are part of the new team\. 
 
 1. If you choose an **SNS topic**, all workers added to the team are subscribed to the Amazon Simple Notification Service \(Amazon SNS\) topic and notified when new work items are available to the team\. Choose from a list of your existing SNS topics related to Amazon SageMaker Ground Truth or Amazon Augmented AI or choose **Create new topic** to create one\. 
+**Note**  
+Amazon SNS notifications are supported by Ground Truth and are not supported by Augmented AI\. If you subscribe workers to receive SNS notifications, they will only receive notifications about Ground Truth labeling jobs\. They will not receive notifications about Augmented AI tasks\. 
 
 ### Subscriptions<a name="subscriptions-cog-workteam"></a>
 

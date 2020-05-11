@@ -4,6 +4,12 @@ If you choose, Amazon SageMaker Ground Truth can use active learning to automate
 
 We recommend using automated data labeling on large datasets because the neural networks used with active learning require a significant amount of data for every new dataset\. Typically, as more data is provided, the potential for high accuracy predictions goes up\. Data will only be auto\-labeled if the neural network used in the auto\-labeling model can achieve an acceptably high level of accuracy\. Therefore, with larger datasets, there is more potential to automatically label the data because the neural network can achieve high enough accuracy for auto\-labeling\. Automated data labeling is most appropriate when you have thousands of data objects\. The minimum number of objects allowed for automated data labeling is 1,250, but we strongly suggest providing a minimum of 5,000 objects\.
 
+Automated data labeling is available only for the following Ground Truth built\-in task types: 
++ Image classification \(Single label\)
++ Semantic segmentation
++ Bounding box 
++ Text classification
+
 You enable automated data labeling when you create a labeling job\. This is how it works:
 
 1. When Ground Truth starts an automated data labeling job, it selects a random sample of input data \(objects\) and sends it to human workers\.
@@ -16,19 +22,13 @@ You enable automated data labeling when you create a labeling job\. This is how 
 
 1. Ground Truth runs a batch transform job on the unlabeled data in the dataset, using the same validated model for inference\. This will produce a confidence score for each object\. 
 
-1. The Ground Truth auto labeling component determines if the confidence score produced in step 5 for each object meets the required threshold determined in step 4\. If the confidence score meets the treshold, the expected quality of automatically labeling exceeds the requested level of accuracy and that object will be considered auto\-labeled\. 
+1. The Ground Truth auto labeling component determines if the confidence score produced in step 5 for each object meets the required threshold determined in step 4\. If the confidence score meets the threshold, the expected quality of automatically labeling exceeds the requested level of accuracy and that object will be considered auto\-labeled\. 
 
 1. Step 6 will produce a dataset of unlabeled data with confidence scores\. Ground Truth will select data points with low confidence scores from this dataset and send them to human workers\. 
 
 1. Ground Truth uses the existing human\-labeled data and this additional labeled data from human workers to train a new model\.
 
 1. The process is repeated until the dataset is fully labeled or until another stopping condition is met\. For example, auto labeling will stop if your human annotation budget is reached\.
-
-Automated data labeling is available only for the following Ground Truth built\-in algorithms: 
-+ Image classification
-+ Semantic segmentation
-+ Object detection \(bounding box\) 
-+ Text classification
 
 Input data quotas apply for automated data labeling jobs\. See [Input Data Quotas](sms-data-input.md#input-data-limits) for information about dataset size, input data size and resolution limits for automated Semantic Segmentation, Object Detection, and Image Classification\. 
 
@@ -51,7 +51,7 @@ To use the Amazon SageMaker console to create a labeling job that uses automated
 
 1. In the same section, choose **Enable automated data labeling**\. 
 
-1. Using [Step 4: Configure the Bounding Box Tool\.](sms-getting-started-step4.md) as a guide, create worker instructions in the section ***Task Type* labeling tool**\. For example, if you chose **Semantic segmentation** as your labeling job type, this section will be called **Semantic segmentation labeling tool**\.
+1. Using [Step 4: Configure the Bounding Box Tool](sms-getting-started-step4.md) as a guide, create worker instructions in the section ***Task Type* labeling tool**\. For example, if you chose **Semantic segmentation** as your labeling job type, this section will be called **Semantic segmentation labeling tool**\.
 
 1. To preview your worker instructions and dashboard, choose **Preview**\.
 
@@ -95,6 +95,6 @@ The following table lists the Amazon Elastic Compute Cloud \(Amazon EC2\) instan
 \* In the Asia Pacific \(Mumbai\) Region \(ap\-south\-1\) use ml\.p2\.8xlarge instead\.
 
 ****  
-Automated data labeling incurs two separate charges: the per\-item charge \(for information, see [ pricing](https://aws.amazon.com/sagemaker/groundtruth/pricing/)\), and the charge for the Amazon EC2 instance required to run the model \(see [Amazon EC2 pricing](https://aws.amazon.com/ec2/pricing/on-demand/)\)\.
+Automated data labeling incurs two separate charges: the per\-item charge \(for information, see [ pricing](http://aws.amazon.com/sagemaker/groundtruth/pricing/)\), and the charge for the Amazon EC2 instance required to run the model \(see [Amazon EC2 pricing](http://aws.amazon.com/ec2/pricing/on-demand/)\)\.
 
  Ground Truth manages the instances that you use for automated data labeling jobs\. It creates, configures, and terminates the instances as needed to perform your job\. These instances don't appear in your Amazon EC2 instance dashboard\.

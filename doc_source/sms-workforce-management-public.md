@@ -20,7 +20,7 @@ To choose the Amazon Mechanical Turk workforce when you are creating a labeling 
 
 **To use the Amazon Mechanical Turk workforce**
 
-1. Choose **Public** from **Worker types**\.
+1. Choose **Amazon Mechanical Turk** from **Worker types**\.
 
 1. Choose **The dataset does not contain adult content** if your dataset doesn't contain potentially offensive content\. This enables workers to opt out if they don't want to work with it\.
 

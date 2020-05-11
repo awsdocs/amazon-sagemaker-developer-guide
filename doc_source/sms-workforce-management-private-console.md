@@ -26,9 +26,11 @@ You can create a workteam using the Amazon SageMaker console, on the **Labeling 
    + If you chose **Create a team by adding workers to a new Amazon Cognito user group**, select the workers to add to the team\. 
    + If you chose **Create a team by importing existing Amazon Cognito user groups**, choose the user groups that are part of the new team\. 
 
-1. If you select an **SNS topic**, all workers added to the team are subscribed to the Amazon SNS topic and notified when new work items are available to the team\. Select from a list of your existing Ground Truth or Amazon Augmented AI related Amazon SNS topics or select **Create new topic** to open a topic\-creation dialog\. 
+1. If you select an **SNS topic**, all workers added to the team are subscribed to the Amazon SNS topic and notified when new work items are available to the team\. Select from a list of your existing Ground Truth related Amazon SNS topics or select **Create new topic** to open a topic\-creation dialog\. 
 
-Workers in a workteam subscribed to a topic receive notifications when a new job for that team becomes available and when one is about to expire\. 
+   Amazon SNS notifications are supported by Ground Truth and are not supported by Augmented AI\. If you subscribe workers to receive SNS notifications, they will only receive notifications about Ground Truth labeling jobs\. They will not receive notifications about Augmented AI tasks\. 
+
+Workers in a workteam subscribed to a topic receive notifications when a new Ground Truth labeling job for that team becomes available and when one is about to expire\. 
 
  Read [Create and manage Amazon SNS topics for your work teams](sms-workforce-management-private-sns.md) for more information about using Amazon SNS topic\.
 

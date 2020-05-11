@@ -1,9 +1,9 @@
-# Common Parameters for Built\-In Algorithms<a name="sagemaker-algo-docker-registry-paths"></a>
+# Common parameters for built\-in algorithms<a name="sagemaker-algo-docker-registry-paths"></a>
 
 The following table lists parameters for each of the algorithms provided by Amazon SageMaker\.
 
 
-| Algorithm Name | Channel Name | Training Image and Inference Image Registry Path | Training Input Mode | File Type | Instance Class | Parallelizable | 
+| Algorithm name | Channel name | Training image and inference image registry path | Training input mode | File type | Instance class | Parallelizable | 
 | --- | --- | --- | --- | --- | --- | --- | 
 | BlazingText | train |  *<ecr\_path>*/blazingtext:*<tag>*  | File or Pipe | Text file \(one sentence per line with space\-separated tokens\)  | GPU \(single instance only\) or CPU | No | 
 | DeepAR Forecasting | train and \(optionally\) test |  *<ecr\_path>*/forecasting\-deepar:*<tag>*  | File | JSON Lines or Parquet | GPU or CPU | Yes | 
@@ -27,7 +27,133 @@ Algorithms that are *parallelizable* can be deployed on multiple compute instanc
 
 For the **Training Image and Inference Image Registry Path** column, depending on algorithm and region use one of the following values for *<ecr\_path>\.*
 
-[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html)
+**Algorithms**: BlazingText, Image Classification, Object Detection, Semantic Segmentation, Seq2Seq, and XGBoost \(0\.72\)
+
+
+| AWS Region | Training image and inference image registry path | 
+| --- | --- | 
+| us\-west\-1 | 632365934929\.dkr\.ecr\.us\-west\-1\.amazonaws\.com | 
+| us\-west\-2 | 433757028032\.dkr\.ecr\.us\-west\-2\.amazonaws\.com | 
+| us\-east\-1 | 811284229777\.dkr\.ecr\.us\-east\-1\.amazonaws\.com | 
+| us\-east\-2 | 825641698319\.dkr\.ecr\.us\-east\-2\.amazonaws\.com | 
+| ap\-east\-1 | 286214385809\.dkr\.ecr\.ap\-east\-1\.amazonaws\.com | 
+| ap\-northeast\-1 | 501404015308\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com | 
+| ap\-northeast\-2 | 306986355934\.dkr\.ecr\.ap\-northeast\-2\.amazonaws\.com | 
+| ap\-south\-1 | 991648021394\.dkr\.ecr\.ap\-south\-1\.amazonaws\.com | 
+| ap\-southeast\-1 | 475088953585\.dkr\.ecr\.ap\-southeast\-1\.amazonaws\.com | 
+| ap\-southeast\-2 | 544295431143\.dkr\.ecr\.ap\-southeast\-2\.amazonaws\.com | 
+| ca\-central\-1 | 469771592824\.dkr\.ecr\.ca\-central\-1\.amazonaws\.com | 
+| cn\-north\-1 | 390948362332\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn | 
+| cn\-northwest\-1 | 387376663083\.dkr\.ecr\.cn\-northwest\-1\.amazonaws\.com\.cn | 
+| eu\-central\-1 | 813361260812\.dkr\.ecr\.eu\-central\-1\.amazonaws\.com | 
+| eu\-north\-1 | 669576153137\.dkr\.ecr\.eu\-north\-1\.amazonaws\.com | 
+| eu\-west\-1 | 685385470294\.dkr\.ecr\.eu\-west\-1\.amazonaws\.com | 
+| eu\-west\-2 | 644912444149\.dkr\.ecr\.eu\-west\-2\.amazonaws\.com | 
+| eu\-west\-3 | 749696950732\.dkr\.ecr\.eu\-west\-3\.amazonaws\.com | 
+| me\-south\-1 | 249704162688\.dkr\.ecr\.me\-south\-1\.amazonaws\.com | 
+| sa\-east\-1 | 855470959533\.dkr\.ecr\.sa\-east\-1\.amazonaws\.com | 
+| us\-gov\-west\-1 | 226302683700\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com | 
+
+**Algorithms**: DeepAR Forecasting
+
+
+| AWS Region | Training image and inference image registry path | 
+| --- | --- | 
+| us\-west\-1 | 632365934929\.dkr\.ecr\.us\-west\-1\.amazonaws\.com | 
+| us\-west\-2 | 156387875391\.dkr\.ecr\.us\-west\-2\.amazonaws\.com | 
+| us\-east\-1 | 522234722520\.dkr\.ecr\.us\-east\-1\.amazonaws\.com | 
+| us\-east\-2 | 566113047672\.dkr\.ecr\.us\-east\-2\.amazonaws\.com | 
+| ap\-east\-1 | 286214385809\.dkr\.ecr\.ap\-east\-1\.amazonaws\.com | 
+| ap\-northeast\-1 | 633353088612\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com | 
+| ap\-northeast\-2 | 204372634319\.dkr\.ecr\.ap\-northeast\-2\.amazonaws\.com | 
+| ap\-south\-1 | 991648021394\.dkr\.ecr\.ap\-south\-1\.amazonaws\.com | 
+| ap\-southeast\-1 | 475088953585\.dkr\.ecr\.ap\-southeast\-1\.amazonaws\.com | 
+| ap\-southeast\-2 | 514117268639\.dkr\.ecr\.ap\-southeast\-2\.amazonaws\.com | 
+| ca\-central\-1 | 469771592824\.dkr\.ecr\.ca\-central\-1\.amazonaws\.com | 
+| cn\-north\-1 | 390948362332\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn | 
+| cn\-northwest\-1 | 387376663083\.dkr\.ecr\.cn\-northwest\-1\.amazonaws\.com\.cn | 
+| eu\-north\-1 | 669576153137\.dkr\.ecr\.eu\-north\-1\.amazonaws\.com | 
+| eu\-central\-1 | 495149712605\.dkr\.ecr\.eu\-central\-1\.amazonaws\.com | 
+| eu\-west\-1 | 224300973850\.dkr\.ecr\.eu\-west\-1\.amazonaws\.com | 
+| eu\-west\-2 | 644912444149\.dkr\.ecr\.eu\-west\-2\.amazonaws\.com | 
+| eu\-west\-3 | 749696950732\.dkr\.ecr\.eu\-west\-3\.amazonaws\.com | 
+| me\-south\-1 | 249704162688\.dkr\.ecr\.me\-south\-1\.amazonaws\.com | 
+| sa\-east\-1 | 855470959533\.dkr\.ecr\.sa\-east\-1\.amazonaws\.com | 
+| us\-gov\-west\-1 | 226302683700\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com | 
+
+**Algorithms**: Factorization Machines, IP Insights, k\-means, k\-nearest\-neighbor, Linear Learner, Object2Vec, Neural Topic Model,PCA, and Random Cut Forest
+
+
+| AWS Region | Training image and inference image registry path | 
+| --- | --- | 
+| us\-west\-1 | 632365934929\.dkr\.ecr\.us\-west\-1\.amazonaws\.com | 
+| us\-west\-2 | 174872318107\.dkr\.ecr\.us\-west\-2\.amazonaws\.com | 
+| us\-east\-1 | 382416733822\.dkr\.ecr\.us\-east\-1\.amazonaws\.com | 
+| us\-east\-2 | 404615174143\.dkr\.ecr\.us\-east\-2\.amazonaws\.com | 
+| ap\-east\-1 | 286214385809\.dkr\.ecr\.ap\-east\-1\.amazonaws\.com | 
+| ap\-northeast\-1 | 351501993468\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com | 
+| ap\-northeast\-2 | 835164637446\.dkr\.ecr\.ap\-northeast\-2\.amazonaws\.com | 
+| ap\-south\-1 | 991648021394\.dkr\.ecr\.ap\-south\-1\.amazonaws\.com | 
+| ap\-southeast\-1 | 475088953585\.dkr\.ecr\.ap\-southeast\-1\.amazonaws\.com | 
+| ap\-southeast\-2 | 712309505854\.dkr\.ecr\.ap\-southeast\-2\.amazonaws\.com | 
+| ca\-central\-1 | 469771592824\.dkr\.ecr\.ca\-central\-1\.amazonaws\.com | 
+| cn\-north\-1 | 390948362332\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn | 
+| cn\-northwest\-1 | 387376663083\.dkr\.ecr\.cn\-northwest\-1\.amazonaws\.com\.cn | 
+| eu\-central\-1 | 664544806723\.dkr\.ecr\.eu\-central\-1\.amazonaws\.com | 
+| eu\-north\-1 | 669576153137\.dkr\.ecr\.eu\-north\-1\.amazonaws\.com | 
+| eu\-west\-1 | 438346466558\.dkr\.ecr\.eu\-west\-1\.amazonaws\.com | 
+| eu\-west\-2 | 644912444149\.dkr\.ecr\.eu\-west\-2\.amazonaws\.com | 
+| eu\-west\-3 | 749696950732\.dkr\.ecr\.eu\-west\-3\.amazonaws\.com | 
+| me\-south\-1 | 249704162688\.dkr\.ecr\.me\-south\-1\.amazonaws\.com | 
+| sa\-east\-1 | 855470959533\.dkr\.ecr\.sa\-east\-1\.amazonaws\.com | 
+| us\-gov\-west\-1 | 226302683700\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com | 
+
+**Algorithms**: Latent Dirichlet Allocation \(LDA\)
+
+
+| AWS Region | Training image and inference image registry path | 
+| --- | --- | 
+| us\-west\-1 | 632365934929\.dkr\.ecr\.us\-west\-1\.amazonaws\.com | 
+| us\-west\-2 | 266724342769\.dkr\.ecr\.us\-west\-2\.amazonaws\.com | 
+| us\-east\-1 | 766337827248\.dkr\.ecr\.us\-east\-1\.amazonaws\.com | 
+| us\-east\-2 | 999911452149\.dkr\.ecr\.us\-east\-2\.amazonaws\.com | 
+| ap\-northeast\-1 | 258307448986\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com | 
+| ap\-northeast\-2 | 293181348795\.dkr\.ecr\.ap\-northeast\-2\.amazonaws\.com | 
+| ap\-south\-1 | 991648021394\.dkr\.ecr\.ap\-south\-1\.amazonaws\.com | 
+| ap\-southeast\-1 | 475088953585\.dkr\.ecr\.ap\-southeast\-1\.amazonaws\.com | 
+| ap\-southeast\-2 | 297031611018\.dkr\.ecr\.ap\-southeast\-2\.amazonaws\.com | 
+| ca\-central\-1 | 469771592824\.dkr\.ecr\.ca\-central\-1\.amazonaws\.com | 
+| eu\-central\-1 | 353608530281\.dkr\.ecr\.eu\-central\-1\.amazonaws\.com | 
+| eu\-west\-1 | 999678624901\.dkr\.ecr\.eu\-west\-1\.amazonaws\.com | 
+| eu\-west\-2 | 644912444149\.dkr\.ecr\.eu\-west\-2\.amazonaws\.com | 
+| us\-gov\-west\-1 | 226302683700\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com | 
+
+**Algorithms**: XGBoost \(0\.90\)
+
+
+| AWS Region | Training image and inference image registry path | 
+| --- | --- | 
+| us\-west\-1 | 746614075791\.dkr\.ecr\.us\-west\-1\.amazonaws\.com | 
+| us\-west\-2 | 246618743249\.dkr\.ecr\.us\-west\-2\.amazonaws\.com | 
+| us\-east\-1 | 683313688378\.dkr\.ecr\.us\-east\-1\.amazonaws\.com | 
+| us\-east\-2 | 257758044811\.dkr\.ecr\.us\-east\-2\.amazonaws\.com | 
+| ap\-northeast\-1 | 354813040037\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com | 
+| ap\-northeast\-2 | 366743142698\.dkr\.ecr\.ap\-northeast\-2\.amazonaws\.com | 
+| ap\-southeast\-1 | 121021644041\.dkr\.ecr\.ap\-southeast\-1\.amazonaws\.com | 
+| ap\-southeast\-2 | 783357654285\.dkr\.ecr\.ap\-southeast\-2\.amazonaws\.com | 
+| ap\-south\-1 | 720646828776\.dkr\.ecr\.ap\-south\-1\.amazonaws\.com | 
+| ap\-east\-1 | 651117190479\.dkr\.ecr\.ap\-east\-1\.amazonaws\.com | 
+| ca\-central\-1 | 341280168497\.dkr\.ecr\.ca\-central\-1\.amazonaws\.com | 
+| cn\-north\-1 | 450853457545\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn | 
+| cn\-northwest\-1 | 451049120500\.dkr\.ecr\.cn\-northwest\-1\.amazonaws\.com\.cn | 
+| eu\-central\-1 | 492215442770\.dkr\.ecr\.eu\-central\-1\.amazonaws\.com | 
+| eu\-north\-1 | 662702820516\.dkr\.ecr\.eu\-north\-1\.amazonaws\.com | 
+| eu\-west\-1 | 141502667606\.dkr\.ecr\.eu\-west\-1\.amazonaws\.com | 
+| eu\-west\-2 | 764974769150\.dkr\.ecr\.eu\-west\-2\.amazonaws\.com | 
+| eu\-west\-3 | 659782779980\.dkr\.ecr\.eu\-west\-3\.amazonaws\.com | 
+| me\-south\-1 | 801668240914\.dkr\.ecr\.me\-south\-1\.amazonaws\.com | 
+| sa\-east\-1 | 737474898029\.dkr\.ecr\.sa\-east\-1\.amazonaws\.com | 
+| us\-gov\-west\-1 | 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com | 
 
 Use the paths and training input mode as follows:
 + To create a training job \(with a request to the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) API\), specify the Docker Registry path and the training input mode for the training image\. You create a training job to train a model using a specific dataset\. 

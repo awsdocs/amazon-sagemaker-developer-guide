@@ -32,7 +32,7 @@ Once your user pool has been created, follow the steps below to create a private
 
 1. Choose a user group from your pool to import its members\. 
 
-1. Optionally choose an Amazon Simple Notification Service \(Amazon SNS\) topic to which to subscribe the team so that workers are notified by email when new labeling jobs become available\. 
+1. Optionally choose an Amazon Simple Notification Service \(Amazon SNS\) topic to which to subscribe the team so that workers are notified by email when new labeling jobs become available\. Amazon SNS notifications are supported by Ground Truth and are not supported by Augmented AI\. If you subscribe workers to receive SNS notifications, they will only receive notifications about Ground Truth labeling jobs\. They will not receive notifications about Augmented AI tasks\. 
 
 1. Choose **Create private team**\. 
 

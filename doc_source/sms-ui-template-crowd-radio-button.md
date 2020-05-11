@@ -2,10 +2,15 @@
 
 A button that can be either checked or unchecked\. When radio buttons are inside a radio group, exactly one radio button in the group can be checked at any time\. The following is an example of how to configure a `crowd-radio-button` element inside of a `crowd-radio-group` element\.
 
+The following is an example of the syntax that you can use with the `<crowd-radio-button>` element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+
 ```
- <crowd-radio-group>
-        <crowd-radio-button name="tech" value="tech">Technology</crowd-radio-button>
-        <crowd-radio-button name="politics" value="politics">Politics</crowd-radio-button>
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+<crowd-form>
+<crowd-radio-group>
+    <crowd-radio-button name="tech" value="tech">Technology</crowd-radio-button>
+    <crowd-radio-button name="politics" value="politics">Politics</crowd-radio-button>
+</crowd-form>
 </crowd-radio-group>
 ```
 
@@ -62,5 +67,5 @@ Outputs an object with the following pattern: `{ "<name>": { "<value>": <true or
 ### See Also<a name="radio-button-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth for Labeling](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [HTML Elements Reference](sms-ui-template-reference.md)

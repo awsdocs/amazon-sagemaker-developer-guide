@@ -1,4 +1,4 @@
-# Amazon SageMaker Studio Tour<a name="gs-studio-end-to-end"></a>
+# Amazon SageMaker Studio tour<a name="gs-studio-end-to-end"></a>
 
 This example shows how to use the main features of Amazon SageMaker Studio\. The example is based on the [https://github\.com/awslabs/amazon\-sagemaker\-examples/blob/master/aws\_sagemaker\_studio/getting\_started/xgboost\_customer\_churn\_studio\.ipynb](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/aws_sagemaker_studio/getting_started/xgboost_customer_churn_studio.ipynb) sample Jupyter notebook\. You must run this sample notebook in Studio\.
 
@@ -6,9 +6,9 @@ For a series of videos that shows how to use the main features of Amazon SageMak
 
 **Prerequisites**
 
-To run the code for this tour, you need: 
+To run the code for this tour, you need:
 + An AWS SSO or IAM account to sign on to Studio\. For information, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
-+ A copy of the [awslabs/amazon\-sagemaker\-examples](https://github.com/awslabs/amazon-sagemaker-examples) repository in your Studio environment\.
++ A copy of the [awslabs/amazon\-sagemaker\-examples](https://github.com/awslabs/amazon-sagemaker-examples) repository in your Studio environment
 
 **To start the tour**
 
@@ -33,9 +33,9 @@ To run the code for this tour, you need:
 
 Amazon SageMaker Studio notebooks are collaborative Jupyter notebooks that are built into Amazon SageMaker Studio\. You can launch Studio notebooks without setting up compute instances and file storage, so you can get started fast\. You pay only for the resources used when you run the notebooks\.
 
-You can share notebooks with others in your organization, so that they can easily reproduce your results and collaborate while building models and exploring your data\. Dependencies for your notebook are included in the notebooks’ environment settings by default, so sharing is seamless\. When you share a notebook, Studio publishes a reproducible snapshot of your notebook environments\. It provides your collaborators access to the notebook through a secure URL\.
+You can share notebooks with others in your organization, so that they can easily reproduce your results and collaborate while building models and exploring your data\. By default, metadata for the image that you used with your notebook is included in the notebook's image settings\. It provides your colleagues access to the notebook through a secure URL\. When they copy and edit the notebook, the same image that you used will be selected by default\. If you make any changes to the image \(for example, conda or pip installs\), these are not shared\.
 
-For more information about Amazon SageMaker Studio notebooks, see [Use Amazon SageMaker Notebooks](notebooks.md)\.
+For more information about Amazon SageMaker Studio notebooks, see [Use Amazon SageMaker Studio Notebooks](notebooks.md)\.
 
 **To open the notebook**
 
@@ -43,14 +43,14 @@ For more information about Amazon SageMaker Studio notebooks, see [Use Amazon Sa
 
 1. Choose the file browser icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/File_browser_squid.png) \)\.
 
-1. Navigate to `amazon-sagemaker-examples/aws_sagemaker_studio_getting_started`\.
+1. Navigate to `amazon-sagemaker-examples/aws_sagemaker_studio/getting_started`\.
 
 1. Choose **xgboost\_customer\_churn\_studio\.ipynb**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio_notebook.png)
 
 ## Keep Track of Machine Learning Experiments<a name="studio-tour-experiments"></a>
 
-Organize, track, compare, and evaluate your machine learning experiments with Amazon SageMaker Experiments\. When you create a training job in Amazon SageMaker, you can include code that creates a *trial* for the job and associates the trial with an experiment\. You can then use Amazon SageMaker Studio to organize and track your experiments\. For more information about how to use Amazon SageMaker Experiments, see [Track and Evaluate a Model Training Experiment](experiments-mnist.md)\.
+Organize, track, compare, and evaluate your machine learning experiments with Amazon SageMaker Experiments\. When you create a training job in Amazon SageMaker, you can include code that creates a *trial* for the job and associates the trial with an experiment\. You can then use Amazon SageMaker Studio to organize and track your experiments\. For more information about how to use Amazon SageMaker Experiments, see [Track and compare trials in Amazon SageMaker Studio](experiments-mnist.md)\.
 
 **To create an experiment with training trials**
 

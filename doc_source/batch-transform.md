@@ -30,7 +30,7 @@ Record3-Attribute1, Record3-Attribute2, Record3-Attribute3, ..., Record3-Attribu
 RecordN-Attribute1, RecordN-Attribute2, RecordN-Attribute3, ..., RecordN-AttributeM
 ```
 
-When a batch transform job starts, Amazon SageMaker initializes compute instances and distributes the inference or preprocessing workload between them\. When you have multiples files, one instance might process `input1.csv`, and another instance might process the file named `input2.csv`\. 
+When a batch transform job starts, Amazon SageMaker initializes compute instances and distributes the inference or preprocessing workload between them\. Batch Transform partitions the Amazon S3 objects in the input by key and maps Amazon S3 objects to instances\. When you have multiples files, one instance might process `input1.csv`, and another instance might process the file named `input2.csv`\. 
 
 To keep large payloads below the [ `MaxPayloadInMB `](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html#SageMaker-CreateTransformJob-request-MaxPayloadInMB             ) limit, you can split an input file into several mini\-batches\. For example, you might create a mini\-batch from `input1.csv` by including only two of the records\.
 
@@ -53,7 +53,7 @@ Inference1-Attribute1, Inference1-Attribute2, Inference1-Attribute3, ..., Infere
 Inference2-Attribute1, Inference2-Attribute2, Inference2-Attribute3, ..., Inference2-AttributeM
 Inference3-Attribute1, Inference3-Attribute2, Inference3-Attribute3, ..., Inference3-AttributeM
 ...
-InferenceN-Attribute1, Inference3-Attribute2, Inference3-Attribute3, ..., InferenceN-AttributeM
+InferenceN-Attribute1, InferenceN-Attribute2, InferenceN-Attribute3, ..., InferenceN-AttributeM
 ```
 
 To combine the results of multiple output files into a single output file, set the [ `AssembleWith`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformOutput.html#SageMaker-Type-TransformOutput-AssembleWith             ) parameter to `Line`\.

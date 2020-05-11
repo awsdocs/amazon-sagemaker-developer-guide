@@ -6,6 +6,8 @@ The following is an example of an HTML worker task template built using `crowd-c
 + Label categories in the `categories` parameter 
 + The objects that are being classified in the `classification-target` parameter\. 
 
+Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
 
@@ -89,5 +91,5 @@ The following is a sample of output from this element\.
 ### See Also<a name="crowd-classifier-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth for Labeling](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [HTML Elements Reference](sms-ui-template-reference.md)

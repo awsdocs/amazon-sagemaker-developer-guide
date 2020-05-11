@@ -1,12 +1,5 @@
 # Permissions and Security in Amazon Augmented AI<a name="a2i-permissions-security"></a>
 
-
-****  
-
-|  | 
-| --- |
-|  Amazon Augmented AI is in preview release and is subject to change\. We do not recommend using this product in production environments\. | 
-
 When using Amazon Augmented AI \(Amazon A2I\) to create a human review workflow for your ML/AI application, you create and configure *resources* in Amazon SageMaker such as a human workforce and worker task templates\. To configure and start a human loop, you will either integrate Amazon A2I with other AWS services such as Amazon Textract or Amazon Rekognition or use the Amazon Augmented AI Runtime API\. To create a human review workflow and start a human loop, you will need to attach certain policies to your AWS Identity and Access Management\(IAM\) role or user\. Specifically: 
 + When you create a flow definition, you need to provide a role that grants Amazon A2I permission to access Amazon S3 both for reading objects that will be rendered in a human task UI and for writing the results of the human review\. 
 
@@ -129,7 +122,7 @@ To preview your template, you need an IAM role with the following permissions to
 ```
 
 For Amazon Rekognition and Amazon Textract task types, you can preview your template using the Amazon Augmented AI section of the Amazon SageMaker console\. For custom task types, you preview your template by invoking the [ `RenderUiTemplate`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RenderUiTemplate.html) operation\. To preview your template, follow the instructions for your task type:
-+  Amazon Rekognition and Amazon Textract task types – In the Amazon SageMaker console, use the role 's Amazon Resource Name \(ARN\) in the procedure documented in [Create a Custom Worker Template \(Console\)](create-worker-template-console.md)\.
++  Amazon Rekognition and Amazon Textract task types – In the Amazon SageMaker console, use the role 's Amazon Resource Name \(ARN\) in the procedure documented in [Create a Custom Worker Template \(Console\)](a2i-create-worker-template-console.md)\.
 + Custom task types – In the `RenderUiTemplate` operation, use the role's ARN in the `RoleArn` parameter\.
 
 ## Additional Permissions and Security Resources<a name="additional-security-resources-augmented-ai"></a>

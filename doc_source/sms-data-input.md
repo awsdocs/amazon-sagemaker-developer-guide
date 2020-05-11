@@ -4,7 +4,7 @@ The input data are the data objects that you send to your workforce to be labele
 
 Input data and the manifest file must be stored in Amazon Simple Storage Service \(Amazon S3\)\. Each has specific storage and access requirements, as follows: :
 + The S3 bucket that contains the input data must be in the same AWS Region in which you are running Amazon SageMaker Ground Truth\. You must give Amazon SageMaker access to the data stored in the S3 bucket so that it can read it\. For more information about S3 buckets, see [ Working with Amazon S3 buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html)\. 
-+ The manifest file must be in the same AWS Region as the data files, but it doesn't need to be in the same location as the data files\. It can be stored in any S3 bucket that is accessible to the AWS Identity and Access Management \(IAMIAM\) role that you assigned to Ground Truth when you created the labeling job\.
++ The manifest file must be in the same AWS Region as the data files, but it doesn't need to be in the same location as the data files\. It can be stored in any S3 bucket that is accessible to the AWS Identity and Access Management \(IAM\) role that you assigned to Ground Truth when you created the labeling job\.
 
 The manifest is a UTF\-8 encoded file where each line is a complete and valid JSON object\. Each line is delimited by a standard line break, \\n or \\r\\n\. Because each line must be a valid JSON object, you can't have unescaped line break characters\. For more information about data format, see [JSON Lines](http://jsonlines.org/)\.
 
@@ -72,13 +72,13 @@ Input files can't exceed the following size\- quotas for both active and non\-ac
 | --- | --- | 
 | Image classification | 12 MB | 
 | Object detection \(Bounding box\)  | 12 MB | 
-| Semantic segmentation | 6 MB | 
+| Semantic segmentation | 12 MB | 
 | Image classification label adjustment | 12 MB | 
 | Object detection label adjustment | 12 MB | 
-| Semantic segmentation label adjustment | 6 MB | 
+| Semantic segmentation label adjustment | 12 MB | 
 | Image classification label verification | 12 MB | 
 | Object detection label verification | 12 MB | 
-| Semantic segmentation label verification | 6 MB | 
+| Semantic segmentation label verification | 12 MB | 
 
 ### Input Image Resolution Quotas<a name="non-active-learning-input-data-limits"></a>
 
@@ -87,15 +87,15 @@ Image file resolution refers to the number of pixels in an image, and determines
 
 | Labeling Job | **Resolution Quota \- Non Active Learning** | Resolution Quota \- Active Learning | 
 | --- | --- | --- | 
-| Image classification | 7680 × 4320 pixels \(8 KB\) | 3840 x 2160 pixels \(4 KB\) | 
-| Object detection \(Bounding box\) | 7680 × 4320 pixels \(8 KB\) | 3840 x 2160 pixels \(4 KB\) | 
-| Semantic segmentation | 3840 x 2160 pixels \(4 KB\) | 1920 x 1080 pixels \(1080 p\) | 
-| Image classification label adjustment | 7680 × 4320 pixels \(8 KB\) | 3840 x 2160 pixels \(4 KB\) | 
-| Object detection label adjustment | 7680 × 4320 pixels \(8 KB\) | 3840 x 2160 pixels \(4 KB\) | 
-| Semantic segmentation label adjustment | 3840 x 2160 pixels \(4 KB\) | 1920 x 1080 pixels \(1080 p\) | 
-| Image classification label verification | 7680 × 4320 pixels \(8 KB\) | Not available | 
-| Object detection label verification | 7680 × 4320 pixels \(8 KB\) | Not available | 
-| Semantic segmentation label verification | 3840 x 2160 pixels \(4 KB\) | Not available | 
+| Image classification | 7680 × 4320 pixels \(8 K\) | 3840 x 2160 pixels \(4 K\) | 
+| Object detection \(Bounding box\) | 7680 × 4320 pixels \(8 K\) | 3840 x 2160 pixels \(4 K\) | 
+| Semantic segmentation | 7680 × 4320 pixels \(8 K\) | 1920 x 1080 pixels \(1080 p\) | 
+| Image classification label adjustment | 7680 × 4320 pixels \(8 K\) | 3840 x 2160 pixels \(4 K\) | 
+| Object detection label adjustment | 7680 × 4320 pixels \(8 K\) | 3840 x 2160 pixels \(4 K\) | 
+| Semantic segmentation label adjustment | 7680 × 4320 pixels \(8 K\) | 1920 x 1080 pixels \(1080 p\) | 
+| Image classification label verification | 7680 × 4320 pixels \(8 K\) | Not available | 
+| Object detection label verification | 7680 × 4320 pixels \(8 K\) | Not available | 
+| Semantic segmentation label verification | 7680 × 4320 pixels \(8 K\) | Not available | 
 
 **Note**  
 Active learning isn't available for label verification jobs\.

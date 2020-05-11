@@ -1,32 +1,33 @@
 # Get Started<a name="notebooks-get-started"></a>
 
+ To get started, you or your organization's administrator need to complete the SageMaker Studio onboarding process\. You can use either of the following authentication modes: AWS Single Sign\-On \(AWS SSO\) or AWS Identity and Access Management \(IAM\)\. When choosing the appropriate method for your team, you must carefully consider the advantages of each method\. Switching to another authentication method after you set up the domain requires a manual migration of the team's notebooks so you want to make sure you choose the appropriate method at the start\. For more information, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\. 
 
-****  
+ You can access an Amazon SageMaker Studio notebook in any of the following ways: 
++ You receive an email invitation to access Studio through your organization's AWS SSO account, which includes a direct link to login to Studio without having to use the Amazon SageMaker console\. You can proceed to the [Next Steps](#notebooks-get-started-next-steps)\.
++ You receive a link to a shared Studio notebook, which includes a direct link to log in to Studio without having to use the Amazon SageMaker console\. You can proceed to the [Next Steps](#notebooks-get-started-next-steps)\. 
++ You onboard to Studio and then log in to the Amazon SageMaker console\. For more information, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
 
-|  | 
-| --- |
-| Amazon SageMaker Studio Notebooks is in preview release and is subject to change\. | 
+## Log In from the Amazon SageMaker console<a name="notebooks-get-started-log-in"></a>
 
- To get started with Amazon SageMaker Studio notebooks you need to set up AWS SSO if you haven’t already\. You don’t have to be in an organization to use AWS SSO\. You can sign up as an individual or as an enterprise\. The process is similar except enterprises have the option of batch loading their users from their existing AWS SSO organization\. 
+**To log in from the Amazon SageMaker console**
 
- If your organization has already set up a team and you were invited to join the organization or view a specific notebook, you can log in and use the Amazon SageMaker Studio dashboard\. From there you can try a tutorial that walks you through all of the features of Amazon SageMaker Studio, including how to use Amazon SageMaker Studio notebooks\. 
+1. Onboard to Amazon SageMaker Studio\. If you've already onboarded, skip to the next step\.
 
-## Login<a name="notebooks-get-started-login"></a>
-
- Logging in to an Amazon SageMaker notebook is the same as logging in to Amazon SageMaker Studio\. When you receive a shared notebook or if you want to create a new notebook, or run experiments, it is all the same process\. Use the console or the link provided to you in an invite email to log in to Amazon SageMaker Studio\. 
-
-**To log in from the console**
-
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/]()\. 
+1. Open the Amazon SageMaker [console](https://console.aws.amazon.com/sagemaker/)\.
 
 1. Choose **Amazon SageMaker Studio**\.
 
-1. You should see an Amazon SageMaker Studio landing page\. 
+1. The Amazon SageMaker Studio Control Panel opens\.
 
-1. If your admin has completed the setup, you will see two sections: 
-   + **Summary** section that shows your team’s domain URL and the status of the domain\. 
-   + In the **Profile** section under the **Summary**, you can access notebooks and manage profiles\. 
+1. In the Amazon SageMaker Studio Control Panel, you'll see two sections:
+   + A list of user names\.
+   + A **Studio Summary** section that shows the **Status** of Amazon SageMaker Studio, the **Studio ID**, and the **Authentication method**\.
 
-   Choose your profile name, and then choose **Open Amazon SageMaker Studio**\. In the JupyterLab UI, you can open an existing notebook or create notebooks\. 
+1. Next to your user name, choose **Open Studio**\.
 
-    If you can’t log in or you didn’t receive an invitation in email, you must contact your organization’s administrator\. For password reset and account recovery instructions, see the [SSO guide](/singlesignon/latest/userguide/resetuserpwd.html)\. 
+## Next Steps<a name="notebooks-get-started-next-steps"></a>
+
+Now that you're in Studio, you can try any of the following options:
++ Create a Amazon SageMaker Studio notebook – Continue to the next section\.
++ Familiarize yourself with the Amazon SageMaker Studio interface – See [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
++ Follow a Studio end\-to\-end tutorial – See [Amazon SageMaker Studio tour](gs-studio-end-to-end.md)\.

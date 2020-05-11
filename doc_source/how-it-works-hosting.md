@@ -1,6 +1,12 @@
 # Deploy a Model on Amazon SageMaker Hosting Services<a name="how-it-works-hosting"></a>
 
-Amazon SageMaker also provides model hosting services for model deployment, as shown in the following diagram\. Amazon SageMaker provides an HTTPS endpoint where your machine learning model is available to provide inferences\. 
+For an example of how to deploy a model to the Amazon SageMaker hosting service, see [Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services](ex1-deploy-model.md)\.
+
+Or, if you prefer, watch the following video tutorial:
+
+[![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/KFuc2KWrTHs?list=PLhr1KZpdzukcOr_6j_zmSrvYnLUtgqsZz/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/KFuc2KWrTHs?list=PLhr1KZpdzukcOr_6j_zmSrvYnLUtgqsZz)
+
+Amazon SageMaker provides model hosting services for model deployment, as shown in the following diagram\. Amazon SageMaker provides an HTTPS endpoint where your machine learning model is available to provide inferences\. 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sagemaker-architecture.png)
 

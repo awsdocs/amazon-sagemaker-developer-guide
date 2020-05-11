@@ -14,7 +14,7 @@ I have a Chainer model that I trained in Amazon SageMaker, and I want to deploy 
 I have a Chainer model that I trained outside of Amazon SageMaker, and I want to deploy it to an Amazon SageMaker endpoint  
 [Deploy Endpoints from Model Data](https://sagemaker.readthedocs.io/en/stable/using_chainer.html#deploy-endpoints-from-model-data)\.
 
-I want to see the API documentation for Amazon SageMaker Python SDK Chainer classes\.  
+I want to see the API documentation for [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) Chainer classes\.  
 [Chainer Classes](https://sagemaker.readthedocs.io/en/stable/sagemaker.chainer.html)
 
 I want to see information about Amazon SageMaker Chainer containers\.  

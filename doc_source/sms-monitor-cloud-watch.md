@@ -77,7 +77,7 @@ After you have created a rule, events similar to the following are sent to Cloud
     "id": "111e1111-11d1-111f-b111-1111b11dcb11",
     "detail-type": "SageMaker Ground Truth Labeling Job State Change",
     "source": "aws.sagemaker",
-    "account": "123456789012",
+    "account": "111122223333",
     "time": "2018-10-06T12:26:13Z",
     "region": "us-east-1",
     "resources": [
@@ -103,7 +103,7 @@ To process events, you need to set up a target\. For example, if you want to rec
 
 1. Under **Targets**, choose **Add Target** and choose the AWS service you want to act when a labeling job status change event is detected\. 
 
-1. Configure your target\. For instructions, see the topic for configuring a target in the [AWS documentation for that service](https://docs.aws.amazon.com/)\.
+1. Configure your target\. For instructions, see the topic for configuring a target in the [AWS documentation for that service](https://docs.aws.amazon.com/index.html)\.
 
 1. Choose **Configure details**\.
 

@@ -98,7 +98,7 @@ The output from each job contains metadata about the label assigned to data obje
 
 The elements have the following meaning:
 + `confidence` – The confidence that Ground Truth has that the label is correct\. For more information, see [Confidence Score](#sms-output-confidence)\.
-+ `type` – The type of classification job\. For job types, see [Built in Task Types](sms-task-types.md)\. 
++ `type` – The type of classification job\. For job types, see [Built\-in Task Types](sms-task-types.md)\. 
 + `job-name` – The name assigned to the job when it was created\.
 + `human-annotated` – Indicates whether the data object was labeled by a human or by automated data labeling\. For more information, see [Automate Data Labeling](sms-automated-labeling.md)\.
 + creation\-date`` – The date and time that the label was created\.
@@ -145,52 +145,52 @@ In addition to the standard metadata elements, the metadata for a classification
 
 The following are example output manifest files from a multi\-label image classification job and a multi\-label text classification job\. They include the labels that Ground Truth assigned to the data object \(for example the image or piece of text\) and metadata that describes the labels the the worker saw when completing the labeling task\. 
 
-The label attribute name parameter \(for example, `image-label-attribute-name`\) contains an array of all of the labels that were selected by at least one of the workers who completed this task\. This array contains integer keys \(for example, `[1,0,8]`\) that correspond to the labels found in `class-map`\. In the multi\-label image classification example, `bicycle`, `person`, and `clothing` were selected by at least one of the workers who completed the labeling task for the image found in `source-ref`\.
+The label attribute name parameter \(for example, `image-label-attribute-name`\) contains an array of all of the labels that were selected by at least one of the workers who completed this task\. This array contains integer keys \(for example, `[1,0,8]`\) that correspond to the labels found in `class-map`\. In the multi\-label image classification example, `bicycle`, `person`, and `clothing` were selected by at least one of the workers who completed the labeling task for the image, `exampleimage.jpg`\.
 
-The `confidence-map` shows the confidence\-score that Ground Truth assigned to each label\. It assigns a confidence score to all labels, regardless of whether they were selected by a worker\. To learn more about Ground Truth confidence scores, see [Confidence Score](#sms-output-confidence)\.
+The `confidence-map` shows the confidence\-score that Ground Truth assigned to each label that was selected by a worker\. To learn more about Ground Truth confidence scores, see [Confidence Score](#sms-output-confidence)\.
 
 The following is an example of a multi\-label image classification output manifest file\. 
 
 ```
 {
-    "source-ref": "S3 bucket location",
+    "source-ref": "awsexamplebucket/exampleimage.jpg",
     "image-label-attribute-name":[1,0,8],
     "image-label-attribute-name-metadata":
        {
         "job-name":"labeling-job/image-label-attribute-name",
         "class-map":
             {
-                "1":"bicycle","0":"person","3":"woman","2":"dog","5":"book","4":"table","7":"man","6":"chair","8":"clothing"
+                "1":"bicycle","0":"person","8":"clothing"
             },
         "human-annotated":"yes",
         "creation-date":"2020-02-27T21:36:25.000201",
         "confidence-map":
             {
-                "1":0.95,"0":0.77,"3":0.05,"2":0.05,"5":0.05,"4":0.05,"7":0.05,"6":0.05,"8":0.2
+                "1":0.95,"0":0.77,"8":0.2
             },
         "type":"groundtruth/image-classification-multilabel"
         }
 }
 ```
 
-The following is an example of a multi\-label text classification output manifest file\. 
+The following is an example of a multi\-label text classification output manifest file\. In this example, `approving`, `sad` and `critical` were selected by at least one of the workers who completed the labeling task for the object `exampletext.txt` found in `awsexamplebucket1`\.
 
 ```
 {
-    "source-ref": "S3 bucket location",
+    "source-ref": "awsexamplebucket1/exampletext.txt",
     "text-label-attribute-name":[1,0,4],
     "text-label-attribute-name-metadata":
        {
         "job-name":"labeling-job/text-label-attribute-name",
         "class-map":
             {
-                "1":"approving","0":"sad","3":"confused","2":"angry","4":"critical"
+                "1":"approving","0":"sad","4":"critical"
             },
         "human-annotated":"yes",
         "creation-date":"2020-02-20T21:36:25.000201",
         "confidence-map":
             {
-                "1":0.95,"0":0.77,"3":0.05,"2":0.05,"4":0.2
+                "1":0.95,"0":0.77,"4":0.2
             },
         "type":"groundtruth/text-classification-multilabel"
         }

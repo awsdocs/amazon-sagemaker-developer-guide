@@ -91,7 +91,7 @@ word_vectors.most_similar(positive=['woman', 'king'], negative=['man'])
 word_vectors.doesnt_match("breakfast cereal dinner lunch".split())
 ```
 
-If the evaluation parameter is set to `True`, an additional file, *eval\.json*, is created\. This file contains the similarity evaluation results \(using Spearman’s rank correlation coefficients\) on [WS\-353 dataset](https://www.cs.technion.ac.il/~gabr/resources/data/wordsim353/)\. The number of words from the WS\-353 dataset that aren't there in the training corpus are reported\.
+If the evaluation parameter is set to `True`, an additional file, *eval\.json*, is created\. This file contains the similarity evaluation results \(using Spearman’s rank correlation coefficients\) on WS\-353 dataset\. The number of words from the WS\-353 dataset that aren't there in the training corpus are reported\.
 
 For inference requests, the model accepts a JSON file containing a list of strings and returns a list of vectors\. If the word is not found in vocabulary, inference returns a vector of zeros\. If subwords is set to `True` during training, the model is able to generate vectors for out\-of\-vocabulary \(OOV\) words\.
 

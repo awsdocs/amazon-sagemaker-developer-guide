@@ -1,12 +1,5 @@
 # Onboard to Amazon SageMaker Studio Using AWS SSO<a name="onboard-sso-users"></a>
 
-
-****  
-
-|  | 
-| --- |
-| Amazon SageMaker Studio Notebooks is in preview release and is subject to change\. | 
-
 **Note**  
 Amazon SageMaker Studio is available only in specific AWS Regions\. To view the list of supported Regions, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
 
@@ -14,11 +7,11 @@ This procedure describes how to onboard to Amazon SageMaker Studio using AWS SSO
 
 **To onboard to Studio using AWS SSO**
 
-1. Open the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\. 
+1. Open the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
 1. Choose **Amazon SageMaker Studio** at the top left of the page\.
 
-1. On the **Amazon SageMaker Studio** page, under **Get started**, choose **Standard setup**\.
+1. On the **Amazon SageMaker Studio Control Panel**, under **Get started**, choose **Standard setup**\.
 
 1. For **Authentication method**, choose **AWS Single Sign\-On \(SSO\)**\. A message tells you whether you have an AWS SSO account in an AWS Region supported by Amazon SageMaker Studio\.
 
@@ -34,7 +27,7 @@ This procedure describes how to onboard to Amazon SageMaker Studio using AWS SSO
 
 1. Choose **Submit**\.
 
-   On the **Amazon SageMaker Studio Control Panel** page, under **Studio Summary**, the **Status** shows as **Pending** while Studio creates an Amazon SageMaker Studio application in your AWS SSO domain\. When for **Status** changes to **Ready**, the **Assign users** button is enabled\.
+   On the **Amazon SageMaker Studio Control Panel**, under **Studio Summary**, the **Status** shows as **Pending** while Studio creates an Amazon SageMaker Studio application in your AWS SSO domain\. When **Status** changes to **Ready**, the **Assign users** button is enabled\.
 
 1. Choose **Assign users**\. The **Assign users** page opens and displays a list of your organization's members\.
 
@@ -44,6 +37,10 @@ This procedure describes how to onboard to Amazon SageMaker Studio using AWS SSO
 
 **To access Studio after onboarding**
 
-In your browser, go to the **Studio address**\. On the first visit, wait for your user profile to be created\. Then, and on subsequent visits, you only need to wait for Amazon SageMaker Studio to load\.
+After you are given access to Studio, you are sent an email inviting you to create a password and activate your AWS SSO account\. The email also contains the URL to login to Studio\.
+
+After you activate your account, go to the Studio URL, log in, and wait for your user profile to be created\. On subsequent visits, you only need to wait for Studio to load\.
+
+Bookmark the Studio URL\. The URL is also available in the Studio Control Panel\.
 
 For information about using Amazon SageMaker Studio, see [Get Started with Studio](gs-studio.md)\.

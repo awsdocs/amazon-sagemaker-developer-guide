@@ -3,7 +3,7 @@
 ## Overview<a name="api-and-sdk-reference-overview"></a>
 
 Amazon SageMaker provides APIs, SDKs, and a command line interface that you can use to create and manage notebook instances and train and deploy models\. 
-+ [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/) — Recommended\!
++ [https://sagemaker.readthedocs.io/en/stable/](https://sagemaker.readthedocs.io/en/stable/) — Recommended\!
 + [Amazon SageMaker API Reference](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Reference.html)
 + [Amazon Augmented AI API Reference](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/Welcome.html)
 + [AWS Command Line Interface](https://docs.aws.amazon.com/cli/latest/reference/sagemaker/index.html#cli-aws-sagemaker)
@@ -29,7 +29,7 @@ Making API calls directly from code is cumbersome, and requires you to write cod
 + **Modify the example Jupyter notebooks**–Amazon SageMaker provides several Jupyter notebooks that train and deploy models using specific algorithms and datasets\. Start with a notebook that has a suitable algorithm and modify it to accommodate your data source and specific needs\.
 
    
-+ **Write model training and inference code from scratch**–Amazon SageMaker provides multiple AWS SDK languages \(listed in the overview\) and the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/), a high\-level Python library that you can use in your code to start model training jobs and deploy the resulting models\.
++ **Write model training and inference code from scratch**–Amazon SageMaker provides multiple AWS SDK languages \(listed in the overview\) and the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), a high\-level Python library that you can use in your code to start model training jobs and deploy the resulting models\.
 
    
   + **The Amazon SageMaker Python SDK**–This Python library simplifies model training and deployment\. In addition to authenticating your requests, the library abstracts platform specifics by providing simple methods and default parameters\. For example:

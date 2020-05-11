@@ -37,7 +37,7 @@ Each completed task is represented by a log entry, which contains information ab
 
 A useful data point in each event is the `cognito_sub_id`\. You can match that to an individual worker\.
 
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/]( https://console.aws.amazon.com/sagemaker/)\.
+1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
 1. Under the **Ground Truth** section, choose **Workforces**\.
 

@@ -10,9 +10,7 @@ The following sections provide an overview of the user interface and a descripti
 
 For information on the onboarding steps to sign\-on to Amazon SageMaker Studio, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
 
-For a tutorial that demonstrates the basic features of Amazon SageMaker Studio, see [Track and Evaluate a Model Training Experiment](experiments-mnist.md)\.
+For a tutorial that demonstrates the basic features of Amazon SageMaker Studio, see [Track and compare trials in Amazon SageMaker Studio](experiments-mnist.md)\.
 
 **Topics**
-+ [Amazon SageMaker Studio Tour](gs-studio-end-to-end.md)
-+ [Amazon SageMaker Studio UI Overview](gs-studio-ui.md)
-+ [Amazon SageMaker Studio Features](studio-features.md)
++ [Amazon SageMaker Studio tour](gs-studio-end-to-end.md)

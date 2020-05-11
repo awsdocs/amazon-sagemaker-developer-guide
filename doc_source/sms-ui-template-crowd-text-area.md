@@ -2,6 +2,23 @@
 
 A field for text input\.
 
+The following is an example of a Liquid template designed to transcribe audio clips that uses the `<crowd-text-area>` element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+
+```
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<crowd-form>
+  <audio controls>
+      <source src="{{ task.input.taskObject | grant_read_access }}" type="audio/mpeg">
+      Your browser does not support the audio element.
+  </audio>
+  <h3>Instructions</h3>
+  <p>Transcribe the audio</p>
+  <p>Ignore "umms", "hmms", "uhs" and other non-textual phrases</p>
+  <crowd-text-area name="transcription" rows="4"></crowd-text-area>
+</crowd-form>
+```
+
 ### Attributes<a name="text-area-attributes"></a>
 
 The following attributes are supported by this element\.
@@ -79,5 +96,5 @@ This element outputs the `name` as a property name and the element's text conten
 ### See Also<a name="text-area-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth for Labeling](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [HTML Elements Reference](sms-ui-template-reference.md)

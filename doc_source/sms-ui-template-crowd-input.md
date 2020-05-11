@@ -5,6 +5,27 @@ A box that accepts input data\.
 **Cannot be self\-closing**  
 Unlike the `input` element in the HTML standard, this element cannot be self\-closed by putting a slash before the ending bracket, e\.g\. `<crowd-input ... />`\. It must be followed with a `</crowd-input>` to close the element\.
 
+The following is an example of a Liquid template that uses the `<crowd-input>` element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+
+```
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<crowd-form>
+  <img style="max-width: 35vw; max-height: 50vh" src="{{ task.input.taskObject | grant_read_access }}">
+  <crowd-input name="tag1" label="Word/phrase 1" required></crowd-input>
+  <crowd-input name="tag2" label="Word/phrase 2" required></crowd-input>
+  <crowd-input name="tag3" label="Word/phrase 3" required></crowd-input>
+
+  <short-instructions>
+    Your custom quick instructions and examples
+  </short-instructions>
+
+  <full-instructions>
+    Your custom detailed instracutions and more examples
+  </full-instructions>
+</crowd-form>
+```
+
 ### Attributes<a name="input-attributes"></a>
 
 The following attributes are supported by this element\.
@@ -96,5 +117,5 @@ This means any code built to parse these results should be able to handle the pr
 ### See Also<a name="input-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth for Labeling](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [HTML Elements Reference](sms-ui-template-reference.md)

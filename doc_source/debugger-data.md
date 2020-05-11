@@ -1,15 +1,15 @@
 # Save Tensor Data for Debugger<a name="debugger-data"></a>
 
-Tensors define the state of the training job at any particular instant in its lifecycle\. Amazon SageMaker Debugger provides the `smdebug` library, which allows you to monitor these tensors, save them, and analyze them to evaluate model training\. Tensors can be grouped into collections to help manage them\. Debugger gives you a powerful and flexible API to save the tensors you choose at the frequencies you want\. These configurations are made available in the Amazon SageMaker Python SDK through the `DebuggerHookConfig` class\.
+*Tensors* define the state of a training job at any particular point in its lifecycle\. To monitor tensors or to save and analyze them to evaluate model training, use the Amazon SageMaker Debugger `smdebug` Python library\. To manage tensors, you can group them into *collections*\. You can use the `DebuggerHookConfig` class in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) to save the tensors that you choose at the frequencies you want\. 
 
 **Topics**
-+ [Save Built\-in Party Collections](#debugger-save-built-in-collections)
++ [Save Built\-in Collections](#debugger-save-built-in-collections)
 + [Save Reductions for a Custom Collection](#debugger-save-reductions-for-custom-collections)
-+ [Enable TensorBoard Summaries](#debugger-enable-tensorboard-summaries)
++ [Enable TensorBoard Summaries, Distributions, and Histograms](#debugger-enable-tensorboard-summaries)
 
-## Save Built\-in Party Collections<a name="debugger-save-built-in-collections"></a>
+## Save Built\-in Collections<a name="debugger-save-built-in-collections"></a>
 
-Learn more about these first party collections [Common API](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/api.md)\.
+To learn more about build\-in collections, see [Common API](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/api.md)\.
 
 ```
 from sagemaker.debugger import DebuggerHookConfig, CollectionConfig
@@ -48,10 +48,10 @@ sagemaker_estimator.fit()
 
 ## Save Reductions for a Custom Collection<a name="debugger-save-reductions-for-custom-collections"></a>
 
-You can define your collection of tensors\. You can also choose to save certain reductions of tensors only instead of saving the full tensor\. You may choose to do this to reduce the amount of data saved\. 
+You can define your collection of tensors\. You can also choose to save only certain reductions of tensors instead of the full tensor, for example, to reduce the amount of data saved\. 
 
 **Note**  
-When you save reductions, unless you pass the flag `save_raw_tensor`, only these reductions will be available for analysis\. The raw tensor will not be saved\.
+If you save reductions, only the reductions are available for analysis\. If you also want to save the raw tensor, pass the `save_raw_tensor` flag, 
 
 ```
 from sagemaker.debugger import DebuggerHookConfig, CollectionConfig
@@ -81,11 +81,11 @@ sagemaker_estimator = sm.tensorflow.TensorFlow(
 sagemaker_estimator.fit()
 ```
 
-## Enable TensorBoard Summaries<a name="debugger-enable-tensorboard-summaries"></a>
+## Enable TensorBoard Summaries, Distributions, and Histograms<a name="debugger-enable-tensorboard-summaries"></a>
 
-Amazon SageMaker Debugger can automatically generate TensorBoard scalar summaries, distributions and histograms for tensors saved\. This can be enabled by passing a `TensorBoardOutputConfig` object when creating an `Estimator` as follows\. You can also choose to disable or enable histograms specifically for different collections\. By default a collection has `save_histogram` flag set to `True`\. Note that scalar summaries are added to TensorBoard for all `ScalarCollections` and any scalar saved through `hook.save_scalar`\. For more information on scalar collections and `save_scalar` method, see the [Common API](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/api.md)\.
+Amazon SageMaker Debugger can automatically generate TensorBoard scalar summaries, distributions, and histograms for saved tensors\. You enable this by passing a `TensorBoardOutputConfig` object when you create an `Estimator`, as shown in the following example\. You can also choose to disable or enable histograms for individual collections\. By default, the `save_histogram` flag for a collection is set to `True`\. Debugger adds scalar summaries to TensorBoard for all `ScalarCollections` and scalars saved through `hook.save_scalar`\. For more information about scalar collections and the `save_scalar` method, see the  [Common API](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/api.md)\.
 
-The following example saves weights and gradients as full tensors, and also saves the gradients as histograms and distributions to visualize in TensorBoard\. These are saved to the location passed in `TensorBoardOutputConfig` object\.
+The following example saves weights and gradients as full tensors, and also saves the gradients as histograms and distributions that can be visualized with TensorBoard\. Amazon SageMaker Debugger saves them in the Amazon S3 location passed in the `TensorBoardOutputConfig` object\.
 
 ```
 from sagemaker.debugger import DebuggerHookConfig, CollectionConfig, TensorBoardOutputConfig
