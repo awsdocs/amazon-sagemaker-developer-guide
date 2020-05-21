@@ -29,7 +29,7 @@ After receiving the request, Amazon SageMaker does the following:
 
    1. For **Notebook instance name**, type a name for your notebook instance\.
 
-   1. For **Notebook instance type**, choose an instance type for your notebook instance\. For a list of supported instance types, see [Amazon SageMaker Limits](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_sagemaker)\. 
+   1. For **Notebook instance type**, choose an instance type for your notebook instance\. For a list of supported instance types, see [Amazon SageMaker ML Instance Types](https://aws.amazon.com/sagemaker/pricing/instance-types/)\. 
 
    1. For **Elastic Inference**, choose an inference accelerator type to associate with the notebook instance if you plan to conduct inferences from the notebook instance, or choose **none**\. For information about elastic inference, see [Use Amazon SageMaker Elastic Inference \(EI\) ](ei.md)\.
 
