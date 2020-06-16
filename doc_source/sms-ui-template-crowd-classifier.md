@@ -39,7 +39,7 @@ The following attributes are supported by this element\.
 
 #### categories<a name="crowd-classifier-attributes-categories"></a>
 
-A JSON formatted array of strings, each of which is a category that a worker can assign to the to the text\. You should include "other" as a category, otherwise the worker my not be able to provide an answer\.
+A JSON formatted array of strings, each of which is a category that a worker can assign to the text\. You should include "other" as a category, otherwise the worker my not be able to provide an answer\.
 
 #### header<a name="crowd-classifier-attributes-header"></a>
 
