@@ -81,9 +81,9 @@ You can create an algorithm by using either the Amazon SageMaker console or the 
       "IntegerParameterRangeSpecification": {
       "MaxValue": "10",
       "MinValue": "1"
-      }
       },
       "Type": "Integer"
+      }
       ```
 
       In the JSON, supply the following:
