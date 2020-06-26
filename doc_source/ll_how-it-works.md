@@ -9,7 +9,7 @@ Normalization, or feature scaling, is an important preprocessing step for certai
 **Note**  
 For best results, ensure your data is shuffled before training\. Training with unshuffled data may cause training to fail\. 
 
-You can configure whether the linear learner algorithm normalizes the feature data and the labels using the `normalize_data` and `normalize_label`\) hyperparameters respectively\. Normalization is enabled by default for both features and labels for regression\. Only the features can be normalized for binary classification and this is the default behavior\. 
+You can configure whether the linear learner algorithm normalizes the feature data and the labels using the `normalize_data` and `normalize_label` hyperparameters, respectively\. Normalization is enabled by default for both features and labels for regression\. Only the features can be normalized for binary classification and this is the default behavior\. 
 
 ## Step 2: Train<a name="step2-training"></a>
 

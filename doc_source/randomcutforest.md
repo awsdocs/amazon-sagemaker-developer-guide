@@ -19,7 +19,7 @@ While there are many applications of anomaly detection algorithms to one\-dimens
 
 Amazon SageMaker Random Cut Forest supports the `train` and `test` data channels\. The optional test channel is used to compute accuracy, precision, recall, and F1\-score metrics on labeled data\. Train and test data content types can be either `application/x-recordio-protobuf` or `text/csv` formats\. For the test data, when using text/csv format, the content must be specified as text/csv;label\_size=1 where the first column of each row represents the anomaly label: "1" for an anomalous data point and "0" for a normal data point\. You can use either File mode or Pipe mode to train RCF models on data that is formatted as `recordIO-wrapped-protobuf` or as `CSV`
 
-Also note that the train channel only supports `S3DataDistributionType=ShardedByS3Key` and the test channel only supports `S3DataDistributionType=FullyReplicated`\. The S3 distribution type can be specified using the Python SDK as follows:
+Also note that the train channel only supports `S3DataDistributionType=ShardedByS3Key` and the test channel only supports `S3DataDistributionType=FullyReplicated`\. The S3 distribution type can be specified using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) as follows:
 
 ```
   import sagemaker
@@ -28,7 +28,7 @@ Also note that the train channel only supports `S3DataDistributionType=ShardedBy
   rcf = sagemaker.estimator.Estimator(...)
     
   # explicitly specify "ShardedByS3Key" distribution type
-  train_data = sagemaker.s3_input(
+  train_data = sagemaker.inputs.s3_input(
        s3_data=s3_training_data_location,
        content_type='text/csv;label_size=0',
        distribution='ShardedByS3Key')

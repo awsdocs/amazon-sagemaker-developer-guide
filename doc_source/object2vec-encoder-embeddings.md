@@ -2,6 +2,8 @@
 
 ## GPU optimization: Encoder Embeddings<a name="object2vec-inference-gpu-optimize-encoder-embeddings"></a>
 
+An embedding is a mapping from discrete objects, such as words, to vectors of real numbers\.
+
 Due to GPU memory scarcity, the `INFERENCE_PREFERRED_MODE` environment variable can be specified to optimize on whether the [ Data Formats for Object2Vec Inference](object2vec-inference-formats.md) or the encoder embedding inference network is loaded into GPU\. If the majority of your inference is for encoder embeddings, specify `INFERENCE_PREFERRED_MODE=embedding`\. The following is a Batch Transform example of using 4 instances of p3\.2xlarge that optimizes for encoder embedding inference:
 
 ```
@@ -16,7 +18,9 @@ transformer = o2v.transformer(instance_count=4,
 
 ## Input: Encoder Embeddings<a name="object2vec-in-encoder-embeddings-data"></a>
 
-Content\-type: application/json
+Content\-type: application/json; infer\_max\_seqlens=<FWD\-LENGTH>,<BCK\-LENGTH>
+
+Where <FWD\-LENGTH> and <BCK\-LENGTH> are integers in the range \[1,5000\] and define the maximum sequence lengths for the forward and backward encoder\.
 
 ```
 {
@@ -28,7 +32,9 @@ Content\-type: application/json
 }
 ```
 
-Content\-type: application/jsonlines
+Content\-type: application/jsonlines; infer\_max\_seqlens=<FWD\-LENGTH>,<BCK\-LENGTH>
+
+Where <FWD\-LENGTH> and <BCK\-LENGTH> are integers in the range \[1,5000\] and define the maximum sequence lengths for the forward and backward encoder\.
 
 ```
 {"in0": [6, 17, 606, 19, 53, 67, 52, 12, 5, 10, 15, 10178, 7, 33, 652, 80, 15, 69, 821, 4]}

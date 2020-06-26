@@ -71,7 +71,7 @@ let response =   {
     Record = {
         features = {},
         label = {
-            'score’: {
+            'score': {
                 keys: [],
                 values: [0.4]  # float32
             },
@@ -111,7 +111,7 @@ let response =   {
     Record = {
         features = {},
         label = {
-            'score’: {
+            'score': {
                 keys: [],
                 values: [0.4]  # float32
             }   

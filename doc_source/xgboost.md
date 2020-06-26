@@ -1,12 +1,12 @@
 # XGBoost Algorithm<a name="xgboost"></a>
 
-The [XGBoost](https://github.com/dmlc/xgboost) \(eXtreme Gradient Boosting\) is a popular and efficient open\-source implementation of the gradient boosted trees algorithm\. Gradient boosting is a supervised learning algorithm that attempts to accurately predict a target variable by combining an ensemble of estimates from a set of simpler, weaker models\. XGBoost has done remarkably well in machine learning competitions because it robustly handles a variety of data types, relationships, and distributions, and because of the large number of hyperparameters that can be tweaked and tuned for improved fits\. This flexibility makes XGBoost a solid choice for problems in regression, classification \(binary and multiclass\), and ranking\.
+The [XGBoost](https://github.com/dmlc/xgboost) \(eXtreme Gradient Boosting\) is a popular and efficient open\-source implementation of the gradient boosted trees algorithm\. Gradient boosting is a supervised learning algorithm that attempts to accurately predict a target variable by combining an ensemble of estimates from a set of simpler and weaker models\. The XGBoot algorithm performs well in machine learning competitions because of its robust handling of a variety of data types, relationships, distributions, and the variety of hyperparameters that you can fine\-tune\. You can use XGBoost for regression, classification \(binary and multiclass\), and ranking problems\. 
 
-This current release of the XGBoost algorithm makes upgrades from the open source XGBoost code base easy to install and use in Amazon SageMaker\. Customers can use this release of the XGBoost algorithm either as an Amazon SageMaker built\-in algorithm, as with the previous 0\.72\-based version, or as a framework to run training scripts in their local environments as they would typically do, for example, with a TensorFlow deep learning framework\. This implementation has a smaller memory footprint, better logging, improved hyperparameter validation, and an expanded set of metrics than the original 0\.72\-based version\. It also provides an XGBoost `estimator` that executes a training script in a managed XGBoost environment\. The current release of Amazon SageMaker XGBoost is based on version 0\.90 and will be upgradeable to future releases\. The previous implementation [XGBoost Release 0\.72](xgboost-72.md) is still available to customers if they need to postpone migrating to the current version\. But this previous implementation will remain tied to the 0\.72 release of XGBoost\.
+You can use the new release of the XGBoost algorithm either as an Amazon SageMaker built\-in algorithm or as a framework to run training scripts in your local environments\. This implementation has a smaller memory footprint, better logging, improved hyperparameter validation, and an expanded set of metrics than the original versions\. It provides an XGBoost `estimator` that executes a training script in a managed XGBoost environment\. The current release of Amazon SageMaker XGBoost is based on the original XGBoost versions 0\.90 and 1\.0\.
 
 ## Supported versions<a name="xgboost-supported-versions"></a>
-+ Framework \(open source\) mode \- 0\.90\-1, 0\.90\-2
-+ Algorithm mode \- 0\.72 \(see [XGBoost Release 0\.72](xgboost-72.md)\)\. 0\.90
++ Framework \(open source\) mode: 0\.90\-1, 0\.90\-2, 1\.0\-1
++ Algorithm mode: 0\.90\-1, 0\.90\-2, 1\.0\-1
 
 **Topics**
 + [Supported versions](#xgboost-supported-versions)
@@ -21,43 +21,109 @@ This current release of the XGBoost algorithm makes upgrades from the open sourc
 
 ## How to Use Amazon SageMaker XGBoost<a name="xgboost-modes"></a>
 
-The XGBoost algorithm can be used as a built\-in algorithm or as a framework such as TensorFlow\. Using XGBoost as a framework provides more flexible than using it as a built\-in algorithm as it enables more advanced scenarios that allow pre\-processing and post\-processing scripts to be incorporated into your training script\. Using XGBoost as a built\-in Amazon SageMaker algorithm is how you had to use the original [XGBoost Release 0\.72](xgboost-72.md) version and nothing changes here except the version of XGBoost that you use\.
+With Amazon SageMaker, you can use XGBoost as a built\-in algorithm or framework\. By using XGBoost as a framework, you have more flexibility and access to more advanced scenarios, such as k\-fold cross\-validation, because you can customize your own training scripts\. 
 + **Use XGBoost as a framework**
 
-  Use XGBoost as a framework to run scripts that can incorporate additional data processing into your training jobs\. This way of using XGBoost should be to familiar to users who have worked with the open source [XGBoost](https://github.com/dmlc/xgboost) and other Amazon SageMaker frameworks such as Scikit\-learn\. You use the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) as you would for other frameworks such as TensorFlow\. One change from other Amazon SageMaker frameworks is that the `framework_version` field of the `estimator` for `XGBoost` is mandatory and is not set by default\. Note that the first part of the version refers to the upstream module version \(aka, 0\.90\), while the second part refers to the Amazon SageMaker version for the container\. An error is generated if the `framework_version` is not set\.
+  Use XGBoost as a framework to run your customized training scripts that can incorporate additional data processing into your training jobs\. In the following code example, you can find how Amazon SageMaker Python SDK provides the XGBoost API as a framework in the same way it provides other framework APIs, such as TensorFlow, MXNet, and PyTorch\.
 
   ```
-  import sagemaker.xgboost
-  estimator = XGBoost(entry_point = 'myscript.py', 
-                      source_dir, model_dir, 
-                      train_instance_type,                    
-                      train_instance_count, 
-                      hyperparameters, 
-                      role, 
-                      base_job_name, 
-                      framework_version = '0.90-2', 
-                      py_version)
-  estimator.fit({'train':'s3://my-bucket/training', 
-                  'validation':'s3://my-bucket/validation})
+  import boto3
+  import sagemaker
+  from sagemaker.xgboost.estimator import XGBoost
+  from sagemaker.session import s3_input, Session
+  
+  # initialize hyperparameters
+  hyperparameters = {
+          "max_depth":"5",
+          "eta":"0.2",
+          "gamma":"4",
+          "min_child_weight":"6",
+          "subsample":"0.7",
+          "verbose":"1",
+          "objective":"reg:linear",
+          "num_round":"50"}
+  
+  # set an output path where the trained model will be saved
+  bucket = sagemaker.Session().default_bucket()
+  prefix = 'DEMO-xgboost-as-a-framework'
+  output_path = 's3://{}/{}/{}/output'.format(bucket, prefix, 'abalone-xgb-framework')
+  
+  # construct a SageMaker XGBoost estimator
+  # specify the entry_point to your xgboost training script
+  estimator = XGBoost(entry_point = "your_xgboost_abalone_script.py", 
+                      framework_version='1.0-1',
+                      hyperparameters=hyperparameters,
+                      role=sagemaker.get_execution_role(),
+                      train_instance_count=1,
+                      train_instance_type='ml.m5.2xlarge',
+                      output_path=output_path)
+  
+  # define the data type and paths to the training and validation datasets
+  content_type = "libsvm"
+  train_input = s3_input("s3://{}/{}/{}/".format(bucket, prefix, 'train'), content_type=content_type)
+  validation_input = s3_input("s3://{}/{}/{}/".format(bucket, prefix, 'validation'), content_type=content_type)
+  
+  # execute the XGBoost training job
+  estimator.fit({'train': train_input, 'validation': validation_input})
   ```
 
-  The AWS SDK for Python \(Boto 3\) and the CLI also require this field\.
+  For an end\-to\-end example of using SageMaker XGBoost as a framework, see [Regression with Amazon SageMaker XGBoost](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_abalone_dist_script_mode.ipynb)
 + **Use XGBoost as a built\-in algorithm**
 
-  Use XGBoost to train and deploy a model as you would other built\-in Amazon SageMaker algorithms\. Using the current version of XGBoost as a built\-in algorithm will be familiar to users who have used the original [XGBoost Release 0\.72](xgboost-72.md) version with the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) and want to continue using the same procedures\.
+  Use the XGBoost built\-in algorithm to build an XGBoost training container as shown in the following code example\. You can automatically spot the XGBoost built\-in algorithm image URI using the Amazon SageMaker `get_image_uri` API\. If you want to ensure if the `get_image_uri` API finds the correct URI, see [ Common parameters for built\-in algorithms ](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html) and look up `xgboost` from the full list of built\-in algorithm image URIs and available regions\.
+
+  After specifying the XGBoost image URI, you can use the XGBoost container to construct an estimator using the SageMaker Estimator API and initiate a training job\. This XGBoost built\-in algorithm mode does not incorporate your own XGBoost training script and runs directly on the input datasets\. 
 
   ```
   import sagemaker
+  import boto3
   from sagemaker.amazon.amazon_estimator import get_image_uri 
-  # get the URI for new container
+  from sagemaker.session import s3_input, Session
+              
+  # initialize hyperparameters
+  hyperparameters = {
+          "max_depth":"5",
+          "eta":"0.2",
+          "gamma":"4",
+          "min_child_weight":"6",
+          "subsample":"0.7",
+          "objective":"reg:squarederror",
+          "num_round":"50"}
+  
+  # set an output path where the trained model will be saved
+  bucket = sagemaker.Session().default_bucket()
+  prefix = 'DEMO-xgboost-as-a-built-in-algo'
+  output_path = 's3://{}/{}/{}/output'.format(bucket, prefix, 'abalone-xgb-built-in-algo')
+  
+  # this line automatically looks for the XGBoost image URI and builds an XGBoost container.
+  # specify the repo_version depending on your preference.
   container = get_image_uri(boto3.Session().region_name,
                             'xgboost', 
-                            repo_version='0.90-2'); 
-  estimator = sagemaker.estimator.Estimator(container, role, instance_count, instance_type, train_volume_size, output_path, sagemaker.Session());
-  estimator.fit({'train':'s3://my-bucket/training', 'validation':'s3://my-bucket/validation})
+                            repo_version='1.0-1')
+  
+  # construct a SageMaker estimator that calls the xgboost-container
+  estimator = sagemaker.estimator.Estimator(image_name=container, 
+                                            hyperparameters=hyperparameters,
+                                            role=sagemaker.get_execution_role(),
+                                            train_instance_count=1, 
+                                            train_instance_type='ml.m5.2xlarge', 
+                                            train_volume_size=5, # 5 GB 
+                                            output_path=output_path)
+  
+  # define the data type and paths to the training and validation datasets
+  content_type = "libsvm"
+  train_input = s3_input("s3://{}/{}/{}/".format(bucket, prefix, 'train'), content_type=content_type)
+  validation_input = s3_input("s3://{}/{}/{}/".format(bucket, prefix, 'validation'), content_type=content_type)
+  
+  # execute the XGBoost training job
+  estimator.fit({'train': train_input, 'validation': validation_input})
   ```
 
-  If customers do not specify version in the `get_image_uri` function, they get the [XGBoost Release 0\.72](xgboost-72.md) version by default\. If you want to migrate to the current version, you have to specify `repo_version='0.90-2'` in the `get_image_uri` function\. If you use the current version, you must update your code to use the new hyperparameters that are required by the 0\.90 version of upstream algorithm\. The AWS SDK for Python \(Boto 3\) and the CLI usage is similar\. You also have to choose the version you want to run when using the Console to select the XGBoost algorithm\.
+  If you do not specify the XGBoost version in the `get_image_uri` function, it picks up the XGBoost version 1\.0\-1 by default\. 
+
+  For more information about how to set up the XGBoost as a built\-in algorithm, see the following notebook examples\.
+  + [ Managed Spot Training for XGBoost ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_managed_spot_training.ipynb)
+  + [ Regression with Amazon SageMaker XGBoost \(Parquet input\) ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_parquet_input_training.ipynb)
 
 ## Input/Output Interface for the XGBoost Algorithm<a name="InputOutput-XGBoost"></a>
 
@@ -65,11 +131,12 @@ Gradient boosting operates on tabular data, with the rows representing observati
 
 The Amazon SageMaker implementation of XGBoost supports CSV and libsvm formats for training and inference:
 + For Training ContentType, valid inputs are *text/libsvm* \(default\) or *text/csv*\.
-+ For Inference ContentType, valid inputs are *text/libsvm* or \(the default\) *text/csv*\.
++ For Inference ContentType, valid inputs are *text/libsvm* \(default\) or *text/csv*\.
 
 **Note**  
-For CSV training, the algorithm assumes that the target variable is in the first column and that the CSV does not have a header record\. For CSV inference, the algorithm assumes that CSV input does not have the label column\.   
-For libsvm training, the algorithm assumes that the label is in the first column\. Subsequent columns contain the zero\-based index value pairs for features\. So each row has the format: <label> <index0>:<value0> <index1>:<value1> \.\.\. Inference requests for libsvm may or may not have labels in the libsvm format\.
+For CSV training, the algorithm assumes that the target variable is in the first column and that the CSV does not have a header record\.   
+For CSV inference, the algorithm assumes that CSV input does not have the label column\.   
+For libsvm training, the algorithm assumes that the label is in the first column\. Subsequent columns contain the zero\-based index value pairs for features\. So each row has the format: <label> <index0>:<value0> <index1>:<value1> \.\.\. Inference requests for libsvm might not have labels in the libsvm format\.
 
 This differs from other Amazon SageMaker algorithms, which use the protobuf training input format to maintain greater consistency with standard XGBoost data formats\.
 

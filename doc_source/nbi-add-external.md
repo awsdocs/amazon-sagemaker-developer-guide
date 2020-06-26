@@ -2,7 +2,9 @@
 
 Amazon SageMaker notebook instances come with multiple environments already installed\. These environments contain Jupyter kernels and Python packages including: scikit, Pandas, NumPy, TensorFlow, and MXNet\. These environments, along with all files in the `sample-notebooks` folder, are refreshed when you stop and start a notebook instance\. You can also install your own environments that contain your choice of packages and kernels\. This is typically done using `conda install` or `pip install`\.
 
-The different Jupyter kernels in Amazon SageMaker notebook instances are separate conda environments\. For information about conda environments, see [Managing environments](https://conda.io/docs/user-guide/tasks/manage-environments.html) in the *Conda* documentation\. If you want to use an external library in a specific kernel, install the library in the environment for that kernel\. You can do this either in the terminal or in a notebook cell\. The following procedures show how to install Theano so that you can use it in a notebook with a conda\_mxnet\_p36`` kernel\.
+The different Jupyter kernels in Amazon SageMaker notebook instances are separate conda environments\. For information about conda environments, see [Managing environments](https://conda.io/docs/user-guide/tasks/manage-environments.html) in the *Conda* documentation\. For an example of creating a custom kernel in an Amazon SageMaker Studio notebook, see [Create a Custom Kernel](notebooks-create-custom-kernel.md)\.
+
+If you want to use an external library in a specific kernel, install the library in the environment for that kernel\. You can do this either in the terminal or in a notebook cell\. The following procedures show how to install Theano so that you can use it in a notebook with a conda\_mxnet\_p36`` kernel\.
 
 **To install Theano from a terminal**
 

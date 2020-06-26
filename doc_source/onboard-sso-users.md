@@ -37,9 +37,9 @@ This procedure describes how to onboard to Amazon SageMaker Studio using AWS SSO
 
 **To access Studio after onboarding**
 
-After you are given access to Studio, you are sent an email inviting you to create a password and activate your AWS SSO account\. The email also contains the URL to login to Studio\.
+After you are given access to Studio, you are sent an email inviting you to create a password and activate your AWS SSO account\. The email also contains the URL to sign in to Studio\.
 
-After you activate your account, go to the Studio URL, log in, and wait for your user profile to be created\. On subsequent visits, you only need to wait for Studio to load\.
+After you activate your account, go to the Studio URL, sign in, and wait for your user profile to be created\. On subsequent visits, you only need to wait for Studio to load\.
 
 Bookmark the Studio URL\. The URL is also available in the Studio Control Panel\.
 

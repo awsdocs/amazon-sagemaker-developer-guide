@@ -64,10 +64,15 @@ If you are a first\-time user of Amazon SageMaker, we recommend that you do the 
 
 1. **[Set Up Amazon SageMaker](gs-set-up.md)** – This section explains how to set up your AWS account and onboard to Amazon SageMaker Studio\.
 
+1. Amazon SageMaker Autopilot simplifies the machine learning experience by automating machine learning tasks\. If you are new to Amazon SageMaker, it provides the easiest learning path\. It also serves as an excellent ML learning tool that provides visiblity into the code with notebooks generated for each of the automated ML tasks\. For an introduction to its capabilities, see [Use Amazon SageMaker Autopilot to automate model development](autopilot-automate-model-development.md)\. To get started building, training, and deploying machine learning models, Autopilot provides:
+   + [Samples: Explore modeling with Amazon SageMaker Autopilot](autopilot-samples.md)
+   + [Videos: Use Autopilot to automate and explore the machine learning process](autopilot-videos.md)
+   + [Tutorials: Get started with Amazon SageMaker Autopilot](autopilot-tutorials.md)
+
 1. **[Get Started with Amazon SageMaker](gs.md)** – This section walks you through training your first model using Amazon SageMaker Studio, or the Amazon SageMaker console and the Amazon SageMaker API\. You use training algorithms provided by Amazon SageMaker\.
 
 1. **Explore other topics** – Depending on your needs, do the following:
-   + **Submit Python code to train with deep learning frameworks** – In Amazon SageMaker, you can use your own training scripts to train models\. For information, see [Use Machine Learning Frameworks with Amazon SageMaker](frameworks.md)\.
+   + **Submit Python code to train with deep learning frameworks** – In Amazon SageMaker, you can use your own training scripts to train models\. For information, see [Use Machine Learning Frameworks, Python, and R with Amazon SageMaker](frameworks.md)\.
    + **Use Amazon SageMaker directly from Apache Spark** – For information, see [Use Apache Spark with Amazon SageMaker](apache-spark.md)\.
    + **Use Amazon AI to train and/or deploy your own custom algorithms** – Package your custom algorithms with Docker so you can train and/or deploy them in Amazon SageMaker\. See [Use Your Own Algorithms or Models with Amazon SageMaker ](your-algorithms.md) to learn how Amazon SageMaker interacts with Docker containers, and for the Amazon SageMaker requirements for Docker images\. 
 

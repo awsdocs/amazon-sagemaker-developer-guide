@@ -85,4 +85,4 @@ The following are best practices for using lifecycle configurations:
 + You must store all conda environments in the default environments folder \(/home/user/anaconda3/envs\)\.
 
 **Important**  
-When you create or change a script, we recommend that you use a text editor that provides Unix\-style line breaks, such as the text editor avaiable in the console when you create a notebook\. Copying text from a non\-Linux operating system might introduce incompatible line breaks and result in an unexpected error\.
+When you create or change a script, we recommend that you use a text editor that provides Unix\-style line breaks, such as the text editor available in the console when you create a notebook\. Copying text from a non\-Linux operating system might introduce incompatible line breaks and result in an unexpected error\.

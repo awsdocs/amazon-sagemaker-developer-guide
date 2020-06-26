@@ -6,9 +6,11 @@ Use the following instructions to configure a human loop with Amazon Rekognition
 
 **Prerequisites**
 
-To create and start a human loop, the AmazonAugmentedAIFullAccess policy must be attached to the AWS Identity and Access Management \(IAM\) user or role that configures or starts the human loop\. When using a built\-in task type, this will be the user or role that you use to configure the human loop using `HumanLoopConfig`\. For custom task types, this will be the user or role that you use to call `StartHumanLoop`\.
+To create and start a human loop, the AmazonAugmentedAIFullAccess policy must be attached to the AWS Identity and Access Management \(IAM\) user or role that configures or starts the human loop\. This will be the identity that you use to configure the human loop using `HumanLoopConfig` for built\-in task types\. For custom task types, this will be the identity that you use to call `StartHumanLoop`\.
 
-You will need a flow definition ARN to create and start a human loop\. To learn how to create a flow definition \(or human review workflow\), see [Create a Flow Definition](a2i-create-flow-definition.md)\.
+Additionally, when using a built\-in task type, your IAM user or role must have permission to invoke API operations of the AWS service associated with your task type\. For example, if using Amazon Rekognition with Augmented AI, you must attach permissions required to call `DetectModerationLabels`\. For examples of identity\-based policies you can use to grant these permissions, see [Amazon Rekognition Identity\-Based Policy Examples](https://docs.aws.amazon.com/rekognition/latest/dg/security_iam_id-based-policy-examples.html) and [Amazon Textract Identity\-Based Policy Examples](https://docs.aws.amazon.com/textract/latest/dg/security_iam_id-based-policy-examples.html)\. You can also use the more general policy **AmazonAugmentedAIIntegratedAPIAccess** to grant these permissions\. For more information, see [Create an IAM User With Permissions to Invoke Amazon A2I, Amazon Textract, and Amazon Rekognition API Operations](a2i-permissions-security.md#a2i-grant-general-permission)\. 
+
+To create and start a human loop, you will need a flow definition ARN\. To learn how to create a flow definition \(or human review workflow\), see [Create a Flow Definition](a2i-create-flow-definition.md)\.
 
 ## Create and Start a Human Loop for a Built\-in Task Type<a name="a2i-human-loop-built-in-task-type"></a>
 

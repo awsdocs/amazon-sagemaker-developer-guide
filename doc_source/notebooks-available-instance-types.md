@@ -22,9 +22,6 @@ The following Amazon Elastic Compute Cloud \(Amazon EC2\) instance types are ava
 + ml\.m5\.12xlarge
 + ml\.m5\.16xlarge
 + ml\.m5\.24xlarge
-+ ml\.system
-
-  The `ml.system` instance type is a special inexpensive type useful for performing basic operations\. It's the equivalent of a `ml.t3.micro`\.
 
 **Compute optimized**
 + ml\.c5\.large

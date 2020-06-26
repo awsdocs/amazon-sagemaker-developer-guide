@@ -38,7 +38,7 @@ Making API calls directly from code is cumbersome, and requires you to write cod
     + To deploy your model, you call only the `deploy()` method\. The method creates an Amazon SageMaker model artifact, an endpoint configuration, then deploys the model on an endpoint\.
 
        
-    + If you use a custom framework script for model training, you call the `fit()` method\. The method creates a \.gzip file of your script, uploads it to an Amazon S3 location, and then runs it for model training, and other tasks\. For more information, see [Use Machine Learning Frameworks with Amazon SageMaker](frameworks.md)\.
+    + If you use a custom framework script for model training, you call the `fit()` method\. The method creates a \.gzip file of your script, uploads it to an Amazon S3 location, and then runs it for model training, and other tasks\. For more information, see [Use Machine Learning Frameworks, Python, and R with Amazon SageMaker](frameworks.md)\.
 
        
   + **The AWS SDKs** – The SDKs provide methods that correspond to the Amazon SageMaker API \(see [ `Operations`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Operations.html)\)\. Use the SDKs to programmatically start a model training job and host the model in Amazon SageMaker\. SDK clients authenticate your requests by using your access keys, so you don't need to write authentication code\. They are available in multiple languages and platforms\. For more information, see the preceeding list in the overview\. 

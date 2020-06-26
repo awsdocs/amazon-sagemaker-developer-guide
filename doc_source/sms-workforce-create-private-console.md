@@ -48,7 +48,7 @@ To create and manage your private workforce, you can use the **Labeling workforc
 
 1.  Enter an organization name and contact email\. 
 
-1. Optionally choose an SNS topic to which to subscribe the team so workers are notified by email when new Ground Truth labeling jobs become available\. Amazon SNS notifications are supported by Ground Truth and are not supported by Augmented AI\. If you subscribe workers to receive SNS notifications, they will only receive notifications about Ground Truth labeling jobs\. They will not receive notifications about Augmented AI tasks\. 
+1. Optionally choose an SNS topic to subscribe the team to so workers are notified by email when new Ground Truth labeling jobs become available\. Amazon SNS notifications are supported by Ground Truth and are not supported by Augmented AI\. If you subscribe workers to receive SNS notifications, they will only receive notifications about Ground Truth labeling jobs\. They will not receive notifications about Augmented AI tasks\. 
 
 1.  Click the **Create private team** button\. 
 

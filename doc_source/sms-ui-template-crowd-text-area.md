@@ -97,4 +97,4 @@ This element outputs the `name` as a property name and the element's text conten
 
 For more information, see the following\.
 + [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
-+ [HTML Elements Reference](sms-ui-template-reference.md)
++ [Crowd HTML Elements Reference](sms-ui-template-reference.md)

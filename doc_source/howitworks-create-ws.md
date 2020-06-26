@@ -4,7 +4,7 @@ An *Amazon SageMaker notebook instance* is a fully managed ML compute instance r
 
 To create a notebook instance, use either the Amazon SageMaker console or the [  `CreateNotebookInstance`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstance.html) API\.
 
-The notebook instance type you choose depends on how you use your notebook instance\. You want to ensure that your notebook instance is not bound by memory, CPU, or IO\. If you plan to load a dataset into memory on the notebook instance for exploration or preprocessing, we recommend that you choose an instance type with enough RAM memory for your dataset\. This would require an instance with at least 16 Gb of memory \(\.xlarge or larger\)\. If you plan to use the notebook for compute intensive preprocessing, we recommend you choose a compute\-optimized instance such as a c4 or c5\.
+The notebook instance type you choose depends on how you use your notebook instance\. You want to ensure that your notebook instance is not bound by memory, CPU, or IO\. If you plan to load a dataset into memory on the notebook instance for exploration or preprocessing, we recommend that you choose an instance type with enough RAM memory for your dataset\. This would require an instance with at least 16 GB of memory \(\.xlarge or larger\)\. If you plan to use the notebook for compute intensive preprocessing, we recommend you choose a compute\-optimized instance such as a c4 or c5\.
 
 A best practice when using an Amazon SageMaker notebook is to use the notebook instance to orchestrate other AWS services\. For example, you can use the notebook instance to manage large dataset processing by making calls to AWS Glue for ETL \(extract, transform, and load\) services or Amazon EMR for mapping and data reduction using Hadoop\. You can use AWS services as temporary forms of computation or storage for your data\.
 
@@ -29,7 +29,7 @@ After receiving the request, Amazon SageMaker does the following:
 
    1. For **Notebook instance name**, type a name for your notebook instance\.
 
-   1. For **Notebook instance type**, choose an instance type for your notebook instance\. For a list of supported instance types, see [Amazon SageMaker Limits](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_sagemaker)\. 
+   1. For **Notebook instance type**, choose an instance type for your notebook instance\. For a list of supported instance types, see [Amazon SageMaker Limits](https://docs.aws.amazon.com/general/latest/gr/sagemaker.html#limits_sagemaker)\. 
 
    1. For **Elastic Inference**, choose an inference accelerator type to associate with the notebook instance if you plan to conduct inferences from the notebook instance, or choose **none**\. For information about elastic inference, see [Use Amazon SageMaker Elastic Inference \(EI\) ](ei.md)\.
 

@@ -4,7 +4,7 @@ This rule measures sampling imbalances between classes and throws errors if the 
 
 Classification models require well\-balanced classes in the training dataset or a proper weighting/sampling of classes during training\. The rule performs two checks:
 +  It counts the occurrences per class\. If the ratio of number of samples between smallest and largest class is larger than the `threshold_imbalance`, an error is thrown\.
-+  It checks the prediction accuracy per class\. If resampling or weighting has not been correctly applied, then the model can reach high accuracy for the class with many training samples, but low accuracy for the classes with few training samples\. If a fraction of mispredictions for a certain class is above `threshold_misprediction `, an error is thrown\.
++  It checks the prediction accuracy per class\. If resampling or weighting has not been correctly applied, then the model can reach high accuracy for the class with many training samples, but low accuracy for the classes with few training samples\. If a fraction of mispredictions for a certain class is above `threshold_misprediction`, an error is thrown\.
 
 This rule can be applied either to one of the supported deep learning frameworks \(TensorFlow, MXNet, and PyTorch\) or to the XGBoost algorithm\.
 

@@ -14,7 +14,3 @@ To preprocess data use one of the following methods:
 Amazon SageMaker Processing enables running jobs to preprocess and postprocess data, perform feature engineering, and evaluate models on Amazon SageMaker easily and at scale\. When combined with the other critical machine learning tasks provided by Amazon SageMaker, such as training and hosting, Processing provides you with the benefits of a fully managed machine learning environment, including all the security and compliance support built into Amazon SageMaker\. With Processing, you have the flexibility to use the built\-in data processing containers or to bring your own containers and submit custom jobs to run on managed infrastructure\. After you submit a job, Amazon SageMaker launches the compute instances, processes and analyzes the input data, and releases the resources upon completion\. For more information, see [Process Data and Evaluate Models](processing-job.md)\.
 + For information about how to run your own data processing scripts, [Process Data and Evaluate Models with scikit\-learn](use-scikit-learn-processing-container.md)\.
 + For information about how to build your own processing container to run scripts, see [Build Your Own Processing Container \(Advanced Scenario\)](build-your-own-processing-container.md)\.
-
-## How It Works: Next Topic<a name="howitwork-ws-notebook-nextstep"></a>
-
- [Train a Model with Amazon SageMaker](how-it-works-training.md) 

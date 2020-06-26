@@ -29,7 +29,7 @@ To use AWS SSO authentication with Amazon SageMaker Studio, you must onboard to 
 The SSO organization account must be in the same AWS Region as Amazon SageMaker Studio\.
 
 AWS SSO authentication provides the following benefits over IAM authentication:
-+ Members given access to Studio have a unique sign\-on URL that directly opens Studio, and they sign\-on with their SSO credentials\. When you use IAM authentication, you must sign on through the Amazon SageMaker console\.
++ Members given access to Studio have a unique sign\-in URL that directly opens Studio, and they sign in with their SSO credentials\. When you use IAM authentication, you must sign in through the Amazon SageMaker console\.
 + Organizations manage their members in AWS SSO instead of Studio\. You can assign multiple members access to Studio at the same time\. When you use IAM authentication, you must add and manage members manually one at time using the Studio Control Panel\. 
 
 **Topics**

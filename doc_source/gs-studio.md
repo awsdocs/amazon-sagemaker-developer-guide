@@ -13,4 +13,4 @@ For information on the onboarding steps to sign\-on to Amazon SageMaker Studio, 
 For a tutorial that demonstrates the basic features of Amazon SageMaker Studio, see [Track and compare trials in Amazon SageMaker Studio](experiments-mnist.md)\.
 
 **Topics**
-+ [Amazon SageMaker Studio tour](gs-studio-end-to-end.md)
++ [Amazon SageMaker Studio Tour](gs-studio-end-to-end.md)

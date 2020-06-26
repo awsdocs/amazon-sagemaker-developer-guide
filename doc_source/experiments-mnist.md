@@ -4,7 +4,7 @@ This tutorial demonstrates how to visually track and compare trials in a model t
 
 It is intended that this topic be viewed alongside Studio with the MNIST notebook open\. As you run through the cells, the sections in this document highlight the relevant code and show you how to observe the results in Studio\. Some of the code snippets have been edited for brevity\.
 
-For a tutorial that showcases additional features of Studio, see [Amazon SageMaker Studio tour](gs-studio-end-to-end.md)\.
+For a tutorial that showcases additional features of Studio, see [Amazon SageMaker Studio Tour](gs-studio-end-to-end.md)\.
 
 **Prerequisites**
 + A local copy of the [MNIST](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/aws_sagemaker_studio/sagemaker_experiments/mnist-handwritten-digits-classification-experiment.ipynb) example notebook and the companion [mnist\.py](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/aws_sagemaker_studio/sagemaker_experiments/mnist.py) file\. Both are available from the [awslabs/amazon\-sagemaker\-examples](https://github.com/awslabs/amazon-sagemaker-examples) repository\. To download the files, choose each link, right\-click on the **Raw** button, and then choose **Save as**\.
@@ -182,7 +182,7 @@ This section deviates from the notebook and shows you how to compare and analyze
 
 1. Choose all five trials\. Hold down the CTRL/CMD key and select each trial\. Right\-click the selection and then choose **Open in trial component list**\. A new tab opens that displays each trial and trial component\.
 
-1. If the **TABLE PROPERTIES** pane isn't open, choose the gear icon in the upper right corner to open it\. Deselect everything except **Trial**, **Metrics**, and **Training job**\. Choose the gear icon to close the pane\.
+1. If the **TABLE PROPERTIES** pane isn't open, choose the **Settings** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Settings_squid.png) \) in the upper right corner to open it\. Deselect everything except **Trial**, **Metrics**, and **Training job**\. Choose the **Settings** icon to close the pane\.
 
 1.  Choose the **test:accuracy** column header to sort the list by decreasing maximum test accuracy\. Your screen should look similar to the following:  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-mnist-trials-accuracy.png)
@@ -203,7 +203,7 @@ This section deviates from the notebook and shows you how to compare and analyze
 
 ## Clean Up Resources<a name="experiments-mnist-cleanup"></a>
 
-To avoid incurring unnecessary charges, delete the resources you created after you're done with the tutorial\. You can't delete the Experiment resources through the Amazon SageMaker Management Console or the Studio UI\. The following code shows how to clean up these resources\.
+To avoid incurring unnecessary charges, delete the resources you created after you're done with the tutorial\. You can't delete the Experiment resources through the Amazon SageMaker Management Console or the Studio UI\. The following code shows how to clean up these resources using the Experiments SDK\.
 
 To delete the experiment, first you must delete all trials in the experiment\. To delete a trial, first you must remove all trial components from the trial\. To delete a trial component, first you must remove the component from all trials\.
 

@@ -2,12 +2,12 @@
 
 Developing a machine learning model typically requires extensive experimenting with different datasets, algorithms, and hyperparameter values\. To manage up to thousands of machine learning model experiments, use Amazon SageMaker's search capabilities\.
 
-You can use Amazon SageMaker search to:
+You can use SageMaker search to:
 + Organize, find, and evaluate training jobs using properties, hyperparameters, performance metrics, or any metadata\.
 + Find the best performing model by reviewing training job and model metrics, such as training loss or validation accuracy\.
 + Trace a model's lineage to the training job and its related resources, such as the training datasets\.
 
-You can organize, find, and evaluate training jobs and models using the Amazon SageMaker console or the API\.
+This topic covers searching from the SageMaker console and the SageMaker API\. For information on searching in Amazon SageMaker Studio, see [Compare and Evaluate Trials](studio-leaderboard.md)\.
 
 **Topics**
 + [Sample Notebooks for Managing ML Experiments](#search-sample-notebooks)
@@ -20,7 +20,7 @@ You can organize, find, and evaluate training jobs and models using the Amazon S
 
 For a sample notebook that uses Amazon SageMaker model tracking capability to manage ML experiments, see [Managing ML Experimentation using Amazon SageMaker Model Tracking Capability](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/advanced_functionality/search/ml_experiment_management_using_search.ipynb)\. 
 
-For instructions on how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. After you have created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all of the Amazon SageMaker samples\. The notebook for managing ML experiments is located in the **Advanced Functionality** section\. To open a notebook, choose its **Use** tab, and choose **Create copy**\. If you have questions, post them on the [Amazon Machine Learning Developer Forum](https://forums.aws.amazon.com/forum.jspa?forumID=285)\.
+For instructions on how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. After you have created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all of the SageMaker samples\. The notebook for managing ML experiments is located in the **Advanced Functionality** section\. To open a notebook, choose its **Use** tab, and choose **Create copy**\. If you have questions, post them on the [Amazon Machine Learning Developer Forum](https://forums.aws.amazon.com/forum.jspa?forumID=285)\.
 
 ## Organize, Find, and Evaluate Training Jobs \(Console\)<a name="search-organize-console"></a>
 
@@ -41,7 +41,7 @@ To group training jobs, create tags with descriptive keys and a value\. For exam
 
 **Add tags to training jobs \(console\)**
 
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker](https://console.aws.amazon.com/sagemaker)\.
+1. Open the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
 1. In the navigation pane, choose **Training jobs** and **Create training job**\.
 
@@ -56,7 +56,7 @@ You can search for training jobs using a variety of job attributes\. Note that s
 
 **To find training jobs \(console\)**
 
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker](https://console.aws.amazon.com/sagemaker)\.
+1. Open the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
 1. In the navigation pane, choose **Search**\.
 
@@ -78,7 +78,7 @@ To evaluate a model's performance, review its metadata, hyperparameters, and met
 
 **To evaluate a model \(console\)**
 
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker](https://console.aws.amazon.com/sagemaker)\.
+1. Open the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
 1. In the navigation pane, choose **Search** and search for training jobs by specifying relevant parameters\. The results are displayed in a table\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/search-3-sort-on-performance.png)
@@ -128,7 +128,7 @@ results = smclient.search(**search_params)
 
 ### Evaluate Models \(API\)<a name="search-organize-api"></a>
 
-To evaluate models, run a search as described in  [Find Training Jobs \(API\)](#search-api), review model metrics, then, use the AWS SDK for Python \(Boto 3\) to create a table and plot it\.
+To evaluate models, run a search as described in [Find Training Jobs \(API\)](#search-api), review model metrics, then, use the AWS SDK for Python \(Boto 3\) to create a table and plot it\.
 
 The following example shows how to evaluate models and to display the results in a table\.
 
@@ -187,11 +187,11 @@ After getting search suggestions, you can use one of the property names in a sea
 
 You can use model tracking capability to verify which datasets were used in training, where holdout datasets were used, and other details about training jobs\. For example, use model tracking capability to verify that a specific dataset was used in a training job for an audit or to verify compliance\.
 
-To check whether a specific dataset was used in a training job, you search for the URL to its location in Amazon Simple Storage Service \(Amazon S3\)\. Model tracking capability returns the training jobs that used the dataset that you specify\. If your search doesn't return the dataset \(the result is empty\),  the dataset wasn't used in a training job\. An empty result confirms, for example, that a holdout dataset wasn't used\.
+To check whether a specific dataset was used in a training job, you search for the URL to its location in Amazon Simple Storage Service \(Amazon S3\)\. Model tracking capability returns the training jobs that used the dataset that you specify\. If your search doesn't return the dataset \(the result is empty\), the dataset wasn't used in a training job\. An empty result confirms, for example, that a holdout dataset wasn't used\.
 
 ## Trace Model Lineage<a name="search-lineage"></a>
 
-You can use model tracking capability to get information about the lineage of training jobs and the model resources that were used for them, including the dataset, algorithm, hyperparameters, and metrics\. For example, if you find that the performance of a hosted model has declined, you can review its training job and the resources it used to determine what's causing the problem\. You can use the Amazon SageMaker console or the API to trace lineage\.
+You can use model tracking capability to get information about the lineage of training jobs and the model resources that were used for them, including the dataset, algorithm, hyperparameters, and metrics\. For example, if you find that the performance of a hosted model has declined, you can review its training job and the resources it used to determine what's causing the problem\.
 
 **Topics**
 + [Trace Model Lineage \(Console\)](#search-lineage-console)
@@ -201,7 +201,7 @@ You can use model tracking capability to get information about the lineage of tr
 
 **To trace a model's lineage \(console\)**
 
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker](https://console.aws.amazon.com/sagemaker)\.
+1. Open the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
 1. In the navigation pane, choose **Endpoints**, and choose the relevant endpoint\. 
 

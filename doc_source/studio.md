@@ -19,8 +19,8 @@ SageMaker Studio includes the following features:
 + [Amazon SageMaker Debugger](#studio-features-debugger)
 + [Amazon SageMaker Model Monitor](#studio-features-model-monitor)
 + [Amazon SageMaker Studio UI Overview](studio-ui.md)
++ [Use the Studio Leaderboard to Compare and Evaluate Trials](studio-leaderboard.md)
 + [Perform Common Tasks in Amazon SageMaker Studio](studio-tasks.md)
-+ [Search using Amazon SageMaker Studio](studio-search.md)
 + [Amazon SageMaker Studio Pricing](studio-pricing.md)
 
 ## Amazon SageMaker Studio Notebooks<a name="studio-features-notebook2"></a>
@@ -48,7 +48,7 @@ Amazon SageMaker Autopilot provides automatic machine learning that allows users
 
 When a user runs an Autopilot job, SageMaker Studio creates an experiment for the job and then creates a trial for each combination and stores all data and results\. After the best model is determined, the user can drill down to view each trial and see which features had the most influence on the result\.
 
-For more information, see [Use Amazon SageMaker Autopilot to Automate Model Development](autopilot-automate-model-development.md)\.
+For more information, see [Use Amazon SageMaker Autopilot to automate model development](autopilot-automate-model-development.md)\.
 
 ## Amazon SageMaker Debugger<a name="studio-features-debugger"></a>
 

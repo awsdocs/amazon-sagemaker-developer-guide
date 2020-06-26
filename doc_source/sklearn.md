@@ -26,4 +26,4 @@ I want to see information about Amazon SageMaker Scikit\-learn containers\.
 
  For general information about writing Scikit\-learn training scripts and using Scikit\-learn estimators and models with Amazon SageMaker, see [Using Scikit\-learn with the SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/using_sklearn.html)\.
 
-For information about Scikit\-learn versions supported by the Amazon SageMaker Scikit\-learn container, see [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/sklearn/README\.rst](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/sklearn/README.rst)\.
+ Scikit\-learn versions supported by the Amazon SageMaker Scikit\-learn container: `0.20.0`, `0.23-1`\. 

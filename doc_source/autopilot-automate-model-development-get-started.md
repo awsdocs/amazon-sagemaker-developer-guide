@@ -1,15 +1,8 @@
-# Get Started<a name="autopilot-automate-model-development-get-started"></a>
+# Get started with Amazon SageMaker Autopilot<a name="autopilot-automate-model-development-get-started"></a>
 
-Autopilot works with tabular data only\. Autopilot is available in Amazon SageMaker Studio in the **Create Experiment** tab\. It is recommended that you familiarize yourself with the features, and then try it out with your own data\. The general flow is as follows: 
+Amazon SageMaker Autopilot provides samples, videos, and tutorials to get started with Amazon SageMaker Autopilot
 
-1. Launch a new experiment, specify the location of the input data and where you want the outputs stored\. The outputs include intermediate preprocessed data, the candidate generation notebook, the data exploration notebook, and the model artifacts\. 
-
-1. Choose the column in your dataset that you want Autopilot to predict\. 
-
-1. \(Optional\) Specify additional parameters, such as problem type, security configuration, or job completion criteria\. 
-
-1. Launch Autopilot\. 
-
- In addition to the visual experience in SageMaker Studio, there is an example notebook for Autopilot that can help you understand the flow using the AWS SDK\. 
-
- ​ 
+**Topics**
++ [Samples: Explore modeling with Amazon SageMaker Autopilot](autopilot-samples.md)
++ [Videos: Use Autopilot to automate and explore the machine learning process](autopilot-videos.md)
++ [Tutorials: Get started with Amazon SageMaker Autopilot](autopilot-tutorials.md)

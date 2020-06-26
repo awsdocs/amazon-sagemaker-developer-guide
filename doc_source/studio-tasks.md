@@ -10,7 +10,9 @@ The following sections describe how to perform common tasks in Amazon SageMaker 
 + [Create an Amazon SageMaker Autopilot Experiment](#studio-tasks-autopilot)
 + [View Experiments, Trials, and Trial Components](#studio-tasks-experiments)
 + [Stop a Training Job](#studio-tasks-stop-training-job)
++ [Manage Your Storage Volume](#studio-tasks-manage-storage)
 + [Provide Feedback on Amazon SageMaker Studio](#studio-tasks-provide-feedback)
++ [Update Amazon SageMaker Studio](#studio-tasks-update)
 
 ## Upload files to Amazon SageMaker Studio<a name="studio-tasks-files"></a>
 
@@ -60,15 +62,17 @@ When you create an Amazon SageMaker Autopilot experiment, Amazon SageMaker analy
 
 1. Choose **Create Experiment**\.
 
-For more information, see [Use Amazon SageMaker Autopilot to Automate Model Development](autopilot-automate-model-development.md)\.
+For more information, see [Use Amazon SageMaker Autopilot to automate model development](autopilot-automate-model-development.md)\.
 
 ## View Experiments, Trials, and Trial Components<a name="studio-tasks-experiments"></a>
 
-An experiment consists of multiple trials with a related objective\. A trial consists of one or more trial components, such as a data preprocessing job and a training job\. You can drill into an experiment and view detailed information about these components\.
+An experiment consists of multiple trials with a related objective\. A trial consists of one or more trial components, such as a data preprocessing job and a training job\. You can use the Experiments browser to view detailed information about these entities\.
+
+In the Experiments browser, experiments, trials, and trial components are accessed as a hierarchy\. Double\-click an entity to drill down the hierarchy\. Use the breadcrumb above the list to go up the hierarchy\.
 
 **To view an experiment**
 
-1. In the left sidebar, choose the **SageMaker Experiments List** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Experiment_list_squid.png)\)\.
+1. In the left sidebar, choose the **SageMaker Experiment List** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Experiment_list_squid.png)\)\.
 
 1. In the experiments and trials browser, double\-click an experiment to display the trials in the experiment\.
 
@@ -89,7 +93,7 @@ For more information, including a tutorial, see [Manage Machine Learning with Am
 
 ## Stop a Training Job<a name="studio-tasks-stop-training-job"></a>
 
-When you stop a training job, its status changes to `Stopping`\.  An algorithm can delay termination in order to save model artifacts after which the job status changes to `Stopped`\.
+When you stop a training job, its status changes to `Stopping`\.  An algorithm can delay termination in order to save model artifacts after which the job status changes to `Stopped`\. For more information, see the  [StopTrainingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_StopTrainingJob.html) API\.
 
 **To stop a training job**
 
@@ -98,6 +102,27 @@ When you stop a training job, its status changes to `Stopping`\.  An algorithm c
 1. At the upper\-right side of the tab, choose **Stop training job**\. The **Status** at the top left of the tab changes to **Stopped**\.
 
 1. To view the training time and billing time, choose **AWS Settings**\.
+
+## Manage Your Storage Volume<a name="studio-tasks-manage-storage"></a>
+
+The first time a user on your team opens Amazon SageMaker Studio, Amazon SageMaker creates a domain for the team\. The domain includes an Amazon Elastic File System \(Amazon EFS\) volume with home directories for each of your users\. Notebook files and data files are stored in these directories\. Users can't access each other's home directories\.
+
+**Important**  
+Don't delete the Amazon EFS volume\. If you delete it, the domain will no longer function and all of your users will lose their work\.
+
+### Find Your Amazon EFS Storage Volume<a name="studio-tasks-manage-storage-find"></a>
+
+**To find your Amazon EFS volume**
+
+1. From the Amazon SageMaker Studio Control Panel, under **Studio Summary**, find the **Studio ID**\. The ID will be in the following format: `d-xxxxxxxx`\.
+
+1. Pass the `Studio ID`, which is the same as `DomainId`, to the [DescribeDomain](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeDomain.html) API\.
+
+   In the response from `DescribeDomain`, note the value in the `HomeEfsFileSystemId` field\.
+
+1. Open the [Amazon EFS console](https://console.aws.amazon.com/efs/)\.
+
+1. Under **File systems**, scroll through the list to find the `HomeEfsFileSystemId` value, which is the same as the **File system ID**\.
 
 ## Provide Feedback on Amazon SageMaker Studio<a name="studio-tasks-provide-feedback"></a>
 
@@ -108,3 +133,21 @@ When you stop a training job, its status changes to `Stopping`\.  An algorithm c
 1. Choose a smiley emoji to let us know how satisfied you are with SageMaker Studio and add any feedback you'd care to share with us\.
 
 1. Decide whether to share your identity with us, then choose **Submit**\.
+
+## Update Amazon SageMaker Studio<a name="studio-tasks-update"></a>
+
+When you update Amazon SageMaker Studio to the latest release, Amazon SageMaker shuts down and restarts the JupyterServer App\. Any unsaved notebook information is lost in the process\. The user data in the Amazon EFS volume isn't touched\.
+
+After the JupyterServer App is restarted, you must reopen Studio through the Amazon SageMaker Studio Control Panel\.
+
+**To update Studio**
+
+1. \(Optional\) Choose **Amazon SageMaker Studio** on the top\-left of Studio to open the landing page\. The Studio version is shown on the bottom\-left of the page\.
+
+1. On the top menu, choose **File** then **Shut Down**\.
+
+1. Choose one of the following options:
+   + **Shutdown Server** – Shuts down the JupyterServer App\. Terminal sessions, kernel sessions, SageMaker images, and instances aren't shut down\. These resources continue to accrue charges\.
+   + **Shutdown All** – Shuts down all Apps, terminal sessions, kernel sessions, SageMaker images, and instances\. These resources no longer accrue charges\.
+
+1. Reopen Studio\.

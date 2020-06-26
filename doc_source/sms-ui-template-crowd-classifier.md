@@ -92,4 +92,4 @@ The following is a sample of output from this element\.
 
 For more information, see the following\.
 + [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
-+ [HTML Elements Reference](sms-ui-template-reference.md)
++ [Crowd HTML Elements Reference](sms-ui-template-reference.md)

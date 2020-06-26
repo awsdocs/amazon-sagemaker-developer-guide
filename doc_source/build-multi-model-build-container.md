@@ -12,128 +12,107 @@ Amazon SageMaker also injects an environment variable into the container
 SAGEMAKER_MULTI_MODEL=true
 ```
 
+If you are creating a multi\-model endpoint for a serial inference pipline, your Docker file must have the required labels for both multi\-models and serial inference pipelines\. For more information about serial information pipelines, see [Run Real\-time Predictions with an Inference Pipeline](inference-pipeline-real-time.md)\.
+
 To help you implement these requirements for a custom container, two libraries are available:
 + [Multi Model Server](https://github.com/awslabs/multi-model-server) is an open source framework for serving machine learning models that can be installed in containers to provide the front end that fulfills the requirements for the new multi\-model endpoint container APIs\. It provides the HTTP front end and model management capabilities required by multi\-model endpoints to host multiple models within a single container, load models into and unload models out of the container dynamically, and performs inference on a specified loaded model\. It also provides a pluggable backend that supports a pluggable custom backend handler where you can implement your own algorithm\.
 + [Amazon SageMaker Inference Toolkit](https://github.com/aws/sagemaker-inference-toolkit) is a library that bootstraps Multi Model Server with a configuration and settings that make it compatible with Amazon SageMaker multi\-model endpoints\. It also allows you to tweak important performance parameters, such as the number of workers per model, depending on the needs of your scenario\. 
 
-For a sample notebook that shows how to set up and deploy a custom container that supports multi\-model endpoints in Amazon SageMaker, see the [Multi\-Model Endpoint BYOC Sample Notebook](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/advanced_functionality/multi_model_bring_your_own)\. 
+## Use the Amazon SageMaker Inference Toolkit<a name="multi-model-inference-toolkit"></a>
 
-## Contract for Custom Containers to Serve Multiple Model<a name="mms-container-apis"></a>
+Currently, the only pre\-built containers that support multi\-model endpoints are the MXNet inference container an the PyTorch inference container\. If you want to use any other framework or algorithm, you need to build a container\. The easiest way to do this is to use the [Amazon SageMaker Inference Toolkit](https://github.com/aws/sagemaker-inference-toolkit) to extend an existing pre\-built container\. The Amazon SageMaker inference toolkit is an implementation for the multi\-model server \(MMS\) that creates endpoints that can be deployed in Amazon SageMaker\. For a sample notebook that shows how to set up and deploy a custom container that supports multi\-model endpoints in Amazon SageMaker, see the [Multi\-Model Endpoint BYOC Sample Notebook](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/advanced_functionality/multi_model_bring_your_own)\.
 
-To handle multiple models, your container must support a set of APIs that enable the Amazon SageMaker platform to communicate with the container for loading, listing, getting, and unloading models as required\. The `model_name` is used in the new set of APIs as the key input parameter\. The customer container is expected to keep track of the loaded models using `model_name` as the mapping key\. Also, the `model_name` is an opaque identifier and is not necessarily the value of the `TargetModel` parameter passed into the `InvokeEndpoint` API\. The original `TargetModel` value in the `InvokeEndpoint` request is passed to container in the APIs as a `X-Amzn-Target-Model` header that can be used for logging purposes\.
+**Note**  
+The Amazon SageMaker inference toolkit supports only Python model handlers\. If you want to implement your handler in any other language, you must build your own container that implements the additional multi\-model endpoint APIs\. For information, see [Contract for Custom Containers to Serve Multiple Model](mms-container-apis.md)\.
+
+**To extend a container by using the Amazon SageMaker inference toolkit**
+
+1. Create a model handler\. MMS expects a model handler, which is a Python file that implements functions to pre\-process, get preditions from the model, and process the output in a model handler\. For an example of a model handler, see [model\_handler\.py](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/advanced_functionality/multi_model_bring_your_own/container/model_handler.py) from the sample notebook\.
+
+1. Import the inference toolkit and use its `model_server.start_model_server` function to start MMS\. The following example is from the `dockerd-entrypoint.py` file from the sample notebook\. Notice that the call to `model_server.start_model_server` passes the model handler described in the previous step:
+
+   ```
+   import subprocess
+   import sys
+   import shlex
+   import os
+   from retrying import retry
+   from subprocess import CalledProcessError
+   from sagemaker_inference import model_server
+   
+   def _retry_if_error(exception):
+       return isinstance(exception, CalledProcessError or OSError)
+   
+   @retry(stop_max_delay=1000 * 50,
+          retry_on_exception=_retry_if_error)
+   def _start_mms():
+       # by default the number of workers per model is 1, but we can configure it through the
+       # environment variable below if desired.
+       # os.environ['SAGEMAKER_MODEL_SERVER_WORKERS'] = '2'
+       model_server.start_model_server(handler_service='/home/model-server/model_handler.py:handle')
+   
+   def main():
+       if sys.argv[1] == 'serve':
+           _start_mms()
+       else:
+           subprocess.check_call(shlex.split(' '.join(sys.argv[1:])))
+   
+       # prevent docker exit
+       subprocess.call(['tail', '-f', '/dev/null'])
+       
+   main()
+   ```
+
+1. In your `Dockerfile`, copy the model handler from the first step and specify the Python file from the previous step as the entrypoint in your `Dockerfile`\. The following lines are from the [Dockerfile](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/advanced_functionality/multi_model_bring_your_own/container/Dockerfile) used in the sample notebook:
+
+   ```
+   # Copy the default custom service file to handle incoming data and inference requests
+   COPY model_handler.py /home/model-server/model_handler.py
+   
+   # Define an entrypoint script for the docker image
+   ENTRYPOINT ["python", "/usr/local/bin/dockerd-entrypoint.py"]
+   ```
+
+1. Build and register your container\. The following shell script from the sample notebook builds the container and uploads it to an Amazon Elastic Container Registry repository in your AWS account:
+
+   ```
+   %%sh
+   
+   # The name of our algorithm
+   algorithm_name=demo-sagemaker-multimodel
+   
+   cd container
+   
+   account=$(aws sts get-caller-identity --query Account --output text)
+   
+   # Get the region defined in the current configuration (default to us-west-2 if none defined)
+   region=$(aws configure get region)
+   region=${region:-us-west-2}
+   
+   fullname="${account}.dkr.ecr.${region}.amazonaws.com/${algorithm_name}:latest"
+   
+   # If the repository doesn't exist in ECR, create it.
+   aws ecr describe-repositories --repository-names "${algorithm_name}" > /dev/null 2>&1
+   
+   if [ $? -ne 0 ]
+   then
+       aws ecr create-repository --repository-name "${algorithm_name}" > /dev/null
+   fi
+   
+   # Get the login command from ECR and execute it directly
+   $(aws ecr get-login --region ${region} --no-include-email)
+   
+   # Build the docker image locally with the image name and then push it to ECR
+   # with the full name.
+   
+   docker build -q -t ${algorithm_name} .
+   docker tag ${algorithm_name} ${fullname}
+   
+   docker push ${fullname}
+   ```
+
+You can now use this container to deploy multi\-model endpoints in Amazon SageMaker\.
 
 **Topics**
-+ [LOAD MODEL API](#multi-model-api-load-model)
-+ [LIST MODEL API](#multi-model-api-list-model)
-+ [GET MODEL API](#multi-model-api-get-model)
-+ [UNLOAD MODEL API](#multi-model-api-unload-model)
-+ [INVOKE MODEL API](#multi-model-api-invoke-model)
-
-### LOAD MODEL API<a name="multi-model-api-load-model"></a>
-
-Instructs the container to load a particular model present in the `url` field of the body into the memory of the customer container and to keep track of it with the assigned `model_name`\. After a model is loaded, the container should be ready to serve inference requests using this `model_name`\.
-
-```
-POST /models HTTP/1.1
-Content-Type: application/json
-Accept: application/json
-
-{
-     "model_name" : "{model_name}",
-     "url" : "/opt/ml/models/{model_name}/model",
-}
-```
-
-**Note**  
-If `model_name` is already loaded, this API should return 409\. Any time a model cannot be loaded due to lack of memory or to any other resource, this API should return a 507 HTTP status code to Amazon SageMaker, which then initiates unloading unused models to reclaim\.
-
-### LIST MODEL API<a name="multi-model-api-list-model"></a>
-
-Returns the list of models loaded into the memory of the customer container\.
-
-```
-GET /models HTTP/1.1
-Accept: application/json
-
-Response = 
-{
-    "models": [
-        {
-             "modelName" : "{model_name}",
-             "modelUrl" : "/opt/ml/models/{model_name}/model",
-        },
-        {
-            "modelName" : "{model_name}",
-            "modelUrl" : "/opt/ml/models/{model_name}/model",
-        },
-        ....
-    ]
-}
-```
-
-This API also supports pagination\.
-
-```
-GET /models HTTP/1.1
-Accept: application/json
-
-Response = 
-{
-    "models": [
-        {
-             "modelName" : "{model_name}",
-             "modelUrl" : "/opt/ml/models/{model_name}/model",
-        },
-        {
-            "modelName" : "{model_name}",
-            "modelUrl" : "/opt/ml/models/{model_name}/model",
-        },
-        ....
-    ]
-}
-```
-
-Amazon SageMaker can initially call the List Models API without providing a value for `next_page_token`\. If a `nextPageToken` field is returned as part of the response, it will be provided as the value for `next_page_token` in a subsequent List Models call\. If a `nextPageToken` is not returned, it means that there are no more models to return\.
-
-### GET MODEL API<a name="multi-model-api-get-model"></a>
-
-This is a simple read API on the `model_name` entity\.
-
-```
-GET /models/{model_name} HTTP/1.1
-Accept: application/json
-
-{
-     "modelName" : "{model_name}",
-     "modelUrl" : "/opt/ml/models/{model_name}/model",
-}
-```
-
-**Note**  
-If `model_name` is not loaded, this API should return 404\.
-
-### UNLOAD MODEL API<a name="multi-model-api-unload-model"></a>
-
-Instructs the Amazon SageMaker platform to instruct the customer container to unload a model from memory\. This initiates the eviction of a candidate model as determined by the platform when starting the process of loading a new model\. The resources provisioned to `model_name` should be reclaimed by the container when this API returns a response\.
-
-```
-DELETE /models/{model_name}
-```
-
-**Note**  
-If `model_name` is not loaded, this API should return 404\.
-
-### INVOKE MODEL API<a name="multi-model-api-invoke-model"></a>
-
-Makes a prediction request from the particular `model_name` supplied\. The Amazon SageMaker Runtime `InvokeEndpoint` request supports `X-Amzn-Target-Model` as a new header that takes the relative path of the model specified for invocation\. The Amazon SageMaker system constructs the absolute path of the model by combining the prefix that is provided as part of the `CreateModel` API call with the relative path of the model\.
-
-```
-POST /models/{model_name}/invoke HTTP/1.1
-Content-Type: ContentType
-Accept: Accept
-X-Amzn-SageMaker-Custom-Attributes: CustomAttributes
-X-Amzn-SageMaker-Target-Model: [relativePath]/{artifactName}.tar.gz
-```
-
-**Note**  
-If `model_name` is not loaded, this API should return 404\.
++ [Use the Amazon SageMaker Inference Toolkit](#multi-model-inference-toolkit)
++ [Contract for Custom Containers to Serve Multiple Model](mms-container-apis.md)

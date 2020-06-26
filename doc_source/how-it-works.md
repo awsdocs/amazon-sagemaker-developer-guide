@@ -8,6 +8,3 @@ Amazon SageMaker is a fully managed service that enables you to quickly and easi
 + [Train a Model with Amazon SageMaker](how-it-works-training.md)
 + [Deploy a Model in Amazon SageMaker](how-it-works-deployment.md)
 + [Monitoring a Model in Production](how-it-works-model-monitor.md)
-
-**How It Works: Next Topic**  
-[Machine Learning with Amazon SageMaker](how-it-works-mlconcepts.md)
