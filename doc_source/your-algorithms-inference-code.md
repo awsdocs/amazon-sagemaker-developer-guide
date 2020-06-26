@@ -1,4 +1,4 @@
-# Using Your Own Inference Code \(Hosting Services\)<a name="your-algorithms-inference-code"></a>
+# Use Your Own Inference Code with Hosting Services<a name="your-algorithms-inference-code"></a>
 
 This section explains how Amazon SageMaker interacts with a Docker container that runs your own inference code for hosting services\. Use this information to write inference code and create a Docker image\. 
 
@@ -37,18 +37,18 @@ To configure a container to run as an executable, use an `ENTRYPOINT` instructio
 
    
 
-  For example, when you use the [CreateEndpoint](API_CreateEndpoint.md) API to create an endpoint, Amazon SageMaker provisions the number of ML compute instances required by the endpoint configuration, which you specify in the request\. Amazon SageMaker runs the Docker container on those instances\. 
+  For example, when you use the [ `CreateEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html) API to create an endpoint, Amazon SageMaker provisions the number of ML compute instances required by the endpoint configuration, which you specify in the request\. Amazon SageMaker runs the Docker container on those instances\. 
 
    
 
-  If you reduce the number of instances backing the endpoint \(by calling the [UpdateEndpointWeightsAndCapacities](API_UpdateEndpointWeightsAndCapacities.md) APIs\), Amazon SageMaker runs a command to stop the Docker container on the instances being terminated\. The command sends the `SIGTERM` signal, then it sends the `SIGKILL` signal thirty seconds later\.
+  If you reduce the number of instances backing the endpoint \(by calling the [ `UpdateEndpointWeightsAndCapacities`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateEndpointWeightsAndCapacities.html) APIs\), Amazon SageMaker runs a command to stop the Docker container on the instances being terminated\. The command sends the `SIGTERM` signal, then it sends the `SIGKILL` signal thirty seconds later\.
 
    
 
-  If you update the endpoint \(by calling the [UpdateEndpoint](API_UpdateEndpoint.md) API\), Amazon SageMaker launches another set of ML compute instances and runs the Docker containers that contain your inference code on them\. Then it runs a command to stop the previous Docker container\. To stop the Docker container, command sends the `SIGTERM` signal, then it sends the `SIGKILL` signal thirty seconds later\. 
+  If you update the endpoint \(by calling the [ `UpdateEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateEndpoint.html) API\), Amazon SageMaker launches another set of ML compute instances and runs the Docker containers that contain your inference code on them\. Then it runs a command to stop the previous Docker containers\. To stop a Docker container, command sends the `SIGTERM` signal, then it sends the `SIGKILL` signal thirty seconds later\. 
 
    
-+ Amazon SageMaker uses the container definition that you provided in your [CreateModel](API_CreateModel.md) request to set environment variables and the DNS hostname for the container as follows:
++ Amazon SageMaker uses the container definition that you provided in your [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) request to set environment variables and the DNS hostname for the container as follows:
 
    
   + It sets environment variables using the `ContainerDefinition.Environment` string\-to\-string map\.
@@ -62,11 +62,11 @@ To configure a container to run as an executable, use an `ENTRYPOINT` instructio
 
 ## How Amazon SageMaker Loads Your Model Artifacts<a name="your-algorithms-inference-code-load-artifacts"></a>
 
-In your [CreateModel](API_CreateModel.md) request, the container definition includes the `ModelDataUrl` parameter, which identifies the S3 location where model artifacts are stored\. Amazon SageMaker uses this information to determine where to copy the model artifacts from\. It copies the artifacts to the `/opt/ml/model` directory for use by your inference code\.
+In your [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) request, the container definition includes the `ModelDataUrl` parameter, which identifies the S3 location where model artifacts are stored\. Amazon SageMaker uses this information to determine where to copy the model artifacts from\. It copies the artifacts to the `/opt/ml/model` directory for use by your inference code\.
 
 The `ModelDataUrl` must point to a tar\.gz file\. Otherwise, Amazon SageMaker won't download the file\. 
 
- Amazon SageMaker stores the model artifact as a single compressed tar file in Amazon S3\. Amazon SageMaker uncompresses this tar file into the `/opt/ml/model` directory before your container starts\. If you used Amazon SageMaker to train the model, the files will appear just as you left them\.
+If you trained your model in Amazon SageMaker, the model artifacts are saved as a single compressed tar file in Amazon S3\. If you trained your model outside Amazon SageMaker, you need to create this single compressed tar file and save it in a S3 location\. Amazon SageMaker decompresses this tar file into /opt/ml/model directory before your container starts\.
 
 ## How Containers Serve Requests<a name="your-algorithms-inference-code-how-containe-serves-requests"></a>
 
@@ -74,7 +74,7 @@ Containers need to implement a web server that responds to `/invocations` and `/
 
 ## How Your Container Should Respond to Inference Requests<a name="your-algorithms-inference-code-container-response"></a>
 
-To obtain inferences, the client application sends a POST request to the Amazon SageMaker endpoint\. For more information, see the [InvokeEndpoint](API_runtime_InvokeEndpoint.md) API\. Amazon SageMaker passes the request to the container, and returns the inference result from the container to the client\. Note the following:
+To obtain inferences, the client application sends a POST request to the Amazon SageMaker endpoint\. For more information, see the [ `InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html) API\. Amazon SageMaker passes the request to the container, and returns the inference result from the container to the client\. Note the following:
 + Amazon SageMaker strips all `POST` headers except those supported by `InvokeEndpoint`\. Amazon SageMaker might add additional headers\. Inference containers must be able to safely ignore these additional headers\.
 + To receive inference requests, the container must have a web server listening on port 8080 and must accept `POST` requests to the `/invocations` endpoint\. 
 + A customer's model containers must accept socket connection requests within 250 ms\.
@@ -86,6 +86,6 @@ The `CreateEndpoint` and `UpdateEndpoint` API calls result in Amazon SageMaker s
 
 The simplest requirement on the container is to respond with an HTTP 200 status code and an empty body\. This indicates to Amazon SageMaker that the container is ready to accept inference requests at the /invocations endpoint\.
 
-If the container does not begin to consistently respond with 200s during the first 30 seconds after startup, the `CreateEndPoint` and `UpdateEndpoint` APIs will fail\.
+If the container does not begin to pass health checks, by consistently responding with 200s, during the 4 minutes after startup, `CreateEndPoint` will fail, leaving Endpoint in a failed state, and the update requested by `UpdateEndpoint` will not be completed\.
 
 While the minimum bar is for the container to return a static 200, a container developer can use this functionality to perform deeper checks\. The request timeout on /ping attempts is 2 seconds\.

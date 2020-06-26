@@ -1,9 +1,9 @@
-# Algorithms Provided by Amazon SageMaker: Common Information<a name="common-info-all-im-models"></a>
+# Common elements of built\-in algorithms<a name="common-info-all-im-models"></a>
 
 The following topics provide information common to all of the algorithms provided by Amazon SageMaker\.
 
 **Topics**
-+ [Algorithms Provided by Amazon SageMaker: Common Parameters](sagemaker-algo-docker-registry-paths.md)
-+ [Algorithms Provided by Amazon SageMaker: Common Data Formats](sagemaker-algo-common-data-formats.md)
-+ [Algorithms Provided by Amazon SageMaker: Suggested Instance Types](cmn-info-instance-types.md)
-+ [Algorithms Provided by Amazon SageMaker: Logs](common-info-all-sagemaker-models-logs.md)
++ [Common parameters for built\-in algorithms](sagemaker-algo-docker-registry-paths.md)
++ [Common data formats for built\-in algorithms](sagemaker-algo-common-data-formats.md)
++ [Instance types for built\-in algorithms](cmn-info-instance-types.md)
++ [Logs for built\-In Algorithms](common-info-all-sagemaker-models-logs.md)

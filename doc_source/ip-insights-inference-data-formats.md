@@ -1,10 +1,10 @@
 # IP Insights Inference Data Formats<a name="ip-insights-inference-data-formats"></a>
 
-The following are the available input and output formats for the IP Insights algorithm\. Amazon SageMaker built\-in algorithms adhere to the common input inference format described in [Common Data Formats—Inference ](cdf-inference.md)\. However, the Amazon SageMaker IP Insights algorithm does not currently support RecordIO format\.
+The following are the available input and output formats for the IP Insights algorithm\. Amazon SageMaker built\-in algorithms adhere to the common input inference format described in [Common Data Formats for Inference](cdf-inference.md)\. However, the Amazon SageMaker IP Insights algorithm does not currently support RecordIO format\.
 
 ## IP Insights Input Request Formats<a name="ip-insights-input-format-requests"></a>
 
-### INPUT: CSV<a name="ip-insights-input-csv"></a>
+### INPUT: CSV Format<a name="ip-insights-input-csv"></a>
 
 The CSV file must have two columns\. The first column is an opaque string that corresponds to an entity's unique identifier\. The second column is the IPv4 address of the entity's access event in decimal\-dot notation\. 
 
@@ -15,9 +15,9 @@ entity_id_1, 192.168.1.2
 entity_id_2, 10.10.1.2
 ```
 
-### INPUT: JSON<a name="ip-insights-input-json"></a>
+### INPUT: JSON Format<a name="ip-insights-input-json"></a>
 
-JSON data can be provided in different formats\. IP Insights follows the common Amazon SageMaker formats\. For more information about inference formats, see [Common Data Formats—Inference ](cdf-inference.md)\.
+JSON data can be provided in different formats\. IP Insights follows the common Amazon SageMaker formats\. For more information about inference formats, see [Common Data Formats for Inference](cdf-inference.md)\.
 
 content\-type: application/json
 
@@ -30,9 +30,9 @@ content\-type: application/json
 }
 ```
 
-### INPUT: JSONLINES<a name="ip-insights-input-jsonlines"></a>
+### INPUT: JSONLINES Format<a name="ip-insights-input-jsonlines"></a>
 
-The JSON Lines content type is useful for running batch transform jobs\. For more information on Amazon SageMaker inference formats, see [Common Data Formats—Inference ](cdf-inference.md)\. For more information on running batch transform jobs, see [Getting Inferences by Using Amazon SageMaker Batch Transform](how-it-works-batch.md)\.
+The JSON Lines content type is useful for running batch transform jobs\. For more information on Amazon SageMaker inference formats, see [Common Data Formats for Inference](cdf-inference.md)\. For more information on running batch transform jobs, see [Get Inferences for an Entire Dataset with Batch Transform](how-it-works-batch.md)\.
 
 content\-type: application/jsonlines
 
@@ -43,7 +43,7 @@ content\-type: application/jsonlines
 
 ## IP Insights Output Response Formats<a name="ip-insights-ouput-format-response"></a>
 
-### OUTPUT: JSON<a name="ip-insights-output-json"></a>
+### OUTPUT: JSON Response Format<a name="ip-insights-output-json"></a>
 
 The default output of the Amazon SageMaker IP Insights algorithm is the `dot_product` between the input entity and IP address\. The dot\_product signifies how compatible the model considers the entity and IP address\. The `dot_product` is unbounded\. To make predictions about whether an event is anomalous, you need to set a threshold based on your defined distribution\. For information about how to use the `dot_product` for anomaly detection, see the [An Introduction to the Amazon SageMakerIP Insights Algorithm](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/ipinsights_login/ipinsights-tutorial.ipynb                  )\.
 
@@ -79,7 +79,7 @@ accept: application/json;verbose=True
 }
 ```
 
-### OUTPUT: JSONLINES<a name="ip-insights-jsonlines"></a>
+### OUTPUT: JSONLINES Response Format<a name="ip-insights-jsonlines"></a>
 
 accept: application/jsonlines 
 

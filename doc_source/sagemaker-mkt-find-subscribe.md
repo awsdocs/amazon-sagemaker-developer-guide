@@ -20,9 +20,9 @@ With AWS Marketplace, you can browse and search for hundreds of machine learning
 
    This takes you to the AWS Marketplace model packages page\. For information about finding and subscribing to model packages on AWS Marketplace, see [Machine Learning Products](https://docs.aws.amazon.com/marketplace/latest/buyerguide/aws-machine-learning-marketplace.html) in the *AWS Marketplace User Guide for AWS Consumers*\.
 
-## Using Algorithms and Model Packages<a name="sagemaker-mkt-how-to-use"></a>
+## Use Algorithms and Model Packages<a name="sagemaker-mkt-how-to-use"></a>
 
-For information about using algorithms and model packages that you subscribe to in Amazon SageMaker, see [Using Algorithm and Model Package Resources](sagemaker-mkt-buy.md)\.
+For information about using algorithms and model packages that you subscribe to in Amazon SageMaker, see [Use Algorithm and Model Package Resources](sagemaker-mkt-buy.md)\.
 
 **Note**  
 When you create a training job, inference endpoint, and batch transform job from an algorithm or model package that you subscribe to on AWS Marketplace, the training and inference containers do not have access to the internet\. Because the containers do not have access to the internet, the seller of the algorithm or model package does not have access to your data\.

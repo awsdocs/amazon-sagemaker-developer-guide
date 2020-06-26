@@ -1,4 +1,4 @@
-# Distributed training with Amazon SageMaker RL<a name="sagemaker-rl-distributed"></a>
+# Distributed Training with Amazon SageMaker RL<a name="sagemaker-rl-distributed"></a>
 
 Amazon SageMaker RL supports multi\-core and multi\-instance distributed training\. Depending on your use case, training and/or environment rollout can be distributed\. For example, Amazon SageMaker RL works for the following distributed scenarios:
 + Single training instance and multiple rollout instances of the same instance type\. For an example, see the Neural Network Compression example in the Amazon SageMaker examples repository at [https://github\.com/awslabs/amazon\-sagemaker\-examples/tree/master/reinforcement\_learning](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/reinforcement_learning)\.

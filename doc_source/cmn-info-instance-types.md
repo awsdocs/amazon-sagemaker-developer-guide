@@ -1,4 +1,4 @@
-# Algorithms Provided by Amazon SageMaker: Suggested Instance Types<a name="cmn-info-instance-types"></a>
+# Instance types for built\-in algorithms<a name="cmn-info-instance-types"></a>
 
 For training and hosting Amazon SageMaker algorithms, we recommend using the following EC2 instance types:
 +  ml\.m4\.xlarge, ml\.m4\.4xlarge, and ml\.m4\.10xlarge

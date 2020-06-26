@@ -1,6 +1,6 @@
 # Data Formats for Object2Vec Training<a name="object2vec-training-formats"></a>
 
-## INPUT: JSONLINES<a name="object2vec-in-training-data-jsonlines"></a>
+## Input: JSON Lines Request Format<a name="object2vec-in-training-data-jsonlines"></a>
 
 Content\-type: application/jsonlines
 
@@ -10,4 +10,4 @@ Content\-type: application/jsonlines
 {"label": 1, "in0": [774, 14, 21, 206], "in1": [21, 366, 125]}
 ```
 
-The “in0” and “in1” are the inputs for encoder0 and encoder1, respectively\. The same format is valid for both classification and regression problems\. For regression, the field "label" can accept real valued inputs\.
+The “in0” and “in1” are the inputs for encoder0 and encoder1, respectively\. The same format is valid for both classification and regression problems\. For regression, the field `"label"` can accept real valued inputs\.

@@ -2,13 +2,13 @@
 
 In this step, you set which AWS Lambda functions to trigger on each dataset object prior to sending it to workers and which function will be used to process the results once the task is submitted\. These functions are required\.
 
-You will first need to visit the AWS Lambda console or use AWS Lambda's APIs to create your functions\. The AmazonSageMakerFullAccess policy is restricted to invoking AWS Lambda functions with one of the following four strings as part of the function name: `SageMaker`, `Sagemaker`, `sagemaker`, or `LabelingFunction`\. This applies to both your pre\-processing and post\-processing Lambdas\. If you choose to use names without those strings, you must explicitly provide `lambda:InvokeFunction` permission to the IAM role used for creating the labeling job\.
+You will first need to visit the AWS Lambda console or use AWS Lambda's APIs to create your functions\. The AmazonSageMakerFullAccess policy is restricted to invoking AWS Lambda functions with one of the following four strings as part of the function name: `SageMaker`, `Sagemaker`, `sagemaker`, or `LabelingFunction`\. This applies to both your pre\-annotation and post\-annotation Lambdas\. If you choose to use names without those strings, you must explicitly provide `lambda:InvokeFunction` permission to the IAM role used for creating the labeling job\.
 
 Select your lambdas from the **Lambda functions** section that comes after the code editor for your custom HTML in the Ground Truth console\.
 
-If you need an example, there is an end\-to\-end demo, including Python code for the Lambdas, in the "[Demo Template: Bounding Box](sms-custom-templates-step2-demo1.md)" document\.
+If you need an example, there is an end\-to\-end demo, including Python code for the Lambdas, in the "[Demo Template: Annotation of Images with `crowd-bounding-box`](sms-custom-templates-step2-demo1.md)" document\.
 
-## Pre\-labeling task Lambda<a name="sms-custom-templates-step3-prelambda"></a>
+## Pre\-annotation Lambda<a name="sms-custom-templates-step3-prelambda"></a>
 
 Before a labeling task is sent to the worker, your AWS Lambda function will be sent a JSON formatted request to provide details\.
 
@@ -24,7 +24,7 @@ Before a labeling task is sent to the worker, your AWS Lambda function will be s
 }
 ```
 
-The `dataObject` will contain the `source` or `source-ref` property specified in the data object from your manifest\.
+The `dataObject` will contain the JSON formatted properties from your manifest's data object\. For a very basic image annotation job, it might just be a `source-ref` property specifying the image to be annotated\. The JSON line objects in your manifest can be up to 100 kilobytes in size and contain a variety of data\.
 
 In return, Ground Truth will require a response formatted like this:
 
@@ -33,18 +33,23 @@ In return, Ground Truth will require a response formatted like this:
 ```
 {
     "taskInput": <json object>,
-    "humanAnnotationRequired": <boolean> # Optional
+    "isHumanAnnotationRequired": <boolean> # Optional
 }
 ```
 
-That `<json object>` may be a bit deceiving\. It needs to contain *all* the data your custom form will need\. If you're doing a bounding box task where the instructions stay the same all the time, it may just be the HTTP\(S\) or S3 resource for your image file\. If it's a sentiment analysis task and different objects may have different choices, it would be the object reference as a string and the choices as an array of strings\.
+In the previous example, the `<json object>` needs to contain *all* the data your custom form will need\. If you're doing a bounding box task where the instructions stay the same all the time, it may just be the HTTP\(S\) or S3 resource for your image file\. If it's a sentiment analysis task and different objects may have different choices, it would be the object reference as a string and the choices as an array of strings\.
 
-**The pre\-processing Lambda runs first**  
+**Implications of `isHumanAnnotationRequired`**  
+ This value is optional because it will default to `true`\. The primary use case for explicitly setting it is when you want to exclude this data object from being labeled by human workers\. 
+
+If you have a mix of objects in your manifest, with some requiring human annotation and some not needing it, you can include a `isHumanAnnotationRequired` value in each data object\. You can then use code in your pre\-annotation Lambda to read the value from the data object and set the value in your Lambda output\.
+
+**The pre\-annotation Lambda runs first**  
  Before any tasks are available to workers, your entire manifest will be processed into an intermediate form, using your Lambda\. This means you won't be able to change your Lambda part of the way through a labeling job and see that have an impact on the remaining tasks\. 
 
-## Post\-labeling task Lambda<a name="sms-custom-templates-step3-postlambda"></a>
+## Post\-annotation Lambda<a name="sms-custom-templates-step3-postlambda"></a>
 
-When the worker has completed the task, Ground Truth will send the results to your **Post\-labeling task Lambda**\. This Lambda is generally used for [Annotation Consolidation](sms-annotation-consolidation.md)\. The request object will come in like this:
+When all workers have annotated the data object or when [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanLoopConfig.html#SageMaker-Type-HumanLoopConfig-TaskAvailabilityLifetimeInSeconds](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanLoopConfig.html#SageMaker-Type-HumanLoopConfig-TaskAvailabilityLifetimeInSeconds) has been reached, whichever comes first, Ground Truth will send those annotations to your Post\-annotation Lambda\. This Lambda is generally used for [Consolidate Annotations ](sms-annotation-consolidation.md)\. The request object will come in like this:
 
 **Example of a post\-labeling task request**  
 
@@ -60,10 +65,11 @@ When the worker has completed the task, Ground Truth will send the results to yo
     }
  }
 ```
+ If no worker work on the data object and `TaskAvailabilityLifetimeInSeconds` has been reached, data object will be marked as failed and not included as part of post annotation lambda invocation\.
 
 ### Post\-labeling task Lambda permissions<a name="sms-custom-templates-step3-postlambda-perms"></a>
 
-The actual annotation data will be in a file designated by the `s3Uri` string in the `payload` object\. To process the annotations as they come in, even for a simple passthrough function, you need to assign the necessary permissions to your Lambda to read files from your S3 bucket\.
+The actual annotation data will be in a file designated by the `s3Uri` string in the `payload` object\. To process the annotations as they come in, even for a simple pass through function, you need to assign the necessary permissions to your Lambda to read files from your S3 bucket\.
 
 In the Console page for creating your Lambda, scroll to the **Execution role** panel\. Select **Create a new role from one or more templates**\. Give the role a name\. From the **Policy templates** drop\-down, choose **Amazon S3 object read\-only permissions**\. Save the Lambda and the role will be saved and selected\.
 
@@ -104,7 +110,20 @@ In return, Ground Truth will require a response formatted like this:
                 }
             }
         }
+    },
+   {        
+        "datasetObjectId": <string>,
+        "consolidatedAnnotation": {
+            "content": {
+                "<labelattributename>": {
+                    # ... label content
+                }
+            }
+        }
     }
+    .
+    .
+    .
 ]
 ```
 At this point, all the data you're sending to your S3 bucket, other than the `datasetObjectId` will be in the `content` object\.

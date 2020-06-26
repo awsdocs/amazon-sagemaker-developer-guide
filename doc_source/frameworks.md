@@ -1,10 +1,19 @@
-# Using Machine Learning Frameworks with Amazon SageMaker<a name="frameworks"></a>
+# Use Machine Learning Frameworks, Python, and R with Amazon SageMaker<a name="frameworks"></a>
 
-The Amazon SageMaker Python SDK provides open source APIs and containers that make it easy to train and deploy models in Amazon SageMaker with several different machine learning and deep learning frameworks\. For general information about the Amazon SageMaker Python SDK, see [https://github\.com/aws/sagemaker\-python\-sdk](https://github.com/aws/sagemaker-python-sdk)\. For information about using specific frameworks in Amazon SageMaker, see the following topics:
+You can use Python and R natively in Amazon SageMaker notebook kernels\. There are also kernels that support specific frameworks\. A very popular way to get started with Amazon SageMaker is to use the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\. It provides open source Python APIs and containers that make it easy to train and deploy models in Amazon SageMaker, as well as examples for use with several different machine learning and deep learning frameworks\.
 
-**Topics**
-+ [Using TensorFlow with Amazon SageMaker](tf.md)
-+ [Using Apache MXNet with Amazon SageMaker](mxnet.md)
-+ [Using Scikit\-learn with Amazon SageMaker](sklearn.md)
-+ [Using PyTorch with Amazon SageMaker](pytorch.md)
-+ [Using Chainer with Amazon SageMaker](chainer.md)
+For information about using specific frameworks or how to use R in Amazon SageMaker, see the following topics\.
+
+Languages SDKs and user guides:
++ [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)
++ [R](r-guide.md)
++ [API Reference Guide for Amazon SageMaker](api-and-sdk-reference.md)
+
+Machine learning and deep learning frameworks guides:
++ [Apache MXNet](mxnet.md)
++ [Apache Spark](apache-spark.md)
++ [Chainer](chainer.md)
++ [PyTorch](pytorch.md)
++ [Scikit\-learn](sklearn.md)
++ [SparkML Serving](sparkml-serving.md)
++ [TensorFlow](tf.md)

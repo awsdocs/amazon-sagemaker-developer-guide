@@ -9,11 +9,11 @@ The following diagram shows an example of the interactions with a simulator for 
 The simulation environment consists of an agent and a simulator\. Here, a convolutional neural network \(CNN\) consumes images from the simulator and generates actions to control the game controller\. With multiple simulations, this environment generates training data of the form `state_t`, `action`, `state_t+1`, and `reward_t+1`\. Defining the reward is not trivial and impacts the RL model quality\. We want to provide a few examples of reward functions, but would like to make it user\-configurable\. 
 
 **Topics**
-+ [Using OpenAI Gym Interface for Environments in Amazon SageMaker RL](#sagemaker-rl-environments-gym)
-+ [Using Open Source Environments](#sagemaker-rl-environments-open)
-+ [Using Commercial Environments](#sagemaker-rl-environments-commercial)
++ [Use OpenAI Gym Interface for Environments in Amazon SageMaker RL](#sagemaker-rl-environments-gym)
++ [Use Open Source Environments](#sagemaker-rl-environments-open)
++ [Use Commercial Environments](#sagemaker-rl-environments-commercial)
 
-## Using OpenAI Gym Interface for Environments in Amazon SageMaker RL<a name="sagemaker-rl-environments-gym"></a>
+## Use OpenAI Gym Interface for Environments in Amazon SageMaker RL<a name="sagemaker-rl-environments-gym"></a>
 
 To use OpenAI Gym environments in Amazon SageMaker RL, use the following API elements\. For more information about OpenAI Gym, see [https://gym\.openai\.com/docs/](https://gym.openai.com/docs/)\.
 + `env.action_space`—Defines the actions the agent can take, specifies whether each action is continuous or discrete, and specifies the minimum and maximum if the action is continuous\.
@@ -22,10 +22,10 @@ To use OpenAI Gym environments in Amazon SageMaker RL, use the following API ele
 + `step()`—Takes the agent action as input and outputs the next state of the environment, the reward, whether the episode has terminated, and an `info` dictionary to communicate debugging information\. It is the responsibility of the environment to validate the inputs\.
 + `env.render()`Used for environments that have visualization\. The RL toolkit calls this function to capture visualizations of the environment after each call to the `step()` function\.
 
-## Using Open Source Environments<a name="sagemaker-rl-environments-open"></a>
+## Use Open Source Environments<a name="sagemaker-rl-environments-open"></a>
 
 You can use open source environments, such as EnergyPlus and RoboSchool, in Amazon SageMaker RL by building your own container\. For more information about EnergyPlus, see [https://energyplus\.net/](https://energyplus.net/)\. For more information about RoboSchool, see [https://github\.com/openai/roboschool](https://github.com/openai/roboschool)\. The HVAC and RoboSchool examples in the samples repository at [https://github\.com/awslabs/amazon\-sagemaker\-examples/tree/master/reinforcement\_learning](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/reinforcement_learning) show how to build a custom container to use with Amazon SageMaker RL:
 
-## Using Commercial Environments<a name="sagemaker-rl-environments-commercial"></a>
+## Use Commercial Environments<a name="sagemaker-rl-environments-commercial"></a>
 
 You can use commercial environments, such as MATLAB and Simulink, in Amazon SageMaker RL by building your own container\. You need to manage your own licenses\.

@@ -1,4 +1,4 @@
-# K\-Nearest Neighbors Hyperparameters<a name="kNN_hyperparameters"></a>
+# k\-NN Hyperparameters<a name="kNN_hyperparameters"></a>
 
 
 | Parameter Name | Description | 

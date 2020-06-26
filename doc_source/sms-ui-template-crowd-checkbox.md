@@ -2,37 +2,72 @@
 
 A UI component that can be checked or unchecked allowing a user to select multiple options from a set\.
 
-## Attributes<a name="checkbox-attributes"></a>
+The following is an example of a Liquid template that uses the `<crowd-checkbox>` element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+
+```
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<crowd-form>
+  
+  <p>Find the official website for: <strong>{{ task.input.company }}</strong></p>
+  <p>Do not give Yelp pages, LinkedIn pages, etc.</p>
+  <p>Include the http:// prefix from the website</p>
+  <crowd-input name="website" placeholder="http://example.com"></crowd-input>
+
+  <crowd-checkbox name="website-found">Website Found</crowd-checkbox>
+
+</crowd-form>
+```
+
+### Attributes<a name="checkbox-attributes"></a>
 
 The following attributes are supported by this element\.
 
-### checked<a name="checkbox-attributes-checked"></a>
+#### checked<a name="checkbox-attributes-checked"></a>
 
 A Boolean switch that, if present, displays the check box as checked\.
 
-### disabled<a name="checkbox-attributes-disabled"></a>
+The following is an example of the syntx used to check a checkbox by default\.
+
+```
+  <crowd-checkbox name="checkedBox" value="checked" checked>This box is checked</crowd-checkbox>
+```
+
+#### disabled<a name="checkbox-attributes-disabled"></a>
 
 A Boolean switch that, if present, displays the check box as disabled and prevents it from being checked\.
 
-### name<a name="checkbox-attributes-name"></a>
+The following is an example of the syntax used to disable a checkbox\. 
+
+```
+  <crowd-checkbox name="disabledCheckBox" value="Disabled" disabled>Cannot be selected</crowd-checkbox>
+```
+
+#### name<a name="checkbox-attributes-name"></a>
 
 A string that is used to identify the answer submitted by the worker\. This value will match a key in the JSON object that specifies the answer\.
 
-### required<a name="checkbox-attributes-required"></a>
+#### required<a name="checkbox-attributes-required"></a>
 
 A Boolean switch that, if present, requires the worker to provide input\.
 
-### value<a name="checkbox-attributes-value"></a>
+The following is an example of the syntax used to require a checkbox be selected\.
 
-A string used as the name for the check box state in the output\. Defaults to "on" if not specified\.
+```
+  <crowd-checkbox name="work_verified" required>Instructions were clear</crowd-checkbox>
+```
 
-## Element Hierarchy<a name="checkbox-element-hierarchy"></a>
+#### value<a name="checkbox-attributes-value"></a>
+
+A string used as the name for the check box state in the output\. Defaults to "on" if not specified\. 
+
+### Element Hierarchy<a name="checkbox-element-hierarchy"></a>
 
 This element has the following parent and child elements\.
 + **Parent elements**: [crowd\-form](sms-ui-template-crowd-form.md)
 + **Child elements**: none
 
-## Output<a name="checkbox-element-output"></a>
+### Output<a name="checkbox-element-output"></a>
 
 Provides a JSON object\. The `name` string is the object name and the `value`string is the property name for a Boolean value based on the check box state; true if checked, false if not checked\.
 
@@ -40,20 +75,20 @@ Provides a JSON object\. The `name` string is the object name and the `value`str
 **Using the same `name` value for multiple boxes\.**  
 
 ```
-<!-- INPUT -->
-<div><crowd-checkbox name="myformbit" value="Red"> Red </div>
-<div><crowd-checkbox name="myformbit" value="Yellow"> Yellow </div>
-<div><crowd-checkbox name="myformbit" value="Green"> Green </div>
+<!-- INPUT -->  
+<div><crowd-checkbox name="image_attributes" value="blurry"> Blurry </crowd-checkbox></div>
+<div><crowd-checkbox name="image_attributes" value="dim"> Too Dim </crowd-checkbox></div>
+<div><crowd-checkbox name="image_attributes" value="exposed"> Too Bright </crowd-checkbox></div>
 ```
 
 ```
-//Output with "Red" checked
+//Output with "blurry" and "dim" checked
 [
   {
-    "myformbit": {
-      "Green": false,
-      "Red": true,
-      "Yellow": false
+    "image_attributes": {
+      "blurry": true,
+      "dim": true,
+      "exposed": false
     }
   }
 ]
@@ -63,9 +98,9 @@ Note that all three color values are properties of a single object\.
 
 ```
 <!-- INPUT -->
-<div><crowd-checkbox name="Stop" value="Red"> Red </div>
-<div><crowd-checkbox name="Slow" value="Yellow"> Yellow </div>
-<div><crowd-checkbox name="Go" value="Green"> Green </div>
+<div><crowd-checkbox name="Stop" value="Red"> Red </crowd-checkbox></div>
+<div><crowd-checkbox name="Slow" value="Yellow"> Yellow </crowd-checkbox></div>
+<div><crowd-checkbox name="Go" value="Green"> Green </crowd-checkbox></div>
 ```
 
 ```
@@ -85,8 +120,8 @@ Note that all three color values are properties of a single object\.
 ]
 ```
 
-## See Also<a name="checkbox-see-also"></a>
+### See Also<a name="checkbox-see-also"></a>
 
 For more information, see the following\.
-+ [Amazon SageMaker Ground Truth](sms.md)
-+ [HTML Elements Reference](sms-ui-template-reference.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
++ [Crowd HTML Elements Reference](sms-ui-template-reference.md)

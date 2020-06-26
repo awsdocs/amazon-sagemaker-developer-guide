@@ -4,7 +4,7 @@ When you start a training job with a `CreateTrainingJob` request, you specify a 
 
 ## Word2Vec Hyperparameters<a name="blazingtext_hyperparameters_word2vec"></a>
 
-The following table lists the hyperparameters for the BlazingText training algorithm provided by Amazon SageMaker\.
+The following table lists the hyperparameters for the BlazingText Word2Vec training algorithm provided by Amazon SageMaker\.
 
 
 | Parameter Name | Description | 
@@ -13,7 +13,7 @@ The following table lists the hyperparameters for the BlazingText training algor
 | batch\_size |  The size of each batch when `mode` is set to `batch_skipgram`\. Set to a number between 10 and 20\. **Optional** Valid values: Positive integer Default value: 11  | 
 | buckets |  The number of hash buckets to use for subwords\. **Optional** Valid values: positive integer Default value: 2000000  | 
 | epochs |  The number of complete passes through the training data\. **Optional** Valid values: Positive integer Default value: 5  | 
-| evaluation |  Whether the trained model is evaluated using the [WordSimilarity\-353 Test](https://www.cs.technion.ac.il/~gabr/resources/data/wordsim353/)\. **Optional** Valid values: \(Boolean\) `True` or `False` Default value: `True`  | 
+| evaluation |  Whether the trained model is evaluated using the [WordSimilarity\-353 Test](http://www.gabrilovich.com/resources/data/wordsim353/wordsim353.html)\. **Optional** Valid values: \(Boolean\) `True` or `False` Default value: `True`  | 
 | learning\_rate |  The step size used for parameter updates\. **Optional** Valid values: Positive float Default value: 0\.05  | 
 | min\_char |  The minimum number of characters to use for subwords/character n\-grams\. **Optional** Valid values: positive integer Default value: 3  | 
 | min\_count |  Words that appear less than `min_count` times are discarded\. **Optional** Valid values: Non\-negative integer Default value: 5  | 

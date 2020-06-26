@@ -11,6 +11,8 @@ To create a model package resource that you can use to create deployable models 
   The validation procedure uses your validation profile and sample data to run the following validations tasks:
 
   1. Create a model in your account using the model package's inference image and the optional model artifacts that are stored in Amazon S3\.
+**Note**  
+A model package is specific to the region in which you create it\. The S3 bucket where the model artifacts are stored must be in the same region where your created the model package\.
 
   1. Create a transform job in your account using the model to verify that your inference image works with Amazon SageMaker\.
 
@@ -80,10 +82,10 @@ To publish your model package on AWS Marketplace, your model package must be val
 
    1. For **Validation profile**, specify the following:
       + A name for the validation profile\.
-      + A **Transform job definition**\. This is a JSON block that describes a batch transform job\. This is in the same format as the [TransformJobDefinition](API_TransformJobDefinition.md)input parameter of the [CreateAlgorithm](API_CreateAlgorithm.md) API\.
+      + A **Transform job definition**\. This is a JSON block that describes a batch transform job\. This is in the same format as the [ `TransformJobDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformJobDefinition.html) input parameter of the [ `CreateAlgorithm`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAlgorithm.html) API\.
 
 1. Choose **Create model package**\.
 
 ## Create a Model Package Resource \(API\)<a name="sagemaker-mkt-create-model-pkg-api"></a>
 
-To create a model package by using the Amazon SageMaker API, call the [CreateModelPackage](API_CreateModelPackage.md) API\. 
+To create a model package by using the Amazon SageMaker API, call the [ `CreateModelPackage`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModelPackage.html) API\. 

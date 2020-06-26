@@ -1,20 +1,20 @@
-# K\-Nearest Neighbors<a name="k-nearest-neighbors"></a>
+# K\-Nearest Neighbors \(k\-NN\) Algorithm<a name="k-nearest-neighbors"></a>
 
 Amazon SageMaker k\-nearest neighbors \(k\-NN\) algorithm is an index\-based algorithm\. It uses a non\-parametric method for classification or regression\. For classification problems, the algorithm queries the *k* points that are closest to the sample point and returns the most frequently used label of their class as the predicted label\. For regression problems, the algorithm queries the *k* closest points to the sample point and returns the average of their feature values as the predicted value\. 
 
 Training with the k\-NN algorithm has three steps: sampling, dimension reduction, and index building\. Sampling reduces the size of the initial dataset so that it fits into memory\. For dimension reduction, the algorithm decreases the feature dimension of the data to reduce the footprint of the k\-NN model in memory and inference latency\. We provide two methods of dimension reduction methods: random projection and the fast Johnson\-Lindenstrauss transform\. Typically, you use dimension reduction for high\-dimensional \(d >1000\) datasets to avoid the “curse of dimensionality” that troubles the statistical analysis of data that becomes sparse as dimensionality increases\. The main objective of k\-NN's training is to construct the index\. The index enables efficient lookups of distances between points whose values or class labels have not yet been determined and the k nearest points to use for inference\.
 
 **Topics**
-+ [Input/Output Interface](#kNN-input_output)
-+ [kNN Sample Notebooks](#kNN-sample-notebooks)
-+ [How It Works](kNN_how-it-works.md)
-+ [EC2 Instance Recommendation](#kNN-instances)
-+ [K\-Nearest Neighbors Hyperparameters](kNN_hyperparameters.md)
-+ [Tuning a K\-Nearest Neighbors Model](kNN-tuning.md)
-+ [Data Formats for K\-Nearest Neighbors Training Input](kNN-in-formats.md)
-+ [K\-NN Request and Response Formats](kNN-inference-formats.md)
++ [Input/Output Interface for the k\-NN Algorithm](#kNN-input_output)
++ [k\-NN Sample Notebooks](#kNN-sample-notebooks)
++ [How the k\-NN Algorithm Works](kNN_how-it-works.md)
++ [EC2 Instance Recommendation for the k\-NN Algorithm](#kNN-instances)
++ [k\-NN Hyperparameters](kNN_hyperparameters.md)
++ [Tune a k\-NN Model](kNN-tuning.md)
++ [Data Formats for k\-NN Training Input](kNN-in-formats.md)
++ [k\-NN Request and Response Formats](kNN-inference-formats.md)
 
-## Input/Output Interface<a name="kNN-input_output"></a>
+## Input/Output Interface for the k\-NN Algorithm<a name="kNN-input_output"></a>
 
 Amazon SageMaker k\-NN supports train and test data channels\.
 + Use a *train channel* for data that you want to sample and construct into the k\-NN index\.
@@ -44,18 +44,20 @@ accept: application/jsonlines
 {"predicted_label": 2.0}
 ```
 
-For more information on input and output file formats, see [Data Formats for K\-Nearest Neighbors Training Input](kNN-in-formats.md) for training, [K\-NN Request and Response Formats](kNN-inference-formats.md) for inference, and the [kNN Sample Notebooks](#kNN-sample-notebooks)\.
+For more information on input and output file formats, see [Data Formats for k\-NN Training Input](kNN-in-formats.md) for training, [k\-NN Request and Response Formats](kNN-inference-formats.md) for inference, and the [k\-NN Sample Notebooks](#kNN-sample-notebooks)\.
 
-## kNN Sample Notebooks<a name="kNN-sample-notebooks"></a>
+## k\-NN Sample Notebooks<a name="kNN-sample-notebooks"></a>
 
-For a sample notebook that uses the Amazon SageMaker k\-nearest neighbor algorithm to predict wilderness cover types from geological and forest service data, see the [K\-Nearest Neighbor Covertype ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/k_nearest_neighbors_covtype/k_nearest_neighbors_covtype.ipynb)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Using Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the Amazon SageMaker samples\. The topic modeling example notebooks using the NTM algorithms are located in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.
+For a sample notebook that uses the Amazon SageMaker k\-nearest neighbor algorithm to predict wilderness cover types from geological and forest service data, see the [K\-Nearest Neighbor Covertype ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/k_nearest_neighbors_covtype/k_nearest_neighbors_covtype.ipynb)\. 
 
-## EC2 Instance Recommendation<a name="kNN-instances"></a>
+Use a Jupyter notebook instance to run the example in Amazon SageMaker\. To learn how to create and open a Jupyter notebook instance in Amazon SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the Amazon SageMaker example notebooks\. Find K\-Nearest Neighbor notebooks in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.
 
-### Training<a name="kNN-instances-training"></a>
+## EC2 Instance Recommendation for the k\-NN Algorithm<a name="kNN-instances"></a>
+
+### Instance Recommendation for Training with the k\-NN Algorithm<a name="kNN-instances-training"></a>
 
 To start, try running training on a CPU, using, for example, an ml\.m5\.2xlarge instance, or on a GPU using, for example, an ml\.p2\.xlarge instance\.
 
-### Inference<a name="kNN-instances-inference"></a>
+### Instance Recommendation for Inference with the k\-NN Algorithm<a name="kNN-instances-inference"></a>
 
 Inference requests from CPUs generally have a lower average latency than requests from GPUs because there is a tax on CPU\-to\-GPU communication when you use GPU hardware\. However, GPUs generally have higher throughput for larger batches\.

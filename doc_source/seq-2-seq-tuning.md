@@ -1,10 +1,10 @@
-# Tuning a Sequence to Sequence Model<a name="seq-2-seq-tuning"></a>
+# Tune a Sequence\-to\-Sequence Model<a name="seq-2-seq-tuning"></a>
 
 *Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an objective metric\. You choose the objective metric from the metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the objective metric\.
 
-For more information about model tuning, see [Automatic Model Tuning](automatic-model-tuning.md)\.
+For more information about model tuning, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
 
-## Metrics Computed by the Sequence to Sequence Algorithm<a name="seq-2-seq-metrics"></a>
+## Metrics Computed by the Sequence\-to\-Sequence Algorithm<a name="seq-2-seq-metrics"></a>
 
 The sequence to sequence algorithm reports three metrics that are computed during training\. Choose one of them as an objective to optimize when tuning the hyperparameter values\.
 
@@ -15,7 +15,7 @@ The sequence to sequence algorithm reports three metrics that are computed durin
 | validation:bleu |  [Bleu﻿](https://en.wikipedia.org/wiki/BLEU) score computed on the validation dataset\. Because BLEU computation is expensive, you can choose to compute BLEU on a random subsample of the validation dataset to speed up the overall training process\. Use the `bleu_sample_size` parameter to specify the subsample\.  |  Maximize  | 
 | validation:perplexity |  [Perplexity](https://en.wikipedia.org/wiki/Perplexity), is a loss function computed on the validation dataset\. Perplexity measures the cross\-entropy between an empirical sample and the distribution predicted by a model and so provides a measure of how well a model predicts the sample values, Models that are good at predicting a sample have a low perplexity\.  |  Minimize  | 
 
-## Tunable Hyperparameters<a name="seq-2-seq-tunable-hyperparameters"></a>
+## Tunable Sequence\-to\-Sequence Hyperparameters<a name="seq-2-seq-tunable-hyperparameters"></a>
 
 You can tune the following hyperparameters for the Amazon SageMaker Sequence to Sequence algorithm\. The hyperparameters that have the greatest impact on sequence to sequence objective metrics are: `batch_size`, `optimizer_type`, `learning_rate`, `num_layers_encoder`, and `num_layers_decoder`\.
 

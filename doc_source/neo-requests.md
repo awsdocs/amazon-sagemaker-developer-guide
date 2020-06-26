@@ -1,6 +1,6 @@
 # Request Inferences from a Deployed Service<a name="neo-requests"></a>
 
-If you have followed instructions in [Deploy Models Compiled with Neo with Hosting Services](neo-deployment-hosting-services.md), you should have an Amazon SageMaker endpoint set up and running\. You can now submit inference requests using Boto3 client\. Here is an example of sending an image for inference:
+If you have followed instructions in [Deploy a Model Compiled with Neo with Hosting Services](neo-deployment-hosting-services.md), you should have an Amazon SageMaker endpoint set up and running\. You can now submit inference requests using Boto3 client\. Here is an example of sending an image for inference:
 
 ```
 import boto3
@@ -36,4 +36,4 @@ response = runtime.invoke_endpoint(EndpointName=endpoint, ContentType='text/csv'
 result = json.loads(response['Body'].read().decode())
 ```
 
-Note that BYOM allows for a custom content type\. For more information, see [InvokeEndpoint](API_runtime_InvokeEndpoint.md)\.
+Note that BYOM allows for a custom content type\. For more information, see [ `runtime_InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html)\.

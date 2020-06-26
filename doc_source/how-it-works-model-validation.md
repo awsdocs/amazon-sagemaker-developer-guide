@@ -1,4 +1,4 @@
-# Validating Machine Learning Models<a name="how-it-works-model-validation"></a>
+# Validate a Machine Learning Model<a name="how-it-works-model-validation"></a>
 
 After training a model, evaluate it to determine whether its performance and accuracy allow you to achieve your business goals\. You might generate multiple models using different methods and evaluate each\. For example, you could apply different business rules for each model, and then apply various measures to determine each model's suitability\. You might consider whether your model needs to be more sensitive than specific \(or vice versa\)\. 
 
@@ -29,7 +29,3 @@ Options for offline model evaluation include:
 
    
 + **k\-fold validation**—In this validation approach, you split the example dataset into *k* parts\. You treat each of these parts as a holdout set for* k* training runs, and use the other *k*\-1 parts as the training set for that run\. You produce* k* models using a similar process, and aggregate the models to generate your final model\. The value *k* is typically in the range of 5\-10\.
-
-## How It Works: Next Topic<a name="howitwork-validation-nextstep"></a>
-
- [The Amazon SageMaker Programming Model ](how-it-works-prog-model.md) 
