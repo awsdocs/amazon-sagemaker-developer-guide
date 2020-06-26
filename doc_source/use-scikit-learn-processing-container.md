@@ -26,3 +26,5 @@ sklearn_processor.run(code='preprocessing.py',
                                ProcessingOutput(source='/opt/ml/processing/output/test')]
                      )
 ```
+
+To process data in parallel using Scikit\-Learn on Amazon SageMaker Processing, you can shard input objects by S3 key by setting `s3_data_distribution_type='ShardedByS3Key'` inside a `ProcessingInput` so that each instance receives about the same number of input objects\.

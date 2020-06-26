@@ -63,7 +63,7 @@ If you change the instance type, existing setting for the notebook are lost and 
 
 1. Wait for the new instance to become enabled\.
 
-For more information, see [Change an Instance Type](notebooks-run-and-manage.md#notebooks-run-and-manage-switch-instance-type)\.
+For more information, see [Change an Instance Type](notebooks-run-and-manage-switch-instance-type.md)\.
 
 ## Change a notebook's image<a name="studio-tasks-notebook-change-image"></a>
 
@@ -77,7 +77,7 @@ The current kernel name is displayed at the top right of a notebook\. In the scr
 
 The status of the kernel is displayed on the lower left of the screen\. While waiting for the kernel to start, you can edit text cells in the notebook but you must wait until the kernel is started to run a code cell\.
 
-For more information, see [Change a SageMaker Image](notebooks-run-and-manage.md#notebooks-run-and-manage-change-environment)\.
+For more information, see [Change a SageMaker Image](notebooks-run-and-manage-change-environment.md)\.
 
 ## Share a Studio notebook<a name="studio-tasks-notebook-share"></a>
 
@@ -97,7 +97,7 @@ You can share a notebook with a colleague by sending them a link\. When your col
 
 1. Share the link with your colleague\.
 
-For more information, see [Share and Use a Studio Notebook](notebooks-run-and-manage.md#notebooks-sharing)\.
+For more information, see [Share and Use a Studio Notebook](notebooks-sharing.md)\.
 
 ## Shut down a notebook<a name="studio-tasks-notebook-shut-down-instance"></a>
 

@@ -26,7 +26,7 @@ To run your own training model using the Amazon SageMaker Containers, build a Do
 
    1. Choose **Create notebook instance**\. 
 
-      It takes a few minutes for Amazon SageMaker to launch an ML compute instance—in this case, a notebook instance—and attach an ML storage volume to it\. The notebook instance has a preconfigured Jupyter notebook server and a set of Anaconda libraries\. For more information, see the [  `CreateNotebookInstance`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstance.html) API\. 
+      It takes a few minutes for Amazon SageMaker to launch a ML compute instance—in this case, a notebook instance—and attach an ML storage volume to it\. The notebook instance has a preconfigured Jupyter notebook server and a set of Anaconda libraries\. For more information, see the [  `CreateNotebookInstance`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstance.html) API\. 
 
 1.  Choose RunScriptNotebookInstance, scroll down to **Permissions and encryption** section, and record **the IAM role ARN number** in a notepad\. **The IAM role ARN number** looks like the following: `'arn:aws:iam::109225375568:role/service-role/AmazonSageMaker-ExecutionRole-20190429T110788'` 
 

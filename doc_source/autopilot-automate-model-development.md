@@ -1,60 +1,18 @@
-# Use Amazon SageMaker Autopilot to Automate Model Development<a name="autopilot-automate-model-development"></a>
+# Use Amazon SageMaker Autopilot to automate model development<a name="autopilot-automate-model-development"></a>
 
- Amazon SageMaker Autopilot simplifies the machine learning experience by helping you explore your data and try different algorithms\. It also automatically trains and tunes models on your behalf, to help you find the best algorithm\. You simply upload tabular data in a file with comma\-separated values \(for example, from a spreadsheet or database\), choose the target column to predict, and Autopilot builds a predictive model for you\. These predictions can take the form of ordered numerical values \(i\.e\., this is a regression model\) or the form of categories \(i\.e\., a classification model\)\. Autopilot explores different combinations of data preprocessors, algorithms, and algorithm parameter settings to find an accurate model, similar to how a data scientist would, making it easier for novices to get started\. 
+Amazon SageMaker Autopilot simplifies the machine learning experience by automating machine learning processes\. It helps you explore your data, engineer features, try different algorithms, and select the best model\. The result is the best performing model that you can deploy at a fraction of the time normally required\. 
 
-**Topics**
-+ [Autopilot samples](#autopilot-samples)
-+ [Autopilot Videos](#autopilot-videos)
-+ [Get Started](autopilot-automate-model-development-get-started.md)
-+ [Create an Amazon SageMaker Autopilot Experiment in SageMaker Studio](autopilot-automate-model-development-create-experiment.md)
-+ [SageMaker Autopilot Notebook Output](autopilot-automate-model-development-notebook-output.md)
-+ [SageMaker Autopilot Problem Types](autopilot-automate-model-development-problem-types.md)
+You also get full visibility into how the data was wrangled and how the model was created and selected, based on performance, from the various candidates explored\. This is provided by notebooks that Autopilot generates that describe the plan it followed when selecting candidate models from trials combining data processing and algorithm training and tuning\. The notebooks also provide educational tools that enable you to conduct ML experiments\. You can learn about the impact of various inputs and trade\-offs made in experiments first by examining the data exploration and candidate generation notebooks exposed by Autopilot and then by making your own modifications and rerunning the notebooks\.
 
-## Autopilot samples<a name="autopilot-samples"></a>
+The following graphic shows how Autopilot manages the principal tasks of the machine learning process\.
 
-Amazon SageMaker Autopilot provides the following sample notebooks\.
-+ [ Direct Marketing with Amazon SageMaker Autopilot](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/autopilot/sagemaker_autopilot_direct_marketing.ipynb): This notebook demonstrates how you can use Autopilot on this dataset to get the most accurate ML pipeline through exploring a number of potential options, or "candidates"\.
-+ [Customer Churn Prediction with Amazon SageMaker Autopilot](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/autopilot/autopilot_customer_churn.ipynb): This notebook describes using machine learning \(ML\) for the automated identification of unhappy customers, also known as customer churn prediction\. ML models rarely give perfect predictions though, so this notebook is also about how to incorporate the relative costs of prediction mistakes when determining the financial outcome of using ML\.
+![\[Overview of the process used by Amazon SageMaker Autopilot.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/Autopilot-process-graphic-1.png)
 
-## Autopilot Videos<a name="autopilot-videos"></a>
-
-Autopilot videos
-
-Here is a video series that provides a tour of Amazon SageMaker Autopilot capabilities using Studio\. They show how to start an AutoML job, analyze and preprocess data, how to do feature engineering and hyperparameter optimization on candidate models, and how to visualize and compare the resulting model metrics\.
+You can use Autopilot in different ways: on autopilot \(hence the name\) or with various degrees of human guidance, without code through Amazon SageMaker Studio, or with code using one of the AWS SDKs\. Autopilot currently supports regression and binary and multiclass classification\. It also only supports tabular data formatted in files with comma\-separated values\.
 
 **Topics**
-+ [Start an AutoML job with Amazon SageMaker Autopilot](#autopilot-video-start-automl-job)
-+ [Review data exploration and feature engineering automated in Autopilot\.](#autopilot-video-generated-notebooks)
-+ [Tune models to optimize performance](#autopilot-video-optimizing-model-performance)
-+ [Choose and deploy the best model](#autopilot-video-choose-and-deploy-the-best-model)
-+ [Amazon SageMaker Autopilot walk\-through](#topicID)
-
-### Start an AutoML job with Amazon SageMaker Autopilot<a name="autopilot-video-start-automl-job"></a>
-
-This video shows you to how to start an AutoML job with Autopilot\. \(Length: 8:41\)
-
-[![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/qMEtqJPhqpA/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/qMEtqJPhqpA)
-
-### Review data exploration and feature engineering automated in Autopilot\.<a name="autopilot-video-generated-notebooks"></a>
-
-This video shows you how to examine the data exploration and candidate definition notebooks generated by Amazon SageMaker Autopilot\. \(Length: 10:04\)
-
-[![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/WsfRAeGzgm8/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/WsfRAeGzgm8)
-
-### Tune models to optimize performance<a name="autopilot-video-optimizing-model-performance"></a>
-
-This video shows you how to optimize model performance during training using hyperparameter tuning\. \(Length: 4:59\)
-
-[![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/KZSTsWrDGXs/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/KZSTsWrDGXs)
-
-### Choose and deploy the best model<a name="autopilot-video-choose-and-deploy-the-best-model"></a>
-
-This video shows you how to use job metrics to choose the best model and then how to deploy it\. \(Length: 5:20\)
-
-[![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/vRHyX3kDstI/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/vRHyX3kDstI)
-
-### Amazon SageMaker Autopilot walk\-through<a name="topicID"></a>
-
-This video walks you through an end to end demo where we first build a binary classification model automatically with Amazon SageMaker Autopilot\. We see how candidate models have been built and optimized using auto\-generated notebooks\. We also look at the top candidates with Amazon SageMaker Experiments\. Finally, we deploy the top candidate \(based on XGBoost\), and configure data capture with Amazon SageMaker Model Monitor\.
-
-[![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/DRjOOaR2prQ/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/DRjOOaR2prQ)
++ [Get started with Amazon SageMaker Autopilot](autopilot-automate-model-development-get-started.md)
++ [Amazon SageMaker Autopilot problem types](autopilot-automate-model-development-problem-types.md)
++ [Create an Amazon SageMaker experiment in SageMaker Studio](autopilot-automate-model-development-create-experiment.md)
++ [Amazon SageMaker Autopilot notebook output](autopilot-automate-model-development-notebook-output.md)
++ [API reference guide for Amazon SageMaker Autopilot](autopilot-reference.md)

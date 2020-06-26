@@ -201,4 +201,4 @@ You may have many labels available, but only the ones that are used appear in th
 
 For more information, see the following\.
 + [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
-+ [HTML Elements Reference](sms-ui-template-reference.md)
++ [Crowd HTML Elements Reference](sms-ui-template-reference.md)

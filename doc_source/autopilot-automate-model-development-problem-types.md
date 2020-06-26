@@ -1,29 +1,25 @@
-# SageMaker Autopilot Problem Types<a name="autopilot-automate-model-development-problem-types"></a>
+# Amazon SageMaker Autopilot problem types<a name="autopilot-automate-model-development-problem-types"></a>
 
-You have the option of focusing the Autopilot experiment on specific problem types, which in turn limits the kind of preprocessing and algorithms that are tried\. 
+When setting a problem type, such as binary classification or regression, with the AutoML API, you have the option of specifying it or of letting Amazon SageMaker Autopilot detect it on your behalf\. You set the type of problem with the `[CreateAutoPilot\.ProblemType](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJob.html#sagemaker-CreateAutoMLJob-request-ProblemType)` parameter\. This limits the kind of preprocessing and algorithms that Autopilot tries\. When the job is finished, if you had set the `[CreateAutoPilot\.ProblemType](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJob.html#sagemaker-CreateAutoMLJob-request-ProblemType)`, then the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ResolvedAttributes.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ResolvedAttributes.html) will match the `ProblemType` you set\. If you leave it blank \(or `null`\), the `ProblemType` will be whatever Autopilot decides on your behalf\. 
+
+**Note**  
+In some cases, Autopilot is unable to infer the `ProblemType` with high enough confidence, in which case you must provide the value for the job to succeed\.
 
 Your problem type options are as follows: 
 
 **Topics**
-+ [Linear regression](#autopilot-automate-model-development-problem-types-linear-regression)
++ [Regression](#autopilot-automate-model-development-problem-types-regression)
 + [Binary classification](#autopilot-automate-model-development-problem-types-binary-classification)
-+ [Multi\-class classification](#autopilot-automate-model-development-problem-types-multi-class-classification)
-+ [Automatic problem type detection](#autopilot-automate-model-development-problem-types-api-notes)
++ [Multiclass classification](#autopilot-automate-model-development-problem-types-multi-class-classification)
 
- Each of the problem types require a tabular data input with the columns labelled\. In a typical ML environment you set the feature that you are interested in predicting \(objective\) and you can also specify the objective type \(classification or regression\)\. However, with Autopilot these are optional\. It can detect these settings for you\. 
+## Regression<a name="autopilot-automate-model-development-problem-types-regression"></a>
 
-## Linear regression<a name="autopilot-automate-model-development-problem-types-linear-regression"></a>
-
- One commonly used  linear regression example is home prices prediction\. Provided a dataset of home prices and other features like number of bathrooms and bedrooms, linear regression can create a model for you that takes one or more of these features as an input and then predicts a home price\. When using your own data, it is possible to provide some missing observations \(blank data\), but you are notified when there’s too much missing data for a good predictive model\. 
+Regression estimates the values of a dependent target variable based on one or more other variables or attributes that are correlated with it\. An example is the prediction of house prices using features like the number of bathrooms and bedrooms, square footage of the house and garden\. Regression analysis can create a model that takes one or more of these features as an input and predicts the price of a house\.
 
 ## Binary classification<a name="autopilot-automate-model-development-problem-types-binary-classification"></a>
 
- Binary classification models are trained using labeled examples of objects mixed with other examples that are not that object\. For example, there is the Not Hotdog app whose primary function was to evaluate images and tell you if it contains a hotdog or not\. While this provides a humorous look at an AI application, a real\-world example is evaluating the Titanic dataset and making fatality predictions \(alive or dead\)\. Being alive or dead is a binary outcome that can be easily measured\. The provided features such as cabin class, life boat number, or age could all be considered reasonable survivability factors for an ill\-fated transatlantic sea voyage\. 
+Binary classification is a type of supervised learning that assigns an individual to one of two predefined and mutually exclusive classes based on their attributes\. It is supervised because the models are trained using examples where the attributes are provided with correctly labelled objects\. A medical diagnosis for whether an individual has a disease or not based on the results of diagnostic tests is an example of binary classification\.
 
-## Multi\-class classification<a name="autopilot-automate-model-development-problem-types-multi-class-classification"></a>
+## Multiclass classification<a name="autopilot-automate-model-development-problem-types-multi-class-classification"></a>
 
- Multi\-class refers to the range of possible predictions the model will make\. For example, an emotion detection model might have a handful of possible classes: happy, sad, angry, or surprised\. A model of this type would not only predict each class, it would return the percentage probability of each class\. Another example is found in self\-driving cars where they use models to identify objects like pedestrians, vehicles, stop signs, and green/yellow/red lights\. 
-
-## Automatic problem type detection<a name="autopilot-automate-model-development-problem-types-api-notes"></a>
-
- When setting a problem type with the AutoML API, you have the option of defining one, or letting Autopilot detect it on your behalf\. When the job is finished, if you set a ProblemType, the ResolvedAttribute’s ProblemType will match the ProblemType you set\. If you left it blank \(or null\), the ProblemType will be whatever Autopilot decides on your behalf\. 
+Multiclass classification is a type of supervised learning that assigns an individual to one of several classes based on their attributes\. It is supervised because the models are trained using examples where the attributes are provided with correctly labelled objects\. An example is the prediction of the topic most relevant to a text document\. A document may be classified as being about, say, religion or politics or finance, or about one of several other predefined topic classes\.

@@ -81,7 +81,7 @@ with open('test_data/test_sample.csv', 'r') as f:
 print("Done!")
 ```
 
-**View captured date**: List the data capture files stored in Amazon S3\. Expect to see different files from different time periods, organized based on the hour when the invocation occurred\. 
+**View captured data**: List the data capture files stored in Amazon S3\. Expect to see different files from different time periods, organized based on the hour when the invocation occurred\. 
 
 ```
 s3_client = boto3.Session().client('s3')

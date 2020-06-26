@@ -6,72 +6,28 @@ When working on a multi\-label text classification task, workers should choose a
 
 Amazon SageMaker Ground Truth doesn't provide a "none" category for when none of the labels applies\. To provide this option to workers, include a label similar to "none" or "other" when you create a multi\-label text classification job\. 
 
-When you create a multi\-label text classification job in the console, you will be provided with a default worker UI template that you can use to:
-+ Specify the labels that you want the worker to see 
-+ Create worker instructions
+To restrict workers to choosing a single label for each document or text selection, use the [Text Classification \(Single Label\)](sms-text-classification.md) task type\. 
 
-See [Create a Multi\-Label Text Classification Labeling Job \(Console\)](#sms-creating-multilabel-text-classification-console) for an example of the template provided in the console\. 
-
-When you create a multi\-label text classification job using the Amazon SageMaker API or your preferred Amazon SageMaker SDK, you will need to provide a custom worker task template which will be used to generated your workers' UI\. For more information, see [Create a Custom Template for Multi\-label Text Classification](#custom-template-multi-label-text-classification)\.
-
-To restrict workers to choosing a single label for each document or text selection, use the [Text Classification](sms-text-classification.md) task type\. 
-
-**Note**  
-Automated labeling \(auto\-labeling\) isn't supported for the multi\-label text classification task type\. 
-
-**Topics**
-+ [Create a Multi\-Label Text Classification Labeling Job \(Console\)](#sms-creating-multilabel-text-classification-console)
-+ [Create a Multi\-Label Text Classification Labeling Job \(API\)](#sms-creating-multilabel-text-classification-api)
-+ [Multi\-label Text Classification Output Data](#sms-text-classification-multi-select-output-data)
+**Important**  
+For this task type, if you create your own manifest file, use `"source-ref"` to identify the location of text files in Amazon S3 that you want labeled\. If you provide the text that you want labeled directly in the input manifest file, use `"source"`\. For more information, see [Input Data](sms-data-input.md)\.
 
 ## Create a Multi\-Label Text Classification Labeling Job \(Console\)<a name="sms-creating-multilabel-text-classification-console"></a>
 
-To create a multi\-label text classification labeling job, you use the Ground Truth section of the Amazon SageMaker console\. Ground Truth provides a worker console similar to the following for labeling tasks\. When you create the labeling job with the console, you can modify the contents that are shown\. 
+You can follow the instructions [Create a Labeling Job \(Console\)](sms-create-labeling-job-console.md) to learn how to create a multi\-label text classification labeling job in the Amazon SageMaker console\. In Step 10, choose **Text** from the **Task category** drop down menu, and choose **Text Classification \(Multi\-label\)** as the task type\. 
+
+Ground Truth provides a worker UI similar to the following for labeling tasks\. When you create the labeling job with the console, you specify instructions to help workers complete the job and labels that workers can choose from\. 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/text-classification-multilabel-example.png)
 
-To create a multi\-label text classification labeling job, use the instructions in the [Getting started](sms-getting-started.md) guide: For [Step 2: Create a Labeling Job](sms-getting-started-step2.md), choose **Text classification \(Multi\-label\)** as the** Task type**\.
-
 ## Create a Multi\-Label Text Classification Labeling Job \(API\)<a name="sms-creating-multilabel-text-classification-api"></a>
 
-To create a multi\-label text classification labeling job using the Amazon SageMaker API, you use the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. To use this operation, you need:
-+ A custom worker task template\. For information, see [Create a Custom Template for Multi\-label Text Classification](#custom-template-multi-label-text-classification)\.
-+ At least one Amazon Simple Storage Service \(Amazon S3\) bucket to store your input and output data\. 
-+ An input manifest file that specifies your input data\. For information about creating an input manifest, see [Input Data](sms-data-input.md)\. 
-+ An AWS Identity and Access Management \(IAM\) role with the AmazonSageMakerFullAccess IAM policy attached and with permissions to access your S3 buckets\. For example, if the text or documents specified in your manifest file are in an S3 bucket named `my_input_bucket`, and if you want the label data to be stored in a bucket named `my_output_bucket`, you would attach the following IAM policy to the role that is passed to the `CreateLabelingJob` operation\.
+To create a multi\-label text classification labeling job, use the Amazon SageMaker API operation `CreateLabelingJob`\. This API defines this operation for all AWS SDKs\. To see a list of language\-specific SDKs supported for this operation, review the **See Also** section of [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)\.
 
-  ```
-  {
-      "Version": "2012-10-17",
-      "Statement": [
-          {
-              "Effect": "Allow",
-              "Action": [
-                  "s3:GetObject"
-              ],
-              "Resource": [
-                  "arn:aws:s3:::my_input_bucket/*"
-              ]
-          },
-          {
-              "Effect": "Allow",
-              "Action": [
-                  "s3:PutObject"
-              ],
-              "Resource": [
-                  "arn:aws:s3:::my_output_bucket/*"
-              ]
-          }
-      ]
-  }
-  ```
-+ The ARN for a pre\-annotation AWS Lambda function that will be used to process your input data\. These Lambda functions are predefined in each AWS Region for multi\-label text classification labeling jobs\. Pre\-annotation Lambda functions for this task type end with `PRE-TextMultiClassMultiLabel`\. To find the pre\-annotation Lambda ARN for your Region, see [PreHumanTaskLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/dg/API_HumanTaskConfig.html#SageMaker-Type-HumanTaskConfig-PreHumanTaskLambdaArn)\. 
-+ A work team ARN\. To learn about work teams and workforces, see [Create and Manage Workforces](sms-workforce-management.md)\.
+Follow the instructions on [Create a Labeling Job \(API\)](sms-create-labeling-job-api.md) and do the following while you configure your request: 
++ Pre\-annotation Lambda functions for this task type end with `PRE-TextMultiClassMultiLabel`\. To find the pre\-annotation Lambda ARN for your Region, see [PreHumanTaskLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/dg/API_HumanTaskConfig.html#SageMaker-Type-HumanTaskConfig-PreHumanTaskLambdaArn) \. 
++ Annotation\-consolidation Lambda functions for this task type end with `ACS-TextMultiClassMultiLabel`\. To find the annotation\-consolidation Lambda ARN for your Region, see [AnnotationConsolidationLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/dg/API_AnnotationConsolidationConfig.html#SageMaker-Type-AnnotationConsolidationConfig-AnnotationConsolidationLambdaArn)\. 
 
-  If you use the Amazon Mechanical Turk public workforce, use the `ContentClassifiers` parameter in `CreateLabelingJob` to declare that your content is free of personally identifiable information or adult content\. If your content contains personally identifiable information or adult content, Amazon SageMaker might restrict the Amazon Mechanical Turk workers that can view your task\.
-+ \(Optional\) To have multiple workers label a single text passage \(by inputting a number greater than one for the `NumberOfHumanWorkersPerDataObject` parameter\), include an annotation\-consolidation Lambda ARN as an input to the `AnnotationConsolidationLambdaArn` parameter\. These Lambda functions are predefined in each AWS Region for multi\-label text classification labeling jobs\. Annotation\-consolidation Lambda functions for this task type end with `ACS-TextMultiClassMultiLabel`\. To find the annotation\-consolidation Lambda ARN for your Region, see [AnnotationConsolidationLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/dg/API_AnnotationConsolidationConfig.html#SageMaker-Type-AnnotationConsolidationConfig-AnnotationConsolidationLambdaArn)\. 
-
-The following is an example of an [AWS Python SDK \(Boto3\) request](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_labeling_job) to create a labeling job in the US East \(N\. Virginia\) Region\. 
+The following is an example of an [AWS Python SDK \(Boto3\) request](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_labeling_job) to create a labeling job in the US East \(N\. Virginia\) Region\. All parameters in red should be replaced with your specifications and resources\. 
 
 ```
 response = client.create_labeling_job(
@@ -104,7 +60,7 @@ response = client.create_labeling_job(
         'UiConfig': {
             'UiTemplateS3Uri': 's3://bucket/path/custom-worker-task-template.html'
         },
-        'PreHumanTaskLambdaArn': 'arn:aws:lambda::function:PRE-TextMultiClassMultiLabel',
+        'PreHumanTaskLambdaArn': 'arn:aws:lambda::function:PRE-TextMultiClassMultiLabel,
         'TaskKeywords': [
             'Text Classification',
         ],
@@ -126,38 +82,36 @@ response = client.create_labeling_job(
 )
 ```
 
-For more information about this operation, see [CreateLabelingJob](https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateLabelingJob.html)\. For information about how to use other language\-specific SDKs, see [See Also](https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateLabelingJob.html#API_CreateLabelingJob_SeeAlso) in the `CreateLabelingJobs` topic\. 
+### Create a Template for Multi\-label Text Classification<a name="custom-template-multi-label-text-classification"></a>
 
-### Create a Custom Template for Multi\-label Text Classification<a name="custom-template-multi-label-text-classification"></a>
+If you create a labeling job using the API, you must supply a worker task template in `UiTemplateS3Uri`\. Copy and modify the following template\. Only modify the [https://docs.aws.amazon.com/sagemaker/latest/dg/sms-creating-instruction-pages.html#sms-creating-quick-instructions](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-creating-instruction-pages.html#sms-creating-quick-instructions), [https://docs.aws.amazon.com/sagemaker/latest/dg/sms-creating-instruction-pages.html#sms-creating-full-instructions](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-creating-instruction-pages.html#sms-creating-full-instructions), and `header`\. 
 
-If you create a labeling job using the API, you must create and supply a custom worker task template\. You can use the Amazon SageMaker [crowd\-classifier\-multi\-select](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-crowd-classifier-multi-select.html) HTML crowd element to create a template for a multi\-label text classification job\. The following example shows how to use this crowd element\.
+Upload this template to S3, and provide the S3 URI for this file in `UiTemplateS3Uri`\.
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
-
 <crowd-form>
-    <crowd-classifier-multi-select
-      name="category"
-      categories="['Positive', 'Negative', 'Neutral']"
-      header="Select the relevant categories"
-    >
-      <classification-target>
-        {{ task.input.taskObject }}
-      </classification-target>
-      
-      <full-instructions header="Text Categorization Instructions">
-        <p><strong>Positive</strong> sentiment include: joy, excitement, delight</p>
-        <p><strong>Negative</strong> sentiment include: anger, sarcasm, anxiety</p>
-        <p><strong>Neutral</strong>: neither positive or negative, such as stating a fact</p>
-        <p><strong>N/A</strong>: when the text cannot be understood</p>
-        <p>When the sentiment is mixed, such as both joy and sadness, use your judgment to choose the stronger emotion.</p>
-      </full-instructions>
-
-      <short-instructions>
-       Choose all categories that are expressed by the text. 
-      </short-instructions>
-    </crowd-classifier-multi-select>
-</crowd-form>
+  <crowd-classifier-multi-select
+    name="crowd-classifier-multi-select"
+    categories="{{ task.input.labels | to_json | escape }}"
+    header="Please identify all classes in the below text"
+  >
+    <classification-target style="white-space: pre-wrap">
+      {{ task.input.taskObject }}
+    </classification-target>
+    <full-instructions header="Classifier instructions">
+      <ol><li><strong>Read</strong> the text carefully.</li>
+      <li><strong>Read</strong> the examples to understand more about the options.</li>
+      <li><strong>Choose</strong> the appropriate labels that best suit the text.</li></ol>
+    </full-instructions>
+    <short-instructions>
+      <p>Enter description of the labels that workers have to choose from</p>
+      <p><br></p>
+      <p><br></p><p>Add examples to help workers understand the label</p>
+      <p><br></p><p><br></p><p><br></p><p><br></p><p><br></p>
+    </short-instructions>
+  </crowd-classifier-multi-select>
+  </crowd-form>
 ```
 
 To learn how to create a custom template, see [Creating Custom Labeling Workflows](sms-custom-templates.md)\. 

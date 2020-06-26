@@ -18,7 +18,8 @@ The following tables list the hyperparameters supported by the Amazon SageMaker 
 | --- | --- | 
 | num\_classes |  The number of classes to segment\. **Required** Valid values: 2 ≤ positive integer ≤ 254  | 
 | num\_training\_samples |  The number of samples in the training data\. The algorithm uses this value to set up the learning rate scheduler\. **Required** Valid values: positive integer  | 
-| crop\_size |  The image size for input during training\. We randomly rescale the input image while preserving the aspect ratio and then take a random square crop with side length `crop_size`\. Input crop\_sizes will be automatically rounded up to multiples of 8\. **Optional** Valid values: positive integer > 16 Default value: 480  | 
+| base\_size |  Defines how images are rescaled before cropping\. Images are rescaled such that the long size length is set to `base_size` multiplied by a random number from 0\.5 to 2\.0, and the short size is computed to preserve the aspect ratio\. **Optional** Valid values: positive integer > 16 Default value: 520  | 
+| crop\_size |  The image size for input during training\. We randomly rescale the input image based on `base_size`, and then take a random square crop with side length equal to `crop_size`\. The `crop_size` will be automatically rounded up to multiples of 8\. **Optional** Valid values: positive integer > 16 Default value: 480  | 
 
 **Training Hyperparameters**
 

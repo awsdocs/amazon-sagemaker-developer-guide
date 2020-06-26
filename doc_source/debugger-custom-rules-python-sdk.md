@@ -2,7 +2,7 @@
 
 For a sample notebook that shows you how to use a custom rule to monitor your training job with a tf\.keras ResNet example, see [Amazon SageMaker \- Debugging with custom rules](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker-debugger/tensorflow_keras_custom_rule)\. 
 
-The following code sample shows how to configure a custom `ImproperActivation` rule using the open source[*smdebug* Python library](https://github.com/awslabs/sagemaker-debugger/) with the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\. This example assumes that the custom rule you’ve written has path */rules/custom\_rules\.py*\. You do not need to specify a pre\-built Docker image when using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) as the `Estimators` handle this task\. 
+The following code sample shows how to configure a custom `ImproperActivation` rule using the open source[ *smdebug* Python library](https://github.com/awslabs/sagemaker-debugger/) with the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\. This example assumes that the custom rule you’ve written has path */rules/custom\_rules\.py*\. You do not need to specify a pre\-built Docker image when using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) as the `Estimators` handle this task\. 
 
 ```
 from sagemaker.debugger import Rule, CollectionConfig

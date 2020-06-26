@@ -1,6 +1,6 @@
 # Amazon SageMaker Debugger Registry URLs for Built\-in Rule Evaluators<a name="debuger-built-in-registry-ids"></a>
 
-Use the following values for the components of the registry URLs for the images that provide built\-in rules for Amazon SageMaker Debugger \. For account IDs, see the following table\.
+Use the following values for the components of the registry URLs for the images that provide built\-in rules for Amazon SageMaker Debugger\. For account IDs, see the following table\.
 
 **ECR Repository Name**: sagemaker\-debugger\-rules 
 
@@ -22,6 +22,8 @@ Use the following values for the components of the registry URLs for the images 
 | ap\-southeast\-1 |  972752614525  | 
 | ap\-southeast\-2 |  184798709955  | 
 | ca\-central\-1 |  519511493484  | 
+| cn\-north\-1 |  618459771430  | 
+| cn\-northwest\-1 |  658757709296  | 
 | eu\-central\-1 |  482524230118  | 
 | eu\-north\-1 |  314864569078  | 
 | eu\-west\-1 |  929884845733  | 

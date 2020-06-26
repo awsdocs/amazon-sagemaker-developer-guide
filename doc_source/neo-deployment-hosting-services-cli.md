@@ -11,7 +11,7 @@ The deployment of a Neo\-compiled model with the CLI has three steps\.
 
 For the full syntax of the `CreateModel` API, see [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html)\.
 
-For Neo\-compiled models, use one of the following values for `PrimaryContainer`/`ContainerHostname`, depending on your region and applications: 
+For Neo\-compiled models, use one of the following values for `PrimaryContainer`/`ContainerHostname`, depending on your Region and applications: 
 + **Amazon SageMaker Image Classification**
   + `301217895009.dkr.ecr.us-west-2.amazonaws.com/image-classification-neo:latest`
   + `785573368785.dkr.ecr.us-east-1.amazonaws.com/image-classification-neo:latest`
@@ -88,7 +88,7 @@ For Neo\-compiled models, use one of the following values for `PrimaryContainer`
   + `710691900526.dkr.ecr.ca-cental-1.amazonaws.com/sagemaker-neo-mxnet:[mxnet-version]-[cpu/gpu]-py3` 
   + `301217895009.dkr.ecr.us-west-2.amazonaws.com/sagemaker-neo-mxnet:1.5.1-inf-py3` 
   + `785573368785.dkr.ecr.us-east-1.amazonaws.com/sagemaker-neo-mxnet:1.5.1-inf-py3` 
-+ **Pytorch **The Pytorch version used must be in [Pytorch SageMaker Estimators](https://github.com/aws/sagemaker-python-sdk#pytorch-sagemaker-estimators) list\.
++ **PyTorch **The PyTorch version used must be in [PyTorch SageMaker Estimators](https://github.com/aws/sagemaker-python-sdk#pytorch-sagemaker-estimators) list\.
   + `301217895009.dkr.ecr.us-west-2.amazonaws.com/sagemaker-neo-pytorch:[pytorch-version]-[cpu/gpu]-py3`
   + `785573368785.dkr.ecr.us-east-1.amazonaws.com/sagemaker-neo-pytorch:[pytorch-version]-[cpu/gpu]-py3`
   + `007439368137.dkr.ecr.us-east-2.amazonaws.com/sagemaker-neo-pytorch:[pytorch-version]-[cpu/gpu]-py3`
@@ -107,7 +107,7 @@ For Neo\-compiled models, use one of the following values for `PrimaryContainer`
   + `355873309152.dkr.ecr.ap-southeast-2.amazonaws.com/sagemaker-neo-pytorch:[pytorch-version]-[cpu/gpu]-py3` 
   + `710691900526.dkr.ecr.ca-cental-1.amazonaws.com/sagemaker-neo-pytorch:[pytorch-version]-[cpu/gpu]-py3` 
 
-Also, if you are using **TensorFlow**, **Pytorch**, or **MXNet**, add the following key\-value pair to `PrimaryContainer`/`Environment`:
+Also, if you are using **TensorFlow**, **PyTorch**, or **MXNet**, add the following key\-value pair to `PrimaryContainer`/`Environment`:
 
 ```
 "Environment": {
@@ -119,7 +119,7 @@ The script must be packaged as a `*.tar.gz` file\. The `*.tar.gz` file must cont
 + `neo_preprocess(payload, content_type)`: Function that takes in the payload and `Content-Type` of each incoming request and returns a NumPy array\.
 + `neo_postprocess(result)`: Function that takes the prediction results produced by Deep Learning Runtime and returns the response body\.
 
-Neither of these two functions use any functionalities of MXNet, Pytorch, or Tensorflow\. See the [Amazon SageMaker Neo Sample Notebooks](neo.md#neo-sample-notebooks) for examples using these functions\.
+Neither of these two functions use any functionalities of MXNet, PyTorch, or TensorFlow\. For examples using these functions, see [Neo Model Compilation Sample Notebooks](neo.md#neo-sample-notebooks)\.
 
 ## Create the Endpoint Configuration \(AWS CLI\)<a name="neo-deployment-hosting-services-cli-create-endpoint-config"></a>
 

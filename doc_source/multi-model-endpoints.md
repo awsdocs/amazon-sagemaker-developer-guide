@@ -4,48 +4,24 @@ To create an endpoint that can host multiple models, use multi\-model endpoints\
 
 Multi\-model endpoints also enable time\-sharing of memory resources across your models\. This works best when the models are fairly similar in size and invocation latency\. When this is the case, multi\-model endpoints can effectively use instances across all models\. If you have models that have significantly higher transactions per second \(TPS\) or latency requirements, we recommend hosting them on dedicated endpoints\. Multi\-model endpoints are also well suited to scenarios that can tolerate occasional cold\-start\-related latency penalties that occur when invoking infrequently used models\.
 
-Multi\-model endpoints support A/B testing\. They work with Auto Scaling and AWS PrivateLink\. However, you can't use multi\-model\-enabled containers with serial inference pipelines or with Amazon Elastic Inference \(EIA\)\.
+Multi\-model endpoints support A/B testing\. They work with Auto Scaling and AWS PrivateLink\. You can use multi\-model\-enabled containers with serial inference pipelines, but only one multi\-model\-enabled container can be included in an inference pipeline\. You can't use multi\-model\-enabled containers with Amazon Elastic Inference\.
 
 You can use the AWS SDK for Python \(Boto\) or the Amazon SageMaker console to create a multi\-model endpoint\. You can use multi\-model endpoints with custom\-built containers by integrating the [Multi Model Server](https://github.com/awslabs/multi-model-server) library\.
 
 **Topics**
 + [Sample Notebooks for Multi\-Model Endpoints](#multi-model-endpoint-sample-notebooks)
-+ [How Multi\-Model Endpoints Work](#how-multi-mode-endpoints-work)
-+ [Multi\-Model Endpoint Security](#multi-model-endpoint-security)
 + [Instance Recommendations for Multi\-Model Endpoint Deployments](#multi-model-endpoint-instance)
-+ [CloudWatch Metrics for Multi\-Model Endpoint Deployments](#multi-model-endpoint-cloudwatch-metrics)
 + [Create a Multi\-Model Endpoint](create-multi-model-endpoint.md)
-+ [Build Your Own Container with Multi Model Server](build-multi-model-build-container.md)
 + [Invoke a Multi\-Model Endpoint](invoke-multi-model-endpoint.md)
 + [Add or Remove Models](add-models-to-endpoint.md)
++ [Build Your Own Container with Multi Model Server](build-multi-model-build-container.md)
++ [How Multi\-Model Endpoints Work](how-multi-mode-endpoints-work.md)
++ [Multi\-Model Endpoint Security](multi-model-endpoint-security.md)
++ [CloudWatch Metrics for Multi\-Model Endpoint Deployments](multi-model-endpoint-cloudwatch-metrics.md)
 
 ## Sample Notebooks for Multi\-Model Endpoints<a name="multi-model-endpoint-sample-notebooks"></a>
 
 For a sample notebook that uses Amazon SageMaker to deploy multiple XGBoost models to an endpoint, see the [Multi\-Model Endpoint XGBoost Sample Notebook](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/advanced_functionality/multi_model_xgboost_home_value/xgboost_multi_model_endpoint_home_value.ipynb)\. For a sample notebook that shows how to set up and deploy a custom container that supports multi\-model endpoints in Amazon SageMaker, see the [Multi\-Model Endpoint BYOC Sample Notebook](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/advanced_functionality/multi_model_bring_your_own/multi_model_endpoint_bring_your_own.ipynb)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. After you've created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all the Amazon SageMaker samples\. The Multi\-Model Endpoint notebook is located in the **ADVANCED FUNCTIONALITY** section\. To open a notebook, choose its **Use** tab and choose **Create copy**\.
-
-## How Multi\-Model Endpoints Work<a name="how-multi-mode-endpoints-work"></a>
-
-Amazon SageMaker manages the lifecycle of models hosted on multi\-model endpoints in the container's memory\. Instead of downloading all of the models from an Amazon S3 bucket to the container when you create the endpoint, Amazon SageMaker dynamically loads them when you invoke them\. When Amazon SageMaker receives an invocation request for a particular model, it does the following:
-
-1. Routes the request to an instance behind the endpoint\.
-
-1. Downloads the model from the S3 bucket to that instance's storage volume\.
-
-1. Loads the model to the container's memory on that instance\. If the model is already loaded in the container's memory, invocation is faster because Amazon SageMaker doesn't need to download and load it\.
-
-Amazon SageMaker continues to route requests for a model to the instance where the model is already loaded\. However, if the model receives many invocation requests, and there are additional instances for the multi\-model endpoint, Amazon SageMaker routes some requests to another instance to accommodate the traffic\. If the model isn't already loaded on the second instance, the model is downloaded to that instance's storage volume and loaded into the container's memory\.
-
-When an instance's memory utilization is high and Amazon SageMaker needs to load another model into memory, it unloads unused models from that instance's container to ensure that there is enough memory to load the model\. Models that are unloaded remain on the instance's storage volume and can be loaded into the container's memory later without being downloaded again from the S3 bucket\. If the instance's storage volume reaches its capacity, Amazon SageMaker deletes any unused models from the storage volume\.
-
-To delete a model, stop sending requests and delete it from the S3 bucket\. Amazon SageMaker provides multi\-model endpoint capability in a serving container\. Adding models to, and deleting them from, a multi\-model endpoint doesn't require updating the endpoint itself\. To add a model, you upload it to the S3 bucket and invoke it\. You don’t need code changes to use it\.
-
-When you update a multi\-model endpoint, invocation requests on the endpoint might experience higher latencies as traffic is directed to the instances in the updated endpoint\.
-
-## Multi\-Model Endpoint Security<a name="multi-model-endpoint-security"></a>
-
-Models and data in a multi\-model endpoint are co\-located on instance storage volume and in container memory\. All instances for Amazon SageMaker endpoints run on a single tenant container that you own\. Only your models can run on your multi\-model endpoint\. It's your responsibility to manage the mapping of requests to models and to provide access for users to the correct target models\. Amazon SageMaker uses [IAM roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) to provide IAM identity\-based policies that you use to specify allowed or denied actions and resources and the conditions under which actions are allowed or denied\.
-
-An IAM principal with [ `InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html) permissions on a multi\-model endpoint can invoke any model at the address of the S3 prefix defined in the [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) operation, provided that the IAM Execution Role defined in operation has permissions to download the model\. If you need to restrict [ `InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html) access to a limited set of models in S3, you can create multi\-model endpoints with more restrictive S3 prefixes\. For more information about how Amazon SageMaker uses roles to manage access to endpoints and perform operations on your behalf, see [Amazon SageMaker Roles ](sagemaker-roles.md)\. Your customers might also have certain data isolation requirements dictated by their own compliance requirements that can be satisfied using IAM identities\.
 
 ## Instance Recommendations for Multi\-Model Endpoint Deployments<a name="multi-model-endpoint-instance"></a>
 
@@ -67,7 +43,3 @@ In some cases, you might opt to reduce costs by choosing an instance type that c
 You can use the `Average` statistic of the `ModelCacheHit` metric to monitor the ratio of requests where the model is already loaded\. You can use the `SampleCount` statistic for the `ModelUnloadingTime` metric to monitor the number of unload requests sent to the container during a time period\. If models are unloaded too frequently \(an indicator of thrashing, where models are being unloaded and loaded again because there is insufficient cache space for the working set of models\), consider using a larger instance type with more memory or increasing the number of instances behind the multi\-model endpoint\. For multi\-model endpoints with multiple instances, be aware that a model might be loaded on more than 1 instance\. 
 
 Amazon SageMaker multi\-model endpoints fully supports Auto Scaling, which manages replicas of models to ensure models scale based on traffic patterns\. We recommend that you configure your multi\-model endpoint and the size of your instances by considering all of the above and also set up auto scaling for your endpoint\. The invocation rates used to trigger an auto\-scale event is based on the aggregate set of predictions across the full set of models served by the endpoint\. 
-
-## CloudWatch Metrics for Multi\-Model Endpoint Deployments<a name="multi-model-endpoint-cloudwatch-metrics"></a>
-
-Amazon SageMaker provides metrics for endpoints so you can monitor the cache hit rate, the number of models loaded, and the model wait times for loading, downloading, and uploading at a multi\-model endpoint\. For information, see **Multi\-Model Endpoint Model Loading Metrics** and **Multi\-Model Endpoint Model Instance Metrics** in [Monitor Amazon SageMaker with Amazon CloudWatch](monitoring-cloudwatch.md)\. Per\-model metrics aren't supported\. 

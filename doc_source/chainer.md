@@ -20,6 +20,4 @@ I want to see the API documentation for [Amazon SageMaker Python SDK](https://sa
 I want to see information about Amazon SageMaker Chainer containers\.  
 [https://github\.com/aws/sagemaker\-chainer\-container](https://github.com/aws/sagemaker-chainer-container)\.
 
- For general information about writing Chainer training scripts and using Chainer estimators and models with Amazon SageMaker, see [Using Chainer with the SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/using_chainer.html)\.
-
-For information about Chainer versions supported by the Amazon SageMaker Chainer container, see [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/chainer/README\.rst](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/chainer/README.rst)\.
+ For information about supported Chainer versions, and for general information about writing Chainer training scripts and using Chainer estimators and models with Amazon SageMaker, see [Using Chainer with the SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/using_chainer.html)\. 

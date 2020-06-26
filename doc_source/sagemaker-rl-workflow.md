@@ -24,8 +24,6 @@ For complete code examples, see the sample notebooks at [https://github\.com/aws
 
 1. **Train the RL Model**— Use the Amazon SageMaker `RLEstimator` in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) to start an RL training job\. If you are using local mode, the training job runs on the notebook instance\. When you use Amazon SageMaker for training, you can select GPU or CPU instances\. Store the output from the training job in a local directory if you train in local mode, or on Amazon S3 if you use Amazon SageMaker training\.
 
-   For information about using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) for RL, see [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/rl/README\.rst ](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/rl/README.rst                     )\.
-
    The `RLEstimator` requires the following information as parameters\. 
 
    1. The source directory where the environment, presets, and training code are uploaded\.
@@ -45,3 +43,5 @@ If you train in local mode, you can't visualize metrics in CloudWatch\.
 1. **Evaluate the model**—Checkpointed data from the previously trained models can be passed on for evaluation and inference in the checkpoint channel\. In local mode, use the local directory\. In Amazon SageMaker training mode, you need to upload the data to S3 first\.
 
 1. **Deploy RL models**—Finally, deploy the trained model on an endpoint hosted on Amazon SageMaker or on an Edge device by using AWS IoT Greengrass\.
+
+For more information on RL with SageMaker, see [Using RL with the SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/using_rl.html)\.

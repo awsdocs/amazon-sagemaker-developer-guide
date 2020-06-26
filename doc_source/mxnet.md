@@ -22,4 +22,4 @@ I want to see information about Amazon SageMaker MXNet containers\.
 
  For general information about writing MXNet script mode training scripts and using MXNet script mode estimators and models with Amazon SageMaker, see [Using MXNet with the SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/using_mxnet.html)\.
 
-For information about MXNet versions supported by the Amazon SageMaker MXNet container, see [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/mxnet/README\.rst](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/mxnet/README.rst)\.
+For information about MXNet versions supported by the Amazon SageMaker MXNet container, see [Available Deep Learning Container Images](https://aws.amazon.com/releasenotes/available-deep-learning-containers-images/)\.

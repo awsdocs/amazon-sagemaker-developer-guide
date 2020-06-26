@@ -26,7 +26,7 @@ I want to see information about Amazon SageMaker TensorFlow containers\.
 
  For general information about writing TensorFlow script mode training scripts and using TensorFlow script mode estimators and models with Amazon SageMaker, see [Using TensorFlow with the SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/using_tf.html)\.
 
-For information about TensorFlow versions supported by the Amazon SageMaker TensorFlow container, see [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/tensorflow/README\.rst](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/tensorflow/README.rst)\.
+For information about TensorFlow versions supported by the Amazon SageMaker TensorFlow container, see [Available Deep Learning Container Images](https://aws.amazon.com/releasenotes/available-deep-learning-containers-images/)\.
 
 ## Use TensorFlow Legacy Mode for Versions 1\.11 and Earlier<a name="tf-legacy-mode"></a>
 

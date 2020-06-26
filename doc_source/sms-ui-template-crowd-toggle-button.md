@@ -75,4 +75,4 @@ This element outputs the `name` as the name of an object, containing the `value`
 
 For more information, see the following\.
 + [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
-+ [HTML Elements Reference](sms-ui-template-reference.md)
++ [Crowd HTML Elements Reference](sms-ui-template-reference.md)

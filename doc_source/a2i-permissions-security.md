@@ -1,21 +1,26 @@
 # Permissions and Security in Amazon Augmented AI<a name="a2i-permissions-security"></a>
 
-When using Amazon Augmented AI \(Amazon A2I\) to create a human review workflow for your ML/AI application, you create and configure *resources* in Amazon SageMaker such as a human workforce and worker task templates\. To configure and start a human loop, you will either integrate Amazon A2I with other AWS services such as Amazon Textract or Amazon Rekognition or use the Amazon Augmented AI Runtime API\. To create a human review workflow and start a human loop, you will need to attach certain policies to your AWS Identity and Access Management\(IAM\) role or user\. Specifically: 
+When using Amazon Augmented AI \(Amazon A2I\) to create a human review workflow for your ML/AI application, you create and configure *resources* in Amazon SageMaker such as a human workforce and worker task templates\. To configure and start a human loop, you will either integrate Amazon A2I with other AWS services such as Amazon Textract or Amazon Rekognition or use the Amazon Augmented AI Runtime API\. To create a human review workflow and start a human loop, you will need to attach certain policies to your AWS Identity and Access Management \(IAM\) role or user\. Specifically: 
 + When you create a flow definition, you need to provide a role that grants Amazon A2I permission to access Amazon S3 both for reading objects that will be rendered in a human task UI and for writing the results of the human review\. 
 
   This role will also need to have a trust policy attached to give Amazon SageMaker permission to assume the role\. This allows Amazon A2I to perform actions in accordance with permissions that you attach to the role\. 
 
-  See [Enable Flow Definition Creation](#a2i-human-review-permissions-s3) for example policies that you can modify and attach to the role you use to create a flow definition\.
-+ When using an Amazon A2I human review loop with other services such as Amazon Textract or Amazon Rekognition, or with the Amazon A2I runtime API, you need to attach the **AmazonAugmentedAIFullAccess** policy to the IAM user that you use to invoke the service\. This policy grants these services permission to use Amazon A2I operations\. To learn how, see [Create an IAM User That Can Invoke Amazon Augmented AI Operations](#create-user-grants)\.
+  See [Add Permissions to the IAM Role Used to Create a Flow Definition](#a2i-human-review-permissions-s3) for example policies that you can modify and attach to the role you use to create a flow definition\. These are the policies that will be attached to the IAM role that is created in the Human review workflows section of the Amazon A2I area of the Amazon SageMaker console\. 
++ To create and start human loops, you either use an API operation from a built\-in task type \(such as `DetectModerationLabel` or `AnalyzeDocument`\) or the Amazon A2I Runtime API operation `StartHumanLoop` in a custom ML application\. You need to attach the **AmazonAugmentedAIFullAccess** managed policy to the IAM user that invokes these API operations to grant permission to these services to use Amazon A2I operations\. To learn how, see [Create an IAM User That Can Invoke Amazon A2I API Operations](#create-user-grants)\.
+
+  This policy does *not* grant permission to invoke the API operations of the AWS service associated with built\-in task types\. For example, AmazonAugmentedAIFullAccess does not grant permission to call Amazon Rekognition API operation `DetectModerationLabel` or Amazon Textract API operation `AnalyzeDocument`\. You can use the more general policy, **AmazonAugmentedAIIntegratedAPIAccess**, to grant these permissions\. For more information, see [Create an IAM User With Permissions to Invoke Amazon A2I, Amazon Textract, and Amazon Rekognition API Operations](#a2i-grant-general-permission)\. This is a good option when you want to grant an IAM user broad permissions to use Amazon A2I and integrated AWS services' API operations\. 
+
+  If you want to configure more granular permissions, see [Amazon Rekognition Identity\-Based Policy Examples](https://docs.aws.amazon.com/rekognition/latest/dg/security_iam_id-based-policy-examples.html) and [Amazon Textract Identity\-Based Policy Examples](https://docs.aws.amazon.com/textract/latest/dg/security_iam_id-based-policy-examples.html) for identity\-based policies you can use to grant permission to use these individual services\.
 + To preview your custom worker task UI template, you need an IAM role with permissions to read Amazon S3 objects that get rendered on your user interface\. See a policy example in [Enable Worker Task Template Previews ](#permissions-for-worker-task-templates-augmented-ai)\.
 
 **Topics**
-+ [Enable Flow Definition Creation](#a2i-human-review-permissions-s3)
-+ [Create an IAM User That Can Invoke Amazon Augmented AI Operations](#create-user-grants)
++ [Add Permissions to the IAM Role Used to Create a Flow Definition](#a2i-human-review-permissions-s3)
++ [Create an IAM User That Can Invoke Amazon A2I API Operations](#create-user-grants)
++ [Create an IAM User With Permissions to Invoke Amazon A2I, Amazon Textract, and Amazon Rekognition API Operations](#a2i-grant-general-permission)
 + [Enable Worker Task Template Previews](#permissions-for-worker-task-templates-augmented-ai)
 + [Additional Permissions and Security Resources](#additional-security-resources-augmented-ai)
 
-## Enable Flow Definition Creation<a name="a2i-human-review-permissions-s3"></a>
+## Add Permissions to the IAM Role Used to Create a Flow Definition<a name="a2i-human-review-permissions-s3"></a>
 
 To create a flow definition, attach the policies in this section to the role that you use when creating a human review workflow in the Amazon SageMaker console, or using the `CreateFlowDefinition` API operation\.
 + If you are using the console to create a human review workflow, enter the role Amazon Resource Name \(ARN\) in the **IAM role** field when [creating a human review workflow in the console](https://docs.aws.amazon.com/sagemaker/latest/dg/create-human-review-console.html)\. 
@@ -72,9 +77,16 @@ For more information about creating and managing IAM roles and policies, see the
 + To learn how to create IAM policies, see [Creating IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html)\. 
 + To learn how to attach an IAM policy to a role, see [Adding and Removing IAM Identity Permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html)\.
 
-## Create an IAM User That Can Invoke Amazon Augmented AI Operations<a name="create-user-grants"></a>
+## Create an IAM User That Can Invoke Amazon A2I API Operations<a name="create-user-grants"></a>
 
-To use Amazon Augmented AI \(Amazon A2I\) with Amazon Rekognition, Amazon Textract, or the Amazon A2I runtime API, you must use IAM user that has permissions to invoke Amazon A2I operations\. To do this, use the AWS Identity and Access Management \(IAM\) console to attach the **AmazonAugmentedAIFullAccess** policy to a new or existing IAM user\.
+To use Amazon A2I to create and start human loops for Amazon Rekognition, Amazon Textract, or the Amazon A2I runtime API, you must use an IAM user that has permissions to invoke Amazon A2I operations\. To do this, use the IAM console to attach the [https://console.aws.amazon.com/iam/home?region=us-east-2#/policies/arn:aws:iam::aws:policy/AmazonAugmentedAIFullAccess$jsonEditor](https://console.aws.amazon.com/iam/home?region=us-east-2#/policies/arn:aws:iam::aws:policy/AmazonAugmentedAIFullAccess$jsonEditor) managed policy to a new or existing IAM user\. 
+
+This policy grants permission to an IAM user to invoke API operations from the Amazon SageMaker API for flow definition creation and management and the Amazon Augmented AI Runtime API for human loop creation and management\. To learn more about these API operations, see [Use APIs in Amazon Augmented AI](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-api-references.html)\.
+
+AmazonAugmentedAIFullAccess does not grant permissions to use Amazon Rekognition or Amazon Textract API operations\. 
+
+**Note**  
+You can also attach the **AmazonAugmentedAIFullAccess** to an IAM role that is used to create and start a human loop\. 
 
 **To create the required IAM user**
 
@@ -82,13 +94,42 @@ To use Amazon Augmented AI \(Amazon A2I\) with Amazon Rekognition, Amazon Textra
 
 1. Choose **Users** and choose an existing user, or create a new user by choosing **Add user**\. To learn how to create a new user, see [Creating an IAM User in Your AWS Account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) in the *AWS Identity and Access Management User Guide*\.
    + If you chose to attach the policy to an existing user, choose **Add permissions**\.
-   + While creating a new user, follow the next step on the the **Set permissions** page\.
+   + While creating a new user, follow the next step on the **Set permissions** page\.
 
 1. Choose **Attach existing policies directly**\.
 
 1. In the **Search** bar, enter **AmazonAugmentedAIFullAccess** and check the box next to that policy\. 
 
-   To enable this IAM user to create a flow definition with the public workteam, also attach the **AmazonSageMakerMechanicalTurkAccess** managed policy\. 
+   To enable this IAM user to create a flow definition with the public work team, also attach the **AmazonSageMakerMechanicalTurkAccess** managed policy\. 
+
+1. After attaching the policy or policies:
+
+   1. If you are using an existing user, choose **Next: Review**, and then choose **Add permissions**\.
+
+   1. If you are creating a new user, choose **Next: Tags** and complete the process of creating your user\. 
+
+For more information, see [Adding and Removing IAM Identity Permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html) in the *AWS Identity and Access Management User Guide*\.
+
+## Create an IAM User With Permissions to Invoke Amazon A2I, Amazon Textract, and Amazon Rekognition API Operations<a name="a2i-grant-general-permission"></a>
+
+To create an IAM user that has permission to invoke the API operations used by the built\-in task types \(that is, `DetectModerationLables` for Amazon Rekognition and `AnalyzeDocument` for Amazon Textract\) and permission to use all Amazon A2I API operations, attach the IAM managed policy, **AmazonAugmentedAIIntegratedAPIAccess**\. You may want to use this policy when you want to grant broad permissions to an IAM user using Amazon A2I with more than one task type\. To learn more about these API operations, see [Use APIs in Amazon Augmented AI](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-api-references.html)\.
+
+**Note**  
+You can also attach the **AmazonAugmentedAIIntegratedAPIAccess** to an IAM role that is used to create and start a human loop\. 
+
+**To create the required IAM user**
+
+1. Sign in to the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\.
+
+1. Choose **Users** and choose an existing user, or create a new user by choosing **Add user**\. To learn how to create a new user, see [Creating an IAM User in Your AWS Account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) in the *AWS Identity and Access Management User Guide*\.
+   + If you chose to attach the policy to an existing user, choose **Add permissions**\.
+   + While creating a new user, follow the next step on the **Set permissions** page\.
+
+1. Choose **Attach existing policies directly**\.
+
+1. In the **Search** bar, enter **AmazonAugmentedAIIntegratedAPIAccess** and select the box next to that policy\. 
+
+   To allow this IAM user to create a flow definition using Amazon Mechanical Turk, also attach the **AmazonSageMakerMechanicalTurkAccess** managed policy\. 
 
 1. After attaching the policy or policies:
 

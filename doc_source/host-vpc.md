@@ -130,6 +130,7 @@ The `SageMakerFullAccess` managed policy includes the permissions that you need 
             ],
             "Resource": "*"
         }
+    ]
 }
 ```
 

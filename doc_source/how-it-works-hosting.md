@@ -50,7 +50,3 @@ When hosting models using Amazon SageMaker hosting services, consider the follow
 
    
 + If you want to get inferences on entire datasets, consider using batch transform as an alternative to hosting services\. For information, see [Get Inferences for an Entire Dataset with Batch Transform](how-it-works-batch.md) 
-
-## How It Works: Next Topic<a name="how-it-works-hosting-next-topic"></a>
-
-[Validate a Machine Learning Model](how-it-works-model-validation.md)

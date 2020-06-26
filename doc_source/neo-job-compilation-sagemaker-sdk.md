@@ -10,4 +10,4 @@ compiled_model = mnist_estimator.compile_model(target_instance_family='ml_c5',
                                                output_path=output_path)
 ```
 
-This code compiles the model and saves the optimized model in `output_path`\. Sample notebooks of using SDK are provided in the [Amazon SageMaker Neo Sample Notebooks](neo.md#neo-sample-notebooks) section\.
+This code compiles the model and saves the optimized model in `output_path`\. Sample notebooks of using SDK are provided in the [Neo Model Compilation Sample Notebooks](neo.md#neo-sample-notebooks) section\.

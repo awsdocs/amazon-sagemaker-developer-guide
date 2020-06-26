@@ -1,6 +1,6 @@
 # Amazon SageMaker Debugger Reference Documentation<a name="debugger-reference"></a>
 
-The following sections contain reference documentation on the APIs, exceptions and some known limitations for Debugger
+The following sections contain reference documentation on the APIs, exceptions, and some known limitations for Debugger\.
 
 **Topics**
 + [Amazon SageMaker Debugger API](debugger-apis.md)

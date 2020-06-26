@@ -5,7 +5,7 @@ Amazon SageMaker Debugger rules analyze tensors emitted during the training of a
 You can deploy a built\-in rule to monitor your training job either by using the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) API or by using the open source [*smdebug* Python library](https://github.com/awslabs/sagemaker-debugger/) with the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\. The *smdebug* programming model provides the context for understanding this task\. For information on the programming model, see [Analysis](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/analysis.md)\.
 
 **Note**  
-You are not charged for the instances when running SageMaker built\-in rules
+You are not charged for the instances when running SageMaker built\-in rules\.
 
 **Topics**
 + [Use the `CreateTrainingJob` API to Create a Built\-in Rule](debugger-built-in-rules-api.md)

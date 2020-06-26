@@ -16,7 +16,7 @@ To process and evaluate data, you run an Amazon SageMaker Processing job\. Your 
 
 We provide two sample Jupyter notebooks that show how to perform data preprocessing, model evaluation, or both\.
 
-For a sample notebook that shows how to run scikit\-learn scripts to perform data preprocessing and model training and evaluation with the Amazon SageMaker Python SDK for Processing, see [scikit\-learn Processing](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker_processing/scikit_learn_data_processing_and_model_evaluation)\. This notebook also shows how to use your own custom container to run processing workloads with your Python lobraries and other specific dependencies\.
+For a sample notebook that shows how to run scikit\-learn scripts to perform data preprocessing and model training and evaluation with the Amazon SageMaker Python SDK for Processing, see [scikit\-learn Processing](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker_processing/scikit_learn_data_processing_and_model_evaluation)\. This notebook also shows how to use your own custom container to run processing workloads with your Python libraries and other specific dependencies\.
 
 For a sample notebook that shows how to use Amazon SageMaker Processing to perform distributed data preprocessing with Spark, see [Distributed Processing \(Spark\)](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker_processing/feature_transformation_with_sagemaker_processing)\. This notebook also shows how to train a regression model using XGBoost on the preprocessed dataset\.
 

@@ -22,4 +22,4 @@ I want to see information about Amazon SageMaker PyTorch containers\.
 
  For general information about writing PyTorch training scripts and using PyTorch estimators and models with Amazon SageMaker, see [Using PyTorch with the SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/using_pytorch.html)\.
 
-For information about PyTorch versions supported by the Amazon SageMaker PyTorch container, see [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/pytorch/README\.rst](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/pytorch/README.rst)\.
+For information about PyTorch versions supported by the Amazon SageMaker PyTorch container, see [Available Deep Learning Container Images](https://aws.amazon.com/releasenotes/available-deep-learning-containers-images/)\.

@@ -10,7 +10,7 @@ To delete a domain, the domain cannot contain any user profiles\. To delete a us
 
 When you delete these resources, the following occurs:
 + App – The data \(files and notebooks\) in a user's home directory is saved\. Unsaved notebook data is lost\.
-+ User profile – The user is no longer able to login to Studio and loses access to their home directory but the data is not deleted\. An admin can retrieve the data from the Amazon EFS volume where it is stored under the user's AWS account\.
++ User profile – The user is no longer able to sign in to Studio and loses access to their home directory but the data is not deleted\. An admin can retrieve the data from the Amazon EFS volume where it is stored under the user's AWS account\.
 
 **Note**  
 You must have admin permission to delete a domain\.

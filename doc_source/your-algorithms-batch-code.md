@@ -6,6 +6,7 @@ This section explains how Amazon SageMaker interacts with a Docker container tha
 + [How Amazon SageMaker Runs Your Inference Image](#your-algorithms-batch-code-run-image)
 + [How Amazon SageMaker Loads Your Model Artifacts](#your-algorithms-batch-code-load-artifacts)
 + [How Containers Serve Requests](#your-algorithms-batch-code-how-containe-serves-requests)
++ [How Your Container Should Respond to Inference Requests](#your-algorithms-batch-code-how-containers-should-respond-to-inferences)
 + [How Your Container Should Respond to Health Check \(Ping\) Requests](#your-algorithms-batch-algo-ping-requests)
 
 ## How Amazon SageMaker Runs Your Inference Image<a name="your-algorithms-batch-code-run-image"></a>
@@ -75,6 +76,12 @@ The response for a `GET` execution\-parameters request is a JSON object with key
 "MaxPayloadInMB": 6
 }
 ```
+
+## How Your Container Should Respond to Inference Requests<a name="your-algorithms-batch-code-how-containers-should-respond-to-inferences"></a>
+
+To obtain inferences, Amazon SageMaker sends a POST request to the inference container\. The POST request body contains data from S3\. Amazon SageMaker passes the request to the container, and returns the inference result from the container, saving the data from the response to S3\.
+
+To receive inference requests, the container must have a web server listening on port 8080 and must accept POST requests to the `/invocations` endpoint\. Your model containers must respond to requests within 600 seconds\.
 
 ## How Your Container Should Respond to Health Check \(Ping\) Requests<a name="your-algorithms-batch-algo-ping-requests"></a>
 

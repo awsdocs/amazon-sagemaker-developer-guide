@@ -8,11 +8,11 @@ The following procedure outlines the key steps used in that sample to create a m
 
 **To deploy the model \(AWS SDK for Python \(Boto 3\)\)**
 
-1. Get a container whose image supports deploying models\.
+1. Get a container whose image supports deploying models\. Currently, only the MXNet and PyTorch pre\-build containers support multi\-model endpoints\. To use any other framework or algorithm, use the Amazon SageMaker inference toolkit to build a container that supports multi\-model endpoints\. For information, see [Build Your Own Container with Multi Model Server](build-multi-model-build-container.md)\.
 
    ```
-   container = { 'Image':        '123456789012.dkr.ecr.us-east-1.amazonaws.com/myimage:mytag',
-                 'ModelDataUrl': ‘s3://my-bucket/path/to/artifacts/’,
+   container = { 'Image':        '763104351884.dkr.ecr.us-east-1.amazonaws.com/myimage:mytag',
+                 'ModelDataUrl': 's3://my-bucket/path/to/artifacts/',
                  'Mode':         'MultiModel'
                }
    ```
@@ -21,9 +21,26 @@ The following procedure outlines the key steps used in that sample to create a m
 
    ```
    response = sm_client.create_model(
-                 ModelName        = ‘my-multi-model-name’,
+                 ModelName        = 'my-multi-model-name',
                  ExecutionRoleArn = role,
                  Containers       = [container])
+   ```
+
+1. \(Optional\) If you are using a serial inference pipeline, get the additional container\(s\) to include in the pipeline, and include it in the `Containers` argument of `CreateModel`:
+
+   ```
+   preprocessor_container = { 'Image':        '123456789012.dkr.ecr.us-east-1.amazonaws.com/mypreprocessorimage:mytag'
+               }
+   
+   multi_model_container = { 'Image':        '763104351884.dkr.ecr.us-east-1.amazonaws.com/myimage:mytag',
+                 'ModelDataUrl': 's3://my-bucket/path/to/artifacts/',
+                 'Mode':         'MultiModel'
+               }
+   
+   response = sm_client.create_model(
+                 ModelName        = 'my-multi-model-name',
+                 ExecutionRoleArn = role,
+                 Containers       = [preprocessor_container, multi_model_container])
    ```
 
 1. Configure the multi\-model endpoint for the model\. We recommend configuring your endpoints with at least two instances\. This allows Amazon SageMaker to provide a highly available set of predictions across multiple Availability Zones for the models\.
@@ -32,17 +49,19 @@ The following procedure outlines the key steps used in that sample to create a m
    response = sm_client.create_endpoint_config(
        EndpointConfigName = ‘my-epc’,
        ProductionVariants=[{
-           'InstanceType':        ‘ml.m4.xlarge’,
+           'InstanceType':        'ml.m4.xlarge',
            'InitialInstanceCount': 2,
            'InitialVariantWeight': 1,
            'ModelName':            ‘my-multi-model-name’,
            'VariantName':          'AllTraffic'}])
    ```
+**Note**  
+You can use only one multi\-model\-enabled endpoint in a serial inference pipeline\.
 
 1. Create the multi\-model endpoint using the `EndpointName` and `EndpointConfigName` parameters\.
 
    ```
    response = sm_client.create_endpoint(
-                 EndpointName       = ‘my-endpoint’,
-                 EndpointConfigName = ‘my-epc’)
+                 EndpointName       = 'my-endpoint',
+                 EndpointConfigName = 'my-epc')
    ```

@@ -1,4 +1,4 @@
-# Built\-in Rules Provided by Amazon SageMaker Debugger<a name="debugger-built-in-rules"></a>
+# List of Built\-in Rules Provided by Amazon SageMaker Debugger<a name="debugger-built-in-rules"></a>
 
 Use the built\-in rules provided by Amazon SageMaker Debugger to analyze tensors emitted during the training of machine learning models\. These rules monitor various common conditions that are critical for the success of a training job\. There are four scopes of validity for the built\-in rules\.
 

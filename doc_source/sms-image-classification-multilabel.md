@@ -6,74 +6,30 @@ Use an Amazon SageMaker Ground Truth multi\-label image classification labeling 
 
 When working on a multi\-label image classification task, workers should choose all applicable labels, but must choose at least one\. When creating a job using this task type, you can provide up to 50 label\-categories\. 
 
-When creating a labeling job in the console, Amazon SageMaker Ground Truth doesn't provide a "none" category for when none of the labels applies to an image\. To provide this option to workers, include a label similar to "none" or "other" when you create a multi\-label image classification job\. 
+When creating a labeling job in the console, Ground Truth doesn't provide a "none" category for when none of the labels applies to an image\. To provide this option to workers, include a label similar to "none" or "other" when you create a multi\-label image classification job\. 
 
-When you create a multi\-label image classification job in the console, you will be provided with a default worker UI template that you can use to:
-+ Specify the labels that you want the worker to see 
-+ Create worker instructions
+To restrict workers to choosing a single label for each image, use the [Image Classification \(Single Label\)](sms-image-classification.md) task type\.
 
-See [Create a Multi\-Label Image Classification Labeling Job \(Console\)](#sms-creating-multilabel-image-classification-console) for an example of the template provided in the console\. 
-
-When you create a multi\-label image classification job using the Amazon SageMaker API or your preferred Amazon SageMaker SDK, you will need to provide a custom worker task template which will be used to generated your workers' UI\. For more information, see [Create a Custom Template for Multi\-label Image Classification](#custom-template-multi-image-label-classification)\.
-
-To restrict workers to choosing a single label for each image, use the [Image Classification](sms-image-classification.md) task type\.
-
-**Note**  
-Automated labeling \(auto\-labeling\) isn't supported for the multi\-label image classification task type\. 
-
-**Topics**
-+ [Create a Multi\-Label Image Classification Labeling Job \(Console\)](#sms-creating-multilabel-image-classification-console)
-+ [Create a Multi\-Label Image Classification Labeling Job \(API\)](#sms-create-multi-select-image-classification-job-console)
-+ [Multi\-label Image Classification Output Data](#sms-image-classification-multi-output-data)
+**Important**  
+For this task type, if you create your own manifest file, use `"source-ref"` to identify the location of each image file in Amazon S3 that you want labeled\. For more information, see [Input Data](sms-data-input.md)\.
 
 ## Create a Multi\-Label Image Classification Labeling Job \(Console\)<a name="sms-creating-multilabel-image-classification-console"></a>
 
-To create a multi\-label image classification labeling job, use the Ground Truth section of the Amazon SageMaker console\. Ground Truth provides a worker console similar to the following for labeling tasks\. When you create the labeling job with the console, you can modify the images and content that are shown\. 
+You can follow the instructions [Create a Labeling Job \(Console\)](sms-create-labeling-job-console.md) to learn how to create a multi\-label image classification labeling job in the Amazon SageMaker console\. In Step 10, choose **Image** from the **Task category** drop down menu, and choose **Image Classification \(Multi\-label\)** as the task type\. 
+
+Ground Truth provides a worker UI similar to the following for labeling tasks\. When you create a labeling job in the console, you specify instructions to help workers complete the job and labels that workers can choose from\. 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/image-classification-multilabel-example.png)
 
-To create a multi\-label image classification labeling job, use the instructions in the [Getting started](sms-getting-started.md) guide\. When following [Step 2: Create a Labeling Job](sms-getting-started-step2.md), choose **Image classification \(Multi\-label\)** for **Task type**\.
+## Create a Multi\-Label Image Classification Labeling Job \(API\)<a name="sms-create-multi-select-image-classification-job-api"></a>
 
-## Create a Multi\-Label Image Classification Labeling Job \(API\)<a name="sms-create-multi-select-image-classification-job-console"></a>
+To create a multi\-label image classification labeling job, use the Amazon SageMaker API operation `CreateLabelingJob`\. This API defines this operation for all AWS SDKs\. To see a list of language\-specific SDKs supported for this operation, review the **See Also** section of [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)\.
 
-To create a multi\-image label classification labeling job using the Amazon SageMaker API, you use the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. To use this operation, you need:
-+ A custom worker task template\. For information, see [Create a Custom Template for Multi\-label Image Classification](#custom-template-multi-image-label-classification)\.
-+ At least one Amazon Simple Storage Service \(Amazon S3\) bucket to store your input and output data\. 
-+ An input manifest file that specifies your input data\. For information about creating an input manifest, see [Input Data](sms-data-input.md)\. 
-+ An AWS Identity and Access Management \(IAM\) role with the AmazonSageMakerFullAccess IAM policy attached and with permissions to access your S3 buckets\. For example, if the images specified in your manifest file are in an S3 bucket named `my_input_bucket`, and if you want the image\-labeling data to be stored in a bucket named `my_output_bucket`, you would attach the following IAM policy to the role that is passed to the `CreateLabelingJob` operation\.
+Follow the instructions on [Create a Labeling Job \(API\)](sms-create-labeling-job-api.md) and do the following while you configure your request: 
++ Pre\-annotation Lambda functions for this task type end with `PRE-ImageMultiClassMultiLabel`\. To find the pre\-annotation Lambda ARN for your Region, see [PreHumanTaskLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/dg/API_HumanTaskConfig.html#SageMaker-Type-HumanTaskConfig-PreHumanTaskLambdaArn) \. 
++ Annotation\-consolidation Lambda functions for this task type end with `ACS-ImageMultiClassMultiLabel`\. To find the annotation\-consolidation Lambda ARN for your Region, see [AnnotationConsolidationLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/dg/API_AnnotationConsolidationConfig.html#SageMaker-Type-AnnotationConsolidationConfig-AnnotationConsolidationLambdaArn)\. 
 
-  ```
-  {
-      "Version": "2012-10-17",
-      "Statement": [
-          {
-              "Effect": "Allow",
-              "Action": [
-                  "s3:GetObject"
-              ],
-              "Resource": [
-                  "arn:aws:s3:::my_input_bucket/*"
-              ]
-          },
-          {
-              "Effect": "Allow",
-              "Action": [
-                  "s3:PutObject"
-              ],
-              "Resource": [
-                  "arn:aws:s3:::my_output_bucket/*"
-              ]
-          }
-      ]
-  }
-  ```
-+ A pre\-annotation AWS Lambda function ARN to process your input data\. Lambda functions are predefined in each AWS Region for multi\-label image classification labeling jobs\. Pre\-annotation Lambda functions for this task type end with `PRE-ImageMultiClassMultiLabel`\. To find the pre\-annotation Lambda ARN for your Region, see [PreHumanTaskLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/dg/API_HumanTaskConfig.html#SageMaker-Type-HumanTaskConfig-PreHumanTaskLambdaArn) \. 
-+ A work team Amazon Resource Name \(ARN\)\. To learn more about work teams and workforces, see [Create and Manage Workforces](sms-workforce-management.md)\. 
-
-  If you use the Amazon Mechanical Turk public workforce, use the `ContentClassifiers` parameter in `CreateLabelingJob` to declare that your content is free of personally identifiable information or adult content\. If your content contains personally identifiable information or adult content, Amazon SageMaker might restrict the Amazon Mechanical Turk workers that can view your task\.
-+ \(Optional\) To have multiple workers label a single image \(by inputting a number greater than one for the `NumberOfHumanWorkersPerDataObject` parameter\), include an annotation\-consolidation Lambda ARN as an input to the `AnnotationConsolidationLambdaArn` parameter\. These Lambda functions are predefined in each Region for multi\-label image classification labeling jobs\. Annotation\-consolidation Lambda functions for this task type end with `ACS-ImageMultiClassMultiLabel`\. To find the annotation\-consolidation Lambda ARN for your Region, see [AnnotationConsolidationLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/dg/API_AnnotationConsolidationConfig.html#SageMaker-Type-AnnotationConsolidationConfig-AnnotationConsolidationLambdaArn)\. 
-
-The following is an example of an [AWS Python SDK \(Boto3\) request](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_labeling_job) to create a labeling job in the US East \(N\. Virginia\) Region\. 
+The following is an example of an [AWS Python SDK \(Boto3\) request](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_labeling_job) to create a labeling job in the US East \(N\. Virginia\) Region\. All parameters in red should be replaced with your specifications and resources\. 
 
 ```
 response = client.create_labeling_job(
@@ -104,7 +60,7 @@ response = client.create_labeling_job(
     HumanTaskConfig={
         'WorkteamArn': 'arn:aws:sagemaker:region:*:workteam/private-crowd/*',
         'UiConfig': {
-            'UiTemplateS3Uri': 's3://bucket/path/custom-worker-task-template.html'
+            'UiTemplateS3Uri': 's3://bucket/path/worker-task-template.html'
         },
         'PreHumanTaskLambdaArn': 'arn:aws:lambda:us-east-1:432418664414:function:PRE-ImageMultiClassMultiLabel',
         'TaskKeywords': [
@@ -128,36 +84,35 @@ response = client.create_labeling_job(
 )
 ```
 
-For more information about this operation, see [CreateLabelingJob](https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateLabelingJob.html)\. For information about how to use other language\-specific SDKs, see [See Also](https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateLabelingJob.html#API_CreateLabelingJob_SeeAlso) in the `CreateLabelingJobs` topic\. 
+### Provide a Template for Multi\-label Image Classification<a name="custom-template-multi-image-label-classification"></a>
 
-### Create a Custom Template for Multi\-label Image Classification<a name="custom-template-multi-image-label-classification"></a>
+If you create a labeling job using the API, you must supply a worker task template in `UiTemplateS3Uri`\. Copy and modify the following template\. Only modify the [https://docs.aws.amazon.com/sagemaker/latest/dg/sms-creating-instruction-pages.html#sms-creating-quick-instructions](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-creating-instruction-pages.html#sms-creating-quick-instructions), [https://docs.aws.amazon.com/sagemaker/latest/dg/sms-creating-instruction-pages.html#sms-creating-full-instructions](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-creating-instruction-pages.html#sms-creating-full-instructions), and `header`\. 
 
-If you create a labeling job using the API, you must create and supply a custom worker task template\. You can use the Amazon SageMaker [crowd\-image\-classifier\-multi\-select](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-crowd-image-classifier-multi.html) HTML crowd element to create a template for a multi\-label image classification job\. The following example shows how to use this crowd element\. 
+Upload this template to S3, and provide the S3 URI for this file in `UiTemplateS3Uri`\.
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
-
 <crowd-form>
   <crowd-image-classifier-multi-select
-    name="animals"
-    categories="['Cat', 'Dog', 'Horse', 'Pig', 'Bird']"
-    src="https://images.unsplash.com/photo-1509205477838-a534e43a849f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1998&q=80"
-    header="Please identify the animals in this image"
+    name="crowd-image-classifier-multi-select"
+    src="{{ task.input.taskObject | grant_read_access }}"
+    header="Please identify all classes in image"
+    categories="{{ task.input.labels | to_json | escape }}"
   >
-    <full-instructions header="Classification Instructions">
-      <p>If more than one label applies to the image, select multiple labels.</p>
-      <p>If no labels apply, select <b>None of the above</b></p>
+    <full-instructions header="Multi Label Image classification instructions">
+      <ol><li><strong>Read</strong> the task carefully and inspect the image.</li>
+      <li><strong>Read</strong> the options and review the examples provided to understand more about the labels.</li>
+       <li><strong>Choose</strong> the appropriate labels that best suit the image.</li></ol>
     </full-instructions>
-
     <short-instructions>
-      <p>Read the task carefully and inspect the image.</p>
-      <p>Choose the appropriate label(s) that best suit the image.</p>
-    </short-instructions>
+      <h3><span style="color: rgb(0, 138, 0);">Good example</span></h3>
+      <p>Enter description to explain the correct label to the workers</p>
+      <h3><span style="color: rgb(230, 0, 0);">Bad example</span></h3>
+      <p>Enter description of an incorrect label</p>
+   </short-instructions>
   </crowd-image-classifier-multi-select>
 </crowd-form>
 ```
-
-To learn how to create a custom template, see [Creating Custom Labeling Workflows](sms-custom-templates.md)\. 
 
 ## Multi\-label Image Classification Output Data<a name="sms-image-classification-multi-output-data"></a>
 

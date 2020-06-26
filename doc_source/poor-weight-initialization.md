@@ -10,11 +10,11 @@ Good initialization breaks the symmetry of the weights and gradients in a neural
 | Parameter Name | Description | 
 | --- | --- | 
 | base\_trial | The trial run using this rule\. The rule inspects the tensors gathered from this trial\. **Required** Valid values: String  | 
-| activation\_inputs\_regex |  A list of regex patterns that is used to restrict this comparison to specific scalar\-valued tensors\. The rule inspects only the tensors that match the regex patterns specified in the list\. If no patterns are passed, the rule compares all tensors gathered in the trials by default\. Only scalar\-valued tensors can be matched\. **Optional** Valid values: List of strings or a comma\-separated string Default value: `".*relu_input"`  | 
+| activation\_inputs\_regex |  A list of regex patterns used to restrict this comparison to specific scalar\-valued tensors\. The rule inspects only the tensors that match the regex patterns specified in the list\. If no patterns are passed, the rule compares all tensors gathered in the trials by default\. Only scalar\-valued tensors can be matched\. **Optional** Valid values: List of strings or a comma\-separated string Default value: `".*relu_input"`  | 
 | threshold |  If the ratio between minimum and maximum variance of weights per layer exceeds the `threshold` at a step, the rule returns `True`\. **Optional** Valid values: Float Default value: `10.0`  | 
 | distribution\_range | If the minimum difference between 5th and 95th percentiles of the gradient distribution is less than the `distribution_range`, the rule returns `True`\. **Optional** Valid values: Float Default value: `0.001`  | 
 | patience | The number of steps to wait until the loss is considered to be no longer decreasing\. **Optional** Valid values: Integer Default value: `5`  | 
-| steps | The number of steps this rule analyzes\. You typically want to check only the first few iterations\. **Optional** Valid values: Float Default value: `10`  | 
+| steps | The number of steps this rule analyzes\. You typically need to check only the first few iterations\. **Optional** Valid values: Float Default value: `10`  | 
 
 For an example of how to configure and deploy a built\-in rule, see [How to Use Built\-in Rules for Model Analysis](use-debugger-built-in-rules.md)\.
 
