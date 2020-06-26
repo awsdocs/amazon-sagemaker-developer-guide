@@ -6,18 +6,18 @@ Enabling inter\-container traffic encryption can increase training time, especia
 
 You can enable inter\-container traffic encryption for training jobs or hyperparameter tuning jobs\. You can use Amazon SageMaker APIs or console to enable inter\-container traffic encryption\.
 
-For information about running training jobs in a private VPC, see [Protect Training Jobs by Using an Amazon Virtual Private Cloud](train-vpc.md)\.
+For information about running training jobs in a private VPC, see [Give Amazon SageMaker Training Jobs Access to Resources in Your Amazon VPC](train-vpc.md)\.
 
 ## Enable Inter\-Container Traffic Encryption \(API\)<a name="train-encrypt-api"></a>
 
-Before enabling inter\-container traffic encryption on training or hyperparameter tuning jobs with APIs, you need to add inbound and outbound rules to your privat VPC's security group\.
+Before enabling inter\-container traffic encryption on training or hyperparameter tuning jobs with APIs, you need to add inbound and outbound rules to your private VPC's security group\.
 
 **To enable inter\-container traffic encryption \(API\)**
 
 1.  Add the following inbound and outbound rules in the security group for your private VPC:    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html)
 
-1. When you send a request to the [CreateTrainingJob](API_CreateTrainingJob.md) or [CreateHyperParameterTuningJob](API_CreateHyperParameterTuningJob.md) API, specify `True` for the `EnableInterContainerTrafficEncryption` parameter\.
+1. When you send a request to the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) or [ `CreateHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html) API, specify `True` for the `EnableInterContainerTrafficEncryption` parameter\.
 
 **Note**  
 The AWS Security Group Console might show display ports range as "All", however EC2 ignores the specified port range because it is not applicable for the ESP 50 IP protocol\.
@@ -38,7 +38,7 @@ The AWS Security Group Console might show display ports range as "All", however 
 
 1. Choose **Enable inter\-container traffic encryption**\. 
 
-After you enable inter\-container traffic encryption, finish creating the training job\. For more information, see [Step 2\.3: Train a Model](ex1-train-model.md)\.
+After you enable inter\-container traffic encryption, finish creating the training job\. For more information, see [Step 5: Train a Model](ex1-train-model.md)\.
 
 ### Enable Inter\-container Traffic Encryption in a Hyperparameter Tuning Job<a name="train-encrypt-console-tuning"></a>
 

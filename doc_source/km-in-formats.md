@@ -15,7 +15,7 @@ All Amazon SageMaker built\-in algorithms adhere to the common input inference f
             "closest_cluster": 2.0,
             "distance_to_cluster": 5.0,
         },
- 
+
         ....
     ]
 }
@@ -46,4 +46,15 @@ All Amazon SageMaker built\-in algorithms adhere to the common input inference f
         }
     }
 ]
+```
+
+## CSV Response Format<a name="km-csv"></a>
+
+The first value in each line corresponds to `closest_cluster`\.
+
+The second value in each line corresponds to `distance_to_cluster`\.
+
+```
+1.0,3.0
+2.0,5.0
 ```

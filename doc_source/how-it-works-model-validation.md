@@ -29,7 +29,3 @@ Options for offline model evaluation include:
 
    
 + **k\-fold validation**—In this validation approach, you split the example dataset into *k* parts\. You treat each of these parts as a holdout set for* k* training runs, and use the other *k*\-1 parts as the training set for that run\. You produce* k* models using a similar process, and aggregate the models to generate your final model\. The value *k* is typically in the range of 5\-10\.
-
-## How It Works: Next Topic<a name="howitwork-validation-nextstep"></a>
-
- [The Amazon SageMaker Programming Model ](how-it-works-prog-model.md) 

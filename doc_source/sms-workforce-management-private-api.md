@@ -1,0 +1,5 @@
+# Manage Private Workforce Access to Tasks Using IP Addresses<a name="sms-workforce-management-private-api"></a>
+
+By default, a workforce isn't restricted to specific IP addresses\. You can use the [ `UpdateWorkforce`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateWorkforce.html) operation to restrict access to tasks to workers at allowable IP address ranges \([CIDRs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)\)\. If you specify one or more CIDRs, workers who attempt to access tasks using any IP address outside the specified ranges are denied access and get a `Not Found` error message on the worker portal\. You can specify up to four CIDR values using `UpdateWorkforce`\. 
+
+After you have restricted your workforce to one or more CIDRs, you can view all allowable CIDRs using the [ `DescribeWorkforce`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeWorkforce.html) operation\.

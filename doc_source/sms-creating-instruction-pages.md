@@ -8,9 +8,14 @@ There are two kinds of instructions:
 
 Create instructions in the console when you are creating your labeling job\. Start with the existing instructions for the task and use the editor to modify them to suit your labeling job\.
 
+**Note**  
+Once you create your labeling job, it will automatically start and you will not be able to modify your worker instructions\. If you need to change your worker instructions, stop the labeling job that you created, clone it, and modify your worker instructions before creating a new job\.   
+You can clone a labeling job in the console by selecting the labeling job and then selecting **Clone** in the **Actions** menu\.   
+To clone a labeling job using the Amazon SageMaker API or your preferred Amazon SageMaker SDK, make a new request to the `CreateLabelingJob` operation with the same specifications as your original job after modifying your worker instructions\. 
+
 ## Short Instructions<a name="sms-creating-quick-instructions"></a>
 
-Short instructions appear on the same webpage that workers use to label your data object\. For example, the following is the editing page for a bounding box task\. The short instructions panel is on the left\.
+Short instructions appear on the same web page that workers use to label your data object\. For example, the following is the editing page for a bounding box task\. The short instructions panel is on the left\.
 
 ![\[\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms-instructions-10.png)
 
@@ -33,3 +38,14 @@ You can create full instructions using an editor in the Ground Truth console\. A
 + Full instructions should supplement the short instructions\. Don't repeat information that appears in the short instructions\.
 
 The Ground Truth console provides an editor so that you can create your full instructions\. Replace the placeholder text and images with instructions for your task\. Preview the full instruction page by choosing **Preview**\. The preview will open in a new window, be sure to turn off pop\-up blocking so that the window will show\.
+
+## Add example images to your instructions<a name="sms-using-s3-images"></a>
+
+Images provide useful examples for your workers\. To add a publicly accessible image to your instructions:
++ Place the cursor where the image should go in the instructions editor\.
++ Click the image icon in the editor toolbar\.
++ Enter the URL of your image\.
+
+If your instruction image in Amazon S3 is not publicly accessible:
++ As the image URL, enter: `{{ 'https://s3.amazonaws.com/your-bucket-name/image-file-name' | grant_read_access }}`\.
++ This renders the image URL with a short\-lived, one\-time access code appended so the worker's browser can display it\. A broken image icon is displayed in the instructions editor, but previewing the tool displays the image in the rendered preview\.

@@ -1,6 +1,11 @@
 # Stop Training Jobs Early<a name="automatic-model-tuning-early-stopping"></a>
 
-Stop the training jobs that a hyperparameter tuning job launches early when they are not improving significantly as measured by the objective metric\. Stopping training jobs early can help reduce compute time and helps you avoid overfitting your model\. To configure a hyperparameter tuning job to stop training jobs early, set the `TrainingJobEarlyStoppingType` field of the [HyperParameterTuningJobConfig](API_HyperParameterTuningJobConfig.md) object that you use to configure the tuning job to `AUTO`\. For information about configuring and launching a hyperparameter tuning job, see [Example: Hyperparameter Tuning Job](automatic-model-tuning-ex.md)\.
+Stop the training jobs that a hyperparameter tuning job launches early when they are not improving significantly as measured by the objective metric\. Stopping training jobs early can help reduce compute time and helps you avoid overfitting your model\. To configure a hyperparameter tuning job to stop training jobs early, do one of the following:
++ If you are using the AWS SDK for Python \(Boto 3\), set the `TrainingJobEarlyStoppingType` field of the [ `HyperParameterTuningJobConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobConfig.html) object that you use to configure the tuning job to `AUTO`\.
++ If you are using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), set the `early_stopping_type` parameter of the [HyperParameterTuner](https://sagemaker.readthedocs.io/en/stable/tuner.html) object to `Auto`\.
++ In the Amazon SageMaker console, in the **Create hyperparameter tuning job** workflow, under **Early stopping**, choose **Auto**\.
+
+For a sample notebook that demonstrates how to use early stopping, see [https://github\.com/awslabs/amazon\-sagemaker\-examples/blob/master/hyperparameter\_tuning/image\_classification\_early\_stopping/hpo\_image\_classification\_early\_stopping\.ipynb](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/hyperparameter_tuning/image_classification_early_stopping/hpo_image_classification_early_stopping.ipynb) or open the `hpo_image_classification_early_stopping.ipynb` notebook in the **Hyperparameter Tuning** section of the **SageMaker Examples** in a notebook instance\. For information about using sample notebooks in a notebook instance, see [Use Example Notebooks](howitworks-nbexamples.md)\.
 
 ## How Early Stopping Works<a name="automatic-tuning-early-stop-how"></a>
 
@@ -25,7 +30,7 @@ This list of built\-in algorithms that support early stopping is current as of D
 To use early stopping with your own algorithm, you must write your algorithms such that it emits the value of the objective metric after each epoch\. The following list shows how you can do that in different frameworks:
 
 TensorFlow  
-Use the t`f.contrib.learn.monitors.ValidationMonitor` class\. For information, see [https://www\.tensorflow\.org/api\_docs/python/tf/contrib/learn/monitors](https://www.tensorflow.org/api_docs/python/tf/contrib/learn/monitors)\.
+Use the `tf.keras.callbacks.ProgbarLogger` class\. For information, see [https://www\.tensorflow\.org/api\_docs/python/tf/keras/callbacks/ProgbarLogger](https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/ProgbarLogger)\.
 
 MXNet  
 Use the `mxnet.callback.LogValidationMetricsCallback`\. For information, see [https://mxnet\.apache\.org/api/python/callback/callback\.html](https://mxnet.apache.org/api/python/callback/callback.html)\.

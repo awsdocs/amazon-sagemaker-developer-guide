@@ -21,7 +21,7 @@ The first step in the RCF algorithm is to obtain a random sample of the training
 
 This algorithm selects a random sample such that ![\[TBD\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/rcf10.jpg) for all ![\[TBD\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/rcf11.jpg)\. When ![\[TBD\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/rcf12.jpg) the algorithm is more complicated\. Additionally, a distinction must be made between random sampling that is with and without replacement\. RCF performs an augmented reservoir sampling without replacement on the training data based on the algorithms described in \[2\]\.
 
-## Train a RFC Model and Produce Inferences<a name="rcf-training-inference"></a>
+## Train a RCF Model and Produce Inferences<a name="rcf-training-inference"></a>
 
 The next step in RCF is to construct a random cut forest using the random sample of data\. First, the sample is partitioned into a number of equal\-sized partitions equal to the number of trees in the forest\. Then, each partition is sent to an individual tree\. The tree recursively organizes its partition into a binary tree by partitioning the data domain into bounding boxes\.
 
@@ -29,7 +29,7 @@ This procedure is best illustrated with an example\. Suppose a tree is given the
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/RCF1.jpg)
 
- The RCF algorithm organizes these data in a tree by first computing a bounding box of the data, selecting a random dimension \(giving more weight to dimensions with higher "variance"\), and then randomly determining the position of a hyperplane "cut" through that dimension\. The two resulting subspaces define their own sub tree\. In this example, the cut happens to separate a lone point from the remainder of the sample\. The first level of the resulting binary tree consists of two nodes, one which will consist of the subtree of points to the left of the initial cut and the other representing the single point on the right\.
+The RCF algorithm organizes these data in a tree by first computing a bounding box of the data, selecting a random dimension \(giving more weight to dimensions with higher "variance"\), and then randomly determining the position of a hyperplane "cut" through that dimension\. The two resulting subspaces define their own sub tree\. In this example, the cut happens to separate a lone point from the remainder of the sample\. The first level of the resulting binary tree consists of two nodes, one which will consist of the subtree of points to the left of the initial cut and the other representing the single point on the right\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/RCF2.jpg)
 

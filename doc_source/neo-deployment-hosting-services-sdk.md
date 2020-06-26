@@ -6,4 +6,4 @@ The object handle for the compiled model supplies the `deploy` function, which a
 predictor = compiled_model.deploy(initial_instance_count = 1, instance_type = 'ml.c5.4xlarge')
 ```
 
-After the command is done, the name of the newly created endpoint is printed in the jupyter notebook\.
+After the command is done, the name of the newly created endpoint is printed in the Jupyter notebook\.
