@@ -1,6 +1,6 @@
 # Run a Warm Start Hyperparameter Tuning Job<a name="automatic-model-tuning-warm-start"></a>
 
-Use warm start to start a hyperparameter tuning job using one or more previous tuning jobs as a starting point\. The results of previous tuning jobs are used to inform which combinations of hyperparameters to search over in the new tuning job\. Hyperparameter tuning uses Bayesian search to choose combinations of hyperparameter values from ranges that you specify\. For more information, see [How Hyperparameter Tuning Works](automatic-model-tuning-how-it-works.md)\. Using information from previous hyperparameter tuning jobs can help increase the performance of the new hyperparameter tuning job by making the search for the best combination of hyperparameters more efficient\.
+Use warm start to start a hyperparameter tuning job using one or more previous tuning jobs as a starting point\. The results of previous tuning jobs are used to inform which combinations of hyperparameters to search over in the new tuning job\. Hyperparameter tuning uses either Bayesian or random search to choose combinations of hyperparameter values from ranges that you specify\. For more information, see [How Hyperparameter Tuning Works](automatic-model-tuning-how-it-works.md)\. Using information from previous hyperparameter tuning jobs can help increase the performance of the new hyperparameter tuning job by making the search for the best combination of hyperparameters more efficient\.
 
 **Note**  
 Warm start tuning jobs typically take longer to start than standard hyperparameter tuning jobs, because the results from the parent jobs have to be loaded before the job can start\. The increased time depends on the total number of training jobs launched by the parent jobs\.
@@ -24,7 +24,7 @@ There are two different types of warm start tuning jobs:
 `IDENTICAL_DATA_AND_ALGORITHM`  
 The new hyperparameter tuning job uses the same input data and training image as the parent tuning jobs\. You can change the hyperparameter ranges to search and the maximum number of training jobs that the hyperparameter tuning job launches\. You can also change hyperparameters from tunable to static, and from static to tunable, but the total number of static plus tunable hyperparameters must remain the same as it is in all parent jobs\. You cannot use a new version of the training algorithm, unless the changes in the new version do not affect the algorithm itself\. For example, changes that improve logging or adding support for a different data format are allowed\.  
 Use identical data and algorithm when you use the same training data as you used in a previous hyperparameter tuning job, but you want to increase the total number of training jobs or change ranges or values of hyperparameters\.  
-When you run an warm start tuning job of type `IDENTICAL_DATA_AND_ALGORITHM`, there is an additional field in the response to [DescribeHyperParameterTuningJob](API_DescribeHyperParameterTuningJob.md) named `OverallBestTrainingJob`\. The value of this field is the [TrainingJobSummary](API_TrainingJobSummary.md) for the training job with the best objective metric value of all training jobs launched by this tuning job and all parent jobs specified for the warm start tuning job\.
+When you run an warm start tuning job of type `IDENTICAL_DATA_AND_ALGORITHM`, there is an additional field in the response to [ `DescribeHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeHyperParameterTuningJob.html) named `OverallBestTrainingJob`\. The value of this field is the [TrainingJobSummary](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TrainingJobSummary.html) for the training job with the best objective metric value of all training jobs launched by this tuning job and all parent jobs specified for the warm start tuning job\.
 
 `TRANSFER_LEARNING`  
 The new hyperparameter tuning job can include input data, hyperparameter ranges, maximum number of concurrent training jobs, and maximum number of training jobs that are different than those of its parent hyperparameter tuning jobs\. You can also change hyperparameters from tunable to static, and from static to tunable, but the total number of static plus tunable hyperparameters must remain the same as it is in all parent jobs\. The training algorithm image can also be a different version from the version used in the parent hyperparameter tuning job\. When you use transfer learning, changes in the dataset or the algorithm that significantly affect the value of the objective metric might reduce the usefulness of using warm start tuning\.
@@ -55,9 +55,9 @@ You can use either the low\-level AWS SDK for Python \(Boto 3\) or the high\-lev
 
 ### Create a Warm Start Tuning Job \( Low\-level Amazon SageMaker API for Python \(Boto 3\)\)<a name="warm-start-tuning-example-boto"></a>
 
-To use warm start tuning, you specify the values of a [HyperParameterTuningJobWarmStartConfig](API_HyperParameterTuningJobWarmStartConfig.md) object, and pass that as the `WarmStartConfig` field in a call to [CreateHyperParameterTuningJob](API_CreateHyperParameterTuningJob.md)\.
+To use warm start tuning, you specify the values of a [ `HyperParameterTuningJobWarmStartConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobWarmStartConfig.html) object, and pass that as the `WarmStartConfig` field in a call to [ `CreateHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html)\.
 
-The following code shows how to create a [HyperParameterTuningJobWarmStartConfig](API_HyperParameterTuningJobWarmStartConfig.md) object and pass it to [CreateHyperParameterTuningJob](API_CreateHyperParameterTuningJob.md) job by using the low\-level Amazon SageMaker API for Python \(Boto 3\)\.
+The following code shows how to create a [ `HyperParameterTuningJobWarmStartConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobWarmStartConfig.html) object and pass it to [ `CreateHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html) job by using the low\-level Amazon SageMaker API for Python \(Boto 3\)\.
 
 Create the `HyperParameterTuningJobWarmStartConfig` object:
 
@@ -82,12 +82,12 @@ smclient.create_hyper_parameter_tuning_job(HyperParameterTuningJobName = 'MyWarm
 
 ### Create a Warm Start Tuning Job \(Amazon SageMaker Python SDK\)<a name="warm-start-tuning-example-sdk"></a>
 
-To use the Amazon SageMaker Python SDK to run a warm start tuning job, you:
+To use the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) to run a warm start tuning job, you:
 + Specify the parent jobs and the warm start type by using a `WarmStartConfig` object\.
 + Pass the `WarmStartConfig` object as the value of the `warm_start_config` argument of a [HyperparameterTuner](https://sagemaker.readthedocs.io/en/latest/tuner.html) object\.
 + Call the `fit` method of the `HyperparameterTuner` object\.
 
-For more information about using the Amazon SageMaker Python SDK for hyperparameter tuning, see [https://github\.com/aws/sagemaker\-python\-sdk\#sagemaker\-automatic\-model\-tuning](https://github.com/aws/sagemaker-python-sdk#sagemaker-automatic-model-tuning)\.
+For more information about using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) for hyperparameter tuning, see [https://github\.com/aws/sagemaker\-python\-sdk\#sagemaker\-automatic\-model\-tuning](https://github.com/aws/sagemaker-python-sdk#sagemaker-automatic-model-tuning)\.
 
 This example uses an estimator that uses the [Image Classification Algorithm](image-classification.md) algorithm for training\. The following code sets the hyperparameter ranges that the warm start tuning job searches within to find the best combination of values\. For information about setting hyperparameter ranges, see [Define Hyperparameter Ranges](automatic-model-tuning-define-ranges.md)\.
 

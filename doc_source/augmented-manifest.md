@@ -1,14 +1,14 @@
 # Provide Dataset Metadata to Training Jobs with an Augmented Manifest File<a name="augmented-manifest"></a>
 
-To classify data into different groupings, you train a model by using a dataset and metadata that act as labels\. To include metadata with your dataset in a training job, use an augmented manifest file\. When using an augmented manifest file, your dataset must be stored in Amazon Simple Storage Service \(Amazon S3\) and you must configure your training job to use dataset stored there\. You specify the location and format of this dataset for one or more [channels](sagemaker/latest/dg/API_Channel.html)\.
+To classify data into different groupings, you train a model by using a dataset and metadata that act as labels\. To include metadata with your dataset in a training job, use an augmented manifest file\. When using an augmented manifest file, your dataset must be stored in Amazon Simple Storage Service \(Amazon S3\) and you must configure your training job to use dataset stored there\. You specify the location and format of this dataset for one or more [ `Channel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Channel.html)\. Augmented manifests can only support Pipe input mode\. See the section, **InputMode** in [ `Channel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Channel.html) to learn more about pipe input mode\. 
 
-When specifying a channel's parameters, you specify a path to the file, called a `S3Uri`\. Amazon SageMaker interprets this URI based on the specified [S3DataType](sagemaker/latest/dg/API_S3DataSource.html#SageMaker-Type-S3DataSource-S3DataType)\. The `AugmentedManifestFile` option defines a manifest format that includes metadata with the input data\. Using an augmented manifest file is an alternative to preprocessing when you have labeled data\. For training jobs using labeled date, you typically need to preprocess the dataset to combine input data with metadata before training\. If your training dataset is large, preprocessing can be time consuming and expensive\.
+When specifying a channel's parameters, you specify a path to the file, called a `S3Uri`\. Amazon SageMaker interprets this URI based on the specified `S3DataType` in [ `S3DataSource`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_S3DataSource.html)\. The `AugmentedManifestFile` option defines a manifest format that includes metadata with the input data\. Using an augmented manifest file is an alternative to preprocessing when you have labeled data\. For training jobs using labeled data, you typically need to preprocess the dataset to combine input data with metadata before training\. If your training dataset is large, preprocessing can be time consuming and expensive\.
 
 ## Augmented Manifest File Format<a name="augmented-manifest-format"></a>
 
 An augmented manifest file must be formatted in [JSON Lines](http://jsonlines.org/) format\. In JSON Lines format, each line in the file is a complete JSON object followed by a newline separator\.
 
-During training, Amazon SageMaker parses each JSON line and sends some or all of its attributes on to the training algorithm\. You specify which attribute contents to pass and the order in which to pass them with the `AttributeNames` parameter of the [CreateTrainingJob](API_CreateTrainingJob.md) API\. The `AttributeNames` parameter is an ordered list of attribute names that Amazon SageMaker looks for in the JSON object to use as training input\.
+During training, Amazon SageMaker parses each JSON line and sends some or all of its attributes on to the training algorithm\. You specify which attribute contents to pass and the order in which to pass them with the `AttributeNames` parameter of the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) API\. The `AttributeNames` parameter is an ordered list of attribute names that Amazon SageMaker looks for in the JSON object to use as training input\.
 
 For example, if you list `["line", "book"]` for `AttributeNames`, the input data must include the attribute names of `line` and `book` in the specified order\. For this example, the following augmented manifest file content is valid:
 
@@ -34,17 +34,19 @@ If an attribute name contains the suffix `-ref`, the attribute's value must be a
 
 For the first line of this manifest, Amazon SageMaker retrieves the contents of the S3 object `s3://mybucket/foo/image1.jpg` and streams it to the algorithm for training\. The second line is the string representation of the `is-a-cat` attribute `"1"`, which is followed by the contents of the second line\.
 
+To create an augmented manifest file, use Amazon SageMaker Ground Truth to create a labeling job\. For more information, see [Output Data](sms-data-output.md)\.
+
 ## Stream Augmented Manifest File Data<a name="augmented-manifest-stream"></a>
 
-Augmented manifest files are supported only for channels using Pipe input mode\. For each channel, the data is extracted from its augmented manifest file and streamed \(in order\) to the algorithm through the channel's named pipe\. Pipe mode uses the first in first out \(FIFO\) method, so records are processed in the order in which they are queued\. For information about Pipe input mode, see [InputMode](sagemaker/latest/dg/API_Channel.html#SageMaker-Type-Channel-InputMode)\.
+Augmented manifest files are supported only for channels using Pipe input mode\. For each channel, the data is extracted from its augmented manifest file and streamed \(in order\) to the algorithm through the channel's named pipe\. Pipe mode uses the first in first out \(FIFO\) method, so records are processed in the order in which they are queued\. For information about Pipe input mode, see [ `Input Mode`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Channel.html#SageMaker-Type-Channel-InputMode)\.
 
-Attribute names with a `"-ref"` suffix point to preformatted binary data\. In some cases, the algorithm knows how to parse the data\. In other cases, you might need to wrap the data so that records are delimited for the algorithm\. If the algorithm is compatible with [RecordIO\-formatted data](https://mxnet.incubator.apache.org/architecture/note_data_loading.html#data-format), specifying `RecordIO` for `RecordWrapperType` solves this issue\. If the algorithm is not compatible with `RecordIO` format, specify `None` for `RecordWrapperType` and make sure that your data is parsed correctly for your algorithm\. Using the `["image-ref", "is-a-cat"]` example, if you use RecordIO wrapping, the following stream of data is sent to the queue:
+Attribute names with a `"-ref"` suffix point to preformatted binary data\. In some cases, the algorithm knows how to parse the data\. In other cases, you might need to wrap the data so that records are delimited for the algorithm\. If the algorithm is compatible with [RecordIO\-formatted data](https://mxnet.apache.org/api/architecture/note_data_loading#data-format), specifying `RecordIO` for `RecordWrapperType` solves this issue\. If the algorithm is not compatible with `RecordIO` format, specify `None` for `RecordWrapperType` and make sure that your data is parsed correctly for your algorithm\. Using the `["image-ref", "is-a-cat"]` example, if you use RecordIO wrapping, the following stream of data is sent to the queue:
 
 `recordio_formatted(s3://mybucket/foo/image1.jpg)recordio_formatted("1")recordio_formatted(s3://mybucket/bar/image2.jpg)recordio_formatted("0")`
 
 Images that aren't wrapped with RecordIO format, are streamed with the corresponding `is-a-cat` attribute value as one record\. This can cause a problem because the algorithm might not delimit the images and attributes correctly\.
 
-For more information about Pipe mode and how to use it, see [Using Your Own Training Algorithms \- Input Data Configuration](sagemaker/latest/dg/your-algorithms-training-algo.html#your-algorithms-training-algo-running-container-inputdataconfig)\.
+With augmented manifest files and Pipe mode in general, size limits of the EBS volume do not apply\. This includes settings that otherwise must be within the EBS volume size limit such as [ `S3DataDistributionType `](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_S3DataSource.html#SageMaker-Type-S3DataSource-S3DataDistributionType                 )\. For more information about Pipe mode and how to use it, see [Using Your Own Training Algorithms \- Input Data Configuration](your-algorithms-training-algo.html#your-algorithms-training-algo-running-container-inputdataconfig)\.
 
 ## Use an Augmented Manifest File \(Console\)<a name="augmented-manifest-console"></a>
 
@@ -63,7 +65,7 @@ To complete this procedure, you need:
 
 1. Provide a name for the training job\. The name must be unique within an AWS Region in an AWS account\. It can have 1 to 63 characters\. Valid characters: a\-z, A\-Z, 0\-9, and \. : \+ = @ \_ % \- \(hyphen\)\.
 
-1. Choose the algorithm that you want to use\. For information about algorithms, see [Use Amazon SageMaker Built\-in Algorithms ](algos.md)\. If you want to use a custom algorithm, make sure that it is compatible with Pipe mode\.
+1. Choose the algorithm that you want to use\. For information about supported built\-in algorithms, see [Use Amazon SageMaker built\-in algorithms](algos.md)\. If you want to use a custom algorithm, make sure that it is compatible with Pipe mode\.
 
 1. \(Optional\) For **Resource configuration**, either accept the default values or, to reduce computation time, increase the resource consumption\.
 
@@ -109,7 +111,7 @@ To complete this procedure, you need:
 
 1. Choose **Create training job**\. Amazon SageMaker creates and runs the training job\.
 
-After the training job has finished, Amazon SageMaker stores the model artifacts in the bucket whose path you provided for **S3 output path** in the **Output data configuration** field\. To deploy the model to get predictions, see [Step 2\.4: Deploy the Model to Amazon SageMaker](ex1-model-deployment.md)\.
+After the training job has finished, Amazon SageMaker stores the model artifacts in the bucket whose path you provided for **S3 output path** in the **Output data configuration** field\. To deploy the model to get predictions, see [Step 6: Deploy the Model to Amazon SageMaker](ex1-model-deployment.md)\.
 
 ## Use an Augmented Manifest File \(API\)<a name="augmented-manifest-api"></a>
 
@@ -130,13 +132,16 @@ model = sagemaker.estimator.Estimator(training_image,
 # Create a train data channel with S3_data_type as 'AugmentedManifestFile' and attribute names.
 train_data = sagemaker.session.s3_input(your_augmented_manifest_file,
                                         distribution='FullyReplicated',
-                                        content_type='image/jpeg',
+                                        content_type='application/jpeg',
                                         s3_data_type='AugmentedManifestFile',
-                                        attribute_names=['source-ref', 'annotations']) 
+                                        attribute_names=['source-ref', 'annotations'],
+                                        input_mode='Pipe',
+                                        record_wrapping='RecordIO')
+
 data_channels = {'train': train_data}
 
 # Train a model.
 model.fit(inputs=data_channels, logs=True)
 ```
 
-After the training job has finished, Amazon SageMaker stores the model artifacts in the bucket whose path you provided for **S3 output path** in the **Output data configuration** field\. To deploy the model to get predictions, see [Step 2\.4: Deploy the Model to Amazon SageMaker](ex1-model-deployment.md)\.
+After the training job has finished, Amazon SageMaker stores the model artifacts in the bucket whose path you provided for **S3 output path** in the **Output data configuration** field\. To deploy the model to get predictions, see [Step 6: Deploy the Model to Amazon SageMaker](ex1-model-deployment.md)\.

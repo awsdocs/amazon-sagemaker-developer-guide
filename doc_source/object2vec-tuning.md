@@ -1,8 +1,8 @@
 # Tune an Object2Vec Model<a name="object2vec-tuning"></a>
 
-*Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an objective metric\. You choose the objective metric from the metrics that the algorithm computes\. Automatic model tuning searches the chosen hyperparameters to find the combination of values that result in the model that optimizes the objective metric\.
+*Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an objective metric\. For the objective metric, you use one of the metrics that the algorithm computes\. Automatic model tuning searches the chosen hyperparameters to find the combination of values that result in the model that optimizes the objective metric\.
 
-For more information about model tuning, see [Automatic Model Tuning](automatic-model-tuning.md)\.
+For more information about model tuning, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
 
 ## Metrics Computed by the Object2Vec Algorithm<a name="object2vec-metrics"></a>
 
@@ -35,7 +35,7 @@ The Object2Vec algorithm reports accuracy and cross\-entropy classification metr
 You can tune the following hyperparameters for the Object2Vec algorithm\.
 
 
-| Parameter Name | Parameter Type | Recommended Ranges | 
+| Hyperparameter Name | Hyperparameter Type | Recommended Ranges and Values | 
 | --- | --- | --- | 
 | dropout | ContinuousParameterRange | MinValue: 0\.0, MaxValue: 1\.0 | 
 | early\_stopping\_patience | IntegerParameterRange | MinValue: 1, MaxValue: 5 | 
@@ -50,7 +50,7 @@ You can tune the following hyperparameters for the Object2Vec algorithm\.
 | epochs | IntegerParameterRange | MinValue: 4, MaxValue: 20 | 
 | learning\_rate | ContinuousParameterRange | MinValue: 1e\-6, MaxValue: 1\.0 | 
 | mini\_batch\_size | IntegerParameterRange | MinValue: 1, MaxValue: 8192 | 
-| mlp\_activation | CategoricalParameterRanges | \[`tanh`, `relu`, `linear`\] | 
+| mlp\_activation | CategoricalParameterRanges |  \[`tanh`, `relu`, `linear`\]  | 
 | mlp\_dim | IntegerParameterRange | MinValue: 16, MaxValue: 1024 | 
 | mlp\_layers | IntegerParameterRange | MinValue: 1, MaxValue: 4 | 
 | optimizer | CategoricalParameterRanges | \[`adagrad`, `adam`, `rmsprop`, `sgd`, `adadelta`\] | 

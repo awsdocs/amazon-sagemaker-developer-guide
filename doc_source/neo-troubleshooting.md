@@ -11,115 +11,6 @@ This section contains information about how to understand and prevent common err
 
 Some of the most common errors are due to invalid inputs\. This section contains information arranged in question and answer form to help you avoid these errors\.
 
-***Which frameworks does Neo support?***
-+ [TensorFlow](https://aws.amazon.com/tensorflow/)
-+ [PyTorch](https://pytorch.org/)
-+ [Apache MXNET](https://aws.amazon.com/mxnet/)
-+ [XGBoost](https://github.com/dmlc/xgboost)
-+ [ONNX](https://github.com/onnx/onnx)
-
-***Which operators does Amazon SageMaker Neo support for these frameworks?***
-
-The following table lists the supported operations for each framework\.
-
-
-| MXNet | TensorFlow | PyTorch/ONNX | 
-| --- | --- | --- | 
-| '\_add\_scalar' | 'Add' | 'Abs' | 
-| '\_add\_symbol' | 'ArgMax' | 'Add' | 
-| '\_contrib\_MultiBoxDetection' | 'ArgMin' | 'ArgMax' | 
-| '\_contrib\_MultiBoxPrior' | 'AvgPool' | 'ArgMin' | 
-| '\_copy' | 'BatchNormWithGlobalNormalization'  | 'AveragePool' | 
-| '\_div\_scalar' | 'BiasAdd' | 'BatchNormalization' | 
-| '\_div\_symbol' | 'Cast' | 'Cast' | 
-| '\_minus\_scalar' | 'Ceil' | 'Ceil' | 
-| '\_minus\_scalar' | 'CheckNumerics' | 'Clip' | 
-| '\_mul\_symbol' | 'Concat' | 'Concat' | 
-| '\_Plus' | 'ConcatV2' | 'Constant' | 
-| '\_plus\_scalar' | 'Conv2D' | 'ConstantFill' | 
-| '\_pow\_scalar' | 'DecodeJpeg' | 'Conv' | 
-| '\_rdiv\_scalar' | 'DepthwiseConv2dNative' | 'ConvTranspose' | 
-| '\_rminus\_scalar' | 'Elu' | 'Div' | 
-| '\_rpow\_scalar' | 'Equal' | 'Dropout' | 
-| '\_rsub\_scalar' | 'ExpandDims' | 'Elu' | 
-| '\_sub\_scalar' | 'Fill' | 'Exp' | 
-| '\_sub\_symbol' | 'Floor' | 'FC' | 
-| 'Activation' | 'FusedBatchNorm' | 'Flatten' | 
-| 'add\_n' | 'FusedBatchNormV2' | 'Floor' | 
-| 'argmax' | 'GatherV2' | 'Gather' | 
-| 'BatchNorm' | 'Greater' | 'Gemm' | 
-| 'BatchNorm\_v1' | 'GreaterEqual' | 'GlobalAveragePool' | 
-| 'broadcast\_add' | 'Identity' | 'GlobalMaxPool' | 
-| 'broadcast\_div' | 'LeakyRelu' | 'HardSigmoid' | 
-| 'broadcast\_mul' | 'Less' | 'Identity' | 
-| 'broadcast\_sub' | 'LessEqual' | 'ImageScaler' | 
-| 'broadcast\_to' | 'LRN' | 'LeakyRelu' | 
-| 'cast' | 'MatMul' | 'Log' | 
-| 'Cast' | 'Maximum' | 'LogSoftmax' | 
-| 'clip' | 'MaxPool' | 'LRN' | 
-| 'Concat' | 'Mean' | 'MatMul' | 
-| 'concat' | 'Minimum' | 'Max' | 
-| 'Convolution' | 'Mul'  | 'MaxPool' | 
-| 'Convolution\_v1' | 'NotEqual' | 'Mean' | 
-| 'Crop' | 'Pack' | 'Min' | 
-| 'Deconvolution' | 'Pad' | 'Mul' | 
-| 'Dropout' | 'PadV2' | 'Neg' | 
-| 'elemwise\_add' | 'Range' | 'Pad' | 
-| 'elemwise\_div' | 'Rank' | 'ParametricSoftplus' | 
-| 'elemwise\_mul' | 'Relu' | 'Pow' | 
-| 'elemwise\_sub' | 'Relu6' | 'PRelu' | 
-| 'exp' | 'Reshape' | 'Reciprocal' | 
-| 'expand\_dims' | 'ResizeBilinear' | 'ReduceMax' | 
-| 'flatten' | 'Rsqrt' | 'ReduceMean' | 
-| 'Flatten' | 'Selu' | 'ReduceMin' | 
-| 'FullyConnected' | 'Shape' | 'ReduceProd' | 
-| 'LeakyReLU' | 'Sigmoid' | 'ReduceSum' | 
-| 'LinearRegressionOutput' | 'Softmax' | 'Relu' | 
-| 'log' | 'Square' | 'Reshape' | 
-| 'log\_softmax' | 'Squeeze' | 'Scale' | 
-| 'LRN' | 'StridedSlice' | 'ScaledTanh' | 
-| 'max' | 'Sub' | 'Selu' | 
-| 'max\_axis'  | 'Sum' | 'Shape' | 
-| 'min' | 'Tanh' | 'Sigmoid' | 
-| 'min\_axis' | 'Transpose' | 'Slice' | 
-| 'negative' |  | 'Softmax' | 
-| 'Pooling' |  | 'SoftPlus' | 
-| 'Pooling\_v1' |  | 'Softsign' | 
-| 'relu' |  | 'SpatialBN' | 
-| 'Reshape' |  | 'Split' | 
-| 'reshape' |  | 'Sqrt' | 
-| 'reshape\_like' |  | 'Squeeze' | 
-| 'sigmoid' |  | 'Sub' | 
-| 'slice\_like' |  | 'Sum' | 
-| 'SliceChannel' |  | 'Tanh' | 
-| 'softmax' |  | 'ThresholdedRelu' | 
-| 'Softmax' |  | 'Transpose' | 
-| 'SoftmaxActivation' |  | 'Unsqueeze' | 
-| 'SoftmaxOutput' |  | 'Upsample' | 
-| 'split' |  |  | 
-| 'sum' |  |  | 
-| 'sum\_axis' |  |  | 
-| 'tanh' |  |  | 
-| 'transpose' |  |  | 
-| 'UpSampling' |  |  | 
-
-***Which model architectures does Neo support?***
-
-Neo supports image classification models\.
-
-***Which model format files does Neo read in?*** 
-
-The file needs to be formatted as a tar\.gz file that includes additional files that depend on the type of framework\.
-+ **TensorFlow**: Neo supports saved models and frozen models\.
-
-  For *saved models*, Neo expects one \.pb or one \.pbtxt file and a variables directory that contains variables\. 
-
-  For *frozen models*, Neo expect only one \.pb or \.pbtxt file\.
-+ **PyTorch**: Neo expects one \.pth file containing the model definition\.
-+ **MXNET**: Neo expects one symbol file \(\.json\) and one parameter file \(\.params\)\.
-+ **XGBoost**: Neo expects one XGBoost model file \(\.model\) where the number of nodes in a tree can't exceed 2^31\.
-+ **ONNX**: Neo expects one \.onnx file\.
-
 ***What input data shapes does Neo expect?***
 
 Neo expects the name and shape of the expected data inputs for your trained model with a JSON dictionary form or list form\. The data inputs are framework specific\. 
@@ -130,6 +21,13 @@ Neo expects the name and shape of the expected data inputs for your trained mode
   + Examples for two inputs:
     + If using the console, `{"data1": [1,28,28,1], "data2":[1,28,28,1]}`
     + If using the CLI, `{\"data1\": [1,28,28,1], \"data2\":[1,28,28,1]}`
++ `KERAS`: You must specify the name and shape \(NCHW format\) of expected data inputs using a dictionary format for your trained model\. Note that while Keras model artifacts should be uploaded in NHWC \(channel\-last\) format, `DataInputConfig` should be specified in NCHW \(channel\-first\) format\. The dictionary formats required for the console and CLI are different\.
+  + Examples for one input:
+    + If using the console, `{"input_1":[1,3,224,224]}`
+    + If using the CLI, `{\"input_1\":[1,3,224,224]}`
+  + Examples for two inputs:
+    + If using the console, `{"input_1": [1,3,224,224], "input_2":[1,3,224,224]} `
+    + If using the CLI, `{\"input_1\": [1,3,224,224], \"input_2\":[1,3,224,224]}`
 + `MXNET/ONNX`: You must specify the name and shape \(NCHW format\) of the expected data inputs in order using a dictionary format for your trained model\. The dictionary formats required for the console and CLI are different\.
   + Examples for one input:
     + If using the console, `{"data":[1,3,1024,1024]}`

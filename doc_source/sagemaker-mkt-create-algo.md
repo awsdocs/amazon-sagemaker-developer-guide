@@ -72,18 +72,18 @@ You can create an algorithm by using either the Amazon SageMaker console or the 
 
       ```
       {
-      		"DefaultValue": "5",
-      		"Description": "The first hyperparameter",
-      		"IsRequired": true,
-      		"IsTunable": false,
-      		"Name": "intRange",
-      		"Range": {
-      			"IntegerParameterRangeSpecification": {
-      				"MaxValue": "10",
-      				"MinValue": "1"
-      			}
-      		},
-      		"Type": "Integer"
+      "DefaultValue": "5",
+      "Description": "The first hyperparameter",
+      "IsRequired": true,
+      "IsTunable": false,
+      "Name": "intRange",
+      "Range": {
+      "IntegerParameterRangeSpecification": {
+      "MaxValue": "10",
+      "MinValue": "1"
+      },
+      "Type": "Integer"
+      }
       ```
 
       In the JSON, supply the following:
@@ -94,7 +94,7 @@ You can create an algorithm by using either the Amazon SageMaker console or the 
 
       1. For `IsRequired`, specify whether the hyperparameter is required\.
 
-      1. For `IsTunable`, specify `true` if this hyperparameter can be tuned when a user runs a hyperparameter tuning job that uses this algorithm\. For information, see [Automatic Model Tuning](automatic-model-tuning.md)\.
+      1. For `IsTunable`, specify `true` if this hyperparameter can be tuned when a user runs a hyperparameter tuning job that uses this algorithm\. For information, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
 
       1. For `Name`, specify a name for the hyperparameter\.
 
@@ -111,7 +111,7 @@ You can create an algorithm by using either the Amazon SageMaker console or the 
 
       1. For `Regex`, type the regular expression that Amazon SageMaker uses to parse training logs so that it can find the metric value\.
 
-      1. For **Objective metric support** choose **Yes** if this metric can be used as the objective metric for a hyperparameter tuning job\. For information, see [Automatic Model Tuning](automatic-model-tuning.md)\.
+      1. For **Objective metric support** choose **Yes** if this metric can be used as the objective metric for a hyperparameter tuning job\. For information, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
 
       1. Choose **Add metric** to add another metric, or choose **Next** if you are done adding metrics\.
 
@@ -143,11 +143,11 @@ To publish your algorithm on AWS Marketplace, your algorithm must be validated\.
 
    1. For **Validation profile**, specify the following:
       + A name for the validation profile\.
-      + A **Training job definition**\. This is a JSON block that describes a training job\. This is in the same format as the [TrainingJobDefinition](API_TrainingJobDefinition.md) input parameter of the [CreateAlgorithm](API_CreateAlgorithm.md) API\.
-      + A **Transform job definition**\. This is a JSON block that describes a batch transform job\. This is in the same format as the [TransformJobDefinition](API_TransformJobDefinition.md)input parameter of the [CreateAlgorithm](API_CreateAlgorithm.md) API\.
+      + A **Training job definition**\. This is a JSON block that describes a training job\. This is in the same format as the [ `TrainingJobDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TrainingJobDefinition.html) input parameter of the [ `CreateAlgorithm`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAlgorithm.html) API\.
+      + A **Transform job definition**\. This is a JSON block that describes a batch transform job\. This is in the same format as the [ `TransformJobDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformJobDefinition.html) input parameter of the [ `CreateAlgorithm`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAlgorithm.html) API\.
 
    1. Choose **Create algorithm**\.
 
 ## Create an Algorithm Resource \(API\)<a name="sagemaker-mkt-create-algo-api"></a>
 
-To create an algorithm resource by using the Amazon SageMaker API, call the [CreateAlgorithm](API_CreateAlgorithm.md) API\. 
+To create an algorithm resource by using the Amazon SageMaker API, call the [ `CreateAlgorithm`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAlgorithm.html) API\. 

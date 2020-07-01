@@ -58,8 +58,8 @@ If the model is conditioned on the `cat` and `dynamic_feat` feature data provide
 At inference time, you can request predictions for targets with `cat` values that are combinations of the `cat` values observed in the training data, for example:
 
 ```
-{ "start": ..., "target": ..., "cat": [0, 1], ... } # red dress
-{ "start": ..., "target": ..., "cat": [1, 0], ... } # blue dress
+{ "start": ..., "target": ..., "cat": [0, 1], ... } # blue shoes
+{ "start": ..., "target": ..., "cat": [1, 0], ... } # red dress
 ```
 
 The following guidelines apply to training data:
@@ -98,7 +98,7 @@ When preparing your time series data, follow these best practices to achieve the
 
 ## EC2 Instance Recommendations for the DeepAR Algorithm<a name="deepar-instances"></a>
 
-You can train DeepAR on both GPU and CPU instances and in both single and multi\-machine settings\. We recommend starting with a single CPU instance \(for example, ml\.c4\.xlarge or ml\.c4\.2xlarge\), and switching to GPU instances and multiple machines only when necessary\. Using GPUs and multiple machines improves throughput only for larger models \(with many cells per layer and many layers\) and for large mini\-batch sizes \(for example, greater than 512\)\.
+You can train DeepAR on both GPU and CPU instances and in both single and multi\-machine settings\. We recommend starting with a single CPU instance \(for example, ml\.c4\.2xlarge or ml\.c4\.4xlarge\), and switching to GPU instances and multiple machines only when necessary\. Using GPUs and multiple machines improves throughput only for larger models \(with many cells per layer and many layers\) and for large mini\-batch sizes \(for example, greater than 512\)\.
 
 For inference, DeepAR supports only CPU instances\.
 
@@ -106,4 +106,4 @@ Specifying large values for `context_length`, `prediction_length`, `num_cells`, 
 
 ## DeepAR Sample Notebooks<a name="deepar-sample-notebooks"></a>
 
-For a sample notebook that shows how to prepare a time series dataset for training the Amazon SageMaker DeepAR algorithm and how to deploy the trained model for performing inferences, see [Time series forecasting with DeepAR \- Synthetic data](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/deepar_synthetic/deepar_synthetic.ipynb) as well as [DeepAR demo on electricity dataset](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/deepar_electricity/DeepAR-Electricity.ipynb), which illustrates the advanced features of DeepAR on a real world dataset\. For instructions on creating and accessing Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Notebook Instances](nbi.md)\. After creating and opening a notebook instance, choose the **SageMaker Examples** tab to see a list of all of the Amazon SageMaker examples\. To open a notebook, choose its **Use** tab, and choose **Create copy**\.
+For a sample notebook that shows how to prepare a time series dataset for training the Amazon SageMaker DeepAR algorithm and how to deploy the trained model for performing inferences, see [Time series forecasting with DeepAR \- Synthetic data](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/deepar_synthetic/deepar_synthetic.ipynb) as well as [DeepAR demo on electricity dataset](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/deepar_electricity/DeepAR-Electricity.ipynb), which illustrates the advanced features of DeepAR on a real world dataset\. For instructions on creating and accessing Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. After creating and opening a notebook instance, choose the **SageMaker Examples** tab to see a list of all of the Amazon SageMaker examples\. To open a notebook, choose its **Use** tab, and choose **Create copy**\.

@@ -15,7 +15,7 @@ The difficulty of a hyperparameter tuning job depends primarily on the number of
 
 ## Choosing Hyperparameter Ranges<a name="automatic-model-tuning-choosing-ranges"></a>
 
-The ranges for hyperparameters that you choose to search can significantly affect the success of hyperparameter optimization\. Although you might want to specify a very large range that covers every possible value, you will get better results by limiting your search to a small range where all possible values in the range are reasonable\. If you get the best metric values within a part of a range, consider limiting the range to that part\.
+The range of values for hyperparameters that you choose to search can significantly affect the success of hyperparameter optimization\. Although you might want to specify a very large range that covers every possible value for a hyperparameter, you will get better results by limiting your search to a small range of values\. If you get the best metric values within a part of a range, consider limiting the range to that part\.
 
 ## Using Logarithmic Scales for Hyperparameters<a name="automatic-model-tuning-log-scales"></a>
 
@@ -27,4 +27,4 @@ Running more hyperparameter tuning jobs concurrently gets more work done quickly
 
 ## Running Training Jobs on Multiple Instances<a name="automatic-model-tuning-distributed-metrics"></a>
 
-When a training job runs on multiple instances, hyperparameter tuning uses the last\-reported objective metric from all instances of that training job\. Design distributed training jobs so that you get the metric report you want\.
+When a training job runs on multiple instances, hyperparameter tuning uses the last\-reported objective metric value from all instances of that training job as the value of the objective metric for that training job\. Design distributed training jobs so that the objective metric reported is the one that you want\.

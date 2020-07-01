@@ -1,17 +1,20 @@
 # Create a Pipeline Model<a name="inference-pipeline-create-console"></a>
 
-You can create a pipeline model that can be deployed to an endpoint or for a transform job with the Amazon SageMaker console\. 
+To create a pipeline model that can be deployed to an endpoint or used for a batch transform job, use the Amazon SageMaker console or the `CreateModel` operation\. 
 
-Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)
+**To create an inference pipeline \(console\)**
 
-Choose **Models**, and then choose **Create models** from the **Inference** group\. On the **Create model** page, complete the **Model name**, **IAM role**, and, if needed, **VPC** fields\. 
+1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-![\[An image of the Create model UI for an Inference Pipeline.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/create-pipeline-model.png)
+1. Choose **Models**, and then choose **Create models** from the **Inference** group\. 
 
-To add information about the remaining containers in the inference pipeline, choose **Add container**, then choose **Next**\. Specify each of the containers to be added to the Amazon SageMaker inference pipeline\. We support up to five containers in a pipeline\. They must be listed in the order of execution\. Complete the **Container input options**, , **Location of inference code image**, and, optionally, **Location of model artifacts**, **Container host name**, and **Environmental variables** fields\. Confirm that the information for the containers is accurate, and then choose **Create model**\.
+1. On the **Create model** page, provide a model name, choose an IAM role, and, if you want to use a private VPC, specify VPC values\.   
+![\[The page for creating a model for an Inference Pipeline.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/create-pipeline-model.png)
 
-![\[An image of the Create model UI for Containers of an Inference Pipeline.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/create-pipeline-model-containers.png)
+1. To add information about the containers in the inference pipeline, choose **Add container**, then choose **Next**\.
 
-The **MyInferencePipelineModel** page summarizes the model input\. If you provide the environment variables in a corresponding container definition, Amazon SageMaker shows them in **Environment variables**\.
+1. Complete the fields for each container in the order that you want to execute them, up to the maximum of five\. Complete the **Container input options**, , **Location of inference code image**, and, optionally, **Location of model artifacts**, **Container host name**, and **Environmental variables** fields\. \.  
+![\[Creating a pipeline model with containers.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/create-pipeline-model-containers.png)
 
-![\[An image of the pipeline model inputs summary UI.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pipeline-MyInferencePipelinesModel-recap.png)
+   The **MyInferencePipelineModel** page summarizes the settings for the containers that provide input for the model\. If you provided the environment variables in a corresponding container definition, Amazon SageMaker shows them in the **Environment variables** field\.  
+![\[The summary of container settings for the pipeline model.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pipeline-MyInferencePipelinesModel-recap.png)

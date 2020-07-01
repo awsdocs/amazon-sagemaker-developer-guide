@@ -53,7 +53,7 @@ let response =   {
 **Multiclass Classification**
 
 ```
-{"score": 0.4, "predicted_label": 0}
+{"score": [0.1, 0.2, 0.4, 0.3], "predicted_label": 2}
 ```
 
 **Regression**
@@ -71,7 +71,7 @@ let response =   {
     Record = {
         features = {},
         label = {
-            'score’: {
+            'score': {
                 keys: [],
                 values: [0.4]  # float32
             },
@@ -111,7 +111,7 @@ let response =   {
     Record = {
         features = {},
         label = {
-            'score’: {
+            'score': {
                 keys: [],
                 values: [0.4]  # float32
             }   
