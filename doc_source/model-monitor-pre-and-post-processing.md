@@ -12,7 +12,7 @@ You can extend the code with the post processing script by following this contra
 
 ```
 def postprocess_handler():
-print("Hello from post-proc script!")
+    print("Hello from post-proc script!")
 ```
 
 Specify it as a path in Amazon Simple Storage Service \(Amazon S3\) in the `CreateMonitoringSchedule` request\.
