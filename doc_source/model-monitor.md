@@ -23,7 +23,8 @@ To enable model monitoring, you take the following steps, which follow the path 
 + **[Interpret Results](model-monitor-interpreting-results.md)**: Inspect the reports, which compare the latest data with the baseline, and watch for any violations reported and for metrics and notifications from Amazon CloudWatch\.
 
 **Note**  
-Amazon SageMaker Model Monitor currently supports only endpoints that host a single model and does not support monitoring multi\-model endpoints\. For information on using multi\-model endpoints, see [ Host Multiple Models with Multi\-Model Endpoints](multi-model-endpoints.md) \.
+Amazon SageMaker Model Monitor currently supports only endpoints that host a single model and does not support monitoring multi\-model endpoints\. For information on using multi\-model endpoints, see [ Host Multiple Models with Multi\-Model Endpoints](multi-model-endpoints.md) \.  
+Amazon SageMaker Model Monitor does support monitoring inference pipelines, but capturing and analyzing data is done for the entire pipeline, not for individual containers in the pipeline\.
 
 ### Model Monitor Sample Notebooks<a name="model-monitor-sample-notebooks"></a>
 

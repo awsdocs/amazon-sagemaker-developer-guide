@@ -32,7 +32,7 @@ After you run the `DetectModerationLabels` with a human loop configured, Amazon 
 
 ## Create and Start a Human Loop for a Custom Task Type<a name="a2i-instructions-starthumanloop"></a>
 
-To configure a human loop for a custom human review task, use the `StartHumanLoop` operation within your application\. This section provides an example of a human loop request using the AWS SDK for Python \(Boto 3\) and the AWS Command Line Interface \(AWS CLI\)\. For documentation on other language specific SDK's that support `StartHumanLoop`, use the **See Also** section of [StartHumanLoop](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_StartHumanLoop.html) in the Amazon Augmented AI Runtime API documentation\. 
+To configure a human loop for a custom human review task, use the `StartHumanLoop` operation within your application\. This section provides an example of a human loop request using the AWS SDK for Python \(Boto3\) and the AWS Command Line Interface \(AWS CLI\)\. For documentation on other language specific SDK's that support `StartHumanLoop`, use the **See Also** section of [StartHumanLoop](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_StartHumanLoop.html) in the Amazon Augmented AI Runtime API documentation\. 
 
 **Prerequisites**
 
@@ -57,9 +57,9 @@ To complete this procedure, you need:
 + To start a human loop, submit a request similar to the following examples using your preferred language specific SDK\. 
 
 ------
-#### [ AWS SDK for Python \(Boto 3\) ]
+#### [ AWS SDK for Python \(Boto3\) ]
 
-The following request example uses the SDK for Python \(Boto 3\)\. For more information, see [Boto 3 Augmented AI Runtime](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker-a2i-runtime.html#AugmentedAIRuntime.Client.start_human_loop) in the *AWS SDK for Python \(Boto\) API Reference*\.
+The following request example uses the SDK for Python \(Boto3\)\. For more information, see [Boto 3 Augmented AI Runtime](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker-a2i-runtime.html#AugmentedAIRuntime.Client.start_human_loop) in the *AWS SDK for Python \(Boto\) API Reference*\.
 
 ```
 response = client.start_human_loop(

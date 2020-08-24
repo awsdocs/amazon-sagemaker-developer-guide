@@ -1,14 +1,16 @@
-# Create a Worker UI<a name="a2i-instructions-overview"></a>
+# Create and Manage Worker Task Templates<a name="a2i-instructions-overview"></a>
 
-You can create a task UI for your workers by creating a *worker task template* with detailed instructions on how to complete your task\. Depending on your task type, this can be done directly in the Amazon SageMaker console or by using a custom template\. 
-+ If you are creating a human review workflow for Amazon Textract or Amazon Rekognition tasks, follow the instructions in [Create a Flow Definition \(Console\)](a2i-create-flow-definition.md#a2i-create-human-review-console) to create your worker template using the default templates provided by Amazon A2I\.
-+ If you are adding a human review workflow to a custom task type, or want to create a custom worker UI using HTML and CSS elements:
+You can create a task UI for your workers by creating a *worker task template*\. A worker task template is an HTML file that is used to display your input data and instructions to help workers complete your task\.
 
-  1. Create a custom worker template using the instructions found in [Create Custom Worker Templates](a2i-custom-templates.md)\. 
+For Amazon Rekognition or Amazon Textract task types, you can customize a pre\-made worker task template using a graphical user interface \(GUI\) and avoid interacting with HTML code\. For this option, use the instructions in [Create a Flow Definition \(Console\)](a2i-create-flow-definition.md#a2i-create-human-review-console) to create a human review workflow and customize your worker task template in the Amazon SageMaker console\. Once you create a template using these instructions, it will appear on the Worker task templates page of the [Augmented AI console](https://console.aws.amazon.com/a2i/)\.
 
-  1. Generate an Amazon Resource Name \(ARN\) to use this template in your flow definition\. Generate a worker task template ARN using the instructions found in [Create a Custom Worker Template \(Console\)](a2i-create-worker-template-console.md) or by using the [ `CreateHumanTaskUi`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHumanTaskUi.html) API operation\. 
+If you are creating a human review workflow for a custom task type, you must create a *custom worker task template* using HTML code\. For more information, see [Create Custom Worker Task Template](a2i-custom-templates.md)\. 
+
+If you create your template using HTML, you must use this template to generate an Amazon A2I *human task UI Amazon Resource Name \(ARN\)* in the Amazon A2I console\. This ARN has the following format: `arn:aws:sagemaker:<aws-region>:<aws-account-number>:human-task-ui/<template-name>`\. This ARN is associated with a worker task template resource that you can use in one or more human review workflows \(flow definitions\)\.
+
+Generate a human task UI ARN using a worker task template by following the instructions found in [Create a Worker Task Template](a2i-worker-template-console.md#a2i-create-worker-template-console) or by using the [ `CreateHumanTaskUi`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHumanTaskUi.html) API operation\.
 
 **Topics**
-+ [Create a Custom Worker Template \(Console\)](a2i-create-worker-template-console.md)
-+ [Create Custom Worker Templates](a2i-custom-templates.md)
++ [Create and Delete a Worker Task Templates](a2i-worker-template-console.md)
++ [Create Custom Worker Task Template](a2i-custom-templates.md)
 + [Creating Good Worker Instructions](a2i-creating-good-instructions-guide.md)

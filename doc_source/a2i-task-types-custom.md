@@ -9,9 +9,9 @@ You can use Amazon Augmented AI \(Amazon A2I\) to incorporate a human review \(h
    + The Amazon Resource Name \(ARN\) of an AWS Identity and Access Management \(IAM\) role with required permissions attached\. 
    + \(Optional\) If you plan to use a private workforce, the ARN of your workforce\. 
 
-1. Using HTML elements, create a custom worker template which Amazon A2I uses to generate your worker task UI\. To learn how to create a custom template, see [Create Custom Worker Templates](a2i-custom-templates.md)\. 
+1. Using HTML elements, create a custom worker template which Amazon A2I uses to generate your worker task UI\. To learn how to create a custom template, see [Create Custom Worker Task Template](a2i-custom-templates.md)\. 
 
-1. Use the custom worker template from Step 2 to generate a worker task template in the Amazon SageMaker console\. To learn how, see [Create a Custom Worker Template \(Console\)](a2i-create-worker-template-console.md)\.
+1. Use the custom worker template from Step 2 to generate a worker task template in the Amazon SageMaker console\. To learn how, see [Create a Worker Task Template](a2i-worker-template-console.md#a2i-create-worker-template-console)\.
 
    In the next Step you will create a flow definition:
    + If you want to create a flow definition using the Amazon SageMaker API, note the ARN of this worker task template for the next step\.

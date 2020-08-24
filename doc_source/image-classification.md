@@ -10,7 +10,7 @@ To maintain better interoperability with existing deep learning frameworks, this
 For more information on convolutional networks, see: 
 + [Deep residual learning for image recognition](https://arxiv.org/abs/1512.03385) Kaiming He, et al\., 2016 IEEE Conference on Computer Vision and Pattern Recognition
 + [ImageNet image database](http://www.image-net.org/)
-+ [Image classification in MXNet](https://github.com/apache/incubator-mxnet/tree/master/example/image-classification)
++ [Image classification with Gluon\-CV and MXNet](https://gluon-cv.mxnet.io/build/examples_classification/index.html)
 
 **Topics**
 + [Input/Output Interface for the Image Classification Algorithm](#IC-inputoutput)
@@ -56,7 +56,7 @@ For example, if your training images are stored in `s3://<your_bucket>/train/cla
 The augmented manifest format enables you to do training in Pipe mode using image files without needing to create RecordIO files\. You need to specify both train and validation channels as values for the `InputDataConfig` parameter of the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) request\. While using the format, an S3 manifest file needs to be generated that contains the list of images and their corresponding annotations\. The manifest file format should be in [JSON Lines](http://jsonlines.org/) format in which each line represents one sample\. The images are specified using the `'source-ref'` tag that points to the S3 location of the image\. The annotations are provided under the `"AttributeNames"` parameter value as specified in the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) request\. It can also contain additional metadata under the `metadata` tag, but these are ignored by the algorithm\. In the following example, the `"AttributeNames"` are contained in the list of image and annotation references `["source-ref", "class"]`\. The corresponding label value is `"0"` for the first image and `“1”` for the second image:
 
 ```
-{"source-ref":"s3://image/filename1.jpg", "class":"0"} 
+{"source-ref":"s3://image/filename1.jpg", "class":"0"}
 {"source-ref":"s3://image/filename2.jpg", "class":"1", "class-metadata": {"class-name": "cat", "type" : "groundtruth/image-classification"}}
 ```
 
@@ -90,13 +90,13 @@ To use a pretrained model, in the [ `CreateTrainingJob`](https://docs.aws.amazon
 
 For a sample notebook that shows how to use incremental training with the Amazon SageMaker image classification algorithm, see the [End\-to\-End Incremental Training Image Classification Example](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-incremental-training-highlevel.ipynb)\. For more information on incremental training and for instructions on how to use it, see [Incremental Training in Amazon SageMaker](incremental-training.md)\. 
 
-### Inference with the Image Format Algorithm<a name="IC-inference"></a>
+### Inference with the Image Classification Algorithm<a name="IC-inference"></a>
 
-The generated models can be hosted for inference and support encoded `.jpg` and `.png` image formats as `image/png, image/jpeg`, and `application/x-image` content\-type\. The output is the probability values for all classes encoded in JSON format, or in [JSON Lines text format](http://jsonlines.org/) for batch transform\. The image classification model processes a single image per request and so outputs only one line in the JSON or JSON Lines format\. The following is an example of a response in JSON Lines format:
+The generated models can be hosted for inference and support encoded `.jpg` and `.png` image formats as `image/png, image/jpeg`, and `application/x-image` content\-type\. The input image is resized automatically\. The output is the probability values for all classes encoded in JSON format, or in [JSON Lines text format](http://jsonlines.org/) for batch transform\. The image classification model processes a single image per request and so outputs only one line in the JSON or JSON Lines format\. The following is an example of a response in JSON Lines format:
 
 ```
 accept: application/jsonlines
- 
+
  {"prediction": [prob_0, prob_1, prob_2, prob_3, ...]}
 ```
 

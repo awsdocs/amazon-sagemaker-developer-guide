@@ -1,10 +1,13 @@
 # Process Data and Evaluate Models<a name="processing-job"></a>
 
-To analyze data and evaluate machine learning models on the Amazon SageMaker, use Amazon SageMaker Processing\. With Processing, you can use a simplified, managed experience on Amazon SageMaker to run your data processing workloads, such as feature engineering, data validation, model evaluation, and model interpretation\. You can also use the Amazon SageMaker Processing APIs during the experimentation phase and after the code is deployed in production to evaluate performance\. 
-
-To process and evaluate data, you run an Amazon SageMaker Processing job\. Your data must be stored in Amazon Simple Storage Service \(Amazon S3\) Processing saves the processed data in Amazon S3\.
+To analyze data and evaluate machine learning models on Amazon SageMaker, use Amazon SageMaker Processing\. With Processing, you can use a simplified, managed experience on Amazon SageMaker to run your data processing workloads, such as feature engineering, data validation, model evaluation, and model interpretation\. You can also use the Amazon SageMaker Processing APIs during the experimentation phase and after the code is deployed in production to evaluate performance\. 
 
 ![\[Running a processing job.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/Processing-1.png)
+
+The preceding diagram shows how Amazon SageMaker spins up a Processing job\. Amazon SageMaker takes your script, copies your data from Amazon Simple Storage Service \(Amazon S3\), and then pulls a processing container\. The processing container image can either be an Amazon SageMaker built\-in image or a custom image that you provide\. The underlying infrastructure for a Processing job is fully managed by Amazon SageMaker\. Cluster resources are provisioned for the duration of your job, and cleaned up when a job completes\. The output of the Processing job is stored in the Amazon S3 bucket you specified\. 
+
+**Note**  
+Your data must be stored in an Amazon S3 bucket\.
 
 **Topics**
 + [Use Amazon SageMaker Processing Sample Notebooks](#processing-job-sample-notebooks)

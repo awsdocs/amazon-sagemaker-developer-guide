@@ -15,7 +15,7 @@ The following sample notebooks show how to view and plot training metrics:
 + [ An Introduction to the Amazon SageMaker ObjectToVec Model for Sequence\-to\-sequence Embedding \(object2vec\_sentence\_similarity\.ipynb\)](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/object2vec_sentence_similarity/object2vec_sentence_similarity.ipynb)
 + [Regression with the Amazon SageMaker XGBoost Algorithm \(xgboost\_abalone\.ipynb\)](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_abalone.ipynb)
 
-For instructions how to create and access Jupyter notebook instances that you can use to run the examples in Amazon SageMaker, see [Use Example Notebooks](howitworks-nbexamples.md)\. To see a list of all the Amazon SageMaker samples, after creating and opening a notebook instance, choose the **SageMaker Examples** tab\. To access the example notebooks that show how to use training metrics, `object2vec_sentence_similarity.ipynb` and ` xgboost_abalone.ipynb`\., from the **Introduction to Amazon algorithms** section\. To open a notebook, choose its **Use** tab, then choose **Create copy**\.
+For instructions how to create and access Jupyter notebook instances that you can use to run the examples in Amazon SageMaker, see [Example Notebooks](howitworks-nbexamples.md)\. To see a list of all the Amazon SageMaker samples, after creating and opening a notebook instance, choose the **SageMaker Examples** tab\. To access the example notebooks that show how to use training metrics, `object2vec_sentence_similarity.ipynb` and ` xgboost_abalone.ipynb`\., from the **Introduction to Amazon algorithms** section\. To open a notebook, choose its **Use** tab, then choose **Create copy**\.
 
 ## Defining Training Metrics<a name="define-train-metrics"></a>
 
@@ -83,7 +83,7 @@ Define the metrics that you want to send to CloudWatch by specifying a list of m
     ]}
 ```
 
-For more information about defining and running a training job by using the low\-level Amazon SageMaker API, see [Create and Run a Training Job \(AWS SDK for Python \(Boto 3\)\)](ex1-train-model.md#ex1-train-model-create-training-job)\.
+For more information about defining and running a training job by using the low\-level Amazon SageMaker API, see [Create and Run a Training Job \(AWS SDK for Python \(Boto3\)\)](ex1-train-model.md#ex1-train-model-create-training-job)\.
 
 ### Defining Training Metrics \(Amazon SageMaker Python SDK\)<a name="define-train-metrics-sdk"></a>
 

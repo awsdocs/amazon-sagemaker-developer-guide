@@ -17,7 +17,7 @@ Amazon A2I makes it easy to build and manage human reviews for machine learning 
 + [Create a Flow Definition](a2i-create-flow-definition.md)
 + [Delete a Flow Definition](a2i-delete-flow-definition.md)
 + [Create and Start a Human Loop](a2i-start-human-loop.md)
-+ [Create a Worker UI](a2i-instructions-overview.md)
++ [Create and Manage Worker Task Templates](a2i-instructions-overview.md)
 + [Monitor and Manage Your Human Loop](a2i-monitor-humanloop-results.md)
 + [Permissions and Security in Amazon Augmented AI](a2i-permissions-security.md)
 + [Use Amazon CloudWatch Events in Amazon Augmented AI](a2i-cloudwatch-events.md)

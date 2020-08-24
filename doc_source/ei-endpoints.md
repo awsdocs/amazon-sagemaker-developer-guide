@@ -3,7 +3,7 @@
 To use Elastic Inference \(EI\) in Amazon SageMaker with a hosted endpoint for real\-time inference, specify an EI accelerator when you create the deployable model to be hosted at that endpoint\. You can do this in one of the following ways:
 + Use the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) versions of either the TensorFlow, MXNet, or PyTorch and the Amazon SageMaker pre\-built containers for TensorFlow, MXNet, and PyTorch
 + Build your own container, and use the low\-level Amazon SageMaker API \(Boto 3\)\. You will need to import the EI\-enabled version of either TensorFlow, MXNet, or PyTorch from the provided Amazon S3 locations into your container, and use one of those versions to write your training script\.
-+ Use either the [Image Classification Algorithm](image-classification.md) or [Object Detection Algorithm](object-detection.md) build\-in algorithms, and use the AWS SDK for Python \(Boto 3\) to run your training job and create your deployable model and hosted endpoint\.
++ Use either the [Image Classification Algorithm](image-classification.md) or [Object Detection Algorithm](object-detection.md) build\-in algorithms, and use the AWS SDK for Python \(Boto3\) to run your training job and create your deployable model and hosted endpoint\.
 
 **Topics**
 + [Use EI with an Amazon SageMaker TensorFlow Container](#ei-endpoints-tensorflow)
@@ -13,7 +13,7 @@ To use Elastic Inference \(EI\) in Amazon SageMaker with a hosted endpoint for r
 
 ## Use EI with an Amazon SageMaker TensorFlow Container<a name="ei-endpoints-tensorflow"></a>
 
-To use TensorFlow with EI in Amazon SageMaker, you need to call the `deploy` method of either the [Estimator](https://sagemaker.readthedocs.io/en/stable/sagemaker.tensorflow.html#tensorflow-estimator) or [Model](https://sagemaker.readthedocs.io/en/stable/sagemaker.tensorflow.html#tensorflow-model) objects\. You then specify an accelerator type using the accelerator\_type input argument\. For information on using TensorFlow in the Amazon SageMaker Python SDK, see: [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/tensorflow/README\.rst](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/tensorflow/README.rst)\.
+To use TensorFlow with EI in Amazon SageMaker, you need to call the `deploy` method of either the [Estimator](https://sagemaker.readthedocs.io/en/stable/sagemaker.tensorflow.html#tensorflow-estimator) or [Model](https://sagemaker.readthedocs.io/en/stable/sagemaker.tensorflow.html#tensorflow-model) objects\. You then specify an accelerator type using the accelerator\_type input argument\. For information on using TensorFlow in the Amazon SageMaker Python SDK, see: [https://sagemaker\.readthedocs\.io/en/stable/frameworks/tensorflow/index\.html](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/index.html)\.
 
 Amazon SageMaker provides default model training and inference code for your convenience\. For custom file formats, you might need to implement custom model training and inference code\.
 
@@ -41,7 +41,7 @@ predictor = model.deploy(initial_instance_count=1,
 
 ## Use EI with an Amazon SageMaker MXNet Container<a name="ei-endpoints-mxnet"></a>
 
-To use MXNet with EI in Amazon SageMaker, you need to call the `deploy` method of either the [Estimator](https://sagemaker.readthedocs.io/en/stable/sagemaker.mxnet.html#mxnet-estimator) or [Model](https://sagemaker.readthedocs.io/en/stable/sagemaker.mxnet.html#mxnet-model) objects\. You then specify an accelerator type using the `accelerator_type` input argument\. For information about using MXNet in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), see [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/mxnet/README\.rst](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/mxnet/README.rst)
+To use MXNet with EI in Amazon SageMaker, you need to call the `deploy` method of either the [Estimator](https://sagemaker.readthedocs.io/en/stable/sagemaker.mxnet.html#mxnet-estimator) or [Model](https://sagemaker.readthedocs.io/en/stable/sagemaker.mxnet.html#mxnet-model) objects\. You then specify an accelerator type using the `accelerator_type` input argument\. For information about using MXNet in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), see [https://sagemaker\.readthedocs\.io/en/stable/frameworks/mxnet/index\.html](https://sagemaker.readthedocs.io/en/stable/frameworks/mxnet/index.html)
 
 For your convenience, Amazon SageMaker provides default model training and inference code\. For custom file formats, you might need to write custom model training and inference code\.
 
@@ -71,7 +71,7 @@ For a complete example of using EI with MXNet in Amazon SageMaker, see the sampl
 
 ## Use EI with an Amazon SageMaker PyTorch Container<a name="ei-endpoints-pytorch"></a>
 
-To use PyTorch with EI in Amazon SageMaker, you need to call the `deploy` method of either the [Estimator](https://sagemaker.readthedocs.io/en/stable/sagemaker.pytorch.html#pytorch-estimator) or [Model](https://sagemaker.readthedocs.io/en/stable/sagemaker.pytorch.html#pytorch-model) objects\. You then specify an accelerator type using the `accelerator_type` input argument\. For information about using PyTorch in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), see [SageMaker PyTorch Estimators and Models](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/pytorch/README.rst)\.
+To use PyTorch with EI in Amazon SageMaker, you need to call the `deploy` method of either the [Estimator](https://sagemaker.readthedocs.io/en/stable/sagemaker.pytorch.html#pytorch-estimator) or [Model](https://sagemaker.readthedocs.io/en/stable/sagemaker.pytorch.html#pytorch-model) objects\. You then specify an accelerator type using the `accelerator_type` input argument\. For information about using PyTorch in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), see [SageMaker PyTorch Estimators and Models](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/index.html)\.
 
 For your convenience, Amazon SageMaker provides default model training and inference code\. For custom file formats, you might need to write custom model training and inference code\.
 

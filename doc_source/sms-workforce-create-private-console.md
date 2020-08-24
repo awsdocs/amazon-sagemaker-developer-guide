@@ -1,14 +1,16 @@
-# Create a Private Workforce \(Console\)<a name="sms-workforce-create-private-console"></a>
+# Create a Private Workforce \(Amazon SageMaker Console\)<a name="sms-workforce-create-private-console"></a>
 
  You can create a private workforce in the Amazon SageMaker console in one of two ways:
-+ When creating a labeling job in the **Labeling jobs** page of the Amazon SageMaker Ground Truth section
++ When creating a labeling job in the **Labeling jobs** page of the Amazon SageMaker Ground Truth section\.
 + Using the **Labeling workforces** page of the Amazon SageMaker Ground Truth section\. If you are creating a private workforce for an Amazon A2I human review workflow, use this method\.
 
-Both of these methods also create a default work team containing all of the members of the workforce\.  This private workforce will be available to use for both Ground Truth and Amazon Augmented AI jobs\. 
+Both of these methods also create a default work team containing all of the members of the workforce\. This private workforce is available to use for both Ground Truth and Amazon Augmented AI jobs\. 
 
-## Create a Workforce When Creating a Labeling Job<a name="create-workforce-labeling-job"></a>
+When you create a private workforce using the console, Amazon SageMaker uses Amazon Cognito as an identity provider for your workforce\. If you want to use your own OpenID Connect \(OIDC\) Identity Provider \(IdP\) to create and manage your private workforce, you must create a workforce using the Amazon SageMaker API operation `CreateWorkforce`\. To learn more, see [Create a Private Workforce \(OIDC IdP\)](sms-workforce-create-private-oidc.md)\. 
 
-If you haven't created a private workforce when you create your labeling job, you are prompted to create one\. 
+## Create an Amazon Cognito Workforce When Creating a Labeling Job<a name="create-workforce-labeling-job"></a>
+
+If you haven't created a private workforce when you create your labeling job and you choose to use private workers, you are prompted to create a work team\. This will create a private workforce using Amazon Cognito\.
 
 **To create a workforce while creating a labeling job \(console\)**
 
@@ -18,7 +20,7 @@ If you haven't created a private workforce when you create your labeling job, yo
 
 1. Choose **Private** for the workforce type\. 
 
-1. In the **Workers** section, Enter:
+1. In the **Workers** section, enter:
 
    1. The **Team name**\. 
 
@@ -30,9 +32,9 @@ If you haven't created a private workforce when you create your labeling job, yo
 
 When you create the labeling job, an email is sent to each worker inviting them to join the workforce\. After creating the workforce, you can add, delete, and disable workers using the Amazon SageMaker console or the Amazon Cognito console\. 
 
-## Create a Workforce Using the Labeling Workforces Page<a name="create-workforce-sm-console"></a>
+## Create an Amazon Cognito Workforce Using the Labeling Workforces Page<a name="create-workforce-sm-console"></a>
 
-To create and manage your private workforce, you can use the **Labeling workforces** page\. When following the instructions below, you will have the option to create a private workforce by entering worker emails or importing a pre\-existing workforce from an Amazon Cognito user pool\. To import a workforce, see [Create a Private Workforce \(Amazon Cognito Console\)](sms-workforce-create-private-cognito.md)\. 
+To create and manage your private workforce using Amazon Cognito, you can use the **Labeling workforces** page\. When following the instructions below, you have the option to create a private workforce by entering worker emails importing a pre\-existing workforce from an Amazon Cognito user pool\. To import a workforce, see [Create a Private Workforce \(Amazon Cognito Console\)](sms-workforce-create-private-cognito.md)\.
 
 **To create a private workforce using worker emails**
 
@@ -46,9 +48,9 @@ To create and manage your private workforce, you can use the **Labeling workforc
 
 1. Paste or type a list of up to 50 email addresses, separated by commas, into the email addresses box\. 
 
-1.  Enter an organization name and contact email\. 
+1. Enter an organization name and contact email\. 
 
-1. Optionally choose an SNS topic to subscribe the team to so workers are notified by email when new Ground Truth labeling jobs become available\. Amazon SNS notifications are supported by Ground Truth and are not supported by Augmented AI\. If you subscribe workers to receive SNS notifications, they will only receive notifications about Ground Truth labeling jobs\. They will not receive notifications about Augmented AI tasks\. 
+1. Optionally, choose an SNS topic to which to subscribe the team so workers are notified by email when new Ground Truth labeling jobs become available\. Amazon SNS notifications are supported by Ground Truth and are not supported by Augmented AI\. If you subscribe workers to receive SNS notifications, they only receive notifications about Ground Truth labeling jobs\. They do not receive notifications about Augmented AI tasks\. 
 
 1.  Click the **Create private team** button\. 
 

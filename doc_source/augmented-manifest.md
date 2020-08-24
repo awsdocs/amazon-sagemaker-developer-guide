@@ -1,6 +1,6 @@
 # Provide Dataset Metadata to Training Jobs with an Augmented Manifest File<a name="augmented-manifest"></a>
 
-To classify data into different groupings, you train a model by using a dataset and metadata that act as labels\. To include metadata with your dataset in a training job, use an augmented manifest file\. When using an augmented manifest file, your dataset must be stored in Amazon Simple Storage Service \(Amazon S3\) and you must configure your training job to use dataset stored there\. You specify the location and format of this dataset for one or more [ `Channel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Channel.html)\. Augmented manifests can only support Pipe input mode\. See the section, **InputMode** in [ `Channel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Channel.html) to learn more about pipe input mode\. 
+To include metadata with your dataset in a training job, use an augmented manifest file\. When using an augmented manifest file, your dataset must be stored in Amazon Simple Storage Service \(Amazon S3\) and you must configure your training job to use dataset stored there\. You specify the location and format of this dataset for one or more [ `Channel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Channel.html)\. Augmented manifests can only support Pipe input mode\. See the section, **InputMode** in [ `Channel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Channel.html) to learn more about pipe input mode\. 
 
 When specifying a channel's parameters, you specify a path to the file, called a `S3Uri`\. Amazon SageMaker interprets this URI based on the specified `S3DataType` in [ `S3DataSource`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_S3DataSource.html)\. The `AugmentedManifestFile` option defines a manifest format that includes metadata with the input data\. Using an augmented manifest file is an alternative to preprocessing when you have labeled data\. For training jobs using labeled data, you typically need to preprocess the dataset to combine input data with metadata before training\. If your training dataset is large, preprocessing can be time consuming and expensive\.
 
@@ -38,13 +38,15 @@ To create an augmented manifest file, use Amazon SageMaker Ground Truth to creat
 
 ## Stream Augmented Manifest File Data<a name="augmented-manifest-stream"></a>
 
-Augmented manifest files are supported only for channels using Pipe input mode\. For each channel, the data is extracted from its augmented manifest file and streamed \(in order\) to the algorithm through the channel's named pipe\. Pipe mode uses the first in first out \(FIFO\) method, so records are processed in the order in which they are queued\. For information about Pipe input mode, see [ `Input Mode`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Channel.html#SageMaker-Type-Channel-InputMode)\.
+Augmented manifest format enables you to do training in Pipe mode using files without needing to create RecordIO files\. You need to specify both train and validation channels as values for the `InputDataConfig` parameter of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) request\. Augmented manifest files are supported only for channels using Pipe input mode\. For each channel, the data is extracted from its augmented manifest file and streamed \(in order\) to the algorithm through the channel's named pipe\. Pipe mode uses the first in first out \(FIFO\) method, so records are processed in the order in which they are queued\. For information about Pipe input mode, see [ `Input Mode`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Channel.html#SageMaker-Type-Channel-InputMode)\.
 
-Attribute names with a `"-ref"` suffix point to preformatted binary data\. In some cases, the algorithm knows how to parse the data\. In other cases, you might need to wrap the data so that records are delimited for the algorithm\. If the algorithm is compatible with [RecordIO\-formatted data](https://mxnet.apache.org/api/architecture/note_data_loading#data-format), specifying `RecordIO` for `RecordWrapperType` solves this issue\. If the algorithm is not compatible with `RecordIO` format, specify `None` for `RecordWrapperType` and make sure that your data is parsed correctly for your algorithm\. Using the `["image-ref", "is-a-cat"]` example, if you use RecordIO wrapping, the following stream of data is sent to the queue:
+Attribute names with a `"-ref"` suffix point to preformatted binary data\. In some cases, the algorithm knows how to parse the data\. In other cases, you might need to wrap the data so that records are delimited for the algorithm\. If the algorithm is compatible with [RecordIO\-formatted data](https://mxnet.apache.org/api/architecture/note_data_loading#data-format), specifying `RecordIO` for `RecordWrapperType` solves this issue\. If the algorithm is not compatible with `RecordIO` format, specify `None` for `RecordWrapperType` and make sure that your data is parsed correctly for your algorithm\.
+
+Using the `["image-ref", "is-a-cat"]` example, if you use RecordIO wrapping, the following stream of data is sent to the queue:
 
 `recordio_formatted(s3://mybucket/foo/image1.jpg)recordio_formatted("1")recordio_formatted(s3://mybucket/bar/image2.jpg)recordio_formatted("0")`
 
-Images that aren't wrapped with RecordIO format, are streamed with the corresponding `is-a-cat` attribute value as one record\. This can cause a problem because the algorithm might not delimit the images and attributes correctly\.
+Images that are not wrapped with RecordIO format, are streamed with the corresponding `is-a-cat` attribute value as one record\. This can cause a problem because the algorithm might not delimit the images and attributes correctly\. For more information about using augmented manifest files for image classification, see [Train with Augmented Manifest Image Format](https://docs.aws.amazon.com/sagemaker/latest/dg/image-classification.html#IC-augmented-manifest-training)\.
 
 With augmented manifest files and Pipe mode in general, size limits of the EBS volume do not apply\. This includes settings that otherwise must be within the EBS volume size limit such as [ `S3DataDistributionType `](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_S3DataSource.html#SageMaker-Type-S3DataSource-S3DataDistributionType                 )\. For more information about Pipe mode and how to use it, see [Using Your Own Training Algorithms \- Input Data Configuration](your-algorithms-training-algo.html#your-algorithms-training-algo-running-container-inputdataconfig)\.
 
@@ -132,12 +134,11 @@ model = sagemaker.estimator.Estimator(training_image,
 # Create a train data channel with S3_data_type as 'AugmentedManifestFile' and attribute names.
 train_data = sagemaker.session.s3_input(your_augmented_manifest_file,
                                         distribution='FullyReplicated',
-                                        content_type='application/jpeg',
+                                        content_type='application/x-recordio',
                                         s3_data_type='AugmentedManifestFile',
                                         attribute_names=['source-ref', 'annotations'],
                                         input_mode='Pipe',
-                                        record_wrapping='RecordIO')
-
+                                        record_wrapping='RecordIO') 
 data_channels = {'train': train_data}
 
 # Train a model.

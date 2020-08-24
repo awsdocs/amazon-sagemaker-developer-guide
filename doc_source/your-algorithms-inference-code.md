@@ -8,6 +8,7 @@ This section explains how Amazon SageMaker interacts with a Docker container tha
 + [How Containers Serve Requests](#your-algorithms-inference-code-how-containe-serves-requests)
 + [How Your Container Should Respond to Inference Requests](#your-algorithms-inference-code-container-response)
 + [How Your Container Should Respond to Health Check \(Ping\) Requests](#your-algorithms-inference-algo-ping-requests)
++ [Use a Private Docker Registry for Real\-Time Inference Containers](your-algorithms-containers-inference-private.md)
 
 ## How Amazon SageMaker Runs Your Inference Image<a name="your-algorithms-inference-code-run-image"></a>
 

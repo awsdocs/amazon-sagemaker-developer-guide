@@ -1,6 +1,6 @@
-# Linear Learner Response Formats<a name="LL-in-formats"></a>
+# Linear learner response formats<a name="LL-in-formats"></a>
 
-## JSON Response Format<a name="LL-json"></a>
+## JSON response formats<a name="LL-json"></a>
 
 All Amazon SageMaker built\-in algorithms adhere to the common input inference format described in [Common Data Formats \- Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html)\. The following are the available output formats for the Amazon SageMaker linear learner algorithm\.
 
@@ -42,7 +42,7 @@ let response =   {
 }
 ```
 
-## JSONLINES Response Format<a name="LL-jsonlines"></a>
+## JSONLINES response formats<a name="LL-jsonlines"></a>
 
 **Binary Classification**
 
@@ -62,7 +62,7 @@ let response =   {
 {"score": 0.4}
 ```
 
-## RECORDIO Response Format<a name="LL-recordio"></a>
+## RECORDIO response formats<a name="LL-recordio"></a>
 
 **Binary Classification**
 

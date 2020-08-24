@@ -7,7 +7,7 @@ When tasked with a named entity recognition labeling job, workers apply your lab
 You can create a named entity recognition labeling job using the Ground Truth section of the Amazon SageMaker console or the [ `CreateLabelingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\.
 
 **Important**  
-For this task type, if you create your own manifest file, use `"source-ref"` to identify the location of text files in Amazon S3 that you want labeled\. If you provide the text that you want labeled directly in the input manifest file, use `"source"`\. For more information, see [Input Data](sms-data-input.md)\.
+If you manually create an input manifest file, use `"source"` to identify the text that you want labeled\. For more information, see [Input Data](sms-data-input.md)\.
 
 ## Create a Named Entity Recognition Labeling Job \(Console\)<a name="sms-creating-ner-console"></a>
 

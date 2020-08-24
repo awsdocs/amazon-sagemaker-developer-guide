@@ -4,7 +4,7 @@ If you deployed a model to Amazon SageMaker hosting services in [Step 6\.1: Depl
 
 **Topics**
 + [Validate a Model Deployed to Amazon SageMaker Hosting Services \(Amazon SageMaker Python SDK\)](#ex1-test-model-endpoint-sdk)
-+ [Validate a Model Deployed to Amazon SageMaker Hosting Services \(AWS SDK for Python \(Boto 3\)\)](#ex1-test-model-endpoint-boto)
++ [Validate a Model Deployed to Amazon SageMaker Hosting Services \(AWS SDK for Python \(Boto3\)\)](#ex1-test-model-endpoint-boto)
 
 ## Validate a Model Deployed to Amazon SageMaker Hosting Services \(Amazon SageMaker Python SDK\)<a name="ex1-test-model-endpoint-sdk"></a>
 
@@ -54,11 +54,11 @@ You have now trained, deployed, and validated your first model in Amazon SageMak
 **Next Step**  
 [Step 9: Clean Up](ex1-cleanup.md)
 
-## Validate a Model Deployed to Amazon SageMaker Hosting Services \(AWS SDK for Python \(Boto 3\)\)<a name="ex1-test-model-endpoint-boto"></a>
+## Validate a Model Deployed to Amazon SageMaker Hosting Services \(AWS SDK for Python \(Boto3\)\)<a name="ex1-test-model-endpoint-boto"></a>
 
-To use the AWS SDK for Python \(Boto 3\) to validate the model, call the `invoke_endpoint` method\. This method corresponds to the [ `InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html) API provided by the Amazon SageMaker runtime\.
+To use the AWS SDK for Python \(Boto3\) to validate the model, call the `invoke_endpoint` method\. This method corresponds to the [ `InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html) API provided by the Amazon SageMaker runtime\.
 
-**To validate the model \(AWS SDK for Python \(Boto 3\)\)**
+**To validate the model \(AWS SDK for Python \(Boto3\)\)**
 
 1. Download the test data from Amazon S3\.
 

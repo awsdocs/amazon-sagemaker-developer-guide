@@ -67,5 +67,5 @@ Outputs an object with the following pattern: `{ "<name>": { "<value>": <true or
 ### See Also<a name="radio-button-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
++ [Use Amazon SageMaker Ground Truth to Label Data](sms.md)
 + [Crowd HTML Elements Reference](sms-ui-template-reference.md)

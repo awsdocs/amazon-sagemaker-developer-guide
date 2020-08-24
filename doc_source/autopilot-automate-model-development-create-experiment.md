@@ -1,23 +1,31 @@
-# Create an Amazon SageMaker experiment in SageMaker Studio<a name="autopilot-automate-model-development-create-experiment"></a>
+# Create an Amazon SageMaker Autopilot experiment<a name="autopilot-automate-model-development-create-experiment"></a>
 
-1. Open Amazon SageMaker Studio and login\. 
+When you create an Amazon SageMaker Autopilot experiment, Amazon SageMaker analyzes your data and creates a notebook with candidate model definitions\. If you choose to run the complete experiment, SageMaker trains and tunes these models on your behalf\. You can view statistics while the experiment is running\. Afterwards, you can compare trials and delve into the details\.
 
-1. Choose the **Experiments** tab \(it looks like a conical flask\)\. 
+1. Open Amazon SageMaker Studio and sign in\.
 
-1. Choose **Create experiment**\. 
+1. On the left sidebar, choose the **SageMaker Experiment List** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Experiment_list_squid.png)\)\.
 
-1. Enter the experiment’s details in the **Job Settings** form\. 
-   + Name of the experiment \- Must be unique to this experiment in the current AWS Region\. 
-   + Input dataset S3 location \- An s3:// formatted URL where SageMaker has read permissions\.
+1. Choose **Create Experiment**\.
+
+1. Enter the experiment’s details in the **Job Settings** form:
+   + Experiment Name – Must be unique to your account in the current AWS Region\.
+   + Input data location \(S3 bucket\) – An s3:// formatted URL where SageMaker has read permissions\.
 **Note**  
 The input data must be in CSV format and contain at least 1000 rows\.
-   + Target attribute \- This is the column of your data you want the model to target\. 
-   + Output S3 location \- An s3:// formatted URL where SageMaker has write permissions\. 
-   + \(Optional\) Tell Autopilot whether you want a regression \(e\.g\., house prices\), binary classification \(e\.g\., hotdog or not hotdog\), or multi\-class classification \(e\.g\., cat, dog or bird\) model\. If you don’t specify this, Autopilot infers it from the values of the attribute you want to predict\. In some cases, Autopilot is unable to infer accurately, in which case you must provide the value for the job to succeed\. 
-   + \(Optional\) Tell Autopilot the metric you want it to use to evaluate models\. If you don’t specify a metric, Autopilot makes the decision on your behalf based on the best metrics for the situation\. 
-   + \(Optional\) Configure other job parameters\. For example, security configuration or job completion criteria\. In the latter case, if you are looking to limit the total wall clock time of the AutoML job, you can specify to limit the number of seconds/minutes the job is allowed to run\. 
-   + \(Optional\) Specify [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJob.html#sagemaker-CreateAutoMLJob-request-GenerateCandidateDefinitionsOnly](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJob.html#sagemaker-CreateAutoMLJob-request-GenerateCandidateDefinitionsOnly)\. In this case, instead of executing the entire AutoML workflow on Autopilot, Autopilot stops execution after generating the notebooks for data exploration and candidate generation\. This way, you can use the notebooks as a starting point to guide your own process of data exploration and model training/tuning\. Both notebooks have highlighted sections that explain what kinds of changes are typical, such as changing instance type, cluster size, and so on\. 
+   + Target attribute name – The name of the data column you want the model to target\.
+   + Output data location \(S3 bucket\) – An s3:// formatted URL where SageMaker has write permissions\.
+**Note**  
+The S3 bucket must be in the current AWS Region\.
+   + Select the machine learning problem type:
+     + Auto – SageMaker infers the problem type from the values of the attribute you want to predict\. In some cases, SageMaker is unable to infer accurately, in which case you must provide the value for the job to succeed\.
+     + Binary classification – For example, dog or not dog\.
+     + Regression – For example, house prices\.
+     + Multiclass classification – For example, cat, dog, or bird\.
+   + Do you want to run a complete experiment?
 
-1. Choose to run the training immediately, or only produce data exploration and candidate generation notebooks\. 
+     If you choose **Yes**, SageMaker generates a model as well as statistics that you can view in real time while the experiment is running\. After the experiment is complete, you can view the trials, sort by objective metric, and right\-click to deploy the model for use in other environments\.
 
-This is all you need to run a Autopilot experiment\. The process will generate a model as well as statistics that you can view in real time while the experiment is running\. After the experiment is completed, you can view the trials, sort by objective metric, and right\-click to deploy the model for use in other environments\. 
+     If you choose **No**, instead of executing the entire workflow, SageMaker stops execution after generating a notebook with candidate definitions\. A candidate is a combination of data preprocessors, algorithms, and algorithm parameter settings\. You can use the notebook as a starting point to guide your own process of model training/tuning\. The notebook has highlighted sections that explain what kinds of changes are typical, such as changing instance type, cluster size, and so on\.
+
+1. Choose **Create Experiment**\.

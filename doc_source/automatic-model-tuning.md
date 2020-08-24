@@ -17,6 +17,7 @@ You should also prepare your dataset and algorithm so that they work in Amazon S
 + [How Hyperparameter Tuning Works](automatic-model-tuning-how-it-works.md)
 + [Define Metrics](automatic-model-tuning-define-metrics.md)
 + [Define Hyperparameter Ranges](automatic-model-tuning-define-ranges.md)
++ [Tune Multiple Algorithms to Find the Best Model](multiple-algorithm-hpo.md)
 + [Example: Hyperparameter Tuning Job](automatic-model-tuning-ex.md)
 + [Stop Training Jobs Early](automatic-model-tuning-early-stopping.md)
 + [Run a Warm Start Hyperparameter Tuning Job](automatic-model-tuning-warm-start.md)

@@ -47,4 +47,4 @@ When they're assigned a review task in an Amazon Rekognition workflow, workers m
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/a2i-rekognition-example.png)
 
-You can customize this interface in the Amazon SageMaker console when you create your human review definition, or by creating and using a custom template\. To learn more, see [Create a Worker UI](a2i-instructions-overview.md)\.
+You can customize this interface in the Amazon SageMaker console when you create your human review definition, or by creating and using a custom template\. To learn more, see [Create and Manage Worker Task Templates](a2i-instructions-overview.md)\.

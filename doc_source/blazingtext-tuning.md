@@ -6,14 +6,14 @@ For more information about model tuning, see [Perform Automatic Model Tuning](au
 
 ## Metrics Computed by the BlazingText Algorithm<a name="blazingtext-metrics"></a>
 
-The BlazingText Word2Vec algorithm \(`skipgram`, `cbow`, and `batch_skipgram` modes\) reports on a single metric during training: `train:mean_rho`\. This metric is computed on [WS\-353 word similarity datasets](https://www.cs.technion.ac.il/~gabr/resources/data/wordsim353/)\. When tuning the hyperparameter values for the Word2Vec algorithm, use this metric as the objective\.
+The BlazingText Word2Vec algorithm \(`skipgram`, `cbow`, and `batch_skipgram` modes\) reports on a single metric during training: `train:mean_rho`\. This metric is computed on [WS\-353 word similarity datasets](https://aclweb.org/aclwiki/WordSimilarity-353_Test_Collection_(State_of_the_art))\. When tuning the hyperparameter values for the Word2Vec algorithm, use this metric as the objective\.
 
 The BlazingText Text Classification algorithm \(`supervised` mode\), also reports on a single metric during training: the `validation:accuracy`\. When tuning the hyperparameter values for the text classification algorithm, use these metrics as the objective\.
 
 
 | Metric Name | Description | Optimization Direction | 
 | --- | --- | --- | 
-| train:mean\_rho |  The mean rho \(Spearman's rank correlation coefficient\) on [WS\-353 word similarity datasets](https://www.cs.technion.ac.il/~gabr/resources/data/wordsim353/)  |  Maximize  | 
+| train:mean\_rho |  The mean rho \(Spearman's rank correlation coefficient\) on [WS\-353 word similarity datasets](http://alfonseca.org/pubs/ws353simrel.tar.gz)  |  Maximize  | 
 | validation:accuracy |  The classification accuracy on the user\-specified validation dataset  |  Maximize  | 
 
 ## Tunable BlazingText Hyperparameters<a name="blazingtext-tunable-hyperparameters"></a>

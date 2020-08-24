@@ -2,7 +2,49 @@
 
 As a managed service, Amazon SageMaker performs operations on your behalf on the AWS hardware that is managed by Amazon SageMaker\. Amazon SageMaker can perform only operations that the user permits\.
 
-An Amazon SageMaker user can grant these permissions with an IAM role \(referred to as an execution role\)\. The user passes the role when making these API calls: [ `CreateNotebookInstance`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstance.html), [ `CreateHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html), [ `CreateProcessingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateProcessingJob.html), [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html), and [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html)\.
+An Amazon SageMaker user can grant these permissions with an IAM role \(referred to as an execution role\)\. 
+
+## Get execution role<a name="sagemaker-roles-get-execution-role"></a>
+
+When you run a notebook within Amazon SageMaker you can access the execution role with the following code:
+
+```
+sagemaker_session = sagemaker.Session()
+role = sagemaker.get_execution_role()
+```
+
+**Note**  
+The execution role is intended to be only available when running a notebook within Amazon SageMaker\. If you run `get_execution_role` in a notebook not on Amazon SageMaker, you will get a "region" error\. 
+
+To use a locally available execution role, you can use the following procedures\. Check the IAM role ARN that your created when you created your the Notebook Instance or Studio application\. This can be found in the console in the detail page under Permissions and Encryption\.
+
+**To create a new role**
+
+1. Log onto the console \-> IAM \-> Roles \-> Create Role
+
+1. Create a service\-linked role with `sagemaker.amazonaws.com`
+
+1. Give the role `AmazonSageMakerFullAccess`
+
+1. Give the role `AmazonS3FullAccess` \(limit the permissions to specific buckets if possible\)
+
+1. Make note of the ARN once it is created
+
+With a known ARN for your role, you can programatically check the role when running the notebook locally or on Amazon SageMaker\. Replace `RoleName` with your known ARN:
+
+```
+try:
+    role = sagemaker.get_execution_role()
+except ValueError:
+    iam = boto3.client('iam')
+    role = iam.get_role(RoleName='AmazonSageMaker-ExecutionRole-20201200T100000')['Role']['Arn']
+```
+
+## Passing Roles<a name="sagemaker-roles-pass-role"></a>
+
+Actions like passing a role between services are a common function within Amazon SageMaker\. You can find more details on [Actions, Resources, and Condition Keys for Amazon SageMaker](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonsagemaker.html#amazonsagemaker-actions-as-permissions) in the *IAM User Guide*\.
+
+You pass the role \(`iam:PassRole`\) when making these API calls: [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html), [ `CreateCompilationJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateCompilationJob.html), [ `CreateDomain`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateDomain.html), [ `CreateFlowDefiniton`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html), [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html), [ `CreateLabelingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html), [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html), [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateMonitoringSchedule.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateMonitoringSchedule.html), [ `CreateNotebookInstance`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstance.html), [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateProcessingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateProcessingJob.html), [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html), [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateUserProfile.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateUserProfile.html), and [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RenderUiTemplate.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RenderUiTemplate.html)\.
 
 You attach the following trust policy to the IAM role which grants Amazon SageMaker principal permissions to assume the role, and is the same for all of the execution roles: 
 
@@ -29,12 +71,6 @@ Instead of managing permissions by crafting a permission policy, you can use the
 For more information about IAM roles, see [IAM Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in the *IAM User Guide*\.
 
 **Topics**
-+ [CreateNotebookInstance API: Execution Role Permissions](#sagemaker-roles-createnotebookinstance-perms)
-+ [CreateHyperParameterTuningJob API: Execution Role Permissions](#sagemaker-roles-createhyperparametertiningjob-perms)
-+ [CreateProcessingJob API: Execution Role Permissions](#sagemaker-roles-createprocessingjob-perms)
-+ [CreateTrainingJob API: Execution Role Permissions](#sagemaker-roles-createtrainingjob-perms)
-+ [CreateModel API: Execution Role Permissions](#sagemaker-roles-createmodel-perms)
-+ [AmazonSageMakerFullAccess Policy](#sagemaker-roles-amazonsagemakerfullaccess-policy)
 
 ## CreateNotebookInstance API: Execution Role Permissions<a name="sagemaker-roles-createnotebookinstance-perms"></a>
 

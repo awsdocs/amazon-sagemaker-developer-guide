@@ -15,7 +15,7 @@ Because you create a model to address a business question, your first step is to
 
      
 
-  For this type of discrete classification problem, Amazon SageMaker provides two algorithms: [Linear Learner Algorithm](linear-learner.md) and the [XGBoost Algorithm](xgboost.md)\. You set the following hyperparameters to direct these algorithms to produce discrete results:
+  For this type of discrete classification problem, Amazon SageMaker provides two algorithms: [Linear learner algorithm](linear-learner.md) and the [XGBoost Algorithm](xgboost.md)\. You set the following hyperparameters to direct these algorithms to produce discrete results:
 
    
   + For the Linear Learner algorithm, set the `predictor_type` hyperparameter to `binary_classifier`\. 
@@ -24,7 +24,7 @@ Because you create a model to address a business question, your first step is to
   + For the XGBoost algorithm, set the `objective` hyperparameter to `reg:logistic`\.
 
    
-+ Answers that are quantitative—Consider this question: "Based on the return on investment \(ROI\) from past mailings, what is the ROI for mailing this customer?” In this case, you use the ROI to target customers for the mail campaign\. For these quantitative analysis problems, you can also use the [Linear Learner Algorithm](linear-learner.md) or the [XGBoost Algorithm](xgboost.md) algorithms\. You set the following hyperparameters to direct these algorithms to produce quantitative results:
++ Answers that are quantitative—Consider this question: "Based on the return on investment \(ROI\) from past mailings, what is the ROI for mailing this customer?” In this case, you use the ROI to target customers for the mail campaign\. For these quantitative analysis problems, you can also use the [Linear learner algorithm](linear-learner.md) or the [XGBoost Algorithm](xgboost.md) algorithms\. You set the following hyperparameters to direct these algorithms to produce quantitative results:
 
    
   + For the Linear Learner algorithm, set the `predictor_type` hyperparameter to `regressor`\. 
@@ -57,7 +57,7 @@ In addition to these general\-purpose algorithms, Amazon SageMaker provides algo
 
 **Topics**
 + [Common elements of built\-in algorithms](common-info-all-im-models.md)
-+ [BlazingText Algorithm](blazingtext.md)
++ [BlazingText algorithm](blazingtext.md)
 + [DeepAR Forecasting Algorithm](deepar.md)
 + [Factorization Machines Algorithm](fact-machines.md)
 + [Image Classification Algorithm](image-classification.md)
@@ -65,7 +65,7 @@ In addition to these general\-purpose algorithms, Amazon SageMaker provides algo
 + [K\-Means Algorithm](k-means.md)
 + [K\-Nearest Neighbors \(k\-NN\) Algorithm](k-nearest-neighbors.md)
 + [Latent Dirichlet Allocation \(LDA\) Algorithm](lda.md)
-+ [Linear Learner Algorithm](linear-learner.md)
++ [Linear learner algorithm](linear-learner.md)
 + [Neural Topic Model \(NTM\) Algorithm](ntm.md)
 + [Object2Vec Algorithm](object2vec.md)
 + [Object Detection Algorithm](object-detection.md)

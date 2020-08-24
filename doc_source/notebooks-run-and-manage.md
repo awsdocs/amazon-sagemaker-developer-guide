@@ -4,6 +4,6 @@ You can change the instance type, and SageMaker image and kernel from within an 
 
 **Topics**
 + [Change an Instance Type](notebooks-run-and-manage-switch-instance-type.md)
-+ [Change a SageMaker Image](notebooks-run-and-manage-change-environment.md)
++ [Change a SageMaker Image](notebooks-run-and-manage-change-image.md)
 + [Create a Custom Kernel](notebooks-create-custom-kernel.md)
 + [Shut Down Resources](notebooks-run-and-manage-shut-down.md)

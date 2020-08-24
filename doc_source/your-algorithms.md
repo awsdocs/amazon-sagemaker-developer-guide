@@ -26,7 +26,7 @@ Subsequent sections describe in more detail the contractual requirements to use 
 + [Scenarios for Running Scripts, Training Algorithms, or Deploying Models with Amazon SageMaker](#container-scenarios)
 + [Docker Container Basics](docker-basics.md)
 + [Create Docker Containers with the Amazon SageMaker Containers Library](amazon-sagemaker-containers.md)
-+ [Get Started: Use Amazon SageMaker Containers to Run a Python Script](build-container-to-train-script-get-started.md)
++ [Get Started: Build Your Custom Training Container with Amazon SageMaker](build-container-to-train-script-get-started.md)
 + [Prebuilt Amazon SageMaker Docker Images for TensorFlow, MXNet, Chainer, and PyTorch](pre-built-containers-frameworks-deep-learning.md)
 + [Prebuilt Amazon SageMaker Docker Images for Scikit\-learn and Spark ML](pre-built-docker-containers-frameworks.md)
 + [Example Notebooks: Use Your Own Algorithm or Model](adv-bring-own-examples.md)

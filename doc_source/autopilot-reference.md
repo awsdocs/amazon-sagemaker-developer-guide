@@ -1,10 +1,10 @@
 # API reference guide for Amazon SageMaker Autopilot<a name="autopilot-reference"></a>
 
-Amazon SageMaker provides API reference documentation that describes all of the REST operations and data types used by Autopilot and a higher level Amazon SageMaker Python SDK that you can use to create and manage AutoML jobs\. It also provides a command line interface \(CLI\), an AWS SDK for Python \(Boto\) for low\-level clients of Amazon SageMaker services, and SDKs for \.NET, C\+\+, Go, Java, JavaScript, PHP V3, and Ruby V3\. The following sections describe these Autopilot programming interfaces\.
+Amazon SageMaker provides API reference documentation that describes all of the REST operations and data types used by Autopilot and a higher level [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) that you can use to create and manage AutoML jobs\. It also provides a command line interface \(CLI\), an AWS SDK for Python \(Boto\) for low\-level clients of Amazon SageMaker services, and SDKs for \.NET, C\+\+, Go, Java, JavaScript, PHP V3, and Ruby V3\. The following sections describe these Autopilot programming interfaces\.
 
 **Topics**
 + [Amazon SageMaker API reference](#autopilot-api-reference)
-+ [Amazon SageMaker Python SDK](#autopilot-sagemaker-python-sdk)
++ [[Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)](#autopilot-sagemaker-python-sdk)
 + [AWS Command Line Interface \(CLI\)](#autopilot-cli)
 + [AWS SDK for Python \(Boto\)](#autopilot-aws-sdk-for-python-boto3)
 + [AWS SDK for \.NET](#autopilot-aws-sdk-for-dotnet)
@@ -44,7 +44,7 @@ This API provides HTTP service APIs for creating and managing Amazon SageMaker A
 
 For more information on the entire Amazon SageMaker REST API, see [API and SDK Reference](https://docs.aws.amazon.com/sagemaker/latest/dg/api-and-sdk-reference.html)\.
 
-## Amazon SageMaker Python SDK<a name="autopilot-sagemaker-python-sdk"></a>
+## [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)<a name="autopilot-sagemaker-python-sdk"></a>
 
 This Python library provides several high\-level abstractions for working with Amazon SageMaker\. The following classes can be used to manage AutoML jobs\.
 + [https://sagemaker.readthedocs.io/en/stable/api/training/automl.html#sagemaker.automl.automl.AutoML](https://sagemaker.readthedocs.io/en/stable/api/training/automl.html#sagemaker.automl.automl.AutoML)
@@ -53,7 +53,7 @@ This Python library provides several high\-level abstractions for working with A
 + [https://sagemaker.readthedocs.io/en/stable/api/training/automl.html#sagemaker.automl.candidate_estimator.CandidateEstimator](https://sagemaker.readthedocs.io/en/stable/api/training/automl.html#sagemaker.automl.candidate_estimator.CandidateEstimator)
 + [https://sagemaker.readthedocs.io/en/stable/api/training/automl.html#sagemaker.automl.candidate_estimator.CandidateStep](https://sagemaker.readthedocs.io/en/stable/api/training/automl.html#sagemaker.automl.candidate_estimator.CandidateStep)
 
-For more information how this Python SDK simplifies model training and deployment, see [Using the SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/overview.html)\.
+For more information how this Python SDK simplifies model training and deployment, see [Using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)](https://sagemaker.readthedocs.io/en/stable/overview.html)\.
 
 ## AWS Command Line Interface \(CLI\)<a name="autopilot-cli"></a>
 

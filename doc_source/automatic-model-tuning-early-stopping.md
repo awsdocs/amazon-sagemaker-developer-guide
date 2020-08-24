@@ -5,7 +5,7 @@ Stop the training jobs that a hyperparameter tuning job launches early when they
 + If you are using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), set the `early_stopping_type` parameter of the [HyperParameterTuner](https://sagemaker.readthedocs.io/en/stable/tuner.html) object to `Auto`\.
 + In the Amazon SageMaker console, in the **Create hyperparameter tuning job** workflow, under **Early stopping**, choose **Auto**\.
 
-For a sample notebook that demonstrates how to use early stopping, see [https://github\.com/awslabs/amazon\-sagemaker\-examples/blob/master/hyperparameter\_tuning/image\_classification\_early\_stopping/hpo\_image\_classification\_early\_stopping\.ipynb](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/hyperparameter_tuning/image_classification_early_stopping/hpo_image_classification_early_stopping.ipynb) or open the `hpo_image_classification_early_stopping.ipynb` notebook in the **Hyperparameter Tuning** section of the **SageMaker Examples** in a notebook instance\. For information about using sample notebooks in a notebook instance, see [Use Example Notebooks](howitworks-nbexamples.md)\.
+For a sample notebook that demonstrates how to use early stopping, see [https://github\.com/awslabs/amazon\-sagemaker\-examples/blob/master/hyperparameter\_tuning/image\_classification\_early\_stopping/hpo\_image\_classification\_early\_stopping\.ipynb](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/hyperparameter_tuning/image_classification_early_stopping/hpo_image_classification_early_stopping.ipynb) or open the `hpo_image_classification_early_stopping.ipynb` notebook in the **Hyperparameter Tuning** section of the **SageMaker Examples** in a notebook instance\. For information about using sample notebooks in a notebook instance, see [Example Notebooks](howitworks-nbexamples.md)\.
 
 ## How Early Stopping Works<a name="automatic-tuning-early-stop-how"></a>
 
@@ -17,7 +17,7 @@ When you enable early stopping for a hyperparameter tuning job, Amazon SageMaker
 ## Algorithms That Support Early Stopping<a name="automatic-tuning-early-stopping-algos"></a>
 
 To support early stopping, an algorithm must emit objective metrics for each epoch\. The following built\-in Amazon SageMaker algorithms support early stopping:
-+ [Linear Learner Algorithm](linear-learner.md)—Supported only if you use `objective_loss` as the objective metric\.
++ [Linear learner algorithm](linear-learner.md)—Supported only if you use `objective_loss` as the objective metric\.
 + [XGBoost Algorithm](xgboost.md)
 + [Image Classification Algorithm](image-classification.md)
 + [Object Detection Algorithm](object-detection.md)

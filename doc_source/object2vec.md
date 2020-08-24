@@ -2,7 +2,7 @@
 
 The Amazon SageMaker Object2Vec algorithm is a general\-purpose neural embedding algorithm that is highly customizable\. It can learn low\-dimensional dense embeddings of high\-dimensional objects\. The embeddings are learned in a way that preserves the semantics of the relationship between pairs of objects in the original space in the embedding space\. You can use the learned embeddings to efficiently compute nearest neighbors of objects and to visualize natural clusters of related objects in low\-dimensional space, for example\. You can also use the embeddings as features of the corresponding objects in downstream supervised tasks, such as classification or regression\. 
 
-Object2Vec generalizes the well\-known Word2Vec embedding technique for words that is optimized in the Amazon SageMaker [BlazingText Algorithm](blazingtext.md)\. For a blog post that discusses how to apply Object2Vec to some practical use cases, see [Introduction to Amazon SageMaker Object2Vec](https://aws.amazon.com/blogs/machine-learning/introduction-to-amazon-sagemaker-object2vec/)\. 
+Object2Vec generalizes the well\-known Word2Vec embedding technique for words that is optimized in the Amazon SageMaker [BlazingText algorithm](blazingtext.md)\. For a blog post that discusses how to apply Object2Vec to some practical use cases, see [Introduction to Amazon SageMaker Object2Vec](https://aws.amazon.com/blogs/machine-learning/introduction-to-amazon-sagemaker-object2vec/)\. 
 
 **Topics**
 + [I/O Interface for the Object2Vec Algorithm](#object2vec-inputoutput)

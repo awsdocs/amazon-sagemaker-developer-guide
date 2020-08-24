@@ -9,20 +9,31 @@ SageMaker Experiments automatically tracks the inputs, parameters, configuration
 SageMaker Experiments comes with its own [Experiments SDK](https://github.com/aws/sagemaker-experiments) which makes the analytics capabilities easily accessible in Amazon SageMaker Notebooks\. Because SageMaker Experiments enables tracking of all the steps and artifacts that went into creating a model, you can quickly revisit the origins of a model when you are troubleshooting issues in production, or auditing your models for compliance verifications\.
 
 **Topics**
++ [SageMaker Experiments Features](#experiments-features)
++ [Create a SageMaker Experiment](experiments-create.md)
++ [View and Compare SageMaker Experiments, Trials, and Trial Components](experiments-view-compare.md)
++ [Track and Compare Tutorial](experiments-mnist.md)
++ [Search Experiments Using Amazon SageMaker Studio](experiments-search-studio.md)
++ [Clean Up SageMaker Experiment Resources](experiments-cleanup.md)
++ [Search Using the SageMaker Console and API](search.md)
+
+## SageMaker Experiments Features<a name="experiments-features"></a>
+
+The following sections provide a brief overview of the features provided by SageMaker Experiments\.
+
+**Topics**
 + [Organize Experiments](#exp-mgmt-organize)
 + [Track Experiments](#exp-mgmt-track)
 + [Compare and Evaluate Experiments](#exp-mgmt-compare)
 + [Amazon SageMaker Autopilot](#exp-mgmt-automl)
-+ [Track and compare trials in Amazon SageMaker Studio](experiments-mnist.md)
-+ [Search](search.md)
 
-## Organize Experiments<a name="exp-mgmt-organize"></a>
+### Organize Experiments<a name="exp-mgmt-organize"></a>
 
 Amazon SageMaker Experiments offers a structured organization scheme to help users group and organize their machine learning iterations\. The top level entity, an *experiment*, is a collection of *trials* that are observed, compared, and evaluated as a group\. A trial is a set of steps called *trial components*\. Each trial component can include a combination of inputs such as datasets, algorithms, and parameters, and produce specific outputs such as models, metrics, datasets, and checkpoints\. Examples of trial components are data pre\-processing jobs, training jobs, and batch transform jobs\.
 
 The goal of an experiment is to determine the trial that produces the best model\. Multiple trials are performed, each one isolating and measuring the impact of a change to one or more inputs, while keeping the remaining inputs constant\. By analyzing the trials, you can determine which features have the most effect on the model\.
 
-## Track Experiments<a name="exp-mgmt-track"></a>
+### Track Experiments<a name="exp-mgmt-track"></a>
 
 Amazon SageMaker Experiments enables tracking of experiments\.
 
@@ -34,12 +45,12 @@ SageMaker Experiments automatically tracks Amazon SageMaker Autopilot jobs as ex
 
 SageMaker Experiments provides tracking APIs for recording and tracking machine learning workflows running locally on SageMaker Studio notebooks, including classic SageMaker notebooks\. These experiments must be part of a SageMaker training, batch transform, or processing job\.
 
-## Compare and Evaluate Experiments<a name="exp-mgmt-compare"></a>
+### Compare and Evaluate Experiments<a name="exp-mgmt-compare"></a>
 
 Amazon SageMaker Experiments is integrated with Amazon SageMaker Studio\. When you use SageMaker Studio, SageMaker Experiments automatically tracks your experiments and trials, and presents visualizations of the tracked data and an interface to search the data\.
 
 SageMaker Experiments automatically organizes, ranks, and sorts trials based on a chosen metric using the concept of a trial leaderboard\. SageMaker Studio produces real\-time data visualizations, such as metric charts and graphs, to quickly compare and identify the best performing models\. These are updated in real\-time as the experiment progresses\.
 
-## Amazon SageMaker Autopilot<a name="exp-mgmt-automl"></a>
+### Amazon SageMaker Autopilot<a name="exp-mgmt-automl"></a>
 
-Amazon SageMaker Experiments is integrated with Amazon SageMaker Autopilot\. When you perform an automated machine learning job using Autopilot, SageMaker Experiments creates an experiment for the job, and trials for each of the different combinations of trial components, parameters, and artifacts that Autopilot tries for the job\. You can visually drill into all trials and components using SageMaker\.
+Amazon SageMaker Experiments is integrated with Amazon SageMaker Autopilot\. When you perform an Autopilot job, SageMaker Experiments creates an experiment for the job, and trials for each of the different combinations of the available trial components, parameters, and artifacts\. You can visually drill into all trials and components using SageMaker Studio\.

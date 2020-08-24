@@ -7,7 +7,8 @@ Monitoring is an important part of maintaining the reliability, availability, an
 + *CloudWatch Events* delivers a near real\-time stream of system events that describe changes in AWS resources\. Create CloudWatch Events rules react to a status change in a Amazon SageMaker training, hyperparameter tuning, or batch transform job
 
 **Topics**
++ [Monitor and Analyze Training Jobs Using Metrics](training-metrics.md)
 + [Monitor Amazon SageMaker with Amazon CloudWatch](monitoring-cloudwatch.md)
 + [Log Amazon SageMaker Events with Amazon CloudWatch](logging-cloudwatch.md)
 + [Log Amazon SageMaker API Calls with AWS CloudTrail](logging-using-cloudtrail.md)
-+ [React to Amazon SageMaker Job Status Changes with CloudWatch Events](cloudwatch-events.md)
++ [Automating Amazon SageMaker with Amazon EventBridge](automating-sagemaker-with-eventbridge.md)

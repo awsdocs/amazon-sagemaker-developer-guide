@@ -1,17 +1,27 @@
 # Assign IAM Permissions to Use Ground Truth<a name="sms-security-permission"></a>
 
-Use this topic to learn how to create an AWS Identity and Access Management \(IAM\) user or role with required permissions to create a labeling job and how to create an *execution role* for labeling jobs\. Administrators can use these policies to restrict access to services that are specific to Ground Truth\. 
+Use the topics on this page to learn how to use AWS Identity and Access Management \(IAM\) managed and custom policies to manage access to Ground Truth and associated resources\. 
 
-If you are new to Ground Truth and do not require the granular permissions described here, you can use the AWS managed policy, AmazonSageMakerFullAccess, to grant access to an IAM entity to create a labeling job\. You can also attach AmazonSageMakerFullAccess to an IAM role to create an execution role\. To learn more about this managed policy, see [AmazonSageMakerFullAccess Policy](sagemaker-roles.md#sagemaker-roles-amazonsagemakerfullaccess-policy)\. 
-
-**Important**  
-When you create a custom labeling workflow, the AmazonSageMakerFullAccess policy is restricted to invoking AWS Lambda functions with one of the following four strings as part of the function name: `SageMaker`, `Sagemaker`, `sagemaker`, or `LabelingFunction`\. This applies to both your pre\-annotation and post\-annotation Lambda functions\. If you choose to use names without those strings, you must explicitly provide `lambda:InvokeFunction` permission to the IAM role used to create the labeling job\.
+You can use the sections on this page to learn the following: 
++ How to create IAM policies that will grant an IAM user or role permission to create a labeling job\. Administrators can use IAM policies to restrict access to Amazon SageMaker and other AWS services that are specific to Ground Truth\.
++ How to create an *execution role* for labeling jobs\. An execution role is the role that you specify when you crease a labeling job and it is used to execute your labeling job\.
 
 The following is an overview of the topics you'll find on this page: 
++ If you are getting started using Ground Truth, or you do not require granular permissions for your use case, see [Grant General Permissions To Get Started Using Ground Truth](#sms-security-permissions-get-started)\.
 + Use the policy in [Permissions Required to Use the Amazon SageMaker Ground Truth Console](#sms-security-permission-console-access) to grant access to the Ground Truth area of the Amazon SageMaker console\. This policy includes permissions to create and modify private work teams\. To learn more about these permissions, see [Grant Permissions for Private Workforce Creation](#sms-security-permission-workforce-creation)\.
 + When you create a labeling job, you must provide an execution role\. Use [Create an Execution Role to Start a Labeling Job](#sms-security-permission-execution-role) to learn about the permissions required for this role\. 
 
-For more information about IAM users and roles, see [Identities \(Users, Groups, and Roles\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html) in the IAM User Guide\. 
+## Grant General Permissions To Get Started Using Ground Truth<a name="sms-security-permissions-get-started"></a>
+
+If you are getting started using Ground Truth, or you do not require granular permissions for your use case, you can attach the managed policy [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) to an IAM user or role to give that entity permission to create a labeling job\. This is a broad policy that grants an IAM entity permission to use Amazon SageMaker features, as well as features of related AWS services through the console and API\. This policy will give the IAM entity permission to create a labeling job and to create and manage workforces using Amazon Cognito\. To learn more, see [AmazonSageMakerFullAccess Policy](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html#sagemaker-roles-amazonsagemakerfullaccess-policy)\.
+
+To create an *execution role*, you can attach the policy [AmazonSageMakerGroundTruthExecution](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerGroundTruthExecution) to an IAM role\. An execution role is the role that you specify when you crease a labeling job and it is used to execute your labeling job\. All of the permissions above can be granted with the AmazonSageMakerGroundTruthExecution managed policy *except* for data and storage volume encryption if your S3 buckets, objects, and Lambda functions do not meet the conditions specified in the policy\. 
++ AWS Lambda permissions – When you create a [custom labeling workflow](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-custom-templates.html), this execution role is restricted to invoking AWS Lambda functions with one of the following strings as part of the function name: `GtRecipe`, `SageMaker`, `Sagemaker`, `sagemaker`, or `LabelingFunction`\. This applies to both your pre\-annotation and post\-annotation Lambda functions\. If you choose to use names without those strings, you must explicitly provide `lambda:InvokeFunction` permission to the *execution role* used to create the labeling job\.
++ This policy grants an execution role permission to access Amazon S3 buckets with the following strings in the name: `GroundTruth`, `Groundtruth`, `groundtruth`, `SageMaker`, `Sagemaker`, and `sagemaker`\. Make sure your input and output bucket names includes these strings, or add additional permissions to your execution role to [grant it permission to access your S3 buckets](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_s3_rw-bucket.html)\. 
+
+**Important**  
+When you create your labeling job, if you set the Task time limit \(`TaskTimeLimitInSeconds` when using the API\) to be greater than one hour \(3,600 seconds\), you must increases the *max session duration* of your execution role to be greater than or equal to the task timeout\.   
+You can modify the max session duration of your execution rule using the IAM console, AWS CLI, and IAM API\. To modify your execution role, go to [Modifying a Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html) in the IAM User Guide, select your preferred method \(console, CLI, or API\) to modify the role from the **Topics** list, and then select **Modifying a Role Maximum Session Duration** to view the instructions\. For 3D point cloud task types, refer to [Increase MaxSessionDuration for Execution Role](sms-point-cloud-general-information.md#sms-3d-pointcloud-maxsessduration)\.
 
 ## Permissions Required to Use the Amazon SageMaker Ground Truth Console<a name="sms-security-permission-console-access"></a>
 
@@ -162,7 +172,11 @@ This role must give Amazon SageMaker permission to access the following:
 + \(Optional\) AWS KMS for data encryption\.
 + When you create a custom labeling workflow, AWS Lambda for processing input and output data\. 
 
-All of the permissions above can be granted with the [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) managed policy *except* for data and storage volume encryption if your S3 buckets, objects, and Lambda functions meet the conditions specified in the policy\. 
+All of the permissions above can be granted with the [AmazonSageMakerGroundTruthExecution](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerGroundTruthExecution) managed policy *except* for data and storage volume encryption if your S3 buckets, objects, and Lambda functions do not meet the conditions specified in the policy\. 
+
+When you create your labeling job, if you set the Task time limit \(`TaskTimeLimitInSeconds` when using the API\) to be greater than one hour \(3,600 seconds\), you must increases the max session duration of your execution role to be greater than or equal to the task timeout\. 
+
+You can modify the max session duration of your execution rule using the IAM console, AWS CLI, and IAM API\. To modify your execution role, go to [Modifying a Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html) in the IAM User Guide, select your preferred method \(console, CLI, or API\) to modify the role from the **Topics** list, and then select **Modifying a Role Maximum Session Duration** to view the instructions\. For 3D point cloud task types, refer to [Increase MaxSessionDuration for Execution Role](sms-point-cloud-general-information.md#sms-3d-pointcloud-maxsessduration)\.
 
 Use the following policy examples to create an execution role that fits your specific use case\. 
 
@@ -281,6 +295,9 @@ To create a custom labeling workflow, you need to add permission for AWS Lambda 
 ```
 
 To add input data decryption or output data encryption using AWS KMS to any type of labeling job, modify the following policy by listing KMS key ARNs you want to grant permissions to use under `Resource`\. Attach the policy to an execution role\. 
+
+**Important**  
+You cannot use Ground Truth [automated data setup](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-data-input.html#sms-console-create-manifest-file) if you use AWS KMS to encrypted buckets or objects in Amazon S3\.
 
 ```
 {

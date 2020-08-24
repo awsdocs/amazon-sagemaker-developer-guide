@@ -5,8 +5,8 @@ The following table contains the subset of hyperparameters that are required or 
 
 | Parameter Name | Description | 
 | --- | --- | 
+| num\_class | The number of classes\. **Required** if `objective` is set to *multi:softmax* or *multi:softprob*\. Valid values: integer  | 
 | num\_round | The number of rounds to run the training\. **Required** Valid values: integer  | 
-| num\_class | The number of classes\. **Required** if `objective` is set to *multi:softmax* or *multi:softprob*\. Valid values: integer Default value:   | 
 | alpha | L1 regularization term on weights\. Increasing this value makes models more conservative\. **Optional** Valid values: float Default value: 0  | 
 | base\_score | The initial prediction score of all instances, global bias\. **Optional** Valid values: float Default value: 0\.5  | 
 | booster | Which booster to use\. The `gbtree` and `dart` values use a tree\-based model, while `gblinear` uses a linear function\. **Optional** Valid values: String\. One of `gbtree`, `gblinear`, or `dart`\. Default value: `gbtree`  | 

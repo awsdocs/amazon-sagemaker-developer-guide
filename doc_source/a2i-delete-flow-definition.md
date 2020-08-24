@@ -35,12 +35,12 @@ Flow definitions can only be deleted if their status is `Active`\.
 You're automatically redirected to the **Human review workflows** page\. While your human review workflow is being deleted, the status **Deleting** appears in the status column for that workflow\. After it's deleted, it won't appear in the list of workflows on this page\. 
 
 **Delete a flow definition \(API\)**  
-You can delete a flow definition using the Amazon SageMaker [DeleteFlowDefinition](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteFlowDefinition.html) API operation\. This API operation is supported through the [AWS CLI](https://docs.aws.amazon.com/cli/latest/reference/sagemaker/delete-flow-definition.html) and a [variety of language specific SDKs](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteFlowDefinition.html#API_DeleteFlowDefinition_SeeAlso)\. The following table shows example requests using SDK for Python \(Boto 3\) and the AWS CLI to delete the flow definition, *`example-flow-definition`*\. 
+You can delete a flow definition using the Amazon SageMaker [DeleteFlowDefinition](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteFlowDefinition.html) API operation\. This API operation is supported through the [AWS CLI](https://docs.aws.amazon.com/cli/latest/reference/sagemaker/delete-flow-definition.html) and a [variety of language specific SDKs](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteFlowDefinition.html#API_DeleteFlowDefinition_SeeAlso)\. The following table shows example requests using SDK for Python \(Boto3\) and the AWS CLI to delete the flow definition, *`example-flow-definition`*\. 
 
 ------
-#### [ AWS SDK for Python \(Boto 3\) ]
+#### [ AWS SDK for Python \(Boto3\) ]
 
-The following request example uses the SDK for Python \(Boto 3\) to delete the flow definition\. For more information, see [delete\_flow\_definition](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.delete_flow_definition) in the *AWS SDK for Python \(Boto\) API Reference*\.
+The following request example uses the SDK for Python \(Boto3\) to delete the flow definition\. For more information, see [delete\_flow\_definition](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.delete_flow_definition) in the *AWS SDK for Python \(Boto\) API Reference*\.
 
 ```
 response = client.delete_flow_definition(FlowDefinitionName='example-flow-definition')

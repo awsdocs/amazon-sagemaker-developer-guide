@@ -85,7 +85,7 @@ training_image = get_image_uri(boto3.Session().region_name, 'xgboost')
 
 s3_input_train = 's3://{}/{}/train'.format(bucket, prefix)
 s3_input_validation ='s3://{}/{}/validation/'.format(bucket, prefix)
-     
+
 training_job_definition = {
     "AlgorithmSpecification": {
       "TrainingImage": training_image,

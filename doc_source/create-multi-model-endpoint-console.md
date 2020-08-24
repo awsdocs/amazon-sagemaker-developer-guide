@@ -6,7 +6,7 @@
 
 1. Choose **Model**, and then from the **Inference** group, choose **Create model**\. 
 
-1. For **Model name**, enter a name\. 
+1. For **Model name**, enter a name\.
 
 1. For **IAM role**\. choose or create an IAM role that has the AmazonSageMakerFullAccess IAM policy attached\. 
 

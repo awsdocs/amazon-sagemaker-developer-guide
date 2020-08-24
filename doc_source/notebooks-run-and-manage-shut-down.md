@@ -23,25 +23,21 @@ When you shut down a notebook, any unsaved information in the notebook is lost\.
 
 ## Shut Down Sessions and Images<a name="notebooks-run-and-manage-shut-down-sessions"></a>
 
-The **Running Terminals, Kernels, and Images** browser consists of three sections: **TERMINAL SESSIONS**, **KERNEL SESSIONS**, and **IMAGES**\. Each section lists all resources of that type\. You can shut down each resource individually or shut down all resources in a section at the same time\.
+The **Running Terminals and Kernels** browser consists of three sections: **TERMINAL SESSIONS**, **KERNEL SESSIONS**, and **RUNNING IMAGES**\. Each section lists all resources of that type\. You can shut down each resource individually or shut down all resources in a section at the same time\.
 
-When you choose **Shut down all** in a section, the following are shut down:
+When you choose to shut down all resources in a section, the following occurs:
 + **TERMINAL SESSIONS** – All terminals are shut down and their tabs deleted\.
-+ **KERNEL SESSIONS** – All kernels \(notebooks and consoles\)\.
-+ **RUNNING IMAGES** – All SageMaker images, kernel sessions, SageMaker image terminals, and instances\. System terminals aren't shut down\.
++ **KERNEL SESSIONS** – All kernels \(notebooks and consoles/shells\) are shut down\.
++ **RUNNING IMAGES** – All SageMaker images, kernel sessions, SageMaker image terminals, and instances are shut down\. System terminals aren't shut down\.
 
 **To shut down terminal sessions, kernel sessions, and images**
 
-1. In the left sidebar, choose the **Running Terminals, Kernels, and Images** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Running_squid.png)\)\.
+1. In the left sidebar, choose the **Running Terminals and Kernels** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Running_squid.png)\)\.
 
 1. Do either of the following:
-   + To shut down a specific resource, choose **SHUT DOWN** on the same row as the resource\.
+   + To shut down a specific resource, choose **SHUT DOWN** on the same row as the resource\. A confirmation dialog is displayed\.
 
-     Terminal sessions and kernel sessions are immediately shut down\.
+     For running images, the confirmation dialog lists the terminals, consoles, and notebooks that will be shut down\.
+   + To shut down all resources in a section, choose the **X** to the right of the section label\. A confirmation dialog is displayed\.
 
-     For running images, a confirmation dialog is displayed listing what will be shut down\.
-   + To shut down all resources in a section, choose **Shut down all**\.
-
-     A confirmation dialog is displayed listing what will be shut down\.
-
-     Choose **Shut down all** to proceed\.
+     Choose **Shut Down All** to proceed\.

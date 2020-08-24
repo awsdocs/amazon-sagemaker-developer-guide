@@ -43,7 +43,7 @@ The following restrictions apply to all warm start tuning jobs:
 
 ## Warm Start Tuning Sample Notebook<a name="warm-start-tuning-sample-notebooks"></a>
 
-For a sample notebook that shows how to use warm start tuning, see [https://github\.com/awslabs/amazon\-sagemaker\-examples/blob/master/hyperparameter\_tuning/image\_classification\_warmstart/hpo\_image\_classification\_warmstart\.ipynb](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/hyperparameter_tuning/image_classification_warmstart/hpo_image_classification_warmstart.ipynb)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Example Notebooks](howitworks-nbexamples.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the Amazon SageMaker samples\. The warm start tuning example notebook is located in the **Hyperparameter tuning** section, and is named `hpo_image_classification_warmstart.ipynb`\. To open a notebook, click on its **Use** tab and select **Create copy**\.
+For a sample notebook that shows how to use warm start tuning, see [https://github\.com/awslabs/amazon\-sagemaker\-examples/blob/master/hyperparameter\_tuning/image\_classification\_warmstart/hpo\_image\_classification\_warmstart\.ipynb](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/hyperparameter_tuning/image_classification_warmstart/hpo_image_classification_warmstart.ipynb)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Example Notebooks](howitworks-nbexamples.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the Amazon SageMaker samples\. The warm start tuning example notebook is located in the **Hyperparameter tuning** section, and is named `hpo_image_classification_warmstart.ipynb`\. To open a notebook, click on its **Use** tab and select **Create copy**\.
 
 ## Create a Warm Start Tuning Job<a name="warm-start-tuning-example"></a>
 
@@ -63,10 +63,10 @@ Create the `HyperParameterTuningJobWarmStartConfig` object:
 
 ```
 warm_start_config = {
-          "ParentHyperParameterTuningJobs" : [ 
+          "ParentHyperParameterTuningJobs" : [
           {"HyperParameterTuningJobName" : 'MyParentTuningJob'}
           ],
-          "WarmStartType" : "IdenticalDataAndAlgorithm"    
+          "WarmStartType" : "IdenticalDataAndAlgorithm"
 }
 ```
 
