@@ -1,12 +1,12 @@
-# Get Started: Use Amazon SageMaker Containers to Run a Python Script<a name="build-container-to-train-script-get-started"></a>
+# Get Started: Build Your Custom Training Container with Amazon SageMaker<a name="build-container-to-train-script-get-started"></a>
 
-To run your own training model using the Amazon SageMaker Containers, build a Docker container through an Amazon SageMaker Notebook instance\. 
+To run your own training model, build a Docker container using the [Amazon SageMaker Training Toolkit](https://github.com/aws/sagemaker-training-toolkit) through an Amazon SageMaker notebook instance\.
 
-**To create an Amazon SageMaker notebook instance**
+## Step 1: Create an Amazon SageMaker notebook instance<a name="byoc-training-step1"></a>
 
-1. Open [the Amazon SageMaker Dashboard](https://console.aws.amazon.com/sagemaker/)\. 
+1. Open the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\. 
 
-1. Choose **Notebook**, **Notebook instances**, and **Create notebook instance**\. 
+1. In the left navigation pane, choose **Notebook**, choose **Notebook instances**, and then choose **Create notebook instance**\. 
 
 1. On the **Create notebook instance** page, provide the following information: 
 
@@ -14,38 +14,41 @@ To run your own training model using the Amazon SageMaker Containers, build a Do
 
    1. For **Notebook Instance type**, choose **ml\.t2\.medium**\.
 
-   1. For **IAM role**, choose **Create a new role**\.
+   1. In the **Permissions and encryption** section, do the following:
 
-      1. Choose **Create a new role**\.
+      1. For **IAM role**, choose **Create a new role**\.
 
       1. On the **Create an IAM role** page, choose **Specific S3 buckets**, specify an S3 bucket named **sagemaker\-run\-script**, and then choose **Create role**\.
 
-         Amazon SageMaker creates an IAM role named `AmazonSageMaker-ExecutionRole-YYYYMMDDTHHmmSS`\. For example, `AmazonSageMaker-ExecutionRole-20190429T110788`\. Note that the execution role naming convention uses the date and time when the role was created, separated by a `T`\. Record the role name because you'll need it later\.
+         Amazon SageMaker creates an IAM role named `AmazonSageMaker-ExecutionRole-YYYYMMDDTHHmmSS`\. For example, `AmazonSageMaker-ExecutionRole-20190429T110788`\. Note that the execution role naming convention uses the date and time when the role was created, separated by a `T`\.
 
-   1. For **Root Access**, choose **Enabled**\.
+   1. For **Root Access**, choose **Enable**\.
 
    1. Choose **Create notebook instance**\. 
 
-      It takes a few minutes for Amazon SageMaker to launch a ML compute instance—in this case, a notebook instance—and attach an ML storage volume to it\. The notebook instance has a preconfigured Jupyter notebook server and a set of Anaconda libraries\. For more information, see the [  `CreateNotebookInstance`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstance.html) API\. 
+1.  On the **Notebook instances** page, the **Status** is **Pending**\. It can take a few minutes for Amazon SageMaker to launch a machine learning compute instance—in this case, it launches a notebook instance—and attaches an ML storage volume to it\. The notebook instance has a preconfigured Jupyter notebook server and a set of Anaconda libraries\. For more information, see [  CreateNotebookInstance](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstance.html)\. 
 
-1.  Choose RunScriptNotebookInstance, scroll down to **Permissions and encryption** section, and record **the IAM role ARN number** in a notepad\. **The IAM role ARN number** looks like the following: `'arn:aws:iam::109225375568:role/service-role/AmazonSageMaker-ExecutionRole-20190429T110788'` 
+1.  In the **Permissions and encryption** section, copy **the IAM role ARN number**, and paste into a notepad file to save it temporarily\. You will use this IAM role ARN number later to configure a local training estimator in the notebook instance\. **The IAM role ARN number** looks like the following: `'arn:aws:iam::111122223333:role/service-role/AmazonSageMaker-ExecutionRole-20190429T110788'` 
 
-1. When the status of the notebook instance is `InService`, from **Actions**, choose **Open JupyterLab**\.
+1. After the status of the notebook instance changes to **InService**, choose **Open JupyterLab**\.
 
-**To create and upload the Dockerfile and Python training scripts**
+## Step 2: Create and upload the Dockerfile and Python training scripts<a name="byoc-training-step2"></a>
 
-1.  On the left top corner, choose New Folder icon\. Name the folder `docker_test_folder`\. 
+1.  After JupyterLab opens, create a new folder in the home directory of your JupyterLab\. In the upper\-left corner, choose the **New Folder** icon, and then enter the folder name `docker_test_folder`\. 
 
-1.  Create a `Dockerfile` text file\. 
+1.  Create a `Dockerfile` text file in the `docker_test_folder` directory\. 
 
-   1.  In the `docker_test_folder` directory, choose New Launcher icon \(\+ mark\) on the top left corner\. In the right panel, select **Text File** under the **Other** section\. 
+   1. Choose the **New Launcher** icon \(\+\) in the upper\-left corner\. 
 
-   1.  Copy and paste the following `Dockerfile` code into your newly created text file\. 
+   1. In the right pane under the **Other** section, choose **Text File**\.
+
+   1.  Paste the following `Dockerfile` sample code into your text file\. 
 
       ```
-      FROM tensorflow/tensorflow:2.0.0a0
+      FROM tensorflow/tensorflow:2.2.0rc2-gpu-py3-jupyter
       
-      RUN pip install sagemaker-containers
+      # Install sagemaker-training toolkit to enable SageMaker Python SDK
+      RUN pip3 install sagemaker-training
       
       # Copies the training code inside the container
       COPY train.py /opt/ml/code/train.py
@@ -55,14 +58,14 @@ To run your own training model using the Amazon SageMaker Containers, build a Do
       ```
 
       The Dockerfile script performs the following tasks:
-      + `FROM tensorflow/tensorflow:2.0.0a0` downloads the TensorFlow library used to run the Python script\.
-      + `RUN pip install sagemaker-containers` [Amazon SageMaker Containers](https://github.com/aws/sagemaker-containers) contains the common functionality necessary to create a container compatible with Amazon SageMaker\. 
-      + `COPY train.py /opt/ml/code/train.py` copies the script to the location inside the container that is expected by Amazon SageMaker\. The script must be located in this folder\.
-      + `ENV SAGEMAKER_PROGRAM train.py` defines train\.py as the name of the entrypoint script that is located in the /opt/ml/code folder for the container\. This is the only environmental variable that you must specify when, you are using your own container\.
+      + `FROM tensorflow/tensorflow:2.2.0rc2-gpu-py3-jupyter` – Downloads the TensorFlow docker base image\. You can replace this with any docker base image you want to bring to build containers as well as AWS pre\-built container base images\.
+      + `RUN pip install sagemaker-training` – Installs [Amazon SageMaker Training Toolkit](https://github.com/aws/sagemaker-training-toolkit) that contains the common functionality necessary to create a container compatible with Amazon SageMaker\. 
+      + `COPY train.py /opt/ml/code/train.py` – Copies the script to the location inside the container that is expected by Amazon SageMaker\. The script must be located in this folder\.
+      + `ENV SAGEMAKER_PROGRAM train.py` – Takes your training script `train.py` as the entrypoint script copied in the `/opt/ml/code` folder of the container\. This is the only environmental variable that you must specify when you build your own container\.
 
-   1.  Make sure you rename the text file name `Dockerfile`\. On the left directory navigation, the text file name is automatically set as `untitled.txt`\. Open a context manu \(pop\-up menu\) for the file, choose **Rename**, and rename the file as `Dockerfile` without `.txt` extension\. Make sure you **save the file** by hitting `Ctrl+s` or `Command+s`\.
+   1.  On the left directory navigation pane, the text file name might automatically be named `untitled.txt`\. To rename the file, right\-click the file, choose **Rename**, rename the file as `Dockerfile` without the `.txt` extension, and then press `Ctrl+s` or `Command+s` to save the file\.
 
-1.  In the same way, create a `train.py` file with your own training script\. You can test using the following example `train.py` script\. 
+1.  Create or upload a training script `train.py` in the `docker_test_folder`\. You can use the following example script for this exercise\. 
 
    ```
    import tensorflow as tf
@@ -88,63 +91,215 @@ To run your own training model using the Amazon SageMaker Containers, build a Do
    model.evaluate(x_test, y_test)
    ```
 
-**To build the container**
+## Step 3: Build the container<a name="byoc-training-step3"></a>
 
-1. The Jupyter Notebook instance opens in the SageMaker directory\. The Docker build command must be run from the `docker` directory you created, in this case `docker_test_folder`\. To open a new terminal window on your notebook instance, choose **New Launch** icon, select **Terminal** under **Other** section, and run the following command to change into the `docker_test_folder` directory\.
+1. In the JupyterLab home directory, open a Jupyter notebook\. To open a new notebook, choose the **New Launch** icon and then choose **conda\_tensorflow2\_p36** in the **Notebook** section\. 
 
-   ```
-   cd SageMaker/docker_test_folder
-   ```
-
-   This returns your current directory as follows\.
+1. Run the following command in the first notebook cell to change to the `docker_test_folder` directory:
 
    ```
-   pwd
+   % cd ~/SageMaker/docker_test_folder
+   ```
+
+   This returns your current directory as follows:
+
+   ```
+   ! pwd
    ```
 
    `output: /home/ec2-user/SageMaker/docker_test_folder`
 
-1. To build the Docker container, run the following Docker build command including the final period\.
+1. To build the Docker container, run the following Docker build command, including the space followed by a period at the end:
 
    ```
-   docker build -t tf-2.0 .
+   ! docker build -t tf-custom-container-test .
    ```
+
+   The Docker build command must be run from the docker directory you created, in this case `docker_test_folder`\.
 **Note**  
-If you get an error that it can't find the Dockerfile, make sure the files have correct names and are saved\. Remember that `docker` is looking for a file called `Dockerfile` in the current directory\. If you named it something else, you can pass in the filename manually with the `-f` argument\. For example:   
+If you get the following error message that docker cannot find the Dockerfile, make sure the Dockerfile has the correct name and has been saved to the directory\.  
 
    ```
-   docker build -t tf-2.0 -f Dockerfile.txt .
+   unable to prepare context: unable to evaluate symlinks in Dockerfile path: 
+   lstat /home/ec2-user/SageMaker/docker/Dockerfile: no such file or directory
+   ```
+Remember that `docker` looks for a file specifically called `Dockerfile` without any extension within the current directory\. If you named it something else, you can pass in the file name manually with the `-f` flag\. For example, if you named your Dockerfile as `Dockerfile-text.txt`, run the following command:  
+
+   ```
+   ! docker build -t tf-custom-container-test -f Dockerfile-text.txt .
    ```
 
-**To test the container**
+## Step 4: Test the container<a name="byoc-training-step4"></a>
 
-1. To test the container locally to the Notebook instance, open a Jupyter notebook\. Choose **New Launcher** and select **Notebook** in **`conda_tensorflow_p36`** framework\. 
+1. To test the container locally in the notebook instance, open a Jupyter notebook\. Choose **New Launcher** and choose **Notebook** in **`conda_tensorflow_p36`** framework\. 
 
-1. Copy and paste the following example script to the Notebook code cell to configure a Amazon SageMaker Estimator\.
+1. Paste the following example script into the notebook code cell to configure a Amazon SageMaker Estimator\.
+
+------
+#### [ SageMaker Python SDK v1 ]
 
    ```
    from sagemaker.estimator import Estimator
    
-   estimator = Estimator(image_name='tf-2.0',
-   	  role='Put_Your_ARN_Here',
-   	  train_instance_count=1,
-   	  train_instance_type='local')
+   estimator = Estimator(image_name='tf-custom-container-test',
+                         role='arn:aws:iam::111122223333:role/role-name',
+                         train_instance_count=1,
+                         train_instance_type='local')
    
    estimator.fit()
    ```
 
-1. Replace the `'Put_Your_ARN_Here'` value with **the IAM role ARN number** you recorded while configuring the notebook instance\. The ARN should look like: `'arn:aws:iam::109225375568:role/service-role/AmazonSageMaker-ExecutionRole-20190429T110788'`\.
+------
+#### [ SageMaker Python SDK v2 ]
+
+   ```
+   from sagemaker.estimator import Estimator
+   
+   estimator = Estimator(image_uri='tf-custom-container-test',
+                         role='arn:aws:iam::111122223333:role/role-name',
+                         instance_count=1,
+                         instance_type='local')
+   
+   estimator.fit()
+   ```
+
+------
+
+1. Replace the `'Put_Your_ARN_Here'` value with **the IAM role ARN number** you copied to a notepad file when you configured the notebook instance\. The ARN should look like the following: `'arn:aws:iam::111122223333:role/service-role/AmazonSageMaker-ExecutionRole-20190429T110788'`\.
 
 1. Run the code cell\. This test outputs the training environment configuration, the values used for the environmental variables, the source of the data, and the loss and accuracy obtained during training\.
 
-After you successfully run this local mode test, you can push the image to Amazon Elastic Container Registry and use it to run training jobs\. For examples that show how to complete these tasks, see [Building Your Own TensorFlow Container](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/advanced_functionality/tensorflow_bring_your_own/tensorflow_bring_your_own.ipynb)
+## Step 5: Push the container to Amazon Elastic Container Registry \(Amazon ECR\)<a name="byoc-training-step5"></a>
+
+1. After you successfully run the local mode test, you can push the docker container to [Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) and use it to run training jobs\. 
+
+   Run the following command lines in a notebook cell\.
+
+   ```
+   %%sh
+   
+   # Specify an algorithm name
+   algorithm_name=tf-custom-container-test
+   
+   account=$(aws sts get-caller-identity --query Account --output text)
+   
+   # Get the region defined in the current configuration (default to us-west-2 if none defined)
+   region=$(aws configure get region)
+   region=${region:-us-west-2}
+   
+   fullname="${account}.dkr.ecr.${region}.amazonaws.com/${algorithm_name}:latest"
+   
+   # If the repository doesn't exist in ECR, create it.
+   
+   aws ecr describe-repositories --repository-names "${algorithm_name}" > /dev/null 2>&1
+   if [ $? -ne 0 ]
+   then
+   aws ecr create-repository --repository-name "${algorithm_name}" > /dev/null
+   fi
+   
+   # Get the login command from ECR and execute it directly
+   
+   $(aws ecr get-login --region ${region} --no-include-email)
+   
+   # Build the docker image locally with the image name and then push it to ECR
+   # with the full name.
+   
+   docker build -t ${algorithm_name} .
+   docker tag ${algorithm_name} ${fullname}
+   
+   docker push ${fullname}
+   ```
+**Note**  
+This bash shell script may raise a permission issue similar to the following error message:  
+
+   ```
+   "denied: User: [ARN] is not authorized to perform: ecr:InitiateLayerUpload on resource: 
+   arn:aws:ecr:us-east-1:[id]:repository/tf-custom-container-test"
+   ```
+If this error occurs, you need to attach the **AmazonEC2ContainerRegistryFullAccess** policy to your IAM role\. Go to the [IAM console](https://console.aws.amazon.com/iam/home), choose **Roles** from the left navigation pane, look up the IAM role you used for the Notebook instance\. Under the **Permission** tab, choose the **Attach policies** button, and search the **AmazonEC2ContainerRegistryFullAccess** policy\. Mark the check box of the policy, and choose **Attach policy** to finish\.
+
+1. After you push the container, you can call the Amazon ECR image from anywhere in the SageMaker environment\. Run the following code example in the next notebook cell\. 
+
+   If you want to use this training container with Studio to use its visualization features, you can also run the following code in a Studio notebook cell to call the Amazon ECR image of your training container\.
+
+   ```
+   import boto3
+   
+   account_id = boto3.client('sts').get_caller_identity().get('Account')
+   ecr_repository = 'sagemaker-byoc-test'
+   tag = ':latest'
+   
+   region = boto3.session.Session().region_name
+   
+   uri_suffix = 'amazonaws.com'
+   if region in ['cn-north-1', 'cn-northwest-1']:
+       uri_suffix = 'amazonaws.com.cn'
+   
+   byoc_image_uri = '{}.dkr.ecr.{}.{}/{}'.format(account_id, region, uri_suffix, ecr_repository + tag)
+   
+   byoc_image_uri
+   # This should return something like
+   # 111122223333.dkr.ecr.us-east-2.amazonaws.com/sagemaker-byoc-test:latest
+   ```
+
+1. Use the `ecr_image` retrieved from the previous step to configure a SageMaker estimator object\. The following code sample configures a SageMaker estimator with the `byoc_image_uri` and initiates a training job on an Amazon EC2 instance\.
+
+------
+#### [ SageMaker Python SDK v1 ]
+
+   ```
+   import sagemaker
+   from sagemaker import get_execution_role
+   from sagemaker.estimator import Estimator
+   
+   estimator = Estimator(image_name=byoc_image_uri,
+                         role=get_execution_role(),
+                         base_job_name='tf-custom-container-test-job',
+                         train_instance_count=1,
+                         train_instance_type='ml.p2.xlarge')
+   
+   # start training
+   estimator.fit()
+   
+   # deploy the trained model
+   predictor = estimator.deploy(1, instance_type)
+   ```
+
+------
+#### [ SageMaker Python SDK v2 ]
+
+   ```
+   import sagemaker
+   from sagemaker import get_execution_role
+   from sagemaker.estimator import Estimator
+   
+   estimator = Estimator(image_uri=byoc_image_uri,
+                         role=get_execution_role(),
+                         base_job_name='tf-custom-container-test-job',
+                         instance_count=1,
+                         instance_type='ml.p2.xlarge')
+   
+   # start training
+   estimator.fit()
+   
+   # deploy the trained model
+   predictor = estimator.deploy(1, instance_type)
+   ```
+
+------
+
+For a full example that shows how to test a custom container locally and push it to an Amazon ECR image, see the [ Building Your Own TensorFlow Container](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/advanced_functionality/tensorflow_bring_your_own/tensorflow_bring_your_own.ipynb) example notebook\.
+
+## Step 6: Clean up resources<a name="byoc-training-step6"></a>
 
 **To clean up resources when done with the get started example**
 
-1. Open [the Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/), select the Notebook instance **RunScriptNotebookInstance**, choose **Actions**, and **Stop** the instance\. After the instance stops, **Delete** will be activated\. **Delete** the notebook instance\. 
+1. Open the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/), choose the notebook instance **RunScriptNotebookInstance**, choose **Actions**, and choose **Stop**\. It can take a few minutes for the instance to stop\. 
 
-1. Open [the Amazon S3console](https://console.aws.amazon.com/s3/) and delete the bucket that you created for storing model artifacts and the training dataset\. 
+1. After the instance **Status** changes to **Stopped**, choose **Actions**, choose **Delete**, and then choose **Delete** in the dialog box\. It can take a few minutes for the instance to be deleted\. The notebook instance disappears from the table when it has been deleted\. 
 
-1. Open [the IAM console](https://console.aws.amazon.com/iam/) and delete the IAM role\. If you created permission policies, you can delete them, too\. 
+1. Open the [Amazon S3 console](https://console.aws.amazon.com/s3/) and delete the bucket that you created for storing model artifacts and the training dataset\. 
+
+1. Open the [IAM console](https://console.aws.amazon.com/iam/) and delete the IAM role\. If you created permission policies, you can delete them, too\. 
 **Note**  
  The Docker container shuts down automatically after it has run\. You don't need to delete it\.

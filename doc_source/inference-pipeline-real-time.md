@@ -39,6 +39,7 @@ sm_model.deploy(initial_instance_count=1, instance_type='ml.c4.xlarge', endpoint
 The following example shows how to make real\-time predictions by calling an inference endpoint and passing a request payload in JSON format:
 
 ```
+import sagemaker
 from sagemaker.predictor import json_serializer, json_deserializer, RealTimePredictor
 from sagemaker.content_types import CONTENT_TYPE_CSV, CONTENT_TYPE_JSON
 
@@ -82,7 +83,7 @@ payload = {
         }
     }
 
-predictor = RealTimePredictor(endpoint=endpoint_name, sagemaker_session=sess, serializer=json_serializer,
+predictor = RealTimePredictor(endpoint=endpoint_name, sagemaker_session=sagemaker.Session(), serializer=json_serializer,
                                 content_type=CONTENT_TYPE_JSON, accept=CONTENT_TYPE_CSV)
 
 print(predictor.predict(payload))

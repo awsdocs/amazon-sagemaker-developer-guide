@@ -63,7 +63,7 @@ The attribute would appear as follows:
   }'
 ```
 
-While label mappings are included in individual worker output records, the overall result is represented as the `internal-color-map` in the consolidated results\.
+When using Ground Truth [built in task types](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html) with [annotation consolidation](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html) \(where more than one worker labels a single image\), label mappings are included in individual worker output records, however the overall result is represented as the `internal-color-map` in the consolidated results\.
 
 You can convert the `internal-color-map` to `label-mappings` in a custom template using the Liquid templating language:
 
@@ -168,5 +168,5 @@ The following is a sample of output from this element\.
 ### See Also<a name="semantic-segmentation-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
++ [Use Amazon SageMaker Ground Truth to Label Data](sms.md)
 + [Crowd HTML Elements Reference](sms-ui-template-reference.md)

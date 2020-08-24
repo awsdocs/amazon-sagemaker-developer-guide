@@ -1,6 +1,6 @@
 # Create a Notebook Instance<a name="howitworks-create-ws"></a>
 
-An *Amazon SageMaker notebook instance* is a fully managed ML compute instance running the Jupyter Notebook App\. Amazon SageMaker manages creating the instance and related resources\. Use Jupyter notebooks in your notebook instance to prepare and process data, write code to train models, deploy models to Amazon SageMaker hosting, and test or validate your models\.
+An *Amazon SageMaker notebook instance* is a ML compute instance running the Jupyter Notebook App\. Amazon SageMaker manages creating the instance and related resources\. Use Jupyter notebooks in your notebook instance to prepare and process data, write code to train models, deploy models to Amazon SageMaker hosting, and test or validate your models\.
 
 To create a notebook instance, use either the Amazon SageMaker console or the [  `CreateNotebookInstance`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstance.html) API\.
 
@@ -29,7 +29,7 @@ After receiving the request, Amazon SageMaker does the following:
 
    1. For **Notebook instance name**, type a name for your notebook instance\.
 
-   1. For **Notebook instance type**, choose an instance type for your notebook instance\. For a list of supported instance types, see [Amazon SageMaker Limits](https://docs.aws.amazon.com/general/latest/gr/sagemaker.html#limits_sagemaker)\. 
+   1. For **Notebook instance type**, choose an instance size suitable for your use case\. For a list of supported instance types and quotas, see [Amazon SageMaker Service Quotas](https://docs.aws.amazon.com/general/latest/gr/sagemaker.html#limits_sagemaker)\.
 
    1. For **Elastic Inference**, choose an inference accelerator type to associate with the notebook instance if you plan to conduct inferences from the notebook instance, or choose **none**\. For information about elastic inference, see [Use Amazon SageMaker Elastic Inference \(EI\) ](ei.md)\.
 
@@ -61,6 +61,6 @@ After receiving the request, Amazon SageMaker does the following:
 
 1. When the status of the notebook instance is `InService`, in the console, the notebook instance is ready to use\. Choose **Open Jupyter** next to the notebook name to open the classic Jupyter dashboard\.
 
-    You can choose **Open JupyterLab** to open the JupyterLab dashboard\. The dashboard provides access to your notebook instance and sample Amazon SageMaker notebooks that contain complete code walkthroughs\. These walkthroughs show how to use Amazon SageMaker to perform common machine learning tasks\. For more information, see [Use Example Notebooks](howitworks-nbexamples.md)\. For more information, see [Access Notebook Instances](howitworks-access-ws.md)\.
+    You can choose **Open JupyterLab** to open the JupyterLab dashboard\. The dashboard provides access to your notebook instance and sample Amazon SageMaker notebooks that contain complete code walkthroughs\. These walkthroughs show how to use Amazon SageMaker to perform common machine learning tasks\. For more information, see [Example Notebooks](howitworks-nbexamples.md)\. For more information, see [Access Notebook Instances](howitworks-access-ws.md)\.
 
    For more information about Jupyter notebooks, see [The Jupyter notebook](https://jupyter-notebook.readthedocs.io/en/stable/)\.

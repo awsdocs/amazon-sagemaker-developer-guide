@@ -47,5 +47,4 @@ If you use a notebook instance created before June 5th, 2020 to run this noteboo
 + [Next Steps](#sms-point-cloud-next-steps-getting-started)
 + [3D Point Cloud Task types](sms-point-cloud-task-types.md)
 + [3D Point Cloud Labeling Jobs Overview](sms-point-cloud-general-information.md)
-+ [Create a Labeling Category Configuration File for 3D Point Cloud Labeling Jobs](sms-point-cloud-label-category-config.md)
 + [Worker Instructions](sms-point-cloud-worker-instructions.md)

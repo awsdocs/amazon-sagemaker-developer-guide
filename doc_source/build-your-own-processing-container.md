@@ -159,7 +159,7 @@ processor = Processor(image_uri='<your_ecr_image_uri>',
                      role=role,
                      instance_count=1,
                      instance_type="ml.m5.xlarge")
-                     
+
 processor.run(inputs=[ProcessingInput(
                         source='<s3_uri or local path>',
                         destination='/opt/ml/processing/input_data')],

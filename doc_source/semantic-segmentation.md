@@ -48,17 +48,17 @@ s3://bucket_name
     |- validation
                  |
                  | - 00a0.jpg
-                 | - bananna.jpg              
+                 | - bananna.jpg
     |- train_annotation
                  |
                  | - 0000.png
                  | - coffee.png
     |- validation_annotation
                  |
-                 | - 00a0.png   
-                 | - bananna.png 
+                 | - 00a0.png
+                 | - bananna.png
     |- label_map
-                 | - train_label_map.json  
+                 | - train_label_map.json
                  | - validation_label_map.json
 ```
 
@@ -67,7 +67,7 @@ Every JPG image in the train and validation directories has a corresponding PNG 
 The image that is encoded is a simple 8\-bit integer when using modes\. To get from this mapping to a map of a label, the algorithm uses one mapping file per channel, called the *label map*\. The label map is used to map the values in the image with actual label indices\. In the default label map, which is provided by default if you don’t provide one, the pixel value in an annotation matrix \(image\) directly index the label\. These images can be grayscale PNG files or 8\-bit indexed PNG files\. The label map file for the unscaled default case is the following: 
 
 ```
-{ 
+{
   "scale": "1"
 }
 ```
@@ -75,7 +75,7 @@ The image that is encoded is a simple 8\-bit integer when using modes\. To get f
 To provide some contrast for viewing, some annotation software scales the label images by a constant amount\. To support this, the Amazon SageMaker semantic segmentation algorithm provides a rescaling option to scale down the values to actual label values\. When scaling down doesn’t convert the value to an appropriate integer, the algorithm defaults to the greatest integer less than or equal to the scale value\. The following code shows how to set the scale value to rescale the label values:
 
 ```
-{ 
+{
   "scale": "3"
 }
 ```

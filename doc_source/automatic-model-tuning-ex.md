@@ -7,7 +7,7 @@ You use the low\-level AWS SDK for Python \(Boto\) to configure and launch the h
 ## Prerequisites<a name="automatic-model-tuning-ex-prereq"></a>
 
 To run the code in this example, you need
-+ [An AWS account and an administrator user](gs-account-user.md)
++ [An AWS account and an administrator user](gs-set-up.md#gs-account-user)
 + [An Amazon S3 bucket for storing your training dataset and the model artifacts created during training](gs-config-permissions.md)
 + [A running Amazon SageMaker notebook instance](gs-setup-working-env.md)
 

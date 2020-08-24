@@ -14,7 +14,7 @@ You can create a Neo compilation job from either the Amazon SageMaker console, A
 
 ### Neo Available Regions<a name="neo-supported-regions"></a>
 
-Neo supports image classification models exported as frozen graphs from TensorFlow, MXNet, or PyTorch, and XGBoost models\. Neo is available in the following [AWS Service Regions](https://docs.aws.amazon.com/general/latest/gr/rande.html#sagemaker_region) where Amazon SageMaker is supported: 
+Neo is available in the following [AWS Service Regions](https://docs.aws.amazon.com/general/latest/gr/rande.html#sagemaker_region) where Amazon SageMaker is supported: 
 + **Asia Pacific** \(Hong Kong, Mumbai, Seoul, Singapore, Sydney, Tokyo\)
 + **Canada** \(Central\)
 + **China** \(Beijing, Ningxia\)
@@ -26,19 +26,24 @@ Neo supports image classification models exported as frozen graphs from TensorFl
 
 ### Neo\-supported Frameworks and Operators<a name="neo-supported-frame-op"></a>
 
-The image classification model files need to be formatted as a tar\.gz file that includes additional files that depend on the type of framework\.
+The image classification model files need to be formatted as a tar file \(tar\.gz\) that includes additional files that depend on the type of framework\.
+
+To find look\-up tables of Neo\-supported frameworks, operators, devices, and platforms, see the following pages:
++ [SageMaker Neo\-supported Frameworks and Operators](https://aws.amazon.com/releasenotes/sagemaker-neo-supported-frameworks-and-operators/)
++ [SageMaker Neo\-supported Devices and Platforms](https://aws.amazon.com/releasenotes/sagemaker-neo-supported-target-platforms-and-compiler-options/)
+
+Neo supports the following deep learning frameworks:
 + **[TensorFlow](https://aws.amazon.com/tensorflow/)**: Neo supports saved models and frozen models\.
 
-  For *saved models*, Neo expects one \.pb or one \.pbtxt file and a variables directory that contains variables\. 
+  For *saved models*, Neo expects one PB \(\.pb\) or one PBTXT \(\.pbtxt\) file and a variables directory that contains variables\. 
 
-  For *frozen models*, Neo expect only one \.pb or \.pbtxt file\.
-+ **[Keras](https://keras.io/)**: Neo expects one \.h5 file containing the model definition\.
-+ **[PyTorch](https://pytorch.org/)**: Neo expects one \.pth file containing the model definition\.
+  For *frozen models*, Neo expect only one PB \(\.pb\) or PBTXT \(\.pbtxt\) file\.
++ **[Keras](https://keras.io/)**: Neo expects one H5 file \(\.h5\) containing the model definition\.
++ **[PyTorch](https://pytorch.org/)**: Neo expects one PTH file \(\.pth\) containing the model definition\.
 + **[MXNET](https://aws.amazon.com/mxnet/)**: Neo expects one symbol file \(\.json\) and one parameter file \(\.params\)\.
 + **[XGBoost](https://github.com/dmlc/xgboost)**: Neo expects one XGBoost model file \(\.model\) where the number of nodes in a tree can't exceed 2^31\.
-+ **[ONNX](https://github.com/onnx/onnx)**: Neo expects one \.onnx file\.
-
-To find a full list of Neo\-supported frameworks and operators, see [SageMaker Neo\-supported Frameworks and Operators](https://aws.amazon.com/releasenotes/sagemaker-neo-supported-frameworks-and-operators/)\.
++ **[ONNX](https://github.com/onnx/onnx)**: Neo expects one ONNX file \(\.onnx\)\.
++ **[TFLite](https://www.tensorflow.org/lite/guide/get_started)**: Neo expects one NHWC file \(\.tflite\)\.
 
 **Topics**
 + [Neo Available Regions, Frameworks, and Operators](#neo-supported)
@@ -57,4 +62,4 @@ For sample notebooks that uses Amazon SageMaker Neo to train, compile, optimize,
 + [Model Optimization with an Image Classification Example](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker_neo_compilation_jobs/imageclassification_caltech/Image-classification-fulltraining-highlevel-neo.ipynb)
 + [Model Optimization with XGBoost Example ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker_neo_compilation_jobs/xgboost_customer_churn/xgboost_customer_churn_neo.ipynb)
 
-For instructions on how to run these example notebooks in Amazon SageMaker, see [Use Example Notebooks](howitworks-nbexamples.md)\. If you need instructions on how to create a notebook instance to run these examples, see Amazon SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. To navigate to the relevant example in your notebook instance, choose the **Amazon SageMaker Examples** tab to see a list of all of the Amazon SageMaker samples\. To open a notebook, choose its **Use** tab, then choose **Create copy**\.
+For instructions on how to run these example notebooks in Amazon SageMaker, see [Example Notebooks](howitworks-nbexamples.md)\. If you need instructions on how to create a notebook instance to run these examples, see Amazon SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. To navigate to the relevant example in your notebook instance, choose the **Amazon SageMaker Examples** tab to see a list of all of the Amazon SageMaker samples\. To open a notebook, choose its **Use** tab, then choose **Create copy**\.

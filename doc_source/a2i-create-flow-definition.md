@@ -16,7 +16,7 @@ Human loop activation conditions, which trigger the human loop—for example, co
 
 To create a flow definition, you must have completed the prerequisites described in [Prerequisites](a2i-getting-started.md#a2i-getting-started-prerequisites)\. 
 
-If you use the API to create a flow definition for any task type, or if you use a custom task type when creating a flow definition in the console, first you will need to create a worker task template\. For more information, see [Create a Worker UI](a2i-instructions-overview.md)\.
+If you use the API to create a flow definition for any task type, or if you use a custom task type when creating a flow definition in the console, first you will need to create a worker task template\. For more information, see [Create and Manage Worker Task Templates](a2i-instructions-overview.md)\.
 
 If you want to preview your worker task template while creating a flow definition for a built\-in task type in the console, ensure that you grant the role that you use to create the flow definition permission to access the Amazon S3 bucket that contains your template artifacts using a policy like the one described in [Enable Worker Task Template Previews ](a2i-permissions-security.md#permissions-for-worker-task-templates-augmented-ai)\.
 
@@ -27,7 +27,7 @@ If you want to preview your worker task template while creating a flow definitio
 
 ## Create a Flow Definition \(Console\)<a name="a2i-create-human-review-console"></a>
 
-Use this procedure to create a Amazon Augmented AI \(Amazon A2I\) human review workflow using the Amazon SageMaker console\. If you are new to Amazon A2I, we recommend that you create a private work team using people in your organization, and use this work team's ARN when creating your flow definition\. To learn how to set up a private workforce and create a work team, see [Create a Private Workforce \(Console\)](sms-workforce-create-private-console.md)\. If you have already set up a private workforce, see [Create a Work Team Using the Amazon SageMaker Console](sms-workforce-management-private-console.md#create-workteam-sm-console) to learn how to add a work team to that workforce\.
+Use this procedure to create a Amazon Augmented AI \(Amazon A2I\) human review workflow using the Amazon SageMaker console\. If you are new to Amazon A2I, we recommend that you create a private work team using people in your organization, and use this work team's ARN when creating your flow definition\. To learn how to set up a private workforce and create a work team, see [Create a Private Workforce \(Amazon SageMaker Console\)](sms-workforce-create-private-console.md)\. If you have already set up a private workforce, see [Create a Work Team Using the Amazon SageMaker Console](sms-workforce-management-private-console.md#create-workteam-sm-console) to learn how to add a work team to that workforce\.
 
 If you are using Amazon A2I with one of the built\-in task types, you can create worker instructions using a default worker task template provided by Augmented AI while creating a human review workflow in the console\. To see samples of the default templates provided by Augmented AI, see the built\-in task types in [Use Task Types](a2i-task-types-general.md)\.
 
@@ -64,11 +64,11 @@ If you are using Amazon A2I with one of the built\-in task types, you can create
             + \(Optional\) In **Additional instructions**, provide your workers with additional information and instructions\. 
 
               For information on creating effective instructions, see [Creating Good Worker Instructions](a2i-creating-good-instructions-guide.md)\.
-          + To select a custom template that you've created, choose it from the **Template** menu and provide a **Task description** to briefly describe the task for your workers\. To learn how to create a custom template, see [Create a Custom Worker Template \(Console\)](a2i-create-worker-template-console.md)\.
+          + To select a custom template that you've created, choose it from the **Template** menu and provide a **Task description** to briefly describe the task for your workers\. To learn how to create a custom template, see [Create a Worker Task Template](a2i-worker-template-console.md#a2i-create-worker-template-console)\.
 
    1. If you are using the custom task type:
 
-      1. In the **Worker task template** section, choose your template from the list\. All of the templates that you have created in the Amazon SageMaker console appear in this list\. To learn how to create a template for custom task types, see [Create a Worker UI](a2i-instructions-overview.md)\.
+      1. In the **Worker task template** section, choose your template from the list\. All of the templates that you have created in the Amazon SageMaker console appear in this list\. To learn how to create a template for custom task types, see [Create and Manage Worker Task Templates](a2i-instructions-overview.md)\.
 
 1. \(Optional\) Preview your worker template: 
 

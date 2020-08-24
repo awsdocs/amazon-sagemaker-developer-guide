@@ -84,7 +84,7 @@ response = client.create_labeling_job(
 )
 ```
 
-### Provide a Template for Multi\-label Image Classification<a name="custom-template-multi-image-label-classification"></a>
+### Provide a Template for Multi\-label Image Classification<a name="sms-custom-template-multi-image-label-classification"></a>
 
 If you create a labeling job using the API, you must supply a worker task template in `UiTemplateS3Uri`\. Copy and modify the following template\. Only modify the [https://docs.aws.amazon.com/sagemaker/latest/dg/sms-creating-instruction-pages.html#sms-creating-quick-instructions](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-creating-instruction-pages.html#sms-creating-quick-instructions), [https://docs.aws.amazon.com/sagemaker/latest/dg/sms-creating-instruction-pages.html#sms-creating-full-instructions](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-creating-instruction-pages.html#sms-creating-full-instructions), and `header`\. 
 

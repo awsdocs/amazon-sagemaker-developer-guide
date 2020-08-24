@@ -4,7 +4,7 @@ Use this page to become familiarize with the user interface and tools available 
 
 **Topics**
 + [Your Task](#sms-point-cloud-worker-instructions-ot-task)
-+ [Navigate the Worker Portal](#sms-point-cloud-worker-instructions-worker-ui-ot)
++ [Navigate the UI](#sms-point-cloud-worker-instructions-worker-ui-ot)
 + [Icon Guide](#sms-point-cloud-worker-instructions-ot-icons)
 + [Shortcuts](#sms-point-cloud-worker-instructions-ot-hot-keys)
 + [Saving Your Work and Submitting](#sms-point-cloud-worker-instructions-saving-work-ot)
@@ -41,7 +41,7 @@ Your UI automatically infers the location of that object in all other frames aft
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pointcloud/gifs/object_tracking/nav_frames.gif)
 
-## Navigate the Worker Portal<a name="sms-point-cloud-worker-instructions-worker-ui-ot"></a>
+## Navigate the UI<a name="sms-point-cloud-worker-instructions-worker-ui-ot"></a>
 
 You can navigate in the 3D scene using your keyboard and mouse\. You can:
 + Double click on specific objects in the point cloud to zoom into them\.
@@ -96,7 +96,9 @@ Use this table to learn about the icons you see in your worker task portal\.
 
 ## Shortcuts<a name="sms-point-cloud-worker-instructions-ot-hot-keys"></a>
 
-The shortcuts listed in the **Shortcuts** menu can help you navigate the 3D point cloud and use tools to add and edit cuboids\. Before you start your task, we recommend that you review the **Shortcuts** menu and become acquainted with these commands\. You need to use some of the 3D cuboid controls to edit your cuboid\. 
+The shortcuts listed in the **Shortcuts** menu can help you navigate the 3D point cloud and use tools to add and edit cuboids\. 
+
+Before you start your task, it is recommended that you review the **Shortcuts** menu and become acquainted with these commands\. You need to use some of the 3D cuboid controls to edit your cuboid\. 
 
 ## Saving Your Work and Submitting<a name="sms-point-cloud-worker-instructions-saving-work-ot"></a>
 

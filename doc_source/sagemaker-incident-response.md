@@ -9,4 +9,4 @@ AWS CloudTrail provides a record of actions taken by a user, role, or an AWS ser
 **Note**  
 CloudTrail does not monitor calls to [ `runtime_InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html)\.
 
-You can create rules in Amazon CloudWatch Events to react to status changes in status in an Amazon SageMaker training, hyperperparameter tuning, or batch transform job\. For more information, see [React to Amazon SageMaker Job Status Changes with CloudWatch Events](cloudwatch-events.md)\.
+You can create rules in Amazon CloudWatch Events to react to status changes in status in an Amazon SageMaker training, hyperperparameter tuning, or batch transform job\. For more information, see [Automating Amazon SageMaker with Amazon EventBridge](automating-sagemaker-with-eventbridge.md)\.

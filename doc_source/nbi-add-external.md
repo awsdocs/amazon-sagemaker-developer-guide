@@ -1,77 +1,9 @@
 # Install External Libraries and Kernels in Notebook Instances<a name="nbi-add-external"></a>
 
-Amazon SageMaker notebook instances come with multiple environments already installed\. These environments contain Jupyter kernels and Python packages including: scikit, Pandas, NumPy, TensorFlow, and MXNet\. These environments, along with all files in the `sample-notebooks` folder, are refreshed when you stop and start a notebook instance\. You can also install your own environments that contain your choice of packages and kernels\. This is typically done using `conda install` or `pip install`\.
+Amazon SageMaker notebook instances come with multiple environments already installed\. These environments contain Jupyter kernels and Python packages including: scikit, Pandas, NumPy, TensorFlow, and MXNet\. These environments, along with all files in the `sample-notebooks` folder, are refreshed when you stop and start a notebook instance\. You can also install your own environments that contain your choice of packages and kernels\.
 
-The different Jupyter kernels in Amazon SageMaker notebook instances are separate conda environments\. For information about conda environments, see [Managing environments](https://conda.io/docs/user-guide/tasks/manage-environments.html) in the *Conda* documentation\. For an example of creating a custom kernel in an Amazon SageMaker Studio notebook, see [Create a Custom Kernel](notebooks-create-custom-kernel.md)\.
+The different Jupyter kernels in Amazon SageMaker notebook instances are separate conda environments\. For information about conda environments, see [Managing environments](https://conda.io/docs/user-guide/tasks/manage-environments.html) in the *Conda* documentation\.
 
-If you want to use an external library in a specific kernel, install the library in the environment for that kernel\. You can do this either in the terminal or in a notebook cell\. The following procedures show how to install Theano so that you can use it in a notebook with a conda\_mxnet\_p36`` kernel\.
+Install custom environments and kernels on the notebook instance's Amazon EBS volume\. This ensures that they persist when you stop and restart the notebook instance, and that any external libraries you install are not updated by Amazon SageMaker\. To do that, use a lifecycle configuration that includes both a script that runs when you create the notebook instance \(`on-create)` and a script that runs each time you restart the notebook instance \(`on-start`\)\. For more information about using notebook instance lifecycle configurations, see [Customize a Notebook Instance Using a Lifecycle Configuration Script](notebook-lifecycle-config.md)\. There is a GitHub repository that contains sample lifecycle configuration scripts at [SageMaker Notebook Instance Lifecycle Config Samples](https://github.com/aws-samples/amazon-sagemaker-notebook-instance-lifecycle-config-samples)\.
 
-**To install Theano from a terminal**
-
-1. Open a notebook instance\.
-
-1. In the Jupyter dashboard, choose **New**, and then choose **Terminal**\.
-
-1. In the terminal, type the following commands:
-
-   ```
-   conda install -n mxnet_p36 -c conda-forge theano
-      python
-      import theano
-   ```
-
-**To install Theano from a Jupyter notebook cell**
-
-1. Open a notebook instance\.
-
-1. In the Jupyter dashboard, choose **New**, and then choose **conda\_mxnet\_p36**\.
-
-1. In a cell in the new notebook, type the following command:
-
-   ```
-   !pip install theano
-   ```
-
-## Maintain a Sandboxed Python Environment<a name="nbi-isolated-environment"></a>
-
-Amazon SageMaker periodically updates the Python and dependency versions in the environments installed on a notebook instance when it is stopped and restarted\. For more information, see [Notebook Instance Software Updates](nbi-software-updates.md)\. To maintain an isolated Python environment that does not change versions, create a lifecycle configuration that runs each time you start your notebook instance\. For information about creating lifecycle configurations, see [Customize a Notebook Instance Using a Lifecycle Configuration Script](notebook-lifecycle-config.md)\.
-
-The following example lifecycle configuration script installs Miniconda on your notebook instance\. This allows you to create environments in your notebook instance with specific versions of Python and dependencies that Amazon SageMaker does not update:
-
-```
-#!/bin/bash
-
-set -e
-
-WORKING_DIR=/home/ec2-user/.myproject
-mkdir -p "$WORKING_DIR"
-
-# Install Miniconda to get a separate python and pip
-wget https://repo.anaconda.com/miniconda/Miniconda3-4.5.12-Linux-x86_64.sh -O "$WORKING_DIR/miniconda.sh"
-
-# Install Miniconda into the working directory
-bash "$WORKING_DIR/miniconda.sh" -b -u -p "$WORKING_DIR/miniconda"
-
-# Install pinned versions of any dependencies
-source "$WORKING_DIR/miniconda/bin/activate"
-pip install boto3==1.9.86
-pip install requests==2.21.0
-
-# Bootstrapping code
-
-# Cleanup
-source "$WORKING_DIR/miniconda/bin/deactivate"
-rm -rf "$WORKING_DIR/miniconda.sh"
-```
-
-You can also add a sandboxed Python installation as a kernel that you can use in a Jupyter notebook by including the following code to the above lifecycle configuration:
-
-```
-source "$WORKING_DIR/miniconda/bin/activate"
-
-# If required, add this as a kernel
-pip install ipykernel
-python -m ipykernel install --user --name MyProjectEnv --display-name "Python (myprojectenv)"
-
-source "$WORKING_DIR/miniconda/bin/deactivate"
-```
+The examples at [https://github\.com/aws\-samples/amazon\-sagemaker\-notebook\-instance\-lifecycle\-config\-samples/blob/master/scripts/persistent\-conda\-ebs/on\-create\.sh](https://github.com/aws-samples/amazon-sagemaker-notebook-instance-lifecycle-config-samples/blob/master/scripts/persistent-conda-ebs/on-create.sh) and [https://github\.com/aws\-samples/amazon\-sagemaker\-notebook\-instance\-lifecycle\-config\-samples/blob/master/scripts/persistent\-conda\-ebs/on\-start\.sh](https://github.com/aws-samples/amazon-sagemaker-notebook-instance-lifecycle-config-samples/blob/master/scripts/persistent-conda-ebs/on-start.sh) show the best practice for installing environments and kernels on a notebook instance\. The `on-create` script installs the `ipykernel` library so that you can use create custom environments as Jupyter kernels, and then uses `pip install` and `conda install` to install libraries\. You can adapt the script to create custom envronments and install libraries that you want\. Amazon SageMaker does not update these libraries when you stop and restart the notebook instance, so you can ensure that your custom environment has specific versions of libraries that you want\. The `on-start` script installs any custom environments that you create as Jupyter kernels, so that they appear in the dropdown list in the Jupyter **New** menu\.

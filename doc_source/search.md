@@ -1,4 +1,4 @@
-# Search<a name="search"></a>
+# Search Using the SageMaker Console and API<a name="search"></a>
 
 Developing a machine learning model typically requires extensive experimenting with different datasets, algorithms, and hyperparameter values\. To manage up to thousands of machine learning model experiments, use Amazon SageMaker's search capabilities\.
 
@@ -7,7 +7,7 @@ You can use SageMaker search to:
 + Find the best performing model by reviewing training job and model metrics, such as training loss or validation accuracy\.
 + Trace a model's lineage to the training job and its related resources, such as the training datasets\.
 
-This topic covers searching from the SageMaker console and the SageMaker API\. For information on searching in Amazon SageMaker Studio, see [Compare and Evaluate Trials](studio-leaderboard.md)\.
+This topic covers searching from the SageMaker console and the SageMaker API\. For information on searching in Amazon SageMaker Studio, see [Search Experiments Using Studio](experiments-search-studio.md)\.
 
 **Topics**
 + [Sample Notebooks for Managing ML Experiments](#search-sample-notebooks)
@@ -102,7 +102,7 @@ To the find and evaluate training jobs or to get suggestions for items used in e
 
 ### Find Training Jobs \(API\)<a name="search-api"></a>
 
-To find training jobs, create a search parameter using the `search_params` parameter\. Then use the search function in the `smclient` subprocess in the AWS SDK for Python \(Boto 3\)\. 
+To find training jobs, create a search parameter using the `search_params` parameter\. Then use the search function in the `smclient` subprocess in the AWS SDK for Python \(Boto3\)\. 
 
 The following example shows how to use the [ `Search`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Search.html) API to find training jobs\. 
 
@@ -128,7 +128,7 @@ results = smclient.search(**search_params)
 
 ### Evaluate Models \(API\)<a name="search-organize-api"></a>
 
-To evaluate models, run a search as described in [Find Training Jobs \(API\)](#search-api), review model metrics, then, use the AWS SDK for Python \(Boto 3\) to create a table and plot it\.
+To evaluate models, run a search as described in [Find Training Jobs \(API\)](#search-api), review model metrics, then, use the AWS SDK for Python \(Boto3\) to create a table and plot it\.
 
 The following example shows how to evaluate models and to display the results in a table\.
 
@@ -156,7 +156,7 @@ from IPython.display import display, HTMLdisplay(HTML(df.to_html()))
 
 To get suggestions for a search, use the [ `GetSearchSuggestions`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_GetSearchSuggestions.html) API\.
 
-The following example for AWS SDK for Python \(Boto 3\) is a `get_search_suggestions` request for items containing `"linear".`
+The following example for AWS SDK for Python \(Boto3\) is a `get_search_suggestions` request for items containing `linear`\.
 
 ```
 search_suggestion_params={

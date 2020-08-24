@@ -48,7 +48,7 @@ Workers can navigate through the 3D point cloud by zooming in and out, and movin
 You can create a 3D point cloud labeling job using the Amazon SageMaker console or API operation, [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)\. To create a labeling job for this task type you need the following: 
 + A single\-frame input manifest file\. To learn how to create this type of manifest file, see [Create a Point Cloud Frame Input Manifest File](sms-point-cloud-single-frame-input-data.md)\. If you are a new user of Ground Truth 3D point cloud labeling modalities, we recommend that you review [Accepted Raw 3D Data Formats](sms-point-cloud-raw-data-types.md)\. 
 + A work team from a private or vendor workforce\. You cannot use Amazon Mechanical Turk workers for 3D point cloud labeling jobs\. To learn how to create workforces and work teams, see [Create and Manage Workforces](sms-workforce-management.md)\.
-+ A label category configuration file\. For more information, see [Create a Labeling Category Configuration File for 3D Point Cloud Labeling Jobs](sms-point-cloud-label-category-config.md)\. 
++ A label category configuration file\. For more information, see [Create a Labeling Category Configuration File with Label Category Attributes](sms-label-cat-config-attributes.md)\. 
 
 Additionally, make sure that you have reviewed and satisfied the [Assign IAM Permissions to Use Ground Truth](sms-security-permission.md)\. 
 
@@ -64,7 +64,7 @@ The page, [Create a Labeling Job \(API\)](sms-create-labeling-job-api.md), provi
   There should not be an entry for the `UiTemplateS3Uri` parameter\. 
 + Your [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelAttributeName](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelAttributeName) must end in `-ref`\. For example, `ss-labels-ref`\. 
 + Your input manifest file must be a single\-frame manifest file\. For more information, see [Create a Point Cloud Frame Input Manifest File](sms-point-cloud-single-frame-input-data.md)\. 
-+ You specify your labels and worker instructions in a label category configuration file\. See [Create a Labeling Category Configuration File for 3D Point Cloud Labeling Jobs](sms-point-cloud-label-category-config.md) to learn how to create this file\. 
++ You specify your labels and worker instructions in a label category configuration file\. See [Create a Labeling Category Configuration File with Label Category Attributes](sms-label-cat-config-attributes.md) to learn how to create this file\. 
 + You need to provide a pre\-defined ARNs for the pre\-annotation and post\-annotation \(ACS\) Lambda functions\. These ARNs are specific to the AWS Region you use to create your labeling job\. 
   + To find the pre\-annotation Lambda ARN, refer to [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-PreHumanTaskLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-PreHumanTaskLambdaArn)\. Use the Region you are creating your labeling job in to find the correct ARN\. For example, if you are creating your labeling job in us\-east\-1, the ARN will be `arn:aws:lambda:us-east-1:432418664414:function:PRE-3DPointCloudSemanticSegmentation`\. 
   + To find the post\-annotation Lambda ARN, refer to [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AnnotationConsolidationConfig.html#sagemaker-Type-AnnotationConsolidationConfig-AnnotationConsolidationLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AnnotationConsolidationConfig.html#sagemaker-Type-AnnotationConsolidationConfig-AnnotationConsolidationLambdaArn)\. Use the Region you are creating your labeling job in to find the correct ARN\. For example, if you are creating your labeling job in us\-east\-1, the ARN will be `arn:aws:lambda:us-east-1:432418664414:function:ACS-3DPointCloudSemanticSegmentation`\. 
@@ -81,7 +81,7 @@ To create an adjustment labeling job, use the instructions in the previous secti
 **Important**  
 When you create a labeling job in the console, if you did not specify a label category attribute name, the **Name** of your job is used as the LabelAttributeName\. 
 
-  For example, if your label category attribute name was `point-cloud-labels` in your first labeling job, add the following to your semantic segmentation adjustment labeling job label category configuration file\. To learn how to create this file, see [Create a Labeling Category Configuration File for 3D Point Cloud Labeling Jobs](sms-point-cloud-label-category-config.md)\. 
+  For example, if your label category attribute name was `point-cloud-labels` in your first labeling job, add the following to your semantic segmentation adjustment labeling job label category configuration file\. To learn how to create this file, see [Create a Labeling Category Configuration File with Label Category Attributes](sms-label-cat-config-attributes.md)\. 
 
   ```
   {
@@ -124,4 +124,4 @@ You can create an adjustment labeling job in the console by *chaining* a success
 
 When you create a 3D point cloud semantic segmentation labeling job, tasks are sent to workers\. When these workers complete their tasks, their annotations are written to the Amazon S3 bucket you specified when you created the labeling job\. The output data format determines what you see in your Amazon S3 bucket when your labeling job status \([LabelingJobStatus](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeLabelingJob.html#API_DescribeLabelingJob_ResponseSyntax)\) is `Completed`\. 
 
-If you are a new user of Ground Truth, see [Output Data](sms-data-output.md) to learn more about the Ground Truth output data format\. To learn about the 3D point cloud object detection output data format, see [3D Point Cloud Semantic Segmentation](sms-data-output.md#sms-output-point-cloud-segmentation)\. 
+If you are a new user of Ground Truth, see [Output Data](sms-data-output.md) to learn more about the Ground Truth output data format\. To learn about the 3D point cloud object detection output data format, see [3D Point Cloud Semantic Segmentation Output](sms-data-output.md#sms-output-point-cloud-segmentation)\. 

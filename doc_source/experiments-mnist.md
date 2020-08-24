@@ -1,13 +1,15 @@
-# Track and compare trials in Amazon SageMaker Studio<a name="experiments-mnist"></a>
+# Track and Compare Tutorial<a name="experiments-mnist"></a>
 
 This tutorial demonstrates how to visually track and compare trials in a model training experiment using Amazon SageMaker Studio\. The basis of the tutorial is the MNIST Handwritten Digits Classification Experiment \(MNIST\) example notebook\.
 
 It is intended that this topic be viewed alongside Studio with the MNIST notebook open\. As you run through the cells, the sections in this document highlight the relevant code and show you how to observe the results in Studio\. Some of the code snippets have been edited for brevity\.
 
+To clean up the resources created by the notebook, see [Clean Up SageMaker Experiment Resources](experiments-cleanup.md)\.
+
 For a tutorial that showcases additional features of Studio, see [Amazon SageMaker Studio Tour](gs-studio-end-to-end.md)\.
 
 **Prerequisites**
-+ A local copy of the [MNIST](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/aws_sagemaker_studio/sagemaker_experiments/mnist-handwritten-digits-classification-experiment.ipynb) example notebook and the companion [mnist\.py](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/aws_sagemaker_studio/sagemaker_experiments/mnist.py) file\. Both are available from the [awslabs/amazon\-sagemaker\-examples](https://github.com/awslabs/amazon-sagemaker-examples) repository\. To download the files, choose each link, right\-click on the **Raw** button, and then choose **Save as**\.
++ A local copy of the [MNIST](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/aws_sagemaker_studio/sagemaker_experiments/mnist-handwritten-digits-classification-experiment.ipynb) example notebook and the companion [mnist\.py](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/aws_sagemaker_studio/sagemaker_experiments/mnist.py) file\. Both files are available from the `aws_sagemaker_studio/sagemaker_experiments` folder in the [awslabs/amazon\-sagemaker\-examples](https://github.com/awslabs/amazon-sagemaker-examples) repository\. To download the files, choose each link, right\-click on the **Raw** button, and then choose **Save as**\.
 + An AWS SSO or IAM account to sign\-on to Amazon SageMaker Studio\. For more information, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
 
 **Topics**
@@ -16,7 +18,6 @@ For a tutorial that showcases additional features of Studio, see [Amazon SageMak
 + [Transform and Track the Input Data](#experiments-mnist-s3bucket)
 + [Create and Track an Experiment](#experiments-mnist-experiment)
 + [Compare and Analyze Trials](#experiments-mnist-compare-trials)
-+ [Clean Up Resources](#experiments-mnist-cleanup)
 
 ## Open the Notebook in Studio<a name="experiments-mnist-notebook"></a>
 
@@ -200,57 +201,3 @@ This section deviates from the notebook and shows you how to compare and analyze
 
    Your screen should look similar to the following:  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-mnist-test-lost-chart-props.png)
-
-## Clean Up Resources<a name="experiments-mnist-cleanup"></a>
-
-To avoid incurring unnecessary charges, delete the resources you created after you're done with the tutorial\. You can't delete the Experiment resources through the Amazon SageMaker Management Console or the Studio UI\. The following code shows how to clean up these resources using the Experiments SDK\.
-
-To delete the experiment, first you must delete all trials in the experiment\. To delete a trial, first you must remove all trial components from the trial\. To delete a trial component, first you must remove the component from all trials\.
-
-**Note**  
-Trial components can exist independent of trials and experiments\. You might want keep them if you plan on further exploration\. If so, comment out `tc.delete()`
-
-**To cleanup `mnist_experiment`**
-
-```
-def cleanup(experiment):
-    for trial_summary in experiment.list_trials():
-        trial = Trial.load(sagemaker_boto_client=sm, trial_name=trial_summary.trial_name)
-        for trial_component_summary in trial.list_trial_components():
-            tc = TrialComponent.load(
-                sagemaker_boto_client=sm,
-                trial_component_name=trial_component_summary.trial_component_name)
-            trial.remove_trial_component(tc)
-            try:
-                # comment out to keep trial components
-                tc.delete()
-            except:
-                # tc is associated with another trial
-                continue
-            # to prevent throttling
-            time.sleep(.5)
-        trial.delete()
-    experiment.delete()
-
-cleanup(mnist_experiment)
-```
-
-**To cleanup any experiment**
-
-```
-experiment_to_cleanup = Experiment.load(
-    experiment_name=f"experiment-name", 
-    sagemaker_boto_client=sm)
-
-cleanup(experiment_to_cleanup)
-```
-
-For information on deleting your Amazon S3 buckets, see [How Do I Delete an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/delete-bucket.html)\.
-
-**To delete the notebook**
-
-1. Choose the notebook tab\.
-
-1. On the top menu, choose **File** and then choose **Close and Shutdown Notebook**\.
-
-1. Right\-click the notebook file and choose **Delete**\.

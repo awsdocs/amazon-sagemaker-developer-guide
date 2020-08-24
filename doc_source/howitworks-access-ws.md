@@ -11,6 +11,6 @@ To access your Amazon SageMaker notebook instances, choose one of the following 
 The URL that you get from a call to [  `CreatePresignedNotebookInstanceUrl`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreatePresignedNotebookInstanceUrl.html) is valid only for 5 minutes\. If you try to use the URL after the 5\-minute limit expires, you are directed to the AWS Management Console sign\-in page\.
 + Use the API\.
 
-  To get the URL for the notebook instance, call the [  `CreatePresignedNotebookInstanceUrl`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreatePresignedNotebookInstanceUrl.html) API and use the URL that the API returns to open the notebook instance\.
+  To get the URL for the notebook instance, call the [ `CreatePresignedNotebookInstanceUrl`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreatePresignedNotebookInstanceUrl.html) API and use the URL that the API returns to open the notebook instance\.
 
 Use the Jupyter notebook dashboard to create and manage notebooks and to write code\. For more information about Jupyter notebooks, see [http://jupyter\.org/documentation\.html](http://jupyter.org/documentation.html)\.

@@ -121,7 +121,7 @@ You can create an algorithm by using either the Amazon SageMaker console or the 
 
    1. For **Container DNS host name**, type the name of a DNS host for your image\.
 
-   1. For **Supported instance types for real\-time inference**, choose the instance types that your algorithm supports for models deployed as hosted endpoints in Amazon SageMaker\. For information, see [Deploy a Model on Amazon SageMaker Hosting Services](how-it-works-hosting.md)\.
+   1. For **Supported instance types for real\-time inference**, choose the instance types that your algorithm supports for models deployed as hosted endpoints in Amazon SageMaker\. For information, see [Deploy a Model on Amazon SageMaker Hosting Services](how-it-works-deployment.md#how-it-works-hosting)\.
 
    1. For **Supported instance types for batch transform jobs**, choose the instance types that your algorithm supports for batch transform jobs\. For information, see [Get Inferences for an Entire Dataset with Batch Transform](how-it-works-batch.md)\.
 

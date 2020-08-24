@@ -14,10 +14,10 @@ In this exercise, you learn how to create all of the resources that you need to 
 **Important**  
 For model training, deployment, and validation, you can use either of the following:  
 The high\-level [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)
-The AWS SDK for Python \(Boto 3\)
+The AWS SDK for Python \(Boto3\)
 The [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) abstracts several implementation details, and is easy to use\. This exercise provides code examples for both libraries\. If you're a first\-time Amazon SageMaker user, we recommend that you use the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.
 
-If you're new to Amazon SageMaker, we recommend that you read [How Amazon SageMaker Works](how-it-works.md) before starting this exercise\.
+If you're new to Amazon SageMaker, we recommend that you read [How Amazon SageMaker Works](whatis.md#how-it-works) before starting this exercise\.
 
 **Topics**
 + [Step 1: Create an Amazon S3 Bucket](gs-config-permissions.md)

@@ -12,14 +12,12 @@ Amazon SageMaker provides features to monitor and manage the training and valida
 + For guidance on using an augmented manifest file to label training data, see [Provide Dataset Metadata to Training Jobs with an Augmented Manifest File](augmented-manifest.md)\.
 
 **Topics**
++ [Choose an Algorithm](algorithms-choose.md)
 + [Manage Machine Learning with Amazon SageMaker Experiments](experiments.md)
 + [Amazon SageMaker Debugger](train-debugger.md)
 + [Perform Automatic Model Tuning](automatic-model-tuning.md)
-+ [Tune Multiple Algorithms to Find the Best Model](multiple-algorithm-hpo.md)
-+ [Use Reinforcement Learning with Amazon SageMaker](reinforcement-learning.md)
-+ [Train a Deep Graph Network](deep-graph-library.md)
-+ [Monitor and Analyze Training Jobs Using Metrics](training-metrics.md)
 + [Incremental Training in Amazon SageMaker](incremental-training.md)
 + [Managed Spot Training in Amazon SageMaker](model-managed-spot-training.md)
 + [Use Checkpoints in Amazon SageMaker](model-checkpoints.md)
 + [Provide Dataset Metadata to Training Jobs with an Augmented Manifest File](augmented-manifest.md)
++ [Monitor Amazon SageMaker](monitoring-overview.md)

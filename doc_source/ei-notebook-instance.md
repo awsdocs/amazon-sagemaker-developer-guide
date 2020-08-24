@@ -51,7 +51,7 @@ To use EI locally in an endpoint hosted on a notebook instance, use local mode w
 
 ### Use EI in Local Mode with Amazon SageMaker TensorFlow Estimators and Models<a name="ei-notebook-instance-local-tensorflow"></a>
 
-To use EI with TensorFlow in local mode, specify `local` for `instance_type` and `local_sagemaker_notebook` for `accelerator_type` when you call the `deploy` method of an estimator or a model object\. For more information about [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) TensorFlow estimators and models, see [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/tensorflow/README\.rst](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/tensorflow/README.rst)\.
+To use EI with TensorFlow in local mode, specify `local` for `instance_type` and `local_sagemaker_notebook` for `accelerator_type` when you call the `deploy` method of an estimator or a model object\. For more information about [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) TensorFlow estimators and models, see [https://sagemaker\.readthedocs\.io/en/stable/frameworks/tensorflow/index\.html](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/index.html)\.
 
 The following code shows how to use local mode with an estimator object\. To call the `deploy` method, you must have previously either:
 + Trained the model by calling the `fit` method of an estimator\.
@@ -66,7 +66,7 @@ tf_predictor = tf_model.deploy(initial_instance_count=1,
 
 ### Use EI in Local Mode with Amazon SageMaker Apache MXNet Estimators and Models<a name="ei-notebook-instance-local-mxnet"></a>
 
-To use EI with MXNet in local mode, specify `local` for `instance_type` and `local_sagemaker_notebook` for `accelerator_type` when you call the `deploy` method of an estimator or a model object\. For more information about [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) MXNet estimators and models, see [https://github\.com/aws/sagemaker\-python\-sdk/blob/master/src/sagemaker/mxnet/README\.rst](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/mxnet/README.rst)\. 
+To use EI with MXNet in local mode, specify `local` for `instance_type` and `local_sagemaker_notebook` for `accelerator_type` when you call the `deploy` method of an estimator or a model object\. For more information about [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) MXNet estimators and models, see [https://sagemaker\.readthedocs\.io/en/stable/frameworks/mxnet/index\.html](https://sagemaker.readthedocs.io/en/stable/frameworks/mxnet/index.html)\. 
 
 The following code shows how to use local mode with an estimator object\. You must have previously called the `fit` method of the estimator to train the model\.
 
@@ -81,7 +81,7 @@ For a complete example of using EI in local mode with MXNet, see the sample note
 
 ### Use EI in Local Mode with Amazon SageMaker PyTorch Estimators and Models<a name="ei-notebook-instance-local-pytorch"></a>
 
-To use EI with PyTorch in local mode, when you call the `deploy` method of an estimator or a model object, specify `local` for `instance_type` and `local_sagemaker_notebook` for `accelerator_type`\. For more information about [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) PyTorch estimators and models, see [SageMaker PyTorch Estimators and Models ](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/pytorch/README.rst)\. 
+To use EI with PyTorch in local mode, when you call the `deploy` method of an estimator or a model object, specify `local` for `instance_type` and `local_sagemaker_notebook` for `accelerator_type`\. For more information about [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) PyTorch estimators and models, see [SageMaker PyTorch Estimators and Models ](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/index.html)\. 
 
 The following code shows how to use local mode with an estimator object\. You must have previously called the `fit` method of the estimator to train the model\.
 

@@ -6,9 +6,9 @@ A Ground Truth workforce maps to a Cognito user pool\. A Ground Truth work team 
 
 Ground Truth only allows one workforce per account per AWS Region\. Each workforce has a dedicated Ground Truth work portal login URL\. 
 
-You can also restrict workers to a Classless Inter\-Domain Routing \(CIDR\) block/IP address range\. This means annotators must be on a specific network to access the annotation site\. You can add up to four CIDR blocks for one workforce\. To learn more, see [Manage Private Workforce Access to Tasks Using IP Addresses](sms-workforce-management-private-api.md)\.
+You can also restrict workers to a Classless Inter\-Domain Routing \(CIDR\) block/IP address range\. This means annotators must be on a specific network to access the annotation site\. You can add up to ten CIDR blocks for one workforce\. To learn more, see [Manage Private Workforce Using the Amazon SageMaker API](sms-workforce-management-private-api.md)\.
 
-To learn how you can create a private workforce, see [Create a Private Workforce](sms-workforce-create-private.md)\.
+To learn how you can create a private workforce, see [Create a Private Workforce \(Amazon Cognito\)](sms-workforce-create-private.md)\.
 
 ## Restrict Access to Workforce Types<a name="sms-security-permission-condition-keys"></a>
 

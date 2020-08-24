@@ -2,7 +2,34 @@
 
 A widget for identifying individual instances of specific objects within an image and creating a colored overlay for each labeled instance\.
 
-The following is an example of a Liquid template that uses the `<crowd-instance-segmentation>` element and allows annotators to add additional labels\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+The following is an example of a Liquid template that uses the `<crowd-instance-segmentation>`\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+
+```
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<crowd-form>
+  <crowd-instance-segmentation
+    name="annotatedResult"
+    src="{{ task.input.taskObject | grant_read_access }}"
+    header="Please label each of the requested objects in this image"
+    labels="['Cat', 'Dog', 'Bird']"
+  >
+    <full-instructions header="Segmentation Instructions">
+      <ol>
+          <li><strong>Read</strong> the task carefully and inspect the image.</li>
+          <li><strong>Read</strong> the options and review the examples provided to understand more about the labels.</li>
+          <li><strong>Choose</strong> the appropriate label that best suits the image.</li>
+      </ol>
+    </full-instructions>
+
+    <short-instructions>
+      <p>Use the tools to label all instances of the requested items in the image</p>
+    </short-instructions>
+  </crowd-instance-segmentation>
+</crowd-form>
+```
+
+Use a template similar to the following to allow workers to add their own categories \(labels\)\.
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
@@ -11,19 +38,17 @@ The following is an example of a Liquid template that uses the `<crowd-instance-
     id="annotator"
     name="myTexts"
     src="{{ task.input.taskObject | grant_read_access }}"
-    header="Please add labels and annotate each item"
+    header="Click Instructions to add new labels."
     labels="['placeholder']"
   >
     <short-instructions>
-      Describe your task here.
-
-      <br><br><br>
+      <h3>Add a label to describe each type of object in this image.</h3>
+      <h3>Cover each instance of each object with a segmentation mask.</h3>
+      <br>
       <h3>
         Add new label
       </h3>
-      
       <crowd-input name="_customLabel" id="customLabel"></crowd-input>
-      <br>
       <crowd-button id="addLabel">Add</crowd-button>
       
       <br><br><br>
@@ -162,5 +187,5 @@ The following is an example of output from this element\.
 ### See Also<a name="instance-segmentation-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
++ [Use Amazon SageMaker Ground Truth to Label Data](sms.md)
 + [Crowd HTML Elements Reference](sms-ui-template-reference.md)

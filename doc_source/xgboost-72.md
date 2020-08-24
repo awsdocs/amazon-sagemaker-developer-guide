@@ -34,7 +34,14 @@ SageMaker XGBoost uses the Python pickle module to serialize/deserialize the mod
 
   ```
   import pickle as pkl 
+  import tarfile
+  import xgboost
+  
+  t = tarfile.open('model.tar.gz', 'r:gz')
+  t.extractall()
+  
   model = pkl.load(open(model_file_path, 'rb'))
+  
   # prediction with test data
   pred = model.predict(dtest)
   ```

@@ -28,15 +28,15 @@ The following example defines 4 metrics:
     {
         "Name": "ganloss",
         "Regex": "GAN_loss=(.*?);",
-    },    
+    },
     {
         "Name": "discloss",
         "Regex": "disc_train_loss=(.*?);",
-    },    
+    },
     {
         "Name": "disc-combined",
         "Regex": "disc-combined=(.*?);",
-    },    
+    },
 ]
 ```
 

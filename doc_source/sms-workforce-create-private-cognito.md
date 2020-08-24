@@ -8,7 +8,7 @@
 + Security Assertion Markup Language \(SAML\) providers such as Active Directory 
 + The Amazon Cognito built\-in identity provider 
 
- For more information, see [What Is Amazon Cognito?](https://docs.aws.amazon.com/cognito/latest/developerguide/what-is-amazon-cognito.html) 
+ For more information, see [What Is Amazon Cognito?](https://docs.aws.amazon.com/cognito/latest/developerguide/what-is-amazon-cognito.html)\.
 
 To create a private workforce using Amazon Cognito, you must have an existing Amazon Cognito user pool containing at least one user group\. See [Tutorial: Creating a User Pool](https://docs.aws.amazon.com/cognito/latest/developerguide/tutorial-create-user-pool.html) to learn how to create a user pool\. See [Adding Groups to a User Pool](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-user-groups.html) to learn how to add a user group to a pool\. 
 
@@ -32,11 +32,11 @@ Once your user pool has been created, follow the steps below to create a private
 
 1. Choose a user group from your pool to import its members\. 
 
-1. Optionally choose an Amazon Simple Notification Service \(Amazon SNS\) topic to which to subscribe the team so that workers are notified by email when new labeling jobs become available\. Amazon SNS notifications are supported by Ground Truth and are not supported by Augmented AI\. If you subscribe workers to receive SNS notifications, they will only receive notifications about Ground Truth labeling jobs\. They will not receive notifications about Augmented AI tasks\. 
+1. Optionally choose an Amazon Simple Notification Service \(Amazon SNS\) topic to which to subscribe the team so that workers are notified by email when new labeling jobs become available\. Amazon SNS notifications are supported by Ground Truth and are not supported by Augmented AI\. If you subscribe workers to receive SNS notifications, they only receive notifications about Ground Truth labeling jobs\. They do not receive notifications about Augmented AI tasks\. 
 
 1. Choose **Create private team**\. 
 
 **Important**  
-After you create a workforce using a Amazon Cognito user pool, it should not be deleted without first deleting all work teams associated with that pool in the Amazon SageMaker console\.  
+After you create a workforce using an Amazon Cognito user pool, it should not be deleted without first deleting all work teams associated with that pool in the Amazon SageMaker console\.  
 
- After you import your private workforce, refresh the page to see the **Private workforce summary** page\. On this page, you can see information about the Amazon Cognito user pool for your workforce, a list of work teams for your workforce, and a list of all of the members of your private workforce\. This workforce will now be available to use in both Amazon Augmented AI and Amazon SageMaker Ground Truth for human review tasks and data labeling jobs respectively\. 
+ After you import your private workforce, refresh the page to see the **Private workforce summary** page\. On this page, you can see information about the Amazon Cognito user pool for your workforce, a list of work teams for your workforce, and a list of all of the members of your private workforce\. This workforce is now available to use in both Amazon Augmented AI and Amazon SageMaker Ground Truth for human review tasks and data labeling jobs respectively\. 

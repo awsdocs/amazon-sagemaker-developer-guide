@@ -124,7 +124,7 @@ The output of the training job includes a long list of messages like `[0]#011tra
 
 1. Double\-click the **Training** trial component to open the **Describe Trial Component** tab\. You can follow the progress of the training job here\.
 
-After the trial finishes, you can see details about the training job, such as metrics and hyperparameters, charts that visualize the training results\. To see the billable time and instance type, choose the **AWS Settings** header\.
+After the trial finishes, you can see details about the training job, such as metrics and hyperparameters, charts that visualize the training results\. To see the billable time and instance type, choose the **AWS Settings** heading\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-tour-trial-component.png)
 
@@ -173,7 +173,7 @@ In the previous step of creating a single trial, the output of the training job 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-tour-trials.png)
 
-After all the trials finish, sort the trials by choosing the **validation:error** header\. In a later section, you will deploy the trial with the lowest `validation:error`\.
+After all the trials finish, sort the trials by choosing the **validation:error** heading\. In a later section, you will deploy the trial with the lowest `validation:error`\.
 
 ## Create a Chart to Visualize Data<a name="studio-create-chart"></a>
 
@@ -259,7 +259,7 @@ You can create an endpoint and deploy a model using the SDK or the Amazon SageMa
 
 1. In the experiments list, right\-click the experiment and choose **Open in trial component list**\.
 
-1. To sort the trials, choose the **validation:error** header\.
+1. To sort the trials, choose the **validation:error** heading\.
 
 1. Right\-click the trial with the lowest `validation:error` and choose **Deploy model**\.
 

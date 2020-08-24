@@ -77,7 +77,7 @@ For example, you may create the label category *car* because you want workers to
 
 For each attribute you assigned to a label, you can add multiple options that workers select from\. Workers can select a single value from those options\. In the previous example, if you added the attribute *occluded* to the car label category, you might assign *partial*, *completely*, *no* to the *occluded* attribute and workers can select one of these options\.
 
-To learn how to add label category attributes, use the **Create Labeling Job** section on the [task type page](sms-point-cloud-task-types.md) of your choice\.
+To learn how to add label category attributes, use the **Create Labeling Job** section on the [task type page](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-point-cloud-task-types) of your choice\.
 
 ### Worker Instructions<a name="sms-point-cloud-worker-instructions-general"></a>
 

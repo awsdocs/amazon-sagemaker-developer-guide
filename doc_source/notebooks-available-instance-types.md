@@ -16,6 +16,7 @@ The following Amazon Elastic Compute Cloud \(Amazon EC2\) instance types are ava
 + ml\.m5\.large
 
   A fast launch instance type\.
++ ml\.m5\.xlarge
 + ml\.m5\.2xlarge
 + ml\.m5\.4xlarge
 + ml\.m5\.8xlarge
@@ -37,8 +38,6 @@ The following Amazon Elastic Compute Cloud \(Amazon EC2\) instance types are ava
 
 **Accelerated computing**
 + ml\.p3\.2xlarge
-+ ml\.p3\.8xlarge
-+ ml\.p3\.16xlarge
 + ml\.g4dn\.xlarge
 
   A fast launch instance type\.
@@ -47,5 +46,4 @@ The following Amazon Elastic Compute Cloud \(Amazon EC2\) instance types are ava
 + ml\.g4dn\.2xlarge
 + ml\.g4dn\.4xlarge
 + ml\.g4dn\.8xlarge
-+ ml\.g4dn\.12xlarge
 + ml\.g4dn\.16xlarge

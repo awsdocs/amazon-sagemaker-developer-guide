@@ -1,12 +1,12 @@
 # Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services<a name="ex1-deploy-model"></a>
 
-To deploy a model in Amazon SageMaker, hosting services, you can use either the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) or the AWS SDK for Python \(Boto 3\)\. This exercise provides code examples for both libraries\. 
+To deploy a model in Amazon SageMaker, hosting services, you can use either the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) or the AWS SDK for Python \(Boto3\)\. This exercise provides code examples for both libraries\. 
 
 The [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) abstracts several implementation details, and is easy to use\. If you're a first\-time Amazon SageMaker user, we recommend that you use it\. For more information, see [https://sagemaker\.readthedocs\.io/en/stable/overview\.html](https://sagemaker.readthedocs.io/en/stable/overview.html)\.
 
 **Topics**
 + [Deploy the Model to Amazon SageMaker Hosting Services \([Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\)](#ex1-deploy-model-sdk)
-+ [Deploy the Model to Amazon SageMaker Hosting Services \(AWS SDK for Python \(Boto 3\)\)\.](#ex1-deploy-model-boto)
++ [Deploy the Model to Amazon SageMaker Hosting Services \(AWS SDK for Python \(Boto3\)\)\.](#ex1-deploy-model-boto)
 
 ## Deploy the Model to Amazon SageMaker Hosting Services \([Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\)<a name="ex1-deploy-model-sdk"></a>
 
@@ -26,7 +26,7 @@ It also returns a `sagemaker.predictor.RealTimePredictor` object, which you can 
 **Next Step**  
 [Step 7: Validate the Model](ex1-test-model.md)
 
-## Deploy the Model to Amazon SageMaker Hosting Services \(AWS SDK for Python \(Boto 3\)\)\.<a name="ex1-deploy-model-boto"></a>
+## Deploy the Model to Amazon SageMaker Hosting Services \(AWS SDK for Python \(Boto3\)\)\.<a name="ex1-deploy-model-boto"></a>
 
 Deploying a model using the AWS SDK for Python \(Boto 3\) is a three\-step process: 
 

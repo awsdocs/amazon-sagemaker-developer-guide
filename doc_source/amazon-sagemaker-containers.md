@@ -9,6 +9,9 @@ To install the Amazon SageMaker Containers library, use the `RUN pip install sag
 
 After you build a Docker image, you push it to the Amazon Elastic Container Registry \(Amazon ECR\)\. To create a container, you pull the image from Amazon ECR and then build the container using the `docker build` command\.
 
+**Note**  
+For Amazon SageMaker hosting containers for real\-time inference you can push your image to a private Docker registry in your Amazon VPC and pull the image from that private registry to build your container\. For more information, see [Use a Private Docker Registry for Real\-Time Inference Containers](your-algorithms-containers-inference-private.md)\.
+
 When Amazon SageMaker trains a model, it creates the following file folder structure in the container's `/opt/ml` directory\.
 
 ```

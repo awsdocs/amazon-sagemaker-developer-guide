@@ -122,7 +122,7 @@ let response = {
 Multi\-record inference with protobuf input: 
 
 ```
-{ 
+{
   "features": [],
   "label": {
     "closest_cluster": {
@@ -270,7 +270,7 @@ When you create a transform job, the `SplitType` must be set according to the `C
 
 For more information on response formats for specific algorithms, see the following:
 + [PCA Response Formats](PCA-in-formats.md)
-+ [Linear Learner Response Formats](LL-in-formats.md)
++ [Linear learner response formats](LL-in-formats.md)
 + [NTM Response Formats](ntm-in-formats.md)
 + [K\-Means Response Formats](km-in-formats.md)
 + [Factorization Machine Response Formats](fm-in-formats.md)

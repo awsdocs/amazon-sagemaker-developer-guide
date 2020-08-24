@@ -102,7 +102,6 @@ To use the Amazon SageMaker console, you need to grant permissions for additiona
           "Action":[
             "iam:ListRoles",
             "iam:CreateRole",
-            "iam:CreateRole",
             "iam:CreatePolicy",
             "iam:AttachRolePolicy"
           ],
@@ -147,7 +146,7 @@ To use the Amazon SageMaker Ground Truth console, you need to grant permissions 
             "Action": [
                 "aws-marketplace:DescribeListings",
                 "aws-marketplace:ViewSubscriptions",
-                
+
                 "cognito-idp:AdminAddUserToGroup",
                 "cognito-idp:AdminCreateUser",
                 "cognito-idp:AdminDeleteUser",
@@ -168,15 +167,15 @@ To use the Amazon SageMaker Ground Truth console, you need to grant permissions 
                 "cognito-idp:ListUserPools",
                 "cognito-idp:UpdateUserPool",
                 "cognito-idp:UpdateUserPoolClient",
-                
+
                 "groundtruthlabeling:DescribeConsoleJob",
                 "groundtruthlabeling:ListDatasetObjects",
                 "groundtruthlabeling:RunFilterOrSampleManifestJob",
                 "groundtruthlabeling:RunGenerateManifestByCrawlingJob",
-                
+
                 "lambda:InvokeFunction",
                 "lambda:ListFunctions",
-                
+
                 "s3:GetObject",
                 "s3:PutObject",
                 "s3:SelectObjectContent"
@@ -577,7 +576,7 @@ This example shows how you might create a policy that allows IAM users to view t
             "Action": [
                 "iam:GetUserPolicy",
                 "iam:ListGroupsForUser",
-                  "iam:ListAttachedUserPolicies",
+                "iam:ListAttachedUserPolicies",
                 "iam:ListUserPolicies",
                 "iam:GetUser"
             ],
@@ -869,7 +868,7 @@ The following policy restricts an IAM user to specify a AWS KMS key to encrypt i
                 }
             }
         }
-        
+
      ]
 }
 ```
@@ -895,7 +894,7 @@ The following policy restricts an IAM user to specify a AWS KMS key to encrypt t
                 }
             }
         }
-        
+
      ]
 }
 ```
@@ -948,7 +947,7 @@ The following policy restricts an IAM user to use a specific instance type when 
                 }
             }
         }
-        
+
      ]
 }
 ```
@@ -976,7 +975,7 @@ The following policy restricts an IAM user to use a specific elastic inference \
                 }
             }
         }
-        
+
      ]
 }
 ```
@@ -1104,7 +1103,7 @@ For example, the following policy allows access to the [ `CreateTrainingJob`](ht
 {
     "Version": "2012-10-17",
     "Statement": [
-        
+
         {
             "Effect": "Allow",
             "Action": "sagemaker:CreateTrainingJob",
@@ -1132,7 +1131,7 @@ For example, the following policy allows access to a notebook instance only from
 {
     "Version": "2012-10-17",
     "Statement": [
-        
+
         {
             "Effect": "Allow",
             "Action": "sagemaker:CreatePresignedNotebookInstanceUrl",

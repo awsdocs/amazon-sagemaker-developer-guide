@@ -1,4 +1,4 @@
-# BlazingText Algorithm<a name="blazingtext"></a>
+# BlazingText algorithm<a name="blazingtext"></a>
 
 The Amazon SageMaker BlazingText algorithm provides highly optimized implementations of the Word2vec and text classification algorithms\. The Word2vec algorithm is useful for many downstream natural language processing \(NLP\) tasks, such as sentiment analysis, named entity recognition, machine translation, etc\. Text classification is an important task for applications that perform web searches, information retrieval, ranking, and document classification\.
 
@@ -150,14 +150,29 @@ accept: application/jsonlines
 
 {"prob": [prob_1], "label": ["__label__1"]}
 {"prob": [prob_1], "label": ["__label__1"]}
-                    
+
 If you have passed the value of k to be more than 1, then response will be in this format:
 
 {"prob": [prob_1, prob_2], "label": ["__label__1", "__label__2"]}
 {"prob": [prob_1, prob_2], "label": ["__label__1", "__label__2"]}
 ```
 
-For both supervised \(text classification\) and unsupervised \(Word2Vec\) modes, the binaries \(*\*\.bin*\) produced by BlazingText can be cross\-consumed by fastText and vice versa\. You can use binaries produced by BlazingText by fastText\. Likewise, you can host the model binaries created with fastText using BlazingText\. However, the binaries are only supported when training on CPU and single GPU; training on multi\-GPU will not produce binaries\.
+For both supervised \(text classification\) and unsupervised \(Word2Vec\) modes, the binaries \(*\*\.bin*\) produced by BlazingText can be cross\-consumed by fastText and vice versa\. You can use binaries produced by BlazingText by fastText\. Likewise, you can host the model binaries created with fastText using BlazingText\.
+
+Here is an example of how to use a model generated with BlazingText with fastText:
+
+```
+#Download the model artifact from S3
+aws s3 cp s3://<YOUR_S3_BUCKET>/<PREFIX>/model.tar.gz model.tar.gz
+
+#Unzip the model archive
+tar -xzf model.tar.gz
+
+#Use the model archive with fastText
+fasttext predict ./model.bin test.txt
+```
+
+However, the binaries are only supported when training on CPU and single GPU; training on multi\-GPU will not produce binaries\.
 
 For more details on dataset formats and model hosting, see the example notebooks [Text Classification with the BlazingText Algorithm](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/blazingtext_text_classification_dbpedia/blazingtext_text_classification_dbpedia.ipynb), [FastText Models](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/blazingtext_hosting_pretrained_fasttext/blazingtext_hosting_pretrained_fasttext.ipynb), and [Generating Subword Embeddings with the Word2Vec Algorithm](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/blazingtext_word2vec_subwords_text8/blazingtext_word2vec_subwords_text8.ipynb)\.
 

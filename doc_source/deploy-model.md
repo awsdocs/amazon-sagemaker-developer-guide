@@ -1,7 +1,7 @@
-# Deploy Models<a name="deploy-model"></a>
+# Deploy Models for Inference<a name="deploy-model"></a>
 
 After you build and train your models, you can deploy them to get predictions in one of two ways:
-+ To set up a persistent endpoint to get predictions from your models, use Amazon SageMaker hosting services\. For an overview on deploying a single model or multiple models with Amazon SageMaker hosting services, see [Deploy a Model on Amazon SageMaker Hosting Services](how-it-works-hosting.md)\.
++ To set up a persistent endpoint to get predictions from your models, use Amazon SageMaker hosting services\. For an overview on deploying a single model or multiple models with Amazon SageMaker hosting services, see [Deploy a Model on Amazon SageMaker Hosting Services](how-it-works-deployment.md#how-it-works-hosting)\.
 
   For an example of how to deploy a model to the Amazon SageMaker hosting service, see [Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services](ex1-deploy-model.md)\.
 
@@ -16,7 +16,7 @@ After you build and train your models, you can deploy them to get predictions in
 
 ## Prerequisites<a name="deploy-model-prereqs"></a>
 
-These topics assume that you have built and trained one or more machine learning models and are ready to deploy them\. If you are new to Amazon SageMaker and have not completed these prerequisite tasks, work through the steps in the [Get Started with Amazon SageMaker](gs.md) tutorial to familiarize yourself with an example of how Amazon SageMaker manages the data science process and how it handles model deployment\. For more information about building a model, see [Build Models](build-model.md)\. For information about training a model, see [Train Models](train-model.md)\.
+These topics assume that you have built and trained one or more machine learning models and are ready to deploy them\. If you are new to Amazon SageMaker and have not completed these prerequisite tasks, work through the steps in the [Get Started with Amazon SageMaker](gs.md) tutorial to familiarize yourself with an example of how Amazon SageMaker manages the data science process and how it handles model deployment\. For more information about training a model, see [Train Models](train-model.md)\.
 
 ## What do you want to do?<a name="deploy-model-tasks"></a>
 

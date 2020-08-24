@@ -1,4 +1,4 @@
-# Use Amazon SageMaker Ground Truth for Data Labeling<a name="sms"></a>
+# Use Amazon SageMaker Ground Truth to Label Data<a name="sms"></a>
 
 To train a machine learning model, you need a large, high\-quality, labeled dataset\. Ground Truth helps you build high\-quality training datasets for your machine learning models\. With Ground Truth, you can use workers from either Amazon Mechanical Turk, a vendor company that you choose, or an internal, private workforce along with machine learning to enable you to create a labeled dataset\. You can use the labeled dataset output from Ground Truth to train your own models\. You can also use the output as a training dataset for an Amazon SageMaker model\.
 

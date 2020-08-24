@@ -27,8 +27,8 @@ Others are reported only in the CloudWatch logs\. Common errors include the foll
    From the CloudWatch Log:
 
    ```
-   [10/16/2017 23:45:17 ERROR 139623806805824 train.py:48] 
-   Additional properties are not allowed (u'mini_batch_siz' was 
+   [10/16/2017 23:45:17 ERROR 139623806805824 train.py:48]
+   Additional properties are not allowed (u'mini_batch_siz' was
    unexpected)
    ```
 

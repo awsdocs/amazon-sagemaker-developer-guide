@@ -163,7 +163,7 @@ To preview your template, you need an IAM role with the following permissions to
 ```
 
 For Amazon Rekognition and Amazon Textract task types, you can preview your template using the Amazon Augmented AI section of the Amazon SageMaker console\. For custom task types, you preview your template by invoking the [ `RenderUiTemplate`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RenderUiTemplate.html) operation\. To preview your template, follow the instructions for your task type:
-+  Amazon Rekognition and Amazon Textract task types – In the Amazon SageMaker console, use the role 's Amazon Resource Name \(ARN\) in the procedure documented in [Create a Custom Worker Template \(Console\)](a2i-create-worker-template-console.md)\.
++  Amazon Rekognition and Amazon Textract task types – In the Amazon SageMaker console, use the role 's Amazon Resource Name \(ARN\) in the procedure documented in [Create a Worker Task Template](a2i-worker-template-console.md#a2i-create-worker-template-console)\.
 + Custom task types – In the `RenderUiTemplate` operation, use the role's ARN in the `RoleArn` parameter\.
 
 ## Additional Permissions and Security Resources<a name="additional-security-resources-augmented-ai"></a>
