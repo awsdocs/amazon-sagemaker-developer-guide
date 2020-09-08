@@ -1,34 +1,34 @@
 # Amazon SageMaker Identity\-Based Policy Examples<a name="security_iam_id-based-policy-examples"></a>
 
-By default, IAM users and roles don't have permission to create or modify Amazon SageMaker resources\. They also can't perform tasks using the AWS Management Console, AWS CLI, or AWS API\. An IAM administrator must create IAM policies that grant users and roles permission to perform specific API operations on the specified resources they need\. The administrator must then attach those policies to the IAM users or groups that require those permissions\. To learn how to attach policies to an IAM user or group, see [Adding and Removing IAM Identity Permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html) in the *IAM User Guide*\.
+By default, IAM users and roles don't have permission to create or modify SageMaker resources\. They also can't perform tasks using the AWS Management Console, AWS CLI, or AWS API\. An IAM administrator must create IAM policies that grant users and roles permission to perform specific API operations on the specified resources they need\. The administrator must then attach those policies to the IAM users or groups that require those permissions\. To learn how to attach policies to an IAM user or group, see [Adding and Removing IAM Identity Permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html) in the *IAM User Guide*\.
 
 To learn how to create an IAM identity\-based policy using these example JSON policy documents, see [Creating Policies on the JSON Tab](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html#access_policies_create-json-editor) in the *IAM User Guide*\.
 
 **Topics**
 + [Policy Best Practices](#security_iam_service-with-iam-policy-best-practices)
-+ [Using the Amazon SageMaker Console](#security_iam_id-based-policy-examples-console)
++ [Using the SageMaker Console](#security_iam_id-based-policy-examples-console)
 + [Allow Users to View Their Own Permissions](#security_iam_id-based-policy-examples-view-own-permissions)
-+ [Control Creation of Amazon SageMaker Resources with Condition Keys](#sagemaker-condition-examples)
-+ [Control Access to the Amazon SageMaker API by Using Identity\-based Policies](#api-access-policy)
-+ [Limit Access to Amazon SageMaker API and Runtime Calls by IP Address](#api-ip-filter)
++ [Control Creation of SageMaker Resources with Condition Keys](#sagemaker-condition-examples)
++ [Control Access to the SageMaker API by Using Identity\-based Policies](#api-access-policy)
++ [Limit Access to SageMaker API and Runtime Calls by IP Address](#api-ip-filter)
 + [Limit Access to a Notebook Instance by IP Address](#nbi-ip-filter)
-+ [Control Access to Amazon SageMaker Resources by Using Tags](#access-tag-policy)
++ [Control Access to SageMaker Resources by Using Tags](#access-tag-policy)
 + [Require the Presence or Absence of Tags for API Calls](#resource-tag)
 + [Use Tags with Hyperparameter Tuning Jobs](#resource-tag-tuning)
 
 ## Policy Best Practices<a name="security_iam_service-with-iam-policy-best-practices"></a>
 
-Identity\-based policies are very powerful\. They determine whether someone can create, access, or delete Amazon SageMaker resources in your account\. These actions can incur costs for your AWS account\. When you create or edit identity\-based policies, follow these guidelines and recommendations:
-+ **Get Started Using AWS Managed Policies** – To start using Amazon SageMaker quickly, use AWS managed policies to give your employees the permissions they need\. These policies are already available in your account and are maintained and updated by AWS\. For more information, see [Get Started Using Permissions With AWS Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#bp-use-aws-defined-policies) in the *IAM User Guide*\.
+Identity\-based policies are very powerful\. They determine whether someone can create, access, or delete SageMaker resources in your account\. These actions can incur costs for your AWS account\. When you create or edit identity\-based policies, follow these guidelines and recommendations:
++ **Get Started Using AWS Managed Policies** – To start using SageMaker quickly, use AWS managed policies to give your employees the permissions they need\. These policies are already available in your account and are maintained and updated by AWS\. For more information, see [Get Started Using Permissions With AWS Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#bp-use-aws-defined-policies) in the *IAM User Guide*\.
 + **Grant Least Privilege** – When you create custom policies, grant only the permissions required to perform a task\. Start with a minimum set of permissions and grant additional permissions as necessary\. Doing so is more secure than starting with permissions that are too lenient and then trying to tighten them later\. For more information, see [Grant Least Privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege) in the *IAM User Guide*\.
 + **Enable MFA for Sensitive Operations** – For extra security, require IAM users to use multi\-factor authentication \(MFA\) to access sensitive resources or API operations\. For more information, see [Using Multi\-Factor Authentication \(MFA\) in AWS](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html) in the *IAM User Guide*\.
 + **Use Policy Conditions for Extra Security** – To the extent that it's practical, define the conditions under which your identity\-based policies allow access to a resource\. For example, you can write conditions to specify a range of allowable IP addresses that a request must come from\. You can also write conditions to allow requests only within a specified date or time range, or to require the use of SSL or MFA\. For more information, see [IAM JSON Policy Elements: Condition](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html) in the *IAM User Guide*\.
 
-## Using the Amazon SageMaker Console<a name="security_iam_id-based-policy-examples-console"></a>
+## Using the SageMaker Console<a name="security_iam_id-based-policy-examples-console"></a>
 
-To access the Amazon SageMaker console, you must have a minimum set of permissions\. These permissions must allow you to list and view details about the Amazon SageMaker resources in your AWS account\. If you create an identity\-based policy that is more restrictive than the minimum required permissions, the console won't function as intended for entities \(IAM users or roles\) with that policy\.
+To access the Amazon SageMaker console, you must have a minimum set of permissions\. These permissions must allow you to list and view details about the SageMaker resources in your AWS account\. If you create an identity\-based policy that is more restrictive than the minimum required permissions, the console won't function as intended for entities \(IAM users or roles\) with that policy\.
 
-To ensure that those entities can still use the Amazon SageMaker console, also attach the following AWS managed policy to the entities\. For more information, see [Adding Permissions to a User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_change-permissions.html#users_change_permissions-add-console) in the *IAM User Guide*:
+To ensure that those entities can still use the SageMaker console, also attach the following AWS managed policy to the entities\. For more information, see [Adding Permissions to a User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_change-permissions.html#users_change_permissions-add-console) in the *IAM User Guide*:
 
 You don't need to allow minimum console permissions for users that are making calls only to the AWS CLI or the AWS API\. Instead, allow access to only the actions that match the API operation that you're trying to perform\.
 
@@ -601,11 +601,11 @@ This example shows how you might create a policy that allows IAM users to view t
 }
 ```
 
-## Control Creation of Amazon SageMaker Resources with Condition Keys<a name="sagemaker-condition-examples"></a>
+## Control Creation of SageMaker Resources with Condition Keys<a name="sagemaker-condition-examples"></a>
 
-Control fine\-grained access to allow the creation of Amazon SageMaker resources by using Amazon SageMaker\-specific condition keys\. For information about using condition keys in IAM policies, see [IAM JSON Policy Elements: Condition](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html) in the *IAM User Guide*\.
+Control fine\-grained access to allow the creation of SageMaker resources by using SageMaker\-specific condition keys\. For information about using condition keys in IAM policies, see [IAM JSON Policy Elements: Condition](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html) in the *IAM User Guide*\.
 
-The following table lists the Amazon SageMaker condition keys\. The condition keys, along with related API actions, and links to relevant documentation are also listed in [Condition Keys for Amazon SageMaker](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonsagemaker.html#amazonsagemaker-policy-keys) in the *IAM User Guide*\.
+The following table lists the SageMaker condition keys\. The condition keys, along with related API actions, and links to relevant documentation are also listed in [Condition Keys for SageMaker](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonsagemaker.html#amazonsagemaker-policy-keys) in the *IAM User Guide*\.
 
 
 **Amazon SageMaker File System Condition Keys**  
@@ -633,10 +633,10 @@ The following table lists the Amazon SageMaker condition keys\. The condition ke
 |  `sagemaker:WorkteamArn`  |  ARN  |  The workteam ARN associated with the request\.  | 
 |  `sagemaker:WorkteamType`  |  String  |  The work team type associated with the request\. All work teams fall into one of three types: public\-crowd, private\-crowd or vendor\-crowd\.  | 
 
-The following examples show how to use the Amazon SageMaker condition keys to control access\.
+The following examples show how to use the SageMaker condition keys to control access\.
 
 **Topics**
-+ [Control Access to Amazon SageMaker Resources by Using File System Condition Keys](#access-fs-condition-keys)
++ [Control Access to SageMaker Resources by Using File System Condition Keys](#access-fs-condition-keys)
 + [Restrict Training to a Specific VPC](#sagemaker-condition-vpc)
 + [Restrict Access to Workforce Types for Ground Truth Labeling Jobs and Amazon A2I Human Review Workflows](#sagemaker-condition-keys-labeling)
 + [Enforce Encryption of Input Data](#sagemaker-condition-kms)
@@ -646,9 +646,9 @@ The following examples show how to use the Amazon SageMaker condition keys to co
 + [Enforce a Specific EI Accelerator for Training Jobs](#sagemaker-condition-ei)
 + [Enforce Disabling Internet Access and Root Access for Creating Notebook Instances](#sagemaker-condition-nbi-lockdown)
 
-### Control Access to Amazon SageMaker Resources by Using File System Condition Keys<a name="access-fs-condition-keys"></a>
+### Control Access to SageMaker Resources by Using File System Condition Keys<a name="access-fs-condition-keys"></a>
 
-Amazon SageMaker training provides a secure infrastructure for the training algorithm to run in, but for some cases you may want increased defense in depth\. For example, you minimize the risk of running untrusted code in your algorithm, or you have specific security mandates in your organization\. For these scenarios, you can use the service\-specific condition keys in the Condition element of an IAM policy to scope down the user to specific file systems, directories, access modes \(read\-write, read\-only\) and security groups\.
+SageMaker training provides a secure infrastructure for the training algorithm to run in, but for some cases you may want increased defense in depth\. For example, you minimize the risk of running untrusted code in your algorithm, or you have specific security mandates in your organization\. For these scenarios, you can use the service\-specific condition keys in the Condition element of an IAM policy to scope down the user to specific file systems, directories, access modes \(read\-write, read\-only\) and security groups\.
 
 **Topics**
 + [Restrict an IAM User to Specific Directories and Access Modes](#access-fs-condition-keys-ex-dirs)
@@ -741,7 +741,7 @@ Although the above example can restrict an algorithm to a specific file system, 
 + Ensure that the file system only contains data that you trust your IAM users to access
 + Create an IAM role that restricts your IAM users to launching training jobs with algorithms from approved ECR repositories
 
-For more information on how to use roles with Amazon SageMaker, see [Amazon SageMaker Roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html)\. 
+For more information on how to use roles with SageMaker, see [SageMaker Roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html)\. 
 
 ### Restrict Training to a Specific VPC<a name="sagemaker-condition-vpc"></a>
 
@@ -779,7 +779,7 @@ The following policy enforces that a training job is created by an IAM user call
 
 ### Restrict Access to Workforce Types for Ground Truth Labeling Jobs and Amazon A2I Human Review Workflows<a name="sagemaker-condition-keys-labeling"></a>
 
-Amazon SageMaker Ground Truth and Amazon Augmented AI work teams fall into one of three [workforce types](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management.html): public \(with Amazon Mechanical Turk\), private, and vendor\. To restrict IAM user access to a specific work team using one of these types or the work team ARN, use the `sagemaker:WorkteamType` and/or the `sagemaker:WorkteamArn` condition keys\. For the `sagemaker:WorkteamType` condition key, use [string condition operators](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html#Conditions_String)\. For the `sagemaker:WorkteamArn` condition key, use [Amazon Resource Name \(ARN\) condition operators](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html#Conditions_ARN)\. If the user attempts to create a labeling job with a restricted work team, Amazon SageMaker returns an access denied error\. 
+Amazon SageMaker Ground Truth and Amazon Augmented AI work teams fall into one of three [workforce types](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management.html): public \(with Amazon Mechanical Turk\), private, and vendor\. To restrict IAM user access to a specific work team using one of these types or the work team ARN, use the `sagemaker:WorkteamType` and/or the `sagemaker:WorkteamArn` condition keys\. For the `sagemaker:WorkteamType` condition key, use [string condition operators](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html#Conditions_String)\. For the `sagemaker:WorkteamArn` condition key, use [Amazon Resource Name \(ARN\) condition operators](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html#Conditions_ARN)\. If the user attempts to create a labeling job with a restricted work team, SageMaker returns an access denied error\. 
 
 The policies below demonstrate different ways to use the `sagemaker:WorkteamType` and `sagemaker:WorkteamArn` condition keys with appropriate condition operators and valid condition values\. 
 
@@ -1025,21 +1025,21 @@ The following policy requires an IAM user to disable network access when creatin
 }
 ```
 
-## Control Access to the Amazon SageMaker API by Using Identity\-based Policies<a name="api-access-policy"></a>
+## Control Access to the SageMaker API by Using Identity\-based Policies<a name="api-access-policy"></a>
 
-To control access to Amazon SageMaker API calls and calls to Amazon SageMaker hosted endpoints, use identity\-based IAM policies\.
+To control access to SageMaker API calls and calls to SageMaker hosted endpoints, use identity\-based IAM policies\.
 
 **Topics**
-+ [Restrict Access to Amazon SageMaker API and Runtime to Calls from Within Your VPC](#api-access-policy-vpc)
++ [Restrict Access to SageMaker API and Runtime to Calls from Within Your VPC](#api-access-policy-vpc)
 
-### Restrict Access to Amazon SageMaker API and Runtime to Calls from Within Your VPC<a name="api-access-policy-vpc"></a>
+### Restrict Access to SageMaker API and Runtime to Calls from Within Your VPC<a name="api-access-policy-vpc"></a>
 
-If you set up an interface endpoint in your VPC, individuals outside the VPC can still connect to the Amazon SageMaker API and runtime over the internet unless you attach an IAM policy that restricts access to calls coming from within the VPC to all users and groups that have access to your Amazon SageMaker resources\. For information about creating a VPC interface endpoint for the Amazon SageMaker API and runtime, see [Connect to Amazon SageMaker Through a VPC Interface Endpoint](interface-vpc-endpoint.md)\.
+If you set up an interface endpoint in your VPC, individuals outside the VPC can still connect to the SageMaker API and runtime over the internet unless you attach an IAM policy that restricts access to calls coming from within the VPC to all users and groups that have access to your SageMaker resources\. For information about creating a VPC interface endpoint for the SageMaker API and runtime, see [Connect to SageMaker Through a VPC Interface Endpoint](interface-vpc-endpoint.md)\.
 
 **Important**  
-If you apply an IAM policy similar to one of the following, users can't access the specified Amazon SageMaker APIs through the console\.
+If you apply an IAM policy similar to one of the following, users can't access the specified SageMaker APIs through the console\.
 
-To restrict access to only connections made from within your VPC, create an AWS Identity and Access Management policy that restricts access to only calls that come from within your VPC\. Then add that policy to every AWS Identity and Access Management user, group, or role used to access the Amazon SageMaker API or runtime\.
+To restrict access to only connections made from within your VPC, create an AWS Identity and Access Management policy that restricts access to only calls that come from within your VPC\. Then add that policy to every AWS Identity and Access Management user, group, or role used to access the SageMaker API or runtime\.
 
 **Note**  
 This policy allows connections only to callers within a subnet where you created an interface endpoint\.
@@ -1093,9 +1093,9 @@ If you want to restrict access to the API to only calls made using the interface
 }
 ```
 
-## Limit Access to Amazon SageMaker API and Runtime Calls by IP Address<a name="api-ip-filter"></a>
+## Limit Access to SageMaker API and Runtime Calls by IP Address<a name="api-ip-filter"></a>
 
-To allow access to Amazon SageMaker API calls and runtime invocations only from IP addresses in a list that you specify, attach an IAM policy that denies access to the API unless the call comes from an IP address in the list to every AWS Identity and Access Management user, group, or role used to access the API or runtime\. For information about creating IAM policies, see [Creating IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html) in the *AWS Identity and Access Management User Guide*\. To specify the list of IP addresses that you want to have access to the API call, use the `IpAddress` condition operator and the `aws:SourceIP` condition context key\. For information about IAM condition operators, see [IAM JSON Policy Elements: Condition Operators](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html) in the *AWS Identity and Access Management User Guide*\. For information about IAM condition context keys, see [AWS Global Condition Context Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html)\.
+To allow access to SageMaker API calls and runtime invocations only from IP addresses in a list that you specify, attach an IAM policy that denies access to the API unless the call comes from an IP address in the list to every AWS Identity and Access Management user, group, or role used to access the API or runtime\. For information about creating IAM policies, see [Creating IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html) in the *AWS Identity and Access Management User Guide*\. To specify the list of IP addresses that you want to have access to the API call, use the `IpAddress` condition operator and the `aws:SourceIP` condition context key\. For information about IAM condition operators, see [IAM JSON Policy Elements: Condition Operators](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html) in the *AWS Identity and Access Management User Guide*\. For information about IAM condition context keys, see [AWS Global Condition Context Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html)\.
 
 For example, the following policy allows access to the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) only from IP addresses in the ranges `192.0.2.0`\-`192.0.2.255` and `203.0.113.0`\-`203.0.113.255`:
 
@@ -1152,11 +1152,11 @@ For example, the following policy allows access to a notebook instance only from
 The policy restricts access to both the call to `CreatePresignedNotebookInstanceUrl` and to the URL that the call returns\. The policy also restricts access to opening a notebook instance in the console and is enforced for every HTTP request and WebSocket frame that attempts to connect to the notebook instance\.
 
 **Note**  
-Using this method to filter by IP address is incompatible when [connecting to Amazon SageMaker through a VPC interface endpoint\.](https://docs.aws.amazon.com/sagemaker/latest/dg/interface-vpc-endpoint.html)\. For information about restricting access to a notebook instance when connecting through a VPC interface endpoint, see [Connect to a Notebook Instance Through a VPC Interface Endpoint](notebook-interface-endpoint.md)\.
+Using this method to filter by IP address is incompatible when [connecting to SageMaker through a VPC interface endpoint\.](https://docs.aws.amazon.com/sagemaker/latest/dg/interface-vpc-endpoint.html)\. For information about restricting access to a notebook instance when connecting through a VPC interface endpoint, see [Connect to a Notebook Instance Through a VPC Interface Endpoint](notebook-interface-endpoint.md)\.
 
-## Control Access to Amazon SageMaker Resources by Using Tags<a name="access-tag-policy"></a>
+## Control Access to SageMaker Resources by Using Tags<a name="access-tag-policy"></a>
 
-Control access to groups of Amazon SageMaker resources by attaching tags to the resources and specifying `ResourceTag` conditions in IAM policies\.
+Control access to groups of SageMaker resources by attaching tags to the resources and specifying `ResourceTag` conditions in IAM policies\.
 
 **Note**  
 Tag\-based policies don't work to restrict the following API calls:  
@@ -1187,7 +1187,7 @@ For example, suppose you've defined two different IAM groups, named `DevTeam1` a
 
 **To control access to API calls \(example\)**
 
-1. Add a tag with the key `Project` and value `A` to the notebook instances used for the first project\. For information about adding tags to Amazon SageMaker resources, see [ `AddTags`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AddTags.html)\. 
+1. Add a tag with the key `Project` and value `A` to the notebook instances used for the first project\. For information about adding tags to SageMaker resources, see [ `AddTags`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AddTags.html)\. 
 
 1. Add a tag with the key `Project` and value `B` to the notebook instances used for the second project\.
 

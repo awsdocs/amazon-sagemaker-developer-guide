@@ -137,7 +137,7 @@ Multi\-record inference with protobuf input:
 }
 ```
 
-Amazon SageMaker algorithms also support jsonlines format, where the per\-record response content is same as that in JSON format\. The multi\-record structure is a concatenation of per\-record response objects separated by newline characters\. The response content for the built\-in KMeans algorithm for 2 input data points is:
+SageMaker algorithms also support jsonlines format, where the per\-record response content is same as that in JSON format\. The multi\-record structure is a concatenation of per\-record response objects separated by newline characters\. The response content for the built\-in KMeans algorithm for 2 input data points is:
 
 ```
 {"distance_to_cluster": 23.40593910217285, "closest_cluster": 0.0}

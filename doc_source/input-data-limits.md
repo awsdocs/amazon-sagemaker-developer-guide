@@ -23,7 +23,7 @@ Input files can't exceed the following size\- quotas for both active and non\-ac
 
 ## Input Image Resolution Quotas<a name="non-active-learning-input-data-limits"></a>
 
-Image file resolution refers to the number of pixels in an image, and determines the amount of detail an image holds\. Image resolution quotas differ depending on the labeling job type and the Amazon SageMaker built\-in algorithm used\. The following table lists the resolution quotas for images used in active and non\-active learning labeling jobs\.
+Image file resolution refers to the number of pixels in an image, and determines the amount of detail an image holds\. Image resolution quotas differ depending on the labeling job type and the SageMaker built\-in algorithm used\. The following table lists the resolution quotas for images used in active and non\-active learning labeling jobs\.
 
 
 | Labeling Job | **Resolution Quota \- Non Active Learning** | Resolution Quota \- Active Learning | 

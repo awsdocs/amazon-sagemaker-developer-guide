@@ -2,7 +2,7 @@
 
 ## JSON response formats<a name="LL-json"></a>
 
-All Amazon SageMaker built\-in algorithms adhere to the common input inference format described in [Common Data Formats \- Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html)\. The following are the available output formats for the Amazon SageMaker linear learner algorithm\.
+All Amazon SageMaker built\-in algorithms adhere to the common input inference format described in [Common Data Formats \- Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html)\. The following are the available output formats for the SageMaker linear learner algorithm\.
 
 **Binary Classification**
 

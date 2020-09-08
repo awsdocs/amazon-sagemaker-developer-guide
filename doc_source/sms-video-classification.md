@@ -9,7 +9,7 @@ For this task type, if you create your own manifest file, use `"source-ref"` to 
 
 ## Create a Video Classification Labeling Job \(Console\)<a name="sms-creating-video-classification-console"></a>
 
-You can follow the instructions in [Create a Labeling Job \(Console\)](sms-create-labeling-job-console.md) to learn how to create a video classification labeling job in the Amazon SageMaker console\. In step 10, choose **Video** from the **Task category** dropdown list, and choose **Video Classification** as the task type\. 
+You can follow the instructions in [Create a Labeling Job \(Console\)](sms-create-labeling-job-console.md) to learn how to create a video classification labeling job in the SageMaker console\. In step 10, choose **Video** from the **Task category** dropdown list, and choose **Video Classification** as the task type\. 
 
 Ground Truth provides a worker UI similar to the following for labeling tasks\. When you create a labeling job in the console, you specify instructions to help workers complete the job and labels from which workers can choose\. 
 
@@ -17,7 +17,7 @@ Ground Truth provides a worker UI similar to the following for labeling tasks\. 
 
 ## Create a Video Classification Labeling Job \(API\)<a name="sms-creating-video-classification-api"></a>
 
-This section covers details you need to know when you create a labeling job using the Amazon SageMaker API operation `CreateLabelingJob`\. This API defines this operation for all AWS SDKs\. To see a list of language\-specific SDKs supported for this operation, review the **See Also** section of [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)\.
+This section covers details you need to know when you create a labeling job using the SageMaker API operation `CreateLabelingJob`\. This API defines this operation for all AWS SDKs\. To see a list of language\-specific SDKs supported for this operation, review the **See Also** section of [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)\.
 
 Follow the instructions on [Create a Labeling Job \(API\)](sms-create-labeling-job-api.md) and do the following while you configure your request: 
 + Use a pre\-annotation Lambda function that ends with `PRE-VideoClassification`\. To find the pre\-annotation Lambda ARN for your Region, see [PreHumanTaskLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/dg/API_HumanTaskConfig.html#SageMaker-Type-HumanTaskConfig-PreHumanTaskLambdaArn) \. 

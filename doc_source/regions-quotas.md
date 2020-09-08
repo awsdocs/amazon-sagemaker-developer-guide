@@ -2,17 +2,17 @@
 
 For a list of the AWS Regions supported by Amazon SageMaker and the Amazon Elastic Compute Cloud \(Amazon EC2\) instance types that are available in each Region, see [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/)\.
 
-Each AWS Region is divided into sub\-regions known as Availability Zones\. For a given Region, the Availability Zones in that Region don't always contain the same instance types supported by Amazon SageMaker\. If any Availability Zone in the Region contains a given instance type, then that instance type is listed as available in the Region\.
+Each AWS Region is divided into sub\-regions known as Availability Zones\. For a given Region, the Availability Zones in that Region don't always contain the same instance types supported by SageMaker\. If any Availability Zone in the Region contains a given instance type, then that instance type is listed as available in the Region\.
 
 For a list of the AWS Regions supported by Amazon SageMaker Studio, see [Amazon SageMaker Studio](studio.md)\.
 
-For a list of the Amazon SageMaker service endpoints for each Region and the Amazon SageMaker service quotas for each instance type, see [Amazon SageMaker endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/sagemaker.html)\.
+For a list of the SageMaker service endpoints for each Region and the SageMaker service quotas for each instance type, see [Amazon SageMaker endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/sagemaker.html)\.
 
 You can request a quota increase using Service Quotas or the AWS Support Center\. To request an increase, see [AWS Service Quotas](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html) in the *AWS General Reference*\.
 
 ## Supported Instance Types and Availability Zones<a name="instance-types-az"></a>
 
-This topic provides one table for each AWS Region supported by Amazon SageMaker\. Each table has a column for each Availability Zone in the Region\. For each Availability Zone, the Amazon SageMaker components that support each instance type are shown\. The components are listed in the tables as follows\.
+This topic provides one table for each AWS Region supported by Amazon SageMaker\. Each table has a column for each Availability Zone in the Region\. For each Availability Zone, the SageMaker components that support each instance type are shown\. The components are listed in the tables as follows\.
 + **Notebook** – Notebook instances
 + **Training** – Training jobs
 + **Batch** – Batch transform jobs

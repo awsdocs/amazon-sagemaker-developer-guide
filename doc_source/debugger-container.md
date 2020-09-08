@@ -144,7 +144,7 @@ For more examples using Debugger in PyTorch containers, see the following exampl
 
 ## Debugger in XGBoost<a name="debugger-zero-script-change-XGBoost"></a>
 
-The XGBoost algorithm can be used as a built\-in algorithm or as a framework like MXNet, PyTorch, or Tensorflow\. If Amazon SageMaker XGBoost is used as a built\-in algorithm in container version 0\.90\-2 or later, Debugger is available by default \(zero code change experience\)\.
+The XGBoost algorithm can be used as a built\-in algorithm or as a framework like MXNet, PyTorch, or Tensorflow\. If SageMaker XGBoost is used as a built\-in algorithm in container version 0\.90\-2 or later, Debugger is available by default \(zero code change experience\)\.
 
 ```
 import boto3
@@ -256,13 +256,13 @@ The following example notebooks show how to apply the changes to training script
 
   To see the difference between using Debugger in a Deep Learning Container and in script mode, open this notebook and put it and [ the previous Debugger in a Deep Learning Container TensorFlow v2\.1 notebook example](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/tensorflow2/tensorflow2_zero_code_change/tf2-keras-default-container.ipynb) side by side\. 
 
-   In script mode, the hook configuration part is removed from the script in which you set the estimator\. Instead, the Debugger hook feature is merged into the training script, [ TensorFlow Keras ResNet training script in script mode](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/tensorflow2/tensorflow2_keras_custom_container/src/tf_keras_resnet_byoc.py)\. The training script imports the `smdebug` library in the required TensorFlow Keras environment to communicate with the TensorFlow ResNet50 algorithm\. It also manually implements the `smdebug` hook functionality by adding the `callbacks=[hook]` argument inside the `train` function \(in line 49\), and by adding the manual hook configuration \(in line 89\) provided through Amazon SageMaker Python SDK\.
+   In script mode, the hook configuration part is removed from the script in which you set the estimator\. Instead, the Debugger hook feature is merged into the training script, [ TensorFlow Keras ResNet training script in script mode](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/tensorflow2/tensorflow2_keras_custom_container/src/tf_keras_resnet_byoc.py)\. The training script imports the `smdebug` library in the required TensorFlow Keras environment to communicate with the TensorFlow ResNet50 algorithm\. It also manually implements the `smdebug` hook functionality by adding the `callbacks=[hook]` argument inside the `train` function \(in line 49\), and by adding the manual hook configuration \(in line 89\) provided through SageMaker Python SDK\.
 
   This script mode example runs the training job in the TF 2\.1 framework for direct comparison with the zero script change in the TF 2\.1 example\. The benefit of setting up Debugger in script mode is the flexibility to choose framework versions not covered by AWS Deep Learning Containers\. 
 + [ Using Amazon SageMaker Debugger in a PyTorch Container in Script Mode ](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker-debugger/pytorch_custom_container)
 
-  This notebook enables Debugger in script mode in PyTorch v1\.3\.1 framework\. PyTorch v1\.3\.1 is supported by Amazon SageMaker containers, and this example shows details of how to modify a training script\. 
+  This notebook enables Debugger in script mode in PyTorch v1\.3\.1 framework\. PyTorch v1\.3\.1 is supported by SageMaker containers, and this example shows details of how to modify a training script\. 
 
-  The Amazon SageMaker PyTorch estimator is already in script mode by default\. In the notebook, the line to activate `script_mode` is not included in the estimator configuration\.
+  The SageMaker PyTorch estimator is already in script mode by default\. In the notebook, the line to activate `script_mode` is not included in the estimator configuration\.
 
   This notebook shows detailed steps to change [ an original PyTorch training script](https://github.com/pytorch/examples/blob/master/mnist/main.py) to [ a modified version with Debugger enabled](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/pytorch_custom_container/scripts/pytorch_mnist.py)\. Additionally, this example shows how you can use Debugger built\-in rules to detect training issues such as the vanishing gradients problem, and the Debugger trial features to call and analyze the saved tensors\. 

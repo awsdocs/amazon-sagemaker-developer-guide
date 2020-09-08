@@ -15,7 +15,7 @@ ADD processing_script.py /
 ENTRYPOINT ["python3", "/processing_script.py"]
 ```
 
-Build and push this Docker image to an Amazon Elastic Container Registry \(Amazon ECR\) repository and ensure that your Amazon SageMaker IAM role can pull the image from Amazon ECR\. Then you can run this image on Amazon SageMaker Processing\.
+Build and push this Docker image to an Amazon Elastic Container Registry \(Amazon ECR\) repository and ensure that your SageMaker IAM role can pull the image from Amazon ECR\. Then you can run this image on Amazon SageMaker Processing\.
 
 ## How Amazon SageMaker Processing Runs Your Processing Container Image<a name="byoc-run-image"></a>
 
@@ -47,7 +47,7 @@ For example, if you specify the `ContainerEntrypoint` to be `[python3, -v, /proc
   + If `ContainerArguments` is provided, but not `ContainerEntrypoint`, Processing runs the image with the default `ENTRYPOINT` in the image and with the provided arguments\.
   + If both `ContainerEntrypoint` and `ContainerArguments` are provided, Processing runs the image with the given entrypoint and arguments, and ignores the `ENTRYPOINT` and CMD in the image\.
 + You must use the exec form of the `ENTRYPOINT` instruction in your Dockerfile \(`ENTRYPOINT` `["executable", "param1", "param2"])` instead of the shell form \(`ENTRYPOINT`` command param1 param2`\)\. This lets your processing container receive `SIGINT` and `SIGKILL` signals, which Processing uses to stop processing jobs with the `StopProcessingJob` API\.
-+ `/opt/ml` and all its subdirectories are reserved by Amazon SageMaker\. When building your Processing Docker image, don't place any data required by your processing container in these directories\.
++ `/opt/ml` and all its subdirectories are reserved by SageMaker\. When building your Processing Docker image, don't place any data required by your processing container in these directories\.
 + If you plan to use GPU devices, make sure that your containers are nvidia\-docker compatible\. Include only the CUDA toolkit in containers\. Don't bundle NVIDIA drivers with the image\. For more information about nvidia\-docker, see [NVIDIA/nvidia\-docker](https://github.com/NVIDIA/nvidia-docker)\.
 
 ## How Amazon SageMaker Processing Configures Input and Output For Your Processing Container<a name="byoc-input-and-output"></a>
@@ -57,6 +57,9 @@ When you create a processing job using the `CreateProcessingJob` operation, you 
 You use the `ProcessingInput` parameter to specify an Amazon Simple Storage Service \(Amazon S3\) URI to download data from, and a path in your processing container to download the data to\. The `ProcessingOutput` parameter configures a path in your processing container from which to upload data, and where in Amazon S3 to upload that data to\. For both `ProcessingInput` and `ProcessingOutput`, the path in the processing container must begin with `/opt/ml/processing/ `\.
 
 For example, you might create a processing job with one `ProcessingInput` parameter that downloads data from `s3://your-data-bucket/path/to/input/csv/data` into `/opt/ml/processing/csv` in your processing container, and a `ProcessingOutput` parameter that uploads data from `/opt/ml/processing/processed_csv` to `s3://your-data-bucket/path/to/output/csv/data`\. Your processing job would read the input data, and write output data to `/opt/ml/processing/processed_csv`\. Then it uploads the data written to this path to the specified Amazon S3 output location\. 
+
+**Important**  
+Symbolic links \(symlinks\) can not be used to upload output data to Amazon S3\. Symlinks are not followed when uploading output data\. 
 
 ## How Amazon SageMaker Processing Provides Logs and Metrics for Your Processing Container<a name="byoc-logs-and-metrics"></a>
 
@@ -148,9 +151,9 @@ Don't write sensitive data to the `/opt/ml/output/message` file\.
 
 If the data in this file isn't UTF\-8 encoded, the job fails and returns a `ClientError`\. If multiple containers exit with an `ExitMessage,` the content of the `ExitMessage` from each processing container is concatenated, then truncated to 1 KB\.
 
-## Run Your Processing Container Using the Amazon SageMaker Python SDK<a name="byoc-run"></a>
+## Run Your Processing Container Using the SageMaker Python SDK<a name="byoc-run"></a>
 
-You can use the Amazon SageMaker Python SDK to run your own processing image by using the `Processor` class\. The following example shows how to run your own processing container with one input from Amazon Simple Storage Service \(Amazon S3\) and one output to Amazon S3\.
+You can use the SageMaker Python SDK to run your own processing image by using the `Processor` class\. The following example shows how to run your own processing container with one input from Amazon Simple Storage Service \(Amazon S3\) and one output to Amazon S3\.
 
 ```
 from sagemaker.processing import Processor, ProcessingInput, ProcessingOutput

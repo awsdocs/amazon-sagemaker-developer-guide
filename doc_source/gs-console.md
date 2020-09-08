@@ -2,11 +2,11 @@
 
 The best way to learn how to use Amazon SageMaker is to create, train, and deploy a simple machine learning model\. To do this, you need the following:
 + A dataset\. You use the MNIST \(Modified National Institute of Standards and Technology database\) dataset of images of handwritten, single digit numbers\. This dataset provides a training set of 50,000 example images of handwritten single\-digit numbers, a validation set of 10,000 images, and a test dataset of 10,000 images\. You provide this dataset to the algorithm for model training\. For more information about the MNIST dataset, see [MNIST Dataset](http://yann.lecun.com/exdb/mnist/)\.
-+ An algorithm\. You use the XGBoost algorithm provided by Amazon SageMaker to train the model using the MNIST dataset\. During model training, the algorithm assigns example data of handwritten numbers into 10 clusters: one for each number, 0 through 9\. For more information about the algorithm, see [XGBoost Algorithm](xgboost.md)\.
++ An algorithm\. You use the XGBoost algorithm provided by SageMaker to train the model using the MNIST dataset\. During model training, the algorithm assigns example data of handwritten numbers into 10 clusters: one for each number, 0 through 9\. For more information about the algorithm, see [XGBoost Algorithm](xgboost.md)\.
 
 You also need a few resources for storing your data and running the code in this exercise:
-+ An Amazon Simple Storage Service \(Amazon S3\) bucket to store the training data and the model artifacts that Amazon SageMaker creates when it trains the model\.
-+ An Amazon SageMaker notebook instance to prepare and process data and to train and deploy a machine learning model\.
++ An Amazon Simple Storage Service \(Amazon S3\) bucket to store the training data and the model artifacts that SageMaker creates when it trains the model\.
++ A SageMaker notebook instance to prepare and process data and to train and deploy a machine learning model\.
 + A Jupyter notebook to use with the notebook instance to prepare your training data and train and deploy the model\.
 
 In this exercise, you learn how to create all of the resources that you need to create, train, and deploy a model\. 
@@ -15,9 +15,9 @@ In this exercise, you learn how to create all of the resources that you need to 
 For model training, deployment, and validation, you can use either of the following:  
 The high\-level [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)
 The AWS SDK for Python \(Boto3\)
-The [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) abstracts several implementation details, and is easy to use\. This exercise provides code examples for both libraries\. If you're a first\-time Amazon SageMaker user, we recommend that you use the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.
+The [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) abstracts several implementation details, and is easy to use\. This exercise provides code examples for both libraries\. If you're a first\-time SageMaker user, we recommend that you use the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.
 
-If you're new to Amazon SageMaker, we recommend that you read [How Amazon SageMaker Works](whatis.md#how-it-works) before starting this exercise\.
+If you're new to SageMaker, we recommend that you read [How Amazon SageMaker Works](whatis.md#how-it-works) before starting this exercise\.
 
 **Topics**
 + [Step 1: Create an Amazon S3 Bucket](gs-config-permissions.md)

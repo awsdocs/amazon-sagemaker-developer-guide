@@ -4,7 +4,7 @@ Amazon SageMaker Debugger has API operations in several locations that are used 
 
 Amazon SageMaker Debugger provides an open source *smdebug* Python library at [awslabs/sagemaker\-debugger](https://github.com/awslabs/sagemaker-debugger/tree/master/smdebug) that is used to configure built\-in rules or to define custom rules used to analyze the tensor data from training jobs\.
 
-The [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/) is a high\-level SDK focused on machine learning experimentation\. The SDK can be used to deploy built\-in or custom rules defined with the *smdebug* Python library to monitor and analyze these tensors using Amazon SageMaker estimators\.
+The [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/) is a high\-level SDK focused on machine learning experimentation\. The SDK can be used to deploy built\-in or custom rules defined with the *smdebug* Python library to monitor and analyze these tensors using SageMaker estimators\.
 
 Debugger has added operations and types to the Amazon SageMaker API that enable the platform to use Debugger when training a model and to manage the configuration of inputs and outputs\. 
 +  [ CreateTrainingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) and [ DescribeTrainingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html) use the following Debugger APIs to configure tensors and rules, hook up the *smdebug* library, and manage the storage of TensorBoard outputs:
@@ -16,4 +16,4 @@ Debugger has added operations and types to the Amazon SageMaker API that enable 
   +  [ DebugRuleEvaluationStatus](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DebugRuleEvaluationStatus.html)
 + [DescribeTrainingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html) also has parameters for accessing these Debugger configuration types, in addition to the time and billable time spend in model training\.
 
-Debugger also makes use of the Amazon SageMaker Processing functionality when analyzing model training\. For more information on Processing, see [Process Data and Evaluate Models](processing-job.md)\.
+Debugger also makes use of the SageMaker Processing functionality when analyzing model training\. For more information on Processing, see [Process Data and Evaluate Models](processing-job.md)\.

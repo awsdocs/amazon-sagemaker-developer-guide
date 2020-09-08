@@ -46,7 +46,7 @@ Ground Truth helps workers annotate 3D point clouds faster and more accurately u
 
 ## Create a 3D Point Cloud Object Detection Labeling Job<a name="sms-point-cloud-object-detection-create-labeling-job"></a>
 
-You can create a 3D point cloud labeling job using the Amazon SageMaker console or API operation, [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)\. To create a labeling job for this task type you need the following: 
+You can create a 3D point cloud labeling job using the SageMaker console or API operation, [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)\. To create a labeling job for this task type you need the following: 
 + A single\-frame input manifest file\. To learn how to create this type of manifest file, see [Create a Point Cloud Frame Input Manifest File](sms-point-cloud-single-frame-input-data.md)\. If you are a new user of Ground Truth 3D point cloud labeling modalities, you may also want to review [Accepted Raw 3D Data Formats](sms-point-cloud-raw-data-types.md)\. 
 + A work team from a private or vendor workforce\. You cannot use Amazon Mechanical Turk for video frame labeling jobs\. To learn how to create workforces and work teams, see [Create and Manage Workforces](sms-workforce-management.md)\.
 + A label category configuration file\. For more information, see [Create a Labeling Category Configuration File with Label Category Attributes](sms-label-cat-config-attributes.md)\. 
@@ -57,7 +57,7 @@ Use one of the following sections to learn how to create a labeling job using th
 
 ### Create a Labeling Job \(API\)<a name="sms-point-cloud-object-detection-create-labeling-job-api"></a>
 
-This section covers details you need to know when you create a labeling job using the Amazon SageMaker API operation `CreateLabelingJob`\. This API defines this operation for all AWS SDKs\. To see a list of language\-specific SDKs supported for this operation, review the **See Also** section of [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)\. 
+This section covers details you need to know when you create a labeling job using the SageMaker API operation `CreateLabelingJob`\. This API defines this operation for all AWS SDKs\. To see a list of language\-specific SDKs supported for this operation, review the **See Also** section of [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)\. 
 
 [Create a Labeling Job \(API\)](sms-create-labeling-job-api.md), provides an overview of the `CreateLabelingJob` operation\. Follow these instructions and do the following while you configure your request: 
 + You must enter an ARN for `HumanTaskUiArn`\. Use `arn:aws:sagemaker:<region>:394669845002:human-task-ui/PointCloudObjectDetection`\. Replace `<region>` with the AWS Region you are creating the labeling job in\. 
@@ -116,7 +116,7 @@ When you create a labeling job in the console, if you did not specify a label ca
 
 ### Create a Labeling Job \(Console\)<a name="sms-point-cloud-object-detection-create-labeling-job-console"></a>
 
-You can follow the instructions [Create a Labeling Job \(Console\)](sms-create-labeling-job-console.md) in order to learn how to create a 3D point cloud object detection labeling job in the Amazon SageMaker console\. While you are creating your labeling job, be aware of the following: 
+You can follow the instructions [Create a Labeling Job \(Console\)](sms-create-labeling-job-console.md) in order to learn how to create a 3D point cloud object detection labeling job in the SageMaker console\. While you are creating your labeling job, be aware of the following: 
 + Your input manifest file must be a single\-frame manifest file\. For more information, see [Create a Point Cloud Frame Input Manifest File](sms-point-cloud-single-frame-input-data.md)\. 
 + Optionally, you can provide label category attributes\. Workers can assign one or more of these attributes to annotations to provide more information about that object\. For example, you might want to use the attribute *occluded* to have workers identify when an object is partially obstructed\.
 + Automated data labeling and annotation consolidation are not supported for 3D point cloud labeling tasks\. 

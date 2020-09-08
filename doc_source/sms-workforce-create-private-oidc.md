@@ -4,7 +4,7 @@ Create a private workforce using an OpenID Connect \(OIDC\) Identity Provider \(
 
 To create a workforce using an OIDC IdP, your IdP must support *groups* because Ground Truth and Amazon A2I use one or more groups that you specify to create work teams\. You use work teams to specify workers for your labeling jobs and human review tasks\. Because groups are not a [standard claim](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims), your IdP may have a different naming convention for a group of users \(workers\)\. Therefore, you must identify one or more user groups to which a worker belongs using the custom claim `sagemaker:groups` that is sent to Ground Truth or Amazon A2I from your IdP\. To learn more, see [Send Required and Optional Claims to Ground Truth and Amazon A2I](#sms-workforce-create-private-oidc-configure-idp)\.
 
-You create an OIDC IdP workforce using the Amazon SageMaker API operation [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateWorkforce.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateWorkforce.html)\. Once you create a private workforce, that workforce and all work teams and workers associated with it are available to use for all Ground Truth labeling job tasks and Amazon A2I human review workflows tasks\. To learn more, see [Create an OIDC IdP Workforce](#sms-workforce-create-private-oidc-createworkforce)\.
+You create an OIDC IdP workforce using the SageMaker API operation [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateWorkforce.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateWorkforce.html)\. Once you create a private workforce, that workforce and all work teams and workers associated with it are available to use for all Ground Truth labeling job tasks and Amazon A2I human review workflows tasks\. To learn more, see [Create an OIDC IdP Workforce](#sms-workforce-create-private-oidc-createworkforce)\.
 
 ## Send Required and Optional Claims to Ground Truth and Amazon A2I<a name="sms-workforce-create-private-oidc-configure-idp"></a>
 
@@ -26,7 +26,7 @@ Ground Truth or Amazon A2I compares the groups listed in `sagemaker:groups` to v
 
 ## Create an OIDC IdP Workforce<a name="sms-workforce-create-private-oidc-createworkforce"></a>
 
-You can create a workforce using the Amazon SageMaker API operation `CreateWorkforce` and associated language\-specific SDKs\. Specify a `WorkforceName` and information about your OIDC IDP in the parameter `OidcConfig`\. The following shows an example of the request\. See [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateWorkforce.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateWorkforce.html) to learn more about each parameter in this request\.
+You can create a workforce using the SageMaker API operation `CreateWorkforce` and associated language\-specific SDKs\. Specify a `WorkforceName` and information about your OIDC IDP in the parameter `OidcConfig`\. The following shows an example of the request\. See [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateWorkforce.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateWorkforce.html) to learn more about each parameter in this request\.
 
 ```
 CreateWorkforceRequest: {
@@ -52,4 +52,4 @@ CreateWorkforceRequest: {
 
 Once you've created a private workforce using your IdP, you can create work teams using your IdP groups\. To learn more, see [Manage a Private Workforce \(OIDC IdP\)](sms-workforce-manage-private-oidc.md)\. 
 
-You can restrict worker access to tasks to specific IP addresses, and update or delete your workforce using the the Amazon SageMaker API\. To learn more, see [Manage Private Workforce Using the Amazon SageMaker API](sms-workforce-management-private-api.md)\.
+You can restrict worker access to tasks to specific IP addresses, and update or delete your workforce using the the SageMaker API\. To learn more, see [Manage Private Workforce Using the Amazon SageMaker API](sms-workforce-management-private-api.md)\.

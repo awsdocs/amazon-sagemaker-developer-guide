@@ -24,5 +24,5 @@ For example, the following are valid `cron` expressions:
 
 **Note**  
 Although the `cron` expression is set to start at 5 PM UTC, note that there could be a delay of 0\-20 minutes from the actual requested time to run the execution\.
-If you want to run on a daily schedule, don't provide this parameter\. Amazon SageMaker picks a time to run every day
-Currently, Amazon SageMaker only supports hourly integer rates between 1 hour and 24 hours\.
+If you want to run on a daily schedule, don't provide this parameter\. SageMaker picks a time to run every day
+Currently, SageMaker only supports hourly integer rates between 1 hour and 24 hours\.

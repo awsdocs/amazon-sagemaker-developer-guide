@@ -4,12 +4,12 @@
 + [Use Custom Algorithms for Model Training and Hosting on Amazon SageMaker with Apache Spark](apache-spark-example1-cust-algo.md)
 + [Use the SageMakerEstimator in a Spark Pipeline](apache-spark-example1-extend-pipeline.md)
 
-Amazon SageMaker provides an Apache Spark library \(in both Python and Scala\) that you can use to integrate your Apache Spark applications with Amazon SageMaker\. For example, you might use Apache Spark for data preprocessing and Amazon SageMaker for model training and hosting\. For more information, see [Use Apache Spark with Amazon SageMaker](apache-spark.md)\. This section provides example code that uses the Apache Spark Scala library provided by Amazon SageMaker to train a model in Amazon SageMaker using `DataFrame`s in your Spark cluster\. The example also hosts the resulting model artifacts using Amazon SageMaker hosting services\. Specifically, this example does the following:
+Amazon SageMaker provides an Apache Spark library \(in both Python and Scala\) that you can use to integrate your Apache Spark applications with SageMaker\. For example, you might use Apache Spark for data preprocessing and SageMaker for model training and hosting\. For more information, see [Use Apache Spark with Amazon SageMaker](apache-spark.md)\. This section provides example code that uses the Apache Spark Scala library provided by SageMaker to train a model in SageMaker using `DataFrame`s in your Spark cluster\. The example also hosts the resulting model artifacts using SageMaker hosting services\. Specifically, this example does the following:
 + Uses the `KMeansSageMakerEstimator` to fit \(or train\) a model on data
 
    
 
-  Because the example uses the k\-means algorithm provided by Amazon SageMaker to train a model, you use the `KMeansSageMakerEstimator`\. You train the model using images of handwritten single\-digit numbers \(from the MNIST dataset\)\. You provide the images as an input `DataFrame`\. For your convenience, Amazon SageMaker provides this dataset in an S3 bucket\.
+  Because the example uses the k\-means algorithm provided by SageMaker to train a model, you use the `KMeansSageMakerEstimator`\. You train the model using images of handwritten single\-digit numbers \(from the MNIST dataset\)\. You provide the images as an input `DataFrame`\. For your convenience, SageMaker provides this dataset in an S3 bucket\.
 
    
 
@@ -20,7 +20,7 @@ Amazon SageMaker provides an Apache Spark library \(in both Python and Scala\) t
 
    
 
-  To get inferences from a model hosted in Amazon SageMaker, you call the `SageMakerModel.transform` method\. You pass a `DataFrame` as input\. The method transforms the input `DataFrame` to another `DataFrame` containing inferences obtained from the model\. 
+  To get inferences from a model hosted in SageMaker, you call the `SageMakerModel.transform` method\. You pass a `DataFrame` as input\. The method transforms the input `DataFrame` to another `DataFrame` containing inferences obtained from the model\. 
 
    
 
@@ -63,7 +63,7 @@ transformedData.show
 ```
 
 The code does the following:
-+ Loads the MNIST dataset from an S3 bucket provided by Amazon SageMaker \(`awsai-sparksdk-dataset`\) into a Spark `DataFrame` \(`mnistTrainingDataFrame`\):
++ Loads the MNIST dataset from an S3 bucket provided by SageMaker \(`awsai-sparksdk-dataset`\) into a Spark `DataFrame` \(`mnistTrainingDataFrame`\):
 
   ```
   // Get a Spark session.
@@ -118,11 +118,11 @@ The code does the following:
   + The `features` column stores a vector \(`org.apache.spark.ml.linalg.Vector`\) of `Double` values\. These are the 784 features of the handwritten number\. \(Each handwritten number is a 28 x 28\-pixel image, making 784 features\.\)
 
    
-+ Creates an Amazon SageMaker estimator \(`KMeansSageMakerEstimator`\) 
++ Creates a SageMaker estimator \(`KMeansSageMakerEstimator`\) 
 
-  The `fit` method of this estimator uses the k\-means algorithm provided by Amazon SageMaker to train models using an input `DataFrame`\. In response, it returns a `SageMakerModel` object that you can use to get inferences\.
+  The `fit` method of this estimator uses the k\-means algorithm provided by SageMaker to train models using an input `DataFrame`\. In response, it returns a `SageMakerModel` object that you can use to get inferences\.
 **Note**  
-The `KMeansSageMakerEstimator` extends the Amazon SageMaker `SageMakerEstimator`, which extends the Apache Spark `Estimator`\. 
+The `KMeansSageMakerEstimator` extends the SageMaker `SageMakerEstimator`, which extends the Apache Spark `Estimator`\. 
 
   ```
   val estimator = new KMeansSageMakerEstimator(
@@ -134,19 +134,19 @@ The `KMeansSageMakerEstimator` extends the Amazon SageMaker `SageMakerEstimator`
     .setK(10).setFeatureDim(784)
   ```
 
-  The constructor parameters provide information that is used for training a model and deploying it on Amazon SageMaker:
+  The constructor parameters provide information that is used for training a model and deploying it on SageMaker:
   + `trainingInstanceType` and `trainingInstanceCount`—Identify the type and number of ML compute instances to use for model training\.
 
      
-  + `endpointInstanceType`—Identifies the ML compute instance type to use when hosting the model in Amazon SageMaker\. By default, one ML compute instance is assumed\.
+  + `endpointInstanceType`—Identifies the ML compute instance type to use when hosting the model in SageMaker\. By default, one ML compute instance is assumed\.
 
      
-  + `endpointInitialInstanceCount`—Identifies the number of ML compute instances initially backing the endpoint hosting the model in Amazon SageMaker\.
+  + `endpointInitialInstanceCount`—Identifies the number of ML compute instances initially backing the endpoint hosting the model in SageMaker\.
 
      
-  + `sagemakerRole`—Amazon SageMaker assumes this IAM role to perform tasks on your behalf\. For example, for model training, it reads data from S3 and writes training results \(model artifacts\) to S3\. 
+  + `sagemakerRole`—SageMaker assumes this IAM role to perform tasks on your behalf\. For example, for model training, it reads data from S3 and writes training results \(model artifacts\) to S3\. 
 **Note**  
-This example implicitly creates an Amazon SageMaker client\. To create this client, you must provide your credentials\. The API uses these credentials to authenticate requests to Amazon SageMaker\. For example, it uses the credentials to authenticate requests to create a training job and API calls for deploying the model using Amazon SageMaker hosting services\.
+This example implicitly creates a SageMaker client\. To create this client, you must provide your credentials\. The API uses these credentials to authenticate requests to SageMaker\. For example, it uses the credentials to authenticate requests to create a training job and API calls for deploying the model using SageMaker hosting services\.
   + After the `KMeansSageMakerEstimator` object has been created, you set the following parameters, are used in model training: 
     + The number of clusters that the k\-means algorithm should create during model training\. You specify 10 clusters, one for each digit, 0 through 9\. 
     + Identifies that each input image has 784 features \(each handwritten number is a 28 x 28\-pixel image, making 784 features\)\.
@@ -159,14 +159,14 @@ This example implicitly creates an Amazon SageMaker client\. To create this clie
   val model = estimator.fit(trainingData)
   ```
 
-  You pass the input `DataFrame` as a parameter\. The model does all the work of training the model and deploying it to Amazon SageMaker\. For more information see, [Integrate Your Apache Spark Application with Amazon SageMaker](apache-spark.md#spark-sdk-common-process)\. In response, you get a `SageMakerModel` object, which you can use to get inferences from your model deployed in Amazon SageMaker\. 
+  You pass the input `DataFrame` as a parameter\. The model does all the work of training the model and deploying it to SageMaker\. For more information see, [Integrate Your Apache Spark Application with SageMaker](apache-spark.md#spark-sdk-common-process)\. In response, you get a `SageMakerModel` object, which you can use to get inferences from your model deployed in SageMaker\. 
 
    
 
   You provide only the input `DataFrame`\. You don't need to specify the registry path to the k\-means algorithm used for model training because the `KMeansSageMakerEstimator` knows it\.
 
    
-+ Calls the `SageMakerModel.transform` method to get inferences from the model deployed in Amazon SageMaker\.
++ Calls the `SageMakerModel.transform` method to get inferences from the model deployed in SageMaker\.
 
   The `transform` method takes a `DataFrame` as input, transforms it, and returns another `DataFrame` containing inferences obtained from the model\. 
 
@@ -176,7 +176,7 @@ This example implicitly creates an Amazon SageMaker client\. To create this clie
   ```
 
   For simplicity, we use the same `DataFrame` as input to the `transform` method that we used for model training in this example\. The `transform` method does the following:
-  + Serializes the `features` column in the input `DataFrame` to protobuf and sends it to the Amazon SageMaker endpoint for inference\.
+  + Serializes the `features` column in the input `DataFrame` to protobuf and sends it to the SageMaker endpoint for inference\.
   + Deserializes the protobuf response into the two additional columns \(`distance_to_cluster` and `closest_cluster`\) in the transformed `DataFrame`\.
 
   The `show` method gets inferences to the first 20 rows in the input `DataFrame`: 

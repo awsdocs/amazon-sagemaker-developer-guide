@@ -6,7 +6,7 @@ When you use one of the Amazon SageMaker built\-in algorithms, you don't need to
 To optimize hyperparameters for a machine learning model, a tuning job evaluates the training jobs it launches by using a metric that the training algorithm writes to logs\. Amazon SageMaker hyperparameter tuning parses your algorithm’s `stdout` and `stderr` streams to find algorithm metrics, such as loss or validation\-accuracy, that show how well the model is performing on the dataset 
 
 **Note**  
-These are the same metrics that Amazon SageMaker sends to CloudWatch Logs\. For more information, see [Log Amazon SageMaker Events with Amazon CloudWatch](logging-cloudwatch.md)\.
+These are the same metrics that SageMaker sends to CloudWatch Logs\. For more information, see [Log Amazon SageMaker Events with Amazon CloudWatch](logging-cloudwatch.md)\.
 
 If you use your own algorithm for hyperparameter tuning, make sure that your algorithm emits at least one metric by writing evaluation data to `stderr` or `stdout`\.
 

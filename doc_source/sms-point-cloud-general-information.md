@@ -44,7 +44,7 @@ The event log message, `datasetObjectId from: 0, status: IN_PROGRESS` identifies
 
 It is strongly recommended that you create tasks that workers can complete within 12 hours\. Workers must keep the worker UI open while working on a task\. They can save work as they go and Ground Truth will save their work every 15 minutes\.
 
-When using the Amazon SageMaker `CreateLabelingJob` API operation, set the total time a task is available to workers in the `TaskTimeLimitInSeconds` parameter of `HumanTaskConfig`\. 
+When using the SageMaker `CreateLabelingJob` API operation, set the total time a task is available to workers in the `TaskTimeLimitInSeconds` parameter of `HumanTaskConfig`\. 
 
 When you create a labeling job in the console, you can specify this time limit when you select your workforce type and your work team\.
 
@@ -65,7 +65,7 @@ Ground Truth provides a worker user interface \(UI\), tools, and assistive label
 
 You can preview the worker UI when you create a labeling job in the console\.
 
-When you create a labeling job using the API operation `CreateLabelingJob`, you must provide an ARN provided by Ground Truth in the parameter [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UiConfig.html#sagemaker-Type-UiConfig-UiTemplateS3Uri](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UiConfig.html#sagemaker-Type-UiConfig-UiTemplateS3Uri) to specify the worker UI for your task type\. You can use `HumanTaskUiArn` with the Amazon SageMaker [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RenderUiTemplate.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RenderUiTemplate.html) API operation to preview the worker UI\. 
+When you create a labeling job using the API operation `CreateLabelingJob`, you must provide an ARN provided by Ground Truth in the parameter [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UiConfig.html#sagemaker-Type-UiConfig-UiTemplateS3Uri](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UiConfig.html#sagemaker-Type-UiConfig-UiTemplateS3Uri) to specify the worker UI for your task type\. You can use `HumanTaskUiArn` with the SageMaker [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RenderUiTemplate.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RenderUiTemplate.html) API operation to preview the worker UI\. 
 
 You provide worker instructions, labels, and optionally, label category attributes that are displayed in the worker UI\.
 
@@ -86,7 +86,7 @@ You can provide worker instructions to help your workers complete your point clo
 + Explanation of the label category attributes provided \(for object detection and object tracking tasks\), and how to use them\.
 + Advice on how to save time while labeling by using keyboard shortcuts\. 
 
-You can add your worker instructions using the Amazon SageMaker console while creating a labeling job\. If you create a labeling job using the API operation `CreateLabelingJob`, you specify worker instructions in your label category configuration file\. 
+You can add your worker instructions using the SageMaker console while creating a labeling job\. If you create a labeling job using the API operation `CreateLabelingJob`, you specify worker instructions in your label category configuration file\. 
 
 In addition to your instructions, Ground Truth provides a link to help workers navigate and use the worker portal\. View these instructions by selecting the task type on [Worker Instructions](sms-point-cloud-worker-instructions.md)\. 
 
@@ -121,7 +121,7 @@ To learn how to add a CORS policy to an S3 bucket, see [How do I add cross\-doma
 
 3D point cloud labeling tasks can take workers more time to complete than other task types\. You can set the total amount of time that workers can work on each task by doing one of the following: 
 + When you create a labeling job in the console, set **Task Timeout** when you select your work team\.
-+ Using the `TaskTimeLimitInSeconds` parameter when creating a labeling job using the Amazon SageMaker API\. 
++ Using the `TaskTimeLimitInSeconds` parameter when creating a labeling job using the SageMaker API\. 
 
 The maximum time you can set for workers to work on tasks is 7 days\. The default value is 3 days\. If you set your task time limit to be greater than 8 hours, you must set `MaxSessionDuration` for your IAM execution role to at least 8 hours\. 
 

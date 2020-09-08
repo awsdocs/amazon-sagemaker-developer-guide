@@ -11,16 +11,16 @@ A SageMaker Studio notebook runs in an environment defined by the following:
 
 You can change any of these resources from within the notebook\.
 
-Sample SageMaker Studio notebooks are available in the [aws\_sagemaker\_studio](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/aws_sagemaker_studio) folder of the [SageMaker example GitHub repository](https://github.com/awslabs/amazon-sagemaker-examples)\. Each notebook comes with the necessary SageMaker image that opens the notebook with the appropriate kernel\.
+Sample SageMaker Studio notebooks are available in the [aws\_sagemaker\_studio](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/aws_sagemaker_studio) folder of the [Amazon SageMaker example GitHub repository](https://github.com/awslabs/amazon-sagemaker-examples)\. Each notebook comes with the necessary SageMaker image that opens the notebook with the appropriate kernel\.
 
 We recommend that you familiarize yourself with the Amazon SageMaker Studio interface before creating or using a SageMaker Studio notebook\. For more information, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
 
 **Topics**
-+ [How Are Studio Notebooks Different from Notebook Instances?](notebooks-comparison.md)
++ [How Are Amazon SageMaker Studio Notebooks Different from Notebook Instances?](notebooks-comparison.md)
 + [Get Started](notebooks-get-started.md)
 + [Create or Open an Amazon SageMaker Studio Notebook](notebooks-create-open.md)
-+ [Use the SageMaker Studio Notebook Toolbar](notebooks-menu.md)
-+ [Share and Use a Studio Notebook](notebooks-sharing.md)
++ [Use the Amazon SageMaker Studio Notebook Toolbar](notebooks-menu.md)
++ [Share and Use a Amazon SageMaker Studio Notebook](notebooks-sharing.md)
 + [Get Notebook and App Metadata](notebooks-run-and-manage-metadata.md)
 + [Get Notebook Differences](notebooks-diff.md)
 + [Manage Resources](notebooks-run-and-manage.md)

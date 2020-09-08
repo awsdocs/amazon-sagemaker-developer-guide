@@ -1,10 +1,10 @@
 # Use Debugger Docker Images for Built\-in or Custom Rules<a name="debugger-docker-images-rules"></a>
 
-Amazon SageMaker provides two sets of Docker images for rules: one set for evaluating rules provided by Amazon SageMaker \(built\-in rules\) and one set for evaluating custom rules provided in Python source files\. 
+Amazon SageMaker provides two sets of Docker images for rules: one set for evaluating rules provided by SageMaker \(built\-in rules\) and one set for evaluating custom rules provided in Python source files\. 
 
-If you use the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), you can simply use Amazon SageMaker high\-level Debugger API operations with SageMaker Estimator API operations, without having to manually retrieve the Debugger Docker images and configure the `ConfigureTrainingJob`API\. 
+If you use the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), you can simply use SageMaker high\-level Debugger API operations with SageMaker Estimator API operations, without having to manually retrieve the Debugger Docker images and configure the `ConfigureTrainingJob`API\. 
 
-If you are not using the SageMaker Python SDK, you have to retrieve a relevant pre\-built container base image for the Debugger rules\. Amazon SageMaker Debugger provides pre\-built Docker images for built\-in and custom rules, and the images are stored in Amazon Elastic Container Registry \(Amazon ECR\)\. To pull an image from an Amazon ECR repository \(or to push an image to one\), use the full name registry URL of the image using the `CreateTrainingJob` API\. Amazon SageMaker uses the following URL patterns for the Debugger rule container image registry address\. 
+If you are not using the SageMaker Python SDK, you have to retrieve a relevant pre\-built container base image for the Debugger rules\. Amazon SageMaker Debugger provides pre\-built Docker images for built\-in and custom rules, and the images are stored in Amazon Elastic Container Registry \(Amazon ECR\)\. To pull an image from an Amazon ECR repository \(or to push an image to one\), use the full name registry URL of the image using the `CreateTrainingJob` API\. SageMaker uses the following URL patterns for the Debugger rule container image registry address\. 
 
 ```
 <account_id>.dkr.ecr.<Region>.amazonaws.com/<ECR repository name>:<tag>

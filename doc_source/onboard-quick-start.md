@@ -1,4 +1,4 @@
-# Onboard to SageMaker Studio Using Quick Start<a name="onboard-quick-start"></a>
+# Onboard to Amazon SageMaker Studio Using Quick Start<a name="onboard-quick-start"></a>
 
 **Note**  
 Amazon SageMaker Studio is available only in specific AWS Regions\. To view the list of supported Regions, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.

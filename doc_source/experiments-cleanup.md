@@ -1,6 +1,6 @@
-# Clean Up SageMaker Experiment Resources<a name="experiments-cleanup"></a>
+# Clean Up Amazon SageMaker Experiment Resources<a name="experiments-cleanup"></a>
 
-To avoid incurring unnecessary charges, delete the SageMaker Experiment resources you no longer need\. You can't delete Experiment resources through the SageMaker Management Console or the Amazon SageMaker Studio UI\. This topic shows you how to clean up these resources using Boto3 and the Experiments SDK\. For more information about the Experiments SDK, see [sagemaker\-experiments](https://github.com/aws/sagemaker-experiments)\.
+To avoid incurring unnecessary charges, delete the Amazon SageMaker Experiment resources you no longer need\. You can't delete Experiment resources through the SageMaker Management Console or the Amazon SageMaker Studio UI\. This topic shows you how to clean up these resources using Boto3 and the Experiments SDK\. For more information about the Experiments SDK, see [sagemaker\-experiments](https://github.com/aws/sagemaker-experiments)\.
 
 To delete the experiment, you must delete all trials in the experiment\. To delete a trial, you must remove all trial components from the trial\. To delete a trial component, you must remove the component from all trials\.
 

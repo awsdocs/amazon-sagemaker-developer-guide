@@ -1,6 +1,6 @@
 # Create a Custom Kernel<a name="notebooks-create-custom-kernel"></a>
 
-You can create a custom kernel in any of the SageMaker images\. The kernel will display in the SageMaker Studio Launcher when the SageMaker image that hosts the kernel is chosen\. The kernel will also display in the **Select Kernel** dialog when changing a notebook's kernel\.
+You can create a custom kernel in any of the SageMaker images\. The kernel will display in the Amazon SageMaker Studio Launcher when the SageMaker image that hosts the kernel is chosen\. The kernel will also display in the **Select Kernel** dialog when changing a notebook's kernel\.
 
 Conda must be installed in the SageMaker image in order to create the kernel\. The `Data Science` SageMaker image comes with Conda preinstalled\. To create a kernel in any of the other SageMaker images, you must first install Conda\. For more information, see [Conda Installation](https://conda.io/projects/conda/en/latest/user-guide/install/index.html)\.
 

@@ -2,11 +2,11 @@
 
 *Linear models* are supervised learning algorithms used for solving either classification or regression problems\. For input, you give the model labeled examples \(*x*, *y*\)\. *x* is a high\-dimensional vector and *y* is a numeric label\. For binary classification problems, the label must be either 0 or 1\. For multiclass classification problems, the labels must be from 0 to `num_classes` \- 1\. For regression problems, *y* is a real number\. The algorithm learns a linear function, or, for classification problems, a linear threshold function, and maps a vector *x* to an approximation of the label *y*\. 
 
-The Amazon SageMaker linear learner algorithm provides a solution for both classification and regression problems\. With the Amazon SageMaker algorithm, you can simultaneously explore different training objectives and choose the best solution from a validation set\. You can also explore a large number of models and choose the best\. The best model optimizes either of the following:
+The Amazon SageMaker linear learner algorithm provides a solution for both classification and regression problems\. With the SageMaker algorithm, you can simultaneously explore different training objectives and choose the best solution from a validation set\. You can also explore a large number of models and choose the best\. The best model optimizes either of the following:
 + Continuous objectives, such as mean square error, cross entropy loss, absolute error\.
 + Discrete objectives suited for classification, such as F1 measure, precision, recall, or accuracy\. 
 
-Compared with methods that provide a solution for only continuous objectives, the Amazon SageMaker linear learner algorithm provides a significant increase in speed over naive hyperparameter optimization techniques\. It is also more convenient\. 
+Compared with methods that provide a solution for only continuous objectives, the SageMaker linear learner algorithm provides a significant increase in speed over naive hyperparameter optimization techniques\. It is also more convenient\. 
 
 The linear learner algorithm requires a data matrix, with rows representing the observations, and columns representing the dimensions of the features\. It also requires an additional column that contains the labels that match the data points\. At a minimum, Amazon SageMaker linear learner requires you to specify input and output data locations, and objective type \(classification or regression\) as arguments\. The feature dimension is also required\. For more information, see [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html)\. You can specify additional parameters in the `HyperParameters` string map of the request body\. These parameters control the optimization procedure, or specifics of the objective function that you train on\. For example, the number of epochs, regularization, and loss type\. 
 
@@ -39,4 +39,16 @@ You can train the linear learner algorithm on single\- or multi\-machine CPU and
 
 ## Linear learner sample notebooks<a name="ll-sample-notebooks"></a>
 
-For a sample notebook that uses the Amazon SageMaker linear learner algorithm to analyze the images of handwritten digits from zero to nine in the MNIST dataset, see [An Introduction to Linear Learner with MNIST](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/linear_learner_mnist/linear_learner_mnist.ipynb)\. For instructions on how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. After you have created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all of the Amazon SageMaker samples\. The topic modeling example notebooks using the linear learning algorithm are located in the **Introduction to Amazon algorithms** section\. To open a notebook, choose its **Use** tab and choose **Create copy**\.
+ The following table outlines a variety of sample notebooks that address different use cases of Amazon SageMaker linear learner algorithm\. 
+
+
+****  
+
+| **Title** | **Description** | 
+| --- | --- | 
+|  [An Introduction with the MNIST dataset](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/linear_learner_mnist/linear_learner_mnist.ipynb)  |   Using the MNIST dataset, we train a binary classifier to predict a single digit\.  | 
+|  [Predict Breast Cancer](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/introduction_to_applying_machine_learning/breast_cancer_prediction)  |   Using UCI's Breast Cancer dataset, we train a model to predict Breast Cancer\.   | 
+|  [How to Build a Multiclass Classifier?](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/scientific_details_of_algorithms/linear_learner_multiclass_classification/linear_learner_multiclass_classification.ipynb)  |   Using UCI's Covertype dataset, we demonstrate how to train a multiclass classifier\.   | 
+|  [How to Build a Machine Learning \(ML\) Pipeline for Inference? ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/scikit_learn_inference_pipeline/Inference%20Pipeline%20with%20Scikit-learn%20and%20Linear%20Learner.ipynb)  |   Using a Scikit\-learn container, we demonstrate how to build an end\-to\-end ML pipeline\.   | 
+
+ For instructions on how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. After you have created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all of the SageMaker samples\. The topic modeling example notebooks using the linear learning algorithm are located in the **Introduction to Amazon algorithms** section\. To open a notebook, choose its **Use** tab and choose **Create copy**\. 

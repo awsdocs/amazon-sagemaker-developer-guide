@@ -30,7 +30,7 @@ For Neo\-compiled models, use one of the following values for `PrimaryContainer`
   + `324986816169.dkr.ecr.ap-southeast-1.amazonaws.com/image-classification-neo:latest` 
   + `355873309152.dkr.ecr.ap-southeast-2.amazonaws.com/image-classification-neo:latest` 
   + `710691900526.dkr.ecr.ca-cental-1.amazonaws.com/image-classification-neo:latest` 
-+ **Amazon SageMaker XGBoost**
++ **SageMaker XGBoost**
   + `301217895009.dkr.ecr.us-west-2.amazonaws.com/xgboost-neo:latest` 
   + `785573368785.dkr.ecr.us-east-1.amazonaws.com/xgboost-neo:latest` 
   + `007439368137.dkr.ecr.us-east-2.amazonaws.com/xgboost-neo:latest` 

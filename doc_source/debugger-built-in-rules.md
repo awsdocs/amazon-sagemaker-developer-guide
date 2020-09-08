@@ -1,6 +1,6 @@
 # List of Debugger Built\-in Rules<a name="debugger-built-in-rules"></a>
 
-Use the Debugger built\-in rules provided by Amazon SageMaker Debugger and analyze tensors emitted while training your models\. The Debugger built\-in rules monitor various common conditions that are critical for the success of a training job\. You can call the built\-in rules using SageMaker Python SDK or the low\-level SageMaker API operations\. Depending on deep learning frameworks of your choice, there are four scopes of validity for the built\-in rules as shown in the following table\.
+Use the Debugger built\-in rules provided by Amazon SageMaker Debugger and analyze tensors emitted while training your models\. The Debugger built\-in rules monitor various common conditions that are critical for the success of a training job\. You can call the built\-in rules using Amazon SageMaker Python SDK or the low\-level SageMaker API operations\. Depending on deep learning frameworks of your choice, there are four scopes of validity for the built\-in rules as shown in the following table\.
 
 
 **Scopes of Validity for the Debugger Built\-in Rules**  
@@ -401,9 +401,27 @@ For an example of how to configure and deploy a built\-in rule, see [Use Debugge
 | token\_values |  A string of a list of the numerical values of the tokens\. For example, "3, 0"\. **Optional** Valid values: Comma\-separated string of numerical values Default value: `0`  | 
 | token\_thresholds\_percent |  A string of a list of thresholds \(in percentages\) that correspond to each of the `token_values`\. For example,"50\.0, 50\.0"\. **Optional** Valid values: Comma\-separated string of floats Default value: `"50,50`  | 
 
+## FeatureImportanceOverweight<a name="feature_importance_overweight"></a>
+
+This rule accumulates the weights of the n largest feature importance values per step and ensures that they do not exceed the threshold\. For example, you can set the threshold for the top 3 features to not hold more than 80 percent of the total weights of the model\.
+
+This rule is valid only for the XGBoost algorithm\.
+
+For an example of how to configure and deploy a built\-in rule, see [Use Debugger Built\-in Rules for Training Job Analysis](use-debugger-built-in-rules.md)\.
+
+
+**Parameter Descriptions for the TreeDepth Rule**  
+
+| Parameter Name | Description | 
+| --- | --- | 
+| base\_trial |  The trial run using this rule\. The rule inspects the tensors gathered from this trial\. **Required** Valid values: String  | 
+| threshold |  Defines the threshold for the proportion of the cumulative sum of the `n` largest features\. The number `n` is defined by the `nfeatures` parameter\. **Optional** Valid values: Float Default value: `0.8`  | 
+| nfeatures |  The number of largest features\. **Optional** Valid values: Integer Default value: `3`  | 
+| tensor\_regex |  Regular expression \(regex\) of tensor names the rule to analyze\. **Optional** Valid values: String Default value: `".*feature_importance/weight"`  | 
+
 ## TreeDepth<a name="tree-depth"></a>
 
-This rule measures the depth of trees in an XGBoost model\. XGBoost rejects splits if they don't improve loss\. This regularizes the training\. As a result, the tree might not grow as deep as defined in `max_depth`\.
+This rule measures the depth of trees in an XGBoost model\. XGBoost rejects splits if they do not improve loss\. This regularizes the training\. As a result, the tree might not grow as deep as defined by the `depth` parameter\.
 
 This rule is valid only for the XGBoost algorithm\.
 

@@ -19,7 +19,7 @@ The range of values for hyperparameters that you choose to search can significan
 
 ## Using Logarithmic Scales for Hyperparameters<a name="automatic-model-tuning-log-scales"></a>
 
-During hyperparameter tuning, Amazon SageMaker attempts to ﬁgure out if your hyperparameters are log\-scaled or linear\-scaled\. Initially, it assumes that hyperparameters are linear\-scaled\. If they should be log\-scaled, it might take some time for Amazon SageMaker to discover that\. If you know that a hyperparameter should be log\-scaled and can convert it yourself, doing so could improve hyperparameter optimization\.
+During hyperparameter tuning, SageMaker attempts to ﬁgure out if your hyperparameters are log\-scaled or linear\-scaled\. Initially, it assumes that hyperparameters are linear\-scaled\. If they should be log\-scaled, it might take some time for SageMaker to discover that\. If you know that a hyperparameter should be log\-scaled and can convert it yourself, doing so could improve hyperparameter optimization\.
 
 ## Choosing the Best Number of Concurrent Training Jobs<a name="automatic-model-tuning-parallelism"></a>
 

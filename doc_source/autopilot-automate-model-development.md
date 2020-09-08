@@ -10,9 +10,11 @@ The following graphic outlines the principal tasks of an AutoML process managed 
 
 You can use Autopilot in different ways: on autopilot \(hence the name\) or with various degrees of human guidance, without code through Amazon SageMaker Studio, or with code using one of the AWS SDKs\. Autopilot currently supports regression and binary and multiclass classification\. It also only supports tabular data formatted in files with comma\-separated values\.
 
+With Amazon SageMaker, you pay only for what you use\. Building, training, and deploying ML models is billed by the second, with no minimum fees and no upfront commitments\. For more information about the cost of using SageMaker, see [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing)\.
+
 **Topics**
-+ [Create an Amazon SageMaker Autopilot experiment](autopilot-automate-model-development-create-experiment.md)
 + [Get started with Amazon SageMaker Autopilot](autopilot-automate-model-development-get-started.md)
++ [Create an Amazon SageMaker Autopilot experiment](autopilot-automate-model-development-create-experiment.md)
 + [Amazon SageMaker Autopilot problem types](autopilot-automate-model-development-problem-types.md)
 + [Amazon SageMaker Autopilot notebook output](autopilot-automate-model-development-notebook-output.md)
 + [Amazon SageMaker Autopilot container output](autopilot-automate-model-development-container-output.md)

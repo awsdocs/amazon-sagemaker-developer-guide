@@ -2,9 +2,9 @@
 
 To run your own training model, build a Docker container using the [Amazon SageMaker Training Toolkit](https://github.com/aws/sagemaker-training-toolkit) through an Amazon SageMaker notebook instance\.
 
-## Step 1: Create an Amazon SageMaker notebook instance<a name="byoc-training-step1"></a>
+## Step 1: Create a SageMaker notebook instance<a name="byoc-training-step1"></a>
 
-1. Open the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\. 
+1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
 1. In the left navigation pane, choose **Notebook**, choose **Notebook instances**, and then choose **Create notebook instance**\. 
 
@@ -20,7 +20,7 @@ To run your own training model, build a Docker container using the [Amazon SageM
 
       1. On the **Create an IAM role** page, choose **Specific S3 buckets**, specify an S3 bucket named **sagemaker\-run\-script**, and then choose **Create role**\.
 
-         Amazon SageMaker creates an IAM role named `AmazonSageMaker-ExecutionRole-YYYYMMDDTHHmmSS`\. For example, `AmazonSageMaker-ExecutionRole-20190429T110788`\. Note that the execution role naming convention uses the date and time when the role was created, separated by a `T`\.
+         SageMaker creates an IAM role named `AmazonSageMaker-ExecutionRole-YYYYMMDDTHHmmSS`\. For example, `AmazonSageMaker-ExecutionRole-20190429T110788`\. Note that the execution role naming convention uses the date and time when the role was created, separated by a `T`\.
 
    1. For **Root Access**, choose **Enable**\.
 
@@ -59,8 +59,8 @@ To run your own training model, build a Docker container using the [Amazon SageM
 
       The Dockerfile script performs the following tasks:
       + `FROM tensorflow/tensorflow:2.2.0rc2-gpu-py3-jupyter` – Downloads the TensorFlow docker base image\. You can replace this with any docker base image you want to bring to build containers as well as AWS pre\-built container base images\.
-      + `RUN pip install sagemaker-training` – Installs [Amazon SageMaker Training Toolkit](https://github.com/aws/sagemaker-training-toolkit) that contains the common functionality necessary to create a container compatible with Amazon SageMaker\. 
-      + `COPY train.py /opt/ml/code/train.py` – Copies the script to the location inside the container that is expected by Amazon SageMaker\. The script must be located in this folder\.
+      + `RUN pip install sagemaker-training` – Installs [SageMaker Training Toolkit](https://github.com/aws/sagemaker-training-toolkit) that contains the common functionality necessary to create a container compatible with SageMaker\. 
+      + `COPY train.py /opt/ml/code/train.py` – Copies the script to the location inside the container that is expected by SageMaker\. The script must be located in this folder\.
       + `ENV SAGEMAKER_PROGRAM train.py` – Takes your training script `train.py` as the entrypoint script copied in the `/opt/ml/code` folder of the container\. This is the only environmental variable that you must specify when you build your own container\.
 
    1.  On the left directory navigation pane, the text file name might automatically be named `untitled.txt`\. To rename the file, right\-click the file, choose **Rename**, rename the file as `Dockerfile` without the `.txt` extension, and then press `Ctrl+s` or `Command+s` to save the file\.
@@ -133,7 +133,7 @@ Remember that `docker` looks for a file specifically called `Dockerfile` without
 
 1. To test the container locally in the notebook instance, open a Jupyter notebook\. Choose **New Launcher** and choose **Notebook** in **`conda_tensorflow_p36`** framework\. 
 
-1. Paste the following example script into the notebook code cell to configure a Amazon SageMaker Estimator\.
+1. Paste the following example script into the notebook code cell to configure a SageMaker Estimator\.
 
 ------
 #### [ SageMaker Python SDK v1 ]
@@ -294,7 +294,7 @@ For a full example that shows how to test a custom container locally and push it
 
 **To clean up resources when done with the get started example**
 
-1. Open the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/), choose the notebook instance **RunScriptNotebookInstance**, choose **Actions**, and choose **Stop**\. It can take a few minutes for the instance to stop\. 
+1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/), choose the notebook instance **RunScriptNotebookInstance**, choose **Actions**, and choose **Stop**\. It can take a few minutes for the instance to stop\. 
 
 1. After the instance **Status** changes to **Stopped**, choose **Actions**, choose **Delete**, and then choose **Delete** in the dialog box\. It can take a few minutes for the instance to be deleted\. The notebook instance disappears from the table when it has been deleted\. 
 

@@ -4,7 +4,7 @@ This walkthrough takes you on a tour of the main features of Amazon SageMaker St
 
 The code in the notebook trains multiple models and sets up the SageMaker Debugger and SageMaker Model Monitor\. The walkthrough shows you how to view the trials, compare the resulting models, show the debugger results, and deploy the best model using the SageMaker Studio UI\. You don't need to understand the code to follow this walkthrough\.
 
-For a series of videos that shows how to use the main features of SageMaker Studio, see [NEW\! Amazon Sagemaker Studio](https://www.youtube.com/playlist?list=PLJgojBtbsuc0MjdtpJPo4g4PL8mMsd2nK) on YouTube\.
+For a series of videos that shows how to use the main features of SageMaker Studio, see [NEW\! Amazon SageMaker Studio](https://www.youtube.com/playlist?list=PLJgojBtbsuc0MjdtpJPo4g4PL8mMsd2nK) on YouTube\.
 
 **Prerequisites**
 

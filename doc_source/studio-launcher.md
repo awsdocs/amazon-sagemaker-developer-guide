@@ -1,4 +1,4 @@
-# Use the SageMaker Studio Launcher<a name="studio-launcher"></a>
+# Use the Amazon SageMaker Studio Launcher<a name="studio-launcher"></a>
 
 You can use the Amazon SageMaker Studio Launcher to create notebooks and text files, and launch terminals and interactive Python shells\.
 
@@ -24,7 +24,7 @@ To create or launch an item, choose the SageMaker image that you want the item t
 The following items are available:
 + **Notebook**
 
-  Launches the notebook in a kernel session on the chosen SageMaker image\. For more information, see [Change a SageMaker Image](notebooks-run-and-manage-change-image.md)\.
+  Launches the notebook in a kernel session on the chosen SageMaker image\. For more information, see [Change an Amazon SageMaker Image](notebooks-run-and-manage-change-image.md)\.
 
   Creates the notebook in the folder that you have currently selected in the file browser\. To view the file browser, in the left sidebar of Studio, choose the **File Browser** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/File_browser_squid.png)\)\.
 + **Interactive \(Python\) Shell**

@@ -46,7 +46,7 @@ You now have a file in Amazon S3 that contains inferences that you got by runnin
 
 1. To see if the batch transform job made accurate predictions, check the output from this step against the numbers that you plotted from the test data\.
 
-You have now trained, deployed, and validated your first model in Amazon SageMaker\.
+You have now trained, deployed, and validated your first model in SageMaker\.
 
 **Next Step**  
 [Step 8: Integrating Amazon SageMaker Endpoints into Internet\-facing Applications](getting-started-client-app.md)

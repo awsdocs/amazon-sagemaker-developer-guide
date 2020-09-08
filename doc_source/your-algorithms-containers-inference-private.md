@@ -1,11 +1,11 @@
 # Use a Private Docker Registry for Real\-Time Inference Containers<a name="your-algorithms-containers-inference-private"></a>
 
-Amazon SageMaker hosting enables you to use images stored in Amazon ECR to build your containers for real\-time inference by default\. Optionally, you can build containers for real\-time inference from images in a private Docker registry\. The private registry must be accessible from an Amazon VPC in your account\. Models that you create based on the images stored in your private Docker registry must be configured to connect to the same VPC where you create the private Docker registry\. For information about connecting your model to a VPC, see [Give Amazon SageMaker Hosted Endpoints Access to Resources in Your Amazon VPC](host-vpc.md)\.
+Amazon SageMaker hosting enables you to use images stored in Amazon ECR to build your containers for real\-time inference by default\. Optionally, you can build containers for real\-time inference from images in a private Docker registry\. The private registry must be accessible from an Amazon VPC in your account\. Models that you create based on the images stored in your private Docker registry must be configured to connect to the same VPC where you create the private Docker registry\. For information about connecting your model to a VPC, see [Give SageMaker Hosted Endpoints Access to Resources in Your Amazon VPC](host-vpc.md)\.
 
 Your Docker registry must be secured with a TLS certificate from a known public certificate authority \(CA\)\.
 
 **Note**  
-Your private Docker registry must allow inbound traffic from the security group\(s\) you specify in the VPC configuration for your model, so that Amazon SageMaker hosting is able to pull model images from your registry\.
+Your private Docker registry must allow inbound traffic from the security group\(s\) you specify in the VPC configuration for your model, so that SageMaker hosting is able to pull model images from your registry\.
 
 **Topics**
 + [Store Images in a Private Docker Registry](#your-algorithms-containers-inference-private-registry)
@@ -13,14 +13,14 @@ Your private Docker registry must allow inbound traffic from the security group\
 
 ## Store Images in a Private Docker Registry<a name="your-algorithms-containers-inference-private-registry"></a>
 
-To use a private Docker registry to store your images for Amazon SageMaker real\-time inference, create a private registry that is accessible from your Amazon VPC\. For information about creating a Docker registry, see [Deploy a registry server](https://docs.docker.com/registry/deploying/) in the Docker documentation\. The Docker registry must comply with the following:
+To use a private Docker registry to store your images for SageMaker real\-time inference, create a private registry that is accessible from your Amazon VPC\. For information about creating a Docker registry, see [Deploy a registry server](https://docs.docker.com/registry/deploying/) in the Docker documentation\. The Docker registry must comply with the following:
 + The registry must be a [Docker Registry HTTP API V2](https://docs.docker.com/registry/spec/api/) registry\.
 + The Docker registry must be accessible from the same VPC that you specify in the `VpcConfig` parameter that you specify when you create your model\.
 + The Docker registry must not require any authentication\.
 
 ## Use an Image from a Private Docker Registry for Real\-time Inference<a name="your-algorithms-containers-inference-private-use"></a>
 
-When you create a model and deploy it to Amazon SageMaker hosting, you can specify that it use an image from your private Docker registry to build the inference container\.
+When you create a model and deploy it to SageMaker hosting, you can specify that it use an image from your private Docker registry to build the inference container\.
 
 **To use an image stored in your private Docker registry for your inference container**
 

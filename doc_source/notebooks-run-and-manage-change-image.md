@@ -1,4 +1,4 @@
-# Change a SageMaker Image<a name="notebooks-run-and-manage-change-image"></a>
+# Change an Amazon SageMaker Image<a name="notebooks-run-and-manage-change-image"></a>
 
 With Amazon SageMaker Studio notebooks, you can change the notebook's SageMaker image and kernel from within the notebook\.
 
@@ -12,4 +12,4 @@ The following screenshot shows the menu from a Studio notebook\. The current Sag
 
 1. From the drop\-down list, choose an image\.
 
-For a list of available SageMaker images, see [Available SageMaker Images](notebooks-available-images.md)\. 
+For a list of available SageMaker images, see [Available Amazon SageMaker Images](notebooks-available-images.md)\. 

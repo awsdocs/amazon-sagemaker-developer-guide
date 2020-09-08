@@ -2,7 +2,7 @@
 
 Before you can use Amazon SageMaker, you must sign up for an AWS account, create an IAM admin user, and onboard to Amazon SageMaker Studio\.
 
-After you complete these tasks, try out the Get Started guides\. The guides walk you through training your first model using SageMaker Studio, or the Amazon SageMaker console and the Amazon SageMaker API\.
+After you complete these tasks, try out the Get Started guides\. The guides walk you through training your first model using SageMaker Studio, or the SageMaker console and the SageMaker API\.
 
 **Topics**
 + [Set Up Amazon SageMaker](gs-set-up.md)

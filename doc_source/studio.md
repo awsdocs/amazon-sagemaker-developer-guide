@@ -1,12 +1,12 @@
 # Amazon SageMaker Studio<a name="studio"></a>
 
-Amazon SageMaker Studio is a web\-based, integrated development environment \(IDE\) for machine learning that lets you build, train, debug, deploy, and monitor your machine learning models\. Studio provides all the tools you need to take your models from experimentation to production while boosting your productivity\. In a single unified visual interface, customers can perform the following tasks:
+SageMaker Studio is a web\-based, integrated development environment \(IDE\) for machine learning that lets you build, train, debug, deploy, and monitor your machine learning models\. Studio provides all the tools you need to take your models from experimentation to production while boosting your productivity\. In a single unified visual interface, customers can perform the following tasks:
 + Write and execute code in Jupyter notebooks
 + Build and train machine learning models
 + Deploy the models and monitor the performance of their predictions
 + Track and debug the machine learning experiments
 
-For information on the onboarding steps to sign in to Amazon SageMaker Studio, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
+For information on the onboarding steps to sign in to SageMaker Studio, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
 
 The following sections provide an overview of the user interface and a description of Studio's main features\.
 
@@ -14,9 +14,9 @@ The following sections provide an overview of the user interface and a descripti
 + [SageMaker Studio Region Availability](#studio-regions)
 + [SageMaker Studio Features](#studio-features)
 + [Amazon SageMaker Studio UI Overview](studio-ui.md)
-+ [Use the SageMaker Studio Launcher](studio-launcher.md)
++ [Use the Amazon SageMaker Studio Launcher](studio-launcher.md)
 + [Use Amazon SageMaker Studio Notebooks](notebooks.md)
-+ [Perform Common Tasks in Studio](studio-tasks.md)
++ [Perform Common Tasks in Amazon SageMaker Studio](studio-tasks.md)
 + [Amazon SageMaker Studio Pricing](studio-pricing.md)
 
 ## SageMaker Studio Region Availability<a name="studio-regions"></a>
@@ -47,7 +47,7 @@ SageMaker Studio Notebooks is the next generation of SageMaker notebooks\. These
 + Fast start\-up times
 + Ability to share notebooks with a few clicks
 
-For a comparison with SageMaker notebook instances, see [How Are Studio Notebooks Different from Notebook Instances?](notebooks-comparison.md)
+For a comparison with SageMaker notebook instances, see [How Are Amazon SageMaker Studio Notebooks Different from Notebook Instances?](notebooks-comparison.md)
 
 For more information, see [Use Amazon SageMaker Studio Notebooks](notebooks.md)\.
 
@@ -57,7 +57,7 @@ SageMaker Experiments provides experiment management and tracking\. Users can or
 
 An experiment is a collection of machine learning iterations called trials\. A trial is a set of steps called trial components\. A trial takes a combination of inputs such as a dataset, an algorithm, and parameters, and produces specific outputs such as a model, metrics, and checkpoints\.
 
-SageMakerExperiment tracking enables both SageMaker automated tracking of model training, tuning, and evaluation jobs, and API\-enabled tracking of experiments done locally on SageMaker Studio notebooks\. Customers can use the tracked data to reconstruct an experiment, incrementally build on experiments conducted by peers, and trace model lineage for compliance and audit verifications\.
+SageMaker Experiment tracking enables both SageMaker automated tracking of model training, tuning, and evaluation jobs, and API\-enabled tracking of experiments done locally on SageMaker Studio notebooks\. Customers can use the tracked data to reconstruct an experiment, incrementally build on experiments conducted by peers, and trace model lineage for compliance and audit verifications\.
 
 For more information, see [Manage Machine Learning with Amazon SageMaker Experiments](experiments.md)\.
 

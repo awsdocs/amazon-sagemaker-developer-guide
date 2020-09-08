@@ -2,7 +2,7 @@
 
 **To create a multi\-model endpoint \(console\)**
 
-1. Open the Amazon SageMaker console at https://console\.aws\.amazon\.com/sagemaker/\.
+1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
 1. Choose **Model**, and then from the **Inference** group, choose **Create model**\. 
 
@@ -15,4 +15,4 @@
 
 1. Choose **Create model**\.
 
-1. Deploy your multi\-model endpoint as you would a single model endpoint\. For instructions, see [Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services](ex1-deploy-model.md)\.
+1. Deploy your multi\-model endpoint as you would a single model endpoint\. For instructions, see [Step 6\.1: Deploy the Model to SageMaker Hosting Services](ex1-deploy-model.md)\.

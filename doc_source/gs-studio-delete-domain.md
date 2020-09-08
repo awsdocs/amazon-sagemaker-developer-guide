@@ -1,4 +1,4 @@
-# Delete an SageMaker Studio Domain<a name="gs-studio-delete-domain"></a>
+# Delete an Amazon SageMaker Studio Domain<a name="gs-studio-delete-domain"></a>
 
 When you onboard to Amazon SageMaker Studio using IAM authentication, Studio creates a domain for your account\. A domain consists of a list of authorized users, configuration settings, and an Amazon Elastic File System \(Amazon EFS\) volume, which contains data for the users, including notebooks, resources, and artifacts\. A user can have multiple applications \(apps\) which support the reading and execution experience of the user’s notebooks, terminals, and consoles\.
 
@@ -18,10 +18,10 @@ You must have admin permission to delete a domain\.
 You can only delete an app whose status is `InService`, which is displayed as **Ready** in Studio\. An app whose status is `Failed` doesn't need to be deleted to delete the containing domain\. In Studio, an attempt to delete an app in the failed state results in an error\.
 
 **Topics**
-+ [Delete an SageMaker Studio Domain \(Studio\)](#gs-studio-delete-domain-studio)
-+ [Delete an SageMaker Studio Domain \(CLI\)](#gs-studio-delete-domain-cli)
++ [Delete a SageMaker Studio Domain \(Studio\)](#gs-studio-delete-domain-studio)
++ [Delete a SageMaker Studio Domain \(CLI\)](#gs-studio-delete-domain-cli)
 
-## Delete an SageMaker Studio Domain \(Studio\)<a name="gs-studio-delete-domain-studio"></a>
+## Delete a SageMaker Studio Domain \(Studio\)<a name="gs-studio-delete-domain-studio"></a>
 
 **To delete a domain**
 
@@ -45,7 +45,7 @@ When a user is deleted, they lose access to the Amazon EFS volume that contains 
 
 1. On the **Delete Studio** dialog, choose **Yes, delete Studio**, type *delete* in the confirmation field, and then choose **Delete**\.
 
-## Delete an SageMaker Studio Domain \(CLI\)<a name="gs-studio-delete-domain-cli"></a>
+## Delete a SageMaker Studio Domain \(CLI\)<a name="gs-studio-delete-domain-cli"></a>
 
 For a list of AWS Regions supported by Amazon SageMaker Studio, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
 

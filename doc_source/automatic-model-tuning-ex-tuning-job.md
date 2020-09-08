@@ -79,9 +79,12 @@ Define metrics only when you use a custom training algorithm\. Because this exam
 
 In this example, we set static values for the `eval_metric`, `num_round`, `objective`, `rate_drop`, and `tweedie_variance_power` parameters of the [XGBoost Algorithm](xgboost.md) built\-in algorithm\.
 
+------
+#### [ SageMaker Python SDK v1 ]
+
 ```
 from sagemaker.amazon.amazon_estimator import get_image_uri
-training_image = get_image_uri(boto3.Session().region_name, 'xgboost')
+training_image = get_image_uri(region, 'xgboost', repo_version='1.0-1')
 
 s3_input_train = 's3://{}/{}/train'.format(bucket, prefix)
 s3_input_validation ='s3://{}/{}/validation/'.format(bucket, prefix)
@@ -138,6 +141,70 @@ training_job_definition = {
     }
 }
 ```
+
+------
+#### [ SageMaker Python SDK v2 ]
+
+```
+training_image = sagemaker.image_uris.retrieve('xgboost', region, '1.0-1')
+
+s3_input_train = 's3://{}/{}/train'.format(bucket, prefix)
+s3_input_validation ='s3://{}/{}/validation/'.format(bucket, prefix)
+
+training_job_definition = {
+    "AlgorithmSpecification": {
+      "TrainingImage": training_image,
+      "TrainingInputMode": "File"
+    },
+    "InputDataConfig": [
+      {
+        "ChannelName": "train",
+        "CompressionType": "None",
+        "ContentType": "csv",
+        "DataSource": {
+          "S3DataSource": {
+            "S3DataDistributionType": "FullyReplicated",
+            "S3DataType": "S3Prefix",
+            "S3Uri": s3_input_train
+          }
+        }
+      },
+      {
+        "ChannelName": "validation",
+        "CompressionType": "None",
+        "ContentType": "csv",
+        "DataSource": {
+          "S3DataSource": {
+            "S3DataDistributionType": "FullyReplicated",
+            "S3DataType": "S3Prefix",
+            "S3Uri": s3_input_validation
+          }
+        }
+      }
+    ],
+    "OutputDataConfig": {
+      "S3OutputPath": "s3://{}/{}/output".format(bucket,prefix)
+    },
+    "ResourceConfig": {
+      "InstanceCount": 2,
+      "InstanceType": "ml.c4.2xlarge",
+      "VolumeSizeInGB": 10
+    },
+    "RoleArn": role,
+    "StaticHyperParameters": {
+      "eval_metric": "auc",
+      "num_round": "100",
+      "objective": "binary:logistic",
+      "rate_drop": "0.3",
+      "tweedie_variance_power": "1.4"
+    },
+    "StoppingCondition": {
+      "MaxRuntimeInSeconds": 43200
+    }
+}
+```
+
+------
 
 ## Name and Launch the Hyperparameter Tuning Job<a name="automatic-model-tuning-ex-low-launch"></a>
 

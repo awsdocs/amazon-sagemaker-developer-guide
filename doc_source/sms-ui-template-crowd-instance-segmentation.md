@@ -113,6 +113,32 @@ The name of this widget\. It is used as a key for the labeling data in the form 
 
 The URL of the image that is to be labeled\.
 
+### initial\-value<a name="instance-segmentation-attributes-initial-value"></a>
+
+A JSON object containing the color mappings of a prior instance segmentation job and a link to the overlay image output by the prior job\. Include this when you want a human worker to verify the results of a prior labeling job and adjust it if necessary\.
+
+The attribute will appear as follows:
+
+```
+  initial-value="{
+    "instances": [
+      {
+        "color": "#2ca02c",
+        "label": "Cat"
+      },
+      {
+        "color": "#1f77b4",
+        "label": "Cat"
+      },
+      {
+        "color": "#d62728",
+        "label": "Dog"
+      }
+    ],
+    "src": {{ "S3 file URL for image" | grant_read_access }}
+  }"
+```
+
 ### Element Hierarchy<a name="instance-segmentation-element-hierarchy"></a>
 
 This element has the following parent and child elements\.

@@ -2,7 +2,7 @@
 
 This previous release of the Amazon SageMaker XGBoost algorithm is based on the 0\.72 release\. [XGBoost](https://github.com/dmlc/xgboost) \(eXtreme Gradient Boosting\) is a popular and efficient open\-source implementation of the gradient boosted trees algorithm\. Gradient boosting is a supervised learning algorithm that attempts to accurately predict a target variable by combining the estimates of a set of simpler, weaker models\. XGBoost has done remarkably well in machine learning competitions because it robustly handles a variety of data types, relationships, and distributions, and because of the large number of hyperparameters that can be tweaked and tuned for improved fits\. This flexibility makes XGBoost a solid choice for problems in regression, classification \(binary and multiclass\), and ranking\.
 
-Customers should consider using the new release of [XGBoost Algorithm](xgboost.md)\. They can use it as an Amazon SageMaker built\-in algorithm or as a framework to run scripts in their local environments as they would typically, for example, do with a Tensorflow deep learning framework\. The new implementation has a smaller memory footprint, better logging, improved hyperparameter validation, and an expanded set of metrics\. The earlier implementation of XGBoost remains available to customers if they need to postpone migrating to the new version\. But this previous implementation will remain tied to the 0\.72 release of XGBoost\.
+Customers should consider using the new release of [XGBoost Algorithm](xgboost.md)\. They can use it as a SageMaker built\-in algorithm or as a framework to run scripts in their local environments as they would typically, for example, do with a Tensorflow deep learning framework\. The new implementation has a smaller memory footprint, better logging, improved hyperparameter validation, and an expanded set of metrics\. The earlier implementation of XGBoost remains available to customers if they need to postpone migrating to the new version\. But this previous implementation will remain tied to the 0\.72 release of XGBoost\.
 
 **Topics**
 + [Input/Output Interface for the XGBoost Release 0\.72](#xgboost-72-InputOutput)
@@ -15,7 +15,7 @@ Customers should consider using the new release of [XGBoost Algorithm](xgboost.m
 
 Gradient boosting operates on tabular data, with the rows representing observations, one column representing the target variable or label, and the remaining columns representing features\. 
 
-The Amazon SageMaker implementation of XGBoost supports CSV and libsvm formats for training and inference:
+The SageMaker implementation of XGBoost supports CSV and libsvm formats for training and inference:
 + For Training ContentType, valid inputs are *text/libsvm* \(default\) or *text/csv*\.
 + For Inference ContentType, valid inputs are *text/libsvm* or \(the default\) *text/csv*\.
 
@@ -23,7 +23,7 @@ The Amazon SageMaker implementation of XGBoost supports CSV and libsvm formats f
 For CSV training, the algorithm assumes that the target variable is in the first column and that the CSV does not have a header record\. For CSV inference, the algorithm assumes that CSV input does not have the label column\.   
 For libsvm training, the algorithm assumes that the label is in the first column\. Subsequent columns contain the zero\-based index value pairs for features\. So each row has the format: <label> <index0>:<value0> <index1>:<value1> \.\.\. Inference requests for libsvm may or may not have labels in the libsvm format\.
 
-This differs from other Amazon SageMaker algorithms, which use the protobuf training input format to maintain greater consistency with standard XGBoost data formats\.
+This differs from other SageMaker algorithms, which use the protobuf training input format to maintain greater consistency with standard XGBoost data formats\.
 
 For CSV training input mode, the total memory available to the algorithm \(Instance Count \* the memory available in the `InstanceType`\) must be able to hold the training dataset\. For libsvm training input mode, it's not required, but we recommend it\.
 
@@ -47,19 +47,19 @@ SageMaker XGBoost uses the Python pickle module to serialize/deserialize the mod
   ```
 
 **To differentiate the importance of labelled data points use Instance Weight Supports**
-+ Amazon SageMaker XGBoost allows customers to differentiate the importance of labelled data points by assigning each instance a weight value\. For *text/libsvm* input, customers can assign weight values to data instances by attaching them after the labels\. For example, `label:weight idx_0:val_0 idx_1:val_1...`\. For *text/csv* input, customers need to turn on the `csv_weights` flag in the parameters and attach weight values in the column after labels\. For example: `label,weight,val_0,val_1,...`\)\.
++ SageMaker XGBoost allows customers to differentiate the importance of labelled data points by assigning each instance a weight value\. For *text/libsvm* input, customers can assign weight values to data instances by attaching them after the labels\. For example, `label:weight idx_0:val_0 idx_1:val_1...`\. For *text/csv* input, customers need to turn on the `csv_weights` flag in the parameters and attach weight values in the column after labels\. For example: `label,weight,val_0,val_1,...`\)\.
 
 ## EC2 Instance Recommendation for the XGBoost Release 0\.72<a name="xgboost-72-Instance"></a>
 
-Amazon SageMaker XGBoost currently only trains using CPUs\. It is a memory\-bound \(as opposed to compute\-bound\) algorithm\. So, a general\-purpose compute instance \(for example, M4\) is a better choice than a compute\-optimized instance \(for example, C4\)\. Further, we recommend that you have enough total memory in selected instances to hold the training data\. Although it supports the use of disk space to handle data that does not fit into main memory \(the out\-of\-core feature available with the libsvm input mode\), writing cache files onto disk slows the algorithm processing time\.
+SageMaker XGBoost currently only trains using CPUs\. It is a memory\-bound \(as opposed to compute\-bound\) algorithm\. So, a general\-purpose compute instance \(for example, M4\) is a better choice than a compute\-optimized instance \(for example, C4\)\. Further, we recommend that you have enough total memory in selected instances to hold the training data\. Although it supports the use of disk space to handle data that does not fit into main memory \(the out\-of\-core feature available with the libsvm input mode\), writing cache files onto disk slows the algorithm processing time\.
 
 ## XGBoost Release 0\.72 Sample Notebooks<a name="xgboost-72-sample-notebooks"></a>
 
-For a sample notebook that shows how to use the latest version of Amazon SageMaker XGBoost as a built\-in algorithm to train and host a regression model, see [Regression with Amazon SageMaker XGBoost algorithm](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_abalone.ipynb)\. To use the 0\.72 version of XGBoost, you need to change the version in the sample code to 0\.72\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the Amazon SageMaker samples\. The topic modeling example notebooks using the XGBoost algorithms are located in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.
+For a sample notebook that shows how to use the latest version of SageMaker XGBoost as a built\-in algorithm to train and host a regression model, see [Regression with Amazon SageMaker XGBoost algorithm](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_abalone.ipynb)\. To use the 0\.72 version of XGBoost, you need to change the version in the sample code to 0\.72\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the SageMaker samples\. The topic modeling example notebooks using the XGBoost algorithms are located in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.
 
 ## XGBoost Release 0\.72 Hyperparameters<a name="xgboost-72-hyperparameters"></a>
 
-The following table contains the hyperparameters for the XGBoost algorithm\. These are parameters that are set by users to facilitate the estimation of model parameters from data\. The required hyperparameters that must be set are listed first, in alphabetical order\. The optional hyperparameters that can be set are listed next, also in alphabetical order\. The Amazon SageMaker XGBoost algorithm is an implementation of the open\-source XGBoost package\. Currently Amazon SageMaker supports version 0\.72\. For more detail about hyperparameter configuration for this version of XGBoost, see [ XGBoost Parameters](https://xgboost.readthedocs.io/en/release_0.72/parameter.html)\.
+The following table contains the hyperparameters for the XGBoost algorithm\. These are parameters that are set by users to facilitate the estimation of model parameters from data\. The required hyperparameters that must be set are listed first, in alphabetical order\. The optional hyperparameters that can be set are listed next, also in alphabetical order\. The SageMaker XGBoost algorithm is an implementation of the open\-source XGBoost package\. Currently SageMaker supports version 0\.72\. For more detail about hyperparameter configuration for this version of XGBoost, see [ XGBoost Parameters](https://xgboost.readthedocs.io/en/release_0.72/parameter.html)\.
 
 
 | Parameter Name | Description | 
@@ -72,7 +72,7 @@ The following table contains the hyperparameters for the XGBoost algorithm\. The
 | colsample\_bylevel | Subsample ratio of columns for each split, in each level\. **Optional** Valid values: Float\. Range: \[0,1\]\. Default value: 1  | 
 | colsample\_bytree | Subsample ratio of columns when constructing each tree\. **Optional** Valid values: Float\. Range: \[0,1\]\. Default value: 1 | 
 | csv\_weights | When this flag is enabled, XGBoost differentiates the importance of instances for csv input by taking the second column \(the column after labels\) in training data as the instance weights\. **Optional** Valid values: 0 or 1 Default value: 0  | 
-| early\_stopping\_rounds | The model trains until the validation score stops improving\. Validation error needs to decrease at least every `early_stopping_rounds` to continue training\. Amazon SageMaker hosting uses the best model for inference\. **Optional** Valid values: integer Default value: \-  | 
+| early\_stopping\_rounds | The model trains until the validation score stops improving\. Validation error needs to decrease at least every `early_stopping_rounds` to continue training\. SageMaker hosting uses the best model for inference\. **Optional** Valid values: integer Default value: \-  | 
 | eta | Step size shrinkage used in updates to prevent overfitting\. After each boosting step, you can directly get the weights of new features\. The `eta` parameter actually shrinks the feature weights to make the boosting process more conservative\. **Optional** Valid values: Float\. Range: \[0,1\]\. Default value: 0\.3  | 
 | eval\_metric | Evaluation metrics for validation data\. A default metric is assigned according to the objective:[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/xgboost-72.html) For a list of valid inputs, see [XGBoost Parameters](https://github.com/dmlc/xgboost/blob/master/doc/parameter.rst)\. **Optional** Valid values: string Default value: Default according to objective\.  | 
 | gamma | Minimum loss reduction required to make a further partition on a leaf node of the tree\. The larger, the more conservative the algorithm is\. **Optional** Valid values: Float\. Range: \[0,∞\)\. Default value: 0  | 
@@ -104,13 +104,13 @@ The following table contains the hyperparameters for the XGBoost algorithm\. The
 
 ## Tune an XGBoost Release 0\.72 Model<a name="xgboost-72-tuning"></a>
 
-*Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an objective metric\. You choose the objective metric from the metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the objective metric\. 
+*Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an evaluation metric\. You choose the evaluation metric from the metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the evaluation metric\. 
 
 For more information about model tuning, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
 
 ### Metrics Computed by the XGBoost Release 0\.72 Algorithm<a name="xgboost-72-metrics"></a>
 
-The XGBoost algorithm based on version 0\.72 computes the following nine metrics during training\. When tuning the model, choose one of these metrics as the objective to evaluate the model\. 
+The XGBoost algorithm based on version 0\.72 computes the following nine metrics during training\. When tuning the model, choose one of these metrics to evaluate the model\. 
 
 
 | Metric Name | Description | Optimization Direction | 

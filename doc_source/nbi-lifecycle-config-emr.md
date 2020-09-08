@@ -77,7 +77,7 @@ The process requires three procedures using the Amazon SageMaker console:
 While the notebook instance is being created, the status is **Pending**\. After the instance has been created and the lifecycle configuration script has successfully run, the status is **InService**\.
 
 **Note**  
-If the notebook instance can't connect to the Amazon EMR instance, Amazon SageMaker can't create the notebook instance\. The connection can fail if the Amazon EMR instance and notebook are not in the same VPC and subnet, if the Amazon EMR master security group is not used by the notebook, or if the Master Public DNS name in the script is incorrect\. 
+If the notebook instance can't connect to the Amazon EMR instance, SageMaker can't create the notebook instance\. The connection can fail if the Amazon EMR instance and notebook are not in the same VPC and subnet, if the Amazon EMR master security group is not used by the notebook, or if the Master Public DNS name in the script is incorrect\. 
 
 **To test the connection between the Amazon EMR instance and the notebook**
 

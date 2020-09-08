@@ -1,8 +1,8 @@
 # Prerequisites<a name="endpoint-auto-scaling-prerequisites"></a>
 
-Before you can use autoscaling, must have already created an Amazon SageMaker model deployment\. Deployed models are referred to as a [production variant](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ProductionVariant.html)\. This includes information about the model and the resources used to host it\. 
+Before you can use autoscaling, must have already created a Amazon SageMaker model deployment\. Deployed models are referred to as a [production variant](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ProductionVariant.html)\. This includes information about the model and the resources used to host it\. 
 
-For more information about deploying a model endpoint, see [Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services](ex1-deploy-model.md)\.
+For more information about deploying a model endpoint, see [Step 6\.1: Deploy the Model to SageMaker Hosting Services](ex1-deploy-model.md)\.
 
 To enable autoscaling for a model, you can use the console, the AWS CLI, or the Application Auto Scaling API\. It is recommended to try to [Configure model autoscaling with the console](endpoint-auto-scaling-add-console.md) to get familiar with the requirements and to test your first autoscaling configuration\. When using the AWS CLI or Application Auto Scaling the flow is to register the model, define the scaling policy, then apply it\. The following overview provides further details on the prerequisites and components used with autoscaling\.
 
@@ -17,11 +17,11 @@ There are two types of supported scaling policies: target\-tracking scaling and 
 You can use step scaling when you require an advanced configuration, such as specifying how many instances to deploy under what conditions\. Otherwise, using target\-tracking scaling is preferred as it will be fully automated\. For more information about using Application Auto Scaling step scaling policies, see [ Step Scaling Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html)\.
 
 A scaling policy has the following components:
-+ A target metric—The Amazon CloudWatch metric that Amazon SageMaker automatic scaling uses to determine when and how much to scale\.
++ A target metric—The Amazon CloudWatch metric that SageMaker automatic scaling uses to determine when and how much to scale\.
 + Minimum and maximum capacity—The minimum and maximum number of instances to use for scaling\.
 + A cool down period—The amount of time, in seconds, after a scale\-in or scale\-out activity completes before another scale\-out activity can start\.
 + Required permissions—Permissions that are required to perform automatic scaling actions\.
-+ A service\-linked role—An AWS Identity and Access Management \(IAM\) role that is linked to a specific AWS service\. A service\-linked role includes all of the permissions that the service requires to call other AWS services on your behalf\. Amazon SageMaker automatic scaling automatically generates this role, `AWSServiceRoleForApplicationAutoScaling_SageMakerEndpoint`, for you\.
++ A service\-linked role—An AWS Identity and Access Management \(IAM\) role that is linked to a specific AWS service\. A service\-linked role includes all of the permissions that the service requires to call other AWS services on your behalf\. SageMaker automatic scaling automatically generates this role, `AWSServiceRoleForApplicationAutoScaling_SageMakerEndpoint`, for you\.
 
 ## Target metric for autoscaling<a name="endpoint-auto-scaling-target-metric"></a>
 
@@ -31,14 +31,14 @@ For example, a scaling policy that uses the predefined `InvocationsPerInstance` 
 
 ## Minimum and maximum capacity<a name="endpoint-auto-scaling-target-capacity"></a>
 
-You may specify the maximum number of endpoint instances for the model\. The maximum value must be equal to or greater than the value specified for the minimum number of endpoint instances\. Amazon SageMaker automatic scaling does not enforce a limit for this value\.
+You may specify the maximum number of endpoint instances for the model\. The maximum value must be equal to or greater than the value specified for the minimum number of endpoint instances\. SageMaker automatic scaling does not enforce a limit for this value\.
 
 You must also specify the minimum number of instances for the model\. This value must be at least 1, and equal to or less than the value specified for the maximum number of endpoint instances\.
 
 To determine the minimum and maximum number of instances that you need for typical traffic, test your autoscaling configuration with the expected rate of traffic to your model\.
 
 **Important**  
-Scaling\-in does not occur when there is no traffic: if a variant’s traffic becomes zero, Amazon SageMaker automatic scaling doesn't scale in\. This is because Amazon SageMaker doesn't emit metrics with a value of zero\. 
+Scaling\-in does not occur when there is no traffic: if a variant’s traffic becomes zero, SageMaker automatic scaling doesn't scale in\. This is because SageMaker doesn't emit metrics with a value of zero\. 
 
 ## Cooldown period<a name="endpoint-auto-scaling-target-cooldown"></a>
 
@@ -56,7 +56,7 @@ If instances are not being added quickly enough to address increased traffic, co
 
 ## Permissions<a name="endpoint-auto-scaling-permissions"></a>
 
-The `SagemakerFullAccessPolicy` IAM policy has all of the IAM permissions required to perform autoscaling\. For more information about Amazon SageMaker IAM permissions, see [Amazon SageMaker Roles ](sagemaker-roles.md)\.
+The `SagemakerFullAccessPolicy` IAM policy has all of the IAM permissions required to perform autoscaling\. For more information about SageMaker IAM permissions, see [SageMaker Roles ](sagemaker-roles.md)\.
 
 If you are using a custom permission policy, you must include the following permissions:
 

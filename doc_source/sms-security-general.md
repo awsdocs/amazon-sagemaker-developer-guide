@@ -10,7 +10,7 @@ You can modify the max session duration of your execution rule using the IAM con
 
 For more information about IAM users and roles, see [Identities \(Users, Groups, and Roles\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html) in the IAM User Guide\. 
 
-To learn more about using IAM with Amazon SageMaker, see [Identity and Access Management for Amazon SageMaker](security-iam.md)\.
+To learn more about using IAM with SageMaker, see [Identity and Access Management for Amazon SageMaker](security-iam.md)\.
 
 **Topics**
 + [Assign IAM Permissions to Use Ground Truth](sms-security-permission.md)

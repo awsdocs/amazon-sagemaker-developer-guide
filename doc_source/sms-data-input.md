@@ -83,4 +83,4 @@ Use these instructions to automatically set up your input dataset connection wit
 
 1. Select **Complete data setup**\.
 
-This creates an input manifet in the Amazon S3 location for input datasets that you specified in step 5\. If you are creating a labeling job using the Amazon SageMaker API or, AWS CLI, or an AWS SDK, use the Amazon S3 URI for this input manifest file as input to the parameter `ManifestS3Uri`\. 
+This creates an input manifest in the Amazon S3 location for input datasets that you specified in step 5\. If you are creating a labeling job using the SageMaker API or, AWS CLI, or an AWS SDK, use the Amazon S3 URI for this input manifest file as input to the parameter `ManifestS3Uri`\. 

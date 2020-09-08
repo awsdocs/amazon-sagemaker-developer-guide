@@ -13,7 +13,7 @@ If you subscribe to an algorithm on AWS Marketplace, you must create a model pac
 
 Use model packages to:
 + Create models that you can use to get real\-time inference or run batch transform jobs\. For information, see [Use a Model Package to Create a Model](sagemaker-mkt-model-pkg-model.md)\.
-+ Create hosted endpoints to get real\-time inference\. For information, see [Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services](ex1-deploy-model.md)\.
++ Create hosted endpoints to get real\-time inference\. For information, see [Step 6\.1: Deploy the Model to SageMaker Hosting Services](ex1-deploy-model.md)\.
 + Create batch transform jobs\. For information, see [Step 6\.2: Deploy the Model with Batch Transform](ex1-batch-transform.md)\.
 
 **Topics**

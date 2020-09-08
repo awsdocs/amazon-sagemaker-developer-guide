@@ -4,13 +4,13 @@ This tutorial demonstrates how to visually track and compare trials in a model t
 
 It is intended that this topic be viewed alongside Studio with the MNIST notebook open\. As you run through the cells, the sections in this document highlight the relevant code and show you how to observe the results in Studio\. Some of the code snippets have been edited for brevity\.
 
-To clean up the resources created by the notebook, see [Clean Up SageMaker Experiment Resources](experiments-cleanup.md)\.
+To clean up the resources created by the notebook, see [Clean Up Amazon SageMaker Experiment Resources](experiments-cleanup.md)\.
 
 For a tutorial that showcases additional features of Studio, see [Amazon SageMaker Studio Tour](gs-studio-end-to-end.md)\.
 
 **Prerequisites**
-+ A local copy of the [MNIST](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/aws_sagemaker_studio/sagemaker_experiments/mnist-handwritten-digits-classification-experiment.ipynb) example notebook and the companion [mnist\.py](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/aws_sagemaker_studio/sagemaker_experiments/mnist.py) file\. Both files are available from the `aws_sagemaker_studio/sagemaker_experiments` folder in the [awslabs/amazon\-sagemaker\-examples](https://github.com/awslabs/amazon-sagemaker-examples) repository\. To download the files, choose each link, right\-click on the **Raw** button, and then choose **Save as**\.
-+ An AWS SSO or IAM account to sign\-on to Amazon SageMaker Studio\. For more information, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
++ A local copy of the [MNIST](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/aws_sagemaker_studio/sagemaker_experiments/mnist-handwritten-digits-classification-experiment/mnist-handwritten-digits-classification-experiment.ipynb) example notebook and the companion [mnist\.py](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/aws_sagemaker_studio/sagemaker_experiments/mnist-handwritten-digits-classification-experiment/mnist.py) file\. Both files are available from the `aws_sagemaker_studio/sagemaker_experiments/mnist-handwritten-digits-classification-experiment` folder in the [awslabs/amazon\-sagemaker\-examples](https://github.com/awslabs/amazon-sagemaker-examples) repository\. To download the files, choose each link, right\-click on the **Raw** button, and then choose **Save as**\.
++ An AWS SSO or IAM account to sign\-on to SageMaker Studio\. For more information, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
 
 **Topics**
 + [Open the Notebook in Studio](#experiments-mnist-notebook)
@@ -35,7 +35,7 @@ For a tutorial that showcases additional features of Studio, see [Amazon SageMak
 
 ## Install the Experiments SDK and Import Modules<a name="experiments-mnist-setup"></a>
 
-The Amazon SageMaker Experiments SDK is separate from the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), which comes preinstalled in Amazon SageMaker Studio\. Run the first few cells in the notebook to install the Experiments SDK and import the Experiments modules\. The relevant sections of the notebook cells are displayed below\. For more information on the Experiments SDK, see [sagemaker\-experiments](https://github.com/aws/sagemaker-experiments)\.
+The SageMaker Experiments SDK is separate from the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), which comes preinstalled in SageMaker Studio\. Run the first few cells in the notebook to install the Experiments SDK and import the Experiments modules\. The relevant sections of the notebook cells are displayed below\. For more information on the Experiments SDK, see [sagemaker\-experiments](https://github.com/aws/sagemaker-experiments)\.
 
 ```
 import sys
@@ -117,7 +117,7 @@ The following procedure creates and tracks an experiment to determine the effect
    + Test loss
    + Test accuracy
 
-   The definitions tell Amazon SageMaker to capture those metrics from the algorithm's log output\. The metrics are used later to evaluate and compare the models\.
+   The definitions tell SageMaker to capture those metrics from the algorithm's log output\. The metrics are used later to evaluate and compare the models\.
 
    ```
    preprocessing_trial_component = tracker.trial_component
@@ -163,7 +163,7 @@ The following procedure creates and tracks an experiment to determine the effect
 
 ## Compare and Analyze Trials<a name="experiments-mnist-compare-trials"></a>
 
-This section deviates from the notebook and shows you how to compare and analyze the trained models using the Amazon SageMaker Studio UI\.
+This section deviates from the notebook and shows you how to compare and analyze the trained models using the SageMaker Studio UI\.
 
 **To view the details of a trial**
 

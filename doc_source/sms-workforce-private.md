@@ -14,7 +14,7 @@ After you create a workforce, in addition to creating and managing work teams, y
 + [Manage Private Workforce Access to Tasks Using IP Addresses](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management-private-api.html)
 
 **Note**  
-Your private workforce is shared between Ground Truth and Amazon A2I\. To create and manage private work teams used by Augmented AI, use the Ground Truth section of the Amazon SageMaker console\. 
+Your private workforce is shared between Ground Truth and Amazon A2I\. To create and manage private work teams used by Augmented AI, use the Ground Truth section of the SageMaker console\. 
 
 **Topics**
 + [Create and Manage Amazon Cognito Workforce](sms-workforce-private-use-cognito.md)

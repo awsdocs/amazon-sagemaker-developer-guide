@@ -23,7 +23,7 @@ When using Augmented AI with Amazon Textract, create Augmented AI resources in t
 
 ## Get Started: Integrate a Human Review into an Amazon Textract Analyze Document Job<a name="a2i-create-textract-human-review"></a>
 
-To integrate a human review into an Amazon Textract text detection and analysis job, you need to create a flow definition, and then use the Amazon Textract API to integrate that flow definition into your workflow\. To learn how to create a flow definition using the Amazon SageMaker console or Augmented AI API, see the following topics:
+To integrate a human review into an Amazon Textract text detection and analysis job, you need to create a flow definition, and then use the Amazon Textract API to integrate that flow definition into your workflow\. To learn how to create a flow definition using the SageMaker console or Augmented AI API, see the following topics:
 + [Create a Flow Definition \(Console\)](a2i-create-flow-definition.md#a2i-create-human-review-console)
 + [Create a Flow Definition \(API\)](a2i-create-flow-definition.md#a2i-create-human-review-api)
 
@@ -31,11 +31,11 @@ After you've created your flow definition, see [Using Augmented AI with Amazon T
 
 ## End\-to\-end Demo Using Amazon Textract and Augmented AI<a name="a2i-task-types-textract-notebook-demo"></a>
 
-For an end\-to\-end example that demonstrates how to use Amazon Textract with Augmented AI, you can use [Amazon Augmented AI \(Amazon A2I\) integration with Amazon Textract's Analyze Document \[Example\]](https://github.com/aws-samples/amazon-a2i-sample-jupyter-notebooks/blob/master/Amazon%20Augmented%20AI%20(A2I)%20and%20Textract%20AnalyzeDocument.ipynb) in an Amazon SageMaker Notebook instance\. 
+For an end\-to\-end example that demonstrates how to use Amazon Textract with Augmented AI, you can use [Amazon Augmented AI \(Amazon A2I\) integration with Amazon Textract's Analyze Document \[Example\]](https://github.com/aws-samples/amazon-a2i-sample-jupyter-notebooks/blob/master/Amazon%20Augmented%20AI%20(A2I)%20and%20Textract%20AnalyzeDocument.ipynb) in a SageMaker Notebook instance\. 
 
 **To use Amazon Textract with Augmented AI using a Amazon SageMaker Notebook**
 
-1. If you do not have an active Amazon SageMaker Notebook instance, create one by following the instructions in [Step 2: Create an Amazon SageMaker Notebook Instance](gs-setup-working-env.md)\.
+1. If you do not have an active SageMaker Notebook instance, create one by following the instructions in [Step 2: Create an Amazon SageMaker Notebook Instance](gs-setup-working-env.md)\.
 
 1. When your Notebook instance is active, choose **Open JupyterLab** to the right of the Notebook instance's name\. It may take a few moments for JupyterLab to load\. 
 
@@ -57,4 +57,4 @@ When they're assigned a review task in an Amazon Textract workflow, workers migh
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/a2i-textract-example.png)
 
-You can customize this UI in the Amazon SageMaker console when you create your human review definition, or by creating and using a custom template\. To learn more, see [Create and Manage Worker Task Templates](a2i-instructions-overview.md)\.
+You can customize this UI in the SageMaker console when you create your human review definition, or by creating and using a custom template\. To learn more, see [Create and Manage Worker Task Templates](a2i-instructions-overview.md)\.

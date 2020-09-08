@@ -1,4 +1,4 @@
-# Onboard to SageMaker Studio Using AWS SSO<a name="onboard-sso-users"></a>
+# Onboard to Amazon SageMaker Studio Using AWS SSO<a name="onboard-sso-users"></a>
 
 **Note**  
 Amazon SageMaker Studio is available only in specific AWS Regions\. To view the list of supported Regions, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
@@ -17,7 +17,7 @@ This topic describes how to onboard to Amazon SageMaker Studio using AWS SSO aut
 
 1. If you don't have an AWS SSO account in a supported Region, you must create an AWS SSO account in a supported Region before proceeding\. To continue to onboard without creating a new AWS SSO account, choose the **AWS Identity and Access Management \(IAM\)** authentication method or the **Quick start** procedure, which also uses IAM\.
 
-   For information about setting up AWS SSO for use with Studio, see [Set Up AWS SSO for Use with SageMaker Studio](onboard-sso-setup.md)\.
+   For information about setting up AWS SSO for use with Studio, see [Set Up AWS SSO for Use with Amazon SageMaker Studio](onboard-sso-setup.md)\.
 
 1. To continue with SSO, under **Permission**, for **Execution role for all users**, choose an option from the role selector\.
 
@@ -27,7 +27,7 @@ This topic describes how to onboard to Amazon SageMaker Studio using AWS SSO aut
 
 1. Choose **Submit**\.
 
-   On the **Amazon SageMaker Studio Control Panel**, under **Studio Summary**, the **Status** shows as **Pending** while Studio creates an SageMaker Studio application in your AWS SSO domain\. When **Status** changes to **Ready**, the **Assign users** button is enabled\.
+   On the **Amazon SageMaker Studio Control Panel**, under **Studio Summary**, the **Status** shows as **Pending** while Studio creates a SageMaker Studio application in your AWS SSO domain\. When **Status** changes to **Ready**, the **Assign users** button is enabled\.
 
 1. Choose **Assign users**\. The **Assign users** page opens and displays a list of your organization's members\.
 

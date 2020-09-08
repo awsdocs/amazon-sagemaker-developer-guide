@@ -1,4 +1,4 @@
-# Set Up AWS SSO for Use with SageMaker Studio<a name="onboard-sso-setup"></a>
+# Set Up AWS SSO for Use with Amazon SageMaker Studio<a name="onboard-sso-setup"></a>
 
 To use AWS SSO authentication, you must belong to an AWS SSO organization\. If you don't belong to an AWS SSO organization, you can create one with the following procedure\.
 

@@ -8,7 +8,7 @@ Use the procedures in this topic when you want to:
 If you create a work team using the console, the console provides an option to create a new topic for the team so that you don't have to perform these steps\.
 
 **Important**  
-Amazon SNS are not supported by Amazon A2I\. If you subscribe your work team to an Amazon SNS topic, workers will only receive notifications about Ground Truth labeling jobs\. Workers will not receive notifications about new Amazon A2I human review tasks\.
+The Amazon SNS feature is not supported by Amazon A2I\. If you subscribe your work team to an Amazon SNS topic, workers will only receive notifications about Ground Truth labeling jobs\. Workers will not receive notifications about new Amazon A2I human review tasks\.
 
 ## Create the Amazon SNS topic<a name="workteam-private-sns-create-topic"></a>
 

@@ -17,7 +17,7 @@ The sequence to sequence algorithm reports three metrics that are computed durin
 
 ## Tunable Sequence\-to\-Sequence Hyperparameters<a name="seq-2-seq-tunable-hyperparameters"></a>
 
-You can tune the following hyperparameters for the Amazon SageMaker Sequence to Sequence algorithm\. The hyperparameters that have the greatest impact on sequence to sequence objective metrics are: `batch_size`, `optimizer_type`, `learning_rate`, `num_layers_encoder`, and `num_layers_decoder`\.
+You can tune the following hyperparameters for the SageMaker Sequence to Sequence algorithm\. The hyperparameters that have the greatest impact on sequence to sequence objective metrics are: `batch_size`, `optimizer_type`, `learning_rate`, `num_layers_encoder`, and `num_layers_decoder`\.
 
 
 | Parameter Name | Parameter Type | Recommended Ranges | 

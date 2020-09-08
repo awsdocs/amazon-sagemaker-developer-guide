@@ -7,12 +7,11 @@ The following is an example of the syntax that you can use with the `<crowd-radi
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
 <crowd-form>
-  <crowd-radio-group>
+<crowd-radio-group>
     <crowd-radio-button name="tech" value="tech">Technology</crowd-radio-button>
     <crowd-radio-button name="politics" value="politics">Politics</crowd-radio-button>
-  </crowd-radio-group>
 </crowd-form>
-
+</crowd-radio-group>
 ```
 
 The previous example can be seen in a custom worker task template in this GitHub example: [entity recognition labeling job custom template](https://github.com/aws-samples/amazon-sagemaker-ground-truth-task-uis/blob/master/text/named-entity-recognition-with-additional-classification.liquid.html)\.

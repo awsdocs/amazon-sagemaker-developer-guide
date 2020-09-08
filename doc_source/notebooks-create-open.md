@@ -1,10 +1,10 @@
 # Create or Open an Amazon SageMaker Studio Notebook<a name="notebooks-create-open"></a>
 
-When you create a notebook in SageMaker Studio or open a non\-shared notebook in Studio for the first time, you have to select a SageMaker image and kernel for the notebook\. SageMaker launches the notebook on a default instance of a type based on the chosen SageMaker image\. For CPU based images, the default instance type is `ml.t3.medium` \(available as part of the [AWS Free Tier](http://aws.amazon.com/free)\)\. For GPU based images, the default instance type is `ml.g4dn.xlarge`\.
+When you create a notebook in Amazon SageMaker Studio or open a non\-shared notebook in Studio for the first time, you have to select a SageMaker image and kernel for the notebook\. SageMaker launches the notebook on a default instance of a type based on the chosen SageMaker image\. For CPU based images, the default instance type is `ml.t3.medium` \(available as part of the [AWS Free Tier](http://aws.amazon.com/free)\)\. For GPU based images, the default instance type is `ml.g4dn.xlarge`\.
 
 If you create or open additional notebooks that use the same instance type, whether or not the notebooks use the same kernel, the notebooks run on the same instance of that instance type\.
 
-After a notebook is launched, you can change its instance type, and SageMaker image and kernel from within the notebook\. For more information, see [Change an Instance Type](notebooks-run-and-manage-switch-instance-type.md) and [Change a SageMaker Image](notebooks-run-and-manage-change-image.md)\.
+After a notebook is launched, you can change its instance type, and SageMaker image and kernel from within the notebook\. For more information, see [Change an Instance Type](notebooks-run-and-manage-switch-instance-type.md) and [Change an Amazon SageMaker Image](notebooks-run-and-manage-change-image.md)\.
 
 You can have one instance of each instance type\. Each instance can have only one SageMaker image running on it at a time\. However, a SageMaker image can run multiple kernels or terminal instances\. 
 
@@ -41,7 +41,7 @@ The top menu of your notebook should look similar to the following:
 
 1. On the **Select Kernel** dialog, to use the default kernel, **Python 3 \(Data Science\)**, choose **Select**\. Otherwise, use the dropdown menu to select a different kernel\.
 
-For a list of the available kernels, see [Available SageMaker Kernels](notebooks-available-kernels.md)\.
+For a list of the available kernels, see [Available Amazon SageMaker Kernels](notebooks-available-kernels.md)\.
 
 ## Create a Notebook from the Launcher<a name="notebooks-create-launcher"></a>
 
@@ -55,6 +55,6 @@ For a list of the available kernels, see [Available SageMaker Kernels](notebooks
 
 1. Under **Notebook**, choose **Python3**\.
 
-For a list of the available images, see [Available SageMaker Images](notebooks-available-images.md)\.
+For a list of the available images, see [Available Amazon SageMaker Images](notebooks-available-images.md)\.
 
 After you choose the kernel or image, your notebook launches and opens in a new Studio tab\. To view the notebook's kernel session, in the left sidebar, choose the **Running Terminals, Kernels, and Images** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Running_squid.png)\)\. You can stop the notebook's kernel session from this view\.

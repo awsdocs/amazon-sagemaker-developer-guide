@@ -8,4 +8,4 @@ Additional costs are incurred when other operations are run inside Studio, for e
 
 For information on the costs associated with using Studio notebooks, see [Usage Metering](notebooks-usage-metering.md)\.
 
-For more information about billing along with pricing examples, see [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/)\. On the pricing page, look under one of the AWS Regions supported by Amazon SageMaker Studio\. For the regions supported by Studio, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
+For more information about billing along with pricing examples, see [SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/)\. On the pricing page, look under one of the AWS Regions supported by SageMaker Studio\. For the regions supported by Studio, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.

@@ -15,7 +15,7 @@ For this task type, if you create your own manifest file, use `"source-ref"` to 
 
 ## Create a Multi\-Label Image Classification Labeling Job \(Console\)<a name="sms-creating-multilabel-image-classification-console"></a>
 
-You can follow the instructions [Create a Labeling Job \(Console\)](sms-create-labeling-job-console.md) to learn how to create a multi\-label image classification labeling job in the Amazon SageMaker console\. In Step 10, choose **Image** from the **Task category** drop down menu, and choose **Image Classification \(Multi\-label\)** as the task type\. 
+You can follow the instructions [Create a Labeling Job \(Console\)](sms-create-labeling-job-console.md) to learn how to create a multi\-label image classification labeling job in the SageMaker console\. In Step 10, choose **Image** from the **Task category** drop down menu, and choose **Image Classification \(Multi\-label\)** as the task type\. 
 
 Ground Truth provides a worker UI similar to the following for labeling tasks\. When you create a labeling job in the console, you specify instructions to help workers complete the job and labels that workers can choose from\. 
 
@@ -23,7 +23,7 @@ Ground Truth provides a worker UI similar to the following for labeling tasks\. 
 
 ## Create a Multi\-Label Image Classification Labeling Job \(API\)<a name="sms-create-multi-select-image-classification-job-api"></a>
 
-To create a multi\-label image classification labeling job, use the Amazon SageMaker API operation `CreateLabelingJob`\. This API defines this operation for all AWS SDKs\. To see a list of language\-specific SDKs supported for this operation, review the **See Also** section of [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)\.
+To create a multi\-label image classification labeling job, use the SageMaker API operation `CreateLabelingJob`\. This API defines this operation for all AWS SDKs\. To see a list of language\-specific SDKs supported for this operation, review the **See Also** section of [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)\.
 
 Follow the instructions on [Create a Labeling Job \(API\)](sms-create-labeling-job-api.md) and do the following while you configure your request: 
 + Pre\-annotation Lambda functions for this task type end with `PRE-ImageMultiClassMultiLabel`\. To find the pre\-annotation Lambda ARN for your Region, see [PreHumanTaskLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/dg/API_HumanTaskConfig.html#SageMaker-Type-HumanTaskConfig-PreHumanTaskLambdaArn) \. 

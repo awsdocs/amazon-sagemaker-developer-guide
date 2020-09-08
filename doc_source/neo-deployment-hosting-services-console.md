@@ -11,12 +11,12 @@ You can create a Neo endpoint in the [ Amazon SageMaker console](https://console
 1. To deploy Neo\-compiled models, choose the following:
    + **Container input options**: Provide model artifacts and inference image
    + **Location of inference code image**: Choose one of the following images, depending the region and kind of application:
-     + **Amazon SageMaker Image Classification**
+     + **SageMaker Image Classification**
        + `301217895009.dkr.ecr.us-west-2.amazonaws.com/image-classification-neo:latest`
        + `785573368785.dkr.ecr.us-east-1.amazonaws.com/image-classification-neo:latest`
        + `007439368137.dkr.ecr.us-east-2.amazonaws.com/image-classification-neo:latest`
        + `802834080501.dkr.ecr.eu-west-1.amazonaws.com/image-classification-neo:latest`
-     + **Amazon SageMaker XGBoost**
+     + **SageMaker XGBoost**
        + `301217895009.dkr.ecr.us-west-2.amazonaws.com/xgboost-neo:latest` 
        + `785573368785.dkr.ecr.us-east-1.amazonaws.com/xgboost-neo:latest` 
        + `007439368137.dkr.ecr.us-east-2.amazonaws.com/xgboost-neo:latest` 

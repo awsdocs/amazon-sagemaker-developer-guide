@@ -49,7 +49,7 @@ To view the best training job, choose **Best training job**\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/best-training-job.png)
 
-To deploy the best training job as a model that you can host at an Amazon SageMaker endpoint, choose **Create model**\.
+To deploy the best training job as a model that you can host at a SageMaker endpoint, choose **Create model**\.
 
 ### Next Step<a name="automatic-model-tuning-ex-next-cleanup"></a>
 

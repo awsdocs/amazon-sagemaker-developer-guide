@@ -39,7 +39,7 @@ Most Amazon SageMaker algorithms work best when you use the optimized protobuf [
 **Note**  
  For an example that shows how to convert the commonly used numPy array into the protobuf recordIO format, see [https://github\.com/awslabs/amazon\-sagemaker\-examples/blob/master/introduction\_to\_amazon\_algorithms/factorization\_machines\_mnist/factorization\_machines\_mnist\.ipynb](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/factorization_machines_mnist/factorization_machines_mnist.ipynb)\. \. 
 
-In the protobuf recordIO format, Amazon SageMaker converts each observation in the dataset into a binary representation as a set of 4\-byte floats, then loads it in the protobuf values field\. If you are using Python for your data preparation, we strongly recommend that you use these existing transformations\. However, if you are using another language, the protobuf definition file below provides the schema that you use to convert your data into Amazon SageMaker protobuf format\.
+In the protobuf recordIO format, SageMaker converts each observation in the dataset into a binary representation as a set of 4\-byte floats, then loads it in the protobuf values field\. If you are using Python for your data preparation, we strongly recommend that you use these existing transformations\. However, if you are using another language, the protobuf definition file below provides the schema that you use to convert your data into SageMaker protobuf format\.
 
 ```
 syntax = "proto2";

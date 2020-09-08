@@ -1,4 +1,4 @@
-# View and Compare SageMaker Experiments, Trials, and Trial Components<a name="experiments-view-compare"></a>
+# View and Compare Amazon SageMaker Experiments, Trials, and Trial Components<a name="experiments-view-compare"></a>
 
 An Amazon SageMaker *experiment* consists of multiple *trials* with a related objective\. A trial consists of one or more *trial components*, such as a data preprocessing job and a training job\.
 
@@ -39,7 +39,7 @@ To view all the properties, you might have to expand the width of the experiment
    + **Debugger** – A list of debugger rules and any issues found\.
    + **Trial Mappings**
 
-For information about comparing Experiments entities, see [View and Compare SageMaker Experiments, Trials, and Trial Components](#experiments-view-compare)\.
+For information about comparing Experiments entities, see [View and Compare Amazon SageMaker Experiments, Trials, and Trial Components](#experiments-view-compare)\.
 
 ## Compare Experiments, Trials, and Trial Components<a name="experiments-compare"></a>
 

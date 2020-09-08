@@ -1,16 +1,16 @@
 # Automating Amazon SageMaker with Amazon EventBridge<a name="automating-sagemaker-with-eventbridge"></a>
 
-Amazon EventBridge monitors status change events in Amazon SageMaker labeling, training, hyperparameter tuning, process jobs, and inference endpoints\. EventBridge enables you to automate Amazon SageMaker and respond automatically to events such as training job or endpoint status changes\. Events from Amazon SageMaker are delivered to EventBridge in near real time\. You can write simple rules to indicate which events are of interest to you, and what automated actions to take when an event matches a rule\. The actions that can be automatically triggered include the following:
+Amazon EventBridge monitors status change events in Amazon SageMaker labeling, training, hyperparameter tuning, process jobs, and inference endpoints\. EventBridge enables you to automate SageMaker and respond automatically to events such as training job or endpoint status changes\. Events from SageMaker are delivered to EventBridge in near real time\. You can write simple rules to indicate which events are of interest to you, and what automated actions to take when an event matches a rule\. The actions that can be automatically triggered include the following:
 + Invoking an AWS Lambda function
 + Invoking Amazon EC2 Run Command
 + Relaying the event to Amazon Kinesis Data Streams
 + Activating an AWS Step Functions state machine
 + Notifying an Amazon SNS topic or an AWS SMS queue
 
-Some examples of Amazon SageMaker status change events that EventBridge monitors include:
-+ Amazon SageMaker training job state change
+Some examples of SageMaker status change events that EventBridge monitors include:
++ SageMaker training job state change
 
-  Indicates a change in the status of a Amazon SageMaker training job\.
+  Indicates a change in the status of a SageMaker training job\.
 
   If the value of `TrainingJobStatus` is `Failed`, the event contains the `FailureReason` field, which provides a description of why the training job failed\.
 
@@ -83,9 +83,9 @@ Some examples of Amazon SageMaker status change events that EventBridge monitors
       }
   }
   ```
-+ Amazon SageMaker HyperParameter tuning job state change
++ SageMaker HyperParameter tuning job state change
 
-  Indicates a change in the status of a Amazon SageMaker hyperparameter tuning job\.
+  Indicates a change in the status of a SageMaker hyperparameter tuning job\.
 
   ```
   {
@@ -171,9 +171,9 @@ Some examples of Amazon SageMaker status change events that EventBridge monitors
     }
   }
   ```
-+ Amazon SageMaker transform job state change
++ SageMaker transform job state change
 
-  Indicates a change in the status of a Amazon SageMaker batch transform job\.
+  Indicates a change in the status of a SageMaker batch transform job\.
 
   If the value of `TransformJobStatus` is `Failed`, the event contains the `FailureReason` field, which provides a description of why the training job failed\.
 
@@ -230,9 +230,9 @@ Some examples of Amazon SageMaker status change events that EventBridge monitors
       }
   }
   ```
-+ Amazon SageMaker HyperParameter tuning job state change
++ SageMaker HyperParameter tuning job state change
 
-  Indicates a change in the status of a Amazon SageMaker hyperparameter tuning job\.
+  Indicates a change in the status of a SageMaker hyperparameter tuning job\.
 
   ```
   {
@@ -318,9 +318,9 @@ Some examples of Amazon SageMaker status change events that EventBridge monitors
     }
   }
   ```
-+ Amazon SageMaker endpoint status change
++ SageMaker endpoint status change
 
-  Indicates a change in the status of a Amazon SageMaker hosted real\-time inference endpoint\.
+  Indicates a change in the status of a SageMaker hosted real\-time inference endpoint\.
 
   The following shows an event with an endpoint in the `IN_SERVICE` state\.
 
@@ -356,7 +356,7 @@ Some examples of Amazon SageMaker status change events that EventBridge monitors
   }
   ```
 
-For more information about the status values and their meanings for Amazon SageMaker jobs and endpoints, see the following links:
+For more information about the status values and their meanings for SageMaker jobs and endpoints, see the following links:
 + [ `AlgorithmStatus` ](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAlgorithm.html#sagemaker-DescribeAlgorithm-response-AlgorithmStatus)
 + [ `EndpointStatus`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeEndpoint.html#sagemaker-DescribeEndpoint-response-EndpointStatus)
 + [ `HyperParameterTuningJobStatus`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeHyperParameterTuningJob.html#sagemaker-DescribeHyperParameterTuningJob-response-HyperParameterTuningJobStatus)

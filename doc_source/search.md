@@ -1,6 +1,6 @@
-# Search Using the SageMaker Console and API<a name="search"></a>
+# Search Using the Amazon SageMaker Console and API<a name="search"></a>
 
-Developing a machine learning model typically requires extensive experimenting with different datasets, algorithms, and hyperparameter values\. To manage up to thousands of machine learning model experiments, use Amazon SageMaker's search capabilities\.
+Developing a machine learning model typically requires extensive experimenting with different datasets, algorithms, and hyperparameter values\. To manage up to thousands of machine learning model experiments, use the search capabilities in SageMaker\.
 
 You can use SageMaker search to:
 + Organize, find, and evaluate training jobs using properties, hyperparameters, performance metrics, or any metadata\.

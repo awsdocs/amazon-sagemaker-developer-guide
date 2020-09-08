@@ -21,11 +21,11 @@ After you've created your flow definition, see [Using Augmented AI with Amazon R
 
 ## End\-to\-end Demo Using Amazon Rekognition and Augmented AI<a name="a2i-task-types-rekognition-notebook-demo"></a>
 
-For an end\-to\-end example that demonstrates how to use Amazon Rekognition with Augmented AI, you can use [Amazon Augmented AI \(Amazon A2I\) integration with Amazon Rekognition \[Example\]](https://github.com/aws-samples/amazon-a2i-sample-jupyter-notebooks/blob/master/Amazon%20Augmented%20AI%20(A2I)%20and%20Rekognition%20DetectModerationLabels.ipynb) in an Amazon SageMaker Notebook instance\. 
+For an end\-to\-end example that demonstrates how to use Amazon Rekognition with Augmented AI, you can use [Amazon Augmented AI \(Amazon A2I\) integration with Amazon Rekognition \[Example\]](https://github.com/aws-samples/amazon-a2i-sample-jupyter-notebooks/blob/master/Amazon%20Augmented%20AI%20(A2I)%20and%20Rekognition%20DetectModerationLabels.ipynb) in a SageMaker Notebook instance\. 
 
 **To use Amazon Textract with Augmented AI using a Amazon SageMaker Notebook**
 
-1. If you do not have an active Amazon SageMaker Notebook instance, create one by following the instructions in [Step 2: Create an Amazon SageMaker Notebook Instance](gs-setup-working-env.md)\.
+1. If you do not have an active SageMaker Notebook instance, create one by following the instructions in [Step 2: Create an Amazon SageMaker Notebook Instance](gs-setup-working-env.md)\.
 
 1. When your Notebook instance is active, choose **Open JupyterLab** to the right of the Notebook instance's name\. It may take a few moments for JupyterLab to load\. 
 
@@ -47,4 +47,4 @@ When they're assigned a review task in an Amazon Rekognition workflow, workers m
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/a2i-rekognition-example.png)
 
-You can customize this interface in the Amazon SageMaker console when you create your human review definition, or by creating and using a custom template\. To learn more, see [Create and Manage Worker Task Templates](a2i-instructions-overview.md)\.
+You can customize this interface in the SageMaker console when you create your human review definition, or by creating and using a custom template\. To learn more, see [Create and Manage Worker Task Templates](a2i-instructions-overview.md)\.

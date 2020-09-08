@@ -1,6 +1,6 @@
 # Request Inferences from a Deployed Service<a name="neo-requests"></a>
 
-If you have followed instructions in [Deploy a Model Compiled with Neo with Hosting Services](neo-deployment-hosting-services.md), you should have an Amazon SageMaker endpoint set up and running\. You can now submit inference requests using Boto3 client\. Here is an example of sending an image for inference:
+If you have followed instructions in [Deploy a Model Compiled with Neo with Hosting Services](neo-deployment-hosting-services.md), you should have a Amazon SageMaker endpoint set up and running\. You can now submit inference requests using Boto3 client\. Here is an example of sending an image for inference:
 
 ```
 import boto3

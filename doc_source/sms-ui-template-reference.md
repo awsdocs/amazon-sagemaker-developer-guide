@@ -10,7 +10,7 @@ These repositories include templates designed for audio, image, text, video, and
 
 For more information about how to implement custom templates in Amazon SageMaker Ground Truth, see [Creating Custom Labeling Workflows](sms-custom-templates.md)\. To learn more about custom templates in Amazon Augmented AI, see [Create Custom Worker Task Template](a2i-custom-templates.md)\.
 
-## Amazon SageMaker Crowd HTML Elements<a name="general-topiclist"></a>
+## SageMaker Crowd HTML Elements<a name="general-topiclist"></a>
 
 Following is a list of Crowd HTML Elements that make building a custom template easier and provide a familiar UI for workers\. These elements are supported in Ground Truth, Augmented AI, and Mechanical Turk\.
 

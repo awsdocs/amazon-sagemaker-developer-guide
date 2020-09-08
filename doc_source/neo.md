@@ -8,13 +8,13 @@ Neo automatically optimizes Gluon, Keras, MXNet, PyTorch, TensorFlow, TensorFlow
 
 Neo can optimize models with parameters either in FP32 or quantized to INT8 or FP16 bit\-width\. Neo consists of a compiler and a runtime\. First, the Neo compilation API reads models exported from various frameworks\. It converts the framework\-specific functions and operations into a framework\-agnostic intermediate representation\. Next, it performs a series of optimizations\. Then it generates binary code for the optimized operations, writes them to a shared object library, and saves the model definition and parameters into separate files\. Neo also provides a runtime for each target platform that loads and executes the compiled model\.
 
-You can create a Neo compilation job from either the Amazon SageMaker console, AWS Command Line Interface \(AWS CLI\), Python notebook, or the Amazon SageMaker SDK\. With a few CLI commands, an API invocation, or a few clicks, you can convert a model for your chosen platform\. You can deploy the model to an Amazon SageMaker endpoint or on an AWS IoT Greengrass device quickly\. Amazon SageMaker provides Neo container images for Amazon SageMaker XGBoost and Image Classification models, and supports Amazon SageMaker\-compatible containers for your own compiled models\.
+You can create a Neo compilation job from either the SageMaker console, AWS Command Line Interface \(AWS CLI\), Python notebook, or the SageMaker SDK\. With a few CLI commands, an API invocation, or a few clicks, you can convert a model for your chosen platform\. You can deploy the model to an SageMaker endpoint or on an AWS IoT Greengrass device quickly\. SageMaker provides Neo container images for SageMaker XGBoost and Image Classification models, and supports SageMaker\-compatible containers for your own compiled models\.
 
 ## Neo Available Regions, Frameworks, and Operators<a name="neo-supported"></a>
 
 ### Neo Available Regions<a name="neo-supported-regions"></a>
 
-Neo is available in the following [AWS Service Regions](https://docs.aws.amazon.com/general/latest/gr/rande.html#sagemaker_region) where Amazon SageMaker is supported: 
+Neo is available in the following [AWS Service Regions](https://docs.aws.amazon.com/general/latest/gr/rande.html#sagemaker_region) where SageMaker is supported: 
 + **Asia Pacific** \(Hong Kong, Mumbai, Seoul, Singapore, Sydney, Tokyo\)
 + **Canada** \(Central\)
 + **China** \(Beijing, Ningxia\)
@@ -55,11 +55,11 @@ Neo supports the following deep learning frameworks:
 
 ## Neo Model Compilation Sample Notebooks<a name="neo-sample-notebooks"></a>
 
-For sample notebooks that uses Amazon SageMaker Neo to train, compile, optimize, and deploy machine learning models to make inferences, see: 
+For sample notebooks that uses SageMaker Neo to train, compile, optimize, and deploy machine learning models to make inferences, see: 
 + [MNIST Training, Compilation and Deployment with MXNet Module](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker_neo_compilation_jobs/mxnet_mnist/mxnet_mnist_neo.ipynb)
 + [MNIST Training, Compilation and Deployment with Tensorflow Module](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker_neo_compilation_jobs/tensorflow_distributed_mnist/tensorflow_distributed_mnist_neo.ipynb)
-+ [Deploying pre\-trained PyTorch vision models with Amazon SageMaker Neo ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker_neo_compilation_jobs/pytorch_torchvision/pytorch_torchvision_neo.ipynb)
++ [Deploying pre\-trained PyTorch vision models with SageMaker Neo ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker_neo_compilation_jobs/pytorch_torchvision/pytorch_torchvision_neo.ipynb)
 + [Model Optimization with an Image Classification Example](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker_neo_compilation_jobs/imageclassification_caltech/Image-classification-fulltraining-highlevel-neo.ipynb)
 + [Model Optimization with XGBoost Example ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker_neo_compilation_jobs/xgboost_customer_churn/xgboost_customer_churn_neo.ipynb)
 
-For instructions on how to run these example notebooks in Amazon SageMaker, see [Example Notebooks](howitworks-nbexamples.md)\. If you need instructions on how to create a notebook instance to run these examples, see Amazon SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. To navigate to the relevant example in your notebook instance, choose the **Amazon SageMaker Examples** tab to see a list of all of the Amazon SageMaker samples\. To open a notebook, choose its **Use** tab, then choose **Create copy**\.
+For instructions on how to run these example notebooks in SageMaker, see [Example Notebooks](howitworks-nbexamples.md)\. If you need instructions on how to create a notebook instance to run these examples, see SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. To navigate to the relevant example in your notebook instance, choose the **Amazon SageMaker Examples** tab to see a list of all of the SageMaker samples\. To open a notebook, choose its **Use** tab, then choose **Create copy**\.

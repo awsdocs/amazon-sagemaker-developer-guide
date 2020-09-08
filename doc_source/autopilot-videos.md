@@ -35,6 +35,6 @@ This video shows you how to use job metrics to choose the best model and then ho
 
 ## Amazon SageMaker Autopilot walkthrough<a name="topicID"></a>
 
-This video walks you through an end to end demo where we first build a binary classification model automatically with Amazon SageMaker Autopilot\. We see how candidate models have been built and optimized using auto\-generated notebooks\. We also look at the top candidates with Amazon SageMaker Experiments\. Finally, we deploy the top candidate \(based on XGBoost\), and configure data capture with Amazon SageMaker Model Monitor\.
+This video walks you through an end to end demo where we first build a binary classification model automatically with Amazon SageMaker Autopilot\. We see how candidate models have been built and optimized using auto\-generated notebooks\. We also look at the top candidates with SageMaker Experiments\. Finally, we deploy the top candidate \(based on XGBoost\), and configure data capture with SageMaker Model Monitor\.
 
 [![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/DRjOOaR2prQ/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/DRjOOaR2prQ)

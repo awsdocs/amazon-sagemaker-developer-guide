@@ -5,7 +5,7 @@ A private workforce corresponds to a single **Amazon Cognito user pool**\. Priv
 After your workforce has been created, you can add work teams and individual workers through the Amazon Cognito console\. You can also delete workers from your private workforce or remove them from individual teams in the Amazon Cognito console\. 
 
 **Important**  
-You can't delete work teams from the Amazon Cognito console\. Deleting a Amazon Cognito user group that is associated with an Amazon SageMaker work team will result in an error\. To remove work teams, use the Amazon SageMaker console\.  
+You can't delete work teams from the Amazon Cognito console\. Deleting a Amazon Cognito user group that is associated with an Amazon SageMaker work team will result in an error\. To remove work teams, use the SageMaker console\.  
 
 ## Create Work Teams \(Amazon Cognito Console\)<a name="create-work-teams-cog"></a>
 
@@ -13,7 +13,7 @@ You can't delete work teams from the Amazon Cognito console\. Deleting a Amazon 
 
 **To create a work team using an existing Amazon Cognito user group**
 
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\. 
+1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\. 
 
 1. In the navigation pane, choose **Workforces**\. 
 
@@ -23,7 +23,7 @@ You can't delete work teams from the Amazon Cognito console\. Deleting a Amazon 
 
 1. For **Add workers, **choose **Import existing Amazon Cognito user groups**, and choose one or more user groups that are part of the new team\. 
 
-1. If you choose an **SNS topic**, all workers added to the team are subscribed to the Amazon Simple Notification Service \(Amazon SNS\) topic and notified when new work items are available to the team\. Choose from a list of your existing SNS topics related to Amazon SageMaker Ground Truth or Amazon Augmented AI or choose **Create new topic** to create one\. 
+1. If you choose an **SNS topic**, all workers added to the team are subscribed to the Amazon Simple Notification Service \(Amazon SNS\) topic and notified when new work items are available to the team\. Choose from a list of your existing SNS topics related to SageMaker Ground Truth or Amazon Augmented AI or choose **Create new topic** to create one\. 
 **Note**  
 Amazon SNS notifications are supported by Ground Truth and are not supported by Augmented AI\. If you subscribe workers to receive SNS notifications, they only receive notifications about Ground Truth labeling jobs\. They do not receive notifications about Augmented AI tasks\. 
 
@@ -45,7 +45,7 @@ After a user has been added to a pool, the user can be associated with user grou
 
 1. Choose **Manage User Pools**\.
 
-1. Choose the user pool associated with your Amazon SageMaker workforce\.  
+1. Choose the user pool associated with your SageMaker workforce\.  
 
 1. Under **General Settings**, choose **Users and Groups** and do one of the following: 
    + Choose **Groups**, choose the group that you want to add the user to, and choose **Add users**\. Choose the users that you want to add by choosing the plus\-icon to the right of the user's name\.  
@@ -61,7 +61,7 @@ Disabling a worker stops the worker from receiving jobs\. This action doesn't re
 
 1. Choose **Manage User Pools**\.
 
-1. Choose the user pool associated with your Amazon SageMaker workforce\.
+1. Choose the user pool associated with your SageMaker workforce\.
 
 1. Under **General Settings**, choose **Users and Groups**\.
 
@@ -77,7 +77,7 @@ You can enable a disabled user by choosing **Enable User**\. 
 
 1. Choose **Manage User Pools**\. 
 
-1. Choose the user pool associated with your Amazon SageMaker workforce\.  
+1. Choose the user pool associated with your SageMaker workforce\.  
 
 1. Under **General Settings**, choose **Users and Groups**\. 
 

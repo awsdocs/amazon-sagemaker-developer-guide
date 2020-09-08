@@ -2,19 +2,19 @@
 
 You can use the Amazon SageMaker console to create and manage the work teams and individual workers that make up a private workforce\. 
 
-Use a work team to assign members of your private workforce to a labeling or human review *job*\. When you create your workforce using the Amazon SageMaker console, there is a work team called **Everyone\-in\-private\-workforce** that enables you to assign your entire workforce to a job\. Because an imported Amazon Cognito user pool may contain members that you don't want to include in your work teams, a similar work team is not created for Amazon Cognito user pools\.
+Use a work team to assign members of your private workforce to a labeling or human review *job*\. When you create your workforce using the SageMaker console, there is a work team called **Everyone\-in\-private\-workforce** that enables you to assign your entire workforce to a job\. Because an imported Amazon Cognito user pool may contain members that you don't want to include in your work teams, a similar work team is not created for Amazon Cognito user pools\.
 
  You have two choices to create a new work team: 
-+ You can create a work team in the Amazon SageMaker console and add members from your workforce to the team\. 
++ You can create a work team in the SageMaker console and add members from your workforce to the team\. 
 + You can create a user group by using the Amazon Cognito console and then create a work team by importing the user group\. You can import more than one user group into each work team\. You manage the members of the work team by updating the user group in the Amazon Cognito console\. See [Manage a Private Workforce \(Amazon Cognito Console\)](sms-workforce-management-private-cognito.md) for more information\.  
 
-## Create a Work Team Using the Amazon SageMaker Console<a name="create-workteam-sm-console"></a>
+## Create a Work Team Using the SageMaker Console<a name="create-workteam-sm-console"></a>
 
-You can create a new Amazon Cognito user group or import an existing user group using the Amazon SageMaker console, on the **Labeling workforces** page\. For more information on creating a user group in the Amazon Cognito console, see [Manage a Private Workforce \(Amazon Cognito Console\)](sms-workforce-management-private-cognito.md)\.
+You can create a new Amazon Cognito user group or import an existing user group using the SageMaker console, on the **Labeling workforces** page\. For more information on creating a user group in the Amazon Cognito console, see [Manage a Private Workforce \(Amazon Cognito Console\)](sms-workforce-management-private-cognito.md)\.
 
-**To create a work team using the Amazon SageMaker console**
+**To create a work team using the SageMaker console**
 
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) 
+1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) 
 
 1. Choose **Labeling workforces** from the left menu\.
 
@@ -48,7 +48,7 @@ After you have created a work team, you can see more information about the team 
 
 **To add workers using the private workforce summary page**
 
-1. Open the Amazon SageMaker console at [https://console.aws.amazon.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
+1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
 1. Choose** Labeling workforces** to navigate to your private workforce summary page\. 
 
@@ -84,7 +84,7 @@ Disabling a worker stops the worker from receiving a job\. This action does not 
 
  If desired, you can subsequently **Enable** a worker after they have been disabled\. 
 
-You can remove workers from your private workforce directly in the Amazon SageMaker console if that worker was added in this console\. If you added the worker \(user\) in the Amazon Cognito console, see [Manage a Private Workforce \(Amazon Cognito Console\)](sms-workforce-management-private-cognito.md) to learn how to remove the worker in the Amazon Cognito console\. 
+You can remove workers from your private workforce directly in the SageMaker console if that worker was added in this console\. If you added the worker \(user\) in the Amazon Cognito console, see [Manage a Private Workforce \(Amazon Cognito Console\)](sms-workforce-management-private-cognito.md) to learn how to remove the worker in the Amazon Cognito console\. 
 
 **To remove a worker using the private workforce summary page**
 

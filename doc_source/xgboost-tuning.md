@@ -1,6 +1,6 @@
 # Tune an XGBoost Model<a name="xgboost-tuning"></a>
 
-*Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an objective metric\. You choose the objective metric from the metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the objective metric\. 
+*Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an evaluation metric\. You choose the evaluation metric from the metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the evaluation metric\. 
 
 **Note**  
 Automatic model tuning for XGBoost 0\.90 is only available from the SDKs, not from the Amazon SageMaker console\.
@@ -9,7 +9,7 @@ For more information about model tuning, see [Perform Automatic Model Tuning](au
 
 ## Metrics Computed by the XGBoost Algorithm<a name="xgboost-metrics"></a>
 
-The XGBoost algorithm computes the following nine metrics during training\. When tuning the model, choose one of these metrics as the objective to evaluate the model\.
+The XGBoost algorithm computes the following nine metrics during training\. When tuning the model, choose one of these metrics to evaluate the model\.
 
 
 | Metric Name | Description | Optimization Direction | 

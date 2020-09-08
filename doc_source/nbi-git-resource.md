@@ -1,17 +1,17 @@
 # Add a Git Repository to Your Amazon SageMaker Account<a name="nbi-git-resource"></a>
 
-To manage your GitHub repositories, easily associate them with your notebook instances, and associate credentials for repositories that require authentication, add the repositories as resources in your Amazon SageMaker account\. You can view a list of repositories that are stored in your account and details about each repository in the Amazon SageMaker console and by using the API\.
+To manage your GitHub repositories, easily associate them with your notebook instances, and associate credentials for repositories that require authentication, add the repositories as resources in your Amazon SageMaker account\. You can view a list of repositories that are stored in your account and details about each repository in the SageMaker console and by using the API\.
 
-You can add Git repositories to your Amazon SageMaker account in the Amazon SageMaker console or by using the AWS CLI\.
+You can add Git repositories to your SageMaker account in the SageMaker console or by using the AWS CLI\.
 
 **Note**  
-You can use the Amazon SageMaker API [  `CreateCodeRepository`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateCodeRepository.html) to add Git repositories to your Amazon SageMaker account, but step\-by\-step instructions are not provided here\.
+You can use the SageMaker API [  `CreateCodeRepository`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateCodeRepository.html) to add Git repositories to your SageMaker account, but step\-by\-step instructions are not provided here\.
 
-## Add a Git Repository to Your Amazon SageMaker Account \(Console\)<a name="nbi-git-resource-console"></a>
+## Add a Git Repository to Your SageMaker Account \(Console\)<a name="nbi-git-resource-console"></a>
 
-**To add a Git repository as a resource in your Amazon SageMaker account**
+**To add a Git repository as a resource in your SageMaker account**
 
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
+1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
 1. Choose **Git repositories**, then choose **Add repository**\.
 
@@ -23,7 +23,7 @@ You can use the Amazon SageMaker API [  `CreateCodeRepository`](https://docs.a
 
 1. For **Repository**, choose a repository from the list\.
 
-1. Enter a name to use for the repository in Amazon SageMaker\. The name must be 1 to 63 characters\. Valid characters are a\-z, A\-Z, 0\-9, and \- \(hyphen\)\.
+1. Enter a name to use for the repository in SageMaker\. The name must be 1 to 63 characters\. Valid characters are a\-z, A\-Z, 0\-9, and \- \(hyphen\)\.
 
 1. Choose **Add repository**\.
 
@@ -31,7 +31,7 @@ You can use the Amazon SageMaker API [  `CreateCodeRepository`](https://docs.a
 
 1. Choose **Create new repository**\.
 
-1. Enter a name for the repository that you can use in both CodeCommit and Amazon SageMaker\. The name must be 1 to 63 characters\. Valid characters are a\-z, A\-Z, 0\-9, and \- \(hyphen\)\.
+1. Enter a name for the repository that you can use in both CodeCommit and SageMaker\. The name must be 1 to 63 characters\. Valid characters are a\-z, A\-Z, 0\-9, and \- \(hyphen\)\.
 
 1. Choose **Create repository**\.
 

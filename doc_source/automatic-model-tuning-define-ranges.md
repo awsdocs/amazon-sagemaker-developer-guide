@@ -36,7 +36,7 @@ To define hyperparameter ranges by using the low\-level API, you specify the nam
 For integer and continuous hyperparameter ranges, you can choose the scale you want hyperparameter tuning to use to search the range of values by specifying a value for the `ScalingType` field of the hyperparameter range\. You can choose from the following scaling types:
 
 Auto  
-Amazon SageMaker hyperparameter tuning chooses the best scale for the hyperparameter\.
+SageMaker hyperparameter tuning chooses the best scale for the hyperparameter\.
 
 Linear  
 Hyperparameter tuning searches the values in the hyperparameter range by using a linear scale\. Typically, you choose this if the range of all values from the lowest to the highest is relatively small \(within one order of magnitude\), because uniformly searching values from the range will give you a reasonable exploration of the entire range\.

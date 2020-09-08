@@ -1,4 +1,4 @@
-# Perform Common Tasks in Studio<a name="studio-tasks"></a>
+# Perform Common Tasks in Amazon SageMaker Studio<a name="studio-tasks"></a>
 
 The following sections describe how to perform common tasks in Amazon SageMaker Studio\. For an overview of the Studio interface, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
 

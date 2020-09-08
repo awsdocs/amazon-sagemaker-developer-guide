@@ -10,12 +10,12 @@ SageMaker Experiments comes with its own [Experiments SDK](https://github.com/aw
 
 **Topics**
 + [SageMaker Experiments Features](#experiments-features)
-+ [Create a SageMaker Experiment](experiments-create.md)
-+ [View and Compare SageMaker Experiments, Trials, and Trial Components](experiments-view-compare.md)
++ [Create an Amazon SageMaker Experiment](experiments-create.md)
++ [View and Compare Amazon SageMaker Experiments, Trials, and Trial Components](experiments-view-compare.md)
 + [Track and Compare Tutorial](experiments-mnist.md)
 + [Search Experiments Using Amazon SageMaker Studio](experiments-search-studio.md)
-+ [Clean Up SageMaker Experiment Resources](experiments-cleanup.md)
-+ [Search Using the SageMaker Console and API](search.md)
++ [Clean Up Amazon SageMaker Experiment Resources](experiments-cleanup.md)
++ [Search Using the Amazon SageMaker Console and API](search.md)
 
 ## SageMaker Experiments Features<a name="experiments-features"></a>
 

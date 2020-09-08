@@ -1,6 +1,6 @@
 # Search Experiments Using Amazon SageMaker Studio<a name="experiments-search-studio"></a>
 
-You can search your experiments, trials, and trial components using the experiments browser\. After choosing the entities, you can search on properties of these entities on the SageMaker Leaderboard\.
+You can search your experiments, trials, and trial components using the experiments browser\. After choosing the entities, you can search on properties of these entities on the Amazon SageMaker Leaderboard\.
 
 **Topics**
 + [Search Experiments, Trials, and Trial Components](#experiments-search-studio-experiments)

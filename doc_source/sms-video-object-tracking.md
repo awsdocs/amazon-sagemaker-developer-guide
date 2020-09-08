@@ -4,7 +4,7 @@ You can use the video frame object tracking task type to have workers track the 
 
 A *bounding box* is a box that is associated with a label and is used to identify the pixel location of the object\. You provide a list of categories, and each bounding box that a worker adds to a video frame is identified as an *instance* of that category using an instance ID\. For example, if you provide the label category car, the first car that a worker annotates will have the instance ID car:1\. The second car the worker annotates will have the instance ID car:2\. To track an object's movement, the worker adds bounding boxes associated with the same instance ID around that object in all frames\. 
 
-You can create a video frame object tracking labeling job using the Amazon SageMaker Ground Truth console, the Amazon SageMaker API, and language\-specific AWS SDKs\. To learn more, see [Create a Video Frame Object Detection Labeling Job](sms-video-object-detection.md#sms-video-od-create-labeling-job) and select your preferred method\. 
+You can create a video frame object tracking labeling job using the Amazon SageMaker Ground Truth console, the SageMaker API, and language\-specific AWS SDKs\. To learn more, see [Create a Video Frame Object Detection Labeling Job](sms-video-object-detection.md#sms-video-od-create-labeling-job) and select your preferred method\. 
 
 Ground Truth provides a worker UI and tools to complete your labeling job tasks: [Preview the Worker UI](sms-video-object-detection.md#sms-video-od-worker-ui)\.
 
@@ -22,24 +22,24 @@ The following video shows how a worker might use the worker UI and tools to comp
 
 ## Create a Video Frame Object Tracking Labeling Job<a name="sms-video-ot-create-labeling-job"></a>
 
-You can create a video frame object tracking labeling job using the Amazon SageMaker console or the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) API operation\. 
+You can create a video frame object tracking labeling job using the SageMaker console or the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) API operation\. 
 
 This section assumes that you have reviewed the [Video Frame Labeling Job Overview](sms-video-overview.md) and have chosen the type of input data and the input dataset connection you are using\. 
 
 ### Create a Labeling Job \(Console\)<a name="sms-video-ot-create-labeling-job-console"></a>
 
-You can follow the instructions in [Create a Labeling Job \(Console\)](sms-create-labeling-job-console.md) to learn how to create a video frame object tracking job in the Amazon SageMaker console\. In step 10, choose **Video** from the **Task category** dropdown list, and choose **Video frame object tracking** as the task type\. 
+You can follow the instructions in [Create a Labeling Job \(Console\)](sms-create-labeling-job-console.md) to learn how to create a video frame object tracking job in the SageMaker console\. In step 10, choose **Video** from the **Task category** dropdown list, and choose **Video frame object tracking** as the task type\. 
 
 ### Create a Labeling Job \(API\)<a name="sms-video-ot-create-labeling-job-api"></a>
 
-You create an object tracking labeling job using the Amazon SageMaker API operation `CreateLabelingJob`\. This API defines this operation for all AWS SDKs\. To see a list of language\-specific SDKs supported for this operation, review the **See Also** section of [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)\. 
+You create an object tracking labeling job using the SageMaker API operation `CreateLabelingJob`\. This API defines this operation for all AWS SDKs\. To see a list of language\-specific SDKs supported for this operation, review the **See Also** section of [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)\. 
 
 [Create a Labeling Job \(API\)](sms-create-labeling-job-api.md) provides an overview of the `CreateLabelingJob` operation\. Follow these instructions and do the following while you configure your request: 
 + You must enter an ARN for `HumanTaskUiArn`\. Use `arn:aws:sagemaker:<region>:394669845002:human-task-ui/VideoObjectTracking`\. Replace `<region>` with the AWS Region in which you are creating the labeling job\. 
 
   Do not include an entry for the `UiTemplateS3Uri` parameter\. 
 + Your [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelAttributeName](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelAttributeName) must end in `-ref`\. For example, `ot-labels-ref`\. 
-+ Your input manifest file must be a video frame sequence manifest file\. You can create this manifest file using the Amazon SageMaker console, or create it manually and upload it to Amazon S3\. For more information, see [Input Data Setup](sms-video-data-setup.md)\. 
++ Your input manifest file must be a video frame sequence manifest file\. You can create this manifest file using the SageMaker console, or create it manually and upload it to Amazon S3\. For more information, see [Input Data Setup](sms-video-data-setup.md)\. 
 + You can only use private or vendor work teams to create video frame object detection labeling jobs\. 
 + You specify your labels and worker instructions in a label category configuration file\. For more information, see [Create a Labeling Category Configuration File with Label Category Attributes](sms-label-cat-config-attributes.md) to learn how to create this file\. 
 + You need to provide pre\-defined ARNs for the pre\-annotation and post\-annotation \(ACS\) Lambda functions\. These ARNs are specific to the AWS Region you use to create your labeling job\. 

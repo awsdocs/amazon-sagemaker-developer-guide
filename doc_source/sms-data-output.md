@@ -64,7 +64,7 @@ The third, `intermediate`, contains the output manifest for the current batch wi
 
 ### Inference Directory<a name="sms-directories-inference"></a>
 
-The `inference` directory is only present when you are using automated data labeling\. This directory contains the input and output files for the Amazon SageMaker batch transform used while labeling data objects\.
+The `inference` directory is only present when you are using automated data labeling\. This directory contains the input and output files for the SageMaker batch transform used while labeling data objects\.
 
 ### Manifest Directory<a name="sms-directories-manifest"></a>
 

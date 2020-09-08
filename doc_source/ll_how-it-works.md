@@ -26,7 +26,7 @@ If the algorithm is not provided a validation set, then evaluating and selecting
 
 ## Step 4: Deploy a trained linear model<a name="step4-deploy-trained-ll-model"></a>
 
-Here is an example of Python code that you can use to deploy a model in MXNet that has been trained with Amazon SageMaker linear learner 
+Here is an example of Python code that you can use to deploy a model in MXNet that has been trained with SageMaker linear learner 
 
 ```
   import mxnet as mx

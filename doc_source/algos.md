@@ -15,7 +15,7 @@ Because you create a model to address a business question, your first step is to
 
      
 
-  For this type of discrete classification problem, Amazon SageMaker provides two algorithms: [Linear learner algorithm](linear-learner.md) and the [XGBoost Algorithm](xgboost.md)\. You set the following hyperparameters to direct these algorithms to produce discrete results:
+  For this type of discrete classification problem, SageMaker provides two algorithms: [Linear learner algorithm](linear-learner.md) and the [XGBoost Algorithm](xgboost.md)\. You set the following hyperparameters to direct these algorithms to produce discrete results:
 
    
   + For the Linear Learner algorithm, set the `predictor_type` hyperparameter to `binary_classifier`\. 
@@ -33,17 +33,17 @@ Because you create a model to address a business question, your first step is to
   + For the XGBoost algorithm, set the `objective` hyperparameter to `reg:linear`\.
 
    
-+ Answers in the form of discrete recommendations—Consider this question: "Based on past responses to mailings, what is the recommended content for each customer?" In this case, you are looking for a recommendation on what to mail, not whether to mail, the customer\. For this problem, Amazon SageMaker provides the [Factorization Machines Algorithm](fact-machines.md) algorithm\.
++ Answers in the form of discrete recommendations—Consider this question: "Based on past responses to mailings, what is the recommended content for each customer?" In this case, you are looking for a recommendation on what to mail, not whether to mail, the customer\. For this problem, SageMaker provides the [Factorization Machines Algorithm](fact-machines.md) algorithm\.
 
    
 
 All of the questions in the preceding examples rely on having example data that includes answers\. There are times that you don't need, or can't get, example data with answers\. This is true for problems whose answers identify groups\. For example:
-+ "I want to group current and prospective customers into 10 groups based on their attributes\. How should I group them? " You might choose to send the mailing to customers in the group that has the highest percentage of current customers\. That is, prospective customers that most resemble current customers based on the same set of attributes\. For this type of question, Amazon SageMaker provides the [K\-Means Algorithm](k-means.md)\.
++ "I want to group current and prospective customers into 10 groups based on their attributes\. How should I group them? " You might choose to send the mailing to customers in the group that has the highest percentage of current customers\. That is, prospective customers that most resemble current customers based on the same set of attributes\. For this type of question, SageMaker provides the [K\-Means Algorithm](k-means.md)\.
 
    
-+ "What are the attributes that differentiate these customers, and what are the values for each customer along those dimensions\." You use these answers to simplify the view of current and prospective customers, and, maybe, to better understand these customer attributes\. For this type of question, Amazon SageMaker provides the [Principal Component Analysis \(PCA\) Algorithm](pca.md) algorithm\.
++ "What are the attributes that differentiate these customers, and what are the values for each customer along those dimensions\." You use these answers to simplify the view of current and prospective customers, and, maybe, to better understand these customer attributes\. For this type of question, SageMaker provides the [Principal Component Analysis \(PCA\) Algorithm](pca.md) algorithm\.
 
-In addition to these general\-purpose algorithms, Amazon SageMaker provides algorithms that are tailored to specific use cases\. These include:
+In addition to these general\-purpose algorithms, SageMaker provides algorithms that are tailored to specific use cases\. These include:
 + [Image Classification Algorithm](image-classification.md)—Use this algorithm to classify images\. It uses example data with answers \(referred to as *supervised algorithm*\)\.
 
    

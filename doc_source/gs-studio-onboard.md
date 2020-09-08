@@ -15,7 +15,7 @@ To use Amazon SageMaker Studio and Amazon SageMaker Studio Notebooks, you must c
 When onboarding, you can choose to use either AWS Single Sign\-On \(AWS SSO\) or AWS Identity and Access Management \(IAM\) for authentication methods\. When you use IAM authentication, you can choose either the **Quick start** or the **Standard setup** procedure\.
 
 **Note**  
-If you onboard using IAM authentication and want to switch to AWS SSO authentication later, you must delete the domain created for you by SageMaker Studio\. Then, you need to manually re\-import all notebooks and other user data that you created\. For more information, see [Delete an SageMaker Studio Domain](gs-studio-delete-domain.md)\.
+If you onboard using IAM authentication and want to switch to AWS SSO authentication later, you must delete the domain created for you by SageMaker Studio\. Then, you need to manually re\-import all notebooks and other user data that you created\. For more information, see [Delete an Amazon SageMaker Studio Domain](gs-studio-delete-domain.md)\.
 
 The simplest way to create a Amazon SageMaker Studio account is to follow the **Quick start** procedure\.
 
@@ -33,7 +33,7 @@ AWS SSO authentication provides the following benefits over IAM authentication:
 + Organizations manage their members in AWS SSO instead of Studio\. You can assign multiple members access to Studio at the same time\. When you use IAM authentication, you must add and manage members manually one at time using the Studio Control Panel\. 
 
 **Topics**
-+ [Onboard to SageMaker Studio Using Quick Start](onboard-quick-start.md)
-+ [Onboard to SageMaker Studio Using AWS SSO](onboard-sso-users.md)
-+ [Onboard to SageMaker Studio Using IAM](onboard-iam.md)
-+ [Delete an SageMaker Studio Domain](gs-studio-delete-domain.md)
++ [Onboard to Amazon SageMaker Studio Using Quick Start](onboard-quick-start.md)
++ [Onboard to Amazon SageMaker Studio Using AWS SSO](onboard-sso-users.md)
++ [Onboard to Amazon SageMaker Studio Using IAM](onboard-iam.md)
++ [Delete an Amazon SageMaker Studio Domain](gs-studio-delete-domain.md)

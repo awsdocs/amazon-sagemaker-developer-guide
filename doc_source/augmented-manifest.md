@@ -8,7 +8,7 @@ When specifying a channel's parameters, you specify a path to the file, called a
 
 An augmented manifest file must be formatted in [JSON Lines](http://jsonlines.org/) format\. In JSON Lines format, each line in the file is a complete JSON object followed by a newline separator\.
 
-During training, Amazon SageMaker parses each JSON line and sends some or all of its attributes on to the training algorithm\. You specify which attribute contents to pass and the order in which to pass them with the `AttributeNames` parameter of the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) API\. The `AttributeNames` parameter is an ordered list of attribute names that Amazon SageMaker looks for in the JSON object to use as training input\.
+During training, SageMaker parses each JSON line and sends some or all of its attributes on to the training algorithm\. You specify which attribute contents to pass and the order in which to pass them with the `AttributeNames` parameter of the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) API\. The `AttributeNames` parameter is an ordered list of attribute names that SageMaker looks for in the JSON object to use as training input\.
 
 For example, if you list `["line", "book"]` for `AttributeNames`, the input data must include the attribute names of `line` and `book` in the specified order\. For this example, the following augmented manifest file content is valid:
 
@@ -17,11 +17,11 @@ For example, if you list `["line", "book"]` for `AttributeNames`, the input data
 {"line": "It was love at first sight.", "author": "Joseph Heller", "book": "Catch-22"}
 ```
 
-Amazon SageMaker ignores unlisted attribute names even if they precede, follow, or are in between listed attributes\.
+SageMaker ignores unlisted attribute names even if they precede, follow, or are in between listed attributes\.
 
 When using augmented manifest files, observe the following guidelines:
 + The order of the attributes listed in the `AttributeNames` parameter determines the order of the attributes passed to the algorithm in the training job\.
-+ The listed `AttributeNames` can be a subset of all of the attributes in the JSON line\. Amazon SageMaker ignores unlisted attributes in the file\.
++ The listed `AttributeNames` can be a subset of all of the attributes in the JSON line\. SageMaker ignores unlisted attributes in the file\.
 + You can specify any type of data allowed by the JSON format in `AttributeNames`, including text, numerical, data arrays, or objects\.
 + To include an S3 URI as an attribute name, add the suffix `-ref` to it\.
 
@@ -32,7 +32,7 @@ If an attribute name contains the suffix `-ref`, the attribute's value must be a
 {"image-ref": "s3://mybucket/sample02/image2.jpg", "is-a-cat": 0}
 ```
 
-For the first line of this manifest, Amazon SageMaker retrieves the contents of the S3 object `s3://mybucket/foo/image1.jpg` and streams it to the algorithm for training\. The second line is the string representation of the `is-a-cat` attribute `"1"`, which is followed by the contents of the second line\.
+For the first line of this manifest, SageMaker retrieves the contents of the S3 object `s3://mybucket/foo/image1.jpg` and streams it to the algorithm for training\. The second line is the string representation of the `is-a-cat` attribute `"1"`, which is followed by the contents of the second line\.
 
 To create an augmented manifest file, use Amazon SageMaker Ground Truth to create a labeling job\. For more information, see [Output Data](sms-data-output.md)\.
 
@@ -59,7 +59,7 @@ To complete this procedure, you need:
 
 **To use an augmented manifest file in a training job \(console\)**
 
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker](https://console.aws.amazon.com/sagemaker)\.
+1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
 1. In the navigation pane, choose **Training**, then choose **Training jobs**\. 
 
@@ -111,13 +111,13 @@ To complete this procedure, you need:
 
 1. \(Optional\) For **Tags**, add one or more tags to the training job\. A *tag* is metadata that you can define and assign to AWS resources\. In this case, you can use tags to help you manage your training jobs\. A tag consists of a key and a value, which you define\. For example, you might want to create a tag with **Project** as a key and a value that refers to a project that is related to the training job, such as **Home value forecasts**\.
 
-1. Choose **Create training job**\. Amazon SageMaker creates and runs the training job\.
+1. Choose **Create training job**\. SageMaker creates and runs the training job\.
 
-After the training job has finished, Amazon SageMaker stores the model artifacts in the bucket whose path you provided for **S3 output path** in the **Output data configuration** field\. To deploy the model to get predictions, see [Step 6: Deploy the Model to Amazon SageMaker](ex1-model-deployment.md)\.
+After the training job has finished, SageMaker stores the model artifacts in the bucket whose path you provided for **S3 output path** in the **Output data configuration** field\. To deploy the model to get predictions, see [Step 6: Deploy the Model to Amazon SageMaker](ex1-model-deployment.md)\.
 
 ## Use an Augmented Manifest File \(API\)<a name="augmented-manifest-api"></a>
 
-The following shows how to train a model with an augmented manifest file using the Amazon SageMaker high\-level Python library:
+The following shows how to train a model with an augmented manifest file using the SageMaker high\-level Python library:
 
 ```
 # Create a model object set to using "Pipe" mode.
@@ -145,4 +145,4 @@ data_channels = {'train': train_data}
 model.fit(inputs=data_channels, logs=True)
 ```
 
-After the training job has finished, Amazon SageMaker stores the model artifacts in the bucket whose path you provided for **S3 output path** in the **Output data configuration** field\. To deploy the model to get predictions, see [Step 6: Deploy the Model to Amazon SageMaker](ex1-model-deployment.md)\.
+After the training job has finished, SageMaker stores the model artifacts in the bucket whose path you provided for **S3 output path** in the **Output data configuration** field\. To deploy the model to get predictions, see [Step 6: Deploy the Model to Amazon SageMaker](ex1-model-deployment.md)\.

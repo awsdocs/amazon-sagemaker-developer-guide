@@ -6,7 +6,7 @@ Depending on your ML application, you can choose from one of the Ground Truth bu
 
 In order to automate labeling your training dataset, you can optionally use *automated data labeling*, a Ground Truth process that uses machine learning to decide which data needs to be labeled by humans\. Automated data labeling may reduce the labeling time and manual effort required\. For more information, see [Automate Data Labeling](sms-automated-labeling.md)\. To create a custom labeling job, see [Creating Custom Labeling Workflows](sms-custom-templates.md)\.
 
-Use either pre\-built or custom tools to assign the labeling tasks for your training dataset\. A *labeling UI template* is a webpage that Ground Truth uses to present tasks and instructions to your workers\. The Amazon SageMaker console provides built\-in templates for labeling data\. You can use these templates to get started , or you can build your own tasks and instructions by using our HTML 2\.0 components\. For more information, see [Creating Custom Labeling Workflows](sms-custom-templates.md)\.  
+Use either pre\-built or custom tools to assign the labeling tasks for your training dataset\. A *labeling UI template* is a webpage that Ground Truth uses to present tasks and instructions to your workers\. The SageMaker console provides built\-in templates for labeling data\. You can use these templates to get started , or you can build your own tasks and instructions by using our HTML 2\.0 components\. For more information, see [Creating Custom Labeling Workflows](sms-custom-templates.md)\.  
 
 Use the workforce of your choice to label your dataset\. You can choose your workforce from:
 + The Amazon Mechanical Turk workforce of over 500,000 independent contractors worldwide\.

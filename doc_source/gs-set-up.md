@@ -2,7 +2,7 @@
 
 In this section, you sign up for an AWS account, create an IAM admin user, and onboard to Amazon SageMaker Studio\.
 
-If you're new to Amazon SageMaker, we recommend that you read [How Amazon SageMaker Works](whatis.md#how-it-works)\.
+If you're new to SageMaker, we recommend that you read [How Amazon SageMaker Works](whatis.md#how-it-works)\.
 
 **Topics**
 + [Create an AWS Account](#gs-account)
@@ -12,7 +12,7 @@ If you're new to Amazon SageMaker, we recommend that you read [How Amazon SageMa
 
 In this section, you sign up for an AWS account\. If you already have an AWS account, skip this step\.
 
-When you sign up for Amazon Web Services \(AWS\), your AWS account is automatically signed up for all AWS services, including Amazon SageMaker\. You are charged only for the services that you use\. 
+When you sign up for Amazon Web Services \(AWS\), your AWS account is automatically signed up for all AWS services, including SageMaker\. You are charged only for the services that you use\. 
 
 **To create an AWS account**
 

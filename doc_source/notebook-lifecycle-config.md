@@ -31,4 +31,4 @@ Use the `nohup` command in your script\.
 
 1. Choose **Create configuration**\.
 
-You can see a list of notebook instance lifecycle configurations you previously created by choosing **Lifecycle configuration** in the Amazon SageMaker console\. From there, you can view, edit, delete existing lifecycle configurations\. You can create a new notebook instance lifecycle configuration by choosing **Create configuration**\. These notebook instance lifecycle configurations are available when you create a new notebook instance\.
+You can see a list of notebook instance lifecycle configurations you previously created by choosing **Lifecycle configuration** in the SageMaker console\. From there, you can view, edit, delete existing lifecycle configurations\. You can create a new notebook instance lifecycle configuration by choosing **Create configuration**\. These notebook instance lifecycle configurations are available when you create a new notebook instance\.

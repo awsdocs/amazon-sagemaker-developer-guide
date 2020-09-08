@@ -1,6 +1,6 @@
-# Create a SageMaker Experiment<a name="experiments-create"></a>
+# Create an Amazon SageMaker Experiment<a name="experiments-create"></a>
 
-Create a Amazon SageMaker experiment to track your SageMaker training, processing, and transform jobs\.
+Create an Amazon SageMaker experiment to track your SageMaker training, processing, and transform jobs\.
 
 The following procedure shows you how to create a SageMaker experiment for a SageMaker training, processing, or transform job\. Steps labeled as \(Studio\) describe how to view the experiment in Amazon SageMaker Studio\. You don't have to run the experiment in Studio to view the experiment in Studio\.
 
@@ -12,7 +12,7 @@ For a tutorial that shows this functionality in an existing SageMaker Studio not
    import sys
    ```
 
-1. \(Optional\) The [SageMaker Python SDK](https://sagemaker.readthedocs.io), comes preinstalled in SageMaker Studio\. If you plan to run your code outside Studio, install the SageMaker Python SDK\.
+1. \(Optional\) The [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), comes preinstalled in SageMaker Studio\. If you plan to run your code outside Studio, install the SageMaker Python SDK\.
 
    ```
    !{sys.executable} -m pip install sagemaker
@@ -112,6 +112,6 @@ The `tags` parameter is optional\. You can search for the tag using Studio, the 
 1. \(Studio\) In the trial list, double\-click the trial to display a list of the components in the trial \(this example has one trial\)\. Your list should look similar to the following:  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-setup-component-list.png)
 
-1. \(Studio\) To view information about the experiment, trial, and job \(trial component\), see [View and Compare SageMaker Experiments, Trials, and Trial Components](experiments-view-compare.md)\.
+1. \(Studio\) To view information about the experiment, trial, and job \(trial component\), see [View and Compare Amazon SageMaker Experiments, Trials, and Trial Components](experiments-view-compare.md)\.
 
-To clean up the resources you created, see [Clean Up SageMaker Experiment Resources](experiments-cleanup.md)\.
+To clean up the resources you created, see [Clean Up Amazon SageMaker Experiment Resources](experiments-cleanup.md)\.

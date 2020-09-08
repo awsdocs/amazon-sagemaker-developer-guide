@@ -38,11 +38,11 @@ Typically, training in RL consists of many *episodes*\. An episode consists of a
 
 ## Key Features of Amazon SageMaker RL<a name="sagemaker-rl"></a>
 
-To train RL models in Amazon SageMaker RL, use the following components: 
-+ A deep learning \(DL\) framework\. Currently, Amazon SageMaker supports RL in TensorFlow and Apache MXNet\.
-+ An RL toolkit\. An RL toolkit manages the interaction between the agent and the environment, and provides a wide selection of state of the art RL algorithms\. Amazon SageMaker supports the Intel Coach and Ray RLlib toolkits\. For information about Intel Coach, see [https://nervanasystems\.github\.io/coach/](https://nervanasystems.github.io/coach/)\. For information about Ray RLlib, see [https://ray\.readthedocs\.io/en/latest/rllib\.html](https://ray.readthedocs.io/en/latest/rllib.html)\.
+To train RL models in SageMaker RL, use the following components: 
++ A deep learning \(DL\) framework\. Currently, SageMaker supports RL in TensorFlow and Apache MXNet\.
++ An RL toolkit\. An RL toolkit manages the interaction between the agent and the environment, and provides a wide selection of state of the art RL algorithms\. SageMaker supports the Intel Coach and Ray RLlib toolkits\. For information about Intel Coach, see [https://nervanasystems\.github\.io/coach/](https://nervanasystems.github.io/coach/)\. For information about Ray RLlib, see [https://ray\.readthedocs\.io/en/latest/rllib\.html](https://ray.readthedocs.io/en/latest/rllib.html)\.
 + An RL environment\. You can use custom environments, open\-source environments, or commercial environments\. For information, see [RL Environments in Amazon SageMaker](sagemaker-rl-environments.md)\.
 
-The following diagram shows the RL components that are supported in Amazon SageMaker RL\.
+The following diagram shows the RL components that are supported in SageMaker RL\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sagemaker-rl-support.png)

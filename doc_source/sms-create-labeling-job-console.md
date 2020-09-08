@@ -2,12 +2,12 @@
 
 You can use the Amazon SageMaker console to create a labeling job for all of the Ground Truth built\-in task types and custom labeling workflows\. For built\-in task types, we recommend that you use this page with the [page for your task type](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html)\. Each task type page includes specific details on creating a labeling job using that task type\. 
 
-You need to provide the following to create a labeling job in the Amazon SageMaker console: 
+You need to provide the following to create a labeling job in the SageMaker console: 
 + An input manifest file in Amazon S3\. You can place your input dataset in Amazon S3 and automatically generate a manifest file using the Ground Truth console \(not supported for 3D point cloud labeling jobs\)\. 
 
   Alternatively, you can manually create an input manifest file\. To learn how, see [Input Data](sms-data-input.md)\.
 + An Amazon S3 bucket to store your output data\.
-+ An IAM role with permission to access your resources in Amazon S3 and with an Amazon SageMaker execution policy attached\. For a general solution, you can attach the managed policy, AmazonSageMakerFullAccess, to an IAM role and include `sagemaker` in your bucket name\. 
++ An IAM role with permission to access your resources in Amazon S3 and with a SageMaker execution policy attached\. For a general solution, you can attach the managed policy, AmazonSageMakerFullAccess, to an IAM role and include `sagemaker` in your bucket name\. 
 
   For more granular policies, see [Assign IAM Permissions to Use Ground Truth](sms-security-permission.md)\. 
 
@@ -16,17 +16,17 @@ You need to provide the following to create a labeling job in the Amazon SageMak
 
   Note: You cannot use the Mechanical Turk workforce for 3D point cloud or video frame labeling jobs\. 
 + If you are using a custom labeling workflow, you must save a worker task template in Amazon S3 and provide an Amazon S3 URI for that template\. For more information, see [Step 2: Creating your custom labeling task template](sms-custom-templates-step2.md)\.
-+ \(Optional\) An AWS KMS key ARN if you want Amazon SageMaker to encrypt the output of your labeling job using your own AWS KMS encryption key instead of the default Amazon S3 service key\.
++ \(Optional\) An AWS KMS key ARN if you want SageMaker to encrypt the output of your labeling job using your own AWS KMS encryption key instead of the default Amazon S3 service key\.
 + \(Optional\) Existing labels for the dataset you use for your labeling job\. Use this option if you want workers to adjust, or approve and reject labels\. 
 
 **Important**  
 Your work team, input manifest file, output bucket, and other resources in Amazon S3 must be in the same AWS Region you use to create your labeling job\. 
 
-When you create a labeling job using the Amazon SageMaker console, you add worker instructions and labels to the worker UI that Ground Truth provides\. You can preview and interact with the worker UI while creating your labeling job in the console\. You can also see a preview of the worker UI on your [built\-in task type page](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html)\.
+When you create a labeling job using the SageMaker console, you add worker instructions and labels to the worker UI that Ground Truth provides\. You can preview and interact with the worker UI while creating your labeling job in the console\. You can also see a preview of the worker UI on your [built\-in task type page](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html)\.
 
 **To create a labeling job \(console\)**
 
-1. Sign in to the Amazon SageMaker console at [https://console.aws.amazon.com/sagemaker/groundtruth](https://console.aws.amazon.com/sagemaker/groundtruth)\. 
+1. Sign in to the SageMaker console at [https://console.aws.amazon.com/sagemaker/groundtruth](https://console.aws.amazon.com/sagemaker/groundtruth)\. 
 
 1. In the left navigation pane, choose **Labeling jobs**\. 
 
@@ -44,9 +44,9 @@ When you create a labeling job using the Amazon SageMaker console, you add worke
      + For **Input dataset location**, provide the location in Amazon S3 in which your input manifest file is located\. For example, if your input manifest file, manifest\.json, is located in **example\-bucket**, enter **s3://example\-bucket/manifest\.json**\.
      + For **Output dataset location**, provide the location in Amazon S3 where you want Ground Truth to store the output data from your labeling job\. 
 
-1. For **IAM Role**, choose an existing IAM role or create an IAM role with permission to access your resources in Amazon S3, to write to the output Amazon S3 bucket specified above, and with an Amazon SageMaker execution policy attached\. 
+1. For **IAM Role**, choose an existing IAM role or create an IAM role with permission to access your resources in Amazon S3, to write to the output Amazon S3 bucket specified above, and with a SageMaker execution policy attached\. 
 
-1. \(Optional\) For **Additional configuration**, you can specify how much of your dataset you want workers to label, and if you want Amazon SageMaker to encrypt the output data for your labeling job using an AWS KMS encryption key\. To encrypt your output data, you must have the required AWS KMS permissions attached to the IAM role you provided in the previous step\. For more details, see [Assign IAM Permissions to Use Ground Truth](sms-security-permission.md)\. 
+1. \(Optional\) For **Additional configuration**, you can specify how much of your dataset you want workers to label, and if you want SageMaker to encrypt the output data for your labeling job using an AWS KMS encryption key\. To encrypt your output data, you must have the required AWS KMS permissions attached to the IAM role you provided in the previous step\. For more details, see [Assign IAM Permissions to Use Ground Truth](sms-security-permission.md)\. 
 
 1. In the **Task type** section, under **Task category**, use the dropdown list to select your task category\. 
 

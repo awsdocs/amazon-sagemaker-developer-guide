@@ -4,13 +4,13 @@ You can use Amazon SageMaker API operations to manage, update, and delete your p
 
 ## Find Your Workforce Name<a name="sms-workforce-management-private-api-name"></a>
 
-Some of the Amazon SageMaker workforce\-related API operations require your workforce name as input\. You can see your Amazon Cognito or OIDC IdP private and vendor workforce names in an AWS Region using the []() API operation in that AWS Region\. 
+Some of the SageMaker workforce\-related API operations require your workforce name as input\. You can see your Amazon Cognito or OIDC IdP private and vendor workforce names in an AWS Region using the []() API operation in that AWS Region\. 
 
-If you created your workforce using your own OIDC IdP, you can find your workforce name in the Ground Truth area of the Amazon SageMaker console\. 
+If you created your workforce using your own OIDC IdP, you can find your workforce name in the Ground Truth area of the SageMaker console\. 
 
-**To find your workforce name in the Amazon SageMaker console**
+**To find your workforce name in the SageMaker console**
 
-1. Go to the Ground Truth area of the Amazon SageMaker console: [https://console\.aws\.amazon\.com/sagemaker/groundtruth](https://console.aws.amazon.com/sagemaker/groundtruth)\.
+1. Go to the Ground Truth area of the SageMaker console: [https://console\.aws\.amazon\.com/sagemaker/groundtruth](https://console.aws.amazon.com/sagemaker/groundtruth)\.
 
 1. Select **Labeling workforces**\.
 

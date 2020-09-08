@@ -1,4 +1,4 @@
-# Onboard to SageMaker Studio Using IAM<a name="onboard-iam"></a>
+# Onboard to Amazon SageMaker Studio Using IAM<a name="onboard-iam"></a>
 
 **Note**  
 Amazon SageMaker Studio is available only in specific AWS Regions\. To view the list of supported Regions, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.

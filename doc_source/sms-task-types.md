@@ -1,6 +1,6 @@
 # Built\-in Task Types<a name="sms-task-types"></a>
 
-Amazon SageMaker Ground Truth has several built\-in task types\. These are image\- and text\-based labeling jobs that use Amazon SageMaker built\-in algorithms\. Ground Truth provides worker task templates in the console for built\-in task types\. The following topics describe each built\-in task type and demo the worker task templates that are provided by Ground Truth in the console\. To learn how to create a labeling job in the console using one of these task types, select the task type page\. If you are a new user of Ground Truth, we recommend that you use the [Getting started](sms-getting-started.md) bounding box demo to learn how to create a labeling job using the Amazon SageMaker console\.
+Amazon SageMaker Ground Truth has several built\-in task types\. These are image\- and text\-based labeling jobs that use Amazon SageMaker built\-in algorithms\. Ground Truth provides worker task templates in the console for built\-in task types\. The following topics describe each built\-in task type and demo the worker task templates that are provided by Ground Truth in the console\. To learn how to create a labeling job in the console using one of these task types, select the task type page\. If you are a new user of Ground Truth, we recommend that you use the [Getting started](sms-getting-started.md) bounding box demo to learn how to create a labeling job using the SageMaker console\.
 
 
 ****  

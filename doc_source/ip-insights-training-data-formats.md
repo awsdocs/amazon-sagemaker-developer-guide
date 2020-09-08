@@ -1,6 +1,6 @@
 # IP Insights Training Data Formats<a name="ip-insights-training-data-formats"></a>
 
-The following are the available data input formats for the IP Insights algorithm\. Amazon SageMaker built\-in algorithms adhere to the common input training format described in [Common data formats for training](cdf-training.md)\. However, the Amazon SageMaker IP Insights algorithm currently supports only the CSV data input format\.
+The following are the available data input formats for the IP Insights algorithm\. Amazon SageMaker built\-in algorithms adhere to the common input training format described in [Common data formats for training](cdf-training.md)\. However, the SageMaker IP Insights algorithm currently supports only the CSV data input format\.
 
 ## IP Insights Training Data Input Formats<a name="ip-insights-training-input-format-requests"></a>
 

@@ -1,4 +1,4 @@
-# Associate Git Repositories with Amazon SageMaker Notebook Instances<a name="nbi-git-repo"></a>
+# Associate Git Repositories with SageMaker Notebook Instances<a name="nbi-git-repo"></a>
 
 Associate Git repositories with your notebook instance to save your notebooks in a source control environment that persists even if you stop or delete your notebook instance\. You can associate one default repository and up to three additional repositories with a notebook instance\. The repositories can be hosted in AWS CodeCommit, GitHub, or on any other Git server\. Associating Git repositories with your notebook instance can be useful for:
 + Persistence \- Notebooks in a notebook instance are stored on durable Amazon EBS volumes, but they do not persist beyond the life of your notebook instance\. Storing notebooks in a Git repository enables you to store and use notebooks even if you stop or delete your notebook instance\.
