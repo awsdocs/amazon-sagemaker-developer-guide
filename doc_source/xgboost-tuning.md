@@ -1,15 +1,20 @@
 # Tune an XGBoost Model<a name="xgboost-tuning"></a>
 
-*Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an evaluation metric\. You choose the evaluation metric from the metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the evaluation metric\. 
+*Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your training and validation datasets\. You choose three types of hyperparameters:
++ a learning `objective` function to optimize during model training
++ an `eval_metric` to use to evaluate model perrormance during validation
++ a set of hyperparameters and a range of values for each to use when tuning the model automatically
+
+You choose the evaluation metric from set of evaluation metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the evaluation metric\. 
 
 **Note**  
-Automatic model tuning for XGBoost 0\.90 is only available from the SDKs, not from the Amazon SageMaker console\.
+Automatic model tuning for XGBoost 0\.90 is only available from the Amazon SageMaker SDKs, not from the SageMaker console\.
 
 For more information about model tuning, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
 
-## Metrics Computed by the XGBoost Algorithm<a name="xgboost-metrics"></a>
+## Evaluation Metrics Computed by the XGBoost Algorithm<a name="xgboost-metrics"></a>
 
-The XGBoost algorithm computes the following nine metrics during training\. When tuning the model, choose one of these metrics to evaluate the model\.
+The XGBoost algorithm computes the following metrics to use for model validation\. When tuning the model, choose one of these metrics to evaluate the model\. For full list of valid `eval_metric` values, refer to [XGBoost Learning Task Parameters](https://github.com/dmlc/xgboost/blob/master/doc/parameter.rst#learning-task-parameters)
 
 
 | Metric Name | Description | Optimization Direction | 
@@ -29,7 +34,7 @@ The XGBoost algorithm computes the following nine metrics during training\. When
 
 ## Tunable XGBoost Hyperparameters<a name="xgboost-tunable-hyperparameters"></a>
 
-Tune the open\-source XGBoost model with the following hyperparameters\. The hyperparameters that have the greatest effect on XGBoost objective metrics are: `alpha`, `min_child_weight`, `subsample`, `eta`, and `num_round`\. 
+Tune the XGBoost model with the following hyperparameters\. The hyperparameters that have the greatest effect on optimizing the XGBoost evaluation metrics are: `alpha`, `min_child_weight`, `subsample`, `eta`, and `num_round`\. 
 
 
 | Parameter Name | Parameter Type | Recommended Ranges | 

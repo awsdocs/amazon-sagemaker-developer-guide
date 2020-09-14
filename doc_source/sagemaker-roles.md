@@ -355,6 +355,8 @@ If you specify a private VPC for your hyperparameter tuning job, add the followi
             "ec2:DescribeDhcpOptions",
             "ec2:DescribeSubnets",
             "ec2:DescribeSecurityGroups"
+            ]
+}
 ```
 
 If your input is encrypted using server\-side encryption with an AWS KMS–managed key \(SSE\-KMS\), add the following permissions:

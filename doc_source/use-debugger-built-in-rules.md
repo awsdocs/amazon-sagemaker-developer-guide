@@ -33,8 +33,7 @@ import sagemaker
 from sagemaker.tensorflow import TensorFlow
 from sagemaker.debugger import Rule, CollectionConfig, rule_configs
 
-# call any built-in rules that you want to use
-# you can add the built-in rules as many as you want
+# call built-in rules that you want to use.
 built_in_rules = [ 
             Rule.sagemaker(rule_configs.vanishing_gradient())
             Rule.sagemaker(rule_configs.loss_not_decreasing())
@@ -55,6 +54,9 @@ sagemaker_estimator = TensorFlow(
 )
 sagemaker_estimator.fit()
 ```
+
+**Note**  
+The number of rules you can run in parallel run on `ml.t3.medium` instances\. The maximum number of built\-in rule containers for a training job is 20\. You cannot specify other instance types for the Debugger built\-in rules\.
 
 To find a full list of Debugger built\-in rules in SageMaker Python SDK, see [List of Debugger Built\-in Rules](debugger-built-in-rules.md)\.
 

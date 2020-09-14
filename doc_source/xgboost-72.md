@@ -74,7 +74,7 @@ The following table contains the hyperparameters for the XGBoost algorithm\. The
 | csv\_weights | When this flag is enabled, XGBoost differentiates the importance of instances for csv input by taking the second column \(the column after labels\) in training data as the instance weights\. **Optional** Valid values: 0 or 1 Default value: 0  | 
 | early\_stopping\_rounds | The model trains until the validation score stops improving\. Validation error needs to decrease at least every `early_stopping_rounds` to continue training\. SageMaker hosting uses the best model for inference\. **Optional** Valid values: integer Default value: \-  | 
 | eta | Step size shrinkage used in updates to prevent overfitting\. After each boosting step, you can directly get the weights of new features\. The `eta` parameter actually shrinks the feature weights to make the boosting process more conservative\. **Optional** Valid values: Float\. Range: \[0,1\]\. Default value: 0\.3  | 
-| eval\_metric | Evaluation metrics for validation data\. A default metric is assigned according to the objective:[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/xgboost-72.html) For a list of valid inputs, see [XGBoost Parameters](https://github.com/dmlc/xgboost/blob/master/doc/parameter.rst)\. **Optional** Valid values: string Default value: Default according to objective\.  | 
+| eval\_metric | Evaluation metrics for validation data\. A default metric is assigned according to the objective:[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/xgboost-72.html) For a list of valid inputs, see [XGBoost Parameters](https://github.com/dmlc/xgboost/blob/master/doc/parameter.rst#learning-task-parameters)\. **Optional** Valid values: string Default value: Default according to objective\.  | 
 | gamma | Minimum loss reduction required to make a further partition on a leaf node of the tree\. The larger, the more conservative the algorithm is\. **Optional** Valid values: Float\. Range: \[0,∞\)\. Default value: 0  | 
 | grow\_policy | Controls the way that new nodes are added to the tree\. Currently supported only if `tree_method` is set to `hist`\. **Optional** Valid values: String\. Either `depthwise` or `lossguide`\. Default value: `depthwise`  | 
 | lambda | L2 regularization term on weights\. Increasing this value makes models more conservative\. **Optional** Valid values: float Default value: 1  | 
@@ -86,7 +86,7 @@ The following table contains the hyperparameters for the XGBoost algorithm\. The
 | min\_child\_weight | Minimum sum of instance weight \(hessian\) needed in a child\. If the tree partition step results in a leaf node with the sum of instance weight less than `min_child_weight`, the building process gives up further partitioning\. In linear regression models, this simply corresponds to a minimum number of instances needed in each node\. The larger the algorithm, the more conservative it is\. **Optional** Valid values: Float\. Range: \[0,∞\)\. Default value: 1  | 
 | normalize\_type | Type of normalization algorithm\. **Optional** Valid values: Either *tree* or *forest*\. Default value: *tree*  | 
 | nthread | Number of parallel threads used to run *xgboost*\. **Optional** Valid values: integer Default value: Maximum number of threads\.  | 
-| objective | Specifies the learning task and the corresponding learning objective\. Examples: `reg:logistic`, `reg:softmax`, `multi:squarederror`\. For a full list of valid inputs, refer to [XGBoost Parameters](https://github.com/dmlc/xgboost/blob/master/doc/parameter.rst)\. **Optional** Valid values: string Default value: `reg:squarederror`  | 
+| objective | Specifies the learning task and the corresponding learning objective\. Examples: `reg:logistic`, `reg:softmax`, `multi:squarederror`\. For a full list of valid inputs, refer to [XGBoost Parameters](https://github.com/dmlc/xgboost/blob/master/doc/parameter.rst#learning-task-parameters)\. **Optional** Valid values: string Default value: `reg:squarederror`  | 
 | one\_drop | When this flag is enabled, at least one tree is always dropped during the dropout\. **Optional** Valid values: 0 or 1 Default value: 0  | 
 | process\_type | The type of boosting process to run\. **Optional** Valid values: String\. Either `default` or `update`\. Default value: `default`  | 
 | rate\_drop | The dropout rate that specifies the fraction of previous trees to drop during the dropout\. **Optional** Valid values: Float\. Range: \[0\.0, 1\.0\]\. Default value: 0\.0  | 
@@ -104,13 +104,18 @@ The following table contains the hyperparameters for the XGBoost algorithm\. The
 
 ## Tune an XGBoost Release 0\.72 Model<a name="xgboost-72-tuning"></a>
 
-*Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an evaluation metric\. You choose the evaluation metric from the metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the evaluation metric\. 
+*Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your training and validation datasets\. You choose three types of hyperparameters:
++ a learning `objective` function to optimize during model training
++ an `eval_metric` to use to evaluate model perrormance during validation
++ a set of hyperparameters and a range of values for each to use when tuning the model automatically
+
+You choose the evaluation metric from set of evaluation metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the evaluation metric\. 
 
 For more information about model tuning, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
 
 ### Metrics Computed by the XGBoost Release 0\.72 Algorithm<a name="xgboost-72-metrics"></a>
 
-The XGBoost algorithm based on version 0\.72 computes the following nine metrics during training\. When tuning the model, choose one of these metrics to evaluate the model\. 
+The XGBoost algorithm based on version 0\.72 computes the following nine metrics to use for model validation\. When tuning the model, choose one of these metrics to evaluate the model\. For full list of valid `eval_metric` values, refer to [XGBoost Learning Task Parameters](https://github.com/dmlc/xgboost/blob/master/doc/parameter.rst#learning-task-parameters)
 
 
 | Metric Name | Description | Optimization Direction | 
@@ -127,7 +132,7 @@ The XGBoost algorithm based on version 0\.72 computes the following nine metrics
 
 ### Tunable XGBoost Release 0\.72 Hyperparameters<a name="xgboost-72-tunable-hyperparameters"></a>
 
-Tune the XGBoost model with the following hyperparameters\. The hyperparameters that have the greatest effect on XGBoost objective metrics are: `alpha`, `min_child_weight`, `subsample`, `eta`, and `num_round`\. 
+Tune the XGBoost model with the following hyperparameters\. The hyperparameters that have the greatest effect on optimizing the XGBoost evaluation metrics are: `alpha`, `min_child_weight`, `subsample`, `eta`, and `num_round`\. 
 
 
 | Parameter Name | Parameter Type | Recommended Ranges | 

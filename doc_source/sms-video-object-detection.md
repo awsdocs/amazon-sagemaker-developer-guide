@@ -62,7 +62,7 @@ response = client.create_labeling_job(
     InputConfig={
         'DataSource': {
             'S3DataSource': {
-                'ManifestS3Uri': 's3://AWSDOC-EXAMPLE-BUCKET/path/video-frame-sequence-input-manifest.json'
+                'ManifestS3Uri': 's3://DOC-EXAMPLE-BUCKET/path/video-frame-sequence-input-manifest.json'
             }
         },
         'DataAttributes': {
@@ -72,7 +72,7 @@ response = client.create_labeling_job(
         }
     },
     OutputConfig={
-        'S3OutputPath': 's3://AWSDOC-EXAMPLE-BUCKET/prefix/file-to-store-output-data',
+        'S3OutputPath': 's3://DOC-EXAMPLE-BUCKET/prefix/file-to-store-output-data',
         'KmsKeyId': 'string'
     },
     RoleArn='arn:aws:iam::*:role/*,

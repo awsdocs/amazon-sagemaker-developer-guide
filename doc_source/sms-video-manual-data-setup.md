@@ -17,8 +17,8 @@ In the video frame sequence input manifest file, each line in the manifest refer
 The following example demonstrates the syntax used for an input manifest file:
 
 ```
-{"source-ref": "s3://AWSDOC-EXAMPLE-BUCKET/example-folder/seq1.json"}
-{"source-ref": "s3://AWSDOC-EXAMPLE-BUCKET/example-folder/seq2.json"}
+{"source-ref": "s3://DOC-EXAMPLE-BUCKET/example-folder/seq1.json"}
+{"source-ref": "s3://DOC-EXAMPLE-BUCKET/example-folder/seq2.json"}
 ```
 
 ### Create a Video Frame Sequence File<a name="sms-video-create-sequence-file"></a>

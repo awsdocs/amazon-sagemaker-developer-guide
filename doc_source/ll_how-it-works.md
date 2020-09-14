@@ -29,19 +29,19 @@ If the algorithm is not provided a validation set, then evaluating and selecting
 Here is an example of Python code that you can use to deploy a model in MXNet that has been trained with SageMaker linear learner 
 
 ```
-  import mxnet as mx
-                import tarfile
-                t = tarfile.open('model.tar.gz', 'r:gz')
-                t.extractall()
-                
-                # Load the mxnet module from the model files
-                mod = mx.module.Module.load('mx-mod', 0)
-                # model's weights
-                mod._arg_params['fc0_weight'].asnumpy().flatten()
-                
-                # model bias
-                mod._arg_params['fc0_bias'].asnumpy().flatten()
-                mod.bind(data_shapes=data_iter.provide_data) #data_iter is an iterator configured with your test data
-                #perform inference
-                result = mod.predict(data_iter)
+import mxnet as mx
+import tarfile
+t = tarfile.open('model.tar.gz', 'r:gz')
+t.extractall()
+            
+# Load the mxnet module from the model files
+mod = mx.module.Module.load('mx-mod', 0)
+# model's weights
+mod._arg_params['fc0_weight'].asnumpy().flatten()
+            
+# model bias
+mod._arg_params['fc0_bias'].asnumpy().flatten()
+mod.bind(data_shapes=data_iter.provide_data) #data_iter is an iterator configured with your test data
+#perform inference
+result = mod.predict(data_iter)
 ```

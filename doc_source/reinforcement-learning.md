@@ -6,6 +6,7 @@ Reinforcement learning \(RL\) is a machine learning technique that attempts to l
 + [Why is Reinforcement Learning Important?](#rl-why)
 + [Markov Decision Process \(MDP\)](#rl-terms)
 + [Key Features of Amazon SageMaker RL](#sagemaker-rl)
++ [Reinforcement Learning Sample Notebooks](#sagemaker-rl-notebooks)
 + [Sample RL Workflow Using Amazon SageMaker RL](sagemaker-rl-workflow.md)
 + [RL Environments in Amazon SageMaker](sagemaker-rl-environments.md)
 + [Distributed Training with Amazon SageMaker RL](sagemaker-rl-distributed.md)
@@ -46,3 +47,18 @@ To train RL models in SageMaker RL, use the following components:
 The following diagram shows the RL components that are supported in SageMaker RL\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sagemaker-rl-support.png)
+
+## Reinforcement Learning Sample Notebooks<a name="sagemaker-rl-notebooks"></a>
+
+ The following table outlines a variety of sample notebooks that address different use cases of Amazon SageMaker reinforcement learning\. 
+
+
+****  
+
+| **Title** | **Description** | 
+| --- | --- | 
+|  [How to Train Batch RL Policies?](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/reinforcement_learning/rl_cartpole_batch_coach/rl_cartpole_batch_coach.ipynb)  |   We demonstrate how to use batch RL to train a new policy from an offline dataset\.  | 
+|  [How to Solve the Cart\-pole Balancing Problem?](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/reinforcement_learning/rl_cartpole_coach/rl_cartpole_coach_gymEnv.ipynb)  |  We demonstrate how to solve the Cart\-pole balancing problem with RL\.   | 
+|  [How to Solve the Knapsack Problem?](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/reinforcement_learning/rl_knapsack_coach_custom/rl_knapsack_coach_customEnv.ipynb)  |   We demonstrate how to use RL to solve the Knapsack problem, and how [SageMaker Managed Spot Training](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/reinforcement_learning/rl_managed_spot_cartpole_coach/rl_managed_spot_cartpole_coach_gymEnv.ipynb) can be used to run training at a lower cost\.   | 
+|  [How to Solve the Mountain Car Problem?](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/reinforcement_learning/rl_mountain_car_coach_gymEnv/rl_mountain_car_coach_gymEnv.ipynb)  |  We demonstrate how to solve the Mountain Car control problem with RL\.  | 
+|  [How to Train a Distributed Object Tracker with RL?](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/reinforcement_learning/rl_objecttracker_robomaker_coach_gazebo/rl_objecttracker_coach_robomaker.ipynb)  |  Using Robomaker we demonstrate how to train a Distributed Object Tracker that learns to track and follow another Robot\.  | 

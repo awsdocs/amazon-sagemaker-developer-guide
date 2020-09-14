@@ -2,6 +2,9 @@
 
 Use the Debugger built\-in rules provided by Amazon SageMaker Debugger and analyze tensors emitted while training your models\. The Debugger built\-in rules monitor various common conditions that are critical for the success of a training job\. You can call the built\-in rules using Amazon SageMaker Python SDK or the low\-level SageMaker API operations\. Depending on deep learning frameworks of your choice, there are four scopes of validity for the built\-in rules as shown in the following table\.
 
+**Note**  
+The number of rules you can run in parallel run on `ml.t3.medium` instances\. The maximum number of built\-in rule containers for a training job is 20\. You cannot specify other instance types for the Debugger built\-in rules\.
+
 
 **Scopes of Validity for the Debugger Built\-in Rules**  
 

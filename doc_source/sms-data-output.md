@@ -500,7 +500,7 @@ In addition to the standard elements, the metadata includes a class map that lis
 
 ```
 {
-    "source-ref": "s3://AWSDOC-EXAMPLE-BUCKET/example-path/input-manifest.json",
+    "source-ref": "s3://DOC-EXAMPLE-BUCKET/example-path/input-manifest.json",
     "CarObjectDetection-ref": "s3://AWSDOC-EXAMPLE-BUCKET/output/labeling-job-name/annotations/consolidated-annotation/output/0/SeqLabel.json",
     "CarObjectDetection-ref-metadata": {
         "class-map": {
@@ -593,7 +593,7 @@ In addition to the standard elements, the metadata includes a class map that lis
 
 ```
 {
-    "source-ref": "s3://AWSDOC-EXAMPLE-BUCKET/example-path/input-manifest.json",
+    "source-ref": "s3://DOC-EXAMPLE-BUCKET/example-path/input-manifest.json",
     "CarObjectTracking-ref": "s3://AWSDOC-EXAMPLE-BUCKET/output/labeling-job-name/annotations/consolidated-annotation/output/0/SeqLabel.json",
     "CarObjectTracking-ref-metadata": {
         "class-map": {
