@@ -16,7 +16,7 @@ Use these instructions to automatically set up your input dataset connect with G
 
 1. Enter an Amazon S3 URI for **S3 location for input datasets**\. 
 
-   If your input dataset is made up of sequences of *sequences of video frames*, this should be the Amazon S3 location where your sequences are stored\. Each sequence should have a unique prefix\. For example, if you have two sequences stored in `s3://AWSDOC-EXAMPLE-BUCKET/vid-frames/sequences/sequence1`, `s3://AWSDOC-EXAMPLE-BUCKET/vid-frames/sequences/sequence2`, enter `s3://AWSDOC-EXAMPLE-BUCKET/vid-frames/sequences/` here\. 
+   If your input dataset is made up of sequences of *sequences of video frames*, this should be the Amazon S3 location where your sequences are stored\. Each sequence should have a unique prefix\. For example, if you have two sequences stored in `s3://DOC-EXAMPLE-BUCKET/vid-frames/sequences/sequence1`, `s3://DOC-EXAMPLE-BUCKET/vid-frames/sequences/sequence2`, enter `s3://DOC-EXAMPLE-BUCKET/vid-frames/sequences/` here\. 
 
    If your input dataset is made up of *video files* such as MP4 files, this should be the Amazon S3 location in which your video files are stored\. 
 
