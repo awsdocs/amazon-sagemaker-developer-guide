@@ -99,7 +99,7 @@ The [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) includes the
 To train a model, SageMaker uses the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) API\. The AWS SDK for Python \(Boto3\) provides the corresponding `create_training_job` method\. 
 
 When using this method, you provide the following information:
-+ The training algorithm – Specify the registry path of the Docker image that contains the training code\. For the registry paths for the algorithms provided by SageMaker, see [Common parameters for built\-in algorithms](sagemaker-algo-docker-registry-paths.md)\.
++ The training algorithm – Specify the registry path of the Docker image that contains the training code\. For the registry paths for the algorithms provided by SageMaker, see [Docker Registry Paths for SageMaker Built\-in Algorithms](sagemaker-algo-docker-registry-paths.md)\.
 + Algorithm\-specific hyperparameters – Specify algorithm\-specific hyperparameters to influence the final quality of the model\. For information, see [XGBoost Hyperparameters](xgboost_hyperparameters.md)\.
 + The input and output configuration – Provide the S3 bucket where training data is stored and where SageMaker saves the results of model training \(the model artifacts\)\. 
 

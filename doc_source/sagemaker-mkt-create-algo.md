@@ -34,7 +34,7 @@ You can create an algorithm by using either the SageMaker console or the SageMak
 
 **To create an algorithm resource \(console\)**
 
-1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
+1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
 1. Choose **Algorithms**, then choose **Create algorithm**\.
 
@@ -42,7 +42,7 @@ You can create an algorithm by using either the SageMaker console or the SageMak
 
    1. For **Algorithm name**, type a name for your algorithm\. The algorithm name must be unique in your account and in the AWS region\. The name must have 1 to 64 characters\. Valid characters are a\-z, A\-Z, 0\-9, and \- \(hyphen\)\.
 
-   1. Type a description for your algorithm\. This description appears in the SageMaker console and in the AWS Marketplace\.
+   1. Type a description for your algorithm\. This description appears in the Amazon SageMaker console and in the AWS Marketplace\.
 
    1. For **Training image, type the path in Amazon ECR where your training container is stored\.**
 
@@ -105,11 +105,11 @@ You can create an algorithm by using either the SageMaker console or the SageMak
 
       1. For `Type`, specify `Integer`, `Continuous`, or `Categorical`\. The value must correspond to the type of `Range` that you specified\.
 
-   1. For **Metric definitions**, specify any training metrics that you want your algorithm to emit\. SageMaker uses the regular expression that you specify to find the metrics by parsing the logs from your training container during training\. Users can view these metrics when they run training jobs with your algorithm, and they can monitor and plot the metrics in Amazon CloudWatch\. For information, see [Monitor and Analyze Training Jobs Using Metrics](training-metrics.md)\. For each metric, provide the following information:
+   1. For **Metric definitions**, specify any training metrics that you want your algorithm to emit\. Amazon SageMaker uses the regular expression that you specify to find the metrics by parsing the logs from your training container during training\. Users can view these metrics when they run training jobs with your algorithm, and they can monitor and plot the metrics in Amazon CloudWatch\. For information, see [Monitor and Analyze Training Jobs Using Metrics](training-metrics.md)\. For each metric, provide the following information:
 
       1. For **Metric name**, type a name for the metric\.
 
-      1. For `Regex`, type the regular expression that SageMaker uses to parse training logs so that it can find the metric value\.
+      1. For `Regex`, type the regular expression that Amazon SageMaker uses to parse training logs so that it can find the metric value\.
 
       1. For **Objective metric support** choose **Yes** if this metric can be used as the objective metric for a hyperparameter tuning job\. For information, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
 
@@ -121,7 +121,7 @@ You can create an algorithm by using either the SageMaker console or the SageMak
 
    1. For **Container DNS host name**, type the name of a DNS host for your image\.
 
-   1. For **Supported instance types for real\-time inference**, choose the instance types that your algorithm supports for models deployed as hosted endpoints in SageMaker\. For information, see [Deploy a Model on SageMaker Hosting Services](how-it-works-deployment.md#how-it-works-hosting)\.
+   1. For **Supported instance types for real\-time inference**, choose the instance types that your algorithm supports for models deployed as hosted endpoints in Amazon SageMaker\. For information, see [Deploy a Model on SageMaker Hosting Services](how-it-works-deployment.md#how-it-works-hosting)\.
 
    1. For **Supported instance types for batch transform jobs**, choose the instance types that your algorithm supports for batch transform jobs\. For information, see [Get Inferences for an Entire Dataset with Batch Transform](how-it-works-batch.md)\.
 
@@ -135,11 +135,11 @@ You can create an algorithm by using either the SageMaker console or the SageMak
 
    1. For **Publish this algorithm on AWS Marketplace**, choose **Yes** to publish the algorithm on AWS Marketplace\.
 
-   1. For **Validate this algorithm**, choose **Yes** if you want SageMaker to run training jobs and/or batch transform jobs that you specify to test the training and/or inference code of your algorithm\.
+   1. For **Validate this algorithm**, choose **Yes** if you want Amazon SageMaker to run training jobs and/or batch transform jobs that you specify to test the training and/or inference code of your algorithm\.
 **Note**  
 To publish your algorithm on AWS Marketplace, your algorithm must be validated\.
 
-   1. For **IAM role**, choose an IAM role that has the required permissions to run training jobs and batch transform jobs in SageMaker, or choose **Create a new role** to allow SageMaker to create a role that has the `AmazonSageMakerFullAccess` managed policy attached\. For information, see [SageMaker Roles ](sagemaker-roles.md)\.
+   1. For **IAM role**, choose an IAM role that has the required permissions to run training jobs and batch transform jobs in Amazon SageMaker, or choose **Create a new role** to allow Amazon SageMaker to create a role that has the `AmazonSageMakerFullAccess` managed policy attached\. For information, see [SageMaker Roles ](sagemaker-roles.md)\.
 
    1. For **Validation profile**, specify the following:
       + A name for the validation profile\.
@@ -150,4 +150,4 @@ To publish your algorithm on AWS Marketplace, your algorithm must be validated\.
 
 ## Create an Algorithm Resource \(API\)<a name="sagemaker-mkt-create-algo-api"></a>
 
-To create an algorithm resource by using the SageMaker API, call the [ `CreateAlgorithm`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAlgorithm.html) API\. 
+To create an algorithm resource by using the Amazon SageMaker API, call the [ `CreateAlgorithm`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAlgorithm.html) API\. 

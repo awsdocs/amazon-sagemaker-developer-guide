@@ -121,7 +121,7 @@ To learn how to add a CORS policy to an S3 bucket, see [How do I add cross\-doma
 
 3D point cloud labeling tasks can take workers more time to complete than other task types\. You can set the total amount of time that workers can work on each task by doing one of the following: 
 + When you create a labeling job in the console, set **Task Timeout** when you select your work team\.
-+ Using the `TaskTimeLimitInSeconds` parameter when creating a labeling job using the SageMaker API\. 
++ Using the `TaskTimeLimitInSeconds` parameter when creating a labeling job using the Amazon SageMaker API\. 
 
 The maximum time you can set for workers to work on tasks is 7 days\. The default value is 3 days\. If you set your task time limit to be greater than 8 hours, you must set `MaxSessionDuration` for your IAM execution role to at least 8 hours\. 
 

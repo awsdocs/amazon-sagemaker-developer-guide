@@ -25,8 +25,8 @@ Available frameworks of AWS Deep Learning Containers and XGBoost to use Debugger
 
 | Framework | Versions | 
 | --- | --- | 
-|  [TensorFlow](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/tensorflow.md)  |  1\.15, 2\.1\*, 2\.2, 2\.3\*  | 
-|  [MXNet](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/mxnet.md)  |  1\.6  | 
+|  [TensorFlow](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/tensorflow.md)  |  1\.15, 2\.1\*, 2\.2, 2\.3  | 
+|  [MXNet](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/mxnet.md)  |  1\.6, 1\.7  | 
 |  [PyTorch](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/pytorch.md)  |  1\.4, 1\.5, 1\.6  | 
 |  [XGBoost](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/xgboost.md) \([as a built\-in algorithm](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/xgboost.md#use-xgboost-as-a-built-in-algorithm)\)   |  0\.90\-2, 1\.0\-1  | 
 
@@ -43,7 +43,7 @@ If you want to use Debugger with a framework of a version not listed in the prev
 | --- | --- | 
 |  [TensorFlow](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/tensorflow.md#using-debugger-on-sagemaker-training-containers-and-custom-containers)  |  1\.13, 1\.14, 1\.15, 2\.1, 2\.2, 2\.3  | 
 |  [Keras with TensorFlow backend](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/tensorflow.md#using-debugger-on-sagemaker-training-containers-and-custom-containers)  |  2\.3  | 
-|  [MXNet](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/mxnet.md)  |  1\.4, 1\.5, 1\.6  | 
+|  [MXNet](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/mxnet.md)  |  1\.4, 1\.5, 1\.6, 1\.7  | 
 |  [PyTorch](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/pytorch.md)  |  1\.2, 1\.3, 1\.4, 1\.5, 1\.6  | 
 |  [XGBoost](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/xgboost.md) \(as a framework\)  |  0\.90\-2, 1\.0\-1  | 
 

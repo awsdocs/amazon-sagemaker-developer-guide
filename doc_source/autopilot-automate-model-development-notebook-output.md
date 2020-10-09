@@ -1,4 +1,4 @@
-# Amazon SageMaker Autopilot notebook output<a name="autopilot-automate-model-development-notebook-output"></a>
+# Amazon SageMaker Autopilot notebooks generated to manage AutoML tasks<a name="autopilot-automate-model-development-notebook-output"></a>
 
 Amazon SageMaker Autopilot manages the key tasks in an automatic machine learning \(AutoML\) process\. They are implemented by Autopilot with an AutoML job\. The AutoML job creates two notebooks that describe the plan that Autopilot follows to generate candidate models\. A candidate model consists of a \(pipeline, algorithm\) pair\. First, there’s a data exploration notebook, that describes what Autopilot learned about the data that you provided\. Second, there’s a candidate generation notebook, which uses the information about the data to generate candidates\. 
 

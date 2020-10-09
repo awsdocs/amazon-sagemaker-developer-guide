@@ -1,6 +1,6 @@
 # Available Instance Types<a name="notebooks-available-instance-types"></a>
 
-The following Amazon Elastic Compute Cloud \(Amazon EC2\) instance types are available\. For more information, see [Instance types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the Amazon EC2 User Guide for Linux Instances\. *Fast launch* instances types are optimized to start in under two minutes\.
+The following Amazon Elastic Compute Cloud \(Amazon EC2\) instance types are available\. For information on the available instance types and their respective CPU and RAM resources, see [ Amazon Elastic Compute Cloud Instance types](http://aws.amazon.com/ec2/instance-types/)\. *Fast launch* instances types are optimized to start in under two minutes\.
 
 **General purpose**
 + ml\.t3\.medium
@@ -38,6 +38,8 @@ The following Amazon Elastic Compute Cloud \(Amazon EC2\) instance types are ava
 
 **Accelerated computing**
 + ml\.p3\.2xlarge
++ ml\.p3\.8xlarge
++ ml\.p3\.16xlarge
 + ml\.g4dn\.xlarge
 
   A fast launch instance type\.
@@ -46,4 +48,5 @@ The following Amazon Elastic Compute Cloud \(Amazon EC2\) instance types are ava
 + ml\.g4dn\.2xlarge
 + ml\.g4dn\.4xlarge
 + ml\.g4dn\.8xlarge
++ ml\.g4dn\.12xlarge
 + ml\.g4dn\.16xlarge

@@ -1,4 +1,4 @@
-# Common parameters for built\-in algorithms<a name="sagemaker-algo-docker-registry-paths"></a>
+# Docker Registry Paths for SageMaker Built\-in Algorithms<a name="sagemaker-algo-docker-registry-paths"></a>
 
 The following table lists parameters for each of the algorithms provided by Amazon SageMaker\.
 
@@ -21,10 +21,10 @@ The following table lists parameters for each of the algorithms provided by Amaz
 | Random Cut Forest | train and \(optionally\) test |  *<ecr\_path>*/randomcutforest:*<tag>*  | File or Pipe | recordIO\-protobuf or CSV | CPU | Yes | 
 | Semantic Segmentation | train and validation, train\_annotation, validation\_annotation, and \(optionally\) label\_map and model |  *<ecr\_path>*/semantic\-segmentation:*<tag>*  | File or Pipe | image files | GPU \(single instance only\) | No | 
 |  Seq2Seq Modeling  | train, validation, and vocab | <ecr\_path>/seq2seq:<tag> | File | recordIO\-protobuf | GPU \(single instance only\) | No | 
-| XGBoost \(0\.90\-1, 0\.90\-2, 1\.0\-1\) | train and \(optionally\) validation |  *<ecr\_path>*/sagemaker\-xgboost:*1\.0\-1\-cpu\-py3*  | File or Pipe | CSV, LibSVM, recordIO\-protobuf, or Parquet | CPU | Yes | 
+| XGBoost \(0\.90\-1, 0\.90\-2, 1\.0\-1, 1\.2\-1\) | train and \(optionally\) validation |  *<ecr\_path>*/sagemaker\-xgboost:*1\.0\-1\-cpu\-py3* *<ecr\_path>*/sagemaker\-xgboost:*1\.2\-1*  | File or Pipe | CSV, LibSVM, recordIO\-protobuf, or Parquet | CPU \(or GPU for 1\.2\-1\) | Yes | 
 
 **Note**  
-For XGBoost, do not use `:latest` or `:1`\. Use the specific version you require such as, `:0.90-1-cpu-py3`, `:0.90-2-cpu-py3`, or `:1.0-1-cpu-py3`\.
+For XGBoost, do not use `:latest` or `:1`\. Use the specific version you require such as, `:0.90-1-cpu-py3`, `:0.90-2-cpu-py3`, `:1.0-1-cpu-py3`, or `:1.2-1`\.
 
 Algorithms that are *parallelizable* can be deployed on multiple compute instances for distributed training\. For the **Training Image and Inference Image Registry Path** column, use the `:1` version tag to ensure that you are using a stable version of the algorithm\. You can reliably host a model trained using an image with the `:1` tag on an inference image that has the `:1` tag\. Using the `:latest` tag in the registry path provides you with the most up\-to\-date version of the algorithm, but might cause problems with backward compatibility\. Avoid using the `:latest` tag for production purposes\.
 
@@ -131,7 +131,7 @@ For the **Training Image and Inference Image Registry Path** column, depending o
 | eu\-west\-2 | 644912444149\.dkr\.ecr\.eu\-west\-2\.amazonaws\.com | 
 | us\-gov\-west\-1 | 226302683700\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com | 
 
-**Algorithms**: XGBoost \(0\.90\-1, 0\.90\-2, 1\.0\-1\)
+**Algorithms**: XGBoost \(0\.90\-1, 0\.90\-2, 1\.0\-1, 1\.2\-1\)
 
 
 | AWS Region | Training image and inference image registry path | 

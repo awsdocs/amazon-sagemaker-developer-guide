@@ -4,6 +4,8 @@ As a managed service, SageMaker performs operations on your behalf on the AWS ha
 
 A SageMaker user can grant these permissions with an IAM role \(referred to as an execution role\)\. 
 
+To create and use a locally available execution role, you can use the following procedures\.
+
 ## Get execution role<a name="sagemaker-roles-get-execution-role"></a>
 
 When you run a notebook within SageMaker you can access the execution role with the following code:
@@ -14,9 +16,9 @@ role = sagemaker.get_execution_role()
 ```
 
 **Note**  
-The execution role is intended to be only available when running a notebook within SageMaker\. If you run `get_execution_role` in a notebook not on SageMaker, you will get a "region" error\. 
+The execution role is intended to be available only when running a notebook within SageMaker\. If you run `get_execution_role` in a notebook not on SageMaker, expect a "region" error\. 
 
-To use a locally available execution role, you can use the following procedures\. Check the IAM role ARN that your created when you created your the Notebook Instance or Studio application\. This can be found in the console in the detail page under Permissions and Encryption\.
+To find the IAM role ARN created when you created your the notebook instance or Studio application, go to the **Notebook instances** page in the console and select the relevant notebook from the list of **Names**\. in the configuration detail page the IAM role ARN is given in the **Permissions and encryption** section\.
 
 **To create a new role**
 

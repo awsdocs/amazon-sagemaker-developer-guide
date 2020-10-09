@@ -10,6 +10,8 @@ Compared with methods that provide a solution for only continuous objectives, th
 
 The linear learner algorithm requires a data matrix, with rows representing the observations, and columns representing the dimensions of the features\. It also requires an additional column that contains the labels that match the data points\. At a minimum, Amazon SageMaker linear learner requires you to specify input and output data locations, and objective type \(classification or regression\) as arguments\. The feature dimension is also required\. For more information, see [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html)\. You can specify additional parameters in the `HyperParameters` string map of the request body\. These parameters control the optimization procedure, or specifics of the objective function that you train on\. For example, the number of epochs, regularization, and loss type\. 
 
+If you're using [Managed Spot Training](https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html), the linear learner algorithm supports using [checkpoints to take a snapshot of the state of the model](https://docs.aws.amazon.com/sagemaker/latest/dg/model-checkpoints.html)\.
+
 **Topics**
 + [Input/Output interface for the linear learner algorithm](#ll-input_output)
 + [EC2 instance recommendation for the linear learner algorithm](#ll-instances)
@@ -39,10 +41,8 @@ You can train the linear learner algorithm on single\- or multi\-machine CPU and
 
 ## Linear learner sample notebooks<a name="ll-sample-notebooks"></a>
 
- The following table outlines a variety of sample notebooks that address different use cases of Amazon SageMaker linear learner algorithm\. 
+ The following table outlines a variety of sample notebooks that address different use cases of Amazon SageMaker linear learner algorithm\.
 
-
-****  
 
 | **Title** | **Description** | 
 | --- | --- | 
@@ -51,4 +51,4 @@ You can train the linear learner algorithm on single\- or multi\-machine CPU and
 |  [How to Build a Multiclass Classifier?](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/scientific_details_of_algorithms/linear_learner_multiclass_classification/linear_learner_multiclass_classification.ipynb)  |   Using UCI's Covertype dataset, we demonstrate how to train a multiclass classifier\.   | 
 |  [How to Build a Machine Learning \(ML\) Pipeline for Inference? ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/scikit_learn_inference_pipeline/Inference%20Pipeline%20with%20Scikit-learn%20and%20Linear%20Learner.ipynb)  |   Using a Scikit\-learn container, we demonstrate how to build an end\-to\-end ML pipeline\.   | 
 
- For instructions on how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. After you have created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all of the SageMaker samples\. The topic modeling example notebooks using the linear learning algorithm are located in the **Introduction to Amazon algorithms** section\. To open a notebook, choose its **Use** tab and choose **Create copy**\. 
+For instructions on how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. After you have created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all of the SageMaker samples\. The topic modeling example notebooks using the linear learning algorithm are located in the **Introduction to Amazon algorithms** section\. To open a notebook, choose its **Use** tab and choose **Create copy**\.

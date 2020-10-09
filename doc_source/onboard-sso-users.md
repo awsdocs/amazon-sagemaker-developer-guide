@@ -11,7 +11,7 @@ This topic describes how to onboard to Amazon SageMaker Studio using AWS SSO aut
 
 1. Choose **Amazon SageMaker Studio** at the top left of the page\.
 
-1. On the **Amazon SageMaker Studio Control Panel**, under **Get started**, choose **Standard setup**\.
+1. On the **SageMaker Studio** page, under **Get started**, choose **Standard setup**\.
 
 1. For **Authentication method**, choose **AWS Single Sign\-On \(SSO\)**\. A message tells you whether you have an AWS SSO account in an AWS Region supported by SageMaker Studio\.
 
@@ -24,6 +24,8 @@ This topic describes how to onboard to Amazon SageMaker Studio using AWS SSO aut
    If you choose **Create a new role**, the **Create an IAM role** dialog opens:
    + For **S3 buckets you specify**, specify additional S3 buckets that users of your notebooks can access\. If you don't want to add access to more buckets, choose **None**\.
    + Choose **Create role**\. SageMaker creates a new IAM `AmazonSageMaker-ExecutionPolicy` role with the [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) policy attached\.
+
+1. Under **Network**, specify your VPC information\. For more information, see [Choose a VPC](onboard-vpc.md)\.
 
 1. Choose **Submit**\.
 

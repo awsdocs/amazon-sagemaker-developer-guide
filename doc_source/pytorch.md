@@ -5,7 +5,7 @@ You can use Amazon SageMaker to train and deploy a model using custom PyTorch co
 ## What do you want to do?<a name="pytorch-intent"></a>
 
 I want to train a custom PyTorch model in SageMaker\.  
-For a sample Jupyter notebook, see the [PyTorch example notebook](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker-python-sdk/mxnet_mnist) in the Amazon SageMaker Examples GitHub repository\.  
+For a sample Jupyter notebook, see the [PyTorch example notebook](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker-python-sdk/pytorch_mnist) in the Amazon SageMaker Examples GitHub repository\.  
 For documentation, see [Train a Model with PyTorch](https://sagemaker.readthedocs.io/en/stable/using_pytorch.html#train-a-model-with-pytorch)\.
 
 I have a PyTorch model that I trained in SageMaker, and I want to deploy it to a hosted endpoint\.  

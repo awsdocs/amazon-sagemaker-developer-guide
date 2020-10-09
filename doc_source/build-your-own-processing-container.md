@@ -174,4 +174,4 @@ processor.run(inputs=[ProcessingInput(
 
 Instead of building your processing code into your processing image, you can provide a `ScriptProcessor` with your image and the command that you want to run, along with the code that you want to run inside that container\. For an example, see [Run Scripts with Your Own Processing Container](processing-container-run-scripts.md)\.
 
-You can also use the scikit\-learn image that Amazon SageMaker Processing provides through `SKLearnProcessor` to run scikit\-learn scripts\. For an example, see [Process Data and Evaluate Models with scikit\-learn](use-scikit-learn-processing-container.md)\. 
+You can also use the scikit\-learn image that Amazon SageMaker Processing provides through `SKLearnProcessor` to run scikit\-learn scripts\. For an example, see [Data Processing with scikit\-learn](use-scikit-learn-processing-container.md)\. 

@@ -56,7 +56,7 @@ In addition to these general\-purpose algorithms, SageMaker provides algorithms 
 + [Neural Topic Model \(NTM\) Algorithm](ntm.md)—Another unsupervised technique for determining topics in a set of documents, using a neural network approach\.
 
 **Topics**
-+ [Common elements of built\-in algorithms](common-info-all-im-models.md)
++ [Common Information of Built\-in Algorithms](common-info-all-im-models.md)
 + [BlazingText algorithm](blazingtext.md)
 + [DeepAR Forecasting Algorithm](deepar.md)
 + [Factorization Machines Algorithm](fact-machines.md)

@@ -11,7 +11,7 @@ You need the following resources to build a customized container with Debugger\.
 For an end\-to\-end example of using Debugger with a custom training container, see the following example notebook\.
 + [Build a Custom Training Container and Debug Training Jobs with Amazon SageMaker Debugger](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/build_your_own_container_with_debugger/debugger_byoc.ipynb)
 
-This Debugger with custom training container guide is an extension of the [Get Started: Build Your Custom Training Container with Amazon SageMaker](build-container-to-train-script-get-started.md) guide\.
+This Debugger with custom training container guide is an extension of the [Adapting Your Own Training Container](adapt-training-container.md) guide\.
 
 ## Prepare to Build a Custom Training Container<a name="debugger-bring-your-own-container-1"></a>
 
@@ -125,11 +125,9 @@ estimator = Estimator(
     train_instance_type='ml.p3.2xlarge',
     
     ## Debugger parameters
-    rules=[ Rule.sagemaker(rules_config.vanishing_gradient()),
-            ... ],
+    rules=[ Rule.sagemaker(rules_config.vanishing_gradient()) ],
     debugger_hook_config=DebuggerHookConfig(
-                            s3_output_path=s3_bucket_for_tensors,  # Required
-                            collection_configs=[ CollectionConfig(name="gradients") ]
+                            collection_configs=[ CollectionConfig(name="losses") ]
                          )
 )
 
@@ -155,11 +153,9 @@ estimator = Estimator(
     instance_type='ml.p3.2xlarge',
     
     ## Debugger parameters
-    rules=[ Rule.sagemaker(rules_config.vanishing_gradient()),
-            ... ],
+    rules=[ Rule.sagemaker(rules_config.vanishing_gradient()) ],
     debugger_hook_config=DebuggerHookConfig(
-                            s3_output_path=s3_bucket_for_tensors,  # Required
-                            collection_configs=[ CollectionConfig(name="gradients") ]
+                            collection_configs=[ CollectionConfig(name="losses") ]
                          )
 )
 

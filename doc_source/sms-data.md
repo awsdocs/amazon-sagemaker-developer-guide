@@ -1,8 +1,8 @@
 # Use Input and Output Data<a name="sms-data"></a>
 
-The input data that you provide to Amazon SageMaker Ground Truth is sent to your workers for labeling\. You choose the data to send to your workers by creating a manifest file that defines the data that requires labeling\.
+The input data that you provide to Amazon SageMaker Ground Truth is sent to your workers for labeling\. You choose the data to send to your workers by creating a single manifest file that defines all of the data that requires labeling or by sending input data objects to an ongoing, streaming labeling job to be labeled in real time\. 
 
-The output data is the result of your labeling job\. The output data file contains one entry for each object in the input dataset that specifies the label\.
+The output data is the result of your labeling job\. The output data file contains label data for each object you send to the labeling job and metadata about the label assigned to data objects\.
 
 **Topics**
 + [Input Data](sms-data-input.md)

@@ -1,4 +1,4 @@
-# Get Started: Build Your Custom Training Container with Amazon SageMaker<a name="build-container-to-train-script-get-started"></a>
+# Adapting Your Own Training Container<a name="adapt-training-container"></a>
 
 To run your own training model, build a Docker container using the [Amazon SageMaker Training Toolkit](https://github.com/aws/sagemaker-training-toolkit) through an Amazon SageMaker notebook instance\.
 
@@ -18,17 +18,17 @@ To run your own training model, build a Docker container using the [Amazon SageM
 
       1. For **IAM role**, choose **Create a new role**\.
 
-      1. On the **Create an IAM role** page, choose **Specific S3 buckets**, specify an S3 bucket named **sagemaker\-run\-script**, and then choose **Create role**\.
+      1. On the **Create an IAM role** page, choose **Specific S3 buckets**, specify an Amazon S3bucket named **sagemaker\-run\-script**, and then choose **Create role**\.
 
-         SageMaker creates an IAM role named `AmazonSageMaker-ExecutionRole-YYYYMMDDTHHmmSS`\. For example, `AmazonSageMaker-ExecutionRole-20190429T110788`\. Note that the execution role naming convention uses the date and time when the role was created, separated by a `T`\.
+         SageMaker creates an IAM role named `AmazonSageMaker-ExecutionRole-YYYYMMDDTHHmmSS`\. For example, `AmazonSageMaker-ExecutionRole-20190429T110788`\. Note that the execution role naming convention uses the date and time at which the role was created, separated by a `T`\.
 
    1. For **Root Access**, choose **Enable**\.
 
    1. Choose **Create notebook instance**\. 
 
-1.  On the **Notebook instances** page, the **Status** is **Pending**\. It can take a few minutes for Amazon SageMaker to launch a machine learning compute instance—in this case, it launches a notebook instance—and attaches an ML storage volume to it\. The notebook instance has a preconfigured Jupyter notebook server and a set of Anaconda libraries\. For more information, see [  CreateNotebookInstance](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstance.html)\. 
+1.  On the **Notebook instances** page, the **Status** is **Pending**\. It can take a few minutes for Amazon SageMaker to launch a machine learning compute instance—in this case, it launches a notebook instance—and attach an ML storage volume to it\. The notebook instance has a preconfigured Jupyter notebook server and a set of Anaconda libraries\. For more information, see [  CreateNotebookInstance](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstance.html)\. 
 
-1.  In the **Permissions and encryption** section, copy **the IAM role ARN number**, and paste into a notepad file to save it temporarily\. You will use this IAM role ARN number later to configure a local training estimator in the notebook instance\. **The IAM role ARN number** looks like the following: `'arn:aws:iam::111122223333:role/service-role/AmazonSageMaker-ExecutionRole-20190429T110788'` 
+1.  In the **Permissions and encryption** section, copy **the IAM role ARN number**, and paste into a notepad file to save it temporarily\. You use this IAM role ARN number later to configure a local training estimator in the notebook instance\. **The IAM role ARN number** looks like the following: `'arn:aws:iam::111122223333:role/service-role/AmazonSageMaker-ExecutionRole-20190429T110788'` 
 
 1. After the status of the notebook instance changes to **InService**, choose **Open JupyterLab**\.
 
@@ -58,7 +58,7 @@ To run your own training model, build a Docker container using the [Amazon SageM
       ```
 
       The Dockerfile script performs the following tasks:
-      + `FROM tensorflow/tensorflow:2.2.0rc2-gpu-py3-jupyter` – Downloads the TensorFlow docker base image\. You can replace this with any docker base image you want to bring to build containers as well as AWS pre\-built container base images\.
+      + `FROM tensorflow/tensorflow:2.2.0rc2-gpu-py3-jupyter` – Downloads the TensorFlow Docker base image\. You can replace this with any Docker base image you want to bring to build containers, as well as with AWS pre\-built container base images\.
       + `RUN pip install sagemaker-training` – Installs [SageMaker Training Toolkit](https://github.com/aws/sagemaker-training-toolkit) that contains the common functionality necessary to create a container compatible with SageMaker\. 
       + `COPY train.py /opt/ml/code/train.py` – Copies the script to the location inside the container that is expected by SageMaker\. The script must be located in this folder\.
       + `ENV SAGEMAKER_PROGRAM train.py` – Takes your training script `train.py` as the entrypoint script copied in the `/opt/ml/code` folder of the container\. This is the only environmental variable that you must specify when you build your own container\.
@@ -115,9 +115,9 @@ To run your own training model, build a Docker container using the [Amazon SageM
    ! docker build -t tf-custom-container-test .
    ```
 
-   The Docker build command must be run from the docker directory you created, in this case `docker_test_folder`\.
+   The Docker build command must be run from the Docker directory you created, in this case `docker_test_folder`\.
 **Note**  
-If you get the following error message that docker cannot find the Dockerfile, make sure the Dockerfile has the correct name and has been saved to the directory\.  
+If you get the following error message that Docker cannot find the Dockerfile, make sure the Dockerfile has the correct name and has been saved to the directory\.  
 
    ```
    unable to prepare context: unable to evaluate symlinks in Dockerfile path: 
@@ -171,7 +171,7 @@ Remember that `docker` looks for a file specifically called `Dockerfile` without
 
 ## Step 5: Push the container to Amazon Elastic Container Registry \(Amazon ECR\)<a name="byoc-training-step5"></a>
 
-1. After you successfully run the local mode test, you can push the docker container to [Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) and use it to run training jobs\. 
+1. After you successfully run the local mode test, you can push the Docker container to [Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) and use it to run training jobs\. 
 
    Run the following command lines in a notebook cell\.
 

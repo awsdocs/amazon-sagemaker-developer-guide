@@ -24,8 +24,6 @@ For training, PCA expects data provided in the train channel, and optionally sup
 
 For inference, PCA supports `text/csv`, `application/json`, and `application/x-recordio-protobuf`\. Results are returned in either `application/json` or `application/x-recordio-protobuf` format with a vector of "projections\."
 
-For more details on training and inference file formats, see the [PCA Sample Notebooks](#PCA-sample-notebooks) and the [PCA Response Formats](PCA-in-formats.md)\.
-
 For more information on input and output file formats, see [PCA Response Formats](PCA-in-formats.md) for inference and the [PCA Sample Notebooks](#PCA-sample-notebooks)\.
 
 ## EC2 Instance Recommendation for the PCA Algorithm<a name="pca-instances"></a>

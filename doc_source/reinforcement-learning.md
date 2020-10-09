@@ -50,7 +50,7 @@ The following diagram shows the RL components that are supported in SageMaker RL
 
 ## Reinforcement Learning Sample Notebooks<a name="sagemaker-rl-notebooks"></a>
 
- The following table outlines a variety of sample notebooks that address different use cases of Amazon SageMaker reinforcement learning\. 
+ The following table outlines a variety of sample notebooks that address different use cases of Amazon SageMaker reinforcement learning\.
 
 
 ****  

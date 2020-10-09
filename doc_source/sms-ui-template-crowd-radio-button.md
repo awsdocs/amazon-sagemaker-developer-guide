@@ -16,6 +16,37 @@ The following is an example of the syntax that you can use with the `<crowd-radi
 
 The previous example can be seen in a custom worker task template in this GitHub example: [entity recognition labeling job custom template](https://github.com/aws-samples/amazon-sagemaker-ground-truth-task-uis/blob/master/text/named-entity-recognition-with-additional-classification.liquid.html)\.
 
+Crowd HTML Element radio buttons do not support the HTML tag, `required`\. To make a radio button selection required, use `<input type="radio">` elements to create radio buttons and add the `required` tag\. The `name` attribute for all `<input>` elements that belong to the same group of radio buttons must be the same\. For example, the following template requires the user to select a radio button in the `animal-type` group before submitting\.
+
+```
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+<crowd-form>
+  <p>Select an animal type:</p>
+<img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1539&q=80" style="height: 500; width: 400;"/>
+<br><br>
+<div>
+  <input type="radio" id="cat" name="animal-type" value="cat" required>
+  <label for="cat">Cat</label>
+</div>
+<div>
+  <input type="radio" id="dog" name="animal-type" value="dog">
+  <label for="dog">Dog</label>
+</div>
+<div>
+  <input type="radio" id="unknown" name="animal-type" value="unknown">
+  <label for="unknown">Unknown</label>
+</div>
+    <full-instructions header="Classification Instructions">
+      <p>Read the task carefully and inspect the image.</p>
+      <p>Choose the appropriate label that best suits the image.</p>
+    </full-instructions>
+    <short-instructions>
+      <p>Read the task carefully and inspect the image.</p>
+      <p>Choose the appropriate label that best suits the image.</p>
+    </short-instructions>
+</crowd-form>
+```
+
 ### Attributes<a name="radio-button-attributes"></a>
 
 The following attributes are supported by this element\.

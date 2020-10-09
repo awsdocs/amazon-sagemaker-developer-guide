@@ -214,8 +214,8 @@ The following policy grants permission to create a labeling job for a built\-in 
             "s3:GetBucketLocation"
         ],
         "Resource": [
-            "arn:aws:s3:::<DOC-EXAMPLE-BUCKET1>/*",
-            "arn:aws:s3:::<DOC-EXAMPLE-BUCKET2>"
+            "arn:aws:s3:::<AWSDOC-EXAMPLE-BUCKET1>/*",
+            "arn:aws:s3:::<AWSDOC-EXAMPLE-BUCKET2>"
             ]
      },
      

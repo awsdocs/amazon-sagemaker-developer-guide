@@ -1,10 +1,8 @@
 # Create and Delete a Worker Task Templates<a name="a2i-worker-template-console"></a>
 
-Use the instructions on this page to create and delete worker task template resources in the Augmented AI area of the Amazon SageMaker console\.
+You can use a worker template to customize the interface and instructions that your workers see when working on your tasks\. Use the instructions on this page to create a worker task template in the Augmented AI area of the Amazon SageMaker console\. A starter template is provided for Amazon Textract and Amazon Rekognition tasks\. To learn how to customize your template using HTML crowd elements, see [Create Custom Worker Task Template](a2i-custom-templates.md)\.
 
-A starter template is provided for Amazon Textract and Amazon Rekognition tasks\. To learn how to customize your template using HTML crowd elements, see [Create Custom Worker Task Template](a2i-custom-templates.md)\. 
-
-When you create a worker task template using the Worker task templates page of the Augmented AI console, a human task UI ARN will be generated\. Use this ARN as the input to `HumanTaskUiArn` when you create a flow definition using the API operation [ `CreateFlowDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html)\. You can choose this template when creating a human review workflow on the Human review workflows page of the console\. 
+When you create a worker template in the Worker task templates page of the Augmented AI area of the SageMaker console, a worker task template ARN will be generated\. Use this ARN as the input to `HumanTaskUiArn` when you create a flow definition using the API operation [ `CreateFlowDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html)\. You can choose this template when creating a human review workflow on the Human review workflows page of the console\. 
 
 If you are creating a worker task template resource for an Amazon Textract or Amazon Rekognition task type, you can preview the worker UI that will be generated from your template on the Worker task templates console page\. You will need to attach the policy described in [Enable Worker Task Template Previews ](a2i-permissions-security.md#permissions-for-worker-task-templates-augmented-ai) to the IAM role that you use to preview the template\.
 

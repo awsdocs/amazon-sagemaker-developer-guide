@@ -12,23 +12,23 @@ If you want Ground Truth to automatically generate your sequence files and input
 
 ### Create a Video Frame Sequence Input Manifest<a name="sms-video-create-input-manifest-file"></a>
 
-In the video frame sequence input manifest file, each line in the manifest references a sequence file that identifies the location of a sequence of video frames\. This is the manifest file formatting required for all video frame labeling jobs\. 
+In the video frame sequence input manifest file, each line in the manifest is a JSON object, with a `"source-ref"` key that references a sequence file\. Each sequence file identifies the location of a sequence of video frames\. This is the manifest file formatting required for all video frame labeling jobs\. 
 
 The following example demonstrates the syntax used for an input manifest file:
 
 ```
-{"source-ref": "s3://DOC-EXAMPLE-BUCKET/example-folder/seq1.json"}
-{"source-ref": "s3://DOC-EXAMPLE-BUCKET/example-folder/seq2.json"}
+{"source-ref": "s3://AWSDOC-EXAMPLE-BUCKET/example-folder/seq1.json"}
+{"source-ref": "s3://AWSDOC-EXAMPLE-BUCKET/example-folder/seq2.json"}
 ```
 
 ### Create a Video Frame Sequence File<a name="sms-video-create-sequence-file"></a>
 
-The data for each sequence of video frames needs to be stored in a JSON data object\. The following is an example of the format you use for a sequence file\. Information about each frame is included as a JSON object and is listed in the `frames` list\.
+The data for each sequence of video frames needs to be stored in a JSON data object\. The following is an example of the format you use for a sequence file\. Information about each frame is included as a JSON object and is listed in the `frames` list\. The following JSON has been expanded for readability\. 
 
 ```
 {
  "seq-no": 1,
- "prefix": "s3://mybucket/prefix/video1",
+ "prefix": "s3://mybucket/prefix/video1/",
  "number-of-frames": 3,
  "frames":[
    {"frame-no": 1, "unix-timestamp": 1566861644, "frame": "frame0001.jpg" },

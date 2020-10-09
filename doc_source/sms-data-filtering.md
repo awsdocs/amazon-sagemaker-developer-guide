@@ -9,7 +9,7 @@ The following options are available in the **Labeling jobs** section of the [Sag
 
 ## Use the Full Dataset<a name="sms-full-dataset"></a>
 
-When you choose to use the **Full dataset**, you must provide a manifest file for your data objects\. You can provide the path of the Amazon S3 bucket that contains the manifest file or use the SageMaker console to create the file\. To learn how to create a manifest file using the console, see [Automated Data Setup](sms-data-input.md#sms-console-create-manifest-file)\. 
+When you choose to use the **Full dataset**, you must provide a manifest file for your data objects\. You can provide the path of the Amazon S3 bucket that contains the manifest file or use the SageMaker console to create the file\. To learn how to create a manifest file using the console, see [Automated Data Setup](sms-input-data-input-manifest.md#sms-console-create-manifest-file)\. 
 
 ## Choose a Random Sample<a name="sms-random-dataset"></a>
 

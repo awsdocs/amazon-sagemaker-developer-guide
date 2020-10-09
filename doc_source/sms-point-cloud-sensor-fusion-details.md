@@ -3,7 +3,7 @@
 Point cloud data is always located in a coordinate system\. This coordinate system may be local to the vehicle or the device sensing the surroundings, or it may be a world coordinate system\. When you use Ground Truth 3D point cloud labeling jobs, all the annotations are generated using the coordinate system of your input data\. For some labeling job task types and features, you must provide data in a world coordinate system\. 
 
 In this topic, you'll learn the following:
-+ When you *must* provide data in a world coordinate system or global frame of reference for your Ground Truth labeling job\.
++ When you *are required to* provide input data in a world coordinate system or global frame of reference\.
 + What a world coordinate is and how you can convert point cloud data to a world coordinate system\. 
 + How you can use your sensor and camera extrinsic matrices to provide pose data when using sensor fusion\. 
 

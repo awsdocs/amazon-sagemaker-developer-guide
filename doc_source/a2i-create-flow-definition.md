@@ -1,4 +1,4 @@
-# Create a Flow Definition<a name="a2i-create-flow-definition"></a>
+# Create a Human Review Workflow<a name="a2i-create-flow-definition"></a>
 
 Use an Amazon Augmented AI \(Amazon A2I\) *human review workflow*, or *flow definition*, to specify the following:
 + For the Amazon Textract and Amazon Rekognition built\-in task types, the conditions under which your human loop will be called\.
@@ -7,33 +7,33 @@ Use an Amazon Augmented AI \(Amazon A2I\) *human review workflow*, or *flow defi
 + The configuration of your worker tasks, including the number of workers that receive a task and time limits to complete tasks\. 
 + Where your output data will be stored\. 
 
-You can create a flow definition in the SageMaker console or using the SageMaker [ `CreateFlowDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html) operation\. You can build a worker task template using the console for Amazon Textract and Amazon Rekognition task types while creating your flow definition\.
+You can create a human review workflow in the SageMaker console or using the SageMaker [ `CreateFlowDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html) operation\. You can build a worker task template using the console for Amazon Textract and Amazon Rekognition task types while creating your flow definition\.
 
 **Important**  
-Human loop activation conditions, which trigger the human loop—for example, confidence thresholds—aren't available for Amazon A2I custom task types\. When using the console to create a flow definition for a custom task type, you can't specify activation conditions\. When using the Amazon A2I API to create a flow definition for a custom task type, you can't set the `HumanLoopActivationConditions` attribute of the `HumanLoopActivationConditionsConfig` parameter\. To control when human reviews are initiated, specify conditions under which `StartHumanLoop` is called in your custom application\. In this case, every `StartHumanLoop` invocation results in a human review\. For more information, see [Use Amazon Augmented AI with Custom Task Types](a2i-task-types-custom.md)\.
+Human loop activation conditions, which trigger the human loop — for example, confidence thresholds — aren't available for Amazon A2I custom task types\. When using the console to create a flow definition for a custom task type, you can't specify activation conditions\. When using the Amazon A2I API to create a flow definition for a custom task type, you can't set the `HumanLoopActivationConditions` attribute of the `HumanLoopActivationConditionsConfig` parameter\. To control when human reviews are initiated, specify conditions under which `StartHumanLoop` is called in your custom application\. In this case, every `StartHumanLoop` invocation results in a human review\. For more information, see [Use Amazon Augmented AI with Custom Task Types](a2i-task-types-custom.md)\.
 
 **Prerequisites**
 
-To create a flow definition, you must have completed the prerequisites described in [Prerequisites](a2i-getting-started.md#a2i-getting-started-prerequisites)\. 
+To create a human review workflow definition, you must have completed the prerequisites described in [Prerequisites to Using Augmented AI](a2i-getting-started-prerequisites.md)\. 
 
 If you use the API to create a flow definition for any task type, or if you use a custom task type when creating a flow definition in the console, first you will need to create a worker task template\. For more information, see [Create and Manage Worker Task Templates](a2i-instructions-overview.md)\.
 
 If you want to preview your worker task template while creating a flow definition for a built\-in task type in the console, ensure that you grant the role that you use to create the flow definition permission to access the Amazon S3 bucket that contains your template artifacts using a policy like the one described in [Enable Worker Task Template Previews ](a2i-permissions-security.md#permissions-for-worker-task-templates-augmented-ai)\.
 
 **Topics**
-+ [Create a Flow Definition \(Console\)](#a2i-create-human-review-console)
-+ [Create a Flow Definition \(API\)](#a2i-create-human-review-api)
++ [Create a Human Review Workflow \(Console\)](#a2i-create-human-review-console)
++ [Create a Human Review Workflow \(API\)](#a2i-create-human-review-api)
 + [JSON Schema for Human Loop Activation Conditions in Amazon Augmented AI](a2i-human-fallback-conditions-json-schema.md)
 
-## Create a Flow Definition \(Console\)<a name="a2i-create-human-review-console"></a>
+## Create a Human Review Workflow \(Console\)<a name="a2i-create-human-review-console"></a>
 
-Use this procedure to create a Amazon Augmented AI \(Amazon A2I\) human review workflow using the SageMaker console\. If you are new to Amazon A2I, we recommend that you create a private work team using people in your organization, and use this work team's ARN when creating your flow definition\. To learn how to set up a private workforce and create a work team, see [Create a Private Workforce \(Amazon SageMaker Console\)](sms-workforce-create-private-console.md)\. If you have already set up a private workforce, see [Create a Work Team Using the SageMaker Console](sms-workforce-management-private-console.md#create-workteam-sm-console) to learn how to add a work team to that workforce\.
+Use this procedure to create a Amazon Augmented AI \(Amazon A2I\) human review workflow using the Amazon SageMaker console\. If you are new to Amazon A2I, we recommend that you create a private work team using people in your organization, and use this work team's ARN when creating your flow definition\. To learn how to set up a private workforce and create a work team, see [Create a Private Workforce \(Amazon SageMaker Console\)](sms-workforce-create-private-console.md)\. If you have already set up a private workforce, see [Create a Work Team Using the SageMaker Console](sms-workforce-management-private-console.md#create-workteam-sm-console) to learn how to add a work team to that workforce\.
 
-If you are using Amazon A2I with one of the built\-in task types, you can create worker instructions using a default worker task template provided by Augmented AI while creating a human review workflow in the console\. To see samples of the default templates provided by Augmented AI, see the built\-in task types in [Use Task Types](a2i-task-types-general.md)\.
+If you are using Amazon A2I with one of the built\-in task types, you can create worker instructions using a default worker task template provided by Augmented AI while creating a human review workflow in the console\. To see samples of the default templates provided by Augmented AI, see the built\-in task types in [Use Cases and Examples using Amazon A2I](a2i-task-types-general.md)\.
 
 **To create flow definition \(console\)**
 
-1. Open the SageMaker console at [https://console.aws.amazon.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
+1. Open the Amazon SageMaker console at [https://console.aws.amazon.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
 1. In the navigation pane, under the **Augmented AI** section, choose **Human review workflows** and then choose **Create human review workflow**\.
 
@@ -68,7 +68,7 @@ If you are using Amazon A2I with one of the built\-in task types, you can create
 
    1. If you are using the custom task type:
 
-      1. In the **Worker task template** section, choose your template from the list\. All of the templates that you have created in the SageMaker console appear in this list\. To learn how to create a template for custom task types, see [Create and Manage Worker Task Templates](a2i-instructions-overview.md)\.
+      1. In the **Worker task template** section, choose your template from the list\. All of the templates that you have created in the Amazon SageMaker console appear in this list\. To learn how to create a template for custom task types, see [Create and Manage Worker Task Templates](a2i-instructions-overview.md)\.
 
 1. \(Optional\) Preview your worker template: 
 
@@ -86,9 +86,11 @@ After you've created a human review workflow, it appears in the console under **
 
 If you are using a built\-in task type, you can use the flow definition ARN to start a human loop using that AWS service's API \(for example, the Amazon Textract API\)\. For custom task types, you can use the ARN to start a human loop using the Amazon Augmented AI Runtime API\. To learn more about both options, see [Create and Start a Human Loop](a2i-start-human-loop.md)\.
 
-## Create a Flow Definition \(API\)<a name="a2i-create-human-review-api"></a>
+## Create a Human Review Workflow \(API\)<a name="a2i-create-human-review-api"></a>
 
-To create a flow definition using the SageMaker API, you use the `CreateFlowDefinition` operation\. For an overview of the `CreateFlowDefinition` operation, and details about each parameter, see [ `CreateFlowDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html)\. 
+To create a flow definition using the Amazon SageMaker API, you use the `CreateFlowDefinition` operation\. After you complete the [Prerequisites to Using Augmented AI](a2i-getting-started-prerequisites.md), use the following procedure to learn how to use this API operation\. 
+
+For an overview of the `CreateFlowDefinition` operation, and details about each parameter, see [ `CreateFlowDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html)\. 
 
 **To create a flow definition \(API\)**
 

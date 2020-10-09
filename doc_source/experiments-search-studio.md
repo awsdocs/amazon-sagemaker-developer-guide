@@ -22,6 +22,7 @@ For more information about the following steps, along with screenshots, see [Sea
 1. Choose the column that you want to search on and one of the following dialog boxes opens that's specific to the column you chose:
    + **String** – Enter a text string in the search dialog box that opens\. Enter a string of at least three characters that's part of the component's property value\. This filter limits the list to those components with a property value that contains the text string\.
    + **Discrete values** – Choose one or more property values from the list\. This filter limits the list to those components with a property value that matches at least one of the chosen values\.
+   + **Date** – Enter a date in **From Date** and **To Date**, or select the dates from the calendar\. This filter limits the list to those components that were created or last modified in the specified data range\.
    + **Tag** – In **Search tag key**, start entering the tag's key\. A list of tag keys is filtered to only those keys with a name that starts with the text string that you enter\. Choose the tag key that you want to search on from the list\. In **Search tag value**, enter the complete tag value, and then choose **Apply**\.
 
 1. To create the filter, choose **Apply**\.
@@ -45,6 +46,9 @@ You can search the Leaderboard to find specific trial components\. You apply the
    **Summary section**
    + Trial component name
    + Trial component type
+   + Created
+   + Last modified
+   + Created by
    + Tags
 
    **Detail sections** \(all columns\)
@@ -54,17 +58,19 @@ You can search the Leaderboard to find specific trial components\. You apply the
    + Output artifacts  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-search-column-list.png)
 
-1. To limit the column names when you search the detail sections, start typing the column name\. The list of column names displays only those columns with a name that starts with the text string that you enter\.
+1. To limit the column names when you search the detail sections, start typing the column name\. The list displays only those columns with a name that starts with the text string that you enter\.
 
-1. Choose the column name to search on that column\. 
+1. Choose the column that you want to search on\. This opens a dialog that's specific to the type of data in that column\.
 
-1. One of the following types of dialog boxes opens that's specific to the column you chose in the previous step:
+1. Enter your search criteria in the dialog for the appropriate data type:
    + **String** – Enter a text string in the search dialog box that opens\. Enter a string of at least three characters that's part of the component's property value\. This filter limits the list to those components with a property value that contains the text string\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-search-string.png)  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-search-string2.png)
    + **Discrete values** – Choose one or more of the property values from the list\. This filter limits the list to those components with a property value that matches at least one of the chosen values\. For the **Trial component type** column, **Others** matches components with no value in the column\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-search-values.png)  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-search-values2.png)
+   + **Date** – Enter a date in **From Date** and **To Date** or select the dates from the calendar\. This filter limits the list to those components that were created or last modified in the specified data range\.
+   + **Created by** – Select **Me** or **Everyone else**\. This filter limits the list to those components that were created by the currently signed\-in user or everyone but the currently signed\-in user\.
    + **Tag** – Choose the tag to search\. For more information, see [Search by Tag](#experiments-search-studio-tags)\.
    + **Detail columns** – Specify the conditions that the component's property value must satisfy\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-search-conditions.png)  

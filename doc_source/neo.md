@@ -14,7 +14,7 @@ You can create a Neo compilation job from either the SageMaker console, AWS Comm
 
 ### Neo Available Regions<a name="neo-supported-regions"></a>
 
-Neo is available in the following [AWS Service Regions](https://docs.aws.amazon.com/general/latest/gr/rande.html#sagemaker_region) where SageMaker is supported: 
+Neo is available in the following [AWS Regions](https://docs.aws.amazon.com/general/latest/gr/rande.html#sagemaker_region) where SageMaker is supported: 
 + **Asia Pacific** \(Hong Kong, Mumbai, Seoul, Singapore, Sydney, Tokyo\)
 + **Canada** \(Central\)
 + **China** \(Beijing, Ningxia\)
@@ -29,18 +29,18 @@ Neo is available in the following [AWS Service Regions](https://docs.aws.amazon.
 The image classification model files need to be formatted as a tar file \(tar\.gz\) that includes additional files that depend on the type of framework\.
 
 To find look\-up tables of Neo\-supported frameworks, operators, devices, and platforms, see the following pages:
-+ [SageMaker Neo\-supported Frameworks and Operators](https://aws.amazon.com/releasenotes/sagemaker-neo-supported-frameworks-and-operators/)
-+ [SageMaker Neo\-supported Devices and Platforms](https://aws.amazon.com/releasenotes/sagemaker-neo-supported-target-platforms-and-compiler-options/)
++ [SageMaker Neo\-supported Frameworks and Operators](http://aws.amazon.com/releasenotes/sagemaker-neo-supported-frameworks-and-operators/)
++ [SageMaker Neo\-supported Devices and Platforms](http://aws.amazon.com/releasenotes/sagemaker-neo-supported-target-platforms-and-compiler-options/)
 
 Neo supports the following deep learning frameworks:
-+ **[TensorFlow](https://aws.amazon.com/tensorflow/)**: Neo supports saved models and frozen models\.
++ **[TensorFlow](http://aws.amazon.com/tensorflow/)**: Neo supports saved models and frozen models\.
 
   For *saved models*, Neo expects one PB \(\.pb\) or one PBTXT \(\.pbtxt\) file and a variables directory that contains variables\. 
 
   For *frozen models*, Neo expect only one PB \(\.pb\) or PBTXT \(\.pbtxt\) file\.
 + **[Keras](https://keras.io/)**: Neo expects one H5 file \(\.h5\) containing the model definition\.
 + **[PyTorch](https://pytorch.org/)**: Neo expects one PTH file \(\.pth\) containing the model definition\.
-+ **[MXNET](https://aws.amazon.com/mxnet/)**: Neo expects one symbol file \(\.json\) and one parameter file \(\.params\)\.
++ **[MXNET](http://aws.amazon.com/mxnet/)**: Neo expects one symbol file \(\.json\) and one parameter file \(\.params\)\.
 + **[XGBoost](https://github.com/dmlc/xgboost)**: Neo expects one XGBoost model file \(\.model\) where the number of nodes in a tree can't exceed 2^31\.
 + **[ONNX](https://github.com/onnx/onnx)**: Neo expects one ONNX file \(\.onnx\)\.
 + **[TFLite](https://www.tensorflow.org/lite/guide/get_started)**: Neo expects one NHWC file \(\.tflite\)\.
@@ -50,16 +50,17 @@ Neo supports the following deep learning frameworks:
 + [Neo Model Compilation Sample Notebooks](#neo-sample-notebooks)
 + [Use Neo to Compile a Model](neo-job-compilation.md)
 + [Deploy a Model](neo-deployment.md)
++ [Inference Container Images](neo-deployment-hosting-services-container-images.md)
 + [Request Inferences from a Deployed Service](neo-requests.md)
-+ [Troubleshooting Neo Compilation Errors](neo-troubleshooting.md)
++ [Troubleshoot Errors](neo-troubleshooting.md)
 
 ## Neo Model Compilation Sample Notebooks<a name="neo-sample-notebooks"></a>
 
 For sample notebooks that uses SageMaker Neo to train, compile, optimize, and deploy machine learning models to make inferences, see: 
 + [MNIST Training, Compilation and Deployment with MXNet Module](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker_neo_compilation_jobs/mxnet_mnist/mxnet_mnist_neo.ipynb)
 + [MNIST Training, Compilation and Deployment with Tensorflow Module](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker_neo_compilation_jobs/tensorflow_distributed_mnist/tensorflow_distributed_mnist_neo.ipynb)
-+ [Deploying pre\-trained PyTorch vision models with SageMaker Neo ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker_neo_compilation_jobs/pytorch_torchvision/pytorch_torchvision_neo.ipynb)
++ [Deploying pre\-trained PyTorch vision models with SageMaker Neo](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker_neo_compilation_jobs/pytorch_torchvision/pytorch_torchvision_neo.ipynb)
 + [Model Optimization with an Image Classification Example](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker_neo_compilation_jobs/imageclassification_caltech/Image-classification-fulltraining-highlevel-neo.ipynb)
-+ [Model Optimization with XGBoost Example ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker_neo_compilation_jobs/xgboost_customer_churn/xgboost_customer_churn_neo.ipynb)
++ [Model Optimization with XGBoost Example](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker_neo_compilation_jobs/xgboost_customer_churn/xgboost_customer_churn_neo.ipynb)
 
 For instructions on how to run these example notebooks in SageMaker, see [Example Notebooks](howitworks-nbexamples.md)\. If you need instructions on how to create a notebook instance to run these examples, see SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. To navigate to the relevant example in your notebook instance, choose the **Amazon SageMaker Examples** tab to see a list of all of the SageMaker samples\. To open a notebook, choose its **Use** tab, then choose **Create copy**\.

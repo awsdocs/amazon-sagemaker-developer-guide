@@ -4,7 +4,7 @@ The SageMaker semantic segmentation algorithm provides a fine\-grained, pixel\-l
 
 For comparison, the SageMaker [Image Classification Algorithm](image-classification.md) is a supervised learning algorithm that analyzes only whole images, classifying them into one of multiple output categories\. The [Object Detection Algorithm](object-detection.md) is a supervised learning algorithm that detects and classifies all instances of an object in an image\. It indicates the location and scale of each object in the image with a rectangular bounding box\. 
 
-Because the semantic segmentation algorithm classifies every pixel in an image, it also provides information about the shapes of the objects contained in the image\. The segmentation output is represented as an RGB or grayscale image, called a *segmentation mask*\. A segmentation mask is an RGB \(or grayscale\) image with the same shape as the input image\.
+Because the semantic segmentation algorithm classifies every pixel in an image, it also provides information about the shapes of the objects contained in the image\. The segmentation output is represented as a grayscale image, called a *segmentation mask*\. A segmentation mask is a grayscale image with the same shape as the input image\.
 
 The SageMaker semantic segmentation algorithm is built using the [MXNet Gluon framework and the Gluon CV toolkit](https://github.com/dmlc/gluon-cv), and provides you with a choice of three build\-in algorithms to train a deep neural network\. You can use the [Fully\-Convolutional Network \(FCN\) algorithm ](https://arxiv.org/abs/1605.06211), [Pyramid Scene Parsing \(PSP\) algorithm](https://arxiv.org/abs/1612.01105), or [DeepLabV3](https://arxiv.org/abs/1706.05587)\. 
 

@@ -9,7 +9,7 @@
 + [Save Tensors Using Debugger Built\-in Collections](#debugger-save-built-in-collections)
 + [Save Tensors Using Debugger Modified Built\-in Collections](#debugger-save-modified-built-in-collections)
 + [Save Tensors Using Debugger Custom Collections](#debugger-save-custom-collections)
-+ [Visualize Tensors Using Amazon SageMaker Debugger TensorBoard Summaries, Distributions, and Histograms](#debugger-enable-tensorboard-summaries)
++ [Use Amazon SageMaker Debugger to Save TensorBoard Summaries and Histograms](#debugger-enable-tensorboard-summaries)
 
 ## Tensor Visualization Example Notebooks<a name="debugger-tensor-visualization-notebooks"></a>
 
@@ -34,6 +34,13 @@ The following two notebook examples show advanced use of Amazon SageMaker Debugg
 
 You can use built\-in collections of tensors using the `CollectionConfig` API and save them using the `DebuggerHookConfig` API\. The following example shows how to use the default settings of Debugger hook configurations to construct a SageMaker TensorFlow estimator\. You can also utilize this for MXNet, PyTorch, and XGBoost estimators\.
 
+**Note**  
+In the following example code, the `s3_output_path` parameter for `DebuggerHookConfig` is optional\. If you do not specify it, Debugger saves the tensors at `s3://<output_path>/debug-output/`, where the `<output_path>` is the default output path of SageMaker training jobs\. For example:  
+
+```
+"s3://sagemaker-us-east-1-111122223333/sagemaker-debugger-training-YYYY-MM-DD-HH-MM-SS-123/debug-output"
+```
+
 ```
 import sagemaker
 from sagemaker.tensorflow import TensorFlow
@@ -45,7 +52,6 @@ collection_configs=[
         CollectionConfig(name="gradients"),
         CollectionConfig(name="losses"),
         CollectionConfig(name="biases")
-        ...
     ]
 
 # configure Debugger hook
@@ -68,8 +74,8 @@ sagemaker_estimator = TensorFlow(
     base_job_name='debugger-demo-job',
     train_instance_count=1,
     train_instance_type="ml.m4.xlarge",
-    framework_version="2.0",
-    py_version="py3",
+    framework_version="2.3.0",
+    py_version="py37",
     
     # debugger-specific hook argument below
     debugger_hook_config=hook_config
@@ -115,8 +121,8 @@ sagemaker_estimator = TensorFlow(
     base_job_name='debugger-demo-job',
     train_instance_count=1,
     train_instance_type="ml.m4.xlarge",
-    framework_version="2.0",
-    py_version="py3",
+    framework_version="2.3.0",
+    py_version="py37",
     
     # debugger-specific hook argument below
     debugger_hook_config=hook_config
@@ -166,8 +172,8 @@ sagemaker_estimator = TensorFlow(
     base_job_name='debugger-demo-job',
     train_instance_count=1,
     train_instance_type="ml.m4.xlarge",
-    framework_version="2.0",
-    py_version="py3",
+    framework_version="2.3.0",
+    py_version="py37",
     
     # debugger-specific hook argument below
     debugger_hook_config=hook_config
@@ -178,7 +184,7 @@ sagemaker_estimator.fit()
 
 For a full list of `CollectionConfig` parameters, see [ Debugger CollectionConfig](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/api.md#configuring-collection-using-sagemaker-python-sdk)\.
 
-## Visualize Tensors Using Amazon SageMaker Debugger TensorBoard Summaries, Distributions, and Histograms<a name="debugger-enable-tensorboard-summaries"></a>
+## Use Amazon SageMaker Debugger to Save TensorBoard Summaries and Histograms<a name="debugger-enable-tensorboard-summaries"></a>
 
 Amazon SageMaker Debugger can automatically generate TensorBoard scalar summaries, distributions, and histograms for saved tensors\. You enable this by passing a `TensorBoardOutputConfig` object when you create an `estimator`, as shown in the following example\. You can also choose to disable or enable histograms for individual collections\. By default, the `save_histogram` flag for a collection is set to `True`\. Debugger adds scalar summaries to TensorBoard for all `ScalarCollections` and scalars saved through `hook.save_scalar`\. For more information about scalar collections and the `save_scalar` method, see the [Debugger Hook API](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/api.md)\.
 
@@ -215,8 +221,8 @@ sagemaker_estimator = TensorFlow(
     base_job_name='smdebug-demo-job',
     train_instance_count=1,
     train_instance_type="ml.m4.xlarge",
-    framework_version="2.0",
-    py_version="py3",
+    framework_version="2.3.0",
+    py_version="py37",
     
     # debugger-specific arguments below
     debugger_hook_config=hook_config,

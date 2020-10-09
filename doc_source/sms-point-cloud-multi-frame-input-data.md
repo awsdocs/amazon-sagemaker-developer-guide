@@ -9,7 +9,9 @@ The following example demonstrates the syntax used for an input manifest file wh
 {"source-ref": "s3://awsexamplebucket/example-folder/seq2.json"}
 ```
 
-The data for each sequence of point cloud frames needs to be stored in a JSON data object\. The following is an example of the format you use for a sequence file\. Information about each frame is included as a JSON object and is listed in the `frames` list\. In this example, information is given for a single frame, and *\.\.\.* is used to indicated where you should include information for additional frames\. 
+The data for each sequence of point cloud frames needs to be stored in a JSON data object\. The following is an example of the format you use for a sequence file\. Information about each frame is included as a JSON object and is listed in the `frames` list\. This is an example of a sequence file with two point cloud frame files, `frame300.bin` and `frame303.bin`\. The *\.\.\.* is used to indicated where you should include information for additional frames\. Add a JSON object for each frame in the sequence\.
+
+The following code block includes a JSON object for a single sequence file\. The JSON object has been expanded for readability\.
 
 ```
 {
@@ -77,7 +79,7 @@ The data for each sequence of point cloud frames needs to be stored in a JSON da
 }
 ```
 
-The following table provides details about the top\-level parameters shown in the this code example\. For detailed information about the parameters required for individual frames in the sequence file, see [Parameters for Individual Point Cloud Frames](#sms-point-cloud-multi-frame-input-single-frame)\.
+The following table provides details about the top\-level parameters of a sequence file\. For detailed information about the parameters required for individual frames in the sequence file, see [Parameters for Individual Point Cloud Frames](#sms-point-cloud-multi-frame-input-single-frame)\.
 
 
 ****  

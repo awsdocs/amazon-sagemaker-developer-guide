@@ -27,7 +27,10 @@ SageMaker Studio is available in the following AWS Regions:
 + US West \(N\. Oregon\), us\-west\-2
 + China \(Beijing\), cn\-north\-1
 + China \(Ningxia\), cn\-northwest\-1
++ EU \(Frankfurt\), eu\-central\-1
 + EU \(Ireland\), eu\-west\-1
+
+In the supported Regions, Studio is available in the same Availability Zones as notebook instances\. For more information, see [Supported Regions and Quotas](regions-quotas.md)\.
 
 ## SageMaker Studio Features<a name="studio-features"></a>
 

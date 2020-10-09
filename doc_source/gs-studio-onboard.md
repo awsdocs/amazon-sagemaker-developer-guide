@@ -7,8 +7,10 @@ US East \(N\. Virginia\), us\-east\-1
 US West \(N\. Oregon\), us\-west\-2
 China \(Beijing\), cn\-north\-1
 China \(Ningxia\), cn\-northwest\-1
+EU \(Frankfurt\), eu\-central\-1
 EU \(Ireland\), eu\-west\-1
-To change the Region in the SageMaker console, use the Region selector at the upper\-right corner of the console\.
+To change the Region in the SageMaker console, use the Region selector at the upper\-right corner of the console\.  
+In the supported Regions, Studio is available in the same Availability Zones as notebook instances\. For more information, see [Supported Regions and Quotas](regions-quotas.md)\.
 
 To use Amazon SageMaker Studio and Amazon SageMaker Studio Notebooks, you must complete the Studio onboarding process using the SageMaker console\.
 
@@ -36,4 +38,5 @@ AWS SSO authentication provides the following benefits over IAM authentication:
 + [Onboard to Amazon SageMaker Studio Using Quick Start](onboard-quick-start.md)
 + [Onboard to Amazon SageMaker Studio Using AWS SSO](onboard-sso-users.md)
 + [Onboard to Amazon SageMaker Studio Using IAM](onboard-iam.md)
++ [Choose a VPC](onboard-vpc.md)
 + [Delete an Amazon SageMaker Studio Domain](gs-studio-delete-domain.md)

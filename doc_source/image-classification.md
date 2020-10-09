@@ -24,7 +24,7 @@ For more information on convolutional networks, see:
 
 The SageMaker Image Classification algorithm supports both RecordIO \(`application/x-recordio`\) and image \(`image/png`, `image/jpeg`, and `application/x-image`\) content types for training in file mode, and supports the RecordIO \(`application/x-recordio`\) content type for training in pipe mode\. However, you can also train in pipe mode using the image files \(`image/png`, `image/jpeg`, and `application/x-image`\), without creating RecordIO files, by using the augmented manifest format\.
 
-Distributed training is supported for file mode and pipe mode\. When using the RecordIO content type in pipe mode, you must set the `S3DataDistributionType` of the `S3DataSource` to `FullyReplicated`\.
+Distributed training is supported for file mode and pipe mode\. When using the RecordIO content type in pipe mode, you must set the `S3DataDistributionType` of the `S3DataSource` to `FullyReplicated`\. The algorithm supports a fully replicated model where your data is copied onto each machine\.
 
 The algorithm supports `image/png`, `image/jpeg`, and `application/x-image` for inference\.
 

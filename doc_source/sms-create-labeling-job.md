@@ -9,4 +9,5 @@ After you have chosen your task type, use the topics on this page to learn how t
 + [Creating Instruction Pages](sms-creating-instruction-pages.md)
 + [Create a Labeling Job \(Console\)](sms-create-labeling-job-console.md)
 + [Create a Labeling Job \(API\)](sms-create-labeling-job-api.md)
++ [Create a Streaming Labeling Job](sms-streaming-create-job.md)
 + [Create a Labeling Category Configuration File with Label Category Attributes](sms-label-cat-config-attributes.md)

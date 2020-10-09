@@ -11,9 +11,9 @@ For this task type, if you create your own manifest file, use `"source-ref"` to 
 
 You can follow the instructions [Create a Labeling Job \(Console\)](sms-create-labeling-job-console.md) to learn how to create a bounding box labeling job in the SageMaker console\. In Step 10, choose **Image** from the **Task category** drop down menu, and choose **Bounding box** as the task type\. 
 
-Ground Truth provides a worker UI similar to the following for labeling tasks\. When you create the labeling job with the console, you specify instructions to help workers complete the job and labels that workers can choose from\. 
+Ground Truth provides a worker UI similar to the following for labeling tasks\. When you create the labeling job with the console, you specify instructions to help workers complete the job and up to 50 labels that workers can choose from\. 
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/box-bounding-example.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/gifs/bb-sample.gif)
 
 ## Create a Bounding Box Labeling Job \(API\)<a name="sms-creating-bounding-box-labeling-job-api"></a>
 

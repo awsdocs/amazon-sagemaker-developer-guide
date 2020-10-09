@@ -1,15 +1,25 @@
-# XGBoost Release 0\.72<a name="xgboost-72"></a>
+# XGBoost Version 0\.72<a name="xgboost-72"></a>
+
+**Important**  
+The XGBoost 0\.72 is deprecated by Amazon SageMaker\. You can still use this old version of XGBoost \(as a built\-in algorithm\) by pulling its image URI as shown in the following code sample\. For XGBoost, the image URI ending with `:1` is for the old version\.  
+
+```
+from sagemaker.amazon.amazon_estimator import get_image_uri
+training_image = get_image_uri('us-east-1', 'xgboost')
+```
+
+```
+import boto3
+from sagemaker.amazon.amazon_estimator import get_image_uri
+container = get_image_uri(boto3.Session().region_name,
+                          'xgboost',
+                          repo_version='1')
+```
+If you want to use newer versions, you have to explicitly specify the image URI tags \(see [Supported versions](xgboost.md#xgboost-supported-versions)\)\.
 
 This previous release of the Amazon SageMaker XGBoost algorithm is based on the 0\.72 release\. [XGBoost](https://github.com/dmlc/xgboost) \(eXtreme Gradient Boosting\) is a popular and efficient open\-source implementation of the gradient boosted trees algorithm\. Gradient boosting is a supervised learning algorithm that attempts to accurately predict a target variable by combining the estimates of a set of simpler, weaker models\. XGBoost has done remarkably well in machine learning competitions because it robustly handles a variety of data types, relationships, and distributions, and because of the large number of hyperparameters that can be tweaked and tuned for improved fits\. This flexibility makes XGBoost a solid choice for problems in regression, classification \(binary and multiclass\), and ranking\.
 
 Customers should consider using the new release of [XGBoost Algorithm](xgboost.md)\. They can use it as a SageMaker built\-in algorithm or as a framework to run scripts in their local environments as they would typically, for example, do with a Tensorflow deep learning framework\. The new implementation has a smaller memory footprint, better logging, improved hyperparameter validation, and an expanded set of metrics\. The earlier implementation of XGBoost remains available to customers if they need to postpone migrating to the new version\. But this previous implementation will remain tied to the 0\.72 release of XGBoost\.
-
-**Topics**
-+ [Input/Output Interface for the XGBoost Release 0\.72](#xgboost-72-InputOutput)
-+ [EC2 Instance Recommendation for the XGBoost Release 0\.72](#xgboost-72-Instance)
-+ [XGBoost Release 0\.72 Sample Notebooks](#xgboost-72-sample-notebooks)
-+ [XGBoost Release 0\.72 Hyperparameters](#xgboost-72-hyperparameters)
-+ [Tune an XGBoost Release 0\.72 Model](#xgboost-72-tuning)
 
 ## Input/Output Interface for the XGBoost Release 0\.72<a name="xgboost-72-InputOutput"></a>
 

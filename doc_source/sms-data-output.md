@@ -417,8 +417,8 @@ The red, italicized text in the examples below depends on labeling job specifica
      "creation-date": "2018-10-18T22:18:13.527256",
      "job-name": "label-city-streets",
      },
-     "verify-city-streets":"1",
-     "verify-city-streets-metadata":
+     "verify-city-streets-ref":"1",
+     "verify-city-streets-ref-metadata":
      {
         "class-name": "bad",
         "confidence": 0.93,
@@ -466,7 +466,7 @@ The output of a semantic segmentation adjustment job looks similar to the follow
      "job-name": "label-city-streets",
      },
      "adjusted-city-streets-ref": "s3://AWSDOC-EXAMPLE-BUCKET/example_city_image.png",
-     "adjusted-city-streets-metadata": {
+     "adjusted-city-streets-ref-metadata": {
       "internal-color-map": {
         "0": {
            "class-name": "BACKGROUND",
@@ -500,7 +500,7 @@ In addition to the standard elements, the metadata includes a class map that lis
 
 ```
 {
-    "source-ref": "s3://DOC-EXAMPLE-BUCKET/example-path/input-manifest.json",
+    "source-ref": "s3://AWSDOC-EXAMPLE-BUCKET/example-path/input-manifest.json",
     "CarObjectDetection-ref": "s3://AWSDOC-EXAMPLE-BUCKET/output/labeling-job-name/annotations/consolidated-annotation/output/0/SeqLabel.json",
     "CarObjectDetection-ref-metadata": {
         "class-map": {
@@ -593,7 +593,7 @@ In addition to the standard elements, the metadata includes a class map that lis
 
 ```
 {
-    "source-ref": "s3://DOC-EXAMPLE-BUCKET/example-path/input-manifest.json",
+    "source-ref": "s3://AWSDOC-EXAMPLE-BUCKET/example-path/input-manifest.json",
     "CarObjectTracking-ref": "s3://AWSDOC-EXAMPLE-BUCKET/output/labeling-job-name/annotations/consolidated-annotation/output/0/SeqLabel.json",
     "CarObjectTracking-ref-metadata": {
         "class-map": {
@@ -722,7 +722,7 @@ The red, italicized text in the examples below depends on labeling job specifica
                 "confidence": 0.00
             }
         },
-        'type': 'groundtruth/lidar_single_frame_semantic_segmentation', 
+        'type': 'groundtruth/point_cloud_single_frame_semantic_segmentation', 
         'human-annotated': 'yes',
         'creation-date': '2019-11-12T01:18:14.271944',
         'job-name': 'labeling-job-name',
@@ -840,7 +840,7 @@ The *red, italicized text* in the examples below depends on labeling job specifi
         {
             "0": "Car",
         },
-        "type": "groundtruth/lidar_object_detection",
+        "type": "groundtruth/point_cloud_object_detection",
         "human-annotated": "yes", 
         "creation-date": "2018-10-18T22:18:13.527256",
         "job-name": "identify-3d-objects",
@@ -873,7 +873,7 @@ In addition to the standard elements, the metadata includes a class map that lis
             ...
         ],    
         'class-map': {'0': 'Car', '1': 'Person'}, 
-        'type': 'groundtruth/lidar_object_tracking', 
+        'type': 'groundtruth/point_cloud_object_tracking', 
         'human-annotated': 'yes',
         'creation-date': '2019-11-12T01:18:14.271944',
         'job-name': 'identify-3d-objects',

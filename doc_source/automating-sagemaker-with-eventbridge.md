@@ -70,10 +70,10 @@ Some examples of SageMaker status change events that EventBridge monitors includ
           "StoppingCondition": {
               "MaxRuntimeInSeconds": 60
           },
-          "CreationTime": "2018-10-06T12:26:13Z",
-          "TrainingStartTime": "2018-10-06T12:26:13Z",
-          "TrainingEndTime": "2018-10-06T12:26:13Z",
-          "LastModifiedTime": "2018-10-06T12:26:13Z",
+          "CreationTime": "1583831889050",
+          "TrainingStartTime": "1583831889050",
+          "TrainingEndTime": "1583831889050",
+          "LastModifiedTime": "1583831889050",
           "SecondaryStatusTransitions": [
   
           ],
@@ -153,8 +153,8 @@ Some examples of SageMaker status change events that EventBridge monitors includ
         }
       },
       "HyperParameterTuningJobStatus": "status",
-      "CreationTime": "2018-10-06T12:26:13Z",
-      "LastModifiedTime": "2018-10-06T12:26:13Z",
+      "CreationTime": "1583831889050",
+      "LastModifiedTime": "1583831889050",
       "TrainingJobStatusCounters": {
         "Completed": 1,
         "InProgress": 0,
@@ -184,7 +184,7 @@ Some examples of SageMaker status change events that EventBridge monitors includ
       "detail-type": "SageMaker Transform Job State Change",
       "source": "aws.sagemaker",
       "account": "123456789012",
-      "time": "2018-10-06T12:26:13Z",
+      "time": "1583831889050",
       "region": "us-east-1",
       "resources": [
           "arn:aws:sagemaker:us-east-1:123456789012:transform-job/myjob"
@@ -221,9 +221,9 @@ Some examples of SageMaker status change events that EventBridge monitors includ
               "InstanceType": "instanceType",
               "InstanceCount": 3
           },
-          "CreationTime": "2018-10-06T12:26:13Z",
-          "TransformStartTime": "2018-10-06T12:26:13Z",
-          "TransformEndTime": "2018-10-06T12:26:13Z",
+          "CreationTime": "1583831889050",
+          "TransformStartTime": "1583831889050",
+          "TransformEndTime": "1583831889050",
           "Tags": {
   
           }
@@ -241,7 +241,7 @@ Some examples of SageMaker status change events that EventBridge monitors includ
     "detail-type": "SageMaker HyperParameter Tuning Job State Change",
     "source": "aws.sagemaker",
     "account": "123456789012",
-    "time": "2018-10-06T12:26:13Z",
+    "time": "1583831889050",
     "region": "us-east-1",
     "resources": [
       "arn:aws:sagemaker:us-east-1:123456789012:tuningJob/x"
@@ -300,8 +300,8 @@ Some examples of SageMaker status change events that EventBridge monitors includ
         }
       },
       "HyperParameterTuningJobStatus": "status",
-      "CreationTime": "2018-10-06T12:26:13Z",
-      "LastModifiedTime": "2018-10-06T12:26:13Z",
+      "CreationTime": "1583831889050",
+      "LastModifiedTime": "1583831889050",
       "TrainingJobStatusCounters": {
         "Completed": 1,
         "InProgress": 0,
@@ -331,7 +331,7 @@ Some examples of SageMaker status change events that EventBridge monitors includ
       'detail-type': 'SageMakerEndpointStateChange',
       'source': 'aws.sagemaker',
       'account': '123456789012',
-      'time': '2020-06-17T16:39:57Z',
+      'time': '1583831889050',
       'region': 'us-west-2',
       'resources': [
           'arn:aws:sagemaker:us-west-2:123456789012:endpoint/myendpoint'

@@ -13,7 +13,7 @@ For information on how to onboard using AWS Single Sign\-On \(AWS SSO\), see [On
 
 1. Choose **Amazon SageMaker Studio** at the top left of the page\.
 
-1. On the **Amazon SageMaker Studio** page, under **Get started**, choose **Quick start**\.
+1. On the **SageMaker Studio** page, under **Get started**, choose **Quick start**\.
 
 1. For **User name**, keep the default name or create a new name\. The name can be up to 63 characters\. Valid characters: A\-Z, a\-z, 0\-9, and \- \(hyphen\)\. 
 
@@ -26,8 +26,10 @@ For information on how to onboard using AWS Single Sign\-On \(AWS SSO\), see [On
    + Choose **Create role**\. SageMaker creates a new IAM `AmazonSageMaker-ExecutionPolicy` role with the [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) policy attached\.
 
 1. Choose **Submit**\.
+**Note**  
+If you receive an error message that you need to create a VPC, see [Choose a VPC](onboard-vpc.md)\.
 
-   On the **Amazon SageMaker Studio Control Panel**, under **Studio Summary**, wait for **Status** to change to **Ready**\.
+   On the **SageMaker Studio Control Panel**, under **Studio Summary**, wait for **Status** to change to **Ready**\.
 
    When **Status** is **Ready**, the user name that you specified is enabled and chosen\. The **Add user** and **Delete user** buttons, and the **Open Studio** link are also enabled\.
 

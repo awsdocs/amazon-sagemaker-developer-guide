@@ -53,7 +53,7 @@ This section shows how to manage Neo compilation jobs for machine learning model
      }
      ```
 **Note**  
-For the `OutputConfig` API operation, the `TargetDevice` and `TargetPlatform` API operations are mutually exclusive\. You have to choose one between the two options\.
+For the `OutputConfig` API operation, the `TargetDevice` and `TargetPlatform` API operations are mutually exclusive\. You have to choose one of the two options\.
 
    To find the JSON string examples of `DataInputConfig` depending on frameworks, see [What input data shapes Neo expects](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-troubleshooting.html#neo-troubleshooting-errors-preventing)\.
 
