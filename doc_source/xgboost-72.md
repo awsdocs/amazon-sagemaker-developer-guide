@@ -4,16 +4,17 @@
 The XGBoost 0\.72 is deprecated by Amazon SageMaker\. You can still use this old version of XGBoost \(as a built\-in algorithm\) by pulling its image URI as shown in the following code sample\. For XGBoost, the image URI ending with `:1` is for the old version\.  
 
 ```
+import boto3
 from sagemaker.amazon.amazon_estimator import get_image_uri
-training_image = get_image_uri('us-east-1', 'xgboost')
+
+xgb_image_uri = get_image_uri(boto3.Session().region_name, "xgboost", repo_version="1")
 ```
 
 ```
 import boto3
-from sagemaker.amazon.amazon_estimator import get_image_uri
-container = get_image_uri(boto3.Session().region_name,
-                          'xgboost',
-                          repo_version='1')
+from sagemaker import image_uris
+
+xgb_image_uri = image_uris.retrieve("xgboost", boto3.Session().region_name, "1")
 ```
 If you want to use newer versions, you have to explicitly specify the image URI tags \(see [Supported versions](xgboost.md#xgboost-supported-versions)\)\.
 

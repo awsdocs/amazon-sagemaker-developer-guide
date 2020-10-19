@@ -25,7 +25,7 @@ DGL is available as a deep learning container in Amazon ECR\. You can select dee
  Backend framework support is limited to PyTorch and MXNet\. 
 
 **Setup**  
-If you are using Amazon SageMaker Studio, you need to clone the examples repo first\. If you are using a notebook instance, you can find the examples choosing the Amazon SageMaker icon at bottom of the left toolbar\. 
+If you are using Amazon SageMaker Studio, you need to clone the examples repo first\. If you are using a notebook instance, you can find the examples choosing the SageMaker icon at bottom of the left toolbar\. 
 
 **To clone the Amazon SageMaker SDK and notebook examples repository**
 

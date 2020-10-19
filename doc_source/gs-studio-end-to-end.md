@@ -1,6 +1,6 @@
 # Amazon SageMaker Studio Tour<a name="gs-studio-end-to-end"></a>
 
-This walkthrough takes you on a tour of the main features of Amazon SageMaker Studio using the [xgboost\_customer\_churn\_studio\.ipynb](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/aws_sagemaker_studio/getting_started/xgboost_customer_churn_studio.ipynb) sample notebook from the [awslabs/amazon\-sagemaker\-examples](https://github.com/awslabs/amazon-sagemaker-examples) repository\. It is intended that you proceed through the walkthrough and run the notebook in Studio at the same time\.
+This walkthrough takes you on a tour of the main features of Amazon SageMaker Studio using the [xgboost\_customer\_churn\_studio\.ipynb](https://github.com/aws/amazon-sagemaker-examples/blob/master/aws_sagemaker_studio/getting_started/xgboost_customer_churn_studio.ipynb) sample notebook from the [aws/amazon\-sagemaker\-examples](https://github.com/aws/amazon-sagemaker-examples) repository\. It is intended that you proceed through the walkthrough and run the notebook in Studio at the same time\.
 
 The code in the notebook trains multiple models and sets up the SageMaker Debugger and SageMaker Model Monitor\. The walkthrough shows you how to view the trials, compare the resulting models, show the debugger results, and deploy the best model using the SageMaker Studio UI\. You don't need to understand the code to follow this walkthrough\.
 
@@ -11,7 +11,7 @@ For a series of videos that shows how to use the main features of SageMaker Stud
 To run the notebook for this tour, you need:
 + An AWS SSO or IAM account to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
 + Basic familiarity with the Studio user interface and Jupyter notebooks\. For information, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
-+ A copy of the [awslabs/amazon\-sagemaker\-examples](https://github.com/awslabs/amazon-sagemaker-examples) repository in your Studio environment\.
++ A copy of the [aws/amazon\-sagemaker\-examples](https://github.com/aws/amazon-sagemaker-examples) repository in your Studio environment\.
 
 **To clone the repository**
 
@@ -27,7 +27,10 @@ To run the notebook for this tour, you need:
 
 1. At the command prompt, run the following command\.
 
-   `git clone https://github.com/awslabs/amazon-sagemaker-examples.git`
+   `git clone https://github.com/aws/amazon-sagemaker-examples.git`
+
+**Note**  
+If you encounter an error when you run the sample notebook, and some time has passed from when you cloned the repository, review the notebook on the remote repository for updates\.
 
 **Topics**
 + [Open the Amazon SageMaker Studio Notebook](#studio-tour-notebooks)

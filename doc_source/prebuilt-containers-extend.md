@@ -1,16 +1,16 @@
 # Extend a Prebuilt Container<a name="prebuilt-containers-extend"></a>
 
-If a prebuilt Amazon SageMaker container doesn't fulfill all of your requirements, you can extend the existing image to accommodate your needs\. Even if there is direct support for your environment or framework, you may want to add additional functionality or configure your container environment differently\. By extending a prebuilt image, you can leverage the included deep learning libraries and settings without having to create an image from scratch\. You can extend the container to add libraries, modify settings, and install additional dependencies\. 
+If a prebuilt SageMaker container doesn't fulfill all of your requirements, you can extend the existing image to accommodate your needs\. Even if there is direct support for your environment or framework, you may want to add additional functionality or configure your container environment differently\. By extending a prebuilt image, you can leverage the included deep learning libraries and settings without having to create an image from scratch\. You can extend the container to add libraries, modify settings, and install additional dependencies\. 
 
-The following tutorial shows how to extend a prebuilt Amazon SageMaker image and publish it to Amazon ECR\.
+The following tutorial shows how to extend a prebuilt SageMaker image and publish it to Amazon ECR\.
 
 **Topics**
 + [Requirements to Extend a Prebuilt Container](#prebuilt-containers-extend-required)
-+ [Extend Amazon SageMaker Containers to Run a Python Script](#prebuilt-containers-extend-tutorial)
++ [Extend SageMaker Containers to Run a Python Script](#prebuilt-containers-extend-tutorial)
 
 ## Requirements to Extend a Prebuilt Container<a name="prebuilt-containers-extend-required"></a>
 
-To extend a pre\-built Amazon SageMaker image, you need to set the following environment variables within your Dockerfile\. For more information on environment variables with Amazon SageMaker containers, see the [SageMaker Training Toolkit GitHub repo](https://github.com/aws/sagemaker-training-toolkit/blob/master/ENVIRONMENT_VARIABLES.md)\.
+To extend a pre\-built SageMaker image, you need to set the following environment variables within your Dockerfile\. For more information on environment variables with SageMaker containers, see the [SageMaker Training Toolkit GitHub repo](https://github.com/aws/sagemaker-training-toolkit/blob/master/ENVIRONMENT_VARIABLES.md)\.
 + `SAGEMAKER_SUBMIT_DIRECTORY`: The directory within the container in which the Python script for training is\.
 + `SAGEMAKER_PROGRAM`: The Python script that should be invoked and used as the entry point for training\.
 
@@ -22,15 +22,15 @@ RUN pip install <library>
 
 The following tutorial shows how to use these environment variables\.
 
-## Extend Amazon SageMaker Containers to Run a Python Script<a name="prebuilt-containers-extend-tutorial"></a>
+## Extend SageMaker Containers to Run a Python Script<a name="prebuilt-containers-extend-tutorial"></a>
 
-In this tutorial, you learn how to extend the Amazon SageMaker PyTorch container with a Python file that uses the CIFAR\-10 dataset\. By extending the Amazon SageMaker PyTorch container, you utilize the existing training solution made to work with Amazon SageMaker\. This tutorial extends a training image, but the same steps can be taken to extend an inference image\. For a full list of the available images, see [Available Deep Learning Containers Images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md)\.
+In this tutorial, you learn how to extend the SageMaker PyTorch container with a Python file that uses the CIFAR\-10 dataset\. By extending the SageMaker PyTorch container, you utilize the existing training solution made to work with SageMaker\. This tutorial extends a training image, but the same steps can be taken to extend an inference image\. For a full list of the available images, see [Available Deep Learning Containers Images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md)\.
 
-To run your own training model using the Amazon SageMaker containers, build a Docker container through an Amazon SageMaker Notebook instance\. 
+To run your own training model using the SageMaker containers, build a Docker container through an SageMaker Notebook instance\. 
 
-### Step 1: Create an Amazon SageMaker Notebook Instance<a name="extend-step1"></a>
+### Step 1: Create an SageMaker Notebook Instance<a name="extend-step1"></a>
 
-1. Open the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\. 
+1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\. 
 
 1. In the left navigation pane, choose **Notebook**, choose **Notebook instances**, and then choose **Create notebook instance**\. 
 
@@ -46,7 +46,7 @@ To run your own training model using the Amazon SageMaker containers, build a Do
 
       1. On the **Create an IAM role** page, choose **Specific S3 buckets**, specify an Amazon S3 bucket named **sagemaker\-run\-script**, and then choose **Create role**\.
 
-         Amazon SageMaker creates an IAM role named `AmazonSageMaker-ExecutionRole-YYYYMMDDTHHmmSS`, such as `AmazonSageMaker-ExecutionRole-20190429T110788`\. Note that the execution role naming convention uses the date and time when the role was created, separated by a `T`\.
+         SageMaker creates an IAM role named `AmazonSageMaker-ExecutionRole-YYYYMMDDTHHmmSS`, such as `AmazonSageMaker-ExecutionRole-20190429T110788`\. Note that the execution role naming convention uses the date and time when the role was created, separated by a `T`\.
 
    1. For **Root Access**, choose **Enable**\.
 
@@ -87,9 +87,9 @@ To run your own training model using the Amazon SageMaker containers, build a Do
       ```
 
       The Dockerfile script performs the following tasks:
-      + `FROM 763104351884.dkr.ecr.us-east-1.amazonaws.com/pytorch-training:1.5.1-cpu-py36-ubuntu16.04` – Downloads the Amazon SageMaker PyTorch base image\. You can replace this with any Amazon SageMaker base image you want to bring to build containers\.
+      + `FROM 763104351884.dkr.ecr.us-east-1.amazonaws.com/pytorch-training:1.5.1-cpu-py36-ubuntu16.04` – Downloads the SageMaker PyTorch base image\. You can replace this with any SageMaker base image you want to bring to build containers\.
       + `ENV SAGEMAKER_SUBMIT_DIRECTORY /opt/ml/code` – Sets `/opt/ml/code` as the training script directory\.
-      + `COPY cifar10.py /opt/ml/code/cifar10.py` – Copies the script to the location inside the container that is expected by Amazon SageMaker\. The script must be located in this folder\.
+      + `COPY cifar10.py /opt/ml/code/cifar10.py` – Copies the script to the location inside the container that is expected by SageMaker\. The script must be located in this folder\.
       + `ENV SAGEMAKER_PROGRAM cifar10.py` – Sets your `cifar10.py` training script as the entrypoint script\.
 
    1.  On the left directory navigation pane, the text file name might automatically be named `untitled.txt`\. To rename the file, right\-click the file, choose **Rename**, rename the file as `Dockerfile` without the `.txt` extension, and then press `Ctrl+s` or `Command+s` to save the file\.
@@ -340,7 +340,7 @@ Remember that `docker` looks for a file specifically called `Dockerfile` without
    testloader = get_test_data_loader('/tmp/pytorch-example/cifar-10-data')
    ```
 
-1. Set `role` to the role used to create your Jupyter notebook\. This is used to configure your Amazon SageMaker Estimator\.
+1. Set `role` to the role used to create your Jupyter notebook\. This is used to configure your SageMaker Estimator\.
 
    ```
    from sagemaker import get_execution_role
@@ -348,7 +348,7 @@ Remember that `docker` looks for a file specifically called `Dockerfile` without
    role = get_execution_role()
    ```
 
-1. Paste the following example script into the notebook code cell to configure a Amazon SageMaker Estimator using your extended container\.
+1. Paste the following example script into the notebook code cell to configure a SageMaker Estimator using your extended container\.
 
    ```
    from sagemaker.estimator import Estimator
@@ -449,7 +449,7 @@ Remember that `docker` looks for a file specifically called `Dockerfile` without
 
 **To clean up resources when done with the Get Started example**
 
-1. Open the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/), choose the notebook instance **RunScriptNotebookInstance**, choose **Actions**, and choose **Stop**\. It can take a few minutes for the instance to stop\. 
+1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/), choose the notebook instance **RunScriptNotebookInstance**, choose **Actions**, and choose **Stop**\. It can take a few minutes for the instance to stop\. 
 
 1. After the instance **Status** changes to **Stopped**, choose **Actions**, choose **Delete**, and then choose **Delete** in the dialog box\. It can take a few minutes for the instance to be deleted\. The notebook instance disappears from the table when it has been deleted\. 
 

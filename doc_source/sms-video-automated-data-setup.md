@@ -24,7 +24,7 @@ Make sure your video files are stored in an Amazon S3 bucket in the same AWS Reg
 
 1. In the section **Input data setup**, select **Automated data setup**\.
 
-1. Enter an Amazon S3 URI for **S3 location for input datasets**\. An S3 URI looks like the following: `s3://AWSDOC-EXAMPLE-BUCKET/path-to-files/`\. This URI should point to the Amazon S3 location where your video files are stored\.
+1. Enter an Amazon S3 URI for **S3 location for input datasets**\. An S3 URI looks like the following: `s3://DOC-EXAMPLE-BUCKET/path-to-files/`\. This URI should point to the Amazon S3 location where your video files are stored\.
 
 1. Specify your **S3 location for output datasets**\. This is where your output data is stored\. You can choose to store your output data in the **Same location as input dataset** or **Specify a new location** and entering the S3 URI of the location that you want to store your output data\.
 
@@ -46,7 +46,7 @@ Make sure your video files are stored in an Amazon S3 bucket in the same AWS Reg
 
 Use the following procedure to connect your sequences of video frames with Ground Truth for video frame object detection and object tracking labeling jobs\. 
 
-Make sure your video frames are stored in an Amazon S3 bucket in the same AWS Region that you perform the automated data setup in\. Each sequence of video frames should have a unique prefix\. For example, if you have two sequences stored in `s3://AWSDOC-EXAMPLE-BUCKET/video-frames/sequences/`, each should have a unique prefix like `sequence1` and `sequence2` and should both be located directly under the `/sequences/` prefix\. In the example above, the locations of these two sequences is: `s3://AWSDOC-EXAMPLE-BUCKET/video-frames/sequences/sequence1/` and `s3://AWSDOC-EXAMPLE-BUCKET/video-frames/sequences/sequence2/`\. 
+Make sure your video frames are stored in an Amazon S3 bucket in the same AWS Region that you perform the automated data setup in\. Each sequence of video frames should have a unique prefix\. For example, if you have two sequences stored in `s3://DOC-EXAMPLE-BUCKET/video-frames/sequences/`, each should have a unique prefix like `sequence1` and `sequence2` and should both be located directly under the `/sequences/` prefix\. In the example above, the locations of these two sequences is: `s3://DOC-EXAMPLE-BUCKET/video-frames/sequences/sequence1/` and `s3://DOC-EXAMPLE-BUCKET/video-frames/sequences/sequence2/`\. 
 
 **Automatically connect your video frame in Amazon S3 with Ground Truth:**
 
@@ -62,7 +62,7 @@ Make sure your video frames are stored in an Amazon S3 bucket in the same AWS Re
 
 1. Enter an Amazon S3 URI for **S3 location for input datasets**\. 
 
-   This should be the Amazon S3 location where your sequences are stored\. For example, if you have two sequences stored in `s3://AWSDOC-EXAMPLE-BUCKET/video-frames/sequences/sequence1/`, `s3://AWSDOC-EXAMPLE-BUCKET/video-frames/sequences/sequence2/`, enter `s3://AWSDOC-EXAMPLE-BUCKET/video-frames/sequences/` here\.
+   This should be the Amazon S3 location where your sequences are stored\. For example, if you have two sequences stored in `s3://DOC-EXAMPLE-BUCKET/video-frames/sequences/sequence1/`, `s3://DOC-EXAMPLE-BUCKET/video-frames/sequences/sequence2/`, enter `s3://DOC-EXAMPLE-BUCKET/video-frames/sequences/` here\.
 
 1. Specify your **S3 location for output datasets**\. This is where your output data is stored\. You can choose to store your output data in the **Same location as input dataset** or **Specify a new location** and entering the S3 URI of the location that you want to store your output data\.
 

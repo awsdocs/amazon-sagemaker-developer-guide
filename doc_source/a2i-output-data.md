@@ -71,7 +71,7 @@ The following is an example of the output data from an Amazon A2I human review o
         "aiServiceRequest": {
             "document": {
                 "s3Object": {
-                    "bucket": "AWSDOC-EXAMPLE-BUCKET1",
+                    "bucket": "DOC-EXAMPLE-BUCKET1",
                     "name": "document-demo.jpg"
                 }
             },
@@ -183,7 +183,7 @@ The following is an example of the output data from an Amazon A2I human review o
             },
             "image": {
                 "s3Object": {
-                    "bucket": "AWSDOC-EXAMPLE-BUCKET1",
+                    "bucket": "DOC-EXAMPLE-BUCKET1",
                     "name": "example-image.jpg"
                 }
             }
@@ -274,7 +274,7 @@ The following is an example of output data from a custom integration with Amazon
     ],
     "humanLoopName": "human-loop-name",
     "inputContent": {
-        "audioPath": "s3://AWSDOC-EXAMPLE-BUCKET1/a2i_transcribe_demo/Fully-Managed Notebook Instances with Amazon SageMaker - a Deep Dive.mp4",
+        "audioPath": "s3://DOC-EXAMPLE-BUCKET1/a2i_transcribe_demo/Fully-Managed Notebook Instances with Amazon SageMaker - a Deep Dive.mp4",
         "end_time": 950.27,
         "original_words": "but definitely use Lambda to turn your ",
         "start_time": 948.51,

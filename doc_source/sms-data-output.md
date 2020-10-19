@@ -500,7 +500,7 @@ In addition to the standard elements, the metadata includes a class map that lis
 
 ```
 {
-    "source-ref": "s3://AWSDOC-EXAMPLE-BUCKET/example-path/input-manifest.json",
+    "source-ref": "s3://DOC-EXAMPLE-BUCKET/example-path/input-manifest.json",
     "CarObjectDetection-ref": "s3://AWSDOC-EXAMPLE-BUCKET/output/labeling-job-name/annotations/consolidated-annotation/output/0/SeqLabel.json",
     "CarObjectDetection-ref-metadata": {
         "class-map": {
@@ -517,15 +517,17 @@ In addition to the standard elements, the metadata includes a class map that lis
 
 Ground Truth creates one output sequence file for each sequence of video frames that was labeled\. Each output sequence file contains the following: 
 + All annotations for all frames in a sequence in the `detection-annotations` list of JSON objects\. 
-+ For each frame that was annotated by a worker, the frame file name \(`frame`\), number \(`frame-no`\) and an `annotations` list of JSON objects\. 
++ For each frame that was annotated by a worker, the frame file name \(`frame`\), number \(`frame-no`\) and an list of JSON objects\. The name of this list is defined by the task type you use: `polylines`, `polygons`, `keypoints`, and for bounding boxes, `annotations`\.
 
-  Each JSON object contains information about a single bounding box and associated label:
-  + Box dimensions: `height` and `width` 
-  + Box pixel location: `top` and `left`
+  Each JSON object contains information about a single annotation and associated label\. The following table outlines the parameters you'll see for each video frame task type\.   
+****    
+[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/sms-data-output.html)
+
+  In addition to task type specific values, you will see the following in each JSON object:
   + Values of any `label-category-attributes` that were specified for that label\. 
   + The `class-id` of the box\. Use the `class-map` in the output manifest file to see which label category this ID maps to\. 
 
-The following is an example of a `SeqLabel.json`\. 
+The following is an example of a `SeqLabel.json` file from a bounding box video frame object detection labeling job\. This file will be located under `s3://your-output-bucket/output-prefix/annotations/consolidated-annotation/output/annotation-number/`
 
 ```
 {
@@ -593,7 +595,7 @@ In addition to the standard elements, the metadata includes a class map that lis
 
 ```
 {
-    "source-ref": "s3://AWSDOC-EXAMPLE-BUCKET/example-path/input-manifest.json",
+    "source-ref": "s3://DOC-EXAMPLE-BUCKET/example-path/input-manifest.json",
     "CarObjectTracking-ref": "s3://AWSDOC-EXAMPLE-BUCKET/output/labeling-job-name/annotations/consolidated-annotation/output/0/SeqLabel.json",
     "CarObjectTracking-ref-metadata": {
         "class-map": {
@@ -610,17 +612,19 @@ In addition to the standard elements, the metadata includes a class map that lis
 
 Ground Truth creates one output sequence file for each sequence of video frames that was labeled\. Each output sequence file contains the following: 
 + All annotations for all frames in a sequence in the `tracking-annotations` list of JSON objects\. 
-+ For each frame that was annotated by a worker, the frame file name \(`frame`\), number \(`frame-no`\) and an `annotations` list of JSON objects\. 
++ For each frame that was annotated by a worker, the frame file name \(`frame`\), number \(`frame-no`\) and a list of JSON objects\. The name of this list is defined by the task type you use: `polylines`, `polygons`, `keypoints`, and for bounding boxes, `annotations`\.
 
-  Each JSON object contains information about a single bounding box and associated label:
-  + Box dimensions: `height` and `width` 
-  + Box pixel location: `top` and `left`
+  Each JSON object contains information about a single annotation and associated label\. The following table outlines the parameters you'll see for each video frame task type\.   
+****    
+[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/sms-data-output.html)
+
+  In addition to task type specific values, you will see the following in each JSON object: 
   + Values of any `label-category-attributes` that were specified for that label\. 
   + The `class-id` of the box\. Use the `class-map` in the output manifest file to see which label category this ID maps to\. 
   + An `object-id` which identifies an instance of a label\. This ID will be the same across frames if a worker identified the same instance of an object in multiple frames\. For example, if a car appeared in multiple frames, all bounding boxes uses to identify that car would have the same `object-id`\.
   + The `object-name` which is the instance ID of that annotation\. 
 
-The following is an example of a `SeqLabel.json` file:
+The following is an example of a `SeqLabel.json` file from a bounding box video frame object tracking labeling job\. This file will be located under `s3://your-output-bucket/output-prefix/annotations/consolidated-annotation/output/annotation-number/`
 
 ```
 {

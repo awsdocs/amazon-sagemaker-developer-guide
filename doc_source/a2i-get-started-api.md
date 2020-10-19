@@ -379,7 +379,7 @@ If you use the built\-in integration with Amazon Textract, you must specify `"AW
             ],
         },
         OutputConfig={
-            "S3OutputPath": "s3://AWSDOC-EXAMPLE-BUCKET/prefix/",
+            "S3OutputPath": "s3://DOC-EXAMPLE-BUCKET/prefix/",
         },
         RoleArn="arn:aws:iam::<account-number>:role/<role-name>",
         Tags=[
@@ -420,7 +420,7 @@ If you use the built\-in integration with Amazon Rekognition, you must specify `
             ],
         },
         OutputConfig={
-            "S3OutputPath": "s3://AWSDOC-EXAMPLE-BUCKET/prefix/",
+            "S3OutputPath": "s3://DOC-EXAMPLE-BUCKET/prefix/",
         },
         RoleArn="arn:aws:iam::<account-number>:role/<role-name>",
         Tags=[
@@ -453,7 +453,7 @@ If you use a custom integration, exclude the following parameters: `HumanLoopReq
             ],
         },
         OutputConfig={
-            "S3OutputPath": "s3://AWSDOC-EXAMPLE-BUCKET/prefix/",
+            "S3OutputPath": "s3://DOC-EXAMPLE-BUCKET/prefix/",
         },
         RoleArn="arn:aws:iam::<account-number>:role/<role-name>",
         Tags=[

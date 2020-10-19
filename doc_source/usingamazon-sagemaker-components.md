@@ -1,6 +1,6 @@
-# Using Amazon SageMaker Components<a name="usingamazon-sagemaker-components"></a>
+# Using SageMaker Components<a name="usingamazon-sagemaker-components"></a>
 
-In this tutorial, you run a pipeline using Amazon SageMaker Components for Kubeflow Pipelines to train a classification model using Kmeans with the MNIST dataset\. This workflow uses Kubeflow pipelines as the orchestrator and Amazon SageMaker as the backend to run the steps in the workflow\. For the full code for this and other pipeline examples, see the [Sample Amazon SageMaker Kubeflow Pipelines](https://github.com/kubeflow/pipelines/tree/master/samples/contrib/aws-samples)\. For information on the components used, see the [KubeFlow Pipelines GitHub repository](https://github.com/kubeflow/pipelines/tree/master/components/aws/sagemaker)\. 
+In this tutorial, you run a pipeline using SageMaker Components for Kubeflow Pipelines to train a classification model using Kmeans with the MNIST dataset\. This workflow uses Kubeflow pipelines as the orchestrator and SageMaker as the backend to run the steps in the workflow\. For the full code for this and other pipeline examples, see the [Sample SageMaker Kubeflow Pipelines](https://github.com/kubeflow/pipelines/tree/master/samples/contrib/aws-samples)\. For information on the components used, see the [KubeFlow Pipelines GitHub repository](https://github.com/kubeflow/pipelines/tree/master/components/aws/sagemaker)\. 
 
 **Topics**
 + [Setup](#setup)
@@ -171,9 +171,9 @@ Your method of accessing the KFP UI depends on your gateway node type\.
 
   1. Choose **Pipelines** to access the KFP UI\. 
 
-### Create IAM Users/Roles for KFP pods and the Amazon SageMaker service<a name="create-iam-usersroles-for-kfp-pods-and-the-amazon-sagemaker-service"></a>
+### Create IAM Users/Roles for KFP pods and the SageMaker service<a name="create-iam-usersroles-for-kfp-pods-and-the-amazon-sagemaker-service"></a>
 
-You now have a Kubernetes cluster with Kubeflow set up\. To run Amazon SageMaker Components for Kubeflow Pipelines, the Kubeflow Pipeline pods need access to Amazon SageMaker\. In this section, you create IAM users/roles to be used by Kubeflow Pipeline pods and Amazon SageMaker\. 
+You now have a Kubernetes cluster with Kubeflow set up\. To run SageMaker Components for Kubeflow Pipelines, the Kubeflow Pipeline pods need access to SageMaker\. In this section, you create IAM users/roles to be used by Kubeflow Pipeline pods and SageMaker\. 
 
 #### Create a KFP execution role<a name="create-a-kfp-execution-role"></a>
 
@@ -221,7 +221,7 @@ Run the following from the command line of your gateway node:
    EOF
    ```
 
-1. Create an IAM role named `kfp-example-pod-role` using `trust.json` using the following command\. This role is used by KFP pods to create Amazon SageMaker jobs from KFP components\. Note the ARN returned in the output\. 
+1. Create an IAM role named `kfp-example-pod-role` using `trust.json` using the following command\. This role is used by KFP pods to create SageMaker jobs from KFP components\. Note the ARN returned in the output\. 
 
    ```
    aws iam create-role --role-name kfp-example-pod-role --assume-role-policy-document file://trust.json
@@ -269,9 +269,9 @@ Run the following from the command line of your gateway node:
    - name: pipeline-runner-token-dkjrk
    ```
 
-#### Create an Amazon SageMaker execution role<a name="create-an-amazonsagemaker-execution-role"></a>
+#### Create an SageMaker execution role<a name="create-an-amazonsagemaker-execution-role"></a>
 
-The `kfp-example-sagemaker-execution-role` IAM role is used by Amazon SageMaker jobs to access AWS resources\. For more information, see the IAM Permissions section\. You provide this role as an input parameter when running the pipeline\. 
+The `kfp-example-sagemaker-execution-role` IAM role is used by SageMaker jobs to access AWS resources\. For more information, see the IAM Permissions section\. You provide this role as an input parameter when running the pipeline\. 
 
 Run the following to create the role\. Note the ARN that is returned in your output\. 
 
@@ -288,9 +288,9 @@ aws iam get-role --role-name ${SAGEMAKER_EXECUTION_ROLE_NAME} --output text --qu
 
 ### Add access to additional IAM users or roles<a name="add-access-to-additional-iam-users-or-roles"></a>
 
-If you use an intuitive IDE like Jupyter or want other people in your organization to use the cluster you set up, you can also give them access\. The following steps run through this workflow using Amazon SageMaker notebooks\. An Amazon SageMaker notebook instance is a fully managed Amazon EC2 compute instance that runs the Jupyter Notebook App\. You use the notebook instance to create and manage Jupyter notebooks to create ML workflows\. You can define, compile, deploy, and run your pipeline using the KFP Python SDK or CLI\. If you’re not using an Amazon SageMaker notebook to run Jupyter, you need to install the [AWS CLI ](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)and the latest version of [https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl)\. 
+If you use an intuitive IDE like Jupyter or want other people in your organization to use the cluster you set up, you can also give them access\. The following steps run through this workflow using SageMaker notebooks\. An SageMaker notebook instance is a fully managed Amazon EC2 compute instance that runs the Jupyter Notebook App\. You use the notebook instance to create and manage Jupyter notebooks to create ML workflows\. You can define, compile, deploy, and run your pipeline using the KFP Python SDK or CLI\. If you’re not using an SageMaker notebook to run Jupyter, you need to install the [AWS CLI ](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)and the latest version of [https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl)\. 
 
-1. Follow the steps in [Create an Amazon SageMaker Notebook Instance](https://docs.aws.amazon.com/sagemaker/latest/dg/gs-setup-working-env.html) to create a Amazon SageMaker notebook instance if you do not already have one\. Give the IAM role for this instance the `S3FullAccess` permission\. 
+1. Follow the steps in [Create an SageMaker Notebook Instance](https://docs.aws.amazon.com/sagemaker/latest/dg/gs-setup-working-env.html) to create a SageMaker notebook instance if you do not already have one\. Give the IAM role for this instance the `S3FullAccess` permission\. 
 
 1. Amazon EKS clusters use IAM users and roles to control access to the cluster\. The rules are implemented in a config map named `aws-auth`\. Only the user/role that has access to the cluster will be able to edit this config map\. Run the following from the command line of your gateway node to get the IAM role of the notebook instance you created\. Replace `<instance-name>` with the name of your instance\. 
 
@@ -319,7 +319,7 @@ If you use an intuitive IDE like Jupyter or want other people in your organizati
        --region <region>
    ```
 
-1. Open the Jupyter notebook on your Amazon SageMaker instance and run the following to verify that it has access to the cluster\. 
+1. Open the Jupyter notebook on your SageMaker instance and run the following to verify that it has access to the cluster\. 
 
    ```
    aws eks --region <region> update-kubeconfig --name <cluster-name>
@@ -340,7 +340,7 @@ From the `mnist-kmeans-sagemaker` folder of the Kubeflow repository you cloned o
 aws s3 cp mnist-kmeans-sagemaker/kmeans_preprocessing.py s3://<bucket-name>/mnist_kmeans_example/processing_code/kmeans_preprocessing.py
 ```
 
-### Create a Kubeflow Pipeline using Amazon SageMaker Components<a name="create-a-kubeflow-pipeline-usingamazon-sagemaker-components"></a>
+### Create a Kubeflow Pipeline using SageMaker Components<a name="create-a-kubeflow-pipeline-usingamazon-sagemaker-components"></a>
 
 The full code for the MNIST classification pipeline is available in the [Kubeflow Github repository](https://github.com/kubeflow/pipelines/blob/master/samples/contrib/aws-samples/mnist-kmeans-sagemaker)\. To use it, clone the example Python files to your gateway node\. 
 
@@ -349,7 +349,7 @@ The full code for the MNIST classification pipeline is available in the [Kubefl
 The full MNIST classification pipeline has run\-specific parameters for which you must provide values when creating a run\. You must provide these parameters for each component of your pipeline\. These parameters can also be updated when using other pipelines\. We have provided default values for all parameters in the sample classification pipeline file\. 
 
 The following are the only parameters you need to pass to run the sample pipelines\. To pass these parameters, update their entries when creating a new run\. 
-+ **Role\-ARN:** This must be the ARN of an IAM role that has full Amazon SageMaker access in your AWS account\. Use the ARN of  `kfp-example-pod-role`\. 
++ **Role\-ARN:** This must be the ARN of an IAM role that has full SageMaker access in your AWS account\. Use the ARN of  `kfp-example-pod-role`\. 
 + **Bucket**: This is the name of the Amazon S3 bucket that you uploaded the `kmeans_preprocessing.py` file to\. 
 
 You can adjust any of the input parameters using the KFP UI and trigger your run again\. 
@@ -463,7 +463,7 @@ Complete the following steps from the command line of your gateway node\. KFP or
 
 ### Running predictions<a name="running-predictions"></a>
 
-Once your classification pipeline is deployed, you can run classification predictions against the endpoint that was created by the Deploy component\. Use the KFP UI to check the output artifacts for `sagemaker-deploy-model-endpoint_name`\. Download the \.tgz file to extract the endpoint name or check the Amazon SageMaker console in the region you used\. 
+Once your classification pipeline is deployed, you can run classification predictions against the endpoint that was created by the Deploy component\. Use the KFP UI to check the output artifacts for `sagemaker-deploy-model-endpoint_name`\. Download the \.tgz file to extract the endpoint name or check the SageMaker console in the region you used\. 
 
 #### Configure permissions to run predictions<a name="configure-permissions-to-run-predictions"></a>
 
@@ -550,7 +550,7 @@ If you want to run predictions from your gateway node, skip this section\.
 
 When the pipeline is running, you can choose any component to check execution details, such as inputs and outputs\. This lists the names of created resources\. 
 
-If the KFP request is successfully processed and an Amazon SageMaker job is created, the component logs in the KFP UI provide a link to the job created in Amazon SageMaker\. The CloudWatch logs are also provided if the job is successfully created\. 
+If the KFP request is successfully processed and an SageMaker job is created, the component logs in the KFP UI provide a link to the job created in SageMaker\. The CloudWatch logs are also provided if the job is successfully created\. 
 
 If you run too many pipeline jobs on the same cluster, you may see an error message that indicates you do not have enough pods available\. To fix this, log in to your gateway node and delete the pods created by the pipelines you are not using as follows: 
 
@@ -572,4 +572,4 @@ When you’re finished with your pipeline, you need to clean up your resources\.
    kubectl delete pods -n kubeflow <name-of-pipeline-pod>
    ```
 
-1. Using your AWS account, log in to the Amazon SageMaker service\. Manually stop all training, batch transform, and HPO jobs\. Delete models, data buckets, and endpoints to avoid incurring any additional costs\. Terminating the pipeline runs does not stop the jobs in Amazon SageMaker\. 
+1. Using your AWS account, log in to the SageMaker service\. Manually stop all training, batch transform, and HPO jobs\. Delete models, data buckets, and endpoints to avoid incurring any additional costs\. Terminating the pipeline runs does not stop the jobs in SageMaker\. 

@@ -66,7 +66,13 @@ When you create a labeling job using the SageMaker console, you add worker instr
 
 1. \(Optional\) For bounding box, semantic segmentation, and point cloud task types, you can select **Display existing labels** if you want to display labels for your input data set for workers to verify or adjust\. If you choose this option, select the label attribute name for the labels that you want to verify or adjust\. This can be found in the output manifest file in your Amazon S3 bucket\. For more information, see [Verify and Adjust Labels ](sms-verification-data.md)\.
 
-1. In the next section, specify your worker instructions and labels\. For the point cloud labeling modality, you can also specify label attributes\. You can select **See preview** to preview your worker instructions, labels, and interact with the worker UI\. For more details about the worker UI for each task type, see the page for your [built\-in task type](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html)\. 
+1. In the next section, specify your worker instructions and labels\. You can select **See preview** to preview your worker instructions, labels, and interact with the worker UI\. 
+
+   For the point cloud labeling task types, you can also specify label attributes\. To learn more, see [Worker User Interface \(UI\)](sms-point-cloud-general-information.md#sms-point-cloud-worker-task-ui)\.
+
+   For video frame labeling task types, you can specify label attributes and annotation tools\. To learn more, see [Worker User Interface \(UI\)](sms-video-overview.md#sms-video-worker-task-ui)\.
+
+   For more details about the worker UI for each task type, see the page for your [built\-in task type](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html)\. 
 
 1. \(Optional\) If you are *not* using a point cloud task type, you can add **Additional instructions** to help your worker complete your task\.
 

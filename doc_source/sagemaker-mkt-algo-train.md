@@ -11,7 +11,7 @@ You can create use an algorithm resource to create a training job by using the A
 
 **To use an algorithm to run a training job \(console\)**
 
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
+1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
 1. Choose **Algorithms**\.
 
@@ -25,7 +25,7 @@ You can create use an algorithm resource to create a training job by using the A
 
    1. For **Job name**, type a name for the training job\.
 
-   1. For **IAM role**, choose an IAM role that has the required permissions to run training jobs in Amazon SageMaker, or choose **Create a new role** to allow Amazon SageMaker to create a role that has the `AmazonSageMakerFullAccess` managed policy attached\. For information, see [SageMaker Roles ](sagemaker-roles.md)\.
+   1. For **IAM role**, choose an IAM role that has the required permissions to run training jobs in SageMaker, or choose **Create a new role** to allow SageMaker to create a role that has the `AmazonSageMakerFullAccess` managed policy attached\. For information, see [SageMaker Roles ](sagemaker-roles.md)\.
 
    1. For **Resource configuration**, provide the following information:
 
@@ -65,7 +65,7 @@ You can create use an algorithm resource to create a training job by using the A
 **Note**  
 You use the model artifacts stored at this location to create a model or model package from this training job\.
 
-      1. For **Encryption key**, if you want Amazon SageMaker to use a AWS KMS key to encrypt output data at rest in the S3 location\.
+      1. For **Encryption key**, if you want SageMaker to use a AWS KMS key to encrypt output data at rest in the S3 location\.
 
    1. For **Tags**, specify one or more tags to manage the training job\. Each tag consists of a key and an optional value\. Tag keys must be unique per resource\.
 
@@ -73,7 +73,7 @@ You use the model artifacts stored at this location to create a model or model p
 
 ## Use an Algorithm to Run a Training Job \(API\)<a name="sagemaker-mkt-algo-train-api"></a>
 
-To use an algorithm to run a training job by using the Amazon SageMaker API, specify either the name or the Amazon Resource Name \(ARN\) as the `AlgorithmName` field of the [ `AlgorithmSpecification`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AlgorithmSpecification.html) object that you pass to [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html)\. For information about training models in Amazon SageMaker, see [Train a Model with Amazon SageMaker](how-it-works-training.md)\.
+To use an algorithm to run a training job by using the SageMaker API, specify either the name or the Amazon Resource Name \(ARN\) as the `AlgorithmName` field of the [ `AlgorithmSpecification`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AlgorithmSpecification.html) object that you pass to [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html)\. For information about training models in SageMaker, see [Train a Model with Amazon SageMaker](how-it-works-training.md)\.
 
 ## Use an Algorithm to Run a Training Job \([Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\)<a name="sagemaker-mkt-algo-train-sdk"></a>
 

@@ -1,13 +1,13 @@
-# Amazon SageMaker Components for Kubeflow Pipelines<a name="amazon-sagemaker-components-for-kubeflow-pipelines"></a>
+# SageMaker Components for Kubeflow Pipelines<a name="amazon-sagemaker-components-for-kubeflow-pipelines"></a>
 
-This document outlines how to use Amazon SageMaker Components for Kubeflow Pipelines \(KFP\)\. With these pipeline components, you can create and monitor training, tuning, endpoint deployment, and batch transform jobs in Amazon SageMaker\. By running Kubeflow Pipeline jobs on Amazon SageMaker, you move data processing and training jobs from the Kubernetes cluster to Amazon SageMaker’s machine learning\-optimized managed service\. This document assumes prior knowledge of Kubernetes and Kubeflow\. 
+This document outlines how to use SageMaker Components for Kubeflow Pipelines \(KFP\)\. With these pipeline components, you can create and monitor training, tuning, endpoint deployment, and batch transform jobs in SageMaker\. By running Kubeflow Pipeline jobs on SageMaker, you move data processing and training jobs from the Kubernetes cluster to SageMaker’s machine learning\-optimized managed service\. This document assumes prior knowledge of Kubernetes and Kubeflow\. 
 
 **Topics**
 + [What is Kubeflow Pipelines?](#what-is-kubeflow-pipelines)
 + [Kubeflow Pipeline components](#kubeflow-pipeline-components)
 + [IAM permissions](#iam-permissions)
-+ [Converting Pipelines to use Amazon SageMaker](#converting-pipelines-to-use-amazon-sagemaker)
-+ [Using Amazon SageMaker Components](usingamazon-sagemaker-components.md)
++ [Converting Pipelines to use SageMaker](#converting-pipelines-to-use-amazon-sagemaker)
++ [Using SageMaker Components](usingamazon-sagemaker-components.md)
 
 ## What is Kubeflow Pipelines?<a name="what-is-kubeflow-pipelines"></a>
 
@@ -27,47 +27,47 @@ For more information on Kubeflow Pipelines, see the [Kubeflow Pipelines documen
 
 A Kubeflow Pipeline component is a set of code used to execute one step in a Kubeflow pipeline\. Components are represented by a Python module that is converted into a Docker image\. These components make it fast and easy to write pipelines for experimentation and production environments without having to interact with the underlying Kubernetes infrastructure\. 
 
-### What do Amazon SageMaker Components for Kubeflow Pipelines provide?<a name="what-doamazon-sagemaker-components-for-kubeflow-pipelines-provide"></a>
+### What do SageMaker Components for Kubeflow Pipelines provide?<a name="what-doamazon-sagemaker-components-for-kubeflow-pipelines-provide"></a>
 
-Amazon SageMaker Components for Kubeflow Pipelines offer an alternative to launching compute\-intensive jobs in Amazon SageMaker\. These components integrate Amazon SageMaker with the portability and orchestration of Kubeflow Pipelines\. Using the Amazon SageMaker components, each of the jobs in the pipeline workflow runs on Amazon SageMaker instead of the local Kubernetes cluster\. The job parameters, status, logs, and outputs from Amazon SageMaker are still accessible from the Kubeflow Pipelines UI\. The following Amazon SageMaker components have been created to integrate six key Amazon SageMaker features into your ML workflows\. You can create a Kubeflow Pipeline built entirely using these components, or integrate individual components into your workflow as needed\. 
+SageMaker Components for Kubeflow Pipelines offer an alternative to launching compute\-intensive jobs in SageMaker\. These components integrate SageMaker with the portability and orchestration of Kubeflow Pipelines\. Using the SageMaker components, each of the jobs in the pipeline workflow runs on SageMaker instead of the local Kubernetes cluster\. The job parameters, status, logs, and outputs from SageMaker are still accessible from the Kubeflow Pipelines UI\. The following SageMaker components have been created to integrate six key SageMaker features into your ML workflows\. You can create a Kubeflow Pipeline built entirely using these components, or integrate individual components into your workflow as needed\. 
 
-There is no additional charge for using Amazon SageMaker Components for Kubeflow Pipelines\. You incur charges for any Amazon SageMaker resources you use through these components\. 
+There is no additional charge for using SageMaker Components for Kubeflow Pipelines\. You incur charges for any SageMaker resources you use through these components\. 
 
 #### Training components<a name="training-components"></a>
 
 **Training** 
 
-The Training component allows you to submit Amazon SageMaker Training jobs directly from a Kubeflow Pipelines workflow\. For more information, see [Amazon SageMaker Training Kubeflow Pipelines component](https://github.com/kubeflow/pipelines/tree/master/components/aws/sagemaker/train)\. 
+The Training component allows you to submit SageMaker Training jobs directly from a Kubeflow Pipelines workflow\. For more information, see [SageMaker Training Kubeflow Pipelines component](https://github.com/kubeflow/pipelines/tree/master/components/aws/sagemaker/train)\. 
 
  **Hyperparameter Optimization** 
 
-The Hyperparameter Optimization component enables you to submit hyperparameter tuning jobs to Amazon SageMaker directly from a Kubeflow Pipelines workflow\. For more information, see [Amazon SageMaker hyperparameter optimization Kubeflow Pipeline component](https://github.com/kubeflow/pipelines/tree/master/components/aws/sagemaker/hyperparameter_tuning)\. 
+The Hyperparameter Optimization component enables you to submit hyperparameter tuning jobs to SageMaker directly from a Kubeflow Pipelines workflow\. For more information, see [SageMaker hyperparameter optimization Kubeflow Pipeline component](https://github.com/kubeflow/pipelines/tree/master/components/aws/sagemaker/hyperparameter_tuning)\. 
 
  **Processing** 
 
-The Processing component enables you to submit processing jobs to Amazon SageMaker directly from a Kubeflow Pipelines workflow\. For more information, see [Amazon SageMaker Processing Kubeflow Pipeline component](https://github.com/kubeflow/pipelines/tree/master/components/aws/sagemaker/process)\. 
+The Processing component enables you to submit processing jobs to SageMaker directly from a Kubeflow Pipelines workflow\. For more information, see [SageMaker Processing Kubeflow Pipeline component](https://github.com/kubeflow/pipelines/tree/master/components/aws/sagemaker/process)\. 
 
 #### Inference components<a name="inference-components"></a>
 
  **Hosting Deploy** 
 
-The Deploy component enables you to deploy a model in Amazon SageMaker Hosting from a Kubeflow Pipelines workflow\. For more information, see [Amazon SageMaker Hosting Services \- Create Endpoint Kubeflow Pipeline component](https://github.com/kubeflow/pipelines/tree/master/components/aws/sagemaker/deploy)\. 
+The Deploy component enables you to deploy a model in SageMaker Hosting from a Kubeflow Pipelines workflow\. For more information, see [SageMaker Hosting Services \- Create Endpoint Kubeflow Pipeline component](https://github.com/kubeflow/pipelines/tree/master/components/aws/sagemaker/deploy)\. 
 
  **Batch Transform component** 
 
-The Batch Transform component enables you to run inference jobs for an entire dataset in Amazon SageMaker from a Kubeflow Pipelines workflow\. For more information, see [Amazon SageMaker Batch Transform Kubeflow Pipeline component](https://github.com/kubeflow/pipelines/tree/master/components/aws/sagemaker/batch_transform)\. 
+The Batch Transform component enables you to run inference jobs for an entire dataset in SageMaker from a Kubeflow Pipelines workflow\. For more information, see [SageMaker Batch Transform Kubeflow Pipeline component](https://github.com/kubeflow/pipelines/tree/master/components/aws/sagemaker/batch_transform)\. 
 
 #### Ground Truth components<a name="ground-truth-components"></a>
 
- **Ground Truth** The Ground Truth component enables you to to submit Amazon SageMaker Ground Truth labeling jobs directly from a Kubeflow Pipelines workflow\. For more information, see [Amazon SageMaker Ground Truth Kubeflow Pipelines component](https://github.com/kubeflow/pipelines/tree/master/components/aws/sagemaker/ground_truth)\. 
+ **Ground Truth** The Ground Truth component enables you to to submit SageMaker Ground Truth labeling jobs directly from a Kubeflow Pipelines workflow\. For more information, see [SageMaker Ground Truth Kubeflow Pipelines component](https://github.com/kubeflow/pipelines/tree/master/components/aws/sagemaker/ground_truth)\. 
 
  **Workteam** 
 
-The Workteam component enables you to create Amazon SageMaker private workteam jobs directly from a Kubeflow Pipelines workflow\. For more information, see [Amazon SageMaker create private workteam Kubeflow Pipelines component](https://github.com/kubeflow/pipelines/tree/master/components/aws/sagemaker/workteam)\. 
+The Workteam component enables you to create SageMaker private workteam jobs directly from a Kubeflow Pipelines workflow\. For more information, see [SageMaker create private workteam Kubeflow Pipelines component](https://github.com/kubeflow/pipelines/tree/master/components/aws/sagemaker/workteam)\. 
 
 ## IAM permissions<a name="iam-permissions"></a>
 
-Deploying Kubeflow Pipelines with Amazon SageMaker components requires the following three levels of IAM permissions: 
+Deploying Kubeflow Pipelines with SageMaker components requires the following three levels of IAM permissions: 
 + An IAM user/role to access your AWS account \(**your\_credentials**\)\. Note: You don’t need this at all if you already have access to KFP web UI and have your input data in Amazon S3, or if you already have an Amazon Elastic Kubernetes Service \(Amazon EKS\) cluster with KFP\. 
 
   You use this user/role from your gateway node, which can be your local machine or a remote instance, to: 
@@ -82,14 +82,14 @@ Deploying Kubeflow Pipelines with Amazon SageMaker components requires the follo
   + AmazonS3FullAccess 
   + AmazonEC2FullAccess 
   + AmazonEKSAdminPolicy \(Create this policy using the schema from [Amazon EKS Identity\-Based Policy Examples](https://docs.aws.amazon.com/eks/latest/userguide/security_iam_id-based-policy-examples.html)\) 
-+ An IAM role used by KFP pods to access Amazon SageMaker \(**kfp\-example\-pod\-role**\) The KFP pods use this permission to create Amazon SageMaker jobs from KFP components\. Note: If you want to limit permissions to the KFP pods, create your own custom policy and attach it\. 
++ An IAM role used by KFP pods to access SageMaker \(**kfp\-example\-pod\-role**\) The KFP pods use this permission to create SageMaker jobs from KFP components\. Note: If you want to limit permissions to the KFP pods, create your own custom policy and attach it\. 
 
   The role needs the following permission: 
   + AmazonSageMakerFullAccess 
-+ An IAM role used by Amazon SageMaker jobs to access resources such as Amazon S3 and Amazon ECR etc\. \(**kfp\-example\-sagemaker\-execution\-role**\)\. 
++ An IAM role used by SageMaker jobs to access resources such as Amazon S3 and Amazon ECR etc\. \(**kfp\-example\-sagemaker\-execution\-role**\)\. 
 
-  Your Amazon SageMaker jobs use this role to: 
-  + Access Amazon SageMaker resources 
+  Your SageMaker jobs use this role to: 
+  + Access SageMaker resources 
   + Input Data from Amazon S3 
   + Store your output model to Amazon S3 
 
@@ -97,10 +97,10 @@ Deploying Kubeflow Pipelines with Amazon SageMaker components requires the follo
   + AmazonSageMakerFullAccess 
   + AmazonS3FullAccess 
 
- These are all the IAM users/roles you need to run KFP components for Amazon SageMaker\. 
+ These are all the IAM users/roles you need to run KFP components for SageMaker\. 
 
-When you have run the components and have created the Amazon SageMaker endpoint, you also need a role with the `sagemaker:InvokeEndpoint` permission to query inference endpoints\. 
+When you have run the components and have created the SageMaker endpoint, you also need a role with the `sagemaker:InvokeEndpoint` permission to query inference endpoints\. 
 
-## Converting Pipelines to use Amazon SageMaker<a name="converting-pipelines-to-use-amazon-sagemaker"></a>
+## Converting Pipelines to use SageMaker<a name="converting-pipelines-to-use-amazon-sagemaker"></a>
 
-You can convert an existing pipeline to use Amazon SageMaker by porting your generic Python [processing containers](https://docs.aws.amazon.com/sagemaker/latest/dg/amazon-sagemaker-containers.html) and [training containers](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-training-algo.html)\. If you are using Amazon SageMaker for inference, you also need to attach IAM permissions to your cluster and convert an artifact to a model\. 
+You can convert an existing pipeline to use SageMaker by porting your generic Python [processing containers](https://docs.aws.amazon.com/sagemaker/latest/dg/amazon-sagemaker-containers.html) and [training containers](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-training-algo.html)\. If you are using SageMaker for inference, you also need to attach IAM permissions to your cluster and convert an artifact to a model\. 

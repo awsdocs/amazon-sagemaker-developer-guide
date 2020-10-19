@@ -1,8 +1,8 @@
-# Amazon SageMaker Operators for Kubernetes<a name="amazon-sagemaker-operators-for-kubernetes"></a>
+# SageMaker Operators for Kubernetes<a name="amazon-sagemaker-operators-for-kubernetes"></a>
 
-Amazon SageMaker Operators for Kubernetes make it easier for developers and data scientists using Kubernetes to train, tune, and deploy machine learning \(ML\) models in Amazon SageMaker\. You can install these Amazon SageMaker Operators on your Kubernetes cluster in Amazon Elastic Kubernetes Service \(Amazon EKS\) to create Amazon SageMaker jobs natively using the Kubernetes API and command\-line Kubernetes tools such as `kubectl`\. This guide shows you how to set up the operators\. The guide also explains how to use the operators to run model training, hyperparameter tuning, and inference \(real\-time and batch\)\. 
+SageMaker Operators for Kubernetes make it easier for developers and data scientists using Kubernetes to train, tune, and deploy machine learning \(ML\) models in SageMaker\. You can install these SageMaker Operators on your Kubernetes cluster in Amazon Elastic Kubernetes Service \(Amazon EKS\) to create SageMaker jobs natively using the Kubernetes API and command\-line Kubernetes tools such as `kubectl`\. This guide shows you how to set up the operators\. The guide also explains how to use the operators to run model training, hyperparameter tuning, and inference \(real\-time and batch\)\. 
 
-There is no additional charge to use these operators\. You do incur charges for any Amazon SageMaker resources that you use through these operators\. The procedures and guidelines here assume you are familiar with Kubernetes and its basic commands\. 
+There is no additional charge to use these operators\. You do incur charges for any SageMaker resources that you use through these operators\. The procedures and guidelines here assume you are familiar with Kubernetes and its basic commands\. 
 
 **Topics**
 + [What is an operator?](#what-is-an-operator)
@@ -10,7 +10,7 @@ There is no additional charge to use these operators\. You do incur charges for 
 + [Delete operators](#delete-operators)
 + [Troubleshooting](#troubleshooting)
 + [Images and SMlogs in each Region](#images-and-smlogs-in-each-region)
-+ [Using Amazon SageMaker Jobs](using-amazon-sagemaker-jobs.md)
++ [Using SageMaker Jobs](using-amazon-sagemaker-jobs.md)
 
 ## What is an operator?<a name="what-is-an-operator"></a>
 
@@ -30,7 +30,7 @@ This guide assumes that you’ve completed the following prerequisites:
 
 ### Permissions overview<a name="permissions-overview"></a>
 
-The Amazon SageMaker Operators for Kubernetes allow you to manage jobs in Amazon SageMaker from your Kubernetes cluster\. The operators access Amazon SageMaker resources on your behalf\. The IAM role that the operator assumes to interact with AWS resources differs from the credentials you use to access the Kubernetes cluster\. The role also differs from the role that Amazon SageMaker assumes when running your machine learning jobs\. The following image explains this design and flow\. 
+The SageMaker Operators for Kubernetes allow you to manage jobs in SageMaker from your Kubernetes cluster\. The operators access SageMaker resources on your behalf\. The IAM role that the operator assumes to interact with AWS resources differs from the credentials you use to access the Kubernetes cluster\. The role also differs from the role that SageMaker assumes when running your machine learning jobs\. The following image explains this design and flow\. 
 
  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/amazon_sagemaker_operators_for_kubernetes_authentication.png) 
 
@@ -145,7 +145,7 @@ OIDC https://oidc.eks.us-east-1.amazonaws.com/id/D48675832CA65BD10A532F597OIDCID
 
 #### Attach the AmazonSageMakerFullAccess Policy to the Role<a name="attach-the-amazonsagemakerfullaccess-policy-to-the-role"></a>
 
-To give the role access to Amazon SageMaker, attach the [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) policy\. If you want to limit permissions to the operator, you can create your own custom policy and attach it\. 
+To give the role access to SageMaker, attach the [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) policy\. If you want to limit permissions to the operator, you can create your own custom policy and attach it\. 
 
  To attach AmazonSageMakerFullAccess, run the following command: 
 
@@ -213,7 +213,7 @@ Use the provided Helm Chart to install the operator\.
 
 #### Verify the operator deployment<a name="verify-the-operator-deployment"></a>
 
-1. You should be able to see the Amazon SageMaker Custom Resource Definitions \(CRDs\) for each operator deployed to your cluster by running the following command: 
+1. You should be able to see the SageMaker Custom Resource Definitions \(CRDs\) for each operator deployed to your cluster by running the following command: 
 
    ```
    kubectl get crd | grep sagemaker
@@ -245,7 +245,7 @@ Use the provided Helm Chart to install the operator\.
 
 ### Namespace\-scoped deployment<a name="namespace-scoped-deployment"></a>
 
-You have the option to install your operator within the scope of an individual Kubernetes namespace\. In this mode, the controller only monitors and reconciles resources with Amazon SageMaker if the resources are created within that namespace\. This allows for finer\-grained control over which controller is managing which resources\. This is useful for deploying to multiple AWS accounts or controlling which users have access to particular jobs\. 
+You have the option to install your operator within the scope of an individual Kubernetes namespace\. In this mode, the controller only monitors and reconciles resources with SageMaker if the resources are created within that namespace\. This allows for finer\-grained control over which controller is managing which resources\. This is useful for deploying to multiple AWS accounts or controlling which users have access to particular jobs\. 
 
 This guide outlines how to install an operator into a particular, predefined namespace\. To deploy a controller into a second namespace, follow the guide from beginning to end and change out the namespace in each step\. 
 
@@ -352,7 +352,7 @@ Take note of `ROLE ARN`\. You pass this value to your operator\.
 
 #### Attach the AmazonSageMakerFullAccess Policy to your Role<a name="attach-the-amazonsagemakerfullaccess-policy-to-your-role"></a>
 
-To give the role access to Amazon SageMaker, attach the [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) policy\. If you want to limit permissions to the operator, you can create your own custom policy and attach it\. 
+To give the role access to SageMaker, attach the [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) policy\. If you want to limit permissions to the operator, you can create your own custom policy and attach it\. 
 
  To attach AmazonSageMakerFullAccess, run the following command: 
 
@@ -438,7 +438,7 @@ There are two parts needed to deploy an operator within the scope of a namespace
 
 #### Verify the operator deployment to your namespace<a name="verify-the-operator-deployment-to-your-namespace"></a>
 
-1. You should be able to see the Amazon SageMaker Custom Resource Definitions \(CRDs\) for each operator deployed to your cluster by running the following command: 
+1. You should be able to see the SageMaker Custom Resource Definitions \(CRDs\) for each operator deployed to your cluster by running the following command: 
 
    ```
    kubectl get crd | grep sagemaker
@@ -468,9 +468,9 @@ There are two parts needed to deploy an operator within the scope of a namespace
    sagemaker-k8s-operator-controller-manager-12345678-r8abc     2/2     Running   0          23s
    ```
 
-### Install the Amazon SageMaker logs `kubectl` plugin<a name="install-the-amazon-sagemaker-logs-kubectl-plugin"></a>
+### Install the SageMaker logs `kubectl` plugin<a name="install-the-amazon-sagemaker-logs-kubectl-plugin"></a>
 
- As part of the Amazon SageMaker Operators for Kubernetes, you can use the `smlogs` [plugin](https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/) for `kubectl`\. This enables Amazon SageMaker CloudWatch logs to be streamed with `kubectl`\. `kubectl` must be installed onto your [PATH](http://www.linfo.org/path_env_var.html)\. The following commands place the binary in the `sagemaker-k8s-bin` directory in your home directory, and add that directory to your `PATH`\. 
+ As part of the SageMaker Operators for Kubernetes, you can use the `smlogs` [plugin](https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/) for `kubectl`\. This enables SageMaker CloudWatch logs to be streamed with `kubectl`\. `kubectl` must be installed onto your [PATH](http://www.linfo.org/path_env_var.html)\. The following commands place the binary in the `sagemaker-k8s-bin` directory in your home directory, and add that directory to your `PATH`\. 
 
 ```
 export os="linux"
@@ -499,7 +499,7 @@ kubectl smlogs
 If the `kubectl` plugin is installed correctly, your output should look like the following: 
 
 ```
-View Amazon SageMaker logs via Kubernetes
+View SageMaker logs via Kubernetes
 
 Usage:
   smlogs [command]
@@ -524,10 +524,10 @@ Use "smlogs [command] --help" for more information about a command.
 
 #### Operators installed using YAML<a name="operators-installed-using-yaml"></a>
 
-To uninstall the operator from your cluster, make sure that all Amazon SageMaker resources have been deleted from the cluster\. Failure to do so causes the operator delete operation to hang\. Once you have deleted all Amazon SageMaker jobs, use `kubectl` to delete the operator from the cluster\. Run the following commands to stop all jobs and delete the operator from the cluster: 
+To uninstall the operator from your cluster, make sure that all SageMaker resources have been deleted from the cluster\. Failure to do so causes the operator delete operation to hang\. Once you have deleted all SageMaker jobs, use `kubectl` to delete the operator from the cluster\. Run the following commands to stop all jobs and delete the operator from the cluster: 
 
 ```
-# Delete all Amazon SageMaker jobs from Kubernetes
+# Delete all SageMaker jobs from Kubernetes
 kubectl delete --all --all-namespaces hyperparametertuningjob.sagemaker.aws.amazon.com
 kubectl delete --all --all-namespaces trainingjobs.sagemaker.aws.amazon.com
 kubectl delete --all --all-namespaces batchtransformjob.sagemaker.aws.amazon.com
@@ -587,10 +587,10 @@ $ helm delete <chart name>
 
 #### Operators installed with YAML<a name="operators-installed-with-yaml"></a>
 
-To uninstall the operator from your cluster, make sure that all Amazon SageMaker resources have been deleted from the cluster\. Failure to do so causes the operator delete operation to hang\. Once you have deleted all Amazon SageMaker jobs, use `kubectl` to first delete the operator from the namespace and then the CRDs from the cluster\. Run the following commands to stop all jobs and delete the operator from the cluster: 
+To uninstall the operator from your cluster, make sure that all SageMaker resources have been deleted from the cluster\. Failure to do so causes the operator delete operation to hang\. Once you have deleted all SageMaker jobs, use `kubectl` to first delete the operator from the namespace and then the CRDs from the cluster\. Run the following commands to stop all jobs and delete the operator from the cluster: 
 
 ```
-# Delete all Amazon SageMaker jobs from Kubernetes
+# Delete all SageMaker jobs from Kubernetes
 kubectl delete --all --all-namespaces hyperparametertuningjob.sagemaker.aws.amazon.com
 kubectl delete --all --all-namespaces trainingjobs.sagemaker.aws.amazon.com
 kubectl delete --all --all-namespaces batchtransformjob.sagemaker.aws.amazon.com
@@ -631,7 +631,7 @@ $ kubectl delete namespace <namespace>
   ```
   kubectl get <CRD Type> <job name>
   ```
-+ If the job was created in Amazon SageMaker, you can use the following command to see the `STATUS` and the `SageMaker Job Name`: 
++ If the job was created in SageMaker, you can use the following command to see the `STATUS` and the `SageMaker Job Name`: 
 
   ```
   kubectl get <crd type> <job name>
@@ -646,7 +646,7 @@ $ kubectl delete namespace <namespace>
   ```
   kubectl describe <crd type> <job name>
   ```
-+ If the job was not created in Amazon SageMaker, then use the logs of the operator’s pod to find the cause of the issue as follows: 
++ If the job was not created in SageMaker, then use the logs of the operator’s pod to find the cause of the issue as follows: 
 
   ```
   $ kubectl get pods -A | grep sagemaker

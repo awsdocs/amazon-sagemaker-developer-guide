@@ -1,10 +1,10 @@
 # Video Frame Object Tracking<a name="sms-video-object-tracking"></a>
 
-You can use the video frame object tracking task type to have workers track the movement of objects in a sequence of video frames \(images extracted from a video\) using bounding boxes\. For example, you can use this task to ask workers to track the movement of objects, such as cars, bikes, and pedestrians\.
+You can use the video frame object tracking task type to have workers track the movement of objects in a sequence of video frames \(images extracted from a video\) using bounding boxes, polylines, polygons or keypoint *annotation tools*\. The tool you choose defines the video frame task type you create\. For example, you can use a bounding box video frame object tracking task type to ask workers to track the movement of objects, such as cars, bikes, and pedestrians by drawing boxes around them\. 
 
-A *bounding box* is a box that is associated with a label and is used to identify the pixel location of the object\. You provide a list of categories, and each bounding box that a worker adds to a video frame is identified as an *instance* of that category using an instance ID\. For example, if you provide the label category car, the first car that a worker annotates will have the instance ID car:1\. The second car the worker annotates will have the instance ID car:2\. To track an object's movement, the worker adds bounding boxes associated with the same instance ID around that object in all frames\. 
+You provide a list of categories, and each annotation that a worker adds to a video frame is identified as an *instance* of that category using an instance ID\. For example, if you provide the label category car, the first car that a worker annotates will have the instance ID car:1\. The second car the worker annotates will have the instance ID car:2\. To track an object's movement, the worker adds annotations associated with the same instance ID around to object in all frames\. 
 
-You can create a video frame object tracking labeling job using the Amazon SageMaker Ground Truth console, the SageMaker API, and language\-specific AWS SDKs\. To learn more, see [Create a Video Frame Object Detection Labeling Job](sms-video-object-detection.md#sms-video-od-create-labeling-job) and select your preferred method\. 
+You can create a video frame object tracking labeling job using the Amazon SageMaker Ground Truth console, the SageMaker API, and language\-specific AWS SDKs\. To learn more, see [Create a Video Frame Object Detection Labeling Job](sms-video-object-detection.md#sms-video-od-create-labeling-job) and select your preferred method\. See [Task Types](sms-video-overview.md#sms-video-frame-tools) to learn more about the annotations tools you can choose from when you create a labeling job\.
 
 Ground Truth provides a worker UI and tools to complete your labeling job tasks: [Preview the Worker UI](sms-video-object-detection.md#sms-video-od-worker-ui)\.
 
@@ -14,9 +14,11 @@ You can create a job to adjust annotations created in a video object detection l
 
 Ground Truth provides workers with a web user interface \(UI\) to complete your video frame object tracking annotation tasks\. You can preview and interact with the worker UI when you create a labeling job in the console\. If you are a new user, we recommend that you create a labeling job through the console using a small input dataset to preview the worker UI and ensure your video frames, labels, and label attributes appear as expected\. 
 
-The UI provides workers with labeling tools to complete your object detection tasks\. Workers are able to use a **Predict next** feature to draw a bounding box in a single frame, and then have Ground Truth predict the location of boxes with the same ID in all other frames\. Workers can then make adjustments to correct the predicted box locations\.
+The UI provides workers with the following assistive labeling tools to complete your object tracking tasks:
++ For all tasks, workers can use the **Copy to next** and **Copy to all** features to copy an annotation with the same unique ID to the next frame or to all subsequent frames respectively\. 
++ For tasks that include the bounding box tools, workers can use a **Predict next** feature to draw a bounding box in a single frame, and then have Ground Truth predict the location of boxes with the same unique ID in all other frames\. Workers can then make adjustments to correct predicted box locations\. 
 
-The following video shows how a worker might use the worker UI and tools to complete your object tracking tasks\.
+The following video shows how a worker might use the worker UI with the bounding box tool to complete your object tracking tasks\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/ot_predict_next.gif)
 
@@ -28,7 +30,11 @@ This section assumes that you have reviewed the [Video Frame Labeling Job Overvi
 
 ### Create a Labeling Job \(Console\)<a name="sms-video-ot-create-labeling-job-console"></a>
 
-You can follow the instructions in [Create a Labeling Job \(Console\)](sms-create-labeling-job-console.md) to learn how to create a video frame object tracking job in the SageMaker console\. In step 10, choose **Video** from the **Task category** dropdown list, and choose **Video frame object tracking** as the task type\. 
+You can follow the instructions in [Create a Labeling Job \(Console\)](sms-create-labeling-job-console.md) to learn how to create a video frame object tracking job in the SageMaker console\. In step 10, choose **Video \- Object tracking** from the **Task category** dropdown list\. Select the task type you want by selecting one of the cards in **Task selection**\.
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/task-type-vot.gif)
+
+If you set your take time limit to be greater than 8 hours, you must set `MaxSessionDuration` for your IAM execution role to at least 8 hours\. To see how to update this value for your IAM role in the IAM console, see [Modifying a Role Maximum Session Duration \(Console\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-console.html#roles-modify_max-session-duration) in the IAM User Guide\.
 
 ### Create a Labeling Job \(API\)<a name="sms-video-ot-create-labeling-job-api"></a>
 
@@ -39,9 +45,9 @@ You create an object tracking labeling job using the SageMaker API operation `Cr
 
   Do not include an entry for the `UiTemplateS3Uri` parameter\. 
 + Your [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelAttributeName](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelAttributeName) must end in `-ref`\. For example, `ot-labels-ref`\. 
-+ Your input manifest file must be a video frame sequence manifest file\. You can create this manifest file using the SageMaker console, or create it manually and upload it to Amazon S3\. For more information, see [Input Data Setup](sms-video-data-setup.md)\. 
-+ You can only use private or vendor work teams to create video frame object detection labeling jobs\. 
-+ You specify your labels and worker instructions in a label category configuration file\. For more information, see [Create a Labeling Category Configuration File with Label Category Attributes](sms-label-cat-config-attributes.md) to learn how to create this file\. 
++ Your input manifest file must be a video frame sequence manifest file\. You can create this manifest file using the SageMaker console, or create it manually and upload it to Amazon S3\. For more information, see [Input Data Setup](sms-video-data-setup.md)\. If you create a streaming labeling job, the input manifest file is optional\. 
++ You can only use private or vendor work teams to create video frame object detection labeling jobs\.
++ You specify your labels, the task type, and worker instructions in a label category configuration file\. Specify the task type \(bounding boxes, polylines, polygons or keypoint\) using `annotationType` in your label category configuration file\. For more information, see [Create a Labeling Category Configuration File with Label Category Attributes](sms-label-cat-config-attributes.md) to learn how to create this file\. 
 + You need to provide pre\-defined ARNs for the pre\-annotation and post\-annotation \(ACS\) Lambda functions\. These ARNs are specific to the AWS Region you use to create your labeling job\. 
   + To find the pre\-annotation Lambda ARN, refer to [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-PreHumanTaskLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-PreHumanTaskLambdaArn)\. Use the Region in which you are creating your labeling job to find the correct ARN that ends with `PRE-VideoObjectTracking`\. 
   + To find the post\-annotation Lambda ARN, refer to [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AnnotationConsolidationConfig.html#sagemaker-Type-AnnotationConsolidationConfig-AnnotationConsolidationLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AnnotationConsolidationConfig.html#sagemaker-Type-AnnotationConsolidationConfig-AnnotationConsolidationLambdaArn)\. Use the Region in which you are creating your labeling job to find the correct ARN that ends with `ACS-VideoObjectTracking`\. 
@@ -60,7 +66,7 @@ response = client.create_labeling_job(
     InputConfig={
         'DataSource': {
             'S3DataSource': {
-                'ManifestS3Uri': 's3://AWSDOC-EXAMPLE-BUCKET/path/video-frame-sequence-input-manifest.json'
+                'ManifestS3Uri': 's3://DOC-EXAMPLE-BUCKET/path/video-frame-sequence-input-manifest.json'
             }
         },
         'DataAttributes': {
@@ -70,7 +76,7 @@ response = client.create_labeling_job(
         }
     },
     OutputConfig={
-        'S3OutputPath': 's3://AWSDOC-EXAMPLE-BUCKET/prefix/file-to-store-output-data',
+        'S3OutputPath': 's3://DOC-EXAMPLE-BUCKET/prefix/file-to-store-output-data',
         'KmsKeyId': 'string'
     },
     RoleArn='arn:aws:iam::*:role/*,

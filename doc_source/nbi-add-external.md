@@ -18,11 +18,9 @@ You can install packages using the following methods:
 + Lifecycle configuration scripts\.
 
   For example scripts, see [SageMaker Notebook Instance Lifecycle Config Samples](https://github.com/aws-samples/amazon-sagemaker-notebook-instance-lifecycle-config-samples)\. For more information on lifecycle configuration, see [Customize a Notebook Instance Using a Lifecycle Configuration Script](https://docs.aws.amazon.com/notebook-lifecycle-config.html)\.
-+ Notebooks – The following commands are supported\. The `% install` commands are recommended\.
++ Notebooks – The following commands are supported\.
   + `%conda install`
   + `%pip install`
-  + `!conda install`
-  + `!pip install`
 + The Jupyter terminal – You can install packages using pip and conda directly\.
 
 From within a notebook you can use the system command syntax \(lines starting with \!\) to install packages, for example, `!pip install` and `!conda install`\. More recently, new commands have been added to IPython: `%pip` and `%conda`\. These commands are the recommended way to install packages from a notebook as they correctly take into account the activate environment or interpreter being used\. For more information, see [Add %pip and %conda magic functions](https://github.com/ipython/ipython/pull/11524)\.

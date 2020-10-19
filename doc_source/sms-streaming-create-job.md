@@ -20,5 +20,5 @@ When you submit a request to create a streaming labeling job, the state of your 
 + [Create Amazon SNS Input and Output Topics](sms-create-sns-input-topic.md)
 + [Set up Amazon S3 Bucket Event Notifications](sms-streaming-s3-setup.md)
 + [Create a Manifest File \(Optional\)](sms-streaming-manifest.md)
-+ [Example: Use Amazon SageMaker API To Create Streaming Labeling Job](sms-streaming-create-labeling-job-api.md)
++ [Example: Use SageMaker API To Create Streaming Labeling Job](sms-streaming-create-labeling-job-api.md)
 + [Stop a Streaming Labeling Job](sms-streaming-stop-labeling-job.md)

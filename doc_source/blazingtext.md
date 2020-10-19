@@ -8,6 +8,8 @@ Many natural language processing \(NLP\) applications learn word embeddings by t
 
 With the BlazingText algorithm, you can scale to large datasets easily\. Similar to Word2vec, it provides the Skip\-gram and continuous bag\-of\-words \(CBOW\) training architectures\. BlazingText's implementation of the supervised multi\-class, multi\-label text classification algorithm extends the fastText text classifier to use GPU acceleration with custom [CUDA ](https://docs.nvidia.com/cuda/index.html) kernels\. You can train a model on more than a billion words in a couple of minutes using a multi\-core CPU or a GPU\. And, you achieve performance on par with the state\-of\-the\-art deep learning text classification algorithms\.
 
+The BlazingText algorithm is not parallelizable\. For more information on parameters related to training, see [ Docker Registry Paths for SageMaker Built\-in Algorithms](https://docs.aws.amazon.com/en_us/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html)\.
+
  The SageMaker BlazingText algorithms provides the following features:
 + Accelerated training of the fastText text classifier on multi\-core CPUs or a GPU and Word2Vec on GPUs using highly optimized CUDA kernels\. For more information, see [BlazingText: Scaling and Accelerating Word2Vec using Multiple GPUs](https://dl.acm.org/citation.cfm?doid=3146347.3146354)\.
 + [Enriched Word Vectors with Subword Information](https://arxiv.org/abs/1607.04606) by learning vector representations for character n\-grams\. This approach enables BlazingText to generate meaningful vectors for out\-of\-vocabulary \(OOV\) words by representing their vectors as the sum of the character n\-gram \(subword\) vectors\.

@@ -262,7 +262,7 @@ Use `skip_autoescape` sparingly\. As a best practice for templates, avoid passin
 
 `grant_read_access` takes an Amazon Simple Storage Service \(Amazon S3\) URI and encodes it into an HTTPS URL with a short\-lived access token for that resource\. This makes it possible to display photo, audio, or video objects stored in S3 buckets that are not otherwise publicly accessible to workers\.
 
-**Example Example of the to\_json and grant\_read\_access filters**  
+**Example of the to\_json and grant\_read\_access filters**  
 Input  
 
 ```
@@ -286,7 +286,7 @@ to_json: { "point_number": 8, "coords": [ 59, 76 ] }
 grant_read_access: https://s3.amazonaws.com/examplebucket/myphoto.png?<access token and other params>
 ```
 
-**Example Example of an automated classification template\.**  
+**Example of an automated classification template\.**  
 To automate this simple text classification sample, include the Liquid tag `{{ task.input.source }}`\. This example uses the [crowd\-classifier](sms-ui-template-crowd-classifier.md) element\.  
 
 ```

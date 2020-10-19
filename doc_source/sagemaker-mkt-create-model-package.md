@@ -32,9 +32,9 @@ You can create an model package either by using the SageMaker console or by usin
 
 ## Create a Model Package Resource \(Console\)<a name="sagemaker-mkt-create-model-pkg-console"></a>
 
-**To create a model package in the Amazon SageMaker console:**
+**To create a model package in the SageMaker console:**
 
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
+1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
 1. Choose **Model packages**, then choose **Create model package**\.
 
@@ -42,7 +42,7 @@ You can create an model package either by using the SageMaker console or by usin
 
    1. For **Model package name**, type a name for your model package\. The model package name must be unique in your account and in the AWS region\. The name must have 1 to 64 characters\. Valid characters are a\-z, A\-Z, 0\-9, and \- \(hyphen\)\.
 
-   1. Type a description for your model package\. This description appears in the Amazon SageMaker console and in the AWS Marketplace\.
+   1. Type a description for your model package\. This description appears in the SageMaker console and in the AWS Marketplace\.
 
    1. For **Inference specification options**, choose **Provide the location of the inference image and model artifacts** to create a model package by using an inference container and model artifacts\. Choose **Provide the algorithm used for training and its model artifacts** to create a model package from an algorithm resource that you created or subscribe to from AWS Marketplace\.
 
@@ -54,7 +54,7 @@ You can create an model package either by using the SageMaker console or by usin
 
       1. For **Container DNS host name **, type the name of the DNS host to use for your container\.
 
-      1. For **Supported instance types for real\-time inference**, choose the instance types that your model package supports for real\-time inference from Amazon SageMaker hosted endpoints\.
+      1. For **Supported instance types for real\-time inference**, choose the instance types that your model package supports for real\-time inference from SageMaker hosted endpoints\.
 
       1. For **Supported instance types for batch transform jobs**, choose the instance types that your model package supports for batch transform jobs\.
 
@@ -74,11 +74,11 @@ You can create an model package either by using the SageMaker console or by usin
 
    1. For **Publish this model package on AWS Marketplace**, choose **Yes** to publish the model package on AWS Marketplace\.
 
-   1. For **Validate this model package**, choose **Yes** if you want Amazon SageMaker to run batch transform jobs that you specify to test the inference code of your model package\.
+   1. For **Validate this model package**, choose **Yes** if you want SageMaker to run batch transform jobs that you specify to test the inference code of your model package\.
 **Note**  
 To publish your model package on AWS Marketplace, your model package must be validated\.
 
-   1. For **IAM role**, choose an IAM role that has the required permissions to run batch transform jobs in Amazon SageMaker, or choose **Create a new role** to allow Amazon SageMaker to create a role that has the `AmazonSageMakerFullAccess` managed policy attached\. For information, see [SageMaker Roles ](sagemaker-roles.md)\.
+   1. For **IAM role**, choose an IAM role that has the required permissions to run batch transform jobs in SageMaker, or choose **Create a new role** to allow SageMaker to create a role that has the `AmazonSageMakerFullAccess` managed policy attached\. For information, see [SageMaker Roles ](sagemaker-roles.md)\.
 
    1. For **Validation profile**, specify the following:
       + A name for the validation profile\.
@@ -88,4 +88,4 @@ To publish your model package on AWS Marketplace, your model package must be val
 
 ## Create a Model Package Resource \(API\)<a name="sagemaker-mkt-create-model-pkg-api"></a>
 
-To create a model package by using the Amazon SageMaker API, call the [ `CreateModelPackage`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModelPackage.html) API\. 
+To create a model package by using the SageMaker API, call the [ `CreateModelPackage`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModelPackage.html) API\. 

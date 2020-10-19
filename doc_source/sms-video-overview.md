@@ -65,6 +65,18 @@ For each attribute you assign to a label, you can add multiple options that work
 
 To learn how to add label category attributes, use the **Create Labeling Job** section on the [task type page](sms-video-task-types.md) of your choice\.
 
+### Task Types<a name="sms-video-frame-tools"></a>
+
+When you create a video object tracking or video object detection labeling job, you specify the type of annotation that you want workers to create while working on your labeling task\. The annotation type determines the type of output data Ground Truth returns and defines the *task type* for your labeling job\. 
+
+If you are creating a labeling job using the API operation [CreateLabelingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html), you specify the task type using the label category configuration file parameter `annotationType`\. To learn more, see [Create a Labeling Category Configuration File with Label Category Attributes](sms-label-cat-config-attributes.md)\.
+
+The following task types are available for both video object tracking or video object detection labeling jobs: 
++ **Bounding box ** – Workers are provided with tools to create bounding box annotations\. A bounding box is a box that a worker draws around an objects to identify the pixel\-location and label of that object in the frame\. 
++ **Polyline** – Workers are provided with tools to create polyline annotations\. A polyline is defined by the series of ordered x, y coordinates\. Each point added to the polyline is connected to the previous point by a line\. The polyline does not have to be closed \(the start point and end point do not have to be the same\) and there are no restrictions on the angles formed between lines\. 
++ **Polygon ** – Workers are provided with tools to create polygon annotations\. A polygon is a closed shape defined by a series of ordered x, y coordinates\. Each point added to the polygon is connected to the previous point by a line and there are no restrictions on the angles formed between lines\. Two lines \(sides\) of the polygon cannot cross\. The start and end point of a polygon must be the same\. 
++ **Keypoint** – Workers are provided with tools to create keypoint annotations\. A keypoint is a single point associated with an x, y coordinate in the video frame\.
+
 ### Worker Instructions<a name="sms-video-worker-instructions-general"></a>
 
 You can provide worker instructions to help your workers complete your video frame labeling tasks\. You might want to cover the following topics when writing your instructions: 

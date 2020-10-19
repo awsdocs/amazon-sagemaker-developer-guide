@@ -1,4 +1,4 @@
-# Example: Use Amazon SageMaker API To Create Streaming Labeling Job<a name="sms-streaming-create-labeling-job-api"></a>
+# Example: Use SageMaker API To Create Streaming Labeling Job<a name="sms-streaming-create-labeling-job-api"></a>
 
 The following is an example of an [AWS Python SDK \(Boto3\) request](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_labeling_job) that you can use to start a streaming labeling job for a built\-in task type in the US East \(N\. Virginia\) Region\. For more details about each parameter below see [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)\. To learn how you can create a labeling job using this API and associated language specific SDKs, see [Create a Labeling Job \(API\)](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-create-labeling-job-api.html)\.
 
