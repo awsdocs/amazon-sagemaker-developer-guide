@@ -33,13 +33,13 @@ The notebook shows the general workflow for using a `ScriptProcessor` class\.
    
    # Create ECR repository and push docker image
    !docker build -t $ecr_repository docker
-   !aws ecr get-login-password --region region | docker login --username AWS --password-stdin aws_account_id.dkr.ecr.region.amazonaws.com
+   !$(aws ecr get-login --region $region --registry-ids $account_id --no-include-email)
    !aws ecr create-repository --repository-name $ecr_repository
    !docker tag {ecr_repository + tag} $processing_repository_uri
    !docker push $processing_repository_uri
    ```
 
-1. Set up the `ScriptProcessor` from the SageMaker Python SDK to run the script\.
+1. Set up the `ScriptProcessor` from the Amazon SageMaker Python SDK to run the script\.
 
    ```
    from sagemaker.processing import ScriptProcessor, ProcessingInput, ProcessingOutput

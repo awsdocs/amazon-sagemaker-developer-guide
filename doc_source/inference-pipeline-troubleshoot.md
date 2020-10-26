@@ -4,12 +4,12 @@ To troubleshoot inference pipeline issues, use CloudWatch logs and error message
 
 **Topics**
 + [Troubleshoot Amazon ECR Permissions for Inference Pipelines](#inference-pipeline-troubleshoot-permissions)
-+ [Use CloudWatch Logs to Troubleshoot SageMaker Inference Pipelines](#inference-pipeline-troubleshoot-logs)
++ [Use CloudWatch Logs to Troubleshoot Amazon SageMaker Inference Pipelines](#inference-pipeline-troubleshoot-logs)
 + [Use Error Messages to Troubleshoot Inference Pipelines](#inference-pipeline-troubleshoot-errors)
 
 ## Troubleshoot Amazon ECR Permissions for Inference Pipelines<a name="inference-pipeline-troubleshoot-permissions"></a>
 
-When you use custom Docker images in a pipeline that includes [SageMaker built\-in algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html), you need an [Amazon ECR policy](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html)\. The policy allows your Amazon ECR repository to grant permission for SageMaker to pull the image\. The policy must add the following permissions:
+When you use custom Docker images in a pipeline that includes [Amazon SageMaker built\-in algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html), you need an [Amazon ECR policy](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html)\. The policy allows your Amazon ECR repository to grant permission for Amazon SageMaker to pull the image\. The policy must add the following permissions:
 
 ```
 {
@@ -31,9 +31,9 @@ When you use custom Docker images in a pipeline that includes [SageMaker built\-
 }
 ```
 
-## Use CloudWatch Logs to Troubleshoot SageMaker Inference Pipelines<a name="inference-pipeline-troubleshoot-logs"></a>
+## Use CloudWatch Logs to Troubleshoot Amazon SageMaker Inference Pipelines<a name="inference-pipeline-troubleshoot-logs"></a>
 
-SageMaker publishes the container logs for endpoints that deploy an inference pipeline to Amazon CloudWatch at the following path for each container\.
+Amazon SageMaker publishes the container logs for endpoints that deploy an inference pipeline to Amazon CloudWatch at the following path for each container\.
 
 ```
 /aws/sagemaker/Endpoints/{EndpointName}/{Variant}/{InstanceId}/{ContainerHostname}
@@ -68,16 +68,16 @@ A *log stream* is a sequence of log events that share the same source\. Each sep
 1. To see the log streams, on the CloudWatch **Log Groups** page, choose **MyInferencePipelinesEndpoint**, and then **Search Log Group**\.  
 ![\[The CloudWatch log stream for the inference pipeline.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pipeline-log-streams-2.png)
 
-For a list of the logs that SageMaker publishes, see [Inference Pipeline Logs and Metrics](inference-pipeline-logs-metrics.md)\.
+For a list of the logs that Amazon SageMaker publishes, see [Inference Pipeline Logs and Metrics](inference-pipeline-logs-metrics.md)\.
 
 ## Use Error Messages to Troubleshoot Inference Pipelines<a name="inference-pipeline-troubleshoot-errors"></a>
 
 The inference pipeline error messages indicate which containers failed\. 
 
-If an error occurs while SageMaker is invoking an endpoint, the service returns a `ModelError` \(error code 424\), which indicates which container failed\. If the request payload \(the response from the previous container\) exceeds the limit of 5 MB, SageMaker provides a detailed error message, such as: 
+If an error occurs while Amazon SageMaker is invoking an endpoint, the service returns a `ModelError` \(error code 424\), which indicates which container failed\. If the request payload \(the response from the previous container\) exceeds the limit of 5 MB, Amazon SageMaker provides a detailed error message, such as: 
 
 Received response from MyContainerName1 with status code 200\. However, the request payload from MyContainerName1 to MyContainerName2 is 6000000 bytes, which has exceeded the maximum limit of 5 MB\. See https://us\-west\-2\.console\.aws\.amazon\.com/cloudwatch/home?region=us\-west\-2\#logEventViewer:group=/aws/sagemaker/Endpoints/MyInferencePipelinesEndpoint in account 123456789012 for more information\.
 
 ``
 
-If a container fails the ping health check while SageMaker is creating an endpoint, it returns a `ClientError` and indicates all of the containers that failed the ping check in the last health check\.
+If a container fails the ping health check while Amazon SageMaker is creating an endpoint, it returns a `ClientError` and indicates all of the containers that failed the ping check in the last health check\.

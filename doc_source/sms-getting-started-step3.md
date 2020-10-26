@@ -1,6 +1,6 @@
 # Step 3: Select Workers<a name="sms-getting-started-step3"></a>
 
-In this step you choose a workforce for labeling your dataset\. You can create your own private workforce or you can use the Amazon Mechanical Turk workforce\. If you create a private workforce in this step you won't be able to import your Amazon Cognito user pool later\. For more information, see [Manage a Private Workforce \(Amazon Cognito\)](sms-workforce-management-private.md)\. Use the Amazon Mechanical Turk workforce for this exercise instead\.
+In this step you choose a workforce for labeling your dataset\. You can create your own private workforce or you can use the Amazon Mechanical Turk workforce\. If you create a private workforce in this step you won't be able to import your Amazon Cognito user pool later\. For more information, see [Manage a Private Workforce](sms-workforce-management-private.md)\. Use the Amazon Mechanical Turk workforce for this exercise instead\.
 
 You can create a private workforce to test Amazon SageMaker Ground Truth\. Use email addresses to invite the members of your workforce\.
 

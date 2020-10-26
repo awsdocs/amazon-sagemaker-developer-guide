@@ -5,7 +5,7 @@ To get inferences for an entire dataset, use batch transform\. With batch transf
 Use batch transform when you:
 + Want to get inferences for an entire dataset and index them to serve inferences in real time
 + Don't need a persistent endpoint that applications \(for example, web or mobile apps\) can call to get inferences
-+ Don't need the subsecond latency that SageMaker hosted endpoints provide
++ Don't need the subsecond latency that Amazon SageMaker hosted endpoints provide
 
 You can also use batch transform to preprocess your data before using it to train a new model or generate inferences\.
 
@@ -13,11 +13,11 @@ The following diagram shows the workflow of a batch transform job:
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/batch-transform-v2.png)
 
-To perform a batch transform, create a batch transform job using either the SageMaker console or the API\. Provide the following:
+To perform a batch transform, create a batch transform job using either the Amazon SageMaker console or the API\. Provide the following:
 + The path to the S3 bucket where you've stored the data that you want to transform\.
-+ The compute resources that you want SageMaker to use for the transform job\. *Compute resources* are machine learning \(ML\) compute instances that are managed by SageMaker\.
++ The compute resources that you want Amazon SageMaker to use for the transform job\. *Compute resources* are machine learning \(ML\) compute instances that are managed by Amazon SageMaker\.
 + The path to the S3 bucket where you want to store the output of the job\.
-+ The name of the SageMaker model that you want to use to create inferences\. You must use a model that you have already created either with the [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) operation or the console\.
++ The name of the Amazon SageMaker model that you want to use to create inferences\. You must use a model that you have already created either with the [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) operation or the console\.
 
 The following is an example of what a dataset file might look like\. 
 

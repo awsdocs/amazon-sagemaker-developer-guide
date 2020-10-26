@@ -1,17 +1,17 @@
 # Amazon SageMaker Studio Tour<a name="gs-studio-end-to-end"></a>
 
-This walkthrough takes you on a tour of the main features of Amazon SageMaker Studio using the [xgboost\_customer\_churn\_studio\.ipynb](https://github.com/aws/amazon-sagemaker-examples/blob/master/aws_sagemaker_studio/getting_started/xgboost_customer_churn_studio.ipynb) sample notebook from the [aws/amazon\-sagemaker\-examples](https://github.com/aws/amazon-sagemaker-examples) repository\. It is intended that you proceed through the walkthrough and run the notebook in Studio at the same time\.
+This walkthrough takes you on a tour of the main features of Amazon SageMaker Studio using the [xgboost\_customer\_churn\_studio\.ipynb](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/aws_sagemaker_studio/getting_started/xgboost_customer_churn_studio.ipynb) sample notebook from the [awslabs/amazon\-sagemaker\-examples](https://github.com/awslabs/amazon-sagemaker-examples) repository\. It is intended that you proceed through the walkthrough and run the notebook in Studio at the same time\.
 
 The code in the notebook trains multiple models and sets up the SageMaker Debugger and SageMaker Model Monitor\. The walkthrough shows you how to view the trials, compare the resulting models, show the debugger results, and deploy the best model using the SageMaker Studio UI\. You don't need to understand the code to follow this walkthrough\.
 
-For a series of videos that shows how to use the main features of SageMaker Studio, see [NEW\! Amazon SageMaker Studio](https://www.youtube.com/playlist?list=PLJgojBtbsuc0MjdtpJPo4g4PL8mMsd2nK) on YouTube\.
+For a series of videos that shows how to use the main features of SageMaker Studio, see [NEW\! Amazon Sagemaker Studio](https://www.youtube.com/playlist?list=PLJgojBtbsuc0MjdtpJPo4g4PL8mMsd2nK) on YouTube\.
 
 **Prerequisites**
 
 To run the notebook for this tour, you need:
 + An AWS SSO or IAM account to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
 + Basic familiarity with the Studio user interface and Jupyter notebooks\. For information, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
-+ A copy of the [aws/amazon\-sagemaker\-examples](https://github.com/aws/amazon-sagemaker-examples) repository in your Studio environment\.
++ A copy of the [awslabs/amazon\-sagemaker\-examples](https://github.com/awslabs/amazon-sagemaker-examples) repository in your Studio environment\.
 
 **To clone the repository**
 
@@ -27,10 +27,7 @@ To run the notebook for this tour, you need:
 
 1. At the command prompt, run the following command\.
 
-   `git clone https://github.com/aws/amazon-sagemaker-examples.git`
-
-**Note**  
-If you encounter an error when you run the sample notebook, and some time has passed from when you cloned the repository, review the notebook on the remote repository for updates\.
+   `git clone https://github.com/awslabs/amazon-sagemaker-examples.git`
 
 **Topics**
 + [Open the Amazon SageMaker Studio Notebook](#studio-tour-notebooks)
@@ -127,7 +124,7 @@ The output of the training job includes a long list of messages like `[0]#011tra
 
 1. Double\-click the **Training** trial component to open the **Describe Trial Component** tab\. You can follow the progress of the training job here\.
 
-After the trial finishes, you can see details about the training job, such as metrics and hyperparameters, charts that visualize the training results\. To see the billable time and instance type, choose the **AWS Settings** heading\.
+After the trial finishes, you can see details about the training job, such as metrics and hyperparameters, charts that visualize the training results\. To see the billable time and instance type, choose the **AWS Settings** header\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-tour-trial-component.png)
 
@@ -176,7 +173,7 @@ In the previous step of creating a single trial, the output of the training job 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-tour-trials.png)
 
-After all the trials finish, sort the trials by choosing the **validation:error** heading\. In a later section, you will deploy the trial with the lowest `validation:error`\.
+After all the trials finish, sort the trials by choosing the **validation:error** header\. In a later section, you will deploy the trial with the lowest `validation:error`\.
 
 ## Create a Chart to Visualize Data<a name="studio-create-chart"></a>
 
@@ -262,7 +259,7 @@ You can create an endpoint and deploy a model using the SDK or the Amazon SageMa
 
 1. In the experiments list, right\-click the experiment and choose **Open in trial component list**\.
 
-1. To sort the trials, choose the **validation:error** heading\.
+1. To sort the trials, choose the **validation:error** header\.
 
 1. Right\-click the trial with the lowest `validation:error` and choose **Deploy model**\.
 

@@ -10,7 +10,7 @@ To maintain better interoperability with existing deep learning frameworks, this
 For more information on convolutional networks, see: 
 + [Deep residual learning for image recognition](https://arxiv.org/abs/1512.03385) Kaiming He, et al\., 2016 IEEE Conference on Computer Vision and Pattern Recognition
 + [ImageNet image database](http://www.image-net.org/)
-+ [Image classification with Gluon\-CV and MXNet](https://gluon-cv.mxnet.io/build/examples_classification/index.html)
++ [Image classification in MXNet](https://github.com/apache/incubator-mxnet/tree/master/example/image-classification)
 
 **Topics**
 + [Input/Output Interface for the Image Classification Algorithm](#IC-inputoutput)
@@ -22,9 +22,9 @@ For more information on convolutional networks, see:
 
 ## Input/Output Interface for the Image Classification Algorithm<a name="IC-inputoutput"></a>
 
-The SageMaker Image Classification algorithm supports both RecordIO \(`application/x-recordio`\) and image \(`image/png`, `image/jpeg`, and `application/x-image`\) content types for training in file mode, and supports the RecordIO \(`application/x-recordio`\) content type for training in pipe mode\. However, you can also train in pipe mode using the image files \(`image/png`, `image/jpeg`, and `application/x-image`\), without creating RecordIO files, by using the augmented manifest format\.
+The Amazon SageMaker Image Classification algorithm supports both RecordIO \(`application/x-recordio`\) and image \(`image/png`, `image/jpeg`, and `application/x-image`\) content types for training in file mode, and supports the RecordIO \(`application/x-recordio`\) content type for training in pipe mode\. However, you can also train in pipe mode using the image files \(`image/png`, `image/jpeg`, and `application/x-image`\), without creating RecordIO files, by using the augmented manifest format\.
 
-Distributed training is supported for file mode and pipe mode\. When using the RecordIO content type in pipe mode, you must set the `S3DataDistributionType` of the `S3DataSource` to `FullyReplicated`\. The algorithm supports a fully replicated model where your data is copied onto each machine\.
+Distributed training is supported for file mode and pipe mode\. When using the RecordIO content type in pipe mode, you must set the `S3DataDistributionType` of the `S3DataSource` to `FullyReplicated`\.
 
 The algorithm supports `image/png`, `image/jpeg`, and `application/x-image` for inference\.
 
@@ -37,7 +37,7 @@ If you use the RecordIO format for training, specify both `train` and `validatio
 If you use the Image format for training, specify `train`, `validation`, `train_lst`, and `validation_lst` channels as values for the `InputDataConfig` parameter of the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) request\. Specify the individual image data \(`.jpg` or `.png` files\) for the `train` and `validation` channels\. Specify one `.lst` file in each of the `train_lst` and `validation_lst` channels\. Set the content type for all four channels to `application/x-image`\. 
 
 **Note**  
-SageMaker reads the training and validation data separately from different channels, so you must store the training and validation data in different folders\.
+Amazon SageMaker reads the training and validation data separately from different channels, so you must store the training and validation data in different folders\.
 
 A `.lst` file is a tab\-separated file with three columns that contains a list of image files\. The first column specifies the image index, the second column specifies the class label index for the image, and the third column specifies the relative path of the image file\. The image index in the first column must be unique across all of the images\. The set of class label indices are numbered successively and the numbering should start with 0\. For example, 0 for the cat class, 1 for the dog class, and so on for additional classes\. 
 
@@ -56,7 +56,7 @@ For example, if your training images are stored in `s3://<your_bucket>/train/cla
 The augmented manifest format enables you to do training in Pipe mode using image files without needing to create RecordIO files\. You need to specify both train and validation channels as values for the `InputDataConfig` parameter of the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) request\. While using the format, an S3 manifest file needs to be generated that contains the list of images and their corresponding annotations\. The manifest file format should be in [JSON Lines](http://jsonlines.org/) format in which each line represents one sample\. The images are specified using the `'source-ref'` tag that points to the S3 location of the image\. The annotations are provided under the `"AttributeNames"` parameter value as specified in the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) request\. It can also contain additional metadata under the `metadata` tag, but these are ignored by the algorithm\. In the following example, the `"AttributeNames"` are contained in the list of image and annotation references `["source-ref", "class"]`\. The corresponding label value is `"0"` for the first image and `“1”` for the second image:
 
 ```
-{"source-ref":"s3://image/filename1.jpg", "class":"0"}
+{"source-ref":"s3://image/filename1.jpg", "class":"0"} 
 {"source-ref":"s3://image/filename2.jpg", "class":"1", "class-metadata": {"class-name": "cat", "type" : "groundtruth/image-classification"}}
 ```
 
@@ -84,19 +84,19 @@ For more information on augmented manifest files, see [Provide Dataset Metadata 
 
 ### Incremental Training<a name="IC-incremental-training"></a>
 
-You can also seed the training of a new model with the artifacts from a model that you trained previously with SageMaker\. Incremental training saves training time when you want to train a new model with the same or similar data\. SageMaker image classification models can be seeded only with another build\-in image classification model trained in SageMaker\.
+You can also seed the training of a new model with the artifacts from a model that you trained previously with Amazon SageMaker\. Incremental training saves training time when you want to train a new model with the same or similar data\. Amazon SageMaker image classification models can be seeded only with another build\-in image classification model trained in Amazon SageMaker\.
 
-To use a pretrained model, in the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) request, specify the `ChannelName` as "model" in the `InputDataConfig` parameter\. Set the `ContentType` for the model channel to `application/x-sagemaker-model`\. The input hyperparameters of both the new model and the pretrained model that you upload to the model channel must have the same settings for the `num_layers`, `image_shape` and `num_classes` input parameters\. These parameters define the network architecture\. For the pretrained model file, use the compressed model artifacts \(in \.tar\.gz format\) output by SageMaker\. You can use either RecordIO or image formats for input data\.
+To use a pretrained model, in the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) request, specify the `ChannelName` as "model" in the `InputDataConfig` parameter\. Set the `ContentType` for the model channel to `application/x-sagemaker-model`\. The input hyperparameters of both the new model and the pretrained model that you upload to the model channel must have the same settings for the `num_layers`, `image_shape` and `num_classes` input parameters\. These parameters define the network architecture\. For the pretrained model file, use the compressed model artifacts \(in \.tar\.gz format\) output by Amazon SageMaker\. You can use either RecordIO or image formats for input data\.
 
-For a sample notebook that shows how to use incremental training with the SageMaker image classification algorithm, see the [End\-to\-End Incremental Training Image Classification Example](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-incremental-training-highlevel.ipynb)\. For more information on incremental training and for instructions on how to use it, see [Incremental Training in Amazon SageMaker](incremental-training.md)\. 
+For a sample notebook that shows how to use incremental training with the Amazon SageMaker image classification algorithm, see the [End\-to\-End Incremental Training Image Classification Example](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-incremental-training-highlevel.ipynb)\. For more information on incremental training and for instructions on how to use it, see [Incremental Training in Amazon SageMaker](incremental-training.md)\. 
 
-### Inference with the Image Classification Algorithm<a name="IC-inference"></a>
+### Inference with the Image Format Algorithm<a name="IC-inference"></a>
 
-The generated models can be hosted for inference and support encoded `.jpg` and `.png` image formats as `image/png, image/jpeg`, and `application/x-image` content\-type\. The input image is resized automatically\. The output is the probability values for all classes encoded in JSON format, or in [JSON Lines text format](http://jsonlines.org/) for batch transform\. The image classification model processes a single image per request and so outputs only one line in the JSON or JSON Lines format\. The following is an example of a response in JSON Lines format:
+The generated models can be hosted for inference and support encoded `.jpg` and `.png` image formats as `image/png, image/jpeg`, and `application/x-image` content\-type\. The output is the probability values for all classes encoded in JSON format, or in [JSON Lines text format](http://jsonlines.org/) for batch transform\. The image classification model processes a single image per request and so outputs only one line in the JSON or JSON Lines format\. The following is an example of a response in JSON Lines format:
 
 ```
 accept: application/jsonlines
-
+ 
  {"prediction": [prob_0, prob_1, prob_2, prob_3, ...]}
 ```
 
@@ -110,4 +110,4 @@ Both P2 and P3 instances are supported in the image classification algorithm\.
 
 ## Image Classification Sample Notebooks<a name="IC-sample-notebooks"></a>
 
-For a sample notebook that uses the SageMaker image classification algorithm to train a model on the [caltech\-256 dataset](http://www.vision.caltech.edu/Image_Datasets/Caltech256/) and then to deploy it to perform inferences, see the [End\-to\-End Multiclass Image Classification Example](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-fulltraining.ipynb)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the SageMaker samples\. The example image classification notebooks are located in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.
+For a sample notebook that uses the Amazon SageMaker image classification algorithm to train a model on the [caltech\-256 dataset](http://www.vision.caltech.edu/Image_Datasets/Caltech256/) and then to deploy it to perform inferences, see the [End\-to\-End Multiclass Image Classification Example](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-fulltraining.ipynb)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the Amazon SageMaker samples\. The example image classification notebooks are located in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.

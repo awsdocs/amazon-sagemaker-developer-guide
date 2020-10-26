@@ -1,4 +1,4 @@
-# Create Custom Worker Task Template<a name="a2i-custom-templates"></a>
+# Create Custom Worker Templates<a name="a2i-custom-templates"></a>
 
 *Crowd HTML Elements* are web components that provide a number of task widgets and design elements that you can tailor to the question you want to ask\. You can use these crowd elements to create a custom worker template and integrate it with an Amazon Augmented AI \(Amazon A2I\) human review workflow to customize the worker console and instructions\. 
 
@@ -262,7 +262,7 @@ Use `skip_autoescape` sparingly\. As a best practice for templates, avoid passin
 
 `grant_read_access` takes an Amazon Simple Storage Service \(Amazon S3\) URI and encodes it into an HTTPS URL with a short\-lived access token for that resource\. This makes it possible to display photo, audio, or video objects stored in S3 buckets that are not otherwise publicly accessible to workers\.
 
-**Example of the to\_json and grant\_read\_access filters**  
+**Example Example of the to\_json and grant\_read\_access filters**  
 Input  
 
 ```
@@ -286,7 +286,7 @@ to_json: { "point_number": 8, "coords": [ 59, 76 ] }
 grant_read_access: https://s3.amazonaws.com/examplebucket/myphoto.png?<access token and other params>
 ```
 
-**Example of an automated classification template\.**  
+**Example Example of an automated classification template\.**  
 To automate this simple text classification sample, include the Liquid tag `{{ task.input.source }}`\. This example uses the [crowd\-classifier](sms-ui-template-crowd-classifier.md) element\.  
 
 ```
@@ -318,7 +318,7 @@ To automate this simple text classification sample, include the Liquid tag `{{ t
 
 ## Preview a Worker Task Template<a name="a2i-preview-your-custom-template"></a>
 
-To preview a custom worker task template, use the SageMaker `RenderUiTemplate` operation\. You can use the `RenderUiTemplate` operation with the AWS CLI or your preferred AWS SDK\. For documentation on the supported language specific SDK's for this API operation use the [ `See Also`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RenderUiTemplate.html#API_RenderUiTemplate_SeeAlso) section of the [ `RenderUiTemplate`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RenderUiTemplate.html)\. 
+To preview a custom worker task template, use the Amazon SageMaker `RenderUiTemplate` operation\. You can use the `RenderUiTemplate` operation with the AWS CLI or your preferred AWS SDK\. For documentation on the supported language specific SDK's for this API operation use the [ `See Also`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RenderUiTemplate.html#API_RenderUiTemplate_SeeAlso) section of the [ `RenderUiTemplate`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RenderUiTemplate.html)\. 
 
 **Prerequisites**
 

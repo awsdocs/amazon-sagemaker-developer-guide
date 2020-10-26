@@ -14,9 +14,9 @@ You must use the console to subscribe to a vendor workforce\. Once you have a su
 
 **To subscribe to a vendor workforce**
 
-1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
+1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Choose the appropriate page in the SageMaker console\.
+1. Choose the appropriate page in the Amazon SageMaker console\.
    + For Ground Truth labeling jobs, choose **Labeling workforces**, choose **Vendor**, and then choose **Find data labeling services**\.
    + For Amazon A2I human review workflows, choose **Human review workforces**, choose **Vendor**, and then choose **Find human review services**\. 
 

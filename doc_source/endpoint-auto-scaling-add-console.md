@@ -35,4 +35,4 @@ This procedure registers a model as a scalable target with Application Auto Scal
 + The permissions are sufficient
 + You aren't registering a variant with an instance that is a burstable performance instance such as T2
 **Note**  
-SageMaker doesn't support autoscaling for burstable instances such as T2, because they already allow for increased capacity under increased workloads\. For information about burstable performance instances, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
+Amazon SageMaker doesn't support autoscaling for burstable instances such as T2, because they already allow for increased capacity under increased workloads\. For information about burstable performance instances, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.

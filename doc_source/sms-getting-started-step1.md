@@ -1,6 +1,6 @@
 # Step 1: Before You Begin<a name="sms-getting-started-step1"></a>
 
-Before you begin using the SageMaker console to create a labeling job, you must set up the dataset for use\. Do this:
+Before you begin using the Amazon SageMaker console to create a labeling job, you must set up the dataset for use\. Do this:
 
 1. Save two images at publicly available HTTP URLs\. The images are used when creating instructions for completing a labeling task\. The images should have an aspect ratio of around 2:1\. For this exercise, the content of the images is not important\.
 

@@ -98,5 +98,5 @@ Outputs an array of objects representing the [crowd\-radio\-button](sms-ui-templ
 ### See Also<a name="radio-group-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth to Label Data](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [Crowd HTML Elements Reference](sms-ui-template-reference.md)

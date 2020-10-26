@@ -26,7 +26,7 @@ The Amazon SageMaker Model Monitor platform invokes your container code accordin
 | publish\_cloudwatch\_metrics |  For a job launched by `CreateMonitoringSchedule`, this parameter is set to `Enabled`\. The container can choose to write the Amazon CloudWatch output file at `[filepath]`\.  | 
 | sagemaker\_endpoint\_name |  The name of the `Endpoint` that this scheduled job was launched for\.  | 
 | sagemaker\_monitoring\_schedule\_name |  The name of the `MonitoringSchedule` that launched this job\.  | 
-| \*sagemaker\_endpoint\_datacapture\_prefix\* |  The prefix specified in the `DataCaptureConfig` parameter of the `Endpoint`\. The container can use this if it needs to directly access more data than already downloaded by SageMaker at the `dataset_source` path\.  | 
+| \*sagemaker\_endpoint\_datacapture\_prefix\* |  The prefix specified in the `DataCaptureConfig` parameter of the `Endpoint`\. The container can use this if it needs to directly access more data than already downloaded by Amazon SageMaker at the `dataset_source` path\.  | 
 | start\_time, end\_time |  The time window for this analysis run\. For example, for a job scheduled to run at 05:00 UTC and a job that runs on 20/02/2020, `start_time`: is 2020\-02\-19T06:00:00Z and `end_time`: is 2020\-02\-20T05:00:00Z  | 
 | baseline\_constraints: |  The local path of the baseline constraint file specified in` BaselineConfig.ConstraintResource.S3Uri`\. This is available only if this parameter was specified in the `CreateMonitoringSchedule` request\.  | 
 | baseline\_statistics |  The local path to the baseline statistics file specified in `BaselineConfig.StatisticsResource.S3Uri`\. This is available only if this parameter was specified in the `CreateMonitoringSchedule` request\.:   | 

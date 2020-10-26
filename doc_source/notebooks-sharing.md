@@ -1,10 +1,6 @@
-# Share and Use a Amazon SageMaker Studio Notebook<a name="notebooks-sharing"></a>
+# Share and Use a Studio Notebook<a name="notebooks-sharing"></a>
 
 You can share your Amazon SageMaker Studio notebooks with your colleagues\. The shared notebook is a copy\. After you share your notebook, any changes you make to your original notebook aren't reflected in the shared notebook and any changes your colleague's make in their shared copies of the notebook aren't reflected in your original notebook\. If you want to share your latest version, you must create a new snapshot and then share it\.
-
-**Topics**
-+ [Share a Notebook](#notebooks-sharing-share)
-+ [Use a Shared Notebook](#notebooks-sharing-using)
 
 ## Share a Notebook<a name="notebooks-sharing-share"></a>
 

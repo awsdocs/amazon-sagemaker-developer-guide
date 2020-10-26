@@ -122,7 +122,7 @@ let response = {
 Multi\-record inference with protobuf input: 
 
 ```
-{
+{ 
   "features": [],
   "label": {
     "closest_cluster": {
@@ -137,7 +137,7 @@ Multi\-record inference with protobuf input:
 }
 ```
 
-SageMaker algorithms also support jsonlines format, where the per\-record response content is same as that in JSON format\. The multi\-record structure is a concatenation of per\-record response objects separated by newline characters\. The response content for the built\-in KMeans algorithm for 2 input data points is:
+Amazon SageMaker algorithms also support jsonlines format, where the per\-record response content is same as that in JSON format\. The multi\-record structure is a concatenation of per\-record response objects separated by newline characters\. The response content for the built\-in KMeans algorithm for 2 input data points is:
 
 ```
 {"distance_to_cluster": 23.40593910217285, "closest_cluster": 0.0}
@@ -270,7 +270,7 @@ When you create a transform job, the `SplitType` must be set according to the `C
 
 For more information on response formats for specific algorithms, see the following:
 + [PCA Response Formats](PCA-in-formats.md)
-+ [Linear learner response formats](LL-in-formats.md)
++ [Linear Learner Response Formats](LL-in-formats.md)
 + [NTM Response Formats](ntm-in-formats.md)
 + [K\-Means Response Formats](km-in-formats.md)
 + [Factorization Machine Response Formats](fm-in-formats.md)

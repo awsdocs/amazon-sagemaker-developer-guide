@@ -12,6 +12,6 @@ The following table lists all of the logs provided by Amazon SageMaker\.
 
 **Note**  
 1\. The `/aws/sagemaker/NotebookInstances/[LifecycleConfigHook]` log stream is created when you create a notebook instance with a lifecycle configuration\. For more information, see [Customize a Notebook Instance Using a Lifecycle Configuration Script](notebook-lifecycle-config.md)\.  
-2\. For Inference Pipelines, if you don't provide container names, the platform uses \*\*container\-1, container\-2\*\*, and so on, corresponding to the order provided in the SageMaker model\.
+2\. For Inference Pipelines, if you don't provide container names, the platform uses \*\*container\-1, container\-2\*\*, and so on, corresponding to the order provided in the Amazon SageMaker model\.
 
 For more information about logging events with CloudWatch logging, see [What is Amazon CloudWatch Logs?](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html) in the *Amazon CloudWatch User Guide*\.

@@ -24,6 +24,8 @@ For training, PCA expects data provided in the train channel, and optionally sup
 
 For inference, PCA supports `text/csv`, `application/json`, and `application/x-recordio-protobuf`\. Results are returned in either `application/json` or `application/x-recordio-protobuf` format with a vector of "projections\."
 
+For more details on training and inference file formats, see the [PCA Sample Notebooks](#PCA-sample-notebooks) and the [PCA Response Formats](PCA-in-formats.md)\.
+
 For more information on input and output file formats, see [PCA Response Formats](PCA-in-formats.md) for inference and the [PCA Sample Notebooks](#PCA-sample-notebooks)\.
 
 ## EC2 Instance Recommendation for the PCA Algorithm<a name="pca-instances"></a>
@@ -32,4 +34,4 @@ PCA supports both GPU and CPU computation\. Which instance type is most performa
 
 ## PCA Sample Notebooks<a name="PCA-sample-notebooks"></a>
 
-For a sample notebook that shows how to use the SageMaker Principal Component Analysis algorithm to analyze the images of handwritten digits from zero to nine in the MNIST dataset, see [An Introduction to PCA with MNIST](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/pca_mnist/pca_mnist.ipynb)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the SageMaker samples\. The topic modeling example notebooks using the NTM algorithms are located in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.
+For a sample notebook that shows how to use the Amazon SageMaker Principal Component Analysis algorithm to analyze the images of handwritten digits from zero to nine in the MNIST dataset, see [An Introduction to PCA with MNIST](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/pca_mnist/pca_mnist.ipynb)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the Amazon SageMaker samples\. The topic modeling example notebooks using the NTM algorithms are located in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.

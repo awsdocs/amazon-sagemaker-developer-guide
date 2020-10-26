@@ -38,7 +38,7 @@ The `MissingImportantFormKey` `ConditionType` supports the following `ConditionP
 
 When you use the `MissingImportantFormKey` `ConditionType`, if the key in `ImportantFormKey` or aliases in `ImportantFormKeyAliases` are not included in Amazon Textract inference, that form will be sent to human for review and no predicted key\-value pairs will be included\. For example, if Amazon Textract only identified `Address` and `Phone` in a form, but was missing the `ImportantFormKey` `Name` \(in the `MissingImportantFormKey` condition type\) that form would be sent to humans for review without any of the form keys detected \(`Address` and `Phone`\)\.
 
-If you use the default worker task template that is provided in the SageMaker console, a task will be created asking workers identify the key in `ImportantFormKey` and associated value\. If you use a custom worker task template, you need to include the `<task.input.humanLoopContext>` custom HTML element to configure this task\. 
+If you use the default worker task template that is provided in the Amazon SageMaker console, a task will be created asking workers identify the key in `ImportantFormKey` and associated value\. If you use a custom worker task template, you need to include the `<task.input.humanLoopContext>` custom HTML element to configure this task\. 
 
 ## Sampling Inputs and Results<a name="a2i-textract-randomsamplingpercentage"></a>
 
@@ -46,7 +46,7 @@ The `Sampling` `ConditionType` supports the `RandomSamplingPercentage` `Conditio
 
 If you specify the `Sampling` condition without any other condition type, all key\-value and block inferences are sent to workers for review\. 
 
-When creating a flow definition, if you use the default worker task template that is provided in the **Human review workflows** section of the SageMaker console, all key\-value and block inferences sent for human review by this activation condition are included in the worker UI\. If you use a custom worker task template, you need to include the `{{ task.input.selectedAiServiceResponse.blocks }}` element to include initial\-value input data \(inferences\) from Amazon Textract\. For an example of a custom template that uses this input element, see [Custom Template Example for Amazon Textract](a2i-custom-templates.md#a2i-custom-templates-textract-sample)\.
+When creating a flow definition, if you use the default worker task template that is provided in the **Human review workflows** section of the Amazon SageMaker console, all key\-value and block inferences sent for human review by this activation condition are included in the worker UI\. If you use a custom worker task template, you need to include the `{{ task.input.selectedAiServiceResponse.blocks }}` element to include initial\-value input data \(inferences\) from Amazon Textract\. For an example of a custom template that uses this input element, see [Custom Template Example for Amazon Textract](a2i-custom-templates.md#a2i-custom-templates-textract-sample)\.
 
 ## Examples<a name="a2i-json-activation-condition-examples"></a>
 

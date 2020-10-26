@@ -16,7 +16,7 @@ Training with the k\-NN algorithm has three steps: sampling, dimension reduction
 
 ## Input/Output Interface for the k\-NN Algorithm<a name="kNN-input_output"></a>
 
-SageMaker k\-NN supports train and test data channels\.
+Amazon SageMaker k\-NN supports train and test data channels\.
 + Use a *train channel* for data that you want to sample and construct into the k\-NN index\.
 + Use a *test channel* to emit scores in log files\. Scores are listed as one line per mini\-batch: accuracy for `classifier`, mean\-squared error \(mse\) for `regressor` for score\.
 
@@ -48,9 +48,9 @@ For more information on input and output file formats, see [Data Formats for k\-
 
 ## k\-NN Sample Notebooks<a name="kNN-sample-notebooks"></a>
 
-For a sample notebook that uses the SageMaker k\-nearest neighbor algorithm to predict wilderness cover types from geological and forest service data, see the [K\-Nearest Neighbor Covertype ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/k_nearest_neighbors_covtype/k_nearest_neighbors_covtype.ipynb)\. 
+For a sample notebook that uses the Amazon SageMaker k\-nearest neighbor algorithm to predict wilderness cover types from geological and forest service data, see the [K\-Nearest Neighbor Covertype ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/k_nearest_neighbors_covtype/k_nearest_neighbors_covtype.ipynb)\. 
 
-Use a Jupyter notebook instance to run the example in SageMaker\. To learn how to create and open a Jupyter notebook instance in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the SageMaker example notebooks\. Find K\-Nearest Neighbor notebooks in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.
+Use a Jupyter notebook instance to run the example in Amazon SageMaker\. To learn how to create and open a Jupyter notebook instance in Amazon SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the Amazon SageMaker example notebooks\. Find K\-Nearest Neighbor notebooks in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.
 
 ## EC2 Instance Recommendation for the k\-NN Algorithm<a name="kNN-instances"></a>
 

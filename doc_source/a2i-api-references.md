@@ -21,6 +21,6 @@ Use the **HumanLoopConfig** parameter of the [AnalyzeDocument](https://docs.aws.
 ## Programmatic Walkthroughs<a name="amazon-augmented-ai-programmatic-walkthroughs"></a>
 
 The following walkthroughs and tutorials provide example code and step\-by\-step instructions for creating human review workflows and worker task templates programmatically\.
-+ [Create a Human Review Workflow \(API\)](a2i-create-flow-definition.md#a2i-create-human-review-api)
++ [Create a Flow Definition \(API\)](a2i-create-flow-definition.md#a2i-create-human-review-api)
 + [Using Amazon Augmented AI with Amazon Rekognition](https://docs.aws.amazon.com/rekognition/latest/dg/a2i-rekognition.html) in the *Amazon Rekognition Developer Guide*
 + [Using Amazon Augmented AI with Amazon Textract AnalyzeDocument](https://docs.aws.amazon.com/textract/latest/dg/a2i-textract.html) in the *Amazon Textract Developer Guide*

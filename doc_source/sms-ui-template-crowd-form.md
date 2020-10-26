@@ -46,5 +46,5 @@ The `crowd-form` element extends the [standard HTML `form` element](https://deve
 ### See Also<a name="form-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth to Label Data](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [Crowd HTML Elements Reference](sms-ui-template-reference.md)

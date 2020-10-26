@@ -2,7 +2,7 @@
 
 Perform load tests to choose an automatic scaling configuration that works the way you want\.
 
-For an example of load testing to optimize automatic scaling for an Amazon SageMaker endpoint, see [Load test and optimize an Amazon SageMaker endpoint using automatic scaling](https://aws.amazon.com/blogs/machine-learning/load-test-and-optimize-an-amazon-sagemaker-endpoint-using-automatic-scaling/)\.
+For an example of load testing to optimize automatic scaling for a Amazon SageMaker endpoint, see [Load test and optimize an Amazon SageMaker endpoint using automatic scaling](https://aws.amazon.com/blogs/machine-learning/load-test-and-optimize-an-amazon-sagemaker-endpoint-using-automatic-scaling/)\.
 
 The following guidelines for load testing assume you are using an automatic scaling policy that uses the predefined target metric `SageMakerVariantInvocationsPerInstance`\.
 
@@ -18,7 +18,7 @@ This value depends on the instance type chosen, payloads that clients of your mo
 
 **To find the peak requests\-per\-second \(RPS\) your model's production variant can handle and latency of requests**
 
-1. Set up an endpoint with your model using a single instance\. For information about how to set up an endpoint, see [Step 6\.1: Deploy the Model to SageMaker Hosting Services](ex1-deploy-model.md)\.
+1. Set up an endpoint with your model using a single instance\. For information about how to set up an endpoint, see [Step 6\.1: Deploy the Model to Amazon SageMaker Hosting Services](ex1-deploy-model.md)\.
 
 1. Use a load testing tool to generate an increasing number of parallel requests, and monitor the RPS and model latency in the out put of the load testing tool\. 
 **Note**  
@@ -34,7 +34,7 @@ After you find the performance characteristics of the variant, you can determine
 SageMakerVariantInvocationsPerInstance = (MAX_RPS * SAFETY_FACTOR) * 60
 ```
 
-Where `MAX_RPS` is the maximum RPS that you determined previously, and `SAFETY_FACTOR` is the safety factor that you chose to ensure that your clients don't exceed the maximum RPS\. Multiply by 60 to convert from RPS to invocations\-per\-minute to match the per\-minute CloudWatch metric that SageMaker uses to implement automatic scaling \(you don't need to do this if you measured requests\-per\-minute instead of requests\-per\-second\)\.
+Where `MAX_RPS` is the maximum RPS that you determined previously, and `SAFETY_FACTOR` is the safety factor that you chose to ensure that your clients don't exceed the maximum RPS\. Multiply by 60 to convert from RPS to invocations\-per\-minute to match the per\-minute CloudWatch metric that Amazon SageMaker uses to implement automatic scaling \(you don't need to do this if you measured requests\-per\-minute instead of requests\-per\-second\)\.
 
 **Note**  
-SageMaker recommends that you start testing with a `SAFETY_FACTOR` of 0\.5\. Test your automatic scaling configuration to ensure it operates in the way you expect with your model for both increasing and decreasing customer traffic on your endpoint\.
+Amazon SageMaker recommends that you start testing with a `SAFETY_FACTOR` of 0\.5\. Test your automatic scaling configuration to ensure it operates in the way you expect with your model for both increasing and decreasing customer traffic on your endpoint\.
