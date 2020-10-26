@@ -3,17 +3,17 @@
 **Note**  
 Amazon SageMaker Studio is available only in specific AWS Regions\. To view the list of supported Regions, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
 
-This topic describes how to onboard to Amazon SageMaker Studio using AWS SSO authentication\. For information on how to onboard using AWS Identity and Access Management \(IAM\) authentication, see [Onboard Using Quick Start](onboard-quick-start.md) or [Onboard Using IAM](onboard-iam.md)\.
+This procedure describes how to onboard to Amazon SageMaker Studio using AWS SSO authentication\. For information on how to onboard using AWS Identity and Access Management \(IAM\) authentication, see [Onboard Using Quick Start](onboard-quick-start.md) or [Onboard Using IAM](onboard-iam.md)\.
 
 **To onboard to Studio using AWS SSO**
 
-1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
+1. Open the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
 1. Choose **Amazon SageMaker Studio** at the top left of the page\.
 
-1. On the **SageMaker Studio** page, under **Get started**, choose **Standard setup**\.
+1. On the **Amazon SageMaker Studio Control Panel**, under **Get started**, choose **Standard setup**\.
 
-1. For **Authentication method**, choose **AWS Single Sign\-On \(SSO\)**\. A message tells you whether you have an AWS SSO account in an AWS Region supported by SageMaker Studio\.
+1. For **Authentication method**, choose **AWS Single Sign\-On \(SSO\)**\. A message tells you whether you have an AWS SSO account in an AWS Region supported by Amazon SageMaker Studio\.
 
 1. If you don't have an AWS SSO account in a supported Region, you must create an AWS SSO account in a supported Region before proceeding\. To continue to onboard without creating a new AWS SSO account, choose the **AWS Identity and Access Management \(IAM\)** authentication method or the **Quick start** procedure, which also uses IAM\.
 
@@ -23,17 +23,15 @@ This topic describes how to onboard to Amazon SageMaker Studio using AWS SSO aut
 
    If you choose **Create a new role**, the **Create an IAM role** dialog opens:
    + For **S3 buckets you specify**, specify additional S3 buckets that users of your notebooks can access\. If you don't want to add access to more buckets, choose **None**\.
-   + Choose **Create role**\. SageMaker creates a new IAM `AmazonSageMaker-ExecutionPolicy` role with the [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) policy attached\.
-
-1. Under **Network**, specify your VPC information\. For more information, see [Choose a VPC](onboard-vpc.md)\.
+   + Choose **Create role**\. Amazon SageMaker creates a new IAM role with the [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) policy attached\.
 
 1. Choose **Submit**\.
 
-   On the **Amazon SageMaker Studio Control Panel**, under **Studio Summary**, the **Status** shows as **Pending** while Studio creates a SageMaker Studio application in your AWS SSO domain\. When **Status** changes to **Ready**, the **Assign users** button is enabled\.
+   On the **Amazon SageMaker Studio Control Panel**, under **Studio Summary**, the **Status** shows as **Pending** while Studio creates an Amazon SageMaker Studio application in your AWS SSO domain\. When **Status** changes to **Ready**, the **Assign users** button is enabled\.
 
 1. Choose **Assign users**\. The **Assign users** page opens and displays a list of your organization's members\.
 
-1. To assign users access to SageMaker Studio, choose the check box next to their user name and choose **Assign users**\. 
+1. To assign users access to Amazon SageMaker Studio, choose the check box next to their user name and choose **Assign users**\. 
 
 1. Send each assigned user the **Studio address** link shown under **Studio Summary**\. Your AWS SSO users go to this address to access Studio\.
 
@@ -45,4 +43,4 @@ After you activate your account, go to the Studio URL, sign in, and wait for you
 
 Bookmark the Studio URL\. The URL is also available in the Studio Control Panel\.
 
-For information about using SageMaker Studio, see [Get Started with Studio](gs-studio.md)\.
+For information about using Amazon SageMaker Studio, see [Get Started with Studio](gs-studio.md)\.

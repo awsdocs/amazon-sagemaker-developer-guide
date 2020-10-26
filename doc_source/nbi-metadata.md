@@ -1,4 +1,4 @@
-# Notebook Instance Metadata<a name="nbi-metadata"></a>
+# Get Notebook Instance Metadata<a name="nbi-metadata"></a>
 
 When you create a notebook instance, Amazon SageMaker creates a JSON file on the instance at the location `/opt/ml/metadata/resource-metadata.json` that contains the `ResourceName` and `ResourceArn` of the notebook instance\. You can access this metadata from anywhere within the notebook instance, including in lifecycle configurations\. For information about notebook instance lifecycle configurations, see [Customize a Notebook Instance Using a Lifecycle Configuration Script](notebook-lifecycle-config.md)\.
 

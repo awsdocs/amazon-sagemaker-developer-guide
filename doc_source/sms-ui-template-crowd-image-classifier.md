@@ -48,44 +48,11 @@ The name of this widget\. It is used as a key for the widget's input in the form
 
 #### overlay<a name="image-classifier-attributes-overlay"></a>
 
-Information to be overlaid on the source image\. This is for verification workflows of bounding\-box, semantic\-segmentation, and instance\-segmentation tasks\.
+Information to be overlaid on the source image\. This is for verification workflows of bounding\-box and semantic\-segmentation tasks\.
 
 It is a JSON object containing an object with the name of the task\-type in camelCase as the key\. That key's value is an object that contains the labels and other necessary information from the previous task\.
 
-An example of a `crowd-image-classifier` element with attributes for verifying a bounding\-box task follows:
-
-```
-<crowd-image-classifier
-    name="boundingBoxClassification"
-    header="Rate the quality of the annotations based on the background section 
-       in the instructions on the left hand side."
-    src="https://i.imgur.com/CIPKVJo.jpg"
-    categories="['good', 'bad', 'okay']"
-    overlay='{
-        "boundingBox": {
-            labels: ["bird", "cat"], 
-            value: [
-                {
-                  height: 284,
-                  label: "bird",
-                  left: 230,
-                  top: 974,
-                  width: 223
-                },
-                {
-                  height: 69,
-                  label: "bird",
-                  left: 79,
-                  top: 889,
-                  width: 247
-                }
-            ]
-        },
-    }'
-> ... </crowd-image-classifier>
-```
-
-A semantic segmentation verification task would use the `overlay` value as follows:
+An example of a `crowd-image-classifier` element with attributes for verifying a semantic segmentation task follows:
 
 ```
 <crowd-image-classifier
@@ -116,34 +83,36 @@ A semantic segmentation verification task would use the `overlay` value as follo
 > ... </crowd-image-classifier>
 ```
 
-An instance\-segmentation task would use the `overlay` value as follows:
+A bounding\-box verification task would use the `overlay` value like follows:
 
 ```
 <crowd-image-classifier
-  name='crowd-image-classifier'
-  categories='["good", "bad"]'
-  src='URL of image to be classified'
-  header='Please classify instances of each category'
-  overlay='{
-    "instanceSegmentation": {
-       "labels": ["Cat", "Dog", "Bird", "Cow"],
-       "instances": [
-        {
-         "color": "#2ca02c",
-         "label": "Cat"
+    name="boundingBoxClassification"
+    header="Rate the quality of the annotations based on the background section 
+       in the instructions on the left hand side."
+    src="https://i.imgur.com/CIPKVJo.jpg"
+    categories="['good', 'bad', 'okay']"
+    overlay='{
+        "boundingBox": {
+            labels: ["bird", "cat"], 
+            value: [
+                {
+                  height: 284,
+                  label: "bird",
+                  left: 230,
+                  top: 974,
+                  width: 223
+                },
+                {
+                  height: 69,
+                  label: "bird",
+                  left: 79,
+                  top: 889,
+                  width: 247
+                }
+            ]
         },
-        {
-         "color": "#1f77b4",
-         "label": "Cat"
-        },
-        {
-         "color": "#d62728",
-         "label": "Dog"
-        }
-       ],
-       "src": "URL of overlay image",
-    }
-  }'
+    }'
 > ... </crowd-image-classifier>
 ```
 
@@ -214,5 +183,5 @@ The following is a sample of output from this element\.
 ### See Also<a name="image-classifier-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth to Label Data](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [Crowd HTML Elements Reference](sms-ui-template-reference.md)

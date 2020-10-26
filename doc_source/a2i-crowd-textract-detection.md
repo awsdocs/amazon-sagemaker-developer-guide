@@ -91,11 +91,11 @@ The following is an example of an input for `keys`\.
 
 #### no\-key\-edit<a name="textract-attributes-no-key-edit"></a>
 
-This prevents the workers from editing the keys of annotations passed through `initialValue`\. This prevents workers from editing the keys that have been detected on your documents\. This is required\. 
+This prevents the workers from editing the keys of annotations passed through `initialValue`\. If you want to prevent workers from editing the keys that have been detected on your documents, you should include this attribute\. 
 
 #### no\-geometry\-edit<a name="textract-attributes-no-geometry-edit"></a>
 
-This prevents workers from editing the polygons of annotations passed through `initialValue`\. For example, this would prevent the worker from editing the bounding box around a given key\. This is required\. 
+This prevents workers from editing the polygons of annotations passed through `initialValue`\. For example, this would prevent the worker from editing the bounding box around a given key\. In most scenarios, you should include this attribute\. 
 
 ### Element Hierarchy<a name="textract-crowd-element-hierarchy"></a>
 

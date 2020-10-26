@@ -34,7 +34,7 @@ The output data file is written to the output location periodically while the jo
 
 ## Output Directories<a name="sms-output-directories"></a>
 
-Ground Truth creates several directories in your Amazon S3 output path\. These directories contain the results of your labeling job and other artifacts of the job\. The top\-level directory for a labeling job is given the same name as your labeling job; the output directories are placed beneath it\. For example, if you named your labeling job **find\-people**, your output would be in the following directories:
+Ground Truth creates several directories in your Amazon S3 output path\. These directories contain the results of your labeling job and other artifacts of the job\. The top\-level directory for a labeling job is given the same name as your labeling job, the output directories are placed beneath it\. For example, if you named your labeling job **find\-people** your output would be in the following directories:
 
 ```
 s3://AWSDOC-EXAMPLE-BUCKET/find-people/activelearning
@@ -44,7 +44,7 @@ s3://AWSDOC-EXAMPLE-BUCKET/find-people/manifests
 s3://AWSDOC-EXAMPLE-BUCKET/find-people/training
 ```
 
-Each directory contains the following output:
+Each directories contain the following output:
 
 ### Active Learning Directory<a name="sms-output-activelearning"></a>
 
@@ -56,7 +56,7 @@ The `annotations` directory contains all of the annotations made by the workforc
 
 There are three subdirectories in the `annotations` directory\. 
 
-The first, `worker-response`, contains the responses from individual workers\. This contains a subdirectory for each iteration, which in turn contains a subdirectory for each data object in that iteration\. The annotation for each data object is stored in a timestamped JSON file\. There may be more than one annotation for each data object in this directory, depending on how many workers you want to annotate each object\.
+The first, `worker-response`, contains the responses from individual workers\. This contains a subdirectory for each iteration, which in turn contains a subdirectory for each data object in that iteration\. The annotation for each data object is stored in a timestamped \.json file\. There may be more than one annotation for each data object in this directory, depending on how many workers you want to annotate each object\.
 
 The second, `consolidated-annotation`, contains information required to consolidate the annotations in the current batch into labels for your data objects\.
 
@@ -64,7 +64,7 @@ The third, `intermediate`, contains the output manifest for the current batch wi
 
 ### Inference Directory<a name="sms-directories-inference"></a>
 
-The `inference` directory is only present when you are using automated data labeling\. This directory contains the input and output files for the SageMaker batch transform used while labeling data objects\.
+The `inference` directory is only present when you are using automated data labeling\. This directory contains the input and output files for the Amazon SageMaker batch transform used while labeling data objects\.
 
 ### Manifest Directory<a name="sms-directories-manifest"></a>
 
@@ -78,13 +78,13 @@ The `training` directory is only present when you are using automated data label
 
 When you have more than one worker annotate a single task, your label results from annotation conslidation\. Ground Truth calculates a confidence score for each label\. A *confidence score* is a number between 0 and 1 that indicates how confident Ground Truth is in the label\. You can use the confidence score to compare labeled data objects to each other, and to identify the least or most confident labels\.
 
-You should not interpret the value of a confidence score as an absolute value, or compare confidence scores across labeling jobs\. For example, if all of the confidence scores are between 0\.98 and 0\.998, you should only compare the data objects with each other and not rely on the high confidence scores\. 
+You should not interpret the value of the confidence scores as an absolute value, or compare them across labeling jobs\. For example, if all of the confidence scores are between 0\.98 and 0\.998, you should only compare the data objects with each other and not rely on the high confidence scores\. 
 
-You should not compare the confidence scores of human\-labeled data objects and auto\-labeled data objects\. The confidence scores for humans are calculated using the annotation consolidation function for the task, while the confidence scores for automated labeling are calculated using a model that incorporates object features\. The two models generally have different scales and average confidence\.
+You should not compare the confidence scores of human\-labeled data objects and auto\-labeled data objects\. The confidence scores for humans are calculated using the annotation consolidation function for the task, the confidence scores for automated labeling are calculated using a model that incorporates object features\. The two models generally have different scales and average confidence\.
 
 For a bounding box labeling job, Ground Truth calculates a confidence score per box\. You can compare confidence scores within one image or across images for the same labeling type \(human or auto\)\. You can't compare confidence scores across labeling jobs\.
 
-If a single worker annotates a task \(`NumberOfHumanWorkersPerDataObject` is set to `1` or in the console, you enter 1 for **Number of workers per dataset object**\), the confidence score is set to `0.00`\. 
+If a single worker annotates a task \(`NumberOfHumanWorkersPerDataObject` is set to `1` or, in the console you enter 1 for **Number of workers per dataset object**\), the confidence score will be set to `0.00`\. 
 
 ## Output Metadata<a name="sms-output-metadata"></a>
 
@@ -102,12 +102,12 @@ The elements have the following meaning:
 + `confidence` – The confidence that Ground Truth has that the label is correct\. For more information, see [Confidence Score](#sms-output-confidence)\.
 + `type` – The type of classification job\. For job types, see [Built\-in Task Types](sms-task-types.md)\. 
 + `job-name` – The name assigned to the job when it was created\.
-+ `human-annotated` – Whether the data object was labeled by a human or by automated data labeling\. For more information, see [Automate Data Labeling](sms-automated-labeling.md)\.
++ `human-annotated` – Indicates whether the data object was labeled by a human or by automated data labeling\. For more information, see [Automate Data Labeling](sms-automated-labeling.md)\.
 + `creation-date` – The date and time that the label was created\.
 
 ## Classification Job Output<a name="sms-output-class"></a>
 
-The following are sample outputs \(output manifest files\) from an image classification job and a text classification job\. They include the label that Ground Truth assigned to the data object, the value for the label, and metadata that describes the label\.
+The following are sample outputs \(output manifest files\) from an image classification job and a text classification job\. They includes the label that Ground Truth assigned to the data object, the value for the label, and metadata that describes the label\.
 
 In addition to the standard metadata elements, the metadata for a classification job includes the text value of the label's class\. For more information, see [Image Classification Algorithm](image-classification.md)\.
 
@@ -147,11 +147,11 @@ The red, italicized text in the examples below depends on labeling job specifica
 
 ## Multi\-label Classification Job Output<a name="sms-output-multi-label-classification"></a>
 
-The following are example output manifest files from a multi\-label image classification job and a multi\-label text classification job\. They include the labels that Ground Truth assigned to the data object \(for example, the image or piece of text\) and metadata that describes the labels the worker saw when completing the labeling task\. 
+The following are example output manifest files from a multi\-label image classification job and a multi\-label text classification job\. They include the labels that Ground Truth assigned to the data object \(for example the image or piece of text\) and metadata that describes the labels the worker saw when completing the labeling task\. 
 
-The label attribute name parameter \(for example, `image-label-attribute-name`\) contains an array of all of the labels selected by at least one of the workers who completed this task\. This array contains integer keys \(for example, `[1,0,8]`\) that correspond to the labels found in `class-map`\. In the multi\-label image classification example, `bicycle`, `person`, and `clothing` were selected by at least one of the workers who completed the labeling task for the image, `exampleimage.jpg`\.
+The label attribute name parameter \(for example, `image-label-attribute-name`\) contains an array of all of the labels that were selected by at least one of the workers who completed this task\. This array contains integer keys \(for example, `[1,0,8]`\) that correspond to the labels found in `class-map`\. In the multi\-label image classification example, `bicycle`, `person`, and `clothing` were selected by at least one of the workers who completed the labeling task for the image, `exampleimage.jpg`\.
 
-The `confidence-map` shows the confidence score that Ground Truth assigned to each label selected by a worker\. To learn more about Ground Truth confidence scores, see [Confidence Score](#sms-output-confidence)\.
+The `confidence-map` shows the confidence\-score that Ground Truth assigned to each label that was selected by a worker\. To learn more about Ground Truth confidence scores, see [Confidence Score](#sms-output-confidence)\.
 
 The red, italicized text in the examples below depends on labeling job specifications and output data\. 
 
@@ -325,9 +325,9 @@ In this output, the job's `type` doesn't change, but an `adjustment-status` fiel
 
 ## Label Verification Job Output<a name="sms-output-bounding-box-verification"></a>
 
-The output \(output manifest file\) of a bounding box verification job looks different than the output of a bounding box annotation job\. That's because the workers have a different type of task\. They're not labeling objects, but evaluating the accuracy of prior labeling, making a judgment, and then providing that judgment and perhaps some comments\.
+The output \(output manifest file\) of a bounding box verification job looks much different than the output of a bounding box annotation job\. That's because the workers having a different type of task\. They're not labeling objects, but evaluating the accuracy of prior labeling, making a judgment, and then providing that judgment and perhaps some comments\.
 
-If human workers are verifying or adjusting prior bounding box labels, the output of a verification job would look like the following JSON\. The red, italicized text in the examples below depends on labeling job specifications and output data\. 
+If you are having human workers verify or adjust prior bounding box labels, the output of a verification job would look like the following JSON\. The red, italicized text in the examples below depends on labeling job specifications and output data\. 
 
 ```
 {
@@ -384,9 +384,9 @@ Although the `type` on the original bounding box output was `groundtruth/object-
 
 ## Semantic Segmentation Job Output<a name="sms-output-segmentation"></a>
 
-The following is the output manifest file from a semantic segmentation labeling job\. The value of the label for this job is a reference to a PNG file in an Amazon S3 bucket\.
+The following is the output manifest file from a semantic segmentation labeling job\. The value of the label for this job is a reference to a PNG file in an S3 bucket\.
 
-In addition to the standard elements, the metadata for the label includes a color map that defines which color is used to label the image, the class name associated with the color, and the confidence score for each color\. For more information, see [Semantic Segmentation Algorithm](semantic-segmentation.md)\.
+In addition to the standard elements, the metadata for the label includes a color map that defines which color was used to label the image, the class name associated with the color, and the confidence score for each color\. For more information, see [Semantic Segmentation Algorithm](semantic-segmentation.md)\.
 
 The red, italicized text in the examples below depends on labeling job specifications and output data\. 
 
@@ -394,7 +394,7 @@ The red, italicized text in the examples below depends on labeling job specifica
 {
     "source-ref": "s3://AWSDOC-EXAMPLE-BUCKET/example_city_image.png",
     "city-streets-ref": "S3 bucket location",
-    "city-streets-ref-metadata": {
+    "city-streets-metadata": {
       "internal-color-map": {
         "0": {
            "class-name": "BACKGROUND",
@@ -417,8 +417,8 @@ The red, italicized text in the examples below depends on labeling job specifica
      "creation-date": "2018-10-18T22:18:13.527256",
      "job-name": "label-city-streets",
      },
-     "verify-city-streets-ref":"1",
-     "verify-city-streets-ref-metadata":
+     "verify-city-streets":"1",
+     "verify-city-streets-metadata":
      {
         "class-name": "bad",
         "confidence": 0.93,
@@ -442,7 +442,7 @@ The output of a semantic segmentation adjustment job looks similar to the follow
 {
     "source-ref": "s3://AWSDOC-EXAMPLE-BUCKET/example_city_image.png",
     "city-streets-ref": "S3 bucket location",
-    "city-streets-ref-metadata": {
+    "city-streets-metadata": {
       "internal-color-map": {
         "0": {
            "class-name": "BACKGROUND",
@@ -466,7 +466,7 @@ The output of a semantic segmentation adjustment job looks similar to the follow
      "job-name": "label-city-streets",
      },
      "adjusted-city-streets-ref": "s3://AWSDOC-EXAMPLE-BUCKET/example_city_image.png",
-     "adjusted-city-streets-ref-metadata": {
+     "adjusted-city-streets-metadata": {
       "internal-color-map": {
         "0": {
            "class-name": "BACKGROUND",
@@ -492,201 +492,11 @@ The output of a semantic segmentation adjustment job looks similar to the follow
 }
 ```
 
-## Video Frame Object Detection Output<a name="sms-output-video-object-detection"></a>
+## 3D Point Cloud Semantic Segmentation<a name="sms-output-point-cloud-segmentation"></a>
 
-The following is the output manifest file from a video frame object detection labeling job\. The *red, italicized text* in the examples below depends on labeling job specifications and output data\.
+The following is the output manifest file from a semantic segmentation labeling job\. 
 
-In addition to the standard elements, the metadata includes a class map that lists each class that has at least one label in the sequence\. The metadata also includes `job-name` which is the name you assigned to the labeling job\. For adjustment tasks, If one or more bounding boxes were modified, there is an `adjustment-status` parameter in the metadata for audit workflows that is set to `adjusted`\. 
-
-```
-{
-    "source-ref": "s3://DOC-EXAMPLE-BUCKET/example-path/input-manifest.json",
-    "CarObjectDetection-ref": "s3://AWSDOC-EXAMPLE-BUCKET/output/labeling-job-name/annotations/consolidated-annotation/output/0/SeqLabel.json",
-    "CarObjectDetection-ref-metadata": {
-        "class-map": {
-            "0": "car"
-            "1": "bus"
-        },
-        "job-name": "labeling-job/labeling-job-name",
-        "human-annotated": "yes",
-        "creation-date": "2020-05-15T08:01:16+0000",
-        "type": "groundtruth/video-object-detection"
-        }
-}
-```
-
-Ground Truth creates one output sequence file for each sequence of video frames that was labeled\. Each output sequence file contains the following: 
-+ All annotations for all frames in a sequence in the `detection-annotations` list of JSON objects\. 
-+ For each frame that was annotated by a worker, the frame file name \(`frame`\), number \(`frame-no`\) and an list of JSON objects\. The name of this list is defined by the task type you use: `polylines`, `polygons`, `keypoints`, and for bounding boxes, `annotations`\.
-
-  Each JSON object contains information about a single annotation and associated label\. The following table outlines the parameters you'll see for each video frame task type\.   
-****    
-[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/sms-data-output.html)
-
-  In addition to task type specific values, you will see the following in each JSON object:
-  + Values of any `label-category-attributes` that were specified for that label\. 
-  + The `class-id` of the box\. Use the `class-map` in the output manifest file to see which label category this ID maps to\. 
-
-The following is an example of a `SeqLabel.json` file from a bounding box video frame object detection labeling job\. This file will be located under `s3://your-output-bucket/output-prefix/annotations/consolidated-annotation/output/annotation-number/`
-
-```
-{
-    "detection-annotations": [
-        {
-            "annotations": [
-                {
-                    "height": 41,
-                    "width": 53,
-                    "top": 152,
-                    "left": 339,
-                    "class-id": "1",
-                    "label-category-attributes": {
-                        "occluded": "no",
-                        "size": "medium"
-                    }
-                },
-                {
-                    "height": 24,
-                    "width": 37,
-                    "top": 148,
-                    "left": 183,
-                    "class-id": "0",
-                    "label-category-attributes": {
-                        "occluded": "no",
-                    }
-                }
-            ],
-            "frame-no": "0",
-            "frame": "frame_0000.jpeg"
-        },
-        {
-            "annotations": [
-                {
-                    "height": 41,
-                    "width": 53,
-                    "top": 152,
-                    "left": 341,
-                    "class-id": "0",
-                    "label-category-attributes": {}
-                },
-                {
-                    "height": 24,
-                    "width": 37,
-                    "top": 141,
-                    "left": 177,
-                    "class-id": "0",
-                    "label-category-attributes": {
-                        "occluded": "no",
-                    }
-                }
-            ],
-            "frame-no": "1",
-            "frame": "frame_0001.jpeg"
-        }
-    ]
-}
-```
-
-## Video Frame Object Tracking Output<a name="sms-output-video-object-tracking"></a>
-
-The following is the output manifest file from a video frame object tracking labeling job\. The *red, italicized text* in the examples below depends on labeling job specifications and output data\.
-
-In addition to the standard elements, the metadata includes a class map that lists each class that has at least one label in the sequence of frames\. The metadata also includes `job-name` which is the name you assigned to the labeling job\. For adjustment tasks, If one or more bounding boxes were modified, there is an `adjustment-status` parameter in the metadata for audit workflows that is set to `adjusted`\. 
-
-```
-{
-    "source-ref": "s3://DOC-EXAMPLE-BUCKET/example-path/input-manifest.json",
-    "CarObjectTracking-ref": "s3://AWSDOC-EXAMPLE-BUCKET/output/labeling-job-name/annotations/consolidated-annotation/output/0/SeqLabel.json",
-    "CarObjectTracking-ref-metadata": {
-        "class-map": {
-            "0": "car"
-            "1": "bus"
-        },
-        "job-name": "labeling-job/labeling-job-name",
-        "human-annotated": "yes",
-        "creation-date": "2020-05-15T08:01:16+0000",
-        "type": "groundtruth/video-object-tracking"
-        }
- }
-```
-
-Ground Truth creates one output sequence file for each sequence of video frames that was labeled\. Each output sequence file contains the following: 
-+ All annotations for all frames in a sequence in the `tracking-annotations` list of JSON objects\. 
-+ For each frame that was annotated by a worker, the frame file name \(`frame`\), number \(`frame-no`\) and a list of JSON objects\. The name of this list is defined by the task type you use: `polylines`, `polygons`, `keypoints`, and for bounding boxes, `annotations`\.
-
-  Each JSON object contains information about a single annotation and associated label\. The following table outlines the parameters you'll see for each video frame task type\.   
-****    
-[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/sms-data-output.html)
-
-  In addition to task type specific values, you will see the following in each JSON object: 
-  + Values of any `label-category-attributes` that were specified for that label\. 
-  + The `class-id` of the box\. Use the `class-map` in the output manifest file to see which label category this ID maps to\. 
-  + An `object-id` which identifies an instance of a label\. This ID will be the same across frames if a worker identified the same instance of an object in multiple frames\. For example, if a car appeared in multiple frames, all bounding boxes uses to identify that car would have the same `object-id`\.
-  + The `object-name` which is the instance ID of that annotation\. 
-
-The following is an example of a `SeqLabel.json` file from a bounding box video frame object tracking labeling job\. This file will be located under `s3://your-output-bucket/output-prefix/annotations/consolidated-annotation/output/annotation-number/`
-
-```
-{
-    "tracking-annotations": [
-        {
-            "annotations": [
-                {
-                    "height": 36,
-                    "width": 46,
-                    "top": 178,
-                    "left": 315,
-                    "class-id": "0",
-                    "label-category-attributes": {
-                        "occluded": "no"
-                    },
-                    "object-id": "480dc450-c0ca-11ea-961f-a9b1c5c97972",
-                    "object-name": "car:1"
-                }
-            ],
-            "frame-no": "0",
-            "frame": "frame_0001.jpeg"
-        },
-        {
-            "annotations": [
-                {
-                    "height": 30,
-                    "width": 47,
-                    "top": 163,
-                    "left": 344,
-                    "class-id": "1",
-                    "label-category-attributes": {
-                        "occluded": "no",
-                        "size": "medium"
-                    },
-                    "object-id": "98f2b0b0-c0ca-11ea-961f-a9b1c5c97972",
-                    "object-name": "bus:1"
-                },
-                {
-                    "height": 28,
-                    "width": 33,
-                    "top": 150,
-                    "left": 192,
-                    "class-id": "0",
-                    "label-category-attributes": {
-                        "occluded": "partially"
-                    },
-                    "object-id": "480dc450-c0ca-11ea-961f-a9b1c5c97972",
-                    "object-name": "car:1"
-                }
-            ],
-            "frame-no": "1",
-            "frame": "frame_0002.jpeg"
-        }
-    ]
-}
-```
-
-## 3D Point Cloud Semantic Segmentation Output<a name="sms-output-point-cloud-segmentation"></a>
-
-The following is the output manifest file from a 3D point cloud semantic segmentation labeling job\. 
-
-In addition to the standard elements, the metadata for the label includes a color map that defines which color is used to label the image, the class name associated with the color, and the confidence score for each color\. Additionally, there is an `adjustment-status` parameter in the metadata for audit workflows that is set to `adjusted` if the color mask is modified\. 
+In addition to the standard elements, the metadata for the label includes a color map that defines which color was used to label the image, the class name associated with the color, and the confidence score for each color\. Additionally, there is an `adjustment-status` parameter in the metadata for audit\-workflows that is set to `adjusted` if the color mask was modified\. 
 
 The `your-label-attribute-ref` parameter contains the location of a compressed file with a \.zlib extension\. When you uncompress this file, it contains an array that indicates the indexes of each annotated point in the input point cloud and the value of the array gives the class of the point based on the semantic color map found in metadata\. 
 
@@ -726,7 +536,7 @@ The red, italicized text in the examples below depends on labeling job specifica
                 "confidence": 0.00
             }
         },
-        'type': 'groundtruth/point_cloud_single_frame_semantic_segmentation', 
+        'type': 'groundtruth/lidar_single_frame_semantic_segmentation', 
         'human-annotated': 'yes',
         'creation-date': '2019-11-12T01:18:14.271944',
         'job-name': 'labeling-job-name',
@@ -736,15 +546,15 @@ The red, italicized text in the examples below depends on labeling job specifica
 }
 ```
 
-## 3D Point Cloud Object Detection Output<a name="sms-output-point-cloud-object-detection"></a>
+## 3D Point Cloud Object Detection<a name="sms-output-point-cloud-object-detection"></a>
 
 The following is sample output from a 3D point cloud objected detection job\. For this task type, the data about 3D cuboids is returned in the `3d-bounding-box` parameter, in a list named `annotations`\. In this list, each 3D cuboid is described using the following information\. If one or more cuboids were modified, there is an `adjustment-status` parameter in the metadata for audit workflows that is set to `adjusted`\. 
-+ Each class, or label category, that you specify in your input manifest is associated with a `class-id`\. Use the `class-map` to identify the class associated with each class ID\.
++ Each class, or label category, that you specified in your input manifest is associated with a `class-id`\. Use the `class-map` to identify the class associated with each class ID\.
 + These classes are used to give each 3D cuboid an `object-name` in the format `<class>:<integer>` where `integer` is a unique number to identify that cuboid in the frame\. 
 + `center-x`, `center-y`, and `center-z` are used to describe the center of the cuboid in the world coordinate system\. 
 + `length`, `width`, and `height` are used to describe the dimensions of the cuboid\. 
 + `roll`, `pitch`, and `yaw` are used to describe the orientation \(heading\) of the cuboid\. 
-+ If you included label attributes in your input manifest file for a given class, a `label-category-attributes` parameter is included for all cuboids for which workers selected label attributes\. 
++ If you included label attributes in your input manifest file for a given class, a `label-category-attributes` parameter is included for all cuboids that workers selected label attributes for\. 
 
 The *red, italicized text* in the examples below depends on labeling job specifications and output data\. The ellipses \(*\.\.\.*\) denote a continuation of that list, where additional objects with the same format as the proceeding object can appear\.
 
@@ -844,7 +654,7 @@ The *red, italicized text* in the examples below depends on labeling job specifi
         {
             "0": "Car",
         },
-        "type": "groundtruth/point_cloud_object_detection",
+        "type": "groundtruth/lidar_object_detection",
         "human-annotated": "yes", 
         "creation-date": "2018-10-18T22:18:13.527256",
         "job-name": "identify-3d-objects",
@@ -853,11 +663,11 @@ The *red, italicized text* in the examples below depends on labeling job specifi
 }
 ```
 
-## 3D Point Cloud Object Tracking Output<a name="sms-output-point-cloud-object-tracking"></a>
+## 3D Point Cloud Object Tracking<a name="sms-output-point-cloud-object-tracking"></a>
 
-The following is an example of an output manifest file from a 3D point cloud object tracking labeling job\. The *red, italicized text* in the examples below depends on labeling job specifications and output data\. The ellipses \(*\.\.\.*\) denote a continuation of that list, where additional objects with the same format as the proceeding object can appear\.
+The following is the output manifest file from a object tracking labeling job\. The *red, italicized text* in the examples below depends on labeling job specifications and output data\. The ellipses \(*\.\.\.*\) denote a continuation of that list, where additional objects with the same format as the proceeding object can appear\.
 
-In addition to the standard elements, the metadata includes a class map that lists each class that has at least one label in the sequence\. If one or more cuboids were modified, there is an `adjustment-status` parameter in the metadata for audit workflows that is set to `adjusted`\. 
+ In addition to the standard elements, the metadata includes a class\-map that lists each class that has at least one label in the sequence\. If one or more cuboids were modified, there is an `adjustment-status` parameter in the metadata for audit workflows that is set to `adjusted`\. 
 
 ```
 {
@@ -877,7 +687,7 @@ In addition to the standard elements, the metadata includes a class map that lis
             ...
         ],    
         'class-map': {'0': 'Car', '1': 'Person'}, 
-        'type': 'groundtruth/point_cloud_object_tracking', 
+        'type': 'groundtruth/lidar_object_tracking', 
         'human-annotated': 'yes',
         'creation-date': '2019-11-12T01:18:14.271944',
         'job-name': 'identify-3d-objects',
@@ -886,16 +696,16 @@ In addition to the standard elements, the metadata includes a class map that lis
 }
 ```
 
-In the above example, the cuboid data for each frame in `seq1.json` is in `SeqLabel.json` in the Amazon S3 location, `s3://<customerOutputLocation>/<labelingJobName>/annotations/consolidated-annotation/output/<datasetObjectId>/SeqLabel.json`\. The following is an example of this label sequence file\.
+In the above example, the cuboid data for each frame in `seq1.json` will be in `SeqLabel.json` in the Amazon S3 location, `s3://<customerOutputLocation>/<labelingJobName>/annotations/consolidated-annotation/output/<datasetObjectId>/SeqLabel.json`\. The following is an example of this label\-sequence file\.
 
 For each frame in the sequence, you see a list of 3D cubiods that were drawn for that frame\. Each frame includes the following information: 
 + An `object-name` in the format `<class>:<integer>` where `class` identifies the label category and `integer` is a unique ID across the the dataset\.
 + When workers draw a cuboid, it is associated with a unique `object-id` which is associated with all cuboids that identify the same object across multiple frames\.
 + Each class, or label category, that you specified in your input manifest is associated with a `class-id`\. Use the `class-map` to identify the class associated with each class ID\.
-+ `center-x`, `center-y`, and `center-z` describe the center of the cuboid in the world coordinate system\. 
-+ `length`, `width`, and `height` describe the dimensions of the cuboid\. 
-+ `roll`, `pitch`, and `yaw` describe the orientation \(heading\) of the cuboid\. 
-+ If you included label attributes in your input manifest file for a given class, a `label-category-attributes` parameter is included for all cuboids for which workers selected label attributes\. 
++ `center-x`, `center-y`, and `center-z` are used to describe the center of the cuboid in the world coordinate system\. 
++ `length`, `width`, and `height` are used to describe the dimensions of the cuboid\. 
++ `roll`, `pitch`, and `yaw` are used to describe the orientation \(heading\) of the cuboid\. 
++ If you included label attributes in your input manifest file for a given class, a `label-category-attributes` parameter is included for all cuboids that workers selected label attributes for\. 
 
 ```
 {

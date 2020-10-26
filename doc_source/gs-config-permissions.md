@@ -9,7 +9,7 @@ You save these in an Amazon Simple Storage Service \(Amazon S3\) bucket: You can
 To create a bucket, follow the instructions in [Create a Bucket](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-bucket.html) in the *Amazon Simple Storage Service Console User Guide*\. Include `sagemaker` in the bucket name\. For example, `sagemaker-``datetime`\.
 
 **Note**  
-Amazon SageMaker needs permission to access these buckets\. You grant permission with an IAM role, which you create in the next step when you create a SageMaker notebook instance\. This IAM role automatically gets permissions to access any bucket that has `sagemaker` in the name\. It gets these permissions through the `AmazonSageMakerFullAccess` policy, which SageMaker attaches to the role\. If you add a policy to the role that grants the SageMaker service principal `S3FullAccess` permission, the name of the bucket does not need to contain **sagemaker**\.
+Amazon SageMaker needs permission to access these buckets\. You grant permission with an IAM role, which you create in the next step when you create an Amazon SageMaker notebook instance\. This IAM role automatically gets permissions to access any bucket that has `sagemaker` in the name\. It gets these permissions through the `AmazonSageMakerFullAccess` policy, which Amazon SageMaker attaches to the role\. If you add a policy to the role that grants the SageMaker service principal `S3FullAccess` permission, the name of the bucket does not need to contain **sagemaker**\.
 
 ## Next Step<a name="gs-setup-ws-nextstep"></a>
 

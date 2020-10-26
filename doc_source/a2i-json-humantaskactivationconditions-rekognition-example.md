@@ -101,7 +101,7 @@ In the following example, if any moderation label with a confidence greater than
 
 **Example 3: Use Sampling**
 
-In the following example, 5% of Amazon Rekognition inferences from a `DetectModerationLabels` request will be sent to human workers\. When using the default worker task template provided in the SageMaker console, all moderation labels returned by Amazon Rekognition are sent to workers for review\.
+In the following example, 5% of Amazon Rekognition inferences from a `DetectModerationLabels` request will be sent to human workers\. When using the default worker task template provided in the Amazon SageMaker console, all moderation labels returned by Amazon Rekognition are sent to workers for review\.
 
 ```
 {
@@ -118,7 +118,7 @@ In the following example, 5% of Amazon Rekognition inferences from a `DetectMode
 
 **Example 4: Use Sampling and ModerationLabelConfidenceCheck with the And operator**
 
-In this example, 5% of Amazon Rekognition inferences of the `Graphic Male Nudity` moderation label with a confidence greater than 50 will be sent workers for review\. When using the default worker task template provided in the SageMaker console, only the `Graphic Male Nudity` label will be sent to workers for review\. 
+In this example, 5% of Amazon Rekognition inferences of the `Graphic Male Nudity` moderation label with a confidence greater than 50 will be sent workers for review\. When using the default worker task template provided in the Amazon SageMaker console, only the `Graphic Male Nudity` label will be sent to workers for review\. 
 
 ```
 {

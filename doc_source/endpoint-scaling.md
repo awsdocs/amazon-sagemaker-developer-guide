@@ -12,7 +12,7 @@ In the AWS Management Console, you see a warning that you must deregister the mo
 
 There is one exception\. If you change the model for a variant that is configured for automatic scaling, Amazon SageMaker automatic scaling allows the update\. This is because changing the model doesn't typically affect performance enough to change automatic scaling behavior\. If you do update a model for a variant configured for automatic scaling, ensure that the change to the model doesn't significantly affect performance and automatic scaling behavior\.
 
-When you update SageMaker endpoints that have automatic scaling applied, complete the following steps:
+When you update Amazon SageMaker endpoints that have automatic scaling applied, complete the following steps:
 
 **To update an endpoint that has automatic scaling applied**
 

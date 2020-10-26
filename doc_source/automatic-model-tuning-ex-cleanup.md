@@ -5,7 +5,7 @@ To avoid incurring unnecessary charges, when you are done with the example, use 
 **Note**  
 If you plan to explore other examples, you might want to keep some of these resources, such as your notebook instance, S3 bucket, and IAM role\.
 
-1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) and delete the notebook instance\. Stop the instance before deleting it\.
+1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) and delete the notebook instance\. Stop the instance before deleting it\.
 
 1. Open the Amazon S3 console at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/) and delete the bucket that you created to store model artifacts and the training dataset\. 
 

@@ -5,11 +5,10 @@ Specify the name of the Amazon S3 bucket where you want to store the output of t
 **Note**  
 The name of the bucket doesn't need to contain **sagemaker** if the role that you use to run the hyperparameter tuning job has a policy that gives the SageMaker service principle `S3FullAccess` permission\.
 
-`prefix` is the path within the bucket where SageMaker stores the output from training jobs\.
+`prefix` is the path within the bucket where Amazon SageMaker stores the output from training jobs\.
 
 ```
-sess = sagemaker.Session()
-bucket = sess.default_bucket()                    # Set a default S3 bucket
+bucket = 'sagemaker-MyBucket'                               # Replace with the name of your S3 bucket
 prefix = 'sagemaker/DEMO-automatic-model-tuning-xgboost-dm'
 ```
 

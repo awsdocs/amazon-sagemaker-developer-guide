@@ -1,6 +1,6 @@
 # k\-NN Request and Response Formats<a name="kNN-inference-formats"></a>
 
-All Amazon SageMaker built\-in algorithms adhere to the common input inference format described in [Common Data Formats \- Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html)\. This topic contains a list of the available output formats for the SageMaker k\-nearest\-neighbor algorithm\.
+All Amazon SageMaker built\-in algorithms adhere to the common input inference format described in [Common Data Formats \- Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html)\. This topic contains a list of the available output formats for the Amazon SageMaker k\-nearest\-neighbor algorithm\.
 
 ## INPUT: CSV Request Format<a name="kNN-input-csv"></a>
 

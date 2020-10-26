@@ -39,7 +39,7 @@ The following attributes are supported by this element\.
 
 #### categories<a name="crowd-classifier-attributes-categories"></a>
 
-A JSON formatted array of strings, each of which is a category that a worker can assign to the text\. You should include "other" as a category, otherwise the worker my not be able to provide an answer\.
+A JSON formatted array of strings, each of which is a category that a worker can assign to the to the text\. You should include "other" as a category, otherwise the worker my not be able to provide an answer\.
 
 #### header<a name="crowd-classifier-attributes-header"></a>
 
@@ -91,5 +91,5 @@ The following is a sample of output from this element\.
 ### See Also<a name="crowd-classifier-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth to Label Data](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [Crowd HTML Elements Reference](sms-ui-template-reference.md)

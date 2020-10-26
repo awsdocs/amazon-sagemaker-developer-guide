@@ -1,6 +1,6 @@
 # Identity and Access Management for Amazon SageMaker<a name="security-iam"></a>
 
-AWS Identity and Access Management \(IAM\) is an AWS service that helps an administrator securely control access to AWS resources\. IAM administrators control who can be *authenticated* \(signed in\) and *authorized* \(have permissions\) to use SageMaker resources\. IAM is an AWS service that you can use with no additional charge\.
+AWS Identity and Access Management \(IAM\) is an AWS service that helps an administrator securely control access to AWS resources\. IAM administrators control who can be *authenticated* \(signed in\) and *authorized* \(have permissions\) to use Amazon SageMaker resources\. IAM is an AWS service that you can use with no additional charge\.
 
 **Topics**
 + [Audience](#security_iam_audience)
@@ -8,20 +8,20 @@ AWS Identity and Access Management \(IAM\) is an AWS service that helps an admin
 + [Managing Access Using Policies](#security_iam_access-manage)
 + [How Amazon SageMaker Works with IAM](security_iam_service-with-iam.md)
 + [Amazon SageMaker Identity\-Based Policy Examples](security_iam_id-based-policy-examples.md)
-+ [SageMaker Roles](sagemaker-roles.md)
++ [Amazon SageMaker Roles](sagemaker-roles.md)
 + [AWS Managed \(Predefined\) Policies for Amazon SageMaker](access-policy-aws-managed-policies.md)
 + [Amazon SageMaker API Permissions: Actions, Permissions, and Resources Reference](api-permissions-reference.md)
 + [Troubleshooting Amazon SageMaker Identity and Access](security_iam_troubleshoot.md)
 
 ## Audience<a name="security_iam_audience"></a>
 
-How you use AWS Identity and Access Management \(IAM\) differs, depending on the work you do in SageMaker\.
+How you use AWS Identity and Access Management \(IAM\) differs, depending on the work you do in Amazon SageMaker\.
 
-**Service user** – If you use the SageMaker service to do your job, then your administrator provides you with the credentials and permissions that you need\. As you use more SageMaker features to do your work, you might need additional permissions\. Understanding how access is managed can help you request the right permissions from your administrator\. If you cannot access a feature in SageMaker, see [Troubleshooting Amazon SageMaker Identity and Access](security_iam_troubleshoot.md)\.
+**Service user** – If you use the Amazon SageMaker service to do your job, then your administrator provides you with the credentials and permissions that you need\. As you use more Amazon SageMaker features to do your work, you might need additional permissions\. Understanding how access is managed can help you request the right permissions from your administrator\. If you cannot access a feature in Amazon SageMaker, see [Troubleshooting Amazon SageMaker Identity and Access](security_iam_troubleshoot.md)\.
 
-**Service administrator** – If you're in charge of SageMaker resources at your company, you probably have full access to SageMaker\. It's your job to determine which SageMaker features and resources your employees should access\. You must then submit requests to your IAM administrator to change the permissions of your service users\. Review the information on this page to understand the basic concepts of IAM\. To learn more about how your company can use IAM with SageMaker, see [How Amazon SageMaker Works with IAM](security_iam_service-with-iam.md)\.
+**Service administrator** – If you're in charge of Amazon SageMaker resources at your company, you probably have full access to Amazon SageMaker\. It's your job to determine which Amazon SageMaker features and resources your employees should access\. You must then submit requests to your IAM administrator to change the permissions of your service users\. Review the information on this page to understand the basic concepts of IAM\. To learn more about how your company can use IAM with Amazon SageMaker, see [How Amazon SageMaker Works with IAM](security_iam_service-with-iam.md)\.
 
-**IAM administrator** – If you're an IAM administrator, you might want to learn details about how you can write policies to manage access to SageMaker\. To view example SageMaker identity\-based policies that you can use in IAM, see [Amazon SageMaker Identity\-Based Policy Examples](security_iam_id-based-policy-examples.md)\.
+**IAM administrator** – If you're an IAM administrator, you might want to learn details about how you can write policies to manage access to Amazon SageMaker\. To view example Amazon SageMaker identity\-based policies that you can use in IAM, see [Amazon SageMaker Identity\-Based Policy Examples](security_iam_id-based-policy-examples.md)\.
 
 ## Authenticating with Identities<a name="security_iam_authentication"></a>
 
@@ -33,7 +33,7 @@ To sign in directly to the [AWS Management Console](https://console.aws.amazon.c
 
 Regardless of the authentication method that you use, you might also be required to provide additional security information\. For example, AWS recommends that you use multi\-factor authentication \(MFA\) to increase the security of your account\. To learn more, see [Using Multi\-Factor Authentication \(MFA\) in AWS](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html) in the *IAM User Guide*\.
 
-### AWS account root user<a name="security_iam_authentication-rootuser"></a>
+### AWS Account Root User<a name="security_iam_authentication-rootuser"></a>
 
   When you first create an AWS account, you begin with a single sign\-in identity that has complete access to all AWS services and resources in the account\. This identity is called the AWS account *root user* and is accessed by signing in with the email address and password that you used to create the account\. We strongly recommend that you do not use the root user for your everyday tasks, even the administrative ones\. Instead, adhere to the [best practice of using the root user only to create your first IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#create-iam-users)\. Then securely lock away the root user credentials and use them to perform only a few account and service management tasks\. 
 

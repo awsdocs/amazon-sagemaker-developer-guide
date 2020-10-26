@@ -8,7 +8,7 @@ You can access notebook metadata and App metadata using the Amazon SageMaker UI\
 
 ## Get Notebook Metadata<a name="notebooks-run-and-manage-metadata-notebook"></a>
 
-Jupyter notebooks contain optional metadata that you can access through the Amazon SageMaker UI\.
+Juypter notebooks contain optional metadata that you can access through the Amazon SageMaker UI\.
 
 **To view the notebook metadata**
 

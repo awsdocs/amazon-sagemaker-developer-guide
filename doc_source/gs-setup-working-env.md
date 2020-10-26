@@ -5,9 +5,9 @@ An Amazon SageMaker notebook instance is a fully managed machine learning \(ML\)
 **Note**  
 If necessary, you can change the notebook instance settings, including the ML compute instance type, later\.
 
-**To create a SageMaker notebook instance**
+**To create an Amazon SageMaker notebook instance**
 
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
+1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\. 
 
 1. Choose **Notebook instances**, then choose **Create notebook instance**\.
 
@@ -15,7 +15,7 @@ If necessary, you can change the notebook instance settings, including the ML co
 
    1. For **Notebook instance name**, type a name for your notebook instance\.
 
-   1. For **Instance type**, choose `ml.t2.medium`\. This is the least expensive instance type that notebook instances support, and it suffices for this exercise\. If a `ml.t2.medium` instance type isn't available in your AWS Region, choose `ml.t3.medium`\.
+   1. For **Instance type**, choose `ml.t2.medium`\. This is the least expensive instance type that notebook instances support, and it suffices for this exercise\.
 
    1. For **IAM role**, choose **Create a new role**, then choose **Create role**\.
 

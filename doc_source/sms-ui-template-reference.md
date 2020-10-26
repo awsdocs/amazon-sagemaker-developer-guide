@@ -8,9 +8,9 @@ As a starting point, you can use a template built using Crowd HTML Elements from
 
 These repositories include templates designed for audio, image, text, video, and other types of data labeling and annotation tasks\. 
 
-For more information about how to implement custom templates in Amazon SageMaker Ground Truth, see [Creating Custom Labeling Workflows](sms-custom-templates.md)\. To learn more about custom templates in Amazon Augmented AI, see [Create Custom Worker Task Template](a2i-custom-templates.md)\.
+For more information about how to implement custom templates in Amazon SageMaker Ground Truth, see [Creating Custom Labeling Workflows](sms-custom-templates.md)\. To learn more about custom templates in Amazon Augmented AI, see [Create Custom Worker Templates](a2i-custom-templates.md)\.
 
-## SageMaker Crowd HTML Elements<a name="general-topiclist"></a>
+## Amazon SageMaker Crowd HTML Elements<a name="general-topiclist"></a>
 
 Following is a list of Crowd HTML Elements that make building a custom template easier and provide a familiar UI for workers\. These elements are supported in Ground Truth, Augmented AI, and Mechanical Turk\.
 
@@ -33,10 +33,8 @@ Following is a list of Crowd HTML Elements that make building a custom template 
 + [crowd\-instance\-segmentation](sms-ui-template-crowd-instance-segmentation.md)
 + [crowd\-instructions](sms-ui-template-crowd-instructions.md)
 + [crowd\-keypoint](sms-ui-template-crowd-keypoint.md)
-+ [crowd\-line](sms-ui-template-crowd-line.md)
 + [crowd\-modal](sms-ui-template-crowd-modal.md)
 + [crowd\-polygon](sms-ui-template-crowd-polygon.md)
-+ [crowd\-polyline](sms-ui-template-crowd-polyline.md)
 + [crowd\-radio\-button](sms-ui-template-crowd-radio-button.md)
 + [crowd\-radio\-group](sms-ui-template-crowd-radio-group.md)
 + [crowd\-semantic\-segmentation](sms-ui-template-crowd-semantic-segmentation.md)

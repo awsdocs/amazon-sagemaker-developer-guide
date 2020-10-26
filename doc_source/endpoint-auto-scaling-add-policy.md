@@ -37,7 +37,7 @@ To register your model with Application Auto Scaling, use the [https://docs.aws.
 + `MaxCapacity`—The maximum number of instances to be managed by Application Auto Scaling\. This value must be set to at least 1 and must be equal to or greater than the value specified for `MinCapacity`\.
 
 **Example**  
-The following example shows how to register a SageMaker production variant that is dynamically scaled to use one to eight instances:   
+The following example shows how to register an Amazon SageMaker production variant that is dynamically scaled to use one to eight instances:   
 
 ```
 POST / HTTP/1.1

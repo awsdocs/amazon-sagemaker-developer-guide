@@ -10,7 +10,7 @@ To create and start a human loop, the AmazonAugmentedAIFullAccess policy must be
 
 Additionally, when using a built\-in task type, your IAM user or role must have permission to invoke API operations of the AWS service associated with your task type\. For example, if using Amazon Rekognition with Augmented AI, you must attach permissions required to call `DetectModerationLabels`\. For examples of identity\-based policies you can use to grant these permissions, see [Amazon Rekognition Identity\-Based Policy Examples](https://docs.aws.amazon.com/rekognition/latest/dg/security_iam_id-based-policy-examples.html) and [Amazon Textract Identity\-Based Policy Examples](https://docs.aws.amazon.com/textract/latest/dg/security_iam_id-based-policy-examples.html)\. You can also use the more general policy **AmazonAugmentedAIIntegratedAPIAccess** to grant these permissions\. For more information, see [Create an IAM User With Permissions to Invoke Amazon A2I, Amazon Textract, and Amazon Rekognition API Operations](a2i-permissions-security.md#a2i-grant-general-permission)\. 
 
-To create and start a human loop, you will need a flow definition ARN\. To learn how to create a flow definition \(or human review workflow\), see [Create a Human Review Workflow](a2i-create-flow-definition.md)\.
+To create and start a human loop, you will need a flow definition ARN\. To learn how to create a flow definition \(or human review workflow\), see [Create a Flow Definition](a2i-create-flow-definition.md)\.
 
 ## Create and Start a Human Loop for a Built\-in Task Type<a name="a2i-human-loop-built-in-task-type"></a>
 
@@ -32,7 +32,7 @@ After you run the `DetectModerationLabels` with a human loop configured, Amazon 
 
 ## Create and Start a Human Loop for a Custom Task Type<a name="a2i-instructions-starthumanloop"></a>
 
-To configure a human loop for a custom human review task, use the `StartHumanLoop` operation within your application\. This section provides an example of a human loop request using the AWS SDK for Python \(Boto3\) and the AWS Command Line Interface \(AWS CLI\)\. For documentation on other language specific SDK's that support `StartHumanLoop`, use the **See Also** section of [StartHumanLoop](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_StartHumanLoop.html) in the Amazon Augmented AI Runtime API documentation\. 
+To configure a human loop for a custom human review task, use the `StartHumanLoop` operation within your application\. This section provides an example of a human loop request using the AWS SDK for Python \(Boto 3\) and the AWS Command Line Interface \(AWS CLI\)\. For documentation on other language specific SDK's that support `StartHumanLoop`, use the **See Also** section of [StartHumanLoop](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_StartHumanLoop.html) in the Amazon Augmented AI Runtime API documentation\. 
 
 **Prerequisites**
 
@@ -45,7 +45,7 @@ To complete this procedure, you need:
 
 1. For `DataAttributes`, specify a set of `ContentClassifiers` related to the input provided to the `StartHumanLoop` operation\. Use content classifiers to decalre that your content is free of personally identifiable information or adult content\. 
 
-   To use Amazon Mechanical Turk, ensure your data is free of Personally Identifiable Information and include the `FreeOfPersonallyIdentifiableInformation` content classifier\. If you data is free of adult content, also include the `'FreeOfAdultContent'` classifier\. If you do not use these content classifiers, SageMaker may restrict the Mechanical Turk workers that can view your task\.
+   To use Amazon Mechanical Turk, ensure your data is free of Personally Identifiable Information and include the `FreeOfPersonallyIdentifiableInformation` content classifier\. If you data is free of adult content, also include the `'FreeOfAdultContent'` classifier\. If you do not use these content classifiers, Amazon SageMaker may restrict the Mechanical Turk workers that can view your task\.
 
 1. For `FlowDefinitionArn`, enter the Amazon Resource Name \(ARN\) of your flow definition\.
 
@@ -57,9 +57,9 @@ To complete this procedure, you need:
 + To start a human loop, submit a request similar to the following examples using your preferred language specific SDK\. 
 
 ------
-#### [ AWS SDK for Python \(Boto3\) ]
+#### [ AWS SDK for Python \(Boto 3\) ]
 
-The following request example uses the SDK for Python \(Boto3\)\. For more information, see [Boto 3 Augmented AI Runtime](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker-a2i-runtime.html#AugmentedAIRuntime.Client.start_human_loop) in the *AWS SDK for Python \(Boto\) API Reference*\.
+The following request example uses the SDK for Python \(Boto 3\)\. For more information, see [Boto 3 Augmented AI Runtime](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker-a2i-runtime.html#AugmentedAIRuntime.Client.start_human_loop) in the *AWS SDK for Python \(Boto\) API Reference*\.
 
 ```
 response = client.start_human_loop(

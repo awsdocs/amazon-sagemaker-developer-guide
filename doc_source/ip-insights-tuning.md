@@ -17,7 +17,7 @@ The IP Insights algorithm computes a `validation:discriminator_auc` metric durin
 
 ## Tunable IP Insights Hyperparameters<a name="ip-insights-tunable-hyperparameters"></a>
 
-You can tune the following hyperparameters for the SageMaker IP Insights algorithm\. 
+You can tune the following hyperparameters for the Amazon SageMaker IP Insights algorithm\. 
 
 
 | Parameter Name | Parameter Type | Recommended Ranges | 
