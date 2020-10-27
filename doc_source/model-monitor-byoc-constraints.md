@@ -38,7 +38,7 @@ A constraints\.json file is used to express the constraints that a dataset must 
     "distribution_constraints": {
         "perform_comparison": "Enabled",
         "comparison_threshold": 0.1,
-        "comparion_method": "Simple"||"Robust"
+        "comparison_method": "Simple"||"Robust"
     }
 }}#schema
 ```
