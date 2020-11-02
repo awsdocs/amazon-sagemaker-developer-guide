@@ -5,9 +5,5 @@ You can create a labeling job in the Amazon SageMaker console and by using an AW
 After you have chosen your task type, use the topics on this page to learn how to create a labeling job\. If you are a new Ground Truth user, we recommend that you start by walking through the demo in [Getting started](sms-getting-started.md)\.
 
 **Topics**
-+ [Built\-in Task Types](sms-task-types.md)
-+ [Creating Instruction Pages](sms-creating-instruction-pages.md)
 + [Create a Labeling Job \(Console\)](sms-create-labeling-job-console.md)
 + [Create a Labeling Job \(API\)](sms-create-labeling-job-api.md)
-+ [Create a Streaming Labeling Job](sms-streaming-create-job.md)
-+ [Create a Labeling Category Configuration File with Label Category Attributes](sms-label-cat-config-attributes.md)

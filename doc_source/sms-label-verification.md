@@ -8,4 +8,4 @@ You create a label verification labeling job using the Ground Truth section of t
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/label-verification-example.png)
 
-You can create a label verification labeling job using the SageMaker console or API\. To learn how to start a label verification job on the console, see [Getting started](sms-getting-started.md)\. To use the API, see [CreateLabelingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)\.
+You can create a label verification labeling job using the Amazon SageMaker console or API\. To learn how to start a label verification job on the console, see [Getting started](sms-getting-started.md)\. To use the API, see [CreateLabelingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)\.

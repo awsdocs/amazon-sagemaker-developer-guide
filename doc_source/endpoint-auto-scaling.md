@@ -10,7 +10,6 @@ Amazon SageMaker supports automatic scaling \(autoscaling\) for your hosted mode
 + [Apply a scaling policy](endpoint-auto-scaling-add-code-apply.md)
 + [Edit a scaling policy](endpoint-auto-scaling-edit.md)
 + [Delete a scaling policy](endpoint-auto-scaling-delete.md)
-+ [Query Endpoint Autoscaling History](endpoint-scaling-query-history.md)
 + [Update or delete endpoints that use automatic scaling](endpoint-scaling.md)
 + [Load testing your autoscaling configuration](endpoint-scaling-loadtest.md)
 + [Use AWS CloudFormation to update autoscaling policies](endpoint-scaling-cloudformation.md)

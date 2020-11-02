@@ -1,4 +1,4 @@
-# How Are Amazon SageMaker Studio Notebooks Different from Notebook Instances?<a name="notebooks-comparison"></a>
+# How Are Studio Notebooks Different from Notebook Instances?<a name="notebooks-comparison"></a>
 
 When you're starting a new notebook, we recommend that you create the notebook in Amazon SageMaker Studio instead of launching a notebook instance from the Amazon SageMaker console\. There are many benefits to using a SageMaker Studio notebook, including the following:
 + Starting a Studio notebook is faster than launching an instance\-based notebook\. Typically, it is 5\-10 times faster than instance\-based notebooks\.

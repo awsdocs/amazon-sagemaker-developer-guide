@@ -74,5 +74,5 @@ This element outputs the `name` as the name of an object, containing the `value`
 ### See Also<a name="toggle-button-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth to Label Data](sms.md)
++ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
 + [Crowd HTML Elements Reference](sms-ui-template-reference.md)

@@ -6,13 +6,13 @@ These types of jobs fall into two distinct categories:
 + Label verification – Workers indicate if the existing labels are correct, or rate their quality, and can add comments to explain their reasoning\.
 + Label adjustment – Workers adjust prior annotations to correct them\.
 
-You can use Ground Truth to adjust or verify only labels that resulted from bounding box and semantic segmentation labeling jobs\. You can start a label verification and adjustment jobs using the SageMaker console or the API\.
+You can use Ground Truth to adjust or verify only labels that resulted from bounding box and semantic segmentation labeling jobs\. You can start a label verification and adjustment jobs using the Amazon SageMaker console or the API\.
 
 ## Create and Start a Label Verification Job \(Console\)<a name="sms-data-verify-start-console"></a>
 
 **To start a label verification job \(console\)**
 
-1. Open the SageMaker console: [https://console.aws.amazon.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) and choose **Labeling jobs**\.
+1. Open the Amazon SageMaker console: [https://console.aws.amazon.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) and choose **Labeling jobs**\.
 
 1. Start a new labeling job by [chaining](sms-reusing-data.md) a prior job or start from scratch, specifying an input manifest that contains labeled data objects\.
 
@@ -28,11 +28,11 @@ You can use Ground Truth to adjust or verify only labels that resulted from boun
 
 ## Start an Label Adjustment Job \(Console\)<a name="sms-data-adjust-start-console"></a>
 
-Use the SageMaker console to start a label verification or adjustment job\.
+Use the Amazon SageMaker console to start a label verification or adjustment job\.
 
 **To start a label adjustment job \(console\)**
 
-1. Open the SageMaker console: [https://console.aws.amazon.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) and choose **Labeling jobs**\.
+1. Open the Amazon SageMaker console: [https://console.aws.amazon.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) and choose **Labeling jobs**\.
 
 1. Start a new labeling job by [chaining](sms-reusing-data.md) a prior job or start from scratch, specifying an input manifest that contains labeled data objects\.
 
@@ -58,9 +58,9 @@ Start a label verification or adjustment job by chaining a successfully complete
 
 To create a label verification or adjustment job, use the following guidelines to specify API attributes for the `CreateLabelingJob` operation:
 + Use the [LabelAttributeName](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#SageMaker-CreateLabelingJob-request-LabelAttributeName) parameter to specify the output label name that you want to use for verified or adjusted labels\.
-+ If you are chaining the job, the labels from the previous labeling job to be adjusted or verified will be specified in the custom UI template\. To learn how to create a custom template, see [Create Custom Worker Task Template](a2i-custom-templates.md)\.
++ If you are chaining the job, the labels from the previous labeling job to be adjusted or verified will be specified in the custom UI template\. To learn how to create a custom template, see [Create Custom Worker Templates](a2i-custom-templates.md)\.
 
-  Identify the location of the UI template in the [UiTemplateS3Uri](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UiConfig.html) parameter\. SageMaker provides widgets that you can use in your custom template to display old labels\. Use the `initial-value` attribute in one of the following crowd elements to extract the labels that need verification or adjustment and include them in your task template:
+  Identify the location of the UI template in the [UiTemplateS3Uri](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UiConfig.html) parameter\. Amazon SageMaker provides widgets that you can use in your custom template to display old labels\. Use the `initial-value` attribute in one of the following crowd elements to extract the labels that need verification or adjustment and include them in your task template:
   + [crowd\-semantic\-segmentation](sms-ui-template-crowd-semantic-segmentation.md)—Use this crowd element in your custom UI task template to specify semantic segmentation labels that need to be verified or adjusted\.
   + [crowd\-bounding\-box](sms-ui-template-crowd-bounding-box.md)—Use this crowd element in your custom UI task template to specify bounding box labels that need to be verified or adjusted\.
 + The [LabelCategoryConfigS3Uri](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#SageMaker-CreateLabelingJob-request-LabelCategoryConfigS3Uri) parameter must contain the same label categories as the previous labeling job\. Adding new label categories or adjusting label categories is not supported\.

@@ -33,7 +33,7 @@ When creating a batch transform job with [ `CreateTransformJob`](https://docs.aw
 1. Specify which portion of the joined input and transformed data from the batch transform job to include in the output file with the `OutputFilter` parameter\.
 
 1.  Choose either JSON\- or CSV\-formatted files for input: 
-   + For JSON\- or JSON Lines\-formatted input files, SageMaker either adds the `SageMakerOutput` attribute to the input file or creates a new JSON output file with the `SageMakerInput` and `SageMakerOutput` attributes\. For more information, see [ `DataProcessing`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DataProcessing.html)\. 
+   + For JSON\- or JSON Lines\-formatted input files, Amazon SageMaker either adds the `SageMakerOutput` attribute to the input file or creates a new JSON output file with the `SageMakerInput` and `SageMakerOutput` attributes\. For more information, see [ `DataProcessing`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DataProcessing.html)\. 
    + For CSV\-formatted input files, the joined input data is followed by the transformed data and the output is a CSV file\.
 
 If you use an algorithm with the `DataProcessing` structure, it must support your chosen format for *both* input and output files\. For example, with the [ `TransformOutput`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformOutput.html) field of the `CreateTransformJob` API, you must set both the [ `Content Type`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Channel.html#SageMaker-Type-Channel-ContentType) and [ `Accept`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformOutput.html#SageMaker-Type-TransformOutput-Accept) parameters to one of the following values: `text/csv`, `application/json`, or `application/jsonlines`\. The syntax for specifying columns in a CSV file and specifying attributes in a JSON file are different\. Using the wrong syntax causes an error\. For more information, see [Batch Transform Examples](#batch-transform-data-processing-examples)\. For more information about input and output file formats for built\-in algorithms, see [Use Amazon SageMaker built\-in algorithms](algos.md)\.
@@ -44,7 +44,7 @@ The record delimiters for the input and output must also be consistent with your
 
 ## Supported JSONPath Operators<a name="data-processing-operators"></a>
 
-To filter and join the input data and inference, use a JSONPath subexpression\. SageMaker supports only a subset of the defined JSONPath operators\. The following table lists the supported JSONPath operators\. For CSV data, each row is taken as a JSON array, so only index based JSONPaths can be applied, e\.g\. `$[0]`, `$[1:]`\. CSV data should also follow [RFC format](https://tools.ietf.org/html/rfc4180)\.
+To filter and join the input data and inference, use a JSONPath subexpression\. Amazon SageMaker supports only a subset of the defined JSONPath operators\. The following table lists the supported JSONPath operators\. For CSV data, each row is taken as a JSON array, so only index based JSONPaths can be applied, e\.g\. `$[0]`, `$[1:]`\. CSV data should also follow [RFC format](https://tools.ietf.org/html/rfc4180)\.
 
 
 | JSONPath Operator | Description | Example | 
@@ -54,7 +54,7 @@ To filter and join the input data and inference, use a JSONPath subexpression\. 
 | \* |  A wildcard\. Use in place of an attribute name or numeric value\.  |  `$.id.*`  | 
 | \['<name>' \(,'<name>'\)\] |  A bracket\-notated element or multiple child elements\.  |  `$['id','SageMakerOutput']`  | 
 | \[<number> \(,<number>\)\] |  An index or array of indexes\. Negative index values are also supported\. A `-1` index refers to the last element in an array\.  |  `$[1]` , `$[1,3,5]`  | 
-| \[<start>:<end>\] |  An array slice operator\.  The array slice\(\) method extracts a section of an array and returns a new array\. If you omit *<start>*, SageMaker uses the first element of the array\. If you omit *<end>*, SageMaker uses the last element of the array\.  |  `$[2:5]`, `$[:5]`, `$[2:]`  | 
+| \[<start>:<end>\] |  An array slice operator\.  The array slice\(\) method extracts a section of an array and returns a new array\. If you omit *<start>*, Amazon SageMaker uses the first element of the array\. If you omit *<end>*, Amazon SageMaker uses the last element of the array\.  |  `$[2:5]`, `$[:5]`, `$[2:]`  | 
 
 When using the bracket\-notation to specify multiple child elements of a given field, additional nesting of children within brackets is not supported\. For example, `$.field1.['child1','child2']` is supported while `$.field1.['child1','child2.grandchild']` is not\. 
 
@@ -115,7 +115,7 @@ If you're using the AWS SDK for Python \(Boto 3\), join all input data with the 
 
 For JSON or JSON Lines input files, the results are in the `SageMakerOutput` key in the input JSON file\. For example, if the input is a JSON file that contains the key\-value pair `{"key":1}`, the data transform result might be `{"label":1}`\.
 
-SageMaker stores both in the input file in the `SageMakerInput` key\.
+Amazon SageMaker stores both in the input file in the `SageMakerInput` key\.
 
 ```
 {
@@ -125,7 +125,7 @@ SageMaker stores both in the input file in the `SageMakerInput` key\.
 ```
 
 **Note**  
-The joined result for JSON must be a key\-value pair object\. If the input isn't a key\-value pair object, SageMaker creates a new JSON file\. In the new JSON file, the input data is stored in the `SageMakerInput` key and the results are stored as the `SageMakerOutput` value\.
+The joined result for JSON must be a key\-value pair object\. If the input isn't a key\-value pair object, Amazon SageMaker creates a new JSON file\. In the new JSON file, the input data is stored in the `SageMakerInput` key and the results are stored as the `SageMakerOutput` value\.
 
 For a CSV file, for example, if the record is `[1,2,3]`, and the label result is `[1]`, then the output file would contain `[1,2,3,1]`\.
 
@@ -150,9 +150,9 @@ If you are using the AWS SDK for Python \(Boto 3\), add the following code to yo
 }
 ```
 
-To specify columns in SageMaker, use the index of the array elements\. The first column is index 0, the second column is index 1, and the sixth column is index 5\.
+To specify columns in Amazon SageMaker, use the index of the array elements\. The first column is index 0, the second column is index 1, and the sixth column is index 5\.
 
-To exclude the first column from the input, set [ `InputFilter`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html#SageMaker-Type-DataProcessing-InputFilter                     ) to `"$[1:]"`\. The colon \(`:`\) tells SageMaker to include all of the elements between two values, inclusive\. For example, `$[1:4]` specifies the second through fifth columns\.
+To exclude the first column from the input, set [ `InputFilter`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html#SageMaker-Type-DataProcessing-InputFilter                     ) to `"$[1:]"`\. The colon \(`:`\) tells Amazon SageMaker to include all of the elements between two values, inclusive\. For example, `$[1:4]` specifies the second through fifth columns\.
 
 If you omit the number after the colon, for example, `[5:]`, the subset includes all columns from the 6th column through the last column\. If you omit the number before the colon, for example, `[:5]`, the subset includes all columns from the first column \(index 0\) through the sixth column\.
 

@@ -1,4 +1,4 @@
-# Tune a linear learner model<a name="linear-learner-tuning"></a>
+# Tune a Linear Learner Model<a name="linear-learner-tuning"></a>
 
 *Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an objective metric\. You choose the objective metric from the metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the objective metric\. 
 
@@ -6,7 +6,7 @@ The linear learner algorithm also has an internal mechanism for tuning hyperpara
 
 For more information about model tuning, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
 
-## Metrics computed by the linear learner algorithm<a name="linear-learner-metrics"></a>
+## Metrics Computed by the Linear Learner Algorithm<a name="linear-learner-metrics"></a>
 
 The linear learner algorithm reports the metrics in the following table, which are computed during training\. Choose one of them as the objective metric\. To avoid overfitting, we recommend tuning the model against a validation metric instead of a training metric\.
 
@@ -24,7 +24,7 @@ The linear learner algorithm reports the metrics in the following table, which a
 | validation:precision |  The precision of the final model on the validation dataset\. If you choose this metric as the objective, we recommend setting a target recall by setting the `binary_classifier_model_selection` hyperparameter to `precision_at_target_recall` and setting the value for the `target_recall` hyperparameter\.  |  Maximize  | 
 | validation:recall |  The recall of the final model on the validation dataset\. If you choose this metric as the objective, we recommend setting a target precision by setting the `binary_classifier_model_selection` hyperparameter to `recall_at_target_precision` and setting the value for the `target_precision` hyperparameter\.  |  Maximize  | 
 
-## Tuning linear learner hyperparameters<a name="linear-learner-tunable-hyperparameters"></a>
+## Tuning Linear Learner Hyperparameters<a name="linear-learner-tunable-hyperparameters"></a>
 
 You can tune a linear learner model with the following hyperparameters\.
 

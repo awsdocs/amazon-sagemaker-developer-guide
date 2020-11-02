@@ -2,7 +2,7 @@
 
 If you choose a custom template, you'll reach the **Custom labeling task panel**\. There you can select from multiple starter templates that represent some of the more common tasks\. The templates provide a starting point to work from in building your customized labeling task's template\.
 
-In this demonstration, you work with the **Intent Detection** template, which uses the `crowd\-classifier` element, and the AWS Lambda functions needed for processing your data before and after the task\.
+In this demonstration, you work with the **Intent Detection** template, which uses the `[crowd\-classifier](sms-ui-template-crowd-classifier.md)` element, and the AWS Lambda functions needed for processing your data before and after the task\.
 
 **Topics**
 + [Starter Intent Detection custom template](#sms-custom-templates-step2-demo2-base-template)

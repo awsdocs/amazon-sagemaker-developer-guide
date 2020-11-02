@@ -1,8 +1,6 @@
 # Accepted Raw 3D Data Formats<a name="sms-point-cloud-raw-data-types"></a>
 
-Ground Truth uses your 3D point cloud data to render a 3D scenes that workers annotate\. This section describes the raw data formats that are accepted for point cloud data and sensor fusion data for a point cloud frame\. To learn how to create an input manifest file to connect your raw input data files with Ground Truth, see [Create an Input Manifest File for a 3D Point Cloud Labeling Job](sms-point-cloud-input-manifest.md)\.
-
-For each frame, Ground Truth supports Compact Binary Pack Format \(\.bin\) and ASCII \(\.txt\) files\. These files contain information about the location \(`x`, `y`, and `z` coordinates\) of all points that make up that frame, and, optionally, information about the pixel color of each point for colored point clouds\. When you create a 3D point cloud labeling job input manifest file, you can specify the format of your raw data in the `format` parameter\. 
+Ground Truth uses your 3D point cloud data to render a 3D scenes that workers annotate\. This section describes the raw data formats that are accepted for point cloud data and sensor fusion data for a point cloud frame\. For each frame, Ground Truth supports Compact Binary Pack Format \(\.bin\) and ASCII \(\.txt\) files\. These files contain information about the location \(`x`, `y`, and `z` coordinates\) of all points that make up that frame, and, optionally, information about the pixel color of each point for colored point clouds\. When you create a 3D point cloud labeling job input manifest file, you can specify the format of your raw data in the `format` parameter\. 
 
 The following table lists elements that Ground Truth supports in point cloud frame files to describe individual points\. 
 

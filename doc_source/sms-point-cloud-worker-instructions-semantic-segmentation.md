@@ -4,7 +4,7 @@ Use this page to become familiarize with the user interface and tools available 
 
 **Topics**
 + [Your Task](#sms-point-cloud-worker-instructions-ss-task)
-+ [Navigate the UI](#sms-point-cloud-worker-instructions-worker-ui-ss)
++ [Navigate the Worker Portal](#sms-point-cloud-worker-instructions-worker-ui-ss)
 + [Icon Guide](#sms-point-cloud-worker-instructions-ss-icons)
 + [Shortcuts](#sms-point-cloud-worker-instructions-ss-hot-keys)
 + [Saving Your Work and Submitting](#sms-point-cloud-worker-instructions-saving-work-ss)
@@ -26,7 +26,7 @@ After you've painted one or more objects using a lable category, you can select 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pointcloud/gifs/semantic_seg/ss-view-options.gif)
 
-## Navigate the UI<a name="sms-point-cloud-worker-instructions-worker-ui-ss"></a>
+## Navigate the Worker Portal<a name="sms-point-cloud-worker-instructions-worker-ui-ss"></a>
 
 You can navigate in the 3D scene using their keyboard and mouse\. You can:
 + Double click on specific objects in the point cloud to zoom into them\.
@@ -70,9 +70,7 @@ Use this table to learn about the icons available in your worker task portal\.
 
 ## Shortcuts<a name="sms-point-cloud-worker-instructions-ss-hot-keys"></a>
 
-The shortcuts listed in the **Shortcuts** menu can help you navigate the 3D point cloud and use the paint tool\. 
-
-Before you start your task, it is recommended that you review the **Shortcuts** menu and become acquainted with these commands\. 
+The shortcuts listed in the **Shortcuts** menu can help you navigate the 3D point cloud and use the paint tool\. Before you start your task, we recommend that you review the **Shortcuts** menu and become acquainted with these commands\. 
 
 ## Saving Your Work and Submitting<a name="sms-point-cloud-worker-instructions-saving-work-ss"></a>
 

@@ -4,7 +4,7 @@ To use AWS SSO authentication, you must belong to an AWS SSO organization\. If y
 
 **To create an AWS SSO organization**
 
-1. On the **SageMaker Studio** page, under **Get started**, choose **Standard setup**\.
+1. On the **Amazon SageMaker Studio Control Panel**, under **Get started**, choose **Standard setup**\.
 
 1. Choose the **set up an account** link to open the AWS Single Sign\-On \(AWS SSO\) console\.
 
@@ -20,4 +20,4 @@ To use AWS SSO authentication, you must belong to an AWS SSO organization\. If y
 
 1. To add more users, repeat steps 4 through 6\.
 
-Return to SageMaker Studio to continue to onboard using AWS SSO authentication\.
+Return to Amazon SageMaker Studio to continue to onboard using AWS SSO authentication\.

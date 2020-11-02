@@ -9,7 +9,7 @@ To use this operation, you need the following:
   + If you are using a custom labeling workflow, you can create a custom template and save the template in your S3 bucket\. To learn how to built a custom worker template, see [Step 2: Creating your custom labeling task template](sms-custom-templates-step2.md)\. For custom HTML elements that you can use to customize your template, see [Crowd HTML Elements Reference](sms-ui-template-reference.md)\. For a repository of demo templates for a variety of labeling tasks, see [Amazon SageMaker Ground Truth Sample Task UIs ](https://github.com/aws-samples/amazon-sagemaker-ground-truth-task-uis)\.
 + At least one S3 bucket to store your input and output data\. 
 + An input manifest file that specifies your input data\. For information about creating an input manifest, see [Input Data](sms-data-input.md)\. 
-+ A label category configuration file\. For 3D point cloud task type, use the format in [Create a Labeling Category Configuration File with Label Category Attributes](sms-label-cat-config-attributes.md)\. For all other built\-in task types and custom tasks, your label category configuration file must be a JSON file in the following format\. Identify the labels you want to use by replacing `label_1`, `label_2`,`...`,`label_n` with your label categories\.
++ A label category configuration file\. For 3D point cloud task type, use the format in [Create a Labeling Category Configuration File for 3D Point Cloud Labeling Jobs](sms-point-cloud-label-category-config.md)\. For all other built\-in task types and custom tasks, your label category configuration file must be a JSON file in the following format\. Identify the labels you want to use by replacing `label_1`, `label_2`,`...`,`label_n` with your label categories\.
 
   ```
   {
@@ -56,131 +56,65 @@ To use this operation, you need the following:
   + For custom labeling workflows, you must provide a custom pre\- and post\-annotation Lambda ARN\. To learn how to create these Lambda functions, see [Step 3: Processing with AWS Lambda](sms-custom-templates-step3.md)\.
 + A work team ARN\. To learn more about work teams and workforces, see [Create and Manage Workforces](sms-workforce-management.md)\. 
 
-  If you use the [Amazon Mechanical Turk workforce](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management-public.html), use the `ContentClassifiers` parameter in `CreateLabelingJob` to declare that your content is free of personally identifiable information or adult content\. If your content contains personally identifiable information or adult content, SageMaker might restrict the Amazon Mechanical Turk workers that can view your task\. 
+  If you use the [Amazon Mechanical Turk workforce](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management-public.html), use the `ContentClassifiers` parameter in `CreateLabelingJob` to declare that your content is free of personally identifiable information or adult content\. If your content contains personally identifiable information or adult content, Amazon SageMaker might restrict the Amazon Mechanical Turk workers that can view your task\. 
 
   If you are creating a labeling job for a point cloud task type, you cannot use the Amazon Mechanical Turk workforce\. 
 + \(Optional\) For [some task types](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html), you can have multiple workers label a single data object by inputting a number greater than one for the `NumberOfHumanWorkersPerDataObject` parameter\. For more information about annotation consolidation, see [Consolidate Annotations ](sms-annotation-consolidation.md)\.
 
 The following is an example of an [AWS Python SDK \(Boto3\) request](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_labeling_job) to create a labeling job for a built\-in task type in the US East \(N\. Virginia\) Region\. 
 
-------
-#### [ AWS SDK for Python \(Boto3\) ]
-
-The following is an example of an [AWS Python SDK \(Boto3\) request](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_labeling_job) to create a labeling job for a built\-in task type in the US East \(N\. Virginia\) Region using a private workforce\. Replace all *red\-italized text* with your labeling job resources and specifications\. 
-
 ```
 response = client.create_labeling_job(
-    LabelingJobName="example-labeling-job",
-    LabelAttributeName="label",
+    LabelingJobName='example-multi-label-image-classification-labeling-job,
+    LabelAttributeName='label',
     InputConfig={
         'DataSource': {
             'S3DataSource': {
-                'ManifestS3Uri': "s3://bucket/path/manifest-with-input-data.json"
+                'ManifestS3Uri': 's3://bucket/path/manifest-with-input-data.json'
             }
         },
         'DataAttributes': {
             'ContentClassifiers': [
-                "FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent",
+                'FreeOfPersonallyIdentifiableInformation'|'FreeOfAdultContent',
             ]
         }
     },
     OutputConfig={
-        'S3OutputPath': "s3://bucket/path/file-to-store-output-data",
-        'KmsKeyId': "string"
+        'S3OutputPath': 's3://bucket/path/file-to-store-output-data',
+        'KmsKeyId': 'string'
     },
-    RoleArn="arn:aws:iam::*:role/*,
-    LabelCategoryConfigS3Uri="s3://bucket/path/label-categories.json",
+    RoleArn='arn:aws:iam::*:role/*,
+    LabelCategoryConfigS3Uri='s3://bucket/path/label-categories.json',
     StoppingConditions={
         'MaxHumanLabeledObjectCount': 123,
         'MaxPercentageOfInputDatasetLabeled': 123
     },
     HumanTaskConfig={
-        'WorkteamArn': "arn:aws:sagemaker:region:*:workteam/private-crowd/*",
+        'WorkteamArn': 'arn:aws:sagemaker:region:*:workteam/private-crowd/*',
         'UiConfig': {
-            'UiTemplateS3Uri': "s3://bucket/path/custom-worker-task-template.html"
+            'UiTemplateS3Uri': 's3://bucket/path/custom-worker-task-template.html'
         },
-        'PreHumanTaskLambdaArn': "arn:aws:lambda:us-east-1:432418664414:function:PRE-tasktype",
+        'PreHumanTaskLambdaArn': 'arn:aws:lambda:us-east-1:432418664414:function:PRE-tasktype,
         'TaskKeywords': [
-            "Images",
-            "Classification",
-            "Multi-label"
+            'Image Classification',
         ],
-        'TaskTitle': "Multi-label image classification task",
-        'TaskDescription': "Select all labels that apply to the images shown",
-        'NumberOfHumanWorkersPerDataObject': 1,
-        'TaskTimeLimitInSeconds': 3600,
-        'TaskAvailabilityLifetimeInSeconds': 21600,
-        'MaxConcurrentTaskCount': 1000,
+        'TaskTitle': 'Multi-label image classification task',
+        'TaskDescription': 'Select all labels that apply to the images shown',
+        'NumberOfHumanWorkersPerDataObject': 123,
+        'TaskTimeLimitInSeconds': 123,
+        'TaskAvailabilityLifetimeInSeconds': 123,
+        'MaxConcurrentTaskCount': 123,
         'AnnotationConsolidationConfig': {
-            'AnnotationConsolidationLambdaArn': "arn:aws:lambda:us-east-1:432418664414:function:ACS-"
+            'AnnotationConsolidationLambdaArn': 'arn:aws:lambda:us-east-1:432418664414:function:ACS-'
         },
     Tags=[
         {
-            'Key': "string",
-            'Value': "string"
+            'Key': 'string',
+            'Value': 'string'
         },
     ]
 )
 ```
-
-------
-#### [ AWS CLI ]
-
-The following is an example of an AWS CLI request to create a labeling job for a built\-in task type in the US East \(N\. Virginia\) Region using the [Amazon Mechanical Turk workforce](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management-public.html)\. For more information, see [start\-human\-loop](https://docs.aws.amazon.com/cli/latest/reference/sagemaker/create-labeling-job.html) in the *[AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/)*\. Replace all *red\-italized text* with your labeling job resources and specifications\. 
-
-```
-$ aws --region us-east-1 sagemaker create-labeling-job \
---labeling-job-name "example-labeling-job" \
---label-attribute-name "label" \
---role-arn "arn:aws:iam::account-id:role/role-name" \
---input-config '{
-        "DataAttributes": {
-            "ContentClassifiers": [
-                "FreeOfPersonallyIdentifiableInformation",
-                "FreeOfAdultContent"
-            ]
-        },
-        "DataSource": {
-            "S3DataSource": {
-                "ManifestS3Uri": "s3://bucket/path/manifest-with-input-data.json"
-            }
-        }
-    }' \
---output-config '{
-        "KmsKeyId": "",
-        "S3OutputPath": "s3://bucket/path/file-to-store-output-data"
-    }' \
---human-task-config '{
-        "AnnotationConsolidationConfig": {
-            "AnnotationConsolidationLambdaArn": "arn:aws:lambda:us-east-1:432418664414:function:ACS-"
-        },
-        "TaskAvailabilityLifetimeInSeconds": 21600,
-        "TaskTimeLimitInSeconds": 3600,
-        "NumberOfHumanWorkersPerDataObject": 1,
-        "PreHumanTaskLambdaArn":  "arn:aws:lambda:us-east-1:432418664414:function:PRE-tasktype",
-        "WorkteamArn": "arn:aws:sagemaker:us-east-1:394669845002:workteam/public-crowd/default",
-        "PublicWorkforceTaskPrice": {
-            "AmountInUsd": {
-                "Dollars": 0,
-                "TenthFractionsOfACent": 6,
-                "Cents": 3
-            }
-        },
-        "TaskDescription": "Select all labels that apply to the images shown",
-        "MaxConcurrentTaskCount": 1000,
-        "TaskTitle": "Multi-label image classification task",,
-        "TaskKeywords": [
-            "Images",
-            "Classification",
-            "Multi-label"
-        ],
-        "UiConfig": {
-            "UiTemplateS3Uri": "s3://bucket/path/custom-worker-task-template.html"
-        }
-    }'
-```
-
-------
 
 **Important**  
 If you set `TaskTimeLimitInSeconds` to be greater than one hour \(3,600 seconds\), you must increases the max session duration of your execution role to be greater than or equal to the task timeout\.   

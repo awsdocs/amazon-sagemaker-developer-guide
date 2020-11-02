@@ -43,30 +43,30 @@ The following restrictions apply to all warm start tuning jobs:
 
 ## Warm Start Tuning Sample Notebook<a name="warm-start-tuning-sample-notebooks"></a>
 
-For a sample notebook that shows how to use warm start tuning, see [https://github\.com/awslabs/amazon\-sagemaker\-examples/blob/master/hyperparameter\_tuning/image\_classification\_warmstart/hpo\_image\_classification\_warmstart\.ipynb](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/hyperparameter_tuning/image_classification_warmstart/hpo_image_classification_warmstart.ipynb)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Example Notebooks](howitworks-nbexamples.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the SageMaker samples\. The warm start tuning example notebook is located in the **Hyperparameter tuning** section, and is named `hpo_image_classification_warmstart.ipynb`\. To open a notebook, click on its **Use** tab and select **Create copy**\.
+For a sample notebook that shows how to use warm start tuning, see [https://github\.com/awslabs/amazon\-sagemaker\-examples/blob/master/hyperparameter\_tuning/image\_classification\_warmstart/hpo\_image\_classification\_warmstart\.ipynb](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/hyperparameter_tuning/image_classification_warmstart/hpo_image_classification_warmstart.ipynb)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Example Notebooks](howitworks-nbexamples.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the Amazon SageMaker samples\. The warm start tuning example notebook is located in the **Hyperparameter tuning** section, and is named `hpo_image_classification_warmstart.ipynb`\. To open a notebook, click on its **Use** tab and select **Create copy**\.
 
 ## Create a Warm Start Tuning Job<a name="warm-start-tuning-example"></a>
 
-You can use either the low\-level AWS SDK for Python \(Boto 3\) or the high\-level SageMaker Python SDK to create a warm start tuning job\.
+You can use either the low\-level AWS SDK for Python \(Boto 3\) or the high\-level Amazon SageMaker Python SDK to create a warm start tuning job\.
 
 **Topics**
-+ [Create a Warm Start Tuning Job \( Low\-level SageMaker API for Python \(Boto 3\)\)](#warm-start-tuning-example-boto)
-+ [Create a Warm Start Tuning Job \(SageMaker Python SDK\)](#warm-start-tuning-example-sdk)
++ [Create a Warm Start Tuning Job \( Low\-level Amazon SageMaker API for Python \(Boto 3\)\)](#warm-start-tuning-example-boto)
++ [Create a Warm Start Tuning Job \(Amazon SageMaker Python SDK\)](#warm-start-tuning-example-sdk)
 
-### Create a Warm Start Tuning Job \( Low\-level SageMaker API for Python \(Boto 3\)\)<a name="warm-start-tuning-example-boto"></a>
+### Create a Warm Start Tuning Job \( Low\-level Amazon SageMaker API for Python \(Boto 3\)\)<a name="warm-start-tuning-example-boto"></a>
 
 To use warm start tuning, you specify the values of a [ `HyperParameterTuningJobWarmStartConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobWarmStartConfig.html) object, and pass that as the `WarmStartConfig` field in a call to [ `CreateHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html)\.
 
-The following code shows how to create a [ `HyperParameterTuningJobWarmStartConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobWarmStartConfig.html) object and pass it to [ `CreateHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html) job by using the low\-level SageMaker API for Python \(Boto 3\)\.
+The following code shows how to create a [ `HyperParameterTuningJobWarmStartConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobWarmStartConfig.html) object and pass it to [ `CreateHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html) job by using the low\-level Amazon SageMaker API for Python \(Boto 3\)\.
 
 Create the `HyperParameterTuningJobWarmStartConfig` object:
 
 ```
 warm_start_config = {
-          "ParentHyperParameterTuningJobs" : [
+          "ParentHyperParameterTuningJobs" : [ 
           {"HyperParameterTuningJobName" : 'MyParentTuningJob'}
           ],
-          "WarmStartType" : "IdenticalDataAndAlgorithm"
+          "WarmStartType" : "IdenticalDataAndAlgorithm"    
 }
 ```
 
@@ -80,7 +80,7 @@ smclient.create_hyper_parameter_tuning_job(HyperParameterTuningJobName = 'MyWarm
    WarmStartConfig = warm_start_config)
 ```
 
-### Create a Warm Start Tuning Job \(SageMaker Python SDK\)<a name="warm-start-tuning-example-sdk"></a>
+### Create a Warm Start Tuning Job \(Amazon SageMaker Python SDK\)<a name="warm-start-tuning-example-sdk"></a>
 
 To use the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) to run a warm start tuning job, you:
 + Specify the parent jobs and the warm start type by using a `WarmStartConfig` object\.
