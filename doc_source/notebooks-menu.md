@@ -1,0 +1,30 @@
+# Use the Amazon SageMaker Studio Notebook Toolbar<a name="notebooks-menu"></a>
+
+Amazon SageMaker Studio notebooks extend the JupyterLab interface\. For an overview of the basic JupyterLab interface, see [The JupyterLab Interface](https://jupyterlab.readthedocs.io/en/latest/user/interface.html)\.
+
+The following image shows the toolbar and an empty cell from a SageMaker Studio notebook\.
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-notebook-menu-bar.png)
+
+When you pause on a toolbar icon, a tooltip displays the icon function\. Additional notebook commands are found in the Studio main menu\. For a list of available notebook commands and shortcuts, in the left sidebar of Studio, choose the **Commands** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Commands_squid.png)\), and then scroll to the **NOTEBOOK CELL OPERATIONS** and **NOTEBOOK OPERATIONS** sections\. The toolbar includes the following icons:
+
+
+| Icon | Description | 
+| --- | --- | 
+|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Notebook_save_x2.png)  |  **Save and checkpoint** Saves the notebook and updates the checkpoint file\. For more information, see [Get the Difference Between the Last Checkpoint](notebooks-diff.md#notebooks-diff-checkpoint)\.  | 
+|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Notebook_insert_x2.png)  |  **Insert cell** Inserts a code cell below the current cell\. The current cell is noted by the blue vertical marker in the left margin\.  | 
+|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Notebook_cut_copy_paste_x2.png)  |  **Cut, copy, and paste cells** Cuts, copies, and pastes the selected cells\.  | 
+|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Notebook_run_x2.png)  |  **Run cells** Runs the selected cells and then makes the cell that follows the last selected cell the new selected cell\.  | 
+|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Notebook_interrupt_x2.png)  |  **Interrupt kernel** Interrupts the kernel, which cancels the currently running operation\. The kernel remains active\.  | 
+|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Notebook_restart_x2.png)  |  **Restart kernel** Restarts the kernel\. Variables are reset\. Unsaved information is not affected\.  | 
+|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Notebook_cell_x2.png)  |  **Cell type** Displays or changes the current cell type\. The cell types are: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/notebooks-menu.html)  | 
+|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Notebook_terminal_x2.png)  |  **Launch terminal** Launches a terminal in the SageMaker image hosting the notebook\. For an example, see [Get App Metadata](notebooks-run-and-manage-metadata.md#notebooks-run-and-manage-metadata-app)\.  | 
+|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Notebook_checkpoint_x2.png)  |  **Checkpoint diff** Opens a new tab that displays the difference between the notebook and the checkpoint file\. For more information, see [Get the Difference Between the Last Checkpoint](notebooks-diff.md#notebooks-diff-checkpoint)\.  | 
+|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Notebook_git_x2.png)  |  **Git diff** Only enabled if the notebook is opened from a Git repository\. Opens a new tab that displays the difference between the notebook and the last Git commit\. For more information, see [Get the Difference Between the Last Commit](notebooks-diff.md#notebooks-diff-git)\.  | 
+|  **Kernel: CPU: 0\.00% MEM: 2\.81%**  |  **CPU and memory of the kernel or instance** Displays the CPU usage and memory usage\. Double\-click to toggle between the current kernel and the current instance\.  | 
+|  **2 vCPU \+ 4 GiB**  |  **Instance type** Displays or changes the instance type the notebook runs in\. The format is as follows: `number of vCPUs + amount of memory + number of GPUs` `Unknown` indicates the notebook was opened without specifying a kernel\. The notebook runs on the SageMaker Studio instance and doesn't accrue runtime charges\. You can't assign the notebook to an instance type\. You must specify a kernel and then Studio assigns the notebook to a default type\. For more information, see [Create or Open an Amazon SageMaker Studio Notebook](notebooks-create-open.md) and [Change an Instance Type](notebooks-run-and-manage-switch-instance-type.md)\.  | 
+|  **Python 3 \(Data Science\)**  |  **Kernel and SageMaker Image** Displays or changes the kernel that processes the cells in the notebook\. The format is as follows: `Kernel (SageMaker Image)` `No Kernel` indicates the notebook was opened without specifying a kernel\. You can edit the notebook but you can't run any cells\. For more information, see [Change a Kernel](notebooks-run-and-manage-change-image.md)\.  | 
+|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Notebook_kernel_x2.png)  |  **Kernel busy status** Displays the busy status of the kernel\. When the edge of the circle and its interior are the same color, the kernel is busy\. The kernel is busy when it is starting and when it is processing cells\. Additional kernel states are displayed in the status bar at the bottom\-left corner of SageMaker Studio\.  | 
+|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Notebook_share_x2.png)  |  **Share notebook** Shares the notebook\. For more information, see [Share and Use a Amazon SageMaker Studio Notebook](notebooks-sharing.md)\.  | 
+
+To select multiple cells, click in the left margin outside of a cell\. Hold down the `Shift` key and use `K` or the `Up` key to select previous cells, or use `J` or the `Down` key to select following cells\.
