@@ -223,7 +223,7 @@ print(f"position:{position}\nheading: {heading}")
 
 A UI tool like [3D Rotation Converter](https://www.andre-gaschler.com/rotationconverter/) can also be useful\.
 
-If you have a 4x4 extrinsic transformation matrix, note that the transformation matrix is in the form `[R T; 0 0 0 1]` where is the rotation matrix and is the origin translation vector\. That means you can extract rotation matrix and translation vector from the transformation matrix as follows\.
+If you have a 4x4 extrinsic transformation matrix, note that the transformation matrix is in the form `[R T; 0 0 0 1]` where R is the rotation matrix and T is the origin translation vector\. That means you can extract rotation matrix and translation vector from the transformation matrix as follows\.
 
 ```
 import numpy as np
