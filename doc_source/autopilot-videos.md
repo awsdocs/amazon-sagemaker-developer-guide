@@ -7,7 +7,7 @@ Here is a video series that provides a tour of Amazon SageMaker Autopilot capabi
 + [Review data exploration and feature engineering automated in Autopilot\.](#autopilot-video-generated-notebooks)
 + [Tune models to optimize performance](#autopilot-video-optimizing-model-performance)
 + [Choose and deploy the best model](#autopilot-video-choose-and-deploy-the-best-model)
-+ [Amazon SageMaker Autopilot walkthrough](#topicID)
++ [Amazon SageMaker Autopilot walkthrough](#autopilot-walkthrough)
 
 ## Start an AutoML job with Amazon SageMaker Autopilot<a name="autopilot-video-start-automl-job"></a>
 
@@ -33,8 +33,8 @@ This video shows you how to use job metrics to choose the best model and then ho
 
 [![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/vRHyX3kDstI/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/vRHyX3kDstI)
 
-## Amazon SageMaker Autopilot walkthrough<a name="topicID"></a>
+## Amazon SageMaker Autopilot walkthrough<a name="autopilot-walkthrough"></a>
 
-This video walks you through an end to end demo where we first build a binary classification model automatically with Amazon SageMaker Autopilot\. We see how candidate models have been built and optimized using auto\-generated notebooks\. We also look at the top candidates with Amazon SageMaker Experiments\. Finally, we deploy the top candidate \(based on XGBoost\), and configure data capture with Amazon SageMaker Model Monitor\.
+This video walks you through an end to end demo where we first build a binary classification model automatically with Amazon SageMaker Autopilot\. We see how candidate models have been built and optimized using auto\-generated notebooks\. We also look at the top candidates with SageMaker Experiments\. Finally, we deploy the top candidate \(based on XGBoost\), and configure data capture with SageMaker Model Monitor\.
 
 [![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/DRjOOaR2prQ/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/DRjOOaR2prQ)

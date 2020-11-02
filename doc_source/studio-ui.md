@@ -2,7 +2,7 @@
 
 Amazon SageMaker Studio extends the JupyterLab interface\. Previous users of JupyterLab will notice the similarity of the user interface, including the workspace\. Studio adds many additions to the interface\. The most prominent additions are detailed in the following sections\. For an overview of the basic JupyterLab interface, see [The JupyterLab Interface](https://jupyterlab.readthedocs.io/en/latest/user/interface.html)\.
 
-The following image shows SageMaker Studio with the file browser open and the Studio landing page displayed\. The Studio version is shown on the bottom\-left of the landing page\. To update to the latest version, see [Update Amazon SageMaker Studio](studio-tasks.md#studio-tasks-update)\.
+The following image shows SageMaker Studio with the file browser open and the Studio landing page displayed\. The Studio version is shown on the bottom\-left of the landing page\. To update to the latest version, see [Update Amazon SageMaker Studio](studio-tasks-update.md)\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-landing.png)
 
@@ -24,12 +24,12 @@ The left sidebar includes the following icons\. When you hover over an icon, a t
 | Icon | Description | 
 | --- | --- | 
 |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/File_browser_squid@2x.png)  |  **File Browser** Choose the **Upload Files** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/File_upload_squid.png)\) to add files to Studio\. Double\-click a file to open the file in a new tab\. To have adjacent files open, choose a tab that contains a notebook, Python, or text file, then choose **New View for File**\. Choose the plus \(**\+**\) sign on the menu at the top of the file browser to open the Studio Launcher\.  | 
-|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Git_squid@2x.png)  |  **Git** You can connect to a Git repository and then access a full range of Git tools and operations\. For more information, see [Clone and Connect to a Git Repository](studio-tasks.md#studio-tasks-git)\.  | 
-|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Running_squid@2x.png)  |  **Running Terminals, Kernels, and Images** For more information, see [Perform Common Tasks Using the SageMaker Studio Launcher](studio-tasks-launcher.md)\.  | 
+|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Running_squid@2x.png)  |  **Running Terminals and Kernels** For more information, see [Shut Down Resources](notebooks-run-and-manage-shut-down.md)\.  | 
+|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Git_squid@2x.png)  |  **Git** You can connect to a Git repository and then access a full range of Git tools and operations\. For more information, see [Clone and Connect to a Git Repository](studio-tasks-git.md)\.  | 
 |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Commands_squid@2x.png)  |  **Commands \(Ctrl \+ Shift \+ C\)** The majority of the menu commands are available here\.  | 
-|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Experiment_list_squid@2x.png)  |  **SageMaker Experiment List** Displays a list of experiments, trials, or trial components\. For more information, see [View Experiments, Trials, and Trial Components](studio-tasks.md#studio-tasks-experiments)\. This icon is selected when you choose **Create Autopilot experiment** from the Studio landing page\.  | 
+|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Experiment_list_squid@2x.png)  |  **SageMaker Experiment List** Displays a list of experiments, trials, or trial components\. For more information, see [View and Compare Experiments, Trials, and Trial Components](experiments-view-compare.md)\. This icon is selected when you choose **Create Autopilot experiment** from the Studio landing page\. To create an Autopilot experiment, choose **Create Experiment**\. For more information, see [Automate model development with Amazon SageMaker Autopilot](autopilot-automate-model-development.md)\.  | 
 |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Notebook_tools_squid@2x.png)  |  **Notebook Tools** You can access a notebook's metadata through the **Advanced Tools** section\. This icon is displayed only when a notebook is open\.  | 
-|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Endpoint_squid@2x.png)  |  **SageMaker Endpoint List** This icon is selected when you choose **Deploy and monitor** from the Studio landing page\. For more information, see [Deploy Models](deploy-model.md)\.  | 
+|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Endpoint_squid@2x.png)  |  **SageMaker Endpoint List** This icon is selected when you choose **Deploy and monitor** from the Studio landing page\. For more information, see [Deploy Models for Inference](deploy-model.md)\.  | 
 |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Open_tabs_squid@2x.png)  |  **Open Tabs** Provides a list of open tabs, which is useful if you have multiple open tabs\.  | 
 
 ## File and resource browser<a name="studio-ui-browser"></a>
@@ -38,7 +38,7 @@ The file and resource browser displays lists of your notebooks, experiments, tri
 
 ## Main work area<a name="studio-ui-work"></a>
 
-The main work area consists of multiple tabs that contain your open notebooks and terminals, and detailed information about your experiments and endpoints\.
+The main work area consists of multiple tabs that contain your open notebooks and terminals, and detailed information about your experiments and endpoints\. One commonly used tab is the **Trial Component List**\. This list is referred to as the *Leaderboard* because it's where you can compare experiments and trials\. For more information, see [View and Compare Amazon SageMaker Experiments, Trials, and Trial Components](experiments-view-compare.md)\.
 
 ## Settings<a name="studio-ui-prefs"></a>
 

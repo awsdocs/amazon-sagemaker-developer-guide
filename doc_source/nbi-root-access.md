@@ -6,3 +6,6 @@ If you don't want users to have root access to a notebook instance, when you cal
 
 **Note**  
 Lifecycle configurations need root access to be able to set up a notebook instance\. Because of this, lifecycle configurations associated with a notebook instance always run with root access even if you disable root access for users\.
+
+**Note**  
+For security reasons, Rootless Docker is installed on a root\-disabled notebook instances instead of regular Docker\. For more information, see [Run the Docker daemon as a non\-root user \(Rootless mode\)](https://docs.docker.com/engine/security/rootless/)

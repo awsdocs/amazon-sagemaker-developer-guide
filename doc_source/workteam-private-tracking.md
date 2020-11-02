@@ -7,7 +7,7 @@ Worker event tracking is not available for Amazon Augmented AI human review work
 
 ## Enable Tracking<a name="workteam-private-tracking-setup"></a>
 
- During the set\-up process for a new work team, the permissions for Amazon CloudWatch logging of worker events are created\. Since this feature was added in August of 2019, work teams created prior to that may not have the correct permissions\. If all of your work teams were created before August 2019, create a new work team\. It does not need any members and may be deleted after creation, but by creating it, the permissions will be established and will apply to all of your work teams, regardless of when they were created\. 
+ During the set\-up process for a new work team, the permissions for Amazon CloudWatch logging of worker events are created\. Since this feature was added in August 2019, work teams created prior to that may not have the correct permissions\. If all of your work teams were created before August 2019, create a new work team\. It does not need any members and may be deleted after creation, but by creating it, you establish the permissions and apply them to all of your work teams, regardless of when they were created\. 
 
 ## Examine Logs<a name="workteam-private-tracking-logs"></a>
 

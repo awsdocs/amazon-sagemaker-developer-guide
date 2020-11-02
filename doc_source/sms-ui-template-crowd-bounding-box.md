@@ -214,5 +214,5 @@ You could have many labels available, but only the ones that are used appear in 
 ### See Also<a name="bounding-box-see-also"></a>
 
 For more information, see the following\.
-+ [Use Amazon SageMaker Ground Truth for Data Labeling](sms.md)
++ [Use Amazon SageMaker Ground Truth to Label Data](sms.md)
 + [Crowd HTML Elements Reference](sms-ui-template-reference.md)

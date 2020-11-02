@@ -1,14 +1,14 @@
-# Give Amazon SageMaker Processing Jobs Access to Resources in Your Amazon VPC<a name="process-vpc"></a>
+# Give SageMaker Processing Jobs Access to Resources in Your Amazon VPC<a name="process-vpc"></a>
 
-Amazon SageMaker runs processing jobs in an Amazon Virtual Private Cloud by default\. However, processing containers access AWS resources—such as the Amazon S3 buckets where you store data—over the internet\.
+SageMaker runs processing jobs in an Amazon Virtual Private Cloud by default\. However, processing containers access AWS resources—such as the Amazon S3 buckets where you store data—over the internet\.
 
 To control access to your data and processing containers, we recommend that you create a private VPC and configure it so that they aren't accessible over the internet\. For information about creating and configuring a VPC, see [Getting Started With Amazon VPC](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/getting-started-ipv4.html) in the *Amazon VPC User Guide*\. Using a VPC helps to protect your processing containers and data because you can configure your VPC so that it is not connected to the internet\. Using a VPC also allows you to monitor all network traffic in and out of your processing containers by using VPC flow logs\. For more information, see [VPC Flow Logs](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html) in the *Amazon VPC User Guide*\.
 
-You specify your private VPC configuration when you create processing jobs by specifying subnets and security groups\. When you specify the subnets and security groups, Amazon SageMaker creates *elastic network interfaces* \(ENIs\) that are associated with your security groups in one of the subnets\. ENIs allow your processing containers to connect to resources in your VPC\. For information about ENIs, see [Elastic Network Interfaces](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ElasticNetworkInterfaces.html) in the *Amazon VPC User Guide*\.
+You specify your private VPC configuration when you create processing jobs by specifying subnets and security groups\. When you specify the subnets and security groups, SageMaker creates *elastic network interfaces* that are associated with your security groups in one of the subnets\. Network interfaces allow your processing containers to connect to resources in your VPC\. For information about network interfaces, see [Elastic Network Interfaces](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ElasticNetworkInterfaces.html) in the *Amazon VPC User Guide*\.
 
 ## Configure a Processing Job for Amazon VPC Access<a name="process-vpc-configure"></a>
 
-To specify subnets and security groups in your private VPC, use the `NetworkConfig.VpcConfig` request parameter of the [ `CreateProcessingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateProcessingJob.html) API, or provide this information when you create a processing job in the Amazon SageMaker console\. Amazon SageMaker uses this information to create ENIs and attach them to your processing containers\. The ENIs provide your processing containers with a network connection within your VPC that is not connected to the internet\. They also enable your processing job to connect to resources in your private VPC\.
+To specify subnets and security groups in your private VPC, use the `NetworkConfig.VpcConfig` request parameter of the [ `CreateProcessingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateProcessingJob.html) API, or provide this information when you create a processing job in the SageMaker console\. SageMaker uses this information to create network interfaces and attach them to your processing containers\. The network interfaces provide your processing containers with a network connection within your VPC that is not connected to the internet\. They also enable your processing job to connect to resources in your private VPC\.
 
 The following is an example of the `VpcConfig` parameter that you include in your call to `CreateProcessingJob`:
 
@@ -25,9 +25,9 @@ VpcConfig: {
         }
 ```
 
-## Configure Your Private VPC for Amazon SageMaker Processing<a name="process-vpc-vpc"></a>
+## Configure Your Private VPC for SageMaker Processing<a name="process-vpc-vpc"></a>
 
-When configuring the private VPC for your Amazon SageMaker processing jobs, use the following guidelines\. For information about setting up a VPC, see [Working with VPCs and Subnets](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/working-with-vpcs.html) in the *Amazon VPC User Guide*\.
+When configuring the private VPC for your SageMaker processing jobs, use the following guidelines\. For information about setting up a VPC, see [Working with VPCs and Subnets](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/working-with-vpcs.html) in the *Amazon VPC User Guide*\.
 
 **Topics**
 + [Ensure That Subnets Have Enough IP Addresses](#process-vpc-ip)

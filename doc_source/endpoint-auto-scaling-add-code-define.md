@@ -29,7 +29,7 @@ The following example is a typical policy configuration for target\-tracking sca
 
 If you need to define a target\-tracking scaling policy that meets your custom requirements, define a custom metric\. You can define a custom metric based on any production variant metric that changes in proportion to scaling\. 
 
-Not all Amazon SageMaker metrics work for target tracking\. The metric must be a valid utilization metric, and it must describe how busy an instance is\. The value of the metric must increase or decrease in inverse proportion to the number of variant instances\. That is, the value of the metric should decrease when the number of instances increases\.
+Not all SageMaker metrics work for target tracking\. The metric must be a valid utilization metric, and it must describe how busy an instance is\. The value of the metric must increase or decrease in inverse proportion to the number of variant instances\. That is, the value of the metric should decrease when the number of instances increases\.
 
 **Important**  
 Before deploying automatic scaling in production, you must test automatic scaling with your custom metric\.

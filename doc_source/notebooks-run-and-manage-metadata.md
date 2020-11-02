@@ -8,7 +8,7 @@ You can access notebook metadata and App metadata using the Amazon SageMaker UI\
 
 ## Get Notebook Metadata<a name="notebooks-run-and-manage-metadata-notebook"></a>
 
-Juypter notebooks contain optional metadata that you can access through the Amazon SageMaker UI\.
+Jupyter notebooks contain optional metadata that you can access through the Amazon SageMaker UI\.
 
 **To view the notebook metadata**
 
@@ -49,10 +49,6 @@ When you create a notebook in Amazon SageMaker Studio, the App metadata is writt
 + **UserProfileName** – The profile name of the current user
 + **ResourceArn** – The Amazon Resource Name \(ARN\) of the App, which includes the instance type
 + **ResourceName** – The name of the SageMaker image
-
-The following screenshot shows the menu from a Studio notebook\.
-
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-notebooks-manage-callouts.png)
 
 **To get the App metadata**
 

@@ -2,7 +2,7 @@
 
 The container can analyze the data available in the `*dataset_source*` path and write reports to the path in `*output_path*.` The container code can write any reports that suit your needs\.
 
-If you use the following structure and contract, certain output files are treated specially by Amazon SageMaker in the visualization and API affordances This applies only to tabular datasets\.
+If you use the following structure and contract, certain output files are treated specially by SageMaker in the visualization and API affordances This applies only to tabular datasets\.
 
 
 **Table: Output Files for Tabular Datasets**  

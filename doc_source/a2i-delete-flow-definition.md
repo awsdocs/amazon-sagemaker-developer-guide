@@ -14,15 +14,15 @@ After you delete a flow definition, the following changes occur:
 + When you use [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListFlowDefinitions.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListFlowDefinitions.html), deleted flow definitions won't be included in the results\. 
 + When use the flow definition ARN as input to the Augmented AI Runtime API operation `[ListHumanLoops](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_ListHumanLoops.html)`, Augmented AI returns a `ResourceNotFoundException`\.
 
-## Delete a Flow Definition Using the Console or the Amazon SageMaker API<a name="a2i-delete-flow-definition-how-to"></a>
+## Delete a Flow Definition Using the Console or the SageMaker API<a name="a2i-delete-flow-definition-how-to"></a>
 
-You can delete a flow definition on the Human review workflows page in the Augmented AI area of the Amazon SageMaker console or by using the Amazon SageMaker API\. 
+You can delete a flow definition on the Human review workflows page in the Augmented AI area of the SageMaker console or by using the SageMaker API\. 
 
 Flow definitions can only be deleted if their status is `Active`\. 
 
 **Delete a flow definition \(console\)**
 
-1. Navigate to the Amazon SageMaker console at [https://console.aws.amazon.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
+1. Navigate to the SageMaker console at [https://console.aws.amazon.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
 1. In the navigation pane, under the **Augmented AI** section, choose **Human review workflows**\.
 
@@ -35,12 +35,12 @@ Flow definitions can only be deleted if their status is `Active`\.
 You're automatically redirected to the **Human review workflows** page\. While your human review workflow is being deleted, the status **Deleting** appears in the status column for that workflow\. After it's deleted, it won't appear in the list of workflows on this page\. 
 
 **Delete a flow definition \(API\)**  
-You can delete a flow definition using the Amazon SageMaker [DeleteFlowDefinition](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteFlowDefinition.html) API operation\. This API operation is supported through the [AWS CLI](https://docs.aws.amazon.com/cli/latest/reference/sagemaker/delete-flow-definition.html) and a [variety of language specific SDKs](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteFlowDefinition.html#API_DeleteFlowDefinition_SeeAlso)\. The following table shows example requests using SDK for Python \(Boto 3\) and the AWS CLI to delete the flow definition, *`example-flow-definition`*\. 
+You can delete a flow definition using the SageMaker [DeleteFlowDefinition](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteFlowDefinition.html) API operation\. This API operation is supported through the [AWS CLI](https://docs.aws.amazon.com/cli/latest/reference/sagemaker/delete-flow-definition.html) and a [variety of language specific SDKs](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteFlowDefinition.html#API_DeleteFlowDefinition_SeeAlso)\. The following table shows example requests using SDK for Python \(Boto3\) and the AWS CLI to delete the flow definition, *`example-flow-definition`*\. 
 
 ------
-#### [ AWS SDK for Python \(Boto 3\) ]
+#### [ AWS SDK for Python \(Boto3\) ]
 
-The following request example uses the SDK for Python \(Boto 3\) to delete the flow definition\. For more information, see [delete\_flow\_definition](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.delete_flow_definition) in the *AWS SDK for Python \(Boto\) API Reference*\.
+The following request example uses the SDK for Python \(Boto3\) to delete the flow definition\. For more information, see [delete\_flow\_definition](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.delete_flow_definition) in the *AWS SDK for Python \(Boto\) API Reference*\.
 
 ```
 response = client.delete_flow_definition(FlowDefinitionName='example-flow-definition')

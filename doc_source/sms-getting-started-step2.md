@@ -4,7 +4,7 @@ In this step you use the console to create a labeling job\. You tell Amazon Sage
 
 **To create a labeling job**
 
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
+1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
 1. From the left navigation, choose **Labeling jobs**\.
 

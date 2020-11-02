@@ -3,17 +3,17 @@
 **Note**  
 Amazon SageMaker Studio is available only in specific AWS Regions\. To view the list of supported Regions, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
 
-This topic describes how to onboard to Amazon SageMaker using the standard setup procedure for AWS Identity and Access Management \(IAM\) authentication\. To onboard faster using IAM, see [Onboard Using Quick Start](onboard-quick-start.md)\.
+This topic describes how to onboard to Amazon SageMaker Studio using the standard setup procedure for AWS Identity and Access Management \(IAM\) authentication\. To onboard faster using IAM, see [Onboard Using Quick Start](onboard-quick-start.md)\.
 
 For information on how to onboard using AWS Single Sign\-On \(AWS SSO\), see [Onboard Using SSO](onboard-sso-users.md)\.
 
 **To onboard to Studio using IAM**
 
-1. Open the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
+1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
 1. Choose **Amazon SageMaker Studio** at the top left of the page\.
 
-1. On the **Amazon SageMaker Studio Control Panel**, under **Get started**, choose **Standard setup**\.
+1. On the **SageMaker Studio** page, under **Get started**, choose **Standard setup**\.
 
 1. For **Authentication method**, choose **AWS Identity and Access Management \(IAM\)**\.
 
@@ -21,7 +21,9 @@ For information on how to onboard using AWS Single Sign\-On \(AWS SSO\), see [On
 
    If you choose **Create a new role**, the **Create an IAM role** dialog opens:
    + For **S3 buckets you specify**, specify additional S3 buckets that users of your notebooks can access\. If you don't want to add access to more buckets, choose **None**\.
-   + Choose **Create role**\. Amazon SageMaker creates a new IAM role with the [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) policy attached\.
+   + Choose **Create role**\. SageMaker creates a new IAM `AmazonSageMaker-ExecutionPolicy` role with the [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) policy attached\.
+
+1. Under **Network**, specify your VPC information\. For more information, see [Choose a VPC](onboard-vpc.md)\.
 
 1. Choose **Submit**\.
 
@@ -41,16 +43,16 @@ For information on how to onboard using AWS Single Sign\-On \(AWS SSO\), see [On
 
 1. Choose **Open Studio**\. The **Amazon SageMaker Studio** loading page displays\.
 
-   When Amazon SageMaker Studio opens, you can start using Studio\.
+   When SageMaker Studio opens, you can start using Studio\.
 
-Now that you've onboarded to Amazon SageMaker Studio, use the following steps to subsequently access Studio\.
+Now that you've onboarded to SageMaker Studio, use the following steps to subsequently access Studio\.
 
 **Access Studio after you onboard**
 
-1. Open the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
+1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
 1. Choose **Amazon SageMaker Studio** at the top left of the page\.
 
 1. On the **Amazon SageMaker Studio Control Panel**, choose your user name and then choose **Open Studio**\.
 
-For information about using Amazon SageMaker Studio, see [Get Started with Studio](gs-studio.md)\.
+For information about using SageMaker Studio, see [Get Started with Studio](gs-studio.md)\.

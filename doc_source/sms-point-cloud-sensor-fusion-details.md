@@ -3,7 +3,7 @@
 Point cloud data is always located in a coordinate system\. This coordinate system may be local to the vehicle or the device sensing the surroundings, or it may be a world coordinate system\. When you use Ground Truth 3D point cloud labeling jobs, all the annotations are generated using the coordinate system of your input data\. For some labeling job task types and features, you must provide data in a world coordinate system\. 
 
 In this topic, you'll learn the following:
-+ When you *must* provide data in a world coordinate system or global frame of reference for your Ground Truth labeling job\.
++ When you *are required to* provide input data in a world coordinate system or global frame of reference\.
 + What a world coordinate is and how you can convert point cloud data to a world coordinate system\. 
 + How you can use your sensor and camera extrinsic matrices to provide pose data when using sensor fusion\. 
 
@@ -25,7 +25,7 @@ A WCS or global frame of reference is a fixed universal coordinate system in whi
 
 A world coordinate system is important in global path planning, localization, mapping, and driving scenario simulations\. Ground Truth uses the right\-handed Cartesian world coordinate system such as the one defined in [ISO 8855](https://www.iso.org/standard/51180.html), where the x axis is forward toward the car’s movement, y axis is left, and the z axis points up from the ground\. 
 
-The global frame of reference depends on the data\. Some datasets use the LiDAR position in the first frame as the origin\. In this scenario, all the frames use the first frame as a reference and device heading and position will be near the origin in the first frame\. For example, KITTI datasets have the first frame as a reference for world coordinates\. Other dataset us a device position that is different from the origin\.
+The global frame of reference depends on the data\. Some datasets use the LiDAR position in the first frame as the origin\. In this scenario, all the frames use the first frame as a reference and device heading and position will be near the origin in the first frame\. For example, KITTI datasets have the first frame as a reference for world coordinates\. Other datasets use a device position that is different from the origin\.
 
 Note that this is not the GPS/IMU coordinate system, which is typically rotated by 90 degrees along the z\-axis\. If your point cloud data is in a GPS/IMU coordinate system \(such as OxTS in the open source AV KITTI dataset\), then you need to transform the origin to a world coordinate system \(typically the vehicle's reference coordinate system\)\. You apply this transformation by multiplying your data with transformation metrics \(the rotation matrix and translation vector\)\. This will transform the data from its original coordinate system to a global reference coordinate system\. Learn more about this transformation in the next section\. 
 

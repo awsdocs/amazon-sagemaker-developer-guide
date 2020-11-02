@@ -10,7 +10,7 @@ To define hyperparameter ranges by using the low\-level API, you specify the nam
         {
           "Name": "tree_method",
           "Values": ["auto", "exact", "approx", "hist"]
-        }          
+        }
       ],
       "ContinuousParameterRanges": [
         {
@@ -36,7 +36,7 @@ To define hyperparameter ranges by using the low\-level API, you specify the nam
 For integer and continuous hyperparameter ranges, you can choose the scale you want hyperparameter tuning to use to search the range of values by specifying a value for the `ScalingType` field of the hyperparameter range\. You can choose from the following scaling types:
 
 Auto  
-Amazon SageMaker hyperparameter tuning chooses the best scale for the hyperparameter\.
+SageMaker hyperparameter tuning chooses the best scale for the hyperparameter\.
 
 Linear  
 Hyperparameter tuning searches the values in the hyperparameter range by using a linear scale\. Typically, you choose this if the range of all values from the lowest to the highest is relatively small \(within one order of magnitude\), because uniformly searching values from the range will give you a reasonable exploration of the entire range\.
@@ -44,7 +44,7 @@ Hyperparameter tuning searches the values in the hyperparameter range by using a
 Logarithmic  
 Hyperparameter tuning searches the values in the hyperparameter range by using a logarithmic scale\.  
 Logarithmic scaling works only for ranges that have only values greater than 0\.  
-Choose logarithmic scaling when you are searching a range that spans several orders of magnitude\. For example, if you are tuning a [Tune a Linear Learner Model](linear-learner.md) model, and you specify a range of values between \.0001 and 1\.0 for the `learning_rate` hyperparameter, searching uniformly on a logarithmic scale gives you a better sample of the entire range than searching on a linear scale would, because searching on a linear scale would, on average, devote 90 percent of your training budget to only the values between \.1 and 1\.0, leaving only 10 percent of your training budget for the values between \.0001 and \.1\.
+Choose logarithmic scaling when you are searching a range that spans several orders of magnitude\. For example, if you are tuning a [Tune a linear learner model](linear-learner.md) model, and you specify a range of values between \.0001 and 1\.0 for the `learning_rate` hyperparameter, searching uniformly on a logarithmic scale gives you a better sample of the entire range than searching on a linear scale would, because searching on a linear scale would, on average, devote 90 percent of your training budget to only the values between \.1 and 1\.0, leaving only 10 percent of your training budget for the values between \.0001 and \.1\.
 
 ReverseLogarithmic  
 Hyperparameter tuning searches the values in the hyperparameter range by using a reverse logarithmic scale\. reverse logarithmic scaling is supported only for continuous hyperparameter ranges\. It is not supported for integer hyperparameter ranges\.  

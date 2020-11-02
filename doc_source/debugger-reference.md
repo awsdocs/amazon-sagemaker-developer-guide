@@ -1,9 +1,11 @@
-# Amazon SageMaker Debugger Reference Documentation<a name="debugger-reference"></a>
+# Amazon SageMaker Debugger Advanced Topics and Reference Documentation<a name="debugger-reference"></a>
 
-The following sections contain reference documentation on the APIs, exceptions, and some known limitations for Debugger\.
+The following sections contain advanced topics, reference documentation for the API operations, exceptions, and known limitations for Debugger\.
 
 **Topics**
-+ [Amazon SageMaker Debugger API](debugger-apis.md)
++ [Use Debugger with Custom Training Containers](debugger-bring-your-own-container.md)
++ [Amazon SageMaker Debugger API Operations](debugger-apis.md)
++ [Use the SageMaker CreateTrainingJob and Debugger Configuration API Operations to Create and Debug Your Training Job](debugger-createtrainingjob-api.md)
++ [Use Debugger Docker Images for Built\-in or Custom Rules](debugger-docker-images-rules.md)
 + [Amazon SageMaker Debugger Exceptions](debugger-exceptions.md)
-+ [Amazon SageMaker Debugger Best Practices](debugger-best-practices.md)
 + [Known Limitations with Amazon SageMaker Debugger](debugger-known-limitations.md)

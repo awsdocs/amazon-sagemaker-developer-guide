@@ -9,20 +9,21 @@ The [XGBoost Algorithm](xgboost.md) expects comma\-separated values \(CSV\) for 
   %%time
   
   import os
-  import boto3
   import re
   import copy
   import time
   import io
   import struct
   from time import gmtime, strftime
-  from sagemaker import get_execution_role
   
-  role = get_execution_role()
+  import boto3
+  import sagemaker
+  
+  role = sagemaker.get_execution_role()
   
   region = boto3.Session().region_name
   
-  bucket='myBucket' # Replace with your s3 bucket name
+  bucket = sagemaker.Session().default_bucket()   # Default S3 URI. Replace it with your S3 URI if you want.
   prefix = 'sagemaker/xgboost-mnist' # Used as part of the path in the bucket where you store data
   
   def convert_data():
@@ -36,12 +37,8 @@ The [XGBoost Algorithm](xgboost.md) expects comma\-separated values \(CSV\) for 
               examples = np.insert(features, 0, labels, axis=1)
           else:
               examples = features
-          #print(examples[50000,:])
-          
           
           np.savetxt('data.csv', examples, delimiter=',')
-          
-          
           
           key = "{}/{}/examples".format(prefix,data_partition_name)
           url = 's3://{}/{}'.format(bucket, key)

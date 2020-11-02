@@ -10,7 +10,7 @@ For an example notebook that uses random search, see [https://github\.com/awslab
 
 Bayesian search treats hyperparameter tuning like a *[\[regression\]](https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#[regression])* problem\. Given a set of input features \(the hyperparameters\), hyperparameter tuning optimizes a model for the metric that you choose\. To solve a regression problem, hyperparameter tuning makes guesses about which hyperparameter combinations are likely to get the best results, and runs training jobs to test these values\. After testing the first set of hyperparameter values, hyperparameter tuning uses regression to choose the next set of hyperparameter values to test\.
 
-Hyperparameter tuning uses an Amazon SageMaker implementation of Bayesian optimization\.
+Hyperparameter tuning uses a Amazon SageMaker implementation of Bayesian optimization\.
 
 When choosing the best hyperparameters for the next training job, hyperparameter tuning considers everything that it knows about this problem so far\. Sometimes it chooses a combination of hyperparameter values close to the combination that resulted in the best previous training job to incrementally improve performance\. This allows hyperparameter tuning to exploit the best known results\. Other times, it chooses a set of hyperparameter values far removed from those it has tried\. This allows it to explore the range of hyperparameter values to try to find new areas that are not well understood\. The explore/exploit trade\-off is common in many machine learning problems\.
 

@@ -1,39 +1,8 @@
 # Get Started with Amazon Augmented AI<a name="a2i-getting-started"></a>
 
-Amazon Augmented AI \(Amazon A2I\) helps you integrate human judgment into AI/ML workflows\. With Amazon A2I, you can let AI handle straight\-forward data and invoke human reviewers only when their skills are needed\. 
-
-The the AI/ML workflow that you integrate Amazon A2I into defines an Amazon A2I *task type*\. Amazon A2I supports two *built\-in task types*: Amazon Textract and Amazon Rekognition, and a *custom task type*\. The built\-in task types integrate Amazon A2I with [Amazon Textract](https://docs.aws.amazon.com/textract/latest/dg/a2i-textract.html)'s `AnalyzeDocument` API operation and [Amazon Rekognition](https://docs.aws.amazon.com/rekognition/latest/dg/a2i-rekognition.html)'s `DetectModerationLabels` API operation to incorporate a human review workflow when inference confidence is low for a given object \(for example, for an image or text in a document\)\. The custom task type allows you to use Amazon A2I in custom machine learning applications\. For more information about task types, see [Use Task Types](a2i-task-types-general.md)\.
-
-To incorporate Amazon A2I into your data labeling workflow for all task types, you need these resources: 
-+ A *work team* to complete your human review tasks\. A work team can be created from the Amazon Mechanical Turk workforce, vendor\-managed workforce, or your own private workforce\. For each type of workforce, you can create multiple work teams, and have each team work on multiple human review tasks\. To learn to create a workforce and work teams, see [Create and Manage Workforces](sms-workforce-management.md)\.
-+ A *worker task template* to create a worker UI\. The worker UI displays your input data, such as documents or images, and instructions to workers\. It also provides interactive tools that the worker uses to complete your tasks\. For more information, see [Create a Worker UI](a2i-instructions-overview.md)\. 
-+ A *human review workflow*, also referred to as a *flow definition*\. You use the flow definition to configure your human work team and provide information about how to accomplish the review task\. You can use a flow definition to create multiple human loops\. Once you've created a human loop, the flow definition will be used to identify the resources used to create human review tasks each time a new data\-object is sent to humans for review\. For example, a human loop may get created each time an activation condition is met or your custom ML application calls `StartHumanLoop`\. 
-
-  For built\-in task types, you also use the flow definition to identify the conditions under which a review human loop is triggered\. For example, Amazon Rekognition can perform image content moderation using machine learning\. You can use the flow definition to specify that an image will be sent to a human for content moderation review if Amazon Rekognition's confidence is too low\. 
-
-  You can create a flow definition in the Amazon SageMaker console or with the Amazon SageMaker API\. To learn more about both of these options, see [Create a Flow Definition](a2i-create-flow-definition.md)\.
-+ A *human loop* to start your human review workflow\. When you use one of the built\-in task types, the corresponding AWS service creates and starts a human loop on your behalf when the conditions specified in your flow definition are met or for each object if no conditions were specified\. When a human loop is triggered, human review tasks are sent to the workers as specified in the flow definition\. 
-
-  When using a custom task type, you start a human loop using the [Amazon Augmented AI Runtime API](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/Welcome.html)\. When you call `StartHumanLoop` in your custom application, a task is sent to human reviewers\. 
-
-  To learn how to create and start a human loop, see [Create and Start a Human Loop](a2i-start-human-loop.md)\.
-
-To generate these resources and create a human review workflow, Amazon A2I integrates multiple APIs including the Amazon Augmented AI Runtime Model, the Amazon SageMaker APIs, and APIs associated with your task type\. To learn more, see [Use APIs in Amazon Augmented AIAPI References](a2i-api-references.md)\.
+To get started using Amazon Augmented AI, review the [Core Components of Amazon A2I](a2i-getting-started-core-components.md) and [Prerequisites to Using Augmented AI](a2i-getting-started-prerequisites.md)\. Then, use the following to learn how to use the Amazon A2I console and API\. 
++ [Demo: Get Started in the Amazon A2I Console](a2i-get-started-console.md)
++ [Demo: Get Started Using the Amazon A2I API](a2i-get-started-api.md)
 
 **Note**  
 AWS Region availability may differ when you use Augmented AI with other AWS services, such as Amazon Textract\. Create Augmented AI resources in the same region that you use to interact with those AWS services\. For AWS Region availability for all services, see the [Region Table](http://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/)\.
-
-## Prerequisites<a name="a2i-getting-started-prerequisites"></a>
-
-You can create a Amazon A2I human review workflow using both the Amazon SageMaker console and an API\. To create a human review workflow, you need the following: 
-+ One or more Amazon S3 buckets in the same AWS Region as the workflow for your input and output data\. To create a bucket, follow the instructions in [ Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-bucket.html) in the *Amazon Simple Storage Service Console User Guide*\. 
-+ An IAM role with required permissions to create a human review workflow and an IAM user or role with permission to access Augmented AI\. For more information, see [Permissions and Security in Amazon Augmented AIPermissions and Security](a2i-permissions-security.md)\.
-+ You're prompted to choose a public, private, or vendor workforce for your human review workflows\. If you plan to use a private workforce, you need to set one up ahead of time in the same AWS Region as your Amazon A2I workflow\. To learn more about these workforce types, see [Create and Manage Workforces](sms-workforce-management.md)\.
-**Important**  
-Amazon maintains a list of AWS Services in scope for our various compliance efforts [here](http://aws.amazon.com/compliance/services-in-scope/)\. Amazon Augmented AI is not listed as in scope for compliance program assessments such as HIPAA, PCI, SOC, ISO, etc\. at this time\. If you use the Amazon Augmented AI service in conjunction with other AWS services such as Amazon Rekognition and Amazon Textract, please note that Amazon Augmented AI is not in scope with various compliance programs even if the other services are\. Your use of the Amazon Augmented AI service is part of the shared responsibility for your organization to determine the nature of the data\. You should determine if the service will process or store customer data and how it will or will not impact the compliance of your customer data environment\. We encourage you to discuss your workload objectives and goals with your AWS account team; they will be able to assist you in evaluating your proposed use case and architecture, and how our security and compliance processes overlay that architecture\.
-
-## Next Steps<a name="next-steps-a2i"></a>
-
-If you're new to Amazon A2I and are integrating a human review workflow with an Amazon Rekognition or Amazon Textract task, we recommend that you start by creating a human review workflow using the console, and then following **Next Steps**\. For more information, see [Create a Flow Definition \(Console\)](a2i-create-flow-definition.md#a2i-create-human-review-console)\. 
-
-If you know which task type you want to use — Amazon Textract, Amazon Rekognition, or custom – you can set up an end\-to\-end walkthrough in a Jupyter Notebook to learn how to integrate Augmented AI into a machine learning workflow for that task type\. To get started, see [Use Task Types](a2i-task-types-general.md) and select your task type\. 

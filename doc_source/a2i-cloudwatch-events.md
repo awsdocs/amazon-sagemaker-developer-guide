@@ -105,4 +105,4 @@ After you receive human review results, you can analyze the results and compare 
 
 ## More Information<a name="amazon-augmented-ai-programmatic-walkthroughs"></a>
 
-[React to Amazon SageMaker Job Status Changes with CloudWatch Events](cloudwatch-events.md)
+[Automating Amazon SageMaker with Amazon EventBridge](automating-sagemaker-with-eventbridge.md)

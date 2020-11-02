@@ -23,7 +23,8 @@ To enable model monitoring, you take the following steps, which follow the path 
 + **[Interpret Results](model-monitor-interpreting-results.md)**: Inspect the reports, which compare the latest data with the baseline, and watch for any violations reported and for metrics and notifications from Amazon CloudWatch\.
 
 **Note**  
-Amazon SageMaker Model Monitor currently supports only endpoints that host a single model and does not support monitoring multi\-model endpoints\. For information on using multi\-model endpoints, see [ Host Multiple Models with Multi\-Model Endpoints](multi-model-endpoints.md) \.
+Amazon SageMaker Model Monitor currently supports only endpoints that host a single model and does not support monitoring multi\-model endpoints\. For information on using multi\-model endpoints, see [ Host Multiple Models with Multi\-Model Endpoints](multi-model-endpoints.md) \.  
+Amazon SageMaker Model Monitor does support monitoring inference pipelines, but capturing and analyzing data is done for the entire pipeline, not for individual containers in the pipeline\.
 
 ### Model Monitor Sample Notebooks<a name="model-monitor-sample-notebooks"></a>
 
@@ -33,4 +34,4 @@ For a sample notebook that enables the model monitoring experience for an existi
 
 For a sample notebook that visualizes the statistics\.json file for a selected execution in a monitoring schedule, see the [Model Monitor Visualization](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker_model_monitor/visualization/SageMaker-Model-Monitor-Visualize.ipynb)\. 
 
-For instructions how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all the Amazon SageMaker samples\. To open a notebook, choose its **Use** tab and choose **Create copy**\.
+For instructions how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all the SageMaker samples\. To open a notebook, choose its **Use** tab and choose **Create copy**\.

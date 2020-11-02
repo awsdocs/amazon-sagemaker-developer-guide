@@ -1,18 +1,24 @@
 # Common Data Formats for Inference<a name="cdf-inference"></a>
 
-Amazon SageMaker algorithms accept and produce several different MIME types for the http payloads used in retrieving online and mini\-batch predictions\. You can use various AWS services to transform or preprocess records prior to running inference\. At a minimum, you need to convert the data for the following:
+Amazon SageMaker algorithms accept and produce several different MIME types for the HTTP payloads used in retrieving online and mini\-batch predictions\. You can use various AWS services to transform or preprocess records prior to running inference\. At a minimum, you need to convert the data for the following:
 + Inference request serialization \(handled by you\) 
 + Inference request deserialization \(handled by the algorithm\) 
 + Inference response serialization \(handled by the algorithm\) 
 + Inference response deserialization \(handled by you\) 
 
+**Topics**
++ [Convert Data for Inference Request Serialization](#ir-serialization)
++ [Convert Data for Inference Response Deserialization](#ir-deserialization)
++ [Common Request Formats for All Algorithms](#common-in-formats)
++ [Use Batch Transform with Built\-in Algorithms](#cm-batch)
+
 ## Convert Data for Inference Request Serialization<a name="ir-serialization"></a>
 
 Content type options for Amazon SageMaker algorithm inference requests include: `text/csv`, `application/json`, and `application/x-recordio-protobuf`\. Algorithms that don't support all of these types can support other types\. XGBoost, for example, only supports `text/csv` from this list, but also supports `text/libsvm`\.
 
-For `text/csv` the value for the Body argument to `invoke_endpoint` should be a string with commas separating the values for each feature\. For example, a record for a model with four features might look like: `1.5,16.0,14,23.0`\. Any transformations performed on the training data should also be performed on the data before obtaining inference\. The order of the features matters, and must remain unchanged\. 
+For `text/csv`, the value for the Body argument to `invoke_endpoint` should be a string with commas separating the values for each feature\. For example, a record for a model with four features might look like `1.5,16.0,14,23.0`\. Any transformations performed on the training data should also be performed on the data before obtaining inference\. The order of the features matters and must remain unchanged\. 
 
-`application/json` is significantly more flexible and provides multiple possible formats for developers to use in their applications\. At a high level, in JavaScript, the payload might look like: 
+`application/json` is significantly more flexible and provides multiple possible formats for developers to use in their applications\. At a high level, in JavaScript, the payload might look like the following: 
 
 ```
 let request = {
@@ -32,7 +38,7 @@ let request = {
 
 You have the following options for specifying the `dataElement`: 
 
-Protocol buffers equivalent:
+**Protocol buffers equivalent**
 
 ```
 // Has the same format as the protocol buffers implementation described for training.
@@ -43,7 +49,7 @@ let dataElement = {
 }
 ```
 
-Simple numeric vector: 
+**Simple numeric vector **
 
 ```
 // An array containing numeric values is treated as an instance containing a
@@ -58,7 +64,7 @@ let converted = {
 }
 ```
 
-And, for multiple records:
+**For multiple records**
 
 ```
 let request = {
@@ -89,7 +95,7 @@ let response = {
 
 The fields that are included in predictions differ across algorithms\. The following are examples of output for the k\-means algorithm\.
 
-Single\-record inference: 
+**Single\-record inference** 
 
 ```
 let response = {
@@ -100,7 +106,7 @@ let response = {
 }
 ```
 
-Multi\-record inference: 
+**Multi\-record inference**
 
 ```
 let response = {
@@ -119,10 +125,10 @@ let response = {
 }
 ```
 
-Multi\-record inference with protobuf input: 
+**Multi\-record inference with protobuf input **
 
 ```
-{ 
+{
   "features": [],
   "label": {
     "closest_cluster": {
@@ -137,14 +143,14 @@ Multi\-record inference with protobuf input:
 }
 ```
 
-Amazon SageMaker algorithms also support jsonlines format, where the per\-record response content is same as that in JSON format\. The multi\-record structure is a concatenation of per\-record response objects separated by newline characters\. The response content for the built\-in KMeans algorithm for 2 input data points is:
+SageMaker algorithms also support the JSONLINES format, where the per\-record response content is same as that in JSON format\. The multi\-record structure is a concatenation of per\-record response objects separated by newline characters\. The response content for the built\-in KMeans algorithm for 2 input data points is:
 
 ```
 {"distance_to_cluster": 23.40593910217285, "closest_cluster": 0.0}
 {"distance_to_cluster": 27.250282287597656, "closest_cluster": 0.0}
 ```
 
-While running batch transform, it is recommended to use `jsonlines` response type by setting the `Accept` field in the `CreateTransformJobRequest` to `application/jsonlines`\.
+While running batch transform, we recommended using the `jsonlines` response type by setting the `Accept` field in the `CreateTransformJobRequest` to `application/jsonlines`\.
 
 ## Common Request Formats for All Algorithms<a name="common-in-formats"></a>
 
@@ -152,9 +158,9 @@ Most algorithms use several of the following inference request formats\.
 
 ### JSON Request Format<a name="cm-json"></a>
 
-Content\-type: application/json
+**Content type:** application/JSON
 
-Dense Format
+**Dense format**
 
 ```
 let request =   {
@@ -179,7 +185,7 @@ let request =   {
 }
 ```
 
-Sparse Format
+**Sparse format**
 
 ```
 {
@@ -204,9 +210,9 @@ Sparse Format
 
 ### JSONLINES Request Format<a name="cm-jsonlines"></a>
 
-Content\-type: application/jsonlines
+**Content type:** application/JSONLINES
 
-Dense Format
+**Dense format**
 
 A single record in dense format can be represented as either:
 
@@ -220,7 +226,7 @@ or:
 { "data": { "features": { "values": [ 1.5, 16.0, 14.0, 23.0] } }
 ```
 
-Sparse Format
+**Sparse Format**
 
 A single record in sparse format is represented as:
 
@@ -238,18 +244,18 @@ Multiple records are represented as a concatenation of the above single\-record 
 
 ### CSV Request Format<a name="cm-csv"></a>
 
-Content\-type: text/csv;label\_size=0
+**Content type:** text/CSV; label\_size=0
 
 **Note**  
 CSV support is not available for factorization machines\.
 
 ### RECORDIO Request Format<a name="cm-recordio"></a>
 
-Content\-type: application/x\-recordio\-protobuf
+Content type: application/x\-recordio\-protobuf
 
-## Use Batch Transform with Build\-in Algorithms<a name="cm-batch"></a>
+## Use Batch Transform with Built\-in Algorithms<a name="cm-batch"></a>
 
-While running batch transform, it's recommended to use jsonlines response type instead of JSON, if supported by the algorithm\. This is accomplished by setting the `Accept` field in the `CreateTransformJobRequest` to `application/jsonlines`\.
+While running batch transform, we recommended using the JSONLINES response type instead of JSON, if supported by the algorithm\. This is accomplished by setting the `Accept` field in the `CreateTransformJobRequest` to `application/jsonlines`\.
 
 When you create a transform job, the `SplitType` must be set according to the `ContentType` of the input data\. Similarly, depending on the `Accept` field in the `CreateTransformJobRequest`, `AssembleWith` must be set accordingly\. Please use the following table to help appropriately set these fields:
 
@@ -269,8 +275,14 @@ When you create a transform job, the `SplitType` must be set according to the `C
 | application/jsonlines | Line | 
 
 For more information on response formats for specific algorithms, see the following:
-+ [PCA Response Formats](PCA-in-formats.md)
-+ [Linear Learner Response Formats](LL-in-formats.md)
-+ [NTM Response Formats](ntm-in-formats.md)
-+ [K\-Means Response Formats](km-in-formats.md)
++ [DeepAR Inference Formats](deepar-in-formats.md)
 + [Factorization Machine Response Formats](fm-in-formats.md)
++ [IP Insights Inference Data Formats](ip-insights-inference-data-formats.md)
++ [K\-Means Response Formats](km-in-formats.md)
++ [k\-NN Request and Response Formats](kNN-inference-formats.md)
++ [Linear learner response formats](LL-in-formats.md)
++ [NTM Response Formats](ntm-in-formats.md)
++ [ Data Formats for Object2Vec Inference](object2vec-inference-formats.md)
++ [ Encoder Embeddings for Object2Vec ](object2vec-encoder-embeddings.md)
++ [PCA Response Formats](PCA-in-formats.md)
++ [RCF Response Formats](rcf-in-formats.md)

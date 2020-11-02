@@ -4,5 +4,5 @@ The following sections list the available resources for Amazon SageMaker Studio 
 
 **Topics**
 + [Available Instance Types](notebooks-available-instance-types.md)
-+ [Available SageMaker Images](notebooks-available-images.md)
-+ [Available SageMaker Kernels](notebooks-available-kernels.md)
++ [Available Amazon SageMaker Images](notebooks-available-images.md)
++ [Available Amazon SageMaker Kernels](notebooks-available-kernels.md)

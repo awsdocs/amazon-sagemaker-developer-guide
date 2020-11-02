@@ -2,7 +2,7 @@
 
 Once you've started a human review loop, you can check the results of and manage the loop using the [Amazon Augmented AI Runtime API](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/Welcome.html)\. Additionally, Amazon A2I integrates with Amazon EventBridge \(also known as Amazon CloudWatch Events\) to alert you when a human review loop changes status\. 
 
-Use the procedures below to learn how to use the Amazon Augmented AI Runtime API to monitor and manage your human loops\. See [Use Amazon CloudWatch Events in Amazon Augmented AICloudWatch Events](a2i-cloudwatch-events.md) to learn how Amazon A2I integrates with Amazon EventBridge\. 
+Use the procedures below to learn how to use the Amazon A2I Runtime API to monitor and manage your human loops\. See [Use Amazon CloudWatch Events in Amazon Augmented AICloudWatch Events](a2i-cloudwatch-events.md) to learn how Amazon A2I integrates with Amazon EventBridge\.
 
 **To check your output data:**
 
@@ -14,23 +14,9 @@ Use the procedures below to learn how to use the Amazon Augmented AI Runtime API
    s3://customer-output-bucket-specified-in-flow-definition/flow-definition-name/YYYY/MM/DD/hh/mm/ss/human-loop-name/output.json
    ```
 
-You can integrate this structure with AWS Glue or Amazon Athena to partition and analyze your output data\. For more information, see [Managing Partitions for ETL Output in AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-partitions.html)\. 
+You can integrate this structure with AWS Glue or Amazon Athena to partition and analyze your output data\. For more information, see [Managing Partitions for ETL Output in AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-partitions.html)\.
 
-In your output data, you can use the following to track individual workers:
-+ The `workerId` is unique to each worker\. 
-+ In `workerMetadata`, you will see the following\. 
-  + `identityProviderType` – The service which Augmented AI uses to manage the private workforce\.
-  + `issuer` – The Cognito user pool associated with the work team assigned to this human review task\.
-  + `sub` – A unique identifier that refers to the worker\. You can retrieve details about this worker \(such as the name or username\) using this ID using Amazon Cognito\. To learn how, see [Managing and Searching for User Accounts](https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#manage-user-accounts-searching-user-attributes) in [Amazon Cognito Developer Guide](https://docs.aws.amazon.com/cognito/latest/developerguide/)\. 
-
-```
-"workerId": "a12b3cdefg4h5i67",
-            "workerMetadata": {
-                "identityData": {
-                    "identityProviderType": "Cognito",
-                    "issuer": "https://cognito-idp.aws-region.amazonaws.com/aws-region_123456789",
-                    "sub": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
-```
+To learn more about Amazon A2I output data format, see [Amazon A2I Output Data](a2i-output-data.md)\.
 
 **To stop and delete your human loop:**
 

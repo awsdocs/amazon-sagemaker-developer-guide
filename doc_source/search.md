@@ -1,13 +1,13 @@
-# Search<a name="search"></a>
+# Search Using the Amazon SageMaker Console and API<a name="search"></a>
 
-Developing a machine learning model typically requires extensive experimenting with different datasets, algorithms, and hyperparameter values\. To manage up to thousands of machine learning model experiments, use Amazon SageMaker's search capabilities\.
+Developing a machine learning model typically requires extensive experimenting with different datasets, algorithms, and hyperparameter values\. To manage up to thousands of machine learning model experiments, use the search capabilities in SageMaker\.
 
 You can use SageMaker search to:
 + Organize, find, and evaluate training jobs using properties, hyperparameters, performance metrics, or any metadata\.
 + Find the best performing model by reviewing training job and model metrics, such as training loss or validation accuracy\.
 + Trace a model's lineage to the training job and its related resources, such as the training datasets\.
 
-This topic covers searching from the SageMaker console and the SageMaker API\. For information on searching in Amazon SageMaker Studio, see [Compare and Evaluate Trials](studio-leaderboard.md)\.
+This topic covers searching from the SageMaker console and the SageMaker API\. For information on searching in Amazon SageMaker Studio, see [Search Experiments Using Studio](experiments-search-studio.md)\.
 
 **Topics**
 + [Sample Notebooks for Managing ML Experiments](#search-sample-notebooks)
@@ -18,7 +18,7 @@ This topic covers searching from the SageMaker console and the SageMaker API\. F
 
 ## Sample Notebooks for Managing ML Experiments<a name="search-sample-notebooks"></a>
 
-For a sample notebook that uses Amazon SageMaker model tracking capability to manage ML experiments, see [Managing ML Experimentation using Amazon SageMaker Model Tracking Capability](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/advanced_functionality/search/ml_experiment_management_using_search.ipynb)\. 
+For a sample notebook that uses Amazon SageMaker model tracking capability to manage ML experiments, see [Managing ML Experimentation using Amazon SageMaker Model Tracking Capability](https://github.com/aws/amazon-sagemaker-examples/blob/master/advanced_functionality/search/ml_experiment_management_using_search.ipynb)\. 
 
 For instructions on how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. After you have created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all of the SageMaker samples\. The notebook for managing ML experiments is located in the **Advanced Functionality** section\. To open a notebook, choose its **Use** tab, and choose **Create copy**\. If you have questions, post them on the [Amazon Machine Learning Developer Forum](https://forums.aws.amazon.com/forum.jspa?forumID=285)\.
 
@@ -102,7 +102,7 @@ To the find and evaluate training jobs or to get suggestions for items used in e
 
 ### Find Training Jobs \(API\)<a name="search-api"></a>
 
-To find training jobs, create a search parameter using the `search_params` parameter\. Then use the search function in the `smclient` subprocess in the AWS SDK for Python \(Boto 3\)\. 
+To find training jobs, create a search parameter using the `search_params` parameter\. Then use the search function in the `smclient` subprocess in the AWS SDK for Python \(Boto3\)\. 
 
 The following example shows how to use the [ `Search`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Search.html) API to find training jobs\. 
 
@@ -128,7 +128,7 @@ results = smclient.search(**search_params)
 
 ### Evaluate Models \(API\)<a name="search-organize-api"></a>
 
-To evaluate models, run a search as described in [Find Training Jobs \(API\)](#search-api), review model metrics, then, use the AWS SDK for Python \(Boto 3\) to create a table and plot it\.
+To evaluate models, run a search as described in [Find Training Jobs \(API\)](#search-api), review model metrics, then, use the AWS SDK for Python \(Boto3\) to create a table and plot it\.
 
 The following example shows how to evaluate models and to display the results in a table\.
 
@@ -156,7 +156,7 @@ from IPython.display import display, HTMLdisplay(HTML(df.to_html()))
 
 To get suggestions for a search, use the [ `GetSearchSuggestions`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_GetSearchSuggestions.html) API\.
 
-The following example for AWS SDK for Python \(Boto 3\) is a `get_search_suggestions` request for items containing `"linear".`
+The following example for AWS SDK for Python \(Boto3\) is a `get_search_suggestions` request for items containing `linear`\.
 
 ```
 search_suggestion_params={

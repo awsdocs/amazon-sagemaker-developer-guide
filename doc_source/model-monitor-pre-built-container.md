@@ -1,6 +1,6 @@
 # Amazon SageMaker Model Monitor Pre\-built Container<a name="model-monitor-pre-built-container"></a>
 
-Amazon SageMaker provides a built\-in container sagemaker\-model\-monitor\-analyzer that provides you with a range of model monitoring capabilities, including constraint suggestion, statistics generation, constraint validation against a baseline, and emitting Amazon CloudWatch metrics\. This container is based on Spark and is built with [Deequ](https://github.com/awslabs/deequ)\. The prebuilt container for SageMaker Model Monitor can be accessed at:
+SageMaker provides a built\-in container sagemaker\-model\-monitor\-analyzer that provides you with a range of model monitoring capabilities, including constraint suggestion, statistics generation, constraint validation against a baseline, and emitting Amazon CloudWatch metrics\. This container is based on Spark and is built with [Deequ](https://github.com/awslabs/deequ)\. The prebuilt container for SageMaker Model Monitor can be accessed at:
 
 `<ACCOUNT_ID>.dkr.ecr.<REGION_NAME>.amazonaws.com/sagemaker-model-monitor-analyzer`
 
@@ -15,6 +15,7 @@ The following table lists the supported values for account IDs and corresponding
 | 777275614652 | us\-east\-2 | 
 | 890145073186 | us\-west\-1 | 
 | 159807026194 | us\-west\-2 | 
+| 875698925577 | af\-south\-1 | 
 | 001633400207 | ap\-east\-1 | 
 | 574779866223 | ap\-northeast\-1 | 
 | 709848358524 | ap\-northeast\-2 | 
@@ -26,6 +27,7 @@ The following table lists the supported values for account IDs and corresponding
 | 453252182341 | cn\-northwest\-1 | 
 | 048819808253 | eu\-central\-1 | 
 | 895015795356 | eu\-north\-1 | 
+| 933208885752 | eu\-south\-1 | 
 | 468650794304 | eu\-west\-1 | 
 | 749857270468 | eu\-west\-2 | 
 | 680080141114 | eu\-west\-3 | 

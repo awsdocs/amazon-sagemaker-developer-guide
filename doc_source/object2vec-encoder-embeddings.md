@@ -7,8 +7,8 @@ An embedding is a mapping from discrete objects, such as words, to vectors of re
 Due to GPU memory scarcity, the `INFERENCE_PREFERRED_MODE` environment variable can be specified to optimize on whether the [ Data Formats for Object2Vec Inference](object2vec-inference-formats.md) or the encoder embedding inference network is loaded into GPU\. If the majority of your inference is for encoder embeddings, specify `INFERENCE_PREFERRED_MODE=embedding`\. The following is a Batch Transform example of using 4 instances of p3\.2xlarge that optimizes for encoder embedding inference:
 
 ```
-transformer = o2v.transformer(instance_count=4, 
-                              instance_type="ml.p2.xlarge", 
+transformer = o2v.transformer(instance_count=4,
+                              instance_type="ml.p2.xlarge",
                               max_concurrent_transforms=2,
                               max_payload=1,  # 1MB
                               strategy='MultiRecord',

@@ -5,7 +5,7 @@ You can use a notebook instance created with a custom lifecycle configuration sc
 The process requires three procedures using the Amazon SageMaker console:
 + Create the Amazon EMR Spark instance
 + Create the Jupyter Notebook
-+ Test the notbook\-to\-Amazon EMR connection
++ Test the notebook\-to\-Amazon EMR connection
 
 **To create an Amazon EMR Spark instance that can be controlled from a notebook using Sparkmagic**
 
@@ -34,14 +34,14 @@ The process requires three procedures using the Amazon SageMaker console:
    ```
    # OVERVIEW
    # This script connects an Amazon EMR cluster to an Amazon SageMaker notebook instance that uses Sparkmagic.
-   # 
+   #
    # Note that this script will fail if the Amazon EMR cluster's master node IP address is not reachable.
    #   1. Ensure that the EMR master node IP is resolvable from the notebook instance.
    #      One way to accomplish this is to have the notebook instance and the Amazon EMR cluster in the same subnet.
    #   2. Ensure the EMR master node security group provides inbound access from the notebook instance security group.
    #       Type        - Protocol - Port - Source
    #       Custom TCP  - TCP      - 8998 - $NOTEBOOK_SECURITY_GROUP
-   #   3. Ensure the notebook instance has internet connectivity to fetch the SparkMagic example config.  
+   #   3. Ensure the notebook instance has internet connectivity to fetch the SparkMagic example config.
    #
    # https://aws.amazon.com/blogs/machine-learning/build-amazon-sagemaker-notebooks-backed-by-spark-in-amazon-emr/
    
@@ -77,7 +77,7 @@ The process requires three procedures using the Amazon SageMaker console:
 While the notebook instance is being created, the status is **Pending**\. After the instance has been created and the lifecycle configuration script has successfully run, the status is **InService**\.
 
 **Note**  
-If the notebook instance can't connect to the Amazon EMR instance, Amazon SageMaker can't create the notebook instance\. The connection can fail if the Amazon EMR instance and notebook are not in the same VPC and subnet, if the Amazon EMR master security group is not used by the notebook, or if the Master Public DNS name in the script is incorrect\. 
+If the notebook instance can't connect to the Amazon EMR instance, SageMaker can't create the notebook instance\. The connection can fail if the Amazon EMR instance and notebook are not in the same VPC and subnet, if the Amazon EMR master security group is not used by the notebook, or if the Master Public DNS name in the script is incorrect\. 
 
 **To test the connection between the Amazon EMR instance and the notebook**
 

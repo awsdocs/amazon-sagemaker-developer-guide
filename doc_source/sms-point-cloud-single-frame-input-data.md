@@ -10,6 +10,9 @@ To create a single\-frame input manifest file, you will identify the location of
 
 The following example demonstrates the syntax used for an input manifest file for a single\-frame point cloud labeling job\. The example includes two point cloud frames\. For details about each parameter, see the table following this example\. 
 
+**Important**  
+The following code block shows an input manifest file with two JSON objects\. Each JSON object is used to point to and provide details about a single point cloud frame\. The JSON objects have been expanded for readability, but you must minimize each JSON object to fit on a single line when creating an input manifest file\. An example is provided under this code block\. 
+
 ```
 {
     "source-ref": "s3://awsexamplebucket/examplefolder/frame1.bin",
@@ -109,6 +112,13 @@ The following example demonstrates the syntax used for an input manifest file fo
         }]
     }
 }
+```
+
+When you create an input manifest file, you must collapse your JSON objects to fit on a single line\. For example, the code block above would appear as follows in an input manifest file:
+
+```
+{"source-ref":"s3://awsexamplebucket/examplefolder/frame1.bin","source-ref-metadata":{"format":"binary/xyzi","unix-timestamp":1566861644.759115,"ego-vehicle-pose":{"position":{"x":-2.7161461413869947,"y":116.25822288149078,"z":1.8348751887989483},"heading":{"qx":-0.02111296123795955,"qy":-0.006495469416730261,"qz":-0.008024565904865688,"qw":0.9997181192298087}},"prefix":"s3://awsexamplebucket/lidar_singleframe_dataset/someprefix/","images":[{"image-path":"images/frame300.bin_camera0.jpg","unix-timestamp":1566861644.759115,"fx":847.7962624528487,"fy":850.0340893791985,"cx":576.2129134707038,"cy":317.2423573573745,"k1":0,"k2":0,"k3":0,"k4":0,"p1":0,"p2":0,"skew":0,"position":{"x":-2.2722515189268138,"y":116.86003310568965,"z":1.454614668542299},"heading":{"qx":0.7594754093069037,"qy":0.02181790885672969,"qz":-0.02461725233103356,"qw":-0.6496916273040025},"camera-model":"pinhole"}]}}
+{"source-ref":"s3://awsexamplebucket/examplefolder/frame2.bin","source-ref-metadata":{"format":"binary/xyzi","unix-timestamp":1566861632.759133,"ego-vehicle-pose":{"position":{"x":-2.7161461413869947,"y":116.25822288149078,"z":1.8348751887989483},"heading":{"qx":-0.02111296123795955,"qy":-0.006495469416730261,"qz":-0.008024565904865688,"qw":0.9997181192298087}},"prefix":"s3://awsexamplebucket/lidar_singleframe_dataset/someprefix/","images":[{"image-path":"images/frame300.bin_camera0.jpg","unix-timestamp":1566861644.759115,"fx":847.7962624528487,"fy":850.0340893791985,"cx":576.2129134707038,"cy":317.2423573573745,"k1":0,"k2":0,"k3":0,"k4":0,"p1":0,"p2":0,"skew":0,"position":{"x":-2.2722515189268138,"y":116.86003310568965,"z":1.454614668542299},"heading":{"qx":0.7594754093069037,"qy":0.02181790885672969,"qz":-0.02461725233103356,"qw":-0.6496916273040025},"camera-model":"pinhole"}]}}
 ```
 
 The following table shows the parameters you can include in your input manifest file:

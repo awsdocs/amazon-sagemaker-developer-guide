@@ -4,7 +4,7 @@ Use this page to become familiarize with the user interface and tools available 
 
 **Topics**
 + [Your Task](#sms-point-cloud-worker-instructions-od-task)
-+ [Navigate the Worker Portal](#sms-point-cloud-worker-instructions-worker-ui-od)
++ [Navigate the UI](#sms-point-cloud-worker-instructions-worker-ui-od)
 + [Icon Guide](#sms-point-cloud-worker-instructions-od-icons)
 + [Shortcuts](#sms-point-cloud-worker-instructions-od-hot-keys)
 + [Saving Your Work and Submitting](#sms-point-cloud-worker-instructions-saving-work-od)
@@ -32,7 +32,7 @@ To edit a cuboid, including moving, re\-orienting, and changing cuboid dimension
 |  Option \+ O  |  Alt \+ O  |  Fit the cuboid tightly around the points it has been drawn around\. Before using the option, make sure the cuboid fully\-surrounds the object of interest\.   | 
 |  Option \+ G  |  Alt \+ G  |  Set the cuboid to the ground\.   | 
 
-## Navigate the Worker Portal<a name="sms-point-cloud-worker-instructions-worker-ui-od"></a>
+## Navigate the UI<a name="sms-point-cloud-worker-instructions-worker-ui-od"></a>
 
 You can navigate in the 3D scene using your keyboard and mouse\. You can:
 + Double click on specific objects in the point cloud to zoom into them\.
@@ -90,7 +90,9 @@ Use this table to learn about the icons you see in your worker task portal\.
 
 ## Shortcuts<a name="sms-point-cloud-worker-instructions-od-hot-keys"></a>
 
-The shortcuts listed in the **Shortcuts** menu can help you navigate the 3D point cloud and use tools to add and edit cuboids\. Before you start your task, we recommend that you review the **Shortcuts** menu and become acquainted with these commands\. You need to use some of the 3D cuboid controls to edit your cuboid\. 
+The shortcuts listed in the **Shortcuts** menu can help you navigate the 3D point cloud and use tools to add and edit cuboids\. 
+
+Before you start your task, it is recommended that you review the **Shortcuts** menu and become acquainted with these commands\. You need to use some of the 3D cuboid controls to edit your cuboid\. 
 
 ## Saving Your Work and Submitting<a name="sms-point-cloud-worker-instructions-saving-work-od"></a>
 

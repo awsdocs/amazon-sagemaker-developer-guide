@@ -85,6 +85,6 @@ The schema defined in the `statistics.json` file specifies the statistical param
 ```
 
 Note the following:
-+ The specified metrics are recognized by Amazon SageMaker in later visualization changes\. The container can emit more metrics if required\.
-+ [KLL sketch](https://datasketches.github.io/docs/Quantiles/KLLSketch.html) is the recognized sketch\. Custom containers can write their own representation, but it won’t be recognized by Amazon SageMaker in visualizations\.
++ The specified metrics are recognized by SageMaker in later visualization changes\. The container can emit more metrics if required\.
++ [KLL sketch](https://datasketches.github.io/docs/Quantiles/KLLSketch.html) is the recognized sketch\. Custom containers can write their own representation, but it won’t be recognized by SageMaker in visualizations\.
 + By default, the distribution is materialized in 10 buckets\. You can't change this\.

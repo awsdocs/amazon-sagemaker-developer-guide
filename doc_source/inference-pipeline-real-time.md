@@ -4,20 +4,20 @@ You can use trained models in an inference pipeline to make real\-time predictio
 
 [MLeap](http://mleap-docs.combust.ml/), a serialization format and execution engine for machine learning pipelines, supports Spark, scikit\-learn, and TensorFlow for training pipelines and exporting them to a serialized pipeline called an MLeap Bundle\. You can deserialize Bundles back into Spark for batch\-mode scoring or into the MLeap runtime to power real\-time API services\.
 
-The containers in a pipeline listen on the port specified in the `SAGEMAKER_BIND_TO_PORT` environment variable \(instead of 8080\)\. When running in an inference pipeline, Amazon SageMaker automatically provides this environment variable to containers\. If this environment variable isn't present, containers default to using port 8080\. To indicate that your container complies with this requirement, use the following command to add a label to your Dockerfile:
+The containers in a pipeline listen on the port specified in the `SAGEMAKER_BIND_TO_PORT` environment variable \(instead of 8080\)\. When running in an inference pipeline, SageMaker automatically provides this environment variable to containers\. If this environment variable isn't present, containers default to using port 8080\. To indicate that your container complies with this requirement, use the following command to add a label to your Dockerfile:
 
 ```
 LABEL com.amazonaws.sagemaker.capabilities.accept-bind-to-port=true
 ```
 
-If your container needs to listen on a second port, choose a port in the range specified by the `SAGEMAKER_SAFE_PORT_RANGE` environment variable\. Specify the value as an inclusive range in the format **"XXXX\-YYYY"**, where `XXXX` and `YYYY` are multi\-digit integers\. Amazon SageMaker provides this value automatically when you run the container in a multicontainer pipeline\.
+If your container needs to listen on a second port, choose a port in the range specified by the `SAGEMAKER_SAFE_PORT_RANGE` environment variable\. Specify the value as an inclusive range in the format **"XXXX\-YYYY"**, where `XXXX` and `YYYY` are multi\-digit integers\. SageMaker provides this value automatically when you run the container in a multicontainer pipeline\.
 
 **Note**  
-To use custom Docker images in a pipeline that includes [Amazon SageMaker built\-in algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html), you need an [Amazon Elastic Container Registry \(Amazon ECR\) policy](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html)\. Your Amazon ECR repository must grant Amazon SageMaker permission to pull the image\. For more information, see [Troubleshoot Amazon ECR Permissions for Inference Pipelines](inference-pipeline-troubleshoot.md#inference-pipeline-troubleshoot-permissions)\.
+To use custom Docker images in a pipeline that includes [SageMaker built\-in algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html), you need an [Amazon Elastic Container Registry \(Amazon ECR\) policy](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html)\. Your Amazon ECR repository must grant SageMaker permission to pull the image\. For more information, see [Troubleshoot Amazon ECR Permissions for Inference Pipelines](inference-pipeline-troubleshoot.md#inference-pipeline-troubleshoot-permissions)\.
 
 ## Create and Deploy an Inference Pipeline Endpoint<a name="inference-pipeline-real-time-sdk"></a>
 
-The following code creates and deploys a real\-time inference pipeline model with SparkML and XGBoost models in series using the Amazon SageMaker SDK\.
+The following code creates and deploys a real\-time inference pipeline model with SparkML and XGBoost models in series using the SageMaker SDK\.
 
 ```
 from sagemaker.model import Model
@@ -39,6 +39,7 @@ sm_model.deploy(initial_instance_count=1, instance_type='ml.c4.xlarge', endpoint
 The following example shows how to make real\-time predictions by calling an inference endpoint and passing a request payload in JSON format:
 
 ```
+import sagemaker
 from sagemaker.predictor import json_serializer, json_deserializer, RealTimePredictor
 from sagemaker.content_types import CONTENT_TYPE_CSV, CONTENT_TYPE_JSON
 
@@ -82,7 +83,7 @@ payload = {
         }
     }
 
-predictor = RealTimePredictor(endpoint=endpoint_name, sagemaker_session=sess, serializer=json_serializer,
+predictor = RealTimePredictor(endpoint=endpoint_name, sagemaker_session=sagemaker.Session(), serializer=json_serializer,
                                 content_type=CONTENT_TYPE_JSON, accept=CONTENT_TYPE_CSV)
 
 print(predictor.predict(payload))

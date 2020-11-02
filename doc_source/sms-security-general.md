@@ -1,11 +1,16 @@
 # Ground Truth Security and Permissions<a name="sms-security-general"></a>
 
-Use the topics on this page to learn about Ground Truth security features, and how to configure IAM permissions to create a labeling job\. 
+Use the topics on this page to learn about Ground Truth security features, and how to configure AWS Identity and Access Management \(IAM\) permissions to allow an IAM user or role create a labeling job\. Additionally, learn how to create an *execution role*\. An execution role is the role that you specify when you create a labeling job and it is used to execute your labeling job\.
 
-If you are new to Ground Truth or you do not require granular permissions to use the service, you can use the managed policy, AmazonSageMakerFullAccess to grant permission to an IAM role to create a labeling job\. You can also attach AmazonSageMakerFullAccess to an IAM role to create an execution role\. To learn more about this managed policy, see [AmazonSageMakerFullAccess Policy](sagemaker-roles.md#sagemaker-roles-amazonsagemakerfullaccess-policy)\.
+If you are a new user and want to get started quickly, or if you do not require granular permissions, see [Grant General Permissions To Get Started Using Ground Truth](sms-security-permission.md#sms-security-permissions-get-started)\.
 
 **Important**  
-When you create a custom labeling workflow, the AmazonSageMakerFullAccess policy is restricted to invoking AWS Lambda functions with one of the following four strings as part of the function name: `SageMaker`, `Sagemaker`, `sagemaker`, or `LabelingFunction`\. This applies to both your pre\-annotation and post\-annotation Lambda functions\. If you choose to use names without those strings, you must explicitly provide `lambda:InvokeFunction` permission to the IAM role used to create the labeling job\.
+When you create your labeling job, if you set the Task time limit \(`TaskTimeLimitInSeconds` when using the Amazon SageMaker API\) to be greater than one hour \(3,600 seconds\), you must increases the *max session duration* of your execution role to be greater than or equal to the task timeout\.  
+You can modify the max session duration of your execution rule using the IAM console, AWS CLI, and IAM API\. To modify your execution role, go to [Modifying a Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html) in the IAM User Guide, select your preferred method \(console, CLI, or API\) to modify the role from the **Topics** list, and then select **Modifying a Role Maximum Session Duration** to view the instructions\. For 3D point cloud task types, refer to [Increase MaxSessionDuration for Execution Role](sms-point-cloud-general-information.md#sms-3d-pointcloud-maxsessduration)\.
+
+For more information about IAM users and roles, see [Identities \(Users, Groups, and Roles\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html) in the IAM User Guide\. 
+
+To learn more about using IAM with SageMaker, see [Identity and Access Management for Amazon SageMaker](security-iam.md)\.
 
 **Topics**
 + [Assign IAM Permissions to Use Ground Truth](sms-security-permission.md)

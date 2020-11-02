@@ -4,7 +4,7 @@ You can display the difference between the current notebook and the last checkpo
 
 The following screenshot shows the menu from a Studio notebook\.
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-notebooks-manage-callouts.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-notebook-menu-diffs.png)
 
 **Topics**
 + [Get the Difference Between the Last Checkpoint](#notebooks-diff-checkpoint)

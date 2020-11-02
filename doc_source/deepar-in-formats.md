@@ -79,7 +79,7 @@ The following is the format of a response, where `[...]` are arrays of numbers:
 
 DeepAR has a response timeout of 60 seconds\. When passing multiple time series in a single request, the forecasts are generated sequentially\. Because the forecast for each time series typically takes about 300 to 1000 milliseconds or longer, depending on the model size, passing too many time series in a single request can cause time outs\. It's better to send fewer time series per request and send more requests\. Because the DeepAR algorithm uses multiple workers per instance, you can achieve much higher throughput by sending multiple requests in parallel\.
 
-By default, DeepAR uses one worker per CPU for inference, if there is sufficient memory per CPU\. If the model is large and there isn't enough memory to run a model on each CPU, the number of workers is reduced\. The number of workers used for inference can be overwritten using the environment variable `MODEL_SERVER_WORKERS` For example, by setting `MODEL_SERVER_WORKERS=1`\) when calling the Amazon SageMaker [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) API\.
+By default, DeepAR uses one worker per CPU for inference, if there is sufficient memory per CPU\. If the model is large and there isn't enough memory to run a model on each CPU, the number of workers is reduced\. The number of workers used for inference can be overwritten using the environment variable `MODEL_SERVER_WORKERS` For example, by setting `MODEL_SERVER_WORKERS=1`\) when calling the SageMaker [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) API\.
 
 ## Batch Transform with the DeepAR Algorithm<a name="deepar-batch"></a>
 
@@ -114,9 +114,9 @@ The output is also in JSON Lines format, with one line per prediction, in an ord
 { "quantiles": { "0.1": [...], "0.2": [...] }, "samples": [...], "mean": [...] }
 ```
 
-Note that in the [ `TransformInput`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformInput.html) configuration of the Amazon SageMaker [ `CreateTransformJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html) request clients must explicitly set the `AssembleWith` value to `Line`, as the default value `None` concatenates all JSON objects on the same line\.
+Note that in the [ `TransformInput`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformInput.html) configuration of the SageMaker [ `CreateTransformJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html) request clients must explicitly set the `AssembleWith` value to `Line`, as the default value `None` concatenates all JSON objects on the same line\.
 
-For example, here is an Amazon SageMaker [ `CreateTransformJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html) request for a DeepAR job with a custom `DEEPAR_INFERENCE_CONFIG`:
+For example, here is a SageMaker [ `CreateTransformJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html) request for a DeepAR job with a custom `DEEPAR_INFERENCE_CONFIG`:
 
 ```
 {

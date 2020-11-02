@@ -9,7 +9,7 @@ Amazon SageMaker Ground Truth doesn't provide a "none" category for when none of
 To restrict workers to choosing a single label for each document or text selection, use the [Text Classification \(Single Label\)](sms-text-classification.md) task type\. 
 
 **Important**  
-For this task type, if you create your own manifest file, use `"source-ref"` to identify the location of text files in Amazon S3 that you want labeled\. If you provide the text that you want labeled directly in the input manifest file, use `"source"`\. For more information, see [Input Data](sms-data-input.md)\.
+If you manually create an input manifest file, use `"source"` to identify the text that you want labeled\. For more information, see [Input Data](sms-data-input.md)\.
 
 ## Create a Multi\-Label Text Classification Labeling Job \(Console\)<a name="sms-creating-multilabel-text-classification-console"></a>
 
@@ -21,7 +21,7 @@ Ground Truth provides a worker UI similar to the following for labeling tasks\. 
 
 ## Create a Multi\-Label Text Classification Labeling Job \(API\)<a name="sms-creating-multilabel-text-classification-api"></a>
 
-To create a multi\-label text classification labeling job, use the Amazon SageMaker API operation `CreateLabelingJob`\. This API defines this operation for all AWS SDKs\. To see a list of language\-specific SDKs supported for this operation, review the **See Also** section of [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)\.
+To create a multi\-label text classification labeling job, use the SageMaker API operation `CreateLabelingJob`\. This API defines this operation for all AWS SDKs\. To see a list of language\-specific SDKs supported for this operation, review the **See Also** section of [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)\.
 
 Follow the instructions on [Create a Labeling Job \(API\)](sms-create-labeling-job-api.md) and do the following while you configure your request: 
 + Pre\-annotation Lambda functions for this task type end with `PRE-TextMultiClassMultiLabel`\. To find the pre\-annotation Lambda ARN for your Region, see [PreHumanTaskLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/dg/API_HumanTaskConfig.html#SageMaker-Type-HumanTaskConfig-PreHumanTaskLambdaArn) \. 

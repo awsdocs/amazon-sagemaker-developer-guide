@@ -14,7 +14,7 @@ With AWS Marketplace, you can browse and search for hundreds of machine learning
 
 **To find model packages on AWS Marketplace**
 
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
+1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
 1. Choose **Model packages**, then choose **Find model packages**\.
 
@@ -22,7 +22,7 @@ With AWS Marketplace, you can browse and search for hundreds of machine learning
 
 ## Use Algorithms and Model Packages<a name="sagemaker-mkt-how-to-use"></a>
 
-For information about using algorithms and model packages that you subscribe to in Amazon SageMaker, see [Use Algorithm and Model Package Resources](sagemaker-mkt-buy.md)\.
+For information about using algorithms and model packages that you subscribe to in SageMaker, see [Use Algorithm and Model Package Resources](sagemaker-mkt-buy.md)\.
 
 **Note**  
 When you create a training job, inference endpoint, and batch transform job from an algorithm or model package that you subscribe to on AWS Marketplace, the training and inference containers do not have access to the internet\. Because the containers do not have access to the internet, the seller of the algorithm or model package does not have access to your data\.

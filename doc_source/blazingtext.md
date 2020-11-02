@@ -1,4 +1,4 @@
-# BlazingText Algorithm<a name="blazingtext"></a>
+# BlazingText algorithm<a name="blazingtext"></a>
 
 The Amazon SageMaker BlazingText algorithm provides highly optimized implementations of the Word2vec and text classification algorithms\. The Word2vec algorithm is useful for many downstream natural language processing \(NLP\) tasks, such as sentiment analysis, named entity recognition, machine translation, etc\. Text classification is an important task for applications that perform web searches, information retrieval, ranking, and document classification\.
 
@@ -8,7 +8,9 @@ Many natural language processing \(NLP\) applications learn word embeddings by t
 
 With the BlazingText algorithm, you can scale to large datasets easily\. Similar to Word2vec, it provides the Skip\-gram and continuous bag\-of\-words \(CBOW\) training architectures\. BlazingText's implementation of the supervised multi\-class, multi\-label text classification algorithm extends the fastText text classifier to use GPU acceleration with custom [CUDA ](https://docs.nvidia.com/cuda/index.html) kernels\. You can train a model on more than a billion words in a couple of minutes using a multi\-core CPU or a GPU\. And, you achieve performance on par with the state\-of\-the\-art deep learning text classification algorithms\.
 
- The Amazon SageMaker BlazingText algorithms provides the following features:
+The BlazingText algorithm is not parallelizable\. For more information on parameters related to training, see [ Docker Registry Paths for SageMaker Built\-in Algorithms](https://docs.aws.amazon.com/en_us/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html)\.
+
+ The SageMaker BlazingText algorithms provides the following features:
 + Accelerated training of the fastText text classifier on multi\-core CPUs or a GPU and Word2Vec on GPUs using highly optimized CUDA kernels\. For more information, see [BlazingText: Scaling and Accelerating Word2Vec using Multiple GPUs](https://dl.acm.org/citation.cfm?doid=3146347.3146354)\.
 + [Enriched Word Vectors with Subword Information](https://arxiv.org/abs/1607.04606) by learning vector representations for character n\-grams\. This approach enables BlazingText to generate meaningful vectors for out\-of\-vocabulary \(OOV\) words by representing their vectors as the sum of the character n\-gram \(subword\) vectors\.
 + A `batch_skipgram` `mode` for the Word2Vec algorithm that allows faster training and distributed computation across multiple CPU nodes\. The `batch_skipgram` `mode` does mini\-batching using the Negative Sample Sharing strategy to convert level\-1 BLAS operations into level\-3 BLAS operations\. This efficiently leverages the multiply\-add instructions of modern architectures\. For more information, see [Parallelizing Word2Vec in Shared and Distributed Memory](https://arxiv.org/pdf/1604.04661.pdf)\.
@@ -150,14 +152,29 @@ accept: application/jsonlines
 
 {"prob": [prob_1], "label": ["__label__1"]}
 {"prob": [prob_1], "label": ["__label__1"]}
-                    
+
 If you have passed the value of k to be more than 1, then response will be in this format:
 
 {"prob": [prob_1, prob_2], "label": ["__label__1", "__label__2"]}
 {"prob": [prob_1, prob_2], "label": ["__label__1", "__label__2"]}
 ```
 
-For both supervised \(text classification\) and unsupervised \(Word2Vec\) modes, the binaries \(*\*\.bin*\) produced by BlazingText can be cross\-consumed by fastText and vice versa\. You can use binaries produced by BlazingText by fastText\. Likewise, you can host the model binaries created with fastText using BlazingText\. However, the binaries are only supported when training on CPU and single GPU; training on multi\-GPU will not produce binaries\.
+For both supervised \(text classification\) and unsupervised \(Word2Vec\) modes, the binaries \(*\*\.bin*\) produced by BlazingText can be cross\-consumed by fastText and vice versa\. You can use binaries produced by BlazingText by fastText\. Likewise, you can host the model binaries created with fastText using BlazingText\.
+
+Here is an example of how to use a model generated with BlazingText with fastText:
+
+```
+#Download the model artifact from S3
+aws s3 cp s3://<YOUR_S3_BUCKET>/<PREFIX>/model.tar.gz model.tar.gz
+
+#Unzip the model archive
+tar -xzf model.tar.gz
+
+#Use the model archive with fastText
+fasttext predict ./model.bin test.txt
+```
+
+However, the binaries are only supported when training on CPU and single GPU; training on multi\-GPU will not produce binaries\.
 
 For more details on dataset formats and model hosting, see the example notebooks [Text Classification with the BlazingText Algorithm](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/blazingtext_text_classification_dbpedia/blazingtext_text_classification_dbpedia.ipynb), [FastText Models](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/blazingtext_hosting_pretrained_fasttext/blazingtext_hosting_pretrained_fasttext.ipynb), and [Generating Subword Embeddings with the Word2Vec Algorithm](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/blazingtext_word2vec_subwords_text8/blazingtext_word2vec_subwords_text8.ipynb)\.
 
@@ -171,4 +188,4 @@ For the supervised text classification mode, a C5 instance is recommended if the
 
 ## BlazingText Sample Notebooks<a name="blazingtext-sample-notebooks"></a>
 
-For a sample notebook that uses the Amazon SageMaker BlazingText algorithm to train and deploy supervised binary and multiclass classification models, see [Blazing Text classification on the DBPedia dataset](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/blazingtext_text_classification_dbpedia/blazingtext_text_classification_dbpedia.ipynb)\. For instructions for creating and accessing Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. After creating and opening a notebook instance, choose the **SageMaker Examples** tab to see a list of all the Amazon SageMaker examples\. The topic modeling example notebooks that use the Blazing Text are located in the **Introduction to Amazon algorithms** section\. To open a notebook, choose its **Use** tab, then choose **Create copy**\.
+For a sample notebook that uses the SageMaker BlazingText algorithm to train and deploy supervised binary and multiclass classification models, see [Blazing Text classification on the DBPedia dataset](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/blazingtext_text_classification_dbpedia/blazingtext_text_classification_dbpedia.ipynb)\. For instructions for creating and accessing Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. After creating and opening a notebook instance, choose the **SageMaker Examples** tab to see a list of all the SageMaker examples\. The topic modeling example notebooks that use the Blazing Text are located in the **Introduction to Amazon algorithms** section\. To open a notebook, choose its **Use** tab, then choose **Create copy**\.

@@ -1,12 +1,12 @@
 # Define Metrics<a name="automatic-model-tuning-define-metrics"></a>
 
 **Note**  
-When you use one of the Amazon SageMaker built\-in algorithms, you don't need to define metrics\. Built\-in algorithms automatically send metrics to hyperparameter tuning\. You do need to choose one of the metrics that the built\-in algorithm emits as the objective metric for the tuning job\. For a list of metrics that a built\-in algorithm emits, see the *Metrics* table for the algorithm in [Use Amazon SageMaker built\-in algorithms](algos.md)\.
+When you use one of the Amazon SageMaker built\-in algorithms, you don't need to define metrics\. Built\-in algorithms automatically send metrics to hyperparameter tuning\. You do need to choose one of the metrics that the built\-in algorithm emits as the objective metric for the tuning job\. For a list of metrics that a built\-in algorithm emits, see the *Metrics* table for the algorithm in [Use Amazon SageMaker Built\-in Algorithms](algos.md)\.
 
 To optimize hyperparameters for a machine learning model, a tuning job evaluates the training jobs it launches by using a metric that the training algorithm writes to logs\. Amazon SageMaker hyperparameter tuning parses your algorithm’s `stdout` and `stderr` streams to find algorithm metrics, such as loss or validation\-accuracy, that show how well the model is performing on the dataset 
 
 **Note**  
-These are the same metrics that Amazon SageMaker sends to CloudWatch Logs\. For more information, see [Log Amazon SageMaker Events with Amazon CloudWatch](logging-cloudwatch.md)\.
+These are the same metrics that SageMaker sends to CloudWatch Logs\. For more information, see [Log Amazon SageMaker Events with Amazon CloudWatch](logging-cloudwatch.md)\.
 
 If you use your own algorithm for hyperparameter tuning, make sure that your algorithm emits at least one metric by writing evaluation data to `stderr` or `stdout`\.
 
@@ -28,15 +28,15 @@ The following example defines 4 metrics:
     {
         "Name": "ganloss",
         "Regex": "GAN_loss=(.*?);",
-    },    
+    },
     {
         "Name": "discloss",
         "Regex": "disc_train_loss=(.*?);",
-    },    
+    },
     {
         "Name": "disc-combined",
         "Regex": "disc-combined=(.*?);",
-    },    
+    },
 ]
 ```
 

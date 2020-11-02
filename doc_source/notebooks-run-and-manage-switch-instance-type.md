@@ -9,13 +9,14 @@ If you change the instance type, unsaved information and existing settings for t
 
 The following screenshot shows the menu from a Studio notebook\. The processor and memory of the instance type powering the notebook are displayed as **2 vCPU \+ 4 GiB**\.
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-notebooks-manage-callouts.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-notebook-menu-instance.png)
 
 **To change the instance type**
 
 1. Choose the instance type\.
 
-1. In **Select instance**, choose one of the fast launch instance types that are listed\. Or to see all instance types, switch off **Fast launch only**\. The list can be sorted by any column\.
+1. In **Select instance**, choose one of the fast launch instance types that are listed\. Or to see all instance types, switch off **Fast launch only**\. The list can be sorted by any column\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-notebook-switch-instance.png)
 
 1. After choosing a type, choose **Save and continue**\.
 
