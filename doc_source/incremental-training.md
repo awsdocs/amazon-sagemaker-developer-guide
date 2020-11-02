@@ -197,18 +197,18 @@ Create an estimator object and train the first model using the training and vali
 s3_output_location = 's3://{}/{}/output'.format(bucket, prefix)
 ic = sagemaker.estimator.Estimator(training_image,
                                    role,
-                                   train_instance_count=1,
-                                   train_instance_type='ml.p2.xlarge',
-                                   train_volume_size=50,
-                                   train_max_run=360000,
+                                   instance_count=1,
+                                   instance_type='ml.p2.xlarge',
+                                   volume_size=50,
+                                   max_run=360000,
                                    input_mode='File',
                                    output_path=s3_output_location,
                                    sagemaker_session=sess,
                                    hyperparameters=hyperparams)
 
-train_data = sagemaker.session.s3_input(s3train, distribution='FullyReplicated',
+train_data = sagemaker.inputs.TrainingInput(s3train, distribution='FullyReplicated',
                                         content_type='application/x-recordio', s3_data_type='S3Prefix')
-validation_data = sagemaker.session.s3_input(s3validation, distribution='FullyReplicated',
+validation_data = sagemaker.inputs.TrainingInput(s3validation, distribution='FullyReplicated',
                                              content_type='application/x-recordio', s3_data_type='S3Prefix')
 
 data_channels = {'train': train_data, 'validation': validation_data}
@@ -222,10 +222,10 @@ To use the model to incrementally train another model, create a new estimator ob
 # Given the base estimator, create a new one for incremental training
 incr_ic = sagemaker.estimator.Estimator(training_image,
                                         role,
-                                        train_instance_count=1,
-                                        train_instance_type='ml.p2.xlarge',
-                                        train_volume_size=50,
-                                        train_max_run=360000,
+                                        instance_count=1,
+                                        instance_type='ml.p2.xlarge',
+                                        volume_size=50,
+                                        max_run=360000,
                                         input_mode='File',
                                         output_path=s3_output_location,
                                         sagemaker_session=sess,
