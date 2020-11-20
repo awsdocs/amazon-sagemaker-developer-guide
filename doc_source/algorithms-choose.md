@@ -24,7 +24,7 @@ The following sections provide guidance concerning implementation options, machi
 After choosing an algorithm, you must decide which implementation of it you want to use\. Amazon SageMaker supports three implementation options that require increasing levels of effort\. 
 + **Built\-in algorithms** require the least effort and scale if the data set is large and significant resources are needed to train and deploy the model\.
 + If there is no built\-in solution that works, try to develop one that uses **pre\-made images for machine and deep learning frameworks** for supported frameworks such as Scikit\-Learn, TensorFlow, PyTorch, MXNet, or Chainer\.
-+ If you need to run custom packages or use any code which isn’t a part of a supported framework or available via PyPi, then you need to build **your own custom Docker image** that is configured to install the necessary packages or software\. The custom image must also be pushed to an online repository like the Amazon Elastic Container Service\.
++ If you need to run custom packages or use any code which isn’t a part of a supported framework or available via PyPi, then you need to build **your own custom Docker image** that is configured to install the necessary packages or software\. The custom image must also be pushed to an online repository like the Amazon Elastic Container Registry\.
 
 **Topics**
 + [Use a built\-in algorithm](#built-in-algorithms-benefits)
@@ -64,9 +64,9 @@ For more information on the frameworks supported by SageMaker, see [Use Machine 
 
 ### Use a custom Docker image<a name="custom-image-use-case"></a>
 
-Amazon SageMaker's built\-in algorithms and supported frameworks should cover most use cases, but there are times when you may need to use an algorithm from a package not included in any of the supported frameworks\. You may also already have a pre\-trained model pickled or persisted somewhere which you need to deploy\. SageMaker uses Docker images to host the training and serving of all models, so you can supply your own custom Docker image if the package or software you need is not included in a supported framework\. This may be your own Python package or an algorithm coded in a language like Stan or Julia\. For these images you must also configure the training of the algorithm and serving of the model properly in your Dockerfile\. This requires intermediate knowledge of Docker and is not recommended unless you are comfortable writing your own machine learning algorithm\. Your Docker image must be uploaded to an online repository, such as the Amazon Elastic Container Service \(ECS\) before you can train and serve your model properly\.
+Amazon SageMaker's built\-in algorithms and supported frameworks should cover most use cases, but there are times when you may need to use an algorithm from a package not included in any of the supported frameworks\. You may also already have a pre\-trained model pickled or persisted somewhere which you need to deploy\. SageMaker uses Docker images to host the training and serving of all models, so you can supply your own custom Docker image if the package or software you need is not included in a supported framework\. This may be your own Python package or an algorithm coded in a language like Stan or Julia\. For these images you must also configure the training of the algorithm and serving of the model properly in your Dockerfile\. This requires intermediate knowledge of Docker and is not recommended unless you are comfortable writing your own machine learning algorithm\. Your Docker image must be uploaded to an online repository, such as the Amazon Elastic Container Registry \(ECR\) before you can train and serve your model properly\.
 
- For more information on custom Docker images in SageMaker, see [Using Docker containers with SageMaker ](docker-containers.md)\.
+ For more information on custom Docker images in SageMaker, see [Using Docker containRegistryers wRth SageMaker ](docker-containers.md)\.
 
 ## Problem types for the basic machine learning paradigms<a name="basic-machine-learning-paradigms"></a>
 
