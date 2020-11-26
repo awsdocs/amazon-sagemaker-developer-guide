@@ -2,7 +2,7 @@
 
 *Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an objective metric\. You choose the objective metric from the metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the objective metric\.
 
-For more information about model tuning, see [Automatic Model Tuning](automatic-model-tuning.md)\.
+For more information about model tuning, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
 
 ## Metrics Computed by the Sequence\-to\-Sequence Algorithm<a name="seq-2-seq-metrics"></a>
 
@@ -17,7 +17,7 @@ The sequence to sequence algorithm reports three metrics that are computed durin
 
 ## Tunable Sequence\-to\-Sequence Hyperparameters<a name="seq-2-seq-tunable-hyperparameters"></a>
 
-You can tune the following hyperparameters for the Amazon SageMaker Sequence to Sequence algorithm\. The hyperparameters that have the greatest impact on sequence to sequence objective metrics are: `batch_size`, `optimizer_type`, `learning_rate`, `num_layers_encoder`, and `num_layers_decoder`\.
+You can tune the following hyperparameters for the SageMaker Sequence to Sequence algorithm\. The hyperparameters that have the greatest impact on sequence to sequence objective metrics are: `batch_size`, `optimizer_type`, `learning_rate`, `num_layers_encoder`, and `num_layers_decoder`\.
 
 
 | Parameter Name | Parameter Type | Recommended Ranges | 

@@ -1,0 +1,11 @@
+# Data and Storage Volume Encryption<a name="sms-security"></a>
+
+Amazon SageMaker Ground Truth enables you to label highly sensitive data by allowing you to stay in control of your data and employing security best practices\. Use the topics on this page to learn about Ground Truth security features\. 
+
+By default, Ground Truth encrypts data in an internal database used by the service and in Amazon S3 buckets with Amazon\-owned customer master key \(CMK\)\. 
+
+Optionally, you can provide an AWS Key Management Service \(AWS KMS\) key ID when you create a labeling job, which Ground Truth uses to encrypt your output data\. If you use a KMS key ID or an alias of your master key, your Amazon SageMaker execution role must include permissions to call `kms:Encrypt`\. To learn how to add this permission to an execution role, see [Create an Execution Role to Start a Labeling Job](sms-security-permission.md#sms-security-permission-execution-role)\. 
+
+If you don't provide a KMS key ID, Amazon SageMaker uses the default AWS KMS key for Amazon S3 for your role's account\. SageMaker uses server\-side encryption with KMS\-managed keys for `LabelingJobOutputConfig`\. For more information, see `[LabelingJobOutputConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_LabelingJobOutputConfig.html)`\. 
+
+When you create a labeling job with automated labeling using the `CreateLabelingJob` API operation, you have the option to encrypt the storage volume attached to the ML compute instances that run the training job\. To add encryption to your storage volume, use the parameter `VolumeKmsKeyId` to input a AWS KMS key\. For more information about this parameter, see `[LabelingJobResourceConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_LabelingJobResourceConfig.html#sagemaker-Type-LabelingJobResourceConfig-VolumeKmsKeyId)`\. If you use a KMS key ID or key ARN, your SageMaker execution role must include permissions to call `kms:CreateGrant`\. To learn how to add this permission to an execution role, see [Create an Execution Role to Start a Labeling Job](sms-security-permission.md#sms-security-permission-execution-role)\. 

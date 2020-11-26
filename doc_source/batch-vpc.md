@@ -1,14 +1,14 @@
 # Give Batch Transform Jobs Access to Resources in Your Amazon VPC<a name="batch-vpc"></a>
 
-Amazon SageMaker runs batch transform jobs in an Amazon Virtual Private Cloud by default\. However, model containers access AWS resources—such as the Amazon S3 buckets where you store your data and model artifacts—over the internet\.
+SageMaker runs batch transform jobs in an Amazon Virtual Private Cloud by default\. However, model containers access AWS resources—such as the Amazon S3 buckets where you store your data and model artifacts—over the internet\.
 
 To control access to your model containers and data, we recommend that you create a private VPC and configure it so that they aren't accessible over the internet\. For information about creating and configuring a VPC, see [Getting Started With Amazon VPC](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/getting-started-ipv4.html) in the *Amazon VPC User Guide*\. Using a VPC helps to protect your model containers and data because you can configure your VPC so that it is not connected to the internet\. Using a VPC also allows you to monitor all network traffic in and out of your model containers by using VPC flow logs\. For more information, see [VPC Flow Logs](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html) in the *Amazon VPC User Guide*\.
 
-You specify your private VPC configuration when you create a model by specifying subnets and security groups\. You then specify the same model when you create a batch transform job\. When you specify the subnets and security groups, Amazon SageMaker creates *elastic network interfaces* \(ENIs\) that are associated with your security groups in one of the subnets\. ENIs allow your model containers to connect to resources in your VPC\. For information about ENIs, see [Elastic Network Interfaces](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ElasticNetworkInterfaces.html) in the *Amazon VPC User Guide*\.
+You specify your private VPC configuration when you create a model by specifying subnets and security groups\. You then specify the same model when you create a batch transform job\. When you specify the subnets and security groups, SageMaker creates *elastic network interfaces* that are associated with your security groups in one of the subnets\. Network interfaces allow your model containers to connect to resources in your VPC\. For information about network interfaces, see [Elastic Network Interfaces](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ElasticNetworkInterfaces.html) in the *Amazon VPC User Guide*\.
 
 ## Configure a Batch Transform Job for Amazon VPC Access<a name="batch-vpc-configure"></a>
 
-To specify subnets and security groups in your private VPC, use the `VpcConfig` request parameter of the [CreateModel](API_CreateModel.md) API, or provide this information when you create a transform job in the Amazon SageMaker console\. Then specify the same model in the `ModelName` request parameter of the [CreateTransformJob](API_CreateTransformJob.md) API, or when you create a transform job in the Amazon SageMaker console\. Amazon SageMaker uses this information to create ENIs and attach them to your model containers\. The ENIs provide your model containers with a network connection within your VPC that is not connected to the internet\. They also enable your transform job to connect to resources in your private VPC\.
+To specify subnets and security groups in your private VPC, use the `VpcConfig` request parameter of the [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) API, or provide this information when you create a model in the SageMaker console\. Then specify the same model in the `ModelName` request parameter of the [ `CreateTransformJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html) API, or in the **Model name** field when you create a transform job in the SageMaker console\. SageMaker uses this information to create network interfaces and attach them to your model containers\. The network interfaces provide your model containers with a network connection within your VPC that is not connected to the internet\. They also enable your transform job to connect to resources in your private VPC\.
 
 The following is an example of the `VpcConfig` parameter that you include in your call to `CreateModel`:
 
@@ -19,15 +19,34 @@ VpcConfig: {
           "subnet-0123456789abcdef1",
           "subnet-0123456789abcdef2"
           ],
-          "SecurityGroupIds": [
-              "sg-0123456789abcdef0"
-              ]
-            }
+      "SecurityGroupIds": [
+          "sg-0123456789abcdef0"
+          ]
+        }
 ```
 
-## Configure Your Private VPC for Amazon SageMaker Batch Transform<a name="batch-vpc-vpc"></a>
+If you are creating a model using the `CreateModel` API operation, the IAM execution role that you use to create your model must include the permissions described in [CreateModel API: Execution Role Permissions](sagemaker-roles.md#sagemaker-roles-createmodel-perms), including the following permissions required for a private VPC\. 
 
-When configuring the private VPC for your Amazon SageMaker batch transform jobs, use the following guidelines\. For information about setting up a VPC, see [Working with VPCs and Subnets](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/working-with-vpcs.html) in the *Amazon VPC User Guide*\.
+When creating a model in the console, if you select **Create a new role** in the **Model Settings** section, the [AmazonSageMakerFullAccess ](https://console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess$jsonEditor) policy used to create the role will already contain these permissions\. If you select **Enter a custom IAM role ARN** or **Use existing role**, the role ARN that you specify must have an execution policy attached with the following permissions\. 
+
+```
+{
+            "Effect": "Allow",
+            "Action": [
+            "ec2:CreateNetworkInterface",
+            "ec2:CreateNetworkInterfacePermission",
+            "ec2:DeleteNetworkInterface",
+            "ec2:DeleteNetworkInterfacePermission",
+            "ec2:DescribeNetworkInterfaces",
+            "ec2:DescribeVpcs",
+            "ec2:DescribeDhcpOptions",
+            "ec2:DescribeSubnets",
+            "ec2:DescribeSecurityGroups"
+```
+
+## Configure Your Private VPC for SageMaker Batch Transform<a name="batch-vpc-vpc"></a>
+
+When configuring the private VPC for your SageMaker batch transform jobs, use the following guidelines\. For information about setting up a VPC, see [Working with VPCs and Subnets](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/working-with-vpcs.html) in the *Amazon VPC User Guide*\.
 
 **Topics**
 + [Ensure That Subnets Have Enough IP Addresses](#batch-vpc-ip)

@@ -1,11 +1,10 @@
-# Linear Learner Hyperparameters<a name="ll_hyperparameters"></a>
+# Linear learner hyperparameters<a name="ll_hyperparameters"></a>
 
-The following table contains the hyperparameters for the learner learner algorithm\. These are parameters that are set by users to facilitate the estimation of model parameters from data\. The required hyperparameters that must be set are listed first, in alphabetical order\. The optional hyperparameters that can be set are listed next, also in alphabetical order\.
+The following table contains the hyperparameters for the linear learner algorithm\. These are parameters that are set by users to facilitate the estimation of model parameters from data\. The required hyperparameters that must be set are listed first, in alphabetical order\. The optional hyperparameters that can be set are listed next, also in alphabetical order\. When a hyperparameter is set to `auto`, Amazon SageMaker will automatically calculate and set the value of that hyperparameter\. 
 
 
 | Parameter Name | Description | 
 | --- | --- | 
-| feature\_dim |  The number of features in the input data\. **Required** Valid values: Positive integer  | 
 | num\_classes |  The number of classes for the response variable\. The algorithm assumes that classes are labeled `0`, \.\.\., `num_classes - 1`\. **Required** when `predictor_type` is `multiclass_classifier`\. Otherwise, the algorithm ignores it\. Valid values: Integers from 3 to 1,000,000  | 
 | predictor\_type |  Specifies the type of target variable as a binary classification, multiclass classification, or regression\. **Required** Valid values: `binary_classifier`, `multiclass_classifier`, or `regressor`  | 
 | accuracy\_top\_k |  When computing the top\-k accuracy metric for multiclass classification, the value of *k*\. If the model assigns one of the top\-k scores to the true label, an example is scored as correct\. **Optional** Valid values: Positive integers Default value: 3   | 
@@ -19,6 +18,7 @@ The following table contains the hyperparameters for the learner learner algorit
 | early\_stopping\_tolerance |  The relative tolerance to measure an improvement in loss\. If the ratio of the improvement in loss divided by the previous best loss is smaller than this value, early stopping considers the improvement to be zero\. **Optional** Valid values: Positive floating\-point integer Default value: 0\.001  | 
 | epochs |  The maximum number of passes over the training data\. **Optional** Valid values: Positive integer Default value: 15  | 
 | f\_beta |  The value of beta to use when calculating F score metrics for binary or multiclass classification\. Also used if the value specified for `binary_classifier_model_selection_criteria` is `f_beta`\. **Optional** Valid values: Positive floating\-point integers Default value: 1\.0   | 
+| feature\_dim |  The number of features in the input data\.  **Optional** Valid values: `auto` or positive integer Default values: `auto`  | 
 | huber\_delta |  The parameter for Huber loss\. During training and metric evaluation, compute L2 loss for errors smaller than delta and L1 loss for errors larger than delta\. **Optional** Valid values: Positive floating\-point integer Default value: 1\.0   | 
 | init\_bias |  Initial weight for the bias term\. **Optional** Valid values: Floating\-point integer Default value: 0  | 
 | init\_method |  Sets the initial distribution function used for model weights\. Functions include: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/ll_hyperparameters.html) **Optional** Valid values: `uniform` or `normal` Default value: `uniform`  | 
@@ -44,7 +44,7 @@ The following table contains the hyperparameters for the learner learner algorit
 | quantile |  The quantile for quantile loss\. For quantile q, the model attempts to produce predictions so that the value of `true_label` is greater than the prediction with probability q\. **Optional** Valid values: Floating\-point integer between 0 and 1 Default value: 0\.5  | 
 | target\_precision |  The target precision\. If `binary_classifier_model_selection_criteria` is `recall_at_target_precision`, then precision is held at this value while recall is maximized\. **Optional** Valid values: Floating\-point integer between 0 and 1\.0 Default value: 0\.8  | 
 | target\_recall |  The target recall\. If `binary_classifier_model_selection_criteria` is `precision_at_target_recall`, then recall is held at this value while precision is maximized\. **Optional** Valid values: Floating\-point integer between 0 and 1\.0 Default value: 0\.8  | 
-| unbias\_data |  Unbiases the features before training so that the mean is 0\. By default\. data is unbiased if the `use_bias` hyperparameter is set to `true`\. **Optional** Valid values: `auto`, `true`, or `false` Default value: `auto`  | 
+| unbias\_data |  Unbiases the features before training so that the mean is 0\. By default data is unbiased as the `use_bias` hyperparameter is set to `true`\. **Optional** Valid values: `auto`, `true`, or `false` Default value: `auto`  | 
 | unbias\_label |  Unbiases labels before training so that the mean is 0\. Applies to regression only if the `use_bias` hyperparameter is set to `true`\. **Optional** Valid values: `auto`, `true`, or `false` Default value: `auto`  | 
 | use\_bias |  Specifies whether the model should include a bias term, which is the intercept term in the linear equation\. **Optional** Valid values: `true` or `false` Default value: `true`  | 
 | use\_lr\_scheduler |  Whether to use a scheduler for the learning rate\. If you want to use a scheduler, specify `true`\.  **Optional** Valid values: `true` or `false` Default value: `true`  | 

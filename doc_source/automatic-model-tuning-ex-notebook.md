@@ -15,4 +15,4 @@ Create a Jupyter notebook that contains a preinstalled environment with the defa
 
 ## Next Step<a name="automatic-model-tuning-ex-next-client"></a>
 
-[Get the Amazon Sagemaker Boto 3 Client](automatic-model-tuning-ex-client.md)
+[Get the Amazon SageMaker Boto 3 Client](automatic-model-tuning-ex-client.md)

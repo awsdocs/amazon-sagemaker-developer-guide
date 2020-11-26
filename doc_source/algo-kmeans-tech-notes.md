@@ -14,9 +14,9 @@ Each image in the MNIST dataset is a 28x28\-pixel image, with a total of 784 pix
 **Note**  
 Amazon SageMaker uses a customized version of the algorithm where, instead of specifying that the algorithm create *k* clusters, you might choose to improve model accuracy by specifying extra cluster centers *\(K = k\*x\)*\. However, the algorithm ultimately reduces these to *k* clusters\.
 
-In Amazon SageMaker, you specify the number of clusters when creating a training job\. For more information, see [CreateTrainingJob](API_CreateTrainingJob.md)\. In the request body, you add the `HyperParameters` string map to specify the `k` and `extra_center_factor` strings\.
+In SageMaker, you specify the number of clusters when creating a training job\. For more information, see [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html)\. In the request body, you add the `HyperParameters` string map to specify the `k` and `extra_center_factor` strings\.
 
-The following is a summary of how k\-means works for model training in Amazon SageMaker:
+The following is a summary of how k\-means works for model training in SageMaker:
 
 1. It determines the initial *K* cluster centers\. 
 **Note**  
@@ -35,7 +35,7 @@ The following sections also explain some of the parameters that a data scientist
 
 ## Step 1: Determine the Initial Cluster Centers<a name="kmeans-step1"></a>
 
-When using k\-means in Amazon SageMaker, the initial cluster centers are chosen from the observations in a small, randomly sampled batch\. Choose one of the following strategies to determine how these initial cluster centers are selected:
+When using k\-means in SageMaker, the initial cluster centers are chosen from the observations in a small, randomly sampled batch\. Choose one of the following strategies to determine how these initial cluster centers are selected:
 + The random approach—Randomly choose *K* observations in your input dataset as cluster centers\. For example, you might choose a cluster center that points to the 784\-dimensional space that corresponds to any 10 images in the MNIST training dataset\.
 
    
@@ -51,12 +51,12 @@ When using k\-means in Amazon SageMaker, the initial cluster centers are chosen 
 
   1. Repeat the process until you have the *K* cluster centers\.
 
-To train a model in Amazon SageMaker, you create a training job\. In the request, you provide configuration information by specifying the following `HyperParameters` string maps:
+To train a model in SageMaker, you create a training job\. In the request, you provide configuration information by specifying the following `HyperParameters` string maps:
 + To specify the number of clusters to create, add the `k` string\.
 + For greater accuracy, add the optional `extra_center_factor` string\. 
 + To specify the strategy that you want to use to determine the initial cluster centers, add the `init_method` string and set its value to `random` or `k-means++`\.
 
-For more information, see [CreateTrainingJob](API_CreateTrainingJob.md)\. For an example, see [Create and Run a Training Job \(AWS SDK for Python \(Boto 3\)\)](ex1-train-model.md#ex1-train-model-create-training-job)\. 
+For more information, see [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html)\. For an example, see [Create and Run a Training Job \(AWS SDK for Python \(Boto3\)\)](ex1-train-model.md#ex1-train-model-create-training-job)\. 
 
 You now have an initial set of cluster centers\. 
 

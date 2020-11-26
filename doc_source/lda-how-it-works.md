@@ -37,7 +37,7 @@ At a high\-level, the tensor decomposition algorithm follows this process:
 
 After the LDA model’s parameters have been found, you can find the topic mixtures for each document\. You use stochastic gradient descent to maximize the likelihood function of observing a given topic mixture corresponding to these data\.
 
-Topic quality can be improved by increasing the number of topics to look for in training and then filtering out poor quality ones\. This is in fact done automatically in Amazon SageMaker LDA: 25% more topics are computed and only the ones with largest associated Dirichlet priors are returned\. To perform further topic filtering and analysis, you can increase the topic count and modify the resulting LDA model as follows:
+Topic quality can be improved by increasing the number of topics to look for in training and then filtering out poor quality ones\. This is in fact done automatically in SageMaker LDA: 25% more topics are computed and only the ones with largest associated Dirichlet priors are returned\. To perform further topic filtering and analysis, you can increase the topic count and modify the resulting LDA model as follows:
 
 ```
 > import mxnet as mx
@@ -47,7 +47,7 @@ Topic quality can be improved by increasing the number of topics to look for in 
 > # upload to S3 and create new SageMaker model using the console
 ```
 
-For more information about algorithms for LDA and the Amazon SageMaker implementation, see the following:
+For more information about algorithms for LDA and the SageMaker implementation, see the following:
 + Animashree Anandkumar, Rong Ge, Daniel Hsu, Sham M Kakade, and Matus Telgarsky\. *Tensor Decompositions for Learning Latent Variable Models*, Journal of Machine Learning Research, 15:2773–2832, 2014\.
 +  David M Blei, Andrew Y Ng, and Michael I Jordan\. *Latent Dirichlet Allocation*\. Journal of Machine Learning Research, 3\(Jan\):993–1022, 2003\.
 +  Thomas L Griffiths and Mark Steyvers\. *Finding Scientific Topics*\. Proceedings of the National Academy of Sciences, 101\(suppl 1\):5228–5235, 2004\. 

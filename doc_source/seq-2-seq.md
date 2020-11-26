@@ -14,7 +14,7 @@ Amazon SageMaker Sequence to Sequence is a supervised learning algorithm where t
 
 **Training**
 
-Amazon SageMaker seq2seq expects data in RecordIO\-Protobuf format\. However, the tokens are expected as integers, not as floating points, as is usually the case\.
+SageMaker seq2seq expects data in RecordIO\-Protobuf format\. However, the tokens are expected as integers, not as floating points, as is usually the case\.
 
 A script to convert data from tokenized text files to the protobuf format is included in [the seq2seq example notebook](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/seq2seq_translation_en-de/SageMaker-Seq2Seq-Translation-English-German.ipynb)\. In general, it packs the data into 32\-bit integer tensors and generates the necessary vocabulary files, which are needed for metric calculation and inference\.
 
@@ -59,4 +59,4 @@ Currently Amazon SageMaker seq2seq is only supported on GPU instance types and i
 
 ## Sequence\-to\-Sequence Sample Notebooks<a name="seq-2-seq-sample-notebooks"></a>
 
-For a sample notebook that shows how to use the Amazon SageMaker Sequence to Sequence algorithm to train a English\-German translation model, see [Machine Translation English\-German Example Using SageMaker Seq2Seq](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/seq2seq_translation_en-de/SageMaker-Seq2Seq-Translation-English-German.ipynb)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the Amazon SageMaker samples\. The topic modeling example notebooks using the NTM algorithms are located in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.
+For a sample notebook that shows how to use the SageMaker Sequence to Sequence algorithm to train a English\-German translation model, see [Machine Translation English\-German Example Using SageMaker Seq2Seq](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/seq2seq_translation_en-de/SageMaker-Seq2Seq-Translation-English-German.ipynb)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the SageMaker samples\. The topic modeling example notebooks using the NTM algorithms are located in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.

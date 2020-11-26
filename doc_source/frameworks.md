@@ -1,12 +1,19 @@
-# Use Machine Learning Frameworks with Amazon SageMaker<a name="frameworks"></a>
+# Use Machine Learning Frameworks, Python, and R with Amazon SageMaker<a name="frameworks"></a>
 
-The Amazon SageMaker Python SDK provides open source APIs and containers that make it easy to train and deploy models in Amazon SageMaker with several different machine learning and deep learning frameworks\. For general information about the Amazon SageMaker Python SDK, see [https://github\.com/aws/sagemaker\-python\-sdk](https://github.com/aws/sagemaker-python-sdk)\. For information about using specific frameworks in Amazon SageMaker, see the following topics:
+You can use Python and R natively in Amazon SageMaker notebook kernels\. There are also kernels that support specific frameworks\. A very popular way to get started with SageMaker is to use the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\. It provides open source Python APIs and containers that make it easy to train and deploy models in SageMaker, as well as examples for use with several different machine learning and deep learning frameworks\.
 
-**Topics**
-+ [Use Apache Spark with Amazon SageMaker](apache-spark.md)
-+ [Use TensorFlow with Amazon SageMaker](tf.md)
-+ [Use Apache MXNet with Amazon SageMaker](mxnet.md)
-+ [Use Scikit\-learn with Amazon SageMaker](sklearn.md)
-+ [Use PyTorch with Amazon SageMaker](pytorch.md)
-+ [Use Chainer with Amazon SageMaker](chainer.md)
-+ [Use SparkML Serving with Amazon SageMaker](sparkml-serving.md)
+For information about using specific frameworks or how to use R in SageMaker, see the following topics\.
+
+Languages SDKs and user guides:
++ [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)
++ [R](r-guide.md)
++ [API Reference Guide for Amazon SageMaker](api-and-sdk-reference.md)
+
+Machine learning and deep learning frameworks guides:
++ [Apache MXNet](mxnet.md)
++ [Apache Spark](apache-spark.md)
++ [Chainer](chainer.md)
++ [PyTorch](pytorch.md)
++ [Scikit\-learn](sklearn.md)
++ [SparkML Serving](sparkml-serving.md)
++ [TensorFlow](tf.md)

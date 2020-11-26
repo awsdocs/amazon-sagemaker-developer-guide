@@ -37,7 +37,7 @@ In return, Ground Truth will require a response formatted like this:
 }
 ```
 
-That `<json object>` may be a bit deceiving\. It needs to contain *all* the data your custom form will need\. If you're doing a bounding box task where the instructions stay the same all the time, it may just be the HTTP\(S\) or S3 resource for your image file\. If it's a sentiment analysis task and different objects may have different choices, it would be the object reference as a string and the choices as an array of strings\.
+In the previous example, the `<json object>` needs to contain *all* the data your custom form will need\. If you're doing a bounding box task where the instructions stay the same all the time, it may just be the HTTP\(S\) or S3 resource for your image file\. If it's a sentiment analysis task and different objects may have different choices, it would be the object reference as a string and the choices as an array of strings\.
 
 **Implications of `isHumanAnnotationRequired`**  
  This value is optional because it will default to `true`\. The primary use case for explicitly setting it is when you want to exclude this data object from being labeled by human workers\. 
@@ -49,7 +49,7 @@ If you have a mix of objects in your manifest, with some requiring human annotat
 
 ## Post\-annotation Lambda<a name="sms-custom-templates-step3-postlambda"></a>
 
-When the worker has completed the task, Ground Truth will send the results to your **Post\-annotation Lambda**\. This Lambda is generally used for [Annotation Consolidation](sms-annotation-consolidation.md)\. The request object will come in like this:
+When all workers have annotated the data object or when [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanLoopConfig.html#SageMaker-Type-HumanLoopConfig-TaskAvailabilityLifetimeInSeconds](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanLoopConfig.html#SageMaker-Type-HumanLoopConfig-TaskAvailabilityLifetimeInSeconds) has been reached, whichever comes first, Ground Truth will send those annotations to your Post\-annotation Lambda\. This Lambda is generally used for [Consolidate Annotations ](sms-annotation-consolidation.md)\. The request object will come in like this:
 
 **Example of a post\-labeling task request**  
 
@@ -65,6 +65,7 @@ When the worker has completed the task, Ground Truth will send the results to yo
     }
  }
 ```
+ If no worker work on the data object and `TaskAvailabilityLifetimeInSeconds` has been reached, data object will be marked as failed and not included as part of post annotation lambda invocation\.
 
 ### Post\-labeling task Lambda permissions<a name="sms-custom-templates-step3-postlambda-perms"></a>
 

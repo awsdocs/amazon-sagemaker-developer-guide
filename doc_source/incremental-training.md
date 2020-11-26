@@ -8,12 +8,12 @@ Use incremental training to:
 + Resume a training job that was stopped\.
 + Train several variants of a model, either with different hyperparameter settings or using different datasets\.
 
-For more information about training jobs, see [Train a Model with Amazon SageMaker ](how-it-works-training.md)\.
+For more information about training jobs, see [Train a Model with Amazon SageMaker](how-it-works-training.md)\.
 
-You can train incrementally using the Amazon SageMaker console or the Amazon SageMaker Python SDK\.
+You can train incrementally using the SageMaker console or the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.
 
 **Important**  
-Only two built\-in algorithms currently support incremental training: [Object Detection Algorithm](object-detection.md) and [Image Classification Algorithm](image-classification.md)\.
+Only three built\-in algorithms currently support incremental training: [Object Detection Algorithm](object-detection.md), [Image Classification Algorithm](image-classification.md), and [Semantic Segmentation Algorithm](semantic-segmentation.md)\.
 
 **Topics**
 + [Perform Incremental Training \(Console\)](#incremental-training-console)
@@ -24,14 +24,14 @@ Only two built\-in algorithms currently support incremental training: [Object De
 To complete this procedure, you need:
 + The URL of the Amazon Simple Storage Service \(Amazon S3\) bucket where you've stored the training data\.
 + The URL of the S3 bucket where you want to store the output of the job\. 
-+ The Amazon Elastic Container Registry path where the training code is stored\. For more information, see [Common Parameters for Built\-In Algorithms ](sagemaker-algo-docker-registry-paths.md)\.
-+ The URL of the S3 bucket where you've stored the model artifacts that you want to use in incremental training\. To find the URL for the model artifacts, see the details page of the training job used to create the model\. To find the details page, in the Amazon SageMaker console, choose **Inference**, choose **Models**, and then choose the model\.
++ The Amazon Elastic Container Registry path where the training code is stored\. For more information, see [Docker Registry Paths for SageMaker Built\-in Algorithms](sagemaker-algo-docker-registry-paths.md)\.
++ The URL of the S3 bucket where you've stored the model artifacts that you want to use in incremental training\. To find the URL for the model artifacts, see the details page of the training job used to create the model\. To find the details page, in the SageMaker console, choose **Inference**, choose **Models**, and then choose the model\.
 
 To restart a stopped training job, use the URL to the model artifacts that are stored in the details page as you would with a model or a completed training job\.
 
 **To perform incremental training \(console\)**
 
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker](https://console.aws.amazon.com/sagemaker)\.
+1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
 1. In the navigation pane, choose **Training**, then choose **Training jobs**\. 
 
@@ -39,7 +39,7 @@ To restart a stopped training job, use the URL to the model artifacts that are s
 
 1. Provide a name for the training job\. The name must be unique within an AWS Region in an AWS account\. The training job name must have 1 to 63 characters\. Valid characters: a\-z, A\-Z, 0\-9, and \. : \+ = @ \_ % \- \(hyphen\)\.
 
-1. Choose the algorithm that you want to use\. For information about algorithms, see [Use Amazon SageMaker Built\-in Algorithms ](algos.md)\. 
+1. Choose the algorithm that you want to use\. For information about algorithms, see [Use Amazon SageMaker Built\-in Algorithms](algos.md)\. 
 
 1. \(Optional\) For **Resource configuration**, either leave the default values or increase the resource consumption to reduce computation time\.
 
@@ -99,13 +99,13 @@ To restart a stopped training job, use the URL to the model artifacts that are s
 
 1. \(Optional\) For **Tags**, add one or more tags to the training job\. A *tag* is metadata that you can define and assign to AWS resources\. In this case, you can use tags to help you manage your training jobs\. A tag consists of a key and a value, which you define\. For example, you might want to create a tag with **Project** as a key and a value referring to a project that is related to the training job, such as **Home value forecasts**\.
 
-1. Choose **Create training job**\. Amazon SageMaker creates and runs training job\.
+1. Choose **Create training job**\. SageMaker creates and runs training job\.
 
 After the training job has completed, the newly trained model artifacts are stored under the **S3 output path** that you provided in the **Output data configuration** field\. To deploy the model to get predictions, see [Step 6: Deploy the Model to Amazon SageMaker](ex1-model-deployment.md)\.
 
 ## Perform Incremental Training \(API\)<a name="incremental-training-api"></a>
 
-This example shows how to use Amazon SageMaker APIs to train a model using the Amazon SageMaker image classification algorithm and the [Caltech 256 Image Dataset](http://www.vision.caltech.edu/Image_Datasets/Caltech256/), then train a new model using the first one\. Please see the [incremental training sample notebook](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/object_detection_pascalvoc_coco/object_detection_incremental_training.ipynb) for more details on using incremental training\.
+This example shows how to use SageMaker APIs to train a model using the SageMaker image classification algorithm and the [Caltech 256 Image Dataset](http://www.vision.caltech.edu/Image_Datasets/Caltech256/), then train a new model using the first one\. It uses Amazon S3 for input and output sources\. Please see the [incremental training sample notebook](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/object_detection_pascalvoc_coco/object_detection_incremental_training.ipynb) for more details on using incremental training\.
 
 **Note**  
 In this example we used the original datasets in the incremental training, however you can use different datasets, such as ones that contain newly added samples\. Upload the new datasets to S3 and make adjustments to the `data_channels` variable used to train the new model\.
@@ -197,18 +197,18 @@ Create an estimator object and train the first model using the training and vali
 s3_output_location = 's3://{}/{}/output'.format(bucket, prefix)
 ic = sagemaker.estimator.Estimator(training_image,
                                    role,
-                                   train_instance_count=1,
-                                   train_instance_type='ml.p2.xlarge',
-                                   train_volume_size=50,
-                                   train_max_run=360000,
+                                   instance_count=1,
+                                   instance_type='ml.p2.xlarge',
+                                   volume_size=50,
+                                   max_run=360000,
                                    input_mode='File',
                                    output_path=s3_output_location,
                                    sagemaker_session=sess,
                                    hyperparameters=hyperparams)
 
-train_data = sagemaker.session.s3_input(s3train, distribution='FullyReplicated',
+train_data = sagemaker.inputs.TrainingInput(s3train, distribution='FullyReplicated',
                                         content_type='application/x-recordio', s3_data_type='S3Prefix')
-validation_data = sagemaker.session.s3_input(s3validation, distribution='FullyReplicated',
+validation_data = sagemaker.inputs.TrainingInput(s3validation, distribution='FullyReplicated',
                                              content_type='application/x-recordio', s3_data_type='S3Prefix')
 
 data_channels = {'train': train_data, 'validation': validation_data}
@@ -222,10 +222,10 @@ To use the model to incrementally train another model, create a new estimator ob
 # Given the base estimator, create a new one for incremental training
 incr_ic = sagemaker.estimator.Estimator(training_image,
                                         role,
-                                        train_instance_count=1,
-                                        train_instance_type='ml.p2.xlarge',
-                                        train_volume_size=50,
-                                        train_max_run=360000,
+                                        instance_count=1,
+                                        instance_type='ml.p2.xlarge',
+                                        volume_size=50,
+                                        max_run=360000,
                                         input_mode='File',
                                         output_path=s3_output_location,
                                         sagemaker_session=sess,

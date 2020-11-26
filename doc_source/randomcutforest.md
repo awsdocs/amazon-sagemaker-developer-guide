@@ -19,7 +19,7 @@ While there are many applications of anomaly detection algorithms to one\-dimens
 
 Amazon SageMaker Random Cut Forest supports the `train` and `test` data channels\. The optional test channel is used to compute accuracy, precision, recall, and F1\-score metrics on labeled data\. Train and test data content types can be either `application/x-recordio-protobuf` or `text/csv` formats\. For the test data, when using text/csv format, the content must be specified as text/csv;label\_size=1 where the first column of each row represents the anomaly label: "1" for an anomalous data point and "0" for a normal data point\. You can use either File mode or Pipe mode to train RCF models on data that is formatted as `recordIO-wrapped-protobuf` or as `CSV`
 
-Also note that the train channel only supports `S3DataDistributionType=ShardedByS3Key` and the test channel only supports `S3DataDistributionType=FullyReplicated`\. The S3 distribution type can be specified using the Python SDK as follows:
+Also note that the train channel only supports `S3DataDistributionType=ShardedByS3Key` and the test channel only supports `S3DataDistributionType=FullyReplicated`\. The S3 distribution type can be specified using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) as follows:
 
 ```
   import sagemaker
@@ -27,8 +27,8 @@ Also note that the train channel only supports `S3DataDistributionType=ShardedBy
   # specify Random Cut Forest training job information and hyperparameters
   rcf = sagemaker.estimator.Estimator(...)
     
-  # explicitly specify "SharededByS3Key" distribution type
-  train_data = sagemaker.s3_input(
+  # explicitly specify "ShardedByS3Key" distribution type
+  train_data = sagemaker.inputs.s3_input(
        s3_data=s3_training_data_location,
        content_type='text/csv;label_size=0',
        distribution='ShardedByS3Key')
@@ -37,9 +37,9 @@ Also note that the train channel only supports `S3DataDistributionType=ShardedBy
   rcf.fit({'train': train_data})
 ```
 
-See the [Amazon SageMaker Data Types documentation](https://docs.aws.amazon.com/sagemaker/latest/dg/API_S3DataSource.html) for more information on customizing the S3 data source attributes\. Finally, in order to take advantage of multi\-instance training the training data must be partitioned into at least as many files as instances\.
+See the [ `S3DataSource`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_S3DataSource.html) for more information on customizing the S3 data source attributes\. Finally, in order to take advantage of multi\-instance training the training data must be partitioned into at least as many files as instances\.
 
-For inference, RCF supports `application/x-recordio-protobuf`, `text/csv` and `application/json` input data content types\. See the [Common Data Formats for Built\-in Algorithms ](sagemaker-algo-common-data-formats.md) documentation for more information\. RCF inference returns `application/x-recordio-protobuf` or `application/json` formatted output\. Each record in these output data contains the corresponding anomaly scores for each input data point\. See [Common Data Formats\-\-Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html) for more information\.
+For inference, RCF supports `application/x-recordio-protobuf`, `text/csv` and `application/json` input data content types\. See the [Common Data Formats for Built\-in Algorithms](sagemaker-algo-common-data-formats.md) documentation for more information\. RCF inference returns `application/x-recordio-protobuf` or `application/json` formatted output\. Each record in these output data contains the corresponding anomaly scores for each input data point\. See [Common Data Formats\-\-Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html) for more information\.
 
 For more information on input and output file formats, see [RCF Response Formats](rcf-in-formats.md) for inference and the [RCF Sample Notebooks](#rcf-sample-notebooks)\.
 
@@ -49,4 +49,4 @@ For training, we recommend the `ml.m4`, `ml.c4`, and `ml.c5` instance families\.
 
 ## RCF Sample Notebooks<a name="rcf-sample-notebooks"></a>
 
-For an example of how to train an RCF model and perform inferences with it, see the [Introduction to SageMaker Random Cut Forests](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/random_cut_forest/random_cut_forest.ipynb) notebook\. For a sample notebook that uses the Amazon SageMaker Random Cut Forest algorithm for anomaly detection, see [An Introduction to SageMaker Random Cut Forests](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/random_cut_forest/random_cut_forest.ipynb)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in Amazon SageMaker, see [Use Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the Amazon SageMaker samples\. To open a notebook, click on its **Use** tab and select **Create copy**\.
+For an example of how to train an RCF model and perform inferences with it, see the [Introduction to SageMaker Random Cut Forests](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/random_cut_forest/random_cut_forest.ipynb) notebook\. For a sample notebook that uses the SageMaker Random Cut Forest algorithm for anomaly detection, see [An Introduction to SageMaker Random Cut Forests](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/random_cut_forest/random_cut_forest.ipynb)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the SageMaker samples\. To open a notebook, click on its **Use** tab and select **Create copy**\.

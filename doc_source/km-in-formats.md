@@ -1,6 +1,6 @@
 # K\-Means Response Formats<a name="km-in-formats"></a>
 
-All Amazon SageMaker built\-in algorithms adhere to the common input inference format described in [Common Data Formats \- Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html)\. This topic contains a list of the available output formats for the Amazon SageMaker k\-means algorithm\.
+All SageMaker built\-in algorithms adhere to the common input inference format described in [Common Data Formats \- Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html)\. This topic contains a list of the available output formats for the SageMaker k\-means algorithm\.
 
 ## JSON Response Format<a name="km-json"></a>
 
@@ -15,7 +15,7 @@ All Amazon SageMaker built\-in algorithms adhere to the common input inference f
             "closest_cluster": 2.0,
             "distance_to_cluster": 5.0,
         },
- 
+
         ....
     ]
 }
@@ -46,4 +46,15 @@ All Amazon SageMaker built\-in algorithms adhere to the common input inference f
         }
     }
 ]
+```
+
+## CSV Response Format<a name="km-csv"></a>
+
+The first value in each line corresponds to `closest_cluster`\.
+
+The second value in each line corresponds to `distance_to_cluster`\.
+
+```
+1.0,3.0
+2.0,5.0
 ```

@@ -1,13 +1,13 @@
 # Step 2: Create an Amazon SageMaker Notebook Instance<a name="gs-setup-working-env"></a>
 
-An Amazon SageMaker notebook instance is a fully managed machine learning \(ML\) Amazon Elastic Compute Cloud \(Amazon EC2\) compute instance that runs the Jupyter Notebook App\. You use the notebook instance to create and manage Jupyter notebooks that you can use to prepare and process data and to train and deploy machine learning models\. For more information, see [Explore and Preprocess Data](how-it-works-notebooks-instances.md)\. 
+An Amazon SageMaker notebook instance is a fully managed machine learning \(ML\) Amazon Elastic Compute Cloud \(Amazon EC2\) compute instance that runs the Jupyter Notebook App\. You use the notebook instance to create and manage Jupyter notebooks that you can use to prepare and process data and to train and deploy machine learning models\. For more information, see [Explore, Analyze, and Process Data](how-it-works-notebooks-instances.md)\. 
 
 **Note**  
 If necessary, you can change the notebook instance settings, including the ML compute instance type, later\.
 
-**To create an Amazon SageMaker notebook instance**
+**To create a SageMaker notebook instance**
 
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\. 
+1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
 1. Choose **Notebook instances**, then choose **Create notebook instance**\.
 
@@ -15,7 +15,7 @@ If necessary, you can change the notebook instance settings, including the ML co
 
    1. For **Notebook instance name**, type a name for your notebook instance\.
 
-   1. For **Instance type**, choose `ml.t2.medium`\. This is the least expensive instance type that notebook instances support, and it suffices for this exercise\.
+   1. For **Instance type**, choose `ml.t2.medium`\. This is the least expensive instance type that notebook instances support, and it suffices for this exercise\. If a `ml.t2.medium` instance type isn't available in your AWS Region, choose `ml.t3.medium`\.
 
    1. For **IAM role**, choose **Create a new role**, then choose **Create role**\.
 

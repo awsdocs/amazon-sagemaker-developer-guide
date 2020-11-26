@@ -29,7 +29,7 @@ This procedure is best illustrated with an example\. Suppose a tree is given the
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/RCF1.jpg)
 
- The RCF algorithm organizes these data in a tree by first computing a bounding box of the data, selecting a random dimension \(giving more weight to dimensions with higher "variance"\), and then randomly determining the position of a hyperplane "cut" through that dimension\. The two resulting subspaces define their own sub tree\. In this example, the cut happens to separate a lone point from the remainder of the sample\. The first level of the resulting binary tree consists of two nodes, one which will consist of the subtree of points to the left of the initial cut and the other representing the single point on the right\.
+The RCF algorithm organizes these data in a tree by first computing a bounding box of the data, selecting a random dimension \(giving more weight to dimensions with higher "variance"\), and then randomly determining the position of a hyperplane "cut" through that dimension\. The two resulting subspaces define their own sub tree\. In this example, the cut happens to separate a lone point from the remainder of the sample\. The first level of the resulting binary tree consists of two nodes, one which will consist of the subtree of points to the left of the initial cut and the other representing the single point on the right\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/RCF2.jpg)
 

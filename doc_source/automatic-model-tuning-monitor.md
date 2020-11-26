@@ -11,7 +11,7 @@ To monitor the progress of a hyperparameter tuning job and the training jobs tha
 
 **To view the status of the hyperparameter tuning job**
 
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)
+1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
 1. Choose **Hyperparameter tuning jobs**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/console-tuning-jobs.png)
@@ -49,7 +49,7 @@ To view the best training job, choose **Best training job**\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/best-training-job.png)
 
-To deploy the best training job as a model that you can host at an Amazon SageMaker endpoint, choose **Create model**\.
+To deploy the best training job as a model that you can host at a SageMaker endpoint, choose **Create model**\.
 
 ### Next Step<a name="automatic-model-tuning-ex-next-cleanup"></a>
 

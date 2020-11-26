@@ -8,11 +8,24 @@ The [XGBoost Algorithm](xgboost.md) expects comma\-separated values \(CSV\) for 
   ```
   %%time
   
-  import struct
+  import os
+  import re
+  import copy
+  import time
   import io
-  import csv
+  import struct
+  from time import gmtime, strftime
+  
   import boto3
-          
+  import sagemaker
+  
+  role = sagemaker.get_execution_role()
+  
+  region = boto3.Session().region_name
+  
+  bucket = sagemaker.Session().default_bucket()   # Default S3 URI. Replace it with your S3 URI if you want.
+  prefix = 'sagemaker/xgboost-mnist' # Used as part of the path in the bucket where you store data
+  
   def convert_data():
       data_partitions = [('train', train_set), ('validation', valid_set), ('test', test_set)]
       for data_partition_name, data_partition in data_partitions:
@@ -24,12 +37,8 @@ The [XGBoost Algorithm](xgboost.md) expects comma\-separated values \(CSV\) for 
               examples = np.insert(features, 0, labels, axis=1)
           else:
               examples = features
-          #print(examples[50000,:])
-          
           
           np.savetxt('data.csv', examples, delimiter=',')
-          
-          
           
           key = "{}/{}/examples".format(prefix,data_partition_name)
           url = 's3://{}/{}'.format(bucket, key)
@@ -39,7 +48,7 @@ The [XGBoost Algorithm](xgboost.md) expects comma\-separated values \(CSV\) for 
   convert_data()
   ```
 
-  After it converts the dataset to the CSV format, ,the code uploads the CSV file to the S3 bucket\. 
+  After it converts the dataset to the CSV format, the code uploads the CSV file to the S3 bucket\. 
 
 **Next Step**  
 [Step 5: Train a Model](ex1-train-model.md)

@@ -5,8 +5,8 @@
 Due to GPU memory scarcity, the `INFERENCE_PREFERRED_MODE` environment variable can be specified to optimize on whether the classification/regression or the [Output: Encoder Embeddings](object2vec-encoder-embeddings.md#object2vec-out-encoder-embeddings-data) inference network is loaded into GPU\. If the majority of your inference is for classification or regression, specify `INFERENCE_PREFERRED_MODE=classification`\. The following is a Batch Transform example of using 4 instances of p3\.2xlarge that optimizes for classification/regression inference:
 
 ```
-transformer = o2v.transformer(instance_count=4, 
-                              instance_type="ml.p2.xlarge", 
+transformer = o2v.transformer(instance_count=4,
+                              instance_type="ml.p2.xlarge",
                               max_concurrent_transforms=2,
                               max_payload=1,  # 1MB
                               strategy='MultiRecord',
@@ -51,7 +51,7 @@ Accept: application/json
                 0.07582679390907288,
                 0.2707797586917877
             ]
-        },       
+        },
         {
             "scores": [
                 0.026291321963071823,

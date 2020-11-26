@@ -1,25 +1,25 @@
 # Step 6\.2: Deploy the Model with Batch Transform<a name="ex1-batch-transform"></a>
 
-To get inference for an entire dataset, use batch transform\. Amazon SageMaker stores the results in Amazon S3\.
+To get inference for an entire dataset, use batch transform\. SageMaker stores the results in Amazon S3\.
 
 For information about batch transforms, see [Get Inferences for an Entire Dataset with Batch Transform](how-it-works-batch.md)\. For an example that uses batch transform, see the batch transform sample notebook at [https://github\.com/awslabs/amazon\-sagemaker\-examples/tree/master/sagemaker\_batch\_transform/introduction\_to\_batch\_transform](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker_batch_transform/introduction_to_batch_transform)\.
 
 **Topics**
-+ [Deploy a Model with Batch Transform \(Amazon SageMaker High\-level Python Library\)](#ex1-batch-transform-api-high-level)
-+ [Deploy a Model with Batch Transform \(SDK for Python \(Boto 3\)\)](#ex1-batch-transform-api-low-level)
++ [Deploy a Model with Batch Transform \(SageMaker High\-level Python Library\)](#ex1-batch-transform-api-high-level)
++ [Deploy a Model with Batch Transform \(SDK for Python \(Boto3\)\)](#ex1-batch-transform-api-low-level)
 
-## Deploy a Model with Batch Transform \(Amazon SageMaker High\-level Python Library\)<a name="ex1-batch-transform-api-high-level"></a>
+## Deploy a Model with Batch Transform \(SageMaker High\-level Python Library\)<a name="ex1-batch-transform-api-high-level"></a>
 
-The following code creates a `sagemaker.transformer.Transformer` object from the model that you trained in [Create and Run a Training Job \(Amazon SageMaker Python SDK\)](ex1-train-model.md#ex1-train-model-sdk)\. Then it calls that object's `transform` method to create a transform job\. When you create the `sagemaker.transformer.Transformer` object, you specify the number and type of ML instances to use to perform the batch transform job, and the location in Amazon S3 where you want to store the inferences\. 
+The following code creates a `sagemaker.transformer.Transformer` object from the model that you trained in [Create and Run a Training Job \([Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\)](ex1-train-model.md#ex1-train-model-sdk)\. Then it calls that object's `transform` method to create a transform job\. When you create the `sagemaker.transformer.Transformer` object, you specify the number and type of ML instances to use to perform the batch transform job, and the location in Amazon S3 where you want to store the inferences\. 
 
 Paste the following code in a cell in the Jupyter notebook you created in [Step 3: Create a Jupyter Notebook](ex1-prepare.md) and run the cell\.
 
 ```
-batch_input =
-                's3://{}/{}/test/examples'.format(bucket, prefix) # The location of the test dataset
+# The location of the test dataset
+batch_input = 's3://{}/{}/test/examples'.format(bucket, prefix)
 
-batch_output = 's3://{}/{}/batch-inference'.format(bucket, prefix) # The location to store the
-results of the batch transform job
+# The location to store the results of the batch transform job
+batch_output = 's3://{}/{}/batch-inference'.format(bucket, prefix)
 
 transformer = xgb_model.transformer(instance_count=1, instance_type='ml.m4.xlarge', output_path=batch_output)
 
@@ -33,11 +33,11 @@ transformer.wait()
 **Next Step**  
 [Step 7: Validate the Model](ex1-test-model.md)
 
-## Deploy a Model with Batch Transform \(SDK for Python \(Boto 3\)\)<a name="ex1-batch-transform-api-low-level"></a>
+## Deploy a Model with Batch Transform \(SDK for Python \(Boto3\)\)<a name="ex1-batch-transform-api-low-level"></a>
 
-To run a batch transform job, call the `create_transform_job`\. method using the model that you trained in [Create and Run a Training Job \(AWS SDK for Python \(Boto 3\)\)](ex1-train-model.md#ex1-train-model-create-training-job)\.
+To run a batch transform job, call the `create_transform_job`\. method using the model that you trained in [Deploy the Model to SageMaker Hosting Services \(AWS SDK for Python \(Boto3\)\)\.](ex1-deploy-model.md#ex1-deploy-model-boto)\.
 
-**To create a batch transform job \(SDK for Python \(Boto 3\)\)**
+**To create a batch transform job \(SDK for Python \(Boto3\)\)**
 
 For each of the following steps, paste the code in a cell in the Jupyter notebook you created in [Step 3: Create a Jupyter Notebook](ex1-prepare.md) and run the cell\.
 
@@ -81,7 +81,7 @@ For each of the following steps, paste the code in a cell in the Jupyter noteboo
    }
    ```
 
-   For more information about the parameters, see [CreateTransformJob](API_CreateTransformJob.md)\.
+   For more information about the parameters, see [ `CreateTransformJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html)\.
 
 1. Call the `create_transform_job` method, passing in the parameters that you configured in the previous step\. Then call the `describe_transform_job` method in a loop until it completes\.
 
