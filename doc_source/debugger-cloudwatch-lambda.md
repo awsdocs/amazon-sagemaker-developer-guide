@@ -63,27 +63,43 @@ The following figure shows an example of the **Create function** page with the i
    import json
    import boto3
    import logging
-   
+
+   logger = logging.getLogger()
+   logger.setLevel(logging.INFO)
+
+
    def lambda_handler(event, context):
        training_job_name = event.get("detail").get("TrainingJobName")
+       logging.info(f'Evaluating Debugger rules for training job: {training_job_name}')
+
        eval_statuses = event.get("detail").get("DebugRuleEvaluationStatuses", None)
-   
+
        if eval_statuses is None or len(eval_statuses) == 0:
            logging.info("Couldn't find any debug rule statuses, skipping...")
            return {
                'statusCode': 200,
                'body': json.dumps('Nothing to do')
            }
-   
+
+       # should only attempt stopping jobs with InProgress status
+       training_job_status = event.get("detail").get("TrainingJobStatus", None)
+       if training_job_status != 'InProgress':
+           logging.debug(f"Current Training job status({training_job_status}) is not 'InProgress'. Exiting")
+           return {
+               'statusCode': 200,
+               'body': json.dumps('Nothing to do')
+           }
+
        client = boto3.client('sagemaker')
-   
+
        for status in eval_statuses:
+           logging.info(status.get("RuleEvaluationStatus") + ', RuleEvaluationStatus=' + str(status))
            if status.get("RuleEvaluationStatus") == "IssuesFound":
+               secondary_status = event.get("detail").get("SecondaryStatus", None)
                logging.info(
-                   'Evaluation of rule configuration {} resulted in "IssuesFound". '
-                   'Attempting to stop training job {}'.format(
-                       status.get("RuleConfigurationName"), training_job_name
-                   )
+                   f'About to stop training job, since evaluation of rule configuration {status.get("RuleConfigurationName")} resulted in "IssuesFound". ' +
+                   f'\ntraining job "{training_job_name}" status is "{training_job_status}", secondary status is "{secondary_status}"' +
+                   f'\nAttempting to stop training job "{training_job_name}"'
                )
                try:
                    client.stop_training_job(
@@ -101,6 +117,10 @@ The following figure shows an example of the **Create function** page with the i
    ```
 
    For more information about the Lambda code editor interface, see [Creating functions using the AWS Lambda console editor](https://docs.aws.amazon.com/lambda/latest/dg/code-editor.html)\.
+
+1. Create a new execution role for the Lambda, and in your IAM console, search for the role and attach "AmazonSageMakerFullAccess" policy to the role. This is needed for the code in your Lambda function to stop the training job\.
+
+1. Basic settings > set Timeout to 30 seconds instead of 3 seconds\.
 
 1. Skip all other settings and choose **Save** at the top of the configuration page\.
 
