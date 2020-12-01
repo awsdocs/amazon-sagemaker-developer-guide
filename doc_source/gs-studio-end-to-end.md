@@ -27,7 +27,7 @@ To run the notebook for this tour, you need:
 
 1. At the command prompt, run the following command\.
 
-   `git clone https://github.com/aws/amazon-sagemaker-examples.git`
+   `git clone https://github.com/awslabs/amazon-sagemaker-examples.git`
 
 **Note**  
 If you encounter an error when you run the sample notebook, and some time has passed from when you cloned the repository, review the notebook on the remote repository for updates\.
