@@ -216,7 +216,7 @@ This bash shell script may raise a permission issue similar to the following err
    "denied: User: [ARN] is not authorized to perform: ecr:InitiateLayerUpload on resource: 
    arn:aws:ecr:us-east-1:[id]:repository/tf-custom-container-test"
    ```
-If this error occurs, you need to attach the **AmazonEC2ContainerRegistryFullAccess** policy to your IAM role\. Go to the [IAM console](https://console.aws.amazon.com/iam/home), choose **Roles** from the left navigation pane, look up the IAM role you used for the Nnotebook instance\. Under the **Permission** tab, choose the **Attach policies** button, and search the **AmazonEC2ContainerRegistryFullAccess** policy\. Mark the check box of the policy, and choose **Attach policy** to finish\.
+If this error occurs, you need to attach the **AmazonEC2ContainerRegistryFullAccess** policy to your IAM role\. Go to the [IAM console](https://console.aws.amazon.com/iam/home), choose **Roles** from the left navigation pane, look up the IAM role you used for the Notebook instance\. Under the **Permission** tab, choose the **Attach policies** button, and search the **AmazonEC2ContainerRegistryFullAccess** policy\. Mark the check box of the policy, and choose **Attach policy** to finish\.
 
 1. After you push the container, you can call the Amazon ECR image from anywhere in the SageMaker environment\. Run the following code example in the next notebook cell\. 
 
