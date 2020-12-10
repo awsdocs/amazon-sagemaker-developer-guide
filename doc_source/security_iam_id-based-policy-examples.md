@@ -19,10 +19,10 @@ To learn how to create an IAM identity\-based policy using these example JSON po
 ## Policy Best Practices<a name="security_iam_service-with-iam-policy-best-practices"></a>
 
 Identity\-based policies are very powerful\. They determine whether someone can create, access, or delete SageMaker resources in your account\. These actions can incur costs for your AWS account\. When you create or edit identity\-based policies, follow these guidelines and recommendations:
-+ **Get Started Using AWS Managed Policies** – To start using SageMaker quickly, use AWS managed policies to give your employees the permissions they need\. These policies are already available in your account and are maintained and updated by AWS\. For more information, see [Get Started Using Permissions With AWS Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#bp-use-aws-defined-policies) in the *IAM User Guide*\.
-+ **Grant Least Privilege** – When you create custom policies, grant only the permissions required to perform a task\. Start with a minimum set of permissions and grant additional permissions as necessary\. Doing so is more secure than starting with permissions that are too lenient and then trying to tighten them later\. For more information, see [Grant Least Privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege) in the *IAM User Guide*\.
-+ **Enable MFA for Sensitive Operations** – For extra security, require IAM users to use multi\-factor authentication \(MFA\) to access sensitive resources or API operations\. For more information, see [Using Multi\-Factor Authentication \(MFA\) in AWS](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html) in the *IAM User Guide*\.
-+ **Use Policy Conditions for Extra Security** – To the extent that it's practical, define the conditions under which your identity\-based policies allow access to a resource\. For example, you can write conditions to specify a range of allowable IP addresses that a request must come from\. You can also write conditions to allow requests only within a specified date or time range, or to require the use of SSL or MFA\. For more information, see [IAM JSON Policy Elements: Condition](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html) in the *IAM User Guide*\.
++ **Get started using AWS managed policies** – To start using SageMaker quickly, use AWS managed policies to give your employees the permissions they need\. These policies are already available in your account and are maintained and updated by AWS\. For more information, see [Get started using permissions with AWS managed policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#bp-use-aws-defined-policies) in the *IAM User Guide*\.
++ **Grant least privilege** – When you create custom policies, grant only the permissions required to perform a task\. Start with a minimum set of permissions and grant additional permissions as necessary\. Doing so is more secure than starting with permissions that are too lenient and then trying to tighten them later\. For more information, see [Grant least privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege) in the *IAM User Guide*\.
++ **Enable MFA for sensitive operations** – For extra security, require IAM users to use multi\-factor authentication \(MFA\) to access sensitive resources or API operations\. For more information, see [Using multi\-factor authentication \(MFA\) in AWS](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html) in the *IAM User Guide*\.
++ **Use policy conditions for extra security** – To the extent that it's practical, define the conditions under which your identity\-based policies allow access to a resource\. For example, you can write conditions to specify a range of allowable IP addresses that a request must come from\. You can also write conditions to allow requests only within a specified date or time range, or to require the use of SSL or MFA\. For more information, see [IAM JSON policy elements: Condition](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html) in the *IAM User Guide*\.
 
 ## Using the SageMaker Console<a name="security_iam_id-based-policy-examples-console"></a>
 
@@ -605,33 +605,7 @@ This example shows how you might create a policy that allows IAM users to view t
 
 Control fine\-grained access to allow the creation of SageMaker resources by using SageMaker\-specific condition keys\. For information about using condition keys in IAM policies, see [IAM JSON Policy Elements: Condition](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html) in the *IAM User Guide*\.
 
-The following table lists the SageMaker condition keys\. The condition keys, along with related API actions, and links to relevant documentation are also listed in [Condition Keys for SageMaker](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonsagemaker.html#amazonsagemaker-policy-keys) in the *IAM User Guide*\.
-
-
-**Amazon SageMaker File System Condition Keys**  
-
-| Condition Key | Value Type | Description | 
-| --- | --- | --- | 
-|  `sagemaker:AcceleratorTypes`  |  List of strings  |  A list of Amazon Elastic Inference accelerator types\.  | 
-|  `sagemaker:DirectInternetAccess`  |  String  |  The direct internet access setting associated with the request\.  Valid values: `Enabled`, `Disabled`  | 
-|  `sagemaker:InstanceTypes`  |  List of strings  | A list of ML instance types\. | 
-|  `sagemaker:InterContainerTrafficEncryption`  |  Boolean  |  Whether inter\-container traffic encryption is associated with the resource in the request\.  Valid values: `true`\. `false`  | 
-| sagemaker:FileSystemId |  String  |  The file system ID\.  | 
-|  `sagemaker:FileSystemType`  |  String  |  The file system type\. For example, `EFS` or `FSxLustre`\.  | 
-|  `sagemaker:FileSystemDirectoryPath`  |  String  |  The directory path associated with the file system\.  | 
-|  `sagemaker:FileSystemAccessMode`  |  String  |  The access mode of the mount of the directory associated with the channel\.  Valid values: `ro` \(read\-only\), `rw` \(read\-write\)  | 
-|  `sagemaker:MaxRuntimeInSeconds`  |  Numeric  |  The maximum runtime of the stopping condition associated with the request, in seconds\.  | 
-|  `sagemaker:ModelArn`  |  ARN  |  The model Amazon Resource Name \(ARN\) specified in the request\.  | 
-|  `sagemaker:NetworkIsolation`  |  Boolean  |  The network isolation setting associated with the resource in the request\.  Valid values: true, false  | 
-|  `sagemaker:OutputKmsKey`  |  ARN  |  The AWS Key Management Service \(AWS KMS\) key ARN or alias ARN specified in the request\.  | 
-|  `sagemaker:ResourceTag/`  |  String  |  The preface string for a tag key\-value pair attached to a resource\.  | 
-|  `sagemaker:ResourceTag/${TagKey}`  |  String  |  A tag key\-value pair\.  | 
-|  `sagemaker:RootAccess`  |  String  |  The root access mode associated with the request\.  Valid values: `Enabled`, `Disabled`  | 
-|  `sagemaker:VolumeKmsKey`  |  ARN  |  The AWS KMS key ARN or alias ARN specified in the request\.  | 
-|  `sagemaker:VpcSecurityGroupIds`  |  List of strings  |  A list of VPC security groups\.  | 
-|  `sagemaker:VpcSubnets`  |  List of strings  |  A list of VPC subnets\.  | 
-|  `sagemaker:WorkteamArn`  |  ARN  |  The workteam ARN associated with the request\.  | 
-|  `sagemaker:WorkteamType`  |  String  |  The work team type associated with the request\. All work teams fall into one of three types: public\-crowd, private\-crowd or vendor\-crowd\.  | 
+The condition keys, along with related API actions, and links to relevant documentation are listed in [Condition Keys for SageMaker](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonsagemaker.html#amazonsagemaker-policy-keys) in the *IAM User Guide*\.
 
 The following examples show how to use the SageMaker condition keys to control access\.
 
@@ -982,7 +956,7 @@ The following policy restricts an IAM user to use a specific elastic inference \
 
 ### Enforce Disabling Internet Access and Root Access for Creating Notebook Instances<a name="sagemaker-condition-nbi-lockdown"></a>
 
-You can disable both internet access and root access to notebook instances to help make them more secure\. For information about controlling root access to a notebook instance, see [Control Root Access to a Notebook Instance](nbi-root-access.md)\. for information about disabling internet access for a notebook instance, see [Connect a Notebook Instance to Resources in a VPC](appendix-notebook-and-internet-access.md)\.
+You can disable both internet access and root access to notebook instances to help make them more secure\. For information about controlling root access to a notebook instance, see [Control root access to a SageMaker notebook instance](nbi-root-access.md)\. for information about disabling internet access for a notebook instance, see [Connect a Notebook Instance to Resources in a VPC](appendix-notebook-and-internet-access.md)\.
 
 The following policy requires an IAM user to disable network access when creating instance, and disable root access when creating or updating a notebook instance\. 
 

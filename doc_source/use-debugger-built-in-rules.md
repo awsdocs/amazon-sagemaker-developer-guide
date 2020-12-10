@@ -1,16 +1,117 @@
-# Use Debugger Built\-in Rules for Training Job Analysis<a name="use-debugger-built-in-rules"></a>
+# Configure Debugger Built\-in Rules<a name="use-debugger-built-in-rules"></a>
 
-Amazon SageMaker Debugger rules analyze tensors emitted during the training of a model\. Debugger offers the `Rule` API operation that monitors training job progress and errors for the success of training your model\. For example, the rules can detect whether gradients are getting too large or too small, whether a model is overfitting or overtraining, and whether a training job does not decrease loss function and improve\. Debugger `Rules` provides more than a dozen of convenient built\-in rules that you can directly apply to your training jobs\.
+Amazon SageMaker Debugger rules analyze tensors emitted during the training of a model\. Debugger offers the `Rule` API operation that monitors training job progress and errors for the success of training your model\. For example, the rules can detect whether gradients are getting too large or too small, whether a model is overfitting or overtraining, and whether a training job does not decrease loss function and improve\. To see a full list of available built\-in rules, see [List of Debugger Built\-in Rules](debugger-built-in-rules.md)\.
 
 **Note**  
-The Debugger built\-in rules are prepared in Amazon SageMaker containers\. A full list of available pre\-built docker images for the built\-in rules is provided at [ Amazon SageMaker Debugger Registry URLs for Built\-in Rule Evaluators](https://docs.aws.amazon.com/sagemaker/latest/dg/debuger-built-in-registry-ids.html)\. If you use the pre\-built AWS containers, the step where you construct SageMaker estimators automatically calls the rule images and you do not need to manually specify it\. You can also use all of the built\-in rules without any additional cost when using the AWS managed containers\.
+The built\-in rules are prepared in Amazon SageMaker processing containers and fully managed by SageMaker Debugger\. By default, Debugger initiates the [ProfilerReport](debugger-built-in-rules.md#profiler-report) rule for all SageMaker training jobs, without any Debugger\-specific rule parameter specified to the SageMaker estimators\. The ProfilerReport rule invokes all of the following built\-in rules for monitoring system bottlenecks and profiling framework metrics:   
+`BatchSize`
+`CPUBottleneck`
+`GPUMemoryIncrease`
+`IOBottleneck`
+`LoadBalancing`
+`LowGPUUtilization`
+`OverallSystemUsage`
+`MaxInitializationTime`
+`OverallFrameworkMetrics`
+`StepOutlier`
+Debugger saves the profiling report in a default S3 bucket\. The format of the default S3 bucket URI is `s3://sagemaker-<region>-<12digit_account_id>/<training-job-name>/rule-output/`\. For more information about how to download the profiling report, see [SageMaker Debugger Profiling Report](debugger-profiling-report.md)\. SageMaker Debugger fully manages the built\-in rules and analyzes your training job in parallel\. For more information about billing, see the **Amazon SageMaker Studio is available at no additional charge** section of the [Amazon SageMaker Pricing](https://aws.amazon.com/sagemaker/pricing/) page\.
+
+In the following topics, learn how to use the Debugger built\-in rules\.
+
+**Topics**
++ [Use Debugger Built\-in Rules with the Default Parameter Settings](#debugger-built-in-rules-configuration)
++ [Use Debugger Built\-in Rules with Custom Parameter Values](#debugger-built-in-rules-configuration-param-change)
++ [Example Notebooks and Code Samples to Configure Debugger Rules](#debugger-built-in-rules-example)
+
+## Use Debugger Built\-in Rules with the Default Parameter Settings<a name="debugger-built-in-rules-configuration"></a>
+
+To specify Debugger built\-in rules in an estimator, you need to configure a `rules` list object\. The following example code shows the basic structure of listing the Debugger built\-in rules:
+
+```
+from sagemaker.debugger import Rule, ProfilerRule, rule_configs
+
+rules=[
+    ProfilerRule.sagemaker(rule_configs.BuiltInProfilerRuleName_1()),
+    ProfilerRule.sagemaker(rule_configs.BuiltInProfilerRuleName_2()),
+    ...
+    ProfilerRule.sagemaker(rule_configs.BuiltInProfilerRuleName_n()),
+    Rule.sagemaker(rule_configs.built_in_rule_name_1()),
+    Rule.sagemaker(rule_configs.built_in_rule_name_2()),
+    ...
+    Rule.sagemaker(rule_configs.built_in_rule_name_n())
+]
+```
+
+For more information about default parameter values and descriptions of the built\-in rule, see [List of Debugger Built\-in Rules](debugger-built-in-rules.md)\.
+
+For example, to inspect the overall training performance and progress of your model, construct a SageMaker estimator with the following built\-in rule configuration\. 
+
+```
+from sagemaker.debugger import Rule, rule_configs
+
+rules=[
+    ProfilerRule.sagemaker(rule_configs.ProfilerReport()),
+    Rule.sagemaker(rule_configs.loss_not_decreasing()),
+    Rule.sagemaker(rule_configs.overfit()),
+    Rule.sagemaker(rule_configs.overtraining()),
+    Rule.sagemaker(rule_configs.stalled_training_rule())
+]
+```
+
+When you start the training job, Debugger collects system resource utilization data every 500 milliseconds and the loss and accuracy values every 500 steps by default\. Debugger analyzes the resource utilization to identify if your model is having bottleneck problems\. The `loss_not_decreasing`, `overfit`, `overtraining`, and `stalled_training_rule` monitors if your model is optimizing the loss function without those training issues\. If the rules detect training anomalies, the rule evaluation status changes to `IssueFound`\. You can set up automated actions, such as notifying training issues and stopping training jobs using Amazon CloudWatch Events and AWS Lambda\. For more information, see [Action on Amazon SageMaker Debugger Rules](debugger-action-on-rules.md)\.
+
+## Use Debugger Built\-in Rules with Custom Parameter Values<a name="debugger-built-in-rules-configuration-param-change"></a>
+
+If you want to adjust the built\-in rule parameter values and customize tensor collection regex, configure the `base_config` and `rule_parameters` parameters for the `ProfilerRule.sagemaker` and `Rule.sagemaker` classmethods\. In case of the `Rule.sagemaker` class methods, you can also customize tensor collections through the `collections_to_save` parameter\. The instruction of how to use the `CollectionConfig` class is provided at [ Configure Debugger Tensor Collections Using the Collectivisation API Operation](debugger-configure-hook.md#debugger-configure-tensor-collections)\. 
+
+Use the following configuration template for built\-in rules to customize parameter values\. By changing the rule parameters as you want, you can adjust the sensitivity of the rules to be triggered\. 
++ The `base_config` argument is where you call the built\-in rule methods\.
++ The `rule_parameters` argument is to adjust the default key values of the built\-in rules listed in [List of Debugger Built\-in Rules](debugger-built-in-rules.md)\.
++ The `collections_to_save` argument takes in a tensor configuration through the `CollectionConfig` API, which requires `name` and `parameters` arguments\. 
+  + To find available tensor collections for `name`, see [ Debugger Built\-in Tensor Collections ](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/api.md#built-in-collections)\. 
+  + For a full list of adjustable `parameters`, see [ Debugger CollectionConfig API](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/api.md#configuring-collection-using-sagemaker-python-sdk)\.
+
+For more information about the Debugger rule class, methods, and parameters, see [SageMaker Debugger Rule class](https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html) in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.
+
+```
+from sagemaker.debugger import Rule, ProfilerRule, rule_configs, CollectionConfig
+
+rules=[
+    ProfilerRule.sagemaker(
+        base_config=rule_configs.BuiltInProfilerRuleName(),
+        rule_parameters={
+                "key": "value"
+        }
+    )
+    Rule.sagemaker(
+        base_config=rule_configs.built_in_rule_name(),
+        rule_parameters={
+                "key": "value"
+        }
+        collections_to_save=[ 
+            CollectionConfig(
+                name="tensor_collection_name", 
+                parameters={
+                    "key": "value"
+                } 
+            )
+        ]
+    )
+]
+```
+
+The parameter descriptions and value customization examples are provided for each rule at [List of Debugger Built\-in Rules](debugger-built-in-rules.md)\.
+
+## Example Notebooks and Code Samples to Configure Debugger Rules<a name="debugger-built-in-rules-example"></a>
+
+In the following sections, notebooks and code samples of how to use Debugger rules to monitor SageMaker training jobs are provided\.
 
 **Topics**
 + [Debugger Built\-in Rules Example Notebooks](#debugger-built-in-rules-notebook-example)
-+ [Use Debugger Built\-in Rules](#debugger-deploy-built-in-rules)
++ [Debugger Built\-in Rules Example Code](#debugger-deploy-built-in-rules)
 + [Use Debugger Built\-in Rules with Parameter Modifications](#debugger-deploy-modified-built-in-rules)
 
-## Debugger Built\-in Rules Example Notebooks<a name="debugger-built-in-rules-notebook-example"></a>
+### Debugger Built\-in Rules Example Notebooks<a name="debugger-built-in-rules-notebook-example"></a>
 
 The following example notebooks show how to use Debugger built\-in rules when running training jobs with Amazon SageMaker: 
 + [Using a SageMaker Debugger built\-in rule with TensorFlow](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker-debugger/tensorflow_builtin_rule)
@@ -18,13 +119,13 @@ The following example notebooks show how to use Debugger built\-in rules when ru
 + [Using a SageMaker Debugger built\-in rule with XGBoost](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker-debugger/xgboost_builtin_rules)
 + [Using a SageMaker Debugger built\-in rule with parameter modifications for a real\-time training job analysis with XGBoost](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker-debugger/xgboost_realtime_analysis)
 
- While running the example notebooks in SageMaker Studio, you can find the training job trial created on the **Studio Experiment List** tab\. For example, as shown in the following screenshot, you can find and open a **Describe Trial Component** window of your current training job\. On the Debugger tab, you can check if the Debugger rules, `vanishing_gradient()` and `loss_not_decreasing()`, are monitoring the training session in parallel\. For a full instruction of how to find your training job trial components in the Studio UI, see [SageMaker Studio \- View Experiments, Trials, and Trial Components](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-tasks.html#studio-tasks-experiments)\.
+While running the example notebooks in SageMaker Studio, you can find the training job trial created on the **Studio Experiment List** tab\. For example, as shown in the following screenshot, you can find and open a **Describe Trial Component** window of your current training job\. On the Debugger tab, you can check if the Debugger rules, `vanishing_gradient()` and `loss_not_decreasing()`, are monitoring the training session in parallel\. For a full instruction of how to find your training job trial components in the Studio UI, see [SageMaker Studio \- View Experiments, Trials, and Trial Components](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-tasks.html#studio-tasks-experiments)\.
 
-![\[An image of running a training job with Debugger built-in rules activated in SageMaker Studio\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger-built-in-rule-studio.png)
+![\[An image of running a training job with Debugger built-in rules activated in SageMaker Studio\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger/debugger-built-in-rule-studio.png)
 
 There are two ways of using the Debugger built\-in rules in the SageMaker environment: deploy the built\-in rules as it is prepared or adjust their parameters as you want\. The following topics show you how to use the built\-in rules with example codes\.
 
-## Use Debugger Built\-in Rules<a name="debugger-deploy-built-in-rules"></a>
+### Debugger Built\-in Rules Example Code<a name="debugger-deploy-built-in-rules"></a>
 
 The following code sample shows how to set the Debugger built\-in rules using the `Rule.sagemaker` method\. To specify built\-in rules that you want to run, use the `rules_configs` API operation to call the built\-in rules\. To find a full list of Debugger built\-in rules and default parameter values, see [List of Debugger Built\-in Rules](debugger-built-in-rules.md)\.
 
@@ -34,13 +135,13 @@ from sagemaker.tensorflow import TensorFlow
 from sagemaker.debugger import Rule, CollectionConfig, rule_configs
 
 # call built-in rules that you want to use.
-built_in_rules = [ 
+built_in_rules=[ 
             Rule.sagemaker(rule_configs.vanishing_gradient())
             Rule.sagemaker(rule_configs.loss_not_decreasing())
 ]
 
 # construct a SageMaker estimator with the Debugger built-in rules
-sagemaker_estimator = TensorFlow(
+sagemaker_estimator=TensorFlow(
     entry_point='directory/to/your_training_script.py',
     role=sm.get_execution_role(),
     base_job_name='debugger-built-in-rules-demo',
@@ -56,22 +157,13 @@ sagemaker_estimator.fit()
 ```
 
 **Note**  
-The Debugger built\-in rules run in parallel on `ml.t3.medium` instances\. The maximum number of built\-in rule containers for a training job is 20\. You cannot specify other instance types for the Debugger built\-in rules\.
+The Debugger built\-in rules run in parallel with your training job\. The maximum number of built\-in rule containers for a training job is 20\. 
 
 For more information about the Debugger rule class, methods, and parameters, see the [SageMaker Debugger Rule class](https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html) in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\. 
 
 To find an example of how to adjust the Debugger rule parameters, see the following [Use Debugger Built\-in Rules with Parameter Modifications](#debugger-deploy-modified-built-in-rules) section\.
 
-## Use Debugger Built\-in Rules with Parameter Modifications<a name="debugger-deploy-modified-built-in-rules"></a>
-
-If you want to modify the built\-in rules to adjust parameter values, collect specific tensors, change the tensor save intervals, set start and end steps, and monitor different stages of training jobs, you need to specify `base_config`, `rule_parameters`, and `collections_to_save` arguments for the `Rule.sagemaker` method\.
-+ The `base_config` argument is where you call the built\-in rule methods\.
-+ The `rule_parameters` argument is to adjust the default key values of the built\-in rules listed in [List of Debugger Built\-in Rules](debugger-built-in-rules.md)\.
-+ The `collections_to_save` argument takes in a tensor configuration through the `CollectionConfig` API, which requires `name` and `parameters` arguments\. 
-  + To find available tensor collections for `name`, see [ Debugger Built\-in Tensor Collections ](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/api.md#built-in-collections)\. 
-  + For a full list of adjustable `parameters`, see [ Debugger CollectionConfig API](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/api.md#configuring-collection-using-sagemaker-python-sdk)\.
-
-For more information about the Debugger rule class, methods, and parameters, see [SageMaker Debugger Rule class](https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html) in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.
+### Use Debugger Built\-in Rules with Parameter Modifications<a name="debugger-deploy-modified-built-in-rules"></a>
 
 The following code example shows the structure of built\-in rules to adjust parameters\. In this example, the `stalled_training_rule` collects the `losses` tensor collection from a training job at every 50 steps and an evaluation stage at every 10 steps\. If the training process starts stalling and not collecting tensor outputs for 120 seconds, the `stalled_training_rule` stops the training job\. 
 
@@ -84,7 +176,7 @@ from sagemaker.debugger import Rule, CollectionConfig, rule_configs
 
 base_job_name_prefix= 'smdebug-stalled-demo-' + str(int(time.time()))
 
-built_in_rules_modified = [
+built_in_rules_modified=[
     Rule.sagemaker(
         base_config=rule_configs.stalled_training_rule(),
         rule_parameters={
@@ -105,7 +197,7 @@ built_in_rules_modified = [
 ]
 
 # construct a SageMaker estimator with the modified Debugger built-in rule
-sagemaker_estimator = TensorFlow(
+sagemaker_estimator=TensorFlow(
     entry_point='directory/to/your_training_script.py',
     role=sm.get_execution_role(),
     base_job_name=base_job_name_prefix,

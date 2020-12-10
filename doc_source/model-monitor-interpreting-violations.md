@@ -1,6 +1,6 @@
 # Schema for Violations \(constraint\_violations\.json file\)<a name="model-monitor-interpreting-violations"></a>
 
-The violations file is generated as the output of a `MonitoringExecution`, which lists the results of evaluating the constraints \(specified in the constraints\.json file\) against the current dataset that was analyzed\. The Amazon SageMaker Model Monitor pre\-built container provides the following violation checks\.
+The violations file is generated as the output of a `MonitoringExecution`, which lists the results of evaluating the constraints \(specified in the constraints\.json file\) against the current dataset that was analyzed\. The Amazon SageMaker Model Monitor prebuilt container provides the following violation checks\.
 
 ```
 {
@@ -19,7 +19,7 @@ The violations file is generated as the output of a `MonitoringExecution`, which
 ```
 
 
-**Table: Types of Violations Monitored**  
+**Types of Violations Monitored**  
 
 | Violation Check Type | Description  | 
 | --- | --- | 

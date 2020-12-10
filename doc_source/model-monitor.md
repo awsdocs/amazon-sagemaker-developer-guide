@@ -1,30 +1,42 @@
 # Amazon SageMaker Model Monitor<a name="model-monitor"></a>
 
-Amazon SageMaker Model Monitor continuously monitors the quality of Amazon SageMaker machine learning models in production\. It enables developers to set alerts for when there are deviations in the model quality, such as data drift\. Early and pro\-active detection of these deviations enables you to take corrective actions, such as retraining models, auditing upstream systems, or fixing data quality issues without having to monitor models manually or build additional tooling\. You can use Model Monitor pre\-built monitoring capabilities that do not require coding\. You also have the flexibility to monitor models by coding to provide custom analysis\.
+Amazon SageMaker Model Monitor continuously monitors the quality of Amazon SageMaker machine learning models in production\. With Model Monitor, you can set alerts that notify you when there are deviations in the model quality\. Early and proactive detection of these deviations enables you to take corrective actions, such as retraining models, auditing upstream systems, or fixing quality issues without having to monitor models manually or build additional tooling\. You can use Model Monitor prebuilt monitoring capabilities that do not require coding\. You also have the flexibility to monitor models by coding to provide custom analysis\.
+
+Model Monitor provides the following types of monitoring:
++ [Monitor Data Quality](model-monitor-data-quality.md) \- Monitor drift in data quality\.
++ [Monitor Model Quality](model-monitor-model-quality.md) \- Monitor drift in model quality metrics, such as accuracy\.
++ [Monitor bias drift for models in production](clarify-model-monitor-bias-drift.md) \- Monitor bias in you model's predictions\.
++ [Monitor feature attribution drift for models in production](clarify-model-monitor-feature-attribution-drift.md) \- Monitor drift in feature attribution\.
 
 **Topics**
 + [How Model Monitor Works](#model-monitor-how-it-works)
++ [Monitor Data Quality](model-monitor-data-quality.md)
++ [Monitor Model Quality](model-monitor-model-quality.md)
++ [Monitor bias drift for models in production](clarify-model-monitor-bias-drift.md)
++ [Monitor feature attribution drift for models in production](clarify-model-monitor-feature-attribution-drift.md)
 + [Capture Data](model-monitor-data-capture.md)
-+ [Create a Baseline](model-monitor-create-baseline.md)
 + [Schedule Monitoring Jobs](model-monitor-scheduling.md)
++ [Amazon SageMaker Model Monitor Prebuilt Container](model-monitor-pre-built-container.md)
 + [Interpret Results](model-monitor-interpreting-results.md)
++ [Visualize Results in Amazon SageMaker Studio](model-monitor-interpreting-visualize-results.md)
 + [Advanced Topics](model-monitor-advanced-topics.md)
 
 ## How Model Monitor Works<a name="model-monitor-how-it-works"></a>
 
-Amazon SageMaker Model Monitor automatically monitors machine learning \(ML\) models in production and notifies you when data quality issues arise\. ML models in production have to make predictions on real\-life data that is not carefully curated like most training datasets\. If the statistical nature of the data that your model receives while in production drifts away from the nature of the baseline data it was trained on, the model begins to lose accuracy in its predictions\. Model Monitor uses rules to detect data drift and alerts you when it happens\. The following figure shows how this process works\.
+Amazon SageMaker Model Monitor automatically monitors machine learning \(ML\) models in production and notifies you when quality issues arise\. Model Monitor uses rules to detect drift in your models and alerts you when it happens\. The following figure shows how this process works\.
 
-![\[The model monitoring process with Amazon SageMaker Model Monitor.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model-monitor-how-it-works-2.jpg)
+![\[The model monitoring process with Amazon SageMaker Model Monitor.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_monitor/mmv2-architecture.png)
 
-To enable model monitoring, you take the following steps, which follow the path of the data through the various data collection, monitoring, and analysis processes\.
-+ **[Capture Data](model-monitor-data-capture.md)**: Enable the endpoint to capture data from incoming requests to a trained ML model and the resulting model predictions\.
-+ **[Create a Baseline](model-monitor-create-baseline.md)**: Create a baseline from the dataset that was used to train the model\. Compute baseline schema constraints and statistics for each feature using [Deequ](https://github.com/awslabs/deequ), an open source library built on Apache Spark, which is used to measure data quality in large datasets\.
-+ **[Schedule Monitoring Jobs](model-monitor-scheduling.md)**: Create a monitoring schedule specifying what data to collect, how often to collect it, how to analyze it, and which reports to produce\. 
-+ **[Interpret Results](model-monitor-interpreting-results.md)**: Inspect the reports, which compare the latest data with the baseline, and watch for any violations reported and for metrics and notifications from Amazon CloudWatch\.
+To enable model monitoring, you take the following steps, which follow the path of the data through the various data collection, monitoring, and analysis processes:
++ Enable the endpoint to capture data from incoming requests to a trained ML model and the resulting model predictions\.
++ Create a baseline from the dataset that was used to train the model\. The baseline computes metrics and suggests constraints for the metrics\. Real\-time predictions from your model are compared to the constraints, and are reported as violations if they are outside the constrained values\.
++ Create a monitoring schedule specifying what data to collect, how often to collect it, how to analyze it, and which reports to produce\. 
++ Inspect the reports, which compare the latest data with the baseline, and watch for any violations reported and for metrics and notifications from Amazon CloudWatch\.
 
-**Note**  
-Amazon SageMaker Model Monitor currently supports only endpoints that host a single model and does not support monitoring multi\-model endpoints\. For information on using multi\-model endpoints, see [ Host Multiple Models with Multi\-Model Endpoints](multi-model-endpoints.md) \.  
-Amazon SageMaker Model Monitor does support monitoring inference pipelines, but capturing and analyzing data is done for the entire pipeline, not for individual containers in the pipeline\.
+**Notes**  
+Model Monitor currently supports only endpoints that host a single model and does not support monitoring multi\-model endpoints\. For information on using multi\-model endpoints, see [ Host Multiple Models with Multi\-Model Endpoints](multi-model-endpoints.md)\.
+Model Monitor supports monitoring inference pipelines, but capturing and analyzing data is done for the entire pipeline, not for individual containers in the pipeline\.
+If you launch SageMaker Studio in a custom Amazon VPC, you need to create VPC endpoints to enable Model Monitor to communicate with Amazon S3 and CloudWatch\. For information about VPC endpoints, see [VPC endpoints](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html) in the *Amazon Virtual Private Cloud User Guide*\. For information about launching SageMaker Studio in a custom VPC, see [Connect SageMaker Studio Notebooks to Resources in a VPC](studio-notebooks-and-internet-access.md)\.
 
 ### Model Monitor Sample Notebooks<a name="model-monitor-sample-notebooks"></a>
 
@@ -34,4 +46,4 @@ For a sample notebook that enables the model monitoring experience for an existi
 
 For a sample notebook that visualizes the statistics\.json file for a selected execution in a monitoring schedule, see the [Model Monitor Visualization](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker_model_monitor/visualization/SageMaker-Model-Monitor-Visualize.ipynb)\. 
 
-For instructions how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all the SageMaker samples\. To open a notebook, choose its **Use** tab and choose **Create copy**\.
+For instructions that show you how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. After you have created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all the SageMaker samples\. To open a notebook, choose the notebook's **Use** tab and choose **Create copy**\.

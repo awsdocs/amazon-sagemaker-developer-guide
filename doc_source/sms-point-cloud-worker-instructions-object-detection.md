@@ -19,8 +19,6 @@ If you see cuboids have already been added to the 3D point cloud when you open y
 
 To edit a cuboid, including moving, re\-orienting, and changing cuboid dimensions, you must use shortcut keys\. You can see a full list of shortcut keys in the **Shortcuts** menu in your UI\. The following are important key\-combinations that you should become familiar with before starting your labeling task\. 
 
-To edit a cuboid, including moving, re\-orienting, and changing cuboid dimensions, you must use shortcut keys\. You can see a full list of shortcut keys in the **Shortcuts** menu in your UI\. The following are important key\-combinations that you should become familiar with before starting your labeling task\. 
-
 
 ****  
 
@@ -32,10 +30,17 @@ To edit a cuboid, including moving, re\-orienting, and changing cuboid dimension
 |  Option \+ O  |  Alt \+ O  |  Fit the cuboid tightly around the points it has been drawn around\. Before using the option, make sure the cuboid fully\-surrounds the object of interest\.   | 
 |  Option \+ G  |  Alt \+ G  |  Set the cuboid to the ground\.   | 
 
+Individual labels may have one or more label attributes\. If a label has a label attribute associated with it, it will appear when you select the downward pointing arrow next to the label from the **Label Id** menu\. Fill in required values for all label attributes\. 
+
+You may see frame attributes under the **Labels** menu\. Use these attribute prompts to enter additional information about each frame\. 
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/frame-attributes.png)
+
 ## Navigate the UI<a name="sms-point-cloud-worker-instructions-worker-ui-od"></a>
 
 You can navigate in the 3D scene using your keyboard and mouse\. You can:
-+ Double click on specific objects in the point cloud to zoom into them\.
++ Double click on specific objects in the point cloud to zoom into them\. 
++ You can use the \[ and \] keys on your keyboard to zoom into and move from one label to the next\. If no label is selected, when you select \[ or \], the UI will zoom into the first label in the **Lable Id** list\. 
 + Use a mouse\-scroller or trackpad to zoom in and out of the point cloud\.
 + Use both keyboard arrow keys and Q, E, A, and D keys to move Up, Down, Left, Right\. Use keyboard keys W and S to zoom in and out\. 
 

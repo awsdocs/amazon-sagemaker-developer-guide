@@ -1,8 +1,5 @@
 # Onboard to Amazon SageMaker Studio Using AWS SSO<a name="onboard-sso-users"></a>
 
-**Note**  
-Amazon SageMaker Studio is available only in specific AWS Regions\. To view the list of supported Regions, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
-
 This topic describes how to onboard to Amazon SageMaker Studio using AWS SSO authentication\. For information on how to onboard using AWS Identity and Access Management \(IAM\) authentication, see [Onboard Using Quick Start](onboard-quick-start.md) or [Onboard Using IAM](onboard-iam.md)\.
 
 **To onboard to Studio using AWS SSO**
@@ -19,17 +16,17 @@ This topic describes how to onboard to Amazon SageMaker Studio using AWS SSO aut
 
    For information about setting up AWS SSO for use with Studio, see [Set Up AWS SSO for Use with Amazon SageMaker Studio](onboard-sso-setup.md)\.
 
-1. To continue with SSO, under **Permission**, for **Execution role for all users**, choose an option from the role selector\.
+1. Under **Permission**, for **Execution role for all users**, choose an option from the role selector\. If you choose **Create a new role**, the **Create an IAM role** dialog opens:
 
-   If you choose **Create a new role**, the **Create an IAM role** dialog opens:
-   + For **S3 buckets you specify**, specify additional S3 buckets that users of your notebooks can access\. If you don't want to add access to more buckets, choose **None**\.
-   + Choose **Create role**\. SageMaker creates a new IAM `AmazonSageMaker-ExecutionPolicy` role with the [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) policy attached\.
+   1. For **S3 buckets you specify**, specify additional S3 buckets that users of your notebooks can access\. If you don't want to add access to more buckets, choose **None**\.
 
-1. Under **Network**, specify your VPC information\. For more information, see [Choose a VPC](onboard-vpc.md)\.
+   1. Choose **Create role**\. SageMaker creates a new IAM `AmazonSageMaker-ExecutionPolicy` role with the [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) policy attached\.
 
-1. Choose **Submit**\.
+1. For **Projects**, see [SageMaker Studio Permissions Required to Use Projects](sagemaker-projects-studio-updates.md)\.
 
-   On the **Amazon SageMaker Studio Control Panel**, under **Studio Summary**, the **Status** shows as **Pending** while Studio creates a SageMaker Studio application in your AWS SSO domain\. When **Status** changes to **Ready**, the **Assign users** button is enabled\.
+1. Under **Network and storage**, specify the following:
+   + Your VPC information – For more information, see [Choose a VPC](onboard-vpc.md)\.
+   + \(Optional\) **Storage encryption key** – SageMaker uses an AWS managed customer master key \(CMK\) to encrypt your Amazon Elastic File System \(Amazon EFS\) and Amazon Elastic Block Store \(Amazon EBS\) file systems by default\. To use a customer managed CMK, enter its key ID or Amazon Resource Name \(ARN\)\. For more information, see [Protect Data at Rest Using Encryption](encryption-at-rest.md)\.
 
 1. Choose **Assign users**\. The **Assign users** page opens and displays a list of your organization's members\.
 

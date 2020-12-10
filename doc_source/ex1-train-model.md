@@ -34,7 +34,7 @@ Check the SageMaker Python SDK version by running `sagemaker.__version__`\. This
    ```
    ! pip install -qU sagemaker>=2.15.2
    ```
-If you run this installation in your exiting SageMaker Studio or Notebook instance JupyterLab environment, you need to manually refresh the kernal to finish applying the version update\.
+If you run this installation in your exiting SageMaker Studio or Notebook instance JupyterLab environment, you need to manually refresh the kernel to finish applying the version update\.
 
 1. Download the training and validation data from the Amazon S3 location where you uploaded it in [Step 4\.3: Transform the Training Dataset and Upload It to Amazon S3](ex1-preprocess-data-transform.md), and set the location where you store the training output\.
 

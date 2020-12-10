@@ -6,7 +6,7 @@ If you create or open additional notebooks that use the same instance type, whet
 
 After a notebook is launched, you can change its instance type, and SageMaker image and kernel from within the notebook\. For more information, see [Change an Instance Type](notebooks-run-and-manage-switch-instance-type.md) and [Change a Kernel](notebooks-run-and-manage-change-image.md)\.
 
-You can have one instance of each instance type\. Each instance can have only one SageMaker image running on it at a time\. However, a SageMaker image can run multiple kernels or terminal instances\. 
+You can have only one instance of each instance type\. Each instance can have multiple SageMaker images running on it\. Each SageMaker image can run multiple kernels or terminal instances\. 
 
 Billing occurs per instance and starts when the first instance of a given instance type is launched\. If you want to create or open a notebook without the risk of incurring charges, open the notebook from the **File** menu and choose **No Kernel** from the **Select Kernel** dialog\. You can read and edit a notebook without a running kernel but you can't run cells\.
 
@@ -21,7 +21,7 @@ For information on shutting down the notebook, see [Shut Down Resources](noteboo
 
 ## Open a Studio notebook<a name="notebooks-open"></a>
 
-SageMaker Studio can only open notebooks listed in the Studio file browser\. For instructions on uploading a notebook to the file browser, see [Upload files to Amazon SageMaker Studio](studio-tasks-files.md) or [Clone and Connect to a Git Repository](studio-tasks-git.md)\.
+SageMaker Studio can only open notebooks listed in the Studio file browser\. For instructions on uploading a notebook to the file browser, see [Upload files to Amazon SageMaker Studio](studio-tasks-files.md) or [Clone a Git Repository](studio-tasks-git.md)\.
 
 **To open a notebook**
 

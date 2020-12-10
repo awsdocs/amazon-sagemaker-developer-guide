@@ -1,0 +1,59 @@
+# Measure post\-training data and model bias<a name="clarify-measure-post-training-bias"></a>
+
+Amazon SageMaker Clarify provides eleven post\-training data and model bias metrics to help quantify various conceptions of fairness\. These concepts cannot all be satisfied simultaneously and the selection depends on specifics of the cases involving potential bias being analyzed\. Most of these metrics are a combination of the numbers taken from the binary classification confusion matrices for the different demographic groups\. It is not feasible to ensure that all post\-training fairness metrics show no bias\. Therefore, customers need to choose the subclass of metrics that provide the best insights into achieving the fairness objectives of their predictive analyses\. 
+
+We use the following notation to discuss the bias metrics\. The conceptual model described here is for binary classification, where events are labeled as having only two possible outcomes in their sample space, referred to as positive \(with value 1\) and negative \(with value 0\)\. But this framework is usually extensible to multi\-category classification in a straightforward way or to cases involving continuous valued outcomes when needed\. In the binary classification case, positive and negative labels are assigned to event outcomes recorded in a raw data set for an advantaged facet *a* and for a disadvantage facet *d*\. These labels y are refereed to as "observed label" to distinguish them from the "predicted" labels y' that are assigned by a machine learning model during the training or inferences stages of the ML lifecycle\. These labels are used to define probability distributions Pa\(y\) and Pd\(y\) for their respective facet outcomes\. 
++ labels: 
+  + y represents the n observed labels for event outcomes in a training data set\.
+  + y' represents the predicted labels for the n observed labels in the dataset by a trained model\.
++ outcomes:
+  + A positive outcome \(with value 1\) for a sample, such as an application acceptance\.
+    + n\(1\) is the number of observed labels for positive outcomes \(acceptances\)\.
+    + n'\(1\) is the number of predicted labels for positive outcomes \(acceptances\)\.
+  + A negative outcome \(with value 0\) for a sample, such as an application rejection\.
+    + n\(0\) is the number of observed labels for negative outcomes \(rejections\)\.
+    + n'\(0\) is the number of predicted labels for negative outcomes \(rejections\)\.
++ facets:
+  + facet *a*: the advantaged group favored by bias
+    + na is the number of observed labels for the advantaged facet: na = na\(1\) \+ na\(0\) the sum of the positive and negative observed labels for the advantaged facet\.
+    + n'a is the number of predicted labels for the advantaged facet: n'a = n'a\(1\) \+ n'a\(0\) the sum of the positive and negative predicted outcome labels for the advantaged facet\. Note that n'a = na\.
+  + facet *d*: the disadvantage group disfavored by bias
+    + nd is the number of observed labels for the disadvantaged facet: nd = nd\(1\) \+ nd\(0\) the sum of the positive and negative observed labels for the disadvantaged facet\. 
+    + n'd is the number of predicted labels for the disadvantaged facet: n'd = n'd\(1\) \+ n'd\(0\) the sum of the positive and negative predicted labels for the disadvantaged facet\. Note that n'd = nd\.
++ probability distributions for outcomes of the labeled facet data outcomes
+  + Pa\(y\) is the probability distribution of the observed labels for the advantaged facet\. For binary labeled data, this distribution is given by the ratio of the number of samples in the advantaged facet labeled with positive outcomes to the total number, Pa\(y1\) = na\(1\)/ na, and the ratio of the number of samples with negative outcomes to the total number, Pa\(y0\) = na\(0\)/ na\. 
+  + Pd\(y\) is the probability distribution of the observed labels for the disadvantaged facet\. For binary labeled data, this distribution is given by the number of samples in the disadvantaged advantaged facet labeled with positive outcomes to the total number, Pd\(y1\) = nd\(1\)/ nd, and the ratio of the number of samples with negative outcomes to the total number, Pd\(y0\) = nd\(0\)/ nd\. 
+
+The following table contains a cheatsheet for quick guidance and links to the post\-training bias metrics\.
+
+
+**Post\-training bias metrics**  
+
+| Post\-training bias metric | Description | Example question | Interpreting metric values | 
+| --- | --- | --- | --- | 
+| [Difference in positive proportions in predicted labels \(DPPL\)](clarify-post-training-bias-metric-dppl.md) | Measures the difference in the proportion of positive predictions between the advantaged and disadvantaged facets\. |  Has there been an imbalance in gender or racial predicted positive outcomes that may indicate discrimination?  |  Range for normalized binary & multi\-category facet labels: \[\-1,\+1\] Range for continuous labels: \(\-∞, \+∞\) Interpretation: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html)  | 
+| [Disparate impact \(DI\)](clarify-post-training-bias-metric-di.md) | Measures the ratio of proportions of the predicted labels for the advantaged and the disadvantaged facets\. | Has there been an imbalance in gender or racial predicted positive outcomes that may indicate discrimination? |  Range for normalized binary, multi\-category facet, and continuous labels: \[0,∞\) Interpretation: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html)  | 
+| [Difference in conditional acceptance \(DCAcc\)](clarify-post-training-bias-metric-dca.md)  | Compares the observed labels to the labels predicted by the model and assesses whether this is the same across facets for predicted positive outcomes \(acceptances\)\.  | Are there more or less acceptances for loan applications than predicted for women as compared to men based on qualifications? |  The range for binary, multi\-category facet, and continuous labels: \(\-∞, \+∞\)\. [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html)  | 
+| [Difference in conditional rejection \(DCR\)](clarify-post-training-bias-metric-dcr.md)  | Compares the observed labels to the labels predicted by the model and assesses whether this is the same across facets for negative outcomes \(rejections\)\. | Are there more or less rejections for loan applications than predicted for women as compared to men based on qualifications? | The range for binary, multi\-category facet, and continuous labels: \(\-∞, \+∞\)\.[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html) | 
+| [Recall difference \(RD\)](clarify-post-training-bias-metric-rd.md)  | Compares the recall of the model for the advantaged and disadvantaged facets\.  | Is there a gender bias in lending due to a model having higher recall for men than women? |  Range for binary and multi\-category classification: \[\-1, \+1\]\. [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html)  | 
+| [Difference in acceptance rates \(DAR\)](clarify-post-training-bias-metric-dar.md)  | Measures the difference in the ratios of the observed positive outcomes \(TP\) to the predicted positives \(TP \+ FP\) between the advantaged and the disadvantaged facets\. | Does the model have equal precision for both men and women | The range for binary, multi\-category facet, and continuous labels is \[\-1, \+1\]\.[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html) | 
+| [Difference in rejection rates \(DRR\)](clarify-post-training-bias-metric-drr.md)  | Measures the difference in the ratios of the observed negative outcomes \(TN\) to the predicted negatives \(TN \+ FN\) between the disadvantaged and the advantaged facets\. | Does the model have equal negative predictive value for both men and women? | The range for binary, multi\-category facet, and continuous labels is \[\-1, \+1\]\.[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html) | 
+| [Accuracy difference \(AD\)](clarify-post-training-bias-metric-ad.md)  | Measures the difference between the prediction accuracy for the advantaged and disadvantaged facets\.  | Does the model predict labels as accurately for minority applications as for non\-minority applications? | The range for binary and multi\-category facet labels is \[\-1, \+1\]\.[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html) | 
+| [Treatment equality \(TE\)](clarify-post-training-bias-metric-te.md)  | Measures the difference in the ratio of false positives to false negatives for the advantaged and disadvantaged facets\. | In college admissions, is the relative ratio of false positives to false negatives the same for men and women?  | The range for binary and multi\-category facet labels: \(\-∞, \+∞\)\.[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html) | 
+| [Conditional demographic disparity in predicted labels \(CDDPL\)](clarify-post-training-bias-metric-cddpl.md)  | Measures the disparity of predicted labels between the advantaged and disadvantaged facets as a whole, but also by subgroups\. | Do minority groups have a larger proportion of rejections for college admission outcomes than their proportion of acceptances? |  The range of CDDPL values for binary, multi\-category, and continuous outcomes: \[\-1, \+1\] [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html)  | 
+| [Counterfactual fliptest \(FT\)](clarify-post-training-bias-metric-ft.md)  | Examines each member of the disadvantaged facet and assesses whether similar members of the advantaged facet have different model predictions\. | Are a small group of men, matched closely on all features with a women, paid on average more than the woman? | The range for binary and multi\-category facet labels is \[\-1, \+1\]\.  | 
+
+For additional information about post\-training bias metrics, see [A Family of Fairness Measures for Machine Leaning in Finance](https://pages.awscloud.com/rs/112-TZM-766/images/Amazon.AI.Fairness.and.Explainability.Whitepaper.pdf)\.
+
+**Topics**
++ [Difference in positive proportions in predicted labels \(DPPL\)](clarify-post-training-bias-metric-dppl.md)
++ [Disparate impact \(DI\)](clarify-post-training-bias-metric-di.md)
++ [Difference in conditional acceptance \(DCAcc\)](clarify-post-training-bias-metric-dca.md)
++ [Difference in conditional rejection \(DCR\)](clarify-post-training-bias-metric-dcr.md)
++ [Recall difference \(RD\)](clarify-post-training-bias-metric-rd.md)
++ [Difference in acceptance rates \(DAR\)](clarify-post-training-bias-metric-dar.md)
++ [Difference in rejection rates \(DRR\)](clarify-post-training-bias-metric-drr.md)
++ [Accuracy difference \(AD\)](clarify-post-training-bias-metric-ad.md)
++ [Treatment equality \(TE\)](clarify-post-training-bias-metric-te.md)
++ [Conditional demographic disparity in predicted labels \(CDDPL\)](clarify-post-training-bias-metric-cddpl.md)
++ [Counterfactual fliptest \(FT\)](clarify-post-training-bias-metric-ft.md)

@@ -15,6 +15,10 @@ When you work on a 3D point cloud semantic segmentation task, you need to select
 
 If you see one or more images in your worker portal, you can paint in the images or paint in the 3D point cloud and the paint will show up in the other medium\. 
 
+You may see frame attributes under the **Labels** menu\. Use these attribute prompts to enter additional information about the point cloud\. 
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/frame-attributes.png)
+
 **Important**  
 If you see that objects have already been painted when you open the task, adjust those annotations\.
 

@@ -10,7 +10,7 @@ Use the following sections to create the resources that you need and can use to 
 + See [Subscribe an Endpoint to Your Amazon SNS Output Topic](sms-create-sns-input-topic.md#sms-streaming-subscribe-output-topic) to learn how to set up an endpoint to receive labeling task output data at a specified endpoint each time a labeling task is completed\.
 + To learn how to configure your Amazon S3 bucket to send notifications to your Amazon SNS input topic, see [Set up Amazon S3 Bucket Event Notifications](sms-streaming-s3-setup.md)\.
 + Optionally, add data objects that you want to have labeled as soon as the labeling job starts to your input manifest\. For more information, see [Create a Manifest File \(Optional\)](sms-streaming-manifest.md)\.
-+ There are other resources required to create a labeling job, such as an IAM role, Amazon S3 bucket, a worker task template and label categories\. These are described in the Ground Truth documentation on creating a labeling job\. For more information, see [Create a Labeling Job](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-create-labeling-job.html)\. 
++ There are other resources required to create a labeling job, such as an IAM role, Amazon S3 bucket, a worker task template and label categories\. These are described in the Ground Truth documentation on creating a labeling job\. For more information, see [Create a Labeling Job](sms-create-labeling-job.md)\. 
 **Important**  
 When you create a labeling job you must provide an IAM execution role\. Attach the AWS managed policy **AmazonSageMakerGroundTruthExecution** to this role to ensure it has required permissions to execute your labeling job\. 
 

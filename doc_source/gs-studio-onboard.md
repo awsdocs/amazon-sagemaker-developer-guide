@@ -1,19 +1,5 @@
 # Onboard to Amazon SageMaker Studio<a name="gs-studio-onboard"></a>
 
-**Note**  
-Amazon SageMaker Studio is available in the following AWS Regions:  
-US East \(Ohio\), us\-east\-2
-US East \(N\. Virginia\), us\-east\-1
-US West \(N\. Oregon\), us\-west\-2
-Africa \(Cape Town\), af\-south\-1
-China \(Beijing\), cn\-north\-1
-China \(Ningxia\), cn\-northwest\-1
-EU \(Frankfurt\), eu\-central\-1
-EU \(Ireland\), eu\-west\-1
-EU \(Milano\), eu\-south\-1
-To change the Region in the SageMaker console, use the Region selector at the upper\-right corner of the console\.  
-In the supported Regions, Studio is available in the same Availability Zones as notebook instances\. For more information, see [Supported Regions and Quotas](regions-quotas.md)\.
-
 To use Amazon SageMaker Studio and Amazon SageMaker Studio Notebooks, you must complete the Studio onboarding process using the SageMaker console\.
 
 When onboarding, you can choose to use either AWS Single Sign\-On \(AWS SSO\) or AWS Identity and Access Management \(IAM\) for authentication methods\. When you use IAM authentication, you can choose either the **Quick start** or the **Standard setup** procedure\.

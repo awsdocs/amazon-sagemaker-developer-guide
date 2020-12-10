@@ -4,9 +4,9 @@ To use AWS CloudFormation to create a monitoring schedule, use an AWS CloudForma
 
 ## Custom Resource<a name="model-monitor-cloudformation-custom-resource"></a>
 
-Start by adding a custom resource to your AWS CloudFormation template\. This will point to a AWS Lambda function that you create next\. 
+Start by adding a custom resource to your AWS CloudFormation template\. This points to a AWS Lambda function that you create in the next step\. 
 
-This resource allows you to customize the parameters for the monitoring schedule You can add or remove more parameters by modifying the AWS CloudFormation resource and the Lambda function in the following example resource\.
+This resource enables you to customize the parameters for the monitoring schedule You can add or remove more parameters by modifying the AWS CloudFormation resource and the Lambda function in the following example resource\.
 
 ```
 {
