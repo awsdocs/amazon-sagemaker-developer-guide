@@ -3,35 +3,78 @@
 Use the Debugger built\-in rules provided by Amazon SageMaker Debugger and analyze tensors emitted while training your models\. The Debugger built\-in rules monitor various common conditions that are critical for the success of a training job\. You can call the built\-in rules using [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) or the low\-level SageMaker API operations\. Depending on deep learning frameworks of your choice, there are four scopes of validity for the built\-in rules as shown in the following table\.
 
 **Note**  
-The maximum number of the built\-in rule containers run in parallel with a training job is 20\. SageMaker Debugger manages the built\-in rule containers and monitors your training job\. If your training jobs run on AWS Deep Learning Containers and Amazon EC2 instances using SageMaker, there is no additional compute cost for using the built\-in rules\.
+The maximum numbers of built\-in rules for a training job are 20 for `ProfilerRule` and 20 for `Rule`\. SageMaker Debugger fully manages the built\-in rules and analyzes your training job in parallel\. For more information about billing, see the **Amazon SageMaker Studio is available at no additional charge** section of the [Amazon SageMaker Pricing](https://aws.amazon.com/sagemaker/pricing/) page\.
+
+## Debugger ProfilerRule<a name="debugger-built-in-rules-"></a>
+
+The following rules are the Debugger built\-in rules callable using the `ProfilerRule.sagemaker` classmethod\.
 
 
-**Scopes of Validity for the Debugger Built\-in Rules**  
+**Debugger Built\-in Rules for Generating Aggregated Training and Profiling Reports**  
 
-| Scope of Validity | Built\-in Rules \(SageMaker Python SDK format\) | Built\-in Rules \(SageMaker API format\) | 
-| --- | --- | --- | 
-| Deep learning frameworks \(TensorFlow, Apache MXNet, and PyTorch\) |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html)  | 
-| Deep learning frameworks \(TensorFlow, MXNet, and PyTorch\) and the XGBoost algorithm  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html)  | 
-| Deep learning applications |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html)  | 
-| XGBoost algorithm |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html)  | 
+| Scope of Validity | Built\-in Rules | 
+| --- | --- | 
+| Profiling Report for any SageMaker training job |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html)  | 
 
-To use the built\-in rules with default parameter values, use the following configuration format:
+
+**Debugger Built\-in Rules for Monitoring Hardware System Resource Utilization \(System Metrics\)**  
+
+| Scope of Validity | Built\-in Rules | 
+| --- | --- | 
+| Generic system monitoring rules for any SageMaker training job |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html)  | 
+
+
+**Debugger Built\-in Rules for Profiling Model Performance Data \(Framework Metrics\)**  
+
+| Scope of Validity | Built\-in Rules | 
+| --- | --- | 
+| Profiling rules for deep learning frameworks \(TensorFlow and PyTorch\) |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html)  | 
+
+## Debugger Rule<a name="debugger-built-in-rules-Rule"></a>
+
+The following rules are the Debugger built\-in rules callable using the `Rule.sagemaker` classmethod\.
+
+
+**Debugger Built\-in Rules for Debugging Model Training Data \(Output Tensors\)**  
+
+| Scope of Validity | Built\-in Rules | 
+| --- | --- | 
+| Deep learning frameworks \(TensorFlow, MXNet, and PyTorch\) |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html)  | 
+| Deep learning frameworks \(TensorFlow, MXNet, and PyTorch\) and the XGBoost algorithm  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html)  | 
+| Deep learning applications |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html)  | 
+| XGBoost algorithm |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html)  | 
+
+**To use the built\-in rules with default parameter values** – use the following configuration format:
 
 ```
-built_in_rules = [
-    Rule.sagemaker(rule_configs.built_in_rule_name_in_pysdk_format_1()),
-    Rule.sagemaker(rule_configs.built_in_rule_name_in_pysdk_format_2()),
+from sagemaker.debugger import Rule, ProfilerRule, rule_configs
+
+rules = [
+    ProfilerRule.sagemaker(rule_configs.BuiltInRuleName_1()),
+    ProfilerRule.sagemaker(rule_configs.BuiltInRuleName_2()),
     ...
-    Rule.sagemaker(rule_configs.built_in_rule_name_in_pysdk_format_20())
+    ProfilerRule.sagemaker(rule_configs.BuiltInRuleName_n()),
+    Rule.sagemaker(rule_configs.built_in_rule_name_1()),
+    Rule.sagemaker(rule_configs.built_in_rule_name_2()),
+    ...
+    Rule.sagemaker(rule_configs.built_in_rule_name_n())
 ]
 ```
 
-To use the built\-in rules with adjusting parameter values, use the following configuration format:
+**To use the built\-in rules with customizing the parameter values** – use the following configuration format:
 
 ```
-built_in_rules = [
+from sagemaker.debugger import Rule, ProfilerRule, rule_configs
+
+rules = [
+    ProfilerRule.sagemaker(
+        base_config=rule_configs.BuiltInRuleName(),
+        rule_parameters={
+                "key": "value"
+        }
+    )
     Rule.sagemaker(
-        base_config=rule_configs.built_in_rule_name_in_pysdk_format(),
+        base_config=rule_configs.built_in_rule_name(),
         rule_parameters={
                 "key": "value"
         }
@@ -47,9 +90,198 @@ built_in_rules = [
 ]
 ```
 
+To find available keys for the `rule_parameters` parameter, see the parameter description tables\.
+
 Sample rule configuration codes are provided for each built\-in rule below the parameter description tables\.
-+ For a full instruction and examples of using the Debugger built\-in rules, see [Use Debugger Built\-in Rules](use-debugger-built-in-rules.md#debugger-deploy-built-in-rules)\.
++ For a full instruction and examples of using the Debugger built\-in rules, see [Debugger Built\-in Rules Example Code](use-debugger-built-in-rules.md#debugger-deploy-built-in-rules)\.
 + For a full instruction of using the built\-in rules with the low\-level SageMaker API operations, see [Add Debugger Built\-in Rule Configuration to the `CreateTrainingJob` API Operation](debugger-createtrainingjob-api.md#debugger-built-in-rules-api)\.
+
+## ProfilerReport<a name="profiler-report"></a>
+
+The ProfilerReport rule invokes all of the built\-in rules for monitoring and profiling\. It creates a profiling report and updates when the individual rules are triggered\. After your training job has finished, you can download a comprehensive profiling report\. You can adjust the rule parameter values to customize sensitivity of the built\-in rules\. The following example code shows the basic format to adjust the other built\-in rule parameters through the ProfilerReport rule\.
+
+```
+rules=[
+    ProfilerRule.sagemaker(
+        rule_configs.ProfilerReport(
+            <BuiltInRuleName>_<parameter_name> = value
+        )
+    )  
+]
+```
+
+If you trigger this ProfilerReport rule without any customized parameter as shown in the following example code, then the ProfilerReport rule triggers all of the built\-in rules for monitoring and profiling with their default parameter values\.
+
+```
+rules=[ProfilerRule.sagemaker(rule_configs.ProfilerReport())]
+```
+
+The following example code shows how to specify and adjust the CPUBottleneck rule's `cpu_threshold` parameter and the IOBottleneck rule's `threshold` parameter\.
+
+```
+rules=[
+    ProfilerRule.sagemaker(
+        rule_configs.ProfilerReport(
+            CPUBottleneck_cpu_threshold = 90,
+            IOBottleneck_threshold = 90
+        )
+    )  
+]
+```
+
+
+**Parameter Descriptions for the OverallSystemUsage Rule**  
+
+| Parameter Name | Description | 
+| --- | --- | 
+| base\_trial | The base trial training job name\. This parameter is automatically set to the current training job by Amazon SageMaker Debugger\. **Required** Valid values: String  | 
+| <BuiltInRuleName>\_<parameter\_name> |  Customizable parameter to adjust thresholds of other built\-in monitoring and profiling rules\.  **Optional** Default value: `None`  | 
+
+## BatchSize<a name="batch-size-rule"></a>
+
+The BatchSize rule helps detect if GPU is underutilized due to a small batch size\. To detect this issue, this rule monitors the average CPU utilization, GPU utilization, and GPU memory utilization\. If utilization on CPU, GPU, and GPU memory is low on average, it may indicate that the training job can either run on a smaller instance type or can run with a bigger batch size\. This analysis does not work for frameworks that heavily overallocate memory\. However, increasing the batch size can lead to processing or data loading bottlenecks because more data preprocessing time is required in each iteration\.
+
+
+**Parameter Descriptions for the BatchSize Rule**  
+
+| Parameter Name | Description | 
+| --- | --- | 
+| base\_trial | The base trial training job name\. This parameter is automatically set to the current training job by Amazon SageMaker Debugger\. **Required** Valid values: String  | 
+| cpu\_threshold\_p95 |  Defines the threshold for 95th quantile of CPU utilization in percentage\. **Optional** Valid values: Integer Default value: `70` \(in percentage\)  | 
+| gpu\_threshold\_p95 |  Defines the threshold for 95th quantile of GPU utilization in percentage\. **Optional** Valid values: Integer Default value: `70` \(in percentage\)  | 
+| gpu\_memory\_threshold\_p95 | Defines the threshold for 95th quantile of GPU memory utilization in percentage\. **Optional** Valid values: Integer Default values: `70` \(in percentage\)  | 
+| patience | Defines the number of data points to skip until the rule starts evaluation\. The first several steps of training jobs usually show high volume of data processes, so keep the rule patient and prevent it from being invoked too soon with a given number of profiling data that you specify with this parameter\. **Optional** Valid values: Integer Default values: `100`  | 
+| window |  Window size for computing quantiles\. **Optional** Valid values: Integer Default values: `500`  | 
+| scan\_interval\_us |  Time interval that timeline files are scanned\. **Optional** Valid values: Integer Default values: `60000000` \(in microseconds\)  | 
+
+## CPUBottleneck<a name="cpu-bottleneck"></a>
+
+The CPUBottleneck rule helps detect if GPU is underutilized due to CPU bottlenecks\. Rule returns True if number of CPU bottlenecks exceeds a predefined threshold\.
+
+
+**Parameter Descriptions for the CPUBottleneck Rule**  
+
+| Parameter Name | Description | 
+| --- | --- | 
+| base\_trial | The base trial training job name\. This parameter is automatically set to the current training job by Amazon SageMaker Debugger\. **Required** Valid values: String  | 
+| threshold |  Defines the threshold for proportion of bottlenecked time to the total training time\. If the proportion exceeds the percentage specified to the threshold parameter, the rule switches the rule status to True\. **Optional** Valid values: Integer Default value: `50` \(in percentage\)  | 
+| gpu\_threshold |  A threshold that defines low GPU utilization\. **Optional** Valid values: Integer Default value: `10` \(in percentage\)  | 
+| cpu\_threshold | A threshold that defines high CPU utilization\. **Optional** Valid values: Integer Default values: `90` \(in percentage\)  | 
+| patience | Defines the number of data points to skip until the rule starts evaluation\. The first several steps of training jobs usually show high volume of data processes, so keep the rule patient and prevent it from being invoked too soon with a given number of profiling data that you specify with this parameter\. **Optional** Valid values: Integer Default values: `100`  | 
+| scan\_interval\_us | Time interval with which timeline files are scanned\. **Optional** Valid values: Integer Default values: `60000000` \(in microseconds\)  | 
+
+## GPUMemoryIncrease<a name="gpu-memory-increase"></a>
+
+The GPUMemoryIncrease rule helps detect a large increase in memory usage on GPUs\.
+
+
+**Parameter Descriptions for the GPUMemoryIncrease Rule**  
+
+| Parameter Name | Description | 
+| --- | --- | 
+| base\_trial | The base trial training job name\. This parameter is automatically set to the current training job by Amazon SageMaker Debugger\. **Required** Valid values: String  | 
+| increase |  Defines the threshold for absolute memory increase\. **Optional** Valid values: Integer Default value: `10` \(in percentage\)  | 
+| patience |  Defines the number of data points to skip until the rule starts evaluation\. The first several steps of training jobs usually show high volume of data processes, so keep the rule patient and prevent it from being invoked too soon with a given number of profiling data that you specify with this parameter\. **Optional** Valid values: Integer Default values: `100`  | 
+| window |  Window size for computing quantiles\. **Optional** Valid values: Integer Default values: `500`  | 
+| scan\_interval\_us |  Time interval that timeline files are scanned\. **Optional** Valid values: Integer Default values: `60000000` \(in microseconds\)  | 
+
+## IOBottleneck<a name="io-bottleneck"></a>
+
+This rule helps to detect if GPU is underutilized due to data IO bottlenecks\. Rule returns True if number of IO bottlenecks exceeds a predefined threshold\.
+
+
+**Parameter Descriptions for the IOBottleneck Rule**  
+
+| Parameter Name | Description | 
+| --- | --- | 
+| base\_trial | The base trial training job name\. This parameter is automatically set to the current training job by Amazon SageMaker Debugger\. **Required** Valid values: String  | 
+| threshold | Defines the threshold when Rule to return True\.**Optional**Valid values: IntegerDefault value: `50` \(in percentage\) | 
+| gpu\_threshold |  A threshold that defines when GPU is considered underutilized\. **Optional** Valid values: Integer Default value: `70` \(in percentage\)  | 
+| io\_threshold | A threshold that defines high IO wait time\.**Optional**Valid values: IntegerDefault values: `50` \(in percentage\) | 
+| patience | Defines the number of data points to skip until the rule starts evaluation\. The first several steps of training jobs usually show high volume of data processes, so keep the rule patient and prevent it from being invoked too soon with a given number of profiling data that you specify with this parameter\.**Optional**Valid values: IntegerDefault values: `1000` | 
+| scan\_interval\_us |  Time interval that timeline files are scanned\. **Optional** Valid values: Integer Default values: `60000000` \(in microseconds\)  | 
+
+## LoadBalancing<a name="load-balancing"></a>
+
+The LoadBalancing rule helps detect issues in workload balancing among multiple GPUs\.
+
+
+**Parameter Descriptions for the LoadBalancing Rule**  
+
+| Parameter Name | Description | 
+| --- | --- | 
+| base\_trial | The base trial training job name\. This parameter is automatically set to the current training job by Amazon SageMaker Debugger\. **Required** Valid values: String  | 
+| threshold |  Defines the workload percentage\. **Optional** Valid values: Integer Default value: `0.5` \(unitless proportion\)  | 
+| patience |  Defines the number of data points to skip until the rule starts evaluation\. The first several steps of training jobs usually show high volume of data processes, so keep the rule patient and prevent it from being invoked too soon with a given number of profiling data that you specify with this parameter\. **Optional** Valid values: Integer Default values: `10`  | 
+| scan\_interval\_us |  Time interval that timeline files are scanned\. **Optional** Valid values: Integer Default values: `60000000` \(in microseconds\)  | 
+
+## LowGPUUtilization<a name="low-gpu-utilization"></a>
+
+The LowGPUUtilization rule helps detect if GPU utilization is low or suffers from fluctuations\. This is checked for each GPU on each worker\. Rule returns True if 95th quantile is below threshold\_p95 which indicates underutilization\. Rule returns true if 95th quantile is above threshold\_p95 and 5th quantile is below threshold\_p5 which indicates fluctuations\.
+
+
+**Parameter Descriptions for the LowGPUUtilization Rule**  
+
+| Parameter Name | Description | 
+| --- | --- | 
+| base\_trial | The base trial training job name\. This parameter is automatically set to the current training job by Amazon SageMaker Debugger\. **Required** Valid values: String  | 
+| threshold\_p95 |  A threshold for 95th quantile below which GPU is considered to be underutilized\. **Optional** Valid values: Integer Default value: `70` \(in percentage\)  | 
+| threshold\_p5 | A threshold for 5th quantile\. Default is 10 percent\.**Optional**Valid values: IntegerDefault values: `10` \(in percentage\) | 
+| patience |  Defines the number of data points to skip until the rule starts evaluation\. The first several steps of training jobs usually show high volume of data processes, so keep the rule patient and prevent it from being invoked too soon with a given number of profiling data that you specify with this parameter\. **Optional** Valid values: Integer Default values: `1000`  | 
+| window |  Window size for computing quantiles\. **Optional** Valid values: Integer Default values: `500`  | 
+| scan\_interval\_us |  Time interval that timeline files are scanned\. **Optional** Valid values: Integer Default values: `60000000` \(in microseconds\)  | 
+
+## OverallSystemUsage<a name="overall-system-usage"></a>
+
+The OverallSystemUsage rule measures overall system usage per worker node\. The rule currently only aggregates values per node and computes their percentiles\.
+
+
+**Parameter Descriptions for the OverallSystemUsage Rule**  
+
+| Parameter Name | Description | 
+| --- | --- | 
+| base\_trial | The base trial training job name\. This parameter is automatically set to the current training job by Amazon SageMaker Debugger\. **Required** Valid values: String  | 
+| scan\_interval\_us |  Time interval to scan timeline files\. **Optional** Valid values: Integer Default values: `60000000` \(in microseconds\)  | 
+
+## MaxInitializationTime<a name="max-initialization-time"></a>
+
+The MaxInitializationTime rule helps detect if the training initialization is taking too much time\. The rule waits until the first step is available\.
+
+
+**Parameter Descriptions for the MaxInitializationTime Rule**  
+
+| Parameter Name | Description | 
+| --- | --- | 
+| base\_trial | The base trial training job name\. This parameter is automatically set to the current training job by Amazon SageMaker Debugger\. **Required** Valid values: String  | 
+| threshold |  Defines the threshold in minutes to wait for the first step to become available\. **Optional** Valid values: Integer Default value: `20` \(in minutes\)  | 
+| scan\_interval\_us |  Time interval with which timeline files are scanned\. **Optional** Valid values: Integer Default values: `60000000` \(in microseconds\)  | 
+
+## OverallFrameworkMetrics<a name="overall-framework-metrics"></a>
+
+The OverallFrameworkMetrics rule summarizes the time spent on framework metrics, such as forward and backward pass, and data loading\.
+
+
+**Parameter Descriptions for the OverallFrameworkMetrics Rule**  
+
+| Parameter Name | Description | 
+| --- | --- | 
+| base\_trial | The base trial training job name\. This parameter is automatically set to the current training job by Amazon SageMaker Debugger\. **Required** Valid values: String  | 
+| scan\_interval\_us |  Time interval to scan timeline files\. **Optional** Valid values: Integer Default values: `60000000` \(in microseconds\)  | 
+
+## StepOutlier<a name="step-outlier"></a>
+
+The StepOutlier rule helps detect outliers in step durations\. This rule returns `True` if there are outliers with step durations larger than `stddev` sigmas of the entire step durations in a time range\.
+
+
+**Parameter Descriptions for the StepOutlier Rule**  
+
+| Parameter Name | Description | 
+| --- | --- | 
+| base\_trial | The base trial training job name\. This parameter is automatically set to the current training job by Amazon SageMaker Debugger\. **Required** Valid values: String  | 
+| stddev |  Defines a factor by which to multiply the standard deviation\. For example, the rule is invoked by default when a step duration is larger or smaller than 5 times the standard deviation\.  **Optional** Valid values: Integer Default value: `5` \(in minutes\)  | 
+| mode | Mode under which steps have been saved and on which Rule should run on\. Per default rule will run on steps from EVAL and TRAIN phase**Optional**Valid values: IntegerDefault value: `5` \(in minutes\) | 
+| n\_outliers | How many outliers to ignore before rule returns True**Optional**Valid values: IntegerDefault value: `10` | 
+| scan\_interval\_us |  Time interval with which timeline files are scanned\. **Optional** Valid values: Integer Default values: `60000000` \(in microseconds\)  | 
 
 ## DeadRelu<a name="dead-relu"></a>
 
@@ -87,7 +319,7 @@ built_in_rules = [
 ]
 ```
 
-For an example of how to configure and deploy a built\-in rule, see [Use Debugger Built\-in Rules for Training Job Analysis](use-debugger-built-in-rules.md)\.
+For an example of how to configure and deploy a built\-in rule, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\.
 
 **Note**  
 This rule is not available for the XGBoost algorithm\.
@@ -126,7 +358,7 @@ built_in_rules = [
 ]
 ```
 
-For an example of how to configure and deploy a built\-in rule, see [Use Debugger Built\-in Rules for Training Job Analysis](use-debugger-built-in-rules.md)\.
+For an example of how to configure and deploy a built\-in rule, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\.
 
 **Note**  
 This rule is not available for the XGBoost algorithm\.
@@ -173,7 +405,7 @@ built_in_rules = [
 ]
 ```
 
-For an example of how to configure and deploy a built\-in rule, see [Use Debugger Built\-in Rules for Training Job Analysis](use-debugger-built-in-rules.md)\.
+For an example of how to configure and deploy a built\-in rule, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\.
 
 **Note**  
 This rule is not available for the XGBoost algorithm\.
@@ -223,7 +455,7 @@ built_in_rules = [
 ]
 ```
 
-For an example of how to configure and deploy a built\-in rule, see [Use Debugger Built\-in Rules for Training Job Analysis](use-debugger-built-in-rules.md)\.
+For an example of how to configure and deploy a built\-in rule, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\.
 
 **Note**  
 This rule is not available for the XGBoost algorithm\.
@@ -259,7 +491,7 @@ built_in_rules = [
 ]
 ```
 
-For an example of how to configure and deploy a built\-in rule, see [Use Debugger Built\-in Rules for Training Job Analysis](use-debugger-built-in-rules.md)\.
+For an example of how to configure and deploy a built\-in rule, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\.
 
 **Note**  
 This rule is not available for the XGBoost algorithm\.
@@ -303,7 +535,7 @@ built_in_rules = [
 ]
 ```
 
-For an example of how to configure and deploy a built\-in rule, see [Use Debugger Built\-in Rules for Training Job Analysis](use-debugger-built-in-rules.md)\.
+For an example of how to configure and deploy a built\-in rule, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\.
 
 **Note**  
 This rule is not available for the XGBoost algorithm\.
@@ -314,7 +546,7 @@ This rule detects if all or a specified percentage of the tensor values are zero
 
 This rule can be applied either to one of the supported deep learning frameworks \(TensorFlow, MXNet, and PyTorch\) or to the XGBoost algorithm\. You must specify either the `collection_names` or `tensor_regex` parameter\. If both the parameters are specified, the rule inspects the union of tensors from both sets\.
 
-For an example of how to configure and deploy a built\-in rule, see [Use Debugger Built\-in Rules for Training Job Analysis](use-debugger-built-in-rules.md)\.
+For an example of how to configure and deploy a built\-in rule, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\.
 
 
 **Parameters Descriptions for the AllZero Rule**  
@@ -356,7 +588,7 @@ Classification models require well\-balanced classes in the training dataset or 
 
 This rule can be applied either to one of the supported deep learning frameworks \(TensorFlow, MXNet, and PyTorch\) or to the XGBoost algorithm\.
 
-For an example of how to configure and deploy a built\-in rule, see [Use Debugger Built\-in Rules for Training Job Analysis](use-debugger-built-in-rules.md)\.
+For an example of how to configure and deploy a built\-in rule, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\.
 
 
 **Parameter Descriptions for the ClassImbalance Rule**  
@@ -402,7 +634,7 @@ This rule detects when the loss is not decreasing in value at an adequate rate\.
 
 This rule can be applied either to one of the supported deep learning frameworks \(TensorFlow, MXNet, and PyTorch\) or to the XGBoost algorithm\. You must specify either the `collection_names` or `tensor_regex` parameter\. If both the parameters are specified, the rule inspects the union of tensors from both sets\.
 
-For an example of how to configure and deploy a built\-in rule, see [Use Debugger Built\-in Rules for Training Job Analysis](use-debugger-built-in-rules.md)\.
+For an example of how to configure and deploy a built\-in rule, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\.
 
 
 **Parameter Descriptions for the LossNotDecreasing Rule**  
@@ -448,7 +680,7 @@ This rule detects if your model is being overfit to the training data by compari
 
 This rule can be applied either to one of the supported deep learning frameworks \(TensorFlow, MXNet, and PyTorch\) or to the XGBoost algorithm\.
 
-For an example of how to configure and deploy a built\-in rule, see [Use Debugger Built\-in Rules for Training Job Analysis](use-debugger-built-in-rules.md)\.
+For an example of how to configure and deploy a built\-in rule, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\.
 
 **Note**  
 A standard way to prevent overfitting is to regularize your model\.
@@ -493,7 +725,7 @@ This rule detects if a model is being overtrained\. After a number of training i
 
 This rule can be applied either to one of the supported deep learning frameworks \(TensorFlow, MXNet, and PyTorch\) or to the XGBoost algorithm\.
 
-For an example of how to configure and deploy a built\-in rule, see [Use Debugger Built\-in Rules for Training Job Analysis](use-debugger-built-in-rules.md)\.
+For an example of how to configure and deploy a built\-in rule, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\.
 
 **Note**  
 Overtraining can be avoided by early stopping\. For information on early stopping, see [Stop Training Jobs Early](automatic-model-tuning-early-stopping.md)\. For an example that shows how to use spot training with Debugger, see [Enable Spot Training with Amazon SageMaker Debugger](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/mxnet_spot_training/mxnet-spot-training-with-sagemakerdebugger.ipynb)\. 
@@ -535,7 +767,7 @@ This rule compares tensors gathered from a base trial with tensors from another 
 
 This rule can be applied either to one of the supported deep learning frameworks \(TensorFlow, MXNet, and PyTorch\) or to the XGBoost algorithm\.
 
-For an example of how to configure and deploy a built\-in rule, see [Use Debugger Built\-in Rules for Training Job Analysis](use-debugger-built-in-rules.md)\.
+For an example of how to configure and deploy a built\-in rule, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\.
 
 
 **Parameter Descriptions for the SimilarAcrossRuns Rule**  
@@ -609,7 +841,7 @@ This rule detects if you have tensors with very high or low variances\. Very hig
 
 This rule can be applied either to one of the supported deep learning frameworks \(TensorFlow, MXNet, and PyTorch\) or to the XGBoost algorithm\. You must specify either the `collection_names` or `tensor_regex` parameter\. If both the parameters are specified, the rule inspects the union of tensors from both sets\.
 
-For an example of how to configure and deploy a built\-in rule, see [Use Debugger Built\-in Rules for Training Job Analysis](use-debugger-built-in-rules.md)\.
+For an example of how to configure and deploy a built\-in rule, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\.
 
 
 **Parameter Descriptions for the TensorVariance Rule**  
@@ -651,7 +883,7 @@ This rule runs the [numpy\.allclose]( https://docs.scipy.org/doc/numpy/reference
 
 This rule can be applied either to one of the supported deep learning frameworks \(TensorFlow, MXNet, and PyTorch\) or to the XGBoost algorithm\. You must specify either the `collection_names` or `tensor_regex` parameter\. If both the parameters are specified, the rule inspects the union of tensors from both sets\.
 
-For an example of how to configure and deploy a built\-in rule, see [Use Debugger Built\-in Rules for Training Job Analysis](use-debugger-built-in-rules.md)\.
+For an example of how to configure and deploy a built\-in rule, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\.
 
 
 **Parameter Descriptions for the UnchangedTensor Rule**  
@@ -696,7 +928,7 @@ This rule checks if input images have been correctly normalized\. Specifically, 
 
 This rule is applicable to deep learning applications\.
 
-For an example of how to configure and deploy a built\-in rule, see [Use Debugger Built\-in Rules for Training Job Analysis](use-debugger-built-in-rules.md)\.
+For an example of how to configure and deploy a built\-in rule, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\.
 
 
 **Parameter Descriptions for the CheckInputImages Rule**  
@@ -738,7 +970,7 @@ This rule calculates the ratio of specific tokens given the rest of the input se
 
 This rule is applicable to deep learning applications\.
 
-For an example of how to configure and deploy a built\-in rule, see [Use Debugger Built\-in Rules for Training Job Analysis](use-debugger-built-in-rules.md)\.
+For an example of how to configure and deploy a built\-in rule, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\.
 
 
 **Parameter Descriptions for the NLPSequenceRatio Rule**  
@@ -781,7 +1013,7 @@ It creates a matrix of size `category_no*category_no` and populates it with data
 
 This rule can be applied to the XGBoost algorithm\.
 
-For an example of how to configure and deploy a built\-in rule, see [Use Debugger Built\-in Rules for Training Job Analysis](use-debugger-built-in-rules.md)\.
+For an example of how to configure and deploy a built\-in rule, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\.
 
 
 **Parameter Descriptions for the Confusion Rule**  
@@ -837,7 +1069,7 @@ This rule accumulates the weights of the n largest feature importance values per
 
 This rule is valid only for the XGBoost algorithm\.
 
-For an example of how to configure and deploy a built\-in rule, see [Use Debugger Built\-in Rules for Training Job Analysis](use-debugger-built-in-rules.md)\.
+For an example of how to configure and deploy a built\-in rule, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\.
 
 
 **Parameter Descriptions for the FeatureImportanceOverweight Rule**  
@@ -876,7 +1108,7 @@ This rule measures the depth of trees in an XGBoost model\. XGBoost rejects spli
 
 This rule is valid only for the XGBoost algorithm\.
 
-For an example of how to configure and deploy a built\-in rule, see [Use Debugger Built\-in Rules for Training Job Analysis](use-debugger-built-in-rules.md)\.
+For an example of how to configure and deploy a built\-in rule, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\.
 
 
 **Parameter Descriptions for the TreeDepth Rule**  

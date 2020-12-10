@@ -8,7 +8,8 @@ A subscription is an agreement between you and the vendor\. The agreement spells
 
 You can subscribe to any number of vendors to meet your data annotation needs\. When you create a labeling job or human review worklow you can specify that the job be routed to a specific vendor\.
 
-Before you send sensitive data to a vendor, check the vendor's security practices on their detail page and review the end user license agreement \(EULA\) that is part of your subscription agreement\. 
+**Important**  
+Before you send sensitive data to a vendor, check the vendor's security and compliance practices on their detail page and review the end user license agreement \(EULA\) that is part of your subscription agreement\. You are responsible for ensuring that the vendor meets your compliance requirements for personal or confidential information\. Do not share protected health information with this workforce\.
 
 You must use the console to subscribe to a vendor workforce\. Once you have a subscription, you can use the [ `ListSubscribedWorkteams`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListSubscribedWorkteams.html) operation to list your subscribed vendors\.
 

@@ -23,39 +23,39 @@ The following is an example of an `initialValue` input:
 ```
 [
             {
-                "BlockType": "KEY_VALUE_SET",
-                "Confidence": 38.43309020996094,
-                "Geometry": {
-                    "BoundingBox": {
-                        "Width": 0.32613086700439453,
-                        "Height": 0.0942094624042511,
-                        "Left": 0.4833833575248718,
-                        "Top": 0.5227988958358765
+                "blockType": "KEY_VALUE_SET",
+                "confidence": 38.43309020996094,
+                "geometry": {
+                    "boundingBox": {
+                        "width": 0.32613086700439453,
+                        "weight": 0.0942094624042511,
+                        "left": 0.4833833575248718,
+                        "top": 0.5227988958358765
                     },
-                    "Polygon": [
+                    "polygon": [
                         {"X": 0.123, "Y": 0.345}, ...
                     ]
                 }
-                "Id": "8c97b240-0969-4678-834a-646c95da9cf4",
-                "Relationships": [
+                "id": "8c97b240-0969-4678-834a-646c95da9cf4",
+                "relationships": [
                     {
-                        "Type": "CHILD",
-                        "Ids": [
+                        "type": "CHILD",
+                        "ids": [
                             "7ee7b7da-ee1b-428d-a567-55a3e3affa56",
                             "4d6da730-ba43-467c-a9a5-c6137ba0c472"
                         ]
                     },
                     {
-                        "Type": "VALUE",
-                        "Ids": [
+                        "type": "VALUE",
+                        "ids": [
                             "6ee7b7da-ee1b-428d-a567-55a3e3affa54"
                         ]
                     }
                 ],
-                "EntityTypes": [
+                "entityTypes": [
                     "KEY"
                 ],
-                "Text": "Foo bar"
+                "text": "Foo bar"
             },
 ]
 ```

@@ -2,7 +2,9 @@
 
 An *annotation* is the result of a single worker's labeling task\. *Annotation consolidation* combines the annotations of two or more workers into a single label for your data objects\. A label, which is assigned to each object in the dataset, is a probabilistic estimate of what the true label should be\. Each object in the dataset typically has multiple annotations, but only one label or set of labels\.
 
-You can decide how many workers should annotate each object in your dataset\. Using more workers can increase the accuracy of your labels, but also increases the cost of labeling\. If you use the Amazon SageMaker console to create a labeling job, the following are the defaults for the number of workers who can annotate objects: 
+You decide how many workers annotate each object in your dataset\. Using more workers can increase the accuracy of your labels, but also increases the cost of labeling\. To learn more about Ground Truth pricing, see [Amazon SageMaker Ground Truth pricing ](http://aws.amazon.com/sagemaker/groundtruth/pricing/)\.
+
+If you use the Amazon SageMaker console to create a labeling job, the following are the defaults for the number of workers who can annotate objects: 
 + Text classification—3 workers
 + Image classification—3 workers
 + Bounding boxes—5 workers

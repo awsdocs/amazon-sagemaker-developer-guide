@@ -4,7 +4,7 @@ You need to create Amazon SNS input and output topics to create a streaming labe
 
 ## Create an Input Topic<a name="sms-streaming-input-topic"></a>
 
-Your input topic is used to send new data objects to Ground Truth\. To create an input topic, follow the instructions in [To Create a Topic Using the AWS Management Console](https://docs.aws.amazon.com/sns/latest/dg/sns-tutorial-create-topic.html#create-topic-aws-console) in the Amazon Simple Notification Service Developer Guide\.
+Your input topic is used to send new data objects to Ground Truth\. To create an input topic, follow the instructions in [Creating an Amazon SNS topic](https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html) in the Amazon Simple Notification Service Developer Guide\.
 
 Note down your input topic ARN and use it as input for the `CreateLabelingJob` parameter `SnsTopicArn` in `InputConfig`\. 
 
@@ -12,9 +12,9 @@ Note down your input topic ARN and use it as input for the `CreateLabelingJob` p
 
 Your output topic is used to send notifications when a data object is labeled\. When you create a topic, you have the option to add an encryption key\. Use this option to add a AWS Key Management Service customer managed key \(CMK\) to your topic to encrypt the output data of your labeling job before it is published to your output topic\.
 
-To create an output topic, follow the instructions in [To Create a Topic Using the AWS Management Console](https://docs.aws.amazon.com/sns/latest/dg/sns-tutorial-create-topic.html#create-topic-aws-console) in the Amazon Simple Notification Service Developer Guide\.
+To create an output topic, follow the instructions in [Creating an Amazon SNS topic](https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html) in the Amazon Simple Notification Service Developer Guide\.
 
-In step 4, to add encryption, follow the instructions [Add Encryption to Your Output Topic \(Optional\)](#sms-streaming-encryption)\.
+If you add encryption, you must attach additional permission to the topic\. See [Add Encryption to Your Output Topic \(Optional\)](#sms-streaming-encryption)\. for more information\.
 
 **Important**  
 To add a CMK to your output topic while creating a topic in the console, do not use the **\(Default\) alias/aws/sns** option\. Select a CMK key that you created\. 
@@ -96,9 +96,9 @@ For more information on creating and securing keys, see [Creating Keys](https://
 
 When a worker completes a labeling job task from a Ground Truth streaming labeling job, Ground Truth uses your output topic to publish output data to one or more endpoints that you specify\. To receive notifications when a worker finishes a labeling task, you must subscribe an endpoint to your Amazon SNS output topic\.
 
-To learn how to add endpoints to your output topic, see [Tutorial: Subscribing an Endpoint to an Amazon SNS Topic](https://docs.aws.amazon.com/sns/latest/dg/sns-tutorial-create-subscribe-endpoint-to-topic.html) in the *Amazon Simple Notification Service Developer Guide*\.
+To learn how to add endpoints to your output topic, see [ Subscribing to an Amazon SNS topic](https://docs.aws.amazon.com/sns/latest/dg/sns-create-subscribe-endpoint-to-topic.html) in the *Amazon Simple Notification Service Developer Guide*\.
 
-To learn more about the output data format that is published to these endpoints, see [Output Data](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-data-output.html)\. 
+To learn more about the output data format that is published to these endpoints, see [Output Data](sms-data-output.md)\. 
 
 **Important**  
 If you do not subscribe an endpoint to your Amazon SNS output topic, you will not receive notifications when new data objects are labeled\. 

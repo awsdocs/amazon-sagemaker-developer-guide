@@ -22,8 +22,8 @@ These topics assume that you have built and trained one or more machine learning
 
 SageMaker provides features to manage resources and optimize inference performance when deploying machine learning models\. For guidance on using inference pipelines, compiling and deploying models with Neo, Elastic Inference, and automatic model scaling, see the following topics\.
 + To manage data processing and real\-time predictions or to process batch transforms in a pipeline, see [Deploy an Inference Pipeline](inference-pipelines.md)\. 
-+ If you want to deploy a model on inf1 instances, see [Compile and Deploy Models with Amazon SageMaker Neo](neo.md)\.
-+ To train TensorFlow, Apache MXNet, PyTorch, ONNX, and XGBoost models once and optimize them to deploy on ARM, Intel, and Nvidia processors, see [Compile and Deploy Models with Amazon SageMaker Neo](neo.md)\.
++ If you want to deploy a model on inf1 instances, see [Compile and Deploy Models with Neo](neo.md)\.
++ To train TensorFlow, Apache MXNet, PyTorch, ONNX, and XGBoost models once and optimize them to deploy on ARM, Intel, and Nvidia processors, see [Compile and Deploy Models with Neo](neo.md)\.
 + To preprocess entire datasets quickly or to get inferences from a trained model for large datasets when you don't need a persistent endpoint, see [Use Batch Transform](batch-transform.md)\.
 + To speed up the throughput and decrease the latency of getting real\-time inferences from your deep learning models that are deployed as SageMaker hosted models using a GPU instance for your endpoint, see [Use Amazon SageMaker Elastic Inference \(EI\) ](ei.md)\.
 + To dynamically adjust the number of instances provisioned in response to changes in your workload, see [Automatically Scale Amazon SageMaker Models](endpoint-auto-scaling.md)\.

@@ -1,6 +1,6 @@
 # Schema for Statistics \(statistics\.json file\)<a name="model-monitor-interpreting-statistics"></a>
 
-Amazon SageMaker Model Monitor pre\-built container computes per column/feature statistics\. The statistics are calculated for the baseline dataset and also for the current dataset that is being analyzed\.
+Amazon SageMaker Model Monitor prebuilt container computes per column/feature statistics\. The statistics are calculated for the baseline dataset and also for the current dataset that is being analyzed\.
 
 ```
 {
@@ -85,5 +85,5 @@ Amazon SageMaker Model Monitor pre\-built container computes per column/feature 
 ```
 
 Note the following:
-+ The prebuilt containers compute [KLL sketch](https://datasketches.github.io/docs/Quantiles/KLLSketch.html) which is a compact quantiles sketch\.
++ The prebuilt containers compute [KLL sketch](https://datasketches.github.io/docs/Quantiles/KLLSketch.html), which is a compact quantiles sketch\.
 + By default, we materialize the distribution in 10 buckets\. This is not currently configurable\.

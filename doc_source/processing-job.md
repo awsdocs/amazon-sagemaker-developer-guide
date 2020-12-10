@@ -14,6 +14,7 @@ Your data must be stored in an Amazon S3 bucket\.
 + [Monitor Amazon SageMaker Processing Jobs with CloudWatch Logs and Metrics](#processing-job-cloudwatch)
 + [Data Processing with Apache Spark](use-spark-processing-container.md)
 + [Data Processing with scikit\-learn](use-scikit-learn-processing-container.md)
++ [Detect pre\-training data bias](clarify-detect-data-bias.md)
 + [Use Your Own Processing Code](use-your-own-processing-code.md)
 
 ## Use Amazon SageMaker Processing Sample Notebooks<a name="processing-job-sample-notebooks"></a>

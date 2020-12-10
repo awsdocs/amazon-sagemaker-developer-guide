@@ -53,7 +53,9 @@ Use the following procedures to learn how to create a private work team using th
 
 1. Enter a **Team name**\. 
 
-1. In the **Add workers** section, enter the name of a single user group under **User groups**\. All workers associated with this group in your IdP are added to this work team\. 
+1. In the **Add workers** section, enter the name of a single user group under **User groups**\. All workers associated with this group in your IdP are added to this work team\.
+**Important**  
+The group names you specify for **User groups** must match the group names specified in your OIDC IdP\.
 
 1. To add more than one user group, select **Add new user group** and enter the names of the user groups you want to add to this work team\. Enter one user group per line\.
 
@@ -64,7 +66,12 @@ The private team that you create is used for this labeling job, and is listed in
 **To create a private work team using the SageMaker API**  
 You can create a private work team using the SageMaker API operation `[CreateWorkteam](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateWorkteam.html)`\. 
 
-When you use this operation, list all user groups that you want included in the work team in the `OidcMemberDefinition` parameter `Groups`\. For example, if your user group names are `group1`, `group2`, and `group3`, configure `OidcMemberDefinition` as follows:
+When you use this operation, list all user groups that you want included in the work team in the `OidcMemberDefinition` parameter `Groups`\. 
+
+**Important**  
+The group names you specify for `Groups` must match the group names specified in your OIDC IdP\. 
+
+For example, if your user group names are `group1`, `group2`, and `group3` in your OIDC IdP, configure `OidcMemberDefinition` as follows:
 
 ```
  "OidcMemberDefinition": { 

@@ -22,8 +22,8 @@ Only three built\-in algorithms currently support incremental training: [Object 
 ## Perform Incremental Training \(Console\)<a name="incremental-training-console"></a>
 
 To complete this procedure, you need:
-+ The URL of the Amazon Simple Storage Service \(Amazon S3\) bucket where you've stored the training data\.
-+ The URL of the S3 bucket where you want to store the output of the job\. 
++ The Amazon Simple Storage Service \(Amazon S3\) bucket URI where you've stored the training data\.
++ The S3 bucket URI where you want to store the output of the job\. 
 + The Amazon Elastic Container Registry path where the training code is stored\. For more information, see [Docker Registry Paths for SageMaker Built\-in Algorithms](sagemaker-algo-docker-registry-paths.md)\.
 + The URL of the S3 bucket where you've stored the model artifacts that you want to use in incremental training\. To find the URL for the model artifacts, see the details page of the training job used to create the model\. To find the details page, in the SageMaker console, choose **Inference**, choose **Models**, and then choose the model\.
 
@@ -63,7 +63,7 @@ To restart a stopped training job, use the URL to the model artifacts that are s
 
    1. For **Record wrapper**, if the dataset is saved in RecordIO format, choose **RecordIO**\. If your dataset is not saved as a RecordIO formatted file, choose **None**\.
 
-   1. For **S3 data type**, if the dataset us stored as a single file, choose **S3Prefix**\. If the dataset is stored as several files in a folder, choose **Manifest**\.
+   1. For **S3 data type**, if the dataset is stored as a single file, choose **S3Prefix**\. If the dataset is stored as several files in a folder, choose **Manifest**\.
 
    1. For **S3 location**, provide the URL to the path where you stored the expanded dataset\.
 

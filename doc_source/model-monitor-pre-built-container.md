@@ -1,6 +1,6 @@
-# Amazon SageMaker Model Monitor Pre\-built Container<a name="model-monitor-pre-built-container"></a>
+# Amazon SageMaker Model Monitor Prebuilt Container<a name="model-monitor-pre-built-container"></a>
 
-SageMaker provides a built\-in container sagemaker\-model\-monitor\-analyzer that provides you with a range of model monitoring capabilities, including constraint suggestion, statistics generation, constraint validation against a baseline, and emitting Amazon CloudWatch metrics\. This container is based on Spark and is built with [Deequ](https://github.com/awslabs/deequ)\. The prebuilt container for SageMaker Model Monitor can be accessed at:
+SageMaker provides a built\-in container sagemaker\-model\-monitor\-analyzer that provides you with a range of model monitoring capabilities, including constraint suggestion, statistics generation, constraint validation against a baseline, and emitting Amazon CloudWatch metrics\. This container is based on Spark and is built with [Deequ](https://github.com/awslabs/deequ)\. The prebuilt container for SageMaker Model Monitor can be accessed as follows:
 
 `<ACCOUNT_ID>.dkr.ecr.<REGION_NAME>.amazonaws.com/sagemaker-model-monitor-analyzer`
 

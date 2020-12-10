@@ -2,98 +2,54 @@
 
 This section contains information about how to understand and prevent common compilation errors, the error messages they generate, and guidance on how to resolve these errors\. 
 
-## Prevent Neo Input Errors<a name="neo-troubleshooting-errors-preventing"></a>
+**Topics**
++ [How to Use This Page](#neo-troubleshooting-compilation-how-to-use)
++ [Framework\-Related Errors](#neo-troubleshooting-compilation-framework-related-errors)
++ [Infrastructure\-Related Errors](#neo-troubleshooting-compilation-infrastructure-errors)
 
-Some of the most common errors are due to invalid input formats\. 
+## How to Use This Page<a name="neo-troubleshooting-compilation-how-to-use"></a>
 
-***What input data shapes does Neo expect?***
+Attempt to resolve your error by the going through these sections in the following order:
 
-Neo expects the name and shape of the expected data inputs for your trained model with JSON format or list format\. The data inputs are framework specific\. 
-+ `TENSORFLOW`: Specify either the name and shape \(NHWC format\) of the expected data inputs using a dictionary format for your trained model\. The dictionary formats required are as follows:
-  + For one input: `{'input':[1,1024,1024,3]}`
-  + For two inputs: `{'data1': [1,28,28,1], 'data2':[1,28,28,1]}`
-+ `KERAS`: Specify either the name and shape \(NCHW format\) of expected data inputs using a dictionary format for your trained model\. Note that while Keras model artifacts should be uploaded in NHWC \(channel\-last\) format, `DataInputConfig` should be specified in NCHW \(channel\-first\) format\. The dictionary formats required are as follows:
-  + For one input: `{'input_1':[1,3,224,224]}`
-  + For two inputs: `{'input_1': [1,3,224,224], 'input_2':[1,3,224,224]}`
-+ `MXNET/ONNX`: Specify either the name and shape \(NCHW format\) of the expected data inputs in order using a dictionary format for your trained model\. The dictionary formats required are as follows:
-  + For one input: `{'data':[1,3,1024,1024]}`
-  + For two inputs: `{'var1': [1,1,28,28], 'var2':[1,1,28,28]}`
-+ `PYTORCH`: Specify either the name and shape \(NCHW format\) of expected data inputs in order using a dictionary format for your trained model or you can specify the shape only using a list format\. The dictionary formats required are are as follows:
-  + For one input in dictionary format: `{'input0':[1,3,224,224]}`
-  + For one input in list format: `[[1,3,224,224]]`
-  + For two inputs in dictionary format: `{'input0':[1,3,224,224], 'input1':[1,3,224,224]} `
-  + For two inputs in list format: `[[1,3,224,224], [1,3,224,224]]`
-+ `XGBOOST`: input data name and shape are not needed\.
-+ `TFLITE`: Specify either the name and shape \(NHWC format\) of the expected data inputs in order using a dictionary format for your trained model\. The dictionary formats required are as follows:
-  + For one input: `{'input':[1,224,224,3]}`
+1. Check that the input of your compilation job satisfies the input requirements\. See [What input data shapes does SageMaker Neo expect?](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-job-compilation.html#neo-job-compilation-expected-inputs) 
 
-## User Error Messages<a name="neo-troubleshooting-errors-understanding"></a>
+1.  Check common [framework\-specific errors](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-troubleshooting.html#neo-troubleshooting-compilation-framework-related-errors)\. 
 
-This section lists and classifies Neo errors and error messages\.
+1.  Check if your error is an [infrastructure error](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-troubleshooting.html#neo-troubleshooting-compilation-infrastructure-errors)\. 
 
-### Neo Error Messages<a name="neo-error-messages"></a>
+## Framework\-Related Errors<a name="neo-troubleshooting-compilation-framework-related-errors"></a>
 
-This list catalogs the user and system error messages you can receive from Neo deployments\.
-+ **User error messages**
-  + **Client permission error**: Neo passes the errors for these straight through from the dependent service\.
+### TensorFlow<a name="neo-troubleshooting-compilation-framework-related-errors-tensorflow"></a>
 
-    *Access Denied* when calling sts:AssumeRole
 
-    Any *400 error* when calling S3 to download or upload a client model\.
+| Error | Solution | 
+| --- | --- | 
+|   `InputConfiguration: Exactly one .pb file is allowed for TensorFlow models.`   |  Make sure you only provide one \.pb or \.pbtxt file\.  | 
+|  `InputConfiguration: Exactly one .pb or .pbtxt file is allowed for TensorFlow models.`  |  Make sure you only provide one \.pb or \.pbtxt file\.  | 
+|   ` ClientError: InputConfiguration: TVM cannot convert <model zoo> model. Please make sure the framework you selected is correct. The following operators are not implemented: {<operator name>} `   |   Check the operator you chose is supported\. See [SageMaker Neo Supported Frameworks and Operators](http://aws.amazon.com/releasenotes/sagemaker-neo-supported-frameworks-and-operators/)\.   | 
 
-    *PassRole* error
-  + **Load error**: Keywords in error messages are: 'InputConfiguration' and 'ModelSizeTooBig'\.
+### Keras<a name="neo-troubleshooting-compilation-framework-related-errors-keras"></a>
 
-    *Load Error: InputConfiguration*: Exactly one \{\.xxx\} file is allowed for \{yyy\} model\.
 
-    *Load Error: ModelSizeTooBig*: number of nodes in a tree can't exceed 2^31
-  +  **Compilation error**: Keywords in error messages are ‘OperatorAttributeNotImplemented', 'OperatorAttributeRequired', 'OperatorAttributeValueNotValid', 'OperatorNotImplemented', 'CompilationError' 
-    +  OperatorAttributeNotImplemented: \{xxx\} is not supported in \{yyy\} 
-    + *OperatorAttributeRequired*: Required attribute \{xxx\} not found in \{yyy\}\. 
-    + *OperatorAttributeValueNotValid*: The value of attribute \{xxx\} in operator \{yyy\} cannot be negative\. 
+| Error | Solution | 
+| --- | --- | 
+|   `InputConfiguration: No h5 file provided in <model path>`   |   Check your h5 file is in the Amazon S3 URI you specified\.  *Or* Check that the [h5 file is correctly formatted](https://www.tensorflow.org/guide/keras/save_and_serialize#keras_h5_format)\.   | 
+|   `InputConfiguration: Multiple h5 files provided, <model path>, when only one is allowed`   |  Check you are only providing one `h5` file\.  | 
+|   `ClientError: InputConfiguration: Unable to load provided Keras model. Error: 'sample_weight_mode'`   |  Check the Keras version you specified is supported\. See, supported frameworks for [cloud instances](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-supported-cloud.html) and [edge devices](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-supported-devices-edge.html)\.   | 
+|   `ClientError: InputConfiguration: Input input has wrong shape in Input Shape dictionary. Input shapes should be provided in NCHW format. `   |   Check that your model input follows NCHW format\. See [What input data shapes does SageMaker Neo expect?](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-job-compilation.html#neo-job-compilation-expected-inputs)   | 
 
-     In addition to the above you may encounter the following for **MXNet v1\.7\.0** and **PyTorch v1\.4\.0**: 
-    + *OperatorNotImplemented*: \{xxx\} is not supported\. 
-    + CompilationError: Failed to compile PyTorch model: \{xxx\}
-    + CompilationError: Failed to compile MXNet model: \{xxx\}
-    + CompilationError: Failed to compile MXNet model\. Possible cycles in the graph\.
-  + **Any Malformed Input Errors** 
-+ **System error messages**
-  + For system errors, Neo shows only one error message similar to the following: There was an unexpected error during compilation, check your inputs and try again in a few minutes\.
-  + This covers all unexpected errors and errors that are not user errors\.
+### MXNet<a name="neo-troubleshooting-compilation-framework-related-errors-mxnet"></a>
 
-### Neo Error Classifications<a name="neo-errors"></a>
 
-This list classifies the *user errors* you can receive from Neo\. These include access and permission errors and load errors for each of the supported frameworks\. All other errors are *system errors*\.
-+ **Client permission error**: Neo passes the errors for these straight through from the dependent service\.
+| Error | Solution | 
+| --- | --- | 
+|   `ClientError: InputConfiguration: Only one parameter file is allowed for MXNet model. Please make sure the framework you select is correct.`   |   SageMaker Neo will select the first parameter file given for compilation\.   | 
 
-  *Access Denied* when calling sts:AssumeRole
+## Infrastructure\-Related Errors<a name="neo-troubleshooting-compilation-infrastructure-errors"></a>
 
-  Any *400 error* when calling Amazon S3 to download or upload a client model\.
 
-  *PassRole* error
-+ **Load error**: Assuming that the Neo compiler successfully loaded \.tar\.gz from Amazon S3, check whether the tarball contains the necessary files for compilation\. The checking criteria is framework\-specific:
-  + **TensorFlow**: Expects only protobuf file \(\*\.pb or \*\.pbtxt\)\. For *saved models*, expects one `variables` folder\.
-  + **Pytorch**: Expect only one pytorch file \(\*\.pth\)\.
-  + **MXNET**: Expect only one symbol file \(\*\.json\) and one parameter file \(\*\.params\)\.
-  + **XGBoost**: Expect only one XGBoost model file \(\*\.model\)\. The input model has size limitation\.
-+ **Compilation error**: Assuming that the Neo compiler successfully loaded \.tar\.gz from Amazon S3, and that the tarball contains necessary files for compilation\. The checking criteria is:
-  + **OperatorNotImplemented**: An operator has not been implemented\.
-  + **OperatorAttributeNotImplemented**: The attribute in the specified operator has not been implemented\.
-  + **OperatorAttributeRequired**: An attribute is required for an internal symbol graph, but it is not listed in the user input model graph\.
-  + **OperatorAttributeValueNotValid**: The value of the attribute in the specific operator is not valid\.
-
-## Resolve Neo Errors<a name="neo-errors-resolving"></a>
-
-This section provides guidance on troubleshooting common issues with Neo\. These include permission, load, compilation, and system errors and errors involving invalid inputs and unsupported operations\.
-+ **Catalog of Known Issues**:
-  + If you see **Client Permission Error**, review the set up documentation and make sure that you have correctly granted the permissions that are failing\.
-  + If you see **Load Error**, check the model format files that Neo expects for different frameworks\.
-  + If you see **Compilation Error**, check and address the details error message in your input model graph\.
-  + If you see **System Error**, try again in a few minutes\. If that fails, file a ticket with AWS Support\.
-+ **Lack of Roles and Permissions**: Review the set up documentation and make sure that you have correctly granted the permissions that are failing\.
-+ **Invalid API and Console Inputs**: Fix your input as described in the validation error\.
-+ **Unsupported Operators**: 
-  + Check the failure reason where Neo has listed all unsupported operators with the keyword ‘OperatorNotImplemented’\.
-  + For example: Compilation Error: OperatorNotImplemented: The following operators are not implemented: \{'\_sample\_multinomial', 'RNN' \}
-  + Remove the unsupported operators from your input model graph and test it again\.
+| Error | Solution | 
+| --- | --- | 
+|   `ClientError: InputConfiguration: S3 object does not exist. Bucket: <bucket>, Key: <bucket key>`   |  Check the Amazon S3 URI your provided\.  | 
+|   ` ClientError: InputConfiguration: Bucket <bucket name> is in region <region name> which is different from AWS Sagemaker service region <service region> `   |   Create an Amazon S3 bucket that is in the same region as the service\.   | 
+|   ` ClientError: InputConfiguration: Unable to untar input model. Please confirm the model is a tar.gz file `   |   Check that your model in Amazon S3 is compressed into a `tar.gz` file\.   | 

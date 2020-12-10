@@ -8,7 +8,7 @@ You can create a Jupyter notebook in the notebook instance you created in [Step 
 
    1. Sign in to the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-   1. Open the Notebook Instances, and then open the notebook instance you created by choosing either **Open Jupyter** for classic Juypter view or **Open JupyterLab** for JupyterLab view next to the name of the notebook instance\.
+   1. Open the Notebook Instances, and then open the notebook instance you created by choosing either **Open Jupyter** for classic Jupyter view or **Open JupyterLab** for JupyterLab view next to the name of the notebook instance\.
 **Note**  
 If you see **Pending** to the right of the notebook instance in the **Status** column, your notebook is still being created\. The status will change to **InService** when the notebook is ready for use\. 
 

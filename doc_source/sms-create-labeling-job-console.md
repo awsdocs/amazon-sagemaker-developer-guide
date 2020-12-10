@@ -68,9 +68,7 @@ When you create a labeling job using the SageMaker console, you add worker instr
 
 1. In the next section, specify your worker instructions and labels\. You can select **See preview** to preview your worker instructions, labels, and interact with the worker UI\. 
 
-   For the point cloud labeling task types, you can also specify label attributes\. To learn more, see [Worker User Interface \(UI\)](sms-point-cloud-general-information.md#sms-point-cloud-worker-task-ui)\.
-
-   For video frame labeling task types, you can specify label attributes and annotation tools\. To learn more, see [Worker User Interface \(UI\)](sms-video-overview.md#sms-video-worker-task-ui)\.
+   For the point cloud and video frame labeling task types, you can also specify label category and frame attributes\. To learn more, see [Worker User Interface \(UI\)](sms-point-cloud-general-information.md#sms-point-cloud-worker-task-ui) and [Worker User Interface \(UI\)](sms-video-overview.md#sms-video-worker-task-ui) respectively\. 
 
    For more details about the worker UI for each task type, see the page for your [built\-in task type](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html)\. 
 

@@ -88,7 +88,7 @@ This section covers details you need to know when you create a labeling job usin
   There should not be an entry for the `UiTemplateS3Uri` parameter\. 
 + Your [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelAttributeName](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelAttributeName) must end in `-ref`\. For example, `ot-labels-ref`\. 
 + Your input manifest file must be a point cloud frame sequence manifest file\. For more information, see [Create a Point Cloud Sequence Input Manifest](sms-point-cloud-multi-frame-input-data.md)\. 
-+ You specify your labels and worker instructions in a label category configuration file\. For more information, see [Create a Labeling Category Configuration File with Label Category Attributes](sms-label-cat-config-attributes.md) to learn how to create this file\. 
++ You specify your labels, label category and frame attributes, and worker instructions in a label category configuration file\. For more information, see [Create a Labeling Category Configuration File with Label Category Attributes](sms-label-cat-config-attributes.md) to learn how to create this file\. 
 + You need to provide pre\-defined ARNs for the pre\-annotation and post\-annotation \(ACS\) Lambda functions\. These ARNs are specific to the AWS Region you use to create your labeling job\. 
   + To find the pre\-annotation Lambda ARN, refer to [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-PreHumanTaskLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-PreHumanTaskLambdaArn)\. Use the Region you are creating your labeling job in to find the correct ARN that ends with `PRE-3DPointCloudObjectTracking`\. 
   + To find the post\-annotation Lambda ARN, refer to [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AnnotationConsolidationConfig.html#sagemaker-Type-AnnotationConsolidationConfig-AnnotationConsolidationLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AnnotationConsolidationConfig.html#sagemaker-Type-AnnotationConsolidationConfig-AnnotationConsolidationLambdaArn)\. Use the Region you are creating your labeling job in to find the correct ARN that ends with `ACS-3DPointCloudObjectTracking`\. 
@@ -147,9 +147,13 @@ You can follow the instructions [Create a Labeling Job \(Console\)](sms-create-l
 **Important**  
 If you set your take time limit to be greater than 8 hours, you must set `MaxSessionDuration` for your IAM execution role to at least 8 hours\. To see how to update this value for your IAM role, see [Modifying a Role ](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html) in the IAM User Guide, choose your preferred method to modify the role, and then follow the steps in [Modifying a Role Maximum Session Duration](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-console.html#roles-modify_max-session-duration)\. 
 
-#### Create an Adjustment Labeling Job \(console\)<a name="sms-point-cloud-object-tracking-adjustment-create-labeling-job-console"></a>
+#### Create an Adjustment Labeling Job \(Console\)<a name="sms-point-cloud-object-tracking-adjustment-create-labeling-job-console"></a>
 
 You can create an adjustment labeling job in the console by *chaining* a successfully completed object tracking labeling job\. To learn more, see [Create and Start a Label Verification Job \(Console\)](sms-verification-data.md#sms-data-verify-start-console)\.
+
+When you create an adjustment labeling job, your input data to the labeling job can include labels, and yaw, pitch, and roll measurements from a previous labeling job or external source\. In the adjustment job, pitch, and roll will be visualized in the worker UI, but cannot be modified\. Yaw is adjustable\. 
+
+Ground Truth uses Tait\-Bryan angles with the following intrinsic rotations to visualize yaw, pitch and roll in the worker UI\. First, rotation is applied to the vehicle according to the z\-axis \(yaw\)\. Next, the rotated vehicle is rotated according to the intrinsic y'\-axis \(pitch\)\. Finally, the vehicle is rotated according to the intrinsic x''\-axis \(roll\)\. 
 
 ## Output Data Format<a name="sms-point-cloud-object-tracking-output-data"></a>
 

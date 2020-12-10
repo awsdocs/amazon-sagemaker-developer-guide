@@ -1,8 +1,5 @@
 # Onboard to Amazon SageMaker Studio Using Quick Start<a name="onboard-quick-start"></a>
 
-**Note**  
-Amazon SageMaker Studio is available only in specific AWS Regions\. To view the list of supported Regions, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
-
 This topic describes how to onboard to Amazon SageMaker Studio using the **Quick start** procedure, which uses AWS Identity and Access Management \(IAM\) authentication\. For information on how to onboard using the standard IAM procedure, see [Onboard Using IAM](onboard-iam.md)\.
 
 For information on how to onboard using AWS Single Sign\-On \(AWS SSO\), see [Onboard Using SSO](onboard-sso-users.md)\.
@@ -24,6 +21,8 @@ For information on how to onboard using AWS Single Sign\-On \(AWS SSO\), see [On
    If you choose **Create a new role**, the **Create an IAM role** dialog opens:
    + For **S3 buckets you specify**, specify additional S3 buckets that users of your notebooks can access\. If you don't want to add access to more buckets, choose **None**\.
    + Choose **Create role**\. SageMaker creates a new IAM `AmazonSageMaker-ExecutionPolicy` role with the [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) policy attached\.
+
+1. For **Projects**, see [SageMaker Studio Permissions Required to Use Projects](sagemaker-projects-studio-updates.md)\. For more control, use the standard setup procedure\.
 
 1. Choose **Submit**\.
 **Note**  

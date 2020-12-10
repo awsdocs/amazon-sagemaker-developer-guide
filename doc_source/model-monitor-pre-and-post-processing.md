@@ -8,14 +8,14 @@ In addition to using the built\-in mechanisms, you can extend the code with the 
 
 ## Postprocessing Script<a name="model-monitor-post-processing-script"></a>
 
-You can extend the code with the post processing script by following this contract\. 
+You can extend the code with the postprocessing script by following this contract: 
 
 ```
 def postprocess_handler():
     print("Hello from post-proc script!")
 ```
 
-Specify it as a path in Amazon Simple Storage Service \(Amazon S3\) in the `CreateMonitoringSchedule` request\.
+Specify it as a path in Amazon Simple Storage Service \(Amazon S3\) in the `CreateMonitoringSchedule` request, as shown following:
 
 ```
 .MonitoringAppSpecification.PostAnalyticsProcessorSourceUri.
@@ -23,7 +23,7 @@ Specify it as a path in Amazon Simple Storage Service \(Amazon S3\) in the `Crea
 
 ## Preprocessing Script<a name="model-monitor-pre-processing-script"></a>
 
-The Amazon SageMaker Model Monitor container works only with tabular or flattened json structures\. We provide a per\-record preprocessor for some small changes required to transform the dataset\. For example, if your output is an array \[1\.0, 2\.1\], you need to convert this into a flattened JSON, like \{“prediction0”: 1\.0, “prediction1” : 2\.1"\}\. A sample implementation might look like the following\.
+The Amazon SageMaker Model Monitor container works only with tabular or flattened JSON structures\. We provide a per\-record preprocessor for some small changes required to transform the dataset\. For example, if your output is an array \[1\.0, 2\.1\], you need to convert this into a flattened JSON, like \{“prediction0”: 1\.0, “prediction1” : 2\.1"\}\. A sample implementation might look like the following:
 
 ```
 def preprocess_handler(inference_record):
@@ -46,7 +46,7 @@ Specify it as a path in Amazon S3 in the `CreateMonitoringSchedule` request:
 .MonitoringAppSpecification.RecordPreprocessorSourceUri.
 ```
 
-The structure of the inference\_record is defined as follows\.
+The structure of the inference\_record is defined as follows:
 
 ```
 KEY_EVENT_METADATA = "eventMetadata"

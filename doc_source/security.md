@@ -9,6 +9,7 @@ Security is a shared responsibility between AWS and you\. The [shared responsibi
 This documentation helps you understand how to apply the shared responsibility model when using SageMaker\. The following topics show you how to configure SageMaker to meet your security and compliance objectives\. You also learn how to use other AWS services that help you to monitor and secure your SageMaker resources\. 
 
 **Topics**
++ [Access Control](security-access-control.md)
 + [Data Protection in Amazon SageMaker](data-protection.md)
 + [Identity and Access Management for Amazon SageMaker](security-iam.md)
 + [Logging and Monitoring](sagemaker-incident-response.md)

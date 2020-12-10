@@ -1,5 +1,9 @@
 # Get Started with Amazon SageMaker Notebook Instances and SDKs<a name="gs-console"></a>
 
+This video shows you how to setup and use SageMaker notebook instances\. \(Length: 26:04\)
+
+[![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/X5CLunIzj3U/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/X5CLunIzj3U)
+
 The best way to learn how to use Amazon SageMaker is to create, train, and deploy a simple machine learning model\. To do this, you need the following:
 + A dataset\. You use the MNIST \(Modified National Institute of Standards and Technology database\) dataset of images of handwritten, single digit numbers\. This dataset provides a training set of 50,000 example images of handwritten single\-digit numbers, a validation set of 10,000 images, and a test dataset of 10,000 images\. You provide this dataset to the algorithm for model training\. For more information about the MNIST dataset, see [MNIST Dataset](http://yann.lecun.com/exdb/mnist/)\.
 + An algorithm\. You use the XGBoost algorithm provided by SageMaker to train the model using the MNIST dataset\. During model training, the algorithm assigns example data of handwritten numbers into 10 clusters: one for each number, 0 through 9\. For more information about the algorithm, see [XGBoost Algorithm](xgboost.md)\.

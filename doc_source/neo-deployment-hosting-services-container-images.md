@@ -1,6 +1,6 @@
 # Inference Container Images<a name="neo-deployment-hosting-services-container-images"></a>
 
- Based on your use case, replace the highlighted portion in the inference image URI template provided below with appropriate values\. 
+Based on your use case, replace the highlighted portion in the inference image URI template provided below with appropriate values\. 
 
 ## Amazon SageMaker XGBoost<a name="inference-container-collapse-xgboost"></a>
 

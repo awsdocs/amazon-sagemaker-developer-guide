@@ -1,5 +1,9 @@
 # Getting started<a name="sms-getting-started"></a>
 
+This video shows you how to setup and use Amazon SageMaker Ground Truth\. \(Length: 9:37\)
+
+[![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/_FPI6KjDlCI/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/_FPI6KjDlCI)
+
 To get started using Amazon SageMaker Ground Truth, follow the instructions in the following sections\. The sections here explain how to use the console to create a labeling job, assign a public or private workforce, and send the labeling job to your workforce\. You can also learn how to monitor the progress of a labeling job\.
 
 If you want to create a custom labeling job, see [Creating Custom Labeling Workflows](sms-custom-templates.md) for instructions\.

@@ -16,7 +16,7 @@ The Amazon SageMaker Model Monitor platform invokes your container code accordin
 ```
 
 
-**Table: Parameters**  
+**Parameters**  
 
 | Parameter Name | Description | 
 | --- | --- | 

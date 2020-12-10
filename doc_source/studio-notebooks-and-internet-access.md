@@ -14,6 +14,8 @@ To disable direct internet access, you can specify the `VPC only` network access
 
 When you choose `VpcOnly`, your VPC must contain the following:
 + Subnets with one IP address for each App\. For more information, see [VPC and subnet sizing for IPv4](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#vpc-sizing-ipv4)\.
+**Note**  
+You can configure only subnets with a default tenancy VPC in which your instance runs on shared hardware\. For more information on the tenancy attribute for VPCs, see [Dedicated Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html)\.
 + One or more security groups with inbound and outbound rules that together allow the following traffic:
   + NFS traffic over TCP on port 2049 between the domain and the Amazon EFS volume\.
   + TCP traffic within the security group\. This is required for connectivity between the JupyterServer app and the KernelGateway apps\.

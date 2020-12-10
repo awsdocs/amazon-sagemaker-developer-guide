@@ -4,6 +4,6 @@ You can add an event notification to your Amazon S3 bucket using the Amazon S3 c
 
 You decide the types of events that you want to send to your Amazon SNS topic\. Ground Truth creates a labeling job when you send [object creation events](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/enable-event-notifications.html#enable-event-notifications-types)\. 
 
-The event structure sent to your Amazon SNS input topic must be a JSON message formatted using the same structure found in [Event message structure ](https://docs.aws.amazon.com/AmazonS3/latest/dev/notification-content-structure.html)\.
+The event structure sent to your Amazon SNS input topic must be a JSON message formatted using the same structure found in [Event message structure](https://docs.aws.amazon.com/AmazonS3/latest/dev/notification-content-structure.html)\.
 
-To see examples of how you can set up an event notification for your Amazon S3 bucket using the Amazon S3 console, AWS SDK for \.NET, and AWS SDK for Java, see [Step 3: Add a notification configuration to your bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/ways-to-add-notification-config-to-bucket.html#step2-enable-notification) in the Amazon Simple Storage Service Developer Guide\.
+To see examples of how you can set up an event notification for your Amazon S3 bucket using the Amazon S3 console, AWS SDK for \.NET, and AWS SDK for Java, follow this walkthrough, [Walkthrough: Configure a bucket for notifications \(SNS topic or SQS queue\)](https://docs.aws.amazon.com/AmazonS3/latest/dev/ways-to-add-notification-config-to-bucket.html) in the Amazon Simple Storage Service Developer Guide\.

@@ -2,7 +2,7 @@
 
 When you onboard to Amazon SageMaker Studio using IAM authentication, Studio creates a domain for your account\. A domain consists of a list of authorized users, configuration settings, and an Amazon Elastic File System \(Amazon EFS\) volume, which contains data for the users, including notebooks, resources, and artifacts\. A user can have multiple applications \(apps\) which support the reading and execution experience of the user’s notebooks, terminals, and consoles\.
 
-To return Studio to the state it was in before you onboarded, you must delete this domain\. The Amazon EFS volume isn't deleted when the domain is deleted\. To delete the EFS volume, see [Manage Your EFS Storage Volume](studio-tasks-manage-storage.md)\.
+To return Studio to the state it was in before you onboarded, you must delete this domain\. Before a domain is deleted, the Amazon EFS volume is detached but not deleted\. To delete the EFS volume, see [Manage Your EFS Storage Volume](studio-tasks-manage-storage.md)\.
 
 You must delete the domain if you want to switch authentication modes from IAM to AWS SSO\.
 

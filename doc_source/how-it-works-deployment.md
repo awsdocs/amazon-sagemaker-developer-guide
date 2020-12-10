@@ -26,6 +26,8 @@ SageMaker provides model hosting services for model deployment, as shown in the 
 The S3 bucket where the model artifacts are stored must be in the same region as the model that you are creating\.
 
 1. **Create an endpoint configuration for an HTTPS endpoint**—You specify the name of one or more models in production variants and the ML compute instances that you want SageMaker to launch to host each production variant\.
+**Note**  
+ SageMaker supports running \(a\) multiple models, \(b\) multiple variants of a model, or \(c\) combinations of models and variants on the same endpoint\. Model variants can reference the same model inference container \(i\.e\. run the same algorithm\), but use different model artifacts \(e\.g\., different model weight values based on other hyper\-parameter configurations\)\. In contrast, two different models may use the same algorithm, but focus on different business problems or underlying goals and may operate on different data sets\. 
 
    When hosting models in production, you can configure the endpoint to elastically scale the deployed ML compute instances\. For each production variant, you specify the number of ML compute instances that you want to deploy\. When you specify two or more instances, SageMaker launches them in multiple Availability Zones\. This ensures continuous availability\. SageMaker manages deploying the instances\. For more information, see the [ `CreateEndpointConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html) API\.
 

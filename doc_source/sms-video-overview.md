@@ -55,15 +55,31 @@ When you create a labeling job using the API operation `CreateLabelingJob`, you 
 
 You provide worker instructions, labels, and optionally, attributes that workers can use to provide more information about labels \(label category attributes\)\. They are all displayed in the worker UI\.
 
-### Label Category Attributes<a name="sms-video-label-attributes"></a>
+### Label Category and Frame Attributes<a name="sms-video-label-attributes"></a>
 
-When you create a video object tracking or video object detection labeling job, you can add one or more *label category attributes* to each label category that you specify\. Use label category attributes to enable workers to provide more information about the objects they annotate\. 
+When you create a video object tracking or video object detection labeling job, you can add one or more *label category attributes* and *frame attributes*:
++ **Label category attribute** – A list of options \(strings\), a free form text box, or a numeric field associated with one or more labels\. It is used by workers to to provide metadata about a label\. 
++ **Frame attribute** – A list of options \(strings\), a free form text box, or a numeric field that appears on each video frame a worker is sent to annotate\. It is used by workers to provide metadata about video frames\. 
 
-For example, you may create the label category *car* because you want workers to identify cars in your video frames\. You might also want to capture additional data about your labeled cars, such as if they are occluded or the size of the car\. You can capture this metadata using label category attributes\. 
+Use the following sections to learn more about these attributes\. To learn how to add label category attributes to a labeling job, use the **Create Labeling Job** sections on the [task type page](sms-video-task-types.md) of your choice\.
 
-For each attribute you assign to a label, you can add multiple options that workers select from\. Workers can select a single value from those options\. In the previous example, if you added the attribute *occluded* to the car label category, you might assign *partial*, *completely*, *no* to the *occluded* attribute and enable workers to select one of these options\.
+#### Label Category Attributes<a name="sms-video-label-attributes"></a>
 
-To learn how to add label category attributes, use the **Create Labeling Job** section on the [task type page](sms-video-task-types.md) of your choice\.
+Add label category attributes to labels to give workers the ability to provide more information about the annotations they create\. 
+
+For example, if you add the label category *car*, you might also want to capture additional data about your labeled cars, such as if they are occluded or the size of the car\. You can capture this metadata using label category attributes\. In this example, if you added the attribute *occluded* to the car label category, you can assign *partial*, *completely*, *no* to the *occluded* attribute and enable workers to select one of these options\. 
+
+A label category attribute is added to an individual label, or to all labels\. When a label category attribute is applied to all labels it is referred to as a *global label category attribute*\. 
+
+#### Label Frame Attributes<a name="sms-video-frame-attributes"></a>
+
+Add frame attributes to give workers the ability to provide more information about individual video frames\. 
+
+For example, you can add a number\-frame attribute to have workers identify the number of objects they see in a particular frame\. 
+
+In another example, you may want to provide a free\-form text box to give workers the ability to provide an answer to a question\. 
+
+Each frame attribute you add appears on all frames\. 
 
 ### Task Types<a name="sms-video-frame-tools"></a>
 

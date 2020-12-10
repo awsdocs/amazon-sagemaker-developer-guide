@@ -50,6 +50,8 @@ When you create a notebook in Amazon SageMaker Studio, the App metadata is writt
 + **ResourceArn** – The Amazon Resource Name \(ARN\) of the App, which includes the instance type
 + **ResourceName** – The name of the SageMaker image
 
+Additional metadata might be included for internal use by Studio and is subject to change\.
+
 **To get the App metadata**
 
 1. In the center of the notebook menu, choose the **Launch Terminal** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Launch_terminal.png)\)\. This opens a terminal in the SageMaker image that the notebook runs in\.
