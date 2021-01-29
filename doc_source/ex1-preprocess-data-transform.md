@@ -14,8 +14,8 @@ The [XGBoost Algorithm](xgboost.md) expects comma\-separated values \(CSV\) for 
   import time
   import io
   import struct
+  import numpy as np
   from time import gmtime, strftime
-  
   import boto3
   import sagemaker
   
@@ -31,7 +31,7 @@ The [XGBoost Algorithm](xgboost.md) expects comma\-separated values \(CSV\) for 
       for data_partition_name, data_partition in data_partitions:
           print('{}: {} {}'.format(data_partition_name, data_partition[0].shape, data_partition[1].shape))
           labels = [t.tolist() for t in data_partition[1]]
-          features = [t.tolist() for t in data_partition[0]]
+          features = [t.flatten().tolist() for t in data_partition[0]]
           
           if data_partition_name != 'test':
               examples = np.insert(features, 0, labels, axis=1)

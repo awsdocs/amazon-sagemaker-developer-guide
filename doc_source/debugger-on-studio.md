@@ -1,9 +1,9 @@
 # Debugger on Studio<a name="debugger-on-studio"></a>
 
-**Important**  
-To use new features with an existing notebook instance or Studio app, you will need to restart the notebook instance or Studio app to get the latest updates\.
-
 Use the Debugger dashboards on Studio to analyze your model performance on Amazon EC2 instances\. For any SageMaker training jobs running on Amazon EC2 instance, by default, Debugger monitors system metrics \(CPU, GPU, CPU and GPU memory, Network, and data I/O\) every 500 milliseconds and basic output tensors \(loss and accuracy\) every 500 iterations\. You can also further customize Debugger configuration parameter values and adjust the saving intervals through the Studio UI or using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\. Through the Studio Debugger dashboards, gain insights into your training jobs and improve your model training performance and accuracy\.
+
+**Important**  
+If using existing SageMaker Studio apps, you need to restart them to use the new features\. To restart and update your Studio environment, follow the instructions at [Update Amazon SageMaker Studio](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-tasks-update.html)\. 
 
 ![\[An example of a SageMaker Studio Debugger dashboard\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger/debugger-studio-insights-sample.png)
 

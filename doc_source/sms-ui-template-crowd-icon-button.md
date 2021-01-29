@@ -2,7 +2,7 @@
 
 A button with an image placed in the center\. When the user touches the button, a ripple effect emanates from the center of the button\.
 
-The following is an example of a Liquid template designed for image classification that uses the `<crowd-icon-button>` element\. This template uses JavaScript to enable workers to report issues with the worker UI\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+The following is an example of a Liquid template designed for image classification that uses the `<crowd-icon-button>` element\. This template uses JavaScript to enable workers to report issues with the worker UI\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>

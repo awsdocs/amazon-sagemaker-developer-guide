@@ -100,7 +100,7 @@ The following table shows the parameters you can include in your input manifest 
 
 |  Parameter  |  Required  |  Accepted Values  |  Description  | 
 | --- | --- | --- | --- | 
-|  `frame-no`  |  No  |  Integer  |  A frame number\.   | 
+|  `frame-no`  |  No  |  Integer  |  A frame number\. This is an optional identifier specified by the customer to identify the frame within a sequence\. It is not used by Ground Truth\.  | 
 |  `unix-timestamp`  |  Yes  |  Number  |  The unix timestamp is the number of seconds since January 1st, 1970 until the UTC time that the data was collected by a sensor\.   | 
 |  `frame`  |  Yes  |  String **Example of format** `<folder-name>/<sequence-file.json>`  |  The relative location, in Amazon S3 of your sequence file\. This relative path will be appended to the path you specify in `prefix`\.  | 
 |  `format`  |  No  |  String **Accepted string values**: `"binary/xyz"`, `"binary/xyzi"`, `"binary/xyzrgb"`, `"binary/xyzirgb"`, `"text/xyz"`, `"text/xyzi"`, `"text/xyzrgb"`, `"text/xyzirgb"` **Default Values**:  When the file identified in `source-ref` has a \.bin extension, `binary/xyzi` When the file identified in `source-ref` has a \.txt extension, `text/xyzi`  |  Use this parameter to specify the format of your point cloud data\. For more information, see [Accepted Raw 3D Data Formats](sms-point-cloud-raw-data-types.md)\.  | 

@@ -17,37 +17,37 @@ client = boto3.client('sagemaker')
 
 # create sagemaker model
 create_model_api_response = client.create_model(
-ModelName='my-sagemaker-model',
-PrimaryContainer={
-'Image': '<insert the ECR Image URI>',
-'ModelDataUrl': 's3://path/to/model/artifact/model.tar.gz',
-'Environment': {}
-},
-ExecutionRoleArn='ARN for AmazonSageMaker-ExecutionRole'
-)
+                                ModelName='my-sagemaker-model',
+                                    PrimaryContainer={
+                                        'Image': <insert the ECR Image URI>,
+                                        'ModelDataUrl': 's3://path/to/model/artifact/model.tar.gz',
+                                        'Environment': {}
+                                    },
+                               ExecutionRoleArn='ARN for AmazonSageMaker-ExecutionRole'
+                            )
 
 print ("create_model API response", create_model_api_response)
 
 # create sagemaker endpoint config
 create_endpoint_config_api_response = client.create_endpoint_config(
-EndpointConfigName='sagemaker-neomxnet-endpoint-configuration',
-ProductionVariants=[
-{
-    'VariantName': '<provide your variant name>',
-    'ModelName': 'my-sagemaker-model',
-    'InitialInstanceCount': 1,
-    'InstanceType': '<provide your instance type here>'
-},
-]
-)
+                                            EndpointConfigName='sagemaker-neomxnet-endpoint-configuration',
+                                            ProductionVariants=[
+                                                {
+                                                    'VariantName': <provide your variant name>,
+                                                    'ModelName': 'my-sagemaker-model',
+                                                    'InitialInstanceCount': 1,
+                                                    'InstanceType': <provide your instance type here>
+                                                },
+                                            ]
+                                        )
 
 print ("create_endpoint_config API response", create_endpoint_config_api_response)
 
 # create sagemaker endpoint
 create_endpoint_api_response = client.create_endpoint(
-EndpointName='provide your endpoint name',
-EndpointConfigName='<insert your endpoint config name>',
-)
+                                    EndpointName='provide your endpoint name',
+                                    EndpointConfigName=<insert your endpoint config name>,
+                                )
 
 print ("create_endpoint API response", create_endpoint_api_response)
 ```
@@ -64,11 +64,11 @@ If you did not train your model using SageMaker, specify the following environme
 
 ```
 "Environment": {
-"SAGEMAKER_PROGRAM": "inference.py",
-"SAGEMAKER_SUBMIT_DIRECTORY": "/opt/ml/model/code",
-"SAGEMAKER_CONTAINER_LOG_LEVEL": "20",
-"SAGEMAKER_REGION": "insert your region",
-"MMS_DEFAULT_RESPONSE_TIMEOUT": "500"
+    "SAGEMAKER_PROGRAM": "inference.py",
+    "SAGEMAKER_SUBMIT_DIRECTORY": "/opt/ml/model/code",
+    "SAGEMAKER_CONTAINER_LOG_LEVEL": "20",
+    "SAGEMAKER_REGION": "insert your region",
+    "MMS_DEFAULT_RESPONSE_TIMEOUT": "500"
 }
 ```
 
@@ -77,10 +77,10 @@ If you did not train your model using SageMaker, specify the following environme
 
 ```
 "Environment": {
-"SAGEMAKER_PROGRAM": "inference.py",
-"SAGEMAKER_SUBMIT_DIRECTORY": "/opt/ml/model/code",
-"SAGEMAKER_CONTAINER_LOG_LEVEL": "20",
-"SAGEMAKER_REGION": "insert your region"
+    "SAGEMAKER_PROGRAM": "inference.py",
+    "SAGEMAKER_SUBMIT_DIRECTORY": "/opt/ml/model/code",
+    "SAGEMAKER_CONTAINER_LOG_LEVEL": "20",
+    "SAGEMAKER_REGION": "insert your region"
 }
 ```
 

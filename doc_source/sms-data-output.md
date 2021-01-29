@@ -56,7 +56,7 @@ The `annotations` directory contains all of the annotations made by the workforc
 
 There are three subdirectories in the `annotations` directory\. 
 
-The first, `worker-response`, contains the responses from individual workers\. This contains a subdirectory for each iteration, which in turn contains a subdirectory for each data object in that iteration\. The annotation for each data object is stored in a timestamped JSON file\. There may be more than one annotation for each data object in this directory, depending on how many workers you want to annotate each object\.
+The first, `worker-response`, contains the responses from individual workers\. This contains a subdirectory for each iteration, which in turn contains a subdirectory for each data object in that iteration\. The annotation for each data object is stored in a timestamped JSON file that contains the annotation made by a single worker, and if you use a private workforce, metadata about that worker\. To learn more about this metadata, see [Worker Metadata](#sms-worker-id-private)\. There may be more than one annotation for each data object in this directory, depending on how many workers you want to annotate each object\.
 
 The second, `consolidated-annotation`, contains information required to consolidate the annotations in the current batch into labels for your data objects\.
 
@@ -85,6 +85,48 @@ You should not compare the confidence scores of human\-labeled data objects and 
 For a bounding box labeling job, Ground Truth calculates a confidence score per box\. You can compare confidence scores within one image or across images for the same labeling type \(human or auto\)\. You can't compare confidence scores across labeling jobs\.
 
 If a single worker annotates a task \(`NumberOfHumanWorkersPerDataObject` is set to `1` or in the console, you enter 1 for **Number of workers per dataset object**\), the confidence score is set to `0.00`\. 
+
+## Worker Metadata<a name="sms-worker-id-private"></a>
+
+Ground Truth provides information that you can use to track individual workers in task output data\. The following data is located in the directories under the `worker-response` located in the [Annotations Directory](#sms-directories-annotations):
++ The `acceptanceTime` is the time that the worker accepted the task\. The format of this date and time stamp is `YYYY-MM-DDTHH:MM:SS.mmmZ` for the year \(`YYYY`\), month \(`MM`\), day \(`DD`\), hour \(`HH`\), minute \(`MM`\), second \(`SS`\) and millisecond \(`mmm`\)\. The date and time are separated by a **T**\. 
++ The `submissionTime` is the time that the worker submitted their annotations using the **Submit** button\. The format of this date and time stamp is `YYYY-MM-DDTHH:MM:SS.mmmZ` for the year \(`YYYY`\), month \(`MM`\), day \(`DD`\), hour \(`HH`\), minute \(`MM`\), second \(`SS`\) and millisecond \(`mmm`\)\. The date and time are separated by a **T**\. 
++ `timeSpentInSeconds` reports the total time, in seconds, that a worker actively worked on that task\. This metric does not include time when a worker paused or took a break\.
++ The `workerId` is unique to each worker\. 
++ If you use a [private workforce](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-private.html), in `workerMetadata`, you see the following\.
+  + The `identityProviderType` is the service used to manage the private workforce\. 
+  + The `issuer` is the Cognito user pool or OIDC Identity Provider \(IdP\) issuer associated with the work team assigned to this human review task\.
+  + A unique `sub` identifier refers to the worker\. If you create a workforce using Amazon Cognito, you can retrieve details about this worker \(such as the name or user name\) using this ID using Amazon Cognito\. To learn how, see [Managing and Searching for User Accounts](https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#manage-user-accounts-searching-user-attributes) in [Amazon Cognito Developer Guide](https://docs.aws.amazon.com/cognito/latest/developerguide/)\.
+
+The following is an example of the output you may see if you use Amazon Cognito to create a private workforce\. This is identified in the `identityProviderType`\.
+
+```
+"submissionTime": "2020-12-28T18:59:58.321Z",
+"acceptanceTime": "2020-12-28T18:59:15.191Z", 
+"timeSpentInSeconds": 40.543,
+"workerId": "a12b3cdefg4h5i67",
+"workerMetadata": {
+    "identityData": {
+        "identityProviderType": "Cognito",
+        "issuer": "https://cognito-idp.aws-region.amazonaws.com/aws-region_123456789",
+        "sub": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+    }
+}
+```
+
+ The following is an example of the `workerMetadata` you may see if you use your own OIDC IdP to create a private workforce:
+
+```
+"workerMetadata": {
+        "identityData": {
+            "identityProviderType": "Oidc",
+            "issuer": "https://example-oidc-ipd.com/adfs",
+            "sub": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+        }
+}
+```
+
+To learn more about using private workforces, see [Use a Private Workforce](sms-workforce-private.md)\.
 
 ## Output Metadata<a name="sms-output-metadata"></a>
 
@@ -625,6 +667,8 @@ Ground Truth creates one output sequence file for each sequence of video frames 
 + All annotations for all frames in a sequence in the `detection-annotations` list of JSON objects\. 
 + For each frame that was annotated by a worker, the frame file name \(`frame`\), number \(`frame-no`\), a list of JSON objects containing annotations \(`annotations`\), and if applicable, `frame-attributes`\. The name of this list is defined by the task type you use: `polylines`, `polygons`, `keypoints`, and for bounding boxes, `annotations`\.
 
+   
+
   Each JSON object contains information about a single annotation and associated label\. The following table outlines the parameters you'll see for each video frame task type\.   
 ****    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/sms-data-output.html)
@@ -928,7 +972,7 @@ The *red, italicized text* in the examples below depends on labeling job specifi
                 "p2": 0,
                 "skew": 0,
                 "unix-timestamp": 1566861644.759115,
-                "image-path": "images/frame_0_camera_0.jpg",
+                "image-path": "images/frame_0_camera_0.jpg", 
                 "position": {
                     "x": -2.2722515189268138,
                     "y": 116.86003310568965,

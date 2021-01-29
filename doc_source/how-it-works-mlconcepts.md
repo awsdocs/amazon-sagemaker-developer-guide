@@ -34,6 +34,10 @@ The following diagram illustrates the typical workflow for creating a machine le
 
      You use a Jupyter notebook in your SageMaker notebook instance to train and evaluate your model\. 
 
+     
+
 1. **Deploy the model**— You traditionally re\-engineer a model before you integrate it with your application and deploy it\. With SageMaker hosting services, you can deploy your model independently, decoupling it from your application code\. For more information, see [Deploy a Model on SageMaker Hosting Services](how-it-works-deployment.md#how-it-works-hosting)\.
+
+   
 
 Machine learning is a continuous cycle\. After deploying a model, you monitor the inferences, collect "ground truth," and evaluate the model to identify drift\. You then increase the accuracy of your inferences by updating your training data to include the newly collected ground truth\. You do this by retraining the model with the new dataset\. As more and more example data becomes available, you continue retraining your model to increase accuracy\.

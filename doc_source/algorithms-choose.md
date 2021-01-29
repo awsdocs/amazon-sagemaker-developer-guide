@@ -49,12 +49,12 @@ After choosing an algorithm, you must decide which implementation of it you want
 ### Use a built\-in algorithm<a name="built-in-algorithms-benefits"></a>
 
 When choosing an algorithm for your type of problem and data, the easiest option is to use one of Amazon SageMaker's built\-in algorithms\. These built\-in algorithms come with two major benefits\.
-+ The built\-in algorithms require no coding tostart running experiments\. The only inputs you need to provide are the data, hyperparameters, and compute resources\. This allows you to run experiments more quickly, with less overhead for tracking results and code changes\.
++ The built\-in algorithms require no coding to start running experiments\. The only inputs you need to provide are the data, hyperparameters, and compute resources\. This allows you to run experiments more quickly, with less overhead for tracking results and code changes\.
 + The built\-in algorithms come with parallelization across multiple compute instances and GPU support right out of the box for all applicable algorithms \(some algorithms may not be included due to inherent limitations\)\. If you have a lot of data with which to train your model, most built\-in algorithms can easily scale to meet the demand\. Even if you already have a pre\-trained model, it may still be easier to use its corollary in SageMaker and input the hyper\-parameters you already know than to port it over, using script mode on a supported framework\.
 
 For more information on the built\-in algorithms provided by SageMaker, see [Use Amazon SageMaker Built\-in Algorithms](algos.md)\.
 
-For important information about docker registery paths, data formats, recommended EC2 instance types, and &CW; logs common to all of the built\-in algorithms provided by SageMaker, see [Common Information About Built\-in Algorithms](common-info-all-im-models.md)\.
+For important information about docker registry paths, data formats, recommended EC2 instance types, and &CW; logs common to all of the built\-in algorithms provided by SageMaker, see [Common Information About Built\-in Algorithms](common-info-all-im-models.md)\.
 
 ### Use script mode in a supported framework<a name="supported-frameworks-benefits"></a>
 

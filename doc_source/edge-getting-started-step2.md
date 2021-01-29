@@ -1,8 +1,8 @@
-# Package Compiled Model<a name="edge-getting-started-step2"></a>
+# Package a Compiled Model<a name="edge-getting-started-step2"></a>
 
-Packaging jobs take SageMaker Neo compiled models and make any changes necessary to deploy the model with the inference engine, Edge Manager agent\. To package your model, create an edge packaging job with `create_edge_packaging` API or with the SageMaker console\.
+Packaging jobs take SageMaker Neo–compiled models and make any changes necessary to deploy the model with the inference engine, Edge Manager agent\. To package your model, create an edge packaging job with the `create_edge_packaging` API or the SageMaker console\.
 
-You will need to provide the name that you used for your Neo compilation job, a name to the packaging job, a role ARN \(see [Prerequisites](https://docs.aws.amazon.com/sagemaker/dg/latest/edge-getting-started-step1.html) section\), a name to the model, a model version, and the S3 bucket URI for the output of the packaging job\. The following is an example using the API\.
+You need to provide the name that you used for your Neo compilation job, a name for the packaging job, a role ARN \(see [Prerequisites](edge-getting-started-step1.md) section\) , a name for the model, a model version, and the Amazon S3 bucket URI for the output of the packaging job\. The following is an example using the API\.
 
 ```
 # Create SageMaker client so you can submit a packaging job
@@ -46,7 +46,7 @@ while True:
 print('Done!')
 ```
 
-Once the packaging job is complete, download the model locally to your device\. You can use the Amazon S3 client we defined above to download the model:
+Once the packaging job is complete, download the model locally to your device\. You can use the Amazon S3 client previously defined to download the model:
 
 ```
 s3_client.download_file(bucket=fleet_bucket,
@@ -54,4 +54,4 @@ s3_client.download_file(bucket=fleet_bucket,
                         filename="mobilenet_v2.tar.gz"
 ```
 
-You can also download your model using the Amazon S3 console at [Amazon S3 console](https://console.aws.amazon.com/s3/)\. Search for your bucket by providing a partial name of your bucket in the search field\.
+You can also download your model using the Amazon S3 console at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/)\. Search for your bucket by providing a partial name of your bucket in the search field\.

@@ -50,13 +50,15 @@ You configure the cooldown period in your automatic scaling policy\. You can spe
 
 If you don't specify a scale\-in or a scale\-out cooldown period automatic scaling use the default, which is 300 seconds for each\.
 
+
+
 If instances are being added or removed too quickly when you test your automatic scaling configuration, consider increasing this value\. You can see this behavior if the traffic to your model has a lot of spikes, or if you have multiple automatic scaling policies defined for a variant\.
 
 If instances are not being added quickly enough to address increased traffic, consider decreasing this value\.
 
 ## Permissions<a name="endpoint-auto-scaling-permissions"></a>
 
-The `SagemakerFullAccessPolicy` IAM policy has all of the IAM permissions required to perform autoscaling\. For more information about SageMaker IAM permissions, see [SageMaker Roles ](sagemaker-roles.md)\.
+The `SagemakerFullAccessPolicy` IAM policy has all of the IAM permissions required to perform autoscaling\. For more information about SageMaker IAM permissions, see [SageMaker Roles](sagemaker-roles.md)\.
 
 If you are using a custom permission policy, you must include the following permissions:
 

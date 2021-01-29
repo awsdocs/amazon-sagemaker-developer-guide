@@ -2,6 +2,8 @@
 
 K\-means is an algorithm that trains a model that groups similar objects together\. The k\-means algorithm accomplishes this by mapping each observation in the input dataset to a point in the *n*\-dimensional space \(where *n* is the number of attributes of the observation\)\. For example, your dataset might contain observations of temperature and humidity in a particular location, which are mapped to points \(*t, h*\) in 2\-dimensional space\. 
 
+
+
 **Note**  
 Clustering algorithms are unsupervised\. In unsupervised learning, labels that might be associated with the objects in the training dataset aren't used\. 
 

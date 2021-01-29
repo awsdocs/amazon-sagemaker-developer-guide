@@ -1,15 +1,21 @@
 # Create a Labeling Job \(API\)<a name="sms-create-labeling-job-api"></a>
 
-To create a labeling job using the Amazon SageMaker API, you use the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. For specific instructions on creating a labeling job for a built\-in task type, see that [task type page](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html)\. 
+To create a labeling job using the Amazon SageMaker API, you use the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. For specific instructions on creating a labeling job for a built\-in task type, see that [task type page](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html)\. To learn how to create a streaming labeling job, which is a a labeling job that runs perpetually, see [Create a Streaming Labeling Job](sms-streaming-create-job.md)\.
 
-To use this operation, you need the following:
+To use the `CreateLabelingJob` operation, you need the following:
 + A worker task template \(`UiTemplateS3Uri`\) or human task UI ARN \(`HumanTaskUiArn`\) in Amazon S3\. 
   + For 3D point cloud labeling jobs, use the ARN listed in `[HumanTaskUiArn](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UiConfig.html#sagemaker-Type-UiConfig-HumanTaskUiArn)` for your task type\. 
   + If you are using a built\-in task type other than 3D point cloud tasks, you can add your worker instructions to one of the pre\-built templates and save the template \(using a \.html or \.liquid extension\) in your S3 bucket\. Find the pre\-build templates on your [task type page](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html)\.
   + If you are using a custom labeling workflow, you can create a custom template and save the template in your S3 bucket\. To learn how to built a custom worker template, see [Step 2: Creating your custom labeling task template](sms-custom-templates-step2.md)\. For custom HTML elements that you can use to customize your template, see [Crowd HTML Elements Reference](sms-ui-template-reference.md)\. For a repository of demo templates for a variety of labeling tasks, see [Amazon SageMaker Ground Truth Sample Task UIs ](https://github.com/aws-samples/amazon-sagemaker-ground-truth-task-uis)\.
 + At least one S3 bucket to store your input and output data\. 
 + An input manifest file that specifies your input data\. For information about creating an input manifest, see [Input Data](sms-data-input.md)\. 
-+ A label category configuration file\. For 3D point cloud and video frame task type, use the format in [Create a Labeling Category Configuration File with Label Category Attributes](sms-label-cat-config-attributes.md)\. For all other built\-in task types and custom tasks, your label category configuration file must be a JSON file in the following format\. Identify the labels you want to use by replacing `label_1`, `label_2`,`...`,`label_n` with your label categories\.
++ A label category configuration file\. Each label category name must be unique\. 
+
+  For image classification and text classification \(single and multi\-label\) you must specify at least two label categories\. For all other task types, the minimum number of label categories required is one\. 
+
+  For 3D point cloud and video frame task type, use the format in [Create a Labeling Category Configuration File with Label Category and Frame Attributes](sms-label-cat-config-attributes.md)\. 
+
+  For all other built\-in task types and custom tasks, your label category configuration file must be a JSON file in the following format\. Identify the labels you want to use by replacing `label_1`, `label_2`,`...`,`label_n` with your label categories\. 
 
   ```
   {
@@ -22,7 +28,7 @@ To use this operation, you need the following:
       ]
   }
   ```
-+ An AWS Identity and Access Management \(IAM\) role with the AmazonSageMakerFullAccess IAM policy attached and with permissions to access your S3 buckets\. If you require more granular permissions, see [Assign IAM Permissions to Use Ground Truth](sms-security-permission.md)\. Note that AmazonSageMakerFullAccess will grant your role permission to access all S3 buckets with `sagemaker` in the name\. 
++ An AWS Identity and Access Management \(IAM\) role with the [AmazonSageMakerGroundTruthExecution](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerGroundTruthExecution) managed IAM policy attached and with permissions to access your S3 buckets\. To learn more about this policy, see [Grant General Permissions To Get Started Using Ground Truth](sms-security-permission.md#sms-security-permissions-get-started)\. If you require more granular permissions, see [Assign IAM Permissions to Use Ground Truth](sms-security-permission.md)\.
 
   If your input or output bucket name does not contain `sagemaker`, you can attach a policy similar to the following to the role that is passed to the `CreateLabelingJob` operation\.
 

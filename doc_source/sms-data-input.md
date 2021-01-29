@@ -17,6 +17,7 @@ The following task types have special input data requirements and options:
 
 **Topics**
 + [Use an Input Manifest File](sms-input-data-input-manifest.md)
++ [Supported Data Formats](sms-supported-data-formats.md)
 + [Ground Truth Streaming Labeling Jobs](sms-streaming-labeling-job.md)
 + [Input Data Quotas](input-data-limits.md)
 + [Filter and Select Data for Labeling](sms-data-filtering.md)

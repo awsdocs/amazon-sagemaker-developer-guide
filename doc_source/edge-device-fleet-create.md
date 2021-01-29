@@ -1,10 +1,10 @@
 # Create a Fleet<a name="edge-device-fleet-create"></a>
 
-You can create a fleet programmatically with the AWS SDK for Python \(Boto3\) or clicking through the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
+You can create a fleet programmatically with the AWS SDK for Python \(Boto3\) or through the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
 ## Create a Fleet \(Boto3\)<a name="edge-device-fleet-create-boto3"></a>
 
-Use the `CreateDeviceFleet` API to create a fleet\. Specify a name for the fleet as well as an Amazon S3 URI where you want the device to store sampled data\. You can optionally include an Amazon Resource Role \(ARN\) role to use an alias for AWS Internet of Things \(IoT\), a description of the fleet, tags, and a KMS Key ID\.
+Use the `CreateDeviceFleet` API to create a fleet\. Specify a name for the fleet, as well as an Amazon S3 URI where you want the device to store sampled data\. You can optionally include an Amazon Resource Role \(ARN\) role to use an alias for AWS IoT, a description of the fleet, tags, and an AWS KMS Key ID\.
 
 ```
 import boto3
@@ -37,7 +37,7 @@ sagemaker_client.describe_device_fleet(
 )
 ```
 
-By default, it will return the name of the fleet, the device fleet ARN, the Amazon S3 bucket URI, the IAM role, the role alias created in AWS IoT, a timestamp of when the fleet was created, and a timestamp of when the fleet was last modified\.
+By default, it returns the name of the fleet, the device fleet ARN, the Amazon S3 bucket URI, the IAM role, the role alias created in AWS IoT, a timestamp of when the fleet was created, and a timestamp of when the fleet was last modified\.
 
 A description of the fleet is returned if one was provided\.
 
@@ -59,7 +59,7 @@ A description of the fleet is returned if one was provided\.
 
 You can create a Edge Manager packaging job using the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-1. In the SageMaker console, choose **Edge Inference** and then choose choose **Edge device fleets**\.
+1. In the SageMaker console, choose **Edge Inference** and then choose **Edge device fleets**\.
 
 1. Choose **Create device fleet**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/smith/create-device-button-edited.png)

@@ -2,7 +2,7 @@
 
 A component styled to look like a tab with information below\.
 
-The following is an example template that uses the `<crowd-tab>` element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+The following is an example template that uses the `<crowd-tab>` element\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>

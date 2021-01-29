@@ -3,14 +3,24 @@
 Use the Debugger built\-in rules provided by Amazon SageMaker Debugger and analyze tensors emitted while training your models\. The Debugger built\-in rules monitor various common conditions that are critical for the success of a training job\. You can call the built\-in rules using [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) or the low\-level SageMaker API operations\. Depending on deep learning frameworks of your choice, there are four scopes of validity for the built\-in rules as shown in the following table\.
 
 **Note**  
-The maximum numbers of built\-in rules for a training job are 20 for `ProfilerRule` and 20 for `Rule`\. SageMaker Debugger fully manages the built\-in rules and analyzes your training job in parallel\. For more information about billing, see the **Amazon SageMaker Studio is available at no additional charge** section of the [Amazon SageMaker Pricing](https://aws.amazon.com/sagemaker/pricing/) page\.
+The maximum numbers of built\-in rules for a training job are 20 for `ProfilerRule` and 20 for `Rule`\. SageMaker Debugger fully manages the built\-in rules and analyzes your training job in parallel\. For more information about billing, see the **Amazon SageMaker Studio is available at no additional charge** section of the [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/) page\.
 
-## Debugger ProfilerRule<a name="debugger-built-in-rules-"></a>
+**Important**  
+To use the new Debugger features, you need to upgrade the SageMaker Python SDK and the SMDebug client library\. In your iPython kernel, Jupyter notebook, or JupyterLab environment, run the following code to install the latest versions of the libraries and restart the kernel\.  
 
-The following rules are the Debugger built\-in rules callable using the `ProfilerRule.sagemaker` classmethod\.
+```
+import sys
+import IPython
+!{sys.executable} -m pip install -U sagemaker smdebug
+IPython.Application.instance().kernel.do_shutdown(True)
+```
+
+## Debugger ProfilerRule<a name="debugger-built-in-rules-ProfilerRule"></a>
+
+The following rules are the Debugger built\-in rules that are callable using the `ProfilerRule.sagemaker` classmethod\.
 
 
-**Debugger Built\-in Rules for Generating Aggregated Training and Profiling Reports**  
+**Debugger Built\-in Rules for Generating Profiling Reports**  
 
 | Scope of Validity | Built\-in Rules | 
 | --- | --- | 
@@ -32,7 +42,14 @@ The following rules are the Debugger built\-in rules callable using the `Profile
 
 ## Debugger Rule<a name="debugger-built-in-rules-Rule"></a>
 
-The following rules are the Debugger built\-in rules callable using the `Rule.sagemaker` classmethod\.
+The following rules are the Debugger built\-in rules that are callable using the `Rule.sagemaker` classmethod\.
+
+
+**Debugger Built\-in Rules for Generating Training Reports**  
+
+| Scope of Validity | Built\-in Rules | 
+| --- | --- | 
+| Training Report for SageMaker XGboost training job |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html)  | 
 
 
 **Debugger Built\-in Rules for Debugging Model Training Data \(Output Tensors\)**  
@@ -98,7 +115,7 @@ Sample rule configuration codes are provided for each built\-in rule below the p
 
 ## ProfilerReport<a name="profiler-report"></a>
 
-The ProfilerReport rule invokes all of the built\-in rules for monitoring and profiling\. It creates a profiling report and updates when the individual rules are triggered\. After your training job has finished, you can download a comprehensive profiling report\. You can adjust the rule parameter values to customize sensitivity of the built\-in rules\. The following example code shows the basic format to adjust the other built\-in rule parameters through the ProfilerReport rule\.
+The ProfilerReport rule invokes all of the built\-in rules for monitoring and profiling\. It creates a profiling report and updates when the individual rules are triggered\. You can download a comprehensive profiling report while a training job is running or after the training job is complete\. You can adjust the rule parameter values to customize sensitivity of the built\-in monitoring and profiling rules\. The following example code shows the basic format to adjust the built\-in rule parameters through the ProfilerReport rule\.
 
 ```
 rules=[
@@ -128,6 +145,8 @@ rules=[
     )  
 ]
 ```
+
+
 
 
 **Parameter Descriptions for the OverallSystemUsage Rule**  
@@ -282,6 +301,30 @@ The StepOutlier rule helps detect outliers in step durations\. This rule returns
 | mode | Mode under which steps have been saved and on which Rule should run on\. Per default rule will run on steps from EVAL and TRAIN phase**Optional**Valid values: IntegerDefault value: `5` \(in minutes\) | 
 | n\_outliers | How many outliers to ignore before rule returns True**Optional**Valid values: IntegerDefault value: `10` | 
 | scan\_interval\_us |  Time interval with which timeline files are scanned\. **Optional** Valid values: Integer Default values: `60000000` \(in microseconds\)  | 
+
+## CreateXgboostReport<a name="create-xgboost-report"></a>
+
+The CreateXgboostReport rule collects output tensors from an XGBoost training job and autogenerates a comprehensive training report\. You can download a comprehensive profiling report while a training job is running or after the training job is complete, and check progress of training or the final result of the training job\. The CreateXgboostReport rule collects the following output tensors by default: 
++ `hyperparameters` – Saves at the first step
++ `metrics` – Saves loss and accuracy every 5 steps
++ `feature_importance` – Saves every 5 steps
++ `predictions` – Saves every 5 steps
++ `labels` – Saves every 5 steps
+
+
+**Parameter Descriptions for the StepOutlier Rule**  
+
+| Parameter Name | Description | 
+| --- | --- | 
+| base\_trial | The base trial training job name\. This parameter is automatically set to the current training job by Amazon SageMaker Debugger\. **Required** Valid values: String  | 
+
+```
+rules=[
+    Rule.sagemaker(
+        rule_configs.create_xgboost_report()
+    )  
+]
+```
 
 ## DeadRelu<a name="dead-relu"></a>
 

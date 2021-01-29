@@ -4,7 +4,7 @@ Video frame object tracking tasks require you to track the movement of objects a
 
 You can use the worker UI to navigate between video frames and use the tools provided to identify unique objects and track their movement from one from to the next\. Use this page to learn how to navigate your worker UI, use the tools provided, and complete your task\. 
 
-It is recommended that you complete your task using a Google Chrome web browser\. 
+It is recommended that you complete your task using a Google Chrome or Firefox web browser\. 
 
 **Important**  
 If you see annotations have already been added to one or more video frames when you open your task, adjust those annotations and add additional annotations as needed\. 
@@ -51,6 +51,8 @@ Use the play button to automatically move through the entire sequence of frames\
 
 Use the next frame and previous frame buttons to move forward or back one frame at a time\. You can also input a frame number to navigate to that frame\. 
 
+
+
 The following video demonstrates how to navigate between video frames\. 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/nav_video_ui.gif)
@@ -64,7 +66,7 @@ When you are in the worker UI, you see the following menus:
 
 ## Tool Guide<a name="sms-video-worker-instructions-tool-guide"></a>
 
-Your task will include one or more tools\. The tool provided dictates the type of anotations you will create to identify and track objects\. Use the following table to learn more about each tool provided\. 
+Your task will include one or more tools\. The tool provided dictates the type of annotations you will create to identify and track objects\. Use the following table to learn more about each tool provided\. 
 
 
 ****  
@@ -76,8 +78,8 @@ Your task will include one or more tools\. The tool provided dictates the type o
 |  Keypoint  |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/Keypoint.png)  |  Add a keypoint annotation\.  |  Choose this icon to add a keypoint\. Click on an object the image to place the keypoint at that location\.  Each keypoint you add is associated with the category you choose from the Label category drop down menu\. Select a keypoint or its associated label to adjust it\.   | 
 |  Polyline  |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/polyline.png)  |  Add a polyline annotation\.  |  Choose this icon to add a polyline\. To add a polyline, continuously click around the object of interest to add new points\. To stop drawing a polyline, select the last point that you placed a second time \(this point will be green\), or press **Enter** on your keyboard\.  Each point added to the polyline is connected to the previous point by a line\. The polyline does not have to be closed \(the start point and end point do not have to be the same\) and there are no restrictions on the angles formed between lines\.  Each polyline you add is associated with the category you choose from the Label category drop down menu\. Select the polyline or its associated label to adjust it\.   | 
 |  Polygon  |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/Polygon.png)  |  Add a polygon annotation\.  |  Choose this icon to add a polygon\. To add a polygon, continuously click around the object of interest to add new points\. To stop drawing the polygon, select the start point \(this point will be green\)\.  A polygon is a closed shape defined by a series of points that you place\. Each point added to the polygon is connected to the previous point by a line and there are no restrictions on the angles formed between lines\. The start and end point must be the same\.  Each polyline you add is associated with the category you choose from the Label category drop down menu\. Select the polyline or its associated label to adjust it\.   | 
-|  Copy to Next  |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/copy_to_next.png)  |  Copy annotations to the next frame\.   |  If one or more annotations are selected in the current frame, those annotations are copied to the next frame\. If no annotations are selected, all anotations in the current frame will be copied to the next frame\.   | 
-|  Copy to All  |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/copy_to_all.png)  |  Copy annotations to all subsequent frames\.  |  If one or more annotations are selected in the current frame, those annotations are copied to all subsequent frames\. If no annotations are selected, all anotations in the current frame will be copied to all subsequent frames\.   | 
+|  Copy to Next  |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/copy_to_next.png)  |  Copy annotations to the next frame\.   |  If one or more annotations are selected in the current frame, those annotations are copied to the next frame\. If no annotations are selected, all annotations in the current frame will be copied to the next frame\.   | 
+|  Copy to All  |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/copy_to_all.png)  |  Copy annotations to all subsequent frames\.  |  If one or more annotations are selected in the current frame, those annotations are copied to all subsequent frames\. If no annotations are selected, all annotations in the current frame will be copied to all subsequent frames\.   | 
 
 ## Icons Guide<a name="sms-video-worker-instructions-ot-icons"></a>
 
@@ -95,7 +97,7 @@ Use this table to learn about the icons you see in your UI\. You can automatical
 |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/Undo.png)  | undo |  Undo an action\. You can use this icon to remove a bounding box that you just added, or to undo an adjustment you made to a bounding box\.   | 
 |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/Redo.png)  | redo | Redo an action that was undone using the undo icon\. | 
 |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/Delete.png)  | delete label | Delete a label\. This will delete the bounding box associated with the label in a single frame\.  | 
-|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/Show:Hide.png)  | show or hide label | Select this icon to show a label that has been hidden\. If this icon has a slash throguh it, select it to hide the label\.  | 
+|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/Show_Hide.png)  | show or hide label | Select this icon to show a label that has been hidden\. If this icon has a slash through it, select it to hide the label\.  | 
 |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/Edit.png)  | edit label | Select this icon to open the Edit instance menu\. Use this menu to edit a label category, ID, and to add or edit label attributes\.  | 
 
 ## Shortcuts<a name="sms-video-worker-instructions-ot-hot-keys"></a>

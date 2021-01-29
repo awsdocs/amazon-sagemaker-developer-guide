@@ -2,7 +2,7 @@
 
 Typically, you explore training data to determine what you need to clean up and which transformations to apply to improve model training\. For this exercise, you don't need to clean up the MNIST dataset\. 
 
-**To explore the dataset**
+**Toe explore the dataset**
 + Type the following code in a cell in your notebook and run the cell to display the first 10 images in `train_set`:
 
   ```

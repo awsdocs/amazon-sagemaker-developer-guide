@@ -6,7 +6,7 @@ You can create a video frame object detection labeling job using the Amazon Sage
 
 Ground Truth provides a worker UI and tools to complete your labeling job tasks: [Preview the Worker UI](#sms-video-od-worker-ui)\.
 
-You can create a job to adjust annotations created in a video object detection labeling job using the video object detection adjustment task type\. To learn more, see [Create an Adjustment Labeling Job](#sms-video-od-adjustment)\.
+You can create a job to adjust annotations created in a video object detection labeling job using the video object detection adjustment task type\. To learn more, see [Create Video Frame Object Detection Adjustment or Verification Labeling Job](#sms-video-od-adjustment)\.
 
 ## Preview the Worker UI<a name="sms-video-od-worker-ui"></a>
 
@@ -45,7 +45,7 @@ You create an object detection labeling job using the SageMaker API operation `C
 + Your [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelAttributeName](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelAttributeName) must end in `-ref`\. For example, `video-od-labels-ref`\. 
 + Your input manifest file must be a video frame sequence manifest file\. You can create this manifest file using the SageMaker console, or create it manually and upload it to Amazon S3\. For more information, see [Input Data Setup](sms-video-data-setup.md)\. 
 + You can only use private or vendor work teams to create video frame object detection labeling jobs\. 
-+ You specify your labels, label category and frame attributes, the task type, and worker instructions in a label category configuration file\. Specify the task type \(bounding boxes, polylines, polygons or keypoint\) using `annotationType` in your label category configuration file\. For more information, see [Create a Labeling Category Configuration File with Label Category Attributes](sms-label-cat-config-attributes.md) to learn how to create this file\. 
++ You specify your labels, label category and frame attributes, the task type, and worker instructions in a label category configuration file\. Specify the task type \(bounding boxes, polylines, polygons or keypoint\) using `annotationType` in your label category configuration file\. For more information, see [Create a Labeling Category Configuration File with Label Category and Frame Attributes](sms-label-cat-config-attributes.md) to learn how to create this file\. 
 + You need to provide pre\-defined ARNs for the pre\-annotation and post\-annotation \(ACS\) Lambda functions\. These ARNs are specific to the AWS Region you use to create your labeling job\. 
   + To find the pre\-annotation Lambda ARN, refer to [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-PreHumanTaskLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-PreHumanTaskLambdaArn)\. Use the Region in which you are creating your labeling job to find the correct ARN that ends with `PRE-VideoObjectDetection`\. 
   + To find the post\-annotation Lambda ARN, refer to [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AnnotationConsolidationConfig.html#sagemaker-Type-AnnotationConsolidationConfig-AnnotationConsolidationLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AnnotationConsolidationConfig.html#sagemaker-Type-AnnotationConsolidationConfig-AnnotationConsolidationLambdaArn)\. Use the Region in which you are creating your labeling job to find the correct ARN that ends with `ACS-VideoObjectDetection`\. 
@@ -110,9 +110,9 @@ response = client.create_labeling_job(
 )
 ```
 
-## Create an Adjustment Labeling Job<a name="sms-video-od-adjustment"></a>
+## Create Video Frame Object Detection Adjustment or Verification Labeling Job<a name="sms-video-od-adjustment"></a>
 
-Use the video frame object detection adjustment task type to have workers adjust labels from a video frame object detection labeling job\. You can create an adjustment labeling job in the console by *chaining* a successfully completed object tracking labeling job\. To learn more, see [Start an Label Adjustment Job \(Console\)](sms-verification-data.md#sms-data-adjust-start-console)\.
+You can create an adjustment and verification labeling job using the Ground Truth console or `CreateLabelingJob` API\. To learn more about adjustment and verification labeling jobs, and to learn how create one, see [Verify and Adjust Labels](sms-verification-data.md)\.
 
 ## Output Data Format<a name="sms-video-od-output-data"></a>
 

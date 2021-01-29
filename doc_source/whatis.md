@@ -4,11 +4,16 @@ Amazon SageMaker is a fully managed machine learning service\. With SageMaker, d
 
 This guide includes information and tutorials on SageMaker features\. For additional information, see [Amazon SageMaker developer resources](https://aws.amazon.com/sagemaker/developer-resources/)\.
 
+**Topics**
++ [Amazon SageMaker Features](#whatis-features)
++ [Amazon SageMaker Pricing](#whatis-pricing)
++ [Are You a First\-time User of Amazon SageMaker?](#first-time-user)
+
 ## Amazon SageMaker Features<a name="whatis-features"></a>
 
 Amazon SageMaker includes the following features:
 
-**[SageMaker Studio](gs-studio.md)**  
+**[SageMaker Studio](studio.md)**  
 An integrated machine learning environment where you can build, train, deploy, and analyze your models all in the same application\.
 
 **[SageMaker Model Registry](model-registry.md)**  

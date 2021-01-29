@@ -51,8 +51,4 @@ You can push records to Feature Store by calling the synchronous `PutRecord` API
 
 When feature data is ingested and updated, Feature Store stores historical data for all features in the offline store\. For batch ingest, you can pull feature values from your S3 bucket or use Athena to query\. You can also use Data Wrangler to process and engineer new features that can then be exported to a chosen S3 bucket to be accessed by Feature Store\. For batch ingestion, you can configure a processing job to batch ingest your data into Feature Store, or you can pull feature values from your S3 bucket using Athena\.  
 
-## Access Control<a name="access-control"></a>
-
-Feature Store allows you to grant or deny access to individuals at the feature group\-level and enables cross\-account access to Feature Store\. For example, you can set up developer accounts to access the offline store for model training and exploration that do not have write access to production accounts\. You can set up production accounts to access both online and offline stores\. Feature Store uses unique customer AWS KMS CMKs for offline and online store data at\-rest encryption\. Access control is enabled through both API and KMS CMK access\. You can also create feature group\-level access control\.  
-
-## <a name="w1151aac22c27"></a>
+## <a name="w1199aac22c25"></a>

@@ -12,14 +12,14 @@ If you disable it, you won't be able to view the comprehensive Studio Debugger i
 If you disable it, you won't be able to collect output tensors and cannot debug your model parameters\.
 
   ```
-  estimator = Estimator(
+  estimator=Estimator(
       ...
-      disable_profiler = True
-      debugger_hook_config = False
+      disable_profiler=True
+      debugger_hook_config=False
   )
   ```
 
-  For more information about the Debugger\-specific parameters, see [SageMaker Estimator](https://sagemaker.readthedocs.io/en/stable/api/training/estimators.html#sagemaker.estimator.Estimator) and in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.
+  For more information about the Debugger\-specific parameters, see [SageMaker Estimator](https://sagemaker.readthedocs.io/en/stable/api/training/estimators.html#sagemaker.estimator.Estimator) in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.
 + While a training job is running, do the following:
 
   To disable both monitoring and profiling while your training job is running, use the following estimator classmethod:

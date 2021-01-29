@@ -1,10 +1,17 @@
 # Manually Create Tracking Entities<a name="lineage-tracking-manual-creation"></a>
 
-You can manually create tracking entities for any property\. For information on the tracking entities that Amazon SageMaker automatically creates, see [Amazon SageMaker Created Tracking Entities](lineage-tracking-auto-creation.md)\. An error occurs if you try to create an entity that already exists\.
+You can manually create tracking entities for any property\. For information on the tracking entities that Amazon SageMaker automatically creates, see [Amazon SageMaker Created Tracking Entities](lineage-tracking-auto-creation.md)\.
 
 You can add tags to all entities except associations\. Tags are arbitrary key\-value pairs that provide custom information\. You can filter or sort a list or search query by tags\. For more information, see [Tagging AWS resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) in the *AWS General Reference*\.
 
-## Manually Create Tracking Entities<a name="lineage-tracking-manual-create"></a>
+For a sample notebook that demonstrates how to create lineage entities, see the [Amazon SageMaker Lineage](https://github.com/aws/amazon-sagemaker-examples/tree/master/sagemaker-lineage) notebook in the [Amazon SageMaker example GitHub repository](https://github.com/awslabs/amazon-sagemaker-examples)\.
+
+**Topics**
++ [Manually Create Entities](#lineage-tracking-manual-create)
++ [Manually Track a Workflow](#lineage-tracking-manual-track)
++ [Limits](#lineage-tracking-manual-track-limits)
+
+## Manually Create Entities<a name="lineage-tracking-manual-create"></a>
 
 The following procedure shows you how to create and associate artifacts between a SageMaker training job and endpoint\. You perform the following steps:
 + Create input artifacts for the source code, training data, and testing data locations\.
@@ -170,3 +177,19 @@ Given the endpoint Amazon Resource Name \(ARN\) from the previous example, the f
    ```
    s3://sagemaker-sample-data-us-east-2/mxnet/mnist/train
    ```
+
+## Limits<a name="lineage-tracking-manual-track-limits"></a>
+
+An association can be created between any entities, experiment and lineage, except the following:
++ An association can't be created between two experiment entities\. Experiment entities consist of experiments, trials, and trial components\.
++ An association can't be created with another association\.
+
+An error occurs if you try to create an entity that already exists\.
+
+**Maximum number of manually created lineage entities**
++ Actions: 3000
++ Artifacts: 6000
++ Associations: 6000
++ Contexts: 500
+
+There is no limit to the number of lineage entities automatically created by SageMaker\.

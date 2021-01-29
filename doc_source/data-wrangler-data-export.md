@@ -20,6 +20,8 @@ Use the following procedure to export a data flow\. Use the sections on this pag
 
 **To export your Data Wrangler flow:**
 
+1. Save your Data Wrangler flow\. Select **File** and then select **Save Data Wrangler Flow**\.
+
 1. Navigate to the **Export** tab\.
 
 1. Select the last step in your Data Wrangler flow\.  
@@ -33,7 +35,7 @@ Use the following procedure to export a data flow\. Use the sections on this pag
 
 If you export a Data Wrangler job Jupyter Notebook, we recommend that you select **Python 3 \(Data Science\)** for the **Kernel** and run it directly in Studio to execute your data flow and process your data\. Follow the instructions in the notebook to launch your Data Wrangler job\.
 
-Data Wrangler jobs use processing jobs to process your data\. You can run these processing jobs using ml\.m5\.4xl, ml\.m5\.12xl, and ml\.m5\.24xl instances and support one instance count\. By default, the notebook that is exported from Data Wrangler sets the following `instance_count` and `instance_type`:
+Data Wrangler jobs use processing jobs to process your data\. You can run these processing jobs using `ml.m5.4xl`, `ml.m5.12xl`, and `ml.m5.24xl` instances and support one instance count\. By default, the notebook that is exported from Data Wrangler sets the following `instance_count` and `instance_type`:
 
 ```
 instance_count = 1
@@ -66,22 +68,22 @@ pipeline = Pipeline(
 
 To learn more about defining pipelines, see [Define SageMaker Pipeline](https://docs.aws.amazon.com/sagemaker/latest/dg/define-pipeline.html)\.
 
-## Export to Python code<a name="data-wrangler-data-export-python-code"></a>
+## Export to Python Code<a name="data-wrangler-data-export-python-code"></a>
 
 To export all steps in your data flow to a Python file that you can manually integrate into any data processing workflow, choose the **Export to Code** option\. 
 
 You may need to configure the Python script to make it runnable\. For example, you may need to modify your Spark environment, and ensure you are running the script from an environment that has permission to access AWS resources\. 
 
-## Export to the SageMaker FeatMoure Store<a name="data-wrangler-data-export-feature-store"></a>
+## Export to the SageMaker Feature Store<a name="data-wrangler-data-export-feature-store"></a>
 
-The SageMaker Feature Store can be used to create, share, and manage curated data for machine learning \(ML\) development\. You can configure an online and offline feature store to centralized store for features and associated metadata so features can be easily discovered and reused\. To learn more about the Data Wrangler feature store, see [Amazon SageMaker Feature Store](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html)\.
+The SageMaker Feature Store can be used to create, share, and manage curated data for machine learning \(ML\) development\. You can configure an online and offline feature store to be a centralized store for features and associated metadata so features can be easily discovered and reused\. To learn more about the Data Wrangler feature store, see [Amazon SageMaker Feature Store](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html)\.
 
 ### Use A Jupyter Notebook to Add Features to a Feature Store<a name="data-wrangler-feature-store-notebook"></a>
 
 The Jupyter Notebook that SageMaker produces can be used to process your dataset using a SageMaker Data Wrangler job, and then ingest the data into an online and offline feature store\.
 
 **Important**  
-The IAM role you use to run this notebook must have the following AWS managed policies attached: AmazonSageMakerFullAccess and AmazonSageMakerFeatureStoreAccess\.
+The IAM role you use to run this notebook must have the following AWS managed policies attached: `AmazonSageMakerFullAccess` and `AmazonSageMakerFeatureStoreAccess`\.
 
 You only need to enable one online or offline feature store when you create a feature group\. Optionally, you can enable both\. To disable online store creation, set `EnableOnlineStore` to `False`:
 
@@ -94,7 +96,7 @@ online_store_config = {
 
 The notebook uses the column names and types of the dataframe you export to create a feature group schema, which is used to create a feature group\. A feature group is a group of features defined in the feature store to describe a record\. The feature group defines the schema and features contained in the feature group\. A feature group definition is composed of a list of features, a record identifier feature name, an event time feature name, and configurations for its online store and offline store\. 
 
-Each feature in a feature group can have one of the following types: String, Fractional, or Integral\. If a column in your exported dataframe is not one of these types, it defaults to String\. 
+Each feature in a feature group can have one of the following types: *String*, *Fractional*, or *Integral*\. If a column in your exported dataframe is not one of these types, it defaults to String\. 
 
 The following is an example of a feature group schema\.
 

@@ -75,25 +75,27 @@ When you create a 3D point cloud object tracking or object detection labeling jo
 + **Label category attribute** – A list of options \(strings\), a free form text box, or a numeric field associated with one or more labels\. It is used by workers to to provide metadata about a label\. 
 + **Frame attribute** – A list of options \(strings\), a free form text box, or a numeric field that appears on each point cloud frame a worker is sent to annotate\. It is used by workers to provide metadata about frames\. 
 
-Use the following sections to learn more about these attributes\. To learn how to add label category attributes to a labeling job, use the **Create Labeling Job** section on the [task type page](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-point-cloud-task-types) of your choice\.
+Additionally, you can use label and frame attributes to have workers verify labels in a 3D point cloud label verification job\. 
+
+Use the following sections to learn more about these attributes\. To learn how to add label category and frame attributes to a labeling job, use the **Create Labeling Job** section on the [task type page](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-point-cloud-task-types) of your choice\.
 
 #### Label Category Attributes<a name="sms-point-cloud-label-attributes"></a>
 
-Add label category attributes to labels to give workers the ability to provide more information about the annotations they create\. 
+Add label category attributes to labels to give workers the ability to provide more information about the annotations they create\. A label category attribute is added to an individual label, or to all labels\. When a label category attribute is applied to all labels it is referred to as a *global label category attribute*\. 
 
 For example, if you add the label category *car*, you might also want to capture additional data about your labeled cars, such as if they are occluded or the size of the car\. You can capture this metadata using label category attributes\. In this example, if you added the attribute *occluded* to the car label category, you can assign *partial*, *completely*, *no* to the *occluded* attribute and enable workers to select one of these options\. 
 
-A label category attribute is added to an individual label, or to all labels\. When a label category attribute is applied to all labels it is referred to as a *global label category attribute*\. 
+When you create a label verification job, you add labels category attributes to each label you want workers to verify\.
 
-#### Label Frame Attributes<a name="sms-point-cloud-frame-attributes"></a>
+#### Frame Attributes<a name="sms-point-cloud-frame-attributes"></a>
 
-Add frame attributes to give workers the ability to provide more information about individual point cloud frames\. 
+Add frame attributes to give workers the ability to provide more information about individual point cloud frames\. You can specify up to 10 frame attributes, and these attributes will appear on all frames\.
 
 For example, you can add a frame attribute that allows workers to enter a number\. You may want to use this attribute to have workers identify the number of objects they see in a particular frame\. 
 
 In another example, you may want to provide a free\-form text box to give workers the ability to provide a free form answer to a question\.
 
-You can specify up to 10 frame attributes, and these attributes will appear on all frames\.
+When you create a label verification job, you can add one or more frame attributes to ask workers to provide feedback on all labels in a point cloud frame\. 
 
 ### Worker Instructions<a name="sms-point-cloud-worker-instructions-general"></a>
 

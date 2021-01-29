@@ -15,7 +15,7 @@ You can infer that documents that are more likely to fall into Topic 1 are about
 **Topics**
 + [Input/Output Interface for the LDA Algorithm](#lda-inputoutput)
 + [EC2 Instance Recommendation for the LDA Algorithm](#lda-instances)
-+ [LDA Sample LDA Notebooks](#LDA-sample-notebooks)
++ [LDA Sample Notebooks](#LDA-sample-notebooks)
 + [How LDA Works](lda-how-it-works.md)
 + [LDA Hyperparameters](lda_hyperparameters.md)
 + [Tune an LDA Model](lda-tuning.md)
@@ -26,12 +26,12 @@ LDA expects data to be provided on the train channel, and optionally supports a 
 
 For inference, `text/csv`, `application/json`, and `application/x-recordio-protobuf` content types are supported\. Sparse data can also be passed for `application/json` and `application/x-recordio-protobuf`\. LDA inference returns `application/json` or `application/x-recordio-protobuf` *predictions*, which include the `topic_mixture` vector for each observation\.
 
-Please see the [LDA Sample LDA Notebooks](#LDA-sample-notebooks) for more detail on training and inference formats\.
+Please see the [LDA Sample Notebooks](#LDA-sample-notebooks) for more detail on training and inference formats\.
 
 ## EC2 Instance Recommendation for the LDA Algorithm<a name="lda-instances"></a>
 
 LDA currently only supports single\-instance CPU training\. CPU instances are recommended for hosting/inference\.
 
-## LDA Sample LDA Notebooks<a name="LDA-sample-notebooks"></a>
+## LDA Sample Notebooks<a name="LDA-sample-notebooks"></a>
 
 For a sample notebook that shows how to train the SageMaker Latent Dirichlet Allocation algorithm on a dataset and then how to deploy the trained model to perform inferences about the topic mixtures in input documents, see the [An Introduction to SageMaker LDA](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/lda_topic_modeling/LDA-Introduction.ipynb)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the SageMaker samples\. The topic modeling example notebooks using the NTM algorithms are located in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.

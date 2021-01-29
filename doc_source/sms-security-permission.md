@@ -136,7 +136,7 @@ To learn more about the permissions required to use the SageMaker console, see [
 
 ## Grant Permissions for Private Workforce Creation<a name="sms-security-permission-workforce-creation"></a>
 
-When added to a permissions policy, the following permission grants access to create and manage a private workforce and workteam\. To learn more about private workforces, see [Use a Private Workforce](sms-workforce-private.md)\.
+When added to a permissions policy, the following permission grants access to create and manage a private workforce and work team\. To learn more about private workforces, see [Use a Private Workforce](sms-workforce-private.md)\.
 
 ```
  {

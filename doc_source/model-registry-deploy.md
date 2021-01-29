@@ -27,7 +27,7 @@ To deploy a model version, complete the following steps:
 1. Create an endpoint configuration by calling `create_endpoint_config`\. The endpoint configuration specifies the number and type of Amazon EC2 instances to use for the endpoint\.
 
    ```
-   endpoint_config_name = 'DEMO-odelregistry-EndpointConfig-' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
+   endpoint_config_name = 'DEMO-modelregistry-EndpointConfig-' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
    print(endpoint_config_name)
    create_endpoint_config_response = sm_client.create_endpoint_config(
        EndpointConfigName = endpoint_config_name,

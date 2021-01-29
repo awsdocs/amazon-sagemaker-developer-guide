@@ -197,6 +197,6 @@ step_train = TrainingStep(
 
 You can also create a step using SageMaker S3 applications\. A SageMaker S3 application is a tar\.gz bundle with one or more Python scripts that can run within that bundle\. For more information on application package bundling, see [Deploying directly from model artifacts](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/using_tf.html?highlight=packaging#id22)\. 
 
- You can also use your own container with pipeline steps\. Because you can’t create a container from within SageMaker Studio, you must create your container using another method before using it with Amazon SageMaker Model Building Pipelines\.
+ You can also use your own container with pipeline steps\. Because you can’t create an image from within SageMaker Studio, you must create your image using another method before using it with Amazon SageMaker Model Building Pipelines\.
 
  To use your own container when creating the steps for your pipeline, include the image URI in the estimator definition\. For more information on using your own container with SageMaker, see [Using Docker Containers with SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/docker-containers.html)\. 

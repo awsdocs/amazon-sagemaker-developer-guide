@@ -63,7 +63,7 @@ Debugger is pre\-configured to annotate data loader processes only for the AWS d
 
 On the **Overview** tab, you can find a training job summary, resource utilization summary, resource intensive operations, and insights\.
 
-### Training job summary<a name="w1151aac24c16c19c17c11b5"></a>
+### Training job summary<a name="w1199aac24c16c19c17c11b5"></a>
 
 The **Training job summary** section shows the overall training time spent on different phases of training: initialization, training loop, and finalization\. The pie chart shows the time usage percentage and absolute time amount spent on the different training phases\. For example, you can have a high\-level overview of how long it takes for initializing a training job, check if the initialization is taking too long due to data downloading, leaving the GPUs idle\.
 
@@ -84,19 +84,21 @@ This section has the following features:
   + **Training loop \(%\)** – The percentage of time spent on **Training loop** over the total **Job duration**\.
   + **Finalization \(%\)** – The percentage of time spent on **Finalization** over the total **Job duration**\.
 
-### Resource utilization summary<a name="w1151aac24c16c19c17c11b7"></a>
+### Resource utilization summary<a name="w1199aac24c16c19c17c11b7"></a>
 
 This summary table shows hardware system resource utilization statistics of all workers \(algo\-n\)\. System metrics include total CPU utilization, total GPU utilization, total CPU memory utilization, total GPU memory utilization, total I/O wait time, and total Network in bytes\. The table shows the minimum and the maximum values, and p99, p90, and p50 percentiles\.
 
 ![\[debugger-studio-insight-mockup\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger/debugger-studio-insights-resource-util-summary.png)
 
-### Resource intensive operations<a name="w1151aac24c16c19c17c11b9"></a>
+### Resource intensive operations<a name="w1199aac24c16c19c17c11b9"></a>
 
 The **Resource intensive operations** section provides more detailed profiling results that show what operations of the training job were compute intensive\. In the following example, it shows that the convolutional neural network backward pass operators were the most resource intensive on the GPUs\.
 
 ![\[debugger-studio-insight-mockup\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger/debugger-studio-insights-resource-intensive-op.png)
 
-### Insights<a name="w1151aac24c16c19c17c11c11"></a>
+
+
+### Insights<a name="w1199aac24c16c19c17c11c11"></a>
 
 In the **Insights** pane, you can find training issues detected by Debugger built\-in rules\. You can expand each of the list to find useful insights, suggestions, a description of the rule, and criteria of triggering the rule\.
 
@@ -122,7 +124,7 @@ The following graphs show GPU utilization and GPU memory utilization over time\.
 
 **Overall system utilization over time**
 
-The following heatmap shows the entire system utilization over time projected onto the two\-dimensional plot\. Every CPU and GPU cores are listed in the vertical axis, and the utilization is recorded over time with colors\. See the labeled colorbar on the right side of the plot to find out what color level corresponds to what utilization rate\. For example, in the following heatmap, after initialization phase has ended around Sun 23:18, you can find that the training job fully utilizes an ml\.p3\.16xlarge instance: the GPU cores are fully utilized and the CPUs are moderately use for processing Python operations\. There were several CPU bottleneck problems scattered across the CPUs at different times\.
+The following heatmap shows the entire system utilization over time projected onto the two\-dimensional plot\. Every CPU and GPU cores are listed in the vertical axis, and the utilization is recorded over time with colors\. See the labeled colorbar on the right side of the plot to find out what color level corresponds to what utilization rate\. For example, in the following heatmap, after initialization phase has ended around Sun 23:18, you can find that the training job fully utilizes an ml\.p3\.16xlarge instance: the GPU cores are fully utilized and the CPUs are moderately used for processing Python operations\. There were several CPU bottleneck problems scattered across the CPUs at different times\.
 
 ![\[debugger-studio-insight-mockup\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger/debugger-studio-insights-node-heatmap.png)
 

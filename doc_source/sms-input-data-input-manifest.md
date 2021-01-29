@@ -7,7 +7,7 @@ Input data and the manifest file must be stored in Amazon Simple Storage Service
 + The manifest file must be in the same AWS Region as the data files, but it doesn't need to be in the same location as the data files\. It can be stored in any Amazon S3 bucket that is accessible to the AWS Identity and Access Management \(IAM\) role that you assigned to Ground Truth when you created the labeling job\.
 
 **Note**  
-3D point cloud and video frame[ task types](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html) have different input manifest requirements and attributes\.   
+3D point cloud and video frame [ task types](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html) have different input manifest requirements and attributes\.   
 For [3D point cloud task types](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-point-cloud.html), refer to [Create an Input Manifest File for a 3D Point Cloud Labeling Job](sms-point-cloud-input-manifest.md)\.  
 For [video frame task types](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-video-task-types.html), refer to [Create a Video Frame Input Manifest File](sms-video-manual-data-setup.md#sms-video-create-manifest)\.
 
@@ -18,6 +18,8 @@ Each JSON object in the manifest file can be no larger than 100,000 characters\.
 Each JSON object in the manifest file must contain one of the following keys: `source-ref` or `source`\. The value of the keys are interpreted as follows:
 + `source-ref` – The source of the object is the Amazon S3 object specified in the value\. Use this value when the object is a binary object, such as an image\.
 + `source` – The source of the object is the value\. Use this value when the object is a text value\.
+
+
 
 The following is an example of a manifest file for files stored in an Amazon S3 bucket:
 
@@ -54,7 +56,7 @@ Before using the following procedure, ensure that your input images or files are
 + Image files – Image files must comply with the size and resolution limits listed in the tables found in [Input File Size Quota](input-data-limits.md#input-file-size-limit)\. 
 + Text files – Text data can be stored in one or more \.txt files\. Each item that you want labeled must be separated by a standard line break\. 
 + CSV files – Text data can be stored in one or more \.csv files\. Each item that you want labeled must be in a separate row\.
-+ Videos – Video files can be any of the following formats: MP4, OGG, and WEBM\. If you want to extract video frames from your video files for object detection or object tracking, see [Provide Video Files](sms-point-cloud-video-input-data.md#sms-point-cloud-video-frame-extraction)\.
++ Videos – Video files can be any of the following formats: \.mp4, \.ogg, and \.webm\. If you want to extract video frames from your video files for object detection or object tracking, see [Provide Video Files](sms-point-cloud-video-input-data.md#sms-point-cloud-video-frame-extraction)\.
 + Video frames – Video frames are images extracted from a videos\. All images extracted from a single video are referred to as a *sequence of video frames*\. Each sequence of video frames must have unique prefix keys in Amazon S3\. See [Provide Video Frames](sms-point-cloud-video-input-data.md#sms-video-provide-frames)\. For this data type, see [Automated Video Frame Input Data Setup](sms-video-automated-data-setup.md)
 
 **Important**  

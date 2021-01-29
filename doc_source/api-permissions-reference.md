@@ -10,6 +10,8 @@ To express conditions in your Amazon SageMaker policies, you can use AWS\-wide c
 Use the scroll bars to see the rest of the table\.
 
 
+
+
 **Amazon SageMaker API Operations and Required Permissions for Actions**  
 
 | Amazon SageMaker API Operations | Required Permissions \(API Actions\) | Resources | 
@@ -91,3 +93,4 @@ Use the scroll bars to see the rest of the table\.
 |  [ `UpdateImage`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateImage.html)  |  `sagemaker:UpdateImage` `iam:PassRole`  |  `arn:aws:sagemaker:region:account-id:image/imageName`  | 
 |  [ `UpdateNotebookInstance`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateNotebookInstance.html)  |  `sagemaker:UpdateNotebookInstance` `iam:PassRole`  |  `arn:aws:sagemaker:region:account-id:notebook-instance/notebookInstanceName`  | 
 |  [ `UpdateWorkteam`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateWorkteam.html)  |  `sagemaker:UpdateWorkteam`  |  `arn:aws:sagemaker:region:account-id:workteam/*`  | 
+

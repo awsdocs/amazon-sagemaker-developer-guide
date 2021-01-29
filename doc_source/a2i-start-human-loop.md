@@ -12,9 +12,12 @@ Additionally, when using a built\-in task type, your IAM user or role must have 
 
 To create and start a human loop, you will need a flow definition ARN\. To learn how to create a flow definition \(or human review workflow\), see [Create a Human Review Workflow](a2i-create-flow-definition.md)\.
 
+**Important**  
+Amazon A2I requires all S3 buckets that contain human loop input image data have a CORS policy attached\. To learn more about this change, see [CORS Permission Requirement](a2i-permissions-security.md#a2i-cors-update)\.
+
 ## Create and Start a Human Loop for a Built\-in Task Type<a name="a2i-human-loop-built-in-task-type"></a>
 
-To start a human loop for a built\-in task type jobs use the corresponding service's API to provide your input data and to configure the human loop\. For Amazon Textract, you use the `AnalyzeDocument` API operation\. For Amazon Rekognition, you use the `DetectModerationLabels` API operation\. You can use the AWS CLI, or a language\-specific SDK to create requests using these API operations\. 
+To start a human loop using a built\-in task type, use the corresponding service's API to provide your input data and to configure the human loop\. For Amazon Textract, you use the `AnalyzeDocument` API operation\. For Amazon Rekognition, you use the `DetectModerationLabels` API operation\. You can use the AWS CLI, or a language\-specific SDK to create requests using these API operations\. 
 
 **Important**  
 When you create a human loop using a built\-in task type, you can use `DataAttributes` to specify a set of `ContentClassifiers` related to the input provided to the `StartHumanLoop` operation\. Use content classifiers to declare that your content is free of personally identifiable information or adult content\.  
@@ -36,7 +39,7 @@ After you run the `DetectModerationLabels` with a human loop configured, Amazon 
 
 ## Create and Start a Human Loop for a Custom Task Type<a name="a2i-instructions-starthumanloop"></a>
 
-To configure a human loop for a custom human review task, use the `StartHumanLoop` operation within your application\. This section provides an example of a human loop request using the AWS SDK for Python \(Boto3\) and the AWS Command Line Interface \(AWS CLI\)\. For documentation on other language specific SDK's that support `StartHumanLoop`, use the **See Also** section of [StartHumanLoop](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_StartHumanLoop.html) in the Amazon Augmented AI Runtime API documentation\. 
+To configure a human loop for a custom human review task, use the `StartHumanLoop` operation within your application\. This section provides an example of a human loop request using the AWS SDK for Python \(Boto3\) and the AWS Command Line Interface \(AWS CLI\)\. For documentation on other language specific SDK's that support `StartHumanLoop`, use the **See Also** section of [StartHumanLoop](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_StartHumanLoop.html) in the Amazon Augmented AI Runtime API documentation\. Refer to [Use Cases and Examples using Amazon A2I](a2i-task-types-general.md) to see examples that demonstrate how to use Amazon A2I with a custom task type\.
 
 **Prerequisites**
 
@@ -67,10 +70,10 @@ The following request example uses the SDK for Python \(Boto3\)\. For more infor
 
 ```
 response = client.start_human_loop(
-    HumanLoopName='string',
-    FlowDefinitionArn='string',
+    HumanLoopName='example-human-loop',
+    FlowDefinitionArn='arn:aws:sagemaker:us-west-2:111111111111:flow-definition/flow-def-example',
     HumanLoopInput={
-        'InputContent': 'string'
+        'InputContent': '{"InputContent": "{\"prompt\":\"What is the answer?\"}"}'    
     },
     DataAttributes={
         'ContentClassifiers': [
@@ -86,12 +89,11 @@ response = client.start_human_loop(
 The following request example uses the AWS CLI\. For more information, see [start\-human\-loop](https://docs.aws.amazon.com/cli/latest/reference/sagemaker-a2i-runtime/start-human-loop.html) in the *[AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/)*\. 
 
 ```
-$ InputContent=string
-ContentClassifiers="FreeOfPersonallyIdentifiableInformation","FreeOfAdultContent" 
-start-human-loop --human-loop-name example-humanloop 
-                 --flow-definition-arn arn:aws:sagemaker:us-west-2:111111111111:flow-definition/flowdef-nov-12  
-                 --human-loop-input InputContent 
-                 --data-attributes ContentClassifiers
+$ aws sagemaker-a2i-runtime start-human-loop
+        --flow-definition-arn 'arn:aws:sagemaker:us-west-2:111111111111:flow-definition/flow-def-example' \
+        --human-loop-name 'example-human-loop' \
+        --human-loop-input '{"InputContent": "{\"prompt\":\"What is the answer?\"}"}' \
+        --data-attributes ContentClassifiers="FreeOfPersonallyIdentifiableInformation","FreeOfAdultContent" \
 ```
 
 ------

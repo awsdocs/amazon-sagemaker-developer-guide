@@ -61,6 +61,8 @@ To configure a container to run as an executable, use an `ENTRYPOINT` instructio
    
 + You can't use the `tini` initializer as your entry point in SageMaker containers because it gets confused by the `train` and `serve` arguments\.
 
+  
+
 ## How SageMaker Loads Your Model Artifacts<a name="your-algorithms-inference-code-load-artifacts"></a>
 
 In your [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) request, the container definition includes the `ModelDataUrl` parameter, which identifies the S3 location where model artifacts are stored\. SageMaker uses this information to determine from where to copy the model artifacts\. It copies the artifacts to the `/opt/ml/model` directory for use by your inference code\.
@@ -82,6 +84,8 @@ To obtain inferences, the client application sends a POST request to the SageMak
 + A customer's model containers must respond to requests within 60 seconds\. The model itself can have a maximum processing time of 60 seconds before responding to the `/invocations`\. If your model is going to take 50\-60 seconds of processing time, the SDK socket timeout should be set to be 70 seconds\.
 
 ## How Your Container Should Respond to Health Check \(Ping\) Requests<a name="your-algorithms-inference-algo-ping-requests"></a>
+
+
 
 The `CreateEndpoint` and `UpdateEndpoint` API calls result in SageMaker starting new inference containers\. Soon after container startup, SageMaker starts sending periodic GET requests to the `/ping` endpoint\.
 

@@ -54,6 +54,8 @@ To run your own training model using the SageMaker containers, build a Docker co
 
 1. On the **Notebook instances** page, the **Status** is **Pending**\. It can take a few minutes for Amazon SageMaker to launch a machine learning compute instance—in this case, it launches a notebook instance—and attach an ML storage volume to it\. The notebook instance has a preconfigured Jupyter notebook server and a set of Anaconda libraries\. For more information, see [  CreateNotebookInstance](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstance.html)\. 
 
+   
+
 1. In the **Permissions and encryption** section, copy **the IAM role ARN number**, and paste it into a notepad file to save it temporarily\. You use this IAM role ARN number later to configure a local training estimator in the notebook instance\. **The IAM role ARN number** looks like the following: `'arn:aws:iam::111122223333:role/service-role/AmazonSageMaker-ExecutionRole-20190429T110788'` 
 
 1. After the status of the notebook instance changes to **InService**, choose **Open JupyterLab**\.

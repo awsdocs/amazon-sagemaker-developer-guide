@@ -35,7 +35,7 @@ You then pass the parameter when creating your pipeline as follows:
 pipeline = Pipeline(
     name=pipeline_name,
     parameters=[
-        processing_instance_type
+        processing_instance_count
     ],
     steps=[step_process],
 )

@@ -31,45 +31,49 @@ To create a SageMaker Neo\-compiled model, you need the following:
       import numpy as np
       import json
       import mxnet as mx
-      # Please make sure to import neomxnet
       import neomxnet  # noqa: F401
       from collections import namedtuple
       
       Batch = namedtuple('Batch', ['data'])
+      
       # Change the context to mx.cpu() if deploying to a CPU endpoint
       ctx = mx.gpu()
       
       def model_fn(model_dir):
-      # The compiled model artifacts are saved with the prefix 'compiled'
-      sym, arg_params, aux_params = mx.model.load_checkpoint('compiled', 0)
-      mod = mx.mod.Module(symbol=sym, context=ctx, label_names=None)
-      exe = mod.bind(for_training=False,
-             data_shapes=[('data', (1,3,224,224))],
-             label_shapes=mod._label_shapes)
-      mod.set_params(arg_params, aux_params, allow_missing=True)
-      # Run warm-up inference on empty data during model load (required for GPU)
-      data = mx.nd.empty((1,3,224,224), ctx=ctx)
-      mod.forward(Batch([data]))
-      return mod
+          # The compiled model artifacts are saved with the prefix 'compiled'
+          sym, arg_params, aux_params = mx.model.load_checkpoint('compiled', 0)
+          mod = mx.mod.Module(symbol=sym, context=ctx, label_names=None)
+          exe = mod.bind(for_training=False,
+                         data_shapes=[('data', (1,3,224,224))],
+                         label_shapes=mod._label_shapes)
+          mod.set_params(arg_params, aux_params, allow_missing=True)
+          
+          # Run warm-up inference on empty data during model load (required for GPU)
+          data = mx.nd.empty((1,3,224,224), ctx=ctx)
+          mod.forward(Batch([data]))
+          return mod
+      
       
       def transform_fn(mod, image, input_content_type, output_content_type):
-      # pre-processing
-      decoded = mx.image.imdecode(image)
-      resized = mx.image.resize_short(decoded, 224)
-      cropped, crop_info = mx.image.center_crop(resized, (224, 224))
-      normalized = mx.image.color_normalize(cropped.astype(np.float32) / 255,
+          # pre-processing
+          decoded = mx.image.imdecode(image)
+          resized = mx.image.resize_short(decoded, 224)
+          cropped, crop_info = mx.image.center_crop(resized, (224, 224))
+          normalized = mx.image.color_normalize(cropped.astype(np.float32) / 255,
                                         mean=mx.nd.array([0.485, 0.456, 0.406]),
                                         std=mx.nd.array([0.229, 0.224, 0.225]))
-      transposed = normalized.transpose((2, 0, 1))
-      batchified = transposed.expand_dims(axis=0)
-      casted = batchified.astype(dtype='float32')
-      processed_input = casted.as_in_context(ctx)
-      # prediction/inference
-      mod.forward(Batch([processed_input]))
-      # post-processing
-      prob = mod.get_outputs()[0].asnumpy().tolist()
-      prob_json = json.dumps(prob)
-      return prob_json, output_content_type
+          transposed = normalized.transpose((2, 0, 1))
+          batchified = transposed.expand_dims(axis=0)
+          casted = batchified.astype(dtype='float32')
+          processed_input = casted.as_in_context(ctx)
+      
+          # prediction/inference
+          mod.forward(Batch([processed_input]))
+      
+          # post-processing
+          prob = mod.get_outputs()[0].asnumpy().tolist()
+          prob_json = json.dumps(prob)
+          return prob_json, output_content_type
       ```
 
 ------
@@ -79,46 +83,49 @@ To create a SageMaker Neo\-compiled model, you need the following:
       import numpy as np
       import json
       import mxnet as mx
-      # Please make sure to import neomxnet
       import neomxnet  # noqa: F401
       
       # Change the context to mx.cpu() if deploying to a CPU endpoint
       ctx = mx.gpu()
       
       def model_fn(model_dir):
-      # The compiled model artifacts are saved with the prefix 'compiled'
-      block = mx.gluon.nn.SymbolBlock.imports('compiled-symbol.json',['data'],'compiled-0000.params', ctx=ctx)
-      # Hybridize the model & pass required options for Neo: static_alloc=True & static_shape=True
-      block.hybridize(static_alloc=True, static_shape=True)
-      # Run warm-up inference on empty data during model load (required for GPU)
-      data = mx.nd.empty((1,3,224,224), ctx=ctx)
-      warm_up = block(data)
-      return block
+          # The compiled model artifacts are saved with the prefix 'compiled'
+          block = mx.gluon.nn.SymbolBlock.imports('compiled-symbol.json',['data'],'compiled-0000.params', ctx=ctx)
+          
+          # Hybridize the model & pass required options for Neo: static_alloc=True & static_shape=True
+          block.hybridize(static_alloc=True, static_shape=True)
+          
+          # Run warm-up inference on empty data during model load (required for GPU)
+          data = mx.nd.empty((1,3,224,224), ctx=ctx)
+          warm_up = block(data)
+          return block
+      
       
       def input_fn(image, input_content_type):
-      # pre-processing
-      decoded = mx.image.imdecode(image)
-      resized = mx.image.resize_short(decoded, 224)
-      cropped, crop_info = mx.image.center_crop(resized, (224, 224))
-      normalized = mx.image.color_normalize(cropped.astype(np.float32) / 255,
+          # pre-processing
+          decoded = mx.image.imdecode(image)
+          resized = mx.image.resize_short(decoded, 224)
+          cropped, crop_info = mx.image.center_crop(resized, (224, 224))
+          normalized = mx.image.color_normalize(cropped.astype(np.float32) / 255,
                                         mean=mx.nd.array([0.485, 0.456, 0.406]),
                                         std=mx.nd.array([0.229, 0.224, 0.225]))
-      transposed = normalized.transpose((2, 0, 1))
-      batchified = transposed.expand_dims(axis=0)
-      casted = batchified.astype(dtype='float32')
-      processed_input = casted.as_in_context(ctx)
-      return processed_input
+          transposed = normalized.transpose((2, 0, 1))
+          batchified = transposed.expand_dims(axis=0)
+          casted = batchified.astype(dtype='float32')
+          processed_input = casted.as_in_context(ctx)
+          return processed_input
+      
       
       def predict_fn(processed_input_data, block):
-      # prediction/inference
-      prediction = block(processed_input_data)
-      return prediction
+          # prediction/inference
+          prediction = block(processed_input_data)
+          return prediction
       
       def output_fn(prediction, output_content_type):
-      # post-processing
-      prob = prediction.asnumpy().tolist()
-      prob_json = json.dumps(prob)
-      return prob_json, output_content_type
+          # post-processing
+          prob = prediction.asnumpy().tolist()
+          prob_json = json.dumps(prob)
+          return prob_json, output_content_type
       ```
 
 ------
@@ -139,66 +146,65 @@ To create a SageMaker Neo\-compiled model, you need the following:
       
       
       def model_fn(model_dir):
-      """Load the model and return it.
-      Providing this function is optional.
-      There is a default model_fn available which will load the model
-      compiled using SageMaker Neo. You can override it here.
+          """Load the model and return it.
+          Providing this function is optional.
+          There is a default model_fn available which will load the model
+          compiled using SageMaker Neo. You can override it here.
       
-      Keyword arguments:
-      model_dir -- the directory path where the model artifacts are present
-      """
+          Keyword arguments:
+          model_dir -- the directory path where the model artifacts are present
+          """
       
-      # The compiled model is saved as "compiled.pt"
-      model_path = os.path.join(model_dir, 'compiled.pt')
-      with torch.neo.config(model_dir=model_dir, neo_runtime=True):
-      model = torch.jit.load(model_path)
-      device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-      model = model.to(device)
+          # The compiled model is saved as "compiled.pt"
+          model_path = os.path.join(model_dir, 'compiled.pt')
+          with torch.neo.config(model_dir=model_dir, neo_runtime=True):
+          model = torch.jit.load(model_path)
+          device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+          model = model.to(device)
       
-      # We recommend that you run warm-up inference during model load
-      sample_input_path = os.path.join(model_dir, 'sample_input.pkl')
-      with open(sample_input_path, 'rb') as input_file:
-          model_input = pickle.load(input_file)
-      if torch.is_tensor(model_input):
-          model_input = model_input.to(device)
-          model(model_input)
-      elif isinstance(model_input, tuple):
-          model_input = (inp.to(device)
-                         for inp in model_input if torch.is_tensor(inp))
-          model(*model_input)
-      else:
-          print("Only supports a torch tensor or a tuple of torch tensors")
-      
-      return model
+          # We recommend that you run warm-up inference during model load
+          sample_input_path = os.path.join(model_dir, 'sample_input.pkl')
+          with open(sample_input_path, 'rb') as input_file:
+              model_input = pickle.load(input_file)
+          if torch.is_tensor(model_input):
+              model_input = model_input.to(device)
+              model(model_input)
+          elif isinstance(model_input, tuple):
+              model_input = (inp.to(device)
+                                 for inp in model_input if torch.is_tensor(inp))
+              model(*model_input)
+          else:
+              print("Only supports a torch tensor or a tuple of torch tensors")
+          return model
       
       
       def transform_fn(model, request_body, request_content_type,
-               response_content_type):
-      """Run prediction and return the output.
-      The function
-      1. Pre-processes the input request
-      2. Runs prediction
-      3. Post-processes the prediction output.
-      """
-      # preprocess
-      decoded = Image.open(io.BytesIO(request_body))
-      preprocess = transforms.Compose([
-      transforms.Resize(256),
-      transforms.CenterCrop(224),
-      transforms.ToTensor(),
-      transforms.Normalize(
-          mean=[
-              0.485, 0.456, 0.406], std=[
-              0.229, 0.224, 0.225]),
-      ])
-      normalized = preprocess(decoded)
-      batchified = normalized.unsqueeze(0)
-      # predict
-      device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-      batchified = batchified.to(device)
-      output = model.forward(batchified)
-      
-      return json.dumps(output.cpu().numpy().tolist()), response_content_type
+                          response_content_type):
+          """Run prediction and return the output.
+          The function
+          1. Pre-processes the input request
+          2. Runs prediction
+          3. Post-processes the prediction output.
+          """
+          # preprocess
+          decoded = Image.open(io.BytesIO(request_body))
+          preprocess = transforms.Compose([
+                                      transforms.Resize(256),
+                                      transforms.CenterCrop(224),
+                                      transforms.ToTensor(),
+                                      transforms.Normalize(
+                                          mean=[
+                                              0.485, 0.456, 0.406], std=[
+                                              0.229, 0.224, 0.225]),
+                                          ])
+          normalized = preprocess(decoded)
+          batchified = normalized.unsqueeze(0)
+          
+          # predict
+          device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+          batchified = batchified.to(device)
+          output = model.forward(batchified)
+          return json.dumps(output.cpu().numpy().tolist()), response_content_type
       ```
 
 ------
@@ -229,36 +235,40 @@ Note that if handler function is implemented, `input_handler` and `output_handle
       from PIL import Image
       
       def input_handler(data, context):
-      """ Pre-process request input before it is sent to TensorFlow Serving REST API
-      Args:
-      data (obj): the request data, in format of dict or string
-      context (Context): an object containing request and configuration details
-      Returns:
-      (dict): a JSON-serializable dict that contains request body and headers
-      """
-      f = data.read()
-      f = io.BytesIO(f)
-      image = Image.open(f).convert('RGB')
-      batch_size = 1
-      image = np.asarray(image.resize((512, 512)))
-      image = np.concatenate([image[np.newaxis, :, :]] * batch_size)
-      body = json.dumps({"signature_name": "serving_default", "instances": image.tolist()})
-      return body
+          """ Pre-process request input before it is sent to TensorFlow Serving REST API
+          
+          Args:
+          data (obj): the request data, in format of dict or string
+          context (Context): an object containing request and configuration details
+          
+          Returns:
+          (dict): a JSON-serializable dict that contains request body and headers
+          """
+          f = data.read()
+          f = io.BytesIO(f)
+          image = Image.open(f).convert('RGB')
+          batch_size = 1
+          image = np.asarray(image.resize((512, 512)))
+          image = np.concatenate([image[np.newaxis, :, :]] * batch_size)
+          body = json.dumps({"signature_name": "serving_default", "instances": image.tolist()})
+          return body
       
-      def output_handler(data, context):
-      """Post-process TensorFlow Serving output before it is returned to the client.
-      Args:
-      data (obj): the TensorFlow serving response
-      context (Context): an object containing request and configuration details
-      Returns:
-      (bytes, string): data to return to client, response content type
-      """
-      if data.status_code != 200:
-      raise ValueError(data.content.decode('utf-8'))
+          def output_handler(data, context):
+          """Post-process TensorFlow Serving output before it is returned to the client.
+          
+          Args:
+          data (obj): the TensorFlow serving response
+          context (Context): an object containing request and configuration details
+          
+          Returns:
+          (bytes, string): data to return to client, response content type
+          """
+          if data.status_code != 200:
+              raise ValueError(data.content.decode('utf-8'))
       
-      response_content_type = context.accept_header
-      prediction = data.content
-      return prediction, response_content_type
+          response_content_type = context.accept_header
+          prediction = data.content
+          return prediction, response_content_type
       ```
 
       If there is no custom pre\- or post\-processing, the SageMaker client converts the file image to JSON in a similar way before sending it over to the SageMaker endpoint\. 

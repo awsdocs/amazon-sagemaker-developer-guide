@@ -6,9 +6,28 @@ Review the following terms to familiarize yourself with the core components of A
 
 The the AI/ML workflow into which you integrate Amazon A2I defines an Amazon A2I *task type*\. 
 
-Amazon A2I supports two *built\-in task types*: Amazon Textract and Amazon Rekognition, and a *custom task type*\. 
+Amazon A2I supports:
++ Two *built\-in task types*: [Amazon Textract key\-value pair extraction](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-textract-task-type.html) and [Amazon Rekognition image moderation](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-rekognition-task-type.html)\.
++ A [https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-task-types-custom.html](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-task-types-custom.html) which you can use to integrate a human review loop into *any* machine learning workflow\. You can use a custom task type to integrate Amazon A2I with other AWS services like Amazon Comprehend, Amazon Transcribe, and Amazon Translate, as well as your own custom machine learning workflows\. To learn more, see [Use Cases and Examples using Amazon A2I](a2i-task-types-general.md)\.
 
-You can use a custom task type to integrate Amazon A2I with other AWS services like Amazon Comprehend, Amazon Transcribe, and Amazon Translate, as well as your own custom machine learning workflows\. To learn more, see [Use Cases and Examples using Amazon A2I](a2i-task-types-general.md)\.
+Select a tab in the following table to see diagrams that illustrate how Amazon A2I works with each task type\. Select the task type page using the links above to learn more about that task type\.
+
+------
+#### [ Amazon Textract \- Key\-value pair extraction ]
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/a2i/diagrams/product-page-diagram_A21-Components_Textract@2x.png)
+
+------
+#### [ Amazon Rekognition \- Image moderation ]
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/a2i/diagrams/product-page-diagram_A2I-Components_Rekognition@2x.png)
+
+------
+#### [ Custom Task Type ]
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/a2i/diagrams/product-page-diagram_A2I-Components_Custom@2x.png)
+
+------
 
 ## Human review workflow \(flow definition\)<a name="a2i-getting-started-human-review-workflow"></a>
 

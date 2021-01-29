@@ -45,6 +45,25 @@ The following procedure outlines the key steps used in that sample to create a m
                  Containers       = [preprocessor_container, multi_model_container])
    ```
 
+1. \(Optional\) If your use case does not benefit from model caching, set the value of the `ModelCacheSetting` field of the `MultiModelConfig` parameter to `Disabled`, and include it in the `Container` argument of the call to `create_model`\. The value of the `ModelCacheSetting` field is `Enabled` by default\.
+
+   ```
+   container = { 
+                   'Image': image, 
+                   'ModelDataUrl': 's3://my-bucket/path/to/artifacts/',
+                   'Mode': 'MultiModel' 
+                   'MultiModelConfig': {
+                           // Default value is 'Enabled'
+                           'ModelCacheSetting': 'Disabled'
+                   }
+              }
+   
+   response = sm_client.create_model(
+                 ModelName        = 'my-multi-model-name',
+                 ExecutionRoleArn = role,
+                 Containers       = [container])
+   ```
+
 1. Configure the multi\-model endpoint for the model\. We recommend configuring your endpoints with at least two instances\. This allows SageMaker to provide a highly available set of predictions across multiple Availability Zones for the models\.
 
    ```

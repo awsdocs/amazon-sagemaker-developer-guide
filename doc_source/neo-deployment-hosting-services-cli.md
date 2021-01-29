@@ -9,6 +9,8 @@ You must satisfy the [ prerequisites](https://docs.aws.amazon.com/sagemaker/late
 
 After you have satisfied the [ prerequisites](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-deployment-hosting-services-prerequisites), use the `create-model`, `create-enpoint-config`, and `create-endpoint` AWS CLI commands\. The following steps explain how to use these commands to deploy a model compiled with Neo: 
 
+
+
 ### Create a Model<a name="neo-deployment-hosting-services-cli-create-model"></a>
 
 From [Neo Inference Container Images](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-deployment-hosting-services-container-images.html), select the inference image URI and then use `create-model` API to create a SageMaker model\. You can do this with two steps: 
@@ -17,22 +19,22 @@ From [Neo Inference Container Images](https://docs.aws.amazon.com/sagemaker/late
 
    ```
    {
-           "ModelName": "insert model name",
-           "PrimaryContainer": {
+       "ModelName": "insert model name",
+       "PrimaryContainer": {
            "Image": "insert the ECR Image URI",
            "ModelDataUrl": "insert S3 archive URL",
            "Environment": {"See details below"}
-           },
-           "ExecutionRoleArn": "ARN for AmazonSageMaker-ExecutionRole"
-           }
+       },
+       "ExecutionRoleArn": "ARN for AmazonSageMaker-ExecutionRole"
+   }
    ```
 
    If you trained your model using SageMaker, specify the following environment variable: 
 
    ```
    "Environment": {
-           "SAGEMAKER_SUBMIT_DIRECTORY" : "[Full S3 path for *.tar.gz file containing the training script]"
-           }
+       "SAGEMAKER_SUBMIT_DIRECTORY" : "[Full S3 path for *.tar.gz file containing the training script]"
+   }
    ```
 
    If you did not train your model using SageMaker, specify the following environment variables: 
@@ -42,12 +44,12 @@ From [Neo Inference Container Images](https://docs.aws.amazon.com/sagemaker/late
 
    ```
    "Environment": {
-           "SAGEMAKER_PROGRAM": "inference.py",
-           "SAGEMAKER_SUBMIT_DIRECTORY": "/opt/ml/model/code",
-           "SAGEMAKER_CONTAINER_LOG_LEVEL": "20",
-           "SAGEMAKER_REGION": "insert your region",
-           "MMS_DEFAULT_RESPONSE_TIMEOUT": "500"
-           }
+       "SAGEMAKER_PROGRAM": "inference.py",
+       "SAGEMAKER_SUBMIT_DIRECTORY": "/opt/ml/model/code",
+       "SAGEMAKER_CONTAINER_LOG_LEVEL": "20",
+       "SAGEMAKER_REGION": "insert your region",
+       "MMS_DEFAULT_RESPONSE_TIMEOUT": "500"
+   }
    ```
 
 ------
@@ -55,11 +57,11 @@ From [Neo Inference Container Images](https://docs.aws.amazon.com/sagemaker/late
 
    ```
    "Environment": {
-           "SAGEMAKER_PROGRAM": "inference.py",
-           "SAGEMAKER_SUBMIT_DIRECTORY": "/opt/ml/model/code",
-           "SAGEMAKER_CONTAINER_LOG_LEVEL": "20",
-           "SAGEMAKER_REGION": "insert your region"
-           }
+       "SAGEMAKER_PROGRAM": "inference.py",
+       "SAGEMAKER_SUBMIT_DIRECTORY": "/opt/ml/model/code",
+       "SAGEMAKER_CONTAINER_LOG_LEVEL": "20",
+       "SAGEMAKER_REGION": "insert your region"
+   }
    ```
 
 ------
@@ -80,17 +82,17 @@ After creating a SageMaker model, create the endpoint configuration using the `c
 
 ```
 {
-        "EndpointConfigName": "<provide your endpoint config name>",
-        "ProductionVariants": [
+    "EndpointConfigName": "<provide your endpoint config name>",
+    "ProductionVariants": [
         {
-        "VariantName": "<provide your variant name>",
-        "ModelName": "my-sagemaker-model",
-        "InitialInstanceCount": 1,
-        "InstanceType": "<provide your instance type here>",
-        "InitialVariantWeight": 1.0
+            "VariantName": <provide your variant name>,
+            "ModelName": "my-sagemaker-model",
+            "InitialInstanceCount": 1,
+            "InstanceType": <provide your instance type here>,
+            "InitialVariantWeight": 1.0
         }
-        ]
-        }
+    ]
+}
 ```
 
 Now run the following AWS CLI command to create your endpoint configuration: 

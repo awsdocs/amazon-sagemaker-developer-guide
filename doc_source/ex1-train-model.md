@@ -73,7 +73,6 @@ If you run this installation in your exiting SageMaker Studio or Notebook instan
                                  eta = .2,
                                  gamma = 4,
                                  min_child_weight = 6,
-                                 silent = 0,
                                  objective = "multi:softmax",
                                  num_class = 10,
                                  num_round = 10)
@@ -112,6 +111,8 @@ When using this method, you provide the following information:
 + Algorithm\-specific hyperparameters – Specify algorithm\-specific hyperparameters to influence the final quality of the model\. For information, see [XGBoost Hyperparameters](xgboost_hyperparameters.md)\.
 + The input and output configuration – Provide the S3 bucket where training data is stored and where SageMaker saves the results of model training \(the model artifacts\)\. 
 
+
+
 **To run a model training job \(AWS SDK for Python \(Boto3\)\)**
 
 1. Import the `get_image_url` utility function [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) and get the location of the XGBoost container\.
@@ -148,7 +149,6 @@ When using this method, you provide the following information:
            "eta":"0.2",
            "gamma":"4",
            "min_child_weight":"6",
-           "silent":"0",
            "objective": "multi:softmax",
            "num_class": "10",
            "num_round": "10"

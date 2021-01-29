@@ -1,28 +1,32 @@
-# Use the SageMaker distributed data parallel API<a name="data-parallel-use-api"></a>
+# Use the SageMaker Distributed Data Parallel API<a name="data-parallel-use-api"></a>
 
-## Use distributed data parallel with SageMaker<a name="data-parallel-use-api-overview"></a>
+Use this page to learn how you can import and use SageMaker's distributed data parallel library\. For API specifications, refer to [distributed data parallel](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html) in the SageMaker Python SDK documentation\.
 
- To use distributed data parallel \(SDP\) with SageMaker, you start with a training script\. Just like any training job on SageMaker, you use your training script to launch an SageMaker training job\. To get started, it is recommended that you use SDP on SageMaker in the following ways: 
+## Use SageMaker's Distributed Data Parallel Library<a name="data-parallel-use-api-overview"></a>
+
+To use SageMaker's distributed data parallel library, you start with a training script\. Just as with any training job on SageMaker, you use your training script to launch a SageMaker training job\. To get started, we recommend that you use the SageMaker data parallel library in the following ways:
 +  Using a [SageMaker notebook instance](https://docs.aws.amazon.com/sagemaker/latest/dg/nbi.html) 
 +  Using [SageMaker Studio](https://docs.aws.amazon.com/sagemaker/latest/dg/studio.html) 
 
- With either option, you can then use the [Distributed Training Jupyter Notebok Examples](distributed-training-notebook-examples.md) provided with this documentation to get started\.  
+With either option, you can then use the [Distributed Training Jupyter Notebook Examples](distributed-training-notebook-examples.md) provided with this documentation to get started\.  
 
-## SageMaker Python SDK's SDP APIs<a name="data-parallel-use-python-skd-api"></a>
+## Use the Data Parallel Library with SageMaker's Python SDK<a name="data-parallel-use-python-skd-api"></a>
 
-To use the SageMaker data parallel \(SDP\) library, you must create a training script for one of the supported frameworks and launch the training job using the SageMaker Python SDK\. To learn how you can incorporate SMP into a training script, see [Modify Your Training Script to Use SMP](model-parallel-customize-training-script.md)\. The SDP API documentation is located in the SageMaker Python SDK\. Refer to [SDP API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html)\. 
+To use SageMaker's distributed data parallel library, you must create a training script for one of the supported frameworks and launch the training job using the SageMaker Python SDK\. To learn how you can incorporate the library into a training script, see [Modify Your Training Script to Use SageMaker's Distributed Model Parallel Library](model-parallel-customize-training-script.md)\. The library API documentation is located in the SageMaker Python SDK\. See SageMaker's [data parallel API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html)\. 
 
-SageMaker supports the following training environment configurations\.
+SageMaker supports the following training environment configurations:
 + You can use a prebuilt TensorFlow or PyTorch container\.
-+ You can customize SageMaker prebuilt containers or extend them to handle any additional functional requirements for your algorithm or model that the prebuilt SageMaker Docker image doesn't support\. To see an example of how you can extend a pre\-built container, see [Extend a Prebuilt Container](https://docs.aws.amazon.com/sagemaker/latest/dg/prebuilt-containers-extend.html)\.
++ You can customize SageMaker prebuilt containers or extend them to handle any additional functional requirements for your algorithm or model that the prebuilt SageMaker Docker image doesn't support\. For an example of how you can extend a pre\-built container, see [Extend a Prebuilt Container](https://docs.aws.amazon.com/sagemaker/latest/dg/prebuilt-containers-extend.html)\.
 
-  For this option, use a [Deep Learning Container URL](https://github.com/aws/deep-learning-containers/blob/master/available_images.md) in your Dockerfile\. 
+  To extend a pre\-built container, or adapt your own container to use the library, you must the following Pytorch 1\.6\.0 or TensorFlow 2\.3\.1 GPU general framework base\-images:
+  + 763104351884\.dkr\.ecr\.us\-east\-1\.amazonaws\.com/tensorflow\-training:2\.3\.1\-gpu\-py37\-cu110\-ubuntu18\.04
+  + 763104351884\.dkr\.ecr\.us\-east\-1\.amazonaws\.com/pytorch\-training:1\.6\.0\-gpu\-py36\-cu110\-ubuntu18\.04
 
-  For example, if you were using PyTorch 1\.6\.0, your Dockerfile should contain a `FROM` statement similar to the following:
+  For example, if you are using PyTorch 1\.6\.0, your Dockerfile should contain a `FROM` statement similar to the following:
 
   ```
   # SageMaker PyTorch image
-  FROM 763104351884.dkr.ecr.us-east-1.amazonaws.com/pytorch-training:1.5.1-gpu-py36-cu101-ubuntu16.04
+  FROM 763104351884.dkr.ecr.us-east-1.amazonaws.com/pytorch-training:1.6.0-gpu-py36-cu110-ubuntu18.04
   
   ENV PATH="/opt/ml/code:${PATH}"
   
@@ -35,28 +39,31 @@ SageMaker supports the following training environment configurations\.
   # Defines cifar10.py as script entrypoint
   ENV SAGEMAKER_PROGRAM cifar10.py
   ```
-+ You can adapt your owner docker container to work with SageMaker using the [SageMaker Training toolkit](https://github.com/aws/sagemaker-training-toolkit)\. For an example, see [Adapting Your Own Training Container](https://docs.aws.amazon.com/sagemaker/latest/dg/adapt-training-container.html)\.
++ You can adapt your own Docker container to work with SageMaker using the [SageMaker Training toolkit](https://github.com/aws/sagemaker-training-toolkit)\. For an example, see [Adapting Your Own Training Container](https://docs.aws.amazon.com/sagemaker/latest/dg/adapt-training-container.html)\.
 
-In all cases, you launch your job using an SageMaker Python SDK `Estimator`\. 
+In all cases, you launch your job using a SageMaker Python SDK `Estimator`\.
 
-If you are using the SageMaker pre\-built PyTorch or TensorFlow containers, see the following section to learn how configure an `Estimator` to use SDP\. 
+If you are using the SageMaker pre\-built PyTorch or TensorFlow containers, see the following section to learn how configure an `Estimator` to use the library\.
 
-If you bring your own container or extend a pre\-built container, you can create an instance of the `Estimator` class with desired Docker image\.
+If you bring your own container or extend a pre\-built container, you can create an instance of the `Estimator` class with the desired Docker image\.
 
-## TensorFlow estimator<a name="data-parallel-tensorflow-api"></a>
+## TensorFlow Estimator<a name="data-parallel-tensorflow-api"></a>
 
- *class *`sagemaker.tensorflow.estimator.TensorFlow(`*py\_version=None*`,`*framework\_version=None*`,`*model\_dir=None*`,`*image\_uri=None*`,`*distribution=None*`,`*kwargs*`)` 
+You can use SageMaker's [distributed data parallel library API](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html) by specifying `smdistributed dataparallel` as the `distribution` strategy in the SageMaker TensorFlow Estimator API\. Refer to [SageMaker TensorFlow Estimator API documentation](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/sagemaker.tensorflow.html#tensorflow-estimator) for full details about the API\.
 
- You can use the [SDP API](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html) by specifying `smdistributed dataparallel` as the `distribution` strategy in SageMaker TensorFlow Estimator API\. Please refer to [SageMaker TensorFlow Estimator API specification](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/sagemaker.tensorflow.html#tensorflow-estimator) for full details of the API\. 
+*class *`sagemaker.tensorflow.estimator.TensorFlow(`*py\_version=None*`,`*framework\_version=None*`,`*model\_dir=None*`,`*image\_uri=None*`,`*distribution=None*`,`*kwargs*`)`
 
- The following two parameters of the SageMaker Python SDK TensorFlow Estimator are required to use `smdistributed.dataparallel` with TensorFlow\. 
+The following two parameters of the SageMaker Python SDK TensorFlow estimator are required to use `smdistributed.dataparallel` with TensorFlow\. 
 
- `distribution(dict)(optional):`  A dictionary with information on how to run distributed training \(default: None\)\.  
-+  To use `smdistributed.dataparallel` as distribution strategy, use the following option: 
-+  distribution=\{"smdistributed": \{                     "dataparallel": \{                             "enabled": True                     \}                \}              \} 
+**`distribution(dict)(optional)`**: A dictionary with information on how to run distributed training \(default: `None`\)\.  
++ To use `smdistributed.dataparallel` as a distribution strategy, use the following option: 
 
- `train_instance_type (str)(required)`: Type of EC2 instance to use\. 
-+  If `smdistributed.dataparallel` distribution strategy is used, allowed instance types are: `ml.p4dn.24xlarge`, `ml.p3dn.24xlarge` and `ml.p3.16xlarge`  
+  ```
+  distribution = { "smdistributed": { "dataparallel": { "enabled": True } } } 
+  ```
+
+ **`train_instance_type (str)(required)`**: A type of Amazon EC2 instance to use\. 
++ If the `smdistributed.dataparallel` distribution strategy is used, the allowed instance types are: `ml.p4d.24xlarge`, `ml.p3dn.24xlarge`, and `ml.p3.16xlarge`\.
 
  **Example** 
 
@@ -67,8 +74,9 @@ tf_estimator = TensorFlow(
                           base_job_name = "training_job_name_prefix",
                           entry_point="tf-train.py",
                           role="SageMakerRole",
-                          image_uri="smdistributed_dataparallel_tensorflow_dlc_image_uri",
                           framework_version="2.3",
+                          # You must set py_version to py36
+                          py_version='py36',
                           # For training with multi node distributed training, set this count.
                           # Example: 2,3,4,..8
                           instance_count=1,
@@ -86,7 +94,7 @@ tf_estimator.fit("s3://bucket/path/to/training/data")
 ```
 
 **Note**  
- If you are using SageMaker Python SDK 1\.x, you need to use `hyperparameters` to specify to use `smdistributed dataparallel` as the distributed training strategy\. 
+If you are using the SageMaker Python SDK 1\.x, you need to use `hyperparameters` to specify to use `smdistributed dataparallel` as the distributed training strategy\. 
 
 ```
 from sagemaker.tensorflow import TensorFlow
@@ -99,22 +107,23 @@ tf_estimator = TensorFlow(
 tf_estimator.fit("s3://bucket/path/to/training/data")
 ```
 
-## PyTorch estimator<a name="data-parallel-pytorch-api"></a>
+## PyTorch Estimator<a name="data-parallel-pytorch-api"></a>
 
- *class *`sagemaker.pytorch.estimator.PyTorch(`*py\_version=None*`,`*framework\_version=None*`,`*model\_dir=None*`,`*image\_uri=None*`, hyperparameters=None, `*distribution=None*`,`*kwargs*`)` 
+You can use SageMaker's [distributed data parallel library API](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html) by specifying `smdistributed dataparallel` as the `distribution` strategy in SageMaker PyTorch Estimator API\. Refer to the [SageMaker PyTorch Estimator API specification](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/sagemaker.pytorch.html#pytorch-estimator) for full details of the API\. 
 
- ​ 
+*class *`sagemaker.pytorch.estimator.PyTorch(`*py\_version=None*`,`*framework\_version=None*`,`*model\_dir=None*`,`*image\_uri=None*`, hyperparameters=None, `*distribution=None*`,`*kwargs*`)`
 
- You can use the [SDP API](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html) by specifying `smdistributed dataparallel` as the `distribution` strategy in SageMaker PyTorch Estimator API\. Please refer to the [SageMaker PyTorch Estimator API specification](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/sagemaker.pytorch.html#pytorch-estimator) for full details of the API\. 
+The following two parameters of the SageMaker PyTorch `Estimator` are necessary for using `smdistributed.dataparallel` on SageMaker with PyTorch\. 
 
- Below 2 parameters of the SageMaker PyTorch Estimator are necessary for using `smdistributed.dataparallel` on SageMaker with PyTorch\. 
+`distribution (dict)(optional):`  A dictionary with information on how to run distributed training \(default: `None`\)\.  
++ To use`smdistributed.dataparallel` as a distribution strategy, use the following option: 
 
- `distribution(dict)(optional):`  A dictionary with information on how to run distributed training \(default: None\)\.  
-+  To use`smdistributed.dataparallel` as distribution strategy, use the following option: 
-+  distribution=\{"smdistributed": \{                     "dataparallel": \{                             "enabled": True                     \}                \}              \} 
+  ```
+  distribution={"smdistributed": { "dataparallel": { "enabled": True } } } 
+  ```
 
- `train_instance_type (str)(required)`: Type of EC2 instance to use\. 
-+  If `smdistributed.dataparallel` distribution strategy is used, allowed instance types are: `ml.p4dn.24xlarge`, `ml.p3dn.24xlarge` and `ml.p3.16xlarge`  
+ **`train_instance_type (str)(required)`**: A type of Amazon EC2 instance to use\. 
++ If the `smdistributed.dataparallel` distribution strategy is used, the allowed instance types are: `ml.p4d.24xlarge`, `ml.p3dn.24xlarge`, and `ml.p3.16xlarge`\.
 
  **Example** 
 
@@ -124,7 +133,8 @@ pt_estimator = PyTorch(
                        base_job_name="training_job_name_prefix",
                        entry_point="pt-train.py",
                        role="SageMakerRole",
-                       image_uri="smdistributed_dataparallel_pytorch_dlc_image_uri",
+                       # You must set py_version to py36
+                       py_version='py36',
                        framework_version='1.6.0',
                        # For training with multi node distributed training, set this count.
                        # Example: 2,3,4,..8
@@ -143,7 +153,7 @@ pt_estimator.fit("s3://bucket/path/to/training/data")             �
 ```
 
 **Note**  
- If you are using SageMaker Python SDK 1\.x, you need to use `hyperparameters` to specify to use `smdistributed.dataparallel` as the distributed training strategy\. 
+If you are using SageMaker Python SDK 1\.x, you need to use `hyperparameters` to specify `smdistributed.dataparallel` as the distributed training strategy\. 
 
 ```
 from sagemaker.pytorch import PyTorch

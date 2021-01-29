@@ -38,7 +38,7 @@ Content\-type: application/jsonlines
 
 For classification problems, the length of the scores vector corresponds to `num_classes`\. For regression problems, the length is 1\.
 
-## Ouput: Classification or Regression Response Format<a name="object2vec-out-inference-data"></a>
+## Output: Classification or Regression Response Format<a name="object2vec-out-inference-data"></a>
 
 Accept: application/json
 

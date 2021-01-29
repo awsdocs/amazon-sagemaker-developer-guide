@@ -2,7 +2,7 @@
 
 Neo is a capability of Amazon SageMaker that enables machine learning models to train once and run anywhere in the cloud and at the edge\. 
 
-If you are a first time user of SageMaker Neo, we recommend you check out the [Getting Started with Edge Devices](https://docs.aws.amazon.com/sagemaker/latest/neo-getting-started-edge.html) section to get step\-by\-step instructions on how to compile and deploy to an edge device\. 
+If you are a first time user of SageMaker Neo, we recommend you check out the [Getting Started with Edge Devices](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-getting-started-edge.html) section to get step\-by\-step instructions on how to compile and deploy to an edge device\. 
 
 ## What is SageMaker Neo?<a name="neo-what-it-is"></a>
 

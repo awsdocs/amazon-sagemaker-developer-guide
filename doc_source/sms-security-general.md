@@ -13,6 +13,7 @@ For more information about IAM users and roles, see [Identities \(Users, Groups,
 To learn more about using IAM with SageMaker, see [Identity and Access Management for Amazon SageMaker](security-iam.md)\.
 
 **Topics**
++ [CORS Permission Requirement](sms-cors-update.md)
 + [Assign IAM Permissions to Use Ground Truth](sms-security-permission.md)
 + [Data and Storage Volume Encryption](sms-security.md)
 + [Workforce Authentication and Restrictions](sms-security-workforce-authentication.md)

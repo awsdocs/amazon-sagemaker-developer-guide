@@ -72,7 +72,7 @@ The convolutional encoder powers clustering algorithms with smaller input data s
 
 This notebook example demonstrates how to visualize the latent variables using Debugger, as shown in the following animation\. It also demonstrates how the t\-SNE algorithm classifies the latent variables into ten clusters and projects them into a two\-dimensional space\. The scatter plot color scheme on the right side of the image reflects the true values to show how well the BERT model and t\-SNE algorithm organize the latent variables into the clusters\.
 
-![\[A conceptual image of convolutional autoencoder\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger-cnn-autoencoder-plot.gif)
+![\[A conceptual image of convolutional autoencoder\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger/debugger-cnn-autoencoder-plot.gif)
 
 ## [ Using SageMaker Debugger to Monitor Attentions in BERT Model Training ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/model_specific_realtime_analysis/bert_attention_head_view/bert_attention_head_view.ipynb)<a name="debugger-visualization-bert_attention_head_view"></a>
 
@@ -90,7 +90,7 @@ Plotting *attention scores* and individual neurons in the query and key vectors 
 
 The following animation shows the attention scores of the first 20 input tokens for ten iterations in the training job provided in the notebook example\.
 
-![\[An animation of the attention scores\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger-attention_scores.gif)
+![\[An animation of the attention scores\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger/debugger-attention_scores.gif)
 
 ## [ Using SageMaker Debugger to Visualize Class Activation Maps in Convolutional Neural Networks \(CNNs\)](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/model_specific_realtime_analysis/cnn_class_activation_maps/cnn_class_activation_maps.ipynb)<a name="debugger-visualization-cnn_class_activation_maps"></a>
 
@@ -98,7 +98,7 @@ This notebook demonstrates how to use SageMaker Debugger to plot class activatio
 
 In this notebook, the PyTorch ResNet model is trained on [the German Traffic Sign Dataset](http://benchmark.ini.rub.de/), which contains more than 40 classes of traffic\-related objects and more than 50,000 images in total\.
 
-![\[An animation of CNN class activation maps\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger-cnn-class-activation-maps.gif)
+![\[An animation of CNN class activation maps\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger/debugger-cnn-class-activation-maps.gif)
 
 During the training process, SageMaker Debugger collects tensors to plot the class activation maps in real time\. As shown in the animated image, the class activation map \(also called as a *saliency map*\) highlights regions with high activation in red color\. 
 

@@ -67,15 +67,15 @@ Multi\-label training is also supported by specifying a JSON array of values\. T
 In the multi\-hot format, each label is a multi\-hot encoded vector of all classes, where each class takes the value of 0 or 1\. In the following example, there are three classes\. The first image is labeled with classes 0 and 2, while the second image is labeled with class 2 only: 
 
 ```
-{"image-ref": "s3://mybucket/sample01/image1.jpg", "class": [1, 0, 1]}
-{"image-ref": "s3://mybucket/sample02/image2.jpg", "class": [0, 0, 1]}
+{"image-ref": "s3://mybucket/sample01/image1.jpg", "class": "[1, 0, 1]"}
+{"image-ref": "s3://mybucket/sample02/image2.jpg", "class": "[0, 0, 1]"}
 ```
 
 In the class\-id format, each label is a list of the class ids, from \[0, `num_classes`\), which apply to the data point\. The previous example would instead look like this:
 
 ```
-{"image-ref": "s3://mybucket/sample01/image1.jpg", "class": [0, 2]}
-{"image-ref": "s3://mybucket/sample02/image2.jpg", "class": [2]}
+{"image-ref": "s3://mybucket/sample01/image1.jpg", "class": "[0, 2]"}
+{"image-ref": "s3://mybucket/sample02/image2.jpg", "class": "[2]"}
 ```
 
 The multi\-hot format is the default, but can be explicitly set in the content type with the `label-format` parameter: `"application/x-recordio; label-format=multi-hot".` The class\-id format, which is the format outputted by GroundTruth, must be set explicitly: `"application/x-recordio; label-format=class-id".`

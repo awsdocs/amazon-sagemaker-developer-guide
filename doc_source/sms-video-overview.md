@@ -20,7 +20,7 @@ Use the following topics to learn more\.
 
 The video frame labeling job uses *sequences* of video frames\. A single sequence is a series of images that have been extracted from a single video\. You can either provide your own sequences of video frames, or have Ground Truth automatically extract video frame sequences from your video files\. To learn more, see [Provide Video Files](sms-point-cloud-video-input-data.md#sms-point-cloud-video-frame-extraction)\.
 
-Ground Truth uses sequence files to identify all images in a single sequence\. All of the sequences that you want to include in a single labeling job are identitified in an input manifest file\. Each sequence is used to create a single worker task\. You can automatically create sequence files and an input manifest file using Ground Truth automatic data setup\. To learn more, see [Automated Video Frame Input Data Setup](sms-video-automated-data-setup.md)\. 
+Ground Truth uses sequence files to identify all images in a single sequence\. All of the sequences that you want to include in a single labeling job are identified in an input manifest file\. Each sequence is used to create a single worker task\. You can automatically create sequence files and an input manifest file using Ground Truth automatic data setup\. To learn more, see [Automated Video Frame Input Data Setup](sms-video-automated-data-setup.md)\. 
 
 To learn how to manually create sequence files and an input manifest file, see [Create a Video Frame Input Manifest File](sms-video-manual-data-setup.md#sms-video-create-manifest)\. 
 
@@ -47,45 +47,45 @@ To learn how to create and manage a private workforce, see [Use a Private Workfo
 
 ## Worker User Interface \(UI\)<a name="sms-video-worker-task-ui"></a>
 
-Ground Truth provides a worker user interface \(UI\), tools, and assistive labeling features to help workers complete your video labeling tasks\. 
-
-You can preview the worker UI when you create a labeling job in the console\.
+Ground Truth provides a worker user interface \(UI\), tools, and assistive labeling features to help workers complete your video labeling tasks\. You can preview the worker UI when you create a labeling job in the console\.
 
 When you create a labeling job using the API operation `CreateLabelingJob`, you must provide an ARN provided by Ground Truth in the parameter [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UiConfig.html#sagemaker-Type-UiConfig-UiTemplateS3Uri](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UiConfig.html#sagemaker-Type-UiConfig-UiTemplateS3Uri) to specify the worker UI for your task type\. You can use `HumanTaskUiArn` with the SageMaker [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RenderUiTemplate.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RenderUiTemplate.html) API operation to preview the worker UI\. 
 
-You provide worker instructions, labels, and optionally, attributes that workers can use to provide more information about labels \(label category attributes\)\. They are all displayed in the worker UI\.
+You provide worker instructions, labels, and optionally, attributes that workers can use to provide more information about labels and video frames\. These attributes are referred to as label category attributes and frame attributes respectively\. They are all displayed in the worker UI\.
 
 ### Label Category and Frame Attributes<a name="sms-video-label-attributes"></a>
 
 When you create a video object tracking or video object detection labeling job, you can add one or more *label category attributes* and *frame attributes*:
-+ **Label category attribute** – A list of options \(strings\), a free form text box, or a numeric field associated with one or more labels\. It is used by workers to to provide metadata about a label\. 
++ **Label category attribute** – A list of options \(strings\), a free form text box, or a numeric field associated with one or more labels\. It is used by workers to provide metadata about a label\. 
 + **Frame attribute** – A list of options \(strings\), a free form text box, or a numeric field that appears on each video frame a worker is sent to annotate\. It is used by workers to provide metadata about video frames\. 
 
-Use the following sections to learn more about these attributes\. To learn how to add label category attributes to a labeling job, use the **Create Labeling Job** sections on the [task type page](sms-video-task-types.md) of your choice\.
+Additionally, you can use label and frame attributes to have workers verify labels in a video frame label verification job\. 
+
+Use the following sections to learn more about these attributes\. To learn how to add label category and frame attributes to a labeling job, use the **Create Labeling Job** sections on the [task type page](sms-video-task-types.md) of your choice\.
 
 #### Label Category Attributes<a name="sms-video-label-attributes"></a>
 
-Add label category attributes to labels to give workers the ability to provide more information about the annotations they create\. 
+Add label category attributes to labels to give workers the ability to provide more information about the annotations they create\. A label category attribute is added to an individual label, or to all labels\. When a label category attribute is applied to all labels it is referred to as a *global label category attribute*\. 
 
 For example, if you add the label category *car*, you might also want to capture additional data about your labeled cars, such as if they are occluded or the size of the car\. You can capture this metadata using label category attributes\. In this example, if you added the attribute *occluded* to the car label category, you can assign *partial*, *completely*, *no* to the *occluded* attribute and enable workers to select one of these options\. 
 
-A label category attribute is added to an individual label, or to all labels\. When a label category attribute is applied to all labels it is referred to as a *global label category attribute*\. 
+When you create a label verification job, you add labels category attributes to each label you want workers to verify\.
 
-#### Label Frame Attributes<a name="sms-video-frame-attributes"></a>
+#### Frame level Attributes<a name="sms-video-frame-attributes"></a>
 
-Add frame attributes to give workers the ability to provide more information about individual video frames\. 
+Add frame attributes to give workers the ability to provide more information about individual video frames\. Each frame attribute you add appears on all frames\. 
 
 For example, you can add a number\-frame attribute to have workers identify the number of objects they see in a particular frame\. 
 
 In another example, you may want to provide a free\-form text box to give workers the ability to provide an answer to a question\. 
 
-Each frame attribute you add appears on all frames\. 
+When you create a label verification job, you can add one or more frame attributes to ask workers to provide feedback on all labels in a video frame\.
 
 ### Task Types<a name="sms-video-frame-tools"></a>
 
 When you create a video object tracking or video object detection labeling job, you specify the type of annotation that you want workers to create while working on your labeling task\. The annotation type determines the type of output data Ground Truth returns and defines the *task type* for your labeling job\. 
 
-If you are creating a labeling job using the API operation [CreateLabelingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html), you specify the task type using the label category configuration file parameter `annotationType`\. To learn more, see [Create a Labeling Category Configuration File with Label Category Attributes](sms-label-cat-config-attributes.md)\.
+If you are creating a labeling job using the API operation [CreateLabelingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html), you specify the task type using the label category configuration file parameter `annotationType`\. To learn more, see [Create a Labeling Category Configuration File with Label Category and Frame Attributes](sms-label-cat-config-attributes.md)\.
 
 The following task types are available for both video object tracking or video object detection labeling jobs: 
 + **Bounding box ** – Workers are provided with tools to create bounding box annotations\. A bounding box is a box that a worker draws around an objects to identify the pixel\-location and label of that object in the frame\. 

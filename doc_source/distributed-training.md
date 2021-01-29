@@ -8,9 +8,9 @@
 + [Optimize Distributed Training](#distributed-training-optimize)
 + [Scenarios](#distributed-training-scenarios)
 + [SageMaker Built\-In Distributed Training Features](#distributed-training-built-in)
-+ [SageMaker distributed data parallel](data-parallel.md)
-+ [SageMaker distributed model parallel](model-parallel.md)
-+ [Distributed Training Jupyter Notebok Examples](distributed-training-notebook-examples.md)
++ [SageMaker's Distributed Data Parallel Library](data-parallel.md)
++ [SageMaker's Distributed Model Parallel](model-parallel.md)
++ [Distributed Training Jupyter Notebook Examples](distributed-training-notebook-examples.md)
 + [Troubleshooting](distributed-troubleshooting.md)
 
 ## Get Started with Distributed Training<a name="distributed-training-get-started"></a>
@@ -18,8 +18,8 @@
 If you’re familiar with distributed training, follow one of the links to your preferred strategy or framework to get started\. Otherwise, continue on to the next section to learn some distributed training concepts\. 
 
  **SageMaker distributed training libraries:** 
-+  [SageMaker distributed data parallel](data-parallel.md) 
-+  [SageMaker distributed model parallel](model-parallel.md) 
++  [SageMaker's Distributed Data Parallel Library](data-parallel.md) 
++  [SageMaker's Distributed Model Parallel](model-parallel.md) 
 
 ## Basic Distributed Training Concepts<a name="distributed-training-basic-concepts"></a>
 
@@ -31,7 +31,7 @@ If you’re familiar with distributed training, follow one of the links to your 
 
 **Data parallel**: A strategy in distributed training where the dataset is split up across multiple processing nodes\. Each node sees different batches from the dataset, makes its calculations, and shares them back to the other nodes for synchronization before moving on to the next batch and ultimately another epoch\. 
 
-**Dataset**: The entire corpus of data on which you’re training\. The dataset is often split into subsets: one for training and one for validation\. For example, you might split the dataset and use 80% of it for training \(the training set\), then use the remaining 20% to test the current accuracy of the model \(the validation set\) while it is still training\. 
+**Dataset**: All of the data you’re training\. The dataset is often split into subsets: one for training and one for validation\. For example, you might split the dataset and use 80% of it for training \(the training set\), then use the remaining 20% to test the current accuracy of the model \(the validation set\) while it is still training\. 
 
 **Device batch**: The number of records seen by a device during an iteration\. This is a fraction of the mini\-batch\.
 
@@ -39,11 +39,11 @@ If you’re familiar with distributed training, follow one of the links to your 
 
 **Interval or iteration**: A distribution of a batch of data\. A large amount of data must be broken up into batches and sent to the GPUs in mini\-batches\. The number of intervals is equal to the number of batches it takes to get through the entire dataset\. 
 
-**Learning rate**: The amount that values should be changed between epochs\. As the model is refined, its internal weights are nudged and error rates are checked to see if the model improves\. A typical learning rate is 0\.1 or 0\.01; 0\.01 is a much smaller adjustment and could cause the training to take a long time to converge, whereas 0\.1 is much larger and can cause the training to overshoot\. It is one of the primary hyperparameters that you can adjust for training your model\. You may also want to try a warm\-up period in which you set an initial low learning rate, so that the neural net has a chance to stabilize newly initialized layers, and with each subsequent epoch you gradually increase the learning rate\. 
+**Learning rate**: The amount that values should be changed between epochs\. As the model is refined, its internal weights are nudged and error rates are checked to see if the model improves\. The optimal learning rate for a specific use case depends on model, number of GPUs used during training, and other hyperparameters\. Often, learning rates are set to 0\.1 or 0\.01; 0\.01 is a much smaller adjustment and could cause the training to take a long time to converge, whereas 0\.1 is much larger and can cause the training to overshoot\. It is one of the primary hyperparameters that you can adjust for training your model\. You may also want to try a warm\-up period in which you set an initial low learning rate, so that the neural net has a chance to stabilize newly initialized layers, and with each subsequent epoch you gradually increase the learning rate\. 
 
 **Mini\-batch size**: The number of records over which the model error gradient is estimated at each iteration\. It is the number of GPUs times the batch size\. For example, if batch size is 32 and you have 256 GPUs, your mini\-batch size is 8,192\. Changing the mini\-batch size will generally change the performance of your model and the required time\-to\-results for a given performance goal\. 
 
-**Microbatch**: A smaller subset of a given training mini\-batch\. Model parallel pipelining is based on splitting a mini\-batch into microbatches, which are fed into the training pipeline one\-by\-one and follow an execution schedule defined by SMP runtime\.
+**Microbatch**: A smaller subset of a given training mini\-batch\. Model parallel pipelining is based on splitting a mini\-batch into microbatches, which are fed into the training pipeline one\-by\-one and follow an execution schedule defined by Amazon SageMaker's distributed model parallel library's runtime\.
 
 **Model parallel**: A strategy in distributed training in which the model is split up across multiple processing nodes\. The model may be very complex and have a huge number of layers and weights inside it, making it unable to fit in the memory of a single node\. Each node carries a subset of the model, through which the data flows and the transformations are shared and compiled\. 
 
@@ -57,9 +57,9 @@ Not all models handle training data scaling equally well\. Some algorithms need 
 
 Deep Learning \(DL\) is a specific family of ML algorithms consisting of several layers of artificial neural networks\. The most common training method is with mini\-batch Stochastic Gradient Descent \(SGD\)\. In mini\-batch SGD, the model is trained by conducting small iterative changes of its coefficients in the direction that reduces its error\. Those iterations are conducted on equally sized subsamples of the training dataset called *mini\-batches*\. For each mini\-batch, the model is run in each record of the mini\-batch, its error measured and the gradient of the error estimated\. Then the average gradient is measured across all the records of the mini\-batch and provides an update direction for each model coefficient\. One full pass over the training dataset is called an *epoch*\. Model trainings commonly consist of dozens to hundreds of epochs\. Mini\-batch SGD has several benefits: First, its iterative design makes training time theoretically linear of dataset size\. Second, in a given mini\-batch each record is processed individually by the model without need for inter\-record communication other than the final gradient average\. The processing of a mini\-batch is consequently particularly suitable for parallelization and distribution\.  
 
-Parallelizing SGD training by distributing the records of a mini\-batch over different computing devices is called *data\-parallel distributed training*, and is the most commonly used DL distribution paradigm\. Data\-parallel training is a relevant distribution strategy to scale the mini\-batch size and process each mini\-batch faster\. However, data\-parallel training comes with the extra complexity of having to compute the mini\-batch gradient average with gradients coming from all the workers and communicating it to all the workers, a step called *allreduce* that can represent a growing overhead, as the training cluster is scaled, and that can also drastically penalize training time if improperly implemented or implemented over improper hardware substracts\.  
+Parallelizing SGD training by distributing the records of a mini\-batch over different computing devices is called *data parallel distributed training*, and is the most commonly used DL distribution paradigm\. Data parallel training is a relevant distribution strategy to scale the mini\-batch size and process each mini\-batch faster\. However, data parallel training comes with the extra complexity of having to compute the mini\-batch gradient average with gradients coming from all the workers and communicating it to all the workers, a step called *allreduce* that can represent a growing overhead, as the training cluster is scaled, and that can also drastically penalize training time if improperly implemented or implemented over improper hardware substracts\.  
 
-Data\-parallel SGD still requires developers to be able to fit at least the model and a single record in a computing devices, like a single CPU or GPU\. When training very large models such as large transformers in Natural Language Processing \(NLP\), or segmentation models over high\-resolution images, there may be situations in which this is not feasible\. An alternative way to break up the workload is to partition the model over multiple computing devices, an approach called > *model\-parallel distributed training*\. 
+Data parallel SGD still requires developers to be able to fit at least the model and a single record in a computing devices, like a single CPU or GPU\. When training very large models such as large transformers in Natural Language Processing \(NLP\), or segmentation models over high\-resolution images, there may be situations in which this is not feasible\. An alternative way to break up the workload is to partition the model over multiple computing devices, an approach called > *model\-parallel distributed training*\. 
 
 ## Strategies<a name="distributed-training-strategies"></a>
 
@@ -67,11 +67,11 @@ Distributed training is usually split by two approaches: data parallel and model
 
 The terms *network* and *model* are often used interchangeably: A large model is really a large network with many layers and parameters\. Training with a large network produces a large model, and loading the model back onto the network with all your pre\-trained parameters and their weights loads a large model into memory\. When you break apart a model to split it across nodes, you’re also breaking apart the underlying network\. A network consists of layers, and to split up the network, you put layers on different compute devices\.
 
-A common pitfall of naively splitting layers across devices is severe GPU under\-utilization\. Training is inherently sequential in both forward and backward passes, and at a given time, only one GPU can actively compute, while the others wait on the activations to be sent\. Modern model parallel libraries solve this problem by using pipeline execution schedules to improve device utilization\. However, only SageMaker distributed model parallel library \(SMP\) includes automatic model splitting\. The two core features of SMP, automatic model splitting and pipeline execution scheduling, simplifies the process of implementing model parallelism by making automated decisions that lead to efficient device utilization\.
+A common pitfall of naively splitting layers across devices is severe GPU under\-utilization\. Training is inherently sequential in both forward and backward passes, and at a given time, only one GPU can actively compute, while the others wait on the activations to be sent\. Modern model parallel libraries solve this problem by using pipeline execution schedules to improve device utilization\. However, only the SageMaker Amazon SageMaker's distributed model parallel library includes automatic model splitting\. The two core features of the library, automatic model splitting and pipeline execution scheduling, simplifies the process of implementing model parallelism by making automated decisions that lead to efficient device utilization\.
 
 ### Which Is “Better”: Data Parallel or Model Parallel?<a name="data-parallel-vs-model-parallel"></a>
 
-Despite their names, data\-parallel training is truly parallel computing, whereas model\-parallel training is more akin to serialized computing\. If you can use data\-parallel training, you should, as training is faster\. However, this isn’t always possible, and so for large models, you must use model\-parallel training\. There are parts of a model\-parallel flow that can be parallelized, but some parts of the network bottleneck the others and require you to wait forthe network to finish processing data in a serial fashion\. However, SageMaker’s model parallelism library uses sophisticated pipelining, enabling the library to parallelize work by having devices compute on different microbatches at the same time\. This approaches true parallelism, even if the underlying model consists of sequential, non\-parallelizable computational steps\. 
+Despite their names, data parallel training is truly parallel computing, whereas model\-parallel training is more akin to serialized computing\. If your model can fit into memory, you can use data parallel training, and you should, as training is faster\. However, this isn’t always possible, and so for large models, you must use model parallel training\. There are parts of a model parallel flow that can be parallelized, but some parts of the network bottleneck the others and require you to wait forthe network to finish processing data in a serial fashion\. However, SageMaker’s model parallelism library uses sophisticated pipelining, enabling the library to parallelize work by having devices compute on different microbatches at the same time\. This approaches true parallelism, even if the underlying model consists of sequential, non\-parallelizable computational steps\. 
 
 ### Choosing Between Data Parallel and Model Parallel<a name="distributed-training-strategies"></a>
 
@@ -87,15 +87,15 @@ Try reducing the input size:
 + Reduce the NLP sequence length if you increase the sequence link, need to adjust the batch size down, or adjust the GPUs up to spread the batch\. 
 + Reduce image resolution\. 
 
-Check if you use batch normalization, since this can impact convergence\. 64 versus 2 can break things\. 
+Check if you use batch normalization, since this can impact convergence\. When you use distributed training, your batch is split across GPUs and the effect of a mucher lower batch size can be a higher error rate thereby disrupting the model from converging\. For example, if you prototyped your network on a single GPU with a batch size of 64, then scaled up to using four p3dn\.24xlarge, you now have 32 GPUs and your per\-GPU batch size drops from 64 to 2\. This will likely break the convergence you saw with a single node\. 
 
 Start with model\-parallel training when: 
 +  Your model does not fit on a single device\. 
 + Due to your model size, you’re facing limitations in choosing larger batch sizes, such as if your model weights take up most of your GPU memory and you are forced to choose a smaller, suboptimal batch size\.  
 
 To learn more about the SageMaker distributed libraries, see the following:
-+  [SageMaker distributed data parallel](data-parallel.md) 
-+  [SageMaker distributed model parallel](model-parallel.md) 
++  [SageMaker's Distributed Data Parallel Library](data-parallel.md) 
++  [SageMaker's Distributed Model Parallel](model-parallel.md) 
 
 ## Optimize Distributed Training<a name="distributed-training-optimize"></a>
 
@@ -106,7 +106,7 @@ Customize hyperparameters for your use case and your data to get the best scalin
 
 ### Batch Size<a name="batch-size-intro"></a>
 
-SageMaker distributed toolkits generally allow you to train on bigger batches\. For example, if a model fits within a single device but can only be trained with a small batch size, using either model\-parallel training or data\-parallel training enables you to experiment with larger batch sizes\. 
+SageMaker distributed toolkits generally allow you to train on bigger batches\. For example, if a model fits within a single device but can only be trained with a small batch size, using either model\-parallel training or data parallel training enables you to experiment with larger batch sizes\. 
 
 Be aware that batch size directly influences model accuracy by controlling the amount of noise in the model update at each iteration\. Increasing batch size reduces the amount of noise in the gradient estimation, which can be beneficial when increasing from very small batches sizes, but can result in degraded model accuracy as the batch size increases to large values\.  
 
@@ -116,14 +116,14 @@ Adjust your hyperparameters to ensure that your model trains to a satisfying con
 A number of techniques have been developed to maintain good model convergence when batch is increased\.
 
 To learn more about these techniques, see the following papers:
-+ \[1\] [Accurate, Large Minibatch SGD:Training ImageNet in 1 Hour](https://arxiv.org/pdf/1706.02677.pdf), Goyal et al\. 
-+ \[2\] [PowerAI DDL](https://arxiv.org/pdf/1708.02188.pdf), Cho et al\. 
-+ \[3\] [Scale Out for Large Minibatch SGD: Residual Network Training on ImageNet\-1K with Improved Accuracy and Reduced Time to Train](https://arxiv.org/pdf/1711.04291.pdf), Codreanu et al\. 
-+ \[4\] [ImageNet Training in Minutes](https://arxiv.org/pdf/1709.05011.pdf), You et al\. 
-+ \[5\] [Large Batch Training of Convolutional Networks](https://arxiv.org/pdf/1708.03888.pdf), You et al\. 
-+ \[6\] [Large Batch Optimization for Deep Learning: Training BERT in 76 Minutes](https://arxiv.org/pdf/1904.00962.pdf), You et al\. 
-+ \[7\] [Accelerated Large Batch Optimization of BERT Pretraining in 54 minutes](https://arxiv.org/pdf/2006.13484.pdf), Zheng et al\. 
-+ \[8\] [Deep Gradient Compression](https://arxiv.org/abs/1712.01887), Lin et al\. 
++ [Accurate, Large Minibatch SGD:Training ImageNet in 1 Hour](https://arxiv.org/pdf/1706.02677.pdf), Goya et al\. 
++ [PowerAI DDL](https://arxiv.org/pdf/1708.02188.pdf), Cho et al\. 
++ [Scale Out for Large Minibatch SGD: Residual Network Training on ImageNet\-1K with Improved Accuracy and Reduced Time to Train](https://arxiv.org/pdf/1711.04291.pdf), Codreanu et al\. 
++ [ImageNet Training in Minutes](https://arxiv.org/pdf/1709.05011.pdf), You et al\. 
++ [Large Batch Training of Convolutional Networks](https://arxiv.org/pdf/1708.03888.pdf), You et al\. 
++ [Large Batch Optimization for Deep Learning: Training BERT in 76 Minutes](https://arxiv.org/pdf/1904.00962.pdf), You et al\. 
++ [Accelerated Large Batch Optimization of BERT Pretraining in 54 minutes](https://arxiv.org/pdf/2006.13484.pdf), Zheng et al\. 
++ [Deep Gradient Compression](https://arxiv.org/abs/1712.01887), Lin et al\. 
 
 ### Mini\-Batch Size<a name="distributed-training-optimize"></a>
 
@@ -178,6 +178,6 @@ SageMaker also supports Horovod and implementations of distributed training nati
 
 The [SageMaker built\-in libraries of algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html) consists of 18 popular machine learning algorithms\. Many of them were rewritten from scratch to be scalable and distributed out of the box\. If you want to use distributed **deep learning** training code, we recommend Amazon SageMaker’s distributed training libraries\. SageMaker’s distributed training libraries make it easier for you to write highly scalable and cost\-effective custom data parallel and model parallel deep learning training jobs\. 
 
-SageMaker distributed training libraries offer both data\-parallel and model\-parallel training strategies\. It combines software and hardware technologies to improve inter\-GPU and inter\-node communications\. It extends SageMaker’s training capabilities with built\-in options that require only small code changes to your training scripts\.  
-+  [SageMaker distributed data parallel](data-parallel.md) 
-+  [SageMaker distributed model parallel](model-parallel.md) 
+SageMaker distributed training libraries offer both data parallel and model parallel training strategies\. It combines software and hardware technologies to improve inter\-GPU and inter\-node communications\. It extends SageMaker’s training capabilities with built\-in options that require only small code changes to your training scripts\.  
++  [SageMaker's Distributed Data Parallel Library](data-parallel.md) 
++  [SageMaker's Distributed Model Parallel](model-parallel.md) 

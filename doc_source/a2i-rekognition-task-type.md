@@ -2,6 +2,8 @@
 
 Amazon Rekognition makes it easy to add image analysis to your applications\. The Amazon Rekognition `DetectModerationLabels`API operation is directly integrated with Amazon A2I so that you can easily create a human loop to review unsafe images, such as explicit adult or violent content\. You can use `DetectModerationLabels` to configure a human loop using a flow definition ARN\. This enables Amazon A2I to analyze predictions made by Amazon Rekognition and sent results to a human for review they meet the conditions set in your flow definition\.
 
+![\[Use Amazon Augmented AI with Amazon Rekognition\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/a2i/diagrams/product-page-diagram_A2I-Components_Rekognition@2x.png)
+
 You can set the following activation conditions when using the Amazon Rekognition task type:
 + Trigger human review for labels identified by Amazon Rekognition based on the label confidence score\.
 + Randomly send a sample of images to humans for review\.

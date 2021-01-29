@@ -1,5 +1,7 @@
 # Create a Multi\-Model Endpoint \(Console\)<a name="create-multi-model-endpoint-console"></a>
 
+
+
 **To create a multi\-model endpoint \(console\)**
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.

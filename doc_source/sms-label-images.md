@@ -8,4 +8,4 @@ Use Ground Truth to label images\. Select one of the following built in task typ
 + [Auto\-Segmentation Tool](sms-auto-segmentation.md)
 + [Image Classification \(Single Label\)](sms-image-classification.md)
 + [Image Classification \(Multi\-label\)](sms-image-classification-multilabel.md)
-+ [Label Verification](sms-label-verification.md)
++ [Image Label Verification](sms-label-verification.md)

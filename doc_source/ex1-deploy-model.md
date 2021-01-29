@@ -12,6 +12,8 @@ The [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) abstracts se
 
 Deploy the model that you trained in [Create and Run a Training Job \([Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\)](ex1-train-model.md#ex1-train-model-sdk) by calling the `deploy` method of the `sagemaker.estimator.Estimator` object\. This is the same object that you used to train the model\. When you call the `deploy` method, specify the number and type of ML instances that you want to use to host the endpoint\.
 
+
+
 ```
 xgb_predictor = xgb_model.deploy(initial_instance_count=1,
                                 content_type='text/csv',

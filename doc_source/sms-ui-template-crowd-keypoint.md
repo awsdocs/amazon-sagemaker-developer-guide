@@ -2,7 +2,7 @@
 
 Generates a tool to select and annotate key points on an image\.
 
-The following is an example of an Liquid template that uses the `<crowd-keypoint>` element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+The following is an example of an Liquid template that uses the `<crowd-keypoint>` element\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>

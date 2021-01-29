@@ -2,6 +2,8 @@
 
 To get inference for an entire dataset, use batch transform\. SageMaker stores the results in Amazon S3\.
 
+
+
 For information about batch transforms, see [Get Inferences for an Entire Dataset with Batch Transform](how-it-works-batch.md)\. For an example that uses batch transform, see the batch transform sample notebook at [https://github\.com/awslabs/amazon\-sagemaker\-examples/tree/master/sagemaker\_batch\_transform/introduction\_to\_batch\_transform](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker_batch_transform/introduction_to_batch_transform)\.
 
 **Topics**

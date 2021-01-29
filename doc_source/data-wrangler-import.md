@@ -18,12 +18,12 @@ When you import data from Athena or Amazon Redshift, the imported data is automa
 
 ## Import data from Amazon S3<a name="data-wrangler-import-s3"></a>
 
-Amazon Simple Storage Service \(Amazon S3\) can be used to store and retrieve any amount of data at any time, from anywhere on the web\. You can accomplish these tasks using the AWS Management Console, which is a simple and intuitive web interface, and the Amazon S3 API\. If your dataset is stored locally, it is recommended that you add it to an S3 bucket for import into Data Wrangler\. To learn how, see [Uploading an object to a bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/PuttingAnObjectInABucket.html) in the Amazon Simple Storage Service Developer Guide\. 
+Amazon Simple Storage Service \(Amazon S3\) can be used to store and retrieve any amount of data at any time, from anywhere on the web\. You can accomplish these tasks using the AWS Management Console, which is a simple and intuitive web interface, and the Amazon S3 API\. If your dataset is stored locally, we recommend that you add it to an S3 bucket for import into Data Wrangler\. To learn how, see [Uploading an object to a bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/PuttingAnObjectInABucket.html) in the Amazon Simple Storage Service Developer Guide\. 
 
-Data Wrangler uses [S3 Select](http://aws.amazon.com/s3/features/#s3-select) to allow you to preview your S3 files in Data Wrangler\. Standard charges are incurred for each file preview\. To learn more about pricing, see the **Requests & data retrievals** tab on [Amazon S3 pricing](http://aws.amazon.com/s3/pricing/)\. 
+Data Wrangler uses [S3 Select](http://aws.amazon.com/s3/features/#s3-select) to allow you to preview your Amazon S3 files in Data Wrangler\. You incur standard charges for each file preview\. To learn more about pricing, see the **Requests & data retrievals** tab on [Amazon S3 pricing](http://aws.amazon.com/s3/pricing/)\. 
 
 **Important**  
-If you plan to export a data flow and launch a Data Wrangler job, ingest data into an SageMaker feature store, or create a SageMaker Pipeline, be aware that these integrations require Amazon S3 input data be located in the same AWS region used to set up the integration \(run the Jupyter notebook exported from Data Wrangler\)\. 
+If you plan to export a data flow and launch a Data Wrangler job, ingest data into a SageMaker feature store, or create a SageMaker pipeline, be aware that these integrations require Amazon S3 input data to be located in the same AWS region used to set up the integration \(run the Jupyter Notebook exported from Data Wrangler\)\. 
 
 You can browse all buckets in your AWS account and import CSV and Parquet files using the Amazon S3 import in Data Wrangler\. 
 
@@ -33,7 +33,7 @@ When you choose a dataset for import, you can rename it, specify the file type, 
 
 1. If you are not currently on the **Import** tab, choose **Import**\.
 
-1. Under **Data Preparation**, choose **Amazon S3**\. This brings you to the **Import S3 Data Source** view\. 
+1. Under **Data Preparation**, choose **Amazon S3** to see the **Import S3 Data Source** view\. 
 
 1. From the table of available S3 buckets, select a bucket and navigate to the dataset you want to import\. 
 
@@ -57,13 +57,15 @@ Amazon Athena is an interactive query service that makes it easy to analyze data
 
 You can query Athena databases and import the results in Data Wrangler\. To use this import option, you must create at least one database in Athena\. To learn how, see [Getting Started](https://docs.aws.amazon.com/athena/latest/ug/getting-started.html) in the Amazon Athena User Guide\. 
 
-Note the following about the the Athena import option in Data Wrangler:
+Note the following about the Athena import option in Data Wrangler:
 + Data Wrangler supports using an Athena primary workgroup\. Other workgroups are not supported\. 
 + Data Wrangler does not support federate queries\.
 
-Data Wrangler uses the default S3 bucket in the same AWS Region in which your Studio instance is located to store Athena query results\. When you import from Athena, Data Wrangler creates a new database in your Athena account named sagemaker\_data\_wrangler if one does not already exist\. Temporary tables are created in this database to move query output to this S3 bucket\. These tables are deleted after data has been imported, however the database, sagemaker\_data\_wrangler, persists\. To learn more, see [Imported Data Storage](#data-wrangler-import-storage)\.
+Data Wrangler uses the default S3 bucket in the same AWS Region in which your Studio instance is located to store Athena query results\. When you import from Athena, Data Wrangler creates a new database in your Athena account named `sagemaker_data_wrangler` if one does not already exist\. Temporary tables are created in this database to move the query output to this S3 bucket\. These tables are deleted after data has been imported, however the database, `sagemaker_data_wrangler`, persists\. To learn more, see [Imported Data Storage](#data-wrangler-import-storage)\.
 
-If you use AWS Lake Formation with Athena, make sure your Lake Formation IAM permissions do not override IAM permissions for the database sagemaker\_data\_wrangler\.
+If you use AWS Lake Formation with Athena, make sure your Lake Formation IAM permissions do not override IAM permissions for the database `sagemaker_data_wrangler`\.
+
+
 
 **To import a dataset into Data Wrangler from Athena:**
 
@@ -75,13 +77,13 @@ If you use AWS Lake Formation with Athena, make sure your Lake Formation IAM per
 
 1. Enter a query in the code box\.
 
-1. Under **Advanced configuration**, **Enable sampling** is selected by default\. If you do not uncheck this box, Data Wrangler will sample and import approximately 50% of the queried data\. Unselect this check box to disable sampling\. 
+1. Under **Advanced configuration**, **Enable sampling** is selected by default\. If you do not uncheck this box, Data Wrangler samples and imports approximately 50% of the queried data\. Unselect this check box to disable sampling\. 
 
 1. Enter your query in the query editor and use the **Run** button to run the query\. After a successful query, you can preview your result under the editor\.
 
 1. To import the queried results, select **Import dataset**\.
 
-1.  Enter a **Dataset name**\. If you add a **Dataset name** contains spaces, these spaces are replaced with underscores when your dataset is imported\. 
+1. Enter a **Dataset name**\. If you add a **Dataset name** that contains spaces, these spaces are replaced with underscores when your dataset is imported\. 
 
 1. Select **Add**\.
 
@@ -95,7 +97,7 @@ You can connect to and query one or more Amazon Redshift clusters in Data Wrangl
 
 Data Wrangler uses the default S3 bucket in the same AWS Region in which your Studio instance is located to store Amazon Redshift query results\. To learn more, see [Imported Data Storage](#data-wrangler-import-storage)\.
 
-If you use the IAM managed policy, AmazonSageMakerFullAccess, to grant a role permission to use Data Wrangler in Studio, your **Database User** name must have the prefix, sagemaker\_access\.
+If you use the IAM managed policy, `AmazonSageMakerFullAccess`, to grant a role permission to use Data Wrangler in Studio, your **Database User** name must have the prefix `sagemaker_access`\.
 
 Use the following procedures to learn how to add a new cluster\. 
 
@@ -106,7 +108,7 @@ Data Wrangler uses the Amazon Redshift Data API with temporary credentials\. To 
 
 1. Choose **Import**\.
 
-1. Choose the `+` under **Add data connection**\.
+1. Choose **`+`** under **Add data connection**\.
 
 1. Choose **Amazon Redshift**\.
 
@@ -120,7 +122,7 @@ Data Wrangler uses the Amazon Redshift Data API with temporary credentials\. To 
 
 1. Enter a **Database User** to identify the user you want to use to connect to the database\. 
 
-1. For **UNLOAD IAM Role**, enter the IAM role ARN of the role that Redshift cluster should assume to move and write data to Amazon S3\. For more information about this role, see [Authorizing Amazon Redshift to access other AWS services on your behalf](https://docs.aws.amazon.com/redshift/latest/mgmt/authorizing-redshift-service.html) in the Amazon Redshift Cluster Management Guide\. 
+1. For **UNLOAD IAM Role**, enter the IAM role ARN of the role that the Amazon Redshift cluster should assume to move and write data to Amazon S3\. For more information about this role, see [Authorizing Amazon Redshift to access other AWS services on your behalf](https://docs.aws.amazon.com/redshift/latest/mgmt/authorizing-redshift-service.html) in the Amazon Redshift Cluster Management Guide\. 
 
 1. Choose **Connect**\.
 
@@ -134,13 +136,13 @@ After your connection is successfully established, it appears as a data source u
 
 1. Select a **Schema**\. To learn more about Redshift Schemas, see [Schemas](https://docs.aws.amazon.com/redshift/latest/dg/r_Schemas_and_tables.html) in the Amazon Redshift Database Developer Guide\.
 
-1. Under **Advanced configuration**, **Enable sampling** is selected by default\. If you do not uncheck this box, Data Wrangler will sample and import approximately 50% of the queried data\. Unselect this check box to disable sampling\. 
+1. Under **Advanced configuration**, **Enable sampling** is selected by default\. If you do not uncheck this box, Data Wrangler samples and imports approximately 50% of the queried data\. Unselect this check box to disable sampling\. 
 
 1. Enter your query in the query editor and use the **Run** button to run the query\. After a successful query, you can preview your result under the editor\.
 
 1. Select **Import dataset** to import the dataset that has been queried\. 
 
-1.  Enter a **Dataset name**\. If you add a **Dataset name** contains spaces, these spaces are replaced with underscores when your dataset is imported\. 
+1. Enter a **Dataset name**\. If you add a **Dataset name** that contains spaces, these spaces are replaced with underscores when your dataset is imported\. 
 
 1. Select **Add**\. 
 
@@ -170,7 +172,7 @@ For example, if your default bucket is sagemaker\-us\-east\-1\-111122223333, a s
 
 ### Amazon Athena Import Storage<a name="data-wrangler-import-storage-athena"></a>
 
-When you query an Athena database and import a dataset, Data Wrangler stores the dataset, as well as a subset of that dataset, or *preview files* in Amazon S3\. 
+When you query an Athena database and import a dataset, Data Wrangler stores the dataset, as well as a subset of that dataset, or *preview files*, in Amazon S3\. 
 
 The dataset you import by selecting **Import dataset** is stored in Parquet format in Amazon S3\. 
 

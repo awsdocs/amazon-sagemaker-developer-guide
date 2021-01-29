@@ -5,15 +5,15 @@ Amazon SageMaker Model Monitor continuously monitors the quality of Amazon SageM
 Model Monitor provides the following types of monitoring:
 + [Monitor Data Quality](model-monitor-data-quality.md) \- Monitor drift in data quality\.
 + [Monitor Model Quality](model-monitor-model-quality.md) \- Monitor drift in model quality metrics, such as accuracy\.
-+ [Monitor bias drift for models in production](clarify-model-monitor-bias-drift.md) \- Monitor bias in you model's predictions\.
-+ [Monitor feature attribution drift for models in production](clarify-model-monitor-feature-attribution-drift.md) \- Monitor drift in feature attribution\.
++ [Monitor Bias Drift for Models in Production](clarify-model-monitor-bias-drift.md) \- Monitor bias in you model's predictions\.
++ [Monitor Feature Attribution Drift for Models in Production](clarify-model-monitor-feature-attribution-drift.md) \- Monitor drift in feature attribution\.
 
 **Topics**
 + [How Model Monitor Works](#model-monitor-how-it-works)
 + [Monitor Data Quality](model-monitor-data-quality.md)
 + [Monitor Model Quality](model-monitor-model-quality.md)
-+ [Monitor bias drift for models in production](clarify-model-monitor-bias-drift.md)
-+ [Monitor feature attribution drift for models in production](clarify-model-monitor-feature-attribution-drift.md)
++ [Monitor Bias Drift for Models in Production](clarify-model-monitor-bias-drift.md)
++ [Monitor Feature Attribution Drift for Models in Production](clarify-model-monitor-feature-attribution-drift.md)
 + [Capture Data](model-monitor-data-capture.md)
 + [Schedule Monitoring Jobs](model-monitor-scheduling.md)
 + [Amazon SageMaker Model Monitor Prebuilt Container](model-monitor-pre-built-container.md)

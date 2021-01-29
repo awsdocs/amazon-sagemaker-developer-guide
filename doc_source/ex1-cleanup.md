@@ -5,6 +5,8 @@ To avoid incurring unnecessary charges, use the AWS Management Console to delete
 **Note**  
 If you plan to explore other exercises in this guide, you might want to keep some of these resources, such as your notebook instance, S3 bucket, and IAM role\.
 
+ 
+
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) and delete the following resources:
    + The endpoint\. Deleting the endpoint also deletes the ML compute instance or instances that support it\.
 

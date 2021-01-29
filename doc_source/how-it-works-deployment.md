@@ -19,6 +19,10 @@ SageMaker provides model hosting services for model deployment, as shown in the 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sagemaker-architecture.png)
 
+
+
+
+
  Deploying a model using SageMaker hosting services is a three\-step process:
 
 1. **Create a model in SageMaker**—By creating a model, you tell SageMaker where it can find the model components\. This includes the S3 path where the model artifacts are stored and the Docker registry path for the image that contains the inference code\. In subsequent deployment steps, you specify the model by name\. For more information, see the [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) API\.

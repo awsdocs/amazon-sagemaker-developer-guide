@@ -6,7 +6,22 @@ A model group contains a group of versioned models\. Create a model group by usi
 
 To create a model group by using Boto3, call the `create_model_package_group` method, and specify a name and description as parameters\. The following example shows how to create a model group\. The response from the `create_model_package_group` call is the Amazon Resource Name \(ARN\) of the new model package group\.
 
-Start by importing necessary packages and setting up the SageMaker Boto3 client\.
+First, import the required packages and set up the SageMaker Boto3 client\.
+
+```
+import time
+import os
+from sagemaker import get_execution_role, session
+import boto3
+
+region = boto3.Session().region_name
+
+role = get_execution_role()
+
+sm_client = boto3.client('sagemaker', region_name=region)
+```
+
+Now create the model group\.
 
 ```
 import time
@@ -16,7 +31,7 @@ model_package_group_input_dict = {
  "ModelPackageGroupDescription" : "Sample model package group"
 }
 
-create_model_pacakge_group_response = smmp.create_model_package_group(**model_package_group_input_dict)
+create_model_pacakge_group_response = sm_client.create_model_package_group(**model_package_group_input_dict)
 print('ModelPackageGroup Arn : {}'.format(create_model_pacakge_group_response['ModelPackageGroupArn']))
 ```
 
