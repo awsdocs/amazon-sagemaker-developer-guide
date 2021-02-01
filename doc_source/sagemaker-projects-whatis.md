@@ -27,6 +27,6 @@ In addition to managing code, SageMaker projects enable MLOps for model building
 
 ## Do I Need to Create a Project to Use SageMaker Pipelines?<a name="sagemaker-projects-need"></a>
 
-No\. SageMaker pipelines are standalone entities just like training jobs, processing jobs, and other SageMaker jobs within SageMaker\. You can create, update, and run pipelines without directly within a notebook by using the SageMaker Python SDK without using a SageMaker project\.
+No\. SageMaker pipelines are standalone entities just like training jobs, processing jobs, and other SageMaker jobs within SageMaker\. You can create, update, and run pipelines directly within a notebook by using the SageMaker Python SDK without using a SageMaker project\.
 
 Projects provide an additional layer to help you organize your code and adopt operational best practices that you need for a production\-quality system\.
