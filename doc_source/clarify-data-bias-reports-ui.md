@@ -22,7 +22,7 @@ To get started with Data Wrangler, see [Get Started with Data Wrangler](data-wra
 ![\[Configure the bias report 1.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/clarify-data-wrangler-configure-bias-report.PNG)
 
 1. Continue configuring the bias report by choosing the bias metrics\.  
-![\[Choose the bias metric.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/clarify-data-wrangler-configure-choose bias-metrics.PNG)
+![\[Choose the bias metric.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/clarify-data-wrangler-configure-choose-bias-metrics.PNG)
 
 1. Choose **Check for bias** to generate and view the bias report\. Scroll down to view all of the reports\.  
 ![\[Generate and view the bias report.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/clarify-data-wrangler-generate-bias-report.PNG)

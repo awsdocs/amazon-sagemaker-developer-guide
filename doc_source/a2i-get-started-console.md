@@ -189,7 +189,7 @@ Your output data is stored in the Amazon S3 bucket you specified when you create
 
 **To view your Amazon A2I output data**
 
-1. Open the Amazon S3 console: [s3.console.aws.amazon.com](s3.console.aws.amazon.com)\.
+1. Open the [Amazon S3 console](https://console.aws.amazon.com/s3/)\.
 
 1. Select the Amazon S3 bucket you specified when you created your human review workflow in step 2 of this demo\. 
 

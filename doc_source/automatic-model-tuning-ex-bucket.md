@@ -1,6 +1,6 @@
-# Specify a Bucket and Data Output Location<a name="automatic-model-tuning-ex-bucket"></a>
+# Specify a Default S3 Bucket to Store Training Output Data<a name="automatic-model-tuning-ex-bucket"></a>
 
-Specify the name of the Amazon S3 bucket where you want to store the output of the training jobs that the tuning job launches\. The name of the bucket must contain **sagemaker**, and be globally unique\. The bucket must be in the same AWS Region as the notebook instance that you use for this example\. You can use the bucket that you created when you set up Amazon SageMaker, or you can create a new bucket\. For information, see [Step 1: Create an Amazon S3 Bucket](gs-config-permissions.md)\.
+Specify the name of the Amazon S3 bucket where you want to store the output of the training jobs\. The name of the bucket must contain **sagemaker**, and be globally unique\. The bucket must be in the same AWS Region as the notebook instance that you use for this example\.
 
 **Note**  
 The name of the bucket doesn't need to contain **sagemaker** if the role that you use to run the hyperparameter tuning job has a policy that gives the SageMaker service principle `S3FullAccess` permission\.

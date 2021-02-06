@@ -38,7 +38,7 @@ The AWS Security Group Console might show display ports range as "All", however 
 
 1. Choose **Enable inter\-container traffic encryption**\. 
 
-After you enable inter\-container traffic encryption, finish creating the training job\. For more information, see [Step 5: Train a Model](ex1-train-model.md)\.
+After you enable inter\-container traffic encryption, finish creating the training job\. For more information, see [Step 4: Train a Model](ex1-train-model.md)\.
 
 ### Enable Inter\-container Traffic Encryption in a Hyperparameter Tuning Job<a name="train-encrypt-console-tuning"></a>
 

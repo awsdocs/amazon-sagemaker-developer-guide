@@ -36,7 +36,7 @@ For a summary of the parameters used by each algorithm, see the documentation fo
 
 ## Using CSV Format<a name="cdf-csv-format"></a>
 
-Many Amazon SageMaker algorithms support training with data in CSV format\. To use data in CSV format for training, in the input data channel specification, specify **text/csv** as the [ `ContentType`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Channel.html#SageMaker-Type-Channel-ContentType)\. Amazon SageMaker requires that a CSV file does not have a header record and that the target variable is in the first column\. To run unsupervised learning algorithms that don't have a target, specify the number of label columns in the content type\. For example, in this case **'content\_type=text/csv;label\_size=0'**\. 
+Many Amazon SageMaker algorithms support training with data in CSV format\. To use data in CSV format for training, in the input data channel specification, specify **text/csv** as the [ `ContentType`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Channel.html#SageMaker-Type-Channel-ContentType)\. Amazon SageMaker requires that a CSV file does not have a header record and that the target variable is in the first column\. To run unsupervised learning algorithms that don't have a target, specify the number of label columns in the content type\. For example, in this case **'content\_type=text/csv;label\_size=0'**\. For a complete example that uses CSV format see [Breast Cancer Prediction](https://github.com/aws/amazon-sagemaker-examples/blob/master/introduction_to_applying_machine_learning/breast_cancer_prediction/Breast%20Cancer%20Prediction.ipynb)\.
 
 ## Using RecordIO Format<a name="cdf-recordio-format"></a>
 

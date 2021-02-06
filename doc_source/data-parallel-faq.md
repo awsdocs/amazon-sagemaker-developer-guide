@@ -42,4 +42,4 @@ No\. The library supports `ml.p3.16xlarge`, `ml.p3dn.24xlarge`, and `ml.p4d.24xl
 
 **Q: What frameworks and framework versions are currently supported by the library at launch?** 
 
-The library currently supports PyTorch v1\.6 and Tensorflow v2\.3\.1\. Support for Tensorflow 1\.x\.  
+The library currently supports PyTorch v1\.6 and Tensorflow v2\.3\.1\. It doesn't currently support Tensorflow 1\.x\. 

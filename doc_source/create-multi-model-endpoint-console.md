@@ -17,4 +17,4 @@
 
 1. Choose **Create model**\.
 
-1. Deploy your multi\-model endpoint as you would a single model endpoint\. For instructions, see [Step 6\.1: Deploy the Model to SageMaker Hosting Services](ex1-deploy-model.md)\.
+1. Deploy your multi\-model endpoint as you would a single model endpoint\. For instructions, see [Deploy the Model to SageMaker Hosting Services](ex1-model-deployment.md#ex1-deploy-model)\.

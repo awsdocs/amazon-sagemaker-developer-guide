@@ -4,7 +4,7 @@
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pipeline-full.png)
 
- You can generate your JSON pipeline definition using the SageMaker Python SDK\. The following tutorial shows how to generate a pipeline definition for a pipeline that solves a regression problem to determine the age of an abalone based on its physical measurements\. For a Jupyter notebook that includes the content in this tutorial that you can run, see [Orchestrating Jobs with Amazon SageMaker Model Building Pipelines](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-pipelines/sagemaker-pipelines-preprocess-train-evaluate-batch-transform.html)\.
+ You can generate your JSON pipeline definition using the SageMaker Python SDK\. The following tutorial shows how to generate a pipeline definition for a pipeline that solves a regression problem to determine the age of an abalone based on its physical measurements\. For a Jupyter notebook that includes the content in this tutorial that you can run, see [Orchestrating Jobs with Amazon SageMaker Model Building Pipelines](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-pipelines/tabular/abalone_build_train_deploy/sagemaker-pipelines-preprocess-train-evaluate-batch-transform.html)\.
 
 **Topics**
 + [Prerequisites](#define-pipeline-prereq)

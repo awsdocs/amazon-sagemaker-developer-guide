@@ -39,8 +39,6 @@ The following sections also explain some of the parameters that a data scientist
 
 When using k\-means in SageMaker, the initial cluster centers are chosen from the observations in a small, randomly sampled batch\. Choose one of the following strategies to determine how these initial cluster centers are selected:
 + The random approach—Randomly choose *K* observations in your input dataset as cluster centers\. For example, you might choose a cluster center that points to the 784\-dimensional space that corresponds to any 10 images in the MNIST training dataset\.
-
-   
 + The k\-means\+\+ approach, which works as follows: 
 
   1. Start with one cluster and determine its center\. You randomly select an observation from your training dataset and use the point corresponding to the observation as the cluster center\. For example, in the MNIST dataset, randomly choose a handwritten digit image\. Then choose the point in the 784\-dimensional space that corresponds to the image as your cluster center\. This is cluster center 1\.
@@ -58,7 +56,7 @@ To train a model in SageMaker, you create a training job\. In the request, you p
 + For greater accuracy, add the optional `extra_center_factor` string\. 
 + To specify the strategy that you want to use to determine the initial cluster centers, add the `init_method` string and set its value to `random` or `k-means++`\.
 
-For more information, see [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html)\. For an example, see [Create and Run a Training Job \(AWS SDK for Python \(Boto3\)\)](ex1-train-model.md#ex1-train-model-create-training-job)\. 
+For more information about the SageMaker k\-means estimator, see [K\-means](https://sagemaker.readthedocs.io/en/stable/algorithms/kmeans.html) in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) documentation\.
 
 You now have an initial set of cluster centers\. 
 

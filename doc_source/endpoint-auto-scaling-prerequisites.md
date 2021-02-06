@@ -2,7 +2,7 @@
 
 Before you can use autoscaling, must have already created a Amazon SageMaker model deployment\. Deployed models are referred to as a [production variant](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ProductionVariant.html)\. This includes information about the model and the resources used to host it\. 
 
-For more information about deploying a model endpoint, see [Step 6\.1: Deploy the Model to SageMaker Hosting Services](ex1-deploy-model.md)\.
+For more information about deploying a model endpoint, see [Deploy the Model to SageMaker Hosting Services](ex1-model-deployment.md#ex1-deploy-model)\.
 
 To enable autoscaling for a model, you can use the console, the AWS CLI, or the Application Auto Scaling API\. It is recommended to try to [Configure model autoscaling with the console](endpoint-auto-scaling-add-console.md) to get familiar with the requirements and to test your first autoscaling configuration\. When using the AWS CLI or Application Auto Scaling the flow is to register the model, define the scaling policy, then apply it\. The following overview provides further details on the prerequisites and components used with autoscaling\.
 

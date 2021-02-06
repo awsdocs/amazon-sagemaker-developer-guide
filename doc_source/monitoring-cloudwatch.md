@@ -8,7 +8,7 @@ SageMaker model training jobs and endpoints write CloudWatch metrics and logs\. 
 
 **Endpoint Invocation Metrics** 
 
-The `aws/sagemaker` namespace includes the following request metrics from calls to [ `InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html)\.
+The `AWS/SageMaker` namespace includes the following request metrics from calls to [ `InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html)\.
 
 Metrics are available at a 1\-minute frequency\.
 
@@ -33,7 +33,7 @@ For information about how long CloudWatch metrics are retained for, see [GetMetr
 
 **Multi\-Model Endpoint Model Loading Metrics** 
 
-The `aws/SageMaker` namespace includes the following model loading metrics from calls to [ `InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html) \.
+The `AWS/SageMaker` namespace includes the following model loading metrics from calls to [ `InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html) \.
 
 Metrics are available at a 1\-minute frequency\.
 
