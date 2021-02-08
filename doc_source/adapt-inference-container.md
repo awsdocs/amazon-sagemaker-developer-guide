@@ -174,4 +174,4 @@ docker tag ${algorithm_name} ${fullname}
 docker push ${fullname}
 ```
 
-You can now use this container to deploy endpoints in SageMaker\. For an example of how to deploy an endpoint in SageMaker, see [Step 6\.1: Deploy the Model to SageMaker Hosting Services](ex1-deploy-model.md)\.
+You can now use this container to deploy endpoints in SageMaker\. For an example of how to deploy an endpoint in SageMaker, see [Deploy the Model to SageMaker Hosting Services](ex1-model-deployment.md#ex1-deploy-model)\.

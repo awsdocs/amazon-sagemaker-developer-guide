@@ -17,7 +17,7 @@ The following sections provide guidance concerning implementation options, machi
 + [Choose an algorithm implementation](#algorithms-choose-implementation)
 + [Problem types for the basic machine learning paradigms](#basic-machine-learning-paradigms)
 + [Use Amazon SageMaker Built\-in Algorithms](algos.md)
-+ [Use reinforcement learning with Amazon SageMaker](reinforcement-learning.md)
++ [Use Reinforcement Learning with Amazon SageMaker](reinforcement-learning.md)
 
 ## Choose an algorithm implementation<a name="algorithms-choose-implementation"></a>
 
@@ -101,4 +101,4 @@ SageMaker provides several built\-in machine learning algorithms that you can us
 
 Reinforcement learning is a type of learning that is based on interaction with the environment\. This type of learning is used by an agent that must learn behavior through trial\-and\-error interactions with a dynamic environment in which the goal is to maximize the long\-term rewards that the agent receives as a result of its actions\. Rewards are maximized by trading off exploring actions that have uncertain rewards with exploiting actions that have known rewards\. 
 
-For more information on SageMaker's frameworks, toolkits, and environments for reinforcement learning, see [Use reinforcement learning with Amazon SageMaker](reinforcement-learning.md)\.
+For more information on SageMaker's frameworks, toolkits, and environments for reinforcement learning, see [Use Reinforcement Learning with Amazon SageMaker](reinforcement-learning.md)\.

@@ -7,6 +7,6 @@ Amazon SageMaker Ground Truth sends data objects to your workers in batches\. Th
 
 Ground Truth first sends a batch of 10 tasks to your workers\. It uses this small batch to set up the labeling job and to make sure that the job is correctly configured\.
 
-Ground Truth then sends larger batches to your workers\. 
+Ground Truth then sends larger batches to your workers\.
 
 You configure batch size when you create the job using the [ `CreateLabelingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. If you use the Amazon SageMaker console to create the labeling job, Ground Truth automatically configures your job to use 1,000 tasks in each batch\.

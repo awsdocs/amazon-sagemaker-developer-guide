@@ -18,7 +18,7 @@ This value depends on the instance type chosen, payloads that clients of your mo
 
 **To find the peak requests\-per\-second \(RPS\) your model's production variant can handle and latency of requests**
 
-1. Set up an endpoint with your model using a single instance\. For information about how to set up an endpoint, see [Step 6\.1: Deploy the Model to SageMaker Hosting Services](ex1-deploy-model.md)\.
+1. Set up an endpoint with your model using a single instance\. For information about how to set up an endpoint, see [Deploy the Model to SageMaker Hosting Services](ex1-model-deployment.md#ex1-deploy-model)\.
 
 1. Use a load testing tool to generate an increasing number of parallel requests, and monitor the RPS and model latency in the out put of the load testing tool\. 
 **Note**  

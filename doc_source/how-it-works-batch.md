@@ -32,4 +32,4 @@ An example of input file content:
 
 A record is a single input data unit\. For information about how to delimit records for batch transform jobs, see [ `SplitType`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformInput.html#SageMaker-Type-TransformInput-SplitType)\.
 
-For an example of how to use batch transform, see [Step 6\.2: Deploy the Model with Batch Transform](ex1-batch-transform.md)\.
+For an example of how to use batch transform, see [\(Optional\) Make Prediction with Batch Transform](ex1-model-deployment.md#ex1-batch-transform)\.

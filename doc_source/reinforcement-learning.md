@@ -1,8 +1,21 @@
-# Use reinforcement learning with Amazon SageMaker<a name="reinforcement-learning"></a>
+# Use Reinforcement Learning with Amazon SageMaker<a name="reinforcement-learning"></a>
 
-Reinforcement learning \(RL\) is a machine learning technique that attempts to learn a strategy, called a *policy*, that optimizes an objective for an agent acting in an environment\. For example, the agent might be a robot, the environment might be a maze, and the goal might be to successfully navigate the maze in the smallest amount of time\. In RL, the agent takes an action, observes the state of the environment, and gets a reward based on the value of the current state of the environment\. The goal is to maximize the long\-term reward that the agent receives as a result of its actions\. RL is well\-suited for solving problems in which an agent can make autonomous decisions\.
+Reinforcement learning \(RL\) combines fields such as computer science, neuroscience, and psychology to determine how to map situations to actions to maximize a numerical reward signal\. This notion of a reward signal in RL stems from neuroscience research into how the human brain makes decisions about which actions maximize reward and minimize punishment\. In most situations, humans are not given explicit instructions on which actions to take, but instead must learn both which actions yield the most immediate rewards, and how those actions influence future situations and consequences\. 
+
+The problem of RL is formalized using Markov decision processes \(MDPs\) that originate from dynamical systems theory\. MDPs aim to capture high\-level details of a real problem that a learning agent encounters over some period of time in attempting to achieve some ultimate goal\. The learning agent should be able to determine the current state of its environment and identify possible actions that affect the learning agent’s current state\. Furthermore, the learning agent’s goals should correlate strongly to the state of the environment\. A solution to a problem formulated in this way is known as a reinforcement learning method\. 
+
+## What are the differences between reinforcement, supervised, and unsupervised learning paradigms?<a name="rl-differences"></a>
+
+Machine learning can be divided into three distinct learning paradigms: supervised, unsupervised, and reinforcement\.
+
+In supervised learning, an external supervisor provides a training set of labeled examples\. Each example contains information about a situation, belongs to a category, and has a label identifying the category to which it belongs\. The goal of supervised learning is to generalize in order to predict correctly in situations that are not present in the training data\. 
+
+In contrast, RL deals with interactive problems, making it infeasible to gather all possible examples of situations with correct labels that an agent might encounter\. This type of learning is most promising when an agent is able to accurately learn from its own experience and adjust accordingly\. 
+
+In unsupervised learning, an agent learns by uncovering structure within unlabeled data\. While a RL agent might benefit from uncovering structure based on its experiences, the sole purpose of RL is to maximize a reward signal\. 
 
 **Topics**
++ [What are the differences between reinforcement, supervised, and unsupervised learning paradigms?](#rl-differences)
 + [Why is Reinforcement Learning Important?](#rl-why)
 + [Markov Decision Process \(MDP\)](#rl-terms)
 + [Key Features of Amazon SageMaker RL](#sagemaker-rl)
@@ -14,7 +27,7 @@ Reinforcement learning \(RL\) is a machine learning technique that attempts to l
 
 ## Why is Reinforcement Learning Important?<a name="rl-why"></a>
 
-RL is well\-suited for solving large, complex problems, such as supply chain management, HVAC systems, industrial robotics, game artificial intelligence, dialog systems, and autonomous vehicles\. Because RL models learn by a continuous process of receiving rewards and punishments for every action taken by the agent, it is possible to train systems to make decisions under uncertainty and in dynamic environments\.
+RL is well\-suited for solving large, complex problems, such as supply chain management, HVAC systems, industrial robotics, game artificial intelligence, dialog systems, and autonomous vehicles\. Because RL models learn by a continuous process of receiving rewards and punishments for every action taken by the agent, it is possible to train systems to make decisions under uncertainty and in dynamic environments\. 
 
 ## Markov Decision Process \(MDP\)<a name="rl-terms"></a>
 
@@ -61,4 +74,3 @@ The following table outlines a variety of sample notebooks that address differen
 |  [How to Solve the Cart\-pole Balancing Problem?](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/reinforcement_learning/rl_cartpole_coach/rl_cartpole_coach_gymEnv.ipynb)  |  This notebook shows how to solve the cart\-pole balancing problem with RL\.   | 
 |  [How to Solve the Knapsack Problem?](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/reinforcement_learning/rl_knapsack_coach_custom/rl_knapsack_coach_customEnv.ipynb)  |  This notebook shows how to use RL to solve the knapsack problem, and how [SageMaker Managed Spot Training](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/reinforcement_learning/rl_managed_spot_cartpole_coach/rl_managed_spot_cartpole_coach_gymEnv.ipynb) can be used to run training at a lower cost\.   | 
 |  [How to Solve the Mountain Car Problem?](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/reinforcement_learning/rl_mountain_car_coach_gymEnv/rl_mountain_car_coach_gymEnv.ipynb)  |  This notebook shows how to solve the mountain car control problem with RL\.  | 
-|  [How to Train a Distributed Object Tracker with RL?](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/reinforcement_learning/rl_objecttracker_robomaker_coach_gazebo/rl_objecttracker_coach_robomaker.ipynb)  |  This notebook shows how to train a Distributed Object Tracker that learns to track and follow another Robot using Robomaker\.  | 

@@ -60,11 +60,17 @@ To use the `CreateLabelingJob` operation, you need the following:
 + A pre\-annotation and post\-annotation \(or annotation\-consolidation\) AWS Lambda function Amazon Resource Name \(ARN\) to process your input and output data\. 
   + Lambda functions are predefined in each AWS Region for built\-in task types\. To find the pre\-annotation Lambda ARN for your Region, see [PreHumanTaskLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/dg/API_HumanTaskConfig.html#SageMaker-Type-HumanTaskConfig-PreHumanTaskLambdaArn)\. To find the annotation\-consolidation Lambda ARN for your Region, see [AnnotationConsolidationLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/dg/API_AnnotationConsolidationConfig.html#SageMaker-Type-AnnotationConsolidationConfig-AnnotationConsolidationLambdaArn)\. 
   + For custom labeling workflows, you must provide a custom pre\- and post\-annotation Lambda ARN\. To learn how to create these Lambda functions, see [Step 3: Processing with AWS Lambda](sms-custom-templates-step3.md)\.
-+ A work team ARN\. To learn more about work teams and workforces, see [Create and Manage Workforces](sms-workforce-management.md)\. 
++ A work team ARN\. You receive a work team ARN when you subscribe to a vendor workforce or create a private workteam\. If you are creating a labeling job for a video frame or point cloud task type, you cannot use the Amazon Mechanical Turk workforce\. For all other task types, to use the Mechanical Turk workforce, use the following ARN\. Replace *`region`* with the AWS Region you are using to create the labeling job\.
 
-  If you use the [Amazon Mechanical Turk workforce](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management-public.html), use the `ContentClassifiers` parameter in `CreateLabelingJob` to declare that your content is free of personally identifiable information or adult content\. If your content contains personally identifiable information or adult content, SageMaker might restrict the Amazon Mechanical Turk workers that can view your task\. 
+  ` arn:aws:sagemaker:region:394669845002:workteam/public-crowd/default`
 
-  If you are creating a labeling job for a point cloud task type, you cannot use the Amazon Mechanical Turk workforce\. 
+  If you use the [Amazon Mechanical Turk workforce](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management-public.html), use the `ContentClassifiers` parameter in `CreateLabelingJob` to declare that your content is free of personally identifiable information and adult content\. 
+
+  Ground Truth *requires* that your input data is free of personally identifiable information \(PII\) if you use the Mechanical Turk workforce\. If you use Mechanical Turk and do not specify that your input data is free of PII using the `FreeOfPersonallyIdentifiableInformation` flag, your labeling job will fail\. 
+
+  Use the `FreeOfAdultContent` flag to declare that your input data is free of adult content\. SageMaker may restrict the Amazon Mechanical Turk workers that can view your task if it contains adult content\. 
+
+  To learn more about work teams and workforces, see [Create and Manage Workforces](sms-workforce-management.md)\. 
 + \(Optional\) For [some task types](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html), you can have multiple workers label a single data object by inputting a number greater than one for the `NumberOfHumanWorkersPerDataObject` parameter\. For more information about annotation consolidation, see [Consolidate Annotations ](sms-annotation-consolidation.md)\.
 
 The following is an example of an [AWS Python SDK \(Boto3\) request](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_labeling_job) to create a labeling job for a built\-in task type in the US East \(N\. Virginia\) Region\. 

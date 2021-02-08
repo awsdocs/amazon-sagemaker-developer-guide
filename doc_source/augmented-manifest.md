@@ -113,7 +113,7 @@ To complete this procedure, you need:
 
 1. Choose **Create training job**\. SageMaker creates and runs the training job\.
 
-After the training job has finished, SageMaker stores the model artifacts in the bucket whose path you provided for **S3 output path** in the **Output data configuration** field\. To deploy the model to get predictions, see [Step 6: Deploy the Model to Amazon SageMaker](ex1-model-deployment.md)\.
+After the training job has finished, SageMaker stores the model artifacts in the bucket whose path you provided for **S3 output path** in the **Output data configuration** field\. To deploy the model to get predictions, see [Step 5: Deploy the Model to Amazon EC2](ex1-model-deployment.md)\.
 
 ## Use an Augmented Manifest File \(API\)<a name="augmented-manifest-api"></a>
 
@@ -145,4 +145,4 @@ data_channels = {'train': train_data}
 model.fit(inputs=data_channels, logs=True)
 ```
 
-After the training job has finished, SageMaker stores the model artifacts in the bucket whose path you provided for **S3 output path** in the **Output data configuration** field\. To deploy the model to get predictions, see [Step 6: Deploy the Model to Amazon SageMaker](ex1-model-deployment.md)\.
+After the training job has finished, SageMaker stores the model artifacts in the bucket whose path you provided for **S3 output path** in the **Output data configuration** field\. To deploy the model to get predictions, see [Step 5: Deploy the Model to Amazon EC2](ex1-model-deployment.md)\.
