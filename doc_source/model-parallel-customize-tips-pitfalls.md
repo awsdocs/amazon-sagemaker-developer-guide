@@ -1,6 +1,6 @@
 # Configuration Tips and Pitfalls<a name="model-parallel-customize-tips-pitfalls"></a>
 
-Review the following tips and pitfalls before using Amazon SageMaker's distributed model parallel library\. This list includes tips that are applicable across frameworks\. For TensorFlow and PyTorch specific tips, see [Modify a TensorFlow Training Script](model-parallel-customize-training-script.md#model-parallel-customize-training-script-tf) and [Modify a PyTorch Training Script](model-parallel-customize-training-script.md#model-parallel-customize-training-script-pt), respectively\. 
+Review the following tips and pitfalls before using Amazon SageMaker's distributed model parallel library\. This list includes tips that are applicable across frameworks\. For TensorFlow and PyTorch specific tips, see [Modify a TensorFlow Training Script](model-parallel-customize-training-script-tf.md) and [Modify a PyTorch Training Script](model-parallel-customize-training-script-pt.md), respectively\. 
 
 **Batch Size and Number of Microbatches**
 + The library is most efficient when the batch size is increased\. For use cases where the model fits within a single device, but can only be trained with a small batch size, batch size can and should be increased after the library is integrated\. Model parallelism saves memory for large models, enabling you to train using batch sizes that previously did not fit in memory\.
@@ -15,3 +15,6 @@ Review the following tips and pitfalls before using Amazon SageMaker's distribut
 
 **Returning Tensors from smp\.DistributedModel**
 + Any tensor that is returned from the `smp.DistributedModel.call` \(for TensorFlow\) or `smp.DistributedModel.forward` \(for PyTorch\) function is broadcast to all other ranks, from the rank that computed that particular tensor\. As a result, any tensor that is not needed outside the call and forward methods \(intermediate activations, for example\) should not be returned, as this causes needless communication and memory overhead and hurts performance\.
+
+**The @smp\.step Decorator**
++ If an `smp.step`\-decorated function has a tensor argument that does not have a batch dimension, the argument name must be provided in the `non_split_inputs` list when calling `smp.step`\. This prevents the library from attempting to split the tensor into microbatches\. For more information see [https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/v1.2.0/smd_model_parallel_common_api.html](https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/v1.2.0/smd_model_parallel_common_api.html) in the API documentation\.

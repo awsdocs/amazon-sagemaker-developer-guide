@@ -17,4 +17,4 @@ profiler_config=ProfilerConfig(
 ```
 +  `system_monitor_interval_millis` \(int\) – Specify the monitoring intervals in milliseconds to record system metrics\. Available values are 100, 200, 500, 1000 \(1 second\), 5000 \(5 seconds\), and 60000 \(1 minute\) milliseconds\. The default value is 500 milliseconds\.
 
-To see the progress of system monitoring, see [Debugger for Insights on Studio](debugger-on-studio-insights.md)\.
+To see the progress of system monitoring, see [Open Amazon SageMaker Debugger Insights Dashboard](debugger-on-studio-insights.md)\.

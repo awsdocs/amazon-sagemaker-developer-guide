@@ -41,7 +41,7 @@ When you create a labeling job using the SageMaker console, you add worker instr
 
 1. Choose a data setup to setup to set up a connection between your input dataset and Ground Truth\. 
    + For **Automated data setup**:
-     + Follow the instructions in [Automated Data Setup](sms-input-data-input-manifest.md#sms-console-create-manifest-file) for image, text, and video clip labeling jobs\.
+     + Follow the instructions in [Automated Data Setup](sms-console-create-manifest-file.md) for image, text, and video clip labeling jobs\.
      + Follow the instructions in [Automated Video Frame Input Data Setup](sms-video-automated-data-setup.md) for video frame labeling jobs\. 
    + For **Manual data setup**:
      + For **Input dataset location**, provide the location in Amazon S3 in which your input manifest file is located\. For example, if your input manifest file, manifest\.json, is located in **example\-bucket**, enter **s3://example\-bucket/manifest\.json**\.

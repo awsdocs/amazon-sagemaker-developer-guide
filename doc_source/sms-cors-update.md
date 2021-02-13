@@ -11,7 +11,10 @@ If you create your job through the Ground Truth console, under **Enable enhanced
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/cors-checkbox.png)
 
-If you are using the `CreateLabelingJob` API to create a Ground Truth labeling job, you can add a CORS policy to an S3 bucket that contains input data in the S3 console\. To set the required CORS headers on the S3 bucket that contain your input images in the S3 console, follow the directions detailed in [How do I add cross\-domain resource sharing with CORS?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-cors-configuration.html)\. Use the following CORS configuration code for the buckets that hosts your images \(Choose JSON or XML based on your preference; they both accomplish the same configuration\)\.
+If you are using the `CreateLabelingJob` API to create a Ground Truth labeling job, you can add a CORS policy to an S3 bucket that contains input data in the S3 console\. To set the required CORS headers on the S3 bucket that contain your input images in the S3 console, follow the directions detailed in [How do I add cross\-domain resource sharing with CORS?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-cors-configuration.html)\. Use the following CORS configuration code for the buckets that hosts your images\. If you use the Amazon S3 console to add the policy to your bucket, you must use the JSON format\.
+
+**Important**  
+If you create a 3D point cloud or video frame labeling job, you must add additional rules to your CORS configuration\. To learn more, see [3D Point Cloud Labeling Job Permission Requirements](sms-point-cloud-general-information.md#sms-security-permission-3d-point-cloud) and [Video Frame Job Permission Requirements](sms-video-overview.md#sms-security-permission-video-frame) respectively\. 
 
 **JSON**
 

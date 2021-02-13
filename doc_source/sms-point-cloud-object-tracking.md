@@ -59,10 +59,11 @@ View options that enable workers to easily hide or view label text, a ground mes
 Ground Truth helps workers annotate 3D point clouds faster and more accurately using UX, machine learning and computer vision powered assistive labeling tools for 3D point cloud object tracking tasks\. The following assistive labeling tools are available for this task type:
 + **Label autofill** – When a worker adds a cuboid to a frame, a cuboid with the same dimensions and orientation is automatically added to all frames in the sequence\. 
 + **Label interpolation** – After a worker has labeled a single object in two frames, Ground Truth uses those annotations to interpolate the movement of that object between those two frames\.
-+ **Bulk label management** – Workers can add, delete, and rename annotations in bulk\. 
++ **Bulk label and attribute management** – Workers can add, delete, and rename annotations, label category attributes, and frame attributes in bulk\. 
   + Workers can manually delete annotations for a given object before or after a frame\. For example, a worker can delete all labels for an object after frame 10 if that object is no longer located in the scene after that frame\. 
   + If a worker accidentally bulk deletes all annotations for a object, they can add them back\. For example, if a worker deletes all annotations for an object before frame 100, they can bulk add them to those frames\. 
   + Workers can rename a label in one frame and all 3D cuboids assigned that label are updated with the new name across all frames\. 
+  + Workers can use bulk editing to add or edit label category attributes and frame attributes in multiple frames\.
 + **Snapping** – Workers can add a cuboid around an object and use a keyboard shortcut or menu option to have Ground Truth's autofit tool snap the cuboid tightly around the object's boundaries\. 
 + **Fit to ground** – After a worker adds a cuboid to the 3D scene, the worker can automatically snap the cuboid to the ground\. For example, the worker can use this feature to snap a cuboid to the road or sidewalk in the scene\. 
 + **Multi\-view labeling** – After a worker adds a 3D cuboid to the 3D scene, a side \-panel displays front and two side perspectives to help the worker adjust the cuboid tightly around the object\. Workers can annotation the 3D point cloud, the side panel and the adjustments appear in the other views in real time\. 

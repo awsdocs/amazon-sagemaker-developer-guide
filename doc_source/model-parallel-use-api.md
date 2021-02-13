@@ -54,8 +54,8 @@ smd_mp_estimator = PyTorch(
           py_version='py36',
           instance_count=1,
           distribution={
-              "smdistributed": smp_options,
-              "mpi": mpi_options
+            "smdistributed": {"modelparallel": smp_options},
+            "mpi": mpi_options
           },
           base_job_name="SMD-MP-demo",
       )
@@ -65,7 +65,14 @@ smd_mp_estimator.fit('s3://my_bucket/my_training_data/')
 
 To enable the library, a dictionary with the keys `"mpi"` and `"smdistributed"` needs to be passed as the `distribution` argument of the TensorFlow and PyTorch Estimator constructors in Python SDK\. For the `"mpi"` key, a dict must be passed which contains:
 + `"enabled"`: `True` to launch the training job with MPI\.
-+ `"processes_per_host"`: Set this to a number less than or equal to the number of GPUs available in your chosen instance type\. The library maintains a one\-to\-one mapping between processes and GPUs\.
++ `"processes_per_host"`: Specify the number of processes MPI should launch on each host\. In SageMaker a host is a single [Amazon EC2 ml instance]()\. The SageMaker Python SDK maintains a one\-to\-one mapping between processes and GPUs across model and data parallelism\. This means that SageMaker schedules each process on a single, separate GPU and no GPU contains more than one process\. If you are using PyTorch, you must restrict each process to its own device through `torch.cuda.set_device(smp.local_rank())`\. To learn more, see [PyTorch 1\.7\.1, 1\.6\.0](model-parallel-customize-training-script-pt.md#model-parallel-customize-training-script-pt-16)\.
+**Important**  
+ `process_per_host` *must* be less than the number of GPUs per instance and typically will be equal to the number of GPUs per instance\.
+
+  For example, if you use one instance with 4\-way model parallelism and 2\-way data parallelism, then `processes_per_host` should be 2 x 4 = 8\. Therefore, you must choose an instance that has at least 8 GPUs, such as an ml\.p3\.16xlarge\.
+
+  The following image illustrates how 2\-way data parallelism and 4\-way model parallelism is distributed across 8 GPUs: the models is partitioned across 4 GPUs, and each partition is added to 2 GPUs\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/distributed/model-data-parallel.png)
 + `"custom_mpi_options"`: Use this key to pass any custom MPI options you might need\. To avoid Docker warnings from contaminating your training logs, we recommend the following flag\.
 
   ```
@@ -86,15 +93,16 @@ Use the following resources to learn more about using the SageMaker Python SDK w
 
 ## Extend or Adapt A Docker Container that Contains SageMaker's Distributed Model Parallel Library<a name="model-parallel-customize-container"></a>
 
-To extend a pre\-built container, or adapt your own container to use SageMaker's distributed model parallel library, you must the following Pytorch 1\.6\.0 or TensorFlow 2\.3\.1 GPU general framework base\-images:
-+ 763104351884\.dkr\.ecr\.us\-east\-1\.amazonaws\.com/tensorflow\-training:2\.3\.1\-gpu\-py37\-cu110\-ubuntu18\.04
-+ 763104351884\.dkr\.ecr\.us\-east\-1\.amazonaws\.com/pytorch\-training:1\.6\.0\-gpu\-py36\-cu110\-ubuntu18\.04
+To extend a pre\-built container, or adapt your own container to use SageMaker's distributed model parallel library, you must use one of the following Pytorch or TensorFlow GPU general framework base\-images:
++ 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/tensorflow\-training:2\.3\.1\-gpu\-py37\-cu110\-ubuntu18\.04
++ 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/pytorch\-training:1\.6\.0\-gpu\-py36\-cu110\-ubuntu18\.04 
++ 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/pytorch\-training:1\.7\.1\-gpu\-py36\-cu110\-ubuntu18\.04
 
-For example, if you were using Pytorch 1\.6\.0, your Dockerfile should contain a `FROM` statement similar to the following:
+For example, if you were using Pytorch 1\.7\.1 in us\-east\-1, your Dockerfile should contain a `FROM` statement similar to the following:
 
 ```
 # SageMaker PyTorch image
-FROM 763104351884.dkr.ecr.us-east-1.amazonaws.com/pytorch-training:1.6.0-gpu-py36-cu110-ubuntu18.04
+FROM 763104351884.dkr.ecr.us-east-1.amazonaws.com/pytorch-training:1.7.1-gpu-py36-cu110-ubuntu18.04
 
 # Add your dependencies here
 RUN ...

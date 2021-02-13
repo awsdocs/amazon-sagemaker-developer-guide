@@ -13,6 +13,7 @@ To host a model through Amazon EC2 using Amazon SageMaker, deploy the model that
 
 ```
 import sagemaker
+from sagemaker.serializers import CSVSerializer
 xgb_predictor=xgb_model.deploy(
     initial_instance_count=1,
     instance_type='ml.t2.medium',
@@ -36,7 +37,7 @@ To learn more about compiling and optimizing your model for deployment to Amazon
 
 ## \(Optional\) Use SageMaker Predictor to Reuse the Hosted Endpoint<a name="ex1-deploy-model-sdk-use-endpoint"></a>
 
-After you deploy the model to an endpoint, you can set up a new SageMaker predictor by pairing the endpoint and continuously make real\-time predictions in any other notebooks\. The following example code shows how to use the SageMaker Predictor class to set up a new predictor object using the same endpoint:
+After you deploy the model to an endpoint, you can set up a new SageMaker predictor by pairing the endpoint and continuously make real\-time predictions in any other notebooks\. The following example code shows how to use the SageMaker Predictor class to set up a new predictor object using the same endpoint\. Re\-use the endpoint name that you used for the `xgb_predictor`\.
 
 ```
 import sagemaker
@@ -47,7 +48,7 @@ xgb_predictor_reuse=sagemaker.predictor.Predictor(
 )
 ```
 
-The `xgb_predictor_reuse` will behave exactly the same as the original `xgb_predictor`\. For more information, see the [SageMaker Predictor](https://sagemaker.readthedocs.io/en/stable/predictors.html#sagemaker.predictor.RealTimePredictor) class in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.
+The `xgb_predictor_reuse` Predictor behaves exactly the same as the original `xgb_predictor`\. For more information, see the [SageMaker Predictor](https://sagemaker.readthedocs.io/en/stable/predictors.html#sagemaker.predictor.RealTimePredictor) class in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.
 
 ## \(Optional\) Make Prediction with Batch Transform<a name="ex1-batch-transform"></a>
 

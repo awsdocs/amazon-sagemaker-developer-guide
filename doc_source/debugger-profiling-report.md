@@ -21,7 +21,7 @@ IPython.Application.instance().kernel.do_shutdown(True)
 Download the Debugger profiling report while your training job is running or after the job has finished using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) and AWS Command Line Interface \(CLI\)\.
 
 **Tip**  
-You can also download the report with one click and no additional scripting through the SageMaker Studio Debugger insights dashboard\. To find out how to download the report from Studio, see [Debugger for Insights on Studio](debugger-on-studio-insights.md)\.
+You can also download the report with one click and no additional scripting through the SageMaker Studio Debugger insights dashboard\. To find out how to download the report from Studio, see [Open Amazon SageMaker Debugger Insights Dashboard](debugger-on-studio-insights.md)\.
 
 ------
 #### [ Download using SageMaker Python SDK and AWS CLI ]

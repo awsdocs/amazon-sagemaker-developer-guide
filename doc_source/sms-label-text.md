@@ -2,6 +2,9 @@
 
 Use Ground Truth to text\. Select one of the following built in task types to learn more about that task type\. Each page includes instructions to help you create a labeling job using that task type\.
 
+**Tip**  
+To learn more about supported file types and input data quotas, see [Input Data](sms-data-input.md)\.
+
 **Topics**
 + [Named Entity Recognition](sms-named-entity-recg.md)
 + [Text Classification \(Single Label\)](sms-text-classification.md)

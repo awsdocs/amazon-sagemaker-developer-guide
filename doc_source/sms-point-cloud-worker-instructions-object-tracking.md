@@ -5,6 +5,7 @@ Use this page to become familiarize with the user interface and tools available 
 **Topics**
 + [Your Task](#sms-point-cloud-worker-instructions-ot-task)
 + [Navigate the UI](#sms-point-cloud-worker-instructions-worker-ui-ot)
++ [Bulk Edit Label Category and Frame Attributes](#sms-point-cloud-worker-instructions-ot-bulk-edit)
 + [Icon Guide](#sms-point-cloud-worker-instructions-ot-icons)
 + [Shortcuts](#sms-point-cloud-worker-instructions-ot-hot-keys)
 + [Saving Your Work and Submitting](#sms-point-cloud-worker-instructions-saving-work-ot)
@@ -83,6 +84,28 @@ If camera images are included, you may have the following view options:
 The following video demonstrates how to use these view options\. The **F** option is used to view the field of view of the camera \(the gray area\), the **C** options shows the direction the camera is facing and angle of the camera \(blue lines\), and the **B** option is used to view the cuboid\. 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pointcloud/gifs/view-options-side.gif)
+
+## Bulk Edit Label Category and Frame Attributes<a name="sms-point-cloud-worker-instructions-ot-bulk-edit"></a>
+
+You can bulk edit label attributes and frame attributes\. 
+
+When you bulk edit an attribute, you specify one or more ranges of frames that you want to apply the edit to\. The attribute you select is edited in all frames in that range, including the start and end frames you specify\. When you bulk edit label attributes, the range you specify *must* contain the label that the label attribute is attached to\. If you specify frames that do not contain this label, you will receive an error\.
+
+To bulk edit an attribute you *must* specify the desired value for the attribute first\. For example, if you want to change an attribute from *Yes* to *No*, you must select *No*, and then perform the bulk edit\. 
+
+You can also specify a new value for an attribute that has not been filled in and then use the bulk edit feature to fill in that value in multiple frames\. To do this, select the desired value for the attribute and complete the following procedure\. 
+
+**To bulk edit a label or attribute:**
+
+1. Use your mouse to right click the attribute you want to bulk edit\.
+
+1. Specify the range of frames you want to apply the bulk edit to using a dash \(`-`\) in the text box\. For example, if you want to apply the edit to frames one through ten, enter `1-10`\. If you want to apply the edit to frames two to five, eight to ten and twenty enter `2-5,8-10,20`\.
+
+1. Select **Confirm**\.
+
+If you get an error message, verify that you entered a valid range and that the label associated with the label attribute you are editing \(if applicable\) exists in all frames specified\.
+
+You can quickly add a label to all previous or subsequent frames using the **Duplicate to previous frames** and **Duplicate to next frames** options in the **Label** menu at the top of your screen\. 
 
 ## Icon Guide<a name="sms-point-cloud-worker-instructions-ot-icons"></a>
 

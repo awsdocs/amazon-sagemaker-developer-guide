@@ -116,7 +116,33 @@ Additionally if you choose to allow workers to work on tasks for more than 8 hou
 
 ### Add a CORS Permission Policy to S3 Bucket<a name="sms-permissions-execution-role"></a>
 
-When you create a 3D point cloud labeling job, you specify buckets in S3 where your input data and manifest file are located and where your output data will be stored\. These buckets may be the same\. You must attach the following Cross\-origin resource sharing \(CORS\) policy to your input and output buckets: 
+When you create a 3D point cloud labeling job, you specify buckets in S3 where your input data and manifest file are located and where your output data will be stored\. These buckets may be the same\. You must attach the following Cross\-origin resource sharing \(CORS\) policy to your input and output buckets\. If you use the Amazon S3 console to add the policy to your bucket, you must use the JSON format\.
+
+**JSON**
+
+```
+[
+    {
+        "AllowedHeaders": [
+            "*"
+        ],
+        "AllowedMethods": [
+            "GET",
+            "HEAD",
+            "PUT"
+        ],
+        "AllowedOrigins": [
+            "*"
+        ],
+        "ExposeHeaders": [
+            "Access-Control-Allow-Origin"
+        ],
+        "MaxAgeSeconds": 3000
+    }
+]
+```
+
+**XML**
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
