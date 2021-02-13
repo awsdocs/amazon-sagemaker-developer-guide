@@ -34,7 +34,7 @@ The following rules are the Debugger built\-in rules that are callable using the
 | Generic system monitoring rules for any SageMaker training job |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html)  | 
 
 
-**Debugger Built\-in Rules for Profiling Model Performance Data \(Framework Metrics\)**  
+**Debugger Built\-in Rules for Profiling Framework Metrics**  
 
 | Scope of Validity | Built\-in Rules | 
 | --- | --- | 
@@ -312,7 +312,7 @@ The CreateXgboostReport rule collects output tensors from an XGBoost training jo
 + `labels` – Saves every 5 steps
 
 
-**Parameter Descriptions for the StepOutlier Rule**  
+**Parameter Descriptions for the CreateXgboostReport Rule**  
 
 | Parameter Name | Description | 
 | --- | --- | 

@@ -21,7 +21,7 @@ Before you begin, you need to meet the following prerequisites:
 
 ## Getting Started with a SageMaker Clarify Container<a name="clarify-processing-job-configure-container"></a>
 
-Amazon SageMaker provides prebuilt SageMaker Clarify container images that include the libraries and other dependencies needed to compute bias metrics and feature attributions for explainability\. This image has been enabled to run SageMaker [Process Data and Evaluate Models](processing-job.md) in your account\. 
+Amazon SageMaker provides prebuilt SageMaker Clarify container images that include the libraries and other dependencies needed to compute bias metrics and feature attributions for explainability\. This image has been enabled to run SageMaker [Process Data](processing-job.md) in your account\. 
 
 The image URIs for the containers are in the following form:
 

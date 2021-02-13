@@ -31,7 +31,7 @@ It is estimated that, starting with Chrome 89 on March 2nd, 2021, AWS can no lon
 **Important**  
 If you do not add a CORS configuration to the S3 buckets that contains your input data by February 10th, 2021, human review tasks for those input data objects will fail\.
 
-You can add a CORS policy to an S3 bucket that contains input data in the S3 console\. To set the required CORS headers on the S3 bucket that contain your input images in the S3 console, follow the directions detailed in [How do I add cross\-domain resource sharing with CORS?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-cors-configuration.html)\. Use the following CORS configuration code for the buckets that hosts your images\. \(Choose JSON or XML based on your preference; they both accomplish the same configuration\.\)
+You can add a CORS policy to an S3 bucket that contains input data in the S3 console\. To set the required CORS headers on the S3 bucket that contain your input images in the S3 console, follow the directions detailed in [How do I add cross\-domain resource sharing with CORS?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-cors-configuration.html)\. Use the following CORS configuration code for the buckets that hosts your images\. If you use the Amazon S3 console to add the policy to your bucket, you must use the JSON format\.
 
 **JSON**
 
