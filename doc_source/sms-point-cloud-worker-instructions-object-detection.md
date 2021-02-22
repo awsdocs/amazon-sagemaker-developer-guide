@@ -7,6 +7,7 @@ Use this page to become familiarize with the user interface and tools available 
 + [Navigate the UI](#sms-point-cloud-worker-instructions-worker-ui-od)
 + [Icon Guide](#sms-point-cloud-worker-instructions-od-icons)
 + [Shortcuts](#sms-point-cloud-worker-instructions-od-hot-keys)
++ [Release, Stop and Resume, and Decline Tasks](#sms-point-cloud-worker-instructions-skip-reject-od)
 + [Saving Your Work and Submitting](#sms-point-cloud-worker-instructions-saving-work-od)
 
 ## Your Task<a name="sms-point-cloud-worker-instructions-od-task"></a>
@@ -91,7 +92,7 @@ Use this table to learn about the icons you see in your worker task portal\.
 |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pointcloud/icons/fullscreen.png)  |  full screen   |  Choose this icon to make the 3D point cloud visualization full screen, and to collapse all side panels\.  | 
 |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pointcloud/icons/label-icons/show.png)  | show labels |  Show labels in the 3D point cloud visualization, and if applicable, in images\.   | 
 |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pointcloud/icons/label-icons/hide.png)  | hide labels |  Hide labels in the 3D point cloud visualization, and if applicable, in images\.   | 
-|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pointcloud/icons/label-icons/delete.png)  | hide labels |  Delete a label\.   | 
+|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pointcloud/icons/label-icons/delete.png)  | delete labels |  Delete a label\.   | 
 
 ## Shortcuts<a name="sms-point-cloud-worker-instructions-od-hot-keys"></a>
 
@@ -99,8 +100,17 @@ The shortcuts listed in the **Shortcuts** menu can help you navigate the 3D poin
 
 Before you start your task, it is recommended that you review the **Shortcuts** menu and become acquainted with these commands\. You need to use some of the 3D cuboid controls to edit your cuboid\. 
 
+## Release, Stop and Resume, and Decline Tasks<a name="sms-point-cloud-worker-instructions-skip-reject-od"></a>
+
+When you open the labeling task, three buttons on the top right allow you to decline the task \(**Decline task**\), release it \(**Release task**\), and stop and resume it at a later time \(**Stop and resume later**\)\. The following list describes what happens when you select one of these options:
++ **Decline task**: You should only decline a task if something is wrong with the task, such as an issue with the 3D point cloud, images or the UI\. If you decline a task, you will not be able to return to the task\.
++ **Release Task**: If you release a task, you loose all work done on that task\. When the task is released, other workers on your team can pick it up\. If enough workers pick up the task, you may not be able to return to it\. When you select this button and then select **Confirm**, you are returned to the worker portal\. If the task is still available, its status will be **Available**\. If other workers pick it up, it will disappear from your portal\. 
++ **Stop and resume later**: You can use the **Stop and resume later** button to stop working and return to the task at a later time\. You should use the **Save** button to save your work before you select **Stop and resume later**\. When you select this button and then select **Confirm**, you are returned to the worker portal, and the task status is **Stopped**\. You can select the same task to resume work on it\. 
+
+  Be aware that the person that creates your labeling tasks specifies a time limit in which all tasks much be completed by\. If you do not return to and complete this task within that time limit, it will expire and your work will not be submitted\. Contact your administrator for more information\. 
+
 ## Saving Your Work and Submitting<a name="sms-point-cloud-worker-instructions-saving-work-od"></a>
 
 You should periodically save your work\. Ground Truth will automatically save your work ever 15 minutes\. 
 
-When you open a task, you must complete your work on it before pressing **Submit**\. If you select **Stop Working** you will loose that task, and other workers will be able to start working on it\. 
+When you open a task, you must complete your work on it before pressing **Submit**\.

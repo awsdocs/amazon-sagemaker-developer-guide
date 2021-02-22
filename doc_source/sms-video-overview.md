@@ -13,6 +13,7 @@ Use the following topics to learn more\.
 **Topics**
 + [Input Data](#sms-video-input-overview)
 + [Job Completion Times](#sms-video-job-completion-times)
++ [Task Types](#sms-video-frame-tools)
 + [Workforces](#sms-video-workforces)
 + [Worker User Interface \(UI\)](#sms-video-worker-task-ui)
 + [Video Frame Job Permission Requirements](#sms-security-permission-video-frame)
@@ -31,12 +32,24 @@ Video and video frame labeling jobs can take workers hours to complete\. You can
 
 We strongly recommend that you create tasks that workers can complete within 12 hours\. Workers must keep the worker UI open while working on a task\. They can save work as they go and Ground Truth saves their work every 15 minutes\.
 
-When using the SageMaker `CreateLabelingJob` API operation, set the total time a task is available to workers in the `TaskTimeLimitInSeconds` parameter of `HumanTaskConfig`\. 
+When using the SageMaker `CreateLabelingJob` API operation, set the total time a task is available to workers in the `TaskTimeLimitInSeconds` parameter of `HumanTaskConfig`\.
 
 When you create a labeling job in the console, you can specify this time limit when you select your workforce type and your work team\.
 
 **Important**  
 If you set your task time limit to be greater than 8 hours, you must set `MaxSessionDuration` for your IAM execution role to at least 8 hours\. 
+
+## Task Types<a name="sms-video-frame-tools"></a>
+
+When you create a video object tracking or video object detection labeling job, you specify the type of annotation that you want workers to create while working on your labeling task\. The annotation type determines the type of output data Ground Truth returns and defines the *task type* for your labeling job\. 
+
+If you are creating a labeling job using the API operation [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html), you specify the task type using the label category configuration file parameter `annotationType`\. To learn more, see [Create a Labeling Category Configuration File with Label Category and Frame Attributes](sms-label-cat-config-attributes.md)\.
+
+The following task types are available for both video object tracking or video object detection labeling jobs: 
++ **Bounding box ** – Workers are provided with tools to create bounding box annotations\. A bounding box is a box that a worker draws around an objects to identify the pixel\-location and label of that object in the frame\. 
++ **Polyline** – Workers are provided with tools to create polyline annotations\. A polyline is defined by the series of ordered x, y coordinates\. Each point added to the polyline is connected to the previous point by a line\. The polyline does not have to be closed \(the start point and end point do not have to be the same\) and there are no restrictions on the angles formed between lines\. 
++ **Polygon ** – Workers are provided with tools to create polygon annotations\. A polygon is a closed shape defined by a series of ordered x, y coordinates\. Each point added to the polygon is connected to the previous point by a line and there are no restrictions on the angles formed between lines\. Two lines \(sides\) of the polygon cannot cross\. The start and end point of a polygon must be the same\. 
++ **Keypoint** – Workers are provided with tools to create keypoint annotations\. A keypoint is a single point associated with an x, y coordinate in the video frame\.
 
 ## Workforces<a name="sms-video-workforces"></a>
 
@@ -82,18 +95,6 @@ In another example, you may want to provide a free\-form text box to give worker
 
 When you create a label verification job, you can add one or more frame attributes to ask workers to provide feedback on all labels in a video frame\.
 
-### Task Types<a name="sms-video-frame-tools"></a>
-
-When you create a video object tracking or video object detection labeling job, you specify the type of annotation that you want workers to create while working on your labeling task\. The annotation type determines the type of output data Ground Truth returns and defines the *task type* for your labeling job\. 
-
-If you are creating a labeling job using the API operation [CreateLabelingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html), you specify the task type using the label category configuration file parameter `annotationType`\. To learn more, see [Create a Labeling Category Configuration File with Label Category and Frame Attributes](sms-label-cat-config-attributes.md)\.
-
-The following task types are available for both video object tracking or video object detection labeling jobs: 
-+ **Bounding box ** – Workers are provided with tools to create bounding box annotations\. A bounding box is a box that a worker draws around an objects to identify the pixel\-location and label of that object in the frame\. 
-+ **Polyline** – Workers are provided with tools to create polyline annotations\. A polyline is defined by the series of ordered x, y coordinates\. Each point added to the polyline is connected to the previous point by a line\. The polyline does not have to be closed \(the start point and end point do not have to be the same\) and there are no restrictions on the angles formed between lines\. 
-+ **Polygon ** – Workers are provided with tools to create polygon annotations\. A polygon is a closed shape defined by a series of ordered x, y coordinates\. Each point added to the polygon is connected to the previous point by a line and there are no restrictions on the angles formed between lines\. Two lines \(sides\) of the polygon cannot cross\. The start and end point of a polygon must be the same\. 
-+ **Keypoint** – Workers are provided with tools to create keypoint annotations\. A keypoint is a single point associated with an x, y coordinate in the video frame\.
-
 ### Worker Instructions<a name="sms-video-worker-instructions-general"></a>
 
 You can provide worker instructions to help your workers complete your video frame labeling tasks\. You might want to cover the following topics when writing your instructions: 
@@ -104,6 +105,12 @@ You can provide worker instructions to help your workers complete your video fra
 You can add your worker instructions using the SageMaker console while creating a labeling job\. If you create a labeling job using the API operation `CreateLabelingJob`, you specify worker instructions in your label category configuration file\. 
 
 In addition to your instructions, Ground Truth provides a link to help workers navigate and use the worker portal\. View these instructions by selecting the task type on [Worker Instructions](sms-video-worker-instructions.md)\.
+
+### Declining Tasks<a name="sms-decline-task-video"></a>
+
+Workers are able to decline tasks\. 
+
+Workers decline a task if the instructions are not clear, input data is not displaying correctly, or if they encounter some other issue with the task\. If the number of workers per dataset object \([https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-NumberOfHumanWorkersPerDataObject](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-NumberOfHumanWorkersPerDataObject)\) decline the task, the data object is marked as expired and will not be sent to additional workers\.
 
 ## Video Frame Job Permission Requirements<a name="sms-security-permission-video-frame"></a>
 

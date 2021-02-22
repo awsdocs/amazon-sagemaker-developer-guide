@@ -18,9 +18,10 @@ SageMaker supports the following training environment configurations:
 + You can use a prebuilt TensorFlow or PyTorch container\.
 + You can customize SageMaker prebuilt containers or extend them to handle any additional functional requirements for your algorithm or model that the prebuilt SageMaker Docker image doesn't support\. For an example of how you can extend a pre\-built container, see [Extend a Prebuilt Container](https://docs.aws.amazon.com/sagemaker/latest/dg/prebuilt-containers-extend.html)\.
 
-  To extend a pre\-built container, or adapt your own container to use the library, you must the following Pytorch 1\.6\.0 or TensorFlow 2\.3\.1 GPU general framework base\-images:
-  + 763104351884\.dkr\.ecr\.us\-east\-1\.amazonaws\.com/tensorflow\-training:2\.3\.1\-gpu\-py37\-cu110\-ubuntu18\.04
-  + 763104351884\.dkr\.ecr\.us\-east\-1\.amazonaws\.com/pytorch\-training:1\.6\.0\-gpu\-py36\-cu110\-ubuntu18\.04
+  To extend a pre\-built container, or adapt your own container to use the library, you must use one of the following PyTorch or TensorFlow GPU general framework base\-images:
+  + 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/tensorflow\-training:2\.3\.1\-gpu\-py37\-cu110\-ubuntu18\.04
+  + 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/pytorch\-training:1\.6\.0\-gpu\-py36\-cu110\-ubuntu18\.04 
+  + 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/pytorch\-training:1\.7\.1\-gpu\-py36\-cu110\-ubuntu18\.04
 
   For example, if you are using PyTorch 1\.6\.0, your Dockerfile should contain a `FROM` statement similar to the following:
 

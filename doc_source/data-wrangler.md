@@ -20,4 +20,5 @@ To start using Data Wrangler, see [Get Started with Data Wrangler](data-wrangler
 + [Export](data-wrangler-data-export.md)
 + [Shut Down Data Wrangler](data-wrangler-shut-down.md)
 + [Security and Permissions](data-wrangler-security.md)
++ [Release Notes](data-wrangler-release-notes.md)
 + [Troubleshoot](data-wrangler-trouble-shooting.md)

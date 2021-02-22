@@ -9,7 +9,9 @@ A KernelGateway app is associated with a single Studio user\. When you update th
 
 1. Choose your user name\.
 
-1. Under **Apps**, in the row displaying the **App name**, choose **Delete app**\.
+1. Under **Apps**, in the row displaying the **App name**, choose **Delete app**\. 
+
+   To update Data Wrangler, delete the app that starts with **sagemaker\-data\-wrang**\.
 
 1. Choose **Yes, delete app**\.
 

@@ -6,6 +6,8 @@ After the JupyterServer app is shut down, you must reopen Studio through the Sag
 
 You can shut down the JupyterServer app from the Studio Control Panel or from within Studio\.
 
+Some of the services within studio, like Data Wrangler, run on their own app\. To update these services you must delete the app for that service\. To learn more, see [Update Studio Apps](studio-tasks-update-apps.md)\.
+
 **Note**  
 A JupyterServer app is associated with a single Studio user\. When you update the app for one user it doesn't effect other users\.
 

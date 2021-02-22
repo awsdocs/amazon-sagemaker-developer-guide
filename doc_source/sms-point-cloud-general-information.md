@@ -108,6 +108,12 @@ You can add your worker instructions using the SageMaker console while creating 
 
 In addition to your instructions, Ground Truth provides a link to help workers navigate and use the worker portal\. View these instructions by selecting the task type on [Worker Instructions](sms-point-cloud-worker-instructions.md)\. 
 
+### Declining Tasks<a name="sms-decline-task-point-cloud"></a>
+
+Workers are able to decline tasks\. 
+
+Workers decline a task if the instructions are not clear, input data is not displaying correctly, or if they encounter some other issue with the task\. If the number of workers per dataset object \([https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-NumberOfHumanWorkersPerDataObject](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-NumberOfHumanWorkersPerDataObject)\) decline the task, the data object is marked as expired and will not be sent to additional workers\.
+
 ## 3D Point Cloud Labeling Job Permission Requirements<a name="sms-security-permission-3d-point-cloud"></a>
 
 When you create a 3D point cloud labeling job, in addition to the permission requirements found in [Assign IAM Permissions to Use Ground Truth](sms-security-permission.md), you must add a CORS policy to your S3 bucket that contains your input manifest file\. 

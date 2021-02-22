@@ -6,10 +6,12 @@ Before you create a labeling job it is recommended that you review the following
 + You can specify our input data using an automatic data setup in the console, or an input manifest file in either the console or when using `CreateLabelingJob` API\. For automated data setup, see [Automated Data Setup](sms-console-create-manifest-file.md)\. To learn how to create an input manifest file, see [Use an Input Manifest File](sms-input-data-input-manifest.md)\.
 + Review labeling job input data quotas: [Input Data Quotas](input-data-limits.md)\.
 
-After you have chosen your task type, use the topics on this page to learn how to create a labeling job\. If you are a new Ground Truth user, we recommend that you start by walking through the demo in [Getting started](sms-getting-started.md)\.
+After you have chosen your task type, use the topics on this page to learn how to create a labeling job\.
+
+If you are a new Ground Truth user, we recommend that you start by walking through the demo in [Getting started](sms-getting-started.md)\.
 
 **Important**  
-Starting February 10th, 2021, Ground Truth will require all S3 buckets that contain labeling job input image data have a CORS policy attached\. To learn more about this change, see [CORS Permission Requirement](sms-cors-update.md)\.
+Ground Truth requires all S3 buckets that contain labeling job input image data to have a CORS policy attached\. To learn more, see [CORS Permission Requirement](sms-cors-update.md)\.
 
 **Topics**
 + [Built\-in Task Types](sms-task-types.md)

@@ -255,9 +255,17 @@ When you export your data flow using a **Data Wrangler job**, a Jupyter Notebook
 
 1. Choose any **Python 3 \(Data Science\)** kernel for the **Kernel**\. 
 
-1. When the kernel starts, run all of the steps in the notebook through the code block after the section **Start ProcessingJob**\.
+1. When the kernel starts, run the cells in the notebook book until **Kick off SageMaker Training Job \(Optional\)**\. 
+
+1. Optionally, you can run the cells in **Kick off SageMaker Training Job \(Optional\)** if you want to create a SageMaker training job to train an XGboost classifier\. You can find the cost to run an SageMaker training job in [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/)\. 
+
+   Alternatively, you can add the code blocks found in [Training XGBoost Classifier](#data-wrangler-getting-started-train-xgboost) to the notebook and run them to use the [XGBoost](https://xgboost.readthedocs.io/en/latest/) open source library to train an XGBoost classifier\. 
+
+1. Uncomment and run the cell under **Cleanup** and run it to revert the SageMaker Python SDK to its original version\.
 
 You can monitor your Data Wrangler job status in the SageMaker console in the **Processing** tab\. Additionally, you can monitor your Data Wrangler job using Amazon CloudWatch\. For additional information, see [Monitor Amazon SageMaker Processing Jobs with CloudWatch Logs and Metrics](https://docs.aws.amazon.com/sagemaker/latest/dg/processing-job.html#processing-job-cloudwatch)\. 
+
+If you kicked off a training job, you can monitor its status using the SageMaker console under **Training jobs** in the **Training section**\.
 
 #### Training XGBoost Classifier<a name="data-wrangler-getting-started-train-xgboost"></a>
 
@@ -274,8 +282,6 @@ In the same notebook that kicked off the Data Wrangler job, you can pull the dat
 
    ```
    import awswrangler as wr
-   import pandas as pd
-   
    
    df = wr.s3.read_csv(path=output_path, dataset=True)
    X, y = df.iloc[:,:-1],df.iloc[:,-1]

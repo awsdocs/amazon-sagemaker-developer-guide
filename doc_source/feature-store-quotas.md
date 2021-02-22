@@ -1,11 +1,11 @@
 # Quotas, Naming Rules and Data Types<a name="feature-store-quotas"></a>
 
 ## Limits and Quotas<a name="feature-store-limits-quotas"></a>
-+  **Maximum number of feature groups per AWS account:** Soft limit\. It can be increased\. 
-+  **Maximum number of feature definitions per feature group:** 2500\. Hard limit\. This limit cannot be increased\. 
-+  **Maximum Transactions per second \(TPS\) per API per AWS account:**1000 TPS\. E\.g\., a total of 3000 TPS across PutRecord, GetRecord and DeleteRecord\. Soft Limit\. This limit can be increased\. 
-+  **Maximum size of a record:** 350KB\. This is a hard limit\. It cannot be increased\. 
-+  **Maximum size of a feature value:** 350KB\. This is a hard limit\. It cannot be increased\. 
++  **Maximum number of feature groups per AWS account:** 100
++  **Maximum number of feature definitions per feature group:** 2500
++  **Maximum Transactions per second \(TPS\) per API per AWS account:**1000 TPS per API
++  **Maximum size of a record:** 350KB
++  **Maximum size of a feature value:** 350KB
 
 ## Naming Rules<a name="feature-store-naming-rules"></a>
 +  **Reserved Words:** The following are reserved words and cannot be used as feature names in feature definitions: `is_deleted`, `write_time`, and `api_invocation_time`\. 

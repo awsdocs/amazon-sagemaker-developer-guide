@@ -1,8 +1,5 @@
 # Using Amazon Augmented AI for Human Review<a name="a2i-use-augmented-ai-a2i-human-review-loops"></a>
 
-****  
-***This feature is not available in the China Regions\.***
-
 When you use AI applications such as Amazon Rekognition, Amazon Textract, or your custom machine learning \(ML\) models, you can use Amazon Augmented AI to get human review of low confidence predictions or a random sample of predictions\.
 <a name="what-is-amazon-augmented-ai-a2i"></a>
 **What is Amazon Augmented AI?**  

@@ -158,7 +158,7 @@ The following policy allows connections only from the specified range of IP addr
 
 ```
 {
-    "Id": "sagemaker-studio-example-1",
+    "Id": "sagemaker-studio-example-3",
     "Version": "2012-10-17",
     "Statement": [
         {
@@ -172,6 +172,36 @@ The following policy allows connections only from the specified range of IP addr
             "Condition": {
                 "IpAddress": {
                     "aws:SourceIp": [
+                        "192.0.2.0/24",
+                        "203.0.113.0/24"
+                    ]
+                }
+            }
+        }
+    ]
+}
+```
+
+**Example 4**
+
+If you are accessing SageMaker Studio through an interface endpoint, you can use the `aws:VpcSourceIp` condition key to allow connections only from the specified range of IP addresses as shown in the following policy\.
+
+```
+{
+    "Id": "sagemaker-studio-example-4",
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Enable SageMaker Studio Access",
+            "Effect": "Allow",
+            "Action": [
+                "sagemaker:CreatePresignedDomainUrl",
+                "sagemaker:DescribeUserProfile"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "IpAddress": {
+                    "aws:VpcSourceIp": [
                         "192.0.2.0/24",
                         "203.0.113.0/24"
                     ]

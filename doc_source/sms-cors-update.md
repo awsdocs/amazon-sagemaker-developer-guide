@@ -2,10 +2,10 @@
 
 Earlier in 2020, widely used browsers like Chrome and Firefox changed their default behavior for rotating images based on image metadata, referred to as [EXIF data](https://en.wikipedia.org/wiki/Exif)\. Previously, images would always display in browsers exactly how they are stored on disk, which is typically unrotated\. After the change, images now rotate according to a piece of image metadata called *orientation value*\. This has important implications for the entire machine learning \(ML\) community\. For example, if the EXIF orientation is not considered, applications that are used to annotate images may display images in unexpected orientations and result in incorrect labels\. 
 
-It is estimated that, starting with Chrome 89 on March 2nd, 2021, AWS can no longer automatically prevent the rotation of images because the web standards group W3C has decided that the ability to control rotation of images violates the web’s Same Origin Policy\. Therefore, to ensure human workers annotate your input images in a predictable orientation when you submit requests to create a labeling job, you must add a CORS header policy to the S3 buckets that contain your input images by February 10th, 2021\.
+Starting with Chrome 89, AWS can no longer automatically prevent the rotation of images because the web standards group W3C has decided that the ability to control rotation of images violates the web’s Same\-origin Policy\. Therefore, to ensure human workers annotate your input images in a predictable orientation when you submit requests to create a labeling job, you must add a CORS header policy to the S3 buckets that contain your input images\.
 
 **Important**  
-If you do not add a CORS configuration to the S3 buckets that contains your input data by February 10th, 2021, labeling tasks for those input data objects will fail\.
+If you do not add a CORS configuration to the S3 buckets that contains your input data, labeling tasks for those input data objects will fail\.
 
 If you create your job through the Ground Truth console, under **Enable enhanced image access**, a check box is select to enable CORS configuration on the S3 bucket that contains your input manifest file\. Keep this check box selected\. If all of your input data is *not* located in the same S3 bucket as your input manifest file, you must add a CORS configuration to all S3 buckets that contain input data using the following instructions\.
 

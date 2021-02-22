@@ -419,6 +419,6 @@ For more information about the status values and their meanings for SageMaker jo
 + [ `TrainingJobStatus`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html#sagemaker-DescribeTrainingJob-response-TrainingJobStatus)
 + [ `TransformJobStatus`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTransformJob.html#sagemaker-DescribeTransformJob-response-TransformJobStatus)
 + [ `EndpointStatus`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeEndpoint.html#sagemaker-DescribeEndpoint-response-EndpointStatus)
-+ [ `FeatureGroupStatus`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeEndpoint.html#sagemaker-DescribeFeatureGroup-response-FeatureGroupStatus)
++ [ `FeatureGroupStatus`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeFeatureGroup.html#sagemaker-DescribeFeatureGroup-response-FeatureGroupStatus)
 
 For more information, see the [Amazon EventBridge User Guide](https://docs.aws.amazon.com/eventbridge/latest/userguide/what-is-amazon-eventbridge.html)\.

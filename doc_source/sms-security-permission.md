@@ -162,6 +162,37 @@ When added to a permissions policy, the following permission grants access to cr
         },
 ```
 
+## Grant Permissions to Subscribe to a Vendor Workforce<a name="sms-security-permissions-workforce-creation-vendor"></a>
+
+You can add the following JSON to the policy in [Permissions Required to Use the Amazon SageMaker Ground Truth Console](#sms-security-permission-console-access) to grant an IAM entity permission to subscribe to a [vendor workforce](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management-vendor.html)\.
+
+```
+{
+    "Sid": "AccessAwsMarketplaceSubscriptions",
+    "Effect": "Allow",
+    "Action": [
+        "aws-marketplace:Subscribe",
+        "aws-marketplace:Unsubscribe",
+        "aws-marketplace:ViewSubscriptions"
+    ],
+    "Resource": "*"
+}
+```
+
+If your require more granular permissions to access SageMaker API operations than the ones described in [Permissions Required to Use the Amazon SageMaker Ground Truth Console](#sms-security-permission-console-access), you can add the following JSON to your policy to grant permission to list and describe the vendor work teams you are subscribed do\.
+
+```
+{
+    "Sid": "SageMakerVendorWorkteamApis",
+    "Effect": "Allow",
+    "Action": [
+        "sagemaker:ListSubscribedWorkteams",
+        "sagemaker:DescribeSubscribedWorkteam"
+    ],
+    "Resource": "*"
+}
+```
+
 ## Create an Execution Role to Start a Labeling Job<a name="sms-security-permission-execution-role"></a>
 
 When you configure your labeling job, you need to provide an *execution role* which is a role that SageMaker has permission to assume to start and run your labeling job\.

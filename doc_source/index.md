@@ -248,6 +248,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Export](data-wrangler-data-export.md)
       + [Shut Down Data Wrangler](data-wrangler-shut-down.md)
       + [Security and Permissions](data-wrangler-security.md)
+      + [Release Notes](data-wrangler-release-notes.md)
       + [Troubleshoot](data-wrangler-trouble-shooting.md)
 + [Process Data](processing-job.md)
    + [Data Processing with Apache Spark](use-spark-processing-container.md)
