@@ -161,7 +161,7 @@ Given the endpoint Amazon Resource Name \(ARN\) from the previous example, the f
 
    ```
    train_data_location_artifact_arn = sagemaker_client.list_associations(
-       DestinationArn=trial_source_arn)['AssociationSummaries'][0]['SourceArn']
+       DestinationArn=trial_component_arn, SourceType='Model')['AssociationSummaries'][0]['SourceArn']
    ```
 
 1. Get the training data location from the training data location artifact\.
