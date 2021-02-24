@@ -1,6 +1,6 @@
 # Ground Truth Security and Permissions<a name="sms-security-general"></a>
 
-Use the topics on this page to learn about Ground Truth security features, and how to configure AWS Identity and Access Management \(IAM\) permissions to allow an IAM user or role create a labeling job\. Additionally, learn how to create an *execution role*\. An execution role is the role that you specify when you create a labeling job and it is used to execute your labeling job\.
+Use the topics on this page to learn about Ground Truth security features, and how to configure AWS Identity and Access Management \(IAM\) permissions to allow an IAM user or role to create a labeling job\. Additionally, learn how to create an *execution role*\. An execution role is the role that you specify when you create a labeling job and it is used to execute your labeling job\.
 
 If you are a new user and want to get started quickly, or if you do not require granular permissions, see [Grant General Permissions To Get Started Using Ground Truth](sms-security-permission.md#sms-security-permissions-get-started)\.
 
