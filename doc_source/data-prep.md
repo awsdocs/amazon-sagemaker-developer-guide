@@ -11,4 +11,5 @@ For more information, see [Prepare ML Data with Amazon SageMaker Data Wrangler](
 
 
 **Topics**
++ [Detect Pretraining Data Bias](clarify-detect-data-bias.md)
 + [Prepare ML Data with Amazon SageMaker Data Wrangler](data-wrangler.md)

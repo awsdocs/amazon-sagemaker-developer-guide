@@ -16,7 +16,7 @@ folder="package_output"
 s3_output_location=f"s3://{bucket}/{folder}"
 
 # Give your model a name and version for reference
-model_name="sample-model"
+model_name="packaged-mobilenet-model"
 model_version="1.1"
 
 sagemaker_client.create_edge_packaging_job(
@@ -51,7 +51,7 @@ Once the packaging job is complete, download the model locally to your device\. 
 ```
 s3_client.download_file(bucket=fleet_bucket,
                         key=folder,
-                        filename="mobilenet_v2.tar.gz"
+                        filename="packaged-mobilenet-model-1.1.tar.gz"
 ```
 
 You can also download your model using the Amazon S3 console at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/)\. Search for your bucket by providing a partial name of your bucket in the search field\.

@@ -11,7 +11,7 @@ Where:
 + F\- = is the number of disfavored facet *d* members with a favorable outcome whose nearest neighbors in favored facet *a* received an unfavorable outcome\. 
 + nd is the sample size of facet *d*\.
 
-The range of values for the counterfactual fliptest for binary and multicategory facet labels is \[\-1, \+1\]\. The FT metric is not defined for continuous labels\. 
+The range of values for the counterfactual fliptest for binary and multicategory facet labels is \[\-1, \+1\]\. For continuous labels, we set a threshold to collapse the labels to binary\.
 + Positive values occur when the number of unfavorable counterfactual fliptest decisions for the disfavored facet *d* exceeds the favorable ones\. 
 + Values near zero occur when the number of unfavorable and favorable counterfactual fliptest decisions balance out\.
 + Negative values occur when the number of unfavorable counterfactual fliptest decisions for the disfavored facet *d* is less than the favorable ones\.

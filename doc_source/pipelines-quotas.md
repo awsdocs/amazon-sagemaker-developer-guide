@@ -64,7 +64,7 @@ The following tables list the quotas for SageMaker Pipelines resources and requi
 
 | Metadata Property | Quota | 
 | --- | --- | 
-| Maximum metadata size | 20 elements | 
+| Maximum metadata size | 20 key\-value pairs | 
 | Maximum metadata key size | 128 characters | 
 | Metadata key regular expression pattern | \(\[A\-Za\-z0\-9\\\\\-\_\]\)\* | 
 | Maximum metadata value size | 1024 characters | 

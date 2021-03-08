@@ -117,42 +117,42 @@ To run your own training model using the SageMaker containers, build a Docker co
    import torchvision.transforms as transforms
    import torch.nn.functional as F
    
-   logger = logging.getLogger(__name__)
+   logger=logging.getLogger(__name__)
    logger.setLevel(logging.DEBUG)
    
-   classes = ('plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
+   classes=('plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
    
    
    # https://github.com/pytorch/tutorials/blob/master/beginner_source/blitz/cifar10_tutorial.py#L118
    class Net(nn.Module):
        def __init__(self):
            super(Net, self).__init__()
-           self.conv1 = nn.Conv2d(3, 6, 5)
-           self.pool = nn.MaxPool2d(2, 2)
-           self.conv2 = nn.Conv2d(6, 16, 5)
-           self.fc1 = nn.Linear(16 * 5 * 5, 120)
-           self.fc2 = nn.Linear(120, 84)
-           self.fc3 = nn.Linear(84, 10)
+           self.conv1=nn.Conv2d(3, 6, 5)
+           self.pool=nn.MaxPool2d(2, 2)
+           self.conv2=nn.Conv2d(6, 16, 5)
+           self.fc1=nn.Linear(16 * 5 * 5, 120)
+           self.fc2=nn.Linear(120, 84)
+           self.fc3=nn.Linear(84, 10)
    
        def forward(self, x):
-           x = self.pool(F.relu(self.conv1(x)))
-           x = self.pool(F.relu(self.conv2(x)))
-           x = x.view(-1, 16 * 5 * 5)
-           x = F.relu(self.fc1(x))
-           x = F.relu(self.fc2(x))
-           x = self.fc3(x)
+           x=self.pool(F.relu(self.conv1(x)))
+           x=self.pool(F.relu(self.conv2(x)))
+           x=x.view(-1, 16 * 5 * 5)
+           x=F.relu(self.fc1(x))
+           x=F.relu(self.fc2(x))
+           x=self.fc3(x)
            return x
    
    
    def _train(args):
-       is_distributed = len(args.hosts) > 1 and args.dist_backend is not None
+       is_distributed=len(args.hosts) > 1 and args.dist_backend is not None
        logger.debug("Distributed training - {}".format(is_distributed))
    
        if is_distributed:
            # Initialize the distributed environment.
-           world_size = len(args.hosts)
-           os.environ['WORLD_SIZE'] = str(world_size)
-           host_rank = args.hosts.index(args.current_host)
+           world_size=len(args.hosts)
+           os.environ['WORLD_SIZE']=str(world_size)
+           host_rank=args.hosts.index(args.current_host)
            dist.init_process_group(backend=args.dist_backend, rank=host_rank, world_size=world_size)
            logger.info(
                'Initialized the distributed environment: \'{}\' backend on {} nodes. '.format(
@@ -160,49 +160,49 @@ To run your own training model using the SageMaker containers, build a Docker co
                    dist.get_world_size()) + 'Current host rank is {}. Using cuda: {}. Number of gpus: {}'.format(
                    dist.get_rank(), torch.cuda.is_available(), args.num_gpus))
    
-       device = 'cuda' if torch.cuda.is_available() else 'cpu'
+       device='cuda' if torch.cuda.is_available() else 'cpu'
        logger.info("Device Type: {}".format(device))
    
        logger.info("Loading Cifar10 dataset")
-       transform = transforms.Compose(
+       transform=transforms.Compose(
            [transforms.ToTensor(),
             transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
    
-       trainset = torchvision.datasets.CIFAR10(root=args.data_dir, train=True,
+       trainset=torchvision.datasets.CIFAR10(root=args.data_dir, train=True,
                                                download=False, transform=transform)
-       train_loader = torch.utils.data.DataLoader(trainset, batch_size=args.batch_size,
+       train_loader=torch.utils.data.DataLoader(trainset, batch_size=args.batch_size,
                                                   shuffle=True, num_workers=args.workers)
    
-       testset = torchvision.datasets.CIFAR10(root=args.data_dir, train=False,
+       testset=torchvision.datasets.CIFAR10(root=args.data_dir, train=False,
                                               download=False, transform=transform)
-       test_loader = torch.utils.data.DataLoader(testset, batch_size=args.batch_size,
+       test_loader=torch.utils.data.DataLoader(testset, batch_size=args.batch_size,
                                                  shuffle=False, num_workers=args.workers)
    
        logger.info("Model loaded")
-       model = Net()
+       model=Net()
    
        if torch.cuda.device_count() > 1:
            logger.info("Gpu count: {}".format(torch.cuda.device_count()))
-           model = nn.DataParallel(model)
+           model=nn.DataParallel(model)
    
-       model = model.to(device)
+       model=model.to(device)
    
-       criterion = nn.CrossEntropyLoss().to(device)
-       optimizer = torch.optim.SGD(model.parameters(), lr=args.lr, momentum=args.momentum)
+       criterion=nn.CrossEntropyLoss().to(device)
+       optimizer=torch.optim.SGD(model.parameters(), lr=args.lr, momentum=args.momentum)
    
        for epoch in range(0, args.epochs):
-           running_loss = 0.0
+           running_loss=0.0
            for i, data in enumerate(train_loader):
                # get the inputs
-               inputs, labels = data
-               inputs, labels = inputs.to(device), labels.to(device)
+               inputs, labels=data
+               inputs, labels=inputs.to(device), labels.to(device)
    
                # zero the parameter gradients
                optimizer.zero_grad()
    
                # forward + backward + optimize
-               outputs = model(inputs)
-               loss = criterion(outputs, labels)
+               outputs=model(inputs)
+               loss=criterion(outputs, labels)
                loss.backward()
                optimizer.step()
    
@@ -211,25 +211,25 @@ To run your own training model using the SageMaker containers, build a Docker co
                if i % 2000 == 1999:  # print every 2000 mini-batches
                    print('[%d, %5d] loss: %.3f' %
                          (epoch + 1, i + 1, running_loss / 2000))
-                   running_loss = 0.0
+                   running_loss=0.0
        print('Finished Training')
        return _save_model(model, args.model_dir)
    
    
    def _save_model(model, model_dir):
        logger.info("Saving the model.")
-       path = os.path.join(model_dir, 'model.pth')
+       path=os.path.join(model_dir, 'model.pth')
        # recommended way from http://pytorch.org/docs/master/notes/serialization.html
        torch.save(model.cpu().state_dict(), path)
    
    
    def model_fn(model_dir):
        logger.info('model_fn')
-       device = "cuda" if torch.cuda.is_available() else "cpu"
-       model = Net()
+       device="cuda" if torch.cuda.is_available() else "cpu"
+       model=Net()
        if torch.cuda.device_count() > 1:
            logger.info("Gpu count: {}".format(torch.cuda.device_count()))
-           model = nn.DataParallel(model)
+           model=nn.DataParallel(model)
    
        with open(os.path.join(model_dir, 'model.pth'), 'rb') as f:
            model.load_state_dict(torch.load(f))
@@ -237,7 +237,7 @@ To run your own training model using the SageMaker containers, build a Docker co
    
    
    if __name__ == '__main__':
-       parser = argparse.ArgumentParser()
+       parser=argparse.ArgumentParser()
    
        parser.add_argument('--workers', type=int, default=2, metavar='W',
                            help='number of data loading workers (default: 2)')
@@ -324,22 +324,22 @@ Remember that `docker` looks for a file specifically called `Dockerfile` without
    
    
    def get_train_data_loader(data_dir='/tmp/pytorch/cifar-10-data'):
-       transform = _get_transform()
-       trainset = torchvision.datasets.CIFAR10(root=data_dir, train=True,
+       transform=_get_transform()
+       trainset=torchvision.datasets.CIFAR10(root=data_dir, train=True,
                                                download=True, transform=transform)
        return torch.utils.data.DataLoader(trainset, batch_size=4,
                                           shuffle=True, num_workers=2)
    
    
    def get_test_data_loader(data_dir='/tmp/pytorch/cifar-10-data'):
-       transform = _get_transform()
-       testset = torchvision.datasets.CIFAR10(root=data_dir, train=False,
+       transform=_get_transform()
+       testset=torchvision.datasets.CIFAR10(root=data_dir, train=False,
                                               download=True, transform=transform)
        return torch.utils.data.DataLoader(testset, batch_size=4,
                                           shuffle=False, num_workers=2)
    
-   trainloader = get_train_data_loader('/tmp/pytorch-example/cifar-10-data')
-   testloader = get_test_data_loader('/tmp/pytorch-example/cifar-10-data')
+   trainloader=get_train_data_loader('/tmp/pytorch-example/cifar-10-data')
+   testloader=get_test_data_loader('/tmp/pytorch-example/cifar-10-data')
    ```
 
 1. Set `role` to the role used to create your Jupyter notebook\. This is used to configure your SageMaker Estimator\.
@@ -347,7 +347,7 @@ Remember that `docker` looks for a file specifically called `Dockerfile` without
    ```
    from sagemaker import get_execution_role
    
-   role = get_execution_role()
+   role=get_execution_role()
    ```
 
 1. Paste the following example script into the notebook code cell to configure a SageMaker Estimator using your extended container\.
@@ -355,13 +355,15 @@ Remember that `docker` looks for a file specifically called `Dockerfile` without
    ```
    from sagemaker.estimator import Estimator
    
-   hyperparameters = {'epochs': 1}
+   hyperparameters={'epochs': 1}
    
-   estimator = Estimator(image_name='pytorch-extended-container-test',
-   	  role=role,
-   	  train_instance_count=1,
-   	  train_instance_type='local',
-         hyperparameters=hyperparameters)
+   estimator=Estimator(
+       image_uri='pytorch-extended-container-test',
+       role=role,
+       instance_count=1,
+       instance_type='local',
+       hyperparameters=hyperparameters
+   )
    
    estimator.fit('file:///tmp/pytorch-example/cifar-10-data')
    ```
@@ -411,14 +413,14 @@ Remember that `docker` looks for a file specifically called `Dockerfile` without
    ```
    import boto3
    
-   client = boto3.client('sts')
-   account = client.get_caller_identity()['Account']
+   client=boto3.client('sts')
+   account=client.get_caller_identity()['Account']
    
-   my_session = boto3.session.Session()
-   region = my_session.region_name
+   my_session=boto3.session.Session()
+   region=my_session.region_name
    
-   algorithm_name = "pytorch-extended-container-test"
-   ecr_image = '{}.dkr.ecr.{}.amazonaws.com/{}:latest'.format(account, region, algorithm_name)
+   algorithm_name="pytorch-extended-container-test"
+   ecr_image='{}.dkr.ecr.{}.amazonaws.com/{}:latest'.format(account, region, algorithm_name)
    
    ecr_image
    # This should return something like
@@ -433,18 +435,19 @@ Remember that `docker` looks for a file specifically called `Dockerfile` without
    from sagemaker import get_execution_role
    from sagemaker.estimator import Estimator
    
-   estimator = Estimator(image_name=ecr_image,
+   estimator=Estimator(
+       image_uri=ecr_image,
        role=get_execution_role(),
        base_job_name='pytorch-extended-container-test',
-       train_instance_count=1,
-       train_instance_type='ml.p2.xlarge'
+       instance_count=1,
+       instance_type='ml.p2.xlarge'
    )
    
    # start training
    estimator.fit()
    
    # deploy the trained model
-   predictor = estimator.deploy(1, instance_type)
+   predictor=estimator.deploy(1, instance_type)
    ```
 
 ### Step 6: Clean up Resources<a name="extend-step6"></a>

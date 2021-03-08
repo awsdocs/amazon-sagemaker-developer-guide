@@ -8,7 +8,7 @@ The formula for the Jensen\-Shannon divergence is as follows:
 
 Where P = ½\( Pa \+ Pd \), the average label distribution across facets *a* and *d*\.
 
-The range of JS values for binary, multicategory, continuous outcomes is \[0, \+∞\)\.
+The range of JS values for binary, multicategory, continuous outcomes is \[0, ln\(2\)\)\.
 + Values near zero mean the labels are similarly distributed\.
 + Positive values mean the label distributions diverge, the more positive the larger the divergence\.
 

@@ -54,7 +54,7 @@ When choosing an algorithm for your type of problem and data, the easiest option
 
 For more information on the built\-in algorithms provided by SageMaker, see [Use Amazon SageMaker Built\-in Algorithms](algos.md)\.
 
-For important information about docker registry paths, data formats, recommended EC2 instance types, and &CW; logs common to all of the built\-in algorithms provided by SageMaker, see [Common Information About Built\-in Algorithms](common-info-all-im-models.md)\.
+For important information about docker registry paths, data formats, recommended EC2 instance types, and CloudWatch logs common to all of the built\-in algorithms provided by SageMaker, see [Common Information About Built\-in Algorithms](common-info-all-im-models.md)\.
 
 ### Use script mode in a supported framework<a name="supported-frameworks-benefits"></a>
 

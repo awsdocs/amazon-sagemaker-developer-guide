@@ -80,10 +80,12 @@ You do not need to add the `‘AmazonSageMakerFullAccess’` IAM policy
    Create a new IAM role using the policy you defined above:
 
    ```
+   import json 
+   
    new_role = iam_client.create_role(
        AssumeRolePolicyDocument=json.dumps(policy),
        Path='/',
-       RoleName=role_name,
+       RoleName=role_name
    )
    ```
 
@@ -151,7 +153,7 @@ You do not need to add the `‘AmazonSageMakerFullAccess’` IAM policy
 **Note**  
  Make sure the model is correctly formatted depending on the framework you used\. See [What input data shapes does SageMaker Neo expect?](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-job-compilation.html#neo-job-compilation-expected-inputs) 
 
-   If you do not have a model yet, use the `curl` command to get a local copy of the `coco_ssd_mobilenet` model from TensorFlow’s website\. The model you just copied is an object detection model trained from the [COCO dataset](https://cocodataset.org/#home)\. Type the following into your AWS CLI or Jupyter notebook or as part of a Python script: 
+   If you do not have a model yet, use the `curl` command to get a local copy of the `coco_ssd_mobilenet` model from TensorFlow’s website\. The model you just copied is an object detection model trained from the [COCO dataset](https://cocodataset.org/#home)\. Type the following into your Jupyter notebook:
 
    ```
    model_zip_filename = './coco_ssd_mobilenet_v1_1.0.zip'
@@ -159,7 +161,7 @@ You do not need to add the `‘AmazonSageMakerFullAccess’` IAM policy
        --output {model_zip_filename}
    ```
 
-   Note that this particular example was packaged in a \.zip file\. Unzip this file and repackage it as a compressed tarfile \(`.tar.gz`\) before using it in later steps\. Type the following in your Jupyter notebook or as part of a Python script: 
+   Note that this particular example was packaged in a \.zip file\. Unzip this file and repackage it as a compressed tarfile \(`.tar.gz`\) before using it in later steps\. Type the following into your Jupyter notebook: 
 
    ```
    # Extract model from zip file
@@ -169,7 +171,7 @@ You do not need to add the `‘AmazonSageMakerFullAccess’` IAM policy
    model_name = model_filename.split('.')[0]
    
    # Compress model into .tar.gz so SageMaker Neo can use it
-   model_filename = model_name + '.tar.gz'
+   model_tar = model_name + '.tar.gz'
    !tar -czf {model_tar} {model_filename}
    ```
 
@@ -181,8 +183,6 @@ You do not need to add the `‘AmazonSageMakerFullAccess’` IAM policy
 #### [ Boto3 ]
 
    ```
-   bucket='replace-with-your-bucket-name'
-   
    # Upload model        
    s3_client.upload_file(filename=model_filename, bucket=bucket, key=model_filename)
    ```

@@ -35,9 +35,11 @@ In this case, `frame10.jpg` and `frame11.jpg` come before `frame2.jpg` in the wo
 
 ## Provide Video Files<a name="sms-point-cloud-video-frame-extraction"></a>
 
-You can use the Ground Truth frame splitting feature when creating a new labeling job in the console to extract video frames from video files \(MP4 files\)\. A series of video frames extracted from a single video file is referred to as a *sequence of video frames*\. 
+You can use the Ground Truth frame splitting feature when creating a new labeling job in the console to extract video frames from video files \(MP4 files\)\. A series of video frames extracted from a single video file is referred to as a *sequence of video frames*\.
 
 You can either have Ground Truth automatically extract all frames, up to 2,000, from the video, or you can specify a frequency for frame extraction\. For example, you can have Ground Truth extract every 10th frame from your videos\.
+
+You can provide up to 50 videos when you use automated data setup to extract frames, however your input manifest file cannot reference more than 10 video frame sequence files when you create a video frame object tracking and video frame object detection labeling job\. If you use the automated data setup console tool to extract video frames from more than 10 video files, you will need to modify the manifest file the tool generates or create a new one to include 10 video frame sequence files or less\. To learn more about these quotas, see [3D Point Cloud and Video Frame Labeling Job Quotas](input-data-limits.md#sms-input-data-quotas-other)\.
 
 To use the video frame extraction tool, see [Automated Video Frame Input Data Setup](sms-video-automated-data-setup.md)\. 
 

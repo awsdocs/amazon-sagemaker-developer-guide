@@ -65,8 +65,6 @@ When you create a labeling job using the SageMaker console, you add worker instr
 
    For 3D point cloud annotation tasks, the default task timeout is 3 days\. The default timeout for text and image classification and label verification labeling jobs is 5 minutes\. The default timeout for all other labeling jobs is 60 minutes\.
 
-   If you set your task timeout to be greater than one hour, you must [increases the max session duration](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-console.html#roles-modify_max-session-duration) of your execution role to be greater than or equal to the task timeout\. If you choose a task time that is greater than 8 hours for 3D point cloud labeling jobs, refer to [Increase MaxSessionDuration for Execution Role](sms-point-cloud-general-information.md#sms-3d-pointcloud-maxsessduration)\.
-
 1. \(Optional\) For bounding box, semantic segmentation, video frame, and 3D point cloud task types, you can select **Display existing labels** if you want to display labels for your input data set for workers to verify or adjust\.
 
    For bounding box and semantic segmentation labeling jobs, this will create an adjustment labeling job\.

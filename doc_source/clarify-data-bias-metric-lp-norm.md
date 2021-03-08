@@ -18,6 +18,6 @@ Where:
 + na\(i\) is number of the ith category outcomes in facet *a*: for example na\(0\) is number of facet *a* acceptances\.
 + nd\(i\) is number of the ith category outcomes in facet *d*: for example nd\(2\) is number of facet *d* rejections\.
 
-  The range of LP values for binary, multicategory, and continuous outcomes is \[0, \+∞\), where:
+  The range of LP values for binary, multicategory, and continuous outcomes is \[0, √2\), where:
   + Values near zero mean the labels are similarly distributed\.
   + Positive values mean the label distributions diverge, the more positive the larger the divergence\.
