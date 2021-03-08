@@ -36,9 +36,6 @@ When using the SageMaker `CreateLabelingJob` API operation, set the total time a
 
 When you create a labeling job in the console, you can specify this time limit when you select your workforce type and your work team\.
 
-**Important**  
-If you set your task time limit to be greater than 8 hours, you must set `MaxSessionDuration` for your IAM execution role to at least 8 hours\. 
-
 ## Task Types<a name="sms-video-frame-tools"></a>
 
 When you create a video object tracking or video object detection labeling job, you specify the type of annotation that you want workers to create while working on your labeling task\. The annotation type determines the type of output data Ground Truth returns and defines the *task type* for your labeling job\. 
@@ -116,8 +113,6 @@ Workers decline a task if the instructions are not clear, input data is not disp
 
 When you create a video frame labeling job, in addition to the permission requirements found in [Assign IAM Permissions to Use Ground Truth](sms-security-permission.md), you must add a CORS policy to your S3 bucket that contains your input manifest file\. 
 
-Additionally if you choose to allow workers to work on tasks for more than 8 hours, you must increase the `MaxSessionDuration` of the IAM execution role you use to create the labeling job\. 
-
 ### Add a CORS Permission Policy to S3 Bucket<a name="sms-permissions-add-cors-video-frame"></a>
 
 When you create a video frame labeling job, you specify buckets in S3 where your input data and manifest file are located and where your output data will be stored\. These buckets may be the same\. You must attach the following Cross\-origin resource sharing \(CORS\) policy to your input and output buckets\. If you use the Amazon S3 console to add the policy to your bucket, you must use the JSON format\.
@@ -163,14 +158,4 @@ When you create a video frame labeling job, you specify buckets in S3 where your
 </CORSConfiguration>
 ```
 
-To learn how to add a CORS policy to an S3 bucket, see [How do I add cross\-domain resource sharing with CORS?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-cors-configuration.html) in the Amazon Simple Storage Service Console User Guide\.
-
-### Increase MaxSessionDuration for Execution Role<a name="sms-video-frame-maxsessduration"></a>
-
-Video Frame labeling tasks can take workers more time to complete than other task types\. You can set the total amount of time that workers can work on each task by doing one of the following: 
-+ When you create a labeling job in the console, set **Task Timeout** when you select your work team\.
-+ Using the `TaskTimeLimitInSeconds` parameter when creating a labeling job using the SageMaker API\. 
-
-The maximum time you can set for workers to work on tasks is 7 days\. The default value is 3 days\. If you set your task time limit to be greater than 8 hours, you must set `MaxSessionDuration` for your IAM execution role to at least 8 hours\.
-
-To see how to update this value for your IAM role, see [Modifying a Role ](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html) in the IAM User Guide, choose your preferred method to modify the role, and then follow the steps in [Modifying a Role Maximum Session Duration](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-console.html#roles-modify_max-session-duration)\. To learn more about permission requirements for the Ground Truth execution role, see [Create an Execution Role to Start a Labeling Job](sms-security-permission.md#sms-security-permission-execution-role)\.
+To learn how to add a CORS policy to an S3 bucket, see [ How do I add cross\-domain resource sharing with CORS?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-cors-configuration.html) in the Amazon Simple Storage Service Console User Guide\.

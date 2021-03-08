@@ -10,7 +10,7 @@ Finally you configure the bounding box tool to give instructions to your workers
 
    Replace *objects* with the name of an object that appears in your images\.
 
-1. In the **Labels** field, type a category name for the objects that the worker should draw a bounding box around\. For example, if you are asking the worker to draw boxes around football players, you could use "FootballPlayer" in this field\.
+1. In the **Labels** field, type a category name for the objects that the worker should draw a bounding box around\. For example, if you are asking the worker to draw boxes around football players, you could use "Football Player" in this field\.
 
 1. The **Short instructions** section enables you to create instructions that are displayed on the page with the image that your workers are labeling\. We suggest that you include an example of a correctly drawn bounding box and an example of an incorrectly drawn box\. To create your own instructions, use these steps:
 
@@ -20,7 +20,7 @@ Finally you configure the bounding box tool to give instructions to your workers
 
    1. Select the first image placeholder and delete it\.
 
-   1. Choose the image button and then enter the HTTPS URL of one of the images that you created in step 1\.
+   1. Choose the image button and then enter the HTTPS URL of one of the images that you created in step 1\. It is also possible to embed images directly in the short instructions section, however this section has a quota of 100 kilobytes \(including text\)\. If your images and text exceed 100 kilobytes, you receive an error\.
 
    1. Select the text between **BAD EXAMPLE** and the image placeholder\. Replace it with the following text:
 
@@ -28,9 +28,13 @@ Finally you configure the bounding box tool to give instructions to your workers
 
    1. Select the second image placeholder and delete it\.
 
-   1. Choose the image button and then enter the HTTPS URL of the other image that you created in step 1\.
+   1. Choose the image button and then enter the HTTPS URL of the other image that you created in step 1\.
 
-Configuration of your labeling job is complete\. To start your job, choose **Submit**\.
+1. Select **Preview** to preview the worker UI\. The preview opens in a new tab, and so if your browser blocks pop ups you may need to manually enable the tab to open\. When you add one or more annotations to the preview and then select **Submit** you can see a preview of the output data your annotation would created\.
+
+1. After you have configured and verified your instructions, select **Create** to create the labeling job\.
+
+If you used a private workforce, you can navigate to the worker portal that you logged into in [Step 3: Select Workers](sms-getting-started-step3.md) of this tutorial to see your labeling tasks\. The tasks may take a few minutes to appear\.
 
 ## Next<a name="step4-next"></a>
 

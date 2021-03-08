@@ -12,7 +12,7 @@ You can choose Mechanical Turk as your workforce when you create a Ground Truth 
 When you use an API operation to create a labeling job or human review workflow, you use the following ARN for the Amazon Mechanical Turk workforce for your `WorkteamArn`\. Replace *`region`* with the AWS Region you are using to create the labeling job or human loops\. For example, if you create a labeling job in US West \(Oregon\), replace *`region`* with `us-west-2`\.
 + ` arn:aws:sagemaker:region:394669845002:workteam/public-crowd/default`
 
-Ground Truth and Amazon A2I *require* that your input data is free of personally identifiable information \(PII\)\. If you use the Mechanical Turk workforce and do not specify that your input data is free of PII, your Ground Truth labeling jobs and Augmented AI tasks will fail\. You specify that your input data is free of PII when you create a Ground Truth labeling job and when you create a Amazon A2I human loop using a built\-in integration or the `StartHumanLoop` operation\.
+Ground Truth and Amazon A2I *require* that your input data is free of personally identifiable information \(PII\) when you use Mechanical Turk\. If you use the Mechanical Turk workforce and do not specify that your input data is free of PII, your Ground Truth labeling jobs and Augmented AI tasks will fail\. You specify that your input data is free of PII when you create a Ground Truth labeling job and when you create a Amazon A2I human loop using a built\-in integration or the `StartHumanLoop` operation\.
 
 Use the following sections to learn how to use Mechanical Turk with these services\.
 

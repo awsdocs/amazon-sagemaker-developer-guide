@@ -8,7 +8,10 @@ Select one of the following sections to learn how to set up your automatic input
 
 ## Provide Video Files and Extract Frames<a name="sms-video-provide-files-auto-setup-console"></a>
 
-Use the following procedure to connect your video files with Ground Truth and automatically extract video frames from those files for video frame object detection and object tracking labeling jobs\. 
+Use the following procedure to connect your video files with Ground Truth and automatically extract video frames from those files for video frame object detection and object tracking labeling jobs\.
+
+**Note**  
+If you use the automated data setup console tool to extract video frames from more than 10 video files, you will need to modify the manifest file the tool generates or create a new one to include 10 video frame sequence files or less\. To learn more, see [Provide Video Files](sms-point-cloud-video-input-data.md#sms-point-cloud-video-frame-extraction)\.
 
 Make sure your video files are stored in an Amazon S3 bucket in the same AWS Region that you perform the automated data setup in\. 
 

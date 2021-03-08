@@ -1,8 +1,12 @@
-# Inference Engine \(Edge Manager Agent\)<a name="edge-device-fleet-about"></a>
+# Edge Manager Agent<a name="edge-device-fleet-about"></a>
 
 The Edge Manager agent is an inference engine for your edge devices\. Use the agent to make predictions with models loaded onto your edge devices\. The agent also collects model metrics and captures data at specific intervals\. Sample data is stored in your Amazon S3 bucket\.
 
-The agent is released in binary format for all the supported operating systems\. Check that your operating system is supported and meets the minimum OS requirement in the following table:
+## How the Agent Works<a name="edge-device-fleet-how-agent-works"></a>
+
+The agent runs on the CPU of your devices\. The agent will run inference on the framework and hardware of the target device you specified during the compilation job\. For example, if you compiled your model for the Jetson Nano, the agent will support the GPU in the provided [Deep Learning Runtime](https://github.com/neo-ai/neo-ai-dlr) \(DLR\)\.
+
+The agent is released in binary format for supported operating systems\. Check your operating system is supported and meets the minimum OS requirement in the following table:
 
 ------
 #### [ Linux ]
@@ -22,18 +26,49 @@ The agent is released in binary format for all the supported operating systems\.
 
 ## Installing Edge Manager agent<a name="edge-device-fleet-installation"></a>
 
-To use Edge Manager agent, you first need to obtain the release artifacts\. The release artifacts are stored in an Amazon S3 bucket in the `us-west-2` Region\. To download the artifacts, specify your operating system and the `VERSION`\. The `VERSION` is broken into three components: `<MAJOR_VERSION>.<YYYY-MM-DD>-<SHA-7>`, where:
+To use Edge Manager agent, you first need to obtain the release artifacts and a Root Certificate\. The release artifacts are stored in an Amazon S3 bucket in the `us-west-2` Region\. To download the artifacts, specify your operating system \(`<OS>`\) and the `VERSION`\.
+
+Based on your operating system, replace `<OS>` with one of the following:
+
+
+| Windows 32\-bit | Windows 64\-bit | Linux x86\-64 | Linux ARMv8 | 
+| --- | --- | --- | --- | 
+| windows\-x86 | windows\-x64 | linux\-x64 | linux\-armv8 | 
+
+The `VERSION` is broken into three components: `<MAJOR_VERSION>.<YYYY-MM-DD>-<SHA-7>`, where:
 + `MAJOR_VERSION`: The release version\. The release version is currently set to `1`\.
 + `<YYYY-MM-DD>`: The time stamp of the artifacts release\.
 + `SHA-7`: The repository commit ID from which the release is built\.
 
 You need to provide the `MAJOR_VERSION` and the time stamp in`<YYYY-MM-DD>` format\. We suggest you use the latest artifact release time stamp\. Use the following to get the latest time stamp\.
 
+Run the following in your command line to get the latest time stamp\. Replace `<OS>` with your operating system:
+
+```
+aws s3 ls s3://sagemaker-edge-release-store-us-west-2-<OS>/Releases/ | sort -r
+```
+
+For example, if you have a Windows 32\-bit OS, run:
+
 ```
 aws s3 ls s3://sagemaker-edge-release-store-us-west-2-windows-x86/Releases/ | sort -r
 ```
 
-Based on your operating system, use the following commands to install the artifacts\.
+This returns:
+
+```
+2020-12-01 23:33:36 0 
+
+                    PRE 1.20201218.81f481f/
+                    PRE 1.20201207.02d0e97/
+```
+
+The return output in this example shows two release artifacts\. The first release artifact file notes that the release version: has a major release version of `1`, a time stamp of `20201218` \(in <YYYY\-MM\-DD> format\), and a `81f481f` SHA\-7 commit ID\.
+
+**Note**  
+The above command assumes you have configured AWS Command Line Interface\. For more information, about how to configure the settings that the AWS CLI uses to interact with AWS, see [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)\.
+
+Based on your operating system, use the following commands to install the artifacts:
 
 ------
 #### [ Windows 32\-bit ]
@@ -71,11 +106,10 @@ aws s3 cp s3://sagemaker-edge-release-store-us-west-2-linux-armv8/Releases/<VERS
 
 You will also need to download a Root Certificate\. This certificate validates model artifacts signed by AWS before loading them onto your edge devices\.
 
-Replace `{bucket_name}` corresponding to your platform from the list of supported operation systems\.
+Replace `<OS>` corresponding to your platform from the list of supported operation systems and replace `<REGION>` with your AWS region\.
 
 ```
-# Windows and Linux
-aws s3 cp s3://{bucket_name}/Certificates/<VERSION>/<VERSION>.pem .
+aws s3 cp s3://sagemaker-edge-release-store-us-west-2-<OS>/Certificates/<REGION>/<REGION>.pem .
 ```
 
 ### Running SageMaker Edge Manager agent<a name="edge-device-fleet-running-agent"></a>

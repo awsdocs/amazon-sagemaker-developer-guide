@@ -52,8 +52,6 @@ Use the following procedure to create a bounding box or semantic segmentation ve
 
 1. \(Optional\) After you've selected your workforce, specify the **Task timeout** and **Task expiration time**\.
 
-   If you set your task timeout to be greater than one hour, you must [increases the max session duration](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-console.html#roles-modify_max-session-duration) of your execution role to be greater than or equal to the task timeout\.
-
 1. In the **Existing\-labels display options** pane, the system shows the available label attribute names in your manifest\. Choose the label attribute name that identifies the labels that you want workers to verify\. Ground Truth tries to detect and populate these values by analyzing the manifest, but you might need to set the correct value\. 
 
 1. Use the instructions areas of the tool designer to provide context about what the previous labelers were asked to do and what the current verifiers need to check\.
@@ -81,8 +79,6 @@ Use the following procedure to create a 3D point cloud or video frame verificati
 1. In the **Workers** section, choose the type of workforce you would like to use\. For more details about your workforce options see [Create and Manage Workforces](sms-workforce-management.md)\.
 
 1. \(Optional\) After you've selected your workforce, specify the **Task timeout** and **Task expiration time**\.
-
-   If you set your task timeout to be greater than one hour, you must [increases the max session duration](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-console.html#roles-modify_max-session-duration) of your execution role to be greater than or equal to the task timeout\. If you choose a task time that is greater than 8 hours for 3D point cloud labeling jobs, refer to [Increase MaxSessionDuration for Execution Role](sms-point-cloud-general-information.md#sms-3d-pointcloud-maxsessduration)\.
 
 1. Toggle on the switch next to **Display existing labels**\.
 
@@ -127,8 +123,6 @@ Use the following procedure to create a bounding box or semantic segmentation ad
 1. In the **Workers** section, choose the type of workforce you would like to use\. For more details about your workforce options see [Create and Manage Workforces](sms-workforce-management.md)\.
 
 1. \(Optional\) After you've selected your workforce, specify the **Task timeout** and **Task expiration time**\.
-
-   If you set your task timeout to be greater than one hour, you must [increases the max session duration](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-console.html#roles-modify_max-session-duration) of your execution role to be greater than or equal to the task timeout\.
 
 1. Expand **Existing\-labels display options** by selecting the arrow next to the title\.
 

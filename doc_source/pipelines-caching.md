@@ -15,9 +15,9 @@ Step caching is available for the following step types:
 
 ## Enabling Step Caching<a name="pipelines-caching-enabling"></a>
 
-To enable step caching, you must add a `CacheConfig` property to the step definition\. 
+To enable step caching, you must add a `CacheConfig` property to the step definition\.
 
-`CacheConfig` properties use the following format: 
+`CacheConfig` properties use the following format in the pipeline definition file\.
 
 ```
 {
@@ -28,8 +28,21 @@ To enable step caching, you must add a `CacheConfig` property to the step defini
 }
 ```
 
-The `Enabled` field may be true or false\. `ExpireAfter` is a string that defines the timeout period\. Any ISO 8601 duration string is a valid `ExpireAfter` value\. The `ExpireAfter` duration can contain a year, month, week, day, hour, and minute value\. Each value is consists of a number followed by a letter indicating the duration unit it is for\. For example: 
-+ “30d” = Thirty days 
-+ “5y” = Five years 
-+ “T16m” = 16 minutes 
-+ “30dT5h” = 30 days and five hours\. 
+The `Enabled` field may be true or false\. `ExpireAfter` is a string that defines the timeout period\. Any ISO 8601 duration string is a valid `ExpireAfter` value\. The `ExpireAfter` duration can contain a year, month, week, day, hour, and minute value\. Each value is consists of a number followed by a letter indicating the duration unit it is for\. For example:
++ "30d" = Thirty days
++ "5y" = Five years
++ "T16m" = 16 minutes
++ "30dT5h" = 30 days and five hours\.
+
+The following example shows how to enable caching for a training step using the Amazon SageMaker Python SDK\.
+
+```
+cache_config = CacheConfig(enable_caching=True, expire_after="PT1H")
+
+step_train = TrainingStep(
+    name="TrainAbaloneModel",
+    estimator=xgb_train,
+    inputs=inputs,
+    cache_config=cache_config
+)
+```

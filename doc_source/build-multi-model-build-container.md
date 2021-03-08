@@ -23,7 +23,7 @@ To help you implement these requirements for a custom container, two libraries a
 Currently, the only pre\-built containers that support multi\-model endpoints are the MXNet inference container and the PyTorch inference container\. If you want to use any other framework or algorithm, you need to build a container\. The easiest way to do this is to use the [SageMaker Inference Toolkit](https://github.com/aws/sagemaker-inference-toolkit) to extend an existing pre\-built container\. The SageMaker inference toolkit is an implementation for the multi\-model server \(MMS\) that creates endpoints that can be deployed in SageMaker\. For a sample notebook that shows how to set up and deploy a custom container that supports multi\-model endpoints in SageMaker, see the [Multi\-Model Endpoint BYOC Sample Notebook](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/advanced_functionality/multi_model_bring_your_own)\.
 
 **Note**  
-The SageMaker inference toolkit supports only Python model handlers\. If you want to implement your handler in any other language, you must build your own container that implements the additional multi\-model endpoint APIs\. For information, see [Contract for Custom Containers to Serve Multiple Model](mms-container-apis.md)\.
+The SageMaker inference toolkit supports only Python model handlers\. If you want to implement your handler in any other language, you must build your own container that implements the additional multi\-model endpoint APIs\. For information, see [Contract for Custom Containers to Serve Multiple Models](mms-container-apis.md)\.
 
 **To extend a container by using the SageMaker inference toolkit**
 
@@ -115,4 +115,4 @@ You can now use this container to deploy multi\-model endpoints in SageMaker\.
 
 **Topics**
 + [Use the SageMaker Inference Toolkit](#multi-model-inference-toolkit)
-+ [Contract for Custom Containers to Serve Multiple Model](mms-container-apis.md)
++ [Contract for Custom Containers to Serve Multiple Models](mms-container-apis.md)
