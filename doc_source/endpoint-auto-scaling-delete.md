@@ -4,6 +4,8 @@ You can delete a scaling policy with the AWS Management Console, the AWS CLI, or
 
 ## Delete a scaling policy \(Console\)<a name="endpoint-auto-scaling-delete-console"></a>
 
+
+
 **To delete an automatic scaling policy \(console\)**
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.

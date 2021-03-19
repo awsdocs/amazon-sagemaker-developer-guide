@@ -64,7 +64,7 @@ In the regex for the `train:error` metric defined above, the first part of the r
 
 ### Defining Training Metrics \(Low\-level SageMaker API\)<a name="define-train-metrics-api"></a>
 
-Define the metrics that you want to send to CloudWatch by specifying a list of metric names and regular expressions in the `MetricDefinitions` field of the [ `AlgorithmSpecification`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AlgorithmSpecification.html) input parameter that you pass to the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) operation\. For example, if you want to monitor both the `train:error` and `validation:error` metrics in CloudWatch, your `AlgorithmSpecification` would look like the following:
+Define the metrics that you want to send to CloudWatch by specifying a list of metric names and regular expressions in the `MetricDefinitions` field of the [ `AlgorithmSpecification`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AlgorithmSpecification.html) input parameter that you pass to the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) operation\. For example, if you want to monitor both the `train:error` and `validation:error` metrics in CloudWatch, your `AlgorithmSpecification` would look like the following:
 
 ```
 "AlgorithmSpecification": {
@@ -83,7 +83,7 @@ Define the metrics that you want to send to CloudWatch by specifying a list of m
     ]}
 ```
 
-For more information about defining and running a training job by using the low\-level SageMaker API, see [Create and Run a Training Job \(AWS SDK for Python \(Boto3\)\)](ex1-train-model.md#ex1-train-model-create-training-job)\.
+For more information about defining and running a training job by using the low\-level SageMaker API, see [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html)\.
 
 ### Defining Training Metrics \(SageMaker Python SDK\)<a name="define-train-metrics-sdk"></a>
 
@@ -163,7 +163,7 @@ Typically, you split the data that you train your model on into training and val
 
 Viewing a graph that shows the accuracy for both the training and validation sets over time can help you to improve the performance of your model\. For example, if training accuracy continues to increase over time, but, at some point, validation accuracy starts to decrease, you are likely overfitting your model\. To address this, you can make adjustments to your model, such as increasing [regularization](https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#regularization)\.
 
-For this example, you can use the **Image\-classification\-full\-training** example that is in the **Example notebooks** section of your SageMaker notebook instance\. If you don't have a SageMaker notebook instance, create one by following the instructions at [Step 2: Create an Amazon SageMaker Notebook Instance](gs-setup-working-env.md)\. If you prefer, you can follow along with the [End\-to\-End Multiclass Image Classification Example](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-fulltraining.ipynb) in the example notebook on GitHub\. You also need an Amazon S3 bucket to store the training data and for the model output\. If you haven't created a bucket to use with SageMaker, create one by following the instructions at [Step 1: Create an Amazon S3 Bucket](gs-config-permissions.md)\.
+For this example, you can use the **Image\-classification\-full\-training** example that is in the **Example notebooks** section of your SageMaker notebook instance\. If you don't have a SageMaker notebook instance, create one by following the instructions at [Step 1: Create an Amazon SageMaker Notebook Instance](gs-setup-working-env.md)\. If you prefer, you can follow along with the [End\-to\-End Multiclass Image Classification Example](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-fulltraining.ipynb) in the example notebook on GitHub\. You also need an Amazon S3 bucket to store the training data and for the model output\.
 
 **To view training and validation error curves**
 
@@ -175,13 +175,11 @@ For this example, you can use the **Image\-classification\-full\-training** exam
 
 1. On the dashboard for your notebook instance, choose **SageMaker Examples**\.
 
-1. Expand the **Introduction to Amazon Algorithms** section, and then choose **Use** next to **Image\-classification\-full\-training\.ipynb**\.
+1. Expand the **Introduction to Amazon Algorithms** section, and then choose **Use** next to **Image\-classification\-fulltraining\.ipynb**\.
 
-1. Choose **Create copy**\. SageMaker creates an editable copy of the **Image\-classification\-full\-training\.ipynb** notebook in your notebook instance\.
+1. Choose **Create copy**\. SageMaker creates an editable copy of the **Image\-classification\-fulltraining\.ipynb** notebook in your notebook instance\.
 
-1. In the first code cell of the notebook, replace *<<bucket\-name>>* with the name of your S3 bucket\.
-
-1. Run all of the cells in the notebook up to the **Deploy** section\. You don't need to deploy an endpoint or get inference for this example\.
+1. Run all of the cells in the notebook up to the **Inference** section\. You don't need to deploy an endpoint or get inference for this example\.
 
 1. After the training job starts, open the CloudWatch console at [https://console\.aws\.amazon\.com/cloudwatch/](https://console.aws.amazon.com/cloudwatch/)\.
 

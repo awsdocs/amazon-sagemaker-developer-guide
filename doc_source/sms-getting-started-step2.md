@@ -13,11 +13,15 @@ In this step you use the console to create a labeling job\. You tell Amazon Sage
 1. In the **Job overview** section, provide the following information:
    + **Job name** – Give the labeling job a name that describes the job\. This name is shown in your job list\. The name must be unique in your account in an AWS Region\.
    + **Label attribute name** – Leave this unchecked as the default value is the best option for this introductory job\.
-   + **Input dataset location** – Enter the S3 location of the manifest file that you created in step 1\.
-   + **Output dataset location** – The location where your output data is written\.
+   + **Input data setup** – Select **Automated data setup**\. This option allows you to automatically connect to your input data in S3\. 
+   + **S3 location for input datasets** – Enter the S3 location where you added the images in step 1\.
+   + **S3 location for output datasets** – The location where your output data is written in S3\.
+   + **Data type** – Use the drop down menu to select **Image**\. Ground Truth will use all images found in the S3 location for input datasets as input for your labeling job\.
    + **IAM role** – Create or choose an IAM role with the SageMakerFullAccess IAM policy attached\.
 
-1. In the **Task type** section, for the **Dataset type** field, choose **Bounding box** as the task type\.
+1. In the **Task type** section, for the **Task category** field, choose **Image**\. 
+
+1. In the **Task selection** choose **Bounding box**\. 
 
 1. Choose **Next** to move on to configuring your labeling job\.
 

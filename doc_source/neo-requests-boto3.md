@@ -7,6 +7,7 @@
 
 ```
 import boto3
+
 import json
  
 endpoint = 'insert name of your endpoint here'

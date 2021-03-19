@@ -125,7 +125,7 @@ For example, the output manifest file of a successfully completed single\-class 
     "boundingBox": {
       "boundingBoxes": [
         {
-          "height": 2833,
+          "height": 2832,
           "label": "bird",
           "left": 681,
           "top": 599,

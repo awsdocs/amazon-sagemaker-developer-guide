@@ -3,21 +3,26 @@
 You can use the Amazon SageMaker Studio Launcher to create notebooks and text files, and launch terminals and interactive Python shells\.
 
 You can open Studio Launcher in any of the following ways:
-+ From the Studio menu, choose **File** and then choose **New Launcher**\.
++ Choose **Amazon SageMaker Studio** at the top\-left of Studio\.
 + Use the keyboard shortcut `Ctrl + Shift + L`\.
++ From the Studio menu, choose **File** and then choose **New Launcher**\.
 + If the Studio file browser is open, choose the plus \(**\+**\) sign on the Studio file browser menu\.
 
 The Launcher opens in a new tab in Studio\. Your screen should look similar to the following:
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-launcher.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-new-launcher.png)
 
-The Launcher consists of two sections, **Launch a new activity** and **Other**\. When you choose an item in the **Launch** section, a kernel session or terminal session is started in the chosen SageMaker image\. When you choose an item in the **Other** section, a session isn't started and the item runs in the context of Studio\.
+The Launcher consists of following sections:
++ **Get started** – Provides material to get started using SageMaker Studio, such as videos and tutorials, and one\-click solutions for machine learning problems\.
++ **ML tasks and components** – Create machine learning tasks and components, such as new feature groups, data flows, and projects\.
++ **Notebooks and compute resources** – Create a notebook, open an image terminal, or open a Python console\.
++ **Utilities and files** – Show contextual help from a notebook, create files, or open a system terminal\.
 
 **Topics**
-+ [Launch a New Activity](#studio-launcher-launch)
-+ [Other Actions](#studio-launcher-other)
++ [Notebooks and compute resources](#studio-launcher-launch)
++ [Utilities and files](#studio-launcher-other)
 
-## Launch a New Activity<a name="studio-launcher-launch"></a>
+## Notebooks and compute resources<a name="studio-launcher-launch"></a>
 
 To create or launch an item, choose the SageMaker image that you want the item to run in from the **SageMaker image** dropdown menu\. Next, choose the item\. When you choose an item from this section, you might incur additional usage charges\. For more information, see [Usage Metering](notebooks-usage-metering.md)\.
 
@@ -27,18 +32,18 @@ The following items are available:
   Launches the notebook in a kernel session on the chosen SageMaker image\. For more information, see [Change a Kernel](notebooks-run-and-manage-change-image.md)\.
 
   Creates the notebook in the folder that you have currently selected in the file browser\. To view the file browser, in the left sidebar of Studio, choose the **File Browser** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/File_browser_squid.png)\)\.
-+ **Interactive \(Python\) Shell**
++ **Console**
 
   Launches the shell in a kernel session on the chosen SageMaker image\.
 
   Opens the shell in the folder that you have currently selected in the file browser\.
-+ **Terminal**
++ **Image terminal**
 
   Launches the terminal in a terminal session on the chosen SageMaker image\.
 
   Opens the terminal in the root folder for the user \(as shown by the Home folder in the file browser\)\.
 
-## Other Actions<a name="studio-launcher-other"></a>
+## Utilities and files<a name="studio-launcher-other"></a>
 
 Items in this section run in the context of SageMaker Studio and don't incur usage charges\.
 

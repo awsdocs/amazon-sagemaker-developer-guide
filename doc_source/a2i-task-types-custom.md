@@ -4,6 +4,8 @@ You can use Amazon Augmented AI \(Amazon A2I\) to incorporate a human review \(h
 
 When you use a custom task type, you create a custom human review workflow, and you specify the conditions under which a data objects is sent for human review directly in your application\. 
 
+![\[Use Amazon Augmented AI with Custom Task Types\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/a2i/diagrams/product-page-diagram_A2I-Components_Custom@2x.png)
+
 Use the procedures on this page to learn how to integrate Amazon A2I into any machine learning workflow using the custom task type\. 
 
 **To create a human loop using a flow definition, integrate it into your application, and monitor the results**

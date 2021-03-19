@@ -1,5 +1,7 @@
 # 3D Point Cloud Object Tracking<a name="sms-point-cloud-object-tracking"></a>
 
+
+
 Use this task type when you want workers to add and fit 3D cuboids around objects to track their movement across 3D point cloud frames\. For example, you can use this task type to ask workers to track the movement of vehicles across multiple point cloud frames\. 
 
 For this task type, the data object that workers label is a sequence of point cloud frames\. A *sequence* is defined as a temporal series of point cloud frames\. Ground Truth renders a series of 3D point cloud visualizations using a sequence you provide and workers can switch between these 3D point cloud frames in the worker task interface\. 
@@ -15,6 +17,7 @@ If you are a new user of the Ground Truth 3D point cloud labeling modality, we r
 **Topics**
 + [View the Worker Task Interface](#sms-point-cloud-object-tracking-worker-ui)
 + [Create a 3D Point Cloud Object Tracking Labeling Job](#sms-point-cloud-object-tracking-create-labeling-job)
++ [Create a 3D Point Cloud Object Tracking Adjustment or Verification Labeling Job](#sms-point-cloud-object-tracking-adjustment-verification)
 + [Output Data Format](#sms-point-cloud-object-tracking-output-data)
 
 ## View the Worker Task Interface<a name="sms-point-cloud-object-tracking-worker-ui"></a>
@@ -56,10 +59,11 @@ View options that enable workers to easily hide or view label text, a ground mes
 Ground Truth helps workers annotate 3D point clouds faster and more accurately using UX, machine learning and computer vision powered assistive labeling tools for 3D point cloud object tracking tasks\. The following assistive labeling tools are available for this task type:
 + **Label autofill** – When a worker adds a cuboid to a frame, a cuboid with the same dimensions and orientation is automatically added to all frames in the sequence\. 
 + **Label interpolation** – After a worker has labeled a single object in two frames, Ground Truth uses those annotations to interpolate the movement of that object between those two frames\.
-+ **Bulk label management** – Workers can add, delete, and rename annotations in bulk\. 
++ **Bulk label and attribute management** – Workers can add, delete, and rename annotations, label category attributes, and frame attributes in bulk\. 
   + Workers can manually delete annotations for a given object before or after a frame\. For example, a worker can delete all labels for an object after frame 10 if that object is no longer located in the scene after that frame\. 
   + If a worker accidentally bulk deletes all annotations for a object, they can add them back\. For example, if a worker deletes all annotations for an object before frame 100, they can bulk add them to those frames\. 
   + Workers can rename a label in one frame and all 3D cuboids assigned that label are updated with the new name across all frames\. 
+  + Workers can use bulk editing to add or edit label category attributes and frame attributes in multiple frames\.
 + **Snapping** – Workers can add a cuboid around an object and use a keyboard shortcut or menu option to have Ground Truth's autofit tool snap the cuboid tightly around the object's boundaries\. 
 + **Fit to ground** – After a worker adds a cuboid to the 3D scene, the worker can automatically snap the cuboid to the ground\. For example, the worker can use this feature to snap a cuboid to the road or sidewalk in the scene\. 
 + **Multi\-view labeling** – After a worker adds a 3D cuboid to the 3D scene, a side \-panel displays front and two side perspectives to help the worker adjust the cuboid tightly around the object\. Workers can annotation the 3D point cloud, the side panel and the adjustments appear in the other views in real time\. 
@@ -72,7 +76,6 @@ Ground Truth helps workers annotate 3D point clouds faster and more accurately u
 You can create a 3D point cloud labeling job using the SageMaker console or API operation, [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)\. To create a labeling job for this task type you need the following: 
 + A sequence input manifest file\. To learn how to create this type of manifest file, see [Create a Point Cloud Sequence Input Manifest](sms-point-cloud-multi-frame-input-data.md)\. If you are a new user of Ground Truth 3D point cloud labeling modalities, we recommend that you review [Accepted Raw 3D Data Formats](sms-point-cloud-raw-data-types.md)\. 
 + A work team from a private or vendor workforce\. You cannot use Amazon Mechanical Turk for 3D point cloud labeling jobs\. To learn how to create workforces and work teams, see [Create and Manage Workforces](sms-workforce-management.md)\.
-+ A label category configuration file\. For more information, see [Create a Labeling Category Configuration File with Label Category Attributes](sms-label-cat-config-attributes.md)\. 
 
 Additionally, make sure that you have reviewed and satisfied the [Assign IAM Permissions to Use Ground Truth](sms-security-permission.md)\. 
 
@@ -88,54 +91,13 @@ This section covers details you need to know when you create a labeling job usin
   There should not be an entry for the `UiTemplateS3Uri` parameter\. 
 + Your [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelAttributeName](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelAttributeName) must end in `-ref`\. For example, `ot-labels-ref`\. 
 + Your input manifest file must be a point cloud frame sequence manifest file\. For more information, see [Create a Point Cloud Sequence Input Manifest](sms-point-cloud-multi-frame-input-data.md)\. 
-+ You specify your labels and worker instructions in a label category configuration file\. For more information, see [Create a Labeling Category Configuration File with Label Category Attributes](sms-label-cat-config-attributes.md) to learn how to create this file\. 
++ You specify your labels, label category and frame attributes, and worker instructions in a label category configuration file\. For more information, see [Create a Labeling Category Configuration File with Label Category and Frame Attributes](sms-label-cat-config-attributes.md) to learn how to create this file\. 
 + You need to provide pre\-defined ARNs for the pre\-annotation and post\-annotation \(ACS\) Lambda functions\. These ARNs are specific to the AWS Region you use to create your labeling job\. 
   + To find the pre\-annotation Lambda ARN, refer to [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-PreHumanTaskLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-PreHumanTaskLambdaArn)\. Use the Region you are creating your labeling job in to find the correct ARN that ends with `PRE-3DPointCloudObjectTracking`\. 
   + To find the post\-annotation Lambda ARN, refer to [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AnnotationConsolidationConfig.html#sagemaker-Type-AnnotationConsolidationConfig-AnnotationConsolidationLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AnnotationConsolidationConfig.html#sagemaker-Type-AnnotationConsolidationConfig-AnnotationConsolidationLambdaArn)\. Use the Region you are creating your labeling job in to find the correct ARN that ends with `ACS-3DPointCloudObjectTracking`\. 
 + The number of workers specified in `NumberOfHumanWorkersPerDataObject` should be `1`\. 
 + Automated data labeling is not supported for 3D point cloud labeling jobs\. You should not specify values for parameters in `[LabelingJobAlgorithmsConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelingJobAlgorithmsConfig)`\. 
 + 3D point cloud object tracking labeling jobs can take multiple hours to complete\. You can specify a longer time limit for these labeling jobs in `TaskTimeLimitInSeconds` \(up to 7 days, or 604,800 seconds\)\. 
-**Important**  
-If you set your take time limit to be greater than 8 hours, you must set `MaxSessionDuration` for your IAM execution role to at least 8 hours\. To see how to update this value for your IAM role, see [Modifying a Role ](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html) in the IAM User Guide, choose your preferred method to modify the role, and then follow the steps in [Modifying a Role Maximum Session Duration](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-console.html#roles-modify_max-session-duration)\. 
-
-#### Create an Adjustment Labeling Job \(API\)<a name="sms-point-cloud-object-tracking-adjustment-create-labeling-job-api"></a>
-
-To create an adjustment labeling job, use the instructions in the previous section, with the following modifications: 
-+ In your label category configuration file, you must include `auditLabelAttributeName`\. Use this parameter to input the [LabelAttributeName](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelAttributeName) used in the labeling job that generated the annotations you want your worker to adjust\. 
-**Important**  
-When you create a labeling job in the console, if you did not specify a label category attribute name, the **Name** of your job is used as the LabelAttributeName\. 
-
-  For example, if your label category attribute name was `point-cloud-labels` in your first labeling job, add the following to your object tracking adjustment labeling job label category configuration file\. To learn how to create this file, see [Create a Labeling Category Configuration File with Label Category Attributes](sms-label-cat-config-attributes.md)\. 
-
-  ```
-  {
-      "documentVersion": "2020-03-01",
-      "labels": [
-          {
-              "label": "Car",
-              "categoryAttributes": [
-                  {
-                      "name":"X",
-                      "description":"something",
-                      "type":"string",
-                      "enum": ["foo", "buz", "buzz2"]
-                  },
-          },
-          {
-              "label": "Pedestrian",
-          },
-          {
-              "label": "Cyclist"
-          }
-      ],
-      "instructions": {"shortInstruction":"Select the appropriate label and paint all objects in the point cloud that it applies to the same color", "fullInstruction":"<html markup>"},
-      "auditLabelAttributeName": "point-cloud-labels"
-  }
-  ```
-+ You need to provide a pre\-defined ARNs for the pre\-annotation and post\-annotation \(ACS\) Lambda functions\. These ARNs are specific to the AWS Region you use to create your labeling job\. 
-  + To find the pre\-annotation Lambda ARN, refer to [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-PreHumanTaskLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-PreHumanTaskLambdaArn)\. Use the Region you are creating your labeling job in to find the correct ARN that ends with `PRE-Adjustment3DPointCloudObjectTracking`\.
-  + To find the post\-annotation Lambda ARN, refer to [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AnnotationConsolidationConfig.html#sagemaker-Type-AnnotationConsolidationConfig-AnnotationConsolidationLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AnnotationConsolidationConfig.html#sagemaker-Type-AnnotationConsolidationConfig-AnnotationConsolidationLambdaArn)\. Use the Region you are creating your labeling job in to find the correct ARN that ends with `ACS-Adjustment3DPointCloudObjectTracking`\.
-+ The [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#SageMaker-CreateLabelingJob-request-LabelCategoryConfigS3Uri](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#SageMaker-CreateLabelingJob-request-LabelCategoryConfigS3Uri) parameter must contain the same label categories as the previous labeling job\. Adding new label categories or adjusting label categories is not supported\.
 
 ### Create a Labeling Job \(Console\)<a name="sms-point-cloud-object-tracking-create-labeling-job-console"></a>
 
@@ -144,12 +106,14 @@ You can follow the instructions [Create a Labeling Job \(Console\)](sms-create-l
 + Optionally, you can provide label category attributes\. Workers can assign one or more of these attributes to annotations to provide more information about that object\. For example, you might want to use the attribute *occluded* to have workers identify when an object is partially obstructed\.
 + Automated data labeling and annotation consolidation are not supported for 3D point cloud labeling tasks\. 
 + 3D point cloud object tracking labeling jobs can take multiple hours to complete\. You can specify a longer time limit for these labeling jobs when you select your work team \(up to 7 days, or 604800 seconds\)\. 
-**Important**  
-If you set your take time limit to be greater than 8 hours, you must set `MaxSessionDuration` for your IAM execution role to at least 8 hours\. To see how to update this value for your IAM role, see [Modifying a Role ](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html) in the IAM User Guide, choose your preferred method to modify the role, and then follow the steps in [Modifying a Role Maximum Session Duration](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-console.html#roles-modify_max-session-duration)\. 
 
-#### Create an Adjustment Labeling Job \(console\)<a name="sms-point-cloud-object-tracking-adjustment-create-labeling-job-console"></a>
+## Create a 3D Point Cloud Object Tracking Adjustment or Verification Labeling Job<a name="sms-point-cloud-object-tracking-adjustment-verification"></a>
 
-You can create an adjustment labeling job in the console by *chaining* a successfully completed object tracking labeling job\. To learn more, see [Create and Start a Label Verification Job \(Console\)](sms-verification-data.md#sms-data-verify-start-console)\.
+You can create an adjustment and verification labeling job using the Ground Truth console or `CreateLabelingJob` API\. To learn more about adjustment and verification labeling jobs, and to learn how create one, see [Verify and Adjust Labels](sms-verification-data.md)\.
+
+When you create an adjustment labeling job, your input data to the labeling job can include labels, and yaw, pitch, and roll measurements from a previous labeling job or external source\. In the adjustment job, pitch, and roll will be visualized in the worker UI, but cannot be modified\. Yaw is adjustable\. 
+
+Ground Truth uses Tait\-Bryan angles with the following intrinsic rotations to visualize yaw, pitch and roll in the worker UI\. First, rotation is applied to the vehicle according to the z\-axis \(yaw\)\. Next, the rotated vehicle is rotated according to the intrinsic y'\-axis \(pitch\)\. Finally, the vehicle is rotated according to the intrinsic x''\-axis \(roll\)\. 
 
 ## Output Data Format<a name="sms-point-cloud-object-tracking-output-data"></a>
 

@@ -1,4 +1,4 @@
-# crowd\-textract\-document\-analysis<a name="a2i-crowd-textract-detection"></a>
+# crowd\-textract\-analyze\-document<a name="a2i-crowd-textract-detection"></a>
 
 A widget to enable human review of a Amazon Textract document analysis result\.
 
@@ -23,39 +23,39 @@ The following is an example of an `initialValue` input:
 ```
 [
             {
-                "BlockType": "KEY_VALUE_SET",
-                "Confidence": 38.43309020996094,
-                "Geometry": {
-                    "BoundingBox": {
-                        "Width": 0.32613086700439453,
-                        "Height": 0.0942094624042511,
-                        "Left": 0.4833833575248718,
-                        "Top": 0.5227988958358765
+                "blockType": "KEY_VALUE_SET",
+                "confidence": 38.43309020996094,
+                "geometry": {
+                    "boundingBox": {
+                        "width": 0.32613086700439453,
+                        "weight": 0.0942094624042511,
+                        "left": 0.4833833575248718,
+                        "top": 0.5227988958358765
                     },
-                    "Polygon": [
+                    "polygon": [
                         {"X": 0.123, "Y": 0.345}, ...
                     ]
                 }
-                "Id": "8c97b240-0969-4678-834a-646c95da9cf4",
-                "Relationships": [
+                "id": "8c97b240-0969-4678-834a-646c95da9cf4",
+                "relationships": [
                     {
-                        "Type": "CHILD",
-                        "Ids": [
+                        "type": "CHILD",
+                        "ids": [
                             "7ee7b7da-ee1b-428d-a567-55a3e3affa56",
                             "4d6da730-ba43-467c-a9a5-c6137ba0c472"
                         ]
                     },
                     {
-                        "Type": "VALUE",
-                        "Ids": [
+                        "type": "VALUE",
+                        "ids": [
                             "6ee7b7da-ee1b-428d-a567-55a3e3affa54"
                         ]
                     }
                 ],
-                "EntityTypes": [
+                "entityTypes": [
                     "KEY"
                 ],
-                "Text": "Foo bar"
+                "text": "Foo bar"
             },
 ]
 ```
@@ -121,11 +121,11 @@ An example of a worker template using this crowd element would look like the fol
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
-{% capture s3_arn %}http://s3.amazonaws.com/{{ task.input.aiServiceRequest.document.s3Object.bucket }}/{{ task.input.aiServiceRequest.document.s3Object.name }}{% endcapture %}
+{% capture s3_uri %}http://s3.amazonaws.com/{{ task.input.aiServiceRequest.document.s3Object.bucket }}/{{ task.input.aiServiceRequest.document.s3Object.name }}{% endcapture %}
 
 <crowd-form>
   <crowd-textract-analyze-document
-    src="{{ s3_arn | grant_read_access }}"
+    src="{{ s3_uri | grant_read_access }}"
     initial-value="{{ task.input.selectedAiServiceResponse.blocks }}"
     header="Review the key-value pairs listed on the right and correct them if they don't match the following document."
     no-key-edit

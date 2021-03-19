@@ -3,9 +3,10 @@
 The following sections describe how to perform common tasks in Amazon SageMaker Studio\. For an overview of the Studio interface, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
 
 **Topics**
-+ [Upload files to Amazon SageMaker Studio](studio-tasks-files.md)
-+ [Clone and Connect to a Git Repository](studio-tasks-git.md)
-+ [Stop a Training Job](studio-tasks-stop-training-job.md)
-+ [Manage Your EFS Storage Volume](studio-tasks-manage-storage.md)
-+ [Provide Feedback on Amazon SageMaker Studio](studio-tasks-provide-feedback.md)
-+ [Update Amazon SageMaker Studio](studio-tasks-update.md)
++ [Upload Files to SageMaker Studio](studio-tasks-files.md)
++ [Clone a Git Repository in SageMaker Studio](studio-tasks-git.md)
++ [Stop a Training Job in SageMaker Studio](studio-tasks-stop-training-job.md)
++ [Manage Your EFS Storage Volume in SageMaker Studio](studio-tasks-manage-storage.md)
++ [Provide Feedback on SageMaker Studio](studio-tasks-provide-feedback.md)
++ [Stay Informed of Updates to SageMaker Studio](studio-tasks-notifications.md)
++ [Update SageMaker Studio and Studio Apps](studio-tasks-update.md)

@@ -6,7 +6,7 @@ The following is an example of an HTML worker task template built using `crowd-c
 + Label categories in the `categories` parameter 
 + The objects that are being classified in the `classification-target` parameter\. 
 
-Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>

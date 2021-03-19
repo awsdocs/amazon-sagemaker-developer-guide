@@ -2,6 +2,8 @@
 
 Amazon Textract enables you to add document text detection and analysis to your applications\. Amazon Augmented AI \(Amazon A2I\) directly integrated with Amazon Textract's `AnalyzeDocument` API operation\. You can use `AnalyzeDocument` to analyze a document for relationships between detected items\. When you add an Amazon A2I human review loop to an `AnalyzeDocument` request, Amazon A2I monitors the Amazon Textract results and sends a document to one or more human workers for review when the conditions specified in your flow definition are met\. For example, if you want a human to review a specific key like "Full name:" and their associated input\-values you can create a trigger to start a human review anytime the key "Full name:" is detected or when the inference confidence for that key falls within a range that you specify\. 
 
+![\[Use Amazon Augmented AI with Amazon Textract\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/a2i/diagrams/product-page-diagram_A21-Components_Textract@2x.png)
+
 You can specify when Amazon Textract sends a task to a human worker for review when creating a human review workflow, or flow definition by specifying *activation conditions*\. 
 
 You can set the following activation conditions when using the Amazon Textract task type:

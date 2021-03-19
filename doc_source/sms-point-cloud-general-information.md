@@ -48,9 +48,6 @@ When using the SageMaker `CreateLabelingJob` API operation, set the total time a
 
 When you create a labeling job in the console, you can specify this time limit when you select your workforce type and your work team\.
 
-**Important**  
-If you set your task time limit to be greater than 8 hours, you must set `MaxSessionDuration` for your IAM execution role to at least 8 hours\. See [3D Point Cloud Labeling Job Permission Requirements](#sms-security-permission-3d-point-cloud) for more information\. 
-
 ## Workforces<a name="sms-point-cloud-workforces"></a>
 
 When you create a 3D point cloud labeling job, you need to specify a work team that will complete your point cloud annotation tasks\. You can choose a work team from a private workforce of your own workers, or from a vendor workforce that you select in the AWS Marketplace\. You cannot use the Amazon Mechanical Turk workforce for 3D point cloud labeling jobs\. 
@@ -69,15 +66,33 @@ When you create a labeling job using the API operation `CreateLabelingJob`, you 
 
 You provide worker instructions, labels, and optionally, label category attributes that are displayed in the worker UI\.
 
-### Label Category Attributes<a name="sms-point-cloud-label-attributes"></a>
+### Label Category Attributes<a name="sms-point-cloud-label-and-frame-attributes"></a>
 
-When you create a 3D point cloud object detection or object tracking labeling job, you can add one or more *label category attributes* to each label \(class\) that you specify\. Use label category attributes to have workers provide more information about the objects they annotate\. 
+When you create a 3D point cloud object tracking or object detection labeling job, you can add one or more *label category attributes*\. You can add *frame attributes* to all 3D point cloud task types: 
++ **Label category attribute** – A list of options \(strings\), a free form text box, or a numeric field associated with one or more labels\. It is used by workers to to provide metadata about a label\. 
++ **Frame attribute** – A list of options \(strings\), a free form text box, or a numeric field that appears on each point cloud frame a worker is sent to annotate\. It is used by workers to provide metadata about frames\. 
 
-For example, you may create the label category *car* because you want workers to identify cars in a 3D scene\. You might also want to capture additional data about your labeled cars, such as if they are occluded or the size of the car\. You can capture this metadata using label category attributes\. 
+Additionally, you can use label and frame attributes to have workers verify labels in a 3D point cloud label verification job\. 
 
-For each attribute you assigned to a label, you can add multiple options that workers select from\. Workers can select a single value from those options\. In the previous example, if you added the attribute *occluded* to the car label category, you might assign *partial*, *completely*, *no* to the *occluded* attribute and workers can select one of these options\.
+Use the following sections to learn more about these attributes\. To learn how to add label category and frame attributes to a labeling job, use the **Create Labeling Job** section on the [task type page](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-point-cloud-task-types) of your choice\.
 
-To learn how to add label category attributes, use the **Create Labeling Job** section on the [task type page](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-point-cloud-task-types) of your choice\.
+#### Label Category Attributes<a name="sms-point-cloud-label-attributes"></a>
+
+Add label category attributes to labels to give workers the ability to provide more information about the annotations they create\. A label category attribute is added to an individual label, or to all labels\. When a label category attribute is applied to all labels it is referred to as a *global label category attribute*\. 
+
+For example, if you add the label category *car*, you might also want to capture additional data about your labeled cars, such as if they are occluded or the size of the car\. You can capture this metadata using label category attributes\. In this example, if you added the attribute *occluded* to the car label category, you can assign *partial*, *completely*, *no* to the *occluded* attribute and enable workers to select one of these options\. 
+
+When you create a label verification job, you add labels category attributes to each label you want workers to verify\.
+
+#### Frame Attributes<a name="sms-point-cloud-frame-attributes"></a>
+
+Add frame attributes to give workers the ability to provide more information about individual point cloud frames\. You can specify up to 10 frame attributes, and these attributes will appear on all frames\.
+
+For example, you can add a frame attribute that allows workers to enter a number\. You may want to use this attribute to have workers identify the number of objects they see in a particular frame\. 
+
+In another example, you may want to provide a free\-form text box to give workers the ability to provide a free form answer to a question\.
+
+When you create a label verification job, you can add one or more frame attributes to ask workers to provide feedback on all labels in a point cloud frame\. 
 
 ### Worker Instructions<a name="sms-point-cloud-worker-instructions-general"></a>
 
@@ -90,15 +105,45 @@ You can add your worker instructions using the SageMaker console while creating 
 
 In addition to your instructions, Ground Truth provides a link to help workers navigate and use the worker portal\. View these instructions by selecting the task type on [Worker Instructions](sms-point-cloud-worker-instructions.md)\. 
 
+### Declining Tasks<a name="sms-decline-task-point-cloud"></a>
+
+Workers are able to decline tasks\. 
+
+Workers decline a task if the instructions are not clear, input data is not displaying correctly, or if they encounter some other issue with the task\. If the number of workers per dataset object \([https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-NumberOfHumanWorkersPerDataObject](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-NumberOfHumanWorkersPerDataObject)\) decline the task, the data object is marked as expired and will not be sent to additional workers\.
+
 ## 3D Point Cloud Labeling Job Permission Requirements<a name="sms-security-permission-3d-point-cloud"></a>
 
 When you create a 3D point cloud labeling job, in addition to the permission requirements found in [Assign IAM Permissions to Use Ground Truth](sms-security-permission.md), you must add a CORS policy to your S3 bucket that contains your input manifest file\. 
 
-Additionally if you choose to allow workers to work on tasks for more than 8 hours, you must increase the `MaxSessionDuration` of the IAM execution role you use to create the labeling job\. 
-
 ### Add a CORS Permission Policy to S3 Bucket<a name="sms-permissions-execution-role"></a>
 
-When you create a 3D point cloud labeling job, you specify buckets in S3 where your input data and manifest file are located and where your output data will be stored\. These buckets may be the same\. You must attach the following Cross\-origin resource sharing \(CORS\) policy to your input and output buckets: 
+When you create a 3D point cloud labeling job, you specify buckets in S3 where your input data and manifest file are located and where your output data will be stored\. These buckets may be the same\. You must attach the following Cross\-origin resource sharing \(CORS\) policy to your input and output buckets\. If you use the Amazon S3 console to add the policy to your bucket, you must use the JSON format\.
+
+**JSON**
+
+```
+[
+    {
+        "AllowedHeaders": [
+            "*"
+        ],
+        "AllowedMethods": [
+            "GET",
+            "HEAD",
+            "PUT"
+        ],
+        "AllowedOrigins": [
+            "*"
+        ],
+        "ExposeHeaders": [
+            "Access-Control-Allow-Origin"
+        ],
+        "MaxAgeSeconds": 3000
+    }
+]
+```
+
+**XML**
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -116,13 +161,3 @@ When you create a 3D point cloud labeling job, you specify buckets in S3 where y
 ```
 
 To learn how to add a CORS policy to an S3 bucket, see [How do I add cross\-domain resource sharing with CORS?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-cors-configuration.html) in the Amazon Simple Storage Service Console User Guide\.
-
-### Increase MaxSessionDuration for Execution Role<a name="sms-3d-pointcloud-maxsessduration"></a>
-
-3D point cloud labeling tasks can take workers more time to complete than other task types\. You can set the total amount of time that workers can work on each task by doing one of the following: 
-+ When you create a labeling job in the console, set **Task Timeout** when you select your work team\.
-+ Using the `TaskTimeLimitInSeconds` parameter when creating a labeling job using the SageMaker API\. 
-
-The maximum time you can set for workers to work on tasks is 7 days\. The default value is 3 days\. If you set your task time limit to be greater than 8 hours, you must set `MaxSessionDuration` for your IAM execution role to at least 8 hours\. 
-
-To see how to update this value for your IAM role, see [Modifying a Role ](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html) in the IAM User Guide, choose your preferred method to modify the role, and then follow the steps in [Modifying a Role Maximum Session Duration](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-console.html#roles-modify_max-session-duration)\. To learn more about permission requirements for the Ground Truth execution role, see [Create an Execution Role to Start a Labeling Job](sms-security-permission.md#sms-security-permission-execution-role)\.

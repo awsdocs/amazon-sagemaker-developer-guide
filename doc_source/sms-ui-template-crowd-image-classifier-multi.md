@@ -1,8 +1,8 @@
 # crowd\-image\-classifier\-multi\-select<a name="sms-ui-template-crowd-image-classifier-multi"></a>
 
-A widget for classifying an image into one ore more categories\. The image can be a JPG, PNG, or GIF file, and has no size limit\. 
+A widget for classifying an image into one or more categories\. Use one of the following supported image formats: APNG, BMP, GIF, ICO, JPEG, PNG, SVG\. Images do not have a size limit\. 
 
-The following is an example of an HTML worker task template built using this crowd element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+The following is an example of an HTML worker task template built using this crowd element\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>

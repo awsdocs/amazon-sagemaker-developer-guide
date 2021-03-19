@@ -1,6 +1,6 @@
 # crowd\-toggle\-button<a name="sms-ui-template-crowd-toggle-button"></a>
 
-A button that acts as an ON/OFF switch, toggling a state\. The following example shows different ways you can use to use the `<crowd-toggle-button>` HTML element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+A button that acts as an ON/OFF switch, toggling a state\. The following example shows different ways you can use to use the `<crowd-toggle-button>` HTML element\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```
 <crowd-form>

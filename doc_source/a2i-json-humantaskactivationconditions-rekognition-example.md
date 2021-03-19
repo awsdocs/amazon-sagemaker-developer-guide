@@ -47,14 +47,14 @@ Although only one of the two conditions under the `Or` operator need to evaluate
                          "ConditionType": "ModerationLabelConfidenceCheck",
                          "ConditionParameters": {
                              "ModerationLabelName": "Graphic Male Nudity",
-                             "ConfidenceLessThanOrEqual": 99
+                             "ConfidenceLessThanEquals": 99
                          }
                      },
                      {
                          "ConditionType": "ModerationLabelConfidenceCheck",
                          "ConditionParameters": {
                              "ModerationLabelName": "Graphic Male Nudity",
-                             "ConfidenceGreaterThanOrEqual": 90
+                             "ConfidenceGreaterThanEquals": 90
                          }
                      }
                  ]
@@ -64,14 +64,14 @@ Although only one of the two conditions under the `Or` operator need to evaluate
                          "ConditionType": "ModerationLabelConfidenceCheck",
                          "ConditionParameters": {
                              "ModerationLabelName": "Graphic Female Nudity",
-                             "ConfidenceLessThanOrEqual": 99
+                             "ConfidenceLessThanEquals": 99
                          }
                      },
                      {
                          "ConditionType": "ModerationLabelConfidenceCheck",
                          "ConditionParameters": {
                              "ModerationLabelName": "Graphic Female Nudity",
-                             "ConfidenceGreaterThanOrEqual": 80
+                             "ConfidenceGreaterThanEquals": 80
                          }
                      }
                  ]
@@ -92,7 +92,7 @@ In the following example, if any moderation label with a confidence greater than
             "ConditionType": "ModerationLabelConfidenceCheck",
             "ConditionParameters": {
                 "ModerationLabelName": "*",
-                "ConfidenceGreaterThanOrEqual": 75
+                "ConfidenceGreaterThanEquals": 75
             }
         }
     ]

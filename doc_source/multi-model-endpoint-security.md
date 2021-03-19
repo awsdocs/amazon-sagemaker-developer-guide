@@ -30,4 +30,4 @@ By default, an IAM principal with [ `InvokeEndpoint`](https://docs.aws.amazon.co
   For information about SageMaker condition keys, see [Condition Keys for Amazon SageMaker](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonsagemaker.html#amazonsagemaker-policy-keys) in the *AWS Identity and Access Management User Guide*\.
 + Create multi\-model endpoints with more restrictive S3 prefixes\. 
 
-For more information about how SageMaker uses roles to manage access to endpoints and perform operations on your behalf, see [SageMaker Roles ](sagemaker-roles.md)\. Your customers might also have certain data isolation requirements dictated by their own compliance requirements that can be satisfied using IAM identities\.
+For more information about how SageMaker uses roles to manage access to endpoints and perform operations on your behalf, see [SageMaker Roles](sagemaker-roles.md)\. Your customers might also have certain data isolation requirements dictated by their own compliance requirements that can be satisfied using IAM identities\.

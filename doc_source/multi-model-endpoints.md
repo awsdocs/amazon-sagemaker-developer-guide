@@ -11,12 +11,13 @@ You can use the AWS SDK for Python \(Boto\) or the SageMaker console to create a
 **Topics**
 + [Supported Algorithms and Frameworks](#multi-model-support)
 + [Sample Notebooks for Multi\-Model Endpoints](#multi-model-endpoint-sample-notebooks)
++ [How Multi\-Model Endpoints Work](#how-multi-mode-endpoints-work)
++ [Setting SageMaker Multi\-Model Endpoint Model Caching Behavior](#multi-model-caching)
 + [Instance Recommendations for Multi\-Model Endpoint Deployments](#multi-model-endpoint-instance)
 + [Create a Multi\-Model Endpoint](create-multi-model-endpoint.md)
 + [Invoke a Multi\-Model Endpoint](invoke-multi-model-endpoint.md)
 + [Add or Remove Models](add-models-to-endpoint.md)
 + [Build Your Own Container with Multi Model Server](build-multi-model-build-container.md)
-+ [How Multi\-Model Endpoints Work](how-multi-mode-endpoints-work.md)
 + [Multi\-Model Endpoint Security](multi-model-endpoint-security.md)
 + [CloudWatch Metrics for Multi\-Model Endpoint Deployments](multi-model-endpoint-cloudwatch-metrics.md)
 
@@ -25,7 +26,9 @@ You can use the AWS SDK for Python \(Boto\) or the SageMaker console to create a
 The inference containers for the following algortihms and frameworks support multi\-model endpoints:
 + [XGBoost Algorithm](xgboost.md)
 + [K\-Nearest Neighbors \(k\-NN\) Algorithm](k-nearest-neighbors.md)
-+ [Linear learner algorithm](linear-learner.md)
++ [Linear Learner Algorithm](linear-learner.md)
++ [Random Cut Forest \(RCF\) Algorithm](randomcutforest.md)
++ [Use TensorFlow with Amazon SageMaker](tf.md)
 + [Use Scikit\-learn with Amazon SageMaker](sklearn.md)
 + [Use Apache MXNet with Amazon SageMaker](mxnet.md)
 + [Use PyTorch with Amazon SageMaker](pytorch.md)
@@ -35,6 +38,36 @@ To use any other framework or algorithm, use the SageMaker inference toolkit to 
 ## Sample Notebooks for Multi\-Model Endpoints<a name="multi-model-endpoint-sample-notebooks"></a>
 
 For a sample notebook that uses SageMaker to deploy multiple XGBoost models to an endpoint, see the [Multi\-Model Endpoint XGBoost Sample Notebook](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/advanced_functionality/multi_model_xgboost_home_value/xgboost_multi_model_endpoint_home_value.ipynb)\. For a sample notebook that shows how to set up and deploy a custom container that supports multi\-model endpoints in SageMaker, see the [Multi\-Model Endpoint BYOC Sample Notebook](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/advanced_functionality/multi_model_bring_your_own/multi_model_endpoint_bring_your_own.ipynb)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. After you've created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all the SageMaker samples\. The Multi\-Model Endpoint notebook is located in the **ADVANCED FUNCTIONALITY** section\. To open a notebook, choose its **Use** tab and choose **Create copy**\.
+
+## How Multi\-Model Endpoints Work<a name="how-multi-mode-endpoints-work"></a>
+
+SageMaker manages the lifecycle of models hosted on multi\-model endpoints in the container's memory\. Instead of downloading all of the models from an Amazon S3 bucket to the container when you create the endpoint, SageMaker dynamically loads them when you invoke them\. When SageMaker receives an invocation request for a particular model, it does the following:
+
+1. Routes the request to an instance behind the endpoint\.
+
+1. Downloads the model from the S3 bucket to that instance's storage volume\.
+
+1. Loads the model to the container's memory on that instance\. If the model is already loaded in the container's memory, invocation is faster because SageMaker doesn't need to download and load it\.
+
+SageMaker continues to route requests for a model to the instance where the model is already loaded\. However, if the model receives many invocation requests, and there are additional instances for the multi\-model endpoint, SageMaker routes some requests to another instance to accommodate the traffic\. If the model isn't already loaded on the second instance, the model is downloaded to that instance's storage volume and loaded into the container's memory\.
+
+When an instance's memory utilization is high and SageMaker needs to load another model into memory, it unloads unused models from that instance's container to ensure that there is enough memory to load the model\. Models that are unloaded remain on the instance's storage volume and can be loaded into the container's memory later without being downloaded again from the S3 bucket\. If the instance's storage volume reaches its capacity, SageMaker deletes any unused models from the storage volume\.
+
+To delete a model, stop sending requests and delete it from the S3 bucket\. SageMaker provides multi\-model endpoint capability in a serving container\. Adding models to, and deleting them from, a multi\-model endpoint doesn't require updating the endpoint itself\. To add a model, you upload it to the S3 bucket and invoke it\. You don’t need code changes to use it\.
+
+When you update a multi\-model endpoint, invocation requests on the endpoint might experience higher latencies as traffic is directed to the instances in the updated endpoint\.
+
+## Setting SageMaker Multi\-Model Endpoint Model Caching Behavior<a name="multi-model-caching"></a>
+
+By default, multi\-model endpoints cache frequently used models in memory and on disk to provide low latency inference\. The cached models are unloaded and/or deleted from disk only when a container runs out of memory or disk space to accommodate a newly targeted model\.
+
+You can change the caching behavior of a multi\-model endpoint and explicitly enable or disable model caching by setting the parameter `ModelCacheSetting` when you call [create\_model](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_model)\.
+
+We recommend setting the value of the `ModelCacheSetting` parameter to `Disabled` for use cases that do not benefit from model caching\. For example, when a large number of models need to be served from the endpoint but each model is invoked only once \(or very infrequently\)\. For such use cases, setting the value of the `ModelCacheSetting` parameter to `Disabled` allows higher transactions per second \(TPS\) for `invoke_endpoint` requests comparted to the default caching mode\. Higher TPS in these use cases is because SageMaker does the following after the `invoke_endpoint` request:
++ Asynchronously unloads the model from memory and deletes it from disk immediately after it is invoked\.
++ Provides higher concurrency for downloading and loading models in the inference container\. The concurrency is a factor of the number of vCPUs of the container instance\.
+
+For guidelines on choosing a SageMaker ML instance type for a multi\-model endpoint, see [Instance Recommendations for Multi\-Model Endpoint Deployments ](#multi-model-endpoint-instance)\.
 
 ## Instance Recommendations for Multi\-Model Endpoint Deployments<a name="multi-model-endpoint-instance"></a>
 

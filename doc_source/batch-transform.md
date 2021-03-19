@@ -60,7 +60,7 @@ To combine the results of multiple output files into a single output file, set t
 
 When the input data is very large and is transmitted using HTTP chunked encoding, to stream the data to the algorithm, set [ `MaxPayloadInMB`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html#SageMaker-CreateTransformJob-request-MaxPayloadInMB) to `0`\. Amazon SageMaker built\-in algorithms don't support this feature\.
 
-For information about using the API to create a batch transform job, see the [ `CreateTransformJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html) API\. For more information about the correlation between batch transform input and output objects, see [ `OutputDataConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_OutputDataConfig.html)\. For an example of how to use batch transform, see [Step 6\.2: Deploy the Model with Batch Transform](ex1-batch-transform.md)\.
+For information about using the API to create a batch transform job, see the [ `CreateTransformJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html) API\. For more information about the correlation between batch transform input and output objects, see [ `OutputDataConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_OutputDataConfig.html)\. For an example of how to use batch transform, see [\(Optional\) Make Prediction with Batch Transform](ex1-model-deployment.md#ex1-batch-transform)\.
 
 ## Speed up a Batch Transform Job<a name="batch-transform-reduce-time"></a>
 

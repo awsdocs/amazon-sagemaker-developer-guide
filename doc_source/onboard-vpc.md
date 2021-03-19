@@ -26,5 +26,7 @@ This procedure is part of the SageMaker Studio onboarding process when you choos
    + **VPC only** – All Studio traffic is through the specified VPC and subnets\. Internet access is disabled by default\.
 
 1. Choose the security groups\. If you chose **Public internet only**, this step is optional\. If you chose **VPC only**, this step is required\.
+**Note**  
+For the maximum number of allowed security groups, see [UserSettings](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UserSettings.html)\.
 
 For VPC requirements in **VPC only** mode, see [Connect SageMaker Studio Notebooks to Resources in a VPC](studio-notebooks-and-internet-access.md)\.

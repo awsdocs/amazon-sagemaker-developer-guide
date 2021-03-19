@@ -1,11 +1,15 @@
-# Prepare and Label Data<a name="data-prep"></a>
+# Prepare and Analyze Datasets<a name="data-prep"></a>
 
-To analyze your data and evaluate machine learning models on Amazon SageMaker, use [Amazon SageMaker Processing](https://docs.aws.amazon.com/sagemaker/latest/dg/processing-job.html)\. With Processing, you can use a simplified, managed experience on SageMaker to run your data processing workloads, such as feature engineering, data validation, model evaluation, and model interpretation\. You can also use the Amazon SageMaker Processing APIs during the experimentation phase and after the code is deployed in production to evaluate performance\.
+Import, prepare, transform, visualize and analyze data with Amazon SageMaker Data Wrangler\. You can integrate Data Wrangler into your machine learning workflows to simplify and streamline data pre\-processing and feature engineering using little to no coding\. You can also add your own Python scripts and transformations to customize your data prep workflow\.
 
-To train a machine learning model, you need a large, high\-quality, labeled dataset\. You can label your data using Amazon SageMaker Ground Truth\. Choose from one of the Ground Truth [built\-in task types](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html) or create your own [custom labeling workflow](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-custom-templates.html)\. To improve the accuracy of your data labels and reduce the total cost of labeling your data, use Ground Truth enhanced data labeling features like [automated data labeling](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-automated-labeling.html) and [annotation consolidation](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html)\. 
+Import data from Amazon S3, Amazon Redshift, Amazon Athena, and use Data Wrangler to create sophisticated machine learning data prep workflows with built\-in and custom data transformations and analysis including feature target leakage and quick modeling\. 
+
+After you have defined a data prep workflow, or *data flow*, you can integrate it with SageMaker Processing, SageMaker Pipelines, and SageMaker Feature Store, simplify the task of processing, sharing and storing ML training data\. You can also export your data flow to a python script and create a custom ML data prep pipeline\.
+
+For more information, see [Prepare ML Data with Amazon SageMaker Data Wrangler](data-wrangler.md)\.
+
+
 
 **Topics**
-+ [Process Data and Evaluate Models](processing-job.md)
-+ [Use Amazon SageMaker Ground Truth to Label Data](sms.md)
-+ [Create and Manage Workforces](sms-workforce-management.md)
-+ [Crowd HTML Elements Reference](sms-ui-template-reference.md)
++ [Detect Pretraining Data Bias](clarify-detect-data-bias.md)
++ [Prepare ML Data with Amazon SageMaker Data Wrangler](data-wrangler.md)

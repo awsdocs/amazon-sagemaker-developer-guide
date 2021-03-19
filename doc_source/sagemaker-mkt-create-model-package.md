@@ -78,7 +78,7 @@ You can create an model package either by using the SageMaker console or by usin
 **Note**  
 To publish your model package on AWS Marketplace, your model package must be validated\.
 
-   1. For **IAM role**, choose an IAM role that has the required permissions to run batch transform jobs in SageMaker, or choose **Create a new role** to allow SageMaker to create a role that has the `AmazonSageMakerFullAccess` managed policy attached\. For information, see [SageMaker Roles ](sagemaker-roles.md)\.
+   1. For **IAM role**, choose an IAM role that has the required permissions to run batch transform jobs in SageMaker, or choose **Create a new role** to allow SageMaker to create a role that has the `AmazonSageMakerFullAccess` managed policy attached\. For information, see [SageMaker Roles](sagemaker-roles.md)\.
 
    1. For **Validation profile**, specify the following:
       + A name for the validation profile\.

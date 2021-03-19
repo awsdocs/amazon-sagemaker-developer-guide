@@ -8,7 +8,7 @@ For an example Jupyter notebook that shows a complete example of extending a con
 
 ## Step 1: Create an Inference Handler<a name="byoc-inference-handler"></a>
 
-The SageMaker inference toolkit is built on the multi\-model server \(MMS\)\. MMS expects a Python script that implements functions to load the model, pre\-process input data, get perditions from the model, and process the output data in a model handler\.
+The SageMaker inference toolkit is built on the multi\-model server \(MMS\)\. MMS expects a Python script that implements functions to load the model, pre\-process input data, get predictions from the model, and process the output data in a model handler\.
 
 ### The model\_fn Function<a name="byoc-inference-handler-modelfn"></a>
 
@@ -174,4 +174,4 @@ docker tag ${algorithm_name} ${fullname}
 docker push ${fullname}
 ```
 
-You can now use this container to deploy endpoints in SageMaker\. For an example of how to deploy an endpoint in SageMaker, see [Step 6\.1: Deploy the Model to SageMaker Hosting Services](ex1-deploy-model.md)\.
+You can now use this container to deploy endpoints in SageMaker\. For an example of how to deploy an endpoint in SageMaker, see [Deploy the Model to SageMaker Hosting Services](ex1-model-deployment.md#ex1-deploy-model)\.

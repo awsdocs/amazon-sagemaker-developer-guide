@@ -28,6 +28,8 @@ To run your own training model, build a Docker container using the [Amazon SageM
 
 1. On the **Notebook instances** page, the **Status** is **Pending**\. It can take a few minutes for Amazon SageMaker to launch a machine learning compute instance—in this case, it launches a notebook instance—and attach an ML storage volume to it\. The notebook instance has a preconfigured Jupyter notebook server and a set of Anaconda libraries\. For more information, see [  CreateNotebookInstance](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstance.html)\. 
 
+   
+
 1. In the **Permissions and encryption** section, copy **the IAM role ARN number**, and paste it into a notepad file to save it temporarily\. You use this IAM role ARN number later to configure a local training estimator in the notebook instance\. **The IAM role ARN number** looks like the following: `'arn:aws:iam::111122223333:role/service-role/AmazonSageMaker-ExecutionRole-20190429T110788'` 
 
 1. After the status of the notebook instance changes to **InService**, choose **Open JupyterLab**\.
@@ -216,7 +218,7 @@ This bash shell script may raise a permission issue similar to the following err
    "denied: User: [ARN] is not authorized to perform: ecr:InitiateLayerUpload on resource: 
    arn:aws:ecr:us-east-1:[id]:repository/tf-custom-container-test"
    ```
-If this error occurs, you need to attach the **AmazonEC2ContainerRegistryFullAccess** policy to your IAM role\. Go to the [IAM console](https://console.aws.amazon.com/iam/home), choose **Roles** from the left navigation pane, look up the IAM role you used for the Nnotebook instance\. Under the **Permission** tab, choose the **Attach policies** button, and search the **AmazonEC2ContainerRegistryFullAccess** policy\. Mark the check box of the policy, and choose **Attach policy** to finish\.
+If this error occurs, you need to attach the **AmazonEC2ContainerRegistryFullAccess** policy to your IAM role\. Go to the [IAM console](https://console.aws.amazon.com/iam/home), choose **Roles** from the left navigation pane, look up the IAM role you used for the Notebook instance\. Under the **Permission** tab, choose the **Attach policies** button, and search the **AmazonEC2ContainerRegistryFullAccess** policy\. Mark the check box of the policy, and choose **Attach policy** to finish\.
 
 1. After you push the container, you can call the Amazon ECR image from anywhere in the SageMaker environment\. Run the following code example in the next notebook cell\. 
 

@@ -15,7 +15,7 @@ With Amazon SageMaker, you pay only for what you use\. Building, training, and d
 **Topics**
 + [Get started with Amazon SageMaker Autopilot](autopilot-automate-model-development-get-started.md)
 + [Create an Amazon SageMaker Autopilot experiment](autopilot-automate-model-development-create-experiment.md)
-+ [Amazon SageMaker Autopilot problem types](autopilot-automate-model-development-problem-types.md)
++ [Amazon SageMaker Autopilot problem types and algorithm support](autopilot-automate-model-development-problem-types.md)
 + [Amazon SageMaker Autopilot notebooks generated to manage AutoML tasks](autopilot-automate-model-development-notebook-output.md)
 + [Configure inference output in Autopilot\-generated containers](autopilot-automate-model-development-container-output.md)
 + [Amazon SageMaker Autopilot quotas](autopilot-quotas.md)

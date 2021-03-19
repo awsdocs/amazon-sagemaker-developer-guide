@@ -117,7 +117,7 @@ The following table contains the hyperparameters for the XGBoost algorithm\. The
 
 *Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your training and validation datasets\. You choose three types of hyperparameters:
 + a learning `objective` function to optimize during model training
-+ an `eval_metric` to use to evaluate model perrormance during validation
++ an `eval_metric` to use to evaluate model performance during validation
 + a set of hyperparameters and a range of values for each to use when tuning the model automatically
 
 You choose the evaluation metric from set of evaluation metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the evaluation metric\. 

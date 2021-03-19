@@ -1,11 +1,12 @@
-# Amazon SageMaker Studio Visualization Demos of Model Analysis with Debugger<a name="debugger-visualization"></a>
+# Debugger Advanced Demos and Visualization<a name="debugger-visualization"></a>
+
+The following demos walk you through advanced use cases and visualization scripts using Debugger\.
 
 **Topics**
 + [Train and Tune Your Models with Amazon SageMaker Experiments and Debugger](#debugger-visualization-video-model-pruning)
 + [[ Using SageMaker Debugger to Monitor a Convolutional Autoencoder Model Training ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/model_specific_realtime_analysis/autoencoder_mnist/autoencoder_mnist.ipynb)](#debugger-visualization-autoencoder_mnist)
 + [[ Using SageMaker Debugger to Monitor Attentions in BERT Model Training ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/model_specific_realtime_analysis/bert_attention_head_view/bert_attention_head_view.ipynb)](#debugger-visualization-bert_attention_head_view)
 + [[ Using SageMaker Debugger to Visualize Class Activation Maps in Convolutional Neural Networks \(CNNs\)](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/model_specific_realtime_analysis/cnn_class_activation_maps/cnn_class_activation_maps.ipynb)](#debugger-visualization-cnn_class_activation_maps)
-+ [Visualize Tensors Using SageMaker Debugger and Studio](#debugger-visualization-studio)
 
 ## Train and Tune Your Models with Amazon SageMaker Experiments and Debugger<a name="debugger-visualization-video-model-pruning"></a>
 
@@ -19,7 +20,7 @@ This video demonstrates a *model pruning* technique that makes pre\-trained ResN
 
 SageMaker Estimator trains those algorithms supplied from PyTorch model zoo in an AWS Deep Learning Containers with PyTorch framework, and Debugger extracts training metrics from the training process\.
 
-The video also demonstrates how to set up a Debugger custom rule to watch the accuracy of a pruned model, to trigger an AWS CloudWatch event and a Lambda function when the accuracy hits a threshold, and to automatically stop the pruning process to avoid redundant iterations\. 
+The video also demonstrates how to set up a Debugger custom rule to watch the accuracy of a pruned model, to trigger an Amazon CloudWatch event and an AWS Lambda function when the accuracy hits a threshold, and to automatically stop the pruning process to avoid redundant iterations\. 
 
 Learning objectives are as follows: 
 +  Learn how to use SageMaker to accelerate ML model training and improve model quality\. 
@@ -34,11 +35,11 @@ The following image shows how the iterative model pruning process reduces the si
 
 The pruning process reduced the initial 50 million parameters to 18 million\. It also reduced the estimated model size from 201 MB to 73 MB\. 
 
-![\[An image containing model pruning result output visualizations\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger-model-pruning-results-alexnet.gif)
+![\[An image containing model pruning result output visualizations\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger/debugger-model-pruning-results-alexnet.gif)
 
 You also need to track model accuracy, and the following image shows how you can plot the model pruning process to visualize changes in model accuracy based on the number of parameters in SageMaker Studio\.
 
-![\[An image of tensor visualization using Debugger in SageMaker Studio\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger-model-pruning-studio.png)
+![\[An image of tensor visualization using Debugger in SageMaker Studio\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger/debugger-model-pruning-studio.png)
 
 In SageMaker Studio, choose the **Experiments** tab, select a list of tensors saved by Debugger from the pruning process, and then compose a **Trial Component List** panel\. Select all ten iterations and then choose **Add chart** to create a **Trial Component Chart**\. After you decide on a model to deploy, choose the trial component and choose a menu to perform an action or choose **Deploy model**\.
 
@@ -71,7 +72,7 @@ The convolutional encoder powers clustering algorithms with smaller input data s
 
 This notebook example demonstrates how to visualize the latent variables using Debugger, as shown in the following animation\. It also demonstrates how the t\-SNE algorithm classifies the latent variables into ten clusters and projects them into a two\-dimensional space\. The scatter plot color scheme on the right side of the image reflects the true values to show how well the BERT model and t\-SNE algorithm organize the latent variables into the clusters\.
 
-![\[A conceptual image of convolutional autoencoder\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger-cnn-autoencoder-plot.gif)
+![\[A conceptual image of convolutional autoencoder\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger/debugger-cnn-autoencoder-plot.gif)
 
 ## [ Using SageMaker Debugger to Monitor Attentions in BERT Model Training ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/model_specific_realtime_analysis/bert_attention_head_view/bert_attention_head_view.ipynb)<a name="debugger-visualization-bert_attention_head_view"></a>
 
@@ -89,7 +90,7 @@ Plotting *attention scores* and individual neurons in the query and key vectors 
 
 The following animation shows the attention scores of the first 20 input tokens for ten iterations in the training job provided in the notebook example\.
 
-![\[An animation of the attention scores\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger-attention_scores.gif)
+![\[An animation of the attention scores\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger/debugger-attention_scores.gif)
 
 ## [ Using SageMaker Debugger to Visualize Class Activation Maps in Convolutional Neural Networks \(CNNs\)](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/model_specific_realtime_analysis/cnn_class_activation_maps/cnn_class_activation_maps.ipynb)<a name="debugger-visualization-cnn_class_activation_maps"></a>
 
@@ -97,30 +98,8 @@ This notebook demonstrates how to use SageMaker Debugger to plot class activatio
 
 In this notebook, the PyTorch ResNet model is trained on [the German Traffic Sign Dataset](http://benchmark.ini.rub.de/), which contains more than 40 classes of traffic\-related objects and more than 50,000 images in total\.
 
-![\[An animation of CNN class activation maps\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger-cnn-class-activation-maps.gif)
+![\[An animation of CNN class activation maps\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger/debugger-cnn-class-activation-maps.gif)
 
 During the training process, SageMaker Debugger collects tensors to plot the class activation maps in real time\. As shown in the animated image, the class activation map \(also called as a *saliency map*\) highlights regions with high activation in red color\. 
 
 Using tensors captured by Debugger, you can visualize how the activation map evolves during the model training\. The model starts by detecting the edge on the lower\-left corner at the beginning of the training job\. As the training progresses, the focus shifts to the center and detects the speed limit sign, and the model successfully predicts the input image as Class 3, which is a class of speed limit 60km/h signs, with a 97% confidence level\.
-
-## Visualize Tensors Using SageMaker Debugger and Studio<a name="debugger-visualization-studio"></a>
-
-SageMaker Studio provides visualizations to interpret tensor outputs that are captured by Debugger\. 
-
-### Loss Curves While Training Is in Progress<a name="loss-curves-during-training"></a>
-
-The following screenshot shows visualizations of loss curves for training\. The training is in progress\.
-
-![\[An image containing training trial visualizations\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger-visualize-loss-curves-rules.png)
-
-### Analyzing Training Jobs: Comparing Loss Curves Across Multiple Jobs<a name="loss-curves-across-multiple-jobs"></a>
-
-SageMaker Studio enables you to compare across multiple jobs \(in this case, the loss\)\. This helps you identify the best\-performing training jobs\.
-
-![\[An image showing a comparison of loss curves\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/degubber-analyze-training-loss-curves.png)
-
-### Rules Triggering and Logs from Jobs<a name="rules-triggering-and-logs"></a>
-
-When rules are triggered for anomalous conditions, SageMaker Studio presents logs for the failing rule, which enables you to analyze the causes of the condition\.
-
-![\[An image showing rules triggered\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger-rules-triggered.png)

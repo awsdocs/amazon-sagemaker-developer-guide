@@ -9,7 +9,7 @@ In this example, note the following parameters:
 
 ```
 response = client.create_labeling_job(
-    LabelingJobName='example-labeling-job,
+    LabelingJobName= 'example-labeling-job',
     LabelAttributeName='label',
     InputConfig={
         'DataSource': {
@@ -29,9 +29,7 @@ response = client.create_labeling_job(
     OutputConfig={
         'S3OutputPath': 's3://bucket/path/file-to-store-output-data',
         'KmsKeyId': 'string',
-        'SnsDataSource': {
-             'SnsTopicArn': 'arn:aws:sns:us-east-1:123456789012:your-sns-output-topic'
-         } 
+        'SnsTopicArn': 'arn:aws:sns:us-east-1:123456789012:your-sns-output-topic'
     },
     RoleArn='arn:aws:iam::*:role/*,
     LabelCategoryConfigS3Uri='s3://bucket/path/label-categories.json',

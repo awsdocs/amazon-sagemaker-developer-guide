@@ -10,6 +10,8 @@ Scaling policy configuration is represented by a JSON block\. You save your scal
 
 To quickly define a target\-tracking scaling policy for a variant, use the `SageMakerVariantInvocationsPerInstance`  predefined metric\. `SageMakerVariantInvocationsPerInstance` is the average number of times per minute that each instance for a variant is invoked\. We strongly recommend using this metric\.
 
+
+
 To use a predefined metric in a scaling policy, create a target tracking configuration for your policy\. In the target tracking configuration, include a `PredefinedMetricSpecification` for the predefined metric and a `TargetValue` for the target value of that metric\.
 
 **Example**  

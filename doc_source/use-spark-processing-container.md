@@ -2,11 +2,13 @@
 
  Apache Spark is a unified analytics engine for large\-scale data processing\. Amazon SageMaker provides prebuilt Docker images that include Apache Spark and other dependencies needed to run distributed data processing jobs\. With the [Amazon SageMaker Python SDK](https://github.com/aws/sagemaker-python-sdk#installing-the-sagemaker-python-sdk), you can easily apply data transformations and extract features \(feature engineering\) using the Spark framework\. For information about using the SageMaker Python SDK to run Spark processing jobs, see [Data Processing with Spark](https://sagemaker.readthedocs.io/en/stable/amazon_sagemaker_processing.html#data-processing-with-spark) in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/)\. 
 
+ 
+
 A code repository that contains the source code and Dockerfiles for the Spark images is available on [GitHub](https://github.com/aws/sagemaker-spark-container)\. 
 
 ## Running a Spark Processing Job<a name="use-spark-processing-container-how-to"></a>
 
- You can use the [ `sagemaker.spark.PySparkProcessor`](https://sagemaker.readthedocs.io/en/stable/api/training/processing.html#sagemaker.spark.processing.PySparkProcessor) or [ `sagemaker.spark.SparkJarProcessor`](https://sagemaker.readthedocs.io/en/stable/api/training/processing.html#sagemaker.spark.processing.SparkJarProcessor) class to run your Spark application inside of a processing job\. 
+ You can use the [ `sagemaker.spark.PySparkProcessor`](https://sagemaker.readthedocs.io/en/stable/api/training/processing.html#sagemaker.spark.processing.PySparkProcessor) or [ `sagemaker.spark.SparkJarProcessor`](https://sagemaker.readthedocs.io/en/stable/api/training/processing.html#sagemaker.spark.processing.SparkJarProcessor) class to run your Spark application inside of a processing job\. Note you can set MaxRuntimeInSeconds to a maximum runtime limit of 5 days\. With respect to execution time, and number of instances used, simple spark workloads see a near linear relationship between the number of instances vs\. time to completion\. 
 
  The following code example shows how to run a processing job that invokes your PySpark script `preprocess.py`\. 
 

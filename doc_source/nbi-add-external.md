@@ -17,7 +17,7 @@ SageMaker notebooks support the following package installation tools:
 You can install packages using the following methods:
 + Lifecycle configuration scripts\.
 
-  For example scripts, see [SageMaker Notebook Instance Lifecycle Config Samples](https://github.com/aws-samples/amazon-sagemaker-notebook-instance-lifecycle-config-samples)\. For more information on lifecycle configuration, see [Customize a Notebook Instance Using a Lifecycle Configuration Script](https://docs.aws.amazon.com/notebook-lifecycle-config.html)\.
+  For example scripts, see [SageMaker Notebook Instance Lifecycle Config Samples](https://github.com/aws-samples/amazon-sagemaker-notebook-instance-lifecycle-config-samples)\. For more information on lifecycle configuration, see [Customize a Notebook Instance Using a Lifecycle Configuration Script](https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html)\.
 + Notebooks – The following commands are supported\.
   + `%conda install`
   + `%pip install`

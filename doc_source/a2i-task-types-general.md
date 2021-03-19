@@ -36,7 +36,7 @@ For an end\-to\-end example that demonstrates how to integrate an Amazon A2I hum
 
 **To use an Amazon A2I custom task type sample notebook in an Amazon SageMaker notebook Instance:**
 
-1. If you do not have an active SageMaker notebook instance, create one by following the instructions in [Step 2: Create an Amazon SageMaker Notebook Instance](gs-setup-working-env.md)\.
+1. If you do not have an active SageMaker notebook instance, create one by following the instructions in [Step 1: Create an Amazon SageMaker Notebook Instance](gs-setup-working-env.md)\.
 
 1. When your notebook instance is active, choose **Open JupyterLab** to the right of the notebook instance's name\. It may take a few moments for JupyterLab to load\. 
 

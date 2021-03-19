@@ -193,6 +193,8 @@ To check whether a specific dataset was used in a training job, you search for t
 
 You can use model tracking capability to get information about the lineage of training jobs and the model resources that were used for them, including the dataset, algorithm, hyperparameters, and metrics\. For example, if you find that the performance of a hosted model has declined, you can review its training job and the resources it used to determine what's causing the problem\.
 
+
+
 **Topics**
 + [Trace Model Lineage \(Console\)](#search-lineage-console)
 + [Trace Model Lineage \(API\)](#search-lineage-api)

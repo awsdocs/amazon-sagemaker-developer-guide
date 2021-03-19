@@ -61,6 +61,6 @@ After receiving the request, SageMaker does the following:
 
 1. When the status of the notebook instance is `InService`, in the console, the notebook instance is ready to use\. Choose **Open Jupyter** next to the notebook name to open the classic Jupyter dashboard\.
 
-    You can choose **Open JupyterLab** to open the JupyterLab dashboard\. The dashboard provides access to your notebook instance and sample SageMaker notebooks that contain complete code walkthroughs\. These walkthroughs show how to use SageMaker to perform common machine learning tasks\. For more information, see [Example Notebooks](howitworks-nbexamples.md)\. For more information, see [Access Notebook Instances](howitworks-access-ws.md)\.
+    You can choose **Open JupyterLab** to open the JupyterLab dashboard\. The dashboard provides access to your notebook instance and sample SageMaker notebooks that contain complete code walkthroughs\. These walkthroughs show how to use SageMaker to perform common machine learning tasks\. For more information, see [Example Notebooks](howitworks-nbexamples.md)\. For more information, see [Control root access to a SageMaker notebook instance](nbi-root-access.md)\.
 
    For more information about Jupyter notebooks, see [The Jupyter notebook](https://jupyter-notebook.readthedocs.io/en/stable/)\.

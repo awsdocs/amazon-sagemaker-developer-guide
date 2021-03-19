@@ -4,6 +4,10 @@ An *Amazon SageMaker notebook instance* is a machine learning \(ML\) compute ins
 
 SageMaker also provides sample notebooks that contain complete code walkthroughs\. These walkthroughs show how to use SageMaker to perform common machine learning tasks\. For more information, see [Example Notebooks](howitworks-nbexamples.md)\.
 
+This video shows you how to setup and use SageMaker notebook instances\. \(Length: 26:04\)
+
+[![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/X5CLunIzj3U/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/X5CLunIzj3U)
+
 This video is a deep dive on how to use SageMaker notebook instances\. \(Length: 16:44\)
 
 [![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/uQc8Itd4UTs/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/uQc8Itd4UTs)
@@ -11,6 +15,7 @@ This video is a deep dive on how to use SageMaker notebook instances\. \(Length:
 **Topics**
 + [Create a Notebook Instance](howitworks-create-ws.md)
 + [Access Notebook Instances](howitworks-access-ws.md)
++ [Update a Notebook Instance](nbi-update.md)
 + [Customize a Notebook Instance Using a Lifecycle Configuration Script](notebook-lifecycle-config.md)
 + [Example Notebooks](howitworks-nbexamples.md)
 + [Set the Notebook Kernel](howitworks-set-kernel.md)

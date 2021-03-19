@@ -1,8 +1,8 @@
 # Usage Metering<a name="notebooks-usage-metering"></a>
 
-The costs incurred for running Amazon SageMaker Studio notebooks, interactive shells, consoles, and terminals are based on Amazon Elastic Compute Cloud \(Amazon EC2\) instance usage\.
+There is no additional charge for using Amazon SageMaker Studio\. The costs incurred for running Amazon SageMaker Studio notebooks, interactive shells, consoles, and terminals are based on Amazon Elastic Compute Cloud \(Amazon EC2\) instance usage\.
 
-When you launch the following resources, you must choose a SageMaker image and kernel:
+When you run the following resources, you must choose a SageMaker image and kernel:
 
 **From the Studio Launcher**
 + Notebook
@@ -13,13 +13,13 @@ When you launch the following resources, you must choose a SageMaker image and k
 + Notebook
 + Console
 
-When launched, the resource is run on an Amazon EC2 instance of an instance type based on the chosen SageMaker image and kernel\. If an instance of that type was previously launched and is available, the resource is run on that instance\. If an instance of that type is not available, the resource is run on a new default instance of that type\.
+When launched, the resource is run on an Amazon EC2 instance of an instance type based on the chosen SageMaker image and kernel\. If an instance of that type was previously launched and is available, the resource is run on that instance\.
 
 For CPU based images, the default instance type is `ml.t3.medium`\. For GPU based images, the default instance type is `ml.g4dn.xlarge`\.
 
-The costs incurred are based on the instance type and the number of instances of each instance type\. You are billed separately for each instance\.
+The costs incurred are based on the instance type\. You are billed separately for each instance\.
 
-Metering starts when an instance is created\. Metering ends when the instance is shut down\. For information on how to shut down an instance, see [Shut Down Resources](notebooks-run-and-manage-shut-down.md)\.
+Metering starts when an instance is created\. Metering ends when all the apps on the instance are shut down, or the instance is shut down\. For information on how to shut down an instance, see [Shut Down Resources](notebooks-run-and-manage-shut-down.md)\.
 
 **Important**  
 You must shut down the instance to stop incurring charges\. If you shut down the notebook running on the instance but don't shut down the instance, you will still incur charges\.

@@ -16,6 +16,8 @@ The k\-means algorithm computes the following metrics during training\. When tun
 | test:msd | Mean squared distances between each record in the test set and the closest center of the model\. | Minimize | 
 | test:ssd | Sum of the squared distances between each record in the test set and the closest center of the model\. | Minimize | 
 
+
+
 ## Tunable K\-Means Hyperparameters<a name="km-tunable-hyperparameters"></a>
 
 Tune the Amazon SageMaker k\-means model with the following hyperparameters\. The hyperparameters that have the greatest impact on k\-means objective metrics are: `mini_batch_size`, `extra_center_factor`, and `init_method`\. Tuning the hyperparameter `epochs` generally results in minor improvements\.

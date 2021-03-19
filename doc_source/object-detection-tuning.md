@@ -13,6 +13,8 @@ The object detection algorithm reports on a single metric during training: `vali
 | --- | --- | --- | 
 | validation:mAP |  Mean Average Precision \(mAP\) computed on the validation set\.  |  Maximize  | 
 
+
+
 ## Tunable Object Detection Hyperparameters<a name="object-detection-tunable-hyperparameters"></a>
 
 Tune the Amazon SageMaker object detection model with the following hyperparameters\. The hyperparameters that have the greatest impact on the object detection objective metric are: `mini_batch_size`, `learning_rate`, and `optimizer`\.

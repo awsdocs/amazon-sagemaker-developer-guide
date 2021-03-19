@@ -17,7 +17,7 @@ When you enable early stopping for a hyperparameter tuning job, SageMaker evalua
 ## Algorithms That Support Early Stopping<a name="automatic-tuning-early-stopping-algos"></a>
 
 To support early stopping, an algorithm must emit objective metrics for each epoch\. The following built\-in SageMaker algorithms support early stopping:
-+ [Linear learner algorithm](linear-learner.md)—Supported only if you use `objective_loss` as the objective metric\.
++ [Linear Learner Algorithm](linear-learner.md)—Supported only if you use `objective_loss` as the objective metric\.
 + [XGBoost Algorithm](xgboost.md)
 + [Image Classification Algorithm](image-classification.md)
 + [Object Detection Algorithm](object-detection.md)

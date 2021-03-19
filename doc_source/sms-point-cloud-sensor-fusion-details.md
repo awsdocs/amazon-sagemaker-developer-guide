@@ -223,7 +223,7 @@ print(f"position:{position}\nheading: {heading}")
 
 A UI tool like [3D Rotation Converter](https://www.andre-gaschler.com/rotationconverter/) can also be useful\.
 
-If you have a 4x4 extrinsic transformation matrix, note that the transformation matrix is in the form `[R T; 0 0 0 1]` where R is the rotation matrix and T is the origin translation vector\. That means you can extract rotation matrix and translation vector from the transformation matrix as follows\.
+If you have a 4x4 extrinsic transformation matrix, note that the transformation matrix is in the form `[R T; 0 0 0 1]` where `R` is the rotation matrix and `T` is the origin translation vector\. That means you can extract rotation matrix and translation vector from the transformation matrix as follows\.
 
 ```
 import numpy as np
@@ -307,7 +307,9 @@ If the camera pose is given, then Ground Truth computes the camera extrinsic bas
 
 #### Intrinsic and Distortion<a name="sms-point-cloud-camera-intrinsic-distortion"></a>
 
-Cameras have been around for a long\-long time\. However, with the introduction of the cheap *pinhole* cameras in the late 20th century, they became a common occurrence in our everyday life\. Unfortunately, this cheapness comes with its price—significant distortion\. Luckily, these are constants and with calibration and some remapping image distortion can be corrected\. Furthermore, with calibration you can also determine the relationship between the camera’s natural units \(pixels\) and the real world units \(for example, millimeters\)\.
+Some cameras, such as pinhole or fisheye cameras, may introduce significant distortion in photos\. This distortion can be corrected using distortion coefficients and the camera focal length\. To learn more, see [Camera calibration With OpenCV](https://docs.opencv.org/2.4.13.7/doc/tutorials/calib3d/camera_calibration/camera_calibration.html) in the OpenCV documentation\.
+
+There are two types of distortion Ground Truth can correct for: radial distortion and tangential distortion\.
 
 *Radial distortion* occurs when light rays bend more near the edges of a lens than they do at its optical center\. The smaller the lens, the greater the distortion\. The presence of the radial distortion manifests in form of the *barrel* or *fish\-eye* effect and Ground Truth uses Formula 1 to undistort it\. 
 
@@ -315,7 +317,7 @@ Cameras have been around for a long\-long time\. However, with the introduction 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pointcloud/sms-point-cloud-camera-distortion-1.png)
 
-Tangential distortion occurs because the lenses used to take the images are not perfectly parallel to the imaging plane\. This can be corrected with Formula 2\. 
+*Tangential distortion* occurs because the lenses used to take the images are not perfectly parallel to the imaging plane\. This can be corrected with Formula 2\. 
 
 **Formula 2:**
 

@@ -26,8 +26,8 @@ If you are a first\-time user of Ground Truth, we recommend that you do the foll
 1. **Read [Getting started](sms-getting-started.md)**—This section walks you through setting up your first Ground Truth labeling job\.
 
 1. **Explore other topics**—Depending on your needs, do the following:
-   + **Create instruction pages for your labeling jobs**—Create a custom instruction page that makes it easier for your workers to understand the requirements of the job\. For more information, see [Creating Instruction Pages](sms-creating-instruction-pages.md)\.
+   + **Explore built\-in task types**— Use built\-in task types to streamline the process of creating a labeling job\. See [Built\-in Task Types](sms-task-types.md) to learn more about Ground Truth built\-in task types\.
    + **Manage your labeling workforce**—Create new work teams and manage your existing workforce\. For more information, see [Create and Manage Workforces](sms-workforce-management.md)\.
-   + **Create a custom UI**—Make it easier for your workers to quickly and correctly label your data by creating a custom UI for them to use\. For more information, see [Creating Custom Labeling Workflows](sms-custom-templates.md)\.
+   + **Learn about streaming labeling jobs**— Create a streaming labeling job and send new dataset objects to workers in real time using a perpetually running labeling job\. Workers continuously receive new data objects to label as long as the labeling job is active and new objects are being sent to it\. To learn more, see [Ground Truth Streaming Labeling Jobs](sms-streaming-labeling-job.md)\.
 
 1. **See the [ `Reference`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Reference.html)**—This section describes operations to automate Ground Truth operations\.

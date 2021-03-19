@@ -55,12 +55,11 @@ The `activelearning` directory is only present when you are using automated data
 The `annotations` directory contains all of the annotations made by the workforce\. These are the responses from individual workers that have not been consolidated into a single label for the data object\. 
 
 There are three subdirectories in the `annotations` directory\. 
++ The first, `worker-response`, contains the responses from individual workers\. This contains a subdirectory for each iteration, which in turn contains a subdirectory for each data object in that iteration\. The annotation for each data object is stored in a timestamped JSON file that contains the annotation made by a single worker, and if you use a private workforce, metadata about that worker\. To learn more about this metadata, see [Worker Metadata](#sms-worker-id-private)\.
 
-The first, `worker-response`, contains the responses from individual workers\. This contains a subdirectory for each iteration, which in turn contains a subdirectory for each data object in that iteration\. The annotation for each data object is stored in a timestamped JSON file\. There may be more than one annotation for each data object in this directory, depending on how many workers you want to annotate each object\.
-
-The second, `consolidated-annotation`, contains information required to consolidate the annotations in the current batch into labels for your data objects\.
-
-The third, `intermediate`, contains the output manifest for the current batch with any completed labels\. This file is updated as the label for each data object is completed\.
+  This directory contains one numbered subdirectory \(prefix\) for each worker that labeled an object\. For example, if three workers labeled an object, you will see the directories 1, 2, and 3\. Within that directory, you will see a 
++ The second, `consolidated-annotation`, contains information required to consolidate the annotations in the current batch into labels for your data objects\.
++ The third, `intermediate`, contains the output manifest for the current batch with any completed labels\. This file is updated as the label for each data object is completed\.
 
 ### Inference Directory<a name="sms-directories-inference"></a>
 
@@ -76,7 +75,7 @@ The `training` directory is only present when you are using automated data label
 
 ## Confidence Score<a name="sms-output-confidence"></a>
 
-When you have more than one worker annotate a single task, your label results from annotation conslidation\. Ground Truth calculates a confidence score for each label\. A *confidence score* is a number between 0 and 1 that indicates how confident Ground Truth is in the label\. You can use the confidence score to compare labeled data objects to each other, and to identify the least or most confident labels\.
+When you have more than one worker annotate a single task, your label results from annotation consolidation\. Ground Truth calculates a confidence score for each label\. A *confidence score* is a number between 0 and 1 that indicates how confident Ground Truth is in the label\. You can use the confidence score to compare labeled data objects to each other, and to identify the least or most confident labels\.
 
 You should not interpret the value of a confidence score as an absolute value, or compare confidence scores across labeling jobs\. For example, if all of the confidence scores are between 0\.98 and 0\.998, you should only compare the data objects with each other and not rely on the high confidence scores\. 
 
@@ -85,6 +84,48 @@ You should not compare the confidence scores of human\-labeled data objects and 
 For a bounding box labeling job, Ground Truth calculates a confidence score per box\. You can compare confidence scores within one image or across images for the same labeling type \(human or auto\)\. You can't compare confidence scores across labeling jobs\.
 
 If a single worker annotates a task \(`NumberOfHumanWorkersPerDataObject` is set to `1` or in the console, you enter 1 for **Number of workers per dataset object**\), the confidence score is set to `0.00`\. 
+
+## Worker Metadata<a name="sms-worker-id-private"></a>
+
+Ground Truth provides information that you can use to track individual workers in task output data\. The following data is located in the directories under the `worker-response` located in the [Annotations Directory](#sms-directories-annotations):
++ The `acceptanceTime` is the time that the worker accepted the task\. The format of this date and time stamp is `YYYY-MM-DDTHH:MM:SS.mmmZ` for the year \(`YYYY`\), month \(`MM`\), day \(`DD`\), hour \(`HH`\), minute \(`MM`\), second \(`SS`\) and millisecond \(`mmm`\)\. The date and time are separated by a **T**\. 
++ The `submissionTime` is the time that the worker submitted their annotations using the **Submit** button\. The format of this date and time stamp is `YYYY-MM-DDTHH:MM:SS.mmmZ` for the year \(`YYYY`\), month \(`MM`\), day \(`DD`\), hour \(`HH`\), minute \(`MM`\), second \(`SS`\) and millisecond \(`mmm`\)\. The date and time are separated by a **T**\. 
++ `timeSpentInSeconds` reports the total time, in seconds, that a worker actively worked on that task\. This metric does not include time when a worker paused or took a break\.
++ The `workerId` is unique to each worker\. 
++ If you use a [private workforce](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-private.html), in `workerMetadata`, you see the following\.
+  + The `identityProviderType` is the service used to manage the private workforce\. 
+  + The `issuer` is the Cognito user pool or OIDC Identity Provider \(IdP\) issuer associated with the work team assigned to this human review task\.
+  + A unique `sub` identifier refers to the worker\. If you create a workforce using Amazon Cognito, you can retrieve details about this worker \(such as the name or user name\) using this ID using Amazon Cognito\. To learn how, see [Managing and Searching for User Accounts](https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#manage-user-accounts-searching-user-attributes) in [Amazon Cognito Developer Guide](https://docs.aws.amazon.com/cognito/latest/developerguide/)\.
+
+The following is an example of the output you may see if you use Amazon Cognito to create a private workforce\. This is identified in the `identityProviderType`\.
+
+```
+"submissionTime": "2020-12-28T18:59:58.321Z",
+"acceptanceTime": "2020-12-28T18:59:15.191Z", 
+"timeSpentInSeconds": 40.543,
+"workerId": "a12b3cdefg4h5i67",
+"workerMetadata": {
+    "identityData": {
+        "identityProviderType": "Cognito",
+        "issuer": "https://cognito-idp.aws-region.amazonaws.com/aws-region_123456789",
+        "sub": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+    }
+}
+```
+
+ The following is an example of the `workerMetadata` you may see if you use your own OIDC IdP to create a private workforce:
+
+```
+"workerMetadata": {
+        "identityData": {
+            "identityProviderType": "Oidc",
+            "issuer": "https://example-oidc-ipd.com/adfs",
+            "sub": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+        }
+}
+```
+
+To learn more about using private workforces, see [Use a Private Workforce](sms-workforce-private.md)\.
 
 ## Output Metadata<a name="sms-output-metadata"></a>
 
@@ -623,7 +664,9 @@ In addition to the standard elements, the metadata includes a class map that lis
 
 Ground Truth creates one output sequence file for each sequence of video frames that was labeled\. Each output sequence file contains the following: 
 + All annotations for all frames in a sequence in the `detection-annotations` list of JSON objects\. 
-+ For each frame that was annotated by a worker, the frame file name \(`frame`\), number \(`frame-no`\) and an list of JSON objects\. The name of this list is defined by the task type you use: `polylines`, `polygons`, `keypoints`, and for bounding boxes, `annotations`\.
++ For each frame that was annotated by a worker, the frame file name \(`frame`\), number \(`frame-no`\), a list of JSON objects containing annotations \(`annotations`\), and if applicable, `frame-attributes`\. The name of this list is defined by the task type you use: `polylines`, `polygons`, `keypoints`, and for bounding boxes, `annotations`\.
+
+   
 
   Each JSON object contains information about a single annotation and associated label\. The following table outlines the parameters you'll see for each video frame task type\.   
 ****    
@@ -663,7 +706,8 @@ The following is an example of a `SeqLabel.json` file from a bounding box video 
                 }
             ],
             "frame-no": "0",
-            "frame": "frame_0000.jpeg"
+            "frame": "frame_0000.jpeg", 
+            "frame-attributes": {name: value, name: value}
         },
         {
             "annotations": [
@@ -687,7 +731,8 @@ The following is an example of a `SeqLabel.json` file from a bounding box video 
                 }
             ],
             "frame-no": "1",
-            "frame": "frame_0001.jpeg"
+            "frame": "frame_0001.jpeg",
+            "frame-attributes": {name: value, name: value}
         }
     ]
 }
@@ -718,7 +763,7 @@ In addition to the standard elements, the metadata includes a class map that lis
 
 Ground Truth creates one output sequence file for each sequence of video frames that was labeled\. Each output sequence file contains the following: 
 + All annotations for all frames in a sequence in the `tracking-annotations` list of JSON objects\. 
-+ For each frame that was annotated by a worker, the frame file name \(`frame`\), number \(`frame-no`\) and a list of JSON objects\. The name of this list is defined by the task type you use: `polylines`, `polygons`, `keypoints`, and for bounding boxes, `annotations`\.
++ For each frame that was annotated by a worker, the frame \(`frame`\), number \(`frame-no`\), a list of JSON objects containing annotations \(`annotations`\), and if applicable, frame attributes \(`frame-attributes`\)\. The name of this list is defined by the task type you use: `polylines`, `polygons`, `keypoints`, and for bounding boxes, `annotations`\.
 
   Each JSON object contains information about a single annotation and associated label\. The following table outlines the parameters you'll see for each video frame task type\.   
 ****    
@@ -751,7 +796,8 @@ The following is an example of a `SeqLabel.json` file from a bounding box video 
                 }
             ],
             "frame-no": "0",
-            "frame": "frame_0001.jpeg"
+            "frame": "frame_0001.jpeg",
+            "frame-attributes": {}
         },
         {
             "annotations": [
@@ -782,7 +828,8 @@ The following is an example of a `SeqLabel.json` file from a bounding box video 
                 }
             ],
             "frame-no": "1",
-            "frame": "frame_0002.jpeg"
+            "frame": "frame_0002.jpeg",
+            "frame-attributes": {name: value, name: value}
         }
     ]
 }
@@ -792,11 +839,35 @@ The following is an example of a `SeqLabel.json` file from a bounding box video 
 
 The following is the output manifest file from a 3D point cloud semantic segmentation labeling job\. 
 
-In addition to the standard elements, the metadata for the label includes a color map that defines which color is used to label the image, the class name associated with the color, and the confidence score for each color\. Additionally, there is an `adjustment-status` parameter in the metadata for audit workflows that is set to `adjusted` if the color mask is modified\. 
+In addition to the standard elements, the metadata for the label includes a color map that defines which color is used to label the image, the class name associated with the color, and the confidence score for each color\. Additionally, there is an `adjustment-status` parameter in the metadata for audit workflows that is set to `adjusted` if the color mask is modified\. If you added one or more `frameAttributes` to your label category configuration file, worker responses for frame attributes are in the JSON object, `dataset-object-attributes`\.
 
-The `your-label-attribute-ref` parameter contains the location of a compressed file with a \.zlib extension\. When you uncompress this file, it contains an array that indicates the indexes of each annotated point in the input point cloud and the value of the array gives the class of the point based on the semantic color map found in metadata\. 
+The `your-label-attribute-ref` parameter contains the location of a compressed file with a \.zlib extension\. When you uncompress this file, it contains an array\. Each index in the array corresponds to the index of an annotated point in the input point cloud\. The value of the array at a given index gives the class of the point at the same index in the point cloud, based on the semantic color map found in the `color-map` parameter of the `metadata`\.
 
-The red, italicized text in the examples below depends on labeling job specifications and output data\. 
+You can use Python code similar to the following to decompress a \.zlib file:
+
+```
+import zlib
+from array import array
+
+# read the label file
+compressed_binary_file = open(zlib_file_path/file.zlib, 'rb').read()
+
+# uncompress the label file
+binary_content = zlib.decompress(compressed_binary_file)
+
+# load labels to an array
+my_int_array_data = array('B', binary_content);
+
+print(my_int_array_data)
+```
+
+The code block above will produce an output similar to the following\. Each element of the printed array contains the class of a point at the that index in the point cloud\. For example, `my_int_array_data[0] = 1` means `point[0]` in the input point cloud has a class `1`\. In the following output manifest file example, class `0` corresponds with `"Background"`, `1` with `Car`, and `2` with `Pedestrian`\.
+
+```
+>> array('B', [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2])
+```
+
+The following is an example of a semantic segmentation 3D point cloud labeling job output manifest file\. The red, italicized text in the examples below depends on labeling job specifications and output data\. 
 
 ```
 {
@@ -837,19 +908,20 @@ The red, italicized text in the examples below depends on labeling job specifica
         'creation-date': '2019-11-12T01:18:14.271944',
         'job-name': 'labeling-job-name',
         //only present for adjustment audit workflow
-        "adjustment-status": "adjusted" // adjusted only if the label was adjusted
+        "adjustment-status": "adjusted", // "adjusted" means the label was adjusted
+        "dataset-object-attributes": {name: value, name: value}
     }
 }
 ```
 
 ## 3D Point Cloud Object Detection Output<a name="sms-output-point-cloud-object-detection"></a>
 
-The following is sample output from a 3D point cloud objected detection job\. For this task type, the data about 3D cuboids is returned in the `3d-bounding-box` parameter, in a list named `annotations`\. In this list, each 3D cuboid is described using the following information\. If one or more cuboids were modified, there is an `adjustment-status` parameter in the metadata for audit workflows that is set to `adjusted`\. 
+The following is sample output from a 3D point cloud objected detection job\. For this task type, the data about 3D cuboids is returned in the `3d-bounding-box` parameter, in a list named `annotations`\. In this list, each 3D cuboid is described using the following information\. 
 + Each class, or label category, that you specify in your input manifest is associated with a `class-id`\. Use the `class-map` to identify the class associated with each class ID\.
 + These classes are used to give each 3D cuboid an `object-name` in the format `<class>:<integer>` where `integer` is a unique number to identify that cuboid in the frame\. 
 + `center-x`, `center-y`, and `center-z` are the coordinates of the center of the cuboid, in the same coordinate system as the 3D point cloud input data used in your labeling job\.
 + `length`, `width`, and `height` describe the dimensions of the cuboid\. 
-+ `yaw` is used to describe the orientation \(heading\) of the cuboid in radians\. In the current version of 3D point cloud labeling jobs, Ground Truth does not support `roll` and `pitch` measurements and these values will always be 0\. 
++ `yaw` is used to describe the orientation \(heading\) of the cuboid in radians\.
 
   The `yaw` measurement in the output data is 180 degrees, or pi in radians, minus `yaw` in the right handed world coordinate system when looking down at the cuboid\. In other words, when looking at a cuboid from the top\-down, `yaw_in_output_data` is clockwise\-positive \(in contrast to the right handed world coordinate system, in which the top\-down view is associated with counter\-clockwise positive rotation\)\. When looking up from the cuboid, `yaw_in_output_data` is counterclockwise\-positive\. 
 
@@ -858,7 +930,10 @@ The following is sample output from a 3D point cloud objected detection job\. Fo
   ```
   yaw_right_handed_cartesian_system = pi - yaw_in_output_data
   ```
++ If you created a 3D point cloud adjustment labeling job and included `pitch` and `roll` in the input manifest file, the same `pitch` and `roll` measurements will appear in the output manifest file\. Otherwise, `pitch` and `role` will always be 0\. 
 + If you included label attributes in your input manifest file for a given class, a `label-category-attributes` parameter is included for all cuboids for which workers selected label attributes\. 
+
+If one or more cuboids were modified, there is an `adjustment-status` parameter in the metadata for audit workflows that is set to `adjusted`\. If you added one or more `frameAttributes` to your label category configuration file, worker responses for frame attributes are in the JSON object, `dataset-object-attributes`\.
 
 The *red, italicized text* in the examples below depends on labeling job specifications and output data\. The ellipses \(*\.\.\.*\) denote a continuation of that list, where additional objects with the same format as the proceeding object can appear\.
 
@@ -896,7 +971,7 @@ The *red, italicized text* in the examples below depends on labeling job specifi
                 "p2": 0,
                 "skew": 0,
                 "unix-timestamp": 1566861644.759115,
-                "image-path": "images/frame_0_camera_0.jpg",
+                "image-path": "images/frame_0_camera_0.jpg", 
                 "position": {
                     "x": -2.2722515189268138,
                     "y": 116.86003310568965,
@@ -962,7 +1037,8 @@ The *red, italicized text* in the examples below depends on labeling job specifi
         "human-annotated": "yes", 
         "creation-date": "2018-10-18T22:18:13.527256",
         "job-name": "identify-3d-objects",
-        "adjustment-status": "adjusted"
+        "adjustment-status": "adjusted",
+        "dataset-object-attributes": {name: value, name: value}
     }
 }
 ```
@@ -1002,13 +1078,13 @@ In addition to the standard elements, the metadata includes a class map that lis
 
 In the above example, the cuboid data for each frame in `seq1.json` is in `SeqLabel.json` in the Amazon S3 location, `s3://<customerOutputLocation>/<labelingJobName>/annotations/consolidated-annotation/output/<datasetObjectId>/SeqLabel.json`\. The following is an example of this label sequence file\.
 
-For each frame in the sequence, you see a list of 3D cubiods that were drawn for that frame\. Each frame includes the following information: 
+For each frame in the sequence, you see the `frame-number`, `frame-name`, if applicable, `frame-attributes`, and a list of `annotations`\. This list contains 3D cubiods that were drawn for that frame\. Each annotation includes the following information: 
 + An `object-name` in the format `<class>:<integer>` where `class` identifies the label category and `integer` is a unique ID across the dataset\.
 + When workers draw a cuboid, it is associated with a unique `object-id` which is associated with all cuboids that identify the same object across multiple frames\.
 + Each class, or label category, that you specified in your input manifest is associated with a `class-id`\. Use the `class-map` to identify the class associated with each class ID\.
 + `center-x`, `center-y`, and `center-z` are the coordinates of the center of the cuboid, in the same coordinate system as the 3D point cloud input data used in your labeling job\.
 + `length`, `width`, and `height` describe the dimensions of the cuboid\. 
-+ `yaw` is used to describe the orientation \(heading\) of the cuboid in radians\. In the current version of 3D point cloud labeling jobs, Ground Truth does not support `roll` and `pitch` measurements and these values will always be 0\. 
++ `yaw` is used to describe the orientation \(heading\) of the cuboid in radians\.
 
   The `yaw` measurement in the output data is 180 degrees, or pi in radians, minus `yaw` in the right handed world coordinate system when looking down at the cuboid\. In other words, when looking at a cuboid from the top\-down, `yaw_in_output_data` is clockwise\-positive \(in contrast to the right handed world coordinate system, in which the top\-down view is associated with counter\-clockwise positive rotation\)\. When looking up from the cuboid, `yaw_in_output_data` is counterclockwise\-positive\. 
 
@@ -1017,6 +1093,7 @@ For each frame in the sequence, you see a list of 3D cubiods that were drawn for
   ```
   yaw_right_handed_cartesian_system = pi - yaw_in_output_data
   ```
++ If you created a 3D point cloud adjustment labeling job and included `pitch` and `roll` in the input manifest file, the same `pitch` and `roll` measurements will appear in the output manifest file\. Otherwise, `pitch` and `role` will always be 0\. 
 + If you included label attributes in your input manifest file for a given class, a `label-category-attributes` parameter is included for all cuboids for which workers selected label attributes\. 
 
 ```
@@ -1025,6 +1102,7 @@ For each frame in the sequence, you see a list of 3D cubiods that were drawn for
         {
             "frame-number": 0,
             "frame-name": "0.txt.pcd",
+            "frame-attributes": {name: value, name: value},
             "annotations": [
                 {
                     "label-category-attributes": {},
@@ -1082,6 +1160,7 @@ For each frame in the sequence, you see a list of 3D cubiods that were drawn for
         {
             "frame-number": 1,
             "frame-name": "1.txt.pcd",
+            "frame-attributes": {},
             "annotations": [
                 {
                     "label-category-attributes": {},

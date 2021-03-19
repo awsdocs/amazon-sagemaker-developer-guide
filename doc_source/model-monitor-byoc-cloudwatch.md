@@ -1,4 +1,4 @@
-# CloudWatch Metrics<a name="model-monitor-byoc-cloudwatch"></a>
+# CloudWatch Metrics for Bring Your Own Containers<a name="model-monitor-byoc-cloudwatch"></a>
 
 If the `publish_cloudwatch_metrics` value is `Enabled` in the `Environment` map in the `/opt/ml/processing/processingjobconfig.json` file, the container code emits Amazon CloudWatch metrics in this location: `/opt/ml/output/metrics/cloudwatch`\. 
 

@@ -1,6 +1,6 @@
 # Create a Point Cloud Frame Input Manifest File<a name="sms-point-cloud-single-frame-input-data"></a>
 
-In the single\-frame input manifest file, each line in the manifest contains data for a single point cloud frame\. The point cloud frame data can either be stored in binary or ASCII format \(see [Accepted Raw 3D Data Formats](sms-point-cloud-raw-data-types.md)\)\. This is the manifest file formatting required for 3D point cloud object detection and semantic segmentation\. Optionally, you can also provide camera sensor fusion data for each point cloud frame\. 
+The manifest is a UTF\-8 encoded file in which each line is a complete and valid JSON object\. Each line is delimited by a standard line break, \\n or \\r\\n\. Because each line must be a valid JSON object, you can't have unescaped line break characters\. In the single\-frame input manifest file, each line in the manifest contains data for a single point cloud frame\. The point cloud frame data can either be stored in binary or ASCII format \(see [Accepted Raw 3D Data Formats](sms-point-cloud-raw-data-types.md)\)\. This is the manifest file formatting required for 3D point cloud object detection and semantic segmentation\. Optionally, you can also provide camera sensor fusion data for each point cloud frame\. 
 
 Ground Truth supports point cloud and video camera sensor fusion in the [world coordinate system](sms-point-cloud-sensor-fusion-details.md#sms-point-cloud-world-coordinate-system) for all modalities\. If you can obtain your 3D sensor extrinsic \(like a LiDAR extrinsic\), we recommend that you transform 3D point cloud frames into the world coordinate system using the extrinsic\. For more information, see [Sensor Fusion](sms-point-cloud-sensor-fusion-details.md#sms-point-cloud-sensor-fusion)\. 
 
@@ -11,7 +11,7 @@ To create a single\-frame input manifest file, you will identify the location of
 The following example demonstrates the syntax used for an input manifest file for a single\-frame point cloud labeling job\. The example includes two point cloud frames\. For details about each parameter, see the table following this example\. 
 
 **Important**  
-The following code block shows an input manifest file with two JSON objects\. Each JSON object is used to point to and provide details about a single point cloud frame\. The JSON objects have been expanded for readability, but you must minimize each JSON object to fit on a single line when creating an input manifest file\. An example is provided under this code block\. 
+Each line in your input manifest file must be in [JSON Lines](http://jsonlines.org/) format\. The following code block shows an input manifest file with two JSON objects\. Each JSON object is used to point to and provide details about a single point cloud frame\. The JSON objects have been expanded for readability, but you must minimize each JSON object to fit on a single line when creating an input manifest file\. An example is provided under this code block\.
 
 ```
 {

@@ -4,13 +4,15 @@
 
 The examples are organized in three levels, Beginner, Intermediate, and Advanced\. They start from [Getting Started with R on SageMaker](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/r_examples/r_sagemaker_hello_world/r_sagemaker_hello_world.ipynb), continue to end\-to\-end machine learning with R on SageMaker, and then finish with more advanced topics such as SageMaker Processing with R script, and Bring\-Your\-Own \(BYO\) R algorithm to SageMaker\.  
 
-## R Kernel in SageMaker<a name="w1023aab7c27c27b7"></a>
+ For information on how to bring your own custom R image to Studio, see [Bring your own SageMaker image](studio-byoi.md)\. For a similar blog article, see [Bringing your own R environment to Amazon SageMaker Studio](http://aws.amazon.com/blogs/machine-learning/bringing-your-own-r-environment-to-amazon-sagemaker-studio/)\.
+
+## R Kernel in SageMaker<a name="w1225aab7c36c27b9"></a>
 
  SageMaker notebook instances support R using a pre\-installed R kernel\. Also, the R kernel has the reticulate library, an R to Python interface, so you can use the features of SageMaker Python SDK from within an R script\. `paws` is an optional library that you can add to your R kernel to get further functionality\.  
 +  [reticulatelibrary](https://rstudio.github.io/reticulate/): provides an R interface to the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\. The reticulate package translates between R and Python objects\. 
 +  [pawslibrary](https://cran.r-project.org/web/packages/paws/index.html): provides an R interface to make API calls to AWS services, similar to how `boto3` works\. `paws` enables Python developers to create, configure, and manage AWS services, such as EC2 and S3 using R\.  
 
-## Get Started with R in SageMaker<a name="w1023aab7c27c27b9"></a>
+## Get Started with R in SageMaker<a name="w1225aab7c36c27c11"></a>
 +   [Create a Notebook Instance](https://docs.aws.amazon.com/sagemaker/latest/dg/howitworks-create-ws.html) using the t2\.medium instance type and default storage size\. You can pick a faster instance and more storage if you plan to continue using the instance for more advanced examples, or create a bigger instance later\. 
 +  Wait until the status of the notebook is In Service, and then click Open Jupyter\. 
 
@@ -25,7 +27,7 @@ The examples are organized in three levels, Beginner, Intermediate, and Advanced
 
  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/An-R-User-Guide-to-SageMaker/An-R-User-Guide-to-SageMaker-4.png) 
 
-## Example Notebooks<a name="w1023aab7c27c27c11"></a>
+## Example Notebooks<a name="w1225aab7c36c27c13"></a>
 
  **Prerequisites** 
 
@@ -39,7 +41,7 @@ The examples are organized in three levels, Beginner, Intermediate, and Advanced
 
  **Intermediate Level** 
 
- [Hyperparameter Optimization for XGBoost in R:](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/r_examples/r_xgboost_hpo_batch_transform/r_xgboost_hpo_batch_transform.ipynb) This sample notebook extends the previous beginner notebooks that use the abalone dataset and XGBoost\. It describes how to do model tuning with [hyperparamter optimization](https://sagemaker.readthedocs.io/en/stable/tuner.html)\. You will also learn how to use batch transform for batching predictions, as well as how to create a model endpoint to make real\-time predictions\.  
+ [Hyperparameter Optimization for XGBoost in R:](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/r_examples/r_xgboost_hpo_batch_transform/r_xgboost_hpo_batch_transform.ipynb) This sample notebook extends the previous beginner notebooks that use the abalone dataset and XGBoost\. It describes how to do model tuning with [hyperparameter optimization](https://sagemaker.readthedocs.io/en/stable/tuner.html)\. You will also learn how to use batch transform for batching predictions, as well as how to create a model endpoint to make real\-time predictions\.  
 
  [Amazon SageMaker Processing with R](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/r_examples/r_in_sagemaker_processing/r_in_sagemaker_processing.ipynb): [SageMaker Processing](https://aws.amazon.com/blogs/aws/amazon-sagemaker-processing-fully-managed-data-processing-and-model-evaluation/) lets you preprocess, post\-process and run model evaluation workloads\. This example shows you how to create an R script to orchestrate a Processing job\.  
 

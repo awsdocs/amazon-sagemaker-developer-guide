@@ -28,7 +28,7 @@ You can create a worker task template using the SageMaker console and using the 
    + If you selected the Amazon Textract or Amazon Rekognition task template, the **Template editor** autopopulates with a default template that you can customize\. 
    + If you are using a custom template, enter your predefined template in the editor\. 
 
-1. \(Optional\) To complete this step, you must provided an IAM role ARN with permission to read Amazon S3 objects that get rendered on your user interface in **Step 5**\. 
+1. \(Optional\) To complete this step, you must provide an IAM role ARN with permission to read Amazon S3 objects that get rendered on your user interface in **Step 5**\. 
 
    You can only preview your template if you are creating templates for Amazon Textract or Amazon Rekognition\. 
 

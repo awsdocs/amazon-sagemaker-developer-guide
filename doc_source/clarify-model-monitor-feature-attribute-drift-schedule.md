@@ -1,0 +1,5 @@
+# Schedule Feature Attribute Drift Monitoring Jobs<a name="clarify-model-monitor-feature-attribute-drift-schedule"></a>
+
+Model explainability monitoring helps you understand and interpret the predictions made by your ML models\. When Model Monitor is configured to monitor model explainability, SageMaker automatically detects any drift in relative importance of features and creates reports explaining feature attributions\. 
+
+Call the `create_monitoring_schedule()` method to schedule an hourly monitor to analyze the data with a monitoring schedule\. If a baselining job has been submitted, the monitor automatically picks up analysis configuration from the baselining job\. However, if you skip the baselining step or the capture dataset has a different nature from the training dataset, you have to provide the analysis configuration\. `ModelConfig` is required by `ExplainabilityAnalysisConfig` for the same reason that it's required for the baselining job\. Note that only features are required for computing feature attribution, so you should exclude ground truth labeling\.

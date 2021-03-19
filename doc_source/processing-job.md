@@ -1,4 +1,4 @@
-# Process Data and Evaluate Models<a name="processing-job"></a>
+# Process Data<a name="processing-job"></a>
 
 To analyze data and evaluate machine learning models on Amazon SageMaker, use Amazon SageMaker Processing\. With Processing, you can use a simplified, managed experience on SageMaker to run your data processing workloads, such as feature engineering, data validation, model evaluation, and model interpretation\. You can also use the Amazon SageMaker Processing APIs during the experimentation phase and after the code is deployed in production to evaluate performance\. 
 
@@ -8,13 +8,6 @@ The preceding diagram shows how Amazon SageMaker spins up a Processing job\. Ama
 
 **Note**  
 Your data must be stored in an Amazon S3 bucket\.
-
-**Topics**
-+ [Use Amazon SageMaker Processing Sample Notebooks](#processing-job-sample-notebooks)
-+ [Monitor Amazon SageMaker Processing Jobs with CloudWatch Logs and Metrics](#processing-job-cloudwatch)
-+ [Data Processing with Apache Spark](use-spark-processing-container.md)
-+ [Data Processing with scikit\-learn](use-scikit-learn-processing-container.md)
-+ [Use Your Own Processing Code](use-your-own-processing-code.md)
 
 ## Use Amazon SageMaker Processing Sample Notebooks<a name="processing-job-sample-notebooks"></a>
 

@@ -1,6 +1,8 @@
 # k\-NN Hyperparameters<a name="kNN_hyperparameters"></a>
 
 
+
+
 | Parameter Name | Description | 
 | --- | --- | 
 | feature\_dim |  The number of features in the input data\. **Required** Valid values: positive integer\.  | 

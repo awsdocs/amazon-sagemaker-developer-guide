@@ -12,9 +12,20 @@
 
 ## Starting with a base template<a name="sms-custom-templates-step2-base"></a>
 
-To get you started, the **Task type** starts with a drop\-down menu listing a number of our more common task types, plus a custom type\. Choose one and the code editor area will be filled with a sample template for that task type\. If you prefer not to start with a sample, choose **Custom HTML** for a minimal template skeleton\.
+You can use a template editor in the Ground Truth console to start creating a template\. This editor includes a number of pre\-designed base templates and an HTML and Crowd HTML Element autofill feature\. 
 
-If you've already created a template, upload the file directly using the **Upload file** button in the upper right of the task setup area or paste your template code into the editor area\. For a repository of demo templates for a variety of labeling job task types, see [Amazon SageMaker Ground Truth Sample Task UIs ](https://github.com/aws-samples/amazon-sagemaker-ground-truth-task-uis)\.
+**To access the Ground Truth custom template editor:**
+
+1. Following the instructions in [Create a Labeling Job \(Console\)](sms-create-labeling-job-console.md) and select **Custom** for the labeling job **Task type**\. 
+
+1. When you select **Next**, you will be able to access the template editor and base templates in the **Custom labeling task setup** section\. 
+
+1. \(Optional\) Select a base template from the drop\-down menu under **Templates**\. If you prefer to create a template from scratch, choose **Custom** from the drop down\-menu for a minimal template skeleton\.
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/gifs/custom-template-editor.gif)
+
+**Tip**  
+For a repository of demo templates for a variety of labeling job task types, see [Amazon SageMaker Ground Truth Sample Task UIs ](https://github.com/aws-samples/amazon-sagemaker-ground-truth-task-uis)\.
 
 ## Developing templates locally<a name="sms-custom-template-step2-UI-local"></a>
 
@@ -105,11 +116,9 @@ You can copy and paste the code into the editor in the Ground Truth labeling job
 
 ## Adding automation with Liquid<a name="sms-custom-templates-step2-automate"></a>
 
-Our custom template system uses [Liquid](https://shopify.github.io/liquid/) for automation\. It is an open source inline markup language\. For more information and documentation, visit the [Liquid homepage](https://shopify.github.io/liquid/)\.
+Our custom template system uses [Liquid](https://shopify.github.io/liquid/) for automation\. It is an open source inline markup language\. In Liquid, the text between single curly braces and percent symbols is an instruction or *tag* that performs an operation like control flow or iteration\. Text between double curly braces is a variable or *object* that outputs its value\. 
 
-The most common use of Liquid will be to parse the data coming from your **pre\-annotation Lambda** and pull out the relevant variables to create the task\. In Liquid, the text between single curly braces and percent symbols is an instruction or "tag" that creates control flow\. Text between double curly braces is a variable or "object" which outputs its value\.
-
-The `taskInput` object returned by your [Pre\-annotation Lambda](sms-custom-templates-step3.md#sms-custom-templates-step3-prelambda) will be available as the `task.input` object in your templates\.
+The most common use of Liquid will be to parse the data coming from your **pre\-annotation Lambda** and pull out the relevant variables to create the task\. The `taskInput` object returned by your [Pre\-annotation Lambda](sms-custom-templates-step3.md#sms-custom-templates-step3-prelambda) will be available as the `task.input` object in your templates\.
 
 The properties in your manifest's data objects are passed into your [Pre\-annotation Lambda](sms-custom-templates-step3.md#sms-custom-templates-step3-prelambda) as the `event.dataObject`\. A simple pass\-through script simply returns that object as the `taskInput` object\. You would represent values from your manifest as variables as follows\.
 
@@ -135,11 +144,19 @@ The properties in your manifest's data objects are passed into your [Pre\-annota
 </classification-target>
 ```
 
-Note the addition of "` | to_json`" to the `labels` property above\. That's a filter to turn the array into a JSON representation of the array\. Variable filters are explained next\.
+Note the addition of "` | to_json`" to the `labels` property above\. That's a filter to turn the array into a JSON representation of the array\. Variable filters are explained in the next section\.
+
+The following list includes two types of Liquid tags that you may find useful to automate template input data processing\. If you select one of the following tag\-types, you will be redirected to the Liquid documentation\.
++ [Control flow](https://shopify.github.io/liquid/tags/control-flow/): Includes programming logic operators like `if/else`, `unless`, and `case/when`\.
++ [Iteration](https://shopify.github.io/liquid/tags/iteration/): Enables you to run blocks of code repeatedly using statements like for loops\. 
+
+  For an example of an HTML template that uses Liquid elements to create a for loop, see [translation\-review\-and\-correction\.liquid\.html](https://github.com/aws-samples/amazon-sagemaker-ground-truth-task-uis/blob/8ae02533ea5a91087561b1daecd0bc22a37ca393/text/translation-review-and-correction.liquid.html) in GitHub\. 
+
+For more information and documentation, visit the [Liquid homepage](https://shopify.github.io/liquid/)\.
 
 ### Variable filters<a name="sms-custom-templates-step2-automate-filters"></a>
 
-In addition to the standard Liquid filters and actions, Ground Truth offers a few additional filters\. Filters are applied by placing a pipe \(`|`\) character after the variable name, then specifying a filter name\. Filters can be chained in the form of:
+In addition to the standard [Liquid filters](https://shopify.github.io/liquid/filters/abs/) and actions, Ground Truth offers a few additional filters\. Filters are applied by placing a pipe \(`|`\) character after the variable name, then specifying a filter name\. Filters can be chained in the form of:
 
 **Example**  
 

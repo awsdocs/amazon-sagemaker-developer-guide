@@ -21,7 +21,7 @@ Use a model package to create a deployable model that you can use to get real\-t
 
 1. For **Model name**, type a name for the model\.
 
-1. For **IAM role**, choose an IAM role that has the required permissions to call other services on your behalf, or choose **Create a new role** to allow SageMaker to create a role that has the `AmazonSageMakerFullAccess` managed policy attached\. For information, see [SageMaker Roles ](sagemaker-roles.md)\.
+1. For **IAM role**, choose an IAM role that has the required permissions to call other services on your behalf, or choose **Create a new role** to allow SageMaker to create a role that has the `AmazonSageMakerFullAccess` managed policy attached\. For information, see [SageMaker Roles](sagemaker-roles.md)\.
 
 1. For **VPC**, choose a Amazon VPC that you want to allow the model to access\. For more information, see [Give SageMaker Hosted Endpoints Access to Resources in Your Amazon VPC](host-vpc.md)\.
 
@@ -33,13 +33,13 @@ Use a model package to create a deployable model that you can use to get real\-t
 
 1. Choose **Create model**\.
 
-After you create a deployable model, you can use it to set up an endpoint for real\-time inference or create a batch transform job to get inferences on entire datasets\. For information about hosted endpoints in SageMaker, see [Step 6\.1: Deploy the Model to SageMaker Hosting Services](ex1-deploy-model.md)\. For information about batch transform jobs, see [Step 6\.2: Deploy the Model with Batch Transform](ex1-batch-transform.md)\.
+After you create a deployable model, you can use it to set up an endpoint for real\-time inference or create a batch transform job to get inferences on entire datasets\. For information about hosting endpoints in SageMaker, see [Deploy Models for Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html)\.
 
 ## Use a Model Package to Create a Model \(API\)<a name="sagemaker-mkt-model-pkg-model-api"></a>
 
 To use a model package to create a deployable model by using the SageMaker API, specify the name or the Amazon Resource Name \(ARN\) of the model package as the `ModelPackageName` field of the [ `ContainerDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ContainerDefinition.html) object that you pass to the [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) API\.
 
-After you create a deployable model, you can use it to set up an endpoint for real\-time inference or create a batch transform job to get inferences on entire datasets\. For information about hosted endpoints in SageMaker, see [Step 6\.1: Deploy the Model to SageMaker Hosting Services](ex1-deploy-model.md)\. For information about batch transform jobs, see [Step 6\.2: Deploy the Model with Batch Transform](ex1-batch-transform.md)\.
+After you create a deployable model, you can use it to set up an endpoint for real\-time inference or create a batch transform job to get inferences on entire datasets\. For information about hosted endpoints in SageMaker, see [Deploy Models for Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html)\.
 
 ## Use a Model Package to Create a Model \([Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\)<a name="sagemaker-mkt-model-pkg-model-sdk"></a>
 
@@ -52,4 +52,4 @@ model = ModelPackage(role='SageMakerRole',
          sagemaker_session=sagemaker_session)
 ```
 
-After you create a deployable model, you can use it to set up an endpoint for real\-time inference or create a batch transform job to get inferences on entire datasets\. For information about hosted endpoints in SageMaker, see [Step 6\.1: Deploy the Model to SageMaker Hosting Services](ex1-deploy-model.md)\. For information about batch transform jobs, see [Step 6\.2: Deploy the Model with Batch Transform](ex1-batch-transform.md)\.
+After you create a deployable model, you can use it to set up an endpoint for real\-time inference or create a batch transform job to get inferences on entire datasets\. For information about hosting endpoints in SageMaker, see [Deploy Models for Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html)\.

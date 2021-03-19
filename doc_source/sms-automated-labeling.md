@@ -21,7 +21,7 @@ Before you use an the automated\-labeling model in production, you need to fine\
 
 You enable automated data labeling when you create a labeling job\. This is how it works:
 
-1. When Ground Truth starts an automated data labeling job, it selects a random sample of input data \(objects\) and sends it to human workers\.
+1. When Ground Truth starts an automated data labeling job, it selects a random sample of input data objects and sends them to human workers\. If more than 10% of these data objects fail, the labeling job will fail\. If the labeling job fails, in addition to reviewing any error message Ground Truth returns, check that your input data is displaying correctly in the worker UI, instructions are clear, and that you have given workers enough time to complete tasks\.
 
 1. When the labeled data is returned, it is used to create a training set and a validation set\. Ground Truth uses these datasets to train and validate the model used for auto\-labeling\.
 

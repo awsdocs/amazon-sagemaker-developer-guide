@@ -32,7 +32,7 @@ To find the IAM role ARN created when you created your the notebook instance or 
 
 1. Make note of the ARN once it is created
 
-With a known ARN for your role, you can programatically check the role when running the notebook locally or on SageMaker\. Replace `RoleName` with your known ARN:
+With a known ARN for your role, you can programmatically check the role when running the notebook locally or on SageMaker\. Replace `RoleName` with your known ARN:
 
 ```
 try:
@@ -75,6 +75,7 @@ For more information about IAM roles, see [IAM Roles](http://docs.aws.amazon.com
 **Topics**
 + [Get execution role](#sagemaker-roles-get-execution-role)
 + [Passing Roles](#sagemaker-roles-pass-role)
++ [CreateDomain API: Execution Role Permissions](#sagemaker-roles-createdomain-perms)
 + [CreateImage and UpdateImage APIs: Execution Role Permissions](#sagemaker-roles-createimage-perms)
 + [CreateNotebookInstance API: Execution Role Permissions](#sagemaker-roles-createnotebookinstance-perms)
 + [CreateHyperParameterTuningJob API: Execution Role Permissions](#sagemaker-roles-createhyperparametertiningjob-perms)
@@ -82,6 +83,47 @@ For more information about IAM roles, see [IAM Roles](http://docs.aws.amazon.com
 + [CreateTrainingJob API: Execution Role Permissions](#sagemaker-roles-createtrainingjob-perms)
 + [CreateModel API: Execution Role Permissions](#sagemaker-roles-createmodel-perms)
 + [AmazonSageMakerFullAccess Policy](#sagemaker-roles-amazonsagemakerfullaccess-policy)
+
+## CreateDomain API: Execution Role Permissions<a name="sagemaker-roles-createdomain-perms"></a>
+
+The execution role for AWS SSO domains and the user/execution role for IAM domains need the following permissions when you pass an AWS KMS customer managed key \(CMK\) as the `KmsKeyId` in the `CreateDomain` API request\. The permissions are enforced during the `CreateApp` API call\.
+
+For an execution role that you can pass in the `CreateDomain` API request, you can attach the following permission policy to the role:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "kms:CreateGrant",
+                "kms:DescribeKey"
+            ],
+            "Resource": "arn:aws:kms:region:account-id:key/kms-key-id"
+        },
+    ]
+}
+```
+
+Alternatively, if the permissions are specified in a KMS policy, you can attach the following policy to the role:
+
+```
+{
+    "Sid": "Allow use of the key",
+    "Effect": "Allow",
+    "Principal": {
+        "AWS": [
+            "arn:aws:iam::account-id:role/ExecutionRole"
+        ]
+    },
+    "Action": [
+        "kms:DescribeKey",
+        "kms:CreateGrant"
+    ],
+    "Resource": "*"
+}
+```
 
 ## CreateImage and UpdateImage APIs: Execution Role Permissions<a name="sagemaker-roles-createimage-perms"></a>
 
@@ -288,6 +330,8 @@ In the preceding policy, you scope the policy as follows:
   + Scope to the `PrimaryContainer.Image` value that you specify in a `CreateModel` request:
 
 The `cloudwatch` and `logs` actions are applicable for "\*" resources\. For more information, see [CloudWatch Resources and Operations](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/iam-access-control-overview-cw.html#CloudWatch_ARN_Format) in the Amazon CloudWatch User Guide\.
+
+
 
 ## CreateHyperParameterTuningJob API: Execution Role Permissions<a name="sagemaker-roles-createhyperparametertiningjob-perms"></a>
 

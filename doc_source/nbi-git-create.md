@@ -10,7 +10,7 @@ You can associate Git repositories with a notebook instance when you create the 
 
 **To create a notebook instance and associate Git repositories in the Amazon SageMaker console**
 
-1. Follow the instructions at [Step 2: Create an Amazon SageMaker Notebook Instance](gs-setup-working-env.md)\.
+1. Follow the instructions at [Step 1: Create an Amazon SageMaker Notebook Instance](gs-setup-working-env.md)\.
 
 1. For **Git repositories**, choose Git repositories to associate with the notebook instance\.
 

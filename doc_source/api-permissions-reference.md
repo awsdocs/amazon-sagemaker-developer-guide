@@ -10,11 +10,14 @@ To express conditions in your Amazon SageMaker policies, you can use AWS\-wide c
 Use the scroll bars to see the rest of the table\.
 
 
+
+
 **Amazon SageMaker API Operations and Required Permissions for Actions**  
 
 | Amazon SageMaker API Operations | Required Permissions \(API Actions\) | Resources | 
 | --- | --- | --- | 
 |  [ `AddTags`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AddTags.html)  |  `sagemaker:AddTags`  |  `arn:aws:sagemaker:region:account-id:*`  | 
+|  [ `CreateDomain`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateDomain.html)  |  `sagemaker:CreateDomain` `iam:CreateServiceLinkedRole` `iam:PassRole` Required if a KMS customer managed CMK is specified for `KmsKeyId`: `elasticfilesystem:CreateFileSystem` `kms:CreateGrant` `kms:Decrypt` `kms:DescribeKey` `kms:GenerateDataKeyWithoutPlainText`  |  `arn:aws:sagemaker:region:account-id:domain/domain-id`  | 
 |  [ `CreateEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html)  |  `sagemaker:CreateEndpoint` `kms:CreateGrant` \(required only if the associated `EndPointConfig` has a `KmsKeyId` specified\)  |  `arn:aws:sagemaker:region:account-id:endpoint/endpointName` `arn:aws:sagemaker:region:account-id:endpoint-config/endpointConfigName`  | 
 |  [ `CreateEndpointConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html)  |  `sagemaker:CreateEndpointConfig`  |  `arn:aws:sagemaker:region:account-id:endpoint-config/endpointConfigName`  | 
 |  [ `CreateFlowDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html)  |  `sagemaker:CreateFlowDefinition` `iam:PassRole`  |  `arn:aws:sagemaker:region:account-id:flow-definition/flowDefinitionName`  | 
@@ -90,3 +93,4 @@ Use the scroll bars to see the rest of the table\.
 |  [ `UpdateImage`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateImage.html)  |  `sagemaker:UpdateImage` `iam:PassRole`  |  `arn:aws:sagemaker:region:account-id:image/imageName`  | 
 |  [ `UpdateNotebookInstance`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateNotebookInstance.html)  |  `sagemaker:UpdateNotebookInstance` `iam:PassRole`  |  `arn:aws:sagemaker:region:account-id:notebook-instance/notebookInstanceName`  | 
 |  [ `UpdateWorkteam`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateWorkteam.html)  |  `sagemaker:UpdateWorkteam`  |  `arn:aws:sagemaker:region:account-id:workteam/*`  | 
+

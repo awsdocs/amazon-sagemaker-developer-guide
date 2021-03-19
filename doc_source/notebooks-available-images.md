@@ -1,6 +1,6 @@
 # Available Amazon SageMaker Images<a name="notebooks-available-images"></a>
 
-The following SageMaker images are available in Amazon SageMaker Studio\. SageMaker images contain the latest [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) and the latest version of the kernel\. The name in brackets \(\[ \]\) is the resource identifier of the SageMaker image as specified in the Amazon Resource Name \(ARN\) for the SageMaker image\.
+The following SageMaker images are available in Amazon SageMaker Studio\. SageMaker images contain the latest [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) and the latest version of the kernel\. The name in brackets \(\[ \]\) is the resource identifier of the SageMaker image as specified in the Amazon Resource Name \(ARN\) for the SageMaker image\. For more information, see [Deep Learning Containers Images](https://docs.aws.amazon.com/deep-learning-containers/latest/devguide/deep-learning-containers-images.html)\.
 + Data Science \[datascience\-1\.0\]
 
   `Data Science` is a [Conda](https://docs.conda.io/projects/conda/en/latest/index.html) image with the most commonly used Python packages and libraries, such as NumPy and SciKit Learn\.
