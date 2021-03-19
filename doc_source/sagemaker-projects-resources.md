@@ -9,7 +9,7 @@ After you create a project, view the resources associated with the project in Sa
 1. Choose **Components and registries**, and then choose **Projects**  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/projects/studio-projects.png)
 
-1. Double\-click the name of the project for which you want to view details\. **Create project**\.
+1. Double\-click the name of the project for which you want to view detailss\.
 
    A tab with the project details appears\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/projects/view-project-details.png)

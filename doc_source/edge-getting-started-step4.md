@@ -3,7 +3,7 @@
 **Important**  
 Device registration is required to use any part of SageMaker Edge Manager\.
 
-To interact with the cloud you will need to register your device with SageMaker Edge Manager\. In this example register two devices to the fleet you created\.
+To interact with the cloud, you need to register your device with SageMaker Edge Manager\. In this example, you register two devices to the fleet you created\.
 
 ```
 sagemaker_client.register_devices(

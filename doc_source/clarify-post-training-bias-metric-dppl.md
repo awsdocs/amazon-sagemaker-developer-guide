@@ -1,18 +1,22 @@
-# Difference in positive proportions in predicted labels \(DPPL\)<a name="clarify-post-training-bias-metric-dppl"></a>
+# Difference in Positive Proportions in Predicted Labels \(DPPL\)<a name="clarify-post-training-bias-metric-dppl"></a>
 
-The difference in positive proportions in predicted labels \(DPPL\) metric determines whether the model predicts outcomes differently for each facet\. It is defined as the difference in the proportion of positive predictions \(y’ = 1\) for the advantaged facet and the proportion of positive predictions \(y’ = 1\) for the disadvantaged facet\. For example, if the model predictions grant loans to 50% of women and to 60% of men, then it may be biased against women\. We would have to understand whether a 10% difference is material\. A comparison of DPL with DPPL assesses whether bias initially present in the dataset increases or decreases in the model predictions after training\.
+The difference in positive proportions in predicted labels \(DPPL\) metric determines whether the model predicts outcomes differently for each facet\. It is defined as the difference between the proportion of positive predictions \(y’ = 1\) for facet *a* and the proportion of positive predictions \(y’ = 1\) for facet *d*\. For example, if the model predictions grant loans to 60% of a middle\-aged group \(facet *a*\) and 50% other age groups \(facet *d*\), it might be biased against facet *d*\. In this example, you need to determine whether the 10% difference is material to a case for bias\. A comparison of DPL with DPPL assesses whether bias initially present in the dataset increases or decreases in the model predictions after training\.
 
-The formula for the \(normalized\) difference in proportions of predicted labels:
+The formula for the difference in proportions of predicted labels:
+
+
 
         DPPL = q'a \- q'd
 
-where:
-+ q'a = n'a\(1\)/na is the predicted proportion of the advantaged facet *a* who get a positive outcome of value 1\. For example, the proportion of men predicted to get accepted to college\. Here n'a\(1\) represents the number of members of the advantaged facet *a* who get a positive predicted outcome of value 1 and na the is number of members of the advantaged facet\. 
-+ q'd = n'd\(1\)/nd is the predicted proportion of the disadvantaged facet *d* who get a positive outcome of value 1\. For example, women predicted to get accepted to college\. Here n'd\(1\) represents the number of members of the disadvantaged facet *d* who get a positive predicted outcome and nd the is number of members of the disadvantaged facet\. 
+Where:
++ q'a = n'a\(1\)/na is the predicted proportion of facet *a* who get a positive outcome of value 1\. In our example, the proportion of a middle\-aged facet predicted to get granted a loan\. Here n'a\(1\) represents the number of members of facet *a* who get a positive predicted outcome of value 1 and na the is number of members of facet *a*\. 
++ q'd = n'd\(1\)/nd is the predicted proportion of facet *d* who get a positive outcome of value 1\. In our example, a facet of older and younger people predicted to get granted a loan\. Here n'd\(1\) represents the number of members of facet *d* who get a positive predicted outcome and nd the is number of members of facet *d*\. 
 
-If DPPL is close enough to 0, then we say that post\-training “demographic parity” has been achieved\.
+If DPPL is close enough to 0, it means that posttraining *demographic parity* has been achieved\.
 
-For binary and multi\-category facet labels, the normalized DPL values range over the interval \(\-1, 1\)\. For continuous labels, the values vary over the interval \[\-∞, \+∞\]\. 
-+ Positive DPPL values indicate that the advantaged facet is has a higher proportion of predicted positive outcomes when compared with the disadvantaged facet\.
-+ Negative DPPL values indicate that the disadvantaged facet is has a higher proportion of predicted positive outcomes when compared with the advantaged facet\. This is referred to as negative bias\.
-+ Values of DPPL near zero indicate a more equal proportion of predicted positive outcomes between facets and a value of zero indicates perfect demographic parity\. 
+For binary and multicategory facet labels, the normalized DPL values range over the interval \[\-1, 1\]\. For continuous labels, the values vary over the interval \(\-∞, \+∞\)\. 
++ Positive DPPL values indicate that facet *a* has a higher proportion of predicted positive outcomes when compared with facet *d*\. 
+
+  This is referred to as *positive bias*\.
++ Values of DPPL near zero indicate a more equal proportion of predicted positive outcomes between facets *a* and *d* and a value of zero indicates perfect demographic parity\. 
++ Negative DPPL values indicate that facet *d* has a higher proportion of predicted positive outcomes when compared with facet *a*\. This is referred to as *negative bias*\.

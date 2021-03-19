@@ -25,6 +25,8 @@ When you shut down a notebook, any unsaved information in the notebook is lost\.
 
 The **Running Terminals and Kernels** pane consists of four sections\. Each section lists all the resources of that type\. You can shut down each resource individually or shut down all the resources in a section at the same time\.
 
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-notebook-shutdown-resource.png)
+
 When you choose to shut down all resources in a section, the following occurs:
 + **RUNNING INSTANCES/RUNNING APPS** – All instances, apps, notebooks, kernel sessions, consoles/shells, and image terminals are shut down\. System terminals aren't shut down\. Choose this option to stop the accrual of all charges\.
 + **KERNEL SESSIONS** – All kernels, notebooks and consoles/shells are shut down\.

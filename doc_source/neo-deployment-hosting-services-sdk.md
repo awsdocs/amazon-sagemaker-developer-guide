@@ -32,14 +32,14 @@ from sagemaker.mxnet import MXNetModel
 
 # Create SageMaker model and deploy an endpoint
 sm_mxnet_compiled_model = MXNetModel(
-model_data='insert S3 path of compiled MXNet model archive',
-role='AmazonSageMaker-ExecutionRole',
-entry_point='inference.py',
-source_dir='code',
-framework_version='1.7.0',
-py_version='py3',
-image_uri='insert appropriate ECR Image URI for MXNet',
-env={'MMS_DEFAULT_RESPONSE_TIMEOUT': '500'},
+    model_data='insert S3 path of compiled MXNet model archive',
+    role='AmazonSageMaker-ExecutionRole',
+    entry_point='inference.py',
+    source_dir='code',
+    framework_version='1.7.0',
+    py_version='py3',
+    image_uri='insert appropriate ECR Image URI for MXNet',
+    env={'MMS_DEFAULT_RESPONSE_TIMEOUT': '500'},
 )
 
 # Replace the example instance_type below to your preferred instance_type
@@ -57,14 +57,14 @@ from sagemaker.pytorch import PyTorchModel
 
 # Create SageMaker model and deploy an endpoint
 sm_pytorch_compiled_model = PyTorchModel(
-model_data='insert S3 path of compiled PyTorch model archive',
-role='AmazonSageMaker-ExecutionRole',
-entry_point='inference.py',
-source_dir='code',
-framework_version='1.4.0',
-py_version='py3',
-image_uri='insert appropriate ECR Image URI for PyTorch',
-env={'MMS_DEFAULT_RESPONSE_TIMEOUT': '500'},
+    model_data='insert S3 path of compiled PyTorch model archive',
+    role='AmazonSageMaker-ExecutionRole',
+    entry_point='inference.py',
+    source_dir='code',
+    framework_version='1.4.0',
+    py_version='py3',
+    image_uri='insert appropriate ECR Image URI for PyTorch',
+    env={'MMS_DEFAULT_RESPONSE_TIMEOUT': '500'},
 )
 
 # Replace the example instance_type below to your preferred instance_type
@@ -118,16 +118,16 @@ from tensorflow_serving.apis import regression_pb2
 import numpy as np
 
 with tf.python_io.TFRecordWriter("tf_serving_warmup_requests") as writer:       
-img = np.random.uniform(0, 1, size=[224, 224, 3]).astype(np.float32)
-img = np.expand_dims(img, axis=0)
-test_data = np.repeat(img, 1, axis=0)
-request = predict_pb2.PredictRequest()
-request.model_spec.name = 'compiled_models'
-request.model_spec.signature_name = 'serving_default'
-request.inputs['Placeholder:0'].CopyFrom(tf.compat.v1.make_tensor_proto(test_data, shape=test_data.shape, dtype=tf.float32))
-log = prediction_log_pb2.PredictionLog(
-predict_log=prediction_log_pb2.PredictLog(request=request))
-writer.write(log.SerializeToString())
+    img = np.random.uniform(0, 1, size=[224, 224, 3]).astype(np.float32)
+    img = np.expand_dims(img, axis=0)
+    test_data = np.repeat(img, 1, axis=0)
+    request = predict_pb2.PredictRequest()
+    request.model_spec.name = 'compiled_models'
+    request.model_spec.signature_name = 'serving_default'
+    request.inputs['Placeholder:0'].CopyFrom(tf.compat.v1.make_tensor_proto(test_data, shape=test_data.shape, dtype=tf.float32))
+    log = prediction_log_pb2.PredictionLog(
+    predict_log=prediction_log_pb2.PredictLog(request=request))
+    writer.write(log.SerializeToString())
 ```
 
 For more information on how to “warm up” your model, see the [TensorFlow TFX page](https://www.tensorflow.org/tfx/serving/saved_model_warmup)\.

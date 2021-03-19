@@ -1,6 +1,8 @@
 # Amazon SageMaker Created Tracking Entities<a name="lineage-tracking-auto-creation"></a>
 
-Amazon SageMaker automatically creates tracking entities for SageMaker jobs, models, model packages, and endpoints if the data is available\. For information on how you can manually create tracking entities, see [Manually Create Tracking Entities](lineage-tracking-manual-creation.md)\.
+Amazon SageMaker automatically creates tracking entities for SageMaker jobs, models, model packages, and endpoints if the data is available\. There is no limit to the number of lineage entities automatically created by SageMaker\.
+
+For information on how you can manually create tracking entities, see [Manually Create Tracking Entities](lineage-tracking-manual-creation.md)\.
 
 **Topics**
 + [Tracking Entities for SageMaker Jobs](#lineage-tracking-auto-creation-jobs)

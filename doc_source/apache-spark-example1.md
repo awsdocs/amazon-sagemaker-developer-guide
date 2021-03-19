@@ -134,6 +134,8 @@ The `KMeansSageMakerEstimator` extends the SageMaker `SageMakerEstimator`, which
     .setK(10).setFeatureDim(784)
   ```
 
+   
+
   The constructor parameters provide information that is used for training a model and deploying it on SageMaker:
   + `trainingInstanceType` and `trainingInstanceCount`—Identify the type and number of ML compute instances to use for model training\.
 

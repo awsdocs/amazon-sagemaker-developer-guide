@@ -6,21 +6,6 @@ You can view details of a specific model version by using either the AWS SDK for
 
 To view the details of a model version by using Boto3, complete the following steps\.
 
-1. Import the required packages and set up the SageMaker Boto3 client\.
-
-   ```
-   import time
-   import os
-   from sagemaker import get_execution_role, session
-   import boto3
-   
-   region = boto3.Session().region_name
-   
-   role = get_execution_role()
-   
-   sm_client = boto3.client('sagemaker', region_name=region)
-   ```
-
 1. Call the `list_model_packages` method to view the model versions in a model group\.
 
    ```
@@ -49,7 +34,7 @@ To view the details of a model version by using Boto3, complete the following st
 1. Call `describe_model_package` to see the details of the model version\. You pass in the ARN of a model version that you got in the output of the call to `list_model_packages`\.
 
    ```
-   sagemaker_client.describe_model_package(ModelPackageName="arn:aws:sagemaker:us-east-2:123456789012:model-package/ModelGroup1/1")
+   sm_client.describe_model_package(ModelPackageName="arn:aws:sagemaker:us-east-2:123456789012:model-package/ModelGroup1/1")
    ```
 
    The output of this call is a JSON object with the model version details\.

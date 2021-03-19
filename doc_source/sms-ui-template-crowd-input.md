@@ -5,7 +5,7 @@ A box that accepts input data\.
 **Cannot be self\-closing**  
 Unlike the `input` element in the HTML standard, this element cannot be self\-closed by putting a slash before the ending bracket, e\.g\. `<crowd-input ... />`\. It must be followed with a `</crowd-input>` to close the element\.
 
-The following is an example of a Liquid template that uses the `<crowd-input>` element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+The following is an example of a Liquid template that uses the `<crowd-input>` element\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>

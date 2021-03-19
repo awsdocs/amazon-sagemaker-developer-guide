@@ -2,7 +2,7 @@
 
 In this tutorial, you use Amazon SageMaker Studio to track the lineage of an Amazon SageMaker ML Pipeline\.
 
-The pipeline was created by the [Orchestrating Jobs with Amazon SageMaker Model Building Pipelines](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker-pipelines/sagemaker-pipelines-preprocess-train-evaluate-batch-transform.ipynb) notebook in the [Amazon SageMaker example GitHub repository](https://github.com/awslabs/amazon-sagemaker-examples)\. For detailed information on how the pipeline was created, see [Define a Pipeline](define-pipeline.md)\.
+The pipeline was created by the [Orchestrating Jobs with Amazon SageMaker Model Building Pipelines](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-pipelines/tabular/abalone_build_train_deploy/sagemaker-pipelines-preprocess-train-evaluate-batch-transform.html) notebook in the [Amazon SageMaker example GitHub repository](https://github.com/awslabs/amazon-sagemaker-examples)\. For detailed information on how the pipeline was created, see [Define a Pipeline](define-pipeline.md)\.
 
 Lineage tracking in Studio is centered around a directed acyclic graph \(DAG\)\. The DAG represents the steps in a pipeline\. From the DAG you can track the lineage from any step to any other step\. The following diagram displays the steps in the pipeline\. These steps appear as a DAG in Studio\.
 

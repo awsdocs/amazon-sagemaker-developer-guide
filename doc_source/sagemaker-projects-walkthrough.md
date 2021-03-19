@@ -43,7 +43,7 @@ When the project appears in the **Projects** list with a **Status** of **Created
 
 ## Step 2: Clone the Code Repository<a name="sagemaker-proejcts-walkthrough-clone"></a>
 
-After you create the project, 2 CodeCommit repositories are created in the project, one that contains code to build and train a model and one that contains code to deploy the model\. In this step, you clone the repository to the local SageMaker that contains the code to build and train the model to the local SageMaker Studio environment so that you can work with the code\.
+After you create the project, two CodeCommit repositories are created in the project\. One of the repositories contains code to build and train a model, and one contains code to deploy the model\. In this step, you clone the repository to the local SageMaker that contains the code to build and train the model to the local SageMaker Studio environment so that you can work with the code\.
 
 **To clone the code repository**
 
@@ -78,7 +78,7 @@ Now make a change to the pipeline code that builds the model and check in the ch
 
    Change `ml.m5.xlarge` to `ml.m5.large`, then type `Ctrl+S` to save the change\.
 
-1. Choose the **Git** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Git_squid.png) \)\. Stage, commit, and push the change in `pipeline.py`\. For information about using Git in SageMaker Studio, see [Clone a Git Repository](studio-tasks-git.md)\.  
+1. Choose the **Git** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Git_squid.png) \)\. Stage, commit, and push the change in `pipeline.py`\. For information about using Git in SageMaker Studio, see [Clone a Git Repository in SageMaker Studio](studio-tasks-git.md)\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/projects/projects-walkthrough-commit.png)
 
 After pushing your code change, the MLOps system triggers a run of the pipeline that creates a new model version\. In the next step, you approve the new model version to deploy it to production\.

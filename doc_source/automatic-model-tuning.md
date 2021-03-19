@@ -6,6 +6,8 @@ For example, suppose that you want to solve a *[binary classification](https://d
 
 You can use SageMaker automatic model tuning with built\-in algorithms, custom algorithms, and SageMaker pre\-built containers for machine learning frameworks\.
 
+Amazon SageMaker automatic model tuning can use Amazon EC2 Spot instance to optimize costs when running training jobs\. For more information on managed spot training, see [Managed Spot Training in Amazon SageMaker](model-managed-spot-training.md)\.
+
 Before you start using hyperparameter tuning, you should have a well\-defined machine learning problem, including the following:
 + A dataset
 + An understanding of the type of algorithm you need to train

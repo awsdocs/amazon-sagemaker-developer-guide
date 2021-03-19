@@ -2,7 +2,7 @@
 
 A floating button with an image in its center\. 
 
-The following is an example of a Liquid template designed for image classification that uses the `<crowd-fab>` element\. This template uses JavaScript to enable workers to report issues with the worker UI\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+The following is an example of a Liquid template designed for image classification that uses the `<crowd-fab>` element\. This template uses JavaScript to enable workers to report issues with the worker UI\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>

@@ -4,5 +4,7 @@ To get started using Amazon Augmented AI, review the [Core Components of Amazon 
 + [Demo: Get Started in the Amazon A2I Console](a2i-get-started-console.md)
 + [Demo: Get Started Using the Amazon A2I API](a2i-get-started-api.md)
 
+You can also get stared using the Amazon A2I API by following a Jupyter notebook tutorial\. See [Use Cases and Examples using Amazon A2I](a2i-task-types-general.md) for a list of notebooks and use cases\. 
+
 **Note**  
 AWS Region availability may differ when you use Augmented AI with other AWS services, such as Amazon Textract\. Create Augmented AI resources in the same region that you use to interact with those AWS services\. For AWS Region availability for all services, see the [Region Table](http://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/)\.

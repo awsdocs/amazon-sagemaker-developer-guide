@@ -9,6 +9,10 @@ The SageMaker Spark library, `com.amazonaws.services.sagemaker.sparksdk`, provid
 + `KMeansSageMakerEstimator`, `PCASageMakerEstimator`, and `XGBoostSageMakerEstimator`—Extend the `SageMakerEstimator` class\. 
 + `SageMakerModel`—Extends the `org.apache.spark.ml.Model` class\. You can use this `SageMakerModel` for model hosting and obtaining inferences in SageMaker\.
 
+ 
+
+
+
 ## Download the SageMaker Spark Library<a name="spark-sdk-download"></a>
 
 You have the following options for downloading the Spark library provided by SageMaker:

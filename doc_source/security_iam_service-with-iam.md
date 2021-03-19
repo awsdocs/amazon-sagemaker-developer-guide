@@ -25,6 +25,7 @@ To specify multiple actions in a single statement, separate them with commas as 
 "Action": [
       "sagemaker:action1",
       "sagemaker:action2"
+]
 ```
 
 You can specify multiple actions using wildcards \(\*\)\. For example, to specify all actions that begin with the word `Describe`, include the following action:
@@ -35,7 +36,7 @@ You can specify multiple actions using wildcards \(\*\)\. For example, to specif
 
 
 
-To see a list of SageMaker actions, see [Actions, Resources, and Condition Keys for Amazon SageMaker](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awskeymanagementservice.html) in the *IAM User Guide*\.
+To see a list of SageMaker actions, see [Actions, resources, and condition keys for Amazon SageMaker](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonsagemaker.html) in the *Service Authorization Reference*\.
 
 ### Resources<a name="security_iam_service-with-iam-id-based-policies-resources"></a>
 
@@ -112,4 +113,4 @@ SageMaker supports service roles\.
 
 #### Choosing an IAM Role in SageMaker<a name="security_iam_service-with-iam-roles-choose"></a>
 
-When you create a notebook instance, processing job, training job, hosted endpoint, or batch transform job resource in SageMaker, you must choose a role to allow SageMaker to access SageMaker on your behalf\. If you have previously created a service role or service\-linked role, then SageMaker provides you with a list of roles to choose from\. It's important to choose a role that allows access to the AWS operations and resources you need\. For more information, see [SageMaker Roles ](sagemaker-roles.md)\.
+When you create a notebook instance, processing job, training job, hosted endpoint, or batch transform job resource in SageMaker, you must choose a role to allow SageMaker to access SageMaker on your behalf\. If you have previously created a service role or service\-linked role, then SageMaker provides you with a list of roles to choose from\. It's important to choose a role that allows access to the AWS operations and resources you need\. For more information, see [SageMaker Roles](sagemaker-roles.md)\.

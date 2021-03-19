@@ -1,6 +1,6 @@
 # Amazon SageMaker Feature Store Offline Store Data Format<a name="feature-store-offline"></a>
 
- Amazon SageMaker Feature Store offline store data is stored in an Amazon S3 bucket within your account\. When you call `PutRecord`, your data is buffered, batched, and written into Amazon S3 within 15 minutes The only file format supported for the private beta is Parquet\. Each parquet file can contain multiple `Records`\.  
+ Amazon SageMaker Feature Store offline store data is stored in an Amazon S3 bucket within your account\. When you call `PutRecord`, your data is buffered, batched, and written into Amazon S3 within 15 minutes\. Feature Store supports both CSV and Parquet file formats\. Each file can contain multiple `Records`\.  
 
  Files are organized with the following naming convention: 
 

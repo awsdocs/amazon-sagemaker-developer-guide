@@ -16,7 +16,7 @@ Each SageMaker project has a unique name and ID that are passed to all SageMaker
 A typical SageMaker project with a CICD template might include the following\.
 + One or more CodeCommit repositories with sample code for building and deploying ML solutions\. These are working examples that you can clone locally to explore the code provided by SageMaker and modify for your needs\. You own this code and you can use the repositories as version control for your work\.
 + A SageMaker pipeline that defines steps for data preparation, training, model evaluation, and model deployment\.
-+ A CodePipeline that runs your SageMaker pipeline every time a new version of the code is checked in\. For information about CodePipeline, see [What is AWS AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html)\.
++ A CodePipeline that runs your SageMaker pipeline every time a new version of the code is checked in\. For information about CodePipeline, see [What is AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html)\.
 + A model group that contains model versions\. Each time the SageMaker pipeline runs, and the resulting model version is accepted in the conditional validation step, a new model version is deployed to a SageMaker endpoint\. 
 
 ## When Should You Use a SageMaker Project?<a name="sagemaker-projects-when"></a>
@@ -27,6 +27,6 @@ In addition to managing code, SageMaker projects enable MLOps for model building
 
 ## Do I Need to Create a Project to Use SageMaker Pipelines?<a name="sagemaker-projects-need"></a>
 
-No\. SageMaker pipelines are standalone entities just like training jobs, processing jobs, and other SageMaker jobs within SageMaker\. You can create, update, and run pipelines without directly within a notebook by using the SageMaker Python SDK without using a SageMaker project\.
+No\. SageMaker pipelines are standalone entities just like training jobs, processing jobs, and other SageMaker jobs within SageMaker\. You can create, update, and run pipelines directly within a notebook by using the SageMaker Python SDK without using a SageMaker project\.
 
 Projects provide an additional layer to help you organize your code and adopt operational best practices that you need for a production\-quality system\.

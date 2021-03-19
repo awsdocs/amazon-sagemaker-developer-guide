@@ -12,9 +12,11 @@ If you see annotations have already been added to one or more video frames when 
 **Topics**
 + [Your Task](#sms-video-worker-instructions-od-task)
 + [Navigate the UI](#sms-video-worker-instructions-worker-ui-od)
++ [Bulk Edit Label and Frame Attributes](#sms-video-frame-worker-instructions-od-bulk-edit)
 + [Tool Guide](#sms-video-worker-instructions-worker-tool-guide-od)
 + [UI Icon Guide](#sms-video-worker-instructions-od-icons)
 + [Shortcuts](#sms-video-worker-instructions-od-hot-keys)
++ [Release, Stop and Resume, and Decline Tasks](#sms-video-worker-instructions-skip-reject-od)
 + [Saving Your Work and Submitting](#sms-video-worker-instructions-saving-work-od)
 
 ## Your Task<a name="sms-video-worker-instructions-od-task"></a>
@@ -65,9 +67,31 @@ When you are in the worker UI, you see the following menus:
 
 If you 
 
+## Bulk Edit Label and Frame Attributes<a name="sms-video-frame-worker-instructions-od-bulk-edit"></a>
+
+You can bulk edit label attributes and frame attributes \(attributes\)\. 
+
+When you bulk edit an attribute, you specify one or more ranges of frames that you want to apply the edit to\. The attribute you select is edited in all frames in that range, including the start and end frames you specify\. When you bulk edit label attributes, the range you specify *must* contain the label that the label attribute is attached to\. If you specify frames that do not contain this label, you will receive an error\. 
+
+To bulk edit an attribute you *must* specify the desired value for the attribute first\. For example, if you want to change an attribute from *Yes* to *No*, you must select *No*, and then perform the bulk edit\. 
+
+You can also specify a new value for an attribute that has not been filled in and then use the bulk edit feature to fill in that value in multiple frames\. To do this, select the desired value for the attribute and complete the following procedure\. 
+
+**To bulk edit a label or attribute:**
+
+1. Use your mouse to right click the attribute you want to bulk edit\.
+
+1. Specify the range of frames you want to apply the bulk edit to using a dash \(`-`\) in the text box\. For example, if you want to apply the edit to frames one through ten, enter `1-10`\. If you want to apply the edit to frames two to five, eight to ten and twenty enter `2-5,8-10,20`\.
+
+1. Select **Confirm**\.
+
+If you get an error message, verify that you entered a valid range and that the label associated with the label attribute you are editing \(if applicable\) exists in all frames specified\.
+
+You can quickly add a label to all previous or subsequent frames using the **Duplicate to previous frames** and **Duplicate to next frames** options in the **Label** menu at the top of your screen\. 
+
 ## Tool Guide<a name="sms-video-worker-instructions-worker-tool-guide-od"></a>
 
-Your task will include one or more tools\. The tool provided dictates the type of anotations you will create to identify and label objects\. Use the following table to learn more about the tool or tools you may see in your worker UI\. 
+Your task will include one or more tools\. The tool provided dictates the type of annotations you will create to identify and label objects\. Use the following table to learn more about the tool or tools you may see in your worker UI\. 
 
 
 ****  
@@ -79,8 +103,8 @@ Your task will include one or more tools\. The tool provided dictates the type o
 |  Keypoint  |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/Keypoint.png)  |  Add a keypoint annotation\.  |  Choose this icon to add a keypoint\. Click on an object the image to place the keypoint at that location\.  Each keypoint you add is associated with the category you choose from the Label category drop down menu\. Select a keypoint or its associated label to adjust it\.   | 
 |  Polyline  |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/polyline.png)  |  Add a polyline annotation\.  |  Choose this icon to add a polyline\. To add a polyline, continuously click around the object of interest to add new points\. To stop drawing a polyline, select the last point that you placed a second time \(this point will be green\), or press **Enter** on your keyboard\.  Each point added to the polyline is connected to the previous point by a line\. The polyline does not have to be closed \(the start point and end point do not have to be the same\) and there are no restrictions on the angles formed between lines\.  Each polyline you add is associated with the category you choose from the Label category drop down menu\. Select the polyline or its associated label to adjust it\.   | 
 |  Polygon  |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/Polygon.png)  |  Add a polygon annotation\.  |  Choose this icon to add a polygon\. To add a polygon, continuously click around the object of interest to add new points\. To stop drawing the polygon, select the start point \(this point will be green\)\.  A polygon is a closed shape defined by a series of points that you place\. Each point added to the polygon is connected to the previous point by a line and there are no restrictions on the angles formed between lines\. Two lines \(sides\) of the polygon cannot cross\. A line will become red if it violates this condition\. The start and end point must be the same\.  Each polyline you add is associated with the category you choose from the Label category drop down menu\. Select the poly  | 
-|  Copy to Next  |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/copy_to_next.png)  |  Copy annotations to the next frame\.   |  If one or more annotations are selected in the current frame, those annotations are copied to the next frame\. If no annotations are selected, all anotations in the current frame will be copied to the next frame\.   | 
-|  Copy to All  |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/copy_to_all.png)  |  Copy annotations to all subsequent frames\.  |  If one or more annotations are selected in the current frame, those annotations are copied to all subsequent frames\. If no annotations are selected, all anotations in the current frame will be copied to all subsequent frames\.   | 
+|  Copy to Next  |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/copy_to_next.png)  |  Copy annotations to the next frame\.   |  If one or more annotations are selected in the current frame, those annotations are copied to the next frame\. If no annotations are selected, all annotations in the current frame will be copied to the next frame\.   | 
+|  Copy to All  |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/copy_to_all.png)  |  Copy annotations to all subsequent frames\.  |  If one or more annotations are selected in the current frame, those annotations are copied to all subsequent frames\. If no annotations are selected, all annotations in the current frame will be copied to all subsequent frames\.   | 
 
 ## UI Icon Guide<a name="sms-video-worker-instructions-od-icons"></a>
 
@@ -98,7 +122,7 @@ Use this table to learn about the icons you see in your worker task portal\. You
 |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/Undo.png)  | undo |  Undo an action\. You can use this icon to remove a bounding box that you just added, or to undo an adjustment you made to a bounding box\.   | 
 |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/Redo.png)  | redo | Redo an action that was undone using the undo icon\. | 
 |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/Delete.png)  | delete label | Delete a label\. This will delete the bounding box associated with the label in a single frame\.  | 
-|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/Show:Hide.png)  | show or hide label | Select this icon to show a label that has been hidden\. If this icon has a slash throguh it, select it to hide the label\.  | 
+|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/Show_Hide.png)  | show or hide label | Select this icon to show a label that has been hidden\. If this icon has a slash through it, select it to hide the label\.  | 
 
 ## Shortcuts<a name="sms-video-worker-instructions-od-hot-keys"></a>
 
@@ -106,8 +130,17 @@ The keyboard shortcuts listed in the **Shortcuts** menu can help you quickly sel
 
 Before you start your task, it is recommended that you review the **Shortcuts** menu and become acquainted with these commands\. 
 
+## Release, Stop and Resume, and Decline Tasks<a name="sms-video-worker-instructions-skip-reject-od"></a>
+
+When you open the labeling task, three buttons on the top right allow you to decline the task \(**Decline task**\), release it \(**Release task**\), and stop and resume it at a later time \(**Stop and resume later**\)\. The following list describes what happens when you select one of these options:
++ **Decline task**: You should only decline a task if something is wrong with the task, such as unclear video frame images or an issue with the UI\. If you decline a task, you will not be able to return to the task\.
++ **Release Task**: Use this option to release a task and allow others to work on it\. When you release a task, you loose all work done on that task and other workers on your team can pick it up\. If enough workers pick up the task, you may not be able to return to it\. When you select this button and then select **Confirm**, you are returned to the worker portal\. If the task is still available, its status will be **Available**\. If other workers pick it up, it will disappear from your portal\.
++ **Stop and resume later**: You can use the **Stop and resume later** button to stop working and return to the task at a later time\. You should use the **Save** button to save your work before you select **Stop and resume later**\. When you select this button and then select **Confirm**, you are returned to the worker portal, and the task status is **Stopped**\. You can select the same task to resume work on it\. 
+
+  Be aware that the person that creates your labeling tasks specifies a time limit in which all tasks much be completed by\. If you do not return to and complete this task within that time limit, it will expire and your work will not be submitted\. Contact your administrator for more information\. 
+
 ## Saving Your Work and Submitting<a name="sms-video-worker-instructions-saving-work-od"></a>
 
-You should periodically save your work\. Ground Truth automatically saves your work every 15 minutes\. 
+You should periodically save your work\. Ground Truth automatically saves your work every 15 minutes\.
 
-When you open a task, you must complete your work before pressing **Submit**\. If you select **Stop Working**,you lose that task, and other workers can start working on it\. 
+When you open a task, you must complete your work before pressing **Submit**\.

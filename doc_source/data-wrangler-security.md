@@ -4,7 +4,7 @@ When you query data from Athena or Amazon Redshift, the queried dataset is autom
 
 For high\-level security needs, you can configure a bucket policy that restricts the AWS roles that have access to this default SageMaker S3 bucket\. Use the following section to add this type of policy to an S3 bucket\. To follow the instructions on this page, use the AWS Command Line Interface \(AWS CLI\)\. To learn how, see [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) in the IAM User Guide\.
 
-Additionally, you need to grant each IAM role that uses Data Wrangler permissions to access required resources\. If you do not require granular permissions for the IAM role you use to access Data Wrangler, you can add the IAM managed policy, [https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess), to an IAM role that you use to create your Studio user\. This policy grants you full permission to use Data Wrangler\. If you require more granular permissions, refer to the section, [Grant and IAM Role Permission to Use Data Wrangler](#data-wrangler-security-iam-policy)\.
+Additionally, you need to grant each IAM role that uses Data Wrangler permissions to access required resources\. If you do not require granular permissions for the IAM role you use to access Data Wrangler, you can add the IAM managed policy, [https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess), to an IAM role that you use to create your Studio user\. This policy grants you full permission to use Data Wrangler\. If you require more granular permissions, refer to the section, [Grant an IAM Role Permission to Use Data Wrangler](#data-wrangler-security-iam-policy)\.
 
 ## Add a Bucket Policy To Restrict Access to Datasets Imported to Data Wrangler<a name="data-wrangler-security-bucket-policy"></a>
 
@@ -59,7 +59,7 @@ Use the following procedure to create an S3 bucket policy that you can add to re
    }
    ```
 
-## Grant and IAM Role Permission to Use Data Wrangler<a name="data-wrangler-security-iam-policy"></a>
+## Grant an IAM Role Permission to Use Data Wrangler<a name="data-wrangler-security-iam-policy"></a>
 
 You can grant an IAM role permission to use Data Wrangler with the general IAM managed policy, [https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess)\. This is a general policy that includes [permissions](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html#sagemaker-roles-amazonsagemakerfullaccess-policy) required to use all SageMaker services\. This policy grants an IAM role full access to Data Wrangler\. You should be aware of the following when using `AmazonSageMakerFullAccess` to grant access to Data Wrangler:
 + If you import data from Amazon Redshift, the **Database User** name must have the prefix `sagemaker_access`\.

@@ -1,8 +1,8 @@
 # crowd\-image\-classifier<a name="sms-ui-template-crowd-image-classifier"></a>
 
-A widget for classifying an image, which can be a JPG, PNG, or GIF, with no size limit\.
+A widget for classifying an image\. Use one of the following supported image formats: APNG, BMP, GIF, ICO, JPEG, PNG, SVG\. Images do not have a size limit\. 
 
-The following is an example of an image classification template that uses the `<crowd-image-classifier>` element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+The following is an example of an image classification template that uses the `<crowd-image-classifier>` element\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>

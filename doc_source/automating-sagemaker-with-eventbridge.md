@@ -1,6 +1,6 @@
 # Automating Amazon SageMaker with Amazon EventBridge<a name="automating-sagemaker-with-eventbridge"></a>
 
-Amazon EventBridge monitors status change events in Amazon SageMaker labeling, training, hyperparameter tuning, process jobs, and inference endpoints\. EventBridge enables you to automate SageMaker and respond automatically to events such as training job or endpoint status changes\. Events from SageMaker are delivered to EventBridge in near real time\. You can write simple rules to indicate which events are of interest to you, and what automated actions to take when an event matches a rule\. The actions that can be automatically triggered include the following:
+Amazon EventBridge monitors status change events in Amazon SageMaker labeling, training, hyperparameter tuning, process jobs, inference endpoints, and feature groups\. EventBridge enables you to automate SageMaker and respond automatically to events such as training job or endpoint status changes\. Events from SageMaker are delivered to EventBridge in near real time\. You can write simple rules to indicate which events are of interest to you, and what automated actions to take when an event matches a rule\. The actions that can be automatically triggered include the following:
 + Invoking an AWS Lambda function
 + Invoking Amazon EC2 Run Command
 + Relaying the event to Amazon Kinesis Data Streams
@@ -355,6 +355,58 @@ Some examples of SageMaker status change events that EventBridge monitors includ
       }
   }
   ```
++ SageMaker Feature Group State Change
+
+  Indicates a change either in the `FeatureGroupStatus` or the `OfflineStoreStatus` of a SageMaker Feature Group\.
+
+  ```
+  {
+    "version": "0",
+    "id": "93201303-abdb-36a4-1b9b-4c1c3e3671c0",
+    "detail-type": "SageMaker Feature Group State Change",
+    "source": "aws.sagemaker",
+    "account": "123456789012",
+    "time": "2021-01-26T01:22:01Z",
+    "region": "us-east-1",
+    "resources": [
+      "arn:aws:sagemaker:us-east-1:123456789012:feature-group/sample-feature-group"
+    ],
+    "detail": {
+      "FeatureGroupArn": "arn:aws:sagemaker:us-east-1:123456789012:feature-group/sample-feature-group",
+      "FeatureGroupName": "sample-feature-group",
+      "RecordIdentifierFeatureName": "RecordIdentifier",
+      "EventTimeFeatureName": "EventTime",
+      "FeatureDefinitions": [
+        {
+          "FeatureName": "RecordIdentifier",
+          "FeatureType": "Integral"
+        },
+        {
+          "FeatureName": "EventTime",
+          "FeatureType": "Fractional"
+        }
+      ],
+      "CreationTime": 1611624059000,
+      "OnlineStoreConfig": {
+        "EnableOnlineStore": true
+      },
+      "OfflineStoreConfig": {
+        "S3StorageConfig": {
+          "S3Uri": "s3://offline/s3/uri"
+        },
+        "DisableGlueTableCreation": false,
+        "DataCatalogConfig": {
+          "TableName": "sample-feature-group-1611624059",
+          "Catalog": "AwsDataCatalog",
+          "Database": "sagemaker_featurestore"
+        }
+      },
+      "RoleArn": "arn:aws:iam::123456789012:role/SageMakerRole",
+      "FeatureGroupStatus": "Active",
+      "Tags": {}
+    }
+  }
+  ```
 
 For more information about the status values and their meanings for SageMaker jobs and endpoints, see the following links:
 + [ `AlgorithmStatus` ](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAlgorithm.html#sagemaker-DescribeAlgorithm-response-AlgorithmStatus)
@@ -367,5 +419,6 @@ For more information about the status values and their meanings for SageMaker jo
 + [ `TrainingJobStatus`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html#sagemaker-DescribeTrainingJob-response-TrainingJobStatus)
 + [ `TransformJobStatus`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTransformJob.html#sagemaker-DescribeTransformJob-response-TransformJobStatus)
 + [ `EndpointStatus`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeEndpoint.html#sagemaker-DescribeEndpoint-response-EndpointStatus)
++ [ `FeatureGroupStatus`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeFeatureGroup.html#sagemaker-DescribeFeatureGroup-response-FeatureGroupStatus)
 
 For more information, see the [Amazon EventBridge User Guide](https://docs.aws.amazon.com/eventbridge/latest/userguide/what-is-amazon-eventbridge.html)\.

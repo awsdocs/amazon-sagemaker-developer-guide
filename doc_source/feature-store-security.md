@@ -2,6 +2,8 @@
 
  Amazon SageMaker Feature Store enables you to create two types of stores: an online store or offline store\. The online store is used for low latency real\-time inference use cases whereas the offline store is used for training and batch inference use cases\. When you create a feature group for online or offline use you can provide a KMS customer master key \(CMK\) to encrypt all your data at rest\. In case you do not provide a CMK then we ensure that your data is encrypted on the server side using an AWS owned CMK or AWS managed CMK\. While creating a feature group, you can select storage type and optionally provide a CMK for encrypting data, then you can call various APIs for data management such as `PutRecord`, `GetRecord`, `DeleteRecord`\.  
 
+Feature Store allows you to grant or deny access to individuals at the feature group\-level and enables cross\-account access to Feature Store\. For example, you can set up developer accounts to access the offline store for model training and exploration that do not have write access to production accounts\. You can set up production accounts to access both online and offline stores\. Feature Store uses unique customer AWS KMS CMKs for offline and online store data at\-rest encryption\. Access control is enabled through both API and KMS CMK access\. You can also create feature group\-level access control\.  
+
  For more information about CMKs, see [Customer Managed Keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys)\. For more information about KMS, please see [KMS](https://aws.amazon.com/kms/)\.  
 
 ## Using KMS Permissions for Amazon SageMaker Feature Store<a name="feature-store-kms-cmk-permissions"></a>
@@ -30,7 +32,9 @@ You do not pay a monthly fee for AWS owned CMKs\. Customer managed CMKs [incur 
 
  For example, the following example key policy provides only the required permissions\. The policy has the following effects: 
 +  Allows Feature Store to use the CMK in cryptographic operations and create grants, but only when it is acting on behalf of principals in the account who have permission to use your Feature Store\. If the principals specified in the policy statement don't have permission to use your Feature Store , the call fails, even when it comes from the Feature Store service\.  
-+  The [kms:ViaService](https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-via-service) condition key allows the permissions only when the request comes from FeatureStore on behalf of the principals listed in the policy statement\. These principals can't call these operations directly\. Note the `kms:ViaService` value, sagemaker\.\*\.`amazonaws.com.` 
++  The [kms:ViaService](https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-via-service) condition key allows the permissions only when the request comes from FeatureStore on behalf of the principals listed in the policy statement\. These principals can't call these operations directly\. The value for `kms:ViaService` should be `sagemaker.*.amazonaws.com`\. 
+**Note**  
+ The `kms:ViaService` condition key can only be used for the online store customer managed KMS key, and cannot be used for the offline store\. If you add this special condition to your customer managed key, and use the same KMS key for both the online and offline store, then it will fail the `CreateFeatureGroup` API operation\. 
 +  Gives the CMK administrators read\-only access to the CMK and permission to revoke grants, including the grants that Feature Store uses to protect your data\.  
 +  Gives Feature Store read\-only access to the CMK\. In this case, Feature Store can call these operations directly\. It does not have to act on behalf of an account principal\.  
 
@@ -82,7 +86,14 @@ You do not pay a monthly fee for AWS owned CMKs\. Customer managed CMKs [incur 
         "kms:List*"
       ],
       "Resource": "*"
-    }
+    },
+    {"Sid": "Enable IAM User Permissions",
+      "Effect": "Allow",
+       "Principal": {"AWS": "arn:aws:iam::123456789:root"
+       },
+       "Action": "kms:*",
+       "Resource": "*"
+    }
   ]
 }
 ```
@@ -116,3 +127,6 @@ You do not pay a monthly fee for AWS owned CMKs\. Customer managed CMKs [incur 
 ```
 "kms:GenerateDataKey"
 ```
+
+**Note**  
+The key policy for the online store also works for the offline store, only when the `kms:ViaService` condition is not specified\. 

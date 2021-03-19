@@ -2,7 +2,7 @@
 
 Before you can use autoscaling, must have already created a Amazon SageMaker model deployment\. Deployed models are referred to as a [production variant](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ProductionVariant.html)\. This includes information about the model and the resources used to host it\. 
 
-For more information about deploying a model endpoint, see [Step 6\.1: Deploy the Model to SageMaker Hosting Services](ex1-deploy-model.md)\.
+For more information about deploying a model endpoint, see [Deploy the Model to SageMaker Hosting Services](ex1-model-deployment.md#ex1-deploy-model)\.
 
 To enable autoscaling for a model, you can use the console, the AWS CLI, or the Application Auto Scaling API\. It is recommended to try to [Configure model autoscaling with the console](endpoint-auto-scaling-add-console.md) to get familiar with the requirements and to test your first autoscaling configuration\. When using the AWS CLI or Application Auto Scaling the flow is to register the model, define the scaling policy, then apply it\. The following overview provides further details on the prerequisites and components used with autoscaling\.
 
@@ -50,13 +50,15 @@ You configure the cooldown period in your automatic scaling policy\. You can spe
 
 If you don't specify a scale\-in or a scale\-out cooldown period automatic scaling use the default, which is 300 seconds for each\.
 
+
+
 If instances are being added or removed too quickly when you test your automatic scaling configuration, consider increasing this value\. You can see this behavior if the traffic to your model has a lot of spikes, or if you have multiple automatic scaling policies defined for a variant\.
 
 If instances are not being added quickly enough to address increased traffic, consider decreasing this value\.
 
 ## Permissions<a name="endpoint-auto-scaling-permissions"></a>
 
-The `SagemakerFullAccessPolicy` IAM policy has all of the IAM permissions required to perform autoscaling\. For more information about SageMaker IAM permissions, see [SageMaker Roles ](sagemaker-roles.md)\.
+The `SagemakerFullAccessPolicy` IAM policy has all of the IAM permissions required to perform autoscaling\. For more information about SageMaker IAM permissions, see [SageMaker Roles](sagemaker-roles.md)\.
 
 If you are using a custom permission policy, you must include the following permissions:
 

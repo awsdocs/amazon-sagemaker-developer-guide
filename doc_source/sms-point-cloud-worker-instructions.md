@@ -4,6 +4,9 @@ This topic provides an overview of the Ground Truth worker portal and the tools 
 
 For adjustment jobs, select the original labeling job task type that produced the labels you are adjusting\. Review and adjust the labels in your task as needed\. 
 
+**Important**  
+It is recommended that you complete your task using a Google Chrome or Firefox web browser\.
+
 **Topics**
 + [3D Point Cloud Semantic Segmentation](sms-point-cloud-worker-instructions-semantic-segmentation.md)
 + [3D Point Cloud Object Detection](sms-point-cloud-worker-instructions-object-detection.md)

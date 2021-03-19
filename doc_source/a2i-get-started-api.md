@@ -27,7 +27,7 @@ If you have not created a private workforce, you can do so using an [Amazon Cogn
             "ClientId": "app-client-id"
         },
         WorkforceName="workforce-name"
-    (
+    )
 ```
 
 **Create a private work team**  
@@ -139,7 +139,7 @@ To learn more about this template, see [Custom Template Example for Amazon Rekog
 ```
 template = r"""
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
-{% capture s3_arn %}http://s3.amazonaws.com/{{ task.input.aiServiceRequest.image.s3Object.bucket }}/{{ task.input.aiServiceRequest.image.s3Object.name }}{% endcapture %}
+{% capture s3_uri %}http://s3.amazonaws.com/{{ task.input.aiServiceRequest.image.s3Object.bucket }}/{{ task.input.aiServiceRequest.image.s3Object.name }}{% endcapture %}
 
 <crowd-form>
   <crowd-rekognition-detect-moderation-labels
@@ -151,7 +151,7 @@ template = r"""
         },
       {% endfor %}
     ]'
-    src="{{ s3_arn | grant_read_access }}"
+    src="{{ s3_uri | grant_read_access }}"
     header="Review the image and choose all applicable categories."
   >
     <short-instructions header="Instructions">

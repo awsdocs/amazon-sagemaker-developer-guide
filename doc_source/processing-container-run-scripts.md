@@ -21,7 +21,7 @@ The notebook shows the general workflow for using a `ScriptProcessor` class\.
    ENTRYPOINT ["python3"]
    ```
 
-1. Build the container using the docker command, creates an Amazon Elastic Container Registry \(Amazon ECR\) repository, and pushes the image to Amazon ECR\.
+1. Build the container using the docker command, create an Amazon Elastic Container Registry \(Amazon ECR\) repository, and push the image to Amazon ECR\.
 
    ```
    import boto3
@@ -63,4 +63,4 @@ The notebook shows the general workflow for using a `ScriptProcessor` class\.
                                   ProcessingOutput(source='/opt/ml/processing/output/test')]
    ```
 
-You can use the same procedure with any other library or system dependencies\. You can also use existing Docker images, including images that you run on other platforms, such Kubernetes\.
+You can use the same procedure with any other library or system dependencies\. You can also use existing Docker images\. This includes images that you run on other platforms such as [Kubernetes](https://kubernetes.io/)\.

@@ -3,13 +3,13 @@
 After you build and train your models, you can deploy them to get predictions in one of two ways:
 + To set up a persistent endpoint to get predictions from your models, use Amazon SageMaker hosting services\. For an overview on deploying a single model or multiple models with SageMaker hosting services, see [Deploy a Model on SageMaker Hosting Services](how-it-works-deployment.md#how-it-works-hosting)\.
 
-  For an example of how to deploy a model to the SageMaker hosting service, see [Step 6\.1: Deploy the Model to SageMaker Hosting Services](ex1-deploy-model.md)\.
+  For an example of how to deploy a model to the SageMaker hosting service, see [Deploy the Model to SageMaker Hosting Services](ex1-model-deployment.md#ex1-deploy-model)\.
 
   Or, if you prefer, watch the following video tutorial:  
 [![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/KFuc2KWrTHs?list=PLhr1KZpdzukcOr_6j_zmSrvYnLUtgqsZz/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/KFuc2KWrTHs?list=PLhr1KZpdzukcOr_6j_zmSrvYnLUtgqsZz)
 + To get predictions for an entire dataset, use SageMaker batch transform\. For an overview on deploying a model with SageMaker batch transform, see [Get Inferences for an Entire Dataset with Batch Transform](how-it-works-batch.md)\.
 
-  For an example of how to deploy a model with batch transform, see [Step 6\.2: Deploy the Model with Batch Transform](ex1-batch-transform.md)\.
+  For an example of how to deploy a model with batch transform, see [\(Optional\) Make Prediction with Batch Transform](ex1-model-deployment.md#ex1-batch-transform)\.
 
   Or, if you prefer, watch the following video tutorial:  
 [![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/Z9FtrRq0rc0?list=PLhr1KZpdzukcOr_6j_zmSrvYnLUtgqsZz/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/Z9FtrRq0rc0?list=PLhr1KZpdzukcOr_6j_zmSrvYnLUtgqsZz)

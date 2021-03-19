@@ -2,6 +2,8 @@
 
 A constraints\.json file is used to express the constraints that a dataset must satisfy\. Amazon SageMaker Model Monitor containers can use the constraints\.json file to evaluate datasets against\. Prebuilt containers provide the ability to generate the constraints\.json file automatically for a baseline dataset\. If you bring your own container, you can provide it with similar abilities or you can create the constraints\.json file in some other way\. Here is the schema for the constraint file that the prebuilt container uses\. Bring your own containers can adopt the same format or enhance it as required\.
 
+
+
 ```
 {
   "version" : 0,
@@ -33,8 +35,8 @@ A constraints\.json file is used to express the constraints that a dataset must 
 "monitoring_config": {
     "evaluate_constraints": "Enabled",
     "emit_metrics": "Enabled",
-    "datatype_check_threshold": 1.0,
-    "domain_content_threshold": 1.0,
+    "datatype_check_threshold": 0.1,
+    "domain_content_threshold": 0.1,
     "distribution_constraints": {
         "perform_comparison": "Enabled",
         "comparison_threshold": 0.1,

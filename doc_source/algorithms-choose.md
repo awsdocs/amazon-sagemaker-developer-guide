@@ -1,6 +1,6 @@
 # Choose an Algorithm<a name="algorithms-choose"></a>
 
-Machine leaning can help you accomplish empirical tasks that require some sort of inductive inference\. This task involves induction as it uses data to train algorithms to make generalizable inferences\. This means that the algorithms can make statistically reliable predictions or decisions, or complete other tasks when applied to new data that was not used to train them\. 
+Machine learning can help you accomplish empirical tasks that require some sort of inductive inference\. This task involves induction as it uses data to train algorithms to make generalizable inferences\. This means that the algorithms can make statistically reliable predictions or decisions, or complete other tasks when applied to new data that was not used to train them\. 
 
 To help you select the best algorithm for your task, we classify these tasks on various levels of abstraction\. At the highest level of abstraction, machine learning attempts to find patterns or relationships between features or less structured items, such as text in a data set\. Pattern recognition techniques can be classified into distinct machine learning paradigms, each of which address specific problem types\. There are currently three basic paradigms for machine learning used to address various problem types: 
 + [Supervised learning](#algorithms-choose-supervised-learning)
@@ -17,7 +17,7 @@ The following sections provide guidance concerning implementation options, machi
 + [Choose an algorithm implementation](#algorithms-choose-implementation)
 + [Problem types for the basic machine learning paradigms](#basic-machine-learning-paradigms)
 + [Use Amazon SageMaker Built\-in Algorithms](algos.md)
-+ [Use reinforcement learning with Amazon SageMaker](reinforcement-learning.md)
++ [Use Reinforcement Learning with Amazon SageMaker](reinforcement-learning.md)
 
 ## Choose an algorithm implementation<a name="algorithms-choose-implementation"></a>
 
@@ -49,12 +49,12 @@ After choosing an algorithm, you must decide which implementation of it you want
 ### Use a built\-in algorithm<a name="built-in-algorithms-benefits"></a>
 
 When choosing an algorithm for your type of problem and data, the easiest option is to use one of Amazon SageMaker's built\-in algorithms\. These built\-in algorithms come with two major benefits\.
-+ The built\-in algorithms require no coding tostart running experiments\. The only inputs you need to provide are the data, hyperparameters, and compute resources\. This allows you to run experiments more quickly, with less overhead for tracking results and code changes\.
++ The built\-in algorithms require no coding to start running experiments\. The only inputs you need to provide are the data, hyperparameters, and compute resources\. This allows you to run experiments more quickly, with less overhead for tracking results and code changes\.
 + The built\-in algorithms come with parallelization across multiple compute instances and GPU support right out of the box for all applicable algorithms \(some algorithms may not be included due to inherent limitations\)\. If you have a lot of data with which to train your model, most built\-in algorithms can easily scale to meet the demand\. Even if you already have a pre\-trained model, it may still be easier to use its corollary in SageMaker and input the hyper\-parameters you already know than to port it over, using script mode on a supported framework\.
 
 For more information on the built\-in algorithms provided by SageMaker, see [Use Amazon SageMaker Built\-in Algorithms](algos.md)\.
 
-For important information about docker registery paths, data formats, recommended EC2 instance types, and &CW; logs common to all of the built\-in algorithms provided by SageMaker, see [Common Information About Built\-in Algorithms](common-info-all-im-models.md)\.
+For important information about docker registry paths, data formats, recommended EC2 instance types, and CloudWatch logs common to all of the built\-in algorithms provided by SageMaker, see [Common Information About Built\-in Algorithms](common-info-all-im-models.md)\.
 
 ### Use script mode in a supported framework<a name="supported-frameworks-benefits"></a>
 
@@ -64,7 +64,7 @@ For more information on the frameworks supported by SageMaker, see [Use Machine 
 
 ### Use a custom Docker image<a name="custom-image-use-case"></a>
 
-Amazon SageMaker's built\-in algorithms and supported frameworks should cover most use cases, but there are times when you may need to use an algorithm from a package not included in any of the supported frameworks\. You may also already have a pre\-trained model pickled or persisted somewhere which you need to deploy\. SageMaker uses Docker images to host the training and serving of all models, so you can supply your own custom Docker image if the package or software you need is not included in a supported framework\. This may be your own Python package or an algorithm coded in a language like Stan or Julia\. For these images you must also configure the training of the algorithm and serving of the model properly in your Dockerfile\. This requires intermediate knowledge of Docker and is not recommended unless you are comfortable writing your own machine learning algorithm\. Your Docker image must be uploaded to an online repository, such as the Amazon Elastic Container Service \(ECS\) before you can train and serve your model properly\.
+Amazon SageMaker's built\-in algorithms and supported frameworks should cover most use cases, but there are times when you may need to use an algorithm from a package not included in any of the supported frameworks\. You might also have a pre\-trained model picked or persisted somewhere which you need to deploy\. SageMaker uses Docker images to host the training and serving of all models, so you can supply your own custom Docker image if the package or software you need is not included in a supported framework\. This may be your own Python package or an algorithm coded in a language like Stan or Julia\. For these images you must also configure the training of the algorithm and serving of the model properly in your Dockerfile\. This requires intermediate knowledge of Docker and is not recommended unless you are comfortable writing your own machine learning algorithm\. Your Docker image must be uploaded to an online repository, such as the Amazon Elastic Container Service \(ECS\) before you can train and serve your model properly\.
 
  For more information on custom Docker images in SageMaker, see [Using Docker containers with SageMaker ](docker-containers.md)\.
 
@@ -101,4 +101,4 @@ SageMaker provides several built\-in machine learning algorithms that you can us
 
 Reinforcement learning is a type of learning that is based on interaction with the environment\. This type of learning is used by an agent that must learn behavior through trial\-and\-error interactions with a dynamic environment in which the goal is to maximize the long\-term rewards that the agent receives as a result of its actions\. Rewards are maximized by trading off exploring actions that have uncertain rewards with exploiting actions that have known rewards\. 
 
-For more information on SageMaker's frameworks, toolkits, and environments for reinforcement learning, see [Use reinforcement learning with Amazon SageMaker](reinforcement-learning.md)\.
+For more information on SageMaker's frameworks, toolkits, and environments for reinforcement learning, see [Use Reinforcement Learning with Amazon SageMaker](reinforcement-learning.md)\.

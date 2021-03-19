@@ -86,7 +86,7 @@ model_pacakge_group_policy = {
 model_pacakge_group_policy = json.dumps(model_pacakge_group_policy)
 
 # Set the new policy
-respose = sagemaker_client.put_model_package_group_policy(
+respose = sm_client.put_model_package_group_policy(
     ModelPackageGroupName = model_package_group_name, 
     ResourcePolicy = model_pacakge_group_policy)
 
@@ -100,7 +100,7 @@ print("Success! You are all set to proceed for cross account deployment.")
 The example assumes that you previously defined the following variables:
 + `account` \- The account of the authenticated caller\.
 + `bucket` \- The S3 bucket where the model versions are stored\.
-+ `sagemaker_client` \- A SageMaker Boto3 client\.
++ `sm_client` \- A SageMaker Boto3 client\.
 + `model_package_group_name` \- The model group to which you want to grant access\.
 
 To be able to deploy a model that was created in a different account, the user must have a role that has access to SageMaker actions, such as a role with the `AmazonSageMakerFullAccess` managed policy\. For information about SageMaker managed policies, see [AWS Managed \(Predefined\) Policies for Amazon SageMaker](access-policy-aws-managed-policies.md)\.

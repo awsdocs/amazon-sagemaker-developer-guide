@@ -28,5 +28,3 @@ When you create a training job with the API, SageMaker replicates the entire dat
 
 **Important**  
 To prevent your algorithm container from contending for memory, we reserve memory for our SageMaker critical system processes on your ML compute instances and therefore you cannot expect to see all the memory for your instance type\.
-
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sagemaker-architecture-training-2.png)

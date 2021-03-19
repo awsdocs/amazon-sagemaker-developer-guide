@@ -8,7 +8,7 @@ You can create a video frame object tracking labeling job using the Amazon SageM
 
 Ground Truth provides a worker UI and tools to complete your labeling job tasks: [Preview the Worker UI](sms-video-object-detection.md#sms-video-od-worker-ui)\.
 
-You can create a job to adjust annotations created in a video object detection labeling job using the video object detection adjustment task type\. To learn more, see [Create an Adjustment Labeling Job](sms-video-object-detection.md#sms-video-od-adjustment)\.
+You can create a job to adjust annotations created in a video object detection labeling job using the video object detection adjustment task type\. To learn more, see [Create Video Frame Object Detection Adjustment or Verification Labeling Job](sms-video-object-detection.md#sms-video-od-adjustment)\.
 
 ## Preview the Worker UI<a name="sms-video-ot-worker-ui"></a>
 
@@ -34,8 +34,6 @@ You can follow the instructions in [Create a Labeling Job \(Console\)](sms-creat
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/task-type-vot.gif)
 
-If you set your take time limit to be greater than 8 hours, you must set `MaxSessionDuration` for your IAM execution role to at least 8 hours\. To see how to update this value for your IAM role in the IAM console, see [Modifying a Role Maximum Session Duration \(Console\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-console.html#roles-modify_max-session-duration) in the IAM User Guide\.
-
 ### Create a Labeling Job \(API\)<a name="sms-video-ot-create-labeling-job-api"></a>
 
 You create an object tracking labeling job using the SageMaker API operation `CreateLabelingJob`\. This API defines this operation for all AWS SDKs\. To see a list of language\-specific SDKs supported for this operation, review the **See Also** section of [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)\. 
@@ -47,15 +45,13 @@ You create an object tracking labeling job using the SageMaker API operation `Cr
 + Your [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelAttributeName](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelAttributeName) must end in `-ref`\. For example, `ot-labels-ref`\. 
 + Your input manifest file must be a video frame sequence manifest file\. You can create this manifest file using the SageMaker console, or create it manually and upload it to Amazon S3\. For more information, see [Input Data Setup](sms-video-data-setup.md)\. If you create a streaming labeling job, the input manifest file is optional\. 
 + You can only use private or vendor work teams to create video frame object detection labeling jobs\.
-+ You specify your labels, label category and frame attributes, the task type, and worker instructions in a label category configuration file\. Specify the task type \(bounding boxes, polylines, polygons or keypoint\) using `annotationType` in your label category configuration file\. For more information, see [Create a Labeling Category Configuration File with Label Category Attributes](sms-label-cat-config-attributes.md) to learn how to create this file\. 
++ You specify your labels, label category and frame attributes, the task type, and worker instructions in a label category configuration file\. Specify the task type \(bounding boxes, polylines, polygons or keypoint\) using `annotationType` in your label category configuration file\. For more information, see [Create a Labeling Category Configuration File with Label Category and Frame Attributes](sms-label-cat-config-attributes.md) to learn how to create this file\. 
 + You need to provide pre\-defined ARNs for the pre\-annotation and post\-annotation \(ACS\) Lambda functions\. These ARNs are specific to the AWS Region you use to create your labeling job\. 
   + To find the pre\-annotation Lambda ARN, refer to [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-PreHumanTaskLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-PreHumanTaskLambdaArn)\. Use the Region in which you are creating your labeling job to find the correct ARN that ends with `PRE-VideoObjectTracking`\. 
   + To find the post\-annotation Lambda ARN, refer to [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AnnotationConsolidationConfig.html#sagemaker-Type-AnnotationConsolidationConfig-AnnotationConsolidationLambdaArn](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AnnotationConsolidationConfig.html#sagemaker-Type-AnnotationConsolidationConfig-AnnotationConsolidationLambdaArn)\. Use the Region in which you are creating your labeling job to find the correct ARN that ends with `ACS-VideoObjectTracking`\. 
 + The number of workers specified in `NumberOfHumanWorkersPerDataObject` must be `1`\. 
-+ Automated data labeling is not supported for 3D point cloud labeling jobs\. Do not specify values for parameters in `[LabelingJobAlgorithmsConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelingJobAlgorithmsConfig)`\. 
-+ 3D point cloud object tracking labeling jobs can take multiple hours to complete\. You can specify a longer time limit for these labeling jobs in `TaskTimeLimitInSeconds` \(up to 7 days, or 604,800 seconds\)\. 
-**Important**  
-If you set your take time limit to be greater than 8 hours, you must set `MaxSessionDuration` for your IAM execution role to at least 8 hours\. To see how to update this value for your IAM role, see [Modifying a Role ](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html) in the IAM User Guide, choose your preferred method to modify the role, and then follow the steps in [Modifying a Role Maximum Session Duration](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-console.html#roles-modify_max-session-duration)\. 
++ Automated data labeling is not supported for video frame labeling jobs\. Do not specify values for parameters in `[LabelingJobAlgorithmsConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelingJobAlgorithmsConfig)`\. 
++ Video frame object tracking labeling jobs can take multiple hours to complete\. You can specify a longer time limit for these labeling jobs in `TaskTimeLimitInSeconds` \(up to 7 days, or 604,800 seconds\)\. 
 
 The following is an example of an [AWS Python SDK \(Boto3\) request](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_labeling_job) to create a labeling job in the US East \(N\. Virginia\) Region\. 
 
@@ -112,9 +108,9 @@ response = client.create_labeling_job(
 )
 ```
 
-## Create an Adjustment Labeling Job<a name="sms-video-ot-adjustment"></a>
+## Create a Video Frame Object Tracking Adjustment or Verification Labeling Job<a name="sms-video-ot-adjustment"></a>
 
-Use the video frame object tracking adjustment task type to have workers verify and adjust labels from a video frame object tracking labeling job\. You can create an adjustment labeling job in the console by *chaining* a successfully completed object tracking labeling job\. To learn more, see [Start an Label Adjustment Job \(Console\)](sms-verification-data.md#sms-data-adjust-start-console)\.
+You can create an adjustment and verification labeling job using the Ground Truth console or `CreateLabelingJob` API\. To learn more about adjustment and verification labeling jobs, and to learn how create one, see [Verify and Adjust Labels](sms-verification-data.md)\.
 
 ## Output Data Format<a name="sms-video-ot-output-data"></a>
 

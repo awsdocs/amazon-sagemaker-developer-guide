@@ -100,6 +100,7 @@ You can create an algorithm by using either the SageMaker console or the SageMak
 
       1. For `Range`, specify one of the following:
          + `IntegerParameterRangeSpecification` \- the values of the hyperparameter are integers\. Specify minimum and maximum values for the hyperparameter\.
+         + 
          + `ContinuousParameterRangeSpecification` \- the values of the hyperparameter are floating\-point values\. Specify minimum and maximum values for the hyperparameter\.
          + `CategoricalParameterRangeSpecification` \- the values of the hyperparameter are categorical values\. Specify a list of all of the possible values\.
 
@@ -139,7 +140,7 @@ You can create an algorithm by using either the SageMaker console or the SageMak
 **Note**  
 To publish your algorithm on AWS Marketplace, your algorithm must be validated\.
 
-   1. For **IAM role**, choose an IAM role that has the required permissions to run training jobs and batch transform jobs in SageMaker, or choose **Create a new role** to allow SageMaker to create a role that has the `AmazonSageMakerFullAccess` managed policy attached\. For information, see [SageMaker Roles ](sagemaker-roles.md)\.
+   1. For **IAM role**, choose an IAM role that has the required permissions to run training jobs and batch transform jobs in SageMaker, or choose **Create a new role** to allow SageMaker to create a role that has the `AmazonSageMakerFullAccess` managed policy attached\. For information, see [SageMaker Roles](sagemaker-roles.md)\.
 
    1. For **Validation profile**, specify the following:
       + A name for the validation profile\.

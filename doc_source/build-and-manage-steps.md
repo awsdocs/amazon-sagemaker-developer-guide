@@ -21,7 +21,6 @@ A processing step requires a processor, a Python script that defines the process
 ```
 from sagemaker.processing import ProcessingInput, ProcessingOutput
 from sagemaker.workflow.steps import ProcessingStep
-    
 
 step_process = ProcessingStep(
     name="AbaloneProcess",
@@ -34,7 +33,7 @@ step_process = ProcessingStep(
         ProcessingOutput(output_name="validation", source="/opt/ml/processing/validation"),
         ProcessingOutput(output_name="test", source="/opt/ml/processing/test")
     ],
-    code="abalone/preprocessing.py",
+    code="abalone/preprocessing.py"
 )
 ```
 
@@ -47,7 +46,6 @@ A training step requires an estimator, and training and validation data inputs\.
 ```
 from sagemaker.inputs import TrainingInput
 from sagemaker.workflow.steps import TrainingStep
-
 
 step_train = TrainingStep(
     name="TrainAbaloneModel",
@@ -65,7 +63,7 @@ step_train = TrainingStep(
             ].S3Output.S3Uri,
             content_type="text/csv"
         )
-    },
+    }
 )
 ```
 
@@ -82,14 +80,14 @@ SageMaker Pipelines doesn't support the use of nested condition steps\. You can'
 from sagemaker.workflow.conditions import ConditionLessThanOrEqualTo
 from sagemaker.workflow.condition_step import (
     ConditionStep,
-    JsonGet,
+    JsonGet
 )
 
 step_cond = ConditionStep(
     name="AbaloneMSECond",
     conditions=[cond_lte],
     if_steps=[step_register, step_create_model, step_transform],
-    else_steps=[], 
+    else_steps=[]
 )
 ```
 
@@ -102,7 +100,6 @@ A transform step requires a transformer, and the data to run batch transformatio
 ```
 from sagemaker.inputs import TransformInput
 from sagemaker.workflow.steps import TransformStep
-
 
 step_transform = TransformStep(
     name="AbaloneTransform",
@@ -119,7 +116,6 @@ A RegisterModel step requires an estimator, model data output from training, and
 
 ```
 from sagemaker.workflow.step_collections import RegisterModel
-
 
 step_register = RegisterModel(
     name="AbaloneRegisterModel",
@@ -144,11 +140,10 @@ A CreateModel step requires model artifacts, and information on the SageMaker in
 ```
 from sagemaker.workflow.steps import CreateModelStep
 
-
 step_create_model = CreateModelStep(
     name="AbaloneCreateModel",
     model=model,
-    inputs=inputs,
+    inputs=inputs
 )
 ```
 
@@ -197,6 +192,6 @@ step_train = TrainingStep(
 
 You can also create a step using SageMaker S3 applications\. A SageMaker S3 application is a tar\.gz bundle with one or more Python scripts that can run within that bundle\. For more information on application package bundling, see [Deploying directly from model artifacts](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/using_tf.html?highlight=packaging#id22)\. 
 
- You can also use your own container with pipeline steps\. Because you can’t create a container from within SageMaker Studio, you must create your container using another method before using it with Amazon SageMaker Model Building Pipelines\.
+ You can also use your own container with pipeline steps\. Because you can’t create an image from within SageMaker Studio, you must create your image using another method before using it with Amazon SageMaker Model Building Pipelines\.
 
  To use your own container when creating the steps for your pipeline, include the image URI in the estimator definition\. For more information on using your own container with SageMaker, see [Using Docker Containers with SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/docker-containers.html)\. 

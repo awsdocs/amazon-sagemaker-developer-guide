@@ -18,3 +18,5 @@ As a last resort, you can try restarting the kernel on which Data Wrangler is ru
 1. Refresh the browser\. 
 
 1. Reopen the \.flow file on which you were working\. 
+
+ 

@@ -1,13 +1,13 @@
 # Troubleshooting<a name="distributed-troubleshooting"></a>
 
 If you run into an error, you can use the following list to try to troubleshoot your training job\. If the problem persists, contact AWS Support\. 
-+ When SageMaker Debugger is enabled \(which is enabled by default for all SageMaker TensorFlow and PyTorch jobs\) you might see an error that looks like the following: 
++ When Debugger is enabled \(which is enabled by default for all SageMaker TensorFlow and PyTorch jobs\) you might see an error that looks like the following: 
 
   ```
   FileNotFoundError: [Errno 2] No such file or directory: '/opt/ml/checkpoints/metadata.json.sagemaker-uploading
   ```
 
-  To fix this issue, disable SageMaker Debugger by passing `debugger_hook_config=False` when creating the framework estimator in SageMaker Python SDK as seen in the following example\. We are working on resolving this issue\.
+  To fix this issue, disable Debugger by passing `debugger_hook_config=False` when creating the framework `estimator` in the SageMaker Python SDK as seen in the following example\.
 
   ```
   estimator = TensorFlow(
@@ -23,9 +23,9 @@ If you run into an error, you can use the following list to try to troubleshoot 
   InternalServerError: We encountered an internal error. Please try again
   ```
 
-  This could be caused by a SageMaker limitation while uploading the local checkpoint to S3 during training\. We are aware of this issue and are working on a fix\. Meanwhile, disable checkpointing in SageMaker and follow the example below to explicitly upload the checkpoints\.
+  This could be caused by a SageMaker limitation while uploading the local checkpoint to Amazon S3 during training\. To disable checkpointing in SageMaker and follow the following example to explicitly upload the checkpoints\.
 
-  If run into above error, do not use `checkpoint_s3_uri` with the SageMaker estimator call\. While saving checkpoints for larger models, we recommend saving checkpoints to a custom directory and pass the same to the helper function \(as a `local_path` argument\)
+  If you run into above error, do not use `checkpoint_s3_uri` with the SageMaker `estimator` call\. While saving checkpoints for larger models, we recommend saving checkpoints to a custom directory and passing the same to the helper function \(as a `local_path` argument\)\.
 
   ```
   import os
@@ -105,3 +105,5 @@ If you run into an error, you can use the following list to try to troubleshoot 
       full_s3_uri = f'{base_s3_uri}/checkpoints/{curr_host}/{iteration}'
       sync_local_checkpoints_to_s3(local_path=checkpoint_dir, s3_uri=full_s3_uri)
   ```
+
+ 

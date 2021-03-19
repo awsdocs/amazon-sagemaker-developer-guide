@@ -6,7 +6,7 @@ A styled button that represents some action\.
 
 The following attributes are supported by this element\.
 
-The following is an example of a template that uses the `<crowd-button>` element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+The following is an example of a template that uses the `<crowd-button>` element\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>

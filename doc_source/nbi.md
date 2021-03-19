@@ -15,6 +15,7 @@ This video is a deep dive on how to use SageMaker notebook instances\. \(Length:
 **Topics**
 + [Create a Notebook Instance](howitworks-create-ws.md)
 + [Access Notebook Instances](howitworks-access-ws.md)
++ [Update a Notebook Instance](nbi-update.md)
 + [Customize a Notebook Instance Using a Lifecycle Configuration Script](notebook-lifecycle-config.md)
 + [Example Notebooks](howitworks-nbexamples.md)
 + [Set the Notebook Kernel](howitworks-set-kernel.md)

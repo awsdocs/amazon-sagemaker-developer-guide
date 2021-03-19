@@ -1,9 +1,9 @@
-# Amazon SageMaker Studio JumpStart<a name="studio-jumpstart"></a>
+# SageMaker JumpStart<a name="studio-jumpstart"></a>
 
 **Important**  
  To use new features with an existing notebook instance or Studio app, you must restart the notebook instance or the Studio app to get the latest updates\. 
 
- You can use Amazon SageMaker Studio JumpStart to learn about SageMaker features and capabilities through curated 1\-click solutions, example notebooks, and pretrained models that you can deploy\. You can also fine\-tune the models and deploy them\. 
+ You can use SageMaker JumpStart to learn about SageMaker features and capabilities through curated 1\-click solutions, example notebooks, and pretrained models that you can deploy\. You can also fine\-tune the models and deploy them\. 
 
  To access JumpStart, you must first launch SageMaker Studio\. JumpStart features are not available in SageMaker notebook instances, and you can't access them through SageMaker APIs or the AWS CLI\. 
 
@@ -115,6 +115,11 @@ If you use the default dataset for text models without changing the hyperparamet
 
 ## Training Output<a name="jumpstart-training"></a>
 
- When the fine\-tuning process is complete, JumpStart provides information about the model: parent model, training job name, training job Amazon Resource Name \(ARN\), training time, and output path\. The output path is where you can find your new model in an S3 bucket\. The folder structure uses the model name you provided and the model file is in an `/output` subfolder and it's always named `model.tar.gz`\.  
+When the fine\-tuning process is complete, JumpStart provides information about the model: parent model, training job name, training job Amazon Resource Name \(ARN\), training time, and output path\. The output path is where you can find your new model in an S3 bucket\. The folder structure uses the model name you provided and the model file is in an `/output` subfolder and it's always named `model.tar.gz`\.  
 
  Example: `s3://bucket/model-name/output/model.tar.gz` 
+
+## Next Steps<a name="jumpstart-next"></a>
+
+For a deep dive into Studio features:
++ [Amazon SageMaker Studio Tour](gs-studio-end-to-end.md) – An end\-to\-end tour of the main features of SageMaker Studio\.

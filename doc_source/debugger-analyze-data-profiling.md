@@ -15,14 +15,14 @@ Use the SageMaker Python SDK while the estimator is still attached to the traini
 
   ```
   import sagemaker
-      training_job_name=estimator.latest_training_job.job_name
-      region=sagemaker.Session().boto_region_name
+  training_job_name=estimator.latest_training_job.job_name
+  region=sagemaker.Session().boto_region_name
   ```
 Pass strings directly\.  
 
   ```
   training_job_name="your-training-job-name-YYYY-MM-DD-HH-MM-SS-SSS"
-      region="us-west-2"
+  region="us-west-2"
   ```
 
 **To retrieve a description of the training job description and the S3 bucket URI where the metric data are saved**

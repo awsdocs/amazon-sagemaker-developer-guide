@@ -61,12 +61,4 @@ To create a baseline job use the `ModelQualityMonitor` class provided by the Sag
 
 1. When you are satisfied with the constraints, pass them as the `constraints` parameter when you create a monitoring schedule\. For more information, see [Schedule Model Quality Monitoring Jobs](model-monitor-model-quality-schedule.md)\.
 
-The suggested baseline constraints are contained in the constraints\.json file in the location you specify with `output_s3_uri`\.
-
-
-**Output Files for Tabular Dataset Statistics and Constraints**  
-
-| File Name | Description | 
-| --- | --- | 
-| statistics\.json | This file is expected to have columnar statistics for each feature in the dataset that is analyzed\. For information about the schema for this file, see [Schema for Statistics \(statistics\.json file\)](model-monitor-byoc-statistics.md)\.  | 
-| constraints\.json | This file is expected to have the constraints on the features observed\. For more information about the schema for this file in the [Schema for Constraints \(constraints\.json file\)](model-monitor-byoc-constraints.md)\.  | 
+The suggested baseline constraints are contained in the constraints\.json file in the location you specify with `output_s3_uri`\. For information about the schema for this file in the [Schema for Constraints \(constraints\.json file\)](model-monitor-byoc-constraints.md)\.

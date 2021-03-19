@@ -1,4 +1,4 @@
-# crowd\-textract\-document\-analysis<a name="a2i-crowd-textract-detection"></a>
+# crowd\-textract\-analyze\-document<a name="a2i-crowd-textract-detection"></a>
 
 A widget to enable human review of a Amazon Textract document analysis result\.
 
@@ -121,11 +121,11 @@ An example of a worker template using this crowd element would look like the fol
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
-{% capture s3_arn %}http://s3.amazonaws.com/{{ task.input.aiServiceRequest.document.s3Object.bucket }}/{{ task.input.aiServiceRequest.document.s3Object.name }}{% endcapture %}
+{% capture s3_uri %}http://s3.amazonaws.com/{{ task.input.aiServiceRequest.document.s3Object.bucket }}/{{ task.input.aiServiceRequest.document.s3Object.name }}{% endcapture %}
 
 <crowd-form>
   <crowd-textract-analyze-document
-    src="{{ s3_arn | grant_read_access }}"
+    src="{{ s3_uri | grant_read_access }}"
     initial-value="{{ task.input.selectedAiServiceResponse.blocks }}"
     header="Review the key-value pairs listed on the right and correct them if they don't match the following document."
     no-key-edit

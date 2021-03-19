@@ -16,7 +16,11 @@ This topic describes how to onboard to Amazon SageMaker Studio using AWS SSO aut
 
    For information about setting up AWS SSO for use with Studio, see [Set Up AWS SSO for Use with Amazon SageMaker Studio](onboard-sso-setup.md)\.
 
-1. Under **Permission**, for **Execution role for all users**, choose an option from the role selector\. If you choose **Create a new role**, the **Create an IAM role** dialog opens:
+1. Under **Permission**, for **Execution role for all users**, choose an option from the role selector\.
+
+   If you choose **Enter a custom IAM role ARN**, the role must have at a minimum, an attached trust policy that grants SageMaker permission to assume the role\. For more information, see [SageMaker Roles](sagemaker-roles.md)\.
+
+   If you choose **Create a new role**, the **Create an IAM role** dialog opens:
 
    1. For **S3 buckets you specify**, specify additional S3 buckets that users of your notebooks can access\. If you don't want to add access to more buckets, choose **None**\.
 
@@ -42,4 +46,4 @@ After you activate your account, go to the Studio URL, sign in, and wait for you
 
 Bookmark the Studio URL\. The URL is also available in the Studio Control Panel\.
 
-For information about using SageMaker Studio, see [Get Started with Studio](gs-studio.md)\.
+For information about using SageMaker Studio, see [SageMaker Studio](studio.md)\.

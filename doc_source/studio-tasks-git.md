@@ -1,4 +1,4 @@
-# Clone a Git Repository<a name="studio-tasks-git"></a>
+# Clone a Git Repository in SageMaker Studio<a name="studio-tasks-git"></a>
 
 Amazon SageMaker Studio can connect only to a local repository\. In this example, you clone the [aws/amazon\-sagemaker\-examples](https://github.com/aws/amazon-sagemaker-examples) repository \(repo\)\. 
 
