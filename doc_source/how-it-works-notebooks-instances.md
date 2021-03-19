@@ -8,7 +8,7 @@ To pre\-process data, use one of the following methods:
   + Deploy models to SageMaker hosting
   + Test or validate your models
 
-  For a Get Started guide about training and deploying a model in the SageMaker Notebook insances, see [Get Started with Amazon SageMaker Notebook Instances](gs-console.md)\.
+  For a Get Started guide about training and deploying a model in the SageMaker Notebook instances, see [Get Started with Amazon SageMaker Notebook Instances](gs-console.md)\.
 
   For more information about the SageMaker Notebook insances, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. 
 +  You can use a model to transform data by using SageMaker batch transform\. For more information, see [\(Optional\) Make Prediction with Batch Transform](ex1-model-deployment.md#ex1-batch-transform)\. 
