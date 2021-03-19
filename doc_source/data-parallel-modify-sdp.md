@@ -8,7 +8,7 @@ SageMaker's distributed data parallel library \(the library\) APIs are designed 
 
  To customize your own training script, you need to do the following: 
 + You must provide TensorFlow/PyTorch training scripts that are adapted to use the library\. The following sections provide example code for this\. 
-+ Your input data must be in an S3 bucket or in [FSx](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html)in the AWS Region that you will use to launch your training job\. If you use the Jupyter Notebooks provided, create a SageMaker notebook instance in the same Region as the bucket that contains your input data\. For more information about storing your training data, refer to the [SageMaker Python SDK data inputs](https://sagemaker.readthedocs.io/en/stable/overview.html#use-file-systems-as-training-input) documenation\. 
++ Your input data must be in an S3 bucket or in [FSx](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html) in the AWS Region that you will use to launch your training job\. If you use the Jupyter Notebooks provided, create a SageMaker notebook instance in the same Region as the bucket that contains your input data\. For more information about storing your training data, refer to the [SageMaker Python SDK data inputs](https://sagemaker.readthedocs.io/en/stable/overview.html#use-file-systems-as-training-input) documenation\. 
 
 **Tip**  
 Consider using FSx instead of Amazon S3 to increase training performance\. It has higher throughput and lower latency than Amazon S3\. 
@@ -23,7 +23,7 @@ Finally, you can follow an example notebook to test inference on your deployed m
 
  The following steps show you how to convert a TensorFlow 2\.x training script to utilize SageMaker's distributed data parallel library\.  
 
-The library APIs are designed to be similar to Horovod APIs\. Refer to the [SageMaker distributed data parallel TensorFlow API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel_tensorflow.html) for additional details on each API that the library offers for TensorFlow\. 
+The library APIs are designed to be similar to Horovod APIs\. Refer to the [SageMaker distributed data parallel TensorFlow API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/sdp_versions/v1.0.0/smd_data_parallel_tensorflow.html) for additional details on each API that the library offers for TensorFlow\. 
 
 1. Import the library's TensorFlow client and initialize it: 
 
@@ -129,13 +129,13 @@ if sdp.rank() == 0:
     checkpoint.save(checkpoint_dir)
 ```
 
-For more advanced usage, refer to [SageMaker Distributed Data Parallel TensorFlow API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel_tensorflow.html)\. 
+For more advanced usage, refer to [SageMaker Distributed Data Parallel TensorFlow API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/sdp_versions/v1.0.0/smd_data_parallel_tensorflow.html)\. 
 
 ## Modify a PyTorch Training Script to Use SMD Data Parallel<a name="data-parallel-modify-sdp-pt"></a>
 
 The following steps show you how to convert a PyTorch training script to utilize SageMaker's distibuted data parallel library\.
 
-The library APIs are designed to be similar to PyTorch Distributed Data Parallel \(DDP\) APIs\. For additional details on each data parallel API offered for PyTorch, see the [SageMaker distibuted data parallel PyTorch API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel_pytorch.html)\. 
+The library APIs are designed to be similar to PyTorch Distributed Data Parallel \(DDP\) APIs\. For additional details on each data parallel API offered for PyTorch, see the [SageMaker distibuted data parallel PyTorch API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/sdp_versions/v1.0.0/smd_data_parallel_pytorch.html)\. 
 
 1. Import the library’s PyTorch client and initialize it, then import the module for distributed training\. 
 
@@ -236,7 +236,7 @@ if __name__ == '__main__':
     main()
 ```
 
-For more advanced usage, see the [SageMaker distributed data parallel PyTorch API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel_pytorch.html)\. 
+For more advanced usage, see the [SageMaker distributed data parallel PyTorch API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/sdp_versions/v1.0.0/smd_data_parallel_pytorch.html)\. 
 
 ## Launch a Training Job<a name="data-parallel-training"></a>
 
