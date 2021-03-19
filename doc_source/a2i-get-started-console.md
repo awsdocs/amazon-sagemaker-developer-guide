@@ -131,12 +131,19 @@ The following example uses the AWS SDK for Python \(Boto3\) to call `analyze_doc
 
 ```
    response = client.analyze_document(
-         Document={"S3Object": {"Bucket": "AWSDOC-EXAMPLE-BUCKET", "Name": "document-name.pdf"},
+         Document={
+                "S3Object": {
+                    "Bucket": "AWSDOC-EXAMPLE-BUCKET", 
+                    "Name": "document-name.pdf"
+                }
+         },
          HumanLoopConfig={
             "FlowDefinitionArn":"arn:aws:sagemaker:us-west-2:111122223333:flow-definition/flow-definition-name",
             "HumanLoopName":"human-loop-name",
-            "DataAttributes" : {ContentClassifiers=["FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"]}
-         }
+            "DataAttributes" : {
+                ContentClassifiers=["FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"]
+            }
+         },
          FeatureTypes=["FORMS"])
 ```
 
@@ -147,11 +154,18 @@ The following example uses the AWS SDK for Python \(Boto3\) to call `detect_mode
 
 ```
    response = client.detect_moderation_labels(
-            Image={"S3Object":{"Bucket": "AWSDOC-EXAMPLE-BUCKET", "Name": "image-name.png"}},
+            Image={
+                "S3Object":{
+                    "Bucket": "AWSDOC-EXAMPLE-BUCKET", 
+                    "Name": "image-name.png"
+                }
+            },
             HumanLoopConfig={
                "FlowDefinitionArn":"arn:aws:sagemaker:us-west-2:111122223333:flow-definition/flow-definition-name",
                "HumanLoopName":"human-loop-name",
-               "DataAttributes" : {ContentClassifiers=["FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"]}
+               "DataAttributes" : {
+                    ContentClassifiers=["FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"]
+                }
              })
 ```
 
@@ -175,7 +189,7 @@ Your output data is stored in the Amazon S3 bucket you specified when you create
 
 **To view your Amazon A2I output data**
 
-1. Open the Amazon S3 console: [s3.console.aws.amazon.com](s3.console.aws.amazon.com)\.
+1. Open the [Amazon S3 console](https://console.aws.amazon.com/s3/)\.
 
 1. Select the Amazon S3 bucket you specified when you created your human review workflow in step 2 of this demo\. 
 

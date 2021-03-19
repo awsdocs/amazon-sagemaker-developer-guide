@@ -132,6 +132,8 @@ To use the Amazon SageMaker console, you need to grant permissions for additiona
 }
 ```
 
+
+
 ### Permissions Required to Use the Amazon SageMaker Ground Truth Console<a name="groundtruth-console-policy"></a>
 
 To use the Amazon SageMaker Ground Truth console, you need to grant permissions for additional resources\. Specifically, the console needs permissions for the AWS Marketplace to view subscriptions, Amazon Cognito operations to manage your private workforce, Amazon S3 actions for access to your input and output files, and AWS Lambda actions to list and invoke functions\. Grant these permissions with the following permissions policy:
@@ -818,6 +820,8 @@ The following policies show how to restrict access to a public work team using t
 }
 ```
 
+ 
+
 ### Enforce Encryption of Input Data<a name="sagemaker-condition-kms"></a>
 
 The following policy restricts an IAM user to specify a AWS KMS key to encrypt input data when creating training, hyperparameter tuning, and labeling jobs by using the `sagemaker:VolumeKmsKey` condition key:
@@ -1027,7 +1031,7 @@ This policy allows connections only to callers within a subnet where you created
             "Sid": "Enable API Access",
             "Effect": "Allow",
             "Action": [
-                "sagemaker:*
+                "sagemaker:*"
             ],
             "Resource": "*",
             "Condition": {

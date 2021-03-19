@@ -34,7 +34,7 @@ Ground Truth offers assistive labeling tools to help workers complete your point
 
 You can create six types of tasks when you use Ground Truth 3D point cloud labeling jobs\. Use the topics in [3D Point Cloud Task types](sms-point-cloud-task-types.md) to learn more about these *task types* and to learn how to create a labeling job using the task type of your choice\. 
 
-The 3D point cloud labeling job is different from other Ground Truth labeling modalities\. Before creating a labeling job, we recommend that you read [3D Point Cloud Labeling Jobs Overview](sms-point-cloud-general-information.md)\. 
+The 3D point cloud labeling job is different from other Ground Truth labeling modalities\. Before creating a labeling job, we recommend that you read [3D Point Cloud Labeling Jobs Overview](sms-point-cloud-general-information.md)\. Additionally, review input data quotas in [3D Point Cloud and Video Frame Labeling Job Quotas](input-data-limits.md#sms-input-data-quotas-other)\.
 
 For an end\-to\-end demo using the SageMaker API and AWS Python SDK \(boto 3\) to create a 3D point cloud labeling job, see [create\-3D\-pointcloud\-labeling\-job\.ipynb](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/ground_truth_labeling_jobs/3d_point_cloud_demo/create-3D-pointcloud-labeling-job.ipynb) in the [SageMaker Examples notebook tab](https://docs.aws.amazon.com/sagemaker/latest/dg/howitworks-nbexamples.html)\.
 

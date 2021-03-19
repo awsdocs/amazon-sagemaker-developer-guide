@@ -1,6 +1,7 @@
 # Permissions and Security in Amazon Augmented AI<a name="a2i-permissions-security"></a>
 
 When using Amazon Augmented AI \(Amazon A2I\) to create a human review workflow for your ML/AI application, you create and configure *resources* in Amazon SageMaker such as a human workforce and worker task templates\. To configure and start a human loop, you will either integrate Amazon A2I with other AWS services such as Amazon Textract or Amazon Rekognition or use the Amazon Augmented AI Runtime API\. To create a human review workflow and start a human loop, you will need to attach certain policies to your AWS Identity and Access Management \(IAM\) role or user\. Specifically: 
++ When you start a human loop using image input data on or after January 12th, 2020, you must add a CORS header policy to the S3 bucket that contains your input data\. See [CORS Permission Requirement](#a2i-cors-update) to learn more\. 
 + When you create a flow definition, you need to provide a role that grants Amazon A2I permission to access Amazon S3 both for reading objects that will be rendered in a human task UI and for writing the results of the human review\. 
 
   This role will also need to have a trust policy attached to give SageMaker permission to assume the role\. This allows Amazon A2I to perform actions in accordance with permissions that you attach to the role\. 
@@ -14,11 +15,49 @@ When using Amazon Augmented AI \(Amazon A2I\) to create a human review workflow 
 + To preview your custom worker task UI template, you need an IAM role with permissions to read Amazon S3 objects that get rendered on your user interface\. See a policy example in [Enable Worker Task Template Previews ](#permissions-for-worker-task-templates-augmented-ai)\.
 
 **Topics**
++ [CORS Permission Requirement](#a2i-cors-update)
 + [Add Permissions to the IAM Role Used to Create a Flow Definition](#a2i-human-review-permissions-s3)
 + [Create an IAM User That Can Invoke Amazon A2I API Operations](#create-user-grants)
 + [Create an IAM User With Permissions to Invoke Amazon A2I, Amazon Textract, and Amazon Rekognition API Operations](#a2i-grant-general-permission)
 + [Enable Worker Task Template Previews](#permissions-for-worker-task-templates-augmented-ai)
 + [Additional Permissions and Security Resources](#additional-security-resources-augmented-ai)
+
+## CORS Permission Requirement<a name="a2i-cors-update"></a>
+
+Earlier in 2020, widely used browsers like Chrome and Firefox changed their default behavior for rotating images based on image metadata, referred to as [EXIF data](https://en.wikipedia.org/wiki/Exif)\. Previously, images would always display in browsers exactly how they are stored on disk, which is typically unrotated\. After the change, images now rotate according to a piece of image metadata called *orientation value*\. This has important implications for the entire machine learning \(ML\) community\. For example, if the EXIF orientation is not considered, applications that are used to annotate images may display images in unexpected orientations and result in incorrect labels\. 
+
+Starting with Chrome 89, AWS can no longer automatically prevent the rotation of images because the web standards group W3C has decided that the ability to control rotation of images violates the web’s Same\-origin Policy\. Therefore, to ensure human workers annotate your input images in a predictable orientation when you submit requests to create a human loop, you must add a CORS header policy to the S3 buckets that contain your input images\.
+
+**Important**  
+If you do not add a CORS configuration to the S3 buckets that contains your input data, human review tasks for those input data objects will fail\.
+
+You can add a CORS policy to an S3 bucket that contains input data in the S3 console\. To set the required CORS headers on the S3 bucket that contain your input images in the S3 console, follow the directions detailed in [How do I add cross\-domain resource sharing with CORS?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-cors-configuration.html)\. Use the following CORS configuration code for the buckets that hosts your images\. If you use the Amazon S3 console to add the policy to your bucket, you must use the JSON format\.
+
+**JSON**
+
+```
+[{
+   "AllowedHeaders": [],
+   "AllowedMethods": ["GET"],
+   "AllowedOrigins": ["*"],
+   "ExposeHeaders": []
+}]
+```
+
+**XML**
+
+```
+<CORSConfiguration>
+ <CORSRule>
+   <AllowedOrigin>*</AllowedOrigin>
+   <AllowedMethod>GET</AllowedMethod>
+ </CORSRule>
+</CORSConfiguration>
+```
+
+The following GIF demonstrates the instructions found in the Amazon S3 documentation to add a CORS header policy using the Amazon S3 console\.
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/gifs/cors-config.gif)
 
 ## Add Permissions to the IAM Role Used to Create a Flow Definition<a name="a2i-human-review-permissions-s3"></a>
 

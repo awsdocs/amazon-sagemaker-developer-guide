@@ -32,14 +32,17 @@ To debug your model training, you need to add a Debugger hook to your training s
 **Note**  
 This step is required to collect model parameters \(output tensors\) for debugging your model training\. If you only want to monitor and profile, you can skip this hook registration step and exclude the `debugger_hook_config` parameter when constructing an estimater\.
 
-The following example TensorFlow training script shows how to pass the Debugger hook as a Keras callback for debugging the ResNet50 model from the Keras model zoo\.
+The following example code shows the structure of a training script using the Keras ResNet50 model and how to pass the Debugger hook as a Keras callback for debugging\. To find a complete training script, see [TensorFlow training script with SageMaker Debugger hook](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker-debugger/build_your_own_container_with_debugger/docker/tf_keras_resnet_byoc.py)\.
 
 ```
-# Inside your train.py script
-
+# An example of training script (your-training-script.py)
+import tensorflow.compat.v2 as tf
+from tensorflow.keras.applications.resnet50 import ResNet50
 import smdebug.tensorflow as smd
 
 def train(batch_size, epoch, model, hook):
+
+    ...
     model.fit(X_train, Y_train,
               batch_size=batch_size,
               epochs=epoch,
@@ -53,18 +56,9 @@ def main():
     parser=argparse.ArgumentParser(description="Train resnet50 cifar10")
 
     # hyperparameter settings
-    parser.add_argument("--batch_size", type=int, default=50)
-    parser.add_argument("--epoch", type=int, default=15)
-    parser.add_argument("--model_dir", type=str, default="./model_keras_resnet")
-    parser.add_argument("--lr", type=float, default=0.001)
-    parser.add_argument("--random_seed", type=bool, default=False)
+    parser.add_argument(...)
     
     args = parser.parse_args()
-
-    if args.random_seed:
-        tf.random.set_seed(2)
-        np.random.seed(2)
-        random.seed(12)
 
     model=ResNet50(weights=None, input_shape=(32,32,3), classes=10)
 

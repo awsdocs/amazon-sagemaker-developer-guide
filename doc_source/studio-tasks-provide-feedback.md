@@ -1,4 +1,4 @@
-# Provide Feedback on Amazon SageMaker Studio<a name="studio-tasks-provide-feedback"></a>
+# Provide Feedback on SageMaker Studio<a name="studio-tasks-provide-feedback"></a>
 
 Amazon SageMaker takes your feedback seriously\. We encourage you to provide feedback\.
 

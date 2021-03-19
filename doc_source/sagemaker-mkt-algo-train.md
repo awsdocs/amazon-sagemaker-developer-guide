@@ -25,7 +25,7 @@ You can create use an algorithm resource to create a training job by using the A
 
    1. For **Job name**, type a name for the training job\.
 
-   1. For **IAM role**, choose an IAM role that has the required permissions to run training jobs in SageMaker, or choose **Create a new role** to allow SageMaker to create a role that has the `AmazonSageMakerFullAccess` managed policy attached\. For information, see [SageMaker Roles ](sagemaker-roles.md)\.
+   1. For **IAM role**, choose an IAM role that has the required permissions to run training jobs in SageMaker, or choose **Create a new role** to allow SageMaker to create a role that has the `AmazonSageMakerFullAccess` managed policy attached\. For information, see [SageMaker Roles](sagemaker-roles.md)\.
 
    1. For **Resource configuration**, provide the following information:
 

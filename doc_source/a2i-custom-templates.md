@@ -43,7 +43,7 @@ For example, for a custom template that integrates an Augmented AI human review 
 
 All custom templates begin and end with the `<crowd-form> </crowd-form>` elements\. Like standard HTML `<form>` elements, all of your form code should go between these elements\. 
 
- For a Amazon Textract document analysis task, use the `<crowd-textract-document-analysis>` element\. It uses the following attributes: 
+ For a Amazon Textract document analysis task, use the `<crowd-textract-analyze-document>` element\. It uses the following attributes: 
 + `src` – Specifies the URL of the image file to be annotated\.
 + `initialValue` – Sets initial values for attributes found in the worker UI\.
 + `blockTypes` \(required\) – Determines the kind of analysis that the workers can do\. Only `KEY_VALUE_SET` is currently supported\. 
@@ -51,7 +51,7 @@ All custom templates begin and end with the `<crowd-form> </crowd-form>` element
 + `no-key-edit` \(required\) – Prevents the workers from editing the keys of annotations passed through `initialValue`\.
 + `no-geometry-edit` – Prevents workers from editing the polygons of annotations passed through `initialValue`\.
 
-For children of the `<crowd-textract-document-analysis>` element, you must have two regions\. You can use arbitrary HTML and CSS elements in these regions\. 
+For children of the `<crowd-textract-analyze-document>` element, you must have two regions\. You can use arbitrary HTML and CSS elements in these regions\. 
 + `<full-instructions>` – Instructions that are available from the **View full instructions** link in the tool\. You can leave this blank, but we recommend that you provide complete instructions to get better results\.
 + `<short-instructions>` – A brief description of the task that appears in the tool's sidebar\. You can leave this blank, but we recommend that you provide complete instructions to get better results\.
 
@@ -61,11 +61,11 @@ For children of the `<crowd-textract-document-analysis>` element, you must have 
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
-{% capture s3_arn %}http://s3.amazonaws.com/{{ task.input.aiServiceRequest.document.s3Object.bucket }}/{{ task.input.aiServiceRequest.document.s3Object.name }}{% endcapture %}
+{% capture s3_uri %}http://s3.amazonaws.com/{{ task.input.aiServiceRequest.document.s3Object.bucket }}/{{ task.input.aiServiceRequest.document.s3Object.name }}{% endcapture %}
 
 <crowd-form>
   <crowd-textract-analyze-document
-    src="{{ s3_arn | grant_read_access }}"
+    src="{{ s3_uri | grant_read_access }}"
     initial-value="{{ task.input.selectedAiServiceResponse.blocks }}"
     header="Review the key-value pairs listed on the right and correct them if they don't match the following document."
     no-key-edit
@@ -131,7 +131,7 @@ All custom templates begin and end with the `<crowd-form> </crowd-form>` element
     + The returned answer is an array of all the strings that were selected\.
 + `exclusion-category` – By setting this attribute, you create a button underneath the categories in the UI\. When a user presses the button, all categories are deselected and disabled\. If the worker presses the button again, you re\-enable users to choose categories\. If the worker submits the task by selecting the Submit button after you pressing the button, that task will return an empty array\.
 
-For children of the `<crowd-textract-document-analysis>` element, you must have three regions\.
+For children of the `<crowd-rekognition-detect-moderation-labels>` element, you must have two regions\.
 + `<full-instructions>` – Instructions that are available from the **View full instructions** link in the tool\. You can leave this blank, but we recommend that you provide complete instructions to get better results\.
 + `<short-instructions>` – Brief description of the task that appears in the tool's sidebar\. You can leave this blank, but we recommend that you provide complete instructions to get better results\.
 
@@ -139,7 +139,7 @@ A template using these elements would look similar to the following\.
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
-{% capture s3_arn %}http://s3.amazonaws.com/{{ task.input.aiServiceRequest.image.s3Object.bucket }}/{{ task.input.aiServiceRequest.image.s3Object.name }}{% endcapture %}
+{% capture s3_uri %}http://s3.amazonaws.com/{{ task.input.aiServiceRequest.image.s3Object.bucket }}/{{ task.input.aiServiceRequest.image.s3Object.name }}{% endcapture %}
 
 <crowd-form>
   <crowd-rekognition-detect-moderation-labels
@@ -151,7 +151,7 @@ A template using these elements would look similar to the following\.
         },
       {% endfor %}
     ]'
-    src="{{ s3_arn | grant_read_access }}"
+    src="{{ s3_uri | grant_read_access }}"
     header="Review the image and choose all applicable categories."
   >
     <short-instructions header="Instructions">
@@ -227,11 +227,24 @@ Visuals depicting death by hanging</p>
 
 The custom template system uses [Liquid](https://shopify.github.io/liquid/) for automation\. *Liquid* is an open\-source inline markup language\. For more information and documentation, see the [Liquid homepage](https://shopify.github.io/liquid/)\.
 
-In Liquid, the text between single curly braces and percent symbols is an instruction or *tag* that creates control flow\. Text between double curly braces is a variable or *object* that outputs its value\.
+In Liquid, the text between single curly braces and percent symbols is an instruction or *tag* that performs an operation like control flow or iteration\. Text between double curly braces is a variable or *object* that outputs its value\. The following list includes two types of liquid tags that you may find useful to automate template input data processing\. If you select one of the following tag\-types, you will be redirected to the Liquid documentation\.
++ [Control flow](https://shopify.github.io/liquid/tags/control-flow/): Includes programming logic operators like `if/else`, `unless`, and `case/when`\.
++ [Iteration](https://shopify.github.io/liquid/tags/iteration/): Enables you to run blocks of code repeatedly using statements like for loops\.
+
+  For example, the following code example demonstrates how you can use the Liquid `for` tag to create a for loop\. This example loops through the [https://docs.aws.amazon.com/rekognition/latest/dg/API_ModerationLabel.html](https://docs.aws.amazon.com/rekognition/latest/dg/API_ModerationLabel.html) returned from Amazon Rekognition and displays `moderationLabels` attributes `name` and `parentName` for workers to review:
+
+  ```
+   {% for label in task.input.selectedAiServiceResponse.moderationLabels %}
+      {
+        name: &quot;{{ label.name }}&quot;,
+        parentName: &quot;{{ label.parentName }}&quot;,
+      },
+   {% endfor %}
+  ```
 
 ### Use Variable Filters<a name="a2i-custom-templates-step2-automate-filters"></a>
 
-In addition to the standard Liquid filters and actions, Amazon Augmented AI \(Amazon A2I\) offers a few additional filters\. You apply filters by placing a pipe \(`|`\) character after the variable name, and then specifying a filter name\. To chain filters use the following format\.
+In addition to the standard [Liquid filters](https://shopify.github.io/liquid/filters/abs/) and actions, Amazon Augmented AI \(Amazon A2I\) offers additional filters\. You apply filters by placing a pipe \(`|`\) character after the variable name, and then specifying a filter name\. To chain filters use the following format\.
 
 **Example**  
 
@@ -251,7 +264,7 @@ By default, inputs are HTML\-escaped to prevent confusion between your variable 
 
 `skip_autoescape` is useful when your content is meant to be used as HTML\. For example, you might have a few paragraphs of text and some images in the full instructions for a bounding box\.
 
-****  
+**Note**  
 Use `skip_autoescape` sparingly\. As a best practice for templates, avoid passing in functional code or markup with `skip_autoescape` unless you are absolutely sure that you have strict control over what's being passed\. If you're passing user input, you could be opening your workers up to a cross\-site scripting attack\.
 
 #### to\_json<a name="a2i-custom-templates-step2-automate-tojson"></a>

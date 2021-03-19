@@ -38,8 +38,8 @@ The baseline statistics for the dataset are contained in the statistics\.json fi
 
 | File Name | Description | 
 | --- | --- | 
-| statistics\.json | This file is expected to have columnar statistics for each feature in the dataset that is analyzed\. For more information about the schema for this file, see [Schema for Statistics \(statistics\.json file\)](model-monitor-byoc-statistics.md)\.  | 
-| constraints\.json | This file is expected to have the constraints on the features observed\. For more information about the schema for this file, see [Schema for Constraints \(constraints\.json file\)](model-monitor-byoc-constraints.md)\.  | 
+| statistics\.json |  This file is expected to have columnar statistics for each feature in the dataset that is analyzed\. For more information about the schema for this file, see [Schema for Statistics \(statistics\.json file\)](model-monitor-byoc-statistics.md)\.  | 
+| constraints\.json |  This file is expected to have the constraints on the features observed\. For more information about the schema for this file, see [Schema for Constraints \(constraints\.json file\)](model-monitor-byoc-constraints.md)\.  | 
 
 The [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) provides convenience functions described to generate the baseline statistics and constraints\. But if you want to call processing job directly for this purpose instead, you need to set the `Environment` map as shown in the following example:
 

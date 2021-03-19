@@ -2,7 +2,7 @@
 
 A box with an elevated appearance for displaying information\.
 
-The following is an example of a template designed for sentiment analysis tasks that uses the `<crowd-card>` element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+The following is an example of a template designed for sentiment analysis tasks that uses the `<crowd-card>` element\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>

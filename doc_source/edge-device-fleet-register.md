@@ -3,17 +3,17 @@
 **Important**  
 Device registration is required to use any part of SageMaker Edge Manager\.
 
-You can create a fleet programmatically with the AWS SDK for Python \(Boto3\) or clicking through the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
+You can create a fleet programmatically with the AWS SDK for Python \(Boto3\) or through the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
 ## Register a Device \(Boto3\)<a name="edge-device-fleet-register-boto3"></a>
 
-To register your device, first create and register an AWS IoT thing object and configure an IAM role\. SageMaker Edge Manager takes advantage of the AWS IoT Core services to facilitate the connection between the edges devices and the cloud\. You can take advantage of existing AWS IoT functionality after you set up your devices to work with Edge Manager\.
+To register your device, first create and register an AWS IoT thing object and configure an IAM role\. SageMaker Edge Manager takes advantage of the AWS IoT Core services to facilitate the connection between the edge devices and the cloud\. You can take advantage of existing AWS IoT functionality after you set up your devices to work with Edge Manager\.
 
-To connect your device to AWS IoT you will need to: create AWS IoT thing objects, create and register a client certificate with AWS IoT, and create and configure IAM role for your devices\.
+To connect your device to AWS IoT you need to create AWS IoT thing objects, create and register a client certificate with AWS IoT, and create and configure IAM role for your devices\.
 
 See the [Getting Started Guide](https://docs.aws.amazon.com/sagemaker/latest/dg/edge-manager-getting-started.html) for an in\-depth example or the [Explore AWS IoT Core services in hands\-on tutorial](https://docs.aws.amazon.com/iot/latest/developerguide/iot-gs-first-thing.html)\.
 
-Use the `RegisterDevices` API to register your device\. Provide the name of your fleet you want the devices to be a part of, as well as a name to the device\. You can optionally add a description to the device, tags, and the AWS IoT thing name associated with the device\.
+Use the `RegisterDevices` API to register your device\. Provide the name of the fleet of which you want the devices to be a part, as well as a name for the device\. You can optionally add a description to the device, tags, and AWS IoT thing name associated with the device\.
 
 ```
 sagemaker_client.register_devices(

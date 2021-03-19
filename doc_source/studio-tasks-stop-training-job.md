@@ -1,4 +1,4 @@
-# Stop a Training Job<a name="studio-tasks-stop-training-job"></a>
+# Stop a Training Job in SageMaker Studio<a name="studio-tasks-stop-training-job"></a>
 
 You can stop a training job with the Amazon SageMaker Studio UI\. When you stop a training job, its status changes to `Stopping` at which time billing ceases\. An algorithm can delay termination in order to save model artifacts after which the job status changes to `Stopped`\. For more information, see the [stop\_training\_job](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.stop_training_job) method in the AWS SDK for Python \(Boto3\)\.
 

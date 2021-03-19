@@ -22,4 +22,4 @@ Debugger has added operations and types to the Amazon SageMaker API that enable 
   + [ProfilerRuleConfiguration](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ProfilerRuleConfiguration.html)
   + [ProfilerRuleEvaluationStatus](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ProfilerRuleEvaluationStatus.html)
 
-The rule configuration API operations use the SageMaker Processing functionality when analyzing a model training\. For more information about SageMaker Processing, see [Process Data and Evaluate Models](processing-job.md)\.
+The rule configuration API operations use the SageMaker Processing functionality when analyzing a model training\. For more information about SageMaker Processing, see [Process Data](processing-job.md)\.

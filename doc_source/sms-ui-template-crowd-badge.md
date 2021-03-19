@@ -2,7 +2,7 @@
 
 An icon that floats over the top right corner of another element to which it is attached\.
 
-The following is an example of a template that uses the `<crowd-badge>` element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+The following is an example of a template that uses the `<crowd-badge>` element\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>

@@ -1,12 +1,19 @@
 # Configure Debugger Using Amazon SageMaker Python SDK<a name="debugger-configuration"></a>
 
-**Important**  
-To use new features with an existing notebook instance or Studio app, you will need to restart the notebook instance or Studio app to get the latest updates\.
-
 To configure Debugger, use [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) and specify Debugger\-specific parameters while constructing SageMaker estimators\. There are three parameters you need to configure: `profiler_config`, `debugger_hook_config`, and `rules`\.
 
 **Note**  
 By default, Debugger monitors and debugs SageMaker training jobs without any Debugger\-specific parameters configured in SageMaker estimators\. Debugger collects system metrics every 500 milliseconds and basic output tensors \(scalar outputs such as loss and accuracy\) every 500 steps\. It also runs the ProfilerReport rule to analyze the system metrics and aggregate Studio Debugger insights dashboard and a profiling report\. Debugger saves the output data in your secured S3 bucket\.
+
+**Important**  
+To use the new Debugger features, you need to upgrade the SageMaker Python SDK and the SMDebug client library\. In your iPython kernel, Jupyter notebook, or JupyterLab environment, run the following code to install the latest versions of the libraries and restart the kernel\.  
+
+```
+import sys
+import IPython
+!{sys.executable} -m pip install -U sagemaker smdebug
+IPython.Application.instance().kernel.do_shutdown(True)
+```
 
 ## Construct a SageMaker Estimator with Debugger<a name="debugger-configuration-structure"></a>
 
@@ -18,32 +25,37 @@ The following example codes are not directly executable\. You need to proceed to
 ------
 #### [ TensorFlow ]
 
+To access the deep profiling feature for TensorFlow, currently you need to specify the latest AWS deep learning container images with CUDA 11\. For example, you must specify the specific image URI as shown in the following example code:
+
 ```
 # An example of constructing a SageMaker TensorFlow estimator
+import boto3
 import sagemaker
 from sagemaker.tensorflow import TensorFlow
 from sagemaker.debugger import ProfilerConfig, DebuggerHookConfig, Rule, ProfilerRule, rule_configs
 
-profiler_config = ProfilerConfig(...)
-debugger_hook_config = DebuggerHookConfig(...)
-rules = [
+session=boto3.session.Session()
+region=session.region_name
+
+profiler_config=ProfilerConfig(...)
+debugger_hook_config=DebuggerHookConfig(...)
+rules=[
     Rule.sagemaker(rule_configs.built_in_rule()),
     ProfilerRule.sagemaker(rule_configs.BuiltInRule())
 ]
 
-estimator = TensorFlow(
+estimator=TensorFlow(
     entry_point="directory/to/your_training_script.py",
     role=sagemaker.get_execution_role(),
     base_job_name="debugger-demo",
     instance_count=1,
     instance_type="ml.p3.2xlarge",
-    framework_version="2.3.1",
-    py_version="py37",
+    image_uri=f"763104351884.dkr.ecr.{region}.amazonaws.com/tensorflow-training:2.3.1-gpu-py37-cu110-ubuntu18.04"
     
     # Debugger-specific parameters
-    profiler_config = profiler_config,
-    debugger_hook_config = debugger_hook_config,
-    rules = rules
+    profiler_config=profiler_config,
+    debugger_hook_config=debugger_hook_config,
+    rules=rules
 )
 
 estimator.fit(wait=False)
@@ -52,33 +64,37 @@ estimator.fit(wait=False)
 ------
 #### [ PyTorch ]
 
+To access the deep profiling feature for PyTorch, currently you need to specify the latest AWS deep learning container images with CUDA 11\. For example, you must specify the specific image URI as shown in the following example code:
+
 ```
 # An example of constructing a SageMaker PyTorch estimator
+import boto3
 import sagemaker
 from sagemaker.pytorch import PyTorch
 from sagemaker.debugger import ProfilerConfig, DebuggerHookConfig, Rule, ProfilerRule, rule_configs
 
-profiler_config = ProfilerConfig(...)
-debugger_hook_config = DebuggerHookConfig(...)
-rules = [
+session=boto3.session.Session()
+region=session.region_name
+
+profiler_config=ProfilerConfig(...)
+debugger_hook_config=DebuggerHookConfig(...)
+rules=[
     Rule.sagemaker(rule_configs.built_in_rule()),
     ProfilerRule.sagemaker(rule_configs.BuiltInRule())
 ]
 
-estimator = PyTorch(
+estimator=PyTorch(
     entry_point="directory/to/your_training_script.py",
     role=sagemaker.get_execution_role(),
     base_job_name="debugger-demo",
     instance_count=1,
     instance_type="ml.p3.2xlarge",
-
-    framework_version="1.6.0",
-    py_version="py36",
+    image_uri=f"763104351884.dkr.ecr.{region}.amazonaws.com/pytorch-training:1.6.0-gpu-py36-cu110-ubuntu18.04",
     
     # Debugger-specific parameters
-    profiler_config = profiler_config,
-    debugger_hook_config = debugger_hook_config,
-    rules = rules
+    profiler_config=profiler_config,
+    debugger_hook_config=debugger_hook_config,
+    rules=rules
 )
 
 estimator.fit(wait=False)
@@ -93,14 +109,14 @@ import sagemaker
 from sagemaker.mxnet import MXNet
 from sagemaker.debugger import ProfilerConfig, DebuggerHookConfig, Rule, ProfilerRule, rule_configs
 
-profiler_config = ProfilerConfig(...)
-debugger_hook_config = DebuggerHookConfig(...)
-rules = [
+profiler_config=ProfilerConfig(...)
+debugger_hook_config=DebuggerHookConfig(...)
+rules=[
     Rule.sagemaker(rule_configs.built_in_rule()),
     ProfilerRule.sagemaker(rule_configs.BuiltInRule())
 ]
 
-estimator = MXNet(
+estimator=MXNet(
     entry_point="directory/to/your_training_script.py",
     role=sagemaker.get_execution_role(),
     base_job_name="debugger-demo",
@@ -110,9 +126,9 @@ estimator = MXNet(
     py_version="py37",
     
     # Debugger-specific parameters
-    profiler_config = profiler_config,
-    debugger_hook_config = debugger_hook_config,
-    rules = rules
+    profiler_config=profiler_config,
+    debugger_hook_config=debugger_hook_config,
+    rules=rules
 )
 
 estimator.fit(wait=False)
@@ -130,14 +146,14 @@ import sagemaker
 from sagemaker.xgboost.estimator import XGBoost
 from sagemaker.debugger import ProfilerConfig, DebuggerHookConfig, Rule, ProfilerRule, rule_configs
 
-profiler_config = ProfilerConfig(...)
-debugger_hook_config = DebuggerHookConfig(...)
-rules = [
+profiler_config=ProfilerConfig(...)
+debugger_hook_config=DebuggerHookConfig(...)
+rules=[
     Rule.sagemaker(rule_configs.built_in_rule()),
     ProfilerRule.sagemaker(rule_configs.BuiltInRule())
 ]
 
-estimator = XGBoost(
+estimator=XGBoost(
     entry_point="directory/to/your_training_script.py",
     role=sagemaker.get_execution_role(),
     base_job_name="debugger-demo",
@@ -146,9 +162,9 @@ estimator = XGBoost(
     framework_version="1.2-1",
 
     # Debugger-specific parameters
-    profiler_config = profiler_config,
-    debugger_hook_config = debugger_hook_config,
-    rules = rules
+    profiler_config=profiler_config,
+    debugger_hook_config=debugger_hook_config,
+    rules=rules
 )
 
 estimator.fit(wait=False)
@@ -162,6 +178,7 @@ For XGBoost, when configuring the `profiler_config` parameter, you can only conf
 
 ```
 # An example of constructing a SageMaker generic estimator using the XGBoost algorithm base image
+import boto3
 import sagemaker
 from sagemaker.estimator import Estimator
 from sagemaker import image_uris
@@ -174,9 +191,11 @@ rules=[
     ProfilerRule.sagemaker(rule_configs.BuiltInRule())
 ]
 
+region=boto3.Session().region_name
 xgboost_container=sagemaker.image_uris.retrieve("xgboost", region, "1.2-1")
 
 estimator=Estimator(
+    role=sagemaker.get_execution_role()
     image_uri=xgboost_container,
     base_job_name="debugger-demo",
     instance_count=1,

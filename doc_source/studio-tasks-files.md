@@ -1,4 +1,4 @@
-# Upload files to Amazon SageMaker Studio<a name="studio-tasks-files"></a>
+# Upload Files to SageMaker Studio<a name="studio-tasks-files"></a>
 
 When you onboard to Amazon SageMaker Studio, a home directory is created for you in the Amazon Elastic File System \(Amazon EFS\) volume that was created for your team\. Studio can open only files that have been uploaded to your directory\. The Studio file browser maps to your home directory\.
 

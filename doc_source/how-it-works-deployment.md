@@ -9,7 +9,7 @@ After you train your model, you can deploy it using Amazon SageMaker to get pred
 
 ## Deploy a Model on SageMaker Hosting Services<a name="how-it-works-hosting"></a>
 
-For an example of how to deploy a model to the SageMaker hosting service, see [Step 6\.1: Deploy the Model to SageMaker Hosting Services](ex1-deploy-model.md)\.
+For an example of how to deploy a model to the SageMaker hosting service, see [Deploy the Model to SageMaker Hosting Services](ex1-model-deployment.md#ex1-deploy-model)\.
 
 Or, if you prefer, watch the following video tutorial:
 
@@ -18,6 +18,10 @@ Or, if you prefer, watch the following video tutorial:
 SageMaker provides model hosting services for model deployment, as shown in the following diagram\. SageMaker provides an HTTPS endpoint where your machine learning model is available to provide inferences\. 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sagemaker-architecture.png)
+
+
+
+
 
  Deploying a model using SageMaker hosting services is a three\-step process:
 

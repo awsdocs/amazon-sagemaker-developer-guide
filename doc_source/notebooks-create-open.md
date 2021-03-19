@@ -21,7 +21,7 @@ For information on shutting down the notebook, see [Shut Down Resources](noteboo
 
 ## Open a Studio notebook<a name="notebooks-open"></a>
 
-SageMaker Studio can only open notebooks listed in the Studio file browser\. For instructions on uploading a notebook to the file browser, see [Upload files to Amazon SageMaker Studio](studio-tasks-files.md) or [Clone a Git Repository](studio-tasks-git.md)\.
+SageMaker Studio can only open notebooks listed in the Studio file browser\. For instructions on uploading a notebook to the file browser, see [Upload Files to SageMaker Studio](studio-tasks-files.md) or [Clone a Git Repository in SageMaker Studio](studio-tasks-git.md)\.
 
 **To open a notebook**
 

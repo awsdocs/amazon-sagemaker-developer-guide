@@ -2,7 +2,7 @@
 
 A group of radio buttons\. Only one radio button within the group can be selected\. Choosing one radio button clears any previously chosen radio button within the same group\. For an example of a custom UI template that uses the `crowd-radio-group` element, see this [entity recognition labeling job custom template](https://github.com/aws-samples/amazon-sagemaker-ground-truth-task-uis/blob/master/text/named-entity-recognition-with-additional-classification.liquid.html)\.
 
-The following is an example of the syntax that you can use with the `<crowd-radio-group>` element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+The following is an example of the syntax that you can use with the `<crowd-radio-group>` element\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```
   

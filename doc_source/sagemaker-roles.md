@@ -331,6 +331,8 @@ In the preceding policy, you scope the policy as follows:
 
 The `cloudwatch` and `logs` actions are applicable for "\*" resources\. For more information, see [CloudWatch Resources and Operations](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/iam-access-control-overview-cw.html#CloudWatch_ARN_Format) in the Amazon CloudWatch User Guide\.
 
+
+
 ## CreateHyperParameterTuningJob API: Execution Role Permissions<a name="sagemaker-roles-createhyperparametertiningjob-perms"></a>
 
 For an execution role that you can pass in a `CreateHyperParameterTuningJob` API request, you can attach the following permission policy to the role:

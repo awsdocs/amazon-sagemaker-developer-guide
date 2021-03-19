@@ -17,7 +17,7 @@ The following sections provide additional guidance for the Amazon SageMaker buil
 ## Supervised Learning<a name="algorithms-built-in-supervised-learning"></a>
 
 Amazon SageMaker provides several built\-in general purpose algorithms that can be used for either classification or regression problems\.
-+ [Linear learner algorithm](linear-learner.md)—learns a linear function for regression or a linear threshold function for classification\.
++ [Linear Learner Algorithm](linear-learner.md)—learns a linear function for regression or a linear threshold function for classification\.
 + [Factorization Machines Algorithm](fact-machines.md)—an extension of a linear model that is designed to economically capture interactions between features within high\-dimensional sparse datasets\.
 + [XGBoost Algorithm](xgboost.md)—implementation of the gradient\-boosted trees algorithm that combines an ensemble of estimates from a set of simpler and weaker models\.
 + [K\-Nearest Neighbors \(k\-NN\) Algorithm](k-nearest-neighbors.md)—a non\-parametric method that uses the k nearest labeled points to assign a label to a new data point for classification or a predicted target value from the average of the k nearest points for regression\.
@@ -29,7 +29,7 @@ Amazon SageMaker also provides several built\-in supervised learning algorithms 
 ## Unsupervised Learning<a name="algorithms-built-in-unsupervised-learning"></a>
 
 Amazon SageMaker provides several built\-in algorithms that can be used for a variety of unsupervised learning tasks such as clustering, dimension reduction, pattern recognition, and anomaly detection\.
-+ [Principal Component Analysis \(PCA\) Algorithm](pca.md)—reduces the dimensionality \(number of features\) within a dataset by projecting data points onto the first few principal components\. The objective is to retain as much information or variation as possible\. For mathematicians, principal components are eigenvectors of the data's covariance matrix
++ [Principal Component Analysis \(PCA\) Algorithm](pca.md)—reduces the dimensionality \(number of features\) within a dataset by projecting data points onto the first few principal components\. The objective is to retain as much information or variation as possible\. For mathematicians, principal components are eigenvectors of the data's covariance matrix\.
 + [K\-Means Algorithm](k-means.md)—finds discrete groupings within data, where members of a group are as similar as possible to one another and as different as possible from members of other groups\.
 + [IP Insights](ip-insights.md)—learns the usage patterns for IPv4 addresses\. It is designed to capture associations between IPv4 addresses and various entities, such as user IDs or account numbers\.
 + [Random Cut Forest \(RCF\) Algorithm](randomcutforest.md)—detects anomalous data points within a data set that diverge from otherwise well\-structured or patterned data\.
@@ -63,7 +63,7 @@ SageMaker also provides image processing algorithms that are used for image clas
 + [K\-Means Algorithm](k-means.md)
 + [K\-Nearest Neighbors \(k\-NN\) Algorithm](k-nearest-neighbors.md)
 + [Latent Dirichlet Allocation \(LDA\) Algorithm](lda.md)
-+ [Linear learner algorithm](linear-learner.md)
++ [Linear Learner Algorithm](linear-learner.md)
 + [Neural Topic Model \(NTM\) Algorithm](ntm.md)
 + [Object2Vec Algorithm](object2vec.md)
 + [Object Detection Algorithm](object-detection.md)

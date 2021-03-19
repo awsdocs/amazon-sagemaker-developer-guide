@@ -14,7 +14,11 @@ For information on how to onboard using AWS Single Sign\-On \(AWS SSO\), see [On
 
 1. For **Authentication method**, choose **AWS Identity and Access Management \(IAM\)**\.
 
-1. Under **Permission**, for **Execution role for all users**, choose an option from the role selector\. If you choose **Create a new role**, the **Create an IAM role** dialog opens:
+1. Under **Permission**, for **Execution role for all users**, choose an option from the role selector\.
+
+   If you choose **Enter a custom IAM role ARN**, the role must have at a minimum, an attached trust policy that grants SageMaker permission to assume the role\. For more information, see [SageMaker Roles](sagemaker-roles.md)\.
+
+   If you choose **Create a new role**, the **Create an IAM role** dialog opens:
 
    1. For **S3 buckets you specify**, specify additional S3 buckets that users of your notebooks can access\. If you don't want to add access to more buckets, choose **None**\.
 
@@ -29,6 +33,8 @@ For information on how to onboard using AWS Single Sign\-On \(AWS SSO\), see [On
 1. Choose **Submit**\.
 
    On the **Amazon SageMaker Studio Control Panel**, under **Studio Summary**, wait for **Status** to change to **Ready** and the **Add user** button to be enabled\.
+
+   
 
 1. Choose **Add user**\.
 
@@ -56,4 +62,4 @@ Now that you've onboarded to SageMaker Studio, use the following steps to subseq
 
 1. On the **Amazon SageMaker Studio Control Panel**, choose your user name and then choose **Open Studio**\.
 
-For information about using SageMaker Studio, see [Get Started with Studio](gs-studio.md)\.
+For information about using SageMaker Studio, see [SageMaker Studio](studio.md)\.

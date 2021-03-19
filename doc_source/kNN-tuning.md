@@ -20,6 +20,8 @@ Choose the `predictor_type` value appropriate for the type of task undertaken to
 | test:accuracy |  When `predictor_type` is set to *classifier*, k\-NN compares the predicted label, based on the average of the k\-nearest neighbors' labels, to the ground truth label provided in the test channel data\. The accuracy reported ranges from 0\.0 \(0%\) to 1\.0 \(100%\)\.  |  Maximize  | 
 | test:mse |  When `predictor_type` is set to *regressor*, k\-NN compares the predicted label, based on the average of the k\-nearest neighbors' labels, to the ground truth label provided in the test channel data\. The mean squared error is computed by comparing the two labels\.  |  Minimize  | 
 
+
+
 ## Tunable k\-NN Hyperparameters<a name="km-tunable-hyperparameters"></a>
 
 Tune the Amazon SageMaker k\-nearest neighbor model with the following hyperparameters\.

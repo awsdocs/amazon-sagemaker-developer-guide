@@ -35,3 +35,7 @@ When you onboard to Studio, SageMaker creates an Amazon Elastic File System \(EF
 **EBS access**
 
 An Amazon Elastic Block Store \(Amazon EBS\) volume is attached to the host instance and shared across all images\. It's used for the root volume of the notebooks and stores temporary data that's generated inside the container\. The storage isn't persisted when the instance running the notebooks is deleted\. The root user inside the container can't access the EBS volume\.
+
+**IMDS access**
+
+Due to security concerns, access to the Amazon Elastic Compute Cloud \(Amazon EC2\) Instance Metadata Service \(IMDS\) is unavailable in SageMaker Studio\. For more information on IMDS, see [Instance metadata and user data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)\.

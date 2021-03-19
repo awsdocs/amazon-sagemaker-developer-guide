@@ -4,7 +4,7 @@ The form wrapper for all custom tasks\. Sets and implements important actions fo
 
 If a [crowd\-button](sms-ui-template-crowd-button.md) of type "submit" is not included inside the `<crowd-form>` element, it will automatically be appended within the `<crowd-form>` element\. 
 
-The following is an example of an image classification template that uses the `<crowd-form>` element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+The following is an example of an image classification template that uses the `<crowd-form>` element\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>

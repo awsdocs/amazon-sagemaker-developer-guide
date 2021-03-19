@@ -8,7 +8,7 @@ There are quotas that limit the resources available to you when using Amazon Sag
 
 ## Quotas that you can increase<a name="autopilot-quotas-limits-increasable"></a>
 
-There are default limits for the size of datasets for the number of concurrrent jobs you can run with Amazon SageMaker Autopilot for each AWS account, per AWS Region\. You can can increase these limits by contacting AWS Support\.
+There are default limits for the size of datasets for the number of concurrent jobs you can run with Amazon SageMaker Autopilot for each AWS account, per AWS Region\. You can increase these limits by contacting AWS Support\.
 
 
 **Resource limits**  

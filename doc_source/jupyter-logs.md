@@ -8,7 +8,9 @@ Jupyter logs include important information such as events, metrics, and health i
 
 1. Choose **Notebook instances**\.
 
-1. In the list of notebook instances, choose the notebook instance for which you want to view Jupyter logs\.
+1. In the list of notebook instances, choose the notebook instance for which you want to view Jupyter logs by selecting the Notebook instance **Name**\.
+
+   This will bring you to the details page for that notebook instance\.
 
 1. Under **Monitor** on the notebook instance details page, choose **View logs**\.
 

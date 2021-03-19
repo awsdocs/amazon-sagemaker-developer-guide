@@ -46,6 +46,8 @@ The last three environment variables come from the API call made by the user\. I
    
 + You can't use the `init` initializer as your entry point in SageMaker containers because it gets confused by the train and serve arguments\.
 
+  
+
 ## How SageMaker Loads Your Model Artifacts<a name="your-algorithms-batch-code-load-artifacts"></a>
 
 In a [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) request, container definitions include the `ModelDataUrl` parameter, which identifies the location in Amazon S3 where model artifacts are stored\. When you use SageMaker to run inferences, it uses this information to determine from where to copy the model artifacts\. It copies the artifacts to the `/opt/ml/model` directory in the Docker container for use by your inference code\.

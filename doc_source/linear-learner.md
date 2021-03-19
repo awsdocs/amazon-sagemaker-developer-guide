@@ -1,4 +1,4 @@
-# Linear learner algorithm<a name="linear-learner"></a>
+# Linear Learner Algorithm<a name="linear-learner"></a>
 
 *Linear models* are supervised learning algorithms used for solving either classification or regression problems\. For input, you give the model labeled examples \(*x*, *y*\)\. *x* is a high\-dimensional vector and *y* is a numeric label\. For binary classification problems, the label must be either 0 or 1\. For multiclass classification problems, the labels must be from 0 to `num_classes` \- 1\. For regression problems, *y* is a real number\. The algorithm learns a linear function, or, for classification problems, a linear threshold function, and maps a vector *x* to an approximation of the label *y*\. 
 

@@ -2,7 +2,7 @@
 
 A widget for drawing rectangles on an image and assigning a label to the portion of the image that is enclosed in each rectangle\.
 
-The following is an example of a Liquid template that uses the `<crowd-bounding-box>` element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. For more examples, see this [GitHub repository](https://github.com/aws-samples/amazon-sagemaker-ground-truth-task-uis/tree/master/images)\. 
+The following is an example of a Liquid template that uses the `<crowd-bounding-box>` element\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. For more examples, see this [GitHub repository](https://github.com/aws-samples/amazon-sagemaker-ground-truth-task-uis/tree/master/images)\. 
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>

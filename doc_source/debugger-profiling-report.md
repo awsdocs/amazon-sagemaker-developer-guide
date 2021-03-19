@@ -1,6 +1,16 @@
 # SageMaker Debugger Profiling Report<a name="debugger-profiling-report"></a>
 
-The Debugger [ProfilerReport](debugger-built-in-rules.md#profiler-report) rule invokes all of the [monitoring and profiling rules](debugger-built-in-rules.md#built-in-rules-monitoring) and aggregates the rule analysis into a comprehensive report\. Following this guide, download the report using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) or the S3 console, and learn what you can interpret from the profiling results\.
+For any SageMaker training jobs, the Debugger [ProfilerReport](debugger-built-in-rules.md#profiler-report) rule invokes all of the [monitoring and profiling rules](debugger-built-in-rules.md#built-in-rules-monitoring) and aggregates the rule analysis into a comprehensive report\. Following this guide, download the report using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) or the S3 console, and learn what you can interpret from the profiling results\.
+
+**Important**  
+To use the new Debugger features, you need to upgrade the SageMaker Python SDK and the SMDebug client library\. In your iPython kernel, Jupyter notebook, or JupyterLab environment, run the following code to install the latest versions of the libraries and restart the kernel\.  
+
+```
+import sys
+import IPython
+!{sys.executable} -m pip install -U sagemaker smdebug
+IPython.Application.instance().kernel.do_shutdown(True)
+```
 
 **Topics**
 + [Download a Debugger Profiling Report](#debugger-profiling-report-download)
@@ -11,7 +21,7 @@ The Debugger [ProfilerReport](debugger-built-in-rules.md#profiler-report) rule i
 Download the Debugger profiling report while your training job is running or after the job has finished using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) and AWS Command Line Interface \(CLI\)\.
 
 **Tip**  
-You can also download the report with one click and no additional scripting through the SageMaker Studio Debugger insights dashboard\. To find out how to download the report from Studio, see [Debugger for Insights on Studio](debugger-on-studio-insights.md)\.
+You can also download the report with one click and no additional scripting through the SageMaker Studio Debugger insights dashboard\. To find out how to download the report from Studio, see [Open Amazon SageMaker Debugger Insights Dashboard](debugger-on-studio-insights.md)\.
 
 ------
 #### [ Download using SageMaker Python SDK and AWS CLI ]

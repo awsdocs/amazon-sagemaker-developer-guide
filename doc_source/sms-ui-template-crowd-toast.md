@@ -2,7 +2,7 @@
 
 A subtle notification that temporarily appears on the display\. Only one crowd\-toast is visible\.
 
-The following is an example of a Liquid template that uses the `<crowd-toast>` element\. Copy the following code and save it in a file with the extenion `.html`\. Open the file in any browser to preview and interact with this template\. 
+The following is an example of a Liquid template that uses the `<crowd-toast>` element\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>

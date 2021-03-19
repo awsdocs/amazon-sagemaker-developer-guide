@@ -1,8 +1,8 @@
 # Delete an Amazon SageMaker Studio Domain<a name="gs-studio-delete-domain"></a>
 
-When you onboard to Amazon SageMaker Studio using IAM authentication, Studio creates a domain for your account\. A domain consists of a list of authorized users, configuration settings, and an Amazon Elastic File System \(Amazon EFS\) volume, which contains data for the users, including notebooks, resources, and artifacts\. A user can have multiple applications \(apps\) which support the reading and execution experience of the user’s notebooks, terminals, and consoles\.
+When you onboard to Amazon SageMaker Studio using IAM authentication, Studio creates a domain for your account\. A domain consists of a list of authorized users, configuration settings, and an Amazon Elastic File System \(Amazon EFS\) volume, which contains data for the users, including notebooks, resources, and artifacts\. A user can have multiple applications \(apps\) which support the reading and execution experience of the user’s notebooks, terminals, and consoles\. For more information on the EFS volume, see [Manage Your EFS Storage Volume in SageMaker Studio](studio-tasks-manage-storage.md)\.
 
-To return Studio to the state it was in before you onboarded, you must delete this domain\. Before a domain is deleted, the Amazon EFS volume is detached but not deleted\. To delete the EFS volume, see [Manage Your EFS Storage Volume](studio-tasks-manage-storage.md)\.
+To return Studio to the state it was in before you onboarded, you must delete this domain\. You can delete the domain by using the Studio Control Panel, the AWS Command Line Interface \(AWS CLI\), or the SageMaker SDK\. When you use the Studio Control Panel to delete the domain, the Amazon EFS volume is detached but not deleted\. The same behavior occurs by default when you use the AWS CLI or the SDK to delete the domain\. However, when you use the AWS CLI or the SDK, you can set the `RetentionPolicy` to `HomeEfsFileSystem=Delete` to delete the EFS volume along with the domain\.
 
 You must delete the domain if you want to switch authentication modes from IAM to AWS SSO\.
 
@@ -39,15 +39,13 @@ You can only delete an app whose status is `InService`, which is displayed as **
 
    1. When the **Status** for all apps show as **Deleted**, choose **Delete user**\.
 **Important**  
-When a user is deleted, they lose access to the Amazon EFS volume that contains their data, including notebooks and other artifacts\.
+When a user is deleted, they lose access to the Amazon EFS volume that contains their data, including notebooks and other artifacts\. The data is not deleted and can be accessed by an administrator\.
 
 1. When all users are deleted, choose **Delete Studio**\.
 
 1. On the **Delete Studio** dialog, choose **Yes, delete Studio**, type *delete* in the confirmation field, and then choose **Delete**\.
 
 ## Delete a SageMaker Studio Domain \(CLI\)<a name="gs-studio-delete-domain-cli"></a>
-
-For a list of AWS Regions supported by Amazon SageMaker Studio, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
 
 **To delete a domain**
 
@@ -89,9 +87,10 @@ For a list of AWS Regions supported by Amazon SageMaker Studio, see [Onboard to 
        --user-profile-name UserProfileName
    ```
 
-1. Delete the domain\.
+1. Delete the domain\. To also delete the Amazon EFS volume, specify `HomeEfsFileSystem=Delete`\.
 
    ```
    aws --region Region sagemaker delete-domain \
-       --domain-id DomainId
+       --domain-id DomainId \
+       --retention-policy HomeEfsFileSystem=Retain
    ```

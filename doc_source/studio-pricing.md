@@ -8,4 +8,4 @@ Additional costs are incurred when other operations are run inside Studio, for e
 
 For information on the costs associated with using Studio notebooks, see [Usage Metering](notebooks-usage-metering.md)\.
 
-For information about billing along with pricing examples, see [SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/)\.
+For information about billing along with pricing examples, see [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/)\.

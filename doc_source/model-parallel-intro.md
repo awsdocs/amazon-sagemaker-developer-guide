@@ -15,11 +15,11 @@ To overcome the limitations associated with training a model on a single GPU, yo
 ## Important Considerations when Using Model Parallelism<a name="model-parallel-important-considerations"></a>
 
 When you use model parallelism, you must consider the following:
-+ **How you split your model across devices **: The computational graph of your model, sizes of model parameters and activations, and your resource constraints \(for example, time vs\. memory\) will determine the best partitioning strategy\.
++ **How you split your model across devices **: The computational graph of your model, sizes of model parameters and activations, and your resource constraints \(for example, time vs\. memory\) determine the best partitioning strategy\.
 
-  To reduce the time and effort required to efficiently split your model, you can use automated model splitting features offered by SMP\.
+  To reduce the time and effort required to efficiently split your model, you can use automated model splitting features offered by Amazon SageMaker's distributed model parallel library\.
 + **Achieving parallelization **: Model training—that is, forward computations and backward propagation—is inherently sequential, where each operation must wait for its inputs to be computed by another operation\. For this reason, forward and backward pass stages of deep learning training are not easily parallelizable, and naively splitting a model across multiple GPUs may lead to poor device utilization\. For example, a layer on GPU `i+1` has to wait for the output from a layer on GPU `i`, and so GPU `i+1` remains idle during this waiting period\.
 
-  SMP can achieve true parallelization by implementing pipelined execution by building an efficient computation schedule where different devices can work on forward and backward passes for different data samples at the same time\.
+  The model parallel library can achieve true parallelization by implementing pipelined execution by building an efficient computation schedule where different devices can work on forward and backward passes for different data samples at the same time\.
 
-To learn how you can use SMP to efficiently split your model across devices and improve device utilization during training, see [Core Features of SageMaker distributed model parallel](model-parallel-core-features.md)\.
+To learn how you can use the library to efficiently split your model across devices and improve device utilization during training, see [Core Features of SageMaker Distributed Model Parallel](model-parallel-core-features.md)\.

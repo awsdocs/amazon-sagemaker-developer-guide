@@ -1,6 +1,6 @@
-# Inspect reports for data bias drift<a name="clarify-model-monitor-bias-drift-report"></a>
+# Inspect Reports for Data Bias Drift<a name="clarify-model-monitor-bias-drift-report"></a>
 
-You are not able to inspect the results of the monitoring in the generated reports\.
+If you are not able to inspect the results of the monitoring in the generated reports in SageMaker Studio, you can print them out as follows:
 
 ```
 schedule_desc = model_bias_monitor.describe_schedule()
@@ -17,7 +17,7 @@ else:
     print("====STOP==== \n No completed executions to inspect further. Please wait till an execution completes or investigate previously reported failures.")
 ```
 
- If there are violations compared to the baseline, they will be listed here\.
+ If there are violations compared to the baseline, they are listed here:
 
 ```
 if last_model_bias_monitor_execution:
@@ -26,4 +26,4 @@ if last_model_bias_monitor_execution:
         print(model_bias_violations.body_dict)
 ```
 
-The analysis results and CloudWatch metrics are visualized in SageMaker Studio\. Select the Endpoints tab, then double click the endpoint to observe them in the Studio UI\.
+In SageMaker Studio, you can see visualizations of the analysis results and CloudWatch metrics by choosing the **Endpoints** tab, and then double\-clicking the endpoint\.

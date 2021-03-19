@@ -101,7 +101,7 @@ To restart a stopped training job, use the URL to the model artifacts that are s
 
 1. Choose **Create training job**\. SageMaker creates and runs training job\.
 
-After the training job has completed, the newly trained model artifacts are stored under the **S3 output path** that you provided in the **Output data configuration** field\. To deploy the model to get predictions, see [Step 6: Deploy the Model to Amazon SageMaker](ex1-model-deployment.md)\.
+After the training job has completed, the newly trained model artifacts are stored under the **S3 output path** that you provided in the **Output data configuration** field\. To deploy the model to get predictions, see [Step 5: Deploy the Model to Amazon EC2](ex1-model-deployment.md)\.
 
 ## Perform Incremental Training \(API\)<a name="incremental-training-api"></a>
 
@@ -234,4 +234,4 @@ incr_ic = sagemaker.estimator.Estimator(training_image,
 incr_ic.fit(inputs=data_channels, logs=True)
 ```
 
-After the training job has completed, the newly trained model artifacts are stored under the `S3 output path` that you provided in `Output_path`\. To deploy the model to get predictions, see [Step 6: Deploy the Model to Amazon SageMaker](ex1-model-deployment.md)\.
+After the training job has completed, the newly trained model artifacts are stored under the `S3 output path` that you provided in `Output_path`\. To deploy the model to get predictions, see [Step 5: Deploy the Model to Amazon EC2](ex1-model-deployment.md)\.

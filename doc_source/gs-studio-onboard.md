@@ -7,9 +7,7 @@ When onboarding, you can choose to use either AWS Single Sign\-On \(AWS SSO\) or
 **Note**  
 If you onboard using IAM authentication and want to switch to AWS SSO authentication later, you must delete the domain created for you by SageMaker Studio\. Then, you need to manually re\-import all notebooks and other user data that you created\. For more information, see [Delete an Amazon SageMaker Studio Domain](gs-studio-delete-domain.md)\.
 
-The simplest way to create a Amazon SageMaker Studio account is to follow the **Quick start** procedure\.
-
-For more control, including the option of using AWS SSO authentication, use the **Standard setup** procedures\.
+The simplest way to create a Amazon SageMaker Studio account is to follow the **Quick start** procedure\. Quick start uses the same default settings as the **Standard setup** procedures\. These settings include shareable notebooks and public internet access\. For more control, including the option of using AWS SSO authentication, use the **Standard setup** procedures\.
 
 **AWS SSO Authentication**
 

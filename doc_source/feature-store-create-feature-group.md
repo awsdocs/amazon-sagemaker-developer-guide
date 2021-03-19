@@ -4,7 +4,7 @@
 
  Prior to using a feature store you typically load your dataset, run transformations, and set up your features for ingestion\. This process has a lot of variation and is highly dependent on your data\. The example code in this topic refer to the [Fraud Detection with Amazon SageMaker FeatureStore](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-featurestore/sagemaker_featurestore_fraud_detection_python_sdk.html) example notebook\. We recommend that you run this notebook in Amazon SageMaker Studio because the code in this guide is conceptual and not fully functional if copied\. 
 
- Feature Store supports the following data types: `String`, `Fractional`, and `Integral`\. The default type is set to `String`\. This means that, if a column in your dataset is not a `float` or `long` type, it defaults to `String` in your feature store\. 
+ Feature Store supports the following data types: `String`, `Fractional` \(IEEE 64\-bit floating point value\), and `Integral` \(Int64 \- 64 bit signed integral value\)\. The default type is set to `String`\. This means that, if a column in your dataset is not a `float` or `long` type, it defaults to `String` in your feature store\. 
 
  You may use a schema to describe your data’s columns and data types\. You pass this schema into `FeatureDefinitions`, a required parameter for a `FeatureGroup`\. You can use the SageMaker Python SDK, which has automatic data type detection when you use the `load_feature_definitions` function\.  
 
@@ -29,13 +29,13 @@ import boto3
 import sagemaker
 from sagemaker.session import Session
 
-boto_session = boto3.Session(region_name=region)
-role = sagemaker.get_execution_role()
 sagemaker_session = sagemaker.Session()
 region = sagemaker_session.boto_region_name
+boto_session = boto3.Session(region_name=region)
+role = sagemaker.get_execution_role()
 default_bucket = sagemaker_session.default_bucket()
 prefix = 'sagemaker-featurestore'
-offline_feature_store_bucket = 's3://*{}*/*{}*'.format(default_bucket, prefix)
+offline_feature_store_bucket = 's3://{}/{}'.format(default_bucket, prefix)
 
 sagemaker_client = boto_session.client(service_name='sagemaker', region_name=region)
 featurestore_runtime = boto_session.client(service_name='sagemaker-featurestore-runtime', region_name=region)
