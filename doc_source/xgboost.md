@@ -34,7 +34,7 @@ With SageMaker, you can use XGBoost as a built\-in algorithm or framework\. By u
           "gamma":"4",
           "min_child_weight":"6",
           "subsample":"0.7",
-          "verbose":"1",
+          "verbosity":"1",
           "objective":"reg:linear",
           "num_round":"50"}
   
