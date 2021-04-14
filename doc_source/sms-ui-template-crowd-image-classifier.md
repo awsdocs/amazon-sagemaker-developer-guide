@@ -2,6 +2,8 @@
 
 A widget for classifying an image\. Use one of the following supported image formats: APNG, BMP, GIF, ICO, JPEG, PNG, SVG\. Images do not have a size limit\. 
 
+See an interactive example of an HTML template that uses this Crowd HTML Element in [CodePen](https://codepen.io/sagemaker_crowd_html_elements/pen/vYgEvWw)\.
+
 The following is an example of an image classification template that uses the `<crowd-image-classifier>` element\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```

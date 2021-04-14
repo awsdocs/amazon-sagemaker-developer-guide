@@ -7,11 +7,11 @@ When used with Amazon A2I, the Amazon Rekognition `DetectModerationLabels` opera
   + Using the `ModerationLabelConfidenceCheck` condition, randomly sample a percentage of the inferences that met the conditions specified in `ModerationLabelConfidenceCheck` to start a human loop and send only the specified percentage to humans for review\. 
 
 **Note**  
-If you send the same request to `DetectModerationLabels` multiple times, the result of `Sampling` will not change for the inference of that input\. For example, if you make a `DetectModerationLabels` request once, and `Sampling` does not trigger a HumanLoop, subsequent requests to `DetectModerationLabels` with the same configuration won't trigger a human loop\. 
+If you send the same request to `DetectModerationLabels` multiple times, the result of `Sampling` does not change for the inference of that input\. For example, if you make a `DetectModerationLabels` request once, and `Sampling` does not initiate a human loop, subsequent requests to `DetectModerationLabels` with the same configuration don't initiate a human loop\. 
 
 When creating a flow definition, if you use the default worker task template that is provided in the **Human review workflows** section of the Amazon SageMaker console, inferences sent for human review by these activation conditions are included in the worker UI when a worker opens your task\. If you use a custom worker task template, you need to include the `<task.input.selectedAiServiceResponse.blocks>` custom HTML element to access these inferences\. For an example of a custom template that uses this HTML element, see [Custom Template Example for Amazon Rekognition](a2i-custom-templates.md#a2i-custom-templates-rekognition-sample)\.
 
-## ModerationLabelConfidenceCheck Inputs<a name="a2i-rek-moderationlabelconfidencecheck"></a>
+## `ModerationLabelConfidenceCheck` Inputs<a name="a2i-rek-moderationlabelconfidencecheck"></a>
 
 For the `ModerationLabelConfidenceCheck` `ConditionType`, the following `ConditionParameters` are supported:
 + `ModerationLabelName` – The exact \(case\-sensitive\) name of a [ModerationLabel](https://docs.aws.amazon.com/rekognition/latest/dg/API_ModerationLabel.html) detected by the Amazon Rekognition `DetectModerationLabels` operation\. You can specify the special catch\-all value \(\*\) to denote any moderation label\.
@@ -29,15 +29,15 @@ The `Sampling` `ConditionType` supports the `RandomSamplingPercentage` `Conditio
 
 ## Examples<a name="a2i-json-rek-activation-condition-examples"></a>
 
-**Example 1: Use ModerationLabelConfidenceCheck with the And operator**
+**Example 1: Use `ModerationLabelConfidenceCheck` with the `And` operator**
 
-The following example of a `HumanLoopActivationConditions` condition triggers a HumanLoop when one or more of the following conditions are met:
+The following example of a `HumanLoopActivationConditions` condition initiates a human loop when one or more of the following conditions are met:
 + Amazon Rekognition detects the `Graphic Male Nudity` moderation label with a confidence between 90 and 99\.
 + Amazon Rekognition detects the `Graphic Female Nudity` moderation label with a confidence between 80 and 99\.
 
-Note the use of the Or and And logical operators to model this logic\.
+Note the use of the `Or` and `And` logical operators to model this logic\.
 
-Although only one of the two conditions under the `Or` operator need to evaluate to true for a HumanLoop to be created, Amazon Augmented AI evaluates all conditions\. Human reviewers are asked to review the moderation labels for all the conditions that evaluated to true\.
+Although only one of the two conditions under the `Or` operator needs to evaluate to `true` for a human loop to be created, Amazon Augmented AI evaluates all conditions\. Human reviewers are asked to review the moderation labels for all the conditions that evaluated to `true`\.
 
 ```
 {
@@ -81,9 +81,9 @@ Although only one of the two conditions under the `Or` operator need to evaluate
 }
 ```
 
-**Example 2: Use ModerationLabelConfidenceCheck with the catch\-all value \(\*\) **
+**Example 2: Use `ModerationLabelConfidenceCheck` with the catch\-all value \(\*\) **
 
-In the following example, if any moderation label with a confidence greater than or equal to 75 is detected, a HumanLoop is triggered\. Human reviewers are asked to review all moderation labels with confidence scores greater than or equal to 75\.
+In the following example, if any moderation label with a confidence greater than or equal to 75 is detected, a human loop is initiated\. Human reviewers are asked to review all moderation labels with confidence scores greater than or equal to 75\.
 
 ```
 {
@@ -101,7 +101,7 @@ In the following example, if any moderation label with a confidence greater than
 
 **Example 3: Use Sampling**
 
-In the following example, 5% of Amazon Rekognition inferences from a `DetectModerationLabels` request will be sent to human workers\. When using the default worker task template provided in the SageMaker console, all moderation labels returned by Amazon Rekognition are sent to workers for review\.
+In the following example, 5% of Amazon Rekognition inferences from a `DetectModerationLabels` request are sent to human workers\. When using the default worker task template provided in the SageMaker console, all moderation labels returned by Amazon Rekognition are sent to workers for review\.
 
 ```
 {
@@ -116,9 +116,9 @@ In the following example, 5% of Amazon Rekognition inferences from a `DetectMode
 }
 ```
 
-**Example 4: Use Sampling and ModerationLabelConfidenceCheck with the And operator**
+**Example 4: Use Sampling and `ModerationLabelConfidenceCheck` with the `And` operator**
 
-In this example, 5% of Amazon Rekognition inferences of the `Graphic Male Nudity` moderation label with a confidence greater than 50 will be sent workers for review\. When using the default worker task template provided in the SageMaker console, only the `Graphic Male Nudity` label will be sent to workers for review\. 
+In this example, 5% of Amazon Rekognition inferences of the `Graphic Male Nudity` moderation label with a confidence greater than 50 are sent workers for review\. When using the default worker task template provided in the SageMaker console, only the inferences of the `Graphic Male Nudity` label are sent to workers for review\. 
 
 ```
 {
@@ -144,13 +144,13 @@ In this example, 5% of Amazon Rekognition inferences of the `Graphic Male Nudity
 }
 ```
 
-**Example 5: Use Sampling and ModerationLabelConfidenceCheck with the And operator**
+**Example 5: Use Sampling and `ModerationLabelConfidenceCheck` with the `And` operator**
 
-Use this example to configure your human review workflow to always send low confidence inferences of a specified label for human review and sample high confidence inference of a label at a specified rate\. 
+Use this example to configure your human review workflow to always send low\-confidence inferences of a specified label for human review and sample high\-confidence inferences of a label at a specified rate\. 
 
-In the following example, a human review is triggered in one of the following ways: 
+In the following example, a human review is initiated in one of the following ways: 
 + Inferences for the `Graphic Male Nudity` moderation label the with confidence scores less than 60 are always sent for human review\. Only the `Graphic Male Nudity` label is sent to workers to review\. 
-+ 5% of all inferences for the `Graphic Male Nudity` moderation label the with confidence scores greater than 90 will be sent for human review\. Only the `Graphic Male Nudity` label is sent to workers to review\. 
++ 5% of all inferences for the `Graphic Male Nudity` moderation label the with confidence scores greater than 90 are sent for human review\. Only the `Graphic Male Nudity` label is sent to workers to review\. 
 
 ```
 {
@@ -187,9 +187,9 @@ In the following example, a human review is triggered in one of the following wa
 }
 ```
 
-**Example 6: Use Sampling and ModerationLabelConfidenceCheck with the Or operator**
+**Example 6: Use Sampling and `ModerationLabelConfidenceCheck` with the `Or` operator**
 
-In the following example, a human loop is created if the Amazon Rekognition inference response contains the 'Graphic Male Nudity' label with inference confidence greater than 50\. Additionally, 5% of all other inferences will trigger a human loop\. 
+In the following example, a human loop is created if the Amazon Rekognition inference response contains the 'Graphic Male Nudity' label with inference confidence greater than 50\. Additionally, 5% of all other inferences initiate a human loop\. 
 
 ```
 {

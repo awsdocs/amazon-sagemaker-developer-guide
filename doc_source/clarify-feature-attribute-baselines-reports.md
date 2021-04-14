@@ -1,6 +1,6 @@
 # Create Feature Attribute Baselines and Explainability Reports<a name="clarify-feature-attribute-baselines-reports"></a>
 
-For an example notebook with instructions on how to run a SageMaker Clarify processing job in Studio that creates explanations for its predictions relative to a baseline, see [Explainability and bias detection with Amazon SageMaker Clarify](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker_processing/fairness_and_explainability/fairness_and_explainability.ipynb)\.
+For an example notebook with instructions on how to run a SageMaker Clarify processing job in Studio that creates explanations for its predictions relative to a baseline, see [Explainability and bias detection with Amazon SageMaker Clarify](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker_processing/fairness_and_explainability/fairness_and_explainability.html)\.
 
 If you need instructions on how to open a notebook in Amazon SageMaker Studio, see [Create or Open an Amazon SageMaker Studio Notebook](notebooks-create-open.md)\. The following code examples are taken from the example notebook listed previously\. This section discusses the code related to the use of Shapley values to provide reports that compare the relative contributions each feature made the predictions\.
 

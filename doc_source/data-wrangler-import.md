@@ -44,7 +44,7 @@ If you plan to import CSV file then be aware that a single record must not excee
 
 1. If your CSV file has a header, select the check box next to **Add header to table**\.
 
-1. Use the **Preview** table to preview your dataset\. This table shows up to 500 rows\. 
+1. Use the **Preview** table to preview your dataset\. This table shows up to 100 rows\. 
 
 1. In the **Details** pane, verify or change the **Name** and **File Type** for your dataset\. If you add a **Name** that contains spaces, these spaces are replaced with underscores when your dataset is imported\. 
 

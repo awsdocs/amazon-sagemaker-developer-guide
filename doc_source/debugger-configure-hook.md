@@ -97,7 +97,6 @@ In the following sections, notebooks and code examples of how to use Debugger ho
 + [Save Tensors Using Debugger Built\-in Collections](#debugger-save-built-in-collections)
 + [Save Tensors Using Debugger Modified Built\-in Collections](#debugger-save-modified-built-in-collections)
 + [Save Tensors Using Debugger Custom Collections](#debugger-save-custom-collections)
-+ [Use Amazon SageMaker Debugger to Save TensorBoard Summaries and Histograms](#debugger-enable-tensorboard-summaries)
 
 ### Tensor Visualization Example Notebooks<a name="debugger-tensor-visualization-notebooks"></a>
 
@@ -271,50 +270,3 @@ sagemaker_estimator.fit()
 ```
 
 For a full list of `CollectionConfig` parameters, see [ Debugger CollectionConfig](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/api.md#configuring-collection-using-sagemaker-python-sdk)\.
-
-### Use Amazon SageMaker Debugger to Save TensorBoard Summaries and Histograms<a name="debugger-enable-tensorboard-summaries"></a>
-
-Amazon SageMaker Debugger can automatically generate TensorBoard scalar summaries, distributions, and histograms for saved tensors\. You enable this by passing a `TensorBoardOutputConfig` object when you create an `estimator`, as shown in the following example\. You can also choose to disable or enable histograms for individual collections\. By default, the `save_histogram` flag for a collection is set to `True`\. Debugger adds scalar summaries to TensorBoard for all `ScalarCollections` and scalars saved through `hook.save_scalar`\. For more information about scalar collections and the `save_scalar` method, see the [Debugger Hook API](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/api.md)\.
-
-The following example saves weights and gradients as full tensors, and also saves the gradients as histograms and distributions that can be visualized with TensorBoard\. Amazon SageMaker Debugger saves them in the Amazon S3 location passed in the `TensorBoardOutputConfig` object\.
-
-```
-import sagemaker
-from sagemaker.debugger import DebuggerHookConfig, CollectionConfig, TensorBoardOutputConfig
-
-sagemaker_session=sagemaker.Session()
-BUCKET_NAME=sagemaker_session.default_bucket()
-LOCATION_IN_BUCKET='smdebug-hook-tensorboard'
-
-hook_config=DebuggerHookConfig(
-    s3_output_path='s3://{BUCKET_NAME}/{LOCATION_IN_BUCKET}'.
-                    format(BUCKET_NAME=BUCKET_NAME, 
-                           LOCATION_IN_BUCKET=LOCATION_IN_BUCKET),
-    collection_configs=[
-        CollectionConfig(
-            name="weights",
-            parameters={"save_histogram": "False"}),
-        CollectionConfig(name="gradients"),
-    ]
-)
-
-tb_config=TensorBoardOutputConfig('s3://{BUCKET_NAME}/{LOCATION_IN_BUCKET}'.
-                                    format(BUCKET_NAME=BUCKET_NAME, 
-                                           LOCATION_IN_BUCKET=LOCATION_IN_BUCKET))
-
-from sagemaker.tensorflow import TensorFlow
-sagemaker_estimator=TensorFlow(
-    entry_point='directory/to/your_training_script.py',
-    role=sm.get_execution_role(),
-    base_job_name='smdebug-demo-job',
-    train_instance_count=1,
-    train_instance_type="ml.m4.xlarge",
-    framework_version="2.3.0",
-    py_version="py37",
-    
-    # debugger-specific arguments below
-    debugger_hook_config=hook_config,
-    tensorboard_output_config=tb_config
-)
-sagemaker_estimator.fit(wait=True)
-```

@@ -11,7 +11,7 @@ Take the following into consideration when determining the compute resources you
 
 ## Running the Processing Job<a name="clarify-processing-job-run-code"></a>
 
-For an example notebook with instructions on how to run a SageMaker Clarify processing job in Studio to detect posttraining model bias, see [Explainability and bias detection with Amazon SageMaker Clarify](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker_processing/fairness_and_explainability/fairness_and_explainability.ipynb)\.
+For an example notebook with instructions on how to run a SageMaker Clarify processing job in Studio to detect posttraining model bias, see [Explainability and bias detection with Amazon SageMaker Clarify](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker_processing/fairness_and_explainability/fairness_and_explainability.html)\.
 
 If you need instructions on how to open a notebook in Amazon SageMaker Studio, see [Create or Open an Amazon SageMaker Studio Notebook](notebooks-create-open.md)\. The following code samples are taken from the example notebook listed previously\.
 

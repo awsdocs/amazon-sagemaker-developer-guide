@@ -1,4 +1,4 @@
-# Configuration Tips and Pitfalls<a name="model-parallel-customize-tips-pitfalls"></a>
+# SageMaker distributed model parallel Configuration Tips and Pitfalls<a name="model-parallel-customize-tips-pitfalls"></a>
 
 Review the following tips and pitfalls before using Amazon SageMaker's distributed model parallel library\. This list includes tips that are applicable across frameworks\. For TensorFlow and PyTorch specific tips, see [Modify a TensorFlow Training Script](model-parallel-customize-training-script-tf.md) and [Modify a PyTorch Training Script](model-parallel-customize-training-script-pt.md), respectively\. 
 

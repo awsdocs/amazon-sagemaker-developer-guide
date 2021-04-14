@@ -1,8 +1,8 @@
 # Workforce Authentication and Restrictions<a name="sms-security-workforce-authentication"></a>
 
-Ground Truth enables you to use your own private workforce to work on labeling jobs\. A *private workforce* is an abstract concept and it refers to a set of people who work for you\. Each labeling job is created using a work team, composed of workers in your workforce\. Ground Truth supports private workforce creation using Amazon Cognito\. 
+Ground Truth enables you to use your own private workforce to work on labeling jobs\. A *private workforce* is an abstract concept which refers to a set of people who work for you\. Each labeling job is created using a work team, composed of workers in your workforce\. Ground Truth supports private workforce creation using Amazon Cognito\. 
 
-A Ground Truth workforce maps to a Cognito user pool\. A Ground Truth work team maps to a Cognito user group\. Cognito manages the worker authentication\. Cognito supports Open ID connection \(OIDC\) and customers can set up Cognito federation with their own identity provider \(IdP\)\. 
+A Ground Truth workforce maps to a Amazon Cognito user pool\. A Ground Truth work team maps to a Amazon Cognito user group\. Amazon Cognito manages the worker authentication\. Amazon Cognito supports Open ID connection \(OIDC\) and customers can set up Amazon Cognito federation with their own identity provider \(IdP\)\. 
 
 Ground Truth only allows one workforce per account per AWS Region\. Each workforce has a dedicated Ground Truth work portal login URL\. 
 

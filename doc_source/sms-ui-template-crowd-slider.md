@@ -2,6 +2,8 @@
 
 A bar with a sliding knob that allows a worker to select a value from a range of values by moving the knob\. The slider makes it a great choice for settings that reflect intensity levels, such as volume, brightness, or color saturation\.
 
+See an interactive example of an HTML template that uses this Crowd HTML Element in [CodePen](https://codepen.io/sagemaker_crowd_html_elements/pen/RwKNzWL)\.
+
 The following is an example of a survey template that uses the `<crowd-slider>` element\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```

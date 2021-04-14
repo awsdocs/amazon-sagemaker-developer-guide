@@ -65,7 +65,7 @@ If you want to find direct resources of the Debugger and SMDebug API operations,
 
 If you use the Java SDK to conduct SageMaker training jobs and want to configure Debugger APIs, see the following references:
 + [ Amazon SageMaker Debugger API Operations](debugger-apis.md)
-+ [Use the SageMaker and Debugger Configuration API Operations to Create, Update, Debug, and Profile Your Training Job](debugger-createtrainingjob-api.md)
++ [Configure Debugger Using Amazon SageMaker API](debugger-createtrainingjob-api.md)
 
 This SageMaker Debugger developer guide walks you through the following topics\.
 
@@ -78,9 +78,11 @@ This SageMaker Debugger developer guide walks you through the following topics\.
 + [SageMaker Debugger on Studio](debugger-on-studio.md)
 + [SageMaker Debugger Interactive Reports](debugger-report.md)
 + [Configure Debugger Using Amazon SageMaker Python SDK](debugger-configuration.md)
++ [Configure Debugger Using Amazon SageMaker API](debugger-createtrainingjob-api.md)
 + [List of Debugger Built\-in Rules](debugger-built-in-rules.md)
 + [Create Debugger Custom Rules for Training Job Analysis](debugger-custom-rules.md)
 + [Use Debugger with Custom Training Containers](debugger-bring-your-own-container.md)
 + [Action on Amazon SageMaker Debugger Rules](debugger-action-on-rules.md)
 + [Analyze Data Using the SMDebug Client Library](debugger-analyze-data.md)
++ [Visualize Amazon SageMaker Debugger Output Tensors in TensorBoard](debugger-enable-tensorboard-summaries.md)
 + [Amazon SageMaker Debugger Advanced Topics and Reference Documentation](debugger-reference.md)

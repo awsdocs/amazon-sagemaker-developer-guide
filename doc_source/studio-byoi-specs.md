@@ -22,6 +22,9 @@ Each user in a Studio domain gets a user directory on a shared Amazon Elastic Fi
 SageMaker configures POSIX UID/GID mappings between the image and the host\. This defaults to mapping the root user's UID/GID \(0/0\) to the UID/GID on the host\.  
 You can specify these values using the [CreateAppImageConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAppImageConfig.html) API\.
 
+**GID/UID Limits**  
+SageMaker Studio only supports UID and GID values in the range between 0 and 65535\. This limit applies to files in every layer of the image\.
+
 **Metadata**  
 A metadata file is located at `/opt/ml/metadata/resource-metadata.json`\. No additional environment variables are added to the variables defined in the image\. For more information, see [Get App Metadata](notebooks-run-and-manage-metadata.md#notebooks-run-and-manage-metadata-app)\.
 

@@ -34,7 +34,7 @@ To configure a container to run as an executable, use an `ENTRYPOINT` instructio
   ENTRYPOINT ["python", "k_means_inference.py"]
   ```
 
-  The `exec` form of the `ENTRYPOINT` instruction starts the executable directly, not as a child of `/bin/sh`\. This enables it to receive signals like `SIGTERM` and `SIGKILL` from the SageMaker APIs, which is a requirement\. 
+  The `exec` form of the `ENTRYPOINT` instruction starts the executable directly, not as a child of `/bin/sh`\. This enables it to receive signals like `SIGTERM` and `SIGKILL` from the SageMaker API operations, which is a requirement\. 
 
    
 
@@ -42,7 +42,7 @@ To configure a container to run as an executable, use an `ENTRYPOINT` instructio
 
    
 
-  If you reduce the number of instances backing the endpoint \(by calling the [ `UpdateEndpointWeightsAndCapacities`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateEndpointWeightsAndCapacities.html) APIs\), SageMaker runs a command to stop the Docker container on the instances being terminated\. The command sends the `SIGTERM` signal, then it sends the `SIGKILL` signal thirty seconds later\.
+  If you reduce the number of instances backing the endpoint \(by calling the [ `UpdateEndpointWeightsAndCapacities`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateEndpointWeightsAndCapacities.html) API\), SageMaker runs a command to stop the Docker container on the instances that are being terminated\. The command sends the `SIGTERM` signal, then it sends the `SIGKILL` signal thirty seconds later\.
 
    
 

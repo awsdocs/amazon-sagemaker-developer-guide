@@ -10,6 +10,14 @@ In this tutorial, you run a pipeline using SageMaker Components for Kubeflow Pip
 
 To use Kubeflow Pipelines \(KFP\), you need an Amazon Elastic Kubernetes Service \(Amazon EKS\) cluster and a gateway node to interact with that cluster\. The following sections show the steps needed to set up these resources\. 
 
+**Topics**
++ [Set up a gateway node](#set-up-a-gateway-node)
++ [Set up an Amazon EKS cluster](#set-up-anamazon-eks-cluster)
++ [Install Kubeflow Pipelines](#install-kubeflow-pipelines)
++ [Access the KFP UI](#access-the-kfp-ui)
++ [Create IAM Users/Roles for KFP pods and the SageMaker service](#create-iam-usersroles-for-kfp-pods-and-the-amazon-sagemaker-service)
++ [Add access to additional IAM users or roles](#add-access-to-additional-iam-users-or-roles)
+
 ### Set up a gateway node<a name="set-up-a-gateway-node"></a>
 
 A gateway node is used to create an Amazon EKS cluster and access the Kubeflow Pipelines UI\. Use your local machine or an Amazon EC2 instance as your gateway node\. If you want to use a new Amazon EC2 instance, create one with the latest Ubuntu 18\.04 DLAMI version from the AWS console using the steps in [Launching and Configuring a DLAMI](https://docs.aws.amazon.com/dlami/latest/devguide/launch-config.html)\. 
@@ -186,7 +194,7 @@ Run the following from the command line of your gateway node:
            --region <cluster-region> --approve
    ```
 
-1. Run the following to get the [OIDC](https://openid.net/connect/) issuer URL\. This URL is in the form `https://oidc.eks.<region>.amazonaws.com/id/<OIDC_ID>` \. 
+1. Run the following to get the [OIDC](https://openid.net/connect/) issuer URL\. This URL is in the form `https://oidc.eks.<region>.amazonaws.com/id/<OIDC_ID>`\.
 
    ```
    aws eks describe-cluster --region <cluster-region> --name <cluster-name> --query "cluster.identity.oidc.issuer" --output text
@@ -329,6 +337,14 @@ If you use an intuitive IDE like Jupyter or want other people in your organizati
 ## Running the Kubeflow Pipeline<a name="running-the-kubeflow-pipeline"></a>
 
 Now that setup of your gateway node and Amazon EKS cluster is complete, you can create your classification pipeline\. To create your pipeline, you need to define and compile it\. You then deploy it and use it to run workflows\. You can define your pipeline in Python and use the KFP dashboard, KFP CLI, or Python SDK to compile, deploy, and run your workflows\. The full code for the MNIST classification pipeline example is available in the [Kubeflow Github repository](https://github.com/kubeflow/pipelines/blob/master/samples/contrib/aws-samples/mnist-kmeans-sagemaker)\. To use it, clone the example Python files to your gateway node\. 
+
+**Topics**
++ [Prepare datasets](#prepare-datasets)
++ [Create a Kubeflow Pipeline using SageMaker Components](#create-a-kubeflow-pipeline-usingamazon-sagemaker-components)
++ [Compile and deploy your pipeline](#compile-and-deploy-your-pipeline)
++ [Running predictions](#running-predictions)
++ [View results and logs](#view-results-and-logs)
++ [Cleanup](#cleanup)
 
 ### Prepare datasets<a name="prepare-datasets"></a>
 
@@ -506,20 +522,28 @@ If you want to run predictions from your gateway node, skip this section\.
 
 #### Run predictions<a name="run-predictions"></a>
 
-1. Create a Python file from your client machine named `mnist-predictions.py` with the following content \. Replace the `ENDPOINT_NAME` and `REGION` variables\. This script loads the MNIST dataset, then creates a CSV from those digits and sends it to the endpoint for prediction\. It then outputs the results\. 
+1. Create a Python file from your client machine named `mnist-predictions.py` with the following content\. Replace the `ENDPOINT_NAME` variable\. This script loads the MNIST dataset, then creates a CSV from those digits and sends it to the endpoint for prediction\. It then outputs the results\.
 
    ```
-   import pickle, gzip, numpy, urllib.request, json
-   from urllib.parse import urlparse
-   import json
-   import io
    import boto3
+   import gzip
+   import io
+   import json
+   import numpy
+   import pickle
    
    ENDPOINT_NAME='<endpoint-name>'
-   REGION = '<region>'
+   region = boto3.Session().region_name
+   
+   # S3 bucket where the original mnist data is downloaded and stored
+   downloaded_data_bucket = f"jumpstart-cache-prod-{region}"
+   downloaded_data_prefix = "1p-notebooks-datasets/mnist"
+   
+   # Download the dataset
+   s3 = boto3.client("s3")
+   s3.download_file(downloaded_data_bucket, f"{downloaded_data_prefix}/mnist.pkl.gz", "mnist.pkl.gz")
    
    # Load the dataset
-   urllib.request.urlretrieve("http://deeplearning.net/data/mnist/mnist.pkl.gz", "mnist.pkl.gz")
    with gzip.open('mnist.pkl.gz', 'rb') as f:
        train_set, valid_set, test_set = pickle.load(f, encoding='latin1')
    
@@ -529,7 +553,7 @@ If you want to run predictions from your gateway node, skip this section\.
        numpy.savetxt(csv, arr, delimiter=',', fmt='%g')
        return csv.getvalue().decode().rstrip()
    
-   runtime = boto3.Session(region_name=REGION).client('sagemaker-runtime')
+   runtime = boto3.Session(region).client('sagemaker-runtime')
    
    payload = np2csv(train_set[0][30:31])
    

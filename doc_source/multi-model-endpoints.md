@@ -23,7 +23,7 @@ You can use the AWS SDK for Python \(Boto\) or the SageMaker console to create a
 
 ## Supported Algorithms and Frameworks<a name="multi-model-support"></a>
 
-The inference containers for the following algortihms and frameworks support multi\-model endpoints:
+The inference containers for the following algorithms and frameworks support multi\-model endpoints:
 + [XGBoost Algorithm](xgboost.md)
 + [K\-Nearest Neighbors \(k\-NN\) Algorithm](k-nearest-neighbors.md)
 + [Linear Learner Algorithm](linear-learner.md)

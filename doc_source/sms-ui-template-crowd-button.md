@@ -2,9 +2,7 @@
 
 A styled button that represents some action\.
 
-### Attributes<a name="button-attributes"></a>
-
-The following attributes are supported by this element\.
+See an interactive example of an HTML template that uses this Crowd HTML Element in [CodePen](https://codepen.io/sagemaker_crowd_html_elements/pen/RwKNvgG)\.
 
 The following is an example of a template that uses the `<crowd-button>` element\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
@@ -32,6 +30,10 @@ The following is an example of a template that uses the `<crowd-button>` element
   </crowd-image-classifier>
 </crowd-form>
 ```
+
+### Attributes<a name="button-attributes"></a>
+
+The following attributes are supported by this element\.
 
 #### disabled<a name="button-attributes-disabled"></a>
 

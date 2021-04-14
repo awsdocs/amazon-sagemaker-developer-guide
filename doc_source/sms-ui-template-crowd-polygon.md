@@ -2,6 +2,8 @@
 
 A widget for drawing polygons on an image and assigning a label to the portion of the image that is enclosed in each polygon\.
 
+See an interactive example of an HTML template that uses this Crowd HTML Element in [CodePen](https://codepen.io/sagemaker_crowd_html_elements/pen/eYgmajo)\.
+
 The following is an example of a Liquid template that uses the `<crowd-polygon>` element\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```

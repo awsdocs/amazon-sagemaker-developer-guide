@@ -17,13 +17,13 @@ client = boto3.client('sagemaker')
 
 # create sagemaker model
 create_model_api_response = client.create_model(
-                                ModelName='my-sagemaker-model',
+                                    ModelName='my-sagemaker-model',
                                     PrimaryContainer={
                                         'Image': <insert the ECR Image URI>,
                                         'ModelDataUrl': 's3://path/to/model/artifact/model.tar.gz',
                                         'Environment': {}
                                     },
-                               ExecutionRoleArn='ARN for AmazonSageMaker-ExecutionRole'
+                                    ExecutionRoleArn='ARN for AmazonSageMaker-ExecutionRole'
                             )
 
 print ("create_model API response", create_model_api_response)
@@ -39,7 +39,7 @@ create_endpoint_config_api_response = client.create_endpoint_config(
                                                     'InstanceType': <provide your instance type here>
                                                 },
                                             ]
-                                        )
+                                       )
 
 print ("create_endpoint_config API response", create_endpoint_config_api_response)
 

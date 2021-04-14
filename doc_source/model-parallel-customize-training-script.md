@@ -1,4 +1,4 @@
-# Modify Your Training Script to Use SageMaker's Distributed Model Parallel Library<a name="model-parallel-customize-training-script"></a>
+# Modify Your Training Script Using SageMaker's Distributed Model Parallel Library<a name="model-parallel-customize-training-script"></a>
 
 Use this section to learn how to customize your training script with Amazon SageMaker's distributed model parallel library\-specific API functions and parameters\. We recommend you use this documentation alongside the [model parallel library API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel.html)\.
 

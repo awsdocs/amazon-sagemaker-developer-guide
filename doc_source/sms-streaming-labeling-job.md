@@ -86,9 +86,9 @@ Modifying, deleting, or sending objects directly to the Amazon SQS queue associa
 
 ## Receive Output Data from a Streaming Labeling Job<a name="sms-streaming-how-it-works-output-data"></a>
 
-Your Amazon S3 output bucket is periodically updated with new output data from your streaming labeling job\. Additionally, each time a worker submits a labeled object, a notification with the output data is sent to the Amazon SNS output topic you specify\. 
+Your Amazon S3 output bucket is periodically updated with new output data from your streaming labeling job\. 
 
-You can subscribe an endpoint to your SNS output topic to receive notifications or trigger events when you receive output data from a labeling task\. To learn more, see [Subscribe an Endpoint to Your Amazon SNS Output Topic](sms-create-sns-input-topic.md#sms-streaming-subscribe-output-topic)\.
+Additionally, if you specify an Amazon SNS output topic, each time a worker submits a labeled object a notification with the output data is sent to that topic\. You can subscribe an endpoint to your SNS output topic to receive notifications or trigger events when you receive output data from a labeling task\. To learn more, see [Subscribe an Endpoint to Your Amazon SNS Output Topic](sms-create-sns-input-topic.md#sms-streaming-subscribe-output-topic)\.
 
 ## Duplicate Message Handling<a name="sms-streaming-impotency"></a>
 

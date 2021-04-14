@@ -1,7 +1,7 @@
 # Delete a Human Loop<a name="a2i-delete-human-loop"></a>
 
 When you delete a human loop, the status changes to `Deleting`\. When the human loop is deleted, the associated human review task is no longer available to workers\. You might want to delete a human loop in one of the following circumstances:
-+ The worker task template used to generate your worker UI does not render correctly or is not functioning as expected\. 
++ The worker task template used to generate your worker user interface does not render correctly or is not functioning as expected\. 
 + A single data object was accidentally sent to workers multiple times\. 
 + You no longer need a data object reviewed by a human\. 
 
@@ -17,7 +17,7 @@ When a human worker completes a human review task, the results are stored in the
 
 Additionally, Amazon A2I temporarily stores human loop input and output data internally for the following reasons:
 + If you configure your human loops so that a single data object is sent to multiple workers for review, Amazon A2I does not write output data to your S3 bucket until all workers have completed the review task\. Amazon A2I stores partial answers—answers from individual workers—internally so that it can write full results to your S3 bucket\. 
-+ If you report a low quality human review result, Amazon A2I can investigate and respond to your issue\. 
++ If you report a low\-quality human review result, Amazon A2I can investigate and respond to your issue\. 
 + If you lose access to or delete the output S3 bucket specified in the human review workflow used to create a human loop, and the task has already been sent to one or more workers, Amazon A2I needs a place to temporarily store human review results\. 
 
 Amazon A2I deletes this data internally 30 days after a human loop's status changes to one of the following: `Deleted`, `Stopped`, or `Completed`\. In other words, data is deleted 30 days after the human loop has been completed, stopped, or deleted\. Additionally, this data is deleted after 30 days if you close the AWS account used to create associated human loops\.

@@ -1,4 +1,4 @@
-# Schedule Feature Attribute Drift Monitoring Jobs<a name="clarify-model-monitor-bias-drift-schedule"></a>
+# Schedule Bias Drift Monitoring Jobs<a name="clarify-model-monitor-bias-drift-schedule"></a>
 
 Now that you have a baseline, you can call the `create_monitoring_schedule()` method to schedule an hourly monitor to analyze the data with a monitoring schedule\. If you have submitted a baselining job, the monitor automatically picks up analysis configuration from the baselining job\. If you skip the baselining step or the capture dataset has a different nature from the training dataset, you must provide the analysis configuration\.
 

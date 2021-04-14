@@ -1,6 +1,6 @@
 # Use the SageMaker Distributed Model Parallel API<a name="model-parallel-use-api"></a>
 
-To use Amazon SageMaker's distributed model parallel library, you must create a training script for one of the supported frameworks and launch the training job using the SageMaker Python SDK\. To learn how you can incorporate the library into a training script, see [Modify Your Training Script to Use SageMaker's Distributed Model Parallel Library](model-parallel-customize-training-script.md)\. The library's API documentation is located in the SageMaker Python SDK\. Refer to the [SageMaker's distributed model parallel API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel.html)\.
+To use Amazon SageMaker's distributed model parallel library, you must create a training script for one of the supported frameworks and launch the training job using the SageMaker Python SDK\. To learn how you can incorporate the library into a training script, see [Modify Your Training Script Using SageMaker's Distributed Model Parallel Library](model-parallel-customize-training-script.md)\. The library's API documentation is located in the SageMaker Python SDK\. Refer to the [SageMaker's distributed model parallel API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel.html)\.
 
 SageMaker supports the following training environment configurations\. 
 
@@ -65,7 +65,7 @@ smd_mp_estimator.fit('s3://my_bucket/my_training_data/')
 
 To enable the library, a dictionary with the keys `"mpi"` and `"smdistributed"` needs to be passed as the `distribution` argument of the TensorFlow and PyTorch Estimator constructors in Python SDK\. For the `"mpi"` key, a dict must be passed which contains:
 + `"enabled"`: `True` to launch the training job with MPI\.
-+ `"processes_per_host"`: Specify the number of processes MPI should launch on each host\. In SageMaker a host is a single [Amazon EC2 ml instance]()\. The SageMaker Python SDK maintains a one\-to\-one mapping between processes and GPUs across model and data parallelism\. This means that SageMaker schedules each process on a single, separate GPU and no GPU contains more than one process\. If you are using PyTorch, you must restrict each process to its own device through `torch.cuda.set_device(smp.local_rank())`\. To learn more, see [PyTorch 1\.7\.1, 1\.6\.0](model-parallel-customize-training-script-pt.md#model-parallel-customize-training-script-pt-16)\.
++ `"processes_per_host"`: Specify the number of processes MPI should launch on each host\. In SageMaker a host is a single [Amazon EC2 ml instance]()\. The SageMaker Python SDK maintains a one\-to\-one mapping between processes and GPUs across model and data parallelism\. This means that SageMaker schedules each process on a single, separate GPU and no GPU contains more than one process\. If you are using PyTorch, you must restrict each process to its own device through `torch.cuda.set_device(smp.local_rank())`\. To learn more, see [PyTorch](model-parallel-customize-training-script-pt.md#model-parallel-customize-training-script-pt-16)\.
 **Important**  
  `process_per_host` *must* be less than the number of GPUs per instance and typically will be equal to the number of GPUs per instance\.
 
@@ -94,9 +94,11 @@ Use the following resources to learn more about using the SageMaker Python SDK w
 ## Extend or Adapt A Docker Container that Contains SageMaker's Distributed Model Parallel Library<a name="model-parallel-customize-container"></a>
 
 To extend a pre\-built container, or adapt your own container to use SageMaker's distributed model parallel library, you must use one of the following Pytorch or TensorFlow GPU general framework base\-images:
++ 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/tensorflow\-training:2\.4\.1\-gpu\-py37\-cu110\-ubuntu18\.04
 + 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/tensorflow\-training:2\.3\.1\-gpu\-py37\-cu110\-ubuntu18\.04
-+ 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/pytorch\-training:1\.6\.0\-gpu\-py36\-cu110\-ubuntu18\.04 
++ 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/pytorch\-training:1\.8\.0\-gpu\-py36\-cu111\-ubuntu18\.04
 + 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/pytorch\-training:1\.7\.1\-gpu\-py36\-cu110\-ubuntu18\.04
++ 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/pytorch\-training:1\.6\.0\-gpu\-py36\-cu110\-ubuntu18\.04 
 
 For example, if you were using Pytorch 1\.7\.1 in us\-east\-1, your Dockerfile should contain a `FROM` statement similar to the following:
 

@@ -28,15 +28,15 @@ The following procedure shows you how to create and associate artifacts between 
 
    ```
    import sys
-     !{sys.executable} -m pip install -q sagemaker
+   !{sys.executable} -m pip install -q sagemaker
    
-     from sagemaker import get_execution_role
-     from sagemaker.session import Session
-     from sagemaker.lineage import context, artifact, association, action
+   from sagemaker import get_execution_role
+   from sagemaker.session import Session
+   from sagemaker.lineage import context, artifact, association, action
    
-     import boto3
-     boto_session = boto3.Session(region_name=region)
-     sagemaker_client = boto_session.client("sagemaker")
+   import boto3
+   boto_session = boto3.Session(region_name=region)
+   sagemaker_client = boto_session.client("sagemaker")
    ```
 
 1. Create the input and output artifacts\.

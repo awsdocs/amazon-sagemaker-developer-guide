@@ -111,7 +111,7 @@ To find available keys for the `rule_parameters` parameter, see the parameter de
 
 Sample rule configuration codes are provided for each built\-in rule below the parameter description tables\.
 + For a full instruction and examples of using the Debugger built\-in rules, see [Debugger Built\-in Rules Example Code](use-debugger-built-in-rules.md#debugger-deploy-built-in-rules)\.
-+ For a full instruction of using the built\-in rules with the low\-level SageMaker API operations, see [Add Debugger Built\-in Rule Configuration to the `CreateTrainingJob` API Operation](debugger-createtrainingjob-api.md#debugger-built-in-rules-api)\.
++ For a full instruction of using the built\-in rules with the low\-level SageMaker API operations, see [Configure Debugger Using Amazon SageMaker API](debugger-createtrainingjob-api.md)\.
 
 ## ProfilerReport<a name="profiler-report"></a>
 

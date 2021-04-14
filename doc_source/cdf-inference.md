@@ -276,7 +276,7 @@ When you create a transform job, the `SplitType` must be set according to the `C
 
 For more information on response formats for specific algorithms, see the following:
 + [DeepAR Inference Formats](deepar-in-formats.md)
-+ [Factorization Machine Response Formats](fm-in-formats.md)
++ [Factorization Machines Response Formats](fm-in-formats.md)
 + [IP Insights Inference Data Formats](ip-insights-inference-data-formats.md)
 + [K\-Means Response Formats](km-in-formats.md)
 + [k\-NN Request and Response Formats](kNN-inference-formats.md)

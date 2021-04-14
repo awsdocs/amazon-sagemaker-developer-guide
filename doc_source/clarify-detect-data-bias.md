@@ -55,7 +55,7 @@ The probability, as predicted by the model, of a sample having a positive or neg
 ## Sample Notebooks<a name="clarify-data-bias-sample-notebooks"></a>
 
 Amazon SageMaker Clarify provides the following sample notebook for bias detection:
-+ [Explainability and bias detection with Amazon SageMaker Clarify](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker_processing/fairness_and_explainability/fairness_and_explainability.ipynb) – Use SageMaker Clarify to create a processing job for the detecting bias and explaining model predictions with feature attributions\.
++ [Explainability and bias detection with Amazon SageMaker Clarify](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker_processing/fairness_and_explainability/fairness_and_explainability.html) – Use SageMaker Clarify to create a processing job for the detecting bias and explaining model predictions with feature attributions\.
 
 This notebook has been verified to run in Amazon SageMaker Studio only\. If you need instructions on how to open a notebook in Amazon SageMaker Studio, see [Create or Open an Amazon SageMaker Studio Notebook](notebooks-create-open.md)\. If you're prompted to choose a kernel, choose **Python 3 \(Data Science\)**\. 
 

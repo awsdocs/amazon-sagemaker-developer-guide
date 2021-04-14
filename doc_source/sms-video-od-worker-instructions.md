@@ -25,7 +25,7 @@ When you work on a video frame object detection task, you need to select a categ
 
 After you've added a label, you may see a downward pointing arrow next to the label in the **Labels** menu\. Select this arrow and then select one option for each label attribute you see to provide more information about that label\.
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/od_video_attributes.gif)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/kitti-od-general-labeling-job.gif)
 
 You may see frame attributes under the **Labels** menu\. These attributes will appear on each frame in your task\. Use these attribute prompts to enter additional information about each frame\. 
 
@@ -42,7 +42,7 @@ After you've used the predict next icon, review the location of each box in the 
 
 The following graphic demonstrates how to use the predict next tool:
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/od_predict_next.gif)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/kitti-video-od.gif)
 
 For all other tools, you can use the **Copy to next** and **Copy to all** tools to copy your annotations to the next or all frames respectively\. 
 
@@ -138,6 +138,8 @@ When you open the labeling task, three buttons on the top right allow you to dec
 + **Stop and resume later**: You can use the **Stop and resume later** button to stop working and return to the task at a later time\. You should use the **Save** button to save your work before you select **Stop and resume later**\. When you select this button and then select **Confirm**, you are returned to the worker portal, and the task status is **Stopped**\. You can select the same task to resume work on it\. 
 
   Be aware that the person that creates your labeling tasks specifies a time limit in which all tasks much be completed by\. If you do not return to and complete this task within that time limit, it will expire and your work will not be submitted\. Contact your administrator for more information\. 
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/reject-decline-task.gif)
 
 ## Saving Your Work and Submitting<a name="sms-video-worker-instructions-saving-work-od"></a>
 

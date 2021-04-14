@@ -6,6 +6,10 @@ SageMaker provides a built\-in container sagemaker\-model\-monitor\-analyzer tha
 
 For example: `159807026194.dkr.ecr.us-west-2.amazonaws.com/sagemaker-model-monitor-analyzer`
 
+If you are in an AWS region in China, the prebuilt container for SageMaker Model Monitor can be accessed as follows: 
+
+`<ACCOUNT_ID>.dkr.ecr.<REGION_NAME>.amazonaws.com.cn/sagemaker-model-monitor-analyzer`
+
 The following table lists the supported values for account IDs and corresponding AWS Region names\.
 
 

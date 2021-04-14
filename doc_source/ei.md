@@ -1,8 +1,5 @@
 # Use Amazon SageMaker Elastic Inference \(EI\)<a name="ei"></a>
 
-****  
-***This feature is not available in the China Regions\.***
-
 By using Amazon Elastic Inference \(EI\), you can speed up the throughput and decrease the latency of getting real\-time inferences from your deep learning models that are deployed as [Amazon SageMaker hosted models](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-hosting.html), but at a fraction of the cost of using a GPU instance for your endpoint\. EI allows you to add inference acceleration to a hosted endpoint for a fraction of the cost of using a full GPU instance\. Add an EI accelerator in one of the available sizes to a deployable model in addition to a CPU instance type, and then add that model as a production variant to an endpoint configuration that you use to deploy a hosted endpoint\. You can also add an EI accelerator to a SageMaker [notebook instance](https://docs.aws.amazon.com/sagemaker/latest/dg/nbi.html) so that you can test and evaluate inference performance when you are building your models\. 
 
 Elastic Inference is supported in EI\-enabled versions of TensorFlow, Apache MXNet, and PyTorch\. To use any other deep learning framework, export your model by using ONNX, and then import your model into MXNet\. You can then use your model with EI as an MXNet model\. For information about importing an ONNX model into MXNet, see [Importing an ONNX model into MXNet](https://docs.aws.amazon.com/dlami/latest/devguide/onnx.html)\.
@@ -82,4 +79,5 @@ Currently, the [Image Classification Algorithm](image-classification.md) and [Ob
 The following Sample notebooks provide examples of using EI in SageMaker:
 + [Using Amazon Elastic Inference with MXNet on Amazon SageMaker ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/mxnet_mnist/mxnet_mnist_elastic_inference.ipynb)
 + [Using Amazon Elastic Inference with MXNet on an Amazon SageMaker Notebook Instance ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/mxnet_mnist/mxnet_mnist_elastic_inference_local.ipynb) 
++ [Using Amazon Elastic Inference with Neo\-compiled TensorFlow model on SageMaker](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/tensorflow_serving_using_elastic_inference_with_your_own_model/tensorflow_neo_compiled_model_elastic_inference.ipynb)
 + [Using Amazon Elastic Inference with a pre\-trained TensorFlow Serving model on SageMaker](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/tensorflow_serving_using_elastic_inference_with_your_own_model/tensorflow_serving_pretrained_model_elastic_inference.ipynb)

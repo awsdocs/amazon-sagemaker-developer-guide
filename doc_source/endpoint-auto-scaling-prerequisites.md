@@ -38,7 +38,7 @@ You must also specify the minimum number of instances for the model\. This value
 To determine the minimum and maximum number of instances that you need for typical traffic, test your autoscaling configuration with the expected rate of traffic to your model\.
 
 **Important**  
-Scaling\-in does not occur when there is no traffic: if a variant’s traffic becomes zero, SageMaker automatic scaling doesn't scale in\. This is because SageMaker doesn't emit metrics with a value of zero\. 
+Scaling\-in occurs when there is no traffic: if a variant’s traffic becomes zero, SageMaker automatically scales in to the minimum number of instances specified\. In this case, SageMaker emits metrics with a value of zero\. Minimum instance count is required to be 1 or higher\.
 
 ## Cooldown period<a name="endpoint-auto-scaling-target-cooldown"></a>
 

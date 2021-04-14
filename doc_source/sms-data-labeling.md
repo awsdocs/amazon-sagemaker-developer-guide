@@ -7,7 +7,7 @@ Ground Truth provides two features that help improve the accuracy of your data l
 + *Automated data labeling* uses machine learning to label portions of your data automatically without having to send them to human workers\.
 
 **Topics**
-+ [Batches for Labeling Tasks](sms-batching.md)
++ [Control the Flow of Data Objects Sent to Workers](sms-batching.md)
 + [Consolidate Annotations](sms-annotation-consolidation.md)
 + [Automate Data Labeling](sms-automated-labeling.md)
 + [Chaining Labeling Jobs](sms-reusing-data.md)

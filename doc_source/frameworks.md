@@ -13,6 +13,7 @@ Machine learning and deep learning frameworks guides:
 + [Apache MXNet](mxnet.md)
 + [Apache Spark](apache-spark.md)
 + [Chainer](chainer.md)
++ [Hugging Face](hugging-face.md)
 + [PyTorch](pytorch.md)
 + [Scikit\-learn](sklearn.md)
 + [SparkML Serving](sparkml-serving.md)

@@ -12,16 +12,18 @@ With either option, you can then use the [Distributed Training Jupyter Notebook 
 
 ## Use the Data Parallel Library with SageMaker's Python SDK<a name="data-parallel-use-python-skd-api"></a>
 
-To use SageMaker's distributed data parallel library, you must create a training script for one of the supported frameworks and launch the training job using the SageMaker Python SDK\. To learn how you can incorporate the library into a training script, see [Modify Your Training Script to Use SageMaker's Distributed Model Parallel Library](model-parallel-customize-training-script.md)\. The library API documentation is located in the SageMaker Python SDK\. See SageMaker's [data parallel API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html)\. 
+To use SageMaker's distributed data parallel library, you must create a training script for one of the supported frameworks and launch the training job using the SageMaker Python SDK\. To learn how you can incorporate the library into a training script, see [Modify Your Training Script Using SageMaker's Distributed Model Parallel Library](model-parallel-customize-training-script.md)\. The library API documentation is located in the SageMaker Python SDK\. See SageMaker's [data parallel API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html)\. 
 
 SageMaker supports the following training environment configurations:
 + You can use a prebuilt TensorFlow or PyTorch container\.
 + You can customize SageMaker prebuilt containers or extend them to handle any additional functional requirements for your algorithm or model that the prebuilt SageMaker Docker image doesn't support\. For an example of how you can extend a pre\-built container, see [Extend a Prebuilt Container](https://docs.aws.amazon.com/sagemaker/latest/dg/prebuilt-containers-extend.html)\.
 
   To extend a pre\-built container, or adapt your own container to use the library, you must use one of the following PyTorch or TensorFlow GPU general framework base\-images:
+  + 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/tensorflow\-training:2\.4\.1\-gpu\-py37\-cu110\-ubuntu18\.04
   + 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/tensorflow\-training:2\.3\.1\-gpu\-py37\-cu110\-ubuntu18\.04
-  + 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/pytorch\-training:1\.6\.0\-gpu\-py36\-cu110\-ubuntu18\.04 
+  + 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/pytorch\-training:1\.8\.0\-gpu\-py36\-cu111\-ubuntu18\.04
   + 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/pytorch\-training:1\.7\.1\-gpu\-py36\-cu110\-ubuntu18\.04
+  + 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/pytorch\-training:1\.6\.0\-gpu\-py36\-cu110\-ubuntu18\.04
 
   For example, if you are using PyTorch 1\.6\.0, your Dockerfile should contain a `FROM` statement similar to the following:
 

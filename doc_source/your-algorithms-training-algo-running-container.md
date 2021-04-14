@@ -16,8 +16,11 @@ When you send a [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/lat
  SageMaker makes the hyperparameters in a `CreateTrainingJob` request available in the Docker container in the `/opt/ml/input/config/hyperparameters.json` file\.
 
 ## Environment Variables<a name="your-algorithms-training-algo-running-container-environment-variables"></a>
-+ TRAINING\_JOB\_NAME—The training job name stored in the `TrainingJobName` parameter in a [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) request\.
-+ TRAINING\_JOB\_ARN—The Amazon Resource Name \(ARN\) of the training job returned as the `TrainingJobArn` response element for [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html)\.
+
+The following environment variables are set in the container:
++ TRAINING\_JOB\_NAME – Specified in the `TrainingJobName` parameter of the `CreateTrainingJob` request\.
++ TRAINING\_JOB\_ARN – The Amazon Resource Name \(ARN\) of the training job returned as the `TrainingJobArn` in the `CreateTrainingJob` response\.
++ All environment variables specified in the [Environment](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html#sagemaker-CreateTrainingJob-request-Environment) parameter in the `CreateTrainingJob` request\.
 
 ## Input Data Configuration<a name="your-algorithms-training-algo-running-container-inputdataconfig"></a>
 

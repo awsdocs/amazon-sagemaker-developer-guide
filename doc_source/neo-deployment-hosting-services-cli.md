@@ -85,10 +85,10 @@ After creating a SageMaker model, create the endpoint configuration using the `c
     "EndpointConfigName": "<provide your endpoint config name>",
     "ProductionVariants": [
         {
-            "VariantName": <provide your variant name>,
+            "VariantName": "<provide your variant name>",
             "ModelName": "my-sagemaker-model",
             "InitialInstanceCount": 1,
-            "InstanceType": <provide your instance type here>,
+            "InstanceType": "<provide your instance type here>",
             "InitialVariantWeight": 1.0
         }
     ]

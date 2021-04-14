@@ -1,6 +1,8 @@
 # Create Amazon SNS Input and Output Topics<a name="sms-create-sns-input-topic"></a>
 
-You need to create Amazon SNS input and output topics to create a streaming labeling job\. Once you create the topics, note down the topic Amazon Resource Name \(ARN\) of each topic\. These ARNs will be the input values for the parameter `SnsTopicArn` in `InputConfig` and `OutputConfig` when you create a labeling job\. 
+You need to create an Amazon SNS input to create a streaming labeling job\. Optionally, you may provide an Amazon SNS output topic\.
+
+When you create an Amazon SNS topic to use in your streaming labeling job, note down the topic Amazon Resource Name \(ARN\)\. The ARN will be the input values for the parameter `SnsTopicArn` in `InputConfig` and `OutputConfig` when you create a labeling job\.
 
 ## Create an Input Topic<a name="sms-streaming-input-topic"></a>
 
@@ -10,7 +12,7 @@ Note down your input topic ARN and use it as input for the `CreateLabelingJob` p
 
 ## Create an Output Topic<a name="sms-streaming-output-topic"></a>
 
-Your output topic is used to send notifications when a data object is labeled\. When you create a topic, you have the option to add an encryption key\. Use this option to add a AWS Key Management Service customer managed key \(CMK\) to your topic to encrypt the output data of your labeling job before it is published to your output topic\.
+If you provide an output topic, it is used to send notifications when a data object is labeled\. When you create a topic, you have the option to add an encryption key\. Use this option to add a AWS Key Management Service customer managed key \(CMK\) to your topic to encrypt the output data of your labeling job before it is published to your output topic\.
 
 To create an output topic, follow the instructions in [Creating an Amazon SNS topic](https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html) in the Amazon Simple Notification Service Developer Guide\.
 

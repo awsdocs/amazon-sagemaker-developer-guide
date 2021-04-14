@@ -1,12 +1,12 @@
-# Create Custom Worker Task Template<a name="a2i-custom-templates"></a>
+# Create Custom Worker Task Templates<a name="a2i-custom-templates"></a>
 
 *Crowd HTML Elements* are web components that provide a number of task widgets and design elements that you can tailor to the question you want to ask\. You can use these crowd elements to create a custom worker template and integrate it with an Amazon Augmented AI \(Amazon A2I\) human review workflow to customize the worker console and instructions\. 
 
-For a list of all HTML crowd elements available to Amazon A2I users, see [Crowd HTML Elements Reference](sms-ui-template-reference.md)\. To see examples of templates, see the [AWS Github repository](https://github.com/aws-samples/amazon-a2i-sample-task-uis), which contains over 60 sample custom task templates\.
+For a list of all HTML crowd elements available to Amazon A2I users, see [Crowd HTML Elements Reference](sms-ui-template-reference.md)\. For examples of templates, see the [AWS GitHub repository](https://github.com/aws-samples/amazon-a2i-sample-task-uis), which contains over 60 sample custom task templates\.
 
 ## Develop Templates Locally<a name="developing-templates-locally"></a>
 
-When in the console to test how your template process incoming data, you can test the look and feel of your template's HTML and custom elements in your browser by adding the following code to the top of your HTML file\.
+When in the console to test how your template processes incoming data, you can test the look and feel of your template's HTML and custom elements in your browser by adding the following code to the top of your HTML file\.
 
 ```
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
@@ -29,7 +29,7 @@ Amazon Augmented AI custom templates enable you to embed external scripts and st
 
 If you encounter errors, ensure that your originating server is sending the correct MIME type and encoding headers with the assets\.
 
-For example, the MIME and encoding types for remote scripts is `application/javascript;CHARSET=UTF-8`\.
+For example, the MIME and encoding type for remote scripts is `application/javascript;CHARSET=UTF-8`\.
 
 The MIME and encoding type for remote stylesheets is `text/css;CHARSET=UTF-8`\.
 
@@ -43,7 +43,7 @@ For example, for a custom template that integrates an Augmented AI human review 
 
 All custom templates begin and end with the `<crowd-form> </crowd-form>` elements\. Like standard HTML `<form>` elements, all of your form code should go between these elements\. 
 
- For a Amazon Textract document analysis task, use the `<crowd-textract-analyze-document>` element\. It uses the following attributes: 
+For an Amazon Textract document analysis task, use the `<crowd-textract-analyze-document>` element\. It uses the following attributes: 
 + `src` – Specifies the URL of the image file to be annotated\.
 + `initialValue` – Sets initial values for attributes found in the worker UI\.
 + `blockTypes` \(required\) – Determines the kind of analysis that the workers can do\. Only `KEY_VALUE_SET` is currently supported\. 
@@ -51,7 +51,7 @@ All custom templates begin and end with the `<crowd-form> </crowd-form>` element
 + `no-key-edit` \(required\) – Prevents the workers from editing the keys of annotations passed through `initialValue`\.
 + `no-geometry-edit` – Prevents workers from editing the polygons of annotations passed through `initialValue`\.
 
-For children of the `<crowd-textract-analyze-document>` element, you must have two regions\. You can use arbitrary HTML and CSS elements in these regions\. 
+For children of the `<crowd-textract-analyze-document>` element, you must have two Regions\. You can use arbitrary HTML and CSS elements in these Regions\. 
 + `<full-instructions>` – Instructions that are available from the **View full instructions** link in the tool\. You can leave this blank, but we recommend that you provide complete instructions to get better results\.
 + `<short-instructions>` – A brief description of the task that appears in the tool's sidebar\. You can leave this blank, but we recommend that you provide complete instructions to get better results\.
 
@@ -129,9 +129,9 @@ All custom templates begin and end with the `<crowd-form> </crowd-form>` element
     + The returned answer contains the *full* objects of any selected categories\.
   + If the categories come in as strings, the following applies:
     + The returned answer is an array of all the strings that were selected\.
-+ `exclusion-category` – By setting this attribute, you create a button underneath the categories in the UI\. When a user presses the button, all categories are deselected and disabled\. If the worker presses the button again, you re\-enable users to choose categories\. If the worker submits the task by selecting the Submit button after you pressing the button, that task will return an empty array\.
++ `exclusion-category` – By setting this attribute, you create a button underneath the categories in the UI\. When a user selects the button, all categories are deselected and disabled\. If the worker selects the button again, you re\-enable users to choose categories\. If the worker submits the task by selecting **Submit** after you select the button, that task returns an empty array\.
 
-For children of the `<crowd-rekognition-detect-moderation-labels>` element, you must have two regions\.
+For children of the `<crowd-rekognition-detect-moderation-labels>` element, you must have two Regions\.
 + `<full-instructions>` – Instructions that are available from the **View full instructions** link in the tool\. You can leave this blank, but we recommend that you provide complete instructions to get better results\.
 + `<short-instructions>` – Brief description of the task that appears in the tool's sidebar\. You can leave this blank, but we recommend that you provide complete instructions to get better results\.
 
@@ -227,11 +227,11 @@ Visuals depicting death by hanging</p>
 
 The custom template system uses [Liquid](https://shopify.github.io/liquid/) for automation\. *Liquid* is an open\-source inline markup language\. For more information and documentation, see the [Liquid homepage](https://shopify.github.io/liquid/)\.
 
-In Liquid, the text between single curly braces and percent symbols is an instruction or *tag* that performs an operation like control flow or iteration\. Text between double curly braces is a variable or *object* that outputs its value\. The following list includes two types of liquid tags that you may find useful to automate template input data processing\. If you select one of the following tag\-types, you will be redirected to the Liquid documentation\.
+In Liquid, the text between single curly braces and percent symbols is an instruction or *tag* that performs an operation like control flow or iteration\. Text between double curly braces is a variable or *object* that outputs its value\. The following list includes two types of liquid tags that you may find useful to automate template input data processing\. If you select one of the following tag\-types, you are redirected to the Liquid documentation\.
 + [Control flow](https://shopify.github.io/liquid/tags/control-flow/): Includes programming logic operators like `if/else`, `unless`, and `case/when`\.
 + [Iteration](https://shopify.github.io/liquid/tags/iteration/): Enables you to run blocks of code repeatedly using statements like for loops\.
 
-  For example, the following code example demonstrates how you can use the Liquid `for` tag to create a for loop\. This example loops through the [https://docs.aws.amazon.com/rekognition/latest/dg/API_ModerationLabel.html](https://docs.aws.amazon.com/rekognition/latest/dg/API_ModerationLabel.html) returned from Amazon Rekognition and displays `moderationLabels` attributes `name` and `parentName` for workers to review:
+  For example, the following code example demonstrates how you can use the Liquid `for` tag to create a `for` loop\. This example loops through the [https://docs.aws.amazon.com/rekognition/latest/dg/API_ModerationLabel.html](https://docs.aws.amazon.com/rekognition/latest/dg/API_ModerationLabel.html) returned from Amazon Rekognition and displays the `moderationLabels` attributes `name` and `parentName` for workers to review:
 
   ```
    {% for label in task.input.selectedAiServiceResponse.moderationLabels %}
@@ -244,7 +244,7 @@ In Liquid, the text between single curly braces and percent symbols is an instru
 
 ### Use Variable Filters<a name="a2i-custom-templates-step2-automate-filters"></a>
 
-In addition to the standard [Liquid filters](https://shopify.github.io/liquid/filters/abs/) and actions, Amazon Augmented AI \(Amazon A2I\) offers additional filters\. You apply filters by placing a pipe \(`|`\) character after the variable name, and then specifying a filter name\. To chain filters use the following format\.
+In addition to the standard [Liquid filters](https://shopify.github.io/liquid/filters/abs/) and actions, Amazon Augmented AI \(Amazon A2I\) offers additional filters\. You apply filters by placing a pipe \(`|`\) character after the variable name, and then specifying a filter name\. To chain filters, use the following format\.
 
 **Example**  
 
@@ -258,7 +258,7 @@ By default, inputs are HTML\-escaped to prevent confusion between your variable 
 
 #### escape\_once<a name="a2i-custom-templates-step2-automate-escapeonce"></a>
 
-`escape_once` ensures that if you've already escaped your code, it doesn't get re\-escaped again\. For example, to ensure that `&amp;` doesn't become `&amp;amp;`\.
+`escape_once` ensures that if you've already escaped your code, it doesn't get re\-escaped again\. For example, it ensures that `&amp;` doesn't become `&amp;amp;`\.
 
 #### skip\_autoescape<a name="a2i-custom-templates-step2-automate-skipautoescape"></a>
 
@@ -331,7 +331,7 @@ To automate this simple text classification sample, include the Liquid tag `{{ t
 
 ## Preview a Worker Task Template<a name="a2i-preview-your-custom-template"></a>
 
-To preview a custom worker task template, use the SageMaker `RenderUiTemplate` operation\. You can use the `RenderUiTemplate` operation with the AWS CLI or your preferred AWS SDK\. For documentation on the supported language specific SDK's for this API operation use the [ `See Also`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RenderUiTemplate.html#API_RenderUiTemplate_SeeAlso) section of the [ `RenderUiTemplate`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RenderUiTemplate.html)\. 
+To preview a custom worker task template, use the SageMaker `RenderUiTemplate` operation\. You can use the `RenderUiTemplate` operation with the AWS CLI or your preferred AWS SDK\. For documentation on the supported language specific SDKs for this API operation, see the [ `See Also`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RenderUiTemplate.html#API_RenderUiTemplate_SeeAlso) section of the [ `RenderUiTemplate`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RenderUiTemplate.html)\. 
 
 **Prerequisites**
 
@@ -341,11 +341,11 @@ To preview your worker task template, the AWS Identity and Access Management \(I
 
 1. Provide a **`RoleArn`** of the role with required policies attached to preview your custom template\. 
 
-1. In the **`Input`** parameter of **`Task`**, provide A JSON object that contains values for the variables defined in the template\. These are the variables that are substituted for the `task.input.source` variable\. For example, if you define a variable task\.input\.text in your template, you can supply the variable in the JSON object as "text": "sample text"\.
+1. In the **`Input`** parameter of **`Task`**, provide a JSON object that contains values for the variables defined in the template\. These are the variables that are substituted for the `task.input.source` variable\. For example, if you define a task\.input\.text variable in your template, you can supply the variable in the JSON object as `text`: `sample text`\.
 
 1. In the **`Content`** parameter of **`UiTemplate`**, insert your template\.
 
-Once you've configured `RenderUiTemplate`, use your prefered SDK or the AWS CLI to submit a request to render your template\. If your request was successful, the response will include [ `RenderedContent`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RenderUiTemplate.html#API_RenderUiTemplate_ResponseSyntax), a Liquid template that renders the HTML for the worker UI\.
+Once you've configured `RenderUiTemplate`, use your prefered SDK or the AWS CLI to submit a request to render your template\. If your request was successful, the response includes [ `RenderedContent`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RenderUiTemplate.html#API_RenderUiTemplate_ResponseSyntax), a Liquid template that renders the HTML for the worker UI\.
 
 **Important**  
 To preview your template, you need an IAM role with permissions to read Amazon S3 objects that get rendered on your user interface\. For a sample policy that you can attach to your IAM role to grant these permissions, see [Enable Worker Task Template Previews ](a2i-permissions-security.md#permissions-for-worker-task-templates-augmented-ai)\. 

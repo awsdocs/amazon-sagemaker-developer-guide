@@ -2,6 +2,8 @@
 
 A button that can be either checked or unchecked\. When radio buttons are inside a radio group, exactly one radio button in the group can be checked at any time\. The following is an example of how to configure a `crowd-radio-button` element inside of a `crowd-radio-group` element\.
 
+See an interactive example of an HTML template that uses this Crowd HTML Element in [CodePen](https://codepen.io/sagemaker_crowd_html_elements/pen/yLgyWGZ)\.
+
 The following is an example of the syntax that you can use with the `<crowd-radio-button>` element\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```

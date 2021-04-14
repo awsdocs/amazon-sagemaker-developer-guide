@@ -19,11 +19,11 @@ Then you can see how to deploy your trained model to an endpoint by following on
 
 Finally, you can follow an example notebook to test inference on your deployed model\. 
 
-## Modify a TensorFlow 2\.x Training Script to use SMD Data Parallel<a name="data-parallel-modify-sdp-tf2"></a>
+## Modify a TensorFlow 2\.x Training Script Using SMD Data Parallel<a name="data-parallel-modify-sdp-tf2"></a>
 
- The following steps show you how to convert a TensorFlow 2\.x training script to utilize SageMaker's distributed data parallel library\.  
+ The following steps show you how to convert a TensorFlow 2\.3\.1 or 2\.4\.1 training script to utilize SageMaker's distributed data parallel library\.  
 
-The library APIs are designed to be similar to Horovod APIs\. Refer to the [SageMaker distributed data parallel TensorFlow API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/sdp_versions/v1.0.0/smd_data_parallel_tensorflow.html) for additional details on each API that the library offers for TensorFlow\. 
+The library APIs are designed to be similar to Horovod APIs\. Refer to the [SageMaker distributed data parallel TensorFlow API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html#api-documentation) for additional details on each API that the library offers for TensorFlow\. 
 
 1. Import the library's TensorFlow client and initialize it: 
 
@@ -129,13 +129,13 @@ if sdp.rank() == 0:
     checkpoint.save(checkpoint_dir)
 ```
 
-For more advanced usage, refer to [SageMaker Distributed Data Parallel TensorFlow API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/sdp_versions/v1.0.0/smd_data_parallel_tensorflow.html)\. 
+For more advanced usage, refer to [SageMaker Distributed Data Parallel TensorFlow API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html#api-documentation)\. 
 
-## Modify a PyTorch Training Script to Use SMD Data Parallel<a name="data-parallel-modify-sdp-pt"></a>
+## Modify a PyTorch Training Script Using SMD Data Parallel<a name="data-parallel-modify-sdp-pt"></a>
 
 The following steps show you how to convert a PyTorch training script to utilize SageMaker's distibuted data parallel library\.
 
-The library APIs are designed to be similar to PyTorch Distributed Data Parallel \(DDP\) APIs\. For additional details on each data parallel API offered for PyTorch, see the [SageMaker distibuted data parallel PyTorch API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/sdp_versions/v1.0.0/smd_data_parallel_pytorch.html)\. 
+The library APIs are designed to be similar to PyTorch Distributed Data Parallel \(DDP\) APIs\. For additional details on each data parallel API offered for PyTorch, see the [SageMaker distibuted data parallel PyTorch API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html#api-documentation)\. 
 
 1. Import the library’s PyTorch client and initialize it, then import the module for distributed training\. 
 
@@ -236,7 +236,7 @@ if __name__ == '__main__':
     main()
 ```
 
-For more advanced usage, see the [SageMaker distributed data parallel PyTorch API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/sdp_versions/v1.0.0/smd_data_parallel_pytorch.html)\. 
+For more advanced usage, see the [SageMaker distributed data parallel PyTorch API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html#api-documentation)\. 
 
 ## Launch a Training Job<a name="data-parallel-training"></a>
 

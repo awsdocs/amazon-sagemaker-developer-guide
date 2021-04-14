@@ -15,7 +15,7 @@ This tutorial video gives you a tour of Amazon SageMaker Debugger to capture, de
 
 [![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/0pDEAbof_To/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/0pDEAbof_To)
 
-You can find the example notebook in this video at [Visualizing Debugging Tensors of MXNet training](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker-debugger/mnist_tensor_plot/mnist-tensor-plot.ipynb) in the [Amazon SageMaker Examples](https://sagemaker-examples.readthedocs.io/en/latest/) GitHub repository\.
+You can find the example notebook in this video at [Visualizing Debugging Tensors of MXNet training](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-debugger/mnist_tensor_plot/mnist-tensor-plot.html) in the [Amazon SageMaker Examples](https://sagemaker-examples.readthedocs.io/en/latest/) GitHub repository\.
 
 ## Debug Models with Amazon SageMaker Debugger in Studio<a name="debugger-video-get-started"></a>
 

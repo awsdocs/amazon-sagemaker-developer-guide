@@ -15,7 +15,7 @@ You need to provide the following to create a labeling job in the SageMaker cons
 + A work team\. You create a work team from a workforce made up of Amazon Mechanical Turk workers, vendors, or your own private workers\.To lean more, see [Create and Manage Workforces](sms-workforce-management.md)\.
 
   You cannot use the Mechanical Turk workforce for 3D point cloud or video frame labeling jobs\. 
-+ If you are using a custom labeling workflow, you must save a worker task template in Amazon S3 and provide an Amazon S3 URI for that template\. For more information, see [Step 2: Creating your custom labeling task template](sms-custom-templates-step2.md)\.
++ If you are using a custom labeling workflow, you must save a worker task template in Amazon S3 and provide an Amazon S3 URI for that template\. For more information, see [Step 2: Creating your custom worker task template](sms-custom-templates-step2.md)\.
 + \(Optional\) An AWS KMS key ARN if you want SageMaker to encrypt the output of your labeling job using your own AWS KMS encryption key instead of the default Amazon S3 service key\.
 + \(Optional\) Existing labels for the dataset you use for your labeling job\. Use this option if you want workers to adjust, or approve and reject labels\.
 + If you want to create an adjustment or verification labeling job, you must have an output manifest file in Amazon S3 that contains the labels you want adjusted or verified\. This option is only supported for bounding box and semantic segmentation image labeling jobs and 3D point cloud and video frame labeling jobs\. It is recommended that you use the instructions on [Verify and Adjust Labels](sms-verification-data.md) to create a verification or adjustment labeling job\. 
@@ -84,7 +84,7 @@ When you create a labeling job using the SageMaker console, you add worker instr
      + For image classification and text classification \(single and multi\-label\) you must specify at least two label categories\. For all other built\-in task types, you must specify at least one label category\. 
      + \(Optional\) If you are creating a 3D point cloud or video frame labeling job, you can specify label category attributes \(not supported for 3D point cloud semantic segmentation\) and frame attributes\. Label category attributes can be assigned to one or more labels\. Frame attributes will appear on each point cloud or video frame workers label\. To learn more, see [Worker User Interface \(UI\)](sms-point-cloud-general-information.md#sms-point-cloud-worker-task-ui) for 3D point cloud and [Worker User Interface \(UI\)](sms-video-overview.md#sms-video-worker-task-ui) for video frame\. 
      + \(Optional\) Add **Additional instructions** to help your worker complete your task\.
-   + If you are creating a custom labeling job you must :
+   + If you are creating a custom labeling workflow you must :
      + Enter a [custom template](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-custom-templates-step2.html) in the code box\. Custom templates can be created using a combination of HTML, the Liquid templating language and our pre\-built web components\. Optionally, you can choose a base\-template from the drop\-down menu to get started\. 
      + Specify pre\-annotation and post\-annotation lambda functions\. To learn how to create these functions, see [Step 3: Processing with AWS Lambda](sms-custom-templates-step3.md)\.
 
