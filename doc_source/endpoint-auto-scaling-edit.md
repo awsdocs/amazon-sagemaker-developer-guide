@@ -4,11 +4,7 @@ You can edit an autoscaling policy with the AWS Management Console, the AWS CLI,
 
 ## Scale\-in<a name="endpoint-auto-scaling-edit-scale-in"></a>
 
-If a model’s traffic becomes zero, Amazon SageMaker automatic scaling doesn't scale\-in\. This is because SageMaker doesn't emit metrics with a value of zero, and without a metric, the scaling policy will never be triggered\.
-
-As a workaround, do either of the following:
-+ Send requests to the model variant until autoscaling scales\-in to the minimum capacity
-+ Change the policy to reduce the maximum provisioned capacity to match the minimum provisioned capacity
+Scaling\-in occurs when there is no traffic: if a variant’s traffic becomes zero, SageMaker automatically scales in to the minimum number of instances specified\. In this case, SageMaker emits metrics with a value of zero\. Minimum instance count is required to be 1 or higher\.
 
 ### Disable scale\-in activity<a name="endpoint-auto-scaling-edit-scale-in-disable"></a>
 

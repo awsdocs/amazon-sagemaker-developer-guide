@@ -2,9 +2,9 @@
 
 The following are examples of training scripts that you can use to configure SageMaker's model parallel library with PyTorch versions 1\.7\.1 and 1\.6\.0, with auto\-partitioning and manual partitioning\. We recommend that you review the [Important Considerations](#model-parallel-pt-considerations) and [Unsupported Framework Features](#model-parallel-pt-unsupported-features) before creating a training script\.
 
-The required modifications you must make to your training script to use the library are listed in [PyTorch 1\.7\.1, 1\.6\.0](#model-parallel-customize-training-script-pt-16)\.
+The required modifications you must make to your training script to use the library are listed in [PyTorch](#model-parallel-customize-training-script-pt-16)\.
 
-If you want to use manual partitioning, also review [Manual Partitioning with PyTorch 1\.7\.1, 1\.6\.0](#model-parallel-customize-training-script-pt-16-hvd)\. 
+If you want to use manual partitioning, also review [Manual Partitioning with PyTorch](#model-parallel-customize-training-script-pt-16-hvd)\. 
 
 **Tip**  
 For end to end, runnable notebook examples that demonstrate how to use a TensorFlow training script with the SageMaker distributed model parallel library, see [PyTorch Examples](distributed-training-notebook-examples.md#distributed-training-notebook-examples-pytorch)\.
@@ -14,8 +14,8 @@ Note that auto\-partitioning is enabled by default\. Unless otherwise specified,
 **Topics**
 + [Important Considerations](#model-parallel-pt-considerations)
 + [Unsupported Framework Features](#model-parallel-pt-unsupported-features)
-+ [PyTorch 1\.7\.1, 1\.6\.0](#model-parallel-customize-training-script-pt-16)
-+ [Manual Partitioning with PyTorch 1\.7\.1, 1\.6\.0](#model-parallel-customize-training-script-pt-16-hvd)
++ [PyTorch](#model-parallel-customize-training-script-pt-16)
++ [Manual Partitioning with PyTorch](#model-parallel-customize-training-script-pt-16-hvd)
 
 ## Important Considerations<a name="model-parallel-pt-considerations"></a>
 
@@ -40,7 +40,7 @@ The following PyTorch features are unsupported by SageMaker's distributed model 
 + `torch.jit.ScriptModules` or `ScriptFunctions` are not supported by `smp.DistributedModel`\.
 + `apex` : `FusedLayerNorm`, `FusedAdam`, `FusedLAMB`, and `FusedNovoGrad` from `apex` are not supported\. You can use the library implementations of these through `smp.optimizers` and `smp.nn` APIs instead\.
 
-## PyTorch 1\.7\.1, 1\.6\.0<a name="model-parallel-customize-training-script-pt-16"></a>
+## PyTorch<a name="model-parallel-customize-training-script-pt-16"></a>
 
 The following training script changes are required to run a PyTorch model with SageMaker's distributed model parallel library:
 
@@ -147,7 +147,7 @@ optimizer = smp.DistributedOptimizer(optimizer)
 train(model, device, train_loader, optimizer)
 ```
 
-## Manual Partitioning with PyTorch 1\.7\.1, 1\.6\.0<a name="model-parallel-customize-training-script-pt-16-hvd"></a>
+## Manual Partitioning with PyTorch<a name="model-parallel-customize-training-script-pt-16-hvd"></a>
 
 Use [https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/v1.2.0/smd_model_parallel_pytorch.html#smp.DistributedOptimizer](https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/v1.2.0/smd_model_parallel_pytorch.html#smp.DistributedOptimizer) context managers to place modules in specific devices\. Any module not placed in any `smp.partition` contexts is placed in the `default_partition`\. The `default_partition` needs to be provided if `auto_partition` is set to `False`\. The modules that are created within a specific `smp.partition` context are placed on the corresponding partition\.
 

@@ -7,7 +7,7 @@
 
  To access JumpStart, you must first launch SageMaker Studio\. JumpStart features are not available in SageMaker notebook instances, and you can't access them through SageMaker APIs or the AWS CLI\. 
 
- Open JumpStart by choosing the JumpStart icon \(![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/jumpstart/jumpstart-icon.png)\) in the *left sidebar*\. 
+ Open JumpStart by using the JumpStart launcher in the **Get Started** section or by choosing the JumpStart icon \(![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/jumpstart/jumpstart-icon.png)\) in the *left sidebar*\. 
 
 In the *file and resource browser* \(the left pane\), you can find JumpStart options\. From here you can choose to browse JumpStart for solutions, models, notebooks, and other resources, or you can view your currently launched solutions, endpoints, and training jobs\. 
 
@@ -35,7 +35,9 @@ Amazon SageMaker JumpStart makes certain content available from third\-party sou
 
 ## Solutions<a name="jumpstart-solutions"></a>
 
- When you choose a solution, JumpStart provides a description of the solution and a **Launch** button\. There are no configuration options\. Solutions launch all of the resources necessary to run the solution, including training and model hosting instances\. After JumpStart launches the solution, JumpStart provides a link to a notebook that you can use to explore the solution’s features\. You can delete all of the solution’s resources by choosing **Delete solution resources**\. 
+ When you choose a solution, JumpStart shows a description of the solution and a **Launch** button\. When you click **Launch**, JumpStart creates all of the resources necessary to run the solution, including training and model hosting instances\. After JumpStart launches the solution, JumpStart shows an **Open Notebook** button\. You can click the button to use the provided notebooks and explore the solution’s features\. As artifacts are generated during launch or after running the provided notebooks, they are listed in the **Generated Artifacts** table\. You can delete individual Artifacts with the Trash icon \(![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/jumpstart/jumpstart-trash.png)\)\. You can delete all of the solution’s resources by choosing **Delete solution resources**\.
+
+ 
 
 ## Models<a name="jumpstart-models"></a>
 

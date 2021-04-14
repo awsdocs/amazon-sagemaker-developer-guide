@@ -6,7 +6,7 @@ This video shows you how to setup and use Amazon SageMaker Ground Truth\. \(Leng
 
 To get started using Amazon SageMaker Ground Truth, follow the instructions in the following sections\. The sections here explain how to use the console to create a labeling job, assign a public or private workforce, and send the labeling job to your workforce\. You can also learn how to monitor the progress of a labeling job\.
 
-If you want to create a custom labeling job, see [Creating Custom Labeling Workflows](sms-custom-templates.md) for instructions\.
+If you want to create a custom labeling workflow, see [Creating Custom Labeling Workflows](sms-custom-templates.md) for instructions\.
 
 Before you create a labeling job, you must upload your dataset to an Amazon S3 bucket\. For more information, see [Use Input and Output Data](sms-data.md)\.
 

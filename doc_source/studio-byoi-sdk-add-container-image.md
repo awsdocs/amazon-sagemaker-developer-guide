@@ -33,46 +33,16 @@ The Amazon ECR repository must be in the same AWS Region as SageMaker Studio\.
    }
    ```
 
-1. Authenticate to Amazon ECR\. Make sure the Docker application is running\. For more information, see [Registry Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/Registries.html#registry_auth)\.
-**Note**  
-The `get-login-password` command was introduced in AWS CLI version 1\.17\.10\. Use `aws --version` to determine your version of the AWS CLI\. For information about upgrading, see [Installing the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)\.
+1. Install the SageMaker Studio image build CLI by following the steps in [SageMaker Docker Build](https://github.com/aws-samples/sagemaker-studio-image-build-cli)\. This CLI enables you to build a Dockerfile using AWS CodeBuild\.
+
+1. Build the R image `Dockerfile` using the Studio image build CLI\. The period \(\.\) specifies that the Dockerfile should be in the context of the build command\. This command builds the image, creates an ECR repo, and uploads the built image to the ECR repo\. It then outputs the image URI\.
 
    ```
-   aws ecr get-login-password | \
-       docker login --username AWS --password-stdin <acct-id>.dkr.ecr.<region>.amazonaws.com/smstudio-custom
-   ```
-
-   Response:
-
-   ```
-   Login Succeeded
-   ```
-
-1. Build the R image `Dockerfile`\. The period \(\.\) specifies that the Dockerfile should be in the context of the build command\.
-**Note**  
-You can't directly build a Dockerfile within Studio\.
-
-   ```
-   docker build . -t smstudio-r -t <acct-id>.dkr.ecr.<region>.amazonaws.com/smstudio-custom:r
+   sm-docker build . -t smstudio-r -t <acct-id>.dkr.ecr.<region>.amazonaws.com/smstudio-custom:r
    ```
 
    Response:
 
    ```
-   Successfully built f97aaaa805b1
-   Successfully tagged smstudio-r:latest
-   Successfully tagged acct-id.dkr.ecr.us-east-2.amazonaws.com/smstudio-custom:r
-   ```
-
-1. Push the container image to the Amazon ECR repository\. For more information, see [ImagePush](https://docs.docker.com/engine/api/v1.40/#operation/ImagePush) and [Pushing an image](https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html)\.
-
-   ```
-   docker push <acct-id>.dkr.ecr.<region>.amazonaws.com/smstudio-custom:r
-   ```
-
-   Response:
-
-   ```
-   The push refers to repository [acct-id.dkr.ecr.us-east-2.amazonaws.com/smstudio-custom]
-   r: digest: sha256:7a5c8cb01944f3b10fe495a930b3682d15b7b1de9f1f5497d1a3e3634369cead size: 3066
+   Image URI: <acct-id>.dkr.ecr.<region>.amazonaws.com/<image_name>
    ```

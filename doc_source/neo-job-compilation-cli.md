@@ -6,7 +6,10 @@ This section shows how to manage Amazon SageMaker Neo compilation jobs for machi
 
    With the [CreateCompilationJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateCompilationJob.html) API operation, you can specify the data input format, the S3 bucket in which to store your model, the S3 bucket to which to write the compiled model, and the target hardware device or platform\.
 
-   **For a target device:**
+   The following table demonstrates how to configure `CreateCompilationJob` API based on whether your target is a device or a platform\.
+
+------
+#### [ Device Example ]
 
    ```
    {
@@ -28,7 +31,39 @@ This section shows how to manage Amazon SageMaker Neo compilation jobs for machi
    }
    ```
 
-   **For a target platform:**
+   You can optionally specify the framework version you used with the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InputConfig.html#sagemaker-Type-InputConfig-FrameworkVersion](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InputConfig.html#sagemaker-Type-InputConfig-FrameworkVersion) field if you used the PyTorch framework to train your model and your target device is a `ml_* `target\.
+
+   ```
+   {
+       "CompilationJobName": "neo-compilation-job-demo",
+       "RoleArn": "arn:aws:iam::<your-account>:role/service-role/AmazonSageMaker-ExecutionRole-yyyymmddThhmmss",
+       "InputConfig": {
+           "S3Uri": "s3://<your-bucket>/sagemaker/neo-compilation-job-demo-data/train",
+           "DataInputConfig":  "{'data': [1,3,1024,1024]}",
+           "Framework": "PYTORCH",
+            # The FrameworkVersion field is only supported when compiling for PyTorch framework and ml_* targets, 
+            # excluding ml_inf. Supported values are 1.4 or 1.5 or 1.6 . Default is 1.6
+           "FrameworkVersion": "1.6"
+       },
+       "OutputConfig": {
+           "S3OutputLocation": "s3://<your-bucket>/sagemaker/neo-compilation-job-demo-data/compile",
+           # A target device specification example for a ml_c5 instance family
+           "TargetDevice": "ml_c5",
+           # When compiling for ml_* instances using PyTorch framework, use the "CompilerOptions" field in 
+           # OutputConfig to provide the correct data type ("dtype") of the model’s input. Default assumed is "float32"
+           "CompilerOptions": "{'dtype': 'long'}"
+       },
+       "StoppingCondition": {
+           "MaxRuntimeInSeconds": 300
+       }
+   }
+   ```
+
+**Note**  
+This API field is only supported for PyTorch\.
+
+------
+#### [ Platform Example ]
 
    ```
    {
@@ -54,6 +89,8 @@ This section shows how to manage Amazon SageMaker Neo compilation jobs for machi
        }
    }
    ```
+
+------
 **Note**  
 For the `OutputConfig` API operation, the `TargetDevice` and `TargetPlatform` API operations are mutually exclusive\. You have to choose one of the two options\.
 

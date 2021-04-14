@@ -36,7 +36,7 @@ sm_mxnet_compiled_model = MXNetModel(
     role='AmazonSageMaker-ExecutionRole',
     entry_point='inference.py',
     source_dir='code',
-    framework_version='1.7.0',
+    framework_version='1.8.0',
     py_version='py3',
     image_uri='insert appropriate ECR Image URI for MXNet',
     env={'MMS_DEFAULT_RESPONSE_TIMEOUT': '500'},
@@ -50,7 +50,7 @@ print(predictor.endpoint_name)
 ```
 
 ------
-#### [ PyTorch ]
+#### [ PyTorch 1\.4 and Older ]
 
 ```
 from sagemaker.pytorch import PyTorchModel
@@ -65,6 +65,30 @@ sm_pytorch_compiled_model = PyTorchModel(
     py_version='py3',
     image_uri='insert appropriate ECR Image URI for PyTorch',
     env={'MMS_DEFAULT_RESPONSE_TIMEOUT': '500'},
+)
+
+# Replace the example instance_type below to your preferred instance_type
+predictor = sm_pytorch_compiled_model.deploy(initial_instance_count = 1, instance_type = 'ml.p3.2xlarge')
+
+# Print the name of newly created endpoint
+print(predictor.endpoint_name)
+```
+
+------
+#### [ PyTorch 1\.5 and Newer ]
+
+```
+from sagemaker.pytorch import PyTorchModel
+
+# Create SageMaker model and deploy an endpoint
+sm_pytorch_compiled_model = PyTorchModel(
+    model_data='insert S3 path of compiled PyTorch model archive',
+    role='AmazonSageMaker-ExecutionRole',
+    entry_point='inference.py',
+    source_dir='code',
+    framework_version='1.5',
+    py_version='py3',
+    image_uri='insert appropriate ECR Image URI for PyTorch',
 )
 
 # Replace the example instance_type below to your preferred instance_type

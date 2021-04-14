@@ -2,6 +2,8 @@
 
 A field for text input\.
 
+See an interactive example of an HTML template that uses this Crowd HTML Element in [CodePen](https://codepen.io/sagemaker_crowd_html_elements/pen/ZELYdOz)\.
+
 The following is an example of a Liquid template designed to transcribe audio clips that uses the `<crowd-text-area>` element\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```

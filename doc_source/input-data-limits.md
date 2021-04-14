@@ -69,7 +69,7 @@ The following label category limits apply to labeling jobs\. Quotas for label ca
 
 ## 3D Point Cloud and Video Frame Labeling Job Quotas<a name="sms-input-data-quotas-other"></a>
 
-The following quotas apply for 3D point cloud and video frame labeling job input data\. 
+The following quotas apply for 3D point cloud and video frame labeling job input data\.
 
 
 ****  

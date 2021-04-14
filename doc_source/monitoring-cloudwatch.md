@@ -4,22 +4,29 @@ You can monitor Amazon SageMaker using Amazon CloudWatch, which collects raw dat
 
 
 
-SageMaker model training jobs and endpoints write CloudWatch metrics and logs\. The following tables list the metrics and dimensions for SageMaker\.
+**Topics**
++ [SageMaker Endpoint Invocation Metrics](#cloudwatch-metrics-endpoint-invocation)
++ [SageMaker Multi\-Model Endpoint Metrics](#cloudwatch-metrics-multimodel-endpoints)
++ [SageMaker Jobs and Endpoint Metrics](#cloudwatch-metrics-jobs)
++ [SageMaker Ground Truth Metrics](#cloudwatch-metrics-ground-truth)
++ [SageMaker Feature Store Metrics](#cloudwatch-metrics-feature-store)
 
-**Endpoint Invocation Metrics** 
+## SageMaker Endpoint Invocation Metrics<a name="cloudwatch-metrics-endpoint-invocation"></a>
 
-The `AWS/SageMaker` namespace includes the following request metrics from calls to [ `InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html)\.
+The `AWS/SageMaker` namespace includes the following request metrics from calls to [ InvokeEndpoint](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html)\.
 
 Metrics are available at a 1\-minute frequency\.
 
 For information about how long CloudWatch metrics are retained for, see [GetMetricStatistics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html) in the *Amazon CloudWatch API Reference*\.
+
+**Endpoint Invocation Metrics**
 
 
 | Metric | Description | 
 | --- | --- | 
 | Invocation4XXErrors |  The number of `InvokeEndpoint` requests where the model returned a 4xx HTTP response code\. For each 4xx response, 1 is sent; otherwise, 0 is sent\. Units: None Valid statistics: Average, Sum  | 
 | Invocation5XXErrors |  The number of `InvokeEndpoint` requests where the model returned a 5xx HTTP response code\. For each 5xx response, 1 is sent; otherwise, 0 is sent\. Units: None Valid statistics: Average, Sum  | 
-| Invocations |  The `number of InvokeEndpoint` requests sent to a model endpoint\.  To get the total number of requests sent to a model endpoint, use the Sum statistic\. Units: None Valid statistics: Sum  | 
+| Invocations |  The number of `InvokeEndpoint` requests sent to a model endpoint\.  To get the total number of requests sent to a model endpoint, use the Sum statistic\. Units: None Valid statistics: Sum  | 
 | InvocationsPerInstance |  The number of invocations sent to a model, normalized by `InstanceCount` in each ProductionVariant\. 1/`numberOfInstances` is sent as the value on each request, where `numberOfInstances` is the number of active instances for the ProductionVariant behind the endpoint at the time of the request\. Units: None Valid statistics: Sum  | 
 | ModelLatency |  The interval of time taken by a model to respond as viewed from SageMaker\. This interval includes the local communication times taken to send the request and to fetch the response from the container of a model and the time taken to complete the inference in the container\. Units: Microseconds Valid statistics: Average, Sum, Min, Max, Sample Count  | 
 | OverheadLatency |  The interval of time added to the time taken to respond to a client request by SageMaker overheads\. This interval is measured from the time SageMaker receives the request until it returns a response to the client, minus the `ModelLatency`\. Overhead latency can vary depending on multiple factors, including request and response payload sizes, request frequency, and authentication/authorization of the request\. Units: Microseconds Valid statistics: Average, Sum, Min, Max, Sample Count  | 
@@ -31,20 +38,22 @@ For information about how long CloudWatch metrics are retained for, see [GetMetr
 | --- | --- | 
 | EndpointName, VariantName |  Filters endpoint invocation metrics for a `ProductionVariant` of the specified endpoint and variant\.  | 
 
-**Multi\-Model Endpoint Model Loading Metrics** 
+## SageMaker Multi\-Model Endpoint Metrics<a name="cloudwatch-metrics-multimodel-endpoints"></a>
 
-The `AWS/SageMaker` namespace includes the following model loading metrics from calls to [ `InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html) \.
+The `AWS/SageMaker` namespace includes the following model loading metrics from calls to [ InvokeEndpoint](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html)\.
 
 Metrics are available at a 1\-minute frequency\.
 
 For information about how long CloudWatch metrics are retained for, see [GetMetricStatistics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html) in the *Amazon CloudWatch API Reference*\.
+
+**Multi\-Model Endpoint Model Loading Metrics**
 
 
 | Metric | Description | 
 | --- | --- | 
 | ModelLoadingWaitTime  |  The interval of time that an invocation request has waited for the target model to be downloaded, or loaded, or both in order to perform inference\.  Units: Microseconds  Valid statistics: Average, Sum, Min, Max, Sample Count   | 
 | ModelUnloadingTime  |  The interval of time that it took to unload the model through the container's `UnloadModel` API call\.  Units: Microseconds  Valid statistics: Average, Sum, Min, Max, Sample Count   | 
-| ModelDownloadingTime | The interval of time that it took to download the model from Amazon Simple Storage Service \(Amazon S3\)\.Units: Microseconds Valid statistics: Average, Sum, Min, Max, Sample Count  | 
+| ModelDownloadingTime |  The interval of time that it took to download the model from Amazon Simple Storage Service \(Amazon S3\)\. Units: Microseconds Valid statistics: Average, Sum, Min, Max, Sample Count   | 
 | ModelLoadingTime  |  The interval of time that it took to load the model through the container's `LoadModel` API call\. Units: Microseconds  Valid statistics: Average, Sum, Min, Max, Sample Count   | 
 | ModelCacheHit  |  The number of `InvokeEndpoint` requests sent to the multi\-model endpoint for which the model was already loaded\. The Average statistic shows the ratio of requests for which the model was already loaded\. Units: None Valid statistics: Average, Sum, Sample Count  | 
 
@@ -55,13 +64,13 @@ For information about how long CloudWatch metrics are retained for, see [GetMetr
 | --- | --- | 
 | EndpointName, VariantName |  Filters endpoint invocation metrics for a `ProductionVariant` of the specified endpoint and variant\.  | 
 
-**Multi\-Model Endpoint Model Instance Metrics** 
-
-The `/aws/sagemaker/Endpoints` namespaces include the following instance metrics from calls to [ `InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html)\.
+The `/aws/sagemaker/Endpoints` namespaces include the following instance metrics from calls to [ InvokeEndpoint](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html)\.
 
 Metrics are available at a 1\-minute frequency\.
 
 For information about how long CloudWatch metrics are retained for, see [GetMetricStatistics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html) in the *Amazon CloudWatch API Reference*\.
+
+**Multi\-Model Endpoint Model Instance Metrics**
 
 
 | Metric | Description | 
@@ -75,11 +84,13 @@ For information about how long CloudWatch metrics are retained for, see [GetMetr
 | --- | --- | 
 | EndpointName, VariantName |  Filters endpoint invocation metrics for a `ProductionVariant` of the specified endpoint and variant\.  | 
 
-**Processing Job, Training Job, Batch Transform Job, and Endpoint Instance Metrics**
+## SageMaker Jobs and Endpoint Metrics<a name="cloudwatch-metrics-jobs"></a>
 
 The `/aws/sagemaker/ProcessingJobs`, `/aws/sagemaker/TrainingJobs`, `/aws/sagemaker/TransformJobs` and `/aws/sagemaker/Endpoints` namespaces include the following metrics for the training jobs and endpoint instances\.
 
 Metrics are available at a 1\-minute frequency\.
+
+**Processing Job, Training Job, Batch Transform Job, and Endpoint Instance Metrics**
 
 
 | Metric | Description | 
@@ -97,7 +108,9 @@ Metrics are available at a 1\-minute frequency\.
 | --- | --- | 
 | Host |  For processing jobs, the value for this dimension has the format `[processing-job-name]/algo-[instance-number-in-cluster]`\. Use this dimension to filter instance metrics for the specified processing job and instance\. This dimension format is present only in the `/aws/sagemaker/ProcessingJobs` namespace\. For training jobs, the value for this dimension has the format `[training-job-name]/algo-[instance-number-in-cluster]`\. Use this dimension to filter instance metrics for the specified training job and instance\. This dimension format is present only in the `/aws/sagemaker/TrainingJobs` namespace\. For batch transform jobs, the value for this dimension has the format `[transform-job-name]/[instance-id]`\. Use this dimension to filter instance metrics for the specified batch transform job and instance\. This dimension format is present only in the `/aws/sagemaker/TransformJobs` namespace\.  | 
 
-**Amazon SageMaker Ground Truth Metrics**
+## SageMaker Ground Truth Metrics<a name="cloudwatch-metrics-ground-truth"></a>
+
+**Ground Truth Metrics**
 
 
 | Metric | Description | 
@@ -122,7 +135,9 @@ Metrics are available at a 1\-minute frequency\.
 | --- | --- | 
 | LabelingJobName |  Filters dataset object count metrics for a labeling job\.  | 
 
-**Amazon SageMaker Feature Store Metrics**
+## SageMaker Feature Store Metrics<a name="cloudwatch-metrics-feature-store"></a>
+
+**Feature Store Metrics**
 
 
 | Metric | Description | 

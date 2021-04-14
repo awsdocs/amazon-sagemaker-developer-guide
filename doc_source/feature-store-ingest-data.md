@@ -64,7 +64,7 @@ WHERE row_num = 1;
 
  **Latest snapshot without duplicates and deleted records in the offline store** 
 
- This query selects non\-duplicate records and delete records from the offline store\.  
+ This query filters out any deleted records and selects non\-duplicate records from the offline store\.  
 
 ```
 SELECT *
@@ -80,7 +80,7 @@ NOT is_deleted;
 
  **Time Travel without duplicates and deleted records in the offline store** 
 
- This query selects non\-duplicate records and deleted records from a particular point in time\. You need to specify a timestamp string\. 
+ This query filters out any deleted records and selects non\-duplicate records from a particular point in time\.
 
 ```
 SELECT *

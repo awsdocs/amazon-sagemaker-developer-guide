@@ -1,6 +1,6 @@
 # Create a Streaming Labeling Job<a name="sms-streaming-create-job"></a>
 
-To create a streaming labeling job, you must create two Amazon SNS topics: and *input topic* and an *output topic* and specify these topics in [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) parameters `InputConfig` and `OutputConfig` respectively using `SnsDataSource`\.
+Streaming labeling jobs enable you to send individual data objects in real time to a perpetually running, streaming labeling job\. To create a streaming labeling job, you must create an Amazon SNS *input topic* and specify this topic in [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) parameters `InputConfig` of `SnsDataSource`\. Optionally, you can also create an Amazon SNS *output topic* and specify it in `OutputConfig`if you want to receive label data in real time\.
 
 **Important**  
 If you are a new user of Ground Truth streaming labeling jobs, it is recommended that you review [Ground Truth Streaming Labeling Jobs](sms-streaming-labeling-job.md) before creating a streaming labeling job\.

@@ -1,8 +1,5 @@
 # Crowd HTML Elements Reference<a name="sms-ui-template-reference"></a>
 
-****  
-***This feature is not available in the China Regions\.***
-
 Crowd HTML Elements are web components, a web standard that abstracts HTML markup, CSS, and JavaScript functionality into an HTML tag or set of tags\. Amazon SageMaker provides customers with the ability to design their own custom task templates in HTML\. 
 
 As a starting point, you can use a template built using Crowd HTML Elements from one of the following GitHub repositories: 
@@ -11,7 +8,7 @@ As a starting point, you can use a template built using Crowd HTML Elements from
 
 These repositories include templates designed for audio, image, text, video, and other types of data labeling and annotation tasks\. 
 
-For more information about how to implement custom templates in Amazon SageMaker Ground Truth, see [Creating Custom Labeling Workflows](sms-custom-templates.md)\. To learn more about custom templates in Amazon Augmented AI, see [Create Custom Worker Task Template](a2i-custom-templates.md)\.
+For more information about how to implement custom templates in Amazon SageMaker Ground Truth, see [Creating Custom Labeling Workflows](sms-custom-templates.md)\. To learn more about custom templates in Amazon Augmented AI, see [Create Custom Worker Task Templates](a2i-custom-templates.md)\.
 
 ## SageMaker Crowd HTML Elements<a name="general-topiclist"></a>
 

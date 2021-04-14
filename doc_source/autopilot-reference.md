@@ -38,8 +38,11 @@ This API provides HTTP service APIs for creating and managing Amazon SageMaker A
 + [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobObjective.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobObjective.html)
 + [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobSummary.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobSummary.html)
 + [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLOutputDataConfig.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLOutputDataConfig.html)
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLPartialFailureReason.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLPartialFailureReason.html) 
 + [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLS3DataSource.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLS3DataSource.html)
 + [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLSecurityConfig.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLSecurityConfig.html)
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CandidateArtifactLocations.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CandidateArtifactLocations.html) 
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CandidateProperties.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CandidateProperties.html) 
 + [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ResolvedAttributes.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ResolvedAttributes.html)
 
 For more information on the entire SageMaker REST API, see [API and SDK Reference](https://docs.aws.amazon.com/sagemaker/latest/dg/api-and-sdk-reference.html)\.

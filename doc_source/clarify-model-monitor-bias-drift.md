@@ -11,12 +11,12 @@ For example, you can set the frequency of the checks to 2 days\. This means that
 ## Model Monitor Sample Notebook<a name="clarify-model-monitor-sample-notebooks-bias-drift"></a>
 
 Amazon SageMaker Clarify provides the following sample notebook that shows how to capture real\-time inference data, create a baseline to monitor evolving bias against, and inspect the results: 
-+ [Monitoring bias drift and feature attribution drift Amazon SageMaker Clarify](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker_model_monitor/fairness_and_explainability/SageMaker-Model-Monitor-Fairness-and-Explainability.ipynb) – Use Amazon SageMaker Model Monitor to monitor bias drift and feature attribution drift over time\.
++ [Monitoring bias drift and feature attribution drift Amazon SageMaker Clarify](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker_model_monitor/fairness_and_explainability/SageMaker-Model-Monitor-Fairness-and-Explainability.html) – Use Amazon SageMaker Model Monitor to monitor bias drift and feature attribution drift over time\.
 
 This notebook has been verified to run in Amazon SageMaker Studio only\. If you need instructions on how to open a notebook in Amazon SageMaker Studio, see [Create or Open an Amazon SageMaker Studio Notebook](notebooks-create-open.md)\. If you're prompted to choose a kernel, choose **Python 3 \(Data Science\)**\. The following topics contain the highlights from the last two steps, and they contain code examples from the example notebook\. 
 
 **Topics**
 + [Model Monitor Sample Notebook](#clarify-model-monitor-sample-notebooks-bias-drift)
 + [Create a Bias Drift Baseline](clarify-model-monitor-bias-drift-baseline.md)
-+ [Schedule Feature Attribute Drift Monitoring Jobs](clarify-model-monitor-bias-drift-schedule.md)
++ [Schedule Bias Drift Monitoring Jobs](clarify-model-monitor-bias-drift-schedule.md)
 + [Inspect Reports for Data Bias Drift](clarify-model-monitor-bias-drift-report.md)

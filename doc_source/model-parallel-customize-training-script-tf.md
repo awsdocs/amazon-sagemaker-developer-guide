@@ -1,12 +1,12 @@
 # Modify a TensorFlow Training Script<a name="model-parallel-customize-training-script-tf"></a>
 
-The following are examples of training scripts that you can use to configure the SageMaker distributed model parallel library with TensorFlow versions 2\.3 with auto\-partitioning and manual partitioning\. This selection of examples also includes an example integrated with Horovod for hybrid model and data parallelism\. We recommend that you review [Unsupported Framework Features](#model-parallel-tf-unsupported-features) before creating a training script\.
+The following are examples of training scripts that you can use to configure the SageMaker distributed model parallel library with TensorFlow versions 2\.3\.1 and 2\.4\.1 with auto\-partitioning and manual partitioning\. This selection of examples also includes an example integrated with Horovod for hybrid model and data parallelism\. We recommend that you review [Unsupported Framework Features](#model-parallel-tf-unsupported-features) before creating a training script\.
 
-The required modifications you must make to your training script to use the library are listed in [TensorFlow 2\.3](#model-parallel-customize-training-script-tf-23)\.
+The required modifications you must make to your training script to use the library are listed in [TensorFlow](#model-parallel-customize-training-script-tf-23)\.
 
-To learn how to modify your training script to use hybrid model and data parallelism with Horovod, see [TensorFlow 2\.3 with Horovod](#model-parallel-customize-training-script-tf-2.3)\.
+To learn how to modify your training script to use hybrid model and data parallelism with Horovod, see [TensorFlow with Horovod](#model-parallel-customize-training-script-tf-2.3)\.
 
-If you want to use manual partitioning, also review [Manual partitioning with TF 2\.3](#model-parallel-customize-training-script-tf-manual)\. 
+If you want to use manual partitioning, also review [Manual partitioning with TensorFlow](#model-parallel-customize-training-script-tf-manual)\. 
 
 **Tip**  
 For end to end, runnable notebook examples that demonstrate how to use a TensorFlow training script with the SageMaker distributed model parallel library, see [TensorFlow Examples](distributed-training-notebook-examples.md#distributed-training-notebook-examples-tensorflow)\.
@@ -15,9 +15,9 @@ Note that auto\-partitioning is enabled by default\. Unless otherwise specified,
 
 **Topics**
 + [Unsupported Framework Features](#model-parallel-tf-unsupported-features)
-+ [TensorFlow 2\.3](#model-parallel-customize-training-script-tf-23)
-+ [TensorFlow 2\.3 with Horovod](#model-parallel-customize-training-script-tf-2.3)
-+ [Manual partitioning with TF 2\.3](#model-parallel-customize-training-script-tf-manual)
++ [TensorFlow](#model-parallel-customize-training-script-tf-23)
++ [TensorFlow with Horovod](#model-parallel-customize-training-script-tf-2.3)
++ [Manual partitioning with TensorFlow](#model-parallel-customize-training-script-tf-manual)
 
 ## Unsupported Framework Features<a name="model-parallel-tf-unsupported-features"></a>
 
@@ -25,7 +25,7 @@ The following TensorFlow features are unsupported by the library:
 + `tf.GradientTape()` is currently not supported\. You can use `Optimizer.get_gradients()` or `Optimizer.compute_gradients()` instead to compute gradients\.
 + The `tf.train.Checkpoint.restore()` API is currently not supported\. For checkpointing, use `smp.CheckpointManager` instead, which provides the same API and functionality\. Note that checkpoint restores with `smp.CheckpointManager` should take place after the first step\.
 
-## TensorFlow 2\.3<a name="model-parallel-customize-training-script-tf-23"></a>
+## TensorFlow<a name="model-parallel-customize-training-script-tf-23"></a>
 
 The following training script changes are required to run a TensorFlow model with SageMaker's distributed model parallel library:
 
@@ -118,7 +118,7 @@ for epoch in range(5):
     accuracy = train_accuracy.result()
 ```
 
-## TensorFlow 2\.3 with Horovod<a name="model-parallel-customize-training-script-tf-2.3"></a>
+## TensorFlow with Horovod<a name="model-parallel-customize-training-script-tf-2.3"></a>
 
 The SageMaker distributed model parallel library can be used with Horovod for hybrid model and data parallelism\. In this case, the total number of GPUs must be divisible by the number of partitions\. The quotient is inferred to be the number of model replicas or data parallelism degree\. For instance, if a training job is launched with 8 processes \(which corresponds to 8 GPUs\), and `partitions` is 2, then the library applies 2\-way model parallelism and 4\-way data parallelism over the 8 GPUs\.
 
@@ -218,7 +218,7 @@ for epoch in range(5):
         loss = train_step(images, labels, tf.constant(batch == 0))
 ```
 
-## Manual partitioning with TF 2\.3<a name="model-parallel-customize-training-script-tf-manual"></a>
+## Manual partitioning with TensorFlow<a name="model-parallel-customize-training-script-tf-manual"></a>
 
 Use `smp.partition` context managers to place operations in specific partition\. Any operation not placed in any `smp.partition` contexts is placed in the `default_partition`\. To learn more about the SageMaker's distributed model parallel library API, refer to the [API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel.html)\. 
 

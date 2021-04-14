@@ -62,6 +62,14 @@ In this example, the following are denied:
 **Note**  
 In this example, users can still take other SageMaker API actions from outside the VPC\. For information about how to restrict API calls to those from within the VPC, see [Control Access to the SageMaker API by Using Identity\-based Policies](security_iam_id-based-policy-examples.md#api-access-policy)\.
 
+## Create a VPC Endpoint Policy for SageMaker Feature Store<a name="api-private-link-feature-store"></a>
+
+ To create a VPC Endpoint for Feature Store, use the following endpoint template subtituting your *VPC\_Endpoint\_ID\.api* and *Region*:
+
+`VPC_Endpoint_ID.api.featurestore-runtime.sagemaker.Region.vpce.amazonaws.com`
+
+
+
 ## Connect Your Private Network to Your VPC<a name="notebook-private-link-vpn"></a>
 
 To call the SageMaker API and runtime through your VPC, you have to connect from an instance that is inside the VPC or connect your private network to your VPC by using an Amazon Virtual Private Network \(VPN\) or AWS Direct Connect\. For information about Amazon VPN, see [VPN Connections](https://docs.aws.amazon.com/vpc/latest/userguide/vpn-connections.html) in the *Amazon Virtual Private Cloud User Guide*\. For information about AWS Direct Connect, see [Creating a Connection](https://docs.aws.amazon.com/directconnect/latest/UserGuide/create-connection.html) in the *AWS Direct Connect User Guide*\.

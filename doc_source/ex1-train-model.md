@@ -156,4 +156,4 @@ xgb_model.model_data
 ```
 
 **Tip**  
-To measure biases that can occur during each stage of the ML lifecycle \(data collection, model training and tuning, and monitoring of ML models deployed for prediction\), use SageMaker Clarify\. For more information, see [Model Explainability](clarify-model-explainability.md)\. For an end\-to\-end example of it, see the [Fairness and Explainability with SageMaker Clarify](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker_processing/fairness_and_explainability/fairness_and_explainability.ipynb) example notebook\.
+To measure biases that can occur during each stage of the ML lifecycle \(data collection, model training and tuning, and monitoring of ML models deployed for prediction\), use SageMaker Clarify\. For more information, see [Model Explainability](clarify-model-explainability.md)\. For an end\-to\-end example of it, see the [Fairness and Explainability with SageMaker Clarify](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker_processing/fairness_and_explainability/fairness_and_explainability.html) example notebook\.

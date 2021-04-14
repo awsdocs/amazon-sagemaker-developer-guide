@@ -49,7 +49,7 @@ To run your own training model, build a Docker container using the [Amazon SageM
       ```
       FROM tensorflow/tensorflow:2.2.0rc2-gpu-py3-jupyter
       
-      # Install sagemaker-training toolkit to enable SageMaker Python SDK
+      # Install sagemaker-training toolkit that contains the common functionality necessary to create a container compatible with SageMaker and the Python SDK.
       RUN pip3 install sagemaker-training
       
       # Copies the training code inside the container
@@ -215,7 +215,7 @@ Remember that `docker` looks for a file specifically called `Dockerfile` without
 This bash shell script may raise a permission issue similar to the following error message:  
 
    ```
-   "denied: User: [ARN] is not authorized to perform: ecr:InitiateLayerUpload on resource: 
+   "denied: User: [ARN] is not authorized to perform: ecr:InitiateLayerUpload on resource:
    arn:aws:ecr:us-east-1:[id]:repository/tf-custom-container-test"
    ```
 If this error occurs, you need to attach the **AmazonEC2ContainerRegistryFullAccess** policy to your IAM role\. Go to the [IAM console](https://console.aws.amazon.com/iam/home), choose **Roles** from the left navigation pane, look up the IAM role you used for the Notebook instance\. Under the **Permission** tab, choose the **Attach policies** button, and search the **AmazonEC2ContainerRegistryFullAccess** policy\. Mark the check box of the policy, and choose **Attach policy** to finish\.

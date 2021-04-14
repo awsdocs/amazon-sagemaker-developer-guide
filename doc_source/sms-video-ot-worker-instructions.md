@@ -31,7 +31,7 @@ You may see frame attributes under the **Labels** menu\. These attributes will a
 
 After you've added a label, you can quickly add and edit a label category attribute value by using the downward pointing arrow next to the label in the **Labels** menu\. If you select the pencil icon next to the label in the **Labels** menu, the **Edit instance** menu will appear\. You can edit the label ID, label category, and label category attributes using this menu\. 
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/ot_video_attribute.gif)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/kitti-ot-general.gif)
 
 To edit an annotation, select the label of the annotation that you want to edit in the **Labels** menu or select the annotation in the frame\. When you edit or delete an annotation, the action will only modify the annotation in a single frame\. 
 
@@ -41,7 +41,7 @@ After you've used the predict next icon, review the location of each box in the 
 
 The following graphic demonstrates how to use the predict next tool:
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/ot_predict_next.gif)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/kitti-ot-predict-next.gif)
 
 For all other tools, you can use the **Copy to next** and **Copy to all** tools to copy your annotations to the next or all frames respectively\. 
 
@@ -138,6 +138,8 @@ When you open the labeling task, three buttons on the top right allow you to dec
 + **Stop and resume later**: You can use the **Stop and resume later** button to stop working and return to the task at a later time\. You should use the **Save** button to save your work before you select **Stop and resume later**\. When you select this button and then select **Confirm**, you are returned to the worker portal, and the task status is **Stopped**\. You can select the same task to resume work on it\. 
 
   Be aware that the person that creates your labeling tasks specifies a time limit in which all tasks much be completed by\. If you do not return to and complete this task within that time limit, it will expire and your work will not be submitted\. Contact your administrator for more information\. 
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/reject-decline-task.gif)
 
 ## Saving Your Work and Submitting<a name="sms-video-worker-instructions-saving-work-ot"></a>
 

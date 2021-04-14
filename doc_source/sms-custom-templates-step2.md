@@ -1,6 +1,6 @@
-# Step 2: Creating your custom labeling task template<a name="sms-custom-templates-step2"></a>
+# Step 2: Creating your custom worker task template<a name="sms-custom-templates-step2"></a>
 
-**Topics**
+**A *worker task template* is a file used by Ground Truth to customize the worker user interface \(UI\), or human task UI\. You can create a worker task template using HTML, CSS, JavaScript, [Liquid template language](https://shopify.github.io/liquid/), and [Crowd HTML Elements](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html)\. Liquid is used to automate the template, and Crowd HTML Elements can be used to include common annotation tools and provide the logic to submit to Ground Truth\.**
 + [Starting with a base template](#sms-custom-templates-step2-base)
 + [Developing templates locally](#sms-custom-template-step2-UI-local)
 + [Using External Assets](#sms-custom-template-step2-UI-external)
@@ -9,6 +9,10 @@
 + [Adding automation with Liquid](#sms-custom-templates-step2-automate)
 + [End\-to\-end demos](#sms-custom-templates-step2-moredemos)
 + [Next](#templates-step2-next)
+
+Use the following topics to learn how you can create a worker task template\. You can see a repository of example Ground Truth worker task templates on [GitHub](https://github.com/aws-samples/amazon-sagemaker-ground-truth-task-uis)\.
+
+
 
 ## Starting with a base template<a name="sms-custom-templates-step2-base"></a>
 
@@ -23,9 +27,6 @@ You can use a template editor in the Ground Truth console to start creating a te
 1. \(Optional\) Select a base template from the drop\-down menu under **Templates**\. If you prefer to create a template from scratch, choose **Custom** from the drop down\-menu for a minimal template skeleton\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/gifs/custom-template-editor.gif)
-
-**Tip**  
-For a repository of demo templates for a variety of labeling job task types, see [Amazon SageMaker Ground Truth Sample Task UIs ](https://github.com/aws-samples/amazon-sagemaker-ground-truth-task-uis)\.
 
 ## Developing templates locally<a name="sms-custom-template-step2-UI-local"></a>
 
@@ -43,7 +44,7 @@ Remember, though, this will not parse your variables\. You may want to replace t
 
 ## Using External Assets<a name="sms-custom-template-step2-UI-external"></a>
 
-Amazon SageMaker Ground Truth custom templates allow external scripts and style sheets to be embedded\.
+Amazon SageMaker Ground Truth custom templates allow external scripts and style sheets to be embedded\. For example, the following code block demonstrates how you would add a style sheet located at `https://www.example.com/my-enhancement-styles.css` to your template\.
 
 **Example**  
 
@@ -54,9 +55,9 @@ Amazon SageMaker Ground Truth custom templates allow external scripts and style 
 
 If you encounter errors, ensure that your originating server is sending the correct MIME type and encoding headers with the assets\.
 
-For example, the MIME and encoding types for remote scripts: `application/javascript;CHARSET=UTF-8`\.
+For example, the MIME and encoding types for remote scripts are: `application/javascript;CHARSET=UTF-8`\.
 
-The MIME and encoding type for remote stylesheets: `text/css;CHARSET=UTF-8`\.
+The MIME and encoding type for remote stylesheets are: `text/css;CHARSET=UTF-8`\.
 
 ## Track your variables<a name="sms-custom-template-step2-UI-vars"></a>
 
@@ -88,7 +89,7 @@ A simple version of this tool would look like this\.
   <crowd-classifier 
     name="tweetFeeling"
     categories="['positive','negative','neutral', 'unclear']"
-    header="Which term best describes this tweet?" 
+    header="Which term best describes this tweet?"
   >
      <classification-target>
       My favorite football team won today! 
@@ -96,7 +97,7 @@ A simple version of this tool would look like this\.
     </classification-target>
 
     <full-instructions header="Sentiment Analysis Instructions">
-      Try to determine the sentiment the author 
+      Try to determine the sentiment the author
       of the tweet is trying to express. 
       If none seem to match, choose "cannot determine."
     </full-instructions>
@@ -118,9 +119,9 @@ You can copy and paste the code into the editor in the Ground Truth labeling job
 
 Our custom template system uses [Liquid](https://shopify.github.io/liquid/) for automation\. It is an open source inline markup language\. In Liquid, the text between single curly braces and percent symbols is an instruction or *tag* that performs an operation like control flow or iteration\. Text between double curly braces is a variable or *object* that outputs its value\. 
 
-The most common use of Liquid will be to parse the data coming from your **pre\-annotation Lambda** and pull out the relevant variables to create the task\. The `taskInput` object returned by your [Pre\-annotation Lambda](sms-custom-templates-step3.md#sms-custom-templates-step3-prelambda) will be available as the `task.input` object in your templates\.
+The most common use of Liquid will be to parse the data coming from your **pre\-annotation Lambda** and pull out the relevant variables to create the task\. The `taskInput` object returned by your [Pre\-annotation Lambda](sms-custom-templates-step3-lambda-requirements.md#sms-custom-templates-step3-prelambda) will be available as the `task.input` object in your templates\.
 
-The properties in your manifest's data objects are passed into your [Pre\-annotation Lambda](sms-custom-templates-step3.md#sms-custom-templates-step3-prelambda) as the `event.dataObject`\. A simple pass\-through script simply returns that object as the `taskInput` object\. You would represent values from your manifest as variables as follows\.
+The properties in your manifest's data objects are passed into your [Pre\-annotation Lambda](sms-custom-templates-step3-lambda-requirements.md#sms-custom-templates-step3-prelambda) as the `event.dataObject`\. A simple pass\-through script simply returns that object as the `taskInput` object\. You would represent values from your manifest as variables as follows\.
 
 **Example Manifest data object**  
 
@@ -245,7 +246,7 @@ The tweet text that was in the prior sample is now replaced with an object\. The
 
 ## End\-to\-end demos<a name="sms-custom-templates-step2-moredemos"></a>
 
-You can view the following end\-to\-end demos which include sample Lambdas:
+You can view the following end\-to\-end demos which include sample Lambda function:
 + [Demo Template: Annotation of Images with `crowd-bounding-box`](sms-custom-templates-step2-demo1.md)
 + [Demo Template: Labeling Intents with `crowd-classifier`](sms-custom-templates-step2-demo2.md)
 

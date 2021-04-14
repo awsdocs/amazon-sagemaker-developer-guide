@@ -2,6 +2,8 @@
 
 A widget for classifying non\-image content, such as audio, video, or text\.
 
+See an interactive example of an HTML template that uses this Crowd HTML Element in [CodePen](https://codepen.io/sagemaker_crowd_html_elements/pen/KKawYBm)\.
+
 The following is an example of an HTML worker task template built using `crowd-classifier`\. This example uses the [Liquid template language](https://shopify.github.io/liquid/basics/introduction/) to automate:
 + Label categories in the `categories` parameter 
 + The objects that are being classified in the `classification-target` parameter\. 

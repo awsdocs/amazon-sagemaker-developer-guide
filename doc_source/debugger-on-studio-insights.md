@@ -16,9 +16,9 @@ When you are done using the Debugger insights dashboard, you must shut down the 
 
 1. Open the drop down menu, and choose **Experiments and trials**\.
 
-1. Look up your training job name to open the Debugger insights dashboard\. If you have not assigned a SageMaker Experiments trial component for the training job, the job is collected under the ***Unassigned trial components*** list\.
+1. Look up your training job name\. If you have not assigned a SageMaker Experiments trial component to the training job, the job is collected under the ***Unassigned trial components*** list\.
 
-1. Open the context menu of the training job trial component\. There are two menu items to access the Debugger features on Studio: **Open Debugger for insights** and **Open in trial details**\.
+1. **Right\-click** \(or an equivalent UI interaction\) to open the context menu of the training job trial component\. There are two menu items to access the Debugger features on Studio: **Open Debugger for insights** and **Open in trial details**\.
 
 1. Choose **Open Debugger for insights**\. This opens a **Debug \[your\-training\-job\-name\]** tab\. In this tab, Debugger provides an overview of your model training performance on EC2 instances and identifies system bottleneck problems\. While **monitoring** the system resource utilization, you can also enable **profiling** to capture framework metrics that consist of data from neural network operations executed during forward and backward pass and data loading\. For more information about how to enable **profiling** using the Debugger insights dashboard controller, see [Enable and Configure Debugger Profiling for Detailed Insights](debugger-on-studio-insights-controllers.md#debugger-on-studio-insights-update-config)\. 
 

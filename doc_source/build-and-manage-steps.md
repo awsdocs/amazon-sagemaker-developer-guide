@@ -2,21 +2,38 @@
 
 SageMaker Pipelines are composed of steps\. These steps define the actions that the pipeline takes, and the relationships between steps using properties\.
 
- Amazon SageMaker Model Building Pipelines support the following step types: 
-+ Processing
-+ Training
-+ Condition
-+ BatchTransform
-+ RegisterModel
-+ CreateModel
+**Topics**
++ [Step Types](#build-and-manage-steps-types)
++ [Step Properties](#build-and-manage-properties)
++ [Data Dependency Between Steps](#build-and-manage-data-dependency)
++ [Use a Custom Image in a Step](#build-and-manage-images)
 
-The following describes the requirements of each step and provides an example implementation of the step\. These are not functional implementations because they don't provide the resource and inputs needed\. For a tutorial that implements these steps, see [Create and Manage SageMaker Pipelines](pipelines-build.md)\.
+## Step Types<a name="build-and-manage-steps-types"></a>
 
-**Processing**
+The following describes the requirements of each step type and provides an example implementation of the step\. These are not functional implementations because they don't provide the resource and inputs needed\. For a tutorial that implements these steps, see [Create and Manage SageMaker Pipelines](pipelines-build.md)\.
+
+Amazon SageMaker Model Building Pipelines support the following step types:
++ [Processing](#step-type-processing)
++ [Training](#step-type-training)
++ [Transform](#step-type-transform)
++ [CreateModel](#step-type-create-model)
++ [RegisterModel](#step-type-register-model)
++ [Condition](#step-type-condition)
+
+### Processing Step<a name="step-type-processing"></a>
 
 You use a processing step to create a processing job for data processing\. For more information on processing jobs, see [Process Data and Evaluate Models](https://docs.aws.amazon.com/sagemaker/latest/dg/processing-job.html)\.
 
 A processing step requires a processor, a Python script that defines the processing code, outputs for processing, and job arguments\. The following example shows how to create a `ProcessingStep` definition\.  For more information on processing step requirements, see the [sagemaker\.workflow\.steps\.ProcessingStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.ProcessingStep) documentation\.
+
+```
+from sagemaker.sklearn.processing import SKLearnProcessor
+
+sklearn_processor = SKLearnProcessor(framework_version='0.20.0',
+                                     role=<role>,
+                                     instance_type='ml.m5.xlarge',
+                                     instance_count=1)
+```
 
 ```
 from sagemaker.processing import ProcessingInput, ProcessingOutput
@@ -26,7 +43,7 @@ step_process = ProcessingStep(
     name="AbaloneProcess",
     processor=sklearn_processor,
     inputs=[
-      ProcessingInput(source=input_data, destination="/opt/ml/processing/input"),  
+      ProcessingInput(source=<input_data>, destination="/opt/ml/processing/input"),
     ],
     outputs=[
         ProcessingOutput(output_name="train", source="/opt/ml/processing/train"),
@@ -37,7 +54,52 @@ step_process = ProcessingStep(
 )
 ```
 
-**Training**
+**Pass runtime parameters**
+
+You can pass runtime parameters to a processing step using the [get\_run\_args](https://sagemaker.readthedocs.io/en/stable/api/training/processing.html#sagemaker.processing.ScriptProcessor.get_run_args) method of the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\. This allows you to use processors besides `SKLearnProcessor` such as `PySparkProcessor` and `SparkJarProcessor`\.
+
+The following example shows how to pass runtime parameters from a PySpark processor to a `ProcessingStep`\.
+
+```
+from sagemaker.spark.processing import PySparkProcessor
+
+pyspark_processor = PySparkProcessor(framework_version='2.4',
+                                     role=<role>,
+                                     instance_type='ml.m5.xlarge',
+                                     instance_count=1)
+```
+
+```
+from sagemaker.processing import ProcessingInput, ProcessingOutput
+
+run_args = pyspark_processor.get_run_args(
+    "preprocess.py",
+    inputs=[
+      ProcessingInput(source=<input_data>, destination="/opt/ml/processing/input"),
+    ],
+    outputs=[
+        ProcessingOutput(output_name="train", source="/opt/ml/processing/train"),
+        ProcessingOutput(output_name="validation", source="/opt/ml/processing/validation"),
+        ProcessingOutput(output_name="test", source="/opt/ml/processing/test")
+    ],
+    arguments=None
+)
+```
+
+```
+from sagemaker.workflow.steps import ProcessingStep
+
+step_process = ProcessingStep(
+    name="AbaloneProcess",
+    processor=pyspark_processor,
+    inputs=run_args.inputs,
+    outputs=run_args.outputs,
+    job_arguments=run_args.arguments,
+    code=run_args.code
+)
+```
+
+### Training Step<a name="step-type-training"></a>
 
 You use a training step to create a training job to train a model\. For more information on training jobs, see [Train a Model with Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-training.html)\.
 
@@ -67,35 +129,11 @@ step_train = TrainingStep(
 )
 ```
 
-**Condition**
-
-You use a condition step to evaluate the condition of step properties to assess which action should be taken next in the pipeline\.
-
-A condition step requires a list of conditions, and a list of steps to execute if the condition evaluates to `true` and a list of steps to execute if the condition evaluates to `false`\. The following example shows how to create a `Condition` step definition\.  For more information on `Condition` step requirements, see the [sagemaker\.workflow\.condition\_step\.ConditionStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#conditionstep) documentation\.  
-
-**Note**  
-SageMaker Pipelines doesn't support the use of nested condition steps\. You can't pass a condition step as the input for another condition step\. 
-
-```
-from sagemaker.workflow.conditions import ConditionLessThanOrEqualTo
-from sagemaker.workflow.condition_step import (
-    ConditionStep,
-    JsonGet
-)
-
-step_cond = ConditionStep(
-    name="AbaloneMSECond",
-    conditions=[cond_lte],
-    if_steps=[step_register, step_create_model, step_transform],
-    else_steps=[]
-)
-```
-
-**Transform**
+### Transform Step<a name="step-type-transform"></a>
 
 You use a transform step for batch transformation to run inference on an entire dataset\. For more information on batch transformation, see [Run Batch Transforms with Inference Pipelines ](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipeline-batch.html)\.
 
-A transform step requires a transformer, and the data to run batch transformation on\. The following example shows how to create a `Transform` step definition\.  For more information on `Transform` step requirements, see the [sagemaker\.workflow\.steps\.TransformStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.TransformStep)\.  
+A transform step requires a transformer, and the data to run batch transformation on\. The following example shows how to create a `Transform` step definition\.  For more information on `Transform` step requirements, see the [sagemaker\.workflow\.steps\.TransformStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.TransformStep)\. documentation\.
 
 ```
 from sagemaker.inputs import TransformInput
@@ -108,11 +146,29 @@ step_transform = TransformStep(
 )
 ```
 
-**RegisterModel**
+### CreateModel Step<a name="step-type-create-model"></a>
+
+You use a CreateModel step to create a SageMaker Model\. For more information on SageMaker Models, see [Train a Model with Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-training.html)\.
+
+A CreateModel step requires model artifacts, and information on the SageMaker instance type that you need to use to create the model\. The following example shows how to create a `CreateModel` step definition\.  For more information on `CreateModel` step requirements, see the [sagemaker\.workflow\.steps\.CreateModelStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.CreateModelStep) documentation\.
+
+```
+from sagemaker.workflow.steps import CreateModelStep
+
+step_create_model = CreateModelStep(
+    name="AbaloneCreateModel",
+    model=model,
+    inputs=inputs
+)
+```
+
+For more information on the available steps and their input requirements, see the [Pipelines](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html) documentation\. 
+
+### RegisterModel Step<a name="step-type-register-model"></a>
 
 You use a RegisterModel step to register a model to a model group\. For more information on registering models, see [Register and Deploy Models with Model Registry](model-registry.md)\.
 
-A RegisterModel step requires an estimator, model data output from training, and a model package group name to associate the model package with\. The following example shows how to create a `RegisterModel` definition\.  For more information on RegisterModel step requirements, see the [sagemaker\.workflow\.step\_collections\.RegisterModel](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.step_collections.RegisterModel)\.  
+A RegisterModel step requires an estimator, model data output from training, and a model package group name to associate the model package with\. The following example shows how to create a `RegisterModel` definition\.  For more information on `RegisterModel` step requirements, see the [sagemaker\.workflow\.step\_collections\.RegisterModel](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.step_collections.RegisterModel) documentation\.
 
 ```
 from sagemaker.workflow.step_collections import RegisterModel
@@ -131,23 +187,39 @@ step_register = RegisterModel(
 )
 ```
 
-**CreateModel**
+### Condition Step<a name="step-type-condition"></a>
 
-You use a CreateModel step to create a SageMaker Model\. For more information on SageMaker Models, see [Train a Model with Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-training.html)\.
+You use a condition step to evaluate the condition of step properties to assess which action should be taken next in the pipeline\.
 
-A CreateModel step requires model artifacts, and information on the SageMaker instance type that you need to use to create the model\. The following example shows how to create a `CreateModel` step definition\.  For more information on `CreateModel` step requirements, see the [sagemaker\.workflow\.steps\.CreateModelStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.CreateModelStep) documentation\.  
+A condition step requires a list of conditions, and a list of steps to execute if the condition evaluates to `true` and a list of steps to execute if the condition evaluates to `false`\. The following example shows how to create a `Condition` step definition\.  For more information on `Condition` step requirements, see the [sagemaker\.workflow\.condition\_step\.ConditionStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#conditionstep) documentation\.
+
+**Limitations**
++ SageMaker Pipelines doesn't support the use of nested condition steps\. You can't pass a condition step as the input for another condition step\.
++ A condition step can't use identical steps in both branches\. If you need the same step functionality in both branches, duplicate the step and give it a different name\.
 
 ```
-from sagemaker.workflow.steps import CreateModelStep
+from sagemaker.workflow.conditions import ConditionLessThanOrEqualTo
+from sagemaker.workflow.condition_step import (
+    ConditionStep,
+    JsonGet
+)
 
-step_create_model = CreateModelStep(
-    name="AbaloneCreateModel",
-    model=model,
-    inputs=inputs
+cond_lte = ConditionLessThanOrEqualTo(
+    left=JsonGet(
+        step=step_eval,
+        property_file=evaluation_report,
+        json_path="regression_metrics.mse.value"
+    ),
+    right=6.0
+)
+
+step_cond = ConditionStep(
+    name="AbaloneMSECond",
+    conditions=[cond_lte],
+    if_steps=[step_register, step_create_model, step_transform],
+    else_steps=[]
 )
 ```
-
- For more information on the available steps and their input requirements, see the [Pipelines](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html) documentation\. 
 
 ## Step Properties<a name="build-and-manage-properties"></a>
 
@@ -186,7 +258,7 @@ step_train = TrainingStep(
 )
 ```
 
-## Using Custom Images in Pipelines<a name="build-and-manage-images"></a>
+## Use a Custom Image in a Step<a name="build-and-manage-images"></a>
 
  You can use any of the available SageMaker [Deep Learning Container images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md) when you create a step in your pipeline\. 
 
@@ -194,4 +266,4 @@ You can also create a step using SageMaker S3 applications\. A SageMaker S3 appl
 
  You can also use your own container with pipeline steps\. Because you can’t create an image from within SageMaker Studio, you must create your image using another method before using it with Amazon SageMaker Model Building Pipelines\.
 
- To use your own container when creating the steps for your pipeline, include the image URI in the estimator definition\. For more information on using your own container with SageMaker, see [Using Docker Containers with SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/docker-containers.html)\. 
+ To use your own container when creating the steps for your pipeline, include the image URI in the estimator definition\. For more information on using your own container with SageMaker, see [Using Docker Containers with SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/docker-containers.html)\.

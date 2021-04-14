@@ -6,14 +6,14 @@ For more information about model tuning, see [Perform Automatic Model Tuning](au
 
 ## Metrics Computed by the Factorization Machines Algorithm<a name="fm-metrics"></a>
 
-The factorization machines algorithm has both binary classification and regression predictor types\. The predictor type determines which metric you can use for automatic model tuning\. The algorithm reports a `test:rmse` regressor metric, which is computed during training\. When tuning the model for regression tasks, choose this metric as the objective\.
+The Factorization Machines algorithm has both binary classification and regression predictor types\. The predictor type determines which metric you can use for automatic model tuning\. The algorithm reports a `test:rmse` regressor metric, which is computed during training\. When tuning the model for regression tasks, choose this metric as the objective\.
 
 
 | Metric Name | Description | Optimization Direction | 
 | --- | --- | --- | 
 | test:rmse | Root Mean Square Error | Minimize | 
 
-The factorization machines algorithm reports three binary classification metrics, which are computed during training\. When tuning the model for binary classification tasks, choose one of these as the objective\.
+The Factorization Machines algorithm reports three binary classification metrics, which are computed during training\. When tuning the model for binary classification tasks, choose one of these as the objective\.
 
 
 | Metric Name | Description | Optimization Direction | 
@@ -24,7 +24,7 @@ The factorization machines algorithm reports three binary classification metrics
 
 ## Tunable Factorization Machines Hyperparameters<a name="fm-tunable-hyperparameters"></a>
 
-You can tune the following hyperparameters for the factorization machines algorithm\. The initialization parameters that contain the terms bias, linear, and factorization depend on their initialization method\. There are three initialization methods: `uniform`, `normal`, and `constant`\. These initialization methods are not themselves tunable\. The parameters that are tunable are dependent on this choice of the initialization method\. For example, if the initialization method is `uniform`, then only the `scale` parameters are tunable\. Specifically, if `bias_init_method==uniform`, then `bias_init_scale`, `linear_init_scale`, and `factors_init_scale` are tunable\. Similarly, if the initialization method is `normal`, then only `sigma` parameters are tunable\. If the initialization method is `constant`, then only `value` parameters are tunable\. These dependencies are listed in the following table\. 
+You can tune the following hyperparameters for the Factorization Machines algorithm\. The initialization parameters that contain the terms bias, linear, and factorization depend on their initialization method\. There are three initialization methods: `uniform`, `normal`, and `constant`\. These initialization methods are not themselves tunable\. The parameters that are tunable are dependent on this choice of the initialization method\. For example, if the initialization method is `uniform`, then only the `scale` parameters are tunable\. Specifically, if `bias_init_method==uniform`, then `bias_init_scale`, `linear_init_scale`, and `factors_init_scale` are tunable\. Similarly, if the initialization method is `normal`, then only `sigma` parameters are tunable\. If the initialization method is `constant`, then only `value` parameters are tunable\. These dependencies are listed in the following table\. 
 
 
 | Parameter Name | Parameter Type | Recommended Ranges | Dependency | 

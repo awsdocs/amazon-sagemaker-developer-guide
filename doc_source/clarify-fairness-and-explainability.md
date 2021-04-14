@@ -18,8 +18,8 @@ Machine learning models and data\-driven systems are being increasingly used to 
 ## Sample Notebooks<a name="clarify-fairness-and-explainability-sample-notebooks"></a>
 
 Amazon SageMaker Clarify provides the following sample notebooks:
-+ [Explainability and bias detection with Amazon SageMaker Clarify](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker_processing/fairness_and_explainability/fairness_and_explainability.ipynb) – Use SageMaker Clarify to create a processing job for the detecting bias and explaining model predictions with feature attributions\.
-+ [Monitoring bias drift and feature attribution drift Amazon SageMaker Clarify](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker_model_monitor/fairness_and_explainability/SageMaker-Model-Monitor-Fairness-and-Explainability.ipynb) – Use Amazon SageMaker Model Monitor to monitor bias drift and feature attribution drift over time\.
++ [Explainability and bias detection with Amazon SageMaker Clarify](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker_processing/fairness_and_explainability/fairness_and_explainability.html) – Use SageMaker Clarify to create a processing job for the detecting bias and explaining model predictions with feature attributions\.
++ [Monitoring bias drift and feature attribution drift Amazon SageMaker Clarify](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker_model_monitor/fairness_and_explainability/SageMaker-Model-Monitor-Fairness-and-Explainability.html) – Use Amazon SageMaker Model Monitor to monitor bias drift and feature attribution drift over time\.
 
 These notebooks have been verified to run in Amazon SageMaker Studio only\. If you need instructions on how to open a notebook in Amazon SageMaker Studio, see [Create or Open an Amazon SageMaker Studio Notebook](notebooks-create-open.md)\. If you're prompted to choose a kernel, choose **Python 3 \(Data Science\)**\.
 

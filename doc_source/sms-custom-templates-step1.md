@@ -17,4 +17,4 @@ In this step you use the console to establish which worker type to use and make 
 
 ## Next<a name="templates-step1-next"></a>
 
-[Step 2: Creating your custom labeling task template](sms-custom-templates-step2.md)
+[Step 2: Creating your custom worker task template](sms-custom-templates-step2.md)

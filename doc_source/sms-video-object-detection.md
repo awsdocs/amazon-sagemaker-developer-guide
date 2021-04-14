@@ -18,7 +18,7 @@ The UI provides workers with the following assistive labeling tools to complete 
 
 The following video shows how a worker might use the worker UI with the bounding box tool to complete your object detection tasks\.
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/od_predict_next.gif)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/kitti-od-general-labeling-job.gif)
 
 ## Create a Video Frame Object Detection Labeling Job<a name="sms-video-od-create-labeling-job"></a>
 
