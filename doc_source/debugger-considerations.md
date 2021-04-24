@@ -2,13 +2,13 @@
 
 Consider the following when using Amazon SageMaker Debugger\.
 
-## Considerations for Distributed Training<a name="w1291aac26c16c48c16b5"></a>
+## Considerations for Distributed Training<a name="w1304aac26c16c48c16b5"></a>
 + **Horovod support** 
   + For debugging – Debugger does not support Horovod distributed training for Keras\.
   + For profiling – Debugger does not support Horovod distributed training for Keras and MXNet\.
 + **Parameter Server support** – Parameter server\-based distributed training is not supported\.
 
-## Considerations for Monitoring and Profiling<a name="w1291aac26c16c48c16b7"></a>
+## Considerations for Monitoring and Profiling<a name="w1304aac26c16c48c16b7"></a>
 + For AWS TensorFlow, data loader metrics cannot be collected using the default `local_path` setting of the `FrameworkProfile` class\. The path has to be manually configured ending in `"/"`\. For example:
 
   ```

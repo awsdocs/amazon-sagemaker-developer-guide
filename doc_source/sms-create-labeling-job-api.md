@@ -28,7 +28,7 @@ To use the `CreateLabelingJob` operation, you need the following:
       ]
   }
   ```
-+ An AWS Identity and Access Management \(IAM\) role with the [AmazonSageMakerGroundTruthExecution](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerGroundTruthExecution) managed IAM policy attached and with permissions to access your S3 buckets\. To learn more about this policy, see [Grant General Permissions To Get Started Using Ground Truth](sms-security-permission.md#sms-security-permissions-get-started)\. If you require more granular permissions, see [Assign IAM Permissions to Use Ground Truth](sms-security-permission.md)\.
++ An AWS Identity and Access Management \(IAM\) role with the [AmazonSageMakerGroundTruthExecution](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerGroundTruthExecution) managed IAM policy attached and with permissions to access your S3 buckets\. To learn more about this policy, see [Use IAM Managed Policies with Ground Truth](sms-security-permissions-get-started.md)\. If you require more granular permissions, see [Assign IAM Permissions to Use Ground Truth](sms-security-permission.md)\.
 
   If your input or output bucket name does not contain `sagemaker`, you can attach a policy similar to the following to the role that is passed to the `CreateLabelingJob` operation\.
 

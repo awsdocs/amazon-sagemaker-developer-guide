@@ -23,6 +23,7 @@ You can configure only subnets with a default tenancy VPC in which your instance
 + If you don't want to allow internet access, you must create interface VPC endpoints \(AWS PrivateLink\) to access the following:
   + The SageMaker API and SageMaker runtime\. This is required to run Studio notebooks and to train and host models\.
   + Amazon S3 and other AWS services you require\.
+  + If you're using SageMaker Projects in SageMaker Studio without internet access, you need a VPC endpoint for Service Catalog\.
 
   You must associate the security groups for your VPC with these endpoints\.
 

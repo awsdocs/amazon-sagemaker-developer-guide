@@ -28,8 +28,8 @@ The demographic disparity for a subgroup \(DDi\) are the difference between the 
 
 The range of DD values for binary outcomes is \(\-1, \+1\)\. 
 + \+1: when there are no rejections in facet *a* or subgroup and no acceptances in facet *d* or subgroup
-+ Positive values indicate there is a demographic disparity as facet *d* or subgroup has a larger proportion of the rejected outcomes in the dataset than of the accepted outcomes\. The higher the value the greater the disparity\.
-+ Negative values indicate there is a demographic disparity as facet *a* or subgroup has a smaller proportion of the rejected outcomes in the dataset than of the accepted outcomes\. The lower the value the greater the disparity\.
++ Positive values indicate there is a demographic disparity as facet *d* or subgroup has a smaller proportion of the rejected outcomes in the dataset than of the accepted outcomes\. The higher the value the greater the disparity\.
++ Negative values indicate there is a demographic disparity as facet *a* or subgroup has a larger proportion of the rejected outcomes in the dataset than of the accepted outcomes\. The lower the value the greater the disparity\.
 + \-1: when there are no rejections in facet *d* or subgroup and no acceptances in facet *a* or subgroup
 
 If you don't condition on anything then CDD is zero if and only if DPL is zero\.

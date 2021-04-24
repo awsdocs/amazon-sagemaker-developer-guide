@@ -10,7 +10,7 @@ To train a model in SageMaker, you create a training job\. The training job incl
 + The URL of the Amazon Simple Storage Service \(Amazon S3\) bucket where you've stored the training data\.
 + The compute resources that you want SageMaker to use for model training\. Compute resources are ML compute instances that are managed by SageMaker\.
 + The URL of the S3 bucket where you want to store the output of the job\.
-+ The Amazon Elastic Container Registry path where the training code is stored\. For more information, see [Docker Registry Paths for SageMaker Built\-in Algorithms](sagemaker-algo-docker-registry-paths.md)\.
++ The Amazon Elastic Container Registry path where the training code is stored\. For more information, see [Docker Registry Paths and Example Code](sagemaker-algo-docker-registry-paths.md)\.
 
 You have the following options for a training algorithm:
 + **Use an algorithm provided by SageMaker**—SageMaker provides training algorithms\. If one of these meets your needs, it's a great out\-of\-the\-box solution for quick model training\. For a list of algorithms provided by SageMaker, see [Use Amazon SageMaker Built\-in Algorithms](algos.md)\. To try an exercise that uses an algorithm provided by SageMaker, see [Get Started with Amazon SageMaker](gs.md)\.

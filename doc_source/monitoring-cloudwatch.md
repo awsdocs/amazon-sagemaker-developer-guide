@@ -122,8 +122,9 @@ Metrics are available at a 1\-minute frequency\.
 | JobsFailed |  The number of labeling jobs that failed\. To get the total number of labeling jobs that failed, use the Sum statistic\. Units: None Valid statistics: Sum, Sample Count  | 
 | JobsSucceeded |  The number of labeling jobs that succeeded\. To get the total number of labeling jobs that succeeded, use the Sum statistic\. Units: None Valid statistics: Sum, Sample Count  | 
 | JobsStopped |  The number of labeling jobs that were stopped\. To get the total number of labeling jobs that were stopped, use the Sum statistic\. Units: None Valid statistics: Sum, Sample Count  | 
-| TasksAccepted |   The total number of tasks accepted by workers\.  Units: None  Valid statistics: Max   | 
-| TasksReturned |   The total number of tasks returned by workers\.  Units: None  Valid statistics: Max   | 
+| TasksAccepted |  The total number of tasks accepted by workers\.  Units: None  Valid statistics: Max  | 
+| TasksDeclined |  The number of tasks declined by a work team\. Units: None **Valid Statistics:**  Max  | 
+| TasksReturned |  The total number of tasks returned by workers\.  Units: None  Valid statistics: Max  | 
 | TasksSubmitted |  The number of tasks submitted/completed by a private work team\. Units: None Valid statistics: Max  | 
 | TimeSpent |  Time spent on a task completed by a private work team\. Units: Seconds Valid statistics: Max  | 
 | TotalDatasetObjectsLabeled |  The number of dataset objects labeled successfully in a labeling job\. To view the labeling job progress, use the Max metric\. Units: None Valid statistics: Max  | 
