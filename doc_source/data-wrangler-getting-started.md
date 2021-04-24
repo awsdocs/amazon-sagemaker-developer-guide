@@ -93,7 +93,7 @@ When your dataset has been successfully uploaded to Amazon S3, it you can import
 
 1. Select **Amazon S3**\. 
 
-1. Use the **Import a dataset from S3** table to find the bucket to which you added the Titanic dataset\. Choose the Titanic dataset CSV file to open the **Details** panel\.
+1. Use the **Import a dataset from S3** table to find the bucket to which you added the Titanic dataset\. Choose the Titanic dataset CSV file to open the **Details** pane\.
 
 1. Under **Details**, the **File type** should be CSV\. Choose **Add header to table** to specify that the first row of the dataset is a header\. You can also name the dataset something more friendly, such as *Titanic\-train*\.
 

@@ -47,8 +47,8 @@ The following table lists the supported values for account IDs and corresponding
 Use the following commands to find out which versions of the images are available\. For example, use the following to find the available `sagemaker-sparkml-serving` image in the `ca-central-1` Region:
 
 ```
-$ aws \
-    ecr describe-images \    
+aws \
+    ecr describe-images \
     --region ca-central-1 \
     --registry-id 341280168497 \
     --repository-name sagemaker-sparkml-serving

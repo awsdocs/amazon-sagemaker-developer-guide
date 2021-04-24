@@ -259,6 +259,75 @@ Use a policy similar to the following to grant the permissions described above:
 }
 ```
 
+You can also access data in your Amazon S3 bucket from another AWS account by specifying the Amazon S3 bucket URI\. To do this, the IAM policy that grants access to the Amazon S3 bucket in the other account should use a policy similar to this below where `BucketFolder` is the specific folder in the users bucket `UserBucket`\. This policy should be added to the user granting access to their bucket for another user\. 
+
+```
+{
+   "Version": "2012-10-17",
+   "Statement": [
+       {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:PutObjectAcl"
+            ],
+            "Resource": "arn:aws:s3:::UserBucket/BucketFolder/*"
+            },
+                {
+                "Effect": "Allow",
+                "Action": [
+                    "s3:ListBucket"
+                ],
+                "Resource": "arn:aws:s3:::UserBucket",
+                "Condition": {
+                "StringLike": {
+                    "s3:prefix": [
+                    "BucketFolder/*"
+                    ]
+                }
+            }
+        } 
+    ]
+}
+```
+
+The user that will be accessing bucket \(not the bucket owner\) will need to add a policy similar to this below to their user\. Note that `AccountX` and `TestUser` below refers to the bucket owner and their User respectively\.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::AccountX:user/TestUser"
+            },
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:PutObjectAcl"
+            ],
+            "Resource": [
+                "arn:aws:s3:::UserBucket/BucketFolder/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::AccountX:user/TestUser"
+            },
+            "Action": [
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::UserBucket"
+            ]
+        }
+    ]
+}
+```
+
 **Policy example to grant access to use SageMaker Studio**
 
 Use a policy like to the following to create an IAM execution role that can be used to set up a Studio instance\. 

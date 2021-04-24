@@ -1,9 +1,9 @@
 # Automated Data Setup<a name="sms-console-create-manifest-file"></a>
 
-You can used the automated data setup to create manifest files for your labeling jobs in the Ground Truth console using images, videos, video frames, text \(\.txt\) files, and comma\-separated value \(\.csv\) files stored in Amazon S3\. When you use automated data setup, you specify an S3 location where your input data is stored and the input data type, and Ground Truth looks for the files that match that type in the location you specify\.
+You can used the automated data setup to create manifest files for your labeling jobs in the Ground Truth console using images, videos, video frames, text \(\.txt\) files, and comma\-separated value \(\.csv\) files stored in Amazon S3\. When you use automated data setup, you specify an Amazon S3 location where your input data is stored and the input data type, and Ground Truth looks for the files that match that type in the location you specify\.
 
 **Note**  
-Ground Truth does not use a AWS KMS key to access your input data or write the input manifest file in the S3 location that you specify\.
+Ground Truth does not use an AWS KMS key to access your input data or write the input manifest file in the Amazon S3 location that you specify\. The IAM user or role that creates the labeling job must have permissions to access your input data objects in Amazon S3\.
 
 Before using the following procedure, ensure that your input images or files are correctly formatted:
 + Image files – Image files must comply with the size and resolution limits listed in the tables found in [Input File Size Quota](input-data-limits.md#input-file-size-limit)\. 
@@ -35,12 +35,12 @@ Use these instructions to automatically set up your input dataset connection wit
 
 1. Choose your **Data type** using the dropdown list\.
 
-1. Use the drop down menu under **IAM Role** to select an execution role\. If you select **Create a new role**, specify the S3 buckets that you want grant this role permission to access\. This role must have permission to access the S3 buckets you specified in Steps 5 and 6\.
+1. Use the drop down menu under **IAM Role** to select an execution role\. If you select **Create a new role**, specify the Amazon S3 buckets that you want grant this role permission to access\. This role must have permission to access the S3 buckets you specified in Steps 5 and 6\.
 
 1. Select **Complete data setup**\.
 
 This creates an input manifest in the Amazon S3 location for input datasets that you specified in step 5\. If you are creating a labeling job using the SageMaker API or, AWS CLI, or an AWS SDK, use the Amazon S3 URI for this input manifest file as input to the parameter `ManifestS3Uri`\. 
 
-The following GIF demonstrates how to use the automated data setup for image data\. This example will create a file, `dataset-YYMMDDTHHMMSS.manifest` in the S3 bucket `example-groundtruth-images` where `YYMMDDTHHmmSS` indicates the year \(`YY`\), month \(`MM`\), day \(`DD`\) and time in hours \(`HH`\), minutes \(`mm`\) and seconds \(`ss`\), that the input manifest file was created\. 
+The following GIF demonstrates how to use the automated data setup for image data\. This example will create a file, `dataset-YYMMDDTHHMMSS.manifest` in the Amazon S3 bucket `example-groundtruth-images` where `YYMMDDTHHmmSS` indicates the year \(`YY`\), month \(`MM`\), day \(`DD`\) and time in hours \(`HH`\), minutes \(`mm`\) and seconds \(`ss`\), that the input manifest file was created\. 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/gifs/automated-data-setup.gif)

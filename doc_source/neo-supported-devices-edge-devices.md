@@ -12,7 +12,7 @@ You can choose from one of the following edge devices:
 | Device List | System on a Chip \(SoC\) | Operating System | Architecture | Accelerator | Compiler Options Example | 
 | --- | --- | --- | --- | --- | --- | 
 | aisage |  | Linux | ARM64 | Mali |  | 
-| amba\_cv22 | CV22 | Arch Linux | ARM64 |  |  | 
+| amba\_cv22 | CV22 | Arch Linux | ARM64 | cvflow |  | 
 | coreml |  | iOS, macOS |  |  | \{"class\_labels": "imagenet\_labels\_1000\.txt"\} | 
 | deeplens | Intel Atom | Linux | X86\_64 | Intel Graphics |  | 
 | imx8qm | NXP imx8 | Linux | ARM64 |  |  | 

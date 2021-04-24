@@ -1,8 +1,10 @@
-# Available Instance Types<a name="notebooks-available-instance-types"></a>
+# Available SageMaker Studio Instance Types<a name="notebooks-available-instance-types"></a>
 
-The following Amazon Elastic Compute Cloud \(Amazon EC2\) instance types are available\. 
+The following Amazon Elastic Compute Cloud \(Amazon EC2\) instance types are available for use with SageMaker Studio notebooks\. 
 
 For detailed information on which instance types fit your use case, and their performance capabilities, see [Amazon Elastic Compute Cloud Instance types](http://aws.amazon.com/ec2/instance-types/)\.
+
+For information on available Amazon SageMaker Notebook Instance types, see [CreateNotebookInstance](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstance.html#sagemaker-CreateNotebookInstance-request-InstanceType)\.
 
 **Note**  
 For most use cases, you should use a ml\.t3\.medium\. This is the default instance type for CPU\-based SageMaker images, and is available as part of the [AWS Free Tier](http://aws.amazon.com/free)\.
