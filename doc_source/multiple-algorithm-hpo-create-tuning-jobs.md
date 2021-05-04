@@ -50,7 +50,7 @@
 **Input Data Configuration**  
  Input data is defined by channels, each with their own source location \(Amazon S3 or Amazon Elastic File System\), compression, and format options\. You can define up to 20 channels of input sources\. If the algorithm you chose supports multiple input channels, you can specify those too\. 
 
- For example, when using the [XGBoost churn prediction notebook](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_applying_machine_learning/xgboost_customer_churn/xgboost_customer_churn.ipynb), you could add two channels: train and validation\. 
+ For example, when using the [XGBoost churn prediction notebook](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_applying_machine_learning/xgboost_customer_churn/xgboost_customer_churn.html), you could add two channels: train and validation\. 
 
 **Checkpoint Configuration**  
  Checkpoints are periodically generated during training\. You must choose an Amazon S3 location for the checkpoints to be saved\. Checkpoints are used in metrics reporting, and are also used to resume managed spot training jobs\. 

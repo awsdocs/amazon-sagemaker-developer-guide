@@ -45,7 +45,7 @@ content\-type: application/jsonlines
 
 ### OUTPUT: JSON Response Format<a name="ip-insights-output-json"></a>
 
-The default output of the SageMaker IP Insights algorithm is the `dot_product` between the input entity and IP address\. The dot\_product signifies how compatible the model considers the entity and IP address\. The `dot_product` is unbounded\. To make predictions about whether an event is anomalous, you need to set a threshold based on your defined distribution\. For information about how to use the `dot_product` for anomaly detection, see the [An Introduction to the SageMakerIP Insights Algorithm](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/ipinsights_login/ipinsights-tutorial.ipynb                  )\.
+The default output of the SageMaker IP Insights algorithm is the `dot_product` between the input entity and IP address\. The dot\_product signifies how compatible the model considers the entity and IP address\. The `dot_product` is unbounded\. To make predictions about whether an event is anomalous, you need to set a threshold based on your defined distribution\. For information about how to use the `dot_product` for anomaly detection, see the [An Introduction to the SageMakerIP Insights Algorithm](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/ipinsights_login/ipinsights-tutorial.html)\.
 
 accept: application/json
 

@@ -108,7 +108,7 @@ In this section you will create SageMaker and AWS IoT client objects, download a
 
    Packaging jobs take SageMaker Neo–compiled models and make any changes necessary to deploy the model with the inference engine, Edge Manager agent\. To package your model, create an edge packaging job with the `create_edge_packaging` API or the SageMaker console\.
 
-   You need to provide the name that you used for your Neo compilation job, a name for the packaging job, a role ARN \(see [Setting Up](edge-getting-started-step1.md) section\) , a name for the model, a model version, and the Amazon S3 bucket URI for the output of the packaging job\. The following is an example using the API\.
+   You need to provide the name that you used for your Neo compilation job, a name for the packaging job, a role ARN \(see [Setting Up](edge-getting-started-step1.md) section\), a name for the model, a model version, and the Amazon S3 bucket URI for the output of the packaging job\. Note that Edge Manager packaging job names are case\-sensitive\. The following is an example of how to create a packaging job using the API\.
 
    ```
    edge_packaging_name='edge-packaging-demo'

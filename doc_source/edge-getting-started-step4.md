@@ -96,7 +96,7 @@ You must first install Python, the AWS SDK for Python \(Boto3\), and the AWS CLI
 
    ```
    # Copy release artifacts 
-   aws s3 cp --profile sagemaker_docs s3://sagemaker-edge-manager-demo/release_artifacts/ ./ --recursive
+   aws s3 cp s3://sagemaker-edge-manager-demo/release_artifacts/ ./ --recursive
    ```
 
    Go the `/bin` directory and make the binary files executable:
@@ -116,9 +116,9 @@ You must first install Python, the AWS SDK for Python \(Boto3\), and the AWS CLI
    mkdir iot-credentials
    cd iot-credentials
    
-   aws s3 cp --profile sagemaker_docs s3://<bucket-name>/authorization-files/AmazonRootCA1.pem ./
-   aws s3 cp --profile sagemaker_docs s3://<bucket-name>/authorization-files/device.pem.crt ./
-   aws s3 cp --profile sagemaker_docs s3://<bucket-name>/authorization-files/private.pem.key ./
+   aws s3 cp s3://<bucket-name>/authorization-files/AmazonRootCA1.pem ./
+   aws s3 cp s3://<bucket-name>/authorization-files/device.pem.crt ./
+   aws s3 cp s3://<bucket-name>/authorization-files/private.pem.key ./
    
    cd ../
    ```
@@ -130,7 +130,7 @@ You must first install Python, the AWS SDK for Python \(Boto3\), and the AWS CLI
    
    cd certificates
    
-   aws s3 cp --profile sagemaker_docs s3://<bucket-name>/certificates/us-west-2.pem ./
+   aws s3 cp s3://<bucket-name>/certificates/us-west-2.pem ./
    
    cd agent_demo
    ```
@@ -139,7 +139,7 @@ You must first install Python, the AWS SDK for Python \(Boto3\), and the AWS CLI
 
    ```
    #Download config file from S3
-   aws s3 cp --profile sagemaker_docs s3://<bucket-name>/config_files/sagemaker_edge_config.json ./
+   aws s3 cp s3://<bucket-name>/config_files/sagemaker_edge_config.json ./
    
    cd agent_demo
    ```

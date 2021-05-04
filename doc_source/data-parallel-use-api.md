@@ -18,18 +18,15 @@ SageMaker supports the following training environment configurations:
 + You can use a prebuilt TensorFlow or PyTorch container\.
 + You can customize SageMaker prebuilt containers or extend them to handle any additional functional requirements for your algorithm or model that the prebuilt SageMaker Docker image doesn't support\. For an example of how you can extend a pre\-built container, see [Extend a Prebuilt Container](https://docs.aws.amazon.com/sagemaker/latest/dg/prebuilt-containers-extend.html)\.
 
-  To extend a pre\-built container, or adapt your own container to use the library, you must use one of the following PyTorch or TensorFlow GPU general framework base\-images:
-  + 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/tensorflow\-training:2\.4\.1\-gpu\-py37\-cu110\-ubuntu18\.04
-  + 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/tensorflow\-training:2\.3\.1\-gpu\-py37\-cu110\-ubuntu18\.04
-  + 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/pytorch\-training:1\.8\.0\-gpu\-py36\-cu111\-ubuntu18\.04
-  + 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/pytorch\-training:1\.7\.1\-gpu\-py36\-cu110\-ubuntu18\.04
-  + 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/pytorch\-training:1\.6\.0\-gpu\-py36\-cu110\-ubuntu18\.04
+  To extend a pre\-built container, or adapt your own container to use the library, you must use one of the PyTorch or TensorFlow GPU general framework base\-images\. The distributed data parallel library is included in all CUDA 11 \(`cu11x`\) TensorFlow 2\.3\.x and PyTorch 1\.6\.x versioned images and later\. See [Available Deep Learning Containers Images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md) for a list of available images\. 
+**Important**  
+It is recommended that you use the image that contains the latest version of TensorFlow or PyTorch to access the most up to date version of the SageMaker distributed data parallel library\. All images that include TensorFlow 2\.4\.1 and PyTorch 1\.8\.1 versions and later support EFA instance types \(`ml.p3dn.24xlarge`, `ml.p4d.24xlarge`\)\.
 
-  For example, if you are using PyTorch 1\.6\.0, your Dockerfile should contain a `FROM` statement similar to the following:
+  For example, if you are using PyTorch 1\.8\.1, your Dockerfile should contain a `FROM` statement similar to the following:
 
   ```
   # SageMaker PyTorch image
-  FROM 763104351884.dkr.ecr.us-east-1.amazonaws.com/pytorch-training:1.6.0-gpu-py36-cu110-ubuntu18.04
+  FROM 763104351884.dkr.ecr.us-east-1.amazonaws.com/pytorch-training:1.8.1-gpu-py36-cu111-ubuntu18.04
   
   ENV PATH="/opt/ml/code:${PATH}"
   
@@ -64,9 +61,14 @@ The following two parameters of the SageMaker Python SDK TensorFlow estimator ar
   ```
   distribution = { "smdistributed": { "dataparallel": { "enabled": True } } } 
   ```
++ **`custom_mpi_options (str)(optional)`**: Custom MPI options\. The following is an example of how you can use this parameter when defining `distribution`\. To learn more, see [Custom MPI Options](data-parallel-config.md#data-parallel-config-mpi-custom)\.
+
+  ```
+  distribution = {'smdistributed':{'dataparallel':{'enabled': True, "custom_mpi_options": "-verbose -x NCCL_DEBUG=VERSION"}}}
+  ```
 
  **`train_instance_type (str)(required)`**: A type of Amazon EC2 instance to use\. 
-+ If the `smdistributed.dataparallel` distribution strategy is used, the allowed instance types are: `ml.p4d.24xlarge`, `ml.p3dn.24xlarge`, and `ml.p3.16xlarge`\.
++ If the `smdistributed.dataparallel` distribution strategy is used, the allowed instance types are: `ml.p4d.24xlarge`, `ml.p3dn.24xlarge`, and `ml.p3.16xlarge`\. For best performance, it is recommended that you use an EFA supported instance, `ml.p3dn.24xlarge` or `ml.p4d.24xlarge`, with the latest supported version of TensorFlow\.
 
  **Example** 
 
@@ -77,12 +79,12 @@ tf_estimator = TensorFlow(
                           base_job_name = "training_job_name_prefix",
                           entry_point="tf-train.py",
                           role="SageMakerRole",
-                          framework_version="2.3",
+                          framework_version="2.4.1",
                           # You must set py_version to py36
-                          py_version='py36',
+                          py_version="py37",
                           # For training with multi node distributed training, set this count.
                           # Example: 2,3,4,..8
-                          instance_count=1,
+                          instance_count=2,
                           # For training with p3dn instance use - ml.p3dn.24xlarge
                           instance_type="ml.p3.16xlarge",
                           # Training using smdistributed.dataparallel Distributed Training Framework
@@ -124,9 +126,14 @@ The following two parameters of the SageMaker PyTorch `Estimator` are necessary 
   ```
   distribution={"smdistributed": { "dataparallel": { "enabled": True } } } 
   ```
++ **`custom_mpi_options (str)(optional)`**: Custom MPI options\. The following is an example of how you can use this parameter when defining `distribution`\. To learn more, see [Custom MPI Options](data-parallel-config.md#data-parallel-config-mpi-custom)\.
+
+  ```
+  distribution = {'smdistributed':{'dataparallel':{'enabled': True, "custom_mpi_options": "-verbose -x NCCL_DEBUG=VERSION"}}}
+  ```
 
  **`train_instance_type (str)(required)`**: A type of Amazon EC2 instance to use\. 
-+ If the `smdistributed.dataparallel` distribution strategy is used, the allowed instance types are: `ml.p4d.24xlarge`, `ml.p3dn.24xlarge`, and `ml.p3.16xlarge`\.
++ If the `smdistributed.dataparallel` distribution strategy is used, the allowed instance types are: `ml.p4d.24xlarge`, `ml.p3dn.24xlarge`, and `ml.p3.16xlarge`\. For best performance, it is recommended that you use an EFA supported instance, `ml.p3dn.24xlarge` or `ml.p4d.24xlarge`, with the latest supported version of PyTorch\.
 
  **Example** 
 
@@ -137,11 +144,11 @@ pt_estimator = PyTorch(
                        entry_point="pt-train.py",
                        role="SageMakerRole",
                        # You must set py_version to py36
-                       py_version='py36',
-                       framework_version='1.6.0',
+                       py_version="py36",
+                       framework_version="1.8.1",
                        # For training with multi node distributed training, set this count.
                        # Example: 2,3,4,..8
-                       instance_count=1,
+                       instance_count=2,
                        # For training with p3dn instance use - ml.p3dn.24xlarge
                        instance_type="ml.p3.16xlarge",
                        # Training using smdistributed.dataparallel Distributed Training Framework

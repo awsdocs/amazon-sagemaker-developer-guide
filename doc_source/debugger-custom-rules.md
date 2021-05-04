@@ -85,6 +85,6 @@ estimator.fit()
 ```
 
 For more variations and advanced examples of using Debugger custom rules, see the following example notebooks\.
-+ [Monitor your training job with Amazon SageMaker Debugger custom rules](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/tensorflow_keras_custom_rule/tf-keras-custom-rule.ipynb)
++ [Monitor your training job with Amazon SageMaker Debugger custom rules](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-debugger/tensorflow_keras_custom_rule/tf-keras-custom-rule.html)
 + [PyTorch iterative model pruning of ResNet and AlexNet](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker-debugger/pytorch_iterative_model_pruning)
 + [Trigger Amazon CloudWatch Events using Debugger Rules to Take an Action Based on Training Status with TensorFlow](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker-debugger/tensorflow_action_on_rule)

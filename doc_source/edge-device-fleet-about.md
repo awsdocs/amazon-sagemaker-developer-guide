@@ -112,26 +112,65 @@ Replace `<OS>` corresponding to your platform from the list of supported operati
 aws s3 cp s3://sagemaker-edge-release-store-us-west-2-<OS>/Certificates/<REGION>/<REGION>.pem .
 ```
 
-### Running SageMaker Edge Manager agent<a name="edge-device-fleet-running-agent"></a>
+## Running SageMaker Edge Manager agent<a name="edge-device-fleet-running-agent"></a>
 
 SageMaker Edge Manager agent can be run as a standalone process in the form of an Executable and Linkable Format \(ELF\) executable binary or can be linked against as a Dynamic Shared Object \(\.dll\)\. Running as a standalone executable binary is the preferred mode and is supported on Linux\. Running as a shared object \(\.dll\) is supported on Windows\.
 
 On Linux, we recommend that you run the binary via a service that’s a part of your initialization \(init\) system\. If you want to run the binary directly, you can do so in a terminal as shown below\. If you have a modern OS, there are no other installations necessary prior to running the agent, since all the requirements are statically built into the executable\. This gives you flexibility to run the agent on the terminal, as a service, or within a container\.
 
+To run the agent you will first need to create a JSON configuration file\. Specify the following key\-value pairs:
++ `deviceUUID` \(optional\): Unique edge device identifier\.
++ `deviceFleetName`: The name of the fleet the device belongs to\.
++ `region`: AWS region\. 
++ `rootCertsPath`: Absolute folder path to root certificates\. 
++ `provider`: Use “Aws”\.
++ `awsCACertFile`: Absolute path to Amazon Root CA certificate \(AmazonRootCA1\.pem\)\.
++ `awsCertFile`: Absolute path to AWS IoT signing root certificate \(\*\.pem\.crt\)\.
++ `awsCertPKFile`: Absolute path to AWS IoT private key\. \(\*\.pem\.key\)\.
++ `awsIoTCredEndpoint`: AWS IoT credentials endpoint \(*identifier*\.iot\.*region*\.amazonaws\.com\)\. See, [Connecting devices to AWS IoT](https://docs.aws.amazon.com/iot/latest/developerguide/iot-connect-devices.html) for more information\.
++ `captureDataDestination`: The destination for uploading capture data\. Select either “Cloud” or “Disk”\.
++ `S3BucketName`: Name of Amazon S3 bucket \(not the Amazon S3 bucket URI\)\. Bucket must have ‘sagemaker’ string within its name\.
++ `folderPrefix`: The Amazon S3 folder name where you want captured data to upload\.
++ `captureDataBufferSize`: Capture data buffer size\. Integer value\.
++ `captureDataBatchSize`: Capture data batch size\. Integer value\.
++ `pushPeriodSeconds`: Capture data push period in seconds\.
++ `base64EmbedLimit`: Limit for uploading capture data in bytes\. Integer value\.
++ `logVerbose` \(Optional\): Set debug log\. Boolean\. Select either “True” or “False”\.
+
+Your configuration file should look similar to the following \(with your specific values specified\):
+
 ```
-./sagemaker_edge_agent -a <ADDRESS_TO_SOCKET> -c <PATH_TO_CONFIG_FILE>
+{
+    "sagemaker_edge_core_device_uuid": "device-uuid",
+    "sagemaker_edge_core_device_fleet_name": "fleet-name",
+    "sagemaker_edge_core_region": "region",
+    "sagemaker_edge_core_root_certs_path": "<Absolute path to root certificates>",
+    "sagemaker_edge_provider_provider": "Aws",
+    "sagemaker_edge_provider_aws_ca_cert_file": "<Absolute path to Amazon Root CA certificate>/AmazonRootCA1.pem",
+    "sagemaker_edge_provider_aws_cert_file": "<Absolute path to AWS IoT signing root certificate>/device.pem.crt",
+    "sagemaker_edge_provider_aws_cert_pk_file": "<Absolute path to AWS IoT private key.>/private.pem.key",
+    "sagemaker_edge_provider_aws_iot_cred_endpoint": "https://<AWS IoT Endpoint Address>",
+    "sagemaker_edge_core_capture_data_destination": "Cloud",
+    "sagemaker_edge_provider_s3_bucket_name": "sagemaker-bucket-name",
+    "sagemaker_edge_core_folder_prefix": "Amazon S3 folder prefix",
+    "sagemaker_edge_core_capture_data_buffer_size": 30,
+    "sagemaker_edge_core_capture_data_batch_size": 10,
+    "sagemaker_edge_core_capture_data_push_period_seconds": 4,
+    "sagemaker_edge_core_capture_data_base64_embed_limit": 20,
+    "sagemaker_edge_log_verbose": false
+}
 ```
 
-### Obtain AWS IoT Credentials Certificates<a name="edge-device-fleet-agent-certificates"></a>
+Included in the release artifact is a binary executable called sagemaker\_edge\_agent\_binary in the `/bin` directory\. To run the binary, use the `-a` flag to create a socket file descriptor \(\.sock\) in a directory of your choosing and specify the path of the agent JSON config file you created with the `-c` flag\.
 
-SageMaker Edge Manager takes advantage of the AWS IoT Core services to facilitate the connection between the edge devices and endpoints in the AWS cloud\. By doing so, you can take advantage of existing AWS IoT functionality after you set up your devices to work with Edge Manager\.
+```
+./sagemaker_edge_agent_binary -a <ADDRESS_TO_SOCKET> -c <PATH_TO_CONFIG_FILE>
+```
 
-To connect your device to AWS IoT, you need to create AWS IoT thing objects, create and register a client certificate with AWS IoT, and create and configure an IAM role for your devices\.
+For example:
 
-Follow the instructions from the [How to Eliminate the Need for Hardcoded AWS Credentials in Devices by Using the AWS IoT Credentials Provider](https://aws.amazon.com/blogs/security/how-to-eliminate-the-need-for-hardcoded-aws-credentials-in-devices-by-using-the-aws-iot-credentials-provider/) blog post for detailed instructions on how to create and register a client certificate with AWS IoT, and create and configure an IAM role for your devices\. For general information on authorizing AWS services, see [Authorizing direct calls to AWS services](https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html)\. 
+```
+./sagemaker_edge_agent_binary -a /tmp/sagemaker_edge_agent_example.sock -c sagemaker_edge_config.json
+```
 
-### Models on Edge Devices<a name="edge-device-fleet-agent-models"></a>
-
-The Edge Manager agent can load multiple models at a time and make inference with loaded models on edge devices\. The number of models the agent can load is determined by the available memory on the device\. The agent validates the model signature and loads into memory all the artifacts produced by the edge packaging job\. This step requires all the required certificates described in previous steps to be installed along with rest of the binary installation\. If the model’s signature cannot be validated, then loading of the model fails with appropriate return code and reason\.
-
-See [Installing Edge Manager agent](#edge-device-fleet-installation) for instructions on how to download the root certificate and binary release artifacts\. For information about creating and registering a client certificate with AWS IoT and creating and configuring an IAM role for your devices see [Security in AWS IoT](https://docs.aws.amazon.com/iot/latest/developerguide/security.html)\.
+In this example a socket file descriptor named `sagemaker_edge_agent_example.sock` is created in the `/tmp` directory and points to a configuration file that is in the same working directory as the agent called `sagemaker_edge_config.json`\.

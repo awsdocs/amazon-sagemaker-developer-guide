@@ -1,5 +1,7 @@
 # Manage Model<a name="edge-manage-model"></a>
 
+The Edge Manager agent can load multiple models at a time and make inference with loaded models on edge devices\. The number of models the agent can load is determined by the available memory on the device\. The agent validates the model signature and loads into memory all the artifacts produced by the edge packaging job\. This step requires all the required certificates described in previous steps to be installed along with rest of the binary installation\. If the model’s signature cannot be validated, then loading of the model fails with appropriate return code and reason\.
+
 SageMaker Edge Manager agent provides a list of Model Management APIs that implement control plane and data plane APIs on edge devices\. Along with this documentation, we recommend going through the sample client implementation which shows canonical usage of the below described APIs\.
 
 The `proto` file is available as a part of the release artifacts \(inside the release tarball\)\. In this doc, we list and describe the usage of APIs listed in this `proto` file\.

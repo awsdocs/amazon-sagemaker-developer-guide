@@ -48,7 +48,7 @@ For more information on input and output file formats, see [Data Formats for k\-
 
 ## k\-NN Sample Notebooks<a name="kNN-sample-notebooks"></a>
 
-For a sample notebook that uses the SageMaker k\-nearest neighbor algorithm to predict wilderness cover types from geological and forest service data, see the [K\-Nearest Neighbor Covertype ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/k_nearest_neighbors_covtype/k_nearest_neighbors_covtype.ipynb)\. 
+For a sample notebook that uses the SageMaker k\-nearest neighbor algorithm to predict wilderness cover types from geological and forest service data, see the [K\-Nearest Neighbor Covertype ](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/k_nearest_neighbors_covtype/k_nearest_neighbors_covtype.html)\. 
 
 Use a Jupyter notebook instance to run the example in SageMaker\. To learn how to create and open a Jupyter notebook instance in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the SageMaker example notebooks\. Find K\-Nearest Neighbor notebooks in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.
 

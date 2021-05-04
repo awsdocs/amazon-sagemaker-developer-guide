@@ -156,7 +156,7 @@ The following figure shows an example of the **Create function** page with the i
 ## Run Example Notebooks to Test Automated Training Job Termination<a name="debugger-test-stop-training"></a>
 
 You can run the following example notebooks, which are prepared for experimenting with stopping a training job using Debugger's built\-in rules\.
-+ [Amazon SageMaker Debugger \- Reacting to CloudWatch Events from Debugger rules](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/tensorflow_action_on_rule/tf-mnist-stop-training-job.ipynb)
++ [Amazon SageMaker Debugger \- Reacting to CloudWatch Events from Debugger rules](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-debugger/tensorflow_action_on_rule/tf-mnist-stop-training-job.html)
 
   This example notebook runs a training job that has a vanishing gradient issue\. The Debugger [VanishingGradient](debugger-built-in-rules.md#vanishing-gradient) built\-in rule is used while constructing the SageMaker TensorFlow estimator\. When the Debugger rule detects the issue, the training job is terminated\.
 + [Detect stalled training and stop training job using Debugger rule](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/tensorflow_action_on_rule/detect_stalled_training_job_and_stop.ipynb)

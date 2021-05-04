@@ -101,16 +101,6 @@ To learn more about the SageMaker distributed libraries, see the following:
 +  [SageMaker's Distributed Data Parallel Library](data-parallel.md) 
 +  [SageMaker's Distributed Model Parallel](model-parallel.md) 
 
-To learn more about these techniques, see the following papers:
-+ [Accurate, Large Minibatch SGD:Training ImageNet in 1 Hour](https://arxiv.org/pdf/1706.02677.pdf), Goya et al\. 
-+ [PowerAI DDL](https://arxiv.org/pdf/1708.02188.pdf), Cho et al\. 
-+ [Scale Out for Large Minibatch SGD: Residual Network Training on ImageNet\-1K with Improved Accuracy and Reduced Time to Train](https://arxiv.org/pdf/1711.04291.pdf), Codreanu et al\. 
-+ [ImageNet Training in Minutes](https://arxiv.org/pdf/1709.05011.pdf), You et al\. 
-+ [Large Batch Training of Convolutional Networks](https://arxiv.org/pdf/1708.03888.pdf), You et al\. 
-+ [Large Batch Optimization for Deep Learning: Training BERT in 76 Minutes](https://arxiv.org/pdf/1904.00962.pdf), You et al\. 
-+ [Accelerated Large Batch Optimization of BERT Pretraining in 54 minutes](https://arxiv.org/pdf/2006.13484.pdf), Zheng et al\. 
-+ [Deep Gradient Compression](https://arxiv.org/abs/1712.01887), Lin et al\. 
-
 ## Optimize Distributed Training<a name="distributed-training-optimize"></a>
 
 Customize hyperparameters for your use case and your data to get the best scaling efficiency\. In the following discussion, we highlight some of the most impactful training variables and provide references to state\-of\-the\-art implementations so you can learn more about your options\. Also, we recommend that you refer to your preferred framework’s distributed training documentation\. 
@@ -133,13 +123,23 @@ A number of techniques have been developed to maintain good model convergence wh
 
 In SGD, the mini\-batch size quantifies the amount of noise present in the gradient estimation\. A small mini\-batch results in a very noisy mini\-batch gradient, which is not representative of the true gradient over the dataset\. A large mini\-batch results in a mini\-batch gradient close to the true gradient over the dataset and potentially not noisy enough—likely to stay locked in irrelevant minima\. 
 
+To learn more about these techniques, see the following papers:
++ [Accurate, Large Minibatch SGD:Training ImageNet in 1 Hour](https://arxiv.org/pdf/1706.02677.pdf), Goya et al\. 
++ [PowerAI DDL](https://arxiv.org/pdf/1708.02188.pdf), Cho et al\. 
++ [Scale Out for Large Minibatch SGD: Residual Network Training on ImageNet\-1K with Improved Accuracy and Reduced Time to Train](https://arxiv.org/pdf/1711.04291.pdf), Codreanu et al\. 
++ [ImageNet Training in Minutes](https://arxiv.org/pdf/1709.05011.pdf), You et al\. 
++ [Large Batch Training of Convolutional Networks](https://arxiv.org/pdf/1708.03888.pdf), You et al\. 
++ [Large Batch Optimization for Deep Learning: Training BERT in 76 Minutes](https://arxiv.org/pdf/1904.00962.pdf), You et al\. 
++ [Accelerated Large Batch Optimization of BERT Pretraining in 54 minutes](https://arxiv.org/pdf/2006.13484.pdf), Zheng et al\. 
++ [Deep Gradient Compression](https://arxiv.org/abs/1712.01887), Lin et al\. 
+
 ## Scenarios<a name="distributed-training-scenarios"></a>
 
 The following sections cover scenarios in which you may want to scale up training, and how you can do so using AWS resources\. 
 
 ### Scaling from a Single GPU to Many GPUs<a name="scaling-from-one-GPU"></a>
 
-The amount of data or the size of the model used in machine learning can create situations in which the time to train a model is longer that you are willing to wait\. Sometimes, the training doesn’t work at all because the model or the training data is too large\. One solution is to increase the number of GPUs you use for training\. On an instance with multiple GPUs, like a `p3.16xlarge` that has eight GPUs, the data and processing is split across the eight GPUs, and producing a near\-linear speedup in the time it takes to train your model\. It takes slightly over 1/8 the time it would have taken on `p3.2xlarge` with one GPU\.  
+The amount of data or the size of the model used in machine learning can create situations in which the time to train a model is longer that you are willing to wait\. Sometimes, the training doesn’t work at all because the model or the training data is too large\. One solution is to increase the number of GPUs you use for training\. On an instance with multiple GPUs, like a `p3.16xlarge` that has eight GPUs, the data and processing is split across the eight GPUs\. When you use distributed training libraries, this can result in a near\-linear speedup in the time it takes to train your model\. It takes slightly over 1/8 the time it would have taken on `p3.2xlarge` with one GPU\.
 
 
 |  |  | 
@@ -150,13 +150,16 @@ The amount of data or the size of the model used in machine learning can create 
 |  p3\.16xlarge  |  8  | 
 |  p3dn\.24xlarge  |  8  | 
 
+**Note**  
+The ml instance types used by SageMaker training have the same number of GPUs as the corresponding p3 instance types\. For example, `ml.p3.8xlarge` has the same number of GPUs as `p3.8xlarge` \- 4\. 
+
 ### Scaling from a Single Instance to Multiple Instances<a name="scaling-from-one-instance"></a>
 
 If you want to scale your training even further, you can use more instances\. However, you should choose a larger instance type before you add more instances\. Review the previous table to see how many GPUs are in each p3 instance type\. 
 
-If you have made the jump from a single GPU on a `p3.2xlarge` to four GPUs on a `p3.8xlarge`, but decide that you require more processing power, you should always choose a `p3.16xlarge` before trying to increase instance count\. When you keep your training on a single instance, performance is better than when you use multiple instances\. Also, your costs are lower\. 
+If you have made the jump from a single GPU on a `p3.2xlarge` to four GPUs on a `p3.8xlarge`, but decide that you require more processing power, you may see better performance and incur lower costs if you choose a `p3.16xlarge` before trying to increase instance count\. Depending on the libraries you use, when you keep your training on a single instance, performance is better and costs are lower than a scenario where you use multiple instances\.
 
-When you are ready to scale the number of instances, you can do this with SageMaker Python SDK's `estimator` function by setting your `instance_type = p3.16xlarge` and   `instance_count = 2`\. Instead of the eight GPUs on a single `p3.16xlarge`, you have 16 GPUs across two identical instances\. The following chart shows [scaling and throughput starting with eight GPUs](https://aws.amazon.com/blogs/machine-learning/scalable-multi-node-training-with-tensorflow/) on a single instance and increasing to 64 instances for a total of 256 GPUs\. 
+When you are ready to scale the number of instances, you can do this with SageMaker Python SDK's `estimator` function by setting your `instance_count`\. For example, you can set `instance_type = p3.16xlarge` and   `instance_count = 2`\. Instead of the eight GPUs on a single `p3.16xlarge`, you have 16 GPUs across two identical instances\. The following chart shows [scaling and throughput starting with eight GPUs](https://aws.amazon.com/blogs/machine-learning/scalable-multi-node-training-with-tensorflow/) on a single instance and increasing to 64 instances for a total of 256 GPUs\. 
 
  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/distributed/Distributed-Training-in-SageMaker-image.png) 
 
@@ -164,9 +167,9 @@ When you are ready to scale the number of instances, you can do this with SageMa
 
 With multiple instances, it's important to understand the network that connects the instances, how they read the training data, and how they share information between themselves \(for example, communication between the nodes in the cluster when doing an `AllReduce` operation\)\. 
 
-First, your instances need to be in the same Region and same Availability Zone\. For example, instances in us\-west\-2 must all be in us\-west\-2a\. When you use the SageMaker Python SDK, this is handled for you\. If you use Amazon EC2 and orchestrate your own training clusters, you need to be aware of this, or your training speeds suffer\.  
+First, your instances need to be in the same Region and same Availability Zone\. For example, instances in us\-west\-2 must all be in us\-west\-2a\. When you use the SageMaker Python SDK, this is handled for you\. If you use Amazon EC2 and orchestrate your own training clusters, you need to be aware of this, or your training speeds suffer\. 
 
-Your training data should also be in the same availability zone\. When you use a SageMaker estimator, you pass in the Region and the S3 bucket, and if the data is not in the Region you set, you get an error\.  
+Your training data should also be in the same Availability Zone\. When you use a SageMaker estimator, you pass in the Region and the S3 bucket, and if the data is not in the Region you set, you get an error\.  
 
 ### Optimized GPU, Network, and Storage<a name="optimized-GPU"></a>
 
@@ -176,7 +179,7 @@ The `p3dn.24xlarge` instance type was designed for fast local storage and a fast
 
 While SageMaker makes it simple to deploy and scale the number of instances and GPUs, depending on your framework of choice, managing the data and results can be very challenging, which is why external supporting libraries are often used\. This most basic form of distributed training requires modification of your training script to manage the data distribution\. 
 
-SageMaker also supports Horovod and implementations of distributed training native to each major deep learning framework\. If you choose to use examples from these frameworks, you can follow SageMaker’s container guide for Deep Learning Containers, and various example notebooks that demonstrate implementations\. 
+SageMaker also supports Horovod and implementations of distributed training native to each major deep learning framework\. If you choose to use examples from these frameworks, you can follow SageMaker’s [container guide](https://docs.aws.amazon.com/sagemaker/latest/dg/docker-containers.html) for Deep Learning Containers, and various [example notebooks](https://sagemaker-examples.readthedocs.io/en/latest/training/bring_your_own_container.html) that demonstrate implementations\. 
 
 ## SageMaker Built\-In Distributed Training Features<a name="distributed-training-built-in"></a>
 

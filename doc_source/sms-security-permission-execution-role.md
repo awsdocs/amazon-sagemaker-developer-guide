@@ -209,9 +209,9 @@ This policy gives the execution role permission to `Invoke` your pre\-annotation
 
 ## Automated Data Labeling Permission Requirements<a name="sms-security-permission-execution-role-custom-auto-labeling"></a>
 
-If you want to create a labeling job with [automated data labeling](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-automated-labeling.html) enabled, add the following statement to an execution role policy like the ones found in [](#sms-security-permission-execution-role-built-in-tt) or [Built\-In Task Types \(Streaming\) Execution Role Requirements](#sms-security-permission-execution-role-built-in-tt-streaming)\. Replace `arn:aws:iam::<account-number>:role/<role-name>` with the execution role ARN\. You can find your IAM role ARN in the IAM console under **Roles**\. 
+If you want to create a labeling job with [automated data labeling](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-automated-labeling.html) enabled, you must 1\) add one policy to the IAM policy attached to the execution role and 2\) update the trust policy of the execution role\. 
 
-These statements allow SageMaker to assume the execution role to create and manage the SageMaker training and inference jobs required to run the automated data labeling job\. This policy must be added to the trust relationship of the execution role\. To learn how to add or modify an IAM role trust policy, see [Modifying a role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html) in the IAM User Guide\.
+The following statement allows the IAM execution role to be passed to SageMaker so that it can be used to run the training and inference jobs used for active learning and automated data labeling respectively\. Add this statement to an execution role policy like the ones found in [](#sms-security-permission-execution-role-built-in-tt) or [Built\-In Task Types \(Streaming\) Execution Role Requirements](#sms-security-permission-execution-role-built-in-tt-streaming)\. Replace `arn:aws:iam::<account-number>:role/<role-name>` with the execution role ARN\. You can find your IAM role ARN in the IAM console under **Roles**\. 
 
 ```
 {
@@ -227,11 +227,19 @@ These statements allow SageMaker to assume the execution role to create and mana
             ]
         }
     }
-},
+}
+```
+
+The following statement allows SageMaker to assume the execution role to create and manage the SageMaker training and inference jobs\. This policy must be added to the trust relationship of the execution role\. To learn how to add or modify an IAM role trust policy, see [Modifying a role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html) in the IAM User Guide\.
+
+```
 {
-"Effect": "Allow",
-"Principal": {"Service": "sagemaker.amazonaws.com" },
-"Action": "sts:AssumeRole"
+    "Version": "2012-10-17",
+    "Statement": {
+        "Effect": "Allow",
+        "Principal": {"Service": "sagemaker.amazonaws.com" },
+        "Action": "sts:AssumeRole"
+    }
 }
 ```
 

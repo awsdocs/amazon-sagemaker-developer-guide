@@ -49,8 +49,8 @@ With SageMaker, you can use XGBoost as a built\-in algorithm or framework\. By u
                       framework_version='1.2-1',
                       hyperparameters=hyperparameters,
                       role=sagemaker.get_execution_role(),
-                      train_instance_count=1,
-                      train_instance_type='ml.m5.2xlarge',
+                      instance_count=1,
+                      instance_type='ml.m5.2xlarge',
                       output_path=output_path)
   
   # define the data type and paths to the training and validation datasets
@@ -109,7 +109,7 @@ With SageMaker, you can use XGBoost as a built\-in algorithm or framework\. By u
 
 ------
 
-  For an end\-to\-end example of using SageMaker XGBoost as a framework, see [Regression with Amazon SageMaker XGBoost](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_abalone_dist_script_mode.ipynb)
+  For an end\-to\-end example of using SageMaker XGBoost as a framework, see [Regression with Amazon SageMaker XGBoost](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_abalone_dist_script_mode.html)
 + **Use XGBoost as a built\-in algorithm**
 
   Use the XGBoost built\-in algorithm to build an XGBoost training container as shown in the following code example\. You can automatically spot the XGBoost built\-in algorithm image URI using the SageMaker `image_uris.retrieve` API \(or the `get_image_uri` API if using [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) version 1\)\. If you want to ensure if the `image_uris.retrieve` API finds the correct URI, see [ Common parameters for built\-in algorithms ](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html) and look up `xgboost` from the full list of built\-in algorithm image URIs and available regions\.
@@ -150,8 +150,8 @@ With SageMaker, you can use XGBoost as a built\-in algorithm or framework\. By u
   estimator = sagemaker.estimator.Estimator(image_name=xgboost_container, 
                                             hyperparameters=hyperparameters,
                                             role=sagemaker.get_execution_role(),
-                                            train_instance_count=1, 
-                                            train_instance_type='ml.m5.2xlarge', 
+                                            instance_count=1, 
+                                            instance_type='ml.m5.2xlarge', 
                                             train_volume_size=5, # 5 GB 
                                             output_path=output_path)
   
@@ -214,8 +214,8 @@ With SageMaker, you can use XGBoost as a built\-in algorithm or framework\. By u
 ------
 
   For more information about how to set up the XGBoost as a built\-in algorithm, see the following notebook examples\.
-  + [ Managed Spot Training for XGBoost ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_managed_spot_training.ipynb)
-  + [ Regression with Amazon SageMaker XGBoost \(Parquet input\) ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_parquet_input_training.ipynb)
+  + [ Managed Spot Training for XGBoost ](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_managed_spot_training.html)
+  + [ Regression with Amazon SageMaker XGBoost \(Parquet input\) ](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_parquet_input_training.html)
 
 ## Input/Output Interface for the XGBoost Algorithm<a name="InputOutput-XGBoost"></a>
 
@@ -242,7 +242,6 @@ SageMaker XGBoost uses the Python pickle module to serialize/deserialize the mod
   ```
   import pickle as pkl 
   import tarfile
-  import xgboost
   
   t = tarfile.open('model.tar.gz', 'r:gz')
   t.extractall()
@@ -271,13 +270,13 @@ SageMaker XGBoost version 1\.2 or later supports single\-instance GPU training\.
 
 | **Notebook Title** | **Description** | 
 | --- | --- | 
-|  [How to Create a Custom XGBoost container?](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/aws_sagemaker_studio/sagemaker_studio_image_build/xgboost_bring_your_own/Batch_Transform_BYO_XGB.ipynb)  |  This notebook shows you how to build a custom XGBoost Container with Amazon SageMaker Batch Transform\.  | 
-|  [An Introduction to Feature Processing, Training and Inference](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/advanced_functionality/inference_pipeline_sparkml_xgboost_abalone/inference_pipeline_sparkml_xgboost_abalone.ipynb)  |  This notebook shows you how to build a Machine Learning \(ML\) Pipeline using Spark Feature Transformers and do real\-time inference using Amazon SageMaker Batch Transform\.   | 
-|  [Regression with XGBoost using Parquet](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_parquet_input_training.ipynb)  |  This notebook shows you how to use the Abalone dataset in Parquet to train a XGBoost model\.  | 
-|  [How to Train and Host a Multiclass Classification Model? ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/xgboost_mnist/xgboost_mnist.ipynb)  |  This notebook shows how to use the MNIST dataset to train and host a multiclass classification model\.  | 
-|  [How to train a Model for Customer Churn Prediction?](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_applying_machine_learning/xgboost_customer_churn/xgboost_customer_churn.ipynb)  |  This notebook shows you how to train a model to Predict Mobile Customer Departure in an effort to identify unhappy customers\.  | 
-|  [An Introduction to Amazon SageMaker Managed Spot infrastructure for XGBoost Training](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_managed_spot_training.ipynb)  |  This notebook shows you how to use Spot Instances for training with a XGBoost Container\.  | 
-|  [How to use Amazon SageMaker Debugger to debug XGBoost Training Jobs?](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/xgboost_builtin_rules/xgboost-regression-debugger-rules.ipynb)  |  This notebook shows you how to use Amazon SageMaker Debugger to monitor training jobs to detect inconsistencies\.  | 
-|  [How to use Amazon SageMaker Debugger to debug XGBoost Training Jobs in Real\-Time?](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/xgboost_realtime_analysis/xgboost-realtime-analysis.ipynb)  |  This notebook shows you how to use the MNIST dataset and Amazon SageMaker Debugger to perform real\-time analysis of XGBoost training jobs while training jobs are running\.  | 
+|  [How to Create a Custom XGBoost container?](https://sagemaker-examples.readthedocs.io/en/latest/aws_sagemaker_studio/sagemaker_studio_image_build/xgboost_bring_your_own/Batch_Transform_BYO_XGB.html)  |  This notebook shows you how to build a custom XGBoost Container with Amazon SageMaker Batch Transform\.  | 
+|  [An Introduction to Feature Processing, Training and Inference](https://sagemaker-examples.readthedocs.io/en/latest/advanced_functionality/inference_pipeline_sparkml_xgboost_abalone/inference_pipeline_sparkml_xgboost_abalone.html)  |  This notebook shows you how to build a Machine Learning \(ML\) Pipeline using Spark Feature Transformers and do real\-time inference using Amazon SageMaker Batch Transform\.   | 
+|  [Regression with XGBoost using Parquet](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_parquet_input_training.html)  |  This notebook shows you how to use the Abalone dataset in Parquet to train a XGBoost model\.  | 
+|  [How to Train and Host a Multiclass Classification Model? ](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/xgboost_mnist/xgboost_mnist.html)  |  This notebook shows how to use the MNIST dataset to train and host a multiclass classification model\.  | 
+|  [How to train a Model for Customer Churn Prediction?](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_applying_machine_learning/xgboost_customer_churn/xgboost_customer_churn.html)  |  This notebook shows you how to train a model to Predict Mobile Customer Departure in an effort to identify unhappy customers\.  | 
+|  [An Introduction to Amazon SageMaker Managed Spot infrastructure for XGBoost Training](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_managed_spot_training.html)  |  This notebook shows you how to use Spot Instances for training with a XGBoost Container\.  | 
+|  [How to use Amazon SageMaker Debugger to debug XGBoost Training Jobs?](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-debugger/xgboost_builtin_rules/xgboost-regression-debugger-rules.html)  |  This notebook shows you how to use Amazon SageMaker Debugger to monitor training jobs to detect inconsistencies\.  | 
+|  [How to use Amazon SageMaker Debugger to debug XGBoost Training Jobs in Real\-Time?](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-debugger/xgboost_realtime_analysis/xgboost-realtime-analysis.html)  |  This notebook shows you how to use the MNIST dataset and Amazon SageMaker Debugger to perform real\-time analysis of XGBoost training jobs while training jobs are running\.  | 
 
 For instructions on how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. After you have created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all of the SageMaker samples\. The topic modeling example notebooks using the linear learning algorithm are located in the **Introduction to Amazon algorithms** section\. To open a notebook, choose its **Use** tab and choose **Create copy**\.

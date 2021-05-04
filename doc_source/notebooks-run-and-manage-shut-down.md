@@ -23,7 +23,7 @@ When you shut down a notebook, any unsaved information in the notebook is lost\.
 
 ## Shut Down Resources<a name="notebooks-run-and-manage-shut-down-sessions"></a>
 
-The **Running Terminals and Kernels** pane consists of four sections\. Each section lists all the resources of that type\. You can shut down each resource individually or shut down all the resources in a section at the same time\.
+You can reach the **Running Terminals and Kernels** pane on the left side of Amazon SageMaker Studio with the ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Running_squid@2x.png) icon\. The **Running Terminals and Kernels** pane consists of four sections\. Each section lists all the resources of that type\. You can shut down each resource individually or shut down all the resources in a section at the same time\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-notebook-shutdown-resource.png)
 

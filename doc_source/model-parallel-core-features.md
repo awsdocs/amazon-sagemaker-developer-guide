@@ -58,7 +58,7 @@ The library offers two different pipeline schedules, *simple* and *interleaved*,
 
 ### Interleaved Pipeline<a name="model-parallel-pipeline-execution-interleaved"></a>
 
-In an interleaved pipeline, backward execution of the microbatches is prioritized whenever possible\. This allows quicker release of the memory used for activations, using memory more efficiently\. It also allows for scaling the number of microbatches higher, reducing the idle time of the GPUs\. At steady\-state, each device alternates between executing forward and backward passes\. This means that the backward pass of one microbatch may execute before the forward pass of another microbatch finishes\.
+In an interleaved pipeline, backward execution of the microbatches is prioritized whenever possible\. This allows quicker release of the memory used for activations, using memory more efficiently\. It also allows for scaling the number of microbatches higher, reducing the idle time of the GPUs\. At steady\-state, each device alternates between running forward and backward passes\. This means that the backward pass of one microbatch may run before the forward pass of another microbatch finishes\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/distributed/model-parallel/interleaved-pipeline-execution.png)
 
@@ -66,7 +66,7 @@ The preceding figure illustrates an example execution schedule for the interleav
 
 ### Simple Pipeline<a name="model-parallel-pipeline-execution-simple"></a>
 
-A simple pipeline, by contrast, finishes executing the forward pass for each microbatch before starting the backward pass\. This means that it only pipelines the forward pass and backward pass stages within themselves\. The following figure illustrates an example of how this works, over 2 GPUs\.
+A simple pipeline, by contrast, finishes running the forward pass for each microbatch before starting the backward pass\. This means that it only pipelines the forward pass and backward pass stages within themselves\. The following figure illustrates an example of how this works, over 2 GPUs\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/distributed/model-parallel/simple-pipeline-execution.png)
 

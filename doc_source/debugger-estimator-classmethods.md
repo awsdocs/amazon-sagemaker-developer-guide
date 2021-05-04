@@ -11,7 +11,7 @@ The following estimator class methods are useful for accessing your SageMaker tr
   ```
   estimator.latest_training_job.job_name
   ```
-+ To see a full CreateTrainingJob API operation configuration of a SageMaker training job:
++ To see a full `CreateTrainingJob` API operation configuration of a SageMaker training job:
 
   ```
   estimator.latest_training_job.describe()
@@ -21,7 +21,7 @@ The following estimator class methods are useful for accessing your SageMaker tr
   ```
   estimator.latest_training_job.rule_job_summary()
   ```
-+ To check the S3 bucket URI at where the model parameter data \(output tensors\) are saved:
++ To check the S3 bucket URI where the model parameter data \(output tensors\) are saved:
 
   ```
   estimator.latest_job_debugger_artifacts_path()

@@ -7,6 +7,7 @@ Review the following tips and pitfalls before using SageMaker's distributed data
 + [Single vs Multiple Nodes](#data-parallel-config-multi-node)
 + [Debug Scaling Efficiency with Debugger](#data-parallel-config-debug)
 + [Batch Size](#data-parallel-config-batch-size)
++ [Custom MPI Options](#data-parallel-config-mpi-custom)
 
 ## Data Preprocessing<a name="data-parallel-config-dataprep"></a>
 
@@ -27,3 +28,14 @@ To see an example using Debugger in a SageMaker training job, you can reference 
 In distributed training, as more nodes are added, batch sizes should increase proportionally\. To improve convergence speed as you add more nodes to your training job and increase the global batch size, increase the learning rate\.
 
 One way to achieve this is by using a gradual learning rate warmup where the learning rate is ramped up from a small to a large value as the training job progresses\. This ramp avoids a sudden increase of the learning rate, allowing healthy convergence at the start of training\. For example, you can use a “Linear Scaling Rule” where each time the mini\-batch size is multiplied by k, the learning rate is also multiplied by k\. To learn more about this technique, see the research paper, Accurate, [ Large Minibatch SGD: Training ImageNet in 1 Hour](https://arxiv.org/pdf/1706.02677.pdf), Sections 2 and 3\.
+
+## Custom MPI Options<a name="data-parallel-config-mpi-custom"></a>
+
+The SageMaker distributed data parallel library employs Message Passing Interface \(MPI\), a popular standard for managing communication between nodes in a high\-performance cluster, and uses NVIDIA’s NCCL library for GPU\-level communication\. When you use the data parallel library with a TensorFlow or Pytorch `Estimator`, the respective container sets up the MPI environment and executes the `mpirun` command to start jobs on the cluster nodes\.
+
+You can set custom MPI operations using the `custom_mpi_options` parameter in the `Estimator`\. Any `mpirun` flags passed in this field are added to the mpirun command and executed by Amazon SageMaker for training\. For example, you may define the `distribution` parameter of an `Estimator` using the following to use the [https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html#nccl-debug](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html#nccl-debug) variable to print the NCCL version at the start of the program:
+
+```
+distribution = {'smdistributed':{'dataparallel':{'enabled': True, "custom_mpi_options": "-verbose -x NCCL_DEBUG=VERSION"}}}
+```
+

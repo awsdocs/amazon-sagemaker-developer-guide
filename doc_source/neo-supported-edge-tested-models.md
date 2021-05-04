@@ -32,14 +32,14 @@ See [Supported Frameworks](neo-supported-devices-edge-frameworks.md) and [SageMa
 | MobileNet0\.75 | X | X |  | X | X | X |  |  | X | 
 | MobileNet1\.0 | X | X | X | X | X | X |  |  | X | 
 | MobileNetV2\_0\.5 | X | X |  | X | X | X |  |  | X | 
-| MobileNetV2\_1\.0 | X | X | X | X | X | X | X |  | X | 
-| MobileNetV3\_Large | X | X | X | X | X | X | X |  | X | 
-| MobileNetV3\_Small | X | X | X | X | X | X | X |  | X | 
+| MobileNetV2\_1\.0 | X | X | X | X | X | X | X | X | X | 
+| MobileNetV3\_Large | X | X | X | X | X | X | X | X | X | 
+| MobileNetV3\_Small | X | X | X | X | X | X | X | X | X | 
 | ResNeSt50 |  |  |  | X | X |  |  | X | X | 
 | ResNet18\_v1 | X | X | X | X | X | X |  |  | X | 
-| ResNet18\_v2 | X | X |  | X | X | X |  | X | X | 
+| ResNet18\_v2 | X | X |  | X | X | X |  |  | X | 
 | ResNet50\_v1 | X | X | X | X | X | X |  | X | X | 
-| ResNet50\_v2 | X | X | X | X | X | X |  |  | X | 
+| ResNet50\_v2 | X | X | X | X | X | X |  | X | X | 
 | ResNext101\_32x4d |  |  |  |  |  |  |  |  |  | 
 | ResNext50\_32x4d | X |  | X | X | X |  |  | X | X | 
 | SENet\_154 |  |  |  | X | X | X |  | X | X | 
@@ -51,13 +51,13 @@ See [Supported Frameworks](neo-supported-devices-edge-frameworks.md) and [SageMa
 | darknet53 | X | X |  | X | X | X |  | X | X | 
 | resnet18\_v1b\_0\.89 | X | X |  | X | X | X |  |  | X | 
 | resnet50\_v1d\_0\.11 | X | X |  | X | X | X |  |  | X | 
-| resnet50\_v1d\_0\.86 | X | X |  | X | X | X |  |  | X | 
-| ssd\_512\_mobilenet1\.0\_coco | X |  |  | X | X | X |  | X | X | 
-| ssd\_512\_mobilenet1\.0\_voc | X |  |  | X | X | X |  | X | X | 
-| ssd\_resnet50\_v1 | X |  |  | X | X |  |  | X | X | 
+| resnet50\_v1d\_0\.86 | X | X | X | X | X | X |  | X | X | 
+| ssd\_512\_mobilenet1\.0\_coco | X |  | X | X | X | X |  | X | X | 
+| ssd\_512\_mobilenet1\.0\_voc | X |  | X | X | X | X |  | X | X | 
+| ssd\_resnet50\_v1 | X |  | X | X | X |  |  | X | X | 
 | yolo3\_darknet53\_coco | X |  |  | X | X |  |  | X | X | 
 | yolo3\_mobilenet1\.0\_coco | X | X |  | X | X | X |  | X | X | 
-| deeplab\_resnet50 |  |  | X |  | X |  |  |  |  | 
+| deeplab\_resnet50 |  |  | X |  |  |  |  |  |  | 
 
 ## Keras<a name="collapsible-section-3"></a>
 
@@ -80,7 +80,7 @@ See [Supported Frameworks](neo-supported-devices-edge-frameworks.md) and [SageMa
 
 | Models | ARM V8 | ARM Mali | Ambarella CV22 | Nvidia | Panorama | TI TDA4VM | Qualcomm QCS603 | X86\_Linux | X86\_Windows | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
-| alexnet |  |  | X |  | X |  |  |  |  | 
+| alexnet |  |  | X |  |  |  |  |  |  | 
 | mobilenetv2\-1\.0 | X | X | X | X | X | X |  | X | X | 
 | resnet18v1 | X |  |  | X | X |  |  |  | X | 
 | resnet18v2 | X |  |  | X | X |  |  |  | X | 
@@ -112,7 +112,7 @@ See [Supported Frameworks](neo-supported-devices-edge-frameworks.md) and [SageMa
 
 | Models | ARM V8 | ARM Mali | Ambarella CV22 | Nvidia | Panorama | TI TDA4VM | Qualcomm QCS603 | X86\_Linux | X86\_Windows | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
-| densenet201 | X | X | X | X | X | X |  |  | X | 
+| densenet201 | X | X | X | X | X | X |  | X | X | 
 | inception\_v3 | X | X | X | X | X | X |  | X | X | 
 | mobilenet100\_v1 | X | X | X | X | X | X |  |  | X | 
 | mobilenet100\_v2\.0 | X | X | X | X | X | X |  | X | X | 

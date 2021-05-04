@@ -38,7 +38,7 @@ Use the [Amazon S3 console](https://console.aws.amazon.com/s3/) to interactively
   To check the status of the fleet, use the `GetDeviceFleetReport` API\. Provide the name of the device fleet to get a summary of the fleet\.
 
   ```
-  sagemaer_client.get_device_fleet_report(
+  sagemaker_client.get_device_fleet_report(
       DeviceFleetName="sample-fleet-name"
   )
   ```

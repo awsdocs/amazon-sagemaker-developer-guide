@@ -72,12 +72,12 @@ If you need to create a custom container for deploying your model that is comple
 
 ## Use EI with SageMaker Built\-in Algorithms<a name="ei-built-in"></a>
 
-Currently, the [Image Classification Algorithm](image-classification.md) and [Object Detection Algorithm](object-detection.md) built\-in algorithms support EI\. For an example that uses the Image Classification algorithm with EI, see [End\-to\-End Multiclass Image Classification Example](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-fulltraining.ipynb)\.
+Currently, the [Image Classification Algorithm](image-classification.md) and [Object Detection Algorithm](object-detection.md) built\-in algorithms support EI\. For an example that uses the Image Classification algorithm with EI, see [End\-to\-End Multiclass Image Classification Example](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-fulltraining.html)\.
 
 ## EI Sample Notebooks<a name="ei-intro-sample-nb"></a>
 
 The following Sample notebooks provide examples of using EI in SageMaker:
-+ [Using Amazon Elastic Inference with MXNet on Amazon SageMaker ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/mxnet_mnist/mxnet_mnist_elastic_inference.ipynb)
-+ [Using Amazon Elastic Inference with MXNet on an Amazon SageMaker Notebook Instance ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/mxnet_mnist/mxnet_mnist_elastic_inference_local.ipynb) 
-+ [Using Amazon Elastic Inference with Neo\-compiled TensorFlow model on SageMaker](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/tensorflow_serving_using_elastic_inference_with_your_own_model/tensorflow_neo_compiled_model_elastic_inference.ipynb)
-+ [Using Amazon Elastic Inference with a pre\-trained TensorFlow Serving model on SageMaker](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/tensorflow_serving_using_elastic_inference_with_your_own_model/tensorflow_serving_pretrained_model_elastic_inference.ipynb)
++ [Using Amazon Elastic Inference with MXNet on Amazon SageMaker ](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-python-sdk/mxnet_mnist/mxnet_mnist_elastic_inference.html)
++ [Using Amazon Elastic Inference with MXNet on an Amazon SageMaker Notebook Instance ](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-python-sdk/mxnet_mnist/mxnet_mnist_elastic_inference_local.html) 
++ [Using Amazon Elastic Inference with Neo\-compiled TensorFlow model on SageMaker](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-python-sdk/tensorflow_serving_using_elastic_inference_with_your_own_model/tensorflow_neo_compiled_model_elastic_inference.html)
++ [Using Amazon Elastic Inference with a pre\-trained TensorFlow Serving model on SageMaker](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-python-sdk/tensorflow_serving_using_elastic_inference_with_your_own_model/tensorflow_serving_pretrained_model_elastic_inference.html)

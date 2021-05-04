@@ -9,7 +9,7 @@ For TensorFlow versions 1\.11 and later, the [Amazon SageMaker Python SDK](https
 ### What do you want to do?<a name="tf-intent"></a>
 
 I want to train a custom TensorFlow model in SageMaker\.  
-For a sample Jupyter notebook, see [TensorFlow script mode training and serving](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/tensorflow_script_mode_training_and_serving/tensorflow_script_mode_training_and_serving.ipynb)\.  
+For a sample Jupyter notebook, see [TensorFlow script mode training and serving](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-python-sdk/tensorflow_script_mode_training_and_serving/tensorflow_script_mode_training_and_serving.html)\.  
 For documentation, see [Train a Model with TensorFlow](https://sagemaker.readthedocs.io/en/stable/using_tf.html#train-a-model-with-tensorflow)\.
 
 I have a TensorFlow model that I trained in SageMaker, and I want to deploy it to a hosted endpoint\.  

@@ -77,7 +77,7 @@ mxnet_predictor = mxnet_estimator.deploy(initial_instance_count=1,
                                          accelerator_type='local_sagemaker_notebook')
 ```
 
-For a complete example of using EI in local mode with MXNet, see the sample notebook at [https://github\.com/awslabs/amazon\-sagemaker\-examples/blob/master/sagemaker\-python\-sdk/mxnet\_mnist/mxnet\_mnist\_elastic\_inference\_local\.ipynb ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/mxnet_mnist/mxnet_mnist_elastic_inference_local.ipynb)\.
+For a complete example of using EI in local mode with MXNet, see the sample notebook at [https://sagemaker\-examples\.readthedocs\.io/en/latest/sagemaker\-python\-sdk/mxnet\_mnist/mxnet\_mnist\_elastic\_inference\_local\.html ](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-python-sdk/mxnet_mnist/mxnet_mnist_elastic_inference_local.html)\.
 
 ### Use EI in Local Mode with SageMaker PyTorch Estimators and Models<a name="ei-notebook-instance-local-pytorch"></a>
 

@@ -6,6 +6,7 @@ SageMaker Pipelines are composed of steps\. These steps define the actions that 
 + [Step Types](#build-and-manage-steps-types)
 + [Step Properties](#build-and-manage-properties)
 + [Data Dependency Between Steps](#build-and-manage-data-dependency)
++ [Custom Dependency Between Steps](#build-and-manage-custom-dependency)
 + [Use a Custom Image in a Step](#build-and-manage-images)
 
 ## Step Types<a name="build-and-manage-steps-types"></a>
@@ -232,19 +233,21 @@ The `properties` attribute of a SageMaker Pipelines step matches the object retu
 
 ## Data Dependency Between Steps<a name="build-and-manage-data-dependency"></a>
 
-You define the structure of your DAG by specifying the data relationships between steps\. To create data dependencies between steps, pass the properties of one step as the input to another step in the pipeline\. A data dependency uses JsonPath notation in the following format\. This format traverses the JSON property file, which means you can append as many *<property>* instances as needed to reach the desired nested property in the file\. For more information on JsonPath notation, see the [JsonPath repo](https://github.com/json-path/JsonPath)\.
+You define the structure of your DAG by specifying the data relationships between steps\. To create data dependencies between steps, pass the properties of one step as the input to another step in the pipeline\. The step receiving the input isn't started until after the step providing the input finishes execution\.
+
+A data dependency uses JsonPath notation in the following format\. This format traverses the JSON property file, which means you can append as many *<property>* instances as needed to reach the desired nested property in the file\. For more information on JsonPath notation, see the [JsonPath repo](https://github.com/json-path/JsonPath)\.
 
 ```
 <step_name>.properties.<property>.<property>
 ```
 
-The following is an example of a data dependency using the `ProcessingOutputConfig` property of a processing step:
+The following shows how to specify an Amazon S3 bucket using the `ProcessingOutputConfig` property of a processing step\.
 
 ```
-step_processing.properties.ProcessingOutputConfig.Outputs["train_data"].S3Output.S3Uri
+step_process.properties.ProcessingOutputConfig.Outputs["train_data"].S3Output.S3Uri
 ```
 
-The data dependency can be passed as the input to a step as follows:
+To create the data dependency, pass the bucket to a training step as follows\.
 
 ```
 step_train = TrainingStep(
@@ -252,10 +255,77 @@ step_train = TrainingStep(
     estimator=sklearn_train,
     inputs=TrainingInput(
         s3_data=step_process.properties.ProcessingOutputConfig.Outputs[
+            "train_data"].S3Output.S3Uri
+    )
+)
+```
+
+## Custom Dependency Between Steps<a name="build-and-manage-custom-dependency"></a>
+
+When you specify a data dependency, SageMaker Pipelines provides the data connection between the steps\. Alternatively, one step can access the data from a previous step without directly using SageMaker Pipelines\. In this case, you can create a custom dependency that tells SageMaker Pipelines not to start a step until after another step has finished executing\. You create a custom dependency by specifying a step's `DependsOn` attribute\.
+
+As an example, the following defines a step `C` that starts only after both step `A` and step `B` finish executing\.
+
+```
+{
+  'Steps': [
+    {'Name':'A', ...},
+    {'Name':'B', ...},
+    {'Name':'C', 'DependsOn': ['A', 'B']}
+  ]
+}
+```
+
+SageMaker Pipelines throws a validation exception if the dependency would create a cyclic dependency\.
+
+The following example creates a training step that starts after a processing step finishes executing\.
+
+```
+processing_step = ProcessingStep(...)
+training_step = TrainingStep(...)
+
+training_step.add_depends_on([processing_step])
+```
+
+The following example creates a training step that doesn't start until two different processing steps finish executing\.
+
+```
+processing_step_1 = ProcessingStep(...)
+processing_step_2 = ProcessingStep(...)
+
+training_step = TrainingStep(...)
+
+training_step.add_depends_on([processing_step_1, processing_step_2])
+```
+
+The following provides an alternate way to create the custom dependency\.
+
+```
+training_step.add_depends_on([processing_step_1])
+training_step.add_depends_on([processing_step_2])
+```
+
+The following example creates a training step that receives input from one processing step and waits for a different processing step to finish executing\.
+
+```
+processing_step_1 = ProcessingStep(...)
+processing_step_2 = ProcessingStep(...)
+
+training_step = TrainingStep(
+    ...,
+    inputs=TrainingInput(
+        s3_data=processing_step_1.properties.ProcessingOutputConfig.Outputs[
             "train_data"
         ].S3Output.S3Uri
-    ),
-)
+    )
+
+training_step.add_depends_on([processing_step_2])
+```
+
+The following example shows how to retrieve a string list of the custom dependencies of a step\.
+
+```
+custom_dependencies = training_step.depends_on()
 ```
 
 ## Use a Custom Image in a Step<a name="build-and-manage-images"></a>

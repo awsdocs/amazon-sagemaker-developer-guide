@@ -13,8 +13,6 @@ The example code in this topic refers to the [Introduction to Amazon SageMaker F
 # SageMaker Python SDK version 2.x is required
 import sagemaker
 import sys
-original_version = sagemaker.__version__
-%pip install 'sagemaker>=2.0.0'
 ```
 
 ```
@@ -112,7 +110,7 @@ sagemaker_session.boto_session.client('sagemaker', region_name=region).list_feat
 
 ## Step 4: Ingest data into a feature group<a name="feature-store-set-up-record-identifier-event-time"></a>
 
-After the FeatureGroups have been created, we can put data into the FeatureGroups by using the `PutRecord` API\. It will take < 1min to ingest data both of these FeatureGroups\.
+After the FeatureGroups have been created, we can put data into the FeatureGroups\. If you are using the SageMaker Python SDK, use the `ingest` API call\. If you are using by using boto3 then use the `PutRecord` API\. It will take less than 1 minute to ingest data both of these FeatureGroups\. This example uses the SageMaker Python SDK, and so it uses the `ingest` API call\. 
 
 ```
 def check_feature_group_status(feature_group):
@@ -157,11 +155,6 @@ Here we remove the Feature Groups we created\.
 ```
 customers_feature_group.delete()
 orders_feature_group.delete()
-```
-
-```
-# preserve original sagemaker version
-%pip install 'sagemaker=={}'.format(original_version)
 ```
 
 ## Step 6: Next steps<a name="feature-store-setup-create-feature-group"></a>

@@ -3,16 +3,16 @@
 You can create an Amazon SageMaker Neo compilation job in the Amazon SageMaker console\.
 
 1. In the **Amazon SageMaker** console, choose **Compilation jobs**, and then choose **Create compilation job**\.  
-![\[Create a compilation job.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/8-create-compilation-job.png)
+![\[Create a compilation job.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/neo/8-create-compilation-job.png)
 
 1. On the **Create compilation job** page, under **Job name**, enter a name\. Then select an **IAM role**\.  
-![\[IAM role.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/9-create-compilation-job-config.png)
+![\[IAM role.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/neo/9-create-compilation-job-config.png)
 
 1. If you don’t have an IAM role, choose **Create a new role**\.  
-![\[IAM role.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/10a-create-iam-role.png)
+![\[IAM role.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/neo/10a-create-iam-role.png)
 
 1. On the **Create an IAM role** page, choose **Any S3 bucket**, and choose **Create role**\.  
-![\[Create IAM role.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/10-create-iam-role.png)
+![\[Create IAM role.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/neo/10-create-iam-role.png)
 
 1. 
 
@@ -52,7 +52,7 @@ When compiling for `ml_*` instances using PyTorch framework, use **Compiler opti
 ![\[Create job.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/neo/neo-console-output-config.png)
 
 1. Check the status of the compilation job when started\. This status of the job can be found at the top of the **Compilation Job** page, as shown in the following screenshot\. You can also check the status of it in the **Status** column\.  
-![\[Compilation job status.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/12-run-model-compilation.png)
+![\[Compilation job status.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/neo/12-run-model-compilation.png)
 
 1. Check the status of the compilation job when completed\. You can check the status in the **Status** column as shown in the following screenshot\.  
-![\[Compilation job status.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/12a-completed-model-compilation.png)
+![\[Compilation job status.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/neo/12a-completed-model-compilation.png)

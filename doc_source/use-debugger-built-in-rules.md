@@ -147,8 +147,8 @@ sagemaker_estimator=TensorFlow(
     entry_point='directory/to/your_training_script.py',
     role=sm.get_execution_role(),
     base_job_name='debugger-built-in-rules-demo',
-    train_instance_count=1,
-    train_instance_type="ml.m4.xlarge",
+    instance_count=1,
+    instance_type="ml.m4.xlarge",
     framework_version="2.1.0",
     py_version="py3",
 
@@ -203,8 +203,8 @@ sagemaker_estimator=TensorFlow(
     entry_point='directory/to/your_training_script.py',
     role=sm.get_execution_role(),
     base_job_name=base_job_name_prefix,
-    train_instance_count=1,
-    train_instance_type="ml.m4.xlarge",
+    instance_count=1,
+    instance_type="ml.m4.xlarge",
     framework_version="2.1.0",
     py_version="py3",
 
@@ -412,7 +412,7 @@ aws sagemaker create-training-job --cli-input-json file://debugger-training-job-
         }
     }
 ]
-``` To find a complete list of available Docker images for using the Debugger rules, see [Use Debugger Docker Images for Built\-in or Custom Rules](debugger-docker-images-rules.md)\. To find the key\-value pairs for `RuleParameters`, see [List of Debugger Built\-in Rules](debugger-built-in-rules.md)\.    AWS Boto3 Amazon SageMaker Debugger built\-in rules can be configured for a training job using the [https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_training_job](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_training_job) function of the AWS Boto3 SageMaker client\. You need to specify the right image URI in the `RuleEvaluatorImage` parameter, and the following examples walk you through how to set up the request body for the [https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_training_job](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_training_job) function\. The following code shows a complete example of how to configure Debugger for the `create_training_job()` request body and start a training job in `us-west-2`, assuming that a training script `entry_point/train.py` is prepared using TensorFlow\. To find an end\-to\-end example notebook, see [Profiling TensorFlow Multi GPU Multi Node Training Job with Amazon SageMaker Debugger \(Boto3\)](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker-debugger/tensorflow_profiling/tf-resnet-profiling-multi-gpu-multi-node-boto3.ipynb)\. Ensure that you use the correct Docker container images\. To find available AWS Deep Learning Container images, see [Available Deep Learning Containers Images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md)\. To find a complete list of available Docker images for using the Debugger rules, see [Use Debugger Docker Images for Built\-in or Custom Rules](debugger-docker-images-rules.md)\. 
+``` To find a complete list of available Docker images for using the Debugger rules, see [Use Debugger Docker Images for Built\-in or Custom Rules](debugger-docker-images-rules.md)\. To find the key\-value pairs for `RuleParameters`, see [List of Debugger Built\-in Rules](debugger-built-in-rules.md)\.    AWS Boto3 Amazon SageMaker Debugger built\-in rules can be configured for a training job using the [https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_training_job](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_training_job) function of the AWS Boto3 SageMaker client\. You need to specify the right image URI in the `RuleEvaluatorImage` parameter, and the following examples walk you through how to set up the request body for the [https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_training_job](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_training_job) function\. The following code shows a complete example of how to configure Debugger for the `create_training_job()` request body and start a training job in `us-west-2`, assuming that a training script `entry_point/train.py` is prepared using TensorFlow\. To find an end\-to\-end example notebook, see [Profiling TensorFlow Multi GPU Multi Node Training Job with Amazon SageMaker Debugger \(Boto3\)](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-debugger/tensorflow_profiling/tf-resnet-profiling-multi-gpu-multi-node-boto3.html)\. Ensure that you use the correct Docker container images\. To find available AWS Deep Learning Container images, see [Available Deep Learning Containers Images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md)\. To find a complete list of available Docker images for using the Debugger rules, see [Use Debugger Docker Images for Built\-in or Custom Rules](debugger-docker-images-rules.md)\. 
 
 ```
 import sagemaker, boto3

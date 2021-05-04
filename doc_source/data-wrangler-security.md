@@ -352,3 +352,11 @@ Use a policy like to the following to create an IAM execution role that can be u
     ]
 }
 ```
+
+## Data Encryption with KMS\-CMK<a name="data-wrangler-security-kms"></a>
+
+For files stored in Amazon S3 that have server\-side encryption enabled and the encryption type is SSE\-KMS, the SageMaker Studio user role will need to be added as a Key user for them to be able to decrypt the file and import in Data Wrangler\.
+
+ Below is a screenshot that shows a Studio user role added as a Key user\. See [IAM Roles](https://console.aws.amazon.com/iam/home#/roles) to access Users under the left panel to make this change\.
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/data-wrangler-kms.png)

@@ -10,6 +10,8 @@ Automated data labeling is available only for the following Ground Truth built\-
 + Object detection \([Bounding Box](sms-bounding-box.md)\)
 + [Text Classification \(Single Label\)](sms-text-classification.md)
 
+[Streaming labeling jobs](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-streaming-labeling-job.html) do not support automated data labeling\.
+
 To learn how to create a custom active learning workflow using your own model, see [Set up an active learning workflow with your own model](#samurai-automated-labeling-byom)\.
 
 Input data quotas apply for automated data labeling jobs\. See [Input Data Quotas](input-data-limits.md) for information about dataset size, input data size and resolution limits\.

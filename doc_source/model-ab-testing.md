@@ -23,7 +23,7 @@ To test multiple models by invoking specific models for each request, specify th
 
 ## Model A/B test example<a name="model-ab-test-example"></a>
 
-The following example shows how to perform A/B model testing\. For a sample notebook that implements this example, see ["A/B Testing ML models in production](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker_endpoints/a_b_testing/a_b_testing.ipynb)\.
+The following example shows how to perform A/B model testing\. For a sample notebook that implements this example, see ["A/B Testing ML models in production](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker_endpoints/a_b_testing/a_b_testing.html)\.
 
 ### Step 1: Create and deploy models<a name="model-ab-test-step1"></a>
 
