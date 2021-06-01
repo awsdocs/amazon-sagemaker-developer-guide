@@ -21,7 +21,7 @@ The following table lists parameters for each of the algorithms provided by Amaz
 | Random Cut Forest | train and \(optionally\) test | File or Pipe | recordIO\-protobuf or CSV | CPU | Yes | 
 | Semantic Segmentation | train and validation, train\_annotation, validation\_annotation, and \(optionally\) label\_map and model | File or Pipe | Image files | GPU \(single instance only\) | No | 
 |  Seq2Seq Modeling  | train, validation, and vocab | File | recordIO\-protobuf | GPU \(single instance only\) | No | 
-| XGBoost \(0\.90\-1, 0\.90\-2, 1\.0\-1, 1\.2\-1\) | train and \(optionally\) validation | File or Pipe | CSV, LibSVM, recordIO\-protobuf, or Parquet | CPU \(or GPU for 1\.2\-1\) | Yes | 
+| XGBoost \(0\.90\-1, 0\.90\-2, 1\.0\-1, 1\.2\-1, 1\.2\-21\) | train and \(optionally\) validation | File or Pipe | CSV, LibSVM, or Parquet | CPU \(or GPU for 1\.2\-1\) | Yes | 
 
 Algorithms that are *parallelizable* can be deployed on multiple compute instances for distributed training\.
 

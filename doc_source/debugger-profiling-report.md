@@ -146,7 +146,7 @@ The Debugger profiling report includes the following information:
 + **p99** – The 99th percentile of each system utilization\.
 + **p95** – The 95th percentile of each system utilization\.
 + **p50** – The 50th percentile \(median\) of each system utilization\.
-+ **min** – The maximum value of each system metric\.
++ **min** – The minimum value of each system metric\.
 
 ### Framework metrics summary<a name="debugger-profiling-report-walkthrough-framework-metrics"></a>
 

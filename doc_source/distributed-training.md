@@ -11,7 +11,6 @@
 + [SageMaker's Distributed Data Parallel Library](data-parallel.md)
 + [SageMaker's Distributed Model Parallel](model-parallel.md)
 + [Distributed Training Jupyter Notebook Examples](distributed-training-notebook-examples.md)
-+ [Troubleshooting](distributed-troubleshooting.md)
 
 ## Get Started with Distributed Training<a name="distributed-training-get-started"></a>
 
@@ -63,7 +62,7 @@ Deep Learning \(DL\) is a specific family of ML algorithms consisting of several
 
 Parallelizing SGD training by distributing the records of a mini\-batch over different computing devices is called *data parallel distributed training*, and is the most commonly used DL distribution paradigm\. Data parallel training is a relevant distribution strategy to scale the mini\-batch size and process each mini\-batch faster\. However, data parallel training comes with the extra complexity of having to compute the mini\-batch gradient average with gradients coming from all the workers and communicating it to all the workers, a step called *allreduce* that can represent a growing overhead, as the training cluster is scaled, and that can also drastically penalize training time if improperly implemented or implemented over improper hardware substracts\.  
 
-Data parallel SGD still requires developers to be able to fit at least the model and a single record in a computing devices, like a single CPU or GPU\. When training very large models such as large transformers in Natural Language Processing \(NLP\), or segmentation models over high\-resolution images, there may be situations in which this is not feasible\. An alternative way to break up the workload is to partition the model over multiple computing devices, an approach called > *model\-parallel distributed training*\. 
+Data parallel SGD still requires developers to be able to fit at least the model and a single record in a computing devices, like a single CPU or GPU\. When training very large models such as large transformers in Natural Language Processing \(NLP\), or segmentation models over high\-resolution images, there may be situations in which this is not feasible\. An alternative way to break up the workload is to partition the model over multiple computing devices, an approach called *model\-parallel distributed training*\. 
 
 ## Strategies<a name="distributed-training-strategies"></a>
 
@@ -71,20 +70,16 @@ Distributed training is usually split by two approaches: data parallel and model
 
 The terms *network* and *model* are often used interchangeably: A large model is really a large network with many layers and parameters\. Training with a large network produces a large model, and loading the model back onto the network with all your pre\-trained parameters and their weights loads a large model into memory\. When you break apart a model to split it across nodes, you’re also breaking apart the underlying network\. A network consists of layers, and to split up the network, you put layers on different compute devices\.
 
-A common pitfall of naively splitting layers across devices is severe GPU under\-utilization\. Training is inherently sequential in both forward and backward passes, and at a given time, only one GPU can actively compute, while the others wait on the activations to be sent\. Modern model parallel libraries solve this problem by using pipeline execution schedules to improve device utilization\. However, only the SageMaker Amazon SageMaker's distributed model parallel library includes automatic model splitting\. The two core features of the library, automatic model splitting and pipeline execution scheduling, simplifies the process of implementing model parallelism by making automated decisions that lead to efficient device utilization\.
+A common pitfall of naively splitting layers across devices is severe GPU under\-utilization\. Training is inherently sequential in both forward and backward passes, and at a given time, only one GPU can actively compute, while the others wait on the activations to be sent\. Modern model parallel libraries solve this problem by using pipeline execution schedules to improve device utilization\. However, only the Amazon SageMaker's distributed model parallel library includes automatic model splitting\. The two core features of the library, automatic model splitting and pipeline execution scheduling, simplifies the process of implementing model parallelism by making automated decisions that lead to efficient device utilization\.
 
-### Which Is “Better”: Data Parallel or Model Parallel?<a name="data-parallel-vs-model-parallel"></a>
+### Train with Data Parallel and Model Parallel<a name="distributed-training-strategies"></a>
 
-Despite their names, data parallel training is truly parallel computing, whereas model\-parallel training is more akin to serialized computing\. If your model can fit into memory, you can use data parallel training, and you should, as training is faster\. However, this isn’t always possible, and so for large models, you must use model parallel training\. There are parts of a model parallel flow that can be parallelized, but some parts of the network bottleneck the others and require you to wait for the network to finish processing data in a serial fashion\. However, SageMaker’s model parallelism library uses sophisticated pipelining, enabling the library to parallelize work by having devices compute on different microbatches at the same time\. This approaches true parallelism, even if the underlying model consists of sequential, non\-parallelizable computational steps\. 
-
-### Choosing Between Data Parallel and Model Parallel<a name="distributed-training-strategies"></a>
-
-Start with a data parallel approach\. If you run out of memory during training, you may want to switch to a model parallel approach\. However, consider these alternatives before trying model\-parallel training: 
+If you are training with a large dataset, start with a data parallel approach\. If you run out of memory during training, you may want to switch to a model parallel approach, or try hybrid model and data parallelism\. You can also try the following to improve performance with data parallel:
 + Change your model’s hyperparameters\. 
 + Reduce the batch size\.
 + Keep reducing the batch size until it fits\. If you reduce batch size to 1, and still run out of memory, then you should try model\-parallel training\. 
 
- Try gradient compression \(fp16, fp8\):
+Try gradient compression \(fp16, fp8\):
 + On NVIDIA TensorCore\-equipped hardware, using [mixed\-precision training](https://docs.nvidia.com/deeplearning/performance/mixed-precision-training/index.html) creates both speed\-up and memory consumption reduction\.
 
 Try reducing the input size:

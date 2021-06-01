@@ -4,7 +4,7 @@
 
 The linear learner algorithm also has an internal mechanism for tuning hyperparameters separate from the automatic model tuning feature described here\. By default, the linear learner algorithm tunes hyperparameters by training multiple models in parallel\. When you use automatic model tuning, the linear learner internal tuning mechanism is turned off automatically\. This sets the number of parallel models, `num_models`, to 1\. The algorithm ignores any value that you set for `num_models`\.
 
-For more information about model tuning, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
+For more information about model tuning, see [Perform Automatic Model Tuning with SageMaker](automatic-model-tuning.md)\.
 
 ## Metrics computed by the linear learner algorithm<a name="linear-learner-metrics"></a>
 

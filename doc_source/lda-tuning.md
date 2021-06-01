@@ -4,7 +4,7 @@
 
 LDA is an unsupervised topic modeling algorithm that attempts to describe a set of observations \(documents\) as a mixture of different categories \(topics\)\. The “per\-word log\-likelihood” \(PWLL\) metric measures the likelihood that a learned set of topics \(an LDA model\) accurately describes a test document dataset\. Larger values of PWLL indicate that the test data is more likely to be described by the LDA model\.
 
-For more information about model tuning, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
+For more information about model tuning, see [Perform Automatic Model Tuning with SageMaker](automatic-model-tuning.md)\.
 
 ## Metrics Computed by the LDA Algorithm<a name="lda-metrics"></a>
 

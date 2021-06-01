@@ -7,7 +7,7 @@ By default, for all SageMaker training jobs, Debugger collects loss and accuracy
 
 While constructing a SageMaker estimator, enable Debugger by specifying the hook configuration parameter, `debugger_hook_config`\. The following steps include examples of how to set up the `debugger_hook_config` using the `CollectionConfig` and `DebuggerHookConfig` API operations to pull tensors out of your training jobs and save them\. If you use [Debugger\-supported AWS containers for zero script change](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html#debugger-supported-aws-containers), you can simply run the training job without changing your training script\. You can also use Debugger for training jobs running in any other [Debugger\-supported AWS containers with script mode](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html#debugger-supported-aws-containers), making minimal changes to your training script\. 
 
-## Configure Debugger Tensor Collections Using the Collectivisation API Operation<a name="debugger-configure-tensor-collections"></a>
+## Configure Debugger Tensor Collections Using the CollectionConfig API Operation<a name="debugger-configure-tensor-collections"></a>
 
 Use the `CollectionConfig` API operation to configure tensor collections\. Debugger provides pre\-built tensor collections that cover a variety of regular expressions \(regex\) of parameters if using Debugger\-supported deep learning frameworks and machine learning algorithms\. As shown in the following example code, add the built\-in tensor collections you want to debug\.
 

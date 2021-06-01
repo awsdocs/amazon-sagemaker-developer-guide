@@ -8,4 +8,4 @@
 
  You may use a schema to describe your data’s columns and data types\. You pass this schema into `FeatureDefinitions`, a required parameter for a `FeatureGroup`\. You can use the SageMaker Python SDK, which has automatic data type detection when you use the `load_feature_definitions` function\.  
 
-## <a name="w1316aac24c27b9c11"></a>
+## <a name="w1793aac25c27b9c11"></a>

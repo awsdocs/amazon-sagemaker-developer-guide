@@ -1,6 +1,6 @@
 # Use Amazon CloudWatch Events in Amazon Augmented AI<a name="a2i-cloudwatch-events"></a>
 
-Amazon Augmented AI uses Amazon CloudWatch Events \(CloudWatch Events\) to alert you when a human review loop changes status\. When a review loop changes to the `Completed`, `Failed`, or `Stopped` status, Augmented AI sends an event to CloudWatch Events similar to the following:
+Amazon Augmented AI uses Amazon CloudWatch Events to alert you when a human review loop status changes to `Completed`, `Failed`, or `Stopped`\. This event delivery is guaranteed at least once, which means all events created when human loops finish are successfully delivered to CloudWatch Events \(Amazon EventBridge\)\. When a review loop changes to one of these states, Augmented AI sends an event to CloudWatch Events similar to the following\.
 
 ```
 {

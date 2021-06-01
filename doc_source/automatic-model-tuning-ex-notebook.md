@@ -1,6 +1,6 @@
 # Create a Notebook<a name="automatic-model-tuning-ex-notebook"></a>
 
-Create a Jupyter notebook that contains a preinstalled environment with the default Anaconda installation and Python3\. 
+Create a Jupyter notebook that contains a pre\-installed environment with the default Anaconda installation and Python3\. 
 
 **To create a Jupyter notebook**
 

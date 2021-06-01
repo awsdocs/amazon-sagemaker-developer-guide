@@ -5,11 +5,11 @@ The [XGBoost](https://github.com/dmlc/xgboost) \(eXtreme Gradient Boosting\) is 
 You can use the new release of the XGBoost algorithm either as a Amazon SageMaker built\-in algorithm or as a framework to run training scripts in your local environments\. This implementation has a smaller memory footprint, better logging, improved hyperparameter validation, and an expanded set of metrics than the original versions\. It provides an XGBoost `estimator` that executes a training script in a managed XGBoost environment\. The current release of SageMaker XGBoost is based on the original XGBoost versions 0\.90, 1\.0, and 1\.2\.
 
 ## Supported versions<a name="xgboost-supported-versions"></a>
-+ Framework \(open source\) mode: 0\.90\-1, 0\.90\-2, 1\.0\-1, 1\.2\-1
-+ Algorithm mode: 0\.90\-1, 0\.90\-2, 1\.0\-1, 1\.2\-1
++ Framework \(open source\) mode: 0\.90\-1, 0\.90\-2, 1\.0\-1, 1\.2\-1, 1\.2\-2
++ Algorithm mode: 0\.90\-1, 0\.90\-2, 1\.0\-1, 1\.2\-1, 1\.2\-2
 
 **Note**  
-XGBoost 1\.1 is not supported on SageMaker because XGBoost 1\.1 has a broken capability to run prediction when the test input has fewer features than the training data in LIBSVM inputs\. This capability has been restored in XGBoost 1\.2\. Consider using SageMaker XGBoost 1\.2\-1\.
+XGBoost 1\.1 is not supported on SageMaker because XGBoost 1\.1 has a broken capability to run prediction when the test input has fewer features than the training data in LIBSVM inputs\. This capability has been restored in XGBoost 1\.2\. Consider using SageMaker XGBoost 1\.2\-2\.
 
 ## How to Use SageMaker XGBoost<a name="xgboost-modes"></a>
 
@@ -46,7 +46,7 @@ With SageMaker, you can use XGBoost as a built\-in algorithm or framework\. By u
   # construct a SageMaker XGBoost estimator
   # specify the entry_point to your xgboost training script
   estimator = XGBoost(entry_point = "your_xgboost_abalone_script.py", 
-                      framework_version='1.2-1',
+                      framework_version='1.2-2',
                       hyperparameters=hyperparameters,
                       role=sagemaker.get_execution_role(),
                       instance_count=1,
@@ -91,7 +91,7 @@ With SageMaker, you can use XGBoost as a built\-in algorithm or framework\. By u
   # construct a SageMaker XGBoost estimator
   # specify the entry_point to your xgboost training script
   estimator = XGBoost(entry_point = "your_xgboost_abalone_script.py", 
-                      framework_version='1.2-1',
+                      framework_version='1.2-2',
                       hyperparameters=hyperparameters,
                       role=sagemaker.get_execution_role(),
                       instance_count=1,
@@ -144,7 +144,7 @@ With SageMaker, you can use XGBoost as a built\-in algorithm or framework\. By u
   # specify the repo_version depending on your preference.
   xgboost_container = get_image_uri(boto3.Session().region_name,
                             'xgboost', 
-                            repo_version='1.2-1')
+                            repo_version='1.2-2')
   
   # construct a SageMaker estimator that calls the xgboost-container
   estimator = sagemaker.estimator.Estimator(image_name=xgboost_container, 
@@ -191,7 +191,7 @@ With SageMaker, you can use XGBoost as a built\-in algorithm or framework\. By u
   
   # this line automatically looks for the XGBoost image URI and builds an XGBoost container.
   # specify the repo_version depending on your preference.
-  xgboost_container = sagemaker.image_uris.retrieve("xgboost", region, "1.2-1")
+  xgboost_container = sagemaker.image_uris.retrieve("xgboost", region, "1.2-2")
   
   # construct a SageMaker estimator that calls the xgboost-container
   estimator = sagemaker.estimator.Estimator(image_uri=xgboost_container, 

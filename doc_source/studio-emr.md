@@ -7,7 +7,7 @@ Amazon SageMaker Studio comes with a SageMaker SparkMagic image that contains a 
 For added security, you can specify that the connection to the EMR cluster uses Kerberos authentication\. For more information, see [Use Kerberos Authentication](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html)\.
 
 **Prerequisites**
-+ Access to SageMaker Studio that's set up to use Amazon VPC mode\. For more information, see [Choose a VPC](onboard-vpc.md)\.
++ Access to SageMaker Studio that's set up to use Amazon VPC mode\. To connect to Amazon EMR, Studio must be configured as Amazon VPC only mode\. For more information, see [Connect SageMaker Studio Notebooks to Resources in a VPC](studio-notebooks-and-internet-access.md)\.
 + An Amazon EMR cluster in the same VPC as Studio or in a VPC that's connected to the same VPC as Studio\.
 + If you use the `sm-sparkmagic` utility, the IAM execution role associated with your Studio user profile must contain the following extra permissions\. To find the execution role, choose your user name in the SageMaker Studio Control Panel\.
 
@@ -99,3 +99,6 @@ For added security, you can specify that the connection to the EMR cluster uses 
    Current session configs:{'driverMemory': '1000M', 'executorCores': 2, 'kind': 'pyspark'}
    No active sessions.
    ```
+
+**For more information**
++ [Perform interactive data processing using Spark in Amazon SageMaker Studio Notebooks](http://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-studio-notebooks-backed-by-spark-in-amazon-emr/)\.

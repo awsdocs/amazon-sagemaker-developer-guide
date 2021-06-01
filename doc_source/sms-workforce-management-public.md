@@ -25,7 +25,7 @@ Use the following sections to learn how to use Mechanical Turk with these servic
 
 You can use Mechanical Turk with Ground Truth when you create a labeling job using the console, or the `[CreateLabelingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)` operation\.
 
-When you create a labeling job, we recommend you adjust the number of workers that annotate each data object based on the complexity of the job and the quality that you need\. Amazon SageMaker Ground Truth uses annotation consolidation to improve the quality of the labels\. More workers can make a difference in the quality of the labels for more complex labeling jobs, but might not make a difference for simpler jobs\. For more information, see [Consolidate Annotations ](sms-annotation-consolidation.md)\. Note that annotation consolidation is not supported for Amazon A2I human review workflows\. 
+When you create a labeling job, we recommend you adjust the number of workers that annotate each data object based on the complexity of the job and the quality that you need\. Amazon SageMaker Ground Truth uses annotation consolidation to improve the quality of the labels\. More workers can make a difference in the quality of the labels for more complex labeling jobs, but might not make a difference for simpler jobs\. For more information, see [Consolidate Annotations](sms-annotation-consolidation.md)\. Note that annotation consolidation is not supported for Amazon A2I human review workflows\. 
 
 **To use Mechanical Turk when you create a labeling job \(console\):**
 

@@ -41,4 +41,9 @@ Must be an s3:// formatted URL where Amazon SageMaker has write permissions\. Th
 
      If you choose **No**, instead of executing the entire workflow, SageMaker stops execution after generating a notebook with candidate definitions\. A candidate is a combination of data preprocessors, algorithms, and algorithm parameter settings\. You can use the notebook as a starting point to guide your own process of model training/tuning\. The notebook has highlighted sections that explain what kinds of changes are typical, such as changing instance type, cluster size, and so on\.
 
-1. Choose **Create Experiment**\.
+1. To automatically deploy the best model from an Autopilot experiment to an endpoint, accept the default **Auto deploy** value **On** when creating the experiment\.  
+![\[Select Decide to use automatic deployment..\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-experiment-deploy.png)
+
+   Choose **Create Experiment**\.
+**Note**  
+To avoid incurring unnecessary charges, delete the endpoints and resources that were created when deploying the model after they are no longer needed\.

@@ -20,17 +20,30 @@ The execution role is intended to be available only when running a notebook with
 
 To find the IAM role ARN created when you created your the notebook instance or Studio application, go to the **Notebook instances** page in the console and select the relevant notebook from the list of **Names**\. in the configuration detail page the IAM role ARN is given in the **Permissions and encryption** section\.
 
+Use the following procedure to create an execution role with the IAM managed policy, `AmazonSageMakerFullAccess`, attached\. If your use case requires more granular permissions, use other sections on this page to create an execution role that meets your business needs\.
+
+**Important**  
+The IAM managed policy, `AmazonSageMakerFullAccess`, used in the following procedure only grants the execution role permission to perform certain Amazon S3 actions on buckets or objects with `SageMaker`, `Sagemaker`, `sagemaker`, or `aws-glue` in the name\. To learn how to add an additional policy to an execution role to grant it access to other Amazon S3 buckets and objects, see [Add Additional Amazon S3 Permissions to an SageMaker Execution Role](#sagemaker-roles-get-execution-role-s3)\.
+
 **To create a new role**
 
-1. Log onto the console \-> IAM \-> Roles \-> Create Role
+1. Go to the IAM console: [https://console.aws.amazon.com/iam/home](https://console.aws.amazon.com/iam/home)\.
 
-1. Create a service\-linked role with `sagemaker.amazonaws.com`
+1. Select **Roles** and then select **Create role**\.
 
-1. Give the role `AmazonSageMakerFullAccess`
+1. Select **SageMaker**\.
 
-1. Give the role `AmazonS3FullAccess` \(limit the permissions to specific buckets if possible\)
+1. Select **Next: Permissions**\.
 
-1. Make note of the ARN once it is created
+1. The IAM managed policy, `AmazonSageMakerFullAccess` is automatically attached to this role\. To see the permissions included in this policy, select the sideways arrow next to the policy name\. Select **Next: Tags**\.
+
+1. \(Optional\) Add tags and select **Next: Review**\.
+
+1. Give the role a name in the text field under **Role name** and select **Create role**\.
+
+1. On the **Roles** section of the IAM console, select the role you just created\. If needed, use the text box to search for the role using the role name you entered in step 7\.
+
+1. On the role summary page, make note of the ARN\.
 
 With a known ARN for your role, you can programmatically check the role when running the notebook locally or on SageMaker\. Replace `RoleName` with your known ARN:
 
@@ -40,6 +53,67 @@ try:
 except ValueError:
     iam = boto3.client('iam')
     role = iam.get_role(RoleName='AmazonSageMaker-ExecutionRole-20201200T100000')['Role']['Arn']
+```
+
+### Add Additional Amazon S3 Permissions to an SageMaker Execution Role<a name="sagemaker-roles-get-execution-role-s3"></a>
+
+When you use an SageMaker feature with resources in Amazon S3, such as input data, the execution role you specify in your request \(for example `CreateTrainingJob`\) is used to access these resources\.
+
+If you attach the IAM managed policy, `AmazonSageMakerFullAccess`, to an execution role, that role has permission to perform certain Amazon S3 actions on buckets or objects with `SageMaker`, `Sagemaker`, `sagemaker`, or `aws-glue` in the name\. It also has permission to perform the following actions on any Amazon S3 resource:
+
+```
+"s3:CreateBucket", 
+"s3:GetBucketLocation",
+"s3:ListBucket",
+"s3:ListAllMyBuckets",
+"s3:GetBucketCors",
+"s3:PutBucketCors"
+```
+
+To give an execution role permissions to access one or more specific buckets in Amazon S3, you can attach a policy similar to the following to the role\. This policy grants an IAM role permission to perform all actions that `AmazonSageMakerFullAccess` allows but restricts this access to the buckets *DOC\-EXAMPLE\-BUCKET1* and *DOC\-EXAMPLE\-BUCKET2*\. Refer to the security documentation for the specific SageMaker feature you are using to learn more about the Amazon S3 permissions required for that feature\.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:DeleteObject",
+                "s3:AbortMultipartUpload"
+            ],
+            "Resource": [
+                "arn:aws:s3:::DOC-EXAMPLE-BUCKET1/*,
+                "arn:aws:s3:::DOC-EXAMPLE-BUCKET2/*
+            ]
+        }, 
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:CreateBucket",
+                "s3:GetBucketLocation",
+                "s3:ListBucket",
+                "s3:ListAllMyBuckets",
+                "s3:GetBucketCors",
+                "s3:PutBucketCors"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetBucketAcl",
+                "s3:PutObjectAcl"
+            ],
+            "Resource": [
+                "arn:aws:s3:::DOC-EXAMPLE-BUCKET1,
+                "arn:aws:s3:::DOC-EXAMPLE-BUCKET2
+            ]
+        }
+    ]
+}
 ```
 
 ## Passing Roles<a name="sagemaker-roles-pass-role"></a>

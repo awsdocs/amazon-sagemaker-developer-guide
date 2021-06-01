@@ -1,6 +1,6 @@
 # Verify and Adjust Labels<a name="sms-verification-data"></a>
 
-When the labels on a dataset need to be validated, Amazon SageMaker Ground Truth provides functionality to have workers verify that labels are correct or to adjust previous labels\.
+When the labels on a dataset need to be validated, Amazon SageMaker Ground Truth provides functionality to have workers verify that labels are correct or to adjust previous labels\. 
 
 These types of jobs fall into two distinct categories:
 + *Label verification *— Workers indicate if the existing labels are correct, or rate their quality, and can add comments to explain their reasoning\. Workers will not be able to modify or adjust labels\. 
@@ -20,11 +20,22 @@ For 3D point cloud and video frame labeling verification jobs, it is recommended
 You can start a label verification and adjustment jobs using the SageMaker console or the API\. 
 
 **Topics**
++ [Requirements to Create Verification and Adjustment Labeling Jobs](#sms-data-verify-adjust-prereq)
 + [Create a Label Verification Job \(Console\)](#sms-data-verify-start-console)
 + [Create a Label Adjustment Job \(Console\)](#sms-data-adjust-start-console)
 + [Start a Label Verification or Adjustment Job \(API\)](#sms-data-verify-start-api)
 + [Label Verification and Adjustment Data in the Output Manifest](#sms-data-verify-manifest)
 + [Cautions and Considerations](#sms-data-verify-cautions)
+
+## Requirements to Create Verification and Adjustment Labeling Jobs<a name="sms-data-verify-adjust-prereq"></a>
+
+To create a label verification or adjustment job, the following criteria must be satisfied\. 
++ For non streaming labeling jobs: The input manifest file you use must contain the label attribute name \(`LabelAttributeName`\) of the labels that you want adjusted\. When you chain a successfully completed labeling job, the output manifest file is used as the input manifest file for the new, chained job\. To learn more about the format of the output manifest file Ground Truth produces for each task type, see [Output Data](sms-data-output.md)\.
+
+  For streaming labeling jobs: The Amazon SNS message you sent to the Amazon SNS input topic of the adjustment or verification labeling job must contain the label attribute name of the labels you want adjusted or verified\. To see an example of how you can create an adjustment or verification labeling job with streaming lableing jobs, see this [Jupyter Notebook example](https://github.com/aws/amazon-sagemaker-examples/blob/master/ground_truth_labeling_jobs/ground_truth_streaming_labeling_jobs/ground_truth_create_chained_streaming_labeling_job.ipynb) in GitHub\.
++ The task type of the verification or adjustment labeling job must be the same as the task type of the original job unless you are using the [Image Label Verification](sms-label-verification.md) task type to verify bounding box or semantic segmentation image labels\. See the next bullet point for more details about the video frame task type requirements\.
++ For video frame annotation verification and adjustment jobs, you must use the same annotation task type used to create the annotations from the previous labeling job\. For example, if you create a video frame object detection job to have workers draw bounding boxes around objects, and then you create a video object detection adjustment job, you must specify *bounding boxes* as the annotation task type\. To learn more video frame annotation task types, see [Task Types](sms-video-overview.md#sms-video-frame-tools)\.
++ The task type you select for the adjustment or verification labeling job must support an audit workflow\. The following Ground Truth [built\-in task types](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html) support adjustment and verification labeling jobs: bounding box, semantic segmentation, 3D point cloud object detection, 3D point cloud object tracking, and 3D point cloud semantic segmentation, and all video frame object detection and video frame object tracking task types — bounding box, polyline, polygon and keypoint\.
 
 ## Create a Label Verification Job \(Console\)<a name="sms-data-verify-start-console"></a>
 

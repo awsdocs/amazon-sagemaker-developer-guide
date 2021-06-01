@@ -25,6 +25,7 @@ Each completed task is represented by a log entry, which contains information ab
   "task_accepted_time": "Wed Aug 14 16:00:59 UTC 2019",
   "task_submitted_time": "Wed Aug 14 16:01:04 UTC 2019",
   "task_returned_time": "",
+  "task_declined_time": "",
   "workteam_arn": "arn:aws:sagemaker:us-east-2:############:workteam/private-crowd/Sample-labeling-team",
   "labeling_job_arn": "arn:aws:sagemaker:us-east-2:############:labeling-job/metrics-demo",
   "work_requester_account_id": "############",
@@ -61,6 +62,6 @@ If you don't want to write your own scripts to process and visualize the raw log
 
 1. In the navigation pane, choose **Metrics**\.
 
-1. Choose the **AWS/SageMaker/Workteam** name space, then explore the [available metrics](monitoring-cloudwatch.md)\. For example, selecting the **Workflow, Workteam** metrics lets you calculate the average time per submitted task for a specific labeling job\.
+1. Choose the `AWS/SageMaker/Workteam` name space, then explore the [available metrics](monitoring-cloudwatch.md)\. For example, selecting the **Workteam** and **Workforce** metrics lets you calculate the average time per submitted task for a specific labeling job\.
 
 For more information, see [Using Amazon CloudWatch Metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/working_with_metrics.html)\.
