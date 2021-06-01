@@ -12,19 +12,19 @@ To use this policy, replace the IAM service\-role ARN in `"Principal"` with the 
 
 ```
 {
-"Sid": "AllowUseOfKmsKey",
-"Effect": "Allow",
-"Principal": {
-    "AWS": "arn:aws:iam::111122223333:role/service-role/example-role"
-},
-"Action": [
-    "kms:Encrypt",
-    "kms:Decrypt",
-    "kms:ReEncrypt*",
-    "kms:GenerateDataKey*",
-    "kms:DescribeKey"
-],
-"Resource": "*"
+    "Sid": "AllowUseOfKmsKey",
+    "Effect": "Allow",
+    "Principal": {
+        "AWS": "arn:aws:iam::111122223333:role/service-role/example-role"
+    },
+    "Action": [
+        "kms:Encrypt",
+        "kms:Decrypt",
+        "kms:ReEncrypt*",
+        "kms:GenerateDataKey*",
+        "kms:DescribeKey"
+    ],
+    "Resource": "*"
 }
 ```
 

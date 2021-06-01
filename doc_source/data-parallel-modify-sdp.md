@@ -3,7 +3,7 @@
 ## Script Modification Overview<a name="data-parallel-modify-sdp-overview"></a>
 
 SageMaker's distributed data parallel library \(the library\) APIs are designed for ease of use, and to provide seamless integration with existing distributed training toolkits\.
-+ *SageMaker Python SDK with the library API*: In most cases, all you have to change in your training script is the Horovod or other data parallel library import statements\. Swap these out with the the SageMaker data parallel library equivalents\.
++ *SageMaker Python SDK with the library API*: In most cases, all you have to change in your training script is the Horovod or other data parallel library import statements\. Swap these out with the SageMaker data parallel library equivalents\.
 + *Focus on your model training without infrastructure management*: When training a deep learning model with the library on SageMaker, you can focus on your model training, while SageMaker does cluster management: brings up the nodes and creates the cluster, completes the training, then tears down the cluster\. 
 
  To customize your own training script, you need to do the following: 
@@ -19,11 +19,14 @@ Then you can see how to deploy your trained model to an endpoint by following on
 
 Finally, you can follow an example notebook to test inference on your deployed model\. 
 
-## Modify a TensorFlow 2\.x Training Script Using SMD Data Parallel<a name="data-parallel-modify-sdp-tf2"></a>
+## Modify a TensorFlow 2\.x Training Script Using SageMaker Distributed Data Parallel<a name="data-parallel-modify-sdp-tf2"></a>
 
  The following steps show you how to convert a TensorFlow 2\.3\.1 or 2\.4\.1 training script to utilize SageMaker's distributed data parallel library\.  
 
 The library APIs are designed to be similar to Horovod APIs\. Refer to the [SageMaker distributed data parallel TensorFlow API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html#api-documentation) for additional details on each API that the library offers for TensorFlow\. 
+
+**Note**  
+SageMaker distributed data parallel is adaptable to TensorFlow training scripts composed of `tf` core modules except `tf.keras` modules\. SageMaker distributed data parallel does not support TensorFlow with Keras implementation\.
 
 1. Import the library's TensorFlow client and initialize it: 
 
@@ -66,7 +69,7 @@ The library APIs are designed to be similar to Horovod APIs\. Refer to the [Sage
    sdp.broadcast_variables(opt.variables(), root_rank=0)
    ```
 
-1. Finally, modify your script to save checkpoints only on the leader node\. The leader nodehas a synchronized model\. This also avoids worker nodes overwriting the checkpoints and possibly corrupting the checkpoints\. 
+1. Finally, modify your script to save checkpoints only on the leader node\. The leader node has a synchronized model\. This also avoids worker nodes overwriting the checkpoints and possibly corrupting the checkpoints\. 
 
    ```
    if sdp.rank() == 0:
@@ -133,9 +136,9 @@ For more advanced usage, refer to [SageMaker Distributed Data Parallel TensorFl
 
 ## Modify a PyTorch Training Script Using SMD Data Parallel<a name="data-parallel-modify-sdp-pt"></a>
 
-The following steps show you how to convert a PyTorch training script to utilize SageMaker's distibuted data parallel library\.
+The following steps show you how to convert a PyTorch training script to utilize SageMaker's distributed data parallel library\.
 
-The library APIs are designed to be similar to PyTorch Distributed Data Parallel \(DDP\) APIs\. For additional details on each data parallel API offered for PyTorch, see the [SageMaker distibuted data parallel PyTorch API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html#api-documentation)\. 
+The library APIs are designed to be similar to PyTorch Distributed Data Parallel \(DDP\) APIs\. For additional details on each data parallel API offered for PyTorch, see the [SageMaker distributed data parallel PyTorch API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html#api-documentation)\. 
 
 1. Import the library’s PyTorch client and initialize it, then import the module for distributed training\. 
 

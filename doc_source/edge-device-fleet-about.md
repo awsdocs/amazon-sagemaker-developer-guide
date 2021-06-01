@@ -119,11 +119,11 @@ SageMaker Edge Manager agent can be run as a standalone process in the form of a
 On Linux, we recommend that you run the binary via a service that’s a part of your initialization \(init\) system\. If you want to run the binary directly, you can do so in a terminal as shown below\. If you have a modern OS, there are no other installations necessary prior to running the agent, since all the requirements are statically built into the executable\. This gives you flexibility to run the agent on the terminal, as a service, or within a container\.
 
 To run the agent you will first need to create a JSON configuration file\. Specify the following key\-value pairs:
-+ `deviceUUID` \(optional\): Unique edge device identifier\.
++ `deviceName` : The name of the device, this device name needs to be registered along with device fleet in the SageMaker Edge Manager console\.
 + `deviceFleetName`: The name of the fleet the device belongs to\.
 + `region`: AWS region\. 
 + `rootCertsPath`: Absolute folder path to root certificates\. 
-+ `provider`: Use “Aws”\.
++ `provider`: Use `"Aws"`\.
 + `awsCACertFile`: Absolute path to Amazon Root CA certificate \(AmazonRootCA1\.pem\)\.
 + `awsCertFile`: Absolute path to AWS IoT signing root certificate \(\*\.pem\.crt\)\.
 + `awsCertPKFile`: Absolute path to AWS IoT private key\. \(\*\.pem\.key\)\.
@@ -141,7 +141,7 @@ Your configuration file should look similar to the following \(with your specifi
 
 ```
 {
-    "sagemaker_edge_core_device_uuid": "device-uuid",
+    "sagemaker_edge_core_device_name": "device-name",
     "sagemaker_edge_core_device_fleet_name": "fleet-name",
     "sagemaker_edge_core_region": "region",
     "sagemaker_edge_core_root_certs_path": "<Absolute path to root certificates>",

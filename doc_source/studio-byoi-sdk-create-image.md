@@ -59,7 +59,7 @@ You perform the following steps to create a SageMaker image from the container i
 **Note**  
 If the response is `"ImageVersionStatus": "CREATED_FAILED"`, the response also includes the failure reason\. A permissions issue is a common cause of failure\. You also can check your Amazon CloudWatch logs\. The name of the log group is `/aws/sagemaker/studio`\. The name of the log stream is `$domainID/$userProfileName/KernelGateway/$appName`\.
 
-1. Create a configuration file, named `app-image-config-input.json`\. For information on how the get the following information from the image, see [DEVELOPMENT](https://github.com/aws-samples/sagemaker-studio-custom-image-samples/blob/main/DEVELOPMENT.md) in the SageMaker Studio Custom Image Samples repository\.
+1. Create a configuration file, named `app-image-config-input.json`\. The `Name` value of `KernelSpecs` must match the name of the kernelSpec available in the Image associated with this `AppImageConfig`\. This value is case sensitive\. You can find the available kernelSpecs in an image by running `jupyter-kernelspec list` from a shell inside the container\. For information on testing your image locally before using it in Studio, see [DEVELOPMENT](https://github.com/aws-samples/sagemaker-studio-custom-image-samples/blob/main/DEVELOPMENT.md) in the SageMaker Studio Custom Image Samples repository\. 
 
    ```
    {

@@ -78,13 +78,12 @@ To view the details of a model version in SageMaker Studio, complete the followi
 1. Choose **Model registry**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry/model-registry.png)
 
-1. From the model groups list, choose the model group you want to view\.
+1. From the model groups list, double\-click the model group you want to view\.
 
 1. A new tab appears with a list of the model versions in the model group\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry/model-versions.png)
 
-1. In the list of model versions, double\-click the model version for which you want to view details\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry/model-versions.png)
+1. In the list of model versions, double\-click the model version for which you want to view details\.
 
 1. On the model version tab that opens, choose one of the following to see details about the model version:
    + **Activity** \- Shows events for the model version, such as approval status updates\.

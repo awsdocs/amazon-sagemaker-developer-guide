@@ -2,6 +2,10 @@
 
 The Edge Manager agent is an inference engine for your edge devices\. Use the agent to make predictions with models loaded onto your edge devices\. The agent also collects model metrics and captures data at specific intervals\.
 
+
+
+In this section you will set up your device with the agent\. To do so, first copy a release artifact and signing root certificate from the release bucket locally to your machine\. After you unzip the release artifact, upload it to Amazon S3\. Next, define and save a configuration file for the agent\. A template is provided for you to copy and paste\. Finally, copy the release artifacts, configuration file, and credentials to your device\.
+
 1. **Download the SageMaker Edge Manager agent\.**
 
    The agent is released in binary format for supported operating systems\. This example runs inference on a Linux platform \(Rasperry Pi OS is based on Debian\)\. Fetch the latest version of binaries from the SageMaker Edge Manager release bucket from the us\-west\-2 Region\.
@@ -49,7 +53,7 @@ The Edge Manager agent is an inference engine for your edge devices\. Use the ag
 
    ```
    sagemaker_edge_config = {
-       "sagemaker_edge_core_device_uuid": "device_name",
+       "sagemaker_edge_core_device_name": "device_name",
        "sagemaker_edge_core_device_fleet_name": "device_fleet_name",
        "sagemaker_edge_core_capture_data_buffer_size": 30,
        "sagemaker_edge_core_capture_data_push_period_seconds": 4,

@@ -15,6 +15,7 @@ Some examples of the actions that can be automatically triggered include the fol
 + [Transform job state change](#eventbridge-transform)
 + [Endpoint state change](#eventbridge-endpoint)
 + [Feature group state change](#eventbridge-feature-group)
++ [Model package state change](#eventbridge-model-package)
 + [Pipeline execution state change](#eventbridge-pipeline)
 + [Pipeline step state change](#eventbridge-pipeline-step)
 
@@ -248,33 +249,33 @@ The following shows an event with an endpoint in the `IN_SERVICE` state\.
 
 ```
 {
-    'version': '0',
-    'id': 'd2921b5a-b0ad-cace-a8e3-0f159d018e06',
-    'detail-type': 'SageMakerEndpointStateChange',
-    'source': 'aws.sagemaker',
-    'account': '123456789012',
-    'time': '1583831889050',
-    'region': 'us-west-2',
-    'resources': [
-        'arn:aws:sagemaker:us-west-2:123456789012:endpoint/myendpoint'
-    ],
-    'detail': {
-        'EndpointName': 'MyEndpoint',
-        'EndpointArn': 'arn:aws:sagemaker:us-west-2:123456789012:endpoint/myendpoint',
-        'EndpointConfigName': 'MyEndpointConfig',
-        'ProductionVariants': [
-            {
-                'DesiredWeight': 1.0,
-                'DesiredInstanceCount': 1.0
-            }
-        ],
-        'EndpointStatus': 'IN_SERVICE',
-        'CreationTime': 1592411992203.0,
-        'LastModifiedTime': 1592411994287.0,
-        'Tags': {
+  "version": "0",
+  "id": "d2921b5a-b0ad-cace-a8e3-0f159d018e06",
+  "detail-type": "SageMaker Endpoint State Change",
+  "source": "aws.sagemaker",
+  "account": "123456789012",
+  "time": "1583831889050",
+  "region": "us-west-2",
+  "resources": [
+      "arn:aws:sagemaker:us-west-2:123456789012:endpoint/myendpoint"
+  ],
+  "detail": {
+      "EndpointName": "MyEndpoint",
+      "EndpointArn": "arn:aws:sagemaker:us-west-2:123456789012:endpoint/myendpoint",
+      "EndpointConfigName": "MyEndpointConfig",
+      "ProductionVariants": [
+          {
+              "DesiredWeight": 1.0,
+              "DesiredInstanceCount": 1.0
+          }
+      ],
+      "EndpointStatus": "IN_SERVICE",
+      "CreationTime": 1592411992203.0,
+      "LastModifiedTime": 1592411994287.0,
+      "Tags": {
 
-        }
-    }
+      }
+  }
 }
 ```
 
@@ -327,6 +328,68 @@ Indicates a change either in the `FeatureGroupStatus` or the `OfflineStoreStatus
     "RoleArn": "arn:aws:iam::123456789012:role/SageMakerRole",
     "FeatureGroupStatus": "Active",
     "Tags": {}
+  }
+}
+```
+
+## Model package state change<a name="eventbridge-model-package"></a>
+
+Indicates a change in the status of a SageMaker model package\.
+
+```
+{
+  "version": "0",
+  "id": "844e2571-85d4-695f-b930-0153b71dcb42",
+  "detail-type": "SageMaker Model Package State Change",
+  "source": "aws.sagemaker",
+  "account": "123456789012",
+  "time": "2021-02-24T17:00:14Z",
+  "region": "us-east-2",
+  "resources": [
+    "arn:aws:sagemaker:us-east-2:123456789012:model-package/versionedmp-p-idy6c3e1fiqj/2"
+  ],
+  "source": [
+    "aws.sagemaker"
+  ],
+  "detail": {
+    "ModelPackageGroupName": "versionedmp-p-idy6c3e1fiqj",
+    "ModelPackageVersion": 2,
+    "ModelPackageArn": "arn:aws:sagemaker:us-east-2:123456789012:model-package/versionedmp-p-idy6c3e1fiqj/2",
+    "CreationTime": "2021-02-24T17:00:14Z",
+    "InferenceSpecification": {
+      "Containers": [
+        {
+          "Image": "257758044811.dkr.ecr.us-east-2.amazonaws.com/sagemaker-xgboost:1.0-1-cpu-py3",
+          "ImageDigest": "sha256:4dc8a7e4a010a19bb9e0a6b063f355393f6e623603361bd8b105f554d4f0c004",
+          "ModelDataUrl": "s3://sagemaker-project-p-idy6c3e1fiqj/versionedmp-p-idy6c3e1fiqj/AbaloneTrain/pipelines-4r83jejmhorv-TrainAbaloneModel-xw869y8C4a/output/model.tar.gz"
+        }
+      ],
+      "SupportedContentTypes": [
+        "text/csv"
+      ],
+      "SupportedResponseMIMETypes": [
+        "text/csv"
+      ]
+    },
+    "ModelPackageStatus": "Completed",
+    "ModelPackageStatusDetails": {
+      "ValidationStatuses": [],
+      "ImageScanStatuses": []
+    },
+    "CertifyForMarketplace": false,
+    "ModelApprovalStatus": "Rejected",
+    "MetadataProperties": {
+      "GeneratedBy": "arn:aws:sagemaker:us-east-2:123456789012:pipeline/versionedmp-p-idy6c3e1fiqj/execution/4r83jejmhorv"
+    },
+    "ModelMetrics": {
+      "ModelQuality": {
+        "Statistics": {
+          "ContentType": "application/json",
+          "S3Uri": "s3://sagemaker-project-p-idy6c3e1fiqj/versionedmp-p-idy6c3e1fiqj/script-2021-02-24-10-55-15-413/output/evaluation/evaluation.json"
+        }
+      }
+    },
+    "LastModifiedTime": "2021-02-24T17:00:14Z"
   }
 }
 ```

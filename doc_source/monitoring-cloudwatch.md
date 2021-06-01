@@ -10,6 +10,7 @@ You can monitor Amazon SageMaker using Amazon CloudWatch, which collects raw dat
 + [SageMaker Jobs and Endpoint Metrics](#cloudwatch-metrics-jobs)
 + [SageMaker Ground Truth Metrics](#cloudwatch-metrics-ground-truth)
 + [SageMaker Feature Store Metrics](#cloudwatch-metrics-feature-store)
++ [SageMaker Pipelines Metrics](#cloudwatch-metrics-pipelines)
 
 ## SageMaker Endpoint Invocation Metrics<a name="cloudwatch-metrics-endpoint-invocation"></a>
 
@@ -152,3 +153,53 @@ Metrics are available at a 1\-minute frequency\.
 | Dimension | Description | 
 | --- | --- | 
 | FeatureGroupName, OperationName |  Filters feature store runtime operation metrics of the specified feature group\.  | 
+
+## SageMaker Pipelines Metrics<a name="cloudwatch-metrics-pipelines"></a>
+
+The `AWS/Sagemaker/ModelBuildingPipeline` namespace includes the following metrics for pipeline executions\.
+
+Two categories of Pipelines execution metrics are available:
++  **Execution Metrics across All Pipelines** – Account level pipeline execution metrics \(for all pipelines in the current account\)
++  **Execution Metrics by Pipeline** – Pipeline execution metrics per pipeline
+
+Metrics are available at a 1\-minute frequency\.
+
+**Pipelines Execution Metrics**
+
+
+| Metric | Description | 
+| --- | --- | 
+| ExecutionStarted |  The number of pipeline executions that started\. Units: Count Valid statistics: Average, Sum  | 
+| ExecutionFailed |  The number of pipeline executions that failed\. Units: Count Valid statistics: Average, Sum  | 
+| ExecutionSucceeded |  The number of pipeline executions that succeeded\. Units: Count Valid statistics: Average, Sum  | 
+| ExecutionStopped |  The number of pipeline executions that stopped\. Units: Count Valid statistics: Average, Sum  | 
+| ExecutionDuration |  The duration in milliseconds that the pipeline execution ran\. Units: Milliseconds Valid statistics: Average, Sum, Min, Max, Sample Count  | 
+
+**Dimensions for Execution Metrics by Pipeline**
+
+
+| Dimension | Description | 
+| --- | --- | 
+| PipelineName |  Filters pipeline execution metrics for a specified pipeline\.  | 
+
+**Pipelines Step Metrics**
+
+The `AWS/Sagemaker/ModelBuildingPipeline` namespace includes the following metrics for pipeline steps\.
+
+Metrics are available at a 1\-minute frequency\.
+
+
+| Metric | Description | 
+| --- | --- | 
+| StepStarted |  The number of steps that started\. Units: Count Valid statistics: Average, Sum  | 
+| StepFailed |  The number of steps that failed\. Units: Count Valid statistics: Average, Sum  | 
+| StepSucceeded |  The number of steps that succeeded\. Units: Count Valid statistics: Average, Sum  | 
+| StepStopped |  The number of steps that stopped\. Units: Count Valid statistics: Average, Sum  | 
+| StepDuration |  The duration in milliseconds that the step ran\. Units: Milliseconds Valid statistics: Average, Sum, Min, Max, Sample Count  | 
+
+**Dimensions for Pipelines Step Metrics**
+
+
+| Dimension | Description | 
+| --- | --- | 
+| PipelineName, StepName |  Filters step metrics for a specified pipeline and step\.  | 

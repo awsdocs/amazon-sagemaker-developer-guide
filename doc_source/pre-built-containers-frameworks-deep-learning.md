@@ -1,4 +1,4 @@
-# Prebuilt SageMaker Docker Images for TensorFlow, MXNet, Chainer, and PyTorch<a name="pre-built-containers-frameworks-deep-learning"></a>
+# Prebuilt SageMaker Docker Images for Deep Learning<a name="pre-built-containers-frameworks-deep-learning"></a>
 
 SageMaker provides prebuilt Docker images that include deep learning framework libraries and other dependencies needed for training and inference\. For a complete list of the available pre\-built Docker images, see [Deep Learning Containers Images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md)\. 
 
@@ -15,6 +15,7 @@ With the [SageMaker Python SDK](https://github.com/aws/sagemaker-python-sdk#inst
 | MXNet |  [Using MXNet with the SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/using_mxnet.html)  | 
 | PyTorch |  [Using PyTorch with the SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/using_pytorch.html)  | 
 | Chainer |  [Using Chainer with the SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/using_chainer.html)  | 
+| Hugging Face |  [Using Hugging Face with the SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/frameworks/huggingface/index.html)  | 
 
 ## Extending Prebuilt SageMaker Docker Images<a name="pre-built-containers-frameworks-deep-learning-adapt"></a>
 

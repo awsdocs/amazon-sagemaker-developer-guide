@@ -90,7 +90,7 @@ If you want to run distributed training of large sized deep learning models, suc
    )
    ```
 **Tip**  
-You can also tune the hyperparameters using the SageMaker hyperparameter optimization feature\. For more information, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\. 
+You can also tune the hyperparameters using the SageMaker hyperparameter optimization feature\. For more information, see [Perform Automatic Model Tuning with SageMaker](automatic-model-tuning.md)\. 
 
 1. Use the `TrainingInput` class to configure a data input flow for training\. The following example code shows how to configure `TrainingInput` objects to use the training and validation datasets you uploaded to Amazon S3 in the [Split the Dataset into Train, Validation, and Test Datasets](ex1-preprocess-data.md#ex1-preprocess-data-transform) section\.
 

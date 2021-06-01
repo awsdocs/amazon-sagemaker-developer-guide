@@ -122,7 +122,7 @@ The following table contains the hyperparameters for the XGBoost algorithm\. The
 
 You choose the evaluation metric from set of evaluation metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the evaluation metric\. 
 
-For more information about model tuning, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
+For more information about model tuning, see [Perform Automatic Model Tuning with SageMaker](automatic-model-tuning.md)\.
 
 ### Metrics Computed by the XGBoost Release 0\.72 Algorithm<a name="xgboost-72-metrics"></a>
 

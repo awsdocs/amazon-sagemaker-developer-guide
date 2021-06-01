@@ -9,7 +9,7 @@ This procedure describes how to view details about Amazon SageMaker Autopilot jo
 This topic assumes that you have already created and run an Autopilot experiment\. For information on how to create an Autopilot experiment, see [Create an Amazon SageMaker Autopilot experiment](autopilot-automate-model-development-create-experiment.md) 
 
 **Note**  
-To access the the feature importance metrics in this procedure, you must first select File > Shut down, and then restart Studio from the Console\.
+To access the feature importance metrics in this procedure, you must first select File > Shut down, and then restart Studio from the Console\.
 
 1. To view model details after running an Amazon SageMaker Autopilot job, select the triangular icon from the menu on the left to open the **Components and registries** page\.  
 ![\[Open the Components and registries page.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-models-details-generated-1.PNG)

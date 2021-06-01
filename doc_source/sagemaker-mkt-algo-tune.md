@@ -1,6 +1,6 @@
 # Use an Algorithm to Run a Hyperparameter Tuning Job<a name="sagemaker-mkt-algo-tune"></a>
 
-A hyperparameter tuning job finds the best version of a model by running many training jobs on your dataset using the algorithm and ranges of hyperparameters that you specify\. It then chooses the hyperparameter values that result in a model that performs the best, as measured by a metric that you choose\. For more information, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
+A hyperparameter tuning job finds the best version of a model by running many training jobs on your dataset using the algorithm and ranges of hyperparameters that you specify\. It then chooses the hyperparameter values that result in a model that performs the best, as measured by a metric that you choose\. For more information, see [Perform Automatic Model Tuning with SageMaker](automatic-model-tuning.md)\.
 
 You can create use an algorithm resource to create a hyperparameter tuning job by using the Amazon SageMaker console, the low\-level Amazon SageMaker API, or the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.
 
@@ -93,7 +93,7 @@ You use the model artifacts stored at this location to create a model or model p
 
 ## Use an Algorithm to Run a Hyperparameter Tuning Job \(API\)<a name="sagemaker-mkt-algo-tune-api"></a>
 
-To use an algorithm to run a hyperparameter tuning job by using the SageMaker API, specify either the name or the Amazon Resource Name \(ARN\) of the algorithm as the `AlgorithmName` field of the [ `AlgorithmSpecification`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AlgorithmSpecification.html) object that you pass to [ `CreateHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html)\. For information about hyperparameter tuning in SageMaker, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
+To use an algorithm to run a hyperparameter tuning job by using the SageMaker API, specify either the name or the Amazon Resource Name \(ARN\) of the algorithm as the `AlgorithmName` field of the [ `AlgorithmSpecification`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AlgorithmSpecification.html) object that you pass to [ `CreateHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html)\. For information about hyperparameter tuning in SageMaker, see [Perform Automatic Model Tuning with SageMaker](automatic-model-tuning.md)\.
 
 ## Use an Algorithm to Run a Hyperparameter Tuning Job \([Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\)<a name="sagemaker-mkt-algo-tune-sdk"></a>
 

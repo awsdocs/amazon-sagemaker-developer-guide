@@ -3,6 +3,9 @@
 To avoid incurring unnecessary charges, use the AWS Management Console to delete the endpoints and resources that you created while running the exercises\. 
 
 **Note**  
+Training jobs and logs cannot be deleted and are retained indefinitely\.
+
+**Note**  
 If you plan to explore other exercises in this guide, you might want to keep some of these resources, such as your notebook instance, S3 bucket, and IAM role\.
 
  

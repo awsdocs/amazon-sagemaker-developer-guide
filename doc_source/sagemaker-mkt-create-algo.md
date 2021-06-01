@@ -94,7 +94,7 @@ You can create an algorithm by using either the SageMaker console or the SageMak
 
       1. For `IsRequired`, specify whether the hyperparameter is required\.
 
-      1. For `IsTunable`, specify `true` if this hyperparameter can be tuned when a user runs a hyperparameter tuning job that uses this algorithm\. For information, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
+      1. For `IsTunable`, specify `true` if this hyperparameter can be tuned when a user runs a hyperparameter tuning job that uses this algorithm\. For information, see [Perform Automatic Model Tuning with SageMaker](automatic-model-tuning.md)\.
 
       1. For `Name`, specify a name for the hyperparameter\.
 
@@ -112,7 +112,7 @@ You can create an algorithm by using either the SageMaker console or the SageMak
 
       1. For `Regex`, type the regular expression that SageMaker uses to parse training logs so that it can find the metric value\.
 
-      1. For **Objective metric support** choose **Yes** if this metric can be used as the objective metric for a hyperparameter tuning job\. For information, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
+      1. For **Objective metric support** choose **Yes** if this metric can be used as the objective metric for a hyperparameter tuning job\. For information, see [Perform Automatic Model Tuning with SageMaker](automatic-model-tuning.md)\.
 
       1. Choose **Add metric** to add another metric, or choose **Next** if you are done adding metrics\.
 

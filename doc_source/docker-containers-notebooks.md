@@ -1,6 +1,6 @@
 # Example Notebooks: Use Your Own Algorithm or Model<a name="docker-containers-notebooks"></a>
 
-The following Jupyter notebooks show how to use your own algorithms or pretrained models from an Amazon SageMaker notebook instance\. For links to the GitHub repositories with the prebuilt Dockerfiles for the TensorFlow, MXNet, Chainer, and PyTorch frameworks and instructions on using the AWS SDK for Python \(Boto3\) estimators to run your own training algorithms on SageMaker Learner and your own models on SageMaker hosting, see [Prebuilt SageMaker Docker Images for TensorFlow, MXNet, Chainer, and PyTorch](pre-built-containers-frameworks-deep-learning.md)
+The following Jupyter notebooks show how to use your own algorithms or pretrained models from an Amazon SageMaker notebook instance\. For links to the GitHub repositories with the prebuilt Dockerfiles for the TensorFlow, MXNet, Chainer, and PyTorch frameworks and instructions on using the AWS SDK for Python \(Boto3\) estimators to run your own training algorithms on SageMaker Learner and your own models on SageMaker hosting, see [Prebuilt SageMaker Docker Images for Deep Learning](pre-built-containers-frameworks-deep-learning.md)
 
 ## Setup<a name="docker-containers-notebooks-setup"></a>
 

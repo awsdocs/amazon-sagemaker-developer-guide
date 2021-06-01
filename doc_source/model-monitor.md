@@ -34,8 +34,10 @@ To enable model monitoring, you take the following steps, which follow the path 
 + Inspect the reports, which compare the latest data with the baseline, and watch for any violations reported and for metrics and notifications from Amazon CloudWatch\.
 
 **Notes**  
+Model Monitor currently supports only tabular data\.
 Model Monitor currently supports only endpoints that host a single model and does not support monitoring multi\-model endpoints\. For information on using multi\-model endpoints, see [ Host Multiple Models with Multi\-Model Endpoints](multi-model-endpoints.md)\.
 Model Monitor supports monitoring inference pipelines, but capturing and analyzing data is done for the entire pipeline, not for individual containers in the pipeline\.
+To prevent impact to inference requests, Data Capture stops capturing requests at high levels of disk usage\. It is recommended you keep your disk utilization below 75% in order to ensure data capture continues capturing requests\.
 If you launch SageMaker Studio in a custom Amazon VPC, you need to create VPC endpoints to enable Model Monitor to communicate with Amazon S3 and CloudWatch\. For information about VPC endpoints, see [VPC endpoints](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html) in the *Amazon Virtual Private Cloud User Guide*\. For information about launching SageMaker Studio in a custom VPC, see [Connect SageMaker Studio Notebooks to Resources in a VPC](studio-notebooks-and-internet-access.md)\.
 
 ### Model Monitor Sample Notebooks<a name="model-monitor-sample-notebooks"></a>

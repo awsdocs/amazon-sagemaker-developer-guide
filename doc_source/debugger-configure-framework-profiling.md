@@ -115,7 +115,8 @@ from sagemaker.debugger import (ProfilerConfig,
                                 FrameworkProfile, 
                                 DetailedProfilingConfig, 
                                 DataloaderProfilingConfig, 
-                                PythonProfilingConfig)
+                                PythonProfilingConfig,
+                                PythonProfiler, cProfileTimer)
 
 profiler_config=ProfilerConfig(
     system_monitor_interval_millis=500,
@@ -131,8 +132,8 @@ profiler_config=ProfilerConfig(
         python_profiling_config=PythonProfilingConfig(
             start_step=9, 
             num_steps=1, 
-            python_profiler="cProfile", 
-            cprofile_timer="total_time"
+            python_profiler=PythonProfiler.CPROFILE, 
+            cprofile_timer=cProfileTimer.TOTAL_TIME
         )
     )
 )

@@ -10,7 +10,7 @@ You choose the evaluation metric from set of evaluation metrics that the algorit
 **Note**  
 Automatic model tuning for XGBoost 0\.90 is only available from the Amazon SageMaker SDKs, not from the SageMaker console\.
 
-For more information about model tuning, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
+For more information about model tuning, see [Perform Automatic Model Tuning with SageMaker](automatic-model-tuning.md)\.
 
 ## Evaluation Metrics Computed by the XGBoost Algorithm<a name="xgboost-metrics"></a>
 

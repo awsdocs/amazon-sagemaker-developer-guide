@@ -19,3 +19,4 @@ For the AWS Regions supported by SageMaker Studio, see [Supported Regions and Qu
 + [Set Up a Connection to an Amazon EMR Cluster](studio-emr.md)
 + [Perform Common Tasks in Amazon SageMaker Studio](studio-tasks.md)
 + [Amazon SageMaker Studio Pricing](studio-pricing.md)
++ [Troubleshooting Amazon SageMaker Studio](studio-troubleshooting.md)

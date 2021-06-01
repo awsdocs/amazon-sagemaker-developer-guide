@@ -27,7 +27,7 @@ If the algorithm doesn't find data in any of these three channels, training resu
 
 **Inference**
 
-For hosted endpoints, inference supports two data formats\. To perform inference using space separated text tokens, use the `application/json` format\. Otherwise, use the `recordio-protobuf` format to work with the integer encoded data\. Both mode supports batching of input data\. `application/json` format also allows you to visualize the attention matrix\.
+For hosted endpoints, inference supports two data formats\. To perform inference using space separated text tokens, use the `application/json` format\. Otherwise, use the `recordio-protobuf` format to work with the integer encoded data\. Both modes support batching of input data\. `application/json` format also allows you to visualize the attention matrix\.
 + `application/json`: Expects the input in JSON format and returns the output in JSON format\. Both content and accept types should be `application/json`\. Each sequence is expected to be a string with whitespace separated tokens\. This format is recommended when the number of source sequences in the batch is small\. It also supports the following additional configuration options:
 
   `configuration`: \{`attention_matrix`: `true`\}: Returns the attention matrix for the particular input sequence\.

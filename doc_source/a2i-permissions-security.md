@@ -20,6 +20,7 @@ When using Amazon Augmented AI \(Amazon A2I\) to create a human review workflow 
 + [Create an IAM User That Can Invoke Amazon A2I API Operations](#create-user-grants)
 + [Create an IAM User With Permissions to Invoke Amazon A2I, Amazon Textract, and Amazon Rekognition API Operations](#a2i-grant-general-permission)
 + [Enable Worker Task Template Previews](#permissions-for-worker-task-templates-augmented-ai)
++ [Using Amazon A2I with AWS KMS Encrypted Buckets](#a2i-kms-encryption)
 + [Additional Permissions and Security Resources](#additional-security-resources-augmented-ai)
 
 ## CORS Permission Requirement<a name="a2i-cors-update"></a>
@@ -204,6 +205,30 @@ To preview your template, you need an IAM role with the following permissions to
 For Amazon Rekognition and Amazon Textract task types, you can preview your template using the Amazon Augmented AI section of the SageMaker console\. For custom task types, you preview your template by invoking the [ `RenderUiTemplate`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RenderUiTemplate.html) operation\. To preview your template, follow the instructions for your task type:
 +  Amazon Rekognition and Amazon Textract task types – In the SageMaker console, use the role's Amazon Resource Name \(ARN\) in the procedure documented in [Create a Worker Task Template](a2i-worker-template-console.md#a2i-create-worker-template-console)\.
 + Custom task types – In the `RenderUiTemplate` operation, use the role's ARN in the `RoleArn` parameter\.
+
+## Using Amazon A2I with AWS KMS Encrypted Buckets<a name="a2i-kms-encryption"></a>
+
+If you specify an AWS KMS customer managed CMK to encrypt output data in `OutputConfig` of [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html), you must add an IAM policy similar to the following to that key\. This policy gives the IAM execution role that you use to create your human loops permission to use this key to perform all of the actions listed in `"Action"`\. To learn more about these actions, see [AWS KMS permissions](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html) in the AWS Key Management Service Developer Guide\.
+
+To use this policy, replace the IAM service\-role ARN in `"Principal"` with the ARN of the execution role you use to create the human review workflow \(flow definition\)\. When you create a labeling job using `CreateFlowDefinition`, this is the ARN you specify for [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-RoleArn](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-RoleArn)\. Note that you cannot provide a `KmsKeyId` when you create a human loop in the console\.
+
+```
+{
+    "Sid": "AllowUseOfKmsKey",
+    "Effect": "Allow",
+    "Principal": {
+        "AWS": "arn:aws:iam::111122223333:role/service-role/example-role"
+    },
+    "Action": [
+        "kms:Encrypt",
+        "kms:Decrypt",
+        "kms:ReEncrypt*",
+        "kms:GenerateDataKey*",
+        "kms:DescribeKey"
+    ],
+    "Resource": "*"
+}
+```
 
 ## Additional Permissions and Security Resources<a name="additional-security-resources-augmented-ai"></a>
 + [Control Access to SageMaker Resources by Using Tags](security_iam_id-based-policy-examples.md#access-tag-policy)\.

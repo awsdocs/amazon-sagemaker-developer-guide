@@ -1,6 +1,6 @@
 # Automated Data Setup<a name="sms-console-create-manifest-file"></a>
 
-You can used the automated data setup to create manifest files for your labeling jobs in the Ground Truth console using images, videos, video frames, text \(\.txt\) files, and comma\-separated value \(\.csv\) files stored in Amazon S3\. When you use automated data setup, you specify an Amazon S3 location where your input data is stored and the input data type, and Ground Truth looks for the files that match that type in the location you specify\.
+You can use the automated data setup to create manifest files for your labeling jobs in the Ground Truth console using images, videos, video frames, text \(\.txt\) files, and comma\-separated value \(\.csv\) files stored in Amazon S3\. When you use automated data setup, you specify an Amazon S3 location where your input data is stored and the input data type, and Ground Truth looks for the files that match that type in the location you specify\.
 
 **Note**  
 Ground Truth does not use an AWS KMS key to access your input data or write the input manifest file in the Amazon S3 location that you specify\. The IAM user or role that creates the labeling job must have permissions to access your input data objects in Amazon S3\.
