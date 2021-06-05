@@ -12,7 +12,7 @@ KS = max\(\|0\.4\-0\.2\|, \|0\.4\-0\.3\|, \|0\.2\-0\.7\|\) = 0\.5
 
 This tells us the maximum divergence between facet distributions is 0\.5 and occurs in the acceptance rates\. There are three terms in the equation because labels are multiclass of cardinality three\.
 
-The range of LP values for binary, multicategory, and continuous outcomes is \[0, \+1\], where:
+The range of KS values for binary, multicategory, and continuous outcomes is \[0, \+1\], where:
 + Values near zero indicate the labels were evenly distributed between facets in all outcome categories\. For example, both facets applying for a loan got 50% of the acceptances and 50% of the rejections\.
 + Values near one indicate the labels for one outcome were all in one facet\. For example, facet *a* got 100% of the acceptances and facet *d* got none\.
 + Intermittent values indicate relative degrees of maximum label imbalance\.
