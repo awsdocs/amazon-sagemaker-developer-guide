@@ -1,6 +1,6 @@
 # Model support and validation<a name="autopilot-model-support-validation"></a>
 
-Amazon SageMaker Autopilot supports three types of machine learning algorithms to address machine learning problems and uses cross\-validation authomtically when needed\.
+Amazon SageMaker Autopilot supports three types of machine learning algorithms to address machine learning problems and uses cross\-validation automtically when needed\.
 
 **Topics**
 + [Autopilot algorithm support](#autopilot-algorithm-suppprt)
