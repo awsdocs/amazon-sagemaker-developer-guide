@@ -1,6 +1,6 @@
 # Bring your own SageMaker image<a name="studio-byoi"></a>
 
-A SageMaker image is a file that identifies the kernels, language packages, and other dependencies required to run a Jupyter notebook in Amazon SageMaker Studio\. These images are used to create an environment that you then run the Jupyter notebooks from\. that Amazon SageMaker provides many built\-in images for you to use\. If you need different functionality, you can bring your own custom images to Studio\. For the list of built\-in images, see [Available Amazon SageMaker Images](notebooks-available-images.md)\.
+A SageMaker image is a file that identifies the kernels, language packages, and other dependencies required to run a Jupyter notebook in Amazon SageMaker Studio\. These images are used to create an environment that you then run the Jupyter notebooks from\. Amazon SageMaker provides many built\-in images for you to use\. If you need different functionality, you can bring your own custom images to Studio\. For the list of built\-in images, see [Available Amazon SageMaker Images](notebooks-available-images.md)\.
 
 A SageMaker *image* is a holder for a set of SageMaker *image versions*\. An image version represents a container image that is compatible with SageMaker Studio and stored in an Amazon Elastic Container Registry \(ECR\) repository\. Each image version is immutable\.
 
