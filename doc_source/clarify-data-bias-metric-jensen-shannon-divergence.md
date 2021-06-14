@@ -4,7 +4,7 @@ The Jensen\-Shannon divergence \(JS\) measures how much the label distributions 
 
 The formula for the Jensen\-Shannon divergence is as follows:
 
-        JS = ½\*\[KL\(Pa \|\| P\) \+ KL\(Pd \|\| P\)\]
+ JS = ½\*\[KL\(Pa \|\| P\) \+ KL\(Pd \|\| P\)\]
 
 Where P = ½\( Pa \+ Pd \), the average label distribution across facets *a* and *d*\.
 

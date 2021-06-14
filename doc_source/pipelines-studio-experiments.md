@@ -39,8 +39,7 @@ Experiments integration was introduced in v2\.41\.0 of the [Amazon SageMaker Pyt
    To further narrow the search, you can add additional filters\. For more information, see [Search Experiments Using Amazon SageMaker Studio](experiments-search-studio.md)\.
 
 1. Open \(right\-click\) an experiment name and choose **Open in trial component list**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/yosemite/pipelines-experiments-list.png)  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/yosemite/pipelines-executions-list.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/yosemite/pipelines-experiments-list.png)
 
 **List of trial components**
 

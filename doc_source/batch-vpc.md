@@ -27,7 +27,7 @@ VpcConfig: {
 
 If you are creating a model using the `CreateModel` API operation, the IAM execution role that you use to create your model must include the permissions described in [CreateModel API: Execution Role Permissions](sagemaker-roles.md#sagemaker-roles-createmodel-perms), including the following permissions required for a private VPC\. 
 
-When creating a model in the console, if you select **Create a new role** in the **Model Settings** section, the [AmazonSageMakerFullAccess ](https://console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess$jsonEditor) policy used to create the role will already contain these permissions\. If you select **Enter a custom IAM role ARN** or **Use existing role**, the role ARN that you specify must have an execution policy attached with the following permissions\. 
+When creating a model in the console, if you select **Create a new role** in the **Model Settings** section, the [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) policy used to create the role will already contain these permissions\. If you select **Enter a custom IAM role ARN** or **Use existing role**, the role ARN that you specify must have an execution policy attached with the following permissions\. 
 
 ```
 {

@@ -4,7 +4,7 @@ The fliptest is an approach that looks at each member of facet *d* and assesses 
 
 The formula for the counterfactual fliptest is the difference in the cardinality of two sets divided by the number of members of facet *d*:
 
-        FT = \(F\+ \- F\-\)/nd
+ FT = \(F\+ \- F\-\)/nd
 
 Where:
 + F\+ = is the number of disfavored facet *d* members with an unfavorable outcome whose nearest neighbors in favored facet *a* received a favorable outcome\. 

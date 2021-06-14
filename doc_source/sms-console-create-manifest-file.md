@@ -19,7 +19,7 @@ Use these instructions to automatically set up your input dataset connection wit
 
 **Automatically connect your data in Amazon S3 with Ground Truth**
 
-1. Navigate to the **Create labeling job** page in the Amazon SageMaker console: [https://console.aws.amazon.com/sagemaker/groundtruth](https://console.aws.amazon.com/sagemaker/groundtruth)\. 
+1. Navigate to the **Create labeling job** page in the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\. 
 
    This link puts you in the North Virginia \(us\-east\-1\) AWS Region\. If your input data is in an Amazon S3 bucket in another Region, switch to that Region\. To change your AWS Region, on the [navigation bar](https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/getting-started.html#select-region), choose the name of the currently displayed Region\.
 

@@ -76,7 +76,7 @@ The inference pipeline error messages indicate which containers failed\.
 
 If an error occurs while SageMaker is invoking an endpoint, the service returns a `ModelError` \(error code 424\), which indicates which container failed\. If the request payload \(the response from the previous container\) exceeds the limit of 5 MB, SageMaker provides a detailed error message, such as: 
 
-Received response from MyContainerName1 with status code 200\. However, the request payload from MyContainerName1 to MyContainerName2 is 6000000 bytes, which has exceeded the maximum limit of 5 MB\. See https://us\-west\-2\.console\.aws\.amazon\.com/cloudwatch/home?region=us\-west\-2\#logEventViewer:group=/aws/sagemaker/Endpoints/MyInferencePipelinesEndpoint in account 123456789012 for more information\.
+Received response from MyContainerName1 with status code 200\. However, the request payload from MyContainerName1 to MyContainerName2 is 6000000 bytes, which has exceeded the maximum limit of 5 MB\.
 
 ``
 

@@ -32,8 +32,8 @@ The following an example of the JSON object syntax your `UserInfoEndpoint` can r
     "sub":"122",
     "exp":"10000",
     "sagemaker-groups":["group1","group2"]
-    "sagamaker-name":"name",
-    "sagemkaer-sub":"122",
+    "sagemaker-name":"name",
+    "sagemaker-sub":"122",
     "sagemaker-client_id":"123456"
 }
 ```
@@ -235,8 +235,8 @@ After you have created your OIDC IdP workforce, you can use the following proced
        "sub":"122",
        "exp":"10000",
        "sagemaker-groups":["group1","group2"]
-       "sagamaker-name":"name",
-       "sagemkaer-sub":"122",
+       "sagemaker-name":"name",
+       "sagemaker-sub":"122",
        "sagemaker-client_id":"123456"
    }
    ```

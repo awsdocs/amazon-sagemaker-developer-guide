@@ -2,16 +2,16 @@
 
 When you create a Data Wrangler data flow, you can choose from four export options to easily integrate that data flow into your data processing pipeline\. Data Wrangler offers export options to SageMaker **Data Wrangler Job**, **Pipeline**, **Python code** and **Feature Store**\. 
 
-The following options create a Jupyter Notebook to execute your data flow and integrate with the respective SageMaker feature\.
+The following options create a Jupyter Notebook to run your data flow and integrate with the respective SageMaker feature\.
 + **Data Wrangler Job**
 + **Pipeline**
 + **Feature Store**
 
-For these options, you choose one or more steps in your data flow to export\. When you select a step, all downstream steps are also exported\. For example, if you have defined seven consecutive steps in your data flow, and you choose to export the 7th step, code is exported to execute steps 1 through 7\. The Jupyter Notebooks automatically open when you select one of these export options, and you can run the notebook directly in Studio using a **Python 3 \(Data science\)** kernel\.
+For these options, you choose one or more steps in your data flow to export\. When you select a step, all downstream steps are also exported\. For example, if you have defined seven consecutive steps in your data flow, and you choose to export the 7th step, code is exported to run steps 1 through 7\. The Jupyter Notebooks automatically open when you select one of these export options, and you can run the notebook directly in Studio using a **Python 3 \(Data science\)** kernel\.
 
 If you select **Python code**, a Python file is created containing all steps in your data flow\. 
 
-When you choose an export option that creates a Jupyter Notebook and you execute the notebook, it exports your data flow \(\.flow file\) to the default SageMaker S3 bucket for the AWS Region in which the data flow was created, under the prefix *data\_wrangler\_flows*\. Default S3 buckets have the following naming convention: sagemaker\-*region*\-*account number*\. For example, if your account number is 111122223333 and you are using Studio in us\-east\-1, your imported datasets are stored in sagemaker\-us\-east\-1\-111122223333\. In this example, your \.flow files created in us\-east\-1 are stored in s3://sagemaker\-*region*\-*account number*/data\_wrangler\_flows/\. 
+When you choose an export option that creates a Jupyter Notebook and you run the notebook, it exports your data flow \(\.flow file\) to the default SageMaker S3 bucket for the AWS Region in which the data flow was created, under the prefix *data\_wrangler\_flows*\. Default S3 buckets have the following naming convention: sagemaker\-*region*\-*account number*\. For example, if your account number is 111122223333 and you are using Studio in us\-east\-1, your imported datasets are stored in `sagemaker-us-east-1-111122223333`\. In this example, your \.flow files created in us\-east\-1 are stored in s3://sagemaker\-*region*\-*account number*/data\_wrangler\_flows/\. 
 
 **Important**  
 If you do not use the IAM managed policy, `AmazonSageMakerFullAccess`, to grant AWS roles permission to use Data Wrangler, make sure you grant these roles permission to access this bucket\. See [Security and Permissions](data-wrangler-security.md) for an example IAM policy you can use to grant these permissions\.
@@ -33,7 +33,7 @@ Use the following procedure to export a data flow\. Use the sections on this pag
 
 ## Export to a Data Wrangler Job<a name="data-wrangler-data-export-processing"></a>
 
-If you export a Data Wrangler job Jupyter Notebook, we recommend that you select **Python 3 \(Data Science\)** for the **Kernel** and run it directly in Studio to execute your data flow and process your data\. Follow the instructions in the notebook to launch your Data Wrangler job\.
+If you export a Data Wrangler job Jupyter Notebook, we recommend that you select **Python 3 \(Data Science\)** for the **Kernel** and run it directly in Studio to run your data flow and process your data\. Follow the instructions in the notebook to launch your Data Wrangler job\.
 
 Data Wrangler jobs use processing jobs to process your data\. You can run these processing jobs using `ml.m5.4xl`, `ml.m5.12xl`, and `ml.m5.24xl` instances and support one instance count\. By default, the notebook that is exported from Data Wrangler sets the following `instance_count` and `instance_type`:
 
@@ -42,7 +42,7 @@ instance_count = 1
 instance_type = "ml.m5.xlarge"
 ```
 
-You can monitor your Data Wrangler job status in the [SageMaker console](https://console.aws.amazon.com/sagemaker/) in the **Processing** tab\. The processing job is named `data-wrangler-flow-processing-flow_id`\. The `flow_id` is defined in the notebook using the day and time the notebook is executed\. 
+You can monitor your Data Wrangler job status in the [SageMaker console](https://console.aws.amazon.com/sagemaker/) in the **Processing** tab\. The processing job is named `data-wrangler-flow-processing-flow_id`\. The `flow_id` is defined in the notebook using the day and time the notebook is ran\. 
 
 Additionally, you can monitor your Data Wrangler job using Amazon CloudWatch\. For additional information, see [Monitor Amazon SageMaker Processing Jobs with CloudWatch Logs and Metrics](https://docs.aws.amazon.com/sagemaker/latest/dg/processing-job.html#processing-job-cloudwatch)\. 
 

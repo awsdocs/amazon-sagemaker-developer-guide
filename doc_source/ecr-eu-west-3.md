@@ -6,6 +6,7 @@ The following topics list parameters for each of the algorithms and deep learnin
 + [BlazingText \(algorithm\)](#blazingtext-eu-west-3.title)
 + [Chainer \(DLC\)](#chainer-eu-west-3.title)
 + [Clarify \(algorithm\)](#clarify-eu-west-3.title)
++ [Data Wrangler \(algorithm\)](#data-wrangler-eu-west-3.title)
 + [Debugger \(algorithm\)](#debugger-eu-west-3.title)
 + [DeepAR Forecasting \(algorithm\)](#forecasting-deepar-eu-west-3.title)
 + [Factorization Machines \(algorithm\)](#factorization-machines-eu-west-3.title)
@@ -86,6 +87,20 @@ image_uris.retrieve(framework='clarify',region='eu-west-3',version='1.0',image_s
 | --- | --- | --- | 
 | 341593696636\.dkr\.ecr\.eu\-west\-3\.amazonaws\.com/sagemaker\-clarify\-processing:<tag> | 1\.0 | processing | 
 
+## Data Wrangler \(algorithm\)<a name="data-wrangler-eu-west-3.title"></a>
+
+SageMaker Python SDK example to retrieve registry path\.
+
+```
+from sagemaker import image_uris
+image_uris.retrieve(framework='data-wrangler',region='eu-west-3')
+```
+
+
+| Registry path | Version | Job types \(image scope\) | 
+| --- | --- | --- | 
+| 807237891255\.dkr\.ecr\.eu\-west\-3\.amazonaws\.com/sagemaker\-data\-wrangler\-container:<tag> | 1\.x | processing | 
+
 ## Debugger \(algorithm\)<a name="debugger-eu-west-3.title"></a>
 
 SageMaker Python SDK example to retrieve registry path\.
@@ -141,7 +156,9 @@ image_uris.retrieve(framework='huggingface',region='eu-west-3',version='4.4.2',i
 | Registry path | Version | Job types \(image scope\) | 
 | --- | --- | --- | 
 | 763104351884\.dkr\.ecr\.eu\-west\-3\.amazonaws\.com/huggingface\-pytorch\-training:<tag> | 4\.4\.2 | training | 
+| 763104351884\.dkr\.ecr\.eu\-west\-3\.amazonaws\.com/huggingface\-pytorch\-training:<tag> | 4\.5\.0 | training | 
 | 763104351884\.dkr\.ecr\.eu\-west\-3\.amazonaws\.com/huggingface\-tensorflow\-training:<tag> | 4\.4\.2 | training | 
+| 763104351884\.dkr\.ecr\.eu\-west\-3\.amazonaws\.com/huggingface\-tensorflow\-training:<tag> | 4\.5\.0 | training | 
 
 ## IP Insights \(algorithm\)<a name="ipinsights-eu-west-3.title"></a>
 
@@ -712,4 +729,6 @@ image_uris.retrieve(framework='xgboost',region='eu-west-3',version='1.2-1')
 | 659782779980\.dkr\.ecr\.eu\-west\-3\.amazonaws\.com/sagemaker\-xgboost:<tag> | 0\.90\-2 | inference, training | 
 | 659782779980\.dkr\.ecr\.eu\-west\-3\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.0\-1 | inference, training | 
 | 659782779980\.dkr\.ecr\.eu\-west\-3\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.2\-1 | inference, training | 
+| 659782779980\.dkr\.ecr\.eu\-west\-3\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.2\-2 | inference, training | 
+| 659782779980\.dkr\.ecr\.eu\-west\-3\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.3\-1 | inference, training | 
 | 749696950732\.dkr\.ecr\.eu\-west\-3\.amazonaws\.com/xgboost:<tag> | 1 | inference, training | 

@@ -126,7 +126,9 @@ image_uris.retrieve(framework='huggingface',region='us-gov-west-1',version='4.4.
 | Registry path | Version | Job types \(image scope\) | 
 | --- | --- | --- | 
 | 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/huggingface\-pytorch\-training:<tag> | 4\.4\.2 | training | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/huggingface\-pytorch\-training:<tag> | 4\.5\.0 | training | 
 | 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/huggingface\-tensorflow\-training:<tag> | 4\.4\.2 | training | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/huggingface\-tensorflow\-training:<tag> | 4\.5\.0 | training | 
 
 ## IP Insights \(algorithm\)<a name="ipinsights-us-gov-west-1.title"></a>
 
@@ -698,3 +700,5 @@ image_uris.retrieve(framework='xgboost',region='us-gov-west-1',version='1.2-1')
 | 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 0\.90\-2 | inference, training | 
 | 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.0\-1 | inference, training | 
 | 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.2\-1 | inference, training | 
+| 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.2\-2 | inference, training | 
+| 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.3\-1 | inference, training | 

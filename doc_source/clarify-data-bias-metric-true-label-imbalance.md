@@ -4,7 +4,7 @@ The difference in proportions of labels \(DPL\) compares the proportion of obser
 
 The formula for the difference in proportions of labels is as follows:
 
-        DPL = \(qa \- qd\)
+ DPL = \(qa \- qd\)
 
 Where:
 + qa = na\(1\)/na is the proportion of facet *a* who have an observed label value of 1\. For example, the proportion of a middle\-aged demographic who get approved for loans\. Here na\(1\) represents the number of members of facet *a* who get a positive outcome and na the is number of members of facet *a*\. 

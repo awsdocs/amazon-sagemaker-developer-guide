@@ -8,7 +8,7 @@ Every possible value in a categorical hyperparameter counts against this limit\.
 + Number of metrics defined per hyperparameter tuning job: 20
 + Number of parallel \(concurrent\) training jobs per hyperparameter tuning job: 10
 **Note**  
-This can be increased to hundreds\.
+This can be increased to one hundred\.
 + \[Bayesian search strategy\] Number of training jobs per hyperparameter tuning job: 500
 + \[Random search strategy\] Number of training jobs per hyperparameter tuning job: 500
 **Note**  

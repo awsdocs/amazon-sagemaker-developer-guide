@@ -4,7 +4,7 @@ Amazon SageMaker Neo supports the following devices, chip architectures, and ope
 
 ## Devices<a name="neo-supported-edge-devices"></a>
 
-You can select a device using the dropdown list in the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/) or by specifying the `TargetDevice` in the output configuration of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateCompilationJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateCompilationJob.html) API\.
+You can select a device using the dropdown list in the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker) or by specifying the `TargetDevice` in the output configuration of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateCompilationJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateCompilationJob.html) API\.
 
 You can choose from one of the following edge devices: 
 

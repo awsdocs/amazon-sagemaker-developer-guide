@@ -68,7 +68,7 @@ The following two parameters of the SageMaker Python SDK TensorFlow estimator ar
   ```
 
  **`train_instance_type (str)(required)`**: A type of Amazon EC2 instance to use\. 
-+ If the `smdistributed.dataparallel` distribution strategy is used, the allowed instance types are: `ml.p4d.24xlarge`, `ml.p3dn.24xlarge`, and `ml.p3.16xlarge`\. For best performance, it is recommended that you use an EFA supported instance, `ml.p3dn.24xlarge` or `ml.p4d.24xlarge`, with the latest supported version of PyTorch\.
++ If the `smdistributed.dataparallel` distribution strategy is used, the allowed instance types are: `ml.p4d.24xlarge`, `ml.p3dn.24xlarge`, and `ml.p3.16xlarge`\. For best performance, it is recommended that you use an EFA supported instance, `ml.p3dn.24xlarge` or `ml.p4d.24xlarge`, with the latest supported version of TensorFlow\.
 
  **Example** 
 

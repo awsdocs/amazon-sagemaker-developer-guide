@@ -1,6 +1,6 @@
 # Monitor Model Quality<a name="model-monitor-model-quality"></a>
 
-Model quality monitoring jobs monitor the performance of a model by comparing the predictions that the model makes with the actual ground truth labels that the model attempts to predict\. To do this, model quality monitoring merges data that is captured from real\-time inference with actual labels that you store in an Amazon S3 bucket, and the compares the predictions with the actual labels\.
+Model quality monitoring jobs monitor the performance of a model by comparing the predictions that the model makes with the actual ground truth labels that the model attempts to predict\. To do this, model quality monitoring merges data that is captured from real\-time inference with actual labels that you store in an Amazon S3 bucket, and then compares the predictions with the actual labels\.
 
 To measure model quality, model monitor uses metrics that depend on the ML problem type\. For example, if your model is for a regression problem, one of the metrics evaluated is mean square error \(mse\)\. For information about all of the metrics used for the different ML problem types, see [Model Quality Metrics](model-monitor-model-quality-metrics.md)\. 
 
