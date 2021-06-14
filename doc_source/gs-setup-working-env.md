@@ -21,7 +21,7 @@ If you want to grant the IAM role permission to access S3 buckets without `sagem
 
    1. Choose **Create notebook instance**\. 
 
-      In a few minutes, SageMaker launches an ML compute instance—in this case, a notebook instance—and attaches a 5 GB of Amazon EBS storage volume to it\. The notebook instance has a preconfigured Jupyter notebook server, SageMaker and AWS SDK libraries, and a set of Anaconda libraries\.
+      In a few minutes, SageMaker launches an ML compute instance—in this case, a notebook instance—and attaches a 5 GB Amazon EBS storage volume to it\. The notebook instance has a preconfigured Jupyter notebook server, SageMaker and AWS SDK libraries, and a set of Anaconda libraries\.
 
       For more information about creating a SageMaker notebook instance, see [Create a Notebook Instance](https://docs.aws.amazon.com/sagemaker/latest/dg/howitworks-create-ws.html)\. 
 
