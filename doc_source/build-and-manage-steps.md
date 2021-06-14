@@ -6,6 +6,7 @@ SageMaker Pipelines are composed of steps\. These steps define the actions that 
 + [Step Types](#build-and-manage-steps-types)
 + [Step Properties](#build-and-manage-properties)
 + [Data Dependency Between Steps](#build-and-manage-data-dependency)
++ [Custom Dependency Between Steps](#build-and-manage-custom-dependency)
 + [Use a Custom Image in a Step](#build-and-manage-images)
 
 ## Step Types<a name="build-and-manage-steps-types"></a>
@@ -19,6 +20,7 @@ Amazon SageMaker Model Building Pipelines support the following step types:
 + [CreateModel](#step-type-create-model)
 + [RegisterModel](#step-type-register-model)
 + [Condition](#step-type-condition)
++ [Callback](#step-type-callback)
 
 ### Processing Step<a name="step-type-processing"></a>
 
@@ -162,8 +164,6 @@ step_create_model = CreateModelStep(
 )
 ```
 
-For more information on the available steps and their input requirements, see the [Pipelines](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html) documentation\. 
-
 ### RegisterModel Step<a name="step-type-register-model"></a>
 
 You use a RegisterModel step to register a model to a model group\. For more information on registering models, see [Register and Deploy Models with Model Registry](model-registry.md)\.
@@ -221,6 +221,54 @@ step_cond = ConditionStep(
 )
 ```
 
+### Callback Step<a name="step-type-callback"></a>
+
+You can use a callback step to incorporate additional processes and AWS services into your workflow that aren't directly provided by Amazon SageMaker Model Building Pipelines\. When a callback step runs, the following procedure occurs:
++ SageMaker Pipelines sends a message to a customer\-specified Amazon Simple Queue Service \(Amazon SQS\) queue\. The message contains a SageMaker Pipelines–generated token and a customer\-supplied list of input parameters\. After sending the message, SageMaker Pipelines waits for a response from the customer\.
++ The customer retrieves the message from the Amazon SQS queue and starts their custom process\.
++ When the process finishes, the customer calls one of the following APIs and submits the SageMaker Pipelines–generated token:
+  +  [SendPipelineExecutionStepSuccess](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_SendPipelineExecutionStepSuccess.html) – along with a list of output parameters
+  +  [SendPipelineExecutionStepFailure](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_SendPipelineExecutionStepFailure.html) – along with a failure reason
++ The API call causes SageMaker Pipelines to either continue the pipeline execution or fail the execution\.
+
+For more information on `Callback` step requirements, see the  [sagemaker\.workflow\.callback\_step](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/workflow/callback_step.py) documentation\.
+
+**Important**  
+Callback steps were introduced in Amazon SageMaker Python SDK v2\.45\.0 and Amazon SageMaker Studio v3\.6\.2\. You must update Studio before you use a callback step or the pipeline DAG doesn't display\. To update Studio, see [Update SageMaker Studio](studio-tasks-update-studio.md)\.
+
+The following sample demonstrates an implementation of the preceding procedure\.
+
+```
+from sagemaker.workflow.callback_step import CallbackStep
+
+step_callback = CallbackStep(
+    name="MyCallbackStep",
+    sqs_queue_url="arn:aws:sqs:us-west-2:012345678901:MyCallbackQueue",
+    inputs={...},
+    outputs=[...]
+)
+
+callback_handler_code = '
+    import boto3
+    import json
+
+    def handler(event, context):
+        sagemaker_client=boto3.client("sagemaker")
+
+        for record in event["Records"]:
+            payload=json.loads(record["body"])
+            token=payload["token"]
+
+            # Custom processing
+
+            # Call SageMaker to complete the step
+            sagemaker_client.send_pipeline_execution_step_success(
+                CallbackToken=token,
+                OutputParameters={...}
+            )
+'
+```
+
 ## Step Properties<a name="build-and-manage-properties"></a>
 
 The `properties` attribute is used to add data dependencies between steps in the pipeline\. These data dependencies are then used by SageMaker Pipelines to construct the DAG from the pipeline definition\. These properties can be referenced as placeholder values and are resolved at runtime\.  
@@ -232,19 +280,21 @@ The `properties` attribute of a SageMaker Pipelines step matches the object retu
 
 ## Data Dependency Between Steps<a name="build-and-manage-data-dependency"></a>
 
-You define the structure of your DAG by specifying the data relationships between steps\. To create data dependencies between steps, pass the properties of one step as the input to another step in the pipeline\. A data dependency uses JsonPath notation in the following format\. This format traverses the JSON property file, which means you can append as many *<property>* instances as needed to reach the desired nested property in the file\. For more information on JsonPath notation, see the [JsonPath repo](https://github.com/json-path/JsonPath)\.
+You define the structure of your DAG by specifying the data relationships between steps\. To create data dependencies between steps, pass the properties of one step as the input to another step in the pipeline\. The step receiving the input isn't started until after the step providing the input finishes execution\.
+
+A data dependency uses JsonPath notation in the following format\. This format traverses the JSON property file, which means you can append as many *<property>* instances as needed to reach the desired nested property in the file\. For more information on JsonPath notation, see the [JsonPath repo](https://github.com/json-path/JsonPath)\.
 
 ```
 <step_name>.properties.<property>.<property>
 ```
 
-The following is an example of a data dependency using the `ProcessingOutputConfig` property of a processing step:
+The following shows how to specify an Amazon S3 bucket using the `ProcessingOutputConfig` property of a processing step\.
 
 ```
-step_processing.properties.ProcessingOutputConfig.Outputs["train_data"].S3Output.S3Uri
+step_process.properties.ProcessingOutputConfig.Outputs["train_data"].S3Output.S3Uri
 ```
 
-The data dependency can be passed as the input to a step as follows:
+To create the data dependency, pass the bucket to a training step as follows\.
 
 ```
 step_train = TrainingStep(
@@ -252,10 +302,77 @@ step_train = TrainingStep(
     estimator=sklearn_train,
     inputs=TrainingInput(
         s3_data=step_process.properties.ProcessingOutputConfig.Outputs[
+            "train_data"].S3Output.S3Uri
+    )
+)
+```
+
+## Custom Dependency Between Steps<a name="build-and-manage-custom-dependency"></a>
+
+When you specify a data dependency, SageMaker Pipelines provides the data connection between the steps\. Alternatively, one step can access the data from a previous step without directly using SageMaker Pipelines\. In this case, you can create a custom dependency that tells SageMaker Pipelines not to start a step until after another step has finished executing\. You create a custom dependency by specifying a step's `DependsOn` attribute\.
+
+As an example, the following defines a step `C` that starts only after both step `A` and step `B` finish executing\.
+
+```
+{
+  'Steps': [
+    {'Name':'A', ...},
+    {'Name':'B', ...},
+    {'Name':'C', 'DependsOn': ['A', 'B']}
+  ]
+}
+```
+
+SageMaker Pipelines throws a validation exception if the dependency would create a cyclic dependency\.
+
+The following example creates a training step that starts after a processing step finishes executing\.
+
+```
+processing_step = ProcessingStep(...)
+training_step = TrainingStep(...)
+
+training_step.add_depends_on([processing_step])
+```
+
+The following example creates a training step that doesn't start until two different processing steps finish executing\.
+
+```
+processing_step_1 = ProcessingStep(...)
+processing_step_2 = ProcessingStep(...)
+
+training_step = TrainingStep(...)
+
+training_step.add_depends_on([processing_step_1, processing_step_2])
+```
+
+The following provides an alternate way to create the custom dependency\.
+
+```
+training_step.add_depends_on([processing_step_1])
+training_step.add_depends_on([processing_step_2])
+```
+
+The following example creates a training step that receives input from one processing step and waits for a different processing step to finish executing\.
+
+```
+processing_step_1 = ProcessingStep(...)
+processing_step_2 = ProcessingStep(...)
+
+training_step = TrainingStep(
+    ...,
+    inputs=TrainingInput(
+        s3_data=processing_step_1.properties.ProcessingOutputConfig.Outputs[
             "train_data"
         ].S3Output.S3Uri
-    ),
-)
+    )
+
+training_step.add_depends_on([processing_step_2])
+```
+
+The following example shows how to retrieve a string list of the custom dependencies of a step\.
+
+```
+custom_dependencies = training_step.depends_on()
 ```
 
 ## Use a Custom Image in a Step<a name="build-and-manage-images"></a>

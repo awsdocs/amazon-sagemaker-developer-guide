@@ -1,6 +1,6 @@
 # Prepare ML Data with Amazon SageMaker Data Wrangler<a name="data-wrangler"></a>
 
-Amazon SageMaker Data Wrangler \(Data Wrangler\) is a feature of SageMaker Studio that provides an end\-to\-end solution to import, prepare, transform, featurize, and analyze data\. You can integrate a Data Wrangler data flow into your machine learning \(ML\) workflows to simplify and streamline data pre\-processing and feature engineering using little to no coding\. You can also add your own Python scripts and transformations to customize a Data Wrangler data prep workflow\. 
+Amazon SageMaker Data Wrangler \(Data Wrangler\) is a feature of SageMaker Studio that provides an end\-to\-end solution to import, prepare, transform, featurize, and analyze data\. You can integrate a Data Wrangler data flow into your machine learning \(ML\) workflows to simplify and streamline data pre\-processing and feature engineering using little to no coding\. You can also add your own Python scripts and transformations to customize a For high\-level security needs Data Wrangler data prep workflow\. 
 
 The following are the core functionalities that Data Wrangler provides to help you analyze and prepare data for machine learning applications\. 
 + **Import** – Connect to and import data from Amazon Simple Storage Service \(Amazon S3\), Amazon Athena \(Athena\), and Amazon Redshift\.
@@ -19,6 +19,7 @@ To start using Data Wrangler, see [Get Started with Data Wrangler](data-wrangler
 + [Analyze and Visualize](data-wrangler-analyses.md)
 + [Export](data-wrangler-data-export.md)
 + [Shut Down Data Wrangler](data-wrangler-shut-down.md)
++ [Update Data Wrangler](data-wrangler-update.md)
 + [Security and Permissions](data-wrangler-security.md)
 + [Release Notes](data-wrangler-release-notes.md)
 + [Troubleshoot](data-wrangler-trouble-shooting.md)

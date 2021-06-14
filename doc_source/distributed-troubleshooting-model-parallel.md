@@ -1,32 +1,41 @@
-# Troubleshooting<a name="distributed-troubleshooting"></a>
+# Model Parallel Troubleshooting<a name="distributed-troubleshooting-model-parallel"></a>
 
 If you run into an error, you can use the following list to try to troubleshoot your training job\. If the problem persists, contact AWS Support\. 
 
 **Topics**
-+ [Using Debugger with SageMaker distributed](#distributed-ts-debugger)
-+ [Saving Checkpoints](#distributed-ts-checkpoints)
-+ [Convergence Using Model Parallel and TensorFlow](#distributed-ts-tf-convergence)
++ [Considerations for Using SageMaker Debugger with SageMaker Distributed Model Parallel](#distributed-ts-model-parallel-debugger)
++ [Saving Checkpoints](#distributed-ts-model-parallel-checkpoints)
++ [Convergence Using Model Parallel and TensorFlow](#distributed-ts-model-parallel-tf-convergence)
 
-## Using Debugger with SageMaker distributed<a name="distributed-ts-debugger"></a>
+## Considerations for Using SageMaker Debugger with SageMaker Distributed Model Parallel<a name="distributed-ts-model-parallel-debugger"></a>
 
-When Debugger is enabled \(which is enabled by default for all SageMaker TensorFlow and PyTorch jobs\) you might see an error that looks like the following: 
+SageMaker Debugger is not available for SageMaker distributed model parallel\. Debugger is enabled by default for all SageMaker TensorFlow and PyTorch training jobs, and you might see an error that looks like the following: 
 
 ```
 FileNotFoundError: [Errno 2] No such file or directory: '/opt/ml/checkpoints/metadata.json.sagemaker-uploading
 ```
 
-To fix this issue, disable Debugger by passing `debugger_hook_config=False` when creating the framework `estimator` in the SageMaker Python SDK as seen in the following example\.
+To fix this issue, disable Debugger by passing `debugger_hook_config=False` when creating a framework `estimator` as shown in the following example\.
 
 ```
+bucket=sagemaker.Session().default_bucket()
+base_job_name="sagemaker-checkpoint-test"
+checkpoint_in_bucket="checkpoints"
+
+# The S3 URI to store the checkpoints
+checkpoint_s3_bucket="s3://{}/{}/{}".format(bucket, base_job_name, checkpoint_in_bucket)
+
 estimator = TensorFlow(
-    role=role,
-    instance_count=1,
-    instance_type=instance_type,
+    ...
+
+    distribution={"smdistributed": {"modelparallel": { "enabled": True }}},
+    checkpoint_s3_uri=checkpoint_s3_bucket,
+    checkpoint_local_path="/opt/ml/checkpoints",
     debugger_hook_config=False
 )
 ```
 
-## Saving Checkpoints<a name="distributed-ts-checkpoints"></a>
+## Saving Checkpoints<a name="distributed-ts-model-parallel-checkpoints"></a>
 
 You might run into the following error when saving checkpoints of a large model on SageMaker: 
 
@@ -34,9 +43,9 @@ You might run into the following error when saving checkpoints of a large model 
 InternalServerError: We encountered an internal error. Please try again
 ```
 
-This could be caused by a SageMaker limitation while uploading the local checkpoint to Amazon S3 during training\. To disable checkpointing in SageMaker and follow the following example to explicitly upload the checkpoints\.
+This could be caused by a SageMaker limitation while uploading the local checkpoint to Amazon S3 during training\. To disable checkpointing in SageMaker, use the following example to explicitly upload the checkpoints\.
 
-If you run into above error, do not use `checkpoint_s3_uri` with the SageMaker `estimator` call\. While saving checkpoints for larger models, we recommend saving checkpoints to a custom directory and passing the same to the helper function \(as a `local_path` argument\)\.
+If you run into the preceding error, do not use `checkpoint_s3_uri` with the SageMaker `estimator` call\. While saving checkpoints for larger models, we recommend saving checkpoints to a custom directory and passing the same to the helper function \(as a `local_path` argument\)\.
 
 ```
 import os
@@ -117,6 +126,6 @@ if smp.local_rank() == 0:
     sync_local_checkpoints_to_s3(local_path=checkpoint_dir, s3_uri=full_s3_uri)
 ```
 
-## Convergence Using Model Parallel and TensorFlow<a name="distributed-ts-tf-convergence"></a>
+## Convergence Using Model Parallel and TensorFlow<a name="distributed-ts-model-parallel-tf-convergence"></a>
 
 When you use SageMaker multi\-node training with TensorFlow and distributed model parallel, the loss may not converge as expected because the order of training input files may be different on each node\. This may cause different ranks in the same model parallel group to work on different input files, causing inconsistencies\. To prevent this, ensure the input files are ordered the same way in all the ranks before they get converted to TensorFlow datasets\. One way to achieve this is to sort the input file names in the training script\.

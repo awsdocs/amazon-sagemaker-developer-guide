@@ -1,11 +1,11 @@
 # Package a Model \(Amazon SageMaker Console\)<a name="edge-packaging-job-console"></a>
 
-You can create a SageMaker Edge Manager packaging job using the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\. Before continuing, make sure you have satisfied the [Prerequisites](edge-packaging-job.md#edge-packaging-job-prerequisites)\.
+You can create a SageMaker Edge Manager packaging job using the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\. Before continuing, make sure you have satisfied the [Prerequisites](edge-packaging-job.md#edge-packaging-job-prerequisites)\.
 
 1. In the SageMaker console, choose **Edge Inference** and then choose **Edge packaging jobs**, as shown in the following image\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/smith/pre-edge-packaging-button-edited.png)
 
-1. On the **Job properties** page, enter a name for your packaging job under **Edge packaging job name**\. Name your model and give it a version: enter this under **Model name** and **Model version**, respectively\.
+1. On the **Job properties** page, enter a name for your packaging job under **Edge packaging job name**\. Note that Edge Manager packaging job names are case\-sensitive\. Name your model and give it a version: enter this under **Model name** and **Model version**, respectively\.
 
 1. Next, select an **IAM role**\. You can chose a role or let AWS create a role for you\. You can optionally specify a **resource key ARN** and **job tags**\.
 

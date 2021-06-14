@@ -86,8 +86,8 @@ data_path = os.path.join(DATA_DIR, 'marketplace', 'training')
 algo = AlgorithmEstimator(
 algorithm_arn='arn:aws:sagemaker:us-east-2:012345678901:algorithm/my-algorithm',
         role='SageMakerRole',
-        train_instance_count=1,
-        train_instance_type='ml.c4.xlarge',
+        instance_count=1,
+        instance_type='ml.c4.xlarge',
         sagemaker_session=sagemaker_session,
         base_job_name='test-marketplace')
 

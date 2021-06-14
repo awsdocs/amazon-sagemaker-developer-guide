@@ -1,6 +1,6 @@
 # Monitor and Manage Your Human Loop<a name="a2i-monitor-humanloop-results"></a>
 
-Once you've started a human review loop, you can check the results of tasks sent to the loop and manage it using the [Amazon Augmented AI Runtime API](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/Welcome.html)\. Additionally, Amazon A2I integrates with Amazon EventBridge \(also known as Amazon CloudWatch Events\) to alert you when a human review loop changes status\. 
+Once you've started a human review loop, you can check the results of tasks sent to the loop and manage it using the [Amazon Augmented AI Runtime API](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/Welcome.html)\. Additionally, Amazon A2I integrates with Amazon EventBridge \(also known as Amazon CloudWatch Events\) to alert you when a human review loop status changes to `Completed`, `Failed`, or `Stopped`\. This event delivery is guaranteed at least once, which means all events created when human loops finish are successfully delivered to EventBridge\.
 
 Use the procedures below to learn how to use the Amazon A2I Runtime API to monitor and manage your human loops\. See [Use Amazon CloudWatch Events in Amazon Augmented AICloudWatch Events](a2i-cloudwatch-events.md) to learn how Amazon A2I integrates with Amazon EventBridge\.
 

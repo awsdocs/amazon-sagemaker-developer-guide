@@ -6,6 +6,8 @@ This section contains information about how to understand and prevent common err
 
  **Did you encounter an error after you compiled your model?** If yes, see [Troubleshoot Neo Inference Errors](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-troubleshooting-inference.html)\. 
 
+**Did you encounter an error trying to compile your model for Ambarella devices?** If yes, see [Troubleshoot Ambarella Errors](neo-troubleshooting-target-devices-ambarella.md)\.
+
 ## Error Classification Types<a name="neo-error-messages"></a>
 
 This list classifies the *user errors* you can receive from Neo\. These include access and permission errors and load errors for each of the supported frameworks\. All other errors are *system errors*\.
@@ -37,3 +39,4 @@ Assuming that the Neo compiler successfully loaded \.tar\.gz from Amazon S3, and
 + [Error Classification Types](#neo-error-messages)
 + [Troubleshoot Neo Compilation Errors](neo-troubleshooting-compilation.md)
 + [Troubleshoot Neo Inference Errors](neo-troubleshooting-inference.md)
++ [Troubleshoot Ambarella Errors](neo-troubleshooting-target-devices-ambarella.md)

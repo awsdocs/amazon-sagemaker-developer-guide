@@ -9,7 +9,7 @@ You need the following resources to build a customized container with Debugger\.
 + Your training script with a Debugger hook registered – For more information about registering a Debugger hook to your training script, see [Register Debugger Hook to Your Training Script](#debugger-script-mode)\.
 
 For an end\-to\-end example of using Debugger with a custom training container, see the following example notebook\.
-+ [Build a Custom Training Container and Debug Training Jobs with Debugger](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/build_your_own_container_with_debugger/debugger_byoc.ipynb)
++ [Build a Custom Training Container and Debug Training Jobs with Debugger](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-debugger/build_your_own_container_with_debugger/debugger_byoc.html)
 
 **Tip**  
 This custom container with Debugger guide is an extension of the [Adapting Your Own Training Container](adapt-training-container.md) guide which walks you thorough how to build and push your custom training container to Amazon ECR\.
@@ -79,9 +79,9 @@ For more information about registering the Debugger hook for the supported frame
 + [SMDebug XGBoost hook](https://github.com/awslabs/sagemaker-debugger/blob/master/docs/xgboost.md)
 
 In the following example notebooks' training scripts, you can find more examples about how to add the Debugger hooks to training scripts and collect output tensors in detail:
-+ [ Debugger in script mode with the TensorFlow 2\.1 framework](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/tensorflow2/tensorflow2_keras_custom_container/tf2-keras-custom-container.ipynb)
++ [ Debugger in script mode with the TensorFlow 2\.1 framework](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-debugger/tensorflow2/tensorflow2_keras_custom_container/tf2-keras-custom-container.html)
 
-  To see the difference between using Debugger in a Deep Learning Container and in script mode, open this notebook and put it and [ the previous Debugger in a Deep Learning Container TensorFlow v2\.1 notebook example](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/tensorflow2/tensorflow2_zero_code_change/tf2-keras-default-container.ipynb) side by side\. 
+  To see the difference between using Debugger in a Deep Learning Container and in script mode, open this notebook and put it and [ the previous Debugger in a Deep Learning Container TensorFlow v2\.1 notebook example](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-debugger/tensorflow2/tensorflow2_zero_code_change/tf2-keras-default-container.html) side by side\. 
 
    In script mode, the hook configuration part is removed from the script in which you set the estimator\. Instead, the Debugger hook feature is merged into the training script, [ TensorFlow Keras ResNet training script in script mode](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/tensorflow2/tensorflow2_keras_custom_container/src/tf_keras_resnet_byoc.py)\. The training script imports the `smdebug` library in the required TensorFlow Keras environment to communicate with the TensorFlow ResNet50 algorithm\. It also manually implements the `smdebug` hook functionality by adding the `callbacks=[hook]` argument inside the `train` function \(in line 49\), and by adding the manual hook configuration \(in line 89\) provided through SageMaker Python SDK\.
 

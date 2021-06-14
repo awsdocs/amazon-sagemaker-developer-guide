@@ -41,7 +41,7 @@ After a user has been added to a pool, the user can be associated with user grou
 
 **To add a user to a user group**
 
-1. Open the Amazon Cognito console: [https://us\-east\-2\.console\.aws\.amazon\.com/Amazon Cognito/home](https://us-east-2.console.aws.amazon.com/cognito/home)\. 
+1. Open the Amazon Cognito console: [https://console\.aws\.amazon\.com/cognito/](https://console.aws.amazon.com/cognito)\. 
 
 1. Choose **Manage User Pools**\.
 
@@ -57,7 +57,7 @@ Disabling a worker stops the worker from receiving jobs\. This action doesn't re
 
 **To deactivate a worker  \(Amazon Cognito console\)**
 
-1. Open the Amazon Cognito console: [https://us\-east\-2\.console\.aws\.amazon\.com/Amazon Cognito/home](https://us-east-2.console.aws.amazon.com/cognito/home)\. 
+1. Open the Amazon Cognito console:  [https://console\.aws\.amazon\.com/cognito/](https://console.aws.amazon.com/cognito)\. 
 
 1. Choose **Manage User Pools**\.
 
@@ -73,7 +73,7 @@ You can enable a disabled user by choosing **Enable User**\. 
 
 **To remove a user from a user group \(Amazon Cognito console\)**
 
-1. Open the Amazon Cognito console: [https://us\-east\-2\.console\.aws\.amazon\.com/cognito/home](https://us-east-2.console.aws.amazon.com/cognito/home)\. 
+1. Open the Amazon Cognito console:  [https://console\.aws\.amazon\.com/cognito/](https://console.aws.amazon.com/cognito)\. 
 
 1. Choose **Manage User Pools**\. 
 

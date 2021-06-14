@@ -10,6 +10,7 @@ When using Amazon SageMaker in the training portion of the algorithm, make sure 
 
 **Topics**
 + [Content Types Supported by Built\-In Algorithms](#cdf-common-content-types)
++ [Using Pipe Mode](#cdf-pipe-mode)
 + [Using CSV Format](#cdf-csv-format)
 + [Using RecordIO Format](#cdf-recordio-format)
 + [Trained Model Deserialization](#td-deserialization)
@@ -34,18 +35,20 @@ The following table lists some of the commonly supported [ `ContentType`](https:
 
 For a summary of the parameters used by each algorithm, see the documentation for the individual algorithms or this [table](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html)\.
 
+## Using Pipe Mode<a name="cdf-pipe-mode"></a>
+
+In *Pipe mode*, your training job streams data directly from Amazon Simple Storage Service \(Amazon S3\)\. Streaming can provide faster start times for training jobs and better throughput\. This is in contrast to *File mode*, in which your data from Amazon S3 is stored on the training instance volumes\. File mode uses disk space to store both your final model artifacts and your full training dataset\. By streaming in your data directly from Amazon S3 in Pipe mode, you reduce the size of Amazon Elastic Block Store volumes of your training instances\. Pipe mode needs only enough disk space to store your final model artifacts\. See the [ `AlgorithmSpecification`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AlgorithmSpecification.html) for additional details on the training input mode\.
+
 ## Using CSV Format<a name="cdf-csv-format"></a>
 
-Many Amazon SageMaker algorithms support training with data in CSV format\. To use data in CSV format for training, in the input data channel specification, specify **text/csv** as the [ `ContentType`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Channel.html#SageMaker-Type-Channel-ContentType)\. Amazon SageMaker requires that a CSV file does not have a header record and that the target variable is in the first column\. To run unsupervised learning algorithms that don't have a target, specify the number of label columns in the content type\. For example, in this case **'content\_type=text/csv;label\_size=0'**\. For a complete example that uses CSV format see [Breast Cancer Prediction](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_applying_machine_learning/breast_cancer_prediction/Breast%20Cancer%20Prediction.html)\.
+Many Amazon SageMaker algorithms support training with data in CSV format\. To use data in CSV format for training, in the input data channel specification, specify **text/csv** as the [ `ContentType`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Channel.html#SageMaker-Type-Channel-ContentType)\. Amazon SageMaker requires that a CSV file does not have a header record and that the target variable is in the first column\. To run unsupervised learning algorithms that don't have a target, specify the number of label columns in the content type\. For example, in this case **'content\_type=text/csv;label\_size=0'**\. For a notebook example that uses CSV format, see [Breast Cancer Prediction](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_applying_machine_learning/breast_cancer_prediction/Breast%20Cancer%20Prediction.html)\. For more information, see [Now use Pipe mode with CSV datasets for faster training on Amazon SageMaker built\-in algorithms](http://aws.amazon.com/blogs/machine-learning/now-use-pipe-mode-with-csv-datasets-for-faster-training-on-amazon-sagemaker-built-in-algorithms/)\.
 
 ## Using RecordIO Format<a name="cdf-recordio-format"></a>
 
-Most Amazon SageMaker algorithms work best when you use the optimized protobuf [recordIO](https://mxnet.apache.org/api/architecture/note_data_loading#data-format ) data format for training\. Using this format allows you to take advantage of *Pipe mode*\. In *Pipe mode*, your training job streams data directly from Amazon Simple Storage Service \(Amazon S3\)\. Streaming can provide faster start times for training jobs and better throughput\. This is in contrast to *File mode*, in which your data from Amazon S3 is stored on the training instance volumes\. File mode uses disk space to store both your final model artifacts and your full training dataset\. By streaming in your data directly from Amazon S3 in Pipe mode, you reduce the size of Amazon Elastic Block Store volumes of your training instances\. Pipe mode needs only enough disk space to store your final model artifacts\. See the [ `AlgorithmSpecification`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AlgorithmSpecification.html) for additional details on the training input mode\.
+In the protobuf recordIO format, SageMaker converts each observation in the dataset into a binary representation as a set of 4\-byte floats, then loads it in the protobuf values field\. If you are using Python for your data preparation, we strongly recommend that you use these existing transformations\. However, if you are using another language, the protobuf definition file below provides the schema that you use to convert your data into SageMaker protobuf format\.
 
 **Note**  
-For an example that shows how to convert the commonly used numPy array into the protobuf recordIO format, see *[An Introduction to Factorization Machines with MNIST](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/factorization_machines_mnist/factorization_machines_mnist.ipynb)* \.
-
-In the protobuf recordIO format, SageMaker converts each observation in the dataset into a binary representation as a set of 4\-byte floats, then loads it in the protobuf values field\. If you are using Python for your data preparation, we strongly recommend that you use these existing transformations\. However, if you are using another language, the protobuf definition file below provides the schema that you use to convert your data into SageMaker protobuf format\.
+For an example that shows how to convert the commonly used numPy array into the protobuf recordIO format, see *[An Introduction to Factorization Machines with MNIST](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/factorization_machines_mnist/factorization_machines_mnist.html)* \.
 
 ```
 syntax = "proto2";

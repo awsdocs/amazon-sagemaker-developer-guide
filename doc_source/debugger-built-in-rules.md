@@ -771,7 +771,7 @@ This rule can be applied either to one of the supported deep learning frameworks
 For an example of how to configure and deploy a built\-in rule, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\.
 
 **Note**  
-Overtraining can be avoided by early stopping\. For information on early stopping, see [Stop Training Jobs Early](automatic-model-tuning-early-stopping.md)\. For an example that shows how to use spot training with Debugger, see [Enable Spot Training with Amazon SageMaker Debugger](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/mxnet_spot_training/mxnet-spot-training-with-sagemakerdebugger.ipynb)\. 
+Overtraining can be avoided by early stopping\. For information on early stopping, see [Stop Training Jobs Early](automatic-model-tuning-early-stopping.md)\. For an example that shows how to use spot training with Debugger, see [Enable Spot Training with Amazon SageMaker Debugger](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-debugger/mxnet_spot_training/mxnet-spot-training-with-sagemakerdebugger.html)\. 
 
 
 **Parameter Descriptions for the Overtraining Rule**  

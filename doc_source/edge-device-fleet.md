@@ -5,7 +5,6 @@ Fleets are collections of logically grouped devices you can use to collect and a
 Create a fleet and register your devices either programmatically with the AWS SDK for Python \(Boto3\) or through the SageMaker console\.
 
 **Topics**
-+ [Edge Manager Agent](edge-device-fleet-about.md)
 + [Create a Fleet](edge-device-fleet-create.md)
 + [Register a Device](edge-device-fleet-register.md)
 + [Check Status](edge-device-fleet-check-status.md)

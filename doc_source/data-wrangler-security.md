@@ -1,6 +1,6 @@
 # Security and Permissions<a name="data-wrangler-security"></a>
 
-When you query data from Athena or Amazon Redshift, the queried dataset is automatically stored in the default SageMaker S3 bucket for the AWS Region in which you are using Studio\. Additionally, when you export a Jupyter Notebook from Amazon SageMaker Data Wrangler and execute it, your data flows, or \.flow files, are saved to the same default bucket, under the prefix *data\_wrangler\_flows*\.
+When you query data from Athena or Amazon Redshift, the queried dataset is automatically stored in the default SageMaker S3 bucket for the AWS Region in which you are using Studio\. Additionally, when you export a Jupyter Notebook from Amazon SageMaker Data Wrangler and run it, your data flows, or \.flow files, are saved to the same default bucket, under the prefix *data\_wrangler\_flows*\.
 
 For high\-level security needs, you can configure a bucket policy that restricts the AWS roles that have access to this default SageMaker S3 bucket\. Use the following section to add this type of policy to an S3 bucket\. To follow the instructions on this page, use the AWS Command Line Interface \(AWS CLI\)\. To learn how, see [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) in the IAM User Guide\.
 
@@ -11,7 +11,7 @@ Additionally, you need to grant each IAM role that uses Data Wrangler permission
 You can add a policy to the S3 bucket that contains your Data Wrangler resources using an Amazon S3 bucket policy\. Resources that Data Wrangler uploads to your default SageMaker S3 bucket in the AWS Region you are using Studio in include the following:
 + Queried Amazon Redshift results\. These are stored under the *redshift/* prefix\.
 + Queried Athena results\. These are stored under the *athena/* prefix\. 
-+ The \.flow files uploaded to Amazon S3 when you execute an exported Jupyter Notebook Data Wrangler produces\. These are stored under the *data\_wrangler\_flows/* prefix\.
++ The \.flow files uploaded to Amazon S3 when you run an exported Jupyter Notebook Data Wrangler produces\. These are stored under the *data\_wrangler\_flows/* prefix\.
 
 Use the following procedure to create an S3 bucket policy that you can add to restrict IAM role access to that bucket\. To learn how to add a policy to an S3 bucket, see [How do I add an S3 Bucket policy?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-bucket-policy.html)\.
 
@@ -61,9 +61,9 @@ Use the following procedure to create an S3 bucket policy that you can add to re
 
 ## Grant an IAM Role Permission to Use Data Wrangler<a name="data-wrangler-security-iam-policy"></a>
 
-You can grant an IAM role permission to use Data Wrangler with the general IAM managed policy, [https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess)\. This is a general policy that includes [permissions](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html#sagemaker-roles-amazonsagemakerfullaccess-policy) required to use all SageMaker services\. This policy grants an IAM role full access to Data Wrangler\. You should be aware of the following when using `AmazonSageMakerFullAccess` to grant access to Data Wrangler:
+You can grant an IAM role permission to use Data Wrangler with the general IAM managed policy, [https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess)\. This is a general policy that includes [permissions](https://docs.aws.amazon.com/sagemaker/latest/dg/security-iam-awsmanpol-AmazonSageMakerFullAccess.html) required to use all SageMaker services\. This policy grants an IAM role full access to Data Wrangler\. You should be aware of the following when using `AmazonSageMakerFullAccess` to grant access to Data Wrangler:
 + If you import data from Amazon Redshift, the **Database User** name must have the prefix `sagemaker_access`\.
-+ This managed policy only grants permission to access buckets with one of the following in the name: `SageMaker`, `Sagemaker`, `sagemaker`, or `aws-glue`\. If want to use Data Wrangler to import from an S3 bucket without these phrases in the name, refer to the last section on this page to learn how to grant permission to an IAM entity to access your S3 buckets\.
++ This managed policy only grants permission to access buckets with one of the following in the name: `SageMaker`, `SageMaker`, `sagemaker`, or `aws-glue`\. If want to use Data Wrangler to import from an S3 bucket without these phrases in the name, refer to the last section on this page to learn how to grant permission to an IAM entity to access your S3 buckets\.
 
 If you have high\-security needs, you can attach the policies in this section to an IAM entity to grant permissions required to use Data Wrangler\.
 
@@ -259,6 +259,75 @@ Use a policy similar to the following to grant the permissions described above:
 }
 ```
 
+You can also access data in your Amazon S3 bucket from another AWS account by specifying the Amazon S3 bucket URI\. To do this, the IAM policy that grants access to the Amazon S3 bucket in the other account should use a policy similar to this below where `BucketFolder` is the specific directory in the users bucket `UserBucket`\. This policy should be added to the user granting access to their bucket for another user\. 
+
+```
+{
+   "Version": "2012-10-17",
+   "Statement": [
+       {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:PutObjectAcl"
+            ],
+            "Resource": "arn:aws:s3:::UserBucket/BucketFolder/*"
+            },
+                {
+                "Effect": "Allow",
+                "Action": [
+                    "s3:ListBucket"
+                ],
+                "Resource": "arn:aws:s3:::UserBucket",
+                "Condition": {
+                "StringLike": {
+                    "s3:prefix": [
+                    "BucketFolder/*"
+                    ]
+                }
+            }
+        } 
+    ]
+}
+```
+
+The user that will be accessing bucket \(not the bucket owner\) will need to add a policy similar to this below to their user\. Note that `AccountX` and `TestUser` below refers to the bucket owner and their User respectively\.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::AccountX:user/TestUser"
+            },
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:PutObjectAcl"
+            ],
+            "Resource": [
+                "arn:aws:s3:::UserBucket/BucketFolder/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::AccountX:user/TestUser"
+            },
+            "Action": [
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::UserBucket"
+            ]
+        }
+    ]
+}
+```
+
 **Policy example to grant access to use SageMaker Studio**
 
 Use a policy like to the following to create an IAM execution role that can be used to set up a Studio instance\. 
@@ -283,3 +352,19 @@ Use a policy like to the following to create an IAM execution role that can be u
     ]
 }
 ```
+
+## Snowflake and Data Wrangler<a name="data-wrangler-security-snowflake"></a>
+
+All permissions for AWS resources will be managed via your IAM role attached to your SageMaker Studio instance\. Snowflake specific permissions are to be managed by the Snowflake admin, as they can grant granular permissions/privileges to each Snowflake user\. This includes databases, schemas, tables, warehouses, and storage integration objects\. You will have to ensure that the correct permissions are set up outside of Data Wrangler\. 
+
+Note that the Snowflake `COPY INTO Amazon S3` command moves data from Snowflake to S3 over the public internet by default but data in transit will be secured using SSL\. Data at rest in Amazon S3 will be encrypted with SSE\-KMS using the default AWS\-managed CMK\.
+
+With respect to Snowflake credentials storage, Data Wrangler does not store customer credentials\. Data Wrangler uses AWS Secrets Manager to store the credentials in a Secret and rotates secrets as part of a best practice security plan\. The Snowflake or Studio administrator needs to ensure that the data scientist’s Studio execution role is granted permission to perform `GetSecretValue` on the Secret where the credentials are stored\. If already attached to the Studio execution role, the `AmazonSageMakerFullAccess` policy will have the necessary permissions to read secrets created by Data Wrangler and secrets created by following the naming and tagging convention in the instructions above\. Secrets that do not follow the conventions will need to be separately granted access\. It is recommended to use Secrets Manager to prevent sharing credentials over unsecured channels, however note that a logged\-in user can retrieve the plain\-text password by launching a terminal or Python notebook in Studio and then invoking API calls from the Secrets Manager API\. 
+
+## Data Encryption with KMS\-CMK<a name="data-wrangler-security-kms"></a>
+
+For files stored in Amazon S3 that have server\-side encryption enabled and the encryption type is SSE\-KMS, the SageMaker Studio user role will need to be added as a Key user for them to be able to decrypt the file and import in Data Wrangler\.
+
+ Below is a screenshot that shows a Studio user role added as a Key user\. See [IAM Roles](https://console.aws.amazon.com/iam/home#/roles) to access Users under the left panel to make this change\.
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/data-wrangler-kms.png)

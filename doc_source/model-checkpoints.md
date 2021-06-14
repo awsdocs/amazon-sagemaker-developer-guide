@@ -1,6 +1,6 @@
 # Use Checkpoints in Amazon SageMaker<a name="model-checkpoints"></a>
 
-Use checkpoints in Amazon SageMaker to save the state of machine learning \(ML\) models during training\. Checkpoints are snapshots of the model and can be configured by callback functions of ML frameworks\. You can use the saved checkpoints to restart a training job from the last saved checkpoint\. 
+Use checkpoints in Amazon SageMaker to save the state of machine learning \(ML\) models during training\. Checkpoints are snapshots of the model and can be configured by the callback functions of ML frameworks\. You can use the saved checkpoints to restart a training job from the last saved checkpoint\. 
 
 The SageMaker training mechanism uses training containers on Amazon EC2 instances, and the checkpoint files are saved under a local directory of the containers\. SageMaker provides functionality to copy the checkpoints from the local path to Amazon S3\. Using checkpoints, you can do the following:
 + Save your model snapshots under training due to an unexpected interruption to the training job or instance\.
@@ -8,7 +8,7 @@ The SageMaker training mechanism uses training containers on Amazon EC2 instance
 + Analyze the model at intermediate stages of training\.
 + Use checkpoints with SageMaker managed spot training to save on training costs\.
 
-If you are using checkpoints with the SageMaker managed spot taining, SageMaker manages checkpointing your model training on a spot instance and resuming the training job on the next spot instance\. With SageMaker managed spot training, you can significantly reduce the billable time for training ML models\. For more information, see [Managed Spot Training in Amazon SageMaker](model-managed-spot-training.md)\.
+If you are using checkpoints with SageMaker managed spot training, SageMaker manages checkpointing your model training on a spot instance and resuming the training job on the next spot instance\. With SageMaker managed spot training, you can significantly reduce the billable time for training ML models\. For more information, see [Managed Spot Training in Amazon SageMaker](model-managed-spot-training.md)\.
 
 **Topics**
 + [Checkpoints for Frameworks and Algorithms in SageMaker](#model-checkpoints-whats-supported)
@@ -43,7 +43,7 @@ After you enable checkpointing, SageMaker saves checkpoints to Amazon S3 and syn
 
 The following example shows how to configure checkpoint paths when you construct a SageMaker estimator\. To enable checkpointing, add the `checkpoint_s3_uri` and `checkpoint_local_path` parameters to your estimator\. 
 
-The following example template shows how to create a generic SageMaker estimator and enable checkpointing\. You can use this template for the supported algorithms by specifying the `image_uri` parameter\. To find Docker image URIs for algorithms with checkpointing supported by SageMaker, see [Docker Registry Paths for SageMaker Built\-in Algorithms](sagemaker-algo-docker-registry-paths.md)\. You can also replace `estimator` and `Estimator` with other SageMaker frameworks' estimator parent classes and estimator classes, such as `[TensorFlow](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/using_tf.html#create-an-estimator)`, `[PyTorch](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/using_pytorch.html#create-an-estimator)`, `[MXNet](https://sagemaker.readthedocs.io/en/stable/frameworks/mxnet/using_mxnet.html#create-an-estimator)`, and `[XGBoost](https://sagemaker.readthedocs.io/en/stable/frameworks/xgboost/using_xgboost.html#create-an-estimator)`\.
+The following example template shows how to create a generic SageMaker estimator and enable checkpointing\. You can use this template for the supported algorithms by specifying the `image_uri` parameter\. To find Docker image URIs for algorithms with checkpointing supported by SageMaker, see [Docker Registry Paths and Example Code](sagemaker-algo-docker-registry-paths.md)\. You can also replace `estimator` and `Estimator` with other SageMaker frameworks' estimator parent classes and estimator classes, such as `[TensorFlow](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/using_tf.html#create-an-estimator)`, `[PyTorch](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/using_pytorch.html#create-an-estimator)`, `[MXNet](https://sagemaker.readthedocs.io/en/stable/frameworks/mxnet/using_mxnet.html#create-an-estimator)`, and `[XGBoost](https://sagemaker.readthedocs.io/en/stable/frameworks/xgboost/using_xgboost.html#create-an-estimator)`\.
 
 ```
 import sagemaker
@@ -91,7 +91,7 @@ To retrieve the S3 bucket URI where the checkpoints are saved, check the followi
 estimator.checkpoint_s3_uri
 ```
 
-This returns the Amazon S3 output path for checkpoints configured while requesting the **CreateTrainingJob** request\. To find the saved checkpoint files using the Amazon S3 console, use the following procedure\.
+This returns the Amazon S3 output path for checkpoints configured while requesting the `CreateTrainingJob` request\. To find the saved checkpoint files using the Amazon S3 console, use the following procedure\.
 
 **To find the checkpoint files from the Amazon S3 console**
 
@@ -101,7 +101,7 @@ This returns the Amazon S3 output path for checkpoints configured while requesti
 
 1. Choose the link to the training job with checkpointing enabled to open **Job settings**\.
 
-1. In the **Job settings** page of the training job, locate the **Checkpoint configuration** section\.  
+1. On the **Job settings** page of the training job, locate the **Checkpoint configuration** section\.  
 ![\[Checkpoint configuration section in the Job settings page of a training job.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/checkpoints_trainingjob.png)
 
 1. Use the link to the S3 bucket to access the checkpoint files\.
@@ -116,4 +116,8 @@ To resume a training job from a checkpoint, run a new estimator with the same `c
 
 Consider the following when using checkpoints in SageMaker\.
 + To avoid overwrites in distributed training with multiple instances, you must manually configure the checkpoint file names and paths in your training script\. The high\-level SageMaker checkpoint configuration specifies a single Amazon S3 location without additional suffixes or prefixes to tag checkpoints from multiple instances\.
-+ The SageMaker Python SDK does not support high\-level configuration for checkpointing frequency\. To control the checkpointing frequency, modify your training script using frameworks' model save functions or checkpoint callbacks\.
++ The SageMaker Python SDK does not support high\-level configuration for checkpointing frequency\. To control the checkpointing frequency, modify your training script using the framework's model save functions or checkpoint callbacks\.
++ If you use SageMaker checkpoints with SageMaker Debugger and SageMaker distributed and are facing issues, see the following pages for troubleshooting and considerations\.
+  + [Considerations for Amazon SageMaker Debugger](debugger-considerations.md)
+  + [Data Parallel Troubleshooting](distributed-troubleshooting-data-parallel.md)
+  + [Model Parallel Troubleshooting](distributed-troubleshooting-model-parallel.md)

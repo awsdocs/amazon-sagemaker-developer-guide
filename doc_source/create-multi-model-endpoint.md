@@ -31,7 +31,7 @@ You can use AWS SDK for Python \(Boto\) or Amazon SageMaker to create a multi\-m
 
 You create a multi\-model endpoint using the Amazon SageMaker [ `create_model`](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_model), [ `create_endpoint_config`](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_endpoint_config), and [ `create_endpoint`](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_endpoint) APIs just as you would create a single model endpoint, but with two changes\. When defining the model container, you need to pass a new `Mode` parameter value, `MultiModel`\. You also need to pass the `ModelDataUrl` field that specifies the prefix in Amazon S3 where the model artifacts are located, instead of the path to a single model artifact, as you would when deploying a single model\.
 
-For a sample notebook that uses SageMaker to deploy multiple XGBoost models to an endpoint, see [Multi\-Model Endpoint XGBoost Sample Notebook](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/advanced_functionality/multi_model_xgboost_home_value/xgboost_multi_model_endpoint_home_value.ipynb)\. 
+For a sample notebook that uses SageMaker to deploy multiple XGBoost models to an endpoint, see [Multi\-Model Endpoint XGBoost Sample Notebook](https://sagemaker-examples.readthedocs.io/en/latest/advanced_functionality/multi_model_xgboost_home_value/xgboost_multi_model_endpoint_home_value.html)\. 
 
 The following procedure outlines the key steps used in that sample to create a multi\-model endpoint\.
 

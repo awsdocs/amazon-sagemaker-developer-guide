@@ -28,7 +28,7 @@ You can stop and delete a human loop in the Augmented AI console or by using the
 
 **Delete a human loop \(console\)**
 
-1. Navigate to the Augmented AI console at [https://console\.aws\.amazon\.com/a2i/](https://console.aws.amazon.com/a2i/)\.
+1. Navigate to the Augmented AI console at [https://console\.aws\.amazon\.com/a2i/](https://console.aws.amazon.com/a2i)\.
 
 1. In the navigation pane, under the **Augmented AI** section, choose **Human review workflows**\.
 

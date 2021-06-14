@@ -16,7 +16,9 @@ Amazon SageMaker Studio provides an experiments browser that you can use to view
 
 **To view experiments, trials, and trial components**
 
-1. In the left sidebar of Studio, choose the **SageMaker Experiment List** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Experiment_list_squid.png)\)\. A list of experiments and their properties is displayed\. The list includes all the SageMaker experiments in your account, including experiments created outside of SageMaker Studio\.
+1. In the left sidebar of Studio, choose the **Components and registries** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png)\)\. In the drop\-down menu, select **Experiments and trials** to display the experiments browser\.
+
+   A list of experiments and their properties is displayed\. The list includes all the SageMaker experiments in your account, including experiments created outside of SageMaker Studio\.
 **Note**  
 To view all the properties, you might have to expand the width of the experiments browser by dragging the right border\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-view-experiment-list.png)

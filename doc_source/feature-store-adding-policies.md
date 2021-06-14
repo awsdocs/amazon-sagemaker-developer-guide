@@ -4,7 +4,7 @@ To get started with Amazon SageMaker Feature Store you must add the required pol
 
 ## Step 1: Access AWS Management Console<a name="feature-store-console"></a>
 
-Sign in to the AWS Management Console and open the [IAM console](https://console.aws.amazon.com/iam/)\.
+Sign in to the AWS Management Console and open the [IAM console](https://console.aws.amazon.com/iam)\.
 
 ## Step 2: Choose Roles<a name="feature-store-console-role"></a>
 

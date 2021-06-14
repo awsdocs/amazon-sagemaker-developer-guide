@@ -4,7 +4,7 @@ If none of the Amazon SageMaker prebuilt inference containers suffice for your s
 
 The inference code includes an inference handler, a handler service, and an entrypoint\. In this example, they are stored as three separate Python files\. All three of these Python files must be in the same directory as your Dockerfile\.
 
-For an example Jupyter notebook that shows a complete example of extending a container by using the SageMaker inference toolkit, see [Amazon SageMaker Multi\-Model Endpoints using your own algorithm container](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/advanced_functionality/multi_model_bring_your_own/multi_model_endpoint_bring_your_own.ipynb)\.
+For an example Jupyter notebook that shows a complete example of extending a container by using the SageMaker inference toolkit, see [Amazon SageMaker Multi\-Model Endpoints using your own algorithm container](https://sagemaker-examples.readthedocs.io/en/latest/advanced_functionality/multi_model_bring_your_own/multi_model_endpoint_bring_your_own.html)\.
 
 ## Step 1: Create an Inference Handler<a name="byoc-inference-handler"></a>
 

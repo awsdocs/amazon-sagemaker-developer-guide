@@ -2,7 +2,7 @@
 
 You can create a SageMaker Edge Manager packaging job with the AWS SDK for Python \(Boto3\)\. Before continuing, make sure you have satisfied the [Prerequisites](edge-packaging-job.md#edge-packaging-job-prerequisites)\.
 
-To request an edge packaging job, use `CreateEdgePackagingJob`\. You need to provide a name to your edge packaging job, the name of your SageMaker Neo compilation job, your role Amazon resource name \(ARN\), a name for your model, a version for your model, and the Amazon S3 bucket URI where you want to store the output of your packaging job\.
+To request an edge packaging job, use `CreateEdgePackagingJob`\. You need to provide a name to your edge packaging job, the name of your SageMaker Neo compilation job, your role Amazon resource name \(ARN\), a name for your model, a version for your model, and the Amazon S3 bucket URI where you want to store the output of your packaging job\. Note that Edge Manager packaging job names and SageMaker Neo compilation job names are case\-sensitive\.
 
 ```
 # Import AWS SDK for Python (Boto3)
@@ -23,7 +23,7 @@ sagemaker_client.create_edge_packaging_job(
 )
 ```
 
-You can check the status of an edge packaging job using `DescribeEdgePackagingJob`:
+You can check the status of an edge packaging job using `DescribeEdgePackagingJob` and providing the case\-sensitive edge packaging job name:
 
 ```
 response = sagemaker_client.describe_edge_packaging_job(

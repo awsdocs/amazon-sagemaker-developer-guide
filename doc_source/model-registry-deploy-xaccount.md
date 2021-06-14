@@ -54,7 +54,7 @@ bucket_policy = json.dumps(bucket_policy)
 # Set the new policy
 s3 = boto3.client('s3')
 respose = s3.put_bucket_policy(
-    Bucket = bucket, 
+    Bucket = bucket,
     Policy = bucket_policy)
 
 # 3. Create policy for access to the ModelPackageGroup
@@ -87,7 +87,7 @@ model_pacakge_group_policy = json.dumps(model_pacakge_group_policy)
 
 # Set the new policy
 respose = sm_client.put_model_package_group_policy(
-    ModelPackageGroupName = model_package_group_name, 
+    ModelPackageGroupName = model_package_group_name,
     ResourcePolicy = model_pacakge_group_policy)
 
 print('ModelPackageGroupArn : {}'.format(create_model_pacakge_group_response['ModelPackageGroupArn']))
@@ -103,4 +103,4 @@ The example assumes that you previously defined the following variables:
 + `sm_client` \- A SageMaker Boto3 client\.
 + `model_package_group_name` \- The model group to which you want to grant access\.
 
-To be able to deploy a model that was created in a different account, the user must have a role that has access to SageMaker actions, such as a role with the `AmazonSageMakerFullAccess` managed policy\. For information about SageMaker managed policies, see [AWS Managed \(Predefined\) Policies for Amazon SageMaker](access-policy-aws-managed-policies.md)\.
+To be able to deploy a model that was created in a different account, the user must have a role that has access to SageMaker actions, such as a role with the `AmazonSageMakerFullAccess` managed policy\. For information about SageMaker managed policies, see [AWS Managed Policies for Amazon SageMaker](security-iam-awsmanpol.md)\.

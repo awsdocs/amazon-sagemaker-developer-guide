@@ -33,7 +33,7 @@ spark_processor.run(
 )
 ```
 
- For an in\-depth look, see the Distributed Data Processing with Apache Spark and SageMaker Processing [example notebook](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker_processing/spark_distributed_data_processing/sagemaker-spark-processing.ipynb)\. 
+ For an in\-depth look, see the Distributed Data Processing with Apache Spark and SageMaker Processing [example notebook](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker_processing/spark_distributed_data_processing/sagemaker-spark-processing.html)\. 
 
  If you are not using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io/) and one of its Processor classes to retrieve the pre\-built images, you can retrieve these images yourself\. The SageMaker prebuilt Docker images are stored in Amazon Elastic Container Registry \(Amazon ECR\)\. For a complete list of the available pre\-built Docker images, see the [available images](https://github.com/aws/sagemaker-spark-container/blob/master/available_images.md) document\. 
 

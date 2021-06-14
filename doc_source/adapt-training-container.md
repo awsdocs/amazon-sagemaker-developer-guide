@@ -145,8 +145,8 @@ Remember that `docker` looks for a file specifically called `Dockerfile` without
    
    estimator = Estimator(image_name='tf-custom-container-test',
                          role='arn:aws:iam::111122223333:role/role-name',
-                         train_instance_count=1,
-                         train_instance_type='local')
+                         instance_count=1,
+                         instance_type='local')
    
    estimator.fit()
    ```
@@ -257,8 +257,8 @@ If this error occurs, you need to attach the **AmazonEC2ContainerRegistryFullAcc
    estimator = Estimator(image_name=byoc_image_uri,
                          role=get_execution_role(),
                          base_job_name='tf-custom-container-test-job',
-                         train_instance_count=1,
-                         train_instance_type='ml.p2.xlarge')
+                         instance_count=1,
+                         instance_type='ml.p2.xlarge')
    
    # start training
    estimator.fit()
@@ -290,7 +290,7 @@ If this error occurs, you need to attach the **AmazonEC2ContainerRegistryFullAcc
 
 ------
 
-For a full example that shows how to test a custom container locally and push it to an Amazon ECR image, see the [ Building Your Own TensorFlow Container](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/advanced_functionality/tensorflow_bring_your_own/tensorflow_bring_your_own.ipynb) example notebook\.
+For a full example that shows how to test a custom container locally and push it to an Amazon ECR image, see the [ Building Your Own TensorFlow Container](https://sagemaker-examples.readthedocs.io/en/latest/advanced_functionality/tensorflow_bring_your_own/tensorflow_bring_your_own.html) example notebook\.
 
 ## Step 6: Clean up resources<a name="byoc-training-step6"></a>
 

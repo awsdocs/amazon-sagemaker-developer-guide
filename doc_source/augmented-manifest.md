@@ -123,10 +123,10 @@ The following shows how to train a model with an augmented manifest file using t
 # Create a model object set to using "Pipe" mode.
 model = sagemaker.estimator.Estimator(training_image,
                                       role,
-                                      train_instance_count=1,
-                                      train_instance_type='ml.p3.2xlarge',
-                                      train_volume_size = 50,
-                                      train_max_run = 360000,
+                                      instance_count=1,
+                                      instance_type='ml.p3.2xlarge',
+                                      volume_size = 50,
+                                      max_run = 360000,
                                       input_mode = 'Pipe',
                                       output_path=s3_output_location,
                                       sagemaker_session=session)

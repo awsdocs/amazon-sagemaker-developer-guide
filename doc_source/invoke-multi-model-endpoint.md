@@ -12,7 +12,7 @@ response = runtime_sm_client.invoke_endpoint(
                         Body         = body)
 ```
 
-The multi\-model endpoint dynamically loads target models as needed\. You can observe this when running the [MME Sample Notebook](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/advanced_functionality/multi_model_xgboost_home_value/xgboost_multi_model_endpoint_home_value.ipynb) as it iterates through random invocations against multiple target models hosted behind a single endpoint\. The first request against a given model takes longer because the model has to be downloaded from Amazon Simple Storage Service \(Amazon S3\) and loaded into memory\. \(This is called a cold start\.\) Subsequent calls finish faster because there's no additional overhead after the model has loaded\.
+The multi\-model endpoint dynamically loads target models as needed\. You can observe this when running the [MME Sample Notebook](https://sagemaker-examples.readthedocs.io/en/latest/advanced_functionality/multi_model_xgboost_home_value/xgboost_multi_model_endpoint_home_value.html) as it iterates through random invocations against multiple target models hosted behind a single endpoint\. The first request against a given model takes longer because the model has to be downloaded from Amazon Simple Storage Service \(Amazon S3\) and loaded into memory\. \(This is called a cold start\.\) Subsequent calls finish faster because there's no additional overhead after the model has loaded\.
 
 ## Retry Requests on ModelNotReadyException Errors<a name="invoke-multi-model-config-retry"></a>
 

@@ -18,6 +18,12 @@ In either framework, the library manages the communication between devices throu
 
 The auto\-partition design adapts to the characteristics of the framework, and the library does the partitioning at the granularity level that is more natural in each framework\. For instance, in TensorFlow, each specific operation can be assigned to a different device, whereas in PyTorch, the assignment is done at the module level, where each module consists of multiple operations\. The follow section reviews the specifics of the design in each framework\.
 
+#### Automated Model Splitting with PyTorch<a name="model-parallel-auto-model-split-pt"></a>
+
+During the first training step, the model parallel library internally runs a tracing step that is meant to construct the model graph and determine the tensor and parameter shapes\. After this tracing step, the library constructs a tree, which consists of the nested `nn.Module` objects in the model, as well as additional data gathered from tracing, such as the amount of stored `nn.Parameters`, and execution time for each `nn.Module`\. 
+
+Next, the library traverses this tree from the root and runs a partitioning algorithm that assigns each `nn.Module` to a device, which balances computational load \(measured by module execution time\) and memory use \(measured by the total stored `nn.Parameter` size and activations\)\. If multiple `nn.Modules` share the same `nn.Parameter`, then these modules are placed on the same device to avoid maintaining multiple versions of the same parameter\. Once the partitioning decision is made, the assigned modules and weights are loaded to their devices\.
+
 #### Automated Model Splitting with TensorFlow<a name="model-parallel-auto-model-split-tf"></a>
 
 The model parallel library analyzes the sizes of the trainable variables and the graph structure, and internally uses a graph partitioning algorithm\. This algorithm comes up with a device assignment for each operation, with the objective of minimizing the amount of communication needed across devices, subject to two constraints: 
@@ -27,12 +33,6 @@ The model parallel library analyzes the sizes of the trainable variables and the
 If you specify `speed` for `optimize` \(in the model parallel parameters in the Python SDK\), the library tries to balance the number of operations and `tf.Variable` objects in each device\. Otherwise, it tries to balance the total size of `tf.Variables`\.
 
 Once the partitioning decision is made, the library creates a serialized representation of the subgraph that each device needs to execute and imports them onto each device\. While partitioning, the library places operations that consume the same `tf.Variable` and operations that are part of the same Keras layer onto the same device\. It also respects the colocation constraints imposed by TensorFlow\. This means that, for example, if there are two Keras layers that share a `tf.Variable`, then all operations that are part of these layers are placed on a single device\.
-
-#### Automated Model Splitting with PyTorch<a name="model-parallel-auto-model-split-pt"></a>
-
-During the first training step, the model parallel library internally runs a tracing step that is meant to construct the model graph and determine the tensor and parameter shapes\. After this tracing step, the library constructs a tree, which consists of the nested `nn.Module` objects in the model, as well as additional data gathered from tracing, such as the amount of stored `nn.Parameters`, and execution time for each `nn.Module`\. 
-
-Next, the library traverses this tree from the root and runs a partitioning algorithm that assigns each `nn.Module` to a device, which balances computational load \(measured by module execution time\) and memory use \(measured by the total stored `nn.Parameter` size and activations\)\. If multiple `nn.Modules` share the same `nn.Parameter`, then these modules are placed on the same device to avoid maintaining multiple versions of the same parameter\. Once the partitioning decision is made, the assigned modules and weights are loaded to their devices\.
 
 #### Comparison of Automated Model Splitting Between Frameworks<a name="model-parallel-auto-model-split-comparison"></a>
 
@@ -58,7 +58,7 @@ The library offers two different pipeline schedules, *simple* and *interleaved*,
 
 ### Interleaved Pipeline<a name="model-parallel-pipeline-execution-interleaved"></a>
 
-In an interleaved pipeline, backward execution of the microbatches is prioritized whenever possible\. This allows quicker release of the memory used for activations, using memory more efficiently\. It also allows for scaling the number of microbatches higher, reducing the idle time of the GPUs\. At steady\-state, each device alternates between executing forward and backward passes\. This means that the backward pass of one microbatch may execute before the forward pass of another microbatch finishes\.
+In an interleaved pipeline, backward execution of the microbatches is prioritized whenever possible\. This allows quicker release of the memory used for activations, using memory more efficiently\. It also allows for scaling the number of microbatches higher, reducing the idle time of the GPUs\. At steady\-state, each device alternates between running forward and backward passes\. This means that the backward pass of one microbatch may run before the forward pass of another microbatch finishes\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/distributed/model-parallel/interleaved-pipeline-execution.png)
 
@@ -66,7 +66,7 @@ The preceding figure illustrates an example execution schedule for the interleav
 
 ### Simple Pipeline<a name="model-parallel-pipeline-execution-simple"></a>
 
-A simple pipeline, by contrast, finishes executing the forward pass for each microbatch before starting the backward pass\. This means that it only pipelines the forward pass and backward pass stages within themselves\. The following figure illustrates an example of how this works, over 2 GPUs\.
+A simple pipeline, by contrast, finishes running the forward pass for each microbatch before starting the backward pass\. This means that it only pipelines the forward pass and backward pass stages within themselves\. The following figure illustrates an example of how this works, over 2 GPUs\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/distributed/model-parallel/simple-pipeline-execution.png)
 

@@ -20,3 +20,4 @@ This notebook has been verified to run in Amazon SageMaker Studio only\. If you 
 + [Measure Posttraining Data and Model Bias](clarify-measure-post-training-bias.md)
 + [Configure an Amazon SageMaker Clarify Processing Jobs for Fairness and Explainability](clarify-configure-processing-jobs.md)
 + [Run SageMaker Clarify Processing Jobs for Bias Analysis and Explainability](clarify-processing-job-run.md)
++ [Troubleshoot SageMaker Clarify Processing Jobs](clarify-processing-job-run-troubleshooting.md)

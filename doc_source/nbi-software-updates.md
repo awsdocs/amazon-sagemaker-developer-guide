@@ -14,4 +14,4 @@ You can also manually update software installed on your notebook instance while 
 **Note**  
 Updating kernels and some packages might depend on whether root access is enabled for the notebook instance\. For more information, see [Control root access to a SageMaker notebook instance](nbi-root-access.md)\.
 
-Notebook instances do not notify you if you are running outdated software\. You can check the [Personal Health Dashboard](https://aws.amazon.com/premiumsupport/technology/personal-health-dashboard/) or the security bulletin at [https://aws\.amazon\.com/security/security\-bulletins/ ](https://aws.amazon.com/security/security-bulletins/) for updates\.
+Notebook instances do not notify you if you are running outdated software\. You can check the [Personal Health Dashboard](https://aws.amazon.com/premiumsupport/technology/personal-health-dashboard/) or the security bulletin at [Security Bulletins](http://aws.amazon.com/security/security-bulletins/) for updates\.

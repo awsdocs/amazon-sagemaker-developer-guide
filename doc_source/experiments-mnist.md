@@ -35,7 +35,7 @@ For a tutorial that showcases additional features of Studio, see [Amazon SageMak
 
 ## Install the Experiments SDK and Import Modules<a name="experiments-mnist-setup"></a>
 
-The SageMaker Experiments SDK is separate from the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), which comes preinstalled in SageMaker Studio\. Run the first few cells in the notebook to install the Experiments SDK and import the Experiments modules\. The relevant sections of the notebook cells are displayed below\. For more information on the Experiments SDK, see [sagemaker\-experiments](https://github.com/aws/sagemaker-experiments)\.
+The [Amazon SageMaker Experiments Python SDK](https://sagemaker-experiments.readthedocs.io) is separate from the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), which comes preinstalled in SageMaker Studio\. Run the first few cells in the notebook to install the Experiments SDK and import the Experiments modules\. The relevant sections of the notebook cells are displayed below\.
 
 ```
 import sys
@@ -62,7 +62,7 @@ Your screen should look similar to the following:
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-mnist-s3-files.png)
 
-The last cell in the **Dataset** section creates a [Tracker](https://github.com/aws/sagemaker-experiments/blob/master/src/smexperiments/tracker.py) for the transform job\. The tracker logs the normalization parameters and the URI of the Amazon S3 bucket where the transformed dataset is stored\. In a later section, we show how to find this information in Studio\. In the next section, the tracker is used to track the experiment and trial runs\.
+The last cell in the **Dataset** section creates a [Tracker](https://sagemaker-experiments.readthedocs.io/en/latest/tracker.html) for the transform job\. The tracker logs the normalization parameters and the URI of the Amazon S3 bucket where the transformed dataset is stored\. In a later section, we show how to find this information in Studio\. In the next section, the tracker is used to track the experiment and trial runs\.
 
 ```
 with Tracker.create(display_name="Preprocessing", sagemaker_boto_client=sm) as tracker:

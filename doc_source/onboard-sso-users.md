@@ -10,9 +10,9 @@ This topic describes how to onboard to Amazon SageMaker Studio using AWS SSO aut
 
 1. On the **SageMaker Studio** page, under **Get started**, choose **Standard setup**\.
 
-1. For **Authentication method**, choose **AWS Single Sign\-On \(SSO\)**\. A message tells you whether you have an AWS SSO account in an AWS Region supported by SageMaker Studio\.
+1. For **Authentication method**, choose **AWS Single Sign\-On \(SSO\)**\.
 
-1. If you don't have an AWS SSO account in a supported Region, you must create an AWS SSO account in a supported Region before proceeding\. To continue to onboard without creating a new AWS SSO account, choose the **AWS Identity and Access Management \(IAM\)** authentication method or the **Quick start** procedure, which also uses IAM\.
+1. If you don't have an AWS SSO account in the same Region as your SageMaker Studio Domain, you must create an AWS SSO account in the same Region as your SageMaker Studio Domain before proceeding\. To continue to onboard without creating a new AWS SSO account, choose the **AWS Identity and Access Management \(IAM\)** authentication method or the **Quick start** procedure, which also uses IAM\.
 
    For information about setting up AWS SSO for use with Studio, see [Set Up AWS SSO for Use with Amazon SageMaker Studio](onboard-sso-setup.md)\.
 

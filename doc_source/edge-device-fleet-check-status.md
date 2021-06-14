@@ -2,7 +2,7 @@
 
 Check that your device or fleet is connected and sampling data\. Making periodic checks, manually or automatically, allows you to check that your device or fleet is working properly\.
 
-Use the [Amazon S3 console](https://console.aws.amazon.com/s3/) to interactively choose a fleet for a status check\. You can also use the AWS SDK for Python \(Boto3\)\. The following describes different APIs from Boto3 you can use to check the status of your device or fleet\. Use the API that best fits your use case\.
+Use the Amazon S3 console at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/) to interactively choose a fleet for a status check\. You can also use the AWS SDK for Python \(Boto3\)\. The following describes different APIs from Boto3 you can use to check the status of your device or fleet\. Use the API that best fits your use case\.
 + **Check an individual device\.**
 
   To check the status of an individual device, use `DescribeDevice` API\. A list containing one or more models is provided if a models have been deployed to the device\.
@@ -38,7 +38,7 @@ Use the [Amazon S3 console](https://console.aws.amazon.com/s3/) to interactively
   To check the status of the fleet, use the `GetDeviceFleetReport` API\. Provide the name of the device fleet to get a summary of the fleet\.
 
   ```
-  sagemaer_client.get_device_fleet_report(
+  sagemaker_client.get_device_fleet_report(
       DeviceFleetName="sample-fleet-name"
   )
   ```

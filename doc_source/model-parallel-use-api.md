@@ -14,9 +14,17 @@ For options 2 and 3 in the preceding list, refer to [Extend or Adapt A Docker Co
 
 In all cases, you launch your job using a SageMaker Python SDK TensorFlow or PyTorch `Estimator` to initialize the library and launch a training job\. See the following section, [Launch a Training Job with the SageMaker Python SDK](#model-parallel-sm-sdk), to learn more\.
 
+**Important**  
+If you launch a training job using an ml\.p4d instance type \(such as ml\.p4d\.24xlarge\), for best performance set the following flags in the `mpirun` command\. If you use one of these flags, you *must* use the other\.  
+
+```
+-x FI_EFA_USE_DEVICE_RDMA=1 -x FI_PROVIDER=efa
+```
+Additionally, if you are using PyTorch, you must set the data loader variable `num_wokers=0`\. To Learn more about the data loader requirement, see [Important Considerations](model-parallel-customize-training-script-pt.md#model-parallel-pt-considerations)\.
+
 ## Launch a Training Job with the SageMaker Python SDK<a name="model-parallel-sm-sdk"></a>
 
-The SageMaker Python SDK supports managed training of TensorFlow and PyTorch models\. To launch a training job using one of these frameworks, you can define a [TensorFlow `Estimator`](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/sagemaker.tensorflow.html#tensorflow-estimator) or a [PyTorch `Estimator`](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/sagemaker.pytorch.html#pytorch-estimator)\.
+The SageMaker Python SDK supports managed training of TensorFlow and PyTorch models\. To launch a training job using one of these frameworks, you can define a [TensorFlow `Estimator`](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/sagemaker.tensorflow.html#tensorflow-estimator) or a [PyTorch `Estimator`](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/sagemaker.pytorch.html#pytorch-estimator)\. 
 
 The TensorFlow and PyTorch `Estimator` object contains a `distribution` parameter, which is used to enable and specify parameters for the initialization of SageMaker's distributed model parallel library\. The library internally uses MPI, so in order to use model parallelism, MPI must be enabled using the `distribution` parameter\. 
 
@@ -79,6 +87,12 @@ To enable the library, a dictionary with the keys `"mpi"` and `"smdistributed"` 
   --mca btl_vader_single_copy_mechanism none
   ```
 
+  If you launch a training job using an ml\.p4d instance type \(such as ml\.p4d\.24xlarge\), for best performance use the following flags in the `mpirun` command:
+
+  ```
+  -x FI_EFA_USE_DEVICE_RDMA=1 -x FI_PROVIDER=efa
+  ```
+
 For the `"smdistributed"` key, a dictionary must be passed which has the only key `"modelparallel"`\. Using `"modelparallel"` and `"dataparallel"` in the same training job is not supported\. 
 
 For the `"modelparallel"` dictionary, an inner dictionary must be passed, which enables the modelparallel library by setting `"enabled": True`, as well as a dict of `"parameters"` to customize the library\. Among the parameters, the `"partitions"` key is required, which specifies how many model partitions are requested\. To learn more about values you can use in `parameters`, see the [SageMaker distributed data parallel API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel.html)\.
@@ -93,18 +107,16 @@ Use the following resources to learn more about using the SageMaker Python SDK w
 
 ## Extend or Adapt A Docker Container that Contains SageMaker's Distributed Model Parallel Library<a name="model-parallel-customize-container"></a>
 
-To extend a pre\-built container, or adapt your own container to use SageMaker's distributed model parallel library, you must use one of the following Pytorch or TensorFlow GPU general framework base\-images:
-+ 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/tensorflow\-training:2\.4\.1\-gpu\-py37\-cu110\-ubuntu18\.04
-+ 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/tensorflow\-training:2\.3\.1\-gpu\-py37\-cu110\-ubuntu18\.04
-+ 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/pytorch\-training:1\.8\.0\-gpu\-py36\-cu111\-ubuntu18\.04
-+ 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/pytorch\-training:1\.7\.1\-gpu\-py36\-cu110\-ubuntu18\.04
-+ 763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/pytorch\-training:1\.6\.0\-gpu\-py36\-cu110\-ubuntu18\.04 
+To extend a pre\-built container, or adapt your own container to use SageMaker's distributed model parallel library, you must use one of the PyTorch or TensorFlow GPU general framework base\-images\. The distributed model parallel library is included in all CUDA 11 \(`cu11x`\) TensorFlow 2\.3\.x and PyTorch 1\.6\.x versioned images and later\. See [Available Deep Learning Containers Images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md) for a list of available images\. 
 
-For example, if you were using Pytorch 1\.7\.1 in us\-east\-1, your Dockerfile should contain a `FROM` statement similar to the following:
+**Tip**  
+It is recommended that you use the image that contains the latest version of TensorFlow or PyTorch to access the most up to date version of the SageMaker distributed model parallel library\.
+
+For example, if you are using PyTorch 1\.8\.1, your Dockerfile should contain a `FROM` statement similar to the following:
 
 ```
 # SageMaker PyTorch image
-FROM 763104351884.dkr.ecr.us-east-1.amazonaws.com/pytorch-training:1.7.1-gpu-py36-cu110-ubuntu18.04
+FROM 763104351884.dkr.ecr.us-east-1.amazonaws.com/pytorch-training:1.8.1-gpu-py36-cu111-ubuntu18.04
 
 # Add your dependencies here
 RUN ...

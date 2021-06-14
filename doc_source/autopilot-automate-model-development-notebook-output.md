@@ -20,4 +20,4 @@ A notebook is produced during the analysis phase of the AutoML job that helps yo
 
 ## Candidate definition notebook<a name="candidate-generation-notebook"></a>
 
-The candidate defintion notebook contains each suggested preprocessing step, algorithm, and hyperparameter ranges\. If you chose just to produce the notebook and not to run the AutoML job, you can then decide which candidates are to be trained and tuned\. They optimize automatically and a final, best candidate is identified\. If you ran the job directly without seeing the candidates first, then only best candidate is displayed when you open the notebook after the completion of the job\.
+The candidate definition notebook contains each suggested preprocessing step, algorithm, and hyperparameter ranges\. If you chose just to produce the notebook and not to run the AutoML job, you can then decide which candidates are to be trained and tuned\. They optimize automatically and a final, best candidate is identified\. If you ran the job directly without seeing the candidates first, then only best candidate is displayed when you open the notebook after the completion of the job\.

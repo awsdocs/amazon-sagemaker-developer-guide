@@ -50,7 +50,7 @@ Additionally, if you want the user to be able to access and deploy the Ground Tr
 
 **Policies to See Lambda Functions in the Ground Truth Console**
 
-To grant an IAM entity permission to view Lambda functions in the Ground Truth console when the user is creating a custom labeling job, the entity must have the permissions described in [Permissions Required to Use the Amazon SageMaker Ground Truth Console and API](sms-security-permission.md#sms-security-permission-console-access), including the permissions described in the section [Create a Custom Labeling Workflow in the Console](sms-security-permission.md#sms-security-permissions-custom-workflow)\.
+To grant an IAM entity permission to view Lambda functions in the Ground Truth console when the user is creating a custom labeling job, the entity must have the permissions described in [Grant IAM Permission to Use the Amazon SageMaker Ground Truth Console](sms-security-permission-console-access.md), including the permissions described in the section [Custom Labeling Workflow Permissions](sms-security-permission-console-access.md#sms-security-permissions-custom-workflow)\.
 
 ## Grant IAM Execution Role Permission to Invoke AWS Lambda Functions<a name="sms-custom-templates-step3-postlambda-execution-role-perms"></a>
 

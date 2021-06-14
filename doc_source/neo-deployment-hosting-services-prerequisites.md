@@ -11,7 +11,7 @@ To create a SageMaker Neo\-compiled model, you need the following:
 
    1. **For PyTorch and MXNet models:**
 
-      *If you trained your model using SageMaker*, the training script must implement the functions described below\. The training script serves as the entry point script during inference\. In the example detailed in [ MNIST Training, Compilation and Deployment with MXNet Module and SageMaker Neo](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker_neo_compilation_jobs/mxnet_mnist/mxnet_mnist_neo.ipynb), the training script \(`mnist.py`\) implements the required functions\.
+      *If you trained your model using SageMaker*, the training script must implement the functions described below\. The training script serves as the entry point script during inference\. In the example detailed in [ MNIST Training, Compilation and Deployment with MXNet Module and SageMaker Neo](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker_neo_compilation_jobs/mxnet_mnist/mxnet_mnist_neo.html), the training script \(`mnist.py`\) implements the required functions\.
 
       * If you did not train your model using SageMaker*, you need to provide an entry point script \(`inference.py`\) file that can be used at the time of inference\. Based on the framework—MXNet or PyTorch—the inference script location must conform to the SageMaker Python SDK [Model Directory Structure for MxNet](https://sagemaker.readthedocs.io/en/stable/frameworks/mxnet/using_mxnet.html#model-directory-structure) or [ Model Directory Structure for PyTorch](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/using_pytorch.html#model-directory-structure)\. 
 
@@ -306,7 +306,7 @@ The preceding two functions do not use any of the functionalities of MXNet, PyTo
 **Note**  
 Note that if handler function is implemented, `input_handler` and `output_handler` are ignored\. 
 
-      The following is a code example of `inference.py` script that you can put together with the compile model to perform custom pre\- and post\-processing on an image classification model\. The SageMaker client sends the image file as an `application/x-image` content type to the `input_handler` function, where it is converted to JSON\. The converted image file is then sent to the [Tensorflow Model Server \(TFX\)](https://www.tensorflow.org/tfx/serving/api_rest) using then REST API\. 
+      The following is a code example of `inference.py` script that you can put together with the compile model to perform custom pre\- and post\-processing on an image classification model\. The SageMaker client sends the image file as an `application/x-image` content type to the `input_handler` function, where it is converted to JSON\. The converted image file is then sent to the [Tensorflow Model Server \(TFX\)](https://www.tensorflow.org/tfx/serving/api_rest) using the REST API\. 
 
       ```
       import json
@@ -334,7 +334,7 @@ Note that if handler function is implemented, `input_handler` and `output_handle
           body = json.dumps({"signature_name": "serving_default", "instances": image.tolist()})
           return body
       
-          def output_handler(data, context):
+      def output_handler(data, context):
           """Post-process TensorFlow Serving output before it is returned to the client.
           
           Args:

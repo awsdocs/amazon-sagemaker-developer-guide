@@ -10,6 +10,7 @@ You can monitor Amazon SageMaker using Amazon CloudWatch, which collects raw dat
 + [SageMaker Jobs and Endpoint Metrics](#cloudwatch-metrics-jobs)
 + [SageMaker Ground Truth Metrics](#cloudwatch-metrics-ground-truth)
 + [SageMaker Feature Store Metrics](#cloudwatch-metrics-feature-store)
++ [SageMaker Pipelines Metrics](#cloudwatch-metrics-pipelines)
 
 ## SageMaker Endpoint Invocation Metrics<a name="cloudwatch-metrics-endpoint-invocation"></a>
 
@@ -95,7 +96,7 @@ Metrics are available at a 1\-minute frequency\.
 
 | Metric | Description | 
 | --- | --- | 
-| CPUUtilization | The percentage of CPU units that are used by the containers on an instance\. The value can range between 0 and 100, and is multiplied by the number of CPUs\. For example, if there are four CPUs, `CPUUtilization` can range from 0% to 400%\.For processing jobs, the value is the CPU utilization of the processing container on the instance\.For training jobs, the value is the CPU utilization of the algorithm container on the instance\.For batch transform jobs, the value is the CPU utilization of the transform container on the instance\.For endpoint variants, the value is the sum of the CPU utilization of the primary and supplementary containers on the instance\. For multi\-instance, each instance reports CPU utilization metrics\. However, the default view in CloudWatch shows the average CPU utilization across all instances\. Units: Percent | 
+| CPUUtilization |  The sum of each individual CPU core's utilization\. The CPU utilization of each core can range between 0 and 100\. For example, if there are four CPUs, `CPUUtilization` can range from 0% to 400%\. For processing jobs, the value is the CPU utilization of the processing container on the instance\.For training jobs, the value is the CPU utilization of the algorithm container on the instance\.For batch transform jobs, the value is the CPU utilization of the transform container on the instance\.For endpoint variants, the value is the sum of the CPU utilization of the primary and supplementary containers on the instance\. For multi\-instance, each instance reports CPU utilization metrics\. However, the default view in CloudWatch shows the average CPU utilization across all instances\. Units: Percent | 
 | MemoryUtilization | The percentage of memory that is used by the containers on an instance\. This value can range between 0% and 100%\.For processing jobs, the value is the memory utilization of the processing container on the instance\.For training jobs, the value is the memory utilization of the algorithm container on the instance\.For batch transform jobs, the value is the memory utilization of the transform container on the instance\.For endpoint variants, the value is the sum of the memory utilization of the primary and supplementary containers on the instance\.Units: Percent For multi\-instance, each instance reports memory utilization metrics\. However, the default view in CloudWatch shows the average memory utilization across all instances\.  | 
 | GPUUtilization | The percentage of GPU units that are used by the containers on an instance\. The value can range between 0 and 100 and is multiplied by the number of GPUs\. For example, if there are four GPUs, `GPUUtilization` can range from 0% to 400%\.For processing jobs, the value is the GPU utilization of the processing container on the instance\.For training jobs, the value is the GPU utilization of the algorithm container on the instance\.For batch transform jobs, the value is the GPU utilization of the transform container on the instance\.For endpoint variants, the value is the sum of the GPU utilization of the primary and supplementary containers on the instance\. For multi\-instance, each instance reports GPU utilization metrics\. However, the default view in CloudWatch shows the average GPU utilization across all instances\. Units: Percent | 
 | GPUMemoryUtilization | The percentage of GPU memory used by the containers on an instance\. The value can range between 0 and 100 and is multiplied by the number of GPUs\. For example, if there are four GPUs, `GPUMemoryUtilization` can range from 0% to 400%\.For processing jobs, the value is the GPU memory utilization of the processing container on the instance\.For training jobs, the value is the GPU memory utilization of the algorithm container on the instance\.For batch transform jobs, the value is the GPU memory utilization of the transform container on the instance\.For endpoint variants, the value is the sum of the GPU memory utilization of the primary and supplementary containers on the instance\. For multi\-instance, each instance reports GPU memory utilization metrics\. However, the default view in CloudWatch shows the average GPU memory utilization across all instances\. Units: Percent | 
@@ -115,17 +116,18 @@ Metrics are available at a 1\-minute frequency\.
 
 | Metric | Description | 
 | --- | --- | 
-| ActiveWorkers |  The number of workers on a private work team performing a labeling job\. Units: None Valid statistics: Max  | 
+| ActiveWorkers |  A single active worker on a private work team submitted, released, or declined a task\. To get the total number of active workers, use the Sum statistic\. Ground Truth attempts to deliver each individual `ActiveWorkers` event once\. If this delivery is unsuccessful, this metric may not report the total number of active workers Units: None Valid statistics: Sum, Sample Count  | 
 | DatasetObjectsAutoAnnotated |  The number of dataset objects auto\-annotated in a labeling job\. This metric is only emitted when automated labeling is enabled\. To view the labeling job progress, use the Max metric\. Units: None Valid statistics: Max  | 
 | DatasetObjectsHumanAnnotated |  The number of dataset objects annotated by a human in a labeling job\. To view the labeling job progress, use the Max metric\. Units: None Valid statistics: Max  | 
 | DatasetObjectsLabelingFailed |  The number of dataset objects that failed labeling in a labeling job\. To view the labeling job progress, use the Max metric\. Units: None Valid statistics: Max  | 
-| JobsFailed |  The number of labeling jobs that failed\. To get the total number of labeling jobs that failed, use the Sum statistic\. Units: None Valid statistics: Sum, Sample Count  | 
-| JobsSucceeded |  The number of labeling jobs that succeeded\. To get the total number of labeling jobs that succeeded, use the Sum statistic\. Units: None Valid statistics: Sum, Sample Count  | 
-| JobsStopped |  The number of labeling jobs that were stopped\. To get the total number of labeling jobs that were stopped, use the Sum statistic\. Units: None Valid statistics: Sum, Sample Count  | 
-| TasksAccepted |   The total number of tasks accepted by workers\.  Units: None  Valid statistics: Max   | 
-| TasksReturned |   The total number of tasks returned by workers\.  Units: None  Valid statistics: Max   | 
-| TasksSubmitted |  The number of tasks submitted/completed by a private work team\. Units: None Valid statistics: Max  | 
-| TimeSpent |  Time spent on a task completed by a private work team\. Units: Seconds Valid statistics: Max  | 
+| JobsFailed |  A single labeling job failed\. To get the total number of labeling jobs that failed, use the Sum statistic\. Units: None Valid statistics: Sum, Sample Count  | 
+| JobsSucceeded |  A single labeling job succeeded\. To get the total number of labeling jobs that succeeded, use the Sum statistic\. Units: None Valid statistics: Sum, Sample Count  | 
+| JobsStopped |  A single labeling jobs was stopped\. To get the total number of labeling jobs that were stopped, use the Sum statistic\. Units: None Valid statistics: Sum, Sample Count  | 
+| TasksAccepted |  A single task was accepted by a worker\. To get the total number of tasks accepted by workers, use the Sum statistic\. Ground Truth attempts to deliver each individual `TaskAccepted` event once\. If this delivery is unsuccessful, this metric may not report the total number of tasks accepted\. Units: None  Valid statistics: Sum, Sample Count  | 
+| TasksDeclined |  A single task was declined by a worker\. To get the total number of tasks declined by workers, use the Sum statistic\. Ground Truth attempts to deliver each individual `TasksDeclined` event once\. If this delivery is unsuccessful, this metric may not report the total number of tasks declined\. Units: None Valid Statistics: Sum, Sample Count  | 
+| TasksReturned |  A single task was returned\. To get the total number of tasks returned, use the Sum statistic\. Ground Truth attempts to deliver each individual `TasksReturned` event once\. If this delivery is unsuccessful, this metric may not report the total number of tasks returned\. Units: None  Valid statistics: Sum, Sample Count  | 
+| TasksSubmitted |  A single task was submitted/completed by a private worker\. To get the total number of tasks submitted by workers, use the Sum statistic\. Ground Truth attempts to deliver each individual `TasksSubmitted` event once\. If this delivery is unsuccessful, this metric may not report the total number of tasks submitted\. Units: None Valid statistics: Sum, Sample Count  | 
+| TimeSpent |  Time spent on a task completed by a private worker\. This metric does not include time when a worker paused or took a break\. Ground Truth attempts to deliver each `TimeSpent` event once\. If this delivery is unsuccessful, this metric may not report the total amount of time spent\. Units: Seconds Valid statistics: Sum, Sample Count  | 
 | TotalDatasetObjectsLabeled |  The number of dataset objects labeled successfully in a labeling job\. To view the labeling job progress, use the Max metric\. Units: None Valid statistics: Max  | 
 
 **Dimensions for Dataset Object Metrics**
@@ -151,3 +153,53 @@ Metrics are available at a 1\-minute frequency\.
 | Dimension | Description | 
 | --- | --- | 
 | FeatureGroupName, OperationName |  Filters feature store runtime operation metrics of the specified feature group\.  | 
+
+## SageMaker Pipelines Metrics<a name="cloudwatch-metrics-pipelines"></a>
+
+The `AWS/Sagemaker/ModelBuildingPipeline` namespace includes the following metrics for pipeline executions\.
+
+Two categories of Pipelines execution metrics are available:
++  **Execution Metrics across All Pipelines** – Account level pipeline execution metrics \(for all pipelines in the current account\)
++  **Execution Metrics by Pipeline** – Pipeline execution metrics per pipeline
+
+Metrics are available at a 1\-minute frequency\.
+
+**Pipelines Execution Metrics**
+
+
+| Metric | Description | 
+| --- | --- | 
+| ExecutionStarted |  The number of pipeline executions that started\. Units: Count Valid statistics: Average, Sum  | 
+| ExecutionFailed |  The number of pipeline executions that failed\. Units: Count Valid statistics: Average, Sum  | 
+| ExecutionSucceeded |  The number of pipeline executions that succeeded\. Units: Count Valid statistics: Average, Sum  | 
+| ExecutionStopped |  The number of pipeline executions that stopped\. Units: Count Valid statistics: Average, Sum  | 
+| ExecutionDuration |  The duration in milliseconds that the pipeline execution ran\. Units: Milliseconds Valid statistics: Average, Sum, Min, Max, Sample Count  | 
+
+**Dimensions for Execution Metrics by Pipeline**
+
+
+| Dimension | Description | 
+| --- | --- | 
+| PipelineName |  Filters pipeline execution metrics for a specified pipeline\.  | 
+
+**Pipelines Step Metrics**
+
+The `AWS/Sagemaker/ModelBuildingPipeline` namespace includes the following metrics for pipeline steps\.
+
+Metrics are available at a 1\-minute frequency\.
+
+
+| Metric | Description | 
+| --- | --- | 
+| StepStarted |  The number of steps that started\. Units: Count Valid statistics: Average, Sum  | 
+| StepFailed |  The number of steps that failed\. Units: Count Valid statistics: Average, Sum  | 
+| StepSucceeded |  The number of steps that succeeded\. Units: Count Valid statistics: Average, Sum  | 
+| StepStopped |  The number of steps that stopped\. Units: Count Valid statistics: Average, Sum  | 
+| StepDuration |  The duration in milliseconds that the step ran\. Units: Milliseconds Valid statistics: Average, Sum, Min, Max, Sample Count  | 
+
+**Dimensions for Pipelines Step Metrics**
+
+
+| Dimension | Description | 
+| --- | --- | 
+| PipelineName, StepName |  Filters step metrics for a specified pipeline and step\.  | 

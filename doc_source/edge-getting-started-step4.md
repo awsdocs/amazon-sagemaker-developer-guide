@@ -2,6 +2,10 @@
 
 The Edge Manager agent is an inference engine for your edge devices\. Use the agent to make predictions with models loaded onto your edge devices\. The agent also collects model metrics and captures data at specific intervals\.
 
+
+
+In this section you will set up your device with the agent\. To do so, first copy a release artifact and signing root certificate from the release bucket locally to your machine\. After you unzip the release artifact, upload it to Amazon S3\. Next, define and save a configuration file for the agent\. A template is provided for you to copy and paste\. Finally, copy the release artifacts, configuration file, and credentials to your device\.
+
 1. **Download the SageMaker Edge Manager agent\.**
 
    The agent is released in binary format for supported operating systems\. This example runs inference on a Linux platform \(Rasperry Pi OS is based on Debian\)\. Fetch the latest version of binaries from the SageMaker Edge Manager release bucket from the us\-west\-2 Region\.
@@ -49,7 +53,7 @@ The Edge Manager agent is an inference engine for your edge devices\. Use the ag
 
    ```
    sagemaker_edge_config = {
-       "sagemaker_edge_core_device_uuid": "device_name",
+       "sagemaker_edge_core_device_name": "device_name",
        "sagemaker_edge_core_device_fleet_name": "device_fleet_name",
        "sagemaker_edge_core_capture_data_buffer_size": 30,
        "sagemaker_edge_core_capture_data_push_period_seconds": 4,
@@ -96,7 +100,7 @@ You must first install Python, the AWS SDK for Python \(Boto3\), and the AWS CLI
 
    ```
    # Copy release artifacts 
-   aws s3 cp --profile sagemaker_docs s3://sagemaker-edge-manager-demo/release_artifacts/ ./ --recursive
+   aws s3 cp s3://sagemaker-edge-manager-demo/release_artifacts/ ./ --recursive
    ```
 
    Go the `/bin` directory and make the binary files executable:
@@ -116,9 +120,9 @@ You must first install Python, the AWS SDK for Python \(Boto3\), and the AWS CLI
    mkdir iot-credentials
    cd iot-credentials
    
-   aws s3 cp --profile sagemaker_docs s3://<bucket-name>/authorization-files/AmazonRootCA1.pem ./
-   aws s3 cp --profile sagemaker_docs s3://<bucket-name>/authorization-files/device.pem.crt ./
-   aws s3 cp --profile sagemaker_docs s3://<bucket-name>/authorization-files/private.pem.key ./
+   aws s3 cp s3://<bucket-name>/authorization-files/AmazonRootCA1.pem ./
+   aws s3 cp s3://<bucket-name>/authorization-files/device.pem.crt ./
+   aws s3 cp s3://<bucket-name>/authorization-files/private.pem.key ./
    
    cd ../
    ```
@@ -130,7 +134,7 @@ You must first install Python, the AWS SDK for Python \(Boto3\), and the AWS CLI
    
    cd certificates
    
-   aws s3 cp --profile sagemaker_docs s3://<bucket-name>/certificates/us-west-2.pem ./
+   aws s3 cp s3://<bucket-name>/certificates/us-west-2.pem ./
    
    cd agent_demo
    ```
@@ -139,7 +143,7 @@ You must first install Python, the AWS SDK for Python \(Boto3\), and the AWS CLI
 
    ```
    #Download config file from S3
-   aws s3 cp --profile sagemaker_docs s3://<bucket-name>/config_files/sagemaker_edge_config.json ./
+   aws s3 cp s3://<bucket-name>/config_files/sagemaker_edge_config.json ./
    
    cd agent_demo
    ```

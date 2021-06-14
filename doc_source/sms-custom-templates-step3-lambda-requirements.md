@@ -154,7 +154,7 @@ def lambda_handler(event, context):
 
 ## Post\-annotation Lambda<a name="sms-custom-templates-step3-postlambda"></a>
 
-When all workers have annotated the data object or when [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanLoopConfig.html#SageMaker-Type-HumanLoopConfig-TaskAvailabilityLifetimeInSeconds](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanLoopConfig.html#SageMaker-Type-HumanLoopConfig-TaskAvailabilityLifetimeInSeconds) has been reached, whichever comes first, Ground Truth sends those annotations to your post\-annotation Lambda\. This Lambda is generally used for [Consolidate Annotations ](sms-annotation-consolidation.md)\.
+When all workers have annotated the data object or when [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanLoopConfig.html#SageMaker-Type-HumanLoopConfig-TaskAvailabilityLifetimeInSeconds](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanLoopConfig.html#SageMaker-Type-HumanLoopConfig-TaskAvailabilityLifetimeInSeconds) has been reached, whichever comes first, Ground Truth sends those annotations to your post\-annotation Lambda\. This Lambda is generally used for [Consolidate Annotations](sms-annotation-consolidation.md)\.
 
 **Tip**  
 To see an example of a post\-consolidation Lambda function, see [annotation\_consolidation\_lambda\.py](https://github.com/aws-samples/aws-sagemaker-ground-truth-recipe/blob/master/aws_sagemaker_ground_truth_sample_lambda/annotation_consolidation_lambda.py) in the [aws\-sagemaker\-ground\-truth\-recipe](https://github.com/aws-samples/aws-sagemaker-ground-truth-recipe) GitHub repository\.

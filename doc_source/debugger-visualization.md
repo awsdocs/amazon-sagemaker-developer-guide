@@ -4,9 +4,9 @@ The following demos walk you through advanced use cases and visualization script
 
 **Topics**
 + [Train and Tune Your Models with Amazon SageMaker Experiments and Debugger](#debugger-visualization-video-model-pruning)
-+ [[ Using SageMaker Debugger to Monitor a Convolutional Autoencoder Model Training ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/model_specific_realtime_analysis/autoencoder_mnist/autoencoder_mnist.ipynb)](#debugger-visualization-autoencoder_mnist)
-+ [[ Using SageMaker Debugger to Monitor Attentions in BERT Model Training ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/model_specific_realtime_analysis/bert_attention_head_view/bert_attention_head_view.ipynb)](#debugger-visualization-bert_attention_head_view)
-+ [[ Using SageMaker Debugger to Visualize Class Activation Maps in Convolutional Neural Networks \(CNNs\)](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/model_specific_realtime_analysis/cnn_class_activation_maps/cnn_class_activation_maps.ipynb)](#debugger-visualization-cnn_class_activation_maps)
++ [[ Using SageMaker Debugger to Monitor a Convolutional Autoencoder Model Training ](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-debugger/model_specific_realtime_analysis/autoencoder_mnist/autoencoder_mnist.html)](#debugger-visualization-autoencoder_mnist)
++ [[ Using SageMaker Debugger to Monitor Attentions in BERT Model Training ](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-debugger/model_specific_realtime_analysis/bert_attention_head_view/bert_attention_head_view.html)](#debugger-visualization-bert_attention_head_view)
++ [[ Using SageMaker Debugger to Visualize Class Activation Maps in Convolutional Neural Networks \(CNNs\)](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-debugger/model_specific_realtime_analysis/cnn_class_activation_maps/cnn_class_activation_maps.html)](#debugger-visualization-cnn_class_activation_maps)
 
 ## Train and Tune Your Models with Amazon SageMaker Experiments and Debugger<a name="debugger-visualization-video-model-pruning"></a>
 
@@ -18,7 +18,7 @@ Find out how Amazon SageMaker Experiments and Debugger can simplify the manageme
 
 This video demonstrates a *model pruning* technique that makes pre\-trained ResNet50 and AlexNet models lighter and affordable while keeping high standards for model accuracy\.
 
-SageMaker Estimator trains those algorithms supplied from PyTorch model zoo in an AWS Deep Learning Containers with PyTorch framework, and Debugger extracts training metrics from the training process\.
+SageMaker Estimator trains those algorithms supplied from the PyTorch model zoo in an AWS Deep Learning Containers with PyTorch framework, and Debugger extracts training metrics from the training process\.
 
 The video also demonstrates how to set up a Debugger custom rule to watch the accuracy of a pruned model, to trigger an Amazon CloudWatch event and an AWS Lambda function when the accuracy hits a threshold, and to automatically stop the pruning process to avoid redundant iterations\. 
 
@@ -58,7 +58,7 @@ def train(epochs, batch_size, learning_rate):
     torch.save(model.state_dict(), os.environ['SM_MODEL_DIR'] + '/model.pt')
 ```
 
-## [ Using SageMaker Debugger to Monitor a Convolutional Autoencoder Model Training ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/model_specific_realtime_analysis/autoencoder_mnist/autoencoder_mnist.ipynb)<a name="debugger-visualization-autoencoder_mnist"></a>
+## [ Using SageMaker Debugger to Monitor a Convolutional Autoencoder Model Training ](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-debugger/model_specific_realtime_analysis/autoencoder_mnist/autoencoder_mnist.html)<a name="debugger-visualization-autoencoder_mnist"></a>
 
 This notebook demonstrates how SageMaker Debugger visualizes tensors from an unsupervised \(or self\-supervised\) learning process on a MNIST image dataset of handwritten numbers\.
 
@@ -74,13 +74,13 @@ This notebook example demonstrates how to visualize the latent variables using D
 
 ![\[A conceptual image of convolutional autoencoder\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger/debugger-cnn-autoencoder-plot.gif)
 
-## [ Using SageMaker Debugger to Monitor Attentions in BERT Model Training ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/model_specific_realtime_analysis/bert_attention_head_view/bert_attention_head_view.ipynb)<a name="debugger-visualization-bert_attention_head_view"></a>
+## [ Using SageMaker Debugger to Monitor Attentions in BERT Model Training ](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-debugger/model_specific_realtime_analysis/bert_attention_head_view/bert_attention_head_view.html)<a name="debugger-visualization-bert_attention_head_view"></a>
 
 Bidirectional Encode Representations from Transformers \(BERT\) is a language representation model\. As the name of model reflects, the BERT model builds on *transfer learning* and the *Transformer model* for natural language processing \(NLP\)\.
 
-The BERT model is pre\-trained on unsupervised tasks such as predicting missing words in a sentence or predicting the next sentence that naturally follows a previous sentence\. The training data contains 3\.3 billion words \(tokens\) of English text, such as Wikipedia and electronic books\. For a simple example, the BERT model can give a high *attention* to appropriate verb tokens or pronoun tokens from a subject token\.
+The BERT model is pre\-trained on unsupervised tasks such as predicting missing words in a sentence or predicting the next sentence that naturally follows a previous sentence\. The training data contains 3\.3 billion words \(tokens\) of English text, from sources such as Wikipedia and electronic books\. For a simple example, the BERT model can give a high *attention* to appropriate verb tokens or pronoun tokens from a subject token\.
 
-The pre\-trained BERT model can be fine\-tuned with an additional output layer to achieve state\-of\-the\-art model training in NLP tasks, such as automated response to questions, text classification, and many others\. 
+The pre\-trained BERT model can be fine\-tuned with an additional output layer to achieve state\-of\-the\-art model training in NLP tasks, such as automated responses to questions, text classification, and many others\. 
 
 Debugger collects tensors from the fine\-tuning process\. In the context of NLP, the weight of neurons is called *attention*\. 
 
@@ -92,7 +92,7 @@ The following animation shows the attention scores of the first 20 input tokens 
 
 ![\[An animation of the attention scores\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger/debugger-attention_scores.gif)
 
-## [ Using SageMaker Debugger to Visualize Class Activation Maps in Convolutional Neural Networks \(CNNs\)](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/model_specific_realtime_analysis/cnn_class_activation_maps/cnn_class_activation_maps.ipynb)<a name="debugger-visualization-cnn_class_activation_maps"></a>
+## [ Using SageMaker Debugger to Visualize Class Activation Maps in Convolutional Neural Networks \(CNNs\)](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-debugger/model_specific_realtime_analysis/cnn_class_activation_maps/cnn_class_activation_maps.html)<a name="debugger-visualization-cnn_class_activation_maps"></a>
 
 This notebook demonstrates how to use SageMaker Debugger to plot class activation maps for image detection and classification in convolutional neural networks \(CNNs\)\. In deep learning, a *convolutional neural network \(CNN or ConvNet\)* is a class of deep neural networks, most commonly applied to analyzing visual imagery\. One of the applications that adopts the class activation maps is self\-driving cars, which require instantaneous detection and classification of images such as traffic signs, roads, and obstacles\.
 

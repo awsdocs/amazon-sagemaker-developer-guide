@@ -66,7 +66,7 @@ SageMaker XGBoost currently only trains using CPUs\. It is a memory\-bound \(as 
 
 ## XGBoost Release 0\.72 Sample Notebooks<a name="xgboost-72-sample-notebooks"></a>
 
-For a sample notebook that shows how to use the latest version of SageMaker XGBoost as a built\-in algorithm to train and host a regression model, see [Regression with Amazon SageMaker XGBoost algorithm](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_abalone.ipynb)\. To use the 0\.72 version of XGBoost, you need to change the version in the sample code to 0\.72\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the SageMaker samples\. The topic modeling example notebooks using the XGBoost algorithms are located in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.
+For a sample notebook that shows how to use the latest version of SageMaker XGBoost as a built\-in algorithm to train and host a regression model, see [Regression with Amazon SageMaker XGBoost algorithm](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_abalone.html)\. To use the 0\.72 version of XGBoost, you need to change the version in the sample code to 0\.72\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the SageMaker samples\. The topic modeling example notebooks using the XGBoost algorithms are located in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.
 
 ## XGBoost Release 0\.72 Hyperparameters<a name="xgboost-72-hyperparameters"></a>
 
@@ -122,7 +122,7 @@ The following table contains the hyperparameters for the XGBoost algorithm\. The
 
 You choose the evaluation metric from set of evaluation metrics that the algorithm computes\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the evaluation metric\. 
 
-For more information about model tuning, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
+For more information about model tuning, see [Perform Automatic Model Tuning with SageMaker](automatic-model-tuning.md)\.
 
 ### Metrics Computed by the XGBoost Release 0\.72 Algorithm<a name="xgboost-72-metrics"></a>
 

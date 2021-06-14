@@ -345,7 +345,7 @@ To preview your worker task template, the AWS Identity and Access Management \(I
 
 1. In the **`Content`** parameter of **`UiTemplate`**, insert your template\.
 
-Once you've configured `RenderUiTemplate`, use your prefered SDK or the AWS CLI to submit a request to render your template\. If your request was successful, the response includes [ `RenderedContent`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RenderUiTemplate.html#API_RenderUiTemplate_ResponseSyntax), a Liquid template that renders the HTML for the worker UI\.
+Once you've configured `RenderUiTemplate`, use your preferred SDK or the AWS CLI to submit a request to render your template\. If your request was successful, the response includes [ `RenderedContent`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RenderUiTemplate.html#API_RenderUiTemplate_ResponseSyntax), a Liquid template that renders the HTML for the worker UI\.
 
 **Important**  
 To preview your template, you need an IAM role with permissions to read Amazon S3 objects that get rendered on your user interface\. For a sample policy that you can attach to your IAM role to grant these permissions, see [Enable Worker Task Template Previews ](a2i-permissions-security.md#permissions-for-worker-task-templates-augmented-ai)\. 
