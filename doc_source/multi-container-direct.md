@@ -1,9 +1,11 @@
-# Use a multi\-container endpoint with direct invocation<a name="multi-container-direct"></a>
+# Using a multi\-container endpoint with direct or serial invocation<a name="multi-container-direct"></a>
 
-SageMaker multi\-container endpoints enable customers to deploy multiple containers to deploy different models on a SageMaker endpoint\. You can host up to 5 different inference containers on a single endpoint\. By using direct invocation, you can send a request to a specific inference container hosted on a multi\-container endpoint\.
+SageMaker multi\-container endpoints enable customers to deploy multiple containers to deploy different models on a SageMaker endpoint\. You can host up to 5 different inference containers on a single endpoint\. There are two ways to invoke an endpoint \- direct and serial\.
+By using direct invocation, you can send a request to a specific inference container hosted on a multi\-container endpoint\. And serial invocation can be used to execute containers in a sequence where output of one container can be passed on to next container in the sequence\.
 
 **Topics**
 + [Invoke a multi\-container endpoint with direct invocation](#multi-container-invoke)
++ [Invoke a multi\-container endpoint with serial invocation](#multi-container-serial-invoke)
 + [Security with multi\-container endpoints with direct invocation](#multi-container-security)
 + [Metrics for multi\-container endpoints with direct invocation](#multi-container-metrics)
 + [Autoscale multi\-container endpoints](#multi-container-auto-scaling)
@@ -32,6 +34,38 @@ response = runtime_sm_client.invoke_endpoint(
 + Specify a `TargetContainerHostname` that does not exist in the endpoint
 + Do not specify a value for `TargetContainerHostname` in a request to an endpoint configured for direct invocation
 + Specify a value for `TargetContainerHostname` in a request to an endpoint that is not configured for direct invocation\.
+
+
+## Invoke a multi\-container endpoint with serial invocation<a name="multi-container-serial-invoke"></a>
+
+ To enable a multi\-container endpoint for serial invocation, you need to configure [`InferenceExecutionConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InferenceExecutionConfig.html) while creating the model [create\_model](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html)
+
+ 
+ The following example shows how to configure serial invocation of a multi\-container endpoint to run containers as a serial pipeline\.
+
+```
+container0 = {'Image': 'uri/of/docker/image/in/AwsEcr', 'ContainerHostname': 'firstContainer'}
+container1 = {'Image': 'uri/of/docker/image/in/AwsEcr', 'ContainerHostname': 'secondContainer'}
+
+inferenceExecutionConfig = {'Mode': 'Serial'}
+
+response = sm_client.create_model(
+   ModelName = model_name,
+   InferenceExecutionConfig = inferenceExecutionConfig,
+   ExecutionRoleArn = role,
+   Containers = [container0, container1])
+
+###
+# *insert code for creating 'endpoint_config' and then 'endpoint'*
+###
+
+response = runtime_sm_client.invoke_endpoint(
+   EndpointName ='my-endpoint',
+   ContentType = 'application/json',
+   Body = body)
+```
+
+ For each serial invocation request to a multi\-container endpoint, the first container will process the invocation request and pass the output to next and so on until the last container which will compute and return the final response\. You can virtually pass anything across the containers\. You will get validation errors if you specify a value for `TargetContainerHostname` in a request to an endpoint configured for serial invocation\.
 
 ## Security with multi\-container endpoints with direct invocation<a name="multi-container-security"></a>
 
