@@ -1,6 +1,6 @@
-# Using a multi\-container endpoint with direct or serial invocation<a name="multi-container-direct"></a>
+# Use a multi\-container endpoint with direct or serial invocation<a name="multi-container-direct"></a>
 
-SageMaker multi\-container endpoints enable customers to deploy multiple containers to deploy different models on a SageMaker endpoint\. You can host up to 5 different inference containers on a single endpoint\. There are two ways to invoke an endpoint \- direct and serial\.
+SageMaker multi\-container endpoints enable customers to deploy multiple containers to deploy different models on a SageMaker endpoint\. You can host up to 5 different inference containers on a single endpoint\. There are two ways to invoke a multi\-container endpoint \- direct and serial\.
 By using direct invocation, you can send a request to a specific inference container hosted on a multi\-container endpoint\. And serial invocation can be used to execute containers in a sequence where output of one container can be passed on to next container in the sequence\.
 
 **Topics**
