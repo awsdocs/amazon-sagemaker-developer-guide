@@ -49,7 +49,7 @@ To run your own training model, build a Docker container using the [Amazon SageM
       ```
       FROM tensorflow/tensorflow:2.2.0rc2-gpu-py3-jupyter
       
-      # Install sagemaker-training toolkit to enable SageMaker Python SDK
+      # Install sagemaker-training toolkit that contains the common functionality necessary to create a container compatible with SageMaker and the Python SDK.
       RUN pip3 install sagemaker-training
       
       # Copies the training code inside the container
@@ -145,8 +145,8 @@ Remember that `docker` looks for a file specifically called `Dockerfile` without
    
    estimator = Estimator(image_name='tf-custom-container-test',
                          role='arn:aws:iam::111122223333:role/role-name',
-                         train_instance_count=1,
-                         train_instance_type='local')
+                         instance_count=1,
+                         instance_type='local')
    
    estimator.fit()
    ```
@@ -215,10 +215,10 @@ Remember that `docker` looks for a file specifically called `Dockerfile` without
 This bash shell script may raise a permission issue similar to the following error message:  
 
    ```
-   "denied: User: [ARN] is not authorized to perform: ecr:InitiateLayerUpload on resource: 
+   "denied: User: [ARN] is not authorized to perform: ecr:InitiateLayerUpload on resource:
    arn:aws:ecr:us-east-1:[id]:repository/tf-custom-container-test"
    ```
-If this error occurs, you need to attach the **AmazonEC2ContainerRegistryFullAccess** policy to your IAM role\. Go to the [IAM console](https://console.aws.amazon.com/iam/home), choose **Roles** from the left navigation pane, look up the IAM role you used for the Nnotebook instance\. Under the **Permission** tab, choose the **Attach policies** button, and search the **AmazonEC2ContainerRegistryFullAccess** policy\. Mark the check box of the policy, and choose **Attach policy** to finish\.
+If this error occurs, you need to attach the **AmazonEC2ContainerRegistryFullAccess** policy to your IAM role\. Go to the [IAM console](https://console.aws.amazon.com/iam/home), choose **Roles** from the left navigation pane, look up the IAM role you used for the Notebook instance\. Under the **Permission** tab, choose the **Attach policies** button, and search the **AmazonEC2ContainerRegistryFullAccess** policy\. Mark the check box of the policy, and choose **Attach policy** to finish\.
 
 1. After you push the container, you can call the Amazon ECR image from anywhere in the SageMaker environment\. Run the following code example in the next notebook cell\. 
 
@@ -257,8 +257,8 @@ If this error occurs, you need to attach the **AmazonEC2ContainerRegistryFullAcc
    estimator = Estimator(image_name=byoc_image_uri,
                          role=get_execution_role(),
                          base_job_name='tf-custom-container-test-job',
-                         train_instance_count=1,
-                         train_instance_type='ml.p2.xlarge')
+                         instance_count=1,
+                         instance_type='ml.p2.xlarge')
    
    # start training
    estimator.fit()
@@ -290,7 +290,7 @@ If this error occurs, you need to attach the **AmazonEC2ContainerRegistryFullAcc
 
 ------
 
-For a full example that shows how to test a custom container locally and push it to an Amazon ECR image, see the [ Building Your Own TensorFlow Container](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/advanced_functionality/tensorflow_bring_your_own/tensorflow_bring_your_own.ipynb) example notebook\.
+For a full example that shows how to test a custom container locally and push it to an Amazon ECR image, see the [ Building Your Own TensorFlow Container](https://sagemaker-examples.readthedocs.io/en/latest/advanced_functionality/tensorflow_bring_your_own/tensorflow_bring_your_own.html) example notebook\.
 
 ## Step 6: Clean up resources<a name="byoc-training-step6"></a>
 

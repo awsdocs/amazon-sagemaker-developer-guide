@@ -1,6 +1,6 @@
 # Track and Compare Tutorial<a name="experiments-mnist"></a>
 
-This tutorial demonstrates how to visually track and compare trials in a model training experiment using Amazon SageMaker Studio\. The basis of the tutorial is the MNIST Handwritten Digits Classification Experiment \(MNIST\) example notebook\.
+This tutorial demonstrates how to visually track and compare trials in a model training experiment using Amazon SageMaker Studio\. The basis of the tutorial is the [MNIST Handwritten Digits Classification Experiment](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-experiments/mnist-handwritten-digits-classification-experiment/mnist-handwritten-digits-classification-experiment.html) notebook\.
 
 It is intended that this topic be viewed alongside Studio with the MNIST notebook open\. As you run through the cells, the sections in this document highlight the relevant code and show you how to observe the results in Studio\. Some of the code snippets have been edited for brevity\.
 
@@ -35,7 +35,7 @@ For a tutorial that showcases additional features of Studio, see [Amazon SageMak
 
 ## Install the Experiments SDK and Import Modules<a name="experiments-mnist-setup"></a>
 
-The SageMaker Experiments SDK is separate from the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), which comes preinstalled in SageMaker Studio\. Run the first few cells in the notebook to install the Experiments SDK and import the Experiments modules\. The relevant sections of the notebook cells are displayed below\. For more information on the Experiments SDK, see [sagemaker\-experiments](https://github.com/aws/sagemaker-experiments)\.
+The [Amazon SageMaker Experiments Python SDK](https://sagemaker-experiments.readthedocs.io) is separate from the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), which comes preinstalled in SageMaker Studio\. Run the first few cells in the notebook to install the Experiments SDK and import the Experiments modules\. The relevant sections of the notebook cells are displayed below\.
 
 ```
 import sys
@@ -62,7 +62,7 @@ Your screen should look similar to the following:
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-mnist-s3-files.png)
 
-The last cell in the **Dataset** section creates a [Tracker](https://github.com/aws/sagemaker-experiments/blob/master/src/smexperiments/tracker.py) for the transform job\. The tracker logs the normalization parameters and the URI of the Amazon S3 bucket where the transformed dataset is stored\. In a later section, we show how to find this information in Studio\. In the next section, the tracker is used to track the experiment and trial runs\.
+The last cell in the **Dataset** section creates a [Tracker](https://sagemaker-experiments.readthedocs.io/en/latest/tracker.html) for the transform job\. The tracker logs the normalization parameters and the URI of the Amazon S3 bucket where the transformed dataset is stored\. In a later section, we show how to find this information in Studio\. In the next section, the tracker is used to track the experiment and trial runs\.
 
 ```
 with Tracker.create(display_name="Preprocessing", sagemaker_boto_client=sm) as tracker:
@@ -77,7 +77,7 @@ with Tracker.create(display_name="Preprocessing", sagemaker_boto_client=sm) as t
 
 The following procedure creates and tracks an experiment to determine the effect of the model's `num_hidden_channel` hyperparameter\. As part of the experiment, five trials are created inside a loop, one for each value of the `num_hidden_channel` hyperparameter\. Later in the notebook, you'll compare the results of these five trials\.
 
-1. In the left sidebar of Studio, choose the **SageMaker Experiment List** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Experiment_list_squid.png) \) to display the experiments browser\.
+1. In the left sidebar of Studio, choose the **SageMaker Components and registries** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Registries_entities_small.png) \)\. In the dropdown menu, choose **Experiments and trials** to display the list of experiments in your account\.
 
 1. Run the following cell\.
 
@@ -99,7 +99,7 @@ The following procedure creates and tracks an experiment to determine the effect
    ```
 
    After the code runs, the experiments list contains an entry for the experiment\. It might take a moment to display and you might have to refresh the experiments list\. Your screen should look similar to the following:  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-mnist-experiment.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-mnist-experiment-no-sidebar.png)
 
 1. Run the following cell\.
 
@@ -134,6 +134,9 @@ The following procedure creates and tracks an experiment to determine the effect
        cnn_trial.add_trial_component(preprocessing_trial_component)
        
        estimator = PyTorch(
+           py_version='py3',
+           framework_version='1.1.0',
+           ...,
            hyperparameters={
                'hidden_channels': num_hidden_channel,
                ...
@@ -159,7 +162,7 @@ The following procedure creates and tracks an experiment to determine the effect
    ```
 
    The trial list automatically updates as each training job runs\. It takes a few minutes for each trial to be displayed\. Your screen should look similar to the following:  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-mnist-trials.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-mnist-trials-no-sidebar.png)
 
 ## Compare and Analyze Trials<a name="experiments-mnist-compare-trials"></a>
 
@@ -185,7 +188,7 @@ This section deviates from the notebook and shows you how to compare and analyze
 
 1. If the **TABLE PROPERTIES** pane isn't open, choose the **Settings** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Settings_squid.png) \) in the upper right corner to open it\. Deselect everything except **Trial**, **Metrics**, and **Training job**\. Choose the **Settings** icon to close the pane\.
 
-1.  Choose the **test:accuracy** column header to sort the list by decreasing maximum test accuracy\. Your screen should look similar to the following:  
+1. Choose the **test:accuracy** column header to sort the list by decreasing maximum test accuracy\. Your screen should look similar to the following:  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-mnist-trials-accuracy.png)
 
 **To view a chart of `test:loss` versus `num_hidden_channel`**
@@ -196,7 +199,7 @@ This section deviates from the notebook and shows you how to compare and analyze
    + **Data type** \- **Summary statistics**
    + **Chart type** \- **Line**
    + **X\-axis** \- **hidden\-channels**
-   + **Y\-axis** \- **test:lost\_last**
+   + **Y\-axis** \- **test:loss\_last**
    + **Color** \- **None**
 
    Your screen should look similar to the following:  

@@ -64,7 +64,7 @@ When you start the training job, Debugger collects system resource utilization d
 
 ## Use Debugger Built\-in Rules with Custom Parameter Values<a name="debugger-built-in-rules-configuration-param-change"></a>
 
-If you want to adjust the built\-in rule parameter values and customize tensor collection regex, configure the `base_config` and `rule_parameters` parameters for the `ProfilerRule.sagemaker` and `Rule.sagemaker` classmethods\. In case of the `Rule.sagemaker` class methods, you can also customize tensor collections through the `collections_to_save` parameter\. The instruction of how to use the `CollectionConfig` class is provided at [ Configure Debugger Tensor Collections Using the Collectivisation API Operation](debugger-configure-hook.md#debugger-configure-tensor-collections)\. 
+If you want to adjust the built\-in rule parameter values and customize tensor collection regex, configure the `base_config` and `rule_parameters` parameters for the `ProfilerRule.sagemaker` and `Rule.sagemaker` classmethods\. In case of the `Rule.sagemaker` class methods, you can also customize tensor collections through the `collections_to_save` parameter\. The instruction of how to use the `CollectionConfig` class is provided at [ Configure Debugger Tensor Collections Using the CollectionConfig API Operation](debugger-configure-hook.md#debugger-configure-tensor-collections)\. 
 
 Use the following configuration template for built\-in rules to customize parameter values\. By changing the rule parameters as you want, you can adjust the sensitivity of the rules to be triggered\. 
 + The `base_config` argument is where you call the built\-in rule methods\.
@@ -147,8 +147,8 @@ sagemaker_estimator=TensorFlow(
     entry_point='directory/to/your_training_script.py',
     role=sm.get_execution_role(),
     base_job_name='debugger-built-in-rules-demo',
-    train_instance_count=1,
-    train_instance_type="ml.m4.xlarge",
+    instance_count=1,
+    instance_type="ml.m4.xlarge",
     framework_version="2.1.0",
     py_version="py3",
 
@@ -203,8 +203,8 @@ sagemaker_estimator=TensorFlow(
     entry_point='directory/to/your_training_script.py',
     role=sm.get_execution_role(),
     base_job_name=base_job_name_prefix,
-    train_instance_count=1,
-    train_instance_type="ml.m4.xlarge",
+    instance_count=1,
+    instance_type="ml.m4.xlarge",
     framework_version="2.1.0",
     py_version="py3",
 
@@ -214,4 +214,4 @@ sagemaker_estimator=TensorFlow(
 sagemaker_estimator.fit()
 ```
 
-For an advanced configuration of the Debugger built\-in rules using the `CreateTrainingJob` API, see [Add Debugger Built\-in Rule Configuration to the `CreateTrainingJob` API Operation](debugger-createtrainingjob-api.md#debugger-built-in-rules-api)\.
+For an advanced configuration of the Debugger built\-in rules using the `CreateTrainingJob` API, see [Configure Debugger Using Amazon SageMaker API](debugger-createtrainingjob-api.md)\.

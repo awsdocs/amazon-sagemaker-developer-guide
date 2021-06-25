@@ -1,296 +1,146 @@
-# Prerequisites<a name="edge-getting-started-step1"></a>
+# Setting Up<a name="edge-getting-started-step1"></a>
 
-1. **Set up an AWS Account\.**
+Before you begin using SageMaker Edge Manager to manage models on your device fleets, you must first create IAM Roles for both SageMaker and AWS IoT\. You will also want to create at least one Amazon S3 bucket where you will store your pre\-trained model, the output of your SageMaker Neo compilation job, as well as input data from your edge devices\.
 
-   Create an AWS account and create an IAM administrator user\. For instructions on how to set up your AWS account, see [How do I create and activate a new AWS account?](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/) For instructions on how to create an administrator user in your AWS account, see [Creating your first IAM admin user and group](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html)\.
+1. **Set up an AWS account\.**
 
-1. **Set up an IAM Role and attach policies\.**
+   Create an AWS account and an IAM administrator user\. For instructions on how to set up your AWS account, see [How do I create and activate a new AWS account?](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/) For instructions on how to create an administrator user in your AWS account, see [Creating your first IAM admin user and group](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html)\.
 
-   SageMaker Edge Manager needs access to your Amazon S3 bucket URI\. To facilitate this, create an IAM role that can run SageMaker and has permission to access your Amazon S3 URI\. You can create an IAM role by using the AWS SDK for Python \(Boto3\), [the SageMaker console](https://console.aws.amazon.com/sagemaker/), or the AWS CLI\. Below is an example of how to create an IAM role using Boto3:
+1. **Create an IAM role for Amazon SageMaker\.**
 
-   ```
-   import boto3
-   import json
-   
-   AWS_REGION = 'us-west-2'
-   
-   # Create an IAM client to interact with IAM
-   iam_client = boto3.client('iam', region_name=AWS_REGION)
-   role_name = 'edge-manager-demo'
-   ```
+   SageMaker Edge Manager needs access to your Amazon S3 bucket URI\. To facilitate this, create an IAM role that can run SageMaker and has permission to access Amazon S3\. Using this role, SageMaker can run under your account and access to your Amazon S3 bucket\.
 
-   Create a dictionary describing the IAM policy you are attaching to your IAM role\. The first statement ID in the statement array, `DeviceS3Access`, grants devices access to Amazon S3\. `SageMakerEdgeApis` grants access to APIs you need to get a device heartbeat and to register your device\. You need to use a role alias in a later step in order to authenticate connected devices to AWS IoT using X\.509 certificates\. To do this, include the `CreateIoTRoleAliasIamPermissions` and `CreateIoTRoleAlias` statements\.
+   You can create an IAM role by using the IAM console, AWS SDK for Python \(Boto3\), or AWS CLI\. The following is an example of how to create an IAM role and attach the necessary policies with the IAM console\.
 
-   ```
-   policy = {
-       "Version": "2012-10-17",
-       "Statement": [
-           {
-               "Sid": "DeviceS3Access",
-               "Effect": "Allow",
-               "Action": [
-                   "s3:PutObject"
-               ],
-               "Resource": [
-                   "arn:aws:s3:::*SageMaker*",
-                   "arn:aws:s3:::*Sagemaker*",
-                   "arn:aws:s3:::*sagemaker*"
-               ]
-           },
-           {
-               "Sid": "SageMakerEdgeApis",
-               "Effect": "Allow",
-               "Action": [
-                   "sagemaker:SendHeartbeat",
-                   "sagemaker:GetDeviceRegistration"
-               ],
-               "Resource": "*"
-           },
-           {
-               "Sid": "CreateIoTRoleAlias",
-               "Effect": "Allow",
-               "Action": [
-                   "iot:CreateRoleAlias",
-                   "iot:DescribeRoleAlias",
-                   "iot:UpdateRoleAlias",
-                   "iot:ListTagsForResource",
-                   "iot:TagResource"
-               ],
-               "Resource": [
-                   "arn:aws:iot:*:*:rolealias/SageMakerEdge*"
-               ]
-           },
-           {
-               "Sid": "CreateIoTRoleAliasIamPermissions",
-               "Effect": "Allow",
-               "Action": [
-                   "iam:PassRole",
-                   "iam:GetRole"
-               ],
-               "Resource": [
-                   "arn:aws:iam::*:role/*SageMaker*",
-                   "arn:aws:iam::*:role/*Sagemaker*",
-                   "arn:aws:iam::*:role/*sagemaker*"
-               ]
-           }
-       ]
-   }
-   ```
+   1. Sign in to the AWS Management Console and open the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\.
 
-   Create a new IAM role using the policy you defined:
+   1. In the navigation pane of the IAM console, choose **Roles**, and then choose **Create role**\.
 
-   ```
-   new_role = iam_client.create_role(
-       AssumeRolePolicyDocument=json.dumps(policy),
-       Path='/',
-       RoleName=role_name,
-   )
-   ```
+   1. For **Select type of trusted entity**, choose **AWS service**\.
 
-   You need your Amazon Resource Name \(ARN\) when you create a packaging job in a later step, so store it in a variable as well\.
+   1. Choose the service that you want to allow to assume this role\. In this case, choose **SageMaker**\. Then choose **Next: Permissions**\.
+      + This automatically creates an IAM policy that grants access to related services such as Amazon S3, Amazon ECR, and CloudWatch Logs\.
 
-   ```
-   role_arn = new_role['Role']['Arn']
-   ```
+   1. Choose **Next: Tags**\.
 
-   After you create a new role, attach the additional permissions it needs to interact with SageMaker and Amazon S3:
+   1. \(Optional\) Add metadata to the role by attaching tags as key–value pairs\. For more information about using tags in IAM, see [Tagging IAM resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)\.
 
-   ```
-   iam_client.attach_role_policy(
-       RoleName=role_name,
-       PolicyArn="arn:aws:iam::aws:policy/AmazonSageMakerFullAccess"
-   )
-   
-   iam_client.attach_role_policy(
-       RoleName=role_name,
-       PolicyArn="arn:aws:iam::aws:policy/AmazonS3FullAccess"
-   );
-   ```
+   1. Choose **Next: Review**\.
+
+   1. Type in a **Role name**\. 
+
+   1. If possible, type a role name or role name suffix\. Role names must be unique within your AWS account\. They are not distinguished by case\. For example, you cannot create roles named both `PRODROLE` and `prodrole`\. Because other AWS resources might reference the role, you cannot edit the name of the role after it has been created\.
+
+   1. \(Optional\) For **Role description**, type a description for the new role\.
+
+   1. Review the role and then choose **Create role**\.
+
+      Note the SageMaker Role ARN, which you use to create a compilation job with SageMaker Neo and a packaging job with Edge Manager\. To find out the role ARN using the console, do the following:
+
+      1. Go to the IAM console: [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)
+
+      1. Select **Roles**\.
+
+      1. Search for the role you just created by typing in the name of the role in the search field\.
+
+      1. Select the role\.
+
+      1. The role ARN is at the top of the **Summary** page\.
+
+1. **Create an IAM role for AWS IoT\.**
+
+   The AWS IoT IAM role you create is used to authorize your thing objects\. You also use the IAM role ARN to create and register device fleets with a SageMaker client object\.
+
+   Configure an IAM role in your AWS account for the credentials provider to assume on behalf of the devices in your device fleet\. Then, attach a policy to authorize your devices to interact with AWS IoT services\.
+
+   Create a role for AWS IoT either programmatically or with the IAM console, similar to what you did when you created a role for SageMaker\.
+
+   1. Sign in to the AWS Management Console and open the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\.
+
+   1. In the navigation pane of the IAM console, choose **Roles**, and then choose **Create role**\.
+
+   1. For **Select type of trusted entity**, choose **AWS service**\.
+
+   1. Choose the service that you want to allow to assume this role\. In this case, choose **IoT**\. Select **IoT** as the **Use Case**\.
+
+   1. Choose **Next: Permissions**\.
+
+   1. Choose **Next: Tags**\.
+
+   1. \(Optional\) Add metadata to the role by attaching tags as key–value pairs\. For more information about using tags in IAM, see [Tagging IAM resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)\.
+
+   1. Choose **Next: Review**\.
+
+   1. Type in a **Role name**\. The role name must start with `SageMaker`\.
+
+   1. \(Optional\) For **Role description**, type a description for the new role\.
+
+   1. Review the role and then choose **Create role**\.
+
+   1. Once the role is created, choose **Roles** in the IAM console\. Search for the role you created by typing in role name in the **Search** field\.
+
+   1. Choose your role\.
+
+   1. Next, choose **Attach Policies**\.
+
+   1. Search for `AmazonSageMakerEdgeDeviceFleetPolicy` in the **Search** field\. Select `AmazonSageMakerEdgeDeviceFleetPolicy`\.
+
+   1. Choose **Attach policy**\.
+
+   1. Add the following policy statement to the trust relationship:
+
+      ```
+      {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {"Service": "credentials.iot.amazonaws.com"},
+              "Action": "sts:AssumeRole"
+            },
+            {
+              "Effect": "Allow",
+              "Principal": {"Service": "sagemaker.amazonaws.com"},
+              "Action": "sts:AssumeRole"
+            }
+        ]
+      }
+      ```
+
+      A trust policy is a [JSON policy document](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_grammar) in which you define the principals that you trust to assume the role\. For more information about trust policies, see [Roles terms and concepts](IAM/latest/UserGuide/id_roles_terms-and-concepts.html)\.
+
+   1. Note the AWS IoT role ARN\. You use the AWS IoT Role ARN to create and register the device fleet\. To find the IAM role ARN with the console:
+
+      1. Go to the IAM console: [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)
+
+      1. Choose **Roles**\.
+
+      1. Search for the role you created by typing in the name of the role in the **Search** field\.
+
+      1. Select the role\.
+
+      1. The role ARN is on the Summary page\.
 
 1. **Create an Amazon S3 bucket\.**
 
-   Edge Manager accesses your model in Amazon S3 and stores your sample data from your device fleet into Amazon S3\. Create an Amazon S3 bucket with the following:
+   SageMaker Neo and Edge Manager access your pre\-compiled model and compiled model from an Amazon S3 bucket\. Edge Manager also stores sample data from your device fleet in Amazon S3\.
+
+   1. Open the Amazon S3 console at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/)\.
+
+   1. Choose **Create bucket**\.
+
+   1. In **Bucket name**, enter a name for your bucket\.
+
+   1. In **Region**, choose the AWS Region where you want the bucket to reside\.
+
+   1. In **Bucket settings for Block Public Access**, choose the settings that you want to apply to the bucket\.
+
+   1. Choose **Create bucket**\.
+
+   For more information about creating Amazon S3 buckets, see [Getting started with Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/GetStartedWithS3.html)\.
+
+   Store the name of the bucket in the following variable:
 
    ```
-   # Create an S3 client so SageMaker can interact with S3
-   s3_client = boto3.client("s3", region_name=AWS_REGION)
-   
-   # Name buckets
-   bucket="demo-bucket"
-   
-   # Create buckets
-   s3_client.create_bucket(
-       Bucket=bucket,
-       CreateBucketConfiguration={
-           'LocationConstraint': AWS_REGION
-       }
-   )
+   bucket=<bucket-name>
    ```
-
-1. **Train a machine learning model\.**
-
-   See [Train a Model with Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-training.html) for more information on how to train a machine learning model using SageMaker\. You can optionally upload your locally trained model directly into an Amazon S3 URI bucket\.
-
-   If you do not have a model yet, use the pre\-trained Keras MobileNetV2 model\.
-
-   ```
-   import tensorflow as tf
-   
-   model = tf.keras.applications.MobileNetV2()
-   model.save("mobilenet_v2.h5")
-   ```
-
-   The model comes packaged as a Hierarchical Data Format \(HDF\)\. SageMaker expects saved models to be in a compressed tarfile \(\.tar\.gz\) file format\. Repackage the HD5 model into a compressed tarfile with the following:
-
-   ```
-   import tarfile
-   
-   with tarfile.open("mobilenet_v2.tar.gz", mode="w:gz") as archive:
-       archive.add("mobilenet_v2.h5")
-   ```
-
-1. **Upload your trained model to Amazon S3 bucket\.**
-
-   Once you have a machine learning model, store it in an Amazon S3 bucket\.
-
-   ```
-   model_filename= mobilenet_v2.tar.gz
-   
-   # Upload model        
-   s3_client.upload_file(filename=model_filename, bucket=bucket, key=model_filename)
-   ```
-
-1. **Compile your model with SageMaker Neo\.**
-
-   Compile your machine learning model with SageMaker Neo for an edge device\. You need to know your Amazon S3 bucket URI where you stored the trained model, the machine learning framework you used to train your model, the shape of your model’s input, and your target device\.
-
-   For the Keras MobileNet V2 model use the following:
-
-   ```
-   data_shape = '{"input_1":[1,3,224,224]}'
-   framework = 'keras'
-   target_device = 'ml_c5'
-   ```
-
-   For more information on how to compile your model with SageMaker Neo, see [Compile and Deploy Models with Neo](https://docs.aws.amazon.com/sagemaker/latest/dg/neo.html)\.
-
-1. **Create and register AWS IoT thing objects and configure IAM roles\.**
-
-   SageMaker Edge Manager takes advantage of the AWS IoT Core services to facilitate the connection between the edge devices and endpoints in the AWS cloud\. You can take advantage of existing AWS IoT functionality after you set up your devices to work with Edge Manager\.
-
-   To connect your device to AWS IoT you need to create AWS IoT *thing objects*, create and register a client certificate with AWS IoT, and create and configure the IAM role for your devices\.
-   + Create AWS IoT thing objects with the following:
-
-     ```
-     # Create an IoT client so you can interact with IoT
-     iot = boto3.client('iot', region_name=region)
-     
-     iot.create_thing_type(
-         thingTypeName=iot_thing_type
-     )
-     
-     # Create two AWS IoT thing objects
-     iot.create_thing(
-         thingName='sample-device-1',
-         thingTypeName="edge-manager-demo"
-     )
-     
-     iot.create_thing(
-         iot_thing_num2_name='sample-device-2',
-         thingTypeName="edge-manager-demo"
-     )
-     ```
-   + After creating the AWS IoT thing objects, you will need to create X\.509 device certificate for your thing objects\. This certificate authenticates your device to AWS IoT Core\.
-
-     Use the following to create a private key, public key, and X\.509 certificate file\.
-
-     ```
-     # Creates a 2048-bit RSA key pair and issues an X.509 
-     # certificate using the issued public key.
-     create_cert = iot.create_keys_and_certificate(
-         setAsActive=True 
-     )
-     
-     # Get certificate from dictionary object and save in its own file
-     with open('./device.pem.crt', 'w') as f:
-         for line in create_cert['certificatePem'].split('\n'):
-             f.write(line)
-             f.write('\n')
-     
-     # Get private key from dictionary object and save in its own file
-     with open('./private.pem.key', 'w') as f:
-         for line in create_cert['keyPair']['PrivateKey'].split('\n'):
-             f.write(line)
-             f.write('\n')
-     
-     # Get a private key from dictioanary object and save in its own file
-     with open('./public.pem.key', 'w') as f:
-         for line in create_cert['keyPair']['PublicKey'].split('\n'):
-             f.write(line)
-             f.write('\n')
-     ```
-   + Create an AWS IoT policy document\. This policy authorizes your device to interact with AWS IoT services\.
-
-     To do this, create a role alias so that you can change the role of the device without having to update the device\. An AWS IoT role alias provides a mechanism for connected devices to authenticate to AWS IoT using X\.509 certificates and then obtain short\-lived AWS credentials from an IAM role that is associated with an AWS IoT role alias\.
-
-     ```
-     device_role_name="demo-role-name"
-     
-     role_alias_name = device_role_name + "-alias"
-     
-     # Create role alias with boto3 iot client
-     role_alias = iot.create_role_alias(
-         roleAlias=role_alias_name,
-         roleArn=role_arn, 
-         credentialDurationSeconds=3600
-     )
-     
-     # Define policy permissions
-     alias_policy = {
-       "Version": "2012-10-17",
-       "Statement": {
-         "Effect": "Allow",
-         "Action": "iot:AssumeRoleWithCertificate",
-         "Resource": role_alias['roleAliasArn']
-       }
-     }
-     
-     # Create the policy witht the permissions defined
-     aliaspolicy = iot.create_policy(
-         policyName='aliaspolicy',
-         policyDocument=json.dumps(alias_policy),
-     )
-     
-     # Attach the policy to client
-     iot.attach_policy(
-         policyName='aliaspolicy',
-         target=create_cert['certificateArn']
-     )
-     ```
-
-     Get your AWS account\-specific endpoint for the credentials provider\. Edge devices need the endpoint in order to assume credentials\.
-
-     ```
-     # Get the unique endpoint specific to your AWS account that is making the call.
-     iot_endpoint = iot.describe_endpoint(
-         endpointType='iot:CredentialProvider'
-     )
-     
-     endpoint = "https://{}/role-aliases/{}/credentials".format(iot_endpoint['endpointAddress'],role_alias_name)
-     ```
-
-     Use the endpoint to make an HTTPS request to the credentials provider to return a security token\. The following example command uses `curl,` but you can use any HTTP client\.
-
-     ```
-     !curl --cert iot.pem.crt --key iot_key.pem.key --cacert AmazonRootCA1.pem $endpoint
-     ```
-
-     If the certificate is verified, upload the keys and certificate to your Amazon S3 bucket URI\.
-
-     ```
-     # Organize S3 bucket, define a folder to store IoT keys and certificate
-     iot_certificates = folder + "/iot_certificates"
-     s3_client.upload_file(filename="public.pem.key", bucket=bucket,key=iot_certificates)
-     s3_client.upload_file(filename="device.pem.key", bucket=bucket,key=iot_certificates)
-     s3_client.upload_file(filename="AmazonRootCA1.pem", bucket=bucket,key=iot_certificates)
-     ```

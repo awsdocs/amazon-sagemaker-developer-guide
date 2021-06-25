@@ -36,11 +36,11 @@ The Debugger rules monitor training job status, and a CloudWatch Events rule wat
 
 1. For **Runtime**, choose **Python 3\.7**\.
 
-1. For **Permissions**, expand the drop down option, and choose **Choose or create an execution role**\.
+1. For **Permissions**, expand the drop down option, and choose **Change default execution role**\.
 
-1. For **Execution role**, choose **Use an existing role** and choose the IAM role that you used for your SageMaker Notebook instance or SageMaker Studio\. 
+1. For **Execution role**, choose **Use an existing role** and choose the IAM role that you use for training jobs on SageMaker\.
 **Note**  
-Make sure you use the same execution role for the training environment, otherwise the Lambda function won't properly react to the Debugger rule status changes\. If you are unsure which execution role to choose, run the following code in a Jupyter notebook cell to retrieve the execution role output:  
+Make sure you use the execution role with `AmazonSageMakerFullAccess` and `AWSLambdaBasicExecutionRole` attached\. Otherwise, the Lambda function won't properly react to the Debugger rule status changes of the training job\. If you are unsure which execution role is being used, run the following code in a Jupyter notebook cell to retrieve the execution role output:  
 
    ```
    import sagemaker
@@ -61,43 +61,58 @@ The following figure shows an example of the **Create function** page with the i
 
    ```
    import json
-       import boto3
-       import logging
-       
-       def lambda_handler(event, context):
-           training_job_name = event.get("detail").get("TrainingJobName")
-           eval_statuses = event.get("detail").get("DebugRuleEvaluationStatuses", None)
-       
-           if eval_statuses is None or len(eval_statuses) == 0:
-               logging.info("Couldn't find any debug rule statuses, skipping...")
-               return {
-                   'statusCode': 200,
-                   'body': json.dumps('Nothing to do')
-               }
-       
-           client = boto3.client('sagemaker')
-       
-           for status in eval_statuses:
-               if status.get("RuleEvaluationStatus") == "IssuesFound":
-                   logging.info(
-                       'Evaluation of rule configuration {} resulted in "IssuesFound". '
-                       'Attempting to stop training job {}'.format(
-                           status.get("RuleConfigurationName"), training_job_name
+   import boto3
+   import logging
+   
+   logger = logging.getLogger()
+   logger.setLevel(logging.INFO)
+   
+   def lambda_handler(event, context):
+       training_job_name = event.get("detail").get("TrainingJobName")
+       logging.info(f'Evaluating Debugger rules for training job: {training_job_name}')
+       eval_statuses = event.get("detail").get("DebugRuleEvaluationStatuses", None)
+   
+       if eval_statuses is None or len(eval_statuses) == 0:
+           logging.info("Couldn't find any debug rule statuses, skipping...")
+           return {
+               'statusCode': 200,
+               'body': json.dumps('Nothing to do')
+           }
+   
+       # should only attempt stopping jobs with InProgress status
+       training_job_status = event.get("detail").get("TrainingJobStatus", None)
+       if training_job_status != 'InProgress':
+           logging.debug(f"Current Training job status({training_job_status}) is not 'InProgress'. Exiting")
+           return {
+               'statusCode': 200,
+               'body': json.dumps('Nothing to do')
+           }
+   
+       client = boto3.client('sagemaker')
+   
+       for status in eval_statuses:
+           logging.info(status.get("RuleEvaluationStatus") + ', RuleEvaluationStatus=' + str(status))
+           if status.get("RuleEvaluationStatus") == "IssuesFound":
+               secondary_status = event.get("detail").get("SecondaryStatus", None)
+               logging.info(
+                       f'About to stop training job, since evaluation of rule configuration {status.get("RuleConfigurationName")} resulted in "IssuesFound". ' +
+                       f'\ntraining job "{training_job_name}" status is "{training_job_status}", secondary status is "{secondary_status}"' +
+                       f'\nAttempting to stop training job "{training_job_name}"'
+                   )
+               )
+               try:
+                   client.stop_training_job(
+                       TrainingJobName=training_job_name
+                   )
+               except Exception as e:
+                   logging.error(
+                       "Encountered error while trying to "
+                       "stop training job {}: {}".format(
+                           training_job_name, str(e)
                        )
                    )
-                   try:
-                       client.stop_training_job(
-                           TrainingJobName=training_job_name
-                       )
-                   except Exception as e:
-                       logging.error(
-                           "Encountered error while trying to "
-                           "stop training job {}: {}".format(
-                               training_job_name, str(e)
-                           )
-                       )
-                       raise e
-           return None
+                   raise e
+       return None
    ```
 
    For more information about the Lambda code editor interface, see [Creating functions using the AWS Lambda console editor](https://docs.aws.amazon.com/lambda/latest/dg/code-editor.html)\.
@@ -141,7 +156,7 @@ The following figure shows an example of the **Create function** page with the i
 ## Run Example Notebooks to Test Automated Training Job Termination<a name="debugger-test-stop-training"></a>
 
 You can run the following example notebooks, which are prepared for experimenting with stopping a training job using Debugger's built\-in rules\.
-+ [Amazon SageMaker Debugger \- Reacting to CloudWatch Events from Debugger rules](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/tensorflow_action_on_rule/tf-mnist-stop-training-job.ipynb)
++ [Amazon SageMaker Debugger \- Reacting to CloudWatch Events from Debugger rules](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-debugger/tensorflow_action_on_rule/tf-mnist-stop-training-job.html)
 
   This example notebook runs a training job that has a vanishing gradient issue\. The Debugger [VanishingGradient](debugger-built-in-rules.md#vanishing-gradient) built\-in rule is used while constructing the SageMaker TensorFlow estimator\. When the Debugger rule detects the issue, the training job is terminated\.
 + [Detect stalled training and stop training job using Debugger rule](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/tensorflow_action_on_rule/detect_stalled_training_job_and_stop.ipynb)

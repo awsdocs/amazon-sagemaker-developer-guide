@@ -6,7 +6,7 @@ Use the following the code examples to request inferences from your deployed ser
 
 ## PyTorch and MXNet<a name="neo-requests-sdk-py-mxnet"></a>
 
- If you are using **PyTorch v1\.4 or later** or **MXNet 1\.7\.0** or later and you have an Amazon SageMaker endpoint `InService`, you can make inference requests using the `predictor` package of the SageMaker SDK for Python\. 
+ If you are using **PyTorch v1\.4 or later** or **MXNet 1\.7\.0 or later** and you have an Amazon SageMaker endpoint `InService`, you can make inference requests using the `predictor` package of the SageMaker SDK for Python\. 
 
 **Note**  
 The API varies based on the SageMaker SDK for Python version:  

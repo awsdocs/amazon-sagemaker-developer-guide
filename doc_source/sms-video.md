@@ -8,9 +8,10 @@ You can use Ground Truth to classify videos and annotate video frames \(still im
   + *Video frame adjustment jobs*: Have works adjust labels, label category attributes, and frame attributes from a previous video frame object detection or object tracking labeling job\.
   + *Video frame verification jobs*: Have workers verify labels, label category attributes, and frame attributes from a previous video frame object detection or object tracking labeling job\.
 
-  If you have video files, you can use the Ground Truth automatic frame extraction tool to extract video frames from your videos\.
+  If you have video files, you can use the Ground Truth automatic frame extraction tool to extract video frames from your videos\. To learn more, see [Video Frame Input Data](sms-video-frame-input-data-overview.md)\.
 
-  To learn more, see [Label Video Frames](sms-video-task-types.md)\.
+**Tip**  
+To learn more about supported file types and input data quotas, see [Input Data](sms-data-input.md)\.
 
 **Topics**
 + [Video Classification](sms-video-classification.md)

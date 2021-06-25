@@ -1,6 +1,6 @@
 # Monitor and Manage Your Human Loop<a name="a2i-monitor-humanloop-results"></a>
 
-Once you've started a human review loop, you can check the results of and manage the loop using the [Amazon Augmented AI Runtime API](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/Welcome.html)\. Additionally, Amazon A2I integrates with Amazon EventBridge \(also known as Amazon CloudWatch Events\) to alert you when a human review loop changes status\. 
+Once you've started a human review loop, you can check the results of tasks sent to the loop and manage it using the [Amazon Augmented AI Runtime API](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/Welcome.html)\. Additionally, Amazon A2I integrates with Amazon EventBridge \(also known as Amazon CloudWatch Events\) to alert you when a human review loop status changes to `Completed`, `Failed`, or `Stopped`\. This event delivery is guaranteed at least once, which means all events created when human loops finish are successfully delivered to EventBridge\.
 
 Use the procedures below to learn how to use the Amazon A2I Runtime API to monitor and manage your human loops\. See [Use Amazon CloudWatch Events in Amazon Augmented AICloudWatch Events](a2i-cloudwatch-events.md) to learn how Amazon A2I integrates with Amazon EventBridge\.
 
@@ -8,7 +8,7 @@ Use the procedures below to learn how to use the Amazon A2I Runtime API to monit
 
 1. Check the results of your human loop by calling the [https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_DescribeHumanLoop.html](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_DescribeHumanLoop.html) operation\. The result of this API operation contains information about the reason for and outcome of the loop activation\.
 
-1. Check the output data from your human loop in Amazon Simple Storage Service \(Amazon S3\)\. The path to the data uses the following pattern where `YYYY/MM/DD/hh/mm/ss` represents the human loop creation date with year \(`YYYY`\), month \(`MM`\) and day \(`DD`\) and the creation time with hour \(`hh`\), minute \(`mm`\) and second \(`ss`\)\. 
+1. Check the output data from your human loop in Amazon Simple Storage Service \(Amazon S3\)\. In the path to the data, `YYYY/MM/DD/hh/mm/ss` represents the human loop creation date with year \(`YYYY`\), month \(`MM`\), and day \(`DD`\), and the creation time with hour \(`hh`\), minute \(`mm`\), and second \(`ss`\)\. 
 
    ```
    s3://customer-output-bucket-specified-in-flow-definition/flow-definition-name/YYYY/MM/DD/hh/mm/ss/human-loop-name/output.json
@@ -28,6 +28,6 @@ To learn more about Amazon A2I output data format, see [Amazon A2I Output Data](
 
 1. You can list all active human loops by calling the [https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_ListHumanLoops.html](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_ListHumanLoops.html) operation\. You can filter human loops by the creation date of the loop using the `CreationTimeAfter` and `CreateTimeBefore` parameters\. 
 
-1. If successful, `ListHumanLoops` will return [https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_HumanLoopSummary.html](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_HumanLoopSummary.html) and `NextToken` objects in the response element\. `HumanLoopSummaries` contains information about a single human loop\. For example, it will list a loop's status and if applicable, failure reason\. 
+1. If successful, `ListHumanLoops` returns [https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_HumanLoopSummary.html](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_HumanLoopSummary.html) and `NextToken` objects in the response element\. `HumanLoopSummaries` contains information about a single human loop\. For example, it lists a loop's status and, if applicable, its failure reason\. 
 
    Use the string returned in `NextToken` as an input in a subsequent call to `ListHumanLoops` to see the next page of human loops\. 

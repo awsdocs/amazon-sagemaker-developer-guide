@@ -4,6 +4,8 @@ Use an Amazon SageMaker Ground Truth video classification labeling task when you
 
 You create a video classification labeling job using the Ground Truth section of the Amazon SageMaker console or the [CreateLabelingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. 
 
+Your video files must be encoded in a format that is supported by the browser used by the work team that labels your data\. It is recommended that you verify that all video file formats in your input manifest file display correctly using the worker UI preview\. You can communicate supported browsers to your workers using worker instructions\. To see supported file formats, see [Supported Data Formats](sms-supported-data-formats.md)\.
+
 **Important**  
 For this task type, if you create your own manifest file, use `"source-ref"` to identify the location of each video file in Amazon S3 that you want labeled\. For more information, see [Input Data](sms-data-input.md)\.
 

@@ -3,12 +3,12 @@
 ## Script Modification Overview<a name="data-parallel-modify-sdp-overview"></a>
 
 SageMaker's distributed data parallel library \(the library\) APIs are designed for ease of use, and to provide seamless integration with existing distributed training toolkits\.
-+ *SageMaker Python SDK with the library API*: In most cases, all you have to change in your training script is the Horovod or other data parallel library import statements\. Swap these out with the the SageMaker data parallel library equivalents\.
++ *SageMaker Python SDK with the library API*: In most cases, all you have to change in your training script is the Horovod or other data parallel library import statements\. Swap these out with the SageMaker data parallel library equivalents\.
 + *Focus on your model training without infrastructure management*: When training a deep learning model with the library on SageMaker, you can focus on your model training, while SageMaker does cluster management: brings up the nodes and creates the cluster, completes the training, then tears down the cluster\. 
 
  To customize your own training script, you need to do the following: 
 + You must provide TensorFlow/PyTorch training scripts that are adapted to use the library\. The following sections provide example code for this\. 
-+ Your input data must be in an S3 bucket or in [FSx](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html)in the AWS Region that you will use to launch your training job\. If you use the Jupyter Notebooks provided, create a SageMaker notebook instance in the same Region as the bucket that contains your input data\. For more information about storing your training data, refer to the [SageMaker Python SDK data inputs](https://sagemaker.readthedocs.io/en/stable/overview.html#use-file-systems-as-training-input) documenation\. 
++ Your input data must be in an S3 bucket or in [FSx](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html) in the AWS Region that you will use to launch your training job\. If you use the Jupyter Notebooks provided, create a SageMaker notebook instance in the same Region as the bucket that contains your input data\. For more information about storing your training data, refer to the [SageMaker Python SDK data inputs](https://sagemaker.readthedocs.io/en/stable/overview.html#use-file-systems-as-training-input) documenation\. 
 
 **Tip**  
 Consider using FSx instead of Amazon S3 to increase training performance\. It has higher throughput and lower latency than Amazon S3\. 
@@ -19,11 +19,14 @@ Then you can see how to deploy your trained model to an endpoint by following on
 
 Finally, you can follow an example notebook to test inference on your deployed model\. 
 
-## Modify a TensorFlow 2\.x Training Script to use SMD Data Parallel<a name="data-parallel-modify-sdp-tf2"></a>
+## Modify a TensorFlow 2\.x Training Script Using SageMaker Distributed Data Parallel<a name="data-parallel-modify-sdp-tf2"></a>
 
- The following steps show you how to convert a TensorFlow 2\.x training script to utilize SageMaker's distributed data parallel library\.  
+ The following steps show you how to convert a TensorFlow 2\.3\.1 or 2\.4\.1 training script to utilize SageMaker's distributed data parallel library\.  
 
-The library APIs are designed to be similar to Horovod APIs\. Refer to the [SageMaker distributed data parallel TensorFlow API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel_tensorflow.html) for additional details on each API that the library offers for TensorFlow\. 
+The library APIs are designed to be similar to Horovod APIs\. Refer to the [SageMaker distributed data parallel TensorFlow API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html#api-documentation) for additional details on each API that the library offers for TensorFlow\. 
+
+**Note**  
+SageMaker distributed data parallel is adaptable to TensorFlow training scripts composed of `tf` core modules except `tf.keras` modules\. SageMaker distributed data parallel does not support TensorFlow with Keras implementation\.
 
 1. Import the library's TensorFlow client and initialize it: 
 
@@ -66,7 +69,7 @@ The library APIs are designed to be similar to Horovod APIs\. Refer to the [Sage
    sdp.broadcast_variables(opt.variables(), root_rank=0)
    ```
 
-1. Finally, modify your script to save checkpoints only on the leader node\. The leader nodehas a synchronized model\. This also avoids worker nodes overwriting the checkpoints and possibly corrupting the checkpoints\. 
+1. Finally, modify your script to save checkpoints only on the leader node\. The leader node has a synchronized model\. This also avoids worker nodes overwriting the checkpoints and possibly corrupting the checkpoints\. 
 
    ```
    if sdp.rank() == 0:
@@ -129,13 +132,13 @@ if sdp.rank() == 0:
     checkpoint.save(checkpoint_dir)
 ```
 
-For more advanced usage, refer to [SageMaker Distributed Data Parallel TensorFlow API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel_tensorflow.html)\. 
+For more advanced usage, refer to [SageMaker Distributed Data Parallel TensorFlow API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html#api-documentation)\. 
 
-## Modify a PyTorch Training Script to Use SMD Data Parallel<a name="data-parallel-modify-sdp-pt"></a>
+## Modify a PyTorch Training Script Using SMD Data Parallel<a name="data-parallel-modify-sdp-pt"></a>
 
-The following steps show you how to convert a PyTorch training script to utilize SageMaker's distibuted data parallel library\.
+The following steps show you how to convert a PyTorch training script to utilize SageMaker's distributed data parallel library\.
 
-The library APIs are designed to be similar to PyTorch Distributed Data Parallel \(DDP\) APIs\. For additional details on each data parallel API offered for PyTorch, see the [SageMaker distibuted data parallel PyTorch API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel_pytorch.html)\. 
+The library APIs are designed to be similar to PyTorch Distributed Data Parallel \(DDP\) APIs\. For additional details on each data parallel API offered for PyTorch, see the [SageMaker distributed data parallel PyTorch API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html#api-documentation)\. 
 
 1. Import the library’s PyTorch client and initialize it, then import the module for distributed training\. 
 
@@ -145,6 +148,13 @@ The library APIs are designed to be similar to PyTorch Distributed Data Paralle
    from smdistributed.dataparallel.torch.parallel.distributed import DistributedDataParallel as DDP
    
    dist.init_process_group()
+   ```
+
+1. After parsing arguments and defining a batch size parameter \(for example, `batch_size=args.batch_size`\), add a 2\-line of code to resize the batch size per worker \(GPU\)\. PyTorch's DataLoader operation does not automatically handle the batch resizing for distributed training\.
+
+   ```
+   batch_size //= dist.get_world_size()
+   batch_size = max(batch_size, 1)
    ```
 
 1. Pin each GPU to a single SageMaker data parallel library process with `local_rank`—this refers to the relative rank of the process within a given node\.
@@ -163,7 +173,7 @@ The library APIs are designed to be similar to PyTorch Distributed Data Paralle
    model = DDP(model)
    ```
 
-1. Modify the`torch.utils.data.distributed.DistributedSampler` to include the cluster’s information\. Set`num_replicas` to the total number of GPUs participating in training across all the nodes in the cluster\. This is called `world_size`\. You can get `world_size` with the `smdistributed.dataparallel.torch.get_world_size()` API\. This is invoked in the following code as `dist.get_world_size()`\. Also supply the node rank using `smdistributed.dataparallel.torch.get_rank()`\. This is invoked as `dist.get_rank()`\. 
+1. Modify the`torch.utils.data.distributed.DistributedSampler` to include the cluster’s information\. Set `num_replicas` to the total number of GPUs participating in training across all the nodes in the cluster\. This is called `world_size`\. You can get `world_size` with the `smdistributed.dataparallel.torch.get_world_size()` API\. This is invoked in the following code as `dist.get_world_size()`\. Also supply the node rank using `smdistributed.dataparallel.torch.get_rank()`\. This is invoked as `dist.get_rank()`\. 
 
    ```
    train_sampler = DistributedSampler(train_dataset, num_replicas=dist.get_world_size(), rank=dist.get_rank())
@@ -198,7 +208,7 @@ def test(...):
 def main():
     
     # SageMaker data parallel: Scale batch size by world size
-    batch_size //= dist.get_world_size() // 8
+    batch_size //= dist.get_world_size()
     batch_size = max(batch_size, 1)
 
     # Prepare dataset
@@ -236,7 +246,7 @@ if __name__ == '__main__':
     main()
 ```
 
-For more advanced usage, see the [SageMaker distributed data parallel PyTorch API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel_pytorch.html)\. 
+For more advanced usage, see the [SageMaker distributed data parallel PyTorch API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html#api-documentation)\. 
 
 ## Launch a Training Job<a name="data-parallel-training"></a>
 

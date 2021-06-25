@@ -12,8 +12,8 @@ An Amazon SageMaker training job is an iterative process that teaches a model to
 ## Training Metrics Sample Notebooks<a name="training-metrics-sample-notebooks"></a>
 
 The following sample notebooks show how to view and plot training metrics:
-+ [ An Introduction to the Amazon SageMaker ObjectToVec Model for Sequence\-to\-sequence Embedding \(object2vec\_sentence\_similarity\.ipynb\)](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/object2vec_sentence_similarity/object2vec_sentence_similarity.ipynb)
-+ [Regression with the Amazon SageMaker XGBoost Algorithm \(xgboost\_abalone\.ipynb\)](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_abalone.ipynb)
++ [ An Introduction to the Amazon SageMaker ObjectToVec Model for Sequence\-to\-sequence Embedding \(object2vec\_sentence\_similarity\.ipynb\)](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/object2vec_sentence_similarity/object2vec_sentence_similarity.html)
++ [Regression with the Amazon SageMaker XGBoost Algorithm \(xgboost\_abalone\.ipynb\)](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_abalone.html)
 
 For instructions how to create and access Jupyter notebook instances that you can use to run the examples in SageMaker, see [Example Notebooks](howitworks-nbexamples.md)\. To see a list of all the SageMaker samples, after creating and opening a notebook instance, choose the **SageMaker Examples** tab\. To access the example notebooks that show how to use training metrics, `object2vec_sentence_similarity.ipynb` and ` xgboost_abalone.ipynb`\., from the **Introduction to Amazon algorithms** section\. To open a notebook, choose its **Use** tab, then choose **Create copy**\.
 
@@ -92,9 +92,9 @@ Define the metrics that you want to send to CloudWatch by specifying a list of m
 ```
 estimator =
                 Estimator(image_name=ImageName,
-                role='SageMakerRole', train_instance_count=1,
-                train_instance_type='ml.c4.xlarge',
-                train_instance_type='ml.c4.xlarge',
+                role='SageMakerRole', 
+                instance_count=1,
+                instance_type='ml.c4.xlarge',
                 k=10,
                 sagemaker_session=sagemaker_session,
                 metric_definitions=[
@@ -132,7 +132,7 @@ You can monitor the metrics that a training job emits in real time in the CloudW
 
 **To monitor training job metrics \(CloudWatch console\)**
 
-1. Open the CloudWatch console at [https://console\.aws\.amazon\.com/cloudwatch/](https://console.aws.amazon.com/cloudwatch/)\.
+1. Open the CloudWatch console at [https://console\.aws\.amazon\.com/cloudwatch](https://console.aws.amazon.com/cloudwatch)\.
 
 1. Choose **Metrics**, then choose **/aws/sagemaker/TrainingJobs**\.
 
@@ -148,7 +148,7 @@ You can monitor the metrics that a training job emits in real time by using the 
 
 **To monitor training job metrics \(SageMaker console\)**
 
-1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
+1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker](https://console.aws.amazon.com/sagemaker)\.
 
 1. Choose **Training jobs**, then choose the training job whose metrics you want to see\.
 
@@ -163,11 +163,11 @@ Typically, you split the data that you train your model on into training and val
 
 Viewing a graph that shows the accuracy for both the training and validation sets over time can help you to improve the performance of your model\. For example, if training accuracy continues to increase over time, but, at some point, validation accuracy starts to decrease, you are likely overfitting your model\. To address this, you can make adjustments to your model, such as increasing [regularization](https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#regularization)\.
 
-For this example, you can use the **Image\-classification\-full\-training** example that is in the **Example notebooks** section of your SageMaker notebook instance\. If you don't have a SageMaker notebook instance, create one by following the instructions at [Step 1: Create an Amazon SageMaker Notebook Instance](gs-setup-working-env.md)\. If you prefer, you can follow along with the [End\-to\-End Multiclass Image Classification Example](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-fulltraining.ipynb) in the example notebook on GitHub\. You also need an Amazon S3 bucket to store the training data and for the model output\.
+For this example, you can use the **Image\-classification\-full\-training** example that is in the **Example notebooks** section of your SageMaker notebook instance\. If you don't have a SageMaker notebook instance, create one by following the instructions at [Step 1: Create an Amazon SageMaker Notebook Instance](gs-setup-working-env.md)\. If you prefer, you can follow along with the [End\-to\-End Multiclass Image Classification Example](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-fulltraining.html) in the example notebook on GitHub\. You also need an Amazon S3 bucket to store the training data and for the model output\.
 
 **To view training and validation error curves**
 
-1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
+1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker](https://console.aws.amazon.com/sagemaker)\.
 
 1. Choose **Notebooks**, and then choose **Notebook instances**\.
 
@@ -181,7 +181,7 @@ For this example, you can use the **Image\-classification\-full\-training** exam
 
 1. Run all of the cells in the notebook up to the **Inference** section\. You don't need to deploy an endpoint or get inference for this example\.
 
-1. After the training job starts, open the CloudWatch console at [https://console\.aws\.amazon\.com/cloudwatch/](https://console.aws.amazon.com/cloudwatch/)\.
+1. After the training job starts, open the CloudWatch console at [https://console\.aws\.amazon\.com/cloudwatch](https://console.aws.amazon.com/cloudwatch)\.
 
 1. Choose **Metrics**, then choose **/aws/sagemaker/TrainingJobs**\.
 

@@ -11,4 +11,4 @@ print(role)
 
 ## Next Step<a name="automatic-model-tuning-ex-next-bucket"></a>
 
-[Specify a Default S3 Bucket to Store Training Output Data](automatic-model-tuning-ex-bucket.md)
+[Specify a S3 Bucket to Upload Training Datasets and Store Output Data](automatic-model-tuning-ex-bucket.md)

@@ -2,7 +2,7 @@
 
 When you are not using Data Wrangler, it is important to shut down the instance on which it runs to avoid incurring additional fees\. 
 
-To avoid loosing work, save your data flow before shutting Data Wrangler down\. To save your data flow in Studio, select **File** and then select **Save Data Wrangler Flow**\. Note that Data Wrangler automatically saves your data flow every 60 seconds\. 
+To avoid losing work, save your data flow before shutting Data Wrangler down\. To save your data flow in Studio, select **File** and then select **Save Data Wrangler Flow**\. Note that Data Wrangler automatically saves your data flow every 60 seconds\. 
 
 **To shut down the Data Wrangler instance in Studio:**
 

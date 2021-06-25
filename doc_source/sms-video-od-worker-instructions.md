@@ -12,9 +12,11 @@ If you see annotations have already been added to one or more video frames when 
 **Topics**
 + [Your Task](#sms-video-worker-instructions-od-task)
 + [Navigate the UI](#sms-video-worker-instructions-worker-ui-od)
++ [Bulk Edit Label and Frame Attributes](#sms-video-frame-worker-instructions-od-bulk-edit)
 + [Tool Guide](#sms-video-worker-instructions-worker-tool-guide-od)
 + [UI Icon Guide](#sms-video-worker-instructions-od-icons)
 + [Shortcuts](#sms-video-worker-instructions-od-hot-keys)
++ [Release, Stop and Resume, and Decline Tasks](#sms-video-worker-instructions-skip-reject-od)
 + [Saving Your Work and Submitting](#sms-video-worker-instructions-saving-work-od)
 
 ## Your Task<a name="sms-video-worker-instructions-od-task"></a>
@@ -23,7 +25,7 @@ When you work on a video frame object detection task, you need to select a categ
 
 After you've added a label, you may see a downward pointing arrow next to the label in the **Labels** menu\. Select this arrow and then select one option for each label attribute you see to provide more information about that label\.
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/od_video_attributes.gif)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/kitti-od-general-labeling-job.gif)
 
 You may see frame attributes under the **Labels** menu\. These attributes will appear on each frame in your task\. Use these attribute prompts to enter additional information about each frame\. 
 
@@ -40,7 +42,7 @@ After you've used the predict next icon, review the location of each box in the 
 
 The following graphic demonstrates how to use the predict next tool:
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/od_predict_next.gif)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/kitti-video-od.gif)
 
 For all other tools, you can use the **Copy to next** and **Copy to all** tools to copy your annotations to the next or all frames respectively\. 
 
@@ -64,6 +66,28 @@ When you are in the worker UI, you see the following menus:
 + **Help** – Use this option to refer back to this documentation\. 
 
 If you 
+
+## Bulk Edit Label and Frame Attributes<a name="sms-video-frame-worker-instructions-od-bulk-edit"></a>
+
+You can bulk edit label attributes and frame attributes \(attributes\)\. 
+
+When you bulk edit an attribute, you specify one or more ranges of frames that you want to apply the edit to\. The attribute you select is edited in all frames in that range, including the start and end frames you specify\. When you bulk edit label attributes, the range you specify *must* contain the label that the label attribute is attached to\. If you specify frames that do not contain this label, you will receive an error\. 
+
+To bulk edit an attribute you *must* specify the desired value for the attribute first\. For example, if you want to change an attribute from *Yes* to *No*, you must select *No*, and then perform the bulk edit\. 
+
+You can also specify a new value for an attribute that has not been filled in and then use the bulk edit feature to fill in that value in multiple frames\. To do this, select the desired value for the attribute and complete the following procedure\. 
+
+**To bulk edit a label or attribute:**
+
+1. Use your mouse to right click the attribute you want to bulk edit\.
+
+1. Specify the range of frames you want to apply the bulk edit to using a dash \(`-`\) in the text box\. For example, if you want to apply the edit to frames one through ten, enter `1-10`\. If you want to apply the edit to frames two to five, eight to ten and twenty enter `2-5,8-10,20`\.
+
+1. Select **Confirm**\.
+
+If you get an error message, verify that you entered a valid range and that the label associated with the label attribute you are editing \(if applicable\) exists in all frames specified\.
+
+You can quickly add a label to all previous or subsequent frames using the **Duplicate to previous frames** and **Duplicate to next frames** options in the **Label** menu at the top of your screen\. 
 
 ## Tool Guide<a name="sms-video-worker-instructions-worker-tool-guide-od"></a>
 
@@ -106,8 +130,19 @@ The keyboard shortcuts listed in the **Shortcuts** menu can help you quickly sel
 
 Before you start your task, it is recommended that you review the **Shortcuts** menu and become acquainted with these commands\. 
 
+## Release, Stop and Resume, and Decline Tasks<a name="sms-video-worker-instructions-skip-reject-od"></a>
+
+When you open the labeling task, three buttons on the top right allow you to decline the task \(**Decline task**\), release it \(**Release task**\), and stop and resume it at a later time \(**Stop and resume later**\)\. The following list describes what happens when you select one of these options:
++ **Decline task**: You should only decline a task if something is wrong with the task, such as unclear video frame images or an issue with the UI\. If you decline a task, you will not be able to return to the task\.
++ **Release Task**: Use this option to release a task and allow others to work on it\. When you release a task, you loose all work done on that task and other workers on your team can pick it up\. If enough workers pick up the task, you may not be able to return to it\. When you select this button and then select **Confirm**, you are returned to the worker portal\. If the task is still available, its status will be **Available**\. If other workers pick it up, it will disappear from your portal\.
++ **Stop and resume later**: You can use the **Stop and resume later** button to stop working and return to the task at a later time\. You should use the **Save** button to save your work before you select **Stop and resume later**\. When you select this button and then select **Confirm**, you are returned to the worker portal, and the task status is **Stopped**\. You can select the same task to resume work on it\. 
+
+  Be aware that the person that creates your labeling tasks specifies a time limit in which all tasks much be completed by\. If you do not return to and complete this task within that time limit, it will expire and your work will not be submitted\. Contact your administrator for more information\. 
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/video/reject-decline-task.gif)
+
 ## Saving Your Work and Submitting<a name="sms-video-worker-instructions-saving-work-od"></a>
 
-You should periodically save your work\. Ground Truth automatically saves your work every 15 minutes\. 
+You should periodically save your work\. Ground Truth automatically saves your work every 15 minutes\.
 
-When you open a task, you must complete your work before pressing **Submit**\. If you select **Stop Working**,you lose that task, and other workers can start working on it\. 
+When you open a task, you must complete your work before pressing **Submit**\.

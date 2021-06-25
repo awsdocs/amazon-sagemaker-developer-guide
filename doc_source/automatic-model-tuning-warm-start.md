@@ -86,7 +86,7 @@ smclient.create_hyper_parameter_tuning_job(HyperParameterTuningJobName = 'MyWarm
 
 To use the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) to run a warm start tuning job, you:
 + Specify the parent jobs and the warm start type by using a `WarmStartConfig` object\.
-+ Pass the `WarmStartConfig` object as the value of the `warm_start_config` argument of a [HyperparameterTuner](https://sagemaker.readthedocs.io/en/latest/tuner.html) object\.
++ Pass the `WarmStartConfig` object as the value of the `warm_start_config` argument of a [HyperparameterTuner](https://sagemaker.readthedocs.io/en/stable/tuner.html) object\.
 + Call the `fit` method of the `HyperparameterTuner` object\.
 
 For more information about using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) for hyperparameter tuning, see [https://github\.com/aws/sagemaker\-python\-sdk\#sagemaker\-automatic\-model\-tuning](https://github.com/aws/sagemaker-python-sdk#sagemaker-automatic-model-tuning)\.

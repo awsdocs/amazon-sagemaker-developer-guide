@@ -11,7 +11,7 @@ To create a SageMaker Neo\-compiled model, you need the following:
 
    1. **For PyTorch and MXNet models:**
 
-      *If you trained your model using SageMaker*, the training script must implement the functions described below\. The training script serves as the entry point script during inference\. In the example detailed in [ MNIST Training, Compilation and Deployment with MXNet Module and SageMaker Neo](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker_neo_compilation_jobs/mxnet_mnist/mxnet_mnist_neo.ipynb), the training script \(`mnist.py`\) implements the required functions\.
+      *If you trained your model using SageMaker*, the training script must implement the functions described below\. The training script serves as the entry point script during inference\. In the example detailed in [ MNIST Training, Compilation and Deployment with MXNet Module and SageMaker Neo](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker_neo_compilation_jobs/mxnet_mnist/mxnet_mnist_neo.html), the training script \(`mnist.py`\) implements the required functions\.
 
       * If you did not train your model using SageMaker*, you need to provide an entry point script \(`inference.py`\) file that can be used at the time of inference\. Based on the framework—MXNet or PyTorch—the inference script location must conform to the SageMaker Python SDK [Model Directory Structure for MxNet](https://sagemaker.readthedocs.io/en/stable/frameworks/mxnet/using_mxnet.html#model-directory-structure) or [ Model Directory Structure for PyTorch](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/using_pytorch.html#model-directory-structure)\. 
 
@@ -31,7 +31,7 @@ To create a SageMaker Neo\-compiled model, you need the following:
       import numpy as np
       import json
       import mxnet as mx
-      import neomxnet  # noqa: F401
+      import neomx  # noqa: F401
       from collections import namedtuple
       
       Batch = namedtuple('Batch', ['data'])
@@ -83,7 +83,7 @@ To create a SageMaker Neo\-compiled model, you need the following:
       import numpy as np
       import json
       import mxnet as mx
-      import neomxnet  # noqa: F401
+      import neomx  # noqa: F401
       
       # Change the context to mx.cpu() if deploying to a CPU endpoint
       ctx = mx.gpu()
@@ -129,7 +129,7 @@ To create a SageMaker Neo\-compiled model, you need the following:
       ```
 
 ------
-#### [ PyTorch ]
+#### [ PyTorch 1\.4 and Older ]
 
       ```
       import os
@@ -158,8 +158,89 @@ To create a SageMaker Neo\-compiled model, you need the following:
           # The compiled model is saved as "compiled.pt"
           model_path = os.path.join(model_dir, 'compiled.pt')
           with torch.neo.config(model_dir=model_dir, neo_runtime=True):
-          model = torch.jit.load(model_path)
+              model = torch.jit.load(model_path)
+              device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+              model = model.to(device)
+      
+          # We recommend that you run warm-up inference during model load
+          sample_input_path = os.path.join(model_dir, 'sample_input.pkl')
+          with open(sample_input_path, 'rb') as input_file:
+              model_input = pickle.load(input_file)
+          if torch.is_tensor(model_input):
+              model_input = model_input.to(device)
+              model(model_input)
+          elif isinstance(model_input, tuple):
+              model_input = (inp.to(device) for inp in model_input if torch.is_tensor(inp))
+              model(*model_input)
+          else:
+              print("Only supports a torch tensor or a tuple of torch tensors")
+              return model
+      
+      
+      def transform_fn(model, request_body, request_content_type,
+                       response_content_type):
+          """Run prediction and return the output.
+          The function
+          1. Pre-processes the input request
+          2. Runs prediction
+          3. Post-processes the prediction output.
+          """
+          # preprocess
+          decoded = Image.open(io.BytesIO(request_body))
+          preprocess = transforms.Compose([
+              transforms.Resize(256),
+              transforms.CenterCrop(224),
+              transforms.ToTensor(),
+              transforms.Normalize(
+                  mean=[
+                      0.485, 0.456, 0.406], std=[
+                      0.229, 0.224, 0.225]),
+          ])
+          normalized = preprocess(decoded)
+          batchified = normalized.unsqueeze(0)
+          # predict
           device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+          batchified = batchified.to(device)
+          output = model.forward(batchified)
+      
+          return json.dumps(output.cpu().numpy().tolist()), response_content_type
+      ```
+
+------
+#### [ PyTorch 1\.5 and Newer ]
+
+      Use `neopytorch` to specify the file path of the model if you trained with PyTorch version 1\.5 and newer\.
+
+      ```
+      import os
+      import torch
+      import neopytorch
+      import torch.nn.parallel
+      import torch.optim
+      import torch.utils.data
+      import torch.utils.data.distributed
+      import torchvision.transforms as transforms
+      from PIL import Image
+      import io
+      import json
+      import pickle
+      
+      
+      def model_fn(model_dir):
+          """Load the model and return it.
+          Providing this function is optional.
+          There is a default model_fn available which will load the model
+          compiled using SageMaker Neo. You can override it here.
+      
+          Keyword arguments:
+          model_dir -- the directory path where the model artifacts are present
+          """
+      
+          # The compiled model is saved as "compiled.pt"
+          model_path = os.path.join(model_dir, 'compiled.pt')
+          neopytorch.config(model_dir=model_dir,neo_runtime=True)
+          device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+          model = torch.jit.load(model_path, map_location=device)
           model = model.to(device)
       
           # We recommend that you run warm-up inference during model load
@@ -225,7 +306,7 @@ The preceding two functions do not use any of the functionalities of MXNet, PyTo
 **Note**  
 Note that if handler function is implemented, `input_handler` and `output_handler` are ignored\. 
 
-      The following is a code example of `inference.py` script that you can put together with the compile model to perform custom pre\- and post\-processing on an image classification model\. The SageMaker client sends the image file as an `application/x-image` content type to the `input_handler` function, where it is converted to JSON\. The converted image file is then sent to the [Tensorflow Model Server \(TFX\)](https://www.tensorflow.org/tfx/serving/api_rest) using then REST API\. 
+      The following is a code example of `inference.py` script that you can put together with the compile model to perform custom pre\- and post\-processing on an image classification model\. The SageMaker client sends the image file as an `application/x-image` content type to the `input_handler` function, where it is converted to JSON\. The converted image file is then sent to the [Tensorflow Model Server \(TFX\)](https://www.tensorflow.org/tfx/serving/api_rest) using the REST API\. 
 
       ```
       import json
@@ -253,7 +334,7 @@ Note that if handler function is implemented, `input_handler` and `output_handle
           body = json.dumps({"signature_name": "serving_default", "instances": image.tolist()})
           return body
       
-          def output_handler(data, context):
+      def output_handler(data, context):
           """Post-process TensorFlow Serving output before it is returned to the client.
           
           Args:

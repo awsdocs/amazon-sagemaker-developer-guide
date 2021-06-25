@@ -6,9 +6,7 @@ Two methods are presented to attach the image version to your domain\. In the fi
 
 If you have onboarded to Studio, you can use the second method to attach the image version to your current domain\. In this case, you don't need to specify the VPC information and execution role\. After you attach the version, you must delete all the apps in your domain and reopen Studio\.
 
-You can't run this tutorial from Studio for the following reasons:
-+ Docker isn't available inside Studio\.
-+ You can't create or update a domain within Studio\.
+You can't run this tutorial from Studio because you can't create or update a domain from within Studio\.
 
 **Prerequisites**
 + The Docker application\. For information about setting up Docker, see [Orientation and setup](https://docs.docker.com/get-started/)\.

@@ -6,7 +6,7 @@ Machine learning is an iterative process\. You need to experiment with multiple 
 
 SageMaker Experiments automatically tracks the inputs, parameters, configurations, and results of your iterations as *trials*\. You can assign, group, and organize these trials into *experiments*\. SageMaker Experiments is integrated with Amazon SageMaker Studio providing a visual interface to browse your active and past experiments, compare trials on key performance metrics, and identify the best performing models\.
 
-SageMaker Experiments comes with its own [Experiments SDK](https://github.com/aws/sagemaker-experiments) which makes the analytics capabilities easily accessible in Amazon SageMaker Notebooks\. Because SageMaker Experiments enables tracking of all the steps and artifacts that went into creating a model, you can quickly revisit the origins of a model when you are troubleshooting issues in production, or auditing your models for compliance verifications\.
+SageMaker Experiments comes with its own [Experiments Python SDK](https://sagemaker-experiments.readthedocs.io) which makes the analytics capabilities easily accessible in Amazon SageMaker Notebooks\. Because SageMaker Experiments enables tracking of all the steps and artifacts that went into creating a model, you can quickly revisit the origins of a model when you are troubleshooting issues in production, or auditing your models for compliance verifications\.
 
 **Topics**
 + [SageMaker Experiments Features](#experiments-features)
@@ -43,7 +43,7 @@ SageMaker Experiments automatically tracks Amazon SageMaker Autopilot jobs as ex
 
 **Manual Tracking**
 
-SageMaker Experiments provides tracking APIs for recording and tracking machine learning workflows running locally on SageMaker Studio notebooks, including classic SageMaker notebooks\. These experiments must be part of a SageMaker training, batch transform, or processing job\.
+SageMaker Experiments provides [tracking APIs](https://sagemaker-experiments.readthedocs.io/en/latest/tracker.html) for recording and tracking machine learning workflows running locally on SageMaker Studio notebooks, including classic SageMaker notebooks\. These experiments must be part of a SageMaker training, batch transform, or processing job\.
 
 ### Compare and Evaluate Experiments<a name="exp-mgmt-compare"></a>
 

@@ -1,8 +1,8 @@
-# Demo: Get Started Using the Amazon A2I API<a name="a2i-get-started-api"></a>
+# Tutorial: Get Started Using the Amazon A2I API<a name="a2i-get-started-api"></a>
 
-This walkthrough explains the API operations you can use to get started using Amazon A2I\. 
+This tutorial explains the API operations you can use to get started using Amazon A2I\. 
 
-To use a Jupyter Notebook to execute these operations, select a Jupyter notebook from [Use Cases and Examples using Amazon A2I](a2i-task-types-general.md) and use [Use SageMaker Notebook Instance with Amazon A2I Jupyter Notebook](a2i-task-types-general.md#a2i-task-types-notebook-demo) to learn how to use it in SageMaker notebook instance\.
+To use a Jupyter Notebook to run these operations, select a Jupyter Notebook from [Use Cases and Examples Using Amazon A2I](a2i-task-types-general.md) and use [Use SageMaker Notebook Instance with Amazon A2I Jupyter Notebook](a2i-task-types-general.md#a2i-task-types-notebook-demo) to learn how to use it in a SageMaker notebook instance\.
 
 To learn more about the API operations you can use with Amazon A2I, see [Use APIs in Amazon Augmented AIAPI References](a2i-api-references.md)\.
 
@@ -12,12 +12,12 @@ You can create a private work team and add yourself as a worker so that you can 
 
 If you are not familiar with Amazon Cognito, we recommend that you use the SageMaker console to create a private workforce and add yourself as a private worker\. For instructions, see [Step 1: Create a Work Team](a2i-get-started-console.md#a2i-get-started-console-step-1)\.
 
-If you are familiar with Amazon Cognito you can use the following instructions to create a private work team using the SageMaker API\. After you create a work team, note down the work team ARN \(`WorkteamArn`\)\.
+If you are familiar with Amazon Cognito, you can use the following instructions to create a private work team using the SageMaker API\. After you create a work team, note the work team ARN \(`WorkteamArn`\)\.
 
-To learn more about the private workforce, and other available configurations, see [Use a Private Workforce](sms-workforce-private.md)\.
+To learn more about the private workforce and other available configurations, see [Use a Private Workforce](sms-workforce-private.md)\.
 
 **Create a private workforce**  
-If you have not created a private workforce, you can do so using an [Amazon Cognito user pool](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html)\. Make sure that you have added yourself to this user pool\. You can create a private work team using the AWS Python SDK \(Boto3\) function, `[create\_workforce](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_workforce)`\. For other language\-specific SDKs, refer to the list in [CreateWorkforce](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateWorkforce.html#API_CreateWorkforce_SeeAlso)\.
+If you have not created a private workforce, you can do so using an [Amazon Cognito user pool](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html)\. Make sure that you have added yourself to this user pool\. You can create a private work team using the AWS SDK for Python \(Boto3\) `[create\_workforce](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_workforce)` function\. For other language\-specific SDKs, refer to the list in [CreateWorkforce](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateWorkforce.html#API_CreateWorkforce_SeeAlso)\.
 
 ```
     
@@ -31,7 +31,7 @@ If you have not created a private workforce, you can do so using an [Amazon Cogn
 ```
 
 **Create a private work team**  
-After you have created a private workforce in the AWS Region to configure and start your human loop, you can create a private work team using the AWS Python SDK \(Boto3\) function, `[create\_workteam](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_workteam)`\. For other language\-specific SDKs, refer to the list in `[CreateWorkteam](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateWorkteam.html#API_CreateWorkteam_SeeAlso)`\.
+After you have created a private workforce in the AWS Region to configure and start your human loop, you can create a private work team using the AWS SDK for Python \(Boto3\) `[create\_workteam](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_workteam)` function\. For other language\-specific SDKs, refer to the list in `[CreateWorkteam](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateWorkteam.html#API_CreateWorkteam_SeeAlso)`\.
 
 ```
     response = client.create_workteam(
@@ -56,7 +56,7 @@ Access your work team ARN as follows:
 ```
 
 **List private work teams in your account**  
-If you have already created a private work team, you can list all work teams in a given AWS Region in your account using the AWS Python SDK \(Boto3\) function, `[list\_workteams](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.list_workteams)`\. For other language\-specific SDKs, refer to the list in `[ListWorkteams](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListWorkteams.html#API_ListWorkteams_SeeAlso)`\. 
+If you have already created a private work team, you can list all work teams in a given AWS Region in your account using the AWS SDK for Python \(Boto3\) `[list\_workteams](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.list_workteams)` function\. For other language\-specific SDKs, refer to the list in `[ListWorkteams](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListWorkteams.html#API_ListWorkteams_SeeAlso)`\. 
 
 ```
     response = client.list_workteams()
@@ -66,16 +66,16 @@ If you have numerous work teams in your account, you may want to use `MaxResults
 
 ## Create a Human Review Workflow<a name="a2i-get-started-api-create-human-review-workflow"></a>
 
-You can create a human review workflow using the Amazon A2I operation `[CreateFlowDefinition](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html)`\. Before you create your human review workflow, you need to create a human task UI\. You can do this with the `[CreateHumanTaskUi](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHumanTaskUi.html)` operation\.
+You can create a human review workflow using the Amazon A2I `[CreateFlowDefinition](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html)` operation\. Before you create your human review workflow, you need to create a human task UI\. You can do this with the `[CreateHumanTaskUi](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHumanTaskUi.html)` operation\.
 
 If you are using Amazon A2I with the Amazon Textract or Amazon Rekognition integrations, you can specify activation conditions using a JSON\. 
 
 ### Create a Human Task UI<a name="a2i-get-started-api-worker-task-template"></a>
 
-If you are creating a human review workflow to be used with Amazon Textract or Amazon Rekognition integrations, you need to use and modify pre\-made worker task template\. For all custom integrations, you can use your own, custom worker task template\. Use the following table to see how to create a human task UI using a worker task template for the two built\-in integrations\. Replace the template with your own to customize this request\. 
+If you are creating a human review workflow to be used with Amazon Textract or Amazon Rekognition integrations, you need to use and modify pre\-made worker task template\. For all custom integrations, you can use your own custom worker task template\. Use the following table to learn how to create a human task UI using a worker task template for the two built\-in integrations\. Replace the template with your own to customize this request\. 
 
 ------
-#### [ Amazon Textract\- Key\-value pair extraction ]
+#### [ Amazon Textract – Key\-value pair extraction ]
 
 To learn more about this template, see [Custom Template Example for Amazon Textract](a2i-custom-templates.md#a2i-custom-templates-textract-sample)\.
 
@@ -132,7 +132,7 @@ template = r"""
 ```
 
 ------
-#### [ Amazon Rekognition \- Image moderation ]
+#### [ Amazon Rekognition – Image moderation ]
 
 To learn more about this template, see [Custom Template Example for Amazon Rekognition](a2i-custom-templates.md#a2i-custom-templates-rekognition-sample)\.
 
@@ -224,7 +224,7 @@ template = r"""
 
 ------
 
-Using the template specified above, you can create a template using the AWS Python SDK \(Boto3\) function, `[create\_human\_task\_ui](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_human_task_ui)`\. For other language\-specific SDKs, refer to the list in `[CreateHumanTaskUi](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHumanTaskUi.html#API_CreateHumanTaskUi_SeeAlso)`\. 
+Using the template specified above, you can create a template using the AWS SDK for Python \(Boto3\) `[create\_human\_task\_ui](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_human_task_ui)` function\. For other language\-specific SDKs, refer to the list in `[CreateHumanTaskUi](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHumanTaskUi.html#API_CreateHumanTaskUi_SeeAlso)`\. 
 
 ```
     
@@ -249,9 +249,9 @@ For Amazon Textract and Amazon Rekognition built\-in integrations, you can save 
 Next, select a tab to see example activation conditions you can use for these built\-in integrations\. For additional information about activation condition options, see [JSON Schema for Human Loop Activation Conditions in Amazon Augmented AI](a2i-human-fallback-conditions-json-schema.md)\.
 
 ------
-#### [ Amazon Textract\- Key\-value pair extraction ]
+#### [ Amazon Textract – Key\-value pair extraction ]
 
-This example specifies conditions for specific keys \(such as `Mail address`\) in the document\. If Amazon Textract's confidence falls outside of the thresholds set here, the document is sent to a human for review, with the specific keys that triggered the human loop prompted to the worker\.
+This example specifies conditions for specific keys \(such as `Mail address`\) in the document\. If Amazon Textract's confidence falls outside of the thresholds set here, the document is sent to a human for review, with the specific keys that initiated the human loop prompted to the worker\.
 
 ```
       import json  
@@ -311,9 +311,9 @@ This example specifies conditions for specific keys \(such as `Mail address`\) i
 ```
 
 ------
-#### [ Amazon Rekognition \- Image moderation ]
+#### [ Amazon Rekognition – Image moderation ]
 
-The human loop activation conditions used here are tailored towards Amazon Rekognition content moderation; they are based on the confidence thresholds for particular moderation labels, `Suggestive` and `Female Swimwear Or Underwear`\.
+The human loop activation conditions used here are tailored towards Amazon Rekognition content moderation; they are based on the confidence thresholds for the `Suggestive` and `Female Swimwear Or Underwear` moderation labels\.
 
 ```
         import json  
@@ -348,10 +348,10 @@ The human loop activation conditions used here are tailored towards Amazon Rekog
 
 ### Create a human review workflow<a name="a2i-get-started-api-flow-definition"></a>
 
-This section gives an example of the `CreateFlowDefinition` AWS Python SDK \(Boto3\) request using the resources created in the previous sections\. For other language\-specific SDKs, refer to the list in [CreateFlowDefinition](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html#API_CreateFlowDefinition_SeeAlso)\. Use the tabs in the following table to see the requests to create a human review workflow for Amazon Textract and Amazon Rekognition built\-in integrations\.
+This section gives an example of the `CreateFlowDefinition` AWS SDK for Python \(Boto3\) request using the resources created in the previous sections\. For other language\-specific SDKs, refer to the list in [CreateFlowDefinition](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html#API_CreateFlowDefinition_SeeAlso)\. Use the tabs in the following table to see the requests to create a human review workflow for Amazon Textract and Amazon Rekognition built\-in integrations\.
 
 ------
-#### [ Amazon Textract\- Key\-value pair extraction ]
+#### [ Amazon Textract – Key\-value pair extraction ]
 
 If you use the built\-in integration with Amazon Textract, you must specify `"AWS/Textract/AnalyzeDocument/Forms/V1"` for `"AwsManagedHumanLoopRequestSource"` in `HumanLoopRequestSource`\. 
 
@@ -392,7 +392,7 @@ If you use the built\-in integration with Amazon Textract, you must specify `"AW
 ```
 
 ------
-#### [ Amazon Rekognition \- Image moderation ]
+#### [ Amazon Rekognition – Image moderation ]
 
 If you use the built\-in integration with Amazon Rekognition, you must specify `"AWS/Rekognition/DetectModerationLabels/Image/V3"` for `"AwsManagedHumanLoopRequestSource"` in `HumanLoopRequestSource`\.
 
@@ -483,9 +483,9 @@ The API operation you use to start a human loop depends on the Amazon A2I integr
 Select your task type in the following table to see example requests for Amazon Textract and Amazon Rekognition using the AWS SDK for Python \(Boto3\)\. 
 
 ------
-#### [ Amazon Textract\- Key\-value pair extraction ]
+#### [ Amazon Textract – Key\-value pair extraction ]
 
-The following example uses the AWS SDK for Python \(Boto3\) to call `analyze_document` in us\-west\-2\. Replace the red, italicized text with your resources\. Include the [https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_HumanLoopDataAttributes.html](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_HumanLoopDataAttributes.html) parameter if you are using the Amazon Mechanical Turk workforce\. For more information, see [analyze\_document](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/textract.html#Textract.Client.analyze_document) documention in the AWS SDK for Python \(Boto\) API Reference\.
+The following example uses the AWS SDK for Python \(Boto3\) to call `analyze_document` in us\-west\-2\. Replace the italicized red text with your resources\. Include the [https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_HumanLoopDataAttributes.html](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_HumanLoopDataAttributes.html) parameter if you are using the Amazon Mechanical Turk workforce\. For more information, see the [analyze\_document](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/textract.html#Textract.Client.analyze_document) documention in the *AWS SDK for Python \(Boto\) API Reference*\.
 
 ```
    response = client.analyze_document(
@@ -493,7 +493,7 @@ The following example uses the AWS SDK for Python \(Boto3\) to call `analyze_doc
          HumanLoopConfig={
             "FlowDefinitionArn":"arn:aws:sagemaker:us-west-2:111122223333:flow-definition/flow-definition-name",
             "HumanLoopName":"human-loop-name",
-            "DataAttributes" : {ContentClassifiers=["FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"]}
+            "DataAttributes" : {ContentClassifiers:["FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"]}
          }
          FeatureTypes=["FORMS"]
     )
@@ -508,9 +508,9 @@ Human loops are only created if Amazon Textract's confidence for document analys
 ```
 
 ------
-#### [ Amazon Rekognition \- Image moderation ]
+#### [ Amazon Rekognition – Image moderation ]
 
-The following example uses the AWS SDK for Python \(Boto3\) to call `detect_moderation_labels` in us\-west\-2\. Replace the red, italicized text with your resources\. Include the [https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_HumanLoopDataAttributes.html](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_HumanLoopDataAttributes.html) parameter if you are using the Amazon Mechanical Turk workforce\. For more information, see [detect\_moderation\_labels](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/rekognition.html#Rekognition.Client.detect_moderation_labels) documention in the AWS SDK for Python \(Boto\) API Reference\.
+The following example uses the AWS SDK for Python \(Boto3\) to call `detect_moderation_labels` in us\-west\-2\. Replace the italicized red text with your resources\. Include the [https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_HumanLoopDataAttributes.html](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_HumanLoopDataAttributes.html) parameter if you are using the Amazon Mechanical Turk workforce\. For more information, see the [detect\_moderation\_labels](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/rekognition.html#Rekognition.Client.detect_moderation_labels) documention in the *AWS SDK for Python \(Boto\) API Reference*\.
 
 ```
    response = client.detect_moderation_labels(
@@ -518,7 +518,7 @@ The following example uses the AWS SDK for Python \(Boto3\) to call `detect_mode
             HumanLoopConfig={
                "FlowDefinitionArn":"arn:aws:sagemaker:us-west-2:111122223333:flow-definition/flow-definition-name",
                "HumanLoopName":"human-loop-name",
-               "DataAttributes" : {ContentClassifiers=["FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"]}
+               "DataAttributes":{ContentClassifiers:["FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"]}
              }
     )
 ```
@@ -534,18 +534,18 @@ Human loops are only created if Amazon Rekognition's confidence for an image mod
 ------
 #### [ Custom Integration ]
 
-The following example uses the AWS SDK for Python \(Boto3\) to call `start_human_loop` in us\-west\-2\. Replace the red, italicized text with your resources\. Include the [https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_HumanLoopDataAttributes.html](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_HumanLoopDataAttributes.html) parameter if you are using the Amazon Mechanical Turk workforce\. For more information, see [start\_human\_loop](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker-a2i-runtime.html#AugmentedAIRuntime.Client.start_human_loop) documention in the AWS SDK for Python \(Boto\) API Reference\.
+The following example uses the AWS SDK for Python \(Boto3\) to call `start_human_loop` in us\-west\-2\. Replace the italicized red text with your resources\. Include the [https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_HumanLoopDataAttributes.html](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_HumanLoopDataAttributes.html) parameter if you are using the Amazon Mechanical Turk workforce\. For more information, see the [start\_human\_loop](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker-a2i-runtime.html#AugmentedAIRuntime.Client.start_human_loop) documention in the *AWS SDK for Python \(Boto\) API Reference*\.
 
 ```
    response = client.start_human_loop(
         HumanLoopName= "human-loop-name",
         FlowDefinitionArn= "arn:aws:sagemaker:us-west-2:111122223333:flow-definition/flow-definition-name",
         HumanLoopInput={"InputContent": inputContentJson},
-        DataAttributes={"ContentClassifiers": ["FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"]}
+        DataAttributes={"ContentClassifiers":["FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"]}
    )
 ```
 
-This example stores intput content in the variable *`inputContentJson`*\. Assume that the input content contains two elements: a text blurb and sentiment \(such as Positive, Negative, or Neutral\), and it is formatted as follows:
+This example stores input content in the variable *`inputContentJson`*\. Assume that the input content contains two elements: a text blurb and sentiment \(such as `Positive`, `Negative`, or `Neutral`\), and it is formatted as follows:
 
 ```
     inputContent = {
@@ -554,9 +554,9 @@ This example stores intput content in the variable *`inputContentJson`*\. Assume
      }
 ```
 
-The keys `initialValue` and `taskObject` must correspond to the keys used in the liquid elements of our worker task template\. Refer to the custom template in [Create a Human Task UI](#a2i-get-started-api-worker-task-template) to see an example\. 
+The keys `initialValue` and `taskObject` must correspond to the keys used in the liquid elements of the worker task template\. Refer to the custom template in [Create a Human Task UI](#a2i-get-started-api-worker-task-template) to see an example\. 
 
-To create `inputContentJson`, do the following\. 
+To create `inputContentJson`, do the following: 
 
 ```
     import json

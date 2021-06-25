@@ -2,6 +2,8 @@
 
 In this step, you load the [Adult Census dataset](https://archive.ics.uci.edu/ml/datasets/adult) to your notebook instance using the [SHAP \(SHapley Additive exPlanations\) Library](https://shap.readthedocs.io/en/latest/), review the dataset, transform it, and upload it to Amazon S3\. 
 
+To run the following example, paste the sample code into a cell in your notebook instance\.
+
 ## Load Adult Census Dataset Using SHAP<a name="ex1-preprocess-data-pull-data"></a>
 
 Using the SHAP library, import the Adult Census dataset as shown following:

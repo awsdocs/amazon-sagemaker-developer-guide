@@ -10,6 +10,8 @@ Automated data labeling is available only for the following Ground Truth built\-
 + Object detection \([Bounding Box](sms-bounding-box.md)\)
 + [Text Classification \(Single Label\)](sms-text-classification.md)
 
+[Streaming labeling jobs](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-streaming-labeling-job.html) do not support automated data labeling\.
+
 To learn how to create a custom active learning workflow using your own model, see [Set up an active learning workflow with your own model](#samurai-automated-labeling-byom)\.
 
 Input data quotas apply for automated data labeling jobs\. See [Input Data Quotas](input-data-limits.md) for information about dataset size, input data size and resolution limits\.
@@ -91,7 +93,7 @@ You can see your labeling job appear in the **Labeling jobs** section of the Sag
 
 ## Create an Automated Data Labeling Job \(API\)<a name="sms-create-automated-labeling-api"></a>
 
-To create an automated data labeling job using the the SageMaker API, use the [ `LabelingJobAlgorithmsConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_LabelingJobAlgorithmsConfig.html) parameter of the [ `CreateLabelingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. To learn how to start a lableing job using the `CreateLabelingJob` operation, see [Create a Labeling Job \(API\)](sms-create-labeling-job-api.md)\.
+To create an automated data labeling job using the SageMaker API, use the [ `LabelingJobAlgorithmsConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_LabelingJobAlgorithmsConfig.html) parameter of the [ `CreateLabelingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. To learn how to start a lableing job using the `CreateLabelingJob` operation, see [Create a Labeling Job \(API\)](sms-create-labeling-job-api.md)\.
 
 Specify the Amazon Resource Name \(ARN\) of the algorithm that you are using for automated data labeling in the [LabelingJobAlgorithmSpecificationArn](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_LabelingJobAlgorithmsConfig.html#SageMaker-Type-LabelingJobAlgorithmsConfig-LabelingJobAlgorithmSpecificationArn) parameter\. Choose from one of the four Ground Truth built\-in algorithms that are supported with automated labeling:
 + [Image Classification \(Single Label\)](sms-image-classification.md)
@@ -133,4 +135,4 @@ Automated data labeling incurs two separate charges: the per\-item charge \(see 
 
 You can create an active learning workflow with your own algorithm to run training and inferences in that workflow to auto\-label your data\. The notebook bring\_your\_own\_model\_for\_sagemaker\_labeling\_workflows\_with\_active\_learning\.ipynb demonstrates this using the SageMaker built\-in algorithm, [BlazingText](https://docs.aws.amazon.com/sagemaker/latest/dg/blazingtext.html)\. This notebook provides an AWS CloudFormation stack that you can use to execute this workflow using AWS Step Functions\. You can find the notebook and supporting files in this [GitHub repository](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/ground_truth_labeling_jobs/bring_your_own_model_for_sagemaker_labeling_workflows_with_active_learning)\.
 
-You can also find this notebook in the SageMaker Examples repo\. See [Use Example Notebooks](https://docs.aws.amazon.com/sagemaker/latest/dg/howitworks-nbexamples.html) to learn how to find an Amazon SageMaker example notebook\.
+You can also find this notebook in the SageMaker Examples repository\. See [Use Example Notebooks](https://docs.aws.amazon.com/sagemaker/latest/dg/howitworks-nbexamples.html) to learn how to find an Amazon SageMaker example notebook\.

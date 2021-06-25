@@ -15,7 +15,7 @@ You can follow the instructions [Create a Labeling Job \(Console\)](sms-create-l
 
 Ground Truth provides a worker UI similar to the following for labeling tasks\. When you create the labeling job with the console, you specify instructions to help workers complete the job and labels that workers can choose from\. 
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/named-entity-rec-example.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms/gifs/ner.gif)
 
 ## Create a Named Entity Recognition Labeling Job \(API\)<a name="sms-creating-ner-api"></a>
 

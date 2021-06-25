@@ -1,10 +1,12 @@
 # Create a Fleet<a name="edge-device-fleet-create"></a>
 
-You can create a fleet programmatically with the AWS SDK for Python \(Boto3\) or through the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
+You can create a fleet programmatically with the AWS SDK for Python \(Boto3\) or through the SageMaker console [https://console\.aws\.amazon\.com/sagemaker](https://console.aws.amazon.com/sagemaker/)\.
 
 ## Create a Fleet \(Boto3\)<a name="edge-device-fleet-create-boto3"></a>
 
-Use the `CreateDeviceFleet` API to create a fleet\. Specify a name for the fleet, as well as an Amazon S3 URI where you want the device to store sampled data\. You can optionally include an Amazon Resource Role \(ARN\) role to use an alias for AWS IoT, a description of the fleet, tags, and an AWS KMS Key ID\.
+Use the `CreateDeviceFleet` API to create a fleet\. Specify a name for the fleet, your AWS IoT Role ARN for the `RoleArn` field, as well as an Amazon S3 URI where you want the device to store sampled data\.
+
+You can optionally include a description of the fleet, tags, and an AWS KMS Key ID\.
 
 ```
 import boto3
@@ -14,7 +16,7 @@ sagemaker_client = boto3.client("sagemaker", region_name="aws-region")
 
 sagemaker_client.create_device_fleet(
     DeviceFleetName="sample-fleet-name",
-    IAMRole="arn:aws:iam::999999999:role/rolename",
+    RoleArn="arn:aws:iam::999999999:role/rolename", # IoT Role ARN
     Description="fleet description",
     OutputConfig={
         S3OutputLocation="s3://bucket/",
@@ -29,6 +31,16 @@ sagemaker_client.create_device_fleet(
 )
 ```
 
+An AWS IoT Role Alias is created for you when you create a device fleet\. The AWS IoT role alias provides a mechanism for connected devices to authenticate to AWS IoT using X\.509 certificates and then obtain short\-lived AWS credentials from an IAM role that is associated with the AWS IoT role alias\.
+
+Use `DescribeDeviceFleet` to get the role alias name and ARN\.
+
+```
+# Print Amazon Resource Name (ARN) and alias that has access 
+# to AWS Internet of Things (IoT).
+sagemaker_client.describe_device_fleet(DeviceFleetName=device_fleet_name)['IotRoleAlias']
+```
+
 Use `DescribeDeviceFleet` API to get a description of fleets you created\.
 
 ```
@@ -38,8 +50,6 @@ sagemaker_client.describe_device_fleet(
 ```
 
 By default, it returns the name of the fleet, the device fleet ARN, the Amazon S3 bucket URI, the IAM role, the role alias created in AWS IoT, a timestamp of when the fleet was created, and a timestamp of when the fleet was last modified\.
-
-A description of the fleet is returned if one was provided\.
 
 ```
 { "DeviceFleetName": "sample-fleet-name",
@@ -57,7 +67,7 @@ A description of the fleet is returned if one was provided\.
 
 ## Create a Fleet \(Console\)<a name="edge-device-fleet-create-console"></a>
 
-You can create a Edge Manager packaging job using the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
+You can create a Edge Manager packaging job using the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker](https://console.aws.amazon.com/sagemaker/)\.
 
 1. In the SageMaker console, choose **Edge Inference** and then choose **Edge device fleets**\.
 

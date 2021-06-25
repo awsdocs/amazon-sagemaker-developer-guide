@@ -17,7 +17,7 @@ The `Action` element of a JSON policy describes the actions that you can use to 
 
 Include actions in a policy to grant permissions to perform the associated operation\.
 
-Policy actions in SageMaker use the following prefix before the action: `sagemaker:`\. For example, to grant someone permission to run an SageMaker training job with the SageMaker `CreateTrainingJob` API operation, you include the `sagemaker:CreateTrainingJob` action in their policy\. Policy statements must include either an `Action` or `NotAction` element\. SageMaker defines its own set of actions that describe tasks that you can perform with this service\.
+Policy actions in SageMaker use the following prefix before the action: `sagemaker:`\. For example, to grant someone permission to run a SageMaker training job with the SageMaker `CreateTrainingJob` API operation, you include the `sagemaker:CreateTrainingJob` action in their policy\. Policy statements must include either an `Action` or `NotAction` element\. SageMaker defines its own set of actions that describe tasks that you can perform with this service\.
 
 To specify multiple actions in a single statement, separate them with commas as follows:
 
@@ -25,6 +25,7 @@ To specify multiple actions in a single statement, separate them with commas as 
 "Action": [
       "sagemaker:action1",
       "sagemaker:action2"
+]
 ```
 
 You can specify multiple actions using wildcards \(\*\)\. For example, to specify all actions that begin with the word `Describe`, include the following action:
@@ -35,7 +36,7 @@ You can specify multiple actions using wildcards \(\*\)\. For example, to specif
 
 
 
-To see a list of SageMaker actions, see [Actions, Resources, and Condition Keys for Amazon SageMaker](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awskeymanagementservice.html) in the *IAM User Guide*\.
+To see a list of SageMaker actions, see [Actions, resources, and condition keys for Amazon SageMaker](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonsagemaker.html) in the *Service Authorization Reference*\.
 
 ### Resources<a name="security_iam_service-with-iam-id-based-policies-resources"></a>
 
@@ -70,7 +71,7 @@ SageMaker supports a number of service\-specific condition keys that you can use
 + [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstance.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstance.html)
 + [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateNotebookInstance.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateNotebookInstance.html)
 
-To see a list of SageMaker condition keys, see [Condition Keys for Amazon SageMaker](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awskeymanagementservice.html#awskeymanagementservice-policy-keys) in the *IAM User Guide*\. To learn with which actions and resources you can use a condition key, see [Actions Defined by Amazon SageMaker](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awskeymanagementservice.html#awskeymanagementservice-actions-as-permissions)\.
+To see a list of SageMaker condition keys, see [Condition keys for Amazon SageMaker ](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonsagemaker.html#amazonsagemaker-policy-keys) in the *IAM User Guide*\. To learn with which actions and resources you can use a condition key, see [Actions defined by Amazon SageMaker](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonsagemaker.html#amazonsagemaker-actions-as-permissions)\.
 
 For examples of using SageMaker condition keys, see the following: [Control Creation of SageMaker Resources with Condition Keys](security_iam_id-based-policy-examples.md#sagemaker-condition-examples)\.
 

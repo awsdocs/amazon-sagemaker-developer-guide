@@ -8,17 +8,16 @@ To evaluate the model and use it in production, invoke the endpoint with the tes
 
 **To evaluate the model**
 
-1. Set up the following function to predict each line of the test set\. In the following example code, the `row` argument is to specify the number of lines to predict at a time\. You can change the value of it to perform a batch inference that fully utilizes the instance's hardware resource\.
+1. Set up the following function to predict each line of the test set\. In the following example code, the `rows` argument is to specify the number of lines to predict at a time\. You can change the value of it to perform a batch inference that fully utilizes the instance's hardware resource\.
 
    ```
    import numpy as np
    def predict(data, rows=1000):
-   split_array = np.array_split(data, int(data.shape[0] / float(rows) + 1))
-   predictions = ''
-   for array in split_array:
-       predictions = ','.join([predictions, xgb_predictor.predict(array).decode('utf-8')])
-   
-   return np.fromstring(predictions[1:], sep=',')
+       split_array = np.array_split(data, int(data.shape[0] / float(rows) + 1))
+       predictions = ''
+       for array in split_array:
+           predictions = ','.join([predictions, xgb_predictor.predict(array).decode('utf-8')])
+       return np.fromstring(predictions[1:], sep=',')
    ```
 
 1. Run the following code to make predictions of the test dataset and plot a histogram\. You need to take only the feature columns of the test dataset, excluding the 0th column for the actual values\.
@@ -53,9 +52,9 @@ To evaluate the model and use it in production, invoke the endpoint with the tes
    cutoffs = np.arange(0.01, 1, 0.01)
    log_loss = []
    for c in cutoffs:
-   log_loss.append(
-       sklearn.metrics.log_loss(test.iloc[:, 0], np.where(predictions > c, 1, 0))
-   )
+       log_loss.append(
+           sklearn.metrics.log_loss(test.iloc[:, 0], np.where(predictions > c, 1, 0))
+       )
    
    plt.figure(figsize=(15,10))
    plt.plot(cutoffs, log_loss)

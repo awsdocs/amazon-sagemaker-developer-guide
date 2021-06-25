@@ -4,7 +4,7 @@ The Amazon SageMaker k\-nearest neighbors algorithm is a supervised algorithm\. 
 
 *Automatic model tuning*, also known as hyperparameter tuning, finds the best version of a model by running many jobs that test a range of hyperparameters on your dataset\. You choose the tunable hyperparameters, a range of values for each, and an objective metric\. You choose the objective metric appropriate for the prediction task of the algorithm\. Automatic model tuning searches the hyperparameters chosen to find the combination of values that result in the model that optimizes the objective metric\. The hyperparameters are used only to help estimate model parameters and are not used by the trained model to make predictions\.
 
-For more information about model tuning, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
+For more information about model tuning, see [Perform Automatic Model Tuning with SageMaker](automatic-model-tuning.md)\.
 
 ## Metrics Computed by the k\-NN Algorithm<a name="km-metrics"></a>
 

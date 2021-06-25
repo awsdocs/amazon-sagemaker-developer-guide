@@ -5,6 +5,8 @@ A widget for labeling words, phrases, or character strings within a longer text\
 **Important: Self\-contained Widget**  
 Do not use `<crowd-entity-annotation>` element with the `<crowd-form>` element\. It contains its own form submission logic and **Submit** button\.
 
+See an interactive example of an HTML template that uses this Crowd HTML Element in [CodePen](https://codepen.io/sagemaker_crowd_html_elements/pen/XWpJQrR)\.
+
 The following is an example of a template that uses the `<crowd-entity-annotation>` element\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```

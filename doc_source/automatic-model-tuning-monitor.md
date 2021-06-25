@@ -38,8 +38,8 @@ To monitor the progress of a hyperparameter tuning job and the training jobs tha
    + `Completed`—The training job successfully completed\.
    + `InProgress`—The training job is in progress\.
    + `Stopped`—The training job was manually stopped before it completed\.
-   + `Failed (Retriable)`—The training job failed, but can be retried\. A failed training job can be retried only if it failed because an internal service error occurred\.
-   + `Failed (Non-retriable)`—The training job failed and can't be retried\. A failed training job can't be retried when a client error occurs\.
+   + `Failed (Retryable)`—The training job failed, but can be retried\. A failed training job can be retried only if it failed because an internal service error occurred\.
+   + `Failed (Non-retryable)`—The training job failed and can't be retried\. A failed training job can't be retried when a client error occurs\.
 
 ## View the Best Training Job<a name="automatic-model-tuning-best-training-job"></a>
 

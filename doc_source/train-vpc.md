@@ -1,6 +1,6 @@
 # Give SageMaker Training Jobs Access to Resources in Your Amazon VPC<a name="train-vpc"></a>
 
-SageMaker runs training jobs in an Amazon Virtual Private Cloud by default\. However, training containers access AWS resources—such as the Amazon S3 buckets where you store training data and model artifacts—over the internet\.
+SageMaker runs training jobs in an Amazon Virtual Private Cloud by default\. However, training containers access AWS resources—such as the Amazon Simple Storage Service \(Amazon S3\) buckets where you store training data and model artifacts—over the internet\.
 
 To control access to your data and training containers, we recommend that you create a private VPC and configure it so that they aren't accessible over the internet\. For information about creating and configuring a VPC, see [Getting Started With Amazon VPC](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/getting-started-ipv4.html) in the *Amazon VPC User Guide*\. Using a VPC helps to protect your training containers and data because you can configure your VPC so that it is not connected to the internet\. Using a VPC also allows you to monitor all network traffic in and out of your training containers by using VPC flow logs\. For more information, see [VPC Flow Logs](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html) in the *Amazon VPC User Guide*\.
 
@@ -54,7 +54,9 @@ If you configure your VPC so that training containers don't have access to the i
 
 1. In the navigation pane, choose **Endpoints**, then choose **Create Endpoint**
 
-1. For **Service Name**, choose **com\.amazonaws\.*region*\.s3**, where *region* is the name of the region where your VPC resides\.
+1. For **Service Name**, search for **com\.amazonaws\.*region*\.s3**, where *region* is the name of the region where your VPC resides\.
+
+1. Choose the **Gateway** type\.
 
 1. For **VPC**, choose the VPC you want to use for this endpoint\.
 

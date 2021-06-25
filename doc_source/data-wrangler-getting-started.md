@@ -24,13 +24,13 @@ The following procedure assumes you have completed the [Prerequisites](#data-wra
 
 1. Next to the user you want to use to launch Studio, select **Open Studio**\.
 
-1. When Studio opens, select the **\+** sign on the **New data flow** card under **ML tasks and components**\. This creates a new folder in Studio with a \.flow file inside, which contains your data flow\. The \.flow file automatically opens in Studio\.  
+1. When Studio opens, select the **\+** sign on the **New data flow** card under **ML tasks and components**\. This creates a new directory in Studio with a \.flow file inside, which contains your data flow\. The \.flow file automatically opens in Studio\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/open-flow.png)
 
    You can also create a new flow by selecting **File**, then **New**, and choosing **Flow** in the top navigation bar\.   
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/new-flow-file-menu.png)
 
-1. \(Optional\) Rename the new folder and the \.flow file\. 
+1. \(Optional\) Rename the new directory and the \.flow file\. 
 
 1. When you create a new \.flow file in Studio, you may see a message at the top of the Data Wrangler interface that says:
 
@@ -242,7 +242,7 @@ When you've finished creating a data flow, you have a number of export options\.
 
 #### Export to Data Wrangler Job Notebook<a name="data-wrangler-getting-started-export-notebook"></a>
 
-When you export your data flow using a **Data Wrangler job**, a Jupyter Notebook is automatically created\. This notebook automatically opens in your Studio instance and is configured to run a SageMaker processing job to execute your Data Wrangler data flow, which is referred to as a Data Wrangler job\. 
+When you export your data flow using a **Data Wrangler job**, a Jupyter Notebook is automatically created\. This notebook automatically opens in your Studio instance and is configured to run a SageMaker processing job to run your Data Wrangler data flow, which is referred to as a Data Wrangler job\. 
 
 1. Save your data flow\. Select **File** and then select **Save Data Wrangler Flow**\.
 
@@ -255,9 +255,17 @@ When you export your data flow using a **Data Wrangler job**, a Jupyter Notebook
 
 1. Choose any **Python 3 \(Data Science\)** kernel for the **Kernel**\. 
 
-1. When the kernel starts, run all of the steps in the notebook through the code block after the section **Start ProcessingJob**\.
+1. When the kernel starts, run the cells in the notebook book until **Kick off SageMaker Training Job \(Optional\)**\. 
+
+1. Optionally, you can run the cells in **Kick off SageMaker Training Job \(Optional\)** if you want to create a SageMaker training job to train an XGboost classifier\. You can find the cost to run an SageMaker training job in [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/)\. 
+
+   Alternatively, you can add the code blocks found in [Training XGBoost Classifier](#data-wrangler-getting-started-train-xgboost) to the notebook and run them to use the [XGBoost](https://xgboost.readthedocs.io/en/latest/) open source library to train an XGBoost classifier\. 
+
+1. Uncomment and run the cell under **Cleanup** and run it to revert the SageMaker Python SDK to its original version\.
 
 You can monitor your Data Wrangler job status in the SageMaker console in the **Processing** tab\. Additionally, you can monitor your Data Wrangler job using Amazon CloudWatch\. For additional information, see [Monitor Amazon SageMaker Processing Jobs with CloudWatch Logs and Metrics](https://docs.aws.amazon.com/sagemaker/latest/dg/processing-job.html#processing-job-cloudwatch)\. 
+
+If you kicked off a training job, you can monitor its status using the SageMaker console under **Training jobs** in the **Training section**\.
 
 #### Training XGBoost Classifier<a name="data-wrangler-getting-started-train-xgboost"></a>
 
@@ -274,8 +282,6 @@ In the same notebook that kicked off the Data Wrangler job, you can pull the dat
 
    ```
    import awswrangler as wr
-   import pandas as pd
-   
    
    df = wr.s3.read_csv(path=output_path, dataset=True)
    X, y = df.iloc[:,:-1],df.iloc[:,-1]

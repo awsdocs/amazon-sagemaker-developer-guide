@@ -2,7 +2,7 @@
 
 The following Amazon SageMaker kernels are available in SageMaker Studio\. The name in parentheses is the SageMaker image hosting the kernel\.
 
-`Data Science` is a [Conda](https://docs.conda.io/projects/conda/en/latest/index.html) image with the most commonly used Python packages and libraries, such as NumPy and SciKit Learn\.
+`Data Science` is a [Conda](https://docs.conda.io/projects/conda/en/latest/index.html) image with the most commonly used Python packages and libraries, such as NumPy and scikit\-learn\.
 + Python 3 \(Data Science\)
 + PySpark \(SparkMagic\)
 + Python 3 \(Base Python\)

@@ -3,9 +3,10 @@
 The following is an example of an [AWS Python SDK \(Boto3\) request](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_labeling_job) that you can use to start a streaming labeling job for a built\-in task type in the US East \(N\. Virginia\) Region\. For more details about each parameter below see [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)\. To learn how you can create a labeling job using this API and associated language specific SDKs, see [Create a Labeling Job \(API\)](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-create-labeling-job-api.html)\.
 
 In this example, note the following parameters:
-+ `SnsDataSource` – This parameter appears in `InputConfig` and `OutputConfig` and is used to identify your input and output Amazon SNS topics respectively\. 
++ `SnsDataSource` – This parameter appears in `InputConfig` and `OutputConfig` and is used to identify your input and output Amazon SNS topics respectively\. To create a streaming labeling job, you are required to provide an Amazon SNS input topic\. Optionally, you can also provide an Amazon SNS output topic\.
 + `S3DataSource` – This parameter is optional\. Use this parameter if you want to include an input manifest file of data objects that you want labeled as soon as the labeling job starts\.
 + [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-StoppingConditions](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-StoppingConditions) – This parameter is ignored when you create a streaming labeling job\. To learn more about stopping a streaming labeling job, see [Stop a Streaming Labeling Job](sms-streaming-stop-labeling-job.md)\.
++ Streaming labeling jobs do not support automated data labeling\. Do not include the `LabelingJobAlgorithmsConfig` parameter\.
 
 ```
 response = client.create_labeling_job(

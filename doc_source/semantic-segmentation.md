@@ -21,10 +21,11 @@ To deploy the trained model for inference, use the SageMaker hosting service\. D
 + [Input/Output Interface for the Semantic Segmentation Algorithm](#semantic-segmentation-inputoutput)
 + [EC2 Instance Recommendation for the Semantic Segmentation Algorithm](#semantic-segmentation-instances)
 + [Semantic Segmentation Hyperparameters](segmentation-hyperparameters.md)
++ [Tuning a Semantic Segmentation Model](semantic-segmentation-tuning.md)
 
 ## Semantic Segmentation Sample Notebooks<a name="semantic-segmentation-sample-notebooks"></a>
 
-For a sample Jupyter notebook that uses the SageMaker semantic segmentation algorithm to train a model and deploy it to perform inferences, see the [Semantic Segmentation Example](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/semantic_segmentation_pascalvoc/semantic_segmentation_pascalvoc.ipynb)\. For instructions on how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. 
+For a sample Jupyter notebook that uses the SageMaker semantic segmentation algorithm to train a model and deploy it to perform inferences, see the [Semantic Segmentation Example](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/semantic_segmentation_pascalvoc/semantic_segmentation_pascalvoc.html)\. For instructions on how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. 
 
 To see a list of all of the SageMaker samples, create and open a notebook instance, and choose the **SageMaker Examples** tab\. The example semantic segmentation notebooks are located under **Introduction to Amazon algorithms**\. To open a notebook, choose its **Use** tab, and choose **Create copy**\.
 
@@ -62,7 +63,7 @@ s3://bucket_name
                  | - validation_label_map.json
 ```
 
-Every JPG image in the train and validation directories has a corresponding PNG label image with the same name in the `train_annotation` and `validation_annotation` directories\. This naming convention helps the algorithm to associate a label with its corresponding image during training\. The `train`, `train_annotation`, `validation`, and `validation_annotation` channels are mandatory\. The annotations are single\-channel PNG images\. The format works as long as the metadata \(modes\) in the image helps the algorithm read the annotation images into a single\-channel 8\-bit unsigned integer\. For more information on our support for modes, see the [Python Image Library documentation](https://pillow.readthedocs.io/en/3.0.x/handbook/concepts.html#modes)\. We recommend using the 8\-bit pixel, true color `P` mode\. 
+Every JPG image in the train and validation directories has a corresponding PNG label image with the same name in the `train_annotation` and `validation_annotation` directories\. This naming convention helps the algorithm to associate a label with its corresponding image during training\. The `train`, `train_annotation`, `validation`, and `validation_annotation` channels are mandatory\. The annotations are single\-channel PNG images\. The format works as long as the metadata \(modes\) in the image helps the algorithm read the annotation images into a single\-channel 8\-bit unsigned integer\. For more information on our support for modes, see the [Python Image Library documentation](https://pillow.readthedocs.io/en/stable/handbook/concepts.html#modes)\. We recommend using the 8\-bit pixel, true color `P` mode\. 
 
 The image that is encoded is a simple 8\-bit integer when using modes\. To get from this mapping to a map of a label, the algorithm uses one mapping file per channel, called the *label map*\. The label map is used to map the values in the image with actual label indices\. In the default label map, which is provided by default if you don’t provide one, the pixel value in an annotation matrix \(image\) directly index the label\. These images can be grayscale PNG files or 8\-bit indexed PNG files\. The label map file for the unscaled default case is the following: 
 

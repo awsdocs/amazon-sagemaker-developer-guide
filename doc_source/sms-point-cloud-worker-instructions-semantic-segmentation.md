@@ -7,6 +7,7 @@ Use this page to become familiarize with the user interface and tools available 
 + [Navigate the UI](#sms-point-cloud-worker-instructions-worker-ui-ss)
 + [Icon Guide](#sms-point-cloud-worker-instructions-ss-icons)
 + [Shortcuts](#sms-point-cloud-worker-instructions-ss-hot-keys)
++ [Release, Stop and Resume, and Decline Tasks](#sms-point-cloud-worker-instructions-skip-reject-ss)
 + [Saving Your Work and Submitting](#sms-point-cloud-worker-instructions-saving-work-ss)
 
 ## Your Task<a name="sms-point-cloud-worker-instructions-ss-task"></a>
@@ -26,7 +27,7 @@ The following video includes an image that can be annotated\. You may not see an
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pointcloud/gifs/semantic_seg/ss_paint_sf.gif)
 
-After you've painted one or more objects using a lable category, you can select that category from the the Label Category menu on the right to only view points painted for that category\. 
+After you've painted one or more objects using a label category, you can select that category from the the Label Category menu on the right to only view points painted for that category\. 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pointcloud/gifs/semantic_seg/ss-view-options.gif)
 
@@ -71,6 +72,7 @@ Use this table to learn about the icons available in your worker task portal\.
 |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pointcloud/icons/fit_scene.png)  |  reset scene  | Choose this icon to reset the view of the point cloud, side panels, and if applicable, all images to their original position when the task was first opened\.  | 
 |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pointcloud/icons/move_scene.png)  |  move scene  |  Choose this icon to move the scene\. By default, this icon will be selected when you first start a task\.   | 
 |  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pointcloud/icons/fullscreen.png)  |  full screen   |  Choose this icon to make the 3D point cloud visualization full screen, and to collapse all side panels\.  | 
+|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pointcloud/icons/Ruler_icon.png)  |  ruler  |  Use this icon to measure distances, in meters, in the point cloud\. You may want to use this tool if your instructions ask you to annotate all objects in a given distance from the center of the cuboid or the object used to capture data\. When you select this icon, you can place the starting point \(first marker\) anywhere in the point cloud by selecting it with your mouse\. The tool will automatically use interpolation to place a marker on the closest point within threshold distance to the location you select, otherwise the marker will be placed on ground\. If you place a starting point by mistake, you can use the Escape key to revert marker placement\.  After you place the first marker, you see a dotted line and a dynamic label that indicates the distance you have moved away from the first marker\. Click somewhere else on the point cloud to place a second marker\. When you place the second marker, the dotted line becomes solid, and the distance is set\.  After you set a distance, you can edit it by selecting either marker\. You can delete a ruler by selecting anywhere on the ruler and using the Delete key on your keyboard\.   | 
 
 ## Shortcuts<a name="sms-point-cloud-worker-instructions-ss-hot-keys"></a>
 
@@ -78,8 +80,17 @@ The shortcuts listed in the **Shortcuts** menu can help you navigate the 3D poin
 
 Before you start your task, it is recommended that you review the **Shortcuts** menu and become acquainted with these commands\. 
 
+## Release, Stop and Resume, and Decline Tasks<a name="sms-point-cloud-worker-instructions-skip-reject-ss"></a>
+
+When you open the labeling task, three buttons on the top right allow you to decline the task \(**Decline task**\), release it \(**Release task**\), and stop and resume it at a later time \(**Stop and resume later**\)\. The following list describes what happens when you select one of these options:
++ **Decline task**: You should only decline a task if something is wrong with the task, such as an issue with the 3D point cloud, images or the UI\. If you decline a task, you will not be able to return to the task\.
++ **Release Task**: If you release a task, you loose all work done on that task\. When the task is released, other workers on your team can pick it up\. If enough workers pick up the task, you may not be able to return to it\. When you select this button and then select **Confirm**, you are returned to the worker portal\. If the task is still available, its status will be **Available**\. If other workers pick it up, it will disappear from your portal\. 
++ **Stop and resume later**: You can use the **Stop and resume later** button to stop working and return to the task at a later time\. You should use the **Save** button to save your work before you select **Stop and resume later**\. When you select this button and then select **Confirm**, you are returned to the worker portal, and the task status is **Stopped**\. You can select the same task to resume work on it\. 
+
+  Be aware that the person that creates your labeling tasks specifies a time limit in which all tasks much be completed by\. If you do not return to and complete this task within that time limit, it will expire and your work will not be submitted\. Contact your administrator for more information\. 
+
 ## Saving Your Work and Submitting<a name="sms-point-cloud-worker-instructions-saving-work-ss"></a>
 
 You should periodically save your work\. Ground Truth will automatically save your work ever 15 minutes\. 
 
-When you open a task, you must complete your work on it before pressing **Submit**\. If you select **Stop Working** you will loose that task, and other workers will be able to start working on it\. 
+When you open a task, you must complete your work on it before pressing **Submit**\. 

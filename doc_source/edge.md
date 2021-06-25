@@ -22,4 +22,8 @@ SageMaker Edge Manager extends capabilities that were previously only available 
 
 ## How Do I Use SageMaker Edge Manager?<a name="edge-how-to-use"></a>
 
-If you are a first time user of SageMaker Edge Manager, we recommend that you test out the [Getting Started](https://docs.aws.amazon.com/sagemaker/latest/dg/edge-manager-getting-started.html) section\.
+If you are a first time user of SageMaker Edge Manager, we recommend that you do the following:
+
+1. **Read the [Getting Started](https://docs.aws.amazon.com/sagemaker/latest/dg/edge-manager-getting-started.html) section** \- This section walks you through setting up your first edge packaging job and creating your first fleet\.
+
+1. **Explore Edge Manager Jupyter notebook examples **\- Example notebooks are stored in the [amazon\-sagemaker\-examples](https://github.com/aws/amazon-sagemaker-examples) GitHub repository in the [sagemaker\_edge\_manager](https://github.com/aws/amazon-sagemaker-examples/tree/master/sagemaker_edge_manager) folder\.

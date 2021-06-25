@@ -6,7 +6,7 @@ Also, if loan approvals are made with much higher accuracy for a middle\-aged de
 
 The formula for AD metric is the difference between the prediction accuracy for facet *a*, ACCa, minus that for facet *d*, ACCd:
 
-        AD = ACCa \- ACCd
+ AD = ACCa \- ACCd
 
 Where:
 + ACCa = \(TPa \+ TNa\)/\(TPa \+ TNa \+ FPa \+ FNa\) 
@@ -22,11 +22,11 @@ Where:
 
 For example, suppose a model approves loans to 70 applicants from facet *a* of 100 and rejected the other 30\. 10 should not have been offered the loan \(FPa\) and 60 were approved that should have been \(TPa\)\. 20 of the rejections should have been approved \(FNa\) and 10 were correctly rejected \(TNa\)\. The accuracy for facet *a* is as follows:
 
-        ACCa = \(60 \+ 10\)/\(60 \+ 10 \+ 20 \+ 10\) = 0\.7
+ ACCa = \(60 \+ 10\)/\(60 \+ 10 \+ 20 \+ 10\) = 0\.7
 
 Next, suppose a model approves loans to 50 applicants from facet *d* of 100 and rejected the other 50\. 10 should not have been offered the loan \(FPa\) and 40 were approved that should have been \(TPa\)\. 40 of the rejections should have been approved \(FNa\) and 10 were correctly rejected \(TNa\)\. The accuracy for facet *a* is determined as follows:
 
-        ACCd= \(40 \+ 10\)/\(40 \+ 10 \+ 40 \+ 10\) = 0\.5
+ ACCd= \(40 \+ 10\)/\(40 \+ 10 \+ 40 \+ 10\) = 0\.5
 
 The accuracy difference is thus AD = ACCa \- ACCd = 0\.7 \- 0\.5 = 0\.2\. This indicates there is a bias against facet *d* as the metric is positive\.
 

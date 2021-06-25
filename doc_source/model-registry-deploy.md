@@ -2,7 +2,7 @@
 
 After you register a model version and approve it for deployment, deploy it to a SageMaker endpoint for real\-time inference\.
 
-When you create a MLOps project and choose an MLOps project template that includes model deployment, approved model versions in the model registry are automatically deployed to production\. For information about using SageMaker MLOps projects, see [Automate MLOps with SageMaker Projects](sagemaker-projects.md)\.
+When you create an MLOps project and choose an MLOps project template that includes model deployment, approved model versions in the model registry are automatically deployed to production\. For information about using SageMaker MLOps projects, see [Automate MLOps with SageMaker Projects](sagemaker-projects.md)\.
 
 ## Deploy a Model in the Registry \(Boto3\)<a name="model-registry-deploy-api"></a>
 

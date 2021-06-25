@@ -1,8 +1,5 @@
 # Buy and Sell Amazon SageMaker Algorithms and Models in AWS Marketplace<a name="sagemaker-marketplace"></a>
 
-****  
-***This feature is not available in the China Regions\.***
-
 Amazon SageMaker integrates with AWS Marketplace, enabling developers to charge other SageMaker users for the use of their algorithms and model packages\. AWS Marketplace is a curated digital catalog that makes it easy for customers to find, buy, deploy, and manage third\-party software and services that customers need to build solutions and run their businesses\. AWS Marketplace includes thousands of software listings in popular categories, such as security, networking, storage, machine learning, business intelligence, database, and DevOps\. It simplifies software licensing and procurement with flexible pricing options and multiple deployment methods\. 
 
 For information, see [AWS Marketplace Documentation](https://docs.aws.amazon.com/marketplace/index.html#lang/en_us)\.

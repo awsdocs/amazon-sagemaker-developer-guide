@@ -4,7 +4,7 @@ One of the best ways for machine learning \(ML\) practitioners to use Amazon Sag
 
 ## Machine Learning with the SageMaker Python SDK<a name="gs-ml-with-sagemaker-pysdk"></a>
 
-To train, validate, deploy, and evaluate an ML model in a SageMaker notebook instance, use the SageMaker Python SDK that abstracts AWS SDK for Python \(Boto3\) and SageMaker API operations\. It enables you to orchestrate the AWS infrastructures, such as Amazon Simple Storage Service \(Amazon S3\) for saving data and model artifacts, Amazon Elastic Container Registry \(ECR\) for importing and servicing the ML models, Amazon Elastic Compute Cloud \(Amazon EC2\) for training and inference\.
+To train, validate, deploy, and evaluate an ML model in a SageMaker notebook instance, use the SageMaker Python SDK\. The SageMaker Python SDK abstracts AWS SDK for Python \(Boto3\) and SageMaker API operations\. It enables you to integrate with and orchestrate other AWS services, such as Amazon Simple Storage Service \(Amazon S3\) for saving data and model artifacts, Amazon Elastic Container Registry \(ECR\) for importing and servicing the ML models, Amazon Elastic Compute Cloud \(Amazon EC2\) for training and inference\.
 
 You can also take advantage of SageMaker features that help you deal with every stage of a complete ML cycle: data labeling, data preprocessing, model training, model deployment, evaluation on prediction performance, and monitoring the quality of model in production\.
 

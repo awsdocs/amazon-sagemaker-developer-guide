@@ -4,13 +4,13 @@ The recall difference \(RD\) metric is the difference in recall of the model bet
 
 The formula for difference in the recall rates for facets *a* and *d*:
 
-        RD = TPa/\(TPa \+ FNa\) \- TPd/\(TPd \+ FNd\) = TPRa \- TPRd 
+ RD = TPa/\(TPa \+ FNa\) \- TPd/\(TPd \+ FNd\) = TPRa \- TPRd 
 
 Where:
 + TPa are the true positives predicted for facet *a*\.
-+ FNa are the false positives predicted for facet *a*\.
++ FNa are the false negatives predicted for facet *a*\.
 + TPd are the true positives predicted for facet *d*\.
-+ FNd are the false positives predicted for facet *d*\.
++ FNd are the false negatives predicted for facet *d*\.
 + TPRa = TPa/\(TPa \+ FNa\) is the recall for facet *a*\. or its true positive rate\.
 + TPRd TPd/\(TPd \+ FNd\) is the recall for facet *d*\. or its true positive rate\.
 

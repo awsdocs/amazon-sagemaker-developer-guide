@@ -49,6 +49,6 @@ The following table provides details about the parameters shown in the this code
 |  `prefix`  |  Yes  |  String **Accepted Values**: `s3://<bucket-name>/<prefix>/`  |  The Amazon S3 location where the sequence files are located\.  The prefix must end with a forward slash: `/`\.  | 
 |  `number-of-frames`  |  Yes  |  Integer  |  The total number of frames included in the sequence file\. This number must match the total number of frames listed in the `frames` parameter in the next row\.  | 
 |  `frames`  |  Yes  |  List of JSON objects **Required**: `frame-no`, `frame` **Optional**: `unix-timestamp`  |  A list of frame data\. The length of the list must equal `number-of-frames`\. In the worker UI, frames in a sequence are ordered in [UTF\-8](https://en.wikipedia.org/wiki/UTF-8) binary order\. To learn more about this ordering, see [Provide Video Frames](sms-point-cloud-video-input-data.md#sms-video-provide-frames)\.  | 
-| frame\-no |  Yes  |  String  |  The frame order number\. This will determine the order of a frame in the sequence\.   | 
+| frame\-no |  Yes  |  Integer  |  The frame order number\. This will determine the order of a frame in the sequence\.   | 
 |  `unix-timestamp`  |  No  |  Integer  |  The unix timestamp of a frame\. The number of seconds since January 1st, 1970 until the UTC time when the frame was captured\.   | 
 | frame |  Yes  |  String  |  The name of a video frame image file\.   | 

@@ -1,6 +1,6 @@
 # Output Data<a name="sms-data-output"></a>
 
-The output from a labeling job is placed in the location that you specified in the console or in the call to the [CreateLabelingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\.
+The output from a labeling job is placed in the Amazon S3 location that you specified in the console or in the call to the [CreateLabelingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. Output data appears in this location when the workers have submitted one or more tasks, or when tasks expire\. Note that it may take a few minutes for output data to appear in Amazon S3 after the worker submits the task or the task expires\.
 
 Each line in the output data file is identical to the manifest file with the addition of an attribute and value for the label assigned to the input object\. The attribute name for the value is defined in the console or in the call to the `CreateLabelingJob` operation\. You can't use `-metadata` in the label attribute name\. If you are running an image semantic segmentation, 3D point cloud semantic segmentation, or 3D point cloud object tracking job, the label attribute must end with `-ref`\. For any other type of job, the attribute name can't end with `-ref`\.
 
@@ -55,12 +55,9 @@ The `activelearning` directory is only present when you are using automated data
 The `annotations` directory contains all of the annotations made by the workforce\. These are the responses from individual workers that have not been consolidated into a single label for the data object\. 
 
 There are three subdirectories in the `annotations` directory\. 
-
-The first, `worker-response`, contains the responses from individual workers\. This contains a subdirectory for each iteration, which in turn contains a subdirectory for each data object in that iteration\. The annotation for each data object is stored in a timestamped JSON file that contains the annotation made by a single worker, and if you use a private workforce, metadata about that worker\. To learn more about this metadata, see [Worker Metadata](#sms-worker-id-private)\. There may be more than one annotation for each data object in this directory, depending on how many workers you want to annotate each object\.
-
-The second, `consolidated-annotation`, contains information required to consolidate the annotations in the current batch into labels for your data objects\.
-
-The third, `intermediate`, contains the output manifest for the current batch with any completed labels\. This file is updated as the label for each data object is completed\.
++ The first, `worker-response`, contains the responses from individual workers\. This contains a subdirectory for each iteration, which in turn contains a subdirectory for each data object in that iteration\. The annotation for each data object is stored in a timestamped JSON file that contains the annotation made by a single worker, and if you use a private workforce, metadata about that worker\. To learn more about this metadata, see [Worker Metadata](#sms-worker-id-private)\.
++ The second, `consolidated-annotation`, contains information required to consolidate the annotations in the current batch into labels for your data objects\.
++ The third, `intermediate`, contains the output manifest for the current batch with any completed labels\. This file is updated as the label for each data object is completed\.
 
 ### Inference Directory<a name="sms-directories-inference"></a>
 
@@ -258,7 +255,7 @@ The red, italicized text in the examples below depends on labeling job specifica
 ```
 {
     "source-ref": "s3://AWSDOC-EXAMPLE-BUCKET/example_image.png",
-    "bounding-box":
+    "bounding-box-attribute-name":
     {
         "image_size": [{ "width": 500, "height": 400, "depth":3}],
         "annotations":
@@ -271,7 +268,7 @@ The red, italicized text in the examples below depends on labeling job specifica
                      "width": 30, "height": 30}
         ]
     },
-    "bounding-box-metadata":
+    "bounding-box-attribute-name-metadata":
     {
         "objects":
         [
@@ -297,7 +294,7 @@ The output of a bounding box adjustment job looks like the following JSON\. Note
 ```
 {
     "source-ref": "S3 bucket location",
-    "bounding-box":
+    "bounding-box-attribute-name":
     {
         "image_size": [{ "width": 500, "height": 400, "depth":3}],
         "annotations":
@@ -310,7 +307,7 @@ The output of a bounding box adjustment job looks like the following JSON\. Note
                      "width": 30, "height": 30}
         ]
     },
-    "bounding-box-metadata":
+    "bounding-box-attribute-name-metadata":
     {
         "objects":
         [
@@ -380,7 +377,7 @@ The red, italicized text in the examples below depends on labeling job inputs an
 ```
 {
     "source": "Amazon SageMaker is a cloud machine-learning platform that was launched in November 2017. SageMaker enables developers to create, train, and deploy machine-learning (ML) models in the cloud. SageMaker also enables developers to deploy ML models on embedded systems and edge-devices",
-    "example-ner-labeling-job": {
+    "ner-labeling-job-attribute-name": {
         "annotations": {
             "labels": [
                 {
@@ -439,7 +436,7 @@ The red, italicized text in the examples below depends on labeling job inputs an
             ]
         }
     },
-    "example-ner-labeling-job-metadata": {
+    "ner-labeling-job-attribute-name-metadata": {
         "job-name": "labeling-job/example-ner-labeling-job",
         "type": "groundtruth/text-span",
         "creation-date": "2020-10-29T00:40:39.398470",
@@ -480,7 +477,7 @@ If human workers are verifying or adjusting prior bounding box labels, the outpu
 ```
 {
     "source-ref":"s3://AWSDOC-EXAMPLE-BUCKET/image_example.png",
-    "bounding-box":
+    "bounding-box-attribute-name":
     {
         "image_size": [{ "width": 500, "height": 400, "depth":3}],
         "annotations":
@@ -493,7 +490,7 @@ If human workers are verifying or adjusting prior bounding box labels, the outpu
                      "width": 30, "height": 30}
         ]
     },
-    "bounding-box-metadata":
+    "bounding-box-attribute-name-metadata":
     {
         "objects":
         [
@@ -511,8 +508,8 @@ If human workers are verifying or adjusting prior bounding box labels, the outpu
         "creation-date": "2018-10-18T22:18:13.527256",
         "job-name": "identify-dogs-and-toys"
     },
-    "verify-bounding-box":"1",
-    "verify-bounding-box-metadata":
+    "verify-bounding-box-attribute-name":"1",
+    "verify-bounding-box-attribute-name-metadata":
     {
         "class-name": "bad",
         "confidence": 0.93,

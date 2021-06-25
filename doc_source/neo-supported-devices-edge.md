@@ -4,6 +4,9 @@ Amazon SageMaker Neo supports common machine learning frameworks, edge devices, 
 
 You can find a list of models that have been tested by the Amazon SageMaker Neo Team in the [Tested Models](neo-supported-edge-tested-models.md) section\.
 
+**Note**  
+Ambarella devices require additional files to be included within the compressed TAR file before it is sent for compilation\. For more information, see [Troubleshoot Ambarella Errors](neo-troubleshooting-target-devices-ambarella.md)\.
+
 **Topics**
 + [Supported Frameworks](neo-supported-devices-edge-frameworks.md)
 + [Supported Devices, Chip Architectures, and Systems](neo-supported-devices-edge-devices.md)

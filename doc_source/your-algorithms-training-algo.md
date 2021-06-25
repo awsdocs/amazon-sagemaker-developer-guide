@@ -5,5 +5,6 @@ This section explains how Amazon SageMaker interacts with a Docker container tha
 **Topics**
 + [How Amazon SageMaker Runs Your Training Image](your-algorithms-training-algo-dockerfile.md)
 + [How Amazon SageMaker Provides Training Information](your-algorithms-training-algo-running-container.md)
++ [Run Training with EFA](your-algorithms-training-efa.md)
 + [How Amazon SageMaker Signals Algorithm Success and Failure](your-algorithms-training-signal-success-failure.md)
 + [How Amazon SageMaker Processes Training Output](your-algorithms-training-algo-output.md)

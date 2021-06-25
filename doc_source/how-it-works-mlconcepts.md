@@ -25,11 +25,11 @@ The following diagram illustrates the typical workflow for creating a machine le
 1. **Train a model**—Model training includes both training and evaluating the model, as follows: 
    + **Training the model**— To train a model, you need an algorithm\. The algorithm you choose depends on a number of factors\. For a quick, out\-of\-the\-box solution, you might be able to use one of the algorithms that SageMaker provides\. For a list of algorithms provided by SageMaker and related considerations, see [Use Amazon SageMaker Built\-in Algorithms](algos.md)\.
 
-      
+      
 
      You also need compute resources for training\. Depending on the size of your training dataset and how quickly you need the results, you can use resources ranging from a single general\-purpose instance to a distributed cluster of GPU instances\. For more information, see [Train a Model with Amazon SageMaker](how-it-works-training.md)\.
 
-      
+      
    + **Evaluating the model**—After you've trained your model, you evaluate it to determine whether the accuracy of the inferences is acceptable\. In SageMaker, you use either the AWS SDK for Python \(Boto\) or the high\-level Python library that SageMaker provides to send requests to the model for inferences\. 
 
      You use a Jupyter notebook in your SageMaker notebook instance to train and evaluate your model\. 

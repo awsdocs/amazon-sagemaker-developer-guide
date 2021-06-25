@@ -21,7 +21,7 @@ To configure a container to run as an executable, use an `ENTRYPOINT` instructio
 
   SageMaker overrides default `CMD` statements in a container by specifying the `serve` argument after the image name\. The `serve` argument overrides arguments that you provide with the `CMD` command in the Dockerfile\.
 
-   
+   
 + We recommend that you use the `exec` form of the `ENTRYPOINT` instruction:
 
   ```
@@ -34,31 +34,31 @@ To configure a container to run as an executable, use an `ENTRYPOINT` instructio
   ENTRYPOINT ["python", "k_means_inference.py"]
   ```
 
-  The `exec` form of the `ENTRYPOINT` instruction starts the executable directly, not as a child of `/bin/sh`\. This enables it to receive signals like `SIGTERM` and `SIGKILL` from the SageMaker APIs, which is a requirement\. 
+  The `exec` form of the `ENTRYPOINT` instruction starts the executable directly, not as a child of `/bin/sh`\. This enables it to receive signals like `SIGTERM` and `SIGKILL` from the SageMaker API operations, which is a requirement\. 
 
-   
+   
 
   For example, when you use the [ `CreateEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html) API to create an endpoint, SageMaker provisions the number of ML compute instances required by the endpoint configuration, which you specify in the request\. SageMaker runs the Docker container on those instances\. 
 
-   
+   
 
-  If you reduce the number of instances backing the endpoint \(by calling the [ `UpdateEndpointWeightsAndCapacities`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateEndpointWeightsAndCapacities.html) APIs\), SageMaker runs a command to stop the Docker container on the instances being terminated\. The command sends the `SIGTERM` signal, then it sends the `SIGKILL` signal thirty seconds later\.
+  If you reduce the number of instances backing the endpoint \(by calling the [ `UpdateEndpointWeightsAndCapacities`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateEndpointWeightsAndCapacities.html) API\), SageMaker runs a command to stop the Docker container on the instances that are being terminated\. The command sends the `SIGTERM` signal, then it sends the `SIGKILL` signal thirty seconds later\.
 
-   
+   
 
   If you update the endpoint \(by calling the [ `UpdateEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateEndpoint.html) API\), SageMaker launches another set of ML compute instances and runs the Docker containers that contain your inference code on them\. Then it runs a command to stop the previous Docker containers\. To stop a Docker container, command sends the `SIGTERM` signal, then it sends the `SIGKILL` signal 30 seconds later\. 
 
-   
+   
 + SageMaker uses the container definition that you provided in your [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) request to set environment variables and the DNS hostname for the container as follows:
 
-   
+   
   + It sets environment variables using the `ContainerDefinition.Environment` string\-to\-string map\.
   + It sets the DNS hostname using the `ContainerDefinition.ContainerHostname`\.
 
-     
+     
 + If you plan to use GPU devices for model inferences \(by specifying GPU\-based ML compute instances in your `CreateEndpointConfig` request\), make sure that your containers are `nvidia-docker` compatible\. Don't bundle NVIDIA drivers with the image\. For more information about `nvidia-docker`, see [NVIDIA/nvidia\-docker](https://github.com/NVIDIA/nvidia-docker)\. 
 
-   
+   
 + You can't use the `tini` initializer as your entry point in SageMaker containers because it gets confused by the `train` and `serve` arguments\.
 
   

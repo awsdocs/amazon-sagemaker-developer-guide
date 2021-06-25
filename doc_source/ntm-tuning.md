@@ -4,7 +4,7 @@
 
 Amazon SageMaker NTM is an unsupervised learning algorithm that learns latent representations of large collections of discrete data, such as a corpus of documents\. Latent representations use inferred variables that are not directly measured to model the observations in a dataset\. Automatic model tuning on NTM helps you find the model that minimizes loss over the training or validation data\. *Training loss* measures how well the model fits the training data\. *Validation loss* measures how well the model can generalize to data that it is not trained on\. Low training loss indicates that a model is a good fit to the training data\. Low validation loss indicates that a model has not overfit the training data and so should be able to model documents successfully on which is has not been trained\. Usually, it's preferable to have both losses be small\. However, minimizing training loss too much might result in overfitting and increase validation loss, which would reduce the generality of the model\. 
 
-For more information about model tuning, see [Perform Automatic Model Tuning](automatic-model-tuning.md)\.
+For more information about model tuning, see [Perform Automatic Model Tuning with SageMaker](automatic-model-tuning.md)\.
 
 ## Metrics Computed by the NTM Algorithm<a name="ntm-metrics"></a>
 

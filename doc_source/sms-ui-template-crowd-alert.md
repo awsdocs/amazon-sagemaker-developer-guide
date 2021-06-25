@@ -2,6 +2,8 @@
 
 A message that alerts the worker to a current situation\.
 
+See an interactive example of an HTML template that uses this Crowd HTML Element in [CodePen](https://codepen.io/sagemaker_crowd_html_elements/pen/YzNPdGd)\.
+
 The following is an example of a Liquid template that uses the `<crowd-alert>` element\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```

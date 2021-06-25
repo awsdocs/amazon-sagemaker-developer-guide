@@ -12,6 +12,10 @@ A SageMaker Studio notebook runs in an environment defined by the following:
 
 You can change any of these resources from within the notebook\.
 
+The following diagram outlines how a notebook kernel runs in relation to the KernelGateway App, User, and SageMaker Studio Domain\.
+
+![\[Components in SageMaker Studio\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-components.png)
+
 Sample SageMaker Studio notebooks are available in the [aws\_sagemaker\_studio](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/aws_sagemaker_studio) folder of the [Amazon SageMaker example GitHub repository](https://github.com/awslabs/amazon-sagemaker-examples)\. Each notebook comes with the necessary SageMaker image that opens the notebook with the appropriate kernel\.
 
 We recommend that you familiarize yourself with the SageMaker Studio interface and the Studio notebook toolbar before creating or using a Studio notebook\. For more information, see [Amazon SageMaker Studio UI Overview](studio-ui.md) and [Use the SageMaker Studio Notebook Toolbar](notebooks-menu.md)\.

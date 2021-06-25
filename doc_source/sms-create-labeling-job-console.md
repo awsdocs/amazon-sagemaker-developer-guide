@@ -15,7 +15,7 @@ You need to provide the following to create a labeling job in the SageMaker cons
 + A work team\. You create a work team from a workforce made up of Amazon Mechanical Turk workers, vendors, or your own private workers\.To lean more, see [Create and Manage Workforces](sms-workforce-management.md)\.
 
   You cannot use the Mechanical Turk workforce for 3D point cloud or video frame labeling jobs\. 
-+ If you are using a custom labeling workflow, you must save a worker task template in Amazon S3 and provide an Amazon S3 URI for that template\. For more information, see [Step 2: Creating your custom labeling task template](sms-custom-templates-step2.md)\.
++ If you are using a custom labeling workflow, you must save a worker task template in Amazon S3 and provide an Amazon S3 URI for that template\. For more information, see [Step 2: Creating your custom worker task template](sms-custom-templates-step2.md)\.
 + \(Optional\) An AWS KMS key ARN if you want SageMaker to encrypt the output of your labeling job using your own AWS KMS encryption key instead of the default Amazon S3 service key\.
 + \(Optional\) Existing labels for the dataset you use for your labeling job\. Use this option if you want workers to adjust, or approve and reject labels\.
 + If you want to create an adjustment or verification labeling job, you must have an output manifest file in Amazon S3 that contains the labels you want adjusted or verified\. This option is only supported for bounding box and semantic segmentation image labeling jobs and 3D point cloud and video frame labeling jobs\. It is recommended that you use the instructions on [Verify and Adjust Labels](sms-verification-data.md) to create a verification or adjustment labeling job\. 
@@ -29,7 +29,7 @@ When you create a labeling job using the SageMaker console, you add worker instr
 
 **To create a labeling job \(console\)**
 
-1. Sign in to the SageMaker console at [https://console.aws.amazon.com/sagemaker/groundtruth](https://console.aws.amazon.com/sagemaker/groundtruth)\. 
+1. Sign in to the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\. 
 
 1. In the left navigation pane, choose **Labeling jobs**\. 
 
@@ -41,7 +41,7 @@ When you create a labeling job using the SageMaker console, you add worker instr
 
 1. Choose a data setup to setup to set up a connection between your input dataset and Ground Truth\. 
    + For **Automated data setup**:
-     + Follow the instructions in [Automated Data Setup](sms-input-data-input-manifest.md#sms-console-create-manifest-file) for image, text, and video clip labeling jobs\.
+     + Follow the instructions in [Automated Data Setup](sms-console-create-manifest-file.md) for image, text, and video clip labeling jobs\.
      + Follow the instructions in [Automated Video Frame Input Data Setup](sms-video-automated-data-setup.md) for video frame labeling jobs\. 
    + For **Manual data setup**:
      + For **Input dataset location**, provide the location in Amazon S3 in which your input manifest file is located\. For example, if your input manifest file, manifest\.json, is located in **example\-bucket**, enter **s3://example\-bucket/manifest\.json**\.
@@ -65,8 +65,6 @@ When you create a labeling job using the SageMaker console, you add worker instr
 
    For 3D point cloud annotation tasks, the default task timeout is 3 days\. The default timeout for text and image classification and label verification labeling jobs is 5 minutes\. The default timeout for all other labeling jobs is 60 minutes\.
 
-   If you set your task timeout to be greater than one hour, you must [increases the max session duration](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-console.html#roles-modify_max-session-duration) of your execution role to be greater than or equal to the task timeout\. If you choose a task time that is greater than 8 hours for 3D point cloud labeling jobs, refer to [Increase MaxSessionDuration for Execution Role](sms-point-cloud-general-information.md#sms-3d-pointcloud-maxsessduration)\.
-
 1. \(Optional\) For bounding box, semantic segmentation, video frame, and 3D point cloud task types, you can select **Display existing labels** if you want to display labels for your input data set for workers to verify or adjust\.
 
    For bounding box and semantic segmentation labeling jobs, this will create an adjustment labeling job\.
@@ -86,7 +84,7 @@ When you create a labeling job using the SageMaker console, you add worker instr
      + For image classification and text classification \(single and multi\-label\) you must specify at least two label categories\. For all other built\-in task types, you must specify at least one label category\. 
      + \(Optional\) If you are creating a 3D point cloud or video frame labeling job, you can specify label category attributes \(not supported for 3D point cloud semantic segmentation\) and frame attributes\. Label category attributes can be assigned to one or more labels\. Frame attributes will appear on each point cloud or video frame workers label\. To learn more, see [Worker User Interface \(UI\)](sms-point-cloud-general-information.md#sms-point-cloud-worker-task-ui) for 3D point cloud and [Worker User Interface \(UI\)](sms-video-overview.md#sms-video-worker-task-ui) for video frame\. 
      + \(Optional\) Add **Additional instructions** to help your worker complete your task\.
-   + If you are creating a custom labeling job you must :
+   + If you are creating a custom labeling workflow you must :
      + Enter a [custom template](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-custom-templates-step2.html) in the code box\. Custom templates can be created using a combination of HTML, the Liquid templating language and our pre\-built web components\. Optionally, you can choose a base\-template from the drop\-down menu to get started\. 
      + Specify pre\-annotation and post\-annotation lambda functions\. To learn how to create these functions, see [Step 3: Processing with AWS Lambda](sms-custom-templates-step3.md)\.
 

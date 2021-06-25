@@ -14,23 +14,18 @@ There are default limits for the size of datasets for the number of concurrent j
 **Resource limits**  
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-quotas.html)
 
-**To request a quota increase**
+**To request a quota increase:**
 
-1. Open the [AWS Support Center page](https://console.aws.amazon.com/support/home#/), sign in if necessary, and then choose **Create case**\.
+1. Open the [AWS Support Center](https://console.aws.amazon.com/support/home#/) page, sign in if necessary, and then choose **Create case**\. 
 
-1. On the **Create case** page, choose **Account and billing support**\.
+1. On the **Create case** page, choose **Service limit increase**\.
 
-1. In the In the **Case details** panel make the following entries:
-   + For **Type** choose **Account**\.
-   + For **Subject** enter **Amazon SageMaker Autopilot service limit increase request**\.
-   + Provide a detailed Description of your request, including:
-     + The Autopilot quota that you want to increase, and the value you want it
+1. In the **Case details** panel, select **SageMaker AutoML** for the **Limit Type**\.
 
-       increased it to, if known\.
-     + The reason why you are seeking the quota increase\.
-     + The region for which you are requesting the increase\.
+1. On the **Requests** panel for **Request 1**, select the **Region**, the resource **Limit** to increase and the **New Limit value** you are requesting\. Select **Add another request** if you have additional requests for quota increases\.   
+![\[Request quota increase for Autopilot\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/automl-quotas-service-limit-increase-request.PNG)
 
-1. Provide your preferred **Contact options** and choose **Submit**\.
+1. Provide your preferred **Contact options** and choose **Submit**\. 
 
 ## Resource quotas<a name="autopilot-quotas-resource-limits"></a>
 

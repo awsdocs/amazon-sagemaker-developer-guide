@@ -1,4 +1,4 @@
-# Factorization Machine Response Formats<a name="fm-in-formats"></a>
+# Factorization Machines Response Formats<a name="fm-in-formats"></a>
 
 ## JSON Response Format<a name="fm-json"></a>
 

@@ -13,8 +13,10 @@ For the AWS Regions supported by SageMaker Studio, see [Supported Regions and Qu
 **Topics**
 + [Amazon SageMaker Studio UI Overview](studio-ui.md)
 + [Use the Amazon SageMaker Studio Launcher](studio-launcher.md)
++ [Studio Entity Status](studio-entity-status.md)
 + [Use Amazon SageMaker Studio Notebooks](notebooks.md)
 + [Bring your own SageMaker image](studio-byoi.md)
 + [Set Up a Connection to an Amazon EMR Cluster](studio-emr.md)
 + [Perform Common Tasks in Amazon SageMaker Studio](studio-tasks.md)
 + [Amazon SageMaker Studio Pricing](studio-pricing.md)
++ [Troubleshooting Amazon SageMaker Studio](studio-troubleshooting.md)

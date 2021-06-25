@@ -40,8 +40,7 @@ The following example shows how to make real\-time predictions by calling an inf
 
 ```
 import sagemaker
-from sagemaker.predictor import json_serializer, json_deserializer, RealTimePredictor
-from sagemaker.content_types import CONTENT_TYPE_CSV, CONTENT_TYPE_JSON
+from sagemaker.predictor import json_serializer, json_deserializer, Predictor
 
 payload = {
         "input": [
@@ -83,8 +82,8 @@ payload = {
         }
     }
 
-predictor = RealTimePredictor(endpoint=endpoint_name, sagemaker_session=sagemaker.Session(), serializer=json_serializer,
-                                content_type=CONTENT_TYPE_JSON, accept=CONTENT_TYPE_CSV)
+predictor = Predictor(endpoint=endpoint_name, sagemaker_session=sagemaker.Session(), serializer=json_serializer,
+                                content_type='text/csv', accept='application/json'
 
 print(predictor.predict(payload))
 ```

@@ -8,10 +8,8 @@ After you have defined a data prep workflow, or *data flow*, you can integrate i
 
 For more information, see [Prepare ML Data with Amazon SageMaker Data Wrangler](data-wrangler.md)\.
 
-To analyze your data and evaluate machine learning models on Amazon SageMaker, use [Amazon SageMaker Processing](https://docs.aws.amazon.com/sagemaker/latest/dg/processing-job.html)\. With Processing, you can use a simplified, managed experience on SageMaker to run your data processing workloads, such as feature engineering, data validation, model evaluation, and model interpretation\. You can also use the Amazon SageMaker Processing APIs during the experimentation phase and after the code is deployed in production to evaluate performance\.
-
 
 
 **Topics**
++ [Detect Pretraining Data Bias](clarify-detect-data-bias.md)
 + [Prepare ML Data with Amazon SageMaker Data Wrangler](data-wrangler.md)
-+ [Process Data and Evaluate Models](processing-job.md)

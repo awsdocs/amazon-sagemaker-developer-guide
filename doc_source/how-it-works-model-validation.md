@@ -15,13 +15,13 @@ Options for offline model evaluation include:
 
   With this approach, you evaluate how well your model provides inferences on the holdout set\. You then assess how effectively the model generalizes what it learned in the initial training, as opposed to using model memory\. This approach to validation gives you an idea of how often the model is able to infer the correct answer\. 
 
-   
+   
 
   In some ways, this approach is similar to teaching elementary school students\. First, you provide them with a set of examples to learn, and then test their ability to generalize from their learning\. With homework and tests, you pose problems that were not included in the initial learning and determine whether they are able to generalize effectively\. Students with perfect memories could memorize the problems, instead of learning the rules\.
 
-   
+   
 
   Typically, the holdout dataset is of 20\-30% of the training data\.
 
-   
+   
 + **k\-fold validation**—In this validation approach, you split the example dataset into *k* parts\. You treat each of these parts as a holdout set for* k* training runs, and use the other *k*\-1 parts as the training set for that run\. You produce* k* models using a similar process, and aggregate the models to generate your final model\. The value *k* is typically in the range of 5\-10\.

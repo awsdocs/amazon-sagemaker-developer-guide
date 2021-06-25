@@ -8,7 +8,7 @@ SageMaker Pipelines is integrated directly with SageMaker, so you don't need to 
 
 **SageMaker Python SDK Integration**
 
-Because SageMaker Pipelines is integrated with the SageMaker Python SDK, you can create your pipelines programmatically using a high\-level Python interface that you may already be familiar with\. This enables you and members of your team to build your workflow without having to manage your jobs using the AWS console\. To view the SageMaker Python SDK documentation, see [Pipelines](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html)\.
+Because SageMaker Pipelines is integrated with the SageMaker Python SDK, you can create your pipelines programmatically using a high\-level Python interface that you might already be familiar with\.  To view the SageMaker Python SDK documentation, see [Pipelines](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html)\.
 
 **SageMaker Studio Integration**
 
@@ -16,7 +16,7 @@ SageMaker Studio offers an environment to manage the end\-to\-end SageMaker Pipe
 
 **Data Lineage Tracking**
 
-With SageMaker Pipelines you can track the history of your data within the pipeline execution\. It lets you analyze where the data came from, where it was used as an input, and the outputs that were generated from it\. You can view the models created from an individual dataset and the datasets that went into creating an individual model\. For more information, see [Amazon SageMaker ML Lineage Tracking](lineage-tracking.md)\.
+With SageMaker Pipelines you can track the history of your data within the pipeline execution\. Amazon SageMaker ML Lineage Tracking lets you analyze where the data came from, where it was used as an input, and the outputs that were generated from it\. For example, you can view the models created from an individual dataset, and you can view the datasets that went into creating an individual model\. For more information, see [Amazon SageMaker ML Lineage Tracking](lineage-tracking.md)\.
 
 **Step Reuse**
 

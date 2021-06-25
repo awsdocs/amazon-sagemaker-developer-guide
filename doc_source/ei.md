@@ -1,8 +1,5 @@
 # Use Amazon SageMaker Elastic Inference \(EI\)<a name="ei"></a>
 
-****  
-***This feature is not available in the China Regions\.***
-
 By using Amazon Elastic Inference \(EI\), you can speed up the throughput and decrease the latency of getting real\-time inferences from your deep learning models that are deployed as [Amazon SageMaker hosted models](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-hosting.html), but at a fraction of the cost of using a GPU instance for your endpoint\. EI allows you to add inference acceleration to a hosted endpoint for a fraction of the cost of using a full GPU instance\. Add an EI accelerator in one of the available sizes to a deployable model in addition to a CPU instance type, and then add that model as a production variant to an endpoint configuration that you use to deploy a hosted endpoint\. You can also add an EI accelerator to a SageMaker [notebook instance](https://docs.aws.amazon.com/sagemaker/latest/dg/nbi.html) so that you can test and evaluate inference performance when you are building your models\. 
 
 Elastic Inference is supported in EI\-enabled versions of TensorFlow, Apache MXNet, and PyTorch\. To use any other deep learning framework, export your model by using ONNX, and then import your model into MXNet\. You can then use your model with EI as an MXNet model\. For information about importing an ONNX model into MXNet, see [Importing an ONNX model into MXNet](https://docs.aws.amazon.com/dlami/latest/devguide/onnx.html)\.
@@ -60,11 +57,11 @@ When you are ready to deploy your model for production to provide inferences, yo
 
 Amazon Elastic Inference is designed to be used with AWS enhanced versions of TensorFlow, Apache MXNet, or PyTorch machine learning frameworks\. These enhanced versions of the frameworks are automatically built into containers when you use the Amazon SageMaker Python SDK, or you can download them as binary files and import them in your own Docker containers\. 
 
-You can download the EI\-enabled TensorFlow binary files from the public [amazonei\-tensorflow](https://s3.console.aws.amazon.com/s3/buckets/amazonei-tensorflow) Amazon S3 bucket to the TensorFlow serving containers\. For more information about building a container that uses the EI\-enabled version of TensorFlow, see [ Amazon Elastic Inference with TensorFlow in SageMaker](https://github.com/aws/sagemaker-tensorflow-serving-container#sagemaker-tensorflow-serving-container)\.
+You can download the EI\-enabled TensorFlow binary files from the public [amazonei\-tensorflow](https://console.aws.amazon.com/s3/buckets/amazonei-tensorflow) Amazon S3 bucket to the TensorFlow serving containers\. For more information about building a container that uses the EI\-enabled version of TensorFlow, see [ Amazon Elastic Inference with TensorFlow in SageMaker](https://github.com/aws/sagemaker-tensorflow-serving-container#sagemaker-tensorflow-serving-container)\.
 
-You can download the EI\-enabled MXNet binary files from the public [amazonei\-apachemxnet](https://s3.console.aws.amazon.com/s3/buckets/amazonei-apachemxnet) Amazon S3 bucket to the MXNet serving containers\. For more information about building a container that uses the EI\-enabled version of MXNet, see [ Amazon Elastic Inference with MXNet in SageMaker](https://github.com/aws/sagemaker-mxnet-serving-container#amazon-elastic-inference-with-mxnet-in-sagemaker)\.
+You can download the EI\-enabled MXNet binary files from the public [amazonei\-apachemxnet](https://console.aws.amazon.com/s3/buckets/amazonei-apachemxnet) Amazon S3 bucket to the MXNet serving containers\. For more information about building a container that uses the EI\-enabled version of MXNet, see [ Amazon Elastic Inference with MXNet in SageMaker](https://github.com/aws/sagemaker-mxnet-serving-container#amazon-elastic-inference-with-mxnet-in-sagemaker)\.
 
-You can download the EI\-enabled PyTorch binary files from the public [amazonei\-pytorch](https://s3.console.aws.amazon.com/s3/buckets/amazonei-pytorch) Amazon S3 bucket to the PyTorch serving containers\. For more information about building a container that uses the EI\-enabled version of PyTorch, see [ Amazon Elastic Inference with PyTorch in SageMaker](https://github.com/aws/sagemaker-pytorch-serving-container/#amazon-elastic-inference-with-pytorch-in-sagemaker)\.
+You can download the EI\-enabled PyTorch binary files from the public [amazonei\-pytorch](https://console.aws.amazon.com/s3/buckets/amazonei-pytorch) Amazon S3 bucket to the PyTorch serving containers\. For more information about building a container that uses the EI\-enabled version of PyTorch, see [ Amazon Elastic Inference with PyTorch in SageMaker](https://github.com/aws/sagemaker-pytorch-serving-container/#amazon-elastic-inference-with-pytorch-in-sagemaker)\.
 
 To use Elastic Inference in a hosted endpoint, you can choose any of the following frameworks depending on your needs\.
 + [ SageMaker Python SDK \- Deploy TensorFlow models ](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/using_tf.html#deploy-tensorflow-serving-models)
@@ -75,11 +72,12 @@ If you need to create a custom container for deploying your model that is comple
 
 ## Use EI with SageMaker Built\-in Algorithms<a name="ei-built-in"></a>
 
-Currently, the [Image Classification Algorithm](image-classification.md) and [Object Detection Algorithm](object-detection.md) built\-in algorithms support EI\. For an example that uses the Image Classification algorithm with EI, see [End\-to\-End Multiclass Image Classification Example](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-fulltraining.ipynb)\.
+Currently, the [Image Classification Algorithm](image-classification.md) and [Object Detection Algorithm](object-detection.md) built\-in algorithms support EI\. For an example that uses the Image Classification algorithm with EI, see [End\-to\-End Multiclass Image Classification Example](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-fulltraining.html)\.
 
 ## EI Sample Notebooks<a name="ei-intro-sample-nb"></a>
 
 The following Sample notebooks provide examples of using EI in SageMaker:
-+ [Using Amazon Elastic Inference with MXNet on Amazon SageMaker ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/mxnet_mnist/mxnet_mnist_elastic_inference.ipynb)
-+ [Using Amazon Elastic Inference with MXNet on an Amazon SageMaker Notebook Instance ](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/mxnet_mnist/mxnet_mnist_elastic_inference_local.ipynb) 
-+ [Using Amazon Elastic Inference with a pre\-trained TensorFlow Serving model on SageMaker](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/tensorflow_serving_using_elastic_inference_with_your_own_model/tensorflow_serving_pretrained_model_elastic_inference.ipynb)
++ [Using Amazon Elastic Inference with MXNet on Amazon SageMaker ](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-python-sdk/mxnet_mnist/mxnet_mnist_elastic_inference.html)
++ [Using Amazon Elastic Inference with MXNet on an Amazon SageMaker Notebook Instance ](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-python-sdk/mxnet_mnist/mxnet_mnist_elastic_inference_local.html) 
++ [Using Amazon Elastic Inference with Neo\-compiled TensorFlow model on SageMaker](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-python-sdk/tensorflow_serving_using_elastic_inference_with_your_own_model/tensorflow_neo_compiled_model_elastic_inference.html)
++ [Using Amazon Elastic Inference with a pre\-trained TensorFlow Serving model on SageMaker](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-python-sdk/tensorflow_serving_using_elastic_inference_with_your_own_model/tensorflow_serving_pretrained_model_elastic_inference.html)

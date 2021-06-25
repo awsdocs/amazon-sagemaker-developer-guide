@@ -8,7 +8,7 @@ Additional quotas apply for label categories for all task types, and for input d
 
 ## Input File Size Quota<a name="input-file-size-limit"></a>
 
-Input files can't exceed the following size\- quotas for both active and non\-active learning labeling jobs\.
+Input files can't exceed the following size\- quotas for both active and non\-active learning labeling jobs\. There is no input file size quota for videos used in [video classification](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-video-classification.html) labeling jobs\.
 
 
 | Labeling Job Task Type | Input File Size Quota | 
@@ -16,10 +16,8 @@ Input files can't exceed the following size\- quotas for both active and non\-ac
 | Image classification | 40 MB | 
 | Bounding box \(Object detection\) | 40 MB | 
 | Semantic segmentation | 40 MB | 
-| Image classification label adjustment | 40 MB | 
 | Bounding box \(Object detection\) label adjustment | 40 MB | 
 | Semantic segmentation label adjustment | 40 MB | 
-| Image classification label verification | 40 MB | 
 | Bounding box \(Object detection\) label verification | 40 MB | 
 | Semantic segmentation label verification | 40 MB | 
 
@@ -33,10 +31,8 @@ Image file resolution refers to the number of pixels in an image, and determines
 | Image classification | 100 million pixels | 3840 x 2160 pixels \(4 K\) | 
 | Bounding box \(Object detection\) | 100 million pixels | 3840 x 2160 pixels \(4 K\) | 
 | Semantic segmentation | 100 million pixels | 1920 x 1080 pixels \(1080 p\) | 
-| Image classification label adjustment | 100 million pixels | 3840 x 2160 pixels \(4 K\) | 
 | Object detection label adjustment | 100 million pixels | 3840 x 2160 pixels \(4 K\) | 
 | Semantic segmentation label adjustment | 100 million pixels | 1920 x 1080 pixels \(1080 p\) | 
-| Image classification label verification | 100 million pixels | Not available | 
 | Object detection label verification | 100 million pixels | Not available | 
 | Semantic segmentation label verification | 100 million pixels | Not available | 
 
@@ -73,7 +69,7 @@ The following label category limits apply to labeling jobs\. Quotas for label ca
 
 ## 3D Point Cloud and Video Frame Labeling Job Quotas<a name="sms-input-data-quotas-other"></a>
 
-The following quotas apply for 3D point cloud and video frame labeling job input data\. 
+The following quotas apply for 3D point cloud and video frame labeling job input data\.
 
 
 ****  

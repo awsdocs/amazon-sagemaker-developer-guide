@@ -41,4 +41,16 @@ Must be an s3:// formatted URL where Amazon SageMaker has write permissions\. Th
 
      If you choose **No**, instead of executing the entire workflow, SageMaker stops execution after generating a notebook with candidate definitions\. A candidate is a combination of data preprocessors, algorithms, and algorithm parameter settings\. You can use the notebook as a starting point to guide your own process of model training/tuning\. The notebook has highlighted sections that explain what kinds of changes are typical, such as changing instance type, cluster size, and so on\.
 
-1. Choose **Create Experiment**\.
+1. To automatically deploy the best model from an Autopilot experiment to an endpoint, accept the default **Auto deploy** value **On** when creating the experiment\.  
+![\[Select Decide to use automatic deployment..\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-experiment-deploy.png)
+
+   Choose **Create Experiment**\.
+**Note**  
+Automatic deployment will fail if the default resource quota or your customer quota for endpoint instances in a region are too limited\. Currently the requirement is that you need have at least two ml\.m5\.2xlarge instances\. The eu\-north\-1 region \(Stockholm\) does not meet this requirement, for example\. The supported instance types for this region are listed at [SageMaker Instance Types in EU \(Stockholm\) eu\-north\-1](http://aws.amazon.com/releasenotes/sagemaker-instance-types-in-stockholm-eu-north-1/)\. If you encounter this issue, you can request a service limit increase for SageMaker endpoints instances by following the  procedure at [Supported Regions and Quotas](regions-quotas.md)\. In the **Case details** panel, select **SageMaker Endpoints** for the **Limit type**\. For **Request1**, select:  
+**Region**: **EU \(Stockholm\)**
+**Resource Type**: **SageMaker Hosting**
+**Limit**: **ml\.m5\.2xlarge** \(at least\)
+**New limit value**: **2**
+ 
+**Note**  
+To avoid incurring unnecessary charges, delete the endpoints and resources that were created when deploying the model after they are no longer needed\. Information on pricing of instances by region is available at [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/)\.

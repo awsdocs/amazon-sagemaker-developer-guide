@@ -28,33 +28,33 @@ The following procedure shows you how to create and associate artifacts between 
 
    ```
    import sys
-     !{sys.executable} -m pip install -q sagemaker
+   !{sys.executable} -m pip install -q sagemaker
    
-     from sagemaker import get_execution_role
-     from sagemaker.session import Session
-     from sagemaker.lineage import context, artifact, association, action
+   from sagemaker import get_execution_role
+   from sagemaker.session import Session
+   from sagemaker.lineage import context, artifact, association, action
    
-     import boto3
-     boto_session = boto3.Session(region_name=region)
-     sagemaker_client = boto_session.client("sagemaker")
+   import boto3
+   boto_session = boto3.Session(region_name=region)
+   sagemaker_client = boto_session.client("sagemaker")
    ```
 
 1. Create the input and output artifacts\.
 
    ```
    code_location_arn = artifact.Artifact.create(
-         artifact_name='source-code-location',
-         source_uri='s3://...',
-         artifact_type='code-location'
-     ).artifact_arn
+       artifact_name='source-code-location',
+       source_uri='s3://...',
+       artifact_type='code-location'
+   ).artifact_arn
    
-     # Similar constructs for train_data_location_arn and test_data_location_arn
+   # Similar constructs for train_data_location_arn and test_data_location_arn
    
-     model_location_arn = artifact.Artifact.create(
-         artifact_name='model-location',
-         source_uri='s3://...',
-         artifact_type='model-location'
-     ).artifact_arn
+   model_location_arn = artifact.Artifact.create(
+       artifact_name='model-location',
+       source_uri='s3://...',
+       artifact_type='model-location'
+   ).artifact_arn
    ```
 
 1. Train the model and get the `trial_component_arn` that represents the training job\.
@@ -63,26 +63,26 @@ The following procedure shows you how to create and associate artifacts between 
 
    ```
    input_artifacts = [code_location_arn, train_data_location_arn, test_data_location_arn]
-     for artifact_arn in input_artifacts:
-         try:
-             association.Association.create(
-                 source_arn=artifact_arn,
-                 destination_arn=trial_component_arn,
-                 association_type='ContributedTo'
-             )
-         except:
-             logging.info('association between {} and {} already exists', artifact_arn, trial_component_arn)
+   for artifact_arn in input_artifacts:
+       try:
+           association.Association.create(
+               source_arn=artifact_arn,
+               destination_arn=trial_component_arn,
+               association_type='ContributedTo'
+           )
+       except:
+           logging.info('association between {} and {} already exists', artifact_arn, trial_component_arn)
    
-     output_artifacts = [model_location_arn]
-     for artifact_arn in output_artifacts:
-         try:
-              association.Association.create(
-                 source_arn=trial_component_arn,
-                 destination_arn=artifact_arn,
-                 association_type='Produced'
-             )
-         except:
-             logging.info('association between {} and {} already exists', artifact_arn, trial_component_arn)
+   output_artifacts = [model_location_arn]
+   for artifact_arn in output_artifacts:
+       try:
+            association.Association.create(
+               source_arn=trial_component_arn,
+               destination_arn=artifact_arn,
+               association_type='Produced'
+           )
+       except:
+           logging.info('association between {} and {} already exists', artifact_arn, trial_component_arn)
    ```
 
 1. Create the inference endpoint\.
@@ -97,23 +97,23 @@ The following procedure shows you how to create and associate artifacts between 
    ```
    from sagemaker.lineage import context
    
-     endpoint = sagemaker_client.describe_endpoint(EndpointName=predictor.endpoint_name)
-     endpoint_arn = endpoint['EndpointArn']
+   endpoint = sagemaker_client.describe_endpoint(EndpointName=predictor.endpoint_name)
+   endpoint_arn = endpoint['EndpointArn']
    
-     endpoint_context_arn = context.Context.create(
-         context_name=predictor.endpoint_name,
-         context_type='Endpoint',
-         source_uri=endpoint_arn
-     ).context_arn
+   endpoint_context_arn = context.Context.create(
+       context_name=predictor.endpoint_name,
+       context_type='Endpoint',
+       source_uri=endpoint_arn
+   ).context_arn
    ```
 
 1. Associate the training job \(trial component\) and endpoint context\.
 
    ```
    association.Association.create(
-         source_arn=trial_component_arn,
-         destination_arn=endpoint_context_arn
-     )
+       source_arn=trial_component_arn,
+       destination_arn=endpoint_context_arn
+   )
    ```
 
 ## Manually Track a Workflow<a name="lineage-tracking-manual-track"></a>
@@ -132,15 +132,15 @@ Given the endpoint Amazon Resource Name \(ARN\) from the previous example, the f
 
    ```
    import sys
-     !{sys.executable} -m pip install -q sagemaker
+   !{sys.executable} -m pip install -q sagemaker
    
-     from sagemaker import get_execution_role
-     from sagemaker.session import Session
-     from sagemaker.lineage import context, artifact, association, action
+   from sagemaker import get_execution_role
+   from sagemaker.session import Session
+   from sagemaker.lineage import context, artifact, association, action
    
-     import boto3
-     boto_session = boto3.Session(region_name=region)
-     sagemaker_client = boto_session.client("sagemaker")
+   import boto3
+   boto_session = boto3.Session(region_name=region)
+   sagemaker_client = boto_session.client("sagemaker")
    ```
 
 1. Get the endpoint context from the endpoint ARN\.
@@ -161,7 +161,7 @@ Given the endpoint Amazon Resource Name \(ARN\) from the previous example, the f
 
    ```
    train_data_location_artifact_arn = sagemaker_client.list_associations(
-       DestinationArn=trial_source_arn)['AssociationSummaries'][0]['SourceArn']
+       DestinationArn=trial_component_arn, SourceType='Model')['AssociationSummaries'][0]['SourceArn']
    ```
 
 1. Get the training data location from the training data location artifact\.

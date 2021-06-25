@@ -48,9 +48,6 @@ When using the SageMaker `CreateLabelingJob` API operation, set the total time a
 
 When you create a labeling job in the console, you can specify this time limit when you select your workforce type and your work team\.
 
-**Important**  
-If you set your task time limit to be greater than 8 hours, you must set `MaxSessionDuration` for your IAM execution role to at least 8 hours\. See [3D Point Cloud Labeling Job Permission Requirements](#sms-security-permission-3d-point-cloud) for more information\. 
-
 ## Workforces<a name="sms-point-cloud-workforces"></a>
 
 When you create a 3D point cloud labeling job, you need to specify a work team that will complete your point cloud annotation tasks\. You can choose a work team from a private workforce of your own workers, or from a vendor workforce that you select in the AWS Marketplace\. You cannot use the Amazon Mechanical Turk workforce for 3D point cloud labeling jobs\. 
@@ -108,39 +105,59 @@ You can add your worker instructions using the SageMaker console while creating 
 
 In addition to your instructions, Ground Truth provides a link to help workers navigate and use the worker portal\. View these instructions by selecting the task type on [Worker Instructions](sms-point-cloud-worker-instructions.md)\. 
 
+### Declining Tasks<a name="sms-decline-task-point-cloud"></a>
+
+Workers are able to decline tasks\. 
+
+Workers decline a task if the instructions are not clear, input data is not displaying correctly, or if they encounter some other issue with the task\. If the number of workers per dataset object \([https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-NumberOfHumanWorkersPerDataObject](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-NumberOfHumanWorkersPerDataObject)\) decline the task, the data object is marked as expired and will not be sent to additional workers\.
+
 ## 3D Point Cloud Labeling Job Permission Requirements<a name="sms-security-permission-3d-point-cloud"></a>
 
 When you create a 3D point cloud labeling job, in addition to the permission requirements found in [Assign IAM Permissions to Use Ground Truth](sms-security-permission.md), you must add a CORS policy to your S3 bucket that contains your input manifest file\. 
 
-Additionally if you choose to allow workers to work on tasks for more than 8 hours, you must increase the `MaxSessionDuration` of the IAM execution role you use to create the labeling job\. 
-
 ### Add a CORS Permission Policy to S3 Bucket<a name="sms-permissions-execution-role"></a>
 
-When you create a 3D point cloud labeling job, you specify buckets in S3 where your input data and manifest file are located and where your output data will be stored\. These buckets may be the same\. You must attach the following Cross\-origin resource sharing \(CORS\) policy to your input and output buckets: 
+When you create a 3D point cloud labeling job, you specify buckets in S3 where your input data and manifest file are located and where your output data will be stored\. These buckets may be the same\. You must attach the following Cross\-origin resource sharing \(CORS\) policy to your input and output buckets\. If you use the Amazon S3 console to add the policy to your bucket, you must use the JSON format\.
+
+**JSON**
+
+```
+[
+        {
+            "AllowedHeaders": [
+                "*"
+            ],
+            "AllowedMethods": [
+                "GET",
+                "HEAD",
+                "PUT"
+            ],
+            "AllowedOrigins": [
+                "*"
+            ],
+            "ExposeHeaders": [
+                "Access-Control-Allow-Origin"
+            ],
+            "MaxAgeSeconds": 3000
+        }
+    ]
+```
+
+**XML**
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
-<CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
-<CORSRule>
-    <AllowedOrigin>*</AllowedOrigin>
-    <AllowedMethod>GET</AllowedMethod>
-    <AllowedMethod>HEAD</AllowedMethod>
-    <AllowedMethod>PUT</AllowedMethod>
-    <MaxAgeSeconds>3000</MaxAgeSeconds>
-    <ExposeHeader>Access-Control-Allow-Origin</ExposeHeader>
-    <AllowedHeader>*</AllowedHeader>
-</CORSRule>
-</CORSConfiguration>
+    <CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+    <CORSRule>
+        <AllowedOrigin>*</AllowedOrigin>
+        <AllowedMethod>GET</AllowedMethod>
+        <AllowedMethod>HEAD</AllowedMethod>
+        <AllowedMethod>PUT</AllowedMethod>
+        <MaxAgeSeconds>3000</MaxAgeSeconds>
+        <ExposeHeader>Access-Control-Allow-Origin</ExposeHeader>
+        <AllowedHeader>*</AllowedHeader>
+    </CORSRule>
+    </CORSConfiguration>
 ```
 
 To learn how to add a CORS policy to an S3 bucket, see [How do I add cross\-domain resource sharing with CORS?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-cors-configuration.html) in the Amazon Simple Storage Service Console User Guide\.
-
-### Increase MaxSessionDuration for Execution Role<a name="sms-3d-pointcloud-maxsessduration"></a>
-
-3D point cloud labeling tasks can take workers more time to complete than other task types\. You can set the total amount of time that workers can work on each task by doing one of the following: 
-+ When you create a labeling job in the console, set **Task Timeout** when you select your work team\.
-+ Using the `TaskTimeLimitInSeconds` parameter when creating a labeling job using the SageMaker API\. 
-
-The maximum time you can set for workers to work on tasks is 7 days\. The default value is 3 days\. If you set your task time limit to be greater than 8 hours, you must set `MaxSessionDuration` for your IAM execution role to at least 8 hours\. 
-
-To see how to update this value for your IAM role, see [Modifying a Role ](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html) in the IAM User Guide, choose your preferred method to modify the role, and then follow the steps in [Modifying a Role Maximum Session Duration](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-console.html#roles-modify_max-session-duration)\. To learn more about permission requirements for the Ground Truth execution role, see [Create an Execution Role to Start a Labeling Job](sms-security-permission.md#sms-security-permission-execution-role)\.

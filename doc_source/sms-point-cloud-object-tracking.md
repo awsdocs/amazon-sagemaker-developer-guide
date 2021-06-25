@@ -59,10 +59,11 @@ View options that enable workers to easily hide or view label text, a ground mes
 Ground Truth helps workers annotate 3D point clouds faster and more accurately using UX, machine learning and computer vision powered assistive labeling tools for 3D point cloud object tracking tasks\. The following assistive labeling tools are available for this task type:
 + **Label autofill** – When a worker adds a cuboid to a frame, a cuboid with the same dimensions and orientation is automatically added to all frames in the sequence\. 
 + **Label interpolation** – After a worker has labeled a single object in two frames, Ground Truth uses those annotations to interpolate the movement of that object between those two frames\.
-+ **Bulk label management** – Workers can add, delete, and rename annotations in bulk\. 
++ **Bulk label and attribute management** – Workers can add, delete, and rename annotations, label category attributes, and frame attributes in bulk\. 
   + Workers can manually delete annotations for a given object before or after a frame\. For example, a worker can delete all labels for an object after frame 10 if that object is no longer located in the scene after that frame\. 
   + If a worker accidentally bulk deletes all annotations for a object, they can add them back\. For example, if a worker deletes all annotations for an object before frame 100, they can bulk add them to those frames\. 
   + Workers can rename a label in one frame and all 3D cuboids assigned that label are updated with the new name across all frames\. 
+  + Workers can use bulk editing to add or edit label category attributes and frame attributes in multiple frames\.
 + **Snapping** – Workers can add a cuboid around an object and use a keyboard shortcut or menu option to have Ground Truth's autofit tool snap the cuboid tightly around the object's boundaries\. 
 + **Fit to ground** – After a worker adds a cuboid to the 3D scene, the worker can automatically snap the cuboid to the ground\. For example, the worker can use this feature to snap a cuboid to the road or sidewalk in the scene\. 
 + **Multi\-view labeling** – After a worker adds a 3D cuboid to the 3D scene, a side \-panel displays front and two side perspectives to help the worker adjust the cuboid tightly around the object\. Workers can annotation the 3D point cloud, the side panel and the adjustments appear in the other views in real time\. 
@@ -97,8 +98,6 @@ This section covers details you need to know when you create a labeling job usin
 + The number of workers specified in `NumberOfHumanWorkersPerDataObject` should be `1`\. 
 + Automated data labeling is not supported for 3D point cloud labeling jobs\. You should not specify values for parameters in `[LabelingJobAlgorithmsConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelingJobAlgorithmsConfig)`\. 
 + 3D point cloud object tracking labeling jobs can take multiple hours to complete\. You can specify a longer time limit for these labeling jobs in `TaskTimeLimitInSeconds` \(up to 7 days, or 604,800 seconds\)\. 
-**Important**  
-If you set your task time limit to be greater than 8 hours, you must set `MaxSessionDuration` for your IAM execution role to at least 8 hours\. To see how to update this value for your IAM role, see [Modifying a Role ](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html) in the IAM User Guide, choose your preferred method to modify the role, and then follow the steps in [Modifying a Role Maximum Session Duration](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-console.html#roles-modify_max-session-duration)\. 
 
 ### Create a Labeling Job \(Console\)<a name="sms-point-cloud-object-tracking-create-labeling-job-console"></a>
 
@@ -107,8 +106,6 @@ You can follow the instructions [Create a Labeling Job \(Console\)](sms-create-l
 + Optionally, you can provide label category attributes\. Workers can assign one or more of these attributes to annotations to provide more information about that object\. For example, you might want to use the attribute *occluded* to have workers identify when an object is partially obstructed\.
 + Automated data labeling and annotation consolidation are not supported for 3D point cloud labeling tasks\. 
 + 3D point cloud object tracking labeling jobs can take multiple hours to complete\. You can specify a longer time limit for these labeling jobs when you select your work team \(up to 7 days, or 604800 seconds\)\. 
-**Important**  
-If you set your task time limit to be greater than 8 hours, you must set `MaxSessionDuration` for your IAM execution role to at least 8 hours\. To see how to update this value for your IAM role, see [Modifying a Role ](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html) in the IAM User Guide, choose your preferred method to modify the role, and then follow the steps in [Modifying a Role Maximum Session Duration](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-console.html#roles-modify_max-session-duration)\.
 
 ## Create a 3D Point Cloud Object Tracking Adjustment or Verification Labeling Job<a name="sms-point-cloud-object-tracking-adjustment-verification"></a>
 

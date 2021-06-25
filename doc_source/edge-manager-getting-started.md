@@ -3,8 +3,8 @@
 This guide demonstrates how to complete the necessary steps to register, deploy, and manage a fleet of devices, and how to satisfy Amazon SageMaker Edge Manager prerequisites\. 
 
 **Topics**
-+ [Prerequisites](edge-getting-started-step1.md)
-+ [Package a Compiled Model](edge-getting-started-step2.md)
-+ [Create a Fleet](edge-getting-started-step3.md)
-+ [Register Devices](edge-getting-started-step4.md)
-+ [Check Device and Fleet](edge-getting-started-step6.md)
++ [Setting Up](edge-getting-started-step1.md)
++ [Train, Compile, and Package Your Model](edge-getting-started-step2.md)
++ [Create and Register Fleets and Authenticate Devices](edge-getting-started-step3.md)
++ [Download and Set Up Edge Manager](edge-getting-started-step4.md)
++ [Run Agent](edge-getting-started-step5.md)

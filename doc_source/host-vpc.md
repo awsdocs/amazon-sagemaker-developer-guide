@@ -134,7 +134,7 @@ The `SageMakerFullAccess` managed policy includes the permissions that you need 
 }
 ```
 
-For more information about the `SageMakerFullAccess` managed policy, see [AmazonSageMakerFullAccess Policy](sagemaker-roles.md#sagemaker-roles-amazonsagemakerfullaccess-policy)\. 
+For more information about the `SageMakerFullAccess` managed policy, see [`AmazonSageMakerFullAccess`](security-iam-awsmanpol.md#security-iam-awsmanpol-AmazonSageMakerFullAccess)\. 
 
 ### Configure Route Tables<a name="host-vpc-route-table"></a>
 

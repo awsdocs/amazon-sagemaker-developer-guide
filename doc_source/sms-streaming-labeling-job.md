@@ -38,7 +38,7 @@ You can optionally submit input data to a streaming labeling job one time when y
 + **Send data objects using Amazon SNS messages** – You can send Ground Truth new data objects to label by sending an Amazon SNS message\. You will send this message to an Amazon SNS input topic that you create and specify when you create your streaming labeling job\. For more information, see [Send Data Objects Using Amazon SNS](#sms-streaming-how-it-works-sns)\.
 + **Send data objects by placing them in an Amazon S3 bucket** – Each time you add a new data object to an Amazon S3 bucket, you can prompt Ground Truth to process that object for labeling\. To do this, you add an event notification to the bucket so that it notifies your Amazon SNS input topic each time a new object is added to \(or *created in*\) that bucket\. For more information, see [Send Data Objects using Amazon S3](#sms-streaming-how-it-works-s3)\. This option is not available for text\-based labeling jobs such as text classification and named entity recognition\. 
 **Important**  
-If you use the Amazon S3 configuration, do not use the same S3 location for your input data configuration and your output data\. You specify the S3 prefix for your output data when you create a labeling job\.
+If you use the Amazon S3 configuration, do not use the same Amazon S3 location for your input data configuration and your output data\. You specify the S3 prefix for your output data when you create a labeling job\.
 
 ### Send Data Objects Using Amazon SNS<a name="sms-streaming-how-it-works-sns"></a>
 
@@ -65,10 +65,10 @@ When Ground Truth creates your streaming labeling job, it subscribes to your Ama
 
 You can send one or more new data objects to a streaming labeling job by placing them in an Amazon S3 bucket that is configured with an Amazon SNS event notification\. You can set up an event to notify your Amazon SNS input topic anytime a new object is created in your bucket\. You must specify this same Amazon SNS input topic in the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) parameter `SnsTopicArn` in `InputConfig`\.
 
-Anytime you configure an S3 bucket to send notifications to Amazon SNS, Ground Truth will publish a test event, `"s3:TestEvent"`, to ensure that the topic exists and that the owner of the Amazon S3 bucket specified has permission to publish to the specified topic\. It is recommended that you set up your Amazon S3 connection with Amazon SNS before starting a streaming labeling job\. If you do not, this test event may register as a data object and be sent to Ground Truth for labeling\. 
+Anytime you configure an Amazon S3 bucket to send notifications to Amazon SNS, Ground Truth will publish a test event, `"s3:TestEvent"`, to ensure that the topic exists and that the owner of the Amazon S3 bucket specified has permission to publish to the specified topic\. It is recommended that you set up your Amazon S3 connection with Amazon SNS before starting a streaming labeling job\. If you do not, this test event may register as a data object and be sent to Ground Truth for labeling\. 
 
 **Important**  
-If you use the Amazon S3 configuration, do not use the same S3 location for your input data configuration and your output data\. You specify the S3 prefix for your output data when you create a labeling job\.
+If you use the Amazon S3 configuration, do not use the same Amazon S3 location for your input data configuration and your output data\. You specify the S3 prefix for your output data when you create a labeling job\.
 
 Once you have configured your Amazon S3 bucket and created your labeling job, you can add objects to your bucket and Ground Truth either sends that object to workers or places it on your Amazon SQS queue\. 
 
@@ -86,9 +86,11 @@ Modifying, deleting, or sending objects directly to the Amazon SQS queue associa
 
 ## Receive Output Data from a Streaming Labeling Job<a name="sms-streaming-how-it-works-output-data"></a>
 
-Your Amazon S3 output bucket is periodically updated with new output data from your streaming labeling job\. Additionally, each time a worker submits a labeled object, a notification with the output data is sent to the Amazon SNS output topic you specify\. 
+Your Amazon S3 output bucket is periodically updated with new output data from your streaming labeling job\. 
 
-You can subscribe an endpoint to your SNS output topic to receive notifications or trigger events when you receive output data from a labeling task\. To learn more, see [Subscribe an Endpoint to Your Amazon SNS Output Topic](sms-create-sns-input-topic.md#sms-streaming-subscribe-output-topic)\.
+Optionally, you can specify an Amazon SNS output topic\. Each time a worker submits a labeled object, a notification with the output data is sent to that topic\. You can subscribe an endpoint to your SNS output topic to receive notifications or trigger events when you receive output data from a labeling task\. Use an Amazon SNS output topic if you want to do real time chaining to another streaming job and receive an Amazon SNS notifications each time a data object is submitted by a worker\.
+
+To learn more, see [Subscribe an Endpoint to Your Amazon SNS Output Topic](sms-create-sns-input-topic.md#sms-streaming-subscribe-output-topic)\.
 
 ## Duplicate Message Handling<a name="sms-streaming-impotency"></a>
 
@@ -158,7 +160,7 @@ When you do not specify a key, you can find the deduplication ID that Ground Tru
 }
 ```
 
-For `<service-generated-key>`, if the data object came through an Amazon S3 configuration, Ground Truth adds a unique value used by the service and emits a new field keyed by `$sequencer` which shows the S3 sequencer used\. If object was fed to SNS directly, Ground Truth use the SNS message ID\.
+For `<service-generated-key>`, if the data object came through an Amazon S3 configuration, Ground Truth adds a unique value used by the service and emits a new field keyed by `$sequencer` which shows the Amazon S3 sequencer used\. If object was fed to SNS directly, Ground Truth use the SNS message ID\.
 
 **Note**  
 Do not use the `$` character in your label attribute name\. 

@@ -34,7 +34,7 @@ The following rules are the Debugger built\-in rules that are callable using the
 | Generic system monitoring rules for any SageMaker training job |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html)  | 
 
 
-**Debugger Built\-in Rules for Profiling Model Performance Data \(Framework Metrics\)**  
+**Debugger Built\-in Rules for Profiling Framework Metrics**  
 
 | Scope of Validity | Built\-in Rules | 
 | --- | --- | 
@@ -111,7 +111,7 @@ To find available keys for the `rule_parameters` parameter, see the parameter de
 
 Sample rule configuration codes are provided for each built\-in rule below the parameter description tables\.
 + For a full instruction and examples of using the Debugger built\-in rules, see [Debugger Built\-in Rules Example Code](use-debugger-built-in-rules.md#debugger-deploy-built-in-rules)\.
-+ For a full instruction of using the built\-in rules with the low\-level SageMaker API operations, see [Add Debugger Built\-in Rule Configuration to the `CreateTrainingJob` API Operation](debugger-createtrainingjob-api.md#debugger-built-in-rules-api)\.
++ For a full instruction of using the built\-in rules with the low\-level SageMaker API operations, see [Configure Debugger Using Amazon SageMaker API](debugger-createtrainingjob-api.md)\.
 
 ## ProfilerReport<a name="profiler-report"></a>
 
@@ -312,7 +312,7 @@ The CreateXgboostReport rule collects output tensors from an XGBoost training jo
 + `labels` – Saves every 5 steps
 
 
-**Parameter Descriptions for the StepOutlier Rule**  
+**Parameter Descriptions for the CreateXgboostReport Rule**  
 
 | Parameter Name | Description | 
 | --- | --- | 
@@ -771,7 +771,7 @@ This rule can be applied either to one of the supported deep learning frameworks
 For an example of how to configure and deploy a built\-in rule, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\.
 
 **Note**  
-Overtraining can be avoided by early stopping\. For information on early stopping, see [Stop Training Jobs Early](automatic-model-tuning-early-stopping.md)\. For an example that shows how to use spot training with Debugger, see [Enable Spot Training with Amazon SageMaker Debugger](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-debugger/mxnet_spot_training/mxnet-spot-training-with-sagemakerdebugger.ipynb)\. 
+Overtraining can be avoided by early stopping\. For information on early stopping, see [Stop Training Jobs Early](automatic-model-tuning-early-stopping.md)\. For an example that shows how to use spot training with Debugger, see [Enable Spot Training with Amazon SageMaker Debugger](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-debugger/mxnet_spot_training/mxnet-spot-training-with-sagemakerdebugger.html)\. 
 
 
 **Parameter Descriptions for the Overtraining Rule**  

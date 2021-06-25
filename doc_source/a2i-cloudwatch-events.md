@@ -1,6 +1,6 @@
 # Use Amazon CloudWatch Events in Amazon Augmented AI<a name="a2i-cloudwatch-events"></a>
 
-Amazon Augmented AI uses Amazon CloudWatch Events \(CloudWatch Events\) to alert you when a human review loop changes status\. When a review loop changes to the `Completed`, `Failed`, or `Stopped` status, Augmented AI sends an event to CloudWatch Events similar to the following:
+Amazon Augmented AI uses Amazon CloudWatch Events to alert you when a human review loop status changes to `Completed`, `Failed`, or `Stopped`\. This event delivery is guaranteed at least once, which means all events created when human loops finish are successfully delivered to CloudWatch Events \(Amazon EventBridge\)\. When a review loop changes to one of these states, Augmented AI sends an event to CloudWatch Events similar to the following\.
 
 ```
 {
@@ -62,7 +62,7 @@ To configure a CloudWatch Events rule to get status updates, or *events*, for yo
 + `\"source\":[\"aws.sagemaker\"]`
 + `\"detail-type\":[\"SageMaker A2I HumanLoop Status Change\"]`
 
-To configure a CloudWatch Events rule to watch for all status changes, use the following command and replace the placeholder text\. For example, replace `"A2IHumanLoopStatusChanges"` with a unique CloudWatch Events rule name and *`"arn:aws:iam::111122223333:role/MyRoleForThisRule"`* with the Amazon Resource Number \(ARN\) of an IAM role with an events\.amazonaws\.com trust policy attached\. Replace *region* with the AWS Region you want to create the rule in\. 
+To configure a CloudWatch Events rule to watch for all status changes, use the following command and replace the placeholder text\. For example, replace `"A2IHumanLoopStatusChanges"` with a unique CloudWatch Events rule name and *`"arn:aws:iam::111122223333:role/MyRoleForThisRule"`* with the Amazon Resource Number \(ARN\) of an IAM role with an events\.amazonaws\.com trust policy attached\. Replace *region* with the AWS Region in which you want to create the rule\. 
 
 ```
 aws events put-rule --name "A2IHumanLoopStatusChanges" 
@@ -71,11 +71,11 @@ aws events put-rule --name "A2IHumanLoopStatusChanges"
     --region "region"
 ```
 
- To learn more about the `put-rule` request, see [Event Patterns in CloudWatch Events](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html) in the *Amazon CloudWatch Events User Guide*\.
+To learn more about the `put-rule` request, see [Event Patterns in CloudWatch Events](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html) in the *Amazon CloudWatch Events User Guide*\.
 
 ## Set Up a Target to Process Events<a name="a2i-subscribe-cloud-watch-events"></a>
 
-To process events, you need to set up a target\. For example, if you want to receive an email when a human loop status changes, use a procedure in [Setting Up Amazon SNS Notifications](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/US_SetupSNS.html) in the *Amazon CloudWatch User Guide *to set up an Amazon SNS topic and subscribe your email to it\. Once you have create a topic, you can use it to create a target\. 
+To process events, you need to set up a target\. For example, if you want to receive an email when a human loop status changes, use a procedure in [Setting Up Amazon SNS Notifications](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/US_SetupSNS.html) in the *Amazon CloudWatch User Guide *to set up an Amazon SNS topic and subscribe your email to it\. Once you have created a topic, you can use it to create a target\. 
 
 **To add a target to your CloudWatch Events rule**
 
@@ -83,7 +83,7 @@ To process events, you need to set up a target\. For example, if you want to rec
 
 1. In the navigation pane, choose **Rules**\.
 
-1. Choose the rule that you want to add a target to\. 
+1. Choose the rule to which you want to add a target\. 
 
 1. Choose **Actions**, and then choose **Edit**\.
 

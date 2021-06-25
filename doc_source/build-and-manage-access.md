@@ -18,13 +18,13 @@ Your pipeline requires an IAM pipeline execution role that is passed to SageMake
 
   ```
   {
-          "Action": [
-              "s3:GetObject",
-              "s3:HeadObject"
-          ],
-          "Resource": "arn:aws:s3:::<your-bucket-arn>/*",
-          "Effect": "Allow"       
-     }
+      "Action": [
+          "s3:GetObject",
+          "s3:HeadObject"
+      ],
+      "Resource": "arn:aws:s3:::<your-bucket-arn>/*",
+      "Effect": "Allow"
+  }
   ```
 
 ## Pipeline Step Permissions<a name="build-and-manage-step-permissions"></a>
@@ -37,9 +37,9 @@ By default, each step takes on the pipeline execution role\. You can optionally 
 
 Service control policies \(SCPs\) are a type of organization policy that you can use to manage permissions in your organization\. SCPs offer central control over the maximum available permissions for all accounts in your organization\. By using SageMaker Pipelines within your organization, you can ensure that data scientists manage your pipeline executions without having to interact with the AWS console\. 
 
-If you’re using a VPC with your SCP that restricts access to Amazon S3, you need to take steps to allow your pipeline to access other Amazon S3 resources\. 
+If you're using a VPC with your SCP that restricts access to Amazon S3, you need to take steps to allow your pipeline to access other Amazon S3 resources\. 
 
- To allow SageMaker Pipelines to access Amazon S3 outside of your VPC with the `JsonGet` function, update your organization’s SCP to ensure that the role using SageMaker Pipelines can access Amazon S3\. To do this, create an exception for roles that are being used by the SageMaker Pipelines executor via the pipeline execution role using a principal tag and condition key\. 
+ To allow SageMaker Pipelines to access Amazon S3 outside of your VPC with the `JsonGet` function, update your organization's SCP to ensure that the role using SageMaker Pipelines can access Amazon S3\. To do this, create an exception for roles that are being used by the SageMaker Pipelines executor via the pipeline execution role using a principal tag and condition key\. 
 
 **To allow SageMaker Pipelines to access Amazon S3 outside of your VPC**
 

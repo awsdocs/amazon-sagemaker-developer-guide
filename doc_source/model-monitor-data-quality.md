@@ -9,6 +9,9 @@ Data quality monitoring automatically monitors machine learning \(ML\) models in
 + Interpret the results of a monitoring job\. For more information, see [Interpret Results](model-monitor-interpreting-results.md)\.
 + Use SageMaker Studio to enable data quality monitoring and visualize results\. For more information, see [Visualize Results in Amazon SageMaker Studio](model-monitor-interpreting-visualize-results.md)\.
 
+**Note**  
+Amazon SageMaker Model Monitor currently supports only tabular data\.
+
 **Topics**
 + [Create a Baseline](model-monitor-create-baseline.md)
 + [Schema for Statistics \(statistics\.json file\)](model-monitor-interpreting-statistics.md)

@@ -62,8 +62,6 @@ You can follow the instructions [Create a Labeling Job \(Console\)](sms-create-l
 + Optionally, you can provide label category and frame attributes\. Workers can assign one or more of these attributes to annotations to provide more information about that object\. For example, you might want to use the attribute *occluded* to have workers identify when an object is partially obstructed\.
 + Automated data labeling and annotation consolidation are not supported for 3D point cloud labeling tasks\.
 + 3D point cloud object detection labeling jobs can take multiple hours to complete\. You can specify a longer time limit for these labeling jobs when you select your work team \(up to 7 days, or 604800 seconds\)\. 
-**Important**  
-If you set your take time limit to be greater than 8 hours, you must set `MaxSessionDuration` for your IAM execution role to at least 8 hours\. To see how to update this value for your IAM role, see [Modifying a Role ](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html) in the IAM User Guide, choose your preferred method to modify the role, and then follow the steps in [Modifying a Role Maximum Session Duration](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-console.html#roles-modify_max-session-duration)\. 
 
 ### Create a Labeling Job \(API\)<a name="sms-point-cloud-object-detection-create-labeling-job-api"></a>
 
@@ -81,8 +79,6 @@ This section covers details you need to know when you create a labeling job usin
 + The number of workers specified in `NumberOfHumanWorkersPerDataObject` must be `1`\. 
 + Automated data labeling is not supported for 3D point cloud labeling jobs\. You should not specify values for parameters in `[LabelingJobAlgorithmsConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelingJobAlgorithmsConfig)`\.
 + 3D point cloud object detection labeling jobs can take multiple hours to complete\. You can specify a longer time limit for these labeling jobs in `TaskTimeLimitInSeconds` \(up to 7 days, or 604,800 seconds\)\. 
-**Important**  
-If you set your task time limit to be greater than 8 hours, you must set `MaxSessionDuration` for your IAM execution role to at least 8 hours\. To see how to update this value for your IAM role, see [Modifying a Role ](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_modify.html) in the IAM User Guide, choose your preferred method to modify the role, and then follow the steps in [Modifying a Role Maximum Session Duration](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-console.html#roles-modify_max-session-duration)\. 
 
 ## Create a 3D Point Cloud Object Detection Adjustment or Verification Labeling Job<a name="sms-point-cloud-object-detection-adjustment-verification"></a>
 

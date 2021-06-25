@@ -16,7 +16,7 @@ Once your user pool has been created, follow the steps below to create a private
 
 **To create a private workforce by importing a Amazon Cognito user pool**
 
-1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\. 
+1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\. 
 
 1. In the navigation pane, choose **Labeling workforces**\. 
 

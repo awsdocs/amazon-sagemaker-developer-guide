@@ -30,6 +30,7 @@ To create a CloudWatch Events rule, you will need an AWS Identity and Access Man
 + [Send Events to CloudWatch Events](#sms-cloud-watch-event-rule-setup)
 + [Set Up a Target to Process Events](#sms-cloud-watch-events-labelingjob-notifications)
 + [Labeling Job Expiration](#sms-labeling-job-expiration)
++ [Declining Tasks](#sms-decline-tasks)
 
 ## Send Events to CloudWatch Events<a name="sms-cloud-watch-event-rule-setup"></a>
 
@@ -117,3 +118,9 @@ To process events, you need to set up a target\. For example, if you want to rec
 ## Labeling Job Expiration<a name="sms-labeling-job-expiration"></a>
 
 If your labeling job is not completed after 30 days, it will expire\. If your labeling job expires, you can chain the job to create a new labeling job that will only send unlabeled data to workers\. For more information, and to learn how to create a labeling job using chaining, see [Chaining Labeling Jobs](sms-reusing-data.md)\.
+
+## Declining Tasks<a name="sms-decline-tasks"></a>
+
+Workers are able to decline tasks\. 
+
+Workers decline a task if the instructions are not clear, input data is not displaying correctly, or if they encounter some other issue with the task\. If the number of workers per dataset object \([https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-NumberOfHumanWorkersPerDataObject](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HumanTaskConfig.html#sagemaker-Type-HumanTaskConfig-NumberOfHumanWorkersPerDataObject)\) decline the task, the data object is marked as expired and will not be sent to additional workers\.

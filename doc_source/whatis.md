@@ -41,7 +41,7 @@ Learn about SageMaker features and capabilities through curated 1\-click solutio
 Improve your machine learning models by detecting potential bias and help explain the predictions that models make\.
 
 **[SageMaker Edge Manager](edge.md)**  
-Optimize custom models for edge devices, create and manage fleets, run models with an efficient runtime, and monitor each model on each device\.
+Optimize custom models for edge devices, create and manage fleets and run models with an efficient runtime\.
 
 **[SageMaker Ground Truth](sms.md)**  
 High\-quality training datasets by using workers along with machine learning to create labeled datasets\.

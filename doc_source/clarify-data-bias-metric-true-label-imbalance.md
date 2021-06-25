@@ -4,7 +4,7 @@ The difference in proportions of labels \(DPL\) compares the proportion of obser
 
 The formula for the difference in proportions of labels is as follows:
 
-        DPL = \(qa \- qd\)
+ DPL = \(qa \- qd\)
 
 Where:
 + qa = na\(1\)/na is the proportion of facet *a* who have an observed label value of 1\. For example, the proportion of a middle\-aged demographic who get approved for loans\. Here na\(1\) represents the number of members of facet *a* who get a positive outcome and na the is number of members of facet *a*\. 
@@ -12,7 +12,7 @@ Where:
 
 If DPL is close enough to 0, then we say that *demographic parity* has been achieved\.
 
-For binary and multicategory facet labels, the DPL values range over the interval \(\-1, 1\)\. For continuous labels, the values vary over the interval \(\-∞, \+∞\)\. 
+For binary and multicategory facet labels, the DPL values range over the interval \(\-1, 1\)\. For continuous labels, we set a threshold to collapse the labels to binary\. 
 + Positive DPL values indicate that facet *a* is has a higher proportion of positive outcomes when compared with facet *d*\.
 + Values of DPL near zero indicate a more equal proportion of positive outcomes between facets and a value of zero indicates perfect demographic parity\. 
 + Negative DPL values indicate that facet *d* has a higher proportion of positive outcomes when compared with facet *a*\.

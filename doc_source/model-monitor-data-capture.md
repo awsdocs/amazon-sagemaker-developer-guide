@@ -2,6 +2,9 @@
 
 To use Model Monitor, configure your real\-time inference endpoint to capture data from requests and responses and store the captured data in Amazon S3\. Model monitor compares metrics from this data with a baseline that you create for the model\. For information about creating a baseline, see [Create a Baseline](model-monitor-create-baseline.md)\.
 
+**Note**  
+To prevent impact to inference requests, Data Capture stops capturing requests at high levels of disk usage\. It is recommended you keep your disk utilization below 75% in order to ensure data capture continues capturing requests\.
+
 **To set up data capture**
 
 1. First, configure the Amazon S3 buckets Model Monitor uses to store the captured data\.

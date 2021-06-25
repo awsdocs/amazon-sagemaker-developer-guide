@@ -53,10 +53,10 @@ The `tags` parameter is optional\. You can search for the tag using Studio, the 
    create_date = strftime("%Y-%m-%d-%H-%M-%S")
    demo_experiment = Experiment.create(experiment_name = "DEMO-{}".format(create_date),
                                        description = "Demo experiment",
-                                       tags = [{'Key': 'my-experiments', 'Value': 'demo1'}])
+                                       tags = [{'Key': 'demo-experiments', 'Value': 'demo1'}])
    ```
 
-1. \(Studio\) To view the experiment in SageMaker Studio, in the left sidebar, choose the **SageMaker Experiment List** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Experiment_list_squid.png) \) to display the experiments browser\.
+1. \(Studio\) To view the experiment in SageMaker Studio, in the left sidebar, choose the **Components and registries** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png) \)\. In the drop\-down menu, select **Experiments and trials** to display the experiments browser\.
 
    After the code runs, the experiment list contains the new experiment\. It might take a moment for the list to refresh and display the experiment\. The filter on the experiment tag is also displayed\. Only experiments that have a matching tag are displayed\. Your list should look similar to the following:  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-setup-experiment-list.png)
@@ -66,7 +66,7 @@ The `tags` parameter is optional\. You can search for the tag using Studio, the 
    ```
    demo_trial = Trial.create(trial_name = "DEMO-{}".format(create_date),
                              experiment_name = demo_experiment.experiment_name,
-                             tags = [{'Key': 'my-experiments', 'Value': 'demo1'}])
+                             tags = [{'Key': 'demo-trials', 'Value': 'demo1'}])
    ```
 
 1. \(Studio\) In the experiment list, double\-click the experiment to display a list of the trials in the experiment \(this example has one trial\)\. Your list should look similar to the following:  
@@ -85,7 +85,7 @@ The `tags` parameter is optional\. You can search for the tag using Studio, the 
    sagemaker.estimator.Estimator(
        ...,
        sagemaker_session = sm_sess,
-       tags = [{'Key': 'my-experiments', 'Value': 'demo2'}])
+       tags = [{'Key': 'demo-jobs', 'Value': 'demo2'}])
    
    estimator.fit(
        ...,
@@ -106,7 +106,7 @@ The `tags` parameter is optional\. You can search for the tag using Studio, the 
            "TrialName" : demo_trial.trial_name,
            "TrialComponentDisplayName" : "TrainingJob",
        },
-       "Tags": [{'Key': 'my-experiments', 'Value': 'demo2'}])
+       "Tags": [{'Key': 'demo-jobs', 'Value': 'demo2'}])
    ```
 
 1. \(Studio\) In the trial list, double\-click the trial to display a list of the components in the trial \(this example has one trial\)\. Your list should look similar to the following:  

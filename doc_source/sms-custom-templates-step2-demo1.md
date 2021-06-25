@@ -2,7 +2,7 @@
 
 When you chose to use a custom template as your task type in the Amazon SageMaker Ground Truth console, you reach the **Custom labeling task panel**\. There you can choose from multiple base templates\. The templates represent some of the most common tasks and provide a sample to work from as you create your customized labeling task's template\. If you are not using the console, or as an additional recourse, see [Amazon SageMaker Ground Truth Sample Task UIs ](https://github.com/aws-samples/amazon-sagemaker-ground-truth-task-uis) for a repository of demo templates for a variety of labeling job task types\.
 
-This demonstration works with the **BoundingBox** template\. The demonstration also works with the AWS Lambda functions needed for processing your data before and after the task\. In the Github repository above, to find templates that work with AWS Lambdafunctions, look for `{{ task.input.<property name> }}` in the template\.
+This demonstration works with the **BoundingBox** template\. The demonstration also works with the AWS Lambda functions needed for processing your data before and after the task\. In the Github repository above, to find templates that work with AWS Lambda functions, look for `{{ task.input.<property name> }}` in the template\.
 
 **Topics**
 + [Starter Bounding Box custom template](#sms-custom-templates-step2-demo1-base-template)
@@ -200,7 +200,7 @@ For a bounding box task, the output you find in the output manifest will look a 
     {
        "workerId":"<URL>",
        "imageSource":"<image URL>",
-        "boxesInfo":"{\"boundingBox\":{\"boundingBoxes\":[{\"height\":878, \"label\":\"bird\", \"left\":208, \"top\":6, \"width\":809}], \"inputImageProperties\":{\"height\":924, \"width\":1280}}}"},
+       "boxesInfo":"{\"boundingBox\":{\"boundingBoxes\":[{\"height\":878, \"label\":\"bird\", \"left\":208, \"top\":6, \"width\":809}], \"inputImageProperties\":{\"height\":924, \"width\":1280}}}"},
   "<label attribute name>-metadata":
     {
       "type":"groundTruth/custom",
@@ -210,5 +210,4 @@ For a bounding box task, the output you find in the output manifest will look a 
   "animal" : "bird"
 }
 ```
-Note how the additional `animal` attribute from your original manifest is passed to the output manifest on the same level as the `source-ref` and labeling data\. Any properties from your input manifest, whether they were used in your template or not, will be passed to the output manifest\.  
-This should help you create your own custom template\.
+Note how the additional `animal` attribute from your original manifest is passed to the output manifest on the same level as the `source-ref` and labeling data\. Any properties from your input manifest, whether they were used in your template or not, will be passed to the output manifest\.

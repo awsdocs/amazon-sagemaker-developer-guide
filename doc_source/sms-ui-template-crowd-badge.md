@@ -2,6 +2,8 @@
 
 An icon that floats over the top right corner of another element to which it is attached\.
 
+See an interactive example of an HTML template that uses this Crowd HTML Element in [CodePen](https://codepen.io/sagemaker_crowd_html_elements/pen/WNRbPwZ)\.
+
 The following is an example of a template that uses the `<crowd-badge>` element\. Copy the following code and save it in a file with the extension `.html`\. Open the file in any browser to preview and interact with this template\. 
 
 ```
