@@ -4,7 +4,7 @@ The demographic disparity metric \(DD\) determines whether facet d has a larger 
 
 The formula for the demographic disparity for the less favored facet *d* is as follows: 
 
-        DDd = nd\(0\)/n\(0\) \- nd\(1\)/n\(1\) = PdR\(y0\) \- PdA\(y1\) 
+ DDd = nd\(0\)/n\(0\) \- nd\(1\)/n\(1\) = PdR\(y0\) \- PdA\(y1\) 
 
 Where: 
 + n\(0\) = na\(0\) \+ nd\(0\) is the number of rejected outcomes in the dataset\.
@@ -18,7 +18,7 @@ A conditional demographic disparity \(CDD\) metric that conditions DD on attribu
 
 The CDD metric gives a single measure for all of the disparities found in the subgroups defined by an attribute of a dataset by averaging them\. It is defined as the weighted average of demographic disparities \(DDi\) for each of the subgroups, with each subgroup disparity weighted in proportion to the number of observations in contains\. The formula for the conditional demographic disparity is as follows:
 
-        CDD = \(1/n\)\*∑ini \*DDi 
+ CDD = \(1/n\)\*∑ini \*DDi 
 
 Where: 
 + ∑ini = n is the total number of observations and niis the number of observations for each subgroup\.

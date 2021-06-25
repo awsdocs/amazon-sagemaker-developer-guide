@@ -16,7 +16,7 @@ The steps for creating Amazon SNS topics for work team notifications are similar
 
 **To add the policy when you create the topic**
 
-1. Open the Amazon SNS console at [https://console.aws.amazon.com/sns/](https://console.aws.amazon.com/sns/)\.
+1. Open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/v3/home](https://console.aws.amazon.com/sns/v3/home)\.
 
 1. In **Create topic**, enter the name of your topic and then choose **Next steps**\.
 

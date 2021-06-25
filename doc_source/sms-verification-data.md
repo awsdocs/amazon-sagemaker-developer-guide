@@ -51,7 +51,7 @@ Use the following procedure to create a bounding box or semantic segmentation ve
 
 **To create an image label verification job:**
 
-1. Open the SageMaker console: [console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) and choose **Labeling jobs**\.
+1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) and choose **Labeling jobs**\.
 
 1. Start a new labeling job by [chaining](sms-reusing-data.md) a prior job or start from scratch, specifying an input manifest that contains labeled data objects\.
 
@@ -79,7 +79,7 @@ Use the following procedure to create a 3D point cloud or video frame verificati
 
 **To create an image label verification job:**
 
-1. Open the SageMaker console: [console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) and choose **Labeling jobs**\.
+1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) and choose **Labeling jobs**\.
 
 1. Start a new labeling job by [chaining](sms-reusing-data.md) a prior job or start from scratch, specifying an input manifest that contains labeled data objects\.
 
@@ -123,7 +123,7 @@ Use the following procedure to create a bounding box or semantic segmentation ad
 
 **To create an image label adjustment job \(console\)**
 
-1. Open the SageMaker console:[console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) and choose **Labeling jobs**\.
+1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) and choose **Labeling jobs**\.
 
 1. Start a new labeling job by [chaining](sms-reusing-data.md) a prior job or start from scratch, specifying an input manifest that contains labeled data objects\.
 

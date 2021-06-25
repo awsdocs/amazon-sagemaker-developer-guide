@@ -1,6 +1,6 @@
 # View Experiment Entities Created by SageMaker Pipelines<a name="pipelines-studio-experiments"></a>
 
-When you create a pipeline and specify [pipeline\_experiment\_config](https://sagemaker.readthedocs.io/en/latest/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.pipeline.Pipeline.pipeline_experiment_config), SageMaker Pipelines creates the following SageMaker Experiments entities by default if they don't exist:
+When you create a pipeline and specify [pipeline\_experiment\_config](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.pipeline.Pipeline.pipeline_experiment_config), SageMaker Pipelines creates the following SageMaker Experiments entities by default if they don't exist:
 + An experiment for the pipeline
 + A trial for every execution of the pipeline
 + A trial component for each SageMaker job created in a pipeline step
@@ -39,8 +39,7 @@ Experiments integration was introduced in v2\.41\.0 of the [Amazon SageMaker Pyt
    To further narrow the search, you can add additional filters\. For more information, see [Search Experiments Using Amazon SageMaker Studio](experiments-search-studio.md)\.
 
 1. Open \(right\-click\) an experiment name and choose **Open in trial component list**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/yosemite/pipelines-experiments-list.png)  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/yosemite/pipelines-executions-list.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/yosemite/pipelines-experiments-list.png)
 
 **List of trial components**
 

@@ -24,13 +24,13 @@ The following procedure assumes you have completed the [Prerequisites](#data-wra
 
 1. Next to the user you want to use to launch Studio, select **Open Studio**\.
 
-1. When Studio opens, select the **\+** sign on the **New data flow** card under **ML tasks and components**\. This creates a new folder in Studio with a \.flow file inside, which contains your data flow\. The \.flow file automatically opens in Studio\.  
+1. When Studio opens, select the **\+** sign on the **New data flow** card under **ML tasks and components**\. This creates a new directory in Studio with a \.flow file inside, which contains your data flow\. The \.flow file automatically opens in Studio\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/open-flow.png)
 
    You can also create a new flow by selecting **File**, then **New**, and choosing **Flow** in the top navigation bar\.   
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/new-flow-file-menu.png)
 
-1. \(Optional\) Rename the new folder and the \.flow file\. 
+1. \(Optional\) Rename the new directory and the \.flow file\. 
 
 1. When you create a new \.flow file in Studio, you may see a message at the top of the Data Wrangler interface that says:
 
@@ -242,7 +242,7 @@ When you've finished creating a data flow, you have a number of export options\.
 
 #### Export to Data Wrangler Job Notebook<a name="data-wrangler-getting-started-export-notebook"></a>
 
-When you export your data flow using a **Data Wrangler job**, a Jupyter Notebook is automatically created\. This notebook automatically opens in your Studio instance and is configured to run a SageMaker processing job to execute your Data Wrangler data flow, which is referred to as a Data Wrangler job\. 
+When you export your data flow using a **Data Wrangler job**, a Jupyter Notebook is automatically created\. This notebook automatically opens in your Studio instance and is configured to run a SageMaker processing job to run your Data Wrangler data flow, which is referred to as a Data Wrangler job\. 
 
 1. Save your data flow\. Select **File** and then select **Save Data Wrangler Flow**\.
 

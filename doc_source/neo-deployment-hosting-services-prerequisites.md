@@ -306,7 +306,7 @@ The preceding two functions do not use any of the functionalities of MXNet, PyTo
 **Note**  
 Note that if handler function is implemented, `input_handler` and `output_handler` are ignored\. 
 
-      The following is a code example of `inference.py` script that you can put together with the compile model to perform custom pre\- and post\-processing on an image classification model\. The SageMaker client sends the image file as an `application/x-image` content type to the `input_handler` function, where it is converted to JSON\. The converted image file is then sent to the [Tensorflow Model Server \(TFX\)](https://www.tensorflow.org/tfx/serving/api_rest) using then REST API\. 
+      The following is a code example of `inference.py` script that you can put together with the compile model to perform custom pre\- and post\-processing on an image classification model\. The SageMaker client sends the image file as an `application/x-image` content type to the `input_handler` function, where it is converted to JSON\. The converted image file is then sent to the [Tensorflow Model Server \(TFX\)](https://www.tensorflow.org/tfx/serving/api_rest) using the REST API\. 
 
       ```
       import json
@@ -334,7 +334,7 @@ Note that if handler function is implemented, `input_handler` and `output_handle
           body = json.dumps({"signature_name": "serving_default", "instances": image.tolist()})
           return body
       
-          def output_handler(data, context):
+      def output_handler(data, context):
           """Post-process TensorFlow Serving output before it is returned to the client.
           
           Args:

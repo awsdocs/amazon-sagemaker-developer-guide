@@ -35,3 +35,27 @@ The library addresses these problems by introducing *balanced fusion buffers*\. 
 SageMaker's distributed data parallel library achieves optimal overlapping of the `AllReduce` operation with the backward pass, significantly improving the GPU utilization, and achieves near\-linear scaling efficiency and faster time to train by optimizing tasks between CPUs and GPUs\. The library performs `AllReduce` in parallel while GPU is computing gradients without taking away additional GPU cycles, which makes the library faster\.
 +  *Leverages CPUs*: The library uses CPUs to AllReduce gradients, offloading this task from the GPUs\. 
 + * Improved GPU usage*: The cluster’s GPUs focus on computing gradients, improving their utilization throughout training\.
+
+## SageMaker Distributed Data Parallel Architecture<a name="data-parallel-architecture"></a>
+
+The library supports larger compute instances that have 8 GPUs per node: `ml.p3.16xlarge`, `ml.p3dn.24xlarge`, and `ml.p4d.24xlarge`\. The high\-level workflow of the SageMaker distributed data parallel library is as following:
+
+1. The library assigns ranks to GPUs \(workers\)\.
+
+1. At each iteration, the library divides each global batch by the total number of workers \(world size\) and assigns small batches \(batch shards\) to the workers\.
+   + The size of the global batch is `(number of nodes in a cluster) * (number of GPUs per node) * (per batch shard)`\. 
+   + A batch shard \(small batch\) is a subset of dataset assigned to each GPU \(worker\) per iteration\. 
+
+1. The library launches a training script on each worker\.
+
+1. The library manages copies of model weights and gradients from the workers at the end of every iteration\.
+
+1. The library synchronizes model weights and gradients across the workers to aggregate a single trained model\.
+
+The following architecture diagram shows an example of how the library sets up data parallelism for a cluster of 3 nodes\. 
+
+ 
+
+![\[SageMaker distributed data parallel architecture diagram\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/distributed/data-parallel/sdp-architecture.png)
+
+To start using the SageMaker distributed data parallel library, see [Use the SageMaker Distributed Data Parallel API](data-parallel-use-api.md) to set up a SageMaker estimator through [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), and [Modify Your Training Script using the SageMaker Data Parallel Library](data-parallel-modify-sdp.md) to adapt your training script using the SageMaker distributed data parallel library\.

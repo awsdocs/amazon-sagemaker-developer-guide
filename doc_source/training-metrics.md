@@ -132,7 +132,7 @@ You can monitor the metrics that a training job emits in real time in the CloudW
 
 **To monitor training job metrics \(CloudWatch console\)**
 
-1. Open the CloudWatch console at [https://console\.aws\.amazon\.com/cloudwatch/](https://console.aws.amazon.com/cloudwatch/)\.
+1. Open the CloudWatch console at [https://console\.aws\.amazon\.com/cloudwatch](https://console.aws.amazon.com/cloudwatch)\.
 
 1. Choose **Metrics**, then choose **/aws/sagemaker/TrainingJobs**\.
 
@@ -148,7 +148,7 @@ You can monitor the metrics that a training job emits in real time by using the 
 
 **To monitor training job metrics \(SageMaker console\)**
 
-1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
+1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker](https://console.aws.amazon.com/sagemaker)\.
 
 1. Choose **Training jobs**, then choose the training job whose metrics you want to see\.
 
@@ -167,7 +167,7 @@ For this example, you can use the **Image\-classification\-full\-training** exam
 
 **To view training and validation error curves**
 
-1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
+1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker](https://console.aws.amazon.com/sagemaker)\.
 
 1. Choose **Notebooks**, and then choose **Notebook instances**\.
 
@@ -181,7 +181,7 @@ For this example, you can use the **Image\-classification\-full\-training** exam
 
 1. Run all of the cells in the notebook up to the **Inference** section\. You don't need to deploy an endpoint or get inference for this example\.
 
-1. After the training job starts, open the CloudWatch console at [https://console\.aws\.amazon\.com/cloudwatch/](https://console.aws.amazon.com/cloudwatch/)\.
+1. After the training job starts, open the CloudWatch console at [https://console\.aws\.amazon\.com/cloudwatch](https://console.aws.amazon.com/cloudwatch)\.
 
 1. Choose **Metrics**, then choose **/aws/sagemaker/TrainingJobs**\.
 

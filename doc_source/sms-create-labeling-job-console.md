@@ -29,7 +29,7 @@ When you create a labeling job using the SageMaker console, you add worker instr
 
 **To create a labeling job \(console\)**
 
-1. Sign in to the SageMaker console at [https://console.aws.amazon.com/sagemaker/groundtruth](https://console.aws.amazon.com/sagemaker/groundtruth)\. 
+1. Sign in to the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\. 
 
 1. In the left navigation pane, choose **Labeling jobs**\. 
 

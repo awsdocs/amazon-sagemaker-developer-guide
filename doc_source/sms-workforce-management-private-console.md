@@ -14,7 +14,7 @@ You can create a new Amazon Cognito user group or import an existing user group 
 
 **To create a work team using the SageMaker console**
 
-1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) 
+1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\. 
 
 1. Choose **Labeling workforces** from the left menu\.
 

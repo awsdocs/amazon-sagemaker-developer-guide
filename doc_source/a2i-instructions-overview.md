@@ -2,7 +2,7 @@
 
 You can create a task user interface for your workers by creating a *worker task template*\. A worker task template is an HTML file that is used to display your input data and instructions to help workers complete your task\.
 
-For Amazon Rekognition or Amazon Textract task types, you can customize a pre\-made worker task template using a graphical user interface \(GUI\) and avoid interacting with HTML code\. For this option, use the instructions in [Create a Human Review Workflow \(Console\)](a2i-create-flow-definition.md#a2i-create-human-review-console) to create a human review workflow and customize your worker task template in the Amazon SageMaker console\. Once you create a template using these instructions, it appears on the worker task templates page of the [Augmented AI console](https://console.aws.amazon.com/a2i/)\.
+For Amazon Rekognition or Amazon Textract task types, you can customize a pre\-made worker task template using a graphical user interface \(GUI\) and avoid interacting with HTML code\. For this option, use the instructions in [Create a Human Review Workflow \(Console\)](a2i-create-flow-definition.md#a2i-create-human-review-console) to create a human review workflow and customize your worker task template in the Amazon SageMaker console\. Once you create a template using these instructions, it appears on the worker task templates page of the [Augmented AI console](https://console.aws.amazon.com/a2i)\.
 
 If you are creating a human review workflow for a custom task type, you must create a *custom worker task template* using HTML code\. For more information, see [Create Custom Worker Task Templates](a2i-custom-templates.md)\. 
 

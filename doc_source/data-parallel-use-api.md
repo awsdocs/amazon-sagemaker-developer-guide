@@ -64,11 +64,18 @@ The following two parameters of the SageMaker Python SDK TensorFlow estimator ar
 + **`custom_mpi_options (str)(optional)`**: Custom MPI options\. The following is an example of how you can use this parameter when defining `distribution`\. To learn more, see [Custom MPI Options](data-parallel-config.md#data-parallel-config-mpi-custom)\.
 
   ```
-  distribution = {'smdistributed':{'dataparallel':{'enabled': True, "custom_mpi_options": "-verbose -x NCCL_DEBUG=VERSION"}}}
+  distribution = { 
+      "smdistributed": { 
+          "dataparallel": {
+              "enabled": True, 
+              "custom_mpi_options": "-verbose -x NCCL_DEBUG=VERSION"
+          }
+      }
+  }
   ```
 
  **`train_instance_type (str)(required)`**: A type of Amazon EC2 instance to use\. 
-+ If the `smdistributed.dataparallel` distribution strategy is used, the allowed instance types are: `ml.p4d.24xlarge`, `ml.p3dn.24xlarge`, and `ml.p3.16xlarge`\. For best performance, it is recommended that you use an EFA supported instance, `ml.p3dn.24xlarge` or `ml.p4d.24xlarge`, with the latest supported version of PyTorch\.
++ If the `smdistributed.dataparallel` distribution strategy is used, the allowed instance types are: `ml.p4d.24xlarge`, `ml.p3dn.24xlarge`, and `ml.p3.16xlarge`\. For best performance, it is recommended that you use an EFA supported instance, `ml.p3dn.24xlarge` or `ml.p4d.24xlarge`, with the latest supported version of TensorFlow\.
 
  **Example** 
 
@@ -76,30 +83,26 @@ The following two parameters of the SageMaker Python SDK TensorFlow estimator ar
 from sagemaker.tensorflow import TensorFlow
 
 tf_estimator = TensorFlow(
-                          base_job_name = "training_job_name_prefix",
-                          entry_point="tf-train.py",
-                          role="SageMakerRole",
-                          framework_version="2.4.1",
-                          # You must set py_version to py36
-                          py_version="py37",
-                          # For training with multi node distributed training, set this count.
-                          # Example: 2,3,4,..8
-                          instance_count=2,
-                          # For training with p3dn instance use - ml.p3dn.24xlarge
-                          instance_type="ml.p3.16xlarge",
-                          # Training using smdistributed.dataparallel Distributed Training Framework
-                          distribution={"smdistributed": {
-                                            "dataparallel": {
-                                                "enabled": True
-                                             }
-                                         }
-                                       }
-                         )
+    base_job_name = "training_job_name_prefix",
+    entry_point="tf-train.py",
+    role="SageMakerRole",
+    framework_version="2.4.1",
+    # You must set py_version to py36
+    py_version="py37",
+    # For training with multi node distributed training, set this count.
+    # Example: 2,3,4,..8
+    instance_count=2,
+    # For training with p3dn instance use - ml.p3dn.24xlarge
+    instance_type="ml.p3.16xlarge",
+    # Training using smdistributed.dataparallel Distributed Training Framework
+    distribution={"smdistributed": {"dataparallel": {"enabled": True}}}
+)
+
 tf_estimator.fit("s3://bucket/path/to/training/data")
 ```
 
 **Note**  
-If you are using the SageMaker Python SDK 1\.x, you need to use `hyperparameters` to specify to use `smdistributed dataparallel` as the distributed training strategy\. 
+If you are using the SageMaker Python SDK 1\.x, you need to use `hyperparameters` to specify to use `smdistributed dataparallel` as the distributed training strategy\.   
 
 ```
 from sagemaker.tensorflow import TensorFlow
@@ -124,12 +127,19 @@ The following two parameters of the SageMaker PyTorch `Estimator` are necessary 
 + To use`smdistributed.dataparallel` as a distribution strategy, use the following option: 
 
   ```
-  distribution={"smdistributed": { "dataparallel": { "enabled": True } } } 
+  distribution={ "smdistributed": { "dataparallel": { "enabled": True } } } 
   ```
 + **`custom_mpi_options (str)(optional)`**: Custom MPI options\. The following is an example of how you can use this parameter when defining `distribution`\. To learn more, see [Custom MPI Options](data-parallel-config.md#data-parallel-config-mpi-custom)\.
 
   ```
-  distribution = {'smdistributed':{'dataparallel':{'enabled': True, "custom_mpi_options": "-verbose -x NCCL_DEBUG=VERSION"}}}
+  distribution = { 
+      "smdistributed": { 
+          "dataparallel": {
+              "enabled": True, 
+              "custom_mpi_options": "-verbose -x NCCL_DEBUG=VERSION"
+          }
+      }
+  }
   ```
 
  **`train_instance_type (str)(required)`**: A type of Amazon EC2 instance to use\. 
@@ -140,30 +150,26 @@ The following two parameters of the SageMaker PyTorch `Estimator` are necessary 
 ```
 from sagemaker.pytorch import PyTorch
 pt_estimator = PyTorch(
-                       base_job_name="training_job_name_prefix",
-                       entry_point="pt-train.py",
-                       role="SageMakerRole",
-                       # You must set py_version to py36
-                       py_version="py36",
-                       framework_version="1.8.1",
-                       # For training with multi node distributed training, set this count.
-                       # Example: 2,3,4,..8
-                       instance_count=2,
-                       # For training with p3dn instance use - ml.p3dn.24xlarge
-                       instance_type="ml.p3.16xlarge",
-                       # Training using smdistributed.dataparallel Distributed Training Framework
-                       distribution={"smdistributed": {
-                                            "dataparallel": {
-                                                "enabled": True
-                                            }
-                                       }
-                                    }
-                      )
+    base_job_name="training_job_name_prefix",
+    entry_point="pt-train.py",
+    role="SageMakerRole",
+    # You must set py_version to py36
+    py_version="py36",
+    framework_version="1.8.1",
+    # For training with multi node distributed training, set this count.
+    # Example: 2,3,4,..8
+    instance_count=2,
+    # For training with p3dn instance use - ml.p3dn.24xlarge
+    instance_type="ml.p3.16xlarge",
+    # Training using smdistributed.dataparallel Distributed Training Framework
+    distribution={"smdistributed": {"dataparallel": {"enabled": True}}}
+)
+
 pt_estimator.fit("s3://bucket/path/to/training/data")                       
 ```
 
 **Note**  
-If you are using SageMaker Python SDK 1\.x, you need to use `hyperparameters` to specify `smdistributed.dataparallel` as the distributed training strategy\. 
+If you are using SageMaker Python SDK 1\.x, you need to use `hyperparameters` to specify `smdistributed.dataparallel` as the distributed training strategy\.   
 
 ```
 from sagemaker.pytorch import PyTorch

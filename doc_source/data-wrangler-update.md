@@ -4,7 +4,7 @@ To update Data Wrangler to the latest release, you must first shut down the corr
 
 **Update your Studio and Data Wrangler instance**
 
-1. Navigate to your [Console](console.aws.amazon.com/)\.
+1. Navigate to your [SageMaker Console](https://console.aws.amazon.com/sagemaker)\.
 
 1. Choose SageMaker and then SageMaker Studio\.
 

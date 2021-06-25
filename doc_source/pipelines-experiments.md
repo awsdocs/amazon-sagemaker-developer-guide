@@ -7,20 +7,24 @@ Amazon SageMaker Model Building Pipelines is closely integrated with Amazon Sage
 
 You can compare metrics such as model training accuracy across multiple pipeline executions just as you can compare such metrics across multiple trials of a SageMaker model training experiment\.
 
-The following sample shows the relevant parameters of the [Pipeline](https://sagemaker.readthedocs.io/en/v2.41.0/workflows/pipelines/sagemaker.workflow.pipelines.html#pipeline) class in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.
-
-**Note**  
-Experiments integration was introduced in the Amazon SageMaker Python SDK v2\.41\.0\.
+The following sample shows the relevant parameters of the [Pipeline](https://github.com/aws/sagemaker-python-sdk/blob/v2.41.0/src/sagemaker/workflow/pipeline.py) class in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.
 
 ```
-pipeline = Pipeline(
+Pipeline(
     name="MyPipeline",
-    parameters=[ParameterString("InputDataSource"), ParameterInteger("InstanceCount")],
-    steps=[step_train]
+    parameters=[...],
+    pipeline_experiment_config=PipelineExperimentConfig(
+      ExecutionVariables.PIPELINE_NAME,
+      ExecutionVariables.PIPELINE_EXECUTION_ID
+    ),
+    steps=[...]
 )
 ```
 
 If you don't want an experiment and trial created for the pipeline, set `pipeline_experiment_config` to `None`\.
+
+**Note**  
+Experiments integration was introduced in the Amazon SageMaker Python SDK v2\.41\.0\.
 
 The following naming rules apply based on what you specify for the `ExperimentName` and `TrialName` parameters of `pipeline_experiment_config`:
 + If you don't specify `ExperimentName`, the pipeline `name` is used for the experiment name\.

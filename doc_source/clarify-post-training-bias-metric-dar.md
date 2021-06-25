@@ -4,7 +4,7 @@ The difference in acceptance rates \(DAR\) metric is the difference in the ratio
 
 The formula for difference in acceptance rates between facets *a* and *d*:
 
-        DAR = TPa/\(TPa \+ FPa\) \- TPd/\(TPd \+ FPd\) 
+ DAR = TPa/\(TPa \+ FPa\) \- TPd/\(TPd \+ FPd\) 
 
 Where:
 + TPa are the true positives predicted for facet *a*\.

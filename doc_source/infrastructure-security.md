@@ -16,6 +16,7 @@ Additionally, requests must be signed by using an access key ID and a secret acc
 + [Give SageMaker Training Jobs Access to Resources in Your Amazon VPC](train-vpc.md)
 + [Give SageMaker Hosted Endpoints Access to Resources in Your Amazon VPC](host-vpc.md)
 + [Give Batch Transform Jobs Access to Resources in Your Amazon VPC](batch-vpc.md)
++ [Give Amazon SageMaker Clarify Jobs Access to Resources in Your Amazon VPC](clarify-vpc.md)
 
 ## SageMaker Scans AWS Marketplace Training and Inference Containers for Security Vulnerabilities<a name="mkt-container-scan"></a>
 

@@ -13,10 +13,10 @@ To register a model version by using Boto3, call the `create_model_package` meth
 First, you set up the parameter dictionary to pass to the `create_model_package` method\.
 
 ```
-modelpackage_inference_specification =  { 
-    "InferenceSpecification": {    
-      "Containers": [ 
-         {  
+modelpackage_inference_specification =  {
+    "InferenceSpecification": {
+      "Containers": [
+         {
             "Image": '257758044811.dkr.ecr.us-east-2.amazonaws.com/sagemaker-xgboost:1.2-1',
          }
       ],

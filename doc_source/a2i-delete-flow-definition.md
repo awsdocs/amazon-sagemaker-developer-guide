@@ -24,7 +24,7 @@ Flow definitions can only be deleted if their status is `Active`\.
 
 **Delete a human review workflow \(console\)**
 
-1. Navigate to the Augmented AI console at [https://console\.aws\.amazon\.com/a2i/](https://console.aws.amazon.com/a2i/)\.
+1. Navigate to the Augmented AI console at [https://console\.aws\.amazon\.com/a2i/](https://console.aws.amazon.com/a2i)\.
 
 1. In the navigation pane, under the **Augmented AI** section, choose **Human review workflows**\.
 
