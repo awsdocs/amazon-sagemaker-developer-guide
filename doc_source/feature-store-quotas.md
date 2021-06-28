@@ -5,9 +5,10 @@
 Soft limits can be increased based on your needs\.
 +  **Maximum number of feature groups per AWS account:** Soft limit of 100\.
 +  **Maximum number of feature definitions per feature group:** 2500\.
-+  **Maximum Transactions per second \(TPS\) per API per AWS account:** Soft limit of 1000 TPS per API\.
++  **Maximum Transactions per second \(TPS\) per API per AWS account:** Soft limit of 10000 TPS per API\.
 +  **Maximum size of a record:** 350KB\.
 +  **Maximum size of a feature value:** 350KB\.
++ **Maximum number of concurrent feature group creation workflows:** 4\.
 
 ## Naming Rules<a name="feature-store-naming-rules"></a>
 +  **Reserved Words:** The following are reserved words and cannot be used as feature names in feature definitions: `is_deleted`, `write_time`, and `api_invocation_time`\. 

@@ -2,7 +2,7 @@
 
 This topic provides guidance on best practices for deploying machine learning models in Amazon SageMaker\.
 
-## Deploy Multiple Instances Across Availibility Zones<a name="deployment-best-practices"></a>
+## Deploy Multiple Instances Across Availability Zones<a name="deployment-best-practices"></a>
 
 **Create robust endpoints when hosting your model\.** SageMaker endpoints can help protect your application from [Availability Zone](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) outages and instance failures\. If an outage occurs or an instance fails, SageMaker automatically attempts to distribute your instances across Availability Zones\. For this reason, we strongly recommended that you deploy multiple instances for each production endpoint\. 
 

@@ -8,7 +8,7 @@ The formula for the ratio of proportions of the predicted labels:
 
 
 
-        DI = q'd/q'a
+ DI = q'd/q'a
 
 Where:
 + q'a = n'a\(1\)/na is the predicted proportion of facet *a* who get a positive outcome of value 1\. In our example, the proportion of a middle\-aged facet predicted to get granted a loan\. Here n'a\(1\) represents the number of members of facet *a* who get a positive predicted outcome and na the is number of members of facet *a*\. 

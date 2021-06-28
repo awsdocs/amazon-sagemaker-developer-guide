@@ -150,6 +150,13 @@ The library APIs are designed to be similar to PyTorch Distributed Data Paralle
    dist.init_process_group()
    ```
 
+1. After parsing arguments and defining a batch size parameter \(for example, `batch_size=args.batch_size`\), add a 2\-line of code to resize the batch size per worker \(GPU\)\. PyTorch's DataLoader operation does not automatically handle the batch resizing for distributed training\.
+
+   ```
+   batch_size //= dist.get_world_size()
+   batch_size = max(batch_size, 1)
+   ```
+
 1. Pin each GPU to a single SageMaker data parallel library process with `local_rank`—this refers to the relative rank of the process within a given node\.
 
    The `smdistributed.dataparallel.torch.get_local_rank()` API provides you the local rank of the device\. The leader node is rank 0, and the worker nodes are rank 1, 2, 3, and so on\. This is invoked in the next code block as `dist.get_local_rank()`\. 
@@ -166,7 +173,7 @@ The library APIs are designed to be similar to PyTorch Distributed Data Paralle
    model = DDP(model)
    ```
 
-1. Modify the`torch.utils.data.distributed.DistributedSampler` to include the cluster’s information\. Set`num_replicas` to the total number of GPUs participating in training across all the nodes in the cluster\. This is called `world_size`\. You can get `world_size` with the `smdistributed.dataparallel.torch.get_world_size()` API\. This is invoked in the following code as `dist.get_world_size()`\. Also supply the node rank using `smdistributed.dataparallel.torch.get_rank()`\. This is invoked as `dist.get_rank()`\. 
+1. Modify the`torch.utils.data.distributed.DistributedSampler` to include the cluster’s information\. Set `num_replicas` to the total number of GPUs participating in training across all the nodes in the cluster\. This is called `world_size`\. You can get `world_size` with the `smdistributed.dataparallel.torch.get_world_size()` API\. This is invoked in the following code as `dist.get_world_size()`\. Also supply the node rank using `smdistributed.dataparallel.torch.get_rank()`\. This is invoked as `dist.get_rank()`\. 
 
    ```
    train_sampler = DistributedSampler(train_dataset, num_replicas=dist.get_world_size(), rank=dist.get_rank())
@@ -201,7 +208,7 @@ def test(...):
 def main():
     
     # SageMaker data parallel: Scale batch size by world size
-    batch_size //= dist.get_world_size() // 8
+    batch_size //= dist.get_world_size()
     batch_size = max(batch_size, 1)
 
     # Prepare dataset

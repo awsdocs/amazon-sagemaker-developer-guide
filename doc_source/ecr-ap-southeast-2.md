@@ -6,6 +6,7 @@ The following topics list parameters for each of the algorithms and deep learnin
 + [BlazingText \(algorithm\)](#blazingtext-ap-southeast-2.title)
 + [Chainer \(DLC\)](#chainer-ap-southeast-2.title)
 + [Clarify \(algorithm\)](#clarify-ap-southeast-2.title)
++ [Data Wrangler \(algorithm\)](#data-wrangler-ap-southeast-2.title)
 + [Debugger \(algorithm\)](#debugger-ap-southeast-2.title)
 + [DeepAR Forecasting \(algorithm\)](#forecasting-deepar-ap-southeast-2.title)
 + [Factorization Machines \(algorithm\)](#factorization-machines-ap-southeast-2.title)
@@ -89,6 +90,20 @@ image_uris.retrieve(framework='clarify',region='ap-southeast-2',version='1.0',im
 | --- | --- | --- | 
 | 007051062584\.dkr\.ecr\.ap\-southeast\-2\.amazonaws\.com/sagemaker\-clarify\-processing:<tag> | 1\.0 | processing | 
 
+## Data Wrangler \(algorithm\)<a name="data-wrangler-ap-southeast-2.title"></a>
+
+SageMaker Python SDK example to retrieve registry path\.
+
+```
+from sagemaker import image_uris
+image_uris.retrieve(framework='data-wrangler',region='ap-southeast-2')
+```
+
+
+| Registry path | Version | Job types \(image scope\) | 
+| --- | --- | --- | 
+| 422173101802\.dkr\.ecr\.ap\-southeast\-2\.amazonaws\.com/sagemaker\-data\-wrangler\-container:<tag> | 1\.x | processing | 
+
 ## Debugger \(algorithm\)<a name="debugger-ap-southeast-2.title"></a>
 
 SageMaker Python SDK example to retrieve registry path\.
@@ -144,7 +159,9 @@ image_uris.retrieve(framework='huggingface',region='ap-southeast-2',version='4.4
 | Registry path | Version | Job types \(image scope\) | 
 | --- | --- | --- | 
 | 763104351884\.dkr\.ecr\.ap\-southeast\-2\.amazonaws\.com/huggingface\-pytorch\-training:<tag> | 4\.4\.2 | training | 
+| 763104351884\.dkr\.ecr\.ap\-southeast\-2\.amazonaws\.com/huggingface\-pytorch\-training:<tag> | 4\.5\.0 | training | 
 | 763104351884\.dkr\.ecr\.ap\-southeast\-2\.amazonaws\.com/huggingface\-tensorflow\-training:<tag> | 4\.4\.2 | training | 
+| 763104351884\.dkr\.ecr\.ap\-southeast\-2\.amazonaws\.com/huggingface\-tensorflow\-training:<tag> | 4\.5\.0 | training | 
 
 ## IP Insights \(algorithm\)<a name="ipinsights-ap-southeast-2.title"></a>
 
@@ -761,3 +778,5 @@ image_uris.retrieve(framework='xgboost',region='ap-southeast-2',version='1.2-1')
 | 783357654285\.dkr\.ecr\.ap\-southeast\-2\.amazonaws\.com/sagemaker\-xgboost:<tag> | 0\.90\-2 | inference, training | 
 | 783357654285\.dkr\.ecr\.ap\-southeast\-2\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.0\-1 | inference, training | 
 | 783357654285\.dkr\.ecr\.ap\-southeast\-2\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.2\-1 | inference, training | 
+| 783357654285\.dkr\.ecr\.ap\-southeast\-2\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.2\-2 | inference, training | 
+| 783357654285\.dkr\.ecr\.ap\-southeast\-2\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.3\-1 | inference, training | 

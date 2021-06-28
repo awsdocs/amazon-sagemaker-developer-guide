@@ -27,7 +27,7 @@ You have the following options for downloading the Spark library provided by Sag
 **Note**  
 The EMR cluster must be configured with an IAM role that has the `AmazonSageMakerFullAccess` policy attached\. For information about configuring roles for an EMR cluster, see [Configure IAM Roles for Amazon EMR Permissions to AWS Services](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-iam-roles.html) in the *Amazon EMR Management Guide*\.
 
-     
+     
 + You can get the Scala library from Maven\. Add the Spark library to your project by adding the following dependency to your `pom.xml` file:
 
   ```

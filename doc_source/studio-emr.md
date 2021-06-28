@@ -8,7 +8,9 @@ For added security, you can specify that the connection to the EMR cluster uses 
 
 **Prerequisites**
 + Access to SageMaker Studio that's set up to use Amazon VPC mode\. To connect to Amazon EMR, Studio must be configured as Amazon VPC only mode\. For more information, see [Connect SageMaker Studio Notebooks to Resources in a VPC](studio-notebooks-and-internet-access.md)\.
-+ An Amazon EMR cluster in the same VPC as Studio or in a VPC that's connected to the same VPC as Studio\.
++ An Amazon EMR cluster in the same VPC as Studio or in a VPC that's connected to the same VPC as Studio\. This cluster must have Spark and Livy installed\.
++ The security group used for Amazon SageMaker Studio and the Amazon EMR security group must allow access to and from each other\. 
++ Your Amazon EMR security group must open port 8998, so Amazon SageMaker Studio can communicate with the Spark cluster via Livy\. For more information on setting up the security group, see [Build SageMaker notebooks backed by Spark in Amazon EMR](http://aws.amazon.com/blogs/machine-learning/build-amazon-sagemaker-notebooks-backed-by-spark-in-amazon-emr/)\.
 + If you use the `sm-sparkmagic` utility, the IAM execution role associated with your Studio user profile must contain the following extra permissions\. To find the execution role, choose your user name in the SageMaker Studio Control Panel\.
 
   ```

@@ -38,7 +38,7 @@ To learn how to use a Dockerfile to build a container that calls the `train.py s
 ## Bring Your Own R Model<a name="docker-containers-notebooks-r"></a>
 
 To learn how to use an R container to train and host a model with the R kernel installed in a notebook , see the following notebook\. To take advantage of the AWS SDK for Python \(Boto3\), we use Python within the notebook\. You can achieve the same results in R by invoking command line arguments\.
-+ [r\_bring\_your\_own](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/advanced_functionality/r_bring_your_own)
++ [r\_bring\_your\_own](https://github.com/aws/amazon-sagemaker-examples/blob/master/r_examples/r_byo_r_algo_hpo/tune_r_bring_your_own.ipynb)
 
 ## Extend a Prebuilt PyTorch Container Image<a name="docker-containers-notebooks-extend"></a>
 

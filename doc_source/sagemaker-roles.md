@@ -27,7 +27,7 @@ The IAM managed policy, `AmazonSageMakerFullAccess`, used in the following proce
 
 **To create a new role**
 
-1. Go to the IAM console: [https://console.aws.amazon.com/iam/home](https://console.aws.amazon.com/iam/home)\.
+1. Open the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\.
 
 1. Select **Roles** and then select **Create role**\.
 
@@ -142,13 +142,14 @@ You attach the following trust policy to the IAM role which grants SageMaker pri
 The permissions that you need to grant to the role vary depending on the API that you call\. The following sections explain these permissions\.
 
 **Note**  
-Instead of managing permissions by crafting a permission policy, you can use the AWS\-managed `AmazonSageMakerFullAccess` permission policy\. The permissions in this policy are fairly broad, to allow for any actions you might want to perform in SageMaker\. For a listing of the policy including information about the reasons for adding many of the permissions, see [AmazonSageMakerFullAccess Policy](#sagemaker-roles-amazonsagemakerfullaccess-policy)\. If you prefer to create custom policies and manage permissions to scope the permissions only to the actions you need to perform with the execution role, see the following topics\.
+Instead of managing permissions by crafting a permission policy, you can use the AWS\-managed `AmazonSageMakerFullAccess` permission policy\. The permissions in this policy are fairly broad, to allow for any actions you might want to perform in SageMaker\. For a listing of the policy including information about the reasons for adding many of the permissions, see [`AmazonSageMakerFullAccess`](security-iam-awsmanpol.md#security-iam-awsmanpol-AmazonSageMakerFullAccess)\. If you prefer to create custom policies and manage permissions to scope the permissions only to the actions you need to perform with the execution role, see the following topics\.
 
 For more information about IAM roles, see [IAM Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in the *IAM User Guide*\.
 
 **Topics**
 + [Get execution role](#sagemaker-roles-get-execution-role)
 + [Passing Roles](#sagemaker-roles-pass-role)
++ [CreateAutoMLJob API: Execution Role Permissions](#sagemaker-roles-autopilot-perms)
 + [CreateDomain API: Execution Role Permissions](#sagemaker-roles-createdomain-perms)
 + [CreateImage and UpdateImage APIs: Execution Role Permissions](#sagemaker-roles-createimage-perms)
 + [CreateNotebookInstance API: Execution Role Permissions](#sagemaker-roles-createnotebookinstance-perms)
@@ -156,7 +157,100 @@ For more information about IAM roles, see [IAM Roles](http://docs.aws.amazon.com
 + [CreateProcessingJob API: Execution Role Permissions](#sagemaker-roles-createprocessingjob-perms)
 + [CreateTrainingJob API: Execution Role Permissions](#sagemaker-roles-createtrainingjob-perms)
 + [CreateModel API: Execution Role Permissions](#sagemaker-roles-createmodel-perms)
-+ [AmazonSageMakerFullAccess Policy](#sagemaker-roles-amazonsagemakerfullaccess-policy)
+
+## CreateAutoMLJob API: Execution Role Permissions<a name="sagemaker-roles-autopilot-perms"></a>
+
+For an execution role that you can pass in a `CreateAutoMLJob` API request, you can attach the following minimum permission policy to the role:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:PassRole",
+                "sagemaker:DescribeEndpointConfig",
+                "sagemaker:DescribeModel",
+                "sagemaker:InvokeEndpoint",
+                "sagemaker:ListTags",
+                "sagemaker:DescribeEndpoint",
+                "sagemaker:CreateModel",
+                "sagemaker:CreateEndpointConfig",
+                "sagemaker:CreateEndpoint",
+                "sagemaker:DeleteModel",
+                "sagemaker:DeleteEndpointConfig",
+                "sagemaker:DeleteEndpoint",
+                "cloudwatch:PutMetricData",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents",
+                "logs:CreateLogGroup",
+                "logs:DescribeLogStreams",
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:ListBucket",
+                "ecr:GetAuthorizationToken",
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:BatchGetImage"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+If you specify a private VPC for your AutoML job, add the following permissions:
+
+```
+{
+            "Effect": "Allow",
+            "Action": [
+            "ec2:CreateNetworkInterface",
+            "ec2:CreateNetworkInterfacePermission",
+            "ec2:DeleteNetworkInterface",
+            "ec2:DeleteNetworkInterfacePermission",
+            "ec2:DescribeNetworkInterfaces",
+            "ec2:DescribeVpcs",
+            "ec2:DescribeDhcpOptions",
+            "ec2:DescribeSubnets",
+            "ec2:DescribeSecurityGroups"
+            ]
+}
+```
+
+If your input is encrypted using server\-side encryption with an AWS KMS–managed key \(SSE\-KMS\), add the following permissions:
+
+```
+{
+    "Effect": "Allow",
+    "Action": [
+    "kms:Decrypt"
+    ]
+}
+```
+
+If you specify a KMS key in the output configuration of your AutoML job, add the following permissions:
+
+```
+{
+    "Effect": "Allow",
+    "Action": [
+    "kms:Encrypt"
+    ]
+}
+```
+
+If you specify a volume KMS key in the resource configuration of your AutoML job, add the following permissions:
+
+```
+{
+    "Effect": "Allow",
+    "Action": [
+    "kms:CreateGrant"
+    ]
+}
+```
 
 ## CreateDomain API: Execution Role Permissions<a name="sagemaker-roles-createdomain-perms"></a>
 
@@ -933,51 +1027,3 @@ If you specify a private VPC for your model, add the following permissions:
             "ec2:DescribeSubnets",
             "ec2:DescribeSecurityGroups"
 ```
-
-## AmazonSageMakerFullAccess Policy<a name="sagemaker-roles-amazonsagemakerfullaccess-policy"></a>
-
-The [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) managed policy includes all of the necessary permissions to perform most actions in SageMaker\. You can use attach this policy to any role that you pass to a SageMaker execution role\. You can also create more narrowly\-scoped policies if you want more granular control of the permissions that you grant to your execution role\.
-
-The following list explains why some of the categories of permissions in the `AmazonSageMakerFullAccess` policy are needed\.
-
-`application-autoscaling`  
-Needed for automatically scaling a SageMaker real\-time inference endpoint\.
-
-`aws-marketplace`  
-Needed to view AWS AI Marketplace subscriptions\.
-
-`cloudwatch`  
-Needed to post CloudWatch metrics, interact with alarms, and upload CloudWatch Logs logs in your account\.
-
-`codecommit`  
-Needed for AWS CodeCommit integration with SageMaker notebook instances\.
-
-`cognito`  
-Needed for SageMaker Ground Truth to define your private workforce and work teams\.
-
-`ec2`  
-Needed to manage elastic network interfaces when you specify a Amazon VPC for your SageMaker jobs and notebook instances\.
-
-`ec2:DescribeVpcs`  
-All SageMaker services launch Amazon EC2 instances and require this permission set\.
-
-`ecr`  
-Needed to pull and store Docker artifacts for training and inference\. This is required only if you use your own container in SageMaker\.
-
-`elastic-inference`  
-Needed to integrate Amazon Elastic Inference with SageMaker\.
-
-`glue`  
-Needed for inference pipeline pre\-processing from within SageMaker notebook instances\.
-
-`groundtruthlabeling`  
-Needed for SageMaker Ground Truth\.
-
-`iam:ListRoles`  
-Needed to give the SageMaker console access to list available roles\.
-
-`kms`  
-Needed to give the SageMaker console access to list the available AWS KMS keys\.
-
-`logs`  
-Needed to allow SageMaker jobs and endpoints to publish log streams\.

@@ -6,7 +6,7 @@ Use the following to find answers to commonly asked questions about SageMaker's 
 
 The library uses the CPUs available with GPU instances\. No additional C5 or CPU instances are launched; if your SageMaker training job is 8 node `ml.p3dn.24xlarge` clusters, only 8 `ml.p3dn.24xlarge` instances are used\. No additional instances are provisioned\.  
 
-**Q: I have a training job taking 5 days on a single `ml.p3.24xlarge` instance with a set of hyperparameters H1 \(learning rate, batch size, optimizer, etc\)\. Is enabling SDP and using a 5x bigger cluster enough to experience an approximate 5x speedup? Or will I have to revisit its training hyperparameters after enabling SDP? **``
+**Q: I have a training job taking 5 days on a single `ml.p3.24xlarge` instance with a set of hyperparameters H1 \(learning rate, batch size, optimizer, etc\)\. Is enabling SDP and using a 5x bigger cluster enough to experience an approximate 5x speedup? Or will I have to revisit its training hyperparameters after enabling SDP? **
 
 Enabling the library would change the overall batch size\. The new overall batch size is scaled linearly with the number of training instances used\. As a result of this, hyperparameters, such as learning rate, have to be changed to ensure convergence\. 
 
@@ -42,4 +42,4 @@ No\. The library supports `ml.p3.16xlarge`, `ml.p3dn.24xlarge`, and `ml.p4d.24xl
 
 **Q: What frameworks and framework versions are currently supported by the library at launch?** 
 
-The library currently supports PyTorch v1\.6 or later and Tensorflow v2\.3 or later\. It doesn't support Tensorflow 1\.x\. 
+The library currently supports PyTorch v1\.6\.0 or later and Tensorflow v2\.3\.0 or later\. It doesn't support Tensorflow 1\.x\. For more information about which version of the library is packaged within AWS deep learning containers, see [Release Notes for Deep Learning Containers](https://docs.aws.amazon.com/deep-learning-containers/latest/devguide/dlc-release-notes.html)\.

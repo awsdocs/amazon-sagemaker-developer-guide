@@ -4,7 +4,7 @@ The difference in rejection rates \(DRR\) metric is the difference in the ratios
 
 The formula for difference in rejection rates between facets *a* and *d*:
 
-        DRR = TNd/\(TNd \+ FNd\) \- TNa/\(TNa \+ FNa\) 
+ DRR = TNd/\(TNd \+ FNd\) \- TNa/\(TNa \+ FNa\) 
 
 Where:
 + TNd are the true negatives predicted for facet *d*\.
