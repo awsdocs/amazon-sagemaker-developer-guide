@@ -77,7 +77,7 @@ model_pacakge_group_policy = {
         'Action': ["sagemaker:DescribeModelPackage",
                    "sagemaker:ListModelPackages",
                    "sagemaker:UpdateModelPackage",
-                   "sagemaker:CreateModel"],
+                   "sagemaker:CreateModelPackage"],
         'Resource': f'arn:aws:sagemaker:{region}:{account}:model-package/{model_package_group_name}/*'
     }]
 }
