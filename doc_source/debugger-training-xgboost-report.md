@@ -2,16 +2,6 @@
 
 For SageMaker XGBoost training jobs, use the Debugger [CreateXgboostReport](debugger-built-in-rules.md#create-xgboost-report) rule to receive a comprehensive training report of the training progress and results\. Following this guide, specify the [CreateXgboostReport](debugger-built-in-rules.md#create-xgboost-report) rule while constructing an XGBoost estimator, download the report using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) or the Amazon S3 console, and then you can interpret the profiling results\.
 
-**Important**  
-To use the new Debugger features, you need to upgrade the SageMaker Python SDK and the SMDebug client library\. In your iPython kernel, Jupyter notebook, or JupyterLab environment, run the following code to install the latest versions of the libraries and restart the kernel\.  
-
-```
-import sys
-import IPython
-!{sys.executable} -m pip install -U sagemaker smdebug
-IPython.Application.instance().kernel.do_shutdown(True)
-```
-
 **Topics**
 + [Construct a SageMaker XGBoost Estimator with the Debugger XGBoost Report Rule](#debugger-training-xgboost-report-estimator)
 + [Download the Debugger XGBoost Training Report](#debugger-training-xgboost-report-download)

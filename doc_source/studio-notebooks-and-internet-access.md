@@ -30,7 +30,7 @@ You can configure only subnets with a default tenancy VPC in which your instance
 **Note**  
 For a customer working within VPC mode, company firewalls can cause connection issues with SageMaker Studio or between JupyterServer and the KernelGateway\. Make the following checks if you encounter one of these issues when using SageMaker Studio from behind a firewall\.  
 Check that the Studio URL is in your networks allowlist\.
-Check that the websocket connections are not blocked\. Jupyter uses websocket under the hood\. If the KernelGateway appliction is InService, JupyterServer may not be able to connect to the KernelGateway\. You should see this problem when opening System Terminal as well\.
+Check that the websocket connections are not blocked\. Jupyter uses websocket under the hood\. If the KernelGateway application is InService, JupyterServer may not be able to connect to the KernelGateway\. You should see this problem when opening System Terminal as well\.
 
 **For more information**
 + [Securing Amazon SageMaker Studio connectivity using a private VPC](http://aws.amazon.com/blogs/machine-learning/securing-amazon-sagemaker-studio-connectivity-using-a-private-vpc)\.
