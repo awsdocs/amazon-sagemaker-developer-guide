@@ -22,7 +22,7 @@ By default, an IAM principal with [ `InvokeEndpoint`](https://docs.aws.amazon.co
                       "sagemaker:TargetModel": ["company_a/*", "common/*"]
                   }
               }
-          },
+          }
       ]
   }
   ```
