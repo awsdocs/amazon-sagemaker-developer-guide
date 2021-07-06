@@ -4,7 +4,8 @@ You use SageMaker Clarify processing jobs to analyze potential sources of bias i
 
 **Topics**
 + [Compute Resources Required for SageMaker Clarify Processing Jobs](#clarify-processing-job-run-resources)
-+ [Running the Processing Job](#clarify-processing-job-run-code)
++ [Run the Clarify Processing Job](#clarify-processing-job-run-code)
++ [Run the Clarify Processing Job with Spark](#clarify-processing-job-run-spark)
 + [Get the Analysis Results](#clarify-processing-job-run-analysis-results)
 
 ## Compute Resources Required for SageMaker Clarify Processing Jobs<a name="clarify-processing-job-run-resources"></a>
@@ -14,7 +15,7 @@ Take the following into consideration when determining the compute resources you
 + Computing explanations can be more time intensive than the actual inference\. This includes the time to launch compute resources\.
 + Computing explanations can be more compute intensive than the actual inference\. Review and monitor the charges you may incur from using SageMaker resources\. For more information, see [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/)\. 
 
-## Running the Processing Job<a name="clarify-processing-job-run-code"></a>
+## Run the Clarify Processing Job<a name="clarify-processing-job-run-code"></a>
 
 For an example notebook with instructions on how to run a SageMaker Clarify processing job in Studio to detect posttraining model bias, see [Explainability and bias detection with Amazon SageMaker Clarify](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker_processing/fairness_and_explainability/fairness_and_explainability.html)\.
 
@@ -68,6 +69,27 @@ clarify_processor.run_bias(data_config=bias_data_config,
 ```
 
 View the results in Studio or download them from the `bias_report_output_path` S3 bucket\.
+
+## Run the Clarify Processing Job with Spark<a name="clarify-processing-job-run-spark"></a>
+
+[Apache Spark](https://spark.apache.org/) is a unified analytics engine for large\-scale data processing\. When working with large datasets, you can use the Spark processing capabilities of SageMaker Clarify to enable your Clarify processing jobs to run faster\. To use Spark processing for Clarify jobs, set the instance count to a number greater than one\. Clarify uses Spark distributed computing when there is more than once instance per Clarify processor\.
+
+The following example shows how to use [SageMakerClarifyProcessor](https://sagemaker.readthedocs.io/en/stable/api/training/processing.html#sagemaker.processing.Processor) to create a Clarify processor with 5 instances\. 
+
+Clarify runs any jobs associated with this processor using Spark distributed processing\. 
+
+```
+from sagemaker import clarify
+clarify_processor = clarify.SageMakerClarifyProcessor(role=role,
+                         instance_count=5,
+                         instance_type='ml.c5.xlarge',
+                         max_runtime_in_seconds=1200,
+                         volume_size_in_gb=100)
+```
+
+If you configure a Clarify job to save local SHAP values in the [SHAPConfig](https://sagemaker.readthedocs.io/en/stable/api/training/processing.html#sagemaker.clarify.SHAPConfig) class, Spark saves the local SHAP value as multiple part files in parallel\.
+
+If you add more instances, we recommend that you also increase the number of instances in the model configuration [ModelConfig](https://sagemaker.readthedocs.io/en/stable/api/training/processing.html#sagemaker.clarify.ModelConfig) for the shadow endpoint\. This is to prevent the processing instances from being bottlenecked by the shadow endpoint\. Specifically, we recommend that you use a one\-to\-one ratio of endpoint to processing instances\. 
 
 ## Get the Analysis Results<a name="clarify-processing-job-run-analysis-results"></a>
 

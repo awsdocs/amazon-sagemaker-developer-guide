@@ -12,9 +12,10 @@ Additionally, requests must be signed by using an access key ID and a secret acc
 + [Training and Inference Containers Run in Internet\-Free Mode](mkt-algo-model-internet-free.md)
 + [SageMaker Scans AWS Marketplace Training and Inference Containers for Security Vulnerabilities](#mkt-container-scan)
 + [Connect to SageMaker Through a VPC Interface Endpoint](interface-vpc-endpoint.md)
++ [Give SageMaker Compilation Jobs Access to Resources in Your Amazon VPC](neo-vpc.md)
 + [Give SageMaker Processing Jobs Access to Resources in Your Amazon VPC](process-vpc.md)
-+ [Give SageMaker Training Jobs Access to Resources in Your Amazon VPC](train-vpc.md)
 + [Give SageMaker Hosted Endpoints Access to Resources in Your Amazon VPC](host-vpc.md)
++ [Give SageMaker Training Jobs Access to Resources in Your Amazon VPC](train-vpc.md)
 + [Give Batch Transform Jobs Access to Resources in Your Amazon VPC](batch-vpc.md)
 + [Give Amazon SageMaker Clarify Jobs Access to Resources in Your Amazon VPC](clarify-vpc.md)
 

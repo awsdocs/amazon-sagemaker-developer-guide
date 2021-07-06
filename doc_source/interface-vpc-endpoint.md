@@ -64,7 +64,7 @@ In this example, users can still take other SageMaker API actions from outside t
 
 ## Create a VPC Endpoint Policy for SageMaker Feature Store<a name="api-private-link-feature-store"></a>
 
- To create a VPC Endpoint for Feature Store, use the following endpoint template subtituting your *VPC\_Endpoint\_ID\.api* and *Region*:
+ To create a VPC Endpoint for Feature Store, use the following endpoint template substituting your *VPC\_Endpoint\_ID\.api* and *Region*:
 
 `VPC_Endpoint_ID.api.featurestore-runtime.sagemaker.Region.vpce.amazonaws.com`
 

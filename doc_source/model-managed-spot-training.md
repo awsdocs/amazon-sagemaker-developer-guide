@@ -21,6 +21,8 @@ To use managed spot training, create a training job\. Set `EnableManagedSpotTrai
 
 You can calculate the savings from using managed spot training using the formula `(1 - (BillableTimeInSeconds / TrainingTimeInSeconds)) * 100`\. For example, if `BillableTimeInSeconds` is 100 and `TrainingTimeInSeconds` is 500, the savings is 80%\.
 
+To learn how running training jobs on Amazon SageMaker spot instances works and reduces the billable time, see the [Amazon SageMaker Managed Spot Training Examples GitHub repository]()\.
+
 ## Managed Spot Training Lifecycle<a name="model-managed-spot-training-status"></a>
 
 You can monitor a training job using `TrainingJobStatus` and `SecondaryStatus` returned by [DescribeTrainingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html)\. The list below shows how `TrainingJobStatus` and `SecondaryStatus` values change depending on the training scenario:

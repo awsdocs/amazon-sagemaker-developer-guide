@@ -25,7 +25,7 @@ We recommend that you familiarize yourself with the SageMaker Studio interface a
 + [Get Started](notebooks-get-started.md)
 + [Create or Open an Amazon SageMaker Studio Notebook](notebooks-create-open.md)
 + [Use the SageMaker Studio Notebook Toolbar](notebooks-menu.md)
-+ [Share and Use a Amazon SageMaker Studio Notebook](notebooks-sharing.md)
++ [Share and Use an Amazon SageMaker Studio Notebook](notebooks-sharing.md)
 + [Get Notebook and App Metadata](notebooks-run-and-manage-metadata.md)
 + [Get Notebook Differences](notebooks-diff.md)
 + [Manage Resources](notebooks-run-and-manage.md)

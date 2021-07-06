@@ -1,5 +1,7 @@
 # Deploy Components to Your Device<a name="edge-greengrass-deploy-components"></a>
 
+Deploy your components with the AWS IoT console or with the AWS CLI\.
+
 ## To deploy your components \(console\)<a name="collapsible-section-gg-deploy-console"></a>
 
 Deploy your AWS IoT Greengrass components with the AWS IoT console\.
@@ -46,11 +48,11 @@ Deploy your AWS IoT Greengrass components with the AWS IoT console\.
 
 1. On the **Configure advanced settings** page, keep the default configuration settings, and choose **Next**\.
 
-1. On the `Review` page, choose `Deploy`\.
+1. On the **Review** page, choose **Deploy**\.
 
 ## To deploy your components \(AWS CLI\)<a name="collapsible-section-gg-deploy-cli"></a>
 
-1. Create a ` deployment.json` file to define the deployment configuration for your SageMaker Edge Manager components\. This file should look like the following:
+1. Create a ` deployment.json` file to define the deployment configuration for your SageMaker Edge Manager components\. This file should look like the following example\.
 
    ```
    {
@@ -81,7 +83,7 @@ Deploy your AWS IoT Greengrass components with the AWS IoT console\.
    + In the `targetArn` field, replace *`targetArn`* with the Amazon Resource Name \(ARN\) of the thing or thing group to target for the deployment, in the following format:
      + Thing: `arn:aws:iot:region:account-id:thing/thingName`
      + Thing group: `arn:aws:iot:region:account-id:thinggroup/thingGroupName`
-   + In the merge field, replace *`device-fleet-name`* with the name of the edge device fleet that you created, and replace *`DOC-EXAMPLE-BUCKET`* with the name of the Amazon S3 bucket that is associated with your device fleet\.
+   + In the `merge` field, replace *`device-fleet-name`* with the name of the edge device fleet that you created, and replace *`DOC-EXAMPLE-BUCKET`* with the name of the Amazon S3 bucket that is associated with your device fleet\.
    + Replace the component versions for each component with the latest available version\.
 
 1. Run the following command to deploy the components on the device:
@@ -92,3 +94,5 @@ Deploy your AWS IoT Greengrass components with the AWS IoT console\.
    ```
 
 The deployment can take several minutes to complete\. In the next step, check the component log to verify that the deployment completed successfully and to view the inference results\.
+
+For more information about deploying components to individual devices or groups of devices, see [Deploy AWS IoT Greengrass](https://docs.aws.amazon.com/greengrass/v2/developerguide/manage-deployments.html) components to devices\.

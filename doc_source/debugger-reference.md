@@ -7,3 +7,4 @@ The following sections contain advanced topics, reference documentation for the 
 + [Use Debugger Docker Images for Built\-in or Custom Rules](debugger-docker-images-rules.md)
 + [Amazon SageMaker Debugger Exceptions](debugger-exceptions.md)
 + [Considerations for Amazon SageMaker Debugger](debugger-considerations.md)
++ [Amazon SageMaker Debugger Usage Statistics](debugger-telemetry.md)
