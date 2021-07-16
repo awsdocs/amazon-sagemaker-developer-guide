@@ -1,10 +1,8 @@
 # Give Batch Transform Jobs Access to Resources in Your Amazon VPC<a name="batch-vpc"></a>
 
-SageMaker runs batch transform jobs in an Amazon Virtual Private Cloud by default\. However, model containers access AWS resources—such as the Amazon S3 buckets where you store your data and model artifacts—over the internet\.
+To control access to your data and batch transform jobs, we recommend that you create a private Amazon VPC and configure it so that your jobs aren't accessible over the public internet\. You specify your private VPC configuration when you create a model by specifying subnets and security groups\. You then specify the same model when you create a batch transform job\. When you specify the subnets and security groups, SageMaker creates *elastic network interfaces* that are associated with your security groups in one of the subnets\. Network interfaces allow your model containers to connect to resources in your VPC\. For information about network interfaces, see [Elastic Network Interfaces](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ElasticNetworkInterfaces.html) in the *Amazon VPC User Guide*\.
 
-To control access to your model containers and data, we recommend that you create a private VPC and configure it so that they aren't accessible over the internet\. For information about creating and configuring a VPC, see [Getting Started With Amazon VPC](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/getting-started-ipv4.html) in the *Amazon VPC User Guide*\. Using a VPC helps to protect your model containers and data because you can configure your VPC so that it is not connected to the internet\. Using a VPC also allows you to monitor all network traffic in and out of your model containers by using VPC flow logs\. For more information, see [VPC Flow Logs](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html) in the *Amazon VPC User Guide*\.
-
-You specify your private VPC configuration when you create a model by specifying subnets and security groups\. You then specify the same model when you create a batch transform job\. When you specify the subnets and security groups, SageMaker creates *elastic network interfaces* that are associated with your security groups in one of the subnets\. Network interfaces allow your model containers to connect to resources in your VPC\. For information about network interfaces, see [Elastic Network Interfaces](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ElasticNetworkInterfaces.html) in the *Amazon VPC User Guide*\.
+This document explains how to add Amazon VPC configurations for batch transform jobs\.
 
 ## Configure a Batch Transform Job for Amazon VPC Access<a name="batch-vpc-configure"></a>
 
@@ -27,7 +25,7 @@ VpcConfig: {
 
 If you are creating a model using the `CreateModel` API operation, the IAM execution role that you use to create your model must include the permissions described in [CreateModel API: Execution Role Permissions](sagemaker-roles.md#sagemaker-roles-createmodel-perms), including the following permissions required for a private VPC\. 
 
-When creating a model in the console, if you select **Create a new role** in the **Model Settings** section, the [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) policy used to create the role will already contain these permissions\. If you select **Enter a custom IAM role ARN** or **Use existing role**, the role ARN that you specify must have an execution policy attached with the following permissions\. 
+When creating a model in the console, if you select **Create a new role** in the **Model Settings** section, the [AmazonSageMakerFullAccess ](https://console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess$jsonEditor) policy used to create the role already contains these permissions\. If you select **Enter a custom IAM role ARN** or **Use existing role**, the role ARN that you specify must have an execution policy attached with the following permissions\. 
 
 ```
 {
@@ -126,7 +124,7 @@ Use default DNS settings for your endpoint route table, so that standard Amazon 
 
 ### Configure the VPC Security Group<a name="batch-vpc-groups"></a>
 
-In distributed batch transform, you must allow communication between the different containers in the same batch transform job\. To do that, configure a rule for your security group that allows inbound connections between members of the same security group For information, see [Security Group Rules](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html#SecurityGroupRules)\.
+In distributed batch transform, you must allow communication between the different containers in the same batch transform job\. To do that, configure a rule for your security group that allows inbound connections between members of the same security group\. For information, see [Security Group Rules](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html#SecurityGroupRules)\.
 
 ### Connect to Resources Outside Your VPC<a name="batch-vpc-nat"></a>
 

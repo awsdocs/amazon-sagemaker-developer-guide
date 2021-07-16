@@ -1,10 +1,8 @@
 # Give SageMaker Processing Jobs Access to Resources in Your Amazon VPC<a name="process-vpc"></a>
 
-SageMaker runs processing jobs in an Amazon Virtual Private Cloud by default\. However, processing containers access AWS resources—such as the Amazon S3 buckets where you store data—over the internet\.
+To control access to your data and processing jobs, we recommend that you create a private Amazon VPC and configure it so that your jobs aren't accessible over the public internet\. For information about creating and configuring a VPC, see [Getting Started With Amazon VPC](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/getting-started-ipv4.html) in the *Amazon VPC User Guide*\. Using a VPC helps to protect your processing containers and data because you can configure your VPC so that it is not connected to the internet\. Using a VPC also allows you to monitor all network traffic in and out of your processing containers by using VPC flow logs\. For more information, see [VPC Flow Logs](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html) in the *Amazon VPC User Guide*\.
 
-To control access to your data and processing containers, we recommend that you create a private VPC and configure it so that they aren't accessible over the internet\. For information about creating and configuring a VPC, see [Getting Started With Amazon VPC](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/getting-started-ipv4.html) in the *Amazon VPC User Guide*\. Using a VPC helps to protect your processing containers and data because you can configure your VPC so that it is not connected to the internet\. Using a VPC also allows you to monitor all network traffic in and out of your processing containers by using VPC flow logs\. For more information, see [VPC Flow Logs](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html) in the *Amazon VPC User Guide*\.
-
-You specify your private VPC configuration when you create processing jobs by specifying subnets and security groups\. When you specify the subnets and security groups, SageMaker creates *elastic network interfaces* that are associated with your security groups in one of the subnets\. Network interfaces allow your processing containers to connect to resources in your VPC\. For information about network interfaces, see [Elastic Network Interfaces](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ElasticNetworkInterfaces.html) in the *Amazon VPC User Guide*\.
+This document explains how to add Amazon VPC configurations for processing jobs\.
 
 ## Configure a Processing Job for Amazon VPC Access<a name="process-vpc-configure"></a>
 
@@ -107,7 +105,7 @@ Use default DNS settings for your endpoint route table, so that standard Amazon 
 
 ### Configure the VPC Security Group<a name="process-vpc-groups"></a>
 
-In distributed processing, you must allow communication between the different containers in the same processing job\. To do that, configure a rule for your security group that allows inbound connections between members of the same security group For information, see [Security Group Rules](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html#SecurityGroupRules)\.
+In distributed processing, you must allow communication between the different containers in the same processing job\. To do that, configure a rule for your security group that allows inbound connections between members of the same security group\. For more information, see [Security Group Rules](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html#SecurityGroupRules)\.
 
 ### Connect to Resources Outside Your VPC<a name="process-vpc-nat"></a>
 

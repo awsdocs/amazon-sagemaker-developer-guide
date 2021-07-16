@@ -126,7 +126,7 @@ Data Wrangler uses the Amazon Redshift Data API with temporary credentials\. To 
 
 1. Enter a **Connection Name**\. This is a name used by Data Wrangler to identify this connection\. 
 
-1. Enter the **Cluster Identifier** to specify to which cluster you want to connect\.
+1. Enter the **Cluster Identifier** to specify to which cluster you want to connect\. Note: Enter only the cluster identifier and not the full endpoint of the Amazon Redshift cluster\.
 
 1. Enter the **Database Name** of the database to which you want to connect to\.
 

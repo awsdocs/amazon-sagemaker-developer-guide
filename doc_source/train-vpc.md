@@ -1,11 +1,5 @@
 # Give SageMaker Training Jobs Access to Resources in Your Amazon VPC<a name="train-vpc"></a>
 
-SageMaker runs training jobs in an Amazon Virtual Private Cloud by default\. However, training containers access AWS resources—such as the Amazon Simple Storage Service \(Amazon S3\) buckets where you store training data and model artifacts—over the internet\.
-
-To control access to your data and training containers, we recommend that you create a private VPC and configure it so that they aren't accessible over the internet\. For information about creating and configuring a VPC, see [Getting Started With Amazon VPC](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/getting-started-ipv4.html) in the *Amazon VPC User Guide*\. Using a VPC helps to protect your training containers and data because you can configure your VPC so that it is not connected to the internet\. Using a VPC also allows you to monitor all network traffic in and out of your training containers by using VPC flow logs\. For more information, see [VPC Flow Logs](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html) in the *Amazon VPC User Guide*\.
-
-You specify your private VPC configuration when you create training jobs by specifying subnets and security groups\. When you specify the subnets and security groups, SageMaker creates *elastic network interfaces* that are associated with your security groups in one of the subnets\. Network interfaces allow your training containers to connect to resources in your VPC\. For information about network interfaces, see [Elastic Network Interfaces](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ElasticNetworkInterfaces.html) in the *Amazon VPC User Guide*\.
-
 **Note**  
 For training jobs, you can configure only subnets with a default tenancy VPC in which your instance runs on shared hardware\. For more information on the tenancy attribute for VPCs, see [Dedicated Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html)\.
 
@@ -46,7 +40,7 @@ Your VPC subnets should have at least two private IP addresses for each instance
 
 ### Create an Amazon S3 VPC Endpoint<a name="train-vpc-s3"></a>
 
-If you configure your VPC so that training containers don't have access to the internet, they can't connect to the Amazon S3 buckets that contain your training data unless you create a VPC endpoint that allows access\. By creating a VPC endpoint, you allow your training containers to access the buckets where you store your data and model artifacts \. We recommend that you also create a custom policy that allows only requests from your private VPC to access to your S3 buckets\. For more information, see [Endpoints for Amazon S3](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints-s3.html)\.
+If you configure your VPC so that training containers don't have access to the internet, they can't connect to the Amazon S3 buckets that contain your training data unless you create a VPC endpoint that allows access\. By creating a VPC endpoint, you allow your training containers to access the buckets where you store your data and model artifacts\. We recommend that you also create a custom policy that allows only requests from your private VPC to access to your S3 buckets\. For more information, see [Endpoints for Amazon S3](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints-s3.html)\.
 
 **To create an S3 VPC endpoint:**
 
@@ -112,7 +106,7 @@ Use default DNS settings for your endpoint route table, so that standard Amazon 
 
 ### Configure the VPC Security Group<a name="train-vpc-groups"></a>
 
-In distributed training, you must allow communication between the different containers in the same training job\. To do that, configure a rule for your security group that allows inbound connections between members of the same security group For information, see [Security Group Rules](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html#SecurityGroupRules)\.
+In distributed training, you must allow communication between the different containers in the same training job\. To do that, configure a rule for your security group that allows inbound connections between members of the same security group\. For information, see [Security Group Rules](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html#SecurityGroupRules)\.
 
 ### Connect to Resources Outside Your VPC<a name="train-vpc-nat"></a>
 

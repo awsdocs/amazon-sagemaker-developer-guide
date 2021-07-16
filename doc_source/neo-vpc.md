@@ -1,11 +1,5 @@
 # Give SageMaker Compilation Jobs Access to Resources in Your Amazon VPC<a name="neo-vpc"></a>
 
-SageMaker Neo runs compilation jobs in an Amazon Virtual Private Cloud by default\. However, compilation jobs access AWS resources—such as the Amazon Simple Storage Service \(Amazon S3\) buckets where you store model artifacts—over the internet\.
-
-To control access to your data, we recommend that you create a private VPC and configure it so that they aren't accessible over the internet\. For information about creating and configuring a VPC, see [Getting Started With Amazon VPC](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/getting-started-ipv4.html) in the *Amazon VPC User Guide*\. Using a VPC helps to protect your data because you can configure your VPC so that it is not connected to the internet\. For more information, see [VPC Flow Logs](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html) in the *Amazon VPC User Guide*\.
-
-You specify your private VPC configuration when you create compilation jobs by specifying subnets and security groups\. When you specify the subnets and security groups, SageMaker creates *elastic network interfaces* that are associated with your security groups in one of the subnets\. Network interfaces allow SageMaker Neo's compilation jobs to connect to resources in your VPC\. For information about network interfaces, see [Elastic Network Interfaces](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ElasticNetworkInterfaces.html) in the *Amazon VPC User Guide*\.
-
 **Note**  
 For compilation jobs, you can configure only subnets with a default tenancy VPC in which your job runs on shared hardware\. For more information on the tenancy attribute for VPCs, see [Dedicated Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html)\.
 
