@@ -18,7 +18,7 @@ Client applications can request predictions from the additional target model as 
 
 ```
 response = runtime_sm_client.invoke_endpoint(
-                        EndpointName='endpoint_name',
+                        EndpointName='<ENDPOINT_NAME>',
                         ContentType='text/csv',
                         TargetModel='AdditionalModel.tar.gz',
                         Body=body)

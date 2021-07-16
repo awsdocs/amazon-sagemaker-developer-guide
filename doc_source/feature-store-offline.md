@@ -6,13 +6,13 @@
 
 ```
 s3://<bucket-name>/<customer-prefix>/<account-id>/sagemaker/<aws-region>/offline-store/<feature-group-name>-<feature-group-creation-time>/data/year=<event-time-year>/
-    month=<event-time-month>/day=<event-time-day>/hour=<event-time-hour>/<timestamp_of_latest_event_time_in_file>_<16-random-alphanumeric-digits->.parquet
+    month=<event-time-month>/day=<event-time-day>/hour=<event-time-hour>/<timestamp_of_latest_event_time_in_file>_<16-random-alphanumeric-digits>.parquet
 ```
 
  For example: 
 
 ```
-s3://<my-bucket/my-prefix/123456789012/sagemaker/us-east-1/offline-store/
+s3://my-bucket/my-prefix/123456789012/sagemaker/us-east-1/offline-store/
       customer-purchase-history-patterns-1593511200/data/year=2020/month=06/day=31/hour=00/20130917T064401Z_108934320012Az11.parquet
 ```
 
@@ -21,7 +21,7 @@ s3://<my-bucket/my-prefix/123456789012/sagemaker/us-east-1/offline-store/
 Example value of `ResolvedOutputS3Uri`:
 
 ```
-s3://<my-bucket/my-prefix/123456789012/sagemaker/us-east-1/offline-store/customer-purchase-history-patterns-1593511200/data
+s3://my-bucket/my-prefix/123456789012/sagemaker/us-east-1/offline-store/customer-purchase-history-patterns-1593511200/data
 ```
 
 The following additional fields are added by Feature Store to each Record when they persist in the offline store: 

@@ -16,9 +16,10 @@ The following describes the requirements of each step type and provides an examp
 Amazon SageMaker Model Building Pipelines support the following step types:
 + [Processing](#step-type-processing)
 + [Training](#step-type-training)
-+ [Transform](#step-type-transform)
++ [Tuning](#step-type-tuning)
 + [CreateModel](#step-type-create-model)
 + [RegisterModel](#step-type-register-model)
++ [Transform](#step-type-transform)
 + [Condition](#step-type-condition)
 + [Callback](#step-type-callback)
 
@@ -26,7 +27,7 @@ Amazon SageMaker Model Building Pipelines support the following step types:
 
 You use a processing step to create a processing job for data processing\. For more information on processing jobs, see [Process Data and Evaluate Models](https://docs.aws.amazon.com/sagemaker/latest/dg/processing-job.html)\.
 
-A processing step requires a processor, a Python script that defines the processing code, outputs for processing, and job arguments\. The following example shows how to create a `ProcessingStep` definition\.  For more information on processing step requirements, see the [sagemaker\.workflow\.steps\.ProcessingStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.ProcessingStep) documentation\.
+A processing step requires a processor, a Python script that defines the processing code, outputs for processing, and job arguments\. The following example shows how to create a `ProcessingStep` definition\. For more information on processing step requirements, see the [sagemaker\.workflow\.steps\.ProcessingStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.ProcessingStep) documentation\.
 
 ```
 from sagemaker.sklearn.processing import SKLearnProcessor
@@ -105,7 +106,7 @@ step_process = ProcessingStep(
 
 You use a training step to create a training job to train a model\. For more information on training jobs, see [Train a Model with Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-training.html)\.
 
-A training step requires an estimator, and training and validation data inputs\. The following example shows how to create a `TrainingStep` definition\.  For more information on Training step requirements, see the [sagemaker\.workflow\.steps\.TrainingStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.TrainingStep) documentation\.
+A training step requires an estimator, and training and validation data inputs\. The following example shows how to create a `TrainingStep` definition\. For more information on Training step requirements, see the [sagemaker\.workflow\.steps\.TrainingStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.TrainingStep) documentation\.
 
 ```
 from sagemaker.inputs import TrainingInput
@@ -131,35 +132,58 @@ step_train = TrainingStep(
 )
 ```
 
-### Transform Step<a name="step-type-transform"></a>
+### Tuning Step<a name="step-type-tuning"></a>
 
-You use a transform step for batch transformation to run inference on an entire dataset\. For more information on batch transformation, see [Run Batch Transforms with Inference Pipelines ](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipeline-batch.html)\.
+You use a tuning step to create a hyperparameter tuning job\. A tuning job produces multiple model versions\. You use the `get_top_model_s3_uri` method of the `TuningStep` class to get the model artifact from one of the top performing model versions\. For more information on hyperparameter tuning, see [Perform Automatic Model Tuning with SageMaker](automatic-model-tuning.md)\.
 
-A transform step requires a transformer, and the data to run batch transformation on\. The following example shows how to create a `Transform` step definition\.  For more information on `Transform` step requirements, see the [sagemaker\.workflow\.steps\.TransformStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.TransformStep)\. documentation\.
+A tuning step requires a [HyperparameterTuner](https://sagemaker.readthedocs.io/en/stable/api/training/tuner.html) and training inputs\. You can retrain previous tuning jobs by specifying the `warm_start_config` parameter of the `HyperparameterTuner`\. For more information on hyperparameter tuning and warm start, see [Run a Warm Start Hyperparameter Tuning Job](automatic-model-tuning-warm-start.md)\.
+
+**Important**  
+Tuning steps were introduced in Amazon SageMaker Python SDK v2\.48\.0 and Amazon SageMaker Studio v3\.8\.0\. You must update Studio before you use a tuning step or the pipeline DAG doesn't display\. To update Studio, see [Update SageMaker Studio](studio-tasks-update-studio.md)\.
+
+The following example shows how to create a `TuningStep` definition\.
 
 ```
-from sagemaker.inputs import TransformInput
-from sagemaker.workflow.steps import TransformStep
-
-step_transform = TransformStep(
-    name="AbaloneTransform",
-    transformer=transformer,
-    inputs=TransformInput(data=batch_data)
+from sagemaker.tuner import HyperparameterTuner
+from sagemaker.inputs import TrainingInput
+from sagemaker.workflow.steps import TuningStep
+    
+step_tuning = TuningStep(
+    name = "HPTuning",
+    tuner = HyperparameterTuner(...),
+    inputs = TrainingInput(s3_data=input_path)
 )
 ```
+
+**Get Best Model Version**
+
+The following example shows how to get the best model version from the tuning job\. At most, the top 50 performing versions are available ranked according to [HyperParameterTuningJobObjective](https://docs.aws.amazon.com/sagemaker/latest/APIReference/HyperParameterTuningJobObjective.html)\. The `top_k` argument is an index into the versions, where `top_k=0` is the best performing version and `top_k=49` is the worst performing version\.
+
+```
+best_model = Model(
+    image_uri=image_uri,
+    model_data=step_tuning.get_top_model_s3_uri(
+        top_k=0,
+        s3_bucket=sagemaker_session.default_bucket()
+    ),
+    ...
+)
+```
+
+For more information on Tuning step requirements, see the [sagemaker\.workflow\.steps\.TuningStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.TuningStep)  documentation\.
 
 ### CreateModel Step<a name="step-type-create-model"></a>
 
 You use a CreateModel step to create a SageMaker Model\. For more information on SageMaker Models, see [Train a Model with Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-training.html)\.
 
-A CreateModel step requires model artifacts, and information on the SageMaker instance type that you need to use to create the model\. The following example shows how to create a `CreateModel` step definition\.  For more information on `CreateModel` step requirements, see the [sagemaker\.workflow\.steps\.CreateModelStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.CreateModelStep) documentation\.
+A CreateModel step requires model artifacts, and information on the SageMaker instance type that you need to use to create the model\. The following example shows how to create a `CreateModel` step definition\. For more information on `CreateModel` step requirements, see the [sagemaker\.workflow\.steps\.CreateModelStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.CreateModelStep) documentation\.
 
 ```
 from sagemaker.workflow.steps import CreateModelStep
 
 step_create_model = CreateModelStep(
     name="AbaloneCreateModel",
-    model=model,
+    model=best_model,
     inputs=inputs
 )
 ```
@@ -168,7 +192,7 @@ step_create_model = CreateModelStep(
 
 You use a RegisterModel step to register a model to a model group\. For more information on registering models, see [Register and Deploy Models with Model Registry](model-registry.md)\.
 
-A RegisterModel step requires an estimator, model data output from training, and a model package group name to associate the model package with\. The following example shows how to create a `RegisterModel` definition\.  For more information on `RegisterModel` step requirements, see the [sagemaker\.workflow\.step\_collections\.RegisterModel](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.step_collections.RegisterModel) documentation\.
+A RegisterModel step requires an estimator, model data output from training, and a model package group name to associate the model package with\. The following example shows how to create a `RegisterModel` definition\. For more information on `RegisterModel` step requirements, see the [sagemaker\.workflow\.step\_collections\.RegisterModel](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.step_collections.RegisterModel) documentation\.
 
 ```
 from sagemaker.workflow.step_collections import RegisterModel
@@ -187,11 +211,28 @@ step_register = RegisterModel(
 )
 ```
 
+### Transform Step<a name="step-type-transform"></a>
+
+You use a transform step for batch transformation to run inference on an entire dataset\. For more information on batch transformation, see [Run Batch Transforms with Inference Pipelines ](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipeline-batch.html)\.
+
+A transform step requires a transformer, and the data to run batch transformation on\. The following example shows how to create a `Transform` step definition\. For more information on `Transform` step requirements, see the [sagemaker\.workflow\.steps\.TransformStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.TransformStep)\. documentation\.
+
+```
+from sagemaker.inputs import TransformInput
+from sagemaker.workflow.steps import TransformStep
+
+step_transform = TransformStep(
+    name="AbaloneTransform",
+    transformer=transformer,
+    inputs=TransformInput(data=batch_data)
+)
+```
+
 ### Condition Step<a name="step-type-condition"></a>
 
 You use a condition step to evaluate the condition of step properties to assess which action should be taken next in the pipeline\.
 
-A condition step requires a list of conditions, and a list of steps to execute if the condition evaluates to `true` and a list of steps to execute if the condition evaluates to `false`\. The following example shows how to create a `Condition` step definition\.  For more information on `Condition` step requirements, see the [sagemaker\.workflow\.condition\_step\.ConditionStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#conditionstep) documentation\.
+A condition step requires a list of conditions, and a list of steps to execute if the condition evaluates to `true` and a list of steps to execute if the condition evaluates to `false`\. The following example shows how to create a `Condition` step definition\. For more information on `Condition` step requirements, see the [sagemaker\.workflow\.condition\_step\.ConditionStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#conditionstep) documentation\.
 
 **Limitations**
 + SageMaker Pipelines doesn't support the use of nested condition steps\. You can't pass a condition step as the input for another condition step\.
@@ -233,6 +274,9 @@ You can use a callback step to incorporate additional processes and AWS services
 
 For more information on `Callback` step requirements, see the  [sagemaker\.workflow\.callback\_step](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/workflow/callback_step.py) documentation\.
 
+**Important**  
+Callback steps were introduced in Amazon SageMaker Python SDK v2\.45\.0 and Amazon SageMaker Studio v3\.6\.2\. You must update Studio before you use a callback step or the pipeline DAG doesn't display\. To update Studio, see [Update SageMaker Studio](studio-tasks-update-studio.md)\.
+
 **Stopping Behavior**
 
 A pipeline execution won't stop while a callback step is running\.
@@ -242,9 +286,6 @@ When you call [StopPipelineExecution](https://docs.aws.amazon.com/sagemaker/late
 You should add logic to your Amazon SQS message consumer to take any needed action \(for example, resource cleanup\) upon receipt of the message followed by a call to `SendPipelineExecutionStepSuccess` or `SendPipelineExecutionStepFailure`\.
 
 Only when SageMaker Pipelines receives one of these calls will it stop the pipeline execution\.
-
-**Important**  
-Callback steps were introduced in Amazon SageMaker Python SDK v2\.45\.0 and Amazon SageMaker Studio v3\.6\.2\. You must update Studio before you use a callback step or the pipeline DAG doesn't display\. To update Studio, see [Update SageMaker Studio](studio-tasks-update-studio.md)\.
 
 The following sample demonstrates an implementation of the preceding procedure\.
 
@@ -279,19 +320,9 @@ callback_handler_code = '
 '
 ```
 
-**Stopping Behavior**
-
-A pipeline execution won't stop while a callback step is running\.
-
-When you call [StopPipelineExecution](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_StopPipelineExecution.html) on a pipeline execution with a running callback step, SageMaker Pipelines sends an additional Amazon SQS message to the specified SQS queue\. The body of the SQS message contains a "Status" field which is set to "Stopping"\.
-
-You should add logic to your Amazon SQS message consumer to take any needed action \(for example, resource cleanup\) upon receipt of the message followed by a call to `SendPipelineExecutionStepSuccess` or `SendPipelineExecutionStepFailure`\.
-
-Only when SageMaker Pipelines receives one of these calls will it stop the pipeline execution\.
-
 ## Step Properties<a name="build-and-manage-properties"></a>
 
-The `properties` attribute is used to add data dependencies between steps in the pipeline\. These data dependencies are then used by SageMaker Pipelines to construct the DAG from the pipeline definition\. These properties can be referenced as placeholder values and are resolved at runtime\.  
+The `properties` attribute is used to add data dependencies between steps in the pipeline\. These data dependencies are then used by SageMaker Pipelines to construct the DAG from the pipeline definition\. These properties can be referenced as placeholder values and are resolved at runtime\. 
 
 The `properties` attribute of a SageMaker Pipelines step matches the object returned by a `Describe` call for the corresponding SageMaker job type\. For each job type, the `Describe` call returns the following response object:
 + `ProcessingStep` – [DescribeProcessingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeProcessingJob.html)

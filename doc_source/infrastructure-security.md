@@ -7,17 +7,11 @@ You use AWS published API calls to access Amazon SageMaker through the network\.
 Additionally, requests must be signed by using an access key ID and a secret access key that is associated with an IAM principal\. Or you can use the [AWS Security Token Service](https://docs.aws.amazon.com/STS/latest/APIReference/Welcome.html) \(AWS STS\) to generate temporary security credentials to sign requests\.
 
 **Topics**
-+ [Connect SageMaker Studio Notebooks to Resources in a VPC](studio-notebooks-and-internet-access.md)
-+ [Connect a Notebook Instance to Resources in a VPC](appendix-notebook-and-internet-access.md)
-+ [Training and Inference Containers Run in Internet\-Free Mode](mkt-algo-model-internet-free.md)
 + [SageMaker Scans AWS Marketplace Training and Inference Containers for Security Vulnerabilities](#mkt-container-scan)
++ [Connect to Resources in a VPC](infrastructure-connect-to-resources.md)
++ [Run Training and Inference Containers in Internet\-Free Mode](mkt-algo-model-internet-free.md)
 + [Connect to SageMaker Through a VPC Interface Endpoint](interface-vpc-endpoint.md)
-+ [Give SageMaker Compilation Jobs Access to Resources in Your Amazon VPC](neo-vpc.md)
-+ [Give SageMaker Processing Jobs Access to Resources in Your Amazon VPC](process-vpc.md)
-+ [Give SageMaker Hosted Endpoints Access to Resources in Your Amazon VPC](host-vpc.md)
-+ [Give SageMaker Training Jobs Access to Resources in Your Amazon VPC](train-vpc.md)
-+ [Give Batch Transform Jobs Access to Resources in Your Amazon VPC](batch-vpc.md)
-+ [Give Amazon SageMaker Clarify Jobs Access to Resources in Your Amazon VPC](clarify-vpc.md)
++ [Give SageMaker Access to Resources in your Amazon VPC](infrastructure-give-access.md)
 
 ## SageMaker Scans AWS Marketplace Training and Inference Containers for Security Vulnerabilities<a name="mkt-container-scan"></a>
 

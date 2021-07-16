@@ -77,7 +77,7 @@ Containers need to implement a web server that responds to `/invocations` and `/
 
 ## How Your Container Should Respond to Inference Requests<a name="your-algorithms-inference-code-container-response"></a>
 
-To obtain inferences, the client application sends a POST request to the SageMaker endpoint\. For more information, see the [ `InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html) API\. SageMaker passes the request to the container, and returns the inference result from the container to the client\. Note the following:
+To obtain inferences, the client application sends a POST request to the SageMaker endpoint\. For more information, see the [ `InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html) API\. SageMaker passes the request to the container, and returns the inference result from the container to the client\. Note the following:
 + SageMaker strips all `POST` headers except those supported by `InvokeEndpoint`\. SageMaker might add additional headers\. Inference containers must be able to safely ignore these additional headers\.
 + To receive inference requests, the container must have a web server listening on port 8080 and must accept `POST` requests to the `/invocations` endpoint\. 
 + A customer's model containers must accept socket connection requests within 250 ms\.

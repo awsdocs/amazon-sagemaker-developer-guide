@@ -38,7 +38,7 @@ For example:
 The following table lists the addresses by AWS Region\.
 
 
-**Docker Images for Pretraining Bias Detection**  
+**Docker Images for Clarify Processing Jobs**  
 
 | Region | Image address | 
 | --- | --- | 
@@ -62,6 +62,8 @@ The following table lists the addresses by AWS Region\.
 | sa\-east\-1 | 520018980103\.dkr\.ecr\.sa\-east\-1\.amazonaws\.com/sagemaker\-clarify\-processing:1\.0 | 
 | af\-south\-1 | 811711786498\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-clarify\-processing:1\.0 | 
 | eu\-south\-1 | 638885417683\.dkr\.ecr\.eu\-south\-1\.amazonaws\.com/sagemaker\-clarify\-processing:1\.0 | 
+| cn\-north\-1 | 122526803553\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/sagemaker\-clarify\-processing:1\.0 | 
+| cn\-northwest\-1 | 122578899357\.dkr\.ecr\.cn\-northwest\-1\.amazonaws\.com/sagemaker\-clarify\-processing:1\.0 | 
 
 ## How It Works<a name="clarify-processing-job-configure-how-it-works"></a>
 
