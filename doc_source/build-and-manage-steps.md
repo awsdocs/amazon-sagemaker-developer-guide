@@ -382,7 +382,7 @@ The following example creates a training step that starts after a processing ste
 processing_step = ProcessingStep(...)
 training_step = TrainingStep(...)
 
-training_step.add_depends_on([processing_step])
+training_step.add_depends_on([processing_step.name])
 ```
 
 The following example creates a training step that doesn't start until two different processing steps finish executing\.
@@ -393,14 +393,14 @@ processing_step_2 = ProcessingStep(...)
 
 training_step = TrainingStep(...)
 
-training_step.add_depends_on([processing_step_1, processing_step_2])
+training_step.add_depends_on([processing_step_1.name, processing_step_2.name])
 ```
 
 The following provides an alternate way to create the custom dependency\.
 
 ```
-training_step.add_depends_on([processing_step_1])
-training_step.add_depends_on([processing_step_2])
+training_step.add_depends_on([processing_step_1.name])
+training_step.add_depends_on([processing_step_2.name])
 ```
 
 The following example creates a training step that receives input from one processing step and waits for a different processing step to finish executing\.
@@ -417,7 +417,7 @@ training_step = TrainingStep(
         ].S3Output.S3Uri
     )
 
-training_step.add_depends_on([processing_step_2])
+training_step.add_depends_on([processing_step_2.name])
 ```
 
 The following example shows how to retrieve a string list of the custom dependencies of a step\.
