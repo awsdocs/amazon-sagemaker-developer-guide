@@ -1,27 +1,36 @@
-# Create an MLOps Project<a name="sagemaker-projects-create"></a>
+# Create an MLOps Project using Amazon SageMaker Studio<a name="sagemaker-projects-create"></a>
 
-Create a SageMaker MLOps project by using SageMaker studio\.
+This procedure demonstrates how to create an MLOps Project using Amazon SageMaker Studio\.
 
 **Prerequisites**
-
-To create a project in SageMaker Studio, you need:
 + An AWS SSO or IAM account to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
-+ Basic familiarity with the Studio user interface and Jupyter notebooks\. For information, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
++ Permission to use SageMaker provided project templates\. For information, see [SageMaker Studio Permissions Required to Use Projects](sagemaker-projects-studio-updates.md)\.
++ Basic familiarity with the Studio user interface\. For information, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
 
 **To create a project in SageMaker Studio**
 
 1. Sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
 
-1. Choose **Components and registries**, and then choose **Projects** in the drop\-down list\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/projects/studio-projects.png)
+1. In the left sidebar of Studio, choose the **SageMaker resources** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png)\)\.
 
-1. Choose **Create project**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/projects/studio-project-create.png)
+1. Choose **Projects** in the drop\-down list\.
 
-   The **Create project** tab appears\.
+1. Choose **Create project**\.
 
-1. For **SageMaker project templates**, choose **Organization templates** to choose a custom template that your organization created, or **SageMaker templates** to choose a SageMaker\-provided template\. Then choose a template from the list of available templates, and choose **Choose project template**\. For more information about project templates, see [MLOps Project Templates](sagemaker-projects-templates.md)\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/projects/studio-project-choose-template.png)
+   The **Create project** tab opens displaying a list of available templates\.
 
-1. For **Project details** enter a name and description for your project\. Optionally, add tags, which are key value pairs that you can use to track your projects\. When you are finished, choose **Create project**  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/projects/studio-project-create-details.png)
+1. For **SageMaker project templates**, choose **SageMaker templates**\. For more information about project templates, see [MLOps Project Templates](sagemaker-projects-templates.md)\.
+
+1. Choose **MLOps template for model building, training, and deployment**\.
+
+1. Choose **Select project template**\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/projects/projects-template.png)
+
+   The **Create project** tab changes to display **Project details**\.
+
+1. Enter the following information:
+   + For **Project details** enter a name and description for your project\.
+   + Optionally, add tags, which are key value pairs that you can use to track your projects\.
+
+1. Choose **Create project** and wait for the project to appear in the **Projects** list\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/projects/projects-details.png)

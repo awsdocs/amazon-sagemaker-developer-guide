@@ -13,6 +13,7 @@ This video is a deep dive on how to use SageMaker notebook instances\. \(Length:
 [![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/uQc8Itd4UTs/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/uQc8Itd4UTs)
 
 **Topics**
++ [Amazon Linux 2 vs Amazon Linux notebook instances](nbi-al2.md)
 + [Create a Notebook Instance](howitworks-create-ws.md)
 + [Access Notebook Instances](howitworks-access-ws.md)
 + [Update a Notebook Instance](nbi-update.md)

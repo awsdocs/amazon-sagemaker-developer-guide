@@ -1,4 +1,6 @@
-# Distributed Training<a name="distributed-training"></a>
+# Amazon SageMaker Distributed Training Libraries<a name="distributed-training"></a>
+
+SageMaker provides distributed training libraries for data parallelism and model parallelism\. The libraries are optimized for the SageMaker training environment, help adapt your distributed training jobs to SageMaker, and improve training speed and throughput\.
 
 **Topics**
 + [Get Started with Distributed Training](#distributed-training-get-started)
@@ -10,7 +12,7 @@
 + [SageMaker Built\-In Distributed Training Features](#distributed-training-built-in)
 + [SageMaker's Distributed Data Parallel Library](data-parallel.md)
 + [SageMaker's Distributed Model Parallel](model-parallel.md)
-+ [Distributed Training Jupyter Notebook Examples](distributed-training-notebook-examples.md)
++ [Amazon SageMaker Distributed Training Notebook Examples](distributed-training-notebook-examples.md)
 
 ## Get Started with Distributed Training<a name="distributed-training-get-started"></a>
 
@@ -20,13 +22,16 @@ If you’re familiar with distributed training, follow one of the links to your 
 +  [SageMaker's Distributed Data Parallel Library](data-parallel.md) 
 +  [SageMaker's Distributed Model Parallel](model-parallel.md) 
 
+**Note**  
+The SageMaker distributed training libraries are available only through the AWS deep learning containers for the TensorFlow, PyTorch, and HuggingFace frameworks within the SageMaker training platform\. To use the libraries, you must use the SageMaker Python SDK or the SageMaker APIs through SDK for Python \(Boto3\) or AWS Command Line Interface\. Throughout the documentation, instructions and examples focus on how to use the distributed training libraries with the SageMaker Python SDK\.
+
 ## Basic Distributed Training Concepts<a name="distributed-training-basic-concepts"></a>
 
  SageMaker’s distributed training libraries use the following distributed training terms and features\. 
 
 **Datasets and Batches**
 + **Training Dataset**: All of the data you use to train the model\.
-+ **Global batch size**: The number of records selected from the training dataset in each iteration to send to the GPUs in the cluster\. This is the number of records over which the gradient is computed at each iteration\. If data parallelism is used, it is equal to the total number of model replicas multiplied by the per\-replica batch size: global batch size = \# model replicas x per\-replica batch size\. A single batch of global batch size is often referred to as the *mini\-batch * in machine learning literature\.
++ **Global batch size**: The number of records selected from the training dataset in each iteration to send to the GPUs in the cluster\. This is the number of records over which the gradient is computed at each iteration\. If data parallelism is used, it is equal to the total number of model replicas multiplied by the per\-replica batch size: `global batch size = (the number of model replicas) * (per-replica batch size)`\. A single batch of global batch size is often referred to as the *mini\-batch * in machine learning literature\.
 + **Per\-replica batch size:** When data parallelism is used, this is the number of records sent to each model replica\. Each model replica performs a forward and backward pass with this batch to calculate weight updates\. The resulting weight updates are synchronized \(averaged\) across all replicas before the next set of per\-replica batches are processed\. 
 + **Micro\-batch**: A subset of the mini\-batch or, if hybrid model and data parallelism is used , it is a subset of the per\-replica sized batch \. When you use SageMaker’s distributed model parallelism library, each micro\-batch is fed into the training pipeline one\-by\-one and follows an [execution schedule](https://docs.aws.amazon.com/sagemaker/latest/dg/model-parallel-core-features.html#model-parallel-pipeline-execution) defined by the library's runtime\.
 
@@ -36,13 +41,13 @@ If you’re familiar with distributed training, follow one of the links to your 
 + **Learning rate**: A variable that influences the amount that weights are changed in response to the calculated error of the model\. The learning rate plays an important role in the model’s ability to converge as well as the speed and optimality of convergence\.
 
 **Instances and GPUs**
-+  **Instances**: An AWS [machine learning compute instance](https://aws.amazon.com/sagemaker/pricing/)\. These are also referred to as *nodes*\.
++ **Instances**: An AWS [machine learning compute instance](https://aws.amazon.com/sagemaker/pricing/)\. These are also referred to as *nodes*\.
 + **Cluster size**: When using SageMaker's distributed training library, this is the number of instances multiplied by the number of GPUs in each instance\. For example, if you use two ml\.p3\.8xlarge instances in a training job, which have 4 GPUs each, the cluster size is 8\. While increasing cluster size can lead to faster training times, communication between instances must be optimized; Otherwise, communication between the nodes can add overhead and lead to slower training times\. The SageMaker distributed training library is designed to optimize communication between AWS ML compute instances, leading to higher device utilization and faster training times\.
 
 **Distributed Training Solutions**
 + **Data parallelism**: A strategy in distributed training where a training dataset is split up across multiple processing nodes \(such as AWS ML Instances\), and each processing node contains a *replica* of the model\. Each node receives different batches of training data, performs a forward and backward pass, and shares weight updates with the other nodes for synchronization before moving on to the next batch and ultimately another epoch\.
 + **Model parallelism**: A strategy in distributed training where the model partitioned across multiple processing nodes \(such as AWS ML Instances\)\. The model might be complex and have a large number of hidden layers and weights, making it unable to fit in the memory of a single node\. Each node carries a subset of the model, through which the data flows and the transformations are shared and compiled\. The efficiency of model parallelism, in terms of GPU utilization and training time, is heavily dependent on how the model is partitioned and the execution schedule used to perform forward and backward passes\.
-+  **Pipeline Execution Schedule** \(**Pipelining**\): The pipeline execution schedule determines the order in which computations \(micro\-batches\) are made and data is processed across devices during model training\. Pipelining is a technique to achieve true parallelization in model parallelism and overcome the performance loss due to sequential computation by having the GPUs compute simultaneously on different data samples\. To learn more, see [Pipeline Execution Schedule](https://docs.aws.amazon.com/sagemaker/latest/dg/model-parallel-core-features.html#model-parallel-pipeline-execution)\. 
++ **Pipeline Execution Schedule** \(**Pipelining**\): The pipeline execution schedule determines the order in which computations \(micro\-batches\) are made and data is processed across devices during model training\. Pipelining is a technique to achieve true parallelization in model parallelism and overcome the performance loss due to sequential computation by having the GPUs compute simultaneously on different data samples\. To learn more, see [Pipeline Execution Schedule](https://docs.aws.amazon.com/sagemaker/latest/dg/model-parallel-core-features.html#model-parallel-pipeline-execution)\. 
 
 **Example**
 
@@ -60,7 +65,7 @@ Not all models handle training data scaling equally well\. Some algorithms need 
 
 Deep Learning \(DL\) is a specific family of ML algorithms consisting of several layers of artificial neural networks\. The most common training method is with mini\-batch Stochastic Gradient Descent \(SGD\)\. In mini\-batch SGD, the model is trained by conducting small iterative changes of its coefficients in the direction that reduces its error\. Those iterations are conducted on equally sized subsamples of the training dataset called *mini\-batches*\. For each mini\-batch, the model is run in each record of the mini\-batch, its error measured and the gradient of the error estimated\. Then the average gradient is measured across all the records of the mini\-batch and provides an update direction for each model coefficient\. One full pass over the training dataset is called an *epoch*\. Model trainings commonly consist of dozens to hundreds of epochs\. Mini\-batch SGD has several benefits: First, its iterative design makes training time theoretically linear of dataset size\. Second, in a given mini\-batch each record is processed individually by the model without need for inter\-record communication other than the final gradient average\. The processing of a mini\-batch is consequently particularly suitable for parallelization and distribution\.  
 
-Parallelizing SGD training by distributing the records of a mini\-batch over different computing devices is called *data parallel distributed training*, and is the most commonly used DL distribution paradigm\. Data parallel training is a relevant distribution strategy to scale the mini\-batch size and process each mini\-batch faster\. However, data parallel training comes with the extra complexity of having to compute the mini\-batch gradient average with gradients coming from all the workers and communicating it to all the workers, a step called *allreduce* that can represent a growing overhead, as the training cluster is scaled, and that can also drastically penalize training time if improperly implemented or implemented over improper hardware substracts\.  
+Parallelizing SGD training by distributing the records of a mini\-batch over different computing devices is called *data parallel distributed training*, and is the most commonly used DL distribution paradigm\. Data parallel training is a relevant distribution strategy to scale the mini\-batch size and process each mini\-batch faster\. However, data parallel training comes with the extra complexity of having to compute the mini\-batch gradient average with gradients coming from all the workers and communicating it to all the workers, a step called *allreduce* that can represent a growing overhead, as the training cluster is scaled, and that can also drastically penalize training time if improperly implemented or implemented over improper hardware subtracts\.  
 
 Data parallel SGD still requires developers to be able to fit at least the model and a single record in a computing devices, like a single CPU or GPU\. When training very large models such as large transformers in Natural Language Processing \(NLP\), or segmentation models over high\-resolution images, there may be situations in which this is not feasible\. An alternative way to break up the workload is to partition the model over multiple computing devices, an approach called *model\-parallel distributed training*\. 
 
@@ -79,8 +84,14 @@ If you are training with a large dataset, start with a data parallel approach\. 
 + Reduce the batch size\.
 + Keep reducing the batch size until it fits\. If you reduce batch size to 1, and still run out of memory, then you should try model\-parallel training\. 
 
-Try gradient compression \(fp16, fp8\):
-+ On NVIDIA TensorCore\-equipped hardware, using [mixed\-precision training](https://docs.nvidia.com/deeplearning/performance/mixed-precision-training/index.html) creates both speed\-up and memory consumption reduction\.
+Try gradient compression \(FP16, INT8\):
++ On NVIDIA TensorCore\-equipped hardware, using [mixed precision training](https://docs.nvidia.com/deeplearning/performance/mixed-precision-training/index.html) creates both speed\-up and memory consumption reduction\.
++ SageMaker's distributed data parallelism library supports Automatic Mixed Precision \(AMP\) out of the box\. No extra action is needed to enable AMP other than the framework\-level modifications to your training script\. If gradients are in FP16, the SageMaker data parallelism library runs its `AllReduce` operation in FP16\. For more information about implementing AMP APIs to your training script, see the following resources:
+  + [Frameworks \- PyTorch](https://docs.nvidia.com/deeplearning/performance/mixed-precision-training/index.html#pytorch) in the *NVIDIA Deep Learning Performace documentation*
+  + [Frameworks \- TensorFlow](https://docs.nvidia.com/deeplearning/performance/mixed-precision-training/index.html#tensorflow) in the *NVIDIA Deep Learning Performace documentation*
+  + [Automatic Mixed Precision for Deep Learning](https://developer.nvidia.com/automatic-mixed-precision) in the *NVIDIA Developer Docs*
+  + [Introducing native PyTorch automatic mixed precision for faster training on NVIDIA GPUs](https://pytorch.org/blog/accelerating-training-on-nvidia-gpus-with-pytorch-automatic-mixed-precision/) in the *PyTorch Blog*
+  + [TensorFlow mixed precision APIs](https://www.tensorflow.org/guide/mixed_precision) in the *TensorFlow documentation*
 
 Try reducing the input size:
 + Reduce the NLP sequence length if you increase the sequence link, need to adjust the batch size down, or adjust the GPUs up to spread the batch\. 

@@ -36,7 +36,7 @@ In this step, you create a SageMaker MLOps project by using a SageMaker provided
 1. For **SageMaker project templates**, choose **Organization templates**, then choose **MLOps template for model building, training, and deployment**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/projects/projects-walkthrough-template.png)
 
-1. For **Project details** enter a name and description for your project\.**Create project**  
+1. For **Project details** enter a name and description for your project\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/projects/studio-project-create-details.png)
 
 When the project appears in the **Projects** list with a **Status** of **Created**, move on to the next step\.
@@ -146,9 +146,9 @@ To delete the AWS CloudFormation stack and the Amazon S3 bucket, you need to be 
    sm_client.delete_project(ProjectName="MyProject")
    ```
 
-   This deletes the Service Catalog provisioned product that the project created\. This includes the CodeCommit, CodePipeline, and CodeBuild resources that were created for the project\.
+   This deletes the AWS Service Catalog provisioned product that the project created\. This includes the CodeCommit, CodePipeline, and CodeBuild resources that were created for the project\.
 
-1. Delete the AWS CloudFormation stacks that the project created\. There are 2 stacks, one for staging and one for production\. The names of the stacks are **sagemaker\-*projectname*\-*project\-id*\-deploy\-staging** and **sagemaker\-*projectname*\-*project\-id*\-deploy\-prod**, where *projectname* is the name of your project, and *project\-id* is the ID of your project\.
+1. Delete the AWS CloudFormation stacks that the project created\. There are two stacks, one for staging and one for production\. The names of the stacks are **sagemaker\-*projectname*\-*project\-id*\-deploy\-staging** and **sagemaker\-*projectname*\-*project\-id*\-deploy\-prod**, where *projectname* is the name of your project, and *project\-id* is the ID of your project\.
 
    For information about how to delete a AWS CloudFormation stack, see [Deleting a stack on the AWS CloudFormation console](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-delete-stack.html) in the *AWS CloudFormation User Guide*\.
 

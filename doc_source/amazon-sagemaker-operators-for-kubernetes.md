@@ -10,7 +10,7 @@ There is no additional charge to use these operators\. You do incur charges for 
 + [Delete operators](#delete-operators)
 + [Troubleshooting](#troubleshooting)
 + [Images and SMlogs in each Region](#images-and-smlogs-in-each-region)
-+ [Using SageMaker Jobs](using-amazon-sagemaker-jobs.md)
++ [Using Amazon SageMaker Jobs](using-amazon-sagemaker-jobs.md)
 
 ## What is an operator?<a name="what-is-an-operator"></a>
 

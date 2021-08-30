@@ -4,7 +4,7 @@ Class imbalance \(CI\) bias occurs when a facet value *d* has fewer training sam
 
 The formula for the \(normalized\) facet imbalance measure:
 
- CI = \(na \- nd\)/\(na \+ nd\)
+        CI = \(na \- nd\)/\(na \+ nd\)
 
 Where na is the number of members of facet *a* and nd the number for facet *d*\. Its values range over the interval \[\-1, 1\]\. 
 + Positive CI values indicate the facet *a* has more training samples in the dataset and a value of 1 indicates the data only contains members of the facet *a*\.

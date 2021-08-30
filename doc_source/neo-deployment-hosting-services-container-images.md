@@ -104,16 +104,6 @@ Replace *`instance_type`* with `inf`\.
 
 ------
 
-## Darknet<a name="inference-container-collapse-darknet"></a>
-
-```
-aws_account_id.dkr.ecr.aws_region.amazonaws.com/sagemaker-neo-darknet:instance-type
-```
-
-Replace *aws\_account\_id* from the table at the end of this page based on the *aws\_region* you used\.
-
-Replace *instance\-type* with either `cpu` or `gpu`\.
-
 The following table maps *aws\_account\_id* with *aws\_region*\. Use this table to find the correct inference image URI you need for your application\. 
 
 

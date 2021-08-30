@@ -40,7 +40,7 @@ Models trained on data biased by demographic disparities might learn and even ex
 | [Kolmogorov\-Smirnov \(KS\)](clarify-data-bias-metric-kolmogorov-smirnov.md)  | Measures maximum divergence between outcomes in distributions for different facets in a dataset\. | Which college application outcomes manifest the greatest disparities by demographic group? | Range of KS values for binary, multicategory, and continuous outcomes: \[0,\+1\][\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-data-bias.html) | 
 | [Conditional Demographic Disparity \(CDD\)](clarify-data-bias-metric-cddl.md)  | Measures the disparity of outcomes between different facets as a whole, but also by subgroups\. | Do some groups have a larger proportion of rejections for college admission outcomes than their proportion of acceptances? |  Range of CDD: \[\-1, \+1\] [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-data-bias.html)  | 
 
-For additional information about bias metrics, see [Fairness Measures for Machine Leaning in Finance](https://pages.awscloud.com/rs/112-TZM-766/images/Fairness.Measures.for.Machine.Learning.in.Finance.pdf)\.
+For additional information about bias metrics, see [Fairness Measures for Machine Learning in Finance](https://pages.awscloud.com/rs/112-TZM-766/images/Fairness.Measures.for.Machine.Learning.in.Finance.pdf)\.
 
 **Topics**
 + [Class Imbalance \(CI\)](clarify-bias-metric-class-imbalance.md)

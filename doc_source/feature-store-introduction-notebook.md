@@ -53,9 +53,26 @@ We first start by creating feature group names for customer\_data and orders\_da
 
 ```
 import time
+from time import strftime, gmtime
 customers_feature_group_name = 'customers-feature-group-' + strftime('%d-%H-%M-%S', gmtime())
 orders_feature_group_name = 'orders-feature-group-' + strftime('%d-%H-%M-%S', gmtime())
+```
 
+Instantiate a `FeatureGroup` object for `customers_data` and `orders_data`\.
+
+```
+from sagemaker.feature_store.feature_group import FeatureGroup
+
+customers_feature_group = FeatureGroup(
+    name=customers_feature_group_name, sagemaker_session=sagemaker_session
+)
+orders_feature_group = FeatureGroup(
+    name=orders_feature_group_name, sagemaker_session=sagemaker_session
+)
+```
+
+```
+import time
 current_time_sec = int(round(time.time()))
 record_identifier_feature_name = "customer_id"
 ```
@@ -145,7 +162,30 @@ sample_record = sagemaker_session.boto_session.client('sagemaker-featurestore-ru
 ```
 
 ```
-sample_record
+print(sample_record)
+```
+
+Below demonstrates how to use the `batch_get_record` to get a batch of records\. 
+
+```
+all_records = sagemaker_session.boto_session.client(
+    "sagemaker-featurestore-runtime", region_name=region
+).batch_get_record(
+    Identifiers=[
+        {
+            "FeatureGroupName": customers_feature_group_name,
+            "RecordIdentifiersValueAsString": ["573291", "109382", "828400", "124013"],
+        },
+        {
+            "FeatureGroupName": orders_feature_group_name,
+            "RecordIdentifiersValueAsString": ["573291", "109382", "828400", "124013"],
+        },
+    ]
+)
+```
+
+```
+print(all_records)
 ```
 
 ## Step 5: Clean up<a name="feature-store-load-feature-definitions"></a>

@@ -1,6 +1,6 @@
-# Use the SageMaker Distributed Data Parallel API<a name="data-parallel-use-api"></a>
+# Run a SageMaker Distributed Data Parallel Training Job<a name="data-parallel-use-api"></a>
 
-Use this page to learn how you can import and use SageMaker's distributed data parallel library\. For API specifications, refer to [distributed data parallel](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html) in the SageMaker Python SDK documentation\.
+Learn how to run a distributed data parallel training job using the SageMaker Python SDK and your adapted training script with SageMaker's distributed data parallel library\. For API specifications, refer to [distributed data parallel](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html) in the SageMaker Python SDK documentation\.
 
 ## Use SageMaker's Distributed Data Parallel Library<a name="data-parallel-use-api-overview"></a>
 
@@ -8,7 +8,7 @@ To use SageMaker's distributed data parallel library, you start with a training
 +  Using a [SageMaker notebook instance](https://docs.aws.amazon.com/sagemaker/latest/dg/nbi.html) 
 +  Using [SageMaker Studio](https://docs.aws.amazon.com/sagemaker/latest/dg/studio.html) 
 
-With either option, you can then use the [Distributed Training Jupyter Notebook Examples](distributed-training-notebook-examples.md) provided with this documentation to get started\.  
+With either option, you can then use the [Amazon SageMaker Distributed Training Notebook Examples](distributed-training-notebook-examples.md) provided with this documentation to get started\.  
 
 ## Use the Data Parallel Library with SageMaker's Python SDK<a name="data-parallel-use-python-skd-api"></a>
 

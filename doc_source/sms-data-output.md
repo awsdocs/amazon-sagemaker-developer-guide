@@ -55,7 +55,7 @@ The `activelearning` directory is only present when you are using automated data
 The `annotations` directory contains all of the annotations made by the workforce\. These are the responses from individual workers that have not been consolidated into a single label for the data object\. 
 
 There are three subdirectories in the `annotations` directory\. 
-+ The first, `worker-response`, contains the responses from individual workers\. This contains a subdirectory for each iteration, which in turn contains a subdirectory for each data object in that iteration\. The annotation for each data object is stored in a timestamped JSON file that contains the annotation made by a single worker, and if you use a private workforce, metadata about that worker\. To learn more about this metadata, see [Worker Metadata](#sms-worker-id-private)\.
++ The first, `worker-response`, contains the responses from individual workers\. This contains a subdirectory for each iteration, which in turn contains a subdirectory for each data object in that iteration\. The worker response data for each data object is stored in a timestamped JSON file that contains the answers submitted by each worker for that data object, and if you use a private workforce, metadata about those workers\. To learn more about this metadata, see [Worker Metadata](#sms-worker-id-private)\.
 + The second, `consolidated-annotation`, contains information required to consolidate the annotations in the current batch into labels for your data objects\.
 + The third, `intermediate`, contains the output manifest for the current batch with any completed labels\. This file is updated as the label for each data object is completed\.
 

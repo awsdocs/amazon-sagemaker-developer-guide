@@ -6,7 +6,7 @@ There are legal concepts of fairness that might not be easy to capture because t
 
 Amazon SageMaker Clarify tries to ensure a consistent use of terminology\. For a list of terms and their definitions, see [Amazon SageMaker Clarify Terms for Bias and Fairness](clarify-detect-data-bias.md#clarify-bias-and-fairness-terms)\.
 
-For additional information about posttraining bias metrics, see [Fairness Measures for Machine Leaning in Finance](https://pages.awscloud.com/rs/112-TZM-766/images/Fairness.Measures.for.Machine.Learning.in.Finance.pdf)\.
+For additional information about posttraining bias metrics, see [Fairness Measures for Machine Learning in Finance](https://pages.awscloud.com/rs/112-TZM-766/images/Fairness.Measures.for.Machine.Learning.in.Finance.pdf)\.
 
 ## Sample Notebooks<a name="clarify-post-training-bias-sample-notebooks"></a>
 

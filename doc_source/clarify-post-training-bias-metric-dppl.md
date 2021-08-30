@@ -6,7 +6,7 @@ The formula for the difference in proportions of predicted labels:
 
 
 
- DPPL = q'a \- q'd
+        DPPL = q'a \- q'd
 
 Where:
 + q'a = n'a\(1\)/na is the predicted proportion of facet *a* who get a positive outcome of value 1\. In our example, the proportion of a middle\-aged facet predicted to get granted a loan\. Here n'a\(1\) represents the number of members of facet *a* who get a positive predicted outcome of value 1 and na the is number of members of facet *a*\. 

@@ -24,7 +24,7 @@ Specifically, assume we have the following:
 
 Then, we can compute the NDCG as:
 
- NDCG=DCG/iDCG​
+        NDCG=DCG/iDCG​
 
 with 
 + DCG = ∑1m*a*\(*f'i*\)/log2​\(*i*\+1\)

@@ -19,7 +19,7 @@ SageMaker provides features to monitor and manage the training and validation of
 + [Manage Machine Learning with Amazon SageMaker Experiments](experiments.md)
 + [Amazon SageMaker Debugger](train-debugger.md)
 + [Perform Automatic Model Tuning with SageMaker](automatic-model-tuning.md)
-+ [Distributed Training](distributed-training.md)
++ [Amazon SageMaker Distributed Training Libraries](distributed-training.md)
 + [Detect Posttraining Data and Model Bias](clarify-detect-post-training-bias.md)
 + [Model Explainability](clarify-model-explainability.md)
 + [Incremental Training in Amazon SageMaker](incremental-training.md)

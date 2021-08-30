@@ -87,6 +87,6 @@ To view the details of a model version in SageMaker Studio, complete the followi
 
 1. On the model version tab that opens, choose one of the following to see details about the model version:
    + **Activity** \- Shows events for the model version, such as approval status updates\.
-   + **Metrics** \- Shows quality metrics for the model\. For metrics to appear, you must enable data capture for your model by using &SM; Model Monitor\. For information about capturing data, see [Capture Data](model-monitor-data-capture.md)\.
+   + **Metrics** \- Shows quality metrics for the model\. For metrics to appear, you must enable data capture for your model by using SageMaker Model Monitor\. For information about capturing data, see [Capture Data](model-monitor-data-capture.md)\.
    + **Settings** \- Shows information such as the project that the model version is associated with, the pipeline that generated the model, the model group, and the model's location in Amazon S3\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry/model-version-details.png)

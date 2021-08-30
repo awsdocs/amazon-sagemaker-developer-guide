@@ -8,22 +8,24 @@ In this section you will set up your device with the agent\. To do so, first cop
 
 1. **Download the SageMaker Edge Manager agent\.**
 
-   The agent is released in binary format for supported operating systems\. This example runs inference on a Linux platform \(Rasperry Pi OS is based on Debian\)\. Fetch the latest version of binaries from the SageMaker Edge Manager release bucket from the us\-west\-2 Region\.
+   The agent is released in binary format for supported operating systems\. This example runs inference on a Jetson Nano which uses a Linux operating system and has an ARM64 architecture\. For more information about what operating system and architecture supported devices use, see [Supported Devices, Chip Architectures, and Systems](neo-supported-devices-edge-devices.md)\.
+
+   Fetch the latest version of binaries from the SageMaker Edge Manager release bucket from the us\-west\-2 Region\.
 
    ```
-   aws s3 ls s3://sagemaker-edge-release-store-us-west-2-windows-x86/Releases/ | sort -r
+   !aws s3 ls s3://sagemaker-edge-release-store-us-west-2-linux-armv8/Releases/ | sort -r
    ```
 
    This returns release artifacts sorted by their version\.
 
    ```
-   2020-12-01 23:33:36 0 
-   
-                       PRE 1.20201218.81f481f/
-                       PRE 1.20201207.02d0e97/
+                              PRE 1.20210512.96da6cc/
+                              PRE 1.20210305.a4bc999/
+                              PRE 1.20201218.81f481f/
+                              PRE 1.20201207.02d0e97/
    ```
 
-   The version has the following format: `<MAJOR_VERSION>.<YYYY-MM-DD>-<SHA-7>`\. It consists of three components:
+   The version has the following format: `<MAJOR_VERSION>.<YYYY-MM-DD>.<SHA-7>`\. It consists of three components:
    + `<MAJOR_VERSION>`: The release version\. The release version is currently set to `1`\.
    + `<YYYY-MM-DD>`: The time stamp of the artifact release\.
    + <SHA\-7>: The repository commit ID from which the release is built\.
@@ -34,17 +36,29 @@ In this section you will set up your device with the agent\. To do so, first cop
    !aws s3 cp s3://sagemaker-edge-release-store-us-west-2-linux-x64/Releases/1.20201218.81f481f/1.20201218.81f481f.tgz ./
    ```
 
-   Once you have the artifact, unzip the zipped TAR file:
+   Once you have the artifact, unzip the zipped TAR file\. The following unzips the TAR file and stores it in a directory called `agent_demo`:
 
    ```
    !mkdir agent_demo
    !tar -xvzf 1.20201218.81f481f.tgz -C ./agent_demo
    ```
 
+   Upload the agent release artifacts to your Amazon S3 bucket\. The following code example copies the content within `agent_demo` and uploads it to a directory within your Amazon S3 bucket called `agent_demo`:
+
+   ```
+   !aws s3 cp --recursive ./agent_demo s3://{bucket}/agent_demo
+   ```
+
    You also need the signing root certificates from the release bucket:
 
    ```
    !aws s3 cp s3://sagemaker-edge-release-store-us-west-2-linux-x64/Certificates/us-west-2/us-west-2.pem ./
+   ```
+
+   Upload the signing root certificate to your Amazon S3 bucket:
+
+   ```
+   !aws s3 cp us-west-2.pem s3://{bucket}/authorization-files/
    ```
 
 1. **Define a SageMaker Edge Manager agent configuration file\.**
@@ -70,6 +84,11 @@ In this section you will set up your device with the agent\. To do so, first cop
    }
    ```
 
+   Replace the following:
+   + `"device_name"` with the name of your device \(this string was stored in an earlier step in a variable named `device_name`\)\.
+   + `"device_fleet_name`" with the name of your device fleet \(this string was stored an earlier step in a variable named `device_fleet_name`\)
+   + `"endpoint"` with your AWS account\-specific endpoint for the credentials provider \(this string was stored in an earlier step in a variable named `endpoint`\)\.
+
    Next, save it as a JSON file:
 
    ```
@@ -78,10 +97,11 @@ In this section you will set up your device with the agent\. To do so, first cop
    edge_config_file.close()
    ```
 
-   Replace the following:
-   + `"device_name"` with the name of your device \(this string was stored in an earlier step in a variable named `device_name`\)\.
-   + `"device_fleet_name`" with the name of your device fleet \(this string was stored an earlier step in a variable named `device_fleet_name`\)
-   + `"endpoint"` with your AWS account\-specific endpoint for the credentials provider \(this string was stored in an earlier step in a variable named `endpoint`\)\.
+   Upload the configuration file to your Amazon S3 bucket:
+
+   ```
+   !aws s3 cp sagemaker_edge_config.json s3://{bucket}/
+   ```
 
 1. **Copy the release artifacts, configuration file, and credentials to your device\.**
 
@@ -100,8 +120,10 @@ You must first install Python, the AWS SDK for Python \(Boto3\), and the AWS CLI
 
    ```
    # Copy release artifacts 
-   aws s3 cp s3://sagemaker-edge-manager-demo/release_artifacts/ ./ --recursive
+   aws s3 cp s3://<bucket-name>/agent_demo/ ./ --recursive
    ```
+
+   \(The contents of the release artifact was stored in a directory called `agent_demo` in a previous step\)\. Replace `<bucket-name>` and `agent_demo` with the name of your Amazon S3 bucket and the file path to your release artifacts, respectively\.
 
    Go the `/bin` directory and make the binary files executable:
 
@@ -134,7 +156,7 @@ You must first install Python, the AWS SDK for Python \(Boto3\), and the AWS CLI
    
    cd certificates
    
-   aws s3 cp s3://<bucket-name>/certificates/us-west-2.pem ./
+   aws s3 cp s3://<bucket-name>/authorization-files/us-west-2.pem ./
    
    cd agent_demo
    ```
@@ -143,7 +165,7 @@ You must first install Python, the AWS SDK for Python \(Boto3\), and the AWS CLI
 
    ```
    #Download config file from S3
-   aws s3 cp s3://<bucket-name>/config_files/sagemaker_edge_config.json ./
+   aws s3 cp s3://<bucket-name>/sagemaker_edge_config.json ./
    
    cd agent_demo
    ```
