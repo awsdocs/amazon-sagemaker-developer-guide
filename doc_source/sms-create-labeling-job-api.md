@@ -3,8 +3,8 @@
 To create a labeling job using the Amazon SageMaker API, you use the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. For specific instructions on creating a labeling job for a built\-in task type, see that [task type page](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html)\. To learn how to create a streaming labeling job, which is a labeling job that runs perpetually, see [Create a Streaming Labeling Job](sms-streaming-create-job.md)\.
 
 To use the `CreateLabelingJob` operation, you need the following:
-+ A worker task template \(`UiTemplateS3Uri`\) or human task UI ARN \(`HumanTaskUiArn`\) in Amazon S3\. 
-  + For 3D point cloud labeling jobs, use the ARN listed in `[HumanTaskUiArn](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UiConfig.html#sagemaker-Type-UiConfig-HumanTaskUiArn)` for your task type\. 
++ A worker task template \(`UiTemplateS3Uri`\) or human task UI ARN \(`[HumanTaskUiArn](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UiConfig.html#sagemaker-Type-UiConfig-HumanTaskUiArn)`\) in Amazon S3\. 
+  + For 3D point cloud jobs, video object detection and tracking jobs, and NER jobs, use the ARN listed in `HumanTaskUiArn` for your task type\.
   + If you are using a built\-in task type other than 3D point cloud tasks, you can add your worker instructions to one of the pre\-built templates and save the template \(using a \.html or \.liquid extension\) in your S3 bucket\. Find the pre\-build templates on your [task type page](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html)\.
   + If you are using a custom labeling workflow, you can create a custom template and save the template in your S3 bucket\. To learn how to built a custom worker template, see [Step 2: Creating your custom worker task template](sms-custom-templates-step2.md)\. For custom HTML elements that you can use to customize your template, see [Crowd HTML Elements Reference](sms-ui-template-reference.md)\. For a repository of demo templates for a variety of labeling tasks, see [Amazon SageMaker Ground Truth Sample Task UIs ](https://github.com/aws-samples/amazon-sagemaker-ground-truth-task-uis)\.
 + An input manifest file that specifies your input data in Amazon S3\. Specify the location of your input manifest file in `ManifestS3Uri`\. For information about creating an input manifest, see [Input Data](sms-data-input.md)\. If you create a streaming labeling job, this is optional\. To learn how to create a streaming labeling job, see [Create a Streaming Labeling Job](sms-streaming-create-job.md)\.
@@ -104,7 +104,7 @@ response = client.create_labeling_job(
         'S3OutputPath': "s3://bucket/path/file-to-store-output-data",
         'KmsKeyId': "string"
     },
-    RoleArn="arn:aws:iam::*:role/*,
+    RoleArn="arn:aws:iam::*:role/*",
     LabelCategoryConfigS3Uri="s3://bucket/path/label-categories.json",
     StoppingConditions={
         'MaxHumanLabeledObjectCount': 123,

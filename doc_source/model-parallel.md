@@ -12,7 +12,7 @@ Use the following sections to learn more about model parallelism and the SageMak
 **Topics**
 + [Introduction to Model Parallelism](model-parallel-intro.md)
 + [Core Features of SageMaker Distributed Model Parallel](model-parallel-core-features.md)
-+ [Use the SageMaker Distributed Model Parallel API](model-parallel-use-api.md)
 + [Modify Your Training Script Using SageMaker's Distributed Model Parallel Library](model-parallel-customize-training-script.md)
++ [Run a SageMaker Distributed Model Parallel Training Job](model-parallel-use-api.md)
 + [SageMaker distributed model parallel Configuration Tips and Pitfalls](model-parallel-customize-tips-pitfalls.md)
 + [Model Parallel Troubleshooting](distributed-troubleshooting-model-parallel.md)

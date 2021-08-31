@@ -1,6 +1,6 @@
 # Deploy a Compiled Model Using SageMaker SDK<a name="neo-deployment-hosting-services-sdk"></a>
 
-You must satisfy the [ prerequisites](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-deployment-hosting-services-prerequisites) section if the model was compiled using AWS SDK for Python \(Boto3\), AWS CLI, or the Amazon SageMaker console\. Follow one of the following use cases to deploy a model compiled with SageMaker Neo based on you how you compiled your model\. 
+You must satisfy the [ prerequisites](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-deployment-hosting-services-prerequisites) section if the model was compiled using AWS SDK for Python \(Boto3\), AWS CLI, or the Amazon SageMaker console\. Follow one of the following use cases to deploy a model compiled with SageMaker Neo based on how you compiled your model\.
 
 **Topics**
 + [If you compiled your model using the SageMaker SDK](#neo-deployment-hosting-services-sdk-deploy-sm-sdk)

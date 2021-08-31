@@ -10,7 +10,7 @@ By default, SageMaker Studio provides a network interface that allows communicat
 
 ## `VPC only` communication with the internet<a name="studio-notebooks-and-internet-access-vpc"></a>
 
-To prevent SageMaker from providing internet access to your Studio notebooks, you can disable internet access by specifying the `VPC only` network access type when you [onboard to Studio](https://docs.aws.amazon.com/sagemaker/latest/dg/onboard-vpc.html) or call the [CreateDomain](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateDomain.html) API\. As a result, you won't be able to run a Studio notebook unless your VPC has an interface endpoint to the SageMaker API and runtime, or a NAT gateway; and your security groups allow outbound connections\. The following diagram shows a configuration for using VPC\-only mode\.
+To prevent SageMaker from providing internet access to your Studio notebooks, you can disable internet access by specifying the `VPC only` network access type when you [onboard to Studio](https://docs.aws.amazon.com/sagemaker/latest/dg/onboard-vpc.html) or call the [CreateDomain](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateDomain.html) API\. As a result, you won't be able to run a Studio notebook unless your VPC has an interface endpoint to the SageMaker API and runtime, or a NAT gateway with internet access, and your security groups allow outbound connections\. The following diagram shows a configuration for using VPC\-only mode\.
 
 ![\[Diagram of SageMaker Studio VPC using VPC-only mode\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-vpc-private.png)
 
@@ -26,7 +26,7 @@ You can configure only subnets with a default tenancy VPC in which your instance
    + [NFS traffic over TCP on port 2049](https://docs.aws.amazon.com/efs/latest/ug/network-access.html) between the domain and the Amazon EFS volume\.
    + [TCP traffic within the security group](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-rules-reference.html#sg-rules-other-instances)\. This is required for connectivity between the JupyterServer app and the KernelGateway apps\.
 
-1. If you want to allow internet access, attach an [internet gateway](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html) or [NAT gateway](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with)\.
+1. If you want to allow internet access, you must use a [NAT gateway](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with) with access to the internet, for example through an [internet gateway](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html)\.
 
 1. If you don't want to allow internet access, [create interface VPC endpoints](https://docs.aws.amazon.com/vpc/latest/privatelink/vpce-interface.html) \(AWS PrivateLink\) to allow Studio to access the following services with the corresponding service names\. You must also associate the security groups for your VPC with these endpoints\.
    + SageMaker API : `com.amazonaws.us-east-1.sagemaker.api` 

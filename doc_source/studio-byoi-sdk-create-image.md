@@ -59,7 +59,11 @@ You perform the following steps to create a SageMaker image from the container i
 **Note**  
 If the response is `"ImageVersionStatus": "CREATED_FAILED"`, the response also includes the failure reason\. A permissions issue is a common cause of failure\. You also can check your Amazon CloudWatch logs\. The name of the log group is `/aws/sagemaker/studio`\. The name of the log stream is `$domainID/$userProfileName/KernelGateway/$appName`\.
 
-1. Create a configuration file, named `app-image-config-input.json`\. The `Name` value of `KernelSpecs` must match the name of the kernelSpec available in the Image associated with this `AppImageConfig`\. This value is case sensitive\. You can find the available kernelSpecs in an image by running `jupyter-kernelspec list` from a shell inside the container\. For information on testing your image locally before using it in Studio, see [DEVELOPMENT](https://github.com/aws-samples/sagemaker-studio-custom-image-samples/blob/main/DEVELOPMENT.md) in the SageMaker Studio Custom Image Samples repository\. 
+1. Create a configuration file, named `app-image-config-input.json`\. The `Name` value of `KernelSpecs` must match the name of the kernelSpec available in the Image associated with this `AppImageConfig`\. This value is case sensitive\. You can find the available kernelSpecs in an image by running `jupyter-kernelspec list` from a shell inside the container\. `MountPath` is the path within the image to mount your Amazon Elastic File System \(Amazon EFS\) home directory\. It needs to be different from the path you use inside the container because that path will be overridden when your Amazon EFS home directory is mounted\. For information on testing your image locally before using it in Studio, see [DEVELOPMENT](https://github.com/aws-samples/sagemaker-studio-custom-image-samples/blob/main/DEVELOPMENT.md) in the SageMaker Studio Custom Image Samples repository\. 
+**Note**  
+The following `DefaultUID` and `DefaultGID` combinations are the only accepted values:   
+ DefaultUID: 1000 and DefaultGID: 100 
+ DefaultUID: 0 and DefaultGID: 0 
 
    ```
    {

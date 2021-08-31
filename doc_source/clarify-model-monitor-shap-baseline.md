@@ -38,7 +38,7 @@ Currently the SageMaker Clarify explainer offers a scalable and efficient implem
   + `median` – Median of SHAP values for all instances\.
   + `mean_sq` – Mean of squared SHAP values for all instances\.
 + `use_logit` – Indicator of whether the logit function is to be applied to the model predictions\. Default is `False`\. If `use_logit` is `True`, the SHAP values will have log\-odds units\.
-+ `save_local_shap_values` \(bool\) – Indicator of whether to save the local SHAP values in the output location\. Default is `True`\.
++ `save_local_shap_values` \(bool\) – Indicator of whether to save the local SHAP values in the output location\. Default is `False`\.
 
 ```
 # Here use the mean value of test dataset as SHAP baseline

@@ -145,7 +145,7 @@ The following example uses the AWS SDK for Python \(Boto3\) to call `analyze_doc
             "FlowDefinitionArn":"arn:aws:sagemaker:us-west-2:111122223333:flow-definition/flow-definition-name",
             "HumanLoopName":"human-loop-name",
             "DataAttributes" : {
-                ContentClassifiers:["FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"]
+                "ContentClassifiers":["FreeOfPersonallyIdentifiableInformation","FreeOfAdultContent"]
             }
          },
          FeatureTypes=["TABLES", "FORMS"])

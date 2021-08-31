@@ -1,6 +1,6 @@
-# Use the SageMaker Distributed Model Parallel API<a name="model-parallel-use-api"></a>
+# Run a SageMaker Distributed Model Parallel Training Job<a name="model-parallel-use-api"></a>
 
-To use Amazon SageMaker's distributed model parallel library, you must create a training script for one of the supported frameworks and launch the training job using the SageMaker Python SDK\. To learn how you can incorporate the library into a training script, see [Modify Your Training Script Using SageMaker's Distributed Model Parallel Library](model-parallel-customize-training-script.md)\. The library's API documentation is located in the SageMaker Python SDK\. Refer to the [SageMaker's distributed model parallel API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel.html)\.
+Learn how to run a distributed model parallel training job using the SageMaker Python SDK and your adapted training script with SageMaker's distributed model parallel library\.
 
 SageMaker supports the following training environment configurations\. 
 
@@ -12,15 +12,7 @@ SageMaker supports the following training environment configurations\.
 
 For options 2 and 3 in the preceding list, refer to [Extend or Adapt A Docker Container that Contains SageMaker's Distributed Model Parallel Library](#model-parallel-customize-container) to learn how to install the model parallel library in an extended or customized Docker container\. 
 
-In all cases, you launch your job using a SageMaker Python SDK TensorFlow or PyTorch `Estimator` to initialize the library and launch a training job\. See the following section, [Launch a Training Job with the SageMaker Python SDK](#model-parallel-sm-sdk), to learn more\.
-
-**Important**  
-If you launch a training job using an ml\.p4d instance type \(such as ml\.p4d\.24xlarge\), for best performance set the following flags in the `mpirun` command\. If you use one of these flags, you *must* use the other\.  
-
-```
--x FI_EFA_USE_DEVICE_RDMA=1 -x FI_PROVIDER=efa
-```
-Additionally, if you are using PyTorch, you must set the data loader variable `num_wokers=0`\. To Learn more about the data loader requirement, see [Important Considerations](model-parallel-customize-training-script-pt.md#model-parallel-pt-considerations)\.
+In all cases, you launch your job using a SageMaker Python SDK TensorFlow or PyTorch `Estimator` to initialize the library and launch a training job\. To learn more, see the following section, [Launch a Training Job with the SageMaker Python SDK](#model-parallel-sm-sdk)\.
 
 ## Launch a Training Job with the SageMaker Python SDK<a name="model-parallel-sm-sdk"></a>
 
@@ -31,75 +23,87 @@ The TensorFlow and PyTorch `Estimator` object contains a `distribution` paramete
 The following is an example of how you can launch a new PyTorch training job with the library\.
 
 ```
+import sagemaker
 sagemaker_session = sagemaker.session.Session(boto_session=session)
 
-mpi_options = {
-                "enabled" : True,
-                "processes_per_host" : 8,
-                "custom_mpi_options" : "--mca btl_vader_single_copy_mechanism none "
-               }
-
 smp_options = {
-                "enabled":True,
-                "parameters": {
-                    "microbatches": 4,
-                    "placement_strategy": "spread",
-                    "pipeline": "interleaved",
-                    "optimize": "speed",
-                    "partitions": 2,
-                    "ddp": True,
-                }
-            }
+    "enabled":True,
+    "parameters": {
+        "partitions": 2,
+        "microbatches": 4,
+        "placement_strategy": "spread",
+        "pipeline": "interleaved",
+        "optimize": "speed",
+        "ddp": True,
+    }
+}
+
+mpi_options = {
+    "enabled" : True,
+    "processes_per_host" : 8,
+    # "custom_mpi_options" : "--mca btl_vader_single_copy_mechanism none"
+}
 
 smd_mp_estimator = PyTorch(
-          entry_point="pt_mnist.py", # Pick your train script
-          source_dir='utils',
-          role=role,
-          instance_type='ml.p3.16xlarge',
-          sagemaker_session=sagemaker_session,
-          framework_version='1.6.0',
-          # You must set py_version to py36
-          py_version='py36',
-          instance_count=1,
-          distribution={
-            "smdistributed": {"modelparallel": smp_options},
-            "mpi": mpi_options
-          },
-          base_job_name="SMD-MP-demo",
-      )
+    entry_point="your_training_script.py", # Specify your train script
+    source_dir="location_to_your_script",
+    role=role,
+    instance_type='ml.p3.16xlarge',
+    sagemaker_session=sagemaker_session,
+    framework_version='1.8.1',
+    # You must set py_version to py36
+    py_version='py36',
+    instance_count=1,
+    distribution={
+        "smdistributed": {"modelparallel": smp_options},
+        "mpi": mpi_options
+    },
+    base_job_name="SMD-MP-demo",
+)
 
 smd_mp_estimator.fit('s3://my_bucket/my_training_data/')
 ```
 
-To enable the library, a dictionary with the keys `"mpi"` and `"smdistributed"` needs to be passed as the `distribution` argument of the TensorFlow and PyTorch Estimator constructors in Python SDK\. For the `"mpi"` key, a dict must be passed which contains:
-+ `"enabled"`: `True` to launch the training job with MPI\.
-+ `"processes_per_host"`: Specify the number of processes MPI should launch on each host\. In SageMaker a host is a single [Amazon EC2 ml instance]()\. The SageMaker Python SDK maintains a one\-to\-one mapping between processes and GPUs across model and data parallelism\. This means that SageMaker schedules each process on a single, separate GPU and no GPU contains more than one process\. If you are using PyTorch, you must restrict each process to its own device through `torch.cuda.set_device(smp.local_rank())`\. To learn more, see [PyTorch](model-parallel-customize-training-script-pt.md#model-parallel-customize-training-script-pt-16)\.
+To enable the library, you need to pass dictionaries for the `"mpi"` and `"smdistributed"` keys to the `distribution` argument of the estimator constructors in SageMaker Python SDK\. 
++ For the `"smdistributed"` key, pass a dictionary with the `"modelparallel"` key and the following inner dictionaries\. 
+**Note**  
+Using `"modelparallel"` and `"dataparallel"` in one training job is not supported\. 
+  + `"enabled"` \(required\) – To enable model parallelism, set `"enabled": True`\.
+  + `"parameters"` \(required\) – Specify a set of parameters for model parallelism listed in [`smdistributed` Parameters](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel_general.html#smdistributed-parameters)\. Among the parameters, the `"partitions"` key is required to specify how many model partitions need to be requested for a training job\. 
++ For the `"mpi"` key, pass a dictionary that contains the following:
+  + `"enabled"` \(required\) – `True` to launch the training job with MPI\.
+  + `"processes_per_host"` \(required\) – Specify the number of processes MPI should launch on each host\. In SageMaker a host is a single [Amazon EC2 ml instance]()\. The SageMaker Python SDK maintains a one\-to\-one mapping between processes and GPUs across model and data parallelism\. This means that SageMaker schedules each process on a single, separate GPU and no GPU contains more than one process\. If you are using PyTorch, you must restrict each process to its own device through `torch.cuda.set_device(smp.local_rank())`\. To learn more, see [PyTorch](model-parallel-customize-training-script-pt.md#model-parallel-customize-training-script-pt-16)\.
 **Important**  
- `process_per_host` *must* be less than the number of GPUs per instance and typically will be equal to the number of GPUs per instance\.
+ `process_per_host` *must* not be greater than the number of GPUs per instance and typically will be equal to the number of GPUs per instance\.
 
-  For example, if you use one instance with 4\-way model parallelism and 2\-way data parallelism, then `processes_per_host` should be 2 x 4 = 8\. Therefore, you must choose an instance that has at least 8 GPUs, such as an ml\.p3\.16xlarge\.
+    For example, if you use one instance with 4\-way model parallelism and 2\-way data parallelism, then `processes_per_host` should be 2 x 4 = 8\. Therefore, you must choose an instance that has at least 8 GPUs, such as an ml\.p3\.16xlarge\.
 
-  The following image illustrates how 2\-way data parallelism and 4\-way model parallelism is distributed across 8 GPUs: the models is partitioned across 4 GPUs, and each partition is added to 2 GPUs\.  
+    The following image illustrates how 2\-way data parallelism and 4\-way model parallelism is distributed across 8 GPUs: the models is partitioned across 4 GPUs, and each partition is added to 2 GPUs\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/distributed/model-data-parallel.png)
-+ `"custom_mpi_options"`: Use this key to pass any custom MPI options you might need\. To avoid Docker warnings from contaminating your training logs, we recommend the following flag\.
+  + `"custom_mpi_options"` \(optional\) – Use this key to pass any custom MPI options you might need\. If you do not pass any MPI custom options to the key, the MPI option is set by default to the following flag\.
 
-  ```
-  --mca btl_vader_single_copy_mechanism none
-  ```
+    ```
+    --mca btl_vader_single_copy_mechanism none
+    ```
+**Note**  
+You do not need to explicitly specify this default flag to the key\. If you explicitly specify it, your distributed model parallel training job might fail with the following error:  
 
-  If you launch a training job using an ml\.p4d instance type \(such as ml\.p4d\.24xlarge\), for best performance use the following flags in the `mpirun` command:
+    ```
+    The following MCA parameter has been listed multiple times on the command line: 
+    MCA param: btl_vader_single_copy_mechanism MCA parameters can only be listed once 
+    on a command line to ensure there is no ambiguity as to its value. 
+    Please correct the situation and try again.
+    ```
+**Tip**  
+If you launch a training job using an EFA\-enabled instance type, such as `ml.p4d.24xlarge` and `ml.p3dn.24xlarge`, use the following flag for best performance:  
 
-  ```
-  -x FI_EFA_USE_DEVICE_RDMA=1 -x FI_PROVIDER=efa
-  ```
-
-For the `"smdistributed"` key, a dictionary must be passed which has the only key `"modelparallel"`\. Using `"modelparallel"` and `"dataparallel"` in the same training job is not supported\. 
-
-For the `"modelparallel"` dictionary, an inner dictionary must be passed, which enables the modelparallel library by setting `"enabled": True`, as well as a dict of `"parameters"` to customize the library\. Among the parameters, the `"partitions"` key is required, which specifies how many model partitions are requested\. To learn more about values you can use in `parameters`, see the [SageMaker distributed data parallel API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel.html)\.
+    ```
+    -x FI_EFA_USE_DEVICE_RDMA=1 -x FI_PROVIDER=efa -x RDMAV_FORK_SAFE=1
+    ```
 
 To launch the training job using SageMaker model parallel configured training script, you use the `Estimator.fit()` function\. You can launch a SageMaker training job using a SageMaker notebook instance, or locally\. 
-+ Using a SageMaker notebook instance is recommended for new users\. To see an example of how you can launch a training job using a SageMaker notebook instance, see [Distributed Training Jupyter Notebook Examples](distributed-training-notebook-examples.md)\.
-+ You can launch locally if you have [ set up your AWS credentials and Region for development](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-credentials.html)\.
++ Using a SageMaker notebook instance is recommended for new users\. To see an example of how you can launch a training job using a SageMaker notebook instance, see [Amazon SageMaker Distributed Training Notebook Examples](distributed-training-notebook-examples.md)\.
++ You can launch locally if you have [set up your AWS credentials and Region for development](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-credentials.html)\.
 
 Use the following resources to learn more about using the SageMaker Python SDK with these frameworks:
 + [Use TensorFlow with the SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/using_tf.html)

@@ -30,6 +30,7 @@ In this section you will create your AWS IoT thing object, create a device fleet
    Create a device fleet with the SageMaker client object defined in a previous step\. You can also use the SageMaker console to create a device fleet\.
 
    ```
+   import time
    device_fleet_name="demo-device-fleet" + str(time.time()).split('.')[0]
    device_name="sagemaker-edge-demo-device" + str(time.time()).split('.')[0]
    ```
@@ -53,10 +54,10 @@ In this section you will create your AWS IoT thing object, create a device fleet
 
 1. **Register your device fleet\.**
 
-   To interact with the cloud, you need to register your device with SageMaker Edge Manager\. In this example, youregister a single device with the fleet you created\. To register the device, you need to provide a device name and the AWS IoT thing name as shown in the following example:
+   To interact with the cloud, you need to register your device with SageMaker Edge Manager\. In this example, you register a single device with the fleet you created\. To register the device, you need to provide a device name and the AWS IoT thing name as shown in the following example:
 
    ```
-   # Device name should be 36 charactors
+   # Device name should be 36 characters
    device_name = "sagemaker-edge-demo-device" + str(time.time()).split('.')[0]
    
    sagemaker_client.register_devices(
@@ -93,7 +94,7 @@ In this section you will create your AWS IoT thing object, create a device fleet
        for line in create_cert['keyPair']['PrivateKey'].split('\n'):
            f.write(line)
            f.write('\n')
-   # Get a private key from dictioanary object and save in its own 
+   # Get a private key from dictionary object and save in its own 
    with open('./public.pem.key', 'w') as f:
        for line in create_cert['keyPair']['PublicKey'].split('\n'):
            f.write(line)
@@ -179,4 +180,12 @@ In this section you will create your AWS IoT thing object, create a device fleet
    !aws s3 cp private.pem.key s3://{bucket}/authorization-files/
    !aws s3 cp device.pem.crt s3://{bucket}/authorization-files/
    !aws s3 cp AmazonRootCA1.pem s3://{bucket}/authorization-files/
+   ```
+
+   Clean your working directory by moving your keys and certificate to a different directory:
+
+   ```
+   # Optional - Clean up working directory
+   !mkdir authorization-files
+   !mv private.pem.key device.pem.crt AmazonRootCA1.pem authorization-files/
    ```

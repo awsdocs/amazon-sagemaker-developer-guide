@@ -1,6 +1,6 @@
 # Create a Model Group<a name="model-registry-model-group"></a>
 
-A model group contains a group of versioned models\. Create a model group by using either the AWS SDK for Python \(Boto3\) or in SageMaker Studio\.
+A model group contains a group of versioned models\. Create a model group by using either the AWS SDK for Python \(Boto3\) or Amazon SageMaker Studio\.
 
 ## Create a Model Package Group \(Boto3\)<a name="model-registry-package-group-api"></a>
 

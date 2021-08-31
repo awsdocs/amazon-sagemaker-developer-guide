@@ -10,7 +10,7 @@ Additionally, AWS supports managed policies for job functions that span multiple
 We recommend that you use the most restricted policy that allows you to perform your use case\.
 
 The following AWS managed policies, which you can attach to users in your account, are specific to Amazon SageMaker:
-+ **`AmazonSageMakerFullAccess`** – Grants full access to Amazon SageMaker resources and the supported operations\. This does not provide unrestricted Amazon S3 access, but supports buckets and objects with specific `sagemaker` tags\.
++ **`AmazonSageMakerFullAccess`** – Grants full access to Amazon SageMaker resources and the supported operations\. This does not provide unrestricted Amazon S3 access, but supports buckets and objects with specific `sagemaker` tags\. This policy allows all IAM roles to be passed to Amazon SageMaker, but only allows IAM roles with “AmazonSageMaker” in them to be passed to the AWS Glue, AWS Step Functions, and AWS RoboMaker services\.
 + **`AmazonSageMakerReadOnly`** – Grants read\-only access to Amazon SageMaker resources\. 
 
 The following AWS managed policies can be attached to users in your account but are not recommended:
@@ -28,7 +28,7 @@ You can also create your own custom IAM policies to allow permissions for Amazon
 
 ## `AmazonSageMakerFullAccess`<a name="security-iam-awsmanpol-AmazonSageMakerFullAccess"></a>
 
-This policy grants administrative permissions that allow a principal full access to all Amazon SageMaker resources and operations\. The policy also provides select access to related services\.
+This policy grants administrative permissions that allow a principal full access to all Amazon SageMaker resources and operations\. The policy also provides select access to related services\. This policy allows all IAM roles to be passed to Amazon SageMaker, but only allows IAM roles with “AmazonSageMaker” in them to be passed to the AWS Glue, AWS Step Functions, and AWS RoboMaker services\.
 
 **Permissions details**
 

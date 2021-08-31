@@ -1,10 +1,14 @@
 # Register a Model Version<a name="model-registry-version"></a>
 
-You register a model by creating a model version that specifies the model group to which it belongs\. A model version must include both the model artifacts \(the trained weights of a model\), and the inference code for the model\. Create a model version by using either the AWS SDK for Python \(Boto3\) or by creating a step in a SageMaker mode building pipeline\. 
+You register an Amazon SageMaker model by creating a model version that specifies the model group to which it belongs\. A model version must include both the model artifacts \(the trained weights of a model\) and the inference code for the model\.
+
+An *inference pipeline* is a SageMaker model composed of a linear sequence of two to fifteen containers that process inference requests\. You register an inference pipeline by specifying the containers and the associated environment variables\. For more information on inference pipelines, see [Deploy an Inference Pipeline](inference-pipelines.md)\.
+
+You can register a model or an inference pipeline by using either the AWS SDK for Python \(Boto3\) or by creating a step in a SageMaker model building pipeline\.
 
 ## Register a Model Version \(SageMaker Pipelines\)<a name="model-registry-pipeline"></a>
 
-To register a model version by using a SageMaker model building pipeline, create a `RegisterModel` step in your pipeline\. For information about creating `RegisterModel` step as part of a pipeline, see [Define a Pipeline](define-pipeline.md)\.
+To register a model version by using a SageMaker model building pipeline, create a `RegisterModel` step in your pipeline\. For information about a creating `RegisterModel` step as part of a pipeline, see [Define a Pipeline](define-pipeline.md)\.
 
 ## Register a Model Version \(Boto3\)<a name="model-registry-version-api"></a>
 
@@ -24,6 +28,8 @@ modelpackage_inference_specification =  {
       "SupportedResponseMIMETypes": [ "text/csv" ],
    }
  }
+# Specify the model source
+model_url = "s3://your-bucket-name/model.tar.gz"
 
 # Specify the model data
 modelpackage_inference_specification["InferenceSpecification"]["Containers"][0]["ModelDataUrl"]=model_url

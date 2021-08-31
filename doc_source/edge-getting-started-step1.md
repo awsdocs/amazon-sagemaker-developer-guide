@@ -138,9 +138,3 @@ Before you begin using SageMaker Edge Manager to manage models on your device fl
    1. Choose **Create bucket**\.
 
    For more information about creating Amazon S3 buckets, see [Getting started with Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/GetStartedWithS3.html)\.
-
-   Store the name of the bucket in the following variable:
-
-   ```
-   bucket=<bucket-name>
-   ```

@@ -21,7 +21,7 @@ Create a Multi\-container endpoint by calling [create\_model](https://boto3.amaz
 + Set the `Mode` parameter of the `InferenceExecutionConfig` field to `Direct` for direct invocation of each container, or `Serial` to use containers as an inference pipeline\. The default mode is `Serial`\. 
 
 **Note**  
-Currently there is a limit of up to 5 containers supported on a multi\-container endpoint\.
+Currently there is a limit of up to 15 containers supported on a multi\-container endpoint\.
 
 The following example creates a multi\-container model for direct invocation\.
 

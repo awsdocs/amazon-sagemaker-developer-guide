@@ -167,7 +167,7 @@ Parameters for the analysis configuration must be provided in a JSON file named 
       + `"median"` – Median of SHAP values for all instances\.
       + `"mean_sq"` – Mean of squared SHAP values for all instances\.
     + `"use_logit"` – \(Optional\) Boolean value to indicate if logit function is to be applied to the model predictions\. The default value is "false"\. If "use\_logit" is `"true"` then the SHAP values have log\-odds units\.
-    + `"save_local_shap_values"` – \(Optional\) Boolean value to indicate if local SHAP values are to be saved in the output location\. Default is `"true"`\.
+    + `"save_local_shap_values"` – \(Optional\) Boolean value to indicate if local SHAP values are to be saved in the output location\. Default is `false`\.
 + `"predictor"` – \(Optional\) Section on model parameters, required if `"shap"` and `"post_training_bias"` sections are present\.
   + `"model_name"` – Model name \(as created by `CreateModel` API with container mode as `SingleModel`\.
   + `"instance_type"` – Instance type for the shadow endpoint\.

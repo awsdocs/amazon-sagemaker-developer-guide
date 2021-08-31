@@ -1,6 +1,6 @@
 # What is a SageMaker Project?<a name="sagemaker-projects-whatis"></a>
 
-By using a SageMaker project, teams of data scientists and developers can work in machine learning business problems\. You can create a SageMaker project with a SageMaker provided MLOPs template that automates the model building and deployment pipelines using continuous integrations and continuous delivery \(CI/CD\)\. A SageMaker provided template provisions the initial setup required for a complete end\-to\-end MLOps system including model building, training, and deployment, depending on the template you choose\. You can also provide your own custom template to provision the resources you need for your MLOps system\.
+By using a SageMaker project, teams of data scientists and developers can work in machine learning business problems\. You can create a SageMaker project with a SageMaker provided MLOps template that automates the model building and deployment pipelines using continuous integrations and continuous delivery \(CI/CD\)\. A SageMaker provided template provisions the initial setup required for a complete end\-to\-end MLOps system including model building, training, and deployment, depending on the template you choose\. You can also provide your own custom template to provision the resources you need for your MLOps system\.
 
 A SageMaker project is an AWS Service Catalog provisioned product that enables you to easily create an end\-to\-end ML solution\. For information about AWS Service Catalog, see [What is AWS Service Catalog](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/introduction.html)\.
 
@@ -10,13 +10,13 @@ Each SageMaker project has a unique name and ID that are passed to all SageMaker
 + Deployed models \(endpoints\)
 + Datasets
 + AWS Service Catalog Products
-+ AWS CodePipeline pipelines
-+ AWS CodeCommit repositories
++ AWS CodePipeline pipelines and Jenkins pipelines
++ AWS CodeCommit repositories and third\-party Git repositories
 
-A typical SageMaker project with a CICD template might include the following\.
-+ One or more CodeCommit repositories with sample code for building and deploying ML solutions\. These are working examples that you can clone locally to explore the code provided by SageMaker and modify for your needs\. You own this code and you can use the repositories as version control for your work\.
+A typical SageMaker project with a SageMaker provided template might include the following\.
++ One or more repositories with sample code for building and deploying ML solutions\. These are working examples that you can clone locally to explore the code provided by SageMaker and modify for your needs\. You own this code and you can use the repositories as version control for your work\.
 + A SageMaker pipeline that defines steps for data preparation, training, model evaluation, and model deployment\.
-+ A CodePipeline that runs your SageMaker pipeline every time a new version of the code is checked in\. For information about CodePipeline, see [What is AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html)\.
++ A CodePipeline pipeline or Jenkins pipeline that runs your SageMaker pipeline every time a new version of the code is checked in\. For information about CodePipeline, see [What is AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html)\. For information about Jenkins, see [Jenkins User Documentation](https://www.jenkins.io/doc/)\.
 + A model group that contains model versions\. Each time the SageMaker pipeline runs, and the resulting model version is accepted in the conditional validation step, a new model version is deployed to a SageMaker endpoint\. 
 
 ## When Should You Use a SageMaker Project?<a name="sagemaker-projects-when"></a>

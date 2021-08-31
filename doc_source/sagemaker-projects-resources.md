@@ -15,7 +15,7 @@ After you create a project, view the resources associated with the project in Sa
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/projects/view-project-details.png)
 
 On the product details tab, you can view the following entities associated with the project\.
-+ Repositories \- code repositories associated with this project\. If you use a SageMaker provided template when you create your project, it creates AWS CodeCommit pipelines\. For more information about CodeCommit, see [What is AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
++ Repositories \- code repositories \(repos\) associated with this project\. If you use a SageMaker provided template when you create your project, it creates a AWS CodeCommit repo or a third\-party Git repo\. For more information about CodeCommit, see [What is AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
 + Pipelines \- SageMaker ML pipelines that define steps to prepare data, train, and deploy models\. for information about SageMaker ML pipelines, see [Create and Manage SageMaker Pipelines](pipelines-build.md)\.
 + Experiments \- one or more SageMaker AutoPilot experiments associated with the project\. For information about AutoPilot, see [Automate model development with Amazon SageMaker Autopilot](autopilot-automate-model-development.md)\.
 + Model groups\- groups of model versions that were created by pipeline executions in the project\. For information about model groups, see [Create a Model Group](model-registry-model-group.md)\.

@@ -10,6 +10,9 @@ SageMaker's distributed data parallel library addresses communications overhead 
 
 Use this data parallel library to increase speed by up to 25% in training models such as BERT\. While implementations like Horovod offer sub\-linear performance at scale, this library offers near\-linear performance at scale\. This means that you get a faster training time and a lower cost to train a model\.
 
+**Note**  
+The SageMaker distributed training libraries are available only through the AWS deep learning containers for the TensorFlow, PyTorch, and HuggingFace frameworks within the SageMaker training platform\. To use the libraries, you must use the SageMaker Python SDK or the SageMaker APIs through SDK for Python \(Boto3\) or AWS Command Line Interface\. Throughout the documentation, instructions and examples focus on how to use the distributed training libraries with the SageMaker Python SDK\.
+
 ## Training Benchmarks<a name="data-parallel-benchmarks"></a>
 
  **PyTorch with SageMaker's data parallel library** 
@@ -58,4 +61,4 @@ The following architecture diagram shows an example of how the library sets up d
 
 ![\[SageMaker distributed data parallel architecture diagram\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/distributed/data-parallel/sdp-architecture.png)
 
-To start using the SageMaker distributed data parallel library, see [Use the SageMaker Distributed Data Parallel API](data-parallel-use-api.md) to set up a SageMaker estimator through [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), and [Modify Your Training Script using the SageMaker Data Parallel Library](data-parallel-modify-sdp.md) to adapt your training script using the SageMaker distributed data parallel library\.
+To start using the SageMaker distributed data parallel library, see [Run a SageMaker Distributed Data Parallel Training Job](data-parallel-use-api.md) to set up a SageMaker estimator through [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), and [Modify Your Training Script Using the SageMaker Data Parallel Library](data-parallel-modify-sdp.md) to adapt your training script using the SageMaker distributed data parallel library\.

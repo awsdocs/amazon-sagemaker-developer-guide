@@ -43,6 +43,331 @@ Amazon SageMaker JumpStart makes certain content available from third\-party sou
 
  Models are available for quick deployment directly from JumpStart\. You can also fine\-tune some of these models\. When you browse the models, you can scroll to the deploy and fine\-tune sections to the **Description** section\. In the **Description** section, you can learn more about the model, including what it can do with the model, what kind of inputs and outputs are expected, and the kind of data you need if you want to use transfer learning to fine\-tune the model\. 
 
+The following tables list the models currently offered in JumpStart\. The available models are sorted by their model type and task\. To view other model sets, click the task tab for those models\.
+
+### Text Models<a name="jumpstart-models-text"></a>
+
+------
+#### [ Text Classification Models ]
+
+
+
+
+| Model | Fine\-tunable | Source | 
+| --- | --- | --- | 
+| BERT Base Cased | Yes | [Tensorflow Hub](https://tfhub.dev/tensorflow/bert_en_cased_L-12_H-768_A-12/2) | 
+| BERT Base MEDLINE/PubMed | Yes | [Tensorflow Hub](https://tfhub.dev/google/experts/bert/pubmed/1) | 
+| BERT Base Multilingual Cased | Yes | [Tensorflow Hub](https://tfhub.dev/tensorflow/bert_multi_cased_L-12_H-768_A-12/2) | 
+| BERT Base Uncased | Yes | [Tensorflow Hub](https://tfhub.dev/tensorflow/bert_en_uncased_L-12_H-768_A-12/2) | 
+| BERT Base WikiPedia and BookCorpus | Yes | [Tensorflow Hub](https://tfhub.dev/google/experts/bert/wiki_books/1) | 
+| BERT Large Cased | Yes | [Tensorflow Hub](https://tfhub.dev/tensorflow/bert_en_cased_L-24_H-1024_A-16/2) | 
+| BERT Large Cased Whole Word Masking | Yes | [Tensorflow Hub](https://tfhub.dev/tensorflow/bert_en_wwm_cased_L-24_H-1024_A-16/2) | 
+| BERT Large Uncased Whole Word Masking | Yes | [Tensorflow Hub](https://tfhub.dev/tensorflow/bert_en_wwm_uncased_L-24_H-1024_A-16/2) | 
+| ELECTRA\-Base\+\+ | Yes | [Tensorflow Hub](https://tfhub.dev/google/electra_base/1) | 
+| ELECTRA\-Small\+\+ | Yes | [Tensorflow Hub](https://tfhub.dev/google/electra_small/1) | 
+
+------
+#### [ Text Generation Models ]
+
+
+
+
+| Model | Fine\-tunable | Source | 
+| --- | --- | --- | 
+| DistilGPT 2 | No | [Hugging Face](https://huggingface.co/distilgpt2) | 
+| GPT 2 | No | [Hugging Face](https://huggingface.co/gpt2) | 
+| GPT 2 Large | No | [Hugging Face](https://huggingface.co/gpt2-large) | 
+| GPT 2 Medium | No | [Hugging Face](https://huggingface.co/gpt2-medium) | 
+| OpenAI GPT | No | [Hugging Face](https://huggingface.co/openai-gpt) | 
+
+------
+#### [ Extractive Question Answering Models ]
+
+
+
+
+| Model | Fine\-tunable | Source | 
+| --- | --- | --- | 
+| BERT Base Cased | Yes | [PyTorch Hub](https://pytorch.org/hub/huggingface_pytorch-transformers/) | 
+| BERT Base Multilingual Cased | Yes | [PyTorch Hub](https://pytorch.org/hub/huggingface_pytorch-transformers/) | 
+| BERT Base Multilingual Uncased | Yes | [PyTorch Hub](https://pytorch.org/hub/huggingface_pytorch-transformers/) | 
+| BERT Base Uncased | Yes | [PyTorch Hub](https://pytorch.org/hub/huggingface_pytorch-transformers/) | 
+| BERT Large Cased | Yes | [PyTorch Hub](https://pytorch.org/hub/huggingface_pytorch-transformers/) | 
+| BERT Large Cased Whole Word Masking | Yes | [PyTorch Hub](https://pytorch.org/hub/huggingface_pytorch-transformers/) | 
+| BERT Large Cased Whole Word Masking SQuAD | Yes | [PyTorch Hub](https://pytorch.org/hub/huggingface_pytorch-transformers/) | 
+| BERT Large Uncased | Yes | [PyTorch Hub](https://pytorch.org/hub/huggingface_pytorch-transformers/) | 
+| BERT Large Uncased Whole Word Masking | Yes | [PyTorch Hub](https://pytorch.org/hub/huggingface_pytorch-transformers/) | 
+| BERT Large Uncased Whole Word Masking SQuAD | Yes | [PyTorch Hub](https://pytorch.org/hub/huggingface_pytorch-transformers/) | 
+| DistilBERT Base Cased | Yes | [PyTorch Hub](https://pytorch.org/hub/huggingface_pytorch-transformers/) | 
+| DistilBERT Base Multilingual Cased | Yes | [PyTorch Hub](https://pytorch.org/hub/huggingface_pytorch-transformers/) | 
+| DistilBERT Base Uncased | Yes | [PyTorch Hub](https://pytorch.org/hub/huggingface_pytorch-transformers/) | 
+| DistilRoBERTa Base | Yes | [PyTorch Hub](https://pytorch.org/hub/huggingface_pytorch-transformers/) | 
+| RoBERTa Base | Yes | [PyTorch Hub](https://pytorch.org/hub/huggingface_pytorch-transformers/) | 
+| RoBERTa Base OpenAI | Yes | [PyTorch Hub](https://pytorch.org/hub/huggingface_pytorch-transformers/) | 
+| RoBERTa Large | Yes | [PyTorch Hub](https://pytorch.org/hub/huggingface_pytorch-transformers/) | 
+| RoBERTa Large OpenAI | Yes | [PyTorch Hub](https://pytorch.org/hub/huggingface_pytorch-transformers/) | 
+
+------
+#### [ Sentence Pair Classification Models ]
+
+
+
+
+| Model | Fine\-tunable | Source | 
+| --- | --- | --- | 
+| BERT Base Cased | Yes | [Hugging Face](https://huggingface.co/bert-base-cased) | 
+| BERT Base Cased | Yes | [Tensorflow Hub](https://tfhub.dev/tensorflow/bert_en_cased_L-12_H-768_A-12/2) | 
+| BERT Base MEDLINE/PubMed | Yes | [Tensorflow Hub](https://tfhub.dev/google/experts/bert/pubmed/1) | 
+| BERT Base Multilingual Cased | Yes | [Hugging Face](https://huggingface.co/bert-base-multilingual-cased) | 
+| BERT Base Multilingual Cased | Yes | [Tensorflow Hub](https://tfhub.dev/tensorflow/bert_multi_cased_L-12_H-768_A-12/2) | 
+| BERT Base Multilingual Uncased | Yes | [Hugging Face](https://huggingface.co/bert-base-multilingual-uncased) | 
+| BERT Base Uncased | Yes | [Hugging Face](https://huggingface.co/bert-base-uncased) | 
+| BERT Base Uncased | Yes | [Tensorflow Hub](https://tfhub.dev/tensorflow/bert_en_uncased_L-12_H-768_A-12/2) | 
+| BERT Base Wikipedia and BooksCorpus | Yes | [Tensorflow Hub](https://tfhub.dev/google/experts/bert/wiki_books/1) | 
+| BERT Large Cased | Yes | [Hugging Face](https://huggingface.co/bert-large-cased) | 
+| BERT Large Cased Whole Word Masking | Yes | [Hugging Face](https://huggingface.co/bert-large-cased-whole-word-masking) | 
+| BERT Large Cased Whole Word Masking | Yes | [Tensorflow Hub](https://tfhub.dev/tensorflow/bert_en_wwm_cased_L-24_H-1024_A-16/2) | 
+| BERT Large Uncased | Yes | [Hugging Face](https://huggingface.co/bert-large-uncased) | 
+| BERT Large Uncased | Yes | [Tensorflow Hub](https://tfhub.dev/tensorflow/bert_en_uncased_L-24_H-1024_A-16/2) | 
+| BERT Large Uncased Whole Word Masking | Yes | [Hugging Face](https://huggingface.co/bert-large-uncased-whole-word-masking) | 
+| BERT Large Uncased Whole Word Masking | Yes | [Tensorflow Hub](https://tfhub.dev/tensorflow/bert_en_wwm_uncased_L-24_H-1024_A-16/2) | 
+| DistilBERT Base Cased | Yes | [Hugging Face](https://huggingface.co/distilbert-base-cased) | 
+| DistilBERT Base Multilingual Cased | Yes | [Hugging Face](https://huggingface.co/distilbert-base-multilingual-cased) | 
+| DistilBERT Base Uncased | Yes | [Hugging Face](https://huggingface.co/distilbert-base-uncased) | 
+| DistilRoBERTa Base | Yes | [Hugging Face](https://huggingface.co/distilroberta-base) | 
+| ELECTRA\-Base\+\+ | Yes | [Tensorflow Hub](https://tfhub.dev/google/electra_base/1) | 
+| ELECTRA\-Small\+\+ | Yes | [Tensorflow Hub](https://tfhub.dev/google/electra_small/1) | 
+| RoBERTa Base | Yes | [Hugging Face](https://huggingface.co/roberta-base) | 
+| RoBERTa Base OpenAI | Yes | [Hugging Face](https://huggingface.co/roberta-base-openai-detector) | 
+| RoBERTa Large | Yes | [Hugging Face](https://huggingface.co/roberta-large) | 
+| RoBERTa Large OpenAI | Yes | [Hugging Face](https://huggingface.co/roberta-large-openai-detector) | 
+| XLM CLM English\-German | Yes | [Hugging Face](https://huggingface.co/xlm-clm-ende-1024) | 
+| XLM MLM 15 XNLI Languages | Yes | [Hugging Face](https://huggingface.co/xlm-mlm-xnli15-1024) | 
+| XLM MLM English\-German | Yes | [Hugging Face](https://huggingface.co/xlm-mlm-ende-1024) | 
+| XLM MLM English\-Romanian | Yes | [Hugging Face](https://huggingface.co/xlm-mlm-enro-1024) | 
+| XLM MLM TLM 15 XNLI Languages | Yes | [Hugging Face](https://huggingface.co/xlm-mlm-tlm-xnli15-1024) | 
+
+------
+
+### Vision Models<a name="jumpstart-models-vision"></a>
+
+------
+#### [ Image Classification Models ]
+
+
+
+
+| Model | Fine\-tunable | Source | 
+| --- | --- | --- | 
+| AlexNet | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_alexnet/) | 
+| BiT\-M R101x1 | Yes | [Tensorflow Hub](https://tfhub.dev/google/bit/m-r101x1/ilsvrc2012_classification/1) | 
+| BiT\-M R101x1 ImageNet\-21k | Yes | [Tensorflow Hub](https://tfhub.dev/google/bit/m-r101x1/imagenet21k_classification/1) | 
+| BiT\-M R101x3 | Yes | [Tensorflow Hub](https://tfhub.dev/google/bit/m-r101x3/ilsvrc2012_classification/1) | 
+| BiT\-M R101x3 ImageNet\-21k | Yes | [Tensorflow Hub](https://tfhub.dev/google/bit/m-r101x3/imagenet21k_classification/1) | 
+| BiT\-M R50x1 | Yes | [Tensorflow Hub](https://tfhub.dev/google/bit/m-r50x1/ilsvrc2012_classification/1) | 
+| BiT\-M R50x1 ImageNet\-21k | Yes | [Tensorflow Hub](https://tfhub.dev/google/bit/m-r50x1/imagenet21k_classification/1) | 
+| BiT\-M R50x3 | Yes | [Tensorflow Hub](https://tfhub.dev/google/bit/m-r50x3/ilsvrc2012_classification/1) | 
+| BiT\-M R50x3 ImageNet\-21k | Yes | [Tensorflow Hub](https://tfhub.dev/google/bit/m-r50x3/imagenet21k_classification/1) | 
+| BiT\-S R101x1 | Yes | [Tensorflow Hub](https://tfhub.dev/google/bit/s-r101x1/ilsvrc2012_classification/1) | 
+| BiT\-S R101x3 | Yes | [Tensorflow Hub](https://tfhub.dev/google/bit/s-r101x3/ilsvrc2012_classification/1) | 
+| BiT\-S R50x1 | Yes | [Tensorflow Hub](https://tfhub.dev/google/bit/s-r50x1/ilsvrc2012_classification/1) | 
+| BiT\-S R50x3 | Yes | [Tensorflow Hub](https://tfhub.dev/google/bit/s-r50x3/ilsvrc2012_classification/1) | 
+| DenseNet 121 | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_densenet/) | 
+| DenseNet 161 | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_densenet/) | 
+| DenseNet 169 | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_densenet/) | 
+| DenseNet 201 | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_densenet/) | 
+| EfficientNet B0 | Yes | [Tensorflow Hub](https://tfhub.dev/google/efficientnet/b0/classification/1) | 
+| EfficientNet B0 Lite | Yes | [Tensorflow Hub](https://tfhub.dev/tensorflow/efficientnet/lite0/classification/2) | 
+| EfficientNet B1 | Yes | [Tensorflow Hub](https://tfhub.dev/google/efficientnet/b1/classification/1) | 
+| EfficientNet B1 Lite | Yes | [Tensorflow Hub](https://tfhub.dev/tensorflow/efficientnet/lite1/classification/2) | 
+| EfficientNet B2 | Yes | [Tensorflow Hub](https://tfhub.dev/google/efficientnet/b2/classification/1) | 
+| EfficientNet B2 Lite | Yes | [Tensorflow Hub](https://tfhub.dev/tensorflow/efficientnet/lite2/classification/2) | 
+| EfficientNet B3 | Yes | [Tensorflow Hub](https://tfhub.dev/google/efficientnet/b3/classification/1) | 
+| EfficientNet B3 Lite | Yes | [Tensorflow Hub](https://tfhub.dev/tensorflow/efficientnet/lite3/classification/2) | 
+| EfficientNet B4 | Yes | [Tensorflow Hub](https://tfhub.dev/google/efficientnet/b4/classification/1) | 
+| EfficientNet B4 Lite | Yes | [Tensorflow Hub](https://tfhub.dev/tensorflow/efficientnet/lite4/classification/2) | 
+| EfficientNet B5 | Yes | [Tensorflow Hub](https://tfhub.dev/google/efficientnet/b5/classification/1) | 
+| EfficientNet B6 | Yes | [Tensorflow Hub](https://tfhub.dev/google/efficientnet/b6/classification/1) | 
+| EfficientNet B7 | Yes | [Tensorflow Hub](https://tfhub.dev/google/efficientnet/b7/classification/1) | 
+| GoogLeNet | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_googlenet/) | 
+| Inception ResNet V2 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/inception_resnet_v2/classification/4) | 
+| Inception V1 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/inception_v1/classification/4) | 
+| Inception V2 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/inception_v2/classification/4) | 
+| Inception V3 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/inception_v3/classification/4) | 
+| Inception V3 Preview | Yes | [Tensorflow Hub](https://tfhub.dev/google/tf2-preview/inception_v3/classification/4) | 
+| MobileNet V1 0\.25 128 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_025_128/classification/4) | 
+| MobileNet V1 0\.25 160 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_025_160/classification/4) | 
+| MobileNet V1 0\.25 192 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_025_192/classification/4) | 
+| MobileNet V1 0\.25 224 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_025_224/classification/4) | 
+| MobileNet V1 0\.50 128 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_050_128/classification/4) | 
+| MobileNet V1 0\.50 160 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_050_160/classification/4) | 
+| MobileNet V1 0\.50 192 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_050_192/classification/4) | 
+| MobileNet V1 0\.50 224 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_050_224/classification/4) | 
+| MobileNet V1 0\.75 128 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_075_128/classification/4) | 
+| MobileNet V1 0\.75 160 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_075_160/classification/4) | 
+| MobileNet V1 0\.75 192 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_075_192/classification/4) | 
+| MobileNet V1 0\.75 224 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_075_224/classification/4) | 
+| MobileNet V1 1\.00 128 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_100_128/classification/4) | 
+| MobileNet V1 1\.00 160 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_100_160/classification/4) | 
+| MobileNet V1 1\.00 192 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_100_192/classification/4) | 
+| MobileNet V1 1\.00 224 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_100_224/classification/4) | 
+| MobileNet V2 | Yes | [Tensorflow Hub](https://tfhub.dev/google/tf2-preview/mobilenet_v2/classification/4) | 
+| MobileNet V2 | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_mobilenet_v2/) | 
+| MobileNet V2 0\.35 224 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v2_035_224/classification/4) | 
+| MobileNet V2 0\.50 224 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v2_050_224/classification/4) | 
+| MobileNet V2 0\.75 224 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v2_075_224/classification/4) | 
+| MobileNet V2 1\.00 224 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v2_100_224/classification/4) | 
+| MobileNet V2 1\.30 224 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v2_130_224/classification/4) | 
+| MobileNet V2 1\.40 224 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v2_140_224/classification/4) | 
+| ResNet 101 | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_resnet/) | 
+| ResNet 152 | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_resnet/) | 
+| ResNet 18 | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_resnet/) | 
+| ResNet 34 | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_resnet/) | 
+| ResNet 50 | Yes | [Tensorflow Hub](https://tfhub.dev/tensorflow/resnet_50/classification/1) | 
+| ResNet 50 | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_resnet/) | 
+| ResNet V1 101 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/resnet_v1_101/classification/4) | 
+| ResNet V1 152 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/resnet_v1_152/classification/4) | 
+| ResNet V1 50 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/resnet_v1_50/classification/4) | 
+| ResNet V2 101 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/resnet_v2_101/classification/4) | 
+| ResNet V2 152 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/resnet_v2_152/classification/4) | 
+| ResNet V2 50 | Yes | [Tensorflow Hub](https://tfhub.dev/google/imagenet/resnet_v2_50/classification/4) | 
+| Resnext 101 | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_resnext/) | 
+| Resnext 50 | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_resnext/) | 
+| ShuffleNet V2 | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_shufflenet_v2/) | 
+| SqueezeNet 0 | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_squeezenet/) | 
+| SqueezeNet 1 | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_squeezenet/) | 
+| VGG 11 | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_vgg/) | 
+| VGG 11\-BN | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_vgg/) | 
+| VGG\-13 | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_vgg/) | 
+| VGG 13\-BN | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_vgg/) | 
+| VGG 16 | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_vgg/) | 
+| VGG 16\-BN | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_vgg/) | 
+| VGG 19 | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_vgg/) | 
+| VGG 19\-BN | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_vgg/) | 
+| Wide ResNet 101 | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_wide_resnet/) | 
+| Wide ResNet 50 | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_wide_resnet/) | 
+
+------
+#### [ Image Embedding Models ]
+
+
+
+
+| Model | Fine\-tunable | Source | 
+| --- | --- | --- | 
+| BiT\-M R101x1 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/bit/m-r101x1/1) | 
+| BiT\-M R101x3 ImageNet\-21k Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/bit/m-r101x3/1) | 
+| BiT\-M R50x1 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/bit/m-r50x1/1) | 
+| BiT\-M R50x3 ImageNet\-21k | No | [Tensorflow Hub](https://tfhub.dev/google/bit/m-r50x3/1) | 
+| BiT\-S R101x1 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/bit/s-r101x1/1) | 
+| BiT\-S R101x3 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/bit/s-r101x3/1) | 
+| BiT\-S R50x1 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/bit/s-r50x1/1) | 
+| BiT\-S R50x3 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/bit/s-r50x3/1) | 
+| EfficientNet B0 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/efficientnet/b0/feature-vector/1) | 
+| EfficientNet B0 Lite Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/efficientnet/lite0/feature-vector/2) | 
+| EfficientNet B1 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/efficientnet/b1/feature-vector/1) | 
+| EfficientNet B1 Lite Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/efficientnet/lite1/feature-vector/2) | 
+| EfficientNet B2 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/efficientnet/b2/feature-vector/1) | 
+| EfficientNet B2 Lite Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/efficientnet/lite2/feature-vector/2) | 
+| EfficientNet B3 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/efficientnet/b3/feature-vector/1) | 
+| EfficientNet B3 Lite Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/efficientnet/lite3/feature-vector/2) | 
+| EfficientNet B4 Lite Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/efficientnet/lite4/feature-vector/2) | 
+| EfficientNet B6 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/efficientnet/b6/feature-vector/1) | 
+| Inception V1 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/inception_v1/feature_vector/4) | 
+| Inception V2 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/inception_v2/feature_vector/4) | 
+| Inception V3 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/inception_v3/feature_vector/4) | 
+| Inception V3 Preview Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/tf2-preview/inception_v3/feature_vector/4) | 
+| MobileNet V1 0\.25 128 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_025_128/feature_vector/4) | 
+| MobileNet V1 0\.25 160 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_025_160/feature_vector/4) | 
+| MobileNet V1 0\.25 192 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_025_192/feature_vector/4) | 
+| MobileNet V1 0\.25 224 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_025_224/feature_vector/4) | 
+| MobileNet V1 0\.50 128 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_050_128/feature_vector/4) | 
+| MobileNet V1 0\.50 160 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_050_160/feature_vector/4) | 
+| MobileNet V1 0\.50 192 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_050_192/feature_vector/4) | 
+| MobileNet V1 0\.50 224 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_050_224/feature_vector/4) | 
+| MobileNet V1 0\.75 128 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_075_128/feature_vector/4) | 
+| MobileNet V1 0\.75 160 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_075_160/feature_vector/4) | 
+| MobileNet V1 0\.75 192 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_075_192/feature_vector/4) | 
+| MobileNet V1 0\.75 224 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_075_224/feature_vector/4) | 
+| MobileNet V1 1\.00 128 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_100_128/feature_vector/4) | 
+| MobileNet V1 1\.00 160 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_100_160/feature_vector/4) | 
+| MobileNet V1 1\.00 192 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_100_192/feature_vector/4) | 
+| MobileNet V1 1\.00 224 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v1_100_224/feature_vector/4) | 
+| MobileNet V2 0\.35 224 Feature Vector  | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v2_035_224/feature_vector/4) | 
+| MobileNet V2 0\.50 224 | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v2_050_224/feature_vector/4) | 
+| MobileNet V2 0\.75 224 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v2_075_224/feature_vector/4) | 
+| MobileNet V2 1\.00 224 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v2_100_224/feature_vector/4) | 
+| MobileNet V2 1\.30 224 Feature Vector  | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v2_130_224/feature_vector/4) | 
+| MobileNet V2 1\.40 224 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/mobilenet_v2_140_224/feature_vector/4) | 
+| MobileNet V2 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/tf2-preview/mobilenet_v2/feature_vector/4) | 
+| ResNet 50 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/resnet_50/feature_vector/1) | 
+| ResNet V1 101 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/resnet_v1_101/feature_vector/4) | 
+| ResNet V1 152 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/resnet_v1_152/feature_vector/4) | 
+| ResNet V1 50 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/resnet_v1_50/feature_vector/4) | 
+| ResNet V2 101 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/resnet_v2_101/feature_vector/4) | 
+| ResNet V2 152 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/resnet_v2_152/feature_vector/4) | 
+| ResNet V2 50 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/resnet_v2_50/feature_vector/4) | 
+
+------
+#### [ Object Detection Models ]
+
+
+
+
+| Model | Fine\-tunable | Source | 
+| --- | --- | --- | 
+| CenterNet 1024x1024 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/centernet/hourglass_1024x1024/1) | 
+| CenterNet 1024x1024 Keypoints | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/centernet/hourglass_1024x1024_kpts/1) | 
+| CenterNet 512x512 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/centernet/hourglass_512x512/1) | 
+| CenterNet 512x512 Keypoints | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/centernet/hourglass_512x512_kpts/1) | 
+| CenterNet ResNet\-v1\-101 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/centernet/resnet101v1_fpn_512x512/1) | 
+| CenterNet ResNet\-v1\-50 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/centernet/resnet50v1_fpn_512x512/1) | 
+| CenterNet ResNet\-v1\-50 Keypoints | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/centernet/resnet50v1_fpn_512x512_kpts/1) | 
+| CenterNet ResNet\-v2\-50 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/centernet/resnet50v2_512x512/1) | 
+| CenterNet ResNet\-v2\-50 Keypoints | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/centernet/resnet50v2_512x512_kpts/1) | 
+| Faster R\-CNN Resnet V2 1024x1024 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/faster_rcnn/inception_resnet_v2_1024x1024/1) | 
+| Faster R\-CNN Resnet V2 640x640 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/faster_rcnn/inception_resnet_v2_640x640/1) | 
+| Faster R\-CNN Resnet\-101 V1 1024x1024 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/faster_rcnn/resnet101_v1_1024x1024/1) | 
+| Faster R\-CNN Resnet\-101 V1 640x640 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/faster_rcnn/resnet101_v1_640x640/1) | 
+| Faster R\-CNN Resnet\-101 V1 800x1333 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/faster_rcnn/resnet101_v1_800x1333/1) | 
+| Faster R\-CNN Resnet\-152 V1 1024x1024 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/faster_rcnn/resnet152_v1_1024x1024/1) | 
+| Faster R\-CNN Resnet\-152 V1 800x1333 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/faster_rcnn/resnet152_v1_800x1333/1) | 
+| Faster R\-CNN Resnet\-152 V1 640x640 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/faster_rcnn/resnet152_v1_640x640/1) | 
+| Faster R\-CNN Resnet\-50 V1 1024x1024 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/faster_rcnn/resnet50_v1_1024x1024/1) | 
+| Faster R\-CNN Resnet\-50 V1 640x640 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/faster_rcnn/resnet50_v1_640x640/1) | 
+| Faster R\-CNN Resnet\-50 V1 800x1333 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/faster_rcnn/resnet50_v1_800x1333/1) | 
+| Faster RCNN ResNet 101 V1d | No | [GluonCV](https://cv.gluon.ai/model_zoo/detection.html) | 
+| Faster RCNN ResNet 50 V1b | No | [GluonCV](https://cv.gluon.ai/model_zoo/detection.html) | 
+| FRCNN MobileNet V3 large 320 FPN | No | [PyTorch Hub](https://pytorch.org/vision/stable/_modules/torchvision/models/detection/faster_rcnn.html) | 
+| FRCNN MobileNet V3 large FPN | No | [PyTorch Hub](https://pytorch.org/vision/stable/_modules/torchvision/models/detection/faster_rcnn.html) | 
+| FRCNN ResNet 50 FPN | No | [PyTorch Hub](https://pytorch.org/vision/stable/_modules/torchvision/models/detection/faster_rcnn.html) | 
+| Retinanet SSD Resnet\-101 1024x1024 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/retinanet/resnet101_v1_fpn_1024x1024/1) | 
+| Retinanet SSD Resnet\-101 640x640 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/retinanet/resnet101_v1_fpn_640x640/1) | 
+| Retinanet SSD Resnet\-152 1024x1024 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/retinanet/resnet152_v1_fpn_1024x1024/1) | 
+| Retinanet SSD Resnet\-152 640x640 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/retinanet/resnet152_v1_fpn_640x640/1) | 
+| Retinanet SSD Resnet\-50 1024x1024 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/retinanet/resnet50_v1_fpn_1024x1024/1) | 
+| Retinanet SSD Resnet\-50 640x640 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/retinanet/resnet50_v1_fpn_640x640/1) | 
+| SSD | No | [PyTorch Hub](https://pytorch.org/hub/nvidia_deeplearningexamples_ssd/) | 
+| SSD 512 ResNet 50 V1 | Yes | [GluonCV](https://cv.gluon.ai/model_zoo/detection.html) | 
+| SSD EfficientDet D0 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/efficientdet/d0/1) | 
+| SSD EfficientDet D1 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/efficientdet/d1/1) | 
+| SSD EfficientDet D2 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/efficientdet/d2/1) | 
+| SSD EfficientDet D3 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/efficientdet/d3/1) | 
+| SSD EfficientDet D4 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/efficientdet/d4/1) | 
+| SSD EfficientDet D5 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/efficientdet/d5/1) | 
+| SSD MobileNet 1\.0 | Yes | [GluonCV](https://cv.gluon.ai/model_zoo/detection.html) | 
+| SSD Mobilenet V1 640x640 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/ssd_mobilenet_v1/fpn_640x640/1) | 
+| SSD Mobilenet V2 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/ssd_mobilenet_v2/2) | 
+| SSD Mobilenet V2 320x320 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/ssd_mobilenet_v2/fpnlite_320x320/1) | 
+| SSD Mobilenet V2 640x640 | No | [Tensorflow Hub](https://tfhub.dev/tensorflow/ssd_mobilenet_v2/fpnlite_640x640/1) | 
+| SSD ResNet 50 V1 | Yes | [GluonCV](https://cv.gluon.ai/model_zoo/detection.html) | 
+| SSD VGG 16 Atrous 300 | Yes | [GluonCV](https://cv.gluon.ai/model_zoo/detection.html) | 
+| SSD VGG 16 Atrous 512 | Yes | [GluonCV](https://cv.gluon.ai/model_zoo/detection.html) | 
+| YOLO V3 DarkNet 53 | No | [GluonCV](https://cv.gluon.ai/model_zoo/detection.html) | 
+| YOLO V3 MobileNet 1\.0 | No | [GluonCV](https://cv.gluon.ai/model_zoo/detection.html) | 
+
+------
+
 ## Deploy a model<a name="jumpstart-deploy"></a>
 
  When you deploy a model from JumpStart, SageMaker hosts the model and deploys an endpoint that you can use for inference\. JumpStart also provides an example notebook that you can use to access the model after it's deployed\. 

@@ -7,7 +7,8 @@ Amazon SageMaker Studio comes with a SageMaker SparkMagic image that contains a 
 For added security, you can specify that the connection to the EMR cluster uses Kerberos authentication\. For more information, see [Use Kerberos Authentication](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html)\.
 
 **Prerequisites**
-+ Access to SageMaker Studio that's set up to use Amazon VPC mode\. To connect to Amazon EMR, Studio must be configured as Amazon VPC only mode\. For more information, see [Connect SageMaker Studio Notebooks to Resources in a VPC](studio-notebooks-and-internet-access.md)\.
++ Access to SageMaker Studio that's set up to use Amazon VPC mode\. To connect to Amazon EMR, Studio must be configured as Amazon VPC only mode\. For more information, see [Connect SageMaker Studio Notebooks to Resources in a VPC](studio-notebooks-and-internet-access.md)\. All subnets used by SageMaker Studio must be private subnets\.
++ If you use the `sm-sparkmagic` utility to configure the sparkmagic kernel, ensure that the VPC interface endpoint is attached to all of the subnets used by SageMaker Studio or ensure that all of the subnets used by SageMaker Studio are routed to use a NAT gateway\. For more information, see [NAT gateways](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html)\.
 + An Amazon EMR cluster in the same VPC as Studio or in a VPC that's connected to the same VPC as Studio\. This cluster must have Spark and Livy installed\.
 + The security group used for Amazon SageMaker Studio and the Amazon EMR security group must allow access to and from each other\. 
 + Your Amazon EMR security group must open port 8998, so Amazon SageMaker Studio can communicate with the Spark cluster via Livy\. For more information on setting up the security group, see [Build SageMaker notebooks backed by Spark in Amazon EMR](http://aws.amazon.com/blogs/machine-learning/build-amazon-sagemaker-notebooks-backed-by-spark-in-amazon-emr/)\.
@@ -46,6 +47,8 @@ For added security, you can specify that the connection to the EMR cluster uses 
 1. Choose **Notebook** to create a Studio notebook in the SparkMagic image\.
 
 1. Run the following code in a notebook cell to create the configuration files used to connect to the EMR cluster\. `%%local` ensures that the code runs in the local image instead of on Spark\.
+**Note**  
+The `sm-sparkmagic` utility does not support generating configuration files when your Amazon EMR cluster and Studio Domain are using two different Amazon VPCs and the Amazon VPCs have different `DHCPOptions`\.
    + If the EMR cluster is not configured for Kerberos authentication, run the following command:
 
      ```

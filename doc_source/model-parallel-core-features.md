@@ -4,6 +4,9 @@ Amazon SageMaker's distributed model parallel makes model parallelism more acces
 
 You can configure these features using a few lines of code when you create your training script and define your SageMaker PyTorch or Tensorflow `Estimator`\. Use the following sections to learn more about these core features of the library\.
 
+**Note**  
+The SageMaker distributed training libraries are available only through the AWS deep learning containers for the TensorFlow, PyTorch, and HuggingFace frameworks within the SageMaker training platform\. To use the libraries, you must use the SageMaker Python SDK or the SageMaker APIs through SDK for Python \(Boto3\) or AWS Command Line Interface\. Throughout the documentation, instructions and examples focus on how to use the distributed training libraries with the SageMaker Python SDK\.
+
 ## Automated Model Splitting<a name="model-parallel-automated-model-splitting"></a>
 
 When you use SageMaker's model parallel library, you can take advantage of *automated model splitting*, also referred to as *automated model partitioning*\. The library uses a partitioning algorithm that balances memory, minimizes communication between devices, and optimizes performance\. You can configure the automated partitioning algorithm to optimize for speed or memory\. 
