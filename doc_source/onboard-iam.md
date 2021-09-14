@@ -28,7 +28,7 @@ For information on how to onboard using AWS Single Sign\-On \(AWS SSO\), see [On
 
 1. Under **Network and storage**, specify the following:
    + Your VPC information – For more information, see [Choose a VPC](onboard-vpc.md)\.
-   + \(Optional\) **Storage encryption key** – SageMaker uses an AWS managed customer master key \(CMK\) to encrypt your Amazon Elastic File System \(Amazon EFS\) and Amazon Elastic Block Store \(Amazon EBS\) file systems by default\. To use a customer managed CMK, enter its key ID or Amazon Resource Name \(ARN\)\. For more information, see [Protect Data at Rest Using Encryption](encryption-at-rest.md)\.
+   + \(Optional\) **Storage encryption key** – SageMaker uses an AWS KMS key to encrypt your Amazon Elastic File System \(Amazon EFS\) and Amazon Elastic Block Store \(Amazon EBS\) file systems\. By default, it uses an AWS managed key\. To use a customer managed key, enter its key ID or Amazon Resource Name \(ARN\)\. For more information, see [Protect Data at Rest Using Encryption](encryption-at-rest.md)\.
 
 1. Choose **Submit**\.
 

@@ -1,132 +1,105 @@
-# Monitor and Analyze Training Jobs Using Metrics<a name="training-metrics"></a>
+# Monitor and Analyze Training Jobs Using Amazon CloudWatch Metrics<a name="training-metrics"></a>
 
 An Amazon SageMaker training job is an iterative process that teaches a model to make predictions by presenting examples from a training dataset\. Typically, a training algorithm computes several metrics, such as training error and prediction accuracy\. These metrics help diagnose whether the model is learning well and will generalize well for making predictions on unseen data\. The training algorithm writes the values of these metrics to logs, which SageMaker monitors and sends to Amazon CloudWatch in real time\. To analyze the performance of your training job, you can view graphs of these metrics in CloudWatch\. When a training job has completed, you can also get a list of the metric values that it computes in its final iteration by calling the [ `DescribeTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html) operation\.
 
+**Note**  
+Amazon CloudWatch supports [high\-resolution custom metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html), and its finest resolution is 1 second\. However, the finer the resolution, the shorter the lifespan of the CloudWatch metrics\. For the 1\-second frequency resolution, the CloudWatch metrics are available for 3 hours\. For more information about the resolution and the lifespan of the CloudWatch metrics, see [GetMetricStatistics](http://amazonaws.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html) in the *Amazon CloudWatch API Reference*\. 
+
+**Tip**  
+If you want to profile your training job with a finer resolution down to 100\-millisecond \(0\.1 second\) granularity and store the training metrics indefinitely in Amazon S3 for custom analysis at any time, consider using [Amazon SageMaker Debugger](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html)\. SageMaker Debugger provides built\-in rules to automatically detect common training issues; it detects hardware resource utilization issues \(such as CPU, GPU, and I/O bottlenecks\) and non\-converging model issues \(such as overfit, vanishing gradients, and exploding tensors\)\. SageMaker Debugger also provides visualizations through Studio and its profiling report\. To explore the Debugger visualizations, see [SageMaker Debugger Insights Dashboard Walkthrough](https://docs.aws.amazon.com/sagemaker/latest/dg/debugger-on-studio-insights-walkthrough.htm), [Debugger Profiling Report Walkthrough](https://docs.aws.amazon.com/sagemaker/latest/dg/debugger-profiling-report.html#debugger-profiling-report-walkthrough), and [Analyze Data Using the SMDebug Client Library](https://docs.aws.amazon.com/sagemaker/latest/dg/debugger-analyze-data.html)\.
+
 **Topics**
-+ [Training Metrics Sample Notebooks](#training-metrics-sample-notebooks)
 + [Defining Training Metrics](#define-train-metrics)
-+ [Monitoring Training Job Metrics \( Console\)](#view-train-metrics-cw)
++ [Monitoring Training Job Metrics \(CloudWatch Console\)](#view-train-metrics-cw)
 + [Monitoring Training Job Metrics \(SageMaker Console\)](#view-train-metrics-sm)
 + [Example: Viewing a Training and Validation Curve](#train-valid-curve)
 
-## Training Metrics Sample Notebooks<a name="training-metrics-sample-notebooks"></a>
-
-The following sample notebooks show how to view and plot training metrics:
-+ [ An Introduction to the Amazon SageMaker ObjectToVec Model for Sequence\-to\-sequence Embedding \(object2vec\_sentence\_similarity\.ipynb\)](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/object2vec_sentence_similarity/object2vec_sentence_similarity.html)
-+ [Regression with the Amazon SageMaker XGBoost Algorithm \(xgboost\_abalone\.ipynb\)](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_abalone.html)
-
-For instructions how to create and access Jupyter notebook instances that you can use to run the examples in SageMaker, see [Example Notebooks](howitworks-nbexamples.md)\. To see a list of all the SageMaker samples, after creating and opening a notebook instance, choose the **SageMaker Examples** tab\. To access the example notebooks that show how to use training metrics, `object2vec_sentence_similarity.ipynb` and ` xgboost_abalone.ipynb`\., from the **Introduction to Amazon algorithms** section\. To open a notebook, choose its **Use** tab, then choose **Create copy**\.
-
 ## Defining Training Metrics<a name="define-train-metrics"></a>
 
-SageMaker automatically parses the logs for metrics that built\-in algorithms emit and sends those metrics to CloudWatch\. If you want SageMaker to parse logs from a custom algorithm and send metrics that the algorithm emits to CloudWatch, you have to specify the metrics that you want SageMaker to send to CloudWatch when you configure the training job\. You specify the name of the metrics that you want to send and the regular expressions that SageMaker uses to parse the logs that your algorithm emits to find those metrics\.
+SageMaker automatically parses training job logs and sends training metrics to CloudWatch\. By default, SageMaker sends system resource utilization metrics listed in [SageMaker Jobs and Endpoint Metrics](https://docs.aws.amazon.com/sagemaker/latest/dg/monitoring-cloudwatch.html#cloudwatch-metrics-jobs)\. If you want SageMaker to parse logs and send custom metrics from a training job of your own algorithm to CloudWatch, you need to specify metrics definitions by passing the name of metrics and regular expressions when you configure a SageMaker training job request\.
 
-You can specify the metrics that you want to track with the SageMaker console;, the SageMaker Python SDK \([https://github\.com/aws/sagemaker\-python\-sdk](https://github.com/aws/sagemaker-python-sdk)\), or the low\-level SageMaker API\.
+You can specify the metrics that you want to track using the SageMaker console, the [SageMaker Python SDK](https://github.com/aws/sagemaker-python-sdk), or the low\-level SageMaker API\.
 
-**Topics**
-+ [Defining Regular Expressions for Metrics](#define-train-metric-regex)
-+ [Defining Training Metrics \(Low\-level SageMaker API\)](#define-train-metrics-api)
-+ [Defining Training Metrics \(SageMaker Python SDK\)](#define-train-metrics-sdk)
-+ [Define Training Metrics \(Console\)](#define-train-metrics-console)
+If you are using your own algorithm, do the following:
++ Make sure that the algorithm writes the metrics that you want to capture to logs\.
++ Define a regular expression that accurately searches the logs to capture the values of the metrics that you want to send to CloudWatch\.
 
-### Defining Regular Expressions for Metrics<a name="define-train-metric-regex"></a>
-
-To find a metric, SageMaker searches the logs that your algorithm emits and finds logs that match the regular expression that you specify for that metric\. If you are using your own algorithm, do the following:
-+ Make sure that the algorithm writes the metrics that you want to capture to logs
-+ Define a regular expression that accurately searches the logs to capture the values of the metrics that you want to send to CloudWatch metrics\.
-
-For example, suppose your algorithm emits metrics for training error and validation error by writing logs similar to the following to `stdout ` or `stderr`:
+For example, suppose your algorithm emits the following metrics for training error and validation error:
 
 ```
-Train_error=0.138318;  Valid_error = 0.324557;
+Train_error=0.138318;  Valid_error=0.324557;
 ```
 
-If you want to monitor both of those metrics in CloudWatch, your `AlgorithmSpecification` would look like the following:
+If you want to monitor both of those metrics in CloudWatch, the dictionary for the metric definitions should look like the following example:
+
+```
+[
+    {
+        "Name": "train:error",
+        "Regex": "Train_error=(.*?);"
+    },
+    {
+        "Name": "validation:error",
+        "Regex": "Valid_error=(.*?);"
+    }    
+]
+```
+
+In the regex for the `train:error` metric defined in the preceding example, the first part of the regex finds the exact text "Train\_error=", and the expression `(.*?);` captures any characters until the first semicolon character appears\. In this expression, the parenthesis tell the regex to capture what is inside them, `.` means any character, `*` means zero or more, and `?` means capture only until the first instance of the `;` character\.
+
+### Define Metrics Using the SageMaker Python SDK<a name="define-train-metrics-sdk"></a>
+
+Define the metrics that you want to send to CloudWatch by specifying a list of metric names and regular expressions as the `metric_definitions` argument when you initialize an `Estimator` object\. For example, if you want to monitor both the `train:error` and `validation:error` metrics in CloudWatch, your `Estimator` initialization would look like the following example:
+
+```
+import sagemaker
+from sagemaker.estimator import Estimator
+
+estimator = Estimator(
+    image_uri="your-own-image-uri",
+    role=sagemaker.get_execution_role(), 
+    sagemaker_session=sagemaker.Session(),
+    instance_count=1,
+    instance_type='ml.c4.xlarge',
+    metric_definitions=[
+       {'Name': 'train:error', 'Regex': 'Train_error=(.*?);'},
+       {'Name': 'validation:error', 'Regex': 'Valid_error=(.*?);'}
+    ]
+)
+```
+
+For more information about training by using [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) estimators, see[ Sagemaker Python SDK](https://github.com/aws/sagemaker-python-sdk#sagemaker-python-sdk-overview) on GitHub\. 
+
+### Define Metrics Using the SageMaker Console<a name="define-train-metrics-console"></a>
+
+If you choose the **Your own algorithm container in ECR** option as your algorithm source in the SageMaker console when you create a training job, add the metric definitions in the **Metrics** section\. The following screenshot shows how it should look after you add the example metric names and the corresponding regular expressions\.
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/training-metrics-using-smconsole.png)
+
+### Define Metrics Using the Low\-level SageMaker API<a name="define-train-metrics-api"></a>
+
+Define the metrics that you want to send to CloudWatch by specifying a list of metric names and regular expressions in the `MetricDefinitions` field of the [ `AlgorithmSpecification`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AlgorithmSpecification.html) input parameter that you pass to the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) operation\. For example, if you want to monitor both the `train:error` and `validation:error` metrics in CloudWatch, your `AlgorithmSpecification` would look like the following example:
 
 ```
 "AlgorithmSpecification": {
-        "TrainingImage": ContainerName,
-        "TrainingInputMode": "File",
-        "MetricDefinitions" : [
-            {
+    "TrainingImage": your-own-image-uri,
+    "TrainingInputMode": "File",
+    "MetricDefinitions" : [
+        {
             "Name": "train:error",
             "Regex": "Train_error=(.*?);"
         },
-             {
+        {
             "Name": "validation:error",
             "Regex": "Valid_error=(.*?);"
         }
-        
-    ]}
-```
-
-In the regex for the `train:error` metric defined above, the first part of the regex finds the exact text "Train\_error=", and the expression `(.*?);` captures zero or more of any character until the first semicolon character\. In this expression, the parenthesis tell the regex to capture what is inside them, `.` means any character, `*` means zero or more, and `?` means capture only until the first instance of the `;` character\.
-
-### Defining Training Metrics \(Low\-level SageMaker API\)<a name="define-train-metrics-api"></a>
-
-Define the metrics that you want to send to CloudWatch by specifying a list of metric names and regular expressions in the `MetricDefinitions` field of the [ `AlgorithmSpecification`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AlgorithmSpecification.html) input parameter that you pass to the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) operation\. For example, if you want to monitor both the `train:error` and `validation:error` metrics in CloudWatch, your `AlgorithmSpecification` would look like the following:
-
-```
-"AlgorithmSpecification": {
-        "TrainingImage": ContainerName,
-        "TrainingInputMode": "File",
-        "MetricDefinitions" : [
-            {
-            "Name": "train:error",
-            "Regex": "Train_error=(.*?);"
-        },
-             {
-            "Name": "validation:error",
-            "Regex": "Valid_error=(.*?);"
-        }
-        
-    ]}
+    ]
+}
 ```
 
 For more information about defining and running a training job by using the low\-level SageMaker API, see [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html)\.
 
-### Defining Training Metrics \(SageMaker Python SDK\)<a name="define-train-metrics-sdk"></a>
-
-Define the metrics that you want to send to CloudWatch by specifying a list of metric names and regular expressions as the `metric_definitions` argument when you initialize an `Estimator` object\. For example, if you want to monitor both the `train:error` and `validation:error` metrics in CloudWatch, your `Estimator` initialization would look like the following:
-
-```
-estimator =
-                Estimator(image_name=ImageName,
-                role='SageMakerRole', 
-                instance_count=1,
-                instance_type='ml.c4.xlarge',
-                k=10,
-                sagemaker_session=sagemaker_session,
-                metric_definitions=[
-                   {'Name': 'train:error', 'Regex': 'Train_error=(.*?);'},
-                   {'Name': 'validation:error', 'Regex': 'Valid_error=(.*?);'}
-                ]
-            )
-```
-
-For more information about training by using [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) estimators, see [https://github\.com/aws/sagemaker\-python\-sdk\#sagemaker\-python\-sdk\-overview](https://github.com/aws/sagemaker-python-sdk#sagemaker-python-sdk-overview)\.
-
-### Define Training Metrics \(Console\)<a name="define-train-metrics-console"></a>
-
-You can define metrics for a custom algorithm in the console when you create a training job by providing the name and regular expression \(regex\) for **Metrics**\.
-
-For example, if you want to monitor both the `train:error` and `validation:error` metrics in CloudWatch, your metric definitions would look like the following:
-
-```
-[
-            {
-            "Name": "train:error",
-            "Regex": "Train_error=(.*?);"
-        },
-             {
-            "Name": "validation:error",
-            "Regex": "Valid_error=(.*?);"
-        }
-        
-    ]
-```
-
-## Monitoring Training Job Metrics \( Console\)<a name="view-train-metrics-cw"></a>
+## Monitoring Training Job Metrics \(CloudWatch Console\)<a name="view-train-metrics-cw"></a>
 
 You can monitor the metrics that a training job emits in real time in the CloudWatch console\.
 
@@ -159,11 +132,11 @@ You can monitor the metrics that a training job emits in real time by using the 
 
 ## Example: Viewing a Training and Validation Curve<a name="train-valid-curve"></a>
 
-Typically, you split the data that you train your model on into training and validation datasets\. You use the training set to train the model parameters that are used to make predictions on the training dataset\. Then you test how well the model makes predictions by calculating predictions for the validation set\. To analyze the performance of a training job, you commonly plot a training curve against a validation curve\. 
+Typically, you split the data on which you train your model into training and validation datasets\. You use the training set to train the model parameters that are used to make predictions on the training dataset\. Then you test how well the model makes predictions by calculating predictions for the validation set\. To analyze the performance of a training job, you commonly plot a training curve against a validation curve\. 
 
 Viewing a graph that shows the accuracy for both the training and validation sets over time can help you to improve the performance of your model\. For example, if training accuracy continues to increase over time, but, at some point, validation accuracy starts to decrease, you are likely overfitting your model\. To address this, you can make adjustments to your model, such as increasing [regularization](https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#regularization)\.
 
-For this example, you can use the **Image\-classification\-full\-training** example that is in the **Example notebooks** section of your SageMaker notebook instance\. If you don't have a SageMaker notebook instance, create one by following the instructions at [Step 1: Create an Amazon SageMaker Notebook Instance](gs-setup-working-env.md)\. If you prefer, you can follow along with the [End\-to\-End Multiclass Image Classification Example](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-fulltraining.html) in the example notebook on GitHub\. You also need an Amazon S3 bucket to store the training data and for the model output\.
+For this example, you can use the **Image\-classification\-full\-training** example in the **Example notebooks** section of your SageMaker notebook instance\. If you don't have a SageMaker notebook instance, create one by following the instructions at [Step 1: Create an Amazon SageMaker Notebook Instance](gs-setup-working-env.md)\. If you prefer, you can follow along with the [End\-to\-End Multiclass Image Classification Example](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-fulltraining.html) in the example notebook on GitHub\. You also need an Amazon S3 bucket to store the training data and for the model output\.
 
 **To view training and validation error curves**
 
@@ -189,5 +162,5 @@ For this example, you can use the **Image\-classification\-full\-training** exam
 
 1. On the **All metrics** tab, choose the **train:accuracy** and **validation:accuracy** metrics for the training job that you created in the notebook\.
 
-1. On the graph, choose an area that the metric's values to zoom in\. You should see something like the following:  
+1. On the graph, choose an area that the metric's values to zoom in\. You should see something like the following example\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/train-valid-acc.png)

@@ -10,35 +10,17 @@ aws_account_id.dkr.ecr.aws_region.amazonaws.com/xgboost-neo:latest
 
 Replace *aws\_account\_id* from the table at the end of this page based on the *aws\_region* you used\.
 
-## TensorFlow<a name="inference-container-collapse-tf"></a>
-
-------
-#### [ CPU or GPU instance types ]
+## Keras<a name="inference-container-collapse-keras"></a>
 
 ```
-aws_account_id.dkr.ecr.aws_region.amazonaws.com/sagemaker-inference-tensorflow:fx_version-instance_type-py3
+aws_account_id.dkr.ecr.aws_region.amazonaws.com/sagemaker-neo-keras:fx_version-instance_type-py3
 ```
 
-Replace *aws\_account\_id* from the table at the end of this page based on the *aws\_region* you used\. 
+Replace *aws\_account\_id* from the table at the end of this page based on the *aws\_region* you used\.
 
-Replace *fx\_version* with `1.15.3`\. 
+Replace *fx\_version* with `2.2.4`\.
 
-Replace *instance\_type* with either `cpu` or `gpu`\. 
-
-------
-#### [ Inferentia instance types ]
-
-```
-aws_account_id.dkr.ecr.aws_region.amazonaws.com/sagemaker-neo-tensorflow:fx_version-instance_type-py3
-```
-
-Replace *aws\_account\_id* from the table at the end of this page based on the *aws\_region* you used\. Note that for instance type `inf` only `us-east-1` and `us-west-2` are supported\.
-
-Replace *fx\_version* with `1.15.0`
-
-Replace *instance\_type* with `inf`\.
-
-------
+Replace *instance\_type* with either `cpu` or `gpu`\.
 
 ## MXNet<a name="inference-container-collapse-mxnet"></a>
 
@@ -72,6 +54,18 @@ Replace *`instance_type`* with `inf`\.
 
 ------
 
+## ONNX<a name="inference-container-collapse-keras"></a>
+
+```
+aws_account_id.dkr.ecr.aws_region.amazonaws.com/sagemaker-neo-onnx:fx_version-instance_type-py3
+```
+
+Replace *aws\_account\_id* from the table at the end of this page based on the *aws\_region* you used\.
+
+Replace *fx\_version* with `1.5.0`\.
+
+Replace *instance\_type* with either `cpu` or `gpu`\.
+
 ## PyTorch<a name="inference-container-collapse-pytorch"></a>
 
 ------
@@ -101,6 +95,36 @@ Replace *aws\_account\_id* from the table at the end of this page based on the *
 Replace *fx\_version* with `1.5.1`\. 
 
 Replace *`instance_type`* with `inf`\.
+
+------
+
+## TensorFlow<a name="inference-container-collapse-tf"></a>
+
+------
+#### [ CPU or GPU instance types ]
+
+```
+aws_account_id.dkr.ecr.aws_region.amazonaws.com/sagemaker-inference-tensorflow:fx_version-instance_type-py3
+```
+
+Replace *aws\_account\_id* from the table at the end of this page based on the *aws\_region* you used\. 
+
+Replace *fx\_version* with `1.15.3`\. 
+
+Replace *instance\_type* with either `cpu` or `gpu`\. 
+
+------
+#### [ Inferentia instance types ]
+
+```
+aws_account_id.dkr.ecr.aws_region.amazonaws.com/sagemaker-neo-tensorflow:fx_version-instance_type-py3
+```
+
+Replace *aws\_account\_id* from the table at the end of this page based on the *aws\_region* you used\. Note that for instance type `inf` only `us-east-1` and `us-west-2` are supported\.
+
+Replace *fx\_version* with `1.15.0`
+
+Replace *instance\_type* with `inf`\.
 
 ------
 

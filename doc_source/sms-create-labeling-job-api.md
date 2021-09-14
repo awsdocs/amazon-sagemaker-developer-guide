@@ -9,25 +9,23 @@ To use the `CreateLabelingJob` operation, you need the following:
   + If you are using a custom labeling workflow, you can create a custom template and save the template in your S3 bucket\. To learn how to built a custom worker template, see [Step 2: Creating your custom worker task template](sms-custom-templates-step2.md)\. For custom HTML elements that you can use to customize your template, see [Crowd HTML Elements Reference](sms-ui-template-reference.md)\. For a repository of demo templates for a variety of labeling tasks, see [Amazon SageMaker Ground Truth Sample Task UIs ](https://github.com/aws-samples/amazon-sagemaker-ground-truth-task-uis)\.
 + An input manifest file that specifies your input data in Amazon S3\. Specify the location of your input manifest file in `ManifestS3Uri`\. For information about creating an input manifest, see [Input Data](sms-data-input.md)\. If you create a streaming labeling job, this is optional\. To learn how to create a streaming labeling job, see [Create a Streaming Labeling Job](sms-streaming-create-job.md)\.
 + An Amazon S3 bucket to store your output data\. You specify this bucket, and optionally, a prefix in `S3OutputPath`\.
-+ A label category configuration file\. Each label category name must be unique\. Specify the location of this file in Amazon S3 using the `LabelCategoryConfigS3Uri` parameter\.
++ A label category configuration file\. Each label category name must be unique\. Specify the location of this file in Amazon S3 using the `LabelCategoryConfigS3Uri` parameter\. The format and label categories for this file depend on the task type you use:
+  + For image classification and text classification \(single and multi\-label\) you must specify at least two label categories\. For all other task types, the minimum number of label categories required is one\. 
+  + For named entity recognition tasks, you must provide worker instructions in this file\. See [Provide Worker Instructions in a Label Category Configuration File](sms-named-entity-recg.md#worker-instructions-ner) for details and an example\.
+  + For 3D point cloud and video frame task type, use the format in [Create a Labeling Category Configuration File with Label Category and Frame Attributes](sms-label-cat-config-attributes.md)\.
+  + For all other built\-in task types and custom tasks, your label category configuration file must be a JSON file in the following format\. Identify the labels you want to use by replacing `label_1`, `label_2`,`...`,`label_n` with your label categories\. 
 
-  For image classification and text classification \(single and multi\-label\) you must specify at least two label categories\. For all other task types, the minimum number of label categories required is one\. 
-
-  For 3D point cloud and video frame task type, use the format in [Create a Labeling Category Configuration File with Label Category and Frame Attributes](sms-label-cat-config-attributes.md)\. 
-
-  For all other built\-in task types and custom tasks, your label category configuration file must be a JSON file in the following format\. Identify the labels you want to use by replacing `label_1`, `label_2`,`...`,`label_n` with your label categories\. 
-
-  ```
-  {
-      "document-version": "2018-11-28"
-      "labels": [
-          {"label": "label_1"},
-          {"label": "label_2"},
-          ...
-          {"label": "label_n"}
-      ]
-  }
-  ```
+    ```
+    {
+        "document-version": "2018-11-28"
+        "labels": [
+            {"label": "label_1"},
+            {"label": "label_2"},
+            ...
+            {"label": "label_n"}
+        ]
+    }
+    ```
 + An AWS Identity and Access Management \(IAM\) role with the [AmazonSageMakerGroundTruthExecution](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerGroundTruthExecution) managed IAM policy attached and with permissions to access your S3 buckets\. Specify this role in `RoleArn`\. To learn more about this policy, see [Use IAM Managed Policies with Ground Truth](sms-security-permissions-get-started.md)\. If you require more granular permissions, see [Assign IAM Permissions to Use Ground Truth](sms-security-permission.md)\.
 
   If your input or output bucket name does not contain `sagemaker`, you can attach a policy similar to the following to the role that is passed to the `CreateLabelingJob` operation\.

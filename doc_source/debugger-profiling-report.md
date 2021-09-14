@@ -199,7 +199,7 @@ The pie charts show the following information:
 
 ### I/O Bottlenecks<a name="debugger-profiling-report-walkthrough-io-bottlenecks"></a>
 
-In this section, you can find a summary of IO bottlenecks\.
+In this section, you can find a summary of I/O bottlenecks\. The rule evaluates the I/O wait time and GPU utilization rates and monitors if the time spent on the I/O requests exceeds a threshold percent of the total training time\. It might indicate I/O bottlenecks where GPUs are waiting for data to arrive from storage\.
 
 ### LoadBalancing in Multi\-GPU Training<a name="debugger-profiling-report-walkthrough-workload-balancing"></a>
 

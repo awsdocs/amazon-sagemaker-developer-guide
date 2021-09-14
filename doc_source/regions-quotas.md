@@ -4,6 +4,17 @@ For the AWS Regions supported by Amazon SageMaker and the Amazon Elastic Compute
 
 For a list of the SageMaker service endpoints for each Region and the SageMaker service quotas for each instance type, see [Amazon SageMaker endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/sagemaker.html)\.
 
+**Note**  
+The following SageMaker features aren't available in the Asia Pacific \(Osaka\) Region:  
+Amazon SageMaker Autopilot
+Clarify
+SageMaker Edge Manager
+Ground Truth
+Hyperparameter tuning \(HPO\)
+JumpStart
+Amazon SageMaker Model Monitor
+Reinforcement learning
+
 Amazon SageMaker Studio is available in all the AWS Regions supported by Amazon SageMaker except the AWS GovCloud \(US\) Regions\. In the supported Regions, Studio is available in the same Availability Zones as notebook instances\.
 
 Amazon SageMaker Pipelines is available in all the AWS Regions supported by AWS except the AWS GovCloud \(US\) Regions\. SageMaker Projects is available in the AWS regions where CodePipeline is available\. For more information about CodePipeline region availability, see the [AWS Regional Services List](http://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/)\.
