@@ -357,11 +357,11 @@ Use a policy like to the following to create an IAM execution role that can be u
 
 All permissions for AWS resources will be managed via your IAM role attached to your SageMaker Studio instance\. Snowflake specific permissions are to be managed by the Snowflake admin, as they can grant granular permissions/privileges to each Snowflake user\. This includes databases, schemas, tables, warehouses, and storage integration objects\. You will have to ensure that the correct permissions are set up outside of Data Wrangler\. 
 
-Note that the Snowflake `COPY INTO Amazon S3` command moves data from Snowflake to S3 over the public internet by default but data in transit will be secured using SSL\. Data at rest in Amazon S3 will be encrypted with SSE\-KMS using the default AWS\-managed CMK\.
+Note that the Snowflake `COPY INTO Amazon S3` command moves data from Snowflake to S3 over the public internet by default but data in transit will be secured using SSL\. Data at rest in Amazon S3 will be encrypted with SSE\-KMS using the default AWS KMS key\.
 
 With respect to Snowflake credentials storage, Data Wrangler does not store customer credentials\. Data Wrangler uses AWS Secrets Manager to store the credentials in a Secret and rotates secrets as part of a best practice security plan\. The Snowflake or Studio administrator needs to ensure that the data scientist’s Studio execution role is granted permission to perform `GetSecretValue` on the Secret where the credentials are stored\. If already attached to the Studio execution role, the `AmazonSageMakerFullAccess` policy will have the necessary permissions to read secrets created by Data Wrangler and secrets created by following the naming and tagging convention in the instructions above\. Secrets that do not follow the conventions will need to be separately granted access\. It is recommended to use Secrets Manager to prevent sharing credentials over unsecured channels, however note that a logged\-in user can retrieve the plain\-text password by launching a terminal or Python notebook in Studio and then invoking API calls from the Secrets Manager API\. 
 
-## Data Encryption with KMS\-CMK<a name="data-wrangler-security-kms"></a>
+## Data Encryption with AWS KMS<a name="data-wrangler-security-kms"></a>
 
 For files stored in Amazon S3 that have server\-side encryption enabled and the encryption type is SSE\-KMS, the SageMaker Studio user role will need to be added as a Key user for them to be able to decrypt the file and import in Data Wrangler\.
 
@@ -369,12 +369,12 @@ For files stored in Amazon S3 that have server\-side encryption enabled and the 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/data-wrangler-kms.png)
 
-### Amazon S3 CMK setup for Data Wrangler imported data storage<a name="data-wrangler-s3-cmk-setup"></a>
+### Amazon S3 customer managed key setup for Data Wrangler imported data storage<a name="data-wrangler-s3-cmk-setup"></a>
 
  By default, Data Wrangler uses Amazon S3 buckets that have the following naming convention: `sagemaker-region-account number`\. For example, if your account number is `111122223333` and you are using Studio in us\-east\-1, your imported datasets are stored with the following naming convention: `sagemaker-us-east-1-111122223333`\. 
 
-Below are instructions on how to setup a custom managed CMK for your default Amazon S3 bucket\.
+Below are instructions on how to setup a customer managed key for your default Amazon S3 bucket\.
 
-1. To enable server\-side encryption and setup custom managed CMK for your default S3 bucket, see [Using KMS Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)\.
+1. To enable server\-side encryption and setup a customer managed key for your default S3 bucket, see [Using KMS Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)\.
 
-1. After following Step 1, navigate to KMS in your AWS Management Console\. Find the CMK you selected in Step 1 of the previous step, and add the Studio role as the key user\. To do this, follow the [Allows key users to use the CMK](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-users)\.
+1. After following Step 1, navigate to KMS in your AWS Management Console\. Find the customer managed key you selected in Step 1 of the previous step, and add the Studio role as the key user\. To do this, follow the [Allows key users to use a customer managed key](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-users)\.

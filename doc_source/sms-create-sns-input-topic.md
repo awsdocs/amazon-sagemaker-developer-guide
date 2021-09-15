@@ -12,20 +12,20 @@ Note down your input topic ARN and use it as input for the `CreateLabelingJob` p
 
 ## Create an Output Topic<a name="sms-streaming-output-topic"></a>
 
-If you provide an output topic, it is used to send notifications when a data object is labeled\. When you create a topic, you have the option to add an encryption key\. Use this option to add a AWS Key Management Service customer managed key \(CMK\) to your topic to encrypt the output data of your labeling job before it is published to your output topic\.
+If you provide an output topic, it is used to send notifications when a data object is labeled\. When you create a topic, you have the option to add an encryption key\. Use this option to add a AWS Key Management Service customer managed key to your topic to encrypt the output data of your labeling job before it is published to your output topic\.
 
 To create an output topic, follow the instructions in [Creating an Amazon SNS topic](https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html) in the Amazon Simple Notification Service Developer Guide\.
 
 If you add encryption, you must attach additional permission to the topic\. See [Add Encryption to Your Output Topic \(Optional\)](#sms-streaming-encryption)\. for more information\.
 
 **Important**  
-To add a CMK to your output topic while creating a topic in the console, do not use the **\(Default\) alias/aws/sns** option\. Select a CMK key that you created\. 
+To add a customer managed key to your output topic while creating a topic in the console, do not use the **\(Default\) alias/aws/sns** option\. Select a customer managed key that you created\. 
 
 Note down your input topic ARN and use it in your `CreateLabelingJob` request in the parameter `SnsTopicArn` in `OutputConfig`\. 
 
 ### Add Encryption to Your Output Topic \(Optional\)<a name="sms-streaming-encryption"></a>
 
-To encrypt messages published to your output topic, you need to provide an AWS KMS customer managed key \(CMK\) to your topic\. Modify the following policy and add it to your CMK to give Ground Truth permission to encrypt output data before publishing it to your output topic\.
+To encrypt messages published to your output topic, you need to provide an AWS KMS customer managed key to your topic\. Modify the following policy and add it to your customer managed key to give Ground Truth permission to encrypt output data before publishing it to your output topic\.
 
 Replace *`<account_id>`* with the ID of the account that you are using to create your topic\. To learn how to find your AWS account ID, see [Finding Your AWS Account ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html#FindingYourAWSId)\. 
 
@@ -73,7 +73,7 @@ Replace *`<account_id>`* with the ID of the account that you are using to create
 
 Additionally, you must modify and add the following policy to the execution role that you use to create your labeling job \(the input value for `RoleArn`\)\. 
 
-Replace *`<account_id>`* with the ID of the account that you are using to create your topic\. Replace *`<region>`* with the AWS Region you are using to create your labeling job\. Replace `<key_id>` with your CMK ID\.
+Replace *`<account_id>`* with the ID of the account that you are using to create your topic\. Replace *`<region>`* with the AWS Region you are using to create your labeling job\. Replace `<key_id>` with your customer managed key ID\.
 
 ```
 { 

@@ -37,7 +37,16 @@ You can browse all buckets in your AWS account and import CSV and Parquet files 
 When you choose a dataset for import, you can rename it, specify the file type, and identify the first row as a header\. 
 
 **Important**  
-If you plan to import a CSV file, be aware that a single record must not exceed multiple lines, otherwise an error is thrown\.
+If you're importing a CSV file, make sure it meets the following requirements:  
+A record in your dataset can't be longer than one line\.
+A backslash, `\`, is the only valid escape character\.
+Your dataset must use one of the following delimiters:  
+Comma – `,`
+Colon – `:`
+Semicolon – `;`
+Pipe – `|`
+Tab – `[TAB]`
+To save space, you can import compressed CSV files\.
 
 **To import a dataset into Data Wrangler from Amazon S3:**
 

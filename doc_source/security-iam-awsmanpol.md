@@ -58,7 +58,7 @@ This policy includes the following permissions\.
 + `s3` – Allows principals to have full access to Amazon S3 resources pertaining to SageMaker, but not all of Amazon S3\.
 + `secretsmanager` – Allows principals to have full access to AWS Secrets Manager\. The principals can securely encrypt, store, and retrieve credentials for databases and other services\. This is also needed for SageMaker notebook instances with SageMaker code repositories that use GitHub\.
 + `servicecatalog` – Allows principals to use AWS Service Catalog\. The principals can create, get a list of, update, or terminate provisioned products, such as servers, databases, websites, or applications deployed using AWS resources\. This is needed for SageMaker JumpStart and Projects to find and read service catalog products and launch AWS resources in user accounts\.
-+ `sns` – Allows principals to get a list of Amazon SNS topics\.
++ `sns` – Allows principals to get a list of Amazon SNS topics\. This is needed for endpoints with Async Inference enabled for notifying users that their inference has completed\.
 + `states` – Needed for SageMaker JumpStart and Pipelines to use a service catalog to create step function resources\.
 + `tag` – Needed for SageMaker Pipelines to render in Studio\. Studio needs resources tagged with particular `sagemaker:project-id` tag\-key\. This requires the `tag:GetResources` permission\.
 
@@ -408,7 +408,8 @@ This policy includes the following permissions\.
             "Effect": "Allow",
             "Action": [
                 "sns:Subscribe",
-                "sns:CreateTopic"
+                "sns:CreateTopic",
+                "sns:Publish"
             ],
             "Resource": [
                 "arn:aws:sns:*:*:*SageMaker*",
@@ -590,5 +591,6 @@ View details about updates to AWS managed policies for SageMaker since this serv
 
 | Change | Description | Date | 
 | --- | --- | --- | 
+|  `AmazonSageMakerFullAccess` updates – Update to an existing policy\.  | Add `sns:Publish` permissions for endpoints with Async Inference enabled\. | AUGUST 02, 2021 | 
 |  `AmazonSageMakerReadOnly` updates – Update to an existing policy   |  New API `BatchGetRecord` added for SageMaker Feature Store\.   | JUNE 10, 2021 | 
 |  SageMaker started tracking changes  |  SageMaker started tracking changes for its AWS managed policies\.  | JUNE 01, 2021 | 

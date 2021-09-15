@@ -75,7 +75,7 @@ Download the Debugger XGBoost training report while your training job is running
 1. The Debugger XGBoost report is stored under `<default-s3-output-base-uri>/<training-job-name>/rule-output`\. Configure the rule output path as follows:
 
    ```
-   rule_output_path = estimator.output_path + estimator.latest_training_job.job_name + "/rule-output"
+   rule_output_path = estimator.output_path + "/" + estimator.latest_training_job.job_name + "/rule-output"
    ```
 
 1. To check if the report is generated, list directories and files recursively under the `rule_output_path` using `aws s3 ls` with the `--recursive` option\.
