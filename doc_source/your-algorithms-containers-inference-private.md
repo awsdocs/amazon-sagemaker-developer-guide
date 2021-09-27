@@ -47,12 +47,14 @@ When you create a model and deploy it to SageMaker hosting, you can specify that
                   }
    ```
 
-1. Create the primary container object that you want to pass to `create_model`, using the image configuration object that you created in the previous step\.
+1. Create the primary container object that you want to pass to `create_model`, using the image configuration object that you created in the previous step\. 
+
+   Provide your image in [digest](https://docs.docker.com/engine/reference/commandline/pull/#pull-an-image-by-digest-immutable-identifier) form\. If you provide your image using the `:latest` tag, there is a risk that SageMaker pulls a newer version of the image than intended\. Using the digest form ensures that SageMaker pulls the intended image version\.
 
    ```
    primary_container = {
        'ContainerHostname': 'ModelContainer',
-       'Image': 'myteam.myorg.com/docker-local/my-inference-image:latest',
+       'Image': 'myteam.myorg.com/docker-local/my-inference-image:<IMAGE-TAG>',
        'ImageConfig': image_config
    }
    ```
@@ -166,4 +168,4 @@ An execution role with the `AmazonSageMakerFullAccess` managed policy attached t
 
 Create an interface endpoint so that your Amazon VPC can communicate with your AWS Lambda function without sending traffic over the internet\. For information about how to do this, see [Configuring interface VPC endpoints for Lambda](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc-endpoints.html) in the *AWS Lambda Developer Guide*\.
 
-SageMaker hosting sends a request through your VPC to `lambda.region.amazonaws.com`, to call your Lambda function\. If you choose Private DNS Name when you create your interface endpoint, Amazon Route 53 routes the call to the Lambda interface endpoint\. If you use a different DNS provider, make sure to map `lambda.region.amazonaws.com` to your Lambda interface endpoint\.
+SageMaker hosting sends a request through your VPC to `lambda.region.amazonaws.com`, to call your Lambda function\. If you choose Private DNS Name when you create your interface endpoint, Amazon Route 53 routes the call to the Lambda interface endpoint\. If you use a different DNS provider, make sure to map `lambda.region.amazonaws.com` to your Lambda interface endpoint\.

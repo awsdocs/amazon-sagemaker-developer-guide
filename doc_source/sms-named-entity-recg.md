@@ -41,7 +41,7 @@ The following is an example of an [AWS Python SDK \(Boto3\) request](https://bot
 
 ```
 response = client.create_labeling_job(
-    LabelingJobName='example-ner-labeling-job,
+    LabelingJobName='example-ner-labeling-job',
     LabelAttributeName='label',
     InputConfig={
         'DataSource': {
@@ -59,7 +59,7 @@ response = client.create_labeling_job(
         'S3OutputPath': 's3://bucket/path/file-to-store-output-data',
         'KmsKeyId': 'string'
     },
-    RoleArn='arn:aws:iam::*:role/*,
+    RoleArn='arn:aws:iam::*:role/*',
     LabelCategoryConfigS3Uri='s3://bucket/path/label-categories.json',
     StoppingConditions={
         'MaxHumanLabeledObjectCount': 123,
@@ -68,18 +68,18 @@ response = client.create_labeling_job(
     HumanTaskConfig={
         'WorkteamArn': 'arn:aws:sagemaker:region:*:workteam/private-crowd/*',
         'UiConfig': {
-            'HumanTaskUiArn': 's3://bucket/path/worker-task-template.html'
+            'HumanTaskUiArn': 'arn:aws:sagemaker:us-east-1:394669845002:human-task-ui/NamedEntityRecognition'
         },
-        'PreHumanTaskLambdaArn': 'arn:aws:sagemaker:us-east-1:394669845002:human-task-ui/NamedEntityRecognition',
+        'PreHumanTaskLambdaArn': 'arn:aws:lambda:us-east-1:432418664414:function:PRE-NamedEntityRecognition',
         'TaskKeywords': [
             'Named entity Recognition',
         ],
         'TaskTitle': 'Named entity Recognition task',
         'TaskDescription': 'Apply the labels provided to specific words or phrases within the larger text block.',
-        'NumberOfHumanWorkersPerDataObject': 123,
-        'TaskTimeLimitInSeconds': 123,
-        'TaskAvailabilityLifetimeInSeconds': 123,
-        'MaxConcurrentTaskCount': 123,
+        'NumberOfHumanWorkersPerDataObject': 1,
+        'TaskTimeLimitInSeconds': 28800,
+        'TaskAvailabilityLifetimeInSeconds': 864000,
+        'MaxConcurrentTaskCount': 1000,
         'AnnotationConsolidationConfig': {
             'AnnotationConsolidationLambdaArn': 'arn:aws:lambda:us-east-1:432418664414:function:ACS-NamedEntityRecognition'
         },

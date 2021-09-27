@@ -445,8 +445,3 @@ If you use the default dataset for text models without changing the hyperparamet
 When the fine\-tuning process is complete, JumpStart provides information about the model: parent model, training job name, training job Amazon Resource Name \(ARN\), training time, and output path\. The output path is where you can find your new model in an S3 bucket\. The folder structure uses the model name you provided and the model file is in an `/output` subfolder and it's always named `model.tar.gz`\.  
 
  Example: `s3://bucket/model-name/output/model.tar.gz` 
-
-## Next Steps<a name="jumpstart-next"></a>
-
-For a deep dive into Studio features:
-+ [Amazon SageMaker Studio Tour](gs-studio-end-to-end.md) – An end\-to\-end tour of the main features of SageMaker Studio\.
