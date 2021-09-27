@@ -11,5 +11,4 @@ After you complete these tasks, try out the Get Started guides\. The guides walk
 **Topics**
 + [Set Up Amazon SageMaker](gs-set-up.md)
 + [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)
-+ [SageMaker JumpStart](studio-jumpstart.md)
 + [Get Started with Amazon SageMaker Notebook Instances](gs-console.md)

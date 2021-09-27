@@ -11,7 +11,7 @@ You can access an SageMaker Studio notebook in any of the following ways:
 
 **To log in from the SageMaker console**
 
-1. Onboard to Amazon SageMaker Studio\. If you've already onboarded, skip to the next step\.
+1. Onboard to Amazon SageMaker Studio following the instructions on [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\. If you've already onboarded, skip to the next step\.
 
 1. Open the SageMaker [console](https://console.aws.amazon.com/sagemaker/)\.
 
@@ -28,4 +28,4 @@ You can access an SageMaker Studio notebook in any of the following ways:
 Now that you're in Studio, you can try any of the following options:
 + Create a SageMaker Studio notebook – Continue to the next section\.
 + Familiarize yourself with the SageMaker Studio interface – See [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
-+ Follow a Studio end\-to\-end tutorial – See [Amazon SageMaker Studio Tour](gs-studio-end-to-end.md)\.
++ Explore Studio end\-to\-end tutorial notebooks – See [Amazon SageMaker Studio Tour](gs-studio-end-to-end.md)\.

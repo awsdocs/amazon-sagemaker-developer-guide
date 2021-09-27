@@ -24,6 +24,8 @@ You can also create your own custom IAM policies to allow permissions for Amazon
 **Topics**
 + [`AmazonSageMakerFullAccess`](#security-iam-awsmanpol-AmazonSageMakerFullAccess)
 + [`AmazonSageMakerReadOnly`](#security-iam-awsmanpol-AmazonSageMakerReadOnly)
++ [AWS Managed Policies for SageMaker projects and JumpStart](security-iam-awsmanpol-sc.md)
++ [AWS Managed Policies for SageMaker Pipelines](security-iam-awsmanpol-pipelines.md)
 + [SageMaker Updates to AWS Managed Policies](#security-iam-awsmanpol-updates)
 
 ## `AmazonSageMakerFullAccess`<a name="security-iam-awsmanpol-AmazonSageMakerFullAccess"></a>
@@ -591,6 +593,6 @@ View details about updates to AWS managed policies for SageMaker since this serv
 
 | Change | Description | Date | 
 | --- | --- | --- | 
-|  `AmazonSageMakerFullAccess` updates – Update to an existing policy\.  | Add `sns:Publish` permissions for endpoints with Async Inference enabled\. | AUGUST 02, 2021 | 
-|  `AmazonSageMakerReadOnly` updates – Update to an existing policy   |  New API `BatchGetRecord` added for SageMaker Feature Store\.   | JUNE 10, 2021 | 
-|  SageMaker started tracking changes  |  SageMaker started tracking changes for its AWS managed policies\.  | JUNE 01, 2021 | 
+|  `AmazonSageMakerFullAccess` updates – Update to an existing policy\.  |  Add `sns:Publish` permissions for endpoints with Async Inference enabled\.  |  August 2, 2021  | 
+|  `AmazonSageMakerReadOnly` updates – Update to an existing policy   |  New API `BatchGetRecord` added for SageMaker Feature Store\.   | June 10, 2021 | 
+|  SageMaker started tracking changes  |  SageMaker started tracking changes for its AWS managed policies\.  | June 1, 2021 | 

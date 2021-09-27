@@ -23,8 +23,8 @@ To access the feature importance metrics in this procedure, you must first selec
 1. Right\-click the name of the Autopilot job and select **Describe AutoML Job** from the pop up menu\.  
 ![\[Select Describe AutoML Job.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-models-details-generated-4.PNG)
 
-   To review the Objective:F1 metrics for each tuning job\.  
-![\[Select Describe AutoML Job.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-models-details-generated-5.PNG)
+   To review the Objective: F1\_binary, F1, AUC, and Accuracy metrics for an AutoML job, select that AutoML job from the **Experiments** panel\.  
+![\[Select Describe AutoML Job.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-model-metrics-report.png)
 
 1. To review the model details for the best tuning job, right\-click the **Trial name** labeled as the **Best** at the top of the list of trials that has the highest objective metric score and select **Open Model Details**\.  
 ![\[Select Describe AutoML Job.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-models-details-generated-6.PNG)

@@ -16,7 +16,7 @@ Amazon SageMaker Studio can connect only to a local repository\. In this example
 
 1. Choose **CLONE**\.
 
-1. If the repo requires credentials, you are prompted to enter your username and personal access token.
+1. If the repo requires credentials, you are prompted to enter your username and personal access token\.
 
 1. Wait for the download to finish\. After the repo has been cloned, the **File Browser** opens to display the cloned repo\.
 

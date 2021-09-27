@@ -5,16 +5,18 @@ The following table shows SageMaker machine learning frameworks and algorithms s
 
 | 
 | 
-| SageMaker frameworks and algorithms |  Monitoring system bottlenecks  |  Profiling deep learning framework operations  |  Debugging model parameters  | 
+| SageMaker\-supported frameworks and algorithms |  Monitoring system bottlenecks  |  Profiling deep learning framework operations  |  Debugging output tensors  | 
 | --- |--- |--- |--- |
 |  [TensorFlow](https://sagemaker.readthedocs.io/en/stable/using_tf.html)   |  All [AWS Deep learning containers](https://github.com/aws/deep-learning-containers/blob/master/available_images.md#general-framework-containers)  |  [AWS TensorFlow deep learning containers](https://github.com/aws/deep-learning-containers/blob/master/available_images.md#general-framework-containers) 2\.3\.1 or later  |  [AWS TensorFlow deep learning containers](https://github.com/aws/deep-learning-containers/blob/master/available_images.md#general-framework-containers) 1\.15\.4 or later  | 
 |  [PyTorch](https://sagemaker.readthedocs.io/en/stable/using_pytorch.html)  |  [AWS PyTorch deep learning containers](https://github.com/aws/deep-learning-containers/blob/master/available_images.md#general-framework-containers) 1\.6\.0 or later  |  [AWS PyTorch deep learning containers](https://github.com/aws/deep-learning-containers/blob/master/available_images.md#general-framework-containers) 1\.5\.0 or later  | 
 |  [MXNet](https://sagemaker.readthedocs.io/en/stable/using_mxnet.html)   |  \-  |  [AWS MXNet deep learning containers](https://github.com/aws/deep-learning-containers/blob/master/available_images.md#general-framework-containers) 1\.6\.0 or later  | 
-|  [XGBoost](https://sagemaker.readthedocs.io/en/stable/frameworks/xgboost/using_xgboost.html)  |  1\.0\-1, 1\.2\-1  | \- |  1\.0\-1, 1\.2\-1  | 
+|  [XGBoost](https://sagemaker.readthedocs.io/en/stable/frameworks/xgboost/using_xgboost.html)  |  1\.0\-1, 1\.2\-1, 1\.3\-1  | \- |  1\.0\-1, 1\.2\-1, 1\.3\-1  | 
 |  [SageMaker generic estimator](https://sagemaker.readthedocs.io/en/stable/api/training/estimators.html)  |  SageMaker built\-in algorithms using image URIs [Custom training containers](debugger-bring-your-own-container.md) \(with the AWS deep learning container images, public Docker images, or your own Docker images\)  | \- |  [Custom training containers](debugger-bring-your-own-container.md) \(available for TensorFlow, PyTorch, MXNet, and XGBoost with manual hook registration\)  | 
 + **Monitoring system bottlenecks** – Monitor the system utilization rate for resources such as CPU, GPU, memories, network, and data I/O metrics\. This is a framework and model agnostic feature and available for any training jobs in SageMaker\.
 + **Profiling deep learning framework operations** – Profile the deep learning operations of the TensorFlow and PyTorch frameworks, such as step durations, data loaders, forward and backward operations, Python profiling metrics, and framework\-specific metrics\.
-+ **Debugging model parameters** – Track and debug model parameters, such as weights, gradients, biases, and scalar values of your training job\. Available deep learning frameworks are Apache MXNet, TensorFlow, PyTorch, and XGBoost\.
++ **Debugging output tensors** – Track and debug model parameters, such as weights, gradients, biases, and scalar values of your training job\. Available deep learning frameworks are Apache MXNet, TensorFlow, PyTorch, and XGBoost\.
+**Important**  
+ For the TensorFlow framework with Keras, SageMaker Debugger deprecates the zero code change support for debugging models built using the `tf.keras` modules of TensorFlow 2\.6 and later\. This is due to breaking changes announced in the [TensorFlow 2\.6\.0 release note](https://github.com/tensorflow/tensorflow/releases/tag/v2.6.0)\. SageMaker Debugger continues to support the zero code change experience for the native TensorFlow \(which excludes the `tf.keras` modules\)\. 
 
 If the framework or algorithm that you want to train and debug is not listed in the table, go to the [AWS Discussion Forum](https://forums.aws.amazon.com/) and leave feedback on SageMaker Debugger\.
 
