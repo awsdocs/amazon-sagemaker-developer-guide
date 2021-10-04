@@ -102,7 +102,7 @@ Use the following procedure to test the post\-annotation Lambda function created
      "version": "2018-10-16",
      "labelingJobArn": "arn:aws:sagemaker:us-east-2:123456789012:labeling-job/example-job",
      "labelAttributeName": "example-attribute",
-     "roleArn": "arn:aws:iam::222222222222:role/sm-exeuction-role",
+     "roleArn": "arn:aws:iam::222222222222:role/sm-execution-role",
      "payload": {
        "s3Uri": "s3://your-bucket/sample-annotations.json"
      }

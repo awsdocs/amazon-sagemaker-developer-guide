@@ -1,7 +1,7 @@
 # SageMaker JumpStart<a name="studio-jumpstart"></a>
 
-**Important**  
- To use new features with an existing notebook instance or Studio app, you must restart the notebook instance or the Studio app to get the latest updates\. 
+**Note**  
+ To use new features with an existing notebook instance or Studio app, you must restart the notebook instance or the Studio app to get the latest updates\. For more information, see [Update SageMaker Studio and Studio Apps](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-tasks-update.html)\.
 
  You can use SageMaker JumpStart to learn about SageMaker features and capabilities through curated 1\-click solutions, example notebooks, and pretrained models that you can deploy\. You can also fine\-tune the models and deploy them\. 
 

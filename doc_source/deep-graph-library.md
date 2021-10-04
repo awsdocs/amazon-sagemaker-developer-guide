@@ -61,9 +61,8 @@ The last example is a recommender system for movie reviews\. It uses a graph con
 
 ### Use a Deep Learning Container with DGL<a name="deep-graph-library-deep-learning-container"></a>
 
-The following examples use preconfigured deep learning containers\. These are the easiest to try since they work out of the box on Amazon SageMaker\. 
+The following example uses preconfigured deep learning containers\. This is the easiest to try since it works out of the box on Amazon SageMaker\. 
 + [Semi\-supervised classification of a knowledge base using a GCN](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker-python-sdk/dgl_gcn) 
-+ [Learning embeddings of large\-scale knowledge graphs using a dataset of scientific publications](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker-python-sdk/dgl_kge)  
 
 ### Bring Your Own Container with DGL<a name="deep-graph-library-bring-your-own-container"></a>
 

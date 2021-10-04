@@ -3,11 +3,12 @@
 Create end\-to\-end ML solutions with CI/CD by using SageMaker projects\. 
 
 Use SageMaker projects to create an MLOps solution to orchestrate and manage:
++ Building custom images for processing, training, and inference
 + Data preparation and feature engineering
 + Training models
 + Evaluating models
 + Deploying models
-+ Monitor and update models
++ Monitoring and updating models
 
 **Topics**
 + [What is a SageMaker Project?](sagemaker-projects-whatis.md)

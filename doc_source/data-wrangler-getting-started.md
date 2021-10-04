@@ -80,7 +80,7 @@ In this tutorial, you:
 
 To get started, download the [Titanic dataset](https://www.openml.org/d/40945) and upload it to an S3 bucket in the AWS Region in which you want to complete this demo\. 
 
-If you are a new user of Amazon S3, you can do this using drag and drop in the Amazon S3 console\. To learn how, see [Uploading Files and Folders by Using Drag and Drop](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/upload-objects.html#upload-objects-by-drag-and-drop) in the Amazon Simple Storage Service Console User Guide\.
+If you are a new user of Amazon S3, you can do this using drag and drop in the Amazon S3 console\. To learn how, see [Uploading Files and Folders by Using Drag and Drop](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/upload-objects.html#upload-objects-by-drag-and-drop) in the Amazon Simple Storage Service User Guide\.
 
 **Important**  
 Upload your dataset to an S3 bucket in the same AWS Region you want to use to complete this demo\. 
