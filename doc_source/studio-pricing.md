@@ -4,7 +4,7 @@ When the first member of your team onboards to Amazon SageMaker Studio, Amazon S
 
 When this member, or any member of the team, opens Studio, a home directory is created in the volume for the member\. A storage charge is incurred for this directory\. Subsequently, additional storage charges are incurred for the notebooks and data files stored in the member's home directory\. For pricing information on Amazon EFS, see [Amazon EFS Pricing](http://aws.amazon.com/efs/pricing/)\.
 
-Additional costs are incurred when other operations are run inside Studio, for example, creating an Amazon SageMaker Autopilot job, running a notebook, running training jobs, and hosting a model\.
+Additional costs are incurred when other operations are run inside Studio, for example, running a notebook, running training jobs, and hosting a model\.
 
 For information on the costs associated with using Studio notebooks, see [Usage Metering](notebooks-usage-metering.md)\.
 
