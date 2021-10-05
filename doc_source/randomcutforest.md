@@ -24,7 +24,7 @@ Also note that the train channel only supports `S3DataDistributionType=ShardedBy
 ```
   import sagemaker
   
-  # retrieving the Random Cut Forest ECR URI for the Docker Image 
+  # retrieving the ECR URI for the Docker Image of Random Cut Forest 
   image_uri = sagemaker.image_uris.retrieve(framework="randomcutforest", ...)
     
   # specify Random Cut Forest training job information and hyperparameters
