@@ -202,25 +202,42 @@ For more information on how to register a model, see [Register and Deploy Models
 The following example shows how to create a register model step that registers a `PipelineModel`\.
 
 ```
-from sagemaker.mxnet.model import SKLearnModel
-from sagemaker.mxnet.model import XGBoostModel
+import time
+from sagemaker.sklearn import SKLearnModel
+from sagemaker.xgboost import XGBoostModel
 
-sklearn_model = SKLearnModel(...)
-xgboost_model = XGBoostModel(...)
+code_location = 's3://{0}/{1}/code'.format(bucket_name, prefix)
+
+sklearn_model = SKLearnModel(model_data=processing_step.properties.ProcessingOutputConfig.Outputs['model'].S3Output.S3Uri,
+ entry_point='inference.py',
+ source_dir='sklearn_source_dir/',
+ code_location=code_location,
+ framework_version='0.20.0',
+ role=role,
+ sagemaker_session=sagemaker_session,
+ py_version='py3')
+
+xgboost_model = XGBoostModel(model_data=training_step.properties.ModelArtifacts.S3ModelArtifacts,
+ entry_point='inference.py',
+ source_dir='xgboost_source_dir/',
+ code_location=code_location,
+ framework_version='0.90-2',
+ py_version='py3',
+ sagemaker_session=sagemaker_session,
+ role=role)
 
 from sagemaker.workflow.step_collections import RegisterModel
 from sagemaker import PipelineModel
-
-pipeline_model = PipelineModel(
-    models=[sklearn_model,xgboost_model],
-    role=role,
-    sagemaker_session=sagemaker_session
-)
+pipeline_model = PipelineModel(models=[sklearn_model,xgboost_model],role=role,sagemaker_session=sagemaker_session)
 
 step_register = RegisterModel(
-    name="AbaloneRegisterModel",
-    model=pipeline_model,
-    ...
+ name="AbaloneRegisterModel",
+ model=pipeline_model,
+ content_types=["application/json"],
+ response_types=["application/json"],
+ inference_instances=["ml.t2.medium", "ml.m5.xlarge"],
+ transform_instances=["ml.m5.xlarge"],
+ model_package_group_name='sipgroup',
 )
 ```
 

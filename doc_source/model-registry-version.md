@@ -4,11 +4,11 @@ You register an Amazon SageMaker model by creating a model version that specifie
 
 An *inference pipeline* is a SageMaker model composed of a linear sequence of two to fifteen containers that process inference requests\. You register an inference pipeline by specifying the containers and the associated environment variables\. For more information on inference pipelines, see [Deploy an Inference Pipeline](inference-pipelines.md)\.
 
-You can register a model or an inference pipeline by using either the AWS SDK for Python \(Boto3\) or by creating a step in a SageMaker model building pipeline\.
+You can register a model with an inference pipeline, by specifying the containers and the associated environment variables\. To create a model version with an inference pipeline by using either the AWS SDK for Python \(Boto3\) or by creating a step in a SageMaker model building pipeline\. 
 
 ## Register a Model Version \(SageMaker Pipelines\)<a name="model-registry-pipeline"></a>
 
-To register a model version by using a SageMaker model building pipeline, create a `RegisterModel` step in your pipeline\. For information about a creating `RegisterModel` step as part of a pipeline, see [Define a Pipeline](define-pipeline.md)\.
+To register a model version by using a SageMaker model building pipeline, create a `RegisterModel` step in your pipeline\. For information about creating a `RegisterModel` step as part of a pipeline, see [Step 8: Define a RegisterModel Step to Create a Model Package](define-pipeline.md#define-pipeline-register)\.
 
 ## Register a Model Version \(Boto3\)<a name="model-registry-version-api"></a>
 
