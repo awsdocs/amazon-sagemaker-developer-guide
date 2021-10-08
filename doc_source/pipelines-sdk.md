@@ -15,5 +15,4 @@ The following topics describe fundamental SageMaker Pipelines concepts\. For a t
 + [Caching Pipeline Steps](pipelines-caching.md)
 + [Amazon EventBridge Integration](pipeline-eventbridge.md)
 + [Amazon SageMaker Experiments Integration](pipelines-experiments.md)
-+ [SageMaker Pipelines Quotas](pipelines-quotas.md)
 + [Troubleshooting Amazon SageMaker Model Building Pipelines](pipelines-troubleshooting.md)

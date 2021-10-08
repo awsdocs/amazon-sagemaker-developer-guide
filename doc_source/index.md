@@ -737,7 +737,6 @@ Amazon's trademarks and trade dress may not be used in
          + [Caching Pipeline Steps](pipelines-caching.md)
          + [Amazon EventBridge Integration](pipeline-eventbridge.md)
          + [Amazon SageMaker Experiments Integration](pipelines-experiments.md)
-         + [SageMaker Pipelines Quotas](pipelines-quotas.md)
          + [Troubleshooting Amazon SageMaker Model Building Pipelines](pipelines-troubleshooting.md)
       + [Create and Manage SageMaker Pipelines](pipelines-build.md)
          + [Define a Pipeline](define-pipeline.md)

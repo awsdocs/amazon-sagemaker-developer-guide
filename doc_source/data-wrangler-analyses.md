@@ -78,6 +78,48 @@ For example, the following image shows a target leakage report for a diabetes cl
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/target-leakage.png)
 
+## Detect Anomalies In Time Series Data<a name="data-wrangler-time-series-anomaly-detection"></a>
+
+You can use the anomaly detection visualization to see outliers in your time series data\. To understand what determines an anomaly, you need to understand that we decompose the time series into a predicted term and an error term\. We treat the seasonality and trend of the time series as the predicted term\. We treat the residuals as the error term\.
+
+For the error term, you specify a threshold as the number of standard of deviations the residual can be away from the mean for it to be considered an anomaly\. For example, you can specify a threshold as being 3 standard deviations\. Any residual greater than 3 standard deviations away from the mean is an anomaly\.
+
+You can use the following procedure to perform an **Anomaly detection** analysis\.
+
+1. Open your Data Wrangler data flow\.\.
+
+1. In your data flow, under **Data types**, choose the **\+**, and select **Add analysis**\.
+
+1. For **Analysis type**, choose **Time Series**\.
+
+1. For **Visualization**, choose **Anomaly detection**\.
+
+1. For **Anomaly threshold**, choose the threshold that a value is considered an anomaly\.
+
+1. Choose **Preview** to generate a preview of the analysis\.
+
+1. Choose **Add** to add the transform to the Data Wrangler data flow\.
+
+## Seasonal Trend Decomposition In Time Series Data<a name="data-wrangler-seasonal-trend-decomposition"></a>
+
+You can determine whether there's seasonality in your time series data by using the Seasonal Trend Decomposition visualization\. We use the STL \(Seasonal Trend decomposition using LOESS\) method to perform the decomposition\. We decompose the time series into its seasonal, trend, and residual components\. The trend reflects the long term progression of the series\. The seasonal component is a signal that recurs in a time period\. After removing the trend and the seasonal components from the time series, you have the residual\.
+
+You can use the following procedure to perform a **Seasonal\-Trend decomposition** analysis\.
+
+1. Open your Data Wrangler data flow\.\.
+
+1. In your data flow, under **Data types**, choose the **\+**, and select **Add analysis**\.
+
+1. For **Analysis type**, choose **Time Series**\.
+
+1. For **Visualization**, choose **Seasonal\-Trend decomposition**\.
+
+1. For **Anomaly threshold**, choose the threshold that a value is considered an anomaly\.
+
+1. Choose **Preview** to generate a preview of the analysis\.
+
+1. Choose **Add** to add the transform to the Data Wrangler data flow\.
+
 ## Bias Report<a name="data-wrangler-bias-report"></a>
 
 You can use the bias report in Data Wrangler to uncover potential biases in your data\. To generate a bias report, you must specify the target column, or **Label**, that you want to predict and a **Facet**, or the column that you want to inspect for biases\.

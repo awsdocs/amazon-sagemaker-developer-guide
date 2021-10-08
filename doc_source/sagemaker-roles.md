@@ -178,7 +178,18 @@ For an execution role that you can pass in a `CreateAutoMLJob` API request, you 
         {
             "Effect": "Allow",
             "Action": [
-                "iam:PassRole",
+                "iam:PassRole"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "iam:PassedToService": "sagemaker.amazonaws.com"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
                 "sagemaker:DescribeEndpointConfig",
                 "sagemaker:DescribeModel",
                 "sagemaker:InvokeEndpoint",
@@ -203,12 +214,7 @@ For an execution role that you can pass in a `CreateAutoMLJob` API request, you 
                 "ecr:GetDownloadUrlForLayer",
                 "ecr:BatchGetImage"
             ],
-            "Resource": "*",
-            "Condition": {
-                "StringEquals": {
-                    "iam:PassedToService": "sagemaker.amazonaws.com"
-                }
-            }
+            "Resource": "*"
         }
     ]
 }
@@ -292,18 +298,23 @@ Alternatively, if the permissions are specified in a KMS policy, you can attach 
 
 ```
 {
-    "Sid": "Allow use of the key",
-    "Effect": "Allow",
-    "Principal": {
-        "AWS": [
-            "arn:aws:iam::account-id:role/ExecutionRole"
-        ]
-    },
-    "Action": [
-        "kms:DescribeKey",
-        "kms:CreateGrant"
-    ],
-    "Resource": "*"
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Allow use of the key",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": [
+                    "arn:aws:iam::account-id:role/ExecutionRole"
+                ]
+            },
+            "Action": [
+                "kms:CreateGrant",
+                "kms:DescribeKey"
+            ],
+            "Resource": "*"
+        }
+    ]
 }
 ```
 
