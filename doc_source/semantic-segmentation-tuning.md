@@ -22,5 +22,5 @@ You can tune the following hyperparameters for the semantic segmentation algorit
 | learning\_rate |  ContinuousParameterRange  |  MinValue: 1e\-4, MaxValue: 1e\-1  | 
 | mini\_batch\_size |  IntegerParameterRanges  |  MinValue: 1, MaxValue: 128  | 
 | momentum |  ContinuousParameterRange  |  MinValue: 0\.9, MaxValue: 0\.999  | 
-| optimzer |  CategoricalParameterRanges  |  \['sgd', 'adam', 'adadelta'\]  | 
+| optimzer |  CategoricalParameterRanges  |  \['sgd', 'adam', 'rmsprop', 'adagrad', 'nag'\]  | 
 | weight\_decay |  ContinuousParameterRange  |  MinValue: 1e\-5, MaxValue: 1e\-3  | 
