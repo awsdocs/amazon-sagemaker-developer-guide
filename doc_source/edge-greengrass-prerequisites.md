@@ -8,8 +8,8 @@ Before you start, you must:
 
 1. Set up AWS IoT Greengrass V2\. For more information, see [Install AWS IoT Greengrass Core software with manual resource provisioning](https://docs.aws.amazon.com/greengrass/v2/developerguide/manual-installation.html)\.
 **Note**  
-Make sure the AWS IoT thing name is all lowercase\.
-IAM Role starts with `SageMaker*`
+Make sure the AWS IoT thing name is all lowercase and does not contain characters except \(optionally\) dashes \(`‐`\)\.
+The IAM Role must start with `SageMaker*`
 
 1. Attach the following permission and inline policy to the IAM role created during AWS IoT Greengrass V2 setup\.
    + Navigate to the IAM console [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\.

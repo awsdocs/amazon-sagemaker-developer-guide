@@ -69,7 +69,7 @@ By default, it returns the name of the fleet, the device fleet ARN, the Amazon S
 
 You can create a Edge Manager packaging job using the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker](https://console.aws.amazon.com/sagemaker/)\.
 
-1. In the SageMaker console, choose **Edge Inference** and then choose **Edge device fleets**\.
+1. In the SageMaker console, choose **Edge Manager** and then choose **Edge device fleets**\.
 
 1. Choose **Create device fleet**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/smith/create-device-button-edited.png)

@@ -4,7 +4,7 @@ The Kolmogorov\-Smirnov bias metric \(KS\) is equal to the maximum divergence be
 
 The formula for the Kolmogorov\-Smirnov metric is as follows: 
 
- KS = max\(\|Pa\(y\) \- Pd\(y\)\|\)
+        KS = max\(\|Pa\(y\) \- Pd\(y\)\|\)
 
 For example, assume a group of applicants \(facet *a*\) to college are rejected, waitlisted, or accepted at 40%, 40%, 20% respectively and that these rates for other applicants \(facet *d*\) are 20%, 10%, 70%\. Then the Kolmogorov\-Smirnov bias metric value is as follows:
 

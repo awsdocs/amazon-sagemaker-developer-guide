@@ -120,7 +120,7 @@ The following table lists the Amazon Elastic Compute Cloud \(Amazon EC2\) instan
 | Automated Data Labeling Job Type | Training Instance Type | Inference Instance Type | 
 | --- | --- | --- | 
 |  Image classification  |  ml\.p3\.2xlarge\*  |  ml\.c5\.xlarge  | 
-|  Object detection \(bounding box\)  |  ml\.p3\.2xlarge\*  |  ml\.c5\.4large  | 
+|  Object detection \(bounding box\)  |  ml\.p3\.2xlarge\*  |  ml\.c5\.4xlarge  | 
 |  Text classification  |  ml\.c5\.2xlarge  |  ml\.m4\.xlarge  | 
 |  Semantic segmentation  |  ml\.p3\.2xlarge\*  |  ml\.p3\.2xlarge\*  | 
 

@@ -13,8 +13,8 @@ SageMaker's distributed library offers two options for distributed training: mod
 
 **Topics**
 + [Introduction to SageMaker's Distributed Data Parallel Library](data-parallel-intro.md)
-+ [Use the SageMaker Distributed Data Parallel API](data-parallel-use-api.md)
-+ [Modify Your Training Script using the SageMaker Data Parallel Library](data-parallel-modify-sdp.md)
-+ [SageMaker distributed data parallel Configuration Tips and Pitfalls](data-parallel-config.md)
++ [Modify Your Training Script Using the SageMaker Data Parallel Library](data-parallel-modify-sdp.md)
++ [Run a SageMaker Distributed Data Parallel Training Job](data-parallel-use-api.md)
++ [SageMaker Distributed Data Parallel Configuration Tips and Pitfalls](data-parallel-config.md)
 + [Data Parallel Library FAQ](data-parallel-faq.md)
 + [Data Parallel Troubleshooting](distributed-troubleshooting-data-parallel.md)

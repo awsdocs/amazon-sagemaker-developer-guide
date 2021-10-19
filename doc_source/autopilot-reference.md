@@ -43,7 +43,12 @@ This API provides HTTP service APIs for creating and managing Amazon SageMaker A
 + [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLSecurityConfig.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLSecurityConfig.html)
 + [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CandidateArtifactLocations.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CandidateArtifactLocations.html) 
 + [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CandidateProperties.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CandidateProperties.html) 
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_FinalAutoMLJobObjectiveMetric.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_FinalAutoMLJobObjectiveMetric.html) 
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_MetricDatum.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_MetricDatum.html) 
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ModelDeployConfig.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ModelDeployConfig.html) 
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ModelDeployResult.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ModelDeployResult.html) 
 + [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ResolvedAttributes.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ResolvedAttributes.html)
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TuningJobCompletionCriteria.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TuningJobCompletionCriteria.html)
 
 For more information on the entire SageMaker REST API, see [API and SDK Reference](https://docs.aws.amazon.com/sagemaker/latest/dg/api-and-sdk-reference.html)\.
 

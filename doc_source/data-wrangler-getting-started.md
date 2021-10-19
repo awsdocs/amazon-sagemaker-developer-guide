@@ -27,16 +27,16 @@ The following procedure assumes you have completed the [Prerequisites](#data-wra
 1. When Studio opens, select the **\+** sign on the **New data flow** card under **ML tasks and components**\. This creates a new directory in Studio with a \.flow file inside, which contains your data flow\. The \.flow file automatically opens in Studio\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/open-flow.png)
 
-   You can also create a new flow by selecting **File**, then **New**, and choosing **Flow** in the top navigation bar\.   
+   You can also create a new flow by selecting **File**, then **New**, and choosing **Data Wrangler Flow** in the top navigation bar\.   
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/new-flow-file-menu.png)
 
 1. \(Optional\) Rename the new directory and the \.flow file\. 
 
-1. When you create a new \.flow file in Studio, you may see a message at the top of the Data Wrangler interface that says:
+1. When you create a new \.flow file in Studio, you may see a message within the **Data Wrangler** interface that says:
 
-   **Connecting to engine**
+   **Data Wrangler is Loading\.\.\.**
 
-   **Establishing connection to engine\.\.\.**  
+   **This may take a few minutes\.**  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/establishing-connection-engine.png)
 
    This message persists as long as the **KernelGateway** app on your **User Details** page is **Pending**\. To see the status of this app, in the SageMaker console on the **Amazon SageMaker Studio** page, select the name of the user you are using to access Studio\. On the **User Details** page, you see a **KernelGateway** app under **Apps**\. Wait until this app status is **Ready** to start using Data Wrangler\. This can take around 5 minutes the first time you launch Data Wrangler\.  
@@ -80,7 +80,7 @@ In this tutorial, you:
 
 To get started, download the [Titanic dataset](https://www.openml.org/d/40945) and upload it to an S3 bucket in the AWS Region in which you want to complete this demo\. 
 
-If you are a new user of Amazon S3, you can do this using drag and drop in the Amazon S3 console\. To learn how, see [Uploading Files and Folders by Using Drag and Drop](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/upload-objects.html#upload-objects-by-drag-and-drop) in the Amazon Simple Storage Service Console User Guide\.
+If you are a new user of Amazon S3, you can do this using drag and drop in the Amazon S3 console\. To learn how, see [Uploading Files and Folders by Using Drag and Drop](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/upload-objects.html#upload-objects-by-drag-and-drop) in the Amazon Simple Storage Service User Guide\.
 
 **Important**  
 Upload your dataset to an S3 bucket in the same AWS Region you want to use to complete this demo\. 
@@ -100,7 +100,7 @@ When your dataset has been successfully uploaded to Amazon S3, it you can import
 1. Select **Import dataset**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/import-titanic-dataset.png)
 
-When your dataset is imported into Data Wrangler, it appears in your data flow\. You can view your data flow at any time by selecting the **Prepare** tab\. In the next section, you use this data flow to add analysis and transform steps\. 
+When your dataset is imported into Data Wrangler, it appears in your data flow\. You can view your data flow at any time by selecting the **Data Flow** tab\. You can double click on a node to enter the node detail view which will allow you to add transformations or analysis, otherwise you can use the plus icon to navigate for a quick navigation\. In the next section, you use this data flow to add analysis and transform steps\. 
 
 ### Data Flow<a name="data-wrangler-getting-started-demo-data-flow"></a>
 
@@ -110,7 +110,7 @@ In the data flow section, you’ll notice that the only steps in the data flow a
 
 Data Wrangler has built\-in transformations and visualizations that you can use to analyze, clean, and transform your data\. 
 
-In the **Prepare** tab, all built\-in transformations are listed in the right panel, which also contains an area in which you can add custom transformations\. The following use case showcases how to use these transformations\.
+In the **Data** tab of the node detail view, all built\-in transformations are listed in the right panel, which also contains an area in which you can add custom transformations\. The following use case showcases how to use these transformations\.
 
 ##### Data Exploration<a name="data-wrangler-getting-started-demo-explore"></a>
 

@@ -89,7 +89,7 @@ Use the following sections to learn how to configure these options\.
 
 To allow a Lambda function to assume a SageMaker execution role, you must attach a policy to the Lambda function's execution role, and modify the trust relationship of the SageMaker execution role to allow Lambda to assume it\.
 
-1. [Attach the following IAM policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html) to your Lambda function's execution role to assume the SageMaker execution role identified in `Resource`\. Replace `222222222222` with an [AWS account ID](https://docs.aws.amazon.com/general/latest/gr/acct-identifiers.html)\. Replace `sm-exeuction-role` with the name of the assumed role\.
+1. [Attach the following IAM policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html) to your Lambda function's execution role to assume the SageMaker execution role identified in `Resource`\. Replace `222222222222` with an [AWS account ID](https://docs.aws.amazon.com/general/latest/gr/acct-identifiers.html)\. Replace `sm-execution-role` with the name of the assumed role\.
 
    ```
    {
@@ -97,7 +97,7 @@ To allow a Lambda function to assume a SageMaker execution role, you must attach
        "Statement": {
            "Effect": "Allow",
            "Action": "sts:AssumeRole",
-           "Resource": "arn:aws:iam::222222222222:role/sm-exeuction-role"
+           "Resource": "arn:aws:iam::222222222222:role/sm-execution-role"
        }
    }
    ```

@@ -2,15 +2,36 @@
 
 To invoke a multi\-model endpoint, use the [ `invoke_endpoint`](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker-runtime.html#SageMakerRuntime.Client.invoke_endpoint) from the SageMaker Runtime just as you would invoke a single model endpoint, with one change\. Pass a new `TargetModel` parameter that specifies which of the models at the endpoint to target\. The SageMaker Runtime `InvokeEndpoint` request supports `X-Amzn-SageMaker-Target-Model` as a new header that takes the relative path of the model specified for invocation\. The SageMaker system constructs the absolute path of the model by combining the prefix that is provided as part of the `CreateModel` API call with the relative path of the model\.
 
+------
+#### [ AWS SDK for Python \(Boto 3\) ]
+
 The following example prediction request uses the [AWS SDK for Python \(Boto 3\)](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker-runtime.html) in the sample notebook\.
 
 ```
 response = runtime_sm_client.invoke_endpoint(
-                        EndpointName = ’my-endpoint’,
-                        ContentType  = 'text/csv',
-                        TargetModel  = ’Houston_TX.tar.gz’,
+                        EndpointName = "<ENDPOINT_NAME>",
+                        ContentType  = "text/csv",
+                        TargetModel  = "<MODEL_FILENAME>.tar.gz",
                         Body         = body)
 ```
+
+------
+#### [ AWS CLI ]
+
+ The following example shows how to make a CSV request with two rows using the AWS Command Line Interface \(AWS CLI\):
+
+```
+aws sagemaker-runtime invoke-endpoint \
+  --endpoint-name "<ENDPOINT_NAME>" \
+  --body "1.0,2.0,5.0"$'\n'"2.0,3.0,4.0" \
+  --content-type "text/csv" \
+  --target-model "<MODEL_NAME>.tar.gz"
+  output_file.txt
+```
+
+An `output_file.txt` with information about your inference requests is made if the inference was successful\. For more examples on how to make predictions with the AWS CLI, see [Making predictions with the AWS CLI](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/deploying_tensorflow_serving.html#making-predictions-with-the-aws-cli) in the SageMaker Python SDK documentation\.
+
+------
 
 The multi\-model endpoint dynamically loads target models as needed\. You can observe this when running the [MME Sample Notebook](https://sagemaker-examples.readthedocs.io/en/latest/advanced_functionality/multi_model_xgboost_home_value/xgboost_multi_model_endpoint_home_value.html) as it iterates through random invocations against multiple target models hosted behind a single endpoint\. The first request against a given model takes longer because the model has to be downloaded from Amazon Simple Storage Service \(Amazon S3\) and loaded into memory\. \(This is called a cold start\.\) Subsequent calls finish faster because there's no additional overhead after the model has loaded\.
 

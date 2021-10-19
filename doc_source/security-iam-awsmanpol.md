@@ -10,7 +10,7 @@ Additionally, AWS supports managed policies for job functions that span multiple
 We recommend that you use the most restricted policy that allows you to perform your use case\.
 
 The following AWS managed policies, which you can attach to users in your account, are specific to Amazon SageMaker:
-+ **`AmazonSageMakerFullAccess`** – Grants full access to Amazon SageMaker resources and the supported operations\. This does not provide unrestricted Amazon S3 access, but supports buckets and objects with specific `sagemaker` tags\.
++ **`AmazonSageMakerFullAccess`** – Grants full access to Amazon SageMaker resources and the supported operations\. This does not provide unrestricted Amazon S3 access, but supports buckets and objects with specific `sagemaker` tags\. This policy allows all IAM roles to be passed to Amazon SageMaker, but only allows IAM roles with “AmazonSageMaker” in them to be passed to the AWS Glue, AWS Step Functions, and AWS RoboMaker services\.
 + **`AmazonSageMakerReadOnly`** – Grants read\-only access to Amazon SageMaker resources\. 
 
 The following AWS managed policies can be attached to users in your account but are not recommended:
@@ -24,11 +24,13 @@ You can also create your own custom IAM policies to allow permissions for Amazon
 **Topics**
 + [`AmazonSageMakerFullAccess`](#security-iam-awsmanpol-AmazonSageMakerFullAccess)
 + [`AmazonSageMakerReadOnly`](#security-iam-awsmanpol-AmazonSageMakerReadOnly)
++ [AWS Managed Policies for SageMaker projects and JumpStart](security-iam-awsmanpol-sc.md)
++ [AWS Managed Policies for SageMaker Pipelines](security-iam-awsmanpol-pipelines.md)
 + [SageMaker Updates to AWS Managed Policies](#security-iam-awsmanpol-updates)
 
 ## `AmazonSageMakerFullAccess`<a name="security-iam-awsmanpol-AmazonSageMakerFullAccess"></a>
 
-This policy grants administrative permissions that allow a principal full access to all Amazon SageMaker resources and operations\. The policy also provides select access to related services\.
+This policy grants administrative permissions that allow a principal full access to all Amazon SageMaker resources and operations\. The policy also provides select access to related services\. This policy allows all IAM roles to be passed to Amazon SageMaker, but only allows IAM roles with “AmazonSageMaker” in them to be passed to the AWS Glue, AWS Step Functions, and AWS RoboMaker services\.
 
 **Permissions details**
 
@@ -58,7 +60,7 @@ This policy includes the following permissions\.
 + `s3` – Allows principals to have full access to Amazon S3 resources pertaining to SageMaker, but not all of Amazon S3\.
 + `secretsmanager` – Allows principals to have full access to AWS Secrets Manager\. The principals can securely encrypt, store, and retrieve credentials for databases and other services\. This is also needed for SageMaker notebook instances with SageMaker code repositories that use GitHub\.
 + `servicecatalog` – Allows principals to use AWS Service Catalog\. The principals can create, get a list of, update, or terminate provisioned products, such as servers, databases, websites, or applications deployed using AWS resources\. This is needed for SageMaker JumpStart and Projects to find and read service catalog products and launch AWS resources in user accounts\.
-+ `sns` – Allows principals to get a list of Amazon SNS topics\.
++ `sns` – Allows principals to get a list of Amazon SNS topics\. This is needed for endpoints with Async Inference enabled for notifying users that their inference has completed\.
 + `states` – Needed for SageMaker JumpStart and Pipelines to use a service catalog to create step function resources\.
 + `tag` – Needed for SageMaker Pipelines to render in Studio\. Studio needs resources tagged with particular `sagemaker:project-id` tag\-key\. This requires the `tag:GetResources` permission\.
 
@@ -408,7 +410,8 @@ This policy includes the following permissions\.
             "Effect": "Allow",
             "Action": [
                 "sns:Subscribe",
-                "sns:CreateTopic"
+                "sns:CreateTopic",
+                "sns:Publish"
             ],
             "Resource": [
                 "arn:aws:sns:*:*:*SageMaker*",
@@ -590,5 +593,6 @@ View details about updates to AWS managed policies for SageMaker since this serv
 
 | Change | Description | Date | 
 | --- | --- | --- | 
-|  `AmazonSageMakerReadOnly` updates – Update to an existing policy   |  New API `BatchGetRecord` added for SageMaker Feature Store\.   | JUNE 10, 2021 | 
-|  SageMaker started tracking changes  |  SageMaker started tracking changes for its AWS managed policies\.  | JUNE 01, 2021 | 
+|  `AmazonSageMakerFullAccess` updates – Update to an existing policy\.  |  Add `sns:Publish` permissions for endpoints with Async Inference enabled\.  |  August 2, 2021  | 
+|  `AmazonSageMakerReadOnly` updates – Update to an existing policy   |  New API `BatchGetRecord` added for SageMaker Feature Store\.   | June 10, 2021 | 
+|  SageMaker started tracking changes  |  SageMaker started tracking changes for its AWS managed policies\.  | June 1, 2021 | 

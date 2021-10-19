@@ -29,7 +29,7 @@ estimator = sagemaker.estimator.Estimator(image_uri=xgboost_container,
                                           role=sagemaker.get_execution_role(),
                                           instance_count=1, 
                                           instance_type='ml.m5.2xlarge', 
-                                          volume_size=5, # 5 GB 
+                                          train_volume_size=5, # 5 GB 
                                           output_path=output_path)
 ```
 

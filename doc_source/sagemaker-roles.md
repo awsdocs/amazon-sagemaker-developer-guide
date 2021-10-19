@@ -1,6 +1,6 @@
 # SageMaker Roles<a name="sagemaker-roles"></a>
 
-As a managed service, SageMaker performs operations on your behalf on the AWS hardware that is managed by SageMaker\. SageMaker can perform only operations that the user permits\.
+As a managed service, Amazon SageMaker performs operations on your behalf on the AWS hardware that is managed by SageMaker\. SageMaker can perform only operations that the user permits\.
 
 A SageMaker user can grant these permissions with an IAM role \(referred to as an execution role\)\. 
 
@@ -8,7 +8,11 @@ To create and use a locally available execution role, you can use the following 
 
 ## Get execution role<a name="sagemaker-roles-get-execution-role"></a>
 
-When you run a notebook within SageMaker you can access the execution role with the following code:
+You can find the IAM execution role in the following ways:
+
+**From the notebook**
+
+When you run a notebook within SageMaker \(from the SageMaker console or SageMaker Studio\) you can access the execution role with the following code:
 
 ```
 sagemaker_session = sagemaker.Session()
@@ -16,14 +20,18 @@ role = sagemaker.get_execution_role()
 ```
 
 **Note**  
-The execution role is intended to be available only when running a notebook within SageMaker\. If you run `get_execution_role` in a notebook not on SageMaker, expect a "region" error\. 
+The execution role is available only when running a notebook within SageMaker\. If you run `get_execution_role` in a notebook not on SageMaker, expect a "region" error\. 
 
-To find the IAM role ARN created when you created your the notebook instance or Studio application, go to the **Notebook instances** page in the console and select the relevant notebook from the list of **Names**\. in the configuration detail page the IAM role ARN is given in the **Permissions and encryption** section\.
+**From the SageMaker console**
+
+Under **Notebook > Notebook instances**, select the notebook\. The ARN is given in the **Permissions and encryption** section\.
+
+## Create execution role<a name="sagemaker-roles-create-execution-role"></a>
 
 Use the following procedure to create an execution role with the IAM managed policy, `AmazonSageMakerFullAccess`, attached\. If your use case requires more granular permissions, use other sections on this page to create an execution role that meets your business needs\.
 
 **Important**  
-The IAM managed policy, `AmazonSageMakerFullAccess`, used in the following procedure only grants the execution role permission to perform certain Amazon S3 actions on buckets or objects with `SageMaker`, `Sagemaker`, `sagemaker`, or `aws-glue` in the name\. To learn how to add an additional policy to an execution role to grant it access to other Amazon S3 buckets and objects, see [Add Additional Amazon S3 Permissions to an SageMaker Execution Role](#sagemaker-roles-get-execution-role-s3)\.
+The IAM managed policy, `AmazonSageMakerFullAccess`, used in the following procedure only grants the execution role permission to perform certain Amazon S3 actions on buckets or objects with `SageMaker`, `Sagemaker`, `sagemaker`, or `aws-glue` in the name\. To learn how to add an additional policy to an execution role to grant it access to other Amazon S3 buckets and objects, see [Add Additional Amazon S3 Permissions to a SageMaker Execution Role](#sagemaker-roles-get-execution-role-s3)\.
 
 **To create a new role**
 
@@ -55,9 +63,9 @@ except ValueError:
     role = iam.get_role(RoleName='AmazonSageMaker-ExecutionRole-20201200T100000')['Role']['Arn']
 ```
 
-### Add Additional Amazon S3 Permissions to an SageMaker Execution Role<a name="sagemaker-roles-get-execution-role-s3"></a>
+### Add Additional Amazon S3 Permissions to a SageMaker Execution Role<a name="sagemaker-roles-get-execution-role-s3"></a>
 
-When you use an SageMaker feature with resources in Amazon S3, such as input data, the execution role you specify in your request \(for example `CreateTrainingJob`\) is used to access these resources\.
+When you use a SageMaker feature with resources in Amazon S3, such as input data, the execution role you specify in your request \(for example `CreateTrainingJob`\) is used to access these resources\.
 
 If you attach the IAM managed policy, `AmazonSageMakerFullAccess`, to an execution role, that role has permission to perform certain Amazon S3 actions on buckets or objects with `SageMaker`, `Sagemaker`, `sagemaker`, or `aws-glue` in the name\. It also has permission to perform the following actions on any Amazon S3 resource:
 
@@ -85,8 +93,8 @@ To give an execution role permissions to access one or more specific buckets in 
                 "s3:AbortMultipartUpload"
             ],
             "Resource": [
-                "arn:aws:s3:::DOC-EXAMPLE-BUCKET1/*,
-                "arn:aws:s3:::DOC-EXAMPLE-BUCKET2/*
+                "arn:aws:s3:::DOC-EXAMPLE-BUCKET1/*",
+                "arn:aws:s3:::DOC-EXAMPLE-BUCKET2/*"
             ]
         }, 
         {
@@ -108,8 +116,8 @@ To give an execution role permissions to access one or more specific buckets in 
                 "s3:PutObjectAcl"
             ],
             "Resource": [
-                "arn:aws:s3:::DOC-EXAMPLE-BUCKET1,
-                "arn:aws:s3:::DOC-EXAMPLE-BUCKET2
+                "arn:aws:s3:::DOC-EXAMPLE-BUCKET1",
+                "arn:aws:s3:::DOC-EXAMPLE-BUCKET2"
             ]
         }
     ]
@@ -148,6 +156,7 @@ For more information about IAM roles, see [IAM Roles](http://docs.aws.amazon.com
 
 **Topics**
 + [Get execution role](#sagemaker-roles-get-execution-role)
++ [Create execution role](#sagemaker-roles-create-execution-role)
 + [Passing Roles](#sagemaker-roles-pass-role)
 + [CreateAutoMLJob API: Execution Role Permissions](#sagemaker-roles-autopilot-perms)
 + [CreateDomain API: Execution Role Permissions](#sagemaker-roles-createdomain-perms)
@@ -169,7 +178,18 @@ For an execution role that you can pass in a `CreateAutoMLJob` API request, you 
         {
             "Effect": "Allow",
             "Action": [
-                "iam:PassRole",
+                "iam:PassRole"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "iam:PassedToService": "sagemaker.amazonaws.com"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
                 "sagemaker:DescribeEndpointConfig",
                 "sagemaker:DescribeModel",
                 "sagemaker:InvokeEndpoint",
@@ -204,18 +224,18 @@ If you specify a private VPC for your AutoML job, add the following permissions:
 
 ```
 {
-            "Effect": "Allow",
-            "Action": [
-            "ec2:CreateNetworkInterface",
-            "ec2:CreateNetworkInterfacePermission",
-            "ec2:DeleteNetworkInterface",
-            "ec2:DeleteNetworkInterfacePermission",
-            "ec2:DescribeNetworkInterfaces",
-            "ec2:DescribeVpcs",
-            "ec2:DescribeDhcpOptions",
-            "ec2:DescribeSubnets",
-            "ec2:DescribeSecurityGroups"
-            ]
+    "Effect": "Allow",
+    "Action": [
+        "ec2:CreateNetworkInterface",
+        "ec2:CreateNetworkInterfacePermission",
+        "ec2:DeleteNetworkInterface",
+        "ec2:DeleteNetworkInterfacePermission",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribeVpcs",
+        "ec2:DescribeDhcpOptions",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeSecurityGroups"
+    ]
 }
 ```
 
@@ -225,7 +245,7 @@ If your input is encrypted using server\-side encryption with an AWS KMS–manag
 {
     "Effect": "Allow",
     "Action": [
-    "kms:Decrypt"
+        "kms:Decrypt"
     ]
 }
 ```
@@ -254,7 +274,7 @@ If you specify a volume KMS key in the resource configuration of your AutoML job
 
 ## CreateDomain API: Execution Role Permissions<a name="sagemaker-roles-createdomain-perms"></a>
 
-The execution role for AWS SSO domains and the user/execution role for IAM domains need the following permissions when you pass an AWS KMS customer managed key \(CMK\) as the `KmsKeyId` in the `CreateDomain` API request\. The permissions are enforced during the `CreateApp` API call\.
+The execution role for AWS SSO domains and the user/execution role for IAM domains need the following permissions when you pass an AWS KMS customer managed key as the `KmsKeyId` in the `CreateDomain` API request\. The permissions are enforced during the `CreateApp` API call\.
 
 For an execution role that you can pass in the `CreateDomain` API request, you can attach the following permission policy to the role:
 
@@ -269,7 +289,7 @@ For an execution role that you can pass in the `CreateDomain` API request, you c
                 "kms:DescribeKey"
             ],
             "Resource": "arn:aws:kms:region:account-id:key/kms-key-id"
-        },
+        }
     ]
 }
 ```
@@ -278,18 +298,23 @@ Alternatively, if the permissions are specified in a KMS policy, you can attach 
 
 ```
 {
-    "Sid": "Allow use of the key",
-    "Effect": "Allow",
-    "Principal": {
-        "AWS": [
-            "arn:aws:iam::account-id:role/ExecutionRole"
-        ]
-    },
-    "Action": [
-        "kms:DescribeKey",
-        "kms:CreateGrant"
-    ],
-    "Resource": "*"
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Allow use of the key",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": [
+                    "arn:aws:iam::account-id:role/ExecutionRole"
+                ]
+            },
+            "Action": [
+                "kms:CreateGrant",
+                "kms:DescribeKey"
+            ],
+            "Resource": "*"
+        }
+    ]
 }
 ```
 
@@ -373,7 +398,6 @@ The permissions that you grant to the execution role for calling the `CreateNote
                 "robomaker:CancelSimulationJob",
                 "ec2:CreateVpcEndpoint",
                 "ec2:DescribeRouteTables",
-                "fsx:DescribeFileSystem",
                 "elasticfilesystem:DescribeMountTargets"
             ],
             "Resource": "*"
@@ -469,9 +493,9 @@ To tighten the permissions, limit them to specific Amazon S3 and Amazon ECR reso
                 "ecr:BatchGetImage"
             ],
             "Resource": [
-                "arn:aws:ecr:::repository/my-repo1",
-                "arn:aws:ecr:::repository/my-repo2",
-                "arn:aws:ecr:::repository/my-repo3"
+                "arn:aws:ecr:region::repository/my-repo1",
+                "arn:aws:ecr:region::repository/my-repo2",
+                "arn:aws:ecr:region::repository/my-repo3"
             ]
         }
     ]
@@ -576,7 +600,7 @@ Instead of the specifying `"Resource": "*"`, you could scope these permissions t
                 "ecr:GetDownloadUrlForLayer",
                 "ecr:BatchGetImage"
             ],
-            "Resource": "arn:aws:ecr:::repository/my-repo"
+            "Resource": "arn:aws:ecr:region::repository/my-repo"
         }
     ]
 }
@@ -599,18 +623,18 @@ If you specify a private VPC for your hyperparameter tuning job, add the followi
 
 ```
 {
-            "Effect": "Allow",
-            "Action": [
-            "ec2:CreateNetworkInterface",
-            "ec2:CreateNetworkInterfacePermission",
-            "ec2:DeleteNetworkInterface",
-            "ec2:DeleteNetworkInterfacePermission",
-            "ec2:DescribeNetworkInterfaces",
-            "ec2:DescribeVpcs",
-            "ec2:DescribeDhcpOptions",
-            "ec2:DescribeSubnets",
-            "ec2:DescribeSecurityGroups"
-            ]
+    "Effect": "Allow",
+    "Action": [
+        "ec2:CreateNetworkInterface",
+        "ec2:CreateNetworkInterfacePermission",
+        "ec2:DeleteNetworkInterface",
+        "ec2:DeleteNetworkInterfacePermission",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribeVpcs",
+        "ec2:DescribeDhcpOptions",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeSecurityGroups"
+    ]
 }
 ```
 
@@ -620,7 +644,7 @@ If your input is encrypted using server\-side encryption with an AWS KMS–manag
 {
     "Effect": "Allow",
     "Action": [
-    "kms:Decrypt"
+        "kms:Decrypt"
     ]
 }
 ```
@@ -722,7 +746,7 @@ Instead of the specifying `"Resource": "*"`, you could scope these permissions t
                 "ecr:GetDownloadUrlForLayer",
                 "ecr:BatchGetImage"
             ],
-            "Resource": "arn:aws:ecr:::repository/my-repo"
+            "Resource": "arn:aws:ecr:region::repository/my-repo"
         }
     ]
 }
@@ -741,17 +765,19 @@ If you specify a private VPC for your processing job, add the following permissi
 
 ```
 {
-            "Effect": "Allow",
-            "Action": [
-            "ec2:CreateNetworkInterface",
-            "ec2:CreateNetworkInterfacePermission",
-            "ec2:DeleteNetworkInterface",
-            "ec2:DeleteNetworkInterfacePermission",
-            "ec2:DescribeNetworkInterfaces",
-            "ec2:DescribeVpcs",
-            "ec2:DescribeDhcpOptions",
-            "ec2:DescribeSubnets",
-            "ec2:DescribeSecurityGroups"
+    "Effect": "Allow",
+    "Action": [
+        "ec2:CreateNetworkInterface",
+        "ec2:CreateNetworkInterfacePermission",
+        "ec2:DeleteNetworkInterface",
+        "ec2:DeleteNetworkInterfacePermission",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribeVpcs",
+        "ec2:DescribeDhcpOptions",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeSecurityGroups"
+    ]
+}
 ```
 
 If your input is encrypted using server\-side encryption with an AWS KMS–managed key \(SSE\-KMS\), add the following permissions:
@@ -760,7 +786,7 @@ If your input is encrypted using server\-side encryption with an AWS KMS–manag
 {
     "Effect": "Allow",
     "Action": [
-    "kms:Decrypt"
+        "kms:Decrypt"
     ]
 }
 ```
@@ -862,7 +888,7 @@ Instead of the specifying `"Resource": "*"`, you could scope these permissions t
                 "ecr:GetDownloadUrlForLayer",
                 "ecr:BatchGetImage"
             ],
-            "Resource": "arn:aws:ecr:::repository/my-repo"
+            "Resource": "arn:aws:ecr:region::repository/my-repo"
         }
     ]
 }
@@ -885,17 +911,19 @@ If you specify a private VPC for your training job, add the following permission
 
 ```
 {
-            "Effect": "Allow",
-            "Action": [
-            "ec2:CreateNetworkInterface",
-            "ec2:CreateNetworkInterfacePermission",
-            "ec2:DeleteNetworkInterface",
-            "ec2:DeleteNetworkInterfacePermission",
-            "ec2:DescribeNetworkInterfaces",
-            "ec2:DescribeVpcs",
-            "ec2:DescribeDhcpOptions",
-            "ec2:DescribeSubnets",
-            "ec2:DescribeSecurityGroups"
+    "Effect": "Allow",
+    "Action": [
+      "ec2:CreateNetworkInterface",
+      "ec2:CreateNetworkInterfacePermission",
+      "ec2:DeleteNetworkInterface",
+      "ec2:DeleteNetworkInterfacePermission",
+      "ec2:DescribeNetworkInterfaces",
+      "ec2:DescribeVpcs",
+      "ec2:DescribeDhcpOptions",
+      "ec2:DescribeSubnets",
+      "ec2:DescribeSecurityGroups"
+    ]
+}
 ```
 
 If your input is encrypted using server\-side encryption with an AWS KMS–managed key \(SSE\-KMS\), add the following permissions:
@@ -904,7 +932,7 @@ If your input is encrypted using server\-side encryption with an AWS KMS–manag
 {
     "Effect": "Allow",
     "Action": [
-    "kms:Decrypt"
+        "kms:Decrypt"
     ]
 }
 ```
@@ -983,7 +1011,6 @@ Instead of the specifying `"Resource": "*"`, you can scope these permissions to 
                 "s3:GetObject"
             ],
             "Resource": [
-                "arn:aws:s3:::inputbucket/object",
                 "arn:aws:s3:::inputbucket/object"
             ]
         },
@@ -995,8 +1022,8 @@ Instead of the specifying `"Resource": "*"`, you can scope these permissions to 
                 "ecr:BatchGetImage"
             ],
             "Resource": [
-                "arn:aws:ecr:::repository/my-repo",
-                "arn:aws:ecr:::repository/my-repo"
+                "arn:aws:ecr:region::repository/my-repo",
+                "arn:aws:ecr:region::repository/my-repo"
              ]
         }
     ]
@@ -1015,15 +1042,17 @@ If you specify a private VPC for your model, add the following permissions:
 
 ```
 {
-            "Effect": "Allow",
-            "Action": [
-            "ec2:CreateNetworkInterface",
-            "ec2:CreateNetworkInterfacePermission",
-            "ec2:DeleteNetworkInterface",
-            "ec2:DeleteNetworkInterfacePermission",
-            "ec2:DescribeNetworkInterfaces",
-            "ec2:DescribeVpcs",
-            "ec2:DescribeDhcpOptions",
-            "ec2:DescribeSubnets",
-            "ec2:DescribeSecurityGroups"
+    "Effect": "Allow",
+    "Action": [
+        "ec2:CreateNetworkInterface",
+        "ec2:CreateNetworkInterfacePermission",
+        "ec2:DeleteNetworkInterface",
+        "ec2:DeleteNetworkInterfacePermission",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribeVpcs",
+        "ec2:DescribeDhcpOptions",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeSecurityGroups"
+    ]
+}
 ```

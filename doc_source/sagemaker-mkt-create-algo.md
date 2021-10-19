@@ -106,7 +106,7 @@ You can create an algorithm by using either the SageMaker console or the SageMak
 
       1. For `Type`, specify `Integer`, `Continuous`, or `Categorical`\. The value must correspond to the type of `Range` that you specified\.
 
-   1. For **Metric definitions**, specify any training metrics that you want your algorithm to emit\. SageMaker uses the regular expression that you specify to find the metrics by parsing the logs from your training container during training\. Users can view these metrics when they run training jobs with your algorithm, and they can monitor and plot the metrics in Amazon CloudWatch\. For information, see [Monitor and Analyze Training Jobs Using Metrics](training-metrics.md)\. For each metric, provide the following information:
+   1. For **Metric definitions**, specify any training metrics that you want your algorithm to emit\. SageMaker uses the regular expression that you specify to find the metrics by parsing the logs from your training container during training\. Users can view these metrics when they run training jobs with your algorithm, and they can monitor and plot the metrics in Amazon CloudWatch\. For information, see [Monitor and Analyze Training Jobs Using Amazon CloudWatch Metrics](training-metrics.md)\. For each metric, provide the following information:
 
       1. For **Metric name**, type a name for the metric\.
 

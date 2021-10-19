@@ -4,7 +4,7 @@ The demographic disparity metric \(DDPL\) determines whether facet *d* has a lar
 
 The formula for the demographic disparity predictions for labels of facet *d* is as follows: 
 
- DDPLd = n'd\(0\)/n'\(0\) \- n'd\(1\)/n'\(1\) = PdR\(y'0\) \- PdA\(y'1\) 
+        DDPLd = n'd\(0\)/n'\(0\) \- n'd\(1\)/n'\(1\) = PdR\(y'0\) \- PdA\(y'1\) 
 
 Where: 
 + n'\(0\) = n'a\(0\) \+ n'd\(0\) is the number of predicted rejected labels for facets *a* and *d*\.
@@ -16,7 +16,7 @@ A conditional demographic disparity in predicted labels \(CDDPL\) metric that co
 
 The CDDPL metric gives a single measure for all of the disparities found in the subgroups defined by an attribute of a dataset by averaging them\. It is defined as the weighted average of demographic disparities in predicted labels \(DDPLi\) for each of the subgroups, with each subgroup disparity weighted in proportion to the number of observations in contains\. The formula for the conditional demographic disparity in predicted labels is as follows:
 
- CDDPL = \(1/n\)\*∑ini \*DDPLi 
+        CDDPL = \(1/n\)\*∑ini \*DDPLi 
 
 Where: 
 + ∑ini = n is the total number of observations and niis the number of observations for each subgroup\.

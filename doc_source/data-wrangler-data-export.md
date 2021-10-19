@@ -30,13 +30,13 @@ Use the following procedure to export a data flow\. Use the sections on this pag
 
 1. Choose **Export step**\.
 
-1. Select the export option you want\. 
+1. Select the export option that you want\. Data Wrangler generates a Jupyter Notebook after you choose the export option\.
 
 ## Export to a Data Wrangler Job<a name="data-wrangler-data-export-processing"></a>
 
-If you export a Data Wrangler job Jupyter Notebook, we recommend that you select **Python 3 \(Data Science\)** for the **Kernel** and run it directly in Studio to run your data flow and process your data\. Follow the instructions in the notebook to launch your Data Wrangler job\.
+When you export a Data Wrangler job, Data Wrangler generates a Jupyter Notebook\. You run the notebook to export the Data Wrangler flow to a processing job\. For the notebook, Data Wrangler automatically selects **Python 3 \(Data Science\)** as the **Kernel**\. Follow the instructions in the notebook to launch your Data Wrangler job\.
 
-Data Wrangler jobs use processing jobs to process your data\. You can run these processing jobs using `ml.m5.4xl`, `ml.m5.12xl`, and `ml.m5.24xl` instances and support one instance count\. By default, the notebook that is exported from Data Wrangler sets the following `instance_count` and `instance_type`:
+Data Wrangler uses processing jobs to process your data\. You can run these processing jobs using `ml.m5.4xl`, `ml.m5.12xl`, and `ml.m5.24xl` instances and support one instance count\. By default, the notebook that is exported from Data Wrangler sets the following `instance_count` and `instance_type`:
 
 ```
 instance_count = 1

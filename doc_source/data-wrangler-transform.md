@@ -11,6 +11,19 @@ Use this page to learn more about these built\-in and custom transforms\.
 Most of the built\-in transforms are located in the **Prepare** tab of the Data Wrangler UI\. The Join and Concatenate transforms are accessed through the data flow view\. Use the following table to preview these two views\. 
 
 ------
+#### [ Transform ]
+
+To access transforms on the **Prepare** tab, select **\+** next to a step in your data flow, and select **Add transform**\.
+
+On the **Prepare** tab, you add steps under **Add**\. 
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/prepare-list.png)
+
+You can use the **Previous steps** tab to view and remove transformations that you have added, in sequential order\.
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/prepare-list-multiple.png)
+
+------
 #### [ Join View ]
 
 To join two datasets, select the first dataset in your data flow and choose **Join**\. When you select **Join**, you see results similar to those shown in the following image\. Your left and right datasets are displayed in the left panel\. The main panel displays your data flow, with the newly joined dataset added\. 
@@ -35,19 +48,6 @@ When you select **Configure** to configure your concatenation, you see results s
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/concat-2.png)
 
 See [Concatenate Datasets](#data-wrangler-transform-concatenate) to learn more\.
-
-------
-#### [ Transforms in the Prepare Tab ]
-
-To access transforms on the **Prepare** tab, select **\+** next to a step in your data flow, and select **Add transform**\.
-
-On the **Prepare** tab, you add steps under **Add**\. 
-
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/prepare-list.png)
-
-You can use the **Previous steps** tab to view and remove transformations that you have added, in sequential order\.
-
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/prepare-list-multiple.png)
 
 ------
 
@@ -272,6 +272,511 @@ You configure this transform using the following:
   + Select **Vector** to produce a single column with a sparse vector\. 
   + Select **Flattened** to create a column for every category with an indicator variable for whether the text in the original column contains a value that is equal to that category\. You can only choose flattened when **Vectorizer** is set as **Count vectorizer**\.
 
+## Transform Time Series<a name="data-wrangler-transform-time-series"></a>
+
+In Data Wrangler, you can transform time series data\. The values in a time series dataset are indexed to specific time\. For example, a dataset that shows the number of customers in a store for each hour in a day is a time series dataset\. The following table shows an example of a time series dataset\.
+
+
+**Hourly Number of Customers in a Store**  
+
+| Number of Customers | Time \(hour\) | 
+| --- | --- | 
+| 4 | 09:00 | 
+| 10 | 10:00 | 
+| 14 | 11:00 | 
+| 25 | 12:00 | 
+| 20 | 13:00 | 
+| 18 | 14:00 | 
+
+For the preceding table, the "Number of Customers" column contains the time series data\. The time series data is indexed on the hourly data in the "Time \(hour\)" column\.
+
+You might need to perform a series of transformations on your data to get it in a format that you can use for your analysis\. Use the **Time series** transform group to transform your time series data\. For more information about the transformations that you can perform, see the following sections\.
+
+### Group by a Time Series<a name="data-wrangler-group-by-time-series"></a>
+
+You can use the group by operation to group time series data for specific values in a column\.
+
+For example, if you had the following table that tracked the average daily electricity usage in a household:
+
+
+**Average Daily Household Electricity Usage**  
+
+| Household ID | Daily Time Stamp | Electricity Usage \(kWh\) | Number of Household Occupants | 
+| --- | --- | --- | --- | 
+| household\_0 | 1/1/2020 | 30 | 2 | 
+| household\_0 | 1/2/2020 | 40 | 2 | 
+| household\_0 | 1/4/2020 | 35 | 3 | 
+| household\_1 | 1/2/2020 | 45 | 3 | 
+| household\_1 | 1/3/2020 | 55 | 4 | 
+
+If you choose to group by ID, you get the following table:
+
+
+**Electricity Usage Grouped by Household ID**  
+
+| Household ID | Electricity Usage Series \(kWh\) | Number of Household Occupants Series | 
+| --- | --- | --- | 
+| household\_0 | \[30, 40, 35\] | \[2, 2, 3\] | 
+| household\_1 | \[45, 55\] | \[3, 4\] | 
+
+Each entry in the time series sequence is ordered by the time stamp corresponding\. The first element of the sequence corresponds to the first time stamp of the series\. For `household_0`, `30` is the first value of the Electricity Usage Series\. The value of `30` corresponds to the first time stamp of `1/1/2020`\.
+
+You can include the starting time stamp and ending time stamp\. The following table shows an example of how that appears\.
+
+
+**Electricity Usage Grouped by Household ID**  
+
+| Household ID | Electricity Usage Series \(kWh\) | Number of Household Occupants Series | Start\_Time | End\_Time | 
+| --- | --- | --- | --- | --- | 
+| household\_0 | \[30, 40, 35\] | \[2, 2, 3\] | 1/1/2020 | 1/4/2020 | 
+| household\_1 | \[45, 55\] | \[3, 4\] | 1/2/2020 | 1/3/2020 | 
+
+You can use the following procedure to group by a time series column\. 
+
+1. Open your Data Wrangler data flow\.
+
+1. If you haven't imported your dataset, import it under the **Import data** tab\.
+
+1. In your data flow, under **Data types**, choose the **\+**, and select **Add transform**\.
+
+1. Choose **Add step**\.
+
+1. Choose **Time Series**\.
+
+1. Under **Transform** choose **Groupby**\.
+
+1. Specify a column in **Groupby this column**\.
+
+1. For **Apply to columns**, specify a value\.
+
+1. Choose **Preview** to generate a preview of the transform\.
+
+1. Choose **Add** to add the transform to the Data Wrangler data flow\.
+
+### Resample Time Series Data<a name="data-wrangler-resample-time-series"></a>
+
+Time series data usually has observations that aren't taken at regular intervals\. For example, a dataset could have observations that are recorded hourly and other observations that are recorded every two hours\.
+
+Many analyses, such as forecasting algorithms, require the observations to be taken at regular intervals\. Resampling gives you the ability to establish regular intervals for the observations in your dataset\.
+
+You can either upsample or downsample a time series\. Downsampling increases the interval between observations in the dataset\. For example, if you downsample observations that are taken hourly or every two hours, each observation in your dataset is taken every two hours\. The hourly observations are aggregated into a single value using an aggregation method such as the mean or median\.
+
+Upsampling reduces the interval between observations in the dataset\. For example, if you upsample observations that are taken every two hours into hourly observations, you can use an interpolation method to infer hourly observations from the ones that have been taken every two hours\. For information on interpolation methods, see [pandas\.DataFrame\.interpolate](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.interpolate.html)\.
+
+You can resample both numeric an non\-numeric data\.
+
+Use the **Resample** operation to resample your time series data\. If you have multiple time series in your dataset, Data Wrangler standardizes the time interval for each time series\.
+
+The following is an example of downsampling time series data by using the mean as the aggregation method\. The data is downsampled from every two hours to every hour\.
+
+
+**Hourly Temperature Readings Over a Day Before Downsampling**  
+
+| Time Stamp | Temperature \(Celsius\) | 
+| --- | --- | 
+| 12:00 | 30 | 
+| 1:00 | 32 | 
+| 2:00 | 35 | 
+| 3:00 | 32 | 
+| 4:00 | 30 | 
+
+
+**Temperature Readings Downsampled to Every Two Hours**  
+
+| Time Stamp | Temperature \(Celsius\) | 
+| --- | --- | 
+| 12:00 | 30 | 
+| 2:00 | 33\.5 | 
+| 2:00 | 35 | 
+| 4:00 | 32\.5 | 
+
+You can use the following procedure to resample time series data\.
+
+1. Open your Data Wrangler data flow\.
+
+1. If you haven't imported your dataset, import it under the **Import data** tab\.
+
+1. In your data flow, under **Data types**, choose the **\+**, and select **Add transform**\.
+
+1. Choose **Add step**\.
+
+1. Choose **Resample**\.
+
+1. For **Timestamp**, choose the time stamp column\.
+
+1. For **Frequency unit**, specify the frequency that you'll be resampling\.
+
+1. Optional: Specify a value for **Frequency quantity**\.
+
+1. Configure the transform by specifying the remaining fields\.
+
+1. Choose **Preview** to generate a preview of the transform\.
+
+1. Choose **Add** to add the transform to the Data Wrangler data flow\.
+
+### Handle Missing Time Series Data<a name="data-wrangler-transform-handle-missing-time-series"></a>
+
+If you have missing values in your dataset, you can do one of the following:
++ For datasets that have multiple time series, drop the time series that have missing values that are greater than a threshold that you specify\.
++ Impute the missing values in a time series by using other values in the time series\.
+
+Imputing a missing value involves replacing the data by either specifying a value or by using an inferential method\. The following are the methods that you can use for imputation:
++ Constant value – Replace all the missing data in your dataset with a value that you specify\.
++ Most common value – Replace all the missing data with the value that has the highest frequency in the dataset\.
++ Forward fill – Use a forward fill to replace the missing values with the non\-missing value that precedes the missing values\. For the sequence: \[2, 4, 7, NaN, NaN, NaN, 8\], all of the missing values are replaced with 7\. The sequence that results from using a forward fill is \[2, 4, 7, 7, 7, 7, 8\]\.
++ Backward fill – Use a backward fill to replace the missing values with the non\-missing value that follows the missing values\. For the sequence: \[2, 4, 7, NaN, NaN, NaN, 8\], all of the missing values are replaced with 8\. The sequence that results from using a backward fill is \[2, 4, 7, 8, 8, 8, 8\]\. 
++ Interpolate – Uses an interpolation function to impute the missing values\. For more information on the functions that you can use for interpolation, see [pandas\.DataFrame\.interpolate](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.interpolate.html)\.
+
+Some of the imputation methods might not be able to impute of all the missing value in your dataset\. For example, a **Forward fill** can't impute a missing value that appears at the beginning of the time series\. You can impute the values by using either a forward fill or a backward fill\.
+
+You can either impute missing values within a cell or within a column\.
+
+The following example shows how values are imputed within a cell\.
+
+
+**Electricity Usage With Missing Values**  
+
+| Household ID | Electricity Usage Series \(kWh\) | 
+| --- | --- | 
+| household\_0 | \[30, 40, 35, NaN, NaN\] | 
+| household\_1 | \[45, NaN, 55\] | 
+
+
+**Electricity Usage With Values Imputed Using a Forward Fill**  
+
+| Household ID | Electricity Usage Series \(kWh\) | 
+| --- | --- | 
+| household\_0 | \[30, 40, 35, 35, 35\] | 
+| household\_1 | \[45, 45, 55\] | 
+
+The following example shows how values are imputed within a column\.
+
+
+**Average Daily Household Electricity Usage With Missing Values**  
+
+| Household ID | Electricity Usage \(kWh\) | 
+| --- | --- | 
+| household\_0 | 30 | 
+| household\_0 | 40 | 
+| household\_0 | NaN | 
+| household\_1 | NaN | 
+| household\_1 | NaN | 
+
+
+**Average Daily Household Electricity Usage With Values Imputed Using a Forward Fill**  
+
+| Household ID | Electricity Usage \(kWh\) | 
+| --- | --- | 
+| household\_0 | 30 | 
+| household\_0 | 40 | 
+| household\_0 | 40 | 
+| household\_1 | 40 | 
+| household\_1 | 40 | 
+
+You can use the following procedure to handle missing values\.
+
+1. Open your Data Wrangler data flow\.
+
+1. If you haven't imported your dataset, import it under the **Import data** tab\.
+
+1. In your data flow, under **Data types**, choose the **\+**, and select **Add transform**\.
+
+1. Choose **Add step**\.
+
+1. Choose **Handle missing**\.
+
+1. For **Time series input type**, choose whether you want to handle missing values inside of a cell or along a column\.
+
+1. For **Impute missing values for this column**, specify the column that has the missing values\.
+
+1. For **Method for imputing values**, select a method\.
+
+1. Configure the transform by specifying the remaining fields\.
+
+1. Choose **Preview** to generate a preview of the transform\.
+
+1. If you have missing values, you can specify a method for imputing them under **Method for imputing values**\.
+
+1. Choose **Add** to add the transform to the Data Wrangler data flow\.
+
+### Validate the Time Stamp of Your Time Series Data<a name="data-wrangler-transform-validate-timestamp"></a>
+
+You might have time stamp data that is invalid\. You can use the **Validate time stamp** function to determine whether the timestamps in your dataset are valid\. Your timestamp can be invalid for one or more of the following reasons:
++ Your time stamp column has missing values\.
++ The values in your time stamp column are not formatted correctly\.
+
+If you have invalid time stamps in your dataset, you won't be able to perform your analysis successfully\. You can use Data Wrangler to identify invalid time stamps and understand where you need to clean your data\.
+
+The time series validation works in one of the two ways:
+
+You can configure Data Wrangler to do one of the following if it encounters missing values in your dataset:
++ Drop the rows that have the missing or invalid values\.
++ Identify the rows that have the missing or invalid values\.
++ Throw an error if it finds any missing or invalid values in your dataset\.
+
+You can validate the time stamps on columns that either have the `timestamp` type or the `string` type\. If the column has the `string` type, Data Wrangler converts the type of the column to `timestamp` and performs the validation\.
+
+You can use the following procedure to validate the time stamps in your dataset\.
+
+1. Open your Data Wrangler data flow\.
+
+1. If you haven't imported your dataset, import it under the **Import data** tab\.
+
+1. In your data flow, under **Data types**, choose the **\+**, and select **Add transform**\.
+
+1. Choose **Add step**\.
+
+1. Choose **Validate timestamps**\.
+
+1. For **Timestamp Column**, choose the time stamp column\.
+
+1. For **Policy**, choose whether you want to handle missing time stamps\.
+
+1. Optional: For **Output column**, specify a name for the output column\.
+
+1. If the date time column is formatted for the string type, choose **Cast to datetime**\.
+
+1. Choose **Preview** to generate a preview of the transform\.
+
+1. Choose **Add** to add the transform to the Data Wrangler data flow\.
+
+### Standardizing the Length of the Time Series<a name="data-wrangler-transform-standardize-length"></a>
+
+If you have time series data stored as arrays, you can standardize each time series to the same length\. Standardizing the length of the time series array might make it easier for you to perform your analysis on the data\.
+
+You can standardize your time series for data transformations that requires the length of your data to be fixed\.
+
+Many ML algorithms require you to flatten your time series data before you use them\. Flattening time series data is separating each value of the time series into its own column in a dataset\. The number of columns in a dataset can't change, so the lengths of the time series need to be standardized between you flatten each array into a set of features\.
+
+Each time series is set to the length that you specify as a quantile or percentile of the time series set\. For example, you can have three sequences that have the following lengths:
++ 3
++ 4
++ 5
+
+You can set the length of all of the sequences as the length of the sequence that has the 50th percentile length\.
+
+Time series arrays that are shorter than the length you've specified have missing values added\. The following is an example format of standardizing the time series to a longer length: \[2, 4, 5, NaN, NaN, NaN\]\.
+
+You can use different approaches to handle the missing values\. For information on those approaches, see [Handle Missing Time Series Data](#data-wrangler-transform-handle-missing-time-series)\.
+
+The time series arrays that are longer than the length that you specify are truncated\.
+
+You can use the following procedure to standardize the length of the time series\.
+
+1. Open your Data Wrangler data flow\.
+
+1. If you haven't imported your dataset, import it under the **Import data** tab\.
+
+1. In your data flow, under **Data types**, choose the **\+**, and select **Add transform**\.
+
+1. Choose **Add step**\.
+
+1. Choose **Standardize length**\.
+
+1. For **Standardize the time series length for the column**, choose a column\.
+
+1. Optional: For **Output column**, specify a name for the output column\. If you don't specify a name, the transform is done in place\.
+
+1. If the date time column is formatted for the string type, choose **Cast to datetime**\.
+
+1. Choose **Cutoff quantile**, specify a quantile to set the length of the sequence\.
+
+1. Choose **Flatten the output** to output the values of the time series into separate columns\.
+
+1. Choose **Preview** to generate a preview of the transform\.
+
+1. Choose **Add** to add the transform to the Data Wrangler data flow\.
+
+### Featurize Date/Time<a name="data-wrangler-featurize-time-series-datetime-embed"></a>
+
+Use **Featurize date/time** to create a vector embedding representing a date/time field\. To use this transform, your date/time data must be in one of the following formats: 
++ Strings describing date/time, for example, `"January 1st, 2020, 12:44pm"`\. 
++ A unix timestamp\. A unix timestamp describes the number of seconds, milliseconds, microseconds, or nanoseconds from 1/1/1970\. 
+
+You can choose to **Infer datetime format** and provide a **Datetime format**\. If you provide a date/time format, you must use the codes described in this [Python documentation](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes)\. The options you select for these two configurations have implications for the speed of the operation, and the final results:
++ The most manual and computationally fastest option is to specify a **Datetime format** and select **No** for **Infer datetime format**\.
++ To reduce manual labor, you can simply choose **Infer datetime format** and not specify a date/time format\. This is also a computationally fast operation; however, the first date/time format encountered in the input column is assumed to be the format for the entire column\. Therefore, if other formats are encountered in the column, these values are NaN in the final output\. Therefore, this option can result in unparsed strings\. 
++ If you do not specify a format and you select **No** for **Infer datetime format**, you get the most robust results\. All valid date/time strings are parsed\. However, this operation can be an order of magnitude slower than the first two options in this list\. 
+
+When you use this transform, you specify an **Input column** which contains date/time data in one of the formats listed above\. The transform creates an output column named **Output column name**\. The format of the output column depends on your configuration using the following:
++ **Vector**: Outputs a single column as a vector\. 
++ **Columns**: Creates a new column for every feature\. For example, if the output contains a year, month, and day, three separate columns are created for year, month, and day\. 
+
+Additionally, you must choose an **Embedding mode**\. For linear models and deep networks, **cyclic** is recommended\. For tree based algorithms, **ordinal** is recommended\.
+
+You can use the following procedure to create a vector embedding that represents a date/time field\.
+
+1. Open your Data Wrangler data flow\.
+
+1. If you haven't imported your dataset, import it under the **Import data** tab\.
+
+1. In your data flow, under **Data types**, choose the **\+**, and select **Add transform**\.
+
+1. Choose **Add step**\.
+
+1. Choose **Featurize datetime**\.
+
+1. For **Input column**, choose the input column\.
+
+1. Optional: For **Output column**, choose the output column\. If you don't specify a name, the transform is done in place\.
+
+1. Specify the remaining fields\.
+
+1. Choose **Preview** to generate a preview of the transform\.
+
+1. Choose **Add** to add the transform to the Data Wrangler data flow\.
+
+### Extract Features from Your Time Series Data<a name="data-wrangler-transform-extract-time-series-features"></a>
+
+If you're running a classification or a regression algorithm on your time series data, we recommend extracting features from the time series before running the algorithm\. Extracting features might improve the performance of your algorithm\.
+
+Use the following options to choose how you want to extract features from your data:
++ Use **Minimal subset** to specify extracting 8 features that you know are useful in downstream analyses\. You can use a minimal subset when you need to perform computations quickly\. You can also use it when your ML algorithm has a high risk of overfitting and you want to provide it with fewer features\.
++ Use **Efficient subset** to specify extracting the most features possible without extracting features that are computationally intensive in your analyses\.
++ Use **All features** to specify extracting all features from the tune series\.
++ Use **Manual subset** to choose a list of features that you think explain the variation in your data well\.
+
+Use the following the procedure to extract features from your time series data\.
+
+1. Open your Data Wrangler data flow\.
+
+1. If you haven't imported your dataset, import it under the **Import data** tab\.
+
+1. In your data flow, under **Data types**, choose the **\+**, and select **Add transform**\.
+
+1. Choose **Add step**\.
+
+1. Choose **Extract features**\.
+
+1. For **Extract features for this column**, choose a column\.
+
+1. Optional: Select **Flatten** to output the features into separate columns\.
+
+1. For **Strategy**, choose a strategy to extract the features\.
+
+1. Choose **Preview** to generate a preview of the transform\.
+
+1. Choose **Add** to add the transform to the Data Wrangler data flow\.
+
+### Use Lagged Features from Your Time Series Data<a name="data-wrangler-transform-lag-time-series"></a>
+
+For many use cases, the best way to predict the future behavior of your time series is to use its most recent behavior\.
+
+The most common uses of lagged features are the following:
++ Collecting a handful of past values\. For example, for time, t \+ 1, you collect t, t \- 1, t \- 2, and t \- 3\.
++ Collecting values that correspond to seasonal behavior in the data\. For example, to predict the occupancy in a restaurant at 1:00pm, you might want to use the features from 1:00pm on the previous day\. Using the features from 12:00pm or 11:00am on the same day might not be as predictive as using the features from previous days\.
+
+1. Open your Data Wrangler data flow\.
+
+1. If you haven't imported your dataset, import it under the **Import data** tab\.
+
+1. In your data flow, under **Data types**, choose the **\+**, and select **Add transform**\.
+
+1. Choose **Add step**\.
+
+1. Choose **Lag features**\.
+
+1. For **Generate lag features for this column**, choose a column\.
+
+1. For **Timestamp Column**, choose the column containing the time stamps\.
+
+1. For **Lag**, specify the duration of the lag\.
+
+1. Optional: Configure the output using one of the following options:
+   + **Include the entire lag window**
+   + **Flatten the output**
+   + **Drop rows without history**
+
+1. Choose **Preview** to generate a preview of the transform\.
+
+1. Choose **Add** to add the transform to the Data Wrangler data flow\.
+
+### Create a Datetime Range In Your Time Series<a name="data-wrangler-transform-datetime-range"></a>
+
+You might have time series data that don't have time stamps\. If you know that the observations were taken at regular intervals, you can generate time stamps for the time series in a separate column\. To generate time stamps, you specify the value for the start time stamp and the frequency of the time stamps\.
+
+For example, you might have the following time series data for the number of customers at a restaurant\.
+
+
+**Time Series Data on the Number of Customers at a Restaurant**  
+
+| Number of Customers | 
+| --- | 
+| 10 | 
+| 14 | 
+| 24 | 
+| 40 | 
+| 30 | 
+| 20 | 
+
+If you know that the restaurant opened at 5:00pm and that the observations are taken hourly, you can add a time stamp column that corresponds to the time series data\. You can see the time stamp column in the following table\.
+
+
+**Time Series Data on the Number of Customers at a Restaurant**  
+
+| Number of Customers | Time Stamp | 
+| --- | --- | 
+| 10 | 1:00 pm | 
+| 14 | 2:00 pm | 
+| 24 | 3:00 pm | 
+| 40 | 4:00 pm | 
+| 30 | 5:00 pm | 
+| 20 | 6:00 pm | 
+
+Use the following procedure to add a datetime range to your data\.
+
+1. Open your Data Wrangler data flow\.
+
+1. If you haven't imported your dataset, import it under the **Import data** tab\.
+
+1. In your data flow, under **Data types**, choose the **\+**, and select **Add transform**\.
+
+1. Choose **Add step**\.
+
+1. Choose **Datetime range**\.
+
+1. For **Frequency type**, choose the unit used to measure the frequency of the time stamps\.
+
+1. For **Starting timestamp**, specify the start time stamp\.
+
+1. For **Output column**, specify a name for the output column\.
+
+1. Optional: Configure the output using the remaining fields\.
+
+1. Choose **Preview** to generate a preview of the transform\.
+
+1. Choose **Add** to add the transform to the Data Wrangler data flow\.
+
+### Use a Rolling Window In Your Time Series<a name="data-wrangler-transform-rolling-window"></a>
+
+You can extract features over a time period\. For example, for time, t, and a time window length of 3, and for the row that indicates the tth time stamp, we append the features that are extracted from the time series at times t \- 3, t \-2, and t \- 1\. For information on extracting features, see [Extract Features from Your Time Series Data](#data-wrangler-transform-extract-time-series-features)\. 
+
+You can use the following procedure to extract features over a time period\.
+
+1. Open your Data Wrangler data flow\.
+
+1. If you haven't imported your dataset, import it under the **Import data** tab\.
+
+1. In your data flow, under **Data types**, choose the **\+**, and select **Add transform**\.
+
+1. Choose **Add step**\.
+
+1. Choose **Rolling window features**\.
+
+1. For **Generate rolling window features for this column**, choose a column\.
+
+1. For **Timestamp Column**, choose the column containing the time stamps\.
+
+1. Optional: For **Output Column**, specify the name of the output column\.
+
+1. For **Window size**, specify the window size\.
+
+1. For **Strategy**, choose the extraction strategy\.
+
+1. Choose **Preview** to generate a preview of the transform\.
+
+1. Choose **Add** to add the transform to the Data Wrangler data flow\.
+
 ## Featurize Date/Time<a name="data-wrangler-transform-datetime-embed"></a>
 
 Use **Featurize date/time** to create a vector embedding representing a date/time field\. To use this transform, your date/time data must be in one of the following formats: 
@@ -284,7 +789,7 @@ You can choose to **Infer datetime format** and provide a **Datetime format**\. 
 + If you do not specify a format and you select **No** for **Infer datetime format**, you get the most robust results\. All valid date/time strings are parsed\. However, this operation can be an order of magnitude slower than the first two options in this list\. 
 
 When you use this transform, you specify an **Input column** which contains date/time data in one of the formats listed above\. The transform creates an output column named **Output column name**\. The format of the output column depends on your configuration using the following:
-+ **Vector**: Outputs a single column with a sparse vector\. 
++ **Vector**: Outputs a single column as a vector\. 
 + **Columns**: Creates a new column for every feature\. For example, if the output contains a year, month, and day, three separate columns are created for year, month, and day\. 
 
 Additionally, you must choose an **Embedding mode**\. For linear models and deep networks, **cyclic** is recommended\. For tree based algorithms, **ordinal** is recommended\.

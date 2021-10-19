@@ -44,7 +44,7 @@ The following procedure outlines the key steps used in that sample to create a m
    region = sagemaker_session.boto_region_name
    image = sagemaker.image_uris.retrieve("knn",region=region)
    container = { 'Image':        image,
-                 'ModelDataUrl': 's3://my-bucket/path/to/artifacts/',
+                 'ModelDataUrl': 's3://<BUCKET_NAME>/<PATH_TO_ARTIFACTS>',
                  'Mode':         'MultiModel'
                }
    ```
@@ -55,7 +55,7 @@ The following procedure outlines the key steps used in that sample to create a m
    import boto3
    sm_client = boto3.client('sagemaker')
    response = sm_client.create_model(
-                 ModelName        = 'my-multi-model-name',
+                 ModelName        = '<MODEL_NAME>',
                  ExecutionRoleArn = role,
                  Containers       = [container])
    ```
@@ -63,16 +63,16 @@ The following procedure outlines the key steps used in that sample to create a m
 1. \(Optional\) If you are using a serial inference pipeline, get the additional container\(s\) to include in the pipeline, and include it in the `Containers` argument of `CreateModel`:
 
    ```
-   preprocessor_container = { 'Image':        '123456789012.dkr.ecr.us-east-1.amazonaws.com/mypreprocessorimage:mytag'
+   preprocessor_container = { 'Image': '<ACCOUNT_ID>.dkr.ecr.<REGION_NAME>.amazonaws.com/<PREPROCESSOR_IMAGE>:<TAG>'
                }
    
-   multi_model_container = { 'Image':        '763104351884.dkr.ecr.us-east-1.amazonaws.com/myimage:mytag',
-                 'ModelDataUrl': 's3://my-bucket/path/to/artifacts/',
+   multi_model_container = { 'Image': '<ACCOUNT_ID>.dkr.ecr.<REGION_NAME>.amazonaws.com/<IMAGE>:<TAG>',
+                 'ModelDataUrl': 's3://<BUCKET_NAME>/<PATH_TO_ARTIFACTS>',
                  'Mode':         'MultiModel'
                }
    
    response = sm_client.create_model(
-                 ModelName        = 'my-multi-model-name',
+                 ModelName        = '<MODEL_NAME>',
                  ExecutionRoleArn = role,
                  Containers       = [preprocessor_container, multi_model_container])
    ```
@@ -82,7 +82,7 @@ The following procedure outlines the key steps used in that sample to create a m
    ```
    container = { 
                    'Image': image, 
-                   'ModelDataUrl': 's3://my-bucket/path/to/artifacts/',
+                   'ModelDataUrl': 's3://<BUCKET_NAME>/<PATH_TO_ARTIFACTS>',
                    'Mode': 'MultiModel' 
                    'MultiModelConfig': {
                            // Default value is 'Enabled'
@@ -91,7 +91,7 @@ The following procedure outlines the key steps used in that sample to create a m
               }
    
    response = sm_client.create_model(
-                 ModelName        = 'my-multi-model-name',
+                 ModelName        = '<MODEL_NAME>',
                  ExecutionRoleArn = role,
                  Containers       = [container])
    ```
@@ -100,12 +100,12 @@ The following procedure outlines the key steps used in that sample to create a m
 
    ```
    response = sm_client.create_endpoint_config(
-       EndpointConfigName = ‘my-epc’,
+       EndpointConfigName = '<ENDPOINT_CONFIG_NAME>',
        ProductionVariants=[{
            'InstanceType':        'ml.m4.xlarge',
            'InitialInstanceCount': 2,
            'InitialVariantWeight': 1,
-           'ModelName':            ‘my-multi-model-name’,
+           'ModelName':            '<MODEL_NAME>',
            'VariantName':          'AllTraffic'}])
    ```
 **Note**  
@@ -115,6 +115,6 @@ You can use only one multi\-model\-enabled endpoint in a serial inference pipeli
 
    ```
    response = sm_client.create_endpoint(
-                 EndpointName       = 'my-endpoint',
-                 EndpointConfigName = 'my-epc')
+                 EndpointName       = '<ENDPOINT_NAME>',
+                 EndpointConfigName = '<ENDPOINT_CONFIG_NAME>',)
    ```

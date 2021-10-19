@@ -43,6 +43,9 @@ Specify the name and shape \(NHWC format\) of the expected data inputs using a d
 Specify the name and shape \(NHWC format\) of the expected data inputs using a dictionary format for your trained model\. The dictionary formats required are as follows:
 + For one input: `{'input':[1,224,224,3]}`
 
+**Note**  
+SageMaker Neo only supports TensorFlow Lite for edge device targets\. For a list of supported SageMaker Neo edge device targets, see the SageMaker Neo [Devices](neo-supported-devices-edge-devices.md#neo-supported-edge-devices) page\. For a list of supported SageMaker Neo cloud instance targets, see the SageMaker Neo [Supported Instance Types and Frameworks](neo-supported-cloud.md) page\.
+
 ### XGBoost<a name="collapsible-section-5"></a>
 
 An input data name and shape are not needed\.

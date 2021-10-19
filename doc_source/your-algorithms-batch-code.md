@@ -20,7 +20,7 @@ To configure a container to run as an executable, use an `ENTRYPOINT` instructio
 
   SageMaker overrides default `CMD` statements in a container by specifying the `serve` argument after the image name\. The `serve` argument overrides arguments that you provide with the `CMD` command in the Dockerfile\.
 
-   
+   
 + We recommend that you use the `exec` form of the `ENTRYPOINT` instruction:
 
   ```
@@ -33,7 +33,7 @@ To configure a container to run as an executable, use an `ENTRYPOINT` instructio
   ENTRYPOINT ["python", "k_means_inference.py"]
   ```
 
-   
+   
 + SageMaker sets environment variables specified in [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) and [ `CreateTransformJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html) on your container\. Additionally, the following environment variables are populated:
   + `SAGEMAKER_BATCH` is always set to `true` when the container runs in Batch Transform\.
   + `SAGEMAKER_MAX_PAYLOAD_IN_MB` is set to the largest size payload that is sent to the container via HTTP\.
@@ -43,7 +43,7 @@ To configure a container to run as an executable, use an `ENTRYPOINT` instructio
 The last three environment variables come from the API call made by the user\. If the user doesn’t set values for them, they aren't passed\. In that case, either the default values or the values requested by the algorithm \(in response to the `/execution-parameters`\) are used\.
 + If you plan to use GPU devices for model inferences \(by specifying GPU\-based ML compute instances in your `CreateTransformJob` request\), make sure that your containers are nvidia\-docker compatible\. Don't bundle NVIDIA drivers with the image\. For more information about nvidia\-docker, see [NVIDIA/nvidia\-docker](https://github.com/NVIDIA/nvidia-docker)\. 
 
-   
+   
 + You can't use the `init` initializer as your entry point in SageMaker containers because it gets confused by the train and serve arguments\.
 
   

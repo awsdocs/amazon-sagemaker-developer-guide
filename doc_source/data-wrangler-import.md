@@ -25,7 +25,7 @@ When you import data from Athena or Amazon Redshift, the imported data is automa
 
 ## Import data from Amazon S3<a name="data-wrangler-import-s3"></a>
 
-Amazon Simple Storage Service \(Amazon S3\) can be used to store and retrieve any amount of data at any time, from anywhere on the web\. You can accomplish these tasks using the AWS Management Console, which is a simple and intuitive web interface, and the Amazon S3 API\. If your dataset is stored locally, we recommend that you add it to an S3 bucket for import into Data Wrangler\. To learn how, see [Uploading an object to a bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/PuttingAnObjectInABucket.html) in the Amazon Simple Storage Service Developer Guide\. 
+Amazon Simple Storage Service \(Amazon S3\) can be used to store and retrieve any amount of data at any time, from anywhere on the web\. You can accomplish these tasks using the AWS Management Console, which is a simple and intuitive web interface, and the Amazon S3 API\. If your dataset is stored locally, we recommend that you add it to an S3 bucket for import into Data Wrangler\. To learn how, see [Uploading an object to a bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/PuttingAnObjectInABucket.html) in the Amazon Simple Storage Service User Guide\. 
 
 Data Wrangler uses [S3 Select](http://aws.amazon.com/s3/features/#s3-select) to allow you to preview your Amazon S3 files in Data Wrangler\. You incur standard charges for each file preview\. To learn more about pricing, see the **Requests & data retrievals** tab on [Amazon S3 pricing](http://aws.amazon.com/s3/pricing/)\. 
 
@@ -37,7 +37,16 @@ You can browse all buckets in your AWS account and import CSV and Parquet files 
 When you choose a dataset for import, you can rename it, specify the file type, and identify the first row as a header\. 
 
 **Important**  
-If you plan to import a CSV file, be aware that a single record must not exceed multiple lines, otherwise an error is thrown\.
+If you're importing a CSV file, make sure it meets the following requirements:  
+A record in your dataset can't be longer than one line\.
+A backslash, `\`, is the only valid escape character\.
+Your dataset must use one of the following delimiters:  
+Comma – `,`
+Colon – `:`
+Semicolon – `;`
+Pipe – `|`
+Tab – `[TAB]`
+To save space, you can import compressed CSV files\.
 
 **To import a dataset into Data Wrangler from Amazon S3:**
 
@@ -126,7 +135,7 @@ Data Wrangler uses the Amazon Redshift Data API with temporary credentials\. To 
 
 1. Enter a **Connection Name**\. This is a name used by Data Wrangler to identify this connection\. 
 
-1. Enter the **Cluster Identifier** to specify to which cluster you want to connect\.
+1. Enter the **Cluster Identifier** to specify to which cluster you want to connect\. Note: Enter only the cluster identifier and not the full endpoint of the Amazon Redshift cluster\.
 
 1. Enter the **Database Name** of the database to which you want to connect to\.
 

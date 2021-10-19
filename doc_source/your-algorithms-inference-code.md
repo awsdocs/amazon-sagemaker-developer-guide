@@ -21,7 +21,7 @@ To configure a container to run as an executable, use an `ENTRYPOINT` instructio
 
   SageMaker overrides default `CMD` statements in a container by specifying the `serve` argument after the image name\. The `serve` argument overrides arguments that you provide with the `CMD` command in the Dockerfile\.
 
-   
+   
 + We recommend that you use the `exec` form of the `ENTRYPOINT` instruction:
 
   ```
@@ -36,29 +36,29 @@ To configure a container to run as an executable, use an `ENTRYPOINT` instructio
 
   The `exec` form of the `ENTRYPOINT` instruction starts the executable directly, not as a child of `/bin/sh`\. This enables it to receive signals like `SIGTERM` and `SIGKILL` from the SageMaker API operations, which is a requirement\. 
 
-   
+   
 
   For example, when you use the [ `CreateEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html) API to create an endpoint, SageMaker provisions the number of ML compute instances required by the endpoint configuration, which you specify in the request\. SageMaker runs the Docker container on those instances\. 
 
-   
+   
 
   If you reduce the number of instances backing the endpoint \(by calling the [ `UpdateEndpointWeightsAndCapacities`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateEndpointWeightsAndCapacities.html) API\), SageMaker runs a command to stop the Docker container on the instances that are being terminated\. The command sends the `SIGTERM` signal, then it sends the `SIGKILL` signal thirty seconds later\.
 
-   
+   
 
   If you update the endpoint \(by calling the [ `UpdateEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateEndpoint.html) API\), SageMaker launches another set of ML compute instances and runs the Docker containers that contain your inference code on them\. Then it runs a command to stop the previous Docker containers\. To stop a Docker container, command sends the `SIGTERM` signal, then it sends the `SIGKILL` signal 30 seconds later\. 
 
-   
+   
 + SageMaker uses the container definition that you provided in your [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) request to set environment variables and the DNS hostname for the container as follows:
 
-   
+   
   + It sets environment variables using the `ContainerDefinition.Environment` string\-to\-string map\.
   + It sets the DNS hostname using the `ContainerDefinition.ContainerHostname`\.
 
-     
+     
 + If you plan to use GPU devices for model inferences \(by specifying GPU\-based ML compute instances in your `CreateEndpointConfig` request\), make sure that your containers are `nvidia-docker` compatible\. Don't bundle NVIDIA drivers with the image\. For more information about `nvidia-docker`, see [NVIDIA/nvidia\-docker](https://github.com/NVIDIA/nvidia-docker)\. 
 
-   
+   
 + You can't use the `tini` initializer as your entry point in SageMaker containers because it gets confused by the `train` and `serve` arguments\.
 
   
@@ -77,7 +77,7 @@ Containers need to implement a web server that responds to `/invocations` and `/
 
 ## How Your Container Should Respond to Inference Requests<a name="your-algorithms-inference-code-container-response"></a>
 
-To obtain inferences, the client application sends a POST request to the SageMaker endpoint\. For more information, see the [ `InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html) API\. SageMaker passes the request to the container, and returns the inference result from the container to the client\. Note the following:
+To obtain inferences, the client application sends a POST request to the SageMaker endpoint\. For more information, see the [ `InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html) API\. SageMaker passes the request to the container, and returns the inference result from the container to the client\. Note the following:
 + SageMaker strips all `POST` headers except those supported by `InvokeEndpoint`\. SageMaker might add additional headers\. Inference containers must be able to safely ignore these additional headers\.
 + To receive inference requests, the container must have a web server listening on port 8080 and must accept `POST` requests to the `/invocations` endpoint\. 
 + A customer's model containers must accept socket connection requests within 250 ms\.

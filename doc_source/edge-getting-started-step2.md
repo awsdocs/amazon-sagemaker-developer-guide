@@ -14,7 +14,7 @@ In this section you will create SageMaker and AWS IoT client objects, download a
    import time
    
    AWS_REGION = 'us-west-2'# Specify your Region
-   bucket = 'edge-manager-demo-bucket'
+   bucket = 'bucket-name'
    
    sagemaker_client = boto3.client('sagemaker', region_name=AWS_REGION)
    iot_client = boto3.client('iot', region_name=AWS_REGION)
@@ -35,25 +35,26 @@ In this section you will create SageMaker and AWS IoT client objects, download a
 
    See [Train a Model with Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-training.html) for more information on how to train a machine learning model using SageMaker\. You can optionally upload your locally trained model directly into an Amazon S3 URI bucket\.
 
-   If you do not have a model yet, use the `curl` command to get a local copy of the `coco_ssd_mobilenet` model from TensorFlow’s website\. The model you just copied is an object detection model trained from the [COCO dataset](https://cocodataset.org/#home)\. Type the following into your Jupyter Notebook:
+   If you do not have a model yet, use the `wget` command to get a local copy of the You only look once \(YOLO\) algorithm that uses the Darknet neural network framework\. In particular, we will get a copy of the Tiny YOLOv3 model\. Generally speaking, YOLO is not fast enough to run on edge devices\. Instead, download Tiny\-YOLO\. Its smaller model size and inference speeds make it ideal for edge devices\. For more information about YOLO, see [YOLO: Real\-Time Object Detection](https://pjreddie.com/darknet/yolo/)\. 
+
+   Type the following into your Jupyter Notebook to get a copy of Tiny\-YOLO:
 
    ```
-   model_zip_filename = './coco_ssd_mobilenet_v1_1.0.zip' 
-   !curl http://storage.googleapis.com/download.tensorflow.org/models/tflite/coco_ssd_mobilenet_v1_1.0_quant_2018_06_29.zip \ --output {model_zip_filename}
+   !wget -O yolov3-tiny.cfg https://github.com/pjreddie/darknet/blob/master/cfg/yolov3-tiny.cfg?raw=true
+   !wget https://pjreddie.com/media/files/yolov3-tiny.weights
    ```
 
-   This particular example was packaged in a \.zip file\. Unzip this file and repackage it as a compressed TAR file \(\.tar\.gz\) before using it in later steps\. Type the following into your Jupyter Notebook:
+   This gives us the weights \(`yolov3-tiny.weights`\) and the configuration file \(`yolov3-tiny.weights`\) of the Tiny\-YOLO model\. Before packaging the model, you will need to first compile your model SageMaker Neo\. SageMaker Neo requires models to be stored as a compressed TAR file\. Repackage it as a compressed TAR file \(\.tar\.gz\):
 
    ```
-   # Extract model from zip file 
-   !unzip -u {model_zip_filename} 
+   # Package YOLO model into a TAR file 
+   import tarfile
    
-   model_filename = 'detect.tflite' 
-   model_name = model_filename.split('.')[0] 
+   tarfile_name='yolov3-tiny.tar.gz'
    
-   # Compress model into .tar.gz so SageMaker Neo can use it 
-   model_filename = model_name + '.tar.gz' 
-   !tar -czf {model_tar} {model_filename}
+   with tarfile.open(tarfile_name, mode='w:gz') as archive:
+       archive.add('yolov3-tiny.weights')
+       archive.add('yolov3-tiny.cfg')
    ```
 
 1. **Upload your model to Amazon S3\.**
@@ -61,19 +62,25 @@ In this section you will create SageMaker and AWS IoT client objects, download a
    Once you have a machine learning model, store it in an Amazon S3 bucket\. The following example uses an AWS CLI command to upload the model the to the Amazon S3 bucket you created earlier in a directory called *models*\. Type in the following into your Jupyter Notebook:
 
    ```
-   !aws cp detect.tar.gz s3://{bucket}/models/
+   # Move model artifacts to models directory
+   !mkdir models            
+   !mv yolov3* models/
+   ```
+
+   ```
+   !aws s3 cp models/yolov3-tiny.tar.gz s3://{bucket}/models/
    ```
 
 1. **Compile your model with SageMaker Neo\.**
 
    Compile your machine learning model with SageMaker Neo for an edge device\. You need to know your Amazon S3 bucket URI where you stored the trained model, the machine learning framework you used to train your model, the shape of your model’s input, and your target device\.
 
-   For the Keras MobileNet V2 model, use the following:
+   For the model, use the following:
 
    ```
-   framework = 'tflite'
-   target_device = 'rasp3b' # Raspberry Pi 3
-   data_shape = '{"normalized_input_image_tensor":[1, 300, 300, 3]}'
+   framework = 'darknet'
+   target_device = 'jetson_nano'
+   data_shape = '{"data":[1,3,416,416]}'
    ```
 
    SageMaker Neo requires a specific model input shape and model format based on the deep learning framework you use\. For more information about how to save your model, see [What input data shapes does SageMaker Neo expect?](neo-compilation-preparing-model.md#neo-job-compilation-expected-inputs)\. For more information about devices and frameworks supported by Neo, see [Supported Frameworks, Devices, Systems, and Architectures](neo-supported-devices-edge.md)\.
@@ -83,11 +90,11 @@ In this section you will create SageMaker and AWS IoT client objects, download a
    ```
    # Specify the path where your model is stored
    model_directory = 'models'
-   s3_model_uri = 's3://{}/{}/{}'.format(bucket, model_directory,model_filename)
+   s3_model_uri = 's3://{}/{}/{}'.format(bucket, model_directory, tarfile_name)
    
    # Store compiled model in S3 within the 'compiled-models' directory
    compilation_output_dir = 'compiled-models'
-   s3_output_location = 's3://{}/{}'.format(bucket, compilation_output_dir)
+   s3_output_location = 's3://{}/{}/'.format(bucket, compilation_output_dir)
    
    # Give your compilation job a name
    compilation_job_name = 'getting-started-demo'
@@ -119,7 +126,7 @@ In this section you will create SageMaker and AWS IoT client objects, download a
    Define the Amazon S3 URI where you want to store the packaged model\.
 
    ```
-   # Output directory where you want to store the outpoit of the packaging job
+   # Output directory where you want to store the output of the packaging job
    packaging_output_dir = 'packaged_models'
    packaging_s3_output = 's3://{}/{}'.format(bucket, packaging_output_dir)
    ```

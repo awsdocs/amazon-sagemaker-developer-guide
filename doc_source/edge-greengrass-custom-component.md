@@ -23,30 +23,30 @@ import sagemaker
 import boto3
 
 # Create a SageMaker client object to make it easier to interact with other AWS services.
-sagemaker_client = boto3('sagemaker', region=<YOUR_REGION>)
+sagemaker_client = boto3.client('sagemaker', region=<YOUR_REGION>)
 
 # Replace with your IAM Role ARN
-sagemaker_role_arn="arn:aws:iam::<account>:role/*"
+sagemaker_role_arn = "arn:aws:iam::<account>:role/*"
 
 # Replace string with the name of your already created S3 bucket.
-bucket='edge-manager-demo-bucket'
+bucket = 'edge-manager-demo-bucket'
 
 # Specify a name for your edge packaging job.
-edge_packaging_name="edge_packag_job_demo" 
+edge_packaging_name = "edge_packag_job_demo" 
 
 # Replace the following string with the name you used for the SageMaker Neo compilation job.
-compilation_job_name="getting-started-demo" 
+compilation_job_name = "getting-started-demo" 
 
 # The name of the model and the model version.
-model_name="sample-model" 
-model_version="1.1"
+model_name = "sample-model" 
+model_version = "1.1"
 
 # Output directory in S3 where you want to store the packaged model.
 packaging_output_dir = 'packaged_models' 
 packaging_s3_output = 's3://{}/{}'.format(bucket, packaging_output_dir)
 
 # The name you want your Greengrass component to have.
-component_name="SagemakerEdgeManager"+edge_packaging_name
+component_name = "SagemakerEdgeManager" + edge_packaging_name
 
 sagemaker_client.create_edge_packaging_job(
                     EdgePackagingJobName=edge_packaging_name,
@@ -57,7 +57,7 @@ sagemaker_client.create_edge_packaging_job(
                     OutputConfig={
                         "S3OutputLocation": packaging_s3_output,
                         "PresetDeploymentType":"GreengrassV2Component",
-                        "PresetDeploymentConfig": {"ComponentName":component_name}
+                        "PresetDeploymentConfig":"{\"ComponentName\":\"sample-component-name\", \"ComponentVersion\":\"1.0.2\"}"
                         }
                     )
 ```

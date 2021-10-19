@@ -35,7 +35,7 @@ First, set up a role for Amazon SageMaker Feature Store to write the data into t
 
 The preceding code snippet shows the `AmazonSageMakerFeatureStoreAccess` policy\. The `Resource` section of the policy is scoped down by default to S3 buckets with names that contain `SageMaker`, `Sagemaker`, or `sagemaker`\. This means the offline store S3 bucket being used must follow this naming convention\. If this is not your case, or if you want to further scope down the resource, you can copy and paste the policy to your S3 bucket policy in the console, customize the `Resource` section to be `arn:aws:s3:::your-offline-store-bucket-name`, and then attach to the role\. 
 
-Additionally, this role must have KMS permissions attached\. At a minimum, it requires the `kms:GenerateDataKey` permission to be able to write to the offline store using your customer managed CMK\. See Step 3 to learn about why a customer managed CMK is needed for the cross\-account scenario and how to set it up\. The following example shows an inline policy: 
+Additionally, this role must have KMS permissions attached\. At a minimum, it requires the `kms:GenerateDataKey` permission to be able to write to the offline store using your customer managed key\. See Step 3 to learn about why a customer managed key is needed for the cross\-account scenario and how to set it up\. The following example shows an inline policy: 
 
 ```
 {
@@ -91,7 +91,7 @@ In the preceding policy, the principal is `Account-A-Offline-Feature-Store-Role-
 
 ## Step 3: Set up an Offline Store KMS Encryption Key in Account A<a name="feature-store-setup-step3"></a>
 
-Amazon SageMaker Feature Store ensures that server\-side encryption is always enabled for S3 objects in the offline store\. For cross\-account use cases, you must provide a customer managed CMK so that you are in control of who can write to the offline store \(in this case, `Account-A-Offline-Feature-Store-Role-ARN` from Account A\) and who can read from the offline store \(in this case, identities from Account B\)\. 
+Amazon SageMaker Feature Store ensures that server\-side encryption is always enabled for S3 objects in the offline store\. For cross\-account use cases, you must provide a customer managed key so that you are in control of who can write to the offline store \(in this case, `Account-A-Offline-Feature-Store-Role-ARN` from Account A\) and who can read from the offline store \(in this case, identities from Account B\)\. 
 
 This document refers to the following example key policy as `Account-A-Offline-Feature-Store-KMS-Key-ARN`\.
 
@@ -136,7 +136,7 @@ This document refers to the following example key policy as `Account-A-Offline-F
             "Resource": "*"
         },
         {
-            "Sid": "Allow Feature Store to get information about the CMK",
+            "Sid": "Allow Feature Store to get information about the customer managed key",
             "Effect": "Allow",
             "Principal": {
                 "Service": "sagemaker.amazonaws.com"

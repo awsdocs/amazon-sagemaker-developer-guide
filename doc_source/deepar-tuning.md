@@ -22,11 +22,11 @@ Tune a DeepAR model with the following hyperparameters\. The hyperparameters tha
 
 | Parameter Name | Parameter Type | Recommended Ranges | 
 | --- | --- | --- | 
-| mini\_batch\_size |  `IntegerParameterRanges`  |  MinValue: 32, MaxValue: 1028  | 
 | epochs |  `IntegerParameterRanges`  |  MinValue: 1, MaxValue: 1000  | 
 | context\_length |  `IntegerParameterRanges`  |  MinValue: 1, MaxValue: 200  | 
+| mini\_batch\_size |  `IntegerParameterRanges`  |  MinValue: 32, MaxValue: 1028  | 
+| learning\_rate |  `ContinuousParameterRange`  |  MinValue: 1e\-5, MaxValue: 1e\-1  | 
 | num\_cells |  `IntegerParameterRanges`  |  MinValue: 30, MaxValue: 200  | 
 | num\_layers |  `IntegerParameterRanges`  |  MinValue: 1, MaxValue: 8  | 
 | dropout\_rate |  `ContinuousParameterRange`  |  MinValue: 0\.00, MaxValue: 0\.2  | 
 | embedding\_dimension |  `IntegerParameterRanges`  |  MinValue: 1, MaxValue: 50  | 
-| learning\_rate |  `ContinuousParameterRange`  |  MinValue: 1e\-5, MaxValue: 1e\-1  | 
