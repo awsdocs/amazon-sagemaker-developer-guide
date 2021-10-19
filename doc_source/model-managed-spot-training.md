@@ -25,6 +25,7 @@ To learn how to run training jobs on Amazon SageMaker spot instances and how man
 + [Managed Spot Training with TensorFlow](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-python-sdk/managed_spot_training_tensorflow_estimator/managed_spot_training_tensorflow_estimator.html)
 + [Managed Spot Training with XGBoost](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_managed_spot_training.html)
 + [Managed Spot Training with MXNet](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-python-sdk/managed_spot_training_mxnet/managed_spot_training_mxnet.html)
++ [Amazon SageMaker Managed Spot Training Examples GitHub repository](https://github.com/aws-samples/amazon-sagemaker-managed-spot-training)
 
 ## Managed Spot Training Lifecycle<a name="model-managed-spot-training-status"></a>
 
