@@ -58,7 +58,7 @@ If you run this installation in your exiting SageMaker Studio or notebook instan
        role=role,
        instance_count=1,
        instance_type='ml.m4.xlarge',
-       train_volume_size=5,
+       volume_size=5,
        output_path=s3_output_location,
        sagemaker_session=sagemaker.Session(),
        rules=[Rule.sagemaker(rule_configs.create_xgboost_report())]
