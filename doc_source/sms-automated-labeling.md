@@ -93,7 +93,7 @@ You can see your labeling job appear in the **Labeling jobs** section of the Sag
 
 ## Create an Automated Data Labeling Job \(API\)<a name="sms-create-automated-labeling-api"></a>
 
-To create an automated data labeling job using the SageMaker API, use the [ `LabelingJobAlgorithmsConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_LabelingJobAlgorithmsConfig.html) parameter of the [ `CreateLabelingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. To learn how to start a lableing job using the `CreateLabelingJob` operation, see [Create a Labeling Job \(API\)](sms-create-labeling-job-api.md)\.
+To create an automated data labeling job using the SageMaker API, use the [ `LabelingJobAlgorithmsConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_LabelingJobAlgorithmsConfig.html) parameter of the [ `CreateLabelingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. To learn how to start a labeling job using the `CreateLabelingJob` operation, see [Create a Labeling Job \(API\)](sms-create-labeling-job-api.md)\.
 
 Specify the Amazon Resource Name \(ARN\) of the algorithm that you are using for automated data labeling in the [LabelingJobAlgorithmSpecificationArn](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_LabelingJobAlgorithmsConfig.html#SageMaker-Type-LabelingJobAlgorithmsConfig-LabelingJobAlgorithmSpecificationArn) parameter\. Choose from one of the four Ground Truth built\-in algorithms that are supported with automated labeling:
 + [Image Classification \(Single Label\)](sms-image-classification.md)
@@ -120,7 +120,7 @@ The following table lists the Amazon Elastic Compute Cloud \(Amazon EC2\) instan
 | Automated Data Labeling Job Type | Training Instance Type | Inference Instance Type | 
 | --- | --- | --- | 
 |  Image classification  |  ml\.p3\.2xlarge\*  |  ml\.c5\.xlarge  | 
-|  Object detection \(bounding box\)  |  ml\.p3\.2xlarge\*  |  ml\.c5\.4large  | 
+|  Object detection \(bounding box\)  |  ml\.p3\.2xlarge\*  |  ml\.c5\.4xlarge  | 
 |  Text classification  |  ml\.c5\.2xlarge  |  ml\.m4\.xlarge  | 
 |  Semantic segmentation  |  ml\.p3\.2xlarge\*  |  ml\.p3\.2xlarge\*  | 
 

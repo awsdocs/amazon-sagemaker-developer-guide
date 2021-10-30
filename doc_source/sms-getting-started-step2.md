@@ -17,7 +17,7 @@ In this step you use the console to create a labeling job\. You tell Amazon Sage
    + **S3 location for input datasets** – Enter the S3 location where you added the images in step 1\.
    + **S3 location for output datasets** – The location where your output data is written in S3\.
    + **Data type** – Use the drop down menu to select **Image**\. Ground Truth will use all images found in the S3 location for input datasets as input for your labeling job\.
-   + **IAM role** – Create or choose an IAM role with the SageMakerFullAccess IAM policy attached\.
+   + **IAM role** – Create or choose an IAM role with the AmazonSageMakerFullAccess IAM policy attached\.
 
 1. In the **Task type** section, for the **Task category** field, choose **Image**\. 
 

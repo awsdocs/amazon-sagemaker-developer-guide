@@ -25,6 +25,11 @@ Pass strings directly\.
   region="us-west-2"
   ```
 
+**Note**  
+By default, SageMaker Debugger collects system metrics to monitor hardware resource utilization and system bottlenecks\. Running the following functions, you might receive error messages regarding unavailability of framework metrics\. To retrieve framework profiling data and gain insights into framework operations, you must enable framework profiling\.  
+If you use SageMaker Python SDK to manipulate your training job request, pass the `framework_profile_params` to the `profiler_config` argument of your estimator\. To learn more, see [Configure SageMaker Debugger Framework Profiling](https://docs.aws.amazon.com/sagemaker/latest/dg/debugger-configure-framework-profiling.html)\.
+If you use Studio, turn on profiling using the **Profiling** toggle button in the Debugger insights dashboard\. To learn more, see [SageMaker Debugger Insights Dashboard Controller](https://docs.aws.amazon.com/sagemaker/latest/dg/debugger-on-studio-insights-controllers.html)\.
+
 **To retrieve a description of the training job description and the S3 bucket URI where the metric data are saved**
 
 ```

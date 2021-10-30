@@ -12,7 +12,7 @@ You can create a worker task template using the SageMaker console and using the 
 
 **Create a worker task template \(console\)**
 
-1. Open the Amazon A2I console at [https://console.aws.amazon.com/a2i](https://console.aws.amazon.com/a2i)\.
+1. Open the Amazon A2I console at [https://console\.aws\.amazon\.com/a2i/](https://console.aws.amazon.com/a2i)\.
 
 1. Under **Amazon Augmented AI** in the left navigation pane, choose **Worker task templates**\.
 
@@ -51,7 +51,7 @@ When you delete a worker task template, you are not able to use human review wor
 
 **Delete a worker task template \(console\)**
 
-1. Open the Amazon A2I console at [https://console.aws.amazon.com/a2i](https://console.aws.amazon.com/a2i)\.
+1. Open the Amazon A2I console at [https://console\.aws\.amazon\.com/a2i/](https://console.aws.amazon.com/a2i)\.
 
 1. Under Amazon Augmented AI in the left navigation pane, choose **Worker task templates**\.
 

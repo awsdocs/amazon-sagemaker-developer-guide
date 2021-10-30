@@ -136,7 +136,6 @@ To configure a human loop for a custom human review task, use the `StartHumanLoo
 To complete this procedure, you need:
 + Input data formatted as a string representation of a JSON\-formatted file
 + The Amazon Resource Name \(ARN\) of your flow definition
-+ A flow definition ARN 
 
 **To configure the human loop**
 

@@ -12,7 +12,7 @@ Where:
 + TPa are the true negatives predicted for facet *a*\.
 + FNa are the false negatives predicted for facet *a*\.
 
-For example, suppose the model rejects 100 middle\-aged applicants \(facet *a*\) for a loan \(predicted negative labels\) of whom 80 are actually unqualified \(observed negative labels\)\. Also suppose the model accepts 50 applicants from other age demographics \(facet *d*\) for a loan \(predicted negative labels\) of whom only 40 are actually unqualified \(observed negative labels\)\. Then DRR = 40/50 \- 80/100 = 0, so no bias is indicated\. When both DAR and DRR are zero, it satisfies a condition known as *equalized odds*\.
+For example, suppose the model rejects 100 middle\-aged applicants \(facet *a*\) for a loan \(predicted negative labels\) of whom 80 are actually unqualified \(observed negative labels\)\. Also suppose the model accepts 50 applicants from other age demographics \(facet *d*\) for a loan \(predicted negative labels\) of whom only 40 are actually unqualified \(observed negative labels\)\. Then DRR = 40/50 \- 80/100 = 0, so no bias is indicated\.
 
 The range of values for DRR for binary, multicategory facet, and continuous labels is \[\-1, \+1\]\.
 + Positive values occur when the ratio of the predicted negatives \(rejections\) to the observed negative outcomes \(unqualified applicants\) for facet *d* is larger than the same ratio for facet *a*\. These values indicate a possible bias against the favored facet *a* caused by the occurrence of relatively more false negatives in facet *a*\. The larger the difference in the ratios, the more extreme the apparent bias\.

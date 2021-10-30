@@ -44,8 +44,6 @@ If you launch SageMaker Studio in a custom Amazon VPC, you need to create VPC en
 
 For a sample notebook that takes you through the full end\-to\-end workflow for Model Monitor, see the [Introduction to Amazon SageMaker Model Monitor](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker_model_monitor/introduction/SageMaker-ModelMonitoring.html)\. 
 
-For a sample notebook that enables the model monitoring experience for an existing endpoint, see the [Enable Model Monitoring](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker_model_monitor/enable_model_monitor/SageMaker-Enable-Model-Monitor.html)\. 
-
 For a sample notebook that visualizes the statistics\.json file for a selected execution in a monitoring schedule, see the [Model Monitor Visualization](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker_model_monitor/visualization/SageMaker-Model-Monitor-Visualize.html)\. 
 
 For instructions that show you how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. After you have created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all the SageMaker samples\. To open a notebook, choose the notebook's **Use** tab and choose **Create copy**\.

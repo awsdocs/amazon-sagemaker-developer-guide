@@ -17,7 +17,7 @@ To package a model, you must do the following:
 
 1. **Get the name of your compilation job\.**
 
-   Provide the name of the compilation job name you used when you compiled your model with SageMaker Neo\. Open the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/) and choose **Compilation jobs** to find a list of compilations that have been submitted to your AWS account\. The names of submitted compilation jobs are in the **Name** column\.
+   Provide the name of the compilation job name you used when you compiled your model with SageMaker Neo\. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) and choose **Compilation jobs** to find a list of compilations that have been submitted to your AWS account\. The names of submitted compilation jobs are in the **Name** column\.
 
 1. **Get your IAM ARN\.**
 
@@ -42,7 +42,7 @@ To package a model, you must do the following:
      For more information about using the SageMaker Python SDK, see the [SageMaker Python SDK API](https://sagemaker.readthedocs.io/en/stable/index.html)\.
    + **Using the AWS Identity and Access Management \(IAM\) console**
 
-     Sign in to the [AWS Management Console](https://console.aws.amazon.com/sagemaker/) and open the [IAM console](https://console.aws.amazon.com/iam/)\. In the IAM **Resources** section, choose **Roles** to view a list of roles in your AWS account\. Select or create a role that has `AmazonSageMakerFullAccess`, `AWSIoTFullAccess`, and `AmazonS3FullAccess`\.
+     Navigate to the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\. In the IAM **Resources** section, choose **Roles** to view a list of roles in your AWS account\. Select or create a role that has `AmazonSageMakerFullAccess`, `AWSIoTFullAccess`, and `AmazonS3FullAccess`\.
 
      For more information on IAM, see [What is IAM?](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)
 
@@ -64,4 +64,4 @@ To package a model, you must do the following:
      ```
    + **Using the Amazon S3 console**
 
-     Open the [Amazon S3 console](https://console.aws.amazon.com/s3/) and see [How do I create an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-bucket.html) for step\-by\-step instructions\.
+     Open the Amazon S3 console at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/) and see [How do I create an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-bucket.html) for step\-by\-step instructions\.

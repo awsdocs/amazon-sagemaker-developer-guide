@@ -17,8 +17,8 @@ To update a model, proceed as you would when adding a new model\. Use a new and 
 Client applications can request predictions from the additional target model as soon as it is stored in S3\.
 
 ```
-response = runtime_sm_client.invoke_endpoint(
-                        EndpointName='endpoint_name',
+response = runtime_sagemaker_client.invoke_endpoint(
+                        EndpointName='<ENDPOINT_NAME>',
                         ContentType='text/csv',
                         TargetModel='AdditionalModel.tar.gz',
                         Body=body)

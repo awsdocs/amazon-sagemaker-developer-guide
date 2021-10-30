@@ -14,7 +14,6 @@ To learn how to create an IAM identity\-based policy using these example JSON po
 + [Limit Access to a Notebook Instance by IP Address](#nbi-ip-filter)
 + [Control Access to SageMaker Resources by Using Tags](#access-tag-policy)
 + [Require the Presence or Absence of Tags for API Calls](#resource-tag)
-+ [Use Tags with Hyperparameter Tuning Jobs](#resource-tag-tuning)
 
 ## Policy Best Practices<a name="security_iam_service-with-iam-policy-best-practices"></a>
 
@@ -853,7 +852,7 @@ The following policy restricts an IAM user to specify a AWS KMS key to encrypt i
 
 ### Enforce Encryption of Notebook Instance Storage Volume<a name="sagemaker-condition-kms-nbi"></a>
 
-The following policy restricts an IAM user to specify a AWS KMS key to encrypt the attached storage volume when creating or updating a notebook instance by using the `sagemaker:VolumeKmsKey` condition key:
+The following policy restricts an IAM user to specify an AWS KMS key to encrypt the attached storage volume when creating or updating a notebook instance by using the `sagemaker:VolumeKmsKey` condition key:
 
 ```
 {
@@ -949,7 +948,7 @@ The following policy restricts an IAM user to use a specific elastic inference \
             "Resource": "*",
             "Condition": {
                 "ForAllValues:StringEquals": {
-                    "sagemaker:AcceleratorTypes": ["ml.eia1.medium"],
+                    "sagemaker:AcceleratorTypes": ["ml.eia1.medium"]
                 }
             }
         }
@@ -1028,7 +1027,7 @@ This policy allows connections only to callers within a subnet where you created
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "Enable API Access",
+            "Sid": "EnableAPIAccess",
             "Effect": "Allow",
             "Action": [
                 "sagemaker:*"
@@ -1052,14 +1051,14 @@ If you want to restrict access to the API to only calls made using the interface
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "Enable API Access",
+            "Sid": "EnableAPIAccess",
             "Effect": "Allow",
             "Action": [
                 "sagemaker:CreatePresignedNotebookInstanceUrl"
             ],
             "Resource": "*",
             "Condition": {
-                "ForAllValues:StringEquals": {
+                "StringEquals": {
                     "aws:sourceVpce": [
                         "vpce-111bbccc",
                         "vpce-111bbddd"
@@ -1212,7 +1211,7 @@ For example, suppose you've defined two different IAM groups, named `DevTeam1` a
      "Statement": [
        {
          "Effect": "Allow",
-         "Action": "*",
+         "Action": "sagemaker:*",
          "Resource": "*"
        },
        {
@@ -1247,35 +1246,14 @@ Require the presence or absence of specific tags or specific tag values by using
     "Statement": [
         {
             "Effect": "Allow",
-            "Action": "*",
-            "Resource": "*"
-        },
-        {
-            "Effect": "Deny",
             "Action": "sagemaker:CreateEndpoint",
             "Resource": "arn:aws:sagemaker:*:*:endpoint/*",
             "Condition": {
-                "StringNotEquals": {
+                "StringEquals": {
                     "aws:RequestTag/environment": "dev"
                 }
             }
         }
     ]
 }
-```
-
-## Use Tags with Hyperparameter Tuning Jobs<a name="resource-tag-tuning"></a>
-
-You can add tags to a hyperparameter tuning job when you create the tuning job by specifying the tags as the `Tags` parameter when you call [ `CreateHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html)\. If you do this, the tags you specify for the hyperparameter tuning job are also added to all training jobs that the hyperparameter tuning job launches\.
-
-If you add tags to a hyperparameter tuning job by calling [ `AddTags`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AddTags.html), the tags you add are also added to any training jobs that the hyperparameter tuning job launches after you call `AddTags`, but are not added to training jobs the hyperparameter tuning jobs launched before you called `AddTags`\. Similarly, when you remove tags from a hyperparameter tuning job by calling [ `DeleteTags`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteTags.html), those tags are not removed from training jobs that the hyperparameter tuning job launched previously\. Because of this, the tags associated with training jobs can be out of sync with the tags associated with the hyperparameter tuning job that launched them\. If you use tags to control access to a hyperparameter tuning job and the training jobs it launches, you might want to keep the tags in sync\. To make sure the tags associated with training jobs stay sync with the tags associated with the hyperparameter tuning job that launched them, first call [ `ListTrainingJobsForHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListTrainingJobsForHyperParameterTuningJob.html) for the hyperparameter tuning job to get a list of the training jobs that the hyperparameter tuning job launched\. Then, call `AddTags` or `DeleteTags` for the hyperparameter tuning job and for each of the training jobs in the list of training jobs to add or delete the same set of tags for all of the jobs\. The following Python example demonstrates this:
-
-```
-tuning_job_arn = smclient.describe_hyper_parameter_tuning_job(HyperParameterTuningJobName='MyTuningJob')['HyperParameterTuningJobArn']
-smclient.add_tags(ResourceArn=tuning_job_arn, Tags=[{'Key':'Env', 'Value':'Dev'}])
-training_jobs = smclient.list_training_jobs_for_hyper_parameter_tuning_job(
-    HyperParameterTuningJobName='MyTuningJob')['TrainingJobSummaries']
-    for training_job in training_jobs:
-       time.sleep(1) # Wait for 1 second between calls to avoid being throttled
-       smclient.add_tags(ResourceArn=training_job['TrainingJobArn'], Tags=[{'Key':'Env', 'Value':'Dev'}])
 ```

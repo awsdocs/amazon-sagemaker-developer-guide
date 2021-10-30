@@ -23,6 +23,7 @@ The following table lists the supported values for account IDs and corresponding
 | 001633400207 | ap\-east\-1 | 
 | 574779866223 | ap\-northeast\-1 | 
 | 709848358524 | ap\-northeast\-2 | 
+| 990339680094 | ap\-northeast\-3 | 
 | 126357580389 | ap\-south\-1 | 
 | 245545462676 | ap\-southeast\-1 | 
 | 563025443158 | ap\-southeast\-2 | 

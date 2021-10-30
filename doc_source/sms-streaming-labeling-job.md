@@ -68,7 +68,8 @@ You can send one or more new data objects to a streaming labeling job by placing
 Anytime you configure an Amazon S3 bucket to send notifications to Amazon SNS, Ground Truth will publish a test event, `"s3:TestEvent"`, to ensure that the topic exists and that the owner of the Amazon S3 bucket specified has permission to publish to the specified topic\. It is recommended that you set up your Amazon S3 connection with Amazon SNS before starting a streaming labeling job\. If you do not, this test event may register as a data object and be sent to Ground Truth for labeling\. 
 
 **Important**  
-If you use the Amazon S3 configuration, do not use the same Amazon S3 location for your input data configuration and your output data\. You specify the S3 prefix for your output data when you create a labeling job\.
+If you use the Amazon S3 configuration, do not use the same Amazon S3 location for your input data configuration and your output data\. You specify the S3 prefix for your output data when you create a labeling job\.  
+For image\-based labeling jobs, Ground Truth requires all S3 buckets to have a CORS policy attached\. To learn more, see [CORS Permission Requirement](sms-cors-update.md)\.
 
 Once you have configured your Amazon S3 bucket and created your labeling job, you can add objects to your bucket and Ground Truth either sends that object to workers or places it on your Amazon SQS queue\. 
 

@@ -1,6 +1,6 @@
 # Monitor Labeling Job Status<a name="sms-monitor-cloud-watch"></a>
 
-To monitor the status of your labeling jobs, you can set up an [Amazon CloudWatch Events](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/WhatIsCloudWatchEvents.html) \(CloudWatch Events\) rule for Amazon SageMaker Ground Truth \(Ground Truth\) to send an event to CloudWatch Events when a labeling job status changes to `Completed`, `Failed`, or `Stopped`\. 
+To monitor the status of your labeling jobs, you can set up an [Amazon CloudWatch Events](https://docs.aws.amazon.com/sagemaker/latest/dg/monitoring-cloudwatch.html#cloudwatch-metrics-ground-truth) \(CloudWatch Events\) rule for Amazon SageMaker Ground Truth \(Ground Truth\) to send an event to CloudWatch Events when a labeling job status changes to `Completed`, `Failed`, or `Stopped` or when a worker accepts, declines, submits, or returns a task\. 
 
 Once you create a rule, you can add a *target* to it\. CloudWatch Events uses this target to invoke another AWS service to process the event\. For example, you can create a target using a Amazon Simple Notification Service \(Amazon SNS\) topic to send a notification to your email when a labeling job status changes\.
 

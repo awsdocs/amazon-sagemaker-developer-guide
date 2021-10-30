@@ -6,7 +6,7 @@ The following table contains the hyperparameters for the Factorization Machines 
 | Parameter Name | Description | 
 | --- | --- | 
 | feature\_dim | The dimension of the input feature space\. This could be very high with sparse input\. **Required** Valid values: Positive integer\. Suggested value range: \[10000,10000000\]  | 
-| num\_factors | The dimensionality of factorization\. **Required** Valid values: Positive integer\. Suggested value range: \[2,1000\], 64 is usually optimal\.  | 
+| num\_factors | The dimensionality of factorization\. **Required** Valid values: Positive integer\. Suggested value range: \[2,1000\], 64 typically generates good outcomes and is a good starting point\.  | 
 | predictor\_type | The type of predictor\. [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/fact-machines-hyperparameters.html) **Required** Valid values: String: `binary_classifier` or `regressor`  | 
 | bias\_init\_method | The initialization method for the bias term: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/fact-machines-hyperparameters.html) **Optional** Valid values: `uniform`, `normal`, or `constant` Default value: `normal`  | 
 | bias\_init\_scale | Range for initialization of the bias term\. Takes effect if `bias_init_method` is set to `uniform`\.  **Optional** Valid values: Non\-negative float\. Suggested value range: \[1e\-8, 512\]\. Default value: None  | 

@@ -30,7 +30,7 @@ The steps to create an image and image version are the same whether you use the 
 
 1. Choose **Next**\.
 
-1. Under **Studio configuration**, enter or change the following settings\. For information on how the get the kernel information from the image, see [DEVELOPMENT](https://github.com/aws-samples/sagemaker-studio-custom-image-samples/blob/main/DEVELOPMENT.md) in the SageMaker Studio Custom Image Samples repository\.
+1. Under **Studio configuration**, enter or change the following settings\. For information on how to get the kernel information from the image, see [DEVELOPMENT](https://github.com/aws-samples/sagemaker-studio-custom-image-samples/blob/main/DEVELOPMENT.md) in the SageMaker Studio Custom Image Samples repository\.
    + EFS mount path – The path within the image to mount the user's Amazon Elastic File System \(EFS\) home directory\.
    + Kernel:
      + For **Kernel name**, enter the name of an existing kernel in the image\.

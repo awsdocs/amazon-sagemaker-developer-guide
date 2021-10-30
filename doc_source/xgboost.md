@@ -2,14 +2,17 @@
 
 The [XGBoost](https://github.com/dmlc/xgboost) \(eXtreme Gradient Boosting\) is a popular and efficient open\-source implementation of the gradient boosted trees algorithm\. Gradient boosting is a supervised learning algorithm that attempts to accurately predict a target variable by combining an ensemble of estimates from a set of simpler and weaker models\. The XGBoost algorithm performs well in machine learning competitions because of its robust handling of a variety of data types, relationships, distributions, and the variety of hyperparameters that you can fine\-tune\. You can use XGBoost for regression, classification \(binary and multiclass\), and ranking problems\. 
 
-You can use the new release of the XGBoost algorithm either as a Amazon SageMaker built\-in algorithm or as a framework to run training scripts in your local environments\. This implementation has a smaller memory footprint, better logging, improved hyperparameter validation, and an expanded set of metrics than the original versions\. It provides an XGBoost `estimator` that executes a training script in a managed XGBoost environment\. The current release of SageMaker XGBoost is based on the original XGBoost versions 0\.90, 1\.0, and 1\.2\.
+You can use the new release of the XGBoost algorithm either as a Amazon SageMaker built\-in algorithm or as a framework to run training scripts in your local environments\. This implementation has a smaller memory footprint, better logging, improved hyperparameter validation, and an expanded set of metrics than the original versions\. It provides an XGBoost `estimator` that executes a training script in a managed XGBoost environment\. The current release of SageMaker XGBoost is based on the original XGBoost versions 0\.90, 1\.0, 1\.2, and 1\.3\.
 
 ## Supported versions<a name="xgboost-supported-versions"></a>
-+ Framework \(open source\) mode: 0\.90\-1, 0\.90\-2, 1\.0\-1, 1\.2\-1, 1\.2\-2
-+ Algorithm mode: 0\.90\-1, 0\.90\-2, 1\.0\-1, 1\.2\-1, 1\.2\-2
++ Framework \(open source\) mode: 0\.90\-1, 0\.90\-2, 1\.0\-1, 1\.2\-1, 1\.2\-2, 1\.3\-1
++ Algorithm mode: 0\.90\-1, 0\.90\-2, 1\.0\-1, 1\.2\-1, 1\.2\-2, 1\.3\-1
+
+**Warning**  
+The XGBoost 0\.90 version will be deprecated on December 31, 2021\. Supports for security updates or bug fixes for XGBoost 0\.90 will be discontinued after this date\. It is highly recommended to upgrade the XGBoost version to one of the newer versions \(1\.0\-1 or later\) before the deprecation\.
 
 **Note**  
-XGBoost 1\.1 is not supported on SageMaker because XGBoost 1\.1 has a broken capability to run prediction when the test input has fewer features than the training data in LIBSVM inputs\. This capability has been restored in XGBoost 1\.2\. Consider using SageMaker XGBoost 1\.2\-2\.
+XGBoost 1\.1 is not supported on SageMaker because XGBoost 1\.1 has a broken capability to run prediction when the test input has fewer features than the training data in LIBSVM inputs\. This capability has been restored in XGBoost 1\.2\. Consider using SageMaker XGBoost 1\.2\-2 or later\.
 
 ## How to Use SageMaker XGBoost<a name="xgboost-modes"></a>
 

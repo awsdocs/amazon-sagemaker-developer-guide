@@ -13,7 +13,7 @@ To create a pipeline model that can be deployed to an endpoint or used for a bat
 
 1. To add information about the containers in the inference pipeline, choose **Add container**, then choose **Next**\.
 
-1. Complete the fields for each container in the order that you want to execute them, up to the maximum of five\. Complete the **Container input options**, , **Location of inference code image**, and, optionally, **Location of model artifacts**, **Container host name**, and **Environmental variables** fields\. \.  
+1. Complete the fields for each container in the order that you want to execute them, up to the maximum of fifteen\. Complete the **Container input options**, , **Location of inference code image**, and, optionally, **Location of model artifacts**, **Container host name**, and **Environmental variables** fields\. \.  
 ![\[Creating a pipeline model with containers.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/create-pipeline-model-containers.png)
 
    The **MyInferencePipelineModel** page summarizes the settings for the containers that provide input for the model\. If you provided the environment variables in a corresponding container definition, SageMaker shows them in the **Environment variables** field\.  

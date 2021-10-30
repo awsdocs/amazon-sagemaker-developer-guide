@@ -39,7 +39,7 @@ To start a pipeline execution with Amazon CloudWatch Events, you must create an 
 
 1. Select the pipeline you want to trigger from the pipeline drop\-down\. 
 
-1. Add parameters to pass to your pipeline execution using a name and value pair\. Parameter values can be static or dynamic\. For more information on Amazon SageMaker Pipeline parameters, see [AWS::Events::Rule SagemakerPipelineParameters](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-events-rule-sagemakerpipelineparameters.html)\.
+1. Add parameters to pass to your pipeline execution using a name and value pair\. Parameter values can be static or dynamic\. For more information on Amazon SageMaker Pipeline parameters, see [AWS::Events::Rule SagemakerPipelineParameters](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-pipeline.html#aws-resource-sagemaker-pipeline-properties)\.
    + Static values are passed to the pipeline execution every time the pipeline is triggered\. For example, if `{"Name": "Instance_type", "Value": "ml.4xlarge"}` is specified in the parameter list, then it will be passed as a parameter in `StartPipelineExecutionRequest` every time EventBridge triggers the pipeline\. 
    + Dynamic values are specified using a json path\. EventBridge parses the value from an event payload, then passes it to the pipeline execution\. For example: *`$.detail.param.value`* 
 

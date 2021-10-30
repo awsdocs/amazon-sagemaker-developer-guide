@@ -38,7 +38,7 @@ To create and manage your private workforce using Amazon Cognito, you can use th
 
 **To create a private workforce using worker emails**
 
-1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\. 
+1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
 1. In the navigation pane, choose **Labeling workforces**\. 
 

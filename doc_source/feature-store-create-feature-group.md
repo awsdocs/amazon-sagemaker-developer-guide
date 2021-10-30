@@ -8,4 +8,6 @@
 
  You may use a schema to describe your data’s columns and data types\. You pass this schema into `FeatureDefinitions`, a required parameter for a `FeatureGroup`\. You can use the SageMaker Python SDK, which has automatic data type detection when you use the `load_feature_definitions` function\.  
 
-## <a name="w1793aac25c27b9c11"></a>
+The default behavior when a new feature record is added with an already existing record ID is as follows\. In the offline store, the new record will be appended\. In the online store, if the event time of the new record is less than the existing event time than nothing will happen, however if the event time of the new record is greater than or equal to the existing event time, the record will be over written\.
+
+## <a name="w2009aac25c27b9c13"></a>

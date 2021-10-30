@@ -1,6 +1,6 @@
 # Create a Fleet<a name="edge-device-fleet-create"></a>
 
-You can create a fleet programmatically with the AWS SDK for Python \(Boto3\) or through the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
+You can create a fleet programmatically with the AWS SDK for Python \(Boto3\) or through the SageMaker console [https://console\.aws\.amazon\.com/sagemaker](https://console.aws.amazon.com/sagemaker/)\.
 
 ## Create a Fleet \(Boto3\)<a name="edge-device-fleet-create-boto3"></a>
 
@@ -67,9 +67,9 @@ By default, it returns the name of the fleet, the device fleet ARN, the Amazon S
 
 ## Create a Fleet \(Console\)<a name="edge-device-fleet-create-console"></a>
 
-You can create a Edge Manager packaging job using the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
+You can create a Edge Manager packaging job using the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker](https://console.aws.amazon.com/sagemaker/)\.
 
-1. In the SageMaker console, choose **Edge Inference** and then choose **Edge device fleets**\.
+1. In the SageMaker console, choose **Edge Manager** and then choose **Edge device fleets**\.
 
 1. Choose **Create device fleet**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/smith/create-device-button-edited.png)

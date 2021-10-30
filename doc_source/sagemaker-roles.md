@@ -1,6 +1,6 @@
 # SageMaker Roles<a name="sagemaker-roles"></a>
 
-As a managed service, SageMaker performs operations on your behalf on the AWS hardware that is managed by SageMaker\. SageMaker can perform only operations that the user permits\.
+As a managed service, Amazon SageMaker performs operations on your behalf on the AWS hardware that is managed by SageMaker\. SageMaker can perform only operations that the user permits\.
 
 A SageMaker user can grant these permissions with an IAM role \(referred to as an execution role\)\. 
 
@@ -8,7 +8,11 @@ To create and use a locally available execution role, you can use the following 
 
 ## Get execution role<a name="sagemaker-roles-get-execution-role"></a>
 
-When you run a notebook within SageMaker you can access the execution role with the following code:
+You can find the IAM execution role in the following ways:
+
+**From the notebook**
+
+When you run a notebook within SageMaker \(from the SageMaker console or SageMaker Studio\) you can access the execution role with the following code:
 
 ```
 sagemaker_session = sagemaker.Session()
@@ -16,18 +20,22 @@ role = sagemaker.get_execution_role()
 ```
 
 **Note**  
-The execution role is intended to be available only when running a notebook within SageMaker\. If you run `get_execution_role` in a notebook not on SageMaker, expect a "region" error\. 
+The execution role is available only when running a notebook within SageMaker\. If you run `get_execution_role` in a notebook not on SageMaker, expect a "region" error\. 
 
-To find the IAM role ARN created when you created your the notebook instance or Studio application, go to the **Notebook instances** page in the console and select the relevant notebook from the list of **Names**\. in the configuration detail page the IAM role ARN is given in the **Permissions and encryption** section\.
+**From the SageMaker console**
+
+Under **Notebook > Notebook instances**, select the notebook\. The ARN is given in the **Permissions and encryption** section\.
+
+## Create execution role<a name="sagemaker-roles-create-execution-role"></a>
 
 Use the following procedure to create an execution role with the IAM managed policy, `AmazonSageMakerFullAccess`, attached\. If your use case requires more granular permissions, use other sections on this page to create an execution role that meets your business needs\.
 
 **Important**  
-The IAM managed policy, `AmazonSageMakerFullAccess`, used in the following procedure only grants the execution role permission to perform certain Amazon S3 actions on buckets or objects with `SageMaker`, `Sagemaker`, `sagemaker`, or `aws-glue` in the name\. To learn how to add an additional policy to an execution role to grant it access to other Amazon S3 buckets and objects, see [Add Additional Amazon S3 Permissions to an SageMaker Execution Role](#sagemaker-roles-get-execution-role-s3)\.
+The IAM managed policy, `AmazonSageMakerFullAccess`, used in the following procedure only grants the execution role permission to perform certain Amazon S3 actions on buckets or objects with `SageMaker`, `Sagemaker`, `sagemaker`, or `aws-glue` in the name\. To learn how to add an additional policy to an execution role to grant it access to other Amazon S3 buckets and objects, see [Add Additional Amazon S3 Permissions to a SageMaker Execution Role](#sagemaker-roles-get-execution-role-s3)\.
 
 **To create a new role**
 
-1. Go to the IAM console: [https://console.aws.amazon.com/iam/home](https://console.aws.amazon.com/iam/home)\.
+1. Open the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\.
 
 1. Select **Roles** and then select **Create role**\.
 
@@ -55,9 +63,9 @@ except ValueError:
     role = iam.get_role(RoleName='AmazonSageMaker-ExecutionRole-20201200T100000')['Role']['Arn']
 ```
 
-### Add Additional Amazon S3 Permissions to an SageMaker Execution Role<a name="sagemaker-roles-get-execution-role-s3"></a>
+### Add Additional Amazon S3 Permissions to a SageMaker Execution Role<a name="sagemaker-roles-get-execution-role-s3"></a>
 
-When you use an SageMaker feature with resources in Amazon S3, such as input data, the execution role you specify in your request \(for example `CreateTrainingJob`\) is used to access these resources\.
+When you use a SageMaker feature with resources in Amazon S3, such as input data, the execution role you specify in your request \(for example `CreateTrainingJob`\) is used to access these resources\.
 
 If you attach the IAM managed policy, `AmazonSageMakerFullAccess`, to an execution role, that role has permission to perform certain Amazon S3 actions on buckets or objects with `SageMaker`, `Sagemaker`, `sagemaker`, or `aws-glue` in the name\. It also has permission to perform the following actions on any Amazon S3 resource:
 
@@ -85,8 +93,8 @@ To give an execution role permissions to access one or more specific buckets in 
                 "s3:AbortMultipartUpload"
             ],
             "Resource": [
-                "arn:aws:s3:::DOC-EXAMPLE-BUCKET1/*,
-                "arn:aws:s3:::DOC-EXAMPLE-BUCKET2/*
+                "arn:aws:s3:::DOC-EXAMPLE-BUCKET1/*",
+                "arn:aws:s3:::DOC-EXAMPLE-BUCKET2/*"
             ]
         }, 
         {
@@ -108,8 +116,8 @@ To give an execution role permissions to access one or more specific buckets in 
                 "s3:PutObjectAcl"
             ],
             "Resource": [
-                "arn:aws:s3:::DOC-EXAMPLE-BUCKET1,
-                "arn:aws:s3:::DOC-EXAMPLE-BUCKET2
+                "arn:aws:s3:::DOC-EXAMPLE-BUCKET1",
+                "arn:aws:s3:::DOC-EXAMPLE-BUCKET2"
             ]
         }
     ]
@@ -142,13 +150,15 @@ You attach the following trust policy to the IAM role which grants SageMaker pri
 The permissions that you need to grant to the role vary depending on the API that you call\. The following sections explain these permissions\.
 
 **Note**  
-Instead of managing permissions by crafting a permission policy, you can use the AWS\-managed `AmazonSageMakerFullAccess` permission policy\. The permissions in this policy are fairly broad, to allow for any actions you might want to perform in SageMaker\. For a listing of the policy including information about the reasons for adding many of the permissions, see [AmazonSageMakerFullAccess Policy](#sagemaker-roles-amazonsagemakerfullaccess-policy)\. If you prefer to create custom policies and manage permissions to scope the permissions only to the actions you need to perform with the execution role, see the following topics\.
+Instead of managing permissions by crafting a permission policy, you can use the AWS\-managed `AmazonSageMakerFullAccess` permission policy\. The permissions in this policy are fairly broad, to allow for any actions you might want to perform in SageMaker\. For a listing of the policy including information about the reasons for adding many of the permissions, see [`AmazonSageMakerFullAccess`](security-iam-awsmanpol.md#security-iam-awsmanpol-AmazonSageMakerFullAccess)\. If you prefer to create custom policies and manage permissions to scope the permissions only to the actions you need to perform with the execution role, see the following topics\.
 
 For more information about IAM roles, see [IAM Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in the *IAM User Guide*\.
 
 **Topics**
 + [Get execution role](#sagemaker-roles-get-execution-role)
++ [Create execution role](#sagemaker-roles-create-execution-role)
 + [Passing Roles](#sagemaker-roles-pass-role)
++ [CreateAutoMLJob API: Execution Role Permissions](#sagemaker-roles-autopilot-perms)
 + [CreateDomain API: Execution Role Permissions](#sagemaker-roles-createdomain-perms)
 + [CreateImage and UpdateImage APIs: Execution Role Permissions](#sagemaker-roles-createimage-perms)
 + [CreateNotebookInstance API: Execution Role Permissions](#sagemaker-roles-createnotebookinstance-perms)
@@ -156,11 +166,115 @@ For more information about IAM roles, see [IAM Roles](http://docs.aws.amazon.com
 + [CreateProcessingJob API: Execution Role Permissions](#sagemaker-roles-createprocessingjob-perms)
 + [CreateTrainingJob API: Execution Role Permissions](#sagemaker-roles-createtrainingjob-perms)
 + [CreateModel API: Execution Role Permissions](#sagemaker-roles-createmodel-perms)
-+ [AmazonSageMakerFullAccess Policy](#sagemaker-roles-amazonsagemakerfullaccess-policy)
+
+## CreateAutoMLJob API: Execution Role Permissions<a name="sagemaker-roles-autopilot-perms"></a>
+
+For an execution role that you can pass in a `CreateAutoMLJob` API request, you can attach the following minimum permission policy to the role:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:PassRole"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "iam:PassedToService": "sagemaker.amazonaws.com"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "sagemaker:DescribeEndpointConfig",
+                "sagemaker:DescribeModel",
+                "sagemaker:InvokeEndpoint",
+                "sagemaker:ListTags",
+                "sagemaker:DescribeEndpoint",
+                "sagemaker:CreateModel",
+                "sagemaker:CreateEndpointConfig",
+                "sagemaker:CreateEndpoint",
+                "sagemaker:DeleteModel",
+                "sagemaker:DeleteEndpointConfig",
+                "sagemaker:DeleteEndpoint",
+                "cloudwatch:PutMetricData",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents",
+                "logs:CreateLogGroup",
+                "logs:DescribeLogStreams",
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:ListBucket",
+                "ecr:GetAuthorizationToken",
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:BatchGetImage"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+If you specify a private VPC for your AutoML job, add the following permissions:
+
+```
+{
+    "Effect": "Allow",
+    "Action": [
+        "ec2:CreateNetworkInterface",
+        "ec2:CreateNetworkInterfacePermission",
+        "ec2:DeleteNetworkInterface",
+        "ec2:DeleteNetworkInterfacePermission",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribeVpcs",
+        "ec2:DescribeDhcpOptions",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeSecurityGroups"
+    ]
+}
+```
+
+If your input is encrypted using server\-side encryption with an AWS KMS–managed key \(SSE\-KMS\), add the following permissions:
+
+```
+{
+    "Effect": "Allow",
+    "Action": [
+        "kms:Decrypt"
+    ]
+}
+```
+
+If you specify a KMS key in the output configuration of your AutoML job, add the following permissions:
+
+```
+{
+    "Effect": "Allow",
+    "Action": [
+    "kms:Encrypt"
+    ]
+}
+```
+
+If you specify a volume KMS key in the resource configuration of your AutoML job, add the following permissions:
+
+```
+{
+    "Effect": "Allow",
+    "Action": [
+    "kms:CreateGrant"
+    ]
+}
+```
 
 ## CreateDomain API: Execution Role Permissions<a name="sagemaker-roles-createdomain-perms"></a>
 
-The execution role for AWS SSO domains and the user/execution role for IAM domains need the following permissions when you pass an AWS KMS customer managed key \(CMK\) as the `KmsKeyId` in the `CreateDomain` API request\. The permissions are enforced during the `CreateApp` API call\.
+The execution role for AWS SSO domains and the user/execution role for IAM domains need the following permissions when you pass an AWS KMS customer managed key as the `KmsKeyId` in the `CreateDomain` API request\. The permissions are enforced during the `CreateApp` API call\.
 
 For an execution role that you can pass in the `CreateDomain` API request, you can attach the following permission policy to the role:
 
@@ -175,7 +289,7 @@ For an execution role that you can pass in the `CreateDomain` API request, you c
                 "kms:DescribeKey"
             ],
             "Resource": "arn:aws:kms:region:account-id:key/kms-key-id"
-        },
+        }
     ]
 }
 ```
@@ -184,18 +298,23 @@ Alternatively, if the permissions are specified in a KMS policy, you can attach 
 
 ```
 {
-    "Sid": "Allow use of the key",
-    "Effect": "Allow",
-    "Principal": {
-        "AWS": [
-            "arn:aws:iam::account-id:role/ExecutionRole"
-        ]
-    },
-    "Action": [
-        "kms:DescribeKey",
-        "kms:CreateGrant"
-    ],
-    "Resource": "*"
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Allow use of the key",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": [
+                    "arn:aws:iam::account-id:role/ExecutionRole"
+                ]
+            },
+            "Action": [
+                "kms:CreateGrant",
+                "kms:DescribeKey"
+            ],
+            "Resource": "*"
+        }
+    ]
 }
 ```
 
@@ -279,7 +398,6 @@ The permissions that you grant to the execution role for calling the `CreateNote
                 "robomaker:CancelSimulationJob",
                 "ec2:CreateVpcEndpoint",
                 "ec2:DescribeRouteTables",
-                "fsx:DescribeFileSystem",
                 "elasticfilesystem:DescribeMountTargets"
             ],
             "Resource": "*"
@@ -375,9 +493,9 @@ To tighten the permissions, limit them to specific Amazon S3 and Amazon ECR reso
                 "ecr:BatchGetImage"
             ],
             "Resource": [
-                "arn:aws:ecr:::repository/my-repo1",
-                "arn:aws:ecr:::repository/my-repo2",
-                "arn:aws:ecr:::repository/my-repo3"
+                "arn:aws:ecr:region::repository/my-repo1",
+                "arn:aws:ecr:region::repository/my-repo2",
+                "arn:aws:ecr:region::repository/my-repo3"
             ]
         }
     ]
@@ -482,7 +600,7 @@ Instead of the specifying `"Resource": "*"`, you could scope these permissions t
                 "ecr:GetDownloadUrlForLayer",
                 "ecr:BatchGetImage"
             ],
-            "Resource": "arn:aws:ecr:::repository/my-repo"
+            "Resource": "arn:aws:ecr:region::repository/my-repo"
         }
     ]
 }
@@ -505,18 +623,18 @@ If you specify a private VPC for your hyperparameter tuning job, add the followi
 
 ```
 {
-            "Effect": "Allow",
-            "Action": [
-            "ec2:CreateNetworkInterface",
-            "ec2:CreateNetworkInterfacePermission",
-            "ec2:DeleteNetworkInterface",
-            "ec2:DeleteNetworkInterfacePermission",
-            "ec2:DescribeNetworkInterfaces",
-            "ec2:DescribeVpcs",
-            "ec2:DescribeDhcpOptions",
-            "ec2:DescribeSubnets",
-            "ec2:DescribeSecurityGroups"
-            ]
+    "Effect": "Allow",
+    "Action": [
+        "ec2:CreateNetworkInterface",
+        "ec2:CreateNetworkInterfacePermission",
+        "ec2:DeleteNetworkInterface",
+        "ec2:DeleteNetworkInterfacePermission",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribeVpcs",
+        "ec2:DescribeDhcpOptions",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeSecurityGroups"
+    ]
 }
 ```
 
@@ -526,7 +644,7 @@ If your input is encrypted using server\-side encryption with an AWS KMS–manag
 {
     "Effect": "Allow",
     "Action": [
-    "kms:Decrypt"
+        "kms:Decrypt"
     ]
 }
 ```
@@ -628,7 +746,7 @@ Instead of the specifying `"Resource": "*"`, you could scope these permissions t
                 "ecr:GetDownloadUrlForLayer",
                 "ecr:BatchGetImage"
             ],
-            "Resource": "arn:aws:ecr:::repository/my-repo"
+            "Resource": "arn:aws:ecr:region::repository/my-repo"
         }
     ]
 }
@@ -647,17 +765,19 @@ If you specify a private VPC for your processing job, add the following permissi
 
 ```
 {
-            "Effect": "Allow",
-            "Action": [
-            "ec2:CreateNetworkInterface",
-            "ec2:CreateNetworkInterfacePermission",
-            "ec2:DeleteNetworkInterface",
-            "ec2:DeleteNetworkInterfacePermission",
-            "ec2:DescribeNetworkInterfaces",
-            "ec2:DescribeVpcs",
-            "ec2:DescribeDhcpOptions",
-            "ec2:DescribeSubnets",
-            "ec2:DescribeSecurityGroups"
+    "Effect": "Allow",
+    "Action": [
+        "ec2:CreateNetworkInterface",
+        "ec2:CreateNetworkInterfacePermission",
+        "ec2:DeleteNetworkInterface",
+        "ec2:DeleteNetworkInterfacePermission",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribeVpcs",
+        "ec2:DescribeDhcpOptions",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeSecurityGroups"
+    ]
+}
 ```
 
 If your input is encrypted using server\-side encryption with an AWS KMS–managed key \(SSE\-KMS\), add the following permissions:
@@ -666,7 +786,7 @@ If your input is encrypted using server\-side encryption with an AWS KMS–manag
 {
     "Effect": "Allow",
     "Action": [
-    "kms:Decrypt"
+        "kms:Decrypt"
     ]
 }
 ```
@@ -768,7 +888,7 @@ Instead of the specifying `"Resource": "*"`, you could scope these permissions t
                 "ecr:GetDownloadUrlForLayer",
                 "ecr:BatchGetImage"
             ],
-            "Resource": "arn:aws:ecr:::repository/my-repo"
+            "Resource": "arn:aws:ecr:region::repository/my-repo"
         }
     ]
 }
@@ -791,17 +911,19 @@ If you specify a private VPC for your training job, add the following permission
 
 ```
 {
-            "Effect": "Allow",
-            "Action": [
-            "ec2:CreateNetworkInterface",
-            "ec2:CreateNetworkInterfacePermission",
-            "ec2:DeleteNetworkInterface",
-            "ec2:DeleteNetworkInterfacePermission",
-            "ec2:DescribeNetworkInterfaces",
-            "ec2:DescribeVpcs",
-            "ec2:DescribeDhcpOptions",
-            "ec2:DescribeSubnets",
-            "ec2:DescribeSecurityGroups"
+    "Effect": "Allow",
+    "Action": [
+      "ec2:CreateNetworkInterface",
+      "ec2:CreateNetworkInterfacePermission",
+      "ec2:DeleteNetworkInterface",
+      "ec2:DeleteNetworkInterfacePermission",
+      "ec2:DescribeNetworkInterfaces",
+      "ec2:DescribeVpcs",
+      "ec2:DescribeDhcpOptions",
+      "ec2:DescribeSubnets",
+      "ec2:DescribeSecurityGroups"
+    ]
+}
 ```
 
 If your input is encrypted using server\-side encryption with an AWS KMS–managed key \(SSE\-KMS\), add the following permissions:
@@ -810,7 +932,7 @@ If your input is encrypted using server\-side encryption with an AWS KMS–manag
 {
     "Effect": "Allow",
     "Action": [
-    "kms:Decrypt"
+        "kms:Decrypt"
     ]
 }
 ```
@@ -889,7 +1011,6 @@ Instead of the specifying `"Resource": "*"`, you can scope these permissions to 
                 "s3:GetObject"
             ],
             "Resource": [
-                "arn:aws:s3:::inputbucket/object",
                 "arn:aws:s3:::inputbucket/object"
             ]
         },
@@ -901,8 +1022,8 @@ Instead of the specifying `"Resource": "*"`, you can scope these permissions to 
                 "ecr:BatchGetImage"
             ],
             "Resource": [
-                "arn:aws:ecr:::repository/my-repo",
-                "arn:aws:ecr:::repository/my-repo"
+                "arn:aws:ecr:region::repository/my-repo",
+                "arn:aws:ecr:region::repository/my-repo"
              ]
         }
     ]
@@ -921,63 +1042,17 @@ If you specify a private VPC for your model, add the following permissions:
 
 ```
 {
-            "Effect": "Allow",
-            "Action": [
-            "ec2:CreateNetworkInterface",
-            "ec2:CreateNetworkInterfacePermission",
-            "ec2:DeleteNetworkInterface",
-            "ec2:DeleteNetworkInterfacePermission",
-            "ec2:DescribeNetworkInterfaces",
-            "ec2:DescribeVpcs",
-            "ec2:DescribeDhcpOptions",
-            "ec2:DescribeSubnets",
-            "ec2:DescribeSecurityGroups"
+    "Effect": "Allow",
+    "Action": [
+        "ec2:CreateNetworkInterface",
+        "ec2:CreateNetworkInterfacePermission",
+        "ec2:DeleteNetworkInterface",
+        "ec2:DeleteNetworkInterfacePermission",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribeVpcs",
+        "ec2:DescribeDhcpOptions",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeSecurityGroups"
+    ]
+}
 ```
-
-## AmazonSageMakerFullAccess Policy<a name="sagemaker-roles-amazonsagemakerfullaccess-policy"></a>
-
-The [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) managed policy includes all of the necessary permissions to perform most actions in SageMaker\. You can use attach this policy to any role that you pass to a SageMaker execution role\. You can also create more narrowly\-scoped policies if you want more granular control of the permissions that you grant to your execution role\.
-
-The following list explains why some of the categories of permissions in the `AmazonSageMakerFullAccess` policy are needed\.
-
-`application-autoscaling`  
-Needed for automatically scaling a SageMaker real\-time inference endpoint\.
-
-`aws-marketplace`  
-Needed to view AWS AI Marketplace subscriptions\.
-
-`cloudwatch`  
-Needed to post CloudWatch metrics, interact with alarms, and upload CloudWatch Logs logs in your account\.
-
-`codecommit`  
-Needed for AWS CodeCommit integration with SageMaker notebook instances\.
-
-`cognito`  
-Needed for SageMaker Ground Truth to define your private workforce and work teams\.
-
-`ec2`  
-Needed to manage elastic network interfaces when you specify a Amazon VPC for your SageMaker jobs and notebook instances\.
-
-`ec2:DescribeVpcs`  
-All SageMaker services launch Amazon EC2 instances and require this permission set\.
-
-`ecr`  
-Needed to pull and store Docker artifacts for training and inference\. This is required only if you use your own container in SageMaker\.
-
-`elastic-inference`  
-Needed to integrate Amazon Elastic Inference with SageMaker\.
-
-`glue`  
-Needed for inference pipeline pre\-processing from within SageMaker notebook instances\.
-
-`groundtruthlabeling`  
-Needed for SageMaker Ground Truth\.
-
-`iam:ListRoles`  
-Needed to give the SageMaker console access to list available roles\.
-
-`kms`  
-Needed to give the SageMaker console access to list the available AWS KMS keys\.
-
-`logs`  
-Needed to allow SageMaker jobs and endpoints to publish log streams\.

@@ -160,4 +160,4 @@ When you create a 3D point cloud labeling job, you specify buckets in S3 where y
     </CORSConfiguration>
 ```
 
-To learn how to add a CORS policy to an S3 bucket, see [How do I add cross\-domain resource sharing with CORS?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-cors-configuration.html) in the Amazon Simple Storage Service Console User Guide\.
+To learn how to add a CORS policy to an S3 bucket, see [How do I add cross\-domain resource sharing with CORS?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-cors-configuration.html) in the Amazon Simple Storage Service User Guide\.

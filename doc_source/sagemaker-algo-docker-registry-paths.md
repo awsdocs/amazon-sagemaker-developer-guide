@@ -3,8 +3,8 @@
 The following topics list the Docker registry path and other parameters for each of the Amazon SageMaker provided algorithms and Deep Learning Containers \(DLC\)\.
 
 Use the path as follows:
-+ To create a training job \([create\_training\_job](http://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_training_job)\), specify the Docker registry path \(`TrainingImage`\) and the training input mode \(`TrainingInputMode`\) for the training image\. You create a training job to train a model using a specific dataset\.
-+ To create a model \([create\_model](http://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_model)\), specify the Docker registry path \(`Image`\) for the inference image \(`PrimaryContainer Image`\)\. SageMaker launches machine learning compute instances that are based on the endpoint configuration and deploys the model, which includes the artifacts \(the result of model training\)\.
++ To create a training job \([create\_training\_job](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_training_job)\), specify the Docker registry path \(`TrainingImage`\) and the training input mode \(`TrainingInputMode`\) for the training image\. You create a training job to train a model using a specific dataset\.
++ To create a model \([create\_model](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_model)\), specify the Docker registry path \(`Image`\) for the inference image \(`PrimaryContainer Image`\)\. SageMaker launches machine learning compute instances that are based on the endpoint configuration and deploys the model, which includes the artifacts \(the result of model training\)\.
 
 **Note**  
 For the registry path, use the `:1` version tag to ensure that you are using a stable version of the algorithm/DLC\. You can reliably host a model trained using an image with the `:1` tag on an inference image that has the `:1` tag\. Using the `:latest` tag in the registry path provides you with the most up\-to\-date version of the algorithm/DLC, but might cause problems with backward compatibility\. Avoid using the `:latest` tag for production purposes\.  
@@ -20,6 +20,7 @@ To find the registry path, choose the AWS Region, then choose the algorithm or D
 + [Africa \(Cape Town\)](ecr-af-south-1.md)
 + [Asia Pacific \(Hong Kong\)](ecr-ap-east-1.md)
 + [Asia Pacific \(Mumbai\)](ecr-ap-south-1.md)
++ [Asia Pacific \(Osaka\)](ecr-ap-northeast-3.md)
 + [Asia Pacific \(Seoul\)](ecr-ap-northeast-2.md)
 + [Asia Pacific \(Singapore\)](ecr-ap-southeast-1.md)
 + [Asia Pacific \(Sydney\)](ecr-ap-southeast-2.md)

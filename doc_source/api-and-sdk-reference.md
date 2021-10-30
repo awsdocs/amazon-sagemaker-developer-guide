@@ -13,7 +13,7 @@ Amazon SageMaker provides APIs, SDKs, and a command line interface that you can 
 + [AWS SDK for Java](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sagemaker/AmazonSageMaker.html)
 + [AWS SDK for JavaScript](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SageMaker.html)
 + [AWS SDK for PHP](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-sagemaker-2017-07-24.html)
-+ [AWS SDK for Python \(Boto\)](http://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html)
++ [AWS SDK for Python \(Boto\)](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html)
 + [AWS SDK for Ruby](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/SageMaker.html)
 + [Amazon SageMaker Spark](https://github.com/aws/sagemaker-spark/blob/master/README.md)
 

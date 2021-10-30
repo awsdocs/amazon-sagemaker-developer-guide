@@ -5,23 +5,21 @@ SageMaker Neo requires models to be packaged in a compressed TAR file \(`*.tar.g
 + A JSON configuration file
 + Calibration images
 
-For example, your directory should look similar to the following example:
+For example, the contents of your compressed TAR file should look similar to the following example:
 
 ```
-├──Mobilenet_v1_1.0_224
-|     ├──amba_config.json
-|     ├──calib_data
-|     |    ├── data1
-|     |    ├── data2
-|          .
-|          .
-|          .
-|          └── data500
-|     └──mobilenet_v1_1.0_0224_frozen.pb
+├──amba_config.json
+├──calib_data
+|    ├── data1
+|    ├── data2
+|    ├── .
+|    ├── .
+|    ├── .
+|    └── data500
+└──mobilenet_v1_1.0_0224_frozen.pb
 ```
 
 The directory is configured as follows:
-+ `Mobilenet_v1_1.0_224` : The name of file directory that is compressed as a TAR file
 + `amba_config.json` : Configuration file
 + `calib_data` : Folder containing calibration images
 + `mobilenet_v1_1.0_0224_frozen.pb` : TensorFlow model saved as a frozen graph

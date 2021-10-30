@@ -2,7 +2,7 @@
 
 You can use trained models in an inference pipeline to make real\-time predictions directly without performing external preprocessing\. When you configure the pipeline, you can choose to use the built\-in feature transformers already available in Amazon SageMaker\. Or, you can implement your own transformation logic using just a few lines of scikit\-learn or Spark code\. 
 
-[MLeap](http://mleap-docs.combust.ml/), a serialization format and execution engine for machine learning pipelines, supports Spark, scikit\-learn, and TensorFlow for training pipelines and exporting them to a serialized pipeline called an MLeap Bundle\. You can deserialize Bundles back into Spark for batch\-mode scoring or into the MLeap runtime to power real\-time API services\.
+[MLeap](https://combust.github.io/mleap-docs/), a serialization format and execution engine for machine learning pipelines, supports Spark, scikit\-learn, and TensorFlow for training pipelines and exporting them to a serialized pipeline called an MLeap Bundle\. You can deserialize Bundles back into Spark for batch\-mode scoring or into the MLeap runtime to power real\-time API services\.
 
 The containers in a pipeline listen on the port specified in the `SAGEMAKER_BIND_TO_PORT` environment variable \(instead of 8080\)\. When running in an inference pipeline, SageMaker automatically provides this environment variable to containers\. If this environment variable isn't present, containers default to using port 8080\. To indicate that your container complies with this requirement, use the following command to add a label to your Dockerfile:
 

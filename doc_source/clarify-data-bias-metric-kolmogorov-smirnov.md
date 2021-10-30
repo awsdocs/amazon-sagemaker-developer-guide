@@ -8,7 +8,7 @@ The formula for the Kolmogorov\-Smirnov metric is as follows:
 
 For example, assume a group of applicants \(facet *a*\) to college are rejected, waitlisted, or accepted at 40%, 40%, 20% respectively and that these rates for other applicants \(facet *d*\) are 20%, 10%, 70%\. Then the Kolmogorov\-Smirnov bias metric value is as follows:
 
-KS = max\(\|0\.4\-0\.2\|, \|0\.4\-0\.3\|, \|0\.2\-0\.7\|\) = 0\.5
+KS = max\(\|0\.4\-0\.2\|, \|0\.4\-0\.1\|, \|0\.2\-0\.7\|\) = 0\.5
 
 This tells us the maximum divergence between facet distributions is 0\.5 and occurs in the acceptance rates\. There are three terms in the equation because labels are multiclass of cardinality three\.
 

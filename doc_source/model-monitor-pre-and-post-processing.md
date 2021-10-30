@@ -27,17 +27,10 @@ The Amazon SageMaker Model Monitor container works only with tabular or flattene
 
 ```
 def preprocess_handler(inference_record):
-    
     input_data = inference_record.endpoint_input.data
-    output_data = inference_record.endpoint_output.data
-
-    input_data['feature0'] = random.randint(1, 3)
-    input_data['feature1'] = random.uniform(0, 1.6)
-    input_data['feature2'] = random.uniform(0, 1.6)
-
-    output_data['prediction0'] = random.uniform(1, 30)
-    
-    return {**input_data, **output_data}
+    output_data = inference_record.endpoint_output.data.rstrip("\n")
+    data = output_data + "," + input_data
+    return { str(i).zfill(20) : d for i, d in enumerate(data.split(",")) }
 ```
 
 Specify it as a path in Amazon S3 in the `CreateMonitoringSchedule` request:

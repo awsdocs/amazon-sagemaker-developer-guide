@@ -6,22 +6,9 @@
 
 This tutorial requires an Amazon SageMaker Studio Domain\. 
 
-## Install TensorBoard<a name="studio-tensorboard-install"></a>
+## Set Up `TensorBoardCallback`<a name="studio-tensorboard-setup"></a>
 
 1. Launch Studio\. 
-
-1. Click on the  `Amazon SageMaker Studio` button on the top left corner of Studio to open the Amazon SageMaker Studio Launcher\. This launcher must be opened from your root directory\. 
-
-1. In the Launcher under `Utilities and files`, click `System terminal`\. 
-
-1. From the terminal, run the following commands\. 
-
-   ```
-   pip install tensorboard 
-   tensorboard --logdir ./logs/fit
-   ```
-
-## Set Up `TensorBoardCallback`<a name="studio-tensorboard-setup"></a>
 
 1. In the Amazon SageMaker Studio Launcher under `Notebooks and compute resources`, select the `TensorFlow 2.3 Python 3.7(optimized for CPU)` Studio Image\. 
 
@@ -30,8 +17,8 @@ This tutorial requires an Amazon SageMaker Studio Domain\.
 1. Import the required packages\. 
 
    ```
-   import os 
-   import datetime 
+   import os
+   import datetime
    import tensorflow as tf
    ```
 
@@ -55,7 +42,7 @@ This tutorial requires an Amazon SageMaker Studio Domain\.
 1. Create a directory for your TensorBoard logs 
 
    ```
-   LOG_DIR = "logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+   LOG_DIR = os.path.join(os.getcwd(), "logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
    ```
 
 1. Run training with TensorBoard\. 
@@ -76,9 +63,29 @@ This tutorial requires an Amazon SageMaker Studio Domain\.
              callbacks=[tensorboard_callback])
    ```
 
+1. Generate the EFS path for the TensorBoard logs\. You use this path to set up your logs from the terminal\.
+
+   ```
+   EFS_PATH_LOG_DIR = "/".join(LOG_DIR.strip("/").split('/')[1:-1])
+   print (EFS_PATH_LOG_DIR)
+   ```
+
+## Install TensorBoard<a name="studio-tensorboard-install"></a>
+
+1. Click on the  `Amazon SageMaker Studio` button on the top left corner of Studio to open the Amazon SageMaker Studio Launcher\. This launcher must be opened from your root directory\. 
+
+1. In the Launcher under `Utilities and files`, click `System terminal`\. 
+
+1. From the terminal, run the following commands\. Copy `EFS_PATH_LOG_DIR` from the Jupyter notebook\. You must run this from the `/home/sagemaker-user` root directory\.
+
+   ```
+   pip install tensorboard
+   tensorboard --logdir <EFS_PATH_LOG_DIR>
+   ```
+
 ## Launch TensorBoard<a name="studio-tensorboard-launch"></a>
 
-1. To launch TensorBoard, copy your Studio URL and replace `lab?` with `proxy/6006/` as follows\. 
+1. To launch TensorBoard, copy your Studio URL and replace `lab?` with `proxy/6006/` as follows\. You must include the trailing `/` character\.
 
    ```
    https://<YOUR_URL>.studio.region.sagemaker.aws/jupyter/default/proxy/6006/

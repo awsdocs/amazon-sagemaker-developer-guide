@@ -27,6 +27,9 @@ Alternatively, Feature Store can process and ingest data in batches\. You can au
 
 To ingest features into Feature Store, you must first define the feature group and the feature definitions \(feature name and data type\) for all features that belong to the feature group\. After they are created, feature groups are immutable\. Feature group names are unique within an AWS Region and AWS account\. When creating a feature group, you can also create the metadata for the feature group, such as a short description, storage configuration, features for identifying each record, and the event time, as well as tags to store information such as the author, data source, version, and more\. 
 
+**Important**  
+`FeatureGroup` names or associated metadata such as description or tags should not contain any personal identifiable information \(PII\) or confidential information\. 
+
 ## Find, Discover, and Share Features<a name="Find-discover-share-features"></a>
 
 After you create a feature group in Feature Store, other authorized users of the feature store can share and discover it\. Users can browse through a list of all feature groups in Feature Store or discover existing feature groups by searching by feature group name, description, record identifier name, creation date, and tags\.  
@@ -51,4 +54,6 @@ You can push records to Feature Store by calling the synchronous `PutRecord` API
 
 When feature data is ingested and updated, Feature Store stores historical data for all features in the offline store\. For batch ingest, you can pull feature values from your S3 bucket or use Athena to query\. You can also use Data Wrangler to process and engineer new features that can then be exported to a chosen S3 bucket to be accessed by Feature Store\. For batch ingestion, you can configure a processing job to batch ingest your data into Feature Store, or you can pull feature values from your S3 bucket using Athena\.  
 
-## <a name="w1793aac25c25"></a>
+To remove a `Record` from your online store, use the [https://docs.aws.amazon.com/en_us/sagemaker/latest/APIReference/API_feature_store_DeleteRecord.html](https://docs.aws.amazon.com/en_us/sagemaker/latest/APIReference/API_feature_store_DeleteRecord.html) API call\. This will also add the deleted record to the offline store\.
+
+## <a name="w2009aac25c25"></a>

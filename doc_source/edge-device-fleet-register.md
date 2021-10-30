@@ -3,7 +3,7 @@
 **Important**  
 Device registration is required to use any part of SageMaker Edge Manager\.
 
-You can create a fleet programmatically with the AWS SDK for Python \(Boto3\) or through the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
+You can create a fleet programmatically with the AWS SDK for Python \(Boto3\) or through the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker](https://console.aws.amazon.com/sagemaker/)\.
 
 ## Register a Device \(Boto3\)<a name="edge-device-fleet-register-boto3"></a>
 
@@ -36,7 +36,7 @@ sagemaker_client.register_devices(
 
 ## Register a Device \(Console\)<a name="edge-device-fleet-register-console"></a>
 
-You can register your device using the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
+You can register your device using the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker](https://console.aws.amazon.com/sagemaker/)\.
 
 1. In the SageMaker console, choose **Edge Inference** and then choose choose **Edge devices**\.
 

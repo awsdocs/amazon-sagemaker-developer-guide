@@ -2,16 +2,6 @@
 
 For any SageMaker training jobs, the Debugger [ProfilerReport](debugger-built-in-rules.md#profiler-report) rule invokes all of the [monitoring and profiling rules](debugger-built-in-rules.md#built-in-rules-monitoring) and aggregates the rule analysis into a comprehensive report\. Following this guide, download the report using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) or the S3 console, and learn what you can interpret from the profiling results\.
 
-**Important**  
-To use the new Debugger features, you need to upgrade the SageMaker Python SDK and the SMDebug client library\. In your iPython kernel, Jupyter notebook, or JupyterLab environment, run the following code to install the latest versions of the libraries and restart the kernel\.  
-
-```
-import sys
-import IPython
-!{sys.executable} -m pip install -U sagemaker smdebug
-IPython.Application.instance().kernel.do_shutdown(True)
-```
-
 **Topics**
 + [Download a Debugger Profiling Report](#debugger-profiling-report-download)
 + [Debugger Profiling Report Walkthrough](#debugger-profiling-report-walkthrough)
@@ -209,7 +199,7 @@ The pie charts show the following information:
 
 ### I/O Bottlenecks<a name="debugger-profiling-report-walkthrough-io-bottlenecks"></a>
 
-In this section, you can find a summary of IO bottlenecks\.
+In this section, you can find a summary of I/O bottlenecks\. The rule evaluates the I/O wait time and GPU utilization rates and monitors if the time spent on the I/O requests exceeds a threshold percent of the total training time\. It might indicate I/O bottlenecks where GPUs are waiting for data to arrive from storage\.
 
 ### LoadBalancing in Multi\-GPU Training<a name="debugger-profiling-report-walkthrough-workload-balancing"></a>
 

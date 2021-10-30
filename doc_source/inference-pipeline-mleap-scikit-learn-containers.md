@@ -13,6 +13,6 @@ After engineering features, you package and serialize Spark ML jobs with MLeap i
 
 When you run a Spark ML job on AWS Glue, a Spark ML pipeline is serialized into [MLeap](https://github.com/combust/mleap) format\. Then, you can use the job with the [SparkML Model Serving Container](https://github.com/aws/sagemaker-sparkml-serving-container) in a SageMaker Inference Pipeline\.*MLeap* is a serialization format and execution engine for machine learning pipelines\. It supports Spark, Scikit\-learn, and TensorFlow for training pipelines and exporting them to a serialized pipeline called an MLeap Bundle\. You can deserialize Bundles back into Spark for batch\-mode scoring or into the MLeap runtime to power real\-time API services\.
 
-## Feature Processing with Sci\-kit Learn<a name="feature-processing-with-scikit"></a>
+## Feature Processing with Scikit\-Learn<a name="feature-processing-with-scikit"></a>
 
 You can run and package scikit\-learn jobs into containers directly in Amazon SageMaker\.  For an example of Python code for building a scikit\-learn featurizer model that trains on [Fisher's Iris flower data set](http://archive.ics.uci.edu/ml/datasets/Iris) and predicts the species of Iris based on morphological measurements, see [IRIS Training and Prediction with Sagemaker Scikit\-learn](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker-python-sdk/scikit_learn_iris)\. 

@@ -18,6 +18,8 @@ Some examples of the actions that can be automatically triggered include the fol
 + [Model package state change](#eventbridge-model-package)
 + [Pipeline execution state change](#eventbridge-pipeline)
 + [Pipeline step state change](#eventbridge-pipeline-step)
++ [SageMaker image state change](#eventbridge-image-state)
++ [SageMaker image version state change](#eventbridge-image-version-state)
 
 ## Training job state change<a name="eventbridge-training"></a>
 
@@ -453,6 +455,54 @@ If the value of `currentStepStatus` is `Failed`, the event contains the `failure
     "currentStepStatus": "Succeeded",
     "pipelineArn": "arn:aws:sagemaker:us-east-1:123456789012:pipeline/myPipeline-123",
     "pipelineExecutionArn": "arn:aws:sagemaker:us-east-1:123456789012:pipeline/myPipeline-123/execution/p4jn9xou8a8s"
+  }
+}
+```
+
+## SageMaker image state change<a name="eventbridge-image-state"></a>
+
+Indicates a change in the status of a SageMaker image\.
+
+```
+{
+  "version": "0",
+  "id": "cee033a3-17d8-49f8-865f-b9ebf485d9ee",
+  "detail-type": "SageMaker Image State Change",
+  "source": "aws.sagemaker",
+  "account": "123456789012",
+  "time": "2021-04-29T01:29:59Z",
+  "region": "us-east-1",
+  "resources": ["arn:aws:sagemaker:us-west-2:123456789012:image/cee033a3-17d8-49f8-865f-b9ebf485d9ee"],
+  "detail": {
+    "ImageName": "cee033a3-17d8-49f8-865f-b9ebf485d9ee",
+    "ImageArn": "arn:aws:sagemaker:us-west-2:123456789012:image/cee033a3-17d8-49f8-865f-b9ebf485d9ee",
+    "ImageStatus": "Creating",
+    "Version": 1.0,
+    "Tags": {}
+  }
+}
+```
+
+## SageMaker image version state change<a name="eventbridge-image-version-state"></a>
+
+Indicates a change in the status of a SageMaker image version\.
+
+```
+{
+  "version": "0",
+  "id": "07fc4615-ebd7-15fc-1746-243411f09f04",
+  "detail-type": "SageMaker Image Version State Change",
+  "source": "aws.sagemaker",
+  "account": "123456789012",
+  "time": "2021-04-29T01:29:59Z",
+  "region": "us-east-1",
+  "resources": ["arn:aws:sagemaker:us-west-2:123456789012:image-version/07800032-2d29-48b7-8f82-5129225b2a85"],
+  "detail": {
+    "ImageArn": "arn:aws:sagemaker:us-west-2:123456789012:image/a70ff896-c832-4fe8-add6-eba25a0f43e6",
+    "ImageVersionArn": "arn:aws:sagemaker:us-west-2:123456789012:image-version/07800032-2d29-48b7-8f82-5129225b2a85",
+    "ImageVersionStatus": "Creating",
+    "Version": 1.0,
+    "Tags": {}
   }
 }
 ```

@@ -4,7 +4,7 @@
 
 When using [gradient boosting](https://en.wikipedia.org/wiki/Gradient_boosting) for regression, the weak learners are regression trees, and each regression tree maps an input data point to one of its leafs that contains a continuous score\. XGBoost minimizes a regularized \(L1 and L2\) objective function that combines a convex loss function \(based on the difference between the predicted and target outputs\) and a penalty term for model complexity \(in other words, the regression tree functions\)\. The training proceeds iteratively, adding new trees that predict the residuals or errors of prior trees that are then combined with previous trees to make the final prediction\. It's called gradient boosting because it uses a gradient descent algorithm to minimize the loss when adding new models\.
 
- Below is a brief illustration on how gradient tree bosting works\.
+ Below is a brief illustration on how gradient tree boosting works\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/xgboost_illustration.png)
 

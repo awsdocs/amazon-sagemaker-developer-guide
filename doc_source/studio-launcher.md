@@ -24,7 +24,7 @@ The Launcher consists of following sections:
 
 ## Notebooks and compute resources<a name="studio-launcher-launch"></a>
 
-To create or launch an item, choose the SageMaker image that you want the item to run in from the **SageMaker image** dropdown menu\. Next, choose the item\. When you choose an item from this section, you might incur additional usage charges\. For more information, see [Usage Metering](notebooks-usage-metering.md)\.
+To create or launch an item, choose the SageMaker image that you want the item to run in from the **SageMaker image** dropdown menu\. You can also select the Lifecycle Configuration script that you want to run\. For more information, see [Use Lifecycle Configurations with Amazon SageMaker Studio](studio-lcc.md)\. Next, choose the item\. When you choose an item from this section, you might incur additional usage charges\. For more information, see [Usage Metering](notebooks-usage-metering.md)\.
 
 The following items are available:
 + **Notebook**
@@ -42,6 +42,9 @@ The following items are available:
   Launches the terminal in a terminal session on the chosen SageMaker image\.
 
   Opens the terminal in the root folder for the user \(as shown by the Home folder in the file browser\)\.
+
+**Note**  
+CPU instances are launched on a `ml.t3.medium` instance, while GPU instances are launched on a `ml.g4dn.xlarge` instance\.
 
 ## Utilities and files<a name="studio-launcher-other"></a>
 

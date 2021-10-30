@@ -1,6 +1,6 @@
 # Deploy an Inference Pipeline<a name="inference-pipelines"></a>
 
-An *inference pipeline* is a Amazon SageMaker model that is composed of a linear sequence of two to five containers that process requests for inferences on data\. You use an inference pipeline to define and deploy any combination of pretrained SageMaker built\-in algorithms and your own custom algorithms packaged in Docker containers\. You can use an inference pipeline to combine preprocessing, predictions, and post\-processing data science tasks\. Inference pipelines are fully managed\.
+An *inference pipeline* is a Amazon SageMaker model that is composed of a linear sequence of two to fifteen containers that process requests for inferences on data\. You use an inference pipeline to define and deploy any combination of pretrained SageMaker built\-in algorithms and your own custom algorithms packaged in Docker containers\. You can use an inference pipeline to combine preprocessing, predictions, and post\-processing data science tasks\. Inference pipelines are fully managed\.
 
 You can add SageMaker Spark ML Serving and scikit\-learn containers that reuse the data transformers developed for training models\. The entire assembled inference pipeline can be considered as a SageMaker model that you can use to make either real\-time predictions or to process batch transforms directly without any external preprocessing\. 
 
@@ -9,6 +9,8 @@ Within an inference pipeline model, SageMaker handles invocations as a sequence 
 When you deploy the pipeline model, SageMaker installs and runs all of the containers on each Amazon Elastic Compute Cloud \(Amazon EC2\) instance in the endpoint or transform job\. Feature processing and inferences run with low latency because the containers are co\-located on the same EC2 instances\. You define the containers for a pipeline model using the [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) operation or from the console\. Instead of setting one `PrimaryContainer`, you use the  `Containers` parameter\. to set the containers that make up the pipeline You also specify the order in which the containers are executed\. 
 
 A pipeline model is immutable, but you can update an inference pipeline by deploying a new one using the [ `UpdateEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateEndpoint.html) operation\. This modularity supports greater flexibility during experimentation\. 
+
+For information on how to create an inference pipeline with the SageMaker model registry, see [Register and Deploy Models with Model Registry](model-registry.md)\.
 
 There are no additional costs for using this feature\. You pay only for the instances running on an endpoint\.
 

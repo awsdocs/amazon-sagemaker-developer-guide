@@ -4,7 +4,7 @@ This procedure shows you how to directly find a pipeline and view its details pa
 
 **To view a list of pipelines**
 
-1. In the left sidebar of Studio, choose the **Components and registries** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png)\)\.  
+1. In the left sidebar of Studio, choose the **SageMaker resources** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png)\)\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/yosemite/components-registries.png)
 
 1. Select **Pipelines** from the dropdown list\.  

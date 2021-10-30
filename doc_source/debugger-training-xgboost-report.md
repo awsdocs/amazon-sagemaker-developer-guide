@@ -2,16 +2,6 @@
 
 For SageMaker XGBoost training jobs, use the Debugger [CreateXgboostReport](debugger-built-in-rules.md#create-xgboost-report) rule to receive a comprehensive training report of the training progress and results\. Following this guide, specify the [CreateXgboostReport](debugger-built-in-rules.md#create-xgboost-report) rule while constructing an XGBoost estimator, download the report using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) or the Amazon S3 console, and then you can interpret the profiling results\.
 
-**Important**  
-To use the new Debugger features, you need to upgrade the SageMaker Python SDK and the SMDebug client library\. In your iPython kernel, Jupyter notebook, or JupyterLab environment, run the following code to install the latest versions of the libraries and restart the kernel\.  
-
-```
-import sys
-import IPython
-!{sys.executable} -m pip install -U sagemaker smdebug
-IPython.Application.instance().kernel.do_shutdown(True)
-```
-
 **Topics**
 + [Construct a SageMaker XGBoost Estimator with the Debugger XGBoost Report Rule](#debugger-training-xgboost-report-estimator)
 + [Download the Debugger XGBoost Training Report](#debugger-training-xgboost-report-download)
@@ -85,7 +75,7 @@ Download the Debugger XGBoost training report while your training job is running
 1. The Debugger XGBoost report is stored under `<default-s3-output-base-uri>/<training-job-name>/rule-output`\. Configure the rule output path as follows:
 
    ```
-   rule_output_path = estimator.output_path + estimator.latest_training_job.job_name + "/rule-output"
+   rule_output_path = estimator.output_path + "/" + estimator.latest_training_job.job_name + "/rule-output"
    ```
 
 1. To check if the report is generated, list directories and files recursively under the `rule_output_path` using `aws s3 ls` with the `--recursive` option\.

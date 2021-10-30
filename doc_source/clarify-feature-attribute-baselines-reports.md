@@ -19,6 +19,9 @@ explainability_data_config = clarify.DataConfig(s3_data_input_path=train_uri,
                                 dataset_type='text/csv')
 ```
 
+**Note**  
+Kernel SHAP in SageMaker Clarify supports omitting the “baseline” parameter\. In this case, a baseline based on clustering the input dataset is generated automatically\.
+
 Then run the explainability job\.
 
 ```

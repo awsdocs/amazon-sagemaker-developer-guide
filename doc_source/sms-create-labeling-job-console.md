@@ -29,7 +29,7 @@ When you create a labeling job using the SageMaker console, you add worker instr
 
 **To create a labeling job \(console\)**
 
-1. Sign in to the SageMaker console at [https://console.aws.amazon.com/sagemaker/groundtruth](https://console.aws.amazon.com/sagemaker/groundtruth)\. 
+1. Sign in to the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\. 
 
 1. In the left navigation pane, choose **Labeling jobs**\. 
 
@@ -94,7 +94,7 @@ When you create a labeling job using the SageMaker console, you add worker instr
 
 After you've successfully created your labeling job, you are redirected to the **Labeling jobs** page\. The status of the labeling job you just created is **In progress**\. This status progressively updates as workers complete your tasks\. When all tasks are successfully completed, the status changes to **Completed**\.
 
-If an issue occurs while creating the labeling job, its status changes to **Failed**\. If one or more data objects 
+If an issue occurs while creating the labeling job, its status changes to **Failed**\.
 
 To view more details about the job, choose the labeling job name\. 
 

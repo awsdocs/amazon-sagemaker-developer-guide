@@ -38,7 +38,7 @@ For example:
 The following table lists the addresses by AWS Region\.
 
 
-**Docker Images for Pretraining Bias Detection**  
+**Docker Images for Clarify Processing Jobs**  
 
 | Region | Image address | 
 | --- | --- | 
@@ -62,6 +62,8 @@ The following table lists the addresses by AWS Region\.
 | sa\-east\-1 | 520018980103\.dkr\.ecr\.sa\-east\-1\.amazonaws\.com/sagemaker\-clarify\-processing:1\.0 | 
 | af\-south\-1 | 811711786498\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-clarify\-processing:1\.0 | 
 | eu\-south\-1 | 638885417683\.dkr\.ecr\.eu\-south\-1\.amazonaws\.com/sagemaker\-clarify\-processing:1\.0 | 
+| cn\-north\-1 | 122526803553\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/sagemaker\-clarify\-processing:1\.0 | 
+| cn\-northwest\-1 | 122578899357\.dkr\.ecr\.cn\-northwest\-1\.amazonaws\.com\.cn/sagemaker\-clarify\-processing:1\.0 | 
 
 ## How It Works<a name="clarify-processing-job-configure-how-it-works"></a>
 
@@ -158,14 +160,14 @@ Parameters for the analysis configuration must be provided in a JSON file named 
   + `"post_training_bias"` – \(Optional\) Section on posttraining bias metrics\.
     + `"methods"` – A list of posttraining metrics to be computed\.
   + `"shap"` – \(Optional\) Section on SHAP value computation\.
-    + `"baseline"` – A list of rows \(at least one\) or S3 object URI to be used as the baseline dataset \(also known as a background dataset\) in the Kernel SHAP algorithm\. The format should be the same as the dataset format\. Each row should contain only the feature columns/values and omit the label column/values
+    + `"baseline"` – \(Optional\) A list of rows \(at least one\) or S3 object URI to be used as the baseline dataset \(also known as a background dataset\) in the Kernel SHAP algorithm\. The format should be the same as the dataset format\. Each row should contain only the feature columns/values and omit the label column/values
     + `"num_samples"` – Number of samples to be used in the Kernel SHAP algorithm\. This number determines the size of the generated synthetic dataset to compute the SHAP values\.
     + `"agg_method"` – Aggregation method for global SHAP values\. Valid values are as follows:
       + `"mean_abs"` – Mean of absolute SHAP values for all instances\.
       + `"median"` – Median of SHAP values for all instances\.
       + `"mean_sq"` – Mean of squared SHAP values for all instances\.
     + `"use_logit"` – \(Optional\) Boolean value to indicate if logit function is to be applied to the model predictions\. The default value is "false"\. If "use\_logit" is `"true"` then the SHAP values have log\-odds units\.
-    + `"save_local_shap_values"` – \(Optional\) Boolean value to indicate if local SHAP values are to be saved in the output location\. Default is `"true"`\.
+    + `"save_local_shap_values"` – \(Optional\) Boolean value to indicate if local SHAP values are to be saved in the output location\. Default is `false`\.
 + `"predictor"` – \(Optional\) Section on model parameters, required if `"shap"` and `"post_training_bias"` sections are present\.
   + `"model_name"` – Model name \(as created by `CreateModel` API with container mode as `SingleModel`\.
   + `"instance_type"` – Instance type for the shadow endpoint\.

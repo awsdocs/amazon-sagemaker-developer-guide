@@ -4,7 +4,7 @@ Amazon SageMaker Neo supports the following devices, chip architectures, and ope
 
 ## Devices<a name="neo-supported-edge-devices"></a>
 
-You can select a device using the dropdown list in the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/) or by specifying the `TargetDevice` in the output configuration of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateCompilationJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateCompilationJob.html) API\.
+You can select a device using the dropdown list in the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker) or by specifying the `TargetDevice` in the output configuration of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateCompilationJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateCompilationJob.html) API\.
 
 You can choose from one of the following edge devices: 
 
@@ -13,9 +13,11 @@ You can choose from one of the following edge devices:
 | --- | --- | --- | --- | --- | --- | 
 | aisage |  | Linux | ARM64 | Mali |  | 
 | amba\_cv22 | CV22 | Arch Linux | ARM64 | cvflow |  | 
+| amba\_cv25 | CV25 | Arch Linux | ARM64 | cvflow |  | 
 | coreml |  | iOS, macOS |  |  | \{"class\_labels": "imagenet\_labels\_1000\.txt"\} | 
 | deeplens | Intel Atom | Linux | X86\_64 | Intel Graphics |  | 
 | imx8qm | NXP imx8 | Linux | ARM64 |  |  | 
+| imx8mplus | i\.MX 8M Plus | Linux | ARM64 | NPU |  | 
 | jacinto\_tda4vm | TDA4VM | Linux | ARM | TDA4VM |  | 
 | jetson\_nano |  | Linux | ARM64 | NVIDIA | \{'gpu\-code': 'sm\_53', 'trt\-ver': '5\.0\.6', 'cuda\-ver': '10\.0'\} | 
 | jetson\_tx1 |  | Linux | ARM64 | NVIDIA | \{'gpu\-code': 'sm\_53', 'trt\-ver': '6\.0\.1', 'cuda\-ver': '10\.0'\} | 
