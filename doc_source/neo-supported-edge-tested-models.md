@@ -94,15 +94,19 @@ See [Supported Frameworks](neo-supported-devices-edge-frameworks.md) and [SageMa
 ## PyTorch \(FP32\)<a name="collapsible-section-5"></a>
 
 
-| Models | ARM V8 | ARM Mali | Ambarella CV22 | Nvidia | Panorama | TI TDA4VM | Qualcomm QCS603 | X86\_Linux | X86\_Windows | 
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
-| densenet121 | X | X |  | X | X | X |  | X | X | 
-| inception\_v3 |  | X |  | X | X | X |  | X | X | 
-| resnet152 |  |  |  | X | X | X |  |  | X | 
-| resnet18 | X | X |  | X | X | X |  |  | X | 
-| resnet50 | X | X |  | X | X |  |  | X | X | 
-| squeezenet1\.0 | X | X |  | X | X | X |  |  | X | 
-| squeezenet1\.1 | X | X |  | X | X | X |  | X | X | 
+| Models | ARM V8 | ARM Mali | Ambarella CV22 | Ambarella CV25 | Nvidia | Panorama | TI TDA4VM | Qualcomm QCS603 | X86\_Linux | X86\_Windows | 
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
+| densenet121 | X | X | X | X | X | X | X |  | X | X | 
+| inception\_v3 |  | X |  |  | X | X | X |  | X | X | 
+| resnet152 |  |  |  |  | X | X | X |  |  | X | 
+| resnet18 | X | X |  |  | X | X | X |  |  | X | 
+| resnet50 | X | X | X | X | X | X |  |  | X | X | 
+| squeezenet1\.0 | X | X |  |  | X | X | X |  |  | X | 
+| squeezenet1\.1 | X | X | X | X | X | X | X |  | X | X | 
+| yolov4 |  |  |  |  | X | X |  |  |  |  | 
+| yolov5 |  |  |  | X | X | X |  |  |  |  | 
+| fasterrcnn\_resnet50\_fpn |  |  |  |  | X | X |  |  |  |  | 
+| maskrcnn\_resnet50\_fpn |  |  |  |  | X | X |  |  |  |  | 
 
 ## TensorFlow<a name="collapsible-section-6"></a>
 
@@ -110,17 +114,21 @@ See [Supported Frameworks](neo-supported-devices-edge-frameworks.md) and [SageMa
 #### [ TensorFlow ]
 
 
-| Models | ARM V8 | ARM Mali | Ambarella CV22 | Nvidia | Panorama | TI TDA4VM | Qualcomm QCS603 | X86\_Linux | X86\_Windows | 
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
-| densenet201 | X | X | X | X | X | X |  | X | X | 
-| inception\_v3 | X | X | X | X | X | X |  | X | X | 
-| mobilenet100\_v1 | X | X | X | X | X | X |  |  | X | 
-| mobilenet100\_v2\.0 | X | X | X | X | X | X |  | X | X | 
-| mobilenet130\_v2 | X | X |  | X | X | X |  |  | X | 
-| mobilenet140\_v2 | X | X | X | X | X | X |  | X | X | 
-| resnet50\_v1\.5 | X | X |  | X | X | X |  | X | X | 
-| resnet50\_v2 | X | X | X | X | X | X |  | X | X | 
-| squeezenet | X | X | X | X | X | X |  | X | X | 
+| Models | ARM V8 | ARM Mali | Ambarella CV22 | Ambarella CV25 | Nvidia | Panorama | TI TDA4VM | Qualcomm QCS603 | X86\_Linux | X86\_Windows | 
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
+| densenet201 | X | X | X | X | X | X | X |  | X | X | 
+| inception\_v3 | X | X | X |  | X | X | X |  | X | X | 
+| mobilenet100\_v1 | X | X | X |  | X | X | X |  |  | X | 
+| mobilenet100\_v2\.0 | X | X | X |  | X | X | X |  | X | X | 
+| mobilenet130\_v2 | X | X |  |  | X | X | X |  |  | X | 
+| mobilenet140\_v2 | X | X | X |  | X | X | X |  | X | X | 
+| resnet50\_v1\.5 | X | X |  |  | X | X | X |  | X | X | 
+| resnet50\_v2 | X | X | X | X | X | X | X |  | X | X | 
+| squeezenet | X | X | X | X | X | X | X |  | X | X | 
+| mask\_rcnn\_inception\_resnet\_v2 |  |  |  |  | X |  |  |  |  |  | 
+| ssd\_mobilenet\_v2 |  |  |  |  | X | X |  |  |  |  | 
+| faster\_rcnn\_resnet50\_lowproposals |  |  |  |  | X |  |  |  |  |  | 
+| rfcn\_resnet101 |  |  |  |  | X |  |  |  |  |  | 
 
 ------
 #### [ TensorFlow\.Keras ]
@@ -152,46 +160,46 @@ See [Supported Frameworks](neo-supported-devices-edge-frameworks.md) and [SageMa
 #### [ TensorFlow\-Lite \(FP32\) ]
 
 
-| Models | ARM V8 | ARM Mali | Ambarella CV22 | Nvidia | Panorama | TI TDA4VM | Qualcomm QCS603 | X86\_Linux | X86\_Windows | 
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
-| densenet\_2018\_04\_27 | X |  |  | X | X | X |  |  | X | 
-| inception\_resnet\_v2\_2018\_04\_27 |  |  |  | X | X | X |  |  | X | 
-| inception\_v3\_2018\_04\_27 |  |  |  | X | X | X |  |  | X | 
-| inception\_v4\_2018\_04\_27 |  |  |  | X | X | X |  |  | X | 
-| mnasnet\_0\.5\_224\_09\_07\_2018 | X |  |  | X | X | X |  |  | X | 
-| mnasnet\_1\.0\_224\_09\_07\_2018 | X |  |  | X | X | X |  |  | X | 
-| mnasnet\_1\.3\_224\_09\_07\_2018 | X |  |  | X | X | X |  |  | X | 
-| mobilenet\_v1\_0\.25\_128 | X |  |  | X | X | X |  |  | X | 
-| mobilenet\_v1\_0\.25\_224 | X |  |  | X | X | X |  |  | X | 
-| mobilenet\_v1\_0\.5\_128 | X |  |  | X | X | X |  |  | X | 
-| mobilenet\_v1\_0\.5\_224 | X |  |  | X | X | X |  |  | X | 
-| mobilenet\_v1\_0\.75\_128 | X |  |  | X | X | X |  |  | X | 
-| mobilenet\_v1\_0\.75\_224 | X |  |  | X | X | X |  |  | X | 
-| mobilenet\_v1\_1\.0\_128 | X |  |  | X | X | X |  |  | X | 
-| mobilenet\_v1\_1\.0\_192 | X |  |  | X | X | X |  |  | X | 
-| mobilenet\_v2\_1\.0\_224 | X |  |  | X | X | X |  |  | X | 
-| resnet\_v2\_101 |  |  |  | X | X | X |  |  | X | 
-| squeezenet\_2018\_04\_27 | X |  |  | X | X | X |  |  | X | 
+| Models | ARM V8 | ARM Mali | Ambarella CV22 | Nvidia | Panorama | TI TDA4VM | Qualcomm QCS603 | X86\_Linux | X86\_Windows | i\.MX 8M Plus | 
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
+| densenet\_2018\_04\_27 | X |  |  | X | X | X |  |  | X |  | 
+| inception\_resnet\_v2\_2018\_04\_27 |  |  |  | X | X | X |  |  | X |  | 
+| inception\_v3\_2018\_04\_27 |  |  |  | X | X | X |  |  | X | X | 
+| inception\_v4\_2018\_04\_27 |  |  |  | X | X | X |  |  | X | X | 
+| mnasnet\_0\.5\_224\_09\_07\_2018 | X |  |  | X | X | X |  |  | X |  | 
+| mnasnet\_1\.0\_224\_09\_07\_2018 | X |  |  | X | X | X |  |  | X |  | 
+| mnasnet\_1\.3\_224\_09\_07\_2018 | X |  |  | X | X | X |  |  | X |  | 
+| mobilenet\_v1\_0\.25\_128 | X |  |  | X | X | X |  |  | X | X | 
+| mobilenet\_v1\_0\.25\_224 | X |  |  | X | X | X |  |  | X | X | 
+| mobilenet\_v1\_0\.5\_128 | X |  |  | X | X | X |  |  | X | X | 
+| mobilenet\_v1\_0\.5\_224 | X |  |  | X | X | X |  |  | X | X | 
+| mobilenet\_v1\_0\.75\_128 | X |  |  | X | X | X |  |  | X | X | 
+| mobilenet\_v1\_0\.75\_224 | X |  |  | X | X | X |  |  | X | X | 
+| mobilenet\_v1\_1\.0\_128 | X |  |  | X | X | X |  |  | X | X | 
+| mobilenet\_v1\_1\.0\_192 | X |  |  | X | X | X |  |  | X | X | 
+| mobilenet\_v2\_1\.0\_224 | X |  |  | X | X | X |  |  | X | X | 
+| resnet\_v2\_101 |  |  |  | X | X | X |  |  | X |  | 
+| squeezenet\_2018\_04\_27 | X |  |  | X | X | X |  |  | X |  | 
 
 ------
 #### [ TensorFlow\-Lite \(INT8\) ]
 
 
-| Models | ARM V8 | ARM Mali | Ambarella CV22 | Nvidia | Panorama | TI TDA4VM | Qualcomm QCS603 | X86\_Linux | X86\_Windows | 
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
-| inception\_v1 |  |  |  |  |  |  | X |  |  | 
-| inception\_v2 |  |  |  |  |  |  | X |  |  | 
-| inception\_v3 | X |  |  |  |  | X | X |  | X | 
-| inception\_v4\_299 | X |  |  |  |  | X | X |  | X | 
-| mobilenet\_v1\_0\.25\_128 | X |  |  |  |  | X |  |  | X | 
-| mobilenet\_v1\_0\.25\_224 | X |  |  |  |  | X |  |  | X | 
-| mobilenet\_v1\_0\.5\_128 | X |  |  |  |  | X |  |  | X | 
-| mobilenet\_v1\_0\.5\_224 | X |  |  |  |  | X |  |  | X | 
-| mobilenet\_v1\_0\.75\_128 | X |  |  |  |  | X |  |  | X | 
-| mobilenet\_v1\_0\.75\_224 | X |  |  |  |  | X | X |  | X | 
-| mobilenet\_v1\_1\.0\_128 | X |  |  |  |  | X |  |  | X | 
-| mobilenet\_v1\_1\.0\_224 | X |  |  |  |  | X | X |  | X | 
-| mobilenet\_v2\_1\.0\_224 | X |  |  |  |  | X | X |  | X | 
-| deeplab\-v3\_513 |  |  |  |  |  |  | X |  |  | 
+| Models | ARM V8 | ARM Mali | Ambarella CV22 | Nvidia | Panorama | TI TDA4VM | Qualcomm QCS603 | X86\_Linux | X86\_Windows | i\.MX 8M Plus | 
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
+| inception\_v1 |  |  |  |  |  |  | X |  |  | X | 
+| inception\_v2 |  |  |  |  |  |  | X |  |  | X | 
+| inception\_v3 | X |  |  |  |  | X | X |  | X | X | 
+| inception\_v4\_299 | X |  |  |  |  | X | X |  | X | X | 
+| mobilenet\_v1\_0\.25\_128 | X |  |  |  |  | X |  |  | X | X | 
+| mobilenet\_v1\_0\.25\_224 | X |  |  |  |  | X |  |  | X | X | 
+| mobilenet\_v1\_0\.5\_128 | X |  |  |  |  | X |  |  | X | X | 
+| mobilenet\_v1\_0\.5\_224 | X |  |  |  |  | X |  |  | X | X | 
+| mobilenet\_v1\_0\.75\_128 | X |  |  |  |  | X |  |  | X | X | 
+| mobilenet\_v1\_0\.75\_224 | X |  |  |  |  | X | X |  | X | X | 
+| mobilenet\_v1\_1\.0\_128 | X |  |  |  |  | X |  |  | X | X | 
+| mobilenet\_v1\_1\.0\_224 | X |  |  |  |  | X | X |  | X | X | 
+| mobilenet\_v2\_1\.0\_224 | X |  |  |  |  | X | X |  | X | X | 
+| deeplab\-v3\_513 |  |  |  |  |  |  | X |  |  |  | 
 
 ------

@@ -5,7 +5,7 @@
 Soft limits can be increased based on your needs\.
 +  **Maximum number of feature groups per AWS account:** Soft limit of 100\.
 +  **Maximum number of feature definitions per feature group:** 2500\.
-+  **Maximum Transactions per second \(TPS\) per API per AWS account:** Soft limit of 10000 TPS per API\.
++  **Maximum Transactions per second \(TPS\) per API per AWS account:** Soft limit of 10000 TPS per API excluding the `BatchGetRecord` API call, which has a soft limit of 500 TPS\.
 +  **Maximum size of a record:** 350KB\.
 +  **Maximum size of a feature value:** 350KB\.
 + **Maximum number of concurrent feature group creation workflows:** 4\.

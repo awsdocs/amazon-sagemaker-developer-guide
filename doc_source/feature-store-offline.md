@@ -9,9 +9,7 @@ s3://<bucket-name>/<customer-prefix>/<account-id>/sagemaker/<aws-region>/offline
     month=<event-time-month>/day=<event-time-day>/hour=<event-time-hour>/<timestamp_of_latest_event_time_in_file>_<16-random-alphanumeric-digits>.parquet
 ```
 
-`Records` in the offline store are partitioned by event time\. All `Records` in your store will have an event time within that day your data was ingested\.
-
-For example: 
+`Records` in the offline store are partitioned by event time into hourly partitions as shown in the preceding example\. The partitioning scheme is not configurable\. The following code shows an example of a Parquet file:
 
 ```
 s3://my-bucket/my-prefix/123456789012/sagemaker/us-east-1/offline-store/

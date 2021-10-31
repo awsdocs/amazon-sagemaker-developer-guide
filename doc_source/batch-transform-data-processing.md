@@ -40,7 +40,7 @@ If you use an algorithm with the `DataProcessing` structure, it must support you
 
 The record delimiters for the input and output must also be consistent with your chosen file input\. The [ `SplitType`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformInput.html#SageMaker-Type-TransformInput-SplitType) parameter indicates how to split the records in the input dataset\. The [ `AssembleWith`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformOutput.html#SageMaker-Type-TransformOutput-AssembleWith                     ) parameter indicates how to reassemble the records for the output\. If you set input and output formats to `text/csv`, you must also set the `SplitType` and `AssemblyType` parameters to `line`\. If you set the input and output formats to `application/jsonlines`, you can set both `SplitType` and `AssemblyType` to `line`\.
 
- For JSON files, the attribute name `SageMakerOutput` is reserved for output\. The JSON input file can't have an attribute with this name\. If it does, the data in the input file might be overwritten\. 
+For CSV files, you cannot use embedded newline characters\. For JSON files, the attribute name `SageMakerOutput` is reserved for output\. The JSON input file can't have an attribute with this name\. If it does, the data in the input file might be overwritten\. 
 
 ## Supported JSONPath Operators<a name="data-processing-operators"></a>
 

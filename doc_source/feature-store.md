@@ -54,4 +54,6 @@ You can push records to Feature Store by calling the synchronous `PutRecord` API
 
 When feature data is ingested and updated, Feature Store stores historical data for all features in the offline store\. For batch ingest, you can pull feature values from your S3 bucket or use Athena to query\. You can also use Data Wrangler to process and engineer new features that can then be exported to a chosen S3 bucket to be accessed by Feature Store\. For batch ingestion, you can configure a processing job to batch ingest your data into Feature Store, or you can pull feature values from your S3 bucket using Athena\.  
 
-## <a name="w1995aac25c25"></a>
+To remove a `Record` from your online store, use the [https://docs.aws.amazon.com/en_us/sagemaker/latest/APIReference/API_feature_store_DeleteRecord.html](https://docs.aws.amazon.com/en_us/sagemaker/latest/APIReference/API_feature_store_DeleteRecord.html) API call\. This will also add the deleted record to the offline store\.
+
+## <a name="w2009aac25c25"></a>

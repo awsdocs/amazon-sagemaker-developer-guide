@@ -24,7 +24,7 @@ You can configure only subnets with a default tenancy VPC in which your instance
 
 1. Set up one or more security groups with inbound and outbound rules that together allow the following traffic:
    + [NFS traffic over TCP on port 2049](https://docs.aws.amazon.com/efs/latest/ug/network-access.html) between the domain and the Amazon EFS volume\.
-   + [TCP traffic within the security group](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-rules-reference.html#sg-rules-other-instances)\. This is required for connectivity between the JupyterServer app and the KernelGateway apps\.
+   + [TCP traffic within the security group](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-rules-reference.html#sg-rules-other-instances)\. This is required for connectivity between the JupyterServer app and the KernelGateway apps\. You must allow access to at least ports in the range `8192-65535`\.
 
 1. If you want to allow internet access, you must use a [NAT gateway](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with) with access to the internet, for example through an [internet gateway](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html)\.
 

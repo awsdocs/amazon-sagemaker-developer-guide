@@ -42,7 +42,7 @@ Record4-Attribute1, Record4-Attribute2, Record4-Attribute3, ..., Record4-Attribu
 **Note**  
 SageMaker processes each input file separately\. It doesn't combine mini\-batches from different input files to comply with the [ `MaxPayloadInMB `](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html#SageMaker-CreateTransformJob-request-MaxPayloadInMB               ) limit\.
 
-To split input files into mini\-batches, when you create a batch transform job, set the [ `SplitType`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformInput.html#SageMaker-Type-TransformInput-SplitType             ) parameter value to `Line`\. If `SplitType` is set to `None` or if an input file can't be split into mini\-batches, SageMaker uses the entire input file in a single request\. 
+To split input files into mini\-batches, when you create a batch transform job, set the [ `SplitType`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformInput.html#SageMaker-Type-TransformInput-SplitType             ) parameter value to `Line`\. If `SplitType` is set to `None` or if an input file can't be split into mini\-batches, SageMaker uses the entire input file in a single request\. Note that Batch Transform doesn't support CSV\-formatted input that contains embedded newline characters\.
 
 If the batch transform job successfully processes all of the records in an input file, it creates an output file with the same name and the `.out` file extension\. For multiple input files, such as `input1.csv` and `input2.csv`, the output files are named `input1.csv.out` and `input2.csv.out`\. The batch transform job stores the output files in the specified location in Amazon S3, such as `s3://awsexamplebucket/output/`\. 
 

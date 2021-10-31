@@ -194,7 +194,12 @@ When added to a permissions policy, the following permission grants access to cr
         "cognito-idp:CreateUserPoolDomain",
         "cognito-idp:DescribeUserPool",
         "cognito-idp:DescribeUserPoolClient",
-        "cognito-idp:List",
+        "cognito-idp:ListGroups",
+        "cognito-idp:ListIdentityProviders",
+        "cognito-idp:ListUsers",
+        "cognito-idp:ListUsersInGroup",
+        "cognito-idp:ListUserPoolClients",
+        "cognito-idp:ListUserPools",
         "cognito-idp:UpdateUserPool",
         "cognito-idp:UpdateUserPoolClient"
         ],

@@ -13,6 +13,7 @@ The following topics describe fundamental SageMaker Pipelines concepts\. For a t
 + [Pipeline Steps](build-and-manage-steps.md)
 + [Property Files and `JsonGet`](build-and-manage-propertyfile.md)
 + [Caching Pipeline Steps](pipelines-caching.md)
++ [Retry Policy for Pipeline Steps](pipelines-retry-policy.md)
 + [Amazon EventBridge Integration](pipeline-eventbridge.md)
 + [Amazon SageMaker Experiments Integration](pipelines-experiments.md)
 + [Troubleshooting Amazon SageMaker Model Building Pipelines](pipelines-troubleshooting.md)

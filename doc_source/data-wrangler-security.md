@@ -363,7 +363,13 @@ With respect to Snowflake credentials storage, Data Wrangler does not store cust
 
 ## Data Encryption with AWS KMS<a name="data-wrangler-security-kms"></a>
 
-For files stored in Amazon S3 that have server\-side encryption enabled and the encryption type is SSE\-KMS, the SageMaker Studio user role will need to be added as a Key user for them to be able to decrypt the file and import in Data Wrangler\.
+Within Data Wrangler, you can decrypt encrypted files and add them to your Data Wrangler flow\. You can also encrypt the output of the transforms using either a default AWS KMS key or one that you provide\.
+
+You can import files if they have the following:
++ server\-side encryption
++ SSE\-KMS as the encryption type
+
+To decrypt the file and import to a Data Wrangler flow, the SageMaker Studio user that you're using must be added as a Key user\.
 
  Below is a screenshot that shows a Studio user role added as a Key user\. See [IAM Roles](https://console.aws.amazon.com/iam/home#/roles) to access Users under the left panel to make this change\.
 
@@ -378,3 +384,13 @@ Below are instructions on how to setup a customer managed key for your default A
 1. To enable server\-side encryption and setup a customer managed key for your default S3 bucket, see [Using KMS Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)\.
 
 1. After following Step 1, navigate to KMS in your AWS Management Console\. Find the customer managed key you selected in Step 1 of the previous step, and add the Studio role as the key user\. To do this, follow the [Allows key users to use a customer managed key](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-users)\.
+
+### Encrypting the Data That You Export<a name="w2009aac21c18c29c15c17"></a>
+
+You can encrypt the data that you export using one of the following methods:
++ Specifying that your Amazon S3 bucket have object use SSE\-KMS encryption\.
++ Specifying an AWS KMS key to encrypt the data that you export from Data Wrangler\.
+
+On the **Export data** page, specify a value for the **AWS KMS key ID or ARN**\.
+
+For more information on using AWS KMS keys, see [Protecting Data Using Server\-Side Encryption with AWS KMS keys Stored in AWS AWS Key Management Service \(SSE\-KMS\) ](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)\.

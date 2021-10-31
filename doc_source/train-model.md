@@ -23,6 +23,7 @@ SageMaker provides features to monitor and manage the training and validation of
 + [Detect Posttraining Data and Model Bias](clarify-detect-post-training-bias.md)
 + [Model Explainability](clarify-model-explainability.md)
 + [Incremental Training in Amazon SageMaker](incremental-training.md)
++ [Access Training Data](model-access-training-data.md)
 + [Managed Spot Training in Amazon SageMaker](model-managed-spot-training.md)
 + [Use Checkpoints in Amazon SageMaker](model-checkpoints.md)
 + [Provide Dataset Metadata to Training Jobs with an Augmented Manifest File](augmented-manifest.md)

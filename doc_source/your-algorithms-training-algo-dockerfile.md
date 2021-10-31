@@ -10,7 +10,7 @@ To configure a Docker container to run as an executable, use an `ENTRYPOINT` ins
   SageMaker overrides any default `CMD` statement in a container by specifying the `train` argument after the image name\. The `train` argument also overrides arguments that you provide using `CMD` in the Dockerfile\. 
 
    
-+ In your dockerfile, use the `exec` form of the `ENTRYPOINT` instruction: 
++ In your Dockerfile, use the `exec` form of the `ENTRYPOINT` instruction: 
 
   ```
   ENTRYPOINT ["executable", "param1", "param2", ...]
@@ -34,9 +34,9 @@ To configure a Docker container to run as an executable, use an `ENTRYPOINT` ins
     docker stop -t120
     ```
 
-    The command attempts to stop the running container by sending a `SIGTERM` signal\. After the 2\-minute timeout, SIGKILL is sent and the containers are forcibly stopped\. If the container handles the SIGTERM gracefully and exits within 120 seconds from receiving it, no SIGKILL is sent\. 
+    The command attempts to stop the running container by sending a `SIGTERM` signal\. After the 2\-minute timeout, the API sends `SIGKILL` and forcibly stops the containers\. If the container handles the `SIGTERM` gracefully and exits within 120 seconds from receiving it, no `SIGKILL` is sent\. 
 **Note**  
 If you want access to the intermediate model artifacts after SageMaker stops the training, add code to handle saving artifacts in your `SIGTERM` handler\.
-+ If you plan to use GPU devices for model training, make sure that your containers are `nvidia-docker` compatible\. Only the CUDA toolkit should be included on containers; don't bundle NVIDIA drivers with the image\. For more information about `nvidia-docker`, see [NVIDIA/nvidia\-docker](https://github.com/NVIDIA/nvidia-docker)\.
++ If you plan to use GPU devices for model training, make sure that your containers are `nvidia-docker` compatible\. Include only the CUDA toolkit on containers; don't bundle NVIDIA drivers with the image\. For more information about `nvidia-docker`, see [NVIDIA/nvidia\-docker](https://github.com/NVIDIA/nvidia-docker)\.
 + You can't use the `tini` initializer as your entry point in SageMaker containers because it gets confused by the `train` and `serve` arguments\.
 + `/opt/ml` and all sub\-directories are reserved by SageMaker training\. When building your algorithm’s Docker image, please ensure you don't place any data required by your algorithm under them as the data may no longer be visible during training\.
