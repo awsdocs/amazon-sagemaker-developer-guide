@@ -62,7 +62,7 @@ RUN cd $HOME \
 
 ## Considerations when creating your container<a name="your-algorithms-training-efa-considerations"></a>
 
-The EFA device is mounted to the container as `/dev/infiniband/uverbs0` under the list of device’s accessible to the container\. On P4d instances, the container has access to 4 EFA devices\. The EFA devices can be found in the list of devices accessible to the container as: 
+The EFA device is mounted to the container as `/dev/infiniband/uverbs0` under the list of devices accessible to the container\. On P4d instances, the container has access to 4 EFA devices\. The EFA devices can be found in the list of devices accessible to the container as: 
 +  `/dev/infiniband/uverbs0` 
 +  `/dev/infiniband/uverbs1` 
 +  `/dev/infiniband/uverbs2` 
@@ -103,4 +103,4 @@ provider: efa;ofi_rxd
 
 ## Running a training job with EFA<a name="your-algorithms-training-efa-run"></a>
 
- Once you’ve created an EFA\-enabled container, you can run a training job with EFA using a SageMaker Estimator the same way as you would with any other docker image\. For more information on registering your container and using it for training, see [Adapting Your Own Training Container](https://docs.aws.amazon.com/sagemaker/latest/dg/adapt-training-container.html#byoc-training-step5)\.
+ Once you’ve created an EFA\-enabled container, you can run a training job with EFA using a SageMaker Estimator the same way as you would with any other Docker image\. For more information on registering your container and using it for training, see [Adapting Your Own Training Container](https://docs.aws.amazon.com/sagemaker/latest/dg/adapt-training-container.html#byoc-training-step5)\.

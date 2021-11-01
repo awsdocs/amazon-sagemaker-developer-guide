@@ -22,10 +22,10 @@ For more information on how to process data using Spark from within a SageMaker 
 
 If you want to bring your own image, you need to install the following dependencies to your kernel\. Run the following `pip` commands along with the library names:
 
-1. `pip install sparkmagic`\.
-
-   `pip install sagemaker-studio-sparkmagic-lib`\.
-
-   `pip install sagemaker-studio-analytics-extension`\.
+```
+pip install sparkmagic
+pip install sagemaker-studio-sparkmagic-lib
+pip install sagemaker-studio-analytics-extension
+```
 
 If you want to connect to a Kerberos protected Amazon EMR then you will also need to install the kinit client\. Depending on your OS the command to install the kinit client will vary\. Here is the command for a Ubuntu/Debian based image: `apt-get install -y -qq krb5-user`\.

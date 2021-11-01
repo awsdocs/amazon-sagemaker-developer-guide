@@ -59,6 +59,9 @@ There are three subdirectories in the `annotations` directory\.
 + The second, `consolidated-annotation`, contains information required to consolidate the annotations in the current batch into labels for your data objects\.
 + The third, `intermediate`, contains the output manifest for the current batch with any completed labels\. This file is updated as the label for each data object is completed\.
 
+**Note**  
+We recommend that you do not use files that are not mentioned in the documentation\.
+
 ### Inference Directory<a name="sms-directories-inference"></a>
 
 The `inference` directory is only present when you are using automated data labeling\. This directory contains the input and output files for the SageMaker batch transform used while labeling data objects\.
@@ -649,12 +652,12 @@ In addition to the standard elements, the metadata includes a class map that lis
     "CarObjectDetection-ref": "s3://AWSDOC-EXAMPLE-BUCKET/output/labeling-job-name/annotations/consolidated-annotation/output/0/SeqLabel.json",
     "CarObjectDetection-ref-metadata": {
         "class-map": {
-            "0": "car"
+            "0": "car",
             "1": "bus"
         },
         "job-name": "labeling-job/labeling-job-name",
         "human-annotated": "yes",
-        "creation-date": "2020-05-15T08:01:16+0000",
+        "creation-date": "2021-09-29T05:50:35.566000",
         "type": "groundtruth/video-object-detection"
         }
 }
@@ -748,12 +751,12 @@ In addition to the standard elements, the metadata includes a class map that lis
     "CarObjectTracking-ref": "s3://AWSDOC-EXAMPLE-BUCKET/output/labeling-job-name/annotations/consolidated-annotation/output/0/SeqLabel.json",
     "CarObjectTracking-ref-metadata": {
         "class-map": {
-            "0": "car"
+            "0": "car",
             "1": "bus"
         },
         "job-name": "labeling-job/labeling-job-name",
         "human-annotated": "yes",
-        "creation-date": "2020-05-15T08:01:16+0000",
+        "creation-date": "2021-09-29T05:50:35.566000",
         "type": "groundtruth/video-object-tracking"
         }
  }

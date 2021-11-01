@@ -92,8 +92,8 @@ Use the scroll bars to see the rest of the table\.
 |  [ `ListImageVersions`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListImageVersions.html)  |  `sagemaker:ListImageVersions`  |  `arn:aws:sagemaker:region:account-id:image/*`  | 
 |  [ `ListLabelingJobs`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListLabelingJobs.html)  |  `sagemaker:ListLabelingJobs`  |  `*`  | 
 |  [ `ListLabelingJobsForWorkteam`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListLabelingJobsForWorkteam.html)  |  `sagemaker:ListLabelingJobForWorkteam`  |  `*`  | 
-|  [ `ListModelPackageGroups`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListModelPackageGroups.html)  |  `sagemaker:ListModelPackageGroups`  |  `arn:aws:sagemaker:region:account-id:model-package-group/ModelPackageGroupName`  | 
-|  [ `ListModelPackages`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListModelPackages.html)  |  `sagemaker:ListModelPackages`  |  `arn:aws:sagemaker:region:account-id:model-package/ModelPackageName`  | 
+|  [ `ListModelPackageGroups`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListModelPackageGroups.html)  |  `sagemaker:ListModelPackageGroups`  |  `arn:aws:sagemaker:region:account-id :model-package-group/ModelPackageGroupName`  | 
+|  [ `ListModelPackages`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListModelPackages.html)  |  `sagemaker:ListModelPackages`  |  `arn:aws:sagemaker:region:account-id :model-package/ModelPackageName`  | 
 |  [ `ListModels`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListModels.html)  |  `sagemaker:ListModels`  |  `*`  | 
 |  [ `ListNotebookInstances`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListNotebookInstances.html)  |  `sagemaker:ListNotebookInstances`  |  `*`  | 
 |  [ `ListProcessingJobs`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListProcessingJobs.html)  |  `sagemaker:ListProcessingJobs`  |  `*`  | 

@@ -15,8 +15,6 @@ If you enable network isolation, the containers can't make any outbound network 
 
 The following managed SageMaker containers do not support network isolation because they require access to Amazon S3: 
 + Chainer
-+ PyTorch
-+ Scikit\-learn
 + SageMaker Reinforcement Learning
 
 ### Network isolation with a VPC<a name="mkt-algo-model-internet-free-isolation-marketplace"></a>

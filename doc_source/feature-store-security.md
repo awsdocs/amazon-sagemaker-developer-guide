@@ -23,7 +23,7 @@ You do not pay a monthly fee for AWS owned customer managed keys\. Customer mana
 
  If you use a [customer managed key ](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk) to protect your online store, the policies on that customer managed key must give Feature Store permission to use it on your behalf\. You have full control over the policies and grants on a customer managed key\.
 
- Feature Store does not need additional authorization to use the default [AWS owned customer managed key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys) to protect your online or offline stores in your AWS account\.
+ Feature Store does not need additional authorization to use the default [AWS owned KMS key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys) to protect your online or offline stores in your AWS account\.
 
 ### Customer managed key policy<a name="feature-store-customer-managed-cmk-policy"></a>
 
@@ -36,7 +36,6 @@ You do not pay a monthly fee for AWS owned customer managed keys\. Customer mana
 **Note**  
  The `kms:ViaService` condition key can only be used for the online store customer managed AWS KMS key, and cannot be used for the offline store\. If you add this special condition to your customer managed key, and use the same AWS KMS key for both the online and offline store, then it will fail the `CreateFeatureGroup` API operation\. 
 +  Gives the customer managed key administrators read\-only access to the customer managed key and permission to revoke grants, including the grants that Feature Store uses to protect your data\. 
-+  Gives Feature Store read\-only access to the customer managed key\. In this case, Feature Store can call these operations directly\. It does not have to act on behalf of an account principal\.
 
  Before using an example key policy, replace the example principals with actual principals from your AWS account\. 
 

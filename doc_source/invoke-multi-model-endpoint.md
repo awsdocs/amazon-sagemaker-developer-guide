@@ -8,7 +8,7 @@ To invoke a multi\-model endpoint, use the [ `invoke_endpoint`](https://boto3.am
 The following example prediction request uses the [AWS SDK for Python \(Boto 3\)](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker-runtime.html) in the sample notebook\.
 
 ```
-response = runtime_sm_client.invoke_endpoint(
+response = runtime_sagemaker_client.invoke_endpoint(
                         EndpointName = "<ENDPOINT_NAME>",
                         ContentType  = "text/csv",
                         TargetModel  = "<MODEL_FILENAME>.tar.gz",
@@ -54,5 +54,5 @@ config = Config(
         'max_attempts': 2  # This value can be adjusted to 5 to go up to the 360s max timeout
     }
 )
-runtime_sm_client = boto3.client('sagemaker-runtime', config=config)
+runtime_sagemaker_client = boto3.client('sagemaker-runtime', config=config)
 ```

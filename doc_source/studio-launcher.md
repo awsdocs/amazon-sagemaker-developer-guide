@@ -43,6 +43,9 @@ The following items are available:
 
   Opens the terminal in the root folder for the user \(as shown by the Home folder in the file browser\)\.
 
+**Note**  
+CPU instances are launched on a `ml.t3.medium` instance, while GPU instances are launched on a `ml.g4dn.xlarge` instance\.
+
 ## Utilities and files<a name="studio-launcher-other"></a>
 
 Items in this section run in the context of SageMaker Studio and don't incur usage charges\.

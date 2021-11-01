@@ -10,14 +10,14 @@ The following graphic outlines the principal tasks of an AutoML process managed 
 
 ![\[Overview of the AutoML process used by Amazon SageMaker Autopilot.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/Autopilot-process-graphic-1.png)
 
-You can use Autopilot in different ways: on autopilot \(hence the name\) or with various degrees of human guidance, without code through Amazon SageMaker Studio, or with code using one of the AWS SDKs\. Autopilot currently supports regression and binary and multiclass classification\. It also only supports tabular data formatted in files with comma\-separated values\.
+You can use Autopilot in different ways: on autopilot \(hence the name\) or with various degrees of human guidance, without code through Amazon SageMaker Studio, or with code using one of the AWS SDKs\. Autopilot currently supports regression and binary and multiclass classification\. It only supports tabular data formatted in files in which each column contains a feature with a specific data type and each row contains an observation\. The column data types accepted include numerical, categorical, text, and time series that consists of strings of comma\-separate numbers\.
 
 With Amazon SageMaker, you pay only for what you use\. You pay for the underlying compute and storage resources within SageMaker or other AWS services, based on your usage\. Building, training, and deploying ML models is billed by the second, with no minimum fees and no upfront commitments\. For more information about the cost of using SageMaker, see [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing)\.
 
 **Topics**
 + [Get started with Amazon SageMaker Autopilot](autopilot-automate-model-development-get-started.md)
 + [Create an Amazon SageMaker Autopilot experiment](autopilot-automate-model-development-create-experiment.md)
-+ [Amazon SageMaker Autopilot problem types](autopilot-problem-types.md)
++ [Amazon SageMaker Autopilot data and problem types](autopilot-problem-types.md)
 + [Model support, metrics, and validation](autopilot-model-support-validation.md)
 + [Amazon SageMaker Autopilot model deployment](autopilot-deploy-models.md)
 + [Amazon SageMaker Autopilot explainability](autopilot-explainability.md)

@@ -3,7 +3,7 @@
 The following are common errors that you might run into when using Amazon SageMaker Studio\. Each error is followed by a solution to the error\. 
 + **SageMaker Studio core functionalities are not available\.**
 
-  If you get this error message when opening Studio, it might due to Python package version conflicts\. This occurs if you used the following commands in a notebook or terminal to install Python packages that have version conflicts with SageMaker package dependencies\.
+  If you get this error message when opening Studio, it might be due to Python package version conflicts\. This occurs if you used the following commands in a notebook or terminal to install Python packages that have version conflicts with SageMaker package dependencies\.
 
   ```
   !pip install

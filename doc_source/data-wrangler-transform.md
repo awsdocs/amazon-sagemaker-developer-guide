@@ -359,7 +359,7 @@ Time series data usually has observations that aren't taken at regular intervals
 
 Many analyses, such as forecasting algorithms, require the observations to be taken at regular intervals\. Resampling gives you the ability to establish regular intervals for the observations in your dataset\.
 
-You can either upsample or downsample a time series\. Downsampling increases the interval between observations in the dataset\. For example, if you downsample observations that are taken hourly or every two hours, each observation in your dataset is taken every two hours\. The hourly observations are aggregated into a single value using an aggregation method such as the mean or median\.
+You can either upsample or downsample a time series\. Downsampling increases the interval between observations in the dataset\. For example, if you downsample observations that are taken either every hour or every two hours, each observation in your dataset is taken every two hours\. The hourly observations are aggregated into a single value using an aggregation method such as the mean or median\.
 
 Upsampling reduces the interval between observations in the dataset\. For example, if you upsample observations that are taken every two hours into hourly observations, you can use an interpolation method to infer hourly observations from the ones that have been taken every two hours\. For information on interpolation methods, see [pandas\.DataFrame\.interpolate](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.interpolate.html)\.
 
@@ -890,9 +890,9 @@ Use the **Fill missing** transform to replace missing values with a **Fill value
 Use the **Impute missing** transform to create a new column that contains imputed values where missing values were found in input categorical and numerical data\. The configuration depends on your data type\. Configure this transform using the following:
 + **Imputing strategy**: The strategy used to determine the new value to impute\. 
 
-  For numeric data, the chosen statistic is computed over the present values and is used as the imputed value for all missing values\. The choices are **mean** and **median**\. 
+  For numeric data, choose an imputing strategy, the strategy used to determine the new value to impute\. You can choose to impute the mean or the median over the values that are present in your dataset\. Data Wrangler uses the value that it computes to impute the missing values\.
 
-  For categorical data, you can choose to impute the **Most frequent value** in the column, or you can define a custom string to impute\. 
+  For categorical data, Data Wrangler imputes missing values using the most frequent value in the column\. To impute a custom string, use the **Fill missing** transform instead\.
 
 ### Add Indicator for Missing<a name="data-wrangler-transform-missing-add-indicator"></a>
 
