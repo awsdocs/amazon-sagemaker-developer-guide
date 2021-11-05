@@ -9,7 +9,7 @@ The SageMaker Spark library, `com.amazonaws.services.sagemaker.sparksdk`, provid
 + `KMeansSageMakerEstimator`, `PCASageMakerEstimator`, and `XGBoostSageMakerEstimator`—Extend the `SageMakerEstimator` class\. 
 + `SageMakerModel`—Extends the `org.apache.spark.ml.Model` class\. You can use this `SageMakerModel` for model hosting and obtaining inferences in SageMaker\.
 
- 
+With SageMaker Studio, you can easily connect to an Amazon EMR cluster\. For more information, see [Prepare data at Scale with Studio Notebooks](https://docs.aws.amazon.com/sagemaker/latest/studio-notebooks-emr-cluster.xml)\.
 
 
 

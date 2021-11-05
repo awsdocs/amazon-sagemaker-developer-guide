@@ -71,7 +71,7 @@ To view the details of a model version by using Boto3, complete the following st
 
 To view the details of a model version in SageMaker Studio, complete the following steps\.
 
-1. Sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
+1. Sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
 1. In the left navigation pane, choose the **Components and registries** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png) \)\.
 

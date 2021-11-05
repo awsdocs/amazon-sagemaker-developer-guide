@@ -1,9 +1,9 @@
-# Studio Entity Status<a name="studio-entity-status"></a>
+# Amazon SageMaker Domain Entity Status<a name="studio-entity-status"></a>
 
-Amazon SageMaker Studio creates the following entities for various purposes\.
-+  *Domain*: A SageMaker Studio domain consists of an associated Amazon Elastic File System \(Amazon EFS\) volume; a list of authorized users; and a variety of security, application, policy, and Amazon Virtual Private Cloud \(Amazon VPC\) configurations\. An AWS account is limited to one domain per Region\. Users within a domain can share notebook files and other artifacts with each other\.
-+  *UserProfile*: A user profile represents a single user within a domain, and is the main way to reference a user for the purposes of sharing, reporting, and other user\-oriented features\. This entity is created when a user onboards to SageMaker Studio\.
-+  *App*: An app represents an application that supports the reading and execution experience of the user’s notebooks, terminals, and consoles\. Apps can be either a JupyterServer or a KernelGateway\. This operation is automatically invoked by SageMaker Studio upon access to the associated Domain, and when new kernel configurations are selected by the user\. A user may have multiple Apps active simultaneously\.
+Amazon SageMaker Domain creates the following entities for various purposes\.
++  *Domain*: An Amazon SageMaker Domain consists of an associated Amazon Elastic File System \(Amazon EFS\) volume; a list of authorized users; and a variety of security, application, policy, and Amazon Virtual Private Cloud \(Amazon VPC\) configurations\. An AWS account is limited to one Domain per Region\. Users within a Domain can share notebook files and other artifacts with each other\.
++  *UserProfile*: A user profile represents a single user within a Domain, and is the main way to reference a user for the purposes of sharing, reporting, and other user\-oriented features\. This entity is created when a user onboards to the Amazon SageMaker Domain\.
++  *App*: An app represents an application that supports the reading and execution experience of the user’s notebooks, terminals, and consoles\. The type of app can be JupyterServer, KernelGateway, RStudioServerPro, or RSession\. A user may have multiple Apps active simultaneously\.
 
 The following tables describe the status values for the Domain, UserProfile, and App entities\. Where applicable, they also give troubleshooting steps\.
 

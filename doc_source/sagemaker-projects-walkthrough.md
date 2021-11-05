@@ -5,7 +5,7 @@ This walkthrough demonstrates how to use MLOps projects to create a CI/CD system
 **Prerequisites**
 
 To complete this walkthrough, you need:
-+ An AWS SSO or IAM account to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
++ An AWS SSO or IAM account to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 + Permission to use SageMaker\-provided project templates\. For information, see [SageMaker Studio Permissions Required to Use Projects](sagemaker-projects-studio-updates.md)\.
 + Basic familiarity with the Studio user interface\. For information, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
 
@@ -23,7 +23,7 @@ In this step, you create a SageMaker MLOps project by using a SageMaker\-provide
 
 **To create the SageMaker MLOps project**
 
-1. Sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
+1. Sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
 1. Choose **Components and registries**, and then select **Projects** from the dropdown list\.
 

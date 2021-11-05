@@ -7,7 +7,7 @@ For a series of videos that shows how to use the main features of SageMaker Stud
 **Prerequisites**
 
 To run the notebook for this tour, you need:
-+ An AWS SSO or IAM account to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
++ An AWS SSO or IAM account to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 + Basic familiarity with the Studio user interface and Jupyter notebooks\. For information, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
 + A copy of the [aws/amazon\-sagemaker\-examples](https://github.com/aws/amazon-sagemaker-examples) repository in your Studio environment\.
 

@@ -1,9 +1,9 @@
 # Attach the SageMaker image to your current domain<a name="studio-byoi-sdk-attach-current-domain"></a>
 
-This method presumes you've already onboarded to Amazon SageMaker Studio\. For more information, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
+This method presumes you've already onboarded to Amazon SageMaker Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
 **Note**  
-You must delete all the apps in your domain before you update the domain with the new image version\. For information about deleting the apps, see [Delete an Amazon SageMaker Studio Domain](gs-studio-delete-domain.md)\.
+You must delete all the apps in your domain before you update the domain with the new image version\. For information about deleting the apps, see [Delete an Amazon SageMaker Domain](gs-studio-delete-domain.md)\.
 
 You perform the following steps to add the SageMaker image to your current domain\.
 + Get your `DomainID` from SageMaker Studio\.

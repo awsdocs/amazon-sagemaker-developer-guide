@@ -4,7 +4,7 @@ After you create a project, view the resources associated with the project in Am
 
 **To create a project in Studio**
 
-1. Sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
+1. Sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
 1. Choose **Components and registries**, and then choose **Projects**\.
 

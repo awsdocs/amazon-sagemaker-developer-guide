@@ -3,7 +3,7 @@
 To use this method, you need to specify an execution role that has the [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) policy attached\.
 
 **Note**  
-You can have only one domain\. If you have onboarded to SageMaker Studio, you must delete your current domain before you can use this method\. For more information, see [Delete an Amazon SageMaker Studio Domain](gs-studio-delete-domain.md)\.
+You can have only one domain\. If you have onboarded to SageMaker Studio, you must delete your current domain before you can use this method\. For more information, see [Delete an Amazon SageMaker Domain](gs-studio-delete-domain.md)\.
 
 You perform the following steps to create the domain and attach the custom SageMaker image:
 + Get your default VPC ID and subnet IDs\.

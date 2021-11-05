@@ -1,20 +1,22 @@
-# Onboard to Amazon SageMaker Studio Using Quick Start<a name="onboard-quick-start"></a>
+# Onboard to Amazon SageMaker Domain Using Quick Start<a name="onboard-quick-start"></a>
 
-This topic describes how to onboard to Amazon SageMaker Studio using the **Quick start** procedure, which uses AWS Identity and Access Management \(IAM\) authentication\. For information on how to onboard using the standard IAM procedure, see [Onboard Using IAM](onboard-iam.md)\.
+This topic describes how to onboard to Amazon SageMaker Domain using the **Quick start** procedure, which uses AWS Identity and Access Management \(IAM\) authentication\. For information on how to onboard using the standard IAM procedure, see [Onboard Using IAM](onboard-iam.md)\.
+
+RStudio support is not currently available when onboarding using the **Quick start** procedure\.
 
 For information on how to onboard using AWS Single Sign\-On \(AWS SSO\), see [Onboard Using SSO](onboard-sso-users.md)\.
 
-**To onboard to Studio using **Quick start****
+**To onboard to the Domain using **Quick start****
 
 1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Choose **Amazon SageMaker Studio** at the top left of the page\.
+1. Choose **SageMaker Domain** at the top left of the page\.
 
-1. On the **SageMaker Studio** page, under **Get started**, choose **Quick start**\.
+1. On the **Setup SageMaker Domain** page, choose **Quick start**\.
 
-1. For **User name**, keep the default name or create a new name\. The name can be up to 63 characters\. Valid characters: A\-Z, a\-z, 0\-9, and \- \(hyphen\)\. 
+1. Under **User profile**, for **User name** keep the default name or create a new name\. The name can be up to 63 characters\. Valid characters: A\-Z, a\-z, 0\-9, and \- \(hyphen\)\. 
 
-1. For **Execution role**, choose an option from the role selector\.
+1. For **Default execution role**, choose an option from the role selector\. This is the default role that is assigned to the **Amazon SageMaker Domain** user profile\.
 
    If you choose **Enter a custom IAM role ARN**, the role must have at a minimum, an attached trust policy that grants SageMaker permission to assume the role\. For more information, see [SageMaker Roles](sagemaker-roles.md)\.
 
@@ -22,19 +24,19 @@ For information on how to onboard using AWS Single Sign\-On \(AWS SSO\), see [On
    + For **S3 buckets you specify**, specify additional S3 buckets that users of your notebooks can access\. If you don't want to add access to more buckets, choose **None**\.
    + Choose **Create role**\. SageMaker creates a new IAM `AmazonSageMaker-ExecutionPolicy` role with the [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) policy attached\.
 
-1. For **Projects**, see [SageMaker Studio Permissions Required to Use Projects](sagemaker-projects-studio-updates.md)\. For more control, use the standard setup procedure\.
-
 1. Choose **Submit**\.
+
+1. From the pop\-up window, select a Amazon Virtual Private Cloud \(Amazon VPC\) and subnet to use\.
+
+1. Choose **Save and continue**\.
 **Note**  
 If you receive an error message that you need to create a VPC, see [Choose a VPC](onboard-vpc.md)\.
 
-   On the **SageMaker Studio Control Panel**, under **Studio Summary**, wait for **Status** to change to **Ready**\.
+   When **Status** is **Ready**, the user name that you specified is enabled and chosen\. The **Add user** and **Delete user** buttons, and the **Launch app** link are also enabled\.
 
-   When **Status** is **Ready**, the user name that you specified is enabled and chosen\. The **Add user** and **Delete user** buttons, and the **Open Studio** link are also enabled\.
+1. From **Launch app**, select **Studio**\. The **Amazon SageMaker Studio** loading page displays\.
 
-1. Choose **Open Studio**\. The **Amazon SageMaker Studio** loading page displays\.
-
-   When Studio opens you can start using it\.
+   When Studio opens, you can start using it\.
 
 Now that you've onboarded to SageMaker Studio, use the following steps to access Studio later\.
 
@@ -42,15 +44,15 @@ Now that you've onboarded to SageMaker Studio, use the following steps to access
 
 1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Choose **Amazon SageMaker Studio** at the top left of the page\.
+1. Choose **SageMaker Domain** at the top left of the page\.
 
-1. On the **Amazon SageMaker Studio Control Panel**, choose your user name and then choose **Open Studio**\.
+1. On the ****SageMaker Domain** Control Panel**, choose your user name and then choose **Launch app**\. Select **Studio**\.
 
 **To add more users**
 
-1. On the **Amazon SageMaker Studio Control Panel**, choose **Add user**\.
+1. On the ****SageMaker Domain** Control Panel**, choose **Add user**\.
 
-1. Repeat steps 4 and 5 from the first procedure, "To onboard to Studio using Quick start\."
+1. Repeat steps 4 and 5 from the first procedure, "To onboard to Amazon SageMaker Domain using Quick start\."
 
 1. Choose **Submit**\.
 

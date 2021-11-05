@@ -14,7 +14,7 @@ To use Data Wrangler, you must do the following:
 
 1. Configure the required permissions described in [Security and Permissions](data-wrangler-security.md)\. 
 
-To use Data Wrangler, you need an active SageMaker Studio instance\. To learn how to launch a new instance, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\. When your Studio instance is **Ready**, use the instructions in [Access Data Wrangler](#data-wrangler-getting-started-access)\.
+To use Data Wrangler, you need an active SageMaker Studio instance\. To learn how to launch a new instance, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\. When your Studio instance is **Ready**, use the instructions in [Access Data Wrangler](#data-wrangler-getting-started-access)\.
 
 ## Access Data Wrangler<a name="data-wrangler-getting-started-access"></a>
 
