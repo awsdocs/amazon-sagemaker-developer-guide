@@ -6,14 +6,13 @@ Amazon SageMaker Studio is a web\-based, integrated development environment \(ID
 + Deploy the models and monitor the performance of their predictions
 + Track and debug the machine learning experiments
 
-For information on the onboarding steps to sign in to SageMaker Studio, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
+For information on the onboarding steps to sign in to SageMaker Studio, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
 For the AWS Regions supported by SageMaker Studio, see [Supported Regions and Quotas](regions-quotas.md)\.
 
 **Topics**
 + [Amazon SageMaker Studio UI Overview](studio-ui.md)
 + [Use the Amazon SageMaker Studio Launcher](studio-launcher.md)
-+ [Studio Entity Status](studio-entity-status.md)
 + [Use Amazon SageMaker Studio Notebooks](notebooks.md)
 + [Customize Amazon SageMaker Studio](studio-customize.md)
 + [Set Up a Connection to an Amazon EMR Cluster](studio-emr.md)

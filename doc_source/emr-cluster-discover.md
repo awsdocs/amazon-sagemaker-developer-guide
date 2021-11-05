@@ -2,7 +2,7 @@
 
 To connect to an Amazon EMR cluster from Studio you will first need to access SageMaker Studio\. If you have not yet set up SageMaker Studio then follow the [Get Started guide](https://docs.aws.amazon.com/sagemaker/latest/dg/notebooks-get-started.html)\.
 
-If you created a new domain in the setup of Studio then this new feature should be available to you\. If you are reusing an existing domain you will need to update both Studio and Studio Apps\. See, [Update Studio](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-tasks-update-studio.html) and [Update Studio Apps ](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-tasks-update-apps.html) for detailed information on how to do this\. 
+If you created a new domain in the setup of Studio then discovering an Amazon EMR cluster from Studio should be available to you\. If you are reusing an existing domain you will need to update both Studio and Studio applications\. See, [Update Studio](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-tasks-update-studio.html) and [Update Studio applications ](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-tasks-update-apps.html) for detailed information on how to do this\. 
 
 To connect to an Amazon EMR cluster in Studio, you will need to enable the discovering functionality by adding a required policy to your Studio execution role\. The following steps explain how to do this\.
 
@@ -18,7 +18,7 @@ To connect to an Amazon EMR cluster in Studio, you will need to enable the disco
 
 1. Select **JSON**\.
 
-1. Copy and paste in the following policy:
+1. Copy and paste in the following policy\.
 
    ```
    {
@@ -53,7 +53,7 @@ To connect to an Amazon EMR cluster in Studio, you will need to enable the disco
 
 1. Select **Next: Review**\.
 
-1. Enter a Name, Description, and Select **Create policy**\.  
+1. Enter a **Name**, **Description**, and Select **Create policy**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/step10-create-policy.png)
 
-1. Next you will need to log into Studio\. If this is your first time, then follow these instructions to [ Log into Studio](https://docs.aws.amazon.com/sagemaker/latest/dg/notebooks-get-started.html#notebooks-get-started-log-in)\.
+1. Next you will need to log into Studio\. If this is your first time, then follow these instructions to [ Log in to Studio](https://docs.aws.amazon.com/sagemaker/latest/dg/notebooks-get-started.html#notebooks-get-started-log-in)\.

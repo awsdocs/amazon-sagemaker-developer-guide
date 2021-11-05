@@ -8,7 +8,7 @@ Users can view SageMaker provided project templates and create projects with tho
 
 For users who use any role other than the domain execution role to view and use SageMaker\-provided project templates, you need to enable **Projects** permissions on the individual user profiles\.
 
-The following procedures show how to enable **Projects** permissions when you are onboarding to Studio\. For more information about onboarding to Studio, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
+The following procedures show how to enable **Projects** permissions when you are onboarding to Studio\. For more information about onboarding to Studio, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
 **To enable **Projects** permissions for the administrator and domain execution role users**
 

@@ -52,7 +52,7 @@ Run the following steps from the command line of your gateway node to set up an�
 
 1. If you do not have an existing Amazon EKS cluster, complete the following substeps\. If you already have an Amazon EKS cluster, skip this step\. 
 
-   1. Run the following from your command line to create an Amazon EKS Cluster with version 1\.14 or above\. Replace `<your-cluster-name>` with any name for your cluster\. 
+   1. Run the following from your command line to create an Amazon EKS cluster with version 1\.17 or above\. Replace `<your-cluster-name>` with any name for your cluster\. 
 
       ```
       eksctl create cluster --name <your-cluster-name> --region us-east-1 --auto-kubeconfig --timeout=50m --managed --nodes=1
@@ -83,7 +83,7 @@ Run the following steps from the command line of your gateway node to set up an�
 
 Run the following steps from the command line of your gateway node to install Kubeflow Pipelines on your cluster\. 
 
-1. Install Kubeflow Pipelines on your cluster by following step 1 of [Deploying Kubeflow Pipelines documentation](https://www.kubeflow.org/docs/pipelines/installation/standalone-deployment/#deploying-kubeflow-pipelines)\. Your KFP version must be 0\.5\.0 or above\. 
+1. Install Kubeflow Pipelines on your cluster by following step 1 of [Deploying Kubeflow Pipelines documentation](https://www.kubeflow.org/docs/pipelines/installation/standalone-deployment/#deploying-kubeflow-pipelines)\. Your KFP version must be 1\.7\.0 or above\. 
 
 1. Verify that the Kubeflow Pipelines service and other related resources are running\. 
 
