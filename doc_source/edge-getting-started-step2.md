@@ -35,26 +35,30 @@ In this section you will create SageMaker and AWS IoT client objects, download a
 
    See [Train a Model with Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-training.html) for more information on how to train a machine learning model using SageMaker\. You can optionally upload your locally trained model directly into an Amazon S3 URI bucket\.
 
-   If you do not have a model yet, use the `wget` command to get a local copy of the You only look once \(YOLO\) algorithm that uses the Darknet neural network framework\. In particular, we will get a copy of the Tiny YOLOv3 model\. Generally speaking, YOLO is not fast enough to run on edge devices\. Instead, download Tiny\-YOLO\. Its smaller model size and inference speeds make it ideal for edge devices\. For more information about YOLO, see [YOLO: Real\-Time Object Detection](https://pjreddie.com/darknet/yolo/)\. 
+   If you do not have a model yet, you can us a pre-trained model for the next steps in this tutorial\. E\.g\., save the MobileNet V2 models from the tensorflow framework\. MobileNet V2 is an image classification model optimized for mobile applications. For more information about MobileNet V2, see [MobileNet V2](https://github.com/tensorflow/models/tree/master/research/slim/nets/mobilenet)\. 
 
-   Type the following into your Jupyter Notebook to get a copy of Tiny\-YOLO:
-
-   ```
-   !wget -O yolov3-tiny.cfg https://github.com/pjreddie/darknet/blob/master/cfg/yolov3-tiny.cfg?raw=true
-   !wget https://pjreddie.com/media/files/yolov3-tiny.weights
-   ```
-
-   This gives us the weights \(`yolov3-tiny.weights`\) and the configuration file \(`yolov3-tiny.weights`\) of the Tiny\-YOLO model\. Before packaging the model, you will need to first compile your model SageMaker Neo\. SageMaker Neo requires models to be stored as a compressed TAR file\. Repackage it as a compressed TAR file \(\.tar\.gz\):
+   Type the following into your Jupyter Notebook to save the pre\-trained MobileNet V2 model:
 
    ```
-   # Package YOLO model into a TAR file 
+   # Save the MobileNet V2 model to local storage
+   import tensorflow as tf
+   model = tf.keras.applications.MobileNetV2()
+   model.save(“mobilenet_v2.h5”)
+   ```
+
+   Note 1: if you don't have tensorflow installed, you can do so by running `pip install tensorflow=2.4`\.
+   
+   Note 2: the SageMaker compiler currently does not support the latest version of tensorflow \(for supported frameworks and versions see [Supported Frameworks, Devices, Systems, and Architectures](neo-supported-devices-edge.md)\)\. Please use tensorflow version 2\.4 or lower for this tutorial.
+   The model will be saved into the `mobilenet_v2.h5` file. Before packaging the model, you will need to first compile your model using the SageMaker Compiler\. The SageMaker Compiler requires models to be stored as a compressed TAR file\. Repackage it as a compressed TAR file \(\.tar\.gz\):
+
+   ```
+   # Package MobileNet V2 model into a TAR file 
    import tarfile
    
-   tarfile_name='yolov3-tiny.tar.gz'
+   tarfile_name='mobilenet-v2.tar.gz'
    
    with tarfile.open(tarfile_name, mode='w:gz') as archive:
-       archive.add('yolov3-tiny.weights')
-       archive.add('yolov3-tiny.cfg')
+       archive.add('mobilenet-v2.h5')
    ```
 
 1. **Upload your model to Amazon S3\.**
@@ -62,13 +66,7 @@ In this section you will create SageMaker and AWS IoT client objects, download a
    Once you have a machine learning model, store it in an Amazon S3 bucket\. The following example uses an AWS CLI command to upload the model the to the Amazon S3 bucket you created earlier in a directory called *models*\. Type in the following into your Jupyter Notebook:
 
    ```
-   # Move model artifacts to models directory
-   !mkdir models            
-   !mv yolov3* models/
-   ```
-
-   ```
-   !aws s3 cp models/yolov3-tiny.tar.gz s3://{bucket}/models/
+   !aws s3 cp mobilenet-v2.tar.gz s3://{bucket}/models/
    ```
 
 1. **Compile your model with SageMaker Neo\.**
