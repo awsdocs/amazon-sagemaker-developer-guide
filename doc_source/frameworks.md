@@ -18,3 +18,4 @@ Machine learning and deep learning frameworks guides:
 + [Scikit\-learn](sklearn.md)
 + [SparkML Serving](sparkml-serving.md)
 + [TensorFlow](tf.md)
++ [Triton Inference Server](triton.md)

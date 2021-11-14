@@ -21,7 +21,7 @@ If you create a 3D point cloud or video frame labeling job, you must add additio
    "AllowedHeaders": [],
    "AllowedMethods": ["GET"],
    "AllowedOrigins": ["*"],
-   "ExposeHeaders": []
+   "ExposeHeaders": ["Access-Control-Allow-Origin"]
 }]
 ```
 
@@ -32,6 +32,7 @@ If you create a 3D point cloud or video frame labeling job, you must add additio
  <CORSRule>
    <AllowedOrigin>*</AllowedOrigin>
    <AllowedMethod>GET</AllowedMethod>
+   <ExposeHeader>Access-Control-Allow-Origin</ExposeHeader>
  </CORSRule>
 </CORSConfiguration>
 ```

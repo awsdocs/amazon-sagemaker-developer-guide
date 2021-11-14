@@ -1,16 +1,16 @@
 # Update the Approval Status of a Model<a name="model-registry-approve"></a>
 
-After you create a model version, you typically want to evaluate its performance before you deploy it to a production endpoint\. If it performs to your requirements, you can update the approval status of the model version to `Approved`\. Setting the status to `Approved` can trigger CI/CD deployment for the model\. If the model version does not perform to your requirements, you can update the approval status to `Rejected`\.
+After you create a model version, you typically want to evaluate its performance before you deploy it to a production endpoint\. If it performs to your requirements, you can update the approval status of the model version to `Approved`\. Setting the status to `Approved` can initiate CI/CD deployment for the model\. If the model version does not perform to your requirements, you can update the approval status to `Rejected`\.
 
 You can manually update the approval status of a model version after you register it, or you can create a condition step to evaluate the model when you create a SageMaker pipeline\. For information about creating a condition step in a SageMaker pipeline, see [Pipeline Steps](build-and-manage-steps.md)\.
 
 When you use one of the SageMaker provided project templates and the approval status of a model version changes, the following action occurs\. Only valid transitions are shown\.
-+ `PendingManualApproval` to `Approved` – Triggers CI/CD deployment for the approved model version
++ `PendingManualApproval` to `Approved` – initiates CI/CD deployment for the approved model version
 + `PendingManualApproval` to `Rejected` – No action
-+ `Rejected` to `Approved` – Triggers CI/CD deployment for the approved model version
-+ `Approved` to `Rejected` – Triggers CI/CD to deploy the latest model version with an `Approved` status
++ `Rejected` to `Approved` – initiates CI/CD deployment for the approved model version
++ `Approved` to `Rejected` – initiates CI/CD to deploy the latest model version with an `Approved` status
 
-You can update the approval status of a model version by using the AWS SDK for Python \(Boto3\) or by using SageMaker Studio\. You can also update the approval status of a model version as part of a condition step in a SageMaker pipeline\. For information about using a model approval step in a SageMaker pipeline, see [SageMaker Pipelines Overview](pipelines-sdk.md)\.
+You can update the approval status of a model version by using the AWS SDK for Python \(Boto3\) or by using Amazon SageMaker Studio\. You can also update the approval status of a model version as part of a condition step in a SageMaker pipeline\. For information about using a model approval step in a SageMaker pipeline, see [SageMaker Pipelines Overview](pipelines-sdk.md)\.
 
 ## Update the Approval Status of a Model \(Boto3\)<a name="model-registry-approve-api"></a>
 
@@ -24,7 +24,7 @@ model_package_update_input_dict = {
 model_package_update_response = sm_client.update_model_package(**model_package_update_input_dict)
 ```
 
-## Update the Approval Status of a Model \(SageMaker Studio\)<a name="model-registry-approve-studio"></a>
+## Update the Approval Status of a Model \(Amazon SageMaker Studio\)<a name="model-registry-approve-studio"></a>
 
 The following procedure shows how to manually change the approval status from `Approved` to `Rejected`\.
 

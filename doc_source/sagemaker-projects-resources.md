@@ -10,8 +10,7 @@ After you create a project, view the resources associated with the project in Am
 
 1. Double\-click the name of the project for which you want to view details\.
 
-   A tab with the project details appears\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/projects/view-project-details.png)
+   A tab with the project details appears\.
 
 On the product details tab, you can view the following entities associated with the project\.
 + Repositories: Code repositories \(repos\) associated with this project\. If you use a SageMaker\-provided template when you create your project, it creates a AWS CodeCommit repo or a third\-party Git repo\. For more information about CodeCommit, see [What is AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)\.

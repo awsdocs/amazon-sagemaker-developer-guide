@@ -1,6 +1,6 @@
 # View the Details of a Model Version<a name="model-registry-details"></a>
 
-You can view details of a specific model version by using either the AWS SDK for Python \(Boto3\) or by using SageMaker Studio\.
+You can view details of a specific model version by using either the AWS SDK for Python \(Boto3\) or by using Amazon SageMaker Studio\.
 
 ## View the Details of a Model Version \(Boto3\)<a name="model-registry-details-api"></a>
 
@@ -67,11 +67,11 @@ To view the details of a model version by using Boto3, complete the following st
      'RetryAttempts': 0}}
    ```
 
-## View the Details of a Model Version \(SageMaker Studio\)<a name="model-registry-details-studio"></a>
+## View the Details of a Model Version \(Amazon SageMaker Studio\)<a name="model-registry-details-studio"></a>
 
-To view the details of a model version in SageMaker Studio, complete the following steps\.
+To view the details of a model version in Amazon SageMaker Studio, complete the following steps\.
 
-1. Sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
+1. Sign in to Amazon SageMaker Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
 1. In the left navigation pane, choose the **Components and registries** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png) \)\.
 
@@ -80,13 +80,13 @@ To view the details of a model version in SageMaker Studio, complete the followi
 
 1. From the model groups list, double\-click the model group you want to view\.
 
-1. A new tab appears with a list of the model versions in the model group\.  
+1. A new tab appears with a list of the model versions in the model group, as shown in the following image\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry/model-versions.png)
 
 1. In the list of model versions, double\-click the model version for which you want to view details\.
 
 1. On the model version tab that opens, choose one of the following to see details about the model version:
-   + **Activity** \- Shows events for the model version, such as approval status updates\.
-   + **Metrics** \- Shows quality metrics for the model\. For metrics to appear, you must enable data capture for your model by using SageMaker Model Monitor\. For information about capturing data, see [Capture Data](model-monitor-data-capture.md)\.
-   + **Settings** \- Shows information such as the project that the model version is associated with, the pipeline that generated the model, the model group, and the model's location in Amazon S3\.  
+   + **Activity**: Shows events for the model version, such as approval status updates\.
+   + **Metrics**: Shows quality metrics for the model\. For metrics to appear, you must enable data capture for your model by using SageMaker Model Monitor\. For information about capturing data, see [Capture Data](model-monitor-data-capture.md)\.
+   + **Settings**: Shows information such as the project with which the model version is associated, the pipeline that generated the model, the model group, and the model's location in Amazon S3\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry/model-version-details.png)
