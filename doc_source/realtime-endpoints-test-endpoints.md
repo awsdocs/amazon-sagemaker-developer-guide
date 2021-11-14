@@ -20,6 +20,8 @@ Note: SageMaker only supports endpoint testing with Amazon SageMaker Studio for 
    + The AWS SDK for Python \(Boto3\) SageMaker Service Client API [CreateEndpoint](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html)\.
    + The SageMaker console\. Select **Inference** in the left panel and then select **Endpoint configuration**\. Provide an endpoint name within the **Endpoint name** field\.
 
+1. \(Optional\) You can optionally provide a custom URL to send your request to\. In the **Configure endpoint URL and headers** field provide the URL of where your model is hosted\. Leave this field blank if you are using a SageMaker endpoint\. You can also optionally add multiple key\-value headers to pass additional information to the inference request\. 
+
 1. A new tab will populate in the Studio workspace\. Select the **Test inference** tab\.
 
 1. Send a request to your endpoint by providing sample data in JSON format\. Use the JSON editor to submit a request to your endpoint\.

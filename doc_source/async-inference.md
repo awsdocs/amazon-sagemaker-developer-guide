@@ -14,3 +14,5 @@ The presence of an asynchronous inference configuration \(`AsyncInferenceConfig`
 If you are a first\-time user of Amazon SageMaker Asynchronous Inference, we recommend that you do the following:
 + Read [Create, Invoke, and Update an Asynchronous Endpoint](async-inference-create-invoke-update-delete.md) for information on how to create, invoke, update, and delete an asynchronous endpoint\.
 + Explore the [Asynchronous Inference example notebook](https://github.com/aws/amazon-sagemaker-examples/blob/master/async-inference/Async-Inference-Walkthrough.ipynb) in the [aws/amazon\-sagemaker\-examples](https://github.com/aws/amazon-sagemaker-examples) GitHub repository\.
+
+Note that if your endpoint uses any of the features listed in this [Exclusions](deployment-guardrails-exclusions.md) page, you cannot use Asynchronous Inference\.

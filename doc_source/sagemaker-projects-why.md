@@ -1,6 +1,6 @@
 # Why Should You Use MLOps?<a name="sagemaker-projects-why"></a>
 
-As you move from running individual artificial intelligence and machine learning \(AI/ML\) projects to using AI/ML to transform your business at scale, the discipline of ML Operations \(MLOps\) can help\. MLOps accounts for the unique aspects of AI/ML projects in project management, CI/CD, and quality assurance, helping customers improve delivery time, reduce defects, and make data scientists more productive\. MLOps refers to a methodology that is built on applying DevOps practices to machine learning workloads\. You can review the [Introduction to DevOps on AWS](https://docs.aws.amazon.com/whitepapers/latest/introduction-devops-aws/welcome.html?did=wp_card) white paper for a discussion of DevOps principles\. [Practicing CI/CD on AWS](https://d1.awsstatic.com/whitepapers/DevOps/practicing-continuous-integration-continuous-delivery-on-AWS.pdf) and [Infrastructure as Code](https://d1.awsstatic.com/whitepapers/DevOps/infrastructure-as-code.pdf) go deeper into implementation using AWS services\.
+As you move from running individual artificial intelligence and machine learning \(AI/ML\) projects to using AI/ML to transform your business at scale, the discipline of ML Operations \(MLOps\) can help\. MLOps accounts for the unique aspects of AI/ML projects in project management, CI/CD, and quality assurance, helping you improve delivery time, reduce defects, and make data science more productive\. MLOps refers to a methodology that is built on applying DevOps practices to machine learning workloads\. You can review the [Introduction to DevOps on AWS](https://docs.aws.amazon.com/whitepapers/latest/introduction-devops-aws/welcome.html?did=wp_card) white paper for a discussion of DevOps principles\. [Practicing CI/CD on AWS](https://d1.awsstatic.com/whitepapers/DevOps/practicing-continuous-integration-continuous-delivery-on-AWS.pdf) and [Infrastructure as Code](https://d1.awsstatic.com/whitepapers/DevOps/infrastructure-as-code.pdf) go deeper into implementation using AWS services\.
 
 Like DevOps, MLOps relies on a collaborative and streamlined approach to the machine learning development lifecycle where the intersection of people, process and technology optimize the end\-to\-end activities required to develop, build, and operate machine learning workloads\.
 
@@ -12,24 +12,24 @@ MLOps focuses on the intersection of data science and data engineering in combin
 + ML projects involve data scientists, a relatively new role, and one not often integrated into cross\-functional teams\. These new team members often speak a very different technical language than product owners and software engineers, compounding the usual problem of translating business requirements into technical requirements\. 
 
 **Communication and collaboration**
-+ Building visibility on ML projects and enabling collaboration across different stakeholders such as data engineers, data scientists, ML engineers, and DevOps\.
++ Building visibility on ML projects and enabling collaboration across different stakeholders such as data engineers, data scientists, ML engineers, and DevOps is becoming increasingly important to ensure successful outcomes\.
 
 
 
 **Everything is code**
 + Use of production data in development activities, longer experimentation lifecycles, dependencies on data pipelines, retraining deployment pipelines, and unique metrics in evaluating the performance of a model\.
 + Models often have a lifecycle independent of the applications and systems integrating with those models\. 
-+ The entire end\-to\-end system is reproducible through versioned code and artifacts\. DevOps projects use Infrastructure\-as\-Code \(IaC\) and Configuration\-as\-Code \(CaC\) to build environments, and Pipelines\-as\-Code \(PaC\) to ensure consistent CI/CD patterns\. The pipelines have to integrate with Big Data and ML training workflows\. That often means that our pipeline is a combination of a traditional CI/CD tool and another workflow engine\. There are important policy concerns for many ML projects, so our pipeline may also need to enforce those policies\. Biased input data produces biased results, an increasing concern for business stakeholders\.
++ The entire end\-to\-end system is reproducible through versioned code and artifacts\. DevOps projects use Infrastructure\-as\-Code \(IaC\) and Configuration\-as\-Code \(CaC\) to build environments, and Pipelines\-as\-Code \(PaC\) to ensure consistent CI/CD patterns\. The pipelines have to integrate with Big Data and ML training workflows\. That often means that the pipeline is a combination of a traditional CI/CD tool and another workflow engine\. There are important policy concerns for many ML projects, so the pipeline may also need to enforce those policies\. Biased input data produces biased results, an increasing concern for business stakeholders\.
 
 **CI/CD**
 + In MLOps, the source data is a first\-class input, along with source code\. That’s why MLOps calls for versioning the source data and initiating pipeline runs when the source or inference data changes\. 
-+ Pipelines must also version the ML models, along with their inputs and other outputs, in order to provide for traceability\. 
++ Pipelines must also version the ML models, along with inputs and other outputs, in order to provide for traceability\. 
 + Automated testing must include proper validation of the ML model during build phases and when the model is in production\.
 + Build phases may include model training and retraining, a time\-consuming and resource\-intensive process\. Pipelines must be granular enough to only perform a full training cycle when the source data or ML code changes, not when related components change\.
-+ Because machine learning code is typically a small part of an overall solution, a deployment pipeline may also incorporate the additional steps required to package your model for consumption as an API by other applications and systems\.
++ Because machine learning code is typically a small part of an overall solution, a deployment pipeline may also incorporate the additional steps required to package a model for consumption as an API by other applications and systems\.
 
 **Monitoring and logging**
-+ In the feature engineering and model training phases, we need to capture model training metrics as well as model experiments\. Tuning an ML model requires manipulating the form of the input data as well as algorithm hyperparameters, and we need to systematically capture those experiments\. Experiment tracking helps data scientists work more effectively and gives us a reproducible snapshot of their work\.
++ The feature engineering and model training phasesneed to capture model training metrics as well as model experiments\. Tuning an ML model requires manipulating the form of the input data as well as algorithm hyperparameters, and systematically capture those experiments\. Experiment tracking helps data scientists work more effectively and gives a reproducible snapshot of their work\.
 + Deployed ML models require monitoring of the data passed to the model for inference, along with the standard endpoint stability and performance metrics\. The monitoring system must also capture the quality of model output, as evaluated by an appropriate ML metric\. 
 
 ## Benefits of MLOps<a name="sagemaker-projects-benefits"></a>

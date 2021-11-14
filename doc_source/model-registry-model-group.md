@@ -4,7 +4,7 @@ A model group contains a group of versioned models\. Create a model group by usi
 
 ## Create a Model Package Group \(Boto3\)<a name="model-registry-package-group-api"></a>
 
-To create a model group by using Boto3, call the `create_model_package_group` method, and specify a name and description as parameters\. The following example shows how to create a model group\. The response from the `create_model_package_group` call is the Amazon Resource Name \(ARN\) of the new model package group\.
+To create a model group by using Boto3, call the `create_model_package_group` method and specify a name and description as parameters\. The following example shows how to create a model group\. The response from the `create_model_package_group` call is the Amazon Resource Name \(ARN\) of the new model package group\.
 
 First, import the required packages and set up the SageMaker Boto3 client\.
 
@@ -35,9 +35,9 @@ create_model_pacakge_group_response = sm_client.create_model_package_group(**mod
 print('ModelPackageGroup Arn : {}'.format(create_model_pacakge_group_response['ModelPackageGroupArn']))
 ```
 
-## Create a Model Package Group \(SageMaker Studio\)<a name="model-registry-package-group-studio"></a>
+## Create a Model Package Group \(Amazon SageMaker Studio\)<a name="model-registry-package-group-studio"></a>
 
-To create a model group in SageMaker Studio, complete the following steps\.
+To create a model group in Amazon SageMaker Studio, complete the following steps\.
 
 1. Sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
@@ -50,10 +50,10 @@ To create a model group in SageMaker Studio, complete the following steps\.
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry/create-model-group.png)
 
 1. In the **Create new model group** dialog box, enter the following information:
-   + For **Name**, enter the name of the new model group\.
-   + \(Optional\) For **Description**, enter a description for the model group\.
-   + \(Optional\) For **Tags**, enter any key\-value pairs you want to associate with the model group\. For information about using tags, see [Tagging AWS resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) in the *AWS General Reference*\.
-   + \(Optional\) For **Project**, choose a project with which to associate the model group\. For information about projects, see [Automate MLOps with SageMaker Projects](sagemaker-projects.md)\.
+   + Enter the name of the new model group in the **Name** field\.
+   + \(Optional\) Enter a description for the model group in the **Description** field\.
+   + \(Optional\) Enter any key\-value pairs you want to associate with the model group in the **Tags** field\. For information about using tags, see [Tagging AWS resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) in the *AWS General Reference*\.
+   + \(Optional\) Choose a project with which to associate the model group in the **Project** field\. For information about projects, see [Automate MLOps with SageMaker Projects](sagemaker-projects.md)\.
 
 1. Choose **Create model group**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry/model-group-details.png)

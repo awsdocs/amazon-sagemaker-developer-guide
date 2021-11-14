@@ -1,6 +1,6 @@
 # View the Deployment History of a Model<a name="model-registry-deploy-history"></a>
 
-View the deployments for a model version SageMaker Studio by opening the tab for that model version\.
+View the deployments for a model version Amazon SageMaker Studio by opening the tab for that model version\.
 
 **View the deployment history for a model version**
 

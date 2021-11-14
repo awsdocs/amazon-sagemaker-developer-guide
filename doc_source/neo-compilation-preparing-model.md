@@ -90,6 +90,11 @@ with tf.Session() as sess:
                                                                 sess.graph.as_graph_def(),
                                                                 output_node_names)
     tf.io.write_graph(graph_or_graph_def=frozen_graph, logdir=".", name="frozen_graph.pb", as_text=False)
+
+import tarfile
+tar = tarfile.open("frozen_graph.tar.gz", "w:gz")
+tar.add("frozen_graph.pb")
+tar.close()
 ```
 
 **Warning**  
@@ -127,10 +132,13 @@ net(x)
                         
 # hybridize model
 net.hybridize()
+net(x)
 
 # export model
 net.export('<model_name>') # this will create model-symbol.json and model-0000.params files
 
+import tarfile
+tar = tarfile.open("<model_name>.tar.gz", "w:gz")
 for name in ["<model_name>-0000.params", "<model_name>-symbol.json"]:
     tar.add(name)
 tar.close()
@@ -145,13 +153,15 @@ GluonCV model zoo models come pre\-hybridized\. So you can just export them\.
 
 ```
 import numpy as np
-import mxnet as mx 
+import mxnet as mx
 import gluoncv as gcv
+from gluoncv.utils import export_block
+import tarfile
 
-net = gcv.model_zoo.get_model('<model_name>', pretrained=True)
-net.export('<model_name>')
+net = gcv.model_zoo.get_model('<model_name>', pretrained=True) # For example, choose <model_name> as resnet18_v1
+export_block('<model_name>', net, preprocess=True, layout='HWC')
+
 tar = tarfile.open("<model_name>.tar.gz", "w:gz")
->>>>>>> ngl_neo_framework_model_saving_how_to
 
 for name in ["<model_name>-0000.params", "<model_name>-symbol.json"]:
     tar.add(name)
@@ -167,6 +177,7 @@ All non\-Gluon models when saved to disk use `*-symbol` and `*.params` files\. T
 # Pass the following 3 parameters: sym, args, aux
 mx.model.save_checkpoint('<model_name>',0,sym,args,aux) # this will create <model_name>-symbol.json and <model_name>-0000.params files
 
+import tarfile
 tar = tarfile.open("<model_name>.tar.gz", "w:gz")
 
 for name in ["<model_name>-0000.params", "<model_name>-symbol.json"]:
@@ -194,7 +205,8 @@ model_trace = torch.jit.trace(model, inp)
 # Save your model. The following code saves it with the .pth file extension
 model_trace.save('model.pth')
 
-# Save as a compressed tar file 
+# Save as a compressed tar file
+import tarfile
 with tarfile.open('model.tar.gz', 'w:gz') as f:
     f.add('model.pth')
 f.close()
@@ -210,20 +222,14 @@ TensorFlow requires one `.pb` or one `.pbtxt` file and a variables directory tha
 The following code example shows how to use the tar Linux command to compress your model\. Run the following in your terminal or in a Jupyter notebook \(if you use a Jupyter notebook, insert the `!` magic command at the beginning of the statement\):
 
 ```
-import os
-import tensorflow as tf
-
 # Download SSD_Mobilenet trained model
-wget http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v2_coco_2018_03_29.tar.gz
+!wget http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v2_coco_2018_03_29.tar.gz
 
 # unzip the compressed tar file
-tar xvf ssd_mobilenet_v2_coco_2018_03_29.tar.gz
+!tar xvf ssd_mobilenet_v2_coco_2018_03_29.tar.gz
 
-# Change into the directory where the model is stored
-cd ssd_mobilenet_v2_coco_2018_03_29
-
-# Compress the tar file and save it in a directory called 'saved model'
-tar czvf panorama-model.tar.gz saved_model
+# Compress the tar file and save it in a directory called 'model.tar.gz'
+!tar czvf model.tar.gz ssd_mobilenet_v2_coco_2018_03_29/frozen_inference_graph.pb
 ```
 
 The command flags used in this example accomplish the following:
@@ -244,7 +250,7 @@ For example, you can use a `sagemaker.TensorFlow` to define a TensorFlow estimat
 from sagemaker.tensorflow import TensorFlow
 
 estimator = TensorFlow(entry_point='mnist.py',
-                        role=role,
+                        role=role,  #param role can be arn of a sagemaker execution role
                         framework_version='1.15.3',
                         py_version='py3',
                         training_steps=1000, 
@@ -275,7 +281,9 @@ optimized_estimator = estimator.compile_model(target_instance_family='ml_c5',
 You can also use the `sagemaker.estimator.Estimator` Class to initialize an estimator object for training and compiling a built\-in algorithm with the `compile_model` method from the SageMaker Python SDK:
 
 ```
+import sagemaker
 from sagemaker.image_uris import retrieve
+sagemaker_session = sagemaker.Session()
 aws_region = sagemaker_session.boto_region_name
 
 # Specify built-in algorithm training image
@@ -286,7 +294,7 @@ training_image = retrieve(framework='image-classification', region=aws_region, i
 
 # Create estimator object for training
 estimator = sagemaker.estimator.Estimator(image_uri=training_image,
-                                          role=role,
+                                          role=role,  #param role can be arn of a sagemaker execution role
                                           instance_count=1,
                                           instance_type='ml.p3.8xlarge',
                                           volume_size = 50,
