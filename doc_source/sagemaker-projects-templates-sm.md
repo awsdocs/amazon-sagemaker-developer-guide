@@ -10,11 +10,13 @@ SageMaker project templates offer you the following choice of code repositories,
 + **CI/CD workflow automation**: AWS CodePipeline or Jenkins
 + **Pipeline stages**: Model building and training, model deployment, or both
 
-**SageMaker provides the following templates to automate the entire model lifecycle**
+**Topics**
 + [MLOps template for model building, training, and deployment](#sagemaker-projects-templates-code-commit)
-+ [ MLOps template for image building, model building, and model deployment](#sagemaker-projects-templates-image-building-model-building-deployment)
++ [MLOps template for model building, training, deployment, and Amazon SageMaker Model Monitor](#sagemaker-projects-templates-model-building-training-deployment-model-monitor)
++ [MLOps template for image building, model building, and model deployment](#sagemaker-projects-templates-image-building-model-building-deployment)
 + [MLOps template for model building, training, and deployment with third\-party Git repositories using CodePipeline](#sagemaker-projects-templates-git-code-pipeline)
 + [MLOps template for model building, training, and deployment with third\-party Git repositories using Jenkins](#sagemaker-projects-templates-git-jenkins)
++ [Update SageMaker Projects to Use Third\-Party Git Repositories](#sagemaker-projects-templates-update)
 
 ## MLOps template for model building, training, and deployment<a name="sagemaker-projects-templates-code-commit"></a>
 
@@ -40,22 +42,41 @@ This template provides the following resources:
 + An Amazon S3 bucket to store artifacts, including CodePipeline and CodeBuild artifacts, and any artifacts generated from the SageMaker pipeline runs\.
 + A CloudWatch event to initiate the pipeline when a model package version is approved or rejected\.
 
+## MLOps template for model building, training, deployment, and Amazon SageMaker Model Monitor<a name="sagemaker-projects-templates-model-building-training-deployment-model-monitor"></a>
+
+This template is an extension of the MLOps template for model building, training, and deployment\. It includes both the model building, training, and deployment components of the template, and an additional Amazon SageMaker Model Monitor template that provides the following types of monitoring: 
++ [Data Quality](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-quality.html) – Monitor drift in data quality\.
++ [Model Quality](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality.html) – Monitor drift in model quality metrics, such as accuracy\.
++ [ Bias Drift for Models in Production](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-monitor-bias-drift.html) – Monitor bias in a model's predictions\.
++ **Code repository**: AWS CodeCommit
++ **CI/CD workflow automation**: AWS CodePipeline
+
+### MLOps template for Amazon SageMaker Model Monitor<a name="sagemaker-projects-template-model-monitor"></a>
+
+You can use this template for an MLOps solution to deploy one or more of the Amazon SageMaker data quality, model quality, model bias, and model explainability monitors to monitor a deployed model on a SageMaker inference endpoint\. 
+
+This template provides the following resources:
++ An AWS CodeCommit repository that contains sample Python code that gets the [baselines](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-create-baseline.html) used by the monitors from the SageMaker Model Registry, and updates the template’s parameters for the staging and production environments\. It also contains a AWS CloudFormation template to create the Amazon SageMaker Model Monitors\.
++ An AWS CodePipeline pipeline that has source, build, and deploy steps\. The source step points to the CodePipeline repository\. The build step gets the code from that repository, gets the baseline from the Model Registry, and updates template parameters for the staging and production environments\. The deploy steps deploy the configured monitors into the staging and production environments\. The manual approval step, within the `DeployStaging` stage, requires you to verify that the production SageMaker endpoint is `InService` before approving and moving to the `DeployProd` stage\.
++ The template uses the same S3 bucket created by the MLOps template for model building, training, and deployment to store the monitors' outputs\. 
++ Two Amazon EventBridge events rules initiate the Amazon SageMaker Model Monitor AWS CodePipeline every time the staging SageMaker endpoint is updated, or a code change is committed to the CodePipeline repository\. 
+
 ## MLOps template for image building, model building, and model deployment<a name="sagemaker-projects-templates-image-building-model-building-deployment"></a>
 
 This template is an extension of the [MLOps template for model building, training, and deployment](#sagemaker-projects-templates-code-commit)\. It includes both the model building, training, and deployment components of that template and the following options:
-+ Include processing image building pipeline
-+ Include training image building pipeline
-+ Include inference image building pipeline
++ Include processing image–building pipeline
++ Include training image–building pipeline
++ Include inference image–building pipeline
 
-For each of the components selected during project creation, the following are created:
+For each of the components selected during project creation, the following are created by using the template:
 + An Amazon ECR repository
 + [A SageMaker Image](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateImage.html)
 + A CodeCommit repository containing a Dockerfile that you can customize
-+ A CodePipeline that is initiated by changes to the CodeCommit repository
++ A CodePipeline that is initiated by changes to the CodePipeline repository
 + A CodeBuild project that builds a Docker image and registers it in the Amazon ECR repository
 + An EventBridge rule that initiates the CodePipeline on a schedule
 
-When the CodePipeline is initiated, it builds a new Docker container and registers it with an Amazon ECR repository\. When a new container is registered with the Amazon ECR repository, a new ImageVersion is added to the SageMaker image\. This initiates the model building pipeline, which in turn initiates the deployment pipeline\.
+When the CodePipeline is initiated, it builds a new Docker container and registers it with an Amazon ECR repository\. When a new container is registered with the Amazon ECR repository, a new `ImageVersion` is added to the SageMaker image\. This initiates the model building pipeline, which in turn initiates the deployment pipeline\.
 
 The newly created image is used in the model building, training, and deployment portions of the workflow where applicable\.
 

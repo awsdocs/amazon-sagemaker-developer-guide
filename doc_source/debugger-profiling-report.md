@@ -2,6 +2,9 @@
 
 For any SageMaker training jobs, the Debugger [ProfilerReport](debugger-built-in-rules.md#profiler-report) rule invokes all of the [monitoring and profiling rules](debugger-built-in-rules.md#built-in-rules-monitoring) and aggregates the rule analysis into a comprehensive report\. Following this guide, download the report using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) or the S3 console, and learn what you can interpret from the profiling results\.
 
+**Important**  
+In the report, plots and and recommendations are provided for informational purposes and are not definitive\. You are responsible for making your own independent assessment of the information\.
+
 **Topics**
 + [Download a Debugger Profiling Report](#debugger-profiling-report-download)
 + [Debugger Profiling Report Walkthrough](#debugger-profiling-report-walkthrough)
@@ -11,7 +14,7 @@ For any SageMaker training jobs, the Debugger [ProfilerReport](debugger-built-in
 Download the Debugger profiling report while your training job is running or after the job has finished using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) and AWS Command Line Interface \(CLI\)\.
 
 **Tip**  
-You can also download the report with one click and no additional scripting through the SageMaker Studio Debugger insights dashboard\. To find out how to download the report from Studio, see [Open Amazon SageMaker Debugger Insights Dashboard](debugger-on-studio-insights.md)\.
+You can also download the report with one click and no additional scripting through the SageMaker Studio Debugger insights dashboard\. To find out how to download the report from Studio, see [Open the Amazon SageMaker Debugger Insights Dashboard](debugger-on-studio-insights.md)\.
 
 ------
 #### [ Download using SageMaker Python SDK and AWS CLI ]
@@ -89,6 +92,9 @@ To update the current training job and enable framework metrics profiling, see [
 ## Debugger Profiling Report Walkthrough<a name="debugger-profiling-report-walkthrough"></a>
 
 This section walks you through the Debugger profiling report section by section\. The profiling report is generated based on the built\-in rules for monitoring and profiling\. The report shows result plots only for the rules that found issues\.
+
+**Important**  
+In the report, plots and and recommendations are provided for informational purposes and are not definitive\. You are responsible for making your own independent assessment of the information\.
 
 **Topics**
 + [Training Job Summary](#debugger-profiling-report-walkthrough-summary)

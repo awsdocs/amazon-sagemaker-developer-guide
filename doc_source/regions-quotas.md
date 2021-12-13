@@ -11,6 +11,7 @@ Clarify
 SageMaker Edge Manager
 Ground Truth
 Hyperparameter tuning \(HPO\)
+Amazon SageMaker Inference Recommender
 JumpStart
 Amazon SageMaker Model Monitor
 Reinforcement learning

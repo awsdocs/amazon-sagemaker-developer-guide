@@ -23,6 +23,8 @@ Amazon SageMaker Model Building Pipelines support the following step types:
 + [Condition](#step-type-condition)
 + [Callback](#step-type-callback)
 + [Lambda](#step-type-lambda)
++ [ClarifyCheck](#step-type-clarify-check)
++ [QualityCheck](#step-type-quality-check)
 
 ### Processing Step<a name="step-type-processing"></a>
 
@@ -107,7 +109,7 @@ step_process = ProcessingStep(
 
 You use a training step to create a training job to train a model\. For more information on training jobs, see [Train a Model with Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-training.html)\.
 
-A training step requires an estimator, and training and validation data inputs\. The following example shows how to create a `TrainingStep` definition\. For more information on Training step requirements, see the [sagemaker\.workflow\.steps\.TrainingStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.TrainingStep) documentation\.
+A training step requires an estimator, and training and validation data inputs\. The following example shows how to create a `TrainingStep` definition\. For more information on training step requirements, see the [sagemaker\.workflow\.steps\.TrainingStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.TrainingStep) documentation\.
 
 ```
 from sagemaker.inputs import TrainingInput
@@ -141,7 +143,7 @@ The tuning job is associated with the SageMaker experiment for the pipeline, wit
 
 A tuning step requires a [HyperparameterTuner](https://sagemaker.readthedocs.io/en/stable/api/training/tuner.html) and training inputs\. You can retrain previous tuning jobs by specifying the `warm_start_config` parameter of the `HyperparameterTuner`\. For more information on hyperparameter tuning and warm start, see [Run a Warm Start Hyperparameter Tuning Job](automatic-model-tuning-warm-start.md)\.
 
-You use the [get\_top\_model\_s3\_uri](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.TuningStep.get_top_model_s3_uri) method of the [sagemaker\.workflow\.steps\.TuningStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.TuningStep) class to get the model artifact from one of the top performing model versions\. For a notebook that shows how to use a tuning step in a SageMaker pipeline, see [sagemaker\-pipelines\-tuning\-step\.ipynb](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker-pipelines/tabular/tuning-step/sagemaker-pipelines-tuning-step.ipynb)\.
+You use the [get\_top\_model\_s3\_uri](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.TuningStep.get_top_model_s3_uri) method of the [sagemaker\.workflow\.steps\.TuningStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.TuningStep) class to get the model artifact from one of the top\-performing model versions\. For a notebook that shows how to use a tuning step in a SageMaker pipeline, see [sagemaker\-pipelines\-tuning\-step\.ipynb](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker-pipelines/tabular/tuning-step/sagemaker-pipelines-tuning-step.ipynb)\.
 
 **Important**  
 Tuning steps were introduced in Amazon SageMaker Python SDK v2\.48\.0 and Amazon SageMaker Studio v3\.8\.0\. You must update Studio before you use a tuning step or the pipeline DAG doesn't display\. To update Studio, see [Update SageMaker Studio](studio-tasks-update-studio.md)\.
@@ -160,7 +162,7 @@ step_tuning = TuningStep(
 )
 ```
 
-**Get Best Model Version**
+**Get the best model version**
 
 The following example shows how to get the best model version from the tuning job using the `get_top_model_s3_uri` method\. At most, the top 50 performing versions are available ranked according to [HyperParameterTuningJobObjective](https://docs.aws.amazon.com/sagemaker/latest/APIReference/HyperParameterTuningJobObjective.html)\. The `top_k` argument is an index into the versions, where `top_k=0` is the best performing version and `top_k=49` is the worst performing version\.
 
@@ -175,13 +177,13 @@ best_model = Model(
 )
 ```
 
-For more information on Tuning step requirements, see the [sagemaker\.workflow\.steps\.TuningStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.TuningStep)  documentation\.
+For more information on tuning step requirements, see the [sagemaker\.workflow\.steps\.TuningStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.TuningStep)  documentation\.
 
 ### CreateModel Step<a name="step-type-create-model"></a>
 
-You use a create model step to create a SageMaker Model\. For more information on SageMaker Models, see [Train a Model with Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-training.html)\.
+You use a create model step to create a SageMaker model\. For more information on SageMaker models, see [Train a Model with Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-training.html)\.
 
-A create model step requires model artifacts, and information on the SageMaker instance type that you need to use to create the model\. The following example shows how to create a `CreateModel` step definition\. For more information on `CreateModel` step requirements, see the [sagemaker\.workflow\.steps\.CreateModelStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.CreateModelStep) documentation\.
+A create model step requires model artifacts and information on the SageMaker instance type that you need to use to create the model\. The following example shows how to create a `CreateModel` step definition\. For more information on `CreateModel` step requirements, see the [sagemaker\.workflow\.steps\.CreateModelStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.CreateModelStep) documentation\.
 
 ```
 from sagemaker.workflow.steps import CreateModelStep
@@ -197,7 +199,7 @@ step_create_model = CreateModelStep(
 
 You use a register model step to register a [sagemaker\.model\.Model](https://sagemaker.readthedocs.io/en/stable/api/inference/model.html) or a [sagemaker\.pipeline\.PipelineModel](https://sagemaker.readthedocs.io/en/stable/api/inference/pipeline.html#pipelinemodel) with the Amazon SageMaker model registry\. A `PipelineModel` represents an inference pipeline, which is a model composed of a linear sequence of containers that process inference requests\.
 
-For more information on how to register a model, see [Register and Deploy Models with Model Registry](model-registry.md)\. For more information on `RegisterModel` step requirements, see the [sagemaker\.workflow\.step\_collections\.RegisterModel](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.step_collections.RegisterModel) documentation\.
+For more information about how to register a model, see [Register and Deploy Models with Model Registry](model-registry.md)\. For more information on `RegisterModel` step requirements, see the [sagemaker\.workflow\.step\_collections\.RegisterModel](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.step_collections.RegisterModel) documentation\.
 
 The following example shows how to create a register model step that registers a `PipelineModel`\.
 
@@ -262,9 +264,9 @@ step_register = RegisterModel(
 
 ### Transform Step<a name="step-type-transform"></a>
 
-You use a transform step for batch transformation to run inference on an entire dataset\. For more information on batch transformation, see [Run Batch Transforms with Inference Pipelines ](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipeline-batch.html)\.
+You use a transform step for batch transformation to run inference on an entire dataset\. For more information about batch transformation, see [Run Batch Transforms with Inference Pipelines](inference-pipeline-batch.md)\.
 
-A transform step requires a transformer, and the data to run batch transformation on\. The following example shows how to create a `Transform` step definition\. For more information on `Transform` step requirements, see the [sagemaker\.workflow\.steps\.TransformStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.TransformStep)\. documentation\.
+A transform step requires a transformer and the data to run batch transformation on\. The following example shows how to create a `Transform` step definition\. For more information on `Transform` step requirements, see the [sagemaker\.workflow\.steps\.TransformStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.TransformStep) documentation\.
 
 ```
 from sagemaker.inputs import TransformInput
@@ -281,7 +283,7 @@ step_transform = TransformStep(
 
 You use a condition step to evaluate the condition of step properties to assess which action should be taken next in the pipeline\.
 
-A condition step requires a list of conditions, and a list of steps to execute if the condition evaluates to `true` and a list of steps to execute if the condition evaluates to `false`\. The following example shows how to create a `Condition` step definition\. For more information on `Condition` step requirements, see the [sagemaker\.workflow\.condition\_step\.ConditionStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#conditionstep) documentation\.
+A condition step requires a list of conditions, a list of steps to run if the condition evaluates to `true`, and a list of steps to run if the condition evaluates to `false`\. The following example shows how to create a `Condition` step definition\. For more information on `Condition` step requirements, see the [sagemaker\.workflow\.condition\_step\.ConditionStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#conditionstep) documentation\.
 
 **Limitations**
 + SageMaker Pipelines doesn't support the use of nested condition steps\. You can't pass a condition step as the input for another condition step\.
@@ -319,7 +321,7 @@ You use a callback step to incorporate additional processes and AWS services int
 + When the process finishes, the customer calls one of the following APIs and submits the SageMaker Pipelines–generated token:
   +  [SendPipelineExecutionStepSuccess](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_SendPipelineExecutionStepSuccess.html) – along with a list of output parameters
   +  [SendPipelineExecutionStepFailure](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_SendPipelineExecutionStepFailure.html) – along with a failure reason
-+ The API call causes SageMaker Pipelines to either continue the pipeline execution or fail the execution\.
++ The API call causes SageMaker Pipelines to either continue the pipeline process or fail the process\.
 
 For more information on `Callback` step requirements, see the [sagemaker\.workflow\.callback\_step\.CallbackStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.callback_step.CallbackStep) documentation\. For a complete solution, see [Extend SageMaker Pipelines to include custom steps using callback steps](http://aws.amazon.com/blogs/machine-learning/extend-amazon-sagemaker-pipelines-to-include-custom-steps-using-callback-steps/)\.
 
@@ -359,11 +361,11 @@ callback_handler_code = '
 '
 ```
 
-**Stopping Behavior**
+**Stopping behavior**
 
-A pipeline execution won't stop while a callback step is running\.
+A pipeline process won't stop while a callback step is running\.
 
-When you call [StopPipelineExecution](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_StopPipelineExecution.html) on a pipeline execution with a running callback step, SageMaker Pipelines sends an additional Amazon SQS message to the specified SQS queue\. The body of the SQS message contains a "status" field which is set to "Stopping"\. The following shows an example SQS message body\.
+When you call [StopPipelineExecution](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_StopPipelineExecution.html) on a pipeline processwith a running callback step, SageMaker Pipelines sends an additional Amazon SQS message to the specified SQS queue\. The body of the SQS message contains a **Status** field which is set to `Stopping`\. The following shows an example SQS message body\.
 
 ```
 {
@@ -380,14 +382,14 @@ When you call [StopPipelineExecution](https://docs.aws.amazon.com/sagemaker/late
 
 You should add logic to your Amazon SQS message consumer to take any needed action \(for example, resource cleanup\) upon receipt of the message followed by a call to `SendPipelineExecutionStepSuccess` or `SendPipelineExecutionStepFailure`\.
 
-Only when SageMaker Pipelines receives one of these calls will it stop the pipeline execution\.
+Only when SageMaker Pipelines receives one of these calls, does it stop the pipeline process\.
 
 ### Lambda Step<a name="step-type-lambda"></a>
 
-You use a lambda step to run an AWS Lambda function\. You can run an existing Lambda function, or SageMaker can create and run a new Lambda function\. For a notebook that shows how to use a lambda step in a SageMaker pipeline, see [sagemaker\-pipelines\-lambda\-step\.ipynb](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker-pipelines/tabular/lambda-step/sagemaker-pipelines-lambda-step.ipynb)\.
+You use a Lambda step to run an AWS Lambda function\. You can run an existing Lambda function, or SageMaker can create and run a new Lambda function\. For a notebook that shows how to use a Lambda step in a SageMaker pipeline, see [sagemaker\-pipelines\-lambda\-step\.ipynb](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker-pipelines/tabular/lambda-step/sagemaker-pipelines-lambda-step.ipynb)\.
 
 **Important**  
-Lambda steps were introduced in Amazon SageMaker Python SDK v2\.51\.0 and Amazon SageMaker Studio v3\.9\.1\. You must update Studio before you use a lambda step or the pipeline DAG doesn't display\. To update Studio, see [Update SageMaker Studio](studio-tasks-update-studio.md)\.
+Lambda steps were introduced in Amazon SageMaker Python SDK v2\.51\.0 and Amazon SageMaker Studio v3\.9\.1\. You must update Studio before you use a Lambda step or the pipeline DAG doesn't display\. To update Studio, see [Update SageMaker Studio](studio-tasks-update-studio.md)\.
 
 SageMaker provides the [sagemaker\.lambda\_helper\.Lambda](https://sagemaker.readthedocs.io/en/stable/api/utility/lambda_helper.html) class to create, update, invoke, and delete Lambda functions\. `Lambda` has the following signature\.
 
@@ -459,11 +461,149 @@ step_lambda = LambdaStep(
 )
 ```
 
-**Timeout and Stopping Behavior**
+**Timeout and stopping behavior**
 
-The `Lambda` class has a `timeout` argument that specifies the maximum time that the Lambda function can run\. The default value is 120 seconds with a maximum value of 10 minutes\. If the Lambda function is running when the timeout is met, the lambda step fails; however, the Lambda function continues to run\.
+The `Lambda` class has a `timeout` argument that specifies the maximum time that the Lambda function can run\. The default value is 120 seconds with a maximum value of 10 minutes\. If the Lambda function is running when the timeout is met, the Lambda step fails; however, the Lambda function continues to run\.
 
-A pipeline execution can't be stopped while a lambda step is running because the Lambda function invoked by the lambda step can't be stopped\. If you attempt to stop the execution while the Lambda function is running, the pipeline waits for the Lambda function to finish or until the timeout is hit, whichever occurs first, and then stops\. If the Lambda function finishes, the pipeline execution status is `Stopped`\. If the timeout is hit the pipeline execution status is `Failed`\.
+A pipeline process can't be stopped while a Lambda step is running because the Lambda function invoked by the Lambda step can't be stopped\. If you attempt to stop the process while the Lambda function is running, the pipeline waits for the Lambda function to finish or until the timeout is hit, whichever occurs first, and then stops\. If the Lambda function finishes, the pipeline process status is `Stopped`\. If the timeout is hit the pipeline process status is `Failed`\.
+
+### ClarifyCheck Step<a name="step-type-clarify-check"></a>
+
+You can use the `ClarifyCheck` step to conduct baseline drift checks against previous baselines for bias analysis and model explainability\. By doing this, you can generate and [register your baselines](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps.html#build-and-manage-data-dependency) for drift check in the [RegisterModel](#step-type-register-model) step together with the model trained though the pipelines in the model building phase\. These baselines for drift check can be used by Amazon SageMaker Model Monitor for your model endpoints so that you don’t need to do a [baseline](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-create-baseline.html) suggestion separately\. The `ClarifyCheck` step can also pull baselines for drift check from the model registry\. The `ClarifyCheck` step leverages the Amazon SageMaker Clarify prebuilt container that provides a range of model monitoring capabilities, including constraint suggestion and constraint validation against a given baseline\. For more information, see [Getting Started with a SageMaker Clarify Container](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-configure-processing-jobs.html#clarify-processing-job-configure-container)\.
+
+#### Configuring the ClarifyCheck step<a name="configuring-step-type-clarify"></a>
+
+You can configure the `ClarifyCheck` step to conduct only one of the following check types each time it’s used in a pipeline\.
++ Data bias check
++ Model bias check
++ Model explainability check
+
+You do this by setting the `clarify_check_config` parameter with one of the following check type values:
++ `DataBiasCheckConfig`
++ `ModelBiasCheckConfig`
++ `ModelExplainabilityCheckConfig`
+
+The `ClarifyCheck` step launches a processing job that runs the SageMaker Clarify prebuilt container and requires dedicated [configurations for the check and the processing job](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-configure-processing-jobs.html)\. `ClarifyCheckConfig` and `CheckJobConfig` are helper functions for these configurations that are aligned with how the SageMaker Clarify processing job computes for checking model bias, data bias, or model explainability\. For more information, see [Run SageMaker Clarify Processing Jobs for Bias Analysis and Explainability](clarify-processing-job-run.md)\. 
+
+#### Controlling step behaviors for drift check<a name="controlling-step-type-clarify"></a>
+
+The `ClarifyCheck` step requires the following two boolean flags to control its behavior:
++ `skip_check`: This parameter indicates if the drift check against the previous baseline is skipped or not\. If it is set to `False`, the previous baseline of the configured check type must be available\.
++ `register_new_baseline`: This parameter indicates if a newly calculated baseline can be accessed though step property `BaselineUsedForDriftCheckConstraints`\. If it is set to `False`, the previous baseline of the configured check type also must be available\. This can be accessed through the `BaselineUsedForDriftCheckConstraints` property\. 
+
+For more information, see [Baseline calculation, drift detection and lifecycle with ClarifyCheck and QualityCheck steps in Amazon SageMaker Model Building Pipelines](pipelines-quality-clarify-baseline-lifecycle.md)\.
+
+#### Working with baselines<a name="step-type-clarify-working-with-baselines"></a>
+
+You can optionally specify the `model_package_group_name` to locate the existing baseline and the `ClarifyCheck` step pulls the `DriftCheckBaselines` on the latest approved model package in the model package group\. Or, you can provide a previous baseline through the `supplied_baseline_constraints` parameter\. If you specify both the `model_package_group_name` and the `supplied_baseline_constraints`, the `ClarifyCheck` step uses the baseline specified by the `supplied_baseline_constraints` parameter\.
+
+For more information on using the `ClarifyCheck` step requirements, see the [ sagemaker\.workflow\.steps\.ClarifyCheckStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.ClarifyCheckStep) in the *Amazon SageMaker SageMaker SDK for Python*\. For an Amazon SageMaker Studio notebook that shows how to use `ClarifyCheck` step in SageMaker Pipelines, see [sagemaker\-pipeline\-model\-monitor\-clarify\-steps\.ipynb](https://github.com/aws/amazon-sagemaker-examples/tree/master/sagemaker-pipelines/tabular/model-monitor-clarify-pipelines/sagemaker-pipeline-model-monitor-clarify-steps.ipynb)\.
+
+**Example Create a ClarifyCheck step for data bias check**  
+
+```
+from sagemaker.workflow.check_job_config import CheckJobConfig
+from sagemaker.workflow.clarify_check_step import DataBiasCheckConfig, ClarifyCheckStep
+from sagemaker.workflow.execution_variables import ExecutionVariables
+
+check_job_config = CheckJobConfig(
+    role=role,
+    instance_count=1,
+    instance_type="ml.c5.xlarge",
+    volume_size_in_gb=120,
+    sagemaker_session=sagemaker_session,
+)
+
+data_bias_data_config = DataConfig(
+    s3_data_input_path=step_process.properties.ProcessingOutputConfig.Outputs["train"].S3Output.S3Uri,
+    s3_output_path=Join(on='/', values=['s3:/', your_bucket, base_job_prefix, ExecutionVariables.PIPELINE_EXECUTION_ID, 'databiascheckstep']),
+    label=0,
+    dataset_type="text/csv",
+    s3_analysis_config_output_path=data_bias_analysis_cfg_output_path,
+)
+
+data_bias_config = BiasConfig(
+    label_values_or_threshold=[15.0], facet_name=[8], facet_values_or_threshold=[[0.5]]  
+)
+
+data_bias_check_config = DataBiasCheckConfig(
+    data_config=data_bias_data_config,
+    data_bias_config=data_bias_config,
+)h
+
+data_bias_check_step = ClarifyCheckStep(
+    name="DataBiasCheckStep",
+    clarify_check_config=data_bias_check_config,
+    check_job_config=check_job_config,
+    skip_check=False,
+    register_new_baseline=False
+   supplied_baseline_constraints="s3://sagemaker-us-west-2-111122223333/baseline/analysis.json",
+    model_package_group_name="MyModelPackageGroup"
+)
+```
+
+### QualityCheck Step<a name="step-type-quality-check"></a>
+
+You can use the `QualityCheck` step to conduct [baseline suggestions](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-create-baseline.html) and drift checks against a previous baseline for data quality or model quality in a pipeline\. By doing this, you can generate and [register your baselines](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps.html#build-and-manage-data-dependency) for drift check in the [RegisterModel Step](#step-type-register-model) step together with the model trained though the pipelines in the model building phase\. These baselines for drift check can be used by Model Monitor for your model endpoints so that you don’t need to do a baseline suggestion separately\. The `QualityCheck` step can also pull baselines for drift check from the model registry\. The `QualityCheck` step leverages the Amazon SageMaker Model Monitor prebuilt container that has a range of model monitoring capabilities including constraint suggestion, statistics generation, and constraint validation against a baseline\. For more information, see [Amazon SageMaker Model Monitor Prebuilt Container](model-monitor-pre-built-container.md)\.
+
+#### Configuring the QualityCheck step<a name="configuring-step-type-quality"></a>
+
+You can configure the `QualityCheck` step to conduct only one of the following check types each time it’s used in a pipeline\.
++ Data quality check
++ Model quality check
+
+You do this by setting the `quality_check_config` parameter with one of the following check type values:
++ `DataQualityCheckConfig`
++ `ModelQualityCheckConfig`
+
+The `QualityCheck` step launches a processing job that runs the Model Monitor prebuilt container and requires dedicated configurations for the check and the processing job\. The `QualityCheckConfig` and `CheckJobConfig` are helper functions for these configurations that are aligned with how Model Monitor creates a baseline for the model quality or data quality monitoring\. For more information on the Model Monitor baseline suggestions, see [Create a Baseline](model-monitor-create-baseline.md) and [Create a Model Quality Baseline](model-monitor-model-quality-baseline.md)\.
+
+#### Controlling step behaviors for drift check<a name="controlling-step-type-quality"></a>
+
+The `QualityCheck` step requires the following two boolean flags to control its behavior:
++ `skip_check`: This parameter indicates if the drift check against the previous baseline is skipped or not\. If it is set to `False`, the previous baseline of the configured check type must be available\.
++ `register_new_baseline`: This parameter indicates if a newly calculated baseline can be accessed through step properties `BaselineUsedForDriftCheckConstraints` and `BaselineUsedForDriftCheckStatistics`\. If it is set to `False`, the previous baseline of the configured check type must also be available\. These can be accessed through the `BaselineUsedForDriftCheckConstraints` and `BaselineUsedForDriftCheckStatistics` properties\.
+
+For more information, see [Baseline calculation, drift detection and lifecycle with ClarifyCheck and QualityCheck steps in Amazon SageMaker Model Building Pipelines](pipelines-quality-clarify-baseline-lifecycle.md)\.
+
+#### Working with baselines<a name="step-type-quality-working-with-baselines"></a>
+
+You can specify a previous baseline directly through the `supplied_baseline_statistics` and `supplied_baseline_constraints` parameters, or you can simply specify the `model_package_group_name` and the `QualityCheck` step pulls the `DriftCheckBaselines` on the latest approved model package in the model package group\. When you specify the `model_package_group_name`, the `supplied_baseline_constraints`, and `supplied_baseline_statistics`, the `QualityCheck` step uses the baseline specified by `supplied_baseline_constraints` and `supplied_baseline_statistics` on the check type of the `QualityCheck` step you are running\.
+
+For more information on using the `QualityCheck` step requirements, see the [ sagemaker\.workflow\.steps\.QualityCheckStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.QualityCheckStep) in the *Amazon SageMaker SageMaker SDK for Python*\. For an Amazon SageMaker Studio notebook that shows how to use `QualityCheck` step in SageMaker Pipelines, see [sagemaker\-pipeline\-model\-monitor\-quality\-steps\.ipynb](https://github.com/aws/amazon-sagemaker-examples/tree/master/sagemaker-pipelines/tabular/model-monitor-quality-pipelines/sagemaker-pipeline-model-monitor-quality-steps.ipynb)\. 
+
+**Example Create a QualityCheck step for data quality check**  
+
+```
+from sagemaker.workflow.check_job_config import CheckJobConfig
+from sagemaker.workflow.quality_check_step import DataQualityCheckConfig, QualityCheckStep
+from sagemaker.workflow.execution_variables import ExecutionVariables
+
+check_job_config = CheckJobConfig(
+    role=role,
+    instance_count=1,
+    instance_type="ml.c5.xlarge",
+    volume_size_in_gb=120,
+    sagemaker_session=sagemaker_session,
+)
+
+data_quality_check_config = DataQualityCheckConfig(
+    baseline_dataset=step_process.properties.ProcessingOutputConfig.Outputs["train"].S3Output.S3Uri,
+    dataset_format=DatasetFormat.csv(header=False, output_columns_position="START"),
+    output_s3_uri=Join(on='/', values=['s3:/', your_bucket, base_job_prefix, ExecutionVariables.PIPELINE_EXECUTION_ID, 'dataqualitycheckstep'])
+)
+
+data_quality_check_step = QualityCheckStep(
+    name="DataQualityCheckStep",
+    skip_check=False,
+    register_new_baseline=False,
+    quality_check_config=data_quality_check_config,
+    check_job_config=check_job_config,
+    supplied_baseline_statistics="s3://sagemaker-us-west-2-555555555555/baseline/statistics.json",
+    supplied_baseline_constraints="s3://sagemaker-us-west-2-555555555555/baseline/constraints.json",
+    model_package_group_name="MyModelPackageGroup"
+)
+```
 
 ## Step Properties<a name="build-and-manage-properties"></a>
 
@@ -476,7 +616,7 @@ The `properties` attribute of a SageMaker Pipelines step matches the object retu
 
 ## Data Dependency Between Steps<a name="build-and-manage-data-dependency"></a>
 
-You define the structure of your DAG by specifying the data relationships between steps\. To create data dependencies between steps, pass the properties of one step as the input to another step in the pipeline\. The step receiving the input isn't started until after the step providing the input finishes execution\.
+You define the structure of your DAG by specifying the data relationships between steps\. To create data dependencies between steps, pass the properties of one step as the input to another step in the pipeline\. The step receiving the input isn't started until after the step providing the input finishes running\.
 
 A data dependency uses JsonPath notation in the following format\. This format traverses the JSON property file, which means you can append as many *<property>* instances as needed to reach the desired nested property in the file\. For more information on JsonPath notation, see the [JsonPath repo](https://github.com/json-path/JsonPath)\.
 
@@ -484,7 +624,7 @@ A data dependency uses JsonPath notation in the following format\. This format t
 <step_name>.properties.<property>.<property>
 ```
 
-The following shows how to specify an Amazon S3 bucket using the `ProcessingOutputConfig` property of a processing step\.
+The following shows how to specify an S3 bucket using the `ProcessingOutputConfig` property of a processing step\.
 
 ```
 step_process.properties.ProcessingOutputConfig.Outputs["train_data"].S3Output.S3Uri
@@ -505,9 +645,9 @@ step_train = TrainingStep(
 
 ## Custom Dependency Between Steps<a name="build-and-manage-custom-dependency"></a>
 
-When you specify a data dependency, SageMaker Pipelines provides the data connection between the steps\. Alternatively, one step can access the data from a previous step without directly using SageMaker Pipelines\. In this case, you can create a custom dependency that tells SageMaker Pipelines not to start a step until after another step has finished executing\. You create a custom dependency by specifying a step's `DependsOn` attribute\.
+When you specify a data dependency, SageMaker Pipelines provides the data connection between the steps\. Alternatively, one step can access the data from a previous step without directly using SageMaker Pipelines\. In this case, you can create a custom dependency that tells SageMaker Pipelines not to start a step until after another step has finished running\. You create a custom dependency by specifying a step's `DependsOn` attribute\.
 
-As an example, the following defines a step `C` that starts only after both step `A` and step `B` finish executing\.
+As an example, the following defines a step `C` that starts only after both step `A` and step `B` finish running\.
 
 ```
 {
@@ -521,7 +661,7 @@ As an example, the following defines a step `C` that starts only after both step
 
 SageMaker Pipelines throws a validation exception if the dependency would create a cyclic dependency\.
 
-The following example creates a training step that starts after a processing step finishes executing\.
+The following example creates a training step that starts after a processing step finishes running\.
 
 ```
 processing_step = ProcessingStep(...)
@@ -530,7 +670,7 @@ training_step = TrainingStep(...)
 training_step.add_depends_on([processing_step])
 ```
 
-The following example creates a training step that doesn't start until two different processing steps finish executing\.
+The following example creates a training step that doesn't start until two different processing steps finish running\.
 
 ```
 processing_step_1 = ProcessingStep(...)
@@ -548,7 +688,7 @@ training_step.add_depends_on([processing_step_1])
 training_step.add_depends_on([processing_step_2])
 ```
 
-The following example creates a training step that receives input from one processing step and waits for a different processing step to finish executing\.
+The following example creates a training step that receives input from one processing step and waits for a different processing step to finish running\.
 
 ```
 processing_step_1 = ProcessingStep(...)
@@ -575,8 +715,8 @@ custom_dependencies = training_step.depends_on
 
  You can use any of the available SageMaker [Deep Learning Container images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md) when you create a step in your pipeline\. 
 
-You can also create a step using SageMaker S3 applications\. A SageMaker S3 application is a tar\.gz bundle with one or more Python scripts that can run within that bundle\. For more information on application package bundling, see [Deploying directly from model artifacts](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/using_tf.html?highlight=packaging#id22)\. 
+You can also create a step using SageMaker Amazon S3 applications\. A SageMaker Amazon S3 application is a tar\.gz bundle with one or more Python scripts that can run within that bundle\. For more information on application package bundling, see [Deploying directly from model artifacts](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/using_tf.html?highlight=packaging#id22)\. 
 
- You can also use your own container with pipeline steps\. Because you can’t create an image from within SageMaker Studio, you must create your image using another method before using it with Amazon SageMaker Model Building Pipelines\.
+ You can also use your own container with pipeline steps\. Because you can’t create an image from within Amazon SageMaker Studio, you must create your image using another method before using it with Amazon SageMaker Model Building Pipelines\.
 
  To use your own container when creating the steps for your pipeline, include the image URI in the estimator definition\. For more information on using your own container with SageMaker, see [Using Docker Containers with SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/docker-containers.html)\.

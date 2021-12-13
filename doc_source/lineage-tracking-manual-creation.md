@@ -1,6 +1,6 @@
 # Manually Create Tracking Entities<a name="lineage-tracking-manual-creation"></a>
 
-You can manually create tracking entities for any property\. For information on the tracking entities that Amazon SageMaker automatically creates, see [Amazon SageMaker Created Tracking Entities](lineage-tracking-auto-creation.md)\.
+You can manually create tracking entities for any property\. For information on the tracking entities that Amazon SageMaker automatically creates, see [Amazon SageMaker–Created Tracking Entities](lineage-tracking-auto-creation.md)\.
 
 You can add tags to all entities except associations\. Tags are arbitrary key\-value pairs that provide custom information\. You can filter or sort a list or search query by tags\. For more information, see [Tagging AWS resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) in the *AWS General Reference*\.
 
@@ -121,7 +121,7 @@ The following procedure shows you how to create and associate artifacts between 
 You can manually track the workflow created in the previous section\.
 
 Given the endpoint Amazon Resource Name \(ARN\) from the previous example, the following procedure shows you how to track the workflow back to the datasets used to train the model that was deployed to the endpoint\. You perform the following steps:
-+ Given the endpoint ARN, get the endpoint context\.
++ Given the endpoint ARN,get the endpoint context\.
 + Get the trial component from the association between the trial component and the endpoint context\.
 + Get the training data location artifact from the association between the trial component and the endpoint context\.
 + Get the training data location from the training data location artifact\.

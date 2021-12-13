@@ -6,5 +6,6 @@ To train a machine learning model, you need a large, high\-quality, labeled data
 
 **Topics**
 + [Use Amazon SageMaker Ground Truth to Label Data](sms.md)
++ [Use Amazon SageMaker Ground Truth Plus to Label Data](gtp.md)
 + [Create and Manage Workforces](sms-workforce-management.md)
 + [Crowd HTML Elements Reference](sms-ui-template-reference.md)

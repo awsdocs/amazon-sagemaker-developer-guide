@@ -1,8 +1,6 @@
 # Input Data<a name="sms-data-input"></a>
 
 The input data are the data objects that you send to your workforce to be labeled\. There are two ways to send data objects to Ground Truth for labeling: 
-
-This directory contains one numbered
 + Send a list of data objects that require labeling using an input manifest file\.
 + Send individual data objects in real time to a perpetually running, streaming labeling job\. 
 

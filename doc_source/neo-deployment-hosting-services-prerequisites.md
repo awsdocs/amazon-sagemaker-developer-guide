@@ -16,7 +16,7 @@ To create a SageMaker Neo\-compiled model, you need the following:
       * If you did not train your model using SageMaker*, you need to provide an entry point script \(`inference.py`\) file that can be used at the time of inference\. Based on the framework—MXNet or PyTorch—the inference script location must conform to the SageMaker Python SDK [Model Directory Structure for MxNet](https://sagemaker.readthedocs.io/en/stable/frameworks/mxnet/using_mxnet.html#model-directory-structure) or [ Model Directory Structure for PyTorch](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/using_pytorch.html#model-directory-structure)\. 
 
       When using Neo Inference Optimized Container images with **PyTorch** and **MXNet** on CPU and GPU instance types, the inference script must implement the following functions: 
-      + `model_fn`: Loads the model\.
+      + `model_fn`: Loads the model\. \(Optional\)
       + `input_fn`: Converts the incoming request payload into a numpy array\.
       + `predict_fn`: Performs the prediction\.
       + `output_fn`: Converts the prediction output into the response payload\.
@@ -229,8 +229,10 @@ To create a SageMaker Neo\-compiled model, you need the following:
       def model_fn(model_dir):
           """Load the model and return it.
           Providing this function is optional.
-          There is a default model_fn available which will load the model
-          compiled using SageMaker Neo. You can override it here.
+          There is a default_model_fn available, which will load the model
+          compiled using SageMaker Neo. You can override the default here.
+          The model_fn only needs to be defined if your model needs extra
+          steps to load, and can otherwise be left undefined.
       
           Keyword arguments:
           model_dir -- the directory path where the model artifacts are present

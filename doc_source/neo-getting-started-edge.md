@@ -184,7 +184,7 @@ You do not need to add the `‘AmazonSageMakerFullAccess’` IAM policy
 
    ```
    # Upload model        
-   s3_client.upload_file(filename=model_filename, bucket=bucket, key=model_filename)
+   s3_client.upload_file(Filename=model_filename, Bucket=bucket, Key=model_filename)
    ```
 
 ------
