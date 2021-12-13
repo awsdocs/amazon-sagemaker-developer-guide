@@ -11,8 +11,6 @@ The SageMaker Spark library, `com.amazonaws.services.sagemaker.sparksdk`, provid
 
 With SageMaker Studio, you can easily connect to an Amazon EMR cluster\. For more information, see [Prepare data at Scale with Studio Notebooks](https://docs.aws.amazon.com/sagemaker/latest/studio-notebooks-emr-cluster.xml)\.
 
-
-
 ## Download the SageMaker Spark Library<a name="spark-sdk-download"></a>
 
 You have the following options for downloading the Spark library provided by SageMaker:

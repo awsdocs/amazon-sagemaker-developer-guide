@@ -40,7 +40,7 @@ In this section you will create SageMaker and AWS IoT client objects, download a
    Type the following into your Jupyter Notebook to get a copy of Tiny\-YOLO:
 
    ```
-   !wget -O yolov3-tiny.cfg https://github.com/pjreddie/darknet/blob/master/cfg/yolov3-tiny.cfg?raw=true
+   !wget -O yolov3-tiny.cfg https://raw.githubusercontent.com/pjreddie/darknet/master/cfg/yolov3-tiny.cfg
    !wget https://pjreddie.com/media/files/yolov3-tiny.weights
    ```
 

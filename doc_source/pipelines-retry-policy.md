@@ -7,7 +7,7 @@ The retry policy only supports the following pipeline steps:
 + [Training Step](build-and-manage-steps.md#step-type-training) 
 + [Tuning Step](build-and-manage-steps.md#step-type-tuning) 
 **Note**  
-The SageMaker hyperparameter tuning job already conducts retries internally so the `SageMaker.JOB_INTERNAL_ERROR` exception type iis not retried, even if a retry policy is configured\. If you really want to retry, you can program your own [ Retry Strategy](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RetryStrategy.html) using the SageMaker API\.
+The SageMaker hyperparameter tuning job already conducts retries internally so the `SageMaker.JOB_INTERNAL_ERROR` exception type is not retried, even if a retry policy is configured\. If you really want to retry, you can program your own [ Retry Strategy](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RetryStrategy.html) using the SageMaker API\.
 + [CreateModel Step](build-and-manage-steps.md#step-type-create-model) 
 + [RegisterModel Step](build-and-manage-steps.md#step-type-register-model) 
 + [Transform Step](build-and-manage-steps.md#step-type-transform) 
@@ -45,7 +45,7 @@ The retry policy for Pipelines has the following JSON schema:
 + `IntervalSeconds` \(optional\): The number of seconds before the first retry attempt \(1 by default\)\. `IntervalSeconds` has a maximum value of 43200 seconds \(12 hours\)\.
 + `BackoffRate` \(optional\): The multiplier by which the retry interval increases during each attempt \(2\.0 by default\)\.
 + `MaxAttempts` \(optional\): A positive integer that represents the maximum number of retry attempts \(5 by default\)\. If the error recurs more times than `MaxAttempts` specifies, retries cease and normal error handling resumes\. A value of 0 specifies that errors are never retried\. `MaxAttempts` has a maximum value of 20\.
-+ `ExpireAfterMin` \(optional\): A positive integer that represents the maximum timespan of retry\. If the error recurs after `ExpireAfterMin` minutes counting from the step gets executed, retries cease and normal error handling resumes\. A value of 0 specifies that errors are never retried\. `MaxAttempts` has a maximum value of 14400 minutes \(10 days\)\.
++ `ExpireAfterMin` \(optional\): A positive integer that represents the maximum timespan of retry\. If the error recurs after `ExpireAfterMin` minutes counting from the step gets executed, retries cease and normal error handling resumes\. A value of 0 specifies that errors are never retried\. `ExpireAfterMin ` has a maximum value of 14,400 minutes \(10 days\)\.
 **Note**  
 Only one of `MaxAttempts` or `ExpireAfterMin` can be given, but not both; if both are *not* specified, `MaxAttempts` becomes the default\. If both properties are identified within one policy, then the retry policy will generate a validation error\.
 
@@ -83,7 +83,7 @@ The following is an example of how to build a TrainingStep in SDK for Python \(B
 from sagemaker.workflow.retry import (
     StepRetryPolicy, 
     StepExceptionTypeEnum,
-    SageMakerExceptionTypeEnum,
+    SageMakerJobExceptionTypeEnum,
     SageMakerJobStepRetryPolicy
 )
 
@@ -103,7 +103,7 @@ step_train = TrainingStep(
         ),
         // retry when resource limit quota gets exceeded
         SageMakerJobStepRetryPolicy(
-            exception_types=[SageMakerExceptionTypeEnum.RESOURCE_LIMIT]
+            exception_types=[SageMakerJobExceptionTypeEnum.RESOURCE_LIMIT]
             expire_after_min=120,
             interval_seconds=60,
             backoff_rate=2.0
@@ -111,8 +111,8 @@ step_train = TrainingStep(
         // retry when job failed due to transient error or EC2 ICE.
         SageMakerJobStepRetryPolicy(
             failure_reason_types=[
-                SageMakerExceptionTypeEnum.JOB_INTERNAL_ERROR,
-                SageMakerExceptionTypeEnum.JOB_CAPACITY_ERROR,
+                SageMakerJobExceptionTypeEnum.JOB_INTERNAL_ERROR,
+                SageMakerJobExceptionTypeEnum.JOB_CAPACITY_ERROR,
             ]
             max_attempts=10,
             interval_seconds=30,

@@ -16,6 +16,27 @@ Amazon SageMaker includes the following features:
 **[SageMaker Studio](studio.md)**  
 An integrated machine learning environment where you can build, train, deploy, and analyze your models all in the same application\.
 
+**[SageMaker Canvas](canvas.md)**  
+An auto ML service that gives people with no coding experience the ability to build models and make predictions with them\.
+
+**[SageMaker Ground Truth Plus](gtp.md)**  
+A turnkey data labeling feature to create high\-quality training datasets without having to build labeling applications and manage the labeling workforce on your own\.
+
+**[SageMaker Studio Lab](studio-lab.md)**  
+A free service that gives customers access to AWS compute resources in an environment based on open\-source JupyterLab\.
+
+**[SageMaker Training Compiler](training-compiler.md)**  
+Train deep learning models faster on scalable GPU instances managed by SageMaker\.
+
+**[SageMaker Studio Universal Notebook](studio-notebooks-emr-cluster.md)**  
+Easily discover, connect to, create, terminate and manage Amazon EMR clusters in single account and cross account configurations directly from SageMaker Studio\.
+
+**[SageMaker Serverless Endpoints](serverless-endpoints.md)**  
+A serverless endpoint option for hosting your ML model\. Automatically scales in capacity to serve your endpoint traffic\. Removes the need to select instance types or manage scaling policies on an endpoint\.
+
+**[SageMaker Inference Recommender](inference-recommender.md)**  
+Get recommendations on inference instance types and configurations \(e\.g\. instance count, container parameters and model optimizations\) to use your ML models and workloads\.
+
 **[SageMaker Model Registry](model-registry.md)**  
 Versioning, artifact and lineage tracking, approval workflow, and cross account support for deployment of your machine learning models\.
 

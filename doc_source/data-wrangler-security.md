@@ -385,7 +385,7 @@ Below are instructions on how to setup a customer managed key for your default A
 
 1. After following Step 1, navigate to KMS in your AWS Management Console\. Find the customer managed key you selected in Step 1 of the previous step, and add the Studio role as the key user\. To do this, follow the [Allows key users to use a customer managed key](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-users)\.
 
-### Encrypting the Data That You Export<a name="w2108aac19c18c29c15c17"></a>
+### Encrypting the Data That You Export<a name="w2207aac19c18c29c15c17"></a>
 
 You can encrypt the data that you export using one of the following methods:
 + Specifying that your Amazon S3 bucket have object use SSE\-KMS encryption\.

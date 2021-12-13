@@ -3,11 +3,11 @@
 **Important**  
 To use new features with an existing notebook instance or Studio app, restart it to get the latest updates\. 
 
-Amazon SageMaker's distributed model parallel library \(the library\) can be used to training large deep learning models that were previously difficult to train due to GPU memory limitations\. The library automatically and efficiently splits a model across multiple GPUs and instances and coordinates model training, allowing you to increase prediction accuracy by creating larger models with more parameters\.
+Use Amazon SageMaker's distributed model parallel library to train large deep learning \(DL\) models that are difficult to train due to GPU memory limitations\. The library automatically and efficiently splits a model across multiple GPUs and instances\. Using the library, you can achieve a target prediction accuracy faster by efficiently training larger DL models with billions or trillions of parameters\.
 
-You can use the library to automatically partition your existing TensorFlow and PyTorch workloads across multiple GPUs with minimal code changes\. You can access the library's API through the SageMaker SDK\.
+You can use the library to automatically partition your own TensorFlow and PyTorch models across multiple GPUs and multiple nodes with minimal code changes\. You can access the library's API through the SageMaker Python SDK\.
 
-Use the following sections to learn more about model parallelism and the SageMaker model parallel library\. This library's API documentation is located in the SageMaker Python SDK under [Distributed Training APIs](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel.html)\. To see the latest updates to the library, refer to the [release notes](https://github.com/aws/sagemaker-python-sdk/blob/master/doc/api/training/smd_model_parallel_release_notes/smd_model_parallel_change_log.md)\.
+Use the following sections to learn more about model parallelism and the SageMaker model parallel library\. This library's API documentation is located at [Distributed Training APIs](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel.html) in the *SageMaker Python SDK documentation*\. To see the latest updates to the library, refer to the [release notes](https://github.com/aws/sagemaker-python-sdk/blob/master/doc/api/training/smd_model_parallel_release_notes/smd_model_parallel_change_log.md)\.
 
 **Topics**
 + [Introduction to Model Parallelism](model-parallel-intro.md)

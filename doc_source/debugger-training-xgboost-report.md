@@ -1,6 +1,9 @@
 # SageMaker Debugger XGBoost Training Report<a name="debugger-training-xgboost-report"></a>
 
-For SageMaker XGBoost training jobs, use the Debugger [CreateXgboostReport](debugger-built-in-rules.md#create-xgboost-report) rule to receive a comprehensive training report of the training progress and results\. Following this guide, specify the [CreateXgboostReport](debugger-built-in-rules.md#create-xgboost-report) rule while constructing an XGBoost estimator, download the report using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) or the Amazon S3 console, and then you can interpret the profiling results\.
+For SageMaker XGBoost training jobs, use the Debugger [CreateXgboostReport](debugger-built-in-rules.md#create-xgboost-report) rule to receive a comprehensive training report of the training progress and results\. Following this guide, specify the [CreateXgboostReport](debugger-built-in-rules.md#create-xgboost-report) rule while constructing an XGBoost estimator, download the report using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) or the Amazon S3 console, and gain insights into the training results\.
+
+**Important**  
+In the report, plots and and recommendations are provided for informational purposes and are not definitive\. You are responsible for making your own independent assessment of the information\.
 
 **Topics**
 + [Construct a SageMaker XGBoost Estimator with the Debugger XGBoost Report Rule](#debugger-training-xgboost-report-estimator)
@@ -8,8 +11,6 @@ For SageMaker XGBoost training jobs, use the Debugger [CreateXgboostReport](debu
 + [Debugger XGBoost Training Report Walkthrough](#debugger-training-xgboost-report-walkthrough)
 
 ## Construct a SageMaker XGBoost Estimator with the Debugger XGBoost Report Rule<a name="debugger-training-xgboost-report-estimator"></a>
-
-When you construct a SageMaker estimator for an XGBoost training job, specify the rule as shown in the following example code\.
 
 The [CreateXgboostReport](debugger-built-in-rules.md#create-xgboost-report) rule collects the following output tensors from your training job: 
 + `hyperparameters` – Saves at the first step\.
@@ -19,6 +20,8 @@ The [CreateXgboostReport](debugger-built-in-rules.md#create-xgboost-report) rule
 + `labels` – Saves every 5 steps\.
 
 The output tensors are saved at a default S3 bucket\. For example, `s3://sagemaker-<region>-<12digit_account_id>/<base-job-name>/debug-output/`\.
+
+When you construct a SageMaker estimator for an XGBoost training job, specify the rule as shown in the following example code\.
 
 ------
 #### [ Using the SageMaker generic estimator ]
@@ -128,6 +131,9 @@ If you are using a Jupyter notebook server, run `!pwd` to verify the current wor
 ## Debugger XGBoost Training Report Walkthrough<a name="debugger-training-xgboost-report-walkthrough"></a>
 
 This section walks you through the Debugger XGBoost training report\. The report is automatically aggregated depending on the output tensor regex, recognizing what type of your training job is among binary classification, multiclass classification, and regression\.
+
+**Important**  
+In the report, plots and and recommendations are provided for informational purposes and are not definitive\. You are responsible for making your own independent assessment of the information\.
 
 **Topics**
 + [Distribution of True Labels of the Dataset](#debugger-training-xgboost-report-walkthrough-dist-label)

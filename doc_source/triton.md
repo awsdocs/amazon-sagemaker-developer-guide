@@ -16,3 +16,11 @@ Some of the key features of Triton Inference Server Container are:
 + **Concurrent model execution**: Multiple instances of the same model can run simultaneously on the same GPU or on multiple GPUs\.
 + **Dynamic batching**: For models that support batching, Triton has multiple built\-in scheduling and batching algorithms that combine individual inference requests together to improve inference throughput\. These scheduling and batching decisions are transparent to the client requesting inference\.
 + **Diverse CPU and GPU support**: The models can be executed on CPUs or GPUs for maximum flexibility and to support heterogeneous computing requirements\.
+
+## What do you want to do?<a name="triton-do"></a>
+
+I want to deploy my trained PyTorch model in SageMaker\.  
+For a sample Jupyter Notebook, see the [Deploy your PyTorch Resnet50 model with Triton Inference Server example](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker-triton/resnet50/triton_resnet50.ipynb)\.
+
+I want to deploy my trained Hugging Face model in SageMaker\.  
+For a sample Jupyter Notebook, see the [Deploy your PyTorch BERT model with Triton Inference Server example](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker-triton/nlp_bert/triton_nlp_bert.ipynb)\.

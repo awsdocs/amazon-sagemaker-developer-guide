@@ -11,7 +11,7 @@ This section contains information about how to understand and prevent common com
 
 Attempt to resolve your error by the going through these sections in the following order:
 
-1. Check that the input of your compilation job satisfies the input requirements\. See [What input data shapes does SageMaker Neo expect?](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-job-compilation.html#neo-job-compilation-expected-inputs) 
+1. Check that the input of your compilation job satisfies the input requirements\. See [What input data shapes does SageMaker Neo expect?](neo-compilation-preparing-model.md#neo-job-compilation-expected-inputs)
 
 1.  Check common [framework\-specific errors](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-troubleshooting.html#neo-troubleshooting-compilation-framework-related-errors)\. 
 

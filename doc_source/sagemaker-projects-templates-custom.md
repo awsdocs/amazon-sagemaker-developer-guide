@@ -4,7 +4,7 @@ If the SageMaker\-provided templates do not meet your needs \(for example, you w
 
 We recommend starting by using SageMaker\-provided templates to understand how to organize your code and resources and build on top of it\. To do this, after you enable administrator access to the SageMaker templates, log in to the [https://console\.aws\.amazon\.com/servicecatalog/](https://console.aws.amazon.com/servicecatalog/), choose **Portfolios**, then choose **Imported**\. For information about AWS Service Catalog, see [Overview of AWS Service Catalog](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/what-is_concepts.html) in the *AWS Service Catalog User Guide*\.
 
-Create your own project templates to customize your MLOps project\. SageMaker project templates are AWS Service Catalog provisioned products to provision the resources for your MLOps project\. 
+Create your own project templates to customize your MLOps project\. SageMaker project templates are AWS Service Catalog–provisioned products to provision the resources for your MLOps project\. 
 
 To create a custom project template, complete the following steps\.
 

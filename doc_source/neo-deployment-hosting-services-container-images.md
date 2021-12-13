@@ -152,6 +152,6 @@ The following table maps *aws\_account\_id* with *aws\_region*\. Use this table 
 | 474822919863 | cn\-northwest\-1 | 
 | 472730292857 | cn\-north\-1 | 
 | 756306329178 | sa\-east\-1 | 
-| 464438896020 | ca\-cental\-1 | 
+| 464438896020 | ca\-central\-1 | 
 | 836785723513 | me\-south\-1 | 
 | 774647643957 | af\-south\-1 | 
