@@ -249,13 +249,13 @@ Note: You do not need to approve the model package to create an Inference Recomm
                                   "ModelDataUrl": model_url,
                                   "Framework": framework.upper(), 
                                   "FrameworkVersion": framework_version,
-                                  "NearestModelName": nearest_model_name,
-                                  "SamplePayloadUrl": sample_payload_url
+                                  "NearestModelName": nearest_model_name
                               }
                               ],
                           "SupportedContentTypes": [input_content_type],
                           "SupportedResponseMIMETypes": [response_content_type],
                   }
+                  "SamplePayloadUrl": sample_payload_url
               }
       ```
 
