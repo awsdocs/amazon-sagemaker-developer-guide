@@ -12,9 +12,9 @@
    https://studiolab.sagemaker.aws/users/<YOUR_USER_NAME>
    ```
 
-1.  From the top\-right corner, select your user name\. This opens a dropdown menu\. 
+1.  From the top\-right corner, select your user name to open a dropdown menu\. 
 
-1.  From the dropdown menu, select **Change password**\. This opens a new page\. 
+1.  From the dropdown menu, select **Change password** to open a new page\. 
 
 1.  Enter your current password into the **Enter your current password** field\.
 
@@ -32,9 +32,9 @@
    https://studiolab.sagemaker.aws/users/<YOUR_USER_NAME>
    ```
 
-1.  From the top\-right corner, select your user name\. This opens a dropdown menu\. 
+1.  From the top\-right corner, select your user name to open a dropdown menu\. 
 
-1.  From the dropdown menu, select **Delete account**\. This opens a new page\. 
+1.  From the dropdown menu, select **Delete account** to open a new page\. 
 
 1.  Enter your password to confirm the deletion of your Studio Lab account\. 
 

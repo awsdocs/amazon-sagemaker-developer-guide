@@ -1,4 +1,4 @@
-# Discover Amazon EMR Clusters from Studio<a name="emr-cluster-discover"></a>
+# Discover Amazon EMR Clusters from Studio<a name="discover-emr-clusters"></a>
 
 From within Studio, data scientists and data engineers can easily discover, connect to, and manage Amazon EMR clusters\. Your Amazon EMR clusters may be in the same AWS account as SageMaker Studio or they may be in a different AWS account\. This section explains how to discover an Amazon EMR cluster that exists in the same account as SageMaker Studio\. For information about discovering Amazon EMR clusters in a different AWS account, see [Discover Amazon EMR Clusters Across Accounts](#discover-emr-clusters-across-accounts)\.
 

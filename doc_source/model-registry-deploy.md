@@ -17,6 +17,7 @@ To deploy a model version using the [Amazon SageMaker Python SDK](https://sagema
 
 ```
 from sagemaker import ModelPackage
+from time import gmtime, strftime
 
 model_package_arn = 'arn:aws:sagemaker:us-east-2:12345678901:model-package/modeltest/1'
 model = ModelPackage(role=role, 

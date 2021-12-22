@@ -31,7 +31,7 @@ Note: Your account request is denied if your email has been associated with acti
 
 After your request is approved, complete the following steps to create your Studio Lab account\.
 
-1. Select **Create account** in the account request approval email\. This opens a new page\.
+1. Select **Create account** in the account request approval email to open a new page\.
 
 1. From the new page, enter your **Email**, a **Password**, and a **Username**\. 
 
@@ -43,8 +43,8 @@ After you register for your account, you can sign in to Studio Lab\.
 
 1. Navigate to the [Studio Lab landing page](https://studiolab.sagemaker.aws)\.
 
-1. Select **Sign in**\. This opens a new page\.
+1. Select **Sign in** to open a new page\.
 
 1. Enter your **Email** or **Username** and **Password**\. 
 
-1. Select **Sign in**\. This opens a new page to your project\. 
+1. Select **Sign in** to open a new page to your project\. 

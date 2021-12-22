@@ -74,7 +74,7 @@ To use the Amazon SageMaker console, you need to grant permissions for additiona
             "Resource":"*"
         },
         {
-          "Sid": "AccessAwsMarketplaceSubscritions",
+          "Sid": "AccessAwsMarketplaceSubscriptions",
           "Effect": "Allow",
           "Action": [
             "aws-marketplace:ViewSubscriptions"

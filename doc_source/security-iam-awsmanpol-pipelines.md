@@ -76,6 +76,6 @@ This policy includes the following permissions\.
 View details about updates to AWS managed policies for Amazon SageMaker since this service began tracking these changes\. For automatic alerts about changes to this page, subscribe to the RSS feed on the SageMaker [Document history page\.](doc-history.md)
 
 
-| Change | Description | Date | 
-| --- | --- | --- | 
-|  SageMaker started tracking changes  |  SageMaker started tracking changes for its SageMaker Pipelines AWS managed policies\. [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/security-iam-awsmanpol-pipelines.html)  | July 30, 2021 | 
+| Policy | Version | Change | Date | 
+| --- | --- | --- | --- | 
+| `AmazonSageMakerPipelinesIntegrations`  | 1 |  Initial policy  | July 30, 2021 | 

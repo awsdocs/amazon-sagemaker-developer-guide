@@ -77,7 +77,7 @@ aws_account_id.dkr.ecr.aws_region.amazonaws.com/sagemaker-inference-pytorch:fx_v
 
 Replace *aws\_account\_id* from the table at the end of this page based on the *aws\_region* you used\. 
 
-Replace *fx\_version* with `1.4`, `1.5`, or `1.6`\.
+Replace *fx\_version* with `1.4`, `1.5`, `1.6`, `1.7` or `1.8`\.
 
 Replace *instance\_type* with either `cpu` or `gpu`\. 
 

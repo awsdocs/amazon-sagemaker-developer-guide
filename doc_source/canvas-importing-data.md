@@ -1,6 +1,6 @@
 # Importing data in Amazon SageMaker Canvas<a name="canvas-importing-data"></a>
 
-You can import data from different data sources into Amazon SageMaker Canvas\. The data sources include Amazon S3, your local machine, and external data sources\. You can use the dataset that you import to build a model and make predictions on other datasets\.
+You can import data from different data sources into Amazon SageMaker Canvas\. The data sources include Amazon S3, your local machine, and external data sources\. Currently, you can only import \.csv files\. You can use the dataset that you import to build a model and make predictions on other datasets\.
 
 You can import data from the following external data sources:
 + An Amazon S3 bucket from an external account\.

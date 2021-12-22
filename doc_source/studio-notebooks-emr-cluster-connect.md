@@ -16,7 +16,7 @@ Only a subset of kernels can connect to an Amazon EMR cluster\. The supported im
 1. After you have selected your kernel of choice, select **Cluster**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/cluster-button-on-toolbar-mod.png)
 
-1. A **Connect to cluster** UI screen will appear\. Choose a cluster and select **Connect**\. Not all Amazon EMR clusters can be connected to Studio\. For more information, see [Perform interactive data processing using Spark in Studio Notebooks](http://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-studio-notebooks-backed-by-spark-in-amazon-emr/)
+1. A **Connect to cluster** UI screen will appear\. Choose a cluster and select **Connect**\. Not all Amazon EMR clusters can be connected to Studio\. For more information, see [Perform interactive data processing using Spark in Studio Notebooks](http://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-studio-notebooks-backed-by-spark-in-amazon-emr/)\.
 
    1. When you connect to a cluster, it adds a code block to an active cell to establish the connection\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/cluster-discovery.png)

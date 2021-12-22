@@ -24,7 +24,7 @@ To use Studio Lab, you must start your project runtime\. This runtime gives you 
 
 1.  Select **Start runtime**\. 
 
-1.  After the runtime is running, select **Open project**\. This opens the project runtime environment in a new browser tab\. 
+1.  After the runtime is running, select **Open project** to open the project runtime environment in a new browser tab\. 
 
 ## Stop the project runtime<a name="studio-lab-manage-runtime-stop"></a>
 

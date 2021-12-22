@@ -20,7 +20,7 @@ Dive into Deep Learning \(D2L\) is an interactive, open\-source book that teache
 
 1.  Under **Learn and experiment**, find **Dive into Deep Learning**\. 
 
-1.  From **Dive into Deep Learning**, select **Open D2L notebooks**\. This opens a new page with a preview of the notebooks\.
+1.  From **Dive into Deep Learning**, select **Open D2L notebooks** to open a new page with a preview of the notebooks\.
 
 1. Select **Copy to project**\.
 
@@ -38,7 +38,7 @@ Dive into Deep Learning \(D2L\) is an interactive, open\-source book that teache
 
 1.  Under **Learn and experiment**, find **AWS Machine Learning University**\.
 
-1.  From **AWS Machine Learning University**, select **Open MLU notebooks**\. This opens a new page with a preview of the notebooks\.
+1.  From **AWS Machine Learning University**, select **Open MLU notebooks** to open a new page with a preview of the notebooks\.
 
 1. Select **Copy to project**\.
 
@@ -56,6 +56,6 @@ Dive into Deep Learning \(D2L\) is an interactive, open\-source book that teache
 
 1.  Under **Resources and community**, find **Hugging Face**\.
 
-1.  From **Hugging Face**, select **Open Hugging Face notebooks**\. This opens a new page with a preview of the notebooks\.
+1.  From **Hugging Face**, select **Open Hugging Face notebooks** to open a new page with a preview of the notebooks\.
 
 1. Select **Copy to project**\.

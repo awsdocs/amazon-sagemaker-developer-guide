@@ -32,7 +32,7 @@ To access the feature importance metrics in this procedure, you must first selec
 1. The plot of the aggregated SHAP values that indicate the importance of each feature is displayed in the **Explaining your model's predictions** section\.  
 ![\[Select Describe AutoML Job.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-models-details-generated-7.PNG)
 
-1. For more information about how the SHAP values help explain predictions based on feature importance, scroll down to see the link to the [Understanding the model explainability](https://pages.awscloud.com/rs/112-TZM-766/images/Amazon.AI.Fairness.and.Explainability.Whitepaper.pdf) whitepaper\. Additional information is also available in the [Model Explainability](clarify-model-explainability.md) topic in the SageMaker Developer Guide\.   
+1. For more information about how the SHAP values help explain predictions based on feature importance, scroll down to see the link to the [Understanding the model explainability](https://pages.awscloud.com/rs/112-TZM-766/images/Amazon.AI.Fairness.and.Explainability.Whitepaper.pdf) whitepaper\. Additional information is also available in the [Amazon SageMaker Clarify Model Explainability](clarify-model-explainability.md) topic in the SageMaker Developer Guide\.   
 ![\[References for more information on maintainability.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-models-details-generated-8.PNG)
 
 1. To see the summary statistics for the objective metric, the f1 values for training and validation, the training and validation errors, and a list of the parameter values used to train and tune the model, scroll down to the bottom of the page\.  

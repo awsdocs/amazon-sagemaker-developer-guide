@@ -28,6 +28,7 @@ You use the SageMaker Canvas UI to import your data and perform analyses\. You c
 + [Build a model](canvas-build-model.md)
 + [Evaluating Your Model's Performance in Amazon SageMaker Canvas](canvas-evaluate-model.md)
 + [Making predictions on your data](canvas-make-predictions.md)
++ [Logging out of Amazon SageMaker Canvas](canvas-log-out.md)
 + [Time Series Forecasts in Amazon SageMaker Canvas](canvas-time-series.md)
 + [Updating a Model in Amazon SageMaker Canvas](canvas-update-model.md)
 + [Share your models with data scientists](canvas-collaborate.md)

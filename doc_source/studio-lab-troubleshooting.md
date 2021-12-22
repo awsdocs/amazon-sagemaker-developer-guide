@@ -17,11 +17,11 @@ If you can’t access your account, verify that you are using the correct email 
 
 1.  Select **Sign in**\.
 
-1.  Select **Forgot password?**\. This opens a new page\. 
+1.  Select **Forgot password?** to open a new page\. 
 
 1.  Enter the email address that you used to sign up for an account\. 
 
-1.  Select **Send reset link**\. This sends an email with a password reset link\. 
+1.  Select **Send reset link** to send an email with a password reset link\. 
 
 1.  From the password reset email, select **Reset your password**\. 
 
@@ -52,3 +52,14 @@ conda remove --name <YOUR_ENVIRONMENT> --all
  **Increasing disk space in your project** 
 
 If you get a notification that your disk space is full while you're attempting to create or import a file, you can delete files to increase space\. For instructions, see [Reset environment](studio-lab-use-manage.md#studio-lab-use-manage-conda-reset)\.
+
+ **Cannot import `cv2`** 
+
+If you run into an error when importing `cv2` after installing `opencv-python`, you must uninstall `opencv-python` and install `opencv-python-headless` as follows\.
+
+```
+%pip uninstall opencv-python --yes
+%pip install opencv-python-headless
+```
+
+You can then import `cv2` as expected\.

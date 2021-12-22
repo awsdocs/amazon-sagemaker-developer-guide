@@ -33,9 +33,9 @@ This repository provides notebooks for the following use cases and others\.
 
 1.  Open the Studio Lab project runtime\. 
 
-1.  From the menu, select **Git**\. This opens a new dropdown menu\. 
+1.  From the menu, select **Git** to open a new dropdown menu\. 
 
-1.  Select **Clone Git Repository**\. This opens a new window\. 
+1.  Select **Clone Git Repository** to open a new window\. 
 
 1.  In the new window, paste the repository's URL\. 
 
@@ -58,11 +58,11 @@ The following sections show two options for you to copy a GitHub notebook in you
 
 1.  In a new browser tab, navigate to the GitHub notebook that you want to clone\. 
 
-1.  In the notebook, select the **Open in Amazon SageMaker Studio Lab** button\. This opens a new page in Studio Lab with a preview of the notebook\.
+1.  In the notebook, select the **Open in Amazon SageMaker Studio Lab** button to open a new page in Studio Lab with a preview of the notebook\.
 
 1.  If the project runtime is not already running, start it by choosing the **Start runtime** button at the top of the preview page\. Wait for the runtime to start before proceeding to the next step\.
 
-1.  After the project runtime has started, select **Copy to project**\. This opens the project runtime in a new browser tab\. 
+1.  After the project runtime has started, select **Copy to project** to open the project runtime in a new browser tab\. 
 
 1.  In the **Copy from GitHub?** dialog box, select **Copy notebook only**\. This copies the notebook file to your project\.
 
@@ -86,9 +86,9 @@ The following sections show two options for you to copy a GitHub notebook in you
 
 1.  If the project runtime is not already running, start it by choosing the **Start runtime** button at the top of the preview page\. Wait for the runtime to start before proceeding to the next step\. 
 
-1.  After the project runtime has started, select **Copy to project**\. This opens the project runtime in a new browser tab\. 
+1.  After the project runtime has started, select **Copy to project** to open the project runtime in a new browser tab\. 
 
-1.  In the **Copy from GitHub?** dialog box, select **Copy notebook only**\. This copies the notebook file to your project\.
+1.  In the **Copy from GitHub?** dialog box, select **Copy notebook only** to copy the notebook file to your project\.
 
 ### Add an **Open in Amazon SageMaker Studio Lab** button to your GitHub notebook<a name="studio-lab-use-external-add-button"></a>
 
@@ -97,7 +97,7 @@ When you add the **Open in Amazon SageMaker Studio Lab** button to your notebook
  To add the functional **Open in Amazon SageMaker Studio Lab** button to your Jupyter notebook or repository, add the following markdown to the top of your notebook or repository\. 
 
 ```
-[![Open In SageMaker Studio Lab](https://studiolab.sagemaker.aws/studiolab.svg)](https://studiolab.sagemaker.aws/github/<PATH_TO_YOUR_NOTEBOOK_ON_GITHUB>)
+[![Open In SageMaker Studio Lab](https://studiolab.sagemaker.aws/studiolab.svg)](https://studiolab.sagemaker.aws/import/github/<PATH_TO_YOUR_NOTEBOOK_ON_GITHUB>)
 ```
 
 ## Import files from your computer<a name="studio-lab-use-external-import"></a>
@@ -114,7 +114,7 @@ When you add the **Open in Amazon SageMaker Studio Lab** button to your notebook
 
 1.  Select **Open**\. 
 
-  
+
 
  Alternatively, you can drag and drop files from your computer into the **File Browser** panel\. 
 

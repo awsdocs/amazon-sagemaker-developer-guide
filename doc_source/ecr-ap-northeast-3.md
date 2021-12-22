@@ -119,6 +119,10 @@ image_uris.retrieve(framework='huggingface',region='ap-northeast-3',version='4.4
 
 | Registry path | Version | Job types \(image scope\) | 
 | --- | --- | --- | 
+| 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/huggingface\-pytorch\-training:<tag> | 4\.12\.3 | training | 
+| 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/huggingface\-tensorflow\-training:<tag> | 4\.12\.3 | training | 
+| 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/huggingface\-pytorch\-inference:<tag> | 4\.12\.3 | inference | 
+| 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/huggingface\-tensorflow\-inference:<tag> | 4\.12\.3 | inference | 
 | 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/huggingface\-pytorch\-training:<tag> | 4\.11\.0 | training | 
 | 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/huggingface\-tensorflow\-training:<tag> | 4\.11\.0 | training | 
 | 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/huggingface\-pytorch\-inference:<tag> | 4\.11\.0 | inference | 
@@ -420,6 +424,8 @@ image_uris.retrieve(framework='pytorch',region='ap-northeast-3',version='1.8.0',
 
 | Registry path | Version | Job types \(image scope\) | Processor types | Python versions | 
 | --- | --- | --- | --- | --- | 
+| 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/pytorch\-inference:<tag> | 1\.9\.1 | inference | CPU, GPU | py38 | 
+| 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/pytorch\-training:<tag> | 1\.9\.1 | training | CPU, GPU | py38 | 
 | 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/pytorch\-inference:<tag> | 1\.9\.0 | inference | CPU, GPU | py38 | 
 | 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/pytorch\-training:<tag> | 1\.9\.0 | training | CPU, GPU | py38 | 
 | 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/pytorch\-inference:<tag> | 1\.8\.1 | inference | CPU, GPU | py3, py36 | 

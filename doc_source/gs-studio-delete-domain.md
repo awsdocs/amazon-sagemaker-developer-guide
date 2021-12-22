@@ -27,7 +27,7 @@ You can only delete an app whose status is `InService`, which is displayed as **
 
 1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Choose **Amazon SageMaker Domain** at the top left of the page to open the **Amazon SageMaker Domain Control Panel**\.
+1. Choose **SageMaker Domain** on the left side of the page to open the **SageMaker Domain Control Panel**\.
 
 1. Repeat the following steps for each user in the **User name** list\.
 
