@@ -25,26 +25,29 @@ After you have trained your model, instantiate the SageMaker Clarify processor u
 
 ```
 from sagemaker import clarify
-clarify_processor = clarify.SageMakerClarifyProcessor(role=role,
-                                                      instance_count=1,
-                                                      instance_type='ml.c4.xlarge',
-                                                      sagemaker_session=session)
+clarify_processor = clarify.SageMakerClarifyProcessor(
+    role=role,
+    instance_count=1,
+    instance_type='ml.c4.xlarge',
+    sagemaker_session=session)
 ```
 
 Next, configure the input dataset, where to store the output, the label column targeted with a `DataConfig` object, specify information about your trained model with `ModelConfig`, and provide information about the formats of your predictions with `ModelPredictedLabelConfig`\.
 
 ```
 bias_report_output_path = 's3://{}/{}/clarify-bias'.format(bucket, prefix)
-bias_data_config = clarify.DataConfig(s3_data_input_path=train_uri,
-                                      s3_output_path=bias_report_output_path,
-                                      label='Target',
-                                      headers=training_data.columns.to_list(),
-                                      dataset_type='text/csv')
+bias_data_config = clarify.DataConfig(
+    s3_data_input_path=train_uri,
+    s3_output_path=bias_report_output_path,
+    label='Target',
+    headers=training_data.columns.to_list(),
+    dataset_type='text/csv')
 
-model_config = clarify.ModelConfig(model_name=model_name,
-                                   instance_type='ml.c5.xlarge',
-                                   instance_count=1,
-                                   accept_type='text/csv')
+model_config = clarify.ModelConfig(
+    model_name=model_name,
+    instance_type='ml.c5.xlarge',
+    instance_count=1,
+    accept_type='text/csv')
 
 predictions_config = clarify.ModelPredictedLabelConfig(probability_threshold=0.8)
 ```
@@ -52,20 +55,22 @@ predictions_config = clarify.ModelPredictedLabelConfig(probability_threshold=0.8
 Use `BiasConfig` to provide information on which columns contain the facets \(sensitive groups, `Sex`\), what the sensitive features \(`facet_values_or_threshold`\) might be, and what the desirable outcomes are \(`label_values_or_threshold`\)\. 
 
 ```
-bias_config = clarify.BiasConfig(label_values_or_threshold=[1],
-                                facet_name='Sex',
-                                facet_values_or_threshold=[0])
+bias_config = clarify.BiasConfig(
+                label_values_or_threshold=[1],
+                facet_name='Sex',
+                facet_values_or_threshold=[0])
 ```
 
 You can run both the pretraining and posttraining analysis in the processing job at the same time with `run_bias()`\. 
 
 ```
-clarify_processor.run_bias(data_config=bias_data_config,
-                           bias_config=bias_config,
-                           model_config=model_config,
-                           model_predicted_label_config=predictions_config,
-                           pre_training_methods='all',
-                           post_training_methods='all')
+clarify_processor.run_bias(
+                data_config=bias_data_config,
+                bias_config=bias_config,
+                model_config=model_config,
+                model_predicted_label_config=predictions_config,
+                pre_training_methods='all',
+                post_training_methods='all')
 ```
 
 View the results in Studio or download them from the `bias_report_output_path` S3 bucket\.
@@ -80,11 +85,12 @@ Clarify runs any jobs associated with this processor using Spark distributed pro
 
 ```
 from sagemaker import clarify
-clarify_processor = clarify.SageMakerClarifyProcessor(role=role,
-                         instance_count=5,
-                         instance_type='ml.c5.xlarge',
-                         max_runtime_in_seconds=1200,
-                         volume_size_in_gb=100)
+clarify_processor = clarify.SageMakerClarifyProcessor(
+    role=role,
+    instance_count=5,
+    instance_type='ml.c5.xlarge',
+    max_runtime_in_seconds=1200,
+    volume_size_in_gb=100)
 ```
 
 If you configure a Clarify job to save local SHAP values in the [SHAPConfig](https://sagemaker.readthedocs.io/en/stable/api/training/processing.html#sagemaker.clarify.SHAPConfig) class, Spark saves the local SHAP value as multiple part files in parallel\.

@@ -14,6 +14,17 @@ To make a time series forecast, your dataset must have the following:
 + A timestamp column with all values having the `datetime` type using the format: `yyyy-MM-dd HH:mm:ss`\.
 + A target column that has the values that you're using to forecast future values\.
 
+You can make forecasts for the following intervals:
++ 1 min
++ 5 min
++ 15 min
++ 30 min
++ 1 hour
++ 1 day
++ 1 week
++ 1 month
++ 1 year
+
 For higher prediction accuracy, your dataset can also have additional columns that can provide data that can explain the variation in the target column\. Using the additional explanatory columns might help you forecast future values in the target column more accurately\.
 
 For example, you can forecast the amount of ice cream sold by a grocery store\. To make a forecast, you must have a timestamp column and a column that indicates how much ice cream the grocery store sold\. For a more accurate forecast, your dataset can also include the price, the ambient temperature, the flavor of the ice cream, or a unique identifier for the ice cream\.

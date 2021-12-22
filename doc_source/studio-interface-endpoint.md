@@ -6,7 +6,7 @@ SageMaker Studio supports interface endpoints that are powered by [AWS PrivateLi
 
 You can create an interface endpoint to connect to Studio with either the AWS console or the AWS Command Line Interface \(AWS CLI\)\. For instructions, see [Creating an interface endpoint](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#create-interface-endpoint)\. Make sure that you create interface endpoints for all of the subnets in your VPC from which you want to connect to Studio\. 
 
-When you create an interface enpoint, ensure that the security groups on your endpoint allow inbound access for HTTPS traffic from the security groups associated with SageMaker Studio\. For more information, see [Control access to services with VPC endpoints](https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-access.html#vpc-endpoints-security-groups)\.
+When you create an interface endpoint, ensure that the security groups on your endpoint allow inbound access for HTTPS traffic from the security groups associated with SageMaker Studio\. For more information, see [Control access to services with VPC endpoints](https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-access.html#vpc-endpoints-security-groups)\.
 
 **Note**  
 In addition to creating an interface endpoint to connect to SageMaker Studio, create an interface endpoint to connect to the Amazon SageMaker API\. When users call [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreatePresignedDomainUrl.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreatePresignedDomainUrl.html) to get the URL to connect to Studio, that call goes through the interface endpoint used to connect to the SageMaker API\.

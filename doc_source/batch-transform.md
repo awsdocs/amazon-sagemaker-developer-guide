@@ -17,6 +17,7 @@ For more information about batch transforms, see [Get Inferences for an Entire D
 + [Batch Transform Errors](#batch-transform-errors)
 + [Batch Transform Sample Notebooks](#batch-transform-notebooks)
 + [Associate Prediction Results with Input Records](batch-transform-data-processing.md)
++ [Storage in Batch Transform](batch-transform-storage.md)
 
 ## Use Batch Transform to Get Inferences from Large Datasets<a name="batch-transform-large-datasets"></a>
 

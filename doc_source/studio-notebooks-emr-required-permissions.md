@@ -62,6 +62,9 @@ To allow users to create Amazon EMR clusters, add the following permission to yo
 
 If you have provided Studio with a cross\-account discovery and connectivity role, the role in the non\-Studio account must allow "assume role" permissions to the Studio execution role\. This can be done by attaching the following permissions to your Studio execution role:
 
+**Note**  
+For all cross\-account use cases, the Studio execution role must have the `sts:AssumeRole` permission added to allow Studio to assume a role in the remote account\.
+
 ```
 { 
             "Sid": "AllowRoleAssumptionForCrossAccountDiscovery", 

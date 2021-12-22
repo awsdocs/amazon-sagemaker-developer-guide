@@ -8,8 +8,8 @@ SageMaker provides features to monitor and manage the training and validation of
 + For guidance on distributed training of deep learning models, see [Amazon SageMaker Distributed Training Libraries](distributed-training.md)\. 
 + For guidance on compiling and training deep learning models, see [Amazon SageMaker Training Compiler](training-compiler.md)\. 
 + For guidance on metrics used to monitor and train models, see [Monitor and Analyze Training Jobs Using Amazon CloudWatch Metrics](training-metrics.md)\. 
-+ For guidance on metrics used to detect model post\-processing bias, see [Detect Posttraining Data and Model Bias](clarify-detect-post-training-bias.md)\. 
-+ For guidance on model explainability, see [Model Explainability](clarify-model-explainability.md)\. 
++ For guidance on metrics used to detect model post\-processing bias, see [Detect Posttraining Data and Model Bias with Amazon SageMaker Clarify](clarify-detect-post-training-bias.md)\. 
++ For guidance on model explainability, see [Amazon SageMaker Clarify Model Explainability](clarify-model-explainability.md)\. 
 + For guidance on incremental training in SageMaker, see [Incremental Training in Amazon SageMaker](incremental-training.md)\.
 + For guidance on using managed spot training in SageMaker, see [Managed Spot Training in Amazon SageMaker](model-managed-spot-training.md)\.
 + For guidance on using training checkpoints in SageMaker, see [Use Checkpoints in Amazon SageMaker](model-checkpoints.md)\.
@@ -23,8 +23,7 @@ SageMaker provides features to monitor and manage the training and validation of
 + [Perform Automatic Model Tuning with SageMaker](automatic-model-tuning.md)
 + [Amazon SageMaker Distributed Training Libraries](distributed-training.md)
 + [Amazon SageMaker Training Compiler](training-compiler.md)
-+ [Detect Posttraining Data and Model Bias](clarify-detect-post-training-bias.md)
-+ [Model Explainability](clarify-model-explainability.md)
++ [Amazon SageMaker Clarify Bias Detection and Model Explainability](clarify-configure-processing-jobs.md)
 + [Incremental Training in Amazon SageMaker](incremental-training.md)
 + [Access Training Data](model-access-training-data.md)
 + [Managed Spot Training in Amazon SageMaker](model-managed-spot-training.md)

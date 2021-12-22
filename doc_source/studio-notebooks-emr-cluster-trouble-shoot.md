@@ -20,7 +20,7 @@ You can set up an SSH tunnel even if presigned URLs are not available to you\.
 
 To create one\-click URLs that can access Spark UI on Amazon EMR from SageMaker Studio notebooks, you must enable the following IAM permissions\. Choose the option that applies to you: 
 + **For Amazon EMR clusters that are in the same account as the SageMaker Studio notebook: Add the following permissions to the SageMaker Studio IAM execution role\. **
-+ **For Amazon EMR clusters that are in a different account \(not SageMaker Studio notebook\): Add the following permissions to the cross\-account role that you created for [Discover Amazon EMR Clusters from Studio](emr-cluster-discover.md)\.**
++ **For Amazon EMR clusters that are in a different account \(not SageMaker Studio notebook\): Add the following permissions to the cross\-account role that you created for [Discover Amazon EMR Clusters from Studio](discover-emr-clusters.md)\.**
 
 **Note**  
 You can access presigned URLs from the console in the following regions:  

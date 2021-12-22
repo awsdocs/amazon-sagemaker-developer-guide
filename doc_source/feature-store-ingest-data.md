@@ -14,7 +14,7 @@
 
 Data Wrangler is a feature of Studio that provides an end\-to\-end solution to import, prepare, transform, featurize, and analyze data\. Data Wrangler enables you to engineer your features and ingest them into a feature store\.  
 
- In Studio, after interacting with Data Wrangler, choose the **Export** tab, choose **Export Step**, and the choose **Feature Store**, as shown in the following screenshot\. This exports a Jupyter notebook that has all the source code in it to create a Feature Store feature group that adds yours features from Data Wrangler to an offline or online feature store\. 
+ In Studio, after interacting with Data Wrangler, choose the **Export** tab, choose **Export Step**, and the choose **Feature Store**, as shown in the following screenshot\. This exports a Jupyter notebook that has all the source code in it to create a Feature Store feature group that adds your features from Data Wrangler to an offline or online feature store\. 
 
  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/feature-store-data-sources-and-ingestion.png) 
 
