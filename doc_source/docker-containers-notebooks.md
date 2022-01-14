@@ -18,7 +18,7 @@ To learn how to host models trained in Scikit\-learn for making predictions in S
 + [kmeans\_bring\_your\_own\_model](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/advanced_functionality/kmeans_bring_your_own_model)
 + [xgboost\_bring\_your\_own\_model](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/advanced_functionality/xgboost_bring_your_own_model)
 
-## Package TensorFlow and Scitkit\-learn Models for Use in SageMaker<a name="docker-containers-notebooks-package"></a>
+## Package TensorFlow and Scikit\-learn Models for Use in SageMaker<a name="docker-containers-notebooks-package"></a>
 
 To learn how to package algorithms that you have developed in TensorFlow and scikit\-learn frameworks for training and deployment in the SageMaker environment, see the following notebooks\. They show you how to build, register, and deploy your own Docker containers using Dockerfiles\.
 + [tensorflow\_bring\_your\_own](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/advanced_functionality/tensorflow_bring_your_own)
