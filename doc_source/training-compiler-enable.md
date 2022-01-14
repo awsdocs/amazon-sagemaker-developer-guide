@@ -16,7 +16,7 @@ To get started, try using the batch sizes provided in the reference table at [Te
 **Note**  
 SageMaker Training Compiler is currently available only through the SageMaker `HuggingFace` estimator\.
 
-For information that fits your use case, see one the following options\.
+For information that fits your use case, see one of the following options\.
 
 ### For single GPU training<a name="training-compiler-estimator-single"></a>
 
@@ -223,7 +223,7 @@ if __name__ == "__main__":
     The following line takes care of setting up an inter-node communication
     as well as managing intra-node workers for each GPU.
     """
-    subprocess.call("python -m torch_xla.distributed.sm_dist " + arguments_command, shell=True)
+    subprocess.check_call("python -m torch_xla.distributed.sm_dist " + arguments_command, shell=True)
 ```
 
 After you finish setting up the estimator, see the following pages to prepare your training script:

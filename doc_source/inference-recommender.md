@@ -2,7 +2,7 @@
 
 Amazon SageMaker Inference Recommender is a new capability of Amazon SageMaker that reduces the time required to get machine learning \(ML\) models in production by automating load testing and model tuning across SageMaker ML instances\. You can use Inference Recommender to deploy your model to a real\-time inference endpoint that delivers the best performance at the lowest cost\. Inference Recommender helps you select the best instance type and configuration \(such as instance count, container parameters, and model optimizations\) for your ML models and workloads\.
 
-Amazon SageMaker Inference Recommender only charges you for the instances used while your jobs are executing\. For more information, see [Pricing](inference-recommender-pricing.md)\.
+Amazon SageMaker Inference Recommender only charges you for the instances used while your jobs are executing\.
 
 ## How it Works<a name="inference-recommender-how-it-works"></a>
 

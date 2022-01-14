@@ -37,3 +37,4 @@ RStudio on Amazon SageMaker has some significant differences from [RStudio Workb
 + When using RStudio on SageMaker, users don’t have access to the RStudio configuration files\. Amazon SageMaker manages the configuration file and sets defaults\. You can modify the RStudio Connect and RStudio Package Manager URLs when creating your RStudio\-enabled Amazon SageMaker Domain\.
 + Project sharing, realtime collaboration, and Job Launcher are not currently supported when using RStudio on Amazon SageMaker\.
 + When using RStudio on SageMaker, the RStudio IDE runs on Amazon SageMaker instances for on\-demand containerized compute resources\. 
++ RStudio on SageMaker only supports the RStudio IDE and does not support other IDEs supported by an RStudio Workbench installation\.

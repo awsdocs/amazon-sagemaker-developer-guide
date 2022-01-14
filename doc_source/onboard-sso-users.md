@@ -19,6 +19,8 @@ This topic describes how to onboard to Amazon SageMaker Domain using AWS SSO aut
 1. If you don't have an AWS SSO account in the same Region as your SageMaker Domain, you must create an AWS SSO account in the same Region as your SageMaker Domain before proceeding\. To continue to onboard without creating a new AWS SSO account, choose the **AWS Identity and Access Management \(IAM\)** authentication method or the **Quick start** procedure, which also uses IAM\.
 
    For information about setting up AWS SSO for use with Domain, see [Set Up AWS SSO for Use with Amazon SageMaker Domain](onboard-sso-setup.md)\.
+**Note**  
+To associate a SageMaker Studio UserProfile with AWS SSO, the UserProfile must be have been created using the AWS console\.
 
 1. Under **Permission**, for **IAM role**, choose an option from the role selector\.
 
@@ -94,7 +96,7 @@ Encryption in transit is only available for Amazon SageMaker Studio\.
 
 **To access the Domain after onboarding**
 
-After you are given access to the Domain, you are sent an email inviting you to create a password and activate your AWS SSO account\. The email also contains the URL to sign in to the Domain\.
+After you are given access to the Domain, you are sent an email inviting you to create a password and activate your AWS SSO account\. The email also contains the URL to sign in to the Domain\. For more information about signing in and session duration, see [How to sign in to the user portal](https://docs.aws.amazon.com/singlesignon/latest/userguide/howtosignin.html)\.
 
 After you activate your account, go to the Domain URL, sign in, and wait for your user profile to be created\. On subsequent visits, you only need to wait for the Studio or RStudio app to load\.
 

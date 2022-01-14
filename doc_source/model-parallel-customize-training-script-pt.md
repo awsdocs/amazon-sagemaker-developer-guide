@@ -1,13 +1,26 @@
 # Modify a PyTorch Training Script<a name="model-parallel-customize-training-script-pt"></a>
 
-The following are examples of training scripts that you can use to configure SageMaker's model parallel library with PyTorch versions 1\.7\.1 and 1\.6\.0, with auto\-partitioning and manual partitioning\. We recommend that you review the [Important Considerations](#model-parallel-pt-considerations) and [Unsupported Framework Features](#model-parallel-pt-unsupported-features) before creating a training script\.
+In this section, you learn how to modify PyTorch training scripts to configure the SageMaker distributed model parallel library for auto\-partitioning and manual partitioning\.
+
+
+**PyTorch versions supported by SageMaker and the SageMaker distributed model parallel library**  
+
+| PyTorch version | SageMaker distributed model parallel library version | `smdistributed-modelparallel` integrated image URI | 
+| --- | --- | --- | 
+| v1\.10\.0 |  smdistributed\-modelparallel==v1\.5\.0  |  `763104351884.dkr.ecr.<region>.amazonaws.com/pytorch-training:1.10.0-gpu-py38-cu113-ubuntu20.04-sagemaker`  | 
+| v1\.9\.1 |  smdistributed\-modelparallel==v1\.4\.0  |  `763104351884.dkr.ecr.<region>.amazonaws.com/pytorch-training:1.9.1-gpu-py38-cu111-ubuntu20.04`  | 
+| v1\.8\.1\* |  smdistributed\-modelparallel==v1\.6\.0  | 763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/pytorch\-training:1\.8\.1\-gpu\-py36\-cu111\-ubuntu18\.04  | 
+
+\* Deep Learning Container for PyTorch 1\.8\.1 is updated with the SageMaker distributed model parallel library v1\.6\.0 that provides extended features for PyTorch\. For more information, see [Extended Features of the SageMaker Model Parallel Library for PyTorch](model-parallel-extended-features-pytorch.md)\.
+
+The following topics show examples of training scripts that you can use to configure SageMaker's model parallel library for auto\-partitioning and manual partitioning PyTorch models\. We recommend that you review the [Important Considerations](#model-parallel-pt-considerations) and [Unsupported Framework Features](#model-parallel-pt-unsupported-features) before creating a training script\.
 
 The required modifications you must make to your training script to use the library are listed in [PyTorch](#model-parallel-customize-training-script-pt-16)\.
 
 If you want to use manual partitioning, also review [Manual Partitioning with PyTorch](#model-parallel-customize-training-script-pt-16-hvd)\. 
 
 **Tip**  
-For end to end, runnable notebook examples that demonstrate how to use a TensorFlow training script with the SageMaker distributed model parallel library, see [PyTorch Examples](distributed-training-notebook-examples.md#distributed-training-notebook-examples-pytorch)\.
+For end\-to\-end, runnable notebook examples that demonstrate how to use a PyTorch training script with the SageMaker distributed model parallel library, see [PyTorch Examples](distributed-training-notebook-examples.md#distributed-training-notebook-examples-pytorch)\.
 
 Note that auto\-partitioning is enabled by default\. Unless otherwise specified, the following scripts use auto\-partitioning\. 
 

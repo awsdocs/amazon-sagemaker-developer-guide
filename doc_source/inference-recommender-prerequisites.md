@@ -239,24 +239,24 @@ Note: You do not need to approve the model package to create an Inference Recomm
       # Create a dictionary to use as input for creating a model pacakge group
       model_package_input_dict = {
               "ModelPackageGroupName" : model_package_group_name,
-              "Domain": ml_domain,
-               "Task": ml_task,
               "ModelPackageDescription" : model_package_description,
-                  "InferenceSpecification": {
-                          "Containers": [
-                              {
-                                  "Image": image_uri,
-                                  "ModelDataUrl": model_url,
-                                  "Framework": framework.upper(), 
-                                  "FrameworkVersion": framework_version,
-                                  "NearestModelName": nearest_model_name,
-                                  "SamplePayloadUrl": sample_payload_url
-                              }
-                              ],
-                          "SupportedContentTypes": [input_content_type],
-                          "SupportedResponseMIMETypes": [response_content_type],
-                  }
+              "Domain": ml_domain,
+              "Task": ml_task,
+              "SamplePayloadUrl": sample_payload_url,
+              "InferenceSpecification": {
+                      "Containers": [
+                          {
+                              "Image": image_uri,
+                              "ModelDataUrl": model_url,
+                              "Framework": framework.upper(), 
+                              "FrameworkVersion": framework_version,
+                              "NearestModelName": nearest_model_name
+                          }
+                          ],
+                      "SupportedContentTypes": [input_content_type],
+                      "SupportedResponseMIMETypes": [response_content_type],
               }
+          }
       ```
 
    1. **Create a model package**

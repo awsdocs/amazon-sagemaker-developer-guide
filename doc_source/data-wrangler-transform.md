@@ -587,45 +587,6 @@ You can use the following procedure to standardize the length of the time series
 
 1. Choose **Add** to add the transform to the Data Wrangler data flow\.
 
-### Featurize Date/Time<a name="data-wrangler-featurize-time-series-datetime-embed"></a>
-
-Use **Featurize date/time** to create a vector embedding representing a date/time field\. To use this transform, your date/time data must be in one of the following formats: 
-+ Strings describing date/time, for example, `"January 1st, 2020, 12:44pm"`\. 
-+ A unix timestamp\. A unix timestamp describes the number of seconds, milliseconds, microseconds, or nanoseconds from 1/1/1970\. 
-
-You can choose to **Infer datetime format** and provide a **Datetime format**\. If you provide a date/time format, you must use the codes described in this [Python documentation](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes)\. The options you select for these two configurations have implications for the speed of the operation, and the final results:
-+ The most manual and computationally fastest option is to specify a **Datetime format** and select **No** for **Infer datetime format**\.
-+ To reduce manual labor, you can simply choose **Infer datetime format** and not specify a date/time format\. This is also a computationally fast operation; however, the first date/time format encountered in the input column is assumed to be the format for the entire column\. Therefore, if other formats are encountered in the column, these values are NaN in the final output\. Therefore, this option can result in unparsed strings\. 
-+ If you do not specify a format and you select **No** for **Infer datetime format**, you get the most robust results\. All valid date/time strings are parsed\. However, this operation can be an order of magnitude slower than the first two options in this list\. 
-
-When you use this transform, you specify an **Input column** which contains date/time data in one of the formats listed above\. The transform creates an output column named **Output column name**\. The format of the output column depends on your configuration using the following:
-+ **Vector**: Outputs a single column as a vector\. 
-+ **Columns**: Creates a new column for every feature\. For example, if the output contains a year, month, and day, three separate columns are created for year, month, and day\. 
-
-Additionally, you must choose an **Embedding mode**\. For linear models and deep networks, **cyclic** is recommended\. For tree based algorithms, **ordinal** is recommended\.
-
-You can use the following procedure to create a vector embedding that represents a date/time field\.
-
-1. Open your Data Wrangler data flow\.
-
-1. If you haven't imported your dataset, import it under the **Import data** tab\.
-
-1. In your data flow, under **Data types**, choose the **\+**, and select **Add transform**\.
-
-1. Choose **Add step**\.
-
-1. Choose **Featurize datetime**\.
-
-1. For **Input column**, choose the input column\.
-
-1. Optional: For **Output column**, choose the output column\. If you don't specify a name, the transform is done in place\.
-
-1. Specify the remaining fields\.
-
-1. Choose **Preview** to generate a preview of the transform\.
-
-1. Choose **Add** to add the transform to the Data Wrangler data flow\.
-
 ### Extract Features from Your Time Series Data<a name="data-wrangler-transform-extract-time-series-features"></a>
 
 If you're running a classification or a regression algorithm on your time series data, we recommend extracting features from the time series before running the algorithm\. Extracting features might improve the performance of your algorithm\.
@@ -783,16 +744,16 @@ Use **Featurize date/time** to create a vector embedding representing a date/tim
 + Strings describing date/time, for example, `"January 1st, 2020, 12:44pm"`\. 
 + A unix timestamp\. A unix timestamp describes the number of seconds, milliseconds, microseconds, or nanoseconds from 1/1/1970\. 
 
-You can choose to **Infer datetime format** and provide a **Datetime format**\. If you provide a date/time format, you must use the codes described in this [Python documentation](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes)\. The options you select for these two configurations have implications for the speed of the operation, and the final results:
+You can choose to **Infer datetime format** and provide a **Datetime format**\. If you provide a date/time format, you must use the codes described in the [Python documentation](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes)\. The options you select for these two configurations have implications for the speed of the operation, and the final results:
 + The most manual and computationally fastest option is to specify a **Datetime format** and select **No** for **Infer datetime format**\.
-+ To reduce manual labor, you can simply choose **Infer datetime format** and not specify a date/time format\. This is also a computationally fast operation; however, the first date/time format encountered in the input column is assumed to be the format for the entire column\. Therefore, if other formats are encountered in the column, these values are NaN in the final output\. Therefore, this option can result in unparsed strings\. 
-+ If you do not specify a format and you select **No** for **Infer datetime format**, you get the most robust results\. All valid date/time strings are parsed\. However, this operation can be an order of magnitude slower than the first two options in this list\. 
++ To reduce manual labor, you can choose **Infer datetime format** and not specify a date/time format\. It is also a computationally fast operation; however, the first date/time format encountered in the input column is assumed to be the format for the entire column\. If there are other formats in the column, these values are NaN in the final output\. Inferring the date/time format can give you unparsed strings\. 
++ If you don't specify a format and select **No** for **Infer datetime format**, you get the most robust results\. All the valid date/time strings are parsed\. However, this operation can be an order of magnitude slower than the first two options in this list\. 
 
 When you use this transform, you specify an **Input column** which contains date/time data in one of the formats listed above\. The transform creates an output column named **Output column name**\. The format of the output column depends on your configuration using the following:
 + **Vector**: Outputs a single column as a vector\. 
 + **Columns**: Creates a new column for every feature\. For example, if the output contains a year, month, and day, three separate columns are created for year, month, and day\. 
 
-Additionally, you must choose an **Embedding mode**\. For linear models and deep networks, **cyclic** is recommended\. For tree based algorithms, **ordinal** is recommended\.
+Additionally, you must choose an **Embedding mode**\. For linear models and deep networks, we recommend choosing **cyclic**\. For tree based algorithms, we recommend choosing **ordinal**\.
 
 ## Format String<a name="data-wrangler-transform-format-string"></a>
 

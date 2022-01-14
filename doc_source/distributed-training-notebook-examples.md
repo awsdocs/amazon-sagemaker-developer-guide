@@ -20,7 +20,7 @@ The following blogs discuss case studies about using the SageMaker distributed t
 + [BERT with PyTorch 1\.6 and SageMaker Data Parallel](https://sagemaker-examples.readthedocs.io/en/latest/training/distributed_training/pytorch/data_parallel/bert/pytorch_smdataparallel_bert_demo.html)
 
 **SageMaker Distributed Model Parallel**
-+ [CNN with PyTorch 1\.6 and SageMaker Model Parallel](https://sagemaker-examples.readthedocs.io/en/latest/training/distributed_training/pytorch/model_parallel/mnist/pytorch_smmodelparallel_mnist.html)
++ [Train GPT\-2 with PyTorch 1\.8\.1 and Tensor Parallelism Using the SageMaker Model Parallelism Library](https://sagemaker-examples.readthedocs.io/en/latest/training/distributed_training/pytorch/model_parallel/gpt2/smp-train-gpt-simple.html)
 + [BERT with PyTorch 1\.6 and SageMaker Model Parallel](https://sagemaker-examples.readthedocs.io/en/latest/training/distributed_training/pytorch/model_parallel/bert/smp_bert_tutorial.html)
 
 ## TensorFlow Examples<a name="distributed-training-notebook-examples-tensorflow"></a>

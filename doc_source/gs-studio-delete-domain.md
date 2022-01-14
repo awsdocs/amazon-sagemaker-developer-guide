@@ -37,7 +37,11 @@ You can only delete an app whose status is `InService`, which is displayed as **
 
    1. On the **Delete app** dialog, choose **Yes, delete app**, type *delete* in the confirmation field, and then choose **Delete**\.
 
-   1. When the **Status** for all apps show as **Deleted**, choose **Delete user**\.
+   1. When the **Status** for all apps show as **Deleted**, choose **Edit**\.
+
+   1. From the **Edit User** page, choose **Delete user**\.
+
+   1. On the **Delete user** dialog, choose **Yes, delete user**, type *delete* in the confirmation field, and then choose **Delete**\.
 **Important**  
 When a user is deleted, they lose access to the Amazon EFS volume that contains their data, including notebooks and other artifacts\. The data is not deleted and can be accessed by an administrator\.
 

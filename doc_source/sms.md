@@ -30,4 +30,4 @@ If you are a first\-time user of Ground Truth, we recommend that you do the foll
    + **Manage your labeling workforce**—Create new work teams and manage your existing workforce\. For more information, see [Create and Manage Workforces](sms-workforce-management.md)\.
    + **Learn about streaming labeling jobs**— Create a streaming labeling job and send new dataset objects to workers in real time using a perpetually running labeling job\. Workers continuously receive new data objects to label as long as the labeling job is active and new objects are being sent to it\. To learn more, see [Ground Truth Streaming Labeling Jobs](sms-streaming-labeling-job.md)\.
 
-1. **See the [ `Reference`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Reference.html)**—This section describes operations to automate Ground Truth operations\.
+1. **See the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Reference.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Reference.html)**—This section describes operations to automate Ground Truth operations\.

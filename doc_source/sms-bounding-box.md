@@ -2,7 +2,7 @@
 
 The images used to train a machine learning model often contain more than one object\. To classify and localize one or more objects within images, use the Amazon SageMaker Ground Truth bounding box labeling job task type\. In this context, localization means the pixel\-location of the bounding box\. 
 
-You create a bounding box labeling job using the Ground Truth section of the Amazon SageMaker console or the [ `CreateLabelingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\.
+You create a bounding box labeling job using the Ground Truth section of the Amazon SageMaker console or the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\.
 
 **Important**  
 For this task type, if you create your own manifest file, use `"source-ref"` to identify the location of each image file in Amazon S3 that you want labeled\. For more information, see [Input Data](sms-data-input.md)\.

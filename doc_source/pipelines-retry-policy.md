@@ -20,7 +20,7 @@ The retry policy for pipeline steps supports the following exception types:
 + `Step.SERVICE_FAULT`: These exceptions occur when an internal server error or transient error happens when calling downstream services\. SageMaker Pipelines retries on this type of error automatically\. With a retry policy, you can override the default retry operation for this exception type\.
 + `Step.THROTTLING`: Throttling exceptions can occur while calling the downstream services\. SageMaker Pipelines retries on this type of error automatically\. With a retry policy, you can override the default retry operation for this exception type\.
 + `SageMaker.JOB_INTERNAL_ERROR`: These exceptions occur when the SageMaker job returns `InternalServerError`\. In this case, starting a new job may fix a transient issue\.
-+ `SageMaker.JOB_CAPACITY_ERROR`: The SageMaker job may encounter Amazon EC2 `InsufficientCapacityErrors`, which lead to the SageMaker job’s failure\. You can retry by starting a new SageMaker job to avoid a the issue\. 
++ `SageMaker.CAPACITY_ERROR`: The SageMaker job may encounter Amazon EC2 `InsufficientCapacityErrors`, which lead to the SageMaker job’s failure\. You can retry by starting a new SageMaker job to avoid a the issue\. 
 + `SageMaker.RESOURCE_LIMIT`: The resource limit quota can exceed when running a SageMaker job\. You can wait and retry running the SageMaker job after a short period and see if resources get released\.
 
 ## The JSON schema for the retry policy<a name="pipelines-retry-policy-json-schema"></a>
@@ -40,7 +40,7 @@ The retry policy for Pipelines has the following JSON schema:
   + `Step.SERVICE_FAULT`
   + `Step.THROTTLING`
   + `SageMaker.JOB_INTERNAL_ERROR`
-  + `SageMaker.JOB_CAPACITY_ERROR`
+  + `SageMaker.CAPACITY_ERROR`
   + `SageMaker.RESOURCE_LIMIT`
 + `IntervalSeconds` \(optional\): The number of seconds before the first retry attempt \(1 by default\)\. `IntervalSeconds` has a maximum value of 43200 seconds \(12 hours\)\.
 + `BackoffRate` \(optional\): The multiplier by which the retry interval increases during each attempt \(2\.0 by default\)\.
@@ -63,7 +63,7 @@ The following is an example of a training step with a retry policy\.
                 {
                     "ExceptionType": [
                         "SageMaker.JOB_INTERNAL_ERROR",
-                        "SageMaker.JOB_CAPACITY_ERROR"
+                        "SageMaker.CAPACITY_ERROR"
                     ],
                     "IntervalSeconds": 1,
                     "BackoffRate": 2,

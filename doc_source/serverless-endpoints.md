@@ -56,7 +56,7 @@ To monitor how long your cold start time is, you can use the Amazon CloudWatch m
 
 ### Feature exclusions<a name="serverless-endpoints-how-it-works-exclusions"></a>
 
-During Preview, some of the features currently available for SageMaker Real\-time Inference are not supported for Serverless Inference, including AWS marketplace model packages, private Docker registries, Multi\-Model Endpoints, VPC configuration, network isolation, data capture, multiple production variants, Model Monitor, inference pipelines, and the Amazon SageMaker Python SDK\.
+During Preview, some of the features currently available for SageMaker Real\-time Inference are not supported for Serverless Inference, including GPUs, AWS marketplace model packages, private Docker registries, Multi\-Model Endpoints, VPC configuration, network isolation, data capture, multiple production variants, Model Monitor, inference pipelines, and the Amazon SageMaker Python SDK\.
 
 During Preview, you cannot convert your instance\-based, real\-time endpoint to a serverless endpoint\. If you try to update your real\-time endpoint to serverless, you receive a `ValidationError` message\. You can convert a serverless endpoint to real\-time, but once you make the update, you cannot roll it back to serverless\.
 

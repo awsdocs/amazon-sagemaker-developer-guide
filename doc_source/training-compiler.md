@@ -14,17 +14,19 @@ SageMaker Training Compiler is integrated into the AWS Deep Learning Containers 
 
 ## How It Works<a name="training-compiler-how-it-works"></a>
 
-SageMaker Training Compiler accelerates training jobs by converting DL models from their high\-level language representation to hardware\-optimized instructions that train faster than the ordinary frameworks\. Specifically, SageMaker Training Compiler compilation uses graph\-level optimization, dataflow\-level optimizations, and backend optimizations to produce an optimized model that efficiently uses hardware resources and, as a result, trains the compiled model faster\.
+SageMaker Training Compiler converts DL models from their high\-level language representation to hardware\-optimized instructions\. Specifically, SageMaker Training Compiler applies graph\-level optimization, dataflow\-level optimizations, and backend optimizations to produce an optimized model that efficiently uses hardware resources\. As a result, you can train your models faster than when you train them without compilation\.
 
-It is a two\-step process to enable SageMaker Training Compiler with your DL model training jobs:
+It is a two\-step process to activate SageMaker Training Compiler for your training job:
 
 1. Use the SageMaker Python SDK or SageMaker API to construct a SageMaker estimator\.
 
-   1. Enable SageMaker Training Compiler by adding `compiler_config=TrainingCompilerConfig()` as a parameter\.
+   1. Enable SageMaker Training Compiler by adding `compiler_config=TrainingCompilerConfig()` as a parameter\. To learn more, see [Enable SageMaker Training Compiler](training-compiler-enable.md)\.
 
-   1. Adjust hyperparameters \(`batch_size` and `learning_rate`\) to maximize the benefit that SageMaker Training Compiler provides through its optimization and efficient usage of the GPU memory\.
+   1. Adjust hyperparameters \(`batch_size` and `learning_rate`\) to maximize the benefit that SageMaker Training Compiler provides through its optimization and efficient usage of the GPU memory\. 
 
-1. Bring your own DL script and pass it to the SageMaker estimator\. By running the `estimator.fit()` class method, SageMaker compiles your model and starts training\.
+1. Bring your own DL script and pass it to the SageMaker estimator\. To learn more, see [Bring Your Own Deep Learning Model](training-compiler-modify-scripts.md)\.
+
+   By running the `estimator.fit()` class method, SageMaker compiles your model and starts training\.
 
 SageMaker Training Compiler does not alter the final trained model, while allowing you to accelerate the training job by more efficiently using the GPU memory and fitting a larger batch size per iteration\. The final trained model from the compiler\-accelerated training job is identical to the one from the ordinary training job\.
 

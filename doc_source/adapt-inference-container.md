@@ -64,7 +64,7 @@ def predict_fn(self, data, model):
 
         Returns: a prediction
         """
-        return model(input_data)
+        return model(data)
 ```
 
 ### The output\_fn Function<a name="byoc-inference-handler-outputfn"></a>

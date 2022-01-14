@@ -1,10 +1,11 @@
 # Data Sources and Ingestion<a name="feature-store-ingest-data"></a>
 
- There are multiple ways to bring your data into Amazon SageMaker Feature Store\. Feature Store offers a single API call for data ingestion called `PutRecord` that enables you to ingest data in batches or from streaming sources\. You can also use Amazon SageMaker Data Wrangler to engineer features and then ingest your features into your Feature Store\.
+ There are multiple ways to bring your data into Amazon SageMaker Feature Store\. Feature Store offers a single API call for data ingestion called `PutRecord` that enables you to ingest data in batches or from streaming sources\. You can use Amazon SageMaker Data Wrangler to engineer features and then ingest your features into your Feature Store\. You can also use Amazon EMR for batch data ingestion through a Spark connector\.
 
 **Topics**
 + [Stream Ingestion](#feature-store-ingest-data-stream)
 + [Data Wrangler with Feature Store](#feature-store-data-wrangler-integration)
++ [Batch Ingestion Spark Connector Setup](batch-ingestion-spark-connector-setup.md)
 
 ## Stream Ingestion<a name="feature-store-ingest-data-stream"></a>
 
