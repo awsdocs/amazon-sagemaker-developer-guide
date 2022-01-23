@@ -25,6 +25,10 @@ The following is an example of a Liquid template designed to transcribe audio cl
 
 The following attributes are supported by this element\.
 
+#### allowed\-pattern<a name="input-attributes-allowed-pattern"></a>
+
+A regular expression that is used with the *auto\-validate* attribute to ignore non\-matching characters as the worker types\.
+
 #### auto\-focus<a name="text-area-attributes-auto-focus"></a>
 
 A Boolean switch that, if present, puts the cursor in this element on\-load so that users can immediately begin typing without having to click inside the element\.
