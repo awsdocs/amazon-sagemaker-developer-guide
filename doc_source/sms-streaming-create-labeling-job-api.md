@@ -39,7 +39,7 @@ response = client.create_labeling_job(
         'UiConfig': {
             'UiTemplateS3Uri': 's3://bucket/path/custom-worker-task-template.html'
         },
-        'PreHumanTaskLambdaArn': 'arn:aws:lambda:us-east-1:432418664414:function:PRE-tasktype,
+        'PreHumanTaskLambdaArn': 'arn:aws:lambda:us-east-1:432418664414:function:PRE-tasktype',
         'TaskKeywords': [
             'Example key word',
         ],
@@ -52,6 +52,7 @@ response = client.create_labeling_job(
         'AnnotationConsolidationConfig': {
             'AnnotationConsolidationLambdaArn': 'arn:aws:lambda:us-east-1:432418664414:function:ACS-tasktype'
         },
+    },
     Tags=[
         {
             'Key': 'string',
