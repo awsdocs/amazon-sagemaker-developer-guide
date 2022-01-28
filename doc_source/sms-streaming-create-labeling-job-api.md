@@ -32,7 +32,7 @@ response = client.create_labeling_job(
         'KmsKeyId': 'string',
         'SnsTopicArn': 'arn:aws:sns:us-east-1:123456789012:your-sns-output-topic'
     },
-    RoleArn='arn:aws:iam::*:role/*,
+    RoleArn='arn:aws:iam::*:role/*',
     LabelCategoryConfigS3Uri='s3://bucket/path/label-categories.json',
     HumanTaskConfig={
         'WorkteamArn': 'arn:aws:sagemaker:us-east-1:*:workteam/private-crowd/*',
