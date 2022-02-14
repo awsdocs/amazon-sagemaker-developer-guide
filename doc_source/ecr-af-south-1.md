@@ -3,6 +3,7 @@
 The following topics list parameters for each of the algorithms and deep learning containers in this region provided by Amazon SageMaker\.
 
 **Topics**
++ [AutoGluon \(algorithm\)](#autogluon-af-south-1.title)
 + [BlazingText \(algorithm\)](#blazingtext-af-south-1.title)
 + [Chainer \(DLC\)](#chainer-af-south-1.title)
 + [Clarify \(algorithm\)](#clarify-af-south-1.title)
@@ -43,6 +44,21 @@ The following topics list parameters for each of the algorithms and deep learnin
 + [Tensorflow Ray \(DLC\)](#ray-tensorflow-af-south-1.title)
 + [XGBoost \(algorithm\)](#xgboost-af-south-1.title)
 
+## AutoGluon \(algorithm\)<a name="autogluon-af-south-1.title"></a>
+
+SageMaker Python SDK example to retrieve registry path\.
+
+```
+from sagemaker import image_uris
+image_uris.retrieve(framework='autogluon',region='af-south-1',image_scope='inference')
+```
+
+
+| Registry path | Version | Job types \(image scope\) | 
+| --- | --- | --- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/autogluon\-training:<tag> | 0\.3\.1 | training | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/autogluon\-inference:<tag> | 0\.3\.1 | inference | 
+
 ## BlazingText \(algorithm\)<a name="blazingtext-af-south-1.title"></a>
 
 SageMaker Python SDK example to retrieve registry path\.
@@ -69,9 +85,9 @@ image_uris.retrieve(framework='chainer',region='af-south-1',version='5.0.0',py_v
 
 | Registry path | Version | Job types \(image scope\) | Processor types | Python versions | 
 | --- | --- | --- | --- | --- | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-chainer:<tag> | 4\.0\.0 | inference, training | CPU, GPU | py2, py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-chainer:<tag> | 4\.1\.0 | inference, training | CPU, GPU | py2, py3 | 
 | 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-chainer:<tag> | 5\.0\.0 | inference, training | CPU, GPU | py2, py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-chainer:<tag> | 4\.1\.0 | inference, training | CPU, GPU | py2, py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-chainer:<tag> | 4\.0\.0 | inference, training | CPU, GPU | py2, py3 | 
 
 ## Clarify \(algorithm\)<a name="clarify-af-south-1.title"></a>
 
@@ -155,10 +171,32 @@ image_uris.retrieve(framework='huggingface',region='af-south-1',version='4.4.2',
 
 | Registry path | Version | Job types \(image scope\) | 
 | --- | --- | --- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-pytorch\-training:<tag> | 4\.4\.2 | training | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-pytorch\-training:<tag> | 4\.12\.3 | training | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-tensorflow\-training:<tag> | 4\.12\.3 | training | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-pytorch\-inference:<tag> | 4\.12\.3 | inference | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-tensorflow\-inference:<tag> | 4\.12\.3 | inference | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-pytorch\-training:<tag> | 4\.11\.0 | training | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-tensorflow\-training:<tag> | 4\.11\.0 | training | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-pytorch\-inference:<tag> | 4\.11\.0 | inference | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-tensorflow\-inference:<tag> | 4\.11\.0 | inference | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-pytorch\-training:<tag> | 4\.10\.2 | training | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-pytorch\-training:<tag> | 4\.10\.2 | training | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-tensorflow\-training:<tag> | 4\.10\.2 | training | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-tensorflow\-training:<tag> | 4\.10\.2 | training | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-pytorch\-inference:<tag> | 4\.10\.2 | inference | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-pytorch\-inference:<tag> | 4\.10\.2 | inference | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-tensorflow\-inference:<tag> | 4\.10\.2 | inference | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-tensorflow\-inference:<tag> | 4\.10\.2 | inference | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-pytorch\-training:<tag> | 4\.6\.1 | training | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-pytorch\-training:<tag> | 4\.6\.1 | training | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-pytorch\-training:<tag> | 4\.6\.1 | training | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-tensorflow\-training:<tag> | 4\.6\.1 | training | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-pytorch\-inference:<tag> | 4\.6\.1 | inference | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-tensorflow\-inference:<tag> | 4\.6\.1 | inference | 
 | 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-pytorch\-training:<tag> | 4\.5\.0 | training | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-tensorflow\-training:<tag> | 4\.4\.2 | training | 
 | 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-tensorflow\-training:<tag> | 4\.5\.0 | training | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-pytorch\-training:<tag> | 4\.4\.2 | training | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/huggingface\-tensorflow\-training:<tag> | 4\.4\.2 | training | 
 
 ## IP Insights \(algorithm\)<a name="ipinsights-af-south-1.title"></a>
 
@@ -270,33 +308,33 @@ image_uris.retrieve(framework='mxnet',region='af-south-1',version='1.4.1',py_ver
 
 | Registry path | Version | Job types \(image scope\) | Processor types | Python versions | 
 | --- | --- | --- | --- | --- | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet\-eia:<tag> | 1\.3\.0 | eia | CPU | py2, py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet\-serving\-eia:<tag> | 1\.4\.0 | eia | CPU | py2, py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet\-serving:<tag> | 1\.4\.0 | inference | CPU, GPU | py2, py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet\-serving:<tag> | 1\.4\.1 | inference | CPU, GPU | py2 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 0\.12\.1 | inference | CPU, GPU | py2, py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 0\.12\.1 | training | CPU, GPU | py2, py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 1\.0\.0 | inference | CPU, GPU | py2, py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 1\.0\.0 | training | CPU, GPU | py2, py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 1\.1\.0 | inference | CPU, GPU | py2, py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 1\.1\.0 | training | CPU, GPU | py2, py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 1\.2\.1 | inference | CPU, GPU | py2, py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 1\.2\.1 | training | CPU, GPU | py2, py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 1\.3\.0 | inference | CPU, GPU | py2, py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 1\.3\.0 | training | CPU, GPU | py2, py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 1\.4\.0 | training | CPU, GPU | py2, py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 1\.4\.1 | training | CPU, GPU | py2 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/mxnet\-inference\-eia:<tag> | 1\.4\.1 | eia | CPU | py2, py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/mxnet\-inference\-eia:<tag> | 1\.5\.1 | eia | CPU | py2, py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/mxnet\-inference\-eia:<tag> | 1\.7\.0 | eia | CPU | py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/mxnet\-inference:<tag> | 1\.4\.1 | inference | CPU, GPU | py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/mxnet\-inference:<tag> | 1\.6\.0 | inference | CPU, GPU | py2, py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/mxnet\-inference:<tag> | 1\.7\.0 | inference | CPU, GPU | py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/mxnet\-inference:<tag> | 1\.8\.0 | inference | CPU, GPU | py37 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/mxnet\-training:<tag> | 1\.4\.1 | training | CPU, GPU | py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/mxnet\-training:<tag> | 1\.6\.0 | training | CPU, GPU | py2, py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/mxnet\-training:<tag> | 1\.7\.0 | training | CPU, GPU | py3 | 
 | 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/mxnet\-training:<tag> | 1\.8\.0 | training | CPU, GPU | py37 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/mxnet\-inference:<tag> | 1\.8\.0 | inference | CPU, GPU | py37 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/mxnet\-training:<tag> | 1\.7\.0 | training | CPU, GPU | py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/mxnet\-inference:<tag> | 1\.7\.0 | inference | CPU, GPU | py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/mxnet\-inference\-eia:<tag> | 1\.7\.0 | eia | CPU | py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/mxnet\-training:<tag> | 1\.6\.0 | training | CPU, GPU | py2, py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/mxnet\-inference:<tag> | 1\.6\.0 | inference | CPU, GPU | py2, py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/mxnet\-inference\-eia:<tag> | 1\.5\.1 | eia | CPU | py2, py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 1\.4\.1 | training | CPU, GPU | py2 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/mxnet\-training:<tag> | 1\.4\.1 | training | CPU, GPU | py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet\-serving:<tag> | 1\.4\.1 | inference | CPU, GPU | py2 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/mxnet\-inference:<tag> | 1\.4\.1 | inference | CPU, GPU | py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/mxnet\-inference\-eia:<tag> | 1\.4\.1 | eia | CPU | py2, py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 1\.4\.0 | training | CPU, GPU | py2, py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet\-serving:<tag> | 1\.4\.0 | inference | CPU, GPU | py2, py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet\-serving\-eia:<tag> | 1\.4\.0 | eia | CPU | py2, py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 1\.3\.0 | training | CPU, GPU | py2, py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 1\.3\.0 | inference | CPU, GPU | py2, py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet\-eia:<tag> | 1\.3\.0 | eia | CPU | py2, py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 1\.2\.1 | training | CPU, GPU | py2, py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 1\.2\.1 | inference | CPU, GPU | py2, py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 1\.1\.0 | training | CPU, GPU | py2, py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 1\.1\.0 | inference | CPU, GPU | py2, py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 1\.0\.0 | training | CPU, GPU | py2, py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 1\.0\.0 | inference | CPU, GPU | py2, py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 0\.12\.1 | training | CPU, GPU | py2, py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-mxnet:<tag> | 0\.12\.1 | inference | CPU, GPU | py2, py3 | 
 
 ## MXNet Coach \(DLC\)<a name="coach-mxnet-af-south-1.title"></a>
 
@@ -310,8 +348,8 @@ image_uris.retrieve(framework='coach-mxnet',region='af-south-1',version='0.11',p
 
 | Registry path | Version | Job types \(image scope\) | Processor types | Python versions | 
 | --- | --- | --- | --- | --- | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-rl\-mxnet:coach0\.11\-<tag> | 0\.11 | training | CPU, GPU | py3 | 
 | 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-rl\-mxnet:coach0\.11\.0\-<tag> | 0\.11\.0 | training | CPU, GPU | py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-rl\-mxnet:coach0\.11\-<tag> | 0\.11 | training | CPU, GPU | py3 | 
 
 ## Model Monitor \(algorithm\)<a name="model-monitor-af-south-1.title"></a>
 
@@ -381,9 +419,9 @@ image_uris.retrieve(framework='neo-pytorch',region='af-south-1',version='1.6',im
 
 | Registry path | Version | Job types \(image scope\) | Processor types | Python versions | 
 | --- | --- | --- | --- | --- | 
-| 774647643957\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-inference\-pytorch:<tag> | 1\.4 | inference | CPU, GPU | py3 | 
-| 774647643957\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-inference\-pytorch:<tag> | 1\.5 | inference | CPU, GPU | py3 | 
 | 774647643957\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-inference\-pytorch:<tag> | 1\.6 | inference | CPU, GPU | py3 | 
+| 774647643957\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-inference\-pytorch:<tag> | 1\.5 | inference | CPU, GPU | py3 | 
+| 774647643957\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-inference\-pytorch:<tag> | 1\.4 | inference | CPU, GPU | py3 | 
 
 ## Neo Tensorflow \(DLC\)<a name="neo-tensorflow-af-south-1.title"></a>
 
@@ -467,29 +505,32 @@ image_uris.retrieve(framework='pytorch',region='af-south-1',version='1.8.0',py_v
 
 | Registry path | Version | Job types \(image scope\) | Processor types | Python versions | 
 | --- | --- | --- | --- | --- | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-pytorch:<tag> | 0\.4\.0 | inference | CPU, GPU | py2, py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-pytorch:<tag> | 0\.4\.0 | training | CPU, GPU | py2, py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-pytorch:<tag> | 1\.0\.0 | inference | CPU, GPU | py2, py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-pytorch:<tag> | 1\.0\.0 | training | CPU, GPU | py2, py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.9\.1 | inference | CPU, GPU | py38 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.9\.1 | training | CPU, GPU | py38 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.9\.0 | inference | CPU, GPU | py38 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.9\.0 | training | CPU, GPU | py38 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.8\.1 | inference | CPU, GPU | py3, py36 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.8\.1 | training | CPU, GPU | py3, py36 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.8\.0 | inference | CPU, GPU | py3, py36 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.8\.0 | training | CPU, GPU | py3, py36 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.7\.1 | inference | CPU, GPU | py3, py36 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.7\.1 | training | CPU, GPU | py3, py36 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.6\.0 | inference | CPU, GPU | py3, py36 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.6\.0 | training | CPU, GPU | py3, py36 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.5\.0 | inference | CPU, GPU | py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.5\.0 | training | CPU, GPU | py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.4\.0 | inference | CPU, GPU | py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.4\.0 | training | CPU, GPU | py2, py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.3\.1 | inference | CPU, GPU | py2, py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.3\.1 | training | CPU, GPU | py2, py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.2\.0 | inference | CPU, GPU | py2, py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.2\.0 | training | CPU, GPU | py2, py3 | 
 | 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-pytorch:<tag> | 1\.1\.0 | inference | CPU, GPU | py2, py3 | 
 | 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-pytorch:<tag> | 1\.1\.0 | training | CPU, GPU | py2, py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-inference\-eia:<tag> | 1\.3\.1 | eia | CPU | py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.2\.0 | inference | CPU, GPU | py2, py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.3\.1 | inference | CPU, GPU | py2, py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.4\.0 | inference | CPU, GPU | py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.5\.0 | inference | CPU, GPU | py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.6\.0 | inference | CPU, GPU | py3, py36 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.7\.1 | inference | CPU, GPU | py3, py36 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.8\.0 | inference | CPU, GPU | py3, py36 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.8\.1 | inference | CPU, GPU | py3, py36 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.2\.0 | training | CPU, GPU | py2, py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.3\.1 | training | CPU, GPU | py2, py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.4\.0 | training | CPU, GPU | py2, py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.5\.0 | training | CPU, GPU | py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.6\.0 | training | CPU, GPU | py3, py36 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.7\.1 | training | CPU, GPU | py3, py36 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.8\.0 | training | CPU, GPU | py3, py36 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.8\.1 | training | CPU, GPU | py3, py36 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-pytorch:<tag> | 1\.0\.0 | inference | CPU, GPU | py2, py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-pytorch:<tag> | 1\.0\.0 | training | CPU, GPU | py2, py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-pytorch:<tag> | 0\.4\.0 | inference | CPU, GPU | py2, py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-pytorch:<tag> | 0\.4\.0 | training | CPU, GPU | py2, py3 | 
 
 ## Random Cut Forest \(algorithm\)<a name="randomcutforest-af-south-1.title"></a>
 
@@ -517,8 +558,8 @@ image_uris.retrieve(framework='sklearn',region='af-south-1',version='0.23-1',ima
 
 | Registry path | Version | Job types \(image scope\) | 
 | --- | --- | --- | 
-| 510948584623\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-scikit\-learn:<tag> | 0\.20\.0 | inference, training | 
 | 510948584623\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-scikit\-learn:<tag> | 0\.23\-1 | inference, training | 
+| 510948584623\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-scikit\-learn:<tag> | 0\.20\.0 | inference, training | 
 
 ## Semantic Segmentation \(algorithm\)<a name="semantic-segmentation-af-south-1.title"></a>
 
@@ -560,8 +601,8 @@ image_uris.retrieve(framework='spark',region='af-south-1',version='3.0',image_sc
 
 | Registry path | Version | Job types \(image scope\) | 
 | --- | --- | --- | 
-| 309385258863\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-spark\-processing:<tag> | 2\.4 | processing | 
 | 309385258863\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-spark\-processing:<tag> | 3\.0 | processing | 
+| 309385258863\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-spark\-processing:<tag> | 2\.4 | processing | 
 
 ## SparkML Serving \(algorithm\)<a name="sparkml-serving-af-south-1.title"></a>
 
@@ -575,8 +616,8 @@ image_uris.retrieve(framework='sparkml-serving',region='af-south-1',version='2.4
 
 | Registry path | Version | Job types \(image scope\) | 
 | --- | --- | --- | 
-| 510948584623\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-sparkml\-serving:<tag> | 2\.2 | inference | 
 | 510948584623\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-sparkml\-serving:<tag> | 2\.4 | inference | 
+| 510948584623\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-sparkml\-serving:<tag> | 2\.2 | inference | 
 
 ## Tensorflow \(DLC\)<a name="tensorflow-af-south-1.title"></a>
 
@@ -590,79 +631,84 @@ image_uris.retrieve(framework='tensorflow',region='af-south-1',version='1.12.0',
 
 | Registry path | Version | Job types \(image scope\) | Processor types | Python versions | 
 | --- | --- | --- | --- | --- | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow\-eia:<tag> | 1\.10\.0 | eia | CPU | py2 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow\-scriptmode:<tag> | 1\.11\.0 | training | CPU, GPU | py2, py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow\-scriptmode:<tag> | 1\.12\.0 | training | CPU, GPU | py2, py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.5\.1 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.5\.1 | training | CPU, GPU | py37 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.5\.0 | training | CPU, GPU | py37 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.4\.3 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.4\.3 | training | CPU, GPU | py37 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.4\.1 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.4\.1 | training | CPU, GPU | py37 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.3\.2 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.3\.2 | training | CPU, GPU | py37 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.3\.1 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.3\.1 | training | CPU, GPU | py37 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference\-eia:<tag> | 2\.3\.0 | eia | CPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.3\.0 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.3\.0 | training | CPU, GPU | py37 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.2\.2 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.2\.2 | training | CPU, GPU | py37 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.2\.1 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.2\.1 | training | CPU, GPU | py37 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.2\.0 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.2\.0 | training | CPU, GPU | py37 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.1\.3 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.1\.3 | training | CPU, GPU | py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.1\.2 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.1\.2 | training | CPU, GPU | py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.1\.1 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.1\.1 | training | CPU, GPU | py2, py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.1\.0 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.1\.0 | training | CPU, GPU | py2, py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.0\.4 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.0\.4 | training | CPU, GPU | py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.0\.3 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.0\.3 | training | CPU, GPU | py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.0\.2 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.0\.2 | training | CPU, GPU | py2, py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.0\.1 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.0\.1 | training | CPU, GPU | py2, py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference\-eia:<tag> | 2\.0\.0 | eia | CPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.0\.0 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.0\.0 | training | CPU, GPU | py2, py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 1\.15\.5 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 1\.15\.5 | training | CPU, GPU | py3, py36, py37 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 1\.15\.4 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 1\.15\.4 | training | CPU, GPU | py3, py36, py37 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 1\.15\.3 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 1\.15\.3 | training | CPU, GPU | py2, py3, py37 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 1\.15\.2 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 1\.15\.2 | training | CPU, GPU | py2, py3, py37 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference\-eia:<tag> | 1\.15\.0 | eia | CPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 1\.15\.0 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 1\.15\.0 | training | CPU, GPU | py2, py3 | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference\-eia:<tag> | 1\.14\.0 | eia | CPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 1\.14\.0 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 1\.14\.0 | training | CPU, GPU | py2, py3 | 
 | 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow\-scriptmode:<tag> | 1\.13\.1 | training | CPU, GPU | py2 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow\-serving\-eia:<tag> | 1\.11\.0 | eia | CPU | \- | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow\-serving\-eia:<tag> | 1\.12\.0 | eia | CPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 1\.13\.1 | training | CPU, GPU | py3 | 
 | 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow\-serving\-eia:<tag> | 1\.13\.0 | eia | CPU | \- | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow\-serving:<tag> | 1\.11\.0 | inference | CPU, GPU | \- | 
+| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 1\.13\.0 | inference | CPU, GPU | \- | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow\-serving\-eia:<tag> | 1\.12\.0 | eia | CPU | \- | 
 | 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow\-serving:<tag> | 1\.12\.0 | inference | CPU, GPU | \- | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow\-scriptmode:<tag> | 1\.12\.0 | training | CPU, GPU | py2, py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow\-serving\-eia:<tag> | 1\.11\.0 | eia | CPU | \- | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow\-serving:<tag> | 1\.11\.0 | inference | CPU, GPU | \- | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow\-scriptmode:<tag> | 1\.11\.0 | training | CPU, GPU | py2, py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow\-eia:<tag> | 1\.10\.0 | eia | CPU | py2 | 
 | 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.10\.0 | inference | CPU, GPU | py2 | 
 | 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.10\.0 | training | CPU, GPU | py2 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.4\.1 | inference | CPU, GPU | py2 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.4\.1 | training | CPU, GPU | py2 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.5\.0 | inference | CPU, GPU | py2 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.5\.0 | training | CPU, GPU | py2 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.6\.0 | inference | CPU, GPU | py2 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.6\.0 | training | CPU, GPU | py2 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.7\.0 | inference | CPU, GPU | py2 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.7\.0 | training | CPU, GPU | py2 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.8\.0 | inference | CPU, GPU | py2 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.8\.0 | training | CPU, GPU | py2 | 
 | 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.9\.0 | inference | CPU, GPU | py2 | 
 | 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.9\.0 | training | CPU, GPU | py2 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference\-eia:<tag> | 1\.14\.0 | eia | CPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference\-eia:<tag> | 1\.15\.0 | eia | CPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference\-eia:<tag> | 2\.0\.0 | eia | CPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference\-eia:<tag> | 2\.3\.0 | eia | CPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 1\.13\.0 | inference | CPU, GPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 1\.14\.0 | inference | CPU, GPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 1\.15\.0 | inference | CPU, GPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 1\.15\.2 | inference | CPU, GPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 1\.15\.3 | inference | CPU, GPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 1\.15\.4 | inference | CPU, GPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 1\.15\.5 | inference | CPU, GPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.0\.0 | inference | CPU, GPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.0\.1 | inference | CPU, GPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.0\.2 | inference | CPU, GPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.0\.3 | inference | CPU, GPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.0\.4 | inference | CPU, GPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.1\.0 | inference | CPU, GPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.1\.1 | inference | CPU, GPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.1\.2 | inference | CPU, GPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.1\.3 | inference | CPU, GPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.2\.0 | inference | CPU, GPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.2\.1 | inference | CPU, GPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.2\.2 | inference | CPU, GPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.3\.0 | inference | CPU, GPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.3\.1 | inference | CPU, GPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.3\.2 | inference | CPU, GPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.4\.1 | inference | CPU, GPU | \- | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 1\.13\.1 | training | CPU, GPU | py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 1\.14\.0 | training | CPU, GPU | py2, py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 1\.15\.0 | training | CPU, GPU | py2, py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 1\.15\.2 | training | CPU, GPU | py2, py3, py37 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 1\.15\.3 | training | CPU, GPU | py2, py3, py37 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 1\.15\.4 | training | CPU, GPU | py3, py36, py37 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 1\.15\.5 | training | CPU, GPU | py3, py36, py37 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.0\.0 | training | CPU, GPU | py2, py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.0\.1 | training | CPU, GPU | py2, py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.0\.2 | training | CPU, GPU | py2, py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.0\.3 | training | CPU, GPU | py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.0\.4 | training | CPU, GPU | py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.1\.0 | training | CPU, GPU | py2, py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.1\.1 | training | CPU, GPU | py2, py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.1\.2 | training | CPU, GPU | py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.1\.3 | training | CPU, GPU | py3 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.2\.0 | training | CPU, GPU | py37 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.2\.1 | training | CPU, GPU | py37 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.2\.2 | training | CPU, GPU | py37 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.3\.0 | training | CPU, GPU | py37 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.3\.1 | training | CPU, GPU | py37 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.3\.2 | training | CPU, GPU | py37 | 
-| 626614931356\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.4\.1 | training | CPU, GPU | py37 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.8\.0 | inference | CPU, GPU | py2 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.8\.0 | training | CPU, GPU | py2 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.7\.0 | inference | CPU, GPU | py2 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.7\.0 | training | CPU, GPU | py2 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.6\.0 | inference | CPU, GPU | py2 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.6\.0 | training | CPU, GPU | py2 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.5\.0 | inference | CPU, GPU | py2 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.5\.0 | training | CPU, GPU | py2 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.4\.1 | inference | CPU, GPU | py2 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-tensorflow:<tag> | 1\.4\.1 | training | CPU, GPU | py2 | 
 
 ## Tensorflow Coach \(DLC\)<a name="coach-tensorflow-af-south-1.title"></a>
 
@@ -676,11 +722,11 @@ image_uris.retrieve(framework='coach-tensorflow',region='af-south-1',version='1.
 
 | Registry path | Version | Job types \(image scope\) | Processor types | Python versions | 
 | --- | --- | --- | --- | --- | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-rl\-tensorflow:coach0\.10\-<tag> | 0\.10 | training | CPU, GPU | py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-rl\-tensorflow:coach0\.10\.1\-<tag> | 0\.10\.1 | training | CPU, GPU | py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-rl\-tensorflow:coach0\.11\-<tag> | 0\.11 | training | CPU, GPU | py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-rl\-tensorflow:coach0\.11\.0\-<tag> | 0\.11\.0 | training | CPU, GPU | py3 | 
 | 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-rl\-tensorflow:coach0\.11\.1\-<tag> | 0\.11\.1 | training | CPU, GPU | py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-rl\-tensorflow:coach0\.11\.0\-<tag> | 0\.11\.0 | training | CPU, GPU | py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-rl\-tensorflow:coach0\.11\-<tag> | 0\.11 | training | CPU, GPU | py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-rl\-tensorflow:coach0\.10\.1\-<tag> | 0\.10\.1 | training | CPU, GPU | py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-rl\-tensorflow:coach0\.10\-<tag> | 0\.10 | training | CPU, GPU | py3 | 
 
 ## Tensorflow Inferentia \(DLC\)<a name="inferentia-tensorflow-af-south-1.title"></a>
 
@@ -708,10 +754,10 @@ image_uris.retrieve(framework='ray-tensorflow',region='af-south-1',version='0.8.
 
 | Registry path | Version | Job types \(image scope\) | Processor types | Python versions | 
 | --- | --- | --- | --- | --- | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-rl\-tensorflow:ray0\.5\-<tag> | 0\.5 | training | CPU, GPU | py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-rl\-tensorflow:ray0\.5\.3\-<tag> | 0\.5\.3 | training | CPU, GPU | py3 | 
-| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-rl\-tensorflow:ray0\.6\-<tag> | 0\.6 | training | CPU, GPU | py3 | 
 | 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-rl\-tensorflow:ray0\.6\.5\-<tag> | 0\.6\.5 | training | CPU, GPU | py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-rl\-tensorflow:ray0\.6\-<tag> | 0\.6 | training | CPU, GPU | py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-rl\-tensorflow:ray0\.5\.3\-<tag> | 0\.5\.3 | training | CPU, GPU | py3 | 
+| 313743910680\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-rl\-tensorflow:ray0\.5\-<tag> | 0\.5 | training | CPU, GPU | py3 | 
 
 ## XGBoost \(algorithm\)<a name="xgboost-af-south-1.title"></a>
 
@@ -725,10 +771,10 @@ image_uris.retrieve(framework='xgboost',region='af-south-1',version='1.2-1')
 
 | Registry path | Version | Job types \(image scope\) | 
 | --- | --- | --- | 
-| 455444449433\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/xgboost:<tag> | 1 | inference, training | 
-| 510948584623\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 0\.90\-1 | inference, training | 
-| 510948584623\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 0\.90\-2 | inference, training | 
-| 510948584623\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.0\-1 | inference, training | 
-| 510948584623\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.2\-1 | inference, training | 
-| 510948584623\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.2\-2 | inference, training | 
 | 510948584623\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.3\-1 | inference, training | 
+| 510948584623\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.2\-2 | inference, training | 
+| 510948584623\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.2\-1 | inference, training | 
+| 510948584623\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.0\-1 | inference, training | 
+| 455444449433\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/xgboost:<tag> | 1 | inference, training | 
+| 510948584623\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 0\.90\-2 | inference, training | 
+| 510948584623\.dkr\.ecr\.af\-south\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 0\.90\-1 | inference, training | 

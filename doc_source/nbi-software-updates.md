@@ -7,7 +7,7 @@ Amazon SageMaker periodically tests and releases software that is installed on n
 + [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) updates
 + Open source software updates
 
-SageMaker does not automatically update software on a notebook instance when it is in service\. To ensure that you have the most recent software updates, stop and restart your notebook instance, either in the SageMaker console or by calling [  `StopNotebookInstance`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_StopNotebookInstance.html)\.
+SageMaker does not update software on a notebook instance when it is in service\. To ensure that you have the most recent software updates, stop and restart your notebook instance, either in the SageMaker console or by calling [  `StopNotebookInstance`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_StopNotebookInstance.html)\.
 
 You can also manually update software installed on your notebook instance while it is running by using update commands in a terminal or in a notebook\.
 

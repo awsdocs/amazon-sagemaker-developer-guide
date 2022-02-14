@@ -178,7 +178,18 @@ For an execution role that you can pass in a `CreateAutoMLJob` API request, you 
         {
             "Effect": "Allow",
             "Action": [
-                "iam:PassRole",
+                "iam:PassRole"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "iam:PassedToService": "sagemaker.amazonaws.com"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
                 "sagemaker:DescribeEndpointConfig",
                 "sagemaker:DescribeModel",
                 "sagemaker:InvokeEndpoint",
@@ -203,12 +214,7 @@ For an execution role that you can pass in a `CreateAutoMLJob` API request, you 
                 "ecr:GetDownloadUrlForLayer",
                 "ecr:BatchGetImage"
             ],
-            "Resource": "*",
-            "Condition": {
-                "StringEquals": {
-                    "iam:PassedToService": "sagemaker.amazonaws.com"
-                }
-            }
+            "Resource": "*"
         }
     ]
 }
@@ -292,18 +298,23 @@ Alternatively, if the permissions are specified in a KMS policy, you can attach 
 
 ```
 {
-    "Sid": "Allow use of the key",
-    "Effect": "Allow",
-    "Principal": {
-        "AWS": [
-            "arn:aws:iam::account-id:role/ExecutionRole"
-        ]
-    },
-    "Action": [
-        "kms:DescribeKey",
-        "kms:CreateGrant"
-    ],
-    "Resource": "*"
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Allow use of the key",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": [
+                    "arn:aws:iam::account-id:role/ExecutionRole"
+                ]
+            },
+            "Action": [
+                "kms:CreateGrant",
+                "kms:DescribeKey"
+            ],
+            "Resource": "*"
+        }
+    ]
 }
 ```
 
@@ -965,6 +976,7 @@ For an execution role that you can pass in a `CreateModel` API request, you can 
                 "logs:CreateLogGroup",
                 "logs:DescribeLogStreams",
                 "s3:GetObject",
+                "s3:ListBucket",
                 "ecr:GetAuthorizationToken",
                 "ecr:BatchCheckLayerAvailability",
                 "ecr:GetDownloadUrlForLayer",
@@ -1022,7 +1034,7 @@ Instead of the specifying `"Resource": "*"`, you can scope these permissions to 
 If `CreateModel.PrimaryContainer.Image` need to access other data sources, such as Amazon DynamoDB or Amazon RDS resources, add relevant permissions to this policy\.
 
 In the preceding policy, you scope the policy as follows:
-+ Scope S3 permissions to objects that you specify in the `PrimaryContainer.ModelDataUrl` in a [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) request\.
++ Scope S3 permissions to objects that you specify in the `PrimaryContainer.ModelDataUrl` in a [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) request\.
 + Scope Amazon ECR permissions to a specific registry path that you specify as the `PrimaryContainer.Image` and `SecondaryContainer.Image` in a `CreateModel` request\.
 
 The `cloudwatch` and `logs` actions are applicable for "\*" resources\. For more information, see [CloudWatch Resources and Operations](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/iam-access-control-overview-cw.html#CloudWatch_ARN_Format) in the Amazon CloudWatch User Guide\.

@@ -93,7 +93,7 @@ You can see your labeling job appear in the **Labeling jobs** section of the Sag
 
 ## Create an Automated Data Labeling Job \(API\)<a name="sms-create-automated-labeling-api"></a>
 
-To create an automated data labeling job using the SageMaker API, use the [ `LabelingJobAlgorithmsConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_LabelingJobAlgorithmsConfig.html) parameter of the [ `CreateLabelingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. To learn how to start a labeling job using the `CreateLabelingJob` operation, see [Create a Labeling Job \(API\)](sms-create-labeling-job-api.md)\.
+To create an automated data labeling job using the SageMaker API, use the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_LabelingJobAlgorithmsConfig.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_LabelingJobAlgorithmsConfig.html) parameter of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. To learn how to start a labeling job using the `CreateLabelingJob` operation, see [Create a Labeling Job \(API\)](sms-create-labeling-job-api.md)\.
 
 Specify the Amazon Resource Name \(ARN\) of the algorithm that you are using for automated data labeling in the [LabelingJobAlgorithmSpecificationArn](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_LabelingJobAlgorithmsConfig.html#SageMaker-Type-LabelingJobAlgorithmsConfig-LabelingJobAlgorithmSpecificationArn) parameter\. Choose from one of the four Ground Truth built\-in algorithms that are supported with automated labeling:
 + [Image Classification \(Single Label\)](sms-image-classification.md)
@@ -110,7 +110,7 @@ pretrained_model_arn = sagemaker_client.describe_labeling_job(LabelingJobName=jo
 
 To encrypt data on the storage volume attached to the ML compute instance\(s\) that are used in automated labeling, include an AWS Key Management Service \(AWS KMS\) key in the `VolumeKmsKeyId` parameter\. For information about AWS KMS keys, see [What is AWS Key Management Service?](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html) in the *AWS Key Management Service Developer Guide*\.
 
-For an example that uses the [ `CreateLabelingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation to create an automated data labeling job, see the **object\_detection\_tutorial** example in the **SageMaker Examples**, **Ground Truth Labeling Jobs** section of a SageMaker notebook instance\. To learn how to create and open a notebook instance, see [Create a Notebook Instance](howitworks-create-ws.md)\. To learn how to access SageMaker example notebooks, see [Example Notebooks](howitworks-nbexamples.md)\.
+For an example that uses the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation to create an automated data labeling job, see the **object\_detection\_tutorial** example in the **SageMaker Examples**, **Ground Truth Labeling Jobs** section of a SageMaker notebook instance\. To learn how to create and open a notebook instance, see [Create a Notebook Instance](howitworks-create-ws.md)\. To learn how to access SageMaker example notebooks, see [Example Notebooks](howitworks-nbexamples.md)\.
 
 ## Amazon EC2 Instances Required for Automated Data Labeling<a name="sms-auto-labeling-ec2"></a>
 
@@ -125,9 +125,6 @@ The following table lists the Amazon Elastic Compute Cloud \(Amazon EC2\) instan
 |  Semantic segmentation  |  ml\.p3\.2xlarge\*  |  ml\.p3\.2xlarge\*  | 
 
 \* In the Asia Pacific \(Mumbai\) Region \(ap\-south\-1\) use ml\.p2\.8xlarge instead\.
-
-****  
-Automated data labeling incurs two separate charges: the per\-item charge \(see [ pricing](http://aws.amazon.com/sagemaker/groundtruth/pricing/)\), and the charge for the Amazon EC2 instance required to run the model \(see [Amazon EC2 pricing](http://aws.amazon.com/ec2/pricing/on-demand/)\)\.
 
  Ground Truth manages the instances that you use for automated data labeling jobs\. It creates, configures, and terminates the instances as needed to perform your job\. These instances don't appear in your Amazon EC2 instance dashboard\.
 

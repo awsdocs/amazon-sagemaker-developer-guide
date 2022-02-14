@@ -12,7 +12,7 @@ The SageMaker inference toolkit is built on the multi\-model server \(MMS\)\. MM
 
 ### The model\_fn Function<a name="byoc-inference-handler-modelfn"></a>
 
-The `model_fn` function is responsible for loading your model\. It takes a `model_dir` argument that specifies where the model is stored\. How you load your model depends on the framework you are using\. There is no default implementation for the `model_fn` function\. You must implement it yourself\. The following simple example shows an implementation of a `model_fn` function that loads a PyTorch model:
+There are default implementations for the `model_fn` function, named `default_model_fn`, on the SageMaker PyTorch and MXNet Inference toolkits\. The default implementation loads models saved using torchscript, of the form `.pt` or `.pth`\. If your model requires custom methods to load, or you want to perform extra steps when loading your model, you must implement the `model_fn` function\. The following simple example shows an implementation of a `model_fn` function that loads a PyTorch model:
 
 ```
 def model_fn(self, model_dir):
@@ -64,7 +64,7 @@ def predict_fn(self, data, model):
 
         Returns: a prediction
         """
-        return model(input_data)
+        return model(data)
 ```
 
 ### The output\_fn Function<a name="byoc-inference-handler-outputfn"></a>
@@ -163,7 +163,8 @@ then
     aws ecr create-repository --repository-name "${algorithm_name}" > /dev/null
 
 # Get the login command from ECR and execute it directly
-$(aws ecr get-login --region ${region} --no-include-email)
+$(aws ecr get-login-password --region ${region}|docker login --username AWS --password-stdin ${fullname}
+)
 
 # Build the docker image locally with the image name and then push it to ECR
 # with the full name.

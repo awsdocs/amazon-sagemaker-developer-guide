@@ -9,7 +9,7 @@ Lineage tracking in Studio is centered around a directed acyclic graph \(DAG\)\.
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/yosemite/pipeline-tutorial-steps.png)
 
 **Prerequisites**
-+ Access to Amazon SageMaker Studio\. For more information, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
++ Access to Amazon SageMaker Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 + Familiarity with the SageMaker Studio user interface\. For more information, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
 + \(Recommended\) A completed run of the example notebook\.
 

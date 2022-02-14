@@ -51,7 +51,7 @@ The SageMaker Debugger developer guide walks you through the following topics\.
 + [Create Debugger Custom Rules for Training Job Analysis](debugger-custom-rules.md)
 + [Use Debugger with Custom Training Containers](debugger-bring-your-own-container.md)
 + [Action on Amazon SageMaker Debugger Rules](debugger-action-on-rules.md)
-+ [SageMaker Debugger on Studio](debugger-on-studio.md)
++ [Amazon SageMaker Debugger in Amazon SageMaker Studio](debugger-on-studio.md)
 + [SageMaker Debugger Interactive Reports](debugger-report.md)
 + [Analyze Data Using the SMDebug Client Library](debugger-analyze-data.md)
 + [Visualize Amazon SageMaker Debugger Output Tensors in TensorBoard](debugger-enable-tensorboard-summaries.md)

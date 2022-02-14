@@ -11,11 +11,30 @@ Clarify
 SageMaker Edge Manager
 Ground Truth
 Hyperparameter tuning \(HPO\)
+Amazon SageMaker Inference Recommender
 JumpStart
 Amazon SageMaker Model Monitor
 Reinforcement learning
 
 Amazon SageMaker Studio is available in all the AWS Regions supported by Amazon SageMaker except the AWS GovCloud \(US\) Regions\. In the supported Regions, Studio is available in the same Availability Zones as notebook instances\.
+
+RStudio on Amazon SageMaker is available in the following AWS Regions supported by Amazon SageMaker\.
++ ap\-northeast\-1
++ ap\-northeast\-2
++ ap\-south\-1
++ ap\-southeast\-1
++ ap\-southeast\-2
++ ca\-central\-1
++ eu\-central\-1
++ eu\-north\-1
++ eu\-west\-1
++ eu\-west\-2
++ eu\-west\-3
++ sa\-east\-1
++ us\-east\-1
++ us\-east\-2
++ us\-west\-1
++ us\-west\-2
 
 Amazon SageMaker Pipelines is available in all the AWS Regions supported by AWS except the AWS GovCloud \(US\) Regions\. SageMaker Projects is available in the AWS regions where CodePipeline is available\. For more information about CodePipeline region availability, see the [AWS Regional Services List](http://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/)\.
 

@@ -20,6 +20,7 @@ Some examples of the actions that can be automatically triggered include the fol
 + [Pipeline step state change](#eventbridge-pipeline-step)
 + [SageMaker image state change](#eventbridge-image-state)
 + [SageMaker image version state change](#eventbridge-image-version-state)
++ [Endpoint deployment state change](#eventbridge-deployment-state)
 
 ## Training job state change<a name="eventbridge-training"></a>
 
@@ -508,17 +509,135 @@ Indicates a change in the status of a SageMaker image version\.
 ```
 
 For more information about the status values and their meanings for SageMaker jobs, endpoints, and pipelines, see the following links:
-+ [ `AlgorithmStatus` ](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAlgorithm.html#sagemaker-DescribeAlgorithm-response-AlgorithmStatus)
-+ [ `EndpointStatus`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeEndpoint.html#sagemaker-DescribeEndpoint-response-EndpointStatus)
-+ [ `FeatureGroupStatus`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeFeatureGroup.html#sagemaker-DescribeFeatureGroup-response-FeatureGroupStatus)
-+ [ `HyperParameterTuningJobStatus`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeHyperParameterTuningJob.html#sagemaker-DescribeHyperParameterTuningJob-response-HyperParameterTuningJobStatus)
-+ [ `LabelingJobStatus` ](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeLabelingJob.html#sagemaker-DescribeLabelingJob-response-LabelingJobStatus)
-+ [ `ModelPackageStatus` ](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeModelPackage.html#sagemaker-DescribeModelPackage-response-ModelPackageStatus)
-+ [ `NotebookInstanceStatus` ](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeNotebookInstance.html#sagemaker-DescribeNotebookInstance-response-NotebookInstanceStatus)
-+ [ `PipelineExecutionStatus`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribePipelineExecution.html#sagemaker-DescribePipelineExecution-response-PipelineExecutionStatus)
-+ [ `StepStatus`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_PipelineExecutionStep.html#sagemaker-Type-PipelineExecutionStep-StepStatus)
-+ [ `ProcessingJobStatus` ](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeProcessingJob.html#sagemaker-DescribeProcessingJob-response-ProcessingJobStatus)
-+ [ `TrainingJobStatus`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html#sagemaker-DescribeTrainingJob-response-TrainingJobStatus)
-+ [ `TransformJobStatus`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTransformJob.html#sagemaker-DescribeTransformJob-response-TransformJobStatus)
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAlgorithm.html#sagemaker-DescribeAlgorithm-response-AlgorithmStatus](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAlgorithm.html#sagemaker-DescribeAlgorithm-response-AlgorithmStatus)
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeEndpoint.html#sagemaker-DescribeEndpoint-response-EndpointStatus](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeEndpoint.html#sagemaker-DescribeEndpoint-response-EndpointStatus)
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeFeatureGroup.html#sagemaker-DescribeFeatureGroup-response-FeatureGroupStatus](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeFeatureGroup.html#sagemaker-DescribeFeatureGroup-response-FeatureGroupStatus)
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeHyperParameterTuningJob.html#sagemaker-DescribeHyperParameterTuningJob-response-HyperParameterTuningJobStatus](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeHyperParameterTuningJob.html#sagemaker-DescribeHyperParameterTuningJob-response-HyperParameterTuningJobStatus)
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeLabelingJob.html#sagemaker-DescribeLabelingJob-response-LabelingJobStatus](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeLabelingJob.html#sagemaker-DescribeLabelingJob-response-LabelingJobStatus)
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeModelPackage.html#sagemaker-DescribeModelPackage-response-ModelPackageStatus](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeModelPackage.html#sagemaker-DescribeModelPackage-response-ModelPackageStatus)
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeNotebookInstance.html#sagemaker-DescribeNotebookInstance-response-NotebookInstanceStatus](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeNotebookInstance.html#sagemaker-DescribeNotebookInstance-response-NotebookInstanceStatus)
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribePipelineExecution.html#sagemaker-DescribePipelineExecution-response-PipelineExecutionStatus](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribePipelineExecution.html#sagemaker-DescribePipelineExecution-response-PipelineExecutionStatus)
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_PipelineExecutionStep.html#sagemaker-Type-PipelineExecutionStep-StepStatus](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_PipelineExecutionStep.html#sagemaker-Type-PipelineExecutionStep-StepStatus)
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeProcessingJob.html#sagemaker-DescribeProcessingJob-response-ProcessingJobStatus](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeProcessingJob.html#sagemaker-DescribeProcessingJob-response-ProcessingJobStatus)
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html#sagemaker-DescribeTrainingJob-response-TrainingJobStatus](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html#sagemaker-DescribeTrainingJob-response-TrainingJobStatus)
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTransformJob.html#sagemaker-DescribeTransformJob-response-TransformJobStatus](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTransformJob.html#sagemaker-DescribeTransformJob-response-TransformJobStatus)
 
 For more information, see the [Amazon EventBridge User Guide](https://docs.aws.amazon.com/eventbridge/latest/userguide/what-is-amazon-eventbridge.html)\.
+
+## Endpoint deployment state change<a name="eventbridge-deployment-state"></a>
+
+**Important**  
+The following examples may not work for all endpoints\. For a list of features that may exclude your endpoint, see the [Exclusions](deployment-guardrails-exclusions.md) page\.
+
+Indicates a state change for an endpoint deployment\. The following example shows an endpoint updating with a blue/green canary deployment\.
+
+```
+{
+    "version": "0",
+    "id": "0bd4a141-0a02-9d8a-f977-3924c3fb259c",
+    "detail-type": "SageMaker Endpoint Deployment State Change",
+    "source": "aws.sagemaker",
+    "account": "123456789012",
+    "time": "2021-10-25T01:52:12Z",
+    "region": "us-west-2",
+    "resources": [
+        "arn:aws:sagemaker:us-west-2:651393343886:endpoint/sample-endpoint"
+    ],
+    "detail": {
+        "EndpointName": "sample-endpoint",
+        "EndpointArn": "arn:aws:sagemaker:us-west-2:651393343886:endpoint/sample-endpoint",
+        "EndpointConfigName": "sample-endpoint-config-1",
+        "ProductionVariants": [
+            {
+                "VariantName": "AllTraffic",
+                "CurrentWeight": 1,
+                "DesiredWeight": 1,
+                "CurrentInstanceCount": 3,
+                "DesiredInstanceCount": 3
+            }
+        ],
+        "EndpointStatus": "UPDATING",
+        "CreationTime": 1635195148181,
+        "LastModifiedTime": 1635195148181,
+        "Tags": {},
+        "PendingDeploymentSummary": {
+            "EndpointConfigName": "sample-endpoint-config-2",
+            "StartTime": Timestamp,
+            "ProductionVariants": [
+                {
+                    "VariantName": "AllTraffic",
+                    "CurrentWeight": 1,
+                    "DesiredWeight": 1,
+                    "CurrentInstanceCount": 1,
+                    "DesiredInstanceCount": 3,
+                    "VariantStatus": [
+                        {
+                            "Status": "Baking",
+                            "StatusMessage": "Baking for 600 seconds (TerminationWaitInSeconds) with traffic enabled on canary capacity of 1 instance(s).",
+                            "StartTime": 1635195269181,
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
+```
+
+The following example indicates a state change for an endpoint deployment, which is being updated with new capacity on an existing endpoint configuration\.
+
+```
+{
+    "version": "0",
+    "id": "0bd4a141-0a02-9d8a-f977-3924c3fb259c",
+    "detail-type": "SageMaker Endpoint Deployment State Change",
+    "source": "aws.sagemaker",
+    "account": "123456789012",
+    "time": "2021-10-25T01:52:12Z",
+    "region": "us-west-2",
+    "resources": [
+        "arn:aws:sagemaker:us-west-2:651393343886:endpoint/sample-endpoint"
+    ],
+    "detail": {
+        "EndpointName": "sample-endpoint",
+        "EndpointArn": "arn:aws:sagemaker:us-west-2:651393343886:endpoint/sample-endpoint",
+        "EndpointConfigName": "sample-endpoint-config-1",
+        "ProductionVariants": [
+            {
+                "VariantName": "AllTraffic",
+                "CurrentWeight": 1,
+                "DesiredWeight": 1,
+                "CurrentInstanceCount": 3,
+                "DesiredInstanceCount": 6,
+                "VariantStatus": [
+                    {
+                        "Status": "Updating",
+                        "StatusMessage": "Scaling out desired instance count to 6.",
+                        "StartTime": 1635195269181,
+                    }
+                ]
+            }
+        ],
+        "EndpointStatus": "UPDATING",
+        "CreationTime": 1635195148181,
+        "LastModifiedTime": 1635195148181,
+        "Tags": {},
+    }
+```
+
+The following secondary deployment statuses are also available for endpoints \(found in the `VariantStatus` object\.
++ `Creating`: creating instances for the production variant\.
+
+  Example message: `"Launching X instance(s)."`
++ `Deleting`: terminating instances for the production variant\.
+
+  Example message: `"Terminating X instance(s)."`
++ `Updating`: updating capacity for the production variant\.
+
+  Example messages: `"Launching X instance(s)."`, `"Scaling out desired instance count to X."`
++ `ActivatingTraffic`: turning on traffic for the production variant\.
+
+  Example message: `"Activating traffic on canary capacity of X instance(s)."`
++ `Baking`: waiting period to monitor the CloudWatch alarms in the auto\-rollback configuration\.
+
+  Example message: `"Baking for X seconds (TerminationWaitInSeconds) with traffic enabled on full capacity of Y instance(s)."`

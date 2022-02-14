@@ -14,11 +14,11 @@ To view model versions associated with a model group by using Boto3, call the `l
 sm_client.list_model_packages(ModelPackageGroupName=model_package_group_name)
 ```
 
-### View a List of Model Versions in a Group \(SageMaker Studio\)<a name="model-registry-view-list-studio"></a>
+### View a List of Model Versions in a Group \(Amazon SageMaker Studio\)<a name="model-registry-view-list-studio"></a>
 
 To view a list of the model versions in a model group, complete the following steps\.
 
-1. Sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
+1. Sign in to Amazon SageMaker Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
 1. In the left navigation pane, choose the **Components and registries** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png) \)\.
 
@@ -27,5 +27,5 @@ To view a list of the model versions in a model group, complete the following st
 
 1. From the model groups list, choose the model group you want to view\.
 
-1. A new tab appears with a list of the model versions in the model group, as shown following\.  
+1. A new tab appears with a list of the model versions in the model group, as shown in the following image\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry/model-versions.png)

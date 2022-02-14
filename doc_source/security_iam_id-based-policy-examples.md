@@ -74,7 +74,7 @@ To use the Amazon SageMaker console, you need to grant permissions for additiona
             "Resource":"*"
         },
         {
-          "Sid": "AccessAwsMarketplaceSubscritions",
+          "Sid": "AccessAwsMarketplaceSubscriptions",
           "Effect": "Allow",
           "Action": [
             "aws-marketplace:ViewSubscriptions"
@@ -722,7 +722,7 @@ For more information on how to use roles with SageMaker, see [SageMaker Roles](h
 
 Restrict an AWS user to creating training jobs from within a Amazon VPC\. When a training job is created within a VPC, you can use VPC flow logs to monitor all traffic to and from the training cluster\. For information about using VPC flow logs, see [VPC Flow Logs](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html) in the *Amazon Virtual Private Cloud User Guide*\.
 
-The following policy enforces that a training job is created by an IAM user calling [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) from within a VPC:
+The following policy enforces that a training job is created by an IAM user calling [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) from within a VPC:
 
 ```
 {
@@ -1074,7 +1074,7 @@ If you want to restrict access to the API to only calls made using the interface
 
 To allow access to SageMaker API calls and runtime invocations only from IP addresses in a list that you specify, attach an IAM policy that denies access to the API unless the call comes from an IP address in the list to every AWS Identity and Access Management user, group, or role used to access the API or runtime\. For information about creating IAM policies, see [Creating IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html) in the *AWS Identity and Access Management User Guide*\. To specify the list of IP addresses that you want to have access to the API call, use the `IpAddress` condition operator and the `aws:SourceIP` condition context key\. For information about IAM condition operators, see [IAM JSON Policy Elements: Condition Operators](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html) in the *AWS Identity and Access Management User Guide*\. For information about IAM condition context keys, see [AWS Global Condition Context Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html)\.
 
-For example, the following policy allows access to the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) only from IP addresses in the ranges `192.0.2.0`\-`192.0.2.255` and `203.0.113.0`\-`203.0.113.255`:
+For example, the following policy allows access to the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) only from IP addresses in the ranges `192.0.2.0`\-`192.0.2.255` and `203.0.113.0`\-`203.0.113.255`:
 
 ```
 {
@@ -1100,7 +1100,7 @@ For example, the following policy allows access to the [ `CreateTrainingJob`](ht
 
 ## Limit Access to a Notebook Instance by IP Address<a name="nbi-ip-filter"></a>
 
-To allow access to a notebook instance only from IP addresses in a list that you specify, attach an IAM policy that denies access to [ `CreatePresignedNotebookInstanceUrl`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreatePresignedNotebookInstanceUrl.html) unless the call comes from an IP address in the list to every AWS Identity and Access Management user, group, or role used to access the notebook instance\. For information about creating IAM policies, see [Creating IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html) in the *AWS Identity and Access Management User Guide*\. To specify the list of IP addresses that you want to have access to the notebook instance, use the `IpAddress` condition operator and the `aws:SourceIP` condition context key\. For information about IAM condition operators, see [IAM JSON Policy Elements: Condition Operators](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html) in the *AWS Identity and Access Management User Guide*\. For information about IAM condition context keys, see [AWS Global Condition Context Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html)\.
+To allow access to a notebook instance only from IP addresses in a list that you specify, attach an IAM policy that denies access to [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreatePresignedNotebookInstanceUrl.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreatePresignedNotebookInstanceUrl.html) unless the call comes from an IP address in the list to every AWS Identity and Access Management user, group, or role used to access the notebook instance\. For information about creating IAM policies, see [Creating IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html) in the *AWS Identity and Access Management User Guide*\. To specify the list of IP addresses that you want to have access to the notebook instance, use the `IpAddress` condition operator and the `aws:SourceIP` condition context key\. For information about IAM condition operators, see [IAM JSON Policy Elements: Condition Operators](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html) in the *AWS Identity and Access Management User Guide*\. For information about IAM condition context keys, see [AWS Global Condition Context Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html)\.
 
 For example, the following policy allows access to a notebook instance only from IP addresses in the ranges `192.0.2.0`\-`192.0.2.255` and `203.0.113.0`\-`203.0.113.255`:
 
@@ -1164,7 +1164,7 @@ For example, suppose you've defined two different IAM groups, named `DevTeam1` a
 
 **To control access to API calls \(example\)**
 
-1. Add a tag with the key `Project` and value `A` to the notebook instances used for the first project\. For information about adding tags to SageMaker resources, see [ `AddTags`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AddTags.html)\. 
+1. Add a tag with the key `Project` and value `A` to the notebook instances used for the first project\. For information about adding tags to SageMaker resources, see [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AddTags.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AddTags.html)\. 
 
 1. Add a tag with the key `Project` and value `B` to the notebook instances used for the second project\.
 

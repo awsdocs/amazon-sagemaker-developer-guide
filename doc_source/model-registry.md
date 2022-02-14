@@ -22,5 +22,4 @@ The following topics show how to use the model registry\.
 + [View the Details of a Model Version](model-registry-details.md)
 + [Update the Approval Status of a Model](model-registry-approve.md)
 + [Deploy a Model in the Registry](model-registry-deploy.md)
-+ [Deploy a Model Version from a Different Account](model-registry-deploy-xaccount.md)
 + [View the Deployment History of a Model](model-registry-deploy-history.md)

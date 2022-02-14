@@ -14,9 +14,9 @@ The steps to create an image and image version are the same whether you use the 
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1. In the left navigation pane, choose **Amazon SageMaker Studio**\.
+1. In the left navigation pane, choose **Studio**\.
 
-1. On the **SageMaker Studio Control Panel**, under **Custom images attached to domain**, choose **Attach image**\.
+1. On the **SageMaker Domain panel**, under **Custom SageMaker Studio images attached to domain**, choose **Attach image**\.
 
 1. For **Image source**, choose **Existing image**\.
 
@@ -26,11 +26,15 @@ The steps to create an image and image version are the same whether you use the 
 
 1. Choose **Next**\.
 
+1. Enter values for **Image name**, **Image display name**, and **Description**\.
+
 1. Choose the IAM role\. For more information, see [Create a custom SageMaker image \(Console\)](studio-byoi-create.md)\.
+
+1. \(Optional\) Add tags for the image\.
 
 1. Choose **Next**\.
 
-1. Under **Studio configuration**, enter or change the following settings\. For information on how the get the kernel information from the image, see [DEVELOPMENT](https://github.com/aws-samples/sagemaker-studio-custom-image-samples/blob/main/DEVELOPMENT.md) in the SageMaker Studio Custom Image Samples repository\.
+1. Under **Studio configuration**, enter or change the following settings\. For information on how to get the kernel information from the image, see [DEVELOPMENT](https://github.com/aws-samples/sagemaker-studio-custom-image-samples/blob/main/DEVELOPMENT.md) in the SageMaker Studio Custom Image Samples repository\.
    + EFS mount path – The path within the image to mount the user's Amazon Elastic File System \(EFS\) home directory\.
    + Kernel:
      + For **Kernel name**, enter the name of an existing kernel in the image\.

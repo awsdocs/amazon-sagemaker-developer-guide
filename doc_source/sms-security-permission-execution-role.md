@@ -149,15 +149,15 @@ If you create a streaming labeling job, you must add a policy similar to the fol
             "Effect": "Allow",
             "Action": "sns:Subscribe",
             "Resource": [
-                "arn:aws:sqs:<aws-region>:<aws-account-number>:<input-topic-name>",
-                "arn:aws:sqs:<aws-region>:<aws-account-number>:<output-topic-name>"
+                "arn:aws:sns:<aws-region>:<aws-account-number>:<input-topic-name>",
+                "arn:aws:sns:<aws-region>:<aws-account-number>:<output-topic-name>"
             ],
             "Condition": {
                 "StringEquals": {
                     "sns:Protocol": "sqs"
                 },
                 "StringLike": {
-                    "sns:Endpoint": "arn:aws:sqs:<aws-region>:<aws-account-number>:*GroundTruth*"
+                    "sns:Endpoint": "arn:aws:sns:<aws-region>:<aws-account-number>:*GroundTruth*"
                 }
             }
         },
@@ -168,8 +168,8 @@ If you create a streaming labeling job, you must add a policy similar to the fol
                 "sns:Publish"
             ],
             "Resource": [
-                "arn:aws:sqs:<aws-region>:<aws-account-number>:<input-topic-name>",
-                "arn:aws:sqs:<aws-region>:<aws-account-number>:<output-topic-name>"
+                "arn:aws:sns:<aws-region>:<aws-account-number>:<input-topic-name>",
+                "arn:aws:sns:<aws-region>:<aws-account-number>:<output-topic-name>"
             ]
         },
         {
@@ -179,8 +179,8 @@ If you create a streaming labeling job, you must add a policy similar to the fol
                 "sns:Unsubscribe"
             ],
             "Resource": [
-                "arn:aws:sqs:<aws-region>:<aws-account-number>:<input-topic-name>",
-                "arn:aws:sqs:<aws-region>:<aws-account-number>:<output-topic-name>"
+                "arn:aws:sns:<aws-region>:<aws-account-number>:<input-topic-name>",
+                "arn:aws:sns:<aws-region>:<aws-account-number>:<output-topic-name>"
             ]
         }
     ]

@@ -22,7 +22,7 @@ The following list shows the scope of validity and considerations for using Debu
   SMDebug Does Not Currently Support Distributed Training Jobs With Checkpointing Enabled
   ```
 
-  To use Debugger for training jobs with distributed training options, you need to disable SageMaker checkpointing and add manual checkpointing functions to your training script\. For more information about using Debugger with distributed training options and checkpoints, see [Considerations for Using SageMaker Distributed Data Parallel with SageMaker Debugger and Checkpoints](distributed-troubleshooting-data-parallel.md#distributed-ts-data-parallel-debugger) and [Saving Checkpoints](distributed-troubleshooting-model-parallel.md#distributed-ts-model-parallel-checkpoints)\.
+  To use Debugger for training jobs with distributed training options, you need to disable SageMaker checkpointing and add manual checkpointing functions to your training script\. For more information about using Debugger with distributed training options and checkpoints, see [Using SageMaker Distributed Data Parallel with SageMaker Debugger and Checkpoints](distributed-troubleshooting-data-parallel.md#distributed-ts-data-parallel-debugger) and [Saving Checkpoints](distributed-troubleshooting-model-parallel.md#distributed-ts-model-parallel-checkpoints)\.
 + **Parameter Server** – Debugger does not support parameter server\-based distributed training\.
 + Profiling distributed training framework operations, such as the `AllReduced` operation of SageMaker distributed data parallel and [Horovod operations](https://horovod.readthedocs.io/en/stable/timeline_include.html), is not available\.
 

@@ -33,7 +33,7 @@ Classification inference containers allow you to select the content of the infer
 By default, inference containers are configured to generate `predicted_label` only\.
 
 Three environment variables are used to select the optional inference content:
-+ `SAGEMAKER_INFERENCE_SUPPORTED`: this is set to provide hints to the users about what content each container supports\.
++ `SAGEMAKER_INFERENCE_SUPPORTED`: this is set to provide hints to you about what content each container supports\.
 + `SAGEMAKER_INFERENCE_INPUT`: should be set to the keys that the container expects in its input payload\.
 + `SAGEMAKER_INFERENCE_OUTPUT`: should be populated with the set of keys the container outputs\.
 

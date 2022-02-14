@@ -1,4 +1,4 @@
-# SageMaker Edge Manager<a name="edge"></a>
+# Deploy models at the edge with SageMaker Edge Manager<a name="edge"></a>
 
 Amazon SageMaker Edge Manager provides model management for edge devices so you can optimize, secure, monitor, and maintain machine learning models on fleets of edge devices such as smart cameras, robots, personal computers, and mobile devices\.
 

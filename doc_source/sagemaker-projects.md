@@ -17,4 +17,5 @@ Use SageMaker projects to create an MLOps solution to orchestrate and manage:
 + [Create an MLOps Project using Amazon SageMaker Studio](sagemaker-projects-create.md)
 + [MLOps Project Templates](sagemaker-projects-templates.md)
 + [View Project Resources](sagemaker-projects-resources.md)
++ [Delete an MLOps Project using Amazon SageMaker Studio](sagemaker-projects-delete.md)
 + [SageMaker MLOps Project Walkthrough](sagemaker-projects-walkthrough.md)

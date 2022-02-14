@@ -5,7 +5,7 @@ This walkthrough demonstrates how to use MLOps projects to create a CI/CD system
 **Prerequisites**
 
 To complete this walkthrough, you need:
-+ An AWS SSO or IAM account to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
++ An AWS SSO or IAM account to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 + Permission to use SageMaker\-provided project templates\. For information, see [SageMaker Studio Permissions Required to Use Projects](sagemaker-projects-studio-updates.md)\.
 + Basic familiarity with the Studio user interface\. For information, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
 
@@ -23,7 +23,7 @@ In this step, you create a SageMaker MLOps project by using a SageMaker\-provide
 
 **To create the SageMaker MLOps project**
 
-1. Sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
+1. Sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
 1. Choose **Components and registries**, and then select **Projects** from the dropdown list\.
 
@@ -39,7 +39,7 @@ When the project appears in the **Projects** list with a **Status** of **Created
 
 ## Step 2: Clone the Code Repository<a name="sagemaker-proejcts-walkthrough-clone"></a>
 
-After you create the project, two CodeCommit repositories are created in the project\. One of the repositories contains code to build and train a model, and one contains code to deploy the model\. In this step, you clone the repository to the local SageMaker that contains the code to build and train the model to the local Studio environment so that you can work with the code\.
+After you create the project, two CodeCommit repositories are created in the project\. One of the repositories contains code to build and train a model, and one contains code to deploy the model\. In this step, you clone the repository to your local SageMaker project that contains the code to build and train the model to the local Studio environment so that you can work with the code\.
 
 **To clone the code repository**
 
@@ -122,20 +122,35 @@ To stop incurring charges, clean up the resources that were created in this walk
 **Note**  
 To delete the AWS CloudFormation stack and the Amazon S3 bucket, you need to be an administrator in Studio\. If you are not an administrator, ask your administrator to complete those steps\.
 
-1. From the Studio menu, choose **File **, choose **New**, and then choose **Notebook**\.
+1. In the Studio sidebar, choose the **SageMaker resources** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png)\)\.
 
-1. In the **Select Kernel** dialog box, choose **Python 3 \(Data Science\)**, then choose **Select**\.
+1. Choose **Projects** from the dropdown list\.
 
-1. In the notebook, enter the following code in a cell, and then run the cell\. Replace `MyProject` with the name of your project\.
+1. Select the target project from the dropdown list\. If you don’t see your project, type the project name and apply the filter to find your project\.
 
-   ```
-   import boto3
-   
-   sm_client=boto3.client("sagemaker")
-   sm_client.delete_project(ProjectName="MyProject")
-   ```
+1. 
 
-   This deletes the AWS Service Catalog provisioned product that the project created\. This includes the CodeCommit, CodePipeline, and CodeBuild resources that were created for the project\.
+**You can delete a Studio project in one of the following ways:**
+
+   1. 
+
+**You can delete the project from the projects list\.**
+
+      Right\-click the target project and choose ** Delete** from the dropdown list\.
+**Note**  
+This functionality is supported in Studio version v3\.17\.1 or higher\. For more information, see [Update SageMaker Studio](studio-tasks-update-studio.md)\.
+
+   1. 
+
+**You can delete a project from the **Project details** section\.**
+
+      1. When you've found your project, double\-click it to view its details in the main panel\.
+
+      1. Choose **Delete** from the **Actions** menu\.
+
+1. Confirm your choice by choosing **Delete** from the **Delete Project** window\.
+
+   This deletes the AWS Service Catalog provisioned product that the project created\. This includes the CodeCommit, CodePipeline, and CodeBuild resources created for the project\.
 
 1. Delete the AWS CloudFormation stacks that the project created\. There are two stacks, one for staging and one for production\. The names of the stacks are **sagemaker\-*projectname*\-*project\-id*\-deploy\-staging** and **sagemaker\-*projectname*\-*project\-id*\-deploy\-prod**, where *projectname* is the name of your project, and *project\-id* is the ID of your project\.
 

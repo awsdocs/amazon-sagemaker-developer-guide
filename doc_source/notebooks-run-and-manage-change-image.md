@@ -10,8 +10,7 @@ The following screenshot shows the menu from a Studio notebook\. The current Sag
 
 1. Choose the kernel name\.
 
-1. From the drop\-down list, choose a kernel\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-notebook-switch-kernel.png)
+1. From the drop\-down list, choose a kernel\.
 
 1. After choosing a kernel, choose **Select**\.
 

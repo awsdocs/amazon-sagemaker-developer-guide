@@ -32,7 +32,13 @@ Data Wrangler uses [S3 Select](http://aws.amazon.com/s3/features/#s3-select) to 
 **Important**  
 If you plan to export a data flow and launch a Data Wrangler job, ingest data into a SageMaker feature store, or create a SageMaker pipeline, be aware that these integrations require Amazon S3 input data to be located in the same AWS region\.
 
-You can browse all buckets in your AWS account and import CSV and Parquet files using the Amazon S3 import in Data Wrangler\. 
+In Data Wrangler, you can use the Amazon S3 import functionality to browse all the S3 buckets in your AWS account and import files with the following formats:
++ Comma Separated Values \(CSV\)
++ Parquet
++ Javascript Object Notation \(JSON\)
++ Optimized Row Columnar \(ORC\)
+
+For files formatted in JSON, Data Wrangler supports both JSON lines \(\.jsonl\) and JSON documents \(\.json\)\. When you preview your data, it automatically shows the JSON in tabular format\. For nested JSON documents that are larger than 5 MB, Data Wrangler shows the schema for the structure and the arrays as values in the dataset\. Use the **Flatten structured** and **Explode array** operators to display the nested values in tabular format\. For more information, see [Unnest JSON data](data-wrangler-transform.md#data-wrangler-transform-flatten-column) and [Explode array](data-wrangler-transform.md#data-wrangler-transform-explode-array)\.
 
 When you choose a dataset for import, you can rename it, specify the file type, and identify the first row as a header\. 
 
@@ -77,10 +83,10 @@ Amazon Athena is an interactive query service that makes it easy to analyze data
 You can query Athena databases and import the results in Data Wrangler\. To use this import option, you must create at least one database in Athena\. To learn how, see [Getting Started](https://docs.aws.amazon.com/athena/latest/ug/getting-started.html) in the Amazon Athena User Guide\. 
 
 Note the following about the Athena import option in Data Wrangler:
-+ Data Wrangler supports using an Athena primary workgroup\. Other workgroups are not supported\. 
-+ Data Wrangler does not support federate queries\.
++ Data Wrangler supports using Athena workgroups to manage the query results within an AWS account\. For more information, see [Using Workgroups to Control Query Access and Costs](https://docs.aws.amazon.com/athena/latest/ug/manage-queries-control-costs-with-workgroups.html)\.
++ Data Wrangler does not support federated queries\.
 
-Data Wrangler uses the default S3 bucket in the same AWS Region in which your Studio instance is located to store Athena query results\. When you import from Athena, Data Wrangler creates a new database in your Athena account named `sagemaker_data_wrangler` if one does not already exist\. It creates temporary tables in this database to move the query output to this S3 bucket\. It deletes these tables after data has been imported; however the database, `sagemaker_data_wrangler`, persists\. To learn more, see [Imported Data Storage](#data-wrangler-import-storage)\.
+Data Wrangler uses the default Amazon S3 bucket in the same AWS Region in which your Studio instance is located to store Athena query results\. It creates temporary tables in this database to move the query output to this Amazon S3 bucket\. It deletes these tables after data has been imported; however the database, `sagemaker_data_wrangler`, persists\. To learn more, see [Imported Data Storage](#data-wrangler-import-storage)\.
 
 If you use AWS Lake Formation with Athena, make sure your Lake Formation IAM permissions do not override IAM permissions for the database `sagemaker_data_wrangler`\.
 
@@ -88,25 +94,23 @@ If you use AWS Lake Formation with Athena, make sure your Lake Formation IAM per
 
 **To import a dataset into Data Wrangler from Athena:**
 
-1. On the import screen, choose **Amazon Athena**\.
+1. On the **Import data** screen, choose **Amazon Athena**\.
 
-1. For **Catalog**, choose **AWSDataCatalog**\.
+1. For **Data Catalog**, choose a data catalog\.
 
 1. Use the **Database** dropdown list to select the database that you want to query\. When you select a database, you can preview all tables in your database using the **Table**s listed under **Details**\.
 
-1. Enter a query in the code box\.
+1. Choose **Advanced configuration**\.
 
-1. Under **Advanced configuration**, **Enable sampling** is selected by default\. If you do not uncheck this box, Data Wrangler samples and imports approximately 50% of the queried data\. Unselect this check box to disable sampling\. 
+   **Enable sampling** is selected by default\. When sampling is activated, Data Wrangler samples and imports approximately 50% of the queried data\. Unselect this check box to disable sampling\.
+
+1. Specify a value for **Workgroup** if you're using one\.
 
 1. Enter your query in the query editor and use the **Run** button to run the query\. After a successful query, you can preview your result under the editor\.
 
-1. To import the queried results, select **Import dataset**\.
+1. To import the results of your query, select **Import**\.
 
-1. Enter a **Dataset name**\. If you add a **Dataset name** that contains spaces, these spaces are replaced with underscores when your dataset is imported\. 
-
-1. Select **Add**\.
-
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/import-athena.png)
+After completing the preceding procedure, the dataset that you've queried and imported appears in the Data Wrangler flow\.
 
 ## Import data from Amazon Redshift<a name="data-wrangler-import-redshift"></a>
 
@@ -173,7 +177,7 @@ You can use Snowflake as a data source in SageMaker Data Wrangler to prepare dat
 
 With Snowflake as a data source in Data Wrangler, you can quickly and easily connect to Snowflake without writing a single line of code\. Additionally, you can join your data in Snowflake with data stored in Amazon S3 and data queried through Amazon Athena and Amazon Redshift to prepare data for machine learning\. 
 
-Once connected, you can interactively query data stored in Snowflake, easily transform data with 300\+ pre\-configured data transformations, understand data and identify potential errors and extreme values with a set of robust pre\-configured visualization templates, and quickly identify inconsistencies in your data preparation workflow and diagnose issues before models are deployed into production\. Finally, you can export your data preparation workflow to Amazon S3 for use with other SageMaker features such as SageMaker Autopilot, Amazon Feature Store and SageMaker Pipelines\. 
+Once connected, you can interactively query data stored in Snowflake, easily transform data with 300\+ pre\-configured data transformations, understand data and identify potential errors and extreme values with a set of robust pre\-configured visualization templates, and quickly identify inconsistencies in your data preparation workflow and diagnose issues before models are deployed into production\. Finally, you can export your data preparation workflow to Amazon S3 for use with other SageMaker features such as Amazon SageMaker Autopilot, Amazon SageMaker Feature Store and Amazon SageMaker Model Building Pipelines\.
 
 ### Administrator Guide<a name="data-wrangler-snowflake-admin"></a>
 
@@ -204,6 +208,8 @@ To do this, follow these steps\.
    + `s3:GetObject`
    + `s3:GetObjectVersion`
    + `s3:ListBucket`
+   + `s3:ListObjects`
+   + `s3:GetBucketLocation`
 
    **Create an IAM policy**
 
@@ -274,7 +280,7 @@ To do this, follow these steps\.
 
 1. To allow your data scientist to access Snowflake from SageMaker Data Wrangler, provide them with one of following:
    + A Snowflake account name, user name and password\.
-   + Create a secret with [ AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) and provide the ARN of the secret\. Use the following procedure below to create the secret for Snowflake if you choose this option\.
+   + Create a secret with [AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) and provide the ARN of the secret\. Use the following procedure below to create the secret for Snowflake if you choose this option\.
 **Important**  
  If your data scientists use the Snowflake Credentials \(User name and Password\) option to connect to Snowflake, note that [Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) is used to store the credentials in a secret and rotates secrets as part of a best practice security plan\. The secret created in Secrets Manager is only accessible with the Studio role configured when you set up Studio User profile\. This will require you to add this permission, `secretsmanager:PutResourcePolicy` to the policy that is attached to your Studio role\.  
 It is strongly recommended that you scope the role policy to use different roles for different groups of Studio users\. You can add additional resource\-based permissions for the Secrets Manager secrets\. See [Manage Secret Policy](https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage_secret-policy.html) for condition keys you can use\. 
@@ -672,7 +678,7 @@ The dataset you import by selecting **Import dataset** is stored in Parquet form
 
 Preview files are written in CSV format when you select **Run** on the Athena import screen, and contain up to 100 rows from your queried dataset\. 
 
-The dataset you query is located under the prefix \(directory\): athena/*uuid*/data/, where *uuid* is a unique identifier that gets created for each query\. 
+The dataset you query is located under the prefix \(directory\): athena/*uuid*/data/, where *uuid* is a unique identifier that gets created for each query\.
 
 For example, if your default bucket is `sagemaker-us-east-1-111122223333`, a single dataset queried from Athena is located in `s3://sagemaker-us-east-1-111122223333`/redshift/*uuid*/data/*example\_dataset\.parquet*\. 
 

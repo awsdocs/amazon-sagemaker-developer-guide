@@ -1,4 +1,4 @@
-# Host Multiple Models with Multi\-Model Endpoints<a name="multi-model-endpoints"></a>
+# Host multiple models in one container behind one endpoint<a name="multi-model-endpoints"></a>
 
 To create an endpoint that can host multiple models, use multi\-model endpoints\. Multi\-model endpoints provide a scalable and cost\-effective solution to deploying large numbers of models\. They use a shared serving container that is enabled to host multiple models\. This reduces hosting costs by improving endpoint utilization compared with using single\-model endpoints\. It also reduces deployment overhead because Amazon SageMaker manages loading models in memory and scaling them based on the traffic patterns to them\.
 
@@ -71,7 +71,7 @@ For guidelines on choosing a SageMaker ML instance type for a multi\-model endpo
 
 ## Instance Recommendations for Multi\-Model Endpoint Deployments<a name="multi-model-endpoint-instance"></a>
 
-There are several items to consider when selecting a SageMaker ML instance type for a multi\-model endpoint\. Provision sufficient [Amazon Elastic Block Store \(Amazon EBS\)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html) capacity for all of the models that need to be served\. Balance performance \(minimize cold starts\) and cost \(don’t over\-provision instance capacity\)\. For information about the size of the storage volume that SageMaker attaches for each instance type for an endpoint and for a multi\-model endpoint, see [Host Instance Storage Volumes](host-instance-storage.md)\. For a container configured to run in `MultiModel` mode, the storage volume provisioned for its instances has more memory\. This allows more models to be cached on the instance storage volume\. 
+There are several items to consider when selecting a SageMaker ML instance type for a multi\-model endpoint\. Provision sufficient [Amazon Elastic Block Store \(Amazon EBS\)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html) capacity for all of the models that need to be served\. Balance performance \(minimize cold starts\) and cost \(don’t over\-provision instance capacity\)\. For information about the size of the storage volume that SageMaker attaches for each instance type for an endpoint and for a multi\-model endpoint, see [Host instance storage volumes](host-instance-storage.md)\. For a container configured to run in `MultiModel` mode, the storage volume provisioned for its instances has more memory\. This allows more models to be cached on the instance storage volume\. 
 
 When choosing a SageMaker ML instance type, consider the following:
 + Multi\-model endpoints are not supported on GPU instance types\.
@@ -82,7 +82,7 @@ When choosing a SageMaker ML instance type, consider the following:
   + Have some "slack" memory available so that unused models can be unloaded, and especially for multi\-model endpoints with multiple instances\. If an instance or an Availability Zone fails, the models on those instances will be rerouted to other instances behind the endpoint\.
 + Tolerance to loading/downloading times:
   + d instance type families \(for example, m5d, c5d, or r5d\) come with an NVMe \(non\-volatile memory express\) SSD, which offers high I/O performance and might reduce the time it takes to download models to the storage volume and for the container to load the model from the storage volume\.
-  + Because d instance types come with an NVMe SSD storage, SageMaker does not attach an Amazon EBS storage volume to these ML compute instances that hosts the multi\-model endpoint\. Auto scaling works best when the models are simarlarly sized and homogenous, that is when they have similar inference latency and resource requirements\.
+  + Because d instance types come with an NVMe SSD storage, SageMaker does not attach an Amazon EBS storage volume to these ML compute instances that hosts the multi\-model endpoint\. Auto scaling works best when the models are similarly sized and homogenous, that is when they have similar inference latency and resource requirements\.
 
 In some cases, you might opt to reduce costs by choosing an instance type that can't hold all of the targeted models in memory at once\. SageMaker dynamically unloads models when it runs out of memory to make room for a newly targeted model\. For infrequently requested models, you are going to pay a price with the dynamic load latency\. In cases with more stringent latency needs, you might opt for larger instance types or more instances\. Investing time up front for proper performance testing and analysis will pay great dividends in successful production deployments\.
 

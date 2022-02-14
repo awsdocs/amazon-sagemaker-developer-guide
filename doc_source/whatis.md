@@ -16,6 +16,27 @@ Amazon SageMaker includes the following features:
 **[SageMaker Studio](studio.md)**  
 An integrated machine learning environment where you can build, train, deploy, and analyze your models all in the same application\.
 
+**[SageMaker Canvas](canvas.md)**  
+An auto ML service that gives people with no coding experience the ability to build models and make predictions with them\.
+
+**[SageMaker Ground Truth Plus](gtp.md)**  
+A turnkey data labeling feature to create high\-quality training datasets without having to build labeling applications and manage the labeling workforce on your own\.
+
+**[SageMaker Studio Lab](studio-lab.md)**  
+A free service that gives customers access to AWS compute resources in an environment based on open\-source JupyterLab\.
+
+**[SageMaker Training Compiler](training-compiler.md)**  
+Train deep learning models faster on scalable GPU instances managed by SageMaker\.
+
+**[SageMaker Studio Universal Notebook](studio-notebooks-emr-cluster.md)**  
+Easily discover, connect to, create, terminate and manage Amazon EMR clusters in single account and cross account configurations directly from SageMaker Studio\.
+
+**[SageMaker Serverless Endpoints](serverless-endpoints.md)**  
+A serverless endpoint option for hosting your ML model\. Automatically scales in capacity to serve your endpoint traffic\. Removes the need to select instance types or manage scaling policies on an endpoint\.
+
+**[SageMaker Inference Recommender](inference-recommender.md)**  
+Get recommendations on inference instance types and configurations \(e\.g\. instance count, container parameters and model optimizations\) to use your ML models and workloads\.
+
 **[SageMaker Model Registry](model-registry.md)**  
 Versioning, artifact and lineage tracking, approval workflow, and cross account support for deployment of your machine learning models\.
 
@@ -89,7 +110,7 @@ If you are a first\-time user of SageMaker, we recommend that you do the followi
 
 1. **Read [How Amazon SageMaker Works](#how-it-works)** – This section provides an overview of SageMaker, explains key concepts, and describes the core components involved in building AI solutions with SageMaker\. We recommend that you read this topic in the order presented\.
 
-1. **[Set Up Amazon SageMaker](gs-set-up.md)** – This section explains how to set up your AWS account and onboard to SageMaker Studio\.
+1. **[Set Up Amazon SageMaker Prerequisites](gs-set-up.md)** – This section explains how to set up your AWS account\.
 
 1. Amazon SageMaker Autopilot simplifies the machine learning experience by automating machine learning tasks\. If you are new to SageMaker, it provides the easiest learning path\. It also serves as an excellent ML learning tool that provides visibility into the code with notebooks generated for each of the automated ML tasks\. For an introduction to its capabilities, see [Automate model development with Amazon SageMaker Autopilot](autopilot-automate-model-development.md)\. To get started building, training, and deploying machine learning models, Autopilot provides:
    + [Samples: Explore modeling with Amazon SageMaker Autopilot](autopilot-samples.md)

@@ -33,7 +33,7 @@ The following procedure shows how to create a Lifecycle Configuration script tha
 1. Convert your `my-script.sh` file into Base64 format\. This requirement prevents errors due to the encoding of spacing and line breaks\.
 
    ```
-   LCC_CONTENT=`openssl base64 -in my-script.sh`
+   LCC_CONTENT=`openssl base64 -A -in my-script.sh`
    ```
 
 1. Create a Studio Lifecycle Configuration\. The following command creates a Lifecycle Configuration that runs on launch of an associated KernelGateway App\. 

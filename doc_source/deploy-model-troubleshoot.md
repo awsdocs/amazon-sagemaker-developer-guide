@@ -1,4 +1,4 @@
-# Troubleshoot Amazon SageMaker Model Deployments<a name="deploy-model-troubleshoot"></a>
+# Troubleshoot Amazon SageMaker model deployments<a name="deploy-model-troubleshoot"></a>
 
 If you encounter an issue when deploying machine learning models in Amazon SageMaker, see the following guidance\.
 

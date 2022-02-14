@@ -1,6 +1,6 @@
-# Set Up Amazon SageMaker<a name="gs-set-up"></a>
+# Set Up Amazon SageMaker Prerequisites<a name="gs-set-up"></a>
 
-In this section, you sign up for an AWS account, create an IAM admin user, and onboard to Amazon SageMaker Studio\.
+In this section, you sign up for an AWS account and create an AWS Identity and Access Management \(IAM\) admin user\.
 
 If you're new to SageMaker, we recommend that you read [How Amazon SageMaker Works](whatis.md#how-it-works)\.
 

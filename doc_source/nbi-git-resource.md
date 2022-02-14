@@ -13,7 +13,7 @@ You can use the SageMaker API [  `CreateCodeRepository`](https://docs.aws.amaz
 
 1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Choose **Git repositories**, then choose **Add repository**\.
+1. Under **Notebook**, choose **Git repositories**, then choose **Add repository**\.
 
 1. To add an CodeCommit repository, choose **AWS CodeCommit**\. To add a GitHub or other Git\-based repository, choose **GitHub/Other Git\-based repo**\.
 

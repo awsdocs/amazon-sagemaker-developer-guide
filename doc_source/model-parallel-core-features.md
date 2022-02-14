@@ -1,8 +1,8 @@
-# Core Features of SageMaker Distributed Model Parallel<a name="model-parallel-core-features"></a>
+# Core Features of the SageMaker Model Parallel Library<a name="model-parallel-core-features"></a>
 
-Amazon SageMaker's distributed model parallel makes model parallelism more accessible by providing automated model splitting and sophisticated pipeline execution scheduling\. The model splitting algorithms can optimize for speed or memory consumption\. The library also supports manual partitioning\. When you use the library, training is executed in a pipelined fashion over microbatches to maximize GPU usage\.
+Amazon SageMaker's model parallel library makes model parallelism more accessible by providing automated model splitting and sophisticated pipeline execution scheduling\. The model splitting algorithms can optimize for speed or memory consumption\. The library also supports manual partitioning\. When you use the library, training is executed in a pipelined fashion over microbatches to maximize GPU usage\.
 
-You can configure these features using a few lines of code when you create your training script and define your SageMaker PyTorch or Tensorflow `Estimator`\. Use the following sections to learn more about these core features of the library\.
+You can configure these features using a few lines of code when you create your training script and define your SageMaker `PyTorch` or `TensorFlow` estimators\. Use the following sections to learn more about these core features of the library\.
 
 **Note**  
 The SageMaker distributed training libraries are available only through the AWS deep learning containers for the TensorFlow, PyTorch, and HuggingFace frameworks within the SageMaker training platform\. To use the libraries, you must use the SageMaker Python SDK or the SageMaker APIs through SDK for Python \(Boto3\) or AWS Command Line Interface\. Throughout the documentation, instructions and examples focus on how to use the distributed training libraries with the SageMaker Python SDK\.

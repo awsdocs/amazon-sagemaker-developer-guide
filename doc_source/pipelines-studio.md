@@ -1,6 +1,6 @@
 # View, Track, and Execute SageMaker Pipelines in SageMaker Studio<a name="pipelines-studio"></a>
 
-To view, track, and execute Amazon SageMaker Pipelines in Amazon SageMaker Studio, you must sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Studio](gs-studio-onboard.md)\.
+To view, track, and execute Amazon SageMaker Pipelines in Amazon SageMaker Studio, you must sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
 **Topics**
 + [View a Pipeline](pipelines-studio-list-pipelines.md)

@@ -1,10 +1,10 @@
-# Test Endpoints<a name="realtime-endpoints-test-endpoints"></a>
+# Invoke real\-time endpoints<a name="realtime-endpoints-test-endpoints"></a>
 
 After you deploy your model using SageMaker hosting services, you can test your model on that endpoint by sending it test data\. You can test your endpoints using Amazon SageMaker Studio, the AWS CLI, or AWS SDKs\.
 
 ## Test Your Endpoint Using Amazon SageMaker Studio<a name="realtime-endpoints-test-endpoints-studio"></a>
 
-After you deploy your model to an endpoint \(see [Deploy Your Model](realtime-endpoints.md#realtime-endpoints-deployment)\) you can check that endpoint with Amazon SageMaker Studio\.
+After you deploy your model to an endpoint \(see [Create your endpoint and deploy your model](realtime-endpoints-deployment.md)\) you can check that endpoint with Amazon SageMaker Studio\.
 
 **Note**  
 Note: SageMaker only supports endpoint testing with Amazon SageMaker Studio for real\-time endpoints\.
@@ -19,6 +19,8 @@ Note: SageMaker only supports endpoint testing with Amazon SageMaker Studio for 
    + The SageMaker Python SDK Model Class [https://sagemaker.readthedocs.io/en/stable/api/inference/model.html?highlight=deploy#sagemaker.model.Model.deploy](https://sagemaker.readthedocs.io/en/stable/api/inference/model.html?highlight=deploy#sagemaker.model.Model.deploy)\.
    + The AWS SDK for Python \(Boto3\) SageMaker Service Client API [CreateEndpoint](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html)\.
    + The SageMaker console\. Select **Inference** in the left panel and then select **Endpoint configuration**\. Provide an endpoint name within the **Endpoint name** field\.
+
+1. \(Optional\) You can optionally provide a custom URL to send your request to\. In the **Configure endpoint URL and headers** field provide the URL of where your model is hosted\. Leave this field blank if you are using a SageMaker endpoint\. You can also optionally add multiple key\-value headers to pass additional information to the inference request\. 
 
 1. A new tab will populate in the Studio workspace\. Select the **Test inference** tab\.
 
@@ -39,7 +41,7 @@ The top of the card will display the type of request that was sent to the endpoi
 
 ## Test Your Endpoint Using AWS SDKs<a name="realtime-endpoints-test-endpoints-api"></a>
 
-After you deploy your model to an endpoint \(see [Deploy Your Model](realtime-endpoints.md#realtime-endpoints-deployment.title)\) you can check your endpoint with the `InvokeEndpoint` API using one of the AWS SDKs\. If the invocation is successful, SageMaker will return an HTTP 200 response\. You can index the returned response dictionary object to find out more about the response headers\. For more information, see [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html#API_runtime_InvokeEndpoint_ResponseElements](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html#API_runtime_InvokeEndpoint_ResponseElements)\.
+After you deploy your model to an endpoint \(see [Create your endpoint and deploy your model](realtime-endpoints-deployment.md#realtime-endpoints-deployment.title)\) you can check your endpoint with the `InvokeEndpoint` API using one of the AWS SDKs\. If the invocation is successful, SageMaker will return an HTTP 200 response\. You can index the returned response dictionary object to find out more about the response headers\. For more information, see [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html#API_runtime_InvokeEndpoint_ResponseElements](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html#API_runtime_InvokeEndpoint_ResponseElements)\.
 
 The following demonstrates how to use `InvokeEndpoint` to check the status of your endpoint using the AWS SDK for Python \(Boto3\)\. Provide the name of your endpoint\. This is the name you specified for `EndpointName` when you created your endpoint with [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html)\.
 

@@ -8,7 +8,7 @@ The the AI/ML workflow into which you integrate Amazon A2I defines an Amazon A2I
 
 Amazon A2I supports:
 + Two *built\-in task types*: [Amazon Textract key\-value pair extraction](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-textract-task-type.html) and [Amazon Rekognition image moderation](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-rekognition-task-type.html)\.
-+ A [https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-task-types-custom.html](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-task-types-custom.html): Use a custom task type to integrate a human review loop into *any* machine learning workflow\. You can use a custom task type to integrate Amazon A2I with other AWS services like Amazon Comprehend, Amazon Transcribe, and Amazon Translate, as well as your own custom machine learning workflows\. To learn more, see [Use Cases and Examples Using Amazon A2I](a2i-task-types-general.md)\.
++ A [custom task type](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-task-types-custom.html): Use a custom task type to integrate a human review loop into *any* machine learning workflow\. You can use a custom task type to integrate Amazon A2I with other AWS services like Amazon Comprehend, Amazon Transcribe, and Amazon Translate, as well as your own custom machine learning workflows\. To learn more, see [Use Cases and Examples Using Amazon A2I](a2i-task-types-general.md)\.
 
 Select a tab in the following table to see diagrams that illustrate how Amazon A2I works with each task type\. Select the task type page using the links in the preceding list to learn more about that task type\.
 

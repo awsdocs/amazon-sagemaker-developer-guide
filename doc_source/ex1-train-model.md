@@ -58,7 +58,7 @@ If you run this installation in your exiting SageMaker Studio or notebook instan
        role=role,
        instance_count=1,
        instance_type='ml.m4.xlarge',
-       train_volume_size=5,
+       volume_size=5,
        output_path=s3_output_location,
        sagemaker_session=sagemaker.Session(),
        rules=[Rule.sagemaker(rule_configs.create_xgboost_report())]
@@ -156,4 +156,4 @@ xgb_model.model_data
 ```
 
 **Tip**  
-To measure biases that can occur during each stage of the ML lifecycle \(data collection, model training and tuning, and monitoring of ML models deployed for prediction\), use SageMaker Clarify\. For more information, see [Model Explainability](clarify-model-explainability.md)\. For an end\-to\-end example of it, see the [Fairness and Explainability with SageMaker Clarify](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker_processing/fairness_and_explainability/fairness_and_explainability.html) example notebook\.
+To measure biases that can occur during each stage of the ML lifecycle \(data collection, model training and tuning, and monitoring of ML models deployed for prediction\), use SageMaker Clarify\. For more information, see [Amazon SageMaker Clarify Model Explainability](clarify-model-explainability.md)\. For an end\-to\-end example of it, see the [Fairness and Explainability with SageMaker Clarify](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker_processing/fairness_and_explainability/fairness_and_explainability.html) example notebook\.

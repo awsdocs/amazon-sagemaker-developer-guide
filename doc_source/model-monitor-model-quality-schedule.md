@@ -1,6 +1,6 @@
 # Schedule Model Quality Monitoring Jobs<a name="model-monitor-model-quality-schedule"></a>
 
-For general information about scheduling monitoring jobs, see [Schedule Monitoring Jobs](model-monitor-scheduling.md)\. For model quality monitoring, you also have to consider the fact that the availability of ground truth labels might be delayed\.
+For general information about scheduling monitoring jobs, see [Schedule monitoring jobs](model-monitor-scheduling.md)\. For model quality monitoring, you also have to consider the fact that the availability of ground truth labels might be delayed\.
 
 **Topics**
 

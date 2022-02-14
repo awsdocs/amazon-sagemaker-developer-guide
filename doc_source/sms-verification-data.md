@@ -181,7 +181,7 @@ Use the following procedure to create a 3D point cloud or video frame adjustment
 
 ### <a name="sms-data-verify-start-api"></a>
 
-Start a label verification or adjustment job by chaining a successfully completed job or starting a new job from scratch using the [ `CreateLabelingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. The procedure is almost the same as setting up a new labeling job with `CreateLabelingJob`, with a few modifications\. Use the following sections to learn what modifications are required to chain a labeling job to create an adjustment or verification labeling job\. 
+Start a label verification or adjustment job by chaining a successfully completed job or starting a new job from scratch using the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. The procedure is almost the same as setting up a new labeling job with `CreateLabelingJob`, with a few modifications\. Use the following sections to learn what modifications are required to chain a labeling job to create an adjustment or verification labeling job\. 
 
 When you create an adjustment or verification labeling job using the Ground Truth API, you *must* use a different `LabelAttributeName` than the original labeling job\. The original labeling job is the job used to create the labels you want adjusted or verified\. 
 

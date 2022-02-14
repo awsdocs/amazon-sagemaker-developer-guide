@@ -29,7 +29,7 @@ Your pipeline requires an IAM pipeline execution role that is passed to SageMake
 
 ## Pipeline Step Permissions<a name="build-and-manage-step-permissions"></a>
 
- SageMaker Pipelines include steps that run SageMaker jobs\. In order for the pipeline steps to run these jobs, they require an IAM role in your account that provides access for the needed resource\. This role is passed to the SageMaker service principal by your pipeline\. For more information on IAM roles, see [IAM Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)\. 
+SageMaker Pipelines include steps that run SageMaker jobs\. In order for the pipeline steps to run these jobs, they require an IAM role in your account that provides access for the needed resource\. This role is passed to the SageMaker service principal by your pipeline\. For more information on IAM roles, see [IAM Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)\. 
 
 By default, each step takes on the pipeline execution role\. You can optionally pass a different role to any of the steps in your pipeline\. This ensures that the code in each step does not have the ability to impact resources used in other steps unless there is a direct relationship between the two steps specified in the pipeline definition\. You pass these roles when defining the processor or estimator for your step\. For examples of how to include these roles in these definitions, see the [SageMaker Python SDK documentation](https://sagemaker.readthedocs.io/en/stable/overview.html#using-estimators)\. 
 
@@ -39,10 +39,10 @@ Service control policies \(SCPs\) are a type of organization policy that you can
 
 If you're using a VPC with your SCP that restricts access to Amazon S3, you need to take steps to allow your pipeline to access other Amazon S3 resources\. 
 
- To allow SageMaker Pipelines to access Amazon S3 outside of your VPC with the `JsonGet` function, update your organization's SCP to ensure that the role using SageMaker Pipelines can access Amazon S3\. To do this, create an exception for roles that are being used by the SageMaker Pipelines executor via the pipeline execution role using a principal tag and condition key\. 
+To allow SageMaker Pipelines to access Amazon S3 outside of your VPC with the `JsonGet` function, update your organization's SCP to ensure that the role using SageMaker Pipelines can access Amazon S3\. To do this, create an exception for roles that are being used by the SageMaker Pipelines executor via the pipeline execution role using a principal tag and condition key\. 
 
 **To allow SageMaker Pipelines to access Amazon S3 outside of your VPC**
 
-1.  Create a unique tag for your pipeline execution role following the steps in [Tagging IAM users and roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)\. 
+1. Create a unique tag for your pipeline execution role following the steps in [Tagging IAM users and roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)\. 
 
-1.  Grant an exception in your SCP using the `Aws:PrincipalTag IAM` condition key for the tag you created\. For more information, see [Creating, updating, and deleting service control policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_create.html)\. 
+1. Grant an exception in your SCP using the `Aws:PrincipalTag IAM` condition key for the tag you created\. For more information, see [Creating, updating, and deleting service control policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_create.html)\. 

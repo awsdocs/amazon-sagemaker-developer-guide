@@ -7,13 +7,14 @@
 The following topics describe fundamental SageMaker Pipelines concepts\. For a tutorial describing the implementation of these concepts, see [Create and Manage SageMaker Pipelines](pipelines-build.md)\.
 
 **Topics**
-+ [Pipeline Structure](build-and-manage-pipeline.md)
++ [Pipeline Structure and Execution](build-and-manage-pipeline.md)
 + [Access Management](build-and-manage-access.md)
 + [Pipeline Parameters](build-and-manage-parameters.md)
 + [Pipeline Steps](build-and-manage-steps.md)
 + [Property Files and `JsonGet`](build-and-manage-propertyfile.md)
 + [Caching Pipeline Steps](pipelines-caching.md)
++ [Retry Policy for Pipeline Steps](pipelines-retry-policy.md)
++ [Baseline calculation, drift detection and lifecycle with ClarifyCheck and QualityCheck steps in Amazon SageMaker Model Building Pipelines](pipelines-quality-clarify-baseline-lifecycle.md)
 + [Amazon EventBridge Integration](pipeline-eventbridge.md)
 + [Amazon SageMaker Experiments Integration](pipelines-experiments.md)
-+ [SageMaker Pipelines Quotas](pipelines-quotas.md)
 + [Troubleshooting Amazon SageMaker Model Building Pipelines](pipelines-troubleshooting.md)

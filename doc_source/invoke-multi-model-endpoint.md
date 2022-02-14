@@ -1,6 +1,6 @@
 # Invoke a Multi\-Model Endpoint<a name="invoke-multi-model-endpoint"></a>
 
-To invoke a multi\-model endpoint, use the [ `invoke_endpoint`](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker-runtime.html#SageMakerRuntime.Client.invoke_endpoint) from the SageMaker Runtime just as you would invoke a single model endpoint, with one change\. Pass a new `TargetModel` parameter that specifies which of the models at the endpoint to target\. The SageMaker Runtime `InvokeEndpoint` request supports `X-Amzn-SageMaker-Target-Model` as a new header that takes the relative path of the model specified for invocation\. The SageMaker system constructs the absolute path of the model by combining the prefix that is provided as part of the `CreateModel` API call with the relative path of the model\.
+To invoke a multi\-model endpoint, use the [https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker-runtime.html#SageMakerRuntime.Client.invoke_endpoint](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker-runtime.html#SageMakerRuntime.Client.invoke_endpoint) from the SageMaker Runtime just as you would invoke a single model endpoint, with one change\. Pass a new `TargetModel` parameter that specifies which of the models at the endpoint to target\. The SageMaker Runtime `InvokeEndpoint` request supports `X-Amzn-SageMaker-Target-Model` as a new header that takes the relative path of the model specified for invocation\. The SageMaker system constructs the absolute path of the model by combining the prefix that is provided as part of the `CreateModel` API call with the relative path of the model\.
 
 ------
 #### [ AWS SDK for Python \(Boto 3\) ]
@@ -8,7 +8,7 @@ To invoke a multi\-model endpoint, use the [ `invoke_endpoint`](https://boto3.am
 The following example prediction request uses the [AWS SDK for Python \(Boto 3\)](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker-runtime.html) in the sample notebook\.
 
 ```
-response = runtime_sm_client.invoke_endpoint(
+response = runtime_sagemaker_client.invoke_endpoint(
                         EndpointName = "<ENDPOINT_NAME>",
                         ContentType  = "text/csv",
                         TargetModel  = "<MODEL_FILENAME>.tar.gz",
@@ -54,5 +54,5 @@ config = Config(
         'max_attempts': 2  # This value can be adjusted to 5 to go up to the 360s max timeout
     }
 )
-runtime_sm_client = boto3.client('sagemaker-runtime', config=config)
+runtime_sagemaker_client = boto3.client('sagemaker-runtime', config=config)
 ```
