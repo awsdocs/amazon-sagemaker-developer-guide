@@ -10,7 +10,7 @@ To configure and launch a hyperparameter tuning job, complete the following step
 
 ## Specify the Hyperparameter Tuning Job Settings<a name="automatic-model-tuning-ex-low-tuning-config"></a>
 
-To specify settings for the hyperparameter tuning job, you define a JSON object\. You pass the object as the value of the `HyperParameterTuningJobConfig` parameter to [ `CreateHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html) when you create the tuning job\.
+To specify settings for the hyperparameter tuning job, you define a JSON object\. You pass the object as the value of the `HyperParameterTuningJobConfig` parameter to [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html) when you create the tuning job\.
 
 In this JSON object, you specify:
 + The ranges of hyperparameters that you want to tune\. For more information, see [Define Hyperparameter Ranges](automatic-model-tuning-define-ranges.md)
@@ -64,7 +64,7 @@ tuning_job_config = {
 
 ## Configure the Training Jobs<a name="automatic-model-tuning-ex-low-training-def"></a>
 
-To configure the training jobs that the tuning job launches, define a JSON object that you pass as the value of the `TrainingJobDefinition` parameter of the [ `CreateHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html) call\.
+To configure the training jobs that the tuning job launches, define a JSON object that you pass as the value of the `TrainingJobDefinition` parameter of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html) call\.
 
 In this JSON object, you specify:
 + Optional—Metrics that the training jobs emit\.
@@ -208,7 +208,7 @@ training_job_definition = {
 
 ## Name and Launch the Hyperparameter Tuning Job<a name="automatic-model-tuning-ex-low-launch"></a>
 
-Now you can provide a name for the hyperparameter tuning job and then launch it by calling the [ `CreateHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html) API\. Pass `tuning_job_config`, and `training_job_definition` that you created in previous steps as the values of the parameters\.
+Now you can provide a name for the hyperparameter tuning job and then launch it by calling the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html) API\. Pass `tuning_job_config`, and `training_job_definition` that you created in previous steps as the values of the parameters\.
 
 ```
 tuning_job_name = "MyTuningJob"

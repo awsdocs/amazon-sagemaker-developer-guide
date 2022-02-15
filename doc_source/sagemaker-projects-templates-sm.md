@@ -81,7 +81,7 @@ When the CodePipeline is initiated, it builds a new Docker container and registe
 The newly created image is used in the model building, training, and deployment portions of the workflow where applicable\.
 
 ## MLOps template for model building, training, and deployment with third\-party Git repositories using CodePipeline<a name="sagemaker-projects-templates-git-code-pipeline"></a>
-+ **Code repository**: Third\-party Git
++ **Code repository**: Third\-party Git\. Establish the AWS CodeStar connection from your AWS account to your GitHub user or organization\. Add a tag with the key `sagemaker` and value `true` to this AWS CodeStar connection\.
 + **CI/CD workflow automation**: AWS CodePipeline
 
 This template provides the following resources:
@@ -93,7 +93,7 @@ This template provides the following resources:
 ## MLOps template for model building, training, and deployment with third\-party Git repositories using Jenkins<a name="sagemaker-projects-templates-git-jenkins"></a>
 
 Attach your own Git repository to the project for checking in and managing code versions\. Connect the project to Jenkins to orchestrate your model deployment steps\. Start the model deployment workflow by approving the model registered in the model registry for deployment either manually or automatically\.
-+ **Code repository**: Third\-party Git
++ **Code repository**: Third\-party Git\. Establish the AWS CodeStar connection from your AWS account to your GitHub user or organization\. Add a tag with the key `sagemaker` and value `true` to this AWS CodeStar connection\.
 + **CI/CD workflow automation**: Jenkins
 
 This template provides the following resources:

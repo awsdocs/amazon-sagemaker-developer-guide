@@ -6,7 +6,7 @@ The training dataset that you used to trained the model is usually a good baseli
 
 **To Create a baseline from a training dataset** 
 
-When you have your training data ready and stored in Amazon S3, start a baseline processing job with `DefaultModelMonitor.suggest_baseline(..)` using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\. This uses an [Amazon SageMaker Model Monitor Prebuilt Container](model-monitor-pre-built-container.md) that generates baseline statistics and suggests baseline constraints for the dataset and writes them to the `output_s3_uri` location that you specify\.
+When you have your training data ready and stored in Amazon S3, start a baseline processing job with `DefaultModelMonitor.suggest_baseline(..)` using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\. This uses an [Amazon SageMaker Model Monitor prebuilt container](model-monitor-pre-built-container.md) that generates baseline statistics and suggests baseline constraints for the dataset and writes them to the `output_s3_uri` location that you specify\.
 
 ```
 from sagemaker.model_monitor import DefaultModelMonitor

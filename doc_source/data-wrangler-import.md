@@ -32,7 +32,13 @@ Data Wrangler uses [S3 Select](http://aws.amazon.com/s3/features/#s3-select) to 
 **Important**  
 If you plan to export a data flow and launch a Data Wrangler job, ingest data into a SageMaker feature store, or create a SageMaker pipeline, be aware that these integrations require Amazon S3 input data to be located in the same AWS region\.
 
-You can browse all buckets in your AWS account and import CSV and Parquet files using the Amazon S3 import in Data Wrangler\. 
+In Data Wrangler, you can use the Amazon S3 import functionality to browse all the S3 buckets in your AWS account and import files with the following formats:
++ Comma Separated Values \(CSV\)
++ Parquet
++ Javascript Object Notation \(JSON\)
++ Optimized Row Columnar \(ORC\)
+
+For files formatted in JSON, Data Wrangler supports both JSON lines \(\.jsonl\) and JSON documents \(\.json\)\. When you preview your data, it automatically shows the JSON in tabular format\. For nested JSON documents that are larger than 5 MB, Data Wrangler shows the schema for the structure and the arrays as values in the dataset\. Use the **Flatten structured** and **Explode array** operators to display the nested values in tabular format\. For more information, see [Unnest JSON data](data-wrangler-transform.md#data-wrangler-transform-flatten-column) and [Explode array](data-wrangler-transform.md#data-wrangler-transform-explode-array)\.
 
 When you choose a dataset for import, you can rename it, specify the file type, and identify the first row as a header\. 
 
@@ -171,7 +177,7 @@ You can use Snowflake as a data source in SageMaker Data Wrangler to prepare dat
 
 With Snowflake as a data source in Data Wrangler, you can quickly and easily connect to Snowflake without writing a single line of code\. Additionally, you can join your data in Snowflake with data stored in Amazon S3 and data queried through Amazon Athena and Amazon Redshift to prepare data for machine learning\. 
 
-Once connected, you can interactively query data stored in Snowflake, easily transform data with 300\+ pre\-configured data transformations, understand data and identify potential errors and extreme values with a set of robust pre\-configured visualization templates, and quickly identify inconsistencies in your data preparation workflow and diagnose issues before models are deployed into production\. Finally, you can export your data preparation workflow to Amazon S3 for use with other SageMaker features such as SageMaker Autopilot, Amazon Feature Store and SageMaker Pipelines\. 
+Once connected, you can interactively query data stored in Snowflake, easily transform data with 300\+ pre\-configured data transformations, understand data and identify potential errors and extreme values with a set of robust pre\-configured visualization templates, and quickly identify inconsistencies in your data preparation workflow and diagnose issues before models are deployed into production\. Finally, you can export your data preparation workflow to Amazon S3 for use with other SageMaker features such as Amazon SageMaker Autopilot, Amazon SageMaker Feature Store and Amazon SageMaker Model Building Pipelines\.
 
 ### Administrator Guide<a name="data-wrangler-snowflake-admin"></a>
 
@@ -202,6 +208,8 @@ To do this, follow these steps\.
    + `s3:GetObject`
    + `s3:GetObjectVersion`
    + `s3:ListBucket`
+   + `s3:ListObjects`
+   + `s3:GetBucketLocation`
 
    **Create an IAM policy**
 
@@ -272,7 +280,7 @@ To do this, follow these steps\.
 
 1. To allow your data scientist to access Snowflake from SageMaker Data Wrangler, provide them with one of following:
    + A Snowflake account name, user name and password\.
-   + Create a secret with [ AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) and provide the ARN of the secret\. Use the following procedure below to create the secret for Snowflake if you choose this option\.
+   + Create a secret with [AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) and provide the ARN of the secret\. Use the following procedure below to create the secret for Snowflake if you choose this option\.
 **Important**  
  If your data scientists use the Snowflake Credentials \(User name and Password\) option to connect to Snowflake, note that [Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) is used to store the credentials in a secret and rotates secrets as part of a best practice security plan\. The secret created in Secrets Manager is only accessible with the Studio role configured when you set up Studio User profile\. This will require you to add this permission, `secretsmanager:PutResourcePolicy` to the policy that is attached to your Studio role\.  
 It is strongly recommended that you scope the role policy to use different roles for different groups of Studio users\. You can add additional resource\-based permissions for the Secrets Manager secrets\. See [Manage Secret Policy](https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage_secret-policy.html) for condition keys you can use\. 

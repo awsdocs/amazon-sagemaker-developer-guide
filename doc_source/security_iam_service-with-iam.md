@@ -61,13 +61,13 @@ SageMaker defines its own set of condition keys and also supports using some glo
 
 
 SageMaker supports a number of service\-specific condition keys that you can use for fine\-grained access control for the following operations:
-+ [ `CreateProcessingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateProcessingJob.html)
-+ [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html)
-+ [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html)
-+ [ `CreateEndpointConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html)
-+ [ `CreateTransformJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html)
-+ [ `CreateHyperParameterTuningJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html)
-+ [ `CreateLabelingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateProcessingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateProcessingJob.html)
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html)
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html)
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html)
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html)
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html)
++ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html)
 + [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstance.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstance.html)
 + [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateNotebookInstance.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateNotebookInstance.html)
 
@@ -103,13 +103,13 @@ SageMaker supports using temporary credentials\.
 
 #### Service\-Linked Roles<a name="security_iam_service-with-iam-roles-service-linked"></a>
 
-SageMaker doesn't support service\-linked roles\.
+SageMaker partially supports [service\-linked roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role)\. Service\-linked roles are currently available for SageMaker Studio and SageMaker training jobs\.
 
 #### Service Roles<a name="security_iam_service-with-iam-roles-service"></a>
 
 This feature allows a service to assume a [service role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-role) on your behalf\. This role allows the service to access resources in other services to complete an action on your behalf\. Service roles appear in your IAM account and are owned by the account\. This means that an IAM administrator can change the permissions for this role\. However, doing so might break the functionality of the service\.
 
-SageMaker supports service roles\. 
+SageMaker supports service roles\.
 
 #### Choosing an IAM Role in SageMaker<a name="security_iam_service-with-iam-roles-choose"></a>
 

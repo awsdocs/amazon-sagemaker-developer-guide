@@ -101,7 +101,7 @@ Now run the following AWS CLI command to create your endpoint configuration:
 aws sagemaker create-endpoint-config --cli-input-json file://create_config.json
 ```
 
-For the full syntax of the `create-endpoint-config` API, see [ `create-endpoint-config`](https://docs.aws.amazon.com/cli/latest/reference/sagemaker/create-endpoint-config.html)\. 
+For the full syntax of the `create-endpoint-config` API, see [https://docs.aws.amazon.com/cli/latest/reference/sagemaker/create-endpoint-config.html](https://docs.aws.amazon.com/cli/latest/reference/sagemaker/create-endpoint-config.html)\. 
 
 ### Create an Endpoint<a name="neo-deployment-hosting-services-cli-create-endpoint"></a>
 

@@ -11,6 +11,10 @@ Amazon SageMaker Serverless Inference is a purpose\-built inference option that 
 
 With a pay\-per\-use model, Serverless Inference is a cost\-effective option if you have an infrequent or unpredictable traffic pattern\. During times when there are no requests, Serverless Inference scales your endpoint down to 0, helping you to minimize your costs\. Serverless Inference is available in Preview in the following Regions: US East \(N\. Virginia\) `us-east-1`, US East \(Ohio\) `us-east-2`, US West \(Oregon\) `us-west-2`, Europe \(Ireland\) `eu-west-1`, Asia Pacific \(Tokyo\) `ap-northeast-1` and Asia Pacific \(Sydney\) `ap-southeast-2`\.
 
+For an introduction to Amazon SageMaker Serverless Inference, see the following video\. The video explains the core concepts of Serverless Inference and includes a demonstration of how to set up a serverless endpoint\.
+
+[![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/xIp2305saII/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/xIp2305saII)
+
 ## How it works<a name="serverless-endpoints-how-it-works"></a>
 
 The following diagram shows the workflow of Serverless Inference and the benefits of using a serverless endpoint\.
@@ -38,9 +42,9 @@ If you already have a container for a real\-time endpoint, you can use the same 
 
 ### Memory size<a name="serverless-endpoints-how-it-works-memory"></a>
 
-Your serverless endpoint has a minimum memory size of 1024 MB \(1 GB\), and the maximum size you can choose is 6144 MB \(6 GB\)\. The memory sizes you can choose are 1024 MB, 2048 MB, 3072 MB, 4096 MB, 5120 MB, or 6144 MB\. Serverless Inference auto\-assigns compute resources proportional to the memory you select\. If you choose a larger memory size, your container has access to more vCPUs\. Choose your endpoint’s memory size according to your model size\. Generally, the memory size should be at least as large as your model size\. You may need to benchmark in order to choose the right memory selection for your model based on your latency SLAs\. The memory size increments have different pricing; see the [Amazon SageMaker pricing page](https://aws.amazon.com/sagemaker/pricing/) for more information\.
+Your serverless endpoint has a minimum RAM size of 1024 MB \(1 GB\), and the maximum RAM size you can choose is 6144 MB \(6 GB\)\. The memory sizes you can choose are 1024 MB, 2048 MB, 3072 MB, 4096 MB, 5120 MB, or 6144 MB\. Serverless Inference auto\-assigns compute resources proportional to the memory you select\. If you choose a larger memory size, your container has access to more vCPUs\. Choose your endpoint’s memory size according to your model size\. Generally, the memory size should be at least as large as your model size\. You may need to benchmark in order to choose the right memory selection for your model based on your latency SLAs\. The memory size increments have different pricing; see the [Amazon SageMaker pricing page](https://aws.amazon.com/sagemaker/pricing/) for more information\.
 
-Regardless of the memory size you choose, your serverless endpoint has 5 GB of storage available\. For help with container permissions issues when working with storage, see [Troubleshooting](serverless-endpoints-troubleshooting.md)\.
+Regardless of the memory size you choose, your serverless endpoint has 5 GB of ephemeral disk storage available\. For help with container permissions issues when working with storage, see [Troubleshooting](serverless-endpoints-troubleshooting.md)\.
 
 ### Concurrent invocations<a name="serverless-endpoints-how-it-works-concurrency"></a>
 
@@ -56,15 +60,12 @@ To monitor how long your cold start time is, you can use the Amazon CloudWatch m
 
 ### Feature exclusions<a name="serverless-endpoints-how-it-works-exclusions"></a>
 
-During Preview, some of the features currently available for SageMaker Real\-time Inference are not supported for Serverless Inference, including AWS marketplace model packages, private Docker registries, Multi\-Model Endpoints, VPC configuration, network isolation, data capture, multiple production variants, Model Monitor, inference pipelines, and the Amazon SageMaker Python SDK\.
+During Preview, some of the features currently available for SageMaker Real\-time Inference are not supported for Serverless Inference, including GPUs, AWS marketplace model packages, private Docker registries, Multi\-Model Endpoints, VPC configuration, network isolation, data capture, multiple production variants, Model Monitor, and inference pipelines\.
 
 During Preview, you cannot convert your instance\-based, real\-time endpoint to a serverless endpoint\. If you try to update your real\-time endpoint to serverless, you receive a `ValidationError` message\. You can convert a serverless endpoint to real\-time, but once you make the update, you cannot roll it back to serverless\.
 
 ## Getting started<a name="serverless-endpoints-get-started"></a>
 
-You can create, update, describe, and delete a serverless endpoint using the SageMaker console, the AWS SDKs, and the AWS CLI\. You can invoke your endpoint using the AWS SDKs and the AWS CLI\. For more information on how to set up and use a serverless endpoint, read the guide [Create, Invoke, Update, and Delete an Endpoint](serverless-endpoints-create-invoke-update-delete.md)\.
+You can create, update, describe, and delete a serverless endpoint using the SageMaker console, the AWS SDKs, the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/), and the AWS CLI\. You can invoke your endpoint using the AWS SDKs, the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/), and the AWS CLI\. For more information on how to set up and use a serverless endpoint, read the guide [Create, Invoke, Update, and Delete an Endpoint](serverless-endpoints-create-invoke-update-delete.md)\.
 
-**Note**  
-In Preview, Serverless Inference is available through the AWS SDK for Python \(Boto3\) but does not provide support for the Amazon SageMaker Python SDK\.
-
-To see a Jupyter notebook example that shows an end\-to\-end serverless endpoint workflow, see our Serverless Inference [notebook example](https://github.com/aws/amazon-sagemaker-examples/tree/master/serverless-inference/Serverless-Inference-Walkthrough.ipynb)\.
+To see a Jupyter notebook example that shows an end\-to\-end serverless endpoint workflow, see our Serverless Inference [notebook](https://github.com/aws/amazon-sagemaker-examples/tree/master/serverless-inference/Serverless-Inference-Walkthrough.ipynb)\.

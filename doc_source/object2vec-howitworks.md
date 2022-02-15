@@ -9,7 +9,7 @@ When using the Amazon SageMaker Object2Vec algorithm, you follow the standard wo
 
 ## Step 1: Process Data<a name="object2vec-step-1-data-preprocessing"></a>
 
-During preprocessing, convert the data to the [JSON Lines](http://jsonlines.org/) text file format specified in [ Data Formats for Object2Vec Training](object2vec-training-formats.md) \. To get the highest accuracy during training, also randomly shuffle the data before feeding it into the model\. How you generate random permutations depends on the language\. For python, you could use `np.random.shuffle`; for Unix, `shuf`\.
+During preprocessing, convert the data to the [JSON Lines](http://jsonlines.org/) text file format specified in [Data Formats for Object2Vec Training](object2vec-training-formats.md) \. To get the highest accuracy during training, also randomly shuffle the data before feeding it into the model\. How you generate random permutations depends on the language\. For python, you could use `np.random.shuffle`; for Unix, `shuf`\.
 
 ## Step 2: Train a Model<a name="object2vec-step-2-training-model"></a>
 

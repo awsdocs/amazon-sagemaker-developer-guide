@@ -1,4 +1,4 @@
-# Visualize Results in Amazon SageMaker Studio<a name="model-monitor-interpreting-visualize-results"></a>
+# Visualize results in Amazon SageMaker Studio<a name="model-monitor-interpreting-visualize-results"></a>
 
 You can also visualize the results of monitoring in Amazon SageMaker Studio\. You can view the details of any monitoring job run, and you can create charts that show the baseline and captured values for any metric that the monitoring job calculates\.
 

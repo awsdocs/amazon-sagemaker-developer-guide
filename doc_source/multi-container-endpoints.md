@@ -1,8 +1,8 @@
-# Deploy multi\-container endpoints<a name="multi-container-endpoints"></a>
+# Host multiple models which use different containers behind one endpoint<a name="multi-container-endpoints"></a>
 
-SageMaker multi\-container endpoints enable customers to deploy multiple containers to deploy different models on a SageMaker endpoint\. The containers can be run in a sequence as an inference pipeline, or each container can be accessed individually by using direct invocation to improve endpoint utilization and optimize costs\.
+SageMaker multi\-container endpoints enable customers to deploy multiple containers, that use different models or frameworks, on a single SageMaker endpoint\. The containers can be run in a sequence as an inference pipeline, or each container can be accessed individually by using direct invocation to improve endpoint utilization and optimize costs\.
 
-For information about invoking the containers in a multi\-container endpoint in sequence, see [Deploy an Inference Pipeline](inference-pipelines.md)\.
+For information about invoking the containers in a multi\-container endpoint in sequence, see [Host models along with pre\-processing logic as serial inference pipeline behind one endpoint](inference-pipelines.md)\.
 
 For information about invoking a specific container in a multi\-container endpoint, see [Use a multi\-container endpoint with direct invocation](multi-container-direct.md)
 
@@ -11,7 +11,6 @@ For information about invoking a specific container in a multi\-container endpoi
 + [Update a multi\-container endpoint](#multi-container-update)
 + [Delete a multi\-container endpoint](#multi-container-delete)
 + [Use a multi\-container endpoint with direct invocation](multi-container-direct.md)
-+ [Deploy an Inference Pipeline](inference-pipelines.md)
 
 ## Create a multi\-container endpoint \(Boto 3\)<a name="multi-container-create"></a>
 

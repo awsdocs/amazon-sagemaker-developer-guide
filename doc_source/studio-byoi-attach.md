@@ -14,9 +14,9 @@ The steps to create an image and image version are the same whether you use the 
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1. In the left navigation pane, choose **Amazon SageMaker Studio**\.
+1. In the left navigation pane, choose **Studio**\.
 
-1. On the **SageMaker Studio Control Panel**, under **Custom images attached to domain**, choose **Attach image**\.
+1. On the **SageMaker Domain panel**, under **Custom SageMaker Studio images attached to domain**, choose **Attach image**\.
 
 1. For **Image source**, choose **Existing image**\.
 
@@ -26,7 +26,11 @@ The steps to create an image and image version are the same whether you use the 
 
 1. Choose **Next**\.
 
+1. Enter values for **Image name**, **Image display name**, and **Description**\.
+
 1. Choose the IAM role\. For more information, see [Create a custom SageMaker image \(Console\)](studio-byoi-create.md)\.
+
+1. \(Optional\) Add tags for the image\.
 
 1. Choose **Next**\.
 

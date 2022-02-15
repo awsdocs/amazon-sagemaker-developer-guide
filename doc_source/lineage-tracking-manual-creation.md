@@ -14,17 +14,10 @@ For a sample notebook that demonstrates how to create lineage entities, see the 
 ## Manually Create Entities<a name="lineage-tracking-manual-create"></a>
 
 The following procedure shows you how to create and associate artifacts between a SageMaker training job and endpoint\. You perform the following steps:
-+ Create input artifacts for the source code, training data, and testing data locations\.
-+ Create an output artifact for the generated model location\.
-+ Create a trial component as a training job\.
-+ Associate the input artifact and output artifacts with the training job\.
-+ Train the model and create an endpoint\.
-+ Create a context for the endpoint\.
-+ Associate the training job and the endpoint context\.
 
-**To create tracking entities and associations**
+**Import tracking entities and associations**
 
-1. Import the tracking entities\.
+1. Import the lineage tracking entities\.
 
    ```
    import sys
@@ -121,10 +114,6 @@ The following procedure shows you how to create and associate artifacts between 
 You can manually track the workflow created in the previous section\.
 
 Given the endpoint Amazon Resource Name \(ARN\) from the previous example, the following procedure shows you how to track the workflow back to the datasets used to train the model that was deployed to the endpoint\. You perform the following steps:
-+ Given the endpoint ARN,get the endpoint context\.
-+ Get the trial component from the association between the trial component and the endpoint context\.
-+ Get the training data location artifact from the association between the trial component and the endpoint context\.
-+ Get the training data location from the training data location artifact\.
 
 **To track a workflow from endpoint to training data source**
 
@@ -180,9 +169,9 @@ Given the endpoint Amazon Resource Name \(ARN\) from the previous example, the f
 
 ## Limits<a name="lineage-tracking-manual-track-limits"></a>
 
-An association can be created between any entities, experiment and lineage, except the following:
-+ An association can't be created between two experiment entities\. Experiment entities consist of experiments, trials, and trial components\.
-+ An association can't be created with another association\.
+You can create an an association between any entities, experiment and lineage, except the following:
++ You cannot create an association between two experiment entities\. Experiment entities consist of experiments, trials, and trial components\.
++ You can create an association with another association\.
 
 An error occurs if you try to create an entity that already exists\.
 
@@ -192,4 +181,4 @@ An error occurs if you try to create an entity that already exists\.
 + Associations: 6000
 + Contexts: 500
 
-There is no limit to the number of lineage entities automatically created by SageMaker\.
+There is no limit to the number of lineage entities automatically created by Amazon SageMaker\.

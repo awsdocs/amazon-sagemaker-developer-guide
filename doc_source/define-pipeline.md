@@ -623,15 +623,13 @@ A `ConditionStep` allows SageMaker Pipelines to support conditional execution in
 
    ```
    from sagemaker.workflow.conditions import ConditionLessThanOrEqualTo
-   from sagemaker.workflow.condition_step import (
-       ConditionStep,
-       JsonGet,
-   )
+   from sagemaker.workflow.condition_step import ConditionStep
+   from sagemaker.workflow.functions import JsonGet
    
    
    cond_lte = ConditionLessThanOrEqualTo(
        left=JsonGet(
-           step=step_eval,
+           step_name=step_eval.name,
            property_file=evaluation_report,
            json_path="regression_metrics.mse.value"
        ),

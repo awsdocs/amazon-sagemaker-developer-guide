@@ -2,16 +2,18 @@
 
 To update Amazon SageMaker Studio to the latest release, you must shut down the JupyterServer app\. Any unsaved notebook information is lost in the process\. The user data in the Amazon EFS volume isn't impacted\.
 
-After the JupyterServer app is shut down, you must reopen Studio through the SageMaker Studio Control Panel which creates a new version of the JupyterServer app\.
+After the JupyterServer app is shut down, you must reopen Studio through the SageMaker console which creates a new version of the JupyterServer app\.
 
-You can shut down the JupyterServer app from the Studio Control Panel or from within Studio\.
+You can shut down the JupyterServer app from the SageMaker console or from within Studio\.
 
 Some of the services within Studio, like Data Wrangler, run on their own app\. To update these services you must delete the app for that service\. To learn more, see [Update Studio Apps](studio-tasks-update-apps.md)\.
 
 **Note**  
 A JupyterServer app is associated with a single Studio user\. When you update the app for one user it doesn't affect other users\.
 
-**To shut down the JupyterServer app from the Studio Control Panel**
+**To shut down the JupyterServer app from the SageMaker console**
+
+1. Navigate to [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
 1. Choose your user name\.
 

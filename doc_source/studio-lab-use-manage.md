@@ -76,7 +76,7 @@ Maintaining multiple environments in your project decreases your available memor
  To create a new Conda environment, run the following Conda command from your terminal\. This example creates a new environment with Python 3\.9\. 
 
 ```
-$ conda env create --name <ENVIRONMENT_NAME> python=3.9
+$ conda create --name <ENVIRONMENT_NAME> python=3.9
 ```
 
  **Activate** 

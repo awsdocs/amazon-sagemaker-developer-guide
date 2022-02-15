@@ -1,25 +1,25 @@
-# Amazon SageMaker Model Monitor<a name="model-monitor"></a>
+# Monitor models for data and model quality, bias, and explainability<a name="model-monitor"></a>
 
 Amazon SageMaker Model Monitor continuously monitors the quality of Amazon SageMaker machine learning models in production\. With Model Monitor, you can set alerts that notify you when there are deviations in the model quality\. Early and proactive detection of these deviations enables you to take corrective actions, such as retraining models, auditing upstream systems, or fixing quality issues without having to monitor models manually or build additional tooling\. You can use Model Monitor prebuilt monitoring capabilities that do not require coding\. You also have the flexibility to monitor models by coding to provide custom analysis\.
 
 Model Monitor provides the following types of monitoring:
-+ [Monitor Data Quality](model-monitor-data-quality.md) \- Monitor drift in data quality\.
-+ [Monitor Model Quality](model-monitor-model-quality.md) \- Monitor drift in model quality metrics, such as accuracy\.
++ [Monitor data quality](model-monitor-data-quality.md) \- Monitor drift in data quality\.
++ [Monitor model quality](model-monitor-model-quality.md) \- Monitor drift in model quality metrics, such as accuracy\.
 + [Monitor Bias Drift for Models in Production](clarify-model-monitor-bias-drift.md) \- Monitor bias in you model's predictions\.
 + [Monitor Feature Attribution Drift for Models in Production](clarify-model-monitor-feature-attribution-drift.md) \- Monitor drift in feature attribution\.
 
 **Topics**
 + [How Model Monitor Works](#model-monitor-how-it-works)
-+ [Monitor Data Quality](model-monitor-data-quality.md)
-+ [Monitor Model Quality](model-monitor-model-quality.md)
++ [Monitor data quality](model-monitor-data-quality.md)
++ [Monitor model quality](model-monitor-model-quality.md)
 + [Monitor Bias Drift for Models in Production](clarify-model-monitor-bias-drift.md)
 + [Monitor Feature Attribution Drift for Models in Production](clarify-model-monitor-feature-attribution-drift.md)
-+ [Capture Data](model-monitor-data-capture.md)
-+ [Schedule Monitoring Jobs](model-monitor-scheduling.md)
-+ [Amazon SageMaker Model Monitor Prebuilt Container](model-monitor-pre-built-container.md)
-+ [Interpret Results](model-monitor-interpreting-results.md)
-+ [Visualize Results in Amazon SageMaker Studio](model-monitor-interpreting-visualize-results.md)
-+ [Advanced Topics](model-monitor-advanced-topics.md)
++ [Capture data](model-monitor-data-capture.md)
++ [Schedule monitoring jobs](model-monitor-scheduling.md)
++ [Amazon SageMaker Model Monitor prebuilt container](model-monitor-pre-built-container.md)
++ [Interpret results](model-monitor-interpreting-results.md)
++ [Visualize results in Amazon SageMaker Studio](model-monitor-interpreting-visualize-results.md)
++ [Advanced topics](model-monitor-advanced-topics.md)
 
 ## How Model Monitor Works<a name="model-monitor-how-it-works"></a>
 
@@ -35,7 +35,7 @@ To enable model monitoring, you take the following steps, which follow the path 
 
 **Notes**  
 Model Monitor currently supports only tabular data\.
-Model Monitor currently supports only endpoints that host a single model and does not support monitoring multi\-model endpoints\. For information on using multi\-model endpoints, see [ Host Multiple Models with Multi\-Model Endpoints](multi-model-endpoints.md)\.
+Model Monitor currently supports only endpoints that host a single model and does not support monitoring multi\-model endpoints\. For information on using multi\-model endpoints, see [Host multiple models in one container behind one endpoint](multi-model-endpoints.md)\.
 Model Monitor supports monitoring inference pipelines, but capturing and analyzing data is done for the entire pipeline, not for individual containers in the pipeline\.
 To prevent impact to inference requests, Data Capture stops capturing requests at high levels of disk usage\. It is recommended you keep your disk utilization below 75% in order to ensure data capture continues capturing requests\.
 If you launch SageMaker Studio in a custom Amazon VPC, you need to create VPC endpoints to enable Model Monitor to communicate with Amazon S3 and CloudWatch\. For information about VPC endpoints, see [VPC endpoints](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html) in the *Amazon Virtual Private Cloud User Guide*\. For information about launching SageMaker Studio in a custom VPC, see [Connect SageMaker Studio Notebooks to Resources in a VPC](studio-notebooks-and-internet-access.md)\.

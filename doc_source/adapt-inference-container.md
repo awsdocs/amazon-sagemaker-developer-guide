@@ -64,7 +64,7 @@ def predict_fn(self, data, model):
 
         Returns: a prediction
         """
-        return model(input_data)
+        return model(data)
 ```
 
 ### The output\_fn Function<a name="byoc-inference-handler-outputfn"></a>
@@ -163,7 +163,8 @@ then
     aws ecr create-repository --repository-name "${algorithm_name}" > /dev/null
 
 # Get the login command from ECR and execute it directly
-$(aws ecr get-login --region ${region} --no-include-email)
+$(aws ecr get-login-password --region ${region}|docker login --username AWS --password-stdin ${fullname}
+)
 
 # Build the docker image locally with the image name and then push it to ECR
 # with the full name.

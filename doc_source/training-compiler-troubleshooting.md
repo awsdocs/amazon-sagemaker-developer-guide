@@ -4,40 +4,78 @@ If you run into an error, you can use the following list to try to troubleshoot 
 
 ## Training Job Fails Due to Missing XLA Configuration<a name="training-compiler-troubleshooting-missing-xla-config"></a>
 
-If the training job fails with the following error message, `Missing XLA configuration`, this might be due to a misconfiguration in sizing the device for distributed training with XLA\. Use one of the following options to solve the XLA configuration error: 
-+ **Option 1** – Add a parameter for the number of GPUs to the `hyperparameters` dictionary in the estimator\. By specifying this, you can set the environment variable, `GPU_NUM_DEVICES` , which is required by a training script\. 
+If a training job fails with the `Missing XLA configuration` error message, it might be due to a misconfiguration in the number of GPUs per instance that you use\.
+
+XLA requires additional environment variables to compile the training job\. The most common missing environment variable is `GPU_NUM_DEVICES`\. For the compiler to work properly, you must set this environment variable equal to the number of GPUs per instance\.
+
+There are three approaches to set the `GPU_NUM_DEVICES` environment variable:
++ **Approach 1** – Use the `environment` argument of the SageMaker estimator class\. For example, if you use an `ml.p3.8xlarge` instance that has four GPUs, do the following:
 
   ```
   # Using the SageMaker Python SDK's HuggingFace estimator
-  # assuming the training script updates the environment variable
-  # GPU_NUM_DEVICES accordingly
   
   hf_estimator=HuggingFace(
       ...
-      hyperparameters={`
+      instance_type="ml.p3.8xlarge",
+      hyperparameters={...},
+      environment={
           ...
-          "n_gpus": 4
-      }
+          "GPU_NUM_DEVICES": "4" # corresponds to number of GPUs on the specified instance
+      },
   )
   ```
-**Note**  
-The preceding estimator shows an example of how to specify the number of GPUs through the `n_gpus` parameter\. Make sure the parameter name matches the one used in the parser function of your training script\.
-+ **Option 2** – Modify your training script where you specify the number of GPUs you want to use\.
++ **Approach 2** – Use the `hyperparameters` argument of the SageMaker estimator class and parse it in your training script\.
+
+  1. To specify the number of GPUs, add a key\-value pair to the `hyperparameters` argument\.
+
+     For example, if you use an `ml.p3.8xlarge` instance that has four GPUs, do the following:
+
+     ```
+     # Using the SageMaker Python SDK's HuggingFace estimator
+     
+     hf_estimator=HuggingFace(
+         ...
+         entry_point = "train.py"
+         instance_type= "ml.p3.8xlarge",
+         hyperparameters = {
+             ...
+             "n_gpus": 4 # corresponds to number of GPUs on specified instance
+         }
+     )
+     hf_estimator.fit()
+     ```
+
+  1. In your training script, parse the `n_gpus` hyperparameter and specify it as an input for the `GPU_NUM_DEVICES` environment variable\.
+
+     ```
+     # train.py
+     import os, argparse
+     
+     if __name__ == "__main__":
+         parser = argparse.ArgumentParser()
+         ...
+         # Data, model, and output directories
+         parser.add_argument("--output_data_dir", type=str, default=os.environ["SM_OUTPUT_DATA_DIR"])
+         parser.add_argument("--model_dir", type=str, default=os.environ["SM_MODEL_DIR"])
+         parser.add_argument("--training_dir", type=str, default=os.environ["SM_CHANNEL_TRAIN"])
+         parser.add_argument("--test_dir", type=str, default=os.environ["SM_CHANNEL_TEST"])
+         parser.add_argument("--n_gpus", type=str, default=os.environ["SM_NUM_GPUS"])
+         
+         args, _ = parser.parse_known_args()
+     
+         os.environ["GPU_NUM_DEVICES"] = args.n_gpus
+     ```
++ **Approach 3** – Hard\-code the `GPU_NUM_DEVICES` environment variable in your training script\. For example, add the following to your script if you use an instance that has four GPUs\.
 
   ```
-  # In your training script,
-  # simply add the following code at the top.
+  # train.py
   
-  num_gpus=4 # Specify the number of GPUs manually, if needed
-  
-  if os.getenv("SM_NUM_GPUS")==None:
-      print(
-          "Explicitly specifying the number of GPUs."
-      )
-      os.environ["GPU_NUM_DEVICES"]=num_gpus
-  else:
-      os.environ["GPU_NUM_DEVICES"]=os.environ["SM_NUM_GPUS"]
+  import os
+  os.environ["GPU_NUM_DEVICES"] = 4
   ```
+
+**Tip**  
+To find the number of GPU devices on machine learning instances that you want to use, see [Accelerated Computing](https://aws.amazon.com/ec2/instance-types/#Accelerated_Computing) in the *Amazon EC2 Instance Types page*\. 
 
 ## Incorrect API Uses for PyTorch without Hugging Face Trainer API<a name="training-compiler-troubleshooting-incorrect-api-use"></a>
 

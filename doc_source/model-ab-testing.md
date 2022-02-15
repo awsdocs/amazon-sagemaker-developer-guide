@@ -1,4 +1,4 @@
-# Test models in production<a name="model-ab-testing"></a>
+# Safely update models in production<a name="model-ab-testing"></a>
 
 In production ML workflows, data scientists and engineers frequently try to improve their models in various ways, such as by performing [Perform Automatic Model Tuning with SageMaker](automatic-model-tuning.md), training on additional or more\-recent data, and improving feature selection\. Performing A/B testing between a new model and an old model with production traffic can be an effective final step in the validation process for a new model\. In A/B testing, you test different variants of your models and compare how each variant performs\. If the newer version of the model delivers better performance than the previously\-existing version, replace the old version of the model with the new version in production\.
 

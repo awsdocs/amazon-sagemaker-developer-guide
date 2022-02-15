@@ -2,7 +2,7 @@
 
 To categorize articles and text into predefined categories, use text classification\. For example, you can use text classification to identify the sentiment conveyed in a review or the emotion underlying a section of text\. Use Amazon SageMaker Ground Truth text classification to have workers sort text into categories that you define\. 
 
-You create a text classification labeling job using the Ground Truth section of the Amazon SageMaker console or the [ `CreateLabelingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. 
+You create a text classification labeling job using the Ground Truth section of the Amazon SageMaker console or the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. 
 
 **Important**  
 If you manually create an input manifest file, use `"source"` to identify the text that you want labeled\. For more information, see [Input Data](sms-data-input.md)\.

@@ -1,6 +1,6 @@
 # Diagnose issues and get support<a name="rstudio-troubleshooting"></a>
 
- The following sections describe how to diagnose issues with RStudio on Amazon SageMaker\. To get support for RStudio on Amazon SageMaker, contact Amazon SageMaker support\. For help with purchasing an RStudio license or modifying the number of license seats, contact [mailto:sales@rstudio.com](mailto:sales@rstudio.com)\.
+ The following sections describe how to diagnose issues with RStudio on Amazon SageMaker\. To get support for RStudio on Amazon SageMaker, contact Amazon SageMaker support\. For help with purchasing an RStudio license or modifying the number of license seats, contact [sales@rstudio\.com](mailto:sales@rstudio.com)\.
 
 ## View Metrics and Logs<a name="rstudio-troubleshooting-view"></a>
 

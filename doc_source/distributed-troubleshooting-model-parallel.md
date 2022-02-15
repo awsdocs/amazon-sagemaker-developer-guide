@@ -1,11 +1,13 @@
 # Model Parallel Troubleshooting<a name="distributed-troubleshooting-model-parallel"></a>
 
-If you run into an error, you can use the following list to try to troubleshoot your training job\. If the problem persists, contact AWS Support\. 
+If you run into an error, you can use the following list to try to troubleshoot your training job\. If the problem persists, contact [AWS Support](http://aws.amazon.com/premiumsupport)\. 
 
 **Topics**
 + [Considerations for Using SageMaker Debugger with SageMaker Distributed Model Parallel](#distributed-ts-model-parallel-debugger)
 + [Saving Checkpoints](#distributed-ts-model-parallel-checkpoints)
 + [Convergence Using Model Parallel and TensorFlow](#distributed-ts-model-parallel-tf-convergence)
++ [Stalling or Crashing Distributed Training Jobs](#distributed-ts-model-parallel-training-issues)
++ [NCCL error](#distributed-ts-model-parallel-nccl-error)
 
 ## Considerations for Using SageMaker Debugger with SageMaker Distributed Model Parallel<a name="distributed-ts-model-parallel-debugger"></a>
 
@@ -129,3 +131,32 @@ if smp.local_rank() == 0:
 ## Convergence Using Model Parallel and TensorFlow<a name="distributed-ts-model-parallel-tf-convergence"></a>
 
 When you use SageMaker multi\-node training with TensorFlow and distributed model parallel, the loss may not converge as expected because the order of training input files may be different on each node\. This may cause different ranks in the same model parallel group to work on different input files, causing inconsistencies\. To prevent this, ensure the input files are ordered the same way in all the ranks before they get converted to TensorFlow datasets\. One way to achieve this is to sort the input file names in the training script\.
+
+## Stalling or Crashing Distributed Training Jobs<a name="distributed-ts-model-parallel-training-issues"></a>
+
+If your training job has stalling, crashing, or not responding issues, read the following troubleshooting items to identify what's the cause of the issue\. If you need any further support, reach out to the SageMaker distributed training team through [AWS Support](http://aws.amazon.com/premiumsupport)\.
++  If you see **a distributed training job stalling at the NCCL initialization step**, consider the following: 
+  + If you are using one of the EFA\-enabled instances \( `ml.p4d` or `ml.p3dn` instances\) with a custom VPC and its subnet, ensure that the security group used has inbound and outbound connections for all ports to and from the same SG\. You also generally need outbound connections to any IP as a separate rule \(for internet access\)\. To find instructions on how to add inbound and outbound rules for EFA communication, refer to [SageMaker Distributed Training Job Stalling During Initialization](distributed-troubleshooting-data-parallel.md#distributed-ts-data-parallel-efa-sg)\.
++ If you see a **distributed training job stalling when checkpointing** the full model, this might be because the `state_dict()` call on the model or optimizer was not made on all ranks with `rdp_rank()==0` \(when using tensor parallelism\) or `dp_rank()==0` \(when using only pipeline parallelism\)\. These ranks need to communicate to construct the checkpoint to be saved\. Similar stalling issues can also happen when checkpointing partial optimizer if `shard_optimizer_state` is enabled\. 
+
+  For more information about checkpointing a model with model parallelism, see [General Instruction for Saving and Loading](https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/latest/smd_model_parallel_pytorch.html#general-instruction-for-saving-and-loading) and [Instructions for Checkpointing with Tensor Parallelism](model-parallel-extended-features-pytorch-saving-loading-checkpoints.md)\.
++ If the training job crashes with a **CUDA Out of Memory error**, this means that the distributed training configuration needs to be adjusted to fit the model on the GPU cluster\. For more information and best practices, see [Setting Up the Right Configuration for a Given Model](model-parallel-best-practices.md#model-parallel-best-practices-configuration)\.
++ If the training job crashes with an **uncorrectable [ECC error](https://docs.nvidia.com/deploy/a100-gpu-mem-error-mgmt/index.html)**, this means that one of the GPUs in the cluster has gone bad\. If you need technical support, share the job ARN with the AWS team and restart your training job from a checkpoint if possible\.
++ In rare cases, a job configuration that worked previously but is close to the limits of GPU memory might fail later with a different cluster due to a **CUDA Out of Memory error**\. This could be because some GPU has lower available memory than usual due to ECC errors\.
++ **Network timeout crash** might happen when running a multinode job which doesn’t use all GPUs in the node\. To get around this, use all GPUs on the node by ensuring that the `processes_per_host` parameter is set to the number of GPUs in each instance\. For example, this is `processes_per_host=8` for `ml.p3.16xlarge`, `ml.p3dn.24xlarge`, and `ml.p4d.24xlarge` instances\.
++ If you find that your training job takes a long time during the data downloading stage, make sure the Amazon S3 path you provided to `checkpoint_s3_uri` for the SageMaker `Estimator` class is unique for the current training job\. If this path is reused across multiple training jobs running simultaneously, all those checkpoints are uploaded and downloaded to the same Amazon S3 path and might significantly increase checkpoint loading time\.
++ Use FSx for Lustre when you deal with large data and models\.
+  + If your dataset is large and fetching it takes a long time, we recommend keeping your dataset in [FSx for Lustre](http://aws.amazon.com/fsx/lustre/)\.
+  + When training models are beyond 10 billion parameters, we recommend using FSx for Lustre for checkpointing\.
+  + After you create a file system, make sure to wait for the status to become **available** before starting a training job using it\. 
+
+## NCCL error<a name="distributed-ts-model-parallel-nccl-error"></a>
+
+If you encountered the following error, it might be due to a process running out of GPU memory\.
+
+```
+NCCL error in: ../torch/lib/c10d/ProcessGroupNCCL.cpp:825, unhandled system error, NCCL version 2.7.8
+ncclSystemError: System call (socket, malloc, munmap, etc) failed.
+```
+
+You can resolve this by reducing the batch size or `active_microbatches`\. If auto partitioning is not resulting in a well\-balanced partitioning, you might have to consider manual partitioning\. For more information, see [Pipeline parallelism across nodes](model-parallel-best-practices.md#model-parallel-best-practices-configuration-pipeline-across-nodes)\.

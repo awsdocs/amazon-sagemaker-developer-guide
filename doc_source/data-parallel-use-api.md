@@ -12,7 +12,7 @@ With either option, you can then use the [Amazon SageMaker Distributed Training 
 
 ## Use the Data Parallel Library with SageMaker's Python SDK<a name="data-parallel-use-python-skd-api"></a>
 
-To use SageMaker's distributed data parallel library, you must create a training script for one of the supported frameworks and launch the training job using the SageMaker Python SDK\. To learn how you can incorporate the library into a training script, see [Modify Your Training Script Using SageMaker's Distributed Model Parallel Library](model-parallel-customize-training-script.md)\. The library API documentation is located in the SageMaker Python SDK\. See SageMaker's [data parallel API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html)\. 
+To use SageMaker's distributed data parallel library, you must create a training script for one of the supported frameworks and launch the training job using the SageMaker Python SDK\. To learn how you can incorporate the library into a training script, see [Modify Your Training Script Using the SageMaker Data Parallel Library](data-parallel-modify-sdp.md)\. The library API documentation is located in the SageMaker Python SDK\. See SageMaker's [data parallel API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html)\. 
 
 SageMaker supports the following training environment configurations:
 + You can use a prebuilt TensorFlow or PyTorch container\.

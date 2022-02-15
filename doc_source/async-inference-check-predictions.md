@@ -1,4 +1,4 @@
-# Check Prediction Results<a name="async-inference-check-predictions"></a>
+# Check prediction results<a name="async-inference-check-predictions"></a>
 
 There are several ways you can check predictions results from your asynchronous endpoint\. Some options are:
 
@@ -11,7 +11,7 @@ There are several ways you can check predictions results from your asynchronous 
 Amazon SNS is a notification service for messaging\-oriented applications, with multiple subscribers requesting and receiving "push" notifications of time\-critical messages via a choice of transport protocols, including HTTP, Amazon SQS, and email\. Amazon SageMaker Asynchronous Inference posts notifications when you create an endpoint with [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html) and specify an Amazon SNS topic\.
 
 **Note**  
-In order to receive Amazon SNS notifications, your IAM role must have `sns:Publish` permissions\. See the LINK TO PREREQS\. for information on requirements you must satisfy to use Asynchronous Inference\.
+In order to receive Amazon SNS notifications, your IAM role must have `sns:Publish` permissions\. See the [Prerequisites](async-inference-create-endpoint-prerequisites.md) for information on requirements you must satisfy to use Asynchronous Inference\.
 
 To use Amazon SNS to check prediction results from your asynchronous endpoint, you first need to create a topic, subscribe to the topic, confirm your subscription to the topic, and note the Amazon Resource Name \(ARN\) of that topic\. For detailed information on how to create, subscribe, and find the Amazon ARN of an Amazon SNS topic, see [Configuring Amazon SNS](https://docs.aws.amazon.com/sns/latest/dg/sns-configuring.html)\.
 
@@ -44,6 +44,30 @@ sagemaker_client.create_endpoint_config(
         }
     }
 )
+```
+
+After creating your endpoint and invoking it, you receive a notification from your Amazon SNS topic\. For example, if you subscribed to receive email notifications from your topic, you receive an email notification every time you invoke your endpoint\. The following example shows the JSON content of a successful invocation email notification\.
+
+```
+{
+   "awsRegion":"us-east-1",
+   "eventTime":"2022-01-25T22:46:00.608Z",
+   "receivedTime":"2022-01-25T22:46:00.455Z",
+   "invocationStatus":"Completed",
+   "requestParameters":{
+      "contentType":"text/csv",
+      "endpointName":"<example-endpoint>",
+      "inputLocation":"s3://<bucket>/<input-directory>/input-data.csv"
+   },
+   "responseParameters":{
+      "contentType":"text/csv; charset=utf-8",
+      "outputLocation":"s3://<bucket>/<output_directory>/prediction.out"
+   },
+   "inferenceId":"11111111-2222-3333-4444-555555555555", 
+   "eventVersion":"1.0",
+   "eventSource":"aws:sagemaker",
+   "eventName":"InferenceResult"
+}
 ```
 
 ## Check Your S3 Bucket<a name="async-inference-check-predictions-s3-bucket"></a>

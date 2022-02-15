@@ -4,9 +4,7 @@ You can only use deployment guardrails with newly created endpoints\. There are 
 + Marketplace containers
 + Multi\-container endpoints
 + Multi\-model endpoints
-+ Network isolation
 + Multi\-variant endpoints
 + Endpoints that use Inf1 \(Inferentia\-based\) instances
-+ AWS KMS\-enabled endpoints
 + Endpoints that use Amazon SageMaker Model Monitor \(with data capture enabled\)
 + Amazon Elastic Inference endpoints

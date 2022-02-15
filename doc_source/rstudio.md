@@ -1,6 +1,6 @@
 # RStudio on Amazon SageMaker<a name="rstudio"></a>
 
-RStudio is an integrated development environment for R, with a console, syntax\-highlighting editor that supports direct code execution, and tools for plotting, history, debugging and workspace management\. Amazon SageMaker supports RStudio as a fully\-managed integrated development environment \(IDE\) integrated with Amazon SageMaker Domain\. 
+RStudio is an integrated development environment for R, with a console, syntax\-highlighting editor that supports direct code execution, and tools for plotting, history, debugging and workspace management\. Amazon SageMaker supports RStudio as a fully\-managed integrated development environment \(IDE\) integrated with Amazon SageMaker Domain\.
 
 RStudio allows customers to create data science insights using an R environment\. With RStudio integration, you can launch an RStudio environment in the Domain to run your RStudio workflows on SageMaker resources\. For more information about RStudio, see the [RStudio website](https://www.rstudio.com/products/workbench/)\.
 
@@ -37,3 +37,4 @@ RStudio on Amazon SageMaker has some significant differences from [RStudio Workb
 + When using RStudio on SageMaker, users don’t have access to the RStudio configuration files\. Amazon SageMaker manages the configuration file and sets defaults\. You can modify the RStudio Connect and RStudio Package Manager URLs when creating your RStudio\-enabled Amazon SageMaker Domain\.
 + Project sharing, realtime collaboration, and Job Launcher are not currently supported when using RStudio on Amazon SageMaker\.
 + When using RStudio on SageMaker, the RStudio IDE runs on Amazon SageMaker instances for on\-demand containerized compute resources\. 
++ RStudio on SageMaker only supports the RStudio IDE and does not support other IDEs supported by an RStudio Workbench installation\.

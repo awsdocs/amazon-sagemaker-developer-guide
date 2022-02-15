@@ -35,4 +35,4 @@ On a GPU instance, the image is run with the `--gpus` option\. Only the CUDA too
 Logs from the KernelGateway process are sent to Amazon CloudWatch in the customer’s account\. The name of the log group is `/aws/sagemaker/studio`\. The name of the log stream is `$domainID/$userProfileName/KernelGateway/$appName`\.
 
 **Image size**  
-Limited to 11 GB\.
+Limited to 25 GB\. To view the size of your image, run `docker image ls`\.
