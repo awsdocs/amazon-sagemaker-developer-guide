@@ -130,7 +130,7 @@ The status field provides more information using the following fields:
 + `Endpoint Config Name`: The SageMaker name of the endpoint configuration\. 
 + `Endpoint Name`: The SageMaker name of the endpoint\. 
 + `Endpoint Status`: The status of the endpoint\. 
-+ `Endpoint URL`: The HTTPS URL that can be used to access the endpoint\. For more information, see [Deploy a Model on SageMaker Hosting Services](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-hosting.html)\. 
++ `Endpoint URL`: The HTTPS URL that can be used to access the endpoint\. For more information, see [Deploy a Model on SageMaker Hosting Services](https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html)\. 
 + `FailureReason`: If a create, update, or delete command fails, the cause is shown here\. 
 + `Last Check Time`: The last time the operator checked the status of the endpoint\. 
 + `Last Modified Time`: The last time the endpoint was modified\. 

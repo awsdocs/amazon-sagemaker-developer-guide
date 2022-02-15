@@ -11,7 +11,7 @@ To learn about the other workforce options you can use with Ground Truth, see [C
 
 1. If this is your first time using a private workforce, in the **Email addresses** field, enter up to 100 email addresses\. The addresses must be separated by a comma\. You should include your own email address so that you are part of the workforce and can see data object labeling tasks\.
 
-1. In the **Organization name** field, enter the name of your organization\. This information is used to customize the email sent to invite a person to your private workforce\.
+1. In the **Organization name** field, enter the name of your organization\. This information is used to customize the email sent to invite a person to your private workforce\. You can change the organization name after the user pool is created through the console\.
 
 1. In the **Contact email** field enter an email address that members of the workforce use to report problems with the task\.
 

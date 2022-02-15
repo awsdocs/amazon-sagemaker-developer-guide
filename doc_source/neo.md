@@ -1,4 +1,4 @@
-# Compile and Deploy Models with Neo<a name="neo"></a>
+# Optimize model performance using Neo<a name="neo"></a>
 
 Neo is a capability of Amazon SageMaker that enables machine learning models to train once and run anywhere in the cloud and at the edge\. 
 

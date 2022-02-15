@@ -1,14 +1,14 @@
 # Modify a TensorFlow Training Script<a name="model-parallel-customize-training-script-tf"></a>
 
-In this section, you learn how to modify training scripts to configure the SageMaker distributed model parallel library with the TensorFlow framework, auto\-partitioning, and manual partitioning\. This selection of examples also includes an example integrated with Horovod for hybrid model and data parallelism\.
+In this section, you learn how to modify TensorFlow training scripts to configure the SageMaker distributed model parallel library for auto\-partitioning and manual partitioning\. This selection of examples also includes an example integrated with Horovod for hybrid model and data parallelism\.
 
 
 **TensorFlow versions supported by SageMaker and the SageMaker distributed model parallel library**  
 
 | TensorFlow version | SageMaker distributed model parallel library version | `smdistributed-modelparallel` integrated image URI | Deep learning container release notes | 
 | --- | --- | --- | --- | 
-| v2\.5\.1 |  smdistributed\-modelparallel==v1\.4\.0  |  763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/tensorflow\-training:2\.5\.1\-gpu\-py37\-cu112\-ubuntu18\.04  | [v1\.2\-tf\-2\.5\.1\-py37](https://github.com/aws/deep-learning-containers/releases/tag/v1.2-tf-2.5.1-py37) | 
-| v\.2\.6\.0 | smdistributed\-modelparallel==v1\.4\.0 |  763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/tensorflow\-training:2\.6\.0\-gpu\-py38\-cu112\-ubuntu20\.04 | [v1\.2\-tf\-2\.6\.0\-py38](https://github.com/aws/deep-learning-containers/releases/tag/v1.2-tf-2.6.0-py38)  | 
+| v2\.6\.0 | smdistributed\-modelparallel==v1\.4\.0 | 763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/tensorflow\-training:2\.6\.0\-gpu\-py38\-cu112\-ubuntu20\.04 | [v1\.2\-tf\-2\.6\.0\-py38](https://github.com/aws/deep-learning-containers/releases/tag/v1.2-tf-2.6.0-py38)  | 
+| v2\.5\.1 |  smdistributed\-modelparallel==v1\.4\.0  | 763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/tensorflow\-training:2\.5\.1\-gpu\-py37\-cu112\-ubuntu18\.04  | [v1\.2\-tf\-2\.5\.1\-py37](https://github.com/aws/deep-learning-containers/releases/tag/v1.2-tf-2.5.1-py37) | 
 
 Before you proceed to modify your TensorFlow training script, we recommend that you review [Unsupported Framework Features](#model-parallel-tf-unsupported-features)\.
 
@@ -21,7 +21,10 @@ If you want to use manual partitioning, also review [Manual partitioning with Te
 **Tip**  
 For end\-to\-end notebook examples that demonstrate how to use a TensorFlow training script with the SageMaker distributed model parallel library, see [TensorFlow Examples](distributed-training-notebook-examples.md#distributed-training-notebook-examples-tensorflow)\.
 
-Note that auto\-partitioning is enabled by default\. Unless otherwise specified, the following example scripts use auto\-partitioning\.
+The following topics show examples of training scripts that you can use to configure SageMaker's model parallel library for auto\-partitioning and manual partitioning TensorFlow models\. 
+
+**Note**  
+Auto\-partitioning is enabled by default\. Unless otherwise specified, the example scripts use auto\-partitioning\.
 
 **Topics**
 + [Unsupported Framework Features](#model-parallel-tf-unsupported-features)

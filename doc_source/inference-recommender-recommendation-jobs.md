@@ -1,4 +1,4 @@
-# Recommendation Jobs<a name="inference-recommender-recommendation-jobs"></a>
+# Recommendation jobs<a name="inference-recommender-recommendation-jobs"></a>
 
 Amazon SageMaker Inference Recommender can make two types of recommendations:
 

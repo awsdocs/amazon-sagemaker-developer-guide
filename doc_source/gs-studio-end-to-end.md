@@ -2,8 +2,6 @@
 
 For a walkthrough that takes you on a tour of the main features of Amazon SageMaker Studio, see the [xgboost\_customer\_churn\_studio\.ipynb](https://sagemaker-examples.readthedocs.io/en/latest/aws_sagemaker_studio/getting_started/xgboost_customer_churn_studio.html) sample notebook from the [aws/amazon\-sagemaker\-examples](https://github.com/aws/amazon-sagemaker-examples) repository\. The code in the notebook trains multiple models and sets up the SageMaker Debugger and SageMaker Model Monitor\. The walkthrough shows you how to view the trials, compare the resulting models, show the debugger results, and deploy the best model using the SageMaker Studio UI\. You don't need to understand the code to follow this walkthrough\.
 
-For a series of videos that shows how to use the main features of SageMaker Studio, see [NEW\! Amazon SageMaker Studio](https://www.youtube.com/playlist?list=PLJgojBtbsuc0MjdtpJPo4g4PL8mMsd2nK) on YouTube\.
-
 **Prerequisites**
 
 To run the notebook for this tour, you need:

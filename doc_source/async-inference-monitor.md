@@ -1,4 +1,4 @@
-# Monitor Asynchronous Endpoint<a name="async-inference-monitor"></a>
+# Monitor asynchronous endpoint<a name="async-inference-monitor"></a>
 
 You can monitor SageMaker using Amazon CloudWatch, which collects raw data and processes it into readable, near real\-time metrics\. With Amazon CloudWatch, you can access historical information and gain a better perspective on how your web application or service is performing\. For more information about Amazon CloudWatch, see [What is Amazon CloudWatch?](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)
 

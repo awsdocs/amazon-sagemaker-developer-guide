@@ -5,7 +5,7 @@ When you run a batch transform job, Amazon SageMaker attaches an Amazon Elastic 
 **Note**  
 If you have a large model, you may encounter an `InternalServerError`\.
 
-For more information on Amazon EBS storage and features, see the following pages:
+For more information about Amazon EBS storage and features, see the following pages:
 + [Amazon EBS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html) in the Amazon EC2 User Guide for Linux Instances
 + [Amazon EBS volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes.html) in the Amazon EC2 User Guide for Linux Instances
 

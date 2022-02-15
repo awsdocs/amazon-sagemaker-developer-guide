@@ -397,6 +397,9 @@ Remember that `docker` looks for a file specifically called `Dockerfile` without
    aws ecr create-repository --repository-name "${algorithm_name}" > /dev/null
    fi
    
+   # Log into Docker
+   aws ecr get-login-password --region ${region}|docker login --username AWS --password-stdin ${fullname}
+   
    # Build the docker image locally with the image name and then push it to ECR
    # with the full name.
    

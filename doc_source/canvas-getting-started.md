@@ -165,7 +165,7 @@ To import your data, do the following\.
 
 1. Select one or more files from your Amazon S3 bucket or your local folder\. Your must meet the following requirements:
    + Your file can't exceed 5 GB\.
-   + Currently, your file must be in \.csv format\.
+   + Currently, your file must be in \.csv format\. Its values must be comma delimited\.
 
 1. Optional: To preview the datasets that you've uploaded and to review the headers, navigate to the section following the datasets that you're uploading\.
 

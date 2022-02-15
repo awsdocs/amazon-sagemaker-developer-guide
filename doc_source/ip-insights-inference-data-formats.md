@@ -32,7 +32,7 @@ content\-type: application/json
 
 ### INPUT: JSONLINES Format<a name="ip-insights-input-jsonlines"></a>
 
-The JSON Lines content type is useful for running batch transform jobs\. For more information on SageMaker inference formats, see [Common Data Formats for Inference](cdf-inference.md)\. For more information on running batch transform jobs, see [Get Inferences for an Entire Dataset with Batch Transform](how-it-works-batch.md)\.
+The JSON Lines content type is useful for running batch transform jobs\. For more information on SageMaker inference formats, see [Common Data Formats for Inference](cdf-inference.md)\. For more information on running batch transform jobs, see [Use Batch Transform](batch-transform.md)\.
 
 content\-type: application/jsonlines
 

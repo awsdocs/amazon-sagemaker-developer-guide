@@ -1,4 +1,4 @@
-# Deployment Guardrails<a name="deployment-guardrails"></a>
+# Deployment guardrails<a name="deployment-guardrails"></a>
 
 Deployment guardrails are a set of model deployment options in Amazon SageMaker Inference to update your machine learning models in production\. Using the fully managed deployment options, you can control the switch from the current model in production to a new one\. Traffic shifting modes, such as canary and linear, give you granular control over the traffic shifting process from your current model to the new one during the course of the update\. There are also built\-in safeguards such as auto\-rollbacks that help you catch issues early and automatically take corrective action before they significantly impact production\.
 

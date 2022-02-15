@@ -45,6 +45,36 @@ Amazon SageMaker JumpStart makes certain content available from third\-party sou
 
 The following tables list the models currently offered in JumpStart\. The available models are sorted by their model type and task\. To view other model sets, click the task tab for those models\.
 
+### Tabular Models<a name="jumpstart-models-tabular"></a>
+
+------
+#### [ Classification Models ]
+
+
+
+
+| Model | Fine\-tunable | Source | 
+| --- | --- | --- | 
+| LightGBM Classification | Yes | [https://lightgbm\.readthedocs\.io/en/latest/](https://lightgbm.readthedocs.io/en/latest/) | 
+| CatBoost Classification | Yes | [https://catboost\.ai/](https://catboost.ai/) | 
+| XGBoost Classification | Yes | [https://xgboost\.readthedocs\.io/en/latest/](https://xgboost.readthedocs.io/en/latest/) | 
+| Linear Classification | Yes | [https://scikit\-learn\.org/stable/](https://scikit-learn.org/stable/) | 
+
+------
+#### [ Regression Models ]
+
+
+
+
+| Model | Fine\-tunable | Source | 
+| --- | --- | --- | 
+| LightGBM Regression | Yes | [https://lightgbm\.readthedocs\.io/en/latest/](https://lightgbm.readthedocs.io/en/latest/) | 
+| CatBoost Regression | Yes | [https://catboost\.ai/](https://catboost.ai/) | 
+| XGBoost Regression | Yes | [https://xgboost\.readthedocs\.io/en/latest/](https://xgboost.readthedocs.io/en/latest/) | 
+| Linear Regression | Yes | [https://scikit\-learn\.org/stable/](https://scikit-learn.org/stable/) | 
+
+------
+
 ### Text Models<a name="jumpstart-models-text"></a>
 
 ------
@@ -65,6 +95,49 @@ The following tables list the models currently offered in JumpStart\. The availa
 | BERT Large Uncased Whole Word Masking | Yes | [Tensorflow Hub](https://tfhub.dev/tensorflow/bert_en_wwm_uncased_L-24_H-1024_A-16/2) | 
 | ELECTRA\-Base\+\+ | Yes | [Tensorflow Hub](https://tfhub.dev/google/electra_base/1) | 
 | ELECTRA\-Small\+\+ | Yes | [Tensorflow Hub](https://tfhub.dev/google/electra_small/1) | 
+
+------
+#### [ Text Embedding Models ]
+
+
+
+
+| Model | Fine\-tunable | Source | 
+| --- | --- | --- | 
+| RoBERTa\-SEC\-Base | No | [GluonCV](https://nlp.gluon.ai/master/_modules/gluonnlp/models/roberta.html) | 
+| BERT Base Uncased L\-2 H\-256 A\-4 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-2_H-256_A-4/2) | 
+| RoBERTa\-SEC\-WIKI\-Base | No | [GluonCV](https://nlp.gluon.ai/master/_modules/gluonnlp/models/roberta.html) | 
+| RoBERTa\-SEC\-Large | No | [GluonCV](https://nlp.gluon.ai/master/_modules/gluonnlp/models/roberta.html) | 
+| RoBERTa\-SEC\-WIKI\-Large | No | [GluonCV](https://nlp.gluon.ai/master/_modules/gluonnlp/models/roberta.html) | 
+| BERT Large Universal Sentence Encoder | No | [TensorFlow Hub](https://tfhub.dev/google/universal-sentence-encoder-cmlm/en-large/1) | 
+| BERT Base Universal Sentence Encoder | No | [TensorFlow Hub](https://tfhub.dev/google/universal-sentence-encoder-cmlm/en-base/1) | 
+| BERT Base Wikipedia and BooksCorpus Finetune SST\-2 | No | [TensorFlow Hub](https://tfhub.dev/google/experts/bert/wiki_books/sst2/2) | 
+| BERT Base Uncased L\-6 H\-256 A\-4 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-6_H-256_A-4/2) | 
+| BERT Base Wikipedia and BooksCorpus Finetune MNLI | No | [TensorFlow Hub](https://tfhub.dev/google/experts/bert/wiki_books/mnli/2) | 
+| BERT Base Uncased L\-4 H\-768 A\-12 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-4_H-768_A-12/2) | 
+| BERT Base Uncased L\-12 H\-512 A\-8 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-12_H-512_A-8/2) | 
+| BERT Large Talking heads Gated Gelu | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/talkheads_ggelu_bert_en_large/2) | 
+| BERT Base Uncased L\-12 H\-256 A\-4 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-12_H-256_A-4/2) | 
+| BERT Base Uncased L\-4 H\-512 A\-8 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-4_H-512_A-8/2) | 
+| BERT Base Uncased L\-6 H\-768 A\-12 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-6_H-768_A-12/2) | 
+| BERT Base Uncased L\-8 H\-512 A\-8 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-8_H-512_A-8/2) | 
+| BERT Base Uncased L\-4 H\-128 A\-2 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-4_H-128_A-2/2) | 
+| BERT Base Uncased L\-10 H\-768 A\-12 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-10_H-768_A-12/2) | 
+| BERT Base Uncased L\-12 H\-128 A\-2 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-12_H-128_A-2/2) | 
+| BERT Base Uncased L\-4 H\-256 A\-4 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-4_H-256_A-4/2) | 
+| BERT Base Uncased L\-8 H\-768 A\-12 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-8_H-768_A-12/2) | 
+| BERT Base Uncased L\-8 H\-256 A\-4 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-8_H-256_A-4/2) | 
+| BERT Base Uncased L\-2 H\-512 A\-8 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-2_H-512_A-8/2) | 
+| BERT Base Uncased L\-12 H\-768 A\-12 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-12_H-768_A-12/2) | 
+| BERT Base Uncased L\-2 H\-768 A\-12 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-2_H-768_A-12/2) | 
+| BERT Base Uncased L\-6 H\-512 A\-8 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-6_H-512_A-8/2) | 
+| BERT Base Uncased L\-10 H\-512 A\-8 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-10_H-512_A-8/2) | 
+| BERT Base Uncased L\-2 H\-128 A\-2 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-2_H-128_A-2/2) | 
+| BERT Base Uncased L\-10 H\-128 A\-2 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-10_H-128_A-2/2) | 
+| BERT Base Uncased L\-12 H\-768 A\-12 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/bert_en_uncased_L-12_H-768_A-12/4) | 
+| BERT Base Uncased L\-6 H\-128 A\-2 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-6_H-128_A-2/2) | 
+| BERT Base Uncased L\-10 H\-256 A\-4 | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-10_H-256_A-4/2) | 
+| BERT Base Talking heads Gated Gelu | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/talkheads_ggelu_bert_en_base/2) | 
 
 ------
 #### [ Text Generation Models ]
@@ -108,6 +181,31 @@ The following tables list the models currently offered in JumpStart\. The availa
 | RoBERTa Large OpenAI | Yes | [PyTorch Hub](https://pytorch.org/hub/huggingface_pytorch-transformers/) | 
 
 ------
+#### [ Machine Translation Models ]
+
+
+
+
+| Model | Fine\-tunable | Source | 
+| --- | --- | --- | 
+| t5 Small en de | No | [Hugging Face](https://huggingface.co/t5-small) | 
+| t5 Base en de | No | [Hugging Face](https://huggingface.co/t5-base) | 
+| t5 Large en de | No | [Hugging Face](https://huggingface.co/t5-large) | 
+| Helsinki opus en es | No | [Hugging Face](https://huggingface.co/Helsinki-NLP/opus-mt-en-es) | 
+| Helsinki opus en vi | No | [Hugging Face](https://huggingface.co/Helsinki-NLP/opus-mt-en-vi) | 
+
+------
+#### [ Named Entity Recognition Models ]
+
+
+
+
+| Model | Fine\-tunable | Source | 
+| --- | --- | --- | 
+| Distilbert Base cased | No | [Hugging Face](https://huggingface.co/elastic/distilbert-base-cased-finetuned-conll03-english) | 
+| Distilbert Base Uncased | No | [Hugging Face](https://huggingface.co/elastic/distilbert-base-uncased-finetuned-conll03-english) | 
+
+------
 #### [ Sentence Pair Classification Models ]
 
 
@@ -146,6 +244,23 @@ The following tables list the models currently offered in JumpStart\. The availa
 | XLM MLM English\-German | Yes | [Hugging Face](https://huggingface.co/xlm-mlm-ende-1024) | 
 | XLM MLM English\-Romanian | Yes | [Hugging Face](https://huggingface.co/xlm-mlm-enro-1024) | 
 | XLM MLM TLM 15 XNLI Languages | Yes | [Hugging Face](https://huggingface.co/xlm-mlm-tlm-xnli15-1024) | 
+
+------
+#### [ Text Summarization Models ]
+
+
+
+
+| Model | Fine\-tunable | Source | 
+| --- | --- | --- | 
+| Distilbart xsum 1\-1 | No | [Hugging Face](https://huggingface.co/sshleifer/distilbart-xsum-1-1) | 
+| Bert Small2bert | No | [Hugging Face](https://huggingface.co/mrm8488/bert-small2bert-small-finetuned-cnn_daily_mail-summarization) | 
+| Distilbart CNN 6\-6 | No | [Hugging Face](https://huggingface.co/sshleifer/distilbart-cnn-6-6) | 
+| Distilbart xsum 12\-3 | No | [Hugging Face](https://huggingface.co/sshleifer/distilbart-xsum-12-3) | 
+| Distilbart CNN 12\-6 | No | [Hugging Face](https://huggingface.co/sshleifer/distilbart-cnn-12-6) | 
+| Bart Large CNN samsum | No | [Hugging Face](https://huggingface.co/philschmid/bart-large-cnn-samsum) | 
+| Bigbird Pegasus Large Arxiv | No | [Hugging Face](https://huggingface.co/google/bigbird-pegasus-large-arxiv) | 
+| Bigbird Pegasus Large Pubmed | No | [Hugging Face](https://huggingface.co/google/bigbird-pegasus-large-pubmed) | 
 
 ------
 
@@ -309,6 +424,19 @@ The following tables list the models currently offered in JumpStart\. The availa
 | ResNet V2 50 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/resnet_v2_50/feature_vector/4) | 
 
 ------
+#### [ Instance Segmentation Models ]
+
+
+
+
+| Model | Fine\-tunable | Source | 
+| --- | --- | --- | 
+| MASK RCNN FPN RESNET101 COCO | No | [GluonCV](https://cv.gluon.ai/model_zoo/segmentation.html) | 
+| MASK RCNN FPN RESNET50 COCO | No | [GluonCV](https://cv.gluon.ai/model_zoo/segmentation.html) | 
+| MASK RCNN FPN RESNET18 COCO | No | [GluonCV](https://cv.gluon.ai/model_zoo/segmentation.html) | 
+| MASK RCNN RESNET18 COCO | No | [GluonCV](https://cv.gluon.ai/model_zoo/segmentation.html) | 
+
+------
 #### [ Object Detection Models ]
 
 
@@ -365,6 +493,19 @@ The following tables list the models currently offered in JumpStart\. The availa
 | SSD VGG 16 Atrous 512 | Yes | [GluonCV](https://cv.gluon.ai/model_zoo/detection.html) | 
 | YOLO V3 DarkNet 53 | No | [GluonCV](https://cv.gluon.ai/model_zoo/detection.html) | 
 | YOLO V3 MobileNet 1\.0 | No | [GluonCV](https://cv.gluon.ai/model_zoo/detection.html) | 
+
+------
+#### [ Semantic Segmentation Models ]
+
+
+
+
+| Model | Fine\-tunable | Source | 
+| --- | --- | --- | 
+| FCN ResNet 101 ADE20K | Yes | [GluonCV](https://cv.gluon.ai/model_zoo/segmentation.html) | 
+| FCN ResNet 101 COCO | Yes | [GluonCV](https://cv.gluon.ai/model_zoo/segmentation.html) | 
+| FCN ResNet 101 Pascal VOC | Yes | [GluonCV](https://cv.gluon.ai/model_zoo/segmentation.html) | 
+| FCN ResNet 50 ADE20K | Yes | [GluonCV](https://cv.gluon.ai/model_zoo/segmentation.html) | 
 
 ------
 

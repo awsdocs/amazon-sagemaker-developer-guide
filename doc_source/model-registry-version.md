@@ -2,7 +2,7 @@
 
 You can register an Amazon SageMaker model by creating a model version that specifies the model group to which it belongs\. A model version must include both the model artifacts \(the trained weights of a model\) and the inference code for the model\.
 
-An *inference pipeline* is a SageMaker model composed of a linear sequence of two to fifteen containers that process inference requests\. You register an inference pipeline by specifying the containers and the associated environment variables\. For more information on inference pipelines, see [Deploy an Inference Pipeline](inference-pipelines.md)\.
+An *inference pipeline* is a SageMaker model composed of a linear sequence of two to fifteen containers that process inference requests\. You register an inference pipeline by specifying the containers and the associated environment variables\. For more information on inference pipelines, see [Host models along with pre\-processing logic as serial inference pipeline behind one endpoint](inference-pipelines.md)\.
 
 You can register a model with an inference pipeline, by specifying the containers and the associated environment variables\. To create a model version with an inference pipeline by using either the AWS SDK for Python \(Boto3\) or by creating a step in a SageMaker model building pipeline, use the following steps\. 
 

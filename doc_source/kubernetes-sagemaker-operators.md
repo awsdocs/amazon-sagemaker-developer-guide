@@ -1,4 +1,4 @@
-# SageMaker Operators for Kubernetes<a name="amazon-sagemaker-operators-for-kubernetes"></a>
+# SageMaker Operators for Kubernetes<a name="kubernetes-sagemaker-operators"></a>
 
 SageMaker Operators for Kubernetes make it easier for developers and data scientists using Kubernetes to train, tune, and deploy machine learning \(ML\) models in SageMaker\. You can install these SageMaker Operators on your Kubernetes cluster in Amazon Elastic Kubernetes Service \(Amazon EKS\) to create SageMaker jobs natively using the Kubernetes API and command\-line Kubernetes tools such as `kubectl`\. This guide shows you how to set up the operators\. The guide also explains how to use the operators to run model training, hyperparameter tuning, and inference \(real\-time and batch\)\. 
 
@@ -10,7 +10,7 @@ There is no additional charge to use these operators\. You do incur charges for 
 + [Delete operators](#delete-operators)
 + [Troubleshooting](#troubleshooting)
 + [Images and SMlogs in each Region](#images-and-smlogs-in-each-region)
-+ [Using Amazon SageMaker Jobs](using-amazon-sagemaker-jobs.md)
++ [Using Amazon SageMaker Jobs](kubernetes-sagemaker-jobs.md)
 
 ## What is an operator?<a name="what-is-an-operator"></a>
 

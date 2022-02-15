@@ -12,7 +12,7 @@ Jupyter notebooks contain optional metadata that you can access through the Amaz
 
 **To view the notebook metadata**
 
-1. In the left sidebar, choose the **Notebook Tools** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Notebook_tools_squid.png)\)\.
+1. In the left sidebar, choose the **Notebook Tools** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Notebook_tools_squid.png)\)\. The icon only displays when there's a notebook available in Studio\.
 
 1. Open the **Advanced Tools** section\.
 

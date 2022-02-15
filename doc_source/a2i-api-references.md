@@ -13,7 +13,7 @@ Use the **HumanLoopConfig** parameter of the `[ DetectModerationLabels](https://
 
 **Amazon SageMaker**  
 Use the Amazon SageMaker API to create a `FlowDefinition`, also known as a *human review workflow*\. You can also create a `HumanTaskUi` or *worker task template*\.  
-For more information, see the [ `CreateFlowDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html) or the [ `CreateHumanTaskUi`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHumanTaskUi.html) API documentation\.
+For more information, see the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html) or the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHumanTaskUi.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHumanTaskUi.html) API documentation\.
 
 **Amazon Textract**  
 Use the **HumanLoopConfig** parameter of the [AnalyzeDocument](https://docs.aws.amazon.com/textract/latest/dg/API_AnalyzeDocument.html) API to initiate a human review workflow using Amazon Textract\.

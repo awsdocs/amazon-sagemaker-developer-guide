@@ -1,4 +1,4 @@
-# SageMaker Components for Kubeflow Pipelines<a name="amazon-sagemaker-components-for-kubeflow-pipelines"></a>
+# SageMaker Components for Kubeflow Pipelines<a name="kubernetes-sagemaker-components-for-kubeflow-pipelines"></a>
 
 This document outlines how to use SageMaker Components for Kubeflow Pipelines \(KFP\)\. With these pipeline components, you can create and monitor training, tuning, endpoint deployment, and batch transform jobs in SageMaker\. By running Kubeflow Pipeline jobs on SageMaker, you move data processing and training jobs from the Kubernetes cluster to SageMaker’s machine learning\-optimized managed service\. This document assumes prior knowledge of Kubernetes and Kubeflow\. 
 
@@ -7,7 +7,7 @@ This document outlines how to use SageMaker Components for Kubeflow Pipelines \
 + [Kubeflow Pipeline components](#kubeflow-pipeline-components)
 + [IAM permissions](#iam-permissions)
 + [Converting Pipelines to use SageMaker](#converting-pipelines-to-use-amazon-sagemaker)
-+ [Using SageMaker Components](usingamazon-sagemaker-components.md)
++ [Using SageMaker Components](kubernetes-sagemaker-components-tutorials.md)
 
 ## What is Kubeflow Pipelines?<a name="what-is-kubeflow-pipelines"></a>
 
@@ -78,6 +78,7 @@ Deploying Kubeflow Pipelines with SageMaker components requires the following th
   The IAM user/role needs the following permissions: 
   + CloudWatchLogsFullAccess 
   + [AWSCloudFormationFullAccess](https://console.aws.amazon.com/iam/home?region=us-east-1#/policies/arn%3Aaws%3Aiam%3A%3Aaws%3Apolicy%2FAWSCloudFormationFullAccess) 
+  + [https://console.aws.amazon.com/iam/home?region=us-east-1#/policies/arn%3Aaws%3Aiam%3A%3Aaws%3Apolicy%2FAWSCloudFormationFullAccess](https://console.aws.amazon.com/iam/home?region=us-east-1#/policies/arn%3Aaws%3Aiam%3A%3Aaws%3Apolicy%2FAWSCloudFormationFullAccess) 
   + IAMFullAccess 
   + AmazonS3FullAccess 
   + AmazonEC2FullAccess 

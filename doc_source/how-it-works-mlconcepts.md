@@ -36,7 +36,7 @@ The following diagram illustrates the typical workflow for creating a machine le
 
      
 
-1. **Deploy the model**— You traditionally re\-engineer a model before you integrate it with your application and deploy it\. With SageMaker hosting services, you can deploy your model independently, decoupling it from your application code\. For more information, see [Deploy a Model on SageMaker Hosting Services](how-it-works-deployment.md#how-it-works-hosting)\.
+1. **Deploy the model**— You traditionally re\-engineer a model before you integrate it with your application and deploy it\. With SageMaker hosting services, you can deploy your model independently, decoupling it from your application code\. For more information, see [Deploy Models for Inference](deploy-model.md)\.
 
    
 

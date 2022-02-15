@@ -22,4 +22,4 @@ When you use model parallelism, you must consider the following:
 
   The model parallel library can achieve true parallelization by implementing pipelined execution by building an efficient computation schedule where different devices can work on forward and backward passes for different data samples at the same time\.
 
-To learn how you can use the library to efficiently split your model across devices and improve device utilization during training, see [Core Features of SageMaker Distributed Model Parallel](model-parallel-core-features.md)\.
+To learn how you can use the library to efficiently split your model across devices and improve device utilization during training, see [Core Features of the SageMaker Model Parallel Library](model-parallel-core-features.md)\.

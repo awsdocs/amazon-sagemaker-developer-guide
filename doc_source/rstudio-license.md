@@ -6,9 +6,9 @@ To use an RStudio license with Amazon SageMaker, you must first have a valid RSt
 
  **Get an RStudio license** 
 
-1. If you don't have an RStudio license, you may purchase one at [RStudio Pricing](https://www.rstudio.com/pricing/) or by contacting [mailto:sales@rstudio.com](mailto:sales@rstudio.com)\. When buying or updating an RStudio license, you must provide the AWS Account that will host your Amazon SageMaker Domain\. 
+1. If you don't have an RStudio license, you may purchase one at [RStudio Pricing](https://www.rstudio.com/pricing/) or by contacting [sales@rstudio\.com](mailto:sales@rstudio.com)\. When buying or updating an RStudio license, you must provide the AWS Account that will host your Amazon SageMaker Domain\. 
 
-   If you have an existing RStudio license, contact your RStudio Sales representative or [mailto:sales@rstudio.com](mailto:sales@rstudio.com) to add RStudio on Amazon SageMaker to your existing RStudio Workbench Enterprise license, or to convert your RStudio Workbench Standard license\. The RStudio Sales representative will send you the appropriate electronic order form\.
+   If you have an existing RStudio license, contact your RStudio Sales representative or [sales@rstudio\.com](mailto:sales@rstudio.com) to add RStudio on Amazon SageMaker to your existing RStudio Workbench Enterprise license, or to convert your RStudio Workbench Standard license\. The RStudio Sales representative will send you the appropriate electronic order form\.
 
 1. RStudio grants a RStudio Workbench license to your AWS Account through AWS License Manager in the US East \(N\. Virginia\) Region\. Although the RStudio license is granted in the US East \(N\. Virginia\) Region, your license can be consumed in any AWS Region that RStudio on Amazon SageMaker is supported in\. You can expect the license grant process to complete within three business days after you share your AWS account ID with RStudio\.
 

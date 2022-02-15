@@ -37,7 +37,7 @@ To deploy a model version using the AWS SDK for Python \(Boto3\), complete the f
    ```
    model_name = 'DEMO-modelregistry-model-' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
    print("Model name : {}".format(model_name))
-   container_list = [{ModelPackageName: model_version_arn}]
+   container_list = [{'ModelPackageName': model_version_arn}]
    
    create_model_response = sm_client.create_model(
        ModelName = model_name,

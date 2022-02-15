@@ -1,4 +1,4 @@
-# Using Amazon SageMaker Jobs<a name="using-amazon-sagemaker-jobs"></a>
+# Using Amazon SageMaker Jobs<a name="kubernetes-sagemaker-jobs"></a>
 
 To run an Amazon SageMaker job using the Operators for Kubernetes, you can either apply a YAML file or use the supplied Helm Charts\. 
 

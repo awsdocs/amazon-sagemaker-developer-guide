@@ -311,7 +311,7 @@ pp.pprint(endpoints)
 ```
 
 **Example Getting a Lineage graph visualization**  
-A helper class `Visualizer` is provided in *visualizer\.py* to help plot the lineage graph\. When the query response is rendered, a graph with the lineage relationships from the `StartArns` is displayed\. From the `StartArns` the visualization shows the relationships with the other lineage entities returned in the `query_lineage` API action\.   
+A helper class `Visualizer` is provided in the sameple notebook [visualizer\.py ](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker-lineage/visualizer.py) to help plot the lineage graph\. When the query response is rendered, a graph with the lineage relationships from the `StartArns` is displayed\. From the `StartArns` the visualization shows the relationships with the other lineage entities returned in the `query_lineage` API action\.  
 
 ```
 # Graph APIs

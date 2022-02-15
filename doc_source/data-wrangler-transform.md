@@ -1,8 +1,12 @@
 # Transform Data<a name="data-wrangler-transform"></a>
 
-Amazon SageMaker Data Wrangler provides numerous ML data transforms to streamline cleaning, transforming, and featurizing your data\. When you add a transform, it adds a step to the data flow\. Each transform you add modifies your dataset and produces a new dataframe\. All subsequent transforms apply to the resulting dataframe\. 
+Amazon SageMaker Data Wrangler provides numerous ML data transforms to streamline cleaning, transforming, and featurizing your data\. When you add a transform, it adds a step to the data flow\. Each transform you add modifies your dataset and produces a new dataframe\. All subsequent transforms apply to the resulting dataframe\.
 
-Data Wrangler includes built\-in transforms, which you can use to transform columns without any code\. You can also add custom transformations using PySpark, Pandas, and PySpark SQL\. Some transforms operate in place, while others create a new output column in your dataset\. 
+Data Wrangler includes built\-in transforms, which you can use to transform columns without any code\. You can also add custom transformations using PySpark, Pandas, and PySpark SQL\. Some transforms operate in place, while others create a new output column in your dataset\.
+
+You can apply transforms to multiple columns at once\. For example, you can delete multiple columns in a single step\.
+
+You can apply the process numeric and handle missing transforms only to a single column\.
 
 Use this page to learn more about these built\-in and custom transforms\.
 
@@ -103,6 +107,24 @@ Use the following procedure to join two dataframes\.
 1. Select **Apply** to preview the new dataset\. 
 
 1. Select **Add** to add the new dataset to your data flow\. 
+
+## Balance data<a name="data-wrangler-transform-balance-data"></a>
+
+You can balance the data for datasets with an underrepresented category\. Balancing a dataset can help you create better models for binary classification\.
+
+**Note**  
+You can't balance datasets containing column vectors\.
+
+You can use the **Balance data** operation to balance your data using one of the following operators:
++ Random oversampling – Randomly duplicates samples in the minority category\. For example, if you're trying to detect fraud, you might only have cases of fraud in 10% of your data\. For an equal proportion of fraudulent and non\-fraudulent cases, randomly duplicates fraud cases within the dataset 8 times\.
++ Random undersampling – Roughly equivalent to random oversampling\. Randomly removes samples from the overrepresented category to get the proportion of samples that you desire\.
++ Synthetic Minority Oversampling Technique \(SMOTE\) – Uses samples from the underrepresented category to interpolate new synthetic minority samples\. For more information about SMOTE, see the following description\.
+
+You can use all transforms for datasets containing both numeric and non\-numeric features\. SMOTE interpolates values by using neighboring samples\. Data Wrangler uses the R\-squared distance to determine the neighborhood to interpolate the additional samples\. Data Wrangler only uses numeric features to calculate the distances between samples in the underrepresented group\.
+
+For two real samples in the underrepresented group, Data Wrangler interpolates the numeric features by using a weighted average\. It randomly assigns weights to those samples in the range of \[0, 1\]\. For numeric features, Data Wrangler interpolates samples using a weighted average of the samples\. For samples A and B, Data Wrangler could randomly assign a weight of 0\.7 to A and 0\.3 to B\. The interpolated sample has a value of 0\.7A \+ 0\.3B\.
+
+Data Wrangler interpolates non\-numeric features by copying from either of the interpolated real samples\. It copies the samples with a probability that it randomly assigns to each sample\. For samples A and B, it can assign probabilities 0\.8 to A and 0\.2 to B\. For the probabilities it assigned, it copies A 80% of the time\.
 
 ## Custom Transforms<a name="data-wrangler-transform-custom"></a>
 
@@ -213,6 +235,56 @@ Select **One\-hot encode** for **Transform** to use one\-hot encoding\. Configur
   + Choose **Keep** to retain missing values as the last category\.
   + Choose **Error** if you want Data Wrangler to throw an error if missing values are encountered in the **Input column**\.
 + **Is input ordinal encoded**: Select this option if the input vector contains ordinal encoded data\. This option requires that input data contain non\-negative integers\. If **True**, input *i* is encoded as a vector with a non\-zero in the *i*th location\. 
+
+### Similarity encode<a name="data-wrangler-transform-cat-encode-similarity"></a>
+
+Use similarity encoding when you have the following:
++ A large number of categorical variables
++ Noisy data
+
+The similarity encoder creates embeddings for columns with categorical data\. An embedding is a mapping of discrete objects, such as words, to vectors of real numbers\. It encodes similar strings to vectors containing similar values\. For example, it creates very similar encodings for "California" and "Calfornia"\.
+
+Data Wrangler converts each category in your dataset into a set of tokens using a 3\-gram tokenizer\. It converts the tokens into an embedding using min\-hash encoding\.
+
+The following example shows how the similarity encoder creates vectors from strings\.
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/destination-nodes/similarity-encode-example-screenshot-0.png)
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/destination-nodes/similarity-encode-example-screenshot-1.png)
+
+The similarity encodings that Data Wrangler creates:
++ Have low dimensionality
++ Are scalable to a large number of categories
++ Are robust and resistant to noise
+
+For the preceding reasons, similarity encoding is more versatile than one\-hot encoding\.
+
+To add the similarity encoding transform to your dataset, use the following procedure\.
+
+To use similarity encoding, do the following\.
+
+1. Sign in to the [Amazon SageMaker Console](https://console.aws.amazon.com/sagemaker/)\.
+
+1. Choose **Open Studio**\.
+
+1. Choose **Launch app**\.
+
+1. Choose **Studio**\.
+
+1. Specify your data flow\.
+
+1. Choose a step with a transformation\.
+
+1. Choose **Add step**\.
+
+1. Choose **Encode categorical**\.
+
+1. Specify the following:
+   + **Transform** – **Similarity encode**
+   + **Input column** – The column containing the categorical data that you're encoding\.
+   + **Target dimension** – Optional: The dimension of the categorical embedding vector\. The default value is 30\. We recommend using a larger target dimension if you have a large dataset with many categories\.
+   + **Output style** – Choose **Vector** for a single vector with all of the encoded values\. Choose **Column** to have the encoded values in separate columns\.
+   + **Output column** – Optional: The name of the output column for a vector encoded output\. For a column encoded output, the prefix of the column names followed by listed number\.
 
 ## Featurize Text<a name="data-wrangler-transform-featurize-text"></a>
 
@@ -587,45 +659,6 @@ You can use the following procedure to standardize the length of the time series
 
 1. Choose **Add** to add the transform to the Data Wrangler data flow\.
 
-### Featurize Date/Time<a name="data-wrangler-featurize-time-series-datetime-embed"></a>
-
-Use **Featurize date/time** to create a vector embedding representing a date/time field\. To use this transform, your date/time data must be in one of the following formats: 
-+ Strings describing date/time, for example, `"January 1st, 2020, 12:44pm"`\. 
-+ A unix timestamp\. A unix timestamp describes the number of seconds, milliseconds, microseconds, or nanoseconds from 1/1/1970\. 
-
-You can choose to **Infer datetime format** and provide a **Datetime format**\. If you provide a date/time format, you must use the codes described in this [Python documentation](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes)\. The options you select for these two configurations have implications for the speed of the operation, and the final results:
-+ The most manual and computationally fastest option is to specify a **Datetime format** and select **No** for **Infer datetime format**\.
-+ To reduce manual labor, you can simply choose **Infer datetime format** and not specify a date/time format\. This is also a computationally fast operation; however, the first date/time format encountered in the input column is assumed to be the format for the entire column\. Therefore, if other formats are encountered in the column, these values are NaN in the final output\. Therefore, this option can result in unparsed strings\. 
-+ If you do not specify a format and you select **No** for **Infer datetime format**, you get the most robust results\. All valid date/time strings are parsed\. However, this operation can be an order of magnitude slower than the first two options in this list\. 
-
-When you use this transform, you specify an **Input column** which contains date/time data in one of the formats listed above\. The transform creates an output column named **Output column name**\. The format of the output column depends on your configuration using the following:
-+ **Vector**: Outputs a single column as a vector\. 
-+ **Columns**: Creates a new column for every feature\. For example, if the output contains a year, month, and day, three separate columns are created for year, month, and day\. 
-
-Additionally, you must choose an **Embedding mode**\. For linear models and deep networks, **cyclic** is recommended\. For tree based algorithms, **ordinal** is recommended\.
-
-You can use the following procedure to create a vector embedding that represents a date/time field\.
-
-1. Open your Data Wrangler data flow\.
-
-1. If you haven't imported your dataset, import it under the **Import data** tab\.
-
-1. In your data flow, under **Data types**, choose the **\+**, and select **Add transform**\.
-
-1. Choose **Add step**\.
-
-1. Choose **Featurize datetime**\.
-
-1. For **Input column**, choose the input column\.
-
-1. Optional: For **Output column**, choose the output column\. If you don't specify a name, the transform is done in place\.
-
-1. Specify the remaining fields\.
-
-1. Choose **Preview** to generate a preview of the transform\.
-
-1. Choose **Add** to add the transform to the Data Wrangler data flow\.
-
 ### Extract Features from Your Time Series Data<a name="data-wrangler-transform-extract-time-series-features"></a>
 
 If you're running a classification or a regression algorithm on your time series data, we recommend extracting features from the time series before running the algorithm\. Extracting features might improve the performance of your algorithm\.
@@ -783,16 +816,16 @@ Use **Featurize date/time** to create a vector embedding representing a date/tim
 + Strings describing date/time, for example, `"January 1st, 2020, 12:44pm"`\. 
 + A unix timestamp\. A unix timestamp describes the number of seconds, milliseconds, microseconds, or nanoseconds from 1/1/1970\. 
 
-You can choose to **Infer datetime format** and provide a **Datetime format**\. If you provide a date/time format, you must use the codes described in this [Python documentation](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes)\. The options you select for these two configurations have implications for the speed of the operation, and the final results:
+You can choose to **Infer datetime format** and provide a **Datetime format**\. If you provide a date/time format, you must use the codes described in the [Python documentation](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes)\. The options you select for these two configurations have implications for the speed of the operation, and the final results:
 + The most manual and computationally fastest option is to specify a **Datetime format** and select **No** for **Infer datetime format**\.
-+ To reduce manual labor, you can simply choose **Infer datetime format** and not specify a date/time format\. This is also a computationally fast operation; however, the first date/time format encountered in the input column is assumed to be the format for the entire column\. Therefore, if other formats are encountered in the column, these values are NaN in the final output\. Therefore, this option can result in unparsed strings\. 
-+ If you do not specify a format and you select **No** for **Infer datetime format**, you get the most robust results\. All valid date/time strings are parsed\. However, this operation can be an order of magnitude slower than the first two options in this list\. 
++ To reduce manual labor, you can choose **Infer datetime format** and not specify a date/time format\. It is also a computationally fast operation; however, the first date/time format encountered in the input column is assumed to be the format for the entire column\. If there are other formats in the column, these values are NaN in the final output\. Inferring the date/time format can give you unparsed strings\. 
++ If you don't specify a format and select **No** for **Infer datetime format**, you get the most robust results\. All the valid date/time strings are parsed\. However, this operation can be an order of magnitude slower than the first two options in this list\. 
 
 When you use this transform, you specify an **Input column** which contains date/time data in one of the formats listed above\. The transform creates an output column named **Output column name**\. The format of the output column depends on your configuration using the following:
 + **Vector**: Outputs a single column as a vector\. 
 + **Columns**: Creates a new column for every feature\. For example, if the output contains a year, month, and day, three separate columns are created for year, month, and day\. 
 
-Additionally, you must choose an **Embedding mode**\. For linear models and deep networks, **cyclic** is recommended\. For tree based algorithms, **ordinal** is recommended\.
+Additionally, you must choose an **Embedding mode**\. For linear models and deep networks, we recommend choosing **cyclic**\. For tree based algorithms, we recommend choosing **ordinal**\.
 
 ## Format String<a name="data-wrangler-transform-format-string"></a>
 
@@ -887,12 +920,11 @@ Use the **Fill missing** transform to replace missing values with a **Fill value
 
 ### Impute Missing<a name="data-wrangler-transform-impute"></a>
 
-Use the **Impute missing** transform to create a new column that contains imputed values where missing values were found in input categorical and numerical data\. The configuration depends on your data type\. Configure this transform using the following:
-+ **Imputing strategy**: The strategy used to determine the new value to impute\. 
+Use the **Impute missing** transform to create a new column that contains imputed values where missing values were found in input categorical and numerical data\. The configuration depends on your data type\.
 
-  For numeric data, choose an imputing strategy, the strategy used to determine the new value to impute\. You can choose to impute the mean or the median over the values that are present in your dataset\. Data Wrangler uses the value that it computes to impute the missing values\.
+For numeric data, choose an imputing strategy, the strategy used to determine the new value to impute\. You can choose to impute the mean or the median over the values that are present in your dataset\. Data Wrangler uses the value that it computes to impute the missing values\.
 
-  For categorical data, Data Wrangler imputes missing values using the most frequent value in the column\. To impute a custom string, use the **Fill missing** transform instead\.
+For categorical data, Data Wrangler imputes missing values using the most frequent value in the column\. To impute a custom string, use the **Fill missing** transform instead\.
 
 ### Add Indicator for Missing<a name="data-wrangler-transform-missing-add-indicator"></a>
 
@@ -994,3 +1026,70 @@ The following transforms are included in this transform group\. If a transform o
 |  Is uppercase  |  Returns `True` if a string only contains upper case letters\. Otherwise, returns `False`\.  | 
 |  Is numeric  |  Returns `True` if a string only contains numbers\. Otherwise, returns `False`\.  | 
 |  Is decimal  |  Returns `True` if a string only contains decimal numbers\. Otherwise, returns `False`\.  | 
+
+## Unnest JSON data<a name="data-wrangler-transform-flatten-column"></a>
+
+If you have a \.csv file, you might values in your dataset that are JSON strings\. Similarly, you might have nested data in columns of either a Parquet file or a JSON document\.
+
+Use the **Flatten structured** operator to separate the first level keys into separate columns\. A first level key is a key that isn't nested within a value\.
+
+For example, you might have a dataset that has a *person* column with demographic information on each person stored as JSON strings\. A JSON string might look like the following\.
+
+```
+ "{"seq": 1,"name": {"first": "Nathaniel","last": "Ferguson"},"age": 59,"city": "Posbotno","state": "WV"}"
+```
+
+The **Flatten structured** operator converts the following first level keys into additional columns in your dataset:
++ seq
++ name
++ age
++ city
++ state
+
+Data Wrangler puts the values of the keys as values under the columns\. The following shows the column names and values of the JSON\.
+
+```
+seq, name,                                    age, city, state
+1, {"first": "Nathaniel","last": "Ferguson"}, 59, Posbotno, WV
+```
+
+For each value in your dataset containing JSON, the **Flatten structured** operator creates columns for the first\-level keys\. To create columns for nested keys, call the operator again\. For the preceding example, calling the operator creates the columns:
++ name\_first
++ name\_last
+
+The following example shows the dataset that results from calling the operation again\.
+
+```
+seq, name,                                    age, city, state, name_first, name_last
+1, {"first": "Nathaniel","last": "Ferguson"}, 59, Posbotno, WV, Nathaniel, Ferguson
+```
+
+Choose **Keys to flatten on** to specify the first\-level keys that want to extract as separate columns\. If you don't specify any keys, Data Wrangler extracts all the keys by default\.
+
+## Explode array<a name="data-wrangler-transform-explode-array"></a>
+
+Use **Explode array** to expand the values of the array into separate output rows\. For example, the operation can take each value in the array, \[\[1, 2, 3,\], \[4, 5, 6\], \[7, 8, 9\]\] and create a new column with the following rows:
+
+```
+                [1, 2, 3]
+                [4, 5, 6]
+                [7, 8, 9]
+```
+
+Data Wrangler names the new column, input\_column\_name\_flatten\.
+
+You can call the **Explode array** operation multiple times to get the nested values of the array into separate output columns\. The following example shows the result of calling the operation multiple times on dataset with a nested array\.
+
+
+**Putting the values of a nested array into separate columns**  
+
+| id | array | id | array\_items | id | array\_items\_items | 
+| --- | --- | --- | --- | --- | --- | 
+| 1 | \[ \[cat, dog\], \[bat, frog\] \] | 1 | \[cat, dog\] | 1 | cat | 
+| 2 |  \[\[rose, petunia\], \[lily, daisy\]\]  | 1 | \[bat, frog\] | 1 | dog | 
+|  |  | 2 | \[rose, petunia\] | 1 | bat | 
+|  |  | 2 | \[lily, daisy\] | 1 | frog | 
+|  |  |  | 2 | 2 | rose | 
+|  |  |  | 2 | 2 | petunia | 
+|  |  |  | 2 | 2 | lily | 
+|  |  |  | 2 | 2 | daisy | 

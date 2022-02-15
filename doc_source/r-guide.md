@@ -6,6 +6,10 @@ The examples are organized in three levels, Beginner, Intermediate, and Advanced
 
  For information on how to bring your own custom R image to Studio, see [Bring your own SageMaker image](studio-byoi.md)\. For a similar blog article, see [Bringing your own R environment to Amazon SageMaker Studio](http://aws.amazon.com/blogs/machine-learning/bringing-your-own-r-environment-to-amazon-sagemaker-studio/)\.
 
+## RStudio Support in SageMaker<a name="rstudio-for-r"></a>
+
+Amazon SageMaker supports RStudio as a fully\-managed integrated development environment \(IDE\) integrated with Amazon SageMaker Domain\. With RStudio integration, you can launch an RStudio environment in the Domain to run your RStudio workflows on SageMaker resources\. For more information, see [RStudio on Amazon SageMaker](rstudio.md)\.
+
 ## R Kernel in SageMaker<a name="r-sagemaker-kernel-ni"></a>
 
  SageMaker notebook instances support R using a pre\-installed R kernel\. Also, the R kernel has the reticulate library, an R to Python interface, so you can use the features of SageMaker Python SDK from within an R script\. 

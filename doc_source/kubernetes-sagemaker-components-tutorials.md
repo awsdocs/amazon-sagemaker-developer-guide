@@ -1,4 +1,4 @@
-# Using SageMaker Components<a name="usingamazon-sagemaker-components"></a>
+# Using SageMaker Components<a name="kubernetes-sagemaker-components-tutorials"></a>
 
 In this tutorial, you run a pipeline using SageMaker Components for Kubeflow Pipelines to train a classification model using Kmeans with the MNIST dataset\. This workflow uses Kubeflow pipelines as the orchestrator and SageMaker as the backend to run the steps in the workflow\. For the full code for this and other pipeline examples, see the [Sample SageMaker Kubeflow Pipelines](https://github.com/kubeflow/pipelines/tree/master/samples/contrib/aws-samples)\. For information on the components used, see the [KubeFlow Pipelines GitHub repository](https://github.com/kubeflow/pipelines/tree/master/components/aws/sagemaker)\. 
 
@@ -28,7 +28,8 @@ Complete the following steps to set up your gateway node\. Depending on your env
 
 1. Add the following permissions to your user using the steps in [Changing Permissions for an IAM User:](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_change-permissions.html#users_change_permissions-add-console) 
    + CloudWatchLogsFullAccess 
-   + [AWSCloudFormationFullAccess](https://console.aws.amazon.com/iam/home?region=us-east-1#/policies/arn%3Aaws%3Aiam%3A%3Aaws%3Apolicy%2FAWSCloudFormationFullAccess) 
+   + [AWSCloudFormationFullAccess](https://console.aws.amazon.com/iam/home?region=us-east-1#/policies/arn%3Aaws%3Aiam%3A%3Aaws%3Apolicy%2FAWSCloudFormationFullAccess)
+   + [https://console.aws.amazon.com/iam/home?region=us-east-1#/policies/arn%3Aaws%3Aiam%3A%3Aaws%3Apolicy%2FAWSCloudFormationFullAccess](https://console.aws.amazon.com/iam/home?region=us-east-1#/policies/arn%3Aaws%3Aiam%3A%3Aaws%3Apolicy%2FAWSCloudFormationFullAccess)
    + IAMFullAccess 
    + AmazonS3FullAccess 
    + AmazonEC2FullAccess 

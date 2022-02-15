@@ -130,13 +130,15 @@ To delete the AWS CloudFormation stack and the Amazon S3 bucket, you need to be 
 
 1. 
 
-**There are two ways to delete a project in Studio:**
+**You can delete a Studio project in one of the following ways:**
 
    1. 
 
 **You can delete the project from the projects list\.**
 
       Right\-click the target project and choose ** Delete** from the dropdown list\.
+**Note**  
+This functionality is supported in Studio version v3\.17\.1 or higher\. For more information, see [Update SageMaker Studio](studio-tasks-update-studio.md)\.
 
    1. 
 

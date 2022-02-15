@@ -1,6 +1,6 @@
-# Core Features of SageMaker Distributed Model Parallel<a name="model-parallel-core-features"></a>
+# Core Features of the SageMaker Model Parallel Library<a name="model-parallel-core-features"></a>
 
-Amazon SageMaker's distributed model parallel makes model parallelism more accessible by providing automated model splitting and sophisticated pipeline execution scheduling\. The model splitting algorithms can optimize for speed or memory consumption\. The library also supports manual partitioning\. When you use the library, training is executed in a pipelined fashion over microbatches to maximize GPU usage\.
+Amazon SageMaker's model parallel library makes model parallelism more accessible by providing automated model splitting and sophisticated pipeline execution scheduling\. The model splitting algorithms can optimize for speed or memory consumption\. The library also supports manual partitioning\. When you use the library, training is executed in a pipelined fashion over microbatches to maximize GPU usage\.
 
 You can configure these features using a few lines of code when you create your training script and define your SageMaker `PyTorch` or `TensorFlow` estimators\. Use the following sections to learn more about these core features of the library\.
 

@@ -1,6 +1,6 @@
 # Pipeline Parameters<a name="build-and-manage-parameters"></a>
 
-You can introduce variables into your pipeline definition using parameters\. Parameters that you define can be referenced throughout your pipeline definition\. Parameters have a default value, which you can override by specifying parameter values when starting a pipeline execution\. The default value must be an instance matching the parameter type\. All parameters used in step definitions must be defined in your pipeline definition\. Amazon SageMaker Model Building Pipelines supports the following parameter types: 
+You can introduce variables into your pipeline definition using parameters\. You can reference parameters that you define throughout your pipeline definition\. Parameters have a default value, which you can override by specifying parameter values when starting a pipeline execution\. The default value must be an instance matching the parameter type\. All parameters used in step definitions must be defined in your pipeline definition\. Amazon SageMaker Model Building Pipelines supports the following parameter types: 
 +  `ParameterString` – Representing a `str` Python type\. 
 +  `ParameterInteger` – Representing an `int` Python type\. 
 +  `ParameterFloat` – Representing a `float` Python type\. 
@@ -14,7 +14,7 @@ Parameters take the following format:
 )
 ```
 
-The following shows an example parameter implementation:
+The following example shows a sample parameter implementation\.
 
 ```
 from sagemaker.workflow.parameters import (
@@ -29,7 +29,7 @@ processing_instance_count = ParameterInteger(
 )
 ```
 
-You pass the parameter when creating your pipeline as follows:
+You pass the parameter when creating your pipeline as shown in the following example\.
 
 ```
 pipeline = Pipeline(
@@ -41,7 +41,7 @@ pipeline = Pipeline(
 )
 ```
 
-You can also pass a parameter value that differs from the default value to a pipeline execution as follows:
+You can also pass a parameter value that differs from the default value to a pipeline execution, as shown in the following example\.
 
 ```
 execution = pipeline.start(

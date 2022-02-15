@@ -7,7 +7,7 @@ To analyze data and evaluate machine learning models on Amazon SageMaker, use Am
 The preceding diagram shows how Amazon SageMaker spins up a Processing job\. Amazon SageMaker takes your script, copies your data from Amazon Simple Storage Service \(Amazon S3\), and then pulls a processing container\. The processing container image can either be an Amazon SageMaker built\-in image or a custom image that you provide\. The underlying infrastructure for a Processing job is fully managed by Amazon SageMaker\. Cluster resources are provisioned for the duration of your job, and cleaned up when a job completes\. The output of the Processing job is stored in the Amazon S3 bucket you specified\. 
 
 **Note**  
-Your data must be stored in an Amazon S3 bucket\.
+Your input data must be stored in an Amazon S3 bucket\. Alternatively, you can use Amazon Athena or Amazon Redshift as input sources\.
 
 ## Use Amazon SageMaker Processing Sample Notebooks<a name="processing-job-sample-notebooks"></a>
 

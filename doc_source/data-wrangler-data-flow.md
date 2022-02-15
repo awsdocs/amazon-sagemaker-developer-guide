@@ -46,9 +46,61 @@ Select **\+** next to any dataset or previously added step and then select one o
 
 ## Delete a step from your Data Flow<a name="data-wrangler-data-flow-delete-step"></a>
 
-To delete a step, select the step and select **Delete**\. When you delete a step, all subsequent steps connected to that step, or *downstream steps*, are also deleted\. 
+To delete a step, select the step and select **Delete**\. If the node is a node that has a single input, you delete only the step that you select\. Deleting a step that has a single input doesn't delete the steps that follow it\. If you're deleting a step for a source, join, or concatenate node, all the steps that follow it are also deleted\.
 
 To delete a step from a stack of steps, select the stack and then select the step you want to delete\. 
 
-**Note**  
-You cannot delete the **Data type** step directly\. To remove this dataset, you must delete the corresponding **Source** dataset\. 
+You can use one of the following procedures to delete a step without deleting the downstream steps\.
+
+------
+#### [ Delete a step in the Data Wrangler flow ]
+
+You can delete an individual step for nodes in your data flow that have a single input\. You can't delete individual steps for source, join, and concatenate nodes\.
+
+Use the following procedure to delete a step in the Data Wrangler flow\.
+
+1. Choose the group of steps that has the step that you're deleting\.
+
+1. Choose the icon next to the step\.
+
+1. Choose **Delete**\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/delete-step-flow-1.png)
+
+------
+#### [ Delete a step in the table view ]
+
+Use the following procedure to delete a step in the table view\.
+
+You can delete an individual step for nodes in your data flow that have a single input\. You can't delete individual steps for source, join, and concatenate nodes\.
+
+1. Choose the step and open the table view for the step\.
+
+1. Move your cursor over the step\.
+
+1. Choose the icon next to the step\.
+
+1. Choose **Delete**\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/delete-step-table-0.png)
+
+------
+
+## Edit a step in your Data Wrangler flow<a name="data-wrangler-data-flow-edit-step"></a>
+
+You can edit each step that you've added in your Data Wrangler flow\. Editing steps gives you the ability to change the transformations or the data types of the columns\. You can edit the steps to make changes that give you the ability to perform better analyses\.
+
+There are many ways that you can edit a step\. Some examples include changing the imputation method or changing the threshold for considering a value to be an outlier\.
+
+Use the following procedure to edit a step\.
+
+To edit a step, do the following\.
+
+1. Choose a step in the Data Wrangler flow to open the table view\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/data-flow-edit-choose-step.png)
+
+1. Choose a step in the data flow\.
+
+1. Edit the step\.
+
+The following is an example of editing a step\.
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/data-flow-table-edit-step.png)

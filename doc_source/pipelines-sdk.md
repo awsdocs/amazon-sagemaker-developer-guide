@@ -7,7 +7,7 @@
 The following topics describe fundamental SageMaker Pipelines concepts\. For a tutorial describing the implementation of these concepts, see [Create and Manage SageMaker Pipelines](pipelines-build.md)\.
 
 **Topics**
-+ [Pipeline Structure](build-and-manage-pipeline.md)
++ [Pipeline Structure and Execution](build-and-manage-pipeline.md)
 + [Access Management](build-and-manage-access.md)
 + [Pipeline Parameters](build-and-manage-parameters.md)
 + [Pipeline Steps](build-and-manage-steps.md)
