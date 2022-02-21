@@ -50,8 +50,8 @@ create_model_package_input_dict.update(modelpackage_inference_specification)
 Then you call the `create_model_package` method, passing in the parameter dictionary that you just set up\.
 
 ```
-create_mode_package_response = sm_client.create_model_package(**create_model_package_input_dict)
-model_package_arn = create_mode_package_response["ModelPackageArn"]
+create_model_package_response = sm_client.create_model_package(**create_model_package_input_dict)
+model_package_arn = create_model_package_response["ModelPackageArn"]
 print('ModelPackage Version ARN : {}'.format(model_package_arn))
 ```
 
@@ -198,7 +198,7 @@ create_model_package_input_dict = {
 create_model_package_input_dict.update(modelpackage_inference_specification)
 
 # Create cross-account model package
-create_mode_package_response = sm_client.create_model_package(**create_model_package_input_dict)
-model_package_arn = create_mode_package_response["ModelPackageArn"]
+create_model_package_response = sm_client.create_model_package(**create_model_package_input_dict)
+model_package_arn = create_model_package_response["ModelPackageArn"]
 print('ModelPackage Version ARN : {}'.format(model_package_arn))
 ```
