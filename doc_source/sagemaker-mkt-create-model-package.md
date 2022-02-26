@@ -36,6 +36,8 @@ You can create an model package either by using the SageMaker console or by usin
 
 1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
+1. From the left menu, choose **Inference**\.
+
 1. Choose **Model packages**, then choose **Create model package**\.
 
 1. On the **Inference specifications** page, provide the following information:
@@ -74,7 +76,7 @@ You can create an model package either by using the SageMaker console or by usin
 
    1. For **Publish this model package on AWS Marketplace**, choose **Yes** to publish the model package on AWS Marketplace\.
 
-   1. For **Validate this model package**, choose **Yes** if you want SageMaker to run batch transform jobs that you specify to test the inference code of your model package\.
+   1. For **Validate this resource**, choose **Yes** if you want SageMaker to run batch transform jobs that you specify to test the inference code of your model package\.
 **Note**  
 To publish your model package on AWS Marketplace, your model package must be validated\.
 

@@ -48,7 +48,7 @@ The following tables list the models currently offered in JumpStart\. The availa
 ### Tabular Models<a name="jumpstart-models-tabular"></a>
 
 ------
-#### [ Classification Models ]
+#### [ Classification ]
 
 
 
@@ -61,7 +61,7 @@ The following tables list the models currently offered in JumpStart\. The availa
 | Linear Classification | Yes | [https://scikit\-learn\.org/stable/](https://scikit-learn.org/stable/) | 
 
 ------
-#### [ Regression Models ]
+#### [ Regression ]
 
 
 
@@ -78,7 +78,7 @@ The following tables list the models currently offered in JumpStart\. The availa
 ### Text Models<a name="jumpstart-models-text"></a>
 
 ------
-#### [ Text Classification Models ]
+#### [ Text Classification ]
 
 
 
@@ -97,7 +97,7 @@ The following tables list the models currently offered in JumpStart\. The availa
 | ELECTRA\-Small\+\+ | Yes | [Tensorflow Hub](https://tfhub.dev/google/electra_small/1) | 
 
 ------
-#### [ Text Embedding Models ]
+#### [ Text Embedding ]
 
 
 
@@ -140,7 +140,7 @@ The following tables list the models currently offered in JumpStart\. The availa
 | BERT Base Talking heads Gated Gelu | No | [TensorFlow Hub](https://tfhub.dev/tensorflow/talkheads_ggelu_bert_en_base/2) | 
 
 ------
-#### [ Text Generation Models ]
+#### [ Text Generation ]
 
 
 
@@ -149,12 +149,9 @@ The following tables list the models currently offered in JumpStart\. The availa
 | --- | --- | --- | 
 | DistilGPT 2 | No | [Hugging Face](https://huggingface.co/distilgpt2) | 
 | GPT 2 | No | [Hugging Face](https://huggingface.co/gpt2) | 
-| GPT 2 Large | No | [Hugging Face](https://huggingface.co/gpt2-large) | 
-| GPT 2 Medium | No | [Hugging Face](https://huggingface.co/gpt2-medium) | 
-| OpenAI GPT | No | [Hugging Face](https://huggingface.co/openai-gpt) | 
 
 ------
-#### [ Extractive Question Answering Models ]
+#### [ Extractive Question Answering ]
 
 
 
@@ -181,7 +178,7 @@ The following tables list the models currently offered in JumpStart\. The availa
 | RoBERTa Large OpenAI | Yes | [PyTorch Hub](https://pytorch.org/hub/huggingface_pytorch-transformers/) | 
 
 ------
-#### [ Machine Translation Models ]
+#### [ Machine Translation ]
 
 
 
@@ -195,7 +192,7 @@ The following tables list the models currently offered in JumpStart\. The availa
 | Helsinki opus en vi | No | [Hugging Face](https://huggingface.co/Helsinki-NLP/opus-mt-en-vi) | 
 
 ------
-#### [ Named Entity Recognition Models ]
+#### [ Named Entity Recognition ]
 
 
 
@@ -206,7 +203,7 @@ The following tables list the models currently offered in JumpStart\. The availa
 | Distilbert Base Uncased | No | [Hugging Face](https://huggingface.co/elastic/distilbert-base-uncased-finetuned-conll03-english) | 
 
 ------
-#### [ Sentence Pair Classification Models ]
+#### [ Sentence Pair Classification ]
 
 
 
@@ -246,7 +243,7 @@ The following tables list the models currently offered in JumpStart\. The availa
 | XLM MLM TLM 15 XNLI Languages | Yes | [Hugging Face](https://huggingface.co/xlm-mlm-tlm-xnli15-1024) | 
 
 ------
-#### [ Text Summarization Models ]
+#### [ Text Summarization ]
 
 
 
@@ -267,7 +264,7 @@ The following tables list the models currently offered in JumpStart\. The availa
 ### Vision Models<a name="jumpstart-models-vision"></a>
 
 ------
-#### [ Image Classification Models ]
+#### [ Image Classification ]
 
 
 
@@ -363,7 +360,7 @@ The following tables list the models currently offered in JumpStart\. The availa
 | Wide ResNet 50 | Yes | [PyTorch Hub](https://pytorch.org/hub/pytorch_vision_wide_resnet/) | 
 
 ------
-#### [ Image Embedding Models ]
+#### [ Image Embedding ]
 
 
 
@@ -424,7 +421,7 @@ The following tables list the models currently offered in JumpStart\. The availa
 | ResNet V2 50 Feature Vector | No | [Tensorflow Hub](https://tfhub.dev/google/imagenet/resnet_v2_50/feature_vector/4) | 
 
 ------
-#### [ Instance Segmentation Models ]
+#### [ Instance Segmentation ]
 
 
 
@@ -437,7 +434,7 @@ The following tables list the models currently offered in JumpStart\. The availa
 | MASK RCNN RESNET18 COCO | No | [GluonCV](https://cv.gluon.ai/model_zoo/segmentation.html) | 
 
 ------
-#### [ Object Detection Models ]
+#### [ Object Detection ]
 
 
 
@@ -495,7 +492,7 @@ The following tables list the models currently offered in JumpStart\. The availa
 | YOLO V3 MobileNet 1\.0 | No | [GluonCV](https://cv.gluon.ai/model_zoo/detection.html) | 
 
 ------
-#### [ Semantic Segmentation Models ]
+#### [ Semantic Segmentation ]
 
 
 

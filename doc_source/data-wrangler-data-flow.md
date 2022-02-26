@@ -4,7 +4,7 @@ Use an Amazon SageMaker Data Wrangler flow, or a *data flow*, to create and modi
 
 ## Instances<a name="data-wrangler-data-flow-instances"></a>
 
-When creating a Data Wrangler flow you can select an ml\.m5 instance from the following table:
+When creating a Data Wrangler flow, you can select an ml\.m5 instance from the following table:
 
 
 | Standard Instances | vCPU | Memory | 
@@ -13,11 +13,11 @@ When creating a Data Wrangler flow you can select an ml\.m5 instance from the fo
 | ml\.m5\.12xlarge | 48 |  192 GiB  | 
 | ml\.m5\.24xlarge | 96 | 384 GiB | 
 
- For more information about the cost per hour for using the available instance types, see [SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/)\. 
+For more information about the cost per hour for using the available instance types, see [SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/)\. 
 
 ## The Data Flow UI<a name="data-wrangler-data-flow-ui"></a>
 
-When you import a dataset, the original dataset appears on the data flow and is named **Source**\. If you enabled sampling when you imported your data, this dataset is named **Source \- sampled**\. Data Wrangler automatically infers the types of each column in your dataset and creates a new dataframe named **Data types**\. You can select this frame to update the inferred data types\. You will see results similar to those shown in the following image after you upload a single dataset: 
+When you import a dataset, the original dataset appears on the data flow and is named **Source**\. If you enabled sampling when you imported your data, this dataset is named **Source \- sampled**\. Data Wrangler automatically infers the types of each column in your dataset and creates a new dataframe named **Data types**\. You can select this frame to update the inferred data types\. You see results similar to those shown in the following image after you upload a single dataset: 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/dataflow-after-import.png)
 

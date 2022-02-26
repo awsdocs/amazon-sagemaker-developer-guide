@@ -43,3 +43,4 @@ SageMaker Training Compiler only compiles DL models for training on ML GPU insta
 + [SageMaker Training Compiler Best Practices](training-compiler-tips-pitfalls.md)
 + [SageMaker Training Compiler FAQ](training-compiler-faq.md)
 + [SageMaker Training Compiler Troubleshooting](training-compiler-troubleshooting.md)
++ [Amazon SageMaker Training Compiler Release Notes](training-compiler-release-notes.md)

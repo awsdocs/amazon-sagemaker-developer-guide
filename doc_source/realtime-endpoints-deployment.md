@@ -41,10 +41,10 @@ The S3 bucket where the model artifacts are stored must be in the same region as
     In this example, we specify an XGBoost built\-in algorithm container image: 
 
    ```
-   from sagemaker.amazon.amazon_estimator import get_image_uri
+   from sagemaker import image_uris
    
    # Specify an AWS container image. 
-   container = get_image_uri(region=aws_region, framework='xgboost', version='0.90-1')
+   container = image_uris.retrieve(region=aws_region, framework='xgboost', version='0.90-1')
    ```
 
    Create a model in Amazon SageMaker with `CreateModel`\. Specify the following:

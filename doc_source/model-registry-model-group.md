@@ -31,8 +31,8 @@ model_package_group_input_dict = {
  "ModelPackageGroupDescription" : "Sample model package group"
 }
 
-create_model_pacakge_group_response = sm_client.create_model_package_group(**model_package_group_input_dict)
-print('ModelPackageGroup Arn : {}'.format(create_model_pacakge_group_response['ModelPackageGroupArn']))
+create_model_package_group_response = sm_client.create_model_package_group(**model_package_group_input_dict)
+print('ModelPackageGroup Arn : {}'.format(create_model_package_group_response['ModelPackageGroupArn']))
 ```
 
 ## Create a Model Package Group \(Amazon SageMaker Studio\)<a name="model-registry-package-group-studio"></a>

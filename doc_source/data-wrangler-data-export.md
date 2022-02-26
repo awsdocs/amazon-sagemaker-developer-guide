@@ -75,12 +75,12 @@ Create a job from the **Data flow** page and choose the destination nodes that y
 
 1. Choose the destination nodes that you want to export\.
 
-1. Optional: Specify a AWS KMS key ARN\. A AWS KMS key is a cryptographic key that you can use to protect your data\. For more information about AWS KMS keys, see [AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)
+1. \(Optional\) Specify a AWS KMS key ARN\. A AWS KMS key is a cryptographic key that you can use to protect your data\. For more information about AWS KMS keys, see [AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)
 
 1. Choose **Configure job**\. The following image shows the **Configure job** page\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/destination-nodes/destination-nodes-configure-job.png)
 
-1. Optional: Configure the Data Wrangler job\.
+1. \(Optional\) Configure the Data Wrangler job\.
 
 1. Choose **Run**\.
 
@@ -196,7 +196,7 @@ Use the following procedure to generate a Jupyter Notebook and run it to export 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/data-wrangler-destination-nodes-photo-export-to.png)
 
-Running a Jupyter Notebook run a Data Wrangler job\. Running a Data Wrangler job starts a SageMaker processing job\. The processing job ingests the flow into an online and offline feature store\.
+Running a Jupyter Notebook runs a Data Wrangler job\. Running a Data Wrangler job starts a SageMaker processing job\. The processing job ingests the flow into an online and offline feature store\.
 
 **Important**  
 The IAM role you use to run this notebook must have the following AWS managed policies attached: `AmazonSageMakerFullAccess` and `AmazonSageMakerFeatureStoreAccess`\.
@@ -242,7 +242,7 @@ column_schema = [
 ```
 
 Additionally, you must specify a record identifier name and event time feature name:
-+ The record identifier name is the name of the feature whose value uniquely identifies a record defined in the feature store\. Only the latest record per identifier value is stored in the online store\. The record identifier feature name must be one of feature definitions' names\.
-+ The event time feature name is the name of the feature that stores the `EventTime` of a record in a feature group\. An `EventTime` is a point in time when a new event occurs that corresponds to the creation or update of a record in a feature\. All records in the feature group must have a corresponding `EventTime`\.
++ The *record identifier name* is the name of the feature whose value uniquely identifies a record defined in the feature store\. Only the latest record per identifier value is stored in the online store\. The record identifier feature name must be one of feature definitions' names\.
++ The *event time feature name* is the name of the feature that stores the `EventTime` of a record in a feature group\. An `EventTime` is a point in time when a new event occurs that corresponds to the creation or update of a record in a feature\. All records in the feature group must have a corresponding `EventTime`\.
 
 The notebook uses these configurations to create a feature group, process your data at scale, and then ingest the processed data into your online and offline feature stores\. To learn more, see [Data Sources and Ingestion](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-ingest-data.html)\.

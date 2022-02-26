@@ -11,6 +11,6 @@ For additional information about posttraining bias metrics, see [Fairness Measur
 ## Sample Notebooks<a name="clarify-post-training-bias-sample-notebooks"></a>
 
 Amazon SageMaker Clarify provides the following sample notebook for posttraining bias detection:
-+ [Amazon SageMaker Clarify Processing](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-clarify/index.html#sagemaker-clarify-processing) – Use SageMaker Clarify to create a processing job for the detecting bias and explaining model predictions with feature attributions\. Examples include using CSV and JSONLines data formats, bringing your own container, and running processing jobs with Spark\.
++ [Amazon SageMaker Clarify Processing](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-clarify/index.html#sagemaker-clarify-processing) – Use SageMaker Clarify to create a processing job for the detecting bias and explaining model predictions with feature attributions\. Examples include using CSV and JSON Lines data formats, bringing your own container, and running processing jobs with Spark\.
 
 This notebook has been verified to run in Amazon SageMaker Studio only\. If you need instructions on how to open a notebook in Amazon SageMaker Studio, see [Create or Open an Amazon SageMaker Studio Notebook](notebooks-create-open.md)\. If you're prompted to choose a kernel, choose **Python 3 \(Data Science\)**\.

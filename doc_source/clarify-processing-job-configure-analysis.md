@@ -1,20 +1,22 @@
 # Configure the Analysis<a name="clarify-processing-job-configure-analysis"></a>
 
-The inputs for the analysis are configured by the parameters of the `ProcessingInput` API\. The `"analysis_config"` value of the `input_name` specifies the JSON file named "analysis\_config\.json" that contains the configuration values\. The path to the JSON file is provided in the `source` parameter of `ProcessingInput`\. Examples of analysis configuration JSON files are provided for CSV and JSONLInes datasets following the parameter descriptions\. 
+The inputs for the analysis are configured by the parameters of the `ProcessingInput` API\. The `"analysis_config"` value of the `input_name` specifies the JSON file named **analysis\_config\.json** that contains the configuration values\. The path to the JSON file is provided in the `source` parameter of `ProcessingInput`\. Examples of analysis configuration JSON files are provided for JSON files for CSV, JSON Lines, image, and text datasets following the parameter descriptions\. 
 
 **Topics**
-+ [Example Analysis Configuration JSON File for a CSV Dataset](#clarify-analysis-configure-csv-example)
-+ [Example Analysis Configuration JSON File for a JSONLines Dataset](#clarify-analysis-configure-JSONLines-example)
++ [Parameters for JSON configuration files](#clarify-processing-job-configure-analysis-parameters)
++ [Example JSON configuration files](#clarify-processing-job-configure-analysis-examples)
+
+## Parameters for JSON configuration files<a name="clarify-processing-job-configure-analysis-parameters"></a>
 
 In the JSON configuration file, you can specify the following parameters\.
 + `"version"` – \(Optional\) Schema version of the configuration file\. If not provided, the latest supported version is used\.
-+ `"dataset_type"` – Format of the dataset\. Valid values are `"text/csv"` for CSV, `"application/jsonlines"` for JSON Lines, `application/x-parquet` for Apache Parquet, and `application/x-image` to enable Computer Vision explainability\.
-+ `"dataset_uri"` – \(Optional\) Dataset S3 prefix/object URI \(if not given as `ProcessingInput`\)\. If it is a prefix, the processing job recursively collects all S3 files under the prefix\.
++ `"dataset_type"` – \(Required\) Format of the dataset\. Valid values are `"text/csv"` for CSV, `"application/jsonlines"` for JSON Lines, `application/x-parquet` for Apache Parquet, and `application/x-image` to enable computer vision explainability\.
++ `"dataset_uri"` – \(Optional\) Dataset S3 prefix/object URI \(if not given as `ProcessingInput`\)\. If it is a prefix, the processing job recursively collects all S3 files under the prefix\. For vomputer vision, the URI is required and it can either be a path to the image manifest file, or to the bucket of images to be explained\.
 + `"headers"` – \(Optional\) A list of column names in the dataset\. If the `dataset_type` is `"application/jsonlines"` and `"label"` is specified, then the last header shall be the header of label column\. 
-+ `"label"` – \(Optional\) Target attribute for the model to be used for *bias metrics*\. Specified as a column name, or as index if the dataset format is CSV, or as JSONPath if the dataset format is JSONLines\. 
-+ `"probability_threshold"` – \(Optional\) A float value to indicate the threshold to select the binary label in the case of binary classification\. The default value is 0\.5\.
-+ `"features"` – \(Optional\) JSONPath for locating the feature columns for bias metrics if the dataset format is JSONLines\.
-+ `"label_values_or_threshold"` – \(Optional\) List of label values or threshold to indicate positive outcome used for bias metrics\.
++ `"label"` – \(Optional\) Target attribute for the model to be used for *bias metrics*\. Specified as a column name, or as index if the dataset format is CSV, or as JSONPath if the dataset format is JSON Lines\.
++ `"probability_threshold"` – \(Optional\) A float value to indicate the threshold to select the binary label in the case of binary classification\. This parameter is used in object detection to filter out objects detected with confidence scores lower than the `probability_threshold` value\. The default value is 0\.5\.
++ `"features"` – \(Optional\) JSONPath for locating the feature columns for bias metrics, if the dataset format is JSON Lines\.
++ `"label_values_or_threshold"` – \(Optional\) List of label values or threshold\. Indicates positive outcome used for bias metrics\.
 + `"facet"` – \(Optional\) A list of features that are sensitive attributes, referred to as facets\. Facets are used for *bias metrics* in the form of pairs, and include the following:
   + `"name_or_index"` – Facet column name or index\.
   + `"value_or_threshold"` – \(Optional\) List of values or threshold that the facet column can take\. Indicates the sensitive group, such as the group that is used to measure bias against\. If not provided, bias metrics are computed as one group for every unique value \(rather than all values\)\. If the facet column is numeric, this threshold value is applied as the lower bound to select the sensitive group\.
@@ -30,35 +32,60 @@ In the JSON configuration file, you can specify the following parameters\.
       + `"mean_abs"` – Mean of absolute SHAP values for all instances\.
       + `"median"` – Median of SHAP values for all instances\.
       + `"mean_sq"` – Mean of squared SHAP values for all instances\.
-    + `"baseline"` – \(Optional\) A list of rows \(at least one\), or an S3 object URI, to be used as the baseline \(background\) dataset in the Kernel SHAP algorithm\. The format should be the same as the dataset format\. Each row should contain only the feature columns/values, and it should omit the label column/values\.
-    + `"num_clusters"` – \(Optional\) If `"baseline"` is not provided, Clarify attempts to compute a baseline by clustering the dataset\. The `"num_clusters"` determines the number of clusters that the dataset is clustered into\. Each cluster contributes to a baseline, so the number of clusters directly affects the run time of SHAP explanations\.
+    + `"baseline"` – \(Optional\) A list of rows \(at least one\), or an S3 object URI\. To be used as the baseline dataset \(also known as a background dataset\) in the Kernel SHAP algorithm\. The format should be the same as the dataset format\. Each row should contain only the feature columns \(or values\) and omit any column that must be excluded before being sent to the model\. This includes `label` column, `joinsource` column, and columns included in the `"exclude_column"` field\.
+      + For Computer Vision, a path to the baseline image that is used to mask out features from the input image\. Default: RGB Noise mask\. 
+      + For natural language processing \(NLP\) of text columns, the baseline value should be the value used to **replace** the unit of text specified by the `granularity` in the `"text_config"`\. Valid values for the unit of text are `token`, `sentence`, and `paragraph`\.
+    + `"num_clusters"` – \(Optional\) If `"baseline"` is not provided, Clarify attempts to compute a baseline by clustering the dataset\. The `"num_clusters"` determines the number of clusters that the dataset is clustered into\. Each cluster contributes to a baseline, so the number of clusters directly affects the runtime of SHAP explanations\.
     + `"num_samples"` – Number of samples to be used in the Kernel SHAP algorithm\. This number determines the size of the generated synthetic dataset to compute the SHAP values\.
     + `"seed"` – \(Optional\) Seed value for the random number generator to obtain a deterministic SHAP result\.
+    + `"text_config"` – \(Required\) The configuration that specifies the natural language processing \(NLP\) features\. If this config is provided, text features are treated as text and explanations are provided for individual units of text\. The unit of text is specified by the `"granularity"`\.
+      + `"granularity"` – \(Required\) For NLP, determines the unit of granularity for the analysis of text features\. Valid values are `"token"`, `"sentence"`, or `"paragraph"`\. Each of these units is considered a feature, and shap values are computed for the feature specifed\.
+      + `"language"` – \(Required\) Specifies the language of the text features for natural language processing \(NLP\)\. Valid value are `"chinese"`, `"danish"`, `"dutch"`, `"english"`, `"french"`, `"german"`, `"greek"`, `"italian"`, `"japanese"`, `"lithuanian"`, `"multi-language"`, `"norwegian bokmål"`, `"polish"`, `"portuguese"`, `"romanian"`, `"russian"`, `"spanish"`, `"afrikaans"`, `"albanian"`, `"arabic"`, `"armenian"`, `"basque"`, `"bengali"`, `"bulgarian"`, `"catalan"`, `"croatian"`, `"czech"`, `"estonian"`, `"finnish"`, `"gujarati"`, `"hebrew"`, `"hindi"`, `"hungarian"`, `"icelandic"`, `"indonesian"`, `"irish"`, `"kannada"`, `"kyrgyz"`, `"latvian"`, `"ligurian"`, `"luxembourgish"`, `"macedonian"`, `"malayalam"`, `"marathi"`, `"nepali"`, `"persian"`, `"sanskrit"`, `"serbian"`, `"setswana"`, `"sinhala"`, `"slovak"`, `"slovenian"`, `"swedish"`, `"tagalog"`, `"tamil"`, `"tatar"`, `"telugu"`, `"thai"`, `"turkish"`, `"ukrainian"`, `"urdu"`, `"vietnamese"`, `"yoruba"`\. Use `"multi-language" `for a mix of multiple languages\.
     + `"use_logit"` – \(Optional\) Boolean value to indicate if the logit function is to be applied to the model predictions\. If `"use_logit"` is `true`, then the SHAP values have log\-odds units\. The default value is `false`\. 
+    + `"image_config"` – \(Optional\) Section for configuring SHAP configuration parameters for computer vision explainability\. 
+      + `"model_type"` – Either an object detection model or an image classification model\.
+      + `"num_segments"` – \(Optional\) Determines the approximate number of segments to be labeled in the input image\. The default is 20\.
+      + `"segment_compactness"` – \(Optional\) Determines the shape and size of the image segments generated by SKLearn’s slic method\. For more details, see [scikit\-image slic](https://scikit-image.org/docs/dev/api/skimage.segmentation.html?highlight=slic#skimage.segmentation.slic) documentation\. The default is 5\.
+      + `"max_objects"` – \(Optional\) Used to filter objects detected by the computer vision model by top confidence score\. The default is 3\.
+      + `"iou_threshold"` – \(Optional\) Minimum intersection over union \(IOU\) metric for evaluating predictions against the original detections\. Used because detection boxes will shift during masking\. The default value is 0\.5\.
+      + `"context"` – \(Optional\) Masks the area around the bounding box of the detected object when running SHAP\. Valid values are 0 to mask everything, or 1 to mask nothing\. The default value is 1\.
     + `"save_local_shap_values"` – \(Optional\) Boolean value to indicate if local SHAP values are to be saved in the output location\. Use `true` to save them; `false` to not save them\. The default is `false`\.
-+ `"pdp"` – \(Optional\) Section for configuring partial dependence plots \(PDP\)\. Shows the dependence of the target response on a set of input features of interest, marginalizing over the values of all other input features\. 
-  + `"features": ["pdp_feature_1", "pdp_feature_2"…] `– \(Optional\) The list of feature names or indices for which partial dependence plots are to be computed and plotted\. If SHAP is not requested, the features must be provided\.
-  + `"grid_resolution" ` – \(Required for numerical columns only\.\) In case of numerical features, this number represents that number of buckets into which the range of numerical values is divided\. This specifies the granularity of the grid for the PDP plot\.
-  + `"top_k_features" ` – \(Optional\) If the `features` parameter is not provided, and `shap` is provided, Clarify chooses the top `k` features based on SHAP attributions\. You can set this value to specify how many of the top features must be used for PDP plots\. The default is 10\.
+  + `"pdp"` – \(Optional\) Section for configuring partial dependence plots \(PDP\)\. Shows the dependence of the target response on a set of input features of interest\. Marginalizes over the values of all other input features\. 
+    + `"features": ["pdp_feature_1", "pdp_feature_2"…] `– \(Optional\) The list of feature names or indices for which partial dependence plots are to be computed and plotted\. If SHAP is not requested, the features must be provided\.
+    + `"grid_resolution" ` – \(Required\) Used for numerical features\. Represents that number of buckets into which the range of numerical values is divided\. This specifies the granularity of the grid for the PDP plot\.
+    + `"top_k_features" ` – \(Optional\) If the `features` parameter is not provided, and `shap` is provided, Clarify chooses the top `k` features based on SHAP attributions\. You can set this value to specify how many of the top features must be used for PDP plots\. The default is 10\.
 + `"predictor"` – \(Optional\) Section on model parameters, required if `"shap"` and `"post_training_bias"` sections are present\.
-  + `"model_name"` – Model name \(as created by `CreateModel` API with container mode as `SingleModel`\.
+  + `"model_name"` – Model name created by `CreateModel` API, with container mode as `SingleModel`\.
   + `"instance_type"` – Instance type for the shadow endpoint\.
   + `"initial_instance_count"` – Instance count for the shadow endpoint\.
   + `"content_type"` – \(Optional\) The model input format to be used for getting inferences with the shadow endpoint\. Valid values are `"text/csv"` for CSV, `"application/jsonlines"` for JSON Lines, `application/x-parquet` for Apache Parquet, and `application/x-image` to enable Computer Vision explainability\. The default value is the same as the `dataset_type` format\.
   + `"accept_type"` – \(Optional\) The model *output* format to be used for getting inferences with the shadow endpoint\. Valid values are `"text/csv"` for CSV, `"application/jsonlines"` for JSON Lines, `application/x-parquet` for Apache Parquet, and `application/x-image` to enable Computer Vision explainability\. The default value is the same as `content_type`\.
-  + `"accelerator_type"` – \(Optional\) The type of Elastic Inference \(EI\) accelerator to attach to the instance, for example, ml\.eia1\.medium\. For more information, see [Use Amazon SageMaker Elastic Inference \(EI\) ](ei.md)\.
-  + `"custom_attributes"` – \(Optional\) Provides additional information about a request for an inference that is submitted to a model hosted on an Amazon SageMaker endpoint\. The information is an opaque value that is forwarded verbatim\. You can use this value, for example, to provide an ID that you can use to track a request\. You can also use this value to provide metadata that a service endpoint was programmed to process\. The value must consist of no more than 1024 visible US\-ASCII characters, as specified in [Section 3\.3\.6\. Field Value Components](http://tools.ietf.org/html/rfc7230#section-3.2.6) of the Hypertext Transfer Protocol \(HTTP/1\.1\)\.
+  + `"accelerator_type"` – \(Optional\) The type of Elastic Inference \(EI\) accelerator to attach to the instance\. Example: `ml.eia1.medium`\. For more information, see [Use Amazon SageMaker Elastic Inference \(EI\) ](ei.md)\.
+  + `"custom_attributes"` – \(Optional\) Provides additional information about a request for an inference that is submitted to a model hosted on an Amazon SageMaker endpoint\. The information is an opaque value that is forwarded verbatim\. You can use this value, for example, to provide an ID that tracks a request\. You can also use this value to provide metadata that a service endpoint was programmed to process\. The value must consist of no more than 1024 visible US\-ASCII characters, as specified in [Section 3\.3\.6\. Field Value Components](http://tools.ietf.org/html/rfc7230#section-3.2.6) of the Hypertext Transfer Protocol \(HTTP/1\.1\)\.
   + `"label"` – \(Optional\) Index or JSONPath location in the model output for the target attribute that is used by the bias metrics\. If the `label` is not provided in the CSV `accept_type` case, then Clarify assumes that the model output is a single numeric value corresponding to the score or probability\. 
-  + `"probability"` – \(Optional\) Index or JSONPath location in the model output for probabilities or scores to be used for explainability\. For example, if the model output is JSONLines with a list of labels and probabilities, then for bias methods, the label that corresponds to the maximum probability is selected for bias computations\. For explainability method, currently all probabilities are explained\.
+  + `"probability"` – \(Optional\) Index or JSONPath location in the model output for probabilities or scores to be used for explainability\. If the model output is JSON Lines with a list of labels and probabilities, for example, then the label that corresponds to the maximum probability is selected for bias computations\. For explainability method, currently all probabilities are explained\.
   + `"endpoint_name-prefix"` – \(Optional\) Provides a custom prefix to the name of the temporary endpoint\.
+  + `"endpoint_name"` – \(Optional\) Specifies an existing endpoint to use for getting predictions, Using an existing endpoint reduces the bootstrap time, but can cause a significant load increase for existing endpoints, Be cautious when specifying an existing production endpoint\.
   + `"target_model"` – \(Optional\) Sets the target model name when using a multi\-model endpoint\. For more information about multi\-model endpoints, see [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint_RequestSyntax](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint_RequestSyntax)\.
-  + `"label_headers"` – \(Optional\) A list of values that the `"label"` takes in the dataset\. Associates the scores returned by the model endpoint with their corresponding label values\. It is used to extract the label value with the highest score as predicted label\.
-  + `"content_template"` – \(Optional\) A template string to be used to construct the model input from dataset instances\. It is only used when `"content_type"` is `"application/jsonlines"`\. The template should have only one placeholder, `$features`, which is replaced by the features list at runtime\. For example, given `"content_template":"{\"myfeatures\":$features}"`, if an instance \(no label\) is `1,2,3`, then model input becomes JSONline `'{"myfeatures":[1,2,3]}'`\.
+  + `"label_headers"` – \(Optional\) A list of values that the `"label"` takes in the dataset\. Associates the scores returned by the model endpoint with their corresponding label values\. Used to extract the label value with the highest score as the predicted label\.
+  + `"content_template"` – \(Optional\) A template string used to construct the model input from dataset instances\. It is only used when `"content_type"` is `"application/jsonlines"`\. The template should have only one placeholder, `$features`, which is replaced by the features list at runtime\. For example, given `"content_template":"{\"myfeatures\":$features}"`, if an instance \(no label\) is `1,2,3`, then model input becomes JSON Line `'{"myfeatures":[1,2,3]}'`\.
 + `"report"` – \(Optional\) Section on report parameters\. A report is generated if this section is present\.
   + `"name"` – \(Optional\) Filename prefix for the report notebook and PDF file\. The default name is `"report"`\. 
   + `"title"` – \(Optional\) Title string for the report notebook and PDF file\. The default title is `"SageMaker Analysis Report"`\.
 
-## Example Analysis Configuration JSON File for a CSV Dataset<a name="clarify-analysis-configure-csv-example"></a>
+## Example JSON configuration files<a name="clarify-processing-job-configure-analysis-examples"></a>
+
+Here are examples of analysis configuration JSON files for CSV, JSON Lines, image, and text datasets\.
+
+**Topics**
++ [Analysis configuration JSON file for a CSV dataset](#clarify-analysis-configure-csv-example)
++ [Analysis configuration JSON file for a JSON Lines dataset](#clarify-analysis-configure-JSONLines-example)
++ [Analysis configuration JSON file for an image dataset](#clarify-analysis-configure-computer-vision-example)
++ [NLP analysis configuration JSON file for a text dataset](#clarify-analysis-configure-nlp-example)
+
+### Analysis configuration JSON file for a CSV dataset<a name="clarify-analysis-configure-csv-example"></a>
+
+The following code sample shows how to configure an analysis for a CSV dataset\.
 
 ```
 {
@@ -147,7 +174,9 @@ Corresponding predictor configuration is as follows:
     }
 ```
 
-## Example Analysis Configuration JSON File for a JSONLines Dataset<a name="clarify-analysis-configure-JSONLines-example"></a>
+### Analysis configuration JSON file for a JSON Lines dataset<a name="clarify-analysis-configure-JSONLines-example"></a>
+
+The following code sample shows how to configure an analysis for a JSON Lines dataset\.
 
 ```
 {
@@ -200,7 +229,7 @@ Baseline as S3 object is as follows:
 "baseline": "s3://my_bucket/my_folder/baseline.csv"
 ```
 
-Model output as JSONLines is as follows:
+Model output as JSON Lines is as follows:
 
 ```
 {"predicted_label": "Current", "score": "[0.028986845165491104, 0.8253824710845947, 0.028993206098675728, 0.02898673340678215, 0.029557107016444206, 0.0290389321744442, 0.02905467338860035]"}
@@ -216,4 +245,57 @@ Corresponding predictor configuration is as follows:
         "probability": "score",
         ...
     }
+```
+
+### Analysis configuration JSON file for an image dataset<a name="clarify-analysis-configure-computer-vision-example"></a>
+
+The following code sample shows how to configure an analysis for object detection with Computer Vision\.
+
+```
+"dataset_type": "application/x-image",
+"dataset_uri": "s3://<BUCKET/KEY">
+"probability_threshold": 0.7,
+"methods": {
+    "shap": {
+        "num_samples": 500,
+        "baseline": "s3://path/to/baseline/image/noise_rgb.png",
+        "image_config": {
+            "model_type": "(OBJECT_DETECTION|IMAGE_CLASSIFICATION)",
+            "num_segments": 20,
+            "segment_compactness": (5|10|100),
+            "max_objects" : 3,
+            "overlap": 0.5,
+            "context": 1.0
+        }
+    }
+},
+
+"predictor": {
+    "endpoint_name": "sagemaker-endpoint-name",
+    "content_type": "(image/jpeg | image/png | application/x-npy)",
+    "label_headers": [...] # Required for CV
+}
+```
+
+### NLP analysis configuration JSON file for a text dataset<a name="clarify-analysis-configure-nlp-example"></a>
+
+The following code sample shows how to configure an analysis for natural language processing\.
+
+```
+{
+  "dataset_type":...
+  .
+  .
+  "methods": {
+      "shap" : {
+         "baseline": ".."
+         "num_samples": 100
+         *"text_config": {
+            "granularity": "(token|sentence|paragraph)"
+            "language": ".."
+          }*
+       }
+   .
+   .
+  }
 ```

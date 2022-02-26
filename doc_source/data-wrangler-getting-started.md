@@ -1,6 +1,6 @@
 # Get Started with Data Wrangler<a name="data-wrangler-getting-started"></a>
 
-Amazon SageMaker Data Wrangler is a feature in SageMaker Studio\. Use this section to learn how to access and get started using Data Wrangler\. Do the following:
+Amazon SageMaker Data Wrangler is a feature in Amazon SageMaker Studio\. Use this section to learn how to access and get started using Data Wrangler\. Do the following:
 
 1. Complete each step in [Prerequisites](#data-wrangler-getting-started-prerequisite)\.
 
@@ -10,11 +10,11 @@ Amazon SageMaker Data Wrangler is a feature in SageMaker Studio\. Use this secti
 
 To use Data Wrangler, you must do the following: 
 
-1. To use Data Wrangler, you need access to a [m5\.4xlarge](https://aws.amazon.com/ec2/instance-types/m5/) Amazon Elastic Compute Cloud \(Amazon EC2\) instance\. To learn how to view your quotas, and if necessary, request a quota increase, see [AWS service quotas](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html)\.
+1. To use Data Wrangler, you need access to an [m5\.4xlarge](https://aws.amazon.com/ec2/instance-types/m5/) Amazon Elastic Compute Cloud \(Amazon EC2\) instance\. To learn how to view your quotas, and if necessary, request a quota increase, see [AWS service quotas](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html)\.
 
 1. Configure the required permissions described in [Security and Permissions](data-wrangler-security.md)\. 
 
-To use Data Wrangler, you need an active SageMaker Studio instance\. To learn how to launch a new instance, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\. When your Studio instance is **Ready**, use the instructions in [Access Data Wrangler](#data-wrangler-getting-started-access)\.
+To use Data Wrangler, you need an active Studio instance\. To learn how to launch a new instance, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\. When your Studio instance is **Ready**, use the instructions in [Access Data Wrangler](#data-wrangler-getting-started-access)\.
 
 ## Access Data Wrangler<a name="data-wrangler-getting-started-access"></a>
 
@@ -61,13 +61,13 @@ After you have launched Data Wrangler, you can use the following section to walk
 
 ## Update Data Wrangler<a name="data-wrangler-update"></a>
 
-It is recommended that you periodically update the Data Wrangler Studio app to access the latest features and updates\. The data wrangler app name starts with **sagemaker\-data\-wrang**\. To learn how to update a SageMaker Studio app, see [Update Studio Apps](studio-tasks-update-apps.md)\.
+We recommend that you periodically update the Data Wrangler Studio app to access the latest features and updates\. The Data Wrangler app name starts with **sagemaker\-data\-wrang**\. To learn how to update a Studio app, see [Update Studio Apps](studio-tasks-update-apps.md)\.
 
 ## Demo: Data Wrangler Titanic Dataset Walkthrough<a name="data-wrangler-getting-started-demo"></a>
 
 The following sections provide a walkthrough to help you get started using Data Wrangler\. This walkthrough assumes that you have already followed the steps in [Access Data Wrangler](#data-wrangler-getting-started-access) and have a new data flow file open that you intend to use for the demo\. You may want to rename this \.flow file to something similar to titanic\-demo\.flow\.
 
-This walk through uses the [Titanic dataset](https://www.openml.org/d/40945)\. This data set contains the survival status, age, gender, and class \(which serves as a proxy for economic status\) of passengers aboard the maiden voyage of the RMS Titanic in 1912\.
+This walkthrough uses the [Titanic dataset](https://www.openml.org/d/40945)\. This data set contains the survival status, age, gender, and class \(which serves as a proxy for economic status\) of passengers aboard the maiden voyage of the *RMS Titanic* in 1912\.
 
 In this tutorial, you:
 + Upload the [Titanic dataset](https://www.openml.org/d/40945) to Amazon Simple Storage Service \(Amazon S3\), and then import this dataset into Data Wrangler\.
@@ -78,7 +78,7 @@ In this tutorial, you:
 
 ### Upload Dataset to S3 and Import<a name="data-wrangler-getting-started-demo-import"></a>
 
-To get started, download the [Titanic dataset](https://www.openml.org/d/40945) and upload it to an S3 bucket in the AWS Region in which you want to complete this demo\. 
+To get started, download the [Titanic dataset](https://www.openml.org/d/40945) and upload it to an Amazon S3 \(Amazon S3\) bucket in the AWS Region in which you want to complete this demo\. 
 
 If you are a new user of Amazon S3, you can do this using drag and drop in the Amazon S3 console\. To learn how, see [Uploading Files and Folders by Using Drag and Drop](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/upload-objects.html#upload-objects-by-drag-and-drop) in the Amazon Simple Storage Service User Guide\.
 
@@ -100,11 +100,11 @@ When your dataset has been successfully uploaded to Amazon S3, it you can import
 1. Select **Import dataset**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/import-titanic-dataset.png)
 
-When your dataset is imported into Data Wrangler, it appears in your data flow\. You can view your data flow at any time by selecting the **Data Flow** tab\. You can double click on a node to enter the node detail view which will allow you to add transformations or analysis, otherwise you can use the plus icon to navigate for a quick navigation\. In the next section, you use this data flow to add analysis and transform steps\. 
+When your dataset is imported into Data Wrangler, it appears in your data flow\. You can view your data flow at any time by selecting the **Data Flow** tab\. You can double click on a node to enter the node detail view, which allows you to add transformations or analysis; otherwise, you can use the plus icon to navigate for a quick navigation\. In the next section, you use this data flow to add analysis and transform steps\. 
 
 ### Data Flow<a name="data-wrangler-getting-started-demo-data-flow"></a>
 
-In the data flow section, you’ll notice that the only steps in the data flow are your recently imported dataset and a **Data type** step\. After applying transformations, you can come back to this tab see what the data flow looks like\. Now, add some basic transformations under the **Prepare** and **Analyze** tabs\. 
+In the data flow section, the only steps in the data flow are your recently imported dataset and a **Data type** step\. After applying transformations, you can come back to this tab see what the data flow looks like\. Now, add some basic transformations under the **Prepare** and **Analyze** tabs\. 
 
 #### Prepare and Visualize<a name="data-wrangler-getting-started-demo-prep-visualize"></a>
 
@@ -197,7 +197,7 @@ You can use `df.info()` in the **Custom transform** section to confirm that all 
 
 ##### Custom Pandas: Encode<a name="data-wrangler-getting-started-demo-encode"></a>
 
-Try flat encoding using Pandas\. Encoding categorical data is the process of creating a numerical representation for categories\. For example, if your categories are Dog and Cat, you may encode this information into two vectors: `[1,0]` to represent Dog, and `[0,1]` to represent Cat\.
+Try flat encoding using Pandas\. Encoding categorical data is the process of creating a numerical representation for categories\. For example, if your categories are `Dog` and `Cat`, you may encode this information into two vectors: `[1,0]` to represent `Dog`, and `[0,1]` to represent `Cat`\.
 
 1. In the **Custom Transform** section, choose **Python \(Pandas\)** from the dropdown list\.
 
@@ -232,7 +232,7 @@ Now, select the columns you want to keep using SQL\. For this demo, select the c
    SELECT survived, age, fare, 1, 2, 3, female, male, C, Q, S FROM df;
    ```
 
-1. Choose **Preview** to preview the change\. The columns listed in your `SELECT` statement above are the only remaining columns\.
+1. Choose **Preview** to preview the change\. The columns listed in your `SELECT` statement are the only remaining columns\.
 
 1. Choose **Add** to add the transformation\. 
 

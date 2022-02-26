@@ -15,15 +15,27 @@ To run the notebook for this tour, you need:
 
    1. Sign in to the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-   1. Choose **Amazon SageMaker Studio** in the left navigation pane\.
+   1. Choose **SageMaker Domain** in the left navigation pane\.
 
-   1. Choose **Open Studio** in the row next to your user name\.
+   1. Choose **Launch app** in the row next to your user name\.
+
+   1. Choose **Studio** from the dropdown menu\.
 
 1. On the top menu, choose **File** then **New** then **Terminal**\.
 
 1. At the command prompt, run the following command to clone the [aws/amazon\-sagemaker\-examples](https://github.com/aws/amazon-sagemaker-examples) repository\.
 
-   `git clone https://github.com/aws/amazon-sagemaker-examples.git`
+   ```
+   git clone https://github.com/aws/amazon-sagemaker-examples.git
+   ```
+
+**To navigate to the sample notebook**
+
+1. From the **File Browser** on the left menu, select **amazon\-sagemaker\-examples**\.
+
+1. Navigate to the example notebook with the following path\.
+
+   `~/amazon-sagemaker-examples/aws_sagemaker_studio/getting_started/xgboost_customer_churn_studio.ipynb`
 
 **Note**  
 If you encounter an error when you run the sample notebook, and some time has passed from when you cloned the repository, review the notebook on the remote repository for updates\.

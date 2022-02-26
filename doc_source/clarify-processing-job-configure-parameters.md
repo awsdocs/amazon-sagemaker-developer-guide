@@ -1,6 +1,6 @@
 # Configure a SageMaker Clarify Processing Job Container's Input and Output Parameters<a name="clarify-processing-job-configure-parameters"></a>
 
-The Processing Job requires that you specify the following input parameters: a dataset files with input name `"dataset"` as S3 object or prefix, and an analysis configuration file with input name `"analysis_config"` as an S3 object\. The job also requires an output parameter: the output location as an S3 prefix\.
+The Processing Job requires that you specify the following input parameters: a dataset files with input name `"dataset"` as Amazon S3 object or prefix, and an analysis configuration file with input name `"analysis_config"` as an Amazon S3 object\. The job also requires an output parameter: the output location as an Amazon S3 prefix\.
 
 You can create and run a processing job with SageMaker [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateProcessingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateProcessingJob.html) API using the AWS SDK or CLI or [SageMaker Python SDK](https://sagemaker.readthedocs.io/)\.
 

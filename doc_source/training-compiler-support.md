@@ -36,11 +36,17 @@ SageMaker Training Compiler is tested on but not limited to the following ML ins
 
 | Instance type | 
 | --- | 
-| ml\.p3\.2xlarge instances  | 
-| ml\.p3\.8xlarge instances  | 
-| ml\.p3\.16xlarge instances  | 
-| ml\.p3dn\.24xlarge instances  | 
-| ml\.p4d\.24xlarge instances  | 
+| ml\.p3\.2xlarge  | 
+| ml\.p3\.8xlarge  | 
+| ml\.p3\.16xlarge  | 
+| ml\.p3dn\.24xlarge  | 
+| ml\.p4d\.24xlarge | 
+| ml\.g4dn\.xlarge | 
+| ml\.g4dn\.2xlarge | 
+| ml\.g4dn\.4xlarge | 
+| ml\.g4dn\.8xlarge | 
+| ml\.g4dn\.12xlarge | 
+| ml\.g4dn\.16xlarge | 
 
 For specs of the instance types, see the **Accelerated Computing** section in the [Amazon EC2 Instance Types page](http://aws.amazon.com/ec2/instance-types/)\. For information about instance pricing, see [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/)\.
 
