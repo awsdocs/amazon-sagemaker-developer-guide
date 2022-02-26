@@ -29,7 +29,7 @@ MLOps focuses on the intersection of data science and data engineering in combin
 + Because machine learning code is typically a small part of an overall solution, a deployment pipeline may also incorporate the additional steps required to package a model for consumption as an API by other applications and systems\.
 
 **Monitoring and logging**
-+ The feature engineering and model training phasesneed to capture model training metrics as well as model experiments\. Tuning an ML model requires manipulating the form of the input data as well as algorithm hyperparameters, and systematically capture those experiments\. Experiment tracking helps data scientists work more effectively and gives a reproducible snapshot of their work\.
++ The feature engineering and model training phases needed to capture model training metrics as well as model experiments\. Tuning an ML model requires manipulating the form of the input data as well as algorithm hyperparameters, and systematically capture those experiments\. Experiment tracking helps data scientists work more effectively and gives a reproducible snapshot of their work\.
 + Deployed ML models require monitoring of the data passed to the model for inference, along with the standard endpoint stability and performance metrics\. The monitoring system must also capture the quality of model output, as evaluated by an appropriate ML metric\. 
 
 ## Benefits of MLOps<a name="sagemaker-projects-benefits"></a>

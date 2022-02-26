@@ -36,7 +36,9 @@ You can create an algorithm by using either the SageMaker console or the SageMak
 
 1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Choose **Algorithms**, then choose **Create algorithm**\.
+1. From the left menu, choose **Training**\.
+
+1. From the dropdown menu, choose **Algorithms**, then choose **Create algorithm**\.
 
 1. On the **Training specifications** page, provide the following information:
 
@@ -118,7 +120,7 @@ You can create an algorithm by using either the SageMaker console or the SageMak
 
 1. On the **Inference specifications** page, provide the following information if your algorithm supports inference:
 
-   1. For **Container definition**, type path in Amazon ECR where your inference container is stored\.
+   1. For **Location of inference image**, type the path in Amazon ECR where your inference container is stored\.
 
    1. For **Container DNS host name**, type the name of a DNS host for your image\.
 
@@ -136,7 +138,7 @@ You can create an algorithm by using either the SageMaker console or the SageMak
 
    1. For **Publish this algorithm on AWS Marketplace**, choose **Yes** to publish the algorithm on AWS Marketplace\.
 
-   1. For **Validate this algorithm**, choose **Yes** if you want SageMaker to run training jobs and/or batch transform jobs that you specify to test the training and/or inference code of your algorithm\.
+   1. For **Validate this resource**, choose **Yes** if you want SageMaker to run training jobs and/or batch transform jobs that you specify to test the training and/or inference code of your algorithm\.
 **Note**  
 To publish your algorithm on AWS Marketplace, your algorithm must be validated\.
 

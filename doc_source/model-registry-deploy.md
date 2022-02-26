@@ -148,7 +148,7 @@ respose = s3.put_bucket_policy(
     Policy = bucket_policy)
 
 # 3. Create a policy for access to the model package group.
-model_pacakge_group_policy = {
+model_package_group_policy = {
     'Version': '2012-10-17',
     'Statement': [{
         'Sid': 'AddPermModelPackageGroup',
@@ -173,14 +173,14 @@ model_pacakge_group_policy = {
 }
 
 # Convert the policy from JSON dict to string
-model_pacakge_group_policy = json.dumps(model_pacakge_group_policy)
+model_package_group_policy = json.dumps(model_package_group_policy)
 
 # Set the policy to the model package group
 respose = sm_client.put_model_package_group_policy(
     ModelPackageGroupName = model_package_group_name,
-    ResourcePolicy = model_pacakge_group_policy)
+    ResourcePolicy = model_package_group_policy)
 
-print('ModelPackageGroupArn : {}'.format(create_model_pacakge_group_response['ModelPackageGroupArn']))
+print('ModelPackageGroupArn : {}'.format(create_model_package_group_response['ModelPackageGroupArn']))
 print("First Versioned ModelPackageArn: " + model_package_arn)
 print("Second Versioned ModelPackageArn: " + model_package_arn2)
 

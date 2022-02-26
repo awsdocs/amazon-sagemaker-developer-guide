@@ -10,7 +10,7 @@ The run\-as user for the JupyterServer app is sagemaker\-user \(1000\) by defaul
 
 The run\-as user for the KernelGateway apps is root \(0\) by default\. This user is able to install dependencies using pip/apt\-get/conda\.
 
-Due to the below mentioned user remapping, neither user is able to access resources or make changes to the host instance\.
+Due to user remapping, neither user is able to access resources or make changes to the host instance\.
 
 **User remapping**
 

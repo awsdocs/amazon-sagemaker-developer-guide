@@ -16,7 +16,7 @@ JumpStart
 Amazon SageMaker Model Monitor
 Reinforcement learning
 
-Amazon SageMaker Studio is available in all the AWS Regions supported by Amazon SageMaker except the AWS GovCloud \(US\) Regions\. In the supported Regions, Studio is available in the same Availability Zones as notebook instances\.
+Amazon SageMaker Studio is available in all the AWS Regions supported by Amazon SageMaker except the AWS GovCloud \(US\) Regions\.
 
 RStudio on Amazon SageMaker is available in the following AWS Regions supported by Amazon SageMaker\.
 + ap\-northeast\-1
@@ -37,8 +37,6 @@ RStudio on Amazon SageMaker is available in the following AWS Regions supported 
 + us\-west\-2
 
 Amazon SageMaker Pipelines is available in all the AWS Regions supported by AWS except the AWS GovCloud \(US\) Regions\. SageMaker Projects is available in the AWS regions where CodePipeline is available\. For more information about CodePipeline region availability, see the [AWS Regional Services List](http://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/)\.
-
-For the Availability Zones supported by SageMaker, see [Availability Zones](instance-types-az.md)\.
 
 **About service quotas**  
 Depending on your activities and resource usage over time, your SageMaker quotas might be different from the default SageMaker quotas listed on [Amazon SageMaker endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/sagemaker.html) in the *AWS General Reference*\. If you encounter error messages that you've exceeded your quota and you need to scale up your SageMaker resources, follow the steps in the [Request a service quota increase for SageMaker resources](#service-limit-increase-request-procedure) procedure on this page to request a quota increase from AWS Support\. The SageMaker service team reviews and evaluates requests on case\-by\-case basis\. For additional information, see [How do I resolve the ResourceLimitExceeded error in Amazon SageMaker?](https://aws.amazon.com/premiumsupport/knowledge-center/resourcelimitexceeded-sagemaker/) in the AWS Support Knowledge Center and [AWS Service Quotas](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html) in the *AWS General Reference*\.

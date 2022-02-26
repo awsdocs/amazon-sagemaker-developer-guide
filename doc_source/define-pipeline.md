@@ -395,7 +395,7 @@ This section shows how to create a processing step to evaluate the accuracy of 
 
 **To define a processing step for model evaluation**
 
-1. Create a file in the `/abalone` directory named `evaluation.py`\. This script is used in a processing step to perform model evaluation\. It takes a trained model and the test dataset as input, then produces a JSON file containing classification evaluation metrics\. These metrics include a precision, recall, and F1 score for each label, and accuracy and ROC curve for the model\. 
+1. Create a file in the `/abalone` directory named `evaluation.py`\. This script is used in a processing step to perform model evaluation\. It takes a trained model and the test dataset as input, then produces a JSON file containing classification evaluation metrics\.
 
    ```
    %%writefile abalone/evaluation.py

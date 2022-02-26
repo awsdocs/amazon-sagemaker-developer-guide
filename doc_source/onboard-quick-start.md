@@ -1,20 +1,20 @@
-# Onboard to Amazon SageMaker Domain Using Quick Start<a name="onboard-quick-start"></a>
+# Onboard to Amazon SageMaker Domain Using Quick setup<a name="onboard-quick-start"></a>
 
-This topic describes how to onboard to Amazon SageMaker Domain using the **Quick start** procedure, which uses AWS Identity and Access Management \(IAM\) authentication\. For information on how to onboard using the standard IAM procedure, see [Onboard Using IAM](onboard-iam.md)\.
+This topic describes how to onboard to Amazon SageMaker Domain using the **Quick setup** procedure, which uses AWS Identity and Access Management \(IAM\) authentication\. For information on how to onboard using the standard IAM procedure, see [Onboard Using IAM](onboard-iam.md)\.
 
-RStudio support is not currently available when onboarding using the **Quick start** procedure\.
+RStudio support is not currently available when onboarding using the **Quick setup** procedure\.
 
 For information on how to onboard using AWS Single Sign\-On \(AWS SSO\), see [Onboard Using SSO](onboard-sso-users.md)\.
 
-**To onboard to the Domain using **Quick start****
+**To onboard to the Domain using **Quick setup****
 
 1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
 1. Choose **SageMaker Domain** at the top left of the page\.
 
-1. On the **Setup SageMaker Domain** page, choose **Quick start**\.
+1. On the **Setup SageMaker Domain** page, choose **Quick setup**\.
 
-1. Under **User profile**, for **User name** keep the default name or create a new name\. The name can be up to 63 characters\. Valid characters: A\-Z, a\-z, 0\-9, and \- \(hyphen\)\. 
+1. Under **User profile**, for **Name** keep the default name or create a new name\. The name can be up to 63 characters\. Valid characters: A\-Z, a\-z, 0\-9, and \- \(hyphen\)\. 
 
 1. For **Default execution role**, choose an option from the role selector\. This is the default role that is assigned to the **Amazon SageMaker Domain** user profile\.
 
@@ -52,7 +52,7 @@ Now that you've onboarded to SageMaker Studio, use the following steps to access
 
 1. On the ****SageMaker Domain** Control Panel**, choose **Add user**\.
 
-1. Repeat steps 4 and 5 from the first procedure, "To onboard to Amazon SageMaker Domain using Quick start\."
+1. Repeat steps 4 and 5 from the first procedure, "To onboard to Amazon SageMaker Domain using Quick setup\."
 
 1. Choose **Submit**\.
 

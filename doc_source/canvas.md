@@ -20,6 +20,8 @@ In SageMaker Canvas, you do the following:
 
 You use the SageMaker Canvas UI to import your data and perform analyses\. You can also use it to import your models into Amazon SageMaker, giving you the ability to collaborate with data scientists\.
 
+To learn more about pricing, see the [SageMaker Canvas pricing page](http://aws.amazon.com/sagemaker/canvas/pricing/)\. SageMaker Canvas is currently available in the following Regions: US East \(Ohio\), US East \(N\. Virginia\), US West \(Oregon\), Europe \(Frankfurt\), and Europe \(Ireland\)\.
+
 **Topics**
 + [Are you a first\-time SageMaker Canvas user?](#canvas-first-time-user)
 + [Getting started with using Amazon SageMaker Canvas](canvas-getting-started.md)

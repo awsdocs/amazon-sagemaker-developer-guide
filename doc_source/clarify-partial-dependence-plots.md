@@ -1,4 +1,4 @@
-# Amazon SageMaker Clarify Partial Dependence Plots: Analysis Configuration and Output<a name="clarify-partial-dependence-plots"></a>
+# Partial Dependence Plots: Analysis Configuration and Output<a name="clarify-partial-dependence-plots"></a>
 
 Partial dependence plots \(PDP\) show the dependence of the predicted target response on a set of input features of interest\. These are marginalized over the values of all other input features and are referred to as the *complement features*\. Intuitively, you can interpret the partial dependence as the target response, which is expected as a function of each input feature of interest\.
 

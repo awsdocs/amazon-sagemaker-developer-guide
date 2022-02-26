@@ -4,7 +4,7 @@ Review the following terms to familiarize yourself with the core components of A
 
 ## Task Types<a name="a2i-task-type-get-started"></a>
 
-The the AI/ML workflow into which you integrate Amazon A2I defines an Amazon A2I *task type*\. 
+The AI/ML workflow into which you integrate Amazon A2I defines an Amazon A2I *task type*\. 
 
 Amazon A2I supports:
 + Two *built\-in task types*: [Amazon Textract key\-value pair extraction](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-textract-task-type.html) and [Amazon Rekognition image moderation](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-rekognition-task-type.html)\.

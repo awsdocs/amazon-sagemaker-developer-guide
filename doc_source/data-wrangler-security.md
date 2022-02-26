@@ -25,7 +25,7 @@ Use the following procedure to create an S3 bucket policy that you can add to re
    $ aws iam get-role --role-name role-name
    ```
 
-   In the response, you'll see a `RoleId` string which begins will `AROA`\. Copy this string\. 
+   In the response, you see a `RoleId` string which begins with `AROA`\. Copy this string\. 
 
 1. Add the following policy to the SageMaker default bucket in the AWS Region in which you are using Data Wrangler\. Replace *region* with the AWS Region in which the bucket is located, and *account\-id* with your AWS account ID\. Replace `userId`s starting with *AROAEXAMPLEID* with the IDs of an AWS roles to which you want to grant permission to use Data Wrangler\. 
 
@@ -186,7 +186,7 @@ The following policy grants permission to set up an Amazon Redshift connection t
 
 **Policy to grant access to an S3 bucket**
 
-If your dataset is stored in Amazon S3, you can grant an IAM role permission to access this bucket with a policy similar to the following\. This example grants programmatic read\-write access to the bucket named *test*:
+If your dataset is stored in Amazon S3, you can grant an IAM role permission to access this bucket with a policy similar to the following\. This example grants programmatic read\-write access to the bucket named *test*\.
 
 ```
 {
@@ -210,15 +210,15 @@ If your dataset is stored in Amazon S3, you can grant an IAM role permission to 
 }
 ```
 
-To import data from Athena and Amazon Redshift, you must grant an IAM role permission to access the following prefixes under the default Amazon S3 bucket in the AWS Region Data Wrangler is being used in: `athena/`, `redshift/`\. If a default Amazon S3 bucket does not already exist in the AWS Region, you must also give the IAM role permission to create a bucket in this region\.
+To import data from Athena and Amazon Redshift, you must grant an IAM role permission to access the following prefixes under the default Amazon S3 bucket in the AWS Region Data Wrangler in which is being used: `athena/`, `redshift/`\. If a default Amazon S3 bucket does not already exist in the AWS Region, you must also give the IAM role permission to create a bucket in this region\.
 
-Additionally, if you want the IAM role to be able to use the SageMaker Feature Store, SageMaker Pipeline, and Data Wrangler job export options, you must grant access to the prefix `data_wrangler_flows/` in this bucket\.
+Additionally, if you want the IAM role to be able to use the Amazon SageMaker Feature Store, SageMaker Pipelines, and Data Wrangler job export options, you must grant access to the prefix `data_wrangler_flows/` in this bucket\.
 
  Data Wrangler uses the `athena/` and `redshift/` prefixes to store preview files and imported datasets\. To learn more, see [Imported Data Storage](data-wrangler-import.md#data-wrangler-import-storage)\.
 
 Data Wrangler uses the `data_wrangler_flows/` prefix to store \.flow files when you run a Jupyter Notebook exported from Data Wrangler\. To learn more, see [Export](data-wrangler-data-export.md)\.
 
-Use a policy similar to the following to grant the permissions described above:
+Use a policy similar to the following to grant the permissions described in the preceding paragraphs\.
 
 ```
 {
@@ -259,7 +259,7 @@ Use a policy similar to the following to grant the permissions described above:
 }
 ```
 
-You can also access data in your Amazon S3 bucket from another AWS account by specifying the Amazon S3 bucket URI\. To do this, the IAM policy that grants access to the Amazon S3 bucket in the other account should use a policy similar to this below where `BucketFolder` is the specific directory in the users bucket `UserBucket`\. This policy should be added to the user granting access to their bucket for another user\. 
+You can also access data in your Amazon S3 bucket from another AWS account by specifying the Amazon S3 bucket URI\. To do this, the IAM policy that grants access to the Amazon S3 bucket in the other account should use a policy similar to the following example, where `BucketFolder` is the specific directory in the user's bucket `UserBucket`\. This policy should be added to the user granting access to their bucket for another user\. 
 
 ```
 {
@@ -292,7 +292,7 @@ You can also access data in your Amazon S3 bucket from another AWS account by sp
 }
 ```
 
-The user that will be accessing bucket \(not the bucket owner\) will need to add a policy similar to this below to their user\. Note that `AccountX` and `TestUser` below refers to the bucket owner and their User respectively\.
+The user that is accessing the bucket \(not the bucket owner\) must add a policy similar to the following example to their user\. Note that `AccountX` and `TestUser` below refers to the bucket owner and their user respectively\.
 
 ```
 {
@@ -355,11 +355,11 @@ Use a policy like to the following to create an IAM execution role that can be u
 
 ## Snowflake and Data Wrangler<a name="data-wrangler-security-snowflake"></a>
 
-All permissions for AWS resources will be managed via your IAM role attached to your SageMaker Studio instance\. Snowflake specific permissions are to be managed by the Snowflake admin, as they can grant granular permissions/privileges to each Snowflake user\. This includes databases, schemas, tables, warehouses, and storage integration objects\. You will have to ensure that the correct permissions are set up outside of Data Wrangler\. 
+All permissions for AWS resources are managed via your IAM role attached to your Studio instance\. The Snowflake administrator manages Snowflake\-specific permissions, as they can grant granular permissions and privileges to each Snowflake user\. This includes databases, schemas, tables, warehouses, and storage integration objects\. You must ensure that the correct permissions are set up outside of Data Wrangler\. 
 
-Note that the Snowflake `COPY INTO Amazon S3` command moves data from Snowflake to S3 over the public internet by default but data in transit will be secured using SSL\. Data at rest in Amazon S3 will be encrypted with SSE\-KMS using the default AWS KMS key\.
+Note that the Snowflake `COPY INTO Amazon S3` command moves data from Snowflake to Amazon S3 over the public internet by default, but data in transit is secured using SSL\. Data at rest in Amazon S3 is encrypted with SSE\-KMS using the default AWS KMS key\.
 
-With respect to Snowflake credentials storage, Data Wrangler does not store customer credentials\. Data Wrangler uses AWS Secrets Manager to store the credentials in a Secret and rotates secrets as part of a best practice security plan\. The Snowflake or Studio administrator needs to ensure that the data scientist’s Studio execution role is granted permission to perform `GetSecretValue` on the Secret where the credentials are stored\. If already attached to the Studio execution role, the `AmazonSageMakerFullAccess` policy will have the necessary permissions to read secrets created by Data Wrangler and secrets created by following the naming and tagging convention in the instructions above\. Secrets that do not follow the conventions will need to be separately granted access\. It is recommended to use Secrets Manager to prevent sharing credentials over unsecured channels, however note that a logged\-in user can retrieve the plain\-text password by launching a terminal or Python notebook in Studio and then invoking API calls from the Secrets Manager API\. 
+With respect to Snowflake credentials storage, Data Wrangler does not store customer credentials\. Data Wrangler uses Secrets Manager to store the credentials in a secret and rotates secrets as part of a best practice security plan\. The Snowflake or Studio administrator needs to ensure that the data scientist’s Studio execution role is granted permission to perform `GetSecretValue` on the secret storing the credentials\. If already attached to the Studio execution role, the `AmazonSageMakerFullAccess` policy has the necessary permissions to read secrets created by Data Wrangler and secrets created by following the naming and tagging convention in the instructions above\. Secrets that do not follow the conventions must be separately granted access\. We recommend using Secrets Manager to prevent sharing credentials over unsecured channels; however, note that a logged\-in user can retrieve the plain\-text password by launching a terminal or Python notebook in Studio and then invoking API calls from the Secrets Manager API\. 
 
 ## Data Encryption with AWS KMS<a name="data-wrangler-security-kms"></a>
 
@@ -369,9 +369,9 @@ You can import files if they have the following:
 + server\-side encryption
 + SSE\-KMS as the encryption type
 
-To decrypt the file and import to a Data Wrangler flow, the SageMaker Studio user that you're using must be added as a Key user\.
+To decrypt the file and import to a Data Wrangler flow, you must add the SageMaker Studio user that you're using as a key user\.
 
- Below is a screenshot that shows a Studio user role added as a Key user\. See [IAM Roles](https://console.aws.amazon.com/iam/home#/roles) to access Users under the left panel to make this change\.
+The following screenshot shows a Studio user role added as a key user\. See [IAM Roles](https://console.aws.amazon.com/iam/home#/roles) to access users under the left panel to make this change\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/data-wrangler-kms.png)
 
@@ -379,16 +379,16 @@ To decrypt the file and import to a Data Wrangler flow, the SageMaker Studio use
 
  By default, Data Wrangler uses Amazon S3 buckets that have the following naming convention: `sagemaker-region-account number`\. For example, if your account number is `111122223333` and you are using Studio in us\-east\-1, your imported datasets are stored with the following naming convention: `sagemaker-us-east-1-111122223333`\. 
 
-Below are instructions on how to setup a customer managed key for your default Amazon S3 bucket\.
+The following instructions explain how to set up a customer managed key for your default Amazon S3 bucket\.
 
 1. To enable server\-side encryption and setup a customer managed key for your default S3 bucket, see [Using KMS Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)\.
 
-1. After following Step 1, navigate to KMS in your AWS Management Console\. Find the customer managed key you selected in Step 1 of the previous step, and add the Studio role as the key user\. To do this, follow the [Allows key users to use a customer managed key](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-users)\.
+1. After following step 1, navigate to AWS KMS in your AWS Management Console\. Find the customer managed key you selected in step 1 of the previous step and add the Studio role as the key user\. To do this, follow the instructions in [Allows key users to use a customer managed key](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-users)\.
 
-### Encrypting the Data That You Export<a name="w2350aac19c18c25c15c17"></a>
+### Encrypting the Data That You Export<a name="data-wrangler-export-kms"></a>
 
 You can encrypt the data that you export using one of the following methods:
-+ Specifying that your Amazon S3 bucket have object use SSE\-KMS encryption\.
++ Specifying that your Amazon S3 bucket has object use SSE\-KMS encryption\.
 + Specifying an AWS KMS key to encrypt the data that you export from Data Wrangler\.
 
 On the **Export data** page, specify a value for the **AWS KMS key ID or ARN**\.

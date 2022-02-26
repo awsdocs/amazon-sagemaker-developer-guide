@@ -33,7 +33,7 @@ You can color scatter plots by an additional column\. For example, the following
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/scatter-plot.png)
 
-Additionally, you can facet scatter plots by features\. For example, the following shows an example of the same review versus user rating scatter plot, faceted by year\. 
+Additionally, you can facet scatter plots by features\. For example, the following image shows an example of the same review versus user rating scatter plot, faceted by year\. 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/scatter-plot-facet.png)
 
@@ -52,12 +52,12 @@ Use the **Quick Model** visualization to quickly evaluate your data and produce 
 When you create a quick model chart, you select a dataset you want evaluated, and a target label against which you want feature importance to be compared\. Data Wrangler does the following:
 + Infers the data types for the target label and each feature in the dataset selected\. 
 + Determines the problem type\. Based on the number of distinct values in the label column, Data Wrangler determines if this is a regression or classification problem type\. Data Wrangler sets a categorical threshold to 100\. If there are more than 100 distinct values in the label column, Data Wrangler classifies it as a regression problem; otherwise, it is classified as a classification problem\. 
-+ Pre\-process features and label data for training\. The algorithm used requires encoding features to vector type and encoding labels to double type\. 
++ Pre\-processes features and label data for training\. The algorithm used requires encoding features to vector type and encoding labels to double type\. 
 + Trains a random forest algorithm with 70% of data\. Spark’s [RandomForestRegressor](https://spark.apache.org/docs/latest/ml-classification-regression.html#random-forest-regression) is used to train a model for regression problems\. The [RandomForestClassifier](https://spark.apache.org/docs/latest/ml-classification-regression.html#random-forest-classifier) is used to train a model for classification problems\.
 + Evaluates a random forest model with the remaining 30% of data\. Data Wrangler evaluates classification models using an F1 score and evaluates regression models using an MSE score\.
 + Calculates feature importance for each feature using the Gini importance method\. 
 
-Below is the user interface for the Quick Model feature\. 
+The following image shows the user interface for the quick model feature\. 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/quick-model.png)
 
@@ -70,7 +70,7 @@ When you use the **Target Leakage** analysis, you specify the following:
 + **Problem type**: This is the ML problem type on which you are working\. Problem type can either be **classification** or **regression**\. 
 +  \(Optional\) **Max features**: This is the maximum number of features to present in the visualization, which shows features ranked by their risk of being target leakage\.
 
-For classification, the Target Leakage analysis uses the area under the receiver operating characteristic, or AUC \- ROC curve for each column, up to **Max features**\. For regression, it uses a coefficient of determination, or R2 metric\.
+For classification, the target leakage analysis uses the area under the receiver operating characteristic, or AUC \- ROC curve for each column, up to **Max features**\. For regression, it uses a coefficient of determination, or R2 metric\.
 
 The AUC \- ROC curve provides a predictive metric, computed individually for each column using cross\-validation, on a sample of up to around 1000 rows\. A score of 1 indicates perfect predictive abilities, which often indicates target leakage\. A score of 0\.5 or lower indicates that the information on the column could not provide, on its own, any useful information towards predicting the target\. Although it can happen that a column is uninformative on its own but is useful in predicting the target when used in tandem with other features, a low score could indicate the feature is redundant\.
 
@@ -86,7 +86,7 @@ For the error term, you specify a threshold as the number of standard of deviati
 
 You can use the following procedure to perform an **Anomaly detection** analysis\.
 
-1. Open your Data Wrangler data flow\.\.
+1. Open your Data Wrangler data flow\.
 
 1. In your data flow, under **Data types**, choose the **\+**, and select **Add analysis**\.
 
@@ -124,9 +124,9 @@ You can use the following procedure to perform a **Seasonal\-Trend decomposition
 
 You can use the bias report in Data Wrangler to uncover potential biases in your data\. To generate a bias report, you must specify the target column, or **Label**, that you want to predict and a **Facet**, or the column that you want to inspect for biases\.
 
-**Label** – The feature about which you want a model to make predictions\. For example, if you are predicting customer conversion, you may select a column containing data on whether or not a customer has placed an order\. You must also specify whether this feature is a label or a threshold\. If you specify a label, you must specify what a *positive outcome* looks like in your data\. In the customer conversion example, a positive outcome may be a 1 in the orders column, representing the positive outcome of a customer placing an order within the last three months\. If you specify a threshold, you must specify a lower bound defining a positive outcome\. For example, if your customer orders columns contains the number of orders placed in the last year, you may want to specify 1\.
+**Label**: The feature about which you want a model to make predictions\. For example, if you are predicting customer conversion, you may select a column containing data on whether or not a customer has placed an order\. You must also specify whether this feature is a label or a threshold\. If you specify a label, you must specify what a *positive outcome* looks like in your data\. In the customer conversion example, a positive outcome may be a 1 in the orders column, representing the positive outcome of a customer placing an order within the last three months\. If you specify a threshold, you must specify a lower bound defining a positive outcome\. For example, if your customer orders columns contains the number of orders placed in the last year, you may want to specify 1\.
 
-**Facet** – The column that you want to inspect for biases\. For example, if you are trying to predict customer conversion, your facet may be the age of the customer\. You may choose this facet because you believe that your data is biased toward a certain age group\. You must identify whether the facet is measured as a value or threshold\. For example, if you wanted to inspect one or more specific ages, you select **Value** and specify those ages\. If you want to look at an age group, you select **Threshold** and specify the threshold of ages you want to inspect\.
+**Facet**: The column that you want to inspect for biases\. For example, if you are trying to predict customer conversion, your facet may be the age of the customer\. You may choose this facet because you believe that your data is biased toward a certain age group\. You must identify whether the facet is measured as a value or threshold\. For example, if you wanted to inspect one or more specific ages, you select **Value** and specify those ages\. If you want to look at an age group, you select **Threshold** and specify the threshold of ages you want to inspect\.
 
 After you select your feature and label, you select the types of bias metrics you want to calculate\.
 
@@ -136,7 +136,7 @@ To learn more, see [Generate reports for bias in pre\-training data](https://doc
 
 Use the **Code** tab to create custom visualizations\. Your dataset, after undergoing the most recently added transformation, is available as a [Pandas DataFrame](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) in this code block via the `df` variable\. 
 
-You must provide an output variable, `chart`, to store an [Altair](https://altair-viz.github.io/) output chart\. For example, the following is an example of a code block that can be used to generate a custom histogram using the titanic dataset\.
+You must provide an output variable, `chart`, to store an [Altair](https://altair-viz.github.io/) output chart\. For example, the following is an example of a code block that can be used to generate a custom histogram using the Titanic dataset\.
 
 ```
 import altair as alt

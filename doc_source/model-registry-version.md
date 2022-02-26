@@ -147,7 +147,7 @@ The following configuration needs to be put in the cross\-account where the mode
 source_account_id = '111111111111'
 
 # 1. Create policy for access to the ModelPackageGroup by source account
-model_pacakge_group_policy = {'Version': '2012-10-17',
+model_package_group_policy = {'Version': '2012-10-17',
     'Statement': [
         {
             'Sid': 'AddPermModelPackageVersion',
@@ -160,12 +160,12 @@ model_pacakge_group_policy = {'Version': '2012-10-17',
 }
 
 # Convert the policy from JSON dict to string
-model_pacakge_group_policy = json.dumps(model_pacakge_group_policy)
+model_package_group_policy = json.dumps(model_package_group_policy)
 
 # Set the new policy
-respose = sm_client.put_model_package_group_policy(
+response = sm_client.put_model_package_group_policy(
     ModelPackageGroupName = model_package_group_name,
-    ResourcePolicy = model_pacakge_group_policy)
+    ResourcePolicy = model_package_group_policy)
 ```
 
 Finally, use the `create_model_package` action from the source account to access the cross\-account register model package\.

@@ -148,7 +148,7 @@ The following image shows the beginning of the **Getting Started** tutorial\.
 Format your data so that you can analyze it in Amazon SageMaker Canvas by importing it into a dataset\. You import data from multiple sources into a single dataset\.
 
 You can import data from the following sources:
-+ local files
++ Local files
 + Amazon S3
 + Amazon Redshift
 + Snowflake
@@ -163,9 +163,10 @@ To import your data, do the following\.
 
 1. Optional: Add a connection to an external data source, such as an external Amazon S3 bucket, Amazon Redshift, or Snowflake\. For more information about importing data, see [Use Snowflake with Amazon SageMaker Canvas](canvas-connecting-external.md#canvas-using-snowflake)\.
 
-1. Select one or more files from your Amazon S3 bucket or your local folder\. Your must meet the following requirements:
+1. Select one or more files from your Amazon S3 bucket or your local folder\. Your data must meet the following requirements:
    + Your file can't exceed 5 GB\.
-   + Currently, your file must be in \.csv format\. Its values must be comma delimited\.
+   + Currently, your file must be in \.csv format\. Its values must be comma delimited and must not have newline characters except when denoting a new row\.
+   + Your data can't have more than 1000 columns\.
 
 1. Optional: To preview the datasets that you've uploaded and to review the headers, navigate to the section following the datasets that you're uploading\.
 

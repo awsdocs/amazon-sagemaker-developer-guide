@@ -8,7 +8,7 @@ The following topics describe fundamental SageMaker Pipelines concepts\. For a t
 
 **Topics**
 + [Pipeline Structure and Execution](build-and-manage-pipeline.md)
-+ [Access Management](build-and-manage-access.md)
++ [IAM Access Management](build-and-manage-access.md)
 + [Pipeline Parameters](build-and-manage-parameters.md)
 + [Pipeline Steps](build-and-manage-steps.md)
 + [Property Files and `JsonGet`](build-and-manage-propertyfile.md)

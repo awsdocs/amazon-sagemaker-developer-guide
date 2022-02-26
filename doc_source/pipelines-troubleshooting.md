@@ -26,7 +26,7 @@ You can also view the error messages and logs in the Amazon SageMaker Studio int
 
  **Missing Permissions** 
 
-Correct permissions are required for the role that creates the pipeline execution, and the steps that create each of the jobs in your pipeline execution\. Without these permissions, you may not be able to submit your pipeline execution or run your SageMaker jobs as expected\. To ensure that your permissions are properly set up, see [Access Management](build-and-manage-access.md)\. 
+Correct permissions are required for the role that creates the pipeline execution, and the steps that create each of the jobs in your pipeline execution\. Without these permissions, you may not be able to submit your pipeline execution or run your SageMaker jobs as expected\. To ensure that your permissions are properly set up, see [IAM Access Management](build-and-manage-access.md)\. 
 
  **Job Execution Errors ** 
 

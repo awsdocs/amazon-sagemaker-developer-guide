@@ -1,6 +1,6 @@
 # Onboard to Amazon SageMaker Domain Using IAM<a name="onboard-iam"></a>
 
-This topic describes how to onboard to Amazon SageMaker Domain using the standard setup procedure for AWS Identity and Access Management \(IAM\) authentication\. To onboard faster using IAM, see [Onboard Using Quick Start](onboard-quick-start.md)\.
+This topic describes how to onboard to Amazon SageMaker Domain using the standard setup procedure for AWS Identity and Access Management \(IAM\) authentication\. To onboard faster using IAM, see [Onboard Using Quick setup](onboard-quick-start.md)\.
 
 For information on how to onboard using AWS Single Sign\-On \(AWS SSO\), see [Onboard Using SSO](onboard-sso-users.md)\.
 

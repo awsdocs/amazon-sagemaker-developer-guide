@@ -74,10 +74,14 @@ To prevent impact to inference requests, Data Capture stops capturing requests a
 1. Invoke the endpoint to send data to the endpoint to get inferences in real time\. Because you enabled the data capture in the previous steps, the request and response payload, along with some additional metadata, is saved in the Amazon S3 location that you specified in [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DataCaptureConfig.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DataCaptureConfig.html)\.
 
    ```
-   from sagemaker.predictor import RealTimePredictor
+   from sagemaker.predictor import Predictor
+   from sagemaker.serializers import CSVSerializer
+   from sagemaker.deserializers import JSONDeserializer                    
    import time
    
-   predictor = RealTimePredictor(endpoint=endpoint_name,content_type='text/csv')
+   predictor = Predictor(endpoint=endpoint_name, 
+                         serializer=CSVSerializer(),
+                         deserializer=JSONDeserializer())
    
    # get a subset of test data for a quick test
    !head -120 test_data/test-dataset-input-cols.csv > test_data/test_sample.csv
@@ -92,19 +96,21 @@ To prevent impact to inference requests, Data Capture stops capturing requests a
    print("Done!")
    ```
 
-1. View captured data by listing the data capture files stored in Amazon S3\. Expect to see different files from different time periods, organized based on the hour when the invocation occurred\.
+1. The delivery of captured data to Amazon S3 can require a couple of minutes\. You can optionally run the following to check if data has been captured:
 
    ```
-   s3_client = boto3.Session().client('s3')
-   current_endpoint_capture_prefix = '{}/{}'.format(data_capture_prefix, endpoint_name)
-   result = s3_client.list_objects(Bucket=bucket, Prefix=current_endpoint_capture_prefix)
-   capture_files = [capture_file.get("Key") for capture_file in result.get('Contents')]
+   from sagemaker.s3 import S3Downloader
+   print("Waiting for captures to show up", end="")
+   for _ in range(120):
+       capture_files = sorted(S3Downloader.list(f"{s3_capture_upload_path}/{endpoint_name}"))
+       if capture_files:
+           capture_file = S3Downloader.read_file(capture_files[-1]).split("\n")
+           capture_record = json.loads(capture_file[0])
+           if "inferenceId" in capture_record["eventMetadata"]:
+               break
+       print(".", end="", flush=True)
+       sleep(1)
+   print()
    print("Found Capture Files:")
-   print("\n ".join(capture_files))
-   ```
-
-   The format of the Amazon S3 path is as follows:
-
-   ```
-   s3://{destination-bucket-prefix}/{endpoint-name}/{variant-name}/yyyy/mm/dd/hh/filename.jsonl
+   print("\n ".join(capture_files[-3:]))
    ```

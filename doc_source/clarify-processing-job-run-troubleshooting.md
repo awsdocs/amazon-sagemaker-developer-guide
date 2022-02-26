@@ -47,7 +47,7 @@ If your receive one of the following error messages "No Label values are present
 + Check that the baseline format in the analysis config is the same as dataset format\.
 + If your receive the error message "Could not convert string to float\.", check that the format is correctly specified\. It could also indicate that the model predictions have a different format than the label column or it could indicate that the configuration for the label or probabilities is incorrect\.
 + If your receive the error message "Unable to locate the facet\." or "Headers must contain label\." or "Headers in config do not match with the number of columns in the dataset\." or "Feature names not found\.", check that the headers match the columns\.
-+ If your receive the error message "Data must contain features\.", check the content template for JSONLines and compare it with the dataset sample if available\.
++ If your receive the error message "Data must contain features\.", check the content template for JSON Lines and compare it with the dataset sample if available\.
 
 ## Model returns 500 Internal Server Error or container falls back to per\-record predictions due to model error<a name="clarify-troubleshooting-500-internal-server-error"></a>
 

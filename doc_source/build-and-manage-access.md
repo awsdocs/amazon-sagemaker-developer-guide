@@ -1,4 +1,4 @@
-# Access Management<a name="build-and-manage-access"></a>
+# IAM Access Management<a name="build-and-manage-access"></a>
 
 The following sections describe the AWS Identity and Access Management \(IAM\) requirements for Amazon SageMaker Model Building Pipelines\. For an example of how you can implement these permissions, see [Prerequisites](define-pipeline.md#define-pipeline-prereq)\.
 
