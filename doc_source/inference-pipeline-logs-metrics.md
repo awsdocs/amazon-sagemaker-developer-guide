@@ -14,7 +14,7 @@ A *dimension* is a name/value pair that uniquely identifies a metric\. You can a
 
 **Endpoint Invocation Metrics**
 
-The `AWS/SageMaker` namespace includes the following request metrics from calls to [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html)\.
+The `AWS/SageMaker` namespace includes the following request metrics from calls to [ `InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html)\.
 
 Metrics are reported at a 1\-minute intervals\.
 

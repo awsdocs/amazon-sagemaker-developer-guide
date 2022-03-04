@@ -122,7 +122,7 @@ If you are a first\-time user of SageMaker, we recommend that you do the followi
 1. **Explore other topics** – Depending on your needs, do the following:
    + **Submit Python code to train with deep learning frameworks** – In SageMaker, you can use your own training scripts to train models\. For information, see [Use Machine Learning Frameworks, Python, and R with Amazon SageMaker](frameworks.md)\.
    + **Use SageMaker directly from Apache Spark** – For information, see [Use Apache Spark with Amazon SageMaker](apache-spark.md)\.
-   + **Use SageMaker to train and deploy your own custom algorithms** – Package your custom algorithms with Docker so you can train and/or deploy them in SageMaker\. To learn how SageMaker interacts with Docker containers, and for the SageMaker requirements for Docker images, see [Using Docker containers with SageMaker ](docker-containers.md)\. 
+   + **Use SageMaker to train and deploy your own custom algorithms** – Package your custom algorithms with Docker so you can train and/or deploy them in SageMaker\. To learn how SageMaker interacts with Docker containers, and for the SageMaker requirements for Docker images, see [Using Docker containers with SageMaker](docker-containers.md)\. 
 
 1. **View the [API Reference](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Reference.html)** – This section describes the SageMaker API operations\.
 

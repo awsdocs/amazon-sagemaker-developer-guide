@@ -170,7 +170,19 @@ Amazon Redshift is a fully managed, petabyte\-scale data warehouse service in th
 
 You can connect to and query one or more Amazon Redshift clusters in Data Wrangler\. To use this import option, you must create at least one cluster in Amazon Redshift\. To learn how, see [Getting started with Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/getting-started.html)\.
 
-You can output the results of the Amazon Redshift query to the default Amazon S3 bucket\. The default Amazon S3 bucket is in the same AWS Region in which your Studio instance is located to store Amazon Redshift query results\. For more information, see [Imported Data Storage](#data-wrangler-import-storage)\.
+You can output the results of your Amazon Redshift query in one of the following locations:
++ The default Amazon S3 bucket
++ An Amazon S3 output location that you specify
+
+The default Amazon S3 bucket is in the same AWS Region in which your Studio instance is located to store Amazon Redshift query results\. For more information, see [Imported Data Storage](#data-wrangler-import-storage)\.
+
+For either the default Amazon S3 bucket or the bucket that you specify, you have the following encryption options:
++ The default AWS service\-side encryption with an Amazon S3 managed key \(SSE\-S3\)
++  An AWS Key Management Service \(KMS\) key that you specify
+
+An AWS KMS key is an encryption key that you create and manage\. For more information on KMS keys, see [AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)\.
+
+You can specify an AWS KMS key using either the key ARN or the ARN of your AWS account\.
 
 If you use the IAM managed policy, `AmazonSageMakerFullAccess`, to grant a role permission to use Data Wrangler in Studio, your **Database User** name must have the prefix `sagemaker_access`\.
 
@@ -200,6 +212,13 @@ Data Wrangler uses the Amazon Redshift Data API with temporary credentials\. To 
 1. For **UNLOAD IAM Role**, enter the IAM role ARN of the role that the Amazon Redshift cluster should assume to move and write data to Amazon S3\. For more information about this role, see [Authorizing Amazon Redshift to access other AWS services on your behalf](https://docs.aws.amazon.com/redshift/latest/mgmt/authorizing-redshift-service.html) in the Amazon Redshift Cluster Management Guide\. 
 
 1. Choose **Connect**\.
+
+1. \(Optional\) For **Amazon S3 output location**, specify the S3 URI to store the query results\.
+
+1. \(Optional\) For **KMS key ID**, specify the ARN of the AWS KMS key or alias\. The following image shows you where you can find either key in the AWS Management Console\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/kms-alias-redacted.png)
+
+The following image shows all the fields from the preceding procedure\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/redshift-connection.png)
 
@@ -332,7 +351,7 @@ To configure access, follow these steps\.
 
 1. To allow your data scientist to access Snowflake from SageMaker Data Wrangler, provide them with one of the following:
    + A Snowflake account name, user name, and password\.
-   + A secret created with [AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) and the ARN of the secret\. Use the following procedure below to create the secret for Snowflake if you choose this option\.
+   + A secret created with [ AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) and the ARN of the secret\. Use the following procedure below to create the secret for Snowflake if you choose this option\.
 **Important**  
 If your data scientists use the **Snowflake Credentials \(User name and Password\)** option to connect to Snowflake, note that [Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) is used to store the credentials in a secret and rotates secrets as part of a best practice security plan\. The secret created in Secrets Manager is only accessible with the Studio role configured when you set up a Studio user profile\. This will require you to add this permission, `secretsmanager:PutResourcePolicy` to the policy that is attached to your Studio role\.  
 It is strongly recommended that you scope the role policy to use different roles for different groups of Studio users\. You can add additional resource\-based permissions for the Secrets Manager secrets\. See [Manage Secret Policy](https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage_secret-policy.html) for condition keys you can use\. 

@@ -45,7 +45,7 @@ The following table contains a cheat sheet for quick guidance and links to the p
 
 For additional information about posttraining bias metrics, see [A Family of Fairness Measures for Machine Learning in Finance](https://pages.awscloud.com/rs/112-TZM-766/images/Fairness.Measures.for.Machine.Learning.in.Finance.pdf)\.
 
-**more false negatives in the disfavored facet *d*\.**
+**Topics**
 + [Difference in Positive Proportions in Predicted Labels \(DPPL\)](clarify-post-training-bias-metric-dppl.md)
 + [Disparate Impact \(DI\)](clarify-post-training-bias-metric-di.md)
 + [Difference in Conditional Acceptance \(DCAcc\)](clarify-post-training-bias-metric-dca.md)

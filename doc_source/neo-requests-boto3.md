@@ -1,6 +1,6 @@
 # Request Inferences from a Deployed Service \(Boto3\)<a name="neo-requests-boto3"></a>
 
- You can submit inference requests using SageMaker SDK for Python \(Boto3\) client and [https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker-runtime.html#SageMakerRuntime.Client.invoke_endpoint](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker-runtime.html#SageMakerRuntime.Client.invoke_endpoint) API once you have an SageMaker endpoint `InService`\. The following code example shows how to send an image for inference: 
+ You can submit inference requests using SageMaker SDK for Python \(Boto3\) client and [ `invoke_endpoint()`](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker-runtime.html#SageMakerRuntime.Client.invoke_endpoint) API once you have an SageMaker endpoint `InService`\. The following code example shows how to send an image for inference: 
 
 ------
 #### [ PyTorch and MXNet ]

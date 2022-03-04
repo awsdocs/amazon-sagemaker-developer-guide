@@ -6,7 +6,7 @@ This document explains how to add Amazon VPC configurations for processing jobs\
 
 ## Configure a Processing Job for Amazon VPC Access<a name="process-vpc-configure"></a>
 
-To specify subnets and security groups in your private VPC, use the `NetworkConfig.VpcConfig` request parameter of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateProcessingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateProcessingJob.html) API, or provide this information when you create a processing job in the SageMaker console\. SageMaker uses this information to create network interfaces and attach them to your processing containers\. The network interfaces provide your processing containers with a network connection within your VPC that is not connected to the internet\. They also enable your processing job to connect to resources in your private VPC\.
+To specify subnets and security groups in your private VPC, use the `NetworkConfig.VpcConfig` request parameter of the [ `CreateProcessingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateProcessingJob.html) API, or provide this information when you create a processing job in the SageMaker console\. SageMaker uses this information to create network interfaces and attach them to your processing containers\. The network interfaces provide your processing containers with a network connection within your VPC that is not connected to the internet\. They also enable your processing job to connect to resources in your private VPC\.
 
 The following is an example of the `VpcConfig` parameter that you include in your call to `CreateProcessingJob`:
 

@@ -1,4 +1,4 @@
-# Activate time series forecasting<a name="canvas-set-up-forecast"></a>
+# Give your users the ability to perform time series forecasting<a name="canvas-set-up-forecast"></a>
 
 To give your users the ability to perform time series analyses in Amazon SageMaker Canvas, use the following procedure\.
 

@@ -32,14 +32,14 @@ response = client.create_labeling_job(
         'KmsKeyId': 'string',
         'SnsTopicArn': 'arn:aws:sns:us-east-1:123456789012:your-sns-output-topic'
     },
-    RoleArn='arn:aws:iam::*:role/*,
+    RoleArn='arn:aws:iam::*:role/*',
     LabelCategoryConfigS3Uri='s3://bucket/path/label-categories.json',
     HumanTaskConfig={
         'WorkteamArn': 'arn:aws:sagemaker:us-east-1:*:workteam/private-crowd/*',
         'UiConfig': {
             'UiTemplateS3Uri': 's3://bucket/path/custom-worker-task-template.html'
         },
-        'PreHumanTaskLambdaArn': 'arn:aws:lambda:us-east-1:432418664414:function:PRE-tasktype,
+        'PreHumanTaskLambdaArn': 'arn:aws:lambda:us-east-1:432418664414:function:PRE-tasktype',
         'TaskKeywords': [
             'Example key word',
         ],

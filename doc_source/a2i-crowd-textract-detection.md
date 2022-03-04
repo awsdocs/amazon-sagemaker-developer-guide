@@ -33,7 +33,7 @@ The following is an example of an `initialValue` input:
                         "top": 0.5227988958358765
                     },
                     "polygon": [
-                        {"X": 0.123, "Y": 0.345}, ...
+                        {"x": 0.123, "y": 0.345}, ...
                     ]
                 }
                 "id": "8c97b240-0969-4678-834a-646c95da9cf4",

@@ -15,9 +15,17 @@ Cut down on necessary steps\. For example, limit which conda environments in whi
 Run tasks in parallel processes\.
 Use the `nohup` command in your script\.
 
+You can see a list of notebook instance lifecycle configurations you previously created by choosing **Lifecycle configuration** in the SageMaker console\. These notebook instance lifecycle configurations are available when you create a new notebook instance\.
+
 **To create a lifecycle configuration**
 
-1. For **Lifecycle configuration \- *Optional***, choose **Create a new lifecycle configuration**\.
+1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\. 
+
+1. On the left side, choose **Notebook**\.
+
+1. From the dropdown menu, choose **Lifecycle configurations**\.
+
+1. From the **Lifecycle configurations** page, choose **Create configuration**\.
 
 1. For **Name**, type a name using alphanumeric characters and "\-", but no spaces\. The name can have a maximum of 63 characters\.
 
@@ -30,5 +38,3 @@ Use the `nohup` command in your script\.
 1. In the **Create notebook** editor, type the script configure networking\.
 
 1. Choose **Create configuration**\.
-
-You can see a list of notebook instance lifecycle configurations you previously created by choosing **Lifecycle configuration** in the SageMaker console\. From there, you can view, edit, delete existing lifecycle configurations\. You can create a new notebook instance lifecycle configuration by choosing **Create configuration**\. These notebook instance lifecycle configurations are available when you create a new notebook instance\.

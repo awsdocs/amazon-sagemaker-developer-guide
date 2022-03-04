@@ -5,7 +5,7 @@ For compilation jobs, you can configure only subnets with a default tenancy VPC 
 
 ## Configure a Compilation Job for Amazon VPC Access<a name="neo-vpc-configure"></a>
 
-To specify subnets and security groups in your private VPC, use the `VpcConfig` request parameter of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateCompilationJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateCompilationJob.html) API, or provide this information when you create a compilation job in the SageMaker console\. SageMaker Neo uses this information to create network interfaces and attach them to your compilation jobs\. The network interfaces provide compilation jobs with a network connection within your VPC that is not connected to the internet\. They also enable your compilation job to connect to resources in your private VPC\. The following is an example of the `VpcConfig` parameter that you include in your call to `CreateCompilationJob`:
+To specify subnets and security groups in your private VPC, use the `VpcConfig` request parameter of the [ `CreateCompilationJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateCompilationJob.html) API, or provide this information when you create a compilation job in the SageMaker console\. SageMaker Neo uses this information to create network interfaces and attach them to your compilation jobs\. The network interfaces provide compilation jobs with a network connection within your VPC that is not connected to the internet\. They also enable your compilation job to connect to resources in your private VPC\. The following is an example of the `VpcConfig` parameter that you include in your call to `CreateCompilationJob`:
 
 ```
 VpcConfig: {"Subnets": [

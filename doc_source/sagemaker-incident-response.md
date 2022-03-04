@@ -7,6 +7,6 @@ Amazon CloudWatch Logs enables you to monitor, store, and access your log files 
 AWS CloudTrail provides a record of actions taken by a user, role, or an AWS service in SageMaker\. Using the information collected by CloudTrail, you can determine the request that was made to SageMaker, the IP address from which the request was made, who made the request, when it was made, and additional details\. For more information, [Log Amazon SageMaker API Calls with AWS CloudTrail](logging-using-cloudtrail.md)\.
 
 **Note**  
-CloudTrail does not monitor calls to [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html)\.
+CloudTrail does not monitor calls to [ `runtime_InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html)\.
 
 You can create rules in Amazon CloudWatch Events to react to status changes in status in a SageMaker training, hyperperparameter tuning, or batch transform job\. For more information, see [Automating Amazon SageMaker with Amazon EventBridge](automating-sagemaker-with-eventbridge.md)\.

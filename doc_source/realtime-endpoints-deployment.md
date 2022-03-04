@@ -2,7 +2,7 @@
 
 Deploying a model using SageMaker hosting services is a three\-step process:
 
-1. **Create a model in SageMaker**—By creating a model, you tell SageMaker where it can find the model components\. This includes the S3 path where the model artifacts are stored and the Docker registry path for the image that contains the inference code\. In subsequent deployment steps, you specify the model by name\. For more information, see the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) API\.
+1. **Create a model in SageMaker**—By creating a model, you tell SageMaker where it can find the model components\. This includes the S3 path where the model artifacts are stored and the Docker registry path for the image that contains the inference code\. In subsequent deployment steps, you specify the model by name\. For more information, see the [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) API\.
 **Note**  
 The S3 bucket where the model artifacts are stored must be in the same region as the model that you are creating\.
 
@@ -109,7 +109,7 @@ The S3 bucket where the model artifacts are stored must be in the same region as
    + `ModelName`: The name of the model that you want to host\. This is the name that you specified when creating the model\.
    + `InstanceType`: The compute instance type\. See the `InstanceType` field in [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ProductionVariant.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ProductionVariant.html) and [SageMaker Pricing](https://aws.amazon.com/sagemaker/pricing/) for a list of supported compute instance types and pricing for each instance type\.
 
-   For more information about required and optional API fields, see [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html) API in the [SageMaker Service API Reference](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Operations_Amazon_SageMaker_Service.html) guide\.
+   For more information about required and optional API fields, see [ `CreateEndpointConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html) API in the [SageMaker Service API Reference](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Operations_Amazon_SageMaker_Service.html) guide\.
 
 1. **Create an HTTPS endpoint**—Provide the endpoint configuration to SageMaker\. The service launches the ML compute instances and deploys the model or models as specified in the configuration\.
 **Note**  
@@ -133,4 +133,4 @@ For an example of how to use Amazon API Gateway and AWS Lambda to set up and dep
                                                EndpointConfigName=endpoint_config_name)
    ```
 
-   For more information, see the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html) API\.
+   For more information, see the [ `CreateEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html) API\.

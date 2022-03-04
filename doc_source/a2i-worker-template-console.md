@@ -2,13 +2,13 @@
 
 You can use a worker template to customize the interface and instructions that your workers see when working on your tasks\. Use the instructions on this page to create a worker task template in the Augmented AI area of the Amazon SageMaker console\. A starter template is provided for Amazon Textract and Amazon Rekognition tasks\. To learn how to customize your template using HTML crowd elements, see [Create Custom Worker Task Templates](a2i-custom-templates.md)\.
 
-When you create a worker template in the worker task templates page of the Augmented AI area of the SageMaker console, a worker task template ARN is generated\. Use this ARN as the input to `HumanTaskUiArn` when you create a flow definition using the API operation [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html)\. You can choose this template when creating a human review workflow on the human review workflows page of the console\. 
+When you create a worker template in the worker task templates page of the Augmented AI area of the SageMaker console, a worker task template ARN is generated\. Use this ARN as the input to `HumanTaskUiArn` when you create a flow definition using the API operation [ `CreateFlowDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html)\. You can choose this template when creating a human review workflow on the human review workflows page of the console\. 
 
 If you are creating a worker task template resource for an Amazon Textract or Amazon Rekognition task type, you can preview the worker UI that is generated from your template on the worker task templates console page\. You must attach the policy described in [Enable Worker Task Template Previews ](a2i-permissions-security.md#permissions-for-worker-task-templates-augmented-ai) to the IAM role that you use to preview the template\.
 
 ## Create a Worker Task Template<a name="a2i-create-worker-template-console"></a>
 
-You can create a worker task template using the SageMaker console and using the SageMaker API operation [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHumanTaskUi.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHumanTaskUi.html)\. 
+You can create a worker task template using the SageMaker console and using the SageMaker API operation [ `CreateHumanTaskUi`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHumanTaskUi.html)\. 
 
 **Create a worker task template \(console\)**
 
@@ -38,10 +38,10 @@ You can create a worker task template using the SageMaker console and using the 
 
 1. When you're satisfied with your template, choose **Create**\.
 
-After you've created your template, you can select that template when you create a human review workflow in the console\. Your template also appears in the **Amazon Augmented AI** section of the SageMaker console under **Worker task templates**\. Choose your template to view its ARN\. Use this ARN when using the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html) API operation \. 
+After you've created your template, you can select that template when you create a human review workflow in the console\. Your template also appears in the **Amazon Augmented AI** section of the SageMaker console under **Worker task templates**\. Choose your template to view its ARN\. Use this ARN when using the [ `CreateFlowDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html) API operation \. 
 
 **Create a worker task template using a worker task template \(API\)**  
-To generate a worker task template using the SageMaker API operation [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHumanTaskUi.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHumanTaskUi.html), specify a name for your UI in `HumanTaskUiName` and input your HTML template in `Content` under `UiTemplate`\. Find documentation on language\-specific SDKs that support this API operation in the **See Also** section of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHumanTaskUi.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHumanTaskUi.html)\.
+To generate a worker task template using the SageMaker API operation [ `CreateHumanTaskUi`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHumanTaskUi.html), specify a name for your UI in `HumanTaskUiName` and input your HTML template in `Content` under `UiTemplate`\. Find documentation on language\-specific SDKs that support this API operation in the **See Also** section of the [ `CreateHumanTaskUi`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHumanTaskUi.html)\.
 
 ## Delete a Worker Task Template<a name="sms-delete-worker-task-template"></a>
 
@@ -62,4 +62,4 @@ When you delete a worker task template, you are not able to use human review wor
 1. A modal appears to confirm your choice\. Select **Delete**\.
 
 **Delete a worker task template \(API\)**  
-To delete a worker task template using the SageMaker API operation [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteHumanTaskUi.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteHumanTaskUi.html), specify a name of your UI in `HumanTaskUiName`\. 
+To delete a worker task template using the SageMaker API operation [ `DeleteHumanTaskUi`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteHumanTaskUi.html), specify a name of your UI in `HumanTaskUiName`\. 

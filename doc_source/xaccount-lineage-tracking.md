@@ -72,14 +72,14 @@ In addition to SageMaker automatically creating lineage entities, if you have cr
 ### Accessing lineage resources from a different accounts<a name="tracking-lineage-xaccount-accessing-resources"></a>
 
 Once the cross\-account access for sharing lineage has been set up, you can call the following SageMaker API actions directly with the ARN to describe the shared lineage entities from another account:
-+ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAction.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAction.html)
-+ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeArtifact.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeArtifact.html)
-+ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeContext.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeContext.html)
-+ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrialComponent.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrialComponent.html)
++ [ `DescribeAction`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAction.html)
++ [ `DescribeArtifact`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeArtifact.html)
++ [ `DescribeContext`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeContext.html)
++ [ `DescribeTrialComponent`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrialComponent.html)
 
 You can also manage [Associations ](https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking-entities.html)for lineage entities owned by different accounts that are shared with you, using the following SageMaker API actions: 
-+ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AddAssociation.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AddAssociation.html)
-+ [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteAssociation.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteAssociation.html)
++ [ `AddAssociation`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AddAssociation.html)
++ [ `DeleteAssociation`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteAssociation.html)
 
 For a notebook that demonstrates how to use SageMaker Lineage APIs to query lineage across accounts\., see [sagemaker\-lineage\-cross\-account\-with\-ram\.ipynb](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker-lineage/sagemaker-lineage-cross-account-with-ram.ipynb)\.
 

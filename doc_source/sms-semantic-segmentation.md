@@ -4,7 +4,7 @@ To identify the contents of an image at the pixel level, use an Amazon SageMaker
 
 Images that contain large numbers of objects that need to be segmented require more time\. To help workers \(from a private or vendor workforce\) label these objects in less time and with greater accuracy, Ground Truth provides an AI\-assisted auto\-segmentation tool\. For information, see [Auto\-Segmentation Tool](sms-auto-segmentation.md)\.
 
-You create a semantic segmentation labeling job using the Ground Truth section of the Amazon SageMaker console or the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. 
+You create a semantic segmentation labeling job using the Ground Truth section of the Amazon SageMaker console or the [ `CreateLabelingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. 
 
 **Important**  
 For this task type, if you create your own manifest file, use `"source-ref"` to identify the location of each image file in Amazon S3 that you want labeled\. For more information, see [Input Data](sms-data-input.md)\.

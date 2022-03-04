@@ -8,7 +8,7 @@ A code repository that contains the source code and Dockerfiles for the Spark im
 
 ## Running a Spark Processing Job<a name="use-spark-processing-container-how-to"></a>
 
- You can use the [https://sagemaker.readthedocs.io/en/stable/api/training/processing.html#sagemaker.spark.processing.PySparkProcessor](https://sagemaker.readthedocs.io/en/stable/api/training/processing.html#sagemaker.spark.processing.PySparkProcessor) or [https://sagemaker.readthedocs.io/en/stable/api/training/processing.html#sagemaker.spark.processing.SparkJarProcessor](https://sagemaker.readthedocs.io/en/stable/api/training/processing.html#sagemaker.spark.processing.SparkJarProcessor) class to run your Spark application inside of a processing job\. Note you can set MaxRuntimeInSeconds to a maximum runtime limit of 5 days\. With respect to execution time, and number of instances used, simple spark workloads see a near linear relationship between the number of instances vs\. time to completion\. 
+ You can use the [ `sagemaker.spark.PySparkProcessor`](https://sagemaker.readthedocs.io/en/stable/api/training/processing.html#sagemaker.spark.processing.PySparkProcessor) or [ `sagemaker.spark.SparkJarProcessor`](https://sagemaker.readthedocs.io/en/stable/api/training/processing.html#sagemaker.spark.processing.SparkJarProcessor) class to run your Spark application inside of a processing job\. Note you can set MaxRuntimeInSeconds to a maximum runtime limit of 5 days\. With respect to execution time, and number of instances used, simple spark workloads see a near linear relationship between the number of instances vs\. time to completion\. 
 
  The following code example shows how to run a processing job that invokes your PySpark script `preprocess.py`\. 
 
