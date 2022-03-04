@@ -755,6 +755,6 @@ Preview files are written in CSV format when you select **Run** on the Athena im
 
 The dataset you query is located under the prefix \(directory\): athena/*uuid*/data/, where *uuid* is a unique identifier that gets created for each query\.
 
-For example, if your default bucket is `sagemaker-us-east-1-111122223333`, a single dataset queried from Athena is located in `s3://sagemaker-us-east-1-111122223333`/redshift/*uuid*/data/*example\_dataset\.parquet*\. 
+For example, if your default bucket is `sagemaker-us-east-1-111122223333`, a single dataset queried from Athena is located in `s3://sagemaker-us-east-1-111122223333`/athena/*uuid*/data/*example\_dataset\.parquet*\. 
 
 The subset of the dataset that is stored to preview dataframes in Data Wrangler is stored under the prefix: athena/\.
