@@ -26,6 +26,7 @@ Amazon SageMaker Model Building Pipelines support the following step types:
 + [`ClarifyCheck`](#step-type-clarify-check)
 + [`QualityCheck`](#step-type-quality-check)
 + [EMR](#step-type-emr)
++ [Fail](#step-type-fail)
 
 ### Processing Step<a name="step-type-processing"></a>
 
@@ -643,6 +644,37 @@ step_emr = EMRStep (
  "value": "5"
  }
  ]
+)
+```
+
+### Fail Step<a name="step-type-fail"></a>
+
+You use a `FailStep` to stop an Amazon SageMaker Model Building Pipelines execution when a desired condition or state is not achieved and to mark that pipeline's execution as failed\. The `FailStep` also allows you to enter a custom error message, indicating the cause of the pipeline's execution failure\. 
+
+**Note**  
+When a `FailStep` and other pipeline steps execute concurrently, the pipeline does not terminate until all concurrent steps are completed\.
+
+#### Limitations for using `FailStep`<a name="step-type-fail-limitations"></a>
++ You cannot add a `FailStep` to the `DependsOn` list of other steps\. For more information, see [Custom Dependency Between Steps](#build-and-manage-custom-dependency)\.
++ Other steps cannot reference the `FailStep`\. It is *always* the last step in a pipeline's execution\.
++ You cannot retry a pipeline execution ending with a `FailStep`\.
+
+You can create the `FailStep` `ErrorMessage` in the form of a static text string\. Alternatively, you can also use [Pipeline Parameters](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-parameters.html) a [ Join](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html?highlight=Join#sagemaker.workflow.functions.Join) operation, or other [step properties](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps.html#build-and-manage-properties) to create a more informative error message\.
+
+**Example**  
+The following example code snippet uses a `FailStep` with an `ErrorMessage` configured with Pipeline Parameters and a `Join` operation\.  
+
+```
+from sagemaker.workflow.fail_step import FailStep
+from sagemaker.workflow.functions import Join
+from sagemaker.workflow.parameters import ParameterInteger
+
+mse_threshold_param = ParameterInteger(name="MseThreshold", default_value=5)
+step_fail = FailStep(
+    name="AbaloneMSEFail",
+    error_message=Join(
+        on=" ", values=["Execution failed due to MSE >", mse_threshold_param]
+    ),
 )
 ```
 

@@ -4,7 +4,7 @@ To extract information from unstructured text and classify it into predefined ca
 
 When tasked with a named entity recognition labeling job, workers apply your labels to specific words or phrases within a larger text block\. They choose a label, then apply it by using the cursor to highlight the part of the text to which the label applies\. The Ground Truth named entity recognition tool supports overlapping annotations, in\-context label selection, and multi\-label selection for a single highlight\. Also, workers can use their keyboards to quickly select labels\.
 
-You can create a named entity recognition labeling job using the Ground Truth section of the Amazon SageMaker console or the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\.
+You can create a named entity recognition labeling job using the Ground Truth section of the Amazon SageMaker console or the [ `CreateLabelingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\.
 
 **Important**  
 If you manually create an input manifest file, use `"source"` to identify the text that you want labeled\. For more information, see [Input Data](sms-data-input.md)\.

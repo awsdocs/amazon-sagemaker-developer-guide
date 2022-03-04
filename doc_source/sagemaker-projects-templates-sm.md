@@ -10,6 +10,8 @@ SageMaker project templates offer you the following choice of code repositories,
 + **CI/CD workflow automation**: AWS CodePipeline or Jenkins
 + **Pipeline stages**: Model building and training, model deployment, or both
 
+Each of the following topics corresponds to a template you can choose when you create your SageMaker project\. You can view the available templates in [ Step 1: Create the Project](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects-walkthrough.html#sagemaker-proejcts-walkthrough-create) of the [Project walkthrough](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects-walkthrough.html)\.
+
 **Topics**
 + [MLOps template for model building, training, and deployment](#sagemaker-projects-templates-code-commit)
 + [MLOps template for model building, training, deployment, and Amazon SageMaker Model Monitor](#sagemaker-projects-templates-model-building-training-deployment-model-monitor)
@@ -30,6 +32,9 @@ This template provides the following resources:
 + An AWS CodeCommit repository that contains sample code that creates an Amazon SageMaker Model Building Pipelines pipeline in Python code and shows how to create and update the SageMaker pipeline\. This repository also has a Python Jupyter Notebook that you can open and run in Studio\.
 + An AWS CodePipeline pipeline that has source and build steps\. The source step points to the CodeCommit repository\. The build step gets the code from that repository, creates and updates the SageMaker pipeline, starts a pipeline execution, and waits for the pipeline execution to complete\.
 + An Amazon S3 bucket to store artifacts, including CodePipeline and CodeBuild artifacts, and any artifacts generated from the SageMaker pipeline runs\.
+The following diagram illustrates the workflow and AWS resources used by this template to help you build and train your models\.  
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/template_build.jpg)
 
 **MLOps template for model deployment**  
 Use this template to automate the deployment of models in the SageMaker model registry to SageMaker endpoints for real\-time inference\. This template recognizes changes in the model registry\. When a new model version is registered and approved, it automatically initiates a deployment\.  
@@ -41,6 +46,9 @@ This template provides the following resources:
   There is also a programmatic approval step with placeholder tests in the example code in the CodeCommit repository\. You can add additional tests to replace the placeholders tests\.
 + An Amazon S3 bucket to store artifacts, including CodePipeline and CodeBuild artifacts, and any artifacts generated from the SageMaker pipeline runs\.
 + A CloudWatch event to initiate the pipeline when a model package version is approved or rejected\.
+The following diagram illustrates the workflow and AWS resources used by this template to help you deploy your models\.  
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/template_deploy.jpg)
 
 ## MLOps template for model building, training, deployment, and Amazon SageMaker Model Monitor<a name="sagemaker-projects-templates-model-building-training-deployment-model-monitor"></a>
 

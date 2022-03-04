@@ -2,6 +2,9 @@
 
 You can share the models that you've built with data scientists\. They can review the models and give you feedback\.
 
+**Note**  
+You can't share **Quick build** or time series models\.
+
 Use the following procedure to share a model\.
 
 To share a model, do the following\.

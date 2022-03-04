@@ -1,7 +1,7 @@
 # SDK examples: Use Amazon SageMaker with Apache Spark<a name="apache-spark-additional-examples"></a>
 
 The following list is a subset of available examples\. Visit the [examples website](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-spark/index.html) to see more\.
-+ [https://github.com/aws/sagemaker-spark/](https://github.com/aws/sagemaker-spark/): a Spark library for SageMaker
++ [ `sagemaker-spark`](https://github.com/aws/sagemaker-spark/): a Spark library for SageMaker
 + [ SageMaker PySpark K\-Means Clustering MNIST Example](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-spark/pyspark_mnist/pyspark_mnist_kmeans.html)
 + [ Distributed Data Processing using Apache Spark and SageMaker Processing](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker_processing/spark_distributed_data_processing/sagemaker-spark-processing.html)
 

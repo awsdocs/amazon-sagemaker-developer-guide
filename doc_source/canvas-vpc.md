@@ -4,7 +4,7 @@ You can run Amazon SageMaker Canvas in a Amazon Virtual Private Cloud that you'v
 
 SageMaker Canvas only accesses other AWS services to manage and store data for its functionality\. For example, it connects to Amazon Redshift if your users access a Amazon Redshift database\. It can connect to an AWS service such as Amazon Redshift using an internet connection or a VPC endpoint\.
 
-Use a VPC endpoint if you want a private connection to an AWS service that uses a networking path that is isolated from the public internet\. For example, if you access Amazon S3 using a VPC endpoint, the SageMaker Canvas application that you're using within the VPC accesses S3 through the endpoint\. The communication between SageMaker Canvas and S3 is private\. You can specify endpoints for the following services:
+Use a VPC endpoint if you want a private connection to an AWS service that uses a networking path that is isolated from the public internet\. For example, if you access Amazon S3 using a VPC endpoint, the SageMaker Canvas application that you're using within the VPC accesses Amazon S3 through the endpoint\. The communication between SageMaker Canvas and Amazon S3 is private\. You can specify endpoints for the following services:
 + Amazon Athena
 + Amazon SageMaker
 + AWS Security Token Service

@@ -2,7 +2,7 @@
 
 This section explains how SageMaker makes training information, such as training data, hyperparameters, and other configuration information, available to your Docker container\. 
 
-When you send a [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) request to SageMaker to start model training, you specify the Amazon Elastic Container Registry \(Amazon ECR\) path of the Docker image that contains the training algorithm\. You also specify the Amazon Simple Storage Service \(Amazon S3\) location where training data is stored and algorithm\-specific parameters\. SageMaker makes this information available to the Docker container so that your training algorithm can use it\. This section explains how we make this information available to your Docker container\. For information about creating a training job, see `CreateTrainingJob`\. For more information on the way that SageMaker containers organize information, see [Using the SageMaker Training and Inference Toolkits ](amazon-sagemaker-toolkits.md)\.
+When you send a [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) request to SageMaker to start model training, you specify the Amazon Elastic Container Registry \(Amazon ECR\) path of the Docker image that contains the training algorithm\. You also specify the Amazon Simple Storage Service \(Amazon S3\) location where training data is stored and algorithm\-specific parameters\. SageMaker makes this information available to the Docker container so that your training algorithm can use it\. This section explains how we make this information available to your Docker container\. For information about creating a training job, see `CreateTrainingJob`\. For more information on the way that SageMaker containers organize information, see [Using the SageMaker Training and Inference Toolkits ](amazon-sagemaker-toolkits.md)\.
 
 **Topics**
 + [Hyperparameters](#your-algorithms-training-algo-running-container-hyperparameters)
@@ -49,7 +49,7 @@ SageMaker provides only relevant information about each data channel \(for examp
 
 ## Training Data<a name="your-algorithms-training-algo-running-container-trainingdata"></a>
 
-The `TrainingInputMode` parameter in the `AlgorithmSpecification` of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) request specifies how the training dataset is made available\. The following input modes are available:
+The `TrainingInputMode` parameter in the `AlgorithmSpecification` of the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) request specifies how the training dataset is made available\. The following input modes are available:
 + **`File` mode**
   + `TrainingInputMode` parameter written to `inputdataconfig.json`: "File"
   + Data channel directory in the Docker container: `/opt/ml/input/data/channel_name`
@@ -90,6 +90,8 @@ A trailing forward slash is recommended to define a channel corresponding to a f
   1. After closing the first pipe file, look for `/opt/ml/input/data/training_1` and read it until you have completed the second epoch, and so on\.
 
   If the file for a given epoch doesn't exist yet, your code may need to retry until the pipe is created There is no sequencing restriction across channel types\. For example, you can read multiple epochs for the `training` channel and only start reading the `validation` channel when you are ready\. Or, you can read them simultaneously if your algorithm requires that\.
+
+  For an example of a Jupyter notebook that shows how to use Pipe mode when bringing your own container, see [Bring your own pipe\-mode algorithm to Amazon SageMaker](https://github.com/aws/amazon-sagemaker-examples/blob/main/advanced_functionality/pipe_bring_your_own/pipe_bring_your_own.ipynb)\.
 
 ## Distributed Training Configuration<a name="your-algorithms-training-algo-running-container-dist-training"></a>
 

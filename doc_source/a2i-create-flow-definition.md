@@ -7,7 +7,7 @@ Use an Amazon Augmented AI \(Amazon A2I\) *human review workflow*, or *flow defi
 + The configuration of your worker tasks, including the number of workers that receive a task and time limits to complete tasks 
 + Where your output data is stored 
 
-You can create a human review workflow in the SageMaker console or using the SageMaker [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html) operation\. You can build a worker task template using the console for Amazon Textract and Amazon Rekognition task types while creating your flow definition\.
+You can create a human review workflow in the SageMaker console or using the SageMaker [ `CreateFlowDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html) operation\. You can build a worker task template using the console for Amazon Textract and Amazon Rekognition task types while creating your flow definition\.
 
 **Important**  
 Human loop activation conditions, which initiate the human loop—for example, confidence thresholds—aren't available for Amazon A2I custom task types\. When using the console to create a flow definition for a custom task type, you can't specify activation conditions\. When using the Amazon A2I API to create a flow definition for a custom task type, you can't set the `HumanLoopActivationConditions` attribute of the `HumanLoopActivationConditionsConfig` parameter\. To control when human reviews are initiated, specify conditions under which `StartHumanLoop` is called in your custom application\. In this case, every `StartHumanLoop` invocation results in a human review\. For more information, see [Use Amazon Augmented AI with Custom Task Types](a2i-task-types-custom.md)\.
@@ -92,7 +92,7 @@ If you are using a built\-in task type, you can use the flow definition ARN to s
 
 To create a flow definition using the SageMaker API, you use the `CreateFlowDefinition` operation\. After you complete the [Prerequisites to Using Augmented AI](a2i-getting-started-prerequisites.md), use the following procedure to learn how to use this API operation\. 
 
-For an overview of the `CreateFlowDefinition` operation, and details about each parameter, see [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html)\. 
+For an overview of the `CreateFlowDefinition` operation, and details about each parameter, see [ `CreateFlowDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFlowDefinition.html)\. 
 
 **To create a flow definition \(API\)**
 

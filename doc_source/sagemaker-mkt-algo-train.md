@@ -53,7 +53,7 @@ You can create use an algorithm resource to create a training job by using the A
 
       1. For **Record wrapper**, choose `RecordIO` if the algorithm expects data in the `RecordIO` format\.
 
-      1. For **S3 data type**, **S3 data distribution type**, and **S3 location**, specify the appropriate values\. For information about what these values mean, see [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_S3DataSource.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_S3DataSource.html)\.
+      1. For **S3 data type**, **S3 data distribution type**, and **S3 location**, specify the appropriate values\. For information about what these values mean, see [ `S3DataSource`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_S3DataSource.html)\.
 
       1. For **Input mode**, choose **File** to download the data from to the provisioned ML storage volume, and mount the directory to a Docker volume\. Choose **Pipe**To stream data directly from Amazon S3 to the container\.
 
@@ -73,7 +73,7 @@ You use the model artifacts stored at this location to create a model or model p
 
 ## Use an Algorithm to Run a Training Job \(API\)<a name="sagemaker-mkt-algo-train-api"></a>
 
-To use an algorithm to run a training job by using the SageMaker API, specify either the name or the Amazon Resource Name \(ARN\) as the `AlgorithmName` field of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AlgorithmSpecification.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AlgorithmSpecification.html) object that you pass to [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html)\. For information about training models in SageMaker, see [Train a Model with Amazon SageMaker](how-it-works-training.md)\.
+To use an algorithm to run a training job by using the SageMaker API, specify either the name or the Amazon Resource Name \(ARN\) as the `AlgorithmName` field of the [ `AlgorithmSpecification`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AlgorithmSpecification.html) object that you pass to [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html)\. For information about training models in SageMaker, see [Train a Model with Amazon SageMaker](how-it-works-training.md)\.
 
 ## Use an Algorithm to Run a Training Job \([Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\)<a name="sagemaker-mkt-algo-train-sdk"></a>
 

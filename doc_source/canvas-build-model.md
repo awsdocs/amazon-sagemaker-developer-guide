@@ -16,13 +16,15 @@ Amazon SageMaker Canvas predicts the value of the **Target column** by using the
 
 The **Build model** page shows a preview of 100 rows in your dataset\. The preview is the first 100 rows of a random sample of 20,000 rows in your dataset\. You can choose a column in the preview to get summary statistics for the random sample, such as the mean and the mode\.
 
-While Amazon SageMaker Canvas is building the model, it automatically adds missing values for datasets that don't have time series data\. SageMaker Canvas uses the values in your dataset to perform a mathematical approximation for the missing values\. For the highest model accuracy, we recommend adding in the missing data if you can find it\.
+To build your model, you can choose either a **Quick build** or a **Standard build**\. The **Quick build** usually takes 2\-15 minutes to build the model, whereas the **Standard build** usually takes 2\-4 hours and generally has a higher accuracy\.
+
+While Amazon SageMaker Canvas builds the model, it automatically adds missing values for datasets that don't have time series data\. SageMaker Canvas uses the values in your dataset to perform a mathematical approximation for the missing values\. For the highest model accuracy, we recommend adding in the missing data if you can find it\.
 
 Amazon SageMaker Canvas can make time series forecasts on your data\. Time series forecasts are useful for when you make predictions over a period of time\. For information about time series forecasts, see [Time Series Forecasts in Amazon SageMaker Canvas](canvas-time-series.md)\.
 
 ## Preview a Model<a name="canvas-preview-model"></a>
 
-Amazon SageMaker Canvas gives you the ability to get insights from your data before you build a model by choosing **Preview model**\. For example, you can see how the data in each column is distributed\. For models built using categorical data, you can also choose **Preview model** to generate an **Estimated accuracy** prediction of how well the model can analyze your data\. Doing a **Quick build** or a **Standard build** gives you a model that has a higher accuracy than the **Estimated accuracy**\.
+Amazon SageMaker Canvas gives you the ability to get insights from your data before you build a model by choosing **Preview model**\. For example, you can see how the data in each column is distributed\. For models built using categorical data, you can also choose **Preview model** to generate an **Estimated accuracy** prediction of how well the model might analyze your data\. The accuracy of a **Quick build** or a **Standard build** represents how well the model can perform on real data and is generally higher than the **Estimated accuracy**\.
 
 Amazon SageMaker Canvas automatically handles missing values in your dataset while it builds the model\. It infers the missing values by using adjacent values that are present in the dataset\.
 

@@ -54,7 +54,7 @@ The following procedure shows how to add users to a Amazon SageMaker Domain crea
 
 1.  Select **Assign users and groups**\. This opens a new Assign users and groups page\. 
 
-1.  Select a user or group from the list\. For information about adding users and groups, see [Manage identities in AWSAWS SSO](https://docs.aws.amazon.com/singlesignon/latest/userguide/manage-your-identity-source-sso.html)\. 
+1.  Select a user or group from the list\. For information about adding users and groups, see [Manage identities in AWS AWS SSO](https://docs.aws.amazon.com/singlesignon/latest/userguide/manage-your-identity-source-sso.html)\. 
 
 1.  Select **Assign users and groups**\. 
 

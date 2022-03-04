@@ -37,7 +37,7 @@ After you create a deployable model, you can use it to set up an endpoint for re
 
 ## Use a Model Package to Create a Model \(API\)<a name="sagemaker-mkt-model-pkg-model-api"></a>
 
-To use a model package to create a deployable model by using the SageMaker API, specify the name or the Amazon Resource Name \(ARN\) of the model package as the `ModelPackageName` field of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ContainerDefinition.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ContainerDefinition.html) object that you pass to the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) API\.
+To use a model package to create a deployable model by using the SageMaker API, specify the name or the Amazon Resource Name \(ARN\) of the model package as the `ModelPackageName` field of the [ `ContainerDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ContainerDefinition.html) object that you pass to the [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) API\.
 
 After you create a deployable model, you can use it to set up an endpoint for real\-time inference or create a batch transform job to get inferences on entire datasets\. For information about hosted endpoints in SageMaker, see [Deploy Models for Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html)\.
 

@@ -135,7 +135,7 @@ The following sections can help you troubleshoot errors with multi\-container en
 
 ### Missing accept\-bind\-to\-port=true Docker label<a name="multi-container-missing-accept"></a>
 
-The containers in a multi\-container endpoints listen on the port specified in the `SAGEMAKER_BIND_TO_PORT` environment variable instead of f port 8080\. When a container runs in a multi\-container endpoint, SageMaker automatically provides this environment variable to the container\. If this environment variable isn't present, containers default to using port 8080\. To indicate that your container complies with this requirement, use the following command to add a label to your Dockerfile: 
+The containers in a multi\-container endpoints listen on the port specified in the `SAGEMAKER_BIND_TO_PORT` environment variable instead of port 8080\. When a container runs in a multi\-container endpoint, SageMaker automatically provides this environment variable to the container\. If this environment variable isn't present, containers default to using port 8080\. To indicate that your container complies with this requirement, use the following command to add a label to your Dockerfile: 
 
 ```
 LABEL com.amazonaws.sagemaker.capabilities.accept-bind-to-port=true

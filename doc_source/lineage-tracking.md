@@ -5,9 +5,6 @@ Amazon SageMaker ML Lineage Tracking creates and stores information about the st
 With SageMaker Lineage Tracking data scientists and model builders can do the following:
 + Keep a running history of model discovery experiments\.
 + Establish model governance by tracking model lineage artifacts for auditing and compliance verification\.
-+ Clone and rerun ML workflows to experiment with what\-if scenarios while developing models\.
-+ Share a workflow that colleagues can reproduce and enhance \(for example, while collaborating on solving a business problem\)\.
-+ Clone and rerun ML workflows with additional debugging or logging routines, or new input variations for troubleshooting issues in production models\.
 
 **Topics**
 + [Lineage Tracking Entities](lineage-tracking-entities.md)

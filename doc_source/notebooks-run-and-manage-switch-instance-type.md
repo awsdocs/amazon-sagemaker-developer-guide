@@ -1,8 +1,10 @@
 # Change an Instance Type<a name="notebooks-run-and-manage-switch-instance-type"></a>
 
-When you open a new notebook for the first time, you are assigned a default Amazon Elastic Compute Cloud \(Amazon EC2\) instance type to run the notebook\. When you open additional notebooks on the same instance type, the notebooks run on the same instance as the first notebook, even if the notebooks use different kernels\.
+When you open a new Studio notebook for the first time, you are assigned a default Amazon Elastic Compute Cloud \(Amazon EC2\) instance type to run the notebook\. When you open additional notebooks on the same instance type, the notebooks run on the same instance as the first notebook, even if the notebooks use different kernels\. 
 
-You can change the instance type that your notebook runs on from within the notebook\.
+You can change the instance type that your Studio notebook runs on from within the notebook\. 
+
+The following information only applies to Studio notebooks\. For information on how to change the instance type of a Amazon SageMaker notebook instance, see [Update a Notebook Instance](nbi-update.md)\.
 
 **Important**  
 If you change the instance type, unsaved information and existing settings for the notebook are lost, and installed packages must be re\-installed\.  

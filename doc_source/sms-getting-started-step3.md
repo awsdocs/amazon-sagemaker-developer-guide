@@ -1,6 +1,6 @@
 # Step 3: Select Workers<a name="sms-getting-started-step3"></a>
 
-In this step you choose a workforce for labeling your dataset\. It is recommended that you create a private workforce to test Amazon SageMaker Ground Truth\. Use email addresses to invite the members of your workforce\. If you create a private workforce in this step you won't be able to import your Amazon Cognito user pool later\. If you want to create a private workforce using an Amazon Cognito user poll, see [Manage a Private Workforce \(Amazon Cognito\)](sms-workforce-management-private.md) and use the Mechanical Turk workforce instead in this tutorial\.
+In this step you choose a workforce for labeling your dataset\. It is recommended that you create a private workforce to test Amazon SageMaker Ground Truth\. Use email addresses to invite the members of your workforce\. If you create a private workforce in this step you won't be able to import your Amazon Cognito user pool later\. If you want to create a private workforce using an Amazon Cognito user pool, see [Manage a Private Workforce \(Amazon Cognito\)](sms-workforce-management-private.md) and use the Mechanical Turk workforce instead in this tutorial\.
 
 **Tip**  
 To learn about the other workforce options you can use with Ground Truth, see [Create and Manage Workforces](sms-workforce-management.md)\. 

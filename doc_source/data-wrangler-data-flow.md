@@ -4,7 +4,9 @@ Use an Amazon SageMaker Data Wrangler flow, or a *data flow*, to create and modi
 
 ## Instances<a name="data-wrangler-data-flow-instances"></a>
 
-When creating a Data Wrangler flow, you can select an ml\.m5 instance from the following table:
+When you create a Data Wrangler flow in Amazon SageMaker Studio, Data Wrangler uses an ml\.m5\.4xlarge instance\.
+
+When you export your data using an Amazon SageMaker processing job, you can use one of the following instances\. For more information on exporting your data, see [Export](data-wrangler-data-export.md)\.
 
 
 | Standard Instances | vCPU | Memory | 
