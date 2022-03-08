@@ -22,22 +22,28 @@ To register a model version by using Boto3, call the `create_model_package` meth
 First, you set up the parameter dictionary to pass to the `create_model_package` method\.
 
 ```
+# Specify the model source
+model_url = "s3://your-bucket-name/model.tar.gz"
+
 modelpackage_inference_specification =  {
     "InferenceSpecification": {
       "Containers": [
          {
             "Image": '257758044811.dkr.ecr.us-east-2.amazonaws.com/sagemaker-xgboost:1.2-1',
+            # You can specify the model data url like so
+            "ModelDataUrl": model_url
          }
       ],
       "SupportedContentTypes": [ "text/csv" ],
       "SupportedResponseMIMETypes": [ "text/csv" ],
    }
  }
+ 
 # Specify the model source
 model_url = "s3://your-bucket-name/model.tar.gz"
 
-# Specify the model data
-modelpackage_inference_specification["InferenceSpecification"]["Containers"][0]["ModelDataUrl"]=model_url
+# You can also specify the model data like so
+# modelpackage_inference_specification["InferenceSpecification"]["Containers"][0]["ModelDataUrl"]=model_url
 
 create_model_package_input_dict = {
     "ModelPackageGroupName" : model_package_group_name,
@@ -100,7 +106,7 @@ ecr_repository_policy = json.dumps(ecr_repository_policy)
 # Set the new ECR policy
 ecr = boto3.client('ecr')
 respose = ecr.set_repository_policy(
-    registryId = account,
+    registryId = source_account_id,
     repositoryName = 'decision-trees-sample',
     policyText = ecr_repository_policy
 )
@@ -146,7 +152,7 @@ The following configuration needs to be put in the cross\-account where the mode
 # source account id where the training is done
 source_account_id = '111111111111'
 
-# 1. Create policy for access to the ModelPackageGroup by source account
+# 1. Create policy for accessing to the ModelPackageGroup by source account
 model_package_group_policy = {'Version': '2012-10-17',
     'Statement': [
         {
@@ -154,7 +160,7 @@ model_package_group_policy = {'Version': '2012-10-17',
             'Effect': 'Allow',
             'Principal': {'AWS': f'arn:aws:iam::{source_account_id}:root'
             'Action': ["sagemaker:CreateModelPackage"],
-            'Resource': f'arn:aws:sagemaker:{region}:{account}:model-package/{model_package_group_name}/*'
+            'Resource': f'arn:aws:sagemaker:{region}:{cross_account_id}:model-package/{model_package_group_name}/*'
         }
     ]
 }
@@ -168,15 +174,20 @@ response = sm_client.put_model_package_group_policy(
     ResourcePolicy = model_package_group_policy)
 ```
 
-Finally, use the `create_model_package` action from the source account to access the cross\-account register model package\.
+Finally, use the `create_model_package` action from the source account to register the model package in the cross\-account\.
 
 ```
+# Specify the model source
+model_url = "s3://your-bucket-name/model.tar.gz"
+
 #Set up the parameter dictionary to pass to the create_model_package method
 modelpackage_inference_specification =  {
     "InferenceSpecification": {
         "Containers": [
             {
                 "Image": '257758044811.dkr.ecr.us-east-2.amazonaws.com/sagemaker-xgboost:1.2-1',
+                # You can specify the model data url like so
+                "ModelDataUrl": model_url
             }
         ],
         "SupportedContentTypes": [ "text/csv" ],
@@ -184,11 +195,8 @@ modelpackage_inference_specification =  {
     }
 }
  
-# Specify the model source
-model_url = "s3://your-bucket-name/model.tar.gz"
-
-# Specify the model data
-modelpackage_inference_specification["InferenceSpecification"]["Containers"][0]["ModelDataUrl"]=model_url
+# You can also specify the model data like so
+# modelpackage_inference_specification["InferenceSpecification"]["Containers"][0]["ModelDataUrl"]=model_url
 
 create_model_package_input_dict = {
     "ModelPackageGroupName" : model_package_group_arn,
