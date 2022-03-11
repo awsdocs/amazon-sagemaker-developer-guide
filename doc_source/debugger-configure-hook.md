@@ -42,7 +42,7 @@ collection_configs=[
 ]
 ```
 
-For more information about available parameter keys, see [CollectionConfig](https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html                 #sagemaker.debugger.CollectionConfig) in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\. For example, the following code example shows how you can adjust the save intervals of the "losses" tensor collection at different phases of training: save loss every 100 steps in training phase and validation loss every 10 steps in validation phase\. 
+For more information about available parameter keys, see [CollectionConfig](https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html#sagemaker.debugger.CollectionConfig) in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\. For example, the following code example shows how you can adjust the save intervals of the "losses" tensor collection at different phases of training: save loss every 100 steps in training phase and validation loss every 10 steps in validation phase\. 
 
 ```
 from sagemaker.debugger import CollectionConfig
