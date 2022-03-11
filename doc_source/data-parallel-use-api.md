@@ -1,4 +1,4 @@
-# Run a SageMaker Distributed Data Parallel Training Job<a name="data-parallel-use-api"></a>
+# Step 2: Launch a SageMaker Distributed Training Job Using the SageMaker Python SDK<a name="data-parallel-use-api"></a>
 
 Learn how to run a distributed data parallel training job using the SageMaker Python SDK and your adapted training script with SageMaker's distributed data parallel library\. For API specifications, refer to [distributed data parallel](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html) in the SageMaker Python SDK documentation\.
 
@@ -10,44 +10,20 @@ To use SageMaker's distributed data parallel library, you start with a training
 
 With either option, you can then use the [Amazon SageMaker Distributed Training Notebook Examples](distributed-training-notebook-examples.md) provided with this documentation to get started\.  
 
-## Use the Data Parallel Library with SageMaker's Python SDK<a name="data-parallel-use-python-skd-api"></a>
-
-To use SageMaker's distributed data parallel library, you must create a training script for one of the supported frameworks and launch the training job using the SageMaker Python SDK\. To learn how you can incorporate the library into a training script, see [Modify Your Training Script Using the SageMaker Data Parallel Library](data-parallel-modify-sdp.md)\. The library API documentation is located in the SageMaker Python SDK\. See SageMaker's [data parallel API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html)\. 
-
-SageMaker supports the following training environment configurations:
-+ You can use a prebuilt TensorFlow or PyTorch container\.
-+ You can customize SageMaker prebuilt containers or extend them to handle any additional functional requirements for your algorithm or model that the prebuilt SageMaker Docker image doesn't support\. For an example of how you can extend a pre\-built container, see [Extend a Prebuilt Container](https://docs.aws.amazon.com/sagemaker/latest/dg/prebuilt-containers-extend.html)\.
-
-  To extend a pre\-built container, or adapt your own container to use the library, you must use one of the PyTorch or TensorFlow GPU general framework base\-images\. The distributed data parallel library is included in all CUDA 11 \(`cu11x`\) TensorFlow 2\.3\.x and PyTorch 1\.6\.x versioned images and later\. See [Available Deep Learning Containers Images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md) for a list of available images\. 
-**Important**  
-It is recommended that you use the image that contains the latest version of TensorFlow or PyTorch to access the most up to date version of the SageMaker distributed data parallel library\. All images that include TensorFlow 2\.4\.1 and PyTorch 1\.8\.1 versions and later support EFA instance types \(`ml.p3dn.24xlarge`, `ml.p4d.24xlarge`\)\.
-
-  For example, if you are using PyTorch 1\.8\.1, your Dockerfile should contain a `FROM` statement similar to the following:
-
-  ```
-  # SageMaker PyTorch image
-  FROM 763104351884.dkr.ecr.us-east-1.amazonaws.com/pytorch-training:1.8.1-gpu-py36-cu111-ubuntu18.04
-  
-  ENV PATH="/opt/ml/code:${PATH}"
-  
-  # this environment variable is used by the SageMaker PyTorch container to determine our user code directory.
-  ENV SAGEMAKER_SUBMIT_DIRECTORY /opt/ml/code
-  
-  # /opt/ml and all subdirectories are utilized by SageMaker, use the /code subdirectory to store your user code.
-  COPY cifar10.py /opt/ml/code/cifar10.py
-  
-  # Defines cifar10.py as script entrypoint
-  ENV SAGEMAKER_PROGRAM cifar10.py
-  ```
-+ You can adapt your own Docker container to work with SageMaker using the [SageMaker Training toolkit](https://github.com/aws/sagemaker-training-toolkit)\. For an example, see [Adapting Your Own Training Container](https://docs.aws.amazon.com/sagemaker/latest/dg/adapt-training-container.html)\.
-
 In all cases, you launch your job using a SageMaker Python SDK `Estimator`\.
 
 If you are using the SageMaker pre\-built PyTorch or TensorFlow containers, see the following section to learn how configure an `Estimator` to use the library\.
 
 If you bring your own container or extend a pre\-built container, you can create an instance of the `Estimator` class with the desired Docker image\.
 
-## TensorFlow Estimator<a name="data-parallel-tensorflow-api"></a>
+Your training datasets should be in an Amazon S3 bucket or in [FSx for Lustre](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html) in the AWS Region in which you are launching your training job\. If you use the Jupyter Notebooks provided, create a SageMaker notebook instance in the same Region as the bucket that contains your input data\. For more information about storing your training data, refer to the [SageMaker Python SDK data inputs](https://sagemaker.readthedocs.io/en/stable/overview.html#use-file-systems-as-training-input) documentation\. 
+
+**Tip**  
+Consider using FSx for Lustre instead of Amazon S3 to increase training performance\. Amazon FSx has higher throughput and lower latency than Amazon S3\. 
+
+Choose one of the following topics for instructions on how to adapt the library to your TensorFlow or PyTorch training scripts\. After you launch a training job, you can monitor system utilization and model performance using [Amazon SageMaker Debugger](train-debugger.md) or Amazon CloudWatch\.
+
+## Using the SageMaker TensorFlow Estimator<a name="data-parallel-tensorflow-api"></a>
 
 You can use SageMaker's [distributed data parallel library API](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html) by specifying `smdistributed dataparallel` as the `distribution` strategy in the SageMaker TensorFlow Estimator API\. Refer to [SageMaker TensorFlow Estimator API documentation](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/sagemaker.tensorflow.html#tensorflow-estimator) for full details about the API\.
 
@@ -75,7 +51,7 @@ The following two parameters of the SageMaker Python SDK TensorFlow estimator ar
   ```
 
  **`train_instance_type (str)(required)`**: A type of Amazon EC2 instance to use\. 
-+ If the `smdistributed.dataparallel` distribution strategy is used, the allowed instance types are: `ml.p4d.24xlarge`, `ml.p3dn.24xlarge`, and `ml.p3.16xlarge`\. For best performance, it is recommended that you use an EFA supported instance, `ml.p3dn.24xlarge` or `ml.p4d.24xlarge`, with the latest supported version of TensorFlow\.
++ If the `smdistributed.dataparallel` distribution strategy is used, the allowed instance types are: `ml.p4d.24xlarge`, `ml.p3dn.24xlarge`, and `ml.p3.16xlarge`\. For best performance, we recommend that you use an EFA supported instance, `ml.p3dn.24xlarge` or `ml.p4d.24xlarge`, with the latest supported version of TensorFlow\.
 
  **Example** 
 
@@ -115,7 +91,7 @@ tf_estimator = TensorFlow(
 tf_estimator.fit("s3://bucket/path/to/training/data")
 ```
 
-## PyTorch Estimator<a name="data-parallel-pytorch-api"></a>
+## Using the SageMaker PyTorch Estimator<a name="data-parallel-pytorch-api"></a>
 
 You can use SageMaker's [distributed data parallel library API](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html) by specifying `smdistributed dataparallel` as the `distribution` strategy in SageMaker PyTorch Estimator API\. Refer to the [SageMaker PyTorch Estimator API specification](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/sagemaker.pytorch.html#pytorch-estimator) for full details of the API\. 
 
@@ -124,7 +100,7 @@ You can use SageMaker's [distributed data parallel library API](https://sagemak
 The following two parameters of the SageMaker PyTorch `Estimator` are necessary for using `smdistributed.dataparallel` on SageMaker with PyTorch\. 
 
 `distribution (dict)(optional):`  A dictionary with information on how to run distributed training \(default: `None`\)\.  
-+ To use`smdistributed.dataparallel` as a distribution strategy, use the following option: 
++ To use `smdistributed.dataparallel` as a distribution strategy, use the following option: 
 
   ```
   distribution={ "smdistributed": { "dataparallel": { "enabled": True } } } 
@@ -143,7 +119,7 @@ The following two parameters of the SageMaker PyTorch `Estimator` are necessary 
   ```
 
  **`train_instance_type (str)(required)`**: A type of Amazon EC2 instance to use\. 
-+ If the `smdistributed.dataparallel` distribution strategy is used, the allowed instance types are: `ml.p4d.24xlarge`, `ml.p3dn.24xlarge`, and `ml.p3.16xlarge`\. For best performance, it is recommended that you use an EFA supported instance, `ml.p3dn.24xlarge` or `ml.p4d.24xlarge`, with the latest supported version of PyTorch\.
++ If the `smdistributed.dataparallel` distribution strategy is used, the allowed instance types are: `ml.p4d.24xlarge`, `ml.p3dn.24xlarge`, and `ml.p3.16xlarge`\. For best performance, we recommend that you use an EFA supported instance, `ml.p3dn.24xlarge` or `ml.p4d.24xlarge`, with the latest supported version of PyTorch\.
 
  **Example** 
 
@@ -181,3 +157,34 @@ pt_estimator = PyTorch(
                       )
 pt_estimator.fit("s3://bucket/path/to/training/data")                       
 ```
+
+## Using the SageMaker Estimator to Extend Prebuilt Containers<a name="data-parallel-use-python-skd-api"></a>
+
+To use SageMaker's distributed data parallel library, you must create a training script for one of the supported frameworks and launch the training job using the SageMaker Python SDK\. To learn how you can incorporate the library into a training script, see [Run a SageMaker Distributed Training Job with Data Parallelism](data-parallel-modify-sdp.md)\. The library API documentation is located in the SageMaker Python SDK\. See SageMaker's [data parallel API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html)\. 
+
+SageMaker supports the following training environment configurations:
++ You can use a prebuilt TensorFlow or PyTorch container\.
++ You can customize SageMaker prebuilt containers or extend them to handle any additional functional requirements for your algorithm or model that the prebuilt SageMaker Docker image doesn't support\. For an example of how you can extend a pre\-built container, see [Extend a Prebuilt Container](https://docs.aws.amazon.com/sagemaker/latest/dg/prebuilt-containers-extend.html)\.
+
+  To extend a pre\-built container or adapt your own container to use the library, you must use one of the PyTorch or TensorFlow GPU general framework base\-images\. The distributed data parallel library is included in all CUDA 11 \(`cu11x`\) TensorFlow 2\.3\.x and PyTorch 1\.6\.x versioned images and later\. See [Available Deep Learning Containers Images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md) for a list of available images\. 
+**Important**  
+We recommend that you use the image that contains the latest version of TensorFlow or PyTorch to access the latest version of the SageMaker distributed data parallel library\. All images that include TensorFlow 2\.4\.1 and PyTorch 1\.8\.1 versions and later support EFA instance types \(`ml.p3dn.24xlarge`, `ml.p4d.24xlarge`\)\.
+
+  For example, if you are using PyTorch 1\.8\.1, your Dockerfile should contain a `FROM` statement similar to the following:
+
+  ```
+  # SageMaker PyTorch image
+  FROM 763104351884.dkr.ecr.us-east-1.amazonaws.com/pytorch-training:1.8.1-gpu-py36-cu111-ubuntu18.04
+  
+  ENV PATH="/opt/ml/code:${PATH}"
+  
+  # this environment variable is used by the SageMaker PyTorch container to determine our user code directory.
+  ENV SAGEMAKER_SUBMIT_DIRECTORY /opt/ml/code
+  
+  # /opt/ml and all subdirectories are utilized by SageMaker, use the /code subdirectory to store your user code.
+  COPY cifar10.py /opt/ml/code/cifar10.py
+  
+  # Defines cifar10.py as script entrypoint
+  ENV SAGEMAKER_PROGRAM cifar10.py
+  ```
++ You can adapt your own Docker container to work with SageMaker using the [SageMaker Training toolkit](https://github.com/aws/sagemaker-training-toolkit)\. For an example, see [Adapting Your Own Training Container](https://docs.aws.amazon.com/sagemaker/latest/dg/adapt-training-container.html)\.

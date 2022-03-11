@@ -4,7 +4,9 @@ Use Amazon SageMaker's distributed model parallel library to train large deep le
 
 You can use the library to automatically partition your own TensorFlow and PyTorch models across multiple GPUs and multiple nodes with minimal code changes\. You can access the library's API through the SageMaker Python SDK\.
 
-Use the following sections to learn more about model parallelism and the SageMaker model parallel library\. This library's API documentation is located at [Distributed Training APIs](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel.html) in the *SageMaker Python SDK documentation*\. To see the latest updates to the library, see the [SageMaker Distributed Model Parallel Release Notes](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel_release_notes/smd_model_parallel_change_log.html) in the *SageMaker Python SDK documentation*\.
+Use the following sections to learn more about model parallelism and the SageMaker model parallel library\. This library's API documentation is located at [Distributed Training APIs](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel.html) in the *SageMaker Python SDK documentation*\. 
+
+To track the latest updates of the library, see the [SageMaker Distributed Model Parallel Release Notes](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel_release_notes/smd_model_parallel_change_log.html) in the *SageMaker Python SDK documentation*\.
 
 **Topics**
 + [Introduction to Model Parallelism](model-parallel-intro.md)

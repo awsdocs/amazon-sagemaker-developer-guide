@@ -134,9 +134,9 @@ To learn more, see [Generate reports for bias in pre\-training data](https://doc
 
 ## Create Custom Visualizations<a name="data-wrangler-visualize-custom"></a>
 
-Use the **Code** tab to create custom visualizations\. Your dataset, after undergoing the most recently added transformation, is available as a [Pandas DataFrame](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) in this code block via the `df` variable\. 
+You can add an analysis to your Data Wrangler flow to create a custom visualization\. Your dataset, with all the transformations you've applied, is available as a [Pandas DataFrame](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html)\. Data Wrangler uses the `df` variable to store the dataframe\. You access the dataframe by calling the variable\.
 
-You must provide an output variable, `chart`, to store an [Altair](https://altair-viz.github.io/) output chart\. For example, the following is an example of a code block that can be used to generate a custom histogram using the Titanic dataset\.
+You must provide the output variable, `chart`, to store an [Altair](https://altair-viz.github.io/) output chart\. For example, you can use the following code block to create a custom histogram using the Titanic dataset\.
 
 ```
 import altair as alt
@@ -154,14 +154,18 @@ chart = bar + rule
 
 **To create a custom visualization:**
 
-1. In the **Visualize** area of Data Wrangler, choose the **Code** tab\.
+1. Next to the node containing the transformation that you'd like to visualize, choose the **\+**\.
 
-1. Give your visualization a **Name**\.
+1. Choose **Add analysis**\.
+
+1. For **Analysis type**, choose **Custom Visualization**\.
+
+1. For **Analysis name**, specify a name\.
 
 1. Enter your code in the code box\. 
 
 1. Choose **Preview** to preview your visualization\.
 
-1. Choose **Add Visualization** to add your visualization\.
+1. Choose **Save** to add your visualization\.
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/visualize-custom.png)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/custom-visualization.png)

@@ -146,11 +146,11 @@ To publish your algorithm on AWS Marketplace, your algorithm must be validated\.
 
    1. For **Validation profile**, specify the following:
       + A name for the validation profile\.
-      + A **Training job definition**\. This is a JSON block that describes a training job\. This is in the same format as the [ `TrainingJobDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TrainingJobDefinition.html) input parameter of the [ `CreateAlgorithm`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAlgorithm.html) API\.
-      + A **Transform job definition**\. This is a JSON block that describes a batch transform job\. This is in the same format as the [ `TransformJobDefinition`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformJobDefinition.html) input parameter of the [ `CreateAlgorithm`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAlgorithm.html) API\.
+      + A **Training job definition**\. This is a JSON block that describes a training job\. This is in the same format as the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TrainingJobDefinition.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TrainingJobDefinition.html) input parameter of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAlgorithm.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAlgorithm.html) API\.
+      + A **Transform job definition**\. This is a JSON block that describes a batch transform job\. This is in the same format as the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformJobDefinition.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformJobDefinition.html) input parameter of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAlgorithm.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAlgorithm.html) API\.
 
    1. Choose **Create algorithm**\.
 
 ## Create an Algorithm Resource \(API\)<a name="sagemaker-mkt-create-algo-api"></a>
 
-To create an algorithm resource by using the SageMaker API, call the [ `CreateAlgorithm`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAlgorithm.html) API\. 
+To create an algorithm resource by using the SageMaker API, call the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAlgorithm.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAlgorithm.html) API\. 

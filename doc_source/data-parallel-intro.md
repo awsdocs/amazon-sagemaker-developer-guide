@@ -61,4 +61,4 @@ The following architecture diagram shows an example of how the library sets up d
 
 ![\[SageMaker distributed data parallel architecture diagram\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/distributed/data-parallel/sdp-architecture.png)
 
-To start using the SageMaker distributed data parallel library, see [Run a SageMaker Distributed Data Parallel Training Job](data-parallel-use-api.md) to set up a SageMaker estimator through [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), and [Modify Your Training Script Using the SageMaker Data Parallel Library](data-parallel-modify-sdp.md) to adapt your training script using the SageMaker distributed data parallel library\.
+To start using the SageMaker distributed data parallel library, see [Step 2: Launch a SageMaker Distributed Training Job Using the SageMaker Python SDK](data-parallel-use-api.md) to set up a SageMaker estimator through [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), and [Run a SageMaker Distributed Training Job with Data Parallelism](data-parallel-modify-sdp.md) to adapt your training script using the SageMaker distributed data parallel library\.

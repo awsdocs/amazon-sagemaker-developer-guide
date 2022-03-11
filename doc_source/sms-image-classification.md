@@ -2,7 +2,7 @@
 
 Use an Amazon SageMaker Ground Truth image classification labeling task when you need workers to classify images using predefined labels that you specify\. Workers are shown images and are asked to choose one label for each image\. 
 
-You can create an image classification labeling job using the Ground Truth section of the Amazon SageMaker console or the [ `CreateLabelingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. 
+You can create an image classification labeling job using the Ground Truth section of the Amazon SageMaker console or the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html) operation\. 
 
 **Important**  
 For this task type, if you create your own manifest file, use `"source-ref"` to identify the location of each image file in Amazon S3 that you want labeled\. For more information, see [Input Data](sms-data-input.md)\.

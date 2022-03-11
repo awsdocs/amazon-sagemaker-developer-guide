@@ -22,9 +22,9 @@ You have the following options for a training algorithm:
 
 After you create the training job, SageMaker launches the ML compute instances and uses the training code and the training dataset to train the model\. It saves the resulting model artifacts and other output in the S3 bucket you specified for that purpose\. 
 
-You can create a training job with the SageMaker console or the API\. For information about creating a training job with the API, see the [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) API\. 
+You can create a training job with the SageMaker console or the API\. For information about creating a training job with the API, see the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) API\. 
 
-When you create a training job with the API, SageMaker replicates the entire dataset on ML compute instances by default\. To make SageMaker replicate a subset of the data on each ML compute instance, you must set the `S3DataDistributionType` field to `ShardedByS3Key`\. You can set this field using the low\-level SDK\. For more information, see `S3DataDistributionType` in [ `S3DataSource`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_S3DataSource.html)\. 
+When you create a training job with the API, SageMaker replicates the entire dataset on ML compute instances by default\. To make SageMaker replicate a subset of the data on each ML compute instance, you must set the `S3DataDistributionType` field to `ShardedByS3Key`\. You can set this field using the low\-level SDK\. For more information, see `S3DataDistributionType` in [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_S3DataSource.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_S3DataSource.html)\. 
 
 **Important**  
 To prevent your algorithm container from contending for memory, we reserve memory for our SageMaker critical system processes on your ML compute instances and therefore you cannot expect to see all the memory for your instance type\.

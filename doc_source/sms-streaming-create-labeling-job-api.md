@@ -52,7 +52,6 @@ response = client.create_labeling_job(
         'AnnotationConsolidationConfig': {
             'AnnotationConsolidationLambdaArn': 'arn:aws:lambda:us-east-1:432418664414:function:ACS-tasktype'
         },
-    },
     Tags=[
         {
             'Key': 'string',

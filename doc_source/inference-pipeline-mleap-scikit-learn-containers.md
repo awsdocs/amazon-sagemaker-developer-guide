@@ -7,7 +7,7 @@ Before training a model with either Amazon SageMaker built\-in algorithms or cus
 You can run Spark ML jobs with [AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html), a serverless ETL \(extract, transform, load\) service, from your SageMaker notebook\. You can also connect to existing EMR clusters to run Spark ML jobs with [Amazon EMR](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-what-is-emr.html)\. To do this, you need an AWS Identity and Access Management \(IAM\) role that grants permission for making calls from your SageMaker notebook to AWS Glue\. 
 
 **Note**  
-To see which Python and Spark versions AWS Glue supports, refer to [ AWS Glue Release Notes](/glue/latest/dg/release-notes.html)\.
+To see which Python and Spark versions AWS Glue supports, refer to [AWS Glue Release Notes](/glue/latest/dg/release-notes.html)\.
 
 After engineering features, you package and serialize Spark ML jobs with MLeap into MLeap containers that you can add to an inference pipeline\. You don't need to use externally managed Spark clusters\. With this approach, you can seamlessly scale from a sample of rows to terabytes of data\. The same transformers work for both training and inference, so you don't need to duplicate preprocessing and feature engineering logic or develop a one\-time solution to make the models persist\. With inference pipelines, you don't need to maintain outside infrastructure, and you can make predictions directly from data inputs\.
 

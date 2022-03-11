@@ -1,18 +1,20 @@
 # Data Parallel Troubleshooting<a name="distributed-troubleshooting-data-parallel"></a>
 
-If you run into an error, you can use the following list to try to troubleshoot your training job\. If the problem persists, contact AWS Support\. 
+If you have problems in running a training job when you use the library, use the following list to try to troubleshoot\. If you need further support, reach out to the SageMaker team through [AWS Support Center](https://console.aws.amazon.com/support/) or [AWS Developer Forums for Amazon Amazon SageMaker](https://forums.aws.amazon.com/forum.jspa?forumID=285)\.
 
 **Topics**
-+ [Using SageMaker Distributed Data Parallel with SageMaker Debugger and Checkpoints](#distributed-ts-data-parallel-debugger)
++ [Using SageMaker Distributed Data Parallel with Amazon SageMaker Debugger and Checkpoints](#distributed-ts-data-parallel-debugger)
 + [An Unexpected Prefix Attached to Model Parameter Keys](#distributed-ts-data-parallel-pytorch-prefix)
 + [SageMaker Distributed Training Job Stalling During Initialization](#distributed-ts-data-parallel-efa-sg)
 + [SageMaker Distributed Training Job Stalling at the End of Training](#distributed-ts-data-parallel-stall-at-the-end)
++ [Observing Scaling Efficiency Degradation Due to Amazon FSx Throughput Bottlenecks](#distributed-ts-data-parallel-fxs-bottleneck)
++ [SageMaker Distributed Training Job with PyTorch Returns Deprecation Warnings](#distributed-ts-data-parallel-deprecation-warnings)
 
-## Using SageMaker Distributed Data Parallel with SageMaker Debugger and Checkpoints<a name="distributed-ts-data-parallel-debugger"></a>
+## Using SageMaker Distributed Data Parallel with Amazon SageMaker Debugger and Checkpoints<a name="distributed-ts-data-parallel-debugger"></a>
 
-To monitor system bottlenecks, profile framework operations, and debug model output tensors for training jobs with SageMaker distributed data parallel, use SageMaker Debugger\. 
+To monitor system bottlenecks, profile framework operations, and debug model output tensors for training jobs with SageMaker distributed data parallel, use Amazon SageMaker Debugger\. 
 
-However, when you use SageMaker Debugger, SageMaker distributed data parallel, and SageMaker checkpoints, you might see an error that looks like the following: 
+However, when you use SageMaker Debugger, SageMaker distributed data parallel, and SageMaker checkpoints, you might see an error that looks like the following example\. 
 
 ```
 SMDebug Does Not Currently Support Distributed Training Jobs With Checkpointing Enabled
@@ -31,7 +33,7 @@ This is due to an internal error between Debugger and checkpoints, which occurs 
   
   estimator = TensorFlow(
       ...
-      
+  
       distribution={"smdistributed": {"dataparallel": { "enabled": True }}},
       checkpoint_s3_uri=checkpoint_s3_bucket,
       checkpoint_local_path="/opt/ml/checkpoints",
@@ -42,7 +44,7 @@ This is due to an internal error between Debugger and checkpoints, which occurs 
 
 ## An Unexpected Prefix Attached to Model Parameter Keys<a name="distributed-ts-data-parallel-pytorch-prefix"></a>
 
-For PyTorch distributed training jobs, an unexpected prefix \(`model` for example\) might be attached to `state_dict` keys \(model parameters\)\. The SageMaker data parallel library does not directly alter or prepend any model parameter names when PyTorch training jobs save model artifacts\. The PyTorch's distributed training changes the names in the `state_dict` to go over the network, prepending the prefix\. If you encounter any model failure problem due to different parameter names while you are using the SageMaker data parallel library and checkpointing for PyTorch training, adapt the following example code to remove the prefix at the step you load checkpoints in your training script:
+For PyTorch distributed training jobs, an unexpected prefix \(`model` for example\) might be attached to `state_dict` keys \(model parameters\)\. The SageMaker data parallel library does not directly alter or prepend any model parameter names when PyTorch training jobs save model artifacts\. The PyTorch's distributed training changes the names in the `state_dict` to go over the network, prepending the prefix\. If you encounter any model failure problem due to different parameter names while you are using the SageMaker data parallel library and checkpointing for PyTorch training, adapt the following example code to remove the prefix at the step you load checkpoints in your training script\.
 
 ```
 state_dict = {k.partition('model.')[2]:state_dict[k] for k in state_dict.keys()}
@@ -92,4 +94,22 @@ For more information about configuring security groups for VPC and EFA, see [Sec
 
 One of the root causes of stalling issues at the end of training is a mismatch in the number of batches that are processed per epoch across different ranks\. All workers \(GPUs\) synchronize their local gradients in the backward pass to ensure they all have the same copy of the model at the end of the batch iteration\. If the batch sizes are unevenly assigned to different worker groups during the final epoch of training, the training job stalls\. For example, while a group of workers \(group A\) finishes processing all batches and exits the training loop, another group of workers \(group B\) starts processing another batch and still expects communication from group A to synchronize the gradients\. This causes group B to wait for group A, which already completed training and does not have any gradients to synchronize\. 
 
-Therefore, when setting up your train dataset, it is important that each worker gets the same number of data samples so that each worker goes through the same number of batches while training\. Make sure each rank gets the same number of batches to avoid this stalling issue\.
+Therefore, when setting up your training dataset, it is important that each worker gets the same number of data samples so that each worker goes through the same number of batches while training\. Make sure each rank gets the same number of batches to avoid this stalling issue\.
+
+## Observing Scaling Efficiency Degradation Due to Amazon FSx Throughput Bottlenecks<a name="distributed-ts-data-parallel-fxs-bottleneck"></a>
+
+One potential cause of lowered scaling efficiency is the FSx throughput limit\. If you observe a sudden drop in scaling efficiency when you switch to a larger training cluster, try using a larger FSx for Lustre file system with a higher throughput limit\. For more information, see [Aggregate file system performance](https://docs.aws.amazon.com/fsx/latest/LustreGuide/performance.html#fsx-aggregate-perf) and [Managing storage and throughput capacity](https://docs.aws.amazon.com/fsx/latest/LustreGuide/managing-storage-capacity.html) in the *Amazon FSx for Lustre User Guide*\.
+
+## SageMaker Distributed Training Job with PyTorch Returns Deprecation Warnings<a name="distributed-ts-data-parallel-deprecation-warnings"></a>
+
+Since v1\.4\.0, the SageMaker distributed data parallelism library works as a backend of PyTorch distributed\. Because of the breaking change of using the library with PyTorch, you might encounter a warning message that the `smdistributed` APIs for the PyTorch distributed package are deprecated\. The warning message should be similar to the following:
+
+```
+smdistributed.dataparallel.torch.dist is deprecated in the SageMaker distributed data parallel library v1.4.0+.
+Please use torch.distributed and specify 'smddp' as a backend when initializing process group as follows:
+torch.distributed.init_process_group(backend='smddp')
+For more information, see the library's API documentation at
+https://docs.aws.amazon.com/sagemaker/latest/dg/data-parallel-modify-sdp-pt.html
+```
+
+In v1\.4\.0 and later, the library only needs to be imported once at the top of your training script and set as the backend during the PyTorch distributed initialization\. With the single line of backend specification, you can keep your PyTorch training script unchanged and directly use the PyTorch distributed modules\. See [Modify a PyTorch Training Script](data-parallel-modify-sdp-pt.md) to learn about the breaking changes and the new way to use the library with PyTorch\.

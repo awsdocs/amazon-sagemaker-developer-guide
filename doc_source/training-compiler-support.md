@@ -105,7 +105,6 @@ The batch sizes are local batch size that fit into each individual GPU of an ins
 | bert\-base\-multilingual\-cased  | ml\.p3\.2xlarge | 4 | 16 | 
 | bert\-base\-multilingual\-uncased  | ml\.p3\.2xlarge | 8 | 16 | 
 | bert\-base\-uncased  | ml\.p3\.2xlarge | 12 | 24 | 
-| bert\-large\-uncased  | ml\.p3\.2xlarge | 4 | 6 | 
 | cl\-tohoku/bert\-base\-japanese\-whole\-word\-masking | ml\.p3\.2xlarge | 12 | 24 | 
 | cl\-tohoku/bert\-base\-japanese  | ml\.p3\.2xlarge | 12 | 24 | 
 | distilbert\-base\-uncased  | ml\.p3\.2xlarge | 28 | 32 | 
@@ -115,7 +114,6 @@ The batch sizes are local batch size that fit into each individual GPU of an ins
 | gpt2 | ml\.p3\.2xlarge | 6 | 20 | 
 | nreimers/MiniLMv2\-L6\-H384\-distilled\-from\-RoBERTa\-Large  | ml\.p3\.2xlarge | 20 | 32 | 
 | roberta\-base  | ml\.p3\.2xlarge | 12 | 20 | 
-| roberta\-large | ml\.p3\.2xlarge | 4 | 4 | 
 
 
 **PyTorch \(Sequence\_Len=512, Automatic Mixed Precision \(AMP\)\)**  

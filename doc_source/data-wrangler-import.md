@@ -351,7 +351,7 @@ To configure access, follow these steps\.
 
 1. To allow your data scientist to access Snowflake from SageMaker Data Wrangler, provide them with one of the following:
    + A Snowflake account name, user name, and password\.
-   + A secret created with [ AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) and the ARN of the secret\. Use the following procedure below to create the secret for Snowflake if you choose this option\.
+   + A secret created with [AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) and the ARN of the secret\. Use the following procedure below to create the secret for Snowflake if you choose this option\.
 **Important**  
 If your data scientists use the **Snowflake Credentials \(User name and Password\)** option to connect to Snowflake, note that [Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) is used to store the credentials in a secret and rotates secrets as part of a best practice security plan\. The secret created in Secrets Manager is only accessible with the Studio role configured when you set up a Studio user profile\. This will require you to add this permission, `secretsmanager:PutResourcePolicy` to the policy that is attached to your Studio role\.  
 It is strongly recommended that you scope the role policy to use different roles for different groups of Studio users\. You can add additional resource\-based permissions for the Secrets Manager secrets\. See [Manage Secret Policy](https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage_secret-policy.html) for condition keys you can use\. 

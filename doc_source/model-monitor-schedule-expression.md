@@ -1,6 +1,6 @@
 # The cron expression for monitoring schedule<a name="model-monitor-schedule-expression"></a>
 
-To provide details for the monitoring schedule, use [ `ScheduleConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ScheduleConfig.html), which is a `cron` expression that describes details about the monitoring schedule\.
+To provide details for the monitoring schedule, use [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ScheduleConfig.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ScheduleConfig.html), which is a `cron` expression that describes details about the monitoring schedule\.
 
 Amazon SageMaker Model Monitor supports the following `cron` expressions:
 + To set the job to start every hour, use the following:

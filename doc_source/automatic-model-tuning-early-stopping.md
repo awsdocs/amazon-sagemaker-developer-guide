@@ -1,7 +1,7 @@
 # Stop Training Jobs Early<a name="automatic-model-tuning-early-stopping"></a>
 
 Stop the training jobs that a hyperparameter tuning job launches early when they are not improving significantly as measured by the objective metric\. Stopping training jobs early can help reduce compute time and helps you avoid overfitting your model\. To configure a hyperparameter tuning job to stop training jobs early, do one of the following:
-+ If you are using the AWS SDK for Python \(Boto 3\), set the `TrainingJobEarlyStoppingType` field of the [ `HyperParameterTuningJobConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobConfig.html) object that you use to configure the tuning job to `AUTO`\.
++ If you are using the AWS SDK for Python \(Boto 3\), set the `TrainingJobEarlyStoppingType` field of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobConfig.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobConfig.html) object that you use to configure the tuning job to `AUTO`\.
 + If you are using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), set the `early_stopping_type` parameter of the [HyperParameterTuner](https://sagemaker.readthedocs.io/en/stable/tuner.html) object to `Auto`\.
 + In the Amazon SageMaker console, in the **Create hyperparameter tuning job** workflow, under **Early stopping**, choose **Auto**\.
 
@@ -30,13 +30,13 @@ This list of built\-in algorithms that support early stopping is current as of D
 To use early stopping with your own algorithm, you must write your algorithms such that it emits the value of the objective metric after each epoch\. The following list shows how you can do that in different frameworks:
 
 TensorFlow  
-Use the `tf.keras.callbacks.ProgbarLogger` class\. For information, see [https://www\.tensorflow\.org/api\_docs/python/tf/keras/callbacks/ProgbarLogger](https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/ProgbarLogger)\.
+Use the `tf.keras.callbacks.ProgbarLogger` class\. For information, see the [tf\.keras\.callbacks\.ProgbarLogger API](https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/ProgbarLogger)\.
 
 MXNet  
-Use the `mxnet.callback.LogValidationMetricsCallback`\. For information, see [https://mxnet\.apache\.org/api/python/callback/callback\.html](https://mxnet.apache.org/api/python/callback/callback.html)\.
+Use the `mxnet.callback.LogValidationMetricsCallback`\. For information, see the [mxnet\.callback APIs](https://mxnet.apache.org/versions/master/api/python/docs/api/legacy/callback/index.html)\.
 
 Chainer  
-Extend chainer by using the `extensions.Evaluator` class\. For information, see [https://docs\.chainer\.org/en/v1\.24\.0/reference/extensions\.html\#evaluator](https://docs.chainer.org/en/v1.24.0/reference/extensions.html#evaluator)\.
+Extend chainer by using the `extensions.Evaluator` class\. For information, see the [chainer\.training\.extensions\.Evaluator API](https://docs.chainer.org/en/v1.24.0/reference/extensions.html#evaluator)\.
 
 PyTorch and Spark  
 There is no high\-level support\. You must explicitly write your training code so that it computes objective metrics and writes them to logs after each epoch\.

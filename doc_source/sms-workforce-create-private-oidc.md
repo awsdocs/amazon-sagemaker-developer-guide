@@ -108,7 +108,7 @@ $ C:\>  describe-workforce --workforce-name 'string'
 
 ------
 
-## Validate Your OIC IdP Workforce Authentication Response<a name="sms-workforce-create-private-oidc-validate"></a>
+## Validate Your OIDC IdP Workforce Authentication Response<a name="sms-workforce-create-private-oidc-validate"></a>
 
 After you have created your OIDC IdP workforce, you can use the following procedure to validate its authentication workflow using cURL\. This procedure assumes you have access to a terminal, and that you have cURL installed\.
 

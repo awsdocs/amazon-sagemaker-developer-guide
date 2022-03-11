@@ -93,7 +93,7 @@ To evaluate a model's performance, review its metadata, hyperparameters, and met
 
 ## Find and Evaluate Training Jobs \(API\)<a name="search-organize-api"></a>
 
-To the find and evaluate training jobs or to get suggestions for items used in experiments that are searchable, you can use the [ `Search`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Search.html) API\.
+To the find and evaluate training jobs or to get suggestions for items used in experiments that are searchable, you can use the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Search.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Search.html) API\.
 
 **Topics**
 + [Find Training Jobs \(API\)](#search-api)
@@ -104,7 +104,7 @@ To the find and evaluate training jobs or to get suggestions for items used in e
 
 To find training jobs, create a search parameter using the `search_params` parameter\. Then use the search function in the `smclient` subprocess in the AWS SDK for Python \(Boto3\)\. 
 
-The following example shows how to use the [ `Search`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Search.html) API to find training jobs\. 
+The following example shows how to use the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Search.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Search.html) API to find training jobs\. 
 
 ```
 import boto3
@@ -154,7 +154,7 @@ from IPython.display import display, HTMLdisplay(HTML(df.to_html()))
 
 ### Get Suggestions for a Search \(API\)<a name="search-suggestion-api"></a>
 
-To get suggestions for a search, use the [ `GetSearchSuggestions`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_GetSearchSuggestions.html) API\.
+To get suggestions for a search, use the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_GetSearchSuggestions.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_GetSearchSuggestions.html) API\.
 
 The following example for AWS SDK for Python \(Boto3\) is a `get_search_suggestions` request for items containing `linear`\.
 

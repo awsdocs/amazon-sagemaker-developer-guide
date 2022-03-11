@@ -51,3 +51,5 @@ execution = pipeline.start(
     )
 )
 ```
+
+You can manipulate parameters with SageMaker Python SDK functions like `[ sagemaker\.workflow\.functions\.Join](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.functions.Join)`\. For more information on parameters, see [ SageMaker Pipelines Parameters](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#parameters)\.

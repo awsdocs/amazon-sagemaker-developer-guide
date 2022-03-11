@@ -48,7 +48,7 @@ To prevent impact to inference requests, Data Capture stops capturing requests a
    boto3.Session().resource('s3').Bucket(bucket).Object(s3_key).upload_fileobj(model_file)
    ```
 
-1. Configure the data you want to capture by configuring the data you want to capture in a [ `DataCaptureConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DataCaptureConfig.html) structure\. You can capture the request payload, the response payload, or both with this configuration\.
+1. Configure the data you want to capture by configuring the data you want to capture in a [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DataCaptureConfig.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DataCaptureConfig.html) structure\. You can capture the request payload, the response payload, or both with this configuration\.
 
    ```
    from sagemaker.model_monitor import DataCaptureConfig
@@ -71,7 +71,7 @@ To prevent impact to inference requests, Data Capture stops capturing requests a
                    data_capture_config=data_capture_config)
    ```
 
-1. Invoke the endpoint to send data to the endpoint to get inferences in real time\. Because you enabled the data capture in the previous steps, the request and response payload, along with some additional metadata, is saved in the Amazon S3 location that you specified in [ `DataCaptureConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DataCaptureConfig.html)\.
+1. Invoke the endpoint to send data to the endpoint to get inferences in real time\. Because you enabled the data capture in the previous steps, the request and response payload, along with some additional metadata, is saved in the Amazon S3 location that you specified in [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DataCaptureConfig.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DataCaptureConfig.html)\.
 
    ```
    from sagemaker.predictor import Predictor
