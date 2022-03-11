@@ -7,6 +7,7 @@ If you run into an error, you can use the following list to try to troubleshoot 
 + [An Unexpected Prefix Attached to Model Parameter Keys](#distributed-ts-data-parallel-pytorch-prefix)
 + [SageMaker Distributed Training Job Stalling During Initialization](#distributed-ts-data-parallel-efa-sg)
 + [SageMaker Distributed Training Job Stalling at the End of Training](#distributed-ts-data-parallel-stall-at-the-end)
++ [Lower Than Expected Scaling Efficiency Due to FSx Throughput Bottleneck](#distributed-ts-data-parallel-fsx-throughput-bottleneck)
 
 ## Using SageMaker Distributed Data Parallel with SageMaker Debugger and Checkpoints<a name="distributed-ts-data-parallel-debugger"></a>
 
@@ -93,3 +94,7 @@ For more information about configuring security groups for VPC and EFA, see [Sec
 One of the root causes of stalling issues at the end of training is a mismatch in the number of batches that are processed per epoch across different ranks\. All workers \(GPUs\) synchronize their local gradients in the backward pass to ensure they all have the same copy of the model at the end of the batch iteration\. If the batch sizes are unevenly assigned to different worker groups during the final epoch of training, the training job stalls\. For example, while a group of workers \(group A\) finishes processing all batches and exits the training loop, another group of workers \(group B\) starts processing another batch and still expects communication from group A to synchronize the gradients\. This causes group B to wait for group A, which already completed training and does not have any gradients to synchronize\. 
 
 Therefore, when setting up your train dataset, it is important that each worker gets the same number of data samples so that each worker goes through the same number of batches while training\. Make sure each rank gets the same number of batches to avoid this stalling issue\.
+
+## Lower Than Expected Scaling Efficiency Due to FSx Throughput Bottleneck<a name="distributed-ts-data-parallel-fsx-throughput-bottleneck"></a>
+
+One of the potential causes of lower than expected training scaling performance is the FSx throughput limit\. If you observe a sudden drop in scaling efficiency when switching to a larger cluster, try to use a larger FSx volume which has higher throughput and see if this increases performance\.
