@@ -16,7 +16,7 @@ Note the metric becomes unbounded if FNa or FNd is zero\.
 
 For example, suppose that there are 100 loan applicants from facet *a* and 50 from facet *d*\. For facet *a*, 8 were wrongly denied a loan \(FNa\) and another 6 were wrongly approved \(FPa\)\. The remaining predictions were true, so TPa \+ TNa = 86\. For facet *d*, 5 were wrongly denied \(FNd\) and 2 were wrongly approved \(FPd\)\. The remaining predictions were true, so TPd \+ TNd = 43\. The ratio of false positives to false negatives equals 6/8 = 0\.75 for facet *a* and 2/5 = 0\.40 for facet *d*\. Hence TE = 0\.75 \- 0\.40 = 0\.35, even though both facets have the same accuracy:
 
-        ACCa = \(86\)/\(68\+ 8 \+ 6\) = 0\.86
+        ACCa = \(86\)/\(86\+ 8 \+ 6\) = 0\.86
 
         ACCd = \(43\)/\(43 \+ 5 \+ 2\) = 0\.86
 

@@ -86,7 +86,7 @@ debugger_hook_config=DebuggerHookConfig(
 )
 ```
 
-For more information, see [DebuggerHookConfig](https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html                 #sagemaker.debugger.DebuggerHookConfig) in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.
+For more information, see [DebuggerHookConfig](https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html#sagemaker.debugger.DebuggerHookConfig) in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.
 
 ## Example Notebooks and Code Samples to Configure Debugger Hook<a name="debugger-save-tensors"></a>
 

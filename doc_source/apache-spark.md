@@ -9,7 +9,7 @@ The SageMaker Spark library, `com.amazonaws.services.sagemaker.sparksdk`, provid
 + `KMeansSageMakerEstimator`, `PCASageMakerEstimator`, and `XGBoostSageMakerEstimator`—Extend the `SageMakerEstimator` class\. 
 + `SageMakerModel`—Extends the `org.apache.spark.ml.Model` class\. You can use this `SageMakerModel` for model hosting and obtaining inferences in SageMaker\.
 
-With SageMaker Studio, you can easily connect to an Amazon EMR cluster\. For more information, see [Prepare data at Scale with Studio Notebooks](https://docs.aws.amazon.com/sagemaker/latest/studio-notebooks-emr-cluster.xml)\.
+With SageMaker Studio, you can easily connect to an Amazon EMR cluster\. For more information, see [Prepare data at Scale with Studio Notebooks](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-notebooks-emr-cluster.html)\.
 
 ## Download the SageMaker Spark Library<a name="spark-sdk-download"></a>
 
@@ -52,18 +52,18 @@ The following is high\-level summary of the steps for integrating your Apache Sp
 
    1. Converts the input `DataFrame` to the protobuf format by selecting the `features` and `label` columns from the input `DataFrame` and uploading the protobuf data to an Amazon S3 bucket\. The protobuf format is efficient for model training in SageMaker\.
 
-   1. Starts model training in SageMaker by sending a SageMaker [ `CreateTrainingJob`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) request\. After model training has completed, SageMaker saves the model artifacts to an S3 bucket\. 
+   1. Starts model training in SageMaker by sending a SageMaker [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) request\. After model training has completed, SageMaker saves the model artifacts to an S3 bucket\. 
 
       SageMaker assumes the IAM role that you specified for model training to perform tasks on your behalf\. For example, it uses the role to read training data from an S3 bucket and to write model artifacts to a bucket\. 
 
    1. Creates and returns a `SageMakerModel` object\. The constructor does the following tasks, which are related to deploying your model to SageMaker\. 
 
-      1. Sends a [ `CreateModel`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) request to SageMaker\. 
+      1. Sends a [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) request to SageMaker\. 
 
-      1. Sends a [ `CreateEndpointConfig`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html) request to SageMaker\.
+      1. Sends a [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html) request to SageMaker\.
 
-      1. Sends a [ `CreateEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html) request to SageMaker, which then launches the specified resources, and hosts the model on them\. 
+      1. Sends a [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html) request to SageMaker, which then launches the specified resources, and hosts the model on them\. 
 
 1. You can get inferences from your model hosted in SageMaker with the `SageMakerModel.transform`\. 
 
-   Provide an input `DataFrame` with features as input\. The `transform` method transforms it to a `DataFrame` containing inferences\. Internally, the `transform` method sends a request to the [ `InvokeEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html) SageMaker API to get inferences\. The `transform` method appends the inferences to the input `DataFrame`\.
+   Provide an input `DataFrame` with features as input\. The `transform` method transforms it to a `DataFrame` containing inferences\. Internally, the `transform` method sends a request to the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InvokeEndpoint.html) SageMaker API to get inferences\. The `transform` method appends the inferences to the input `DataFrame`\.

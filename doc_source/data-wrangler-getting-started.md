@@ -137,7 +137,7 @@ Choose **Prepare** to go back to the data flow\. Next, clean your data using the
 
 Using the analysis from the previous section, clean up the dataset to prepare it for training\. To add a new transform to your data flow, choose **\+** next to the **Data type** step in your data flow and choose **Add transform**\.
 
-First, drop columns that you don't want to use for training\. You can use []() data analysis library to do this, or you can use one of the built\-in transforms\. 
+First, drop columns that you don't want to use for training\. You can use [Pandas](https://pandas.pydata.org/) data analysis library to do this, or you can use one of the built\-in transforms\. 
 
 To do this using Pandas, do the following:
 

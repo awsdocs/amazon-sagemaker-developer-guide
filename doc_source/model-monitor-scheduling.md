@@ -1,6 +1,6 @@
 # Schedule monitoring jobs<a name="model-monitor-scheduling"></a>
 
-Amazon SageMaker Model Monitor provides you the ability to continuously monitor the data collected from the endpoints on a schedule\. You can create a monitoring schedule with the [ `CreateMonitoringSchedule`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateMonitoringSchedule.html) API with a predefined periodic interval\. For example, every *x* hours \(x can range from 1 to 23\)\.
+Amazon SageMaker Model Monitor provides you the ability to continuously monitor the data collected from the endpoints on a schedule\. You can create a monitoring schedule with the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateMonitoringSchedule.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateMonitoringSchedule.html) API with a predefined periodic interval\. For example, every *x* hours \(x can range from 1 to 23\)\.
 
 With a monitoring schedule, SageMaker can kick off processing jobs at a specified frequency to analyze the data collected during a given period\. SageMaker provides a prebuilt container for performing analysis on tabular datasets\. In the processing job, SageMaker compares the dataset for the current analysis with the baseline statistics, constraints provided and generate a violations report\. In addition, CloudWatch metrics are emitted for each feature under analysis\. Alternatively, you could choose to bring your own container as outlined in the [Bring Your Own Containers](model-monitor-byoc-containers.md) topic\. 
 
@@ -43,7 +43,7 @@ my_default_monitor.create_monitoring_schedule(
 )
 ```
 
-Describe and inspect the schedule: After you describe it, observe that the `MonitoringScheduleStatus` in [ `MonitoringScheduleSummary `](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_MonitoringScheduleSummary.html) returned by the [ `ListMonitoringSchedules`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListMonitoringSchedules.html) API changes to `Scheduled`\.
+Describe and inspect the schedule: After you describe it, observe that the `MonitoringScheduleStatus` in [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_MonitoringScheduleSummary.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_MonitoringScheduleSummary.html) returned by the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListMonitoringSchedules.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListMonitoringSchedules.html) API changes to `Scheduled`\.
 
 ```
 desc_schedule_result = my_default_monitor.describe_schedule()

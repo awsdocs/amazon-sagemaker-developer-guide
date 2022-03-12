@@ -34,4 +34,4 @@ If you disable it, you won't be able to collect output tensors and cannot debug 
   estimator.update_profiler(disable_framework_metrics=true)
   ```
 
-  For more information about the estimator extension methods, see the [estimator\.disable\_profiling](https://sagemaker.readthedocs.io/en/stable/api/training/estimators.html#sagemaker.estimator.Estimator.disable_profiling) and [estimator\.update\_profiler](https://sagemaker.readthedocs.io/en/stable/api/training/estimators.html                         #sagemaker.estimator.Estimator.update_profiler) classmethods in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) documentation\.
+  For more information about the estimator extension methods, see the [estimator\.disable\_profiling](https://sagemaker.readthedocs.io/en/stable/api/training/estimators.html#sagemaker.estimator.Estimator.disable_profiling) and [estimator\.update\_profiler](https://sagemaker.readthedocs.io/en/stable/api/training/estimators.html#sagemaker.estimator.Estimator.update_profiler) classmethods in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) documentation\.
