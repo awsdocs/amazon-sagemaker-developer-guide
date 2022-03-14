@@ -2,7 +2,7 @@
 
 The difference in positive proportions in the predicted labels metric can be assessed in the form of a ratio\.
 
-The comparison of positive proportions in predicted labels metric can be assessed in the form of a ratio instead of as a difference, as it is with the [Difference in Positive Proportions in Predicted Labels \(DPPL\)](clarify-post-training-bias-metric-dppl.md)\. The disparate impact \(DI\) metric is defined as the ratio of the proportion of positive predictions \(y’ = 1\) for facet *a* over the proportion of positive predictions \(y’ = 1\) for facet *d*\. For example, if the model predictions grant loans to 60% of a middle\-aged group \(facet *a*\) and 50% other age groups \(facet *d*\), then DI = \.5/\.6 = 0\.8, which indicates a positive bias and an adverse impact on facet *d*\.
+The comparison of positive proportions in predicted labels metric can be assessed in the form of a ratio instead of as a difference, as it is with the [Difference in Positive Proportions in Predicted Labels \(DPPL\)](clarify-post-training-bias-metric-dppl.md)\. The disparate impact \(DI\) metric is defined as the ratio of the proportion of positive predictions \(y’ = 1\) for facet *d* over the proportion of positive predictions \(y’ = 1\) for facet *a*\. For example, if the model predictions grant loans to 60% of a middle\-aged group \(facet *a*\) and 50% other age groups \(facet *d*\), then DI = \.5/\.6 = 0\.8, which indicates a positive bias and an adverse impact on facet *d*\.
 
 The formula for the ratio of proportions of the predicted labels:
 
