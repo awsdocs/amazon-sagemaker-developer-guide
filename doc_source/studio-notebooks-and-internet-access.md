@@ -1,6 +1,6 @@
-# Connect SageMaker Studio Notebooks to Resources in a VPC<a name="studio-notebooks-and-internet-access"></a>
+# Connect SageMaker Studio Notebooks in a VPC to External Resources<a name="studio-notebooks-and-internet-access"></a>
 
-The following topic gives information on how to connect Studio Notebooks to resources in a VPC\.
+The following topic gives information on how to connect Studio Notebooks in a VPC to external resources\.
 
 ## Default communication with the internet<a name="studio-notebooks-and-internet-access-default"></a>
 

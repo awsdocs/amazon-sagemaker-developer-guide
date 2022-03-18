@@ -8,7 +8,7 @@ Additionally, requests must be signed by using an access key ID and a secret acc
 
 **Topics**
 + [SageMaker Scans AWS Marketplace Training and Inference Containers for Security Vulnerabilities](#mkt-container-scan)
-+ [Connect to Resources in a VPC](infrastructure-connect-to-resources.md)
++ [Connect to Resources From Within a VPC](infrastructure-connect-to-resources.md)
 + [Run Training and Inference Containers in Internet\-Free Mode](mkt-algo-model-internet-free.md)
 + [Connect to SageMaker Through a VPC Interface Endpoint](interface-vpc-endpoint.md)
 + [Give SageMaker Access to Resources in your Amazon VPC](infrastructure-give-access.md)

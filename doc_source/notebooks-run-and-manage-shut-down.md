@@ -28,7 +28,9 @@ You can reach the **Running Terminals and Kernels** pane on the left side of Ama
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-notebook-shutdown-resource.png)
 
 When you choose to shut down all resources in a section, the following occurs:
-+ **RUNNING INSTANCES/RUNNING APPS** – All instances, apps, notebooks, kernel sessions, consoles/shells, and image terminals are shut down\. System terminals aren't shut down\. Choose this option to stop the accrual of all charges\.
++ **RUNNING INSTANCES/RUNNING APPS** – All instances, apps, notebooks, kernel sessions, consoles/shells, and image terminals are shut down\. System terminals aren't shut down\.
+**Note**  
+When you shutdown the Studio notebook instances, any additional resources, such as SageMaker endpoints, Amazon EMR clusters, and Amazon S3 buckets created from Studio are not deleted\. Delete those resources to stop accrual of charges\.
 + **KERNEL SESSIONS** – All kernels, notebooks and consoles/shells are shut down\.
 + **TERMINAL SESSIONS** – All image terminals and system terminals are shut down\.
 

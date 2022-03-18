@@ -76,7 +76,7 @@ To deploy a model version using the AWS SDK for Python \(Boto3\), complete the f
 
 ## Deploy a Model Version from a Different Account<a name="model-registry-deploy-xaccount"></a>
 
-To ennable an AWS account to deploy model versions that were created in a different account by adding a cross\-account resource policy\. For example, one team in your organization might be responsible for training models, and a different team is responsible for deploying and updating models\. When you create these resource policies, you apply the policy to the specific resource to which you want to grant access\. For more information about cross\-account resource policies in AWS, see [Cross\-account policy evaluation logic](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic-cross-account.html) in the *AWS Identity and Access Management User Guide*\.
+You can permit an AWS account to deploy model versions that were created in a different account by adding a cross\-account resource policy\. For example, one team in your organization might be responsible for training models, and a different team is responsible for deploying and updating models\. When you create these resource policies, you apply the policy to the specific resource to which you want to grant access\. For more information about cross\-account resource policies in AWS, see [Cross\-account policy evaluation logic](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic-cross-account.html) in the *AWS Identity and Access Management User Guide*\.
 
 **Note**  
 You must use a KMS key to encrypt the [output data config](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_OutputDataConfig.html) action during training for cross\-account model deployment\.
@@ -118,7 +118,7 @@ ecr_repository_policy = json.dumps(ecr_repository_policy)
 
 # Set the new ECR policy
 ecr = boto3.client('ecr')
-respose = ecr.set_repository_policy(
+response = ecr.set_repository_policy(
     registryId = account,
     repositoryName = 'decision-trees-sample',
     policyText = ecr_repository_policy
@@ -143,7 +143,7 @@ bucket_policy = json.dumps(bucket_policy)
 
 # Set the new policy
 s3 = boto3.client('s3')
-respose = s3.put_bucket_policy(
+response = s3.put_bucket_policy(
     Bucket = bucket,
     Policy = bucket_policy)
 
@@ -176,7 +176,7 @@ model_package_group_policy = {
 model_package_group_policy = json.dumps(model_package_group_policy)
 
 # Set the policy to the model package group
-respose = sm_client.put_model_package_group_policy(
+response = sm_client.put_model_package_group_policy(
     ModelPackageGroupName = model_package_group_name,
     ResourcePolicy = model_package_group_policy)
 

@@ -959,7 +959,7 @@ The following policy restricts an IAM user to use a specific elastic inference \
 
 ### Enforce Disabling Internet Access and Root Access for Creating Notebook Instances<a name="sagemaker-condition-nbi-lockdown"></a>
 
-You can disable both internet access and root access to notebook instances to help make them more secure\. For information about controlling root access to a notebook instance, see [Control root access to a SageMaker notebook instance](nbi-root-access.md)\. for information about disabling internet access for a notebook instance, see [Connect a Notebook Instance to Resources in a VPC](appendix-notebook-and-internet-access.md)\.
+You can disable both internet access and root access to notebook instances to help make them more secure\. For information about controlling root access to a notebook instance, see [Control root access to a SageMaker notebook instance](nbi-root-access.md)\. for information about disabling internet access for a notebook instance, see [Connect a Notebook Instance in a VPC to External Resources](appendix-notebook-and-internet-access.md)\.
 
 The following policy requires an IAM user to disable network access when creating instance, and disable root access when creating or updating a notebook instance\. 
 

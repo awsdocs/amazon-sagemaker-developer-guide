@@ -64,33 +64,115 @@ You must also use a KMS key to encrypt the [output data config](https://docs.aws
 
 To enable cross\-account model registry in SageMaker, you have to provide a cross\-account resource policy for the model group that contains the model versions\. The following is an example that creates cross\-account policies for the model package group and applies these policies to that specific resource\.
 
-The following configuration must be done in the source account which registers models cross\-account in a model package group\.
+The following configuration must be set in the source account which registers models cross\-account in a model package group\. In this example, the source account is the model training account which will train and then register the model cross\-account into the Model Registry of the model registry account\.
 
 The example assumes that you previously defined the following variables:
 + `sm_client` \- A SageMaker Boto3 client\.
 + `model_package_group_name` \- The model group to which you want to grant access\.
++ `model_package_group_arn` \- The model group arn to which you want to grant cross\-account access\.
++ `bucket` \- The S3 bucket where the model training artifacts are stored\.
 
 To be able to deploy a model created in a different account, the user must have a role that has access to SageMaker actions, such as a role with the `AmazonSageMakerFullAccess` managed policy\. For information about SageMaker managed policies, see [AWS Managed Policies for Amazon SageMaker](security-iam-awsmanpol.md)\.
 
- The following policy configuration must be put in the source account which registers models cross\-account with the model package group\.
+### Required IAM resource policies<a name="model-registry-version-xaccount-policies"></a>
+
+The following diagram captures the policies required to allow cross\-account model registration\. As shown, these policies need to be active during model training to properly register the model into the model registry account\.
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry_cross_account.png)
+
+Amazon ECR, Amazon S3, and AWS KMS policies are demonstrated in the following code samples\. 
+
+**Sample Amazon ECR policy**
+
+```
+{
+  'Version': '2012-10-17',
+  'Statement': [
+    {
+      'Sid': 'AddPerm',
+      'Effect': 'Allow',
+      'Principal': {
+        'AWS': 'arn:aws:iam::{model_registry_account}:root'
+      },
+      'Action': [
+        'ecr:BatchGetImage',
+        'ecr:Describe*'
+      ]
+    }
+  ]
+}
+```
+
+**Sample Amazon S3 policy**
+
+```
+{
+  'Version': '2012-10-17',
+  'Statement': [
+    {
+      'Sid': 'AddPerm',
+      'Effect': 'Allow',
+      'Principal': {
+        'AWS': 'arn:aws:iam::{model_registry_account}:root'
+      },
+      'Action': [
+        's3:GetObject',
+        's3:GetBucketAcl',
+        's3:GetObjectAcl'
+      ],
+      'Resource': 'arn:aws:s3:::{bucket}/*'
+    }
+  ]
+}
+```
+
+**Sample AWS KMS policy**
+
+```
+{
+  'Version': '2012-10-17',
+  'Statement': [
+    {
+      'Sid': 'AddPerm',
+      'Effect': 'Allow',
+      'Principal': {
+        'AWS': 'arn:aws:iam::{model_registry_account}:root'
+      },
+      'Action': [
+        'kms:Decrypt',
+        'kms:GenerateDataKey*'
+      ],
+      'Resource': '*'
+    }
+  ]
+}
+```
+
+### Apply resource policies to accounts<a name="model-registry-version-xaccount-policy-usage"></a>
+
+The following policy configuration applies the policies discussed in the previous section and must be put in the model training account\.
 
 ```
 import json
 
-# The cross-account id of the model package group 
-cross_account_id = '111111111111'
+# The model registry account id of the model package group 
+model_registry_account = '111111111111'
 
-# The source account id where training happens
-source_account_id = '222222222222'
+# The model training account id where training happens
+model_training_account = '222222222222'
 
 # 1. Create a policy for access to the ECR repository 
-# in the source account for the cross-account model package group
+# in the model training account for the model registry account model package group
 ecr_repository_policy = {'Version': '2012-10-17',
     'Statement': [{'Sid': 'AddPerm',
         'Effect': 'Allow',
-        'Principal': {'AWS': f'arn:aws:iam::{cross_account_id}:root'
+        'Principal': {
+          'AWS': f'arn:aws:iam::{model_registry_account}:root'
         },
-        'Action': ['ecr:*']
+        'Action': [
+          'ecr:BatchGetImage',
+          'ecr:Describe*'
+        ]
     }]
 }
 
@@ -99,20 +181,24 @@ ecr_repository_policy = json.dumps(ecr_repository_policy)
 
 # Set the new ECR policy
 ecr = boto3.client('ecr')
-respose = ecr.set_repository_policy(
-    registryId = account,
+response = ecr.set_repository_policy(
+    registryId = model_training_account,
     repositoryName = 'decision-trees-sample',
     policyText = ecr_repository_policy
 )
 
-# 2. Create a policy for access to the S3 bucket where model is present
-# in the source account for the cross-account model package group
+# 2. Create a policy in the model training account for access to the S3 bucket 
+# where the model is present in the model registry account model package group
 bucket_policy = {'Version': '2012-10-17',
     'Statement': [{'Sid': 'AddPerm',
         'Effect': 'Allow',
-        'Principal': {'AWS': f'arn:aws:iam::{cross_account_id}:root'
+        'Principal': {'AWS': f'arn:aws:iam::{model_registry_account}:root'
         },
-        'Action': 's3:*',
+        'Action': [
+          's3:GetObject',
+          's3:GetBucketAcl',
+          's3:GetObjectAcl'
+        ],
         'Resource': 'arn:aws:s3:::{bucket}/*'
     }]
 }
@@ -122,16 +208,16 @@ bucket_policy = json.dumps(bucket_policy)
 
 # Set the new bucket policy
 s3 = boto3.client('s3')
-respose = s3.put_bucket_policy(
+response = s3.put_bucket_policy(
     Bucket = bucket,
     Policy = bucket_policy)
 
 # 3. Create the KMS grant for the key used during training for encryption
-# in source account to the cross-account model package group
+# in the model training account to the model registry account model package group
 client = boto3.client('kms')
 
 response = client.create_grant(
-    GranteePrincipal=cross_account_id,
+    GranteePrincipal=model_registry_account,
     KeyId=kms_key_id
     Operations=[
         'Decrypt',
@@ -140,21 +226,21 @@ response = client.create_grant(
 )
 ```
 
-The following configuration needs to be put in the cross\-account where the model package group exists\.
+The following configuration needs to be put in the model registry account where the model package group exists\.
 
 ```
-# source account id where the training is done
-source_account_id = '111111111111'
+# The model registry account id of the model package group 
+model_registry_account = '111111111111'
 
-# 1. Create policy for access to the ModelPackageGroup by source account
+# 1. Create policy for access to the ModelPackageGroup by the model training account
 model_package_group_policy = {'Version': '2012-10-17',
     'Statement': [
         {
             'Sid': 'AddPermModelPackageVersion',
             'Effect': 'Allow',
-            'Principal': {'AWS': f'arn:aws:iam::{source_account_id}:root'
+            'Principal': {'AWS': f'arn:aws:iam::{model_training_account}:root'
             'Action': ["sagemaker:CreateModelPackage"],
-            'Resource': f'arn:aws:sagemaker:{region}:{account}:model-package/{model_package_group_name}/*'
+            'Resource': f'arn:aws:sagemaker:{region}:{model_registry_account}:model-package/{model_package_group_name}/*'
         }
     ]
 }
@@ -168,7 +254,7 @@ response = sm_client.put_model_package_group_policy(
     ResourcePolicy = model_package_group_policy)
 ```
 
-Finally, use the `create_model_package` action from the source account to access the cross\-account register model package\.
+Finally, use the `create_model_package` action from the model training account to access the model package registered in the model registry account\.
 
 ```
 #Set up the parameter dictionary to pass to the create_model_package method
@@ -176,7 +262,7 @@ modelpackage_inference_specification =  {
     "InferenceSpecification": {
         "Containers": [
             {
-                "Image": '257758044811.dkr.ecr.us-east-2.amazonaws.com/sagemaker-xgboost:1.2-1',
+                "Image": f'{model_training_account}.dkr.ecr.us-east-2.amazonaws.com/decision-trees-sample:latest',
             }
         ],
         "SupportedContentTypes": [ "text/csv" ],
@@ -185,7 +271,7 @@ modelpackage_inference_specification =  {
 }
  
 # Specify the model source
-model_url = "s3://your-bucket-name/model.tar.gz"
+model_url = "s3://{bucket}/model.tar.gz"
 
 # Specify the model data
 modelpackage_inference_specification["InferenceSpecification"]["Containers"][0]["ModelDataUrl"]=model_url
@@ -197,7 +283,7 @@ create_model_package_input_dict = {
 }
 create_model_package_input_dict.update(modelpackage_inference_specification)
 
-# Create cross-account model package
+# Create the model package in the model registry account
 create_model_package_response = sm_client.create_model_package(**create_model_package_input_dict)
 model_package_arn = create_model_package_response["ModelPackageArn"]
 print('ModelPackage Version ARN : {}'.format(model_package_arn))

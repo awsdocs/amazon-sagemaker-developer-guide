@@ -1,6 +1,6 @@
-# Connect a Notebook Instance to Resources in a VPC<a name="appendix-notebook-and-internet-access"></a>
+# Connect a Notebook Instance in a VPC to External Resources<a name="appendix-notebook-and-internet-access"></a>
 
-The following topic gives information on how to connect your notebook instance to resources in a VPC\.
+The following topic gives information on how to connect your notebook instance in a VPC to external resources\.
 
 ## Default communication with the internet<a name="appendix-notebook-and-internet-access-default"></a>
 

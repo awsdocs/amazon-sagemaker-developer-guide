@@ -163,7 +163,7 @@ aws sagemaker create-domain --region <REGION> --domain-name <DOMAIN_NAME> \
 
  **VPCOnly mode** 
 
-The following shows how to launch a Amazon SageMaker Domain with RStudio enabled and a `VPCOnly` Network Type\. For more information about using the `VPCOnly` network access type, see [Connect SageMaker Studio Notebooks to Resources in a VPC](studio-notebooks-and-internet-access.md)\.
+The following shows how to launch a Amazon SageMaker Domain with RStudio enabled and a `VPCOnly` Network Type\. For more information about using the `VPCOnly` network access type, see [Connect SageMaker Studio Notebooks in a VPC to External Resources](studio-notebooks-and-internet-access.md)\.
 + `DomainExecutionRoleArn` should be the ARN for the role created in the previous step\.
 + `ExecutionRole` is the ARN of the role given to users in the Amazon SageMaker Domain\.
 + `vpc-id` should be the ID of your Amazon Virtual Private Cloud\. `subnet-ids` should be a space\-separated list of subnet IDs\. Your private subnet must be able to either access the internet to make a call to Amazon SageMaker, and AWS License Manager or have Amazon VPC endpoints for both Amazon SageMaker and AWS License Manager\. For information about Amazon VPC endpoints, see [Interface Amazon VPC endpoints ](https://docs.aws.amazon.com/vpc/latest/privatelink/vpce-interface.html)For information about `vpc-id` and `subnet-ids`, see [VPCs and subnets](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)\. 
