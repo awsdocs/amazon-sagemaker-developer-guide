@@ -56,4 +56,4 @@ When feature data is ingested and updated, Feature Store stores historical data 
 
 To remove a `Record` from your online store, use the [https://docs.aws.amazon.com/en_us/sagemaker/latest/APIReference/API_feature_store_DeleteRecord.html](https://docs.aws.amazon.com/en_us/sagemaker/latest/APIReference/API_feature_store_DeleteRecord.html) API call\. This will also add the deleted record to the offline store\.
 
-## <a name="w2367aac23c25"></a>
+## <a name="w2379aac23c25"></a>

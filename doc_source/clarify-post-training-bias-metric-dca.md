@@ -1,6 +1,6 @@
 # Difference in Conditional Acceptance \(DCAcc\)<a name="clarify-post-training-bias-metric-dca"></a>
 
-This metric compares the observed labels to the labels predicted by the model and assesses whether this is the same across facets for predicted positive outcomes\. This metric comes close to mimicking human bias in that it quantifies how many more positive outcomes a model predicted \(labels y’\) for a certain facet as compared to what was observed in the training dataset \(labels y\)\. For example, if there were more acceptances \(a positive outcome\) for loan applications for a middle\-aged group \(facet *a*\) than predicted by the model based on qualifications as compared to the facet containing other age groups \(facet *d*\), this might indicate potential bias in the way loans were approved\.
+This metric compares the observed labels to the labels predicted by the model and assesses whether this is the same across facets for predicted positive outcomes\. This metric comes close to mimicking human bias in that it quantifies how many more positive outcomes a model predicted \(labels y’\) for a certain facet as compared to what was observed in the training dataset \(labels y\)\. For example, if there were more acceptances \(a positive outcome\) observed in the training dataset for loan applications for a middle\-aged group \(facet *a*\) than predicted by the model based on qualifications as compared to the facet containing other age groups \(facet *d*\), this might indicate potential bias in the way loans were approved favoring the middle\-aged group\. 
 
 The formula for the difference in conditional acceptance:
 
@@ -14,15 +14,19 @@ The DCAcc metric can capture both positive and negative biases that reveal prefe
 
 **Example 1: Positive bias** 
 
-Suppose we have dataset of 100 middle\-aged people \(facet *a*\) and 50 people from other age groups \(facet *d*\) who applied for loans, where the model recommended that 60 from facet *a* and 30 from facet *d* be given loans\. So the predicted proportions are unbiased with respect to the DPPL metric, but the observed labels show that 70 from facet *a* and 20 from facet *d* were granted loans\. In other words, the model granted loans to 17% fewer from the middle aged facet than the observed labels in the training data suggested \(70/60 = 1\.17\) and granted loans to 33% more from other age groups than the observed labels suggested \(20/30 = 0\.67\)\. The calculation of the DCAcc value quantifies this difference between \-17% and \+33%\. The calculation of the DCAcc value gives the following:
+Suppose we have dataset of 100 middle\-aged people \(facet *a*\) and 50 people from other age groups \(facet *d*\) who applied for loans, where the model recommended that 60 from facet *a* and 30 from facet *d* be given loans\. So the predicted proportions are unbiased with respect to the DPPL metric, but the observed labels show that 70 from facet *a* and 20 from facet *d* were granted loans\. In other words, the model granted loans to 17% fewer from the middle aged facet than the observed labels in the training data suggested \(70/60 = 1\.17\) and granted loans to 33% more from other age groups than the observed labels suggested \(20/30 = 0\.67\)\. The calculation of the DCAcc value gives the following:
 
         DCAcc = 70/60 \- 20/30 = 1/2
 
+The positive value indicates that there is a potential bias against the middle\-aged facet *a* with a lower acceptance rate as compared with the other facet *d* than the observed data \(taken as unbiased\) indicate is the case\.
+
 **Example 2: Negative bias** 
 
-Suppose we have dataset of 100 middle\-aged people \(facet *a*\) and 50 people from other age groups \(facet *d*\) who applied for loans, where the model recommended that 60 from facet *a* and 30 from facet *d* be given loans\. So the predicted proportions are unbiased with respect to the DPPL metric, but the observed labels show that 50 from facet *a* and 40 from facet *d* were granted loans\. In other words, the model granted loans to 17% more from the middle aged facet than the observed labels in the training data suggested \(50/60 = 0\.83\), and granted loans to 33% fewer from other age groups than the observed labels suggested \(40/30 = 1\.33\)\. The calculation of the DCAcc value quantifies this difference between \-33% and \+17%\. The calculation of the DCAcc value gives the following:
+Suppose we have dataset of 100 middle\-aged people \(facet *a*\) and 50 people from other age groups \(facet *d*\) who applied for loans, where the model recommended that 60 from facet *a* and 30 from facet *d* be given loans\. So the predicted proportions are unbiased with respect to the DPPL metric, but the observed labels show that 50 from facet *a* and 40 from facet *d* were granted loans\. In other words, the model granted loans to 17% fewer from the middle aged facet than the observed labels in the training data suggested \(50/60 = 0\.83\), and granted loans to 33% more from other age groups than the observed labels suggested \(40/30 = 1\.33\)\. The calculation of the DCAcc value gives the following:
 
         DCAcc = 50/60 \- 40/30 = \-1/2
+
+The negative value indicates that there is a potential bias against facet *d* with a lower acceptance rate as compared with the middle\-aged facet *a* than the observed data \(taken as unbiased\) indicate is the case\.
 
 Note that you can use DCAcc to help you detect potential \(unintentional\) biases by humans overseeing the model predictions in a human\-in\-the\-loop setting\. Assume, for example, that the predictions y' by the model were unbiased, but the eventual decision is made by a human \(possibly with access to additional features\) who can alter the model predictions to generate a new and final version of y'\. The additional processing by the human may unintentionally deny loans to a disproportionate number from one facet\. DCAcc can help detect such potential biases\.
 

@@ -29,4 +29,4 @@ This procedure is part of the Amazon SageMaker Domain onboarding process when yo
 **Note**  
 For the maximum number of allowed security groups, see [UserSettings](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UserSettings.html)\.
 
-For VPC requirements in **VPC only** mode, see [Connect SageMaker Studio Notebooks to Resources in a VPC](studio-notebooks-and-internet-access.md)\.
+For VPC requirements in **VPC only** mode, see [Connect SageMaker Studio Notebooks in a VPC to External Resources](studio-notebooks-and-internet-access.md)\.

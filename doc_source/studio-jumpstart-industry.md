@@ -1,6 +1,6 @@
 # Amazon SageMaker JumpStart Industry<a name="studio-jumpstart-industry"></a>
 
-Use SageMaker JumpStart Industry solutions, models, and example notebooks to learn about SageMaker features and capabilities through curated 1\-click solutions and example notebooks of industry\-focused machine learning \(ML\) problems\. The notebooks also walk through how to use the SageMaker JumpStart Industry Python SDK to enhance industry text data and fine\-tune pretrained models\.
+Use SageMaker JumpStart Industry solutions, models, and example notebooks to learn about SageMaker features and capabilities through curated one\-step solutions and example notebooks of industry\-focused machine learning \(ML\) problems\. The notebooks also walk through how to use the SageMaker JumpStart Industry Python SDK to enhance industry text data and fine\-tune pretrained models\.
 
 **Topics**
 + [Amazon SageMaker JumpStart Industry Python SDK](#studio-jumpstart-industry-pysdk)

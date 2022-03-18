@@ -8,6 +8,7 @@ AWS Identity and Access Management \(IAM\) is an AWS service that helps an admin
 + [Managing Access Using Policies](#security_iam_access-manage)
 + [How Amazon SageMaker Works with IAM](security_iam_service-with-iam.md)
 + [Amazon SageMaker Identity\-Based Policy Examples](security_iam_id-based-policy-examples.md)
++ [Cross\-Service Confused Deputy Prevention](security-confused-deputy-prevention.md)
 + [SageMaker Roles](sagemaker-roles.md)
 + [Amazon SageMaker API Permissions: Actions, Permissions, and Resources Reference](api-permissions-reference.md)
 + [AWS Managed Policies for Amazon SageMaker](security-iam-awsmanpol.md)
