@@ -10,6 +10,20 @@ The following diagram shows how you can use Amazon SageMaker Feature Store as pa
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/feature-store-overview.png)
 
+## Feature Store Integration with Data Ingestion, Model Training, and Inference<a name="feature-store-integration"></a>
+
+As you integrate Feature Store into your ML process, you will have several options for ingesting data into the Feature Store and extracting data from the Feature Store for model training and inference.  The following diagram illustrates one such approach.
+
+![\[Image NOT FOUND\]](fs-integration.png)
+
+In this diagram, you'll see three data sources at the left, Redshift, S3, and Kafka.  Redshift and S3 represent two types of batch data sources that we can load into Feature Store using an Amazon SageMaker Data Wrangler job.  Data Wrangler can read data from Redshift and S3, let you apply feature transformations, and write the results into the Feature Store.  Kafka represents a streaming data source.  In this case, we can use a stream processing job in AWS Glue to enrich and transform records on a Kafka topic, write the results into a second Kafka topic, and then have a Kafka consumer Lambda function write the finished records into Feature Store.
+
+Once the feature store is populated, you can use those features for model training.  You can use Amazon Athena to query features from Feature Store and save the results into an S3 location for use in a SageMaker training job.  
+
+Finally, let's assume that you want to make inferences in close to real-time, and you've deployed your trained model into a SageMaker hosted inference endpoint.  Your application can extract individual records from Feature Store and use them in an inference call to your real-time inference endpoint.
+
+There are many possible variations on this theme, but this diagram shows one way to handle both batch and streaming ingestion into Feature Store, and how to consume Feature Store data for both model training and real-time inference.
+
 ## How Feature Store Works<a name="how-feature-store-works"></a>
 
 In Feature Store, features are stored in a collection called a *feature group*\. You can visualize a feature group as a table in which each column is a feature, with a unique identifier for each row\. In principle, a feature group is composed of features and values specific to each feature\. A `Record` is a collection of values for features that correspond to a unique `RecordIdentifier`\. Altogether, a `FeatureGroup` is a group of features defined in your `FeatureStore` to describe a `Record`\.  
