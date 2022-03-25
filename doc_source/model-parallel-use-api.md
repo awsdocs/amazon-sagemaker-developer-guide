@@ -10,7 +10,7 @@ There are three use\-case scenarios for running a SageMaker training job:
 
 1. You can adapt your own Docker container to work with SageMaker using the [SageMaker Training toolkit](https://github.com/aws/sagemaker-training-toolkit)\. For an example, see [Adapting Your Own Training Container](https://docs.aws.amazon.com/sagemaker/latest/dg/adapt-training-container.html)\.
 
-For options 2 and 3 in the preceding list, refer to [Extend a Docker Container that Contains SageMaker's Distributed Model Parallel Library](model-parallel-sm-sdk.md#model-parallel-customize-container) to learn how to install the model parallel library in an extended or customized Docker container\. 
+For options 2 and 3 in the preceding list, refer to [Extend a Prebuilt Docker Container that Contains SageMaker's Distributed Model Parallel Library](model-parallel-sm-sdk.md#model-parallel-customize-container) to learn how to install the model parallel library in an extended or customized Docker container\. 
 
 In all cases, you launch your training job configuring a SageMaker `TensorFlow` or `PyTorch` estimator to initialize the library\. To learn more, see the following topics\.
 

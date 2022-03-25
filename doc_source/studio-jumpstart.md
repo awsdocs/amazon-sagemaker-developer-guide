@@ -5,7 +5,7 @@
 
  You can use SageMaker JumpStart to learn about SageMaker features and capabilities through curated one\-step solutions, example notebooks, and pretrained models that you can deploy\. You can also fine\-tune the models and deploy them\. 
 
- To access JumpStart, you must first launch SageMaker Studio\. JumpStart features are not available in SageMaker notebook instances, and you can't access them through SageMaker APIs or the AWS CLI\. 
+You can access JumpStart using Amazon SageMaker Studio or programmatically through the SageMaker APIs\. The following steps show how to access JumpStart models and solutions using Amazon SageMaker Studio\. For information about how to use JumpStart models programmatically, see [Use Prebuilt Models with SageMaker JumpStart](https://sagemaker.readthedocs.io/en/stable/overview.html#use-prebuilt-models-with-sagemaker-jumpstart)\.
 
  Open JumpStart by using the JumpStart launcher in the **Get Started** section or by choosing the JumpStart icon \(![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/jumpstart/jumpstart-icon.png)\) in the *left sidebar*\. 
 

@@ -56,15 +56,10 @@ The following table outlines the timeline for AL1 entering its extended maintena
 |  conda\_amazonei\_mxnet\_p36  | 
 |  conda\_amazonei\_pytorch\_latest\_p37  | 
 |  conda\_amazonei\_tensorflow2\_p36  | 
-|  conda\_amazonei\_tensorflow\_p36  | 
-|  conda\_mxnet\_latest\_p37  | 
-|  conda\_mxnet\_p36  | 
+|  conda\_mxnet\_p37  | 
 |  conda\_python3  | 
-|  conda\_pytorch\_latest\_p37  | 
-|  conda\_pytorch\_p36  | 
-|  conda\_tensorflow2\_latest\_p37  | 
-|  conda\_tensorflow2\_p36  | 
-|  conda\_tensorflow\_p37  | 
+|  conda\_pytorch\_p38  | 
+|  conda\_tensorflow2\_p38  | 
 
 ## Migrating to Amazon Linux 2<a name="nbi-al2-upgrade"></a>
 

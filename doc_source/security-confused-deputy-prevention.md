@@ -36,6 +36,54 @@ The following example shows how you can use the `aws:SourceArn` and `aws:SourceA
 }
 ```
 
+## Cross\-Service Confused Deputy Prevention for SageMaker Inference<a name="security-confused-deputy-inference"></a>
+
+The following example shows how you can use the `aws:SourceArn` global condition key to prevent the cross\-service confused deputy problem for SageMaker [real\-time](https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints), [serverless](https://docs.aws.amazon.com/sagemaker/latest/dg/serverless-endpoints), and [asynchronous](https://docs.aws.amazon.com/sagemaker/latest/dg/async-inference) inference\. Note that because the account number is part of the `aws:SourceArn` value, you do not need to specify an `aws:SourceAccount` value\.
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": {
+    "Effect": "Allow",
+    "Principal": { "Service": "sagemaker.amazonaws.com" },
+    "Action": "sts:AssumeRole",
+    "Condition": {
+      "ArnLike": {
+        "aws:SourceArn": "arn:aws:sagemaker:us-west-2:123456789012:*"
+      }
+    }
+  }
+}
+```
+
+Do not replace the `aws:SourceArn` in this template with the full ARN of a specific model or endpoint\. The ARN must be in the format provided above\. The asterisk in the ARN template does not stand for wildcard and should not be changed\. 
+
+## Cross\-Service Confused Deputy Prevention for SageMaker Studio<a name="security-confused-deputy-studio"></a>
+
+The following example shows how you can use the `aws:SourceArn` global condition key to prevent the cross\-service confused deputy problem for SageMaker Studio created by account number *123456789012* in region *us\-west\-2*\. Note that because the account number is part of the `aws:SourceArn` value, you do not need to specify an `aws:SourceAccount` value\. 
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "sagemaker.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        "ArnLike": {
+          "aws:SourceArn": "arn:aws:sagemaker:us-west-2:123456789012:*"
+        }
+      }
+    }
+  ]
+}
+```
+
+Do not replace the `aws:SourceArn` in this template with the full ARN of a specific Studio app, user profile, or domain\. The ARN must be in the format provided above\. The asterisk in the ARN template does not stand for wildcard and should not be changed\. 
+
 ## Cross\-Service Confused Deputy Prevention for SageMaker Training Jobs<a name="security-confused-deputy-training-job"></a>
 
 The following example shows how you can use the `aws:SourceArn` global condition key to prevent the cross\-service confused deputy problem for SageMaker training jobs created by account number *123456789012* in region *us\-west\-2*\. Note that because the account number is in the ARN, you do not need to specify an `aws:SourceAccount` value\.

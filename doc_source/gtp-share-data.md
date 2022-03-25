@@ -34,7 +34,7 @@ After the initial consultation call with the AWS expert, you can share your data
 
 1. In the **Bucket policy** section, choose **Edit**\.
 
-1. Copy the [policy](https://docs.aws.amazon.com/https://docs.aws.amazon.com/config/latest/developerguide/s3-bucket-policy.html) shown below and enter *your\-ground\-truth\-plus\-account\-id* and *your\-bucket\-name*
+1. Copy the [policy](https://docs.aws.amazon.com/config/latest/developerguide/s3-bucket-policy.html) shown below and enter *your\-ground\-truth\-plus\-account\-id* and *your\-bucket\-name*
 
    ```
            {

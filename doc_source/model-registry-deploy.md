@@ -147,6 +147,19 @@ response = s3.put_bucket_policy(
     Bucket = bucket,
     Policy = bucket_policy)
 
+# Create the KMS grant for encryption in the source account to the
+# model registry account model package group
+client = boto3.client('kms')
+
+response = client.create_grant(
+    GranteePrincipal=cross_account_id,
+    KeyId=kms_key_id
+    Operations=[
+        'Decrypt',
+        'GenerateDataKey',
+    ],
+)
+
 # 3. Create a policy for access to the model package group.
 model_package_group_policy = {
     'Version': '2012-10-17',
