@@ -232,7 +232,7 @@ The following configuration needs to be put in the model registry account where 
 # The model registry account id of the model package group 
 model_registry_account = '111111111111'
 
-# 1. Create policy for access to the ModelPackageGroup by the model training account
+# 1. Create policy to allow the model training account to access the ModelPackageGroup
 model_package_group_policy = {'Version': '2012-10-17',
     'Statement': [
         {
@@ -254,27 +254,28 @@ response = sm_client.put_model_package_group_policy(
     ResourcePolicy = model_package_group_policy)
 ```
 
-Finally, use the `create_model_package` action from the model training account to access the model package registered in the model registry account\.
+Finally, use the `create_model_package` action from the model training account to register the model package in the cross\-account\.
 
 ```
+# Specify the model source
+model_url = "s3://{bucket}/model.tar.gz"
+
 #Set up the parameter dictionary to pass to the create_model_package method
 modelpackage_inference_specification =  {
     "InferenceSpecification": {
         "Containers": [
             {
                 "Image": f'{model_training_account}.dkr.ecr.us-east-2.amazonaws.com/decision-trees-sample:latest',
+                "ModelDataUrl": model_url
             }
         ],
         "SupportedContentTypes": [ "text/csv" ],
         "SupportedResponseMIMETypes": [ "text/csv" ],
     }
 }
- 
-# Specify the model source
-model_url = "s3://{bucket}/model.tar.gz"
 
-# Specify the model data
-modelpackage_inference_specification["InferenceSpecification"]["Containers"][0]["ModelDataUrl"]=model_url
+# Alternatively, you can specify the model source like this:
+# modelpackage_inference_specification["InferenceSpecification"]["Containers"][0]["ModelDataUrl"]=model_url
 
 create_model_package_input_dict = {
     "ModelPackageGroupName" : model_package_group_arn,

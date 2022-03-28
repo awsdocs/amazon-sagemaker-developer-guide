@@ -11,6 +11,9 @@ You can use the new release of the XGBoost algorithm either as a Amazon SageMake
 **Warning**  
 The XGBoost 0\.90 version will be deprecated on December 31, 2021\. Supports for security updates or bug fixes for XGBoost 0\.90 will be discontinued after this date\. It is highly recommended to upgrade the XGBoost version to one of the newer versions \(1\.0\-1 or later\) before the deprecation\.
 
+**Warning**  
+SageMaker Python SDK v1 supports up to version 1\.0\-1 of XGBoost\. For later versions of XGBoost, use SageMaker Python SDK v2\. For more information see changes from [ SDK v1 to SDK v2](https://sagemaker.readthedocs.io/en/stable/v2.html)\.
+
 **Note**  
 XGBoost 1\.1 is not supported on SageMaker because XGBoost 1\.1 has a broken capability to run prediction when the test input has fewer features than the training data in LIBSVM inputs\. This capability has been restored in XGBoost 1\.2\. Consider using SageMaker XGBoost 1\.2\-2 or later\.
 
@@ -49,11 +52,11 @@ With SageMaker, you can use XGBoost as a built\-in algorithm or framework\. By u
   # construct a SageMaker XGBoost estimator
   # specify the entry_point to your xgboost training script
   estimator = XGBoost(entry_point = "your_xgboost_abalone_script.py", 
-                      framework_version='1.2-2',
+                      framework_version='1.0-1',
                       hyperparameters=hyperparameters,
                       role=sagemaker.get_execution_role(),
-                      instance_count=1,
-                      instance_type='ml.m5.2xlarge',
+                      train_instance_count=1,
+                      train_instance_type='ml.m5.2xlarge',
                       output_path=output_path)
   
   # define the data type and paths to the training and validation datasets
@@ -147,14 +150,14 @@ With SageMaker, you can use XGBoost as a built\-in algorithm or framework\. By u
   # specify the repo_version depending on your preference.
   xgboost_container = get_image_uri(boto3.Session().region_name,
                             'xgboost', 
-                            repo_version='1.2-2')
+                            repo_version='1.0-1')
   
   # construct a SageMaker estimator that calls the xgboost-container
   estimator = sagemaker.estimator.Estimator(image_name=xgboost_container, 
                                             hyperparameters=hyperparameters,
                                             role=sagemaker.get_execution_role(),
-                                            instance_count=1, 
-                                            instance_type='ml.m5.2xlarge', 
+                                            train_instance_count=1, 
+                                            train_instance_type='ml.m5.2xlarge', 
                                             train_volume_size=5, # 5 GB 
                                             output_path=output_path)
   

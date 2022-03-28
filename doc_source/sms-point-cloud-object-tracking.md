@@ -24,7 +24,7 @@ If you are a new user of the Ground Truth 3D point cloud labeling modality, we r
 
 Ground Truth provides workers with a web portal and tools to complete your 3D point cloud object tracking annotation tasks\. When you create the labeling job, you provide the Amazon Resource Name \(ARN\) for a pre\-built Ground Truth UI in the `HumanTaskUiArn` parameter\. When you create a labeling job using this task type in the console, this UI is automatically used\. You can preview and interact with the worker UI when you create a labeling job in the console\. If you are a new use, it is recommended that you create a labeling job using the console to ensure your label attributes, point cloud frames, and if applicable, images, appear as expected\. 
 
-The following is a GIF of the 3D point cloud object tracking worker task interface and demonstrates how the worker can navigate the point cloud frames in the sequence\. 
+The following is a GIF of the 3D point cloud object tracking worker task interface and demonstrates how the worker can navigate the point cloud frames in the sequence\. The annotating tools are a part of the worker task interface\. They are not available for the preview interface\. 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pointcloud/gifs/object_tracking/nav_frames.gif)
 

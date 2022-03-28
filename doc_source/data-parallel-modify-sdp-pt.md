@@ -5,10 +5,10 @@ In the SageMaker data parallel library v1\.4\.0 and later, the library is availa
 
 **PyTorch versions supported by SageMaker and the SageMaker distributed data parallel library**  
 
-| PyTorch version | SageMaker distributed data parallel library version | `smdistributed-dataparallel` integrated image URI | 
-| --- | --- | --- | 
-| v1\.10\.2 |  smdistributed\-dataparallel==v1\.4\.0  |  763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/pytorch\-training:1\.10\.2\-gpu\-py38\-cu113\-ubuntu20\.04\-sagemaker  | 
-| v1\.8\.1 | smdistributed\-dataparallel==v1\.3\.0  | 763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/pytorch\-training:1\.8\.1\-gpu\-py36\-cu111\-ubuntu18\.04 | 
+| PyTorch version | SageMaker distributed data parallel library version | `smdistributed-dataparallel` integrated image URI | URL to the binary files of the library | 
+| --- | --- | --- | --- | 
+| v1\.10\.2 |  smdistributed\-dataparallel==v1\.4\.0  |  763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/pytorch\-training:1\.10\.2\-gpu\-py38\-cu113\-ubuntu20\.04\-sagemaker  | https://smdataparallel\.s3\.amazonaws\.com/binary/pytorch/1\.10\.2/cu113/2022\-02\-18/smdistributed\_dataparallel\-1\.4\.0\-cp38\-cp38\-linux\_x86\_64\.whl | 
+| v1\.8\.1 | smdistributed\-dataparallel==v1\.2\.3  | 763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/pytorch\-training:1\.8\.1\-gpu\-py36\-cu111\-ubuntu18\.04 | https://smdataparallel\.s3\.amazonaws\.com/binary/pytorch/1\.8\.1/cu111/2021\-12\-13/smdistributed\_dataparallel\-1\.2\.3\-cp36\-cp36m\-linux\_x86\_64\.whl | 
 
 **Important**  
 Because the SageMaker distributed data parallelism library v1\.4\.0 and later works as a backend of PyTorch distributed, the following [smdistributed APIs](https://sagemaker.readthedocs.io/en/stable/api/training/sdp_versions/latest/smd_data_parallel_pytorch.html#pytorch-api) for the PyTorch distributed package are deprecated\.  

@@ -1,12 +1,12 @@
 # Batch Ingestion Spark Connector Setup<a name="batch-ingestion-spark-connector-setup"></a>
 
-## Introduction<a name="w2379aac23c29c11b3"></a>
+## Introduction<a name="w2390aac23c29c11b3"></a>
 
  Amazon SageMaker Feature Store supports batch data ingestion with Spark, using your existing ETL pipeline, or a pipeline on Amazon EMR\. You can also use this functionality from a Amazon SageMaker Notebook Instance\. 
 
  Methods for installing and implementing batch data ingestion are provided for Python and Scala\. Python developers can use the `Amazon SageMaker-feature-store-pyspark` Python library for local development, installation on Amazon EMR, or run it from Jupyter notebooks\. Scala developers can use the Feature Store Spark connector available in Maven\. 
 
-## Installation<a name="w2379aac23c29c11b5"></a>
+## Installation<a name="w2390aac23c29c11b5"></a>
 
  **Scala Users** 
 
@@ -76,7 +76,7 @@
     !pip3 install sagemaker-feature-store-pyspark --no-binary :all:
 ```
 
-## Example Implementations<a name="w2379aac23c29c11b7"></a>
+## Example Implementations<a name="w2390aac23c29c11b7"></a>
 
  **Scala** 
 

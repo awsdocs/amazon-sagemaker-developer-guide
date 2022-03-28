@@ -30,13 +30,21 @@ The steps for creating Amazon SNS topics for work team notifications are similar
 
    ```
        , {
-         "Sid": "AwsSagemaker_SnsAccessPolicy",
-         "Effect": "Allow",
-         "Principal": {
-           "Service": "sagemaker.amazonaws.com"
-         },
-         "Action": "sns:Publish",
-         "Resource": "ARN of the topic you copied in the previous step"
+           "Sid": "AwsSagemaker_SnsAccessPolicy",
+           "Effect": "Allow",
+           "Principal": {
+               "Service": "sagemaker.amazonaws.com"
+           },
+           "Action": "sns:Publish",
+           "Resource": "arn:partition:sns:region:111122223333:MyTopic", # ARN of the topic you copied in the previous step
+           "Condition": {
+               "ArnLike": {
+                   "aws:SourceArn": "arn:partition:sagemaker:region:111122223333:workteam/*" # Workteam ARN
+               },
+               "StringEquals": {
+                   "aws:SourceAccount": "111122223333" # SNS topic account
+               }
+           }
        }
    ```
 

@@ -10,12 +10,18 @@ For users who use any role other than the domain execution role to view and use 
 
 The following procedures show how to enable **Projects** permissions when you are onboarding to Studio\. For more information about onboarding to Studio, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
-**To enable **Projects** permissions for the administrator and domain execution role users**
+**To grant **Projects** permissions for the administrator and domain execution role users**
 
 1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Choose **Amazon SageMaker Studio**\.
+1. Choose **SageMaker Domain**\.
 
-1. If you choose **Quick start**, under **Projects**, make sure **Enable SageMaker project templates for this account and Studio users** is turned on\.
+1. If you choose **Quick setup** to set up your SageMaker Domain, you are permitted to use Amazon SageMaker project templates by default\.
 
-1. If you choose **Standard setup**, under **Projects**, make sure both **Enable SageMaker project templates for this account** and **Enable SageMaker project templates for Studio users** are turned on\.
+1. If you choose **Standard setup** to set up your SageMaker Domain, make sure both **Enable Amazon SageMaker project templates and Amazon SageMaker JumpStart for this account** and **Enable Amazon SageMaker project templates and Amazon SageMaker JumpStart for Studio users** are turned on\.
+
+1. To confirm that your SageMaker Domain has active SageMaker project template permissions:
+
+   1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
+
+   1. Make sure that there is a check mark next to **Amazon SageMaker project templates enabled for this account** and **Amazon SageMaker project templates enabled for Studio users**\.
