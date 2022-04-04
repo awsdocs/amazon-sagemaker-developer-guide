@@ -371,6 +371,17 @@ For the preceding table, the **Number of Customers** column contains the time se
 
 You might need to perform a series of transformations on your data to get it in a format that you can use for your analysis\. Use the **Time series** transform group to transform your time series data\. For more information about the transformations that you can perform, see the following sections\.
 
+**Topics**
++ [Group by a Time Series](#data-wrangler-group-by-time-series)
++ [Resample Time Series Data](#data-wrangler-resample-time-series)
++ [Handle Missing Time Series Data](#data-wrangler-transform-handle-missing-time-series)
++ [Validate the Time Stamp of Your Time Series Data](#data-wrangler-transform-validate-timestamp)
++ [Standardizing the Length of the Time Series](#data-wrangler-transform-standardize-length)
++ [Extract Features from Your Time Series Data](#data-wrangler-transform-extract-time-series-features)
++ [Use Lagged Features from Your Time Series Data](#data-wrangler-transform-lag-time-series)
++ [Create a Datetime Range In Your Time Series](#data-wrangler-transform-datetime-range)
++ [Use a Rolling Window In Your Time Series](#data-wrangler-transform-rolling-window)
+
 ### Group by a Time Series<a name="data-wrangler-group-by-time-series"></a>
 
 You can use the group by operation to group time series data for specific values in a column\.

@@ -22,19 +22,24 @@ To register a model version by using Boto3, call the `create_model_package` meth
 First, you set up the parameter dictionary to pass to the `create_model_package` method\.
 
 ```
+# Specify the model source
+model_url = "s3://your-bucket-name/model.tar.gz"
+
 modelpackage_inference_specification =  {
     "InferenceSpecification": {
       "Containers": [
          {
             "Image": '257758044811.dkr.ecr.us-east-2.amazonaws.com/sagemaker-xgboost:1.2-1',
+	    "ModelDataUrl": model_url
          }
       ],
       "SupportedContentTypes": [ "text/csv" ],
       "SupportedResponseMIMETypes": [ "text/csv" ],
    }
  }
-# Specify the model source
-model_url = "s3://your-bucket-name/model.tar.gz"
+
+# Alternatively, you can specify the model source like this:
+# modelpackage_inference_specification["InferenceSpecification"]["Containers"][0]["ModelDataUrl"]=model_url
 
 # Specify the model data
 modelpackage_inference_specification["InferenceSpecification"]["Containers"][0]["ModelDataUrl"]=model_url

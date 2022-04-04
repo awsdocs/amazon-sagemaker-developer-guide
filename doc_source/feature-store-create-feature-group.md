@@ -10,4 +10,4 @@
 
 The default behavior when a new feature record is added with an already existing record ID is as follows\. In the offline store, the new record will be appended\. In the online store, if the event time of the new record is less than the existing event time than nothing will happen, however if the event time of the new record is greater than or equal to the existing event time, the record will be over written\.
 
-## <a name="w2390aac23c27b9c13"></a>
+## <a name="w2399aac23c27b9c13"></a>

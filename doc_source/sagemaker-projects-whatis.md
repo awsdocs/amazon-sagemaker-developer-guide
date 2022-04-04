@@ -5,7 +5,7 @@ By using a SageMaker project, teams of data scientists and developers can work o
 A SageMaker project is an AWS Service Catalog–provisioned product with which you can create an end\-to\-end ML solution\. For information about AWS Service Catalog, see [What is AWS Service Catalog](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/introduction.html)\.
 
 Each SageMaker project has a unique name and ID that are passed to all SageMaker and AWS resources created in the project\. By using the name and ID, you can view all entities associated with your project\. These include:
-+ Pipeline executions
++ Pipelines
 + Registered models
 + Deployed models \(endpoints\)
 + Datasets
@@ -21,9 +21,9 @@ A typical SageMaker project with a SageMaker\-provided template might include th
 
 ## When Should You Use a SageMaker Project?<a name="sagemaker-projects-when"></a>
 
-While notebooks are helpful for model building and experimentation, when you have a team of data scientists and ML engineers working on an ML problem, you need a more scalable way to maintain code consistency and have stricter version control\. Having the code only in notebook files makes it harder to collaborate and risks losing code or model artifacts if the notebook is accidentally deleted or changed\. By using SageMaker projects, you can manage the versions for your Git repositories so you can collaborate across teams more efficiently, ensure code consistency, and enable CI/CD\. 
+While notebooks are helpful for model building and experimentation, when you have a team of data scientists and ML engineers working on an ML problem, you need a more scalable way to maintain code consistency and have stricter version control\. Having the code only in notebook files makes it harder to collaborate and risks losing code or model artifacts if the notebook is accidentally deleted or changed\. By using SageMaker projects, you can manage the versions for your Git repositories so you can collaborate across teams more efficiently, ensure code consistency, and implement CI/CD\. 
 
-In addition to managing code, SageMaker projects enable MLOps for model building, model deployment, and end\-to\-end ML workflows\. You can run training jobs or SageMaker pipelines to build models in Amazon SageMaker Studio\. However, if you want to create a CI/CD system that generates models based on triggers, such as when someone checks in a code change, then consider creating a SageMaker project and using a SageMaker\-provided template\. For a list of the project templates that SageMaker provides, see [Use SageMaker\-Provided Project Templates](sagemaker-projects-templates-sm.md)\.
+In addition to managing code, SageMaker projects enable MLOps for model building, model deployment, and end\-to\-end ML workflows\. You can run training jobs or SageMaker pipelines to build models in Amazon SageMaker Studio\. However, if you want to create a CI/CD system that generates models based on events, such as when someone checks in a code change, then consider creating a SageMaker project and using a SageMaker\-provided template\. For a list of the project templates that SageMaker provides, see [Use SageMaker\-Provided Project Templates](sagemaker-projects-templates-sm.md)\.
 
 ## Do I Need to Create a Project to Use SageMaker Pipelines?<a name="sagemaker-projects-need"></a>
 

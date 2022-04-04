@@ -463,6 +463,14 @@ step_lambda = LambdaStep(
 )
 ```
 
+**Inputs and outputs**
+
+If your `Lambda` function has inputs or outputs, these must also be defined in your `Lambda` step\.
+
+When defining the `Lambda` step, `inputs` must be a dictionary of key\-value pairs\. Each value of the `inputs` dictionary must be a primitive type \(string, integer, or float\)\. Nested objects are not supported\. If left undefined, the `inputs` value defaults to `None`\.
+
+The `outputs` value must be a list of keys\. These keys refer to a dictionary defined in the output of the `Lambda` function\. Like `inputs`, these keys must be primitive types, and nested objects are not supported\.
+
 **Timeout and stopping behavior**
 
 The `Lambda` class has a `timeout` argument that specifies the maximum time that the Lambda function can run\. The default value is 120 seconds with a maximum value of 10 minutes\. If the Lambda function is running when the timeout is met, the Lambda step fails; however, the Lambda function continues to run\.
