@@ -15,7 +15,7 @@ To make a time\-series forecast, do the following\.
 1. Specify the following fields:
    + **Item ID column** – The column that contains unique identifiers for each item in your dataset\. For example, an SKU number uniquely identifies an item\.
    + Optional: **Group column** – Groups the time series forecast by values in the column\. For example, you can group your forecast for an item by store\.
-   + **Time stamp column** – The column containing the time stamps in your dataset\.
+   + **Time stamp column** – The column containing the time stamps in your dataset\. For a list of the supported `datetime` formats for this column, see [Time Series Forecasts in Amazon SageMaker Canvas](canvas-time-series.md)\.
    + **Future timestamp** – A timestamp that indicates a future forecast time\. SageMaker Canvas forecasts values up to the point in time specified by the timestamp\.
    + Optional: **Holiday schedule** – Activate the holiday schedule to use a country's holiday schedule\. Use it to make your forecasts with holiday data more accurate\.
 

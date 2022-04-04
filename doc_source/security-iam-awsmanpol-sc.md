@@ -26,7 +26,7 @@ This policy includes the following permissions\.
 + `codepipeline` – Allows the role assumed by AWS Service Catalog and passed to CloudFormation to create, update and delete CodePipelines\.
 + `codestar-connections` – Allows the role to pass AWS CodeStar connections\.
 + `cognito-idp` – Allows the role to create, update, and delete groups and user pools\. Also allows tagging resources\.
-+ `ecr` – Allows the role assumed by AWS Service Catalog and passed to CloudFormation to create and delete Amazon ECR repositories\.
++ `ecr` – Allows the role assumed by AWS Service Catalog and passed to CloudFormation to create and delete Amazon ECR repositories\. Also allows tagging resources\.
 + `events` – Allows the role assumed by AWS Service Catalog and passed to CloudFormation to create and delete EventBridge rules\. Used for tying together the various components of the CICD pipeline\.
 + `firehose` – Allows the role to interact with Kinesis Data Firehose streams\.
 + `glue` – Allows the role to interact with AWS Glue\.
@@ -196,10 +196,11 @@ This policy includes the following permissions\.
       }
     },
     {
-        "Effect": "Allow",
+      "Effect": "Allow",
       "Action": [
         "ecr:CreateRepository",
-        "ecr:DeleteRepository"
+        "ecr:DeleteRepository",
+        "ecr:TagResource"
       ],
       "Resource": [
         "arn:aws:ecr:*:*:repository/sagemaker-*"
@@ -399,6 +400,7 @@ This policy includes the following permissions\.
       ]
     },
     {
+      "Effect": "Allow",
       "Action": [
         "sagemaker:CreateImage",
         "sagemaker:DeleteImage",
@@ -408,8 +410,7 @@ This policy includes the following permissions\.
       ],
       "Resource": [
         "arn:aws:sagemaker:*:*:image/*"
-      ],
-      "Effect": "Allow"
+      ]
     },
     {
       "Effect": "Allow",
@@ -443,7 +444,8 @@ View details about updates to AWS managed policies for Amazon SageMaker since th
 
 | Policy | Version | Change | Date | 
 | --- | --- | --- | --- | 
-|   [AmazonSageMakerAdmin\-ServiceCatalogProductsServiceRolePolicy](#security-iam-awsmanpol-AmazonSageMakerAdmin-ServiceCatalogProductsServiceRolePolicy)  | 4 |  Add new permissions for `cognito-idp:TagResource` and `s3:PutBucketCORS`\.  | December 1, 2021 | 
-|   [AmazonSageMakerAdmin\-ServiceCatalogProductsServiceRolePolicy](#security-iam-awsmanpol-AmazonSageMakerAdmin-ServiceCatalogProductsServiceRolePolicy)  | 3 |  Add new permissions for `sagemaker`\. Create, read, update, and delete SageMaker Images\.  | September 15, 2021 | 
-|   [AmazonSageMakerAdmin\-ServiceCatalogProductsServiceRolePolicy](#security-iam-awsmanpol-AmazonSageMakerAdmin-ServiceCatalogProductsServiceRolePolicy)  | 2 |  Add new permissions for `sagemaker` and `codestar-connections`\. Create, read, update, and delete code repositories\. Pass AWS CodeStar connections to AWS CodePipeline\.  | July 1, 2021 | 
-| AmazonSageMakerAdmin\-ServiceCatalogProductsServiceRolePolicy | 1 |  Initial policy     | June 17, 2021 | 
+|   [AmazonSageMakerAdmin\-ServiceCatalogProductsServiceRolePolicy](#security-iam-awsmanpol-AmazonSageMakerAdmin-ServiceCatalogProductsServiceRolePolicy)  | 5 |  Add new permission for `ecr-idp:TagResource`\.  | March 21, 2022 | 
+| AmazonSageMakerAdmin\-ServiceCatalogProductsServiceRolePolicy | 4 |  Add new permissions for `cognito-idp:TagResource` and `s3:PutBucketCORS`\.  | February 16, 2022 | 
+| AmazonSageMakerAdmin\-ServiceCatalogProductsServiceRolePolicy | 3 |  Add new permissions for `sagemaker`\. Create, read, update, and delete SageMaker Images\.  | September 15, 2021 | 
+| AmazonSageMakerAdmin\-ServiceCatalogProductsServiceRolePolicy | 2 |  Add new permissions for `sagemaker` and `codestar-connections`\. Create, read, update, and delete code repositories\. Pass AWS CodeStar connections to AWS CodePipeline\.  | July 1, 2021 | 
+| AmazonSageMakerAdmin\-ServiceCatalogProductsServiceRolePolicy | 1 |  Initial policy     | November 27, 2020 | 

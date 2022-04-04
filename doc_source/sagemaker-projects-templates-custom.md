@@ -23,6 +23,33 @@ To create a custom project template, complete the following steps\.
    Type: String
    Description: Service generated Id of the project.
    ```
+**Important**  
+We recommend that you wrap the CodeCommit repository into the SageMaker code repository for the project's repositories to be visible in VPC mode\. The sample template and required addition are shown in the following code samples\.  
+Original \(sample\) template:  
+
+   ```
+   ModelBuildCodeCommitRepository:
+       Type: AWS::CodeCommit::Repository
+       Properties:
+         # Max allowed length: 100 chars
+         RepositoryName: !Sub sagemaker-${SageMakerProjectName}-${SageMakerProjectId}-modelbuild # max: 10+33+15+10=68
+         RepositoryDescription: !Sub SageMaker Model building workflow infrastructure as code for the Project ${SageMakerProjectName}
+         Code:
+           S3:
+             Bucket: SEEDCODE_BUCKETNAME
+             Key: toolchain/model-building-workflow-v1.0.zip
+           BranchName: main
+   ```
+Additional content to add in VPC mode:  
+
+   ```
+   SageMakerRepository:
+       Type: AWS::SageMaker::CodeRepository
+       Properties:
+           GitConfig:
+               RepositoryUrl: !GetAtt ModelBuildCodeCommitRepository.CloneUrlHttp
+               Branch: main
+   ```
 
 1. Add a launch constraint\. A launch constraint designates an IAM role that AWS Service Catalog assumes when a user launches a product\. For information, see [Step 6: Add a Launch Constraint to Assign an IAM Role](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/getstarted-launchconstraint.html)\.
 

@@ -5,6 +5,52 @@ This procedure demonstrates how to update an MLOps project in Amazon SageMaker S
 **Prerequisites**
 + An AWS SSO or IAM account to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 + Basic familiarity with the Studio user interface\. For information, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
++ Add the following custom inline policies to the specified roles:
+
+  User\-created role having `AmazonSageMakerFullAccess`
+
+  ```
+  {
+      "Version": "2012-10-17",
+      "Statement": [
+          {
+              "Effect": "Allow",
+              "Action": [
+                  "servicecatalog:CreateProvisionedProductPlan",
+                  "servicecatalog:DescribeProvisionedProductPlan",
+                  "servicecatalog:DeleteProvisionedProductPlan"
+              ],
+              "Resource": "*"
+          }
+      ]
+  }
+  ```
+
+  `AmazonSageMakerServiceCatalogProductsLaunchRole`
+
+  ```
+  {
+      "Version": "2012-10-17",
+      "Statement": [
+          {
+              "Effect": "Allow",
+              "Action": [
+                  "cloudformation:CreateChangeSet",
+                  "cloudformation:DeleteChangeSet",
+                  "cloudformation:DescribeChangeSet"
+              ],
+              "Resource": "arn:aws:cloudformation:*:*:stack/SC-*"
+          },
+          {
+              "Effect": "Allow",
+              "Action": [
+                  "codecommit:PutRepositoryTriggers"
+              ],
+              "Resource": "arn:aws:codecommit:*:*:sagemaker-*"
+          }
+      ]
+  }
+  ```
 
 **To update a project in Studio**
 

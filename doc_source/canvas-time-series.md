@@ -11,8 +11,22 @@ You can make a time series forecast for the following examples:
 + Forecasting how a 10% reduction in the price of a product affects sales over a time period\.
 
 To make a time series forecast, your dataset must have the following:
-+ A timestamp column with all values having the `datetime` type using the format: `yyyy-MM-dd HH:mm:ss`\.
++ A timestamp column with all values having the `datetime` type\.
 + A target column that has the values that you're using to forecast future values\.
+
+The `datetime` values in the timestamp column must use one of the following formats:
++ `YYYY-MM-DD HH:MM:SS`
++ `YYYY-MM-DDTHH:MM:SSZ`
++ `YYYY-MM-DD`
++ `MM/DD/YY`
++ `MM/DD/YY HH:MM`
++ `MM/DD/YYYY`
++ `YYYY/MM/DD HH:MM:SS`
++ `YYYY/MM/DD`
++ `DD/MM/YYYY`
++ `DD/MM/YY`
++ `DD-MM-YY`
++ `DD-MM-YYYY`
 
 You can make forecasts for the following intervals:
 + 1 min

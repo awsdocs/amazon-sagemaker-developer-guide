@@ -157,17 +157,19 @@ This returns a JSON response similar to the following:
             'Metrics': {
                 'CostPerHour': 0.11500000208616257, 
                 'CostPerInference': 2.92620870823157e-06, 
-                'MaximumInvocations': 655, 'ModelLatency': 826019}, 
-                'EndpointConfiguration': {
-                    'EndpointName': 'endpoint-name', 
-                    'VariantName': 'variant-name', 
-                    'InstanceType': 'ml.c5d.large', 
-                    'InitialInstanceCount': 1
-                    }, 
-                'ModelConfiguration': {
-                    'Compiled': False, 
-                    'EnvironmentParameters': []
-                    }
+                'MaximumInvocations': 655, 
+                'ModelLatency': 826019
+                }, 
+            'EndpointConfiguration': {
+                'EndpointName': 'endpoint-name', 
+                'VariantName': 'variant-name', 
+                'InstanceType': 'ml.c5d.large', 
+                'InitialInstanceCount': 1
+                }, 
+            'ModelConfiguration': {
+                'Compiled': False, 
+                'EnvironmentParameters': []
+                }
             }, 
             {
                 'Metrics': {
@@ -207,7 +209,7 @@ The `InferenceRecommendations` dictionary contains a list of Inference Recommend
 
 The `EndpointConfiguration` nested dictionary contains the instance type \(`InstanceType`\) recommendation along with the endpoint and variant name \(a deployed AWS machine learning model\) that was used during the recommendation job\. You can use the endpoint and variant name for monitoring in Amazon CloudWatch Events\. See [Monitor Amazon SageMaker with Amazon CloudWatch](monitoring-cloudwatch.md) for more information\.
 
-The `Metrics` nested dictionary contains information about the estimated cost per hour \(`CostPerHour`\) for your real\-time endpoint in US dollars, the estimated cost per inference \(`CostPerInference`\) for your real\-time endpoint, the maximum number of `InvokeEndpoint` requests sent to the endpoint, and the model latency \(`ModelLatency`\), which is the interval of time \(in microseconds\) that your model took to respond to SageMaker\. The model latency includes the local communication times taken to send the request and to fetch the response from the container of a model and the time taken to complete the inference in the container\.
+The `Metrics` nested dictionary contains information about the estimated cost per hour \(`CostPerHour`\) for your real\-time endpoint in US dollars, the estimated cost per inference \(`CostPerInference`\) in US dollars for your real\-time endpoint, the expected maximum number of `InvokeEndpoint` requests per minute sent to the endpoint \(`MaxInvocations`\), and the model latency \(`ModelLatency`\), which is the interval of time \(in milliseconds\) that your model took to respond to SageMaker\. The model latency includes the local communication times taken to send the request and to fetch the response from the container of a model and the time taken to complete the inference in the container\.
 
 ------
 #### [ AWS CLI ]
@@ -257,17 +259,19 @@ The JSON response similar should resemble the following:
             'Metrics': {
                 'CostPerHour': 0.11500000208616257, 
                 'CostPerInference': 2.92620870823157e-06, 
-                'MaximumInvocations': 655, 'ModelLatency': 826019}, 
-                'EndpointConfiguration': {
-                    'EndpointName': 'endpoint-name', 
-                    'VariantName': 'variant-name', 
-                    'InstanceType': 'ml.c5d.large', 
-                    'InitialInstanceCount': 1
-                    }, 
-                'ModelConfiguration': {
-                    'Compiled': False, 
-                    'EnvironmentParameters': []
-                    }
+                'MaximumInvocations': 655, 
+                'ModelLatency': 826019
+                }, 
+            'EndpointConfiguration': {
+                'EndpointName': 'endpoint-name', 
+                'VariantName': 'variant-name', 
+                'InstanceType': 'ml.c5d.large', 
+                'InitialInstanceCount': 1
+                }, 
+            'ModelConfiguration': {
+                'Compiled': False, 
+                'EnvironmentParameters': []
+                }
             }, 
             {
                 'Metrics': {
@@ -307,7 +311,7 @@ The `InferenceRecommendations` dictionary contains a list of Inference Recommend
 
 The `EndpointConfiguration` nested dictionary contains the instance type \(`InstanceType`\) recommendation along with the endpoint and variant name \(a deployed AWS machine learning model\) used during the recommendation job\. You can use the endpoint and variant name for monitoring in Amazon CloudWatch Events\. See [Monitor Amazon SageMaker with Amazon CloudWatch](monitoring-cloudwatch.md) for more information\.
 
-The `Metrics` nested dictionary contains information about the estimated cost per hour \(`CostPerHour`\) for your real\-time endpoint in US dollars, the estimated cost per inference \(`CostPerInference`\) for your real\-time endpoint, the maximum number of `InvokeEndpoint` requests sent to the endpoint, and the model latency \(`ModelLatency`\), which is the interval of time \(in microseconds\) that your model took to respond to Inference Recommender\. The model latency includes the local communication times taken to send the request and to fetch the response from the container of a model and the time taken to complete the inference in the container\.
+The `Metrics` nested dictionary contains information about the estimated cost per hour \(`CostPerHour`\) for your real\-time endpoint in US dollars, the estimated cost per inference \(`CostPerInference`\) in US dollars for your real\-time endpoint, the expected maximum number of `InvokeEndpoint` requests per minute sent to the endpoint \(`MaxInvocations`\), and the model latency \(`ModelLatency`\), which is the interval of time \(in milliseconds\) that your model took to respond to SageMaker\. The model latency includes the local communication times taken to send the request and to fetch the response from the container of a model and the time taken to complete the inference in the container\.
 
 ------
 #### [ Amazon SageMaker Studio ]

@@ -6,6 +6,7 @@ You can use Amazon SageMaker Data Wrangler to import data from the following *da
 + [Import data from Amazon S3](#data-wrangler-import-s3)
 + [Import data from Athena](#data-wrangler-import-athena)
 + [Import data from Amazon Redshift](#data-wrangler-import-redshift)
++ [Import data from Databricks \(JDBC\)](#data-wrangler-databricks)
 + [Import data from Snowflake](#data-wrangler-snowflake)
 + [Imported Data Storage](#data-wrangler-import-storage)
 
@@ -21,7 +22,7 @@ When you import data from Athena or Amazon Redshift, the imported data is automa
 The default Amazon S3 bucket may not have the least permissive security settings like bucket policy and server\-side encryption \(SSE\)\. We strongly recommend that you [ Add a Bucket Policy To Restrict Access to Datasets Imported to Data Wrangler](https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-security.html#data-wrangler-security-bucket-policy)\. 
 
 **Important**  
-In addition, if you use the managed policy for SageMaker, we strongly recommend that you scope it down to the most restricted policy that allows you to perform your use case\. For more information, see [Grant an IAM Role Permission to Use Data Wrangler](https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-security.html#data-wrangler-security-iam-policy)\. 
+In addition, if you use the managed policy for SageMaker, we strongly recommend that you scope it down to the most restrictive policy that allows you to perform your use case\. For more information, see [Grant an IAM Role Permission to Use Data Wrangler](data-wrangler-security.md#data-wrangler-security-iam-policy)\.
 
 ## Import data from Amazon S3<a name="data-wrangler-import-s3"></a>
 
@@ -79,7 +80,7 @@ You can import a dataset that you've partitioned into multiple files in an Amazo
 
 1. In the **Details** pane, verify or change the **Name** and **File Type** for your dataset\. If you add a **Name** that contains spaces, these spaces are replaced with underscores when your dataset is imported\. 
 
-1. **Enable sampling** is selected by default\. If you do not uncheck this box, Data Wrangler will sample and import up to 100 MB of data\. To disable sampling, uncheck this check box\. 
+1. **Enable sampling** is selected by default\. If you do not uncheck this box, Data Wrangler will sample and import up to 100 MB of data\. To turn off sampling, uncheck this check box\. 
 
 1. Choose **Import dataset**\.
 
@@ -90,7 +91,7 @@ You can import a dataset that you've partitioned into multiple files in an Amazo
 
 The following are the requirements for importing multiple files:
 + The files must be in the same folder of your Amazon S3 bucket\.
-+ The files must either share the same header, or have no header\.
++ The files must either share the same header or have no header\.
 
 Each file must be in one of the following formats:
 + CSV
@@ -100,7 +101,7 @@ Each file must be in one of the following formats:
 
 Use the following procedure to import multiple files\.
 
-**To import a dataset into Data Wrangler from multiple files that you've stored in an Amazon S3 directory:**
+**To import a dataset into Data Wrangler from multiple files that you've stored in an Amazon S3 directory**
 
 1. If you are not currently on the **Import** tab, choose **Import**\.
 
@@ -122,7 +123,7 @@ Use the following procedure to import multiple files\.
 
 1. In the **Details** pane, verify or change the **Name** and **File Type** for your dataset\. If you add a **Name** that contains spaces, these spaces are replaced with underscores when your dataset is imported\. 
 
-1. **Enable sampling** is selected by default\. If you do not uncheck the box, Data Wrangler will sample and import up to 100 MB of data\. To disable sampling, uncheck the check box\. 
+1. **Enable sampling** is selected by default\. If you do not uncheck the box, Data Wrangler will sample and import up to 100 MB of data\. To turn off sampling, uncheck the check box\. 
 
 1. Choose **Import dataset**\.
 
@@ -144,7 +145,7 @@ If you use AWS Lake Formation with Athena, make sure your Lake Formation IAM per
 
 
 
-**To import a dataset into Data Wrangler from Athena:**
+**To import a dataset into Data Wrangler from Athena**
 
 1. On the **Import data** screen, choose **Amazon Athena**\.
 
@@ -154,7 +155,7 @@ If you use AWS Lake Formation with Athena, make sure your Lake Formation IAM per
 
 1. Choose **Advanced configuration**\.
 
-   **Enable sampling** is selected by default\. When sampling is activated, Data Wrangler samples and imports approximately 50% of the queried data\. Unselect this check box to disable sampling\.
+   **Enable sampling** is selected by default\. When sampling is activated, Data Wrangler samples and imports approximately 50% of the queried data\. Unselect this check box to turn off sampling\.
 
 1. Specify a value for **Workgroup** if you're using one\.
 
@@ -191,7 +192,7 @@ Use the following procedures to learn how to add a new cluster\.
 **Note**  
 Data Wrangler uses the Amazon Redshift Data API with temporary credentials\. To learn more about this API, refer to [Using the Amazon Redshift Data API](https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html) in the Amazon Redshift Cluster Management Guide\. 
 
-**To connect to a Amazon Redshift cluster:**
+**To connect to a Amazon Redshift cluster**
 
 1. Choose **Import**\.
 
@@ -224,13 +225,13 @@ The following image shows all the fields from the preceding procedure\.
 
 After your connection is successfully established, it appears as a data source under **Data Import**\. Select this data source to query your database and import data\.
 
-**To query and import data from Redshift:**
+**To query and import data from Redshift**
 
 1. Select the connection that you want to query from **Data Sources**\.
 
 1. Select a **Schema**\. To learn more about Amazon Redshift Schemas, see [Schemas](https://docs.aws.amazon.com/redshift/latest/dg/r_Schemas_and_tables.html) in the Amazon Redshift Database Developer Guide\.
 
-1. Under **Advanced configuration**, **Enable sampling** is selected by default\. If you do not uncheck this box, Data Wrangler samples and imports approximately 50% of the queried data\. Unselect this check box to disable sampling\. 
+1. Under **Advanced configuration**, **Enable sampling** is selected by default\. If you do not uncheck this box, Data Wrangler samples and imports approximately 50% of the queried data\. Unselect this check box to turn off sampling\. 
 
 1. Enter your query in the query editor and use the **Run** button to run the query\. After a successful query, you can preview your result under the editor\.
 
@@ -242,13 +243,103 @@ After your connection is successfully established, it appears as a data source u
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/import-redshift.png)
 
+## Import data from Databricks \(JDBC\)<a name="data-wrangler-databricks"></a>
+
+You can use Databricks as a data source for your Amazon SageMaker Data Wrangler flow\. To import a dataset from Databricks, use the JDBC \(Java Database Connectivity\) import functionality to access to your Databricks database\. After you access the database, specify a SQL query to get the data and import it\.
+
+We assume that you have a running Databricks cluster and that you've configured your JDBC driver to it\. For more information, see the following Databricks documentation pages:
++ [JDBC driver](https://docs.databricks.com/integrations/bi/jdbc-odbc-bi.html#jdbc-driver)
++ [JDBC configuration and connection parameters](https://docs.databricks.com/integrations/bi/jdbc-odbc-bi.html#jdbc-configuration-and-connection-parameters)
++ [Authentication parameters](https://docs.databricks.com/integrations/bi/jdbc-odbc-bi.html#authentication-parameters)
+
+Data Wrangler stores your JDBC URL in AWS Secrets Manager\. You must give your Amazon SageMaker Studio IAM execution role permissions to use Secrets Manager\. Use the following procedure to give permissions\.
+
+To give permissions to Secrets Manager, do the following\.
+
+1. Sign in to the AWS Management Console and open the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\.
+
+1. Choose **Roles**\.
+
+1. In the search bar, specify the Amazon SageMaker execution role that Amazon SageMaker Studio is using\.
+
+1. Choose the role\.
+
+1. Choose **Add permissions**\.
+
+1. Choose **Create inline policy**\.
+
+1. For **Service**, specify **Secrets Manager** and choose it\.
+
+1. For **Actions**, select the arrow icon next to **Permissions management**\.
+
+1. Choose **PutResourcePolicy**\.
+
+1. For **Resources**, choose **Specific**\.
+
+1. Choose the checkbox next to **Any in this account**\.
+
+1. Choose **Review policy**\.
+
+1. For **Name**, specify a name\.
+
+1. Choose **Create policy**\.
+
+You can use partitions to import your data more quickly\. Partitions give Data Wrangler the ability to process the data in parallel\. By default, Data Wrangler uses 2 partitions\. For most use cases, 2 partitions gives you near\-optimal data processing speeds\.
+
+If you choose to specify more than 2 partitions, you can also specify a column to partition the data\. The type of the values in the column must be numeric or date\.
+
+We recommend using partitions only if you understand how the structure of the data and how it's processed\.
+
+Use the following procedure to import your data from a Databricks database\.
+
+To import data from Databricks, do the following\.
+
+1. Sign into [Amazon SageMaker Console](https://console.aws.amazon.com/sagemaker)\.
+
+1. Choose **Studio**\.
+
+1. Choose **Launch app**\.
+
+1. From the dropdown menu, select **Studio**\.
+
+1. From the **Import data** tab of your Data Wrangler flow, choose **Add data source**\.
+
+1. Select **Databricks \(JDBC\)**\.  
+![\[Databricks (JDBC) is on the top right hand corner of the screen.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/databricks/select-databricks-jdbc.png)
+
+1. Specify the following fields:
+   + **Dataset name** – A name that you want to use for the dataset in your Data Wrangler flow\.
+   + **Driver** – **com\.simba\.spark\.jdbc\.Driver**\.
+   + **JDBC URL** – The URL to the Databricks database\. The URL formatting can vary between Databricks instances\. For information about finding the URL and the specifying the parameters within it, see [JDBC configuration and connection parameters](https://docs.databricks.com/integrations/bi/jdbc-odbc-bi.html#jdbc-configuration-and-connection-parameters)\. The following is an example of how a URL can be formatted: jdbc:spark://aws\-sagemaker\-datawrangler\.cloud\.databricks\.com:443/default;transportMode=http;ssl=1;httpPath=sql/protocolv1/o/3122619508517275/0909\-200301\-cut318;AuthMech=3;UID=*token*;PWD=*personal\-access\-token*\.
+
+1. Specify a SQL SELECT statement\.
+
+1. \(Optional\) **Enable sampling** uses the first 50,000 rows your dataset\. It is the default setting for importing data\. For large datasets, it can take a long period of time to import the data if you don't sample it\. To import the entire dataset, turn off sampling\.
+
+1. Choose **Run**\. The following image shows a query with sampling activated\.  
+![\[SQL query box located below the box where you specify the JDBC URL.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/databricks/databricks-sample-query.png)
+
+1. \(Optional\) For the **PREVIEW**, choose the gear to open the **Partition settings**\. The following image shows a query with the optional data partition settings specified\.  
+![\[The gear for the additional settings is located to the far right of the PREVIEW title.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/databricks/databricks-query-partition-redacted.png)
+
+   1. Specify the number of partitions\. You can partition by column if you specify the number of partitions:
+     + **Enter number of partitions** – Specify a value greater than 2\.
+     + \(Optional\) **Partition by column** – Specify the following fields\. You can only partition by a column if you've specified a value for **Enter number of partitions**\.
+       + **Select column** – The column that you're using for the data partition\. The data type of the column must be numeric or date\.
+       + **Upper bound** – From the values in the column that you've specified, the upper bound value that you're using in the partition\. The value that you specify doesn't change the data that you're importing\. It only affects the speed of the import\. For the best performance, specify an upper bound that's close to the column's maximum\.
+       + **Lower bound** – From the values in the column that you've specified, the lower bound value that you're using in the partition\. The value that you specify doesn't change the data that you're importing\. It only affects the speed of the import\. For the best performance, specify a lower bound that's close to the column's minimum\.
+
+1. Choose **Import**\.
+
 ## Import data from Snowflake<a name="data-wrangler-snowflake"></a>
 
 You can use Snowflake as a data source in SageMaker Data Wrangler to prepare data in Snowflake for machine learning\.
 
-With Snowflake as a data source in Data Wrangler, you can quickly and easily connect to Snowflake without writing a single line of code\. Additionally, you can join your data in Snowflake with data stored in Amazon S3 and data queried through Amazon Athena and Amazon Redshift to prepare data for machine learning\. 
+With Snowflake as a data source in Data Wrangler, you can quickly connect to Snowflake without writing a single line of code\. Additionally, you can join your data in Snowflake with data stored in Amazon S3 and data queried through Amazon Athena and Amazon Redshift to prepare data for machine learning\. 
 
 Once connected, you can interactively query data stored in Snowflake, transform data with 300\+ pre\-configured data transformations, understand data and identify potential errors and extreme values with a set of robust pre\-configured visualization templates, quickly identify inconsistencies in your data preparation workflow, and diagnose issues before models are deployed into production\. Finally, you can export your data preparation workflow to Amazon S3 for use with other SageMaker features such as Amazon SageMaker Autopilot, Amazon SageMaker Feature Store and Amazon SageMaker Model Building Pipelines\.
+
+You can encrypt the output of your queries using an AWS Key Management Service key that you've created\. For more information about AWS KMS, see [AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)\.
 
 ### Administrator Guide<a name="data-wrangler-snowflake-admin"></a>
 
@@ -261,11 +352,11 @@ This section is for Snowflake administrators who are setting up access to Snowfl
 Your administrator is responsible for managing and monitoring the access control within Snowflake\. This includes what data a user can access, what storage integration a user can use, and what queries a user can run\. Data Wrangler does not add a layer of access control with respect to Snowflake\. 
 
 **Important**  
-Note that granting monitor privileges can enable users the ability to see details within an object, such as queries or usage within a warehouse\. 
+Note that granting monitor privileges can permit users to see details within an object, such as queries or usage within a warehouse\. 
 
 #### Configure Snowflake with Data Wrangler<a name="data-wrangler-snowflake-admin-config"></a>
 
-To import data from Snowflake, Snowflake admins must configure access from Data Wrangler via Amazon S3\.
+To import data from Snowflake, Snowflake admins must configure access from Data Wrangler using Amazon S3\.
 
 This feature is currently not available in the opt\-in Regions\.
 
@@ -286,9 +377,9 @@ To configure access, follow these steps\.
 
    The following steps describe how to configure access permissions for Snowflake in your AWS Management Console so you can use an S3 bucket to load and unload data: 
    + Log in to the AWS Management Console\.
-   + From the home dashboard, choose **IAM**:  
+   + From the home dashboard, choose **IAM**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/iam.png)
-   + Choose **Policies**\.\.
+   + Choose **Policies**\.
    + Choose **Create Policy**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/create_policy.png)
    + Select the **JSON** tab\.
@@ -347,15 +438,17 @@ To configure access, follow these steps\.
      + `integration_name` is the name of your storage integration\.
      + `snowflake_role` is the name of the default [Snowflake role](https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#roles) given to the data scientist user\.
 
-#### What information needs to be provided to the data scientist<a name="data-wrangler-snowflake-admin-ds-info"></a>
+#### Provide information to the data scientist<a name="data-wrangler-snowflake-admin-ds-info"></a>
+
+Provide the data scientist with the information that they need to access Snowflake from Amazon SageMaker Data Wrangler\.
 
 1. To allow your data scientist to access Snowflake from SageMaker Data Wrangler, provide them with one of the following:
    + A Snowflake account name, user name, and password\.
    + A secret created with [AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) and the ARN of the secret\. Use the following procedure below to create the secret for Snowflake if you choose this option\.
 **Important**  
-If your data scientists use the **Snowflake Credentials \(User name and Password\)** option to connect to Snowflake, note that [Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) is used to store the credentials in a secret and rotates secrets as part of a best practice security plan\. The secret created in Secrets Manager is only accessible with the Studio role configured when you set up a Studio user profile\. This will require you to add this permission, `secretsmanager:PutResourcePolicy` to the policy that is attached to your Studio role\.  
-It is strongly recommended that you scope the role policy to use different roles for different groups of Studio users\. You can add additional resource\-based permissions for the Secrets Manager secrets\. See [Manage Secret Policy](https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage_secret-policy.html) for condition keys you can use\. 
-     + **How to create an Amazon Secret for Snowflake**\.
+If your data scientists use the **Snowflake Credentials \(User name and Password\)** option to connect to Snowflake, note that [Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) is used to store the credentials in a secret and rotates secrets as part of a best practice security plan\. The secret created in Secrets Manager is only accessible with the Studio role configured when you set up a Studio user profile\. This requires you to add this permission, `secretsmanager:PutResourcePolicy`, to the policy that is attached to your Studio role\.  
+We strongly recommend that you scope the role policy to use different roles for different groups of Studio users\. You can add additional resource\-based permissions for the Secrets Manager secrets\. See [Manage Secret Policy](https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage_secret-policy.html) for condition keys you can use\. 
+     + **Create a Secrets Manager secret for Snowflake**\.
        + Sign in to the [Secrets Manager console](https://console.aws.amazon.com/secretsmanager)\. 
        + Choose **Store a new secret**\. 
        + In the **Select secret type** section, select **Other type of secrets**\.  
@@ -412,7 +505,7 @@ To open Studio and check its version, see the following procedure\.
 
 1. Once you have launched Studio, select **File**, then **New**, and then **Terminal**\.
 
-1. Enter `cat /opt/conda/share/jupyter/lab/staging/yarn.lock | grep -A 1 "@amzn/sagemaker-ui-data-prep-plugin@"` to print the version of your Studio instance\. You must have Studio version 1\.3\.0 to enable Snowflake\.   
+1. Enter `cat /opt/conda/share/jupyter/lab/staging/yarn.lock | grep -A 1 "@amzn/sagemaker-ui-data-prep-plugin@"` to print the version of your Studio instance\. You must have Studio version 1\.3\.0 to use Snowflake\.   
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/cat-command.png)
 
 Use the following procedure to check that you're running version 1\.3\.0 or greater\.
@@ -443,7 +536,7 @@ Use the following procedure to connect to Snowflake\.
    **Establishing connection to engine\.\.\.**  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/connect-engine.png)
 
-1. Connect to Snowflake
+1. Connect to Snowflake\.
 
    There are two ways to connect to Snowflake from within Data Wrangler\. You only need to choose one of the two ways\. 
 
@@ -451,7 +544,7 @@ Use the following procedure to connect to Snowflake\.
 
    1. Provide an Amazon Resource Name \(ARN\) of a secret\. 
 **Important**  
-If you do not have your Snowflake credentials or ARN, reach out to your administrator\. Your administrator can tell you which of the preceding wo methods to use to connect to Snowflake\.
+If you do not have your Snowflake credentials or ARN, reach out to your administrator\. Your administrator can tell you which of the preceding methods to use to connect to Snowflake\.
 
    Start on the **Import** data screen and first select **Add data source** from the dropdown menu, and then select **Snowflake**\. The following screenshot illustrates where to find the **Snowflake** option\.   
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/snowflake-in-ui.png)
@@ -463,11 +556,12 @@ Next, we explain both authentication methods and provide screenshots for each\.
 1. **Snowflake Credentials Option**\.
 
    Select the **Basic** \(user name and password\) option from the **Authentication method** dropdown list\. Then, enter your credentials in the following fields: 
-   + **Storage integration**: Provide the name of the storage integration\. This is provided by your administrator\. 
+   + **Storage integration**: Provide the name of the storage integration\. Your administrator provides this name\. 
    + **Snowflake account name**: The full name of your Snowflake account\.
    + **User name**: Snowflake account user name\.
    + **Password**: Snowflake account password\.
    + **Connection name**: Choose a connection name for your choice\.
+   + \(Optional\) **KMS key ID**: Choose the AWS KMS key to encrypt the output of the Snowflake query\. For more information about AWS Key Management Service, see [https://docs.aws.amazon.com/kms/latest/developerguide/overview.html](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)\. If you don't specify a AWS KMS key, Data Wrangler uses the default SSE\-KMS encryption method\.
 
    Select **Connect**\. 
 
@@ -476,7 +570,7 @@ Next, we explain both authentication methods and provide screenshots for each\.
 
 1. **ARN Option**
 
-   Select the ARN option under the **Authentication method** dropdown list\. Then, provide your ARN name under **Secrets Manager ARN** and your **Storage integration**, which is provided by your administrator\. Finally, create a **Connection name** and select **Connect**, as shown in the following screenshot\.   
+   Select the ARN option from the **Authentication method** dropdown list\. Then, provide your ARN name under **Secrets Manager ARN** and your **Storage integration**, which is provided by your administrator\. If you've created a KMS key, you can specify its ID for **KMS key ID**\. For more information about AWS Key Management Service, see [https://docs.aws.amazon.com/kms/latest/developerguide/overview.html](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)\. Create a **Connection name** and select **Connect**, as shown in the following screenshot\.   
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/snowflake-connection-complete.png)
 
 1. The workflow at this point is to connect your Snowflake account to Data Wrangler, then run some queries on your data and then finally use Data Wrangler for performing data transformations\.
@@ -495,7 +589,7 @@ If you're importing a dataset with columns of type `TIMESTAMP_TZ` or `TIMESTAMP_
    The following screenshot shows the panel with your data warehouses, databases, and schemas, along with the eye icon with which you can preview your table\. Once you select the **Preview Table** icon, the schema preview of that table is generated\. You must select a warehouse before you can preview a table\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/studio-panel-snowflake.png)
 
-   After selecting a data warehouse, database and schema, you can now write queries and select run them\. The output of your query shows under **Query results**, as shown in the following screenshot\.  
+   After selecting a data warehouse, database and schema, you can now write queries and run them\. The output of your query shows under **Query results**, as shown in the following screenshot\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/snowflake-queries.png)
 
    Once you have settled on the output of your query, you can then import the output of your query into a Data Wrangler flow to perform data transformations\. 
@@ -524,7 +618,7 @@ As per Snowflake's documentation, enabling for your Snowflake account can take u
 
 #### Set up Snowflake AWS PrivateLink Integration<a name="data-wrangler-snowflake-snowflake-vpc-privatelink-setup"></a>
 
-After AWS PrivateLink is enabled, retrieve the AWS PrivateLink configuration for your region by executing the following command in a Snowflake worksheet\. Log into your Snowflakes console, under worksheets enter the following: `select SYSTEM$GET_PRIVATELINK_CONFIG();` 
+After AWS PrivateLink is activated, retrieve the AWS PrivateLink configuration for your region by running the following command in a Snowflake worksheet\. Log into your Snowflakes console, under worksheets enter the following: `select SYSTEM$GET_PRIVATELINK_CONFIG();` 
 
 1. Retrieve the values for the following: `privatelink-account-name`, `privatelink_ocsp-url`, `privatelink-account-url`, and `privatelink_ocsp-url` from the resulting JSON object\. Examples of each value are shown in the following snippet\. Store these values for later use\.
 
@@ -774,6 +868,6 @@ Preview files are written in CSV format when you select **Run** on the Athena im
 
 The dataset you query is located under the prefix \(directory\): athena/*uuid*/data/, where *uuid* is a unique identifier that gets created for each query\.
 
-For example, if your default bucket is `sagemaker-us-east-1-111122223333`, a single dataset queried from Athena is located in `s3://sagemaker-us-east-1-111122223333`/redshift/*uuid*/data/*example\_dataset\.parquet*\. 
+For example, if your default bucket is `sagemaker-us-east-1-111122223333`, a single dataset queried from Athena is located in `s3://sagemaker-us-east-1-111122223333`/athena/*uuid*/data/*example\_dataset\.parquet*\.
 
 The subset of the dataset that is stored to preview dataframes in Data Wrangler is stored under the prefix: athena/\.

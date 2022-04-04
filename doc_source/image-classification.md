@@ -1,6 +1,6 @@
 # Image Classification Algorithm<a name="image-classification"></a>
 
-The Amazon SageMaker image classification algorithm is a supervised learning algorithm that supports multi\-label classification\. It takes an image as input and outputs one or more labels assigned to that image\. It uses a convolutional neural network \(ResNet\) that can be trained from scratch or trained using transfer learning when a large number of training images are not available\. 
+The Amazon SageMaker image classification algorithm is a supervised learning algorithm that supports multi\-label classification\. It takes an image as input and outputs one or more labels assigned to that image\. It uses a convolutional neural network that can be trained from scratch or trained using transfer learning when a large number of training images are not available\. 
 
 The recommended input format for the Amazon SageMaker image classification algorithms is Apache MXNet [RecordIO](https://mxnet.apache.org/api/faq/recordio)\. However, you can also use raw images in \.jpg or \.png format\. Refer to [this discussion](https://mxnet.apache.org/api/architecture/note_data_loading) for a broad overview of efficient data preparation and loading for machine learning systems\. 
 
