@@ -94,7 +94,7 @@ The following example uses the [AWS SDK for Python \(Boto3\)](https://boto3.amaz
 + For `ModelName`, use the name of the model you want to deploy\. It should be the same model that you used in the [Create a model](#serverless-endpoints-create-model) step\.
 + For `ServerlessConfig`:
   + Set `MemorySizeInMB` to `2048`\. For this example, we set the memory size to 2048 MB, but you can choose any of the following values for your memory size: 1024 MB, 2048 MB, 3072 MB, 4096 MB, 5120 MB, or 6144 MB\. 
-  + Set `MaxConcurrency` to `20`\. For this example, we set the maximum concurrency to 20\. The maximum number of concurrent invocations you can set for a serverless endpoint is 50, and the minimum value you can choose is 1\.
+  + Set `MaxConcurrency` to `20`\. For this example, we set the maximum concurrency to 20\. The maximum number of concurrent invocations you can set for a serverless endpoint is 200, and the minimum value you can choose is 1\.
 
 ```
 response = client.create_endpoint_config(
@@ -136,7 +136,7 @@ response = client.create_endpoint_config(
 1. For **Memory size**, choose the memory size you want in GB\.  
 ![\[Screenshot of the memory size option in the console.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/serverless-endpoints-endpoint-config-2.png)
 
-1. For **Max Concurrency**, enter your desired maximum concurrent invocations for the endpoint\. The maximum value you can enter is 50 and the minimum is 1\.
+1. For **Max Concurrency**, enter your desired maximum concurrent invocations for the endpoint\. The maximum value you can enter is 200 and the minimum is 1\.
 
 1. Choose **Save**\.
 

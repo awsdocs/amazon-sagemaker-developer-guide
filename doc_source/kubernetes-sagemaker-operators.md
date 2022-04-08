@@ -577,10 +577,10 @@ To delete the operator CRDs, first delete all the running jobs\. Then delete the
 
 ```
 # get the helm charts
-$ helm ls
+helm ls
 
 # delete the charts
-$ helm delete <chart name>
+helm delete <chart name>
 ```
 
 ### Delete namespace\-based operators<a name="delete-namespace-based-operators"></a>
@@ -614,13 +614,13 @@ To delete the operator CRDs, first delete all the running jobs\. Then delete the
 
 ```
 # Delete the operator
-$ helm delete -n <namespace> op
+helm delete -n <namespace> op
 
 # delete the crds
-$ helm delete crds
+helm delete crds
 
 # optionally delete the namespace
-$ kubectl delete namespace <namespace>
+kubectl delete namespace <namespace>
 ```
 
 ## Troubleshooting<a name="troubleshooting"></a>
@@ -663,7 +663,7 @@ If deleting a job is not working, check if the operator is running\. If the oper
 1. In a new terminal, open the job in an editor using `kubectl edit` as follows: 
 
    ```
-   $ kubectl edit <crd type> <job name>
+   kubectl edit <crd type> <job name>
    ```
 
 1. Edit the job to delete the finalizer by removing the following two lines from the file\. Save the file and the job is be deleted\. 

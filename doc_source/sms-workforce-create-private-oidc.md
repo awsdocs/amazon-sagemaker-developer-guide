@@ -147,7 +147,7 @@ After you have created your OIDC IdP workforce, you can use the following proced
 1. Open a terminal and enter the following command after making required modifications listed below:
 
    ```
-   $ curl --request POST \
+   curl --request POST \
      --url '{TOKEN ENDPOINT}' \
      --header 'content-type: application/x-www-form-urlencoded' \
      --data grant_type=authorization_code \
@@ -170,7 +170,7 @@ After you have created your OIDC IdP workforce, you can use the following proced
    The following is an example of the cURL request after making the modifications described above:
 
    ```
-   $ curl --request POST \
+   curl --request POST \
      --url 'https://example.com/token' \
      --header 'content-type: application/x-www-form-urlencoded' \
      --data grant_type=authorization_code \

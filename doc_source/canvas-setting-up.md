@@ -13,7 +13,7 @@ You can use the information in this section to help your users do the following:
 + [Give your users the ability to upload local files](canvas-set-up-local-upload.md)
 + [Set up SageMaker Canvas for your users](setting-up-canvas-sso.md)
 + [Give users the ability to import encrypted datasets](canvas-kms.md)
-+ [Give your users the ability to perform time series forecasting](canvas-set-up-forecast.md)
++ [Give your users permissions to perform time series forecasting](canvas-set-up-forecast.md)
 + [Update SageMaker Canvas for your users](canvas-update.md)
 + [Request a quota increase](canvas-requesting-quota-increases.md)
 + [Run Amazon SageMaker Canvas in a VPC](canvas-vpc.md)

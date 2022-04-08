@@ -60,15 +60,15 @@ When you add libraries to your environment following the steps in [Manage your e
 1.  Add all relevant files and then commit your changes\. 
 
    ```
-   $ git add <FILE_NAME>
-   $ git commit -m "<COMMIT_MESSAGE>"
+   git add <FILE_NAME>
+   git commit -m "<COMMIT_MESSAGE>"
    ```
 
 1.  Push the commit to your remote repository\. This repository has the format `https://github.com/<GITHUB_USERNAME>/<REPOSITORY_NAME>` where `<GITHUB_USERNAME>` is your GitHub user name and the `<REPOSITORY_NAME>` is your remote repository\. 
 
    ```
-   $ git remote add origin git@github.com/<GITHUB_USERNAME>/<REPOSITORY_NAME>
-   $ git push -u origin <BRANCH_NAME>
+   git remote add origin git@github.com/<GITHUB_USERNAME>/<REPOSITORY_NAME>
+   git push -u origin <BRANCH_NAME>
    ```
 
 ## Step 3 – Import your Studio Lab artifacts from GitHub to Studio<a name="studio-lab-use-migrate-step3"></a>
