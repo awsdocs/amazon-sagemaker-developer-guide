@@ -22,7 +22,7 @@ Use the following procedure to create an S3 bucket policy that you can add to re
 1. Open a command prompt or shell\. For each role that you create, replace *role\-name* with the name of the role and run the following:
 
    ```
-   $ aws iam get-role --role-name role-name
+   aws iam get-role --role-name role-name
    ```
 
    In the response, you see a `RoleId` string which begins with `AROA`\. Copy this string\. 

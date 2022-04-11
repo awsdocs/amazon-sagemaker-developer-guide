@@ -76,7 +76,7 @@ Maintaining multiple environments in your project decreases your available memor
  To create a new Conda environment, run the following Conda command from your terminal\. This example creates a new environment with Python 3\.9\. 
 
 ```
-$ conda create --name <ENVIRONMENT_NAME> python=3.9
+conda create --name <ENVIRONMENT_NAME> python=3.9
 ```
 
  **Activate** 
@@ -84,7 +84,7 @@ $ conda create --name <ENVIRONMENT_NAME> python=3.9
  To activate any Conda environment, run the following command in the terminal\.
 
 ```
-$ conda activate <ENVIRONMENT_NAME>
+conda activate <ENVIRONMENT_NAME>
 ```
 
  When you run this command, any packages installed using Conda or pip are installed in the environment\. 
@@ -92,7 +92,7 @@ $ conda activate <ENVIRONMENT_NAME>
  To use your new Conda environments with notebooks, make sure the `ipykernel` package is installed in the environment\.
 
 ```
-$ conda install ipykernel
+conda install ipykernel
 ```
 
  After you have created the environment, you can select it as the kernel for your notebook\. 
@@ -106,13 +106,13 @@ $ conda install ipykernel
 1.  Open the terminal and activate the `studiolab` environment\. 
 
    ```
-   $ conda activate studiolab
+   conda activate studiolab
    ```
 
 1.  Install the JupyterLab or Jupyter Server extension\. 
 
    ```
-   $ conda install <JUPYTER_EXTENSION>
+   conda install <JUPYTER_EXTENSION>
    ```
 
 1.  Navigate to the Studio Lab project overview page\. 

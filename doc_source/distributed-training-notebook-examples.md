@@ -70,7 +70,7 @@ To download and use the aforementioned example notebooks, do the following to cl
 1. In the command line, navigate to the SageMaker folder\.
 
    ```
-   $ cd SageMaker
+   cd SageMaker
    ```
 
 1. Clone the [SageMaker examples GitHub repository](https://github.com/aws/amazon-sagemaker-examples.git)\.
