@@ -9,4 +9,4 @@ The following sections describe how to perform common tasks in Amazon SageMaker 
 + [Use TensorBoard in Amazon SageMaker Studio](studio-tensorboard.md)
 + [Manage Your EFS Storage Volume in SageMaker Studio](studio-tasks-manage-storage.md)
 + [Provide Feedback on SageMaker Studio](studio-tasks-provide-feedback.md)
-+ [Update SageMaker Studio and Studio Apps](studio-tasks-update.md)
++ [Shut Down and Update SageMaker Studio and Studio Apps](studio-tasks-update.md)

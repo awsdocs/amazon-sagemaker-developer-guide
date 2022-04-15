@@ -1,6 +1,6 @@
 # Release Notes<a name="data-wrangler-release-notes"></a>
 
-Data Wrangler is regularly updated with new features and bug fixes\. To upgrade the version of Data Wrangler you are using in Studio, follow the instructions in [Update Studio Apps](studio-tasks-update-apps.md)\.
+Data Wrangler is regularly updated with new features and bug fixes\. To upgrade the version of Data Wrangler you are using in Studio, follow the instructions in [Shut down and Update Studio Apps](studio-tasks-update-apps.md)\.
 
 
 ****  

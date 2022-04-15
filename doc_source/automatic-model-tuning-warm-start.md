@@ -101,11 +101,10 @@ hyperparameter_ranges = {'learning_rate': ContinuousParameter(0.0, 0.1),
 The following code configures the warm start tuning job by creating a `WarmStartConfig` object\.
 
 ```
-from sagemaker.tuner import WarmStartConfig,
-          WarmStartTypes
+from sagemaker.tuner import WarmStartConfig,WarmStartTypes
 
 parent_tuning_job_name = "MyParentTuningJob"
-warm_start_config = WarmStartConfig(type=WarmStartTypes.IDENTICAL_DATA_AND_ALGORITHM, parents={parent_tuning_job_name})
+warm_start_config = WarmStartConfig(warm_start_type=WarmStartTypes.IDENTICAL_DATA_AND_ALGORITHM, parents={parent_tuning_job_name})
 ```
 
 Now set the values for static hyperparameters, which are hyperparameters that keep the same value for every training job that the warm start tuning job launches\. In the following code, `imageclassification` is an estimator that was created previously\.

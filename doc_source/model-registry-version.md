@@ -41,9 +41,6 @@ modelpackage_inference_specification =  {
 # Alternatively, you can specify the model source like this:
 # modelpackage_inference_specification["InferenceSpecification"]["Containers"][0]["ModelDataUrl"]=model_url
 
-# Specify the model data
-modelpackage_inference_specification["InferenceSpecification"]["Containers"][0]["ModelDataUrl"]=model_url
-
 create_model_package_input_dict = {
     "ModelPackageGroupName" : model_package_group_name,
     "ModelPackageDescription" : "Model to detect 3 different types of irises (Setosa, Versicolour, and Virginica)",

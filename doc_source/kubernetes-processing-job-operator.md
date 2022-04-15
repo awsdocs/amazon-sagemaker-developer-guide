@@ -86,7 +86,7 @@ NAME                    STATUS     CREATION-TIME        SAGEMAKER-JOB-NAME
 kmeans-mnist-processing InProgress 2020-09-22T21:13:25Z kmeans-mnist-processing-7410ed52fd1811eab19a165ae9f9e385
 ```
 
-The output lists all jobs regardless of the their status\. To remove a job from the list, see [Delete a Processing Job](https://docs.aws.amazon.com/sagemaker/latest/dg/kubernetes-processing-job-operator.html#kubernetes-processing-job-delete)\.
+The output lists all jobs regardless of their status\. To remove a job from the list, see [Delete a Processing Job](https://docs.aws.amazon.com/sagemaker/latest/dg/kubernetes-processing-job-operator.html#kubernetes-processing-job-delete)\.
 
 **ProcessingJob Status**
 + `SynchronizingK8sJobWithSageMaker` – The job is first submitted to the cluster\. The operator has received the request and is preparing to create the processing job\.

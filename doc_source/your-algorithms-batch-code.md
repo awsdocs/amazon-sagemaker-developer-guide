@@ -83,7 +83,7 @@ The response for a `GET` execution\-parameters request is a JSON object with key
 
 To obtain inferences, Amazon SageMaker sends a POST request to the inference container\. The POST request body contains data from Amazon S3\. Amazon SageMaker passes the request to the container, and returns the inference result from the container, saving the data from the response to Amazon S3\.
 
-To receive inference requests, the container must have a web server listening on port 8080 and must accept POST requests to the `/invocations` endpoint\. Your model containers must respond to requests within 600 seconds\.
+To receive inference requests, the container must have a web server listening on port 8080 and must accept POST requests to the `/invocations` endpoint\. The inference request timeout and max retries can be configured through `[ModelClientConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ModelClientConfig.html)`\.
 
 ## How Your Container Should Respond to Health Check \(Ping\) Requests<a name="your-algorithms-batch-algo-ping-requests"></a>
 

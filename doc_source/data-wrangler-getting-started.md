@@ -61,7 +61,7 @@ After you have launched Data Wrangler, you can use the following section to walk
 
 ## Update Data Wrangler<a name="data-wrangler-update"></a>
 
-We recommend that you periodically update the Data Wrangler Studio app to access the latest features and updates\. The Data Wrangler app name starts with **sagemaker\-data\-wrang**\. To learn how to update a Studio app, see [Update Studio Apps](studio-tasks-update-apps.md)\.
+We recommend that you periodically update the Data Wrangler Studio app to access the latest features and updates\. The Data Wrangler app name starts with **sagemaker\-data\-wrang**\. To learn how to update a Studio app, see [Shut down and Update Studio Apps](studio-tasks-update-apps.md)\.
 
 ## Demo: Data Wrangler Titanic Dataset Walkthrough<a name="data-wrangler-getting-started-demo"></a>
 

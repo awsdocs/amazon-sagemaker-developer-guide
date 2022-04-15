@@ -3,7 +3,7 @@
 There are quotas that limit the resources available to you when using Amazon SageMaker Autopilot\. Some of these limits are increasable and some are not\. 
 
 **Note**  
-The resource quotas documented in the following sections are valid for versions of Amazon SageMaker Studio 3\.22\.2 and higher\. For information on updating your version of SageMaker Studio, see [Update SageMaker Studio and Studio Apps](studio-tasks-update.md)\.
+The resource quotas documented in the following sections are valid for versions of Amazon SageMaker Studio 3\.22\.2 and higher\. For information on updating your version of SageMaker Studio, see [Shut Down and Update SageMaker Studio and Studio Apps](studio-tasks-update.md)\.
 
 **Topics**
 + [Quotas that you can increase](#autopilot-quotas-limits-increasable)

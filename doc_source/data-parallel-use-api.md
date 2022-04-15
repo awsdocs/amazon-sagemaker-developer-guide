@@ -341,7 +341,7 @@ The official AWS Deep Learning Container \(DLC\) images are built from the [NVID
           && tar -xvf build/pkg/txz/nccl_*.txz -C $CONDA_PREFIX --strip-components=1
       ```
 
-   1. Build and install PyTorch\. This process usually takes slightly more than one hour to complete\. It is built using the the NCCL version downloaded in a previous step\.
+   1. Build and install PyTorch\. This process usually takes slightly more than one hour to complete\. It is built using the NCCL version downloaded in a previous step\.
 
       ```
       RUN cd /pytorch \

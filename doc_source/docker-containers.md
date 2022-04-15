@@ -1,6 +1,6 @@
 # Using Docker containers with SageMaker<a name="docker-containers"></a>
 
-Amazon SageMaker makes extensive use of *Docker containers* for build and runtime tasks\. SageMaker provides prebuilt Docker images for its built\-in algorithms and the supported deep learning frameworks used for training and inference\. Using containers, you can train machine learning algorithms and deploy models quickly and reliably at any scale\. The topics in this section show how to deploy these containers for your own use cases\.
+Amazon SageMaker makes extensive use of *Docker containers* for build and runtime tasks\. SageMaker provides prebuilt Docker images for its built\-in algorithms and the supported deep learning frameworks used for training and inference\. Using containers, you can train machine learning algorithms and deploy models quickly and reliably at any scale\. The topics in this section show how to deploy these containers for your own use cases\. For information on how to bring your own containers for use with Amazon SageMaker Studio, see [Bring your own SageMaker image](studio-byoi.md)\.
 
 **Topics**
 + [Scenarios for Running Scripts, Training Algorithms, or Deploying Models with SageMaker](#container-scenarios)

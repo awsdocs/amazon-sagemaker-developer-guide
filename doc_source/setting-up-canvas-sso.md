@@ -12,7 +12,7 @@ To set up an Amazon SageMaker Domain, see [Onboard to Amazon SageMaker Studio Us
 + You can ignore the step about creating projects\.
 + You don't need to provide access to additional Amazon S3 buckets\. Your users can use the default bucket that we provide when we create a role\.
 + To give your users the ability to share their notebooks with data scientists, turn on **Notebook Sharing Configuration**\.
-+ Use Amazon SageMaker Studio version 3\.19\.0 or later\. For information about updating Amazon SageMaker Studio, see [Update SageMaker Studio](studio-tasks-update-studio.md)\.
++ Use Amazon SageMaker Studio version 3\.19\.0 or later\. For information about updating Amazon SageMaker Studio, see [Shut down and Update SageMaker Studio](studio-tasks-update-studio.md)\.
 
 Use the following procedure to set up Okta\. For all of the following procedures, you specify the same IAM role for `IAM-role` \.
 

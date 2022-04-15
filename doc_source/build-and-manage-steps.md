@@ -148,7 +148,7 @@ A tuning step requires a [HyperparameterTuner](https://sagemaker.readthedocs.io/
 You use the [get\_top\_model\_s3\_uri](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.TuningStep.get_top_model_s3_uri) method of the [sagemaker\.workflow\.steps\.TuningStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.TuningStep) class to get the model artifact from one of the top\-performing model versions\. For a notebook that shows how to use a tuning step in a SageMaker pipeline, see [sagemaker\-pipelines\-tuning\-step\.ipynb](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker-pipelines/tabular/tuning-step/sagemaker-pipelines-tuning-step.ipynb)\.
 
 **Important**  
-Tuning steps were introduced in Amazon SageMaker Python SDK v2\.48\.0 and Amazon SageMaker Studio v3\.8\.0\. You must update Studio before you use a tuning step or the pipeline DAG doesn't display\. To update Studio, see [Update SageMaker Studio](studio-tasks-update-studio.md)\.
+Tuning steps were introduced in Amazon SageMaker Python SDK v2\.48\.0 and Amazon SageMaker Studio v3\.8\.0\. You must update Studio before you use a tuning step or the pipeline DAG doesn't display\. To update Studio, see [Shut down and Update SageMaker Studio](studio-tasks-update-studio.md)\.
 
 The following example shows how to create a `TuningStep` definition\.
 
@@ -328,7 +328,7 @@ You use a `Callback` step to incorporate additional processes and AWS services i
 For more information on `Callback` step requirements, see the [sagemaker\.workflow\.callback\_step\.CallbackStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.callback_step.CallbackStep) documentation\. For a complete solution, see [Extend SageMaker Pipelines to include custom steps using callback steps](http://aws.amazon.com/blogs/machine-learning/extend-amazon-sagemaker-pipelines-to-include-custom-steps-using-callback-steps/)\.
 
 **Important**  
-`Callback` steps were introduced in Amazon SageMaker Python SDK v2\.45\.0 and Amazon SageMaker Studio v3\.6\.2\. You must update Studio before you use a `Callback` step or the pipeline DAG doesn't display\. To update Studio, see [Update SageMaker Studio](studio-tasks-update-studio.md)\.
+`Callback` steps were introduced in Amazon SageMaker Python SDK v2\.45\.0 and Amazon SageMaker Studio v3\.6\.2\. You must update Studio before you use a `Callback` step or the pipeline DAG doesn't display\. To update Studio, see [Shut down and Update SageMaker Studio](studio-tasks-update-studio.md)\.
 
 The following sample demonstrates an implementation of the preceding procedure\.
 
@@ -391,7 +391,7 @@ Only when SageMaker Pipelines receives one of these calls does it stop the pipel
 You use a Lambda step to run an AWS Lambda function\. You can run an existing Lambda function, or SageMaker can create and run a new Lambda function\. For a notebook that shows how to use a Lambda step in a SageMaker pipeline, see [sagemaker\-pipelines\-lambda\-step\.ipynb](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker-pipelines/tabular/lambda-step/sagemaker-pipelines-lambda-step.ipynb)\.
 
 **Important**  
-Lambda steps were introduced in Amazon SageMaker Python SDK v2\.51\.0 and Amazon SageMaker Studio v3\.9\.1\. You must update Studio before you use a Lambda step or the pipeline DAG doesn't display\. To update Studio, see [Update SageMaker Studio](studio-tasks-update-studio.md)\.
+Lambda steps were introduced in Amazon SageMaker Python SDK v2\.51\.0 and Amazon SageMaker Studio v3\.9\.1\. You must update Studio before you use a Lambda step or the pipeline DAG doesn't display\. To update Studio, see [Shut down and Update SageMaker Studio](studio-tasks-update-studio.md)\.
 
 SageMaker provides the [sagemaker\.lambda\_helper\.Lambda](https://sagemaker.readthedocs.io/en/stable/api/utility/lambda_helper.html) class to create, update, invoke, and delete Lambda functions\. `Lambda` has the following signature\.
 
@@ -622,7 +622,7 @@ You can use the Amazon SageMaker Model Building Pipelines [Amazon EMR](https://d
 The Amazon EMR step requires an `EMRStepConfig` having the Amazon S3 location of the JAR to be used by the Amazon EMR cluster and any arguments to be passed, as well as the Amazon EMR cluster ID\.
 
 **Note**  
-Amazon EMR steps are supported in Amazon SageMaker SDK for Python v2\.73\.0 and Amazon SageMaker Studio v3\.21\.1\. You must update Studio before you use an EMR step or the pipeline DAG will not display\. To update Studio, see [Update SageMaker Studio](studio-tasks-update-studio.md)\.
+Amazon EMR steps are supported in Amazon SageMaker SDK for Python v2\.73\.0 and Amazon SageMaker Studio v3\.21\.1\. You must update Studio before you use an EMR step or the pipeline DAG will not display\. To update Studio, see [Shut down and Update SageMaker Studio](studio-tasks-update-studio.md)\.
 Amazon EMR on EKS is not supported\.
 You can only run a EMR step on a cluster that is in one of the following states: `STARTING`, `BOOTSTRAPPING`, `RUNNING`, or `WAITING`\.
 You can have at most 256 EMR steps in `PENDING` on an EMR cluster; EMR steps submitted beyond that limit result in the pipeline execution failing\. You may consider using [Retry Policy for Pipeline Steps](pipelines-retry-policy.md)\.
