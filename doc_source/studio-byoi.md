@@ -14,7 +14,7 @@ SageMaker provides sample Dockerfiles to use as a starting point for your custom
 + Scala
 + Tensorflow 2
 
-The following topics explain how to bring your own image using the SageMaker console and then launch the image in SageMaker Studio\. A more comprehensive tutorial additionally shows you how to build a custom container image from a supplied R Dockerfile\. For a similar blog article, see [Bringing your own R environment to Amazon SageMaker Studio](http://aws.amazon.com/blogs/machine-learning/bringing-your-own-r-environment-to-amazon-sagemaker-studio/)\.
+The following topics explain how to bring your own image using the SageMaker console and then launch the image in SageMaker Studio\. A more comprehensive tutorial additionally shows you how to build a custom container image from a supplied R Dockerfile\. For a similar blog article, see [Bringing your own R environment to Amazon SageMaker Studio](http://aws.amazon.com/blogs/machine-learning/bringing-your-own-r-environment-to-amazon-sagemaker-studio/)\. For notebooks that show how to bring your own image for use in training and inference, see [Amazon SageMaker Studio Container Build CLI](https://github.com/aws/amazon-sagemaker-examples/tree/main/aws_sagemaker_studio/sagemaker_studio_image_build)\.
 
 **Topics**
 + [Create a custom SageMaker image \(Console\)](studio-byoi-create.md)

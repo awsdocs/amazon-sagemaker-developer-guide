@@ -110,6 +110,60 @@ The following example shows how you can use the `aws:SourceArn` global condition
 
 Do not replace the `aws:SourceArn` in this template with the full ARN of a specific Studio app, user profile, or domain\. The ARN must be in the format provided above\. The asterisk in the ARN template does not stand for wildcard and should not be changed\. 
 
+## Cross\-Service Confused Deputy Prevention for SageMaker Pipelines<a name="security-confused-deputy-pipelines"></a>
+
+The following example shows how you can use the `aws:SourceArn` global condition key to prevent the cross\-service confused deputy problem for [SageMaker Pipelines](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-sdk.html) using pipeline execution records from one or more pipelines\. Note that because the account number is in the ARN, you do not need to specify an `aws:SourceAccount` value\.
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "sagemaker.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        "ArnLike": {
+          "aws:SourceArn": "arn:partition:sagemaker:region:123456789012:pipeline/mypipeline/*"
+        }
+      }
+    }
+  ]
+}
+```
+
+Do not replace the `aws:SourceArn` in this template with the full ARN of a specific pipeline execution\. The ARN must be in the format provided above\. The `partition` placeholder should designate either an AWS commercial partition \(`aws`\) or an AWS in China partition \(`aws-cn`\), depending on where the pipeline is executing\. Similarly, the `region` placeholder in the ARN can be any [valid region](https://docs.aws.amazon.com/sagemaker/latest/dg/regions-quotas.html) where SageMaker Pipelines is available\.
+
+The asterisk in the ARN template does stand for wildcard and covers all pipeline executions of a pipeline named `mypipeline`\. If you want to allow the `AssumeRole` permissions for all pipelines in account `123456789012` rather than one specific pipeline, then the `aws:SourceArn` would be `arn:aws:sagemaker:*:123456789012:pipeline/*`\.
+
+## Cross\-Service Confused Deputy Prevention for SageMaker Processing Jobs<a name="security-confused-deputy-processing-job"></a>
+
+The following example shows how you can use the `aws:SourceArn` global condition key to prevent the cross\-service confused deputy problem for SageMaker processing jobs created by account number *123456789012* in region *us\-west\-2*\. Note that because the account number is in the ARN, you do not need to specify an `aws:SourceAccount` value\.
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "sagemaker.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        "ArnLike": {
+          "aws:SourceArn": "arn:aws:sagemaker:us-west-2:123456789012:processing-job/*"
+        }
+      }
+    }
+  ]
+}
+```
+
+You can replace the `aws:SourceArn` in this template with the full ARN of one specific processing job to further limit permissions\.
+
 ## Cross\-Service Confused Deputy Prevention for SageMaker Training Jobs<a name="security-confused-deputy-training-job"></a>
 
 The following example shows how you can use the `aws:SourceArn` global condition key to prevent the cross\-service confused deputy problem for SageMaker training jobs created by account number *123456789012* in region *us\-west\-2*\. Note that because the account number is in the ARN, you do not need to specify an `aws:SourceAccount` value\.

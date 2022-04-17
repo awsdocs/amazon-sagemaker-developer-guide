@@ -59,7 +59,7 @@ The following is a sample configuration file:
 
 ## Calibration Images<a name="neo-troubleshooting-target-devices-ambarella-calibration-images"></a>
 
-Quantize your trained model by providing calibration images\. Quantizing your model improves the the performance of the CVFlow engine on an Ambarella System on a Chip \(SoC\)\. The Ambarella toolchain uses the calibration images to determine how each layer in the model should be quantized to achieve optimal performance and accuracy\. Each layer is quantized independently to INT8 or INT16 formats\. The final model has a mix of INT8 and INT16 layers after quantization\.
+Quantize your trained model by providing calibration images\. Quantizing your model improves the performance of the CVFlow engine on an Ambarella System on a Chip \(SoC\)\. The Ambarella toolchain uses the calibration images to determine how each layer in the model should be quantized to achieve optimal performance and accuracy\. Each layer is quantized independently to INT8 or INT16 formats\. The final model has a mix of INT8 and INT16 layers after quantization\.
 
 **How many images should you use?**
 

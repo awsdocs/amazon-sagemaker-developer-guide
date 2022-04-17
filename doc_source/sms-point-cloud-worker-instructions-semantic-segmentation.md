@@ -27,7 +27,7 @@ The following video includes an image that can be annotated\. You may not see an
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pointcloud/gifs/semantic_seg/ss_paint_sf.gif)
 
-After you've painted one or more objects using a label category, you can select that category from the the Label Category menu on the right to only view points painted for that category\. 
+After you've painted one or more objects using a label category, you can select that category from the Label Category menu on the right to only view points painted for that category\. 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pointcloud/gifs/semantic_seg/ss-view-options.gif)
 

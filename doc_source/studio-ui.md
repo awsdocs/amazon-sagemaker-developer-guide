@@ -10,7 +10,7 @@ At the top of the screen is the *menu bar*\. At the left of the screen is the *l
 
 Above the **Settings** icon, there's a button to provide feedback about your experiences with SageMaker Studio\.
 
-To the left of the **Feedback** button there's the notification icon\. Choose the icon to view notifications from Studio such as new Studio versions and new SageMaker features\. To update to a new version of Studio, see [Update SageMaker Studio and Studio Apps](studio-tasks-update.md)\.
+To the left of the **Feedback** button there's the notification icon\. Choose the icon to view notifications from Studio such as new Studio versions and new SageMaker features\. To update to a new version of Studio, see [Shut Down and Update SageMaker Studio and Studio Apps](studio-tasks-update.md)\.
 
 The main work area is divided horizontally into two panes\. The left pane is the *file and resource browser*\. The right pane contains one or more tabs for resources such as notebooks, terminals, metrics, and graphs\.
 

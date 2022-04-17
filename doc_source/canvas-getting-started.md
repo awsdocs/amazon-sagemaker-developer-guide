@@ -20,7 +20,7 @@ To set up Amazon SageMaker Canvas, you either contact your administrator or do t
 + Optional: Give yourself the ability to do time series forecasts
 
 **Important**  
-For you to set up Amazon SageMaker Canvas, your version of Amazon SageMaker Studio must be 3\.19\.0 or later\. For information about updating Amazon SageMaker Studio, see [Update SageMaker Studio](studio-tasks-update-studio.md)\.
+For you to set up Amazon SageMaker Canvas, your version of Amazon SageMaker Studio must be 3\.19\.0 or later\. For information about updating Amazon SageMaker Studio, see [Shut down and Update SageMaker Studio](studio-tasks-update-studio.md)\.
 
 **To onboard to Domain using AWS SSO**
 

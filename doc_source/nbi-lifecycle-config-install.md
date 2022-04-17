@@ -1,6 +1,9 @@
 # Lifecycle Configuration Best Practices<a name="nbi-lifecycle-config-install"></a>
 
 The following are best practices for using lifecycle configurations:
+
+**Important**  
+We do not recommend storing sensitive information in your lifecycle configuration script\.
 + Lifecycle configurations run as the `root` user\. If your script makes any changes within the `/home/ec2-user/SageMaker` directory, \(for example, installing a package with `pip`\), use the command `sudo -u ec2-user` to run as the `ec2-user` user\. This is the same user that Amazon SageMaker runs as\.
 + SageMaker notebook instances use `conda` environments to implement different kernels for Jupyter notebooks\. If you want to install packages that are available to one or more notebook kernels, enclose the commands to install the packages with `conda` environment commands that activate the conda environment that contains the kernel where you want to install the packages\.
 

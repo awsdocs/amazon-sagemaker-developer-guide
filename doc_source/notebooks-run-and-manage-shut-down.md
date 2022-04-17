@@ -2,6 +2,9 @@
 
 You can shut down individual resources, including notebooks, terminals, kernels, apps, and instances\. You can also shut down all resources in one of these categories at the same time\.
 
+**Note**  
+Amazon SageMaker Studio does not support shutting down resources from within a notebook\.
+
 **Topics**
 + [Shut Down an Open Notebook](#notebooks-run-and-manage-shut-down-notebook)
 + [Shut Down Resources](#notebooks-run-and-manage-shut-down-sessions)

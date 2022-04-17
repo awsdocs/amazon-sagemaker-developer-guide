@@ -29,7 +29,7 @@ You can only delete projects in Studio that you have created\. This condition is
 
       Right\-click the target project and choose ** Delete** from the dropdown list\.
 **Note**  
-This functionality is supported in Studio version v3\.17\.1 or higher\. For more information, see [Update SageMaker Studio](studio-tasks-update-studio.md)\.
+This functionality is supported in Studio version v3\.17\.1 or higher\. For more information, see [Shut down and Update SageMaker Studio](studio-tasks-update-studio.md)\.
 
    1. 
 

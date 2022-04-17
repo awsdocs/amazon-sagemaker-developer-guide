@@ -1,4 +1,4 @@
-# Update Studio Apps<a name="studio-tasks-update-apps"></a>
+# Shut down and Update Studio Apps<a name="studio-tasks-update-apps"></a>
 
 To update an Amazon SageMaker Studio app to the latest release, you must first shut down the corresponding KernelGateway app from the SageMaker console\. After the KernelGateway app is shut down, you must reopen it through SageMaker Studio by running a new kernel\. The kernel automatically updates\. Any unsaved notebook information is lost in the process\. The user data in the Amazon EFS volume isn't impacted\.
 
