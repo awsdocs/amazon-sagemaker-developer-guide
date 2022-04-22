@@ -1,9 +1,10 @@
 # Prerequisites<a name="inference-recommender-prerequisites"></a>
 
-To use Amazon SageMaker Inference Recommender, first make sure you have met the prerequisites listed below\. As an example, we show how to use a PyTorch \(v1\.6\.0\) ResNet\-18 convolutional neural network pre\-trained model for both types of Amazon SageMaker Inference Recommender recommendation jobs\.
+To use Amazon SageMaker Inference Recommender, first make sure you have met the prerequisites listed below\. As an example, we show how to use a PyTorch \(v1\.7\.1\) ResNet\-18 pre\-trained model for both types of Amazon SageMaker Inference Recommender recommendation jobs\.
 
 **Note**  
 The following code examples use Python\. Remove the `!` prefix character if you run any of the following code samples in your terminal or AWS CLI\.
+This example uses the `conda_pytorch_p36_latest` kernel within a Amazon SageMaker Notebook instance\. This kernel is provided by SageMaker and uses Python 3\.6 and PyTorch 1\.7\.1\. For more information about SageMaker Notebooks, see [Use Amazon SageMaker Notebook Instances](nbi.md)\.
 
 1. **Create an IAM role for Amazon SageMaker\.**
 
@@ -13,9 +14,9 @@ The following code examples use Python\. Remove the `!` prefix character if you 
 
    Inference Recommender benchmarks models from popular model zoos\. Inference Recommender supports your model even if it is not already benchmarked\.
 
-   Use `ListModelMetaData` to get a response object that lists the domain, framework, task, and model name of standard machine learning models found in common model zoos\.
+   Use `ListModelMetaData` to get a response object that lists the domain, framework, task, and model name of machine learning models found in common model zoos\.
 
-   You use the domain, framework, task, and model name in later steps to both pull an inference Docker image and register your model with the model registry\. The following demonstrates how to list model metadata with SDK for Python \(Boto3\): 
+   You use the domain, framework, framework version, task, and model name in later steps to both select an inference Docker image and register your model with SageMaker Model Registry\. The following demonstrates how to list model metadata with SDK for Python \(Boto3\): 
 
    ```
    import boto3
@@ -67,12 +68,12 @@ The following code examples use Python\. Remove the `!` prefix character if you 
    }
    ```
 
-   For this demo, we use a PyTorch \(v1\.6\.0\) ResNet\-18 convolutional neural network to perform image classification\. The following Python code sample stores the framework, framework version, domain, and task into variables for later use:
+   For this demo, we use a PyTorch \(v1\.7\.1\) ResNet\-18 model to perform image classification\. The following Python code sample stores the framework, framework version, domain, and task into variables for later use:
 
    ```
    # ML framework details
    framework = 'PYTORCH'
-   framework_version = '1.6.0'
+   framework_version = '1.7.1'
    
    # ML model details
    ml_domain = 'COMPUTER_VISION'
@@ -81,23 +82,47 @@ The following code examples use Python\. Remove the `!` prefix character if you 
 
 1. **Upload your machine learning model to Amazon S3\.**
 
-   Use this PyTorch \(v1\.6\.0\) ResNet\-18 model if you do not have a pre\-trained machine learning model:
+   Use this PyTorch \(v1\.7\.1\) ResNet\-18 model if you do not have a pre\-trained machine learning model:
 
    ```
    # Optional: Download a sample PyTorch model
-   !wget https://download.pytorch.org/models/resnet18-5c106cde.pth -o model.pth
-   !wget https://aws-ml-blog-artifacts.s3.us-east-2.amazonaws.com/inference.py
+   import torch
+   from torchvision import models, transforms, datasets
+   
+   # Create an example input for tracing
+   image = torch.zeros([1, 3, 256, 256], dtype=torch.float32)
+   
+   # Load a pretrained resnet18 model from TorchHub
+   model = models.resnet18(pretrained=True)
+   
+   # Tell the model we are using it for evaluation (not training). Note this is required for Inferentia compilation.
+   model.eval()
+   model_trace = torch.jit.trace(model, image)
+   
+   # Save your traced model
+   model_trace.save('model.pth')
    ```
 
-   Amazon SageMaker requires pre\-trained machine learning models be packaged as a compressed \.tar file \(`*.tar.gz`\)\. Compress your model to satisfy this requirement:
+   Download a sample inference script `inference.py`\. Create a `code` directory and move the inference script to the `code` directory\.
+
+   ```
+   # Download the inference script
+   !wget https://aws-ml-blog-artifacts.s3.us-east-2.amazonaws.com/inference.py
+   
+   # move it into a code/ directory
+   !mkdir code
+   !mv inference.py code/
+   ```
+
+   Amazon SageMaker requires pre\-trained machine learning models be packaged as a compressed TAR file \(`*.tar.gz`\)\. Compress your model to satisfy this requirement:
 
    ```
    !tar -czf test.tar.gz model.pth resnet18.py
    ```
 
-   When your endpoint is provisioned, the files in the archive are extracted and put in `/opt/ml/model/` on the endpoint\.
+   When your endpoint is provisioned, the files in the archive are extracted to `/opt/ml/model/` on the endpoint\.
 
-   After you compress your model and model artifacts as a \.tar file, upload them to your Amazon S3 bucket\. The following demonstrates how to upload your model to Amazon S3 using the AWS CLI:
+   After you compress your model and model artifacts as a `.tar.gz` file, upload them to your Amazon S3 bucket\. The following demonstrates how to upload your model to Amazon S3 using the AWS CLI:
 
    ```
    !aws s3 cp test.tar.gz s3://{your-bucket}/models/
@@ -107,9 +132,9 @@ The following code examples use Python\. Remove the `!` prefix character if you 
 
    SageMaker provides containers for its built\-in algorithms and prebuilt Docker images for some of the most common machine learning frameworks, such as Apache MXNet, TensorFlow, PyTorch, and Chainer\. For a full list of the available SageMaker images, see [Available Deep Learning Containers Images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md)\.
 
-   If none of the existing SageMaker containers meet your needs and you don't have an existing container of your own, create a new Docker container\. See [Use Your Own Inference Code](your-algorithms-inference-main.md) for information about how to create your Docker image\.
+   If none of the existing SageMaker containers meet your needs and you don't have an existing container of your own, create a new Docker image\. See [Use Your Own Inference Code](your-algorithms-inference-main.md) for information about how to create your Docker image\.
 
-   The following demonstrates how to retrieve a PyTorch version 1\.6\.0 inference image using the SageMaker Python SDK:
+   The following demonstrates how to retrieve a PyTorch version 1\.7\.1 inference image using the SageMaker Python SDK:
 
    ```
    from sagemaker import image_uris
@@ -119,7 +144,7 @@ The following code examples use Python\. Remove the `!` prefix character if you 
    ## Uncomment and replace with your own values if you did not define  
    ## these variables a previous step.
    #framework = 'PYTORCH'
-   #framework_version = '1.6.0'
+   #framework_version = '1.7.1'
    
    # Note: you can use any CPU-based instance here, 
    # this is just to set the arch as CPU for the Docker image
@@ -139,7 +164,7 @@ The following code examples use Python\. Remove the `!` prefix character if you 
 
    Create an archive that contains individual files that the load testing tool can send to your SageMaker endpoints\. Your inference code must be able to read the file formats from the sample payload\.
 
-   The following downloads a \.jpg image that this example uses in a later step for the ResNet model\.
+   The following downloads a \.jpg image that this example uses in a later step for the ResNet\-18 model\.
 
    ```
    !wget https://cdn.pixabay.com/photo/2020/12/18/05/56/flowers-5841251_1280.jpg
@@ -168,9 +193,9 @@ The following code examples use Python\. Remove the `!` prefix character if you 
 
 1. **Register your model in the model registry**
 
-   With SageMaker model registry, you can catalog models for production, manage model versions, associate metadata \(such as training metrics\) with a model, manage the approval status of a model, deploy models to production, and automate model deployment with CI/CD\.
+   With SageMaker Model Registry, you can catalog models for production, manage model versions, associate metadata \(such as training metrics\) with a model, manage the approval status of a model, deploy models to production, and automate model deployment with CI/CD\.
 
-   When you use the model registry to track and manage your models, they are represented as a versioned model package within model package groups\. Unversioned model packages are not part a model group\. Model package groups hold multiple versions or iterations of a model\. Though it is not required to create them for every model in the registry, they help organize various models that all have the same purpose and provide automatic versioning\.
+   When you use SageMaker Model Registry to track and manage your models, they are represented as a versioned model package within model package groups\. Unversioned model packages are not part a model group\. Model package groups hold multiple versions or iterations of a model\. Though it is not required to create them for every model in the registry, they help organize various models that all have the same purpose and provide automatic versioning\.
 
    To use Amazon SageMaker Inference Recommender, you must have a versioned model package\. You can create a versioned model package programmatically with the AWS SDK for Python \(Boto3\) or with Amazon SageMaker Studio\. To create a versioned model package programmatically, first create a model package group with the `CreateModelPackageGroup` API\. Next, create a model package using the `CreateModelPackage` API\. Calling this method makes a versioned model package\.
 
@@ -198,12 +223,21 @@ Note: You do not need to approve the model package to create an Inference Recomm
 
       See the [Amazon SageMaker API Reference Guide](https://docs.aws.amazon.com/sagemaker/latest/APIReference/Welcome.html) for a full list of optional and required arguments you can pass to [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModelPackageGroup.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModelPackageGroup.html)\.
 
-      Create a model package by specifying a Docker container that contains your inference code and the Amazon S3 location of your model artifacts and provide values for `InferenceSpecification`\. `InferenceSpecification` should contain information about inference jobs that can be run with models based on this model package, including the following:
-      + The Amazon ECR paths of containers that contain the inference code and model artifacts\.
-      + The instance types that the model package supports for transform jobs and real\-time endpoints used for inference\.
-      + The input and output content formats that the model package supports for inference\.
+      Create a Model Package by specifying a Docker image that runs your inference code and the Amazon S3 location of your model artifacts and provide values for `InferenceSpecification`\. `InferenceSpecification` should contain information about inference jobs that can be run with models based on this Model Package, including the following:
+      + The Amazon ECR paths of images that run your inference code\.
+      + \(Optional\) The instance types that the Model Package supports for transform jobs and real\-time endpoints used for inference\.
+      + The input and output content formats that the Model Package supports for inference\.
 
-      In a previous step we downloaded a pre\-trained ResNet18 model and stored it in an Amazon S3 bucket in a directory called `models`\. We retrieved a PyTorch \(v1\.6\.0\) Deep Learning Container inference image and stored the URI in a variable called `image_uri`\. We use those variables in the following code sample where we define a dictionary used as input to the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModelPackage.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModelPackage.html) API\.
+      In addition, you must specify the following parameters when you create a model package:
+      + [Domain](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModelPackage.html#sagemaker-CreateModelPackage-request-Domain): The machine learning domain of your model package and its components\. Common machine learning domains include computer vision and natural language processing\.
+      + [Task](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModelPackage.html#sagemaker-CreateModelPackage-request-Task): The machine learning task your model package accomplishes\. Common machine learning tasks include object detection and image classification\.
+      + [SamplePayloadUrl](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModelPackage.html#sagemaker-CreateModelPackage-request-SamplePayloadUrl): The Amazon Simple Storage Service \(Amazon S3\) path where the sample payload are stored\. This path must point to a single gzip compressed tar archive \(\.tar\.gz suffix\)\.
+      + [Framework](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ModelPackageContainerDefinition.html#sagemaker-Type-ModelPackageContainerDefinition-Framework): The machine learning framework of the model package container image\.
+      + [FrameworkVersion](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ModelPackageContainerDefinition.html#sagemaker-Type-ModelPackageContainerDefinition-FrameworkVersion): The framework version of the Model Package Container Image\.
+
+      If you provide an allow list of instance types to use to generate inferences in real\-time for the [SupportedRealtimeInferenceInstanceTypes](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InferenceSpecification.html#sagemaker-Type-InferenceSpecification-SupportedRealtimeInferenceInstanceTypes), Inference Recommender will limit the search space for instance types during a `Default` job\. Use this parameter if you have budget constraints or know there's a specific set of instance types that can support your model and container image\.
+
+      In a previous step we downloaded a pre\-trained ResNet18 model and stored it in an Amazon S3 bucket in a directory called `models`\. We retrieved a PyTorch \(v1\.7\.1\) Deep Learning Container inference image and stored the URI in a variable called `image_uri`\. We use those variables in the following code sample where we define a dictionary used as input to the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModelPackage.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModelPackage.html) API\.
 
       ```
       # Provide the Amazon S3 URI of your compressed tarfile
@@ -220,7 +254,6 @@ Note: You do not need to approve the model package to create an Inference Recomm
       # The supported MIME types for input and output data. In this example, 
       # we are using images as input.
       input_content_type='image/jpeg'
-      response_content_type='image/jpeg'
       
       
       # Optional - provide a description of your model.
@@ -234,7 +267,11 @@ Note: You do not need to approve the model package to create an Inference Recomm
       ## Uncomment if you did not store the framework and framework version
       ## in a previous step.
       #framework = 'PYTORCH'
-      #framework_version = '1.6.0'
+      #framework_version = '1.7.1'
+      
+      # Optional: Used for optimizing your model using SageMaker Neo
+      # PyTorch uses NCHW format for images
+      data_input_configuration = "[[1,3,256,256]]"
       
       # Create a dictionary to use as input for creating a model pacakge group
       model_package_input_dict = {
@@ -250,18 +287,18 @@ Note: You do not need to approve the model package to create an Inference Recomm
                               "ModelDataUrl": model_url,
                               "Framework": framework.upper(), 
                               "FrameworkVersion": framework_version,
-                              "NearestModelName": nearest_model_name
+                              "NearestModelName": nearest_model_name,
+                              "ModelInput": {"DataInputConfig": data_input_configuration}
                           }
                           ],
-                      "SupportedContentTypes": [input_content_type],
-                      "SupportedResponseMIMETypes": [response_content_type],
+                      "SupportedContentTypes": [input_content_type]
               }
           }
       ```
 
-   1. **Create a model package**
+   1. **Create a Model Package**
 
-      Use the `CreateModelPackage` API to create a model package\. Pass the input dictionary defined in the previous step:
+      Use the `CreateModelPackage` API to create a Model Package\. Pass the input dictionary defined in the previous step:
 
       ```
       model_package_response = sagemaker_client.create_model_package(**model_package_input_dict)

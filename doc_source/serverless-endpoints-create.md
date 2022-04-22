@@ -1,12 +1,5 @@
 # Create a serverless endpoint<a name="serverless-endpoints-create"></a>
 
-
-****  
-
-|  | 
-| --- |
-| Serverless Inference is in preview release for Amazon SageMaker and is subject to change\. We do not recommend using this feature in production environments\. | 
-
 To create a serverless endpoint, you can use the Amazon SageMaker console, the APIs, or the AWS CLI\. You can create a serverless endpoint using a similar process as a [real\-time endpoint](realtime-endpoints.md)\.
 
 **Topics**
@@ -16,9 +9,46 @@ To create a serverless endpoint, you can use the Amazon SageMaker console, the A
 
 ## Create a model<a name="serverless-endpoints-create-model"></a>
 
-To create your model, you must provide the location of your model artifacts and container image\. The examples in the following sections show you how to create a model using the [CreateModel](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) API and the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/home)\.
+To create your model, you must provide the location of your model artifacts and container image\. You can also use a model version from [SageMaker Model Registry](model-registry.md)\. The examples in the following sections show you how to create a model using the [CreateModel](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) API, Model Registry, and the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/home)\.
 
-### To create a model \(API\)<a name="serverless-endpoints-create-model-api"></a>
+### To create a model \(using Model Registry\)<a name="serverless-endpoints-create-model-registry"></a>
+
+[Model Registry](model-registry.md) is a feature of SageMaker that helps you catalog and manage versions of your model for use in ML pipelines\. To use Model Registry with Serverless Inference, you must first register a model version in a Model Registry model group\. To learn how to register a model in Model Registry, follow the procedures in [Create a Model Group](model-registry-model-group.md) and [Register a Model Version](model-registry-version.md)\.
+
+The following example requires you to have the ARN of a registered model version and uses the [AWS SDK for Python \(Boto3\)](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#id309) to call the [CreateModel](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) API\. For Serverless Inference, Model Registry is currently only supported by the AWS SDK for Python \(Boto3\)\. For the example, specify the following values:
++ For `model_name`, enter a name for the model\.
++ For `sagemaker_role`, you can use the default SageMaker\-created role or a customized SageMaker IAM role from Step 4 of the [Prerequisites](serverless-endpoints-prerequisites.md) section\.
++ For `ModelPackageName`, specify the ARN for your model version, which must be registered to a model group in Model Registry\.
+
+```
+#Setup
+import boto3
+import sagemaker
+region = boto3.Session().region_name
+client = boto3.client("sagemaker", region_name=region)
+
+#Role to give SageMaker permission to access AWS services.
+sagemaker_role = sagemaker.get_execution_role()
+
+#Specify a name for the model
+model_name = "<name-for-model>"
+
+#Specify a Model Registry model version
+container_list = [
+    {
+        "ModelPackageName": <model-version-arn>
+     }
+ ]
+
+#Create the model
+response = client.create_model(
+    ModelName = model_name,
+    ExecutionRoleArn = sagemaker_role,
+    container_list
+)
+```
+
+### To create a model \(using API\)<a name="serverless-endpoints-create-model-api"></a>
 
 The following example uses the [AWS SDK for Python \(Boto3\)](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#id309) to call the [CreateModel](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) API\. Specify the following values:
 + For `sagemaker_role,` you can use the default SageMaker\-created role or a customized SageMaker IAM role from Step 4 of the [Prerequisites](serverless-endpoints-prerequisites.md) section\.
@@ -57,7 +87,7 @@ response = client.create_model(
 )
 ```
 
-### To create a model \(console\)<a name="serverless-endpoints-create-model-console"></a>
+### To create a model \(using the console\)<a name="serverless-endpoints-create-model-console"></a>
 
 1. Sign in to the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/home)\.
 
@@ -87,7 +117,7 @@ response = client.create_model(
 
 After you create a model, create an endpoint configuration\. You can then deploy your model using the specifications in your endpoint configuration\. In the configuration, you specify whether you want a real\-time or serverless endpoint\. To create a serverless endpoint configuration, you can use the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/home), the [CreateEndpointConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html) API, or the AWS CLI\. The API and console approaches are outlined in the following sections\.
 
-### To create an endpoint configuration \(API\)<a name="serverless-endpoints-create-config-api"></a>
+### To create an endpoint configuration \(using API\)<a name="serverless-endpoints-create-config-api"></a>
 
 The following example uses the [AWS SDK for Python \(Boto3\)](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#id309) to call the [CreateEndpointConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html) API\. Specify the following values:
 + For `EndpointConfigName`, choose a name for the endpoint configuration\. The name should be unique within your account in a Region\.
@@ -112,7 +142,7 @@ response = client.create_endpoint_config(
 )
 ```
 
-### To create an endpoint configuration \(console\)<a name="serverless-endpoints-create-config-console"></a>
+### To create an endpoint configuration \(using the console\)<a name="serverless-endpoints-create-config-console"></a>
 
 1. Sign in to the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/home)\.
 
@@ -124,7 +154,7 @@ response = client.create_endpoint_config(
 
 1. For **Endpoint configuration name**, enter a name that is unique within your account in a Region\.
 
-1. For **Type of endpoint**, select **Serverless \(In Preview\)**\.  
+1. For **Type of endpoint**, select **Serverless**\.  
 ![\[Screenshot of the endpoint type option in the console.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/serverless-endpoints-endpoint-config.png)
 
 1. For **Production variants**, choose **Add model**\.
@@ -146,9 +176,9 @@ response = client.create_endpoint_config(
 
 ## Create an endpoint<a name="serverless-endpoints-create-endpoint"></a>
 
-To create a serverless endpoint, you can use the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/home), the [CreateEndpoint](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html) API, or the AWS CLI\. The API and console approaches are outlined in the following sections\. Once you create your endpoint, it can take several minutes for the endpoint to become available\.
+To create a serverless endpoint, you can use the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/home), the [CreateEndpoint](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html) API, or the AWS CLI\. The API and console approaches are outlined in the following sections\. Once you create your endpoint, it can take a few minutes for the endpoint to become available\.
 
-### To create an endpoint \(API\)<a name="serverless-endpoints-create-endpoint-api"></a>
+### To create an endpoint \(using API\)<a name="serverless-endpoints-create-endpoint-api"></a>
 
 The following example uses the [AWS SDK for Python \(Boto3\)](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#id309) to call the [CreateEndpoint](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html) API\. Specify the following values:
 + For `EndpointName`, enter a name for the endpoint that is unique within a Region in your account\.
@@ -161,7 +191,7 @@ response = client.create_endpoint(
 )
 ```
 
-### To create an endpoint \(console\)<a name="serverless-endpoints-create-endpoint-console"></a>
+### To create an endpoint \(using the console\)<a name="serverless-endpoints-create-endpoint-console"></a>
 
 1. Sign in to the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/home)\.
 

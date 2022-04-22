@@ -42,25 +42,25 @@ sagemaker_client.create_inference_recommendations_job(
                         RoleArn=role_arn,
                         InputConfig={
                             'ModelPackageVersionArn': model_package_arn,
-                            "JobDuration": 7200,
+                            "JobDurationInSeconds": 7200,
                             'TrafficPattern' : {
                                 'TrafficType': 'PHASES',
                                 'Phases': [
                                     {
-                                        'InitialNumberOfUser': 1,
+                                        'InitialNumberOfUsers': 1,
                                         'SpawnRate': 60,
-                                        'Duration': 300
+                                        'DurationInSeconds': 300
                                     },
                                     {
-                                        'InitialNumberOfUser': 5,
+                                        'InitialNumberOfUsers': 5,
                                         'SpawnRate': 1,
-                                        'Duration': 300
+                                        'DurationInSeconds': 300
                                     }
                                 ]
                             },
                             'ResourceLimits': {
                                         'MaxNumberOfTests': 10,
-                                        'MaxParallelTests': 3
+                                        'MaxParallelOfTests': 3
                                 },
                             "EndpointConfigurations" : [{
                                         'InstanceType': 'ml.c5.xlarge'
@@ -73,8 +73,11 @@ sagemaker_client.create_inference_recommendations_job(
                                     }]
                         },
                         StoppingConditions={
-                            'MaximumInvocations': 1000,
-                            'ModelLatencyThresholds':[{'Percentile': 'P95', 'Value': 100}]
+                            'MaxInvocations': 1000,
+                            'ModelLatencyThresholds':[{
+                                'Percentile': 'P95', 
+                                'ValueInMilliseconds': 100
+                            }]
                         }
                 )
 ```
@@ -98,14 +101,14 @@ aws sagemaker create-inference-recommendations-job\
     --role-arn arn:aws:iam::<account>:role/*\
     --input-config "{
         \"ModelPackageVersionArn\": \"arn:aws:sagemaker:<region>:<account>:role/*\",
-        \"JobDuration\": 7200,                                
+        \"JobDurationInSeconds\": 7200,                                
         \"TrafficPattern\" : {
                 \"TrafficType\": \"PHASES\",
                 \"Phases\": [
                     {
                         \"InitialNumberOfUsers\": 1,
                         \"SpawnRate\": 60,
-                        \"Duration\": 300
+                        \"DurationInSeconds\": 300
                     }
                 ]
             },
@@ -126,11 +129,11 @@ aws sagemaker create-inference-recommendations-job\
             ]
         }"
     --stopping-conditions "{
-        \"MaximumInvocations\": 1000,
+        \"MaxInvocations\": 1000,
         \"ModelLatencyThresholds\":[
                 {
                     \"Percentile\": \"P95\", 
-                    \"Value\": 100
+                    \"ValueInMilliseconds\": 100
                 }
         ]
     }"
@@ -229,7 +232,7 @@ This returns a JSON response similar to the following:
     'LastModifiedTime': datetime.datetime(2021, 10, 26, 19, 46, 31, 399000, tzinfo=tzlocal()), 
     'InputConfig': {
         'ModelPackageVersionArn': 'arn:aws:sagemaker:region:account-id:model-package/resource-id', 
-        'JobDuration': 7200, 
+        'JobDurationInSeconds': 7200, 
         'TrafficPattern': {
             'TrafficType': 'PHASES'
             }, 
@@ -242,15 +245,18 @@ This returns a JSON response similar to the following:
             }]
         }, 
     'StoppingConditions': {
-        'MaximumInvocations': 1000, 
-        'ModelLatencyThresholds': [{'Percentile': 'P95', 'Value': 100}]}, 
+        'MaxInvocations': 1000, 
+        'ModelLatencyThresholds': [{
+            'Percentile': 'P95', 
+            'ValueInMilliseconds': 100}
+            ]}, 
     'InferenceRecommendations': [{
         'Metrics': {
-        'CostPerHour': 0.6899999976158142, 
-        'CostPerInference': 1.0332434612791985e-05, 
-        'MaximumInvocations': 1113, 
-        'ModelLatency': 100000
-        }, 
+            'CostPerHour': 0.6899999976158142, 
+            'CostPerInference': 1.0332434612791985e-05, 
+            'MaximumInvocations': 1113, 
+            'ModelLatency': 100000
+            }, 
     'EndpointConfiguration': {
         'EndpointName': 'endpoint-name', 
         'VariantName': 'variant-name', 
@@ -305,7 +311,7 @@ This returns a response similar to the following:
     'LastModifiedTime': datetime.datetime(2021, 10, 26, 19, 46, 31, 399000, tzinfo=tzlocal()), 
     'InputConfig': {
         'ModelPackageVersionArn': 'arn:aws:sagemaker:region:account-id:model-package/resource-id', 
-        'JobDuration': 7200, 
+        'JobDurationInSeconds': 7200, 
         'TrafficPattern': {
             'TrafficType': 'PHASES'
             }, 
@@ -318,11 +324,11 @@ This returns a response similar to the following:
             }]
         }, 
     'StoppingConditions': {
-        'MaximumInvocations': 1000, 
+        'MaxInvocations': 1000, 
         'ModelLatencyThresholds': [{
             'Percentile': 'P95', 
-            'Value': 100
-                }]
+            'ValueInMilliseconds': 100
+            }]
         }, 
     'InferenceRecommendations': [{
         'Metrics': {
@@ -390,7 +396,7 @@ Specify the job name of the load test for the `JobName` field:
 
 ```
 sagemaker_client.stop_inference_recommendations_job(
-                                    job_name=<INSERT>
+                                    job_name='<INSERT>'
                                     )
 ```
 

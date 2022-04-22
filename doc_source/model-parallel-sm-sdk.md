@@ -45,7 +45,7 @@ smd_mp_estimator = TensorFlow(
     role=sagemaker.get_execution_role(),
     instance_count=1,
     instance_type='ml.p3.16xlarge',
-    framework_version='2.6.0',
+    framework_version='2.6.3',
     py_version='py38',
     distribution={
         "smdistributed": {"modelparallel": smp_options},
