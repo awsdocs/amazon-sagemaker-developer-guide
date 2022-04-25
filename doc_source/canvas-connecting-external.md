@@ -4,7 +4,9 @@ Add a connection to an external data source to import data from it\. The credent
 
 ## Connect to an Amazon Redshift database<a name="canvas-connecting-redshift"></a>
 
-You can import data from Amazon Redshift, a data warehouse where your organization keeps its data\. To import data from Amazon Redshift, you do the following:
+You can import data from Amazon Redshift, a data warehouse where your organization keeps its data\. Before you can import data from Amazon Redshift, the AWS IAM role you use must have the `AmazonRedshiftFullAccess` managed policy attached\. For instructions on how to attach this policy, see [Give users permissions to import Amazon Redshift data](canvas-redshift-permissions.md)\. 
+
+To import data from Amazon Redshift, you do the following:
 
 1. Create a connection to Amazon Redshift database\.
 

@@ -34,4 +34,4 @@ The following is an example for how to enable autoscaling on an endpoint using A
           PredefinedMetricType: SageMakerVariantInvocationsPerInstance
 ```
 
-For more details, refer to CloudFront's [AutoScalingPlans API reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-autoscalingplans-scalingplan.html)\.
+For more details, refer to AWS CloudFormation's [AutoScalingPlans API reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-autoscalingplans-scalingplan.html)\.

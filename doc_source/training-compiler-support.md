@@ -9,11 +9,7 @@ SageMaker Training Compiler is available in the SageMaker Python SDK v2\.70\.0 o
 
 SageMaker Training Compiler supports the following deep learning frameworks and is available through AWS Deep Learning Containers\.
 
-
-| Framework | Framework version | Deep Learning Container URI | 
-| --- | --- | --- | 
-| TensorFlow with Hugging Face Transformers |  Transformers v4\.11\.0 TensorFlow v2\.5\.1  |  763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/huggingface\-tensorflow\-training\-comp:2\.5\.1\-transformers4\.11\.0\-gpu\-py37\-cu112\-ubuntu18\.04  | 
-| PyTorch with Hugging Face Transformers | Transformers v4\.11\.0 PyTorch v1\.9\.0 |  763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/huggingface\-pytorch\-training\-comp:1\.9\.0\-transformers4\.11\.0\-gpu\-py38\-cu111\-ubuntu20\.04  | 
+[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/training-compiler-support.html)
 
 For more information, see [SageMaker Training Compiler containers](https://github.com/aws/deep-learning-containers/blob/master/available_images.md#sagemaker-training-compiler-containers) in the *AWS Deep Learning Containers GitHub repository*\.
 

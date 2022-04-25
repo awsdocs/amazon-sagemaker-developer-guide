@@ -15,7 +15,7 @@ The following instructions show you how to create an Amazon SageMaker Autopilot 
    + **Connect your data** – Provide the S3 bucket name and the dataset file name that contains your input data\.  
 ![\[S3 bucket name and Dataset file name fields in the Connect your data section of the Autopilot experiment page.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/create-autopilot-experiment-s3-bucket-input.PNG)
 **Note**  
-Must be an s3:// formatted URL where Amazon SageMaker has write permissions\. The S3 bucket must be in the current AWS Region and the file must be in CSV or parquet format and contain at least 5000 rows\.
+Must be an s3:// formatted URL where Amazon SageMaker has write permissions\. The S3 bucket must be in the current AWS Region and the file must be in CSV or parquet format and contain at least 500 rows\.
      + **S3 bucket name** – The bucket name must be unique across all existing bucket names in Amazon S3\.
      + **S3 object key prefix** – The file name of the object in the bucket, including the path to the object within the bucket\.
      + **S3 bucket location** – The concatenation of the S3 bucket name and S3 object key prefix\.

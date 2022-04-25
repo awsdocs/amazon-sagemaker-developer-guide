@@ -1,9 +1,14 @@
 # Support for Hugging Face Transformer Models<a name="model-parallel-extended-features-pytorch-hugging-face"></a>
 
-The SageMaker model parallel library's tensor parallelism offers out\-of\-the\-box support for Hugging Face Transformer models, such as GPT\-2, BERT, and RoBERTa\.
+The SageMaker model parallel library's tensor parallelism offers out\-of\-the\-box support for the following Hugging Face Transformer models:
++ GPT\-2, BERT, and RoBERTa \(Available in the SageMaker model parallel library v1\.7\.0 and later\)
++ GPT\-J \(Available in the SageMaker model parallel library v1\.8\.0 and later\)
 
 **Note**  
-To use tensor parallelism for training Hugging Face Transformer models, you should add `transformers==4.4.2` to `requirements.txt` for installing the Transformers library in Deep Learning Container for PyTorch 1\.8\.1 with tensor parallelism implemented\.
+For any other Transformers models, you need to use the [smp\.tp\_register\_with\_module\(\)](https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/latest/smd_model_parallel_pytorch_tensor_parallel.html#smp.tp_register_with_module) API to apply tensor parallelism\.
+
+**Note**  
+To use tensor parallelism for training Hugging Face Transformer models, you should add `transformers==4.4.2` to `requirements.txt` for installing the Transformers library in Deep Learning Container for PyTorch v1\.8\.1 and later\.
 
 If you use one of the Hugging Face Transformer models, you do not need to manually implement hooks to translate Transformer APIs to `smdistributed` transformer layers\. You also do not need to manually register hooks for tensor parallelism using the `smp.tp_register` API\. You can activate tensor parallelism by using the context manager `smp.tensor_parallelism()` and wrapping the model by [https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/latest/smd_model_parallel_pytorch.html#smp.DistributedModel](https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/latest/smd_model_parallel_pytorch.html#smp.DistributedModel)\. For example, see the following code:
 
@@ -63,3 +68,5 @@ The relevant `state_dict` translation functions between Hugging Face and `smp` c
 +  `from smdistributed.modelparallel.torch.nn.huggingface.bert import translate_hf_state_dict_to_smdistributed` 
 +  `from smdistributed.modelparallel.torch.nn.huggingface.roberta import translate_state_dict_to_hf_roberta` 
 +  `from smdistributed.modelparallel.torch.nn.huggingface.roberta import translate_hf_state_dict_to_smdistributed` 
++ `from smdistributed.modelparallel.torch.nn.huggingface.gptj import translate_hf_gptj_state_dict_to_smdistributed` \(Available in the SageMaker model parallel library v1\.8\.0 and later\)
++ `from smdistributed.modelparallel.torch.nn.huggingface.gptj import translate_state_dict_to_hf_gptj` \(Available in the SageMaker model parallel library v1\.8\.0 and later\)

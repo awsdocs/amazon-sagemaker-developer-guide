@@ -1,19 +1,12 @@
-# Serverless Inference \(Preview\)<a name="serverless-endpoints"></a>
-
-
-****  
-
-|  | 
-| --- |
-| Serverless Inference is in preview release for Amazon SageMaker and is subject to change\. We do not recommend using this feature in production environments\. | 
+# Serverless Inference<a name="serverless-endpoints"></a>
 
 Amazon SageMaker Serverless Inference is a purpose\-built inference option that makes it easy for you to deploy and scale ML models\. Serverless Inference is ideal for workloads which have idle periods between traffic spurts and can tolerate cold starts\. Serverless endpoints automatically launch compute resources and scale them in and out depending on traffic, eliminating the need to choose instance types or manage scaling policies\. This takes away the undifferentiated heavy lifting of selecting and managing servers\. Serverless Inference integrates with AWS Lambda to offer you high availability, built\-in fault tolerance and automatic scaling\.
 
-With a pay\-per\-use model, Serverless Inference is a cost\-effective option if you have an infrequent or unpredictable traffic pattern\. During times when there are no requests, Serverless Inference scales your endpoint down to 0, helping you to minimize your costs\. Serverless Inference is available in Preview in the following Regions: US East \(N\. Virginia\) `us-east-1`, US East \(Ohio\) `us-east-2`, US West \(Oregon\) `us-west-2`, Europe \(Ireland\) `eu-west-1`, Asia Pacific \(Tokyo\) `ap-northeast-1` and Asia Pacific \(Sydney\) `ap-southeast-2`\.
+With a pay\-per\-use model, Serverless Inference is a cost\-effective option if you have an infrequent or unpredictable traffic pattern\. During times when there are no requests, Serverless Inference scales your endpoint down to 0, helping you to minimize your costs\. For more information about pricing for Serverless Inference, see [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/)\.
 
-For an introduction to Amazon SageMaker Serverless Inference, see the following video\. The video explains the core concepts of Serverless Inference and includes a demonstration of how to set up a serverless endpoint\.
+You can integrate Serverless Inference with your MLOps Pipelines to streamline your ML workflow, and you can use a serverless endpoint to host a model registered with [Model Registry](model-registry.md)\.
 
-[![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/xIp2305saII/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/xIp2305saII)
+Serverless Inference is generally available in all AWS commercial Regions where SageMaker is available \(except the AWS China Regions\)\. For more information about Amazon SageMaker regional availability, see the [AWS Regional Services List](http://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/)\.
 
 ## How it works<a name="serverless-endpoints-how-it-works"></a>
 
@@ -38,7 +31,7 @@ For your endpoint container, you can choose either a SageMaker\-provided contain
 
 For serverless endpoints, we recommend creating only one worker in the container and only loading one copy of the model\. Note that this is unlike real\-time endpoints, where some SageMaker containers may create a worker for each vCPU to process inference requests and load the model in each worker\.
 
-If you already have a container for a real\-time endpoint, you can use the same container for your serverless endpoint, though some capabilities are excluded during Preview\. To learn more about the container capabilities that are not supported in Serverless Inference, see [Feature exclusions](#serverless-endpoints-how-it-works-exclusions)\. If you choose to use the same container, SageMaker escrows \(retains\) a copy of your container image until you delete all endpoints that use the image\. SageMaker encrypts the copied image at rest with a SageMaker\-owned AWS KMS key\.
+If you already have a container for a real\-time endpoint, you can use the same container for your serverless endpoint, though some capabilities are excluded\. To learn more about the container capabilities that are not supported in Serverless Inference, see [Feature exclusions](#serverless-endpoints-how-it-works-exclusions)\. If you choose to use the same container, SageMaker escrows \(retains\) a copy of your container image until you delete all endpoints that use the image\. SageMaker encrypts the copied image at rest with a SageMaker\-owned AWS KMS key\.
 
 ### Memory size<a name="serverless-endpoints-how-it-works-memory"></a>
 
@@ -50,7 +43,7 @@ Regardless of the memory size you choose, your serverless endpoint has 5 GB of e
 
 Serverless Inference manages predefined scaling policies and quotas for the capacity of your endpoint\. Serverless endpoints have a quota for how many concurrent invocations can be processed at the same time\. If the endpoint is invoked before it finishes processing the first request, then it handles the second request concurrently\. You can set the maximum concurrency for a single endpoint up to 200, and the total number of serverless endpoint variants you can host in a Region is 50\. The total concurrency you can share between all serverless endpoints per Region in your account is 200\. The maximum concurrency for an individual endpoint prevents that endpoint from taking up all of the invocations allowed for your account, and any endpoint invocations beyond the maximum are throttled\.
 
-To learn how to set the maximum concurrency for your endpoint, see [Create an endpoint configuration](serverless-endpoints-create.md#serverless-endpoints-create-config)\. For requests to increase the total concurrency per Region and the total number of serverless endpoint variants per Region, please contact customer support\. Note that you cannot request an increase for the maximum concurrency per endpoint limit\. For more information on quotas and limits, see [ Amazon SageMaker endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/sagemaker.html) in the *AWS General Reference*\.
+To learn how to set the maximum concurrency for your endpoint, see [Create an endpoint configuration](serverless-endpoints-create.md#serverless-endpoints-create-config)\. For more information about quotas and limits, see [ Amazon SageMaker endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/sagemaker.html) in the *AWS General Reference*\. To request a service limit increase, contact [AWS Support](https://console.aws.amazon.com/support)\. For instructions on how to request a service limit increase, see [Supported Regions and Quotas](regions-quotas.md)\.
 
 ### Cold starts<a name="serverless-endpoints-how-it-works-cold-starts"></a>
 
@@ -66,6 +59,8 @@ During Preview, you cannot convert your instance\-based, real\-time endpoint to 
 
 ## Getting started<a name="serverless-endpoints-get-started"></a>
 
-You can create, update, describe, and delete a serverless endpoint using the SageMaker console, the AWS SDKs, the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/), and the AWS CLI\. You can invoke your endpoint using the AWS SDKs, the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/), and the AWS CLI\. For more information on how to set up and use a serverless endpoint, read the guide [Create, Invoke, Update, and Delete an Endpoint](serverless-endpoints-create-invoke-update-delete.md)\.
+You can create, update, describe, and delete a serverless endpoint using the SageMaker console, the AWS SDKs, the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/overview.html#sagemaker-serverless-inference), and the AWS CLI\. You can invoke your endpoint using the AWS SDKs, the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/overview.html#sagemaker-serverless-inference), and the AWS CLI\. For more information about how to set up and use a serverless endpoint, read the guide [Create, Invoke, Update, and Delete an Endpoint](serverless-endpoints-create-invoke-update-delete.md)\.
 
-To see a Jupyter notebook example that shows an end\-to\-end serverless endpoint workflow, see our Serverless Inference [notebook](https://github.com/aws/amazon-sagemaker-examples/tree/master/serverless-inference/Serverless-Inference-Walkthrough.ipynb)\.
+### Example notebooks and blogs<a name="serverless-endpoints-get-started-nbs"></a>
+
+For Jupyter notebook examples that show end\-to\-end serverless endpoint workflows, see the [Serverless Inference example notebooks](https://github.com/aws/amazon-sagemaker-examples/tree/master/serverless-inference)\.

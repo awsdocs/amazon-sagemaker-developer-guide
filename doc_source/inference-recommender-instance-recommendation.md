@@ -3,7 +3,7 @@
 Instance recommendation jobs run a set of load tests on recommended instance types\. Inference recommendation jobs use performance metrics that are based on load tests using the sample data you provided during model version registration\.
 
 **Note**  
-Before you create an Inference Recommender recommendation job, make sure you have satisfied the prerequisites\.
+Before you create an Inference Recommender recommendation job, make sure you have satisfied the [Prerequisites](inference-recommender-prerequisites.md)\.
 
 The following demonstrates how to use Amazon SageMaker Inference Recommender to create an instance recommendation based on your model type using the AWS SDK for Python \(Boto3\), AWS CLI, and Amazon SageMaker Studio\.
 
@@ -133,7 +133,7 @@ This returns a JSON response similar to the following:
     'LastModifiedTime': datetime.datetime(2021, 10, 26, 20, 25, 1, 997000, tzinfo=tzlocal()), 
     'InputConfig': {
                 'ModelPackageVersionArn': 'arn:aws:sagemaker:region:account-id:model-package/resource-id', 
-                'JobDuration': 0
+                'JobDurationInSeconds': 0
                 }, 
     'InferenceRecommendations': [{
             'Metrics': {
@@ -235,7 +235,7 @@ The JSON response similar should resemble the following:
     'LastModifiedTime': datetime.datetime(2021, 10, 26, 20, 25, 1, 997000, tzinfo=tzlocal()), 
     'InputConfig': {
                 'ModelPackageVersionArn': 'arn:aws:sagemaker:region:account-id:model-package/resource-id', 
-                'JobDuration': 0
+                'JobDurationInSeconds': 0
                 }, 
     'InferenceRecommendations': [{
             'Metrics': {

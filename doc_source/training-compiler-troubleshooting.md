@@ -60,7 +60,7 @@ There are three approaches to set the `GPU_NUM_DEVICES` environment variable:
          parser.add_argument("--training_dir", type=str, default=os.environ["SM_CHANNEL_TRAIN"])
          parser.add_argument("--test_dir", type=str, default=os.environ["SM_CHANNEL_TEST"])
          parser.add_argument("--n_gpus", type=str, default=os.environ["SM_NUM_GPUS"])
-         
+     
          args, _ = parser.parse_known_args()
      
          os.environ["GPU_NUM_DEVICES"] = args.n_gpus

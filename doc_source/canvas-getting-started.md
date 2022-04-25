@@ -17,7 +17,8 @@ If you're a business user or analyst, read the following sections\.
 To set up Amazon SageMaker Canvas, you either contact your administrator or do the following:
 + Set up an Amazon SageMaker Domain
 + Optional: Give yourself the ability to upload local files
-+ Optional: Give yourself the ability to do time series forecasts
++ Optional: Give yourself permissions to do time series forecasts
++ Optional: Give yourself permissions to import Amazon Redshift data
 
 **Important**  
 For you to set up Amazon SageMaker Canvas, your version of Amazon SageMaker Studio must be 3\.19\.0 or later\. For information about updating Amazon SageMaker Studio, see [Shut down and Update SageMaker Studio](studio-tasks-update-studio.md)\.
@@ -55,6 +56,28 @@ Use the following procedure to configure Amazon SageMaker Studio\.
 1. Under **Notebook Sharing Configuration**, turn on notebook sharing\.
 
 1. Select **Next**\. 
+
+If you encounter an error during post\-building analysis that tells you to increase your quota for `ml.m5.2xlarge` instances, use the following information to resolve the issue\. To allow SageMaker Canvas to complete post\-building analysis of models, you must increase the SageMaker Hosting endpoint limit for the `ml.m5.2xlarge` instance type to a non\-zero value in your AWS account\. After building a model, SageMaker Canvas hosts the model on a SageMaker Hosting endpoint and uses the endpoint to generate the post\-building analysis\. If you don't increase the default account limit of 0 for `ml.m5.2xlarge` instances, SageMaker Canvas cannot complete this step and generates an error during post\-building analysis\.
+
+Use the following procedure to request a limit increase for your account\.
+
+1. Open the [AWS Support Center console](https://console.aws.amazon.com/support/home#/case/create)\.
+
+1. On the **AWS Support Center** page, choose **Create Case** and then choose **Service limit increase**\.
+
+1. In the **Case classification** panel under **Limit type**, search for SageMaker\.
+
+1. In the **Request** panel, choose the **Region** that you are working in\. For **Resource Type**, choose **SageMaker Hosting**\.
+
+1. For **Limit**, choose **ml\.m5\.2xlarge** instances\.
+
+1. For **New Limit Value**, verify that the value is at least **1**\.
+
+1. In **Case description**, provide a brief explanation of why you need the **Service limit increase**\. For example, "SageMaker Canvas uses this instance type for model analysis\."
+
+1. In **Contact options**, provide some details about how you would like to be contacted by the AWS service support team on the status of your **Service limit increase** request\.
+
+1. Choose **Submit**\.
 
 You can now access SageMaker Canvas by doing the following\.
 
@@ -105,33 +128,9 @@ To attach a CORS policy, use the following procedure\.
 
 After updating the CORS policy, you still might not be successful in uploading your files\. The browser might be caching the CORS settings from a previous upload attempt\. If you're running into issues, clear your browser cache and try again\.
 
-You might want to give yourself the ability to perform forecasts on time series data\.
+You might want to give yourself the ability to perform forecasts on time series data\. You must add the `AmazonForecastFullAccess` managed policy and a trust relationship with Forecast to the AWS IAM role you chose when setting up the user profile\. For instructions on how to add these permissions to your IAM role, see [Give your users permissions to perform time series forecasting](canvas-set-up-forecast.md)\.
 
-To give yourself the ability to do time series forecasting, add `AmazonForecastFullAccess` to your IAM role\.
-
-1. Add the `AmazonForecastFullAccess` AWS managed policy to your IAM role\.
-
-1. Add the following trust relationship to the IAM role\.
-
-```
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Service": [
-            "sagemaker.amazonaws.com", # Already present
-            "forecast.amazonaws.com"   # This needs to be added
-        ]
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-```
-
-For information about AWS managed policies, see [Managed policies and inline policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)\.
+If you want to import data from Amazon Redshift, you must give yourself additional permissions\. You must add the `AmazonRedshiftFullAccess` managed policy to the AWS IAM role you chose when setting up the user profile\. For instructions on how to add the policy to the role, see [Give users permissions to import Amazon Redshift data](canvas-redshift-permissions.md)\.
 
 ## Step 1: Log in to Amazon SageMaker Canvas as a business user<a name="canvas-getting-started-step1"></a>
 
