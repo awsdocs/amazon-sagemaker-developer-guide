@@ -11,8 +11,8 @@ Use SageMaker projects to create an MLOps solution to orchestrate and manage:
 + Monitoring and updating models
 
 **Topics**
-+ [What is a SageMaker Project?](sagemaker-projects-whatis.md)
 + [Why Should You Use MLOps?](sagemaker-projects-why.md)
++ [What is a SageMaker Project?](sagemaker-projects-whatis.md)
 + [SageMaker Studio Permissions Required to Use Projects](sagemaker-projects-studio-updates.md)
 + [Create an MLOps Project using Amazon SageMaker Studio](sagemaker-projects-create.md)
 + [MLOps Project Templates](sagemaker-projects-templates.md)

@@ -106,7 +106,7 @@ You can determine whether there's seasonality in your time series data by using 
 
 You can use the following procedure to perform a **Seasonal\-Trend decomposition** analysis\.
 
-1. Open your Data Wrangler data flow\.\.
+1. Open your Data Wrangler data flow\.
 
 1. In your data flow, under **Data types**, choose the **\+**, and select **Add analysis**\.
 

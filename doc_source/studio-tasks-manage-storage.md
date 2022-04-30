@@ -7,9 +7,9 @@ Don't delete the Amazon EFS volume\. If you delete it, the domain will no longer
 
 **To find your Amazon EFS volume**
 
-1. From the SageMaker Studio Control Panel, under **Studio Summary**, find the **Studio ID**\. The ID will be in the following format: `d-xxxxxxxxxxxx`\.
+1. From the **Control Panel**, under **Domain**, find the **Domain ID**\. The ID will be in the following format: `d-xxxxxxxxxxxx`\.
 
-1. Pass the `Studio ID`, as `DomainId`, to the [describe\_domain](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.describe_domain) method\.
+1. Pass the `Domain ID`, as `DomainId`, to the [describe\_domain](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.describe_domain) method\.
 
 1. In the response from `describe_domain`, note the value for the `HomeEfsFileSystemId` key\. This is the Amazon EFS file system ID\.
 

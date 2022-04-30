@@ -14,14 +14,20 @@ The following procedures show how to grant **Projects** permissions after you on
 
 1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Choose **SageMaker Domain**\.
+1. Choose **Control Panel**\.
 
-1. If you choose **Quick setup** to set up your SageMaker Domain, you are permitted to use Amazon SageMaker project templates by default\.
+1. If you choose **Quick setup** to set up your SageMaker Domain, you have permissions to use project templates by default\.
 
-1. If you choose **Standard setup** to set up your SageMaker Domain, make sure both **Enable Amazon SageMaker project templates and Amazon SageMaker JumpStart for this account** and **Enable Amazon SageMaker project templates and Amazon SageMaker JumpStart for Studio users** are turned on\.
+1. If you choose **Standard setup** to set up your SageMaker Domain, make sure you turn on both **Enable Projects, and JumpStart templates for this Studio user** and **Enable Projects, and JumpStart templates for Studio users** when you configure Studio settings\.
 
-1. To confirm that your SageMaker Domain has active SageMaker project template permissions:
+1. To confirm that your SageMaker Domain has active project template permissions:
 
    1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-   1. Make sure that there is a check mark next to **Amazon SageMaker project templates enabled for this account** and **Amazon SageMaker project templates enabled for Studio users**\.
+   1. Choose **Control Panel**\.
+
+   1. Choose the **Settings** icon in the upper\-right corner of the **Domain** card\.
+
+   1. Choose **Studio Settings** in the left side panel\.
+
+   1. Under **Projects and JumpStart**, make sure **Enable Projects, and JumpStart templates for this Studio user** and **Enable Projects, and JumpStart templates for Studio users** are turned on\.

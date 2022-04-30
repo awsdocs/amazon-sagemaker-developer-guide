@@ -2,7 +2,7 @@
 
 Amazon SageMaker Data Wrangler provides numerous ML data transforms to streamline cleaning, transforming, and featurizing your data\. When you add a transform, it adds a step to the data flow\. Each transform you add modifies your dataset and produces a new dataframe\. All subsequent transforms apply to the resulting dataframe\.
 
-Data Wrangler includes built\-in transforms, which you can use to transform columns without any code\. You can also add custom transformations using PySpark, Pandas, and PySpark SQL\. Some transforms operate in place, while others create a new output column in your dataset\.
+Data Wrangler includes built\-in transforms, which you can use to transform columns without any code\. You can also add custom transformations using PySpark, Python \(User\-Defined Function\), Pandas, and PySpark SQL\. Some transforms operate in place, while others create a new output column in your dataset\.
 
 You can apply transforms to multiple columns at once\. For example, you can delete multiple columns in a single step\.
 
@@ -128,7 +128,7 @@ Data Wrangler interpolates non\-numeric features by copying from either of the i
 
 ## Custom Transforms<a name="data-wrangler-transform-custom"></a>
 
-The **Custom Transforms** group allows you to use Pyspark, Pandas, or Pyspark \(SQL\) to define custom transformations\. For all three options, you use the variable `df` to access the dataframe to which you want to apply the transform\. You do not need to include a return statement\. Choose **Preview** to preview the result of the custom transform\. Choose **Add** to add the custom transform to your list of **Previous steps**\.
+The **Custom Transforms** group allows you to use Python \(User\-Defined Function\), Pyspark, Pandas, or Pyspark \(SQL\) to define custom transformations\. For all three options, you use the variable `df` to access the dataframe to which you want to apply the transform\. If you're not using Python \(User\-Defined Function\), you don't need to include a return statement\. Choose **Preview** to preview the result of the custom transform\. Choose **Add** to add the custom transform to your list of **Previous steps**\.
 
 You can import the popular libraries with an `import` statement in the custom transform code block such as the following:
 + Numpy version 1\.19\.0
@@ -144,9 +144,26 @@ You can import the popular libraries with an `import` statement in the custom tr
 df.rename(columns={"A column": "A_column", "B column": "B_column"})
 ```
 
-If you include print statements in the code block, the result appears when you select **Preview**\.
+If you include print statements in the code block, the result appears when you select **Preview**\. You can resize the custom code transformer panel\. Resizing the panel provides more space to write code\. The following shows the resizing of the panel\.
 
-The following are examples of how you can use the custom transforms code block:
+![\[For the Python function, replace the comments under pd.Series with your code.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/resizing-panel.gif)
+
+The following provide additional context and examples for writing custom transform code\.
+
+**Python \(User\-Defined Function\)**
+
+The Python function gives you the ability to write custom transformations without needing to know Apache Spark or Pandas\. Data Wrangler is optimized to run your custom code quickly\. You get similar performance between using custom Python code and an Apache Spark plugin\.
+
+To use the Python \(User\-Defined Function\) code block, you specify the following:
++ **Input column** – The input column where you're applying the transform\.
++ **Mode** – The scripting mode, either Pandas or Python\.
++ **Return type** – The data type of the value that you're returning\.
+
+Using the Pandas mode gives better performance\. The Python mode makes it easier for you to write transformations by using pure Python functions\.
+
+The following video shows an example of how to use custom code to create a transformation\. It uses the Titanic dataset to create a column with the person's salutation\.
+
+![\[For the Python function, replace the comments under pd.Series with your code.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/python-function-transform-titanic-720.gif)
 
 **Pyspark**
 
@@ -987,6 +1004,57 @@ Use the **Process Numeric** feature group to process numeric data\. Each scalar 
 + **Robust Scaler**: Scale the input column using statistics that are robust to outliers\. To learn more, see the Spark documentation for [RobustScaler](https://spark.apache.org/docs/3.0.0/ml-features#robustscaler)\.
 + **Min Max Scaler**: Transform the input column by scaling each feature to a given range\. To learn more, see the Spark documentation for [MinMaxScaler](https://spark.apache.org/docs/3.0.0/ml-features#minmaxscaler)\.
 + **Max Absolute Scaler**: Scale the input column by dividing each value by the maximum absolute value\. To learn more, see the Spark documentation for [MaxAbsScaler](https://spark.apache.org/docs/3.0.0/ml-features#maxabsscaler)\.
+
+## Sampling<a name="data-wrangler-transform-sampling"></a>
+
+After you've imported your data, you can use the **Sampling** transformer to take one or more samples of it\. When you use the sampling transformer, Data Wrangler samples your original dataset\.
+
+You can choose one of the following sample methods:
++ **Limit** – Samples the dataset starting from the first row up to the limit that you specify\.
++ **Randomized** – Takes a random sample of a size that you specify\.
++ **Stratified** – Takes a stratified random sample\.
+
+You can stratify a randomized sample to make sure that it represents the original distribution of the dataset\.
+
+You might be performing data preparation for multiple use cases\. For each use case, you can take a different sample and apply a different set of transformations\.
+
+The following GIF shows an example of taking a **Randomized** sample and a **Stratified** sample from a dataset\.
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/sampling-transformer.gif)
+
+The following procedure describes the process of creating a random sample\. The preceding GIF shows the steps used in the procedure\.
+
+To take a random sample from your data\.
+
+1. Choose the **\+** to the right of the dataset that you've imported\. The name of your dataset is located below the **\+**\.
+
+1. Choose **Add transform**\.
+
+1. Choose **Sampling**\.
+
+1. For **Sampling method**, choose the sampling method\.
+
+1. For **Approximate sample size**, choose the approximate number of observations that you want in your sample\.
+
+1. \(Optional\) Specify an integer for **Random seed** to create a reproducible sample\.
+
+The following procedure describes the process of creating a stratified sample\.
+
+To take a stratified sample from your data\.
+
+1. Choose the **\+** to the right of the dataset that you've imported\. The name of your dataset is located below the **\+**\.
+
+1. Choose **Add transform**\.
+
+1. Choose **Sampling**\.
+
+1. For **Sampling method**, choose the sampling method\.
+
+1. For **Approximate sample size**, choose the approximate number of observations that you want in your sample\.
+
+1. For **Stratify column**, specify the name of the column that you want to stratify on\.
+
+1. \(Optional\) Specify an integer for **Random seed** to create a reproducible sample\.
 
 ## Search and Edit<a name="data-wrangler-transform-search-edit"></a>
 

@@ -15,9 +15,9 @@ You perform the following steps to add the SageMaker image to your current domai
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1. From the top left of the navigation pane, choose **Amazon SageMaker Studio**\.
+1. From the top left of the navigation pane, choose **Control Panel**\.
 
-1. From the Studio Control Panel, under **Studio Summary**, find the **Studio ID**, which is also your `DomainId`\. The ID is in the following format: `d-xxxxxxxxxxxx`\.  
+1. From the **Control Panel**, under **Domain**, find the `DomainId`\. The ID is in the following format: `d-xxxxxxxxxxxx`\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-byoi-id.png)
 
 1. Use the domain ID to get the description of the domain\.

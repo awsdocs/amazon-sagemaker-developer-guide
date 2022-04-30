@@ -18,4 +18,4 @@ To use AWS SSO authentication, you must belong to an AWS SSO organization\. If y
 
 1. To add more users, repeat steps 4 through 6\.
 
-Return to the **SageMaker Domain** Control Panel to continue to onboard using AWS SSO authentication\.
+Return to the **Control Panel** to continue to onboard using AWS SSO authentication\.

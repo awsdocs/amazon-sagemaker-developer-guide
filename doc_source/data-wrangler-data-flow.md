@@ -4,9 +4,53 @@ Use an Amazon SageMaker Data Wrangler flow, or a *data flow*, to create and modi
 
 ## Instances<a name="data-wrangler-data-flow-instances"></a>
 
-When you create a Data Wrangler flow in Amazon SageMaker Studio, Data Wrangler uses an ml\.m5\.4xlarge instance\.
+When you create a Data Wrangler flow in Amazon SageMaker Studio, Data Wrangler uses an Amazon EC2 instance to run the analyses and transformations in your flow\. By default, Data Wrangler uses the m5\.4xlarge instance\. m5 instances are general purpose instances that provide a balance between compute and memory\. You can use m5 instances for a variety of compute workloads\.
 
-When you export your data using an Amazon SageMaker processing job, you can use one of the following instances\. For more information on exporting your data, see [Export](data-wrangler-data-export.md)\.
+Data Wrangler also gives you the option of using r5 instances\. r5 instances are designed to deliver fast performance that process large datasets in memory\.
+
+We recommend that you choose an instance that is best optimized around your workloads\. For example, the r5\.8xlarge might have a higher price than the m5\.4xlarge, but the r5\.8xlarge might be better optimized for your workloads\. With better optimized instances, you can run your data flows in less time at lower cost\.
+
+The following table shows the instances that you can use to run your Data Wrangler flow\.
+
+
+| Standard Instances | vCPU | Memory | 
+| --- | --- | --- | 
+| ml\.m5\.4xlarge | 16 | 64 GiB | 
+| ml\.m5\.8xlarge | 32 | 128 GiB | 
+| ml\.m5\.16xlarge | 64 |  256 GiB  | 
+| ml\.m5\.24xlarge | 96 | 384 GiB | 
+| r5\.4xlarge | 16 | 128 GiB | 
+| r5\.8xlarge | 32 | 256 GiB | 
+| r5\.24xlarge | 96 | 768 GiB | 
+
+For more information about r5 instances, see [Amazon EC2 R5 Instances](http://aws.amazon.com/ec2/instance-types/r5/)\. For more information about m5 instances, see [Amazon EC2 M5 Instances](http://aws.amazon.com/ec2/instance-types/m5/)\.
+
+Each Data Wrangler flow has an EC2 instance associated with it\. You might have multiple flows that are associated with a single instance\.
+
+For each flow file, you can seamlessly switch the instance type\. If you switch the instance type, the instance that you used to run the flow continues to run\.
+
+To switch the instance type of your flow, do the following\.
+
+1. Navigate to the instance that you're currently using and choose it\. The following image shows you where to choose the instance\.  
+![\[\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/instance-switching-choose-instance.png)
+
+1. Choose the instance type that you want to use\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/data-wrangler-instance-switching-list-instances.png)
+
+1. Choose **Save**\.
+
+You are charged for all running instances\. To avoid incurring additional charges, shut down the instances that you aren't using manually\. To shut down an instance that is running, use the following procedure\. 
+
+To shut down a running instance\.
+
+1. Choose the instance icon on the left of the UI\. The following image shows you where to select the **RUNNING INSTANCES** icon\.  
+![\[\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/instance-switching-running-instances.png)
+
+1. Choose the **Shut down** button next to the instance that you want to shut down\.
+
+If you shut down an instance used to run a flow, you can't access the flow temporarily\. If you get an error in opening the flow running an instance you previously shut down, wait for roughly five minutes and try opening it again\.
+
+When you export your data flow to a location such as Amazon Simple Storage Service or Amazon SageMaker Feature Store, Data Wrangler runs an Amazon SageMaker processing job\. You can use one of the following instances for the processing job\. For more information on exporting your data, see [Export](data-wrangler-data-export.md)\.
 
 
 | Standard Instances | vCPU | Memory | 

@@ -1,6 +1,6 @@
 # Import<a name="data-wrangler-import"></a>
 
-You can use Amazon SageMaker Data Wrangler to import data from the following *data sources*: Amazon Simple Storage Service \(Amazon S3\), Amazon Athena, Amazon Redshift, and Snowflake\.
+You can use Amazon SageMaker Data Wrangler to import data from the following *data sources*: Amazon Simple Storage Service \(Amazon S3\), Amazon Athena, Amazon Redshift, and Snowflake\. The dataset that you import can include up to 1000 columns\.
 
 **Topics**
 + [Import data from Amazon S3](#data-wrangler-import-s3)
@@ -13,6 +13,8 @@ You can use Amazon SageMaker Data Wrangler to import data from the following *da
 Some data sources allow you to add multiple *data connections*:
 + You can connect to multiple Amazon Redshift clusters\. Each cluster becomes a data source\. 
 + You can query any Athena database in your account to import data from that database\.
+
+
 
 When you import a dataset from a data source, it appears in your data flow\. Data Wrangler automatically infers the data type of each column in your dataset\. To modify these types, select the **Data types** step and select **Edit data types**\.
 
@@ -33,8 +35,6 @@ Data Wrangler uses [S3 Select](http://aws.amazon.com/s3/features/#s3-select) to 
 **Important**  
 If you plan to export a data flow and launch a Data Wrangler job, ingest data into a SageMaker feature store, or create a SageMaker pipeline, be aware that these integrations require Amazon S3 input data to be located in the same AWS region\.
 
-In Data Wrangler, you can use the Amazon S3 import functionality to browse all the S3 buckets in your AWS account and import files with the following formats:
-
 **Important**  
 If you're importing a CSV file, make sure it meets the following requirements:  
 A record in your dataset can't be longer than one line\.
@@ -46,6 +46,13 @@ Semicolon – `;`
 Pipe – `|`
 Tab – `[TAB]`
 To save space, you can import compressed CSV files\.
+
+Data Wrangler gives you the ability to either import the entire dataset or sample a portion of it\. It provides the following sampling options:
++ None – Import the entire dataset\.
++ First K – Sample the first K rows of the dataset, where K is an integer that you specify\.
++ Randomized – Takes a random sample of a size that you specify\.
+
+After you've imported your data, you can also use the sampling transformer to take one or more samples from your entire dataset\. For more information about the sampling transformer, see [Sampling](data-wrangler-transform.md#data-wrangler-transform-sampling)\.
 
 You can import either a single file or multiple files as a dataset\. You can use the multifile import operation when you have a dataset that is partitioned into separate files\. It takes all of the files from an Amazon S3 directory and imports them as a single dataset\. For information on the types of files that you can import and how to import them, see the following\.
 
@@ -80,7 +87,7 @@ You can import a dataset that you've partitioned into multiple files in an Amazo
 
 1. In the **Details** pane, verify or change the **Name** and **File Type** for your dataset\. If you add a **Name** that contains spaces, these spaces are replaced with underscores when your dataset is imported\. 
 
-1. **Enable sampling** is selected by default\. If you do not uncheck this box, Data Wrangler will sample and import up to 100 MB of data\. To turn off sampling, uncheck this check box\. 
+1. Specify the sampling configuration that you'd like to use\. 
 
 1. Choose **Import dataset**\.
 
@@ -123,7 +130,7 @@ Use the following procedure to import multiple files\.
 
 1. In the **Details** pane, verify or change the **Name** and **File Type** for your dataset\. If you add a **Name** that contains spaces, these spaces are replaced with underscores when your dataset is imported\. 
 
-1. **Enable sampling** is selected by default\. If you do not uncheck the box, Data Wrangler will sample and import up to 100 MB of data\. To turn off sampling, uncheck the check box\. 
+1. Specify the sampling configuration that you'd like to use\. 
 
 1. Choose **Import dataset**\.
 

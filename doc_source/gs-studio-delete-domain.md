@@ -4,7 +4,7 @@ When you onboard to Amazon SageMaker Domain using IAM authentication, Amazon Sag
 
 Your files are kept in the Amazon EFS volume as a backup\. This backup includes the files in the mounted directory, which is `/home/sagemaker-user` for Jupyter and `/root` for your kernel\. When you delete files from these mounted directories, the kernel or app may move the deleted files into a hidden trash folder\. If the trash folder is inside the mounted directory, those files are copied into the Amazon EFS volume and will incur charges\. To avoid these Amazon EFS charges, you must identify and clean the trash folder location\. The trash folder location for default apps and kernels is `~/.local/`\. This may vary depending on the Linux distribution used for custom apps or kernels\. For more information about the Amazon EFS volume, see [Manage Your EFS Storage Volume in SageMaker Studio](studio-tasks-manage-storage.md)\.
 
-To return Amazon SageMaker to the state it was in before you onboarded, you must delete this domain\. You can delete the domain by using the Amazon SageMaker Domain Control Panel, the AWS Command Line Interface \(AWS CLI\), or the SageMaker SDK\. When you use the Amazon SageMaker Domain Control Panel to delete the domain, the Amazon EFS volume is detached but not deleted\. The same behavior occurs by default when you use the AWS CLI or the SDK to delete the domain\. However, when you use the AWS CLI or the SDK, you can set the `RetentionPolicy` to `HomeEfsFileSystem=Delete` to delete the EFS volume along with the domain\.
+To return Amazon SageMaker to the state it was in before you onboarded, you must delete this domain\. You can delete the domain by using the AWS console, the AWS Command Line Interface \(AWS CLI\), or the SageMaker SDK\. When you use the AWS console to delete the domain, the Amazon EFS volume is detached but not deleted\. The same behavior occurs by default when you use the AWS CLI or the SDK to delete the domain\. However, when you use the AWS CLI or the SDK, you can set the `RetentionPolicy` to `HomeEfsFileSystem=Delete` to delete the EFS volume along with the domain\.
 
 You must delete the domain if you want to switch authentication modes from IAM to AWS SSO\.
 
@@ -29,7 +29,7 @@ You can only delete an app whose status is `InService`, which is displayed as **
 
 1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Choose **SageMaker Domain** on the left side of the page to open the **SageMaker Domain Control Panel**\.
+1. Choose **Control Panel** on the left side of the page\.
 
 1. Repeat the following steps for each user in the **User name** list\.
 

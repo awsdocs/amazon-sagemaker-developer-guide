@@ -15,11 +15,11 @@ You can access an SageMaker Studio notebook in any of the following ways:
 
 1. Open the SageMaker [console](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Choose **Amazon SageMaker Studio**\.
+1. Choose **Control Panel**\.
 
-1. The Amazon SageMaker Studio Control Panel opens\.
+1. The **Control Panel** opens\.
 
-1. In the Amazon SageMaker Studio Control Panel, you'll see a list of user names\.
+1. In the **Control Panel**, you'll see a list of user names\.
 
    Next to your user name, choose **Open Studio**\.
 

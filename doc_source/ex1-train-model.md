@@ -119,7 +119,7 @@ You can also tune the hyperparameters using the SageMaker hyperparameter optimiz
    Run the following code to specify the S3 bucket URI where the Debugger training reports are generated and check if the reports exist\.
 
    ```
-   rule_output_path = xgb_model.output_path + "/" + xgb_model.latest_training_job.name + "/rule-output"
+   rule_output_path = xgb_model.output_path + "/" + xgb_model.latest_training_job.job_name + "/rule-output"
    ! aws s3 ls {rule_output_path} --recursive
    ```
 

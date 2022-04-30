@@ -31,7 +31,7 @@ You can also create your own custom IAM policies to allow permissions for Amazon
 
 ## `AmazonSageMakerFullAccess`<a name="security-iam-awsmanpol-AmazonSageMakerFullAccess"></a>
 
-This policy grants administrative permissions that allow a principal full access to all Amazon SageMaker resources and operations\. The policy also provides select access to related services\. This policy allows all IAM roles to be passed to Amazon SageMaker, but only allows IAM roles with "AmazonSageMaker" in them to be passed to the AWS Glue, AWS Step Functions, and AWS RoboMaker services\.
+This policy grants administrative permissions that allow a principal full access to all Amazon SageMaker resources and operations\. The policy also provides select access to related services\. This policy allows all IAM roles to be passed to Amazon SageMaker, but only allows IAM roles with "AmazonSageMaker" in them to be passed to the AWS Glue, AWS Step Functions, and AWS RoboMaker services\. This policy does not include permissions to create an Amazon SageMaker domain\. For information on the policy needed to create a domain, see [Create an IAM Administrator User and Group ](gs-set-up.md#gs-account-user)\.
 
 **Permissions details**
 

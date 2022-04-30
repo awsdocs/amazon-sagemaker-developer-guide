@@ -15,15 +15,7 @@ For more information, see [SageMaker Training Compiler containers](https://githu
 
 ## AWS Regions<a name="training-compiler-availablity-zone"></a>
 
-The SageMaker Training Compiler integrated Hugging Face Deep Learning Containers are available in the following AWS Regions\.
-
-
-| AWS Region | Region code | 
-| --- | --- | 
-|  Europe \(Ireland\) Region |  eu\-west\-1 | 
-|  US East \(N\. Virginia\) Region |  us\-east\-1 | 
-|  US East \(Ohio\) Region |  us\-east\-2 | 
-|  US West \(Oregon\) Region |  us\-west\-2 | 
+The [SageMaker Training Compiler Containers](https://github.com/aws/deep-learning-containers/blob/master/available_images.md#sagemaker-training-compiler-containers) are available in the AWS Regions where [AWS Deep Learning Containers](https://github.com/aws/deep-learning-containers/blob/master/available_images.md) are in service except the China regions\.
 
 ## Tested Instance Types<a name="training-compiler-supported-instance-types"></a>
 
