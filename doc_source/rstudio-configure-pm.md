@@ -6,7 +6,7 @@ RStudio Package Manager is a repository management server used to organize and c
 
 You can update the Package Manager URL used for your RStudio\-enabled Domain as follows\.
 
-1.  Navigate to the Amazon SageMaker Domain Control Panel\.
+1.  Navigate to the **Control Panel**\.
 
 1.  Under Domain, select **Edit Settings**\. This opens a new page\. 
 

@@ -10,7 +10,7 @@ For information on how to onboard using AWS Single Sign\-On \(AWS SSO\), see [On
 
 1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Choose **SageMaker Domain** at the top left of the page\.
+1. Choose **Control Panel** at the top left of the page\.
 
 1. On the **Setup SageMaker Domain** page, choose **Quick setup**\.
 
@@ -44,13 +44,13 @@ Now that you've onboarded to SageMaker Studio, use the following steps to access
 
 1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Choose **SageMaker Domain** at the top left of the page\.
+1. Choose **Control Panel** at the top left of the page\.
 
-1. On the ****SageMaker Domain** Control Panel**, choose your user name and then choose **Launch app**\. Select **Studio**\.
+1. On the **Control Panel**, choose your user name and then choose **Launch app**\. Select **Studio**\.
 
 **To add more users**
 
-1. On the ****SageMaker Domain** Control Panel**, choose **Add user**\.
+1. On the **Control Panel**, choose **Add user**\.
 
 1. Repeat steps 4 and 5 from the first procedure, "To onboard to Amazon SageMaker Domain using Quick setup\."
 

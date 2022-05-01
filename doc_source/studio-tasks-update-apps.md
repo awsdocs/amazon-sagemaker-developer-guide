@@ -5,11 +5,13 @@ To update an Amazon SageMaker Studio app to the latest release, you must first s
 **Note**  
 A KernelGateway app is associated with a single Studio user\. When you update the app for one user it doesn't effect other users\.
 
-**To shut down the KernelGateway app**
+**To update the KernelGateway app**
 
 1. Navigate to [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Choose your user name\.
+1. Choose **Control panel**\.
+
+1. Under **Users**, select your user name\.
 
 1. Under **Apps**, in the row displaying the **App name**, choose **Delete app**\. 
 
@@ -20,3 +22,5 @@ A KernelGateway app is associated with a single Studio user\. When you update th
 1. Type **delete** in the confirmation box\.
 
 1. Choose **Delete**\.
+
+1. After the app has been deleted, launch a new kernel from within Studio to use the latest version\.

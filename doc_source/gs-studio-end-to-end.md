@@ -15,7 +15,7 @@ To run the notebook for this tour, you need:
 
    1. Sign in to the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-   1. Choose **SageMaker Domain** in the left navigation pane\.
+   1. Choose **Control Panel** in the left navigation pane\.
 
    1. Choose **Launch app** in the row next to your user name\.
 

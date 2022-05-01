@@ -10,7 +10,7 @@ You must satisfy the [ prerequisites](https://docs.aws.amazon.com/sagemaker/late
  After you have satisfied the [ prerequisites](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-deployment-hosting-services-prerequisites), use the following steps to deploy a model compiled with Neo: 
 
 1. Choose **Models**, and then choose **Create models** from the **Inference** group\. On the **Create model** page, complete the **Model name**,** IAM role**, and **VPC** fields \(optional\), if needed\.  
-![\[Create Neo model for inference\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/neo-deploy-console-create-inference-model.png)
+![\[Create Neo model for inference\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/create-pipeline-model.png)
 
 1. To add information about the container used to deploy your model, choose **Add container** container, then choose **Next**\. Complete the **Container input options**, **Location of inference code image**, and **Location of model artifacts**, and optionally, **Container host name**, and **Environmental variables** fields\.  
 ![\[Create Neo model for inference\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/neo-deploy-console-container-definition.png)

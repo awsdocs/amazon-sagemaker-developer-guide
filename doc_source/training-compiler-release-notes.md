@@ -2,6 +2,11 @@
 
 See the following release notes to track the latest updates for Amazon SageMaker Training Compiler\.
 
+## SageMaker Training Compiler Release Notes: April 26, 2022<a name="training-compiler-release-notes-20220426"></a>
+
+**Improvements**
++ Added support for all of the AWS Regions where [AWS Deep Learning Containers](https://github.com/aws/deep-learning-containers/blob/master/available_images.md) are in service except the China regions\.
+
 ## SageMaker Training Compiler Release Notes: April 12, 2022<a name="training-compiler-release-notes-20220412"></a>
 
 **Currency Updates**

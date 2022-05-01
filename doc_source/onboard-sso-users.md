@@ -6,9 +6,9 @@ This topic describes how to onboard to Amazon SageMaker Domain using AWS SSO aut
 
 1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Choose **SageMaker Domain** at the top left of the page\.
+1. Choose **Control Panel** at the top left of the page\.
 
-1. On the **SageMaker Domain** page, under **Choose setup method**, choose **Standard setup**\.
+1. On the **Control Panel** page, under **Choose setup method**, choose **Standard setup**\.
 
 1. Select **Configure**\.
 
@@ -100,7 +100,7 @@ After you are given access to the Domain, you are sent an email inviting you to 
 
 After you activate your account, go to the Domain URL, sign in, and wait for your user profile to be created\. On subsequent visits, you only need to wait for the Studio or RStudio app to load\.
 
-Bookmark the URL\. The URL is also available in the **SageMaker Domain** Control Panel\.
+Bookmark the URL\. The URL is also available in the **Control Panel**\.
 
 For information about using SageMaker Studio, see [SageMaker Studio](studio.md)\.
 

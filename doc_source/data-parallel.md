@@ -14,6 +14,7 @@ For more information about training with a model\-parallel strategy, see [SageMa
 
 **Topics**
 + [Introduction to SageMaker's Distributed Data Parallel Library](data-parallel-intro.md)
++ [Supported Frameworks, AWS Regions, and Instances Types](distributed-data-parallel-support.md)
 + [Run a SageMaker Distributed Training Job with Data Parallelism](data-parallel-modify-sdp.md)
 + [SageMaker Distributed Data Parallel Configuration Tips and Pitfalls](data-parallel-config.md)
 + [Amazon SageMaker Data Parallel Library FAQ](data-parallel-faq.md)

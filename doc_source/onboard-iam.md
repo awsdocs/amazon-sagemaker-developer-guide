@@ -8,7 +8,7 @@ For information on how to onboard using AWS Single Sign\-On \(AWS SSO\), see [On
 
 1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Choose **SageMaker Domain** at the top left of the page\.
+1. Choose **Control Panel** at the top left of the page\.
 
 1. On the **Setup SageMaker Domain** page, choose **Standard setup**\.
 
@@ -96,9 +96,9 @@ Now that you've onboarded to the **SageMaker Domain**, use the following steps t
 
 1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Choose **SageMaker Domain** at the top left of the page\.
+1. Choose **Control Panel** at the top left of the page\.
 
-1. On the ****SageMaker Domain** Control Panel**, choose your user name and then choose **Launch app**\. Select either Studio or RStudio\.
+1. On the **Control Panel**, choose your user name and then choose **Launch app**\. Select either Studio or RStudio\.
 
 For information about using SageMaker Studio, see [SageMaker Studio](studio.md)\.
 

@@ -23,7 +23,7 @@ The following procedure shows how to add users to a Amazon SageMaker Domain crea
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1.  Navigate to the **Amazon SageMaker Domain Control Panel**\.
+1.  Navigate to the **Control Panel**\.
 
 1. Select **Add user**\. This opens a new **User Settings** page\.
 
@@ -50,7 +50,7 @@ The following procedure shows how to add users to a Amazon SageMaker Domain crea
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1.  Navigate to the **Amazon SageMaker Domain Control Panel**\.
+1.  Navigate to the **Control Panel**\.
 
 1.  Select **Assign users and groups**\. This opens a new Assign users and groups page\. 
 
@@ -88,7 +88,7 @@ You cannot update the authorization of an existing user\. You must delete the ex
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1.  Navigate to the **Amazon SageMaker Domain Control Panel**\.
+1.  Navigate to the **Control Panel**\.
 
 1.  Select a user name from the list of users\. This opens a new page with details about the user profile and the apps that are running\. 
 

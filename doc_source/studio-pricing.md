@@ -1,6 +1,6 @@
 # Amazon SageMaker Studio Pricing<a name="studio-pricing"></a>
 
-When the first member of your team onboards to Amazon SageMaker Studio, Amazon SageMaker creates an Amazon Elastic File System \(Amazon EFS\) volume for the team\. In the SageMaker Studio Control Panel, when the Studio **Status** displays as `Ready`, the Amazon EFS volume has been created\.
+When the first member of your team onboards to Amazon SageMaker Studio, Amazon SageMaker creates an Amazon Elastic File System \(Amazon EFS\) volume for the team\. In the SageMaker Control Panel, when the Studio **Status** displays as `Ready`, the Amazon EFS volume has been created\.
 
 When this member, or any member of the team, opens Studio, a home directory is created in the volume for the member\. A storage charge is incurred for this directory\. Subsequently, additional storage charges are incurred for the notebooks and data files stored in the member's home directory\. For pricing information on Amazon EFS, see [Amazon EFS Pricing](http://aws.amazon.com/efs/pricing/)\.
 

@@ -8,7 +8,7 @@ When you onboard to RStudio on Amazon SageMaker Domain, an RStudio Connect serve
 
 If you have an RStudio Connect URL, you can update the default URL so that your RStudio Users can publish to it\. 
 
-1.  Navigate to the Amazon SageMaker Domain Control Panel\. 
+1.  Navigate to the **Control Panel**\. 
 
 1.  Under Domain, choose **Edit Settings**\. This opens a new page\. 
 

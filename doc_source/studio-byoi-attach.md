@@ -14,9 +14,9 @@ The steps to create an image and image version are the same whether you use the 
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1. In the left navigation pane, choose **Studio**\.
+1. In the left navigation pane, choose **Control Panel**\.
 
-1. On the **SageMaker Domain panel**, under **Custom SageMaker Studio images attached to domain**, choose **Attach image**\.
+1. On the **Control Panel**, under **Custom SageMaker Studio images attached to domain**, choose **Attach image**\.
 
 1. For **Image source**, choose **Existing image**\.
 
@@ -56,7 +56,7 @@ A running notebook that has a kernel session on an image version when the versio
 
 **To detach an image**
 
-1. In the SageMaker Studio control panel, under **Custom images attached to domain**, choose the image and then choose **Detach**\.
+1. In the **Control Panel**, under **Custom SageMaker Studio images attached to domain**, choose the image and then choose **Detach**\.
 
 1. \(Optional\) To delete the image and all versions from SageMaker, select **Also delete the selected images \.\.\.**\. This does not delete the associated container images from Amazon ECR\.
 
