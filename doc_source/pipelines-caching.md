@@ -9,9 +9,13 @@ You must opt in to step caching, otherwise it is off by default\. When you enabl
 Step caching is only scoped for individual pipelines, so you can’t reuse a step from another pipeline\. Even if there is a step signature match in the other pipeline, the step is not reused\.
 
 Step caching is available for the following step types: 
-+ Training 
-+ Processing 
-+ Transform 
++ [Processing](build-and-manage-steps.md#step-type-processing)
++ [Training](build-and-manage-steps.md#step-type-training)
++ [Tuning](build-and-manage-steps.md#step-type-tuning)
++ [Transform](build-and-manage-steps.md#step-type-transform)
++ [`ClarifyCheck`](build-and-manage-steps.md#step-type-clarify-check)
++ [`QualityCheck`](build-and-manage-steps.md#step-type-quality-check)
++ [EMR](build-and-manage-steps.md#step-type-emr)
 
 ## Enabling Step Caching<a name="pipelines-caching-enabling"></a>
 

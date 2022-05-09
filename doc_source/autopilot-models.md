@@ -9,7 +9,7 @@ This procedure describes how to view details about Amazon SageMaker Autopilot jo
 This topic assumes that you have already created and run an Autopilot experiment\. For information on how to create an Autopilot experiment, see [Create an Amazon SageMaker Autopilot experiment](autopilot-automate-model-development-create-experiment.md) 
 
 **Note**  
-To access the feature importance metrics in this procedure, you must first select File > Shut down, and then restart Studio from the Console\.
+To access the feature importance metrics in this procedure, you must first select **File > Shut down**, and then restart Studio from the console\.
 
 1. To view model details after running an Amazon SageMaker Autopilot job, select the triangular icon from the menu on the left to open the **Components and registries** page\.  
 ![\[Open the Components and registries page.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-models-details-generated-1.PNG)
@@ -17,16 +17,16 @@ To access the feature importance metrics in this procedure, you must first selec
 1. Select **Experiments and trials** from the dropdown menu\.  
 ![\[Open the Components and registries page.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-models-details-generated-2.PNG)
 
-1. Locate the Autopilot job whose details you want to examine in the **Unassigned trial components** list   
+1. Locate the Autopilot job whose details that you want to examine in the **Unassigned trial components** list\.   
 ![\[Locate the Autopilot job.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-models-details-generated-3.PNG)
 
-1. Right\-click the name of the Autopilot job and select **Describe AutoML Job** from the pop up menu\.  
+1. Right\-click the name of the Autopilot job and select **Describe AutoML Job** from the pop\-up menu\.  
 ![\[Select Describe AutoML Job.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-models-details-generated-4.PNG)
 
-   To review the Objective: F1\_binary, F1, AUC, and Accuracy metrics for an AutoML job, select that AutoML job from the **Experiments** panel\.  
+   To review the Objective: F1\_binary, F1, AUC, and accuracy metrics for an AutoML job, select that AutoML job from the **Experiments** panel\.  
 ![\[Select Describe AutoML Job.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-model-metrics-report.png)
 
-1. To review the model details for the best tuning job, right\-click the **Trial name** labeled as the **Best** at the top of the list of trials that has the highest objective metric score and select **Open Model Details**\.  
+1. To review the model details for the best tuning job, right\-click the **Trial name** labeled as the **Best** at the top of the list of trials that has the highest objective metric score\. After that, select **Open Model Details**\.  
 ![\[Select Describe AutoML Job.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-models-details-generated-6.PNG)
 
 1. The plot of the aggregated SHAP values that indicate the importance of each feature is displayed in the **Explaining your model's predictions** section\.  

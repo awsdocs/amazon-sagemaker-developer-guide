@@ -24,9 +24,9 @@ You can also create your own custom IAM policies to allow permissions for Amazon
 **Topics**
 + [`AmazonSageMakerFullAccess`](#security-iam-awsmanpol-AmazonSageMakerFullAccess)
 + [`AmazonSageMakerReadOnly`](#security-iam-awsmanpol-AmazonSageMakerReadOnly)
-+ [AWS Managed Policies for SageMaker projects and JumpStart](security-iam-awsmanpol-sc.md)
-+ [AWS Managed Policies for SageMaker Pipelines](security-iam-awsmanpol-pipelines.md)
 + [AWS Managed Policies for Amazon SageMaker Ground Truth](security-iam-awsmanpol-ground-truth.md)
++ [AWS Managed Policies for SageMaker Pipelines](security-iam-awsmanpol-pipelines.md)
++ [AWS Managed Policies for SageMaker projects and JumpStart](security-iam-awsmanpol-sc.md)
 + [SageMaker Updates to AWS Managed Policies](#security-iam-awsmanpol-updates)
 
 ## `AmazonSageMakerFullAccess`<a name="security-iam-awsmanpol-AmazonSageMakerFullAccess"></a>

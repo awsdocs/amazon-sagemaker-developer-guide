@@ -38,7 +38,7 @@ You can increase these limits by contacting Support\.
 
 ## Resource quotas<a name="autopilot-quotas-resource-limits"></a>
 
-The following table contains the runtime resource limits for an Amazon SageMaker Autopilot job in an AWS region\.
+The following table contains the runtime resource limits for an Amazon SageMaker Autopilot job in an AWS Region\.
 
 
 **Resource limits per Autopilot job**  
