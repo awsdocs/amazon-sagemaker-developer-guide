@@ -14,11 +14,11 @@ Attempt to resolve your error by the going through these sections in the followi
 
 1. Check that the input of your compilation job satisfies the input requirements\. See [What input data shapes does SageMaker Neo expect?](neo-compilation-preparing-model.md#neo-job-compilation-expected-inputs)
 
-1.  Check common [framework\-specific errors](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-troubleshooting.html#neo-troubleshooting-compilation-framework-related-errors)\. 
+1.  Check common [framework\-specific errors](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-troubleshooting-compilation.html#neo-troubleshooting-compilation-framework-related-errors)\. 
 
-1.  Check if your error is an [infrastructure error](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-troubleshooting.html#neo-troubleshooting-compilation-infrastructure-errors)\. 
+1.  Check if your error is an [infrastructure error](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-troubleshooting-compilation.html#neo-troubleshooting-compilation-infrastructure-errors)\. 
 
-1. Check your [compilation log](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-troubleshooting.html#neo-troubleshooting-compilation-logs)\.
+1. Check your [compilation log](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-troubleshooting-compilation.html#neo-troubleshooting-compilation-logs)\.
 
 ## Framework\-Related Errors<a name="neo-troubleshooting-compilation-framework-related-errors"></a>
 

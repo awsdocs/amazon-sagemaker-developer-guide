@@ -16,6 +16,8 @@ Amazon SageMaker Canvas predicts the value of the **Target column** by using the
 
 The **Build model** page shows a preview of 100 rows in your dataset\. The preview is the first 100 rows of a random sample of 20,000 rows in your dataset\. You can choose a column in the preview to get summary statistics for the random sample, such as the mean and the mode\.
 
+Before building your model, you can filter your data or prepare it using advanced transforms\. For more information about preparing your data for model building, see [Prepare data with advanced transformations](canvas-prepare-data.md)\.
+
 To build your model, you can choose either a **Quick build** or a **Standard build**\. The **Quick build** usually takes 2\-15 minutes to build the model, whereas the **Standard build** usually takes 2\-4 hours and generally has a higher accuracy\.
 
 While Amazon SageMaker Canvas builds the model, it automatically adds missing values for datasets that don't have time series data\. SageMaker Canvas uses the values in your dataset to perform a mathematical approximation for the missing values\. For the highest model accuracy, we recommend adding in the missing data if you can find it\.

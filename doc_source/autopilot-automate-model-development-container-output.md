@@ -4,44 +4,44 @@ Amazon SageMaker Autopilot generates an ordered [https://docs.aws.amazon.com/sag
 
 **Topics**
 + [Inference container definitions for regression and classification problem types](#autopilot-problem-type-container-output)
-+ [Select inference response for classification models](#autopilot-classification-container-inference-response)
++ [Select inference responses for classification models](#autopilot-classification-container-inference-response)
 
 ## Inference container definitions for regression and classification problem types<a name="autopilot-problem-type-container-output"></a>
 
 The inference containers generated depend on the problem type of the job\.
-+ **Regression**: generates two containers:
++ **Regression**: Generates two containers:
 
   1. First is the feature engineering container that transforms the original features to features that the regression algorithms can train on\.
 
   1. Second is the algorithm container that transforms features and generates the regression score for the dataset\.
-+ **Classification**: generates three containers:
++ **Classification**: Generates three containers:
 
-  1. First is the feature engineering container that transforms the original features to features that the classification algorithms can train on\.
+  1. The feature engineering container that transforms the original features to features that the classification algorithms can train on\.
 
-  1. Second is the algorithm container that generates the winning `predicted_label` and that can also produce the various probabilities associated with the classification outcomes in the inference response\.
+  1. The algorithm container that generates the winning `predicted_label`\. It can also produce the various probabilities associated with the classification outcomes in the inference response\.
 
-  1. Third is a feature engineering container that performs post\-processing of the algorithm prediction, for example, an inverse transform of the predicted label to original label\.
+  1. A feature engineering container that performs post\-processing of the algorithm prediction\. For example, an inverse transform of the predicted label to original label\.
 
-## Select inference response for classification models<a name="autopilot-classification-container-inference-response"></a>
+## Select inference responses for classification models<a name="autopilot-classification-container-inference-response"></a>
 
-Classification inference containers allow you to select the content of the inference responses\. There are four predefined keys:
+With classification inference containers, you can select the content of the inference responses\. There are four predefined keys:
 + `predicted_label`: The winning label determined by Autopilot\.
 + `probability`: The probability of the `True` class for binary classification\. The probability of winning class for multiclass classification\.
-+ `probabilities`: The list of probabilities for all corresponding labels\.
++ `probabilities`: The list of probabilities for all corresponding \.
 + `labels`: List of all labels
 
 By default, inference containers are configured to generate `predicted_label` only\.
 
 Three environment variables are used to select the optional inference content:
 + `SAGEMAKER_INFERENCE_SUPPORTED`: this is set to provide hints to you about what content each container supports\.
-+ `SAGEMAKER_INFERENCE_INPUT`: should be set to the keys that the container expects in its input payload\.
++ `SAGEMAKER_INFERENCE_INPUT`: should be set to the keys that the container expects in input payload\.
 + `SAGEMAKER_INFERENCE_OUTPUT`: should be populated with the set of keys the container outputs\.
 
 In order to choose the inference response content, we need to add the `SAGEMAKER_INFERENCE_INPUT`, `SAGEMAKER_INFERENCE_OUTPUT` appropriately in the second and the third containers in the list of containers for classification problem\.
 
 The keys supported by the third classification model container are `predicted_label`, `labels`, `probability` and `probabilities` Hence the `SAGEMAKER_INFERENCE_SUPPORTED` environment includes the names of all these keys\.
 
-The keys supported by the second container \(Algorithm\) are predicted\_label, probability and probabilities\. Note that the `labels` is deliberately not added to the SAGEMAKER\_INFERENCE\_SUPPORTED\. 
+The keys supported by the second container \(Algorithm\) are predicted\_label, probability, and probabilities\. Note that the `labels` is deliberately not added to the SAGEMAKER\_INFERENCE\_SUPPORTED\. 
 
 Here is how to update the definition of the inference containers to receive `predicted_label` and `probability`\. 
 
@@ -51,7 +51,7 @@ containers[2]['Environment'].update({'SAGEMAKER_INFERENCE_INPUT': 'predicted_lab
 containers[2]['Environment'].update({'SAGEMAKER_INFERENCE_OUTPUT': 'predicted_label, probability'})
 ```
 
-Here is how to update the definition of the inference containers to receive `predicted_label` and `probabilities` and `labels`\. Note that you do not need to pass the `labels` to the second container, the algorithm container, as it’s redundant and can be generated by the third container independently\. This reduces the latency\.
+Here is how to update the definition of the inference containers to receive `predicted_label` and `probabilities` and `labels`\. Note that you do not need to pass the `labels` to the second container, the algorithm container\. That is redundant because it can be generated by the third container independently\. This reduces the latency\.
 
 ```
 containers[1]['Environment'].update({'SAGEMAKER_INFERENCE_OUTPUT': 'predicted_label,probabilities'})
@@ -59,7 +59,7 @@ containers[2]['Environment'].update({'SAGEMAKER_INFERENCE_INPUT': 'predicted_lab
 containers[2]['Environment'].update({'SAGEMAKER_INFERENCE_OUTPUT': 'predicted_label, probabilities,labels'})
 ```
 
-You can use the [https://sagemaker.readthedocs.io/en/stable/overview.html](https://sagemaker.readthedocs.io/en/stable/overview.html)\. to accomplish this as follows:
+You can use the [https://sagemaker.readthedocs.io/en/stable/overview.html](https://sagemaker.readthedocs.io/en/stable/overview.html) to accomplish the following:
 
 ```
 from sagemaker import AutoML

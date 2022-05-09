@@ -1,6 +1,6 @@
 # API reference guide for Amazon SageMaker Autopilot<a name="autopilot-reference"></a>
 
-Amazon SageMaker provides API reference documentation that describes all of the REST operations and data types used by Autopilot and a higher level [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) that you can use to create and manage AutoML jobs\. It also provides a command line interface \(CLI\), an AWS SDK for Python \(Boto\) for low\-level clients of SageMaker services, and SDKs for \.NET, C\+\+, Go, Java, JavaScript, PHP V3, and Ruby V3\. The following sections describe these Autopilot programming interfaces\.
+Amazon SageMaker provides API reference documentation that describes all of the REST operations and data types used by Autopilot and a higher\-level level [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) that you can use to create and manage AutoML jobs\. It also provides a command line interface \(CLI\), an AWS SDK for Python \(Boto\) for clients of SageMaker services, and SDKs for \.NET, C\+\+, Go, Java, JavaScript, PHP V3, and Ruby V3\. The following sections describe these Autopilot programming interfaces\.
 
 **Topics**
 + [SageMaker API reference](#autopilot-api-reference)

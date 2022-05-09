@@ -38,7 +38,7 @@ You can create an model package either by using the SageMaker console or by usin
 
 1. From the left menu, choose **Inference**\.
 
-1. Choose **Model packages**, then choose **Create model package**\.
+1. Choose **Marketplace model packages**, then choose **Create marketplace model package**\.
 
 1. On the **Inference specifications** page, provide the following information:
 
@@ -86,7 +86,7 @@ To publish your model package on AWS Marketplace, your model package must be val
       + A name for the validation profile\.
       + A **Transform job definition**\. This is a JSON block that describes a batch transform job\. This is in the same format as the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformJobDefinition.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformJobDefinition.html) input parameter of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAlgorithm.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAlgorithm.html) API\.
 
-1. Choose **Create model package**\.
+1. Choose **Create marketplace model package**\.
 
 ## Create a Model Package Resource \(API\)<a name="sagemaker-mkt-create-model-pkg-api"></a>
 

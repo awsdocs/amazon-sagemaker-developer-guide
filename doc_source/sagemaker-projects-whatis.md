@@ -24,6 +24,8 @@ SageMaker Projects can help you manage your Git repositories so that you can col
 
 Customers have the flexibility to set up their projects with the resources that best serve their use case\. The example below showcases the MLOps setup for an ML workflow, including model training and deployment\.
 
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/projects/projects-ml-workflow.png)
+
 A typical project with a SageMaker\-provided template might include the following:
 + One or more repositories with sample code to build and deploy ML solutions\. These are working examples that you can clone locally and modify for your needs\. You own this code and can take advantage of the version\-controlled repositories for your tasks\.
 + A SageMaker pipeline that defines steps for data preparation, training, model evaluation, and model deployment, as shown in the following diagram\.  

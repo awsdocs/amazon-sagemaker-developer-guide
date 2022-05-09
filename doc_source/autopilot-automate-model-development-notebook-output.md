@@ -8,13 +8,13 @@ Amazon SageMaker Autopilot manages the key tasks in an automatic machine learnin
 + [Autopilot Model Insights](autopilot-model-insights.md)
 
 You can run these notebooks in Amazon SageMaker or locally if you have installed the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\. You can share the notebooks just like any other SageMaker Studio notebook\. The notebooks are created for you to conduct experiments\. For example, you could edit the following items in the notebooks:
-+ the preprocessors used on the data 
-+ the number of hyperparameter optimization \(HPO\) runs and their parallelism
-+ the algorithms to try
-+ the instance types used for the HPO jobs
-+ the hyperparameter ranges
++ Preprocessors used on the data 
++ Amount of hyperparameter optimization \(HPO\) runs and their parallelism
++ Algorithms to try
++ Instance types used for the HPO jobs
++ Hyperparameter ranges
 
-Modifications to the candidate definition notebook are encouraged to be used as a learning tool\. This capability allows you to learn about how the decisions made during the machine learning process impact your results\. 
+Modifications to the candidate definition notebook are encouraged as a learning tool\. With this capability, you learn how the decisions made during the machine learning process impact your results\. 
 
 **Note**  
-When you run the notebooks in your default instance you incur baseline costs, but when you execute HPO jobs from the candidate notebook, these jobs use additional compute resources that incur additional costs\. 
+When you run the notebooks in your default instance, you incur baseline costs\. However, when you run HPO jobs from the candidate notebook, these jobs use additional compute resources that incur additional costs\. 

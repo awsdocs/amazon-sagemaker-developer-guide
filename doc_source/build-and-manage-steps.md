@@ -5,6 +5,7 @@ SageMaker Pipelines are composed of steps\. These steps define the actions that 
 **Topics**
 + [Step Types](#build-and-manage-steps-types)
 + [Step Properties](#build-and-manage-properties)
++ [Step Parallelism](#build-and-manage-parallelism)
 + [Data Dependency Between Steps](#build-and-manage-data-dependency)
 + [Custom Dependency Between Steps](#build-and-manage-custom-dependency)
 + [Use a Custom Image in a Step](#build-and-manage-images)
@@ -622,7 +623,7 @@ You can use the Amazon SageMaker Model Building Pipelines [Amazon EMR](https://d
 The Amazon EMR step requires an `EMRStepConfig` having the Amazon S3 location of the JAR to be used by the Amazon EMR cluster and any arguments to be passed, as well as the Amazon EMR cluster ID\.
 
 **Note**  
-Amazon EMR steps are supported in Amazon SageMaker SDK for Python v2\.73\.0 and Amazon SageMaker Studio v3\.21\.1\. You must update Studio before you use an EMR step or the pipeline DAG will not display\. To update Studio, see [Shut down and Update SageMaker Studio](studio-tasks-update-studio.md)\.
+Amazon EMR steps require that the role passed to your pipeline has additional permissions\. You should attach the [AWS managed policy: AmazonSageMakerPipelinesIntegrations](https://docs.aws.amazon.com/sagemaker/latest/dg/security-iam-awsmanpol-pipelines.html#security-iam-awsmanpol-AmazonSageMakerPipelinesIntegrations) to your pipeline role, or ensure that the role includes the permissions in that policy\.
 Amazon EMR on EKS is not supported\.
 You can only run a EMR step on a cluster that is in one of the following states: `STARTING`, `BOOTSTRAPPING`, `RUNNING`, or `WAITING`\.
 You can have at most 256 EMR steps in `PENDING` on an EMR cluster; EMR steps submitted beyond that limit result in the pipeline execution failing\. You may consider using [Retry Policy for Pipeline Steps](pipelines-retry-policy.md)\.
@@ -630,28 +631,34 @@ You can have at most 256 EMR steps in `PENDING` on an EMR cluster; EMR steps sub
 **Example Create an Amazon EMR step definition that launches a new job on a EMR cluster\.**  
 
 ```
-from sagemaker.workflow.emr_step import EMRStep
+from sagemaker.workflow.emr_step import EMRStep, EMRStepConfig
+
+emr_config = EMRStepConfig(
+    jar="s3://path/to/jar/MyJar.jar", # required, S3 path to jar
+    args=["--verbose", "--force"], # optional list of arguments to pass to the jar
+    main_class="com.my.Main1", # optional main class, this can be omitted if jar above has a manifest 
+    properties=[ # optional list of Java properties that are set when the step runs
+    {
+        "key": "mapred.tasktracker.map.tasks.maximum",
+        "value": "2"
+    },
+    {
+        "key": "mapreduce.map.sort.spill.percent",
+        "value": "0.90"
+   },
+   {
+       "key": "mapreduce.tasktracker.reduce.tasks.maximum",
+       "value": "5"
+    }
+  ]
+)
 
 step_emr = EMRStep (
- name="EMRSampleStep", #required, step Name
- cluster_id="j-1YONHTCP3YZKC", #required, cluster id
- jar="s3://path/to/my/jarfolder", #required, location of the jar to run as a step
- args=["--verbose", "--force"], #optional list of arguments to pass to the jar
- main_class="com.my.Main1", #optional main class, this can be omitted if jar above has a manifest 
- properties=[ #optional list of Java properties that are set when the step runs
- {
- "key": "mapred.tasktracker.map.tasks.maximum"
- "value": "2"
- },
- {
- "key": "mapreduce.map.sort.spill.percent"
- "value": "0.90"
- },
- {
- "key": "mapreduce.tasktracker.reduce.tasks.maximum"
- "value": "5"
- }
- ]
+    name="EMRSampleStep", # required
+    cluster_id="j-1YONHTCP3YZKC", # required
+    step_config=emr_config, # required
+    display_name="My EMR Step",
+    description="Pipeline step to execute EMR job"
 )
 ```
 
@@ -694,6 +701,18 @@ The `properties` attribute of a SageMaker Pipelines step matches the object retu
 + `ProcessingStep` – [DescribeProcessingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeProcessingJob.html)
 + `TrainingStep` – [DescribeTrainingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html)
 + `TransformStep` – [DescribeTransformJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTransformJob.html)
+
+## Step Parallelism<a name="build-and-manage-parallelism"></a>
+
+When a step does not depend on any other step, it is run immediately upon pipeline execution\. However, executing too many pipeline steps in parallel can quickly exhaust available resources\. Control the number of concurrent steps for a pipeline execution with `ParallelismConfiguration`\.
+
+The following example uses `ParallelismConfiguration` to set the concurrent step limit to five\.
+
+```
+pipeline.create(
+    parallelism_config=ParallelismConfiguration(5),
+)
+```
 
 ## Data Dependency Between Steps<a name="build-and-manage-data-dependency"></a>
 

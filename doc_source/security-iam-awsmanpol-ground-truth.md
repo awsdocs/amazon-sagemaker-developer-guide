@@ -19,6 +19,7 @@ This policy includes the following permissions\.
 + `logs` – Allows principals to create and access log streams, and post log events\.
 + `sqs` – Allows principals to create Amazon SQS queues, and send and receive Amazon SQS messages\. These permissions are limited to queues whose name includes "GroundTruth"\.
 + `sns` – Allows principals to subscribe to and publish messages to Amazon SNS topics whose case\-insensitive name contains "groundtruth" or "sagemaker"\.
++ `ec2` –  Permission to create, describe, and delete Amazon VPC endpoints whose VPC endpoint service name contains "sagemaker\-task\-resources" or "labeling"\.
 
 ```
 {
@@ -147,6 +148,24 @@ This policy includes the following permissions\.
                 "sns:Unsubscribe"
             ],
             "Resource": "*"
+        },
+        {
+            "Sid": "WorkforceVPC",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:CreateVpcEndpoint",
+                "ec2:DescribeVpcEndpoints",
+                "ec2:DeleteVpcEndpoints"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "StringLikeIfExists": {
+                    "ec2:VpceServiceName": [
+                        "*sagemaker-task-resources*",
+                        "aws.sagemaker*labeling*"
+                    ]
+                }
+            }
         }
     ]
 }
@@ -159,5 +178,6 @@ View details about updates to AWS managed policies for Amazon SageMaker Ground T
 
 | Policy | Version | Change | Date | 
 | --- | --- | --- | --- | 
-| AmazonSageMakerGroundTruthExecution | 2 |  Remove `sqs:SendMessageBatch` permission\.  | April 15, 2022 | 
+| AmazonSageMakerGroundTruthExecution | 3 |  Add `ec2:CreateVpcEndpoint`, `ec2:DescribeVpcEndpoints`, and `ec2:DeleteVpcEndpoints` permissions\.  | April 29, 2022 | 
+| AmazonSageMakerGroundTruthExecution | 2 |  Remove `sqs:SendMessageBatch` permission\.  | April 11, 2022 | 
 | AmazonSageMakerGroundTruthExecution | 1 |  Initial policy  | July 20, 2020 | 

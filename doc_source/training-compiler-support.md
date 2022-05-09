@@ -55,8 +55,95 @@ The following table includes a list of the models that have been tested with Sag
 **Note**  
 The batch sizes are local batch size that fit into each individual GPU of an instance type\. You should also adjust the learning rate when changing the batch size\.
 
+### Transformers 4\.17\.0 with PyTorch 1\.10\.2<a name="training-compiler-tested-models-tf417-pt110"></a>
 
-**TensorFlow \(Sequence\_Len=128, Automatic Mixed Precision \(AMP\)\)**  
+Tested with `Sequence_Len=512` and Automatic Mixed Precision \(AMP\)
+
+[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/training-compiler-support.html)
+
+### Transformers 4\.11\.0 with PyTorch 1\.9\.0<a name="training-compiler-tested-models-tf411-pt190"></a>
+
+Tested with `Sequence_Len=512` and Automatic Mixed Precision \(AMP\)
+
+
+| Single\-node single\-GPU | Model  | Instance type | Batch size for native | Batch size for Training Compiler | 
+| --- | --- | --- | --- | --- | 
+| albert\-base\-v2  | ml\.p3\.2xlarge | 12 | 32 | 
+| bert\-base\-cased  | ml\.p3\.2xlarge | 14 | 24 | 
+| bert\-base\-chinese | ml\.p3\.2xlarge | 16 | 24 | 
+| bert\-base\-multilingual\-cased  | ml\.p3\.2xlarge | 4 | 16 | 
+| bert\-base\-multilingual\-uncased  | ml\.p3\.2xlarge | 8 | 16 | 
+| bert\-base\-uncased  | ml\.p3\.2xlarge | 12 | 24 | 
+| cl\-tohoku/bert\-base\-japanese\-whole\-word\-masking | ml\.p3\.2xlarge | 12 | 24 | 
+| cl\-tohoku/bert\-base\-japanese  | ml\.p3\.2xlarge | 12 | 24 | 
+| distilbert\-base\-uncased  | ml\.p3\.2xlarge | 28 | 32 | 
+| distilbert\-base\-uncased\-finetuned\-sst\-2\-english | ml\.p3\.2xlarge | 28 | 32 | 
+| distilgpt2  | ml\.p3\.2xlarge | 16 | 32 | 
+| facebook/bart\-base  | ml\.p3\.2xlarge | 4 | 8 | 
+| gpt2 | ml\.p3\.2xlarge | 6 | 20 | 
+| nreimers/MiniLMv2\-L6\-H384\-distilled\-from\-RoBERTa\-Large  | ml\.p3\.2xlarge | 20 | 32 | 
+| roberta\-base  | ml\.p3\.2xlarge | 12 | 20 | 
+
+
+| Single\-node multi\-GPU | Model  | Instance type | Batch size for native | Batch size for Training Compiler | 
+| --- | --- | --- | --- | --- | 
+| bert\-base\-chinese  | ml\.p3\.8xlarge | 16 | 26 | 
+| bert\-base\-multilingual\-cased  | ml\.p3\.8xlarge | 6 | 16 | 
+| bert\-base\-multilingual\-uncased | ml\.p3\.8xlarge | 6 | 16 | 
+| bert\-base\-uncased  | ml\.p3\.8xlarge | 14 | 24 | 
+| distilbert\-base\-uncased  | ml\.p3\.8xlarge | 14 | 32 | 
+| distilgpt2 | ml\.p3\.8xlarge | 6 | 32 | 
+| facebook/bart\-base | ml\.p3\.8xlarge | 8 | 16 | 
+| gpt2  | ml\.p3\.8xlarge | 8 | 20 | 
+| roberta\-base  | ml\.p3\.8xlarge | 12 | 20 | 
+
+### Transformers 4\.17\.0 with TensorFlow 2\.6\.3<a name="training-compiler-tested-models-tf417-tf263"></a>
+
+Tested with `Sequence_Len=128` and Automatic Mixed Precision \(AMP\)
+
+
+| Model  | Instance type | Batch size for native frameworks | Batch size for Training Compiler | 
+| --- | --- | --- | --- | 
+| albert\-base\-v2 | ml\.g4dn\.16xlarge | 136 | 208 | 
+| albert\-base\-v2 | ml\.g5\.4xlarge | 219 | 312 | 
+| albert\-base\-v2 | ml\.p3\.2xlarge | 152 | 208 | 
+| albert\-base\-v2 | ml\.p3\.8xlarge | 152 | 192 | 
+| bert\-base\-uncased | ml\.g4dn\.16xlarge | 120 | 101 | 
+| bert\-base\-uncased | ml\.g5\.4xlarge | 184 | 160 | 
+| bert\-base\-uncased | ml\.p3\.2xlarge | 128 | 108 | 
+| bert\-large\-uncased | ml\.g4dn\.16xlarge | 37 | 28 | 
+| bert\-large\-uncased | ml\.g5\.4xlarge | 64 | 55 | 
+| bert\-large\-uncased | ml\.p3\.2xlarge | 40 | 32 | 
+| camembert\-base | ml\.g4dn\.16xlarge | 96 | 100 | 
+| camembert\-base | ml\.g5\.4xlarge | 190 | 160 | 
+| camembert\-base | ml\.p3\.2xlarge | 129 | 108 | 
+| camembert\-base | ml\.p3\.8xlarge | 128 | 104 | 
+| distilbert\-base\-uncased | ml\.g4dn\.16xlarge | 210 | 160 | 
+| distilbert\-base\-uncased | ml\.g5\.4xlarge | 327 | 288 | 
+| distilbert\-base\-uncased | ml\.p3\.2xlarge | 224 | 196 | 
+| distilbert\-base\-uncased | ml\.p3\.8xlarge | 192 | 182 | 
+| google\_electra\-small\-discriminator | ml\.g4dn\.16xlarge | 336 | 288 | 
+| google\_electra\-small\-discriminator | ml\.g5\.4xlarge | 504 | 384 | 
+| google\_electra\-small\-discriminator | ml\.p3\.2xlarge | 352 | 323 | 
+| gpt2 | ml\.g4dn\.16xlarge | 89 | 64 | 
+| gpt2 | ml\.g5\.4xlarge | 140 | 146 | 
+| gpt2 | ml\.p3\.2xlarge | 94 | 96 | 
+| gpt2 | ml\.p3\.8xlarge | 96 | 88 | 
+| jplu\_tf\-xlm\-roberta\-base | ml\.g4dn\.16xlarge | 52 | 16 | 
+| jplu\_tf\-xlm\-roberta\-base | ml\.g5\.4xlarge | 64 | 44 | 
+| microsoft\_mpnet\-base | ml\.g4dn\.16xlarge | 120 | 100 | 
+| microsoft\_mpnet\-base | ml\.g5\.4xlarge | 192 | 160 | 
+| microsoft\_mpnet\-base | ml\.p3\.2xlarge | 128 | 104 | 
+| microsoft\_mpnet\-base | ml\.p3\.8xlarge | 130 | 92 | 
+| roberta\-base | ml\.g4dn\.16xlarge | 108 | 64 | 
+| roberta\-base | ml\.g5\.4xlarge | 176 | 142 | 
+| roberta\-base | ml\.p3\.2xlarge | 118 | 100 | 
+| roberta\-base | ml\.p3\.8xlarge | 112 | 88 | 
+
+### Transformers 4\.11\.0 with TensorFlow 2\.5\.1<a name="training-compiler-tested-models-tf411-tf251"></a>
+
+Tested with `Sequence_Len=128` and Automatic Mixed Precision \(AMP\)
+
 
 | Single\-node single\-GPU | Model  | Instance type | Batch size for native | Batch size for Training Compiler | 
 | --- | --- | --- | --- | --- | 
@@ -81,39 +168,3 @@ The batch sizes are local batch size that fit into each individual GPU of an ins
 | roberta\-large  | ml\.p3\.2xlarge | 4 | 64 | 
 | t5\-base  | ml\.p3\.2xlarge | 64 | 64 | 
 | t5\-small  | ml\.p3\.2xlarge | 128 | 128 | 
-
-
-**PyTorch \(Sequence\_Len=512, Automatic Mixed Precision \(AMP\)\)**  
-
-| Single\-node single\-GPU | Model  | Instance type | Batch size for native | Batch size for Training Compiler | 
-| --- | --- | --- | --- | --- | 
-| albert\-base\-v2  | ml\.p3\.2xlarge | 12 | 32 | 
-| bert\-base\-cased  | ml\.p3\.2xlarge | 14 | 24 | 
-| bert\-base\-chinese | ml\.p3\.2xlarge | 16 | 24 | 
-| bert\-base\-multilingual\-cased  | ml\.p3\.2xlarge | 4 | 16 | 
-| bert\-base\-multilingual\-uncased  | ml\.p3\.2xlarge | 8 | 16 | 
-| bert\-base\-uncased  | ml\.p3\.2xlarge | 12 | 24 | 
-| cl\-tohoku/bert\-base\-japanese\-whole\-word\-masking | ml\.p3\.2xlarge | 12 | 24 | 
-| cl\-tohoku/bert\-base\-japanese  | ml\.p3\.2xlarge | 12 | 24 | 
-| distilbert\-base\-uncased  | ml\.p3\.2xlarge | 28 | 32 | 
-| distilbert\-base\-uncased\-finetuned\-sst\-2\-english | ml\.p3\.2xlarge | 28 | 32 | 
-| distilgpt2  | ml\.p3\.2xlarge | 16 | 32 | 
-| facebook/bart\-base  | ml\.p3\.2xlarge | 4 | 8 | 
-| gpt2 | ml\.p3\.2xlarge | 6 | 20 | 
-| nreimers/MiniLMv2\-L6\-H384\-distilled\-from\-RoBERTa\-Large  | ml\.p3\.2xlarge | 20 | 32 | 
-| roberta\-base  | ml\.p3\.2xlarge | 12 | 20 | 
-
-
-**PyTorch \(Sequence\_Len=512, Automatic Mixed Precision \(AMP\)\)**  
-
-| Single\-node multi\-GPU | Model  | Instance type | Batch size for native | Batch size for Training Compiler | 
-| --- | --- | --- | --- | --- | 
-| bert\-base\-chinese  | ml\.p3\.8xlarge | 16 | 26 | 
-| bert\-base\-multilingual\-cased  | ml\.p3\.8xlarge | 6 | 16 | 
-| bert\-base\-multilingual\-uncased | ml\.p3\.8xlarge | 6 | 16 | 
-| bert\-base\-uncased  | ml\.p3\.8xlarge | 14 | 24 | 
-| distilbert\-base\-uncased  | ml\.p3\.8xlarge | 14 | 32 | 
-| distilgpt2 | ml\.p3\.8xlarge | 6 | 32 | 
-| facebook/bart\-base | ml\.p3\.8xlarge | 8 | 16 | 
-| gpt2  | ml\.p3\.8xlarge | 8 | 20 | 
-| roberta\-base  | ml\.p3\.8xlarge | 12 | 20 | 
