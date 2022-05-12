@@ -396,7 +396,7 @@ Specify the job name of the load test for the `JobName` field:
 
 ```
 sagemaker_client.stop_inference_recommendations_job(
-                                    job_name='<INSERT>'
+                                    JobName='<INSERT>'
                                     )
 ```
 

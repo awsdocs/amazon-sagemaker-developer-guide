@@ -111,7 +111,7 @@ Once an instance recommendation is complete, you can use `DescribeInferenceRecom
 ```
 job_name='<INSERT>'
 response = sagemaker_client.describe_inference_recommendations_job(
-                    job_name=job_name)
+                    JobName=job_name)
 ```
 
 Print the response object\. The previous code sample stored the response in a variable name `response`\.
@@ -339,7 +339,7 @@ Specify the name of the instance recommendation job for the `JobName` field:
 
 ```
 sagemaker_client.stop_inference_recommendations_job(
-                                    job_name='<INSERT>'
+                                    JobName='<INSERT>'
                                     )
 ```
 
