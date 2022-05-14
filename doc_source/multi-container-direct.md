@@ -123,7 +123,7 @@ All the metrics in the previous table are specific to multi\-container endpoints
 
 ## Autoscale multi\-container endpoints<a name="multi-container-auto-scaling"></a>
 
-If you want to configure automatic scaling for a multi\-container endpoint using the `InvocationsPerInstance` metric, we recommend that the model in each container exhibits similar CPU utilization and latency on each inference request\. This is recommended because if traffic to the multi\-container endpoint shifts from a high CPU utilization model to a low CPU utilization model, but the overall call volume remains the same, the endpoint does not scale out and there may not be enough instances to handle all the requests to the high CPU utilization model\. For information about automatically scaling endpoints, see [Automatically Scale Amazon SageMaker Models](endpoint-auto-scaling.md)\.
+If you want to configure automatic scaling for a multi\-container endpoint using the `InvocationsPerInstance` metric, we recommend that the model in each container exhibits similar CPU utilization and latency on each inference request\. This is recommended because if traffic to the multi\-container endpoint shifts from a low CPU utilization model to a high CPU utilization model, but the overall call volume remains the same, the endpoint does not scale out and there may not be enough instances to handle all the requests to the high CPU utilization model\. For information about automatically scaling endpoints, see [Automatically Scale Amazon SageMaker Models](endpoint-auto-scaling.md)\.
 
 ## Troubleshoot multi\-container endpoints<a name="multi-container-troubleshooting"></a>
 
