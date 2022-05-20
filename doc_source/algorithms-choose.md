@@ -16,13 +16,14 @@ The following sections provide guidance concerning implementation options, machi
 **Topics**
 + [Choose an algorithm implementation](#algorithms-choose-implementation)
 + [Problem types for the basic machine learning paradigms](#basic-machine-learning-paradigms)
-+ [Use Amazon SageMaker Built\-in Algorithms](algos.md)
++ [Use Amazon SageMaker Built\-in Algorithms or Pre\-trained Models](algos.md)
 + [Use Reinforcement Learning with Amazon SageMaker](reinforcement-learning.md)
 
 ## Choose an algorithm implementation<a name="algorithms-choose-implementation"></a>
 
 After choosing an algorithm, you must decide which implementation of it you want to use\. Amazon SageMaker supports three implementation options that require increasing levels of effort\. 
-+ **Built\-in algorithms** require the least effort and scale if the data set is large and significant resources are needed to train and deploy the model\.
++ **Pre\-trained models** require the least effort and are models ready to deploy or to fine\-tune and deploy using SageMaker JumpStart\.
++ **Built\-in algorithms** require the more effort and scale if the data set is large and significant resources are needed to train and deploy the model\.
 + If there is no built\-in solution that works, try to develop one that uses **pre\-made images for machine and deep learning frameworks** for supported frameworks such as Scikit\-Learn, TensorFlow, PyTorch, MXNet, or Chainer\.
 + If you need to run custom packages or use any code which isn’t a part of a supported framework or available via PyPi, then you need to build **your own custom Docker image** that is configured to install the necessary packages or software\. The custom image must also be pushed to an online repository like the Amazon Elastic Container Registry\.
 
@@ -52,7 +53,7 @@ When choosing an algorithm for your type of problem and data, the easiest option
 + The built\-in algorithms require no coding to start running experiments\. The only inputs you need to provide are the data, hyperparameters, and compute resources\. This allows you to run experiments more quickly, with less overhead for tracking results and code changes\.
 + The built\-in algorithms come with parallelization across multiple compute instances and GPU support right out of the box for all applicable algorithms \(some algorithms may not be included due to inherent limitations\)\. If you have a lot of data with which to train your model, most built\-in algorithms can easily scale to meet the demand\. Even if you already have a pre\-trained model, it may still be easier to use its corollary in SageMaker and input the hyper\-parameters you already know than to port it over, using script mode on a supported framework\.
 
-For more information on the built\-in algorithms provided by SageMaker, see [Use Amazon SageMaker Built\-in Algorithms](algos.md)\.
+For more information on the built\-in algorithms provided by SageMaker, see [Use Amazon SageMaker Built\-in Algorithms or Pre\-trained Models](algos.md)\.
 
 For important information about docker registry paths, data formats, recommended EC2 instance types, and CloudWatch logs common to all of the built\-in algorithms provided by SageMaker, see [Common Information About Built\-in Algorithms](common-info-all-im-models.md)\.
 
@@ -70,7 +71,7 @@ Amazon SageMaker's built\-in algorithms and supported frameworks should cover mo
 
 ## Problem types for the basic machine learning paradigms<a name="basic-machine-learning-paradigms"></a>
 
-The following three sections describe the main problem types addressed by the three basic paradigms for machine learning\. For a list of the built\-in algorithms that SageMaker provides to address these problem types, see [Use Amazon SageMaker Built\-in Algorithms](algos.md)\.
+The following three sections describe the main problem types addressed by the three basic paradigms for machine learning\. For a list of the built\-in algorithms that SageMaker provides to address these problem types, see [Use Amazon SageMaker Built\-in Algorithms or Pre\-trained Models](algos.md)\.
 
 **Topics**
 + [Supervised learning](#algorithms-choose-supervised-learning)

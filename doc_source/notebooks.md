@@ -26,6 +26,7 @@ We recommend that you familiarize yourself with the SageMaker Studio interface a
 + [Amazon SageMaker Studio Tour](gs-studio-end-to-end.md)
 + [Create or Open an Amazon SageMaker Studio Notebook](notebooks-create-open.md)
 + [Use the SageMaker Studio Notebook Toolbar](notebooks-menu.md)
++ [Install External Libraries and Kernels in Amazon SageMaker Studio](studio-notebooks-add-external.md)
 + [Share and Use an Amazon SageMaker Studio Notebook](notebooks-sharing.md)
 + [Get Notebook and App Metadata](notebooks-run-and-manage-metadata.md)
 + [Get Notebook Differences](notebooks-diff.md)

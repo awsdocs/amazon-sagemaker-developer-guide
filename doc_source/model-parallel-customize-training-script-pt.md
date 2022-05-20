@@ -7,6 +7,7 @@ In this section, you learn how to modify PyTorch training scripts to configure t
 
 | PyTorch version | SageMaker distributed model parallel library version | `smdistributed-modelparallel` integrated image URI | 
 | --- | --- | --- | 
+| v1\.11\.0\* | smdistributed\-modelparallel==v1\.9\.0 | 763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/pytorch\-training:1\.11\.0\-gpu\-py38\-cu113\-ubuntu20\.04\-sagemaker | 
 | v1\.10\.2\* |  smdistributed\-modelparallel==v1\.7\.0 |  `763104351884.dkr.ecr.<region>.amazonaws.com/pytorch-training:1.10.2-gpu-py38-cu113-ubuntu20.04-sagemaker`  | 
 | v1\.10\.0 |  smdistributed\-modelparallel==v1\.5\.0  |  `763104351884.dkr.ecr.<region>.amazonaws.com/pytorch-training:1.10.0-gpu-py38-cu113-ubuntu20.04-sagemaker`  | 
 | v1\.9\.1 |  smdistributed\-modelparallel==v1\.4\.0  |  `763104351884.dkr.ecr.<region>.amazonaws.com/pytorch-training:1.9.1-gpu-py38-cu111-ubuntu20.04`  | 

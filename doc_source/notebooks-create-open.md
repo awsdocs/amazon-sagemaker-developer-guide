@@ -12,7 +12,7 @@ Billing occurs per instance and starts when the first instance of a given instan
 
 Billing ends when the SageMaker image for the instance is shut down\. For more information, see [Usage Metering](notebooks-usage-metering.md)\.
 
-For information on shutting down the notebook, see [Shut Down Resources](notebooks-run-and-manage-shut-down.md#notebooks-run-and-manage-shut-down-sessions)\.
+For information about shutting down the notebook, see [Shut Down Resources](notebooks-run-and-manage-shut-down.md#notebooks-run-and-manage-shut-down-sessions)\.
 
 **Topics**
 + [Open a Studio notebook](#notebooks-open)

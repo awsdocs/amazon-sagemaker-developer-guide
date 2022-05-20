@@ -176,15 +176,136 @@ Use the following procedure to generate a Jupyter Notebook and run it to export 
 
 You might need to configure the Python script to make it run in your pipeline\. For example, if you're running a Spark environment, make sure that you are running the script from an environment that has permission to access AWS resources\.
 
-### Export to the Amazon SageMaker Feature Store<a name="data-wrangler-data-export-feature-store"></a>
+### Export to Amazon SageMaker Feature Store<a name="data-wrangler-data-export-feature-store"></a>
 
-You can use Amazon SageMaker Feature Store to create, share, and manage curated data for machine learning \(ML\) development\. You can configure an online and offline feature store to be a centralized store for features and associated metadata so features can be easily discovered and reused\. For more information on Feature Store, see [Amazon SageMaker Feature Store](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html)\.
+You can use Data Wrangler to export features you've created to Amazon SageMaker Feature Store\. A feature is a column in your dataset\. Feature Store is a centralized store for features and their associated metadata\. You can use Feature Store to create, share, and manage curated data for machine learning \(ML\) development\. Centralized stores make your data more discoverable and reusable\. For more information about Feature Store, see [Amazon SageMaker Feature Store](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html)\.
 
-#### Use a Jupyter Notebook to Add Features to a Feature Store<a name="data-wrangler-feature-store-notebook"></a>
+A core concept in Feature Store is a feature group\. A feature group is a collection of features, their records \(observations\), and associated metadata\. It's similar to a table in a database\.
 
-Use the following procedure to export to Amazon SageMaker Feature Store\.
+You can use Data Wrangler to do one of the following:
++ Update an existing feature group with new records\. A record is an observation in the dataset\.
++ Create a new feature group from a node in your Data Wrangler flow\. Data Wrangler adds the observations from your datasets as records in your feature group\.
 
-Use the following procedure to generate a Jupyter Notebook and run it to export your Data Wrangler flow to Amazon S3\.
+If you're updating an existing feature group, your dataset's schema must match the schema of the feature group\. All the records in the feature group are replaced with the observations in your dataset\.
+
+You can use either a Jupyter Notebook or a destination node to update your feature group with the observations in the dataset\.
+
+------
+#### [ Destination Node ]
+
+If you want to output a series of data processing steps that you've performed to a feature group, you can create a destination node\. When you create and run a destination node, Data Wrangler updates a feature group with your data\. You can also create a new feature group from the destination node UI\. After you create a destination node, you create a processing job to output the data\. A processing job is an Amazon SageMaker processing job\. When you're using a destination node, it runs the computational resources needed to output the data that you've transformed to the feature group\. 
+
+You can use a destination node to export some of the transformations or all of the transformations that you've made in your Data Wrangler flow\.
+
+Use the following procedure to create a destination node to update a feature group with the observations from your dataset\.
+
+To update a feature group using a destination node, do the following\.
+
+1. Choose the **\+** symbol next to the node containing the dataset that you'd like to export\.
+
+1. Under **Add destination**, choose **SageMaker Feature Store**\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/feature-store-destination-node-selection.png)
+
+1. Double click on the feature group\. Data Wrangler checks whether the schema of the feature group matches the schema of the data that you're using to update the feature group\.
+
+1. \(Optional\) Select **Export to offline store only** for feature groups that have both an online store and an offline store\. This option only updates the offline store with observations from your dataset\.
+
+1. After Data Wrangler validates the schema of your dataset, choose **Add**\.
+
+Use the following procedure to create a new feature group with data from your dataset\.
+
+You can have the following options for how you want to store your feature group:
++ Online – Low latency, high availability cache for a feature group that enables real\-time lookup of records\. The online store allows quick access to the latest value for a record in a feature group\.
++ Offline – Stores data for your feature group in an Amazon S3 bucket\. You can store your data offline when you don't need low latency \(sub\-second\) reads\. You can use an offline store for features used in data exploration, model training, and batch inference\.
++ Both online and offline – Stores your data in both an online store and an offline store\.
+
+To create a feature group using a destination node, do the following\.
+
+1. Choose the **\+** symbol next to the node containing the dataset that you'd like to export\.
+
+1. Under **Add destination**, choose **SageMaker Feature Store**\.
+
+1. Choose **Create Feature Group**\.
+
+1. In the following dialog box, if your dataset doesn't have an event time column, select **Create "EventTime" column**\.
+
+1. Choose **Next**\.
+
+1. Choose **Copy JSON Schema**\. When you create a feature group, you paste the schema into the feature definitions\.
+
+1. Choose **Create**\.
+
+1. For **Feature group name**, specify a name for your feature group\.
+
+1. For **Description \(optional\)**, specify a description to make your feature group more discoverable\.
+
+1. To create a feature group for an online store, do the following\.
+
+   1. Select **Enable storage online**\.
+
+   1. For **Online store encryption key**, specify an AWS managed encryption key or an encryption key of your own\.
+
+1. To create a feature group for an offline store, do the following\.
+
+   1. Select **Enable storage offline**\.
+
+   1. Specify values for the following fields:
+      + **S3 bucket name** – The name of the bucket storing the feature group\.
+      + **\(Optional\) Dataset directory name** – The Amazon S3 prefix that you're using to store the feature group\.
+      + **IAM Role ARN** – The IAM role that has access to feature store\.
+      + **Offline store encryption key** – By default, Feature Store uses an AWS managed key, but you can use the field to specify a key of your own\.
+
+1. Choose **Continue**\.
+
+1. Choose **JSON**\.
+
+1. Remove the placeholder brackets in the window\.
+
+1. Paste the JSON text from Step 6\.
+
+1. Choose **Continue**\.
+
+1. For **RECORD IDENTIFIER FEATURE NAME**, choose the column in your dataset that has unique identifiers for each record in your dataset\.
+
+1. For **EVENT TIME FEATURE NAME**, choose the column with the timestamp values\.
+
+1. Choose **Continue**\.
+
+1. \(Optional\) Add tags to make your feature group more discoverable\.
+
+1. Choose **Continue**\.
+
+1. Choose **Create feature group**\.
+
+1. Navigate back to your Data Wrangler flow and choose the refresh icon next to the **Feature Group** search bar\.
+
+**Note**  
+If you've already created a destination node for a feature group within a flow, you can't create another destination node for the same feature group\. If you want to create another destination node for the same feature group, you must create another flow file\.
+
+Use the following procedure to create a Data Wrangler job\.
+
+Create a job from the **Data flow** page and choose the destination nodes that you want to export\.
+
+1. Choose **Create job**\. The following image shows the pane that appears after you select **Create job**\.
+
+1. For **Job name**, specify the name of the export job\.
+
+1. Choose the destination nodes that you want to export\.
+
+1. \(Optional\) Specify a AWS KMS key ARN\. A AWS KMS key is a cryptographic key that you can use to protect your data\. For more information about AWS KMS keys, see [AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)
+
+1. Choose **Configure job**\. The following image shows the **Configure job** page\.
+
+1. \(Optional\) Configure the Data Wrangler job\.
+
+1. Choose **Run**\.
+
+------
+#### [ Jupyter Notebook ]
+
+Use the following procedure to a Jupyter Notebook to export to Amazon SageMaker Feature Store\.
+
+Use the following procedure to generate a Jupyter Notebook and run it to export your Data Wrangler flow to Feature Store\.
 
 1. Choose the **\+** next to the node that you want to export\.
 
@@ -244,5 +365,9 @@ column_schema = [
 Additionally, you must specify a record identifier name and event time feature name:
 + The *record identifier name* is the name of the feature whose value uniquely identifies a record defined in the feature store\. Only the latest record per identifier value is stored in the online store\. The record identifier feature name must be one of feature definitions' names\.
 + The *event time feature name* is the name of the feature that stores the `EventTime` of a record in a feature group\. An `EventTime` is a point in time when a new event occurs that corresponds to the creation or update of a record in a feature\. All records in the feature group must have a corresponding `EventTime`\.
+
+The notebook uses these configurations to create a feature group, process your data at scale, and then ingest the processed data into your online and offline feature stores\. To learn more, see [Data Sources and Ingestion](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-ingest-data.html)\.
+
+------
 
 The notebook uses these configurations to create a feature group, process your data at scale, and then ingest the processed data into your online and offline feature stores\. To learn more, see [Data Sources and Ingestion](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-ingest-data.html)\.

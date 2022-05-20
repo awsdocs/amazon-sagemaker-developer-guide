@@ -27,7 +27,7 @@ Missing future values are missing values in the target column\. SageMaker Canvas
 
 Missing values are values that are missing in any column other than the target column\. With missing values that aren't in the target column, it's helpful to note the following:
 + They generally don't reduce the accuracy of your forecast as much as missing future values\.
-+ SageMaker Canvas automatically imputes the missing values\. You can also specify the imputation method yourself\.
++ SageMaker Canvas automatically imputes the missing values\.
 
 You can evaluate the model by seeing how close the predictions are within the actual value\. You can also use the **Column Impact** metric to determine the direction and magnitude of the column's impact on the model's predictions\. For example, in the following image, holidays had the largest positive impact on the forecast for demand\. Price had the largest negative impact on demand\.
 

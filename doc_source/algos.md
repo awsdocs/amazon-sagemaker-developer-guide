@@ -1,6 +1,6 @@
-# Use Amazon SageMaker Built\-in Algorithms<a name="algos"></a>
+# Use Amazon SageMaker Built\-in Algorithms or Pre\-trained Models<a name="algos"></a>
 
-Amazon SageMaker provides a suite of built\-in algorithms to help data scientists and machine learning practitioners get started on training and deploying machine learning models quickly\. For someone that is new to SageMaker, choosing the right algorithm for your particular use case can be a challenging task\. The following table provides a quick cheat sheet that shows how you can start with an example problem or use case and find an appropriate built\-in algorithm offered by SageMaker that is valid for that problem type\. Additional guidance organized by learning paradigms \(supervised and unsupervised\) and important data domains \(text and images\) is provided in the sections following the table\.
+Amazon SageMaker provides a suite of built\-in algorithms, pre\-trained models, and pre\-built solution templates to help data scientists and machine learning practitioners get started on training and deploying machine learning models quickly\. For someone who is new to SageMaker, choosing the right algorithm for your particular use case can be a challenging task\. The following table provides a quick cheat sheet that shows how you can start with an example problem or use case and find an appropriate built\-in algorithm offered by SageMaker that is valid for that problem type\. Additional guidance organized by learning paradigms \(supervised and unsupervised\) and important data domains \(text and images\) is provided in the sections following the table\.
 
 
 **Table: Mapping use cases to built\-in algorithms**  
@@ -9,10 +9,15 @@ Amazon SageMaker provides a suite of built\-in algorithms to help data scientist
 For important information about Docker registry paths, data formats, recommenced Amazon EC2 instance types, and CloudWatch logs common to all of the built\-in algorithms provided by SageMaker, see [Common Information About Built\-in Algorithms](common-info-all-im-models.md)\.
 
 The following sections provide additional guidance for the Amazon SageMaker built\-in algorithms grouped by the supervised and unsupervised learning paradigms to which they belong\. For descriptions of these learning paradigms and their associated problem types, see [Choose an AlgorithmChoose an algorithm](algorithms-choose.md)\. Sections are also provided for the SageMaker built\-in algorithms available to address two important machine learning domains: textual analysis and image processing\.
++ [Pre\-trained Models and Solution Templates](#algorithms-built-in-jumpstart)
 + [Supervised Learning](#algorithms-built-in-supervised-learning)
 + [Unsupervised Learning](#algorithms-built-in-unsupervised-learning)
 + [Textual Analysis](#algorithms-built-in-text-analysis)
 + [Image Processing](#algorithms-built-in-image-processing)
+
+## Pre\-trained Models and Solution Templates<a name="algorithms-built-in-jumpstart"></a>
+
+SageMaker JumpStart provides a wide range of pre\-trained models, pre\-built solution templates, and examples for popular problem types that use the SageMaker SDK as well as Studio\. For more information about these models, solutions, and the example notebooks provided by SageMaker JumpStart, see [SageMaker JumpStart](studio-jumpstart.md)\.
 
 ## Supervised Learning<a name="algorithms-built-in-supervised-learning"></a>
 
@@ -50,6 +55,7 @@ SageMaker also provides image processing algorithms that are used for image clas
 + [Object Detection Algorithm](object-detection.md)—detects and classifies objects in images using a single deep neural network\. It is a supervised learning algorithm that takes images as input and identifies all instances of objects within the image scene\.
 
 **Topics**
++ [Pre\-trained Models and Solution Templates](#algorithms-built-in-jumpstart)
 + [Supervised Learning](#algorithms-built-in-supervised-learning)
 + [Unsupervised Learning](#algorithms-built-in-unsupervised-learning)
 + [Textual Analysis](#algorithms-built-in-text-analysis)

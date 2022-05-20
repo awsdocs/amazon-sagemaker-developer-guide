@@ -25,7 +25,7 @@ SageMaker Training Compiler supports the most popular deep learning models from 
 
 **Q\. What happens if I enable SageMaker Training Compiler with a model that isn't tested?**
 
-For an untested model, you might need to first modify the training script to be compatible with SageMaker Training Compiler\. For more information, see [Bring Your Own Deep Learning Model](training-compiler-modify-scripts.md) and follow the instructions describing how to prepare your training script\.
+For an untested model, you might need to first modify the training script to be compatible with SageMaker Training Compiler\. For more information, see [Bring Your Own Deep Learning Model](training-compiler-modify-scripts.md) and follow the instructions on how to prepare your training script\.
 
 Once you have updated your training script, you can start the training job\. The compiler proceeds to compile the model\. However, training speed may not increase and might even decrease relative to the baseline with an untested model\. You might need to retune training parameters such as `batch_size` and `learning_rate` to achieve any speedup benefits\.
 

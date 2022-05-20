@@ -14,6 +14,7 @@ Use a VPC endpoint if you want a private connection to an AWS service that uses 
 + AWS Secrets Manager
 + Amazon CloudWatch
 + Amazon CloudWatch Logs
++ Amazon Forecast
 
 The following are VPC endpoints for the preceding services:
 + com\.amazonaws\.*Region*\.athena
@@ -29,6 +30,8 @@ The following are VPC endpoints for the preceding services:
 + aws\.sagemaker\.*Region*\.notebook
 + redshift\-data\.*Region*\.amazonaws\.com
 + secretsmanager\.*Region*\.amazonaws\.com
++ com\.amazonaws\.*Region*\.forecast
++ com\.amazonaws\.*Region*\.forecastquery
 
 You only need to use VPC endpoints if your VPC doesn't have access to the internet\. If your VPC doesn't have access to the internet, you only need to specify endpoints to Amazon Redshift and Amazon Athena if your users are accessing those services\.
 

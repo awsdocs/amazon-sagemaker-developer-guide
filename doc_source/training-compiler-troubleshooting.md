@@ -85,3 +85,7 @@ PyTorch/XLA defines a set of APIs to replace some of the existing PyTorch traini
 + PyTorch/XLA provides additional distributed training APIs\. Failing to program the APIs properly causes gradients to be collected incorrectly, which causes a training convergence failure\.
 
 To properly set up your PyTorch script and avoid the aforementioned incorrect API uses, see [Using PyTorch without Hugging Face Trainer API](training-compiler-pytorch-models.md#training-compiler-pytorch-models-non-trainer) and [Best Practices to Enable SageMaker Training Compiler for PyTorch without the Hugging Face Trainer API](training-compiler-pytorch-models.md#training-compiler-pytorch-models-best-practices)\.
+
+## SageMaker Training Compiler Does Not Reduce the Total Training Time<a name="training-compiler-troubleshooting-no-improved-training-time"></a>
+
+If the total training time does not decrease with SageMaker Training Compiler, we highly recommend you to go over the [SageMaker Training Compiler Best Practices and Considerations](training-compiler-tips-pitfalls.md) page to check your training configuration, padding strategy for the input tensor shape, and hyperparameters\. 

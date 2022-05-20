@@ -33,3 +33,4 @@ The following topics show you how to use the Model Registry\.
 + [Update the Approval Status of a Model](model-registry-approve.md)
 + [Deploy a Model from the Registry](model-registry-deploy.md)
 + [View the Deployment History of a Model](model-registry-deploy-history.md)
++ [Amazon SageMaker Model Registry FAQ](modelregistryfaq.md)

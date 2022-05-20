@@ -73,7 +73,7 @@ The following is an example of the quick model outputs for a regression problem\
 
 ## Feature summary<a name="data-wrangler-data-insights-feature-summary"></a>
 
-When you specify a target column, Data Wrangler orders the features by their prediction power\. Prediction power is measured on the data after it was stratified split into 80%/20% training and validation folds\. Data Wrangler fits a model for each feature separately on the training fold\. It applies minimal feature pre\-processing and measures prediction performance on the validation data\.
+When you specify a target column, Data Wrangler orders the features by their prediction power\. Prediction power is measured on the data after it was split in a stratified fashion into 80%/20% training and validation folds\. Data Wrangler fits a model for each feature separately on the training fold\. It applies minimal feature pre\-processing and measures prediction performance on the validation data\.
 
 It normalizes the scores to the range \[0,1\]\. Higher prediction scores indicate columns that are more useful for predicting the target on their own\. Lower scores point to columns that aren’t predictive of the target column\.
 

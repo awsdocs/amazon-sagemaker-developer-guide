@@ -111,7 +111,7 @@ The `SageMakerFullAccess` managed policy includes the permissions that you need 
 }
 ```
 
-For more information about the `SageMakerFullAccess` managed policy, see [`AmazonSageMakerFullAccess`](security-iam-awsmanpol.md#security-iam-awsmanpol-AmazonSageMakerFullAccess)\.
+For more information about the `SageMakerFullAccess` managed policy, see [AWS managed policy: AmazonSageMakerFullAccess](security-iam-awsmanpol.md#security-iam-awsmanpol-AmazonSageMakerFullAccess)\.
 
 ### Configure Route Tables<a name="neo-vpc-route-table"></a>
 
