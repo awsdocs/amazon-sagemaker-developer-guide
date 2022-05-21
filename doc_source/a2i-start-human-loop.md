@@ -166,7 +166,7 @@ response = a2i_runtime_client.start_human_loop(
     HumanLoopName='human_loop_name',
     FlowDefinitionArn='arn:aws:sagemaker:aws-region:xyz:flow-definition/flow_def_name',
     HumanLoopInput={
-        'InputContent': '{"InputContent": "{\"prompt\":\"What is the answer?\"}"}'    
+        'InputContent': '{"InputContent": {\"prompt\":\"What is the answer?\"}}'    
     },
     DataAttributes={
         'ContentClassifiers': [

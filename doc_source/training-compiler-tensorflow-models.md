@@ -8,6 +8,9 @@ TensorFlow models with [Hugging Face Transformers](https://huggingface.co/docs/t
 
 SageMaker Training Compiler automatically optimizes model training workloads that are built on top of the native TensorFlow API or the high\-level Keras API, such as the TensorFlow transformer models\.
 
+**Tip**  
+When you create a tokenizer for an NLP model using Transformers in your training script, make sure that you use a static input tensor shape by specifying `padding='max_length'`\. Do not use `padding='longest'` because padding to the longest sequence in the batch can change the tensor shape for each training batch\. The dynamic input shape can trigger recompilation of the model and might increase total training time\. For more information about padding options of the Transformers tokenizers, see [Padding and truncation](https://huggingface.co/docs/transformers/pad_truncation) in the *Hugging Face Transformers documentation*\.
+
 **Topics**
 + [Using Keras](#training-compiler-tensorflow-models-transformers-keras)
 + [Without Keras](#training-compiler-tensorflow-models-transformers-no-keras)

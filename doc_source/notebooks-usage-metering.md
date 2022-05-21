@@ -19,7 +19,7 @@ For CPU based images, the default instance type is `ml.t3.medium`\. For GPU base
 
 The costs incurred are based on the instance type\. You are billed separately for each instance\.
 
-Metering starts when an instance is created\. Metering ends when all the apps on the instance are shut down, or the instance is shut down\. For information on how to shut down an instance, see [Shut Down Resources](notebooks-run-and-manage-shut-down.md)\.
+Metering starts when an instance is created\. Metering ends when all the apps on the instance are shut down, or the instance is shut down\. For information about how to shut down an instance, see [Shut Down Resources](notebooks-run-and-manage-shut-down.md)\.
 
 **Important**  
 You must shut down the instance to stop incurring charges\. If you shut down the notebook running on the instance but don't shut down the instance, you will still incur charges\. When you shutdown the Studio notebook instances, any additional resources, such as SageMaker endpoints, Amazon EMR clusters, and Amazon S3 buckets created from Studio are not deleted\. Delete those resources to stop accrual of charges\.

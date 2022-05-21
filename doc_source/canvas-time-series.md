@@ -47,7 +47,7 @@ Ice cream sales might increase when the weather is warmer\. A decrease in the pr
 
 You might have missing data for different reasons\. The reason for your missing data might inform how you want Amazon SageMaker Canvas to impute it\. For example, your organization might use an automatic system that only tracks when a sale happens\. If you're using a dataset that comes from this type of automatic system, you have missing values in the target column\.
 
-For missing values in the dataset, you can either choose the imputation method that SageMaker Canvas suggests, or choose a different method\.
+For missing values in the dataset, SageMaker Canvas imputes the missing values for you\.
 
 **Important**  
 If you have missing values in the target column, we recommend using a dataset that doesn't have them\. SageMaker Canvas uses the target column to forecast future values\. Missing values in the target column can greatly reduce the accuracy of the forecast\.

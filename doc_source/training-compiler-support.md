@@ -1,4 +1,4 @@
-# Supported Frameworks, AWS Regions, Tested Instances, and Tested Models<a name="training-compiler-support"></a>
+# Supported Frameworks, AWS Regions, Supported Instances, and Tested Models<a name="training-compiler-support"></a>
 
 Before using SageMaker Training Compiler, check if your framework of choice is supported, the instance types are available in your AWS account, and your AWS account is in one of the supported AWS Regions\.
 
@@ -17,9 +17,9 @@ For more information, see [SageMaker Training Compiler containers](https://githu
 
 The [SageMaker Training Compiler Containers](https://github.com/aws/deep-learning-containers/blob/master/available_images.md#sagemaker-training-compiler-containers) are available in the AWS Regions where [AWS Deep Learning Containers](https://github.com/aws/deep-learning-containers/blob/master/available_images.md) are in service except the China regions\.
 
-## Tested Instance Types<a name="training-compiler-supported-instance-types"></a>
+## Supported Instance Types<a name="training-compiler-supported-instance-types"></a>
 
-SageMaker Training Compiler is tested on but not limited to the following ML instance types\.
+SageMaker Training Compiler is tested on and supports the following ML instance types\.
 
 
 | Instance type | 

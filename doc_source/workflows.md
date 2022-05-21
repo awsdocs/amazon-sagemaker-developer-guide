@@ -15,3 +15,4 @@ For more information on managing SageMaker training and inference, see [Amazon S
 + [Automate MLOps with SageMaker Projects](sagemaker-projects.md)
 + [Amazon SageMaker ML Lineage Tracking](lineage-tracking.md)
 + [Kubernetes Orchestration](kubernetes-workflows.md)
++ [Amazon SageMaker Workflows FAQ](mlopsfaq.md)

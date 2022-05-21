@@ -17,15 +17,21 @@ Most of the built\-in transforms are located in the **Prepare** tab of the Data 
 ------
 #### [ Transform ]
 
-To access transforms on the **Prepare** tab, select **\+** next to a step in your data flow, and select **Add transform**\.
+You can add a transform to any step in your data flow\. Use the following procedure to add a transform to your data flow\.
 
-On the **Prepare** tab, you add steps under **Add**\. 
+To add a step to your data flow, do the following\.
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/prepare-list.png)
+1. Choose the **\+** next to the step in the data flow\.
 
-You can use the **Previous steps** tab to view and remove transformations that you have added, in sequential order\.
+1. Choose **Add transform**\.
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/prepare-list-multiple.png)
+1. Choose **Add step**\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/data-wrangler-add-step.png)
+
+1. Choose a transform\. The following image shows you the available transforms\.
+
+1. \(Optional\) You can search for the transform that you want to use\. Data Wrangler highlights the query in the results\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/data-wrangler-search.png)
 
 ------
 #### [ Join View ]
@@ -1079,6 +1085,154 @@ The following transforms are supported under **Search and edit**\. All transform
 |  Replace from position  |  Returns a string with the substring between **Start position** and **Start position** plus **Length** replaced by **Replacement string**\. If **Start position** plus **Length** is greater than the length of the replacement string, the output contains **…**\.  | 
 |  Convert regex to missing  |  Converts a string to `None` if invalid and returns the result\. Validity is defined with a regular expression in **Pattern**\.  | 
 |  Split string by delimiter  |  Returns an array of strings from the input string, split by **Delimiter**, with up to **Max number of splits** \(optional\)\. Delimiter defaults to white space\.   | 
+
+## Split data<a name="data-wrangler-transform-split-data"></a>
+
+Use the **Split data** transform to split your dataset into two or three datasets\. For example, you can split your dataset into a dataset used to train your model and a dataset used to test it\. You can determine the proportion of the dataset that goes into each split\. For example, if you’re splitting one dataset into two datasets, the training dataset can have 80% of the data while the testing dataset has 20%\.
+
+Splitting your data into three datasets gives you the ability to create training, validation, and test datasets\. You can see how well the model performs on the test dataset by dropping the target column\.
+
+Your use case determines how much of the original dataset each of your datasets get and the method you use to split the data\. For example, you might want to use a stratified split to make sure that the distribution of the observations in the target column are the same across datasets\. You can use the following split transforms:
++ Randomized split — Each split is a random, non\-overlapping sample of the original dataset\. For larger datasets, using a randomized split might be computationally expensive and take longer than an ordered split\.
++ Ordered split – Splits the dataset based on the sequential order of the observations\. For example, for an 80/20 train\-test split, the first observations that make up 80% of the dataset go to the training dataset\. The last 20% of the observations go to the testing dataset\. Ordered splits are effective in keeping the existing order of the data between splits\.
++ Stratified split – Splits the dataset to make sure that the number of observations in the input column have proportional representation\. For an input column that has the observations 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, an 80/20 split on the column would mean that approximately 80% of the 1s, 80% of the 2s, and 80% of the 3s go to the training set\. About 20% of each type of observation go to the testing set\.
++ Split by key – Avoids data with the same key occurring in more than one split\. For example, if you have a dataset with the column 'customer\_id' and you're using it as a key, no customer id is in more than one split\.
+
+After you split the data, you can apply additional transformations to each dataset\. For most use cases, they aren't necessary\.
+
+Data Wrangler calculates the proportions of the splits for performance\. You can choose an error threshold to set the accuracy of the splits\. Lower error thresholds more accurately reflect the proportions that you specify for the splits\. If you set a higher error threshold, you get better performance, but lower accuracy\.
+
+For perfectly split data, set the error threshold to 0\. You can specify a threshold between 0 and 1 for better performance\. If you specify a value greater than 1, Data Wrangler interprets that value as 1\.
+
+If you have 10000 rows in your dataset and you specify an 80/20 split with an error of 0\.001, you would get observations approximating one of the following results:
++ 8010 observations in the training set and 1990 in the testing set
++ 7990 observations in the training set and 2010 in the testing set
+
+The number of observations for the testing set in the preceding example is in the interval between 8010 and 7990\.
+
+By default, Data Wrangler uses a random seed to make the splits reproducible\. You can specify a different value for the seed to create a different reproducible split\.
+
+------
+#### [ Randomized split ]
+
+Use the following procedure to perform a randomized split on your dataset\.
+
+To split your dataset randomly, do the following
+
+1. Choose the **\+** next to the node containing the dataset that you're splitting\.
+
+1. Choose **Add transform**\.
+
+1. Choose **Split data**\.
+
+1. \(Optional\) For **Splits**, specify the names and proportions of each split\. The proportions must sum to 1\.
+
+1. \(Optional\) Choose the **\+** to create an additional split\.
+
+   1. Specify the names and proportions of all the splits\. The proportions must sum to 1\.
+
+1. \(Optional\) Specify a value for **Error threshold** other than the default value\.
+
+1. \(Optional\) Specify a value for **Random seed**\.
+
+1. Choose **Preview**\.
+
+1. Choose **Add**\.
+
+------
+#### [ Ordered split ]
+
+Use the following procedure to perform an ordered split on your dataset\.
+
+To make an ordered split in your dataset, do the following\.
+
+1. Choose the **\+** next to the node containing the dataset that you're splitting\.
+
+1. Choose **Add transform**\.
+
+1. For **Transform**, choose **Ordered split**\.
+
+1. Choose **Split data**\.
+
+1. \(Optional\) For **Splits**, specify the names and proportions of each split\. The proportions must sum to 1\.
+
+1. \(Optional\) Choose the **\+** to create an additional split\.
+
+   1. Specify the names and proportions of all the splits\. The proportions must sum to 1\.
+
+1. \(Optional\) Specify a value for **Error threshold** other than the default value\.
+
+1. \(Optional\) For **Input column**, specify a column with numeric values\. Uses the values of the columns to infer which records are in each split\. The smaller values are in one split with the larger values in the other splits\.
+
+1. \(Optional\) Select **Handle duplicates** to add noise to duplicate values and create a dataset of entirely unique values\.
+
+1. \(Optional\) Specify a value for **Random seed**\.
+
+1. Choose **Preview**\.
+
+1. Choose **Add**\.
+
+------
+#### [ Stratified split ]
+
+Use the following procedure to perform a stratified split on your dataset\.
+
+To make a stratified split in your dataset, do the following\.
+
+1. Choose the **\+** next to the node containing the dataset that you're splitting\.
+
+1. Choose **Add transform**\.
+
+1. Choose **Split data**\.
+
+1. For **Transform**, choose **Stratified split**\.
+
+1. \(Optional\) For **Splits**, specify the names and proportions of each split\. The proportions must sum to 1\.
+
+1. \(Optional\) Choose the **\+** to create an additional split\.
+
+   1. Specify the names and proportions of all the splits\. The proportions must sum to 1\.
+
+1. For **Input column**, specify a column with up to 100 unique values\. Data Wrangler can't stratify a column with more than 100 unique values\.
+
+1. \(Optional\) Specify a value for **Error threshold** other than the default value\.
+
+1. \(Optional\) Specify a value for **Random seed** to specify a different seed\.
+
+1. Choose **Preview**\.
+
+1. Choose **Add**\.
+
+------
+#### [ Split by column keys ]
+
+Use the following procedure to split by the column keys in your dataset\.
+
+To split by the column keys in your dataset, do the following\.
+
+1. Choose the **\+** next to the node containing the dataset that you're splitting\.
+
+1. Choose **Add transform**\.
+
+1. Choose **Split data**\.
+
+1. For **Transform**, choose **Split by key**\.
+
+1. \(Optional\) For **Splits**, specify the names and proportions of each split\. The proportions must sum to 1\.
+
+1. \(Optional\) Choose the **\+** to create an additional split\.
+
+   1. Specify the names and proportions of all the splits\. The proportions must sum to 1\.
+
+1. For **Key columns**, specify the columns with values that you don't want to appear in both datasets\.
+
+1. \(Optional\) Specify a value for **Error threshold** other than the default value\.
+
+1. Choose **Preview**\.
+
+1. Choose **Add**\.
+
+------
 
 ## Parse Value as Type<a name="data-wrangler-transform-cast-type"></a>
 

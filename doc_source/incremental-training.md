@@ -39,7 +39,7 @@ To restart a stopped training job, use the URL to the model artifacts that are s
 
 1. Provide a name for the training job\. The name must be unique within an AWS Region in an AWS account\. The training job name must have 1 to 63 characters\. Valid characters: a\-z, A\-Z, 0\-9, and \. : \+ = @ \_ % \- \(hyphen\)\.
 
-1. Choose the algorithm that you want to use\. For information about algorithms, see [Use Amazon SageMaker Built\-in Algorithms](algos.md)\. 
+1. Choose the algorithm that you want to use\. For information about algorithms, see [Use Amazon SageMaker Built\-in Algorithms or Pre\-trained Models](algos.md)\. 
 
 1. \(Optional\) For **Resource configuration**, either leave the default values or increase the resource consumption to reduce computation time\.
 

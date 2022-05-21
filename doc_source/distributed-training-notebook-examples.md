@@ -9,8 +9,13 @@ The examples are set up to use `p3.16xlarge` instances for the worker nodes, but
 ## Blogs and Case Studies<a name="distributed-training-notebook-examples-blog"></a>
 
 The following blogs discuss case studies about using the SageMaker distributed training libraries\.
+
+**SageMaker Distributed Data Parallel**
 + [Hyundai reduces ML model training time for autonomous driving models using Amazon SageMaker](https://aws.amazon.com/blogs/machine-learning/hyundai-reduces-training-time-for-autonomous-driving-models-using-amazon-sagemaker/)
 + [Distributed Training: Train BART/T5 for Summarization using Transformers and Amazon SageMaker](https://huggingface.co/blog/sagemaker-distributed-training-seq2seq) in the *HuggingFace documentation*
++ [Training YOLOv5 on AWS with PyTorch and the SageMaker distributed data parallel library](https://medium.com/@sitecao/training-yolov5-on-aws-with-pytorch-and-sagemaker-distributed-data-parallel-library-a196ab01409b) in *Medium*
++ [Speed up EfficientNet model training on SageMaker with PyTorch and the SageMaker distributed data parallel library](https://medium.com/@dangmz/speed-up-efficientnet-model-training-on-amazon-sagemaker-with-pytorch-and-sagemaker-distributed-dae4b048c01a) in *Medium*
++ [Speed up EfficientNet training on AWS with the SageMaker distributed data parallel library](https://towardsdatascience.com/speed-up-efficientnet-training-on-aws-by-up-to-30-with-sagemaker-distributed-data-parallel-library-2dbf6d1e18e8) in *Towards Data Science*
 
 ## PyTorch Examples<a name="distributed-training-notebook-examples-pytorch"></a>
 

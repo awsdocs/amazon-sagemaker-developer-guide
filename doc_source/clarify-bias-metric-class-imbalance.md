@@ -1,6 +1,6 @@
 # Class Imbalance \(CI\)<a name="clarify-bias-metric-class-imbalance"></a>
 
-Class imbalance \(CI\) bias occurs when a facet value *d* has fewer training samples when compared with another facet *a* in the dataset\. This is because models preferentially fit the larger facets at the expense of the smaller facets and so can result in a higher training error for facet *d*\. Models are also at higher risk of overfitting the smaller data sets, which can cause a larger test error for facet *d*\. Consider the example where a machine learning model is trained primarily on data from middle\-aged individuals, it might be less accurate when making predictions involving younger and older people\.
+Class imbalance \(CI\) bias occurs when a facet value *d* has fewer training samples when compared with another facet *a* in the dataset\. This is because models preferentially fit the larger facets at the expense of the smaller facets and so can result in a higher training error for facet *d*\. Models are also at higher risk of overfitting the smaller data sets, which can cause a larger test error for facet *d*\. Consider the example where a machine learning model is trained primarily on data from middle\-aged individuals \(facet a\), it might be less accurate when making predictions involving younger and older people \(facet d\)\.
 
 The formula for the \(normalized\) facet imbalance measure:
 

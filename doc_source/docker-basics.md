@@ -10,4 +10,4 @@ SageMaker uses Docker containers in the backend to manage training and inference
 
 **Containers with SageMaker Studio**
 
-SageMaker Studio runs from a Docker container and uses it to manage functionality\. As a result, you cannot create and upload a Docker container from a SageMaker Studio instance\. However, you can use a prebuilt SageMaker container as long as that container was created outside of Studio\.
+SageMaker Studio runs from a Docker container and uses it to manage functionality\. As a result, you must create your Docker container following the steps in [Bring your own SageMaker image](studio-byoi.md)\.

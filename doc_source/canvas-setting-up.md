@@ -10,6 +10,8 @@ You can use the information in this section to help your users do the following:
 + Optional: Encrypt data using AWS Key Management Service\.
 + Optional: Give your users the ability to import Redshift data\.
 
+You can also set up SageMaker Canvas for your users with AWS CloudFormation\. For more information, see [AWS::SageMaker::App](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-app.html) in the *AWS CloudFormation User Guide*\.
+
 **Topics**
 + [Give your users the ability to upload local files](canvas-set-up-local-upload.md)
 + [Set up SageMaker Canvas for your users](setting-up-canvas-sso.md)
