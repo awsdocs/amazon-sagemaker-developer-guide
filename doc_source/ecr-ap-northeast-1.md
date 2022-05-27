@@ -536,6 +536,10 @@ image_uris.retrieve(framework='pytorch',region='ap-northeast-1',version='1.8.0',
 
 | Registry path | Version | Job types \(image scope\) | Processor types | Python versions | 
 | --- | --- | --- | --- | --- | 
+| 763104351884\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.11\.0 | inference | CPU, GPU | py38 | 
+| 763104351884\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.11\.0 | training | CPU, GPU | py38 | 
+| 763104351884\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.10\.2 | inference | CPU, GPU | py38 | 
+| 763104351884\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.10\.2 | training | CPU, GPU | py38 | 
 | 763104351884\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.10\.0 | inference | CPU, GPU | py38 | 
 | 763104351884\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.10\.0 | training | CPU, GPU | py38 | 
 | 763104351884\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.9\.1 | inference | CPU, GPU | py38 | 
@@ -606,10 +610,10 @@ image_uris.retrieve(framework='sklearn',region='ap-northeast-1',version='0.23-1'
 ```
 
 
-| Registry path | Version | Job types \(image scope\) | 
-| --- | --- | --- | 
-| 354813040037\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/sagemaker\-scikit\-learn:<tag> | 0\.23\-1 | inference, training | 
-| 354813040037\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/sagemaker\-scikit\-learn:<tag> | 0\.20\.0 | inference, training | 
+| Registry path | Version | Package version | Job types \(image scope\) | 
+| --- | --- | --- | --- | 
+| 354813040037\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/sagemaker\-scikit\-learn:<tag> | 0\.23\-1 | 0\.23\.2 | inference, training | 
+| 354813040037\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/sagemaker\-scikit\-learn:<tag> | 0\.20\.0 | 0\.20\.0 | inference, training | 
 
 ## Semantic Segmentation \(algorithm\)<a name="semantic-segmentation-ap-northeast-1.title"></a>
 
@@ -848,13 +852,13 @@ image_uris.retrieve(framework='xgboost',region='ap-northeast-1',version='1.2-1')
 ```
 
 
-| Registry path | Version | Job types \(image scope\) | 
-| --- | --- | --- | 
-| 354813040037\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.5\-1 | inference, training | 
-| 354813040037\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.3\-1 | inference, training | 
-| 354813040037\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.2\-2 | inference, training | 
-| 354813040037\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.2\-1 | inference, training | 
-| 354813040037\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.0\-1 | inference, training | 
-| 501404015308\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/xgboost:<tag> | 1 | inference, training | 
-| 354813040037\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 0\.90\-2 | inference, training | 
-| 354813040037\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 0\.90\-1 | inference, training | 
+| Registry path | Version | Package version | Job types \(image scope\) | 
+| --- | --- | --- | --- | 
+| 354813040037\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.5\-1 | 1\.5\.2 | inference, training | 
+| 354813040037\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.3\-1 | 1\.3\.3 | inference, training | 
+| 354813040037\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.2\-2 | 1\.2\.0 | inference, training | 
+| 354813040037\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.2\-1 | 1\.2\.0 | inference, training | 
+| 354813040037\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.0\-1 | 1\.0 | inference, training | 
+| 501404015308\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/xgboost:<tag> | 1 | 1\.5\.2 | inference, training | 
+| 354813040037\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 0\.90\-2 | 0\.90 | inference, training | 
+| 354813040037\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 0\.90\-1 | 0\.90 | inference, training | 

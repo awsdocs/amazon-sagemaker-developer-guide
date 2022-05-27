@@ -77,7 +77,7 @@ with Tracker.create(display_name="Preprocessing", sagemaker_boto_client=sm) as t
 
 The following procedure creates and tracks an experiment to determine the effect of the model's `num_hidden_channel` hyperparameter\. As part of the experiment, five trials are created inside a loop, one for each value of the `num_hidden_channel` hyperparameter\. Later in the notebook, you'll compare the results of these five trials\.
 
-1. In the left sidebar of Studio, choose the **SageMaker Components and registries** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Registries_entities_small.png) \)\. In the dropdown menu, choose **Experiments and trials** to display the list of experiments in your account\.
+1. In the left sidebar of Studio, choose the **SageMaker resources** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Registries_entities_small.png) \)\. In the dropdown menu, choose **Experiments and trials** to display the list of experiments in your account\.
 
 1. Run the following cell\.
 

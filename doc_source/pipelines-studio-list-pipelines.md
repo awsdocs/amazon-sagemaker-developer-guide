@@ -10,7 +10,7 @@ This procedure shows you how to directly find a pipeline and view its details pa
 1. Select **Pipelines** from the dropdown list\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/yosemite/select-pipelines.png)
 
-1. Drag the right border of the **Components and registries** pane to the right to view all the columns\. Use search to narrow the list of pipelines\. 
+1. Drag the right border of the **SageMaker resources** pane to the right to view all the columns\. Use search to narrow the list of pipelines\. 
 
    Search is a two\-step process\. First, you enter characters that match the column name you want to search\. Second, you enter characters to match the item in that column\. 
 

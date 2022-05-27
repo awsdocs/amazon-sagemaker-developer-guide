@@ -25,7 +25,7 @@ In this step, you create a SageMaker MLOps project by using a SageMaker\-provide
 
 1. Sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
-1. Choose **Components and registries**, and then select **Projects** from the dropdown list\.
+1. Choose **SageMaker resources**, and then select **Projects** from the dropdown list\.
 
 1. Choose **Create project**\.
 
@@ -43,7 +43,7 @@ After you create the project, two CodeCommit repositories are created in the pro
 
 **To clone the code repository**
 
-1. Choose **Components and registries**, and then select **Projects** from the dropdown list\.
+1. Choose **SageMaker resources**, and then select **Projects** from the dropdown list\.
 
 1. Find the name of the project you created in the previous step and double\-click on it to open the project tab for your project\.
 
@@ -82,7 +82,7 @@ Now you approve the new model version that was created in the previous step to i
 
 **To approve the model version**
 
-1. Choose **Components and registries**, and then select **Projects** from the dropdown list\.
+1. Choose **SageMaker resources**, and then select **Projects** from the dropdown list\.
 
 1. Find the name of the project you created in the first step and double\-click on it to open the project tab for your project\.
 

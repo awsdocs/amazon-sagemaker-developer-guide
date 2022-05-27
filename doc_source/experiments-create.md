@@ -56,7 +56,7 @@ The `tags` parameter is optional\. You can search for the tag using Studio, the 
                                        tags = [{'Key': 'demo-experiments', 'Value': 'demo1'}])
    ```
 
-1. \(Studio\) To view the experiment in SageMaker Studio, in the left sidebar, choose the **Components and registries** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png) \)\. In the drop\-down menu, select **Experiments and trials** to display the experiments browser\.
+1. \(Studio\) To view the experiment in SageMaker Studio, in the left sidebar, choose the **SageMaker resources** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png) \)\. In the drop\-down menu, select **Experiments and trials** to display the experiments browser\.
 
    After the code runs, the experiment list contains the new experiment\. It might take a moment for the list to refresh and display the experiment\. The filter on the experiment tag is also displayed\. Only experiments that have a matching tag are displayed\. Your list should look similar to the following:  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-setup-experiment-list.png)
