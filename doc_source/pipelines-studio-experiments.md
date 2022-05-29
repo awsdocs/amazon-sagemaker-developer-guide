@@ -24,13 +24,13 @@ Experiments integration was introduced in v2\.41\.0 of the [Amazon SageMaker Pyt
 
 **To view the trial components list from the experiments list**
 
-1. In the left sidebar of Studio, choose the **Components and registries** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png)\)\.
+1. In the left sidebar of Studio, choose the **SageMaker resources** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png)\)\.
 
 1. Select **Experiments and trials** from the dropdown list\.
 
 1. Use search to filter the list to experiments created by a pipeline\.
 
-   1. Drag the right border of the **Components and registries** pane to the right until you can see the **Experiment type** column\.
+   1. Drag the right border of the **SageMaker resources** pane to the right until you can see the **Experiment type** column\.
 
    1. In the search box, enter `ex` and choose **Experiment type**\.
 

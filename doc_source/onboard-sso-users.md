@@ -19,8 +19,6 @@ This topic describes how to onboard to Amazon SageMaker Domain using AWS SSO aut
 1. If you don't have an AWS SSO account in the same Region as your SageMaker Domain, you must create an AWS SSO account in the same Region as your SageMaker Domain before proceeding\. To continue to onboard without creating a new AWS SSO account, choose the **AWS Identity and Access Management \(IAM\)** authentication method or the **Quick setup** procedure, which also uses IAM\.
 
    For information about setting up AWS SSO for use with Domain, see [Set Up AWS SSO for Use with Amazon SageMaker Domain](onboard-sso-setup.md)\.
-**Note**  
-To associate a SageMaker Studio UserProfile with AWS SSO, the UserProfile must be have been created using the AWS console\.
 
 1. Under **Permission**, for **IAM role**, choose an option from the role selector\.
 

@@ -209,7 +209,7 @@ Collect metrics with the `DescribeInferenceRecommendationsJob` API\. Specify the
 
 ```
 load_test_response = sagemaker_client.describe_inference_recommendations_job(
-                                                        job_name=load_test_job_name
+                                                        JobName=load_test_job_name
                                                         )
 ```
 

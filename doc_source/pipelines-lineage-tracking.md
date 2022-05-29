@@ -17,7 +17,7 @@ Lineage tracking in Studio is centered around a directed acyclic graph \(DAG\)\.
 
 1. Sign in to SageMaker Studio\.
 
-1. In the left sidebar of Studio, choose the **SageMaker Components and registries** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png)\)\.
+1. In the left sidebar of Studio, choose the **SageMaker resources** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png)\)\.
 
 1. In the drop\-down menu, select **Pipelines**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/yosemite/pipeline-components-projects.png)
