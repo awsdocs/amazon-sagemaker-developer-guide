@@ -111,7 +111,7 @@ image_uris.retrieve(framework='forecasting-deepar',region='ap-northeast-3')
 
 | Registry path | Version | Job types \(image scope\) | 
 | --- | --- | --- | 
-| 867004704886\.dkr\.ecr\.ap\-northeast\-2\.amazonaws\.com/forecasting\-deepar:<tag> | 1 | inference, training | 
+| 867004704886\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/forecasting\-deepar:<tag> | 1 | inference, training | 
 
 ## Factorization Machines \(algorithm\)<a name="factorization-machines-ap-northeast-3.title"></a>
 
