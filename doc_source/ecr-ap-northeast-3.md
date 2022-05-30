@@ -7,6 +7,7 @@ The following topics list parameters for each of the algorithms and deep learnin
 + [BlazingText \(algorithm\)](#blazingtext-ap-northeast-3.title)
 + [Clarify \(algorithm\)](#clarify-ap-northeast-3.title)
 + [Debugger \(algorithm\)](#debugger-ap-northeast-3.title)
++ [DeepAR Forecasting \(algorithm\)](#forecasting-deepar-ap-northeast-3.title)
 + [Factorization Machines \(algorithm\)](#factorization-machines-ap-northeast-3.title)
 + [Hugging Face \(algorithm\)](#huggingface-ap-northeast-3.title)
 + [IP Insights \(algorithm\)](#ipinsights-ap-northeast-3.title)
@@ -96,6 +97,21 @@ image_uris.retrieve(framework='debugger',region='ap-northeast-3')
 | Registry path | Version | Job types \(image scope\) | 
 | --- | --- | --- | 
 | 479947661362\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/sagemaker\-debugger\-rules:<tag> | latest | debugger | 
+
+## DeepAR Forecasting \(algorithm\)<a name="forecasting-deepar-ap-northeast-3.title"></a>
+
+<!-- [PR not merged to sagemaker-sdk yet]
+SageMaker Python SDK example to retrieve registry path\.
+
+```
+from sagemaker import image_uris
+image_uris.retrieve(framework='forecasting-deepar',region='ap-northeast-3')
+```
+-->
+
+| Registry path | Version | Job types \(image scope\) | 
+| --- | --- | --- | 
+| 867004704886\.dkr\.ecr\.ap\-northeast\-2\.amazonaws\.com/forecasting\-deepar:<tag> | 1 | inference, training | 
 
 ## Factorization Machines \(algorithm\)<a name="factorization-machines-ap-northeast-3.title"></a>
 
@@ -634,4 +650,4 @@ image_uris.retrieve(framework='xgboost',region='ap-northeast-3',version='1.2-1')
 | 867004704886\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.0\-1 | 1\.0 | inference, training | 
 | 867004704886\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/xgboost:<tag> | 1 | 1\.5\.2 | inference, training | 
 | 867004704886\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/sagemaker\-xgboost:<tag> | 0\.90\-2 | 0\.90 | inference, training | 
-| 867004704886\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/sagemaker\-xgboost:<tag> | 0\.90\-1 | 0\.90 | inference, training | 
+| 867004704886\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/sagemaker\-xgboost:<tag> | 0\.90\-1 | 0\.90 | inference, training |
