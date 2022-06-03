@@ -12,7 +12,7 @@ Use this page to learn more about these built\-in and custom transforms\.
 
 ## Transform UI<a name="data-wrangler-transform-ui"></a>
 
-Most of the built\-in transforms are located in the **Prepare** tab of the Data Wrangler UI\. The Join and Concatenate transforms are accessed through the data flow view\. Use the following table to preview these two views\. 
+Most of the built\-in transforms are located in the **Prepare** tab of the Data Wrangler UI\. You can access the join and concatenate transforms through the data flow view\. Use the following table to preview these two views\. 
 
 ------
 #### [ Transform ]
@@ -40,7 +40,7 @@ To join two datasets, select the first dataset in your data flow and choose **Jo
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/join-1.png)
 
-When you choose **Configure** to configure your join, you see results similar to those shown in the following image\. Your join configuration is display in the left panel\. You can use this panel to choose the joined dataset name, join type, and columns to join\. The main panel displays three tables\. The top two tables display the Left and Right datasets on the left and right respectively\. Under this table, you can preview the joined dataset\. 
+When you choose **Configure** to configure your join, you see results similar to those shown in the following image\. Your join configuration is display in the left panel\. You can use this panel to choose the joined dataset name, join type, and columns to join\. The main panel displays three tables\. The top two tables display the left and right datasets on the left and right respectively\. Under this table, you can preview the joined dataset\. 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/join-2.png)
 
@@ -53,7 +53,7 @@ To concatenate two datasets, you select the first dataset in your data flow and 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/concat-1.png)
 
-When you choose **Configure** to configure your concatenation, you see results similar to those shown in the following image\. Your concatenate configuration displays in the left panel\. You can use this panel to choose the concatenated dataset's name, and choose to remove duplicates after concatenation and add columns to indicate the source dataframe\. The main panel displays three tables\. The top two tables display the Left and Right datasets on the left and right respectively\. Under this table, you can preview the concatenated dataset\. 
+When you choose **Configure** to configure your concatenation, you see results similar to those shown in the following image\. Your concatenate configuration displays in the left panel\. You can use this panel to choose the concatenated dataset's name, and choose to remove duplicates after concatenation and add columns to indicate the source dataframe\. The main panel displays three tables\. The top two tables display the left and right datasets on the left and right respectively\. Under this table, you can preview the concatenated dataset\. 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/concat-2.png)
 
@@ -106,15 +106,15 @@ Use the following procedure to join two dataframes\.
 
 1. Give your concatenated dataset a name using the **Name** field\.
 
-1. \(Optional\) Select the check box next to **Remove duplicates after concatenation** to remove duplicate columns\. 
+1. \(Optional\) Select the checkbox next to **Remove duplicates after concatenation** to remove duplicate columns\. 
 
-1. \(Optional\) Select the check box next to **Add column to indicate source dataframe** if, for each column in the new dataset, you want to add an indicator of the column's source\. 
+1. \(Optional\) Select the checkbox next to **Add column to indicate source dataframe** if, for each column in the new dataset, you want to add an indicator of the column's source\. 
 
 1. Choose **Apply** to preview the new dataset\. 
 
 1. Choose **Add** to add the new dataset to your data flow\. 
 
-## Balance data<a name="data-wrangler-transform-balance-data"></a>
+## Balance Data<a name="data-wrangler-transform-balance-data"></a>
 
 You can balance the data for datasets with an underrepresented category\. Balancing a dataset can help you create better models for binary classification\.
 
@@ -136,7 +136,7 @@ Data Wrangler interpolates non\-numeric features by copying from either of the i
 
 The **Custom Transforms** group allows you to use Python \(User\-Defined Function\), Pyspark, Pandas, or Pyspark \(SQL\) to define custom transformations\. For all three options, you use the variable `df` to access the dataframe to which you want to apply the transform\. If you're not using Python \(User\-Defined Function\), you don't need to include a return statement\. Choose **Preview** to preview the result of the custom transform\. Choose **Add** to add the custom transform to your list of **Previous steps**\.
 
-You can import the popular libraries with an `import` statement in the custom transform code block such as the following:
+You can import the popular libraries with an `import` statement in the custom transform code block, such as the following:
 + Numpy version 1\.19\.0
 + Scikit\-learn version 0\.23\.2
 + Scipy version 1\.5\.4
@@ -158,7 +158,7 @@ The following provide additional context and examples for writing custom transfo
 
 **Python \(User\-Defined Function\)**
 
-The Python function gives you the ability to write custom transformations without needing to know Apache Spark or Pandas\. Data Wrangler is optimized to run your custom code quickly\. You get similar performance between using custom Python code and an Apache Spark plugin\.
+The Python function gives you the ability to write custom transformations without needing to know Apache Spark or Pandas\. Data Wrangler is optimized to run your custom code quickly\. You get similar performance using custom Python code and an Apache Spark plugin\.
 
 To use the Python \(User\-Defined Function\) code block, you specify the following:
 + **Input column** – The input column where you're applying the transform\.
@@ -226,11 +226,11 @@ For more information, see the [Spark documentation](http://spark.apache.org/docs
 
 ## Encode Categorical<a name="data-wrangler-transform-cat-encode"></a>
 
-Categorical data is usually composed of a finite number of categories, where each category is represented with a string\. For example, if you have a table of customer data, a column that indicates the country a person lives in is categorical\. The categories would be Afghanistan, Albania, Algeria, and so on\. Categorical data can be *nominal* or *ordinal*\. Ordinal categories have an inherent order, and nominal categories do not\. The highest degree obtained \(High school, Bachelors, Master\) is an example of ordinal categories\. 
+Categorical data is usually composed of a finite number of categories, where each category is represented with a string\. For example, if you have a table of customer data, a column that indicates the country a person lives in is categorical\. The categories would be *Afghanistan*, *Albania*, *Algeria*, and so on\. Categorical data can be *nominal* or *ordinal*\. Ordinal categories have an inherent order, and nominal categories do not\. The highest degree obtained \(*High school*, *Bachelors*, *Masters*, and so on\) is an example of ordinal categories\. 
 
-Encoding categorical data is the process of creating a numerical representation for categories\. For example, if your categories are Dog and Cat, you may encode this information into two vectors, `[1,0]` to represent Dog, and `[0,1]` to represent Cat\.
+Encoding categorical data is the process of creating a numerical representation for categories\. For example, if your categories are *Dog* and *Cat*, you may encode this information into two vectors, `[1,0]` to represent *Dog*, and `[0,1]` to represent *Cat*\.
 
-When you encode ordinal categories, you may need to translate the natural order of categories into your encoding\. For example, you can represent highest degree obtained with the following map: `{"High school": 1, "Bachelors": 2, "Masters":3}`\.
+When you encode ordinal categories, you may need to translate the natural order of categories into your encoding\. For example, you can represent the highest degree obtained with the following map: `{"High school": 1, "Bachelors": 2, "Masters":3}`\.
 
 Use categorical encoding to encode categorical data that is in string format into arrays of integers\. 
 
@@ -314,7 +314,7 @@ To use similarity encoding, do the following\.
    + **Input column** – The column containing the categorical data that you're encoding\.
    + **Target dimension** – \(Optional\) The dimension of the categorical embedding vector\. The default value is 30\. We recommend using a larger target dimension if you have a large dataset with many categories\.
    + **Output style** – Choose **Vector** for a single vector with all of the encoded values\. Choose **Column** to have the encoded values in separate columns\.
-   + **Output column** – \(Optional\) The name of the output column for a vector encoded output\. For a column encoded output, the prefix of the column names followed by listed number\.
+   + **Output column** – \(Optional\) The name of the output column for a vector encoded output\. For a column\-encoded output, this is the prefix of the column names followed by listed number\.
 
 ## Featurize Text<a name="data-wrangler-transform-featurize-text"></a>
 
@@ -326,13 +326,13 @@ This feature group contains two features, *Character statistics* and *Vectorize*
 
 Use **Character statistics** to generate statistics for each row in a column containing text data\. 
 
-This transforms computes the following ratios and counts for each row, and creates a new column to report the result\. The new column is named using the input column name as a prefix and a suffix that is specific to the ratio or count\. 
-+ Number of words: The total number of words in that row\. The suffix for this output column is `-stats_word_count`\.
-+ Number of characters: The total number of characters in that row\. The suffix for this output column is `-stats_char_count`\.
-+ Ratio of upper: The number of uppercase characters, from A to Z, divided by all characters in the column\. The suffix for this output column is `-stats_capital_ratio`\.
-+ Ratio of lower: The number of lowercase characters, from a to z, divided by all characters in the column\. The suffix for this output column is `-stats_lower_ratio`\.
-+ Ratio of digits: The ratio of digits in a single row over the sum of digits in the input column\. The suffix for this output column is `-stats_digit_ratio`\.
-+ Special characters ratio: The ratio of non\-alphanumeric \(characters like \#$&%:@\) characters to over the sum of all characters in the input column\. The suffix for this output column is `-stats_special_ratio`\.
+This transform computes the following ratios and counts for each row, and creates a new column to report the result\. The new column is named using the input column name as a prefix and a suffix that is specific to the ratio or count\. 
++ **Number of words**: The total number of words in that row\. The suffix for this output column is `-stats_word_count`\.
++ **Number of characters**: The total number of characters in that row\. The suffix for this output column is `-stats_char_count`\.
++ **Ratio of upper**: The number of uppercase characters, from A to Z, divided by all characters in the column\. The suffix for this output column is `-stats_capital_ratio`\.
++ **Ratio of lower**: The number of lowercase characters, from a to z, divided by all characters in the column\. The suffix for this output column is `-stats_lower_ratio`\.
++ **Ratio of digits**: The ratio of digits in a single row over the sum of digits in the input column\. The suffix for this output column is `-stats_digit_ratio`\.
++ **Special characters ratio**: The ratio of non\-alphanumeric \(characters like \#$&%:@\) characters to over the sum of all characters in the input column\. The suffix for this output column is `-stats_special_ratio`\.
 
 ### Vectorize<a name="data-wrangler-transform-featurize-text-vectorize"></a>
 
@@ -398,7 +398,7 @@ You might need to perform a series of transformations on your data to get it in 
 + [Group by a Time Series](#data-wrangler-group-by-time-series)
 + [Resample Time Series Data](#data-wrangler-resample-time-series)
 + [Handle Missing Time Series Data](#data-wrangler-transform-handle-missing-time-series)
-+ [Validate the Time Stamp of Your Time Series Data](#data-wrangler-transform-validate-timestamp)
++ [Validate the Timestamp of Your Time Series Data](#data-wrangler-transform-validate-timestamp)
 + [Standardizing the Length of the Time Series](#data-wrangler-transform-standardize-length)
 + [Extract Features from Your Time Series Data](#data-wrangler-transform-extract-time-series-features)
 + [Use Lagged Features from Your Time Series Data](#data-wrangler-transform-lag-time-series)
@@ -414,7 +414,7 @@ For example, you have the following table that tracked the average daily electri
 
 **Average Daily Household Electricity Usage**  
 
-| Household ID | Daily Time Stamp | Electricity Usage \(kWh\) | Number of Household Occupants | 
+| Household ID | Daily Timestamp | Electricity Usage \(kWh\) | Number of Household Occupants | 
 | --- | --- | --- | --- | 
 | household\_0 | 1/1/2020 | 30 | 2 | 
 | household\_0 | 1/2/2020 | 40 | 2 | 
@@ -432,9 +432,9 @@ If you choose to group by ID, you get the following table\.
 | household\_0 | \[30, 40, 35\] | \[2, 2, 3\] | 
 | household\_1 | \[45, 55\] | \[3, 4\] | 
 
-Each entry in the time series sequence is ordered by the corresponding time stamp\. The first element of the sequence corresponds to the first time stamp of the series\. For `household_0`, `30` is the first value of the **Electricity Usage Series**\. The value of `30` corresponds to the first time stamp of `1/1/2020`\.
+Each entry in the time series sequence is ordered by the corresponding timestamp\. The first element of the sequence corresponds to the first timestamp of the series\. For `household_0`, `30` is the first value of the **Electricity Usage Series**\. The value of `30` corresponds to the first timestamp of `1/1/2020`\.
 
-You can include the starting time stamp and ending time stamp\. The following table shows an example of how that appears\.
+You can include the starting timestamp and ending timestamp\. The following table shows an example of how that appears\.
 
 
 **Electricity Usage Grouped by Household ID**  
@@ -485,7 +485,7 @@ The following is an example of downsampling time series data by using the mean a
 
 **Hourly Temperature Readings Over a Day Before Downsampling**  
 
-| Time Stamp | Temperature \(Celsius\) | 
+| Timestamp | Temperature \(Celsius\) | 
 | --- | --- | 
 | 12:00 | 30 | 
 | 1:00 | 32 | 
@@ -496,7 +496,7 @@ The following is an example of downsampling time series data by using the mean a
 
 **Temperature Readings Downsampled to Every Two Hours**  
 
-| Time Stamp | Temperature \(Celsius\) | 
+| Timestamp | Temperature \(Celsius\) | 
 | --- | --- | 
 | 12:00 | 30 | 
 | 2:00 | 33\.5 | 
@@ -515,7 +515,7 @@ You can use the following procedure to resample time series data\.
 
 1. Choose **Resample**\.
 
-1. For **Timestamp**, choose the time stamp column\.
+1. For **Timestamp**, choose the timestamp column\.
 
 1. For **Frequency unit**, specify the frequency that you'll be resampling\.
 
@@ -612,13 +612,13 @@ You can use the following procedure to handle missing values\.
 
 1. Choose **Add** to add the transform to the Data Wrangler data flow\.
 
-### Validate the Time Stamp of Your Time Series Data<a name="data-wrangler-transform-validate-timestamp"></a>
+### Validate the Timestamp of Your Time Series Data<a name="data-wrangler-transform-validate-timestamp"></a>
 
 You might have time stamp data that is invalid\. You can use the **Validate time stamp** function to determine whether the timestamps in your dataset are valid\. Your timestamp can be invalid for one or more of the following reasons:
-+ Your time stamp column has missing values\.
-+ The values in your time stamp column are not formatted correctly\.
++ Your timestamp column has missing values\.
++ The values in your timestamp column are not formatted correctly\.
 
-If you have invalid time stamps in your dataset, you can't perform your analysis successfully\. You can use Data Wrangler to identify invalid time stamps and understand where you need to clean your data\.
+If you have invalid timestamps in your dataset, you can't perform your analysis successfully\. You can use Data Wrangler to identify invalid timestamps and understand where you need to clean your data\.
 
 The time series validation works in one of the two ways:
 
@@ -627,9 +627,9 @@ You can configure Data Wrangler to do one of the following if it encounters miss
 + Identify the rows that have the missing or invalid values\.
 + Throw an error if it finds any missing or invalid values in your dataset\.
 
-You can validate the time stamps on columns that either have the `timestamp` type or the `string` type\. If the column has the `string` type, Data Wrangler converts the type of the column to `timestamp` and performs the validation\.
+You can validate the timestamps on columns that either have the `timestamp` type or the `string` type\. If the column has the `string` type, Data Wrangler converts the type of the column to `timestamp` and performs the validation\.
 
-You can use the following procedure to validate the time stamps in your dataset\.
+You can use the following procedure to validate the timestamps in your dataset\.
 
 1. Open your Data Wrangler data flow\.
 
@@ -641,9 +641,9 @@ You can use the following procedure to validate the time stamps in your dataset\
 
 1. Choose **Validate timestamps**\.
 
-1. For **Timestamp Column**, choose the time stamp column\.
+1. For **Timestamp Column**, choose the timestamp column\.
 
-1. For **Policy**, choose whether you want to handle missing time stamps\.
+1. For **Policy**, choose whether you want to handle missing timestamps\.
 
 1. \(Optional\) For **Output column**, specify a name for the output column\.
 
@@ -752,7 +752,7 @@ The most common uses of lagged features are the following:
 
 1. For **Generate lag features for this column**, choose a column\.
 
-1. For **Timestamp Column**, choose the column containing the time stamps\.
+1. For **Timestamp Column**, choose the column containing the timestamps\.
 
 1. For **Lag**, specify the duration of the lag\.
 
@@ -767,7 +767,7 @@ The most common uses of lagged features are the following:
 
 ### Create a Datetime Range In Your Time Series<a name="data-wrangler-transform-datetime-range"></a>
 
-You might have time series data that don't have time stamps\. If you know that the observations were taken at regular intervals, you can generate time stamps for the time series in a separate column\. To generate time stamps, you specify the value for the start time stamp and the frequency of the time stamps\.
+You might have time series data that don't have timestamps\. If you know that the observations were taken at regular intervals, you can generate timestamps for the time series in a separate column\. To generate timestamps, you specify the value for the start timestamp and the frequency of the timestamps\.
 
 For example, you might have the following time series data for the number of customers at a restaurant\.
 
@@ -783,12 +783,12 @@ For example, you might have the following time series data for the number of cus
 | 30 | 
 | 20 | 
 
-If you know that the restaurant opened at 5:00pm and that the observations are taken hourly, you can add a time stamp column that corresponds to the time series data\. You can see the time stamp column in the following table\.
+If you know that the restaurant opened at 5:00pm and that the observations are taken hourly, you can add a timestamp column that corresponds to the time series data\. You can see the timestamp column in the following table\.
 
 
 **Time Series Data on the Number of Customers at a Restaurant**  
 
-| Number of Customers | Time Stamp | 
+| Number of Customers | Timestamp | 
 | --- | --- | 
 | 10 | 1:00 pm | 
 | 14 | 2:00 pm | 
@@ -809,9 +809,9 @@ Use the following procedure to add a datetime range to your data\.
 
 1. Choose **Datetime range**\.
 
-1. For **Frequency type**, choose the unit used to measure the frequency of the time stamps\.
+1. For **Frequency type**, choose the unit used to measure the frequency of the timestamps\.
 
-1. For **Starting timestamp**, specify the start time stamp\.
+1. For **Starting timestamp**, specify the start timestamp\.
 
 1. For **Output column**, specify a name for the output column\.
 
@@ -823,7 +823,7 @@ Use the following procedure to add a datetime range to your data\.
 
 ### Use a Rolling Window In Your Time Series<a name="data-wrangler-transform-rolling-window"></a>
 
-You can extract features over a time period\. For example, for time, t, and a time window length of 3, and for the row that indicates the tth time stamp, we append the features that are extracted from the time series at times t \- 3, t \-2, and t \- 1\. For information on extracting features, see [Extract Features from Your Time Series Data](#data-wrangler-transform-extract-time-series-features)\. 
+You can extract features over a time period\. For example, for time, t, and a time window length of 3, and for the row that indicates the tth timestamp, we append the features that are extracted from the time series at times t \- 3, t \-2, and t \- 1\. For information on extracting features, see [Extract Features from Your Time Series Data](#data-wrangler-transform-extract-time-series-features)\. 
 
 You can use the following procedure to extract features over a time period\.
 
@@ -839,7 +839,7 @@ You can use the following procedure to extract features over a time period\.
 
 1. For **Generate rolling window features for this column**, choose a column\.
 
-1. For **Timestamp Column**, choose the column containing the time stamps\.
+1. For **Timestamp Column**, choose the column containing the timestamps\.
 
 1. \(Optional\) For **Output Column**, specify the name of the output column\.
 
@@ -851,18 +851,18 @@ You can use the following procedure to extract features over a time period\.
 
 1. Choose **Add** to add the transform to the Data Wrangler data flow\.
 
-## Featurize Date/Time<a name="data-wrangler-transform-datetime-embed"></a>
+## Featurize Datetime<a name="data-wrangler-transform-datetime-embed"></a>
 
-Use **Featurize date/time** to create a vector embedding representing a date/time field\. To use this transform, your date/time data must be in one of the following formats: 
-+ Strings describing date/time: For example, `"January 1st, 2020, 12:44pm"`\. 
+Use **Featurize date/time** to create a vector embedding representing a datetime field\. To use this transform, your datetime data must be in one of the following formats: 
++ Strings describing datetime: For example, `"January 1st, 2020, 12:44pm"`\. 
 + A Unix timestamp: A Unix timestamp describes the number of seconds, milliseconds, microseconds, or nanoseconds from 1/1/1970\. 
 
-You can choose to **Infer datetime format** and provide a **Datetime format**\. If you provide a date/time format, you must use the codes described in the [Python documentation](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes)\. The options you select for these two configurations have implications for the speed of the operation, and the final results\.
+You can choose to **Infer datetime format** and provide a **Datetime format**\. If you provide a datetime format, you must use the codes described in the [Python documentation](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes)\. The options you select for these two configurations have implications for the speed of the operation, and the final results\.
 + The most manual and computationally fastest option is to specify a **Datetime format** and select **No** for **Infer datetime format**\.
-+ To reduce manual labor, you can choose **Infer datetime format** and not specify a date/time format\. It is also a computationally fast operation; however, the first date/time format encountered in the input column is assumed to be the format for the entire column\. If there are other formats in the column, these values are NaN in the final output\. Inferring the date/time format can give you unparsed strings\. 
-+ If you don't specify a format and select **No** for **Infer datetime format**, you get the most robust results\. All the valid date/time strings are parsed\. However, this operation can be an order of magnitude slower than the first two options in this list\. 
++ To reduce manual labor, you can choose **Infer datetime format** and not specify a datetime format\. It is also a computationally fast operation; however, the first datetime format encountered in the input column is assumed to be the format for the entire column\. If there are other formats in the column, these values are NaN in the final output\. Inferring the datetime format can give you unparsed strings\. 
++ If you don't specify a format and select **No** for **Infer datetime format**, you get the most robust results\. All the valid datetime strings are parsed\. However, this operation can be an order of magnitude slower than the first two options in this list\. 
 
-When you use this transform, you specify an **Input column** which contains date/time data in one of the formats listed above\. The transform creates an output column named **Output column name**\. The format of the output column depends on your configuration using the following:
+When you use this transform, you specify an **Input column** which contains datetime data in one of the formats listed above\. The transform creates an output column named **Output column name**\. The format of the output column depends on your configuration using the following:
 + **Vector**: Outputs a single column as a vector\. 
 + **Columns**: Creates a new column for every feature\. For example, if the output contains a year, month, and day, three separate columns are created for year, month, and day\. 
 
@@ -905,7 +905,7 @@ Use the following sections to learn more about the transforms this group contain
 
 This transform detects and fixes outliers in numeric features using statistics that are robust to outliers\.
 
-You must define an **Upper quantile** and a **Lower quantile**, which are used in the statistics used to calculate outliers\. You also need to specify the number of **Standard deviations** from which a value must vary from the mean to be considered an outlier\. For example, if you specify 3 for **Standard deviations**, a value must fall more than 3 standard deviations from the mean to be considered an outlier\. 
+You must define an **Upper quantile** and a **Lower quantile**, which are used in the statistics used to calculate outliers\. You must also specify the number of **Standard deviations** from which a value must vary from the mean to be considered an outlier\. For example, if you specify 3 for **Standard deviations**, a value must fall more than 3 standard deviations from the mean to be considered an outlier\. 
 
 The **Fix method** is the method used to handle outliers when they are detected\. You can choose from the following:
 + **Clip**: Use this option to clip the outliers to the corresponding outlier detection bound\.
@@ -969,7 +969,7 @@ For categorical data, Data Wrangler imputes missing values using the most freque
 
 ### Add Indicator for Missing<a name="data-wrangler-transform-missing-add-indicator"></a>
 
-Use the **Add indicator for missing** transform to create a new indicator column, which contains a boolean `"false"` if a row contains a value, and `"true"` if a row contains a missing value\. 
+Use the **Add indicator for missing** transform to create a new indicator column, which contains a Boolean `"false"` if a row contains a value, and `"true"` if a row contains a missing value\. 
 
 ### Drop Missing<a name="data-wrangler-transform-drop-missing"></a>
 
@@ -1016,17 +1016,13 @@ Use the **Process Numeric** feature group to process numeric data\. Each scalar 
 After you've imported your data, you can use the **Sampling** transformer to take one or more samples of it\. When you use the sampling transformer, Data Wrangler samples your original dataset\.
 
 You can choose one of the following sample methods:
-+ **Limit** – Samples the dataset starting from the first row up to the limit that you specify\.
-+ **Randomized** – Takes a random sample of a size that you specify\.
-+ **Stratified** – Takes a stratified random sample\.
++ **Limit**: Samples the dataset starting from the first row up to the limit that you specify\.
++ **Randomized**: Takes a random sample of a size that you specify\.
++ **Stratified**: Takes a stratified random sample\.
 
 You can stratify a randomized sample to make sure that it represents the original distribution of the dataset\.
 
 You might be performing data preparation for multiple use cases\. For each use case, you can take a different sample and apply a different set of transformations\.
-
-The following GIF shows an example of taking a **Randomized** sample and a **Stratified** sample from a dataset\.
-
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/sampling-transformer.gif)
 
 The following procedure describes the process of creating a random sample\. The preceding GIF shows the steps used in the procedure\.
 
@@ -1084,7 +1080,7 @@ The following transforms are supported under **Search and edit**\. All transform
 |  Replace between delimiters  |  Returns a string with the substring found between the first appearance of a **Left delimiter** and the last appearance of a **Right delimiter** replaced by **Replacement string**\. If no match is found, nothing is replaced\.   | 
 |  Replace from position  |  Returns a string with the substring between **Start position** and **Start position** plus **Length** replaced by **Replacement string**\. If **Start position** plus **Length** is greater than the length of the replacement string, the output contains **…**\.  | 
 |  Convert regex to missing  |  Converts a string to `None` if invalid and returns the result\. Validity is defined with a regular expression in **Pattern**\.  | 
-|  Split string by delimiter  |  Returns an array of strings from the input string, split by **Delimiter**, with up to **Max number of splits** \(optional\)\. Delimiter defaults to white space\.   | 
+|  Split string by delimiter  |  Returns an array of strings from the input string, split by **Delimiter**, with up to **Max number of splits** \(optional\)\. The delimiter defaults to white space\.   | 
 
 ## Split data<a name="data-wrangler-transform-split-data"></a>
 
@@ -1267,7 +1263,7 @@ The following transforms are included in this transform group\. If a transform o
 |  Is numeric  |  Returns `True` if a string only contains numbers\. Otherwise, returns `False`\.  | 
 |  Is decimal  |  Returns `True` if a string only contains decimal numbers\. Otherwise, returns `False`\.  | 
 
-## Unnest JSON data<a name="data-wrangler-transform-flatten-column"></a>
+## Unnest JSON Data<a name="data-wrangler-transform-flatten-column"></a>
 
 If you have a \.csv file, you might have values in your dataset that are JSON strings\. Similarly, you might have nested data in columns of either a Parquet file or a JSON document\.
 
@@ -1306,7 +1302,7 @@ seq, name,                                    age, city, state, name_first, name
 
 Choose **Keys to flatten on** to specify the first\-level keys that want to extract as separate columns\. If you don't specify any keys, Data Wrangler extracts all the keys by default\.
 
-## Explode array<a name="data-wrangler-transform-explode-array"></a>
+## Explode Array<a name="data-wrangler-transform-explode-array"></a>
 
 Use **Explode array** to expand the values of the array into separate output rows\. For example, the operation can take each value in the array, \[\[1, 2, 3,\], \[4, 5, 6\], \[7, 8, 9\]\] and create a new column with the following rows:
 
@@ -1318,7 +1314,7 @@ Use **Explode array** to expand the values of the array into separate output row
 
 Data Wrangler names the new column, input\_column\_name\_flatten\.
 
-You can call the **Explode array** operation multiple times to get the nested values of the array into separate output columns\. The following example shows the result of calling the operation multiple times on dataset with a nested array\.
+You can call the **Explode array** operation multiple times to get the nested values of the array into separate output columns\. The following example shows the result of calling the operation multiple times on a dataset with a nested array\.
 
 
 **Putting the values of a nested array into separate columns**  

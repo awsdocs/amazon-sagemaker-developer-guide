@@ -10,7 +10,7 @@ For any other Transformers models, you need to use the [smp\.tp\_register\_with\
 **Note**  
 To use tensor parallelism for training Hugging Face Transformer models, you should add `transformers==4.4.2` to `requirements.txt` for installing the Transformers library in Deep Learning Container for PyTorch v1\.8\.1 and later\.
 
-If you use one of the Hugging Face Transformer models, you do not need to manually implement hooks to translate Transformer APIs to `smdistributed` transformer layers\. You also do not need to manually register hooks for tensor parallelism using the `smp.tp_register` API\. You can activate tensor parallelism by using the context manager `smp.tensor_parallelism()` and wrapping the model by [https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/latest/smd_model_parallel_pytorch.html#smp.DistributedModel](https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/latest/smd_model_parallel_pytorch.html#smp.DistributedModel)\. For example, see the following code:
+If you use one of the Hugging Face Transformer models, you don't need to manually implement hooks to translate Transformer APIs to `smdistributed` transformer layers\. You also do not need to manually register hooks for tensor parallelism using the `smp.tp_register` API\. You can activate tensor parallelism by using the context manager `smp.tensor_parallelism()` and wrapping the model by [https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/latest/smd_model_parallel_pytorch.html#smp.DistributedModel](https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/latest/smd_model_parallel_pytorch.html#smp.DistributedModel)\. For example, see the following code:
 
 ```
 from transformers import AutoModelForCausalLM

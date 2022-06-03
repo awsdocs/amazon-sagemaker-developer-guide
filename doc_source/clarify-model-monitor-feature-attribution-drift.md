@@ -44,5 +44,7 @@ This notebook has been verified to run in SageMaker Studio only\. If you need in
 **Topics**
 + [Model Monitor Example Notebook](#clarify-model-monitor-sample-notebooks-feature-drift)
 + [Create a SHAP Baseline for Models in Production](clarify-model-monitor-shap-baseline.md)
++ [Model Feature Attribution Drift Violations](clarify-model-monitor-model-attribution-drift-violations.md)
++ [Configure Parameters to Monitor Attribution Drift](clarify-config-json-monitor-model-explainability-parameters.md)
 + [Schedule Feature Attribute Drift Monitoring Jobs](clarify-model-monitor-feature-attribute-drift-schedule.md)
 + [Inspect Reports for Feature Attribute Drift in Production Models](clarify-feature-attribute-drift-report.md)

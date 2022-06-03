@@ -33,11 +33,13 @@ After receiving the request, SageMaker does the following:
 
    1. For **Elastic Inference**, choose an inference accelerator type to associate with the notebook instance if you plan to conduct inferences from the notebook instance, or choose **none**\. For information about elastic inference, see [Use Amazon SageMaker Elastic Inference \(EI\) ](ei.md)\.
 
-   1. For **Platform Identifier**, choose a platform type to create the notebook instance on\. This platform type dictates the Operating System that your notebook instance is created with\. For information about platform identifier type, see [Amazon Linux 2 vs Amazon Linux notebook instances](nbi-al2.md)\.
+   1. For **Platform Identifier**, choose a platform type to create the notebook instance on\. This platform type dictates the Operating System and the JupyterLab version that your notebook instance is created with\. For information about platform identifier type, see [Amazon Linux 2 vs Amazon Linux notebook instances](nbi-al2.md)\. For information about JupyterLab versions, see [JupyterLab versioning](nbi-jl.md)\.
 
    1. \(Optional\) **Additional configuration** lets advanced users create a shell script that can run when you create or start the instance\. This script, called a lifecycle configuration script, can be used to set the environment for the notebook or to perform other functions\. For information, see [Customize a Notebook Instance Using a Lifecycle Configuration Script](notebook-lifecycle-config.md)\.
 
    1. \(Optional\) **Additional configuration** also lets you specify the size, in GB, of the ML storage volume that is attached to the notebook instance\. You can choose a size between 5 GB and 16,384 GB, in 1 GB increments\. You can use the volume to clean up the training dataset or to temporarily store validation or other data\.
+
+   1. \(Optional\) For **Minimum IMDS Version**, select a version from the dropdown list\. If this value is set to v1, both versions can be used with the notebook instance\. If v2 is selected, then only IMDSv2 can be used with the notebook instance\. For information about IMDSv2, see [Use IMDSv2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html)\.
 
    1. For **IAM role**, choose either an existing IAM role in your account that has the necessary permissions to access SageMaker resources or choose **Create a new role**\. If you choose **Create a new role**, SageMaker creates an IAM role named `AmazonSageMaker-ExecutionRole-YYYYMMDDTHHmmSS`\. The AWS managed policy `AmazonSageMakerFullAccess` is attached to the role\. The role provides permissions that allow the notebook instance to call SageMaker and Amazon S3\.
 

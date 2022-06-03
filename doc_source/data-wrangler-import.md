@@ -21,14 +21,14 @@ When you import a dataset from a data source, it appears in your data flow\. Dat
 When you import data from Athena or Amazon Redshift, the imported data is automatically stored in the default SageMaker S3 bucket for the AWS Region in which you are using Studio\. Additionally, Athena stores data you preview in Data Wrangler in this bucket\. To learn more, see [Imported Data Storage](#data-wrangler-import-storage)\.
 
 **Important**  
-The default Amazon S3 bucket may not have the least permissive security settings like bucket policy and server\-side encryption \(SSE\)\. We strongly recommend that you [ Add a Bucket Policy To Restrict Access to Datasets Imported to Data Wrangler](https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-security.html#data-wrangler-security-bucket-policy)\. 
+The default Amazon S3 bucket may not have the least permissive security settings, such as bucket policy and server\-side encryption \(SSE\)\. We strongly recommend that you [ Add a Bucket Policy To Restrict Access to Datasets Imported to Data Wrangler](https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-security.html#data-wrangler-security-bucket-policy)\. 
 
 **Important**  
 In addition, if you use the managed policy for SageMaker, we strongly recommend that you scope it down to the most restrictive policy that allows you to perform your use case\. For more information, see [Grant an IAM Role Permission to Use Data Wrangler](data-wrangler-security.md#data-wrangler-security-iam-policy)\.
 
 ## Import data from Amazon S3<a name="data-wrangler-import-s3"></a>
 
-You can use Amazon Simple Storage Service \(Amazon S3\) to store and retrieve any amount of data at any time, from anywhere on the web\. You can accomplish these tasks using the AWS Management Console, which is a simple and intuitive web interface, and the Amazon S3 API\. If you've stored your dataset locally, we recommend that you add it to an S3 bucket for import into Data Wrangler\. To learn how, see [Uploading an object to a bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/PuttingAnObjectInABucket.html) in the Amazon Simple Storage Service User Guide\. 
+You can use Amazon Simple Storage Service \(Amazon S3\) to store and retrieve any amount of data, at any time, from anywhere on the web\. You can accomplish these tasks using the AWS Management Console, which is a simple and intuitive web interface, and the Amazon S3 API\. If you've stored your dataset locally, we recommend that you add it to an S3 bucket for import into Data Wrangler\. To learn how, see [Uploading an object to a bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/PuttingAnObjectInABucket.html) in the Amazon Simple Storage Service User Guide\. 
 
 Data Wrangler uses [S3 Select](http://aws.amazon.com/s3/features/#s3-select) to allow you to preview your Amazon S3 files in Data Wrangler\. You incur standard charges for each file preview\. To learn more about pricing, see the **Requests & data retrievals** tab on [Amazon S3 pricing](http://aws.amazon.com/s3/pricing/)\. 
 
@@ -54,7 +54,7 @@ Data Wrangler gives you the ability to either import the entire dataset or sampl
 
 After you've imported your data, you can also use the sampling transformer to take one or more samples from your entire dataset\. For more information about the sampling transformer, see [Sampling](data-wrangler-transform.md#data-wrangler-transform-sampling)\.
 
-You can import either a single file or multiple files as a dataset\. You can use the multifile import operation when you have a dataset that is partitioned into separate files\. It takes all of the files from an Amazon S3 directory and imports them as a single dataset\. For information on the types of files that you can import and how to import them, see the following\.
+You can import either a single file or multiple files as a dataset\. You can use the multifile import operation when you have a dataset that is partitioned into separate files\. It takes all of the files from an Amazon S3 directory and imports them as a single dataset\. For information on the types of files that you can import and how to import them, see the following sections\.
 
 ------
 #### [ Single File Import ]
@@ -65,7 +65,7 @@ You can import single files in the following formats:
 + Javascript Object Notation \(JSON\)
 + Optimized Row Columnar \(ORC\)
 
-For files formatted in JSON, Data Wrangler supports both JSON lines \(\.jsonl\) and JSON documents \(\.json\)\. When you preview your data, it automatically shows the JSON in tabular format\. For nested JSON documents that are larger than 5 MB, Data Wrangler shows the schema for the structure and the arrays as values in the dataset\. Use the **Flatten structured** and **Explode array** operators to display the nested values in tabular format\. For more information, see [Unnest JSON data](data-wrangler-transform.md#data-wrangler-transform-flatten-column) and [Explode array](data-wrangler-transform.md#data-wrangler-transform-explode-array)\.
+For files formatted in JSON, Data Wrangler supports both JSON lines \(\.jsonl\) and JSON documents \(\.json\)\. When you preview your data, it automatically shows the JSON in tabular format\. For nested JSON documents that are larger than 5 MB, Data Wrangler shows the schema for the structure and the arrays as values in the dataset\. Use the **Flatten structured** and **Explode array** operators to display the nested values in tabular format\. For more information, see [Unnest JSON Data](data-wrangler-transform.md#data-wrangler-transform-flatten-column) and [Explode Array](data-wrangler-transform.md#data-wrangler-transform-explode-array)\.
 
 When you choose a dataset, you can rename it, specify the file type, and identify the first row as a header\.
 
@@ -81,7 +81,7 @@ You can import a dataset that you've partitioned into multiple files in an Amazo
 
 1. Select the file that you want to import\. If your dataset does not have a \.csv or \.parquet extension, select the data type from the **File Type** dropdown list\.
 
-1. If your CSV file has a header, select the check box next to **Add header to table**\.
+1. If your CSV file has a header, select the checkbox next to **Add header to table**\.
 
 1. Use the **Preview** table to preview your dataset\. This table shows up to 100 rows\. 
 
@@ -118,9 +118,9 @@ Use the following procedure to import multiple files\.
 
 1. Select the folder containing the files that you want to import\. Each file must be in one of the supported formats\. Your files must be the same data type\.
 
-1. If your folder contains CSV files with headers, select the check box next to **First row is header**\.
+1. If your folder contains CSV files with headers, select the checkbox next to **First row is header**\.
 
-1. If you're files are nested within other folders, select the check box next to **Include nested directories**\.
+1. If your files are nested within other folders, select the checkbox next to **Include nested directories**\.
 
 1. \(Optional\) Choose **Add filename column** add a column to the dataset that shows the filename for each observation\.
 
@@ -162,7 +162,7 @@ If you use AWS Lake Formation with Athena, make sure your Lake Formation IAM per
 
 1. Choose **Advanced configuration**\.
 
-   **Enable sampling** is selected by default\. When sampling is activated, Data Wrangler samples and imports approximately 50% of the queried data\. Unselect this check box to turn off sampling\.
+   **Enable sampling** is selected by default\. When sampling is activated, Data Wrangler samples and imports approximately 50% of the queried data\. Deselect this checkbox to turn off sampling\.
 
 1. Specify a value for **Workgroup** if you're using one\.
 
@@ -186,7 +186,7 @@ The default Amazon S3 bucket is in the same AWS Region in which your Studio inst
 
 For either the default Amazon S3 bucket or the bucket that you specify, you have the following encryption options:
 + The default AWS service\-side encryption with an Amazon S3 managed key \(SSE\-S3\)
-+  An AWS Key Management Service \(KMS\) key that you specify
++  An AWS Key Management Service \(AWS KMS\) key that you specify
 
 An AWS KMS key is an encryption key that you create and manage\. For more information on KMS keys, see [AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)\.
 
@@ -232,21 +232,21 @@ The following image shows all the fields from the preceding procedure\.
 
 After your connection is successfully established, it appears as a data source under **Data Import**\. Select this data source to query your database and import data\.
 
-**To query and import data from Redshift**
+**To query and import data from Amazon Redshift**
 
 1. Select the connection that you want to query from **Data Sources**\.
 
 1. Select a **Schema**\. To learn more about Amazon Redshift Schemas, see [Schemas](https://docs.aws.amazon.com/redshift/latest/dg/r_Schemas_and_tables.html) in the Amazon Redshift Database Developer Guide\.
 
-1. Under **Advanced configuration**, **Enable sampling** is selected by default\. If you do not uncheck this box, Data Wrangler samples and imports approximately 50% of the queried data\. Unselect this check box to turn off sampling\. 
+1. Under **Advanced configuration**, **Enable sampling** is selected by default\. If you do not uncheck this box, Data Wrangler samples and imports approximately 50% of the queried data\. Deselect this checkbox to turn off sampling\. 
 
-1. Enter your query in the query editor and use the **Run** button to run the query\. After a successful query, you can preview your result under the editor\.
+1. Enter your query in the query editor and choose **Run** to run the query\. After a successful query, you can preview your result under the editor\.
 
 1. Select **Import dataset** to import the dataset that has been queried\. 
 
 1. Enter a **Dataset name**\. If you add a **Dataset name** that contains spaces, these spaces are replaced with underscores when your dataset is imported\. 
 
-1. Select **Add**\. 
+1. Choose **Add**\. 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/import-redshift.png)
 
@@ -291,11 +291,11 @@ To give permissions to Secrets Manager, do the following\.
 
 1. Choose **Create policy**\.
 
-You can use partitions to import your data more quickly\. Partitions give Data Wrangler the ability to process the data in parallel\. By default, Data Wrangler uses 2 partitions\. For most use cases, 2 partitions gives you near\-optimal data processing speeds\.
+You can use partitions to import your data more quickly\. Partitions give Data Wrangler the ability to process the data in parallel\. By default, Data Wrangler uses 2 partitions\. For most use cases, 2 partitions give you near\-optimal data processing speeds\.
 
 If you choose to specify more than 2 partitions, you can also specify a column to partition the data\. The type of the values in the column must be numeric or date\.
 
-We recommend using partitions only if you understand how the structure of the data and how it's processed\.
+We recommend using partitions only if you understand the structure of the data and how it's processed\.
 
 Use the following procedure to import your data from a Databricks database\.
 
@@ -307,17 +307,17 @@ To import data from Databricks, do the following\.
 
 1. Choose **Launch app**\.
 
-1. From the dropdown menu, select **Studio**\.
+1. From the dropdown list, select **Studio**\.
 
 1. From the **Import data** tab of your Data Wrangler flow, choose **Add data source**\.
 
 1. Select **Databricks \(JDBC\)**\.  
-![\[Databricks (JDBC) is on the top right hand corner of the screen.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/databricks/select-databricks-jdbc.png)
+![\[Databricks (JDBC) is on the top right corner of the screen.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/databricks/select-databricks-jdbc.png)
 
 1. Specify the following fields:
    + **Dataset name** – A name that you want to use for the dataset in your Data Wrangler flow\.
    + **Driver** – **com\.simba\.spark\.jdbc\.Driver**\.
-   + **JDBC URL** – The URL to the Databricks database\. The URL formatting can vary between Databricks instances\. For information about finding the URL and the specifying the parameters within it, see [JDBC configuration and connection parameters](https://docs.databricks.com/integrations/bi/jdbc-odbc-bi.html#jdbc-configuration-and-connection-parameters)\. The following is an example of how a URL can be formatted: jdbc:spark://aws\-sagemaker\-datawrangler\.cloud\.databricks\.com:443/default;transportMode=http;ssl=1;httpPath=sql/protocolv1/o/3122619508517275/0909\-200301\-cut318;AuthMech=3;UID=*token*;PWD=*personal\-access\-token*\.
+   + **JDBC URL** – The URL of the Databricks database\. The URL formatting can vary between Databricks instances\. For information about finding the URL and the specifying the parameters within it, see [JDBC configuration and connection parameters](https://docs.databricks.com/integrations/bi/jdbc-odbc-bi.html#jdbc-configuration-and-connection-parameters)\. The following is an example of how a URL can be formatted: jdbc:spark://aws\-sagemaker\-datawrangler\.cloud\.databricks\.com:443/default;transportMode=http;ssl=1;httpPath=sql/protocolv1/o/3122619508517275/0909\-200301\-cut318;AuthMech=3;UID=*token*;PWD=*personal\-access\-token*\.
 
 1. Specify a SQL SELECT statement\.
 
@@ -332,9 +332,9 @@ To import data from Databricks, do the following\.
    1. Specify the number of partitions\. You can partition by column if you specify the number of partitions:
      + **Enter number of partitions** – Specify a value greater than 2\.
      + \(Optional\) **Partition by column** – Specify the following fields\. You can only partition by a column if you've specified a value for **Enter number of partitions**\.
-       + **Select column** – The column that you're using for the data partition\. The data type of the column must be numeric or date\.
-       + **Upper bound** – From the values in the column that you've specified, the upper bound value that you're using in the partition\. The value that you specify doesn't change the data that you're importing\. It only affects the speed of the import\. For the best performance, specify an upper bound that's close to the column's maximum\.
-       + **Lower bound** – From the values in the column that you've specified, the lower bound value that you're using in the partition\. The value that you specify doesn't change the data that you're importing\. It only affects the speed of the import\. For the best performance, specify a lower bound that's close to the column's minimum\.
+       + **Select column** – Select the column that you're using for the data partition\. The data type of the column must be numeric or date\.
+       + **Upper bound** – From the values in the column that you've specified, the upper bound is the value that you're using in the partition\. The value that you specify doesn't change the data that you're importing\. It only affects the speed of the import\. For the best performance, specify an upper bound that's close to the column's maximum\.
+       + **Lower bound** – From the values in the column that you've specified, the lower bound is the value that you're using in the partition\. The value that you specify doesn't change the data that you're importing\. It only affects the speed of the import\. For the best performance, specify a lower bound that's close to the column's minimum\.
 
 1. Choose **Import**\.
 
@@ -344,7 +344,7 @@ You can use Snowflake as a data source in SageMaker Data Wrangler to prepare dat
 
 With Snowflake as a data source in Data Wrangler, you can quickly connect to Snowflake without writing a single line of code\. Additionally, you can join your data in Snowflake with data stored in Amazon S3 and data queried through Amazon Athena and Amazon Redshift to prepare data for machine learning\. 
 
-Once connected, you can interactively query data stored in Snowflake, transform data with 300\+ pre\-configured data transformations, understand data and identify potential errors and extreme values with a set of robust pre\-configured visualization templates, quickly identify inconsistencies in your data preparation workflow, and diagnose issues before models are deployed into production\. Finally, you can export your data preparation workflow to Amazon S3 for use with other SageMaker features such as Amazon SageMaker Autopilot, Amazon SageMaker Feature Store and Amazon SageMaker Model Building Pipelines\.
+Once connected, you can interactively query data stored in Snowflake, transform data with more than 300 preconfigured data transformations, understand data and identify potential errors and extreme values with a set of robust preconfigured visualization templates, quickly identify inconsistencies in your data preparation workflow, and diagnose issues before models are deployed into production\. Finally, you can export your data preparation workflow to Amazon S3 for use with other SageMaker features such as Amazon SageMaker Autopilot, Amazon SageMaker Feature Store and Amazon SageMaker Model Building Pipelines\.
 
 You can encrypt the output of your queries using an AWS Key Management Service key that you've created\. For more information about AWS KMS, see [AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)\.
 
@@ -616,16 +616,16 @@ This section explains how to use AWS PrivateLink to establish a private connecti
 If you do not have a VPC set up, then follow the [Create a new VPC](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/gsg_create_vpc.html#create_vpc) instructions to create one\.
 
 Once you have a chosen VPC you would like to use for establishing a private connection, provide the following credentials to your Snowflake Administrator to enable AWS PrivateLink:
-+ VPC ID\.
-+ AWS Account ID\.
-+ Your corresponding account URL you use to access Snowflake\.
++ VPC ID
++ AWS Account ID
++ Your corresponding account URL you use to access Snowflake
 
 **Important**  
-As per Snowflake's documentation, enabling for your Snowflake account can take up to two business days\. 
+As described in Snowflake's documentation, enabling your Snowflake account can take up to two business days\. 
 
 #### Set up Snowflake AWS PrivateLink Integration<a name="data-wrangler-snowflake-snowflake-vpc-privatelink-setup"></a>
 
-After AWS PrivateLink is activated, retrieve the AWS PrivateLink configuration for your region by running the following command in a Snowflake worksheet\. Log into your Snowflakes console, under worksheets enter the following: `select SYSTEM$GET_PRIVATELINK_CONFIG();` 
+After AWS PrivateLink is activated, retrieve the AWS PrivateLink configuration for your Region by running the following command in a Snowflake worksheet\. Log into your Snowflake console and enter the following under **Worksheets**: `select SYSTEM$GET_PRIVATELINK_CONFIG();` 
 
 1. Retrieve the values for the following: `privatelink-account-name`, `privatelink_ocsp-url`, `privatelink-account-url`, and `privatelink_ocsp-url` from the resulting JSON object\. Examples of each value are shown in the following snippet\. Store these values for later use\.
 
@@ -658,7 +658,7 @@ After AWS PrivateLink is activated, retrieve the AWS PrivateLink configuration f
 
 1. Under **Security Group Configuration**, select **Create New Security Group** to open the default **Security Group** screen in a new tab\. In this new tab, select t**Create Security Group**\. 
 
-1. Provide a new security group a name \(such as `datawrangler-doc-snowflake-privatelink-connection`\) and a description\. Be sure to select the VPC ID you have used in previous steps\. 
+1. Provide a name for the new security group \(such as `datawrangler-doc-snowflake-privatelink-connection`\) and a description\. Be sure to select the VPC ID you have used in previous steps\. 
 
 1. Add two rules to allow traffic from within your VPC to this VPC endpoint\. 
 
@@ -666,7 +666,7 @@ After AWS PrivateLink is activated, retrieve the AWS PrivateLink configuration f
 
 1. Choose **Create Security Group**\. Retrieve the **Security Group ID** from the newly created security group \(such as `sg-xxxxxxxxxxxxxxxxx`\)\.
 
-1. In the **VPC Endpoint** configuration screen, remove the default security group\. Paste in the security group ID in the search field and select the check box\.  
+1. In the **VPC Endpoint** configuration screen, remove the default security group\. Paste in the security group ID in the search field and select the checkbox\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/snowflake-security-group.png)
 
 1. Select **Create Endpoint**\. 
@@ -719,7 +719,7 @@ This section explains how to configure Route 53 resolvers inbound endpoints for 
    + In the left hand panel in the **Security** section, select the **Security Groups** option\.
 
 1. Choose **Create Security Group**\. 
-   + Provide your security group a name \(such as `datawranger-doc-route53-resolver-sg`\) and description\.
+   + Provide a name for your security group \(such as `datawranger-doc-route53-resolver-sg`\) and a description\.
    + Select the VPC ID used in previous steps\.
    + Create rules that allow for DNS over UDP and TCP from within the VPC CIDR block\.   
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/snowflake-inbound-rules.png)
