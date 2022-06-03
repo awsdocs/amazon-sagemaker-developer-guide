@@ -10,18 +10,22 @@ These AWS managed policies add permissions required to use SageMaker Pipelines\.
 
 This AWS managed policy grants permissions commonly needed to use Callback steps and Lambda steps in SageMaker Pipelines\. The policy is added to the `AmazonSageMaker-ExecutionRole` that is created when you onboard to Amazon SageMaker Studio\. The policy can be attached to any role used for authoring or executing a pipeline\.
 
-This policy grants appropriate AWS Lambda, Amazon Simple Queue Service \(Amazon SQS\), and IAM permissions needed when building pipelines that invoke Lambda functions or include callback steps, which can be used for manual approval steps or running custom workloads\.
+This policy grants appropriate AWS Lambda, Amazon Simple Queue Service \(Amazon SQS\), Amazon EventBridge, and IAM permissions needed when building pipelines that invoke Lambda functions or include callback steps, which can be used for manual approval steps or running custom workloads\.
 
 The Amazon SQS permissions allow you to create the Amazon SQS queue needed for receiving callback messages, and also to send messages to that queue\.
 
-The Lambda permissions allow you to create, update, and delete the Lambda functions used in the pipeline steps, and also to invoke those Lambda functions\.
+The Lambda permissions allow you to create, read, update, and delete the Lambda functions used in the pipeline steps, and also to invoke those Lambda functions\.
+
+This policy grants the Amazon EMR permissions needed to run a pipelines Amazon EMR step\.
 
 **Permissions details**
 
 This policy includes the following permissions\.
-+ `lambda` – Create, delete, and invoke Lambda functions; update Lambda function code\. These permissions are limited to functions whose name includes "sagemaker"\.
-+ `sqs` – Create an Amazon SQS queue; send an Amazon SQS message\. These permissions are limited to queues whose name includes "sagemaker"\.
++ `elasticmapreduce` – Read, add, and cancel steps in a running Amazon EMR cluster\.
++ `events` – Read, create, update, and add targets to an EventBridge rule named `SageMakerPipelineExecutionEMRStepStatusUpdateRule`\.
 + `iam` – Pass an IAM role to the AWS Lambda service\.
++ `lambda` – Create, read, update, delete, and invoke Lambda functions\. These permissions are limited to functions whose name includes "sagemaker"\.
++ `sqs` – Create an Amazon SQS queue; send an Amazon SQS message\. These permissions are limited to queues whose name includes "sagemaker"\.
 
 ```
 {
@@ -32,6 +36,7 @@ This policy includes the following permissions\.
             "Action": [
                 "lambda:CreateFunction",
                 "lambda:DeleteFunction",
+                "lambda:GetFunction",
                 "lambda:InvokeFunction",
                 "lambda:UpdateFunctionCode"
             ],
@@ -66,6 +71,28 @@ This policy includes the following permissions\.
                     ]
                 }
             }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "events:DescribeRule",
+                "events:PutRule",
+                "events:PutTargets"
+            ],
+            "Resource": [
+                "arn:aws:events:*:*:rule/SageMakerPipelineExecutionEMRStepStatusUpdateRule"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "elasticmapreduce:AddJobFlowSteps",
+                "elasticmapreduce:CancelSteps",
+                "elasticmapreduce:DescribeStep"
+            ],
+            "Resource": [
+                "arn:aws:elasticmapreduce:*:*:cluster/*"
+            ]
         }
     ]
 }
@@ -78,4 +105,5 @@ View details about updates to AWS managed policies for Amazon SageMaker since th
 
 | Policy | Version | Change | Date | 
 | --- | --- | --- | --- | 
-| `AmazonSageMakerPipelinesIntegrations`  | 1 |  Initial policy  | July 30, 2021 | 
+|  [AmazonSageMakerPipelinesIntegrations](#security-iam-awsmanpol-AmazonSageMakerPipelinesIntegrations)  | 2 |  Added permissions for `lambda:GetFunction`, `events:DescribeRule`, `events:PutRule`, `events:PutTargets`, `elasticmapreduce:AddJobFlowSteps`, `elasticmapreduce:CancelSteps`, and `elasticmapreduce:DescribeStep`\.  | April 20, 2022 | 
+| AmazonSageMakerPipelinesIntegrations  | 1 |  Initial policy  | July 30, 2021 | 

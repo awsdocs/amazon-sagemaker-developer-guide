@@ -38,14 +38,14 @@ SageMaker JumpStart Industry provides the following pretrained [Robustly Optimiz
 + **RoBERTa\-SEC\-Large **
 + **RoBERTa\-SEC\-WIKI\-Large **
 
-The RoBERTa\-SEC\-Base and RoBERTa\-SEC\-Large models are the text embedding models based on [GluonNLP's RoBERTa model](https://nlp.gluon.ai/master/_modules/gluonnlp/models/roberta.html) and pre\-trained on S&P 500 SEC 10\-K/10\-Q reports of the decade of the 2010's \(from 2010 to 2019\)\. In addition to these, SageMaker JumpStart Industry provides two more RoBERTa variations, RoBERTa\-SEC\-WIKI\-Base and RoBERTa\-SEC\-WIKI\-Large, which are pretrained on the SEC filings and common texts of Wikipedia\. 
+The RoBERTa\-SEC\-Base and RoBERTa\-SEC\-Large models are the text embedding models based on [GluonNLP's RoBERTa model](https://nlp.gluon.ai/api/model.html#gluonnlp.model.RoBERTaModel) and pre\-trained on S&P 500 SEC 10\-K/10\-Q reports of the decade of the 2010's \(from 2010 to 2019\)\. In addition to these, SageMaker JumpStart Industry provides two more RoBERTa variations, RoBERTa\-SEC\-WIKI\-Base and RoBERTa\-SEC\-WIKI\-Large, which are pretrained on the SEC filings and common texts of Wikipedia\. 
 
 By deploying the model cards through SageMaker JumpStart, you'll be able to access their corresponding notebooks\. The paired notebooks will walk you through how the pretrained models can be fine\-tuned for specific classification tasks on multimodal datasets, which are enhanced by the SageMaker JumpStart Industry Python SDK\.
 
 **Note**  
 The model notebooks are for demonstration purposes only\. They should not be relied on as financial or investment advice\.
 
-The following screenshot shows the pretrained model cards provided through the SageMaker JumpStart page on Studio\. 
+The following screenshot shows the pretrained model cards provided through the SageMaker JumpStart page on Studio\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/jumpstart/jumpstart-finance-models.png)
 

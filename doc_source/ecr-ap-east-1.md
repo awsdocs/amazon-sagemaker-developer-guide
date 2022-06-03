@@ -319,6 +319,8 @@ image_uris.retrieve(framework='mxnet',region='ap-east-1',version='1.4.1',py_vers
 
 | Registry path | Version | Job types \(image scope\) | Processor types | Python versions | 
 | --- | --- | --- | --- | --- | 
+| 871362719292\.dkr\.ecr\.ap\-east\-1\.amazonaws\.com/mxnet\-training:<tag> | 1\.9\.0 | training | CPU, GPU | py38 | 
+| 871362719292\.dkr\.ecr\.ap\-east\-1\.amazonaws\.com/mxnet\-inference:<tag> | 1\.9\.0 | inference | CPU, GPU | py38 | 
 | 871362719292\.dkr\.ecr\.ap\-east\-1\.amazonaws\.com/mxnet\-training:<tag> | 1\.8\.0 | training | CPU, GPU | py37 | 
 | 871362719292\.dkr\.ecr\.ap\-east\-1\.amazonaws\.com/mxnet\-inference:<tag> | 1\.8\.0 | inference | CPU, GPU | py37 | 
 | 871362719292\.dkr\.ecr\.ap\-east\-1\.amazonaws\.com/mxnet\-training:<tag> | 1\.7\.0 | training | CPU, GPU | py3 | 
@@ -578,6 +580,7 @@ image_uris.retrieve(framework='sklearn',region='ap-east-1',version='0.23-1',imag
 
 | Registry path | Version | Package version | Job types \(image scope\) | 
 | --- | --- | --- | --- | 
+| 651117190479\.dkr\.ecr\.ap\-east\-1\.amazonaws\.com/sagemaker\-scikit\-learn:<tag> | 1\.0\-1 | 1\.0\.2 | inference, training | 
 | 651117190479\.dkr\.ecr\.ap\-east\-1\.amazonaws\.com/sagemaker\-scikit\-learn:<tag> | 0\.23\-1 | 0\.23\.2 | inference, training | 
 | 651117190479\.dkr\.ecr\.ap\-east\-1\.amazonaws\.com/sagemaker\-scikit\-learn:<tag> | 0\.20\.0 | 0\.20\.0 | inference, training | 
 

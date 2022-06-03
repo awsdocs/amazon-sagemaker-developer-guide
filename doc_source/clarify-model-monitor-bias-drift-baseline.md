@@ -12,7 +12,7 @@ model_bias_monitor = ModelBiasMonitor(
 )
 ```
 
-`DataConfig` stores information about the dataset to be analyzed \(for example, the dataset file\), its format \(that is, CSV or JSONLines\), headers \(if any\) and label\.
+`DataConfig` stores information about the dataset to be analyzed \(for example, the dataset file\), its format \(that is, CSV or JSON Lines\), headers \(if any\) and label\.
 
 ```
 model_bias_baselining_job_result_uri = f"{baseline_results_uri}/model_bias"

@@ -32,7 +32,9 @@ After selecting your sharing options, you are provided with a URL\. You can shar
 
 ## Use a Shared Notebook<a name="notebooks-sharing-using"></a>
 
-You use a shared notebook in the same way you would with a notebook that you created yourself\. When you click a link to a shared notebook for the first time, a read\-only version of the notebook opens\. To edit the shared notebook, choose **Create a Copy**\. This copies the shared notebook to your personal storage\.
+You use a shared notebook in the same way you would with a notebook that you created yourself\. You must first login to your account, then open the shared link\. If you don't have an active session, you receive an error\.
+
+When you click a link to a shared notebook for the first time, a read\-only version of the notebook opens\. To edit the shared notebook, choose **Create a Copy**\. This copies the shared notebook to your personal storage\.
 
 The copied notebook launches on an instance of the instance type and SageMaker image that the notebook was using when the sender shared it\. If you aren't currently running an instance of the instance type, a new instance is started\. Customization to the SageMaker image isn't shared\. You can also inspect the notebook snapshot by choosing **Snapshot Details**\.
 
