@@ -12,6 +12,7 @@ For the AWS Regions supported by SageMaker Studio, see [Supported Regions and Qu
 
 **Topics**
 + [Amazon SageMaker Studio UI Overview](studio-ui.md)
++ [JupyterLab Versioning](studio-jl.md)
 + [Use the Amazon SageMaker Studio Launcher](studio-launcher.md)
 + [Use Amazon SageMaker Studio Notebooks](notebooks.md)
 + [Customize Amazon SageMaker Studio](studio-customize.md)

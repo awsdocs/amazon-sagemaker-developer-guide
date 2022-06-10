@@ -4,12 +4,9 @@ Users can view SageMaker provided project templates and create projects with tho
 
 1. Grant **Projects** permissions for the Studio administrator to permit the Studio administrator to view the SageMaker\-provided templates in the AWS Service Catalog console\. The administrator can see what other Studio users create if you grant them permission to use SageMaker projects\. The administrator can also view the AWS CloudFormation template that the SageMaker\-provided project templates define in the AWS Service Catalog console\. For information about using the AWS Service Catalog console, see [What Is AWS Service Catalog](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/introduction.html) in the *AWS Service Catalog User Guide*\.
 
-1. Allow Studio users who are configured to use the domain execution role to create projects\. This grants Studio users permission to use the SageMaker\-provided project templates to create a project from within Studio\.
+1. Allow Studio users who are configured to use the same execution role as the domain to create projects\. This grants Studio users permission to use the SageMaker\-provided project templates to create a project from within Studio\.
 
-For users who use any role other than the domain execution role to view and use SageMaker\-provided project templates, you need to grant **Projects** permissions to the individual user profiles\.
-
-**Note**  
-You cannot grant permissions to a user who has created any applications\. If any such applications exist, the user must delete them before you can grant permissions\.
+For users who use any role other than the domain's execution role to view and use SageMaker\-provided project templates, you need to grant **Projects** permissions to the individual user profiles\.
 
 The following procedures show how to grant **Projects** permissions after you onboard to Studio\. For more information about onboarding to Studio, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 

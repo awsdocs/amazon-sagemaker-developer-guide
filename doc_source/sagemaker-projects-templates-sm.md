@@ -10,7 +10,12 @@ SageMaker project templates offer you the following choice of code repositories,
 + **CI/CD workflow automation**: AWS CodePipeline or Jenkins
 + **Pipeline stages**: Model building and training, model deployment, or both
 
-Each of the following topics corresponds to a template you can choose when you create your SageMaker project\. You can view the available templates in [ Step 1: Create the Project](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects-walkthrough.html#sagemaker-proejcts-walkthrough-create) of the [Project walkthrough](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects-walkthrough.html)\.
+The following discussion provides an overview of each template you can choose when you create your SageMaker project\. You can also view the available templates in Studio by following [ Step 1: Create the Project](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects-walkthrough.html#sagemaker-proejcts-walkthrough-create) of the [Project walkthrough](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects-walkthrough.html)\.
+
+For step\-by\-step instructions on how to create a real project, you can follow one of the project walkthroughs:
++ If you want to use the template [MLOps template for model building, training, and deployment](#sagemaker-projects-templates-code-commit), see [SageMaker MLOps Project Walkthrough](sagemaker-projects-walkthrough.md)\.
++ If you want to use the template [MLOps template for model building, training, and deployment with third\-party Git repositories using CodePipeline](#sagemaker-projects-templates-git-code-pipeline), see [SageMaker MLOps Project Walkthrough Using Third\-party Git Repos](sagemaker-projects-walkthrough-3rdgit.md)\.
++ If you want to use the template [MLOps template for model building, training, and deployment with third\-party Git repositories using Jenkins](#sagemaker-projects-templates-git-jenkins), see [Create Amazon SageMaker projects using third\-party source control and Jenkins](http://aws.amazon.com/blogs/machine-learning/create-amazon-sagemaker-projects-using-third-party-source-control-and-jenkins/)\.
 
 **Topics**
 + [MLOps template for model building, training, and deployment](#sagemaker-projects-templates-code-commit)
@@ -49,6 +54,8 @@ This template provides the following resources:
 The following diagram illustrates the workflow and AWS resources used by this template to help you deploy your models\.  
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/template_deploy.jpg)
+
+As previously mentioned, see [Project Walkthrough](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects-walkthrough.html) for a demonstration that uses this template to create a real project\.
 
 ## MLOps template for model building, training, deployment, and Amazon SageMaker Model Monitor<a name="sagemaker-projects-templates-model-building-training-deployment-model-monitor"></a>
 
@@ -98,6 +105,8 @@ This template provides the following resources:
 + An AWS CodeBuild project to populate the Git repositories with the seed code information\. This requires an AWS CodeStar connection from your AWS account to your account on the Git repository host\.
 + An Amazon S3 bucket to store artifacts, including CodePipeline and CodeBuild artifacts, and any artifacts generated from the SageMaker pipeline runs\.
 
+As previously mentioned, see [Project Walkthrough Using Third\-party Git Repos](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects-walkthrough-3rdgit.html) for a demonstration that uses this template to create a real project\.
+
 ## MLOps template for model building, training, and deployment with third\-party Git repositories using Jenkins<a name="sagemaker-projects-templates-git-jenkins"></a>
 + **Code repository**: Third\-party Git\. Establish the AWS CodeStar connection from your AWS account to your GitHub user or organization\. Add a tag with the key `sagemaker` and value `true` to this AWS CodeStar connection\.
 + **CI/CD workflow automation**: Jenkins
@@ -108,9 +117,9 @@ This template provides the following resources:
 + An AWS CodeBuild project to populate the Git repositories with the seed code information\. This requires an AWS CodeStar connection from your AWS account to your account on the Git repository host\.
 + An Amazon S3 bucket to store artifacts of the SageMaker project and SageMaker pipeline\.
 
-The template creates the association between your project and the source control repositories, but you need to perform additional manual steps to establish communication between your AWS account and Jenkins\. For the detailed steps, see the blog post [Create Amazon SageMaker projects using third\-party source control and Jenkins](http://aws.amazon.com/blogs/machine-learning/create-amazon-sagemaker-projects-using-third-party-source-control-and-jenkins/)\.
+The template creates the association between your project and the source control repositories, but you need to perform additional manual steps to establish communication between your AWS account and Jenkins\. For the detailed steps, see [Create Amazon SageMaker projects using third\-party source control and Jenkins](http://aws.amazon.com/blogs/machine-learning/create-amazon-sagemaker-projects-using-third-party-source-control-and-jenkins/)\.
 
-The instructions help you build the architecture shown in the following diagram, with Github as the source control repository in this example\. As shown, you are attaching your Git repository to the project to check in and manage code versions\. Jenkins initiates the model build pipeline when it detects changes to the model build code in the Git repository\. You are also connecting the project to Jenkins to orchestrate your model deployment steps, which start when you approve the model registered in the model registry, or when Jenkins detects changes to the model deployment code\.
+The instructions help you build the architecture shown in the following diagram, with GitHub as the source control repository in this example\. As shown, you are attaching your Git repository to the project to check in and manage code versions\. Jenkins initiates the model build pipeline when it detects changes to the model build code in the Git repository\. You are also connecting the project to Jenkins to orchestrate your model deployment steps, which start when you approve the model registered in the model registry, or when Jenkins detects changes to the model deployment code\.
 
 
 
@@ -118,7 +127,7 @@ The instructions help you build the architecture shown in the following diagram,
 
 In summary, the steps guide you through the following tasks:
 
-1. Establish the connection between your AWS and Github accounts\.
+1. Establish the connection between your AWS and GitHub accounts\.
 
 1. Create the Jenkins account and import needed plugins\.
 
@@ -130,7 +139,7 @@ In summary, the steps guide you through the following tasks:
 
 1. Use a CloudFormation template to set up an EventBridge rule to monitor the model registry for newly\-approved models\.
 
-1. Create the SageMaker project, which seeds your Github repositories with model build and deploy code\.
+1. Create the SageMaker project, which seeds your GitHub repositories with model build and deploy code\.
 
 1. Create your Jenkins model build pipeline with the model build seed code\.
 

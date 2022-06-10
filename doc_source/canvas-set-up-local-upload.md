@@ -26,7 +26,7 @@ If your users are uploading files from their local machines, attach a CORS polic
            "AllowedOrigins": [
                "*"
            ],
-           "ExposeHeaders": []
+           "ExposedHeaders": []
        }
    ]
    ```

@@ -1,6 +1,6 @@
 # SageMaker MLOps Project Walkthrough<a name="sagemaker-projects-walkthrough"></a>
 
-This walkthrough demonstrates how to use MLOps projects to create a CI/CD system to build, train, and deploy models\.
+This walkthrough uses the template [MLOps template for model building, training, and deployment](sagemaker-projects-templates-sm.md#sagemaker-projects-templates-code-commit) to demonstrate using MLOps projects to create a CI/CD system to build, train, and deploy models\.
 
 **Prerequisites**
 
