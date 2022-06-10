@@ -134,13 +134,13 @@ If you want to import data from Amazon Redshift, you must give yourself addition
 
 ## Step 1: Log in to Amazon SageMaker Canvas as a business user<a name="canvas-getting-started-step1"></a>
 
-Contact your administrator to guide you through the process of setting up Amazon SageMaker Canvas\. When you gain access, you see the following page\. You can choose **Getting Started** for a walkthrough of the service\.
+Contact your administrator to guide you through the process of setting up Amazon SageMaker Canvas\. When you log into SageMaker Canvas for the first time, there is a welcome message with quick getting started tutorials that you can follow for a walkthrough of the SageMaker Canvas application\.
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/canvas-get-started.png)
+![\[Screenshot of the welcome message with the getting started tutorials in the SageMaker Canvas application.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/canvas-sample-datasets-getting-started.png)
 
-The following image shows the beginning of the **Getting Started** tutorial\.
+You can follow the **Get started with Canvas** tutorial for a high\-level overview of the SageMaker Canvas application\. There are also shorter tutorials that guide you through the individual steps of using SageMaker Canvas\. These tutorials show you how to import a dataset, build a model, analyze the results of a built model, and generate predictions with your model\. You can revisit the tutorials at any time by choosing the **Help** button and then choosing **Quick tutorials** on the left navigation bar inside the SageMaker Canvas application\.
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/canvas-get-started-page.png)
+![\[Screenshot of the help panel in the SageMaker Canvas application where you can access the getting started tutorials.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/canvas-sample-datasets-help-pane.png)
 
 ## Step 2: Import and manage data<a name="canvas-getting-started-step2"></a>
 

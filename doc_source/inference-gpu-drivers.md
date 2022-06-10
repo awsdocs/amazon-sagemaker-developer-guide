@@ -9,9 +9,9 @@ Amazon SageMaker Inference supports the following drivers and instance families:
 
 | Service | GPU | Driver version | Instance types | 
 | --- | --- | --- | --- | 
-| Real\-time | NVIDIA | 440\.33\.01 | ml\.p2\.\*, ml\.p3\.\*, ml\.g4dn\.\* | 
+| Real\-time | NVIDIA | 470\.57\.02 | ml\.p2\.\*, ml\.p3\.\*, ml\.g4dn\.\* | 
 | Batch | NVIDIA | 470\.57\.02 | ml\.p2\.\*, ml\.p3\.\*, ml\.g4dn\.\* | 
-| Asynchronous Inference | NVIDIA | 440\.33\.01 | ml\.p2\.\*, ml\.p3\.\*, ml\.g4dn\.\* | 
+| Asynchronous Inference | NVIDIA | 470\.57\.02 | ml\.p2\.\*, ml\.p3\.\*, ml\.g4dn\.\* | 
 
 ## Troubleshoot your model container with GPU capabilities<a name="inference-gpu-drivers-troubleshoot"></a>
 
@@ -69,7 +69,7 @@ if [ -f /usr/local/cuda/compat/libcuda.so.1 ]; then
     cat /usr/local/cuda/version.txt
     CUDA_COMPAT_MAX_DRIVER_VERSION=$(readlink /usr/local/cuda/compat/libcuda.so.1 |cut -d'.' -f 3-)
     echo "CUDA compat package requires Nvidia driver ⩽${CUDA_COMPAT_MAX_DRIVER_VERSION}"
-    NVIDIA_DRIVER_VERSION=$ (nvidia-smi --query-gpu=driver_version --format=csv,noheader --id=0)
+    NVIDIA_DRIVER_VERSION=$(sed -n 's/^NVRM.*Kernel Module *\([0-9.]*\).*$/\1/p' /proc/driver/nvidia/version 2>/dev/null || true)
     echo "Current installed Nvidia driver version is ${NVIDIA_DRIVER_VERSION}"
     if [ $(verlte $CUDA_COMPAT_MAX_DRIVER_VERSION $NVIDIA_DRIVER_VERSION) ]; then
         echo "Setup CUDA compatibility libs path to LD_LIBRARY_PATH"

@@ -16,6 +16,7 @@ To start using Data Wrangler, see [Get Started with Data Wrangler](data-wrangler
 + [Import](data-wrangler-import.md)
 + [Create and Use a Data Wrangler Flow](data-wrangler-data-flow.md)
 + [Get Insights On Data and Data Quality](data-wrangler-data-insights.md)
++ [Automatically Train Models on Your Data Flow](data-wrangler-autopilot.md)
 + [Transform Data](data-wrangler-transform.md)
 + [Analyze and Visualize](data-wrangler-analyses.md)
 + [Export](data-wrangler-data-export.md)

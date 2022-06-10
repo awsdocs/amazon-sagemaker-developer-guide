@@ -38,6 +38,8 @@ Encryption in transit is only available for Amazon SageMaker Studio\.
 
 **Step 2: Studio settings**
 
+1. Under **Default JupyterLab version**, select a JupyterLab version from the dropdown to use as the default for your domain\. For information on selecting a JupyterLab version, see [JupyterLab Versioning](studio-jl.md)\.
+
 1. Under **Notebook Sharing Configuration**, accept the default notebook sharing configuration or customize the options\.
 
 1. Under **SageMaker Projects and JumpStart**, accept the default Project and JumpStart settings or customize whether administrators and user can create projects and use Jumpstart\. For more information, see [SageMaker Studio Permissions Required to Use Projects](sagemaker-projects-studio-updates.md)\.

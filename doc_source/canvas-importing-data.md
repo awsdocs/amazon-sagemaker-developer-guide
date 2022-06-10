@@ -16,3 +16,5 @@ You can import data for the following data types:
 To import data from an external data source, create a connection\. For more information, see [Connect to an external data source](canvas-connecting-external.md)\.
 
 To import data from multiple files on your local machine or Amazon S3 locations, you import the data from each data source and join them into a single dataset\. For information about joining datasets, see [Join data that you've imported into SageMaker Canvas](canvas-joining-data.md)\.
+
+SageMaker Canvas provides several sample datasets in your application to help you get started\. To learn more about the SageMaker\-provided sample datasets you can experiment with, see [Use sample datasets](canvas-sample-datasets.md)\.
