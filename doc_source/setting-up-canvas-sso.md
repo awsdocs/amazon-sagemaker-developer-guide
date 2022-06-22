@@ -1,12 +1,14 @@
 # Set up SageMaker Canvas for your users<a name="setting-up-canvas-sso"></a>
 
-To set up Amazon SageMaker Canvas, do the following:
+To set up Amazon SageMaker Canvas for SSO with Okta, do the following:
 + Create an Amazon SageMaker Domain\.
 + Create user profiles for the SageMaker Domain\.
 + Set up Okta Single Sign On \(SSO\) for your users\.
 + Activate link sharing for models\.
 
-Use Single\-Sign On \(SSO\) to give your users access to Amazon SageMaker Canvas\. SageMaker Canvas supports SAML 2\.0 SSO methods\. The following sections guide you through procedures to set up Okta SSO\.
+NOTE:  If you instead wish to setup SageMaker Canvas with AWS SSO, please follow the directions outlined in [Onboard to Amazon SageMaker Domain Using AWS SSO](https://docs.aws.amazon.com/sagemaker/latest/dg/onboard-sso-users.html).  Once the domain has been onboarded, add SageMaker as an Application from within AWS SSO. From there you can add AWS SSO users or groups directly from the SageMaker Domain Control Panel.  For step-by-step instructions, please see the blog post [Enable business analysts to access Amazon SageMaker Canvas without using the AWS Management Console with AWS SSO](https://aws.amazon.com/blogs/machine-learning/enable-business-analysts-to-access-amazon-sagemaker-canvas-without-using-the-aws-management-console-with-aws-sso/).
+
+Use Okta Single\-Sign On \(SSO\) to give your users access to Amazon SageMaker Canvas\. SageMaker Canvas supports SAML 2\.0 SSO methods\. The following sections guide you through procedures to set up Okta SSO\.
 
 To set up an Amazon SageMaker Domain, see [Onboard to Amazon SageMaker Studio Using IAM](https://docs.aws.amazon.com/sagemaker/latest/dg/onboard-iam.html)\. You can use the following information to help you complete the procedure in the section:
 + You can ignore the step about creating projects\.
