@@ -14,8 +14,7 @@ For Linux, OS X, or Unix:
 ```
 aws sagemaker create-code-repository \
                     --code-repository-name "MyRepository" \
-                    --git-config '{"Branch":"master", "RepositoryUrl" :
-                    "https://github.com/myprofile/my-repo", "SecretArn" : "arn:aws:secretsmanager:us-east-2:012345678901:secret:my-secret-ABc0DE"}'
+                    --git-config Branch=branch,RepositoryUrl=https://github.com/myprofile/my-repo,SecretArn=arn:aws:secretsmanager:us-east-2:012345678901:secret:my-secret-ABc0DE
 ```
 
 For Windows:

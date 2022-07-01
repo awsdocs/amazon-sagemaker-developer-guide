@@ -1,4 +1,4 @@
-# PyTorch Models<a name="training-compiler-pytorch-models"></a>
+# PyTorch<a name="training-compiler-pytorch-models"></a>
 
 Bring your own PyTorch model to SageMaker, and run the training job with SageMaker Training Compiler\.
 
@@ -31,7 +31,7 @@ You don't need to change your code when you use the Transformers Trainer API\.
 
 #### For distributed training<a name="training-compiler-pytorch-models-transformers-trainer-distributed"></a>
 
-SageMaker Training Compiler uses an alternate mechanism for distributed training, and you don’t need to specify the `distribution` parameter\. The compiler requires you to pass a SageMaker distributed training launcher script to the entry point and pass your training script to the `hyperparameters` argument\. For more information, choose **For distributed training** and the **Hugging Face Estimator for PyTorch** tab in the [Enable SageMaker Training Compiler Using the SageMaker Python SDK](training-compiler-enable.md#training-compiler-enable-pysdk) page\.
+SageMaker Training Compiler uses an alternate mechanism for distributed training, and you don’t need to specify the `distribution` parameter\. The compiler requires you to pass a SageMaker distributed training launcher script to the entry point and pass your training script to the `hyperparameters` argument\. For more information, choose **For distributed training** and the **Hugging Face Estimator for PyTorch** tab in the [Using the SageMaker Python SDK](training-compiler-enable.md#training-compiler-enable-pysdk) page\.
 
 ### Using PyTorch without Hugging Face Trainer API<a name="training-compiler-pytorch-models-non-trainer"></a>
 

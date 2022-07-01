@@ -48,3 +48,4 @@ This notebook has been verified to run in SageMaker Studio only\. If you need in
 + [Configure Parameters to Monitor Attribution Drift](clarify-config-json-monitor-model-explainability-parameters.md)
 + [Schedule Feature Attribute Drift Monitoring Jobs](clarify-model-monitor-feature-attribute-drift-schedule.md)
 + [Inspect Reports for Feature Attribute Drift in Production Models](clarify-feature-attribute-drift-report.md)
++ [CloudWatch Metrics for Feature Drift Analysis](clarify-feature-attribute-drift-cw.md)

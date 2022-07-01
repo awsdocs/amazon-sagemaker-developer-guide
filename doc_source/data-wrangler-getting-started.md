@@ -10,7 +10,7 @@ Amazon SageMaker Data Wrangler is a feature in Amazon SageMaker Studio\. Use thi
 
 To use Data Wrangler, you must complete the following prerequisites\. 
 
-1. To use Data Wrangler, you need access to an [m5\.4xlarge](https://aws.amazon.com/ec2/instance-types/m5/) Amazon Elastic Compute Cloud \(Amazon EC2\) instance\. To learn how to view your quotas and, if necessary, request a quota increase, see [AWS service quotas](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html)\.
+1. To use Data Wrangler, you need access to an Amazon Elastic Compute Cloud \(Amazon EC2\) instance\. For more information about the Amazon EC2 instances that you can use, see [Instances](data-wrangler-data-flow.md#data-wrangler-data-flow-instances)\. To learn how to view your quotas and, if necessary, request a quota increase, see [AWS service quotas](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html)\.
 
 1. Configure the required permissions described in [Security and Permissions](data-wrangler-security.md)\. 
 

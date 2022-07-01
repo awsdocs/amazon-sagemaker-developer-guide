@@ -192,11 +192,37 @@ df.info()
 
 **Pyspark \(SQL\)**
 
-The following creates a new dataframe with five columns: *name*, *fare*, *pclass*, *survived*\.
+The following creates a new dataframe with four columns: *name*, *fare*, *pclass*, *survived*\.
 
 ```
 SELECT name, fare, pclass, survived FROM df
 ```
+
+If you don’t know how to use PySpark, you can use custom code snippets to help you get started\.
+
+Data Wrangler has a searchable collection of code snippets\. You can use to code snippets to perform tasks such as dropping columns, grouping by columns, or modelling\.
+
+To use a code snippet, choose **Search example snippets** and specify a query in the search bar\. The text you specify in the query doesn’t have to match the name of the code snippet exactly\.
+
+The following example shows a **Drop duplicate rows** code snippet that can delete rows with similar data in your dataset\. You can find the code snippet by searching for one of the following:
++ Duplicates
++ Identical
++ Remove
+
+The following snippet has comments to help you understand the changes that you need to make\. For most snippets, you must specify the column names of your dataset in the code\.
+
+```
+# Specify the subset of columns
+# all rows having identical values in these columns will be dropped
+
+subset = ["col1", "col2", "col3"]
+df = df.dropDuplicates(subset)  
+
+# to drop the full-duplicate rows run
+# df = df.dropDuplicates()
+```
+
+To use a snippet, copy and paste its content into the custom transform field\. You can copy and paste multiple code snippets into the custom transform field\.
 
 ## Custom Formula<a name="data-wrangler-transform-custom-formula"></a>
 
@@ -222,7 +248,7 @@ Other common operations include the following, assuming a dataframe contains `co
 + Divide two columns: `col_a / col_b`
 + Take the absolute value of a column: `abs(col_a)`
 
-For more information, see the [Spark documentation](http://spark.apache.org/docs/latest/api/python/pyspark.sql.html?highlight=regex#pyspark.sql.DataFrame.selectExpr) on selecting data\. 
+For more information, see the [Spark documentation](http://spark.apache.org/docs/latest/api/python) on selecting data\. 
 
 ## Encode Categorical<a name="data-wrangler-transform-cat-encode"></a>
 

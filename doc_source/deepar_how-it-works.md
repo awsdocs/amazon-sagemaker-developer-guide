@@ -12,7 +12,7 @@ Each target time series can also be associated with a number of categorical feat
 
 ## How Feature Time Series Work in the DeepAR Algorithm<a name="deepar_under-the-hood"></a>
 
-To facilitate learning time\-dependent patterns, such as spikes during weekends, DeepAR automatically creates feature time series based on the frequency of the target time series\. For example, DeepAR creates two feature time series \(day of the month and day of the year\) for a weekly time series frequency\. It uses these derived feature time series with the custom feature time series that you provide during training and inference\. The following figure shows two of these derived time series features: *ui,1,t* represents the hour of the day and *ui,2,t* the day of the week\.
+To facilitate learning time\-dependent patterns, such as spikes during weekends, DeepAR automatically creates feature time series based on the frequency of the target time series\. It uses these derived feature time series with the custom feature time series that you provide during training and inference\. The following figure shows two of these derived time series features: *ui,1,t* represents the hour of the day and *ui,2,t* the day of the week\.
 
 ![\[Figure 2: Derived time series\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/ts-full-159.derived.png)
 

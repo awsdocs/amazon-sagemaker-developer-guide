@@ -34,7 +34,7 @@ To use a VPC endpoint with SageMaker Studio, your endpoint policy must allow the
    {
      "Action": "sagemaker:CreateApp",
      "Effect": "Allow",
-     "Resource": "arn:aws:sagemaker:us-west-2:acct-id:user-profile/domain-id/*",
+     "Resource": "arn:aws:sagemaker:us-west-2:acct-id:app/domain-id/*",
      "Principal": "*"
    }
  ]

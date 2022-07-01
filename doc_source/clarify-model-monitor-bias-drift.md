@@ -22,3 +22,4 @@ This notebook has been verified to run in Amazon SageMaker Studio only\. If you 
 + [Configure Parameters to Monitor Bias Drift](clarify-config-json-monitor-bias-parameters.md)
 + [Schedule Bias Drift Monitoring Jobs](clarify-model-monitor-bias-drift-schedule.md)
 + [Inspect Reports for Data Bias Drift](clarify-model-monitor-bias-drift-report.md)
++ [CloudWatch Metrics for Bias Drift Analysis](clarify-model-monitor-bias-drift-cw.md)

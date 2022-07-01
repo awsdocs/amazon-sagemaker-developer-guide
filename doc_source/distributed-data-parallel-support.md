@@ -31,6 +31,7 @@ The SageMaker data parallel library supports the following deep learning framewo
 
 | TensorFlow version | SageMaker distributed data parallel library version | `smdistributed-dataparallel` integrated image URI | 
 | --- | --- | --- | 
+| 2\.9\.1 |  smdistributed\-dataparallel==v1\.4\.1  | 763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/tensorflow\-training:2\.9\.1\-gpu\-py39\-cu112\-ubuntu20\.04\-sagemaker | 
 | 2\.8\.0 |  smdistributed\-dataparallel==v1\.3\.0  | 763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/tensorflow\-training:2\.8\.0\-gpu\-py39\-cu112\-ubuntu20\.04\-sagemaker | 
 | 2\.7\.1 |  smdistributed\-dataparallel==v1\.3\.0  |  763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/tensorflow\-training:2\.7\.1\-gpu\-py38\-cu112\-ubuntu20\.04\-sagemaker  | 
 | 2\.6\.2 | smdistributed\-dataparallel==v1\.2\.1  |  763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/tensorflow\-training:2\.6\.2\-gpu\-py38\-cu112\-ubuntu20\.04  | 
