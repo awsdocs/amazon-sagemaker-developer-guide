@@ -8,8 +8,6 @@ To configure a Docker container to run as an executable, use an `ENTRYPOINT` ins
   ```
 
   SageMaker overrides any default `CMD` statement in a container by specifying the `train` argument after the image name\. The `train` argument also overrides arguments that you provide using `CMD` in the Dockerfile\. 
-
-   
 + In your Dockerfile, use the `exec` form of the `ENTRYPOINT` instruction: 
 
   ```

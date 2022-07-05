@@ -48,17 +48,17 @@ sagemaker_client.create_inference_recommendations_job(
                                 'Phases': [
                                     {
                                         'InitialNumberOfUsers': 1,
-                                        'SpawnRate': 60,
-                                        'DurationInSeconds': 300
+                                        'SpawnRate': 1,
+                                        'DurationInSeconds': 120
                                     },
                                     {
-                                        'InitialNumberOfUsers': 5,
+                                        'InitialNumberOfUsers': 1,
                                         'SpawnRate': 1,
-                                        'DurationInSeconds': 300
+                                        'DurationInSeconds': 120
                                     }
                                 ]
                             },
-                            'ResourceLimits': {
+                            'ResourceLimit': {
                                         'MaxNumberOfTests': 10,
                                         'MaxParallelOfTests': 3
                                 },

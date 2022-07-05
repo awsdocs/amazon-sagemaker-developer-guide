@@ -33,6 +33,9 @@ You can see the transform listed in the **Model recipe** section\. If you remove
 
 You can exclude a column from your model build by dropping it in the **Build** tab of the SageMaker Canvas application\. Deselect the column you want to drop, and it isn't included when building the model\.
 
+**Note**  
+If you drop columns and then make [batch predictions](canvas-getting-started.md#canvas-getting-started-step5) with your model, SageMaker Canvas adds the dropped columns back to the \.csv file available for you to download\. However, SageMaker Canvas does not add the dropped columns back for time series models\.
+
 ## Rename columns<a name="canvas-prepare-data-rename"></a>
 
 With the rename columns transform, you can rename columns in your data\. When you rename a column, SageMaker Canvas changes the column name in the model input\.

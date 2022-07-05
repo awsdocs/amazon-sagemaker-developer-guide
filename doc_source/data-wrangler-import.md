@@ -140,11 +140,14 @@ Use the following procedure to import multiple files\.
 
 Amazon Athena is an interactive query service that makes it easy to analyze data directly in Amazon S3 using standard SQL\. With a few actions in the AWS Management Console, you can point Athena at your data stored in Amazon S3 and begin using standard SQL to run ad\-hoc queries and get results in seconds\. To learn more, see [What is Amazon Athena?](https://docs.aws.amazon.com/athena/latest/ug/what-is.html) in the Amazon Athena User Guide\. 
 
-You can query Athena databases and import the results in Data Wrangler\. To use this import option, you must create at least one database in Athena\. To learn how, see [Getting Started](https://docs.aws.amazon.com/athena/latest/ug/getting-started.html) in the Amazon Athena User Guide\. 
+You can query Athena databases and import the results in Data Wrangler\. To use this import option, you must create at least one database in Athena\. To learn how, see [Getting Started](https://docs.aws.amazon.com/athena/latest/ug/getting-started.html) in the Amazon Athena User Guide\.
 
-Note the following about the Athena import option in Data Wrangler:
-+ Data Wrangler supports using Athena workgroups to manage the query results within an AWS account\. For more information, see [Using Workgroups to Control Query Access and Costs](https://docs.aws.amazon.com/athena/latest/ug/manage-queries-control-costs-with-workgroups.html)\.
-+ Data Wrangler does not support federated queries\.
+Data Wrangler supports using Athena workgroups to manage the query results within an AWS account\. You can specify an Amazon S3 output location for each workgroup\. You can also specify whether the output of the query can go to different Amazon S3 locations\. For more information, see [Using Workgroups to Control Query Access and Costs](https://docs.aws.amazon.com/athena/latest/ug/manage-queries-control-costs-with-workgroups.html)\.
+
+To use Athena workgroups, set up the IAM policy that gives access to workgroups\. If you're using a `SageMaker-Execution-Role`, we recommend adding the policy to the role\. For more information about IAM policies for workgroups, see [https://docs.aws.amazon.com/athena/latest/ug/workgroups-iam-policy.html](https://docs.aws.amazon.com/athena/latest/ug/workgroups-iam-policy.html)\. For example workgroup policies, see [Workgroup example policies](https://docs.aws.amazon.com/athena/latest/ug/example-policies-workgroup.html)\.
+
+**Note**  
+Data Wrangler does not support federated queries\.
 
 Data Wrangler uses the default Amazon S3 bucket in the same AWS Region in which your Studio instance is located to store Athena query results\. It creates temporary tables in this database to move the query output to this Amazon S3 bucket\. It deletes these tables after data has been imported; however the database, `sagemaker_data_wrangler`, persists\. To learn more, see [Imported Data Storage](#data-wrangler-import-storage)\.
 
@@ -160,11 +163,13 @@ If you use AWS Lake Formation with Athena, make sure your Lake Formation IAM per
 
 1. Use the **Database** dropdown list to select the database that you want to query\. When you select a database, you can preview all tables in your database using the **Table**s listed under **Details**\.
 
-1. Choose **Advanced configuration**\.
+1. \(Optional\) Choose **Advanced configuration**\.
+
+   1. Choose a **Workgroup**\.
+
+   1. If your workgroup hasn't enforced the Amazon S3 output location, specify a value for **Amazon S3 location of query results**\.
 
    **Enable sampling** is selected by default\. When sampling is activated, Data Wrangler samples and imports approximately 50% of the queried data\. Deselect this checkbox to turn off sampling\.
-
-1. Specify a value for **Workgroup** if you're using one\.
 
 1. Enter your query in the query editor and use the **Run** button to run the query\. After a successful query, you can preview your result under the editor\.
 
@@ -453,29 +458,9 @@ Provide the data scientist with the information that they need to access Snowfla
    + A Snowflake account name, user name, and password\.
    + A secret created with [AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) and the ARN of the secret\. Use the following procedure below to create the secret for Snowflake if you choose this option\.
 **Important**  
-If your data scientists use the **Snowflake Credentials \(User name and Password\)** option to connect to Snowflake, note that [Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) is used to store the credentials in a secret and rotates secrets as part of a best practice security plan\. The secret created in Secrets Manager is only accessible with the Studio role configured when you set up a Studio user profile\. This requires you to add this permission, `secretsmanager:PutResourcePolicy`, to the policy that is attached to your Studio role\.  
-We strongly recommend that you scope the role policy to use different roles for different groups of Studio users\. You can add additional resource\-based permissions for the Secrets Manager secrets\. See [Manage Secret Policy](https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage_secret-policy.html) for condition keys you can use\. 
-     + **Create a Secrets Manager secret for Snowflake**\.
-       + Sign in to the [Secrets Manager console](https://console.aws.amazon.com/secretsmanager)\. 
-       + Choose **Store a new secret**\. 
-       + In the **Select secret type** section, select **Other type of secrets**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/store-new-secret.png)
-       + Specify the details of your custom secret as key\-value pairs\. The name of the keys are case sensitive: the `username` key must be `username`, the password key must be `password`, and the account ID key must be `accountid`\. If you enter any of these incorrectly, Data Wrangler raises an error\. Quotes for `username`, `password`, and `accountid` are not required if you are using a secret key\-value\. Alternatively, you can select the **Plaintext** tab and enter the secret value in JSON as shown in the following example: 
-
-         ```
-         {
-                 "username": "snowflake username",
-                 "password": "snowflake password",
-                 "accountid": "snowflake accountid"
-         }
-         ```
-       + Choose **Next**, and on the following screen, prefix the name of your secret with `AmazonSageMaker-`\. Additionally, add a tag with the key SageMaker \(without quotes\) and the value: `true` \(without quotes\)\. The rest of the fields are optional\. You can scroll to the bottom of the page and choose **Next**\. The rest of the screens are optional\. Choose **Next** until the secret has been stored\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/store-new-secret-params.png)
-       + Select the secret name and save the ARN of the secret\. Choose **Store**\.
-       + Select the secret you just created\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/secrets.png)
-       + You see your ARN on the screen\. Provide the ARN to the data scientist if they are using the ARN to connect to Snowflake\.   
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/arn-test.png)
+If your data scientists use the **Snowflake Credentials \(User name and Password\)** option to connect to Snowflake, you can use [Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) to store the credentials in a secret\. Secrets Manager rotates secrets as part of a best practice security plan\. The secret created in Secrets Manager is only accessible with the Studio role configured when you set up a Studio user profile\. This requires you to add this permission, `secretsmanager:PutResourcePolicy`, to the policy that is attached to your Studio role\.  
+We strongly recommend that you scope the role policy to use different roles for different groups of Studio users\. You can add additional resource\-based permissions for the Secrets Manager secrets\. See [Manage Secret Policy](https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage_secret-policy.html) for condition keys you can use\.  
+For information about creating a secret, see [Create a secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_secret.html)\. You're charged for the secrets that you create\.
 
 1. Provide the data scientist with the name of the storage integration you created in Step 3: [Create a Cloud Storage Integration in Snowflake](                                      https://docs.snowflake.com/en/user-guide/data-load-s3-config-storage-integration.html#step-3-create-a-cloud-storage-integration-in-snowflake)\. This is the name of the new integration and is called `integration_name` in the `CREATE INTEGRATION` SQL command you ran, which is shown in the following snippet: 
 

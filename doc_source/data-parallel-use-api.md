@@ -35,7 +35,7 @@ pt_estimator = PyTorch(
     entry_point="adapted-training-script.py",
     role="SageMakerRole",
     py_version="py38",
-    framework_version="1.10.2",
+    framework_version="1.11.0",
 
     # For running a multi-node distributed training job, specify a value greater than 1
     # Example: 2,3,4,..8
@@ -62,7 +62,7 @@ tf_estimator = TensorFlow(
     base_job_name = "training_job_name_prefix",
     entry_point="adapted-training-script.py",
     role="SageMakerRole",
-    framework_version="2.6.3",
+    framework_version="2.9.1",
     py_version="py38",
 
     # For running a multi-node distributed training job, specify a value greater than 1

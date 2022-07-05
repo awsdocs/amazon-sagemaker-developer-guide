@@ -28,8 +28,8 @@ The following are VPC endpoints for the preceding services:
 + com\.amazonaws\.*Region*\.s3
 + com\.amazonaws\.*Region*\.monitoring
 + aws\.sagemaker\.*Region*\.notebook
-+ redshift\-data\.*Region*\.amazonaws\.com
-+ secretsmanager\.*Region*\.amazonaws\.com
++ com\.amazonaws\.*Region*\.redshift\-data
++ com\.amazonaws\.*Region*\.secretsmanager
 + com\.amazonaws\.*Region*\.forecast
 + com\.amazonaws\.*Region*\.forecastquery
 

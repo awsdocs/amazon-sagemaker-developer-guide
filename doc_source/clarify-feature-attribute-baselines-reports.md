@@ -30,4 +30,8 @@ clarify_processor.run_explainability(data_config=explainability_data_config,
                                      explainability_config=shap_config)
 ```
 
+To view Partial Dependence plots \(PDP\), use `explainability_config=PDP_config`\.
+
+You can select both types of reports with `explainability_config=[PDP_config,shap_config]`\.
+
 View the results in Studio or download them from the `explainability_output_path` S3 bucket\.

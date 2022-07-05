@@ -1,6 +1,6 @@
 # Step 3: Download, Explore, and Transform a Dataset<a name="ex1-preprocess-data"></a>
 
-In this step, you load the [Adult Census dataset](https://archive.ics.uci.edu/ml/datasets/adult) to your notebook instance using the [SHAP \(SHapley Additive exPlanations\) Library](https://shap.readthedocs.io/en/latest/), review the dataset, transform it, and upload it to Amazon S3\. 
+In this step, you load the [Adult Census dataset](https://archive.ics.uci.edu/ml/datasets/adult) to your notebook instance using the SHAP \(SHapley Additive exPlanations\) Library, review the dataset, transform it, and upload it to Amazon S3\. SHAP is a game theoretic approach to explain the output of any machine learning model\. For more information about SHAP, see [Welcome to the SHAP documentation](https://shap.readthedocs.io/en/latest/)\.
 
 To run the following example, paste the sample code into a cell in your notebook instance\.
 
@@ -65,7 +65,7 @@ If you want to use a dataset that needs to be cleaned and transformed, you can s
 
 ## Split the Dataset into Train, Validation, and Test Datasets<a name="ex1-preprocess-data-transform"></a>
 
-Using Sklearn, split the dataset into a training set and a test set\. The dataset is randomly sorted with the fixed random seed: 80 percent of the dataset for training set and 20 percent of it for a test set\.
+Using Sklearn, split the dataset into a training set and a test set\. The training set is used to train the model, while the test set is used to evaluate the performance of the final trained model\. The dataset is randomly sorted with the fixed random seed: 80 percent of the dataset for training set and 20 percent of it for a test set\.
 
 ```
 from sklearn.model_selection import train_test_split
@@ -73,7 +73,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 X_train_display = X_display.loc[X_train.index]
 ```
 
-Split the training set to separate out a validation set\. 75 percent of the training set becomes the final training set, and the rest is the validation set\.
+Split the training set to separate out a validation set\. The validation set is used to evaluate the performance of the trained model while tuning the model's hyperparameters\. 75 percent of the training set becomes the final training set, and the rest is the validation set\.
 
 ```
 X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.25, random_state=1)

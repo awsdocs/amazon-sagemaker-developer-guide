@@ -243,46 +243,49 @@ You can use the **Scoring** tab to get visualizations and metrics on your model'
 
 ## Step 5: Make predictions<a name="canvas-getting-started-step5"></a>
 
-You might not be able to make predictions on some datasets because they might have incompatible schemas\. A schema is the organizational structure\. For a dataset, it is the names of the columns and the data type of the data in the columns\.
-
-An incompatible schema might happen for one of the following reasons:
-+ The dataset that you're using to make predictions has fewer columns than the dataset that you're using to build the model\.
-+ The data types in the columns you used to build the dataset might be different from the data types in dataset that you're using to make predictions\.
-+ The dataset that you're using to make predictions and the dataset that you've used to build the model have column names that don't match\. The column names are case sensitive\. "Column1" is not the same as "column1"\.
-
 You can make one of the following types of predictions\.
 + Batch – Predictions for an entire dataset\.
 + Single – Predictions for a single value that you specify\.
-
-Use the following procedure to make batch predictions\.
-
-To make batch predictions, choose a dataset and generate predictions for it\.
-
-1. Choose **Select Dataset**\.
-
-1. Choose the dataset\.
-
-1. Choose **Update Prediction**\.
 
 For each set of predictions, SageMaker Canvas returns the following:
 + The predicted values
 + The probability of the predicted value being correct
 + The dataset that you've specified for generating predictions
 
-You can download the model's predictions as a \.csv file\.
-
-The following images visualize the preceding procedure\.
-
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/beta-2-pred-1.png)
-
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/beta-2-pred-2.png)
-
-Use the following procedure to make a prediction for a row in the dataset\.
+Use the following procedure to make a single prediction with your model\.
 
 1. Choose **Single prediction**\.
 
 1. Change the input values to see how the predicted value changes from the average prediction\.
 
-1. Choose **Update Prediction**\.
+1. Choose **Update** to get the new prediction\.
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/beta-2-pred-3.png)
+![\[Screenshot of a single prediction in the SageMaker Canvas application.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/beta-2-pred-3.png)
+
+To make batch predictions, choose a dataset and use the following procedure to generate batch predictions\.
+
+1. Choose **Batch prediction**\.
+
+1. Choose **Select Dataset**\.
+
+1. Choose the dataset\.
+
+1. Choose **Generate predictions**\.
+
+The following images visualize the preceding procedure\.
+
+![\[Screenshot of selecting batch prediction in the SageMaker Canvas application\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/beta-2-pred-1.png)
+
+![\[Screenshot of selecting a dataset for batch prediction in the SageMaker Canvas application\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/beta-2-pred-2.png)
+
+For batch predictions, you can download the model's predictions as a \.csv file\. When the **Status** of the predictions output is **Ready**, you can download the file by choosing the **More options** icon \(![\[More options icon for the output CSV file.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/more-options-icon.png)\) and then choosing **Download**\. If you dropped any columns when building your model, SageMaker Canvas adds the dropped columns back to the batch predictions\.
+
+**Note**  
+SageMaker Canvas does not add the dropped columns to your batch predictions for time series models\.
+
+You might not be able to make predictions on some datasets because they might have incompatible schemas\. A schema is the organizational structure\. For a dataset, it is the names of the columns and the data type of the data in the columns\.
+
+An incompatible schema might happen for one of the following reasons:
++ The dataset that you're using to make predictions has fewer columns than the dataset that you're using to build the model\.
++ The data types in the columns you used to build the dataset might be different from the data types in dataset that you're using to make predictions\.
++ The dataset that you're using to make predictions and the dataset that you've used to build the model have column names that don't match\. The column names are case sensitive\. "Column1" is not the same as "column1"\.

@@ -54,9 +54,9 @@ Ensure no NVIDIA driver packages are bundled in the image which could cause conf
 
 ### If you use a CUDA compatibility layer<a name="collapsible-cuda-compat"></a>
 
-Add the proceeding code snippet to your `ENTRYPOINT` script if you use a CUDA compatibility \(compat\) layer\.
+To verify if the platform Nvidia driver version supports the CUDA Compatibility Package version installed in the model container, see the [CUDA documentation](https://docs.nvidia.com/deploy/cuda-compatibility/index.html#use-the-right-compat-package)\. If the platform Nvidia driver version does not support the CUDA Compatibility Package version, you can disable or remove the CUDA Compatibility Package from the model container image\. If the CUDA compatibility libs version is supported by the latest Nvidia driver version, we suggest that you enable the CUDA Compatibility Package based on the detected Nvidia driver version for future compatibility by adding the code snippet below into the container start up shell script \(at the `ENTRYPOINT` script\)\.
 
-The code snipped demonstrates how to dynamically switch the use of CUDA Compatibility Package based on the version on the instance so when a driver upgrade happens, there are no interruptions\. The proceeding code snippet provides an example of how dynamically switch the use of CUDA Compatibility based on the version on the instance\. This should be included in the the `ENTRYPOINT` script:
+The script demonstrates how to dynamically switch the use of the CUDA Compatibility Package based on the detected Nvidia driver version on the deployed host for your model container\. When SageMaker releases a newer Nvidia driver version, the installed CUDA Compatibility Package can be turned off automatically if the CUDA application is supported natively on the new driver\.
 
 ```
 #!/bin/bash
