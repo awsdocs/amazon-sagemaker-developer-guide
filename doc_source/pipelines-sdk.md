@@ -1,6 +1,6 @@
 # SageMaker Pipelines Overview<a name="pipelines-sdk"></a>
 
- An Amazon SageMaker Model Building Pipelines pipeline is a series of interconnected steps that is defined by a JSON pipeline definition\. This pipeline definition encodes a pipeline using a directed acyclic graph \(DAG\)\. This DAG gives information on the requirements for and relationships between each step of your pipeline\. The structure of a pipeline's DAG is determined by the data dependencies between steps\. These data dependencies are created when the properties of a step's output are passed as the input to another step\. The following image is an example of a pipeline DAG:
+An Amazon SageMaker Model Building Pipelines pipeline is a series of interconnected steps that are defined using the [Pipelines SDK](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html)\. This pipeline definition encodes a pipeline using a directed acyclic graph \(DAG\) that can be exported as a JSON definition\. This DAG gives information on the requirements for and relationships between each step of your pipeline\. The structure of a pipeline's DAG is determined by the data dependencies between steps\. These data dependencies are created when the properties of a step's output are passed as the input to another step\. The following image is an example of a pipeline DAG:
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/pipeline-full.png)
 

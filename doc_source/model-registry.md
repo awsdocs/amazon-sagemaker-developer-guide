@@ -27,9 +27,11 @@ The following topics show you how to use the Model Registry\.
 
 **Topics**
 + [Create a Model Group](model-registry-model-group.md)
++ [Delete a Model Group](model-registry-delete-model-group.md)
 + [Register a Model Version](model-registry-version.md)
 + [View Model Groups and Versions](model-registry-view.md)
 + [View the Details of a Model Version](model-registry-details.md)
++ [Delete a Model Version](model-registry-delete-model-version.md)
 + [Update the Approval Status of a Model](model-registry-approve.md)
 + [Deploy a Model from the Registry](model-registry-deploy.md)
 + [View the Deployment History of a Model](model-registry-deploy-history.md)

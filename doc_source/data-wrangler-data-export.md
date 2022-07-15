@@ -140,7 +140,7 @@ Use the following procedure to generate a Jupyter Notebook and run it to export 
 
 1. Choose **SageMaker Pipelines \(via Jupyter Notebook\)**\.
 
-1. Run the Jupyter Notebook\.
+1. Run the Jupyter notebook\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/data-wrangler-destination-nodes-photo-export-to.png)
 

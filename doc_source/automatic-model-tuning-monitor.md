@@ -40,6 +40,8 @@ To monitor the progress of a hyperparameter tuning job and the training jobs tha
    + `Stopped`—The training job was manually stopped before it completed\.
    + `Failed (Retryable)`—The training job failed, but can be retried\. A failed training job can be retried only if it failed because an internal service error occurred\.
    + `Failed (Non-retryable)`—The training job failed and can't be retried\. A failed training job can't be retried when a client error occurs\.
+**Note**  
+Hyperparameter tuning jobs can be stopped and the underlying resources [ deleted](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-ex-cleanup.html), but the jobs themselves cannot be deleted\.
 
 ## View the Best Training Job<a name="automatic-model-tuning-best-training-job"></a>
 

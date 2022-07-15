@@ -21,9 +21,7 @@ You can see a list of notebook instance lifecycle configurations you previously 
 
 1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\. 
 
-1. On the left side, choose **Notebook**\.
-
-1. From the dropdown menu, choose **Lifecycle configurations**\.
+1. On the left side under **SageMaker dashboard**, choose **Lifecycle configurations**\.
 
 1. From the **Lifecycle configurations** page, choose **Create configuration**\.
 

@@ -38,11 +38,11 @@ The left sidebar includes the following icons\. When you hover over an icon, a t
 
 ## File and resource browser<a name="studio-ui-browser"></a>
 
-The file and resource browser displays lists of your notebooks, experiments, trials, trial components, and endpoints\. On the menu at the top of the file browser, choose the plus \(**\+**\) sign to open the Studio Launcher\. The Launcher allows you to create a notebook, launch a Python interactive shell, or open a terminal\.
+The file and resource browser displays lists of your notebooks, experiments, trials, trial components, endpoints, and low\-code solutions\. On the menu at the top of the file browser, choose the plus \(**\+**\) sign to open the Studio Launcher\. The Launcher allows you to create a notebook, launch a Python interactive shell, open a terminal, or create a low\-code solution\.
 
 ## Main work area<a name="studio-ui-work"></a>
 
-The main work area consists of multiple tabs that contain your open notebooks and terminals, and detailed information about your experiments and endpoints\. One commonly used tab is the **Trial Component List**\. This list is referred to as the *Leaderboard* because it's where you can compare experiments and trials\. For more information, see [View and Compare Amazon SageMaker Experiments, Trials, and Trial Components](experiments-view-compare.md)\.
+The main work area consists of multiple tabs that contain your open notebooks and terminals, and detailed information about your experiments and endpoints, as well as low\-code solutions\. One commonly used tab is the **Trial Component List**\. This list is referred to as the *Leaderboard* because it's where you can compare experiments and trials\. For more information, see [View and Compare Amazon SageMaker Experiments, Trials, and Trial Components](experiments-view-compare.md)\.
 
 ## Settings<a name="studio-ui-prefs"></a>
 

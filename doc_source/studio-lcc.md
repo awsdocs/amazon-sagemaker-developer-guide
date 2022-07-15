@@ -6,6 +6,9 @@ Using Lifecycle Configurations gives you flexibility and control to configure St
 
 For example Lifecycle Configuration scripts, see the [Studio Lifecycle Configuration examples repo](https://github.com/aws-samples/sagemaker-studio-lifecycle-config-examples)\. For a blog on implementing Lifecycle Configurations, see [Customize Amazon SageMaker Studio using Lifecycle Configurations](http://aws.amazon.com/blogs/machine-learning/customize-amazon-sagemaker-studio-using-lifecycle-configurations/)\.
 
+**Note**  
+Each script has a limit of 16384 characters\.
+
 **Topics**
 + [Creating and Associating a Lifecycle Configuration](studio-lcc-create.md)
 + [Setting Default Lifecycle Configurations](studio-lcc-defaults.md)

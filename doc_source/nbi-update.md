@@ -16,7 +16,7 @@ You can update the tags of a notebook instance that is `InService`\. To update a
 
    When you do this, the notebook instance status changes to `Stopping`\. Wait until the status changes to `Stopped` to complete the following steps\. 
 
-1. Select the **Edit** button to open the **Edit notebook instance** page\. 
+1. Select the **Edit** button to open the **Edit notebook instance** page\. For information about the notebook properties you can update, see [Create a Notebook Instance](howitworks-create-ws.md)\.
 
 1. Update your notebook instance and select the **Update notebook instance** button at the bottom of the page when you are done to return to the notebook instances page\. Your notebook instance status changes to **Updating**\. 
 

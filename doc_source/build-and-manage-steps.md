@@ -31,9 +31,9 @@ Amazon SageMaker Model Building Pipelines support the following step types:
 
 ### Processing Step<a name="step-type-processing"></a>
 
-You use a processing step to create a processing job for data processing\. For more information on processing jobs, see [Process Data and Evaluate Models](https://docs.aws.amazon.com/sagemaker/latest/dg/processing-job.html)\.
+Use a processing step to create a processing job for data processing\. For more information on processing jobs, see [Process Data and Evaluate Models](https://docs.aws.amazon.com/sagemaker/latest/dg/processing-job.html)\.
 
-A processing step requires a processor, a Python script that defines the processing code, outputs for processing, and job arguments\. The following example shows how to create a `ProcessingStep` definition\. For more information on processing step requirements, see the [sagemaker\.workflow\.steps\.ProcessingStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.ProcessingStep) documentation\.
+A processing step requires a processor, a Python script that defines the processing code, outputs for processing, and job arguments\. The following example shows how to create a `ProcessingStep` definition\. 
 
 ```
 from sagemaker.sklearn.processing import SKLearnProcessor
@@ -107,6 +107,8 @@ step_process = ProcessingStep(
     code=run_args.code
 )
 ```
+
+For more information on processing step requirements, see the [sagemaker\.workflow\.steps\.ProcessingStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.ProcessingStep) documentation\. For an in\-depth example, see *Define a Processing Step for Feature Engineering* in the [Orchestrate Jobs to Train and Evaluate Models with Amazon SageMaker Pipelines](https://github.com/aws/amazon-sagemaker-examples/blob/62de6a1fca74c7e70089d77e36f1356033adbe5f/sagemaker-pipelines/tabular/abalone_build_train_deploy/sagemaker-pipelines-preprocess-train-evaluate-batch-transform.ipynb) example notebook\.
 
 ### Training Step<a name="step-type-training"></a>
 
@@ -286,7 +288,7 @@ step_transform = TransformStep(
 
 You use a condition step to evaluate the condition of step properties to assess which action should be taken next in the pipeline\.
 
-A condition step requires a list of conditions, a list of steps to run if the condition evaluates to `true`, and a list of steps to run if the condition evaluates to `false`\. The following example shows how to create a `Condition` step definition\. For more information on `Condition` step requirements, see the [sagemaker\.workflow\.condition\_step\.ConditionStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#conditionstep) documentation\.
+A condition step requires a list of conditions, a list of steps to run if the condition evaluates to `true`, and a list of steps to run if the condition evaluates to `false`\. The following example shows how to create a `ConditionStep` definition\. 
 
 **Limitations**
 + SageMaker Pipelines doesn't support the use of nested condition steps\. You can't pass a condition step as the input for another condition step\.
@@ -315,6 +317,8 @@ step_cond = ConditionStep(
     else_steps=[]
 )
 ```
+
+For more information on `ConditionStep` requirements, see the [sagemaker\.workflow\.condition\_step\.ConditionStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#conditionstep) API reference\. For more information on supported conditions, see *[Amazon SageMaker Model Building Pipelines \- Conditions](https://sagemaker.readthedocs.io/en/stable/amazon_sagemaker_model_building_pipeline.html#conditions)* in the SageMaker Python SDK documentation\. 
 
 ### Callback Step<a name="step-type-callback"></a>
 
@@ -363,6 +367,9 @@ callback_handler_code = '
             )
 '
 ```
+
+**Note**  
+Output parameters for `CallbackStep` should not be nested\. For example, if you use a nested dictionary as your output parameter, then the dictionary is treated as a single string \(ex\. `{"output1": "{\"nested_output1\":\"my-output\"}"}`\)\. If you provide a nested value, then when you try to refer to a particular output parameter, a non\-retryable client error is thrown\.
 
 **Stopping behavior**
 
@@ -467,6 +474,9 @@ step_lambda = LambdaStep(
 **Inputs and outputs**
 
 If your `Lambda` function has inputs or outputs, these must also be defined in your `Lambda` step\.
+
+**Note**  
+Input and output parameters should not be nested\. For example, if you use a nested dictionary as your output parameter, then the dictionary is treated as a single string \(ex\. `{"output1": "{\"nested_output1\":\"my-output\"}"}`\)\. If you provide a nested value and try to refer to it later, a non\-retryable client error is thrown\.
 
 When defining the `Lambda` step, `inputs` must be a dictionary of key\-value pairs\. Each value of the `inputs` dictionary must be a primitive type \(string, integer, or float\)\. Nested objects are not supported\. If left undefined, the `inputs` value defaults to `None`\.
 
@@ -742,6 +752,8 @@ step_train = TrainingStep(
     )
 )
 ```
+
+To check which properties are referrable for each step type during data dependency creation, see *[Data Dependency \- Property Reference](https://sagemaker.readthedocs.io/en/stable/amazon_sagemaker_model_building_pipeline.html#data-dependency-property-reference)* in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.
 
 ## Custom Dependency Between Steps<a name="build-and-manage-custom-dependency"></a>
 

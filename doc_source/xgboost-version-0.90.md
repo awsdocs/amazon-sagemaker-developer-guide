@@ -1,10 +1,10 @@
-# Upgrade XGBoost Version 0\.90 to Version 1\.2<a name="xgboost-version-0.90"></a>
+# Upgrade XGBoost Version 0\.90 to Version 1\.5<a name="xgboost-version-0.90"></a>
 
-If you are using the SageMaker Python SDK, to upgrade existing XGBoost 0\.90 jobs to version 1\.2, you must have version 2\.x of the SDK installed and change the XGBoost `version` and `framework_version` parameters to 1\.2\-2\. If you are using Boto3, you need to update the Docker image, and a few hyperparameters and learning objectives\.
+If you are using the SageMaker Python SDK, to upgrade existing XGBoost 0\.90 jobs to version 1\.5, you must have version 2\.x of the SDK installed and change the XGBoost `version` and `framework_version` parameters to 1\.5\-1\. If you are using Boto3, you need to update the Docker image, and a few hyperparameters and learning objectives\.
 
 **Topics**
 + [Upgrade SageMaker Python SDK Version 1\.x to Version 2\.x](#upgrade-xgboost-version-0.90-SageMaker-python-sdk)
-+ [Change the image tag to 1\.2\-2](#upgrade-xgboost-version-0.90-change-image-tag)
++ [Change the image tag to 1\.5\-1](#upgrade-xgboost-version-0.90-change-image-tag)
 + [Change Docker Image for Boto3](#upgrade-xgboost-version-0.90-boto3)
 + [Update Hyperparameters and Learning Objectives](#upgrade-xgboost-version-0.90-hyperparameters)
 
@@ -16,20 +16,20 @@ If you are still using Version 1\.x of the SageMaker Python SDK, you must to upg
 python -m pip install --upgrade sagemaker
 ```
 
-## Change the image tag to 1\.2\-2<a name="upgrade-xgboost-version-0.90-change-image-tag"></a>
+## Change the image tag to 1\.5\-1<a name="upgrade-xgboost-version-0.90-change-image-tag"></a>
 
 If you are using the SageMaker Python SDK and using the XGBoost build\-in algorithm, change the version parameter in `image_uris.retrive`\.
 
 ```
 from sagemaker import image_uris
-image_uris.retrieve(framework="xgboost", region="us-west-2", version="1.2-2")
+image_uris.retrieve(framework="xgboost", region="us-west-2", version="1.5-1")
 
 estimator = sagemaker.estimator.Estimator(image_uri=xgboost_container, 
                                           hyperparameters=hyperparameters,
                                           role=sagemaker.get_execution_role(),
                                           instance_count=1, 
                                           instance_type='ml.m5.2xlarge', 
-                                          train_volume_size=5, # 5 GB 
+                                          volume_size=5, # 5 GB 
                                           output_path=output_path)
 ```
 
@@ -37,7 +37,7 @@ If you are using the SageMaker Python SDK and using XGBoost as a framework to ru
 
 ```
 estimator = XGBoost(entry_point = "your_xgboost_abalone_script.py", 
-                    framework_version='1.2-2',
+                    framework_version='1.5-1',
                     hyperparameters=hyperparameters,
                     role=sagemaker.get_execution_role(),
                     instance_count=1,
@@ -57,12 +57,12 @@ validation_input = TrainingInput("s3://{}/{}/{}/".format(bucket, prefix, 'valida
 
 ## Change Docker Image for Boto3<a name="upgrade-xgboost-version-0.90-boto3"></a>
 
-If you are using Boto3 to train or deploy your model, change the docker image tag \(0\.90\-1 or 0\.90\-2\) to 1\.2\-2\.
+If you are using Boto3 to train or deploy your model, change the docker image tag \(1, 0\.72, 0\.90\-1 or 0\.90\-2\) to 1\.5\-1\.
 
 ```
 {
     "AlgorithmSpecification":: {
-        "TrainingImage": "746614075791.dkr.ecr.us-west-1.amazonaws.com/sagemaker-xgboost:1.2-2"
+        "TrainingImage": "746614075791.dkr.ecr.us-west-1.amazonaws.com/sagemaker-xgboost:1.5-1"
     }
     ...
 }
@@ -72,12 +72,12 @@ If you using the SageMaker Python SDK to retrieve registry path, change the `ver
 
 ```
 from sagemaker import image_uris
-image_uris.retrieve(framework="xgboost", region="us-west-2", version="1.2-2")
+image_uris.retrieve(framework="xgboost", region="us-west-2", version="1.5-1")
 ```
 
 ## Update Hyperparameters and Learning Objectives<a name="upgrade-xgboost-version-0.90-hyperparameters"></a>
 
-The silent parameter has been deprecated and is no longer available in XGBoost 1\.2 and later versions\. Use `verbosity` instead\. If you were using the `reg:linear` learning objective, it has been deprecated as well in favor of` reg:squarederror`\. Use `reg:squarederror` instead\.
+The silent parameter has been deprecated and is no longer available in XGBoost 1\.5 and later versions\. Use `verbosity` instead\. If you were using the `reg:linear` learning objective, it has been deprecated as well in favor of` reg:squarederror`\. Use `reg:squarederror` instead\.
 
 ```
 hyperparameters = {

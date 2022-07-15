@@ -1,12 +1,20 @@
 # Batch Ingestion Spark Connector Setup<a name="batch-ingestion-spark-connector-setup"></a>
 
-## Introduction<a name="w2481aac23c29c11b3"></a>
+## Introduction<a name="batch-ingestion-spark-connector-introduction"></a>
 
  Amazon SageMaker Feature Store supports batch data ingestion with Spark, using your existing ETL pipeline, or a pipeline on Amazon EMR\. You can also use this functionality from a Amazon SageMaker Notebook Instance\. 
 
- Methods for installing and implementing batch data ingestion are provided for Python and Scala\. Python developers can use the `Amazon SageMaker-feature-store-pyspark` Python library for local development, installation on Amazon EMR, or run it from Jupyter notebooks\. Scala developers can use the Feature Store Spark connector available in Maven\. 
+ Methods for installing and implementing batch data ingestion are provided for Python and Scala\. Python developers can use the `sagemaker-feature-store-pyspark` Python library for local development, installation on Amazon EMR, or run it from Jupyter notebooks\. Scala developers can use the Feature Store Spark connector available in Maven\. 
 
-## Installation<a name="w2481aac23c29c11b5"></a>
+You can use the Spark connector to ingest data in the following ways:
+
+1. Ingest by default – Ingest your dataframe into the online store\. When you use the connector to update the online store, The Spark connector uses the [PutRecord](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_feature_store_PutRecord.html) operation to make the update\. Within 15 minutes, Feature Store syncs the data between the online store and the offline store\. The online store contains the latest value for the record\. For more information about how the online and offline stores work, see [Feature Store Concepts](feature-store-getting-started.md#feature-store-concepts)\.
+
+1. Offline store direct ingestion – Use the Spark connector to ingest your dataframe directly into the offline store\. Ingesting the dataframe directly into the offline store doesn't update the online store\.
+
+For information about using the different ingestion methods, see [Example Implementations](#batch-ingestion-spark-connector-example-implementations)\.
+
+## Installation<a name="batch-ingestion-spark-connector-installation"></a>
 
  **Scala Users** 
 
@@ -43,7 +51,7 @@
  To find more info about the installation, enable verbose mode by appending `--verbose` to the following installation command\. 
 
 ```
-pip3 install Amazon SageMaker-feature-store-pyspark --no-binary :all:
+pip3 install sagemaker-feature-store-pyspark --no-binary :all:
 ```
 
  **Installation on Amazon EMR** 
@@ -76,7 +84,7 @@ os.environ['SPARK_HOME'] = '/home/ec2-user/anaconda3/envs/python3/lib/python3.6/
 !pip3 install sagemaker-feature-store-pyspark --no-binary :all:
 ```
 
-## Example Implementations<a name="w2481aac23c29c11b7"></a>
+## Example Implementations<a name="batch-ingestion-spark-connector-example-implementations"></a>
 
  **Scala** 
 
@@ -109,7 +117,7 @@ object ProgramOffline {
     // Load the feature definitions from input schema. The feature definitions can be used to create a feature group
     val featureDefinitions = featureStoreManager.loadFeatureDefinitionsFromSchema(df)
 
-    val featureGroupArn = "arn:aws:Amazon SageMaker:us-west-2:<your-account-id>:feature-group/<your-feature-group-name>"
+    val featureGroupArn = "arn:aws:sagemaker:us-west-2:<your-account-id>:feature-group/<your-feature-group-name>"
    
     // Ingest by default
     featureStoreManager.ingestData(df, featureGroupArn)
@@ -144,7 +152,7 @@ feature_store_manager= FeatureStoreManager()
 # Load the feature definitions from input schema. The feature definitions can be used to create a feature group
 feature_definitions = feature_store_manager.load_feature_definitions_from_schema(df)
 
-feature_group_arn = "arn:aws:Amazon SageMaker:us-west-2:<your-account-id>:feature-group/<your-feature-group-name>"
+feature_group_arn = "arn:aws:sagemaker:us-west-2:<your-account-id>:feature-group/<your-feature-group-name>"
 
 # Ingest by default
 feature_store_manager.ingest_data(input_data_frame=df, feature_group_arn=feature_group_arn)

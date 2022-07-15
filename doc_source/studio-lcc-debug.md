@@ -65,4 +65,9 @@ A default KernelGateway Lifecycle Configuration specified in `DefaultResourceSpe
 
 There is a Lifecycle Configuration timeout limitation of 5 minutes\. If a Lifecycle Configuration script takes longer than 5 minutes to run, Studio throws an error\.
 
-To resolve this error, ensure that your Lifecycle Configuration script completes in less than 5 minutes\.
+To resolve this error, ensure that your Lifecycle Configuration script completes in less than 5 minutes\. 
+
+To help decrease the run time of scripts, try the following:
++ Cut down on necessary steps\. For example, limit which conda environments to install large packages in\.
++ Run tasks in parallel processes\.
++ Use the `nohup` command in your script\.

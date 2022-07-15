@@ -28,9 +28,4 @@ The following examples demonstrate how you can use Amazon A2I to integrate a hum
 + [Delete a Human Review Workflow](a2i-delete-flow-definition.md)
 + [Create and Start a Human Loop](a2i-start-human-loop.md)
 + [Delete a Human Loop](a2i-delete-human-loop.md)
-+ [Create and Manage Worker Task Templates](a2i-instructions-overview.md)
-+ [Monitor and Manage Your Human Loop](a2i-monitor-humanloop-results.md)
-+ [Amazon A2I Output Data](a2i-output-data.md)
-+ [Permissions and Security in Amazon Augmented AI](a2i-permissions-security.md)
-+ [Use Amazon CloudWatch Events in Amazon Augmented AI](a2i-cloudwatch-events.md)
-+ [Use APIs in Amazon Augmented AI](a2i-api-references.md)
++ [Create 

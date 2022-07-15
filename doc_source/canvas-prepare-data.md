@@ -33,6 +33,9 @@ You can see the transform listed in the **Model recipe** section\. If you remove
 
 You can exclude a column from your model build by dropping it in the **Build** tab of the SageMaker Canvas application\. Deselect the column you want to drop, and it isn't included when building the model\.
 
+**Note**  
+If you drop columns and then make [batch predictions](canvas-getting-started.md#canvas-getting-started-step5) with your model, SageMaker Canvas adds the dropped columns back to the \.csv file available for you to download\. However, SageMaker Canvas does not add the dropped columns back for time series models\.
+
 ## Rename columns<a name="canvas-prepare-data-rename"></a>
 
 With the rename columns transform, you can rename columns in your data\. When you rename a column, SageMaker Canvas changes the column name in the model input\.
@@ -128,6 +131,62 @@ For the **Operation**, you can choose one of the following options\. Note that t
 After removing the rows from the dataset, SageMaker Canvas adds the transform in the **Model recipe** section\. If you remove the transform from the **Model recipe** section, the rows return to your dataset\.
 
 ![\[Screenshot of the remove rows by custom values operation in the SageMaker Canvas application.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/canvas-remove-custom.png)
+
+## Replace values<a name="canvas-prepare-data-replace"></a>
+
+This transform replaces values in your dataset where the values in a specific column meet conditions that you specify\. You can replace missing values or outliers\. SageMaker Canvas uses the replaced values when building your model but doesn’t change your original dataset\. Note that if you've dropped a column from your dataset using the [Drop columns](#canvas-prepare-data-drop) transform, you can't replace values in that column\.
+
+### Replace missing values<a name="canvas-prepare-data-replace-missing"></a>
+
+Missing values are a common occurrence in machine learning datasets and can impact model accuracy\. You can choose to drop rows that have missing values, but your model is more accurate if you choose to replace the missing values instead\. With this transform, you can replace missing values in numeric columns with the mean or median of the data in a column, or you can also specify a custom value with which to replace missing values\. For non\-numeric columns, you can replace missing values with the mode \(most common value\) of the column or a custom value\.
+
+Use this transform if you want to replace the null or empty values in certain columns\. To replace missing values in a specified column, do the following\. 
+
+1. In the **Build** tab of the SageMaker Canvas application, choose **Replace**\.
+
+1. Choose the **Column** in which you want to replace missing values\.
+
+1. For **Values to replace**, choose **Is missing**\.
+
+1. Set **Mode** to either **Automatic \(default\)** or **Manual**\. If you choose **Automatic \(default\)**, SageMaker Canvas replaces missing values with imputed values that best fit your data\. If you choose **Manual**, then specify the **Replace with** value in the next step\.
+
+1. \(Optional\) If you choose the **Manual** replacement option, set the **Replace with** value: 
+   + If your column is numeric, then select **Mean**, **Median**, or **Custom**\. **Mean** replaces missing values with the mean for the column, and **Median** replaces missing values with the median for the column\. If you choose **Custom**, then you must specify a custom value that you want to use to replace missing values\.
+   + If your column is non\-numeric, then select **Mode** or **Custom**\. **Mode** replaces missing values with the mode, or the most common value, for the column\. For **Custom**, specify a custom value\. that you want to use to replace missing values\.
+
+1. Choose **Add** to add the transform to the **Model recipe**\.
+
+After replacing the missing values in the dataset, SageMaker Canvas adds the transform in the **Model recipe** section\. If you remove the transform from the **Model recipe** section, the missing values return to the dataset\.
+
+![\[Screenshot of the replace missing values operation in the SageMaker Canvas application.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/canvas-replace-missing.png)
+
+### Replace outliers<a name="canvas-prepare-data-replace-outliers"></a>
+
+Outliers, or rare values in the distribution and range of your data, can negatively impact model accuracy and lead to longer building times\. SageMaker Canvas enables you to detect outliers in numeric columns and replace the outliers with values that lie within an accepted range in your data\. You can choose to define outliers with either standard deviations or a custom range, and you can replace outliers with the minimum and maximum values in the accepted range\.
+
+To replace outliers in your data, do the following\.
+
+1. In the **Build** tab of the SageMaker Canvas application, choose **Replace**\.
+
+1. Choose the **Column** in which you want to replace outliers\.
+
+1. For **Values to replace**, choose **Is outlier**\.
+
+1. For **Define outliers**, choose either **Standard deviation** or **Custom Range**\.
+
+1. If you choose **Standard deviation**, specify a **SD** \(standard deviation\) value from 1–3\. If you choose **Custom Range**, select either **Percentile** or **Number**, and then specify the **Min** and **Max** values\.
+
+1. For **Replace with**, select **Min/max range**\.
+
+1. Choose **Add** to add the transform to the **Model recipe**\.
+
+The **Standard deviation** option detects outliers in numeric columns using the mean and standard deviation\. You specify the number of standard deviations a value must vary from the mean to be considered an outlier\. For example, if you specify 3 for **SD**, a value must fall more than 3 standard deviations from the mean to be considered an outlier\. SageMaker Canvas replaces outliers with the minimum value or maximum value in the accepted range\. For example, if you configure the standard deviations to only include values from 200 to 300, then SageMaker Canvas changes a value of 198 to 200 \(the minimum\)\.
+
+The **Custom Range** option detects outliers in numeric columns using minimum and maximum values\. Use this method if you know your threshold values that delimit outliers\. You can set the **Type** of the custom range to either **Percentile** or **Number**\. If you choose **Percentile**, the **Min** and **Max** values should be the minimum and maximum of the percentile range \(0\-100\) that you want to allow\. If you choose **Number**, the **Min** and **Max** values should be the minimum and maximum numeric values that you want to allow\. SageMaker Canvas replaces any values that fall outside of the minimum and maximum to the minimum and maximum values\. For example, if your range only allows values from 1 to 100, then SageMaker Canvas changes a value of 102 to 100 \(the maximum\)\.
+
+After replacing the values in the dataset, SageMaker Canvas adds the transform in the **Model recipe** section\. If you remove the transform from the **Model recipe** section, the original values return to the dataset\.
+
+![\[Screenshot of the replace outliers operation in the SageMaker Canvas application.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/canvas-replace-outlier.png)
 
 ## Filter rows<a name="canvas-prepare-data-filter"></a>
 

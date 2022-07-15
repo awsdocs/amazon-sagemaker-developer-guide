@@ -14,7 +14,7 @@ When running Autopilot from SageMaker Studio, you can open the data exploration 
 
 ![\[Autopilot job description page with Open data exploration notebook selected.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-open-data-exploration-notebook.png)
 
-The data exploration report is generated from your data before the training process begins\. This allows you to stop Autopilot jobs that might lead to subpar or meaningless results and address any issues or improvements with your dataset before rerunning Autopilot\. This gives you an opportunity to leverage your domain expertise to improve the data quality manually before training a model on a better curated dataset\.
+The data exploration report is generated from your data before the training process begins\. This allows you to stop Autopilot jobs that might lead to meaningless results and address any issues or improvements with your dataset before rerunning Autopilot\. This gives you an opportunity to leverage your domain expertise to improve the data quality manually before training a model on a better curated dataset\.
 
 The data report generated contains only static markdown and can be opened in any Jupyter environment\. The notebook that contains the report can be converted to other formats, such as PDF or HTML\. For more information on conversions, see [Using the nbconvert script to convert Jupyter notebooks to other formats\.](https://nbconvert.readthedocs.io/en/latest/usage.html )\.
 

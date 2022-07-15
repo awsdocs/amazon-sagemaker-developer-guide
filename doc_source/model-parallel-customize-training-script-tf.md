@@ -133,7 +133,7 @@ If you are done preparing your training script, proceed to [Step 2: Launch a Tra
 
 ## TensorFlow with Horovod for Hybrid Model and Data Parallelism<a name="model-parallel-customize-training-script-tf-2.3"></a>
 
-You can use the SageMaker distributed model parallel library with Horovod for hybrid model and data parallelism\. To read more about how the library splits a model for hybrid parallelism, see [How the Library Splits a Model Given the Configuration Parameters](model-parallel-sm-sdk.md#model-parallel-how-it-splits-models)\.
+You can use the SageMaker distributed model parallel library with Horovod for hybrid model and data parallelism\. To read more about how the library splits a model for hybrid parallelism, see [Pipeline parallelism](model-parallel-intro.md#model-parallel-intro-pp)\.
 
 In this step, we focus on how to modify your training script to adapt the SageMaker distributed model parallel library\.
 

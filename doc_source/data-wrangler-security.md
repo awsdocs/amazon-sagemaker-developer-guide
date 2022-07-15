@@ -394,3 +394,39 @@ You can encrypt the data that you export using one of the following methods:
 On the **Export data** page, specify a value for the **AWS KMS key ID or ARN**\.
 
 For more information on using AWS KMS keys, see [Protecting Data Using Server\-Side Encryption with AWS KMS keys Stored in AWSAWS Key Management Service \(SSE\-KMS\) ](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)\.
+
+## Using Lifecycle Configurations in Data Wrangler<a name="data-wrangler-lifecycle-configuration"></a>
+
+You might have an Amazon EC2 instance that is configured to run Kernel Gateway applications, but not the Data Wrangler application\. Kernel Gateway applications provide access to the environment and the kernels that you use to run Studio notebooks and terminals\. The Data Wrangler application is the UI application that runs Data Wrangler\. Amazon EC2 instances that aren't Data Wrangler instances require a modification to their lifecycle configurations to run Data Wrangler\. Lifecycle configurations are shell scripts that automate the customization of your Amazon SageMaker Studio environment\.
+
+For more information about lifecycle configurations, see [Use Lifecycle Configurations with Amazon SageMaker Studio](studio-lcc.md)\.
+
+The default lifecycle configuration for your instance doesn't support using Data Wrangler\. You can make the following modifications to the default configuration to use Data Wrangler with your instance\.
+
+```
+#!/bin/bash
+set -eux
+STATUS=$(
+python3 -c "import sagemaker_dataprep"
+echo $?
+)
+if [ "$STATUS" -eq 0 ]; then
+echo 'Instance is of Type Data Wrangler'
+else
+echo 'Instance is not of Type Data Wrangler'
+
+# Replace this with the URL of your git repository
+export REPOSITORY_URL="https://github.com/aws-samples/sagemaker-studio-lifecycle-config-examples.git"
+
+git -C /root clone $REPOSTIORY_URL
+
+fi
+```
+
+You can save the script as `lifecycle_configuration.sh`\.
+
+You attach the lifecycle configuration to your Studio domain or user profile\. For more information about creating and attaching a lifecycle configuration, see [Creating and Associating a Lifecycle Configuration](studio-lcc-create.md)\.
+
+The following instructions show you how to attach a lifecycle configuration to a Studio domain or user profile\.
+
+You might run into errors when you're creating or attaching a lifecycle configuration\. For information about debugging lifecycle configuration errors, [KernelGateway App failure](studio-lcc-debug.md#studio-lcc-debug-kernel)\.

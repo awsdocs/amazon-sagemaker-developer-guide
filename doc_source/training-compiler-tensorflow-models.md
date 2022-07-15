@@ -1,6 +1,31 @@
-# TensorFlow Models<a name="training-compiler-tensorflow-models"></a>
+# TensorFlow<a name="training-compiler-tensorflow-models"></a>
 
 Bring your own TensorFlow model to SageMaker, and run the training job with SageMaker Training Compiler\.
+
+## TensorFlow Models<a name="training-compiler-tensorflow-models"></a>
+
+SageMaker Training Compiler automatically optimizes model training workloads that are built on top of the native TensorFlow API or the high\-level Keras API\.
+
+**Tip**  
+For preprocessing your input dataset, ensure that you use a static input shape\. Dynamic input shape can initiate recompilation of the model and might increase total training time\. 
+
+### Using Keras \(Recommended\)<a name="training-compiler-tensorflow-models-keras"></a>
+
+For the best compiler acceleration, we recommend using models that are subclasses of TensorFlow Keras \([tf\.keras\.Model](https://www.tensorflow.org/api_docs/python/tf/keras/Model)\)\.
+
+#### For single GPU training<a name="training-compiler-tensorflow-models-keras-single-gpu"></a>
+
+There's no additional change you need to make in the training script\.
+
+### Without Keras<a name="training-compiler-tensorflow-models-no-keras"></a>
+
+SageMaker Training Compiler does not support eager execution in TensorFlow\. Accordingly, you should wrap your model and training loops with the TensorFlow function decorator \(`@tf.function`\) to leverage compiler acceleration\.
+
+SageMaker Training Compiler performs a graph\-level optimization, and uses the decorator to make sure your TensorFlow functions are set to run in [graph mode](https://www.tensorflow.org/guide/intro_to_graphs)\.
+
+#### For single GPU training<a name="training-compiler-tensorflow-models-no-keras-single-gpu"></a>
+
+TensorFlow 2\.0 or later has the eager execution on by default, so you should add the `@tf.function` decorator in front of every function that you use for constructing a TensorFlow model\.
 
 ## TensorFlow Models with Hugging Face Transformers<a name="training-compiler-tensorflow-models-transformers"></a>
 
@@ -9,7 +34,7 @@ TensorFlow models with [Hugging Face Transformers](https://huggingface.co/docs/t
 SageMaker Training Compiler automatically optimizes model training workloads that are built on top of the native TensorFlow API or the high\-level Keras API, such as the TensorFlow transformer models\.
 
 **Tip**  
-When you create a tokenizer for an NLP model using Transformers in your training script, make sure that you use a static input tensor shape by specifying `padding='max_length'`\. Do not use `padding='longest'` because padding to the longest sequence in the batch can change the tensor shape for each training batch\. The dynamic input shape can trigger recompilation of the model and might increase total training time\. For more information about padding options of the Transformers tokenizers, see [Padding and truncation](https://huggingface.co/docs/transformers/pad_truncation) in the *Hugging Face Transformers documentation*\.
+When you create a tokenizer for an NLP model using Transformers in your training script, make sure that you use a static input tensor shape by specifying `padding='max_length'`\. Do not use `padding='longest'` because padding to the longest sequence in the batch can change the tensor shape for each training batch\. The dynamic input shape can initiate recompilation of the model and might increase total training time\. For more information about padding options of the Transformers tokenizers, see [Padding and truncation](https://huggingface.co/docs/transformers/pad_truncation) in the *Hugging Face Transformers documentation*\.
 
 **Topics**
 + [Using Keras](#training-compiler-tensorflow-models-transformers-keras)

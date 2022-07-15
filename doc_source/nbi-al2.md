@@ -14,7 +14,7 @@ The following table outlines the timeline for AL1 entering its extended maintena
 
 ## Available Kernels<a name="nbi-al2-env"></a>
 
-`notebook-al1-v1`: The following kernels are available in notebook instances based on the Amazon Linux platform\.
+`notebook-al1-v1`: The following kernels are available in notebook instances based on the Amazon Linux platform\. These notebook instances support JupyterLab version 1\. For information about JupyterLab versions, see [JupyterLab versioning](nbi-jl.md)\.
 
 
 |  Kernel Name  | 
@@ -44,7 +44,7 @@ The following table outlines the timeline for AL1 entering its extended maintena
 |  conda\_tensorflow\_p27  | 
 |  conda\_tensorflow\_p36  | 
 
-`notebook-al2-v1`: The following kernels are available in notebook instances based on the Amazon Linux 2 platform\.
+`notebook-al2-v1`: The following kernels are available in notebook instances based on the Amazon Linux 2 platform\. These notebook instances support JupyterLab version 1\. For information about JupyterLab versions, see [JupyterLab versioning](nbi-jl.md)\.
 
 
 |  Kernel Name  | 
@@ -56,6 +56,21 @@ The following table outlines the timeline for AL1 entering its extended maintena
 |  conda\_amazonei\_mxnet\_p36  | 
 |  conda\_amazonei\_pytorch\_latest\_p37  | 
 |  conda\_amazonei\_tensorflow2\_p36  | 
+|  conda\_mxnet\_p37  | 
+|  conda\_python3  | 
+|  conda\_pytorch\_p38  | 
+|  conda\_tensorflow2\_p38  | 
+
+`notebook-al2-v2`: The following kernels are available in notebook instances based on the Amazon Linux 2 platform\. These notebook instances support JupyterLab version 3\. For information about JupyterLab versions, see [JupyterLab versioning](nbi-jl.md)\.
+
+
+|  Kernel Name  | 
+| --- | 
+|  R  | 
+|  Sparkmagic \(PySpark\)  | 
+|  Sparkmagic \(Spark\)  | 
+|  Sparkmagic \(SparkR\)  | 
+|  conda\_amazonei\_pytorch\_latest\_p37  | 
 |  conda\_mxnet\_p37  | 
 |  conda\_python3  | 
 |  conda\_pytorch\_p38  | 

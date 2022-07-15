@@ -27,4 +27,4 @@ GPU7: pp_rank 1, tp_rank 1, rdp_rank 1, dp_rank 3, mp_rank 3
 
 In this example, pipeline parallelism occurs across the GPU pairs \(0,1\); \(2,3\); \(4,5\) and \(6,7\)\. In addition, we have data parallelism \(`allreduce`\) taking place across GPUs 0, 2, 4, 6, and independently over GPUs 1, 3, 5, 7\. Tensor parallelism happens over subsets of `dp_group`s, across the GPU pairs \(0,2\); \(1,3\); \(4,6\) and \(5,7\)\.
 
-Note that under this type of tensor parallelism, `(the degree of data parallelism)*(the degree of pipeline parallelism) = (the number of GPUs)`\.
+  For this kind of hybrid pipeline and tensor parallelism, the math for `data_parallel_degree` remains as `data_parallel_degree = number_of_GPUs / pipeline_parallel_degree`\. The library further calculates the reduced data parallel degree from the following relation `reduced_data_parallel_degree * tensor_parallel_degree = data_parallel_degree`\.  

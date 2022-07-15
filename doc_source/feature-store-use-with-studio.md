@@ -46,11 +46,11 @@
 
     ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/Use-Feature-Store-with-Studio-2020-11-29_07-14-52.png) 
 
-1.  The table editor accepts a column name and a data type\. In a minimal example, you will need at least two for the next step: one for a record identifier and one for a time event feature\. You can have up to 2,500 feature definitions\. 
+1. The table editor accepts a column name and a data type\. In a minimal example, you will need at least two for the next step: one for a record identifier and one for a time event feature\. You can have up to 2,500 feature definitions\. 
 
     ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/Use-Feature-Store-with-Studio-2020-11-29_07-16-37.png) 
 
-1.  Set a record identifier and a time feature to use for this feature group\. 
+1. Set a record identifier and a time feature to use for this feature group\. 
 
     ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/Use-Feature-Store-with-Studio-2020-11-29_07-17-13.png) 
 
