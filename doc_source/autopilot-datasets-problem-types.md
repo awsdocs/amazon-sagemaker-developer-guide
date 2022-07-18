@@ -39,7 +39,7 @@ Your problem type options are as follows:
 **Topics**
 + [Regression](#autopilot-automate-model-development-problem-types-regression)
 + [Binary classification](#autopilot-automate-model-development-problem-types-binary-classification)
-+ [Multiclass classification](#autopilot-automate-model-development-problem-types-multi-class-classification)
++ [Multiclass classification](#autopilot-automate-model-development-problem-types-multiclass-classification)
 
 ### Regression<a name="autopilot-automate-model-development-problem-types-regression"></a>
 
@@ -49,6 +49,6 @@ Regression estimates the values of a dependent target variable based on one or m
 
 Binary classification is a type of supervised learning that assigns an individual to one of two predefined and mutually exclusive classes based on their attributes\. It is supervised because the models are trained using examples where the attributes are provided with correctly labelled objects\. A medical diagnosis for whether an individual has a disease or not based on the results of diagnostic tests is an example of binary classification\.
 
-### Multiclass classification<a name="autopilot-automate-model-development-problem-types-multi-class-classification"></a>
+### Multiclass classification<a name="autopilot-automate-model-development-problem-types-multiclass-classification"></a>
 
 Multiclass classification is a type of supervised learning that assigns an individual to one of several classes based on their attributes\. It is supervised because the models are trained using examples where the attributes are provided with correctly labelled objects\. An example is the prediction of the topic most relevant to a text document\. A document may be classified as being about, say, religion or politics or finance, or about one of several other predefined topic classes\.

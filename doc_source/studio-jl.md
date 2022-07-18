@@ -253,7 +253,7 @@ conda activate studio
 pip install <JUPYTER_EXTENSION>
 
 # After installing extensions
-conda deactivate studio
+conda deactivate
 ```
 
 ### Installing Extensions using a lifecycle configuration script<a name="studio-jl-install-lcc"></a>

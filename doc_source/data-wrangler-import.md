@@ -167,9 +167,9 @@ If you use AWS Lake Formation with Athena, make sure your Lake Formation IAM per
 
    1. Choose a **Workgroup**\.
 
-   1. If your workgroup hasn't enforced the Amazon S3 output location, specify a value for **Amazon S3 location of query results**\.
+   1. If your workgroup hasn't enforced the Amazon S3 output location or if you don't use a workgroup, specify a value for **Amazon S3 location of query results**\.
 
-   **Enable sampling** is selected by default\. When sampling is activated, Data Wrangler samples and imports approximately 50% of the queried data\. Deselect this checkbox to turn off sampling\.
+1. For **Sampling**, choose a sampling method\. When sampling is activated, Data Wrangler samples and imports approximately 50% of the queried data\. Choose **None** to turn off sampling\.
 
 1. Enter your query in the query editor and use the **Run** button to run the query\. After a successful query, you can preview your result under the editor\.
 

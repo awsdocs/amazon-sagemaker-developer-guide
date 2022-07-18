@@ -2,6 +2,8 @@
 
 If you're not using Amazon SageMaker Canvas, you can log out of your session\. A session is the period of time when you start using SageMaker Canvas to the point when you stop using it\. Logging out stops the session\. You are only billed for the duration of the session\. You don't lose your data when you log out\.
 
+If you log out of SageMaker Canvas while running a **Quick build**, your build might be interrupted until you log back in\. When you log back in, SageMaker Canvas automatically restarts the build\.
+
 To log out, use the following procedure\.
 
 To log out of SageMaker Canvas, do the following\.

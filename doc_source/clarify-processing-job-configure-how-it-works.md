@@ -1,10 +1,10 @@
 # How SageMaker Clarify Processing Jobs Work<a name="clarify-processing-job-configure-how-it-works"></a>
 
 A SageMaker processing job uses the SageMaker Clarify container at several stages in the lifecycle of the machine learning workflow\. You can use the SageMaker Clarify container with your datasets and models to compute the following types of analysis:
-+ pretraining bias metrics
-+ posttraining bias metrics
-+ SHAP values for explainability
-+ Partial dependence plots \(PDP\)
++ [pretraining bias metrics](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-data-bias)
++ [posttraining bias metrics](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html)
++ [SHAP values for explainability](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-shapley-values.html)
++ [Partial dependence plots \(PDP\)](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-partial-dependence-plots.html)
 
 You can control which of these analyses are computed when you configure the processing job\. For pretraining bias metrics, you need to provide the dataset\. You can compute posttraining bias metrics and explainability after your model has been trained by providing the dataset and model name\. You must configure the necessary parameters in the form of a JSON configuration file and provide this as an input to the processing job\.
 
