@@ -48,9 +48,9 @@ Here is an example of a confusion matrix for a binary classification problem\.
 
 ![\[Amazon SageMaker Autopilot binary confusion matrix example.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-model-insights-confusion-matrix-binary.png)
 
-Here is an example of a confusion matrix for a multiclass classification problem\.
+Here is an example of a confusion matrix for a multi\-class classification problem\.
 
-![\[Amazon SageMaker Autopilot multimodel confusion matrix example.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-model-insights-confusion-matrix-multiclass.png)
+![\[Amazon SageMaker Autopilot multiclass confusion matrix example.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-model-insights-confusion-matrix-multiclass.png)
 
 This report provides a confusion matrix that can accommodate a maximum 15 labels for multiclass classification problem types\. The labels are listed in order, from those predicted least accurately to those predicted most accurately\. If a row shows `Nan`, it means that the validation dataset doesn't have a row for that label\.
 

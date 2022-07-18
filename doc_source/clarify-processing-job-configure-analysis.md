@@ -39,7 +39,7 @@ In the JSON configuration file, you can specify the following parameters\.
     + `"num_samples"` – Number of samples to be used in the Kernel SHAP algorithm\. This number determines the size of the generated synthetic dataset to compute the SHAP values\.
     + `"seed"` – \(Optional\) Seed value for the random number generator to obtain a deterministic SHAP result\.
     + `"text_config"` – \(Required\) The configuration that specifies the natural language processing \(NLP\) features\. If this config is provided, text features are treated as text and explanations are provided for individual units of text\. The unit of text is specified by the `"granularity"`\.
-      + `"granularity"` – \(Required\) For NLP, determines the unit of granularity for the analysis of text features\. Valid values are `"token"`, `"sentence"`, or `"paragraph"`\. Each of these units is considered a feature, and shap values are computed for the feature specified\.
+      + `"granularity"` – \(Required\) For NLP, determines the unit of granularity for the analysis of text features\. Valid values are `"token"`, `"sentence"`, or `"paragraph"`\. Each of these units is considered a feature, and SHAP values are computed for the feature specified\.
       + `"language"` – \(Required\) Specifies the language of the text features for natural language processing \(NLP\)\. Valid value are `"chinese"`, `"danish"`, `"dutch"`, `"english"`, `"french"`, `"german"`, `"greek"`, `"italian"`, `"japanese"`, `"lithuanian"`, `"multi-language"`, `"norwegian bokmål"`, `"polish"`, `"portuguese"`, `"romanian"`, `"russian"`, `"spanish"`, `"afrikaans"`, `"albanian"`, `"arabic"`, `"armenian"`, `"basque"`, `"bengali"`, `"bulgarian"`, `"catalan"`, `"croatian"`, `"czech"`, `"estonian"`, `"finnish"`, `"gujarati"`, `"hebrew"`, `"hindi"`, `"hungarian"`, `"icelandic"`, `"indonesian"`, `"irish"`, `"kannada"`, `"kyrgyz"`, `"latvian"`, `"ligurian"`, `"luxembourgish"`, `"macedonian"`, `"malayalam"`, `"marathi"`, `"nepali"`, `"persian"`, `"sanskrit"`, `"serbian"`, `"setswana"`, `"sinhala"`, `"slovak"`, `"slovenian"`, `"swedish"`, `"tagalog"`, `"tamil"`, `"tatar"`, `"telugu"`, `"thai"`, `"turkish"`, `"ukrainian"`, `"urdu"`, `"vietnamese"`, `"yoruba"`\. Use `"multi-language" `for a mix of multiple languages\.
     + `"use_logit"` – \(Optional\) Boolean value to indicate if the logit function is to be applied to the model predictions\. If `"use_logit"` is `true`, then the SHAP values have log\-odds units\. The default value is `false`\. 
     + `"image_config"` – \(Optional\) Section for configuring SHAP configuration parameters for computer vision explainability\. 
@@ -279,7 +279,7 @@ The following code sample shows how to configure an analysis for object detectio
 
 ### NLP analysis configuration JSON file for a text dataset<a name="clarify-analysis-configure-nlp-example"></a>
 
-The following code sample shows how to configure an analysis for natural language processing\.
+The following code sample shows how to configure an analysis for natural processing\.
 
 ```
 {
@@ -292,7 +292,6 @@ The following code sample shows how to configure an analysis for natural languag
          "num_samples": 100
          *"text_config": {
             "granularity": "(token|sentence|paragraph)"
-            "language": ".."
           }*
        }
    .

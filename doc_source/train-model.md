@@ -24,6 +24,7 @@ SageMaker provides features to monitor and manage the training and validation of
 + [Amazon SageMaker Distributed Training Libraries](distributed-training.md)
 + [Amazon SageMaker Training Compiler](training-compiler.md)
 + [Amazon SageMaker Clarify Bias Detection and Model Explainability](clarify-configure-processing-jobs.md)
++ [Train Using a Heterogeneous Cluster](train-heterogeneous-cluster.md)
 + [Incremental Training in Amazon SageMaker](incremental-training.md)
 + [Amazon SageMaker Training Storage Folders for Training Datasets, Checkpoints, Model Artifacts, and Outputs](model-train-storage.md)
 + [Access Training Data](model-access-training-data.md)

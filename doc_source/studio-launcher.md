@@ -8,19 +8,37 @@ You can open Studio Launcher in any of the following ways:
 + From the Studio menu, choose **File** and then choose **New Launcher**\.
 + If the Studio file browser is open, choose the plus \(**\+**\) sign on the Studio file browser menu\.
 
-The Launcher opens in a new tab in Studio\. Your screen should look similar to the following:
+The Launcher opens in a new tab in Studio\.
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-new-launcher.png)
-
-The Launcher consists of following sections:
+The Launcher consists of the following sections:
 + **Get started** – Provides material to get started using SageMaker Studio, such as videos and tutorials, and one\-click solutions for machine learning problems\.
 + **ML tasks and components** – Create machine learning tasks and components, such as new feature groups, data flows, and projects\.
 + **Notebooks and compute resources** – Create a notebook, open an image terminal, or open a Python console\.
 + **Utilities and files** – Show contextual help from a notebook, create files, or open a system terminal\.
 
 **Topics**
++ [ML Tasks and Components](#studio-launcher-mltasks)
 + [Notebooks and compute resources](#studio-launcher-launch)
 + [Utilities and files](#studio-launcher-other)
+
+## ML Tasks and Components<a name="studio-launcher-mltasks"></a>
+
+The following items are available:
++ **New Data Flow**
+
+  Launches a new Data Wrangler flow that you can use to import, explore and prepare, and process data for machine learning\. 
++ **New Compilation Job**
+
+  Creates a new compilation job\.
++ **New Project**
+
+  Built\-in and custom project templates to organize machine learning components and automate MLOps\.
++ **New Feature Group**
+
+  Creates a new feature group in the feature store to logically group and manage features\.
++ **New Autopilot Experiment**
+
+  Creates prediction model from your data in a few clicks\. 
 
 ## Notebooks and compute resources<a name="studio-launcher-launch"></a>
 

@@ -8,7 +8,7 @@ Amazon SageMaker Clarify generates heat maps for images that highlight features 
 
 ## Explain Image Classification with Amazon SageMaker Clarify<a name="clarify-model-explainability-computer-vision-image-classification"></a>
 
-SageMaker Clarify processing jobs provides support for explaining images using the [KernelSHAP algorithm](https://arxiv.org/abs/1705.07874)\. This algorithm treats the image as a collection of super pixels\. Given a dataset consisting of images, the processing job outputs a dataset of images where each image shows the heatmap of the relevant super pixels\.
+SageMaker Clarify processing jobs provides support for explaining images using the [KernelSHAP algorithm](https://arxiv.org/abs/1705.07874)\. This algorithm treats the image as a collection of super pixels\. Given a dataset consisting of images, the processing job outputs a dataset of images where each image shows the heat map of the relevant super pixels\.
 
 For a sample notebook that uses SageMaker Clarify to classify images and explain its classification, see [Explaining Image Classification with SageMaker Clarify](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker_processing/computer_vision/explainability_image_classification.ipynb)\.
 

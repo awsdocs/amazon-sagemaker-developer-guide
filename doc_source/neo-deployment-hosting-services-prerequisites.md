@@ -209,12 +209,9 @@ To create a SageMaker Neo\-compiled model, you need the following:
 ------
 #### [ PyTorch 1\.5 and Newer ]
 
-      Use `neopytorch` to specify the file path of the model if you trained with PyTorch version 1\.5 and newer\.
-
       ```
       import os
       import torch
-      import neopytorch
       import torch.nn.parallel
       import torch.optim
       import torch.utils.data
@@ -238,26 +235,12 @@ To create a SageMaker Neo\-compiled model, you need the following:
           model_dir -- the directory path where the model artifacts are present
           """
       
-          # The compiled model is saved as "compiled.pt"
-          model_path = os.path.join(model_dir, 'compiled.pt')
-          neopytorch.config(model_dir=model_dir,neo_runtime=True)
+          # The compiled model is saved as "model.pt"
+          model_path = os.path.join(model_dir, 'model.pt')
           device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
           model = torch.jit.load(model_path, map_location=device)
           model = model.to(device)
       
-          # We recommend that you run warm-up inference during model load
-          sample_input_path = os.path.join(model_dir, 'sample_input.pkl')
-          with open(sample_input_path, 'rb') as input_file:
-              model_input = pickle.load(input_file)
-          if torch.is_tensor(model_input):
-              model_input = model_input.to(device)
-              model(model_input)
-          elif isinstance(model_input, tuple):
-              model_input = (inp.to(device)
-                                 for inp in model_input if torch.is_tensor(inp))
-              model(*model_input)
-          else:
-              print("Only supports a torch tensor or a tuple of torch tensors")
           return model
       
       

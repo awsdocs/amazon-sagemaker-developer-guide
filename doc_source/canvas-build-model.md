@@ -18,7 +18,7 @@ The **Build model** page shows a preview of 100 rows in your dataset\. The previ
 
 Before building your model, you can filter your data or prepare it using advanced transforms\. For more information about preparing your data for model building, see [Prepare data with advanced transformations](canvas-prepare-data.md)\.
 
-To build your model, you can choose either a **Quick build** or a **Standard build**\. The **Quick build** usually takes 2\-15 minutes to build the model, whereas the **Standard build** usually takes 2\-4 hours and generally has a higher accuracy\.
+To build your model, you can choose either a **Quick build** or a **Standard build**\. The **Quick build** usually takes 2\-15 minutes to build the model, whereas the **Standard build** usually takes 2\-4 hours and generally has a higher accuracy\. If you log out while running a **Quick build**, your build might be interrupted until you log in again\. When you log in again, SageMaker Canvas restarts the **Quick build**\.
 
 While Amazon SageMaker Canvas builds the model, it automatically adds missing values for datasets that don't have time series data\. SageMaker Canvas uses the values in your dataset to perform a mathematical approximation for the missing values\. For the highest model accuracy, we recommend adding in the missing data if you can find it\.
 
