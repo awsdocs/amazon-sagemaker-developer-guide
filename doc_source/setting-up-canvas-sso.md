@@ -1,22 +1,22 @@
-# Set up SageMaker Canvas for your users<a name="setting-up-canvas-sso"></a>
+# Set Up SageMaker Canvas for Your Users<a name="setting-up-canvas-sso"></a>
 
 To set up Amazon SageMaker Canvas, do the following:
 + Create an Amazon SageMaker Domain\.
-+ Create user profiles for the SageMaker Domain\.
++ Create user profiles for the Domain
 + Set up Okta Single Sign On \(SSO\) for your users\.
 + Activate link sharing for models\.
 
 Use Single\-Sign On \(SSO\) to give your users access to Amazon SageMaker Canvas\. SageMaker Canvas supports SAML 2\.0 SSO methods\. The following sections guide you through procedures to set up Okta SSO\.
 
-To set up an Amazon SageMaker Domain, see [Onboard to Amazon SageMaker Studio Using IAM](https://docs.aws.amazon.com/sagemaker/latest/dg/onboard-iam.html)\. You can use the following information to help you complete the procedure in the section:
+To set up a Domain, see [Onboard to Amazon SageMaker Studio Using IAM](https://docs.aws.amazon.com/sagemaker/latest/dg/onboard-iam.html)\. You can use the following information to help you complete the procedure in the section:
 + You can ignore the step about creating projects\.
 + You don't need to provide access to additional Amazon S3 buckets\. Your users can use the default bucket that we provide when we create a role\.
-+ To give your users the ability to share their notebooks with data scientists, turn on **Notebook Sharing Configuration**\.
++ To give your users access to share their notebooks with data scientists, turn on **Notebook Sharing Configuration**\.
 + Use Amazon SageMaker Studio version 3\.19\.0 or later\. For information about updating Amazon SageMaker Studio, see [Shut down and Update SageMaker Studio](studio-tasks-update-studio.md)\.
 
 Use the following procedure to set up Okta\. For all of the following procedures, you specify the same IAM role for `IAM-role` \.
 
-## Add SageMaker Canvas Application To Okta<a name="canvas-set-up-okta"></a>
+## Add the SageMaker Canvas Application To Okta<a name="canvas-set-up-okta"></a>
 
 Set up the sign\-on method for Okta\.
 
@@ -51,7 +51,7 @@ AWS Identity and Access Management \(IAM\) is the AWS service that you use to ga
 1. For **Configure Provider**, specify the following:
    + **Provider Type** – From the dropdown menu, choose **SAML**\.
    + **Provider Name** – Specify **Okta**\.
-   + **Metadata Document** – Upload the XML document that you've saved locally from step 7 of [Add SageMaker Canvas Application To Okta](#canvas-set-up-okta)\.
+   + **Metadata Document** – Upload the XML document that you've saved locally from step 7 of [Add the SageMaker Canvas Application To Okta](#canvas-set-up-okta)\.
 
 1. Find your identity provider under **Identity Providers**\. Copy its **Provider ARN** value\.
 
@@ -207,16 +207,16 @@ If you choose to add the preceding policy to the admin user, you must use the fo
 
 ## Activate link sharing for models<a name="canvas-set-up-link-sharing"></a>
 
-In order to create shareable links for importing SageMaker Canvas models into SageMaker Studio, the SageMaker Domain must enable the notebook resource sharing option and have a valid Amazon S3 sharing location\. If you delete the Amazon S3 sharing location specified in your SageMaker Domain, or if you specify a non\-existent Amazon S3 location, you cannot create shareable links for SageMaker Canvas models\.
+In order to create shareable links for importing SageMaker Canvas models into Amazon SageMaker Studio, the Amazon SageMaker Domain must turn on the notebook resource sharing option and have a valid Amazon S3 sharing location\. If you delete the Amazon S3 sharing location specified in your Domain, or if you specify a nonexistent Amazon S3 location, you cannot create shareable links for SageMaker Canvas models\.
 
-If you choose the **Quick setup** when creating your SageMaker Domain, SageMaker provides a default Amazon S3 location for resource sharing and automatically enables notebook resource sharing\.
+If you choose the **Quick setup** when creating your Domain, SageMaker provides a default Amazon S3 location for resource sharing and automatically turns on notebook resource sharing\.
 
-If you choose the **Standard setup** when creating your SageMaker Domain, configure the following options when setting up the **Notebook Sharing Configuration**:
+If you choose the **Standard setup** when creating your Domain, configure the following options when setting up the **Notebook Sharing Configuration**:
 
 1. For **Shareable notebook resources**, turn on **Enable notebook resource sharing**\.
 
-1. For **S3 location for shareable notebook resources**, enter either the default bucket already provided or enter a valid Amazon S3 path of your choice\.
+1. For **S3 location for shareable notebook resources**, enter either the default bucket already provided or a valid Amazon S3 path of your choice\.
 
-The **Notebook Sharing Configuration** for your SageMaker Domain should look like the following screenshot, with **Enable notebook resource sharing** turned on and an Amazon S3 path entered for the **S3 location for shareable notebook resources** field\.
+The **Notebook Sharing Configuration** for your Domain should look like the following screenshot, with **Enable notebook resource sharing** turned on and an Amazon S3 path entered for the **S3 location for shareable notebook resources** field\.
 
-![\[Screenshot of the Notebook Sharing Configuration in the SageMaker Domain console with notebook resource sharing enabled and an example Amazon S3 location.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/canvas-notebook-sharing-config.png)
+![\[Screenshot of the Shareable notebook resources screen in the SageMaker Domain console with notebook resource sharing turned on and an example Amazon S3 location.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/canvas-notebook-sharing-config.png)

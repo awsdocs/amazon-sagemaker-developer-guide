@@ -16,7 +16,7 @@ The following are common errors that you might run into when using Docker contai
 
   ```
   local:
-  container_root: /home/ec2-user/SageMaker/temp
+    container_root: /home/ec2-user/SageMaker/temp
   ```
 
   With this configuration, local mode uses the `/temp` directory and not the default `/tmp` directory\.

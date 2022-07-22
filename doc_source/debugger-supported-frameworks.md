@@ -17,6 +17,9 @@ The following table shows SageMaker machine learning frameworks and algorithms s
 + **Debugging output tensors** – Track and debug model parameters, such as weights, gradients, biases, and scalar values of your training job\. Available deep learning frameworks are Apache MXNet, TensorFlow, PyTorch, and XGBoost\.
 **Important**  
  For the TensorFlow framework with Keras, SageMaker Debugger deprecates the zero code change support for debugging models built using the `tf.keras` modules of TensorFlow 2\.6 and later\. This is due to breaking changes announced in the [TensorFlow 2\.6\.0 release note](https://github.com/tensorflow/tensorflow/releases/tag/v2.6.0)\. SageMaker Debugger continues to support the zero code change experience for the native TensorFlow \(which excludes the `tf.keras` modules\)\. 
+**Important**  
+For PyTorch v1\.12 and later, SageMaker Debugger deprecates the zero code change support for debugging models\.  
+This is due to breaking changes that cause SageMaker Debugger to interfere with the `torch.jit` functionality\. For instructions on how to update your training script, see [How to register the `smdebug` hook for PyTorch](https://sagemaker-debugger.readthedocs.io/en/website/pytorch.html) in the *`smdebug` Python SDK documentation*\.
 
 If the framework or algorithm that you want to train and debug is not listed in the table, go to the [AWS Discussion Forum](https://forums.aws.amazon.com/) and leave feedback on SageMaker Debugger\.
 
@@ -24,17 +27,17 @@ If the framework or algorithm that you want to train and debug is not listed in 
 
 Bring your training containers to SageMaker and gain insights into your training jobs using Debugger\. Maximize your work efficiency by optimizing your model on Amazon EC2 instances using the monitoring and debugging features\.
 
-For more information about how to build your training container with the `SMDebug` client library, push it to the Amazon Elastic Container Registry \(Amazon ECR\), and monitor and debug, see [Use Debugger with Custom Training Containers](debugger-bring-your-own-container.md)\.
+For more information about how to build your training container with the `smdebug` client library, push it to the Amazon Elastic Container Registry \(Amazon ECR\), and monitor and debug, see [Use Debugger with Custom Training Containers](debugger-bring-your-own-container.md)\.
 
 ## Debugger Open\-Source GitHub Repositories<a name="debugger-opensource"></a>
 
-Debugger APIs are provided through the SageMaker Python SDK and designed to construct Debugger hook and rule configurations for the SageMaker [ CreateTrainingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) and [ DescribeTrainingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html) API operations\. The `SMDebug` client library provides tools to register *hooks* and access the training data through its *trial* feature, all through its flexible and powerful API operations\. It supports the machine learning frameworks TensorFlow, PyTorch, MXNet, and XGBoost on Python 3\.6 and later\. 
+Debugger APIs are provided through the SageMaker Python SDK and designed to construct Debugger hook and rule configurations for the SageMaker [ CreateTrainingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) and [ DescribeTrainingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html) API operations\. The `smdebug` client library provides tools to register *hooks* and access the training data through its *trial* feature, all through its flexible and powerful API operations\. It supports the machine learning frameworks TensorFlow, PyTorch, MXNet, and XGBoost on Python 3\.6 and later\. 
 
-For direct resources about the Debugger and `SMDebug` API operations, see the following links: 
+For direct resources about the Debugger and `smdebug` API operations, see the following links: 
 + [The Amazon SageMaker Python SDK documentation](https://sagemaker.readthedocs.io/en/stable/amazon_sagemaker_debugger.html)
-+ [The Amazon SageMaker Debugger APIs](https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html)
-+ [The SMDebug open source client library](https://github.com/awslabs/sagemaker-debugger#amazon-sagemaker-debugger)
-+ [The SMDebug PyPI](https://pypi.org/project/smdebug/)
++ [The Amazon SageMaker Python SDK \- Debugger APIs](https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html)
++ [The `smdebug` Python SDK documentation](https://sagemaker-debugger.readthedocs.io/en/website/index.html) for [the Amazon SageMaker Debugger open source client library](https://github.com/awslabs/sagemaker-debugger#amazon-sagemaker-debugger)
++ [The `smdebug` PyPI](https://pypi.org/project/smdebug/)
 
 If you use the SDK for Java to conduct SageMaker training jobs and want to configure Debugger APIs, see the following references:
 + [ Amazon SageMaker Debugger API Operations](debugger-apis.md)

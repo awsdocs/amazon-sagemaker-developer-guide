@@ -9,9 +9,9 @@ Amazon SageMaker Inference supports the following drivers and instance families:
 
 | Service | GPU | Driver version | Instance types | 
 | --- | --- | --- | --- | 
-| Real\-time | NVIDIA | 470\.57\.02 | ml\.p2\.\*, ml\.p3\.\*, ml\.g4dn\.\* | 
-| Batch | NVIDIA | 470\.57\.02 | ml\.p2\.\*, ml\.p3\.\*, ml\.g4dn\.\* | 
-| Asynchronous Inference | NVIDIA | 470\.57\.02 | ml\.p2\.\*, ml\.p3\.\*, ml\.g4dn\.\* | 
+| Real\-time | NVIDIA | 470\.57\.02 | ml\.p2\.\*, ml\.p3\.\*, ml\.p4d\.\*, ml\.g4dn\.\*, ml\.g5\.\* | 
+| Batch | NVIDIA | 470\.57\.02 | ml\.p2\.\*, ml\.p3\.\*, ml\.p4d\.\*, ml\.g4dn\.\*, ml\.g5\* | 
+| Asynchronous Inference | NVIDIA | 470\.57\.02 | ml\.p2\.\*, ml\.p3\.\*, ml\.p4d\.\*, ml\.g4dn\.\*, ml\.g5\* | 
 
 ## Troubleshoot your model container with GPU capabilities<a name="inference-gpu-drivers-troubleshoot"></a>
 

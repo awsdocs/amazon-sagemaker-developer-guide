@@ -2,6 +2,9 @@
 
 The following table contains the subset of hyperparameters that are required or most commonly used for the Amazon SageMaker AutoGluon\-Tabular algorithm\. Users set these parameters to facilitate the estimation of model parameters from data\. The SageMaker AutoGluon\-Tabular algorithm is an implementation of the open\-source [AutoGluon\-Tabular](https://github.com/awslabs/autogluon) package\.
 
+**Note**  
+The default hyperparameters are based on example datasets in the [AutoGluon\-Tabular sample notebooks](autogluon-tabular.md#autogluon-tabular-sample-notebooks)\.
+
 The SageMaker AutoGluon\-Tabular algorithm automatically chooses an evaluation metric based on the type of classification problem\. The algorithm detects the type of classification problem based on the number of labels in your data\. For regression problems, the evaluation metric is root mean squared error\. For binary classification problems, the evaluation metric is area under the receiver operating characteristic curve \(AUC\)\. For multiclass classification problems, the evaluation metric is accuracy\.
 
 **Note**  

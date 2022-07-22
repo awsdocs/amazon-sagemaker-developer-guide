@@ -31,7 +31,7 @@ The SageMaker model parallel library supports saving partial or full checkpoints
    optimizer = smp.DistributedOptimizer(optimizer)
    ```
 
-1. Save the model and the optimizer state using [https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/latest/smd_model_parallel_pytorch.html#smp.save](https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/latest/smd_model_parallel_pytorch.html#smp.save)\. Depending on how you want to save checkpoints, choose one of the following two options:
+1. Save the model and the optimizer state using [https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/latest/smd_model_parallel_pytorch.html#smdistributed.modelparallel.torch.save](https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/latest/smd_model_parallel_pytorch.html#smdistributed.modelparallel.torch.save)\. Depending on how you want to save checkpoints, choose one of the following two options:
    + **Option 1:** Save a partial model on each `mp_rank` for a single `MP_GROUP`\.
 
      ```
@@ -67,7 +67,7 @@ If you set `gather_to_rank0=True`, all ranks other than `0` return empty diction
 For full checkpointing, you can only checkpoint the model\. Full checkpointing of optimizer states is currently not supported\.
 The full model only needs to be saved at `smp.rank() == 0`\.
 
-1. Load the checkpoints using [https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/latest/smd_model_parallel_pytorch.html#smp.load](https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/latest/smd_model_parallel_pytorch.html#smp.load)\. Depending on how you checkpointed in the previous step, choose one of the following two options:
+1. Load the checkpoints using [https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/latest/smd_model_parallel_pytorch.html#smdistributed.modelparallel.torch.load](https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/latest/smd_model_parallel_pytorch.html#smdistributed.modelparallel.torch.load)\. Depending on how you checkpointed in the previous step, choose one of the following two options:
    + **Option 1:** Load the partial checkpoints\.
 
      ```

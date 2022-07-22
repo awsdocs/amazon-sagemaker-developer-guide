@@ -31,7 +31,7 @@ This policy includes the following permissions\.
 + `firehose` – Allows the role to interact with Kinesis Data Firehose streams\.
 + `glue` – Allows the role to interact with AWS Glue\.
 + `iam` – Allows the role to pass roles prepended with `AmazonSageMakerServiceCatalog`\. This is needed when Projects provisions a AWS Service Catalog product, as a role needs to be passed to AWS Service Catalog\.
-+ `lambda` – Allows the role to interact with AWS Lambda\.
++ `lambda` – Allows the role to interact with AWS Lambda\. Also allows tagging resources\.
 + `logs` – Allows the role to create, delete and access log streams\.
 + `s3` – Allows the role assumed by AWS Service Catalog and passed to CloudFormation to access Amazon S3 buckets where the Project template code is stored\.
 + `sagemaker` – Allows the role to interact with various SageMaker services\. This is done both in CloudFormation during template provisioning, as well as in CodeBuild during CICD pipeline execution\.
@@ -325,6 +325,20 @@ This policy includes the following permissions\.
     },
     {
       "Effect": "Allow",
+      "Action": "lambda:TagResource",
+      "Resource": [
+        "arn:aws:lambda:*:*:function:sagemaker-*"
+      ],
+      "Condition": {
+        "ForAllValues:StringLike": {
+          "aws:TagKeys": [
+            "sagemaker:*"
+          ]
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
       "Action": [
         "logs:CreateLogGroup",
         "logs:CreateLogStream",
@@ -444,7 +458,8 @@ View details about updates to AWS managed policies for Amazon SageMaker since th
 
 | Policy | Version | Change | Date | 
 | --- | --- | --- | --- | 
-|   [AmazonSageMakerAdmin\-ServiceCatalogProductsServiceRolePolicy](#security-iam-awsmanpol-AmazonSageMakerAdmin-ServiceCatalogProductsServiceRolePolicy)  | 5 |  Add new permission for `ecr-idp:TagResource`\.  | March 21, 2022 | 
+|   [AmazonSageMakerAdmin\-ServiceCatalogProductsServiceRolePolicy](#security-iam-awsmanpol-AmazonSageMakerAdmin-ServiceCatalogProductsServiceRolePolicy)  | 6 |  Add permission for`lambda:TagResource`\.  | July 14, 2022 | 
+| AmazonSageMakerAdmin\-ServiceCatalogProductsServiceRolePolicy | 5 |  Add new permission for `ecr-idp:TagResource`\.  | March 21, 2022 | 
 | AmazonSageMakerAdmin\-ServiceCatalogProductsServiceRolePolicy | 4 |  Add new permissions for `cognito-idp:TagResource` and `s3:PutBucketCORS`\.  | February 16, 2022 | 
 | AmazonSageMakerAdmin\-ServiceCatalogProductsServiceRolePolicy | 3 |  Add new permissions for `sagemaker`\. Create, read, update, and delete SageMaker Images\.  | September 15, 2021 | 
 | AmazonSageMakerAdmin\-ServiceCatalogProductsServiceRolePolicy | 2 |  Add new permissions for `sagemaker` and `codestar-connections`\. Create, read, update, and delete code repositories\. Pass AWS CodeStar connections to AWS CodePipeline\.  | July 1, 2021 | 
