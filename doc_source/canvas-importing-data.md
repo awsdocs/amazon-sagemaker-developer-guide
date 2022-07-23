@@ -1,6 +1,6 @@
 # Importing data in Amazon SageMaker Canvas<a name="canvas-importing-data"></a>
 
-You can import data from different data sources into Amazon SageMaker Canvas\. The data sources include Amazon S3, your local machine, and external data sources\. Your data can have a maximum of 1000 columns\. Currently, you can only import comma delimited \.csv files\. Your \.csv files must not have newline characters except when denoting a new row\. You can use the dataset that you import to build a model and make predictions on other datasets\.
+You can import data from different data sources into Amazon SageMaker Canvas\. The data sources include Amazon S3, your local machine, and external data sources\. Your data can have a maximum of 1000 columns, and the maximum file size you can import into SageMaker Canvas is 5 GB\. Currently, you can only import comma delimited \.csv files\. Your \.csv files must not have newline characters except when denoting a new row\. You can use the dataset that you import to build a model and make predictions on other datasets\.
 
 You can import data from the following external data sources:
 + An Amazon S3 bucket from an external account

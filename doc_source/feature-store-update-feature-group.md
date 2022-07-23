@@ -65,7 +65,7 @@ The following code uses the [https://docs.aws.amazon.com/sagemaker/latest/APIRef
 ```
 import boto3
 
-sagemakr_client = boto3.client("sagemaker")
+sagemaker_client = boto3.client("sagemaker")
 
 sagemaker_client.update_feature_group(
     FeatureGroupName=feature_group_name,
@@ -92,7 +92,7 @@ The following code uses the [https://docs.aws.amazon.com/sagemaker/latest/APIRef
 ```
 record_identifier_value = 'new_record'
 
-sagemake_featurestore_runtime_client = boto3.client("sagemaker-featurestore-runtime")
+sagemaker_featurestore_runtime_client = boto3.client("sagemaker-featurestore-runtime")
 
 sagemaker_runtime_client.put_record(
     FeatureGroupName=feature_group_name,

@@ -1,4 +1,4 @@
-# Give your users permissions to perform time series forecasting<a name="canvas-set-up-forecast"></a>
+# Give Your Users Permissions to Perform Time Series Forecasting<a name="canvas-set-up-forecast"></a>
 
 To give your users permissions to perform time series analyses in Amazon SageMaker Canvas, you must add additional permissions to the AWS IAM role you chose when setting up the user's profile\.
 

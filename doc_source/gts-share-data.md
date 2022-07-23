@@ -28,7 +28,7 @@ After an AWS expert reaches out to discuss your project, you may be required to 
            "Sid": "DataSyncCreateS3LocationAndTaskAccess",
            "Effect": "Allow",
            "Principal": {
-           "AWS": "arn:aws:iam::aws-account-id:role/B12CopyToCustomerBucketDataSyncRole"
+           "AWS": "arn:aws:iam::aws-account-id:role/B12StudioAdmin"
            },
            "Action": [
                "s3:GetBucketLocation",

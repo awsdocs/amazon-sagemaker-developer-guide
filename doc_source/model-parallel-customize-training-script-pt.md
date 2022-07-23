@@ -2,26 +2,8 @@
 
 In this section, you learn how to modify PyTorch training scripts to configure the SageMaker distributed model parallel library for auto\-partitioning and manual partitioning\.
 
-
-**PyTorch versions supported by SageMaker and the SageMaker distributed model parallel library**  
-
-| PyTorch version | SageMaker distributed model parallel library version | `smdistributed-modelparallel` integrated image URI | 
-| --- | --- | --- | 
-| v1\.11\.0\* | smdistributed\-modelparallel==v1\.9\.0 | 763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/pytorch\-training:1\.11\.0\-gpu\-py38\-cu113\-ubuntu20\.04\-sagemaker | 
-| v1\.10\.2\* |  smdistributed\-modelparallel==v1\.7\.0 |  `763104351884.dkr.ecr.<region>.amazonaws.com/pytorch-training:1.10.2-gpu-py38-cu113-ubuntu20.04-sagemaker`  | 
-| v1\.10\.0 |  smdistributed\-modelparallel==v1\.5\.0  |  `763104351884.dkr.ecr.<region>.amazonaws.com/pytorch-training:1.10.0-gpu-py38-cu113-ubuntu20.04-sagemaker`  | 
-| v1\.9\.1 |  smdistributed\-modelparallel==v1\.4\.0  |  `763104351884.dkr.ecr.<region>.amazonaws.com/pytorch-training:1.9.1-gpu-py38-cu111-ubuntu20.04`  | 
-| v1\.8\.1\* |  smdistributed\-modelparallel==v1\.6\.0  | 763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/pytorch\-training:1\.8\.1\-gpu\-py36\-cu111\-ubuntu18\.04  | 
-
-\* The SageMaker distributed model parallel library v1\.6\.0 and later provides extended features for PyTorch\. For more information, see [Extended Features of the SageMaker Model Parallel Library for PyTorch](model-parallel-extended-features-pytorch.md)\.
-
-To check the latest updates of the library, see the [SageMaker Distributed Model Parallel Release Notes](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel_release_notes/smd_model_parallel_change_log.html) in the *SageMaker Python SDK documentation*\.
-
-The following topics show examples of training scripts that you can use to configure SageMaker's model parallel library for auto\-partitioning and manual partitioning PyTorch models\. We recommend that you review the [Important Considerations](#model-parallel-pt-considerations) and [Unsupported Framework Features](#model-parallel-pt-unsupported-features) before creating a training script\.
-
-The required modifications you must make to your training script to use the library are listed in [PyTorch](#model-parallel-customize-training-script-pt-16)\.
-
-If you want to use manual partitioning, also review [Manual Partitioning with PyTorch](#model-parallel-customize-training-script-pt-16-hvd)\. 
+**Note**  
+To find which PyTorch versions are supported by the library, see [Supported Frameworks and AWS Regions](distributed-model-parallel-support.md)\.
 
 **Tip**  
 For end\-to\-end notebook examples that demonstrate how to use a PyTorch training script with the SageMaker distributed model parallel library, see [PyTorch Examples](distributed-training-notebook-examples.md#distributed-training-notebook-examples-pytorch)\.
@@ -36,13 +18,17 @@ Note that auto\-partitioning is enabled by default\. Unless otherwise specified,
 
 ## PyTorch<a name="model-parallel-customize-training-script-pt-16"></a>
 
-The following training script changes are required to run a PyTorch model with SageMaker's distributed model parallel library:
+The following training script changes are required to run a PyTorch training script with SageMaker's distributed model parallel library:
 
 1. Import and initialize the library with [https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/v1.2.0/smd_model_parallel_common_api.html#smp.init](https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/v1.2.0/smd_model_parallel_common_api.html#smp.init)\.
 
 1. Wrap the model with [https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/v1.2.0/smd_model_parallel_pytorch.html#smp.DistributedModel](https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/v1.2.0/smd_model_parallel_pytorch.html#smp.DistributedModel)\. Be mindful that any tensors returned from the `forward` method of the underlying `nn.Module` object will be broadcast across model\-parallel devices, incurring communication overhead, so any tensors that are not needed outside the call method \(such as intermediate activations\) should not be returned\.
+**Note**  
+For FP16 training, you need to use the [smdistributed\.modelparallel\.torch\.model\_creation\(\)](https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/latest/smd_model_parallel_pytorch.html) context manager to wrap the model\. For more information, see [FP16 Training with Model Parallelism](model-parallel-extended-features-pytorch-fp16.md)\.
 
 1. Wrap the optimizer with [https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/v1.2.0/smd_model_parallel_pytorch.html#smp.DistributedOptimizer](https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/v1.2.0/smd_model_parallel_pytorch.html#smp.DistributedOptimizer)\.
+**Note**  
+For FP16 training, you need to set up static or dynamic loss scaling\. For more information, see [FP16 Training with Model Parallelism](model-parallel-extended-features-pytorch-fp16.md)\.
 
 1. Use the returned `DistributedModel` object instead of a user model\.
 

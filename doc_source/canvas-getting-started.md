@@ -1,6 +1,6 @@
 # Getting started with using Amazon SageMaker Canvas<a name="canvas-getting-started"></a>
 
-This guide tells you how to get started with using SageMaker Canvas\. If you're an IT administrator, see [Setting up and managing Amazon SageMaker Canvas \(for IT administrators\)](canvas-setting-up.md) to set up SageMaker Canvas for your users\.
+This guide tells you how to get started with using SageMaker Canvas\. If you're an IT administrator, see [Setting Up and Managing Amazon SageMaker Canvas \(for IT Administrators\)](canvas-setting-up.md) to set up SageMaker Canvas for your users\.
 
 If you're a business user or analyst, read the following sections\.
 
@@ -44,7 +44,7 @@ Use the following procedure to configure the general settings\.
    1. Choose **Create role**\. SageMaker creates a new IAM `AmazonSageMaker-ExecutionPolicy` role with the [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) policy attached\.
 
 1. Under **Network and storage**, specify the following:
-   + Your VPC information – For more information, see [Choose a VPC](onboard-vpc.md) and [Run Amazon SageMaker Canvas in a VPC](canvas-vpc.md)\.
+   + Your VPC information – For more information, see [Choose a VPC](onboard-vpc.md) and [Configure Amazon SageMaker Canvas in a VPC without internet access](canvas-vpc.md)\.
    + \(Optional\) **Encryption key** – SageMaker uses an AWS KMS key to encrypt your Amazon Elastic File System \(Amazon EFS\) and Amazon Elastic Block Store \(Amazon EBS\) file systems\. By default, it uses an AWS managed key\. To use a customer managed key, enter its key ID or Amazon Resource Name \(ARN\)\. For more information, see [Protect Data at Rest Using Encryption](encryption-at-rest.md)\.
 **Note**  
 Encryption in transit is only available for Amazon SageMaker Studio\.
@@ -128,9 +128,9 @@ To attach a CORS policy, use the following procedure\.
 
 After updating the CORS policy, you still might not be successful in uploading your files\. The browser might be caching the CORS settings from a previous upload attempt\. If you're running into issues, clear your browser cache and try again\.
 
-You might want to give yourself the ability to perform forecasts on time series data\. You must add the `AmazonForecastFullAccess` managed policy and a trust relationship with Forecast to the AWS IAM role you chose when setting up the user profile\. For instructions on how to add these permissions to your IAM role, see [Give your users permissions to perform time series forecasting](canvas-set-up-forecast.md)\.
+You might want to give yourself the ability to perform forecasts on time series data\. You must add the `AmazonForecastFullAccess` managed policy and a trust relationship with Forecast to the AWS IAM role you chose when setting up the user profile\. For instructions on how to add these permissions to your IAM role, see [Give Your Users Permissions to Perform Time Series Forecasting](canvas-set-up-forecast.md)\.
 
-If you want to import data from Amazon Redshift, you must give yourself additional permissions\. You must add the `AmazonRedshiftFullAccess` managed policy to the AWS IAM role you chose when setting up the user profile\. For instructions on how to add the policy to the role, see [Give users permissions to import Amazon Redshift data](canvas-redshift-permissions.md)\.
+If you want to import data from Amazon Redshift, you must give yourself additional permissions\. You must add the `AmazonRedshiftFullAccess` managed policy to the AWS IAM role you chose when setting up the user profile\. For instructions on how to add the policy to the role, see [Give Users Permissions to Import Amazon Redshift Data](canvas-redshift-permissions.md)\.
 
 ## Step 1: Log in to Amazon SageMaker Canvas as a business user<a name="canvas-getting-started-step1"></a>
 

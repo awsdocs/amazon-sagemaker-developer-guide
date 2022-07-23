@@ -348,7 +348,7 @@ built_in_rules = [
                 "tensor_regex": ".*relu_output|.*ReLU_output",
                 "threshold_inactivity": "1.0",
                 "threshold_layer": "50.0"
-        }
+        },
         collections_to_save=[ 
             CollectionConfig(
                 name="custom_relu_collection", 
@@ -388,7 +388,7 @@ built_in_rules = [
         rule_parameters={
                 "tensor_regex": ".*gradient",
                 "only_nan": "False"
-        }
+        },
         collections_to_save=[ 
             CollectionConfig(
                 name="gradients", 
@@ -818,7 +818,7 @@ For an example of how to configure and deploy a built\-in rule, see [Configure D
 | Parameter Name | Description | 
 | --- | --- | 
 | base\_trial |  The base trial training job name\. This parameter is automatically set to the current training job by Amazon SageMaker Debugger\.  **Required** Valid values: String  | 
-| other\_trial |  A completed training job name whose tensors you want to compare to those tensors gathered from the current `base_trial`\. **Required** Valid values: String  | 
+| other\_trials |  A completed training job name whose tensors you want to compare to those tensors gathered from the current `base_trial`\. **Required** Valid values: String  | 
 | collection\_names |  The list of collection names whose tensors the rule inspects\. **Optional** Valid values: List of strings or a comma\-separated string Default value: None  | 
 | tensor\_regex |  A list of regex patterns used to restrict this comparison to specific scalar\-valued tensors\. The rule inspects only the tensors that match the regex patterns specified in the list\. If no patterns are passed, the rule compares all tensors gathered in the trials by default\. Only scalar\-valued tensors can be matched\. **Optional** Valid values: List of strings or a comma\-separated string  Default value: None  | 
 
@@ -827,7 +827,7 @@ built_in_rules = [
     Rule.sagemaker(
         base_config=rule_configs.similar_across_runs(),
         rule_parameters={
-                "other_trial": "<specify-another-job-name>",
+                "other_trials": "<specify-another-job-name>",
                 "collection_names": "losses",
                 "tensor_regex": ".*"
         },
@@ -998,7 +998,7 @@ built_in_rules = [
             CollectionConfig(
                 name="custom_inputs_collection", 
                 parameters={
-                    "include_regex": ".*hybridsequential0_input_0"
+                    "include_regex": ".*hybridsequential0_input_0",
                     "save_interval": "500"
                 } 
             )
