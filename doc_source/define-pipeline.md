@@ -417,7 +417,8 @@ This section shows how to create a processing step to evaluate the accuracy of 
        with tarfile.open(model_path) as tar:
            tar.extractall(path=".")
        
-       model = pickle.load(open("xgboost-model", "rb"))
+       model = xgboost.Booster()
+       model.load_model("xgboost-model")
    
        test_path = "/opt/ml/processing/test/test.csv"
        df = pd.read_csv(test_path, header=None)
