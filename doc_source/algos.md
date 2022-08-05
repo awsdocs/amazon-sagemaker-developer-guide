@@ -8,7 +8,7 @@ Amazon SageMaker provides a suite of built\-in algorithms, pre\-trained models, 
 
 For important information about Docker registry paths, data formats, recommenced Amazon EC2 instance types, and CloudWatch logs common to all of the built\-in algorithms provided by SageMaker, see [Common Information About Built\-in Algorithms](common-info-all-im-models.md)\.
 
-The following sections provide additional guidance for the Amazon SageMaker built\-in algorithms grouped by the supervised and unsupervised learning paradigms to which they belong\. For descriptions of these learning paradigms and their associated problem types, see [Choose an AlgorithmChoose an algorithm](algorithms-choose.md)\. Sections are also provided for the SageMaker built\-in algorithms available to address two important machine learning domains: textual analysis and image processing\.
+The following sections provide additional guidance for the Amazon SageMaker built\-in algorithms grouped by the supervised and unsupervised learning paradigms to which they belong\. For descriptions of these learning paradigms and their associated problem types, see [Choose an AlgorithmChoose an Algorithm](algorithms-choose.md)\. Sections are also provided for the SageMaker built\-in algorithms available to address two important machine learning domains: textual analysis and image processing\.
 + [Pre\-trained Models and Solution Templates](#algorithms-built-in-jumpstart)
 + [Supervised Learning](#algorithms-built-in-supervised-learning)
 + [Unsupervised Learning](#algorithms-built-in-unsupervised-learning)
@@ -65,24 +65,8 @@ SageMaker also provides image processing algorithms that are used for image clas
 + [Textual Analysis](#algorithms-built-in-text-analysis)
 + [Image Processing](#algorithms-built-in-image-processing)
 + [Common Information About Built\-in Algorithms](common-info-all-im-models.md)
-+ [AutoGluon\-Tabular](autogluon-tabular.md)
-+ [BlazingText algorithm](blazingtext.md)
-+ [CatBoost](catboost.md)
-+ [DeepAR Forecasting Algorithm](deepar.md)
-+ [Factorization Machines Algorithm](fact-machines.md)
-+ [Image Classification Algorithm](image-classification.md)
-+ [IP Insights](ip-insights.md)
-+ [K\-Means Algorithm](k-means.md)
-+ [K\-Nearest Neighbors \(k\-NN\) Algorithm](k-nearest-neighbors.md)
-+ [Latent Dirichlet Allocation \(LDA\) Algorithm](lda.md)
-+ [LightGBM](lightgbm.md)
-+ [Linear Learner Algorithm](linear-learner.md)
-+ [Neural Topic Model \(NTM\) Algorithm](ntm.md)
-+ [Object2Vec Algorithm](object2vec.md)
-+ [Object Detection Algorithm](object-detection.md)
-+ [Principal Component Analysis \(PCA\) Algorithm](pca.md)
-+ [Random Cut Forest \(RCF\) Algorithm](randomcutforest.md)
-+ [Semantic Segmentation Algorithm](semantic-segmentation.md)
-+ [Sequence\-to\-Sequence Algorithm](seq-2-seq.md)
-+ [TabTransformer](tabtransformer.md)
-+ [XGBoost Algorithm](xgboost.md)
++ [Built\-in SageMaker Algorithms for Tabular Data](algorithms-tabular.md)
++ [Built\-in SageMaker Algorithms for Text Data](algorithms-text.md)
++ [Built\-in SageMaker Algorithms for Time\-Series Data](algorithms-time-series.md)
++ [Unsupervised Built\-in SageMaker Algorithms](algorithms-unsupervised.md)
++ [Built\-in SageMaker Algorithms for Computer Vision](algorithms-vision.md)

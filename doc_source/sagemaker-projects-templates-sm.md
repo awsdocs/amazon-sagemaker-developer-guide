@@ -3,7 +3,7 @@
 Amazon SageMaker provides project templates that create the infrastructure you need to create an MLOps solution for continuous integration and continuous deployment \(CI/CD\) of ML models\. Use these templates to process data, extract features, train and test models, register the models in the SageMaker model registry, and deploy the models for inference\. You can customize the seed code and the configuration files to suit your requirements\.
 
 **Important**  
-As of July 27, 2021, SageMaker projects can use third\-party Git repositories\. For more information, see [Update SageMaker Projects to Use Third\-Party Git Repositories](#sagemaker-projects-templates-update)\.
+As of July 25, 2022, we require additional roles to use project templates\. For a complete list of required roles and instructions on how to create them, see [SageMaker Studio Permissions Required to Use Projects](sagemaker-projects-studio-updates.md)\. If you do not have the new roles, you will get the error message **CodePipeline is not authorized to perform AssumeRole on role arn:aws:iam::xxx:role/service\-role/AmazonSageMakerServiceCatalogProductsCodePipelineRole** when you try to create a new project and cannot proceed\.
 
 SageMaker project templates offer you the following choice of code repositories, workflow automation tools, and pipeline stages:
 + **Code repository**: AWS CodeCommit or third\-party Git repositories such as GitHub and Bitbucket

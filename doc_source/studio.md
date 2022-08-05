@@ -12,6 +12,7 @@ For information on the onboarding steps to sign in to SageMaker Studio, see [Onb
 For the AWS Regions supported by SageMaker Studio, see [Supported Regions and Quotas](regions-quotas.md)\.
 
 **Topics**
++ [Studio Features](#studio-features)
 + [Amazon SageMaker Studio UI Overview](studio-ui.md)
 + [JupyterLab Versioning](studio-jl.md)
 + [Use the Amazon SageMaker Studio Launcher](studio-launcher.md)
@@ -20,3 +21,19 @@ For the AWS Regions supported by SageMaker Studio, see [Supported Regions and Qu
 + [Perform Common Tasks in Amazon SageMaker Studio](studio-tasks.md)
 + [Amazon SageMaker Studio Pricing](studio-pricing.md)
 + [Troubleshooting Amazon SageMaker Studio](studio-troubleshooting.md)
+
+## Studio Features<a name="studio-features"></a>
+
+Studio includes the following features:
++ [SageMaker Autopilot](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html)
++ [SageMaker Clarify](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-fairness-and-explainability.html)
++ [SageMaker Data Wrangler](https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler.html)
++ [SageMaker Debugger](https://docs.aws.amazon.com/sagemaker/latest/dg/debugger-on-studio.html)
++ [SageMaker Experiments](https://docs.aws.amazon.com/sagemaker/latest/dg/experiments.html)
++ [SageMaker Feature Store](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-use-with-studio.html)
++ [SageMaker JumpStart](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html)
++ [Amazon SageMaker Model Building Pipelines](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-studio.html)
++ [SageMaker Model Registry](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry.html)
++ [SageMaker Projects](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects.html)
++ [SageMaker Studio Notebooks](https://docs.aws.amazon.com/sagemaker/latest/dg/notebooks.html)
++ [SageMaker Studio Universal Notebook](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-notebooks-emr-cluster.html)

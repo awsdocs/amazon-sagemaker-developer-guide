@@ -10,7 +10,7 @@ For a tutorial that showcases additional features of Studio, see [Amazon SageMak
 
 **Prerequisites**
 + A local copy of the [MNIST](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker-experiments/mnist-handwritten-digits-classification-experiment/mnist-handwritten-digits-classification-experiment.ipynb) example notebook and the companion [mnist\.py](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker-experiments/mnist-handwritten-digits-classification-experiment/mnist.py) file\. Both files are available from the `sagemaker_experiments/mnist-handwritten-digits-classification-experiment` folder in the [aws/amazon\-sagemaker\-examples](https://github.com/aws/amazon-sagemaker-examples) repository\. To download the files, choose each link, right\-click on the **Raw** button, and then choose **Save as**\.
-+ An AWS SSO or IAM account to sign\-on to SageMaker Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
++ An IAM Identity Center or IAM account to sign\-on to SageMaker Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
 **Topics**
 + [Open the Notebook in Studio](#experiments-mnist-notebook)

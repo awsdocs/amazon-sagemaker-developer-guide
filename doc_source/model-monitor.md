@@ -5,7 +5,7 @@ Amazon SageMaker Model Monitor continuously monitors the quality of Amazon SageM
 Model Monitor provides the following types of monitoring:
 + [Monitor data quality](model-monitor-data-quality.md) \- Monitor drift in data quality\.
 + [Monitor model quality](model-monitor-model-quality.md) \- Monitor drift in model quality metrics, such as accuracy\.
-+ [Monitor Bias Drift for Models in Production](clarify-model-monitor-bias-drift.md) \- Monitor bias in you model's predictions\.
++ [Monitor Bias Drift for Models in Production](clarify-model-monitor-bias-drift.md) \- Monitor bias in your model's predictions\.
 + [Monitor Feature Attribution Drift for Models in Production](clarify-model-monitor-feature-attribution-drift.md) \- Monitor drift in feature attribution\.
 
 **Topics**

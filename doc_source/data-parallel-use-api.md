@@ -35,7 +35,7 @@ pt_estimator = PyTorch(
     entry_point="adapted-training-script.py",
     role="SageMakerRole",
     py_version="py38",
-    framework_version="1.11.0",
+    framework_version="1.12.0",
 
     # For running a multi-node distributed training job, specify a value greater than 1
     # Example: 2,3,4,..8

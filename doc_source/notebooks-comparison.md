@@ -6,7 +6,7 @@ When you're starting a new notebook, we recommend that you create the notebook i
 + SageMaker Studio notebooks come pre\-installed with the latest [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.
 + SageMaker Studio notebooks are accessed from within Studio\. This enables you to build, train, debug, track, and monitor your models without leaving Studio\.
 + Each member of a Studio team gets their own home directory to store their notebooks and other files\. The directory is automatically mounted onto all instances and kernels as they're started, so their notebooks and other files are always available\. The home directories are stored in Amazon Elastic File System \(Amazon EFS\) so that you can access them from other services\.
-+ When using AWS SSO, you use your SSO credentials through a unique URL to directly access SageMaker Studio\. You don't have to interact with the AWS Management Console to run your notebooks\.
++ When using IAM Identity Center, you use your IAM Identity Center credentials through a unique URL to directly access SageMaker Studio\. You don't have to interact with the AWS Management Console to run your notebooks\.
 + Studio notebooks are equipped with a set of predefined SageMaker image settings to get you started faster\.
 
 **Note**  

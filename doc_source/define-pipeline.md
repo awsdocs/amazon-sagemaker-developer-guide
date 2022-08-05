@@ -124,9 +124,7 @@ The number of rings in the abalone shell is a good approximation for its age usi
 ### Step 2: Define Pipeline Parameters<a name="define-pipeline-parameters"></a>
 
  This code block defines the following parameters for your pipeline: 
-+  `processing_instance_type` – The `ml.*` instance type of the processing jobs\. 
 +  `processing_instance_count` – The instance count of the processing job\. 
-+  `training_instance_type` – The `ml.*` instance type of the training jobs\. 
 +  `input_data` – The Amazon S3 location of the input data\. 
 +  `batch_data` – The Amazon S3 location of the input data for batch transformation\. 
 +  `model_approval_status` – The approval status to register the trained model with for CI/CD\. For more information, see [Automate MLOps with SageMaker Projects](sagemaker-projects.md)\.
@@ -137,18 +135,9 @@ from sagemaker.workflow.parameters import (
     ParameterString,
 )
 
-
 processing_instance_count = ParameterInteger(
     name="ProcessingInstanceCount",
     default_value=1
-)
-processing_instance_type = ParameterString(
-    name="ProcessingInstanceType",
-    default_value="ml.m5.xlarge"
-)
-training_instance_type = ParameterString(
-    name="TrainingInstanceType",
-    default_value="ml.m5.xlarge"
 )
 model_approval_status = ParameterString(
     name="ModelApprovalStatus",
@@ -287,7 +276,7 @@ This section shows how to create a processing step to prepare the data from the 
    
    sklearn_processor = SKLearnProcessor(
        framework_version=framework_version,
-       instance_type=processing_instance_type,
+       instance_type="ml.m5.xlarge",
        instance_count=processing_instance_count,
        base_job_name="sklearn-abalone-process",
        role=role,
@@ -330,7 +319,7 @@ This section shows how to use the SageMaker [XGBoost Algorithm](https://docs.aws
    model_path = f"s3://{default_bucket}/AbaloneTrain"
    ```
 
-1. Configure an estimator for the XGBoost algorithm and the input dataset\. The `training_instance_type` is passed into the estimator\. A typical training script loads data from the input channels, configures training with hyperparameters, trains a model, and saves a model to `model_dir` so that it can be hosted later\. SageMaker uploads the model to Amazon S3 in the form of a `model.tar.gz` at the end of the training job\. 
+1. Configure an estimator for the XGBoost algorithm and the input dataset\. The training instance type is passed into the estimator\. A typical training script loads data from the input channels, configures training with hyperparameters, trains a model, and saves a model to `model_dir` so that it can be hosted later\. SageMaker uploads the model to Amazon S3 in the form of a `model.tar.gz` at the end of the training job\. 
 
    ```
    from sagemaker.estimator import Estimator
@@ -341,11 +330,11 @@ This section shows how to use the SageMaker [XGBoost Algorithm](https://docs.aws
        region=region,
        version="1.0-1",
        py_version="py3",
-       instance_type=training_instance_type,
+       instance_type="ml.m5.xlarge"
    )
    xgb_train = Estimator(
        image_uri=image_uri,
-       instance_type=training_instance_type,
+       instance_type="ml.m5.xlarge",
        instance_count=1,
        output_path=model_path,
        role=role,
@@ -457,7 +446,7 @@ This section shows how to create a processing step to evaluate the accuracy of 
    script_eval = ScriptProcessor(
        image_uri=image_uri,
        command=["python3"],
-       instance_type=processing_instance_type,
+       instance_type="ml.m5.xlarge",
        instance_count=1,
        base_job_name="script-abalone-eval",
        role=role,
@@ -666,9 +655,7 @@ A step can only appear once in either the pipeline's step list or the if/else st
    pipeline = Pipeline(
        name=pipeline_name,
        parameters=[
-           processing_instance_type, 
            processing_instance_count,
-           training_instance_type,
            model_approval_status,
            input_data,
            batch_data,

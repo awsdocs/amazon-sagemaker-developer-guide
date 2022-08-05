@@ -52,7 +52,7 @@ max_seq_len = 1024
 if smp.rdp_rank() == 0:
     state_dict = dist_model.state_dict()
     hf_state_dict = translate_state_dict_to_hf_gpt2(state_dict, max_seq_len)
-    
+
     # can now call model.load_state_dict(hf_state_dict) to the original HF model
 ```
 
@@ -68,7 +68,7 @@ model = AutoModelForMaskedLM.from_config(roberta_config)
 model = smp.DistributedModel(model)
 
 pretrained_model = AutoModelForMaskedLM.from_pretrained("roberta-large")
-translated_state_dict = 
+translated_state_dict =
         translate_state_dict_to_smdistributed(pretrained_model.state_dict())
 
 # load the translated pretrained weights into the smp.DistributedModel

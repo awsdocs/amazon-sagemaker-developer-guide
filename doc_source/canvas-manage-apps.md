@@ -48,6 +48,6 @@ If you delete or log out of your SageMaker Canvas app and want to relaunch the a
 
 1. Under **Users**, select the user profile name for the SageMaker Canvas app you want to view\.
 
-1. Choose **Launch app** and select **Canvas** from the drop\-down menu\.
+1. Choose **Launch app** and select **Canvas** from the dropdown list\.
 
 SageMaker Canvas begins launching the app\.

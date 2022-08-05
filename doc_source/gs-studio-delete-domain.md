@@ -25,7 +25,7 @@ You must satisfy the following requirements to delete a domain\.
   When you delete these resources, the following occurs:
   + App – The data \(files and notebooks\) in a user's home directory is saved\. Unsaved notebook data is lost\.
   + User profile – The user is no longer able to sign in to the Domain and loses access to their home directory, but the data is not deleted\. An admin can retrieve the data from the Amazon EFS volume where it is stored under the user's AWS account\.
-+ You must delete the domain if you want to switch authentication modes from IAM to AWS SSO\.
++ You must delete the domain if you want to switch authentication modes from IAM to IAM Identity Center\.
 
 ## EFS files<a name="gs-studio-delete-domain-efs"></a>
 

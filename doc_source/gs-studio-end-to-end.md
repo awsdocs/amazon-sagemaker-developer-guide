@@ -5,13 +5,13 @@ For a walkthrough that takes you on a tour of the main features of Amazon SageMa
 **Prerequisites**
 
 To run the notebook for this tour, you need:
-+ An AWS SSO or IAM account to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
++ An IAM account to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 + Basic familiarity with the Studio user interface and Jupyter notebooks\. For information, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
 + A copy of the [aws/amazon\-sagemaker\-examples](https://github.com/aws/amazon-sagemaker-examples) repository in your Studio environment\.
 
 **To clone the repository**
 
-1. Sign in to SageMaker Studio\. For AWS SSO users, sign in using the URL from your invitation email\. For IAM users, follow these steps\.
+1. Sign in to SageMaker Studio\. For users in IAM Identity Center, sign in using the URL from your invitation email\. For IAM users, follow these steps\.
 
    1. Sign in to the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 

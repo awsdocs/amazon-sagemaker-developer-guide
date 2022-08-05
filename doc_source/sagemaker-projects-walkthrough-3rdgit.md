@@ -5,7 +5,7 @@ This walkthrough uses the template [MLOps template for model building, training,
 **Prerequisites**
 
 To complete this walkthrough, you need:
-+ An AWS SSO or IAM account to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
++ An IAM or IAM Identity Center account to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 + Permission to use SageMaker\-provided project templates\. For information, see [SageMaker Studio Permissions Required to Use Projects](sagemaker-projects-studio-updates.md)\.
 + Basic familiarity with the Studio user interface\. For information, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
 + Two GitHub repositories initialized with a README\. You input these repositories into the project template, which will seed these repos with model build and deploy code\.

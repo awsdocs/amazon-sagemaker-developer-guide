@@ -15,7 +15,7 @@ SageMaker integrates RStudio through the creation of a RStudioServerPro app\.
  The following are supported by RStudio on SageMaker\. 
 + R developers use the RStudio IDE interface with popular developer tools from the R ecosystem\. Users can launch new RStudio sessions, write R code, install dependencies from RStudio Package Manager, and publish Shiny apps using RStudio Connect\. 
 + R developers can quickly scale underlying compute resources to run large scale data processing and statistical analysis\.  
-+ Platform administrators can set up user identities, authorization, networking, storage, and security for their data science teams through AWS Single Sign\-On and AWS Identity and Access Management integration\. This includes connection to private Amazon Virtual Private Cloud \(Amazon VPC\) resources and internet\-free mode with AWS PrivateLink\.
++ Platform administrators can set up user identities, authorization, networking, storage, and security for their data science teams through AWS IAM Identity Center \(successor to AWS Single Sign\-On\) and AWS Identity and Access Management integration\. This includes connection to private Amazon Virtual Private Cloud \(Amazon VPC\) resources and internet\-free mode with AWS PrivateLink\.
 + Integration with AWS License Manager\. 
 
  For information on the onboarding steps to create a Domain with RStudio enabled, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.

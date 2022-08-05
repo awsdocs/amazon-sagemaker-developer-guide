@@ -3,7 +3,7 @@
 To get started, you or your organization's administrator need to complete the Amazon SageMaker Studio onboarding process\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
 You can access an SageMaker Studio notebook in any of the following ways:
-+ You receive an email invitation to access Studio through your organization's AWS SSO account, which includes a direct link to login to Studio without having to use the Amazon SageMaker console\. You can proceed to the [Next Steps](#notebooks-get-started-next-steps)\.
++ You receive an email invitation to access Studio through your organization's IAM Identity Center, which includes a direct link to login to Studio without having to use the Amazon SageMaker console\. You can proceed to the [Next Steps](#notebooks-get-started-next-steps)\.
 + You receive a link to a shared Studio notebook, which includes a direct link to log in to Studio without having to use the SageMaker console\. You can proceed to the [Next Steps](#notebooks-get-started-next-steps)\. 
 + You onboard to Studio and then log in to the SageMaker console\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 

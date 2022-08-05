@@ -156,3 +156,28 @@ The following are the definitions for the quick model metrics:
 + **F1** – F1 is defined for a specific class\. It's the harmonic mean of the precision and recall\. F1 is in the range \[0, 1\]\. 1 is the score of the perfect model\. For binary classification, Data Wrangler reports the F1 for classes with positive values\.
 
 ------
+#### [ Textual patterns ]
+
+**Patterns** describe the textual format of a string using an easy to read format\. The following are examples of textual patterns:
++ "\{digits:4\-7\}" describes a sequence of digits that have a length between 4 and 7\.
++ "\{alnum:5\}" describes an alpha\-numeric string with a length of exactly 5\.
+
+Data Wrangler infers the patterns by looking at samples of non\-empty strings from your data\. It can describe many of the commonly used patterns\. The **confidence** expressed as a percentage indicates how much of the data is estimated to match the pattern\. Using the textual pattern, you can see which rows in your data you need to correct or drop\.
+
+The following describes the patterns that Data Wrangler can recognize:
+
+
+| Pattern | Textual Format | 
+| --- | --- | 
+|  \{alnum\}  |  Alphanumeric strings  | 
+|  \{any\}  |  Any string of word characters  | 
+|  \{digits\}  |  A sequence of digits  | 
+|  \{lower\}  |  A lowercase word  | 
+|  \{mixed\}  |  A mixed\-case word  | 
+|  \{name\}  |  A word beginning with a capital letter  | 
+|  \{upper\}  |  An uppercase word  | 
+|  \{whitespace\}  |  whitespace characters  | 
+
+A word character is either an underscore or a character that might appear in a word in any language\. For example, the strings 'Hello\_word' and 'écoute' both consist of word characters\. 'H' and 'é' are both examples of word characters\.
+
+------

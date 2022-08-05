@@ -3,10 +3,10 @@
 To set up Amazon SageMaker Canvas, do the following:
 + Create an Amazon SageMaker Domain\.
 + Create user profiles for the Domain
-+ Set up Okta Single Sign On \(SSO\) for your users\.
++ Set up Okta Single Sign On \(Okta SSO\) for your users\.
 + Activate link sharing for models\.
 
-Use Single\-Sign On \(SSO\) to give your users access to Amazon SageMaker Canvas\. SageMaker Canvas supports SAML 2\.0 SSO methods\. The following sections guide you through procedures to set up Okta SSO\.
+Use Okta Single\-Sign On \(Okta SSO\) to give your users access to Amazon SageMaker Canvas\. SageMaker Canvas supports SAML 2\.0 SSO methods\. The following sections guide you through procedures to set up Okta SSO\.
 
 To set up a Domain, see [Onboard to Amazon SageMaker Studio Using IAM](https://docs.aws.amazon.com/sagemaker/latest/dg/onboard-iam.html)\. You can use the following information to help you complete the procedure in the section:
 + You can ignore the step about creating projects\.
