@@ -44,9 +44,9 @@ The following procedure shows how to add users to a Amazon SageMaker Domain crea
 
 1. Select **Submit**\.
 
- **Create user SSO** 
+ **Create user using IAM Identity Center** 
 
-The following procedure shows how to add users to a Amazon SageMaker Domain created using AWS Single Sign\-On\. For information about AWS Single Sign\-On, see [What is AWS Single Sign\-On?](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html)\. 
+The following procedure shows how to add users to a Amazon SageMaker Domain created using AWS IAM Identity Center \(successor to AWS Single Sign\-On\)\. For information about AWS IAM Identity Center \(successor to AWS Single Sign\-On\), see [What is AWS IAM Identity Center \(successor to AWS Single Sign\-On\)](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html)\. 
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
@@ -54,7 +54,7 @@ The following procedure shows how to add users to a Amazon SageMaker Domain crea
 
 1.  Select **Assign users and groups**\. This opens a new Assign users and groups page\. 
 
-1.  Select a user or group from the list\. For information about adding users and groups, see [Manage identities in AWSAWS SSO](https://docs.aws.amazon.com/singlesignon/latest/userguide/manage-your-identity-source-sso.html)\. 
+1.  Select a user or group from the list\. For information about adding users and groups, see [Manage identities in AWS IAM Identity Center](https://docs.aws.amazon.com/singlesignon/latest/userguide/manage-your-identity-source-sso.html)\. 
 
 1.  Select **Assign users and groups**\. 
 
@@ -69,7 +69,7 @@ aws sagemaker create-user-profile --region <REGION> \
     --user-settings RStudioServerProAppSettings={UserGroup=<USER-GROUP>}
 ```
 
-The following command shows how to add users to a Amazon SageMaker Domain with AWS SSO authentication\. A user can belong to either the `R_STUDIO_USER` or `R_STUDIO_ADMIN` User group\. 
+The following command shows how to add users to a Amazon SageMaker Domain with authentication using IAM Identity Center\. A user can belong to either the `R_STUDIO_USER` or `R_STUDIO_ADMIN` User group\. 
 
 ```
 aws sagemaker create-user-profile --region <REGION> \

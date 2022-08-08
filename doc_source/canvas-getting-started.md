@@ -23,7 +23,7 @@ To set up Amazon SageMaker Canvas, you either contact your administrator or do t
 **Important**  
 For you to set up Amazon SageMaker Canvas, your version of Amazon SageMaker Studio must be 3\.19\.0 or later\. For information about updating Amazon SageMaker Studio, see [Shut down and Update SageMaker Studio](studio-tasks-update-studio.md)\.
 
-**To onboard to Domain using AWS SSO**
+**To onboard to Domain using IAM Identity Center**
 
 1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 

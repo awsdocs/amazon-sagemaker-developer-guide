@@ -1,8 +1,8 @@
-# Onboard to Amazon SageMaker Domain Using AWS SSO<a name="onboard-sso-users"></a>
+# Onboard to Amazon SageMaker Domain Using IAM Identity Center<a name="onboard-sso-users"></a>
 
-This topic describes how to onboard to Amazon SageMaker Domain using AWS SSO authentication\. For information on how to onboard using AWS Identity and Access Management \(IAM\) authentication, see [Onboard Using Quick setup](onboard-quick-start.md) or [Onboard Using IAM](onboard-iam.md)\.
+This topic describes how to onboard to Amazon SageMaker Domain using authentication using IAM Identity Center\. For information on how to onboard using AWS Identity and Access Management \(IAM\) authentication, see [Onboard Using Quick setup](onboard-quick-start.md) or [Onboard Using IAM](onboard-iam.md)\.
 
-**To onboard to Domain using AWS SSO**
+**To onboard to Domain using IAM Identity Center**
 
 1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
@@ -14,11 +14,11 @@ This topic describes how to onboard to Amazon SageMaker Domain using AWS SSO aut
 
 **Step 1: General settings**
 
-1. For **Authentication**, choose **AWS Single Sign\-On \(SSO\)**\.
+1. For **Authentication**, choose **AWS IAM Identity Center \(successor to AWS Single Sign\-On\)**\.
 
-1. If you don't have an AWS SSO account in the same Region as your SageMaker Domain, you must create an AWS SSO account in the same Region as your SageMaker Domain before proceeding\. To continue to onboard without creating a new AWS SSO account, choose the **AWS Identity and Access Management \(IAM\)** authentication method or the **Quick setup** procedure, which also uses IAM\.
+1. If you don't have a group in IAM Identity Center in the same Region as your SageMaker Domain, you must create a group in IAM Identity Center in the same Region as your SageMaker Domain before proceeding\. To continue to onboard without IAM Identity Center, choose the **AWS Identity and Access Management \(IAM\)** authentication method or the **Quick setup** procedure, which also uses IAM\.
 
-   For information about setting up AWS SSO for use with Domain, see [Set Up AWS SSO for Use with Amazon SageMaker Domain](onboard-sso-setup.md)\.
+   For information about setting up IAM Identity Center for use with Domain, see [Set Up IAM Identity Center for use with Amazon SageMaker Domain](onboard-sso-setup.md)\.
 
 1. Under **Permission**, for **IAM role**, choose an option from the role selector\.
 
@@ -96,7 +96,7 @@ Encryption in transit is only available for Amazon SageMaker Studio\.
 
 **To access the Domain after onboarding**
 
-After you are given access to the Domain, you are sent an email inviting you to create a password and activate your AWS SSO account\. The email also contains the URL to sign in to the Domain\. For more information about signing in and session duration, see [How to sign in to the user portal](https://docs.aws.amazon.com/singlesignon/latest/userguide/howtosignin.html)\.
+After you are given access to the Domain, you are sent an email inviting you to create a password and use IAM Identity Center\. The email also contains the URL to sign in to the Domain\. For more information about signing in and session duration, see [How to sign in to the user portal](https://docs.aws.amazon.com/singlesignon/latest/userguide/howtosignin.html)\.
 
 After you activate your account, go to the Domain URL, sign in, and wait for your user profile to be created\. On subsequent visits, you only need to wait for the Studio or RStudio app to load\.
 

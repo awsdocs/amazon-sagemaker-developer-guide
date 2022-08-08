@@ -67,10 +67,10 @@ We recommend that you periodically update the Data Wrangler Studio app to access
 
 The following sections provide a walkthrough to help you get started using Data Wrangler\. This walkthrough assumes that you have already followed the steps in [Access Data Wrangler](#data-wrangler-getting-started-access) and have a new data flow file open that you intend to use for the demo\. You may want to rename this \.flow file to something similar to **titanic\-demo\.flow**\.
 
-This walkthrough uses the [Titanic dataset](https://www.openml.org/d/40945)\. This data set contains the survival status, age, gender, and class \(which serves as a proxy for economic status\) of passengers aboard the maiden voyage of the *RMS Titanic* in 1912\.
+This walkthrough uses the [Titanic dataset](https://s3.us-west-2.amazonaws.com/amazon-sagemaker-data-wrangler-documentation-artifacts/walkthrough_titanic.csv)\. It's a modified version of the [Titanic dataset](https://www.openml.org/d/40945) that you can import into your Data Wrangler flow more easily\. This data set contains the survival status, age, gender, and class \(which serves as a proxy for economic status\) of passengers aboard the maiden voyage of the *RMS Titanic* in 1912\.
 
 In this tutorial, you perform the following steps\.
-+ Upload the [Titanic dataset](https://www.openml.org/d/40945) to Amazon Simple Storage Service \(Amazon S3\), and then import this dataset into Data Wrangler\.
++ Upload the [Titanic dataset](https://s3.us-west-2.amazonaws.com/amazon-sagemaker-data-wrangler-documentation-artifacts/walkthrough_titanic.csv) to Amazon Simple Storage Service \(Amazon S3\), and then import this dataset into Data Wrangler\.
 + Analyze this dataset using Data Wrangler analyses\. 
 + Define a data flow using Data Wrangler data transforms\.
 + Export your flow to a Jupyter Notebook that you can use to create a Data Wrangler job\. 
@@ -78,7 +78,7 @@ In this tutorial, you perform the following steps\.
 
 ### Upload Dataset to S3 and Import<a name="data-wrangler-getting-started-demo-import"></a>
 
-To get started, download the [Titanic dataset](https://www.openml.org/d/40945) and upload it to an Amazon S3 \(Amazon S3\) bucket in the AWS Region in which you want to complete this demo\. 
+To get started, download the [Titanic dataset](https://s3.us-west-2.amazonaws.com/amazon-sagemaker-data-wrangler-documentation-artifacts/walkthrough_titanic.csv) and upload it to an Amazon S3 \(Amazon S3\) bucket in the AWS Region in which you want to complete this demo\. 
 
 If you are a new user of Amazon S3, you can do this using drag and drop in the Amazon S3 console\. To learn how, see [Uploading Files and Folders by Using Drag and Drop](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/upload-objects.html#upload-objects-by-drag-and-drop) in the Amazon Simple Storage Service User Guide\.
 

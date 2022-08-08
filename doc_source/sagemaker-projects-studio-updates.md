@@ -6,6 +6,9 @@ Users can view SageMaker provided project templates and create projects with tho
 
 1. Allow Studio users who are configured to use the same execution role as the domain to create projects\. This grants Studio users permission to use the SageMaker\-provided project templates to create a project from within Studio\.
 
+**Important**  
+Do not manually create your roles\. Always create roles through **Studio Settings** using the steps described in the following procedure\.
+
 For users who use any role other than the domain's execution role to view and use SageMaker\-provided project templates, you need to grant **Projects** permissions to the individual user profiles\.
 
 The following procedures show how to grant **Projects** permissions after you onboard to Studio\. For more information about onboarding to Studio, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
@@ -18,7 +21,10 @@ The following procedures show how to grant **Projects** permissions after you on
 
 1. If you choose **Quick setup** to set up your SageMaker Domain, you have permissions to use project templates by default\.
 
-1. If you choose **Standard setup** to set up your SageMaker Domain, make sure you turn on both **Enable Projects, and JumpStart templates for this Studio user** and **Enable Projects, and JumpStart templates for Studio users** when you configure Studio settings\.
+1. If you choose **Standard setup** to set up your SageMaker Domain, make sure you turn on the following options when you configure Studio settings:
+   + **Enable Amazon SageMaker project templates and Amazon SageMaker JumpStart for this account**
+   + **Enable Amazon SageMaker project templates and Amazon SageMaker JumpStart for Studio users**
+   + **Create the roles which are needed to use the latest updated AWS Service catalog of products for Projects and JumpStart**
 
 1. To confirm that your SageMaker Domain has active project template permissions:
 
@@ -30,4 +36,18 @@ The following procedures show how to grant **Projects** permissions after you on
 
    1. Choose **Studio Settings** in the left side panel\.
 
-   1. Under **Projects and JumpStart**, make sure **Enable Projects, and JumpStart templates for this Studio user** and **Enable Projects, and JumpStart templates for Studio users** are turned on\.
+   1. Under **Projects and JumpStart**, make sure the following options are turned on:
+      + **Enable Amazon SageMaker project templates and Amazon SageMaker JumpStart for this account**
+      + **Enable Amazon SageMaker project templates and Amazon SageMaker JumpStart for Studio users**
+      + **Create the roles which are needed to use the latest updated AWS Service catalog of products for Projects and JumpStart**
+
+1. To view a list of your roles:
+
+   1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
+
+   1. Choose **Control Panel**\.
+
+      A list of your roles appears in the `Apps` card under `Projects`\.
+**Important**  
+As of July 25, we require additional roles to use project templates\. Here is the complete list of roles you should see under `Projects`:  
+`AmazonSageMakerServiceCatalogProductsLaunchRole` `AmazonSageMakerServiceCatalogProductsUseRole` `AmazonSageMakerServiceCatalogProductsApiGatewayRole` `AmazonSageMakerServiceCatalogProductsCloudformationRole` `AmazonSageMakerServiceCatalogProductsCodeBuildRole` `AmazonSageMakerServiceCatalogProductsCodePipelineRole` `AmazonSageMakerServiceCatalogProductsEventsRole` `AmazonSageMakerServiceCatalogProductsFirehoseRole` `AmazonSageMakerServiceCatalogProductsGlueRole` `AmazonSageMakerServiceCatalogProductsLambdaRole` `AmazonSageMakerServiceCatalogProductsExecutionRole`

@@ -87,7 +87,7 @@ smd_mp_estimator = PyTorch(
     role=sagemaker.get_execution_role(),
     instance_count=1,
     instance_type='ml.p3.16xlarge',
-    framework_version='1.10.2',
+    framework_version='1.12.0',
     py_version='py38',
     distribution={
         "smdistributed": {"modelparallel": smp_options},

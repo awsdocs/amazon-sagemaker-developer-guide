@@ -3,7 +3,7 @@
 This procedure demonstrates how to update an MLOps project in Amazon SageMaker Studio\. You can update the **Description**, template version, and template parameters\.
 
 **Prerequisites**
-+ An AWS SSO or IAM account to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
++ An IAM account or IAM Identity Center to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 + Basic familiarity with the Studio user interface\. For information, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
 + Add the following custom inline policies to the specified roles:
 

@@ -121,9 +121,9 @@ aws sagemaker create-domain --region <REGION> --domain-name <DOMAIN_NAME> \
     --app-network-access-type <NETWORK_ACCESS_TYPE>
 ```
 
- **AWS SSO auth mode** 
+ **Authentication using IAM Identity Center** 
 
-The following shows how to create a Amazon SageMaker Domain with RStudio enabled and an `SSO Auth` Network Type\. AWS Single Sign\-On must be enabled for the region that the domain is launched on\. For more information about AWS SSO, see [What is AWS Single Sign\-On?](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html)\.
+The following shows how to create a Amazon SageMaker Domain with RStudio enabled and an `SSO Auth` Network Type\. AWS IAM Identity Center \(successor to AWS Single Sign\-On\) must be enabled for the region that the domain is launched on\. For more information about IAM Identity Center, see [What is AWS IAM Identity Center \(successor to AWS Single Sign\-On\)?](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html)\.
 + `DomainExecutionRoleArn` should be the ARN for the role created in the previous step\.
 + `ExecutionRole` is the ARN of the role given to users in the Amazon SageMaker Domain\.
 + `vpc-id` should be the ID of your Amazon Virtual Private Cloud\. `subnet-ids` should be a space\-separated list of subnet IDs\. For information about `vpc-id` and `subnet-ids`, see [VPCs and subnets](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)\.

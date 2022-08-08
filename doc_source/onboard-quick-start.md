@@ -4,7 +4,7 @@ This topic describes how to onboard to Amazon SageMaker Domain using the **Quick
 
 RStudio support is not currently available when onboarding using the **Quick setup** procedure\.
 
-For information on how to onboard using AWS Single Sign\-On \(AWS SSO\), see [Onboard Using SSO](onboard-sso-users.md)\.
+For information on how to onboard using AWS IAM Identity Center \(successor to AWS Single Sign\-On\) \(IAM Identity Center\), see [Onboard Using IAM Identity Center](onboard-sso-users.md)\.
 
 **To onboard to the Domain using **Quick setup****
 

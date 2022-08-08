@@ -1,6 +1,6 @@
-# Launch a custom SageMaker image in SageMaker Studio<a name="studio-byoi-launch"></a>
+# Launch a custom SageMaker image in Amazon SageMaker Studio<a name="studio-byoi-launch"></a>
 
-After you create your custom SageMaker image and attach it to your domain, the image appears in the image selector dialog box of the SageMaker Studio Launcher, and the kernel appears in the kernel selector dialog box\.
+After you create your custom SageMaker image and attach it to your domain, the image appears in the image selector dialog box of the Studio Launcher, and the kernel appears in the kernel selector dialog box\.
 
 **To launch and select your custom image**
 
