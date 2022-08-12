@@ -47,10 +47,11 @@ Pipe – `|`
 Tab – `[TAB]`
 To save space, you can import compressed CSV files\.
 
-Data Wrangler gives you the ability to either import the entire dataset or sample a portion of it\. It provides the following sampling options:
+Data Wrangler gives you the ability to either import the entire dataset or sample a portion of it\. For Amazon S3, it provides the following sampling options:
 + None – Import the entire dataset\.
 + First K – Sample the first K rows of the dataset, where K is an integer that you specify\.
 + Randomized – Takes a random sample of a size that you specify\.
++ Stratified – Takes a stratified random sample\. A stratified sample preserves the ratio of values in a column\.
 
 After you've imported your data, you can also use the sampling transformer to take one or more samples from your entire dataset\. For more information about the sampling transformer, see [Sampling](data-wrangler-transform.md#data-wrangler-transform-sampling)\.
 
@@ -144,7 +145,7 @@ You can query Athena databases and import the results in Data Wrangler\. To use 
 
 Data Wrangler supports using Athena workgroups to manage the query results within an AWS account\. You can specify an Amazon S3 output location for each workgroup\. You can also specify whether the output of the query can go to different Amazon S3 locations\. For more information, see [Using Workgroups to Control Query Access and Costs](https://docs.aws.amazon.com/athena/latest/ug/manage-queries-control-costs-with-workgroups.html)\.
 
-To use Athena workgroups, set up the IAM policy that gives access to workgroups\. If you're using a `SageMaker-Execution-Role`, we recommend adding the policy to the role\. For more information about IAM policies for workgroups, see [https://docs.aws.amazon.com/athena/latest/ug/workgroups-iam-policy.html](https://docs.aws.amazon.com/athena/latest/ug/workgroups-iam-policy.html)\. For example workgroup policies, see [Workgroup example policies](https://docs.aws.amazon.com/athena/latest/ug/example-policies-workgroup.html)\.
+To use Athena workgroups, set up the IAM policy that gives access to workgroups\. If you're using a `SageMaker-Execution-Role`, we recommend adding the policy to the role\. For more information about IAM policies for workgroups, see [IAM policies for accessing workgroups](https://docs.aws.amazon.com/athena/latest/ug/workgroups-iam-policy.html)\. For example workgroup policies, see [Workgroup example policies](https://docs.aws.amazon.com/athena/latest/ug/example-policies-workgroup.html)\.
 
 **Note**  
 Data Wrangler does not support federated queries\.
@@ -153,7 +154,13 @@ Data Wrangler uses the default Amazon S3 bucket in the same AWS Region in which 
 
 If you use AWS Lake Formation with Athena, make sure your Lake Formation IAM permissions do not override IAM permissions for the database `sagemaker_data_wrangler`\.
 
+Data Wrangler gives you the ability to either import the entire dataset or sample a portion of it\. For Athena, it provides the following sampling options:
++ None – Import the entire dataset\.
++ First K – Sample the first K rows of the dataset, where K is an integer that you specify\.
++ Randomized – Takes a random sample of a size that you specify\.
++ Stratified – Takes a stratified random sample\. A stratified sample preserves the ratio of values in a column\.
 
+The following procedure shows how to import a dataset from Athena into Data Wrangler\.
 
 **To import a dataset into Data Wrangler from Athena**
 
@@ -169,7 +176,7 @@ If you use AWS Lake Formation with Athena, make sure your Lake Formation IAM per
 
    1. If your workgroup hasn't enforced the Amazon S3 output location or if you don't use a workgroup, specify a value for **Amazon S3 location of query results**\.
 
-1. For **Sampling**, choose a sampling method\. When sampling is activated, Data Wrangler samples and imports approximately 50% of the queried data\. Choose **None** to turn off sampling\.
+1. For **Sampling**, choose a sampling method\. Choose **None** to turn off sampling\.
 
 1. Enter your query in the query editor and use the **Run** button to run the query\. After a successful query, you can preview your result under the editor\.
 
@@ -186,6 +193,12 @@ You can connect to and query one or more Amazon Redshift clusters in Data Wrangl
 You can output the results of your Amazon Redshift query in one of the following locations:
 + The default Amazon S3 bucket
 + An Amazon S3 output location that you specify
+
+You can either import the entire dataset or sample a portion of it\. For Amazon Redshift, it provides the following sampling options:
++ None – Import the entire dataset\.
++ First K – Sample the first K rows of the dataset, where K is an integer that you specify\.
++ Randomized – Takes a random sample of a size that you specify\.
++ Stratified – Takes a stratified random sample\. A stratified sample preserves the ratio of values in a column\.
 
 The default Amazon S3 bucket is in the same AWS Region in which your Studio instance is located to store Amazon Redshift query results\. For more information, see [Imported Data Storage](#data-wrangler-import-storage)\.
 
@@ -243,7 +256,7 @@ After your connection is successfully established, it appears as a data source u
 
 1. Select a **Schema**\. To learn more about Amazon Redshift Schemas, see [Schemas](https://docs.aws.amazon.com/redshift/latest/dg/r_Schemas_and_tables.html) in the Amazon Redshift Database Developer Guide\.
 
-1. Under **Advanced configuration**, **Enable sampling** is selected by default\. If you do not uncheck this box, Data Wrangler samples and imports approximately 50% of the queried data\. Deselect this checkbox to turn off sampling\. 
+1. \(Optional\) Under **Advanced configuration**, specify the **Sampling** method that you'd like to use\.
 
 1. Enter your query in the query editor and choose **Run** to run the query\. After a successful query, you can preview your result under the editor\.
 
@@ -251,9 +264,7 @@ After your connection is successfully established, it appears as a data source u
 
 1. Enter a **Dataset name**\. If you add a **Dataset name** that contains spaces, these spaces are replaced with underscores when your dataset is imported\. 
 
-1. Choose **Add**\. 
-
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/import-redshift.png)
+1. Choose **Add**\.
 
 ## Import data from Databricks \(JDBC\)<a name="data-wrangler-databricks"></a>
 
@@ -302,6 +313,12 @@ If you choose to specify more than 2 partitions, you can also specify a column t
 
 We recommend using partitions only if you understand the structure of the data and how it's processed\.
 
+You can either import the entire dataset or sample a portion of it\. For a Databricks database, it provides the following sampling options:
++ None – Import the entire dataset\.
++ First K – Sample the first K rows of the dataset, where K is an integer that you specify\.
++ Randomized – Takes a random sample of a size that you specify\.
++ Stratified – Takes a stratified random sample\. A stratified sample preserves the ratio of values in a column\.
+
 Use the following procedure to import your data from a Databricks database\.
 
 To import data from Databricks, do the following\.
@@ -326,13 +343,12 @@ To import data from Databricks, do the following\.
 
 1. Specify a SQL SELECT statement\.
 
-1. \(Optional\) **Enable sampling** uses the first 50,000 rows your dataset\. It is the default setting for importing data\. For large datasets, it can take a long period of time to import the data if you don't sample it\. To import the entire dataset, turn off sampling\.
+1. For **Sampling**, choose a sampling method\.
 
-1. Choose **Run**\. The following image shows a query with sampling activated\.  
-![\[SQL query box located below the box where you specify the JDBC URL.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/databricks/databricks-sample-query.png)
+1. Choose **Run**\. 
 
-1. \(Optional\) For the **PREVIEW**, choose the gear to open the **Partition settings**\. The following image shows a query with the optional data partition settings specified\.  
-![\[The gear for the additional settings is located to the far right of the PREVIEW title.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/databricks/databricks-query-partition-redacted.png)
+1. \(Optional\) For the **PREVIEW**, choose the gear to open the **Partition settings**\.   
+
 
    1. Specify the number of partitions\. You can partition by column if you specify the number of partitions:
      + **Enter number of partitions** – Specify a value greater than 2\.

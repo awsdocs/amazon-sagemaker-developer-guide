@@ -32,6 +32,27 @@ Amazon SageMaker Canvas automatically handles missing values in your dataset whi
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/canvas-build/canvas-build-preview-model.png)
 
+## Validate data<a name="canvas-dataset-validation"></a>
+
+Before you build your model, SageMaker Canvas checks your dataset for issues that will cause your build to fail\. If SageMaker Canvas finds any issues, then it warns you on the **Build** page before you attempt to build a model\.
+
+You can choose **Validate data** to see a list of the issues with your dataset\. You can then use the SageMaker Canvas [data preparation features](canvas-prepare-data.md) and tools, or your own tools, to fix your dataset before starting a build\. If you don’t fix the issues with your dataset, then your build will fail\.
+
+If you make changes to your dataset to fix the issues, you have the option to re\-validate your dataset before attempting a build\. We recommend that you re\-validate your dataset before building\.
+
+The following table shows the issues that SageMaker Canvas checks for in your dataset and how to resolve them\.
+
+
+| Issue | Resolution | 
+| --- | --- | 
+|  Wrong model type for your data  |  Try another model type or use a different dataset\.  | 
+|  Missing values in your target column  |  Replace the missing values, drop rows with missing values, or use a different dataset\.  | 
+|  Too many unique labels in your target column  |  Verify that you've used the correct column for your target column, or use a different dataset\.  | 
+|  Too many non\-numeric values in your target column  |  Choose a different target column, select another model type, or use a different dataset\.  | 
+|  One or more column names contain double underscores  |  Rename the columns to remove any double underscores, and try again\.  | 
+|  None of the rows in your dataset are complete  |  Replace the missing values, or use a different dataset\.  | 
+|  Too many unique labels for the number of rows in your data  |  Check that you're using the right target column, increase the number of rows in your dataset, consolidate similar labels, or use a different dataset\.  | 
+
 ## Random sample<a name="canvas-random-sample"></a>
 
 SageMaker Canvas uses the random sampling method to sample your dataset\. The random sample method means that each row has an equal chance of being picked for the sample\. You can choose a column in the preview to get summary statistics for the random sample, such as the mean and the mode\.

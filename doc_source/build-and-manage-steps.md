@@ -304,7 +304,7 @@ step_create_model = CreateModelStep(
 ### RegisterModel Step<a name="step-type-register-model"></a>
 
 **Important**  
-We recommend using [Model Step](#step-type-model) to register models as of v2\.90\.0 of the SageMaker Python SDK\. `RegisterModelStep` will continue to work in previous versions of the SageMaker Python SDK, but is no longer actively supported\.
+We recommend using [Model Step](#step-type-model) to register models as of v2\.90\.0 of the SageMaker Python SDK\. `RegisterModel` will continue to work in previous versions of the SageMaker Python SDK, but is no longer actively supported\.
 
 You use a `RegisterModel` step to register a [sagemaker\.model\.Model](https://sagemaker.readthedocs.io/en/stable/api/inference/model.html) or a [sagemaker\.pipeline\.PipelineModel](https://sagemaker.readthedocs.io/en/stable/api/inference/pipeline.html#pipelinemodel) with the Amazon SageMaker model registry\. A `PipelineModel` represents an inference pipeline, which is a model composed of a linear sequence of containers that process inference requests\.
 

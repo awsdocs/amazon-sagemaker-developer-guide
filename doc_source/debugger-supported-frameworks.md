@@ -23,6 +23,13 @@ This is due to breaking changes that cause SageMaker Debugger to interfere with 
 
 If the framework or algorithm that you want to train and debug is not listed in the table, go to the [AWS Discussion Forum](https://forums.aws.amazon.com/) and leave feedback on SageMaker Debugger\.
 
+## AWS Regions<a name="debugger-support-aws-regions"></a>
+
+Amazon SageMaker Debugger is available in all regions where Amazon SageMaker is in service except the following region\.
++ Asia Pacific \(Jakarta\): `ap-southeast-3`
+
+To find if Amazon SageMaker is in service in your AWS Region, see [AWS Regional Services](http://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/)\.
+
 ## Use Debugger with Custom Training Containers<a name="debugger-byoc-intro"></a>
 
 Bring your training containers to SageMaker and gain insights into your training jobs using Debugger\. Maximize your work efficiency by optimizing your model on Amazon EC2 instances using the monitoring and debugging features\.

@@ -6,7 +6,7 @@ Each model that you build has a version number\. The first model is Version 1\.
 
 If you have more than one version of a model, you can delete the versions that aren't useful to you\.
 
-You need to build at least one version of a model to add a new version or create a duplicate version\.
+You need to build at least one version of a model to add a new version\.
 
 Use the following procedure to add a new model version\.
 

@@ -309,7 +309,7 @@ This section shows how to create a processing step to prepare the data from the 
 
 ### Step 4: Define a Training step<a name="define-pipeline-training"></a>
 
-This section shows how to use the SageMaker [XGBoost Algorithm](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost.html) to train a logistic regression model on the training data output from the processing steps\. 
+This section shows how to use the SageMaker [XGBoost Algorithm](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost.html) to train a model on the training data output from the processing steps\. 
 
 **To define a training step**
 
@@ -489,6 +489,9 @@ This section shows how to create a processing step to evaluate the accuracy of 
 
 ### Step 6: Define a CreateModelStep for Batch Transformation<a name="define-pipeline-create-model"></a>
 
+**Important**  
+We recommend using [Model Step](build-and-manage-steps.md#step-type-model) to create models as of v2\.90\.0 of the SageMaker Python SDK\. `CreateModelStep` will continue to work in previous versions of the SageMaker Python SDK, but is no longer actively supported\.
+
 This section shows how to create a SageMaker model from the output of the training step\. This model is used for batch transformation on a new dataset\. This step is passed into the condition step and only executes if the condition step evaluates to `true`\.
 
 **To define a CreateModelStep for batch transformation**
@@ -567,6 +570,9 @@ This section shows how to create a `TransformStep` to perform batch transformati
    ```
 
 ### Step 8: Define a RegisterModel Step to Create a Model Package<a name="define-pipeline-register"></a>
+
+**Important**  
+We recommend using [Model Step](build-and-manage-steps.md#step-type-model) to register models as of v2\.90\.0 of the SageMaker Python SDK\. `RegisterModel` will continue to work in previous versions of the SageMaker Python SDK, but is no longer actively supported\.
 
 This section shows how to construct an instance of `RegisterModel`\. The result of executing `RegisterModel` in a pipeline is a model package\. A model package is a reusable model artifacts abstraction that packages all ingredients necessary for inference\. It consists of an inference specification that defines the inference image to use along with an optional model weights location\. A model package group is a collection of model packages\. You can use a `ModelPackageGroup` for SageMaker Pipelines to add a new version and model package to the group for every pipeline execution\. For more information about model registry, see [Register and Deploy Models with Model Registry](model-registry.md)\.
 
