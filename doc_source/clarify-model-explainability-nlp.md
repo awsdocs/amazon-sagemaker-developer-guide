@@ -10,8 +10,8 @@ To obtain feature importance for parts of an input text, create a `TextConfig` s
 from sagemaker import clarify
 
 text_config = clarify.TextConfig(
-    # Specify the language of your text or use "xx" for multi-language.
-    language="en", 
+    # Specify the language of your text or use "multi-language" for multi-language.
+    language="english", 
     # Choose the granularity of your explanations as tokens, sentences or paragraphs.
     granularity="token" 
 )

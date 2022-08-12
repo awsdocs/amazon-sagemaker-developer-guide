@@ -11,7 +11,6 @@ The following SageMaker features aren't available in the Asia Pacific \(Osaka\) 
 + Clarify
 + SageMaker Edge Manager
 + Ground Truth
-+ Hyperparameter tuning \(HPO\)
 + Amazon SageMaker Inference Recommender
 + Amazon SageMaker Model Monitor
 + Reinforcement learning

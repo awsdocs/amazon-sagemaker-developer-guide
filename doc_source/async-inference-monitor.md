@@ -44,7 +44,7 @@ The following metrics are published with the `EndpointName` and `VariantName` di
 | `ExpiredRequests` | Number of requests in the queue that fail due to reaching their specified request TTL\. | Units: CountValid statistics: Sum | 
 | `InvocationFailures` | If an invocation fails for any reason\. | Units: CountValid statistics: Sum | 
 | `InvocationsProcesssed` | Number of async invocations processed by the endpoint\. | Units: CountValid statistics: Sum | 
-| `TimeInBacklog` | Total time the request was queued before being processed\. This does not include the actual processing time \(i\.e\. downloading time, uploading time, model latency\)\. | Units: MicrosecondsValid statistics: Average, Sum, Min, Max, Sample Count | 
+| `TimeInBacklog` | Total time the request was queued before being processed\. This does not include the actual processing time \(i\.e\. downloading time, uploading time, model latency\)\. | Units: MillisecondsValid statistics: Average, Sum, Min, Max, Sample Count | 
 | `TotalProcessingTime` | Time the inference request was recieved by SageMaker to the time the request finished processing\. This includes time in backlog and time to upload and send response notifications, if any\. | Units: MillisecondsValid statistics: Average, Sum, Min, Max, Sample Count | 
 
 Amazon SageMaker Asynchronous Inference also includes host\-level metrics\. For information on host\-level metrics, see [SageMaker Jobs and Endpoint Metrics](https://docs.aws.amazon.com/sagemaker/latest/dg/monitoring-cloudwatch.html#cloudwatch-metrics-jobs)\.

@@ -9,6 +9,7 @@ Read on for general guidance or navigate to an example for a specific SageMaker 
 + [SageMaker Edge Manager](#security-confused-deputy-edge-manager)
 + [SageMaker Images](#security-confused-deputy-images)
 + [SageMaker Inference](#security-confused-deputy-inference)
++ [SageMaker Batch Transform Jobs](#security-confused-deputy-batch)
 + [SageMaker Marketplace](#security-confused-deputy-marketplace)
 + [SageMaker Neo](#security-confused-deputy-neo)
 + [SageMaker Pipelines](#security-confused-deputy-pipelines)
@@ -115,6 +116,32 @@ The following example shows how you can use the `aws:SourceArn` global condition
 ```
 
 Do not replace the `aws:SourceArn` in this template with the full ARN of a specific model or endpoint\. The ARN must be in the format provided above\. The asterisk in the ARN template does not stand for wildcard and should not be changed\. 
+
+## SageMaker Batch Transform Jobs<a name="security-confused-deputy-batch"></a>
+
+The following example shows how you can use the `aws:SourceArn` global condition key to prevent the cross\-service confused deputy problem for SageMaker [batch transform jobs](https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html) created by account number *123456789012* in the *us\-west\-2* Region\. Note that because the account number is in the ARN, you do not need to specify an `aws:SourceAccount` value\.
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "sagemaker.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        "ArnLike": {
+          "aws:SourceArn": "arn:aws:sagemaker:us-west-2:123456789012:transform-job/*"
+        }
+      }
+    }
+  ]
+}
+```
+
+You can replace the `aws:SourceArn` in this template with the full ARN of one specific batch transform job to further limit permissions\. 
 
 ## SageMaker Marketplace<a name="security-confused-deputy-marketplace"></a>
 
