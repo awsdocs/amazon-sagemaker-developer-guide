@@ -72,6 +72,35 @@ create_model_response = sagemaker_client.create_model(
 
 See [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) description in the SageMaker API Reference Guide for a full list of API parameters\.
 
+If you're using a SageMaker provided container, you can increase the model server timeout and payload sizes from the default values to the framework‐supported maximums by setting environment variables in this step\. You might not be able to leverage the maximum timeout and payload sizes that Asynchronous Inference supports if you don't explicitly set these variables\. The following example shows how you can set the environment variables for a PyTorch Inference container based on TorchServe\.
+
+```
+model_name = '<The_name_of_the_model>'
+
+#Create model
+create_model_response = sagemaker_client.create_model(
+    ModelName = model_name,
+    ExecutionRoleArn = sagemaker_role,
+    PrimaryContainer = {
+        'Image': container,
+        'ModelDataUrl': model_url,
+        'Environment': {
+            'TS_MAX_REQUEST_SIZE': '100000000',
+            'TS_MAX_RESPONSE_SIZE': '100000000',
+            'TS_DEFAULT_RESPONSE_TIMEOUT': '1000'
+        },
+    })
+```
+
+After you finish creating your endpoint, you should test that you've set the environment variables correctly by printing them out from your `inference.py` script\. The following table lists the environment variables for several frameworks that you can set to change the default values\.
+
+
+| Framework | Environment variables | 
+| --- | --- | 
+|  PyTorch 1\.8 \(based on TorchServe\)  |  'TS\_MAX\_REQUEST\_SIZE': '100000000' 'TS\_MAX\_RESPONSE\_SIZE': '100000000' 'TS\_DEFAULT\_RESPONSE\_TIMEOUT': '1000'  | 
+|  PyTorch 1\.4 \(based on MMS\)  |  'MMS\_MAX\_REQUEST\_SIZE': '1000000000' 'MMS\_MAX\_RESPONSE\_SIZE': '1000000000' 'MMS\_DEFAULT\_RESPONSE\_TIMEOUT': '900'  | 
+|  HuggingFace Inference Container \(based on MMS\)  |  'MMS\_MAX\_REQUEST\_SIZE': '2000000000' 'MMS\_MAX\_RESPONSE\_SIZE': '2000000000' 'MMS\_DEFAULT\_RESPONSE\_TIMEOUT': '900'  | 
+
 ## Create an Endpoint Configuration<a name="async-inference-create-endpoint-create-endpoint-config"></a>
 
 Once you have a model, create an endpoint configuration with [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html)\. Amazon SageMaker hosting services uses this configuration to deploy models\. In the configuration, you identify one or more models, created using with [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html), to deploy the resources that you want Amazon SageMaker to provision\. Specify the `AsyncInferenceConfig` object and provide an output Amazon S3 location for `OutputConfig`\. You can optionally specify [Amazon SNS](https://docs.aws.amazon.com/sns/latest/dg/welcome.html) topics on which to send notifications about prediction results\. For more information about Amazon SNS topics, see [Configuring Amazon SNS](https://docs.aws.amazon.com/sns/latest/dg/sns-configuring.html)\.

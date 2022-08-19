@@ -340,6 +340,8 @@ To import data from Databricks, do the following\.
    + **Dataset name** – A name that you want to use for the dataset in your Data Wrangler flow\.
    + **Driver** – **com\.simba\.spark\.jdbc\.Driver**\.
    + **JDBC URL** – The URL of the Databricks database\. The URL formatting can vary between Databricks instances\. For information about finding the URL and the specifying the parameters within it, see [JDBC configuration and connection parameters](https://docs.databricks.com/integrations/bi/jdbc-odbc-bi.html#jdbc-configuration-and-connection-parameters)\. The following is an example of how a URL can be formatted: jdbc:spark://aws\-sagemaker\-datawrangler\.cloud\.databricks\.com:443/default;transportMode=http;ssl=1;httpPath=sql/protocolv1/o/3122619508517275/0909\-200301\-cut318;AuthMech=3;UID=*token*;PWD=*personal\-access\-token*\.
+**Note**  
+You can specify a secret ARN that contains the JDBC URL instead of specifying the JDBC URL itself\. The secret must contain a key\-value pair with the following format: `jdbcURL:JDBC-URL`\. For more information, see [What is Secrets Manager?](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html)\.
 
 1. Specify a SQL SELECT statement\.
 

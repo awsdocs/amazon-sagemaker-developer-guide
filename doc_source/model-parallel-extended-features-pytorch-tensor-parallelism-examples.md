@@ -36,7 +36,7 @@ smp_options = {
     }
 }
               
-smd_mp_estimator = PyTorch(
+smp_estimator = PyTorch(
     entry_point='your_training_script.py', # Specify
     role=role,
     instance_type='ml.p3.16xlarge',
@@ -51,7 +51,7 @@ smd_mp_estimator = PyTorch(
     base_job_name="SMD-MP-demo",
 )
 
-smd_mp_estimator.fit('s3://my_bucket/my_training_data/')
+smp_estimator.fit('s3://my_bucket/my_training_data/')
 ```
 
 **Tip**  
@@ -170,7 +170,7 @@ smp_options = {
     }
 }
               
-smd_mp_estimator = PyTorch(
+smp_estimator = PyTorch(
     entry_point='your_training_script.py', # Specify
     role=role,
     instance_type='ml.p3.16xlarge',
@@ -185,7 +185,7 @@ smd_mp_estimator = PyTorch(
     base_job_name="SMD-MP-demo",
 )
 
-smd_mp_estimator.fit('s3://my_bucket/my_training_data/')  
+smp_estimator.fit('s3://my_bucket/my_training_data/')  
 ```
 
 <a name="model-parallel-extended-features-pytorch-tensor-and-pipeline-parallelism-script"></a>**Adapt your PyTorch training script**

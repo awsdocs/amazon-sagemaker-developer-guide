@@ -12,4 +12,4 @@ Amazon SageMaker Neo supports the following frameworks\.
 | TensorFlow | 1\.15\.0, 2\.4\.2 | Supports 1\.15\.0, 2\.4\.2 or earlier | Image Classification, Object Detection | \*For saved models, one \.pb or one \.pbtxt file and a variables directory that contains variables \*For frozen models, only one \.pb or \.pbtxt file |  | 
 | TensorFlow\-Lite | 1\.15\.2 | Supports 1\.15\.2 or earlier | Image Classification, Object Detection | One model definition flatbuffer file \(\.tflite\) |  | 
 | XGBoost | 1\.3\.3 | Supports 1\.3\.3 or earlier | Decision Trees | One XGBoost model file \(\.model\) where the number of nodes in a tree is less than 2^31 |  | 
-| DARKNET |  |  | Image Classification, Object Detection | One config \(\.cfg\) file and one weights \(\.weights\) file |  | 
+| DARKNET |  |  | Image Classification, Object Detection \(Yolo model is not supported\) | One config \(\.cfg\) file and one weights \(\.weights\) file |  | 
