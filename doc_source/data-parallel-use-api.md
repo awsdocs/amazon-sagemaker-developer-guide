@@ -25,13 +25,14 @@ While you follow instructions in the following topics to learn more about techni
 You can activate the SageMaker [distributed data parallel library](https://sagemaker.readthedocs.io/en/stable/api/training/smd_data_parallel.html) by specifying it as the `distribution` strategy in the [SageMaker framework estimator class](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/sagemaker.tensorflow.html#tensorflow-estimator)\.
 
 ------
-#### [ Using the SageMaker PyTorch estimator ]
+#### [ SageMaker PyTorch ]
 
 ```
 from sagemaker.pytorch import PyTorch
 
 pt_estimator = PyTorch(
     base_job_name="training_job_name_prefix",
+    source_dir="sub-folder-for-your-code",
     entry_point="adapted-training-script.py",
     role="SageMakerRole",
     py_version="py38",
@@ -52,8 +53,26 @@ pt_estimator = PyTorch(
 pt_estimator.fit("s3://bucket/path/to/training/data")
 ```
 
+**Note**  
+PyTorch Lightning and its utility libraries such as Lightning Bolts are not preinstalled in the SageMaker PyTorch DLCs\. Create the following `requirements.txt` file and save in the source directory where you save the training script\.  
+
+```
+# requirements.txt
+pytorch-lightning
+lightning-bolts
+```
+For example, the tree\-structured directory should look like the following\.  
+
+```
+├── pytorch_training_launcher_jupyter_notebook.ipynb
+└── sub-folder-for-your-code
+    ├──  adapted-training-script.py
+    └──  requirements.txt
+```
+For more information about specifying the source directory to place the `requirements.txt` file along with your training script and a job submission, see [Using third\-party libraries](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/using_pytorch.html#id12) in the *Amazon SageMaker Python SDK documentation*\.
+
 ------
-#### [ Using the SageMaker TensorFlow estimator ]
+#### [ SageMaker TensorFlow ]
 
 ```
 from sagemaker.tensorflow import TensorFlow

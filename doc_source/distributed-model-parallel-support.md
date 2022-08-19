@@ -11,7 +11,7 @@ The SageMaker model parallel library supports the following deep learning framew
 
 | PyTorch version | SageMaker distributed model parallel library version | `smdistributed-modelparallel` integrated DLC image URI | URL of the binary file\*\* | 
 | --- | --- | --- | --- | 
-| v1\.12\.0\* | smdistributed\-modelparallel==v1\.10\.0 |  `763104351884.dkr.ecr.<region>.amazonaws.com/pytorch-training:1.12.0-gpu-py38-cu113-ubuntu20.04-sagemaker`  | https://sagemaker\-distributed\-model\-parallel\.s3\.us\-west\-2\.amazonaws\.com/pytorch\-1\.12\.0/build\-artifacts/2022\-07\-11\-19\-23/smdistributed\_modelparallel\-1\.10\.0\-cp38\-cp38\-linux\_x86\_64\.whl | 
+| v1\.12\.0\* | smdistributed\-modelparallel==v1\.11\.0 |  `763104351884.dkr.ecr.<region>.amazonaws.com/pytorch-training:1.12.0-gpu-py38-cu113-ubuntu20.04-sagemaker`   | https://sagemaker\-distributed\-model\-parallel\.s3\.us\-west\-2\.amazonaws\.com/pytorch\-1\.12\.0/build\-artifacts/2022\-08\-12\-16\-58/smdistributed\_modelparallel\-1\.11\.0\-cp38\-cp38\-linux\_x86\_64\.whl | 
 | v1\.11\.0\* | smdistributed\-modelparallel==v1\.10\.0 |  `763104351884.dkr.ecr.<region>.amazonaws.com/pytorch-training:1.11.0-gpu-py38-cu113-ubuntu20.04-sagemaker`  | https://sagemaker\-distributed\-model\-parallel\.s3\.us\-west\-2\.amazonaws\.com/pytorch\-1\.11\.0/build\-artifacts/2022\-07\-11\-19\-23/smdistributed\_modelparallel\-1\.10\.0\-cp38\-cp38\-linux\_x86\_64\.whl | 
 | v1\.10\.2\* |  smdistributed\-modelparallel==v1\.7\.0 |  `763104351884.dkr.ecr.<region>.amazonaws.com/pytorch-training:1.10.2-gpu-py38-cu113-ubuntu20.04-sagemaker`  | \- | 
 | v1\.10\.0 |  smdistributed\-modelparallel==v1\.5\.0 |  `763104351884.dkr.ecr.<region>.amazonaws.com/pytorch-training:1.10.0-gpu-py38-cu113-ubuntu20.04-sagemaker`  | \- | 

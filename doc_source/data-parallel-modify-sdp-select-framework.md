@@ -7,3 +7,4 @@ The training script examples provided in these sections are simplified and desig
 **Topics**
 + [Modify a TensorFlow Training Script](data-parallel-modify-sdp-tf2.md)
 + [Modify a PyTorch Training Script](data-parallel-modify-sdp-pt.md)
++ [Modify a PyTorch Lightning Script](data-parallel-modify-sdp-pt-lightning.md)
