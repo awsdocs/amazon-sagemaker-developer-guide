@@ -110,7 +110,7 @@ step_train = TrainingStep(
         ),
         // retry when job failed due to transient error or EC2 ICE.
         SageMakerJobStepRetryPolicy(
-            failure_reason_types=[
+            exception_types=[
                 SageMakerJobExceptionTypeEnum.INTERNAL_ERROR,
                 SageMakerJobExceptionTypeEnum.CAPACITY_ERROR,
             ]
