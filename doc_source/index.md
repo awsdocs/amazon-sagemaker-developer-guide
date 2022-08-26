@@ -4,13 +4,13 @@
 *****Copyright &copy; Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
-Amazon's trademarks and trade dress may not be used in 
-     connection with any product or service that is not Amazon's, 
-     in any manner that is likely to cause confusion among customers, 
-     or in any manner that disparages or discredits Amazon. All other 
-     trademarks not owned by Amazon are the property of their respective
-     owners, who may or may not be affiliated with, connected to, or 
-     sponsored by Amazon.
+Amazon's trademarks and trade dress may not be used in
+connection with any product or service that is not Amazon's,
+in any manner that is likely to cause confusion among customers,
+or in any manner that disparages or discredits Amazon. All other
+trademarks not owned by Amazon are the property of their respective
+owners, who may or may not be affiliated with, connected to, or
+sponsored by Amazon.
 
 -----
 ## Contents
@@ -360,6 +360,41 @@ Amazon's trademarks and trade dress may not be used in
          + [Track Worker Performance](workteam-private-tracking.md)
          + [Create and manage Amazon SNS topics for your work teams](sms-workforce-management-private-sns.md)
    + [Crowd HTML Elements Reference](sms-ui-template-reference.md)
+      + [SageMaker Crowd HTML Elements](general-topiclist.md)
+         + [crowd-alert](sms-ui-template-crowd-alert.md)
+         + [crowd-badge](sms-ui-template-crowd-badge.md)
+         + [crowd-button](sms-ui-template-crowd-button.md)
+         + [crowd-bounding-box](sms-ui-template-crowd-bounding-box.md)
+         + [crowd-card](sms-ui-template-crowd-card.md)
+         + [crowd-checkbox](sms-ui-template-crowd-checkbox.md)
+         + [crowd-classifier](sms-ui-template-crowd-classifier.md)
+         + [crowd-classifier-multi-select](sms-ui-template-crowd-classifier-multi-select.md)
+         + [crowd-entity-annotation](sms-ui-template-crowd-entity-annotation.md)
+         + [crowd-fab](sms-ui-template-crowd-fab.md)
+         + [crowd-form](sms-ui-template-crowd-form.md)
+         + [crowd-icon-button](sms-ui-template-crowd-icon-button.md)
+         + [crowd-image-classifier](sms-ui-template-crowd-image-classifier.md)
+         + [crowd-image-classifier-multi-select](sms-ui-template-crowd-image-classifier-multi.md)
+         + [crowd-input](sms-ui-template-crowd-input.md)
+         + [crowd-instance-segmentation](sms-ui-template-crowd-instance-segmentation.md)
+         + [crowd-instructions](sms-ui-template-crowd-instructions.md)
+         + [crowd-keypoint](sms-ui-template-crowd-keypoint.md)
+         + [crowd-line](sms-ui-template-crowd-line.md)
+         + [crowd-modal](sms-ui-template-crowd-modal.md)
+         + [crowd-polygon](sms-ui-template-crowd-polygon.md)
+         + [crowd-polyline](sms-ui-template-crowd-polyline.md)
+         + [crowd-radio-button](sms-ui-template-crowd-radio-button.md)
+         + [crowd-radio-group](sms-ui-template-crowd-radio-group.md)
+         + [crowd-semantic-segmentation](sms-ui-template-crowd-semantic-segmentation.md)
+         + [crowd-slider](sms-ui-template-crowd-slider.md)
+         + [crowd-tab](sms-ui-template-crowd-tab.md)
+         + [crowd-tabs](sms-ui-template-crowd-tabs.md)
+         + [crowd-text-area](sms-ui-template-crowd-text-area.md)
+         + [crowd-toast](sms-ui-template-crowd-toast.md)
+         + [crowd-toggle-button](sms-ui-template-crowd-toggle-button.md)
+      + [Augmented AI Crowd HTML Elements](crowd-elements-a2i-list.md)
+         + [crowd-textract-analyze-document](a2i-crowd-textract-detection.md)
+         + [crowd-rekognition-detect-moderation-labels](a2i-crowd-rekognition-detection.md)
 + [Prepare and Analyze Datasets](data-prep.md)
    + [Detect Pretraining Data Bias](clarify-detect-data-bias.md)
       + [Measure Pretraining Bias](clarify-measure-data-bias.md)
@@ -707,6 +742,7 @@ Amazon's trademarks and trade dress may not be used in
             + [Disparate Impact (DI)](clarify-post-training-bias-metric-di.md)
             + [Difference in Conditional Acceptance (DCAcc)](clarify-post-training-bias-metric-dca.md)
             + [Difference in Conditional Rejection (DCR)](clarify-post-training-bias-metric-dcr.md)
+            + [Specificity difference (SD)](clarify-post-training-bias-metric-sd.md)
             + [Recall Difference (RD)](clarify-post-training-bias-metric-rd.md)
             + [Difference in Acceptance Rates (DAR)](clarify-post-training-bias-metric-dar.md)
             + [Difference in Rejection Rates (DRR)](clarify-post-training-bias-metric-drr.md)
@@ -714,6 +750,7 @@ Amazon's trademarks and trade dress may not be used in
             + [Treatment Equality (TE)](clarify-post-training-bias-metric-te.md)
             + [Conditional Demographic Disparity in Predicted Labels (CDDPL)](clarify-post-training-bias-metric-cddpl.md)
             + [Counterfactual Fliptest (FT)](clarify-post-training-bias-metric-ft.md)
+            + [Generalized entropy (GE)](clarify-post-training-bias-metric-ge.md)
       + [Amazon SageMaker Clarify Model Explainability](clarify-model-explainability.md)
          + [Feature Attributions that Use Shapley Values](clarify-shapley-values.md)
          + [SHAP Baselines for Explainability](clarify-feature-attribute-shap-baselines.md)

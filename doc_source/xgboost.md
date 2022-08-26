@@ -163,9 +163,15 @@ SageMaker XGBoost uses the Python pickle module to serialize/deserialize the mod
 
 ## EC2 Instance Recommendation for the XGBoost Algorithm<a name="Instance-XGBoost"></a>
 
-SageMaker XGBoost 1\.0\-1 or earlier currently only trains using CPUs\. It is a memory\-bound \(as opposed to compute\-bound\) algorithm\. So, a general\-purpose compute instance \(for example, M5\) is a better choice than a compute\-optimized instance \(for example, C4\)\. Further, we recommend that you have enough total memory in selected instances to hold the training data\. Although it supports the use of disk space to handle data that does not fit into main memory \(the out\-of\-core feature available with the libsvm input mode\), writing cache files onto disk slows the algorithm processing time\.
+SageMaker XGBoost 1\.0\-1 or earlier only trains using CPUs\. It is a memory\-bound \(as opposed to compute\-bound\) algorithm\. So, a general\-purpose compute instance \(for example, M5\) is a better choice than a compute\-optimized instance \(for example, C4\)\. Further, we recommend that you have enough total memory in selected instances to hold the training data\. Although it supports the use of disk space to handle data that does not fit into main memory \(the out\-of\-core feature available with the libsvm input mode\), writing cache files onto disk slows the algorithm processing time\.
 
-SageMaker XGBoost version 1\.2 or later supports single\-instance GPU training\. Despite higher per\-instance costs, GPUs train more quickly, making them more cost effective\. To take advantage of GPU training, specify the instance type as one of the GPU instances \(for example, P3\) and set the `tree_method` hyperparameter to `gpu_hist` in your existing XGBoost script\. SageMaker currently does not support multi\-GPU training\.
+SageMaker XGBoost version 1\.2 or later supports single\-instance GPU training\. Despite higher per\-instance costs, GPUs train more quickly, making them more cost effective\. SageMaker XGBoost version 1\.2 or later supports P2 and P3 instances\.
+
+SageMaker XGBoost version 1\.2\-2 or later supports P2, P3, G4dn, and G5 GPU instance families\.
+
+To take advantage of GPU training, specify the instance type as one of the GPU instances \(for example, P3\) and set the `tree_method` hyperparameter to `gpu_hist` in your existing XGBoost script\. SageMaker XGBoost currently does not support multi\-GPU training\.
+
+SageMaker XGBoost supports CPU and GPU instances for inference\. For information about the instance types for inference, see [Amazon SageMaker ML Instance Types](https://aws.amazon.com/sagemaker/pricing/instance-types/)\.
 
 ## XGBoost Sample Notebooks<a name="xgboost-sample-notebooks"></a>
 

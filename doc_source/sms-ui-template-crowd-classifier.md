@@ -35,45 +35,45 @@ Copy the following code and save it in a file with the extension `.html`\. Open 
 </crowd-form>
 ```
 
-### Attributes<a name="crowd-classifier-attributes"></a>
+## Attributes<a name="crowd-classifier-attributes"></a>
 
 The following attributes are supported by this element\.
 
-#### categories<a name="crowd-classifier-attributes-categories"></a>
+### categories<a name="crowd-classifier-attributes-categories"></a>
 
 A JSON formatted array of strings, each of which is a category that a worker can assign to the text\. You should include "other" as a category, otherwise the worker my not be able to provide an answer\.
 
-#### header<a name="crowd-classifier-attributes-header"></a>
+### header<a name="crowd-classifier-attributes-header"></a>
 
 The text to display above the image\. This is typically a question or simple instruction for the worker\.
 
-#### name<a name="crowd-classifier-attributes-name"></a>
+### name<a name="crowd-classifier-attributes-name"></a>
 
 The name of this widget\. It is used as a key for the widget's input in the form output\.
 
-### Element Hierarchy<a name="crowd-classifier-element-hierarchy"></a>
+## Element Hierarchy<a name="crowd-classifier-element-hierarchy"></a>
 
 This element has the following parent and child elements\.
 + **Parent elements**: [crowd\-form](sms-ui-template-crowd-form.md)
 + **Child elements**: [classification\-target](#crowd-classifier-regions-classification-target), [full\-instructions](#crowd-classifier-regions-full-instructions), [short\-instructions](#crowd-classifier-regions-short-instructions)
 
-### Regions<a name="crowd-classifier-regions"></a>
+## Regions<a name="crowd-classifier-regions"></a>
 
 The following regions are supported by this element\.
 
-#### classification\-target<a name="crowd-classifier-regions-classification-target"></a>
+### classification\-target<a name="crowd-classifier-regions-classification-target"></a>
 
 The content to be classified by the worker\. This can be plain text or HTML\. Examples of how the HTML can be used include *but are not limited to* embedding a video or audio player, embedding a PDF, or performing a comparison of two or more images\.
 
-#### full\-instructions<a name="crowd-classifier-regions-full-instructions"></a>
+### full\-instructions<a name="crowd-classifier-regions-full-instructions"></a>
 
 General instructions about how to do text classification\.
 
-#### short\-instructions<a name="crowd-classifier-regions-short-instructions"></a>
+### short\-instructions<a name="crowd-classifier-regions-short-instructions"></a>
 
 Important task\-specific instructions that are displayed in a prominent place\.
 
-### Output<a name="crowd-classifier-output"></a>
+## Output<a name="crowd-classifier-output"></a>
 
 The output of this element is an object using the specified `name` value as a property name, and a string from the `categories` as the property's value\.
 
@@ -90,7 +90,7 @@ The following is a sample of output from this element\.
 ]
 ```
 
-### See Also<a name="crowd-classifier-see-also"></a>
+## See Also<a name="crowd-classifier-see-also"></a>
 
 For more information, see the following\.
 + [Use Amazon SageMaker Ground Truth to Label Data](sms.md)

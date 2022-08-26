@@ -56,15 +56,15 @@ The following is an example of a template that uses the `<crowd-entity-annotatio
 </script>
 ```
 
-### Attributes<a name="entity-annotation-attributes"></a>
+## Attributes<a name="entity-annotation-attributes"></a>
 
 The following attributes are supported by this element\.
 
-#### header<a name="entity-annotation-attributes-header"></a>
+### header<a name="entity-annotation-attributes-header"></a>
 
 The text to display above the image\. This is typically a question or simple instruction for the worker\.
 
-#### initial\-value<a name="entity-annotation-attributes-initial-value"></a>
+### initial\-value<a name="entity-annotation-attributes-initial-value"></a>
 
 A JSON formatted array of objects, each of which defines an annotation to apply to the text at initialization\. Objects contain a `label` value that matches one in the `labels` attribute, an integer `startOffset` value for labeled span's starting unicode offset, and an integer `endOffset` value for the ending unicode offset\.
 
@@ -81,7 +81,7 @@ A JSON formatted array of objects, each of which defines an annotation to apply 
 ]
 ```
 
-#### labels<a name="entity-annotation-attributes-labels"></a>
+### labels<a name="entity-annotation-attributes-labels"></a>
 
 A JSON formatted array of objects, each of which contains:
 + `label` \(required\): The name used to identify entities\.
@@ -102,36 +102,36 @@ Values displayed above the selections can overlap and create difficulty managing
 ]
 ```
 
-#### name<a name="entity-annotation-attributes-name"></a>
+### name<a name="entity-annotation-attributes-name"></a>
 
 Serves as the widget's name in the DOM\. It is also used as the label attribute name in form output and the output manifest\.
 
-#### text<a name="entity-annotation-attributes-text"></a>
+### text<a name="entity-annotation-attributes-text"></a>
 
 The text to be annotated\. The templating system escapes quotes and HTML strings by default\. If your code is already escaped or partially escaped, see [Variable filters](sms-custom-templates-step2.md#sms-custom-templates-step2-automate-filters) for more ways to control escaping\.
 
-### Element Hierarchy<a name="entity-annotation-element-hierarchy"></a>
+## Element Hierarchy<a name="entity-annotation-element-hierarchy"></a>
 
 This element has the following parent and child elements\.
 + **Child elements**: [full\-instructions](#entity-annotation-regions-full-instructions), [short\-instructions](#entity-annotation-regions-short-instructions)
 
-### Regions<a name="entity-annotation-regions"></a>
+## Regions<a name="entity-annotation-regions"></a>
 
 The following regions are supported by this element\.
 
-#### full\-instructions<a name="entity-annotation-regions-full-instructions"></a>
+### full\-instructions<a name="entity-annotation-regions-full-instructions"></a>
 
 General instructions about how to work with the widget\.
 
-#### short\-instructions<a name="entity-annotation-regions-short-instructions"></a>
+### short\-instructions<a name="entity-annotation-regions-short-instructions"></a>
 
 Important task\-specific instructions that are displayed in a prominent place\.
 
-### Output<a name="entity-annotation-output"></a>
+## Output<a name="entity-annotation-output"></a>
 
 The following output is supported by this element\.
 
-#### entities<a name="entity-annotation-output-entities"></a>
+### entities<a name="entity-annotation-output-entities"></a>
 
 A JSON object that specifies the start, end, and label of an annotation\. This object contains the following properties\.
 + **label** – The assigned label\.
@@ -170,7 +170,7 @@ The following is a sample of the output from this element\.
 }
 ```
 
-### See Also<a name="entity-annotation-see-also"></a>
+## See Also<a name="entity-annotation-see-also"></a>
 
 For more information, see the following\.
 + [Use Amazon SageMaker Ground Truth to Label Data](sms.md)

@@ -264,7 +264,7 @@ You do not need to define an endpoint configuration for real\-time endpoints if 
 
 ------
 
-## Deploy your model<a name="w3197aac27c18b9b9b7c29"></a>
+## Deploy your model<a name="w3224aac27c18b9b9b7c29"></a>
 
 Deploy your model and create an HTTPS endpoint\.
 

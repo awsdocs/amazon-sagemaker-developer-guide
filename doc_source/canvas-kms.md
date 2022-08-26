@@ -10,15 +10,15 @@ With SageMaker Canvas, you can use two different AWS KMS encryption keys to encr
 
 ### Prerequisites<a name="canvas-kms-app-data-prereqs"></a>
 
-To use your own KMS key for either of the previously described purposes, you must first give your user permission to use the key\. Then, you can specify the KMS key when setting up your Domain\.
+To use your own KMS key for either of the previously described purposes, you must first give your user's IAM role permission to use the key\. Then, you can specify the KMS key when setting up your Domain\.
 
-The simplest way to give your user permission to use the key is to modify the key policy\. Use the following procedure to give your user the necessary permissions\.
+The simplest way to give your role permission to use the key is to modify the key policy\. Use the following procedure to give your role the necessary permissions\.
 
 1. Open the [AWS KMS console](https://console.aws.amazon.com/kms/)\.
 
 1. In the **Key Policy** section, choose **Switch to policy view**\.
 
-1. Modify the key's policy to grant permissions for the `kms:GenerateDataKey` and `kms:Decrypt` actions to the IAM user\. You can add a statement that's similar to the following:
+1. Modify the key's policy to grant permissions for the `kms:GenerateDataKey` and `kms:Decrypt` actions to the IAM role\. You can add a statement that's similar to the following:
 
    ```
    {
@@ -29,7 +29,7 @@ The simplest way to give your user permission to use the key is to modify the ke
      ],
      "Effect": "Allow",
      "Principal": {
-       "AWS": "<arn:aws:iam::111122223333:user/Jane>"
+       "AWS": "<arn:aws:iam::111122223333:role/Jane>"
      },
      "Resource": "*"
    }
@@ -74,7 +74,7 @@ The second KMS key you can specify is used for data that SageMaker Canvas stores
 
 ## Import encrypted datasets from Amazon S3<a name="canvas-kms-datasets"></a>
 
-Your users might have datasets that have been encrypted with a KMS key\. While the preceding section shows you how to encrypt data in SageMaker Canvas and data stored to Amazon S3, you must give your user additional permissions if you want to import data from Amazon S3 that is already encrypted with AWS KMS\.
+Your users might have datasets that have been encrypted with a KMS key\. While the preceding section shows you how to encrypt data in SageMaker Canvas and data stored to Amazon S3, you must give your user's IAM role additional permissions if you want to import data from Amazon S3 that is already encrypted with AWS KMS\.
 
 To give your user permissions to import encrypted datasets from Amazon S3 into SageMaker Canvas, add the following permissions to the IAM execution role that you've used for the user profile\.
 
@@ -98,7 +98,7 @@ A: No\. SageMaker Canvas may temporarily cache your key or pass it on to other A
 
 ### Q: I specified a KMS key when setting up my Domain\. Why did my dataset fail to import in SageMaker Canvas?<a name="canvas-kms-faqs-2"></a>
 
-A: Your user’s role may not have permissions to use that KMS key\. To give your user permissions, see the [Prerequisites](#canvas-kms-app-data-prereqs)\. Another possible error is that you have a bucket policy on your S3 bucket that requires the use of a specific KMS key that doesn’t match the KMS key you specified in your Domain\. Make sure that you specify the same KMS key for your S3 bucket and your Domain\.
+A: Your user’s IAM role may not have permissions to use that KMS key\. To give your user permissions, see the [Prerequisites](#canvas-kms-app-data-prereqs)\. Another possible error is that you have a bucket policy on your Amazon S3 bucket that requires the use of a specific KMS key that doesn’t match the KMS key you specified in your Domain\. Make sure that you specify the same KMS key for your Amazon S3 bucket and your Domain\.
 
 ### Q: How do I find the Region’s default SageMaker S3 bucket for my account?<a name="canvas-kms-faqs-3"></a>
 

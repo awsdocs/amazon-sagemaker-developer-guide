@@ -28,7 +28,7 @@ Please see [Factorization Machines Sample Notebooks](#fm-sample-notebooks) for m
 
 ## EC2 Instance Recommendation for the Factorization Machines Algorithm<a name="fm-instances"></a>
 
-The Amazon SageMaker Factorization Machines algorithm is highly scalable and can train across distributed instances\. We recommend training and inference with CPU instances for both sparse and dense datasets\. In some circumstances, training with one or more GPUs on dense data might provide some benefit\. Training with GPUs is available only on dense data\. Use CPU instances for sparse data\.
+The Amazon SageMaker Factorization Machines algorithm is highly scalable and can train across distributed instances\. We recommend training and inference with CPU instances for both sparse and dense datasets\. In some circumstances, training with one or more GPUs on dense data might provide some benefit\. Training with GPUs is available only on dense data\. Use CPU instances for sparse data\. The Factorization Machines algorithm supports P2, P3, G4dn, and G5 instances for training and inference\.
 
 ## Factorization Machines Sample Notebooks<a name="fm-sample-notebooks"></a>
 

@@ -58,6 +58,6 @@ If you use the default dataset for text models without changing the hyperparamet
 
 ## Training output<a name="jumpstart-training"></a>
 
-When the fine\-tuning process is complete, JumpStart provides information about the model: parent model, training job name, training job Amazon Resource Name \(ARN\), training time, and output path\. The output path is where you can find your new model in an Amazon S3 bucket\. The folder structure uses the model name that you provided and the model file is in an `/output` subfolder and it's always named `model.tar.gz`\.  
+When the fine\-tuning process is complete, JumpStart provides information about the model: parent model, training job name, training job ARN, training time, and output path\. The output path is where you can find your new model in an Amazon S3 bucket\. The folder structure uses the model name that you provided and the model file is in an `/output` subfolder and it's always named `model.tar.gz`\.  
 
  Example: `s3://bucket/model-name/output/model.tar.gz` 

@@ -68,17 +68,17 @@ The following is an example of the syntax that you can use with the `<crowd-radi
 </crowd-form>
 ```
 
-### Attributes<a name="radio-group-attributes"></a>
+## Attributes<a name="radio-group-attributes"></a>
 
 No special attributes are supported by this element\.
 
-### Element Hierarchy<a name="radio-group-element-hierarchy"></a>
+## Element Hierarchy<a name="radio-group-element-hierarchy"></a>
 
 This element has the following parent and child elements\.
 + **Parent elements**: [crowd\-form](sms-ui-template-crowd-form.md)
 + **Child elements**: [crowd\-radio\-button](sms-ui-template-crowd-radio-button.md)
 
-### Output<a name="radio-group-output"></a>
+## Output<a name="radio-group-output"></a>
 
 Outputs an array of objects representing the [crowd\-radio\-button](sms-ui-template-crowd-radio-button.md) elements within it\.
 
@@ -97,7 +97,7 @@ Outputs an array of objects representing the [crowd\-radio\-button](sms-ui-templ
 ]
 ```
 
-### See Also<a name="radio-group-see-also"></a>
+## See Also<a name="radio-group-see-also"></a>
 
 For more information, see the following\.
 + [Use Amazon SageMaker Ground Truth to Label Data](sms.md)

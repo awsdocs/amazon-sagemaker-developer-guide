@@ -31,7 +31,7 @@ The role that you pass must have access to the resources that the model needs, a
 + For hosting jobs: [CreateModel API: Execution Role Permissions](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html#sagemaker-roles-createmodel-perms)\.
 
 **Note**  
-You can scope down the Amazon S3 permissions granted in each of the following roles\. Do this by using the Amazon Resource Name \(ARN\) of your Amazon Simple Storage Service \(Amazon S3\) bucket and the JumpStart Amazon S3 bucket\.  
+You can scope down the Amazon S3 permissions granted in each of the following roles\. Do this by using the ARN of your Amazon Simple Storage Service \(Amazon S3\) bucket and the JumpStart Amazon S3 bucket\.  
 
 ```
 {

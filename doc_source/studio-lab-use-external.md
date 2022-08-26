@@ -6,6 +6,7 @@ The following topics show how to integrate external resources\.
 
 **Topics**
 + [Use GitHub resources](#studio-lab-use-external-clone-github)
++ [Add an **Open in Amazon SageMaker Studio Lab** button to your notebook](#studio-lab-use-external-add-button)
 + [Import files from your computer](#studio-lab-use-external-import)
 + [Connect to Amazon S3](#studio-lab-use-external-s3)
 
@@ -52,7 +53,7 @@ The following sections show two options for you to copy a GitHub notebook in you
 
 #### Option 1: Copy notebook with an **Open in Amazon SageMaker Studio Lab** button<a name="studio-lab-use-external-clone-individual-button"></a>
 
- The following procedure shows how to copy a notebook that has an **Open in Amazon SageMaker Studio Lab** button\. If you want to add this button to your notebook, see [Add an **Open in Amazon SageMaker Studio Lab** button to your GitHub notebook](#studio-lab-use-external-add-button)\.
+ The following procedure shows how to copy a notebook that has an **Open in Amazon SageMaker Studio Lab** button\. If you want to add this button to your notebook, see [Add an **Open in Amazon SageMaker Studio Lab** button to your notebook](#studio-lab-use-external-add-button)\.
 
 1.  Sign in to Studio Lab following the steps in [Sign in to Studio Lab](studio-lab-onboard.md#studio-lab-onboard-signin)\.
 
@@ -90,9 +91,9 @@ The following sections show two options for you to copy a GitHub notebook in you
 
 1.  In the **Copy from GitHub?** dialog box, select **Copy notebook only** to copy the notebook file to your project\.
 
-### Add an **Open in Amazon SageMaker Studio Lab** button to your GitHub notebook<a name="studio-lab-use-external-add-button"></a>
+## Add an **Open in Amazon SageMaker Studio Lab** button to your notebook<a name="studio-lab-use-external-add-button"></a>
 
-When you add the **Open in Amazon SageMaker Studio Lab** button to your notebooks, others can clone your GitHub notebooks or repositories directly to their Studio Lab projects\. If you are sharing your notebook within a public GitHub repository, your content will be publicly readable\. Do not share private content, such as AWS access keys or AWS Identity and Access Management credentials, in your notebook\.
+When you add the **Open in Amazon SageMaker Studio Lab** button to your notebooks, others can clone your notebooks or repositories directly to their Studio Lab projects\. If you are sharing your notebook within a public GitHub repository, your content will be publicly readable\. Do not share private content, such as AWS access keys or AWS Identity and Access Management credentials, in your notebook\.
 
  To add the functional **Open in Amazon SageMaker Studio Lab** button to your Jupyter notebook or repository, add the following markdown to the top of your notebook or repository\. 
 
