@@ -34,8 +34,8 @@ You can find JumpStart resources by using search, or by browsing each category t
 +  **Models** – Find a model that fits your needs from the collection of text, vision, and tabular models\. You can filter the collection by problem types, data types, and frameworks\. Then, deploy and refine pre\-trained models for image classification and object detection in one step\. Select **Explore All Models** to view all available models\.
 +  **Resources** – Use example notebooks, blogs, and video tutorials to learn and head start your problem types\.
   +  **Example notebooks** – Run example notebooks that use SageMaker features like Spot Instance training and experiments over a large variety of model types and use cases\. 
-  +  **Blogs** – Read details and solutions from machine learning experts, hosted by Amazon\. 
-  +  **Video tutorials** – Watch video tutorials for SageMaker features and machine learning use cases from machine learning experts, hosted by Amazon\. 
+  +  **Blogs** – Read details and solutions from machine learning experts\. 
+  +  **Video tutorials** – Watch video tutorials for SageMaker features and machine learning use cases from machine learning experts\.
 
 **Topics**
 + [Open and use JumpStart](#jumpstart-open-use)

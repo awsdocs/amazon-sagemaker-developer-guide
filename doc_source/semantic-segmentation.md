@@ -133,12 +133,6 @@ To query a trained model that is deployed to an endpoint, you need to provide an
 
 ## EC2 Instance Recommendation for the Semantic Segmentation Algorithm<a name="semantic-segmentation-instances"></a>
 
-The SageMaker semantic segmentation algorithm only supports GPU instances for training, and we recommend using GPU instances with more memory for training with large batch sizes\. The algorithm can be trained using [P2/P3 EC2 Amazon Elastic Compute Cloud \(Amazon EC2\)](https://aws.amazon.com/ec2/) instances in single machine configurations\. It supports the following GPU instances for training:
-+ `ml.p2.xlarge`
-+ `ml.p2.8xlarge`
-+ `ml.p2.16xlarge`
-+ `ml.p3.2xlarge`
-+ `ml.p3.8xlarge`
-+ `ml.p3.16xlarge`
+The SageMaker semantic segmentation algorithm only supports GPU instances for training, and we recommend using GPU instances with more memory for training with large batch sizes\. The algorithm can be trained using P2, P3, G4dn, or G5 instances in single machine configurations\.
 
-For inference, you can use either CPU instances \(such as c5 and m5\) and GPU instances \(such as p2 and p3\) or both\. For information about the instance types that provide varying combinations of CPU, GPU, memory, and networking capacity for inference, see [Amazon SageMaker ML Instance Types](https://aws.amazon.com/sagemaker/pricing/instance-types/)\.
+For inference, you can use either CPU instances \(such as C5 and M5\) and GPU instances \(such as P3 and G4dn\) or both\. For information about the instance types that provide varying combinations of CPU, GPU, memory, and networking capacity for inference, see [Amazon SageMaker ML Instance Types](https://aws.amazon.com/sagemaker/pricing/instance-types/)\.

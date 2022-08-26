@@ -55,7 +55,7 @@ For additional details on how to serialize and deserialize the inputs and output
 
 ## EC2 Instance Recommendation for the Sequence\-to\-Sequence Algorithm<a name="s2s-instances"></a>
 
-Currently Amazon SageMaker seq2seq is only supported on GPU instance types and is only set up to train on a single machine\. But it does also offer support for multiple GPUs\. 
+The Amazon SageMaker seq2seq algorithm only supports on GPU instance types and can only train on a single machine\. However, you can use instances with multiple GPUs\. The seq2seq algorithm supports P2, P3, G4dn, and G5 GPU instance families\.
 
 ## Sequence\-to\-Sequence Sample Notebooks<a name="seq-2-seq-sample-notebooks"></a>
 

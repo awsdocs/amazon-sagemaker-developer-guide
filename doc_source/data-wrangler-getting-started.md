@@ -32,14 +32,12 @@ The following procedure assumes you have completed the [Prerequisites](#data-wra
 
 1. \(Optional\) Rename the new directory and the \.flow file\. 
 
-1. When you create a new \.flow file in Studio, you may see a message within the **Data Wrangler** interface that says:
-
-   **Data Wrangler is loading\.\.\.**
+1. When you create a new \.flow file in Studio, you might see a carousel that introduces you to Data Wrangler\.
 
    **This may take a few minutes\.**  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/establishing-connection-engine.png)
 
-   This message persists as long as the **KernelGateway** app on your **User Details** page is **Pending**\. To see the status of this app, in the SageMaker console on the **Amazon SageMaker Studio** page, select the name of the user you are using to access Studio\. On the **User Details** page, you see a **KernelGateway** app under **Apps**\. Wait until this app status is **Ready** to start using Data Wrangler\. This can take around 5 minutes the first time you launch Data Wrangler\.  
+   This messaging persists as long as the **KernelGateway** app on your **User Details** page is **Pending**\. To see the status of this app, in the SageMaker console on the **Amazon SageMaker Studio** page, select the name of the user you are using to access Studio\. On the **User Details** page, you see a **KernelGateway** app under **Apps**\. Wait until this app status is **Ready** to start using Data Wrangler\. This can take around 5 minutes the first time you launch Data Wrangler\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/gatewayKernel-ready.png)
 
 1. To get started, choose a data source and use it to import a dataset\. See [Import](data-wrangler-import.md) to learn more\. 
@@ -70,15 +68,30 @@ The following sections provide a walkthrough to help you get started using Data 
 This walkthrough uses the [Titanic dataset](https://s3.us-west-2.amazonaws.com/amazon-sagemaker-data-wrangler-documentation-artifacts/walkthrough_titanic.csv)\. It's a modified version of the [Titanic dataset](https://www.openml.org/d/40945) that you can import into your Data Wrangler flow more easily\. This data set contains the survival status, age, gender, and class \(which serves as a proxy for economic status\) of passengers aboard the maiden voyage of the *RMS Titanic* in 1912\.
 
 In this tutorial, you perform the following steps\.
-+ Upload the [Titanic dataset](https://s3.us-west-2.amazonaws.com/amazon-sagemaker-data-wrangler-documentation-artifacts/walkthrough_titanic.csv) to Amazon Simple Storage Service \(Amazon S3\), and then import this dataset into Data Wrangler\.
-+ Analyze this dataset using Data Wrangler analyses\. 
-+ Define a data flow using Data Wrangler data transforms\.
-+ Export your flow to a Jupyter Notebook that you can use to create a Data Wrangler job\. 
-+ Process your data, and kick off a SageMaker training job to train a XGBoost Binary Classifier\. 
+
+1. Do one of the following:
+   + Open your Data Wrangler flow and choose **Use Sample Dataset**\.
+   + Upload the [Titanic dataset](https://s3.us-west-2.amazonaws.com/amazon-sagemaker-data-wrangler-documentation-artifacts/walkthrough_titanic.csv) to Amazon Simple Storage Service \(Amazon S3\), and then import this dataset into Data Wrangler\.
+
+1. Analyze this dataset using Data Wrangler analyses\. 
+
+1. Define a data flow using Data Wrangler data transforms\.
+
+1. Export your flow to a Jupyter Notebook that you can use to create a Data Wrangler job\. 
+
+1. Process your data, and kick off a SageMaker training job to train a XGBoost Binary Classifier\. 
 
 ### Upload Dataset to S3 and Import<a name="data-wrangler-getting-started-demo-import"></a>
 
-To get started, download the [Titanic dataset](https://s3.us-west-2.amazonaws.com/amazon-sagemaker-data-wrangler-documentation-artifacts/walkthrough_titanic.csv) and upload it to an Amazon S3 \(Amazon S3\) bucket in the AWS Region in which you want to complete this demo\. 
+To get started, you can use one of the following methods to import the Titanic dataset into Data Wrangler:
++ Importing the dataset directly from the Data Wrangler flow
++ Uploading the dataset to Amazon S3 and then importing it into Data Wrangler
+
+To import the dataset directly into Data Wrangler, open the flow and choose **Use Sample Dataset**\.
+
+Uploading the dataset to Amazon S3 and importing it into Data Wrangler is closer to the experience you have importing your own data\. The following information tells you how to upload your dataset and import it\.
+
+Before you start importing the data into Data Wrangler, download the [Titanic dataset](https://s3.us-west-2.amazonaws.com/amazon-sagemaker-data-wrangler-documentation-artifacts/walkthrough_titanic.csv) and upload it to an Amazon S3 \(Amazon S3\) bucket in the AWS Region in which you want to complete this demo\.
 
 If you are a new user of Amazon S3, you can do this using drag and drop in the Amazon S3 console\. To learn how, see [Uploading Files and Folders by Using Drag and Drop](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/upload-objects.html#upload-objects-by-drag-and-drop) in the Amazon Simple Storage Service User Guide\.
 
@@ -112,6 +125,8 @@ Data Wrangler has built\-in transformations and visualizations that you can use 
 
 The **Data** tab of the node detail view lists all built\-in transformations in the right panel, which also contains an area in which you can add custom transformations\. The following use case showcases how to use these transformations\.
 
+To get information that might help you with data exploration and feature engineering, create a data quality and insights report\. The information from the report can help you clean and process your data\. It gives you information such as the number of missing values and the number of outliers\. If you have issues with your data, such as target leakage or imbalance, the insights report can bring those issues to your attention\. For more information about creating a report, see [Get Insights On Data and Data Quality](data-wrangler-data-insights.md)\.
+
 ##### Data Exploration<a name="data-wrangler-getting-started-demo-explore"></a>
 
 First, create a table summary of the data using an analysis\. Do the following:
@@ -137,9 +152,37 @@ Choose **Prepare** to go back to the data flow\. Next, clean your data using the
 
 Using the analysis from the previous section, clean up the dataset to prepare it for training\. To add a new transform to your data flow, choose **\+** next to the **Data type** step in your data flow and choose **Add transform**\.
 
-First, drop columns that you don't want to use for training\. You can use [Pandas](https://pandas.pydata.org/) data analysis library to do this, or you can use one of the built\-in transforms\. 
+First, drop columns that you don't want to use for training\. You can use [pandas](https://pandas.pydata.org/) data analysis library to do this, or you can use one of the built\-in transforms\.
 
-To do this using Pandas, follow these steps\.
+Use the following procedure to drop the unused columns\.
+
+To drop the unused columns, do the following\.
+
+1. Open the Data Wrangler flow\.
+
+1. There are two nodes in your Data Wrangler flow\. For the node on the right, choose the **\+**\.
+
+1. Choose **Add transform**\.
+
+1. Choose **Manage columns**\.
+
+1. Under **Transform**, make sure **Drop column** is selected\.
+
+1. Under **Columns to drop**, specify the following column names:
+   + cabin
+   + ticket
+   + name
+   + sibsp
+   + parch
+   + home\.dest
+   + boat
+   + body
+
+1. Choose **Preview**\.
+
+1. Choose **Add**\.
+
+To do this using pandas, follow these steps\.
 
 1. In the **Custom Transform** section, select **Python \(Pandas\)** from the dropdown list\.
 
@@ -236,7 +279,7 @@ Now, select the columns you want to keep using SQL\. For this demo, select the c
 
 1. Choose **Add** to add the transformation\. 
 
-### Export<a name="data-wrangler-getting-started-export"></a>
+### Export to a Data Wrangler Notebook<a name="data-wrangler-getting-started-export"></a>
 
 When you've finished creating a data flow, you have a number of export options\. The following section explains how to export to a Data Wrangler job notebook\. A Data Wrangler job is used to process your data using the steps defined in your data flow\. To learn more about all export options, see [Export](data-wrangler-data-export.md)\.
 
@@ -257,7 +300,7 @@ When you export your data flow using a **Data Wrangler job**, the process automa
 
 1. When the kernel starts, run the cells in the notebook book until **Kick off SageMaker Training Job \(Optional\)**\. 
 
-1. Optionally, you can run the cells in **Kick off SageMaker Training Job \(Optional\)** if you want to create a SageMaker training job to train an XGboost classifier\. You can find the cost to run an SageMaker training job in [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/)\. 
+1. Optionally, you can run the cells in **Kick off SageMaker Training Job \(Optional\)** if you want to create a SageMaker training job to train an XGBoost classifier\. You can find the cost to run an SageMaker training job in [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/)\. 
 
    Alternatively, you can add the code blocks found in [Training XGBoost Classifier](#data-wrangler-getting-started-train-xgboost) to the notebook and run them to use the [XGBoost](https://xgboost.readthedocs.io/en/latest/) open source library to train an XGBoost classifier\. 
 
@@ -269,7 +312,9 @@ If you kicked off a training job, you can monitor its status using the SageMaker
 
 #### Training XGBoost Classifier<a name="data-wrangler-getting-started-train-xgboost"></a>
 
-In the same notebook that kicked off the Data Wrangler job, you can pull the data and train a XGBoost Binary Classifier using the prepared data with minimal data preparation\. 
+You can train an XGBoost Binary Classifier using either a Jupyter notebook or a Amazon SageMaker Autopilot\. You can use Autopilot to automatically train and tune models on the data that you've transformed directly from your Data Wrangler flow\. For information about Autopilot, see [Automatically Train Models on Your Data Flow](data-wrangler-autopilot.md)\.
+
+In the same notebook that kicked off the Data Wrangler job, you can pull the data and train an XGBoost Binary Classifier using the prepared data with minimal data preparation\. 
 
 1. First, upgrade necessary modules using `pip` and remove the \_SUCCESS file \(this last file is problematic when using `awswrangler`\)\.
 

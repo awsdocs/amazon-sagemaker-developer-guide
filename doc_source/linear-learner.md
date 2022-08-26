@@ -37,7 +37,9 @@ For more information on input and output file formats, see [Linear learner respo
 
 ## EC2 instance recommendation for the linear learner algorithm<a name="ll-instances"></a>
 
-You can train the linear learner algorithm on single\- or multi\-machine CPU and GPU instances\. During testing, we have not found substantial evidence that multi\-GPU computers are faster than single\-GPU computers\. Results can vary, depending on your specific use case\.
+The linear learner algorithm supports both CPU and GPU instances for training and inference\. For GPU, the linear learner algorithm supports P2, P3, G4dn, and G5 GPU families\.
+
+During testing, we have not found substantial evidence that multi\-GPU instances are faster than single\-GPU instances\. Results can vary, depending on your specific use case\.
 
 ## Linear learner sample notebooks<a name="ll-sample-notebooks"></a>
 

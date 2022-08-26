@@ -35,17 +35,17 @@ The following is an example of an image classification template that uses the `<
 </crowd-form>
 ```
 
-### Element Hierarchy<a name="form-element-hierarchy"></a>
+## Element Hierarchy<a name="form-element-hierarchy"></a>
 
 This element has the following parent and child elements\.
 + **Parent elements**: none
 + **Child elements**: Any of the [UI Template](sms-ui-template-reference.md) elements
 
-### Element Events<a name="form-element-events"></a>
+## Element Events<a name="form-element-events"></a>
 
 The `crowd-form` element extends the [standard HTML `form` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) and inherits its events, such as `onclick` and `onsubmit`\.
 
-### See Also<a name="form-see-also"></a>
+## See Also<a name="form-see-also"></a>
 
 For more information, see the following\.
 + [Use Amazon SageMaker Ground Truth to Label Data](sms.md)

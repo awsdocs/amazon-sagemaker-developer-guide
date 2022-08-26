@@ -46,15 +46,15 @@ The following is an example of a Liquid template designed for image classificati
 </script>
 ```
 
-### Attributes<a name="fab-attributes"></a>
+## Attributes<a name="fab-attributes"></a>
 
 The following attributes are supported by this element\.
 
-#### disabled<a name="fab-attributes-disabled"></a>
+### disabled<a name="fab-attributes-disabled"></a>
 
 A Boolean switch that, if present, displays the floating button as disabled and prevents clicks\.
 
-#### icon<a name="fab-attributes-icon"></a>
+### icon<a name="fab-attributes-icon"></a>
 
 A string that specifies the icon to be displayed in the center of the button\. The string must be either the name of an icon from the open\-source *[iron\-icons](https://github.com/PolymerElements/iron-icons)* set, which is pre\-loaded, or the URL to a custom icon\.
 
@@ -64,21 +64,21 @@ The following is an example of the syntax that you can use to add an iron\-icon 
 <crowd-fab "id="button1" icon="icon-name" title="Issue"/>
 ```
 
-#### label<a name="fab-attributes-label"></a>
+### label<a name="fab-attributes-label"></a>
 
 A string consisting of a single character that can be used instead of an icon\. Emojis or multiple characters may result in the button displaying an ellipsis instead\.
 
-#### title<a name="fab-attributes-title"></a>
+### title<a name="fab-attributes-title"></a>
 
 A string that will display as a tool tip when the mouse hovers over the button\.
 
-### Element Hierarchy<a name="fab-element-hierarchy"></a>
+## Element Hierarchy<a name="fab-element-hierarchy"></a>
 
 This element has the following parent and child elements\.
 + **Parent elements**: [crowd\-form](sms-ui-template-crowd-form.md)
 + **Child elements**: none
 
-### See Also<a name="fab-see-also"></a>
+## See Also<a name="fab-see-also"></a>
 
 For more information, see the following\.
 + [Use Amazon SageMaker Ground Truth to Label Data](sms.md)

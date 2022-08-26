@@ -39,12 +39,11 @@ For information about using the different ingestion methods, see [Example Imple
 
  ****Requirements**** 
 +  PySpark >= 3\.0\.0 
-+  Python >= 3\.6  
++  Python >= 3\.8  
 +  Amazon EMR > 6\.x \(only if you are using Amazon EMR\) 
++ Kernel = `conda_python3`
 
  A library is available for Python developers, [sagemaker\-feature\-store\-pyspark](https://pypi.org/project/sagemaker-feature-store-pyspark/)\. The following sections describe how to install the library locally, on Amazon EMR, and on Amazon SageMaker\. 
-
- We recommend setting the `$SPARK_HOME` to the directory where you have Spark installed\. During installation, we are uploading some required jar files to `SPARK_HOME`, so that all of the dependencies will load automatically\. Spark starting a JVM is required to make this PySpark library work\. 
 
  **Local Installation** 
 
@@ -61,11 +60,8 @@ pip3 install sagemaker-feature-store-pyspark --no-binary :all:
  You can either create a custom step to start the library installation or SSH to your cluster to install the library directly in console\. 
 
 ```
-    export SPARK_HOME=/usr/lib/spark
-    sudo -E pip3 install sagemaker-feature-store-pyspark --no-binary :all: --verbose
+sudo -E pip3 install sagemaker-feature-store-pyspark --no-binary :all: --verbose
 ```
-
- Note: If you want to install the dependent jars automatically to `SPARK_HOME`, do not use Amazon EMR’s bootstrap step\. 
 
  **Installation on a Amazon SageMaker Notebook Instance** 
 
@@ -77,10 +73,9 @@ pip3 install sagemaker-feature-store-pyspark --no-binary :all:
 import os
     
 original_spark_version = "2.4.0"
-os.environ['SPARK_HOME'] = '/home/ec2-user/anaconda3/envs/python3/lib/python3.6/site-packages/pyspark'
     
 # Install a newer versiion of Spark which is compatible with spark library
-!pip3 install pyspark==3.1.1
+!pip3 install pyspark==3.1.1 
 !pip3 install sagemaker-feature-store-pyspark --no-binary :all:
 ```
 
