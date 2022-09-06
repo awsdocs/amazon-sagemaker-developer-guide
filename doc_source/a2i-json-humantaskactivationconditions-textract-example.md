@@ -113,7 +113,7 @@ In the following example, if Amazon Textract detects a key\-value pair whose con
         {
             "ConditionType": "ImportantFormKeyConfidenceCheck",
             "ConditionParameters": {
-                "ImportantFormKey": "*"
+                "ImportantFormKey": "*",
                 "KeyValueBlockConfidenceLessThan": 60,
                 "WordBlockConfidenceLessThan": 90
             }
