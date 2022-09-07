@@ -15,7 +15,7 @@ The method that you use to install Python packages from the terminal differs dep
 **Note**  
 We do not recommend using `pip install -u` or `pip install --user`, because those commands install packages on the user's Amazon EFS volume and can potentially block JupyterServer app restarts\. Instead, use a lifecycle configuration to reinstall the required packages on app restarts as shown in [Install packages using lifecycle configurations](#nbi-add-external-lcc)\.
 
-We recommend using `%pip` and `%conda` to install packages from within a notebook because they correctly take into account the activate environment or interpreter being used\. For more information, see [Add %pip and %conda magic functions](https://github.com/ipython/ipython/pull/11524)\. You can also use the system command syntax \(lines starting with \!\) to install packages\. For example, `!pip install` and `!conda install`\. 
+We recommend using `%pip` and `%conda` to install packages from within a notebook because they correctly take into account the active environment or interpreter being used\. For more information, see [Add %pip and %conda magic functions](https://github.com/ipython/ipython/pull/11524)\. You can also use the system command syntax \(lines starting with \!\) to install packages\. For example, `!pip install` and `!conda install`\. 
 
 ### Conda<a name="nbi-add-external-tools-conda"></a>
 
