@@ -147,7 +147,7 @@ You can also tune the hyperparameters using the SageMaker hyperparameter optimiz
    ```
 **Tip**  
 If the HTML reports do not render plots in the JupyterLab view, you must choose **Trust HTML** at the top of the reports\.  
-To identify training issues, such as overfitting, vanishing gradients, and other problems that prevents your model from converging, use SageMaker Debugger and take automated actions while prototyping and training your ML models\. For more information, see [Amazon SageMaker Debugger](train-debugger.md)\. To find a complete analysis of model parameters, see the [Explainability with Amazon SageMaker Debugger](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-debugger/xgboost_census_explanations/xgboost-census-debugger-rules.html#Explainability-with-Amazon-SageMaker-Debugger) example notebook\. 
+To identify training issues, such as overfitting, vanishing gradients, and other problems that prevents your model from converging, use SageMaker Debugger and take automated actions while prototyping and training your ML models\. For more information, see [Debug and Profile Training Jobs Using Amazon SageMaker Debugger](train-debugger.md)\. To find a complete analysis of model parameters, see the [Explainability with Amazon SageMaker Debugger](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-debugger/xgboost_census_explanations/xgboost-census-debugger-rules.html#Explainability-with-Amazon-SageMaker-Debugger) example notebook\. 
 
 You now have a trained XGBoost model\. SageMaker stores the model artifact in your S3 bucket\. To find the location of the model artifact, run the following code to print the model\_data attribute of the `xgb_model` estimator:
 

@@ -1,4 +1,4 @@
-# Deploy Components to Your Device<a name="edge-greengrass-deploy-components"></a>
+# Deploy the components to your device<a name="edge-greengrass-deploy-components"></a>
 
 Deploy your components with the AWS IoT console or with the AWS CLI\.
 
@@ -95,4 +95,4 @@ Deploy your AWS IoT Greengrass components with the AWS IoT console\.
 
 The deployment can take several minutes to complete\. In the next step, check the component log to verify that the deployment completed successfully and to view the inference results\.
 
-For more information about deploying components to individual devices or groups of devices, see [Deploy AWS IoT Greengrass](https://docs.aws.amazon.com/greengrass/v2/developerguide/manage-deployments.html) components to devices\.
+For more information about deploying components to individual devices or groups of devices, see [Deploy AWS IoT Greengrass components to devices](https://docs.aws.amazon.com/greengrass/v2/developerguide/manage-deployments.html)\.

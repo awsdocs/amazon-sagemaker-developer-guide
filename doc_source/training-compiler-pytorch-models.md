@@ -10,11 +10,11 @@ PyTorch models with [Hugging Face Transformers](https://huggingface.co/docs/tran
 When you create a tokenizer for an NLP model using Transformers in your training script, make sure that you use a static input tensor shape by specifying `padding='max_length'`\. Do not use `padding='longest'` because padding to the longest sequence in the batch can change the tensor shape for each training batch\. The dynamic input shape can trigger recompilation of the model and might increase total training time\. For more information about padding options of the Transformers tokenizers, see [Padding and truncation](https://huggingface.co/docs/transformers/pad_truncation) in the *Hugging Face Transformers documentation*\.
 
 **Topics**
-+ [Using Hugging Face Trainer API](#training-compiler-pytorch-models-transformers-trainer)
-+ [Using PyTorch without Hugging Face Trainer API](#training-compiler-pytorch-models-non-trainer)
++ [Using the Hugging Face Transformers Trainer API](#training-compiler-pytorch-models-transformers-trainer)
++ [Using PyTorch \(without the Hugging Face Transformers Trainer API\)](#training-compiler-pytorch-models-non-trainer)
 + [Best Practices to Enable SageMaker Training Compiler for PyTorch without the Hugging Face Trainer API](#training-compiler-pytorch-models-best-practices)
 
-### Using Hugging Face Trainer API<a name="training-compiler-pytorch-models-transformers-trainer"></a>
+### Using the Hugging Face Transformers Trainer API<a name="training-compiler-pytorch-models-transformers-trainer"></a>
 
 If you use the transformers library’s Trainer class, you don’t need to make any additional changes to your training script\. SageMaker Training Compiler automatically compiles your Trainer model if you enable it through the estimator class\. The following code shows the basic form of a PyTorch training script with Hugging Face Trainer API\.
 
@@ -31,11 +31,26 @@ You don't need to change your code when you use the Transformers Trainer API\.
 
 #### For distributed training<a name="training-compiler-pytorch-models-transformers-trainer-distributed"></a>
 
-SageMaker Training Compiler uses an alternate mechanism for distributed training, and you don’t need to specify the `distribution` parameter\. The compiler requires you to pass a SageMaker distributed training launcher script to the entry point and pass your training script to the `hyperparameters` argument\. For more information, choose **For distributed training** and the **Hugging Face Estimator for PyTorch** tab in the [Using the SageMaker Python SDK](training-compiler-enable.md#training-compiler-enable-pysdk) page\.
+**For Transformers v4\.21\.1 with PyTorch v1\.11\.0**
 
-### Using PyTorch without Hugging Face Trainer API<a name="training-compiler-pytorch-models-non-trainer"></a>
+To run distributed training with SageMaker Training Compiler, you must add the following `_mp_fn()` function in your training script and wrap the `main()` function\. It redirects the `_mp_fn(index)` function calls from the SageMaker distributed runtime for PyTorch \(`pytorchxla`\) to the `main()` function of your training script\. 
 
-If you have a training script that uses PyTorch directly, you need to make additional changes to your PyTorch training script\. For example, you need to modify the script using PyTorch/XLA as shown in the following code examples:
+```
+def _mp_fn(index):
+    main()
+```
+
+This function accepts the `index` argument to indicate the rank of the current GPU in the cluster for distributed training\. To find more example scripts, see the [Hugging Face Transformers language modeling example scripts](https://github.com/huggingface/transformers/blob/v4.21.1/examples/pytorch/language-modeling)\.
+
+**For Transformers v4\.17 and before with PyTorch v1\.10\.2 and before**
+
+SageMaker Training Compiler uses an alternate mechanism for launching a distributed training job, and you don't need to make any modification in your training script\. Instead, SageMaker Training Compiler requires you to pass a SageMaker distributed training launcher script to the `entry_point` argument and pass your training script to the `hyperparameters` argument in the SageMaker Hugging Face estimator\.
+
+After you have completed adapting your training script, proceed to [Run PyTorch Training Jobs with SageMaker Training Compiler](training-compiler-enable-pytorch.md)\.
+
+### Using PyTorch \(without the Hugging Face Transformers Trainer API\)<a name="training-compiler-pytorch-models-non-trainer"></a>
+
+If you have a training script that uses PyTorch directly, you need to make additional changes to your PyTorch training script\. Follow the instructions to modify your script using PyTorch/XLA\.
 
 **Topics**
 + [For single GPU training](#training-compiler-pytorch-models-non-trainer-single-gpu)
@@ -102,6 +117,8 @@ If you have a training script that uses PyTorch directly, you need to make addit
    xm.save(model.state_dict(), path_to_save)
    ```
 
+After you have completed adapting your training script, proceed to [Run PyTorch Training Jobs with SageMaker Training Compiler](training-compiler-enable-pytorch.md)\.
+
 #### For distributed training<a name="training-compiler-pytorch-models-non-trainer-distributed"></a>
 
 In addition to the changes listed in the previous [For single GPU training](#training-compiler-pytorch-models-non-trainer-single-gpu) section, add the following changes to properly distribute workload across GPUs\.
@@ -161,6 +178,23 @@ In addition to the changes listed in the previous [For single GPU training](#tra
    ```
 
    With all of these changes, you should be able to launch distributed training with any PyTorch model without the Transformer Trainer API\. Note that these instructions can be used for both single\-node multi\-GPU and multi\-node multi\-GPU\.
+
+1. **For Transformers v4\.21\.1 with PyTorch v1\.11\.0**
+
+   To run distributed training with SageMaker Training Compiler, you must add the following `_mp_fn()` function in your training script and wrap the `main()` function\. It redirects the `_mp_fn(index)` function calls from the SageMaker distributed runtime for PyTorch \(`pytorchxla`\) to the `main()` function of your training script\. 
+
+   ```
+   def _mp_fn(index):
+       main()
+   ```
+
+   This function accepts the `index` argument to indicate the rank of the current GPU in the cluster for distributed training\. To find more example scripts, see the [Hugging Face Transformers language modeling example scripts](https://github.com/huggingface/transformers/blob/v4.21.1/examples/pytorch/language-modeling)\.
+
+   **For Transformers v4\.17 and before with PyTorch v1\.10\.2 and before**
+
+   SageMaker Training Compiler uses an alternate mechanism for launching a distributed training job and requires you to pass a SageMaker distributed training launcher script to the `entry_point` argument and pass your training script to the `hyperparameters` argument in the SageMaker Hugging Face estimator\.
+
+After you have completed adapting your training script, proceed to [Run PyTorch Training Jobs with SageMaker Training Compiler](training-compiler-enable-pytorch.md)\.
 
 ### Best Practices to Enable SageMaker Training Compiler for PyTorch without the Hugging Face Trainer API<a name="training-compiler-pytorch-models-best-practices"></a>
 

@@ -1,6 +1,6 @@
 # Modify a PyTorch Lightning Script<a name="data-parallel-modify-sdp-pt-lightning"></a>
 
-If you want to bring your [PyTorch Lightning](https://pytorch-lightning.readthedocs.io/en/latest/starter/introduction.html) training script and run a distributed data parallel training job in SageMaker, you can run the training job with minimal changes in your training script\. The necessary changes include the following: import the `smdistributed.dataparallel` library’s PyTorch modules, set up the environment variables for PyTorch Lightning to accept the SageMaker environment variables that are preset by the SageMaker training toolkit, and activate the [SageMaker data parallal library](https://docs.aws.amazon.com/sagemaker/latest/dg/data-parallel-intro.html) by setting the process group backend to `"smddp"`\. To learn more, walk through the following instructions that break down the steps with code examples\.
+If you want to bring your [PyTorch Lightning](https://pytorch-lightning.readthedocs.io/en/latest/starter/introduction.html) training script and run a distributed data parallel training job in SageMaker, you can run the training job with minimal changes in your training script\. The necessary changes include the following: import the `smdistributed.dataparallel` library’s PyTorch modules, set up the environment variables for PyTorch Lightning to accept the SageMaker environment variables that are preset by the SageMaker training toolkit, and activate the [SageMaker data parallel library](https://docs.aws.amazon.com/sagemaker/latest/dg/data-parallel-intro.html) by setting the process group backend to `"smddp"`\. To learn more, walk through the following instructions that break down the steps with code examples\.
 
 **Note**  
 The PyTorch Lightning support is available in the SageMaker data parallel library v1\.5\.0 and later\.
@@ -24,7 +24,7 @@ The PyTorch Lightning support is available in the SageMaker data parallel librar
    env.global_rank = lambda: int(os.environ["RANK"])
    ```
 
-1. Set distributed training strategy using the [PyTorch Lightning `DDPStrategy`](https://pytorch-lightning.readthedocs.io/en/stable/api/pytorch_lightning.strategies.DDPStrategy.html?highlight=ddpstrategy) module, create a [PyTorch Lightning `Trainer`](https://pytorch-lightning.readthedocs.io/en/stable/api/pytorch_lightning.trainer.trainer.Trainer.html#pytorch_lightning.trainer.trainer.Trainer) object, and adapt them to use the [SageMaker data parallal library](https://docs.aws.amazon.com/sagemaker/latest/dg/data-parallel-intro.html)\.
+1. Set distributed training strategy using the [PyTorch Lightning `DDPStrategy`](https://pytorch-lightning.readthedocs.io/en/stable/api/pytorch_lightning.strategies.DDPStrategy.html?highlight=ddpstrategy) module, create a [PyTorch Lightning `Trainer`](https://pytorch-lightning.readthedocs.io/en/stable/api/pytorch_lightning.trainer.trainer.Trainer.html#pytorch_lightning.trainer.trainer.Trainer) object, and adapt them to use the [SageMaker data parallel library](https://docs.aws.amazon.com/sagemaker/latest/dg/data-parallel-intro.html)\.
 
    **\(Recommended\) For PyTorch Lightning v1\.6\.0 and later**
 
@@ -55,7 +55,7 @@ We recommend that you check the versions of PyTorch Lightning tested for compati
 
    **\(Optional\) For PyTorch Lightning v1\.5\.10**
 
-   If you are using [https://github.com/Lightning-AI/lightning/blob/1.5.10/pytorch_lightning/plugins/training_type/ddp.py#L78](https://github.com/Lightning-AI/lightning/blob/1.5.10/pytorch_lightning/plugins/training_type/ddp.py#L78), which is a deprecated functionality, set the distributed strategy as shown in the following code\.
+   If you are using [https://github.com/Lightning-AI/lightning/blob/1.5.10/pytorch_lightning/plugins/training_type/ddp.py#L78](https://github.com/Lightning-AI/lightning/blob/1.5.10/pytorch_lightning/plugins/training_type/ddp.py#L78), which is a deprecated functionality, set the distributed strategy as shown in the following code example\.
 
    ```
    from pytorch_lightning.plugins.training_type.ddp import DDPPlugin

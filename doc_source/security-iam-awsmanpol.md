@@ -24,6 +24,7 @@ You can also create your own custom IAM policies to allow permissions for Amazon
 **Topics**
 + [AWS managed policy: AmazonSageMakerFullAccess](#security-iam-awsmanpol-AmazonSageMakerFullAccess)
 + [AWS managed policy: AmazonSageMakerReadOnly](#security-iam-awsmanpol-AmazonSageMakerReadOnly)
++ [AWS managed policies for Amazon SageMaker Canvas](security-iam-awsmanpol-canvas.md)
 + [AWS Managed Policies for Amazon SageMaker Ground Truth](security-iam-awsmanpol-ground-truth.md)
 + [AWS Managed Policies for SageMaker Pipelines](security-iam-awsmanpol-pipelines.md)
 + [AWS Managed Policies for SageMaker projects and JumpStart](security-iam-awsmanpol-sc.md)
@@ -562,7 +563,7 @@ This policy includes the following permissions\.
 
 ## AWS managed policy: AmazonSageMakerReadOnly<a name="security-iam-awsmanpol-AmazonSageMakerReadOnly"></a>
 
-This policy grants read\-only access to Amazon SageMaker via the AWS Management Console and SDK\.
+This policy grants read\-only access to Amazon SageMaker through the AWS Management Console and SDK\.
 
 **Permissions details**
 

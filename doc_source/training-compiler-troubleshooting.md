@@ -84,7 +84,7 @@ PyTorch/XLA defines a set of APIs to replace some of the existing PyTorch traini
 + `mark_step()` is a barrier just for XLA\. Failing to set it correctly causes a training job to stall\. 
 + PyTorch/XLA provides additional distributed training APIs\. Failing to program the APIs properly causes gradients to be collected incorrectly, which causes a training convergence failure\.
 
-To properly set up your PyTorch script and avoid the aforementioned incorrect API uses, see [Using PyTorch without Hugging Face Trainer API](training-compiler-pytorch-models.md#training-compiler-pytorch-models-non-trainer) and [Best Practices to Enable SageMaker Training Compiler for PyTorch without the Hugging Face Trainer API](training-compiler-pytorch-models.md#training-compiler-pytorch-models-best-practices)\.
+To properly set up your PyTorch script and avoid the aforementioned incorrect API uses, see [Using PyTorch \(without the Hugging Face Transformers Trainer API\)](training-compiler-pytorch-models.md#training-compiler-pytorch-models-non-trainer) and [Best Practices to Enable SageMaker Training Compiler for PyTorch without the Hugging Face Trainer API](training-compiler-pytorch-models.md#training-compiler-pytorch-models-best-practices)\.
 
 ## SageMaker Training Compiler Does Not Reduce the Total Training Time<a name="training-compiler-troubleshooting-no-improved-training-time"></a>
 

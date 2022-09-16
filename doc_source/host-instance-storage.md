@@ -9,4 +9,4 @@ For more information about Amazon EBS storages and features, see the following p
 For a full list of the host instance storage volumes, see [Host Instance Storage Volumes Table](https://aws.amazon.com/releasenotes/host-instance-storage-volumes-table/) 
 
 **Note**  
-Amazon SageMaker attaches an Amazon Elastic Block Store \(Amazon EBS\) storage volume to Amazon EC2 instances only when you create [Asynchronous inference](async-inference.md) or [Real\-time inference](realtime-endpoints.md) endpoint types\.
+Amazon SageMaker attaches an Amazon Elastic Block Store \(Amazon EBS\) storage volume to Amazon EC2 instances only when you create [Asynchronous inference](async-inference.md) or [Real\-time inference](realtime-endpoints.md) endpoint types\. For more information on customizing Amazon EBS storage volume, see [Deploying large models with Amazon SageMaker](realtime-endpoints-large-model-hosting.md)\.

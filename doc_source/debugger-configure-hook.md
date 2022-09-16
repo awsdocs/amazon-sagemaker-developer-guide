@@ -61,7 +61,7 @@ collection_configs=[
 **Tip**  
 This tensor collection configuration object can be used for both [DebuggerHookConfig](https://docs.aws.amazon.com/sagemaker/latest/dg/debugger-configure-hook.html#debugger-configure-tensor-hook) and [Rule](https://docs.aws.amazon.com/sagemaker/latest/dg/use-debugger-built-in-rules.html#debugger-built-in-rules-configuration-param-change) API operations\.
 
-## Configure Debugger Hook to Save Tensors<a name="debugger-configure-tensor-hook"></a>
+## Configure the CollectionConfig and DebuggerHookConfig APIs to Save Tensors<a name="debugger-configure-tensor-hook"></a>
 
 Use the [DebuggerHookConfig](https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html                 #sagemaker.debugger.DebuggerHookConfig) class to create a `debugger_hook_config` object using the `collection_configs` object you created in the previous step\.
 

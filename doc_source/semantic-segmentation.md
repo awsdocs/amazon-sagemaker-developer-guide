@@ -2,7 +2,7 @@
 
 The SageMaker semantic segmentation algorithm provides a fine\-grained, pixel\-level approach to developing computer vision applications\. It tags every pixel in an image with a class label from a predefined set of classes\. Tagging is fundamental for understanding scenes, which is critical to an increasing number of computer vision applications, such as self\-driving vehicles, medical imaging diagnostics, and robot sensing\. 
 
-For comparison, the SageMaker [Image Classification Algorithm](image-classification.md) is a supervised learning algorithm that analyzes only whole images, classifying them into one of multiple output categories\. The [Object Detection Algorithm](object-detection.md) is a supervised learning algorithm that detects and classifies all instances of an object in an image\. It indicates the location and scale of each object in the image with a rectangular bounding box\. 
+For comparison, the SageMaker [Image Classification \- MXNet](image-classification.md) is a supervised learning algorithm that analyzes only whole images, classifying them into one of multiple output categories\. The [Object Detection](object-detection.md) is a supervised learning algorithm that detects and classifies all instances of an object in an image\. It indicates the location and scale of each object in the image with a rectangular bounding box\. 
 
 Because the semantic segmentation algorithm classifies every pixel in an image, it also provides information about the shapes of the objects contained in the image\. The segmentation output is represented as a grayscale image, called a *segmentation mask*\. A segmentation mask is a grayscale image with the same shape as the input image\.
 

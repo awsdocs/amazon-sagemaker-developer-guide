@@ -175,7 +175,7 @@ create_endpoint_response = sagemaker_client.create_endpoint(
                                             EndpointConfigName=endpoint_config_name)
 ```
 
-When you call the `CreateEndpoint` API, Amazon SageMaker Asynchronous Inference sends a test notification to check that you have configured an Amazon SNS topic\. This lets SageMaker check that you have the required permissions\. The notification can simply be ignored\. The test notification has the following form:
+When you call the `CreateEndpoint` API, Amazon SageMaker Asynchronous Inference sends a test notification to check that you have configured an Amazon SNS topic\. Amazon SageMaker Asynchronous Inference also sends test notifications after calls to `UpdateEndpoint` and `UpdateEndpointWeightsAndCapacities`\. This lets SageMaker check that you have the required permissions\. The notification can simply be ignored\. The test notification has the following form:
 
 ```
 {

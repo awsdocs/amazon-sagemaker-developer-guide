@@ -4,7 +4,7 @@ For an overview on training models with Amazon SageMaker, see [Train a Model wit
 
 SageMaker provides features to monitor and manage the training and validation of machine learning models\. For guidance on metrics available, incremental training, automatic model tuning, and the use of augmented manifest files to label training data, see the following topics\.
 + For guidance on choosing a machine learning algorithm and its implementation for your task or problem, see [Choose an AlgorithmChoose an Algorithm](algorithms-choose.md)\. 
-+ For guidance on debugging and profiling the training of machine learning models, see [Amazon SageMaker Debugger](train-debugger.md)\. 
++ For guidance on debugging and profiling the training of machine learning models, see [Debug and Profile Training Jobs Using Amazon SageMaker Debugger](train-debugger.md)\. 
 + For guidance on distributed training of deep learning models, see [Amazon SageMaker Distributed Training Libraries](distributed-training.md)\. 
 + For guidance on compiling and training deep learning models, see [Amazon SageMaker Training Compiler](training-compiler.md)\. 
 + For guidance on metrics used to monitor and train models, see [Monitor and Analyze Training Jobs Using Amazon CloudWatch Metrics](training-metrics.md)\. 
@@ -19,7 +19,7 @@ SageMaker provides features to monitor and manage the training and validation of
 **Topics**
 + [Choose an Algorithm](algorithms-choose.md)
 + [Manage Machine Learning with Amazon SageMaker Experiments](experiments.md)
-+ [Amazon SageMaker Debugger](train-debugger.md)
++ [Debug and Profile Training Jobs Using Amazon SageMaker Debugger](train-debugger.md)
 + [Perform Automatic Model Tuning with SageMaker](automatic-model-tuning.md)
 + [Amazon SageMaker Distributed Training Libraries](distributed-training.md)
 + [Amazon SageMaker Training Compiler](training-compiler.md)

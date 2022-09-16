@@ -1,20 +1,43 @@
 # SageMaker Operators for Kubernetes<a name="kubernetes-sagemaker-operators"></a>
 
-SageMaker Operators for Kubernetes make it easier for developers and data scientists using Kubernetes to train, tune, and deploy machine learning \(ML\) models in SageMaker\. You can install these SageMaker Operators on your Kubernetes cluster in Amazon Elastic Kubernetes Service \(Amazon EKS\) to create SageMaker jobs natively using the Kubernetes API and command\-line Kubernetes tools such as `kubectl`\. This guide shows you how to set up the operators\. The guide also explains how to use the operators to run model training, hyperparameter tuning, and inference \(real\-time and batch\)\. 
+SageMaker Operators for Kubernetes make it easier for developers and data scientists using Kubernetes to train, tune, and deploy machine learning \(ML\) models in SageMaker\. You can install these SageMaker Operators on your Kubernetes cluster in Amazon Elastic Kubernetes Service \(Amazon EKS\) to create SageMaker jobs natively using the Kubernetes API and command\-line Kubernetes tools such as `kubectl`\. This guide shows you how to set up the operators\. The guide also explains how to use the operators to run model training, hyperparameter tuning, and inference \(real\-time and batch\)\.
+
+**Important**  
+The new version of SageMaker Operators for Kubernetes uses AWS Controllers for Kubernetes \(ACK\)\. For more information, see [Migrate resources to the new SageMaker Operators for Kubernetes](kubernetes-sagemaker-operators-migrate.md) or go directly to the [ACK documentation](https://aws-controllers-k8s.github.io/community/docs/community/overview/)\.
 
 There is no additional charge to use these operators\. You do incur charges for any SageMaker resources that you use through these operators\. The procedures and guidelines here assume you are familiar with Kubernetes and its basic commands\. 
 
 **Topics**
 + [What is an operator?](#what-is-an-operator)
++ [Migrate resources to the new operator](#migrate-to-new-operator)
 + [IAM role\-based setup and operator deployment](#iam-role-based-setup-and-operator-deployment)
++ [Clean up resources](#cleanup-operator-resources)
 + [Delete operators](#delete-operators)
 + [Troubleshooting](#troubleshooting)
 + [Images and SMlogs in each Region](#images-and-smlogs-in-each-region)
 + [Using Amazon SageMaker Jobs](kubernetes-sagemaker-jobs.md)
++ [Migrate resources to the new SageMaker Operators for Kubernetes](kubernetes-sagemaker-operators-migrate.md)
 
 ## What is an operator?<a name="what-is-an-operator"></a>
 
-Kubernetes is built on top of what is called the *controller pattern*\. This pattern allows applications and tools to listen to a central state manager \(ETCD\) and act when something happens\. Examples of such applications include `cloud-controller-manager` and `controller-manager`\. The controller pattern allows you to create decoupled experiences and not have to worry about how other components are integrated\. To add new capabilities to Kubernetes, developers can extend the Kubernetes API by creating a custom resource that contains their application\-specific or domain\-specific logic and components\. Operators in Kubernetes allow users to natively invoke these custom resources and automate associated workflows\. 
+Kubernetes is built on top of what is called the *controller pattern*\. This pattern allows applications and tools to listen to a central state manager \(ETCD\) and act when something happens\. Examples of such applications include `cloud-controller-manager` and `controller-manager`\. The controller pattern allows you to create decoupled experiences and not have to worry about how other components are integrated\. To add new capabilities to Kubernetes, developers can extend the Kubernetes API by creating a custom resource that contains their application\-specific or domain\-specific logic and components\. Operators in Kubernetes allow users to natively invoke these custom resources and automate associated workflows\.
+
+### Permissions overview<a name="permissions-overview"></a>
+
+The SageMaker Operators for Kubernetes allow you to manage jobs in SageMaker from your Kubernetes cluster\. The operators access SageMaker resources on your behalf\. The IAM role that the operator assumes to interact with AWS resources differs from the credentials you use to access the Kubernetes cluster\. The role also differs from the role that SageMaker assumes when running your machine learning jobs\. The following image explains this design and flow\. 
+
+ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/amazon_sagemaker_operators_for_kubernetes_authentication.png) 
+
+## Migrate resources to the new operator<a name="migrate-to-new-operator"></a>
+
+The new Amazon SageMaker Operators for Kubernetes use [AWS Controllers for Kubernetes](https://aws-controllers-k8s.github.io/community/) \(ACK\) to train, tune, and deploy machine learning models with Amazon SageMaker\. The new operators are not backwards compatible, so be sure to migrate any existing SageMaker Operators for Kubernetes resources from the old operator to the new operator\. To get started with migrating resources, see [Migrate resources to the new SageMaker Operators for Kubernetes](kubernetes-sagemaker-operators-migrate.md)\.
+
+## IAM role\-based setup and operator deployment<a name="iam-role-based-setup-and-operator-deployment"></a>
+
+The following sections describe the steps to set up and deploy the operator\.
+
+**Warning**  
+The following steps do not install the latest version of SageMaker Operators for Kubernetes\. To install the new SageMaker Operators for Kubernetes, see [Migrate resources to the new SageMaker Operators for Kubernetes](kubernetes-sagemaker-operators-migrate.md)\.
 
 ### Prerequisites<a name="prerequisites"></a>
 
@@ -27,16 +50,6 @@ This guide assumes that you’ve completed the following prerequisites:
   + [aws\-iam\-authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html) 
 + Have IAM permissions to create roles and attach policies to roles\. 
 + Created a Kubernetes cluster on which to run the operators\. It should either be Kubernetes version 1\.13 or 1\.14\. For automated cluster creation using `eksctl`, see [Getting Started with eksctl](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html)\. It takes 20 to 30 minutes to provision a cluster\. 
-
-### Permissions overview<a name="permissions-overview"></a>
-
-The SageMaker Operators for Kubernetes allow you to manage jobs in SageMaker from your Kubernetes cluster\. The operators access SageMaker resources on your behalf\. The IAM role that the operator assumes to interact with AWS resources differs from the credentials you use to access the Kubernetes cluster\. The role also differs from the role that SageMaker assumes when running your machine learning jobs\. The following image explains this design and flow\. 
-
- ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/amazon_sagemaker_operators_for_kubernetes_authentication.png) 
-
-## IAM role\-based setup and operator deployment<a name="iam-role-based-setup-and-operator-deployment"></a>
-
-The following sections describe the steps to set up and deploy the operator\. 
 
 ### Cluster\-scoped deployment<a name="cluster-scoped-deployment"></a>
 
@@ -518,13 +531,9 @@ Flags:
 Use "smlogs [command] --help" for more information about a command.
 ```
 
-## Delete operators<a name="delete-operators"></a>
+## Clean up resources<a name="cleanup-operator-resources"></a>
 
-### Delete cluster\-based operators<a name="delete-cluster-based-operators"></a>
-
-#### Operators installed using YAML<a name="operators-installed-using-yaml"></a>
-
-To uninstall the operator from your cluster, make sure that all SageMaker resources have been deleted from the cluster\. Failure to do so causes the operator delete operation to hang\. Once you have deleted all SageMaker jobs, use `kubectl` to delete the operator from the cluster\. Run the following commands to stop all jobs and delete the operator from the cluster: 
+To uninstall the operator from your cluster, you must first make sure to delete all SageMaker resources from the cluster\. Failure to do so causes the operator delete operation to hang\. Run the following commands to stop all jobs: 
 
 ```
 # Delete all SageMaker jobs from Kubernetes
@@ -532,12 +541,9 @@ kubectl delete --all --all-namespaces hyperparametertuningjob.sagemaker.aws.amaz
 kubectl delete --all --all-namespaces trainingjobs.sagemaker.aws.amazon.com
 kubectl delete --all --all-namespaces batchtransformjob.sagemaker.aws.amazon.com
 kubectl delete --all --all-namespaces hostingdeployment.sagemaker.aws.amazon.com
-
-# Delete the operator and its resources
-kubectl delete -f /installer.yaml
 ```
 
-You should see output like the following: 
+You should see output similar to the following: 
 
 ```
 $ kubectl delete --all --all-namespaces trainingjobs.sagemaker.aws.amazon.com
@@ -551,7 +557,31 @@ batchtransformjob.sagemaker.aws.amazon.com "xgboost-mnist" deleted
 
 $ kubectl delete --all --all-namespaces hostingdeployment.sagemaker.aws.amazon.com
 hostingdeployment.sagemaker.aws.amazon.com "host-xgboost" deleted
+```
 
+After you delete all SageMaker jobs, see [Delete operators](#delete-operators) to delete the operator from your cluster\.
+
+## Delete operators<a name="delete-operators"></a>
+
+### Delete cluster\-based operators<a name="delete-cluster-based-operators"></a>
+
+#### Operators installed using YAML<a name="operators-installed-using-yaml"></a>
+
+To uninstall the operator from your cluster, make sure that all SageMaker resources have been deleted from the cluster\. Failure to do so causes the operator delete operation to hang\.
+
+**Note**  
+Before deleting your cluster, be sure to delete all SageMaker resources from the cluster\. See [Clean up resources](#cleanup-operator-resources) for more information\.
+
+After you delete all SageMaker jobs, use `kubectl` to delete the operator from the cluster:
+
+```
+# Delete the operator and its resources
+kubectl delete -f /installer.yaml
+```
+
+You should see output similar to the following: 
+
+```
 $ kubectl delete -f raw-yaml/installer.yaml
 namespace "sagemaker-k8s-operator-system" deleted
 customresourcedefinition.apiextensions.k8s.io "batchtransformjobs.sagemaker.aws.amazon.com" deleted
@@ -580,22 +610,19 @@ To delete the operator CRDs, first delete all the running jobs\. Then delete the
 helm ls
 
 # delete the charts
-helm delete <chart name>
+helm delete <chart_name>
 ```
 
 ### Delete namespace\-based operators<a name="delete-namespace-based-operators"></a>
 
 #### Operators installed with YAML<a name="operators-installed-with-yaml"></a>
 
-To uninstall the operator from your cluster, make sure that all SageMaker resources have been deleted from the cluster\. Failure to do so causes the operator delete operation to hang\. Once you have deleted all SageMaker jobs, use `kubectl` to first delete the operator from the namespace and then the CRDs from the cluster\. Run the following commands to stop all jobs and delete the operator from the cluster: 
+To uninstall the operator from your cluster, first make sure that all SageMaker resources have been deleted from the cluster\. Failure to do so causes the operator delete operation to hang\.
 
-```
-# Delete all SageMaker jobs from Kubernetes
-kubectl delete --all --all-namespaces hyperparametertuningjob.sagemaker.aws.amazon.com
-kubectl delete --all --all-namespaces trainingjobs.sagemaker.aws.amazon.com
-kubectl delete --all --all-namespaces batchtransformjob.sagemaker.aws.amazon.com
-kubectl delete --all --all-namespaces hostingdeployment.sagemaker.aws.amazon.com
-```
+**Note**  
+Before deleting your cluster, be sure to delete all SageMaker resources from the cluster\. See [Clean up resources](#cleanup-operator-resources) for more information\.
+
+After you delete all SageMaker jobs, use `kubectl` to first delete the operator from the namespace and then the CRDs from the cluster\. Run the following commands to delete the operator from the cluster: 
 
 ```
 # Delete the operator using the same yaml file that was used to install the operator
@@ -614,7 +641,7 @@ To delete the operator CRDs, first delete all the running jobs\. Then delete the
 
 ```
 # Delete the operator
-helm delete -n <namespace> op
+helm delete <chart_name>
 
 # delete the crds
 helm delete crds
