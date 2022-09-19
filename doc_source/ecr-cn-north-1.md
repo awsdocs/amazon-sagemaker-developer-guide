@@ -56,6 +56,9 @@ image_uris.retrieve(framework='autogluon',region='cn-north-1',image_scope='infer
 
 | Registry path | Version | Job types \(image scope\) | 
 | --- | --- | --- | 
+| 727897471807\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/autogluon\-inference:<tag> | 0\.5\.2 | inference | 
+| 727897471807\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/autogluon\-inference:<tag> | 0\.4\.3 | inference | 
+| 727897471807\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/autogluon\-inference:<tag> | 0\.4\.2 | inference | 
 | 727897471807\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/autogluon\-inference:<tag> | 0\.4\.0 | inference | 
 | 727897471807\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/autogluon\-inference:<tag> | 0\.3\.2 | inference | 
 | 727897471807\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/autogluon\-inference:<tag> | 0\.3\.1 | inference | 
@@ -518,6 +521,8 @@ image_uris.retrieve(framework='pytorch',region='cn-north-1',version='1.8.0',py_v
 
 | Registry path | Version | Job types \(image scope\) | Processor types | Python versions | 
 | --- | --- | --- | --- | --- | 
+| 727897471807\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/pytorch\-inference:<tag> | 1\.12\.0 | inference | CPU, GPU | py38 | 
+| 727897471807\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/pytorch\-training:<tag> | 1\.12\.0 | training | CPU, GPU | py38 | 
 | 727897471807\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/pytorch\-inference:<tag> | 1\.11\.0 | inference | CPU, GPU | py38 | 
 | 727897471807\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/pytorch\-training:<tag> | 1\.11\.0 | training | CPU, GPU | py38 | 
 | 727897471807\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/pytorch\-inference:<tag> | 1\.10\.2 | inference | CPU, GPU | py38 | 
@@ -653,6 +658,7 @@ image_uris.retrieve(framework='tensorflow',region='cn-north-1',version='1.12.0',
 
 | Registry path | Version | Job types \(image scope\) | Processor types | Python versions | 
 | --- | --- | --- | --- | --- | 
+| 727897471807\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/tensorflow\-training:<tag> | 2\.9\.1 | training | CPU, GPU | py39 | 
 | 727897471807\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/tensorflow\-inference:<tag> | 2\.8\.0 | inference | CPU, GPU | \- | 
 | 727897471807\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/tensorflow\-training:<tag> | 2\.8\.0 | training | CPU, GPU | py39 | 
 | 727897471807\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/tensorflow\-training:<tag> | 2\.7\.1 | training | CPU, GPU | py38 | 
@@ -797,7 +803,7 @@ SageMaker Python SDK example to retrieve registry path\.
 
 ```
 from sagemaker import image_uris
-image_uris.retrieve(framework='xgboost',region='cn-north-1',version='1.2-1')
+image_uris.retrieve(framework='xgboost',region='cn-north-1',version='1.5-1')
 ```
 
 
@@ -808,6 +814,6 @@ image_uris.retrieve(framework='xgboost',region='cn-north-1',version='1.2-1')
 | 450853457545\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/sagemaker\-xgboost:<tag> | 1\.2\-2 | 1\.2\.0 | inference, training | 
 | 450853457545\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/sagemaker\-xgboost:<tag> | 1\.2\-1 | 1\.2\.0 | inference, training | 
 | 450853457545\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/sagemaker\-xgboost:<tag> | 1\.0\-1 | 1\.0 | inference, training | 
-| 390948362332\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/xgboost:<tag> | 1 | 1\.5\.2 | inference, training | 
+| 390948362332\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/xgboost:<tag> | 1 | 0\.72 | inference, training | 
 | 450853457545\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/sagemaker\-xgboost:<tag> | 0\.90\-2 | 0\.90 | inference, training | 
 | 450853457545\.dkr\.ecr\.cn\-north\-1\.amazonaws\.com\.cn/sagemaker\-xgboost:<tag> | 0\.90\-1 | 0\.90 | inference, training | 

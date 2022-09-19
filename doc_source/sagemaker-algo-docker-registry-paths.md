@@ -26,6 +26,7 @@ To find the registry path, choose the AWS Region, then choose the algorithm or D
 + [Asia Pacific \(Seoul\)](ecr-ap-northeast-2.md)
 + [Asia Pacific \(Singapore\)](ecr-ap-southeast-1.md)
 + [Asia Pacific \(Sydney\)](ecr-ap-southeast-2.md)
++ [Asia Pacific \(Jakarta\)](ecr-ap-southeast-3.md)
 + [Asia Pacific \(Tokyo\)](ecr-ap-northeast-1.md)
 + [Canada \(Central\)](ecr-ca-central-1.md)
 + [China \(Beijing\)](ecr-cn-north-1.md)

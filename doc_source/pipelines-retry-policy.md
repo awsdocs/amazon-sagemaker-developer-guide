@@ -97,14 +97,14 @@ step_train = TrainingStep(
                 StepExceptionTypeEnum.SERVICE_FAULT, 
                 StepExceptionTypeEnum.THROTTLING
             ],
-            expire_after_min=5,
+            expire_after_mins=5,
             interval_seconds=10,
             backoff_rate=2.0 
         ),
         // retry when resource limit quota gets exceeded
         SageMakerJobStepRetryPolicy(
-            exception_types=[SageMakerJobExceptionTypeEnum.RESOURCE_LIMIT]
-            expire_after_min=120,
+            exception_types=[SageMakerJobExceptionTypeEnum.RESOURCE_LIMIT],
+            expire_after_mins=120,
             interval_seconds=60,
             backoff_rate=2.0
         ),

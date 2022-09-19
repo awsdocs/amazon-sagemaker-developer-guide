@@ -28,6 +28,14 @@ For most use cases, you should use a ml\.t3\.medium\. This is the default instan
 + ml\.m5\.12xlarge
 + ml\.m5\.16xlarge
 + ml\.m5\.24xlarge
++ ml\.m5d\.large
++ ml\.m5d\.xlarge
++ ml\.m5d\.2xlarge
++ ml\.m5d\.4xlarge
++ ml\.m5d\.8xlarge
++ ml\.m5d\.12xlarge
++ ml\.m5d\.16xlarge
++ ml\.m5d\.24xlarge
 
 **Compute optimized \(no GPUs\)**
 + ml\.c5\.large *>> Fast launch*
@@ -39,13 +47,31 @@ For most use cases, you should use a ml\.t3\.medium\. This is the default instan
 + ml\.c5\.18xlarge
 + ml\.c5\.24xlarge
 
+**Memory optimized \(no GPUs\)**
++ ml\.r5\.large
++ ml\.r5\.xlarge
++ ml\.r5\.2xlarge
++ ml\.r5\.4xlarge
++ ml\.r5\.8xlarge
++ ml\.r5\.12xlarge
++ ml\.r5\.16xlarge
++ ml\.r5\.24xlarge
+
 **Accelerated computing \(1\+ GPUs\)**
 + ml\.p3\.2xlarge
 + ml\.p3\.8xlarge
 + ml\.p3\.16xlarge
++ ml\.p3dn\.24xlarge
 + ml\.g4dn\.xlarge *>> Fast launch*
 + ml\.g4dn\.2xlarge
 + ml\.g4dn\.4xlarge
 + ml\.g4dn\.8xlarge
 + ml\.g4dn\.12xlarge
 + ml\.g4dn\.16xlarge
++ ml\.g5\.xlarge
++ ml\.g5\.2xlarge
++ ml\.g5\.4xlarge
++ ml\.g5\.8xlarge
++ ml\.g5\.12xlarge
++ ml\.g5\.24xlarge
++ ml\.g5\.48xlarge

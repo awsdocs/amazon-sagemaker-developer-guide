@@ -3,11 +3,16 @@
 Hyperparameter optimization is not a fully\-automated process\. To improve optimization, use the following guidelines when you create hyperparameters\.
 
 **Topics**
++ [Choosing a Strategy](#automatic-model-tuning-strategy)
 + [Choosing the Number of Hyperparameters](#automatic-model-tuning-num-hyperparameters)
 + [Choosing Hyperparameter Ranges](#automatic-model-tuning-choosing-ranges)
 + [Using Logarithmic Scales for Hyperparameters](#automatic-model-tuning-log-scales)
 + [Choosing the Best Number of Concurrent Training Jobs](#automatic-model-tuning-parallelism)
 + [Running Training Jobs on Multiple Instances](#automatic-model-tuning-distributed-metrics)
+
+## Choosing a Strategy<a name="automatic-model-tuning-strategy"></a>
+
+For large jobs, using Hyperband can reduce computation time by utilizing its internal early stopping mechanism, reallocation of resources and ability to run parallel jobs\. If runtime and resources are limited, use either random search or Bayesian optimization instead\. Bayesian optimization uses information gathered from prior runs to make increasingly informed decisions about improving hyperparameter configurations in the next run\. Because of its sequential nature, Bayesian optimization cannot massively scale\. Random search is able to run large numbers of parallel jobs\.
 
 ## Choosing the Number of Hyperparameters<a name="automatic-model-tuning-num-hyperparameters"></a>
 

@@ -12,7 +12,7 @@ This tutorial requires an Amazon SageMaker Studio Domain\.
 
 1. In the Amazon SageMaker Studio Launcher under `Notebooks and compute resources`, select the `TensorFlow 2.3 Python 3.7(optimized for CPU)` Studio Image\. 
 
-1. Launch a notebook\. 
+1. Launch a notebook to run the commands in the following steps\. You run these commands from within a notebook cell\.
 
 1. Import the required packages\. 
 

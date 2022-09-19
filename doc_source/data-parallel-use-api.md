@@ -11,7 +11,7 @@ Your training datasets should be stored in Amazon S3 or [Amazon FSx for Lustre]
 **Tip**  
 We highly recommend that you use Amazon FSx for Lustre instead of Amazon S3 to increase training performance\. Amazon FSx has higher throughput and lower latency than Amazon S3\. 
 
-Choose one of the following topics for instructions on how to run your TensorFlow or PyTorch training scripts\. After you launch a training job, you can monitor system utilization and model performance using [Amazon SageMaker Debugger](train-debugger.md) or Amazon CloudWatch\.
+Choose one of the following topics for instructions on how to run your TensorFlow or PyTorch training scripts\. After you launch a training job, you can monitor system utilization and model performance using [Debug and Profile Training Jobs Using Amazon SageMaker Debugger](train-debugger.md) or Amazon CloudWatch\.
 
 While you follow instructions in the following topics to learn more about technical details, we also recommend that you try the [Amazon SageMaker Distributed Training Notebook Examples](distributed-training-notebook-examples.md) to get started\.
 

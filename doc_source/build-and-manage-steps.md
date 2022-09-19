@@ -49,18 +49,20 @@ sklearn_processor = SKLearnProcessor(framework_version='1.0-1',
 from sagemaker.processing import ProcessingInput, ProcessingOutput
 from sagemaker.workflow.steps import ProcessingStep
 
+inputs = [
+    ProcessingInput(source=<input_data>, destination="/opt/ml/processing/input"),
+]
+
+outputs = [
+    ProcessingOutput(output_name="train", source="/opt/ml/processing/train"),
+    ProcessingOutput(output_name="validation", source="/opt/ml/processing/validation"),
+    ProcessingOutput(output_name="test", source="/opt/ml/processing/test")
+]
+
 step_process = ProcessingStep(
     name="AbaloneProcess",
-    processor=sklearn_processor,
-    inputs=[
-      ProcessingInput(source=<input_data>, destination="/opt/ml/processing/input"),
-    ],
-    outputs=[
-        ProcessingOutput(output_name="train", source="/opt/ml/processing/train"),
-        ProcessingOutput(output_name="validation", source="/opt/ml/processing/validation"),
-        ProcessingOutput(output_name="test", source="/opt/ml/processing/test")
-    ],
-    code="abalone/preprocessing.py"
+    step_args = sklearn_processor.run(inputs=inputs, outputs=outputs,
+        code="abalone/preprocessing.py")
 )
 ```
 
@@ -939,8 +941,6 @@ custom_dependencies = training_step.depends_on
 ## Use a Custom Image in a Step<a name="build-and-manage-images"></a>
 
  You can use any of the available SageMaker [Deep Learning Container images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md) when you create a step in your pipeline\. 
-
-You can also create a step using SageMaker Amazon S3 applications\. A SageMaker Amazon S3 application is a tar\.gz bundle with one or more Python scripts that can run within that bundle\. For more information on application package bundling, see [Deploying directly from model artifacts](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/using_tf.html?highlight=packaging#id22)\. 
 
 You can also use your own container with pipeline steps\. Because you can’t create an image from within Amazon SageMaker Studio, you must create your image using another method before using it with Amazon SageMaker Model Building Pipelines\.
 

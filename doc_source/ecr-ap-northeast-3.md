@@ -7,6 +7,7 @@ The following topics list parameters for each of the algorithms and deep learnin
 + [BlazingText \(algorithm\)](#blazingtext-ap-northeast-3.title)
 + [Clarify \(algorithm\)](#clarify-ap-northeast-3.title)
 + [Debugger \(algorithm\)](#debugger-ap-northeast-3.title)
++ [DeepAR Forecasting \(algorithm\)](#forecasting-deepar-ap-northeast-3.title)
 + [Factorization Machines \(algorithm\)](#factorization-machines-ap-northeast-3.title)
 + [Hugging Face \(algorithm\)](#huggingface-ap-northeast-3.title)
 + [IP Insights \(algorithm\)](#ipinsights-ap-northeast-3.title)
@@ -48,6 +49,12 @@ image_uris.retrieve(framework='autogluon',region='ap-northeast-3',image_scope='i
 
 | Registry path | Version | Job types \(image scope\) | 
 | --- | --- | --- | 
+| 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/autogluon\-training:<tag> | 0\.5\.2 | training | 
+| 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/autogluon\-inference:<tag> | 0\.5\.2 | inference | 
+| 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/autogluon\-training:<tag> | 0\.4\.3 | training | 
+| 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/autogluon\-inference:<tag> | 0\.4\.3 | inference | 
+| 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/autogluon\-training:<tag> | 0\.4\.2 | training | 
+| 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/autogluon\-inference:<tag> | 0\.4\.2 | inference | 
 | 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/autogluon\-training:<tag> | 0\.4\.0 | training | 
 | 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/autogluon\-inference:<tag> | 0\.4\.0 | inference | 
 | 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/autogluon\-training:<tag> | 0\.3\.2 | training | 
@@ -96,6 +103,20 @@ image_uris.retrieve(framework='debugger',region='ap-northeast-3')
 | Registry path | Version | Job types \(image scope\) | 
 | --- | --- | --- | 
 | 479947661362\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/sagemaker\-debugger\-rules:<tag> | latest | debugger | 
+
+## DeepAR Forecasting \(algorithm\)<a name="forecasting-deepar-ap-northeast-3.title"></a>
+
+SageMaker Python SDK example to retrieve registry path\.
+
+```
+from sagemaker import image_uris
+image_uris.retrieve(framework='forecasting-deepar',region='ap-northeast-3')
+```
+
+
+| Registry path | Version | Job types \(image scope\) | 
+| --- | --- | --- | 
+| 867004704886\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/forecasting\-deepar:<tag> | 1 | inference, training | 
 
 ## Factorization Machines \(algorithm\)<a name="factorization-machines-ap-northeast-3.title"></a>
 
@@ -440,6 +461,8 @@ image_uris.retrieve(framework='pytorch',region='ap-northeast-3',version='1.8.0',
 
 | Registry path | Version | Job types \(image scope\) | Processor types | Python versions | 
 | --- | --- | --- | --- | --- | 
+| 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/pytorch\-inference:<tag> | 1\.12\.0 | inference | CPU, GPU | py38 | 
+| 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/pytorch\-training:<tag> | 1\.12\.0 | training | CPU, GPU | py38 | 
 | 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/pytorch\-inference:<tag> | 1\.11\.0 | inference | CPU, GPU | py38 | 
 | 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/pytorch\-training:<tag> | 1\.11\.0 | training | CPU, GPU | py38 | 
 | 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/pytorch\-inference:<tag> | 1\.10\.2 | inference | CPU, GPU | py38 | 
@@ -538,6 +561,7 @@ image_uris.retrieve(framework='tensorflow',region='ap-northeast-3',version='1.12
 
 | Registry path | Version | Job types \(image scope\) | Processor types | Python versions | 
 | --- | --- | --- | --- | --- | 
+| 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/tensorflow\-training:<tag> | 2\.9\.1 | training | CPU, GPU | py39 | 
 | 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.8\.0 | inference | CPU, GPU | \- | 
 | 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/tensorflow\-training:<tag> | 2\.8\.0 | training | CPU, GPU | py39 | 
 | 364406365360\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/tensorflow\-training:<tag> | 2\.7\.1 | training | CPU, GPU | py38 | 
@@ -624,7 +648,7 @@ SageMaker Python SDK example to retrieve registry path\.
 
 ```
 from sagemaker import image_uris
-image_uris.retrieve(framework='xgboost',region='ap-northeast-3',version='1.2-1')
+image_uris.retrieve(framework='xgboost',region='ap-northeast-3',version='1.5-1')
 ```
 
 
@@ -635,6 +659,6 @@ image_uris.retrieve(framework='xgboost',region='ap-northeast-3',version='1.2-1')
 | 867004704886\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.2\-2 | 1\.2\.0 | inference, training | 
 | 867004704886\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.2\-1 | 1\.2\.0 | inference, training | 
 | 867004704886\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.0\-1 | 1\.0 | inference, training | 
-| 867004704886\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/xgboost:<tag> | 1 | 1\.5\.2 | inference, training | 
+| 867004704886\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/xgboost:<tag> | 1 | 0\.72 | inference, training | 
 | 867004704886\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/sagemaker\-xgboost:<tag> | 0\.90\-2 | 0\.90 | inference, training | 
 | 867004704886\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/sagemaker\-xgboost:<tag> | 0\.90\-1 | 0\.90 | inference, training | 

@@ -1,6 +1,6 @@
-# Amazon SageMaker Debugger<a name="train-debugger"></a>
+# Debug and Profile Training Jobs Using Amazon SageMaker Debugger<a name="train-debugger"></a>
 
-Debug, monitor, and profile training jobs in real time, detect non\-converging conditions, optimize resource utilization by eliminating bottlenecks, improve training time, and reduce costs of your machine learning models using Amazon SageMaker Debugger\.
+Debug, profile, and monitor training jobs in real time to detect non\-converging conditions, optimize resource utilization by eliminating bottlenecks, improve training time, and reduce costs of your machine learning models using Amazon SageMaker Debugger\.
 
 ## Amazon SageMaker Debugger Features<a name="debugger-features"></a>
 
@@ -8,16 +8,18 @@ A machine learning \(ML\) training job can have problems such as system bottlene
 
 SageMaker Debugger profiles and debugs training jobs to help resolve such problems and improve your ML model's compute resource utilization and performance\. Debugger offers tools to send alerts when training anomalies are found, take actions against the problems, and identify the root cause of them by visualizing collected metrics and tensors\.
 
-SageMaker Debugger supports Apache MXNet, TensorFlow, PyTorch, and XGBoost\. For more information about available frameworks and versions, see [Supported Frameworks and Algorithms](debugger-supported-frameworks.md)\.
+SageMaker Debugger supports the Apache MXNet, PyTorch, TensorFlow, and XGBoost frameworks\. For more information about available frameworks and versions supported by SageMaker Debugger, see [Supported Frameworks and Algorithms](debugger-supported-frameworks.md)\.
 
 ![\[Overview of how Amazon SageMaker Debugger works.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger/debugger-main.png)
 
 The high\-level Debugger workflow is as follows:
 
-1. Configure a SageMaker training job with Debugger\.
-   + Configure using the SageMaker [`Estimator` API \(for Python SDK\)](https://docs.aws.amazon.com/sagemaker/latest/dg/debugger-configuration.html)\.
+1. Modify your training script with the `sagemaker-debugger` Python SDK if needed\.
+
+1. Configure a SageMaker training job with SageMaker Debugger\.
+   + Configure using the SageMaker Estimator API \(for Python SDK\)\.
    + Configure using the SageMaker [`CreateTrainingJob` request \(for Boto3 or CLI\)](https://docs.aws.amazon.com/sagemaker/latest/dg/debugger-createtrainingjob-api.html)\.
-   + Configure [custom training containers](debugger-bring-your-own-container.md) with Debugger\.
+   + Configure [custom training containers](debugger-bring-your-own-container.md) with SageMaker Debugger\.
 
 1. Start a training job and monitor training issues in real time\.
    + [SageMaker Studio Debugger dashboards in Studio Experiments and trials](debugger-on-studio.md)\.
@@ -34,7 +36,7 @@ The high\-level Debugger workflow is as follows:
 
 1. Explore deep analysis of the training issues and bottlenecks\.
    + For profiling training jobs, see [Analyze Data Using the SMDebug Client Library](debugger-analyze-data.md)\.
-   + For debugging model parameters, see [Visualize Debugger Output Tensors in TensorBoard](debugger-enable-tensorboard-summaries.md#debugger-enable-tensorboard-summaries.title)\.
+   + For debugging model output tensors, see [Visualize Debugger Output Tensors in TensorBoard](debugger-enable-tensorboard-summaries.md#debugger-enable-tensorboard-summaries.title)\.
 
 1. Fix the issues, considering the suggestions provided by Debugger, and repeat steps 1–5 until you optimize your model and achieve target accuracy\.
 
@@ -45,15 +47,11 @@ The SageMaker Debugger developer guide walks you through the following topics\.
 + [Supported Frameworks and Algorithms](debugger-supported-frameworks.md)
 + [Amazon SageMaker Debugger Architecture](debugger-how-it-works.md)
 + [Get Started with Debugger Tutorials](debugger-tutorial.md)
-+ [Configure Debugger Using Amazon SageMaker Python SDK](debugger-configuration.md)
-+ [Configure Debugger Using Amazon SageMaker API](debugger-createtrainingjob-api.md)
++ [Debug Training Jobs Using Amazon SageMaker Debugger](debugger-debug-training-jobs.md)
++ [Profile Training Jobs Using Amazon SageMaker Debugger](debugger-profile-training-jobs.md)
 + [List of Debugger Built\-in Rules](debugger-built-in-rules.md)
 + [Create Debugger Custom Rules for Training Job Analysis](debugger-custom-rules.md)
 + [Use Debugger with Custom Training Containers](debugger-bring-your-own-container.md)
-+ [Action on Amazon SageMaker Debugger Rules](debugger-action-on-rules.md)
-+ [Amazon SageMaker Debugger in Amazon SageMaker Studio](debugger-on-studio.md)
-+ [SageMaker Debugger Interactive Reports](debugger-report.md)
-+ [Analyze Data Using the SMDebug Client Library](debugger-analyze-data.md)
-+ [Visualize Amazon SageMaker Debugger Output Tensors in TensorBoard](debugger-enable-tensorboard-summaries.md)
++ [Configure Debugger Using Amazon SageMaker API](debugger-createtrainingjob-api.md)
 + [Best Practices for Amazon SageMaker Debugger](debugger-best-practices.md)
 + [Amazon SageMaker Debugger Advanced Topics and Reference Documentation](debugger-reference.md)

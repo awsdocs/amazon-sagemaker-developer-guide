@@ -54,9 +54,10 @@ SageMaker provides algorithms that are tailored to the analysis of textual docum
 ## Image Processing<a name="algorithms-built-in-image-processing"></a>
 
 SageMaker also provides image processing algorithms that are used for image classification, object detection, and computer vision\.
-+ [Image Classification Algorithm](image-classification.md)—uses example data with answers \(referred to as a *supervised algorithm*\)\. Use this algorithm to classify images\.
++ [Image Classification \- MXNet](image-classification.md)—uses example data with answers \(referred to as a *supervised algorithm*\)\. Use this algorithm to classify images\.
++ [Image Classification \- TensorFlow](image-classification-tensorflow.md)—uses pretrained TensorFlow Hub models to fine\-tune for specific tasks \(referred to as a *supervised algorithm*\)\. Use this algorithm to classify images\.
 + [Semantic Segmentation Algorithm](semantic-segmentation.md)—provides a fine\-grained, pixel\-level approach to developing computer vision applications\.
-+ [Object Detection Algorithm](object-detection.md)—detects and classifies objects in images using a single deep neural network\. It is a supervised learning algorithm that takes images as input and identifies all instances of objects within the image scene\.
++ [Object Detection](object-detection.md)—detects and classifies objects in images using a single deep neural network\. It is a supervised learning algorithm that takes images as input and identifies all instances of objects within the image scene\.
 
 **Topics**
 + [Pre\-trained Models and Solution Templates](#algorithms-built-in-jumpstart)

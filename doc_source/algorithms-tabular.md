@@ -13,11 +13,11 @@ Amazon SageMaker provides built\-in algorithms that are tailored to the analysis
 
 | Algorithm name | Channel name | Training input mode | File type | Instance class | Parallelizable | 
 | --- | --- | --- | --- | --- | --- | 
-| AutoGluon\-Tabular | train and \(optionally\) validation | File | CSV | CPU or GPU \(single instance only\) | No | 
-| CatBoost | train and \(optionally\) validation | File | CSV | CPU \(single instance only\) | No | 
+| AutoGluon\-Tabular | training and \(optionally\) validation | File | CSV | CPU or GPU \(single instance only\) | No | 
+| CatBoost | training and \(optionally\) validation | File | CSV | CPU \(single instance only\) | No | 
 | Factorization Machines | train and \(optionally\) test | File or Pipe | recordIO\-protobuf | CPU \(GPU for dense data\) | Yes | 
 | K\-Nearest\-Neighbors \(k\-NN\) | train and \(optionally\) test | File or Pipe | recordIO\-protobuf or CSV | CPU or GPU \(single GPU device on one or more instances\) | Yes | 
-| LightGBM | train and \(optionally\) validation | File | CSV | CPU \(single instance only\) | No | 
+| LightGBM | training and \(optionally\) validation | File | CSV | CPU \(single instance only\) | No | 
 | Linear Learner | train and \(optionally\) validation, test, or both | File or Pipe | recordIO\-protobuf or CSV | CPU or GPU | Yes | 
-| TabTransformer | train and \(optionally\) validation | File | CSV | CPU or GPU \(single instance only\) | No | 
+| TabTransformer | training and \(optionally\) validation | File | CSV | CPU or GPU \(single instance only\) | No | 
 | XGBoost \(0\.90\-1, 0\.90\-2, 1\.0\-1, 1\.2\-1, 1\.2\-21\) | train and \(optionally\) validation | File or Pipe | CSV, LibSVM, or Parquet | CPU \(or GPU for 1\.2\-1\) | Yes | 

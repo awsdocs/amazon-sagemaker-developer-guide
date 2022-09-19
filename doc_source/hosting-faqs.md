@@ -53,7 +53,7 @@ While you can choose from prebuilt framework images such as TensorFlow, PyTorch,
 
 ### Q: How should I structure my model if I want to deploy on SageMaker but not train on SageMaker?<a name="hosting-faqs-general-8"></a>
 
-A: SageMaker requires your model artifacts to be compressed in a `.tar.gz` file\. SageMaker automatically extracts this `.tar.gz` file into the `/opt/ml/model/` directory in your container\. If you are making use of one of the framework containers, such as TensorFlow, PyTorch, or MXNet, the container expects your TAR structure to be as follows: 
+A: SageMaker requires your model artifacts to be compressed in a `.tar.gz` file, or a *tarball*\. SageMaker automatically extracts this `.tar.gz` file into the `/opt/ml/model/` directory in your container\. The tarball shouldn't contain any symlinks or unncessary files\. If you are making use of one of the framework containers, such as TensorFlow, PyTorch, or MXNet, the container expects your TAR structure to be as follows: 
 
 **TensorFlow**
 
@@ -96,6 +96,12 @@ A: `ContentType` is the MIME type of the input data in the request body \(the MI
 `Accept` is the MIME type of the inference response \(the MIME type of the data your endpoint returns\)\. The model server uses the `Accept` type to determine if it can handle returning the type provided or not\.
 
 Common MIME types include `text/csv`, `application/json`, and `application/jsonlines`\.
+
+### Q: What are the supported data formats for SageMaker Inference?<a name="hosting-faqs-general-12"></a>
+
+A: SageMaker passes any request onto the model container without modification\. The container must contain the logic to deserialize the request\. For information about the formats defined for built\-in algorithms, see [ Common Data Formats for Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html)\. If you are building your own container or using a SageMaker Framework container, you can include the logic to accept a request format of your choice\.
+
+Similarly, SageMaker also returns the response without modification, and then the client must deserialize the response\. In case of the built\-in algorithms, they return responses in specific formats\. If you are building your own container or using a SageMaker Framework container, you can include the logic to return a response in the format you choose\.
 
 ### Q: How do I invoke my endpoint with binary data such as videos or images?<a name="hosting-faqs-general-11"></a>
 

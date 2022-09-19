@@ -13,4 +13,5 @@ You do not need to do both types of recommendation jobs in your own workflow\. Y
 
 **Topics**
 + [Get an instance recommendation](inference-recommender-instance-recommendation.md)
++ [Get compiled recommendations with Neo](inference-recommender-neo-compilation.md)
 + [Run a custom load test](inference-recommender-load-test.md)

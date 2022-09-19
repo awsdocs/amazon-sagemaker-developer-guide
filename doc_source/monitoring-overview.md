@@ -10,4 +10,5 @@ Monitoring is an important part of maintaining the reliability, availability, an
 + [Monitor Amazon SageMaker with Amazon CloudWatch](monitoring-cloudwatch.md)
 + [Log Amazon SageMaker Events with Amazon CloudWatch](logging-cloudwatch.md)
 + [Log Amazon SageMaker API Calls with AWS CloudTrail](logging-using-cloudtrail.md)
++ [Monitoring user resource access from Amazon SageMaker Studio](monitor-user-access.md)
 + [Automating Amazon SageMaker with Amazon EventBridge](automating-sagemaker-with-eventbridge.md)

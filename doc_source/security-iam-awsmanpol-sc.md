@@ -1384,9 +1384,7 @@ This policy is used by AWS Glue within the AWS Service Catalog provisioned produ
 **Permissions details**
 
 This policy includes the following permissions\.
-+ `glue` – Create, read, and delete AWS Glue partitions, tables, and table versions\. These permissions are limited to those resources whose name starts with "sagemaker\-"\.
-
-  Create and read AWS Glue databases\. These permissions are limited to databases whose name is "default", "global\_temp", or starts with "sagemaker\-"\.
++ `glue` – Create, read, and delete AWS Glue partitions, tables, and table versions\. These permissions are limited to those resources whose name starts with "sagemaker\-"\. Create and read AWS Glue databases\. These permissions are limited to databases whose name is "default", "global\_temp", or starts with "sagemaker\-"\. Get user defined functions\.
 + `s3` – Create, read, list, and delete Amazon S3 buckets; add, read, and delete objects from the buckets; read and set the CORS configuration; read the access control list \(ACL\), and read the AWS Region the bucket resides in\.
 
   These permissions are limited to buckets whose name starts with "sagemaker\-" or "aws\-glue\-"\.
@@ -1421,7 +1419,8 @@ This policy includes the following permissions\.
         "glue:GetTableVersions",
         "glue:SearchTables",
         "glue:UpdatePartition",
-        "glue:UpdateTable"
+        "glue:UpdateTable",
+        "glue:GetUserDefinedFunctions"
       ],
       "Resource": [
         "arn:aws:glue:*:*:catalog",
@@ -1926,6 +1925,7 @@ View details about updates to AWS managed policies for Amazon SageMaker since th
 
 | Policy | Version | Change | Date | 
 | --- | --- | --- | --- | 
+|   [AmazonSageMakerServiceCatalogProductsGlueServiceRolePolicy](#security-iam-awsmanpol-AmazonSageMakerServiceCatalogProductsGlueServiceRolePolicy)  | 2 |  Add permission for `glue:GetUserDefinedFunctions`\.  | August 26, 2022 | 
 |   [AmazonSageMakerAdmin\-ServiceCatalogProductsServiceRolePolicy](#security-iam-awsmanpol-AmazonSageMakerAdmin-ServiceCatalogProductsServiceRolePolicy)  | 7 |  Add permission for `sagemaker:AddTags`\.  | August 2, 2022 | 
 | AmazonSageMakerAdmin\-ServiceCatalogProductsServiceRolePolicy | 6 |  Add permission for `lambda:TagResource`\.  | July 14, 2022 | 
 |   [AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy](#security-iam-awsmanpol-AmazonSageMakerServiceCatalogProductsLambdaServiceRolePolicy)  | 1 |  Initial policy  | April 4, 2022 | 
@@ -1936,7 +1936,7 @@ View details about updates to AWS managed policies for Amazon SageMaker since th
 |   [AmazonSageMakerServiceCatalogProductsCodePipelineServiceRolePolicy](#security-iam-awsmanpol-AmazonSageMakerServiceCatalogProductsCodePipelineServiceRolePolicy)  | 1 |  Initial policy  | February 22, 2022 | 
 |   [AmazonSageMakerServiceCatalogProductsEventsServiceRolePolicy](#security-iam-awsmanpol-AmazonSageMakerServiceCatalogProductsEventsServiceRolePolicy)  | 1 |  Initial policy  | February 22, 2022 | 
 |   [AmazonSageMakerServiceCatalogProductsFirehoseServiceRolePolicy](#security-iam-awsmanpol-AmazonSageMakerServiceCatalogProductsFirehoseServiceRolePolicy)  | 1 |  Initial policy  | February 22, 2022 | 
-|   [AmazonSageMakerServiceCatalogProductsGlueServiceRolePolicy](#security-iam-awsmanpol-AmazonSageMakerServiceCatalogProductsGlueServiceRolePolicy)  | 1 |  Initial policy  | February 22, 2022 | 
+| AmazonSageMakerServiceCatalogProductsGlueServiceRolePolicy | 1 |  Initial policy  | February 22, 2022 | 
 | AmazonSageMakerAdmin\-ServiceCatalogProductsServiceRolePolicy | 4 |  Add permissions for `cognito-idp:TagResource` and `s3:PutBucketCORS`\.  | February 16, 2022 | 
 | AmazonSageMakerAdmin\-ServiceCatalogProductsServiceRolePolicy | 3 |  Add new permissions for `sagemaker`\. Create, read, update, and delete SageMaker Images\.  | September 15, 2021 | 
 | AmazonSageMakerAdmin\-ServiceCatalogProductsServiceRolePolicy | 2 |  Add permissions for `sagemaker` and `codestar-connections`\. Create, read, update, and delete code repositories\. Pass AWS CodeStar connections to AWS CodePipeline\.  | July 1, 2021 | 

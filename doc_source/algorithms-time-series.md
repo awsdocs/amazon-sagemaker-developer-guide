@@ -1,6 +1,6 @@
 # Built\-in SageMaker Algorithms for Time\-Series Data<a name="algorithms-time-series"></a>
 
-SageMaker provides algorithms that are tailored to the analysis of textual documents used in natural language processing, document classification or summarization, topic modeling or classification, and language transcription or translation\.
+SageMaker provides algorithms that are tailored to the analysis of time\-series data for forecasting product demand, server loads, webpage requests, and more\.
 + [DeepAR Forecasting Algorithm](deepar.md)—a supervised learning algorithm for forecasting scalar \(one\-dimensional\) time series using recurrent neural networks \(RNN\)\.
 
 

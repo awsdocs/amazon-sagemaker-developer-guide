@@ -151,7 +151,7 @@ The elements have the following meaning:
 
 The following are sample outputs \(output manifest files\) from an image classification job and a text classification job\. They include the label that Ground Truth assigned to the data object, the value for the label, and metadata that describes the label\.
 
-In addition to the standard metadata elements, the metadata for a classification job includes the text value of the label's class\. For more information, see [Image Classification Algorithm](image-classification.md)\.
+In addition to the standard metadata elements, the metadata for a classification job includes the text value of the label's class\. For more information, see [Image Classification \- MXNet](image-classification.md)\.
 
 The red, italicized text in the examples below depends on labeling job specifications and output data\. 
 
@@ -251,7 +251,7 @@ The following is sample output \(output manifest file\) from a bounding box job\
 
 The `class_id` element is the index of the box's class in the list of available classes for the task\. The `class-map` metadata element contains the text of the class\.
 
-The metadata has a separate confidence score for each bounding box\. The metadata also includes the `class-map` element that maps the `class_id` to the text value of the class\. For more information, see [Object Detection Algorithm](object-detection.md)\.
+The metadata has a separate confidence score for each bounding box\. The metadata also includes the `class-map` element that maps the `class_id` to the text value of the class\. For more information, see [Object Detection](object-detection.md)\.
 
 The red, italicized text in the examples below depends on labeling job specifications and output data\. 
 
@@ -923,15 +923,13 @@ The following is sample output from a 3D point cloud objected detection job\. Fo
 + `center-x`, `center-y`, and `center-z` are the coordinates of the center of the cuboid, in the same coordinate system as the 3D point cloud input data used in your labeling job\.
 + `length`, `width`, and `height` describe the dimensions of the cuboid\. 
 + `yaw` is used to describe the orientation \(heading\) of the cuboid in radians\.
-
-  The `yaw` measurement in the output data is 180 degrees, or pi in radians, minus `yaw` in the right handed world coordinate system when looking down at the cuboid\. In other words, when looking at a cuboid from the top\-down, `yaw_in_output_data` is clockwise\-positive \(in contrast to the right handed world coordinate system, in which the top\-down view is associated with counter\-clockwise positive rotation\)\. When looking up from the cuboid, `yaw_in_output_data` is counterclockwise\-positive\. 
-
-  To convert `yaw_in_output_data` to the more common orientation of the right handed world coordinate system, use the following \(all units are in radians\):
+**Note**  
+`yaw` is now in the right\-handed Cartesian system\. Since this feature was added on September 02, 2022 19:02:17 UTC, you can convert the `yaw` measurement in the output data prior to that using the following \(all units are in radians\):  
 
   ```
-  yaw_right_handed_cartesian_system = pi - yaw_in_output_data
+  old_yaw_in_output = pi - yaw
   ```
-+ If you created a 3D point cloud adjustment labeling job and included `pitch` and `roll` in the input manifest file, the same `pitch` and `roll` measurements will appear in the output manifest file\. Otherwise, `pitch` and `role` will always be 0\. 
++ In our definition, \+x is to the right, \+y is to the forward, and \+z is up from the ground plane\. The rotation order is x \- y \- z\. The `roll`, `pitch` and `yaw` are represented in the right\-handed Cartesian system\. In 3D space, `roll` is along the x\-axis, `pitch` is along the y\-axis and `yaw` is along the z\-axis\. All three are counterclockwise\.
 + If you included label attributes in your input manifest file for a given class, a `label-category-attributes` parameter is included for all cuboids for which workers selected label attributes\. 
 
 If one or more cuboids were modified, there is an `adjustment-status` parameter in the metadata for audit workflows that is set to `adjusted`\. If you added one or more `frameAttributes` to your label category configuration file, worker responses for frame attributes are in the JSON object, `dataset-object-attributes`\.
@@ -1086,15 +1084,13 @@ For each frame in the sequence, you see the `frame-number`, `frame-name`, if app
 + `center-x`, `center-y`, and `center-z` are the coordinates of the center of the cuboid, in the same coordinate system as the 3D point cloud input data used in your labeling job\.
 + `length`, `width`, and `height` describe the dimensions of the cuboid\. 
 + `yaw` is used to describe the orientation \(heading\) of the cuboid in radians\.
-
-  The `yaw` measurement in the output data is 180 degrees, or pi in radians, minus `yaw` in the right handed world coordinate system when looking down at the cuboid\. In other words, when looking at a cuboid from the top\-down, `yaw_in_output_data` is clockwise\-positive \(in contrast to the right handed world coordinate system, in which the top\-down view is associated with counter\-clockwise positive rotation\)\. When looking up from the cuboid, `yaw_in_output_data` is counterclockwise\-positive\. 
-
-  To convert `yaw_in_output_data` to the more common orientation of the right handed world coordinate system, use the following \(all units are in radians\):
+**Note**  
+`yaw` is now in the right\-handed Cartesian system\. Since this feature was added on September 02, 2022 19:02:17 UTC, you can convert the `yaw` measurement in the output data prior to that using the following \(all units are in radians\):  
 
   ```
-  yaw_right_handed_cartesian_system = pi - yaw_in_output_data
+  old_yaw_in_output = pi - yaw
   ```
-+ If you created a 3D point cloud adjustment labeling job and included `pitch` and `roll` in the input manifest file, the same `pitch` and `roll` measurements will appear in the output manifest file\. Otherwise, `pitch` and `role` will always be 0\. 
++ In our definition, \+x is to the right, \+y is to the forward, and \+z is up from the ground plane\. The rotation order is x \- y \- z\. The `roll`, `pitch` and `yaw` are represented in the right\-handed Cartesian system\. In 3D space, `roll` is along the x\-axis, `pitch` is along the y\-axis and `yaw` is along the z\-axis\. All three are counterclockwise\.
 + If you included label attributes in your input manifest file for a given class, a `label-category-attributes` parameter is included for all cuboids for which workers selected label attributes\. 
 
 ```

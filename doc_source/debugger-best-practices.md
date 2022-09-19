@@ -17,7 +17,7 @@ Use the following guidelines when you run training jobs with Debugger\.
 
 ## Choose a Machine Learning Framework<a name="debugger-best-practices-ml-framework"></a>
 
-You can choose a machine learning framework and use SageMaker pre\-built training containers or your own containers\. Use Debugger to detect training and performance issues, and analyze training progress of your training job in SageMaker\. SageMaker provides you options to use pre\-built containers that are prepared for a number of machine learning framework environments to train your model on Amazon EC2\. Any training job can be adapted to run in AWS Deep Learning Containers, SageMaker training containers, and custom containers\. To learn more, see [Configure Debugger Using Amazon SageMaker Python SDK](debugger-configuration.md) and [Use Debugger with Custom Training Containers](debugger-bring-your-own-container.md)\.
+You can choose a machine learning framework and use SageMaker pre\-built training containers or your own containers\. Use Debugger to detect training and performance issues, and analyze training progress of your training job in SageMaker\. SageMaker provides you options to use pre\-built containers that are prepared for a number of machine learning framework environments to train your model on Amazon EC2\. Any training job can be adapted to run in AWS Deep Learning Containers, SageMaker training containers, and custom containers\.
 
 ## Use Studio Debugger Insights Dashboard<a name="debugger-best-practices-studio-dashboard"></a>
 
@@ -55,7 +55,7 @@ SageMaker Debugger also provides visualizations through Studio and its profiling
 
 With Amazon SageMaker Debugger monitoring, you can measure hardware system resource utilization of Amazon EC2 instances\. Monitoring is available for any SageMaker training job constructed with the SageMaker framework estimators \(TensorFlow, PyTorch, and MXNet\) and the generic SageMaker estimator \(SageMaker built\-in algorithms and your own custom containers\)\. Debugger built\-in rules for monitoring detect system bottleneck issues and notify you when they detect the bottleneck issues\.
 
-To learn how to enable Debugger system monitoring, see [Configure Debugger Using Amazon SageMaker Python SDK](debugger-configuration.md) and then [Configure Debugger Monitoring Hardware System Resource Utilization](debugger-configure-system-monitoring.md)\.
+To learn how to enable Debugger system monitoring, see [Configure Debugger Using Amazon SageMaker Python SDK](debugger-configuration-for-profiling.md) and then [Configure Debugger Monitoring Hardware System Resource Utilization](debugger-configure-system-monitoring.md)\.
 
 For a full list of available built\-in rules for monitoring, see [Debugger Built\-in Rules for Monitoring Hardware System Resource Utilization \(System Metrics\)](debugger-built-in-rules.md#built-in-rules-monitoring)\.
 
@@ -63,7 +63,7 @@ For a full list of available built\-in rules for monitoring, see [Debugger Built
 
 With Amazon SageMaker Debugger profiling you can profile deep learning frameworks operations\. You can profile your model training with the SageMaker TensorFlow training containers, the SageMaker PyTorch framework containers, and your own training containers\. Using the profiling feature of Debugger, you can drill down into the Python operators and functions that are executed to perform the training job\. Debugger supports detailed profiling, Python profiling, data loader profiling, and Horovod distributed training profiling\. You can merge the profiled timelines to correlate with the system bottlenecks\. Debugger built\-in rules for profiling watch framework operation related issues, including excessive training initialization time due to data downloading before training starts and step duration outliers in training loops\. 
 
-To learn how to configure Debugger for framework profiling, see [Configure Debugger Using Amazon SageMaker Python SDK](debugger-configuration.md) and then [Configure Debugger Framework Profiling](debugger-configure-framework-profiling.md)\.
+To learn how to configure Debugger for framework profiling, see [Configure Debugger Using Amazon SageMaker Python SDK](debugger-configuration-for-profiling.md) and then [Configure Debugger Framework Profiling](debugger-configure-framework-profiling.md)\.
 
 For a complete list of available built\-in rules for profiling, see [Debugger Built\-in Rules for Profiling Framework Metrics](debugger-built-in-rules.md#built-in-rules-profiling)\.
 
@@ -71,6 +71,6 @@ For a complete list of available built\-in rules for profiling, see [Debugger Bu
 
 Debugging is available for deep learning frameworks using AWS Deep Learning Containers and the SageMaker training containers\. For fully supported framework versions \(see the versions at [Supported Frameworks and Algorithms](debugger-supported-frameworks.md)\), Debugger automatically registers hooks to collect output tensors, and you can directly run your training script\. For the versions with one asterisk sign, you need to manually register the hooks to collect tensors\. Debugger provides preconfigured tensor collections with generalized names that you can utilize across the different frameworks\. If you want to customize output tensor configuration, you can also use the CollectionConfig and DebuggerHookConfig API operations and the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) to configure your own tensor collections\. Debugger built\-in rules for debugging analyze the output tensors and identifies model optimization problems that blocks your model from minimizing the loss function\. For example, the rules identify overfitting, overtraining, loss not decreasing, exploding tensors, and vanishing gradients\.
 
-To learn how to configure Debugger for debugging output tensors, see [Configure Debugger Using Amazon SageMaker Python SDK](debugger-configuration.md) and then [Configure Debugger Hook to Save Tensors](debugger-configure-hook.md)\.
+To learn how to configure Debugger for debugging output tensors, see [Step 2: Configure Debugger Using Amazon SageMaker Python SDK](debugger-configuration-for-debugging.md) and then [Configure Debugger Hook to Save Tensors](debugger-configure-hook.md)\.
 
 For a full list of available built\-in rules for debugging, see [Debugger Built\-in Rules for Debugging Model Training Data \(Output Tensors\)](debugger-built-in-rules.md#built-in-rules-debugging)\.
