@@ -30,3 +30,9 @@ The following are common errors that you might run into when using Amazon SageMa
   If the issue persists, create a new user profile and set up your environment with that user profile\.
 
   If these solutions don't fix the issue, reach out using the feedback button on the lower left of the AWS Management Console\.
+  
+  
+  + **Unable to open Sagemaker Studio from the AWS Console\.**
+  
+    At Amazon, we make it a promise to deliver 99.95% uptime. However, at irregular intervals we experience brief, regionalized, and service specific drops in uptime. These typically go away within a few minutes, if not a few moments. If you are continually unable to open Sagemaker Studio, and are unable to make a new running instance with all default settings, please reach out to a service representative to get your case solved:
+    - https://console.aws.amazon.com/support/home/
