@@ -12,15 +12,15 @@ The following is an example of the `VpcConfig` parameter that you include in you
 
 ```
 VpcConfig: {
-      "Subnets": [
-          "subnet-0123456789abcdef0",
-          "subnet-0123456789abcdef1",
-          "subnet-0123456789abcdef2"
-          ],
-      "SecurityGroupIds": [
-          "sg-0123456789abcdef0"
-          ]
-        }
+    "Subnets": [
+        "subnet-0123456789abcdef0",
+        "subnet-0123456789abcdef1",
+        "subnet-0123456789abcdef2"
+    ],    
+    "SecurityGroupIds": [
+        "sg-0123456789abcdef0"
+    ]
+}
 ```
 
 ## Configure Your Private VPC for SageMaker Processing<a name="process-vpc-vpc"></a>

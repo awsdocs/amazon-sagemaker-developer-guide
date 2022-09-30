@@ -22,7 +22,7 @@ The data report generated contains only static markdown and can be opened in any
 + [Dataset Summary](#autopilot-data-exploration-report-dataset-summary)
 + [Target Analysis](#autopilot-data-exploration-report-target-analysis)
 + [Data Sample](#autopilot-data-exploration-report-data-sample)
-+ [Duplicate rows](#aautopilot-data-exploration-report-duplicate-rows)
++ [Duplicate rows](#autopilot-data-exploration-report-duplicate-rows)
 + [Cross column correlations](#autopilot-data-exploration-report-cross-column-correlations)
 + [Anomalous Rows](#autopilot-data-exploration-report-cross-anomolous-rows)
 + [Missing values, cardinality, and descriptive statistics](#autopilot-data-exploration-report-description-statistics-and-values)
@@ -64,7 +64,7 @@ You can find definitions of all the terms presented in this and other sections i
 
 ## Data Sample<a name="autopilot-data-exploration-report-data-sample"></a>
 
-To further help you spot issues with your dataset, an actual sample of you data is presented for you to inspect by Amazon SageMaker Autopilot\. The sample table scrolls horizontally\. It can be used to verify that all the necessary columns are present in the dataset used\. If data columns are missing, there may be a preprocessing issue that occurred before importing the dataset that you need to investigate\.
+To further help you spot issues with your dataset, an actual sample of your data is presented for you to inspect by Amazon SageMaker Autopilot\. The sample table scrolls horizontally\. It can be used to verify that all the necessary columns are present in the dataset used\. If data columns are missing, there may be a preprocessing issue that occurred before importing the dataset that you need to investigate\.
 
 A measure of predictive power is calculated by Amazon SageMaker Autopilot and can be used to identify target columns disguised as input columns\. It helps focus your attention on the columns that might be important because they have high prediction power\. For more information on prediction power, see the **Definitions** section\. 
 
@@ -73,7 +73,7 @@ A measure of predictive power is calculated by Amazon SageMaker Autopilot and ca
 
 ![\[Autopilot data report data sample prediction power.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-data-report-data-sample-prediction.png)
 
-## Duplicate rows<a name="aautopilot-data-exploration-report-duplicate-rows"></a>
+## Duplicate rows<a name="autopilot-data-exploration-report-duplicate-rows"></a>
 
 If duplicate rows are present in the dataset, Amazon SageMaker Autopilot displays a sample of them\.
 

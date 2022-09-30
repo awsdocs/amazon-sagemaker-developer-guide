@@ -1140,6 +1140,8 @@ Control access to groups of SageMaker resources by attaching tags to the resourc
 
 **Note**  
 Tag\-based policies don't work to restrict the following API calls:  
+DeleteImageVersion
+DescribeImageVersion
 ListAlgorithms
 ListCodeRepositories
 ListCompilationJobs

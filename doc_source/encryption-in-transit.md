@@ -11,6 +11,14 @@ Some intra\-network data in\-transit \(inside the service platform\) is unencryp
 
 There are no inter\-node communications for batch processing\.
 
-You can choose to encrypt communication between nodes in a training cluster\. For information about how to do this, see [Protect Communications Between ML Compute Instances in a Distributed Training Job](train-encrypt.md)\. Enabling inter\-container traffic encryption can increase training time, especially if you are using distributed deep learning algorithms\. For affected algorithms, adding this additional level of security also increases cost\. The training time for most SageMaker built\-in algorithms, such as XGBoost, DeepAR, and linear learner, typically aren't affected\.
+You can choose to encrypt communication between nodes in a training cluster\. 
+
+**Note**  
+For use cases in the healthcare sector, the best practice for security is to encrypt communication between the nodes\.
+
+For information about how to encrypt communication, see the next topic at [Protect Communications Between ML Compute Instances in a Distributed Training Job](train-encrypt.md)\. 
+
+**Note**  
+Encrypting inter\-container traffic can increase training time, especially if you use distributed deep learning algorithms\. For affected algorithms, this additional level of security also increases cost\. The training time for most SageMaker built\-in algorithms, such as XGBoost, DeepAR, and linear learner, typically aren't affected\.
 
 FIPS validated endpoints are available for the SageMaker API and request router for hosted models \(runtime\)\. For information about FIPS compliant endpoints, see [Federal Information Processing Standard \(FIPS\) 140\-2](https://aws.amazon.com/compliance/fips/)\. 

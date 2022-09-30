@@ -4,7 +4,7 @@ Algorithmic bias, discrimination, fairness, and related topics have been studied
 
 Bias can be measured before training and after training, and monitored against baselines after deploying models to endpoints for inference\. Pretraining bias metrics are designed to detect and measure bias in the raw data before it is used to train a model\. The metrics used are model\-agnostic because they do not depend on any model outputs\. However, there are different concepts of fairness that require distinct measures of bias\. Amazon SageMaker Clarify provides bias metrics to quantify various fairness criteria\.
 
-For additional information about bias metrics, see [Fairness Measures for Machine Learning in Finance](https://pages.awscloud.com/rs/112-TZM-766/images/Fairness.Measures.for.Machine.Learning.in.Finance.pdf)\.
+For additional information about bias metrics, see [Learn How Amazon SageMaker Clarify Helps Detect Bias](http://aws.amazon.com/blogs/machine-learning/learn-how-amazon-sagemaker-clarify-helps-detect-bias) and [Fairness Measures for Machine Learning in Finance](https://pages.awscloud.com/rs/112-TZM-766/images/Fairness.Measures.for.Machine.Learning.in.Finance.pdf)\.
 
 ## Amazon SageMaker Clarify Terms for Bias and Fairness<a name="clarify-bias-and-fairness-terms"></a>
 

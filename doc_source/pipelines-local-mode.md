@@ -53,9 +53,9 @@ pipeline.create(
 )
 
 // pipeline will execute locally
-pipeline.start()
+execution = pipeline.start()
 
-steps = pipeline.list_steps()
+steps = execution.list_steps()
 
 training_job_name = steps['PipelineExecutionSteps'][0]['Metadata']['TrainingJob']['Arn']
 

@@ -1,29 +1,62 @@
 # Preprocessing and Postprocessing<a name="model-monitor-pre-and-post-processing"></a>
 
-In addition to using the built\-in mechanisms, you can extend the code with the preprocessing and postprocessing scripts\.
+You can use custom preprocessing and postprocessing Python scripts to transform the input to your model monitor or extend the code after a successful monitoring run\. Upload these scripts to Amazon S3 and reference them when creating your model monitor\.
+
+The following example shows how you can customize monitoring schedules with preprocessing and postprocessing scripts\. Replace *user placeholder text* with your own information\.
+
+```
+import boto3, os
+from sagemaker import get_execution_role, Session
+from sagemaker.model_monitor import CronExpressionGenerator, DefaultModelMonitor
+
+# Upload pre and postprocessor scripts
+session = Session()
+bucket = boto3.Session().resource("s3").Bucket(session.default_bucket())
+prefix = "demo-sagemaker-model-monitor"
+pre_processor_script = bucket.Object(os.path.join(prefix, "preprocessor.py")).upload_file("preprocessor.py")
+post_processor_script = bucket.Object(os.path.join(prefix, "postprocessor.py")).upload_file("postprocessor.py")
+
+# Get execution role
+role = get_execution_role() # can be an empty string
+
+# Instance type
+instance_type = "instance-type"
+# instance_type = "ml.m5.xlarge" # Example
+
+# Create a monitoring schedule with pre and postprocessing
+my_default_monitor = DefaultModelMonitor(
+    role=role,
+    instance_count=1,
+    instance_type=instance_type,
+    volume_size_in_gb=20,
+    max_runtime_in_seconds=3600,
+)
+
+s3_report_path = "s3://{}/{}".format(bucket, "reports")
+monitor_schedule_name = "monitor-schedule-name"
+endpoint_name = "endpoint-name"
+my_default_monitor.create_monitoring_schedule(
+    post_analytics_processor_script=post_processor_script,
+    record_preprocessor_script=pre_processor_script,
+    monitor_schedule_name=monitor_schedule_name,
+    endpoint_input=endpoint_name,
+    output_s3_uri=s3_report_path,
+    statistics=my_default_monitor.baseline_statistics(),
+    constraints=my_default_monitor.suggested_constraints(),
+    schedule_cron_expression=CronExpressionGenerator.hourly(),
+    enable_cloudwatch_metrics=True,
+)
+```
 
 **Topics**
-+ [Postprocessing Script](#model-monitor-post-processing-script)
 + [Preprocessing Script](#model-monitor-pre-processing-script)
-
-## Postprocessing Script<a name="model-monitor-post-processing-script"></a>
-
-You can extend the code with the postprocessing script by following this contract: 
-
-```
-def postprocess_handler():
-    print("Hello from post-proc script!")
-```
-
-Specify it as a path in Amazon Simple Storage Service \(Amazon S3\) in the `CreateMonitoringSchedule` request, as shown following:
-
-```
-.MonitoringAppSpecification.PostAnalyticsProcessorSourceUri.
-```
++ [Postprocessing Script](#model-monitor-post-processing-script)
 
 ## Preprocessing Script<a name="model-monitor-pre-processing-script"></a>
 
-The Amazon SageMaker Model Monitor container works only with tabular or flattened JSON structures\. We provide a per\-record preprocessor for some small changes required to transform the dataset\. For example, if your output is an array \[1\.0, 2\.1\], you need to convert this into a flattened JSON, like \{“prediction0”: 1\.0, “prediction1” : 2\.1"\}\. A sample implementation might look like the following:
+Use preprocessing scripts when you need to transform the inputs to your model monitor\.
+
+For example, suppose the output of your model is an array `[1.0, 2.1]`\. The Amazon SageMaker Model Monitor container only works with tabular or flattened JSON structures, like `{“prediction0”: 1.0, “prediction1” : 2.1}`\. You could use a preprocessing script like the following to transform the array into the correct JSON structure\.
 
 ```
 def preprocess_handler(inference_record):
@@ -33,31 +66,17 @@ def preprocess_handler(inference_record):
     return { str(i).zfill(20) : d for i, d in enumerate(data.split(",")) }
 ```
 
-Specify it as a path in Amazon S3 in the `CreateMonitoringSchedule` request:
+In another example, suppose your model has optional features and you use `-1` to denote that the optional feature has a missing value\. If you have a data quality monitor, you may want to remove the `-1` from the input value array so that it isn't included in the monitor's metric calculations\. You could use a script like the following to remove those values\.
 
 ```
-.MonitoringAppSpecification.RecordPreprocessorSourceUri.
+def preprocess_handler(inference_record):
+    input_data = inference_record.endpoint_input.data
+    return {i : None if x == -1 else x for i, x in enumerate(input_data.split(","))}
 ```
 
-The structure of the inference\_record is defined as follows:
+Your preprocessing script receives an `inference_record` as its only input\. The following code snippet shows an example of an `inference_record`\.
 
 ```
-KEY_EVENT_METADATA = "eventMetadata"
-KEY_EVENT_METADATA_EVENT_ID = "eventId"
-KEY_EVENT_METADATA_EVENT_TIME = "inferenceTime"
-KEY_EVENT_METADATA_CUSTOM_ATTR = "customAttributes"
-
-KEY_EVENTDATA = "captureData"
-KEY_EVENTDATA_INPUT = "endpointInput"
-KEY_EVENTDATA_OUTPUT = "endpointOutput"
-KEY_EVENTDATA_ENCODING = "encoding"
-KEY_EVENTDATA_DATA = "data"
-KEY_EVENTDATA_OBSERVED_CONTENT_TYPE = "observedContentType"
-KEY_EVENTDATA_MODE = "mode"
-
-KEY_EVENT_VERSION = "eventVersion"
-
-"""
 {
   "captureData": {
     "endpointInput": {
@@ -79,7 +98,25 @@ KEY_EVENT_VERSION = "eventVersion"
   },
   "eventVersion": "0"
 }
-"""
+```
+
+The following code snippet shows the full class structure for an `inference_record`\.
+
+```
+KEY_EVENT_METADATA = "eventMetadata"
+KEY_EVENT_METADATA_EVENT_ID = "eventId"
+KEY_EVENT_METADATA_EVENT_TIME = "inferenceTime"
+KEY_EVENT_METADATA_CUSTOM_ATTR = "customAttributes"
+
+KEY_EVENTDATA = "captureData"
+KEY_EVENTDATA_INPUT = "endpointInput"
+KEY_EVENTDATA_OUTPUT = "endpointOutput"
+KEY_EVENTDATA_ENCODING = "encoding"
+KEY_EVENTDATA_DATA = "data"
+KEY_EVENTDATA_OBSERVED_CONTENT_TYPE = "observedContentType"
+KEY_EVENTDATA_MODE = "mode"
+
+KEY_EVENT_VERSION = "eventVersion"
 
 class EventConfig:
     def __init__(self, endpoint, variant, start_time, end_time):
@@ -142,4 +179,13 @@ class CapturedData:
                 ] = self.endpoint_output.as_dict()
         self._event_dict_postprocessed = True
         return self.event_dict
+```
+
+## Postprocessing Script<a name="model-monitor-post-processing-script"></a>
+
+Use a postprocessing script when you want to extend the code following a successful monitoring run\.
+
+```
+def postprocess_handler():
+    print("Hello from post-proc script!")
 ```

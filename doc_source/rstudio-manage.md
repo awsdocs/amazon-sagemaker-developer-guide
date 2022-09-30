@@ -16,5 +16,6 @@
 + [Bring your own image to RStudio on SageMaker](rstudio-byoi.md)
 + [Manage users](rstudio-create-user.md)
 + [RStudio administrative dashboard](rstudio-admin.md)
++ [Shut down and restart RStudio](rstudio-shutdown.md)
 + [Manage billing and cost](rstudio-billing.md)
 + [Diagnose issues and get support](rstudio-troubleshooting.md)

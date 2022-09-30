@@ -1,4 +1,4 @@
-# Notebook instances and SageMaker jobs<a name="encryption-at-rest-nbi"></a>
+# Notebook instances, SageMaker jobs, and Endpoints<a name="encryption-at-rest-nbi"></a>
 
 To encrypt the machine learning \(ML\) storage volume that is attached to notebooks, processing jobs, training jobs, hyperparameter tuning jobs, batch transform jobs, and endpoints, you can pass a AWS KMS key to SageMaker\. If you don't specify a KMS key, SageMaker encrypts storage volumes with a transient key and discards it immediately after encrypting the storage volume\. For notebook instances, if you don't specify a KMS key, SageMaker encrypts both OS volumes and ML data volumes with a system\-managed KMS key\.
 
