@@ -7,7 +7,8 @@ If you run into an error, you can use the following list to try to troubleshoot 
 + [Saving Checkpoints](#distributed-ts-model-parallel-checkpoints)
 + [Convergence Using Model Parallel and TensorFlow](#distributed-ts-model-parallel-tf-convergence)
 + [Stalling or Crashing Distributed Training Jobs](#distributed-ts-model-parallel-training-issues)
-+ [NCCL error](#distributed-ts-model-parallel-nccl-error)
++ [Receiving NCCL Error for a PyTorch Training Job](#distributed-ts-model-parallel-nccl-error)
++ [Receiving `RecursionError` for a PyTorch Training Job](#distributed-ts-model-parallel-super-forward-not-supported)
 
 ## Considerations for Using SageMaker Debugger with SageMaker Distributed Model Parallel<a name="distributed-ts-model-parallel-debugger"></a>
 
@@ -150,7 +151,7 @@ If your training job has stalling, crashing, or not responding issues, read the 
   + When training models are beyond 10 billion parameters, we recommend using FSx for Lustre for checkpointing\.
   + After you create a file system, make sure to wait for the status to become **available** before starting a training job using it\. 
 
-## NCCL error<a name="distributed-ts-model-parallel-nccl-error"></a>
+## Receiving NCCL Error for a PyTorch Training Job<a name="distributed-ts-model-parallel-nccl-error"></a>
 
 If you encountered the following error, it might be due to a process running out of GPU memory\.
 
@@ -160,3 +161,13 @@ ncclSystemError: System call (socket, malloc, munmap, etc) failed.
 ```
 
 You can resolve this by reducing the batch size or `active_microbatches`\. If auto partitioning is not resulting in a well\-balanced partitioning, you might have to consider manual partitioning\. For more information, see [Pipeline parallelism across nodes](model-parallel-best-practices.md#model-parallel-best-practices-configuration-pipeline-across-nodes)\.
+
+## Receiving `RecursionError` for a PyTorch Training Job<a name="distributed-ts-model-parallel-super-forward-not-supported"></a>
+
+The library does not support calling `super.forward()` inside a module's forward call\. If you use `super.forward()`, you might receive the following error message\. 
+
+```
+RecursionError: maximum recursion depth exceeded
+```
+
+To fix the error, instead of calling `super.forward()`, you should call `super()._orig_forward()`\. 

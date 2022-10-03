@@ -7,6 +7,69 @@ The following transforms are available in SageMaker Canvas for you to prepare yo
 **Note**  
 The preview of your dataset shows the first 100 rows of the dataset\. If your dataset has more than 20,000 rows, Canvas takes a random sample of 20,000 rows and previews the first 100 rows from that sample\. You can only search for and specify values from the previewed rows, and the filter functionality only filters the previewed rows and not the entire dataset\.
 
+## Functions and operators<a name="canvas-prepare-data-custom-formula"></a>
+
+You can use mathematical functions and operators to explore and distribute your data\. You can use the SageMaker Canvas supported functions or create your own formula with your existing data and create a new column with the result of the formula\. For example, you can add the corresponding values of two columns and save the result to a new column\.
+
+You can nest statements to create more complex functions\. The following are some examples of nested functions that you might use\.
++ To calculate BMI, you could use the function `weight / (height ^ 2)`\.
++ To classify ages, you could use the function `Case(age < 18, 'child', age < 65, 'adult', 'senior')`\.
+
+You can specify functions in the data preparation stage before you build your model\. To use a function, do the following\.
++ In the **Build** tab of the SageMaker Canvas app, choose **Functions** to open up the **Functions** panel\.
++ In the **Functions** panel, you can choose a **Formula** to add to your **Model Recipe**\. Each formula is applied to all of the values in the column\(s\) you specify\. For formulas that accept two or more columns as arguments, use columns with matching data types; otherwise, you will get an error or `null` values in the new column\. 
++ After you’ve specified a **Formula**, add a column name in the **New Column Name** field\. SageMaker Canvas uses this name for the new column that is created\.
++ To add the function to your Model Recipe, choose **Add**\.
+
+SageMaker Canvas saves the result of your function to a new column using the name you specified in **New Column Name**\. You can view or remove functions from the **Model Recipe** panel\.
+
+SageMaker Canvas supports the following operators for functions\. You can use either the text format or the in\-line format to specify your function\.
+
+
+| Operator | Description | Supported data types | Text format | In\-line format | 
+| --- | --- | --- | --- | --- | 
+|  Add  |  Returns the sum of the values  |  Numeric  | Add\(sales1, sales2\) | sales1 \+ sales2 | 
+|  Subtract  |  Returns the difference between the values  |  Numeric  | Subtract\(sales1, sales2\) | sales1 ‐ sales2 | 
+|  Multiply  |  Returns the product of the values  |  Numeric  | Multiply\(sales1, sales2\) | sales1 \* sales2 | 
+|  Divide  |  Returns the quotient of the values  |  Numeric  | Divide\(sales1, sales2\) | sales1 / sales2 | 
+|  Mod  |  Returns the result of the modulo operator \(the remainder after dividing the two values\)  |  Numeric  | Mod\(sales1, sales2\) | sales1 % sales2 | 
+|  Abs  | Returns the absolute value of the value |  Numeric  | Abs\(sales1\) | N/A | 
+|  Negate  | Returns the negative of the value |  Numeric  | Negate\(c1\) | ‐c1 | 
+|  Exp  |  Returns e \(Euler's number\) raised to the power of the value  |  Numeric  | Exp\(sales1\) | N/A | 
+|  Log  |  Returns the logarithm \(base 10\) of the value  |  Numeric  | Log\(sales1\) | N/A | 
+|  Ln  |  Returns the natural logarithm \(base e\) of the value  |  Numeric  | Ln\(sales1\) | N/A | 
+|  Pow  |  Returns the value raised to a power  |  Numeric  | Pow\(sales1, 2\) | sales1 ^ 2 | 
+|  If  |  Returns a true or false label based on a condition you specify  |  Boolean, Numeric, Text  | If\(sales1>7000, 'truelabel, 'falselabel'\) | N/A | 
+|  Or  |  Returns a boolean value of whether one of the specified values/conditions is true or not  |  Boolean  | Or\(fullprice, discount\) | fullprice \|\| discount | 
+|  And  |  Returns a boolean value of whether two of the specified values/conditions are true or not  |  Boolean  | And\(sales1,sales2\) | sales1 && sales2 | 
+|  Not  |  Returns a boolean value that is the opposite of the specified value/conditions  |  Boolean  | Not\(sales1\) | \!sales1 | 
+|  Case  |  Returns a boolean value based on conditional statements \(returns c1 if cond1 is true, returns c2 if cond2 is true, else returns c3\)  |  Boolean, Numeric, Text  | Case\(cond1, c1, cond2, c2, c3\) | N/A | 
+|  Equal  |  Returns a boolean value of whether two values are equal  |  Boolean, Numeric, Text  | N/A | c1 = c2c1 == c2 | 
+|  Not equal  |  Returns a boolean value of whether two values are not equal  |  Boolean, Numeric, Text  | N/A | c1 \!= c2 | 
+|  Less than  |  Returns a boolean value of whether c1 is less than c2  |  Boolean, Numeric, Text  | N/A | c1 < c2 | 
+|  Greater than  |  Returns a boolean value of whether c1 is greater than c2  |  Boolean, Numeric, Text  | N/A | c1 > c2 | 
+|  Less than or equal  |  Returns a boolean value of whether c1 is less than or equal to c2  |  Boolean, Numeric, Text  | N/A | c1 <= c2 | 
+|  Greater than or equal  |  Returns a boolean value of whether c1 is greater than or equal to c2  |  Boolean, Numeric, Text  | N/A | c1 >= c2 | 
+
+SageMaker Canvas also supports aggregate operators, which can perform operations such as calculating the sum of all the values or finding the minimum value in a column\. You can use aggregate operators in combination with standard operators in your functions\. For example, to calculate the difference of values from the mean, you could use the function `Abs(height – avg(height))`\. SageMaker Canvas supports the following aggregate operators\.
+
+
+| Aggregate operator | Description | Format | Example | 
+| --- | --- | --- | --- | 
+|  sum  |  Returns the sum of all the values in a column  | sum | sum\(c1\) | 
+|  minimum  |  Returns the minimum value of a column  | min | min\(c2\) | 
+|  maximum  |  Returns the maximum value of a column  | max | max\(c3\) | 
+|  average  |  Returns the average value of a column  | avg | avg\(c4\) | 
+|  std  | Returns the sample standard deviation of a column | std | std\(c1\) | 
+|  stddev  | Returns the standard deviation of the values in a column | stddev | stddev\(c1\) | 
+|  variance  | Returns the unbiased variance of the values in a column | variance | variance\(c1\) | 
+|  approx\_count\_distinct  | Returns the approximate number of distinct items in a column | approx\_count\_distinct | approx\_count\_distinct\(c1\) | 
+|  count  | Returns the number of items in a column | count | count\(c1\) | 
+|  first  |  Returns the first value of a column  | first | first\(c1\) | 
+|  last  |  Returns the last value of a column  | last | last\(c1\) | 
+|  stddev\_pop  | Returns the population standard deviation of a column | stddev\_pop | stddev\_pop\(c1\) | 
+|  variance\_pop  |  Returns the population variance of the values in a column  | variance\_pop | variance\_pop\(c1\) | 
+
 ## Datetime extraction<a name="canvas-prepare-data-datetime"></a>
 
 With the datetime extraction transform, you can extract values from a datetime column to a separate column\. For example, if you have a column containing dates of purchases, you can extract the month value to a separate column and use the new column when building your model\. You can also extract multiple values to separate columns with a single transform\.

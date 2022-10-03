@@ -57,6 +57,16 @@ Use the following procedure to configure Amazon SageMaker Studio\.
 
 1. Select **Next**\. 
 
+Use the following procedure to configure the SageMaker Canvas settings\.
+
+1. For the **Canvas base permissions configuration**, leave the **Enable Canvas base permissions** option turned on \(it is turned on by default\)\. This establishes the minimum required permissions to use the SageMaker Canvas app\.
+
+1. \(Optional\) For the **Time series forecasting configuration**, leave the **Enable time series forecasting** option turned on to give your users permissions to do time series forecasting in SageMaker Canvas \(it is turned on by default\)\.
+
+1. \(Optional\) If you left **Enable time series forecasting** turned on, select **Create and use a new execution role**, or select **Use an existing execution role** if you already have an IAM role with the required Amazon Forecast permissions attached \(for more information, see the [IAM role setup method](canvas-set-up-forecast.md#canvas-set-up-forecast-iam)\)\.
+
+1. Finish making any other changes to your Domain setup, and then choose **Submit**\.
+
 If you encounter an error during post\-building analysis that tells you to increase your quota for `ml.m5.2xlarge` instances, use the following information to resolve the issue\. To allow SageMaker Canvas to complete post\-building analysis of models, you must increase the SageMaker Hosting endpoint limit for the `ml.m5.2xlarge` instance type to a non\-zero value in your AWS account\. After building a model, SageMaker Canvas hosts the model on a SageMaker Hosting endpoint and uses the endpoint to generate the post\-building analysis\. If you don't increase the default account limit of 0 for `ml.m5.2xlarge` instances, SageMaker Canvas cannot complete this step and generates an error during post\-building analysis\.
 
 Use the following procedure to request a limit increase for your account\.
@@ -128,7 +138,7 @@ To attach a CORS policy, use the following procedure\.
 
 After updating the CORS policy, you still might not be successful in uploading your files\. The browser might be caching the CORS settings from a previous upload attempt\. If you're running into issues, clear your browser cache and try again\.
 
-You might want to give yourself the ability to perform forecasts on time series data\. You must add the `AmazonForecastFullAccess` managed policy and a trust relationship with Forecast to the AWS IAM role you chose when setting up the user profile\. For instructions on how to add these permissions to your IAM role, see [Give Your Users Permissions to Perform Time Series Forecasting](canvas-set-up-forecast.md)\.
+You might want to give yourself the ability to perform forecasts on time series data\. You can add time series forecasting permissions when setting up your Domain, or you can edit the permissions for a user profile after creating your Domain\. The required permissions are the `AmazonSageMakerCanvasForecastAccess` managed policy and a trust relationship with Amazon Forecast to the AWS IAM role you chose when setting up the user profile\. For instructions on how to add these permissions to your IAM role, see [Give Your Users Permissions to Perform Time Series Forecasting](canvas-set-up-forecast.md)\.
 
 If you want to import data from Amazon Redshift, you must give yourself additional permissions\. You must add the `AmazonRedshiftFullAccess` managed policy to the AWS IAM role you chose when setting up the user profile\. For instructions on how to add the policy to the role, see [Give Users Permissions to Import Amazon Redshift Data](canvas-redshift-permissions.md)\.
 

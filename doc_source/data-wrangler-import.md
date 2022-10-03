@@ -139,18 +139,20 @@ Use the following procedure to import multiple files\.
 
 ## Import data from Athena<a name="data-wrangler-import-athena"></a>
 
-Amazon Athena is an interactive query service that makes it easy to analyze data directly in Amazon S3 using standard SQL\. With a few actions in the AWS Management Console, you can point Athena at your data stored in Amazon S3 and begin using standard SQL to run ad\-hoc queries and get results in seconds\. To learn more, see [What is Amazon Athena?](https://docs.aws.amazon.com/athena/latest/ug/what-is.html) in the Amazon Athena User Guide\. 
+Use Amazon Athena to import your data from Amazon Simple Storage Service \(Amazon S3\) into Data Wrangler\. In Athena, you write standard SQL queries to select the data that you're importing from Amazon S3\. For more information, see [What is Amazon Athena?](https://docs.aws.amazon.com/athena/latest/ug/what-is.html)
 
-You can query Athena databases and import the results in Data Wrangler\. To use this import option, you must create at least one database in Athena\. To learn how, see [Getting Started](https://docs.aws.amazon.com/athena/latest/ug/getting-started.html) in the Amazon Athena User Guide\.
+You can use the AWS Management Console to set up Amazon Athena\. You must create at least one database in Athena before you start running queries\. For more information about getting started with Athena, see [Getting started](https://docs.aws.amazon.com/athena/latest/ug/getting-started.html)\.
 
-Data Wrangler supports using Athena workgroups to manage the query results within an AWS account\. You can specify an Amazon S3 output location for each workgroup\. You can also specify whether the output of the query can go to different Amazon S3 locations\. For more information, see [Using Workgroups to Control Query Access and Costs](https://docs.aws.amazon.com/athena/latest/ug/manage-queries-control-costs-with-workgroups.html)\.
+Athena is directly integrated with Data Wrangler\. You can write Athena queries without having to leave the Data Wrangler UI\.
 
-To use Athena workgroups, set up the IAM policy that gives access to workgroups\. If you're using a `SageMaker-Execution-Role`, we recommend adding the policy to the role\. For more information about IAM policies for workgroups, see [IAM policies for accessing workgroups](https://docs.aws.amazon.com/athena/latest/ug/workgroups-iam-policy.html)\. For example workgroup policies, see [Workgroup example policies](https://docs.aws.amazon.com/athena/latest/ug/example-policies-workgroup.html)\.
+In addition to writing simple Athena queries in Data Wrangler, you can also use:
++ Athena workgroups for query result management\. For more information about workgroups, see [Managing query results](#data-wrangler-import-manage-results)\.
++ Lifecycle configurations for setting data retention periods\. For more information about data retention, see [Setting data retention periods](#data-wrangler-import-athena-retention)\.
+
+### Query Athena within Data Wrangler<a name="data-wrangler-import-athena-query"></a>
 
 **Note**  
 Data Wrangler does not support federated queries\.
-
-Data Wrangler uses the default Amazon S3 bucket in the same AWS Region in which your Studio instance is located to store Athena query results\. It creates temporary tables in this database to move the query output to this Amazon S3 bucket\. It deletes these tables after data has been imported; however the database, `sagemaker_data_wrangler`, persists\. To learn more, see [Imported Data Storage](#data-wrangler-import-storage)\.
 
 If you use AWS Lake Formation with Athena, make sure your Lake Formation IAM permissions do not override IAM permissions for the database `sagemaker_data_wrangler`\.
 
@@ -168,7 +170,7 @@ The following procedure shows how to import a dataset from Athena into Data Wran
 
 1. For **Data Catalog**, choose a data catalog\.
 
-1. Use the **Database** dropdown list to select the database that you want to query\. When you select a database, you can preview all tables in your database using the **Table**s listed under **Details**\.
+1. Use the **Database** dropdown list to select the database that you want to query\. When you select a database, you can preview all tables in your database using the **Tables** listed under **Details**\.
 
 1. \(Optional\) Choose **Advanced configuration**\.
 
@@ -176,13 +178,80 @@ The following procedure shows how to import a dataset from Athena into Data Wran
 
    1. If your workgroup hasn't enforced the Amazon S3 output location or if you don't use a workgroup, specify a value for **Amazon S3 location of query results**\.
 
+   1. \(Optional\) For **Data retention period**, specify the number of days to store the data before it's deleted\. You can deselect the checkbox to store the data indefinitely\.
+
+   1. \(Optional\) By default, Data Wrangler saves the connection\. You can choose to deselect the checkbox and not save the connection\.
+
 1. For **Sampling**, choose a sampling method\. Choose **None** to turn off sampling\.
 
 1. Enter your query in the query editor and use the **Run** button to run the query\. After a successful query, you can preview your result under the editor\.
+**Note**  
+Salesforce data uses the `timestamptz` type\. If you're querying the timestamp column that you've imported to Athena from Salesforce, cast the data in the column to the `timestamp` type\. The following query casts the timestamp column to the correct type\.  
+
+   ```
+   # cast column timestamptz_col as timestamp type, and name it as timestamp_col
+   select cast(timestamptz_col as timestamp) as timestamp_col from table
+   ```
 
 1. To import the results of your query, select **Import**\.
 
 After you complete the preceding procedure, the dataset that you've queried and imported appears in the Data Wrangler flow\.
+
+By default, Data Wrangler saves the connection settings as a new connection\. When you import your data, the query that you've already specified appears as a new connection\. The saved connections store information about the Athena workgroups and Amazon S3 buckets that you're using\. When you're connecting to the data source again, you can choose the saved connection\.
+
+### Managing query results<a name="data-wrangler-import-manage-results"></a>
+
+Data Wrangler supports using Athena workgroups to manage the query results within an AWS account\. You can specify an Amazon S3 output location for each workgroup\. You can also specify whether the output of the query can go to different Amazon S3 locations\. For more information, see [Using Workgroups to Control Query Access and Costs](https://docs.aws.amazon.com/athena/latest/ug/manage-queries-control-costs-with-workgroups.html)\.
+
+Your workgroup might be configured to enforce the Amazon S3 query output location\. You can't change the output location of the query results for those workgroups\.
+
+If you don't use a workgroup or specify an output location for your queries, Data Wrangler uses the default Amazon S3 bucket in the same AWS Region in which your Studio instance is located to store Athena query results\. It creates temporary tables in this database to move the query output to this Amazon S3 bucket\. It deletes these tables after data has been imported; however the database, `sagemaker_data_wrangler`, persists\. To learn more, see [Imported Data Storage](#data-wrangler-import-storage)\.
+
+To use Athena workgroups, set up the IAM policy that gives access to workgroups\. If you're using a `SageMaker-Execution-Role`, we recommend adding the policy to the role\. For more information about IAM policies for workgroups, see [IAM policies for accessing workgroups](https://docs.aws.amazon.com/athena/latest/ug/workgroups-iam-policy.html)\. For example workgroup policies, see [Workgroup example policies](https://docs.aws.amazon.com/athena/latest/ug/example-policies-workgroup.html)\.
+
+### Setting data retention periods<a name="data-wrangler-import-athena-retention"></a>
+
+Data Wrangler automatically sets a data retention period for the query results\. The results are deleted after the length of the retention period\. For example, the default retention period is five days\. The results of the query are deleted after five days\. This configuration is designed to help you clean up data that you're no longer using\. Cleaning up your data prevents unauthorized users from gaining access\. It also helps control the costs of storing your data on Amazon S3\.
+
+If you don't set a retention period, the Amazon S3 lifecycle configuration determines the duration that the objects are stored\. The data retention policy that you've specified for the lifecycle configuration removes any query results that are older than the Lifecycle configuration that you've specified\. For more information, see [Setting lifecycle configuration on a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-set-lifecycle-configuration-intro.html)\.
+
+Data Wrangler uses S3 lifecycle configurations to manage data retention and expiration\. You must give your Amazon SageMaker Studio IAM execution role permissions to manage bucket lifecycle configurations\. Use the following procedure to give permissions\.
+
+To give permissions to manage the lifecycle configuration do the following\.
+
+1. Sign in to the AWS Management Console and open the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\.
+
+1. Choose **Roles**\.
+
+1. In the search bar, specify the Amazon SageMaker execution role that Amazon SageMaker Studio is using\.
+
+1. Choose the role\.
+
+1. Choose **Add permissions**\.
+
+1. Choose **Create inline policy**\.
+
+1. For **Service**, specify **S3** and choose it\.
+
+1. Under the **Read** section, choose **GetLifecycleConfiguration**\.
+
+1. Under the **Write** section, choose **PutLifecycleConfiguration**\.
+
+1. For **Resources**, choose **Specific**\.
+
+1. For **Actions**, select the arrow icon next to **Permissions management**\.
+
+1. Choose **PutResourcePolicy**\.
+
+1. For **Resources**, choose **Specific**\.
+
+1. Choose the checkbox next to **Any in this account**\.
+
+1. Choose **Review policy**\.
+
+1. For **Name**, specify a name\.
+
+1. Choose **Create policy**\.
 
 ## Import data from Amazon Redshift<a name="data-wrangler-import-redshift"></a>
 
@@ -215,7 +284,7 @@ If you use the IAM managed policy, `AmazonSageMakerFullAccess`, to grant a role 
 Use the following procedures to learn how to add a new cluster\. 
 
 **Note**  
-Data Wrangler uses the Amazon Redshift Data API with temporary credentials\. To learn more about this API, refer to [Using the Amazon Redshift Data API](https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html) in the Amazon Redshift Cluster Management Guide\. 
+Data Wrangler uses the Amazon Redshift Data API with temporary credentials\. To learn more about this API, refer to [Using the Amazon Redshift Data API](https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html) in the Amazon Redshift Management Guide\. 
 
 **To connect to a Amazon Redshift cluster**
 
@@ -235,7 +304,7 @@ Data Wrangler uses the Amazon Redshift Data API with temporary credentials\. To 
 
 1. Enter a **Database User** to identify the user you want to use to connect to the database\. 
 
-1. For **UNLOAD IAM Role**, enter the IAM role ARN of the role that the Amazon Redshift cluster should assume to move and write data to Amazon S3\. For more information about this role, see [Authorizing Amazon Redshift to access other AWS services on your behalf](https://docs.aws.amazon.com/redshift/latest/mgmt/authorizing-redshift-service.html) in the Amazon Redshift Cluster Management Guide\. 
+1. For **UNLOAD IAM Role**, enter the IAM role ARN of the role that the Amazon Redshift cluster should assume to move and write data to Amazon S3\. For more information about this role, see [Authorizing Amazon Redshift to access other AWS services on your behalf](https://docs.aws.amazon.com/redshift/latest/mgmt/authorizing-redshift-service.html) in the Amazon Redshift Management Guide\. 
 
 1. Choose **Connect**\.
 

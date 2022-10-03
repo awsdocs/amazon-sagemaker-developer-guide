@@ -19,7 +19,7 @@ You need to specify subnets and security groups when configuring your private Am
 ### SageMaker Clarify Job Amazon VPC Subnets and Security Groups<a name="clarify-vpc-job"></a>
 
 Subnets and security groups in your private Amazon VPC can be assigned to a SageMaker Clarify job in various ways, depending on how you create the job\.
-+ **SageMaker console**: Provide this information when you create the job in the **SageMaker Dashboard**\. From the **Processing** menu, choose **Processing jobs**, then choose **Create processing job**\. Select the **VPC** option in the **Network** panel and provide the subnets and security groups using the dropdown lists\. Make sure network isolation option provided in this panel is set to disabled\.
++ **SageMaker console**: Provide this information when you create the job in the **SageMaker Dashboard**\. From the **Processing** menu, choose **Processing jobs**, then choose **Create processing job**\. Select the **VPC** option in the **Network** panel and provide the subnets and security groups using the drop\-down lists\. Make sure network isolation option provided in this panel is set to disabled\.
 + **SageMaker API**: Use the `NetworkConfig.VpcConfig` request parameter of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateProcessingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateProcessingJob) API, as shown in the following example:
 
   ```
