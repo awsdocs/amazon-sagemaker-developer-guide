@@ -23,7 +23,7 @@ You can install packages using the following methods:
   + `%pip install`
 + The Jupyter terminal – You can install packages using pip and conda directly\.
 
-From within a notebook you can use the system command syntax \(lines starting with \!\) to install packages, for example, `!pip install` and `!conda install`\. More recently, new commands have been added to IPython: `%pip` and `%conda`\. These commands are the recommended way to install packages from a notebook as they correctly take into account the activate environment or interpreter being used\. For more information, see [Add %pip and %conda magic functions](https://github.com/ipython/ipython/pull/11524)\.
+From within a notebook you can use the system command syntax \(lines starting with \!\) to install packages, for example, `!pip install` and `!conda install`\. More recently, new commands have been added to IPython: `%pip` and `%conda`\. These commands are the recommended way to install packages from a notebook as they correctly take into account the active environment or interpreter being used\. For more information, see [Add %pip and %conda magic functions](https://github.com/ipython/ipython/pull/11524)\.
 
 ### Conda<a name="nbi-add-external-tools-conda"></a>
 
