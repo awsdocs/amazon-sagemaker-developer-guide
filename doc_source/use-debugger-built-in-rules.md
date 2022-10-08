@@ -1,8 +1,8 @@
 # Configure Debugger Built\-in Rules<a name="use-debugger-built-in-rules"></a>
 
-Amazon SageMaker Debugger's built\-in rules analyze tensors emitted during the training of a model\. Debugger offers the `Rule` API operation that monitors training job progress and errors for the success of training your model\. For example, the rules can detect whether gradients are getting too large or too small, whether a model is overfitting or overtraining, and whether a training job does not decrease loss function and improve\. To see a full list of available built\-in rules, see [List of Debugger Built\-in Rules](debugger-built-in-rules.md)\.
+Amazon SageMaker Debugger's built\-in rules analyze tensors emitted during the training of a model\. SageMaker Debugger offers the `Rule` API operation that monitors training job progress and errors for the success of training your model\. For example, the rules can detect whether gradients are getting too large or too small, whether a model is overfitting or overtraining, and whether a training job does not decrease loss function and improve\. To see a full list of available built\-in rules, see [List of Debugger Built\-in Rules](debugger-built-in-rules.md)\.
 
-In the following topics, learn how to use the Debugger built\-in rules\.
+In the following topics, you'll learn how to use the SageMaker Debugger built\-in rules\.
 
 **Topics**
 + [Use Debugger Built\-in Rules with the Default Parameter Settings](#debugger-built-in-rules-configuration)
@@ -11,7 +11,7 @@ In the following topics, learn how to use the Debugger built\-in rules\.
 
 ## Use Debugger Built\-in Rules with the Default Parameter Settings<a name="debugger-built-in-rules-configuration"></a>
 
-To specify Debugger built\-in rules in an estimator, you need to configure a `rules` list object\. The following example code shows the basic structure of listing the Debugger built\-in rules:
+To specify Debugger built\-in rules in an estimator, you need to configure a list object\. The following example code shows the basic structure of listing the Debugger built\-in rules:
 
 ```
 from sagemaker.debugger import Rule, rule_configs
@@ -26,6 +26,8 @@ rules=[
 ```
 
 For more information about default parameter values and descriptions of the built\-in rule, see [List of Debugger Built\-in Rules](debugger-built-in-rules.md)\.
+
+To find the SageMaker Debugger API reference, see [https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html#sagemaker.debugger.sagemaker.debugger.rule_configs](https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html#sagemaker.debugger.sagemaker.debugger.rule_configs) and [https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html#sagemaker.debugger.Rule](https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html#sagemaker.debugger.Rule)\.
 
 For example, to inspect the overall training performance and progress of your model, construct a SageMaker estimator with the following built\-in rule configuration\. 
 
@@ -46,7 +48,7 @@ When you start the training job, Debugger collects system resource utilization d
 
 ## Use Debugger Built\-in Rules with Custom Parameter Values<a name="debugger-built-in-rules-configuration-param-change"></a>
 
-If you want to adjust the built\-in rule parameter values and customize tensor collection regex, configure the `base_config` and `rule_parameters` parameters for the `ProfilerRule.sagemaker` and `Rule.sagemaker` classmethods\. In case of the `Rule.sagemaker` class methods, you can also customize tensor collections through the `collections_to_save` parameter\. The instruction of how to use the `CollectionConfig` class is provided at [Configure Debugger Tensor Collections Using the CollectionConfig API Operation](debugger-configure-hook.md#debugger-configure-tensor-collections)\. 
+If you want to adjust the built\-in rule parameter values and customize tensor collection regex, configure the `base_config` and `rule_parameters` parameters for the `ProfilerRule.sagemaker` and `Rule.sagemaker` classmethods\. In case of the `Rule.sagemaker` class methods, you can also customize tensor collections through the `collections_to_save` parameter\. The instruction of how to use the `CollectionConfig` class is provided at [Configure Tensor Collections Using the `CollectionConfig` API](debugger-configure-hook.md#debugger-configure-tensor-collections)\. 
 
 Use the following configuration template for built\-in rules to customize parameter values\. By changing the rule parameters as you want, you can adjust the sensitivity of the rules to be triggered\. 
 + The `base_config` argument is where you call the built\-in rule methods\.
