@@ -21,11 +21,11 @@ The following is an example of a Liquid template that uses the `<crowd-checkbox>
 </crowd-form>
 ```
 
-### Attributes<a name="checkbox-attributes"></a>
+## Attributes<a name="checkbox-attributes"></a>
 
 The following attributes are supported by this element\.
 
-#### checked<a name="checkbox-attributes-checked"></a>
+### checked<a name="checkbox-attributes-checked"></a>
 
 A Boolean switch that, if present, displays the check box as checked\.
 
@@ -35,7 +35,7 @@ The following is an example of the syntx used to check a checkbox by default\.
   <crowd-checkbox name="checkedBox" value="checked" checked>This box is checked</crowd-checkbox>
 ```
 
-#### disabled<a name="checkbox-attributes-disabled"></a>
+### disabled<a name="checkbox-attributes-disabled"></a>
 
 A Boolean switch that, if present, displays the check box as disabled and prevents it from being checked\.
 
@@ -45,11 +45,11 @@ The following is an example of the syntax used to disable a checkbox\.
   <crowd-checkbox name="disabledCheckBox" value="Disabled" disabled>Cannot be selected</crowd-checkbox>
 ```
 
-#### name<a name="checkbox-attributes-name"></a>
+### name<a name="checkbox-attributes-name"></a>
 
 A string that is used to identify the answer submitted by the worker\. This value will match a key in the JSON object that specifies the answer\.
 
-#### required<a name="checkbox-attributes-required"></a>
+### required<a name="checkbox-attributes-required"></a>
 
 A Boolean switch that, if present, requires the worker to provide input\.
 
@@ -59,17 +59,17 @@ The following is an example of the syntax used to require a checkbox be selected
   <crowd-checkbox name="work_verified" required>Instructions were clear</crowd-checkbox>
 ```
 
-#### value<a name="checkbox-attributes-value"></a>
+### value<a name="checkbox-attributes-value"></a>
 
 A string used as the name for the check box state in the output\. Defaults to "on" if not specified\. 
 
-### Element Hierarchy<a name="checkbox-element-hierarchy"></a>
+## Element Hierarchy<a name="checkbox-element-hierarchy"></a>
 
 This element has the following parent and child elements\.
 + **Parent elements**: [crowd\-form](sms-ui-template-crowd-form.md)
 + **Child elements**: none
 
-### Output<a name="checkbox-element-output"></a>
+## Output<a name="checkbox-element-output"></a>
 
 Provides a JSON object\. The `name` string is the object name and the `value`string is the property name for a Boolean value based on the check box state; true if checked, false if not checked\.
 
@@ -122,7 +122,7 @@ Note that all three color values are properties of a single object\.
 ]
 ```
 
-### See Also<a name="checkbox-see-also"></a>
+## See Also<a name="checkbox-see-also"></a>
 
 For more information, see the following\.
 + [Use Amazon SageMaker Ground Truth to Label Data](sms.md)

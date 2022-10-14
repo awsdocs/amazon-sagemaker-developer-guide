@@ -13,7 +13,9 @@ An Amazon SageMaker notebook instance is a fully managed machine learning \(ML\)
 
    1. For **Notebook instance name**, type a name for your notebook instance\.
 
-   1. For **Instance type**, choose `ml.t2.medium`\. This is the least expensive instance type that notebook instances support, and it suffices for this exercise\. If a `ml.t2.medium` instance type isn't available in your current AWS Region, choose `ml.t3.medium`\.
+   1. For **Notebook Instance type**, choose `ml.t2.medium`\. This is the least expensive instance type that notebook instances support, and it suffices for this exercise\. If a `ml.t2.medium` instance type isn't available in your current AWS Region, choose `ml.t3.medium`\.
+
+   1. For **Platform Identifier**, choose a platform type to create the notebook instance on\. This platform type dictates the Operating System and the JupyterLab version that your notebook instance is created with\. For information about platform identifier type, see [Amazon Linux 2 vs Amazon Linux notebook instances](nbi-al2.md)\. For information about JupyterLab versions, see [JupyterLab versioning](nbi-jl.md)\.
 
    1. For **IAM role**, choose **Create a new role**, and then choose **Create role**\. This IAM role automatically gets permissions to access any S3 bucket that has `sagemaker` in the name\. It gets these permissions through the `AmazonSageMakerFullAccess` policy, which SageMaker attaches to the role\. 
 **Note**  
@@ -35,7 +37,7 @@ If you want to change the ML compute instance type or the size of the Amazon EBS
 
 1. Choose **Actions**, choose **Stop**, and then wait until the notebook instance fully stops\.
 
-1. After the notebook instance status changes to **Stopped**, choose **Actions**, and then choose **Update setting**\.  
+1. After the notebook instance status changes to **Stopped**, choose **Actions**, and then choose **Update settings**\.  
 ![\[Animated screenshot that shows how to update SageMaker notebook instance settings.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/get-started-ni/gs-ni-update-instance.gif)
 
    1. For **Notebook instance type**, choose a different ML instance type\.

@@ -20,3 +20,4 @@ Use SageMaker projects to create an MLOps solution to orchestrate and manage:
 + [Update an MLOps Project in Amazon SageMaker Studio](sagemaker-projects-update.md)
 + [Delete an MLOps Project using Amazon SageMaker Studio](sagemaker-projects-delete.md)
 + [SageMaker MLOps Project Walkthrough](sagemaker-projects-walkthrough.md)
++ [SageMaker MLOps Project Walkthrough Using Third\-party Git Repos](sagemaker-projects-walkthrough-3rdgit.md)

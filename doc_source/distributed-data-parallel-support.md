@@ -4,13 +4,20 @@ Before using the SageMaker data parallel library, check what are the supported M
 
 ## Supported Frameworks<a name="distributed-data-parallel-supported-frameworks"></a>
 
-The SageMaker data parallel library supports the following deep learning frameworks and is available in AWS Deep Learning Containers \(DLC\) or downloadable as a binary file\.
+The following tables show the deep learning frameworks and their versions that SageMaker and the SageMaker distributed data parallel library support\. The SageMaker data parallel library is available in AWS Deep Learning Containers \(DLC\) or downloadable as a binary file\.
 
-**PyTorch versions supported by SageMaker and the SageMaker distributed data parallel library**
+**Topics**
++ [PyTorch](#distributed-data-parallel-supported-frameworks-pytorch)
++ [PyTorch Lightning](#distributed-data-parallel-supported-frameworks-lightning)
++ [TensorFlow](#distributed-data-parallel-supported-frameworks-tensorflow)
++ [Hugging Face Transformers](#distributed-data-parallel-supported-frameworks-transformers)
+
+### PyTorch<a name="distributed-data-parallel-supported-frameworks-pytorch"></a>
 
 
-| PyTorch version | SageMaker distributed data parallel library version | `smdistributed-dataparallel` integrated image URI | URL of the binary file\*\* | 
+| PyTorch versions | SageMaker distributed data parallel library versions | `smdistributed-dataparallel` integrated image URI | URL of the binary file\*\* | 
 | --- | --- | --- | --- | 
+| v1\.12\.0 | smdistributed\-dataparallel==v1\.5\.0\* | 763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/pytorch\-training:1\.12\.0\-gpu\-py38\-cu113\-ubuntu20\.04\-sagemaker | https://smdataparallel\.s3\.amazonaws\.com/binary/pytorch/1\.12\.0/cu113/2022\-07\-01/smdistributed\_dataparallel\-1\.5\.0\-cp38\-cp38\-linux\_x86\_64\.whl | 
 | v1\.11\.0 | smdistributed\-dataparallel==v1\.4\.1\* | 763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/pytorch\-training:1\.11\.0\-gpu\-py38\-cu113\-ubuntu20\.04\-sagemaker | https://smdataparallel\.s3\.amazonaws\.com/binary/pytorch/1\.11\.0/cu113/2022\-04\-14/smdistributed\_dataparallel\-1\.4\.1\-cp38\-cp38\-linux\_x86\_64\.whl | 
 | v1\.10\.2 |  smdistributed\-dataparallel==v1\.4\.0\* | 763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/pytorch\-training:1\.10\.2\-gpu\-py38\-cu113\-ubuntu20\.04\-sagemaker | https://smdataparallel\.s3\.amazonaws\.com/binary/pytorch/1\.10\.2/cu113/2022\-02\-18/smdistributed\_dataparallel\-1\.4\.0\-cp38\-cp38\-linux\_x86\_64\.whl | 
 | v1\.9\.1 |  smdistributed\-dataparallel==v1\.2\.0  |  763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/pytorch\-training:1\.9\.1\-gpu\-py38\-cu111\-ubuntu20\.04  | https://smdataparallel\.s3\.amazonaws\.com/binary/pytorch/1\.9\.0/cu111/2021\-08\-13/smdistributed\_dataparallel\-1\.2\.0\-cp38\-cp38\-linux\_x86\_64\.whl | 
@@ -26,11 +33,29 @@ The SageMaker data parallel library supports the following deep learning framewo
 
 \*\* The URLs of the binary files are for installing the SageMaker distributed data parallelism library in custom containers\. For more information, see [Create Your Own Docker Container with the SageMaker Distributed Data Parallel Library](data-parallel-use-api.md#data-parallel-bring-your-own-container)\.
 
-**TensorFlow versions supported by SageMaker and the SageMaker distributed data parallel library**
+### PyTorch Lightning<a name="distributed-data-parallel-supported-frameworks-lightning"></a>
 
 
-| TensorFlow version | SageMaker distributed data parallel library version | `smdistributed-dataparallel` integrated image URI | 
+| PyTorch Lightning versions | PyTorch versions | SageMaker distributed data parallel library versions | `smdistributed-dataparallel` integrated image URI | URL of the binary file\*\* | 
+| --- | --- | --- | --- | --- | 
+|  1\.7\.2 1\.7\.0 1\.6\.4 1\.6\.3 1\.5\.10  | 1\.12\.0 | smdistributed\-dataparallel==v1\.5\.0 | 763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/pytorch\-training:1\.12\.0\-gpu\-py38\-cu113\-ubuntu20\.04\-sagemaker | https://smdataparallel\.s3\.amazonaws\.com/binary/pytorch/1\.12\.0/cu113/2022\-07\-01/smdistributed\_dataparallel\-1\.5\.0\-cp38\-cp38\-linux\_x86\_64\.whl | 
+
+**Note**  
+PyTorch Lightning and its utility libraries such as Lightning Bolts are not preinstalled in the PyTorch DLCs\. When you construct a SageMaker PyTorch estimator and submit a training job request in [Step 2](https://docs.aws.amazon.com/sagemaker/latest/dg/data-parallel-use-api.html#data-parallel-framework-estimator), you need to provide `requirements.txt` to install `pytorch-lightning` and `lightning-bolts` in the SageMaker PyTorch training container\.  
+
+```
+# requirements.txt
+pytorch-lightning
+lightning-bolts
+```
+For more information about specifying the source directory to place the `requirements.txt` file along with your training script and a job submission, see [Using third\-party libraries](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/using_pytorch.html#id12) in the *Amazon SageMaker Python SDK documentation*\.
+
+### TensorFlow<a name="distributed-data-parallel-supported-frameworks-tensorflow"></a>
+
+
+| TensorFlow versions | SageMaker distributed data parallel library versions | `smdistributed-dataparallel` integrated image URI | 
 | --- | --- | --- | 
+| 2\.9\.1 |  smdistributed\-dataparallel==v1\.4\.1  | 763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/tensorflow\-training:2\.9\.1\-gpu\-py39\-cu112\-ubuntu20\.04\-sagemaker | 
 | 2\.8\.0 |  smdistributed\-dataparallel==v1\.3\.0  | 763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/tensorflow\-training:2\.8\.0\-gpu\-py39\-cu112\-ubuntu20\.04\-sagemaker | 
 | 2\.7\.1 |  smdistributed\-dataparallel==v1\.3\.0  |  763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/tensorflow\-training:2\.7\.1\-gpu\-py38\-cu112\-ubuntu20\.04\-sagemaker  | 
 | 2\.6\.2 | smdistributed\-dataparallel==v1\.2\.1  |  763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/tensorflow\-training:2\.6\.2\-gpu\-py38\-cu112\-ubuntu20\.04  | 
@@ -38,7 +63,7 @@ The SageMaker data parallel library supports the following deep learning framewo
 | 2\.4\.1 | smdistributed\-dataparallel==v1\.2\.0  |  763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/tensorflow\-training:2\.4\.1\-gpu\-py37\-cu110\-ubuntu18\.04  | 
 | 2\.3\.2 | smdistributed\-dataparallel==v1\.0\.0  |  763104351884\.dkr\.ecr\.*<region>*\.amazonaws\.com/tensorflow\-training:2\.3\.2\-gpu\-py37\-cu110\-ubuntu18\.04  | 
 
-**Hugging Face Transformers versions supported by SageMaker and the SageMaker distributed data parallel library**
+### Hugging Face Transformers<a name="distributed-data-parallel-supported-frameworks-transformers"></a>
 
 The AWS Deep Learning Containers for Hugging Face use the SageMaker Training Containers for PyTorch and TensorFlow as their base images\. To look up the Hugging Face Transformers library versions and paired PyTorch and TensorFlow versions, see the latest [Hugging Face Containers](https://github.com/aws/deep-learning-containers/blob/master/available_images.md#huggingface-training-containers) and the [Prior Hugging Face Container Versions](https://github.com/aws/deep-learning-containers/blob/master/available_images.md#prior-hugging-face-container-versions)\.
 

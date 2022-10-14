@@ -1,6 +1,6 @@
 # Schedule Bias Drift Monitoring Jobs<a name="clarify-model-monitor-bias-drift-schedule"></a>
 
-Now that you have a baseline, you can call the `create_monitoring_schedule()` method to schedule an hourly monitor to analyze the data with a monitoring schedule\. If you have submitted a baselining job, the monitor automatically picks up analysis configuration from the baselining job\. If you skip the baselining step or the capture dataset has a different nature from the training dataset, you must provide the analysis configuration\.
+Now that you have a baseline, you can call the `create_monitoring_schedule()` method to schedule an hourly monitor to analyze the data with a monitoring schedule\. If you have submitted a baselining job, the monitor automatically picks up analysis configuration from the baselining job\. If you skip the baselining step or the capture dataset has a different nature from the training dataset, you must provide the analysis configuration\. The following code example shows how the analysis configuration is structured\.
 
 ```
 model_bias_analysis_config = None
@@ -25,3 +25,11 @@ model_bias_monitor.create_monitoring_schedule(
 )
 print(f"Model bias monitoring schedule: {model_bias_monitor.monitoring_schedule_name}")
 ```
+
+
+
+Bias drift monitoring requires ground truth labels\. In addition, these labels are necessary to compute most SageMaker Clarify bias metrics\. To provide these, periodically label data that is captured by your endpoint and upload the labels to an Amazon S3 bucket\. Use the schema outlined in [Ingest Ground Truth Labels and Merge Them With Predictions](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-merge.html)\. 
+
+The execution of this bias drift monitoring job starts a merge job that joins the ground truth data and captured data together using a unique identifier\. Then merged data is saved to an Amazon S3 bucket\. Afterwards, a SageMaker Clarify bias analysis job computes bias metrics on the merged data\. The `MaxRuntimeInSeconds` parameter of the `StoppingCondition` API is divided between the merge and the analysis job\. For an hourly bias drift monitoring job, `MaxRuntimeInSeconds` should not exceed 1800 seconds\.
+
+If the availability of ground truth labels is delayed, use the `StartTimeOffset` and `EndTimeOffset` parameters of the [EndpointInput](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_StoppingCondition.html) API to adjust the start and end times of the endpoint\. For more information, see [Schedule Model Quality Monitoring Jobs](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-schedule.html)\.

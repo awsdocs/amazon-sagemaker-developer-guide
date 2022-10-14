@@ -40,7 +40,7 @@ SageMaker Training Compiler only compiles DL models for training on [supported G
 **Topics**
 + [What Is SageMaker Training Compiler?](#training-compiler-what-is)
 + [How It Works](#training-compiler-how-it-works)
-+ [Supported Frameworks, AWS Regions, Supported Instances, and Tested Models](training-compiler-support.md)
++ [Supported Frameworks, AWS Regions, Instance Types, and Tested Models](training-compiler-support.md)
 + [Bring Your Own Deep Learning Model](training-compiler-modify-scripts.md)
 + [Enable SageMaker Training Compiler](training-compiler-enable.md)
 + [SageMaker Training Compiler Example Notebooks and Blogs](training-compiler-examples-and-blogs.md)

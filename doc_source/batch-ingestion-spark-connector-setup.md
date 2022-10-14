@@ -1,12 +1,20 @@
 # Batch Ingestion Spark Connector Setup<a name="batch-ingestion-spark-connector-setup"></a>
 
-## Introduction<a name="w2481aac23c29c11b3"></a>
+## Introduction<a name="batch-ingestion-spark-connector-introduction"></a>
 
  Amazon SageMaker Feature Store supports batch data ingestion with Spark, using your existing ETL pipeline, or a pipeline on Amazon EMR\. You can also use this functionality from a Amazon SageMaker Notebook Instance\. 
 
- Methods for installing and implementing batch data ingestion are provided for Python and Scala\. Python developers can use the `Amazon SageMaker-feature-store-pyspark` Python library for local development, installation on Amazon EMR, or run it from Jupyter notebooks\. Scala developers can use the Feature Store Spark connector available in Maven\. 
+ Methods for installing and implementing batch data ingestion are provided for Python and Scala\. Python developers can use the `sagemaker-feature-store-pyspark` Python library for local development, installation on Amazon EMR, or run it from Jupyter notebooks\. Scala developers can use the Feature Store Spark connector available in Maven\. 
 
-## Installation<a name="w2481aac23c29c11b5"></a>
+You can use the Spark connector to ingest data in the following ways:
+
+1. Ingest by default – Ingest your dataframe into the online store\. When you use the connector to update the online store, The Spark connector uses the [PutRecord](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_feature_store_PutRecord.html) operation to make the update\. Within 15 minutes, Feature Store syncs the data between the online store and the offline store\. The online store contains the latest value for the record\. For more information about how the online and offline stores work, see [Feature Store Concepts](feature-store-getting-started.md#feature-store-concepts)\.
+
+1. Offline store direct ingestion – Use the Spark connector to ingest your dataframe directly into the offline store\. Ingesting the dataframe directly into the offline store doesn't update the online store\.
+
+For information about using the different ingestion methods, see [Example Implementations](#batch-ingestion-spark-connector-example-implementations)\.
+
+## Installation<a name="batch-ingestion-spark-connector-installation"></a>
 
  **Scala Users** 
 
@@ -31,19 +39,18 @@
 
  ****Requirements**** 
 +  PySpark >= 3\.0\.0 
-+  Python >= 3\.6  
++  Python >= 3\.8  
 +  Amazon EMR > 6\.x \(only if you are using Amazon EMR\) 
++ Kernel = `conda_python3`
 
  A library is available for Python developers, [sagemaker\-feature\-store\-pyspark](https://pypi.org/project/sagemaker-feature-store-pyspark/)\. The following sections describe how to install the library locally, on Amazon EMR, and on Amazon SageMaker\. 
-
- We recommend setting the `$SPARK_HOME` to the directory where you have Spark installed\. During installation, we are uploading some required jar files to `SPARK_HOME`, so that all of the dependencies will load automatically\. Spark starting a JVM is required to make this PySpark library work\. 
 
  **Local Installation** 
 
  To find more info about the installation, enable verbose mode by appending `--verbose` to the following installation command\. 
 
 ```
-pip3 install Amazon SageMaker-feature-store-pyspark --no-binary :all:
+pip3 install sagemaker-feature-store-pyspark --no-binary :all:
 ```
 
  **Installation on Amazon EMR** 
@@ -53,11 +60,8 @@ pip3 install Amazon SageMaker-feature-store-pyspark --no-binary :all:
  You can either create a custom step to start the library installation or SSH to your cluster to install the library directly in console\. 
 
 ```
-    export SPARK_HOME=/usr/lib/spark
-    sudo -E pip3 install sagemaker-feature-store-pyspark --no-binary :all: --verbose
+sudo -E pip3 install sagemaker-feature-store-pyspark --no-binary :all: --verbose
 ```
-
- Note: If you want to install the dependent jars automatically to `SPARK_HOME`, do not use Amazon EMR’s bootstrap step\. 
 
  **Installation on a Amazon SageMaker Notebook Instance** 
 
@@ -69,14 +73,13 @@ pip3 install Amazon SageMaker-feature-store-pyspark --no-binary :all:
 import os
     
 original_spark_version = "2.4.0"
-os.environ['SPARK_HOME'] = '/home/ec2-user/anaconda3/envs/python3/lib/python3.6/site-packages/pyspark'
     
 # Install a newer versiion of Spark which is compatible with spark library
-!pip3 install pyspark==3.1.1
+!pip3 install pyspark==3.1.1 
 !pip3 install sagemaker-feature-store-pyspark --no-binary :all:
 ```
 
-## Example Implementations<a name="w2481aac23c29c11b7"></a>
+## Example Implementations<a name="batch-ingestion-spark-connector-example-implementations"></a>
 
  **Scala** 
 
@@ -109,7 +112,7 @@ object ProgramOffline {
     // Load the feature definitions from input schema. The feature definitions can be used to create a feature group
     val featureDefinitions = featureStoreManager.loadFeatureDefinitionsFromSchema(df)
 
-    val featureGroupArn = "arn:aws:Amazon SageMaker:us-west-2:<your-account-id>:feature-group/<your-feature-group-name>"
+    val featureGroupArn = "arn:aws:sagemaker:us-west-2:<your-account-id>:feature-group/<your-feature-group-name>"
    
     // Ingest by default
     featureStoreManager.ingestData(df, featureGroupArn)
@@ -144,7 +147,7 @@ feature_store_manager= FeatureStoreManager()
 # Load the feature definitions from input schema. The feature definitions can be used to create a feature group
 feature_definitions = feature_store_manager.load_feature_definitions_from_schema(df)
 
-feature_group_arn = "arn:aws:Amazon SageMaker:us-west-2:<your-account-id>:feature-group/<your-feature-group-name>"
+feature_group_arn = "arn:aws:sagemaker:us-west-2:<your-account-id>:feature-group/<your-feature-group-name>"
 
 # Ingest by default
 feature_store_manager.ingest_data(input_data_frame=df, feature_group_arn=feature_group_arn)

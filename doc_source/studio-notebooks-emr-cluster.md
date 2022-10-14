@@ -1,18 +1,8 @@
-# Prepare Data at Scale with Studio Notebooks<a name="studio-notebooks-emr-cluster"></a>
+# Prepare Data using Amazon EMR<a name="studio-notebooks-emr-cluster"></a>
 
-Studio gives data scientists, machine learning \(ML\) engineers, and general practitioners the tools to perform data analytics and data preparation at scale\. From within a Studio notebook, you can visually browse, discover, and connect to [Amazon EMR](http://aws.amazon.com/emr)\. After you’re connected, you can interactively explore, visualize, and prepare petabyte\-scale data for machine learning \(ML\) using Apache Spark, Hive, and Presto\. 
+Data scientists and data engineers use Apache Spark, Hive, and Presto on [Amazon EMR](http://aws.amazon.com/emr) for fast data preparation\. Studio comes with built\-in integration of Amazon EMR, enabling you to perform petabyte\-scale interactive data preparation and machine learning right in your Studio notebook\. Within your notebook, you can visually browse, discover, and connect to Amazon EMR\. After you connect, you can interactively explore, visualize, and prepare petabyte\-scale data for machine learning \(ML\) using Apache Spark, Hive, and Presto\. Amazon EMR can handle your ETL jobs, run large\-scale model training, perform analyses, and handle reporting, among many other capabilities\.
 
-Analyzing, transforming, and preparing large amounts of data is a foundational step of any data science and ML workflow\. Running interactive analytics and data preparation on Amazon EMR and SageMaker Studio notebooks can serve as a unified environment for complete data science and data engineering workflows\. 
-
-Studio also supports a tool to share your notebook with colleagues for collaboration through the UI\. With this capability, you can now build ML workflows directly from Studio notebooks\. Connecting to an Amazon EMR cluster using SageMaker Studio can also help improve team efficiency by streamlining the setup for ML workflows\. 
-
-The supported images and kernels for connecting to an Amazon EMR cluster are as follows:
-+ Images: Data Science, SparkMagic, PyTorch 1\.8, TensorFlow 2\.8
-+ Kernel: PySpark and Spark kernels for the SparkMagic image under running apps, and Python 3 \(IPython\) for the Data Science image\.
-
-For guided instructions on how to connect to an Amazon EMR cluster from Studio, see [ Perform interactive data engineering and data science workflows from SageMaker Studio notebooks](http://aws.amazon.com/blogs/machine-learning/perform-interactive-data-engineering-and-data-science-workflows-from-amazon-sagemaker-studio-notebooks/)\.
-
-For detailed information about required permissions, see [Required Permissions](studio-notebooks-emr-required-permissions.md)\.
+For guided instructions about how to connect to an Amazon EMR cluster from SageMaker Studio, see [Create and manage Amazon EMR Clusters from SageMaker Studio to run interactive Spark and ML workloads](http://aws.amazon.com/blogs/machine-learning/part-1-create-and-manage-amazon-emr-clusters-from-sagemaker-studio-to-run-interactive-spark-and-ml-workloads/)\.
 
 **Prerequisites**
 + You will need access to SageMaker Studio that is set up to use Amazon Virtual Private Cloud \(Amazon VPC\) mode\. 
@@ -29,6 +19,10 @@ For detailed information about required permissions, see [Required Permissions](
 + To connect to an Amazon EMR cluster from Studio, you must first access SageMaker Studio\. If you have not set up SageMaker Studio, follow the [Get Started guide](https://docs.aws.amazon.com/sagemaker/latest/dg/notebooks-get-started.html)\.
 + If you created a new domain during Studio setup, then discovering an Amazon EMR cluster from Studio should be available to you\. 
   + If you are reusing an existing domain, you must update both Studio and Studio applications\. For detailed instructions, see [Update Studio](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-tasks-update-studio.html) and [Update Studio applications ](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-tasks-update-apps.html)\. 
++ SageMaker Studio comes with built\-in support to connect to EMR clusters in the following images and kernels:
+  + Images: Data Science, Data Science 2\.0, SparkMagic, SparkAnalytics 1\.0, PyTorch 1\.8, TensorFlow 2\.6
+  + Kernel: PySpark and Spark kernels for the SparkMagic image, Python 3 \(IPython\) for the Data Science, Data Science 2\.0, PyTorch 1\.8, TensorFlow 2\.6 images\.
++ If you want to connect to EMR clusters using another built\-in image or your own image, follow instructions in [Bring your own image](#studio-notebooks-emr-process-byoi)\.
 
 ## Bring your own image<a name="studio-notebooks-emr-process-byoi"></a>
 

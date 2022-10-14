@@ -22,12 +22,12 @@ You use the SageMaker Canvas UI to import your data and perform analyses\. You c
 
 To learn more about pricing, see the [SageMaker Canvas pricing page](http://aws.amazon.com/sagemaker/canvas/pricing/)\.
 
-SageMaker Canvas is currently available in the following Regions: US East \(Ohio\), US East \(N\. Virginia\), US West \(Oregon\), Asia Pacific \(Tokyo\), Europe \(Frankfurt\), and Europe \(Ireland\)\.
+SageMaker Canvas is currently available in the following Regions: US East \(Ohio\), US East \(N\. Virginia\), US West \(Oregon\), Asia Pacific \(Mumbai\), Asia Pacific \(Seoul\), Asia Pacific \(Singapore\), Asia Pacific \(Sydney\), Asia Pacific \(Tokyo\), Europe \(Frankfurt\), and Europe \(Ireland\)\.
 
 **Topics**
 + [Are you a first\-time SageMaker Canvas user?](#canvas-first-time-user)
 + [Getting started with using Amazon SageMaker Canvas](canvas-getting-started.md)
-+ [Setting up and managing Amazon SageMaker Canvas \(for IT administrators\)](canvas-setting-up.md)
++ [Setting Up and Managing Amazon SageMaker Canvas \(for IT Administrators\)](canvas-setting-up.md)
 + [Importing data in Amazon SageMaker Canvas](canvas-importing-data.md)
 + [Build a model](canvas-build-model.md)
 + [Evaluating Your Model's Performance in Amazon SageMaker Canvas](canvas-evaluate-model.md)
@@ -40,5 +40,5 @@ SageMaker Canvas is currently available in the following Regions: US East \(Ohio
 ## Are you a first\-time SageMaker Canvas user?<a name="canvas-first-time-user"></a>
 
 If you are a first\-time user of SageMaker Canvas, we recommend that you begin by reading the following sections:
-+ For IT administrators – [Setting up and managing Amazon SageMaker Canvas \(for IT administrators\)](canvas-setting-up.md)
++ For IT administrators – [Setting Up and Managing Amazon SageMaker Canvas \(for IT Administrators\)](canvas-setting-up.md)
 + For analysts and individual users – [Getting started with using Amazon SageMaker Canvas](canvas-getting-started.md)

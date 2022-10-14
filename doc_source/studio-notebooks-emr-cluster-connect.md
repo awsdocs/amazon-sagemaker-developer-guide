@@ -18,22 +18,17 @@ Only a subset of kernels can connect to an Amazon EMR cluster\. The supported im
 
 1. A **Connect to cluster** UI screen will appear\. Choose a cluster and select **Connect**\. Not all Amazon EMR clusters can be connected to Studio\. For more information, see [Perform interactive data processing using Spark in Studio Notebooks](http://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-studio-notebooks-backed-by-spark-in-amazon-emr/)\.
 
-   1. When you connect to a cluster, it adds a code block to an active cell to establish the connection\.  
+   When you connect to a cluster, it adds a code block to an active cell to establish the connection\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/cluster-discovery.png)
 
 1. If the cluster that you're connecting to does not use Kerberos or Lightweight Directory Access Protocol \(LDAP\) connection, you will be prompted to select the credential type\. You can choose **HTTP basic authentication** or **No credential**\.   
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/select-auth-type.png)
 
 1. An active cell will populate\. This will contain the connection information that you need for connecting to the Amazon EMR cluster that you selected\. 
+   + When the authentication type is Kerberos and HTTP Basic Auth, a widget will be created in an active cell for you to provide your **Username** and **Password**\.
+   + If the cluster that you are connecting to does not use Kerberos or LDAP, and you selected `No credentials`, you will automatically connect to an Amazon EMR cluster\.
 
-   1. When the authentication type is Kerberos and HTTP Basic Auth, a widget will be created in an active cell for you to provide your **Username** and **Password**\. The following screenshot shows a successful connection after entering these credentials\.   
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/code-injection.png)
-
-   1. If the cluster that you are connecting to does not use Kerberos or LDAP, and you selected `No credentials`, you will automatically connect to an Amazon EMR cluster\. The following screenshot shows the UI after credentials have been successfully entered\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/successfully-connect-to-cluster-no-auth.png)
-
-1. 
-   + This step is optional\. If you want to change the Amazon EMR cluster that the Studio notebook is connected to, select **Cluster** at the top\-right of your notebook\. After selecting **Cluster**, browse the list of clusters and select a different cluster\.
+1. This step is optional\. If you want to change the Amazon EMR cluster that the Studio notebook is connected to, select **Cluster** at the top\-right of your notebook\. After selecting **Cluster**, browse the list of clusters and select a different cluster\.
 
 For more information on required permissions, see [Required Permissions](studio-notebooks-emr-required-permissions.md)\.
 

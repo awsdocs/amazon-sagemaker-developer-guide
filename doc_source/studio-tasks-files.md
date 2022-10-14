@@ -2,6 +2,9 @@
 
 When you onboard to Amazon SageMaker Studio, a home directory is created for you in the Amazon Elastic File System \(Amazon EFS\) volume that was created for your team\. Studio can open only files that have been uploaded to your directory\. The Studio file browser maps to your home directory\.
 
+**Note**  
+Studio does not support uploading folders\. Only individual files can be uploaded\.
+
 **To upload files to your home directory**
 
 1. In the left sidebar, choose the **File Browser** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/File_browser_squid.png)\)\.

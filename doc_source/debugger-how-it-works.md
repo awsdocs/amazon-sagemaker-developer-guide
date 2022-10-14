@@ -18,5 +18,3 @@ Debugger stores the following data from your training jobs in your secured Amazo
 By default, Debugger monitors and debugs SageMaker training jobs without any Debugger\-specific parameters configured in SageMaker estimators\. Debugger collects system metrics every 500 milliseconds and basic output tensors \(scalar outputs such as loss and accuracy\) every 500 steps\. It also runs the `ProfilerReport` rule to analyze the system metrics and aggregate the Studio Debugger insights dashboard and a profiling report\. Debugger saves the output data in your secured Amazon S3 bucket\.
 
 The Debugger built\-in rules run on processing containers, which are designed to evaluate machine learning models by processing the training data collected in your S3 bucket \(see [Process Data and Evaluate Models](https://docs.aws.amazon.com/sagemaker/latest/dg/processing-job.html)\)\. The built\-in rules are fully managed by Debugger\. You can also create your own rules customized to your model to watch for any issues you want to monitor\. 
-
-See the following topics for best practices to improve the performance of your model using SageMaker Debugger\.

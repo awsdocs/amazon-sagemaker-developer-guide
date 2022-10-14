@@ -1,4 +1,4 @@
-# Supported Frameworks, AWS Regions, Supported Instances, and Tested Models<a name="training-compiler-support"></a>
+# Supported Frameworks, AWS Regions, Instance Types, and Tested Models<a name="training-compiler-support"></a>
 
 Before using SageMaker Training Compiler, check if your framework of choice is supported, the instance types are available in your AWS account, and your AWS account is in one of the supported AWS Regions\.
 
@@ -9,9 +9,19 @@ SageMaker Training Compiler is available in the SageMaker Python SDK v2\.70\.0 o
 
 SageMaker Training Compiler supports the following deep learning frameworks and is available through AWS Deep Learning Containers\.
 
+**Topics**
++ [PyTorch](#training-compiler-supported-frameworks-pytorch)
++ [TensorFlow](#training-compiler-supported-frameworks-tensorflow)
+
+### PyTorch<a name="training-compiler-supported-frameworks-pytorch"></a>
+
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/training-compiler-support.html)
 
-For more information, see [SageMaker Training Compiler containers](https://github.com/aws/deep-learning-containers/blob/master/available_images.md#sagemaker-training-compiler-containers) in the *AWS Deep Learning Containers GitHub repository*\.
+### TensorFlow<a name="training-compiler-supported-frameworks-tensorflow"></a>
+
+[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/training-compiler-support.html)
+
+For more information, see [Available Images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md) in the *AWS Deep Learning Containers GitHub repository*\.
 
 ## AWS Regions<a name="training-compiler-availablity-zone"></a>
 
@@ -20,21 +30,10 @@ The [SageMaker Training Compiler Containers](https://github.com/aws/deep-learnin
 ## Supported Instance Types<a name="training-compiler-supported-instance-types"></a>
 
 SageMaker Training Compiler is tested on and supports the following ML instance types\.
-
-
-| Instance type | 
-| --- | 
-| ml\.p3\.2xlarge  | 
-| ml\.p3\.8xlarge  | 
-| ml\.p3\.16xlarge  | 
-| ml\.p3dn\.24xlarge  | 
-| ml\.p4d\.24xlarge | 
-| ml\.g4dn\.xlarge | 
-| ml\.g4dn\.2xlarge | 
-| ml\.g4dn\.4xlarge | 
-| ml\.g4dn\.8xlarge | 
-| ml\.g4dn\.12xlarge | 
-| ml\.g4dn\.16xlarge | 
++ P4 instances
++ P3 instances
++ G4dn instances
++ G5 instances
 
 For specs of the instance types, see the **Accelerated Computing** section in the [Amazon EC2 Instance Types page](http://aws.amazon.com/ec2/instance-types/)\. For information about instance pricing, see [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/)\.
 
@@ -55,13 +54,27 @@ The following table includes a list of the models that have been tested with Sag
 **Note**  
 The batch sizes are local batch size that fit into each individual GPU of an instance type\. You should also adjust the learning rate when changing the batch size\.
 
-### Transformers 4\.17\.0 with PyTorch 1\.10\.2<a name="training-compiler-tested-models-tf417-pt110"></a>
+### TensorFlow 2\.9\.1<a name="training-compiler-tested-models-tf291"></a>
+
+Tested using [TensorFlow Model Garden](https://github.com/tensorflow/models) with Automatic Mixed Precision \(AMP\)
+
+[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/training-compiler-support.html)
+
+\* The batch sizes marked with the asterisk symbol \(\*\) indicate the largest batch size tested by the SageMaker Training Compiler developer team\. For the marked cells, the instance may be able to fit a larger batch size than what is indicated\.
+
+### Transformers 4\.21\.1 with PyTorch 1\.11\.0<a name="training-compiler-tested-models-hf421-pt111"></a>
 
 Tested with `Sequence_Len=512` and Automatic Mixed Precision \(AMP\)
 
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/training-compiler-support.html)
 
-### Transformers 4\.11\.0 with PyTorch 1\.9\.0<a name="training-compiler-tested-models-tf411-pt190"></a>
+### Transformers 4\.17\.0 with PyTorch 1\.10\.2<a name="training-compiler-tested-models-hf417-pt110"></a>
+
+Tested with `Sequence_Len=512` and Automatic Mixed Precision \(AMP\)
+
+[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/training-compiler-support.html)
+
+### Transformers 4\.11\.0 with PyTorch 1\.9\.0<a name="training-compiler-tested-models-hf411-pt190"></a>
 
 Tested with `Sequence_Len=512` and Automatic Mixed Precision \(AMP\)
 
@@ -97,7 +110,7 @@ Tested with `Sequence_Len=512` and Automatic Mixed Precision \(AMP\)
 | gpt2  | ml\.p3\.8xlarge | 8 | 20 | 
 | roberta\-base  | ml\.p3\.8xlarge | 12 | 20 | 
 
-### Transformers 4\.17\.0 with TensorFlow 2\.6\.3<a name="training-compiler-tested-models-tf417-tf263"></a>
+### Transformers 4\.17\.0 with TensorFlow 2\.6\.3<a name="training-compiler-tested-models-hf417-tf263"></a>
 
 Tested with `Sequence_Len=128` and Automatic Mixed Precision \(AMP\)
 
@@ -140,7 +153,7 @@ Tested with `Sequence_Len=128` and Automatic Mixed Precision \(AMP\)
 | roberta\-base | ml\.p3\.2xlarge | 118 | 100 | 
 | roberta\-base | ml\.p3\.8xlarge | 112 | 88 | 
 
-### Transformers 4\.11\.0 with TensorFlow 2\.5\.1<a name="training-compiler-tested-models-tf411-tf251"></a>
+### Transformers 4\.11\.0 with TensorFlow 2\.5\.1<a name="training-compiler-tested-models-hf411-tf251"></a>
 
 Tested with `Sequence_Len=128` and Automatic Mixed Precision \(AMP\)
 

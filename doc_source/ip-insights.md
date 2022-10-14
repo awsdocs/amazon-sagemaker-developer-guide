@@ -27,7 +27,7 @@ For inference, IP Insights supports `text/csv`, `application/json`, and `applica
 
 ## EC2 Instance Recommendation for the IP Insights Algorithm<a name="ip-insights-instances"></a>
 
-The SageMaker IP Insights algorithm can run on both GPU and CPU instances\. For training jobs, we recommend using GPU instances\. However, for certain workloads with large training datasets, distributed CPU instances might reduce training costs\. For inference, we recommend using CPU instances\.
+The SageMaker IP Insights algorithm can run on both GPU and CPU instances\. For training jobs, we recommend using GPU instances\. However, for certain workloads with large training datasets, distributed CPU instances might reduce training costs\. For inference, we recommend using CPU instances\. IP Insights supports P2, P3, G4dn, and G5 GPU families\.
 
 ### GPU Instances for the IP Insights Algorithm<a name="ip-insights-instances-gpu"></a>
 

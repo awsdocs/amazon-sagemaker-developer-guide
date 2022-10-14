@@ -6,7 +6,7 @@ This procedure demonstrates how to delete an MLOps project using Amazon SageMake
 
 **Note**  
 You can only delete projects in Studio that you have created\. This condition is part of the service catalog permission `servicecatalog:TerminateProvisionedProduct` in the `AmazonSageMakerFullAccess` policy\. If needed, you can update this policy to remove this condition\.
-+ An AWS SSO or IAM account to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
++ An IAM account or IAM Identity Center to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 + Basic familiarity with the Studio user interface\. For information, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
 
 **To delete a project in Amazon SageMaker Studio**

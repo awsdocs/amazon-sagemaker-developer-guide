@@ -18,9 +18,9 @@
 
 The procedure to open the RStudio Launcher using the AWS CLI differs depending on the method used to manage your users\. 
 
- **SSO** 
+ **IAM Identity Center** 
 
-1.  Use the AWS SSO portal to open your Amazon SageMaker Domain\. 
+1.  Use the AWS access portal to open your Amazon SageMaker Domain\. 
 
 1.  Modify the URL path to “/rstudio/default” as follows\. 
 

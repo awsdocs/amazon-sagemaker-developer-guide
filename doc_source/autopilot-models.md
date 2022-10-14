@@ -11,29 +11,16 @@ This topic assumes that you have already created and run an Autopilot experiment
 **Note**  
 To access the feature importance metrics in this procedure, you must first select **File > Shut down**, and then restart Studio from the console\.
 
-1. To view model details after running an Amazon SageMaker Autopilot job, select the triangular icon from the menu on the left to open the **Components and registries** page\.  
-![\[Open the Components and registries page.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-models-details-generated-1.PNG)
+1. To view model details after running an Amazon SageMaker Autopilot job, choose the SageMaker resources icon ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-models-details-triangular-icon.PNG) from the left sidebar to open the **SageMaker resources** panel\.
 
-1. Select **Experiments and trials** from the dropdown menu\.  
-![\[Open the Components and registries page.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-models-details-generated-2.PNG)
+1. Select **Experiments and trials** from the dropdown menu located underneath SageMaker resources\.
 
-1. Locate the Autopilot job whose details that you want to examine in the **Unassigned trial components** list\.   
-![\[Locate the Autopilot job.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-models-details-generated-3.PNG)
+1. Locate the Autopilot job whose details that you want to examine in the **Unassigned trial components** list\. Right\-click over the name of the job and select **Describe AutoML Job** from the pop\-up menu\. This opens a new **Autopilot job** tab\.
 
-1. Right\-click the name of the Autopilot job and select **Describe AutoML Job** from the pop\-up menu\.  
-![\[Select Describe AutoML Job.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-models-details-generated-4.PNG)
+1. The **Autopilot job** panel lists the **Objective** metric values for each model in the job with the **Best model** at the top of the **Trials** tab\. To review model details, right click over the model that you are interested in and select **Open in model details**\. This opens a new **Model Details** tab\.
 
-   To review the Objective: F1\_binary, F1, AUC, and accuracy metrics for an AutoML job, select that AutoML job from the **Experiments** panel\.  
-![\[Select Describe AutoML Job.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-model-metrics-report.png)
+1. In ** Model Details**, the top of the Explainability tab contains a plot of aggregated SHAP values that indicate the importance of each feature, followed by hyper parameter values for this model\. The **Performance** tab contains metrics statistics and a confusion matrix\. The **Artifacts** tab contains information about model inputs, outputs and intermediate results\. The **Network** tab summarizes your network isolation and encryption choices\.
+**Note**  
+Feature importance and information in the **Performance** tab is only generated for the **Best model**\.
 
-1. To review the model details for the best tuning job, right\-click the **Trial name** labeled as the **Best** at the top of the list of trials that has the highest objective metric score\. After that, select **Open Model Details**\.  
-![\[Select Describe AutoML Job.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-models-details-generated-6.PNG)
-
-1. The plot of the aggregated SHAP values that indicate the importance of each feature is displayed in the **Explaining your model's predictions** section\.  
-![\[Select Describe AutoML Job.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-models-details-generated-7.PNG)
-
-1. For more information about how the SHAP values help explain predictions based on feature importance, scroll down to see the link to the [Understanding the model explainability](https://pages.awscloud.com/rs/112-TZM-766/images/Amazon.AI.Fairness.and.Explainability.Whitepaper.pdf) whitepaper\. Additional information is also available in the [Amazon SageMaker Clarify Model Explainability](clarify-model-explainability.md) topic in the SageMaker Developer Guide\.   
-![\[References for more information on maintainability.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-models-details-generated-8.PNG)
-
-1. To see the summary statistics for the objective metric, the f1 values for training and validation, the training and validation errors, and a list of the parameter values used to train and tune the model, scroll down to the bottom of the page\.  
-![\[Select Describe AutoML Job.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-models-details-generated-9.PNG)
+   For more information about how the SHAP values help explain predictions based on feature importance, scroll down to see the link to the [Understanding the model explainability](https://pages.awscloud.com/rs/112-TZM-766/images/Amazon.AI.Fairness.and.Explainability.Whitepaper.pdf) whitepaper in the **Explainability** tab\. Additional information is also available in the [Amazon SageMaker Clarify Model Explainability](clarify-model-explainability.md) topic in the SageMaker Developer Guide\. 

@@ -124,7 +124,7 @@ Use default DNS settings for your endpoint route table, so that standard Amazon 
 
 ### Configure the VPC Security Group<a name="batch-vpc-groups"></a>
 
-In distributed batch transform, you must allow communication between the different containers in the same batch transform job\. To do that, configure a rule for your security group that allows inbound connections between members of the same security group\. For information, see [Security Group Rules](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html#SecurityGroupRules)\.
+In distributed batch transform, you must allow communication between the different containers in the same batch transform job\. To do that, configure a rule for your security group that allows inbound and outbound connections between members of the same security group\. Members of the same security group should be able to communicate with each other across all ports\. For more information, see [Security Group Rules](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html#SecurityGroupRules)\.
 
 ### Connect to Resources Outside Your VPC<a name="batch-vpc-nat"></a>
 

@@ -28,7 +28,7 @@ For more information on input and output file formats, see [PCA Response Formats
 
 ## EC2 Instance Recommendation for the PCA Algorithm<a name="pca-instances"></a>
 
-PCA supports both GPU and CPU computation\. Which instance type is most performant depends heavily on the specifics of the input data\.
+PCA supports CPU and GPU instances for training and inference\. Which instance type is most performant depends heavily on the specifics of the input data\. For GPU instances, PCA supports P2, P3, G4dn, and G5\.
 
 ## PCA Sample Notebooks<a name="PCA-sample-notebooks"></a>
 

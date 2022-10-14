@@ -36,7 +36,7 @@ If the processing job finishes but no results are found and a warning message is
 
 ## Bias metric computation fails for several or all metrics<a name="clarify-troubleshooting-bias-metric-computation-fails"></a>
 
-If your receive one of the following error messages "No Label values are present in the predicted Label Column, Positive Predicted Index Series contains all False values\." or "Predicted Label Column series datatype is not the same as Label Column series\.", try the following:
+If your receive one of the following error messages "No Label values are present in the predicted Label Column, Positive Predicted Index Series contains all False values\." or "Predicted Label Column series data type is not the same as Label Column series\.", try the following:
 + Check that the correct dataset is being used\.
 + Check whether the dataset size is too small; whether, for example, it contains only a few rows\. This may cause the model outputs to have the same value or the data type is inferred incorrectly\.
 + Check if the label or facet is treated as continuous or categorical\. SageMaker Clarify uses heuristics to determine the [https://github.com/aws/amazon-sagemaker-clarify/blob/master/src/smclarify/bias/metrics/common.py#L114)](https://github.com/aws/amazon-sagemaker-clarify/blob/master/src/smclarify/bias/metrics/common.py#L114))\. For post\-training bias metrics, the data type returned by the model may not match what is in the dataset or SageMaker Clarify may not be able to transform it correctly\. 

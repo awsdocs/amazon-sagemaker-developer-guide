@@ -4,7 +4,6 @@ The SageMaker Python SDK supports managed training of models with ML frameworks 
 
 **Topics**
 + [Using the SageMaker TensorFlow and PyTorch Estimators](#model-parallel-using-sagemaker-pysdk)
-+ [How the Library Splits a Model Given the Configuration Parameters](#model-parallel-how-it-splits-models)
 + [Extend a Prebuilt Docker Container that Contains SageMaker's Distributed Model Parallel Library](#model-parallel-customize-container)
 + [Create Your Own Docker Container with the SageMaker Distributed Model Parallel Library](#model-parallel-bring-your-own-container)
 
@@ -88,7 +87,7 @@ smd_mp_estimator = PyTorch(
     role=sagemaker.get_execution_role(),
     instance_count=1,
     instance_type='ml.p3.16xlarge',
-    framework_version='1.10.2',
+    framework_version='1.12.0',
     py_version='py38',
     distribution={
         "smdistributed": {"modelparallel": smp_options},
@@ -145,20 +144,6 @@ If you launch a training job using an EFA\-enabled instance type, such as `ml.p4
     ```
 
 To launch the training job using the estimator and your SageMaker model parallel configured training script, run the `estimator.fit()` function\.
-
-## How the Library Splits a Model Given the Configuration Parameters<a name="model-parallel-how-it-splits-models"></a>
-
-When you specify a value for the number of model partitions \(`pipeline_parallel_degree` for PyTorch or `partition` for TensorFlow\), the total number of GPUs \(`processes_per_host`\) must be divisible by the number of the model partitions\. To set this up properly, you have to specify the right values to the `pipeline_parallel_degree` and `processes_per_host` parameters\. The simple math is as follows:
-
-```
-(pipeline_parallel_degree) x (data_parallelism_degree) = processes_per_host
-```
-
-The library takes care of calculating the number of model replicas \(`data_parallelism_degree`\) given the two input parameters you provide\. For example, if you set `pipeline_parallel_degree=4` and `processes_per_host=8` to use an ML instance with eight GPU workers such as `ml.p3.16xlarge`, the library automatically sets up a two\-way data parallelism \(`data_parallelism_degree=2`\)\.
-
-The following image illustrates how a two\-way data parallelism and four\-way model parallelism is distributed across eight GPUs: the model is partitioned across four GPUs, and each partition is assigned to two GPUs\.
-
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/distributed/model-data-parallel.png)
 
 Use the following resources to learn more about using the model parallelism features in the SageMaker Python SDK:
 + [Use TensorFlow with the SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/using_tf.html)

@@ -25,7 +25,7 @@ For more information on input and output file formats, see [K\-Means Response Fo
 
 ## EC2 Instance Recommendation for the K\-Means Algorithm<a name="km-instances"></a>
 
-We recommend training k\-means on CPU instances\. You can train on GPU instances, but should limit GPU training to `p*.xlarge` instances because only one GPU per instance is used\.
+We recommend training k\-means on CPU instances\. You can train on GPU instances, but should limit GPU training to single\-GPU instances \(such as ml\.g4dn\.xlarge\) because only one GPU is used per instance\. The k\-means algorithm supports P2, P3, G4dn, and G5 instances for training and inference\.
 
 ## K\-Means Sample Notebooks<a name="kmeans-sample-notebooks"></a>
 

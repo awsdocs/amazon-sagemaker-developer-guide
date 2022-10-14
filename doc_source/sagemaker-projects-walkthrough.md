@@ -1,11 +1,11 @@
 # SageMaker MLOps Project Walkthrough<a name="sagemaker-projects-walkthrough"></a>
 
-This walkthrough demonstrates how to use MLOps projects to create a CI/CD system to build, train, and deploy models\.
+This walkthrough uses the template [MLOps template for model building, training, and deployment](sagemaker-projects-templates-sm.md#sagemaker-projects-templates-code-commit) to demonstrate using MLOps projects to create a CI/CD system to build, train, and deploy models\.
 
 **Prerequisites**
 
 To complete this walkthrough, you need:
-+ An AWS SSO or IAM account to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
++ An IAM account or IAM Identity Center to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 + Permission to use SageMaker\-provided project templates\. For information, see [SageMaker Studio Permissions Required to Use Projects](sagemaker-projects-studio-updates.md)\.
 + Basic familiarity with the Studio user interface\. For information, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
 
@@ -36,6 +36,9 @@ In this step, you create a SageMaker MLOps project by using a SageMaker\-provide
 1. For **Project details**, enter a name and description for your project\.
 
 When the project appears in the **Projects** list with a **Status** of **Created**, move on to the next step\.
+
+**Important**  
+As of July 25, 2022, we require additional roles to use project templates\. If you see the error message **CodePipeline is not authorized to perform AssumeRole on role arn:aws:iam::xxx:role/service\-role/AmazonSageMakerServiceCatalogProductsCodePipelineRole**, see Steps 5\-6 of [SageMaker Studio Permissions Required to Use Projects](sagemaker-projects-studio-updates.md) for a complete list of required roles and instructions on how to create them\.
 
 ## Step 2: Clone the Code Repository<a name="sagemaker-proejcts-walkthrough-clone"></a>
 

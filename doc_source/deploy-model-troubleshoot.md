@@ -4,6 +4,7 @@ If you encounter an issue when deploying machine learning models in Amazon SageM
 
 **Topics**
 + [Detection Errors in the Active CPU Count](#deploy-model-troubleshoot-jvms)
++ [Issues with deploying a model\.tar\.gz file](#deploy-model-troubleshoot-tarballs)
 
 ## Detection Errors in the Active CPU Count<a name="deploy-model-troubleshoot-jvms"></a>
 
@@ -54,3 +55,7 @@ OpenJDK 64-Bit Server VM (build 25.191-b12, mixed mode)
 Check whether the JVM used in your container supports the `-XX:-UseContainerSupport` parameter\. If it does, always pass the parameter when you start your JVM\. This provides access to all of the CPUs in your instances\. 
 
 You might also encounter this issue when indirectly using a JVM in SageMaker containers\. For example, when using a JVM to support SparkML Scala\. The `-XX:-UseContainerSupport` parameter also affects the output returned by the Java `Runtime.getRuntime().availableProcessors()` API ``\. 
+
+## Issues with deploying a model\.tar\.gz file<a name="deploy-model-troubleshoot-tarballs"></a>
+
+When you deploy a model using a `model.tar.gz` file, the model tarball should not include any symlinks\. Symlinks cause the model creation to fail\. Also, we recommend that you do not include any unnecessary files in the tarball\.

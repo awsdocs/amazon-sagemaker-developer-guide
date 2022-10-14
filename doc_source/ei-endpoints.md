@@ -3,7 +3,7 @@
 To use Elastic Inference \(EI\) in Amazon SageMaker with a hosted endpoint for real\-time inference, specify an EI accelerator when you create the deployable model to be hosted at that endpoint\. You can do this in one of the following ways:
 + Use the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) versions of either the TensorFlow, MXNet, or PyTorch and the SageMaker pre\-built containers for TensorFlow, MXNet, and PyTorch
 + Build your own container, and use the low\-level SageMaker API \(Boto 3\)\. You will need to import the EI\-enabled version of either TensorFlow, MXNet, or PyTorch from the provided Amazon S3 locations into your container, and use one of those versions to write your training script\.
-+ Use either the [Image Classification Algorithm](image-classification.md) or [Object Detection Algorithm](object-detection.md) build\-in algorithms, and use the AWS SDK for Python \(Boto3\) to run your training job and create your deployable model and hosted endpoint\.
++ Use either the [Image Classification \- MXNet](image-classification.md) or [Object Detection](object-detection.md) build\-in algorithms, and use the AWS SDK for Python \(Boto3\) to run your training job and create your deployable model and hosted endpoint\.
 
 **Topics**
 + [Use EI with a SageMaker TensorFlow Container](#ei-endpoints-tensorflow)

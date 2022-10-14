@@ -11,5 +11,6 @@ To learn more about using IAM with SageMaker, see [Identity and Access Managemen
 **Topics**
 + [CORS Permission Requirement](sms-cors-update.md)
 + [Assign IAM Permissions to Use Ground Truth](sms-security-permission.md)
++ [Using Amazon SageMaker Ground Truth in an Amazon Virtual Private Cloud](sms-vpc.md)
 + [Output Data and Storage Volume Encryption](sms-security.md)
 + [Workforce Authentication and Restrictions](sms-security-workforce-authentication.md)

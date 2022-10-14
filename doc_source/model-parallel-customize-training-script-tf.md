@@ -2,17 +2,8 @@
 
 In this section, you learn how to modify TensorFlow training scripts to configure the SageMaker distributed model parallel library for auto\-partitioning and manual partitioning\. This selection of examples also includes an example integrated with Horovod for hybrid model and data parallelism\.
 
-
-**TensorFlow versions supported by SageMaker and the SageMaker distributed model parallel library**  
-
-| TensorFlow version | SageMaker distributed model parallel library version | `smdistributed-modelparallel` integrated image URI | Deep learning container release notes | 
-| --- | --- | --- | --- | 
-| v2\.6\.0 | smdistributed\-modelparallel==v1\.4\.0 | 763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/tensorflow\-training:2\.6\.0\-gpu\-py38\-cu112\-ubuntu20\.04 | [v1\.2\-tf\-2\.6\.0\-py38](https://github.com/aws/deep-learning-containers/releases/tag/v1.2-tf-2.6.0-py38)  | 
-| v2\.5\.1 |  smdistributed\-modelparallel==v1\.4\.0  | 763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/tensorflow\-training:2\.5\.1\-gpu\-py37\-cu112\-ubuntu18\.04  | [v1\.2\-tf\-2\.5\.1\-py37](https://github.com/aws/deep-learning-containers/releases/tag/v1.2-tf-2.5.1-py37) | 
-
-To check the latest updates of the library, see the [SageMaker Distributed Model Parallel Release Notes](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel_release_notes/smd_model_parallel_change_log.html) in the *SageMaker Python SDK documentation*\.
-
-Before you proceed to modify your TensorFlow training script, we recommend that you review [Unsupported Framework Features](#model-parallel-tf-unsupported-features)\.
+**Note**  
+To find which TensorFlow versions are supported by the library, see [Supported Frameworks and AWS Regions](distributed-model-parallel-support.md)\.
 
 The required modifications you must make to your training script to use the library are listed in [TensorFlow](#model-parallel-customize-training-script-tf-23)\.
 
@@ -133,7 +124,7 @@ If you are done preparing your training script, proceed to [Step 2: Launch a Tra
 
 ## TensorFlow with Horovod for Hybrid Model and Data Parallelism<a name="model-parallel-customize-training-script-tf-2.3"></a>
 
-You can use the SageMaker distributed model parallel library with Horovod for hybrid model and data parallelism\. To read more about how the library splits a model for hybrid parallelism, see [How the Library Splits a Model Given the Configuration Parameters](model-parallel-sm-sdk.md#model-parallel-how-it-splits-models)\.
+You can use the SageMaker distributed model parallel library with Horovod for hybrid model and data parallelism\. To read more about how the library splits a model for hybrid parallelism, see [Pipeline parallelism](model-parallel-intro.md#model-parallel-intro-pp)\.
 
 In this step, we focus on how to modify your training script to adapt the SageMaker distributed model parallel library\.
 

@@ -152,6 +152,9 @@ The permissions that you need to grant to the role vary depending on the API tha
 **Note**  
 Instead of managing permissions by crafting a permission policy, you can use the AWS\-managed `AmazonSageMakerFullAccess` permission policy\. The permissions in this policy are fairly broad, to allow for any actions you might want to perform in SageMaker\. For a listing of the policy including information about the reasons for adding many of the permissions, see [AWS managed policy: AmazonSageMakerFullAccess](security-iam-awsmanpol.md#security-iam-awsmanpol-AmazonSageMakerFullAccess)\. If you prefer to create custom policies and manage permissions to scope the permissions only to the actions you need to perform with the execution role, see the following topics\.
 
+**Important**  
+If you're running into issues, see [Troubleshooting Amazon SageMaker Identity and Access](security_iam_troubleshoot.md)\.
+
 For more information about IAM roles, see [IAM Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in the *IAM User Guide*\.
 
 **Topics**
@@ -274,7 +277,7 @@ If you specify a volume KMS key in the resource configuration of your AutoML job
 
 ## CreateDomain API: Execution Role Permissions<a name="sagemaker-roles-createdomain-perms"></a>
 
-The execution role for AWS SSO domains and the user/execution role for IAM domains need the following permissions when you pass an AWS KMS customer managed key as the `KmsKeyId` in the `CreateDomain` API request\. The permissions are enforced during the `CreateApp` API call\.
+The execution role for domains with IAM Identity Center and the user/execution role for IAM domains need the following permissions when you pass an AWS KMS customer managed key as the `KmsKeyId` in the `CreateDomain` API request\. The permissions are enforced during the `CreateApp` API call\.
 
 For an execution role that you can pass in the `CreateDomain` API request, you can attach the following permission policy to the role:
 

@@ -27,7 +27,7 @@ You can choose from one of the following edge devices:
 | qcs605 |  | Android | ARM64 | Mali | \{'ANDROID\_PLATFORM': 27\} | 
 | qcs603 |  | Android | ARM64 | Mali | \{'ANDROID\_PLATFORM': 27\} | 
 | rasp3b | ARM A56 | Linux | ARM\_EABIHF |  | \{'mattr': \['\+neon'\]\} | 
-| rasp4 | ARM A72 |  |  |  |  | 
+| rasp4b | ARM A72 |  |  |  |  | 
 | rk3288 |  | Linux | ARM\_EABIHF | Mali |  | 
 | rk3399 |  | Linux | ARM64 | Mali |  | 
 | sbe\_c |  | Linux | x86\_64 |  | \{'mcpu': 'core\-avx2'\} | 

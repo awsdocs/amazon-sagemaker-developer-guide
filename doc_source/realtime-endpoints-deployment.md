@@ -30,7 +30,7 @@ Before you create and deploy a SageMaker model, locate and make note of the:
 + AWS region where your Amazon S3 bucket is located
 + Amazon S3 URI path where the model artifacts are stored
 + IAM role for SageMaker
-+ Docker Amazon ECR URI registry path for the custome image that contains the inference code, or the framework and version of a built\-in Docker image that is supported and by AWS\.
++ Docker Amazon ECR URI registry path for the custom image that contains the inference code, or the framework and version of a built\-in Docker image that is supported and by AWS\.
 
  For a list of AWS Services available in each AWS Region, see [Region Maps and Edge Networks](http://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/)\. See [Creating IAM roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create.html) for information on how to create an IAM role\.
 
@@ -264,7 +264,7 @@ You do not need to define an endpoint configuration for real\-time endpoints if 
 
 ------
 
-## Deploy your model<a name="w2481aac27c18b9b9b7c29"></a>
+## Deploy your model<a name="w3360aac27c17b9b9b7c29"></a>
 
 Deploy your model and create an HTTPS endpoint\.
 

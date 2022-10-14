@@ -41,14 +41,15 @@ The `Enabled` field may be true or false\. `ExpireAfter` is a string that defin
 The following example shows how to enable caching for a training step using the Amazon SageMaker Python SDK\.
 
 ```
+from sagemaker.workflow.pipeline_context import PipelineSession
 from sagemaker.workflow.steps import CacheConfig
       
 cache_config = CacheConfig(enable_caching=True, expire_after="PT1H")
+estimator = Estimator(..., sagemaker_session=PipelineSession())
 
 step_train = TrainingStep(
     name="TrainAbaloneModel",
-    estimator=xgb_train,
-    inputs=inputs,
+    step_args=estimator.fit(inputs=inputs),
     cache_config=cache_config
 )
 ```

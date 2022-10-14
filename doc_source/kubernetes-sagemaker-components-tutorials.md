@@ -24,7 +24,7 @@ A gateway node is used to create an Amazon EKS cluster and access the Kubeflow 
 
 Complete the following steps to set up your gateway node\. Depending on your environment, you may have certain requirements already configured\. 
 
-1. If you don’t have an existing Amazon EKS cluster, create a user named `your_credentials` using the steps in [Creating an IAM User in Your AWS Account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)\. If you have an existing Amazon EKS cluster, use the credentials of the IAM role or user that has access to it\. 
+1. If you don’t have an existing Amazon EKS cluster, create a user named `your_credentials` using the steps in [Creating an IAM User in Your AWS Account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)\. If you have an existing Amazon EKS cluster, use the credentials of the IAM role or user that has access to it\. 
 
 1. Add the following permissions to your user using the steps in [Changing Permissions for an IAM User:](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_change-permissions.html#users_change_permissions-add-console) 
    + CloudWatchLogsFullAccess 
@@ -301,7 +301,7 @@ If you use an intuitive IDE like Jupyter or want other people in your organizati
 
 1. Follow the steps in [Create an SageMaker Notebook Instance](https://docs.aws.amazon.com/sagemaker/latest/dg/gs-setup-working-env.html) to create a SageMaker notebook instance if you do not already have one\. Give the IAM role for this instance the `S3FullAccess` permission\. 
 
-1. Amazon EKS clusters use IAM users and roles to control access to the cluster\. The rules are implemented in a config map named `aws-auth`\. Only the user/role that has access to the cluster will be able to edit this config map\. Run the following from the command line of your gateway node to get the IAM role of the notebook instance you created\. Replace `<instance-name>` with the name of your instance\. 
+1. Amazon EKS clusters use IAM users and roles to control access to the cluster\. The rules are implemented in a config map named `aws-auth`\. Only the user/role that has access to the cluster will be able to edit this config map\. Run the following from the command line of your gateway node to get the IAM role of the notebook instance you created\. Replace `<instance-name>` with the name of your instance\. 
 
    ```
    aws sagemaker describe-notebook-instance --notebook-instance-name <instance-name> --region <region> --output text --query 'RoleArn'
@@ -507,7 +507,7 @@ If you want to run predictions from your gateway node, skip this section\.
    EoF
    ```
 
-1. Attach the policy to the client node’s IAM role or IAM user\. 
+1. Attach the policy to the client node's IAM role or IAM user\. 
 
 1. If your client machine has an IAM role attached, run the following\. Replace `<your-instance-IAM-role>` with the name of the client node’s IAM role\. Replace `<path-to-sagemaker-invoke-json>` with the path to the policy file you created\. 
 

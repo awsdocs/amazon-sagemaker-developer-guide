@@ -23,7 +23,7 @@ The following sections provide guidance concerning implementation options, machi
 
 After choosing an algorithm, you must decide which implementation of it you want to use\. Amazon SageMaker supports three implementation options that require increasing levels of effort\. 
 + **Pre\-trained models** require the least effort and are models ready to deploy or to fine\-tune and deploy using SageMaker JumpStart\.
-+ **Built\-in algorithms** require the more effort and scale if the data set is large and significant resources are needed to train and deploy the model\.
++ **Built\-in algorithms** require more effort and scale if the data set is large and significant resources are needed to train and deploy the model\.
 + If there is no built\-in solution that works, try to develop one that uses **pre\-made images for machine and deep learning frameworks** for supported frameworks such as Scikit\-Learn, TensorFlow, PyTorch, MXNet, or Chainer\.
 + If you need to run custom packages or use any code which isn’t a part of a supported framework or available via PyPi, then you need to build **your own custom Docker image** that is configured to install the necessary packages or software\. The custom image must also be pushed to an online repository like the Amazon Elastic Container Registry\.
 

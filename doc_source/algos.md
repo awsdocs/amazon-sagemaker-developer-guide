@@ -8,7 +8,7 @@ Amazon SageMaker provides a suite of built\-in algorithms, pre\-trained models, 
 
 For important information about Docker registry paths, data formats, recommenced Amazon EC2 instance types, and CloudWatch logs common to all of the built\-in algorithms provided by SageMaker, see [Common Information About Built\-in Algorithms](common-info-all-im-models.md)\.
 
-The following sections provide additional guidance for the Amazon SageMaker built\-in algorithms grouped by the supervised and unsupervised learning paradigms to which they belong\. For descriptions of these learning paradigms and their associated problem types, see [Choose an AlgorithmChoose an algorithm](algorithms-choose.md)\. Sections are also provided for the SageMaker built\-in algorithms available to address two important machine learning domains: textual analysis and image processing\.
+The following sections provide additional guidance for the Amazon SageMaker built\-in algorithms grouped by the supervised and unsupervised learning paradigms to which they belong\. For descriptions of these learning paradigms and their associated problem types, see [Choose an AlgorithmChoose an Algorithm](algorithms-choose.md)\. Sections are also provided for the SageMaker built\-in algorithms available to address two important machine learning domains: textual analysis and image processing\.
 + [Pre\-trained Models and Solution Templates](#algorithms-built-in-jumpstart)
 + [Supervised Learning](#algorithms-built-in-supervised-learning)
 + [Unsupervised Learning](#algorithms-built-in-unsupervised-learning)
@@ -22,10 +22,14 @@ SageMaker JumpStart provides a wide range of pre\-trained models, pre\-built sol
 ## Supervised Learning<a name="algorithms-built-in-supervised-learning"></a>
 
 Amazon SageMaker provides several built\-in general purpose algorithms that can be used for either classification or regression problems\.
-+ [Linear Learner Algorithm](linear-learner.md)—learns a linear function for regression or a linear threshold function for classification\.
++ [AutoGluon\-Tabular](autogluon-tabular.md)—an open\-source AutoML framework that succeeds by ensembling models and stacking them in multiple layers\. 
++ [CatBoost](catboost.md)—an implementation of the gradient\-boosted trees algorithm that introduces ordered boosting and an innovative algorithm for processing categorical features\.
 + [Factorization Machines Algorithm](fact-machines.md)—an extension of a linear model that is designed to economically capture interactions between features within high\-dimensional sparse datasets\.
-+ [XGBoost Algorithm](xgboost.md)—implementation of the gradient\-boosted trees algorithm that combines an ensemble of estimates from a set of simpler and weaker models\.
 + [K\-Nearest Neighbors \(k\-NN\) Algorithm](k-nearest-neighbors.md)—a non\-parametric method that uses the k nearest labeled points to assign a label to a new data point for classification or a predicted target value from the average of the k nearest points for regression\.
++ [LightGBM](lightgbm.md)—an implementation of the gradient\-boosted trees algorithm that adds two novel techniques for improved efficiency and scalability: Gradient\-based One\-Side Sampling \(GOSS\) and Exclusive Feature Bundling \(EFB\)\.
++ [Linear Learner Algorithm](linear-learner.md)—learns a linear function for regression or a linear threshold function for classification\.
++ [TabTransformer](tabtransformer.md)—a novel deep tabular data modeling architecture built on self\-attention\-based Transformers\. 
++ [XGBoost Algorithm](xgboost.md)—an implementation of the gradient\-boosted trees algorithm that combines an ensemble of estimates from a set of simpler and weaker models\.
 
 Amazon SageMaker also provides several built\-in supervised learning algorithms that are used for more specialized tasks during feature engineering and forecasting from time series data\.
 + [Object2Vec Algorithm](object2vec.md)—a new highly customizable multi\-purpose algorithm used for feature engineering\. It can learn low\-dimensional dense embeddings of high\-dimensional objects to produce features that improve training efficiencies for downstream models\. While this is a supervised algorithm, as it requires labeled data for training, there are many scenarios in which the relationship labels can be obtained purely from natural clusterings in data, without any explicit human annotation\.
@@ -50,9 +54,10 @@ SageMaker provides algorithms that are tailored to the analysis of textual docum
 ## Image Processing<a name="algorithms-built-in-image-processing"></a>
 
 SageMaker also provides image processing algorithms that are used for image classification, object detection, and computer vision\.
-+ [Image Classification Algorithm](image-classification.md)—uses example data with answers \(referred to as a *supervised algorithm*\)\. Use this algorithm to classify images\.
++ [Image Classification \- MXNet](image-classification.md)—uses example data with answers \(referred to as a *supervised algorithm*\)\. Use this algorithm to classify images\.
++ [Image Classification \- TensorFlow](image-classification-tensorflow.md)—uses pretrained TensorFlow Hub models to fine\-tune for specific tasks \(referred to as a *supervised algorithm*\)\. Use this algorithm to classify images\.
 + [Semantic Segmentation Algorithm](semantic-segmentation.md)—provides a fine\-grained, pixel\-level approach to developing computer vision applications\.
-+ [Object Detection Algorithm](object-detection.md)—detects and classifies objects in images using a single deep neural network\. It is a supervised learning algorithm that takes images as input and identifies all instances of objects within the image scene\.
++ [Object Detection](object-detection.md)—detects and classifies objects in images using a single deep neural network\. It is a supervised learning algorithm that takes images as input and identifies all instances of objects within the image scene\.
 
 **Topics**
 + [Pre\-trained Models and Solution Templates](#algorithms-built-in-jumpstart)
@@ -61,20 +66,8 @@ SageMaker also provides image processing algorithms that are used for image clas
 + [Textual Analysis](#algorithms-built-in-text-analysis)
 + [Image Processing](#algorithms-built-in-image-processing)
 + [Common Information About Built\-in Algorithms](common-info-all-im-models.md)
-+ [BlazingText algorithm](blazingtext.md)
-+ [DeepAR Forecasting Algorithm](deepar.md)
-+ [Factorization Machines Algorithm](fact-machines.md)
-+ [Image Classification Algorithm](image-classification.md)
-+ [IP Insights](ip-insights.md)
-+ [K\-Means Algorithm](k-means.md)
-+ [K\-Nearest Neighbors \(k\-NN\) Algorithm](k-nearest-neighbors.md)
-+ [Latent Dirichlet Allocation \(LDA\) Algorithm](lda.md)
-+ [Linear Learner Algorithm](linear-learner.md)
-+ [Neural Topic Model \(NTM\) Algorithm](ntm.md)
-+ [Object2Vec Algorithm](object2vec.md)
-+ [Object Detection Algorithm](object-detection.md)
-+ [Principal Component Analysis \(PCA\) Algorithm](pca.md)
-+ [Random Cut Forest \(RCF\) Algorithm](randomcutforest.md)
-+ [Semantic Segmentation Algorithm](semantic-segmentation.md)
-+ [Sequence\-to\-Sequence Algorithm](seq-2-seq.md)
-+ [XGBoost Algorithm](xgboost.md)
++ [Built\-in SageMaker Algorithms for Tabular Data](algorithms-tabular.md)
++ [Built\-in SageMaker Algorithms for Text Data](algorithms-text.md)
++ [Built\-in SageMaker Algorithms for Time\-Series Data](algorithms-time-series.md)
++ [Unsupervised Built\-in SageMaker Algorithms](algorithms-unsupervised.md)
++ [Built\-in SageMaker Algorithms for Computer Vision](algorithms-vision.md)

@@ -121,6 +121,7 @@ After you create a model, create an endpoint configuration\. You can then deploy
 
 The following example uses the [AWS SDK for Python \(Boto3\)](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#id309) to call the [CreateEndpointConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html) API\. Specify the following values:
 + For `EndpointConfigName`, choose a name for the endpoint configuration\. The name should be unique within your account in a Region\.
++ \(Optional\) For `KmsKeyId`, use the key ID, key ARN, alias name, or alias ARN for an AWS KMS key that you want to use\. SageMaker uses this key to encrypt your Amazon ECR image\.
 + For `ModelName`, use the name of the model you want to deploy\. It should be the same model that you used in the [Create a model](#serverless-endpoints-create-model) step\.
 + For `ServerlessConfig`:
   + Set `MemorySizeInMB` to `2048`\. For this example, we set the memory size to 2048 MB, but you can choose any of the following values for your memory size: 1024 MB, 2048 MB, 3072 MB, 4096 MB, 5120 MB, or 6144 MB\. 
@@ -129,6 +130,7 @@ The following example uses the [AWS SDK for Python \(Boto3\)](https://boto3.amaz
 ```
 response = client.create_endpoint_config(
    EndpointConfigName="<your-endpoint-configuration>",
+   KmsKeyId="arn:aws:kms:us-east-1:123456789012:key/143ef68f-76fd-45e3-abba-ed28fc8d3d5e",
    ProductionVariants=[
         {
             "ModelName": "<your-model-name>",

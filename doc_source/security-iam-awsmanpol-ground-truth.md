@@ -4,6 +4,8 @@ These AWS managed policies add permissions required to use SageMaker Ground Trut
 
 **Topics**
 + [AWS managed policy: AmazonSageMakerGroundTruthExecution](#security-iam-awsmanpol-gt-AmazonSageMakerGroundTruthExecution)
++ [AWS managed policy: GroundTruthSyntheticConsoleFullAccess](#security-iam-awsmanpol-gts-GroundTruthSyntheticConsoleFullAccess)
++ [AWS managed policy: GroundTruthSyntheticConsoleReadOnlyAccess](#security-iam-awsmanpol-gts-GroundTruthSyntheticConsoleReadOnlyAccess)
 + [Amazon SageMaker updates to SageMaker Ground Truth managed policies](#security-iam-awsmanpol-groundtruth-updates)
 
 ## AWS managed policy: AmazonSageMakerGroundTruthExecution<a name="security-iam-awsmanpol-gt-AmazonSageMakerGroundTruthExecution"></a>
@@ -19,7 +21,7 @@ This policy includes the following permissions\.
 + `logs` – Allows principals to create and access log streams, and post log events\.
 + `sqs` – Allows principals to create Amazon SQS queues, and send and receive Amazon SQS messages\. These permissions are limited to queues whose name includes "GroundTruth"\.
 + `sns` – Allows principals to subscribe to and publish messages to Amazon SNS topics whose case\-insensitive name contains "groundtruth" or "sagemaker"\.
-+ `ec2` –  Permission to create, describe, and delete Amazon VPC endpoints whose VPC endpoint service name contains "sagemaker\-task\-resources" or "labeling"\.
++ `ec2` – Allows principals to create, describe, and delete Amazon VPC endpoints whose VPC endpoint service name contains "sagemaker\-task\-resources" or "labeling"\.
 
 ```
 {
@@ -171,6 +173,59 @@ This policy includes the following permissions\.
 }
 ```
 
+## AWS managed policy: GroundTruthSyntheticConsoleFullAccess<a name="security-iam-awsmanpol-gts-GroundTruthSyntheticConsoleFullAccess"></a>
+
+This AWS managed policy grants permissions needed to use most features of the SageMaker Ground Truth synthetic data console\. The policy is available in your AWS account\. In order to use all features of the console, users must add “s3:GetObject” permissions to allow SageMaker Ground Truth synthetic data console to display data from their S3 buckets\. This can be done by attaching the AmazonS3ReadOnlyAccess managed policy to their role or by adding “s3:GetObject” for specific S3 resources to their role\.
+
+**Permissions details**
+
+This policy includes the following permissions\.
++ `s3` – Allows the retrieval of objects from Amazon S3 buckets to display data in the console\.
++ `sagemaker-groundtruth-synthetic` – Allows the console to call SageMaker Ground Truth synthetic data APIs\.
+
+```
+           {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "sagemaker-groundtruth-synthetic:*",
+                "s3:ListBucket"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+## AWS managed policy: GroundTruthSyntheticConsoleReadOnlyAccess<a name="security-iam-awsmanpol-gts-GroundTruthSyntheticConsoleReadOnlyAccess"></a>
+
+This AWS managed policy grants read\-only access to SageMaker Ground Truth synthetic data via the AWS Management Console\. In order to use all features of the console, users must add “s3:GetObject” permissions to allow SageMaker Ground Truth synthetic data console to display data from their S3 buckets\. This can be done by attaching the AmazonS3ReadOnlyAccess managed policy to their role or by adding “s3:GetObject” for specific S3 resources to their role\.
+
+**Permissions details**
+
+This policy includes the following permissions\.
++ `s3` – Allows the retrieval of objects from Amazon S3 buckets to display data in the console\.
++ `sagemaker-groundtruth-synthetic` – Allows the console to call SageMaker Ground Truth synthetic data ReadOnly APIs\.
+
+```
+           {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "sagemaker-groundtruth-synthetic:List*",
+                "sagemaker-groundtruth-synthetic:Get*",
+                "s3:ListBucket"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
 ## Amazon SageMaker updates to SageMaker Ground Truth managed policies<a name="security-iam-awsmanpol-groundtruth-updates"></a>
 
 View details about updates to AWS managed policies for Amazon SageMaker Ground Truth since this service began tracking these changes\. For automatic alerts about changes to this page, subscribe to the RSS feed on the SageMaker [Document history page\.](doc-history.md)
@@ -178,6 +233,8 @@ View details about updates to AWS managed policies for Amazon SageMaker Ground T
 
 | Policy | Version | Change | Date | 
 | --- | --- | --- | --- | 
-| AmazonSageMakerGroundTruthExecution | 3 |  Add `ec2:CreateVpcEndpoint`, `ec2:DescribeVpcEndpoints`, and `ec2:DeleteVpcEndpoints` permissions\.  | April 29, 2022 | 
+|  [GroundTruthSyntheticConsoleFullAccess](#security-iam-awsmanpol-gts-GroundTruthSyntheticConsoleFullAccess)  | 1 |  Initial policy  | August 25, 2022 | 
+|  [GroundTruthSyntheticConsoleReadOnlyAccess](#security-iam-awsmanpol-gts-GroundTruthSyntheticConsoleReadOnlyAccess)  | 1 |  Initial policy  | August 25, 2022 | 
+|  [AmazonSageMakerGroundTruthExecution](#security-iam-awsmanpol-gt-AmazonSageMakerGroundTruthExecution)  | 3 |  Add `ec2:CreateVpcEndpoint`, `ec2:DescribeVpcEndpoints`, and `ec2:DeleteVpcEndpoints` permissions\.  | April 29, 2022 | 
 | AmazonSageMakerGroundTruthExecution | 2 |  Remove `sqs:SendMessageBatch` permission\.  | April 11, 2022 | 
 | AmazonSageMakerGroundTruthExecution | 1 |  Initial policy  | July 20, 2020 | 

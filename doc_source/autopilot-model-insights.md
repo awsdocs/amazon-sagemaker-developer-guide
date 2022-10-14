@@ -7,7 +7,7 @@ Autopilot also provides scalar metrics for all of your candidate models used to 
 + Binary classification: Accuracy, F1, AUC
 + Multiclass classification: Accuracy, F1macro
 
-You can sort your model candidates with the relevant metric to help you select and deploy the model that addresses your business needs\. For definitions of these metrics, see the [Autopilot candidate metrics](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-model-support-validation.html#autopilot-metrics) topic\. 
+You can sort your model candidates with the relevant metric to help you select and deploy the model that addresses your business needs\. For definitions of these metrics, see the [Autopilot candidate metrics](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-model-support-validation.html#autopilot-metrics-validation) topic\. 
 
 The SageMaker model monitor report contains details characterizing the Autopilot job, a metrics table, and several model insights\. These include model charts that are relevant to the type of classification problem\. You access these reports in SageMaker Studio from the **Performance** tab on the page that opens to confirm that your AutoML job has completed\. For instructions on how to create and run an AutoML job in SageMaker Studio, see [Create an Amazon SageMaker Autopilot experiment](autopilot-automate-model-development-create-experiment.md)\. 
 
@@ -48,9 +48,9 @@ Here is an example of a confusion matrix for a binary classification problem\.
 
 ![\[Amazon SageMaker Autopilot binary confusion matrix example.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-model-insights-confusion-matrix-binary.png)
 
-Here is an example of a confusion matrix for a multiclass classification problem\.
+Here is an example of a confusion matrix for a multi\-class classification problem\.
 
-![\[Amazon SageMaker Autopilot multimodel confusion matrix example.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-model-insights-confusion-matrix-multiclass.png)
+![\[Amazon SageMaker Autopilot multiclass confusion matrix example.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-model-insights-confusion-matrix-multiclass.png)
 
 This report provides a confusion matrix that can accommodate a maximum 15 labels for multiclass classification problem types\. The labels are listed in order, from those predicted least accurately to those predicted most accurately\. If a row shows `Nan`, it means that the validation dataset doesn't have a row for that label\.
 

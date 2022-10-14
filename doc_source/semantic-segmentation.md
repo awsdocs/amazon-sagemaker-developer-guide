@@ -2,7 +2,7 @@
 
 The SageMaker semantic segmentation algorithm provides a fine\-grained, pixel\-level approach to developing computer vision applications\. It tags every pixel in an image with a class label from a predefined set of classes\. Tagging is fundamental for understanding scenes, which is critical to an increasing number of computer vision applications, such as self\-driving vehicles, medical imaging diagnostics, and robot sensing\. 
 
-For comparison, the SageMaker [Image Classification Algorithm](image-classification.md) is a supervised learning algorithm that analyzes only whole images, classifying them into one of multiple output categories\. The [Object Detection Algorithm](object-detection.md) is a supervised learning algorithm that detects and classifies all instances of an object in an image\. It indicates the location and scale of each object in the image with a rectangular bounding box\. 
+For comparison, the SageMaker [Image Classification \- MXNet](image-classification.md) is a supervised learning algorithm that analyzes only whole images, classifying them into one of multiple output categories\. The [Object Detection](object-detection.md) is a supervised learning algorithm that detects and classifies all instances of an object in an image\. It indicates the location and scale of each object in the image with a rectangular bounding box\. 
 
 Because the semantic segmentation algorithm classifies every pixel in an image, it also provides information about the shapes of the objects contained in the image\. The segmentation output is represented as a grayscale image, called a *segmentation mask*\. A segmentation mask is a grayscale image with the same shape as the input image\.
 
@@ -133,12 +133,6 @@ To query a trained model that is deployed to an endpoint, you need to provide an
 
 ## EC2 Instance Recommendation for the Semantic Segmentation Algorithm<a name="semantic-segmentation-instances"></a>
 
-The SageMaker semantic segmentation algorithm only supports GPU instances for training, and we recommend using GPU instances with more memory for training with large batch sizes\. The algorithm can be trained using [P2/P3 EC2 Amazon Elastic Compute Cloud \(Amazon EC2\)](https://aws.amazon.com/ec2/) instances in single machine configurations\. It supports the following GPU instances for training:
-+ `ml.p2.xlarge`
-+ `ml.p2.8xlarge`
-+ `ml.p2.16xlarge`
-+ `ml.p3.2xlarge`
-+ `ml.p3.8xlarge`
-+ `ml.p3.16xlarge`
+The SageMaker semantic segmentation algorithm only supports GPU instances for training, and we recommend using GPU instances with more memory for training with large batch sizes\. The algorithm can be trained using P2, P3, G4dn, or G5 instances in single machine configurations\.
 
-For inference, you can use either CPU instances \(such as c5 and m5\) and GPU instances \(such as p2 and p3\) or both\. For information about the instance types that provide varying combinations of CPU, GPU, memory, and networking capacity for inference, see [Amazon SageMaker ML Instance Types](https://aws.amazon.com/sagemaker/pricing/instance-types/)\.
+For inference, you can use either CPU instances \(such as C5 and M5\) and GPU instances \(such as P3 and G4dn\) or both\. For information about the instance types that provide varying combinations of CPU, GPU, memory, and networking capacity for inference, see [Amazon SageMaker ML Instance Types](https://aws.amazon.com/sagemaker/pricing/instance-types/)\.

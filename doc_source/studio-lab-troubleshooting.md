@@ -63,3 +63,15 @@ If you run into an error when importing `cv2` after installing `opencv-python`, 
 ```
 
 You can then import `cv2` as expected\.
+
+ **Studio Lab becomes unresponsive when opening large files** 
+
+The Studio Lab IDE may fail to render when large files are opened, resulting in blocked access to Studio Lab resources\. To resolve this, reset the Studio Lab workspace using the following procedure\.
+
+1. After you open the IDE, copy the URL in your browser's address bar\. This URL should be in the `https://xxxxxx.studio.us-east-2.sagemaker.aws/studiolab/default/jupyter/lab` format\. Close the tab\.
+
+1. In a new tab, paste the URL and remove anything after `https://xxxxxx.studio.us-east-2.sagemaker.aws/studiolab/default/jupyter/lab`\.
+
+1. Add `?reset` to the end of the URL, so it is in the `https://xxxxxx.studio.us-east-2.sagemaker.aws/studiolab/default/jupyter/lab?reset` format\.
+
+1. Navigate to the updated URL\. This resets the saved UI state and makes the Studio Lab IDE responsive\.

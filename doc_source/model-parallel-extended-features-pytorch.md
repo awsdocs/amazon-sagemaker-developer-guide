@@ -15,3 +15,6 @@ To find an example of how to use the extended features, see [Train GPT\-2 with P
 + [Activation Checkpointing](model-parallel-extended-features-pytorch-activation-checkpointing.md)
 + [Activation Offloading](model-parallel-extended-features-pytorch-activation-offloading.md)
 + [Ranking Mechanism](model-parallel-extended-features-pytorch-ranking-mechanism.md)
++ [FP16 Training with Model Parallelism](model-parallel-extended-features-pytorch-fp16.md)
++ [Checkpointing Distributed Models and Optimizer States](model-parallel-extended-features-pytorch-checkpoint.md)
++ [Sharded Data Parallelism](model-parallel-extended-features-pytorch-sharded-data-parallelism.md)

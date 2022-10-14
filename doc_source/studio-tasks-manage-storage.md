@@ -7,6 +7,10 @@ Don't delete the Amazon EFS volume\. If you delete it, the domain will no longer
 
 **To find your Amazon EFS volume**
 
+1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
+
+1. Choose **Control Panel** at the top left of the page\.
+
 1. From the **Control Panel**, under **Domain**, find the **Domain ID**\. The ID will be in the following format: `d-xxxxxxxxxxxx`\.
 
 1. Pass the `Domain ID`, as `DomainId`, to the [describe\_domain](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.describe_domain) method\.

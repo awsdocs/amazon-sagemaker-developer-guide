@@ -2,7 +2,11 @@
 
 Use checkpoints in Amazon SageMaker to save the state of machine learning \(ML\) models during training\. Checkpoints are snapshots of the model and can be configured by the callback functions of ML frameworks\. You can use the saved checkpoints to restart a training job from the last saved checkpoint\. 
 
-The SageMaker training mechanism uses training containers on Amazon EC2 instances, and the checkpoint files are saved under a local directory of the containers\. SageMaker provides functionality to copy the checkpoints from the local path to Amazon S3\. Using checkpoints, you can do the following:
+The SageMaker training mechanism uses training containers on Amazon EC2 instances, and the checkpoint files are saved under a local directory of the containers\. SageMaker provides functionality to copy the checkpoints from the local path to Amazon S3\. 
+
+The SageMaker training mechanism uses training containers on Amazon EC2 instances, and the checkpoint files are saved under a local directory of the containers \(default is `/opt/ml/checkpoints`\)\. SageMaker automatically syncs the checkpoints in that directory with Amazon S3\. Existing checkpoints in S3 are written to the SageMaker container at the start of the job, enabling jobs to resume from a checkpoint\. Checkpoints added to the S3 folder after the job has started are not copied to the training container\. SageMaker also writes new checkpoints from the container to S3 during training\. If a checkpoint is deleted in the SageMaker container, it will also be deleted in the S3 folder
+
+Using checkpoints, you can do the following:
 + Save your model snapshots under training due to an unexpected interruption to the training job or instance\.
 + Resume training the model in the future from a checkpoint\.
 + Analyze the model at intermediate stages of training\.
@@ -23,7 +27,7 @@ Use checkpoints to save snapshots of ML models built on your preferred framework
 
 **SageMaker frameworks and algorithms that support checkpointing**
 
-SageMaker supports checkpointing for Deep Learning Containers and a subset of built\-in algorithms without requiring training script changes\. SageMaker saves the checkpoints to the default local path `'/opt/ml/checkpoints'` and copies them to Amazon S3\. 
+SageMaker supports checkpointing for AWS Deep Learning Containers and a subset of built\-in algorithms without requiring training script changes\. SageMaker saves the checkpoints to the default local path `'/opt/ml/checkpoints'` and copies them to Amazon S3\. 
 + Deep Learning Containers: [TensorFlow](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/sagemaker.tensorflow.html), [PyTorch](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/sagemaker.pytorch.html), [MXNet](https://sagemaker.readthedocs.io/en/stable/frameworks/mxnet/sagemaker.mxnet.html), and [HuggingFace](https://sagemaker.readthedocs.io/en/stable/frameworks/huggingface/sagemaker.huggingface.html)
 **Note**  
 If you are using the HuggingFace framework estimator, you need to specify a checkpoint output path through hyperparameters\. For more information, see [Run training on Amazon SageMaker](https://huggingface.co/transformers/sagemaker.html#spot-instances) in the *HuggingFace documentation*\.

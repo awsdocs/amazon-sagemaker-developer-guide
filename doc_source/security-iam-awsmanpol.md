@@ -24,6 +24,7 @@ You can also create your own custom IAM policies to allow permissions for Amazon
 **Topics**
 + [AWS managed policy: AmazonSageMakerFullAccess](#security-iam-awsmanpol-AmazonSageMakerFullAccess)
 + [AWS managed policy: AmazonSageMakerReadOnly](#security-iam-awsmanpol-AmazonSageMakerReadOnly)
++ [AWS managed policies for Amazon SageMaker Canvas](security-iam-awsmanpol-canvas.md)
 + [AWS Managed Policies for Amazon SageMaker Ground Truth](security-iam-awsmanpol-ground-truth.md)
 + [AWS Managed Policies for SageMaker Pipelines](security-iam-awsmanpol-pipelines.md)
 + [AWS Managed Policies for SageMaker projects and JumpStart](security-iam-awsmanpol-sc.md)
@@ -382,8 +383,8 @@ This policy includes the following permissions\.
                 "lambda:InvokeFunction"
             ],
             "Resource": [
-                "arn:aws:lambda:*:*:function:*SageMaker*",
                 "arn:aws:lambda:*:*:function:*sagemaker*",
+                "arn:aws:lambda:*:*:function:*SageMaker*",
                 "arn:aws:lambda:*:*:function:*Sagemaker*",
                 "arn:aws:lambda:*:*:function:*LabelingFunction*"
             ]
@@ -479,6 +480,17 @@ This policy includes the following permissions\.
         {
             "Effect": "Allow",
             "Action": [
+                "glue:UpdateTable"
+              ],
+              "Resource": [
+                "arn:aws:glue:*:*:table/sagemaker_featurestore/*",
+                "arn:aws:glue:*:*:catalog",
+                "arn:aws:glue:*:*:database/sagemaker_featurestore"
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
                 "glue:DeleteTable"
             ],
             "Resource": [
@@ -551,7 +563,7 @@ This policy includes the following permissions\.
 
 ## AWS managed policy: AmazonSageMakerReadOnly<a name="security-iam-awsmanpol-AmazonSageMakerReadOnly"></a>
 
-This policy grants read\-only access to Amazon SageMaker via the AWS Management Console and SDK\.
+This policy grants read\-only access to Amazon SageMaker through the AWS Management Console and SDK\.
 
 **Permissions details**
 
@@ -617,7 +629,8 @@ View details about updates to AWS managed policies for SageMaker since this serv
 
 | Policy | Version | Change | Date | 
 | --- | --- | --- | --- | 
-| [AmazonSageMakerFullAccess](#security-iam-awsmanpol-AmazonSageMakerFullAccess) | 22 |  Add `cloudformation:ListStackResources`\.  | May 1, 2022 | 
+| [AmazonSageMakerFullAccess](#security-iam-awsmanpol-AmazonSageMakerFullAccess) | 23 |  Add `glue:UpdateTable`\.  | June 29, 2022 | 
+| AmazonSageMakerFullAccess | 22 |  Add `cloudformation:ListStackResources`\.  | May 1, 2022 | 
 | [AmazonSageMakerReadOnly](#security-iam-awsmanpol-AmazonSageMakerReadOnly) | 11 |  Add `sagemaker:QueryLineage`, `sagemaker:GetLineageGroupPolicy`, `sagemaker:BatchDescribeModelPackage`, `sagemaker:GetModelPackageGroupPolicy` permissions\.  | December 1, 2021 | 
 | AmazonSageMakerFullAccess | 21 |  Add `sns:Publish` permissions for endpoints with Async Inference enabled\.  | September 8, 2021 | 
 | AmazonSageMakerFullAccess | 20 |  Update `iam:PassRole` resources and permissions\.  |  July 15, 2021  | 

@@ -4,7 +4,7 @@ When activation checkpointing and pipeline parallelism are turned on and the num
 
 ## How to Use Activation Offloading<a name="model-parallel-extended-for-pytorch-activation-offloading"></a>
 
-Use activation offloading to reduce memory usage when **the number of microbatches is greater than 1, and activation checkpointing is enabled** \(see [Activation Checkpointing](model-parallel-extended-features-pytorch-activation-checkpointing.md)\)\. When the activation checkpointing is not used, activation offloading has no effect\. When it is used with only one microbatch, it does not save memory\.
+Use activation offloading to reduce memory usage when **the number of microbatches is greater than 1, and activation checkpointing is turned on** \(see [Activation Checkpointing](model-parallel-extended-features-pytorch-activation-checkpointing.md)\)\. When the activation checkpointing is not used, activation offloading has no effect\. When it is used with only one microbatch, it does not save memory\.
 
 To use activation offloading, set `"offload_activations": True` in the `modelparallel` configuration\.
 

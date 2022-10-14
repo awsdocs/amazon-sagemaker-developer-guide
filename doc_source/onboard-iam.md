@@ -2,7 +2,7 @@
 
 This topic describes how to onboard to Amazon SageMaker Domain using the standard setup procedure for AWS Identity and Access Management \(IAM\) authentication\. To onboard faster using IAM, see [Onboard Using Quick setup](onboard-quick-start.md)\.
 
-For information on how to onboard using AWS Single Sign\-On \(AWS SSO\), see [Onboard Using SSO](onboard-sso-users.md)\.
+For information on how to onboard using AWS IAM Identity Center \(successor to AWS Single Sign\-On\) \(IAM Identity Center\), see [Onboard Using IAM Identity Center](onboard-sso-users.md)\.
 
 **To onboard to Domain using IAM**
 
@@ -37,6 +37,8 @@ Encryption in transit is only available for Amazon SageMaker Studio\.
 1. Select **Next**\. 
 
 **Step 2: Studio settings**
+
+1. Under **Default JupyterLab version**, select a JupyterLab version from the dropdown to use as the default for your domain\. For information on selecting a JupyterLab version, see [JupyterLab Versioning](studio-jl.md)\.
 
 1. Under **Notebook Sharing Configuration**, accept the default notebook sharing configuration or customize the options\.
 

@@ -30,3 +30,6 @@ The following are common errors that you might run into when using Amazon SageMa
   If the issue persists, create a new user profile and set up your environment with that user profile\.
 
   If these solutions don't fix the issue, reach out using the feedback button on the lower left of the AWS Management Console\.
++ **Unable to open Studio from the AWS Management Console\.**
+
+  If you are continually unable to open Studio, and are unable to make a new running instance with all default settings, reach out using the feedback button on the lower left of the AWS Management Console\.

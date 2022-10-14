@@ -45,13 +45,9 @@ For categorical labels used in classification, the algorithm supports the cross\
 
 ## EC2 Instance Recommendation for the Object2Vec Algorithm<a name="object2vec--instances"></a>
 
-The type of Amazon Elastic Compute Cloud \(Amazon EC2\) instance that you use depends on whether you are training or running inferences\. 
+The type of Amazon Elastic Compute Cloud \(Amazon EC2\) instance that you use depends on whether you are training or running inference\. 
 
-### Instance Recommendation for Training<a name="object2vec--instances-training"></a>
-
-When training a model using the Object2Vec algorithm on a CPU, start with an ml\.m5\.2xlarge instance\. For training on a GPU, start with an ml\.p2\.xlarge instance\. If the training takes too long on this instance, you can use a larger instance, such as an ml\.m5\.4xlarge or an ml\.m5\.12xlarge instance Currently, the Object2Vec algorithm can train only on a single machine\. However, it does offer support for multiple GPUs\.
-
-### Instance Recommendation for Inference<a name="object2vec--instances-inference"></a>
+When training a model using the Object2Vec algorithm on a CPU, start with an ml\.m5\.2xlarge instance\. For training on a GPU, start with an ml\.p2\.xlarge instance\. If the training takes too long on this instance, you can use a larger instance\. Currently, the Object2Vec algorithm can train only on a single machine\. However, it does offer support for multiple GPUs\. Object2Vec supports P2, P3, G4dn, and G5 GPU instance families for training and inference\.
 
 For inference with a trained Object2Vec model that has a deep neural network, we recommend using ml\.p3\.2xlarge GPU instance\. Due to GPU memory scarcity, the `INFERENCE_PREFERRED_MODE` environment variable can be specified to optimize on whether the [GPU optimization: Classification or Regression](object2vec-inference-formats.md#object2vec-inference-gpu-optimize-classification) or [GPU optimization: Encoder Embeddings](object2vec-encoder-embeddings.md#object2vec-inference-gpu-optimize-encoder-embeddings) inference network is loaded into GPU\.
 

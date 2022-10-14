@@ -8,7 +8,7 @@ Before you begin using the SageMaker console to create a labeling job, you must 
 
    Ground Truth requires all S3 buckets that contain labeling job input image data have a CORS policy attached\. To learn more about this change, see [CORS Permission Requirement](sms-cors-update.md)\.
 
-1. Assign the following permissions policy to the user that is creating the labeling job:
+1. You can create an IAM role or let SageMaker create a role with the [AmazonSageMakerFullAccess](https://docs.aws.amazon.com/sagemaker/latest/dg/security-iam-awsmanpol.html#security-iam-awsmanpol-AmazonSageMakerFullAccess) IAM policy\. Refer to [Creating IAM roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create.html) and assign the following permissions policy to the user that is creating the labeling job:
 
    ```
    {

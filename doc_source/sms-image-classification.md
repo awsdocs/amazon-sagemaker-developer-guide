@@ -27,7 +27,7 @@ The following is an example of an [AWS Python SDK \(Boto3\) request](https://bot
 
 ```
 response = client.create_labeling_job(
-    LabelingJobName='example-image-classification-labeling-job,
+    LabelingJobName='example-image-classification-labeling-job',
     LabelAttributeName='label',
     InputConfig={
         'DataSource': {

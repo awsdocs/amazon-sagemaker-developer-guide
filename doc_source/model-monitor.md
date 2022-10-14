@@ -5,7 +5,7 @@ Amazon SageMaker Model Monitor continuously monitors the quality of Amazon SageM
 Model Monitor provides the following types of monitoring:
 + [Monitor data quality](model-monitor-data-quality.md) \- Monitor drift in data quality\.
 + [Monitor model quality](model-monitor-model-quality.md) \- Monitor drift in model quality metrics, such as accuracy\.
-+ [Monitor Bias Drift for Models in Production](clarify-model-monitor-bias-drift.md) \- Monitor bias in you model's predictions\.
++ [Monitor Bias Drift for Models in Production](clarify-model-monitor-bias-drift.md) \- Monitor bias in your model's predictions\.
 + [Monitor Feature Attribution Drift for Models in Production](clarify-model-monitor-feature-attribution-drift.md) \- Monitor drift in feature attribution\.
 
 **Topics**
@@ -34,7 +34,7 @@ To enable model monitoring, you take the following steps, which follow the path 
 + Inspect the reports, which compare the latest data with the baseline, and watch for any violations reported and for metrics and notifications from Amazon CloudWatch\.
 
 **Notes**  
-Model Monitor currently supports only tabular data\.
+Model Monitor computes model metrics and statistics on tabular data only\. For example, an image classification model that takes images as input and outputs a label based on that image can still be monitored\. Model Monitor would be able to calculate metrics and statistics for the output, not the input\.
 Model Monitor currently supports only endpoints that host a single model and does not support monitoring multi\-model endpoints\. For information on using multi\-model endpoints, see [Host multiple models in one container behind one endpoint](multi-model-endpoints.md)\.
 Model Monitor supports monitoring inference pipelines, but capturing and analyzing data is done for the entire pipeline, not for individual containers in the pipeline\.
 To prevent impact to inference requests, Data Capture stops capturing requests at high levels of disk usage\. It is recommended you keep your disk utilization below 75% in order to ensure data capture continues capturing requests\.

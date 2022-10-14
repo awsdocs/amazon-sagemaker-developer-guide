@@ -46,6 +46,5 @@ Tune an Amazon SageMaker BlazingText text classification model with the followin
 | epochs |  `IntegerParameterRange`  |  \[5\-15\]  | 
 | learning\_rate |  `ContinuousParameterRange`  |  MinValue: 0\.005, MaxValue: 0\.01  | 
 | min\_count |  `IntegerParameterRange`  |  \[0\-100\]  | 
-| mode |  `CategoricalParameterRange`  |  \[`'supervised'`\]  | 
 | vector\_dim |  `IntegerParameterRange`  |  \[32\-300\]  | 
 | word\_ngrams |  `IntegerParameterRange`  |  \[1\-3\]  | 

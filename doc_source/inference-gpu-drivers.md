@@ -9,9 +9,9 @@ Amazon SageMaker Inference supports the following drivers and instance families:
 
 | Service | GPU | Driver version | Instance types | 
 | --- | --- | --- | --- | 
-| Real\-time | NVIDIA | 440\.33\.01 | ml\.p2\.\*, ml\.p3\.\*, ml\.g4dn\.\* | 
-| Batch | NVIDIA | 470\.57\.02 | ml\.p2\.\*, ml\.p3\.\*, ml\.g4dn\.\* | 
-| Asynchronous Inference | NVIDIA | 440\.33\.01 | ml\.p2\.\*, ml\.p3\.\*, ml\.g4dn\.\* | 
+| Real\-time | NVIDIA | 470\.57\.02 | ml\.p2\.\*, ml\.p3\.\*, ml\.p4d\.\*, ml\.g4dn\.\*, ml\.g5\.\* | 
+| Batch | NVIDIA | 470\.57\.02 | ml\.p2\.\*, ml\.p3\.\*, ml\.p4d\.\*, ml\.g4dn\.\*, ml\.g5\* | 
+| Asynchronous Inference | NVIDIA | 470\.57\.02 | ml\.p2\.\*, ml\.p3\.\*, ml\.p4d\.\*, ml\.g4dn\.\*, ml\.g5\* | 
 
 ## Troubleshoot your model container with GPU capabilities<a name="inference-gpu-drivers-troubleshoot"></a>
 
@@ -54,9 +54,9 @@ Ensure no NVIDIA driver packages are bundled in the image which could cause conf
 
 ### If you use a CUDA compatibility layer<a name="collapsible-cuda-compat"></a>
 
-Add the proceeding code snippet to your `ENTRYPOINT` script if you use a CUDA compatibility \(compat\) layer\.
+To verify if the platform Nvidia driver version supports the CUDA Compatibility Package version installed in the model container, see the [CUDA documentation](https://docs.nvidia.com/deploy/cuda-compatibility/index.html#use-the-right-compat-package)\. If the platform Nvidia driver version does not support the CUDA Compatibility Package version, you can disable or remove the CUDA Compatibility Package from the model container image\. If the CUDA compatibility libs version is supported by the latest Nvidia driver version, we suggest that you enable the CUDA Compatibility Package based on the detected Nvidia driver version for future compatibility by adding the code snippet below into the container start up shell script \(at the `ENTRYPOINT` script\)\.
 
-The code snipped demonstrates how to dynamically switch the use of CUDA Compatibility Package based on the version on the instance so when a driver upgrade happens, there are no interruptions\. The proceeding code snippet provides an example of how dynamically switch the use of CUDA Compatibility based on the version on the instance\. This should be included in the the `ENTRYPOINT` script:
+The script demonstrates how to dynamically switch the use of the CUDA Compatibility Package based on the detected Nvidia driver version on the deployed host for your model container\. When SageMaker releases a newer Nvidia driver version, the installed CUDA Compatibility Package can be turned off automatically if the CUDA application is supported natively on the new driver\.
 
 ```
 #!/bin/bash
@@ -69,7 +69,7 @@ if [ -f /usr/local/cuda/compat/libcuda.so.1 ]; then
     cat /usr/local/cuda/version.txt
     CUDA_COMPAT_MAX_DRIVER_VERSION=$(readlink /usr/local/cuda/compat/libcuda.so.1 |cut -d'.' -f 3-)
     echo "CUDA compat package requires Nvidia driver ⩽${CUDA_COMPAT_MAX_DRIVER_VERSION}"
-    NVIDIA_DRIVER_VERSION=$ (nvidia-smi --query-gpu=driver_version --format=csv,noheader --id=0)
+    NVIDIA_DRIVER_VERSION=$(sed -n 's/^NVRM.*Kernel Module *\([0-9.]*\).*$/\1/p' /proc/driver/nvidia/version 2>/dev/null || true)
     echo "Current installed Nvidia driver version is ${NVIDIA_DRIVER_VERSION}"
     if [ $(verlte $CUDA_COMPAT_MAX_DRIVER_VERSION $NVIDIA_DRIVER_VERSION) ]; then
         echo "Setup CUDA compatibility libs path to LD_LIBRARY_PATH"

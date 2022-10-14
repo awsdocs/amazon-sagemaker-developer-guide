@@ -9,7 +9,7 @@ You can monitor Amazon SageMaker using Amazon CloudWatch, which collects raw dat
 + [SageMaker Multi\-Model Endpoint Metrics](#cloudwatch-metrics-multimodel-endpoints)
 + [SageMaker Jobs and Endpoint Metrics](#cloudwatch-metrics-jobs)
 + [SageMaker Ground Truth Metrics](#cloudwatch-metrics-ground-truth)
-+ [SageMaker Feature Store Metrics](#cloudwatch-metrics-feature-store)
++ [Amazon SageMaker Feature Store Metrics](#cloudwatch-metrics-feature-store)
 + [SageMaker Pipelines Metrics](#cloudwatch-metrics-pipelines)
 
 ## SageMaker Endpoint Invocation Metrics<a name="cloudwatch-metrics-endpoint-invocation"></a>
@@ -144,9 +144,9 @@ If you want to profile your training job with a finer resolution down to 100\-mi
 | --- | --- | 
 | LabelingJobName |  Filters dataset object count metrics for a labeling job\.  | 
 
-## SageMaker Feature Store Metrics<a name="cloudwatch-metrics-feature-store"></a>
+## Amazon SageMaker Feature Store Metrics<a name="cloudwatch-metrics-feature-store"></a>
 
-**Feature Store Metrics**
+**Feature Store Consumption Metrics**
 
 
 | Metric | Description | 
@@ -154,12 +154,31 @@ If you want to profile your training job with a finer resolution down to 100\-mi
 | ConsumedReadRequestsUnits |  The number of consumed read units over the specified time period\. You can retrieve the consumed read units for a feature store runtime operation and its corresponding feature group\. Units: None Valid statistics: All  | 
 | ConsumedWriteRequestsUnits |  The number of consumed write units over the specified time period\. You can retrieve the consumed write units for a feature store runtime operation and its corresponding feature group\. Units: None Valid statistics: All  | 
 
-**Dimensions for Feature Store Metrics**
+**Dimensions for Feature Store Consumption Metrics**
 
 
 | Dimension | Description | 
 | --- | --- | 
-| FeatureGroupName, OperationName |  Filters feature store runtime operation metrics of the specified feature group\.  | 
+| FeatureGroupName, OperationName |  Filters feature store runtime consumption metrics of the feature group and the operation that you've specified\.  | 
+
+**Feature Store Operational Metrics**
+
+
+| Metric | Description | 
+| --- | --- | 
+| Invocations |  The number of requests made to the feature store runtime operations over the specified time period\. Units: None Valid statistics: Sum  | 
+| Operation4XXErrors |  The number of requests made to the Feature Store runtime operations where the operation returned a 4xx HTTP response code\. For each 4xx response, 1 is sent; otherwise, 0 is sent\. Units: None Valid statistics: Average, Sum  | 
+| Operation5XXErrors | The number of requests made to the feature store runtime operations where the operation returned a 5xx HTTP response code\. For each 5xx response, 1 is sent; otherwise, 0 is sent\. Units: None Valid statistics: Average, Sum  | 
+| ThrottledRequests |  The number of requests made to the feature store runtime operations where the request got throttled\. For each throttled request, 1 is sent; otherwise, 0 is sent\. Units: None Valid statistics: Average, Sum  | 
+| Latency |  The time interval to process requests made to the Feature Store runtime operations\. This interval is measured from the time SageMaker receives the request until it returns a response to the client\. Units: Microseconds Valid statistics: Average, Sum, Min, Max, Sample Count, Percentiles  | 
+
+**Dimensions for Feature Store Operational Metrics**
+
+
+| Dimension | Description | 
+| --- | --- | 
+|  `FeatureGroupName`, `OperationName`  | Filters feature store runtime operational metrics of the feature group and the operation that you've specified\. You can use these dimensions for non batch operations, such as GetRecord, PutRecord, and DeleteRecord\. | 
+| OperationName |  Filters feature store runtime operational metrics for the operation that you've specified\. You can use this dimension for batch operations such as BatchGetRecord\.  | 
 
 ## SageMaker Pipelines Metrics<a name="cloudwatch-metrics-pipelines"></a>
 

@@ -71,7 +71,7 @@ High\-quality training datasets by using workers along with machine learning to 
 Build the workflows required for human review of ML predictions\. Amazon A2I brings human review to all developers, removing the undifferentiated heavy lifting associated with building human review systems or managing large numbers of human reviewers\.
 
 **[SageMaker Studio Notebooks](notebooks.md)**  
-The next generation of SageMaker notebooks that include AWS Single Sign\-On \(AWS SSO\) integration, fast start\-up times, and single\-click sharing\.
+The next generation of SageMaker notebooks that include AWS IAM Identity Center \(successor to AWS Single Sign\-On\) \(IAM Identity Center\) integration, fast start\-up times, and single\-click sharing\.
 
 **[SageMaker Experiments](experiments.md)**  
 Experiment management and tracking\. You can use the tracked data to reconstruct an experiment, incrementally build on experiments conducted by peers, and trace model lineage for compliance and audit verifications\.

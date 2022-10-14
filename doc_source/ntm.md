@@ -30,7 +30,7 @@ For more information on input and output file formats, see [NTM Response Formats
 
 ## EC2 Instance Recommendation for the NTM Algorithm<a name="NTM-instances"></a>
 
-NTM training supports both GPU and CPU instance types\. We recommend GPU instances, but for certain workloads, CPU instances may result in lower training costs\. CPU instances should be sufficient for inference\.
+NTM training supports both GPU and CPU instance types\. We recommend GPU instances, but for certain workloads, CPU instances may result in lower training costs\. CPU instances should be sufficient for inference\. NTM training supports P2, P3, G4dn, and G5 GPU instance families for training and inference\.
 
 ## NTM Sample Notebooks<a name="NTM-sample-notebooks"></a>
 

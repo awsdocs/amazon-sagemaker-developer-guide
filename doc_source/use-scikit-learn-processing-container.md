@@ -4,7 +4,7 @@ For a sample notebook that shows how to run scikit\-learn scripts using a Docker
 
 This notebook runs a processing job using `SKLearnProcessor` class from the the SageMaker Python SDK to run a scikit\-learn script that you provide\. The script preprocesses data, trains a model using a SageMaker training job, and then runs a processing job to evaluate the trained model\. The processing job estimates how the model is expected to perform in production\.
 
-To learn more about using the SageMaker Python SDK with Processing containers, see the [SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/)\.
+To learn more about using the SageMaker Python SDK with Processing containers, see the [SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/)\. For a complete list of pre\-built Docker images available for processing jobs, see [Docker Registry Paths and Example Code](sagemaker-algo-docker-registry-paths.md) and choose your region\. 
 
 The following code example shows how the notebook uses `SKLearnProcessor` to run your own scikit\-learn script using a Docker image provided and maintained by SageMaker, instead of your own Docker image\.
 

@@ -1,4 +1,4 @@
-# Update SageMaker Canvas for your users<a name="canvas-update"></a>
+# Update SageMaker Canvas for Your Users<a name="canvas-update"></a>
 
 You can update to the latest version of Amazon SageMaker Canvas as either a user or an IT administrator\. You can update Amazon SageMaker Canvas for a single user at a time\.
 

@@ -1,4 +1,4 @@
-# Object Detection Algorithm<a name="object-detection"></a>
+# Object Detection<a name="object-detection"></a>
 
 The Amazon SageMaker Object Detection algorithm detects and classifies objects in images using a single deep neural network\. It is a supervised learning algorithm that takes images as input and identifies all instances of objects within the image scene\. The object is categorized into one of the classes in a specified collection with a confidence score that it belongs to the class\. Its location and scale in the image are indicated by a rectangular bounding box\. It uses the [Single Shot multibox Detector \(SSD\)](https://arxiv.org/pdf/1512.02325.pdf) framework and supports two base networks: [VGG](https://arxiv.org/pdf/1409.1556.pdf) and [ResNet](https://arxiv.org/pdf/1603.05027.pdf)\. The network can be trained from scratch, or trained with models that have been pre\-trained on the [ImageNet](http://www.image-net.org/) dataset\.
 
@@ -101,7 +101,9 @@ For more information on incremental training and for instructions on how to use 
 
 ## EC2 Instance Recommendation for the Object Detection Algorithm<a name="object-detection-instances"></a>
 
-For object detection, we support the following GPU instances for training: `ml.p2.xlarge`, `ml.p2.8xlarge`, `ml.p2.16xlarge`, `ml.p3.2xlarge`, `ml.p3.8xlarge` and `ml.p3.16xlarge`\. We recommend using GPU instances with more memory for training with large batch sizes\. You can also run the algorithm on multi\-GPU and multi\-machine settings for distributed training\. However, both CPU \(such as C5 and M5\) and GPU \(such as P2 and P3\) instances can be used for the inference\. All the supported instance types for inference are itemized on [Amazon SageMaker ML Instance Types](https://aws.amazon.com/sagemaker/pricing/instance-types/)\.
+The object detection algorithm supports P2, P3, G4dn, and G5 GPU instance families\. We recommend using GPU instances with more memory for training with large batch sizes\. You can run the object detection algorithm on multi\-GPU and mult\-machine settings for distributed training\.
+
+You can use both CPU \(such as C5 and M5\) and GPU \(such as P3 and G4dn\) instances for inference\.
 
 ## Object Detection Sample Notebooks<a name="object-detection-sample-notebooks"></a>
 

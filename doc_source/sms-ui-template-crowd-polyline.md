@@ -42,15 +42,15 @@ The following is an example of a Liquid template that uses the `<crowd-polyline>
 </crowd-form>
 ```
 
-### Attributes<a name="polyline-attributes"></a>
+## Attributes<a name="polyline-attributes"></a>
 
 The following attributes are supported by this element\.
 
-#### header<a name="polyline-attributes-header"></a>
+### header<a name="polyline-attributes-header"></a>
 
 Optional\. The text to display above the image\. This is typically a question or simple instruction for the worker\.
 
-#### initial\-value<a name="polyline-attributes-initialValue"></a>
+### initial\-value<a name="polyline-attributes-initialValue"></a>
 
 Optional\. An array of JSON objects, each of which sets a polyline when the component is loaded\. Each JSON object in the array contains the following properties:
 + **label** – The text assigned to the polyline as part of the labeling task\. This text must match one of the labels defined in the *labels* attribute of the `<crowd-polyline>` element\.
@@ -95,51 +95,51 @@ Optional\. An array of JSON objects, each of which sets a polyline when the comp
 
 Polylines set via the `initial-value` property can be adjusted\. Whether or not a worker answer was adjusted is tracked via an `initialValueModified` boolean in the worker answer output\.
 
-#### labels<a name="polyline-attributes-labels"></a>
+### labels<a name="polyline-attributes-labels"></a>
 
 Required\. A JSON formatted array of strings, each of which is a label that a worker can assign to the line\. 
 
 **Limit:** 10 labels
 
-#### label\-colors<a name="polyline-attributes-label-colors"></a>
+### label\-colors<a name="polyline-attributes-label-colors"></a>
 
 Optional\. An array of strings\. Each string is a hexadecimal \(hex\) code for a label\.
 
-#### name<a name="polyline-attributes-name"></a>
+### name<a name="polyline-attributes-name"></a>
 
 Required\. The name of this widget\. It's used as a key for the widget's input in the form output\.
 
-#### src<a name="polyline-attributes-src"></a>
+### src<a name="polyline-attributes-src"></a>
 
 Required\. The URL of the image on which to draw polylines\.
 
-### Regions<a name="polyline-regions"></a>
+## Regions<a name="polyline-regions"></a>
 
 The following regions are required by this element\.
 
-#### full\-instructions<a name="polyline-regions-full-instructions"></a>
+### full\-instructions<a name="polyline-regions-full-instructions"></a>
 
 General instructions about how to draw polylines\. 
 
-#### short\-instructions<a name="polyline-regions-short-instructions"></a>
+### short\-instructions<a name="polyline-regions-short-instructions"></a>
 
 Important task\-specific instructions that are displayed in a prominent place\.
 
-### Element Hierarchy<a name="polyline-element-hierarchy"></a>
+## Element Hierarchy<a name="polyline-element-hierarchy"></a>
 
 This element has the following parent and child elements\.
 + **Parent elements**: [crowd\-form](sms-ui-template-crowd-form.md)
 + **Child elements**: [short\-instructions](#polyline-regions-short-instructions), [full\-instructions](#polyline-regions-full-instructions)
 
-### Output<a name="polyline-output"></a>
+## Output<a name="polyline-output"></a>
 
-#### inputImageProperties<a name="polyline-output-inputImageProperties"></a>
+### inputImageProperties<a name="polyline-output-inputImageProperties"></a>
 
 A JSON object that specifies the dimensions of the image that is being annotated by the worker\. This object contains the following properties\.
 + **height** – The height, in pixels, of the image\.
 + **width** – The width, in pixels, of the image\.
 
-#### polylines<a name="polyline-output-labelMappings"></a>
+### polylines<a name="polyline-output-labelMappings"></a>
 
 A JSON Array containing objects with polylines' labels and vertices\.
 + **label** – The label given to a line\.
@@ -196,7 +196,7 @@ The following is an example of output from this element\.
   }
 ```
 
-### See Also<a name="polyline-see-also"></a>
+## See Also<a name="polyline-see-also"></a>
 
 For more information, see the following\.
 + [Use Amazon SageMaker Ground Truth to Label Data](sms.md)

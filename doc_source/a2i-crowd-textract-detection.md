@@ -2,19 +2,19 @@
 
 A widget to enable human review of a Amazon Textract document analysis result\.
 
-### Attributes<a name="a2i-textract-crowd-attributes"></a>
+## Attributes<a name="a2i-textract-crowd-attributes"></a>
 
 The following attributes are supported by this element\.
 
-#### header<a name="textract-attributes-header"></a>
+### header<a name="textract-attributes-header"></a>
 
 This is the text that is displayed as the header\.
 
-#### src<a name="textract-attributes-src"></a>
+### src<a name="textract-attributes-src"></a>
 
 This is a link to the image to be analyzed by the worker\. 
 
-#### initialValue<a name="textract-attributes-initialValue"></a>
+### initialValue<a name="textract-attributes-initialValue"></a>
 
 This sets initial values for attributes found in the worker UI\.
 
@@ -60,11 +60,11 @@ The following is an example of an `initialValue` input:
 ]
 ```
 
-#### blockTypes<a name="textract-attributes-blockTypes"></a>
+### blockTypes<a name="textract-attributes-blockTypes"></a>
 
 This determines the kind of analysis the workers can do\. Only `KEY_VALUE_SET` is currently supported\. 
 
-#### keys<a name="textract-attributes-keys"></a>
+### keys<a name="textract-attributes-keys"></a>
 
 This specifies new keys and the associated text value the worker can add\. The input values for `keys` can include the following elements: 
 + `importantFormKey` accepts strings, and is used to specify a single key\. 
@@ -89,33 +89,33 @@ The following is an example of an input for `keys`\.
 ]
 ```
 
-#### no\-key\-edit<a name="textract-attributes-no-key-edit"></a>
+### no\-key\-edit<a name="textract-attributes-no-key-edit"></a>
 
 This prevents the workers from editing the keys of annotations passed through `initialValue`\. This prevents workers from editing the keys that have been detected on your documents\. This is required\. 
 
-#### no\-geometry\-edit<a name="textract-attributes-no-geometry-edit"></a>
+### no\-geometry\-edit<a name="textract-attributes-no-geometry-edit"></a>
 
 This prevents workers from editing the polygons of annotations passed through `initialValue`\. For example, this would prevent the worker from editing the bounding box around a given key\. This is required\. 
 
-### Element Hierarchy<a name="textract-crowd-element-hierarchy"></a>
+## Element Hierarchy<a name="textract-crowd-element-hierarchy"></a>
 
  This element has the following parent and child elements\. 
 + Parent elements – crowd\-form
 + Child elements – [full\-instructions](#textract-full-instructions), [short\-instructions](#textract-short-instructions) 
 
-### Regions<a name="textract-crowd-regions"></a>
+## Regions<a name="textract-crowd-regions"></a>
 
 The following regions are supported by this element\. You can use custom HTML and CSS code within these regions to format your instructions to workers\. For example, use the `short-instructions` section to provide good and bad examples of how to complete a task\. 
 
-#### full\-instructions<a name="textract-full-instructions"></a>
+### full\-instructions<a name="textract-full-instructions"></a>
 
 General instructions about how to work with the widget\. 
 
-#### short\-instructions<a name="textract-short-instructions"></a>
+### short\-instructions<a name="textract-short-instructions"></a>
 
 Important task\-specific instructions that are displayed in a prominent place\.
 
-### Example of a Worker Template Using the crowd Element<a name="textract-example-crowd-elements"></a>
+## Example of a Worker Template Using the crowd Element<a name="textract-example-crowd-elements"></a>
 
 An example of a worker template using this crowd element would look like the following\.
 
@@ -180,7 +180,7 @@ If the content of the value has multiple lines, enter all the text without line 
 </crowd-form>
 ```
 
-### Output<a name="textract-crowd-element-output"></a>
+## Output<a name="textract-crowd-element-output"></a>
 
 The following is a sample of the output from this element\. You can find a detailed explanation of this output in the Amazon Textract [AnalyzeDocument](https://docs.aws.amazon.com/textract/latest/dg/API_AnalyzeDocument.html) API documentation\.
 

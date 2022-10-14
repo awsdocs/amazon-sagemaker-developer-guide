@@ -1,4 +1,4 @@
-# Give users permissions to import Amazon Redshift data<a name="canvas-redshift-permissions"></a>
+# Give Users Permissions to Import Amazon Redshift Data<a name="canvas-redshift-permissions"></a>
 
 Your users might have datasets stored in Amazon Redshift\. Before users can import data from Amazon Redshift into SageMaker Canvas, you must add the `AmazonRedshiftFullAccess` managed policy to the IAM execution role that you've used for the user profile\.
 
