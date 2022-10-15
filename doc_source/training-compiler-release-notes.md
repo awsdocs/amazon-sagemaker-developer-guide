@@ -2,6 +2,25 @@
 
 See the following release notes to track the latest updates for Amazon SageMaker Training Compiler\.
 
+## SageMaker Training Compiler Release Notes: October 4, 2022<a name="training-compiler-release-notes-20221004"></a>
+
+**Currency Updates**
++ Added support for TensorFlow v2\.10\.0\.
+
+**Other Changes**
++ Added Hugging Face NLP models using the Transformers library to TensorFlow framework tests\. To find the tested Transformer models, see [Tested Models](training-compiler-support.md#training-compiler-tested-models)\.
+
+**Migration to AWS Deep Learning Containers**
+
+This release passed benchmark testing and is migrated to the following AWS Deep Learning Container:
++ TensorFlow v2\.10\.0
+
+  ```
+  763104351884.dkr.ecr.<region>.amazonaws.com/tensorflow-training:2.10.0-gpu-py39-cu112-ubuntu20.04-sagemaker
+  ```
+
+  To find a complete list of the prebuilt containers with Amazon SageMaker Training Compiler, see [Supported Frameworks, AWS Regions, Instance Types, and Tested Models](training-compiler-support.md)\.
+
 ## SageMaker Training Compiler Release Notes: September 1, 2022<a name="training-compiler-release-notes-20220825"></a>
 
 **Currency Updates**

@@ -1,10 +1,10 @@
-# Query Endpoint Autoscaling History<a name="endpoint-scaling-query-history"></a>
+# Query Endpoint Auto scaling History<a name="endpoint-scaling-query-history"></a>
 
 You can view the status of scaling activities from your endpoint using [https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalingActivities.html#API_DescribeScalingActivities_RequestSyntax](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalingActivities.html#API_DescribeScalingActivities_RequestSyntax)\. `DescribeScalingActivities` provides descriptive information about the scaling activities in the specified namespace from the previous six weeks\. 
 
-## How To Query Endpoint Autoscaling Actions<a name="endpoint-how-to"></a>
+## How To Query Endpoint Auto Scaling Actions<a name="endpoint-how-to"></a>
 
-Query your autoscaling endpoints with `DescribeScalingActivities`\. To do so, specify [https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalingActivities.html#autoscaling-DescribeScalingActivities-request-ServiceNamespace](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalingActivities.html#autoscaling-DescribeScalingActivities-request-ServiceNamespace) parameter\. `ServiceNameSpace` is the name of the AWS service that provides the resource\. 
+Query your auto scaling endpoints with `DescribeScalingActivities`\. To do so, specify [https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalingActivities.html#autoscaling-DescribeScalingActivities-request-ServiceNamespace](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalingActivities.html#autoscaling-DescribeScalingActivities-request-ServiceNamespace) parameter\. `ServiceNameSpace` is the name of the AWS service that provides the resource\. 
 
  Valid service name values include the following: 
 
@@ -44,7 +44,7 @@ When you run this command, it returns the following output:
 }
 ```
 
-## How to Identify Blocked AutoScaling Due to Instance Quotas<a name="endpoint-identify-blocked-autoscaling"></a>
+## Identify blocked auto scaling from instance quotas<a name="endpoint-identify-blocked-autoscaling"></a>
 
 When you scale out or add more instances, you might reach your account\-level instance quota\. You can use `DescribeScalingActivities` to check whether you have reached your instance quota\. When you exceed your quota, automatic scaling is blocked\. 
 

@@ -178,7 +178,7 @@ The following procedure shows how to import a dataset from Athena into Data Wran
 
    1. If your workgroup hasn't enforced the Amazon S3 output location or if you don't use a workgroup, specify a value for **Amazon S3 location of query results**\.
 
-   1. \(Optional\) For **Data retention period**, specify the number of days to store the data before it's deleted\. You can deselect the checkbox to store the data indefinitely\.
+   1. \(Optional\) For **Data retention period**, select the checkbox to set a data retention period and specify the number of days to store the data before it's deleted\.
 
    1. \(Optional\) By default, Data Wrangler saves the connection\. You can choose to deselect the checkbox and not save the connection\.
 
@@ -413,6 +413,8 @@ To import data from Databricks, do the following\.
 You can specify a secret ARN that contains the JDBC URL instead of specifying the JDBC URL itself\. The secret must contain a key\-value pair with the following format: `jdbcURL:JDBC-URL`\. For more information, see [What is Secrets Manager?](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html)\.
 
 1. Specify a SQL SELECT statement\.
+**Note**  
+Data Wrangler doesn't support Common Table Expressions \(CTE\) or temporary tables within a query\.
 
 1. For **Sampling**, choose a sampling method\.
 

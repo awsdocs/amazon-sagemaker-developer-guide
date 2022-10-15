@@ -26,7 +26,7 @@ You can search for features using either Amazon SageMaker Studio or the [https:/
 | Parameters | Parameters\.key | Yes | 
 | All Parameters | AllParameters | Yes | 
 | Feature type | FeatureType | No | 
-| Creation time | CreationTime | No | 
+| Creation time | CreationTime | Yes | 
 | Last modified time | LastModifiedTime | No | 
 
 The following sections show you how to search for your features\. 
@@ -44,15 +44,11 @@ To search through your features, do the following\.
 
 1. Choose **Feature Catalog**\.
 
-1. Specify a text query with at least three characters to search for your features\. You can use one of the following search methods:
-   + Specify text in the search box to search through the feature names, descriptions, and parameters\.
-   + Specify text in the search box and search for results within a column\. The following dropdown list shows the searchable columns\. Choose a column from the menu to limit the query to a specific column\.  
-![\[\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/feature-store/feature-store-search-select-column.png)
+1. Specify a text query with at least three characters to search for your features\.
 
-     The following image shows the results of specifying a query\. Feature Store highlights the substring that you specify in the search results\.  
-![\[\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/feature-store/feature-store-specify-query.png)
-   + Use a search box with advanced filters\. You can use the filters to specify parameters or date ranges in your search results\. If you're searching for a parameter, specify both its key and value\. To find your features more easily, specify both parameters and time ranges\. The following image shows the advanced filters\.  
-![\[\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/feature-store/feature-store-search-filter.png)
+1. \(Optional\) Use advanced filters after you've specified a query\. You can use filters to specify parameters or date ranges in your search results\. If you're searching for a parameter, specify both its key and value\. To find your features more easily, you can do the following:
+   + Specify time ranges\.
+   + Deselect columns that you don't want to query\.
 
 ------
 #### [ SDK for Python \(Boto3\) ]

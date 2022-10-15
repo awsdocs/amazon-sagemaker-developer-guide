@@ -1,18 +1,18 @@
 # Prerequisites<a name="endpoint-auto-scaling-prerequisites"></a>
 
-Before you can use autoscaling, must have already created a Amazon SageMaker model deployment\. Deployed models are referred to as a [production variant](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ProductionVariant.html)\. This includes information about the model and the resources used to host it\. 
+Before you can use auto scaling, must have already created a Amazon SageMaker model deployment\. Deployed models are referred to as a [production variant](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ProductionVariant.html)\. This includes information about the model and the resources used to host it\. 
 
 For more information about deploying a model endpoint, see [Deploy the Model to SageMaker Hosting Services](ex1-model-deployment.md#ex1-deploy-model)\.
 
-To enable autoscaling for a model, you can use the console, the AWS CLI, or the Application Auto Scaling API\. It is recommended to try to [Configure model autoscaling with the console](endpoint-auto-scaling-add-console.md) to get familiar with the requirements and to test your first autoscaling configuration\. When using the AWS CLI or Application Auto Scaling the flow is to register the model, define the scaling policy, then apply it\. The following overview provides further details on the prerequisites and components used with autoscaling\.
+To activate auto scaling for a model, you can use the console, the AWS CLI, or the Application Auto Scaling API\. It is recommended to try to [Configure model auto scaling with the console](endpoint-auto-scaling-add-console.md) to get familiar with the requirements and to test your first auto scaling configuration\. When using the AWS CLI or Application Auto Scaling the flow is to register the model, define the scaling policy, then apply it\. The following overview provides further details on the prerequisites and components used with Application Auto Scaling\.
 
-## Autoscaling policy overview<a name="endpoint-auto-scaling-policy"></a>
+## Auto scaling policy overview<a name="endpoint-auto-scaling-policy"></a>
 
 To use automatic scaling, you define and apply a scaling policy that uses Amazon CloudWatch metrics and target values that you assign\. Automatic scaling uses the policy to increase or decrease the number of instances in response to actual workloads\.
 
 You can use the AWS Management Console to apply a scaling policy based on a predefined metric\. A *predefined metric* is defined in an enumeration so that you can specify it by name in code or use it in the AWS Management Console\. Alternatively, you can use either the AWS Command Line Interface \(AWS CLI\) or the Application Auto Scaling API to apply a scaling policy based on a predefined or custom metric\. 
 
-There are two types of supported scaling policies: target\-tracking scaling and step scaling\. It is recommended to use target\-tracking scaling policies for your autoscaling configuration\. You configure the *target\-tracking scaling policy* by specifying a predefined or custom metric and a target value for the metric\. For more information about using Application Auto Scaling target\-tracking scaling policies, see [ Target Tracking Scaling Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html)\.
+There are two types of supported scaling policies: target\-tracking scaling and step scaling\. It is recommended to use target\-tracking scaling policies for your auto scaling configuration\. You configure the *target\-tracking scaling policy* by specifying a predefined or custom metric and a target value for the metric\. For more information about using Application Auto Scaling target\-tracking scaling policies, see [ Target Tracking Scaling Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html)\.
 
 You can use step scaling when you require an advanced configuration, such as specifying how many instances to deploy under what conditions\. Otherwise, using target\-tracking scaling is preferred as it will be fully automated\. For more information about using Application Auto Scaling step scaling policies, see [ Step Scaling Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html)\.
 
@@ -23,7 +23,7 @@ A scaling policy has the following components:
 + Required permissions—Permissions that are required to perform automatic scaling actions\.
 + A service\-linked role—An AWS Identity and Access Management \(IAM\) role that is linked to a specific AWS service\. A service\-linked role includes all of the permissions that the service requires to call other AWS services on your behalf\. SageMaker automatic scaling automatically generates this role, `AWSServiceRoleForApplicationAutoScaling_SageMakerEndpoint`, for you\.
 
-## Target metric for autoscaling<a name="endpoint-auto-scaling-target-metric"></a>
+## Target metric for auto scaling<a name="endpoint-auto-scaling-target-metric"></a>
 
 Amazon CloudWatch alarms trigger the scaling policy, which calculate how to adjust scaling based on the metric and target value that you set\. The scaling policy adds or removes endpoint instances as required to keep the metric at, or close to, the specified target value\. In addition, a scaling policy also adjusts to fluctuations in the metric when a workload changes\. The scaling policy minimizes rapid fluctuations in the number of available instances for your model\.
 
@@ -35,7 +35,7 @@ You may specify the maximum number of endpoint instances for the model\. The max
 
 You must also specify the minimum number of instances for the model\. This value must be at least 1, and equal to or less than the value specified for the maximum number of endpoint instances\.
 
-To determine the minimum and maximum number of instances that you need for typical traffic, test your autoscaling configuration with the expected rate of traffic to your model\.
+To determine the minimum and maximum number of instances that you need for typical traffic, test your auto scaling configuration with the expected rate of traffic to your model\.
 
 **Important**  
 Scaling\-in occurs when there is no traffic: if a variant’s traffic becomes zero, SageMaker automatically scales in to the minimum number of instances specified\. In this case, SageMaker emits metrics with a value of zero\. Minimum instance count is required to be 1 or higher\.
@@ -58,7 +58,7 @@ If instances are not being added quickly enough to address increased traffic, co
 
 ## Permissions<a name="endpoint-auto-scaling-permissions"></a>
 
-The `SagemakerFullAccessPolicy` IAM policy has all of the IAM permissions required to perform autoscaling\. For more information about SageMaker IAM permissions, see [SageMaker Roles](sagemaker-roles.md)\.
+The `SagemakerFullAccessPolicy` IAM policy has all of the IAM permissions required to perform auto scaling\. For more information about SageMaker IAM permissions, see [SageMaker Roles](sagemaker-roles.md)\.
 
 If you are using a custom permission policy, you must include the following permissions:
 
@@ -103,4 +103,4 @@ If you are using a custom permission policy, you must include the following perm
 
 ## Service\-linked role<a name="endpoint-auto-scaling-slr"></a>
 
-Autoscaling uses the `AWSServiceRoleForApplicationAutoScaling_SageMakerEndpoint` service\-linked role; it created for you automatically\. A service\-linked role is a unique type of IAM role that is linked directly to an AWS service\. Service\-linked roles are predefined by the service and include all of the permissions that the service requires to call other AWS services on your behalf\. For more information, see [Service\-Linked Roles](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-service-linked-roles.html)\.
+Auto scaling uses the `AWSServiceRoleForApplicationAutoScaling_SageMakerEndpoint` service\-linked role; it created for you automatically\. A service\-linked role is a unique type of IAM role that is linked directly to an AWS service\. Service\-linked roles are predefined by the service and include all of the permissions that the service requires to call other AWS services on your behalf\. For more information, see [Service\-Linked Roles](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-service-linked-roles.html)\.

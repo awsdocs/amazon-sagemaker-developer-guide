@@ -235,7 +235,7 @@ The following image shows how choosing **Preview model** quickly creates an anal
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/canvas-build/canvas-build-preview-model.png)
 
-After you start model building, Amazon SageMaker Canvas automatically cleans and pre\-processes your data\. It builds up to 250 models and chooses the one that is the most accurate\. The time it takes for Amazon SageMaker Canvas to build a model depends on whether you're doing a **Quick build** or a **Standard build** and the size of the dataset\. A **Quick build** usually takes 2\-15 minutes to build, whereas a **Standard build** usually takes 2\-4 hours to build\. You can safely navigate away from the model building page and come back to it when SageMaker Canvas finishes building your model\.
+After you start model building, Amazon SageMaker Canvas automatically cleans and pre\-processes your data\. It builds up to 250 models and chooses the one that is the most accurate\. The time it takes for Amazon SageMaker Canvas to build a model depends on whether you're doing a **Quick build** or a **Standard build** and the size of the dataset\. A **Quick build** usually takes 2\-20 minutes to build, whereas a **Standard build** usually takes 2\-4 hours to build\. You can safely navigate away from the model building page and come back to it when SageMaker Canvas finishes building your model\.
 
 The following image shows the process of model building\.
 

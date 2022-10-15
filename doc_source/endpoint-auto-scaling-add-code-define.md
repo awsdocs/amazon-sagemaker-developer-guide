@@ -56,6 +56,32 @@ The following example is a target\-tracking configuration for a scaling policy\.
 }
 ```
 
+## Use an online explainability metric<a name="endpoint-auto-scaling-online-explainability"></a>
+
+This guide shows how to use a metric to track the scaling of endpoints with online explainability\. When an endpoint has online explainability activated, it emits a `ExplanationsPerInstance` metric that outputs the average number of records explained per minute, per instance, for a [variant](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ProductionVariant.html)\. The resource utilization of explaining records can be more different than that of predicting records\. We strongly recommend using this metric for target\-tracking scaling of endpoints with online explainability activated\.
+
+To use this online explainability metric inside a scaling policy, create a target tracking configuration\. In the tracking configuration, include a `CustomizedMetricSpecification` for the custom metrics and a `TargetValue` for the target value\.
+
+The following is an example of a policy configuration that uses `ExplanationsPerInstance`\. It is used to adjust the number of variant instances so that each instance has an `ExplanationsPerInstance` metric of 20\.
+
+```
+{
+    "TargetValue": 20,
+    "CustomizedMetricSpecification":
+    {
+        "MetricName": "ExplanationsPerInstance",
+        "Namespace": "AWS/SageMaker",
+        "Dimensions": [
+            {"Name": "EndpointName", "Value": "my-endpoint" },
+            {"Name": "VariantName","Value": "my-variant"}
+        ],
+        "Statistic": "Sum"
+    }
+}
+```
+
+[Application Auto Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html) allows multiple target tracking scaling policies for a scalable target\. Consider adding the `InvocationsPerInstance` policy from the [predefined metric](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling-add-code-define.html#endpoint-auto-scaling-add-code-predefined) section \(in addition to the `ExplanationsPerInstance` policy\)\. For example, if most invocations don't return an explanation because of the threshold value set in the `EnableExplanations` parameter, then the endpoint can choose the `InvocationsPerInstance` policy\. If there is a large number of explanations, the endpoint can use the `ExplanationsPerInstance` policy\. 
+
 ## Add a cooldown period<a name="endpoint-auto-scaling-add-code-cooldown"></a>
 
 To add a cooldown period for scaling\-out your model, specify a value, in seconds, for `ScaleOutCooldown`\. Similarly, to add a cooldown period for scaling\-in your model, add a value, in seconds, for `ScaleInCooldown`\. For more information about `ScaleInCooldown` and `ScaleOutCooldown`, see [https://docs.aws.amazon.com/autoscaling/application/APIReference/API_TargetTrackingScalingPolicyConfiguration.html](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_TargetTrackingScalingPolicyConfiguration.html) in the *Application Auto Scaling API Reference*\. 

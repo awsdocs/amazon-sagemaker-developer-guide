@@ -1,13 +1,13 @@
-# Configure Debugger Hook to Save Tensors<a name="debugger-configure-hook"></a>
+# Configure SageMaker Debugger to Save Tensors<a name="debugger-configure-hook"></a>
 
-*Tensors* are data collections of updated parameters from the backward and forward pass of each training iteration, and Debugger collects output tensors to analyze the state of a training job\. The Amazon SageMaker Debugger `CollectionConfig` and `DebuggerHookConfig` API operations provide methods for grouping tensors into *collections* and saving them to a target S3 bucket\. 
+*Tensors* are data collections of updated parameters from the backward and forward pass of each training iteration\. SageMaker Debugger collects the output tensors to analyze the state of a training job\. SageMaker Debugger's [https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html#sagemaker.debugger.CollectionConfig](https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html#sagemaker.debugger.CollectionConfig) and [https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html#sagemaker.debugger.DebuggerHookConfig](https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html#sagemaker.debugger.DebuggerHookConfig) API operations provide methods for grouping tensors into *collections* and saving them to a target S3 bucket\. 
 
 **Note**  
-By default, for all SageMaker training jobs, Debugger collects loss and accuracy output scalars from the training jobs every 500 steps, without any Debugger\-specific parameters specified in SageMaker estimators\. Debugger saves the output data in a default S3 bucket\. The format of the default S3 bucket URI is `s3://sagemaker-<region>-<12digit_account_id>/<training-job-name>/debug-output/`\.
+After properly configured and activated, SageMaker Debugger saves the output tensors in a default S3 bucket, unless otherwise specified\. The format of the default S3 bucket URI is `s3://sagemaker-<region>-<12digit_account_id>/<training-job-name>/debug-output/`\.
 
-While constructing a SageMaker estimator, enable Debugger by specifying the hook configuration parameter, `debugger_hook_config`\. The following steps include examples of how to set up the `debugger_hook_config` using the `CollectionConfig` and `DebuggerHookConfig` API operations to pull tensors out of your training jobs and save them\. If you use [Debugger\-supported AWS containers for zero script change](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html#debugger-supported-aws-containers), you can simply run the training job without changing your training script\. You can also use Debugger for training jobs running in any other [Debugger\-supported AWS containers with script mode](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html#debugger-supported-aws-containers), making minimal changes to your training script\. 
+While constructing a SageMaker estimator, activate SageMaker Debugger by specifying the `debugger_hook_config` parameter\. The following steps include examples of how to set up the `debugger_hook_config` using the `CollectionConfig` and `DebuggerHookConfig` API operations to pull tensors out of your training jobs and save them\.
 
-## Configure Debugger Tensor Collections Using the CollectionConfig API Operation<a name="debugger-configure-tensor-collections"></a>
+## Configure Tensor Collections Using the `CollectionConfig` API<a name="debugger-configure-tensor-collections"></a>
 
 Use the `CollectionConfig` API operation to configure tensor collections\. Debugger provides pre\-built tensor collections that cover a variety of regular expressions \(regex\) of parameters if using Debugger\-supported deep learning frameworks and machine learning algorithms\. As shown in the following example code, add the built\-in tensor collections you want to debug\.
 
@@ -61,9 +61,9 @@ collection_configs=[
 **Tip**  
 This tensor collection configuration object can be used for both [DebuggerHookConfig](https://docs.aws.amazon.com/sagemaker/latest/dg/debugger-configure-hook.html#debugger-configure-tensor-hook) and [Rule](https://docs.aws.amazon.com/sagemaker/latest/dg/use-debugger-built-in-rules.html#debugger-built-in-rules-configuration-param-change) API operations\.
 
-## Configure the CollectionConfig and DebuggerHookConfig APIs to Save Tensors<a name="debugger-configure-tensor-hook"></a>
+## Configure the `DebuggerHookConfig` API to Save Tensors<a name="debugger-configure-tensor-hook"></a>
 
-Use the [DebuggerHookConfig](https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html                 #sagemaker.debugger.DebuggerHookConfig) class to create a `debugger_hook_config` object using the `collection_configs` object you created in the previous step\.
+Use the [DebuggerHookConfig](https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html                 #sagemaker.debugger.DebuggerHookConfig) API to create a `debugger_hook_config` object using the `collection_configs` object you created in the previous step\.
 
 ```
 from sagemaker.debugger import DebuggerHookConfig

@@ -32,6 +32,7 @@ The following table lists the supported values for account IDs and corresponding
 | 126357580389 | ap\-south\-1 | 
 | 245545462676 | ap\-southeast\-1 | 
 | 563025443158 | ap\-southeast\-2 | 
+| 669540362728 | ap\-southeast\-3 | 
 | 536280801234 | ca\-central\-1 | 
 | 453000072557 | cn\-north\-1 | 
 | 453252182341 | cn\-northwest\-1 | 

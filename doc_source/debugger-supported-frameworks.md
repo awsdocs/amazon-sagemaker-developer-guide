@@ -16,10 +16,10 @@ The following table shows SageMaker machine learning frameworks and algorithms s
 + **Profiling deep learning framework operations** – Profile the deep learning operations of the TensorFlow and PyTorch frameworks, such as step durations, data loaders, forward and backward operations, Python profiling metrics, and framework\-specific metrics\.
 + **Debugging output tensors** – Track and debug model parameters, such as weights, gradients, biases, and scalar values of your training job\. Available deep learning frameworks are Apache MXNet, TensorFlow, PyTorch, and XGBoost\.
 **Important**  
- For the TensorFlow framework with Keras, SageMaker Debugger deprecates the zero code change support for debugging models built using the `tf.keras` modules of TensorFlow 2\.6 and later\. This is due to breaking changes announced in the [TensorFlow 2\.6\.0 release note](https://github.com/tensorflow/tensorflow/releases/tag/v2.6.0)\. SageMaker Debugger continues to support the zero code change experience for the native TensorFlow \(which excludes the `tf.keras` modules\)\. 
+ For the TensorFlow framework with Keras, SageMaker Debugger deprecates the zero code change support for debugging models built using the `tf.keras` modules of TensorFlow 2\.6 and later\. This is due to breaking changes announced in the [TensorFlow 2\.6\.0 release note](https://github.com/tensorflow/tensorflow/releases/tag/v2.6.0)\. For instructions on how to update your training script, see [Adapt Your TensorFlow Training Script](debugger-modify-script-tensorflow.md)\.
 **Important**  
 Since PyTorch v1\.12\.0 and later, SageMaker Debugger deprecates the zero code change support for debugging models\.  
-This is due to breaking changes that cause SageMaker Debugger to interfere with the `torch.jit` functionality\. For instructions on how to update your training script, see [Adapt Your PyTorch Training Script](debugger-modify-script-pytorch.md) in the *`sagemaker-debugger` Python SDK documentation*\.
+This is due to breaking changes that cause SageMaker Debugger to interfere with the `torch.jit` functionality\. For instructions on how to update your training script, see [Adapt Your PyTorch Training Script](debugger-modify-script-pytorch.md)\.
 
 If the framework or algorithm that you want to train and debug is not listed in the table, go to the [AWS Discussion Forum](https://forums.aws.amazon.com/) and leave feedback on SageMaker Debugger\.
 

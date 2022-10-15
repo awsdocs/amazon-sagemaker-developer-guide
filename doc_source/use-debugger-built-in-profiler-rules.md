@@ -56,7 +56,7 @@ When you start the training job, Debugger collects system resource utilization d
 
 ## Use Debugger Built\-in Profiler Rules with Custom Parameter Values<a name="debugger-built-in-profiler-rules-configuration-param-change"></a>
 
-If you want to adjust the built\-in rule parameter values and customize tensor collection regex, configure the `base_config` and `rule_parameters` parameters for the `ProfilerRule.sagemaker` and `Rule.sagemaker` classmethods\. In case of the `Rule.sagemaker` class methods, you can also customize tensor collections through the `collections_to_save` parameter\. The instruction of how to use the `CollectionConfig` class is provided at [Configure Debugger Tensor Collections Using the CollectionConfig API Operation](debugger-configure-hook.md#debugger-configure-tensor-collections)\. 
+If you want to adjust the built\-in rule parameter values and customize tensor collection regex, configure the `base_config` and `rule_parameters` parameters for the `ProfilerRule.sagemaker` and `Rule.sagemaker` classmethods\. In case of the `Rule.sagemaker` class methods, you can also customize tensor collections through the `collections_to_save` parameter\. The instruction of how to use the `CollectionConfig` class is provided at [Configure Tensor Collections Using the `CollectionConfig` API](debugger-configure-hook.md#debugger-configure-tensor-collections)\. 
 
 Use the following configuration template for built\-in rules to customize parameter values\. By changing the rule parameters as you want, you can adjust the sensitivity of the rules to be triggered\. 
 + The `base_config` argument is where you call the built\-in rule methods\.

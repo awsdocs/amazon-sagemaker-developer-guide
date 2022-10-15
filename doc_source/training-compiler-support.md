@@ -54,9 +54,89 @@ The following table includes a list of the models that have been tested with Sag
 **Note**  
 The batch sizes are local batch size that fit into each individual GPU of an instance type\. You should also adjust the learning rate when changing the batch size\.
 
+### TensorFlow 2\.10\.0<a name="training-compiler-tested-models-tf2100"></a>
+
+**Computer Vision \(CV\) models**
+
+Tested using [TensorFlow Model Garden](https://github.com/tensorflow/models) with Automatic Mixed Precision \(AMP\) as indicated\.
+
+
+| Single\-node single\-GPU/multi\-GPU | Model | Dataset | Instance type | Precision | Batch size for native frameworks  | Batch size for SageMaker Training Compiler  | 
+| --- | --- | --- | --- | --- | --- | --- | 
+| DetectionTransformer\-ResNet50 | COCO\-2017 | ml\.g4dn\.2xlarge | float32 | 2 | 4 | 
+| DetectionTransformer\-ResNet50 | COCO\-2017 | ml\.g5\.2xlarge | float32 | 3 | 6 | 
+| DetectionTransformer\-ResNet50 | COCO\-2017 | ml\.p3\.2xlarge | float32 | 2 | 4 | 
+| MaskRCNN\-ResNet50\-FPN | COCO\-2017 | ml\.g4dn\.2xlarge | float16 | 4 | 6 | 
+| MaskRCNN\-ResNet50\-FPN | COCO\-2017 | ml\.g5\.2xlarge | float16 | 6 | 8 | 
+| MaskRCNN\-ResNet50\-FPN | COCO\-2017 | ml\.g5\.48xlarge | float16 | 48 | 64 | 
+| MaskRCNN\-ResNet50\-FPN | COCO\-2017 | ml\.p3\.2xlarge | float16 | 4 | 6 | 
+| ResNet50 | ImageNet | ml\.g4dn\.2xlarge | float16 | 224 | 256 | 
+| ResNet50 | ImageNet | ml\.g5\.2xlarge | float16 | 192 | 160 | 
+| ResNet50 | ImageNet | ml\.g5\.48xlarge | float16 | 2048 | 2048 | 
+| ResNet50 | ImageNet | ml\.p3\.2xlarge | float16 | 224 | 160 | 
+| ResNet101 | ImageNet | ml\.g4dn\.2xlarge | float16 | 160 | 128 | 
+| ResNet101 | ImageNet | ml\.g5\.2xlarge | float16 | 192 | 256 | 
+| ResNet101 | ImageNet | ml\.g5\.48xlarge | float16 | 2048 | 2048 | 
+| ResNet101 | ImageNet | ml\.p3\.2xlarge | float16 | 160 | 224 | 
+| ResNet152 | ImageNet | ml\.g4dn\.2xlarge | float16 | 128 | 128 | 
+| ResNet152 | ImageNet | ml\.g5\.2xlarge | float16 | 192 | 224 | 
+| ResNet152 | ImageNet | ml\.g5\.48xlarge | float16 | 1536 | 1792 | 
+| ResNet152 | ImageNet | ml\.p3\.2xlarge | float16 | 128 | 160 | 
+| VisionTransformer | ImageNet | ml\.g4dn\.2xlarge | float16 | 80 | 128 | 
+| VisionTransformer | ImageNet | ml\.g5\.2xlarge | float16 | 112 | 144 | 
+| VisionTransformer | ImageNet | ml\.g5\.48xlarge | float16 | 896 | 1152 | 
+| VisionTransformer | ImageNet | ml\.p3\.2xlarge | float16 | 80 | 128 | 
+
+**Natural Language Processing \(NLP\) models**
+
+Tested using [Transformer models](https://github.com/huggingface/transformers) with `Sequence_Len=128` and Automatic Mixed Precision \(AMP\) as indicated\.
+
+
+| Single\-node single\-GPU/multi\-GPU | Model | Dataset | Instance type | Precision | Batch size for native frameworks  | Batch size for SageMaker Training Compiler  | 
+| --- | --- | --- | --- | --- | --- | --- | 
+| albert\-base\-v2 | wikitext\-2\-raw\-v1 | g4dn\.16xlarge | float16 | 128 | 112 | 
+| albert\-base\-v2 | wikitext\-2\-raw\-v1 | p3\.2xlarge | float16 | 128 | 128 | 
+| albert\-base\-v2 | wikitext\-2\-raw\-v1 | p3\.8xlarge | float16 | 128 | 135 | 
+| albert\-base\-v2 | wikitext\-2\-raw\-v1 | g5\.4xlarge | float16 | 128 | 191 | 
+| bert\-base\-uncased | wikitext\-2\-raw\-v1 | g4dn\.16xlarge | float16 | 64 | 94 | 
+| bert\-base\-uncased | wikitext\-2\-raw\-v1 | p3\.2xlarge | float16 | 96 | 101 | 
+| bert\-base\-uncased | wikitext\-2\-raw\-v1 | p3\.8xlarge | float16 | 96 | 96 | 
+| bert\-base\-uncased | wikitext\-2\-raw\-v1 | g5\.4xlarge | float16 | 128 | 128 | 
+| bert\-large\-uncased | wikitext\-2\-raw\-v1 | g4dn\.16xlarge | float16 | 35 | 21 | 
+| bert\-large\-uncased | wikitext\-2\-raw\-v1 | p3\.2xlarge | float16 | 39 | 26 | 
+| bert\-large\-uncased | wikitext\-2\-raw\-v1 | g5\.4xlarge | float16 | 60 | 50 | 
+| camembert\-base | wikitext\-2\-raw\-v1 | g4dn\.16xlarge | float16 | 96 | 90 | 
+| camembert\-base | wikitext\-2\-raw\-v1 | p3\.2xlarge | float16 | 96 | 98 | 
+| camembert\-base | wikitext\-2\-raw\-v1 | p3\.8xlarge | float16 | 96 | 96 | 
+| camembert\-base | wikitext\-2\-raw\-v1 | g5\.4xlarge | float16 | 128 | 128 | 
+| distilbert\-base\-uncased | wikitext\-2\-raw\-v1 | g4dn\.16xlarge | float16 | 256 | 160 | 
+| distilbert\-base\-uncased | wikitext\-2\-raw\-v1 | p3\.2xlarge | float16 | 128 | 176 | 
+| distilbert\-base\-uncased | wikitext\-2\-raw\-v1 | p3\.8xlarge | float16 | 128 | 160 | 
+| distilbert\-base\-uncased | wikitext\-2\-raw\-v1 | g5\.4xlarge | float16 | 256 | 258 | 
+| google\_electra\-small\-discriminator | wikitext\-2\-raw\-v1 | g4dn\.16xlarge | float16 | 256 | 216 | 
+| google\_electra\-small\-discriminator | wikitext\-2\-raw\-v1 | p3\.2xlarge | float16 | 256 | 230 | 
+| google\_electra\-small\-discriminator | wikitext\-2\-raw\-v1 | p3\.8xlarge | float16 | 256 | 224 | 
+| google\_electra\-small\-discriminator | wikitext\-2\-raw\-v1 | g5\.4xlarge | float16 | 256 | 320 | 
+| gpt2 | wikitext\-2\-raw\-v1 | g4dn\.16xlarge | float16 | 80 | 64 | 
+| gpt2 | wikitext\-2\-raw\-v1 | p3\.2xlarge | float16 | 80 | 77 | 
+| gpt2 | wikitext\-2\-raw\-v1 | p3\.8xlarge | float16 | 80 | 72 | 
+| gpt2 | wikitext\-2\-raw\-v1 | g5\.4xlarge | float16 | 128 | 120 | 
+| jplu\_tf\-xlm\-roberta\-base | wikitext\-2\-raw\-v1 | g4dn\.16xlarge | float16 | 28 | 24 | 
+| jplu\_tf\-xlm\-roberta\-base | wikitext\-2\-raw\-v1 | p3\.2xlarge | float16 | 32 | 24 | 
+| jplu\_tf\-xlm\-roberta\-base | wikitext\-2\-raw\-v1 | p3\.8xlarge | float16 | 32 | 26 | 
+| jplu\_tf\-xlm\-roberta\-base | wikitext\-2\-raw\-v1 | g5\.4xlarge | float16 | 66 | 52 | 
+| microsoft\_mpnet\-base | wikitext\-2\-raw\-v1 | g4dn\.16xlarge | float16 | 96 | 92 | 
+| microsoft\_mpnet\-base | wikitext\-2\-raw\-v1 | p3\.2xlarge | float16 | 96 | 101 | 
+| microsoft\_mpnet\-base | wikitext\-2\-raw\-v1 | p3\.8xlarge | float16 | 96 | 101 | 
+| microsoft\_mpnet\-base | wikitext\-2\-raw\-v1 | g5\.4xlarge | float16 | 128 | 152 | 
+| roberta\-base | wikitext\-2\-raw\-v1 | g4dn\.16xlarge | float16 | 64 | 72 | 
+| roberta\-base | wikitext\-2\-raw\-v1 | p3\.2xlarge | float16 | 64 | 84 | 
+| roberta\-base | wikitext\-2\-raw\-v1 | p3\.8xlarge | float16 | 64 | 86 | 
+| roberta\-base | wikitext\-2\-raw\-v1 | g5\.4xlarge | float16 | 128 | 128 | 
+
 ### TensorFlow 2\.9\.1<a name="training-compiler-tested-models-tf291"></a>
 
-Tested using [TensorFlow Model Garden](https://github.com/tensorflow/models) with Automatic Mixed Precision \(AMP\)
+Tested using [TensorFlow Model Garden](https://github.com/tensorflow/models) with Automatic Mixed Precision \(AMP\)\.
 
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/training-compiler-support.html)
 
@@ -64,19 +144,19 @@ Tested using [TensorFlow Model Garden](https://github.com/tensorflow/models) wit
 
 ### Transformers 4\.21\.1 with PyTorch 1\.11\.0<a name="training-compiler-tested-models-hf421-pt111"></a>
 
-Tested with `Sequence_Len=512` and Automatic Mixed Precision \(AMP\)
+Tested with `Sequence_Len=512` and Automatic Mixed Precision \(AMP\)\.
 
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/training-compiler-support.html)
 
 ### Transformers 4\.17\.0 with PyTorch 1\.10\.2<a name="training-compiler-tested-models-hf417-pt110"></a>
 
-Tested with `Sequence_Len=512` and Automatic Mixed Precision \(AMP\)
+Tested with `Sequence_Len=512` and Automatic Mixed Precision \(AMP\)\.
 
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/training-compiler-support.html)
 
 ### Transformers 4\.11\.0 with PyTorch 1\.9\.0<a name="training-compiler-tested-models-hf411-pt190"></a>
 
-Tested with `Sequence_Len=512` and Automatic Mixed Precision \(AMP\)
+Tested with `Sequence_Len=512` and Automatic Mixed Precision \(AMP\)\.
 
 
 | Single\-node single\-GPU | Model  | Instance type | Batch size for native | Batch size for Training Compiler | 
@@ -112,7 +192,7 @@ Tested with `Sequence_Len=512` and Automatic Mixed Precision \(AMP\)
 
 ### Transformers 4\.17\.0 with TensorFlow 2\.6\.3<a name="training-compiler-tested-models-hf417-tf263"></a>
 
-Tested with `Sequence_Len=128` and Automatic Mixed Precision \(AMP\)
+Tested with `Sequence_Len=128` and Automatic Mixed Precision \(AMP\)\.
 
 
 | Model  | Instance type | Batch size for native frameworks | Batch size for Training Compiler | 
@@ -155,7 +235,7 @@ Tested with `Sequence_Len=128` and Automatic Mixed Precision \(AMP\)
 
 ### Transformers 4\.11\.0 with TensorFlow 2\.5\.1<a name="training-compiler-tested-models-hf411-tf251"></a>
 
-Tested with `Sequence_Len=128` and Automatic Mixed Precision \(AMP\)
+Tested with `Sequence_Len=128` and Automatic Mixed Precision \(AMP\)\.
 
 
 | Single\-node single\-GPU | Model  | Instance type | Batch size for native | Batch size for Training Compiler | 

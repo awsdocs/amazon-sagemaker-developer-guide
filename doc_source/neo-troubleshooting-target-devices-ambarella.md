@@ -80,3 +80,7 @@ Yes\. You can convert the images to the binary format with open\-source packages
 ## Mean and Scale<a name="neo-troubleshooting-target-devices-ambarella-mean-scale"></a>
 
 You can specify mean and scaling pre\-processing options to the Amberalla toolchain\. These operations are embedded into the network and are applied during inference on each input\. Do not provide processed data if you specify the mean or scale\. More specifically, do not provide data you have subtracted the mean from or have applied scaling to\.
+
+## Check your compilation log<a name="neo-troubleshooting-target-devices-ambarella-compilation"></a>
+
+For information on checking compilation log for Ambarella devices, see [Check your compilation log](neo-troubleshooting-compilation.md#neo-troubleshooting-compilation-logs)\.
