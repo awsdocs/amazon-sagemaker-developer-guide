@@ -1,31 +1,19 @@
-# Step 2: Configure Debugger Using Amazon SageMaker Python SDK<a name="debugger-configuration-for-debugging"></a>
+# Step 2: Launch and Debug Training Jobs Using SageMaker Python SDK<a name="debugger-configuration-for-debugging"></a>
 
-To configure Debugger, use [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) and specify Debugger\-specific parameters while constructing SageMaker estimators\. There are three parameters you need to configure: `profiler_config`, `debugger_hook_config`, and `rules`\.
-
-**Note**  
-By default, Debugger monitors and debugs SageMaker training jobs without any Debugger\-specific parameters configured in SageMaker estimators\. Debugger collects system metrics every 500 milliseconds and basic output tensors \(scalar outputs such as loss and accuracy\) every 500 steps\. It also runs the `ProfilerReport` rule to analyze the system metrics and aggregate the Studio Debugger insights dashboard and a profiling report\. Debugger saves the output data in your secured S3 bucket\.
+To configure a SageMaker estimator with SageMaker Debugger, use [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) and specify Debugger\-specific parameters\. To fully utilize the debugging functionality, there are three parameters you need to configure: `debugger_hook_config`, `tensorboard_output_config`, and `rules`\.
 
 **Important**  
-To use the new Debugger features, you need to upgrade the SageMaker Python SDK and the `SMDebug` client library\. In your iPython kernel, Jupyter Notebook, or JupyterLab environment, run the following code to install the latest versions of the libraries and restart the kernel\.  
+Before constructing and running the estimator fit method to launch a training job, make sure that you adapt your training script following the instructions at [Step 1: Adapt Your Training Script to Register a Hook](debugger-modify-script.md)\.
 
-```
-import sys
-import IPython
-!{sys.executable} -m pip install -U sagemaker smdebug
-IPython.Application.instance().kernel.do_shutdown(True)
-```
+## Construct a SageMaker Estimator with Debugger\-specific parameters<a name="debugger-configuration-structure"></a>
 
-## Construct a SageMaker Estimator with Debugger<a name="debugger-configuration-structure"></a>
-
-The following example codes show how to construct a SageMaker estimator with the Debugger\-specific parameters depending on a framework of your choice\. Throughout the documentation in the following topics, you can find more information about how to configure the Debugger\-specific parameters that you can mix and match as you want\.
+The code examples in this section show how to construct a SageMaker estimator with the Debugger\-specific parameters\.
 
 **Note**  
-The following example codes are not directly executable\. You need to proceed to the next sections and configure the Debugger\-specific parameters\.
+The following code examples are templates for constructing the SageMaker framework estimators and not directly executable\. You need to proceed to the next sections and configure the Debugger\-specific parameters\.
 
 ------
 #### [ PyTorch ]
-
-To access the deep profiling feature for PyTorch, currently you need to specify the latest AWS deep learning container images with CUDA 11\. For example, you must specify the specific image URI as shown in the following example code:
 
 ```
 # An example of constructing a SageMaker PyTorch estimator
@@ -61,8 +49,6 @@ estimator.fit(wait=False)
 
 ------
 #### [ TensorFlow ]
-
-To access the deep profiling feature for TensorFlow, currently you need to specify the latest AWS deep learning container images with CUDA 11\. For example, you must specify the specific image URI as shown in the following example code:
 
 ```
 # An example of constructing a SageMaker TensorFlow estimator
@@ -128,9 +114,6 @@ estimator=MXNet(
 estimator.fit(wait=False)
 ```
 
-**Note**  
-For MXNet, when configuring the `profiler_config` parameter, you can only configure for system monitoring\. Profiling framework metrics is not supported for MXNet\.
-
 ------
 #### [ XGBoost ]
 
@@ -160,9 +143,6 @@ estimator=XGBoost(
 
 estimator.fit(wait=False)
 ```
-
-**Note**  
-For XGBoost, when configuring the `profiler_config` parameter, you can only configure for system monitoring\. Profiling framework metrics is not supported for XGBoost\.
 
 ------
 #### [ Generic estimator ]
@@ -200,18 +180,23 @@ estimator.fit(wait=False)
 
 ------
 
-Where you configure the following parameters:
-+ `debugger_hook_config` parameter – Configure Debugger to collect output tensors from your training job and save into your secured S3 bucket URI or local machine\. To learn how to configure the `debugger_hook_config` parameter, see [Configure Debugger Hook to Save Tensors](debugger-configure-hook.md)\.
-+ `rules` parameter – Configure this parameter to enable Debugger built\-in rules that you want to run in parallel\. The rules automatically analyze your training job and find training issues\. The ProfilerReport rule saves the Debugger profiling reports in your secured S3 bucket URI\. To learn how to configure the `rules` parameter, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\.
+Configure the following parameters to activate SageMaker Debugger:
++ `debugger_hook_config` \(an object of [https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html#sagemaker.debugger.DebuggerHookConfig](https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html#sagemaker.debugger.DebuggerHookConfig)\) – Required to activate the hook in the adapted training script during [Step 1: Adapt Your Training Script to Register a Hook](debugger-modify-script.md), configure the SageMaker training launcher \(estimator\) to collect output tensors from your training job, and save the tensors into your secured S3 bucket or local machine\. To learn how to configure the `debugger_hook_config` parameter, see [Configure SageMaker Debugger to Save Tensors](debugger-configure-hook.md)\.
++ `rules` \(a list of [https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html#sagemaker.debugger.Rule](https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html#sagemaker.debugger.Rule) objects\) – Configure this parameter to activate SageMaker Debugger built\-in rules that you want to run in real time\. The built\-in rules are logics that automatically debug the training progress of your model and find training issues by analyzing the output tensors saved in your secured S3 bucket\. To learn how to configure the `rules` parameter, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\. To find a complete list of built\-in rules for debugging output tensors, see [Debugger Rule](debugger-built-in-rules.md#debugger-built-in-rules-Rule)\. If you want to create your own logic to detect any training issues, see [Create Debugger Custom Rules for Training Job Analysis](debugger-custom-rules.md)\.
+**Note**  
+The built\-in rules are available only through SageMaker training instances\. You cannot use them in local mode\.
++ `tensorboard_output_config` \(an object of [https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html#sagemaker.debugger.TensorBoardOutputConfig](https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html#sagemaker.debugger.TensorBoardOutputConfig)\) – Configure SageMaker Debugger to collect output tensors in the TensorBoard\-compatible format and save to your S3 output path specified in the `TensorBoardOutputConfig` object\. To learn more, see [Visualize Amazon SageMaker Debugger Output Tensors in TensorBoard](debugger-enable-tensorboard-summaries.md)\.
+**Note**  
+The `tensorboard_output_config` must be configured with the `debugger_hook_config` parameter, which also requires you to adapt your training script by adding the `sagemaker-debugger` hook\.
 
 **Note**  
-Debugger securely saves output data in subfolders of your default S3 bucket\. For example, the format of the default S3 bucket URI is `s3://sagemaker-<region>-<12digit_account_id>/<base-job-name>/<debugger-subfolders>/`\. There are three subfolders created by Debugger: `debug-output`, `profiler-output`, and `rule-output`\. You can also retrieve the default S3 bucket URIs using the [SageMaker estimator classmethods](debugger-estimator-classmethods.md)\.
+SageMaker Debugger securely saves output tensors in subfolders of your S3 bucket\. For example, the format of the default S3 bucket URI in your account is `s3://sagemaker-<region>-<12digit_account_id>/<base-job-name>/<debugger-subfolders>/`\. There are two subfolders created by SageMaker Debugger: `debug-output`, and `rule-output`\. If you add the `tensorboard_output_config` parameter, you'll also find `tensorboard-output` folder\.
 
-See the following topics to find out how to configure the Debugger\-specific parameters in detail\.
+See the following topics to find more examples of how to configure the Debugger\-specific parameters in detail\.
 
 **Topics**
-+ [Construct a SageMaker Estimator with Debugger](#debugger-configuration-structure)
-+ [Configure Debugger Hook to Save Tensors](debugger-configure-hook.md)
++ [Construct a SageMaker Estimator with Debugger\-specific parameters](#debugger-configuration-structure)
++ [Configure SageMaker Debugger to Save Tensors](debugger-configure-hook.md)
 + [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)
 + [Turn Off Debugger](debugger-turn-off.md)
 + [Useful SageMaker Estimator Classmethods for Debugger](debugger-estimator-classmethods.md)

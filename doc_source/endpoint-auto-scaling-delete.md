@@ -24,7 +24,7 @@ You can delete a scaling policy with the AWS Management Console, the AWS CLI, or
 
 You can use the AWS CLI or the Application Auto Scaling API to delete a scaling policy from a variant\.
 
-### Delete a scaling policy \(AWS CLI\)<a name="endpoint-auto-scaling-delete-code-cli"></a>
+### Delete a scaling policy with AWS CLI or Application Auto Scaling API<a name="endpoint-auto-scaling-delete-code-cli"></a>
 
 To delete a scaling policy from a variant, use the [https://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/delete-scaling-policy.html](https://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/delete-scaling-policy.html) AWS CLI command with the following parameters:
 + `--policy-name`—The name of the scaling policy\.

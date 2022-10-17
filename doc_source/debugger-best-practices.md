@@ -29,7 +29,7 @@ You can view aggregated results and gain insights in Debugger reports\. Debugger
 
 ## Capture Data from Your Training Job and Save Data to Amazon S3<a name="debugger-best-practices-capture-tensor"></a>
 
-You can use a Debugger hook to save output tensors\. After you choose a container and a framework that fit your training script, use a Debugger hook to configure which tensors to save and to which directory to save them, such as a Amazon S3 bucket\. A Debugger hook helps you to build the configuration and to keep it in your account to use in subsequent analyses, where it is secured for use with the most privacy\-sensitive applications\. To learn more, see [Configure Debugger Hook to Save Tensors](debugger-configure-hook.md)\.
+You can use a Debugger hook to save output tensors\. After you choose a container and a framework that fit your training script, use a Debugger hook to configure which tensors to save and to which directory to save them, such as a Amazon S3 bucket\. A Debugger hook helps you to build the configuration and to keep it in your account to use in subsequent analyses, where it is secured for use with the most privacy\-sensitive applications\. To learn more, see [Configure SageMaker Debugger to Save Tensors](debugger-configure-hook.md)\.
 
 ## Analyze the Data with a Fleet of Debugger Built\-in Rules<a name="debugger-best-practices-rule-analysis"></a>
 
@@ -71,6 +71,6 @@ For a complete list of available built\-in rules for profiling, see [Debugger Bu
 
 Debugging is available for deep learning frameworks using AWS Deep Learning Containers and the SageMaker training containers\. For fully supported framework versions \(see the versions at [Supported Frameworks and Algorithms](debugger-supported-frameworks.md)\), Debugger automatically registers hooks to collect output tensors, and you can directly run your training script\. For the versions with one asterisk sign, you need to manually register the hooks to collect tensors\. Debugger provides preconfigured tensor collections with generalized names that you can utilize across the different frameworks\. If you want to customize output tensor configuration, you can also use the CollectionConfig and DebuggerHookConfig API operations and the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) to configure your own tensor collections\. Debugger built\-in rules for debugging analyze the output tensors and identifies model optimization problems that blocks your model from minimizing the loss function\. For example, the rules identify overfitting, overtraining, loss not decreasing, exploding tensors, and vanishing gradients\.
 
-To learn how to configure Debugger for debugging output tensors, see [Step 2: Configure Debugger Using Amazon SageMaker Python SDK](debugger-configuration-for-debugging.md) and then [Configure Debugger Hook to Save Tensors](debugger-configure-hook.md)\.
+To learn how to configure Debugger for debugging output tensors, see [Step 2: Launch and Debug Training Jobs Using SageMaker Python SDK](debugger-configuration-for-debugging.md) and then [Configure SageMaker Debugger to Save Tensors](debugger-configure-hook.md)\.
 
 For a full list of available built\-in rules for debugging, see [Debugger Built\-in Rules for Debugging Model Training Data \(Output Tensors\)](debugger-built-in-rules.md#built-in-rules-debugging)\.

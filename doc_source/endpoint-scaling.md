@@ -28,7 +28,7 @@ When you update SageMaker endpoints that have automatic scaling applied, complet
 
 1. Update the endpoint by calling [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateEndpoint.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateEndpoint.html)\. Specify the endpoint config you created in the previous step as the `EndpointConfig` field\. If you want to retain the variant properties like instance count or weight, set the value of the `RetainAllVariantProperties` parameter to `True`\. This specifies that production variants with the same name will are updated with the most recent `DesiredInstanceCount` from the response from the call to `DescribeEndpoint`, regardless of the values of the `InitialInstanceCount` field in the new `EndpointConfig`\.
 
-1. \(Optional\) Re\-enable automatic scaling by calling [RegisterScalableTarget](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html)\.
+1. \(Optional\) Re\-activating automatic scaling by calling [RegisterScalableTarget](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html)\.
 
 **Note**  
 Steps 1 and 7 are required only if you are updating an endpoint with the following changes:  

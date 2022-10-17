@@ -27,7 +27,7 @@ The following image shows a scatter plot that uses **Color by** and **Group by**
 
 ## Bar chart<a name="canvas-explore-data-barchart"></a>
 
-To create a scatter plot with your dataset, choose **Bar plot** in the **Visualization** panel\. Then, you can choose the features you want to plot on the x and y\-axes from the **Columns** section\. You can drag and drop the columns onto the axes, or once an axis has been dropped, you can choose a column from the list of supported columns\.
+To create a bar chart with your dataset, choose **Bar chart** in the **Visualization** panel\. Then, you can choose the features you want to plot on the x and y\-axes from the **Columns** section\. You can drag and drop the columns onto the axes, or once an axis has been dropped, you can choose a column from the list of supported columns\.
 
 You can use **Group by** to group the bar chart by a third feature\. You can use **Stack by** to vertically shade each bar based on the unique values of a fourth feature\.
 
@@ -37,7 +37,7 @@ The following image shows a bar chart that uses **Group by** and **Stack by**\. 
 
 ## Box plot<a name="canvas-explore-data-boxplot"></a>
 
-To create a scatter plot with your dataset, choose **Box plot** in the **Visualization** panel\. Then, you can choose the features you want to plot on the x and y\-axes from the **Columns** section\. You can drag and drop the columns onto the axes, or once an axis has been dropped, you can choose a column from the list of supported columns\.
+To create a box plot with your dataset, choose **Box plot** in the **Visualization** panel\. Then, you can choose the features you want to plot on the x and y\-axes from the **Columns** section\. You can drag and drop the columns onto the axes, or once an axis has been dropped, you can choose a column from the list of supported columns\.
 
 You can use **Group by** to group the box plots by a third feature\.
 

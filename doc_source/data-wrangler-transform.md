@@ -2,11 +2,11 @@
 
 Amazon SageMaker Data Wrangler provides numerous ML data transforms to streamline cleaning, transforming, and featurizing your data\. When you add a transform, it adds a step to the data flow\. Each transform you add modifies your dataset and produces a new dataframe\. All subsequent transforms apply to the resulting dataframe\.
 
-Data Wrangler includes built\-in transforms, which you can use to transform columns without any code\. You can also add custom transformations using PySpark, Python \(User\-Defined Function\), Pandas, and PySpark SQL\. Some transforms operate in place, while others create a new output column in your dataset\.
+Data Wrangler includes built\-in transforms, which you can use to transform columns without any code\. You can also add custom transformations using PySpark, Python \(User\-Defined Function\), pandas, and PySpark SQL\. Some transforms operate in place, while others create a new output column in your dataset\.
 
 You can apply transforms to multiple columns at once\. For example, you can delete multiple columns in a single step\.
 
-You can apply the process numeric and handle missing transforms only to a single column\.
+You can apply the **Process numeric** and **Handle missing** transforms only to a single column\.
 
 Use this page to learn more about these built\-in and custom transforms\.
 
@@ -26,12 +26,12 @@ To add a step to your data flow, do the following\.
 1. Choose **Add transform**\.
 
 1. Choose **Add step**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/data-wrangler-add-step.png)
+![\[\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/data-wrangler-add-step.png)
 
-1. Choose a transform\. The following image shows you the available transforms\.
+1. Choose a transform\. 
 
 1. \(Optional\) You can search for the transform that you want to use\. Data Wrangler highlights the query in the results\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/data-wrangler-search.png)
+![\[\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/data-wrangler-search.png)
 
 ------
 #### [ Join View ]
@@ -40,7 +40,7 @@ To join two datasets, select the first dataset in your data flow and choose **Jo
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/join-1.png)
 
-When you choose **Configure** to configure your join, you see results similar to those shown in the following image\. Your join configuration is display in the left panel\. You can use this panel to choose the joined dataset name, join type, and columns to join\. The main panel displays three tables\. The top two tables display the left and right datasets on the left and right respectively\. Under this table, you can preview the joined dataset\. 
+When you choose **Configure** to configure your join, you see results similar to those shown in the following image\. Your join configuration is displayed in the left panel\. You can use this panel to choose the joined dataset name, join type, and columns to join\. The main panel displays three tables\. The top two tables display the left and right datasets on the left and right respectively\. Under this table, you can preview the joined dataset\. 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/join-2.png)
 
@@ -134,44 +134,44 @@ Data Wrangler interpolates non\-numeric features by copying from either of the i
 
 ## Custom Transforms<a name="data-wrangler-transform-custom"></a>
 
-The **Custom Transforms** group allows you to use Python \(User\-Defined Function\), Pyspark, Pandas, or Pyspark \(SQL\) to define custom transformations\. For all three options, you use the variable `df` to access the dataframe to which you want to apply the transform\. If you're not using Python \(User\-Defined Function\), you don't need to include a return statement\. Choose **Preview** to preview the result of the custom transform\. Choose **Add** to add the custom transform to your list of **Previous steps**\.
+The **Custom Transforms** group allows you to use Python \(User\-Defined Function\), PySpark, pandas, or PySpark \(SQL\) to define custom transformations\. For all three options, you use the variable `df` to access the dataframe to which you want to apply the transform\. If you're not using Python \(User\-Defined Function\), you don't need to include a return statement\. Choose **Preview** to preview the result of the custom transform\. Choose **Add** to add the custom transform to your list of **Previous steps**\.
 
 You can import the popular libraries with an `import` statement in the custom transform code block, such as the following:
-+ Numpy version 1\.19\.0
-+ Scikit\-learn version 0\.23\.2
-+ Scipy version 1\.5\.4
-+ Pandas version 1\.0\.3
-+ Pyspark version 3\.0\.0
++ NumPy version 1\.19\.0
++ scikit\-learn version 0\.23\.2
++ SciPy version 1\.5\.4
++ pandas version 1\.0\.3
++ PySpark version 3\.0\.0
 
 **Important**  
-**Custom transform** doesn't support columns with spaces or special characters in the name\. We recommend that you specify column names that only have alphanumeric characters and underscores\. You can use the **Rename column** transform in the **Manage columns** transform group to remove spaces from a column's name\. You can also add a **Pandas** **Custom transform** similar to the following to remove spaces from multiple columns in a single step\. This example changes columns named `A column` and `B column` to `A_column` and `B_column` respectively\.   
+**Custom transform** doesn't support columns with spaces or special characters in the name\. We recommend that you specify column names that only have alphanumeric characters and underscores\. You can use the **Rename column** transform in the **Manage columns** transform group to remove spaces from a column's name\. You can also add a **Python \(Pandas\)** **Custom transform** similar to the following to remove spaces from multiple columns in a single step\. This example changes columns named `A column` and `B column` to `A_column` and `B_column` respectively\.   
 
 ```
 df.rename(columns={"A column": "A_column", "B column": "B_column"})
 ```
 
-If you include print statements in the code block, the result appears when you select **Preview**\. You can resize the custom code transformer panel\. Resizing the panel provides more space to write code\. The following shows the resizing of the panel\.
+If you include print statements in the code block, the result appears when you select **Preview**\. You can resize the custom code transformer panel\. Resizing the panel provides more space to write code\. The following image shows the resizing of the panel\.
 
 ![\[For the Python function, replace the comments under pd.Series with your code.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/resizing-panel.gif)
 
-The following provide additional context and examples for writing custom transform code\.
+The following sections provide additional context and examples for writing custom transform code\.
 
 **Python \(User\-Defined Function\)**
 
-The Python function gives you the ability to write custom transformations without needing to know Apache Spark or Pandas\. Data Wrangler is optimized to run your custom code quickly\. You get similar performance using custom Python code and an Apache Spark plugin\.
+The Python function gives you the ability to write custom transformations without needing to know Apache Spark or pandas\. Data Wrangler is optimized to run your custom code quickly\. You get similar performance using custom Python code and an Apache Spark plugin\.
 
 To use the Python \(User\-Defined Function\) code block, you specify the following:
 + **Input column** – The input column where you're applying the transform\.
-+ **Mode** – The scripting mode, either Pandas or Python\.
++ **Mode** – The scripting mode, either pandas or Python\.
 + **Return type** – The data type of the value that you're returning\.
 
-Using the Pandas mode gives better performance\. The Python mode makes it easier for you to write transformations by using pure Python functions\.
+Using the pandas mode gives better performance\. The Python mode makes it easier for you to write transformations by using pure Python functions\.
 
-The following video shows an example of how to use custom code to create a transformation\. It uses the Titanic dataset to create a column with the person's salutation\.
+The following video shows an example of how to use custom code to create a transformation\. It uses the [Titanic dataset](https://s3.us-west-2.amazonaws.com/amazon-sagemaker-data-wrangler-documentation-artifacts/walkthrough_titanic.csv) to create a column with the person's salutation\.
 
 ![\[For the Python function, replace the comments under pd.Series with your code.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/python-function-transform-titanic-720.gif)
 
-**Pyspark**
+**PySpark**
 
 The following example extracts date and time from a timestamp\.
 
@@ -182,7 +182,7 @@ df = df.withColumn( 'EVENT_DATE', to_date('DATE_TIME')).withColumn(
 'EVENT_TIME', date_format('DATE_TIME', 'HH:mm:ss'))
 ```
 
-**Pandas**
+**pandas**
 
 The following example provides an overview of the dataframe to which you are adding transforms\. 
 
@@ -190,9 +190,9 @@ The following example provides an overview of the dataframe to which you are add
 df.info()
 ```
 
-**Pyspark \(SQL\)**
+**PySpark \(SQL\)**
 
-The following creates a new dataframe with four columns: *name*, *fare*, *pclass*, *survived*\.
+The following example creates a new dataframe with four columns: *name*, *fare*, *pclass*, *survived*\.
 
 ```
 SELECT name, fare, pclass, survived FROM df
@@ -222,14 +222,14 @@ df = df.dropDuplicates(subset)
 # df = df.dropDuplicates()
 ```
 
-To use a snippet, copy and paste its content into the custom transform field\. You can copy and paste multiple code snippets into the custom transform field\.
+To use a snippet, copy and paste its content into the **Custom transform** field\. You can copy and paste multiple code snippets into the custom transform field\.
 
 ## Custom Formula<a name="data-wrangler-transform-custom-formula"></a>
 
 Use **Custom formula** to define a new column using a Spark SQL expression to query data in the current dataframe\. The query must use the conventions of Spark SQL expressions\.
 
 **Important**  
-**Custom formula** doesn't support columns with spaces or special characters in the name\. We recommend that you specify column names that only have alphanumeric characters and underscores\. You can use the **Rename column** transform in the **Manage columns** transform group to remove spaces from a column's name\. You can also add a **Pandas** **Custom transform** similar to the following to remove spaces from multiple columns in a single step\. This example changes columns named `A column` and `B column` to `A_column` and `B_column` respectively\.   
+**Custom formula** doesn't support columns with spaces or special characters in the name\. We recommend that you specify column names that only have alphanumeric characters and underscores\. You can use the **Rename column** transform in the **Manage columns** transform group to remove spaces from a column's name\. You can also add a **Python \(Pandas\)** **Custom transform** similar to the following to remove spaces from multiple columns in a single step\. This example changes columns named `A column` and `B column` to `A_column` and `B_column` respectively\.   
 
 ```
 df.rename(columns={"A column": "A_column", "B column": "B_column"})
@@ -249,6 +249,57 @@ Other common operations include the following, assuming a dataframe contains `co
 + Take the absolute value of a column: `abs(col_a)`
 
 For more information, see the [Spark documentation](http://spark.apache.org/docs/latest/api/python) on selecting data\. 
+
+## Reduce Dimensionality within a Dataset<a name="data-wrangler-transform-dimensionality-reduction"></a>
+
+Reduce the dimensionality in your data by using Principal Component Analysis \(PCA\)\. The dimensionality of your dataset corresponds to the number of features\. When you use dimensionality reduction in Data Wrangler, you get a new set of features called components\. Each component accounts for some variability in the data\.
+
+The first component accounts for the largest amount of variation in the data\. The second component accounts for the second largest amount of variation in the data, and so on\.
+
+You can use dimensionality reduction to reduce the size of the data sets that you use to train models\. Instead of using the features in your dataset, you can use the principal components instead\.
+
+To perform PCA, Data Wrangler creates axes for your data\. An axis is an affine combination of columns in your dataset\. The first principal component is the value on the axis that has the largest amount of variance\. The second principal component is the value on the axis that has the second largest amount of variance\. The nth principal component is the value on the axis that has the nth largest amount of variance\.
+
+You can configure the number of principal components that Data Wrangler returns\. You can either specify the number of principal components directly or you can specify the variance threshold percentage\. Each principal component explains an amount of variance in the data\. For example, you might have a principal component with a value of 0\.5\. The component would explain 50% of the variation in the data\. When you specify a variance threshold percentage, Data Wrangler returns the smallest number of components that meet the percentage that you specify\.
+
+The following are example principal components with the amount of variance that they explain in the data\.
++ Component 1 – 0\.5
++ Component 2 – 0\.45
++ Component 3 – 0\.05
+
+If you specify a variance threshold percentage of `94` or `95`, Data Wrangler returns Component 1 and Component 2\. If you specify a variance threshold percentage of `96`, Data Wrangler returns all three principal components\.
+
+You can use the following procedure to run PCA on your dataset\.
+
+To run PCA on your dataset, do the following\.
+
+1. Open your Data Wrangler data flow\.
+
+1. Choose the **\+**, and select **Add transform**\.
+
+1. Choose **Add step**\.
+
+1. Choose **Dimensionality Reduction**\.
+
+1. For **Input Columns**, choose the features that you're reducing into the principal components\.
+
+1. \(Optional\) For **Number of principal components**, choose the number of principal components that Data Wrangler returns in your dataset\. If specify a value for the field, you can't specify a value for **Variance threshold percentage**\.
+
+1. \(Optional\) For **Variance threshold percentage**, specify the percentage of variation in the data that you want explained by the principal components\. Data Wrangler uses the default value of `95` if you don't specify a value for the variance threshold\. You can't specify a variance threshold percentage if you've specified a value for **Number of principal components**\.
+
+1. \(Optional\) Deselect **Center** to not use the mean of the columns as the center of the data\. By default, Data Wrangler centers the data with the mean before scaling\.
+
+1. \(Optional\) Deselect **Scale** to not scale the data with the unit standard deviation\.
+
+1. \(Optional\) Choose **Columns** to output the components to separate columns\. Choose **Vector** to output the components as a single vector\.
+
+1. \(Optional\) For **Output column**, specify a name for an output column\. If you're outputting the components to separate columns, the name that you specify is a prefix\. If you're outputting the components to a vector, the name that you specify is the name of the vector column\.
+
+1. \(Optional\) Select **Keep input columns**\. We don't recommend selecting this option if you plan on only using the principal components to train your model\.
+
+1. Choose **Preview**\.
+
+1. Choose **Add**\.
 
 ## Encode Categorical<a name="data-wrangler-transform-cat-encode"></a>
 
@@ -344,7 +395,7 @@ To use similarity encoding, do the following\.
 
 ## Featurize Text<a name="data-wrangler-transform-featurize-text"></a>
 
-Use the **Feature Text** transform group to inspect string typed columns and use text embedding to featurize these columns\. 
+Use the **Featurize Text** transform group to inspect string\-typed columns and use text embedding to featurize these columns\. 
 
 This feature group contains two features, *Character statistics* and *Vectorize*\. Use the following sections to learn more about these transforms\. For both options, the **Input column** must contain text data \(string type\)\.
 
@@ -366,7 +417,7 @@ Text embedding involves mapping words or phrases from a vocabulary to vectors of
 
 When TF\-IDF is calculated for a column of text data, each word in each sentence is converted to a real number that represents its semantic importance\. Higher numbers are associated with less frequent words, which tend to be more meaningful\. 
 
-When you define a **Vectorize** transform step, the count vectorizer and TF\-IDF methods are defined using data available in Data Wrangler when defining this step\. These same methods are used when running a Data Wrangler job\.
+When you define a **Vectorize** transform step, Data Wrangler uses the data in your dataset to define the count vectorizer and TF\-IDF methods \. Running a Data Wrangler job uses these same methods\.
 
 You configure this transform using the following: 
 + **Output column name**: This transform creates a new column with the text embedding\. Use this field to specify a name for this output column\. 
@@ -378,9 +429,9 @@ You configure this transform using the following:
   + **Minimum token length**: The minimum length, in characters, for a token to be valid\. Defaults to `1`\. For example, if you specify `3` for minimum token length, words like `a, at, in` are dropped from the tokenized sentence\. 
   + **Should regex split on gaps**: If selected, **regex** splits on gaps\. Otherwise, it matches tokens\. Defaults to `True`\. 
   + **Regex pattern**: Regex pattern that defines the tokenization process\. Defaults to `' \\ s+'`\.
-  + **To lowercase**: If chosen, all characters are converted to lowercase before tokenization\. Defaults to `True`\.
+  + **To lowercase**: If chosen, Data Wrangler converts all characters to lowercase before tokenization\. Defaults to `True`\.
 
-  To learn more, refer to the Spark documentation on [Tokenizer](https://spark.apache.org/docs/3.0.0/ml-features#tokenizer)\.
+  To learn more, see the Spark documentation on [Tokenizer](https://spark.apache.org/docs/3.0.0/ml-features#tokenizer)\.
 + **Vectorizer**: The vectorizer converts the list of tokens into a sparse numeric vector\. Each token corresponds to an index in the vector and a non\-zero indicates the existence of the token in the input sentence\. You can choose from two vectorizer options, *Count* and *Hashing*\.
   + **Count vectorize** allows customizations that filter infrequent or too common tokens\. **Count vectorize parameters** include the following: 
     + **Minimum term frequency**: In each row, terms \(tokens\) with smaller frequency are filtered\. If you specify an integer, this is an absolute threshold \(inclusive\)\. If you specify a fraction between 0 \(inclusive\) and 1, the threshold is relative to the total term count\. Defaults to `1`\.
@@ -389,12 +440,12 @@ You configure this transform using the following:
     + **Maximum vocabulary size**: Maximum size of the vocabulary\. The vocabulary is made up of all terms \(tokens\) in all rows of the column\. Defaults to `262144`\.
     + **Binary outputs**: If selected, the vector outputs do not include the number of appearances of a term in a document, but rather are a binary indicator of its appearance\. Defaults to `False`\.
 
-    To learn more about this option, refer to the Spark documentation on [CountVectorizer](https://spark.apache.org/docs/3.0.0/ml-features#countvectorizer)\.
+    To learn more about this option, see the Spark documentation on [CountVectorizer](https://spark.apache.org/docs/3.0.0/ml-features#countvectorizer)\.
   + **Hashing** is computationally faster\. **Hash vectorize parameters** includes the following:
     + **Number of features during hashing**: A hash vectorizer maps tokens to a vector index according to their hash value\. This feature determines the number of possible hash values\. Large values result in fewer collisions between hash values but a higher dimension output vector\.
 
-    To learn more about this option, refer to the Spark documentation on [FeatureHasher](https://spark.apache.org/docs/3.0.0/ml-features#featurehasher)
-+ **Apply IDF**: When chosen, an IDF transformation is applied, which multiplies the term frequency with the standard inverse document frequency used for TF\-IDF embedding\. **IDF parameters** include the following: 
+    To learn more about this option, see the Spark documentation on [FeatureHasher](https://spark.apache.org/docs/3.0.0/ml-features#featurehasher)
++ **Apply IDF** applies an IDF transformation, which multiplies the term frequency with the standard inverse document frequency used for TF\-IDF embedding\. **IDF parameters** include the following: 
   + **Minimum document frequency **: Minimum number of documents \(rows\) in which a term \(token\) must appear to be included\. If **count\_vectorize** is the chosen vectorizer, we recommend that you keep the default value and only modify the **min\_doc\_freq** field in **Count vectorize parameters**\. Defaults to `5`\.
 + ** Output format**:The output format of each row\. 
   + Select **Vector** to produce a single column with a sparse vector\. 
@@ -405,9 +456,9 @@ You configure this transform using the following:
 In Data Wrangler, you can transform time series data\. The values in a time series dataset are indexed to specific time\. For example, a dataset that shows the number of customers in a store for each hour in a day is a time series dataset\. The following table shows an example of a time series dataset\.
 
 
-**Hourly Number of Customers in a Store**  
+**Hourly number of customers in a store**  
 
-| Number of Customers | Time \(hour\) | 
+| Number of customers | Time \(hour\) | 
 | --- | --- | 
 | 4 | 09:00 | 
 | 10 | 10:00 | 
@@ -416,7 +467,7 @@ In Data Wrangler, you can transform time series data\. The values in a time seri
 | 20 | 13:00 | 
 | 18 | 14:00 | 
 
-For the preceding table, the **Number of Customers** column contains the time series data\. The time series data is indexed on the hourly data in the "Time \(hour\)" column\.
+For the preceding table, the **Number of Customers** column contains the time series data\. The time series data is indexed on the hourly data in the **Time \(hour\)** column\.
 
 You might need to perform a series of transformations on your data to get it in a format that you can use for your analysis\. Use the **Time series** transform group to transform your time series data\. For more information about the transformations that you can perform, see the following sections\.
 
@@ -435,12 +486,12 @@ You might need to perform a series of transformations on your data to get it in 
 
 You can use the group by operation to group time series data for specific values in a column\.
 
-For example, you have the following table that tracked the average daily electricity usage in a household\.
+For example, you have the following table that tracks the average daily electricity usage in a household\.
 
 
-**Average Daily Household Electricity Usage**  
+**Average daily household electricity usage**  
 
-| Household ID | Daily Timestamp | Electricity Usage \(kWh\) | Number of Household Occupants | 
+| Household ID | Daily timestamp | Electricity usage \(kWh\) | Number of household occupants | 
 | --- | --- | --- | --- | 
 | household\_0 | 1/1/2020 | 30 | 2 | 
 | household\_0 | 1/2/2020 | 40 | 2 | 
@@ -451,21 +502,21 @@ For example, you have the following table that tracked the average daily electri
 If you choose to group by ID, you get the following table\.
 
 
-**Electricity Usage Grouped by Household ID**  
+**Electricity usage grouped by household ID**  
 
-| Household ID | Electricity Usage Series \(kWh\) | Number of Household Occupants Series | 
+| Household ID | Electricity usage series \(kWh\) | Number of household occupants series | 
 | --- | --- | --- | 
 | household\_0 | \[30, 40, 35\] | \[2, 2, 3\] | 
 | household\_1 | \[45, 55\] | \[3, 4\] | 
 
 Each entry in the time series sequence is ordered by the corresponding timestamp\. The first element of the sequence corresponds to the first timestamp of the series\. For `household_0`, `30` is the first value of the **Electricity Usage Series**\. The value of `30` corresponds to the first timestamp of `1/1/2020`\.
 
-You can include the starting timestamp and ending timestamp\. The following table shows an example of how that appears\.
+You can include the starting timestamp and ending timestamp\. The following table shows how that information appears\.
 
 
-**Electricity Usage Grouped by Household ID**  
+**Electricity usage grouped by household ID**  
 
-| Household ID | Electricity Usage Series \(kWh\) | Number of Household Occupants Series | Start\_Time | End\_Time | 
+| Household ID | Electricity usage series \(kWh\) | Number of household occupants series | Start\_time | End\_time | 
 | --- | --- | --- | --- | --- | 
 | household\_0 | \[30, 40, 35\] | \[2, 2, 3\] | 1/1/2020 | 1/4/2020 | 
 | household\_1 | \[45, 55\] | \[3, 4\] | 1/2/2020 | 1/3/2020 | 
@@ -506,10 +557,10 @@ You can resample both numeric and non\-numeric data\.
 
 Use the **Resample** operation to resample your time series data\. If you have multiple time series in your dataset, Data Wrangler standardizes the time interval for each time series\.
 
-The following is an example of downsampling time series data by using the mean as the aggregation method\. The data is downsampled from every two hours to every hour\.
+The following table shows an example of downsampling time series data by using the mean as the aggregation method\. The data is downsampled from every two hours to every hour\.
 
 
-**Hourly Temperature Readings Over a Day Before Downsampling**  
+**Hourly temperature readings over a day before downsampling**  
 
 | Timestamp | Temperature \(Celsius\) | 
 | --- | --- | 
@@ -520,7 +571,7 @@ The following is an example of downsampling time series data by using the mean a
 | 4:00 | 30 | 
 
 
-**Temperature Readings Downsampled to Every Two Hours**  
+**Temperature readings downsampled to every two hours**  
 
 | Timestamp | Temperature \(Celsius\) | 
 | --- | --- | 
@@ -543,7 +594,7 @@ You can use the following procedure to resample time series data\.
 
 1. For **Timestamp**, choose the timestamp column\.
 
-1. For **Frequency unit**, specify the frequency that you'll be resampling\.
+1. For **Frequency unit**, specify the frequency that you're resampling\.
 
 1. \(Optional\) Specify a value for **Frequency quantity**\.
 
@@ -573,17 +624,17 @@ You can either impute missing values within a cell or within a column\.
 The following example shows how values are imputed within a cell\.
 
 
-**Electricity Usage With Missing Values**  
+**Electricity usage with missing values**  
 
-| Household ID | Electricity Usage Series \(kWh\) | 
+| Household ID | Electricity usage series \(kWh\) | 
 | --- | --- | 
 | household\_0 | \[30, 40, 35, NaN, NaN\] | 
 | household\_1 | \[45, NaN, 55\] | 
 
 
-**Electricity Usage With Values Imputed Using a Forward Fill**  
+**Electricity usage with values imputed using a forward fill**  
 
-| Household ID | Electricity Usage Series \(kWh\) | 
+| Household ID | Electricity usage series \(kWh\) | 
 | --- | --- | 
 | household\_0 | \[30, 40, 35, 35, 35\] | 
 | household\_1 | \[45, 45, 55\] | 
@@ -591,9 +642,9 @@ The following example shows how values are imputed within a cell\.
 The following example shows how values are imputed within a column\.
 
 
-**Average Daily Household Electricity Usage With Missing Values**  
+**Average daily household electricity usage with missing values**  
 
-| Household ID | Electricity Usage \(kWh\) | 
+| Household ID | Electricity usage \(kWh\) | 
 | --- | --- | 
 | household\_0 | 30 | 
 | household\_0 | 40 | 
@@ -602,9 +653,9 @@ The following example shows how values are imputed within a column\.
 | household\_1 | NaN | 
 
 
-**Average Daily Household Electricity Usage With Values Imputed Using a Forward Fill**  
+**Average daily household electricity usage with values imputed using a forward fill**  
 
-| Household ID | Electricity Usage \(kWh\) | 
+| Household ID | Electricity usage \(kWh\) | 
 | --- | --- | 
 | household\_0 | 30 | 
 | household\_0 | 40 | 
@@ -683,7 +734,7 @@ You can use the following procedure to validate the timestamps in your dataset\.
 
 If you have time series data stored as arrays, you can standardize each time series to the same length\. Standardizing the length of the time series array might make it easier for you to perform your analysis on the data\.
 
-You can standardize your time series for data transformations that requires the length of your data to be fixed\.
+You can standardize your time series for data transformations that require the length of your data to be fixed\.
 
 Many ML algorithms require you to flatten your time series data before you use them\. Flattening time series data is separating each value of the time series into its own column in a dataset\. The number of columns in a dataset can't change, so the lengths of the time series need to be standardized between you flatten each array into a set of features\.
 
@@ -716,9 +767,9 @@ You can use the following procedure to standardize the length of the time series
 
 1. \(Optional\) For **Output column**, specify a name for the output column\. If you don't specify a name, the transform is done in place\.
 
-1. If the date time column is formatted for the string type, choose **Cast to datetime**\.
+1. If the datetime column is formatted for the string type, choose **Cast to datetime**\.
 
-1. Choose **Cutoff quantile**, specify a quantile to set the length of the sequence\.
+1. Choose **Cutoff quantile** and specify a quantile to set the length of the sequence\.
 
 1. Choose **Flatten the output** to output the values of the time series into separate columns\.
 
@@ -764,7 +815,7 @@ For many use cases, the best way to predict the future behavior of your time ser
 
 The most common uses of lagged features are the following:
 + Collecting a handful of past values\. For example, for time, t \+ 1, you collect t, t \- 1, t \- 2, and t \- 3\.
-+ Collecting values that correspond to seasonal behavior in the data\. For example, to predict the occupancy in a restaurant at 1:00pm, you might want to use the features from 1:00pm on the previous day\. Using the features from 12:00pm or 11:00am on the same day might not be as predictive as using the features from previous days\.
++ Collecting values that correspond to seasonal behavior in the data\. For example, to predict the occupancy in a restaurant at 1:00 PM, you might want to use the features from 1:00 PM on the previous day\. Using the features from 12:00 PM or 11:00 AM on the same day might not be as predictive as using the features from previous days\.
 
 1. Open your Data Wrangler data flow\.
 
@@ -798,9 +849,9 @@ You might have time series data that don't have timestamps\. If you know that th
 For example, you might have the following time series data for the number of customers at a restaurant\.
 
 
-**Time Series Data on the Number of Customers at a Restaurant**  
+**Time series data on the number of customers at a restaurant**  
 
-| Number of Customers | 
+| Number of customers | 
 | --- | 
 | 10 | 
 | 14 | 
@@ -809,19 +860,19 @@ For example, you might have the following time series data for the number of cus
 | 30 | 
 | 20 | 
 
-If you know that the restaurant opened at 5:00pm and that the observations are taken hourly, you can add a timestamp column that corresponds to the time series data\. You can see the timestamp column in the following table\.
+If you know that the restaurant opened at 5:00 PM and that the observations are taken hourly, you can add a timestamp column that corresponds to the time series data\. You can see the timestamp column in the following table\.
 
 
-**Time Series Data on the Number of Customers at a Restaurant**  
+**Time series data on the number of customers at a restaurant**  
 
-| Number of Customers | Timestamp | 
+| Number of customers | Timestamp | 
 | --- | --- | 
-| 10 | 1:00 pm | 
-| 14 | 2:00 pm | 
-| 24 | 3:00 pm | 
-| 40 | 4:00 pm | 
-| 30 | 5:00 pm | 
-| 20 | 6:00 pm | 
+| 10 | 1:00 PM | 
+| 14 | 2:00 PM | 
+| 24 | 3:00 PM | 
+| 40 | 4:00 PM | 
+| 30 | 5:00 PM | 
+| 20 | 6:00 PM | 
 
 Use the following procedure to add a datetime range to your data\.
 
@@ -849,7 +900,7 @@ Use the following procedure to add a datetime range to your data\.
 
 ### Use a Rolling Window In Your Time Series<a name="data-wrangler-transform-rolling-window"></a>
 
-You can extract features over a time period\. For example, for time, t, and a time window length of 3, and for the row that indicates the tth timestamp, we append the features that are extracted from the time series at times t \- 3, t \-2, and t \- 1\. For information on extracting features, see [Extract Features from Your Time Series Data](#data-wrangler-transform-extract-time-series-features)\. 
+You can extract features over a time period\. For example, for time, *t*, and a time window length of 3, and for the row that indicates the *t*th timestamp, we append the features that are extracted from the time series at times *t* \- 3, *t* \-2, and *t* \- 1\. For information on extracting features, see [Extract Features from Your Time Series Data](#data-wrangler-transform-extract-time-series-features)\. 
 
 You can use the following procedure to extract features over a time period\.
 
@@ -883,7 +934,7 @@ Use **Featurize date/time** to create a vector embedding representing a datetime
 + Strings describing datetime: For example, `"January 1st, 2020, 12:44pm"`\. 
 + A Unix timestamp: A Unix timestamp describes the number of seconds, milliseconds, microseconds, or nanoseconds from 1/1/1970\. 
 
-You can choose to **Infer datetime format** and provide a **Datetime format**\. If you provide a datetime format, you must use the codes described in the [Python documentation](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes)\. The options you select for these two configurations have implications for the speed of the operation, and the final results\.
+You can choose to **Infer datetime format** and provide a **Datetime format**\. If you provide a datetime format, you must use the codes described in the [Python documentation](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes)\. The options you select for these two configurations have implications for the speed of the operation and the final results\.
 + The most manual and computationally fastest option is to specify a **Datetime format** and select **No** for **Infer datetime format**\.
 + To reduce manual labor, you can choose **Infer datetime format** and not specify a datetime format\. It is also a computationally fast operation; however, the first datetime format encountered in the input column is assumed to be the format for the entire column\. If there are other formats in the column, these values are NaN in the final output\. Inferring the datetime format can give you unparsed strings\. 
 + If you don't specify a format and select **No** for **Infer datetime format**, you get the most robust results\. All the valid datetime strings are parsed\. However, this operation can be an order of magnitude slower than the first two options in this list\. 
@@ -892,7 +943,7 @@ When you use this transform, you specify an **Input column** which contains date
 + **Vector**: Outputs a single column as a vector\. 
 + **Columns**: Creates a new column for every feature\. For example, if the output contains a year, month, and day, three separate columns are created for year, month, and day\. 
 
-Additionally, you must choose an **Embedding mode**\. For linear models and deep networks, we recommend choosing **cyclic**\. For tree based algorithms, we recommend choosing **ordinal**\.
+Additionally, you must choose an **Embedding mode**\. For linear models and deep networks, we recommend choosing **cyclic**\. For tree\-based algorithms, we recommend choosing **ordinal**\.
 
 ## Format String<a name="data-wrangler-transform-format-string"></a>
 
@@ -917,7 +968,7 @@ This feature group contains the following transforms\. All transforms return cop
 | Capitalize |  Capitalize the first letter in each sentence\.   | 
 | Swap case | Converts all uppercase characters to lowercase and all lowercase characters to uppercase characters of the given string, and returns it\. | 
 | Add prefix or suffix |  Adds a prefix and a suffix the string column\. You must specify at least one of **Prefix** and **Suffix**\.   | 
-| Remove symbols |  Removes given symbols from a string\. All listed characters will be removed\. Defaults to white space\.   | 
+| Remove symbols |  Removes given symbols from a string\. All listed characters are removed\. Defaults to white space\.   | 
 
 ## Handle Outliers<a name="data-wrangler-transform-handle-outlier"></a>
 
@@ -931,12 +982,12 @@ Use the following sections to learn more about the transforms this group contain
 
 This transform detects and fixes outliers in numeric features using statistics that are robust to outliers\.
 
-You must define an **Upper quantile** and a **Lower quantile**, which are used in the statistics used to calculate outliers\. You must also specify the number of **Standard deviations** from which a value must vary from the mean to be considered an outlier\. For example, if you specify 3 for **Standard deviations**, a value must fall more than 3 standard deviations from the mean to be considered an outlier\. 
+You must define an **Upper quantile** and a **Lower quantile** for the statistics used to calculate outliers\. You must also specify the number of **Standard deviations** from which a value must vary from the mean to be considered an outlier\. For example, if you specify 3 for **Standard deviations**, a value must fall more than 3 standard deviations from the mean to be considered an outlier\. 
 
 The **Fix method** is the method used to handle outliers when they are detected\. You can choose from the following:
 + **Clip**: Use this option to clip the outliers to the corresponding outlier detection bound\.
-+ **Remove**: Use this to remove rows with outliers from the dataframe\.
-+ **Invalidate**: Use this to replace outliers with invalid values\.
++ **Remove**: Use this option to remove rows with outliers from the dataframe\.
++ **Invalidate**: Use this option to replace outliers with invalid values\.
 
 ### Standard Deviation Numeric Outliers<a name="data-wrangler-transform-handle-outlier-sstdev"></a>
 
@@ -946,17 +997,17 @@ You specify the number of **Standard deviations** a value must vary from the mea
 
 The **Fix method** is the method used to handle outliers when they are detected\. You can choose from the following:
 + **Clip**: Use this option to clip the outliers to the corresponding outlier detection bound\.
-+ **Remove**: Use this to remove rows with outliers from the dataframe\.
-+ **Invalidate**: Use this to replace outliers with invalid values\.
++ **Remove**: Use this option to remove rows with outliers from the dataframe\.
++ **Invalidate**: Use this option to replace outliers with invalid values\.
 
 ### Quantile Numeric Outliers<a name="data-wrangler-transform-handle-outlier-quantile-numeric"></a>
 
-Use this transform to detect and fix outliers in numeric features using quantiles\. You can define an **Upper quantile** and a **Lower quantile**, and all values that fall above or below those quantile\-values, respectively, are considered outliers\. 
+Use this transform to detect and fix outliers in numeric features using quantiles\. You can define an **Upper quantile** and a **Lower quantile**\. All values that fall above the upper quantile or below the lower quantile are considered outliers\. 
 
 The **Fix method** is the method used to handle outliers when they are detected\. You can choose from the following:
 + **Clip**: Use this option to clip the outliers to the corresponding outlier detection bound\.
-+ **Remove**: Use this to remove rows with outliers from the dataframe\.
-+ **Invalidate**: Use this to replace outliers with invalid values\. 
++ **Remove**: Use this option to remove rows with outliers from the dataframe\.
++ **Invalidate**: Use this option to replace outliers with invalid values\. 
 
 ### Min\-Max Numeric Outliers<a name="data-wrangler-transform-handle-outlier-minmax-numeric"></a>
 
@@ -966,8 +1017,8 @@ You specify a **Upper threshold** and a **Lower threshold**, and if values fall 
 
 The **Fix method** is the method used to handle outliers when they are detected\. You can choose from the following:
 + **Clip**: Use this option to clip the outliers to the corresponding outlier detection bound\.
-+ **Remove**: Use this to remove rows with outliers from the dataframe\.
-+ **Invalidate**: Use this to replace outliers with invalid values\. 
++ **Remove**: Use this option to remove rows with outliers from the dataframe\.
++ **Invalidate**: Use this option to replace outliers with invalid values\. 
 
 ### Replace Rare<a name="data-wrangler-transform-handle-outlier-replace-rare"></a>
 
@@ -1025,7 +1076,7 @@ Use this transform group to quickly perform sort and shuffle operations on rows\
 
 Use this transform group to combine or flatten vector columns\. This group contains the following transforms\. 
 + **Assemble**: Use this transform to combine Spark vectors and numeric data into a single column\. For example, you can combine three columns: two containing numeric data and one containing vectors\. Add all the columns you want to combine in **Input columns** and specify a **Output column name** for the combined data\. 
-+ **Flatten**: Use this transform to flatten a single column containing vector data\. The input column must contain PySpark vectors, or array\-like objects\. You can control the number of columns created by specifying a **Method to detect number of outputs**\. For example, if you select **Length of first vector**, the number of elements in the first valid vector or array found in the column determines the number of output columns that are created\. All other input vectors with too many items are truncated\. Inputs with too few items are filled with NaNs\.
++ **Flatten**: Use this transform to flatten a single column containing vector data\. The input column must contain PySpark vectors or array\-like objects\. You can control the number of columns created by specifying a **Method to detect number of outputs**\. For example, if you select **Length of first vector**, the number of elements in the first valid vector or array found in the column determines the number of output columns that are created\. All other input vectors with too many items are truncated\. Inputs with too few items are filled with NaNs\.
 
   You also specify an **Output prefix**, which is used as the prefix for each output column\. 
 
@@ -1050,7 +1101,7 @@ You can stratify a randomized sample to make sure that it represents the origina
 
 You might be performing data preparation for multiple use cases\. For each use case, you can take a different sample and apply a different set of transformations\.
 
-The following procedure describes the process of creating a random sample\. The preceding GIF shows the steps used in the procedure\.
+The following procedure describes the process of creating a random sample\. 
 
 To take a random sample from your data\.
 
@@ -1095,8 +1146,8 @@ The following transforms are supported under **Search and edit**\. All transform
 
 | Name | Function | 
 | --- | --- | 
-|  Find substring  |  Returns the index of the first occurrence of the **Substring** for which you searched optionally, starting and ending the search at **Start** and **End** respectively\.   | 
-|  Find substring \(from right\)  |  Returns the index of the last occurrence of the **Substring** for which you searched, optionally, starting and ending the search at **Start** and **End** respectively\.   | 
+|  Find substring  |  Returns the index of the first occurrence of the **Substring** for which you searched , You can start and end the search at **Start** and **End** respectively\.   | 
+|  Find substring \(from right\)  |  Returns the index of the last occurrence of the **Substring** for which you searched\. You can start and end the search at **Start** and **End** respectively\.   | 
 |  Matches prefix  |  Returns a Boolean value if the string contains a given **Pattern**\. A pattern can be a character sequence or regular expression\. Optionally, you can make the pattern case sensitive\.   | 
 |  Find all occurrences  |  Returns an array with all occurrences of a given pattern\. A pattern can be a character sequence or regular expression\.   | 
 |  Extract using regex  |  Returns a string that matches a given Regex pattern\.  | 

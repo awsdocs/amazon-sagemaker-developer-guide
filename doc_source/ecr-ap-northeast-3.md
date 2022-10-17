@@ -113,6 +113,7 @@ from sagemaker import image_uris
 image_uris.retrieve(framework='forecasting-deepar',region='ap-northeast-3')
 ```
 
+
 | Registry path | Version | Job types \(image scope\) | 
 | --- | --- | --- | 
 | 867004704886\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/forecasting\-deepar:<tag> | 1 | inference, training | 
@@ -660,4 +661,4 @@ image_uris.retrieve(framework='xgboost',region='ap-northeast-3',version='1.5-1')
 | 867004704886\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.0\-1 | 1\.0 | inference, training | 
 | 867004704886\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/xgboost:<tag> | 1 | 0\.72 | inference, training | 
 | 867004704886\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/sagemaker\-xgboost:<tag> | 0\.90\-2 | 0\.90 | inference, training | 
-| 867004704886\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/sagemaker\-xgboost:<tag> | 0\.90\-1 | 0\.90 | inference, training |
+| 867004704886\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/sagemaker\-xgboost:<tag> | 0\.90\-1 | 0\.90 | inference, training | 

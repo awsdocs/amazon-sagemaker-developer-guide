@@ -36,6 +36,7 @@ Amazon SageMaker automatically generates graphs of lineage entities as you use t
   + Asia Pacific \(Osaka\) – ap\-northeast\-3
   + Europe \(Milan\) – eu\-south\-1
   + Africa \(Cape Town\) – af\-south
+  + Asia Pacific \(Jakarta\) – ap\-southeast\-3
 + The maximum depth of relationships to discover is currently limited to 10\.
 + Filtering is limited to the following properties: last modified date, created date, type, and lineage entity type\. 
 

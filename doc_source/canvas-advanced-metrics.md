@@ -1,6 +1,6 @@
 # Use advanced metrics in your analyses<a name="canvas-advanced-metrics"></a>
 
-Amazon SageMaker Canvas uses different advanced performance metrics to give you a sense of how well your model performed\. The advanced metrics that SageMaker Canvas shows you depend on whether your model performs a numeric or categorical prediction on your data\.
+Amazon SageMaker Canvas uses different advanced performance metrics to give you a sense of how well your model performed\. The advanced metrics that SageMaker Canvas shows you depend on whether your model performs numeric, categorical, or time series forecasting predictions on your data\.
 
 *Numeric prediction* refers to the mathematical concept of regression\. When your **Target column** has values that can be measured, such as yearly revenue or the number of items sold by a department store, Amazon SageMaker Canvas builds a model on your data using regression\. For more information about regression, see [Metrics for numeric prediction](#canvas-numeric-prediction-metrics)\.
 
@@ -9,6 +9,8 @@ Amazon SageMaker Canvas uses different advanced performance metrics to give you 
 + Instances where the data is either a 0 or 1
 + Instances where the data is either a Yes or a No\.
 + A list of responses to a survey question\.
+
+*Time series forecasting* refers to making predictions that vary over time\. You can perform time series forecasts on data with timestamps that correlate to a value you want to predict\. For example, you can make a time series forecast that takes daily sales data and makes sales predictions for the next month\.
 
 SageMaker Canvas uses confusion matrices to help you visualize when a model makes predictions correctly\.
 
@@ -63,3 +65,12 @@ The following is a list of available metrics for multi\-classification\.
 + Average Precision – The precision averaged for all categories\.
 + Average Recall – The recall averaged for all categories\.
 + Average AUC – The AUC averaged for all categories\.
+
+## Metrics for time series forecasts<a name="canvas-time-series-forecast-metrics"></a>
+
+The following defines the advanced metrics for time series forecasts in Amazon SageMaker Canvas and gives you information about how you can use them\.
++ Average Weighted Quantile Loss \(wQL\) – Evaluates the forecast by averaging the accuracy at the P10, P50, and P90 quantiles\. A lower value indicates a more accurate model\.
++ Weighted Absolute Percent Error \(WAPE\) – The sum of the absolute error normalized by the sum of the absolute target, which measure the overall deviation of forecasted values from observed values\. A lower value indicates a more accurate model, where WAPE = 0 is a model with no errors\.
++ Root Mean Square Error \(RMSE\) – The square root of the average squared errors\. A lower RMSE indicates a more accurate model, where RMSE = 0 is a model with no errors\.
++ Mean Absolute Percent Error \(MAPE\) – The percentage error \(percent difference of the mean forecasted value versus the actual value\) averaged over all time points\. A lower value indicates a more accurate model, where MAPE = 0 is a model with no errors\.
++ Mean Absolute Scaled Error \(MASE\) – The mean absolute error of the forecast normalized by the mean absolute error of a simple baseline forecasting method\. A lower value indicates a more accurate model, where MASE < 1 is estimated to be better than the baseline and MASE > 1 is estimated to be worse than the baseline\.

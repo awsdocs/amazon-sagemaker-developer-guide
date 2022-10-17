@@ -1,6 +1,6 @@
-# Use AWS CloudFormation to update autoscaling policies<a name="endpoint-scaling-cloudformation"></a>
+# Use AWS CloudFormation to update auto scaling policies<a name="endpoint-scaling-cloudformation"></a>
 
-The following is an example for how to enable autoscaling on an endpoint using AWS CloudFormation\.
+The following example shows how to activate Application Auto Scaling on an endpoint using AWS CloudFormation\.
 
 ```
   Endpoint:
@@ -34,4 +34,4 @@ The following is an example for how to enable autoscaling on an endpoint using A
           PredefinedMetricType: SageMakerVariantInvocationsPerInstance
 ```
 
-For more details, refer to AWS CloudFormation's [AutoScalingPlans API reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-autoscalingplans-scalingplan.html)\.
+For more details, refer to AWS CloudFormation [AutoScalingPlans API reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-autoscalingplans-scalingplan.html)\.

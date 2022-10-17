@@ -16,6 +16,9 @@ Data Wrangler provides the following core functionalities to help you analyze an
 
 To start using Data Wrangler, see [Get Started with Data Wrangler](data-wrangler-getting-started.md)\.
 
+**Important**  
+Data Wrangler no longer supports Jupyter Lab Version 1 \(JL1\)\. To access the latest features and updates, update to Jupyter Lab Version 3\. For more information about upgrading, see [View and update the JupyterLab version of an app from the console](studio-jl.md#studio-jl-view)\.
+
 **Topics**
 + [Get Started with Data Wrangler](data-wrangler-getting-started.md)
 + [Import](data-wrangler-import.md)
@@ -24,9 +27,11 @@ To start using Data Wrangler, see [Get Started with Data Wrangler](data-wrangler
 + [Automatically Train Models on Your Data Flow](data-wrangler-autopilot.md)
 + [Transform Data](data-wrangler-transform.md)
 + [Analyze and Visualize](data-wrangler-analyses.md)
++ [Reusing Data Flows for Different Datasets](data-wrangler-parameterize.md)
 + [Export](data-wrangler-data-export.md)
 + [Security and Permissions](data-wrangler-security.md)
 + [Release Notes](data-wrangler-release-notes.md)
 + [Troubleshoot](data-wrangler-trouble-shooting.md)
++ [Increase Amazon EC2 Instance Limit](data-wrangler-increase-instance-limit.md)
 + [Update Data Wrangler](data-wrangler-update.md)
 + [Shut Down Data Wrangler](data-wrangler-shut-down.md)

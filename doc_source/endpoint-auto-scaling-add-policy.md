@@ -1,10 +1,10 @@
 # Register a model<a name="endpoint-auto-scaling-add-policy"></a>
 
-You can add autoscaling for a model with the AWS CLI or the Application Auto Scaling API\. You first must register the model, then you must define an autoscaling policy\.
+You can add auto scaling for a model with the AWS CLI or the Application Auto Scaling API\. You first must register the model, then you must define an auto scaling policy\.
 
 ## Register a model with the AWS CLI<a name="endpoint-auto-scaling-add-cli"></a>
 
-With the AWS CLI, you can configure autoscaling based on either a predefined or a custom metric\.
+With the AWS CLI, you can configure auto scaling based on either a predefined or a custom metric\.
 
 To register your endpoint, use the [https://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/register-scalable-target.html](https://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/register-scalable-target.html) AWS CLI command with the following parameters:
 + `--service-namespace`—Set this value to `sagemaker`\.

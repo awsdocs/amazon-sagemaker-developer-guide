@@ -9,3 +9,4 @@ While you're following this page, use the [`sagemaker-debugger` open source SDK 
 
 **Topics**
 + [Adapt Your PyTorch Training Script](debugger-modify-script-pytorch.md)
++ [Adapt Your TensorFlow Training Script](debugger-modify-script-tensorflow.md)

@@ -140,9 +140,23 @@ This differs from other SageMaker algorithms, which use the protobuf training in
 
 For CSV training input mode, the total memory available to the algorithm \(Instance Count \* the memory available in the `InstanceType`\) must be able to hold the training dataset\. For libsvm training input mode, it's not required, but we recommend it\.
 
-SageMaker XGBoost uses the Python pickle module to serialize/deserialize the model, which can be used for saving/loading the model\.
+For v1\.3\-1 and later, SageMaker XGBoost saves the model in the XGBoost internal binary format, using `Booster.save_model`\. Previous versions use the Python pickle module to serialize/deserialize the model\.
 
-**To use a model trained with SageMaker XGBoost in open source XGBoost**
+**Note**  
+Be mindful of versions when using an SageMaker XGBoost model in open source XGBoost\. Versions 1\.3\-1 and later use the XGBoost internal binary format while previous versions use the Python pickle module\.
+
+**To use a model trained with SageMaker XGBoost v1\.3\-1 or later in open source XGBoost**
++ Use the following Python code:
+
+  ```
+  import xgboost as xgb
+  
+  xgb_model = xgb.Booster()
+  xgb_model.load_model(model_file_path)
+  xgb_model.predict(dtest)
+  ```
+
+**To use a model trained with previous versions of SageMaker XGBoost in open source XGBoost**
 + Use the following Python code:
 
   ```

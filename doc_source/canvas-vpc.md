@@ -48,7 +48,8 @@ The following are the VPC endpoints for each service you can use with SageMaker 
 |  Amazon Athena  |  com\.amazonaws\.*Region*\.athena  | Interface | 
 |  Amazon SageMaker  |  com\.amazonaws\.*Region*\.sagemaker\.api com\.amazonaws\.*Region*\.sagemaker\.runtime com\.amazonaws\.*Region*\.notebook  | Interface | 
 |  AWS Security Token Service  |  com\.amazonaws\.*Region*\.sts  | Interface | 
-|  Amazon Elastic Container Registry  |  com\.amazonaws\.*Region*\.ecr\.api com\.amazonaws\.*Region*\.ecr\.dk  | Interface | 
+|  Amazon Elastic Container Registry \(Amazon ECR\)  |  com\.amazonaws\.*Region*\.ecr\.api com\.amazonaws\.*Region*\.ecr\.dk  | Interface | 
+|  Amazon Elastic Compute Cloud \(Amazon EC2\)  |  com\.amazonaws\.*Region*\.ec2  | Interface | 
 |  Amazon Simple Storage Service \(Amazon S3\)  |  com\.amazonaws\.*Region*\.s3  | Gateway | 
 |  Amazon Redshift  |  com\.amazonaws\.*Region*\.redshift\-data  | Interface | 
 |  AWS Secrets Manager  |  com\.amazonaws\.*Region*\.secretsmanager  | Interface | 

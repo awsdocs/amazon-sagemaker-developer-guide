@@ -8,7 +8,7 @@ You can prepare and deploy a model by choosing a node in your Data Wrangler flow
 
 You can also train and deploy a model directly from your data flow\.
 
-The following procedure prepares and deploys a model from the data flow\.
+The following procedure prepares and deploys a model from the data flow\. For Data Wrangler flows with multi\-row transforms, you can't use the transforms from the Data Wrangler flow when you're deploying the model\. You can use the following procedure to process the data before you use it to perform inference\.
 
 To train and deploy a model directly from your data flow, do the following\.
 

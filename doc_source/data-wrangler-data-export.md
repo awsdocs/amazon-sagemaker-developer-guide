@@ -21,11 +21,7 @@ We recommend that you use the IAM `AmazonSageMakerFullAccess` managed policy to 
 
 When you export your data flow, you're charged for the AWS resources that you use\. You can use cost allocation tags to organize and manage the costs of those resources\. You create these tags for your user\-profile and Data Wrangler automatically applies them to the resources used to export the data flow\. For more information, see [Using Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)\.
 
-## <a name="data-wrangler-data-export-processing"></a>
-
-Your options for exporting your data transformations depend on to where you're exporting them\. For more information, see the following sections\.
-
-### Export to Amazon S3<a name="data-wrangler-data-export-s3"></a>
+## Export to Amazon S3<a name="data-wrangler-data-export-s3"></a>
 
 Data Wrangler gives you the ability to export your data to a location within an Amazon S3 bucket\. You can specify the location using one of the following methods:
 + Destination node – Where Data Wrangler stores the data after it has processed it\.
@@ -75,7 +71,13 @@ Create a job from the **Data flow** page and choose the destination nodes that y
 
 1. Choose the destination nodes that you want to export\.
 
-1. \(Optional\) Specify a AWS KMS key ARN\. A AWS KMS key is a cryptographic key that you can use to protect your data\. For more information about AWS KMS keys, see [AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)
+1. \(Optional\) Specify a AWS KMS key ARN\. A AWS KMS key is a cryptographic key that you can use to protect your data\. For more information about AWS KMS keys, see [AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)\.
+
+1. \(Optional\) Under **Trained parameters**\. choose **Refit** if you've done the following:
+   + Sampled your dataset
+   + Applied a transform that uses your data to create a new column in the dataset
+
+   For more information about refitting the transformations you've made to an entire dataset, see [Refit Transforms to The Entire Dataset and Export Them](#data-wrangler-data-export-fit-transform)\.
 
 1. Choose **Configure job**\. The following image shows the **Configure job** page\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/destination-nodes/destination-nodes-configure-job.png)
@@ -122,13 +124,13 @@ To use the **Export data** method\.
 
 When you export your data flow to an Amazon S3 bucket, Data Wrangler stores a copy of the flow file in the S3 bucket\. It stores the flow file under the *data\_wrangler\_flows* prefix\. If you use the default Amazon S3 bucket to store your flow files, they use the following naming convention: `sagemaker-region-account number`\. For example, if your account number is 111122223333 and you are using Studio in us\-east\-1, your imported datasets are stored in `sagemaker-us-east-1-111122223333`\. In this example, your \.flow files created in us\-east\-1 are stored in `s3://sagemaker-region-account number/data_wrangler_flows/`\. 
 
-### Export to SageMaker Pipelines<a name="data-wrangler-data-export-pipelines"></a>
+## Export to SageMaker Pipelines<a name="data-wrangler-data-export-pipelines"></a>
 
 When you want to build and deploy large\-scale machine learning \(ML\) workflows, you can use SageMaker Pipelines to create end\-to\-end workflows that manage and deploy SageMaker jobs\. SageMaker Pipelines gives you the ability to build workflows that manage your SageMaker data preparation, model training, and model deployment jobs\. You can use the first\-party algorithms that SageMaker offers by using SageMaker Pipelines\. For more information on SageMaker Pipelines, see [SageMaker Pipelines](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines.html)\.
 
 When you export one or more steps from your data flow to SageMaker Pipelines, Data Wrangler creates a Jupyter Notebook that you can use to define, instantiate, run, and manage a pipeline\.
 
-#### Use a Jupyter Notebook to Create a Pipeline<a name="data-wrangler-pipelines-notebook"></a>
+### Use a Jupyter Notebook to Create a Pipeline<a name="data-wrangler-pipelines-notebook"></a>
 
 Use the following procedure to create a Jupyter Notebook to export your Data Wrangler flow to SageMaker Pipelines\.
 
@@ -158,7 +160,7 @@ pipeline = Pipeline(
 
 For more information on defining pipelines, see [Define SageMaker Pipeline](https://docs.aws.amazon.com/sagemaker/latest/dg/define-pipeline.html)\.
 
-### Export to Python Code<a name="data-wrangler-data-export-python-code"></a>
+## Export to Python Code<a name="data-wrangler-data-export-python-code"></a>
 
 To export all steps in your data flow to a Python file that you can manually integrate into any data processing workflow, use the following procedure\.
 
@@ -176,7 +178,7 @@ Use the following procedure to generate a Jupyter Notebook and run it to export 
 
 You might need to configure the Python script to make it run in your pipeline\. For example, if you're running a Spark environment, make sure that you are running the script from an environment that has permission to access AWS resources\.
 
-### Export to Amazon SageMaker Feature Store<a name="data-wrangler-data-export-feature-store"></a>
+## Export to Amazon SageMaker Feature Store<a name="data-wrangler-data-export-feature-store"></a>
 
 You can use Data Wrangler to export features you've created to Amazon SageMaker Feature Store\. A feature is a column in your dataset\. Feature Store is a centralized store for features and their associated metadata\. You can use Feature Store to create, share, and manage curated data for machine learning \(ML\) development\. Centralized stores make your data more discoverable and reusable\. For more information about Feature Store, see [Amazon SageMaker Feature Store](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html)\.
 
@@ -292,11 +294,24 @@ Create a job from the **Data flow** page and choose the destination nodes that y
 
 1. Choose the destination nodes that you want to export\.
 
-1. \(Optional\) Specify a AWS KMS key ARN\. A AWS KMS key is a cryptographic key that you can use to protect your data\. For more information about AWS KMS keys, see [AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)
+1. \(Optional\) For **Output KMS Key**, specify an ARN, ID, or alias of an AWS KMS key\. A KMS key is a cryptographic key\. You can use the key to encrypt the output data from the job\. For more information about AWS KMS keys, see [AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)\.
+
+1. The following image shows the **Configure job** page with the **Job configuration** tab open\.  
+![\[\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/destination-nodes/destination-nodes-configure-job.png)
+
+   \(Optional\) Under **Trained parameters**\. choose **Refit** if you've done the following:
+   + Sampled your dataset
+   + Applied a transform that uses your data to create a new column in the dataset
+
+   For more information about refitting the transformations you've made to an entire dataset, see [Refit Transforms to The Entire Dataset and Export Them](#data-wrangler-data-export-fit-transform)\.
 
 1. Choose **Configure job**\. The following image shows the **Configure job** page\.
 
-1. \(Optional\) Configure the Data Wrangler job\.
+1. \(Optional\) Configure the Data Wrangler job\. The following are examples of optional configurations\.
+
+   1. For **Flow file S3 location**, specify the Amazon S3 location where you'd like to save the flow file\.
+
+   1. For **Flow file KMS key**, specify the AWS KMS key, ARN, or alias that you're using to encrypt the flow file\.
 
 1. Choose **Run**\.
 
@@ -371,3 +386,41 @@ The notebook uses these configurations to create a feature group, process your d
 ------
 
 The notebook uses these configurations to create a feature group, process your data at scale, and then ingest the processed data into your online and offline feature stores\. To learn more, see [Data Sources and Ingestion](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-ingest-data.html)\.
+
+## Refit Transforms to The Entire Dataset and Export Them<a name="data-wrangler-data-export-fit-transform"></a>
+
+When you import data, Data Wrangler uses a sample of the data to apply the encodings\. By default, Data Wrangler uses the first 50,000 rows as a sample, but you can import the entire dataset or use a different sampling method\. For more information, see [Import](data-wrangler-import.md)\.
+
+The following transformations use your data to create a column in the dataset:
++ [Encode Categorical](data-wrangler-transform.md#data-wrangler-transform-cat-encode)
++ [Featurize Text](data-wrangler-transform.md#data-wrangler-transform-featurize-text)
++ [Handle Outliers](data-wrangler-transform.md#data-wrangler-transform-handle-outlier)
++ [Handle Missing Values](data-wrangler-transform.md#data-wrangler-transform-handle-missing)
+
+If you used sampling to import your data, the preceding transforms only use the data from the sample to create the column\. The transform might not have used all of the relevant data\. For example, if you use the **Encode Categorical** transform, there might have been a category in the entire dataset that wasn't present in the sample\.
+
+You can either use a destination node or a Jupyter notebook to refit the transformations to the entire dataset, When Data Wrangler exports the transformations in the flow, it creates a SageMaker processing job\. When the processing job finishes, Data Wrangler saves the following files in either the default Amazon S3 location or an S3 location that you specify:
++ The Data Wrangler flow file that specifies the transformations that are refit to the dataset
++ The dataset with the refit transformations applied to it
+
+You can open a Data Wrangler flow file within Data Wrangler and apply the transformations to a different dataset\. For example, if you've applied the transformations to a training dataset, you can open and use the Data Wrangler flow file to apply the transformations to a dataset used for inference\.
+
+For a information about using destination nodes to refit transforms and export see the following pages:
++ [Export to Amazon S3](#data-wrangler-data-export-s3)
++ [Export to Amazon SageMaker Feature Store](#data-wrangler-data-export-feature-store)
+
+Use the following procedure to run a Jupyter notebook to refit the transformations and export the data\.
+
+To run a Jupyter Notebook and to refit the transformations and export your Data Wrangler flow, do the following\.
+
+1. Choose the **\+** next to the node that you want to export\.
+
+1. Choose **Export to**\.
+
+1. Choose the location where you're exporting the data\.
+
+1. For the `refit_trained_params` object, set `refit` to `True`\.
+
+1. For the `output_flow` field, specify the name of the output flow file with the refit transformations\.
+
+1. Run the Jupyter Notebook\.

@@ -6,7 +6,11 @@ Amazon SageMaker Autopilot supports different training modes and algorithms to a
 
 SageMaker Autopilot can automatically select the training method based on the dataset size, or you can select it manually\. The choices are as follows:
 + **Ensembling** – Autopilot uses the [AutoGluon](https://auto.gluon.ai/stable/tutorials/tabular_prediction/index.html) library to train several base models\. To find the best combination for your dataset, ensemble mode runs 10 trials with different model and meta parameter settings\. Then Autopilot combines these models using a stacking ensemble method to create an optimal predictive model\. For a list of algorithms that Autopilot supports in ensembling mode, see the following **Algorithm support** section\.
-+ **Hyperparameter optimization \(HPO\)** – Autopilot finds the best version of a model by tuning hyperparameters using Bayesian optimization while running training jobs on your dataset\. HPO mode selects the algorithms that are most relevant to your dataset and selects the best range of hyperparameters to tune your models\. To tune your models, HPO mode runs up to 100 trials to find the optimal hyperparameters settings within the selected range\. For a list of algorithms that Autopilot supports in HPO mode, see the following **Algorithm support** section\. 
++ **Hyperparameter optimization \(HPO\)** – Autopilot finds the best version of a model by tuning hyperparameters using Bayesian optimization or multi\-fidelity optimization while running training jobs on your dataset\. HPO mode selects the algorithms that are most relevant to your dataset and selects the best range of hyperparameters to tune your models\. To tune your models, HPO mode runs up to 100 trials \(default\) to find the optimal hyperparameters settings within the selected range\. If your dataset size is less than 100 MB, Autopilot uses Bayesian optimization\. Autopilot chooses multi\-fidelity optimization if your dataset is larger than 100 MB\.
+
+  In multi\-fidelity optimization, metrics are continuously emitted from the training containers\. A trial that is performing poorly against a selected objective metric is stopped early\. A trial that is performing well is allocated more resources\. 
+
+  For a list of algorithms that Autopilot supports in HPO mode, see the following **Algorithm support** section\. 
 + **Auto** – Based on your dataset size, Autopilot automatically chooses either ensembling mode or HPO mode\. If your dataset is larger than 100 MB, Autopilot chooses HPO\. Otherwise, it chooses ensembling mode\.
 
 **Note**  

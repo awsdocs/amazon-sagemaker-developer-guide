@@ -1,6 +1,6 @@
 # JupyterLab Versioning<a name="studio-jl"></a>
 
-The Amazon SageMaker Studio interface is based on JupyterLab, which is a web\-based interactive development environment for notebooks, code, and data\. Studio now supports using both JupyterLab 1 and JupyterLab 3\. The default version of JupyterLab in Studio is JupyterLab 3\. If you created your domain and user profile before 08/31/2022, then your Studio instance defaults to JupyterLab 1\. After 08/31/2022, JupyterLab version 1 on SageMaker Studio only receives security fixes\. You can choose the version that you want to run\. However, you can run only a single instance of JupyterLab at one time\. You can’t run multiple versions of JupyterLab simultaneously\.
+The Amazon SageMaker Studio interface is based on JupyterLab, which is a web\-based interactive development environment for notebooks, code, and data\. Studio now supports using both JupyterLab 1 and JupyterLab 3\. The default version of JupyterLab in Studio is JupyterLab 3\. If you created your domain and user profile before 08/31/2022, then your Studio instance defaults to JupyterLab 1\. After 08/31/2022, JupyterLab version 1 on Amazon SageMaker Studio only receives security fixes\. You can choose the version that you want to run\. However, you can run only a single instance of JupyterLab at one time\. You can’t run multiple versions of JupyterLab simultaneously\.
 
 **Topics**
 + [JupyterLab 3](#jl3)
