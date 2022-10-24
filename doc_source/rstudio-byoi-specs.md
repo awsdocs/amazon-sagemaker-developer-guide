@@ -11,6 +11,7 @@ For instructions about how to install multiple R versions in your custom image, 
 ## Amazon SageMaker Studio requirements<a name="rstudio-byoi-specs-studio"></a>
 
 Amazon SageMaker Studio imposes the following set of installation requirements for your RStudio image\.
++ You must use an RStudio base image of at least `2022.02.2-485.pro2`\. For more information, see [Upgrade the RStudio Version ](rstudio-version.md)\.
 + You must install the following packages:
 
   ```

@@ -8,6 +8,7 @@
 
 **Topics**
 + [RStudio license](rstudio-license.md)
++ [Upgrade the RStudio Version](rstudio-version.md)
 + [Network and Storage](rstudio-network.md)
 + [RStudioServerPro instance type](rstudio-select-instance.md)
 + [RStudio Connect URL](rstudio-configure-connect.md)

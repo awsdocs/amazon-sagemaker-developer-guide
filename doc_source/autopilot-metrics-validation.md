@@ -1,6 +1,8 @@
-# Metrics<a name="autopilot-metrics-validation"></a>
+# Metrics and validation<a name="autopilot-metrics-validation"></a>
 
-This guide shows metrics  that you can use to measure machine learning model performance\. Amazon SageMaker Autopilot produces metrics that measure the predictive quality of machine learning model candidates\. The metrics calculated for candidates are specified using an array of [MetricDatum](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_MetricDatum.html) types\. 
+This guide shows metrics and validation techniques that you can use to measure machine learning model performance\. Amazon SageMaker Autopilot produces metrics that measure the predictive quality of machine learning model candidates\. The metrics calculated for candidates are specified using an array of [MetricDatum](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_MetricDatum.html) types\. 
+
+## Autopilot Metrics<a name="autopilot-metrics"></a>
 
 The following list contains the names of the metrics that are currently available to measure model performance within Autopilot\.
 
@@ -56,3 +58,52 @@ Metrics that are automatically calculated for a candidate model are determined b
 + Regression: `MAE`, `MSE`, `R2`, `RMSE`
 + Binary classification: `Accuracy`, `AUC`, `BalancedAccuracy`, `F1`, `LogLoss`, `Precision`, `Recall`
 + Multiclass classification: `Accuracy`, `BalancedAccuracy`, `F1macro`, `LogLoss`, `PrecisionMacro`, `RecallMacro`
+
+## Cross\-validation in Autopilot<a name="autopilot-cross-validation"></a>
+
+Cross\-validation is used in to reduce overfitting and bias in model selection\. It is also used to assess how well a model can predict the values of an unseen validation dataset, if the validation dataset is drawn from the same population\. This method is especially important when training on datasets that have a limited number of training instances\. 
+
+Autopilot uses cross\-validation to build models in hyperparameter optimization \(HPO\) and ensemble training mode\. The first step in the Autopilot cross\-validation process is to split the data into k\-folds\.
+
+### K\-fold splitting<a name="autopilot-cross-validation-kfold"></a>
+
+K\-fold splitting is a method that separates an input training dataset into multiple training and validation datasets\. The dataset is split into `k` equally\-sized sub\-samples called folds\. Models are then trained on `k-1` folds and tested against the remaining kth fold, which is the validation dataset\. The process is repeated `k` times using a different data set for validation\. 
+
+The following image depicts k\-fold splitting with k = 4 folds\. Each fold is represented as a row\. The dark\-toned boxes represent the parts of the data used in training\. The remaining light\-toned boxes indicate the validation datasets\. 
+
+![\[K-fold splitting with 4-folds depicted as boxes: Dark for data used; light for validation datasets.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-metrics-kfold-splits.png)
+
+Autopilot uses k\-fold cross\-validation for both hyperparameter optimization \(HPO\) mode and ensembling mode\.
+
+You can deploy Autopilot models that are built using cross\-validation like you would with any other Autopilot or SageMaker model\.
+
+### HPO mode<a name="autopilot-cross-validation-hpo"></a>
+
+K\-fold cross\-validation uses the k\-fold splitting method for cross\-validation\. In HPO mode, Autopilot automatically implements k\-fold cross\-validation for small datasets with 50,000 or fewer training instances\. Performing cross\-validation is especially important when training on small datasets because it protects against overfitting and selection bias\. 
+
+HPO mode uses a *k* value of 5 on each of the candidate algorithms that are used to model the dataset\. Multiple models are trained on different splits, and the models are stored separately\. When training is complete, validation metrics for each of the models are averaged to produce a single estimation metric\. Lastly, Autopilot combines the models from the trial with the best validation metric into an ensemble model\. Autopilot uses this ensemble model to make predictions\.
+
+The validation metric for the models trained by Autopilot is presented as the objective metric in the model leaderboard\. Autopilot uses the default validation metric for each problem type that it handles, unless you specify otherwise\. For more information about the metrics that Autopilot uses, see [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobObjective.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobObjective.html)\.
+
+For example, the [Boston Housing dataset](http://lib.stat.cmu.edu/datasets/boston) contains only 861 samples\. If you build a model to predict house sale prices using this dataset without cross\-validation, you risk training on a dataset that is not representative of the Boston housing stock\. If you split the data only once into training and validation subsets, the training fold may only contain data mainly from the suburbs\. As a result, you would train on data that isn't representative of the rest of the city\. In this example, your model would likely overfit on this biased selection\. K\-fold cross\-validation can reduce the risk of this kind of error by making full and randomized use of the available data for both training and validation\.
+
+Cross\-validation can increase training times by an average of 20%\. Training times may also increase significantly for complex datasets\.
+
+**Note**  
+In HPO mode, you can see the training and validation metrics from each fold in your `/aws/sagemaker/TrainingJobs` CloudWatch Logs\. For more information about CloudWatch Logs, see [Log Amazon SageMaker Events with Amazon CloudWatch](logging-cloudwatch.md)\. 
+
+### Ensembling mode<a name="autopilot-cross-validation-ensemble"></a>
+
+In ensemble mode, cross\-validation is performed regardless of dataset size\. Customers can either provide their own validation dataset and custom data split ratio, or let Autopilot split the dataset automatically into an 80\-20% split ratio\. The training data is then split into `k`\-folds for cross\-validation, where the value of `k` is determined by the AutoGluon engine\. An ensemble consists of multiple machine learning models, where each model is known as the base model\. A single base model is trained on \(`k`\-1\) folds and makes out\-of\-fold predictions on the remaining fold\. This process is repeated for all `k` folds, and the out\-of\-fold \(OOF\) predictions are concatenated to form a single set of predictions\. All base models in the ensemble follow this same process of generating OOF predictions\.
+
+The following image depicts k\-fold validation with `k` = 4 folds\. Each fold is represented as a row\. The dark\-toned boxes represent the parts of the data used in training\. The remaining light\-toned boxes indicate the validation datasets\. 
+
+In the upper part of the image, in each fold, the first base model makes predictions on the validation dataset after training on the training datasets\. At each subsequent fold, the datasets change roles\. A dataset that was previously used for training is now used for validation, and this also applies in reverse\. At the end of `k` folds, all of the predictions are concatenated to form a single set of predictions called an out\-of\-fold \(OOF\) prediction\. This process is repeated for each `n` base models\.
+
+![\[k-fold validation: Four rows of boxes depict 4-folds that generate a row of OOF predictions.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-metrics-kfold.PNG)
+
+The OOF predictions for each base model are then used as features to train a stacking model\. The stacking model learns the importance weights for each base model\. These weights are used to combine the OOF predictions to form the final prediction\. Performance on the validation dataset determines which base or stacking model is the best, and this model is returned as the final model\.
+
+In ensemble mode, you can either provide your own validation dataset or let Autopilot split the input dataset automatically into 80% train and 20% validation datasets\. The training data is then split into `k`\-folds for cross\-validation and produces an OOF prediction and a base model for each fold\.
+
+These OOF predictions are used as features to train a stacking model, which simultaneously learns weights for each base model\. These weights are used to combine the OOF predictions to form the final prediction\. The validation datasets for each fold are used for hyperparameter tuning of all base models and the stacking model\. Performance on the validation datasets determines which base or stacking model is the best model, and this model is returned as the final model\.
