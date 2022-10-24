@@ -63,6 +63,8 @@ The procedure to open the RStudio Launcher using the AWS CLI differs depending o
 1.  Select Start Session\. 
 
 1.  After your session has been created, you can start it by selecting the name\.  
+**Note**  
+If you receive a warning that there is a version mismatch between your RSession and RStudioServerPro apps, then you must upgrade the version of your RStudioServerPro app\. For more information, see [Upgrade the RStudio Version ](rstudio-version.md)\.
 
 ## Suspend your RSessions<a name="rstudio-launcher-suspend"></a>
 

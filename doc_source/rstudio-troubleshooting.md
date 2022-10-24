@@ -2,6 +2,10 @@
 
  The following sections describe how to diagnose issues with RStudio on Amazon SageMaker\. To get support for RStudio on Amazon SageMaker, contact Amazon SageMaker support\. For help with purchasing an RStudio license or modifying the number of license seats, contact [sales@rstudio\.com](mailto:sales@rstudio.com)\.
 
+## Upgrade your version<a name="rstudio-troubleshooting-upgrade"></a>
+
+If you receive a warning that there is a version mismatch between your RSession and RStudioServerPro apps, then you must upgrade the version of your RStudioServerPro app\. For more information, see [Upgrade the RStudio Version ](rstudio-version.md)\.
+
 ## View Metrics and Logs<a name="rstudio-troubleshooting-view"></a>
 
 You can monitor your workflow performance while using RStudio on Amazon SageMaker\. View data logs and information about metrics with the RStudio administrative dashboard or Amazon CloudWatch\. 
