@@ -95,10 +95,9 @@ The following figure shows an example of the **Create function** page with the i
            if status.get("RuleEvaluationStatus") == "IssuesFound":
                secondary_status = event.get("detail").get("SecondaryStatus", None)
                logging.info(
-                       f'About to stop training job, since evaluation of rule configuration {status.get("RuleConfigurationName")} resulted in "IssuesFound". ' +
-                       f'\ntraining job "{training_job_name}" status is "{training_job_status}", secondary status is "{secondary_status}"' +
-                       f'\nAttempting to stop training job "{training_job_name}"'
-                   )
+                   f'About to stop training job, since evaluation of rule configuration {status.get("RuleConfigurationName")} resulted in "IssuesFound". ' +
+                   f'\ntraining job "{training_job_name}" status is "{training_job_status}", secondary status is "{secondary_status}"' +
+                   f'\nAttempting to stop training job "{training_job_name}"'
                )
                try:
                    client.stop_training_job(

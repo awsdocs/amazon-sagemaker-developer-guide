@@ -7,7 +7,7 @@ You can increase efficiency by configuring your container to support batch reque
 
 ## Model container input<a name="clarify-online-explainability-input"></a>
 
-The model container supports input in either CSV \(MIME type:"text/csv"\)\. The following table shows example inputs that SageMaker Clarify supports:
+The model container supports input in CSV \(MIME type:"text/csv"\)\. The following table shows example inputs that SageMaker Clarify supports:
 
 
 | Model container input \(string representation\) | Comments | 

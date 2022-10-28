@@ -72,7 +72,7 @@ If you need to create a custom container for deploying your model that is comple
 
 ## Use EI with SageMaker Built\-in Algorithms<a name="ei-built-in"></a>
 
-Currently, the [Image Classification \- MXNet](image-classification.md) and [Object Detection](object-detection.md) built\-in algorithms support EI\. For an example that uses the Image Classification algorithm with EI, see [End\-to\-End Multiclass Image Classification Example](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-fulltraining.html)\.
+Currently, the [Image Classification \- MXNet](image-classification.md) and [Object Detection \- MXNet](object-detection.md) built\-in algorithms support EI\. For an example that uses the Image Classification algorithm with EI, see [End\-to\-End Multiclass Image Classification Example](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-fulltraining.html)\.
 
 ## EI Sample Notebooks<a name="ei-intro-sample-nb"></a>
 

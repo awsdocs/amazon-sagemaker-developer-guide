@@ -13,7 +13,7 @@ For more information about training jobs, see [Train a Model with Amazon SageMak
 You can train incrementally using the SageMaker console or the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.
 
 **Important**  
-Only three built\-in algorithms currently support incremental training: [Object Detection](object-detection.md), [Image Classification \- MXNet](image-classification.md), and [Semantic Segmentation Algorithm](semantic-segmentation.md)\.
+Only three built\-in algorithms currently support incremental training: [Object Detection \- MXNet](object-detection.md), [Image Classification \- MXNet](image-classification.md), and [Semantic Segmentation Algorithm](semantic-segmentation.md)\.
 
 **Topics**
 + [Perform Incremental Training \(Console\)](#incremental-training-console)

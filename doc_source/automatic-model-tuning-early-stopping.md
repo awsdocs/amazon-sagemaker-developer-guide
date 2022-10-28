@@ -24,7 +24,7 @@ To support early stopping, an algorithm must emit objective metrics for each epo
 + [Linear Learner Algorithm](linear-learner.md)—Supported only if you use `objective_loss` as the objective metric\.
 + [XGBoost Algorithm](xgboost.md)
 + [Image Classification \- MXNet](image-classification.md)
-+ [Object Detection](object-detection.md)
++ [Object Detection \- MXNet](object-detection.md)
 + [Sequence\-to\-Sequence Algorithm](seq-2-seq.md)
 + [IP Insights](ip-insights.md)
 

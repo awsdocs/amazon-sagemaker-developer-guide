@@ -1,6 +1,6 @@
 # Create a Bias Drift Baseline<a name="clarify-model-monitor-bias-drift-baseline"></a>
 
-After you have configured your application to capture real\-time inference data, the first task to monitor for bias drift is to create a baseline\. This involves configuring the data inputs, which groups are sensitive, how the predictions are captured, and the model and its posttraining bias metrics\. Then you need to start the baselining job\.
+After you have configured your application to capture real\-time or batch transform inference data, the first task to monitor for bias drift is to create a baseline\. This involves configuring the data inputs, which groups are sensitive, how the predictions are captured, and the model and its posttraining bias metrics\. Then you need to start the baselining job\.
 
 Model bias monitor can detect bias drift of ML models on a regular basis\. Similar to the other monitoring types, the standard procedure of creating a model bias monitor is first baselining and then establishing a monitoring schedule\.
 

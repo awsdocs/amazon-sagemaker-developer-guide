@@ -1,6 +1,11 @@
-# Contract for Custom Containers to Serve Multiple Models<a name="mms-container-apis"></a>
+# Custom Containers Contract for Multi\-Model Endpoints<a name="mms-container-apis"></a>
 
 To handle multiple models, your container must support a set of APIs that enable Amazon SageMaker to communicate with the container for loading, listing, getting, and unloading models as required\. The `model_name` is used in the new set of APIs as the key input parameter\. The customer container is expected to keep track of the loaded models using `model_name` as the mapping key\. Also, the `model_name` is an opaque identifier and is not necessarily the value of the `TargetModel` parameter passed into the `InvokeEndpoint` API\. The original `TargetModel` value in the `InvokeEndpoint` request is passed to container in the APIs as a `X-Amzn-SageMaker-Target-Model` header that can be used for logging purposes\.
+
+**Note**  
+Multi\-model endpoints for GPU backed instances are currently supported only with SageMaker's [NVIDIA Triton Inference Server container](https://docs.aws.amazon.com/sagemaker/latest/dg/triton.html))\. This container already implements the contract defined below\. Customers can directly use this container with their multi\-model GPU endpoints, without any additional work\.
+
+You can configure the following APIs on your containers for CPU backed multi\-model endpoints\.
 
 **Topics**
 + [Load Model API](#multi-model-api-load-model)
@@ -117,3 +122,5 @@ X-Amzn-SageMaker-Target-Model: [relativePath]/{artifactName}.tar.gz
 
 **Note**  
 If `model_name` is not loaded, this API should return 404\.
+
+Additionally, on GPU instances, if `InvokeEndpoint` fails due to a lack of memory or other resources, this API should return a 507 HTTP status code to SageMaker, which then initiates unloading unused models to reclaim\.

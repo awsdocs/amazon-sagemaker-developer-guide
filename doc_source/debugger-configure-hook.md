@@ -160,9 +160,9 @@ sagemaker_estimator=TensorFlow(
     role=sm.get_execution_role(),
     base_job_name='debugger-demo-job',
     instance_count=1,
-    instance_type="ml.m4.xlarge",
-    framework_version="2.3.0",
-    py_version="py37",
+    instance_type="ml.p3.2xlarge",
+    framework_version="2.9.0",
+    py_version="py39",
     
     # debugger-specific hook argument below
     debugger_hook_config=hook_config
@@ -207,9 +207,9 @@ sagemaker_estimator=TensorFlow(
     role=sm.get_execution_role(),
     base_job_name='debugger-demo-job',
     instance_count=1,
-    instance_type="ml.m4.xlarge",
-    framework_version="2.3.0",
-    py_version="py37",
+    instance_type="ml.p3.2xlarge",
+    framework_version="2.9.0",
+    py_version="py39",
     
     # debugger-specific hook argument below
     debugger_hook_config=hook_config
@@ -258,9 +258,9 @@ sagemaker_estimator=TensorFlow(
     role=sm.get_execution_role(),
     base_job_name='debugger-demo-job',
     instance_count=1,
-    instance_type="ml.m4.xlarge",
-    framework_version="2.3.0",
-    py_version="py37",
+    instance_type="ml.p3.2xlarge",
+    framework_version="2.9.0",
+    py_version="py39",
     
     # debugger-specific hook argument below
     debugger_hook_config=hook_config

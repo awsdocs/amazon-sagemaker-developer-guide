@@ -251,7 +251,7 @@ The following is sample output \(output manifest file\) from a bounding box job\
 
 The `class_id` element is the index of the box's class in the list of available classes for the task\. The `class-map` metadata element contains the text of the class\.
 
-The metadata has a separate confidence score for each bounding box\. The metadata also includes the `class-map` element that maps the `class_id` to the text value of the class\. For more information, see [Object Detection](object-detection.md)\.
+The metadata has a separate confidence score for each bounding box\. The metadata also includes the `class-map` element that maps the `class_id` to the text value of the class\. For more information, see [Object Detection \- MXNet](object-detection.md)\.
 
 The red, italicized text in the examples below depends on labeling job specifications and output data\. 
 

@@ -39,7 +39,10 @@ my_default_monitor.create_monitoring_schedule(
     post_analytics_processor_script=post_processor_script,
     record_preprocessor_script=pre_processor_script,
     monitor_schedule_name=monitor_schedule_name,
+    # use endpoint_input for real-time endpoint
     endpoint_input=endpoint_name,
+    # or use batch_transform_input for batch transform jobs
+    # batch_transform_input=batch_transform_name,
     output_s3_uri=s3_report_path,
     statistics=my_default_monitor.baseline_statistics(),
     constraints=my_default_monitor.suggested_constraints(),
@@ -50,6 +53,7 @@ my_default_monitor.create_monitoring_schedule(
 
 **Topics**
 + [Preprocessing Script](#model-monitor-pre-processing-script)
++ [Custom Sampling](#model-monitor-pre-processing-custom-sampling)
 + [Postprocessing Script](#model-monitor-post-processing-script)
 
 ## Preprocessing Script<a name="model-monitor-pre-processing-script"></a>
@@ -179,6 +183,21 @@ class CapturedData:
                 ] = self.endpoint_output.as_dict()
         self._event_dict_postprocessed = True
         return self.event_dict
+```
+
+## Custom Sampling<a name="model-monitor-pre-processing-custom-sampling"></a>
+
+You can also apply a custom sampling strategy in your preprocessing script\. To do this, configure Model Monitor's first\-party, pre\-built container to ignore a percentage of the records according to your specified sampling rate\. In the following example, the handler samples 10 percent of the records by returning the record in 10 percent of handler calls and an empty list otherwise\.
+
+```
+import random
+
+def preprocess_handler(inference_record):
+    # we set up a sampling rate of 0.1
+    if random.random() > 0.1:
+        # return an empty list
+        return []
+    return inference_record
 ```
 
 ## Postprocessing Script<a name="model-monitor-post-processing-script"></a>

@@ -1,6 +1,6 @@
 # Add or Remove Models<a name="add-models-to-endpoint"></a>
 
-You can deploy additional models to a multi\-model endpoint and invoke them through that endpoint immediately\. When adding a new model, you don't need to update or bring down the endpoint, so you avoid the cost of creating and running a separate endpoint for each new model\. 
+You can deploy additional models to a multi\-model endpoint and invoke them through that endpoint immediately\. When adding a new model, you don't need to update or bring down the endpoint, so you avoid the cost of creating and running a separate endpoint for each new model\. The process for adding and removing models is the same for CPU and GPU\-backed multi\-model endpoints\.
 
  SageMaker unloads unused models from the container when the instance is reaching memory capacity and more models need to be downloaded into the container\. SageMaker also deletes unused model artifacts from the instance storage volume when the volume is reaching capacity and new models need to be downloaded\. The first invocation to a newly added model takes longer because the endpoint takes time to download the model from S3 to the container's memory in instance hosting the endpoint
 

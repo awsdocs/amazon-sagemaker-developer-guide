@@ -6,10 +6,12 @@ This guide shows CloudWatch metrics and their properties that you can use for fe
 The name of this metric appends the feature name provided by the job analysis configuration to `feature_`\. For example, `feature_X` is the global SHAP value for feature `X`\.
 + The `ExpectedValue` of the metric\.
 
-These metrics are published to the CloudWatch namespace `aws/sagemaker/Endpoints/explainability-metrics`\.
+These metrics are published to the following CloudWatch namespace:
++ For real\-time endpoints: `aws/sagemaker/Endpoints/explainability-metrics`
++ For batch transform jobs: `aws/sagemaker/ModelMonitoring/explainability-metrics`
 
 Each metric has the following properties:
-+ `Endpoint`: The name of the monitored endpoint\.
++ `Endpoint`: The name of the monitored endpoint, if applicable\.
 + `MonitoringSchedule`: The name of the schedule for the monitoring job\. 
 + `ExplainabilityMethod`: The method used to compute Shapley values\. Choose `KernelShap`\.
 + `Label`: The name provided by job analysis configuration `label_headers`, or a placeholder like `label0`\.

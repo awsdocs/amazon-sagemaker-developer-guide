@@ -50,6 +50,7 @@ SageMaker provides algorithms that are tailored to the analysis of textual docum
 + [Sequence\-to\-Sequence Algorithm](seq-2-seq.md)—a supervised algorithm commonly used for neural machine translation\. 
 + [Latent Dirichlet Allocation \(LDA\) Algorithm](lda.md)—an algorithm suitable for determining topics in a set of documents\. It is an *unsupervised algorithm*, which means that it doesn't use example data with answers during training\.
 + [Neural Topic Model \(NTM\) Algorithm](ntm.md)—another unsupervised technique for determining topics in a set of documents, using a neural network approach\.
++ [Text Classification \- TensorFlow](text-classification-tensorflow.md)—a supervised algorithm that supports transfer learning with available pretrained models for text classification\.
 
 ## Image Processing<a name="algorithms-built-in-image-processing"></a>
 
@@ -57,7 +58,8 @@ SageMaker also provides image processing algorithms that are used for image clas
 + [Image Classification \- MXNet](image-classification.md)—uses example data with answers \(referred to as a *supervised algorithm*\)\. Use this algorithm to classify images\.
 + [Image Classification \- TensorFlow](image-classification-tensorflow.md)—uses pretrained TensorFlow Hub models to fine\-tune for specific tasks \(referred to as a *supervised algorithm*\)\. Use this algorithm to classify images\.
 + [Semantic Segmentation Algorithm](semantic-segmentation.md)—provides a fine\-grained, pixel\-level approach to developing computer vision applications\.
-+ [Object Detection](object-detection.md)—detects and classifies objects in images using a single deep neural network\. It is a supervised learning algorithm that takes images as input and identifies all instances of objects within the image scene\.
++ [Object Detection \- MXNet](object-detection.md)—detects and classifies objects in images using a single deep neural network\. It is a supervised learning algorithm that takes images as input and identifies all instances of objects within the image scene\.
++ [Object Detection \- TensorFlow](object-detection-tensorflow.md)—detects bounding boxes and object labels in an image\. It is a supervised learning algorithm that supports transfer learning with available pretrained TensorFlow models\.
 
 **Topics**
 + [Pre\-trained Models and Solution Templates](#algorithms-built-in-jumpstart)

@@ -7,7 +7,7 @@ In addition to providing explanations for per\-instance inferences, SageMaker Cl
 + `median` – Median of SHAP values for all instances\.
 + `mean_sq` – Mean of squared SHAP values for all instances\.
 
-After you have configured your application to capture real\-time inference data, the first task to monitor for drift in feature attribution is to create a baseline to compare against\. This involves configuring the data inputs, which groups are sensitive, how the predictions are captured, and the model and its posttraining bias metrics\. Then you need to start the baselining job\. Model explainability monitor can explain the predictions of a deployed model that's producing inferences and detect feature attribution drift on a regular basis\.
+After you have configured your application to capture real\-time or batch transform inference data, the first task to monitor for drift in feature attribution is to create a baseline to compare against\. This involves configuring the data inputs, which groups are sensitive, how the predictions are captured, and the model and its posttraining bias metrics\. Then you need to start the baselining job\. Model explainability monitor can explain the predictions of a deployed model that's producing inferences and detect feature attribution drift on a regular basis\.
 
 ```
 model_explainability_monitor = ModelExplainabilityMonitor(

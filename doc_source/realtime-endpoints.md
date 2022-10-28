@@ -8,6 +8,5 @@ Real\-time inference is ideal for inference workloads where you have real\-time,
 + [Host instance storage volumes](host-instance-storage.md)
 + [Safely update models in production](model-ab-testing.md)
 + [Best practices](best-practices.md)
-+ [Monitor models for data and model quality, bias, and explainability](model-monitor.md)
 + [Online Explainability with SageMaker Clarify](clarify-online-explainability.md)
 + [Invoke real\-time endpoints](realtime-endpoints-test-endpoints.md)

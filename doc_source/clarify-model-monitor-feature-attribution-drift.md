@@ -36,7 +36,7 @@ In SageMaker Clarify, if the NDCG value is below 0\.90, we automatically raise a
 
 ## Model Monitor Example Notebook<a name="clarify-model-monitor-sample-notebooks-feature-drift"></a>
 
-SageMaker Clarify provides the following example notebook that shows how to capture real\-time inference data, create a baseline to monitor evolving bias against, and inspect the results: 
+SageMaker Clarify provides the following example notebook that shows how to capture inference data for a real\-time endpoint, create a baseline to monitor evolving bias against, and inspect the results: 
 + [Monitoring bias drift and feature attribution drift Amazon SageMaker Clarify](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker_model_monitor/fairness_and_explainability/SageMaker-Model-Monitor-Fairness-and-Explainability.html) – Use Amazon SageMaker Model Monitor to monitor bias drift and feature attribution drift over time\.
 
 This notebook has been verified to run in SageMaker Studio only\. If you need instructions on how to open a notebook in SageMaker Studio, see [Create or Open an Amazon SageMaker Studio Notebook](notebooks-create-open.md)\. If you're prompted to choose a kernel, choose **Python 3 \(Data Science\)**\. The following topics contain the highlights from the last two steps, and they contain code examples from the example notebook\. 

@@ -104,6 +104,46 @@ Use the following procedure to generate a Jupyter Notebook and run it to export 
 
 When you run the notebook, it exports your data flow \(\.flow file\) in the same AWS Region as the Data Wrangler flow\.
 
+The notebook provides options that you can use to configure the processing job and the data that it outputs\.
+
+**Important**  
+We provide you with job configurations to configure the output of your data\. For the partitioning and driver memory options, we strongly recommend that you don't specify a configuration unless you already have knowledge about them\.
+
+Under **Job Configurations**, you can configure the following:
++ `output_content_type` – The content type of the output file\. Uses `CSV` as the default format, but you can specify `Parquet`\.
++ `delimiter` – The character used to separate values in the dataset when writing to a CSV file\.
++ `compression` – If set, compresses the output file\. Uses gzip as the default compression format\.
++ `num_partitions` – The number of partitions or files that Data Wrangler writes as the output\.
++ `partition_by` – The names of the columns that you use to partition the output\.
+
+To change the output file format from CSV to Parquet, change the value from `"CSV"` to `"Parquet"`\. For the rest of the preceding fields, uncomment the lines containing the fields that you want to specify\.
+
+Under **\(Optional\) Configure Spark Cluster Driver Memory** you can configure Spark properties for the job, such as the Spark driver memory, in the `config` dictionary\.
+
+The following shows the `config` dictionary\.
+
+```
+config = json.dumps({
+    "Classification": "spark-defaults",
+    "Properties": {
+        "spark.driver.memory": f"{driver_memory_in_mb}m",
+    }
+})
+```
+
+To apply the configuration to the processing job, uncomment the following lines:
+
+```
+# data_sources.append(ProcessingInput(
+#     source=config_s3_uri,
+#     destination="/opt/ml/processing/input/conf",
+#     input_name="spark-config",
+#     s3_data_type="S3Prefix",
+#     s3_input_mode="File",
+#     s3_data_distribution_type="FullyReplicated"
+# ))
+```
+
 ------
 #### [ Export data ]
 

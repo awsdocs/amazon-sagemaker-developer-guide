@@ -5,6 +5,10 @@ When you build complex machine learning systems like deep learning neural networ
 **Note**  
 Because the algorithm itself is stochastic, it’s possible that the hyperparameter tuning model will fail to converge on the best answer, even if the best possible combination of values is within the ranges that you choose\.
 
+## Grid Search<a name="automatic-tuning-grid-search"></a>
+
+ When using grid search, hyperparameter tuning chooses combinations of values from the range of categorical values that you specify when you create the job\. Only categorical parameters are supported when using the grid search strategy\. You do not need to specify the `MaxNumberOfTrainingJobs`\. The number of training jobs created by the tuning job will be automatically calculated to be the total number of distinct categorical combinations possible\. If specified, the value of `MaxNumberOfTrainingJobs` should equal the total number of distinct categorical combinations possible\.
+
 ## Random Search<a name="automatic-tuning-random-search"></a>
 
 When using random search, hyperparameter tuning chooses a random combination of values from within the ranges that you specify for hyperparameters for each training job it launches\. Because the choice of hyperparameter values doesn't depend on the results of previous training jobs, you can run the maximum number of concurrent training jobs without affecting the performance of the tuning\.

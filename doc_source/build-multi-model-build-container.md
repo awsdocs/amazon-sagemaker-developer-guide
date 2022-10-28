@@ -1,6 +1,18 @@
-# Build Your Own Container with Multi Model Server<a name="build-multi-model-build-container"></a>
+# Build Your Own Container for SageMaker Multi\-Model Endpoints<a name="build-multi-model-build-container"></a>
 
-Custom Elastic Container Registry \(ECR\) images deployed in Amazon SageMaker are expected to adhere to the basic contract described in [Use Your Own Inference Code with Hosting Services](your-algorithms-inference-code.md) that govern how SageMaker interacts with a Docker container that runs your own inference code\. For a container to be capable of loading and serving multiple models concurrently, there are additional APIs and behaviors that must be followed\. This additional contract includes new APIs to load, list, get, and unload models, and a different API to invoke models\. There are also different behaviors for error scenarios that the APIs need to abide by\. To indicate that the container complies with the additional requirements, you can add the following command to your Docker file:
+Refer to the following sections for bringing your own container and dependencies to multi\-model endpoints\.
+
+**Topics**
++ [Bring your own dependencies for multi\-model endpoints on CPU backed instances](#build-multi-model-container-cpu)
++ [Bring your own dependencies for multi\-model endpoints on GPU backed instances](#build-multi-model-container-gpu)
++ [Use the SageMaker Inference Toolkit](#multi-model-inference-toolkit)
++ [Custom Containers Contract for Multi\-Model Endpoints](mms-container-apis.md)
+
+## Bring your own dependencies for multi\-model endpoints on CPU backed instances<a name="build-multi-model-container-cpu"></a>
+
+If none of the pre\-built container images serve your needs, you can build your own container for use with CPU backed multi\-model endpoints\.
+
+Custom Amazon Elastic Container Registry \(Amazon ECR\) images deployed in Amazon SageMaker are expected to adhere to the basic contract described in [Use Your Own Inference Code with Hosting Services](your-algorithms-inference-code.md) that govern how SageMaker interacts with a Docker container that runs your own inference code\. For a container to be capable of loading and serving multiple models concurrently, there are additional APIs and behaviors that must be followed\. This additional contract includes new APIs to load, list, get, and unload models, and a different API to invoke models\. There are also different behaviors for error scenarios that the APIs need to abide by\. To indicate that the container complies with the additional requirements, you can add the following command to your Docker file:
 
 ```
 LABEL com.amazonaws.sagemaker.capabilities.multi-models=true
@@ -18,12 +30,28 @@ To help you implement these requirements for a custom container, two libraries a
 + [Multi Model Server](https://github.com/awslabs/multi-model-server) is an open source framework for serving machine learning models that can be installed in containers to provide the front end that fulfills the requirements for the new multi\-model endpoint container APIs\. It provides the HTTP front end and model management capabilities required by multi\-model endpoints to host multiple models within a single container, load models into and unload models out of the container dynamically, and performs inference on a specified loaded model\. It also provides a pluggable backend that supports a pluggable custom backend handler where you can implement your own algorithm\.
 + [SageMaker Inference Toolkit](https://github.com/aws/sagemaker-inference-toolkit) is a library that bootstraps Multi Model Server with a configuration and settings that make it compatible with SageMaker multi\-model endpoints\. It also allows you to tweak important performance parameters, such as the number of workers per model, depending on the needs of your scenario\. 
 
+## Bring your own dependencies for multi\-model endpoints on GPU backed instances<a name="build-multi-model-container-gpu"></a>
+
+The bring your own container \(BYOC\) capability on multi\-model endpoints with GPU backed instances is not currently supported by the Multi Model Server and SageMaker Inference Toolkit libraries\.
+
+For creating multi\-model endpoints with GPU backed instances, you can use the SageMaker supported [NVIDIA Triton Inference Server](https://docs.aws.amazon.com/sagemaker/latest/dg/triton.html)\. with the [NVIDIA Triton Inference Containers](https://github.com/aws/deep-learning-containers/blob/master/available_images.md#nvidia-triton-inference-containers-sm-support-only)\. To bring your own dependencies, you can build your own container with the SageMaker supported [NVIDIA Triton Inference Server](https://docs.aws.amazon.com/sagemaker/latest/dg/triton.html) as the base image to your Docker file:
+
+```
+FROM 301217895009.dkr.ecr.us-west-2.amazonaws.com/sagemaker-tritonserver:22.07-py3
+```
+
+**Important**  
+Containers with the Triton Inference Server are the only supported containers you can use for GPU backed multi\-model endpoints\.
+
 ## Use the SageMaker Inference Toolkit<a name="multi-model-inference-toolkit"></a>
 
-Pre\-built containers that support multi\-model endpoints are listed in [Supported Algorithms and Frameworks](multi-model-endpoints.md#multi-model-support)\. If you want to use any other framework or algorithm, you need to build a container\. The easiest way to do this is to use the [SageMaker Inference Toolkit](https://github.com/aws/sagemaker-inference-toolkit) to extend an existing pre\-built container\. The SageMaker inference toolkit is an implementation for the multi\-model server \(MMS\) that creates endpoints that can be deployed in SageMaker\. For a sample notebook that shows how to set up and deploy a custom container that supports multi\-model endpoints in SageMaker, see the [Multi\-Model Endpoint BYOC Sample Notebook](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/advanced_functionality/multi_model_bring_your_own)\.
+**Note**  
+The SageMaker Inference Toolkit is only supported for CPU backed multi\-model endpoints\. The SageMaker Inference Toolkit is not currently not supported for GPU backed multi\-model endpoints\.
+
+Pre\-built containers that support multi\-model endpoints are listed in [Supported algorithms, frameworks, and instances](multi-model-endpoints.md#multi-model-support)\. If you want to use any other framework or algorithm, you need to build a container\. The easiest way to do this is to use the [SageMaker Inference Toolkit](https://github.com/aws/sagemaker-inference-toolkit) to extend an existing pre\-built container\. The SageMaker inference toolkit is an implementation for the multi\-model server \(MMS\) that creates endpoints that can be deployed in SageMaker\. For a sample notebook that shows how to set up and deploy a custom container that supports multi\-model endpoints in SageMaker, see the [Multi\-Model Endpoint BYOC Sample Notebook](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/advanced_functionality/multi_model_bring_your_own)\.
 
 **Note**  
-The SageMaker inference toolkit supports only Python model handlers\. If you want to implement your handler in any other language, you must build your own container that implements the additional multi\-model endpoint APIs\. For information, see [Contract for Custom Containers to Serve Multiple Models](mms-container-apis.md)\.
+The SageMaker inference toolkit supports only Python model handlers\. If you want to implement your handler in any other language, you must build your own container that implements the additional multi\-model endpoint APIs\. For information, see [Custom Containers Contract for Multi\-Model Endpoints](mms-container-apis.md)\.
 
 **To extend a container by using the SageMaker inference toolkit**
 
@@ -114,5 +142,7 @@ The SageMaker inference toolkit supports only Python model handlers\. If you wan
 You can now use this container to deploy multi\-model endpoints in SageMaker\.
 
 **Topics**
++ [Bring your own dependencies for multi\-model endpoints on CPU backed instances](#build-multi-model-container-cpu)
++ [Bring your own dependencies for multi\-model endpoints on GPU backed instances](#build-multi-model-container-gpu)
 + [Use the SageMaker Inference Toolkit](#multi-model-inference-toolkit)
-+ [Contract for Custom Containers to Serve Multiple Models](mms-container-apis.md)
++ [Custom Containers Contract for Multi\-Model Endpoints](mms-container-apis.md)

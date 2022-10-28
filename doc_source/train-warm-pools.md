@@ -30,7 +30,7 @@ To use SageMaker Managed Warm Pools and reduce latency between similar consecuti
 
 1. The warm pool stays `Available` until it either identifies a matching training job for reuse or it exceeds the specified `KeepAlivePeriodInSeconds` and is terminated\. The maximum length of time allowed for the `KeepAlivePeriodInSeconds` is 3600 seconds \(60 minutes\)\. If the warm pool status is `Terminated`, then this is the end of the warm pool lifecycle\.
 
-1. If the warm pool identifies a second training job with matching specifications \(instance count, instance type, etc\.\), then the warm pool moves from the first training job to the second training job for reuse\. The status of the first training job warm pool becomes `Reused`\. This is the end of the warm pool lifecycle for the first training job\. 
+1. If the warm pool identifies a second training job with matching specifications such as instance count or instance type, then the warm pool moves from the first training job to the second training job for reuse\. The status of the first training job warm pool becomes `Reused`\. This is the end of the warm pool lifecycle for the first training job\. 
 
 1. The status of the second training job that reused the warm pool becomes `InUse`\. After the second training job completes, the warm pool is `Available` for the `KeepAlivePeriodInSeconds` duration specified in the second training job\. A warm pool can continue moving to subsequent matching training jobs for a maximum of 7 days\.
 
@@ -81,26 +81,32 @@ If a training job is created with `KeepAlivePeriodInSeconds` specified, but you 
 
 ### Request a warm pool quota increase<a name="train-warm-pools-resource-limits-request"></a>
 
+Request a warm pool quota increase using the AWS Service Quotas console\.
+
 **Note**  
 All warm pool instance usage counts toward your SageMaker training resource limit\. Increasing your warm pool resource limit does not increase your instance limit, but allocates a subset of your resource limit to warm pool training\.
 
 1. Open the [AWS Service Quotas console](https://console.aws.amazon.com/servicequotas/home)\.
 
-1. On the left\-hand navigation panel, Choose **AWS services**\.
+1. On the left\-hand navigation panel, choose **AWS services**\.
 
 1. Search for and choose **Amazon SageMaker**\.
 
-1. Search for the keyword “warm pool” to see all available warm pool service quotas\.
+1. Search for the keyword **warm pool** to see all available warm pool service quotas\.
 
-1. Find the instance type that you want to increase your warm pool quota for, select the warm pool service quota for that instance type, and choose **Request quota increase**\.
+1. Find the instance type for which you want to increase your warm pool quota, select the warm pool service quota for that instance type, and choose **Request quota increase**\.
 
 1. Enter your requested instance limit number under **Change quota value**\. The new value must be greater than the current **Applied quota value**\.
 
 1. Choose **Request**\.
 
-There is a limit on the number of instances that you can retain for each warm pool, which is determined by instance type\. You can check your resource limits in the [AWS Service Quotas console](https://console.aws.amazon.com/servicequotas/home) or directly using the [list\-service\-quotas](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html) AWS CLI command\. For more information on AWS Service Quotas, see [Requesting a quota increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html) in the *Service Quotas User Guide*\. You can also use [AWS Support Center](https://support.console.aws.amazon.com) to request a warm pool quota increase\. For a list of available instance types according to region, see [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/) and choose **Training** in the On\-Demand Pricing table\.
+There is a limit on the number of instances that you can retain for each warm pool, which is determined by instance type\. You can check your resource limits in the [AWS Service Quotas console](https://console.aws.amazon.com/servicequotas/home) or directly using the [list\-service\-quotas](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html) AWS CLI command\. For more information on AWS Service Quotas, see [Requesting a quota increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html) in the *Service Quotas User Guide*\. 
+
+You can also use [AWS Support Center](https://support.console.aws.amazon.com) to request a warm pool quota increase\. For a list of available instance types according to Region, see [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/) and choose **Training** in the **On\-Demand Pricing** table\.
 
 ## How to use SageMaker Managed Warm Pools<a name="train-warm-pools-how-to-use"></a>
+
+You can use SageMaker Managed Warm Pools through the SageMaker Python SDK, the Amazon SageMaker console, or through the low\-level APIs\. Administrators can optionally use the `sagemaker:KeepAlivePeriod` condition key to further restrict the `KeepAlivePeriodInSeconds` limits for certain users or groups\.
 
 **Topics**
 + [Using the SageMaker Python SDK](#train-warm-pools-how-to-use-python-sdk)
@@ -109,6 +115,8 @@ There is a limit on the number of instances that you can retain for each warm po
 + [IAM condition key](#train-warm-pools-how-to-use-iam-condition-key)
 
 ### Using the SageMaker Python SDK<a name="train-warm-pools-how-to-use-python-sdk"></a>
+
+Create, update, or terminate warm pools using the SageMaker Python SDK\.
 
 **Note**  
 This feature is available in the SageMaker [Python SDK v2\.110\.0](https://pypi.org/project/sagemaker/2.110.0/) and later\.
@@ -190,12 +198,15 @@ estimator.fit('s3://my_bucket/my_training_data/')
 
 Check the warm pool status of both training jobs to confirm that the warm pool is `Reused` for `my-training-job-1` and `InUse` for `my-training-job-2`\.
 
+**Note**  
+Training job names have date/time suffixes\. The example training job names `my-training-job-1` and `my-training-job-2` should be replaced with actual training job names\. You can use the `estimator.latest_training_job.job_name` command to fetch the actual training job name\.
+
 ```
 session.describe_training_job('my-training-job-1')
 session.describe_training_job('my-training-job-2')
 ```
 
-The result of `describe_training_job` provides all details about a given training job\. Find the `WarmPoolStatus` attribute to check information about a training job’s warm pool\. Your output should look similar to the following:
+The result of `describe_training_job` provides all details about a given training job\. Find the `WarmPoolStatus` attribute to check information about a training job’s warm pool\. Your output should look similar to the following example:
 
 ```
 # Warm pool status for training-job-1
@@ -221,13 +232,13 @@ session.update_training_job(job_name, resource_config={"KeepAlivePeriodInSeconds
 
 #### Terminate a warm pool<a name="train-warm-pools-how-to-use-python-sdk-terminate"></a>
 
-To manually terminate a warm pool, set the `KeepAlivePeriodInSeconds `to 0\. 
+To manually terminate a warm pool, set the `KeepAlivePeriodInSeconds ` value to 0\.
 
 ```
 session.update_training_job(job_name, resource_config={"KeepAlivePeriodInSeconds":0})
 ```
 
-The warm pool automatically terminates when it exceeds the designated `KeepAlivePeriodInSeconds` or if there is a patch update for the cluster\.
+The warm pool automatically terminates when it exceeds the designated `KeepAlivePeriodInSeconds` value or if there is a patch update for the cluster\.
 
 ### Using the Amazon SageMaker console<a name="train-warm-pools-how-to-use-sagemaker-console"></a>
 
@@ -240,6 +251,8 @@ You cannot create or update a warm pool through the console, but you can use the
 1. Scroll down to the **Warm pool status** section to find the warm pool status, the time left if the warm pool status is `Available`, the warm pool billable seconds, and the name of the training job that reused the warm pool if the warm pool status is `Reused`\.
 
 ### Using the low\-level SageMaker APIs<a name="train-warm-pools-how-to-use-low-level-apis"></a>
+
+Use SageMaker Managed Warm Pools with either the SageMaker API or the AWS CLI\.
 
 #### SageMaker API<a name="train-warm-pools-how-to-use-low-level-apis-sagemaker"></a>
 
@@ -259,7 +272,7 @@ Set up SageMaker Managed Warm Pools using the AWS CLI with the following command
 
 ### IAM condition key<a name="train-warm-pools-how-to-use-iam-condition-key"></a>
 
-Administrators can optionally use the `sagemaker:KeepAlivePeriod` condition key to further restrict the `KeepAlivePeriodInSeconds` limits for certain users or groups\. SageMaker Managed Warm Pools are limited to a `KeepAlivePeriodInSeconds` of 3600 seconds \(60 minutes\), but administrators can lower this limit if needed\. 
+Administrators can optionally use the `sagemaker:KeepAlivePeriod` condition key to further restrict the `KeepAlivePeriodInSeconds` limits for certain users or groups\. SageMaker Managed Warm Pools are limited to a `KeepAlivePeriodInSeconds` value of 3600 seconds \(60 minutes\), but administrators can lower this limit if needed\. 
 
 ```
 {
@@ -289,5 +302,5 @@ For more information, see [Condition keys for Amazon SageMaker](https://docs.aws
 Consider the following items when using SageMaker Managed Warm Pools\.
 + SageMaker Managed Warm Pools cannot be used with heterogeneous cluster training\. 
 + SageMaker Managed Warm Pools cannot be used with spot instances\.
-+ SageMaker Managed Warm Pools are limited to a `KeepAlivePeriodInSeconds` of 3600 seconds \(60 minutes\)\.
-+ If a warm pool continues to successfully match training jobs within the specified `KeepAlivePeriodInSeconds`, the cluster can only continue running for a maximum of 7 days\.
++ SageMaker Managed Warm Pools are limited to a `KeepAlivePeriodInSeconds` value of 3600 seconds \(60 minutes\)\.
++ If a warm pool continues to successfully match training jobs within the specified `KeepAlivePeriodInSeconds` value, the cluster can only continue running for a maximum of 7 days\.

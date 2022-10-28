@@ -52,7 +52,7 @@ Use `kubectl describe` to check the status conditions of your adopted resource\.
 kubectl describe adoptedresource adopt-endpoint-sample
 ```
 
-Verify that the `ACK.Adopted` condition is `True`\. The output should look similar to the following:
+Verify that the `ACK.Adopted` condition is `True`\. The output should look similar to the following example:
 
 ```
 ---
@@ -91,7 +91,7 @@ kubectl describe endpoints.sagemaker xgboost-endpoint
 
 ### HostingAutoscalingPolicy resources<a name="migrate-resources-to-new-operators-hap"></a>
 
-The HostingAutoscalingPolicy \(HAP\) resource consists of multiple Application Auto Scaling resources: `ScalableTarget` and `ScalingPolicy`\. When adopting a HAP resource with ACK, you need to first install the [Application Auto Scaling controller](https://github.com/aws-controllers-k8s/applicationautoscaling-controller)\. To adopt HAP resources, you need to adopt both `ScalableTarget` and `ScalingPolicy` resources\. The resource indentifier for these resources can be found in the status of the HostingAutoscalingPolicy resource \(`status.ResourceIDList`\)\.
+The HostingAutoscalingPolicy \(HAP\) resource consists of multiple Application Auto Scaling resources: `ScalableTarget` and `ScalingPolicy`\. When adopting a HAP resource with ACK, you need to first install the [Application Auto Scaling controller](https://github.com/aws-controllers-k8s/applicationautoscaling-controller)\. To adopt HAP resources, you need to adopt both `ScalableTarget` and `ScalingPolicy` resources\. You can find the resource indentifier for these resources in the status of the HostingAutoscalingPolicy resource \(`status.ResourceIDList`\)\.
 
 ### HostingDeployment resources<a name="migrate-resources-to-new-operators-hosting-deployment"></a>
 
@@ -113,9 +113,9 @@ Uninstall the old operator before deleting any old resources\.
 ### Step 2: Remove finalizers and delete old resources<a name="migrate-resources-to-new-operators-delete-resources"></a>
 
 **Warning**  
-Before deleting old resources, be sure that the old operator is uninstalled\.
+Before deleting old resources, be sure that you have uninstalled the old operator\.
 
-After uninstalling the old operator, you must explicitly remove the finalizers to delete old operator resources\. The sample script below shows how to delete all training jobs managed by the old operator in a given namespace\. You can use a similar pattern to delete additional resources once they are adopted by the new operator\.
+After uninstalling the old operator, you must explicitly remove the finalizers to delete old operator resources\. The following sample script shows how to delete all training jobs managed by the old operator in a given namespace\. You can use a similar pattern to delete additional resources once they are adopted by the new operator\.
 
 **Note**  
 You must use full resource names to get resources\. For example, use `kubectl get trainingjobs.sagemaker.aws.amazon.com` instead of `kubectl get trainingjob`\.

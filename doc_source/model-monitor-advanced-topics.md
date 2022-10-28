@@ -4,4 +4,4 @@ The following sections contain more advanced tasks that explain how to customize
 
 **Topics**
 + [Customize monitoring](model-monitor-custom-monitoring-schedules.md)
-+ [Create a Monitoring Schedule with an AWS CloudFormation Custom Resource](model-monitor-cloudformation-monitoring-schedules.md)
++ [Create a Monitoring Schedule for a Real\-time Endpoint with an AWS CloudFormation Custom Resource](model-monitor-cloudformation-monitoring-schedules.md)

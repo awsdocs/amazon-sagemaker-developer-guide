@@ -2,7 +2,7 @@
 
 Create a baseline job that compares your model predictions with ground truth labels in a baseline dataset that you have stored in Amazon S3\. Typically, you use a training dataset as the baseline dataset\. The baseline job calculates metrics for the model and suggests constraints to use to monitor model quality drift\.
 
-To create a baseline job, you need to have a dataset that contains predictions from your model along with labels that represent the ground truth for your data\.
+To create a baseline job, you need to have a dataset that contains predictions from your model along with labels that represent the Ground Truth for your data\.
 
 To create a baseline job use the `ModelQualityMonitor` class provided by the SageMaker Python SDK, and complete the following steps\.
 

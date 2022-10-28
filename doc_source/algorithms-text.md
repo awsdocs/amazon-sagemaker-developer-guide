@@ -6,6 +6,7 @@ SageMaker provides algorithms that are tailored to the analysis of textual docum
 + [Neural Topic Model \(NTM\) Algorithm](ntm.md)—another unsupervised technique for determining topics in a set of documents, using a neural network approach\.
 + [Object2Vec Algorithm](object2vec.md)—a general\-purpose neural embedding algorithm that can be used for recommendation systems, document classification, and sentence embeddings\.
 + [Sequence\-to\-Sequence Algorithm](seq-2-seq.md)—a supervised algorithm commonly used for neural machine translation\. 
++ [Text Classification \- TensorFlow](text-classification-tensorflow.md)—a supervised algorithm that supports transfer learning with available pretrained models for text classification\. 
 
 
 | Algorithm name | Channel name | Training input mode | File type | Instance class | Parallelizable | 
@@ -15,3 +16,4 @@ SageMaker provides algorithms that are tailored to the analysis of textual docum
 | Neural Topic Model | train and \(optionally\) validation, test, or both | File or Pipe | recordIO\-protobuf or CSV | GPU or CPU | Yes | 
 | Object2Vec | train and \(optionally\) validation, test, or both | File | JSON Lines  | GPU or CPU \(single instance only\) | No | 
 | Seq2Seq Modeling | train, validation, and vocab | File | recordIO\-protobuf | GPU \(single instance only\) | No | 
+| Text Classification \- TensorFlow | training and validation | File | CSV | CPU or GPU | Yes \(only across multiple GPUs on a single instance\) | 
