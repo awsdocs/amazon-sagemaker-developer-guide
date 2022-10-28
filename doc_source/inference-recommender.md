@@ -16,4 +16,12 @@ If you are a first\-time user of Amazon SageMaker Inference Recommender, we reco
 
 1. Read through the [Recommendation jobs](inference-recommender-recommendation-jobs.md) section to launch your first Inference Recommender recommendation jobs\.
 
-1. Explore the Amazon SageMaker Inference Recommender [Jupyter notebook](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker-inference-recommender/inference-recommender.ipynb) example\.
+1. Explore the introductory Amazon SageMaker Inference Recommender [Jupyter notebook](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker-inference-recommender/inference-recommender.ipynb) example, or review the example notebooks in the following section\.
+
+## Example notebooks<a name="inference-recommender-notebooks"></a>
+
+The following example Jupyter notebooks can help you with the workflows for multiple use cases in Inference Recommender:
++ If you want an introductory notebook that benchmarks a TensorFlow model, see the [SageMaker Inference Recommender TensorFlow](https://github.com/aws/amazon-sagemaker-examples/blob/main/sagemaker-inference-recommender/inference-recommender.ipynb) notebook\.
++ If you want to benchmark a HuggingFace model, see the [SageMaker Inference Recommender for HuggingFace](https://github.com/aws/amazon-sagemaker-examples/blob/main/sagemaker-inference-recommender/huggingface-inference-recommender/huggingface-inference-recommender.ipynb) notebook\.
++ If you want to benchmark an XGBoost model, see the [SageMaker Inference Recommender XGBoost](https://github.com/aws/amazon-sagemaker-examples/blob/main/sagemaker-inference-recommender/xgboost/xgboost-inference-recommender.ipynb) notebook\.
++ If you want to review CloudWatch metrics for your Inference Recommender jobs, see the [SageMaker Inference Recommender CloudWatch metrics](https://github.com/aws/amazon-sagemaker-examples/blob/main/sagemaker-inference-recommender/tensorflow-cloudwatch/tf-cloudwatch-inference-recommender.ipynb) notebook\.

@@ -8,6 +8,8 @@ Use SageMaker JumpStart Industry: Financial solutions, models, and example noteb
 + [Amazon SageMaker JumpStart Industry: Financial Models](#studio-jumpstart-industry-models)
 + [Amazon SageMaker JumpStart Industry: Financial Example Notebooks](#studio-jumpstart-industry-examples)
 + [Amazon SageMaker JumpStart Industry: Financial Blog Posts](#studio-jumpstart-industry-blogs)
++ [Amazon SageMaker JumpStart Industry: Financial Related Research](#studio-jumpstart-industry-research)
++ [Amazon SageMaker JumpStart Industry: Financial Additional Resources](#studio-jumpstart-industry-resources)
 
 ## Amazon SageMaker JumpStart Industry Python SDK<a name="studio-jumpstart-industry-pysdk"></a>
 
@@ -15,17 +17,18 @@ SageMaker JumpStart provides processing tools for curating industry datasets and
 
 ## Amazon SageMaker JumpStart Industry: Financial Solution<a name="studio-jumpstart-industry-solutions"></a>
 
-SageMaker JumpStart Industry: Financial provides the following solution notebook:
+SageMaker JumpStart Industry: Financial provides the following solution notebooks:
 + **Corporate Credit Rating Prediction – Financial Services**
 
 This SageMaker JumpStart Industry: Financial solution provides a template for a text\-enhanced corporate credit rating model\. It shows how to take a model based on numeric features \(in this case, Altman's famous 5 financial ratios\) combined with texts from SEC filings to achieve an improvement in the prediction of credit ratings\. In addition to the 5 Altman ratios, you can add more variables as needed or set custom variables\. This solution notebook shows how SageMaker JumpStart Industry Python SDK helps process NLP scoring of texts from SEC filings\. Furthermore, the solution demonstrates how to train a model using the enhanced dataset to achieve a best\-in\-class model, deploy the model to a SageMaker endpoint for production, and receive improved predictions in real time\.
++ **Graph\-Based Credit Scoring – Financial Services**
+
+Credit ratings are traditionally generated using models that use financial statement data and market data, which is tabular only \(numeric and categorical\)\. This solution constructs a network of firms using [SEC filings](https://www.sec.gov/edgar/searchedgar/companysearch.html)and shows how to use the network of firm relationships with tabular data to generate accurate rating predictions\. This solution demonstrates a methodology to use data on firm linkages to extend the traditionally tabular\-based credit scoring models, which have been used by the ratings industry for decades, to the class of machine learning models on networks\.
 
 **Note**  
 The solution notebooks are for demonstration purposes only\. They should not be relied on as financial or investment advice\.
 
-The following screenshot shows the solution card provided through the SageMaker JumpStart page on Studio\.
-
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/jumpstart/jumpstart-finance-solutions.png)
+You can find these financial services solutions through the SageMaker JumpStart page in Studio\.
 
 **Note**  
 The SageMaker JumpStart Industry: Financial solutions, model cards, and example notebooks are hosted and runnable only through SageMaker Studio\. Log in to the [SageMaker console](https://console.aws.amazon.com/sagemaker), and launch SageMaker Studio\. For more information about how to find the solution card, see the previous topic at [SageMaker JumpStart](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html)\.
@@ -74,5 +77,23 @@ To preview the content of the example notebooks, see [Tutorials – Finance](htt
 ## Amazon SageMaker JumpStart Industry: Financial Blog Posts<a name="studio-jumpstart-industry-blogs"></a>
 
 For thorough applications of using SageMaker JumpStart Industry: Financial solutions, models, examples, and the SDK, see the following blog posts:
-+ [Use pre\-trained financial language models for transfer learning in Amazon SageMaker JumpStart](https://aws.amazon.com/blogs/machine-learning/use-pre-trained-financial-language-models-for-transfer-learning-in-amazon-sagemaker-jumpstart/)
-+ [Use SEC text for ratings classification using multimodal ML in Amazon SageMaker JumpStart](https://aws.amazon.com/blogs/machine-learning/use-sec-text-for-ratings-classification-using-multimodal-ml-in-amazon-sagemaker-jumpstart/)
++ [Use pre\-trained financial language models for transfer learning in Amazon SageMaker JumpStart](http://aws.amazon.com/blogs/machine-learning/use-pre-trained-financial-language-models-for-transfer-learning-in-amazon-sagemaker-jumpstart/)
++ [Use SEC text for ratings classification using multimodal ML in Amazon SageMaker JumpStart](http://aws.amazon.com/blogs/machine-learning/use-sec-text-for-ratings-classification-using-multimodal-ml-in-amazon-sagemaker-jumpstart/)
++ [Create a dashboard with SEC text for financial NLP in Amazon SageMaker JumpStart](http://aws.amazon.com/blogs/machine-learning/create-a-dashboard-with-sec-text-for-financial-nlp-in-amazon-sagemaker-jumpstart/)
++ [Build a corporate credit ratings classifier using graph machine learning in Amazon SageMaker JumpStart](http://aws.amazon.com/blogs/machine-learning/build-a-corporate-credit-ratings-classifier-using-graph-machine-learning-in-amazon-sagemaker-jumpstart/)
+
+## Amazon SageMaker JumpStart Industry: Financial Related Research<a name="studio-jumpstart-industry-research"></a>
+
+For research related to SageMaker JumpStart Industry: Financial solutions, see the following papers:
++ [Context, Language Modeling, and Multimodal Data in Finance](https://jfds.pm-research.com/content/3/3/52)
++ [Multimodal Machine Learning for Credit Modeling](https://www.amazon.science/publications/multimodal-machine-learning-for-credit-modeling)
++ [On the Lack of Robust Interpretability of Neural Text Classifiers](https://www.amazon.science/publications/on-the-lack-of-robust-interpretability-of-neural-text-classifiers)
++ [FinLex: An Effective Use of Word Embeddings for Financial Lexicon Generation](https://www.sciencedirect.com/science/article/pii/S2405918821000131)
+
+## Amazon SageMaker JumpStart Industry: Financial Additional Resources<a name="studio-jumpstart-industry-resources"></a>
+
+For additional documentation and tutorials, see the following resources:
++ [The SageMaker JumpStart Industry: Financial Python SDK](https://pypi.org/project/smjsindustry/)
++ [SageMaker JumpStart Industry: Financial Python SDK Tutorials](https://sagemaker-jumpstart-industry-pack.readthedocs.io/en/latest/notebooks/index.html#)
++ [The SageMaker JumpStart Industry: Financial GitHub repository](https://github.com/aws/sagemaker-jumpstart-industry-pack/)
++ [Getting started with Amazon SageMaker \- Machine Learning Tutorials](http://aws.amazon.com/https://aws.amazon.com/sagemaker/getting-started/)

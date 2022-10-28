@@ -65,6 +65,8 @@ Use the following procedure to configure the SageMaker Canvas settings\.
 
 1. \(Optional\) If you left **Enable time series forecasting** turned on, select **Create and use a new execution role**, or select **Use an existing execution role** if you already have an IAM role with the required Amazon Forecast permissions attached \(for more information, see the [IAM role setup method](canvas-set-up-forecast.md#canvas-set-up-forecast-iam)\)\.
 
+1. \(Optional\) Add **Tags** to track your cost and usage trends in AWS Billing and Cost Management\. SageMaker adds the tags you specify in the Domain to all of the SageMaker Canvas apps you create in the Domain\. For more information about billing and tags, see [Manage billing and cost in SageMaker Canvas](canvas-manage-cost.md)\.
+
 1. Finish making any other changes to your Domain setup, and then choose **Submit**\.
 
 If you encounter an error during post\-building analysis that tells you to increase your quota for `ml.m5.2xlarge` instances, use the following information to resolve the issue\. To allow SageMaker Canvas to complete post\-building analysis of models, you must increase the SageMaker Hosting endpoint limit for the `ml.m5.2xlarge` instance type to a non\-zero value in your AWS account\. After building a model, SageMaker Canvas hosts the model on a SageMaker Hosting endpoint and uses the endpoint to generate the post\-building analysis\. If you don't increase the default account limit of 0 for `ml.m5.2xlarge` instances, SageMaker Canvas cannot complete this step and generates an error during post\-building analysis\.

@@ -12,7 +12,7 @@ Hyperparameter optimization is not a fully\-automated process\. To improve optim
 
 ## Choosing a Strategy<a name="automatic-model-tuning-strategy"></a>
 
-For large jobs, using Hyperband can reduce computation time by utilizing its internal early stopping mechanism, reallocation of resources and ability to run parallel jobs\. If runtime and resources are limited, use either random search or Bayesian optimization instead\. Bayesian optimization uses information gathered from prior runs to make increasingly informed decisions about improving hyperparameter configurations in the next run\. Because of its sequential nature, Bayesian optimization cannot massively scale\. Random search is able to run large numbers of parallel jobs\.
+For large jobs, using Hyperband can reduce computation time by utilizing its internal early stopping mechanism, reallocation of resources and ability to run parallel jobs\. If runtime and resources are limited, use either random search or Bayesian optimization instead\. Bayesian optimization uses information gathered from prior runs to make increasingly informed decisions about improving hyperparameter configurations in the next run\. Because of its sequential nature, Bayesian optimization cannot massively scale\. Random search is able to run large numbers of parallel jobs\. Consider using grid search if it is important to be able to reproduce results of a tuning job, or if simplicity and transparency of the optimization algorithm are important\. Grid search is also a good option when it is important to explore the entire hyperparameter search space evenly\. 
 
 ## Choosing the Number of Hyperparameters<a name="automatic-model-tuning-num-hyperparameters"></a>
 

@@ -10,8 +10,9 @@ SageMaker sets the following default limits for resources used by automatic mode
 |  Number of metrics defined per hyperparameter tuning job  |  All  |  20  |  N/A  | 
 |  Number of parallel training jobs per hyperparameter tuning job  |  All  |  10  |  100  | 
 |  \[Bayesian optimization\] Number of training jobs per hyperparameter tuning job  |  All  |  750  |  N/A  | 
-|  \[Random search\] Number of training jobs per hyperparameter tuning job  |  All  |  500  |  10000  | 
+|  \[Random search\] Number of training jobs per hyperparameter tuning job  |  All  |  750  |  10000  | 
 |  \[Hyperband\] Number of training jobs per hyperparameter tuning job  |  All  |  750  |  N/A  | 
+|  \[Grid\] Number of training jobs per hyperparameter tuning job, either specified explicitly or inferred from the search space  |  All  |  750  |  N/A  | 
 |  Maximum run time for a hyperparameter tuning job  |  All  |  30 days  |  N/A  | 
 
 \* Every possible value in a categorical hyperparameter counts against this limit\.

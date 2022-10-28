@@ -75,9 +75,6 @@ tf_ic_estimator = Estimator(
 tf_ic_estimator.fit({"training": training_dataset_s3_path}, logs=True)
 ```
 
-For more information about the Image Classification \- TensorFlow algorithm, including transfer\-learning, fine\-tuning, inference, and deployment, see the following notebook example:
-+ [Tabular classification with Amazon SageMaker LightGBM and CatBoost algorithm](https://github.com/aws/amazon-sagemaker-examples/blob/main/introduction_to_amazon_algorithms/lightgbm_catboost_tabular/Amazon_Tabular_Classification_LightGBM_CatBoost.ipynb)
-
 ## Input and output interface for the Image Classification \- TensorFlow algorithm<a name="IC-TF-inputoutput"></a>
 
 Each of the pretrained models listed in TensorFlow Hub Models can be fine\-tuned to any dataset with any number of image classes\. Be mindful of how to format your training data for input to the Image Classification \- TensorFlow model\.
@@ -140,6 +137,6 @@ We recommend GPU instances with more memory for training with large batch sizes\
 
 ## Image Classification \- TensorFlow sample notebooks<a name="IC-TF-sample-notebooks"></a>
 
-For more information about how to use the SageMaker Image Classification \- TensorFlow algorithm for transfer learning on custom dataset, see the [Introduction to SageMaker TensorFlow \- Image Classification](https://github.com/aws/amazon-sagemaker-examples/blob/main/introduction_to_amazon_algorithms/image_classification_tensorflow/Amazon_TensorFlow_Image_Classification.ipynb) notebook\.
+For more information about how to use the SageMaker Image Classification \- TensorFlow algorithm for transfer learning on a custom dataset, see the [Introduction to SageMaker TensorFlow \- Image Classification](https://github.com/aws/amazon-sagemaker-examples/blob/main/introduction_to_amazon_algorithms/image_classification_tensorflow/Amazon_TensorFlow_Image_Classification.ipynb) notebook\.
 
 For instructions how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. After you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the SageMaker samples\. To open a notebook, choose its **Use** tab and choose **Create copy**\.

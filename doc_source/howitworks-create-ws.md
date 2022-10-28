@@ -40,6 +40,9 @@ After receiving the request, SageMaker does the following:
    1. \(Optional\) **Additional configuration** also lets you specify the size, in GB, of the ML storage volume that is attached to the notebook instance\. You can choose a size between 5 GB and 16,384 GB, in 1 GB increments\. You can use the volume to clean up the training dataset or to temporarily store validation or other data\.
 
    1. \(Optional\) For **Minimum IMDS Version**, select a version from the dropdown list\. If this value is set to v1, both versions can be used with the notebook instance\. If v2 is selected, then only IMDSv2 can be used with the notebook instance\. For information about IMDSv2, see [Use IMDSv2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html)\.
+**Note**  
+Starting October 31, 2022, the default minimum IMDS Version for SageMaker notebook instances changes from IMDSv1 to IMDSv2\.   
+Starting February 1, 2023, IMDSv1 is no longer be available for new notebook instance creation\. After this date, you can create notebook instances with a minimum IMDS version of 2\.
 
    1. For **IAM role**, choose either an existing IAM role in your account that has the necessary permissions to access SageMaker resources or choose **Create a new role**\. If you choose **Create a new role**, SageMaker creates an IAM role named `AmazonSageMaker-ExecutionRole-YYYYMMDDTHHmmSS`\. The AWS managed policy `AmazonSageMakerFullAccess` is attached to the role\. The role provides permissions that allow the notebook instance to call SageMaker and Amazon S3\.
 

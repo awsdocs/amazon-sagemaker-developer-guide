@@ -1,16 +1,20 @@
 # Amazon Linux 2 vs Amazon Linux notebook instances<a name="nbi-al2"></a>
 
-Amazon SageMaker notebook instances currently support Amazon Linux 2 \(AL2\) and Amazon Linux \(AL1\) operating systems\. You can select the operating system that your notebook instances is based on when you create the notebook instance\. Notebook instances created before 08/18/2021 automatically run on AL1\. Notebook instances based on AL1 will enter a [maintenance phase](https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-notebook-instance-now-supports-amazon-linux-2/) as of 04/18/2022\. To replace AL1, customers now have the option to create Amazon SageMaker notebook instances with AL2\. The AL1 maintenance phase also coincides with the deprecation of Python 2 and Chainer\. Notebooks based on AL2 do not have managed Python 2 and Chainer kernels\.
+Amazon SageMaker notebook instances currently support Amazon Linux 2 \(AL2\) and Amazon Linux \(AL1\) operating systems\. You can select the operating system that your notebook instances is based on when you create the notebook instance\. Notebook instances created before 08/18/2021 automatically run on AL1\.
+
+Notebook instances based on AL1 will enter a maintenance phase as of 12/01/2022\. To replace AL1, you now have the option to create Amazon SageMaker notebook instances with AL2\. The AL1 maintenance phase also coincides with the deprecation of Python 2 and Chainer\. Notebooks based on AL2 do not have managed Python 2 and Chainer kernels\.
 
 ## AL1 Maintenance Phase Plan<a name="nbi-al2-deprecation"></a>
 
-The following table outlines the timeline for AL1 entering its extended maintenance phase\.
+The following table is a timeline for when AL1 enters its extended maintenance phase\.
 
 
 |  Date  |  Description  | 
 | --- | --- | 
-|  08/18/2021  |  Notebook instances based on AL2 are launched\. Newly launched notebook instances still default to AL1\. AL1 is supported with security patches and updates, but no new features\. Customers can choose between the two operating systems when launching a new notebook instance\.  | 
-|  04/18/2022  |  AL1 is no longer supported with security patches and updates\. Notebook instances default to AL2\. Customers can still launch instances on AL1, but assume the risks associated with using an unsupported Operating System\.  | 
+|  08/18/2021  |  Notebook instances based on AL2 are launched\. Newly launched notebook instances still default to AL1\. AL1 is supported with security patches and updates, but no new features\. You can choose between the two operating systems when launching a new notebook instance\.  | 
+|  10/31/2022  |  The default platform identifier for SageMaker notebook instances changes from Amazon Linux \(al1\-v1\) to Amazon Linux 2 \(al2\-v2\)\. You can choose between the two operating systems when launching a new notebook instance\.  | 
+|  12/01/2022  |  AL1 is no longer supported with non\-critical security patches and updates\. AL1 still receives fixes for [critical](https://nvd.nist.gov/vuln-metrics/cvss#) security\-related issues\. You can still launch instances on AL1, but assume the risks associated with using an unsupported operating system\.  | 
+|  02/01/2023  |  AL1 is no longer an available option for new notebook instance creation\. After this date, customers can create notebook instances with the AL2 platform identifiers\. Existing al1\-v1 notebook instances are not be affected\.   | 
 
 ## Available Kernels<a name="nbi-al2-env"></a>
 

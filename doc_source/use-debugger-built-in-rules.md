@@ -67,7 +67,7 @@ rules=[
         base_config=rule_configs.built_in_rule_name(),
         rule_parameters={
                 "key": "value"
-        }
+        },
         collections_to_save=[ 
             CollectionConfig(
                 name="tensor_collection_name", 
@@ -126,9 +126,9 @@ sagemaker_estimator=TensorFlow(
     role=sm.get_execution_role(),
     base_job_name='debugger-built-in-rules-demo',
     instance_count=1,
-    instance_type="ml.m4.xlarge",
-    framework_version="2.1.0",
-    py_version="py3",
+    instance_type="ml.p3.2xlarge",
+    framework_version="2.9.0",
+    py_version="py39",
 
     # debugger-specific arguments below
     rules=built_in_rules
@@ -182,9 +182,9 @@ sagemaker_estimator=TensorFlow(
     role=sm.get_execution_role(),
     base_job_name=base_job_name_prefix,
     instance_count=1,
-    instance_type="ml.m4.xlarge",
-    framework_version="2.1.0",
-    py_version="py3",
+    instance_type="ml.p3.2xlarge",
+    framework_version="2.9.0",
+    py_version="py39",
 
     # debugger-specific arguments below
     rules=built_in_rules_modified

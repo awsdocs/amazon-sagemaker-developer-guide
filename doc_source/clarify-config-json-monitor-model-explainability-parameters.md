@@ -13,17 +13,17 @@ Amazon SageMaker Clarify explainability monitor reuses a subset of the parameter
       + `"mean_sq"` – Mean of squared SHAP values for all instances\.
     + `"use_logit"` – \(Optional\) Boolean value to indicate if the logit function is to be applied to the model predictions\. If `"use_logit"` is `true`, then the SHAP values have log\-odds units\. The default value is `false`\. 
     + `"save_local_shap_values"` – \(Optional\) Boolean value to indicate if local SHAP values are to be saved in the output location\. Use `true` to save them\. Use `false` to not save them\. The default is `false`\.
-+ `"predictor"` – \(Optional\) Section on model parameters, required if `"shap"` and `"post_training_bias"` sections are present\.
++ `"predictor"` – \(Optional for real\-time endpoint, required for batch transform\) Section on model parameters, required if `"shap"` and `"post_training_bias"` sections are present\.
   + `"model_name"` – Model name created by `CreateModel` API, with container mode as `SingleModel`\.
   + `"instance_type"` – Instance type for the shadow endpoint\.
   + `"initial_instance_count"` – Instance count for the shadow endpoint\.
   + `"content_type"` – \(Optional\) The model input format to be used for getting inferences with the shadow endpoint\. Valid values are `"text/csv"` for CSV, `"application/jsonlines"` for JSON Lines, `application/x-parquet` for Apache Parquet, and `application/x-image` to enable Computer Vision explainability\. The default value is the same as the `dataset_type` format\.
   + `"accept_type"` – \(Optional\) The model *output* format to be used for getting inferences with the shadow endpoint\. Valid values are `"text/csv"` for CSV, `"application/jsonlines"` for JSON Lines\. If omitted, SageMaker Clarify uses the response data type of the captured data\.
   + `"content_template"` – \(Optional\) A template string used to construct the model input from dataset instances\. It is only used when `"content_type"` is `"application/jsonlines"`\. The template should have only one placeholder, `$features`, which is replaced by the features list at runtime\. For example, given `"content_template":"{\"myfeatures\":$features}"`, if an instance \(no label\) is `1,2,3`, then model input becomes JSON Lines `'{"myfeatures":[1,2,3]}'`\.
-  + `"label_headers"` – \(Optional\) A list of values that the `"label"` takes in the dataset\. Associates the scores returned by the model endpoint with their corresponding label values\. If it is provided, then the analysis report uses the headers instead of placeholders like `“label0”`\.
+  + `"label_headers"` – \(Optional\) A list of values that the `"label"` takes in the dataset\. Associates the scores returned by the model endpoint or batch transform job with their corresponding label values\. If it is provided, then the analysis report uses the headers instead of placeholders like `“label0”`\.
 
-The other parameters should be provided in `EndpointInput` of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ModelExplainabilityJobInput](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ModelExplainabilityJobInput) API\.
-+ `FeaturesAttribute` – This parameter is required if endpoint input data format is `"application/jsonlines"`\. It is the JSONPath used to locate the feature columns if the dataset format is JSON Lines\.
+The other parameters should be provided in `EndpointInput` \(for real\-time endpoints\) or `BatchTransformInput` \(for batch transform jobs\) of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ModelExplainabilityJobInput](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ModelExplainabilityJobInput) API\.
++ `FeaturesAttribute` – This parameter is required if endpoint or batch job input data format is `"application/jsonlines"`\. It is the JSONPath used to locate the feature columns if the dataset format is JSON Lines\.
 + `ProbabilityAttribute` – Index or JSONPath location in the model output for probabilities\. If the model output is JSON Lines with a list of labels and probabilities, for example, then the label that corresponds to the maximum probability is selected for bias computations\.
 
 ## Example JSON Configuration Files for CSV and JSON Lines Datasets<a name="clarify-config-json-monitor-model-explainability-parameters-examples"></a>
@@ -132,7 +132,7 @@ In the following example, the JSON configuration file shows how this JSON Lines 
 }
 ```
 
-Then the `"features"` parameter value in `EndpointInput` is used to locate the features in the dataset, and the `"probability"` parameter value selects the probability value from model output\.
+Then the `"features"` parameter value in `EndpointInput` \(for real\-time endpoints\) or `BatchTransformInput` \(for batch transform jobs\) is used to locate the features in the dataset, and the `"probability"` parameter value selects the probability value from model output\.
 
 ```
 "EndpointInput": {

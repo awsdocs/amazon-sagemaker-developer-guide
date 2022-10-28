@@ -72,8 +72,8 @@ estimator=TensorFlow(
     base_job_name="debugger-demo",
     instance_count=1,
     instance_type="ml.p3.2xlarge",
-    framework_version="2.8.0",
-    py_version="py37",
+    framework_version="2.9.0",
+    py_version="py39",
     
     # Debugger-specific parameters
     debugger_hook_config=debugger_hook_config,

@@ -38,13 +38,13 @@ create_model_response = sagemaker_client.create_model(
     ExecutionRoleArn = sagemaker_role,
     PrimaryContainer = {
         'Image': container,
-	'ModelDataUrl': model_url
+        'ModelDataUrl': model_url
     },
     VpcConfig = {
         'SecurityGroupIds': [security_group],
         'Subnets': [subnet_a, subnet_b],
     },
-    )
+)
 ```
 
 The aforementioned code snippet assumes that you have followed the steps in [Before you begin](realtime-endpoints-deployment.md#realtime-endpoints-deployment-setup)\.
@@ -58,8 +58,8 @@ endpoint_name = '<endpoint-name>'
 	
 runtime_client = boto3.client('sagemaker-runtime')
 response = runtime_client.invoke_endpoint(EndpointName=endpoint_name, 
-                                            ContentType='text/csv', 
-                                            Body=payload)
+                                          ContentType='text/csv', 
+                                          Body=payload)
 ```
 
 For more information on endpoint configuration, see [Create an Endpoint Configuration](realtime-endpoints-deployment.md#realtime-endpoints-deployment-create-endpoint-config)\.

@@ -27,6 +27,7 @@ The following table lists the addresses by AWS Region\.
 | us\-west\-2 | 306415355426\.dkr\.ecr\.us\-west\-2\.amazonaws\.com/sagemaker\-clarify\-processing:1\.0 | 
 | ap\-east\-1 | 098760798382\.dkr\.ecr\.ap\-east\-1\.amazonaws\.com/sagemaker\-clarify\-processing:1\.0 | 
 | ap\-south\-1 | 452307495513\.dkr\.ecr\.ap\-south\-1\.amazonaws\.com/sagemaker\-clarify\-processing:1\.0 | 
+| ap\-southeast\-3 | 705930551576\.dkr\.ecr\.ap\-southeast\-3\.amazonaws\.com/sagemaker\-clarify\-processing:1\.0 | 
 | ap\-northeast\-1 | 377024640650\.dkr\.ecr\.ap\-northeast\-1\.amazonaws\.com/sagemaker\-clarify\-processing:1\.0 | 
 | ap\-northeast\-2 | 263625296855\.dkr\.ecr\.ap\-northeast\-2\.amazonaws\.com/sagemaker\-clarify\-processing:1\.0 | 
 | ap\-northeast\-3 | 912233562940\.dkr\.ecr\.ap\-northeast\-3\.amazonaws\.com/sagemaker\-clarify\-processing:1\.0 | 

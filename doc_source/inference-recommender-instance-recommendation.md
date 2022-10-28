@@ -313,6 +313,8 @@ The `EndpointConfiguration` nested dictionary contains the instance type \(`Inst
 
 The `Metrics` nested dictionary contains information about the estimated cost per hour \(`CostPerHour`\) for your real\-time endpoint in US dollars, the estimated cost per inference \(`CostPerInference`\) in US dollars for your real\-time endpoint, the expected maximum number of `InvokeEndpoint` requests per minute sent to the endpoint \(`MaxInvocations`\), and the model latency \(`ModelLatency`\), which is the interval of time \(in milliseconds\) that your model took to respond to SageMaker\. The model latency includes the local communication times taken to send the request and to fetch the response from the container of a model and the time taken to complete the inference in the container\.
 
+For more information about interpreting the results of your recommendation job, see [Interpret recommendation results](inference-recommender-interpret-results.md)\.
+
 ------
 #### [ Amazon SageMaker Studio ]
 

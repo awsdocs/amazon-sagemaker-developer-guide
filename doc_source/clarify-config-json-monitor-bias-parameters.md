@@ -12,7 +12,7 @@ The following parameters must be provided in a JSON file\. The path to this JSON
   + `"value_or_threshold"` – \(Optional\) List of values or threshold that the facet column can take\. Indicates the sensitive group, such as the group that is used to measure bias against\. If not provided, bias metrics are computed as one group for every unique value \(rather than all values\)\. If the facet column is numeric, this threshold value is applied as the lower bound to select the sensitive group\.
 + `"group_variable"` – \(Optional\) A column name or index to indicate the group variable to be used for the *bias metric* *Conditional Demographic Disparity\.*
 
-The other parameters should be provided in `EndpointInput` of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ModelBiasJobInput](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ModelBiasJobInput) API\.
+The other parameters should be provided in `EndpointInput` \(for real\-time endpoints\) or `BatchTransformInput` \(for batch transform jobs\) of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ModelBiasJobInput](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ModelBiasJobInput) API\.
 + `FeaturesAttribute` – This parameter is required if endpoint input data format is `"application/jsonlines"`\. It is the JSONPath used to locate the feature columns if the dataset format is JSON Lines\.
 + `InferenceAttribute` – Index or JSONPath location in the model output for the target attribute to be used for monitored for bias using bias metrics\. If it is not provided in the CSV `accept_type` case, then it is assumed that the model output is a single numeric value corresponding to a score or probability\.
 + `ProbabilityAttribute` – Index or JSONPath location in the model output for probabilities\. If the model output is JSON Lines with a list of labels and probabilities, for example, then the label that corresponds to the maximum probability is selected for bias computations\.
@@ -121,7 +121,7 @@ The following JSON configuration file shows an example of how this JSON Lines da
 }
 ```
 
-Then, the `"features"` parameter value in `EndpointInput` is used to locate the features in the dataset, and the `"predicted_label"` parameter value selects the predicted label from the model output\. 
+Then, the `"features"` parameter value in `EndpointInput` \(for real\-time endpoints\) or `BatchTransformInput` \(for batch transform jobs\) is used to locate the features in the dataset, and the `"predicted_label"` parameter value selects the predicted label from the model output\. 
 
 ```
 "EndpointInput": {

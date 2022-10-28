@@ -13,6 +13,7 @@ This feature is available through the SageMaker [PyTorch](https://sagemaker.read
 + [Distributed Training with a Heterogeneous Cluster](#train-heterogeneous-cluster-configure-distributed)
 + [Modify Your Training Script to Assign Instance Groups](#train-heterogeneous-cluster-modify-training-script)
 + [Considerations](#train-heterogeneous-cluster-considerations)
++ [Examples, Blogs, and Case Studies](#trin-heterogeneous-cluster-examples)
 
 ## How to Configure a Heterogeneous Cluster<a name="train-heterogeneous-cluster-configure"></a>
 
@@ -56,7 +57,7 @@ For more information about available instance types and the maximum number of in
        s3_data='s3://your-training-data-storage/folder1',
        distribution='FullyReplicated', # Available Options: FullyReplicated | ShardedByS3Key 
        input_mode='File', # Available Options: File | Pipe | FastFile
-       instance_group_names=["instance_group_1"],
+       instance_groups=["instance_group_1"]
    )
    
    training_input_channel_2 = TrainingInput(
@@ -64,7 +65,7 @@ For more information about available instance types and the maximum number of in
        s3_data='s3://your-training-data-storage/folder2',
        distribution='FullyReplicated',
        input_mode='File',
-       instance_group_names=["instance_group_2"],
+       instance_groups=["instance_group_2"]
    )
    ```
 
@@ -372,3 +373,8 @@ Consider the following items when using the heterogeneous cluster feature\.
 + The Amazon CloudWatch log streams of a heterogeneous cluster training job are not grouped by instance groups\. You need to figure out from the logs which nodes are in which group\.
 + The heterogeneous cluster feature is available through the SageMaker [PyTorch](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/sagemaker.pytorch.html) and [TensorFlow](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/sagemaker.tensorflow.html#tensorflow-estimator) framework estimator classes\. Supported frameworks are PyTorch v1\.10 or later and TensorFlow v2\.6 or later\. To find a complete list of available framework containers, framework versions, and Python versions, see [SageMaker Framework Containers](https://github.com/aws/deep-learning-containers/blob/master/available_images.md#sagemaker-framework-containers-sm-support-only) in the AWS Deep Learning Container GitHub repository\.
 + A distributed training strategy can be applied only to one instance group\.
+
+## Examples, Blogs, and Case Studies<a name="trin-heterogeneous-cluster-examples"></a>
+
+The following blog discusses case studies about using the SageMaker heterogeneous cluster training\.
++ [Improve price performance of your model training using Amazon SageMaker heterogeneous clusters](http://aws.amazon.com/blogs/machine-learning/improve-price-performance-of-your-model-training-using-amazon-sagemaker-heterogeneous-clusters/) \(Oct 27, 2022\)

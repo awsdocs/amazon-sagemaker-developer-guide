@@ -1,6 +1,6 @@
 # Interpret results<a name="model-monitor-interpreting-results"></a>
 
-After you run a baseline processing job and obtained statistics and constraint for your dataset, you can execute monitoring jobs that calculate statistics and list any violations encountered relative to the baseline constraints\. Amazon CloudWatch metrics are also reported in your account by default\. For information on viewing the results of monitoring in Amazon SageMaker Studio, see [Visualize results in Amazon SageMaker Studio](model-monitor-interpreting-visualize-results.md)\.
+After you run a baseline processing job and obtained statistics and constraint for your dataset, you can execute monitoring jobs that calculate statistics and list any violations encountered relative to the baseline constraints\. Amazon CloudWatch metrics are also reported in your account by default\. For information on viewing the results of monitoring in Amazon SageMaker Studio, see [Visualize results for real\-time endpoints in Amazon SageMaker Studio](model-monitor-interpreting-visualize-results.md)\.
 
 ## List Executions<a name="model-monitor-interpreting-results-list-executions"></a>
 

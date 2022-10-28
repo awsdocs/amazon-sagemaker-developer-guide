@@ -20,12 +20,14 @@ The following table lists parameters for each of the algorithms provided by Amaz
 | Linear Learner | train and \(optionally\) validation, test, or both | File or Pipe | recordIO\-protobuf or CSV | CPU or GPU | Yes | 
 | Neural Topic Model | train and \(optionally\) validation, test, or both | File or Pipe | recordIO\-protobuf or CSV | CPU or GPU | Yes | 
 | Object2Vec | train and \(optionally\) validation, test, or both | File | JSON Lines  | CPU or GPU \(single instance only\) | No | 
-| Object Detection | train and validation, \(optionally\) train\_annotation, validation\_annotation, and model | File or Pipe | recordIO or image files \(\.jpg or \.png\)  | GPU | Yes | 
+| Object Detection \- MXNet | train and validation, \(optionally\) train\_annotation, validation\_annotation, and model | File or Pipe | recordIO or image files \(\.jpg or \.png\)  | GPU | Yes | 
+| Object Detection \- TensorFlow | training and validation | File | image files \(\.jpg, \.jpeg, or \.png\)  | GPU | Yes \(only across multiple GPUs on a single instance\) | 
 | PCA | train and \(optionally\) test | File or Pipe | recordIO\-protobuf or CSV | CPU or GPU | Yes | 
 | Random Cut Forest | train and \(optionally\) test | File or Pipe | recordIO\-protobuf or CSV | CPU | Yes | 
 | Semantic Segmentation | train and validation, train\_annotation, validation\_annotation, and \(optionally\) label\_map and model | File or Pipe | Image files | GPU \(single instance only\) | No | 
 | Seq2Seq Modeling | train, validation, and vocab | File | recordIO\-protobuf | GPU \(single instance only\) | No | 
 | TabTransformer | training and \(optionally\) validation | File | CSV | CPU or GPU \(single instance only\) | No | 
+| Text Classification \- TensorFlow | training and validation | File | CSV | CPU or GPU | Yes \(only across multiple GPUs on a single instance\) | 
 | XGBoost \(0\.90\-1, 0\.90\-2, 1\.0\-1, 1\.2\-1, 1\.2\-21\) | train and \(optionally\) validation | File or Pipe | CSV, LibSVM, or Parquet | CPU \(or GPU for 1\.2\-1\) | Yes | 
 
 Algorithms that are *parallelizable* can be deployed on multiple compute instances for distributed training\.
