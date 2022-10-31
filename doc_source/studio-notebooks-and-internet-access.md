@@ -22,20 +22,22 @@ When you choose `VpcOnly`, follow these steps:
 **Note**
 You can configure only subnets with a default tenancy VPC in which your instance runs on shared hardware\. For more information on the tenancy attribute for VPCs, see [Dedicated Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html)\.
 
-1. Set up one or more security groups with inbound and outbound rules that together allow the following traffic:
+2. Set up one or more security groups with inbound and outbound rules that together allow the following traffic:
    + [NFS traffic over TCP on port 2049](https://docs.aws.amazon.com/efs/latest/ug/network-access.html) between the domain and the Amazon EFS volume\.
    + [TCP traffic within the security group](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-rules-reference.html#sg-rules-other-instances)\. This is required for connectivity between the JupyterServer app and the KernelGateway apps\. You must allow access to at least ports in the range `8192-65535`\.
 
-1. If you want to allow internet access, you must use a [NAT gateway](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with) with access to the internet, for example through an [internet gateway](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html)\.
+3. If you want to allow internet access, you must use a [NAT gateway](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with) with access to the internet, for example through an [internet gateway](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html)\.
 
-1. If you don't want to allow internet access, [create interface VPC endpoints](https://docs.aws.amazon.com/vpc/latest/privatelink/vpce-interface.html) \(AWS PrivateLink\) to allow Studio to access the following services with the corresponding service names\. Ensure that you enabled the private DNS name for all VPC endpoints. You must also associate the security groups for your VPC with these endpoints\.
+4. If you don't want to allow internet access, [create interface VPC endpoints](https://docs.aws.amazon.com/vpc/latest/privatelink/vpce-interface.html) \(AWS PrivateLink\) to allow Studio to access the following services with the corresponding service names\. Ensure that you enabled the private DNS name for all VPC endpoints. You must also associate the security groups for your VPC with these endpoints\.
    + SageMaker API : `com.amazonaws.us-east-1.sagemaker.api`
    + SageMaker runtime: `com.amazonaws.us-east-1.sagemaker.runtime`\. This is required to run Studio notebooks and to train and host models\.
    + Amazon S3: `com.amazonaws.us-east-1.s3`\.
-   + AWS Security Token Service: `com.amazonaws.us-east-1.sts`\. This is required to run remote training job.
-   + Amazon CloudWatch: `com.amazonaws.us-east-1.logs`\. This is required to allow Sagemaker SDK to get the remote training job status via CloudWatch.
    + To use SageMaker Projects: `com.amazonaws.us-east-1.servicecatalog`\.
    + Any other AWS services you require\.
+
+5. If you use [Sagemaker Python SDK](https://sagemaker.readthedocs.io/en/stable/) to run remote training job. You need to create additional VPC endpoints.  
+   + AWS Security Token Service: `com.amazonaws.us-east-1.sts`\. This is required to run remote training job.
+   + Amazon CloudWatch: `com.amazonaws.us-east-1.logs`\. This is required to allow Sagemaker SDK to get the remote training job status via CloudWatch.
 
 **Note**
 For a customer working within VPC mode, company firewalls can cause connection issues with SageMaker Studio or between JupyterServer and the KernelGateway\. Make the following checks if you encounter one of these issues when using SageMaker Studio from behind a firewall\.
