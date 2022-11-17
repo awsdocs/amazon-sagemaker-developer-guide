@@ -20,7 +20,7 @@ endpoint_name = "<your-endpoint-name>"
 content_type = "<request-mime-type>"
 payload = <your-request-body>
 
-response = client.invoke_endpoint(
+response = runtime.invoke_endpoint(
     EndpointName=endpoint_name,
     ContentType=content_type,
     Body=payload
