@@ -17,7 +17,7 @@ The following are common errors that you might run into when using Amazon SageMa
 
   1. Uninstall recently installed Python packages\. If you’re not sure which package to uninstall, reach out using the feedback button on the lower left of the AWS Management Console\.
 
-  1. Restart Studio: 
+  1. Restart Studio:
 
      1. Shut down Studio from the **File** menu\.
 

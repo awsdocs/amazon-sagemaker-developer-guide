@@ -28,17 +28,17 @@ Amazon SageMaker automatically generates graphs of lineage entities as you use t
 + Retrieve models that use the trial component\.
 + Explore your lineage for visualization\.
 
-**Topics**
-+ [Getting Started with Querying Lineage Entities](#querying-lineage-entities-getting-started)
-
 **Limitations**
 + Lineage querying is not available in the following Regions:
-  + Asia Pacific \(Osaka\) – ap\-northeast\-3
-  + Europe \(Milan\) – eu\-south\-1
   + Africa \(Cape Town\) – af\-south
   + Asia Pacific \(Jakarta\) – ap\-southeast\-3
+  + Asia Pacific \(Osaka\) – ap\-northeast\-3
+  + Europe \(Milan\) – eu\-south\-1
 + The maximum depth of relationships to discover is currently limited to 10\.
 + Filtering is limited to the following properties: last modified date, created date, type, and lineage entity type\. 
+
+**Topics**
++ [Getting Started with Querying Lineage Entities](#querying-lineage-entities-getting-started)
 
 ## Getting Started with Querying Lineage Entities<a name="querying-lineage-entities-getting-started"></a>
 

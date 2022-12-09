@@ -14,9 +14,19 @@ Use the following procedure to update the metadata using Amazon SageMaker Studio
 
 To update the feature metadata with Studio, do the following\.
 
-1. In Amazon SageMaker Studio, navigate to **SageMaker resources**\.
+1. Sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
-1. On the navigation pane, choose **Feature Store**\.
+1. Choose **Studio**\.
+
+1. Choose **Launch app**\.
+
+1. From the dropdown list, select **Studio**\.
+
+1. Choose the Home icon\.
+
+1. Choose **Data**\.
+
+1. Choose **Feature Store**\.
 
 1. Choose **Feature catalog**\.
 

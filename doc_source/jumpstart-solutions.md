@@ -12,10 +12,11 @@ SageMaker JumpStart provides one\-click, end\-to\-end solutions for many common 
 + [Reinforcement learning](#jumpstart-solutions-reinforcement-learning)
 + [Healthcare and life sciences](#jumpstart-solutions-healthcare-life-sciences)
 + [Financial pricing](#jumpstart-solutions-financial-pricing)
++ [Causal inference](#jumpstart-solutions-causal-inference)
 
-Choose the solution template that best fits your use case from the JumpStart landing page\. When you choose a solution template, JumpStart shows a description of the solution and a **Launch** button\. When you select **Launch**, JumpStart creates all of the resources that you need to run the solution, including training and model hosting instances\. For more information on launching a JumpStart solution, see [Launch a Solution](jumpstart-solutions-launch.md)\.
+Choose the solution template that best fits your use case from the JumpStart landing page\. When you choose a solution template, JumpStart opens a new tab showing a description of the solution and a **Launch** button\. When you select **Launch**, JumpStart creates all of the resources that you need to run the solution, including training and model hosting instances\. For more information on launching a JumpStart solution, see [Launch a Solution](jumpstart-solutions-launch.md)\.
 
-After launching the solution, you can explore solution features and any generated artifacts in JumpStart\. Select **Open Notebook** to use provided notebooks and explore the solution’s features\. When artifacts are generated during launch or after running the provided notebooks, they're listed in the **Generated Artifacts** table\. You can delete individual artifacts with the trash icon \(![\[The trash icon for JumpStart.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/jumpstart/jumpstart-trash.png)\)\. You can delete all of the solution’s resources by choosing **Delete solution resources**\.
+After launching the solution, you can explore solution features and any generated artifacts in JumpStart\. Use the **Launched Quick start assets** menu to find your solution\. In your solution's tab, select **Open Notebook** to use provided notebooks and explore the solution’s features\. When artifacts are generated during launch or after running the provided notebooks, they're listed in the **Generated Artifacts** table\. You can delete individual artifacts with the trash icon \(![\[The trash icon for JumpStart.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/jumpstart/jumpstart-trash.png)\)\. You can delete all of the solution’s resources by choosing **Delete solution resources**\.
 
 ## Demand forecasting<a name="jumpstart-solutions-demand-forecasting"></a>
 
@@ -134,3 +135,12 @@ Many businesses dynamically adjust pricing on a regular basis in order to maximi
 | Solution name  | Description  | Get started  | 
 | --- | --- | --- | 
 | Price optimization |  Estimate price elasticity using Double Machine Learning \(ML\) for causal inference and the [Prophet](https://facebook.github.io/prophet/) forecasting procedure\. Use these estimates to optimize daily prices\.  |  Find in Amazon SageMaker Studio\.  | 
+
+## Causal inference<a name="jumpstart-solutions-causal-inference"></a>
+
+Researchers can use machine learning models such as Bayesian networks to represent causal dependencies and draw causal conclusions based on data\. Use the following JumpStart solution to understand the causal relationship between Nitrogen\-based fertilizer application and corn crop yields\.
+
+
+| Solution name  | Description  | Get started  | 
+| --- | --- | --- | 
+| Crop yield counterfactuals |  Generate a counterfactual analysis of corn response to nitrogen\. This solution learns the crop phenology cycle in its entirety using multi\-spectral satellite imagery and [ground\-level observations](https://www.sciencedirect.com/science/article/pii/S2352340921010283#tbl0001)\.  |  Find in Amazon SageMaker Studio\.  | 

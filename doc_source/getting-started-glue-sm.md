@@ -16,7 +16,7 @@ This guide will show you how to obtain the required permissions to use Glue Inte
 
 1. Under the **Permissions** tab, select **Attach policies** from the **Add Permissions** dropdown menu\.
 
-1. Select the checkbox next to the managed policies `AmazonSageMakerFullAccess` and `AwsGlueSessionUserRestrictedServiceRole`\.
+1. Select the checkbox next to the managed policy `AwsGlueSessionUserRestrictedServiceRole`\.
 
 1. Choose **Attach policies**\. 
 
@@ -38,6 +38,7 @@ This guide will show you how to obtain the required permissions to use Glue Inte
        "Statement": [
            {
                "Sid": "unique_statement_id",
+   
                "Effect": "Allow",
                "Action": [
    		"iam:GetRole",
@@ -104,7 +105,7 @@ After you create the roles, policies, and SageMaker domain, you can launch your 
 
 1. In the Jupyter view, choose **File**, then **New**, then **Notebook**\.
 
-1. In the **Image** dropdown menu, select **SparkAnalytics 1\.0**\. In the **kernel** dropdown menu, select **Glue Spark** or **Glue PySpark**\. Choose **Select**\.
+1. In the **Image** dropdown menu, select **SparkAnalytics 1\.0** or **SparkAnalytics 2\.0**\. In the **kernel** dropdown menu, select **Glue Spark** or **Glue Python \[PySpark and Ray\]**\. Choose **Select**\.
 
 1. \(optional\) Use Jupyter magics to customize your environment\. For more information about Jupyter magics, see [Configure your Glue interactive session in SageMaker Studio](#glue-sm-magics)\.
 

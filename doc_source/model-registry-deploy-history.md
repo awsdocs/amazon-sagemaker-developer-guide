@@ -6,10 +6,9 @@ View the deployments for a model version Amazon SageMaker Studio by opening the 
 
 1. Sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
-1. In the left navigation pane, choose the **SageMaker Resources** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png) \)\.
+1. In the left navigation pane, choose the **Home** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png) \)\.
 
-1. Choose **Model registry**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry/model-registry.png)
+1. Choose **Models**, and then **Model registry**\.
 
 1. From the model groups list, choose the model group you want to view\.
 

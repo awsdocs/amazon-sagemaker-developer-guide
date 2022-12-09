@@ -52,7 +52,34 @@ Please contact AWS support to request an increase for this limit.
 The following table includes a list of the models that have been tested with SageMaker Training Compiler\. For reference, the largest batch size that is able to fit into memory is also included alongside other training parameters\. SageMaker Training Compiler can change the memory footprint of the model training process; as a result, a larger batch size can often be used during the training process, further decreasing total training time\. You must retune your model with the compiler enabled to find this increased batch size\. To save time, use the reference table to pick up the largest batch sizes that can be used with the tested models\.
 
 **Note**  
-The batch sizes are local batch size that fit into each individual GPU of an instance type\. You should also adjust the learning rate when changing the batch size\.
+The batch sizes are local batch size that fit into each individual GPU in the respective instance type\. You should also adjust the learning rate when changing the batch size\.
+
+### PyTorch 1\.12\.0<a name="training-compiler-tested-models-pt1120"></a>
+
+**Natural language processing \(NLP\) models**
+
+The following models are tested for training jobs for all combinations of single\-node and multi\-node with single or multi GPU cores and Automatic Mixed Precision \(AMP\) as indicated\.
+
+
+| Single\-node/multi\-node single\-GPU/multi\-GPU | Model | Dataset | Instance type | Precision | Sequence Length | Batch size for native frameworks  | Batch size for SageMaker Training Compiler  | 
+| --- | --- | --- | --- | --- | --- | --- | --- | 
+| albert\-base\-v2 | wikitext\-2\-raw\-v1 | ml\.g5\.2xlarge | float16 | 128 | 128 | 248 | 
+| bert\-base\-uncased | wikitext\-2\-raw\-v1 | ml\.g5\.2xlarge | float16 | 128 | 160 | 288 | 
+| camembert\-base | wikitext\-2\-raw\-v1 | ml\.g5\.2xlarge | float16 | 128 | 160 | 279 | 
+| camembert\-base | wikitext\-2\-raw\-v1 | ml\.p3\.2xlarge | float16 | 128 | 105 | 164 | 
+| distilgpt2 | wikitext\-2\-raw\-v1 | ml\.g5\.2xlarge | float16 | 128 | 136 | 256 | 
+| distilgpt2 | wikitext\-2\-raw\-v1 | ml\.p3\.2xlarge | float16 | 128 | 80 | 118 | 
+| gpt2 | wikitext\-2\-raw\-v1 | ml\.g5\.2xlarge | float16 | 128 | 84 | 240 | 
+| gpt2 | wikitext\-2\-raw\-v1 | ml\.p3\.2xlarge | float16 | 128 | 80 | 119 | 
+| microsoft/deberta\-base | wikitext\-2\-raw\-v1 | ml\.g5\.2xlarge | float16 | 128 | 93 | 197 | 
+| microsoft/deberta\-base | wikitext\-2\-raw\-v1 | ml\.p3\.2xlarge | float16 | 128 | 113 | 130 | 
+| roberta\-base | wikitext\-2\-raw\-v1 | ml\.g5\.2xlarge | float16 | 128 | 125 | 224 | 
+| roberta\-base | wikitext\-2\-raw\-v1 | ml\.p3\.2xlarge | float16 | 128 | 78 | 112 | 
+| xlnet\-base\-cased | wikitext\-2\-raw\-v1 | ml\.g5\.2xlarge | float16 | 128 | 138 | 240 | 
+| bert\-base\-uncased | wikitext\-103\-v1 | ml\.p4d\.24xlarge | float16 | 512 |  | 52 | 
+| distilbert\-base\-uncased | wikitext\-103\-v1 | ml\.p4d\.24xlarge | float16 | 512 |  | 160 | 
+| gpt2 | wikitext\-103\-v1 | ml\.p4d\.24xlarge | float16 | 512 |  | 25 | 
+| roberta\-base | wikitext\-103\-v1 | ml\.p4d\.24xlarge | float16 | 512 |  | 64 | 
 
 ### TensorFlow 2\.10\.0<a name="training-compiler-tested-models-tf2100"></a>
 

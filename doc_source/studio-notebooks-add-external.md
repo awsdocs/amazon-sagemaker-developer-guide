@@ -1,6 +1,6 @@
 # Install External Libraries and Kernels in Amazon SageMaker Studio<a name="studio-notebooks-add-external"></a>
 
-Amazon SageMaker Studio notebooks come with multiple images already installed\. These images contain kernels and Python packages including scikit, Pandas, NumPy, TensorFlow, and MXNet\. You can also install your own images that contain your choice of packages and kernels\. For more information on installing your own image, see [Bring your own SageMaker image](studio-byoi.md)\.
+Amazon SageMaker Studio notebooks come with multiple images already installed\. These images contain kernels and Python packages including scikit\-learn, Pandas, NumPy, TensorFlow, PyTorch, and MXNet\. You can also install your own images that contain your choice of packages and kernels\. For more information on installing your own image, see [Bring your own SageMaker image](studio-byoi.md)\.
 
 The different Jupyter kernels in Amazon SageMaker Studio notebooks are separate conda environments\. For information about conda environments, see [Managing environments](https://conda.io/docs/user-guide/tasks/manage-environments.html)\.
 

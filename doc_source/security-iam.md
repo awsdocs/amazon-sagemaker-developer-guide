@@ -10,6 +10,7 @@ AWS Identity and Access Management \(IAM\) is an AWS service that helps an admin
 + [Amazon SageMaker Identity\-Based Policy Examples](security_iam_id-based-policy-examples.md)
 + [Cross\-Service Confused Deputy Prevention](security-confused-deputy-prevention.md)
 + [SageMaker Roles](sagemaker-roles.md)
++ [Amazon SageMaker Role Manager](role-manager.md)
 + [Amazon SageMaker API Permissions: Actions, Permissions, and Resources Reference](api-permissions-reference.md)
 + [AWS Managed Policies for Amazon SageMaker](security-iam-awsmanpol.md)
 + [Troubleshooting Amazon SageMaker Identity and Access](security_iam_troubleshoot.md)
@@ -38,7 +39,7 @@ Regardless of the authentication method that you use, you might be required to p
 
 ### AWS account root user<a name="security_iam_authentication-rootuser"></a>
 
-  When you create an AWS account, you begin with one sign\-in identity that has complete access to all AWS services and resources in the account\. This identity is called the AWS account *root user* and is accessed by signing in with the email address and password that you used to create the account\. We strongly recommend that you do not use the root user for your everyday tasks\. Safeguard your root user credentials and use them to perform the tasks that only the root user can perform\. For the complete list of tasks that require you to sign in as the root user, see [Tasks that require root user credentials](https://docs.aws.amazon.com/general/latest/gr/root-vs-iam.html#aws_tasks-that-require-root) in the *AWS General Reference*\. 
+  When you create an AWS account, you begin with one sign\-in identity that has complete access to all AWS services and resources in the account\. This identity is called the AWS account *root user* and is accessed by signing in with the email address and password that you used to create the account\. We strongly recommend that you don't use the root user for your everyday tasks\. Safeguard your root user credentials and use them to perform the tasks that only the root user can perform\. For the complete list of tasks that require you to sign in as the root user, see [Tasks that require root user credentials](https://docs.aws.amazon.com/accounts/latest/reference/root-user-tasks.html) in the *AWS Account Management Reference Guide*\. 
 
 ### IAM Users and Groups<a name="security_iam_authentication-iamuser"></a>
 

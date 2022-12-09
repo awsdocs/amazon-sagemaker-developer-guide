@@ -40,3 +40,27 @@ To check the latest updates and release history of the library, see the [SageMak
 ## AWS Regions<a name="distributed-model-parallel-availablity-zone"></a>
 
 The SageMaker data parallel library is available in all of the AWS Regions where the [AWS Deep Learning Containers for SageMaker](https://github.com/aws/deep-learning-containers/blob/master/available_images.md#sagemaker-framework-containers-sm-support-only) are in service\. For more information, see [Available Deep Learning Containers Images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md#available-deep-learning-containers-images)\.
+
+## Supported Instance Types<a name="distributed-model-parallel-supported-instance-types"></a>
+
+The SageMaker model parallelism library requires one of the following ML instance types\.
+
+
+| Instance type | 
+| --- | 
+| ml\.p3\.16xlarge | 
+| ml\.p3dn\.24xlarge  | 
+| ml\.p4d\.24xlarge | 
+| ml\.g4dn\.12xlarge | 
+
+For specs of the instance types, see the **Accelerated Computing** section in the [Amazon EC2 Instance Types page](http://aws.amazon.com/ec2/instance-types/)\. For information about instance pricing, see [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/)\.
+
+If you encountered an error message similar to the following, follow the instructions at [Request a service quota increase for SageMaker resources](https://docs.aws.amazon.com/sagemaker/latest/dg/regions-quotas.html#service-limit-increase-request-procedure)\.
+
+```
+ResourceLimitExceeded: An error occurred (ResourceLimitExceeded) when calling
+    the CreateTrainingJob operation: The account-level service limit 'ml.p3dn.24xlarge
+    for training job usage' is 0 Instances, with current utilization of 0 Instances
+    and a request delta of 1 Instances.
+    Please contact AWS support to request an increase for this limit.
+```

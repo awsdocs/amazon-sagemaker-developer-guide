@@ -9,12 +9,12 @@ Before you start your AWS Glue interactive session in SageMaker Studio, you need
 SageMaker Studio provides a default configuration for your AWS Glue interactive session, but you can use Glue’s full catalog of Jupyter magic commands to further customize your environment\. For information about the default and additional Jupyter magics that you can use in your Glue interactive session, see [Configure your Glue interactive session in SageMaker Studio](getting-started-glue-sm.md#glue-sm-magics)\.
 
 The supported images and kernels for connecting to a Glue interactive session are as follows:
-+ Images: SparkAnalytics 1\.0
-+ Kernel: PySpark and Spark
++ Images: SparkAnalytics 1\.0, SparkAnalytics 2\.0
++ Kernel: Glue Python \[PySpark and Ray\] and Glue Spark
 
 **Prerequisites:**
 
 The SparkAnalytics image that you select to launch your Glue session in Studio is a combination of two frameworks \- the SparkMagic framework \(used with Amazon EMR\), and AWS Glue\. For this reason, the prerequisites for both frameworks apply\. However, you do not have to set up the EMR cluster if you only plan to use Glue Interactive Sessions\. Before you start your first Glue interactive session in Studio, complete the following:
 + Complete the prerequisites required to use the SparkMagic image\. For a list of the prerequisites, see the Prerequisites section in [Prepare Data at Scale with Studio Notebooks](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-notebooks-emr-cluster.html)\.
-+ Create an execution role with permissions for both AWS Glue and SageMaker Studio\. Add the managed policies `SageMakerFullAccess` and `AwsGlueSessionUserRestrictedServiceRole`, and create a custom policy that includes permissions `sts:GetCallerIdentity`, `iam:GetRole`, and `IAM:Passrole`\. For instructions about how to create the necessary permissions, see [Permissions for Glue Interactive Sessions in SageMaker Studio](getting-started-glue-sm.md#glue-sm-iam)\.
++ Create an execution role with permissions for both AWS Glue and SageMaker Studio\. Add the managed policy `AwsGlueSessionUserRestrictedServiceRole`, and create a custom policy that includes permissions `sts:GetCallerIdentity`, `iam:GetRole`, and `IAM:Passrole`\. For instructions about how to create the necessary permissions, see [Permissions for Glue Interactive Sessions in SageMaker Studio](getting-started-glue-sm.md#glue-sm-iam)\.
 + Create a SageMaker domain with the execution role you created\. For instructions about how to create a domain, see [Onboard to Amazon SageMaker Domain Using IAM](onboard-iam.md)\.

@@ -1,8 +1,6 @@
 # Prebuilt SageMaker Docker Images for Deep Learning<a name="pre-built-containers-frameworks-deep-learning"></a>
 
-SageMaker provides prebuilt Docker images that include deep learning framework libraries and other dependencies needed for training and inference\. For a complete list of the available pre\-built Docker images, see [Deep Learning Containers Images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md)\. 
-
-If you are not using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) and one of its estimators to retrieve the pre\-built images, you have to retrieve them yourself\.
+Amazon SageMaker provides prebuilt Docker images that include deep learning frameworks and other dependencies needed for training and inference\. For a complete list of the prebuilt Docker images managed by SageMaker, see [Docker Registry Paths and Example Code](sagemaker-algo-docker-registry-paths.md)\.
 
 ## Using the SageMaker Python SDK<a name="pre-built-containers-frameworks-deep-learning-sdk"></a>
 

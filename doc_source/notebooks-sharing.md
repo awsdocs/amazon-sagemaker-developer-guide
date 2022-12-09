@@ -34,12 +34,12 @@ After selecting your sharing options, you are provided with a URL\. You can shar
 
 You use a shared notebook in the same way you would with a notebook that you created yourself\. You must first login to your account, then open the shared link\. If you don't have an active session, you receive an error\.
 
-When you click a link to a shared notebook for the first time, a read\-only version of the notebook opens\. To edit the shared notebook, choose **Create a Copy**\. This copies the shared notebook to your personal storage\.
+When you choose a link to a shared notebook for the first time, a read\-only version of the notebook opens\. To edit the shared notebook, choose **Create a Copy**\. This copies the shared notebook to your personal storage\.
 
 The copied notebook launches on an instance of the instance type and SageMaker image that the notebook was using when the sender shared it\. If you aren't currently running an instance of the instance type, a new instance is started\. Customization to the SageMaker image isn't shared\. You can also inspect the notebook snapshot by choosing **Snapshot Details**\.
 
 The following are some important considerations about sharing and authentication:
 + If you have an active session, you see a read\-only view of the notebook until you choose **Create a Copy**\.
 + If you don't have an active session, you need to log in\.
-+ If you use IAM to login, after you login, select your user profile then choose **Open SageMaker Studio**\. Then you need to choose the link you were sent\.
++ If you use IAM to login, after you login, select your user profile then choose **Open Studio**\. Then you need to choose the link you were sent\.
 + If you use IAM Identity Center to login, after you login the shared notebook is opened automatically in Studio\.

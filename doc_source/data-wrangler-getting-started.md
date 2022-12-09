@@ -20,22 +20,36 @@ To use Data Wrangler, you need an active Studio instance\. To learn how to launc
 
 The following procedure assumes you have completed the [Prerequisites](#data-wrangler-getting-started-prerequisite)\.
 
-**To access Data Wrangler in Studio:**
+To access Data Wrangler in Studio, do the following\.
 
-1. Next to the user you want to use to launch Studio, select **Open Studio**\.
+1. Sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
-1. When Studio opens, select the **\+** sign on the **New data flow** card under **ML tasks and components**\. This creates a new directory in Studio with a \.flow file inside, which contains your data flow\. The \.flow file automatically opens in Studio\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/open-flow.png)
+1. Choose **Studio**\.
 
-   You can also create a new flow by selecting **File**, then **New**, and choosing **Data Wrangler Flow** in the top navigation bar\.   
+1. Choose **Launch app**\.
+
+1. From the dropdown list, select **Studio**\.
+
+1. Choose the Home icon\.
+
+1. Choose **Data**\.
+
+1. Choose **Data Wrangler**\.
+
+1. You can also create a Data Wrangler flow by doing the following\.
+
+   1. In the top navigation bar, select **File**\.
+
+   1. Select **New**\.
+
+   1. Select **Data Wrangler Flow**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/new-flow-file-menu.png)
 
 1. \(Optional\) Rename the new directory and the \.flow file\. 
 
 1. When you create a new \.flow file in Studio, you might see a carousel that introduces you to Data Wrangler\.
 
-   **This may take a few minutes\.**  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/establishing-connection-engine.png)
+   **This may take a few minutes\.**
 
    This messaging persists as long as the **KernelGateway** app on your **User Details** page is **Pending**\. To see the status of this app, in the SageMaker console on the **Amazon SageMaker Studio** page, select the name of the user you are using to access Studio\. On the **User Details** page, you see a **KernelGateway** app under **Apps**\. Wait until this app status is **Ready** to start using Data Wrangler\. This can take around 5 minutes the first time you launch Data Wrangler\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/gatewayKernel-ready.png)
@@ -52,8 +66,7 @@ After you add transforms to the **Data types** step, you cannot bulk\-update col
 
 1. To export a complete data flow, choose **Export** and choose an export option\. To learn more, see [Export](data-wrangler-data-export.md)\. 
 
-1. Finally, choose the **Components and registries** icon, and select **Data Wrangler** from the dropdown list to see all the \.flow files that you've created\. You can use this menu to find and move between data flows\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/data-wrangler-components.png)
+1. Finally, choose the **Components and registries** icon, and select **Data Wrangler** from the dropdown list to see all the \.flow files that you've created\. You can use this menu to find and move between data flows\.
 
 After you have launched Data Wrangler, you can use the following section to walk through how you might use Data Wrangler to create an ML data prep flow\. 
 
@@ -63,7 +76,7 @@ We recommend that you periodically update the Data Wrangler Studio app to access
 
 ## Demo: Data Wrangler Titanic Dataset Walkthrough<a name="data-wrangler-getting-started-demo"></a>
 
-The following sections provide a walkthrough to help you get started using Data Wrangler\. This walkthrough assumes that you have already followed the steps in [Access Data Wrangler](#data-wrangler-getting-started-access) and have a new data flow file open that you intend to use for the demo\. You may want to rename this \.flow file to something similar to **titanic\-demo\.flow**\.
+The following sections provide a walkthrough to help you get started using Data Wrangler\. This walkthrough assumes that you have already followed the steps in [Access Data Wrangler](#data-wrangler-getting-started-access) and have a new data flow file open that you intend to use for the demo\. You may want to rename this \.flow file to something similar to `titanic-demo.flow`\.
 
 This walkthrough uses the [Titanic dataset](https://s3.us-west-2.amazonaws.com/amazon-sagemaker-data-wrangler-documentation-artifacts/walkthrough_titanic.csv)\. It's a modified version of the [Titanic dataset](https://www.openml.org/d/40945) that you can import into your Data Wrangler flow more easily\. This data set contains the survival status, age, gender, and class \(which serves as a proxy for economic status\) of passengers aboard the maiden voyage of the *RMS Titanic* in 1912\.
 
@@ -98,26 +111,25 @@ If you are a new user of Amazon S3, you can do this using drag and drop in the A
 **Important**  
 Upload your dataset to an S3 bucket in the same AWS Region you want to use to complete this demo\. 
 
-When your dataset has been successfully uploaded to Amazon S3, it you can import it into Data Wrangler\. 
+When your dataset has been successfully uploaded to Amazon S3, you can import it into Data Wrangler\.
 
 **Import the Titanic dataset to Data Wrangler**
 
-1. Select the **Import** tab in your Data Wrangler flow file\. 
+1. Choose the **Import data** button in your **Data flow** tab or choose the **Import** tab\.
 
-1. Select **Amazon S3**\. 
+1. Select **Amazon S3**\.
 
 1. Use the **Import a dataset from S3** table to find the bucket to which you added the Titanic dataset\. Choose the Titanic dataset CSV file to open the **Details** pane\.
 
-1. Under **Details**, the **File type** should be CSV\. Choose **Add header to table** to specify that the first row of the dataset is a header\. You can also name the dataset something more friendly, such as **Titanic\-train**\.
+1. Under **Details**, the **File type** should be CSV\. Check **First row is header** to specify that the first row of the dataset is a header\. You can also name the dataset something more friendly, such as **Titanic\-train**\.
 
-1. Select **Import dataset**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/import-titanic-dataset.png)
+1. Choose the **Import ** button\.
 
-When your dataset is imported into Data Wrangler, it appears in your data flow\. You can view your data flow at any time by selecting the **Data Flow** tab\. You can double click on a node to enter the node detail view, which allows you to add transformations or analysis; otherwise, you can use the plus icon to navigate for a quick navigation\. In the next section, you use this data flow to add analysis and transform steps\. 
+When your dataset is imported into Data Wrangler, it appears in your **Data Flow** tab\. You can double click on a node to enter the node detail view, which allows you to add transformations or analysis\. You can use the plus icon for a quick access to the navigation\. In the next section, you use this data flow to add analysis and transform steps\.
 
 ### Data Flow<a name="data-wrangler-getting-started-demo-data-flow"></a>
 
-In the data flow section, the only steps in the data flow are your recently imported dataset and a **Data type** step\. After applying transformations, you can come back to this tab see what the data flow looks like\. Now, add some basic transformations under the **Prepare** and **Analyze** tabs\. 
+In the data flow section, the only steps in the data flow are your recently imported dataset and a **Data type** step\. After applying transformations, you can come back to this tab and see what the data flow looks like\. Now, add some basic transformations under the **Prepare** and **Analyze** tabs\. 
 
 #### Prepare and Visualize<a name="data-wrangler-getting-started-demo-prep-visualize"></a>
 
@@ -139,14 +151,14 @@ First, create a table summary of the data using an analysis\. Do the following:
 
 1. Select **Preview** to preview the table that will be created\.
 
-1. Choose **Create** to save it to your data flow\. It appears under **All Analyses**\.
+1. Choose **Save** to save it to your data flow\. It appears under **All Analyses**\.
 
 Using the statistics you see, you can make observations similar to the following about this dataset: 
 + Fare average \(mean\) is around $33, while the max is over $500\. This column likely has outliers\. 
 + This dataset uses *?* to indicate missing values\. A number of columns have missing values: *cabin*, *embarked*, and *home\.dest*
 + The age category is missing over 250 values\.
 
-Choose **Prepare** to go back to the data flow\. Next, clean your data using the insights gained from these stats\. 
+Next, clean your data using the insights gained from these stats\. 
 
 ##### Drop Unused Columns<a name="data-wrangler-getting-started-demo-drop-unused"></a>
 
@@ -156,19 +168,19 @@ First, drop columns that you don't want to use for training\. You can use [panda
 
 Use the following procedure to drop the unused columns\.
 
-To drop the unused columns, do the following\.
+To drop the unused columns\.
 
 1. Open the Data Wrangler flow\.
 
-1. There are two nodes in your Data Wrangler flow\. For the node on the right, choose the **\+**\.
+1. There are two nodes in your Data Wrangler flow\. Choose the **\+** to the right of the **Data types** node\.
 
 1. Choose **Add transform**\.
 
-1. Choose **Manage columns**\.
+1. In the **All steps** column, choose **Add step**\.
 
-1. Under **Transform**, make sure **Drop column** is selected\.
+1. In the **Standard** transform list, choose **Manage Columns**\. The standard transformations are ready\-made, built\-in transformations\. Make sure that **Drop column** is selected\.
 
-1. Under **Columns to drop**, specify the following column names:
+1. Under **Columns to drop**, check the following column names:
    + cabin
    + ticket
    + name
@@ -180,37 +192,30 @@ To drop the unused columns, do the following\.
 
 1. Choose **Preview**\.
 
-1. Choose **Add**\.
+1. Verify that the columns have been dropped, then choose **Add**\.
 
 To do this using pandas, follow these steps\.
 
-1. In the **Custom Transform** section, select **Python \(Pandas\)** from the dropdown list\.
+1. In the **All steps** column, choose **Add step**\.
 
-1. Enter the following in the code box\.
+1. In the **Custom** transform list, choose **Custom transform**\.
+
+1. Provide a name for your transformation, and choose **Python \(Pandas\)** from the dropdown list\.
+
+1. Enter the following Python script in the code box\.
 
    ```
    cols = ['name', 'ticket', 'cabin', 'sibsp', 'parch', 'home.dest','boat', 'body']
    df = df.drop(cols, axis=1)
    ```
 
-1. Choose **Preview** to preview the change and then choose **Add** to add the transformation\.   
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/preview-drop.png)
-
-To use the built\-in transformations, do the following: 
-
-1. Choose **Manage columns** from the right panel\.
-
-1. For **Input column**, choose **cabin**, and choose **Preview**\.
-
-1. Verify that the **cabin** column has been dropped, then choose **Add**\.
-
-1. Repeat these steps for the following columns: **ticket**, **name**, **sibsp**, **parch**, **home\.dest**, **boat**, and **body**\. 
+1. Choose **Preview** to preview the change, and then choose **Add** to add the transformation\. 
 
 ##### Clean up Missing Values<a name="data-wrangler-getting-started-demo-missing-vals"></a>
 
 Now, clean up missing values\. You can do this with the **Handling missing values** transform group\.
 
-A number of columns have missing values\. Of the remaining columns, *age* and *fare* contain missing values\. Inspect this using the **Custom Transform**\. 
+A number of columns have missing values\. Of the remaining columns, *age* and *fare* contain missing values\. Inspect this using a **Custom Transform**\.
 
 Using the **Python \(Pandas\)** option, use the following to quickly review the number of entries in each column:
 
@@ -222,11 +227,9 @@ df.info()
 
 To drop rows with missing values in the *age* category, do the following: 
 
-1. Choose **Handling missing values**\. 
+1. Choose **Handle missing**\. 
 
 1. Choose **Drop missing** for the **Transformer**\.
-
-1. Choose **Drop Rows** for the **Dimension**\.
 
 1. Choose *age* for the **Input column**\.
 
@@ -234,9 +237,7 @@ To drop rows with missing values in the *age* category, do the following:
 
 1. Repeat the same process for *fare*\. 
 
-You can use `df.info()` in the **Custom transform** section to confirm that all rows now have 1,045 values\. 
-
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/inspect-after-drop.png)
+You can use `df.info()` in the **Custom transform** section to confirm that all rows now have 1,045 values\.
 
 ##### Custom Pandas: Encode<a name="data-wrangler-getting-started-demo-encode"></a>
 
@@ -289,18 +290,16 @@ When you export your data flow using a **Data Wrangler job**, the process automa
 
 1. Save your data flow\. Select **File** and then select **Save Data Wrangler Flow**\.
 
-1. Choose the **Export** tab\.
+1. Back to the **Data Flow** tab, select the last step in your data flow \(SQL\), then choose the **\+** to open the navigation\.
 
-1. Select the last step in your data flow\.   
+1. Choose **Export**, and **Amazon S3 \(via Jupyter Notebook\)**\. This opens a Jupyter Notebook\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/export-select-step.png)
-
-1. Choose **Data Wrangler Job**\. This opens a Jupyter Notebook\.
 
 1. Choose any **Python 3 \(Data Science\)** kernel for the **Kernel**\. 
 
 1. When the kernel starts, run the cells in the notebook book until **Kick off SageMaker Training Job \(Optional\)**\. 
 
-1. Optionally, you can run the cells in **Kick off SageMaker Training Job \(Optional\)** if you want to create a SageMaker training job to train an XGBoost classifier\. You can find the cost to run an SageMaker training job in [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/)\. 
+1. Optionally, you can run the cells in **Kick off SageMaker Training Job \(Optional\)** if you want to create a SageMaker training job to train an XGBoost classifier\. You can find the cost to run a SageMaker training job in [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/)\. 
 
    Alternatively, you can add the code blocks found in [Training XGBoost Classifier](#data-wrangler-getting-started-train-xgboost) to the notebook and run them to use the [XGBoost](https://xgboost.readthedocs.io/en/latest/) open source library to train an XGBoost classifier\. 
 

@@ -7,6 +7,7 @@ If you're new to SageMaker, we recommend that you read [How Amazon SageMaker Wor
 **Topics**
 + [Create an AWS Account](#gs-account)
 + [Create an IAM Administrator User and Group](#gs-account-user)
++ [AWS CLI Prerequisites](#gs-cli-prereq)
 
 ## Create an AWS Account<a name="gs-account"></a>
 
@@ -22,7 +23,7 @@ When you sign up for Amazon Web Services \(AWS\), your AWS account is automatica
 
    Part of the sign\-up procedure involves receiving a phone call and entering a verification code on the phone keypad\.
 
-   When you sign up for an AWS account, an *AWS account root user* is created\. The root user has access to all AWS services and resources in the account\. As a security best practice, [assign administrative access to an administrative user](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html), and use only the root user to perform [tasks that require root user access](https://docs.aws.amazon.com/general/latest/gr/root-vs-iam.html#aws_tasks-that-require-root)\.
+   When you sign up for an AWS account, an *AWS account root user* is created\. The root user has access to all AWS services and resources in the account\. As a security best practice, [assign administrative access to an administrative user](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html), and use only the root user to perform [tasks that require root user access](https://docs.aws.amazon.com/accounts/latest/reference/root-user-tasks.html)\.
 
 Write down your AWS account ID because you'll need it for the next task\.
 
@@ -69,3 +70,9 @@ We assume that you use administrator user credentials for the exercises and proc
        ]
    }
    ```
+
+## AWS CLI Prerequisites<a name="gs-cli-prereq"></a>
+
+The following prerequisites are required to onboard to a Domain using the AWS CLI\.
++  Update the AWS CLI by following the steps in [Installing the current AWS CLI Version](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv1.html#install-tool-bundled)\. 
++  From your local machine, run `aws configure` and provide your AWS credentials\. For information about AWS credentials, see [Understanding and getting your AWS credentials](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html)\. 

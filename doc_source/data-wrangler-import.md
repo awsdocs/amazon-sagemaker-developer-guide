@@ -6,8 +6,10 @@ You can use Amazon SageMaker Data Wrangler to import data from the following *da
 + [Import data from Amazon S3](#data-wrangler-import-s3)
 + [Import data from Athena](#data-wrangler-import-athena)
 + [Import data from Amazon Redshift](#data-wrangler-import-redshift)
++ [Import data from Amazon EMR](#data-wrangler-emr)
 + [Import data from Databricks \(JDBC\)](#data-wrangler-databricks)
 + [Import data from Snowflake](#data-wrangler-snowflake)
++ [Import Data From Software as a Service \(SaaS\) Platforms](#data-wrangler-import-saas)
 + [Imported Data Storage](#data-wrangler-import-storage)
 
 Some data sources allow you to add multiple *data connections*:
@@ -25,6 +27,26 @@ The default Amazon S3 bucket may not have the least permissive security settings
 
 **Important**  
 In addition, if you use the managed policy for SageMaker, we strongly recommend that you scope it down to the most restrictive policy that allows you to perform your use case\. For more information, see [Grant an IAM Role Permission to Use Data Wrangler](data-wrangler-security.md#data-wrangler-security-iam-policy)\.
+
+All data sources except for Amazon Simple Storage Service \(Amazon S3\) require you to specify a SQL query to import your data\. For each query, you must specify the following:
++ **Data catalog**
++ **Database**
++ **Table**
+
+You can specify the name of the database or the data catalog in either the drop down menus or within the query\. The following are example queries:
++ `select * from example-data-catalog-name.example-database-name.example-table-name` – The query doesn't use anything specified in the dropdown menus of the user\-interface \(UI\) to run\. It queries `example-table-name` within `example-database-name` within `example-data-catalog-name`\.
++ `select * from example-database-name.example-table-name` – The query uses the data catalog that you've specified in the **Data catalog** dropdown menu to run\. It queries `example-table-name` within `example-database-name` within the data catalog that you've specified\.
++ `select * from example-table-name` – The query requires you to select fields for both the **Data catalog** and **Database name** dropdown menus\. It queries `example-table-name` within the data catalog within the database and data catalog that you've specified\.
+
+The link between Data Wrangler and the data source is a *connection*\. You use the connection to import data from your data source\.
+
+There are the following types of connections:
++ Direct
++ Cataloged
+
+Data Wrangler always has access to the most recent data in a direct connection\. If the data in the data source has been updated, you can use the connection to import the data\. For example, if someone adds a file to one of your Amazon S3 buckets, you can import the file\.
+
+A cataloged connection is the result of a data transfer\. The data in the cataloged connection doesn't necessarily have the most recent data\. For example, you might set up a data transfer between Salesforce and Amazon S3\. If there's an update to the Salesforce data, you must transfer the data again\. You can automate the process of transferring data\. For more information about data transfers, see [Import Data From Software as a Service \(SaaS\) Platforms](#data-wrangler-import-saas)\.
 
 ## Import data from Amazon S3<a name="data-wrangler-import-s3"></a>
 
@@ -76,7 +98,7 @@ You can import a dataset that you've partitioned into multiple files in an Amazo
 
 1. If you are not currently on the **Import** tab, choose **Import**\.
 
-1. Under **Data Preparation**, choose **Amazon S3** to see the **Import S3 Data Source** view\. 
+1. Under **Available**, choose **Amazon S3** to see the **Import S3 Data Source** view\. 
 
 1. From the table of available S3 buckets, select a bucket and navigate to the dataset you want to import\. 
 
@@ -113,7 +135,7 @@ Use the following procedure to import multiple files\.
 
 1. If you are not currently on the **Import** tab, choose **Import**\.
 
-1. Under **Data Preparation**, choose **Amazon S3** to see the **Import S3 Data Source** view\. 
+1. Under **Available**, choose **Amazon S3** to see the **Import S3 Data Source** view\. 
 
 1. From the table of available S3 buckets, select the bucket containing the folder that you want to import\.
 
@@ -166,7 +188,23 @@ The following procedure shows how to import a dataset from Athena into Data Wran
 
 **To import a dataset into Data Wrangler from Athena**
 
-1. On the **Import data** screen, choose **Amazon Athena**\.
+1. Sign into [Amazon SageMaker Console](https://console.aws.amazon.com/sagemaker)\.
+
+1. Choose **Studio**\.
+
+1. Choose **Launch app**\.
+
+1. From the dropdown list, select **Studio**\.
+
+1. Choose the Home icon\.
+
+1. Choose **Data**\.
+
+1. Choose **Data Wrangler**\.
+
+1. Choose **Import data**\.
+
+1. Under **Available**, choose **Amazon Athena**\.
 
 1. For **Data Catalog**, choose a data catalog\.
 
@@ -288,9 +326,23 @@ Data Wrangler uses the Amazon Redshift Data API with temporary credentials\. To 
 
 **To connect to a Amazon Redshift cluster**
 
-1. Choose **Import**\.
+1. Sign into [Amazon SageMaker Console](https://console.aws.amazon.com/sagemaker)\.
 
-1. Choose **`+`** under **Add data connection**\.
+1. Choose **Studio**\.
+
+1. Choose **Launch app**\.
+
+1. From the dropdown list, select **Studio**\.
+
+1. Choose the Home icon\.
+
+1. Choose **Data**\.
+
+1. Choose **Data Wrangler**\.
+
+1. Choose **Import data**\.
+
+1. Under **Available**, choose **Amazon Athena**\.
 
 1. Choose **Amazon Redshift**\.
 
@@ -334,6 +386,217 @@ After your connection is successfully established, it appears as a data source u
 1. Enter a **Dataset name**\. If you add a **Dataset name** that contains spaces, these spaces are replaced with underscores when your dataset is imported\. 
 
 1. Choose **Add**\.
+
+To edit a dataset, do the following\.
+
+1. Navigate to your Data Wrangler flow\.
+
+1. Choose the \+ next to **Source \- Sampled**\.
+
+1. Change the data that you're importing\.
+
+1. Choose **Apply**
+
+## Import data from Amazon EMR<a name="data-wrangler-emr"></a>
+
+You can use Amazon EMR as a data source for your Amazon SageMaker Data Wrangler flow\. Amazon EMR is a managed cluster platform that you can use process and analyze large amounts of data\. For more information about Amazon EMR, see [What is Amazon EMR?](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-what-is-emr.html)\. To import a dataset from EMR, you connect to it and query it\. 
+
+**Important**  
+You must meet the following prerequisites to connect to an Amazon EMR cluster:  
+You have an Amazon VPC in the Region that you're using to launch Amazon SageMaker Studio and Amazon EMR\.
+You must do one of the following:  
+Launch Amazon EMR and Amazon SageMaker Studio in the same private subnet\.
+Launch Amazon EMR and Amazon SageMaker Studio in different private subnets\.
+Amazon SageMaker Studio must be in VPC\-only mode\.  
+For more information about creating a VPC, see [Create a VPC](https://docs.aws.amazon.com/vpc/latest/userguide/working-with-vpcs.html#Create-VPC)\.  
+For more information about creating a VPC, see [Connect SageMaker Studio Notebooks in a VPC to External Resources](https://docs.aws.amazon.com/vpc/latest/userguide/studio-notebooks-and-internet-access.html)\.
+The Amazon EMR clusters that you're running must be in the same Amazon VPC\.
+The Amazon EMR clusters and the Amazon VPC must be in the same AWS account\.
+Your Amazon EMR clusters are running Presto\. They must allow inbound traffic from Studio security groups on port 8889\.
+Amazon SageMaker Studio must run Jupyter Lab Version 3\. For information about updating the Jupyter Lab Version, see [View and update the JupyterLab version of an application from the console](studio-jl.md#studio-jl-view)\.
+Amazon SageMaker Studio has an IAM role that controls users access\. The default IAM role that you're using to run Amazon SageMaker Studio doesn't have policies that you can give you access Amazon EMR clusters\. You must attach the policy granting permissions to the IAM role\. For more information, see [Required Permissions](studio-notebooks-emr-required-permissions.md)\.
+The IAM role must also have the following policy attached `secretsmanager:PutResourcePolicy`\.
+If you're using a Studio domain that you've already created, make sure that its `AppNetworkAccessType` is in VPC\-only mode\. For information about updating a domain to use VPC\-only mode, see [Shut down and Update SageMaker Studio](studio-tasks-update-studio.md)\.
+You must have Presto installed on your cluster\.
+The Amazon EMR release must be version 5\.5\.0 or later\.  
+Amazon EMR supports auto termination\. Auto termination stops idle clusters from running and prevents you from incurring costs\. The following are the releases that support auto termination:  
+For 6\.x releases, version 6\.1\.0 or later\.
+For 5\.x releases, version 5\.30\.0 or later\.
+
+An Amazon VPC is a virtual network that is logically isolated from other networks on the AWS cloud\. Amazon SageMaker Studio and your Amazon EMR cluster only exist within the Amazon VPC\.
+
+Use the following procedure to launch Amazon SageMaker Studio in an Amazon VPC\.
+
+To launch Studio within a VPC, do the following\.
+
+1. Navigate to the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
+
+1. Choose **Launch SageMaker Studio**\.
+
+1. Choose **Standard setup**\.
+
+1. For **Default execution role**, choose the IAM role to set up Studio\.
+
+1. Choose the VPC where you've launched the Amazon EMR clusters\.
+
+1. For **Subnet**, choose a private subnet\.
+
+1. For **Security group\(s\)**, specify the security groups that you're using to control between your VPC
+
+1. Choose **VPC Only**\.
+
+1. \(Optional\) AWS uses a default encryption key\. You can specify an AWS Key Management Service key to encrypt your data\.
+
+1. Choose **Next**\.
+
+1. Under **Studio settings**, choose the configurations that are best suited to you\.
+
+1. Choose **Next** to skip the SageMaker Canvas settings\.
+
+1. Choose **Next** to skip the RStudio settings\.
+
+If you don't have an Amazon EMR cluster ready, you can use the following procedure to create one\. For more information about Amazon EMR, see [What is Amazon EMR?](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-what-is-emr.html)
+
+To create a cluster, do the following\.
+
+1. Navigate to the AWS Management Console\.
+
+1. In the search bar, specify **Amazon EMR**\.
+
+1. Choose **Create cluster**\.
+
+1. For **Cluster name**, specify the name of your cluster\.
+
+1. For **Release**, select the release version of the cluster\.
+**Note**  
+Amazon EMR supports auto termination for the following releases:  
+For 6\.x releases, releases 6\.1\.0 or later
+For 5\.x releases, releases 5\.30\.0 or later
+Auto termination stops idle clusters from running and prevent you from incurring costs\.
+
+1. Choose the application that you're running on the cluster\.
+
+1. Under **Networking**, for **Hardware configuration**, specify the hardware configuration settings\.
+**Important**  
+For **Networking**, choose the VPC that is running Amazon SageMaker Studio and choose a private subnet\.
+
+1. Under **Security and access**, specify the security settings\.
+
+1. Choose **Create**\.
+
+For a tutorial about creating an Amazon EMR cluster, see [Getting started with Amazon EMR](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-gs.html)\. For information about best practices for configuring a cluster, see [Considerations and best practices](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-ha-considerations.html)\.
+
+**Important**  
+To use AWS Glue as metastore for Presto tables, select **Use** for **Presto table metadata** to store the results of your Amazon EMR queries in a AWS Glue data catalog when launching EMR clusters\. Storing the query results in a AWS Glue data catalog can save you from incurring charges\.  
+To be able to query large datasets on Amazon EMR clusters, add the following properties to Presto configuration file on your EMR clusters:  
+
+```
+[{"classification":"presto-config","properties":{
+"http-server.max-request-header-size":"5MB",
+"http-server.max-response-header-size":"5MB"}}]
+```
+You can also modify the configuration settings when you launch the Amazon EMR cluster\.  
+The configuration file for your Amazon EMR cluster is located under the following path: `/etc/presto/conf/config.properties`\.
+
+**Note**  
+For security best practices, Data Wrangler can only connect to VPCs on private subnets\. You won't be able to connect to the master node unless you use AWS Systems Manager for your EMR instances\. For more information, see [Securing access to EMR clusters using AWS Systems Manager](http://aws.amazon.com/blogs/big-data/securing-access-to-emr-clusters-using-aws-systems-manager/)\.
+
+You can currently use the following methods to access and Amazon EMR cluster:
++ No authentication
++ Lightweight Directory Access Protocol \(LDAP\)
+
+The following sections show how you can configure LDAP for a Presto cluster\.
+
+Presto LDAP requires access to the Presto coordinator need to be through HTTPS\. Once the LDAP server has been setup to be able to authenticate Presto from EMR cluster via port 636, enable SSL for Presto coordinator, add or modify the following configurations for Presto:
+
+```
+- Classification: presto-config
+     ConfigurationProperties:
+        http-server.authentication.type: 'PASSWORD'
+        http-server.https.enabled: 'true'
+        http-server.https.port: '8889'
+        http-server.http.port: '8899'
+        node-scheduler.include-coordinator: 'true'
+        http-server.https.keystore.path: '/path/to/keystore/path/for/presto'
+        http-server.https.keystore.key: 'kestore-key-password'
+        discovery.uri: 'http://master-node-dns-name:8899'
+- Classification: presto-password-authenticator
+     ConfigurationProperties:
+        password-authenticator.name: 'ldap'
+        ldap.url: !Sub 'ldaps://ldap-server-dns-name:636'
+        ldap.user-bind-pattern: "uid=${USER},dc=example,dc=org"
+        internal-communication.authentication.ldap.user: "ldap-user-name"
+        internal-communication.authentication.ldap.password: "ldap-password"
+```
+
+For information about setting up LDAP in Presto, see the following resources:
++ [LDAP Authentication](https://prestodb.io/docs/current/security/ldap.html)
++ [Using LDAP Authentication for Presto on Amazon EMR](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-presto-ldap.html)
+
+**Note**  
+As a security best practice, we recommend enabling SSL for Presto\. For more information, see [Secure Internal Communication](https://prestodb.io/docs/current/security/internal-communication.html)\.
+
+Use the following procedure to import data from a cluster\.
+
+To import data from a cluster, do the following\.
+
+1. Open a Data Wrangler flow\.
+
+1. Choose **Create Connection**\.
+
+1. Choose **Amazon EMR**\.
+
+1. Do one of the following\.
+   + \(Optional\) For **Secrets ARN**, specify the Amazon Resource Number \(ARN\) of the database within the cluster\. Secrets provide additional security\. For more information about secrets, see [What is AWS Secrets Manager?](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) For information about creating a secret for your cluster, see [Creating a AWS Secrets Manager secret for your cluster](#data-wrangler-emr-secrets-manager)\.
+   + From the dropdown table, choose a cluster\.
+
+1. Choose **Next**\.
+
+1. For **Select an endpoint for *example\-cluster\-name* cluster**, choose a query engine\.
+
+1. \(Optional\) Select **Save connection**\.
+
+1. Choose **Next, select login** and choose one of the following:
+   + No authentication
+   + LDAP
+
+1. For **Login into *example\-cluster\-name* cluster**, specify the **Username** and **Password** for the cluster\.
+
+1. Choose **Connect**\.
+
+1. In the query editor specify a SQL query\.
+
+1. Choose **Run**\.
+
+1. Choose **Import**\.
+
+### Creating a AWS Secrets Manager secret for your cluster<a name="data-wrangler-emr-secrets-manager"></a>
+
+A Secrets Manager secret stores the JDBC URL of the Amazon EMR cluster as a secret\. Using a secret is more secure than directly entering in your credentials\.
+
+Use the following procedure to store the JDBC URL as a secret\.
+
+To store the JDBC URL as a secret, do the following\.
+
+1. Navigate to the AWS Management Console\.
+
+1. In the search bar, specify Secrets Manager\.
+
+1. Choose **AWS Secrets Manager**\.
+
+1. Choose **Store a new secret**\.
+
+1. For **Secret type**, choose **Other type of secret**\.
+
+1. For **Key/value pairs**, specify `jdbcURL` as the key and a valid JDBC URL as the value\.
+
+   The following list shows the valid JBDC URL formats for the different possible configurations\.
+   + Presto, no authentication – jdbc:presto://*emr\-cluster\-master\-public\-dns*:8889/;
+   + For Presto with SSL enabled, the JDBC URL format depends on whether you use a Java Keystore File for the TLS configuration\. The Java Keystore File helps verify the identity of the master node of the Amazon EMR cluster\. To use a Java Keystore File, generate it on an EMR cluster and upload it to Data Wrangler\. To upload a file, choose the upward arrow on the left\-hand navigation of the Data Wrangler UI\. For information about creating a Java Keystore File for Presto, see [Java Keystore File for TLS](https://prestodb.io/docs/current/security/tls.html#server-java-keystore)\. For information about running commands on an Amazon EMR cluster, see [Securing access to EMR clusters using AWS Systems Manager](http://aws.amazon.com/blogs/big-data/securing-access-to-emr-clusters-using-aws-systems-manager/)\.
+     + Wihtout a Java Keystore File – `jdbc:presto://emr-cluster-master-public-dns:8889/;SSL=1;AuthenticationType=LDAP Authentication;UID=user-name;PWD=password;AllowSelfSignedServerCert=1;AllowHostNameCNMismatch=1;`
+     + With a Java Keystore File – `jdbc:presto://emr-cluster-master-public-dns:8889/;SSL=1;AuthenticationType=LDAP Authentication;SSLTrustStorePath=/home/sagemaker-user/data/Java-keystore-file-name;SSLTrustStorePwd=Java-keystore-file-passsword;UID=user-name;PWD=password;`
+
+Throughout the process of importing data from an Amazon EMR cluster, you might run into issues\. For information about troubleshooting them, see [Troubleshooting issues with Amazon EMR](data-wrangler-trouble-shooting.md#data-wrangler-trouble-shooting-emr)\.
 
 ## Import data from Databricks \(JDBC\)<a name="data-wrangler-databricks"></a>
 
@@ -400,10 +663,7 @@ To import data from Databricks, do the following\.
 
 1. From the dropdown list, select **Studio**\.
 
-1. From the **Import data** tab of your Data Wrangler flow, choose **Add data source**\.
-
-1. Select **Databricks \(JDBC\)**\.  
-![\[Databricks (JDBC) is on the top right corner of the screen.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/databricks/select-databricks-jdbc.png)
+1. From the **Import data** tab of your Data Wrangler flow, choose **Databricks**\.
 
 1. Specify the following fields:
    + **Dataset name** – A name that you want to use for the dataset in your Data Wrangler flow\.
@@ -614,8 +874,7 @@ Use the following procedure to connect to Snowflake\.
 
    **Connecting to engine**
 
-   **Establishing connection to engine\.\.\.**  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/connect-engine.png)
+   **Establishing connection to engine\.\.\.**
 
 1. Connect to Snowflake\.
 
@@ -627,10 +886,9 @@ Use the following procedure to connect to Snowflake\.
 **Important**  
 If you do not have your Snowflake credentials or ARN, reach out to your administrator\. Your administrator can tell you which of the preceding methods to use to connect to Snowflake\.
 
-   Start on the **Import** data screen and first select **Add data source** from the dropdown menu, and then select **Snowflake**\. The following screenshot illustrates where to find the **Snowflake** option\.   
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/snowflake-in-ui.png)
+   Start on the **Import** data screen and first select **Add data source** from the dropdown menu, and then select **Snowflake**\. 
 
-Choose an authentication method\. For this step, as previously mentioned, you can use your Snowflake credentials or ARN name\. One of the two is** provided by your administrator\. **
+Choose an authentication method\. For this step, as previously mentioned, you can use your Snowflake credentials or ARN name\. One of the two is** provided by your administrator\. [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)**
 
 Next, we explain both authentication methods and provide screenshots for each\. 
 
@@ -913,6 +1171,144 @@ This section explains how to configure Studio and Data Wrangler\.
 
 1. Create a data flow \(follow the data scientist guide outlined in a preceding section\)\. 
    + When adding a Snowflake connection, enter the value of `privatelink-account-name` \(from the *Set up Snowflake PrivateLink Integration* step\) into the **Snowflake account name \(alphanumeric\)** field, instead of the plain Snowflake account name\. Everything else is left unchanged\.
+
+## Import Data From Software as a Service \(SaaS\) Platforms<a name="data-wrangler-import-saas"></a>
+
+You can use Data Wrangler to import data from more than forty software as a service \(SaaS\) platforms\. To import your data from your SaaS platform, you or your administrator must use Amazon AppFlow to transfer the data from the platform to Amazon S3 or Amazon Redshift\. For more information about Amazon AppFlow, see [What is Amazon AppFlow?](https://docs.aws.amazon.com/appflow/latest/userguide/what-is-appflow.html) If you don't need to use Amazon Redshift, we recommend transferring the data to Amazon S3 for a simpler process\.
+
+Data Wrangler supports transferring data from the following SaaS platforms:
++ [Amplitude](https://docs.aws.amazon.com/appflow/latest/userguide/amplitude.html)
++ [CircleCI](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-circleci.html)
++ [DocuSign Monitor](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-docusign-monitor.html)
++ [Domo](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-domo.html)
++ [Datadog](https://docs.aws.amazon.com/appflow/latest/userguide/datadog.html)
++ [Dynatrace](https://docs.aws.amazon.com/appflow/latest/userguide/dynatrace.html)
++ [Facebook Ads](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-facebook-ads.html)
++ [Facebook Page Insights](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-facebook-page-insights.html)
++ [Google Ads](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-google-ads.html)
++ [Google Analytics 4](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-google-analytics-4.html)
++ [Google Search Console](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-google-search-console.html)
++ [GitHub](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-github.html)
++ [GitLab](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-gitlab.html)
++ [Infor Nexus](https://docs.aws.amazon.com/appflow/latest/userguide/infor-nexus.html)
++ [Instagram Ads](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-instagram-ads.html)
++ [Jira Cloud](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-jira-cloud.html)
++ [LinkedIn Ads](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-linkedin-ads.html)
++ [Mailchimp](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-mailchimp.html)
++ [Marketo](https://docs.aws.amazon.com/appflow/latest/userguide/marketo.html)
++ [Microsoft Teams](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-microsoft-teams.html)
++ [Mixpanel](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-mixpanel.html)
++ [Okta](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-okta.html)
++ [Salesforce](https://docs.aws.amazon.com/appflow/latest/userguide/salesforce.html)
++ [Salesforce Marketing Cloud](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-salesforce-marketing-cloud.html)
++ [Salesforce Pardot](https://docs.aws.amazon.com/appflow/latest/userguide/pardot.html)
++ [SAP OData](https://docs.aws.amazon.com/appflow/latest/userguide/sapodata.html)
++ [SendGrid](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-sendgrid.html)
++ [ServiceNow](https://docs.aws.amazon.com/appflow/latest/userguide/servicenow.html)
++ [Singular](https://docs.aws.amazon.com/appflow/latest/userguide/singular.html)
++ [Slack](https://docs.aws.amazon.com/appflow/latest/userguide/slack.html)
++ [Stripe](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-stripe.html)
++ [Trend Micro](https://docs.aws.amazon.com/appflow/latest/userguide/trend-micro.html)
++ [Typeform](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-typeform.html)
++ [Veeva](https://docs.aws.amazon.com/appflow/latest/userguide/veeva.html)
++ [Zendesk](https://docs.aws.amazon.com/appflow/latest/userguide/slack.html)
++ [Zendesk Chat](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-zendesk-chat.html)
++ [Zendesk Sell](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-zendesk-sell.html)
++ [Zendesk Sunshine](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-zendesk-sunshine.html)
++ [Zoom Meetings](https://docs.aws.amazon.com/appflow/latest/userguide/connectors-zoom-meetings.html)
+
+The preceding list has links to more information about setting up your data source\. You or your administrator can refer to the preceding links after you've read the following information\.
+
+When you navigate to the **Import** tab of your Data Wrangler flow, you see data sources under the following sections:
++ **Available**
++ **Set up data sources**
+
+You can connect to data sources under **Available** without needing additional configuration\. You can choose the data source and import your data\.
+
+Data sources under **Set up data sources**, require you or your administrator to use Amazon AppFlow to transfer the data from the SaaS platform to Amazon S3 or Amazon Redshift\. For information about performing a transfer, see [Using Amazon AppFlow to transfer your data](#data-wrangler-import-saas-transfer)\.
+
+After you perform the data transfer, the SaaS platform appears as a data source under **Available**\. You can choose it and import the data that you've transferred into Data Wrangler\. The data that you've transferred appears as tables that you can query\.
+
+### Using Amazon AppFlow to transfer your data<a name="data-wrangler-import-saas-transfer"></a>
+
+Amazon AppFlow is a platform that you can use to transfer data from your SaaS platform to Amazon S3 or Amazon Redshift without having to write any code\. To perform a data transfer, you use the AWS Management Console\.
+
+**Important**  
+You must make sure you've set up the permissions to perform a data transfer\. For more information, see [Amazon AppFlow Permissions](data-wrangler-security.md#data-wrangler-appflow-permissions)\.
+
+After you've added permissions, you can transfer the data\. Within Amazon AppFlow, you create a *flow* to transfer the data\. A flow is a series of configurations\. You can use it to specify whether you're running the data transfer on a schedule or whether you're partitioning the data into separate files\. After you've configured the flow, you run it to transfer the data\.
+
+For information about creating a flow, see [Creating flows in Amazon AppFlow](https://docs.aws.amazon.com/appflow/latest/userguide/create-flow.html)\. For information about running a flow, see [Activate an Amazon AppFlow flow](https://docs.aws.amazon.com/appflow/latest/userguide/run-flow.html)\.
+
+After the data has been transferred, use the following procedure to access the data in Data Wrangler\.
+**Important**  
+Before you try to access your data, make sure your IAM role has the following policy:  
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "glue:SearchTables",
+            "Resource": [
+                "arn:aws:glue:*:*:table/*/*",
+                "arn:aws:glue:*:*:database/*",
+                "arn:aws:glue:*:*:catalog"
+            ]
+        }
+    ]
+}
+```
+By default, the IAM role that you use to access Data Wrangler is the `SageMakerExecutionRole`\. For more information about adding policies, see [Adding IAM identity permissions \(console\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html#add-policies-console)\.
+
+To connect to a data source, do the following\.
+
+1. Sign into [Amazon SageMaker Console](https://console.aws.amazon.com/sagemaker)\.
+
+1. Choose **Studio**\.
+
+1. Choose **Launch app**\.
+
+1. From the dropdown list, select **Studio**\.
+
+1. Choose the Home icon\.
+
+1. Choose **Data**\.
+
+1. Choose **Data Wrangler**\.
+
+1. Choose **Import data**\.
+
+1. Under **Available**, choose the data source\.
+
+1. For the **Name** field, specify the name of the connection\.
+
+1. \(Optional\) Choose **Advanced configuration**\.
+
+   1. Choose a **Workgroup**\.
+
+   1. If your workgroup hasn't enforced the Amazon S3 output location or if you don't use a workgroup, specify a value for **Amazon S3 location of query results**\.
+
+   1. \(Optional\) For **Data retention period**, select the checkbox to set a data retention period and specify the number of days to store the data before it's deleted\.
+
+   1. \(Optional\) By default, Data Wrangler saves the connection\. You can choose to deselect the checkbox and not save the connection\.
+
+1. Choose **Connect**\.
+
+1. Specify a query\.
+**Note**  
+To help you specify a query, you can choose a table on the left\-hand navigation panel\. Data Wrangler shows the table name and a preview of the table\. Choose the icon next to the table name to copy the name\. You can use the table name in the query\.
+
+1. Choose **Run**\.
+
+1. Choose **Import query**\.
+
+1. For **Dataset name**, specify the name of the dataset\.
+
+1. Choose **Add**\.
+
+When you navigate to the **Import data** screen, you can see the connection that you've created\. You can use the connection to import more data\.
 
 ## Imported Data Storage<a name="data-wrangler-import-storage"></a>
 

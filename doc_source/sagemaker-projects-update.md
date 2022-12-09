@@ -56,11 +56,9 @@ This procedure demonstrates how to update an MLOps project in Amazon SageMaker S
 
 1. Sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
-1. In the Studio sidebar, choose the **SageMaker resources** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png)\)\.
+1. In the Studio sidebar, choose the **Home** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
 
-1. Select **Projects** from the dropdown list\.
-
-   A list of your projects appears\.
+1. Select **Deployments** from the menu, and then select **Projects**\. A list of your projects appears\.
 
 1. You can open the **Project update** dialog box in one of the following ways:
 

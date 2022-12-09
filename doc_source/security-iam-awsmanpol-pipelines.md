@@ -105,5 +105,5 @@ View details about updates to AWS managed policies for Amazon SageMaker since th
 
 | Policy | Version | Change | Date | 
 | --- | --- | --- | --- | 
-|  [AmazonSageMakerPipelinesIntegrations](#security-iam-awsmanpol-AmazonSageMakerPipelinesIntegrations)  | 2 |  Added permissions for `lambda:GetFunction`, `events:DescribeRule`, `events:PutRule`, `events:PutTargets`, `elasticmapreduce:AddJobFlowSteps`, `elasticmapreduce:CancelSteps`, and `elasticmapreduce:DescribeStep`\.  | April 20, 2022 | 
-| AmazonSageMakerPipelinesIntegrations  | 1 |  Initial policy  | July 30, 2021 | 
+|  [AmazonSageMakerPipelinesIntegrations](#security-iam-awsmanpol-AmazonSageMakerPipelinesIntegrations) \- Update to an existing policy  | 2 |  Added permissions for `lambda:GetFunction`, `events:DescribeRule`, `events:PutRule`, `events:PutTargets`, `elasticmapreduce:AddJobFlowSteps`, `elasticmapreduce:CancelSteps`, and `elasticmapreduce:DescribeStep`\.  | April 20, 2022 | 
+| AmazonSageMakerPipelinesIntegrations \- New policy | 1 |  Initial policy  | July 30, 2021 | 

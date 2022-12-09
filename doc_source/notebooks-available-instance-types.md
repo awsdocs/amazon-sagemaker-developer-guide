@@ -1,6 +1,6 @@
-# Available SageMaker Studio Instance Types<a name="notebooks-available-instance-types"></a>
+# Available Studio Instance Types<a name="notebooks-available-instance-types"></a>
 
-The following Amazon Elastic Compute Cloud \(Amazon EC2\) instance types are available for use with SageMaker Studio notebooks\. 
+The following Amazon Elastic Compute Cloud \(Amazon EC2\) instance types are available for use with Studio notebooks\. 
 
 For detailed information on which instance types fit your use case, and their performance capabilities, see [Amazon Elastic Compute Cloud Instance types](http://aws.amazon.com/ec2/instance-types/)\.
 

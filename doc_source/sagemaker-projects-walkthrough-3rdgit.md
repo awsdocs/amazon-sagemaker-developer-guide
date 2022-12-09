@@ -62,7 +62,9 @@ In this step, you create a SageMaker MLOps project by using a SageMaker\-provide
 
 1. Sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
-1. Choose **SageMaker resources**, and then select **Projects** from the dropdown list\.
+1. In the Studio sidebar, choose the **Home** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
+
+1. Select **Deployments** from the menu, and then select **Projects**\.
 
 1. Choose **Create project**\.
 
@@ -115,7 +117,9 @@ Now you approve the new model version that was created in the previous step to i
 
 **To approve the model version**
 
-1. Choose **SageMaker resources**, and then select **Projects** from the dropdown list\.
+1. In the Studio sidebar, choose the **Home** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
+
+1. Select **Deployments** from the menu, and then select **Projects**\.
 
 1. Find the name of the project you created in the first step and double\-click on it to open the project tab for your project\.
 
@@ -155,9 +159,9 @@ To stop incurring charges, clean up the resources that were created in this walk
 **Note**  
 To delete the AWS CloudFormation stack and the Amazon S3 bucket, you need to be an administrator in Studio\. If you are not an administrator, ask your administrator to complete those steps\.
 
-1. In the Studio sidebar, choose the **SageMaker resources** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png)\)\.
+1. In the Studio sidebar, choose the **Home** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
 
-1. Choose **Projects** from the dropdown list\.
+1. Select **Deployments** from the menu, and then select **Projects**\.
 
 1. Select the target project from the dropdown list\. If you don’t see your project, type the project name and apply the filter to find your project\.
 

@@ -23,8 +23,8 @@ Amazon SageMaker Clarify explainability monitor reuses a subset of the parameter
   + `"label_headers"` – \(Optional\) A list of values that the `"label"` takes in the dataset\. Associates the scores returned by the model endpoint or batch transform job with their corresponding label values\. If it is provided, then the analysis report uses the headers instead of placeholders like `“label0”`\.
 
 The other parameters should be provided in `EndpointInput` \(for real\-time endpoints\) or `BatchTransformInput` \(for batch transform jobs\) of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ModelExplainabilityJobInput](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ModelExplainabilityJobInput) API\.
-+ `FeaturesAttribute` – This parameter is required if endpoint or batch job input data format is `"application/jsonlines"`\. It is the JSONPath used to locate the feature columns if the dataset format is JSON Lines\.
-+ `ProbabilityAttribute` – Index or JSONPath location in the model output for probabilities\. If the model output is JSON Lines with a list of labels and probabilities, for example, then the label that corresponds to the maximum probability is selected for bias computations\.
++ `FeaturesAttribute` – This parameter is required if endpoint or batch job input data format is `"application/jsonlines"`\. It is the JMESPath used to locate the feature columns if the dataset format is JSON Lines\.
++ `ProbabilityAttribute` – Index or JMESPath location in the model output for probabilities\. If the model output is JSON Lines with a list of labels and probabilities, for example, then the label that corresponds to the maximum probability is selected for bias computations\.
 
 ## Example JSON Configuration Files for CSV and JSON Lines Datasets<a name="clarify-config-json-monitor-model-explainability-parameters-examples"></a>
 

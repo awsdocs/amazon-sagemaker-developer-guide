@@ -26,7 +26,7 @@ When you shut down a notebook, any unsaved information in the notebook is lost\.
 
 ## Shut Down Resources<a name="notebooks-run-and-manage-shut-down-sessions"></a>
 
-You can reach the **Running Terminals and Kernels** pane on the left side of Amazon SageMaker Studio with the ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Running_squid@2x.png) icon\. The **Running Terminals and Kernels** pane consists of four sections\. Each section lists all the resources of that type\. You can shut down each resource individually or shut down all the resources in a section at the same time\.
+You can reach the **Running Terminals and Kernels** pane on the left side of Amazon SageMaker Studio with the ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/running-terminals-kernels.png) icon\. The **Running Terminals and Kernels** pane consists of four sections\. Each section lists all the resources of that type\. You can shut down each resource individually or shut down all the resources in a section at the same time\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-notebook-shutdown-resource.png)
 
@@ -39,10 +39,10 @@ When you shutdown the Studio notebook instances, any additional resources, such 
 
 **To shut down resources**
 
-1. In the left sidebar, choose the **Running Terminals and Kernels** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Shutdown_light.png)\)\.
+1. In the left sidebar, choose the **Running Terminals and Kernels** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/running-terminals-kernels.png)\)\.
 
 1. Do either of the following:
-   + To shut down a specific resource, choose the **SHUT DOWN** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/File_upload_squid.png)\) on the same row as the resource\.
+   + To shut down a specific resource, choose the **Shut Down** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Shutdown_light.png)\) on the same row as the resource\.
 
      For running instances, a confirmation dialog lists all the resources that will be shut down\. For running apps, a confirmation dialog is displayed\. Choose **Shut down all** to proceed\.
 **Note**  

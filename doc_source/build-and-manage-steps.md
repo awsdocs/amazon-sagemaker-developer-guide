@@ -18,6 +18,7 @@ Amazon SageMaker Model Building Pipelines support the following step types:
 + [Processing](#step-type-processing)
 + [Training](#step-type-training)
 + [Tuning](#step-type-tuning)
++ [AutoML](#step-type-automl)
 + [`Model`](#step-type-model)
 + [`CreateModel`](#step-type-create-model)
 + [`RegisterModel`](#step-type-register-model)
@@ -193,6 +194,58 @@ best_model = Model(
 ```
 
 For more information on tuning step requirements, see the [sagemaker\.workflow\.steps\.TuningStep](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.steps.TuningStep)  documentation\.
+
+### AutoML Step<a name="step-type-automl"></a>
+
+Use the [AutoML](https://sagemaker.readthedocs.io/en/stable/api/training/automl.html) API to create an AutoML job to automatically train a model\. For more information on AutoML jobs, see [Automate model development with Amazon SageMaker Autopilot](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html)\. 
+
+**Note**  
+Currently, the AutoML step supports only [ensembling training mode](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-model-support-validation.html)\.
+
+The following example shows how to create a definition using `AutoMLStep`\.
+
+```
+from sagemaker.workflow.pipeline_context import PipelineSession
+from sagemaker.workflow.steps import AutoMLStep
+
+pipeline_session = PipelineSession()
+
+auto_ml = AutoML(...,
+    role="<role>",
+    target_attribute_name="my_target_attribute_name",
+    mode="ENSEMBLING",
+    sagemaker_session=pipeline_session) 
+
+input_training = AutoMLInput(
+    inputs="s3://my-bucket/my-training-data",
+    target_attribute_name="my_target_attribute_name",
+    channel_type="training",
+)
+input_validation = AutoMLInput(
+    inputs="s3://my-bucket/my-validation-data",
+    target_attribute_name="my_target_attribute_name",
+    channel_type="validation",
+)
+
+step_args = auto_ml.fit(
+    inputs=[input_training, input_validation]
+)
+
+step_automl = AutoMLStep(
+    name="AutoMLStep",
+    step_args=step_args,
+)
+```
+
+**Get the best model version**
+
+The AutoML step automatically trains several model candidates\. You can get the model with the best objective metric from the AutoML job using the `get_best_auto_ml_model` method and an IAM `role` to access model artifacts as follows\.
+
+```
+best_model = step_automl.get_best_auto_ml_model(role=<role>)
+```
+
+For more information, see the [AutoML](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#sagemaker.workflow.automl_step.AutoMLStep) step in the SageMaker Python SDK\.
 
 ### Model Step<a name="step-type-model"></a>
 

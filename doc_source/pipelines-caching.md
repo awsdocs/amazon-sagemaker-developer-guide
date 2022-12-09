@@ -12,6 +12,7 @@ Step caching is available for the following step types:
 + [Processing](build-and-manage-steps.md#step-type-processing)
 + [Training](build-and-manage-steps.md#step-type-training)
 + [Tuning](build-and-manage-steps.md#step-type-tuning)
++ [AutoML](build-and-manage-steps.md#step-type-automl)
 + [Transform](build-and-manage-steps.md#step-type-transform)
 + [`ClarifyCheck`](build-and-manage-steps.md#step-type-clarify-check)
 + [`QualityCheck`](build-and-manage-steps.md#step-type-quality-check)
@@ -204,7 +205,19 @@ The following list shows each pipeline step type and the attributes that, if cha
 
   
 
-### [Transform step](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html)<a name="collapsible-caching-section-4"></a>
+### [AutoML step](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobConfig.html)<a name="collapsible-caching-section-4"></a>
++ AutoMLJobConfig\. This attribute is composed of multiple child attributes, not all of which cause the step to rerun\. The child attributes that could incur a rerun \(if changed\) are:
+  + CompletionCriteria
+  + CandidateGenerationConfig
+  + DataSplitConfig
+  + Mode
++ AutoMLJobObjective
++ InputDataConfig
++ ProblemType
+
+  
+
+### [Transform step](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html)<a name="collapsible-caching-section-5"></a>
 + DataProcessing
 + Environment
 + ModelName
@@ -212,7 +225,7 @@ The following list shows each pipeline step type and the attributes that, if cha
 
   
 
-### [ClarifyCheck Step](build-and-manage-steps.md#step-type-clarify-check)<a name="collapsible-caching-section-5"></a>
+### [ClarifyCheck Step](build-and-manage-steps.md#step-type-clarify-check)<a name="collapsible-caching-section-6"></a>
 + ClarifyCheckConfig
 + CheckJobConfig
 + SkipCheck
@@ -222,7 +235,7 @@ The following list shows each pipeline step type and the attributes that, if cha
 
   
 
-### [QualityCheck Step](build-and-manage-steps.md#step-type-quality-check)<a name="collapsible-caching-section-6"></a>
+### [QualityCheck Step](build-and-manage-steps.md#step-type-quality-check)<a name="collapsible-caching-section-7"></a>
 + QualityCheckConfig
 + CheckJobConfig
 + SkipCheck
@@ -233,7 +246,7 @@ The following list shows each pipeline step type and the attributes that, if cha
 
   
 
-### [EMR Step](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps.html#step-type-emr)<a name="collapsible-caching-section-7"></a>
+### [EMR Step](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps.html#step-type-emr)<a name="collapsible-caching-section-8"></a>
 + ClusterId
 + StepConfig
 

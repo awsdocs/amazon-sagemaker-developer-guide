@@ -2,6 +2,29 @@
 
 See the following release notes to track the latest updates for Amazon SageMaker Training Compiler\.
 
+## SageMaker Training Compiler Release Notes: December 8, 2022<a name="training-compiler-release-notes-20221208"></a>
+
+**Bug Fixes**
++ Fixed the seed for PyTorch training jobs starting 1\.12 to ensure that there is no discrepancy in model initialization across different processes\. See also [PyTorch Reproducibility](https://pytorch.org/docs/stable/notes/randomness.html)\.
++ Fixed the issue that PyTorch distributed training jobs on G4dn and G5 instances not defaulting to communication through [PCIe](https://en.wikipedia.org/wiki/PCI_Express)\.
+
+**Known Issues**
++ Improper use of PyTorch/XLA primitives in Hugging Face’s vision transformers might lead to convergence issues\.
+
+**Other Changes**
++ When using the Hugging Face Transformers `Trainer` class, make sure that you use SyncFree optimizers by setting the `optim` argument to `adamw_torch_xla`\. For more information, see [Large Language Models Using the Hugging Face Transformers `Trainer` Class](training-compiler-pytorch-models.md#training-compiler-pytorch-models-transformers-trainer)\. See also [Optimizer](https://huggingface.co/docs/transformers/v4.23.1/en/perf_train_gpu_one#optimizer) in the *Hugging Face Transformers documentation*\.
+
+**Migration to AWS Deep Learning Containers**
+
+This release passed benchmark testing and is migrated to the following AWS Deep Learning Container:
++ PyTorch v1\.12\.0
+
+  ```
+  763104351884.dkr.ecr.<region>.amazonaws.com/pytorch-trcomp-training:1.12.0-gpu-py38-cu113-ubuntu20.04-sagemaker
+  ```
+
+  To find a complete list of the prebuilt containers with Amazon SageMaker Training Compiler, see [Supported Frameworks, AWS Regions, Instance Types, and Tested Models](training-compiler-support.md)\.
+
 ## SageMaker Training Compiler Release Notes: October 4, 2022<a name="training-compiler-release-notes-20221004"></a>
 
 **Currency Updates**

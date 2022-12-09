@@ -26,7 +26,7 @@ Docker keeps a list of default capabilities that the container can use\. SageMak
 
 **App metadata access**
 
-Metadata used by running apps are mounted to the container with read\-only permission\. Customers aren’t able to modify this metadata from the container\. For the available metadata, see [Get Notebook and App Metadata](notebooks-run-and-manage-metadata.md)\.
+Metadata used by running apps are mounted to the container with read\-only permission\. Customers aren’t able to modify this metadata from the container\. For the available metadata, see [Get Studio Notebook and App Metadata](notebooks-run-and-manage-metadata.md)\.
 
 **User isolation on EFS**
 

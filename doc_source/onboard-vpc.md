@@ -4,7 +4,7 @@ This topic provides detailed information about choosing an Amazon Virtual Privat
 
 By default, SageMaker Domain uses two VPCs\. One VPC is managed by Amazon SageMaker and provides direct internet access\. You specify the other VPC, which provides encrypted traffic between the Domain and your Amazon Elastic File System \(EFS\) volume\.
 
-You can change this behavior so that SageMaker sends all traffic over your specified VPC\. When you choose this option, you must provide the subnets, security groups, and interface endpoints that are necessary to communicate with the SageMaker API and SageMaker runtime, and various AWS services, such as Amazon Simple Storage Service \(Amazon S3\) and Amazon CloudWatch, that are used by Studio and your Studio notebooks\.
+You can change this behavior so that SageMaker sends all traffic over your specified VPC\. When you choose this option, you must provide the subnets, security groups, and interface endpoints that are necessary to communicate with the SageMaker API and SageMaker runtime, and various AWS services, such as Amazon Simple Storage Service \(Amazon S3\) and Amazon CloudWatch, that are used by Amazon SageMaker Studio and your Studio notebooks\.
 
 When you onboard to SageMaker Domain, you tell SageMaker to send all traffic over your VPC by setting the network access type to **VPC only**\.
 
@@ -22,7 +22,7 @@ This procedure is part of the Amazon SageMaker Domain onboarding process when yo
 1. Choose one or more subnets\. If you don't choose any subnets, SageMaker uses all the subnets in the VPC\.
 
 1. Select the network access type\.
-   + **Public internet only** – Non\-EFS traffic goes through a SageMaker managed VPC, which allows internet access\. Traffic between the domain and your Amazon EFS volume is through the specified VPC\.
+   + **Public internet only** – Non\-EFS traffic goes through a SageMaker managed VPC, which allows internet access\. Traffic between the Domain and your Amazon EFS volume is through the specified VPC\.
    + **VPC only** – All SageMaker traffic is through the specified VPC and subnets\. Internet access is disabled by default\.
 
 1. Choose the security groups\. If you chose **Public internet only**, this step is optional\. If you chose **VPC only**, this step is required\.

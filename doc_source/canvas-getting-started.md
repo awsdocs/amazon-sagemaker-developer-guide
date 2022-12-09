@@ -51,12 +51,6 @@ Encryption in transit is only available for Amazon SageMaker Studio\.
 
 1. Select **Next**\. 
 
-Use the following procedure to configure Amazon SageMaker Studio\.
-
-1. Under **Notebook Sharing Configuration**, turn on notebook sharing\.
-
-1. Select **Next**\. 
-
 Use the following procedure to configure the SageMaker Canvas settings\.
 
 1. For the **Canvas base permissions configuration**, leave the **Enable Canvas base permissions** option turned on \(it is turned on by default\)\. This establishes the minimum required permissions to use the SageMaker Canvas app\.
@@ -140,9 +134,9 @@ To attach a CORS policy, use the following procedure\.
 
 After updating the CORS policy, you still might not be successful in uploading your files\. The browser might be caching the CORS settings from a previous upload attempt\. If you're running into issues, clear your browser cache and try again\.
 
-You might want to give yourself the ability to perform forecasts on time series data\. You can add time series forecasting permissions when setting up your Domain, or you can edit the permissions for a user profile after creating your Domain\. The required permissions are the `AmazonSageMakerCanvasForecastAccess` managed policy and a trust relationship with Amazon Forecast to the AWS IAM role you chose when setting up the user profile\. For instructions on how to add these permissions to your IAM role, see [Give Your Users Permissions to Perform Time Series Forecasting](canvas-set-up-forecast.md)\.
+You might want to give yourself the ability to perform forecasts on time series data\. You can add time series forecasting permissions when setting up your Domain, or you can edit the permissions for a user profile after creating your Domain\. The required permissions are the `AmazonSageMakerCanvasForecastAccess` managed policy and a trust relationship with Amazon Forecast to the AWS IAM role you chose when setting up the user profile\. For instructions on how to add these permissions to your IAM role, see [Grant Your Users Permissions to Perform Time Series Forecasting](canvas-set-up-forecast.md)\.
 
-If you want to import data from Amazon Redshift, you must give yourself additional permissions\. You must add the `AmazonRedshiftFullAccess` managed policy to the AWS IAM role you chose when setting up the user profile\. For instructions on how to add the policy to the role, see [Give Users Permissions to Import Amazon Redshift Data](canvas-redshift-permissions.md)\.
+If you want to import data from Amazon Redshift, you must give yourself additional permissions\. You must add the `AmazonRedshiftFullAccess` managed policy to the AWS IAM role you chose when setting up the user profile\. For instructions on how to add the policy to the role, see [Grant Users Permissions to Import Amazon Redshift Data](canvas-redshift-permissions.md)\.
 
 ## Step 1: Log in to Amazon SageMaker Canvas as a business user<a name="canvas-getting-started-step1"></a>
 

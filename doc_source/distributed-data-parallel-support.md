@@ -73,7 +73,7 @@ The SageMaker data parallel library is available in all of the AWS Regions where
 
 ## Supported Instance Types<a name="distributed-data-parallel-supported-instance-types"></a>
 
-The SageMaker data parallel library requires one of the following ML instance types\.
+The SageMaker data parallelism library requires one of the following ML instance types\.
 
 
 | Instance type | 

@@ -17,7 +17,7 @@ Data Wrangler provides the following core functionalities to help you analyze an
 To start using Data Wrangler, see [Get Started with Data Wrangler](data-wrangler-getting-started.md)\.
 
 **Important**  
-Data Wrangler no longer supports Jupyter Lab Version 1 \(JL1\)\. To access the latest features and updates, update to Jupyter Lab Version 3\. For more information about upgrading, see [View and update the JupyterLab version of an app from the console](studio-jl.md#studio-jl-view)\.
+Data Wrangler no longer supports Jupyter Lab Version 1 \(JL1\)\. To access the latest features and updates, update to Jupyter Lab Version 3\. For more information about upgrading, see [View and update the JupyterLab version of an application from the console](studio-jl.md#studio-jl-view)\.
 
 **Topics**
 + [Get Started with Data Wrangler](data-wrangler-getting-started.md)
@@ -29,6 +29,7 @@ Data Wrangler no longer supports Jupyter Lab Version 1 \(JL1\)\. To access the l
 + [Analyze and Visualize](data-wrangler-analyses.md)
 + [Reusing Data Flows for Different Datasets](data-wrangler-parameterize.md)
 + [Export](data-wrangler-data-export.md)
++ [Use an Interactive Data Preparation Widget in an Amazon SageMaker Studio Notebook to Get Data Insights](data-wrangler-interactively-prepare-data-notebook.md)
 + [Security and Permissions](data-wrangler-security.md)
 + [Release Notes](data-wrangler-release-notes.md)
 + [Troubleshoot](data-wrangler-trouble-shooting.md)

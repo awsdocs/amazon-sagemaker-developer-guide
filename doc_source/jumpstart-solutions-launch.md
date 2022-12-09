@@ -1,10 +1,12 @@
 # Launch a Solution<a name="jumpstart-solutions-launch"></a>
 
-On the page for each solution, JumpStart shows a description of the solution and a `Launch` button\. To launch a solution, select `Launch`\. JumpStart then creates all of the resources needed to run the solution\. This includes training and model hosting instances\. After you choose a solution, the **Launch Solution** pane opens\.
+First, choose a solution through the SageMaker JumpStart landing page in the Amazon SageMaker Studio UI\. For information on the onboarding steps to sign in to Amazon SageMaker Studio, see [Onboard to Amazon SageMaker Domain](https://docs.aws.amazon.com/sagemaker/latest/dg/gs-studio-onboard.html)\. For details on getting to the SageMaker JumpStart landing page, see [Open and use JumpStart](studio-jumpstart.md#jumpstart-open-use)\.
+
+After you choose a solution, a solution's tab opens showing a description of the solution and a `Launch` button\. To launch a solution, select `Launch` in the **Launch Solution** section\. JumpStart then creates all of the resources needed to run the solution\. This includes training and model hosting instances\. 
 
 ## Advanced parameters<a name="jumpstart-solutions-config"></a>
 
-The solution that you select may have advanced parameters that you can select\. Choose **Advanced Parameters** to specify the AWS Identity and Access Management role for the solution\. 
+The solution that you choose may have advanced parameters that you can select\. Choose **Advanced Parameters** to specify the AWS Identity and Access Management role for the solution\. 
 
 Solutions are able to launch resources across 9 AWS services that interact with each other\. For the solution to work as expected, newly created components from one service must be able to act on newly created components from another service\. We recommend that you use the default IAM role to ensure that all needed permissions are added\. For more information about IAM roles, see [Identity and Access Management for Amazon SageMaker](security-iam.md)\.
 
@@ -21,7 +23,7 @@ If you select this option, the default IAM roles that are required by this solut
 + **Lambda** – AmazonSageMakerServiceCatalogProductsLambdaRole
 + **SageMaker** – AmazonSageMakerServiceCatalogProductsExecutionRole 
 
-If you are using a new SageMaker domain with JumpStart project templates enabled, these roles are automatically created in your account\.
+If you are using a new SageMaker Domain with JumpStart project templates enabled, these roles are automatically created in your account\.
 
 If you are using an existing SageMaker domain, these roles may not exist in your account\. If this is the case, you will receive the following error when launching the solution\. 
 

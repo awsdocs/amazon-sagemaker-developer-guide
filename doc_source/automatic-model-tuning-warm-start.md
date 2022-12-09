@@ -5,12 +5,10 @@ Use warm start to start a hyperparameter tuning job using one or more previous t
 **Note**  
 Warm start tuning jobs typically take longer to start than standard hyperparameter tuning jobs, because the results from the parent jobs have to be loaded before the job can start\. The increased time depends on the total number of training jobs launched by the parent jobs\.
 
-
-
-Reasons you might want to consider warm start include:
-+ You want to gradually increase the number of training jobs over several tuning jobs based on the results you see after each iteration\.
-+ You get new data, and want to tune a model using the new data\.
-+ You want to change the ranges of hyperparameters that you used in a previous tuning job, change static hyperparameters to tunable, or change tunable hyperparameters to static values\.
+Reasons to consider warm start include the following:
++ To gradually increase the number of training jobs over several tuning jobs based on results after each iteration\.
++ To tune a model using new data that you received\.
++ To change hyperparameter ranges that you used in a previous tuning job, change static hyperparameters to tunable, or change tunable hyperparameters to static values\.
 + You stopped a previous hyperparameter job early or it stopped unexpectedly\.
 
 **Topics**

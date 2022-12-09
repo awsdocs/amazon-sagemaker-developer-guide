@@ -25,4 +25,4 @@ The following screenshot shows the menu from a Studio notebook\. The processor a
 
 1. Wait for the new instance to become enabled, and then the new instance type information is displayed\.
 
-For a list of the available instance types, see [Available SageMaker Studio Instance Types](notebooks-available-instance-types.md)\. 
+For a list of the available instance types, see [Available Studio Instance Types](notebooks-available-instance-types.md)\. 
