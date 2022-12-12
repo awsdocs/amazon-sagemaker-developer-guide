@@ -35,7 +35,7 @@ model_bias_config = BiasConfig(
 )
 ```
 
-`ModelPredictedLabelConfig` specifies how to extract a predicted label from the model output\. In this example, the 0\.8 cutoff has been chosen in anticipation that customers will turn over frequently\. For more complicated outputs, there are a few more options, like "label" is the index, name, or JSONPath to locate predicted label in endpoint response payload\.
+`ModelPredictedLabelConfig` specifies how to extract a predicted label from the model output\. In this example, the 0\.8 cutoff has been chosen in anticipation that customers will turn over frequently\. For more complicated outputs, there are a few more options, like "label" is the index, name, or JMESPath to locate predicted label in endpoint response payload\.
 
 ```
 model_predicted_label_config = ModelPredictedLabelConfig(

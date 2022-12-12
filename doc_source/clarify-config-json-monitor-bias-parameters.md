@@ -5,7 +5,7 @@ Amazon SageMaker Clarify bias monitoring reuses a subset of the parameters used 
 The following parameters must be provided in a JSON file\. The path to this JSON file must be provided in the `ConfigUri` parameter of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ModelBiasAppSpecification](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ModelBiasAppSpecification) API\.
 + `"version"` – \(Optional\) Schema version of the configuration file\. If not provided, the latest supported version is used\.
 + `"headers"` – \(Optional\) A list of column names in the dataset\. If the `dataset_type` is `"application/jsonlines"` and `"label"` is specified, then the last header becomes the header of the label column\. 
-+ `"label"` – \(Optional\) Target attribute for the model to be used for *bias metrics*\. Specified either as a column name, or an index \(if dataset format is CSV\), or as a JSONPath \(if dataset format is JSON Lines\)\.
++ `"label"` – \(Optional\) Target attribute for the model to be used for *bias metrics*\. Specified either as a column name, or an index \(if dataset format is CSV\), or as a JMESPath \(if dataset format is JSON Lines\)\.
 + `"label_values_or_threshold"` – \(Optional\) List of label values or threshold\. Indicates positive outcome used for bias metrics\.
 + `"facet"` – \(Optional\) A list of features that are sensitive attributes, referred to as facets\. Facets are used for *bias metrics* in the form of pairs, and include the following:
   + `"name_or_index"` – Facet column name or index\.
@@ -13,9 +13,9 @@ The following parameters must be provided in a JSON file\. The path to this JSON
 + `"group_variable"` – \(Optional\) A column name or index to indicate the group variable to be used for the *bias metric* *Conditional Demographic Disparity\.*
 
 The other parameters should be provided in `EndpointInput` \(for real\-time endpoints\) or `BatchTransformInput` \(for batch transform jobs\) of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ModelBiasJobInput](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ModelBiasJobInput) API\.
-+ `FeaturesAttribute` – This parameter is required if endpoint input data format is `"application/jsonlines"`\. It is the JSONPath used to locate the feature columns if the dataset format is JSON Lines\.
-+ `InferenceAttribute` – Index or JSONPath location in the model output for the target attribute to be used for monitored for bias using bias metrics\. If it is not provided in the CSV `accept_type` case, then it is assumed that the model output is a single numeric value corresponding to a score or probability\.
-+ `ProbabilityAttribute` – Index or JSONPath location in the model output for probabilities\. If the model output is JSON Lines with a list of labels and probabilities, for example, then the label that corresponds to the maximum probability is selected for bias computations\.
++ `FeaturesAttribute` – This parameter is required if endpoint input data format is `"application/jsonlines"`\. It is the JMESPath used to locate the feature columns if the dataset format is JSON Lines\.
++ `InferenceAttribute` – Index or JMESPath location in the model output for the target attribute to be used for monitored for bias using bias metrics\. If it is not provided in the CSV `accept_type` case, then it is assumed that the model output is a single numeric value corresponding to a score or probability\.
++ `ProbabilityAttribute` – Index or JMESPath location in the model output for probabilities\. If the model output is JSON Lines with a list of labels and probabilities, for example, then the label that corresponds to the maximum probability is selected for bias computations\.
 + `ProbabilityThresholdAttribute` – \(Optional\) A float value to indicate the threshold to select the binary label, in the case of binary classification\. The default value is 0\.5\.
 
 ## Example JSON Configuration Files for CSV and JSON Lines Datasets<a name="clarify-config-json-monitor-bias-parameters-examples"></a>

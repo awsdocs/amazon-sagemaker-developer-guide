@@ -32,10 +32,12 @@ The following table lists parameters for each of the algorithms provided by Amaz
 
 Algorithms that are *parallelizable* can be deployed on multiple compute instances for distributed training\.
 
-The following topics provide information about Docker registry paths, data formats, recommended Amazon EC2 instance types, and CloudWatch logs common to all of the built\-in algorithms provided by Amazon SageMaker\.
+The following topics provide information about data formats, recommended Amazon EC2 instance types, and CloudWatch logs common to all of the built\-in algorithms provided by Amazon SageMaker\.
+
+**Tip**  
+To look up the Docker image URIs of the built\-in algorithms managed by SageMaker, see [Docker Registry Paths and Example Code](sagemaker-algo-docker-registry-paths.md)\. 
 
 **Topics**
-+ [Docker Registry Paths and Example Code](sagemaker-algo-docker-registry-paths.md)
 + [Common Data Formats for Built\-in Algorithms](sagemaker-algo-common-data-formats.md)
 + [Instance Types for Built\-in Algorithms](cmn-info-instance-types.md)
 + [Logs for Built\-in Algorithms](common-info-all-sagemaker-models-logs.md)

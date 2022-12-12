@@ -398,3 +398,5 @@ You can deploy an Autopilot model from a different account than the original acc
       ```
 
       After this assignment of containers, follow the steps in [Deploy using SageMaker APIs](#autopilot-deploy-models-api) to deploy\.
+
+To build a payload in real\-time inferencing, see the notebook example to [ define a test payload](http://aws.amazon.com/getting-started/hands-on/machine-learning-tutorial-automatically-create-models)\. To create the payload from a CSV file and invoke an endpoint, see the **Predict with your model** section in [Create a machine learning model automatically](http://aws.amazon.com/getting-started/hands-on/create-machine-learning-model-automatically-sagemaker-autopilot/#autopilot-cr-room)\.

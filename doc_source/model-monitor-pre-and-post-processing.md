@@ -112,11 +112,16 @@ KEY_EVENT_METADATA_EVENT_ID = "eventId"
 KEY_EVENT_METADATA_EVENT_TIME = "inferenceTime"
 KEY_EVENT_METADATA_CUSTOM_ATTR = "customAttributes"
 
-KEY_EVENTDATA = "captureData"
-KEY_EVENTDATA_INPUT = "endpointInput"
-KEY_EVENTDATA_OUTPUT = "endpointOutput"
 KEY_EVENTDATA_ENCODING = "encoding"
 KEY_EVENTDATA_DATA = "data"
+
+KEY_GROUND_TRUTH_DATA = "groundTruthData"
+
+KEY_EVENTDATA = "captureData"
+KEY_EVENTDATA_ENDPOINT_INPUT = "endpointInput"
+KEY_EVENTDATA_ENDPOINT_OUTPUT = "endpointOutput"
+
+KEY_EVENTDATA_BATCH_OUTPUT = "batchTransformOutput"
 KEY_EVENTDATA_OBSERVED_CONTENT_TYPE = "observedContentType"
 KEY_EVENTDATA_MODE = "mode"
 
@@ -134,8 +139,8 @@ class EventMetadata:
     def __init__(self, event_metadata_dict):
         self.event_id = event_metadata_dict.get(KEY_EVENT_METADATA_EVENT_ID, None)
         self.event_time = event_metadata_dict.get(KEY_EVENT_METADATA_EVENT_TIME, None)
-        self.custom_attribute = event_metadata_dict.get(KEY_EVENTDATA_OBSERVED_CONTENT_TYPE, None)
-                                   
+        self.custom_attribute = event_metadata_dict.get(KEY_EVENT_METADATA_CUSTOM_ATTR, None)
+
 
 class EventData:
     def __init__(self, data_dict):
@@ -158,16 +163,24 @@ class CapturedData:
         self.event_metadata = None
         self.endpoint_input = None
         self.endpoint_output = None
+        self.batch_transform_output = None
+        self.ground_truth = None
         self.event_version = None
         self.event_dict = event_dict
         self._event_dict_postprocessed = False
+        
         if KEY_EVENT_METADATA in event_dict:
             self.event_metadata = EventMetadata(event_dict[KEY_EVENT_METADATA])
         if KEY_EVENTDATA in event_dict:
-            if KEY_EVENTDATA_INPUT in event_dict[KEY_EVENTDATA]:
-                self.endpoint_input = EventData(event_dict[KEY_EVENTDATA][KEY_EVENTDATA_INPUT])
-            if KEY_EVENTDATA_OUTPUT in event_dict[KEY_EVENTDATA]:
-                self.endpoint_output = EventData(event_dict[KEY_EVENTDATA][KEY_EVENTDATA_OUTPUT])
+            if KEY_EVENTDATA_ENDPOINT_INPUT in event_dict[KEY_EVENTDATA]:
+                self.endpoint_input = EventData(event_dict[KEY_EVENTDATA][KEY_EVENTDATA_ENDPOINT_INPUT])
+            if KEY_EVENTDATA_ENDPOINT_OUTPUT in event_dict[KEY_EVENTDATA]:
+                self.endpoint_output = EventData(event_dict[KEY_EVENTDATA][KEY_EVENTDATA_ENDPOINT_OUTPUT])
+            if KEY_EVENTDATA_BATCH_OUTPUT in event_dict[KEY_EVENTDATA]:
+                self.batch_transform_output = EventData(event_dict[KEY_EVENTDATA][KEY_EVENTDATA_BATCH_OUTPUT])
+
+        if KEY_GROUND_TRUTH_DATA in event_dict:
+            self.ground_truth = EventData(event_dict[KEY_GROUND_TRUTH_DATA])
         if KEY_EVENT_VERSION in event_dict:
             self.event_version = event_dict[KEY_EVENT_VERSION]
 
@@ -175,14 +188,20 @@ class CapturedData:
         if self._event_dict_postprocessed is True:
             return self.event_dict
         if KEY_EVENTDATA in self.event_dict:
-            if KEY_EVENTDATA_INPUT in self.event_dict[KEY_EVENTDATA]:
-                self.event_dict[KEY_EVENTDATA][KEY_EVENTDATA_INPUT] = self.endpoint_input.as_dict()
-            if KEY_EVENTDATA_OUTPUT in self.event_dict[KEY_EVENTDATA]:
+            if KEY_EVENTDATA_ENDPOINT_INPUT in self.event_dict[KEY_EVENTDATA]:
+                self.event_dict[KEY_EVENTDATA][KEY_EVENTDATA_ENDPOINT_INPUT] = self.endpoint_input.as_dict()
+            if KEY_EVENTDATA_ENDPOINT_OUTPUT in self.event_dict[KEY_EVENTDATA]:
                 self.event_dict[KEY_EVENTDATA][
-                    KEY_EVENTDATA_OUTPUT
+                    KEY_EVENTDATA_ENDPOINT_OUTPUT
                 ] = self.endpoint_output.as_dict()
+            if KEY_EVENTDATA_BATCH_OUTPUT in self.event_dict[KEY_EVENTDATA]:
+                self.event_dict[KEY_EVENTDATA][KEY_EVENTDATA_BATCH_OUTPUT] = self.batch_transform_output.as_dict()
+        
         self._event_dict_postprocessed = True
         return self.event_dict
+
+    def __str__(self):
+        return str(self.as_dict())
 ```
 
 ## Custom Sampling<a name="model-monitor-pre-processing-custom-sampling"></a>
@@ -197,7 +216,8 @@ def preprocess_handler(inference_record):
     if random.random() > 0.1:
         # return an empty list
         return []
-    return inference_record
+    input_data = inference_record.endpoint_input.data
+    return {i : None if x == -1 else x for i, x in enumerate(input_data.split(","))}
 ```
 
 ## Postprocessing Script<a name="model-monitor-post-processing-script"></a>

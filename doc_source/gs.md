@@ -15,4 +15,3 @@ After you complete these tasks, continue to one of the following topics, dependi
 + [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)
 + [SageMaker JumpStart](studio-jumpstart.md)
 + [Get Started with Amazon SageMaker Notebook Instances](gs-console.md)
-+ [Amazon SageMaker Studio Lab](studio-lab.md)

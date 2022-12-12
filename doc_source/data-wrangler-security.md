@@ -395,6 +395,107 @@ On the **Export data** page, specify a value for the **AWS KMS key ID or ARN**\.
 
 For more information on using AWS KMS keys, see [Protecting Data Using Server\-Side Encryption with AWS KMS keys Stored in AWSAWS Key Management Service \(SSE\-KMS\) ](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)\.
 
+## Amazon AppFlow Permissions<a name="data-wrangler-appflow-permissions"></a>
+
+When you're performing a transfer, you must specify an IAM role that has permissions to perform the transfer\. You can use the same IAM role that has permissions to use Data Wrangler\. By default, the IAM role that you use to access Data Wrangler is the `SageMakerExecutionRole`\.
+
+The IAM role must have the following permissions:
++ Permissions to Amazon AppFlow
++ Permissions to the AWS Glue Data Catalog
++ Permissions for AWS Glue to discover the data sources that are available
+
+When you run a transfer, Amazon AppFlow stores metadata from the transfer in the AWS Glue Data Catalog\. Data Wrangler uses the metadata from the catalog to determine whether it's available for you to query and import\.
+
+To add permissions to Amazon AppFlow, add the `AmazonAppFlowFullAccess` AWS managed policy to the IAM role\. For more information about adding policies, see [Adding or removing IAM identity permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html)\.
+
+If you're transferring data to Amazon S3, you must also attach the following policy\.
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "VisualEditor0",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetBucketTagging",
+        "s3:ListBucketVersions",
+        "s3:CreateBucket",
+        "s3:ListBucket",
+        "s3:GetBucketPolicy",
+        "s3:PutEncryptionConfiguration",
+        "s3:GetEncryptionConfiguration",
+        "s3:PutBucketTagging",
+        "s3:GetObjectTagging",
+        "s3:GetBucketOwnershipControls",
+        "s3:PutObjectTagging",
+        "s3:DeleteObject",
+        "s3:DeleteBucket",
+        "s3:DeleteObjectTagging",
+        "s3:GetBucketPublicAccessBlock",
+        "s3:GetBucketPolicyStatus",
+        "s3:PutBucketPublicAccessBlock",
+        "s3:PutAccountPublicAccessBlock",
+        "s3:ListAccessPoints",
+        "s3:PutBucketOwnershipControls",
+        "s3:PutObjectVersionTagging",
+        "s3:DeleteObjectVersionTagging",
+        "s3:GetBucketVersioning",
+        "s3:GetBucketAcl",
+        "s3:PutObject",
+        "s3:GetObject",
+        "s3:GetAccountPublicAccessBlock",
+        "s3:ListAllMyBuckets",
+        "s3:GetAnalyticsConfiguration",
+        "s3:GetBucketLocation"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+To add AWS Glue permissions, add the `AWSGlueConsoleFullAccess` managed policy to the IAM role\. For more information about AWS Glue permissions with Amazon AppFlow, see \[link\-to\-appflow\-page\]\.
+
+Amazon AppFlow needs to access AWS Glue and Data Wrangler for you to import the data that you've transferred\. To grant Amazon AppFlow access, add the following trust policy to the IAM role\.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::123456789012:root",
+                "Service": [
+                    "appflow.amazonaws.com"
+                ]
+            },
+            "Action": "sts:AssumeRole"
+        }
+    ]
+}
+```
+
+To display the Amazon AppFlow data in Data Wrangler, add the following policy to the IAM role:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "glue:SearchTables",
+            "Resource": [
+                "arn:aws:glue:*:*:table/*/*",
+                "arn:aws:glue:*:*:database/*",
+                "arn:aws:glue:*:*:catalog"
+            ]
+        }
+    ]
+}
+```
+
 ## Using Lifecycle Configurations in Data Wrangler<a name="data-wrangler-lifecycle-configuration"></a>
 
 You might have an Amazon EC2 instance that is configured to run Kernel Gateway applications, but not the Data Wrangler application\. Kernel Gateway applications provide access to the environment and the kernels that you use to run Studio notebooks and terminals\. The Data Wrangler application is the UI application that runs Data Wrangler\. Amazon EC2 instances that aren't Data Wrangler instances require a modification to their lifecycle configurations to run Data Wrangler\. Lifecycle configurations are shell scripts that automate the customization of your Amazon SageMaker Studio environment\.

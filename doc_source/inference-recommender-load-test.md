@@ -162,9 +162,13 @@ aws sagemaker create-inference-recommendations-job\
 
 Create a load test with Studio\.
 
-1. In the left sidebar of Studio, choose the **Components and registries** icon\.
+1. In your Studio application, choose the home icon \(![\[Home icon in Studio\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
 
-1. Select **Inference Recommender Jobs** from the dropdown list\. A new tab titled **Create inference recommender job** opens in the right pane\. 
+1. In the left sidebar of Studio, choose **Deployments**\.
+
+1. Choose **Inference recommender** from the dropdown list\.
+
+1. Choose **Create inference recommender job**\. A new tab titled **Create inference recommender job** opens\.
 
 1. Select the name of your model group from the dropdown **Model group** field\. The list includes all the model groups registered with the model registry in your account, including models registered outside of Studio\.
 

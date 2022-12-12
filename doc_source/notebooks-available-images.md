@@ -13,6 +13,9 @@ The following SageMaker images are available in Amazon SageMaker Studio\. SageMa
 + *Data Science 2\.0 \[sagemaker\-datascience\-38\]*
 
   `Data Science 2.0` is a Python 3\.8 [conda](https://docs.conda.io/projects/conda/en/latest/index.html) image with the most commonly used Python packages and libraries, such as NumPy and SciKit Learn\.
++ *Amazon SageMaker geospatial \[sagemaker\-geospatial\-1\.0\]*
+
+  Amazon SageMaker geospatial is a Python image consisting of commonly used geospatial libraries such as GDAL, Fiona, GeoPandas, Shapely, and Rasterio, and allows you to visualize geospatial data within SageMaker\. For more information, see [Amazon SageMaker geospatial Notebook SDK](https://docs.aws.amazon.com/sagemaker/latest/dg/geospatial-notebook-sdk.html)
 + *SparkMagic \[sagemaker\-sparkmagic\]*
 
   Anaconda Individual Edition with PySpark and Spark kernels\. For more information, see [sparkmagic](https://github.com/jupyter-incubator/sparkmagic)\.

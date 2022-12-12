@@ -6,7 +6,7 @@ Use an Amazon SageMaker Data Wrangler flow, or a *data flow*, to create and modi
 
 When you create a Data Wrangler flow in Amazon SageMaker Studio, Data Wrangler uses an Amazon EC2 instance to run the analyses and transformations in your flow\. By default, Data Wrangler uses the m5\.4xlarge instance\. m5 instances are general purpose instances that provide a balance between compute and memory\. You can use m5 instances for a variety of compute workloads\.
 
-Data Wrangler also gives you the option of using r5 instances\. r5 instances are designed to deliver fast performance that process large datasets in memory\.
+Data Wrangler also gives you the option of using r5 instances\. r5 instances are designed to deliver fast performance that processes large datasets in memory\.
 
 We recommend that you choose an instance that is best optimized around your workloads\. For example, the r5\.8xlarge might have a higher price than the m5\.4xlarge, but the r5\.8xlarge might be better optimized for your workloads\. With better optimized instances, you can run your data flows in less time at lower cost\.
 
@@ -31,8 +31,9 @@ For each flow file, you can seamlessly switch the instance type\. If you switch 
 
 To switch the instance type of your flow, do the following\.
 
-1. Navigate to the instance that you're currently using and choose it\. The following image shows you where to choose the instance\.  
-![\[\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/instance-switching-choose-instance.png)
+1. Choose the home icon, ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/running-terminals-kernels.png)\.
+
+1. Navigate to the instance that you're using and choose it\.
 
 1. Choose the instance type that you want to use\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/data-wrangler-instance-switching-list-instances.png)
@@ -43,12 +44,12 @@ You are charged for all running instances\. To avoid incurring additional charge
 
 To shut down a running instance\.
 
-1. Choose the instance icon on the left of the UI\. The following image shows you where to select the **RUNNING INSTANCES** icon\.  
+1. Choose the instance icon\. The following image shows you where to select the **RUNNING INSTANCES** icon\.  
 ![\[\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/instance-switching-running-instances.png)
 
 1. Choose **Shut down** next to the instance that you want to shut down\.
 
-If you shut down an instance used to run a flow, you temporarily can't access the flow\. If you get an error while attempting to open the flow running an instance you previously shut down, wait for five minutes and try opening it again\.
+If you shut down an instance used to run a flow, you temporarily can't access the flow\. If you get an error while attempting to open the flow running an instance you previously shut down, wait for 5 minutes and try opening it again\.
 
 When you export your data flow to a location such as Amazon Simple Storage Service or Amazon SageMaker Feature Store, Data Wrangler runs an Amazon SageMaker processing job\. You can use one of the following instances for the processing job\. For more information on exporting your data, see [Export](data-wrangler-data-export.md)\.
 
@@ -109,7 +110,7 @@ Use the following procedure to delete a step in the Data Wrangler flow\.
 
 1. Choose the icon next to the step\.
 
-1. Choose **Delete**\.  
+1. Choose **Delete step**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/delete-step-flow-1.png)
 
 ------
@@ -121,7 +122,7 @@ You can delete an individual step for nodes in your data flow that have a single
 
 1. Choose the step and open the table view for the step\.
 
-1. Move your cursor over the step\.
+1. Move your cursor over the step so the ellipsis icon appears\.
 
 1. Choose the icon next to the step\.
 
@@ -132,7 +133,10 @@ You can delete an individual step for nodes in your data flow that have a single
 
 ## Edit a Step in Your Data Wrangler Flow<a name="data-wrangler-data-flow-edit-step"></a>
 
-You can edit each step that you've added in your Data Wrangler flow\. Editing steps gives you the ability to change the transformations or the data types of the columns\. You can edit the steps to make changes that give you the ability to perform better analyses\.
+You can edit each step that you've added in your Data Wrangler flow\. By editing steps, you can change the transformations or the data types of the columns\. You can edit the steps to make changes with which you can perform better analyses\.
+
+**Important**  
+You can't currently edit a source node for SaaS data sources or Amazon Athena\.
 
 There are many ways that you can edit a step\. Some examples include changing the imputation method or changing the threshold for considering a value to be an outlier\.
 
@@ -147,6 +151,6 @@ To edit a step, do the following\.
 
 1. Edit the step\.
 
-The following is an example of editing a step\.
+The following image shows an example of editing a step\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/data-flow-table-edit-step.png)

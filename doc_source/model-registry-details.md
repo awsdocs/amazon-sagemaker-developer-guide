@@ -73,10 +73,9 @@ To view the details of a model version in Amazon SageMaker Studio, complete the 
 
 1. Sign in to Amazon SageMaker Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
-1. In the left navigation pane, choose the **SageMaker Resources** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png) \)\.
+1. In the left navigation pane, choose the **Home** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png) \)\.
 
-1. Choose **Model registry**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry/model-registry.png)
+1. Choose **Models**, and then **Model registry**\.
 
 1. From the model groups list, double\-click the model group you want to view\.
 
@@ -87,6 +86,10 @@ To view the details of a model version in Amazon SageMaker Studio, complete the 
 
 1. On the model version tab that opens, choose one of the following to see details about the model version:
    + **Activity**: Shows events for the model version, such as approval status updates\.
-   + **Metrics**: Shows quality metrics for the model\. For metrics to appear, you must enable data capture for your model by using SageMaker Model Monitor\. For information about capturing data, see [Capture data](model-monitor-data-capture.md)\.
+   + **Model quality**: Reports metrics related to your Model Monitor model quality checks, which compare model predictions to Ground Truth\. For more information about Model Monitor model quality checks, see [Monitor model quality](model-monitor-model-quality.md)\. 
+   + **Explainability**: Reports metrics related to your Model Monitor feature attribution checks, which compare the relative rankings of your features in training data versus live data\. For more information about Model Monitor explainability checks, see [Monitor Feature Attribution Drift for Models in Production](clarify-model-monitor-feature-attribution-drift.md)\.
+   + **Bias report**: Reports metrics related to your Model Monitor bias drift checks, which compare the distribution of live data to training data\. For more information about Model Monitor bias drift checks, see [Monitor Bias Drift for Models in Production](clarify-model-monitor-bias-drift.md)\.
+   + **Inference recommender**: Provides initial instance recommendations for optimal performance based on your model and sample payloads\.
+   + **Load test**: Runs load tests across your choice of instance types when you provide your specific production requirements, such as latency and throughput constraints\.
    + **Settings**: Shows information such as the project with which the model version is associated, the pipeline that generated the model, the model group, and the model's location in Amazon S3\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry/model-version-details.png)

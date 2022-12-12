@@ -169,6 +169,7 @@ For more information about IAM roles, see [IAM Roles](http://docs.aws.amazon.com
 + [CreateProcessingJob API: Execution Role Permissions](#sagemaker-roles-createprocessingjob-perms)
 + [CreateTrainingJob API: Execution Role Permissions](#sagemaker-roles-createtrainingjob-perms)
 + [CreateModel API: Execution Role Permissions](#sagemaker-roles-createmodel-perms)
++ [SageMaker geospatial capability roles](sagemaker-geospatial-roles.md)
 
 ## CreateAutoMLJob API: Execution Role Permissions<a name="sagemaker-roles-autopilot-perms"></a>
 
@@ -764,7 +765,7 @@ In the preceding policy, you scope the policy as follows:
 
 The `cloudwatch` and `logs` actions are applicable for "\*" resources\. For more information, see [CloudWatch Resources and Operations](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/iam-access-control-overview-cw.html#CloudWatch_ARN_Format) in the Amazon CloudWatch User Guide\.
 
-If you specify a private VPC for your processing job, add the following permissions:
+If you specify a private VPC for your processing job, add the following permissions\. Don't scope in the policy with any conditions or resource filters\. Otherwise, the validation checks that occur during the creation of the processing job fail\.
 
 ```
 {

@@ -6,11 +6,11 @@ The process to bring your own image to use with RStudio on SageMaker takes three
 
 1. Build a custom image from a Dockerfile and push it to a repository in Amazon Elastic Container Registry \(Amazon ECR\)\.
 
-1. Create a SageMaker image that points to a container image in Amazon ECR and attach it to your SageMaker domain\.
+1. Create a SageMaker image that points to a container image in Amazon ECR and attach it to your Amazon SageMaker Domain\.
 
 1. Launch a new session in RStudio with your custom image\.
 
-You can create images and image versions, and attach image versions to your domain, using the SageMaker control panel, the [AWS SDK for Python \(Boto3\)](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html), and the [AWS Command Line Interface \(AWS CLI\)](https://docs.aws.amazon.com/cli/latest/reference/sagemaker/)\. You can also create images and image versions using the SageMaker console, even if you haven't onboarded to a domain\.
+You can create images and image versions, and attach image versions to your Domain, using the SageMaker control panel, the [AWS SDK for Python \(Boto3\)](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html), and the [AWS Command Line Interface \(AWS CLI\)](https://docs.aws.amazon.com/cli/latest/reference/sagemaker/)\. You can also create images and image versions using the SageMaker console, even if you haven't onboarded to a Domain\.
 
 The following topics show how to bring your own image to RStudio on SageMaker by creating, attaching, and launching a custom image\.
 

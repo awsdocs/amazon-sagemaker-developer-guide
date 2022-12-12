@@ -75,15 +75,19 @@ When you add libraries to your environment following the steps in [Manage your e
 
 The following procedure shows how to import your artifacts to Studio from your GitHub repository\. 
 
-1.  Navigate to Studio\. 
+1.  Navigate to Amazon SageMaker Studio\.
 
-1.  From the Launcher, navigate to **Notebooks and compute resources**\. 
+1. In Studio, open the Launcher\. To open the Launcher, click on **Amazon SageMaker Studio** at the top\-left corner of Studio or use the keyboard shortcut `Ctrl + Shift + L`\.
 
-1.  For **Select a SageMaker Image**, select **Data Science**\. This image comes with Conda preinstalled\. 
+   To learn about all the available ways to open the Launcher, see [Use the Amazon SageMaker Studio Launcher](studio-launcher.md)\.
 
-1.  Select **Image Terminal**\. 
+1. On the Launcher, in the **Notebooks and compute resources** section, click the **Change environment** button\.
 
-1. From the image terminal, run the following command to clone your repository\. This command creates a directory named after `<REPOSITORY_NAME>` in your Studio instance\. After that, it clones your artifacts in that repository\. 
+1. On the **Change environment** dialog, use the dropdown menus to select the **Data Science** image and click **Select**\. This image comes with Conda preinstalled\. 
+
+1. Back to the Launcher, click **Open image terminal**\.
+
+1. From the image terminal, run the following command to clone your repository\. This command creates a directory named after `<REPOSITORY_NAME>` in your Studio instance\. After that, it clones your artifacts in that repository\.
 
    ```
    git clone https://github.com/<GITHUB_USERNAME>/<REPOSITORY_NAME>.git
@@ -91,9 +95,9 @@ The following procedure shows how to import your artifacts to Studio from your G
 
 ## Step 4 – Import your Studio Lab Conda environments in Studio<a name="studio-lab-use-migrate-step4"></a>
 
-After you’ve cloned your GitHub repository to your Studio instance, you can use the YAML files to recreate your Conda environments in Studio\.  
+After you have cloned your GitHub repository to your Studio instance, you can use the YAML files to recreate your Conda environments in Studio\. 
 
- For each Conda environment that you want to recreate, run the following commands\. 
+For each Conda environment that you want to recreate, run the following commands\. 
 
 ```
 conda env create --file /<PATH_TO_DIRECTORY>/<ENVIRONMENT_NAME>.yml
@@ -102,5 +106,5 @@ conda install ipykernel
 python -m ipykernel install
 ```
 
- After these commands are complete, you can select your environment as the kernel for your Studio notebook instances\. 
+ After these commands are complete, you can select your environment as the kernel for your Studio notebook instances\.
 

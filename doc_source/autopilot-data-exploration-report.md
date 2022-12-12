@@ -1,22 +1,32 @@
 # Amazon SageMaker Autopilot Data exploration report<a name="autopilot-data-exploration-report"></a>
 
-Amazon SageMaker Autopilot cleans and pre\-processes your dataset automatically\. High data quality enables more efficient machine learning and produces models that make more accurate predictions\. There are issues with customer\-provided datasets that cannot be fixed automatically without the benefit of some domain knowledge\. Large outlier values in the target column for regression problems, for example, may cause suboptimal predictions for the non\-outlier values\. Outliers may need to be removed depending on the modeling objective\. If a target column is included by accident as one of the input features, the final model will validate well, but be of little value for future predictions\. To help customers discover these sorts of issues, Autopilot provides a data exploration report that contains insights into potential issues with their data and suggests how to handle them\.
+Amazon SageMaker Autopilot cleans and pre\-processes your dataset automatically\. High\-quality data improves machine learning efficiency and produces models that make more accurate predictions\. 
 
-A data exploration notebook containing the report is generated for every Autopilot job that completes the pipeline recommendation step\. The report is stored in an S3 bucket and can be accessed from your output path\. The path of the data exploration report usually adheres to the following pattern: 
+There are issues with customer\-provided datasets that cannot be fixed automatically without the benefit of some domain knowledge\. Large outlier values in the target column for regression problems, for example, may cause suboptimal predictions for the non\-outlier values\. Outliers may need to be removed depending on the modeling objective\. If a target column is included by accident as one of the input features, the final model will validate well, but be of little value for future predictions\. 
+
+To help customers discover these sorts of issues, Autopilot provides a data exploration report that contains insights into potential issues with their data and suggests how to handle them\.
+
+A data exploration notebook containing the report is generated for every Autopilot job\. The report is stored in an Amazon S3 bucket and can be accessed from your output path\. The path of the data exploration report usually adheres to the following pattern\.
 
 ```
 [s3 output path]/[name of the automl job]/sagemaker-automl-candidates/[name of processing job used for data analysis]/notebooks/SageMakerAutopilotDataExplorationNotebook.ipynb
 ```
 
-The location of the data exploration notebook can be obtained from the Autopilot API using the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAutoMLJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAutoMLJob.html) operation response, stored in [DataExplorationNotebookLocation](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobArtifacts.html#sagemaker-Type-AutoMLJobArtifacts-DataExplorationNotebookLocation)\. 
+The location of the data exploration notebook can be obtained from the Autopilot API using the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAutoMLJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAutoMLJob.html) operation response, which is stored in [DataExplorationNotebookLocation](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobArtifacts.html#sagemaker-Type-AutoMLJobArtifacts-DataExplorationNotebookLocation)\. 
 
-When running Autopilot from SageMaker Studio, you can open the data exploration report by opening UI that describes the Autopilot job, and then selecting **Open data exploration notebook** from the Autopilot job description page\.
+When running Autopilot from SageMaker Studio, you can open the data exploration report using the following steps:
 
-![\[Autopilot job description page with Open data exploration notebook selected.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-open-data-exploration-notebook.png)
+1. Choose the **Home** icon ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png) from the *left navigation pane* to view the top\-level **Amazon SageMaker Studio** navigation menu\.
 
-The data exploration report is generated from your data before the training process begins\. This allows you to stop Autopilot jobs that might lead to meaningless results and address any issues or improvements with your dataset before rerunning Autopilot\. This gives you an opportunity to leverage your domain expertise to improve the data quality manually before training a model on a better curated dataset\.
+1. Select the **AutoML** card from the main working area\. This opens a new **Autopilot** tab\.
 
-The data report generated contains only static markdown and can be opened in any Jupyter environment\. The notebook that contains the report can be converted to other formats, such as PDF or HTML\. For more information on conversions, see [Using the nbconvert script to convert Jupyter notebooks to other formats\.](https://nbconvert.readthedocs.io/en/latest/usage.html )\.
+1. In the **Name** section, select the Autopilot job that has the data exploration notebook that you want to examine\. This opens a new **Autopilot job** tab\.
+
+1. Select **Open data exploration notebook** from the top right section of the **Autopilot job** tab\.
+
+The data exploration report is generated from your data before the training process begins\. This allows you to stop Autopilot jobs that might lead to meaningless results\. Likewise, you can address any issues or improvements with your dataset before rerunning Autopilot\. This way, you can use your domain expertise to improve the data quality manually, before you train a model on a better\-curated dataset\.
+
+The data report contains only static markdown and can be opened in any Jupyter environment\. The notebook that contains the report can be converted to other formats, such as PDF or HTML\. For more information about conversions, see [Using the nbconvert script to convert Jupyter notebooks to other formats\.](https://nbconvert.readthedocs.io/en/latest/usage.html )\.
 
 **Topics**
 + [Dataset Summary](#autopilot-data-exploration-report-dataset-summary)

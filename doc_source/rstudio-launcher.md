@@ -8,11 +8,11 @@
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1.  Navigate to the **Control Panel**\.
+1.  From the left navigation, select **RStudio**\.
 
-1.  After your user has been created, select **Launch app**\. 
+1.  Under **Get Started**, select the domain and user profile to launch\.
 
-1.  Select either **Studio** or **RStudio** to launch a new app of that type\. 
+1.  Choose **Launch RStudio**\.
 
 ### Open RStudio Launcher from the AWS CLI<a name="rstudio-launcher-cli"></a>
 

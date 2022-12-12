@@ -26,7 +26,7 @@ Use the following guidelines to achieve the best results when you run training j
 **Best Practices for PyTorch**
 + If you bring a PyTorch model and want to checkpoint it, make sure you use PyTorch/XLA's model save function to properly checkpoint your model\. For more information about the function, see [https://pytorch.org/xla/release/1.9/index.html#torch_xla.core.xla_model.save](https://pytorch.org/xla/release/1.9/index.html#torch_xla.core.xla_model.save) in the *PyTorch on XLA Devices documentation*\. 
 
-  To learn how to add the modifications to your PyTorch script, see [Using PyTorch \(without the Hugging Face Transformers Trainer API\)](training-compiler-pytorch-models.md#training-compiler-pytorch-models-non-trainer)\.
+  To learn how to add the modifications to your PyTorch script, see [Large Language Models Using PyTorch Directly \(without the Hugging Face Transformers Trainer API\)](training-compiler-pytorch-models.md#training-compiler-pytorch-models-non-trainer)\.
 
   For more information about the actual application of using the model save function, see [Checkpoint Writing and Loading](https://huggingface.co/blog/pytorch-xla#checkpoint-writing-and-loading) in the *Hugging Face on PyTorch/XLA TPUs: Faster and cheaper training blog*\.
 + To achieve the most optimal training time for distributed training, consider the following\.
@@ -34,9 +34,11 @@ Use the following guidelines to achieve the best results when you run training j
   + Use instances with EFA support such as `ml.p3dn.24xlarge` and `ml.p4d.24xlarge`\. These instance types have accelerated networking speed and reduce training time\.
   + Tune the `preprocessing_num_workers` parameter for datasets, so that model training is not delayed by slow preprocessing\.
 
-## Performance Considerations<a name="training-compiler-tips-pitfalls-considerations"></a>
+## Considerations<a name="training-compiler-tips-pitfalls-considerations"></a>
 
 Consider the following when using SageMaker Training Compiler\.
+
+### Performance degradation due to logging, checkpointing, and profiling<a name="training-compiler-considerations-performance-degradation"></a>
 + Avoid logging, checkpointing, and profiling model tensors that lead to explicit evaluations\. To understand what an explicit evaluation is, consider the following code compiling example\.
 
   ```
@@ -70,3 +72,12 @@ Consider the following when using SageMaker Training Compiler\.
 
   If you still want to periodically evaluate the model during training while using SageMaker Training Compiler, we recommend logging and checkpointing at a lower frequency to reduce overhead due to explicit evaluations\. For example, log every 10 epochs instead of every epoch\.
 + Graph compilation runs during the first few steps of training\. As a result, the first few steps are expected to be exceptionally slow\. However, this is a one\-time compilation cost and can be amortized by training for a longer duration because compilation makes future steps much faster\. The initial compilation overhead depends on the size of the model, the size of the input tensors, and the distribution of input tensor shapes\.
+
+### Incorrect use of the PyTorch/XLA APIs when using PyTorch directly<a name="training-compiler-considerations-incorrect-api-use"></a>
+
+PyTorch/XLA defines a set of APIs to replace some of the existing PyTorch training APIs\. Failing to use them properly leads PyTorch training to fail\.
++ One of the most typical errors when compiling a PyTorch model is due to a wrong device type for operators and tensors\. To properly compile a PyTorch model, make sure you use XLA devices \([https://pytorch.org/xla/release/1.9/index.html](https://pytorch.org/xla/release/1.9/index.html)\) instead of using CUDA or mixing CUDA devices and XLA devices\.
++ `mark_step()` is a barrier just for XLA\. Failing to set it correctly causes a training job to stall\.
++ PyTorch/XLA provides additional distributed training APIs\. Failing to program the APIs properly causes gradients to be collected incorrectly, which causes a training convergence failure\.
+
+To properly set up your PyTorch script and avoid the aforementioned incorrect API uses, see [Large Language Models Using PyTorch Directly \(without the Hugging Face Transformers Trainer API\)](training-compiler-pytorch-models.md#training-compiler-pytorch-models-non-trainer)\.

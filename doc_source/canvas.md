@@ -35,7 +35,6 @@ SageMaker Canvas is currently available in the following Regions: US East \(Ohio
 + [Logging out of Amazon SageMaker Canvas](canvas-log-out.md)
 + [Time Series Forecasts in Amazon SageMaker Canvas](canvas-time-series.md)
 + [Updating a Model in Amazon SageMaker Canvas](canvas-update-model.md)
-+ [Share your models with data scientists](canvas-collaborate.md)
 + [Manage billing and cost in SageMaker Canvas](canvas-manage-cost.md)
 
 ## Are you a first\-time SageMaker Canvas user?<a name="canvas-first-time-user"></a>

@@ -4,13 +4,13 @@ When you deploy a model from JumpStart, SageMaker hosts the model and deploys an
 
 ## Model deployment configuration<a name="jumpstart-config"></a>
 
-After you choose a model, the **Deploy Model** pane opens\. Choose **Deployment Configuration** to configure your model deployment\. 
+After you choose a model, the model's tab opens\. In the **Deploy Model** pane, choose **Deployment Configuration** to configure your model deployment\. 
 
- ![\[Deploy Model pane option to open settings for Deployment Configuration and Security Settings.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/jumpstart/jumpstart-deploy.png) 
+ ![\[Deploy Model pane option to open settings for SageMaker JumpStart Deployment Configuration and Security Settings.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/jumpstart/jumpstart-deploy.png) 
 
-The default instance type for deploying a model depends on the model\. The instance type is the hardware that the training job runs on\. In the following example, the `ml.g4dn.xlarge` instance is the default for this particular BERT model\. 
+The default instance type for deploying a model depends on the model\. The instance type is the hardware that the training job runs on\. In the following example, the `ml.p2.xlarge` instance is the default for this particular BERT model\. 
 
-You can also change the **Endpoint name**\. 
+You can also change the endpoint name, add `key;value` resource tags, activate or deactive the `jumpstart-` prefix for any JumpStart resources related to the model, and specify an Amazon S3 bucket for storing model artifacts used by your SageMaker endpoint\.
 
  ![\[JumpStart Deploy Model pane with Deployment Configuration open to select its settings.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/jumpstart/jumpstart-deploy-config.png) 
 

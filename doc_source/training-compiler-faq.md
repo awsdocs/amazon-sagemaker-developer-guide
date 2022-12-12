@@ -37,7 +37,7 @@ No, not necessarily\. First, SageMaker Training Compiler adds some compilation o
 
 Additionally, as with any model training process, training with suboptimal parameters can increase training time\. SageMaker Training Compiler can change the characteristics of the training job by, for example, changing the memory footprint of the job\. Because of these differences, you might need to retune your training job parameters to speed up training\. A reference table specifying the best performing parameters for training jobs with different instance types and models can be found at [Tested Models](training-compiler-support.md#training-compiler-tested-models)\.
 
-Finally, some code in a training script might add additional overhead or disrupt the compiled computation graph and slow training\. If working with a customized or untested model, see the instructions at [Best Practices to Enable SageMaker Training Compiler for PyTorch without the Hugging Face Trainer API](training-compiler-pytorch-models.md#training-compiler-pytorch-models-best-practices)\.
+Finally, some code in a training script might add additional overhead or disrupt the compiled computation graph and slow training\. If working with a customized or untested model, see the instructions at [Best Practices to Use SageMaker Training Compiler with PyTorch/XLA](training-compiler-pytorch-models.md#training-compiler-pytorch-models-best-practices)\.
 
 **Q\. Can I always use a larger batch size with SageMaker Training Compiler? **
 

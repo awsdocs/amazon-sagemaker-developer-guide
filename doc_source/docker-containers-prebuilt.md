@@ -10,5 +10,6 @@ For information on Docker images for developing reinforcement learning \(RL\) so
 **Topics**
 + [Prebuilt SageMaker Docker Images for Deep Learning](pre-built-containers-frameworks-deep-learning.md)
 + [Prebuilt Amazon SageMaker Docker Images for Scikit\-learn and Spark ML](pre-built-docker-containers-scikit-learn-spark.md)
++ [Docker Registry Paths and Example Code](sagemaker-algo-docker-registry-paths.md)
 + [Train a Deep Graph Network](deep-graph-library.md)
 + [Extend a Prebuilt Container](prebuilt-containers-extend.md)

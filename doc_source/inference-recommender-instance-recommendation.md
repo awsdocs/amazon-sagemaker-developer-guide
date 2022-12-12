@@ -77,9 +77,11 @@ aws sagemaker create-inference-recommendations-job
 
 Create an instance recommendation job in Studio\.
 
-1. In the left sidebar of Amazon SageMaker, choose the **Components and registries** icon\.
+1. In your Studio application, choose the home icon \(![\[Home icon in Studio\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
 
-1. Select **Model Registry** from the dropdown list to display models you have registered with the model registry\.
+1. In the left sidebar of Studio, choose **Models**\.
+
+1. Choose **Model Registry** from the dropdown list to display models you have registered with the model registry\.
 
    The left panel displays a list of model groups\. The list includes all the model groups registered with the model registry in your account, including models registered outside of Studio\.
 

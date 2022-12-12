@@ -18,6 +18,9 @@ The following table of potential use cases shows different behaviors resulting f
 | You are initiating the pipeline to retrain a new model version because there is a violation detected by Amazon SageMaker Model Monitor on an endpoint for a particular type of check, and you want to *skip this type of check against the previous baseline, but carry over the previous baseline as `DriftCheckBaselines` in the model registry* for your new model version\. | True/ False | No drift check | New baselines calculated by running | Baseline from the latest approved model in the model registry or the baseline supplied as step parameter | 
 | This happens in the following cases: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-quality-clarify-baseline-lifecycle.html)  | True/ True | No drift check | New baselines calculated by running the step | Newly calculated baseline by running the step \(value of property CalculatedBaseline\) | 
 
+**Note**  
+If you use scientific notation in your constraint, you need to convert to float\. For a preprocessing script example of how to do this, see [Create a Model Quality Baseline](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-baseline.html)\.
+
 When you register a model with [Model Step](build-and-manage-steps.md#step-type-model), you can register the `BaselineUsedForDriftCheck` property as `DriftCheckBaselines`\. These baseline files can then be used by Model Monitor for model and data quality checks\. In addition, these baselines can also be used in the ClarifyCheckStep and `QualityCheck` step to compare newly trained models against the existing models that are registered in the model registry for future pipeline runs\.
 
 ## Drift Detection against Previous Baselines in SageMaker Pipelines<a name="pipelines-quality-clarify-baseline-drift-detection"></a>

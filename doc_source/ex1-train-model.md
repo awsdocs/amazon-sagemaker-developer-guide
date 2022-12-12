@@ -74,7 +74,7 @@ If you run this installation in your exiting SageMaker Studio or notebook instan
    + `sagemaker_session` – The session object that manages interactions with SageMaker API operations and other AWS service that the training job uses\.
    + `rules` – Specify a list of SageMaker Debugger built\-in rules\. In this example, the `create_xgboost_report()` rule creates an XGBoost report that provides insights into the training progress and results\. For more information, see [SageMaker Debugger XGBoost Training Report](debugger-training-xgboost-report.md)\.
 **Tip**  
-If you want to run distributed training of large sized deep learning models, such as convolutional neural networks \(CNN\) and natural language processing \(NLP\) models, use SageMaker Distributed for data parallelism or model parallelism\. For more information, see [Amazon SageMaker Distributed Training Libraries](distributed-training.md)\.
+If you want to run distributed training of large sized deep learning models, such as convolutional neural networks \(CNN\) and natural language processing \(NLP\) models, use SageMaker Distributed for data parallelism or model parallelism\. For more information, see [Distributed Training in Amazon SageMaker](distributed-training.md)\.
 
 1. Set the hyperparameters for the XGBoost algorithm by calling the `set_hyperparameters` method of the estimator\. For a complete list of XGBoost hyperparameters, see [XGBoost Hyperparameters](xgboost_hyperparameters.md)\.
 

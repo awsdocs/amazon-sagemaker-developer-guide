@@ -87,7 +87,7 @@ The following shows how to attach a lifecycle configuration to your existing use
 
 ## Step 3: Launch an application with the Lifecycle Configuration<a name="studio-lcc-create-console-step3"></a>
 
-After you attach a lifecycle configuration to a user profile, the user can select it when launching an application using the Studio Launcher\. The following sections describe how to launch an application with an attached lifecycle configuration\.
+After you attach a lifecycle configuration to a user profile, the user can select it when launching an application using the Studio Launcher\. The following procedure describes how to launch an application with an attached lifecycle configuration\.
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
@@ -95,11 +95,13 @@ After you attach a lifecycle configuration to a user profile, the user can selec
 
 1. In the launcher, navigate to the **Notebooks and compute resources** section\. 
 
-1. Select a SageMaker image\.
+1. Click the **Change environment** button\.
 
-1. Select a start\-up script\. If there is no default lifecycle configuration, this value defaults to `No script`\. Otherwise, this value is equal to your default lifecycle configuration\. After you select a lifecycle configuration, you can view the entire script\.
+1. On the **Change environment** dialog, use the dropdown menus to select your **Image**, **Kernel**, **Instance type**, and a **Start\-up script**\. If there is no default lifecycle configuration, the Start\-up script value defaults to `No script`\. Otherwise, the Start\-up script value is your default lifecycle configuration\. After you select a lifecycle configuration, you can view the entire script\.
 
-1. Choose **Notebook** to launch a new notebook kernel with your selected image and lifecycle configuration\.
+1. Click **Select**\.
+
+1. Back to the Launcher, click the **Create notebook** to launch a new notebook kernel with your selected image and lifecycle configuration\.
 
 ## Step 4: View logs for a Lifecycle Configuration<a name="studio-lcc-create-console-step4"></a>
 
@@ -107,7 +109,7 @@ You can view the logs for your lifecycle configuration after it has been attache
 
 1. First, provide access to CloudWatch for your AWS Identity and Access Management \(IAM\) role\. Add read permissions for the following log group `/aws/sagemaker/studio` and for the following log stream `<Domain>/<UserProfile>/<AppType>/<AppName>/LifecycleConfigOnStart`\. For information about adding permissions, see [Enabling logging from certain AWS services](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html)\.
 
-1. From within Studio, navigate to the `Running instances` ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Running_squid@2x.png) tab to monitor your lifecycle configuration\. 
+1. From within Studio, navigate to the **Running Terminals and Kernels** ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/running-terminals-kernels.png) icon to monitor your lifecycle configuration\.
 
 1. Select an application from the list of running applications\. Applications with attached lifecycle configurations have an attached indicator icon ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-lcc-indicator-icon.png)\.
 

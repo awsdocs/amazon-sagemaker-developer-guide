@@ -13,9 +13,9 @@ You can only delete projects in Studio that you have created\. This condition is
 
 1. Sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
-1. In the Studio sidebar, choose the **SageMaker resources** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png)\)\.
+1. In the Studio sidebar, choose the **Home** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
 
-1. Select **Projects** from the dropdown list\.
+1. Select **Deployments** from the menu, and then select **Projects**\.
 
 1. Select the target project from the dropdown list\. If you don’t see your project, type the project name and apply the filter to find your project\.
 

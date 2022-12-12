@@ -4,15 +4,19 @@
 
 ## Prerequisites<a name="studio-tensorboard-prereq"></a>
 
-This tutorial requires an Amazon SageMaker Studio Domain\. 
+This tutorial requires an Amazon SageMaker Studio Domain\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)
 
 ## Set Up `TensorBoardCallback`<a name="studio-tensorboard-setup"></a>
 
-1. Launch Studio\. 
+1. Launch Studio, and open the Launcher\. For more information, see [Use the Amazon SageMaker Studio Launcher](studio-launcher.md)
 
-1. In the Amazon SageMaker Studio Launcher under `Notebooks and compute resources`, select the `TensorFlow 2.3 Python 3.7(optimized for CPU)` Studio Image\. 
+1. In the Amazon SageMaker Studio Launcher, under `Notebooks and compute resources`, choose the **Change environment** button\.
 
-1. Launch a notebook to run the commands in the following steps\. You run these commands from within a notebook cell\.
+1. On the **Change environment** dialog, use the dropdown menus to select the `TensorFlow 2.3 Python 3.7(optimized for CPU)` Studio **Image**\.
+
+1. Back to the Launcher, click the **Create notebook** tile\. Your notebook launches and opens in a new Studio tab\.
+
+1. Run this code from within your notebook cells\.
 
 1. Import the required packages\. 
 
@@ -22,7 +26,7 @@ This tutorial requires an Amazon SageMaker Studio Domain\.
    import tensorflow as tf
    ```
 
-1. Create your Keras model\. 
+1. Create a Keras model\.
 
    ```
    mnist = tf.keras.datasets.mnist
@@ -39,13 +43,13 @@ This tutorial requires an Amazon SageMaker Studio Domain\.
      ])
    ```
 
-1. Create a directory for your TensorBoard logs 
+1. Create a directory for your TensorBoard logs
 
    ```
    LOG_DIR = os.path.join(os.getcwd(), "logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
    ```
 
-1. Run training with TensorBoard\. 
+1. Run training with TensorBoard\.
 
    ```
    model = create_model()
@@ -70,11 +74,13 @@ This tutorial requires an Amazon SageMaker Studio Domain\.
    print (EFS_PATH_LOG_DIR)
    ```
 
+   Retrieve the `EFS_PATH_LOG_DIR`\. You will need it in the TensorBoard installation section\.
+
 ## Install TensorBoard<a name="studio-tensorboard-install"></a>
 
-1. Click on the  `Amazon SageMaker Studio` button on the top left corner of Studio to open the Amazon SageMaker Studio Launcher\. This launcher must be opened from your root directory\. 
+1. Click on the  `Amazon SageMaker Studio` button on the top left corner of Studio to open the Amazon SageMaker Studio Launcher\. This launcher must be opened from your root directory\. For more information, see [Use the Amazon SageMaker Studio Launcher](studio-launcher.md)
 
-1. In the Launcher under `Utilities and files`, click `System terminal`\. 
+1. In the Launcher, under `Utilities and files`, click `System terminal`\. 
 
 1. From the terminal, run the following commands\. Copy `EFS_PATH_LOG_DIR` from the Jupyter notebook\. You must run this from the `/home/sagemaker-user` root directory\.
 

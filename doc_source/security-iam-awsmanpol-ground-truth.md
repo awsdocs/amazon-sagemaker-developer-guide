@@ -233,8 +233,8 @@ View details about updates to AWS managed policies for Amazon SageMaker Ground T
 
 | Policy | Version | Change | Date | 
 | --- | --- | --- | --- | 
-|  [GroundTruthSyntheticConsoleFullAccess](#security-iam-awsmanpol-gts-GroundTruthSyntheticConsoleFullAccess)  | 1 |  Initial policy  | August 25, 2022 | 
-|  [GroundTruthSyntheticConsoleReadOnlyAccess](#security-iam-awsmanpol-gts-GroundTruthSyntheticConsoleReadOnlyAccess)  | 1 |  Initial policy  | August 25, 2022 | 
-|  [AmazonSageMakerGroundTruthExecution](#security-iam-awsmanpol-gt-AmazonSageMakerGroundTruthExecution)  | 3 |  Add `ec2:CreateVpcEndpoint`, `ec2:DescribeVpcEndpoints`, and `ec2:DeleteVpcEndpoints` permissions\.  | April 29, 2022 | 
-| AmazonSageMakerGroundTruthExecution | 2 |  Remove `sqs:SendMessageBatch` permission\.  | April 11, 2022 | 
-| AmazonSageMakerGroundTruthExecution | 1 |  Initial policy  | July 20, 2020 | 
+|  [GroundTruthSyntheticConsoleFullAccess](#security-iam-awsmanpol-gts-GroundTruthSyntheticConsoleFullAccess) \- New policy  | 1 |  Initial policy  | August 25, 2022 | 
+|  [GroundTruthSyntheticConsoleReadOnlyAccess](#security-iam-awsmanpol-gts-GroundTruthSyntheticConsoleReadOnlyAccess) \- New policy  | 1 |  Initial policy  | August 25, 2022 | 
+|  [AmazonSageMakerGroundTruthExecution](#security-iam-awsmanpol-gt-AmazonSageMakerGroundTruthExecution) \- Update to an existing policy  | 3 |  Add `ec2:CreateVpcEndpoint`, `ec2:DescribeVpcEndpoints`, and `ec2:DeleteVpcEndpoints` permissions\.  | April 29, 2022 | 
+| AmazonSageMakerGroundTruthExecution \- Update to an existing policy | 2 |  Remove `sqs:SendMessageBatch` permission\.  | April 11, 2022 | 
+| AmazonSageMakerGroundTruthExecution \- New policy | 1 |  Initial policy  | July 20, 2020 | 

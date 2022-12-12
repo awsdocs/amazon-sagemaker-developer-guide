@@ -18,10 +18,10 @@ SageMaker JumpStart provides processing tools for curating industry datasets and
 ## Amazon SageMaker JumpStart Industry: Financial Solution<a name="studio-jumpstart-industry-solutions"></a>
 
 SageMaker JumpStart Industry: Financial provides the following solution notebooks:
-+ **Corporate Credit Rating Prediction – Financial Services**
++ **Corporate Credit Rating Prediction**
 
-This SageMaker JumpStart Industry: Financial solution provides a template for a text\-enhanced corporate credit rating model\. It shows how to take a model based on numeric features \(in this case, Altman's famous 5 financial ratios\) combined with texts from SEC filings to achieve an improvement in the prediction of credit ratings\. In addition to the 5 Altman ratios, you can add more variables as needed or set custom variables\. This solution notebook shows how SageMaker JumpStart Industry Python SDK helps process NLP scoring of texts from SEC filings\. Furthermore, the solution demonstrates how to train a model using the enhanced dataset to achieve a best\-in\-class model, deploy the model to a SageMaker endpoint for production, and receive improved predictions in real time\.
-+ **Graph\-Based Credit Scoring – Financial Services**
+This SageMaker JumpStart Industry: Financial solution provides a template for a text\-enhanced corporate credit rating model\. It shows how to take a model based on numeric features \(in this case, Altman's famous 5 financial ratios\) combined with texts from SEC filings to achieve an improvement in the prediction of credit ratings\. In addition to the 5 Altman ratios, you can add more variables as needed or set custom variables\. This solution notebook shows how SageMaker JumpStart Industry Python SDK helps process Natural Language Processing \(NLP\) scoring of texts from SEC filings\. Furthermore, the solution demonstrates how to train a model using the enhanced dataset to achieve a best\-in\-class model, deploy the model to a SageMaker endpoint for production, and receive improved predictions in real time\.
++ **Graph\-Based Credit Scoring **
 
 Credit ratings are traditionally generated using models that use financial statement data and market data, which is tabular only \(numeric and categorical\)\. This solution constructs a network of firms using [SEC filings](https://www.sec.gov/edgar/searchedgar/companysearch.html)and shows how to use the network of firm relationships with tabular data to generate accurate rating predictions\. This solution demonstrates a methodology to use data on firm linkages to extend the traditionally tabular\-based credit scoring models, which have been used by the ratings industry for decades, to the class of machine learning models on networks\.
 
@@ -36,14 +36,14 @@ The SageMaker JumpStart Industry: Financial solutions, model cards, and example 
 ## Amazon SageMaker JumpStart Industry: Financial Models<a name="studio-jumpstart-industry-models"></a>
 
 SageMaker JumpStart Industry: Financial provides the following pretrained [Robustly Optimized BERT approach \(RoBERTa\)](https://arxiv.org/pdf/1907.11692.pdf) models:
-+ **RoBERTa\-SEC\-Base **
++ **Financial Text Embedding \(RoBERTa\-SEC\-Base\) **
 + **RoBERTa\-SEC\-WIKI\-Base **
 + **RoBERTa\-SEC\-Large **
 + **RoBERTa\-SEC\-WIKI\-Large **
 
-The RoBERTa\-SEC\-Base and RoBERTa\-SEC\-Large models are the text embedding models based on [GluonNLP's RoBERTa model](https://nlp.gluon.ai/api/model.html#gluonnlp.model.RoBERTaModel) and pre\-trained on S&P 500 SEC 10\-K/10\-Q reports of the decade of the 2010's \(from 2010 to 2019\)\. In addition to these, SageMaker JumpStart Industry: Financial provides two more RoBERTa variations, RoBERTa\-SEC\-WIKI\-Base and RoBERTa\-SEC\-WIKI\-Large, which are pretrained on the SEC filings and common texts of Wikipedia\. 
+The RoBERTa\-SEC\-Base and RoBERTa\-SEC\-Large models are the text embedding models based on [GluonNLP's RoBERTa model](https://nlp.gluon.ai/api/model.html#gluonnlp.model.RoBERTaModel) and pretrained on S&P 500 SEC 10\-K/10\-Q reports of the decade of the 2010's \(from 2010 to 2019\)\. In addition to these, SageMaker JumpStart Industry: Financial provides two more RoBERTa variations, RoBERTa\-SEC\-WIKI\-Base and RoBERTa\-SEC\-WIKI\-Large, which are pretrained on the SEC filings and common texts of Wikipedia\. 
 
-By deploying the model cards through SageMaker JumpStart, you'll be able to access their corresponding notebooks\. The paired notebooks will walk you through how the pretrained models can be fine\-tuned for specific classification tasks on multimodal datasets, which are enhanced by the SageMaker JumpStart Industry Python SDK\.
+You can find these models in SageMaker JumpStart by navigating to the **Text Models** node, choosing **Explore All Text Models**, and then filtering for the ML Task **Text Embedding**\. You can access any corresponding notebooks after selecting the model of your choice\. The paired notebooks will walk you through how the pretrained models can be fine\-tuned for specific classification tasks on multimodal datasets, which are enhanced by the SageMaker JumpStart Industry Python SDK\.
 
 **Note**  
 The model notebooks are for demonstration purposes only\. They should not be relied on as financial or investment advice\.
@@ -57,17 +57,13 @@ The SageMaker JumpStart Industry: Financial solutions, model cards, and example 
 
 ## Amazon SageMaker JumpStart Industry: Financial Example Notebooks<a name="studio-jumpstart-industry-examples"></a>
 
-SageMaker JumpStart Industry: Financial provides the following hands\-on examples of solving industry\-focused ML problems:
-+ **SEC Filings Retrieval w/ Summarizer and Scoring** – This example introduces how to use the SageMaker JumpStart Industry Python SDK for processing the SEC filings, such as text summarization and scoring texts based on NLP score types and their corresponding word lists\. To preview the content of this notebook, see [Simple Construction of a Multimodal Dataset from SEC Filings and NLP Scores](https://sagemaker-jumpstart-industry-pack.readthedocs.io/en/latest/notebooks/finance/notebook1/SEC_Retrieval_Summarizer_Scoring.html)
-+ **ML on a TabText \(Multimodal\) Dataset** – This example shows how to merge different types of datasets into a single dataframe called TabText and perform multimodal ML\. To preview the content of this notebook, see [Machine Learning on a TabText Dataframe – An Example Based on the Paycheck Protection Program](https://sagemaker-jumpstart-industry-pack.readthedocs.io/en/latest/notebooks/finance/notebook2/PPP_TabText_ML.html)
-+ **Multi\-category ML on SEC filings data** – This example shows how to train an AutoGluon NLP model over the multimodal \(TabText\) datasets curated from SEC filings for a multiclass classification task\. [Classify SEC 10K/Q Filings to Industry Codes Based on the MDNA Text Column](https://sagemaker-jumpstart-industry-pack.readthedocs.io/en/latest/notebooks/finance/notebook3/SEC_MNIST_ML.html)
+SageMaker JumpStart Industry: Financial provides the following example notebooks to demonstrate solutions to industry\-focused ML problems:
++ **Financial TabText Data Construction** – This example introduces how to use the SageMaker JumpStart Industry Python SDK for processing the SEC filings, such as text summarization and scoring texts based on NLP score types and their corresponding word lists\. To preview the content of this notebook, see [Simple Construction of a Multimodal Dataset from SEC Filings and NLP Scores](https://sagemaker-jumpstart-industry-pack.readthedocs.io/en/latest/notebooks/finance/notebook1/SEC_Retrieval_Summarizer_Scoring.html)\.
++ **Multimodal ML on TabText Data** – This example shows how to merge different types of datasets into a single dataframe called TabText and perform multimodal ML\. To preview the content of this notebook, see [Machine Learning on a TabText Dataframe – An Example Based on the Paycheck Protection Program](https://sagemaker-jumpstart-industry-pack.readthedocs.io/en/latest/notebooks/finance/notebook2/PPP_TabText_ML.html)\.
++ **Multi\-category ML on SEC filings data** – This example shows how to train an AutoGluon NLP model over the multimodal \(TabText\) datasets curated from SEC filings for a multiclass classification task\. [Classify SEC 10K/Q Filings to Industry Codes Based on the MDNA Text Column](https://sagemaker-jumpstart-industry-pack.readthedocs.io/en/latest/notebooks/finance/notebook3/SEC_MNIST_ML.html)\.
 
 **Note**  
 The example notebooks are for demonstrative purposes only\. They should not be relied on as financial or investment advice\.
-
-The following screenshot shows the example notebook cards provided through the SageMaker JumpStart page on Studio\.
-
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/jumpstart/jumpstart-finance-examples.png)
 
 **Note**  
 The SageMaker JumpStart Industry: Financial solutions, model cards, and example notebooks are hosted and runnable only through SageMaker Studio\. Log in to the [SageMaker console](https://console.aws.amazon.com/sagemaker), and launch SageMaker Studio\. For more information about how to find the example notebooks, see the previous topic at [SageMaker JumpStart](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html)\.

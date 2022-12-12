@@ -11,6 +11,9 @@ Before you can use autoscaling, you must have already created a SageMaker model 
 
  For details on other prerequisites and components used with autoscaling, see the [Prerequisites](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling-prerequisites.html) section in the SageMaker autoscaling documentation\.
 
+**Note**  
+If you attach multiple scaling policies to the same autoscaling group, you might have scaling conflicts\. When a conflict occurs, Amazon EC2 Auto Scaling chooses the policy that provisions the largest capacity for both scale out and scale in\. For more information about this behavior, see [Multiple dynamic scaling policies](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html#multiple-scaling-policy-resolution) in the *Amazon EC2 Auto Scaling documentation*\.
+
 ## Define a Scaling Policy<a name="async-inference-autoscale-define-async"></a>
 
 To specify the metrics and target values for a scaling policy, you configure a target\-tracking scaling policy\. Define the scaling policy as a JSON block in a text file\. You use that text file when invoking the AWS CLI or the Application Auto Scaling API\. For more information about policy configuration syntax, see [https://docs.aws.amazon.com/autoscaling/application/APIReference/API_TargetTrackingScalingPolicyConfiguration.html](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_TargetTrackingScalingPolicyConfiguration.html) in the Application Auto Scaling API Reference\.

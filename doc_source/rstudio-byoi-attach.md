@@ -1,32 +1,36 @@
 # Attach a custom SageMaker image<a name="rstudio-byoi-attach"></a>
 
-This guide shows how to attach a custom RStudio image to your domain using the SageMaker console or the AWS Command Line Interface \(AWS CLI\)\. 
+This guide shows how to attach a custom RStudio image to your Amazon SageMaker Domain using the SageMaker console or the AWS Command Line Interface \(AWS CLI\)\. 
 
-To use a custom SageMaker image, you must attach a custom RStudio image to your domain\. When you attach an image version, it appears in the RStudio Launcher and is available in the **Select image** dropdown list\. You use the dropdown to change the image used by RStudio\.
+To use a custom SageMaker image, you must attach a custom RStudio image to your Domain\. When you attach an image version, it appears in the RStudio Launcher and is available in the **Select image** dropdown list\. You use the dropdown to change the image used by RStudio\.
 
 There is a limit to the number of image versions that you can attach\. After you reach the limit, you must first detach a version so that you can attach a different version of the image\.
 
 **Topics**
-+ [Attach an image version to your domain using the console](#rstudio-byoi-attach-console)
-+ [Attach an existing image version to your domain using the AWS CLI](#rstudio-byoi-attach-cli)
++ [Attach an image version to your Domain using the console](#rstudio-byoi-attach-console)
++ [Attach an existing image version to your Domain using the AWS CLI](#rstudio-byoi-attach-cli)
 
-## Attach an image version to your domain using the console<a name="rstudio-byoi-attach-console"></a>
+## Attach an image version to your Domain using the console<a name="rstudio-byoi-attach-console"></a>
 
-You can attach a custom SageMaker image version to your domain using the SageMaker console's control panel\. You can also create a custom SageMaker image, and an image version, and then attach that version to your domain\.
+You can attach a custom SageMaker image version to your Domain using the SageMaker console's control panel\. You can also create a custom SageMaker image, and an image version, and then attach that version to your Domain\.
 
 **To attach an existing image**
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1. In the left navigation pane, choose **Control panel**\.
+1. In the left navigation pane, choose **Domains**\.
 
-1. On the **SageMaker Control Panel**, under **Custom SageMaker Studio images attached to domain**, choose **Attach image**\.
+1. Select the desired Domain\.
+
+1. Choose **Environment**\.
+
+1. Under **Custom SageMaker Studio images attached to domain**, choose **Attach image**\.
 
 1. For **Image source**, choose **Existing image** or **New image**\.
 
    If you select **Existing image**, choose an image from the Amazon SageMaker image store\.
 
-   If you select **New image**, provide the Amazon ECR registry path for your Docker image\. The path must be in the same AWS Region as the domain\. The Amazon ECR repo must be in the same account as your domain, or cross\-account permissions for SageMaker must be enabled\.
+   If you select **New image**, provide the Amazon ECR registry path for your Docker image\. The path must be in the same AWS Region as the Domain\. The Amazon ECR repo must be in the same account as your Domain, or cross\-account permissions for SageMaker must be enabled\.
 
 1. Choose an existing image from the list\.
 
@@ -46,27 +50,24 @@ You can attach a custom SageMaker image version to your domain using the SageMak
 
 1. Choose **Submit**\.
 
-Wait for the image version to be attached to the domain\. After the version is attached, it appears in the **Custom images** list and is briefly highlighted\.
+Wait for the image version to be attached to the Domain\. After the version is attached, it appears in the **Custom images** list and is briefly highlighted\.
 
-## Attach an existing image version to your domain using the AWS CLI<a name="rstudio-byoi-attach-cli"></a>
+## Attach an existing image version to your Domain using the AWS CLI<a name="rstudio-byoi-attach-cli"></a>
 
-Two methods are presented to attach the image version to your domain using the AWS CLI\. In the first method, you create a new domain with the version attached\. This method is simpler but you must specify the Amazon Virtual Private Cloud \(Amazon VPC\) information and execution role that's required to create the domain\.
+Two methods are presented to attach the image version to your Domain using the AWS CLI\. In the first method, you create a new Domain with the version attached\. This method is simpler but you must specify the Amazon Virtual Private Cloud \(Amazon VPC\) information and execution role that's required to create the Domain\.
 
-If you have already onboarded to the SageMaker domain, you can use the second method to attach the image version to your current domain\. In this case, you don't need to specify the Amazon VPC information and execution role\. After you attach the version, delete all of the applications in your domain and relaunch RStudio\.
+If you have already onboarded to the Domain, you can use the second method to attach the image version to your current Domain\. In this case, you don't need to specify the Amazon VPC information and execution role\. After you attach the version, delete all of the applications in your Domain and relaunch RStudio\.
 
-### Attach the SageMaker image to a new domain<a name="rstudio-byoi-cli-attach-new-domain"></a>
+### Attach the SageMaker image to a new Domain<a name="rstudio-byoi-cli-attach-new-domain"></a>
 
 To use this method, you must specify an execution role that has the [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) policy attached\.
 
-**Note**  
-You can have only one domain\. If you have onboarded to a SageMaker domain, you must delete your current domain before you can use this method\. For more information, see [Delete an Amazon SageMaker Domain](gs-studio-delete-domain.md)\.
-
-Use the following steps to create the domain and attach the custom SageMaker image:
+Use the following steps to create the Domain and attach the custom SageMaker image:
 + Get your default VPC ID and subnet IDs\.
-+ Create the configuration file for the domain, which specifies the image\.
-+ Create the domain with the configuration file\.
++ Create the configuration file for the Domain, which specifies the image\.
++ Create the Domain with the configuration file\.
 
-**To add the custom SageMaker image to your domain**
+**To add the custom SageMaker image to your Domain**
 
 1. Get your default VPC ID\.
 
@@ -129,7 +130,7 @@ Use the following steps to create the domain and attach the custom SageMaker ima
    }
    ```
 
-1. Create the domain with the attached custom SageMaker image\.
+1. Create the Domain with the attached custom SageMaker image\.
 
    ```
    aws sagemaker create-domain \
@@ -140,34 +141,37 @@ Use the following steps to create the domain and attach the custom SageMaker ima
 
    ```
    {
-       "DomainArn": "arn:aws:sagemaker:us-east-2:acct-id:domain/d-xxxxxxxxxxxx",
-       "Url": "https://d-xxxxxxxxxxxx.studio.us-east-2.sagemaker.aws/..."
+       "DomainArn": "arn:aws:sagemaker:region:acct-id:domain/domain-id",
+       "Url": "https://domain-id.studio.region.sagemaker.aws/..."
    }
    ```
 
-### Attach the SageMaker image to an existing domain<a name="rstudio-byoi-cli-attach-current-domain"></a>
+### Attach the SageMaker image to an existing Domain<a name="rstudio-byoi-cli-attach-current-domain"></a>
 
-This method assumes that you've already onboarded to Amazon SageMaker domain\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
+This method assumes that you've already onboarded to Domain\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
 **Note**  
-You must delete all of the applications in your domain before you update the domain with the new image version\. For information about deleting these applications, see [Delete an Amazon SageMaker Domain](gs-studio-delete-domain.md)\.
+You must delete all of the applications in your Domain to update the Domain with the new image version\. For information about deleting these applications, see [Delete an Amazon SageMaker Domain](gs-studio-delete-domain.md)\.
 
-Use the following steps to add the SageMaker image to your current domain\.
+Use the following steps to add the SageMaker image to your current Domain\.
 + Get your `DomainID` from the SageMaker console\.
-+ Use the `DomainID` to get the `DefaultUserSettings` for the domain\.
++ Use the `DomainID` to get the `DefaultUserSettings` for the Domain\.
 + Add the `ImageName` and `AppImageConfig` as a `CustomImage` to the `DefaultUserSettings`\.
-+ Update your domain to include the custom image\.
++ Update your Domain to include the custom image\.
 
-**To add the custom SageMaker image to your domain**
+**To add the custom SageMaker image to your Domain**
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1. From the left navigation pane, choose **Control panel**\.
+1. From the left navigation pane, choose **Domains**\.
 
-1. From the **Control panel**, under **Domain**, find the **Domain ID**\. The ID is in the following format: `d-xxxxxxxxxxxx`\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-byoi-id.png)
+1. Select the desired Domain\.
 
-1. Use the domain ID to get the description of the domain\.
+1. Choose **Domain settings**\.
+
+1. Under **General Settings**, find the **Domain ID**\. The ID is in the following format: `d-xxxxxxxxxxxx`\.
+
+1. Use the Domain ID to get the description of the Domain\.
 
    ```
    aws sagemaker describe-domain \
@@ -208,7 +212,7 @@ Use the following steps to add the SageMaker image to your current domain\.
    }
    ```
 
-1. Use the domain ID and default user settings file to update your domain\.
+1. Use the Domain ID and default user settings file to update your Domain\.
 
    ```
    aws sagemaker update-domain \
@@ -220,7 +224,7 @@ Use the following steps to add the SageMaker image to your current domain\.
 
    ```
    {
-       "DomainArn": "arn:aws:sagemaker:us-east-2:acct-id:domain/d-xxxxxxxxxxxx"
+       "DomainArn": "arn:aws:sagemaker:region:acct-id:domain/domain-id"
    }
    ```
 

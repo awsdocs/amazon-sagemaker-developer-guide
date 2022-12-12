@@ -6,17 +6,17 @@ To set up Amazon SageMaker Canvas, do the following:
 + Set up Okta Single Sign On \(Okta SSO\) for your users\.
 + Activate link sharing for models\.
 
-Use Okta Single\-Sign On \(Okta SSO\) to give your users access to Amazon SageMaker Canvas\. SageMaker Canvas supports SAML 2\.0 SSO methods\. The following sections guide you through procedures to set up Okta SSO\.
+Use Okta Single\-Sign On \(Okta SSO\) to grant your users access to Amazon SageMaker Canvas\. SageMaker Canvas supports SAML 2\.0 SSO methods\. The following sections guide you through procedures to set up Okta SSO\.
 
 To set up a Domain, see [Onboard to Amazon SageMaker Studio Using IAM](https://docs.aws.amazon.com/sagemaker/latest/dg/onboard-iam.html)\. You can use the following information to help you complete the procedure in the section:
 + You can ignore the step about creating projects\.
 + You don't need to provide access to additional Amazon S3 buckets\. Your users can use the default bucket that we provide when we create a role\.
-+ To give your users access to share their notebooks with data scientists, turn on **Notebook Sharing Configuration**\.
++ To grant your users access to share their notebooks with data scientists, turn on **Notebook Sharing Configuration**\.
 + Use Amazon SageMaker Studio version 3\.19\.0 or later\. For information about updating Amazon SageMaker Studio, see [Shut down and Update SageMaker Studio](studio-tasks-update-studio.md)\.
 
 Use the following procedure to set up Okta\. For all of the following procedures, you specify the same IAM role for `IAM-role` \.
 
-## Add the SageMaker Canvas Application To Okta<a name="canvas-set-up-okta"></a>
+## Add the SageMaker Canvas application to Okta<a name="canvas-set-up-okta"></a>
 
 Set up the sign\-on method for Okta\.
 
@@ -36,7 +36,7 @@ Set up the sign\-on method for Okta\.
 
 1. Choose **Done**\.
 
-## Set Up ID Federation in IAM<a name="set-up-id-federation-IAM"></a>
+## Set up ID federation in IAM<a name="set-up-id-federation-IAM"></a>
 
 AWS Identity and Access Management \(IAM\) is the AWS service that you use to gain access to your AWS account\. You gain access to AWS through an IAM account\.
 
@@ -49,9 +49,9 @@ AWS Identity and Access Management \(IAM\) is the AWS service that you use to ga
 1. Choose **Create Provider**\.
 
 1. For **Configure Provider**, specify the following:
-   + **Provider Type** – From the dropdown menu, choose **SAML**\.
+   + **Provider Type** – From the dropdown list, choose **SAML**\.
    + **Provider Name** – Specify **Okta**\.
-   + **Metadata Document** – Upload the XML document that you've saved locally from step 7 of [Add the SageMaker Canvas Application To Okta](#canvas-set-up-okta)\.
+   + **Metadata Document** – Upload the XML document that you've saved locally from step 7 of [Add the SageMaker Canvas application to Okta](#canvas-set-up-okta)\.
 
 1. Find your identity provider under **Identity Providers**\. Copy its **Provider ARN** value\.
 
@@ -106,7 +106,7 @@ AWS Identity and Access Management \(IAM\) is the AWS service that you use to ga
 
 ## Configure SageMaker Canvas in Okta<a name="canvas-configure-okta"></a>
 
-The following procedure gives you the ability to configure Amazon SageMaker Canvas in Okta\.
+Configure Amazon SageMaker Canvas in Okta using the following procedure\.
 
 To configure Amazon SageMaker Canvas to use Okta, follow the steps in this section\. You must specify unique user names for each **SageMakerStudioProfileName** field\. For example, you can use `user.login` as a value\. If the username is different from the SageMaker Canvas profile name, choose a different uniquely identifying attribute\. For example, you can use an employee's ID number for the profile name\.
 
@@ -114,19 +114,19 @@ For an example of values that you can set for **Attributes**, see the code follo
 
 1. Under **Directory**, choose **Groups**\.
 
-1. Add a group with the following pattern: `sagemaker#canvas#IAM-role#AWS-account-id`
+1. Add a group with the following pattern: `sagemaker#canvas#IAM-role#AWS-account-id`\.
 
-1. In Okta, open the **AWS Account Federation** app integration configuration\.
+1. In Okta, open the **AWS Account Federation** application integration configuration\.
 
-1. Select **Sign On** for the AWS Account Federation app\.
+1. Select **Sign On** for the AWS Account Federation application\.
 
 1. Choose **Edit** and specify the following:
    + SAML 2\.0
-   + **Default Relay State** – https://*Region*\.console\.aws\.amazon\.com/sagemaker/home?region=*Region*\#/studio/canvas/open/*StudioId*\. You can find the studio ID in the console: [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)
+   + **Default Relay State** – https://*Region*\.console\.aws\.amazon\.com/sagemaker/home?region=*Region*\#/studio/canvas/open/*StudioId*\. You can find the Studio ID in the console: [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)
 
 1. Choose **Attributes**\.
 
-1. For the **SageMakerStudioProfileName** fields, specify unique values for each username\. The usernames must match the usernames that you've created in the AWS console\.
+1. In the **SageMakerStudioProfileName** fields, specify unique values for each username\. The usernames must match the usernames that you've created in the AWS console\.
 
    ```
    Attribute 1:
@@ -139,7 +139,7 @@ For an example of values that you can set for **Attributes**, see the code follo
    ```
 
 1. Select **Environment Type**\. Choose **Regular AWS**\.
-   +  If your environment type isn't listed, you can set your ACS URL in the **ACS URL** field\. If your environment type is listed, you don't need to enter your ACS URL
+   + If your environment type isn't listed, you can set your ACS URL in the **ACS URL** field\. If your environment type is listed, you don't need to enter your ACS URL
 
 1. For **Identity Provider ARN**, specify the ARN you used in step 6 of the preceding procedure\.
 
@@ -156,7 +156,7 @@ For an example of values that you can set for **Attributes**, see the code follo
 
 1. Under **Assignments**, assign the application to the group that you've created\.
 
-## Add Optional Policies on Access Control in IAM<a name="canvas-optional-access"></a>
+## Add optional policies on access control in IAM<a name="canvas-optional-access"></a>
 
 In IAM, you can apply the following policy to the administrator user who creates the user profiles\.
 
@@ -181,7 +181,7 @@ In IAM, you can apply the following policy to the administrator user who creates
 }
 ```
 
-If you choose to add the preceding policy to the admin user, you must use the following permissions from [Set Up ID Federation in IAM](#set-up-id-federation-IAM)\.
+If you choose to add the preceding policy to the admin user, you must use the following permissions from [Set up ID federation in IAM](#set-up-id-federation-IAM)\.
 
 ```
 {
@@ -204,19 +204,3 @@ If you choose to add the preceding policy to the admin user, you must use the fo
   ]
 }
 ```
-
-## Activate link sharing for models<a name="canvas-set-up-link-sharing"></a>
-
-In order to create shareable links for importing SageMaker Canvas models into Amazon SageMaker Studio, the Amazon SageMaker Domain must turn on the notebook resource sharing option and have a valid Amazon S3 sharing location\. If you delete the Amazon S3 sharing location specified in your Domain, or if you specify a nonexistent Amazon S3 location, you cannot create shareable links for SageMaker Canvas models\.
-
-If you choose the **Quick setup** when creating your Domain, SageMaker provides a default Amazon S3 location for resource sharing and automatically turns on notebook resource sharing\.
-
-If you choose the **Standard setup** when creating your Domain, configure the following options when setting up the **Notebook Sharing Configuration**:
-
-1. For **Shareable notebook resources**, turn on **Enable notebook resource sharing**\.
-
-1. For **S3 location for shareable notebook resources**, enter either the default bucket already provided or a valid Amazon S3 path of your choice\.
-
-The **Notebook Sharing Configuration** for your Domain should look like the following screenshot, with **Enable notebook resource sharing** turned on and an Amazon S3 path entered for the **S3 location for shareable notebook resources** field\.
-
-![\[Screenshot of the Shareable notebook resources screen in the SageMaker Domain console with notebook resource sharing turned on and an example Amazon S3 location.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/canvas-notebook-sharing-config.png)

@@ -1,6 +1,6 @@
 # Available Amazon SageMaker Kernels<a name="notebooks-available-kernels"></a>
 
-The following Amazon SageMaker kernels are available in SageMaker Studio\. The name in parentheses is the SageMaker image hosting the kernel\.
+The following Amazon SageMaker kernels are available in Studio\. The name in parentheses is the SageMaker image hosting the kernel\.
 
 `Data Science` is a [conda](https://docs.conda.io/projects/conda/en/latest/index.html) image with the most commonly used Python packages and libraries, such as NumPy and scikit\-learn\.
 + Python 3 \(Base Python\) with Python 3\.6

@@ -26,7 +26,7 @@ SageMaker provides features to manage resources and optimize inference performan
 + To speed up the throughput and decrease the latency of getting real\-time inferences from your deep learning models that are deployed as SageMaker hosted models using a GPU instance for your endpoint, see [Use Amazon SageMaker Elastic Inference \(EI\) ](ei.md)\.
 + To dynamically adjust the number of instances provisioned in response to changes in your workload, see [Automatically Scale Amazon SageMaker Models](endpoint-auto-scaling.md)\.
 + To create an endpoint that can host multiple models using a shared serving container, see [Host multiple models in one container behind one endpoint](multi-model-endpoints.md)\.
-+ To test multiple models in production, see [Safely update models in production](model-ab-testing.md)\.
++ To test multiple models in production, see [Production variants](model-ab-testing.md)\.
 
 ## Manage Model Deployments<a name="deploy-model-manage"></a>
 

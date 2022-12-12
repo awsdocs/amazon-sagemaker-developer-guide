@@ -174,7 +174,7 @@ When using the SageMaker Hugging Face estimator, you must specify both `transfor
   + `debug` \(bool\) – Optional\. To receive more detailed training logs from your compiler\-accelerated training jobs, change it to `True`\. However, the additional logging might add overhead and slow down the compiled training job\. The default value is `False`\.
 
 **Warning**  
-If you turn on SageMaker Debugger, it might impact the performance of SageMaker Training Compiler\. We recommend that you turn off Debugger when running SageMaker Training Compiler to make sure there's no impact on performance\. For more information, see [Performance Considerations](training-compiler-tips-pitfalls.md#training-compiler-tips-pitfalls-considerations)\. To turn the Debugger functionalities off, add the following two arguments to the estimator:  
+If you turn on SageMaker Debugger, it might impact the performance of SageMaker Training Compiler\. We recommend that you turn off Debugger when running SageMaker Training Compiler to make sure there's no impact on performance\. For more information, see [Considerations](training-compiler-tips-pitfalls.md#training-compiler-tips-pitfalls-considerations)\. To turn the Debugger functionalities off, add the following two arguments to the estimator:  
 
 ```
 disable_profiler=True,

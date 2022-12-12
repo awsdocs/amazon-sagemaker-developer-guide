@@ -211,7 +211,8 @@ This AWS managed policy includes the following permissions\.
                 "forecast:InvokeForecastEndpoint",
                 "forecast:GetRecentForecastContext",
                 "forecast:DescribePredictor",
-                "forecast:TagResource"
+                "forecast:TagResource",
+                "forecast:DeleteResourceTree"
             ],
             "Resource": [
                 "arn:aws:forecast:*:*:*Canvas*"
@@ -277,5 +278,6 @@ View details about updates to AWS managed policies for SageMaker Canvas since th
 
 | Policy | Version | Change | Date | 
 | --- | --- | --- | --- | 
-|  [AmazonSageMakerCanvasFullAccess](#security-iam-awsmanpol-AmazonSageMakerCanvasFullAccess)  | 1 |  Initial policy  | September 8, 2022 | 
-|  [AmazonSageMakerCanvasForecastAccess](#security-iam-awsmanpol-AmazonSageMakerCanvasForecastAccess)  | 1 |  Initial policy  | August 24, 2022 | 
+|  [AmazonSageMakerCanvasFullAccess](#security-iam-awsmanpol-AmazonSageMakerCanvasFullAccess) \- Update to an existing policy  | 2 |  Add `forecast:DeleteResourceTree` permission\.  | December 6, 2022 | 
+| AmazonSageMakerCanvasFullAccess \- New policy | 1 |  Initial policy  | September 8, 2022 | 
+|  [AmazonSageMakerCanvasForecastAccess](#security-iam-awsmanpol-AmazonSageMakerCanvasForecastAccess) \- New policy  | 1 |  Initial policy  | August 24, 2022 | 

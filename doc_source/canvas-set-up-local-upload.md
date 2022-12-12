@@ -1,12 +1,12 @@
-# Give Your Users Permissions to Upload Local Files<a name="canvas-set-up-local-upload"></a>
+# Grant Your Users Permissions to Upload Local Files<a name="canvas-set-up-local-upload"></a>
 
-If your users are uploading files from their local machines to SageMaker Canvas, you must attach a CORS configuration to the Amazon S3 bucket that they're using\. When one of your users first accesses SageMaker Canvas, SageMaker creates an Amazon S3 bucket with a name that uses the following pattern: `sagemaker-{region}-{account-ID}`\. SageMaker Canvas adds your users' data to the bucket whenever they upload a file\.
+If your users are uploading files from their local machines to SageMaker Canvas, you must attach a CORS configuration to the Amazon S3 bucket that they're using\. When one of your users first accesses SageMaker Canvas, SageMaker creates an Amazon S3 bucket with a name that uses the following pattern: `sagemaker-{Region}-{account-ID}`\. SageMaker Canvas adds your users' data to the bucket whenever they upload a file\.
 
-To give users permissions to upload local files to the bucket, you can attach a CORS configuration to it using either of the following procedures\. You can use the first method when setting up your Domain or editing the existing Domain settings, where you opt in to allow SageMaker to attach the CORS configuration to the default bucket for you\. The second method is the manual method, where you can attach the CORS configuration to the bucket yourself\.
+To grant users permissions to upload local files to the bucket, you can attach a CORS configuration to it using either of the following procedures\. You can use the first method when setting up your Domain or editing the existing Domain settings, where you opt in to allow SageMaker to attach the CORS configuration to the default bucket for you\. The second method is the manual method, where you can attach the CORS configuration to the bucket yourself\.
 
 ## Domain setup method<a name="canvas-set-up-local-upload-domain"></a>
 
-To give your users permissions to upload local files, you can choose **Enable Canvas permissions** when setting up your Domain\. This attaches a CORS configuration to the SageMaker Amazon S3 bucket created for your account and gives all users in the Domain permission to upload local files into SageMaker Canvas\. By default, the permissions option is turned on when you set up a Domain, but you can turn off this option if you don’t want to give your users permission to upload files\.
+To grant your users permissions to upload local files, you can choose **Enable Canvas permissions** when setting up your Domain\. This attaches a Cross\-Origin Resource Sharing \(CORS\) configuration to the SageMaker Amazon S3 bucket created for your account and grants all users in the Domain permission to upload local files into SageMaker Canvas\. By default, the permissions option is turned on when you set up a Domain, but you can turn off this option if you don’t want to grant your users permission to upload files\.
 
 **Note**  
 If you have an existing CORS configuration on the SageMaker Amazon S3 bucket, turning on **Enable Canvas permissions** overwrites the existing configuration with the new configuration\.
@@ -17,13 +17,13 @@ The following procedure shows how you can turn on this option when doing a **Qui
 
 1. Select an **Execution role** for the user\.
 
-1. Turn on **Enable SageMaker Canvas permissions** \(by default this option is turned on\)\.
+1. Turn on **Enable SageMaker Canvas permissions**\. \(By default, this option is turned on\.\)
 
 1. Finish setting up the Domain\.
 
 If you are doing a **Standard setup** for your Domain, then use the following procedure for the **Canvas settings** section to turn on local file upload\.
 
-1. For **Enable and configure Canvas permissions**, select **Local file upload** \(it's already checked by default\)\.
+1. For **Enable and configure Canvas permissions**, select **Local file upload**\. \(It's already checked by default\.\)
 
 1. Choose **Next**\.
 
@@ -41,7 +41,7 @@ You can also turn on or turn off local upload permissions for an existing Domain
 
 1. Select or deselect **Local file upload**\.
 
-1. Finish any other modifications you want to make to the Domain, and then **Submit** your changes\.
+1. Finish any other modifications you want to make to the Domain, and then choose **Submit** to submit your changes\.
 
 ## Amazon S3 bucket method<a name="canvas-set-up-local-upload-s3"></a>
 
