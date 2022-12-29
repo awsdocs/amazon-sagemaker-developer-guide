@@ -149,7 +149,7 @@ Your configuration file should look similar to the following example\(with your 
     "sagemaker_edge_core_region": "region",
     "sagemaker_edge_core_root_certs_path": "<Absolute path to root certificates>",
     "sagemaker_edge_provider_provider": "Aws",
-    "sagemaker_edge_provider_provider_path" : "/path/to/libprovider-aws.so",
+    "sagemaker_edge_provider_provider_path" : "/path/to/libprovider_aws.so",
     "sagemaker_edge_provider_aws_ca_cert_file": "<Absolute path to Amazon Root CA certificate>/AmazonRootCA1.pem",
     "sagemaker_edge_provider_aws_cert_file": "<Absolute path to AWS IoT signing root certificate>/device.pem.crt",
     "sagemaker_edge_provider_aws_cert_pk_file": "<Absolute path to AWS IoT private key.>/private.pem.key",
