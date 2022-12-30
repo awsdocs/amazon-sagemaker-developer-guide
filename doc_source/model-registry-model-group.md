@@ -45,8 +45,7 @@ To create a model group in Amazon SageMaker Studio, complete the following steps
 
 1. Choose **Models**, and then **Model registry**\.
 
-1. Choose **Create model group**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry/create-model-group.png)
+1. Choose **Create model group**\.
 
 1. In the **Create new model group** dialog box, enter the following information:
    + Enter the name of the new model group in the **Name** field\.

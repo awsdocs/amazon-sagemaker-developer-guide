@@ -88,17 +88,17 @@ Amazon ECR, Amazon S3, and AWS KMS policies are demonstrated in the following co
 
 ```
 {
-  'Version': '2012-10-17',
-  'Statement': [
+  "Version": "2012-10-17",
+  "Statement": [
     {
-      'Sid': 'AddPerm',
-      'Effect': 'Allow',
-      'Principal': {
-        'AWS': 'arn:aws:iam::{model_registry_account}:root'
+      "Sid": "AddPerm",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::{model_registry_account}:root"
       },
-      'Action': [
-        'ecr:BatchGetImage',
-        'ecr:Describe*'
+      "Action": [
+        "ecr:BatchGetImage",
+        "ecr:Describe*"
       ]
     }
   ]
@@ -109,20 +109,20 @@ Amazon ECR, Amazon S3, and AWS KMS policies are demonstrated in the following co
 
 ```
 {
-  'Version': '2012-10-17',
-  'Statement': [
+  "Version": "2012-10-17",
+  "Statement": [
     {
-      'Sid': 'AddPerm',
-      'Effect': 'Allow',
-      'Principal': {
-        'AWS': 'arn:aws:iam::{model_registry_account}:root'
+      "Sid": "AddPerm",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::{model_registry_account}:root"
       },
-      'Action': [
-        's3:GetObject',
-        's3:GetBucketAcl',
-        's3:GetObjectAcl'
+      "Action": [
+        "s3:GetObject",
+        "s3:GetBucketAcl",
+        "s3:GetObjectAcl"
       ],
-      'Resource': 'arn:aws:s3:::{bucket}/*'
+      "Resource": "arn:aws:s3:::{bucket}/*"
     }
   ]
 }
@@ -132,19 +132,19 @@ Amazon ECR, Amazon S3, and AWS KMS policies are demonstrated in the following co
 
 ```
 {
-  'Version': '2012-10-17',
-  'Statement': [
+  "Version": "2012-10-17",
+  "Statement": [
     {
-      'Sid': 'AddPerm',
-      'Effect': 'Allow',
-      'Principal': {
-        'AWS': 'arn:aws:iam::{model_registry_account}:root'
+      "Sid": "AddPerm",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::{model_registry_account}:root"
       },
-      'Action': [
-        'kms:Decrypt',
-        'kms:GenerateDataKey*'
+      "Action": [
+        "kms:Decrypt",
+        "kms:GenerateDataKey*"
       ],
-      'Resource': '*'
+      "Resource": "*"
     }
   ]
 }
@@ -158,22 +158,22 @@ The following policy configuration applies the policies discussed in the previou
 import json
 
 # The model registry account id of the model package group 
-model_registry_account = '111111111111'
+model_registry_account = "111111111111"
 
 # The model training account id where training happens
-model_training_account = '222222222222'
+model_training_account = "222222222222"
 
 # 1. Create a policy for access to the ECR repository 
 # in the model training account for the model registry account model package group
-ecr_repository_policy = {'Version': '2012-10-17',
-    'Statement': [{'Sid': 'AddPerm',
-        'Effect': 'Allow',
-        'Principal': {
-          'AWS': f'arn:aws:iam::{model_registry_account}:root'
+ecr_repository_policy = {"Version": "2012-10-17",
+    "Statement": [{"Sid": "AddPerm",
+        "Effect": "Allow",
+        "Principal": {
+          "AWS": f"arn:aws:iam::{model_registry_account}:root"
         },
-        'Action': [
-          'ecr:BatchGetImage',
-          'ecr:Describe*'
+        "Action": [
+          "ecr:BatchGetImage",
+          "ecr:Describe*"
         ]
     }]
 }
@@ -185,23 +185,23 @@ ecr_repository_policy = json.dumps(ecr_repository_policy)
 ecr = boto3.client('ecr')
 response = ecr.set_repository_policy(
     registryId = model_training_account,
-    repositoryName = 'decision-trees-sample',
+    repositoryName = "decision-trees-sample",
     policyText = ecr_repository_policy
 )
 
 # 2. Create a policy in the model training account for access to the S3 bucket 
 # where the model is present in the model registry account model package group
-bucket_policy = {'Version': '2012-10-17',
-    'Statement': [{'Sid': 'AddPerm',
-        'Effect': 'Allow',
-        'Principal': {'AWS': f'arn:aws:iam::{model_registry_account}:root'
+bucket_policy = {"Version": "2012-10-17",
+    "Statement": [{"Sid": "AddPerm",
+        "Effect": "Allow",
+        "Principal": {"AWS": f"arn:aws:iam::{model_registry_account}:root"
         },
-        'Action': [
-          's3:GetObject',
-          's3:GetBucketAcl',
-          's3:GetObjectAcl'
+        "Action": [
+          "s3:GetObject",
+          "s3:GetBucketAcl",
+          "s3:GetObjectAcl"
         ],
-        'Resource': 'arn:aws:s3:::{bucket}/*'
+        "Resource": "arn:aws:s3:::{bucket}/*"
     }]
 }
 
@@ -209,21 +209,21 @@ bucket_policy = {'Version': '2012-10-17',
 bucket_policy = json.dumps(bucket_policy)
 
 # Set the new bucket policy
-s3 = boto3.client('s3')
+s3 = boto3.client("s3")
 response = s3.put_bucket_policy(
     Bucket = bucket,
     Policy = bucket_policy)
 
 # 3. Create the KMS grant for the key used during training for encryption
 # in the model training account to the model registry account model package group
-client = boto3.client('kms')
+client = boto3.client("kms")
 
 response = client.create_grant(
     GranteePrincipal=model_registry_account,
     KeyId=kms_key_id
     Operations=[
-        'Decrypt',
-        'GenerateDataKey',
+        "Decrypt",
+        "GenerateDataKey",
     ],
 )
 ```
@@ -232,17 +232,17 @@ The following configuration needs to be put in the model registry account where 
 
 ```
 # The model registry account id of the model package group 
-model_registry_account = '111111111111'
+model_registry_account = "111111111111"
 
 # 1. Create policy to allow the model training account to access the ModelPackageGroup
-model_package_group_policy = {'Version': '2012-10-17',
-    'Statement': [
+model_package_group_policy = {"Version": "2012-10-17",
+    "Statement": [
         {
-            'Sid': 'AddPermModelPackageVersion',
-            'Effect': 'Allow',
-            'Principal': {'AWS': f'arn:aws:iam::{model_training_account}:root'
-            'Action': ["sagemaker:CreateModelPackage"],
-            'Resource': f'arn:aws:sagemaker:{region}:{model_registry_account}:model-package/{model_package_group_name}/*'
+            "Sid": "AddPermModelPackageVersion",
+            "Effect": "Allow",
+            "Principal": {"AWS": f"arn:aws:iam::{model_training_account}:root",
+            "Action": ["sagemaker:CreateModelPackage"],
+            "Resource": f"arn:aws:sagemaker:{region}:{model_registry_account}:model-package/{model_package_group_name}/*"
         }
     ]
 }
@@ -267,7 +267,7 @@ modelpackage_inference_specification =  {
     "InferenceSpecification": {
         "Containers": [
             {
-                "Image": f'{model_training_account}.dkr.ecr.us-east-2.amazonaws.com/decision-trees-sample:latest',
+                "Image": f"{model_training_account}.dkr.ecr.us-east-2.amazonaws.com/decision-trees-sample:latest",
                 "ModelDataUrl": model_url
             }
         ],

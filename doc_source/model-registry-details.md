@@ -77,10 +77,9 @@ To view the details of a model version in Amazon SageMaker Studio, complete the 
 
 1. Choose **Models**, and then **Model registry**\.
 
-1. From the model groups list, double\-click the model group you want to view\.
+1. From the model groups list, select the model group you want to view\.
 
-1. A new tab appears with a list of the model versions in the model group, as shown in the following image\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry/model-versions.png)
+1. A new tab appears with a list of the model versions in the model group\.
 
 1. In the list of model versions, double\-click the model version for which you want to view details\.
 
@@ -91,5 +90,4 @@ To view the details of a model version in Amazon SageMaker Studio, complete the 
    + **Bias report**: Reports metrics related to your Model Monitor bias drift checks, which compare the distribution of live data to training data\. For more information about Model Monitor bias drift checks, see [Monitor Bias Drift for Models in Production](clarify-model-monitor-bias-drift.md)\.
    + **Inference recommender**: Provides initial instance recommendations for optimal performance based on your model and sample payloads\.
    + **Load test**: Runs load tests across your choice of instance types when you provide your specific production requirements, such as latency and throughput constraints\.
-   + **Settings**: Shows information such as the project with which the model version is associated, the pipeline that generated the model, the model group, and the model's location in Amazon S3\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry/model-version-details.png)
+   + **Settings**: Shows information such as the project with which the model version is associated, the pipeline that generated the model, the model group, and the model's location in Amazon S3\.

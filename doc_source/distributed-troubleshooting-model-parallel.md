@@ -3,16 +3,16 @@
 If you run into an error, you can use the following list to try to troubleshoot your training job\. If the problem persists, contact [AWS Support](http://aws.amazon.com/premiumsupport)\. 
 
 **Topics**
-+ [Considerations for Using SageMaker Debugger with SageMaker Distributed Model Parallel](#distributed-ts-model-parallel-debugger)
++ [Considerations for Using SageMaker Debugger with the SageMaker Model Parallelism Library](#distributed-ts-model-parallel-debugger)
 + [Saving Checkpoints](#distributed-ts-model-parallel-checkpoints)
 + [Convergence Using Model Parallel and TensorFlow](#distributed-ts-model-parallel-tf-convergence)
 + [Stalling or Crashing Distributed Training Jobs](#distributed-ts-model-parallel-training-issues)
 + [Receiving NCCL Error for a PyTorch Training Job](#distributed-ts-model-parallel-nccl-error)
 + [Receiving `RecursionError` for a PyTorch Training Job](#distributed-ts-model-parallel-super-forward-not-supported)
 
-## Considerations for Using SageMaker Debugger with SageMaker Distributed Model Parallel<a name="distributed-ts-model-parallel-debugger"></a>
+## Considerations for Using SageMaker Debugger with the SageMaker Model Parallelism Library<a name="distributed-ts-model-parallel-debugger"></a>
 
-SageMaker Debugger is not available for SageMaker distributed model parallel\. Debugger is enabled by default for all SageMaker TensorFlow and PyTorch training jobs, and you might see an error that looks like the following: 
+SageMaker Debugger is not available for the SageMaker model parallelism library\. Debugger is enabled by default for all SageMaker TensorFlow and PyTorch training jobs, and you might see an error that looks like the following: 
 
 ```
 FileNotFoundError: [Errno 2] No such file or directory: '/opt/ml/checkpoints/metadata.json.sagemaker-uploading
@@ -131,7 +131,7 @@ if smp.local_rank() == 0:
 
 ## Convergence Using Model Parallel and TensorFlow<a name="distributed-ts-model-parallel-tf-convergence"></a>
 
-When you use SageMaker multi\-node training with TensorFlow and distributed model parallel, the loss may not converge as expected because the order of training input files may be different on each node\. This may cause different ranks in the same model parallel group to work on different input files, causing inconsistencies\. To prevent this, ensure the input files are ordered the same way in all the ranks before they get converted to TensorFlow datasets\. One way to achieve this is to sort the input file names in the training script\.
+When you use SageMaker multi\-node training with TensorFlow and the model parallelism library, the loss may not converge as expected because the order of training input files may be different on each node\. This may cause different ranks in the same model parallel group to work on different input files, causing inconsistencies\. To prevent this, ensure the input files are ordered the same way in all the ranks before they get converted to TensorFlow datasets\. One way to achieve this is to sort the input file names in the training script\.
 
 ## Stalling or Crashing Distributed Training Jobs<a name="distributed-ts-model-parallel-training-issues"></a>
 

@@ -16,6 +16,10 @@ The following table is a timeline for when AL1 enters its extended maintenance p
 |  12/01/2022  |  AL1 is no longer supported with non\-critical security patches and updates\. AL1 still receives fixes for [critical](https://nvd.nist.gov/vuln-metrics/cvss#) security\-related issues\. You can still launch instances on AL1, but assume the risks associated with using an unsupported operating system\.  | 
 |  02/01/2023  |  AL1 is no longer an available option for new notebook instance creation\. After this date, customers can create notebook instances with the AL2 platform identifiers\. Existing al1\-v1 notebook instances are not be affected\.   | 
 
+## Supported instances<a name="nbi-al2-instances"></a>
+
+Amazon Linux 2 supports instances listed under **Notebook Instances** in [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/) with the exception that Amazon Linux 2 does not support ml\.p2 instances\.
+
 ## Available Kernels<a name="nbi-al2-env"></a>
 
 `notebook-al1-v1`: The following kernels are available in notebook instances based on the Amazon Linux platform\. These notebook instances support JupyterLab version 1\. For information about JupyterLab versions, see [JupyterLab versioning](nbi-jl.md)\.

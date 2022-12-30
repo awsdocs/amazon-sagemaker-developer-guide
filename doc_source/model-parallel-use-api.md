@@ -1,10 +1,10 @@
 # Run a SageMaker Distributed Training Job with Model Parallelism<a name="model-parallel-use-api"></a>
 
-Learn how to run a distributed model parallel training job using the SageMaker Python SDK with your own training script and SageMaker's distributed model parallel library\.
+Learn how to run a model parallel training job using the SageMaker Python SDK with your own training script and SageMaker's model parallelism library\.
 
 There are three use\-case scenarios for running a SageMaker training job:
 
-1. You can use one of the prebuilt AWS Deep Learning Container for TensorFlow and PyTorch\. This option is recommended if it is the first time for you to use the model parallel library\. To find a tutorial for how to run a SageMaker model parallel training job, see [MNIST with PyTorch 1\.6 and Amazon SageMaker's distributed model parallel library](https://sagemaker-examples.readthedocs.io/en/latest/training/distributed_training/pytorch/model_parallel/mnist/pytorch_smmodelparallel_mnist.html)\.
+1. You can use one of the prebuilt AWS Deep Learning Container for TensorFlow and PyTorch\. This option is recommended if it is the first time for you to use the model parallel library\. To find a tutorial for how to run a SageMaker model parallel training job, see the example notebooks at [PyTorch training with Amazon SageMaker's model parallelism library](https://github.com/aws/amazon-sagemaker-examples/tree/main/training/distributed_training/pytorch/model_parallel)\.
 
 1. You can extend the prebuilt containers to handle any additional functional requirements for your algorithm or model that the prebuilt SageMaker Docker image doesn't support\. To find an example of how you can extend a pre\-built container, see [Extend a Prebuilt Container](https://docs.aws.amazon.com/sagemaker/latest/dg/prebuilt-containers-extend.html)\.
 

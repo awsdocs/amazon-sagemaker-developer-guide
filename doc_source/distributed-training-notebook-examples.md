@@ -19,6 +19,10 @@ The following blogs discuss case studies about using the SageMaker distributed t
 + [Hyundai reduces ML model training time for autonomous driving models using Amazon SageMaker](http://aws.amazon.com/blogs/machine-learning/hyundai-reduces-training-time-for-autonomous-driving-models-using-amazon-sagemaker/), *AWS Machine Learning Blog* \(June 25, 2021\)
 + [Distributed Training: Train BART/T5 for Summarization using Transformers and Amazon SageMaker](https://huggingface.co/blog/sagemaker-distributed-training-seq2seq), the *Hugging Face website* \(April 8, 2021\)
 
+**The SageMaker model parallelism library**
++ [New performance improvements in the Amazon SageMaker model parallelism library](http://aws.amazon.com/blogs/machine-learning/new-performance-improvements-in-amazon-sagemaker-model-parallel-library/), *AWS Machine Learning Blog* \(December 16, 2022\)
++ [Train gigantic models with near\-linear scaling using sharded data parallelism on Amazon SageMaker](http://aws.amazon.com/blogs/machine-learning/train-gigantic-models-with-near-linear-scaling-using-sharded-data-parallelism-on-amazon-sagemaker/), *AWS Machine Learning Blog* \(October 31, 2022\)
+
 ## PyTorch Examples<a name="distributed-training-notebook-examples-pytorch"></a>
 
 **The SageMaker data parallelism library**

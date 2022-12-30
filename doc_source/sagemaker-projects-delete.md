@@ -19,24 +19,8 @@ You can only delete projects in Studio that you have created\. This condition is
 
 1. Select the target project from the dropdown list\. If you don’t see your project, type the project name and apply the filter to find your project\.
 
-1. 
+1. Once you've found your project, select the project name to view details\.
 
-**You can delete a Studio project in one of the following ways:**
-
-   1. 
-
-**You can delete the project from the projects list\.**
-
-      Right\-click the target project and choose ** Delete** from the dropdown list\.
-**Note**  
-This functionality is supported in Studio version v3\.17\.1 or higher\. For more information, see [Shut down and Update SageMaker Studio](studio-tasks-update-studio.md)\.
-
-   1. 
-
-**You can delete a project from the **Project details** section\.**
-
-      1. Once you've found your project, double\-click it to view its details\.
-
-      1. Choose **Delete** from the **Actions** menu\.
+1. Choose **Delete** from the **Actions** menu\.
 
 1. Confirm your choice by choosing **Delete** from the **Delete Project** window\.

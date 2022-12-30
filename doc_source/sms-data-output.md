@@ -706,7 +706,7 @@ The following is an example of a `SeqLabel.json` file from a bounding box video 
                     }
                 }
             ],
-            "frame-no": "0",
+            "frame-no": 0,
             "frame": "frame_0000.jpeg", 
             "frame-attributes": {name: value, name: value}
         },
@@ -731,7 +731,7 @@ The following is an example of a `SeqLabel.json` file from a bounding box video 
                     }
                 }
             ],
-            "frame-no": "1",
+            "frame-no": 1,
             "frame": "frame_0001.jpeg",
             "frame-attributes": {name: value, name: value}
         }
@@ -796,7 +796,7 @@ The following is an example of a `SeqLabel.json` file from a bounding box video 
                     "object-name": "car:1"
                 }
             ],
-            "frame-no": "0",
+            "frame-no": 0,
             "frame": "frame_0001.jpeg",
             "frame-attributes": {}
         },
@@ -828,7 +828,7 @@ The following is an example of a `SeqLabel.json` file from a bounding box video 
                     "object-name": "car:1"
                 }
             ],
-            "frame-no": "1",
+            "frame-no": 1,
             "frame": "frame_0002.jpeg",
             "frame-attributes": {name: value, name: value}
         }

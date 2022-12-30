@@ -9,7 +9,7 @@ With `smdistributed.modelparallel`, you can use activation checkpointing at the 
 When you use [automated model partitioning](https://docs.aws.amazon.com/sagemaker/latest/dg/model-parallel-core-features.html#model-parallel-automated-model-splitting), you can find the partitioning assignment logs starting with `Partition assignments:` in the training job logs\. If a module is partitioned across multiple ranks \(for example, with one descendant on one rank and another descendant on a different rank\), the library ignores the attempt to checkpoint the module and raises a warning message that the module won't be checkpointed\.
 
 **Note**  
-The SageMaker model parallel library supports both overlapping and non\-overlapping `allreduce` operation in combination with checkpointing\. 
+The SageMaker model parallelism library supports both overlapping and non\-overlapping `allreduce` operation in combination with checkpointing\. 
 
 **Note**  
 PyTorch’s native checkpointing API is not compatible with `smdistributed.modelparallel`\.

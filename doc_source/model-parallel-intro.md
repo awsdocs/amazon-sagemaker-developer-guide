@@ -52,7 +52,7 @@ For example, if you set `"pipeline_parallel_degree": 2` and `"processes_per_host
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/distributed/model-parallel/smdmp-pipeline-parallel-only.png)
 
-To dive deep into pipeline parallalism, see [Core Features of the SageMaker Model Parallel Library](model-parallel-core-features.md)\. 
+To dive deep into pipeline parallalism, see [Core Features of the SageMaker Model Parallelism Library](model-parallel-core-features.md)\. 
 
 To get started with running your model using pipeline parallelism, see [Run a SageMaker Distributed Training Job with the SageMaker Model Parallel Library](https://docs.aws.amazon.com/sagemaker/latest/dg/model-parallel-use-api.html)\.
 

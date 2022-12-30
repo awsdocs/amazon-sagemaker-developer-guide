@@ -1,9 +1,9 @@
 # Checkpointing Distributed Models and Optimizer States<a name="model-parallel-extended-features-pytorch-checkpoint"></a>
 
-The SageMaker model parallel library provides checkpoint APIs to save and load distributed models and optimizer states\.
+The SageMaker model parallelism library provides checkpoint APIs to save and load distributed models and optimizer states\.
 
 **Note**  
-This feature is available in the SageMaker model parallel library v1\.10\.0 and later\.
+This feature is available in the SageMaker model parallelism library v1\.10\.0 and later\.
 
 To save a checkpoint of a model trained with model parallelism, use the [https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/latest/smd_model_parallel_pytorch.html#smdistributed.modelparallel.torch.save_checkpoint](https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/latest/smd_model_parallel_pytorch.html#smdistributed.modelparallel.torch.save_checkpoint) API with the partial checkpointing \(`partial=True`\) that saves each model partition individually\. In addition to the model and the optimizer state, you can also save any additional custom data through the `user_content` argument\. The checkpointed model, optimizer, and user content are saved as separate files\. The `save_checkpoint` API call creates checkpoint folders in the following structure\. 
 

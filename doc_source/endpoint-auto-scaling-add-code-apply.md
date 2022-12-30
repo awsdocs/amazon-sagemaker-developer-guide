@@ -2,7 +2,7 @@
 
 After registering your model and defining a scaling policy, apply the scaling policy to the registered model\. To apply a scaling policy, you can use the AWS CLI or the Application Auto Scaling API\. 
 
-## Apply a scaling policy \(Application Auto Scaling API\)<a name="endpoint-auto-scaling-add-code-apply-api"></a>
+## Apply a scaling policy \(Application Auto Scaling CLI\)<a name="endpoint-auto-scaling-add-code-apply-cli"></a>
 
 To apply a scaling policy to your model, use the [https://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/put-scaling-policy.html](https://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/put-scaling-policy.html) AWS CLI command with the following parameters:
 + `--policy-name`—The name of the scaling policy\.

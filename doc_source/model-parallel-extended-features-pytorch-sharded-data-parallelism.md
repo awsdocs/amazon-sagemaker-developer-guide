@@ -3,13 +3,13 @@
 *Sharded data parallelism* is a memory\-saving distributed training technique that splits the training state of a model \(model parameters, gradients, and optimizer states\) across GPUs in a data parallel group\. 
 
 **Note**  
-This feature is available in the SageMaker model parallel library v1\.11\.0 and later\.
+Sharded data parallelism is available in the SageMaker model parallelism library v1\.11\.0 and later\.
 
 When scaling up your training job to a large GPU cluster, you can reduce the per\-GPU memory footprint of the model by sharding the training state over multiple GPUs\. This returns two benefits: you can fit larger models, which would otherwise run out of memory with standard data parallelism, or you can increase the batch size using the freed\-up GPU memory\.
 
 The standard data parallelism technique replicates the training states across the GPUs in the data parallel group, and performs gradient aggregation based on the `AllReduce` operation\. Sharded data parallelism modifies the standard data\-parallel distributed training procedure to account for the sharded nature of the optimizer states\. A group of ranks over which the model and optimizer states are sharded is called a *sharding group*\. The sharded data parallelism technique shards the trainable parameters of a model and corresponding gradients and optimizer states across the GPUs in the *sharding group*\.
 
-SageMaker implements sharded data parallelism through the MiCS implementation, which is discussed in the AWS blog post [Near\-linear scaling of gigantic\-model training on AWS](https://www.amazon.science/blog/near-linear-scaling-of-gigantic-model-training-on-aws)\. In this implementation, you can set the sharding degree as a configurable parameter, which must be less than the data parallelism degree\. During each forward and backward pass, MiCS temporarily recombines the model parameters in all GPUs through the `AllGather` operation\. After the forward or backward pass of each layer, MiCS shards the parameters again to save GPU memory\. During the backward pass, MiCS reduces gradients and simultaneously shards them across GPUs through the `ReduceScatter` operation\. Finally, MiCS applies the local reduced and sharded gradients to their corresponding local parameter shards, using the local shards of optimizer states\. To bring down communication overhead, the SageMaker model parallel library prefetches the upcoming layers in forward or backward pass, and overlaps the network communication with the computation\.
+SageMaker implements sharded data parallelism through the MiCS implementation, which is discussed in the AWS blog post [Near\-linear scaling of gigantic\-model training on AWS](https://www.amazon.science/blog/near-linear-scaling-of-gigantic-model-training-on-aws)\. In this implementation, you can set the sharding degree as a configurable parameter, which must be less than the data parallelism degree\. During each forward and backward pass, MiCS temporarily recombines the model parameters in all GPUs through the `AllGather` operation\. After the forward or backward pass of each layer, MiCS shards the parameters again to save GPU memory\. During the backward pass, MiCS reduces gradients and simultaneously shards them across GPUs through the `ReduceScatter` operation\. Finally, MiCS applies the local reduced and sharded gradients to their corresponding local parameter shards, using the local shards of optimizer states\. To bring down communication overhead, the SageMaker model parallelism library prefetches the upcoming layers in the forward or backward pass, and overlaps the network communication with the computation\.
 
 The training state of the model is replicated across the sharding groups\. This means that before gradients are applied to the parameters, the `AllReduce` operation must take place across the sharding groups, in addition to the `ReduceScatter` operation that takes place within the sharding group\.
 
@@ -19,6 +19,7 @@ The selected sharded data parallelism degree must evenly divide the data paralle
 
 **Topics**
 + [How to Apply Sharded Data Parallelism to Your Training Job](#model-parallel-extended-features-pytorch-sharded-data-parallelism-how-to-use)
++ [Sharded data parallelism with SMDDP Collectives](#model-parallel-extended-features-pytorch-sharded-data-parallelism-smddp-collectives)
 + [Mixed Precision Training with Sharded Data Parallelism](#model-parallel-extended-features-pytorch-sharded-data-parallelism-16bits-training)
 + [Tips and Considerations for Using Sharded Data Parallelism](#model-parallel-extended-features-pytorch-sharded-data-parallelism-considerations)
 
@@ -85,12 +86,137 @@ smp_estimator = PyTorch(
 smp_estimator.fit('s3://my_bucket/my_training_data/')
 ```
 
+## Sharded data parallelism with SMDDP Collectives<a name="model-parallel-extended-features-pytorch-sharded-data-parallelism-smddp-collectives"></a>
+
+The SageMaker data parallelism library offers collective communication primitives \(SMDDP collectives\) optimized for the AWS infrastructure\. It achieves optimization by adopting an all\-to\-all\-type communication pattern by making use of [Elastic Fabric Adapter \(EFA\)](https://aws.amazon.com/hpc/efa/), resulting in high\-throughput and less latency\-sensitive collectives, offloading the communication\-related processing to the CPU, and freeing up GPU cycles for computation\. On large clusters, SMDDP Collectives can offer improvements in distributed training performance by up to 40% compared to NCCL\. For case studies and benchmark results, see the blog [New performance improvements in the Amazon SageMaker model parallelism library](http://aws.amazon.com/blogs/machine-learning/new-performance-improvements-in-amazon-sagemaker-model-parallel-library/)\.
+
+**Note**  
+Sharded data parallelism with SMDDP Collectives is available in the SageMaker model parallelism library v1\.13\.0 and later, and the SageMaker data parallelism library v1\.6\.0 and later\. See also [Supported configurations](#sharded-data-parallelism-smddp-collectives-supported-config) to use sharded data parallelism with SMDDP Collectives\.
+
+In sharded data parallelism, which is a commonly used technique in large\-scale distributed training, the `AllGather` collective is used to reconstitute the sharded layer parameters for forward and backward pass computations, in parallel with GPU computation\. For large models, performing the `AllGather` operation efficiently is critical to avoid GPU bottleneck problems and slowing down training speed\. When sharded data parallelism is activated, SMDDP Collectives drops into these performance\-critical `AllGather` collectives, improving training throughput\.
+
+**Train with SMDDP Collectives**
+
+When your training job has sharded data parallelism activated and meets the [Supported configurations](#sharded-data-parallelism-smddp-collectives-supported-config), SMDDP Collectives are automatically activated\. Internally, SMDDP Collectives optimize the `AllGather` collective to be performant on the AWS infrastructure and falls back to NCCL for all other collectives\. Furthermore, under unsupported configurations, all collectives, including `AllGather`, automatically use the NCCL backend\.
+
+Since the SageMaker model parallelism library version 1\.13\.0, the `"ddp_dist_backend"` parameter is added to the `modelparallel` options\. The default value for this configuration parameter is `"auto"`, which uses SMDDP Collectives whenever possible, and falls back to NCCL otherwise\. To force the library to always use NCCL, specify `"nccl"` to the `"ddp_dist_backend"` configuration parameter\. 
+
+The following code example shows how to set up a PyTorch estimator using the sharded data parallelism with the `"ddp_dist_backend"` parameter, which is set to `"auto"` by default and, therefore, optional to add\. 
+
+```
+import sagemaker
+from sagemaker.pytorch import PyTorch
+
+smp_options = {
+    "enabled":True,
+    "parameters": {                        
+        "partitions": 1,
+        "ddp": True,
+        "sharded_data_parallel_degree": 64
+        "bf16": True,
+        "ddp_dist_backend": "auto"  # Specify "nccl" to force to use NCCL.
+    }
+}
+
+mpi_options = {
+    "enabled" : True,                      # Required
+    "processes_per_host" : 8               # Required
+}
+
+smd_mp_estimator = PyTorch(
+    entry_point="your_training_script.py", # Specify your train script
+    source_dir="location_to_your_script",
+    role=sagemaker.get_execution_role(),
+    instance_count=8,
+    instance_type='ml.p4d.24xlarge',
+    framework_version='1.12.1',
+    py_version='py3',
+    distribution={
+        "smdistributed": {"modelparallel": smp_options},
+        "mpi": mpi_options
+    },
+    base_job_name="sharded-data-parallel-demo",
+)
+
+smd_mp_estimator.fit('s3://my_bucket/my_training_data/')
+```
+
+**Supported configurations**
+
+The `AllGather` operation with SMDDP Collectives are activated in training jobs when all the following configuration requirements are met\.
++ The sharded data parallelism degree greater than 1
++ `Instance_count` greater than 1 
++ `Instance_type` equal to `ml.p4d.24xlarge` 
++ SageMaker training container for PyTorch v1\.12\.1 or later
++ The SageMaker data parallelism library v1\.6\.0 or later
++ The SageMaker model parallelism library v1\.13\.0 or later
+
+**Performance and memory tuning**
+
+SMDDP Collectives utilize additional GPU memory\. There are two environment variables to configure the GPU memory usage depending on different model training use cases\.
++ `SMDDP_AG_SCRATCH_BUFFER_SIZE_BYTES` – During the SMDDP `AllGather` operation, the `AllGather` input buffer is copied into a temporary buffer for inter\-node communication\. The `SMDDP_AG_SCRATCH_BUFFER_SIZE_BYTES` variable controls the size \(in bytes\) of this temporary buffer\. If the size of the temporary buffer is smaller than the `AllGather` input buffer size, the `AllGather` collective falls back to use NCCL\.
+  + Default value: 16 \* 1024 \* 1024 \(16 MB\)
+  + Acceptable values: any multiple of 8192
++  `SMDDP_AG_SORT_BUFFER_SIZE_BYTES` – The `SMDDP_AG_SORT_BUFFER_SIZE_BYTES` variable is to size the temporary buffer \(in bytes\) to hold data gathered from inter\-node communication\. If the size of this temporary buffer is smaller than `1/8 * sharded_data_parallel_degree * AllGather input size`, the `AllGather` collective falls back to use NCCL\.
+  + Default value: 128 \* 1024 \* 1024 \(128 MB\)
+  + Acceptable values: any multiple of 8192
+
+**Tuning guidance on the buffer size variables**
+
+The default values for the environment variables should work well for most use cases\. We recommend tuning these variables only if training runs into the out\-of\-memory \(OOM\) error\. 
+
+The following list discusses some tuning tips to reduce the GPU memory footprint of SMDDP Collectives while retaining the performance gain from them\.
++ Tuning `SMDDP_AG_SCRATCH_BUFFER_SIZE_BYTES`
+  + The `AllGather` input buffer size is smaller for smaller models\. Hence, the required size for `SMDDP_AG_SCRATCH_BUFFER_SIZE_BYTES` can be smaller for models with fewer parameters\.
+  + The `AllGather` input buffer size decreases as `sharded_data_parallel_degree` increases, because the model gets sharded across more GPUs\. Hence, the required size for `SMDDP_AG_SCRATCH_BUFFER_SIZE_BYTES` can be smaller for training jobs with large values for `sharded_data_parallel_degree`\.
++ Tuning `SMDDP_AG_SORT_BUFFER_SIZE_BYTES`
+  + The amount of data gathered from inter\-node communication is less for models with fewer parameters\. Hence, the required size for `SMDDP_AG_SORT_BUFFER_SIZE_BYTES` can be smaller for such models with fewer number of parameters\.
+
+Some collectives might fall back to use NCCL; hence, you might not get the performance gain from the optimized SMDDP collectives\. If additional GPU memory is available for use, you can consider increasing the values of `SMDDP_AG_SCRATCH_BUFFER_SIZE_BYTES` and `SMDDP_AG_SORT_BUFFER_SIZE_BYTES` to benefit from the performance gain\.
+
+The following code shows how you can configure the environment variables by appending them to `mpi_options` in the distribution parameter for the PyTorch estimator\.
+
+```
+import sagemaker
+from sagemaker.pytorch import PyTorch
+
+smp_options = {
+    .... # All modelparallel configuration options go here
+}
+
+mpi_options = {
+    "enabled" : True,                      # Required
+    "processes_per_host" : 8               # Required
+}
+
+# Use the following two lines to tune values of the environment variables for buffer
+mpioptions += "-x SMDDP_AG_SCRATCH_BUFFER_SIZE_BYTES=8192" 
+mpioptions += "-x SMDDP_AG_SORT_BUFFER_SIZE_BYTES=8192"
+
+smd_mp_estimator = PyTorch(
+    entry_point="your_training_script.py", # Specify your train script
+    source_dir="location_to_your_script",
+    role=sagemaker.get_execution_role(),
+    instance_count=8,
+    instance_type='ml.p4d.24xlarge',
+    framework_version='1.12.1',
+    py_version='py3',
+    distribution={
+        "smdistributed": {"modelparallel": smp_options},
+        "mpi": mpi_options
+    },
+    base_job_name="sharded-data-parallel-demo-with-tuning",
+)
+
+smd_mp_estimator.fit('s3://my_bucket/my_training_data/')
+```
+
 ## Mixed Precision Training with Sharded Data Parallelism<a name="model-parallel-extended-features-pytorch-sharded-data-parallelism-16bits-training"></a>
 
 To further save GPU memory with half\-precision floating point numbers and sharded data parallelism, you can activate 16\-bit floating point format \(FP16\) or [Brain floating point format](https://en.wikichip.org/wiki/brain_floating-point_format) \(BF16\) by adding one additional parameter to the distributed training configuration\.
 
 **Note**  
-You can't activate both data types in one training job, and the `fp16` and `bf16` parameters are mutually exclusive\.
+Mixed precision training with sharded data parallelism is available in the SageMaker model parallelism library v1\.11\.0 and later\.
 
 **For FP16 Training with Sharded Data Parallelism**
 
@@ -129,7 +255,7 @@ smp_options = {
 
 ## Tips and Considerations for Using Sharded Data Parallelism<a name="model-parallel-extended-features-pytorch-sharded-data-parallelism-considerations"></a>
 
-Consider the following when using the SageMaker model parallel library's sharded data parallelism\.
+Consider the following when using the SageMaker model parallelism library's sharded data parallelism\.
 + Sharded data parallelism is compatible with FP16 training\. To run FP16 training, see [FP16 Training with Model Parallelism](model-parallel-extended-features-pytorch-fp16.md)\.
 + Sharded data parallelism currently is not compatible with [tensor parallelism](model-parallel-extended-features-pytorch-tensor-parallelism.md), [pipeline parallelism](model-parallel-intro.md#model-parallel-intro-pp), and [optimizer state sharding](model-parallel-extended-features-pytorch-optimizer-state-sharding.md)\. To activate sharded data parallelism, set tensor and pipeline parallelism degrees to 1, and turn off optimizer state sharding\. 
 

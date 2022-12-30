@@ -17,7 +17,7 @@ To create an Earth Observation job \(EOJ\) using the SageMaker geospatial UI, do
 
    1. **Job name**– Must contain a maximum of 63 alphanumeric characters\. Can include hyphens \(\-\) but not spaces\. 
 
-   1. **Choose a model**– From the models available for your data, choose any one\. See [Types of Models](https://docs.aws.amazon.com/) to learn more about the models\.
+   1. **Choose a model**– From the models available for your data, choose any one\. See [Types of Operations](https://docs.aws.amazon.com/sagemaker/latest/dg/geospatial-eoj-models.html) to learn more about the models\.
 
 1. Select **Next**\.
 

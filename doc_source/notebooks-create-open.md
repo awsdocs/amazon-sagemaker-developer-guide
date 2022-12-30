@@ -46,7 +46,7 @@ Amazon SageMaker Studio can only open notebooks listed in the Studio file browse
 
 1. To open the Launcher, choose **Amazon SageMaker Studio** at the top left of the Studio interface or use the keyboard shortcut `Ctrl + Shift + L`\.
 
-   To learn about all the available ways to open the Launcher, see [](studio-launcher.md)
+   To learn about all the available ways to open the Launcher, see [Use the Amazon SageMaker Studio Launcher](studio-launcher.md)
 
 1. In the Launcher, in the **Notebooks and compute resources** section, choose **Change environment**\.  
 ![\[SageMaker Studio set notebook environment.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-launcher-notebook-creation.png)

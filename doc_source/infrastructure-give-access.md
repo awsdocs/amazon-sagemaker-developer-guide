@@ -21,3 +21,4 @@ You specify your private VPC configuration when you create jobs by specifying su
 + [Give Batch Transform Jobs Access to Resources in Your Amazon VPC](batch-vpc.md)
 + [Give Amazon SageMaker Clarify Jobs Access to Resources in Your Amazon VPC](clarify-vpc.md)
 + [Give SageMaker Compilation Jobs Access to Resources in Your Amazon VPC](neo-vpc.md)
++ [Give Inference Recommender Jobs Access to Resources in Your Amazon VPC](inference-recommender-vpc-access.md)

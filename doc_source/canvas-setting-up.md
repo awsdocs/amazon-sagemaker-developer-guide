@@ -20,5 +20,6 @@ You can also set up SageMaker Canvas for your users with AWS CloudFormation\. Fo
 + [Update SageMaker Canvas for Your Users](canvas-update.md)
 + [Request a Quota Increase](canvas-requesting-quota-increases.md)
 + [Grant Users Permissions to Import Amazon Redshift Data](canvas-redshift-permissions.md)
++ [Grant Users Permissions to Collaborate with Studio](canvas-collaborate-permissions.md)
 + [Manage apps](canvas-manage-apps.md)
 + [Configure Amazon SageMaker Canvas in a VPC without internet access](canvas-vpc.md)

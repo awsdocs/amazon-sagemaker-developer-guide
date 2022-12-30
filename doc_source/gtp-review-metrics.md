@@ -1,6 +1,6 @@
 # Review Metrics<a name="gtp-review-metrics"></a>
 
-Metrics are data about your Ground Truth Plus project for a specific date or over a date range\.
+Metrics are data about your SageMaker Ground Truth Plus project for a specific date or over a date range\.
 
 You can review metrics for all batches or choose a batch of your choice as shown in the following image\.
 

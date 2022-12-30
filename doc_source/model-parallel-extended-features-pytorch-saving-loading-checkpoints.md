@@ -1,6 +1,6 @@
 # Instructions for Checkpointing with Tensor Parallelism<a name="model-parallel-extended-features-pytorch-saving-loading-checkpoints"></a>
 
-The SageMaker model parallel library supports saving partial or full checkpoints with tensor parallelism\. The following guide shows how to modify your script to save and load a checkpoint when you use tensor parallelism\.
+The SageMaker model parallelism library supports saving partial or full checkpoints with tensor parallelism\. The following guide shows how to modify your script to save and load a checkpoint when you use tensor parallelism\.
 
 1. Prepare a model object and wrap it with the library's wrapper function `smp.DistributedModel()`\.
 

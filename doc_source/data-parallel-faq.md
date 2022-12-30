@@ -18,10 +18,6 @@ Yes\. You can use managed spot training\. You specify the path to the checkpoint
 
 The library can be used in single\-host multi\-device training but the library offers performance improvements only in multi\-host training\.
 
-**Q: Can the library be used with PyTorch Lightning?**
-
-No\. However, with the library’s DDP for PyTorch, you can write custom DDP to achieve the functionality\. 
-
 **Q: Where should the training dataset be stored? **
 
 The training dataset can be stored in an Amazon S3 bucket or on an Amazon FSx drive\. See this [document for various supported input file systems for a training job](https://sagemaker.readthedocs.io/en/stable/api/utility/inputs.html#sagemaker.inputs.FileSystemInput)\. 

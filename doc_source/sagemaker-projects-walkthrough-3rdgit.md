@@ -127,7 +127,7 @@ Now you approve the new model version that was created in the previous step to i
 
    The model group tab appears\.
 
-1. In the model group tab, double\-click **Version 2**\. The **Version 2** tab opens\. Choose **Update status**\.
+1. In the model group tab, double\-click **Version 1**\. The **Version 1** tab opens\. Choose **Update status**\.
 
 1. In the model **Update model version status** dialog box, in the **Status** dropdown list, select **Approve** and then choose **Update status**\.
 
@@ -165,25 +165,9 @@ To delete the AWS CloudFormation stack and the Amazon S3 bucket, you need to be 
 
 1. Select the target project from the dropdown list\. If you don’t see your project, type the project name and apply the filter to find your project\.
 
-1. 
+1. Select your project to view its details in the main panel\.
 
-**You can delete a Studio project in one of the following ways:**
-
-   1. 
-
-**You can delete the project from the projects list\.**
-
-      Right\-click the target project and choose ** Delete** from the dropdown list\.
-**Note**  
-This functionality is supported in Studio version v3\.17\.1 or higher\. For more information, see [Shut down and Update SageMaker Studio](studio-tasks-update-studio.md)\.
-
-   1. 
-
-**You can delete a project from the **Project details** section\.**
-
-      1. When you've found your project, double\-click it to view its details in the main panel\.
-
-      1. Choose **Delete** from the **Actions** menu\.
+1. Choose **Delete** from the **Actions** menu\.
 
 1. Confirm your choice by choosing **Delete** from the **Delete Project** window\.
 

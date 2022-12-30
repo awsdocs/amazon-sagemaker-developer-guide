@@ -7,16 +7,28 @@ The following SageMaker images are available in Amazon SageMaker Studio\. SageMa
 + *Base Python 2\.0 \[sagemaker\-base\-python\-38\]*
 
   Official Python 3\.8 image from DockerHub with boto3 and AWS CLI included\.
++ *Base Python 3\.0 \[sagemaker\-base\-python\-310\]*
+
+  Official Python 3\.10 image from DockerHub with boto3 and AWS CLI included\.
 + *Data Science \[datascience\-1\.0\]*
 
   `Data Science` is a Python 3\.7 [conda](https://docs.conda.io/projects/conda/en/latest/index.html) image with the most commonly used Python packages and libraries, such as NumPy and SciKit Learn\.
 + *Data Science 2\.0 \[sagemaker\-datascience\-38\]*
 
-  `Data Science 2.0` is a Python 3\.8 [conda](https://docs.conda.io/projects/conda/en/latest/index.html) image with the most commonly used Python packages and libraries, such as NumPy and SciKit Learn\.
+  `Data Science 2.0` is a Python 3\.8 [conda](https://docs.conda.io/projects/conda/en/latest/index.html) image based on [anaconda version 2021\.11](https://www.anaconda.com/blog/anaconda-individual-edition-2021-11) with the most commonly used Python packages and libraries, such as NumPy and SciKit Learn\.
++ *Data Science 3\.0 \[sagemaker\-datascience\-310\]*
+
+  `Data Science 3.0` is a Python 3\.10 [conda](https://docs.conda.io/projects/conda/en/latest/index.html) image based on [anaconda version 2022\.10](https://www.anaconda.com/blog/anaconda-distribution-2022-10) with the most commonly used Python packages and libraries, such as NumPy and SciKit Learn\.
 + *Amazon SageMaker geospatial \[sagemaker\-geospatial\-1\.0\]*
 
   Amazon SageMaker geospatial is a Python image consisting of commonly used geospatial libraries such as GDAL, Fiona, GeoPandas, Shapely, and Rasterio, and allows you to visualize geospatial data within SageMaker\. For more information, see [Amazon SageMaker geospatial Notebook SDK](https://docs.aws.amazon.com/sagemaker/latest/dg/geospatial-notebook-sdk.html)
 + *SparkMagic \[sagemaker\-sparkmagic\]*
+
+  Anaconda Individual Edition with PySpark and Spark kernels\. For more information, see [sparkmagic](https://github.com/jupyter-incubator/sparkmagic)\.
++ *SparkAnalytics 1\.0 \[sagemaker\-datascience\-38\]*
+
+  Anaconda Individual Edition with PySpark and Spark kernels\. For more information, see [sparkmagic](https://github.com/jupyter-incubator/sparkmagic)\.
++ *SparkAnalytics 2\.0 \[sagemaker\-datascience\-310\]*
 
   Anaconda Individual Edition with PySpark and Spark kernels\. For more information, see [sparkmagic](https://github.com/jupyter-incubator/sparkmagic)\.
 + *MXNet 1\.6 Python 3\.6 \(optimized for CPU\) \[mxnet\-1\.6\-cpu\-py36\]*
@@ -61,6 +73,12 @@ The following SageMaker images are available in Amazon SageMaker Studio\. SageMa
 + *PyTorch 1\.8 Python 3\.6 \(optimized for GPU\) \[pytorch\-1\.8\-gpu\-py36\]*
 
   The AWS Deep Learning Containers for PyTorch 1\.8 with CUDA 11\.1 include containers for training on GPU, optimized for performance and scale on AWS\. For more information, see [AWS Deep Learning Containers for PyTorch 1\.8\.0 ](http://aws.amazon.com/releasenotes/aws-deep-learning-containers-for-pytorch-1-8-0/)\.
++ *PyTorch 1\.12 Python 3\.8 \(optimized for CPU\) \[pytorch\-1\.12\-cpu\-py38\]*
+
+  The AWS Deep Learning Containers for PyTorch 1\.12 with CUDA 11\.3 include containers for training on CPU, optimized for performance and scale on AWS\. For more information, see [AWS Deep Learning Containers for PyTorch 1\.12\.0 ](http://aws.amazon.com/releasenotes/aws-deep-learning-containers-for-pytorch-1-12-0-on-sagemaker/)\.
++ *PyTorch 1\.12 Python 3\.8 \(optimized for GPU\) \[pytorch\-1\.12\-gpu\-py38\]*
+
+  The AWS Deep Learning Containers for PyTorch 1\.12 with CUDA 11\.3 include containers for training on GPU, optimized for performance and scale on AWS\. For more information, see [AWS Deep Learning Containers for PyTorch 1\.12\.0](http://aws.amazon.com/releasenotes/aws-deep-learning-containers-for-pytorch-1-12-0-on-sagemaker/)\.
 + *TensorFlow 1\.15 Python 3\.6 \(optimized for CPU\) \[tensorflow\-1\.15\-cpu\-py36\]*
 
   The AWS Deep Learning Containers for TensorFlow 1\.15 include containers for training on CPU, optimized for performance and scale on AWS\. For more information, see [AWS Deep Learning Containers with TensorFlow 1\.15\.3 ](http://aws.amazon.com/releasenotes/aws-deep-learning-containers-with-tensorflow-1-15-3/)\.
@@ -91,3 +109,9 @@ The following SageMaker images are available in Amazon SageMaker Studio\. SageMa
 + *TensorFlow 2\.6 Python 3\.8 \(optimized for GPU\) \[tensorflow\-2\.6\-gpu\-py38\-cu112\-ubuntu20\.04\-v1\]*
 
   The AWS Deep Learning Containers for TensorFlow 2\.6 with CUDA 11\.2 include containers for training on GPU, optimized for performance and scale on AWS\. For more information, see [AWS Deep Learning Containers for TensorFlow 2\.6 ](http://aws.amazon.com/releasenotes/aws-deep-learning-containers-for-tensorflow-2-6/)\.
++ *TensorFlow 2\.10 Python 3\.9 \(optimized for CPU\) \[2\.10\.0\-cpu\-py39\-ubuntu20\.04\-sagemaker\-v1\.0\]*
+
+  The AWS Deep Learning Containers for TensorFlow 2\.10 with CUDA 11\.2 include containers for training on CPU, optimized for performance and scale on AWS\. For more information, see [Release Notes for Deep Learning Containers](https://docs.aws.amazon.com/deep-learning-containers/latest/devguide/dlc-release-notes.html)\.
++ *TensorFlow 2\.10 Python 3\.9 \(optimized for GPU\) \[tensorflow\-2\.10\-gpu\-py39\-cu112\-ubuntu20\.04\-sagemaker\-v1\]*
+
+  The AWS Deep Learning Containers for TensorFlow 2\.10 with CUDA 11\.2 include containers for training on GPU, optimized for performance and scale on AWS\. For more information, see [Release Notes for Deep Learning Containers](https://docs.aws.amazon.com/deep-learning-containers/latest/devguide/dlc-release-notes.html)\.

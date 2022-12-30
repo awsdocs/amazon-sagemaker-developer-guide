@@ -1,6 +1,6 @@
 # Manage Your Amazon EFS Storage Volume in SageMaker Studio<a name="studio-tasks-manage-storage"></a>
 
-The first time a user on your team onboards to Amazon SageMaker Studio, Amazon SageMaker creates an Amazon Elastic File System \(Amazon EFS\) volume for the team\. A home directory is created in the volume for each user who onboards to Studio as part of your team\. Notebook files and data files are stored in these directories\. Users don't have access to other team member's home directories\.
+The first time a user on your team onboards to Amazon SageMaker Studio, Amazon SageMaker creates an Amazon Elastic File System \(Amazon EFS\) volume for the team\. A home directory is created in the volume for each user who onboards to Studio as part of your team\. Notebook files and data files are stored in these directories\. Users don't have access to other team member's home directories\. Amazon SageMaker Domain does not support mounting custom or additional Amazon EFS volumes\.
 
 **Important**  
 Don't delete the Amazon EFS volume\. If you delete it, the domain will no longer function and all of your users will lose their work\.

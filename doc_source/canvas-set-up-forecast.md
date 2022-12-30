@@ -2,6 +2,8 @@
 
 In order to perform time series forecasts in Amazon SageMaker Canvas, your users must have the necessary permissions\. The preferred method to give your users these permissions is to turn on the time series forecasting option when setting up the Amazon SageMaker Domain, or when editing the settings for a specific user profile\. You can also use the manual method of attaching a policy and trust relationship for Amazon Forecast to the AWS Identity and Access Management \(IAM\) role\.
 
+If you want to encrypt your time series forecasts with your own key, you must use an AWS KMS key and modify your KMS key's policy to grant permissions to the role used by Amazon Forecast\. For more information about setting up your KMS key and modifying the policy for time series forecasting, see [Prerequisites for time series forecasting](canvas-kms.md#canvas-kms-app-data-prereqs-time-series)\.
+
 ## Domain setup method<a name="canvas-set-up-forecast-domain"></a>
 
 SageMaker provides you with the option to grant time series forecasting permissions to users through the Domain settings\. You can toggle the permissions for all of the users in your Domain, and SageMaker manages attaching the required IAM policy and trust relationship for you\.
@@ -121,4 +123,7 @@ To configure an IAM role with the manual method, use the following procedure\.
 
 1. After editing the trust policy, choose **Update policy**\.
 
-You should now have an IAM role that has the policy `[AmazonSageMakerCanvasForecastAccess](https://docs.aws.amazon.com/sagemaker/latest/dg/security-iam-awsmanpol-canvas.html#security-iam-awsmanpol-AmazonSageMakerCanvasForecastAccess)` attached to it and a trust relationship established with Amazon Forecast, granting users permission to perform time series forecasting in SageMaker Canvas\. For information about AWS managed policies, see [Managed policies and inline policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)\.
+You should now have an IAM role that has the policy `[AmazonSageMakerCanvasForecastAccess](https://docs.aws.amazon.com/sagemaker/latest/dg/security-iam-awsmanpol-canvas.html#security-iam-awsmanpol-AmazonSageMakerCanvasForecastAccess)` attached to it and a trust relationship established with Amazon Forecast, giving users permission to perform time series forecasting in SageMaker Canvas\. For information about AWS managed policies, see [Managed policies and inline policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)\.
+
+**Note**  
+If you use this method to set up time series forecasting and want to use AWS KMS encryption for your forecasts, then you must configure your KMS key’s policy to grant additional permissions\. For more information, see [Prerequisites for time series forecasting](canvas-kms.md#canvas-kms-app-data-prereqs-time-series)\.

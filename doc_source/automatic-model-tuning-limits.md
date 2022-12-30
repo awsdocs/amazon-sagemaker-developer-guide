@@ -15,7 +15,7 @@ SageMaker sets the following default limits for resources used by automatic mode
 |  \[Grid\] Number of training jobs per hyperparameter tuning job, either specified explicitly or inferred from the search space  |  All  |  750  |  N/A  | 
 |  Maximum run time for a hyperparameter tuning job  |  All  |  30 days  |  N/A  | 
 
-\* Every possible value in a categorical hyperparameter counts against this limit\.
+\* Each categorical hyperparameter can have at most 30 different values\.
 
 ## Resource limit example<a name="automatic-model-tuning-limits-example"></a>
 

@@ -51,6 +51,8 @@ Encryption in transit is only available for Amazon SageMaker Studio\.
 
 1. Select **Next**\. 
 
+If you want to collaborate with Studio users and share models, you must add additional permissions to the AWS Identity and Access Management \(IAM\) role you chose when setting up the user profile\. For instructions on how to add the policy to the role, see [Grant Users Permissions to Collaborate with Studio](canvas-collaborate-permissions.md)\.
+
 Use the following procedure to configure the SageMaker Canvas settings\.
 
 1. For the **Canvas base permissions configuration**, leave the **Enable Canvas base permissions** option turned on \(it is turned on by default\)\. This establishes the minimum required permissions to use the SageMaker Canvas app\.
