@@ -153,10 +153,10 @@ Use the following resources to learn more about using the model parallelism feat
 
 ## Extend a Prebuilt Docker Container that Contains SageMaker's Distributed Model Parallel Library<a name="model-parallel-customize-container"></a>
 
-To extend a prebuilt container and use SageMaker's distributed model parallel library, you must use one of the available AWS Deep Learning Containers \(DLC\) images for PyTorch or TensorFlow\. The SageMaker distributed model parallel library is included in the TensorFlow \(2\.3\.0 and later\) and PyTorch \(1\.6\.0 and later\) DLC images with CUDA \(`cuxyz`\)\. For a complete list of DLC images, see [Available Deep Learning Containers Images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md) in the *AWS Deep Learning Containers GitHub repository*\.
+To extend a prebuilt container and use SageMaker's model parallelism library, you must use one of the available AWS Deep Learning Containers \(DLC\) images for PyTorch or TensorFlow\. The SageMaker model parallelism library is included in the TensorFlow \(2\.3\.0 and later\) and PyTorch \(1\.6\.0 and later\) DLC images with CUDA \(`cuxyz`\)\. For a complete list of DLC images, see [Available Deep Learning Containers Images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md) in the *AWS Deep Learning Containers GitHub repository*\.
 
 **Tip**  
-We recommend that you use the image that contains the latest version of TensorFlow or PyTorch to access the most up\-to\-date version of the SageMaker distributed model parallel library\.
+We recommend that you use the image that contains the latest version of TensorFlow or PyTorch to access the most up\-to\-date version of the SageMaker model parallelism library\.
 
 For example, your Dockerfile should contain a `FROM` statement similar to the following:
 

@@ -26,6 +26,9 @@ F1 scores vary between 0 and 1\. A score of 1 indicates the best possible perfor
 **`F1macro`**  
 The `F1macro` score applies F1 scoring to multiclass classification problems\. It does this by calculating the precision and recall, and then taking their harmonic mean to calculate the F1 score for each class\. Lastly, the F1macro averages the individual scores to obtain the `F1macro` score\. `F1macro` scores vary between 0 and 1\. A score of 1 indicates the best possible performance, and 0 indicates the worst\.
 
+**`InferenceLatency`**  
+Inference latency is the approximate amount of time between making a request for a model prediction to receiving it from a real time endpoint to which the model is deployed\. This metric is measured in seconds and only available in ensembling mode\.
+
 **`LogLoss`**  
 Log loss, also known as cross\-entropy loss, is a metric used to evaluate the quality of the probability outputs, rather than the outputs themselves\. It is used in both binary and multiclass classification, neural nets, and is also the cost function for logistic regression\. Log loss is an important metric to indicate when a model makes incorrect predictions with high probabilities\. Values range from 0 to infinity\. A value of 0 represents a model that perfectly predicts the data\.
 
@@ -33,7 +36,7 @@ Log loss, also known as cross\-entropy loss, is a metric used to evaluate the qu
 The mean absolute error \(MAE\) is a measure of how different the predicted and actual values are, when they're averaged over all values\. MAE is commonly used in regression analysis to understand model prediction error\. If there is linear regression, MAE represents the average distance from a predicted line to the actual value\. MAE is defined as the sum of absolute errors divided by the number of observations\. Values range from 0 to infinity, with smaller numbers indicating a better model fit to the data\.
 
 **`MSE`**  
-The mean squared error \(MSE\) is the average of the squared differences between the predicted and actual values\. It is used for regression\. MSE values are always positive\. The better a model is at predicting the actual values, the smaller the MSE value is
+The mean squared error \(MSE\) is the average of the squared differences between the predicted and actual values\. It is used for regression\. MSE values are always positive\. The better a model is at predicting the actual values, the smaller the MSE value is\.
 
 **`Precision`**  
 Precision measures how well an algorithm predicts the true positives \(TP\) out of all of the positives that it identifies\. It is defined as follows: Precision = TP/\(TP\+FP\), with values ranging from zero \(0\) to one \(1\), and is used in binary classification\. Precision is an important metric when the cost of a false positive is high\. For example, the cost of a false positive is very high if an airplane safety system is falsely deemed safe to fly\. A false positive \(FP\) reflects a positive prediction that is actually negative in the data\.
@@ -49,15 +52,15 @@ Recall measures how well an algorithm correctly predicts all of the true positiv
 Recall is important when testing for cancer because it's used to find all of the true positives\. A false positive \(FP\) reflects a positive prediction that is actually negative in the data\. It is often insufficient to measure only recall, because predicting every output as a true positive will yield a perfect recall score\.
 
 **`RecallMacro`**  
-The RecallMacro computes recall for multiclass classification problems by calculating recall for each class and averaging scores to obtain recall for several classes\. RecallMacro scores range from 0 to 1\. Higher scores reflect the model's ability to predict true positives \(TP\) in a dataset\. Whereas, a true positive reflects a positive prediction that is also an actual positive value in the data\. It is often insufficient to measure only recall, because predicting every output as a true positive will yield a perfect recall score\.
+The `RecallMacro` computes recall for multiclass classification problems by calculating recall for each class and averaging scores to obtain recall for several classes\. `RecallMacro` scores range from 0 to 1\. Higher scores reflect the model's ability to predict true positives \(TP\) in a dataset\. Whereas, a true positive reflects a positive prediction that is also an actual positive value in the data\. It is often insufficient to measure only recall, because predicting every output as a true positive will yield a perfect recall score\.
 
 **`RMSE`**  
 Root mean squared error \(RMSE\) measures the square root of the squared difference between predicted and actual values, and it's averaged over all values\. It is used in regression analysis to understand model prediction error\. It's an important metric to indicate the presence of large model errors and outliers\. Values range from zero \(0\) to infinity, with smaller numbers indicating a better model fit to the data\. RMSE is dependent on scale, and should not be used to compare datasets of different sizes\.
 
 Metrics that are automatically calculated for a candidate model are determined by the type of problem being addressed\.
-+ Regression: `MAE`, `MSE`, `R2`, `RMSE`
-+ Binary classification: `Accuracy`, `AUC`, `BalancedAccuracy`, `F1`, `LogLoss`, `Precision`, `Recall`
-+ Multiclass classification: `Accuracy`, `BalancedAccuracy`, `F1macro`, `LogLoss`, `PrecisionMacro`, `RecallMacro`
++ Regression: `InferenceLatency`, `MAE`, `MSE`, `R2`, `RMSE`
++ Binary classification: `Accuracy`, `AUC`, `BalancedAccuracy`, `F1`, `InferenceLatency`, `LogLoss`, `Precision`, `Recall`
++ Multiclass classification: `Accuracy`, `BalancedAccuracy`, `F1macro`, `InferenceLatency`, `LogLoss`, `PrecisionMacro`, `RecallMacro`
 
 ## Cross\-validation in Autopilot<a name="autopilot-cross-validation"></a>
 

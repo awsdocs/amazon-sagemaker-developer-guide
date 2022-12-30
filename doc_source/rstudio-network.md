@@ -12,6 +12,7 @@ RStudio in Amazon SageMaker supports [AWS PrivateLink](https://docs.aws.amazon.c
 
 The following are required to use RStudio in VPC\-only mode\. For more information on selecting a VPC, see [Choose a VPC](onboard-vpc.md)\.
 + A private subnet with either access the internet to make a call to Amazon SageMaker & License Manager, or Amazon Virtual Private Cloud \(Amazon VPC\) endpoints for both Amazon SageMaker & License Manager\.
++ The Domain cannot have any more than two associated Security Groups\.
 + A Security Group ID for use with the Domain in Domain Settings\. This must allow all outbound access\.
 + A Security Group ID for use with the Amazon VPC endpoint\. This security group must allow inbound traffic from the Domain Security Group ID\.
 + Amazon VPC Endpoint for `sagemaker.api` and AWS License Manager\. This must be in the same Amazon VPC as the private subnet\. 

@@ -4,7 +4,7 @@ You can stop a training job with the Amazon SageMaker Studio UI\. When you stop 
 
 **To stop a training job**
 
-1. Follow the [View and Compare Experiments, Trials, and Trial Components](experiments-view-compare.md) procedure on this page until you open the **Describe Trial Component** tab\.
+1. Follow the [View, search, and compare experiment runs](experiments-view-compare.md) procedure on this page until you open the **Describe Trial Component** tab\.
 
 1. At the upper\-right side of the tab, choose **Stop training job**\. The **Status** at the top left of the tab changes to **Stopped**\.
 

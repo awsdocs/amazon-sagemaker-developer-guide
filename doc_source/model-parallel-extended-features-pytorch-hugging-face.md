@@ -1,15 +1,15 @@
 # Support for Hugging Face Transformer Models<a name="model-parallel-extended-features-pytorch-hugging-face"></a>
 
-The SageMaker model parallel library's tensor parallelism offers out\-of\-the\-box support for the following Hugging Face Transformer models:
-+ GPT\-2, BERT, and RoBERTa \(Available in the SageMaker model parallel library v1\.7\.0 and later\)
-+ GPT\-J \(Available in the SageMaker model parallel library v1\.8\.0 and later\)
-+ GPT\-Neo \(Available in the SageMaker model parallel library v1\.10\.0 and later\)
+The SageMaker model parallelism library's tensor parallelism offers out\-of\-the\-box support for the following Hugging Face Transformer models:
++ GPT\-2, BERT, and RoBERTa \(Available in the SageMaker model parallelism library v1\.7\.0 and later\)
++ GPT\-J \(Available in the SageMaker model parallelism library v1\.8\.0 and later\)
++ GPT\-Neo \(Available in the SageMaker model parallelism library v1\.10\.0 and later\)
 
 **Note**  
 For any other Transformers models, you need to use the [smdistributed\.modelparallel\.torch\.tp\_register\_with\_module\(\)](https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/latest/smd_model_parallel_pytorch_tensor_parallel.html#smdistributed.modelparallel.torch.tp_register_with_module) API to apply tensor parallelism\.
 
 **Note**  
-To use tensor parallelism for training Hugging Face Transformer models, make sure you use Hugging Face Deep Learning Containers for PyTorch that has the SageMaker model parallel library v1\.7\.0 and later\. For more information, see the [SageMaker model parallel library release notes](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel_release_notes/smd_model_parallel_change_log.html)\.
+To use tensor parallelism for training Hugging Face Transformer models, make sure you use Hugging Face Deep Learning Containers for PyTorch that has the SageMaker model parallelism library v1\.7\.0 and later\. For more information, see the [SageMaker model parallelism library release notes](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel_release_notes/smd_model_parallel_change_log.html)\.
 
 ## Supported Models Out of the Box<a name="model-parallel-extended-features-pytorch-hugging-face-out-of-the-box"></a>
 
@@ -22,10 +22,10 @@ The `state_dict` translation functions between Hugging Face Transformers and `sm
 +  `smdistributed.modelparallel.torch.nn.huggingface.bert.translate_hf_state_dict_to_smdistributed_bert(state_dict)` 
 +  `smdistributed.modelparallel.torch.nn.huggingface.roberta.translate_state_dict_to_hf_roberta(state_dict, max_seq_len=None)` 
 +  `smdistributed.modelparallel.torch.nn.huggingface.roberta.translate_hf_state_dict_to_smdistributed_roberta(state_dict)` 
-+ `smdistributed.modelparallel.torch.nn.huggingface.gptj.translate_state_dict_to_hf_gptj(state_dict, max_seq_len=None)` \(Available in the SageMaker model parallel library v1\.8\.0 and later\)
-+ `smdistributed.modelparallel.torch.nn.huggingface.gptj.translate_hf_gptj_state_dict_to_smdistributed_gptj` \(Available in the SageMaker model parallel library v1\.8\.0 and later\)
-+ `smdistributed.modelparallel.torch.nn.huggingface.gptneo.translate_state_dict_to_hf_gptneo(state_dict, max_seq_len=None)` \(Available in the SageMaker model parallel library v1\.10\.0 and later\)
-+ `smdistributed.modelparallel.torch.nn.huggingface.gptneo.translate_hf_state_dict_to_smdistributed_gptneo(state_dict)` \(Available in the SageMaker model parallel library v1\.10\.0 and later\)
++ `smdistributed.modelparallel.torch.nn.huggingface.gptj.translate_state_dict_to_hf_gptj(state_dict, max_seq_len=None)` \(Available in the SageMaker model parallelism library v1\.8\.0 and later\)
++ `smdistributed.modelparallel.torch.nn.huggingface.gptj.translate_hf_gptj_state_dict_to_smdistributed_gptj` \(Available in the SageMaker model parallelism library v1\.8\.0 and later\)
++ `smdistributed.modelparallel.torch.nn.huggingface.gptneo.translate_state_dict_to_hf_gptneo(state_dict, max_seq_len=None)` \(Available in the SageMaker model parallelism library v1\.10\.0 and later\)
++ `smdistributed.modelparallel.torch.nn.huggingface.gptneo.translate_hf_state_dict_to_smdistributed_gptneo(state_dict)` \(Available in the SageMaker model parallelism library v1\.10\.0 and later\)
 
 **Example usage of the GPT\-2 translation function**
 

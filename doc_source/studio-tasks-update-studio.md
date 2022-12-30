@@ -15,11 +15,13 @@ The following topic shows how to update the JupyterServer App from the SageMaker
 
 1. Navigate to [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Choose **Control panel**\.
+1. Choose **Domains**\.
 
-1. Under **Users**, select your user name\.
+1. Select the Domain that includes the Studio application that you want to update\.
 
-1. Under **Apps**, in the row displaying **JupyterServer**, choose **Delete app**\.
+1. Under **User profiles**, select your user name\.
+
+1. Under **Apps**, in the row displaying **JupyterServer**, choose **Action**, then choose **Delete**\.
 
 1. Choose **Yes, delete app**\.
 

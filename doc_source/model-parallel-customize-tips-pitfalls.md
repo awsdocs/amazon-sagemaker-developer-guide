@@ -1,6 +1,6 @@
-# SageMaker Distributed Model Parallel Configuration Tips and Pitfalls<a name="model-parallel-customize-tips-pitfalls"></a>
+# The SageMaker Distributed Model Parallelism Library Configuration Tips and Pitfalls<a name="model-parallel-customize-tips-pitfalls"></a>
 
-Review the following tips and pitfalls before using Amazon SageMaker's distributed model parallel library\. This list includes tips that are applicable across frameworks\. For TensorFlow and PyTorch specific tips, see [Modify a TensorFlow Training Script](model-parallel-customize-training-script-tf.md) and [Modify a PyTorch Training Script](model-parallel-customize-training-script-pt.md), respectively\. 
+Review the following tips and pitfalls before using Amazon SageMaker's model parallelism library\. This list includes tips that are applicable across frameworks\. For TensorFlow and PyTorch specific tips, see [Modify a TensorFlow Training Script](model-parallel-customize-training-script-tf.md) and [Modify a PyTorch Training Script](model-parallel-customize-training-script-pt.md), respectively\. 
 
 ## Batch Size and Number of Microbatches<a name="model-parallel-customize-tips-pitfalls-batch-size"></a>
 + The library is most efficient when the batch size is increased\. For use cases where the model fits within a single device, but can only be trained with a small batch size, batch size can and should be increased after the library is integrated\. Model parallelism saves memory for large models, enabling you to train using batch sizes that previously did not fit in memory\.

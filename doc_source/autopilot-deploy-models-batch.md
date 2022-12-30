@@ -1,14 +1,68 @@
 # Batch inferencing<a name="autopilot-deploy-models-batch"></a>
 
-Batch inferencing, also known as offline inferencing, generates model predictions on a batch of observations\. Batch inference is a good option if you don't need an immediate response to a model prediction request\. 
+Batch inferencing, also known as offline inferencing, generates model predictions on a batch of observations\. Batch inference is a good option for large datasets or if you don't need an immediate response to a model prediction request\. 
 
-Offline predictions are suitable for large datasets or when you need to wait a long time for a response\. By contrast, online inference, or [real\-time inferencing](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-deploy-models.html#autopilot-deploy-models-realtime), generates predictions in real time\. 
+By contrast, online inference \([real\-time inferencing](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-deploy-models.html#autopilot-deploy-models-realtime)\) generates predictions in real time\. 
 
-You can make batch inferences from an Autopilot model using the [SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/), the [AWS SDK for Python \(Boto3\)](http://aws.amazon.com/sdk-for-python/) or [AWS CLI](https://docs.aws.amazon.com/cli/)\.
+You can make batch inferences from an Autopilot model using the [SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/), the Autopilot user interface \(UI\), the [AWS SDK for Python \(Boto3\)](http://aws.amazon.com/sdk-for-python/), or the AWS Command Line Interface \([AWS CLI](https://docs.aws.amazon.com/cli/)\)\.
 
-## Batch inferencing steps<a name="autopilot-deploy-models-batch-steps"></a>
+The following tabs show three options for deploying your model: Using APIs, Autopilot UI, or using APIs to deploy from different accounts\. These instructions assume that you have already created a model in Autopilot\. If you don't have a model, see [Create an Amazon SageMaker Autopilot experiment](autopilot-automate-model-development-create-experiment.md)\. To see examples for each option, open each tab\.
 
-To use the SageMaker APIs for batch inferencing, there are three general steps:
+## Deploy a model using Autopilot UI<a name="autopilot-deploy-models-batch-ui"></a>
+
+The Autopilot UI contains helpful dropdown menus, toggles, tooltips, and more to help you navigate through model deployment\.
+
+The following steps show how to deploy a model from an Autopilot experiment for batch predictions\. 
+
+1. Sign in at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) and select **Studio** from the navigation pane\.
+
+1. On the left navigation pane, choose **Studio**\.
+
+1. Under **Get started**, select the Domain that you want to launch the Studio application in\. If your user profile only belongs to one Domain, you do not see the option for selecting a Domain\.
+
+1. Select the user profile that you want to launch the Studio application for\. If there is no user profile in the Domain, choose **Create user profile**\. For more information, see [Add and Remove User Profiles](https://docs.aws.amazon.com/sagemaker/latest/dg/domain-user-profile-add-remove.html)\.
+
+1. Choose **Launch Studio**\. If the user profile belongs to a shared space, choose **Open Spaces**\. 
+
+1. When the SageMaker Studio console opens, choose the **Launch SageMaker Studio** button\.
+
+1. Select **AutoML** from the left navigation pane\.
+
+1. Under **Name**, select the Autopilot experiment corresponding to the model that you want to deploy\. This opens a new **AUTOPILOT JOB** tab\.
+
+1. In the **Model name** section, select the model that you want to deploy\.
+
+1. Choose **Deploy model**\. This opens a new tab\.
+
+1. Choose **Make batch predictions** at the top of the page\.
+
+1. For **Batch transform job configuration**, input the **Instance type**, **Instance count** and other optional information\.
+
+1. In the **Input data configuration** section, open the dropdown menu\. 
+
+   1. For **S3 data type**, choose **ManifestFile** or **S3Prefix**\.
+
+   1. For **Split type**, choose **Line**, **RecordIO**, **TFRecord** or **None**\.
+
+   1. For **Compression**, choose **Gzip** or **None**\. 
+
+1. For **S3 location**, enter the Amazon S3 bucket location of the input data and other optional information\.
+
+1. Under **Output data configuration**, enter the S3 bucket for the output data, and choose how to [assemble the output](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformOutput.html#sagemaker-Type-TransformOutput-AssembleWith) of your job\. 
+
+   1. For **Additional configuration \(optional\)**, you can enter a MIME type and an **S3 Encryption key**\.
+
+1. For **Input/output filtering and data joins \(optional\)**, you enter a JSONpath expression to filter your input data, join the input source data with your output data, and enter a JSONpath expression to filter your output data\. 
+
+   1. For examples for each type of filter, see the [DataProcessing API](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DataProcessing.html#sagemaker-Type-DataProcessing-InputFilter)\.
+
+1. To perform batch predictions on your input dataset, select **Create batch transform job**\. A new **Batch Transform Jobs** tab appears\.
+
+1. In the **Batch Transform Jobs** tab: Locate the name of your job in **Status** section\. Then check the progress of the job\. 
+
+## Deploy using SageMaker APIs<a name="autopilot-deploy-models-batch-steps"></a>
+
+To use the SageMaker APIs for batch inferencing, there are three steps:
 
 1. **Obtain candidate definitions** 
 
@@ -28,7 +82,7 @@ To use the SageMaker APIs for batch inferencing, there are three general steps:
 
 1. **Create a SageMaker model**
 
-   Use the container definitions from the previous steps to create a SageMaker model using the [CreateModel](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) API\. See the following AWS CLI command as an example\.
+   To create a SageMaker model using the [CreateModel](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) API, use the container definitions from the previous steps\. See the following AWS CLI command as an example\.
 
    ```
    aws sagemaker create-model --model-name '<your-custom-model-name>' \
@@ -72,7 +126,7 @@ After the job is finished, the predicted result will be available in `<your-outp
 
 The output file name has the following format: `<input_data_file_name>.out`\. As an example, if your input file is `text_x.csv`, the output name will be `text_x.csv.out`\.
 
-The following tabs show code examples for SageMaker Python SDK, AWS SDK for Python \(Boto3\), and AWS CLI\.
+The following tabs show code examples for SageMaker Python SDK, AWS SDK for Python \(Boto3\), and the AWS CLI\.
 
 ------
 #### [ SageMaker Python SDK ]
@@ -298,6 +352,6 @@ The batch inference job returns a response in the following format\.
 
 ------
 
-## Batch inferencing across accounts<a name="autopilot-deploy-models-batch-across-accounts"></a>
+## Deploy models from different accounts<a name="autopilot-deploy-models-batch-across-accounts"></a>
 
-To create a batch inferencing job in a different account than the one that the model was generated in, follow the instructions in [Deploy models from different accounts](autopilot-deploy-models-realtime.md#autopilot-deploy-models-realtime-across-accounts)\. Then you can create models and transform jobs by following the [Batch inferencing steps](#autopilot-deploy-models-batch-steps)\.
+To create a batch inferencing job in a different account than the one that the model was generated in, follow the instructions in [Deploy models from different accounts](autopilot-deploy-models-realtime.md#autopilot-deploy-models-realtime-across-accounts)\. Then you can create models and transform jobs by following the [Deploy using SageMaker APIs](#autopilot-deploy-models-batch-steps)\.

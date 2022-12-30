@@ -1,17 +1,25 @@
-# Migrate resources to the new SageMaker Operators for Kubernetes<a name="kubernetes-sagemaker-operators-migrate"></a>
+# Migrate resources to the latest Operators<a name="kubernetes-sagemaker-operators-migrate"></a>
 
-The new Amazon SageMaker Operators for Kubernetes uses [AWS Controllers for Kubernetes](https://aws-controllers-k8s.github.io/community/) \(ACK\) to train, tune, and deploy machine learning models with Amazon SageMaker\. ACK is a framework for building Kubernetes custom controllers, where each controller communicates with an AWS service API\. These controllers allow Kubernetes users to provision AWS resources like databases or message queues using the Kubernetes API\. For a list of all ACK service controllers, see [Services](https://aws-controllers-k8s.github.io/community/docs/community/services/) in the ACK documentation\.
+We are stopping the development and technical support of [SageMaker Operators for Kubernetes](https://github.com/aws/amazon-sagemaker-operator-for-k8s/tree/master) in its original version\. If you are currently using version `v1.2.2` or below of the original version of SageMaker Operators for Kubernetes, we recommend migrating your resources to the latest version of the SageMaker Operators for Kubernetes, the [ACK service controller for Amazon SageMaker](https://github.com/aws-controllers-k8s/sagemaker-controller) based on [AWS Controllers for Kubernetes](https://aws-controllers-k8s.github.io/community/)\.
+
+For answers to frequently asked questions regarding the end of support of the original version of SageMaker Operators for Kubernetes, see [Announcing the End of Support of the Original Version of SageMaker Operator for Kubernetes](kubernetes-sagemaker-operators-eos-announcement.md)\.
+
+Use the following steps to migrate your resources and use ACK to train, tune, and deploy machine learning models with Amazon SageMaker\.
 
 **Note**  
-The new SageMaker Operators for Kubernetes are not backwards compatible\. Use the following steps to migrate your resources\.
+The latest SageMaker Operators for Kubernetes are not backwards compatible\.
 
-For more information, see the [ACK documentation](https://aws-controllers-k8s.github.io/community/docs/community/overview/) or the [ACK SageMaker controller GitHub repository](https://github.com/aws-controllers-k8s/sagemaker-controller)\. For a list of supported SageMaker resources, refer to the [ACK API Reference](https://aws-controllers-k8s.github.io/community/reference/)\. To get started with hands\-on examples, see [Tutorials](#migrate-resources-to-new-operators-tutorials)\.
+**Topics**
++ [Prerequisites](#migrate-resources-to-new-operators-prerequisites)
++ [Adopt resources](#migrate-resources-to-new-operators-steps)
++ [Clean up old resources](#migrate-resources-to-new-operators-cleanup)
++ [Tutorials](#migrate-resources-to-new-operators-tutorials)
 
 ## Prerequisites<a name="migrate-resources-to-new-operators-prerequisites"></a>
 
-To successfully migrate resources to the new SageMaker Operators for Kubernetes, you must:
+To successfully migrate resources to the latest SageMaker Operators for Kubernetes, you must:
 
-1. Install the new SageMaker Operators for Kubernetes\. See [Setup](https://aws-controllers-k8s.github.io/community/docs/tutorials/sagemaker-example/#setup) in *Machine Learning with the ACK SageMaker Controller* for step\-by\-step instructions\.
+1. Install the latest SageMaker Operators for Kubernetes\. See [Setup](https://aws-controllers-k8s.github.io/community/docs/tutorials/sagemaker-example/#setup) in *Machine Learning with the ACK SageMaker Controller* for step\-by\-step instructions\.
 
 1. If you are using [HostingAutoscalingPolicy resources](#migrate-resources-to-new-operators-hap), install the new Application Auto Scaling Operator\. See [Setup](https://aws-controllers-k8s.github.io/community/docs/tutorials/autoscaling-example/#setup) in *Scale SageMaker Workloads with Application Auto Scaling* for step\-by\-step instructions\. This step is optional if you are not using HostingAutoScalingPolicy resources\.
 
@@ -105,7 +113,7 @@ After the new SageMaker Operators for Kubernetes adopt your resources, it is tim
 
 ### Step 1: Uninstall the old operator<a name="migrate-resources-to-new-operators-uninstall"></a>
 
-To uninstall the old operator, see [Delete operators](kubernetes-sagemaker-operators.md#delete-operators)\.
+To uninstall the old operator, see [Delete operators](kubernetes-sagemaker-operators-end-of-support.md#delete-operators)\.
 
 **Warning**  
 Uninstall the old operator before deleting any old resources\.

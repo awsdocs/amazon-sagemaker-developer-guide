@@ -1,66 +1,66 @@
-# View and Compare Amazon SageMaker Experiments, Trials, and Trial Components<a name="experiments-view-compare"></a>
+# View, search, and compare experiment runs<a name="experiments-view-compare"></a>
 
-An Amazon SageMaker *experiment* consists of multiple *trials* with a related objective\. A trial consists of one or more *trial components*, such as a data preprocessing job and a training job\.
+An Amazon SageMaker *experiment* consists of multiple *run groups* with a related objective\. A run group consists of one or more *runs*, such as a data preprocessing job and a training job\.
 
-You use the experiments browser to display a list of these entities\. You can filter the list by entity name, type, and tags\. The entities are presented in a hierarchical view \(that is, experiments > trials > trial components\)\. Double\-click an entity to see other entities that are at a lower level in the hierarchy\. Use the breadcrumbs above the list to move to a higher level in the hierarchy\.
-
-For a tutorial using a SageMaker example notebook, see [Track and Compare Tutorial](experiments-mnist.md)\. For an overview of the Studio user interface, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
+You use the experiments browser to display a list of these entities\. You can filter the list by entity name, type, and tags\. For an overview of the Studio user interface, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
 
 **Topics**
-+ [View Experiments, Trials, and Trial Components](#experiments-view)
-+ [Compare Experiments, Trials, and Trial Components](#experiments-compare)
++ [View experiments and runs](#experiments-view)
++ [Compare and analyze runs](#experiments-compare)
 
-## View Experiments, Trials, and Trial Components<a name="experiments-view"></a>
+## View experiments and runs<a name="experiments-view"></a>
 
-Amazon SageMaker Studio provides an experiments browser that you can use to view lists of experiments, trials, and trial components\. You can choose one of these entities to view detailed information about the entity or choose multiple entities for comparison\.
+Amazon SageMaker Studio provides an experiments browser that you can use to view lists of experiments and runs\. You can choose one of these entities to view detailed information about the entity or choose multiple entities for comparison\.
 
-**To view experiments, trials, and trial components**
+**To view experiments and runs**
 
-1. In the left sidebar of Studio, choose the **SageMaker resources** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png)\)\. In the drop\-down menu, select **Experiments and trials** to display the experiments browser\.
+1. To view the experiment in Studio, in the left sidebar, choose **Experiments**\.
 
-   A list of experiments and their properties is displayed\. The list includes all the SageMaker experiments in your account, including experiments created outside of SageMaker Studio\.
-**Note**  
-To view all the properties, you might have to expand the width of the experiments browser by dragging the right border\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-view-experiment-list.png)
+   Select the name of the experiment to view all associated runs\. You can search experiments by typing directly into the **Search** bar or filtering for experiment type\. You can also choose which columns to display in your experiment or run list\.
 
-1. In the experiments list, double\-click an experiment to display a list of the trials in the experiment\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-view-trial-list.png)
+   It might take a moment for the list to refresh and display a new experiment or experiment run\. You can click **Refresh** to update the page\. Your experiment list should look similar to the following:  
+![\[A list of experiments in the SageMaker Experiments UI\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/experiments/experiments-overview.png)
 
-1. Double\-click a trial to display a list of the components in the trial\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-view-component-list.png)
+1. In the experiments list, double\-click an experiment to display a list of the runs in the experiment\.  
+![\[A list of experiment runs in the SageMaker Experiments UI\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/experiments/experiments-runs-overview.png)
 
-1. Double\-click one of the components to open the **Describe Trial Component** tab\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-view-describe-component.png)
+1. Double\-click a run to display information about a specific run\.
 
-1. On the **Describe Trial Component** tab, choose any of the following column headings to see available information about each trial component:
-   + **Charts** – Build your own charts\.
-   + **Metrics** – Metrics that are logged by a `Tracker` during a trial run\.
-   + **Parameters** – Hyperparameter values and instance information\.
-   + **Artifacts** – Amazon S3 bucket storage locations for the input dataset and the output model\.
-   + **AWS Settings** – Job name, ARN, status, creation time, training time, billable time, instance information, and others\.
-   + **Debugger** – A list of debugger rules and any issues found\.
-   + **Trial Mappings**
+   In the **Overview** pane, choose any of the following headings to see available information about each run:
+   + **Metrics** – Metrics that are logged during a run\.
+   + **Charts** – Build your own charts to compare runs\.
+   + **Output artifacts** – Any resulting artifacts of the experiment run and the artifact locations in Amazon S3\.
+   + **Bias reports** – Pe\-training or post\-training bias reports generated using Clarify\.
+   + ** Explainability**– Explainability reports generated using Clarify\.
+   + **Debugs** – A list of debugger rules and any issues found\.
 
-For information about comparing Experiments entities, see [View and Compare Amazon SageMaker Experiments, Trials, and Trial Components](#experiments-view-compare)\.
+## Compare and analyze runs<a name="experiments-compare"></a>
 
-## Compare Experiments, Trials, and Trial Components<a name="experiments-compare"></a>
+To analyze experiment runs, select the experiment of your choice in the Amazon SageMaker Studio Experiments UI and then select the runs that you want to compare\. You must select between 1 and 20 runs\. After you have your runs selected, choose **Analyze** in the upper right\-hand corner\.
 
-You can compare experiments, trials, and trial components by selecting the entities and opening them in the trial components list\. The trial components list is referred to as the Studio Leaderboard\. In the Leaderboard you can do the following:
-+ View detailed information about the entities
-+ Compare entities
-+ Stop a training job
-+ Deploy a model
+**To compare experiment runs:**
 
-**To compare experiments, trials, and trial components**
+1. After navigating to the experiment of your choice, select all the runs that you want to compare\. You must choose more than 1 and less than 20 runs to analyze\.
 
-1. In the left sidebar of SageMaker Studio, choose the **SageMaker Experiment List** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Experiment_list_squid.png) \)\.
+1. Choose **Analyze** in the upper right\-hand corner\.
 
-1. In the **Experiments** browser, choose either the experiment or trial list\. For more information, see [View Experiments, Trials, and Trial Components](#experiments-view)\.
+1. Visualize the comparative metrics of multiple experiment runs in a histogram, line chart, scatter plot, or bar chart\. To add a chart, choose **Add Chart**, select values for your chart axes, and choose **Create**\.
 
-1. Choose the experiments or trials that you want to compare, right\-click the selection, and then choose **Open in trial component list**\. The Leaderboard opens and lists the associated Experiments entities as shown in the following screenshot\.
+![\[A selection of experiment runs to analyze in the SageMaker Experiments UI\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/experiments/experiments-runs-compare.png)
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-search-components-list.png)
+You can update, download, or delete existing charts\.
 
-The Leaderboard has a **TABLE PROPERTIES** pane on the right side\. Use the **Settings** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Settings_squid.png) \) to open and close the pane\. You can hide or display properties by category or by individual columns\. When you display a chart, the pane changes to display chart properties\.
+![\[A line graph comparing the validation loss of three different experiment runs in the SageMaker Experiments UI\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/experiments/experiments-runs-analyze.png)
 
-For information on searching the Experiments entities, see [Search Experiments Using Amazon SageMaker Studio](experiments-search-studio.md)\.
+### Automatic logging<a name="experiments-compare-automatic-logging"></a>
+
+Automatic logging and visualization is available for classification models\. You can automatically log a confusion matrix, receiver operating characteristics, or precision and recall graphs\. 
+
+Log and visualize metrics with the following Python SDK methods:
++ `log_confusion_matrix`: Records a confusion matrix artifact that you can view in the **Charts** section of the **Run Overview** in Studio\.
++ `log_roc_curve`: Records a receiver operating characteristic artifact that you can view in the **Charts** section of the **Run Overview** in Studio\.
++ `log_precision_recall`: Records a precision recall graph that you can view in the **Charts** section of the **Run Overview** in Studio\.
+
+An automatically logged precision recall record creates a chart similar to the following:
+
+![\[A precision recall chart for an experiment run in the SageMaker Experiments UI\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/experiments/experiments-charts-precision-recall.png)

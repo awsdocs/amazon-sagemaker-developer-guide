@@ -26,6 +26,6 @@ For blue/green deployments that involve multiple stage traffic shifting or bakin
 Once you specify your desired deployment configuration, SageMaker handles provisioning new instances, terminating old instances, and shifting traffic for you\. You can create and manage your deployment through the existing [UpdateEndpoint](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateEndpoint.html) and [CreateEndpoint](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html) SageMaker API and AWS Command Line Interface commands\. Note that if your endpoint uses any of the features listed in the [Exclusions](deployment-guardrails-exclusions.md) page, you cannot use deployment guardrails\. See the individual deployment pages for more details on how to set up your deployment:
 + [ Blue/Green Update with All At Once Traffic Shifting](deployment-guardrails-blue-green-all-at-once.md)
 + [ Blue/Green Update with Canary Traffic Shifting](deployment-guardrails-blue-green-canary.md)
-+ [ Blue/Green Update with Linear Traffic Shifting](deployment-guardrails-blue-green-canary.md)
++ [ Blue/Green Update with Linear Traffic Shifting](deployment-guardrails-blue-green-linear.md)
 
 To follow guided examples that show how to use deployment guardrails, see our example [Jupyter notebooks](https://github.com/aws/amazon-sagemaker-examples/tree/master/sagemaker-inference-deployment-guardrails) for the canary and linear traffic shifting modes\.

@@ -68,6 +68,7 @@ response = client.create_labeling_job(
         'MaxConcurrentTaskCount': 123,
         'AnnotationConsolidationConfig': {
             'AnnotationConsolidationLambdaArn': 'arn:aws:lambda:us-east-1:432418664414:function:ACS-BoundingBox'
+          }
         },
     Tags=[
         {

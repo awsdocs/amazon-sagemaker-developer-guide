@@ -33,11 +33,11 @@ In this step, you create a SageMaker MLOps project by using a SageMaker\-provide
 
    The **Create project** tab appears\.
 
-1. For **SageMaker project templates**, choose **Organization templates**, then choose **MLOps template for model building, training, and deployment**\.
+1. If not selected already, choose **SageMaker templates**, then choose **MLOps template for model building, training, and deployment**\.
 
 1. For **Project details**, enter a name and description for your project\.
 
-When the project appears in the **Projects** list with a **Status** of **Created**, move on to the next step\.
+When the project appears in the **Projects** list with a **Status** of **Create completed**, move on to the next step\.
 
 **Important**  
 As of July 25, 2022, we require additional roles to use project templates\. If you see the error message **CodePipeline is not authorized to perform AssumeRole on role arn:aws:iam::xxx:role/service\-role/AmazonSageMakerServiceCatalogProductsCodePipelineRole**, see Steps 5\-6 of [SageMaker Studio Permissions Required to Use Projects](sagemaker-projects-studio-updates.md) for a complete list of required roles and instructions on how to create them\.
@@ -52,7 +52,7 @@ After you create the project, two CodeCommit repositories are created in the pro
 
 1. Select **Deployments** from the menu, and then select **Projects**\.
 
-1. Find the name of the project you created in the previous step and double\-click on it to open the project tab for your project\.
+1. Select the project you created in the previous step to open the project tab for your project\.
 
 1. In the project tab, choose **Repositories**, and in the **Local path** column for the repository that ends with **modelbuild**, choose **clone repo\.\.\.**\.
 
@@ -78,7 +78,7 @@ Now make a change to the pipeline code that builds the model and check in the ch
 
    Change `ml.m5.xlarge` to `ml.m5.large`, then type `Ctrl+S` to save the change\.
 
-1. Choose the **Git** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Git_squid.png) \)\. Stage, commit, and push the change in `pipeline.py`\. For information about using Git in Studio, see [Clone a Git Repository in SageMaker Studio](studio-tasks-git.md)\.  
+1. Choose the **Git** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Git_squid.png) \)\. Stage, commit, and push the change in `pipeline.py`\. Also, enter a summary in the **Summary** field and an optional description in the **Description** field\. For information about using Git in Studio, see [Clone a Git Repository in SageMaker Studio](studio-tasks-git.md)\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/projects/projects-walkthrough-commit.png)
 
 After pushing your code change, the MLOps system initiates a run of the pipeline that creates a new model version\. In the next step, you approve the new model version to deploy it to production\.
@@ -93,13 +93,13 @@ Now you approve the new model version that was created in the previous step to i
 
 1. Select **Deployments** from the menu, and then select **Projects**\.
 
-1. Find the name of the project you created in the first step and double\-click on it to open the project tab for your project\.
+1. Select the name of the project you created in the first step to open the project tab for your project\.
 
 1. In the project tab, choose **Model groups**, then double\-click the name of the model group that appears\.
 
    The model group tab appears\.
 
-1. In the model group tab, double\-click **Version 2**\. The **Version 2** tab opens\. Choose **Update status**
+1. In the model group tab, double\-click **Version 1**\. The **Version 1** tab opens\. Choose **Update status**\.
 
 1. In the model **Update model version status** dialog box, in the **Status** dropdown list, select **Approve**, then choose **Update status**\.
 

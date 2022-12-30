@@ -9,7 +9,7 @@ A shared space only supports Studio and KernelGateway applications\. A shared sp
 A shared space uses the same VPC settings as the Domain that it's created in\. 
 
 **Note**  
-Domains with AWS IAM Identity Center \(successor to AWS Single Sign\-On\) authentication do not currently support the use of shared spaces\. 
+Domains with AWS IAM Identity Center \(successor to AWS Single Sign\-On\) authentication do not currently support the use of shared spaces\. Shared spaces do not support the use of Amazon SageMaker Data Wrangler or Amazon EMR cross\-account clusters\. 
 
  **Automatic tagging** 
 

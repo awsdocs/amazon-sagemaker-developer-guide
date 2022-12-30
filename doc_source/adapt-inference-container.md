@@ -10,6 +10,8 @@ For an example Jupyter notebook that shows a complete example of extending a con
 
 The SageMaker inference toolkit is built on the multi\-model server \(MMS\)\. MMS expects a Python script that implements functions to load the model, pre\-process input data, get predictions from the model, and process the output data in a model handler\.
 
+Optionally, you can use the `context` argument in the functions you implement to access additional serving information, such as a GPU ID or the batch size\. If you are using multiple GPUs, you must specify the `context` argument in the `predict_fn` function to select a GPU for prediction\. For more information about the `context` argument and how to use it, see the examples in [The SageMaker PyTorch Model Server](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/using_pytorch.html#id3) in the *SageMaker Python SDK*\.
+
 ### The model\_fn Function<a name="byoc-inference-handler-modelfn"></a>
 
 There are default implementations for the `model_fn` function, named `default_model_fn`, on the SageMaker PyTorch and MXNet Inference toolkits\. The default implementation loads models saved using torchscript, of the form `.pt` or `.pth`\. If your model requires custom methods to load, or you want to perform extra steps when loading your model, you must implement the `model_fn` function\. The following simple example shows an implementation of a `model_fn` function that loads a PyTorch model:

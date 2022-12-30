@@ -37,13 +37,20 @@
 
 ### AWS CLI<a name="domain-space-add-cli"></a>
 
- Run the following command from the terminal of your local machine to add default shared space settings to a Domain from the AWS CLI\. shared spaces only support the use of JupyterLab 3 image ARNs\. For more information, see [JupyterLab Versioning](studio-jl.md)\.
+ Run the following command from the terminal of your local machine to add default shared space settings to a Domain from the AWS CLI\. If you are adding default shared space settings to a Domain within an Amazon VPC, you must also include a list of security groups\. shared spaces only support the use of JupyterLab 3 image ARNs\. For more information, see [JupyterLab Versioning](studio-jl.md)\.
 
 ```
+# Public Internet domain
 aws --region region \
 sagemaker update-domain \
 --domain-id domain-id \
 --default-space-settings "ExecutionRole=execution-role-arn,JupyterServerAppSettings={DefaultResourceSpec={InstanceType=system,SageMakerImageArn=sagemaker-image-arn}}"
+
+# VPCOnly domain
+aws --region region \
+sagemaker update-domain \
+--domain-id domain-id \
+--default-space-settings "ExecutionRole=execution-role-arn,JupyterServerAppSettings={DefaultResourceSpec={InstanceType=system,SageMakerImageArn=sagemaker-image-arn},SecurityGroups=[security-groups]}"
 ```
 
  Verify that the default shared space settings have been updated\. 

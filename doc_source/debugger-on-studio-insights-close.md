@@ -4,7 +4,7 @@ When you are not using the Debugger insights dashboard, shut down the instance o
 
 **To shut down the Debugger insights instance in Studio**
 
-![\[An animated screenshot that shows how to shut down a Debugger insights dashboard instance.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger/debugger-studio-insights-shut-down.gif)
+![\[An animated screenshot that shows how to shut down a Debugger insights dashboard instance.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger/debugger-studio-insights-shut-down.png)
 
 1. In Studio, select the **Running Instances and Kernels** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Running_squid.png)\)\. 
 

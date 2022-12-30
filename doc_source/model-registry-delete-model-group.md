@@ -12,9 +12,9 @@ To delete a model group in Amazon SageMaker Studio, complete the following steps
 
 1. Choose **Models**, and then **Model registry**\. A list of your model groups appears\.
 
-1. From the model groups list, double\-click the model group you want to delete\.
+1. From the model groups list, select the model group you want to delete\.
 
-   The model details tab opens to the right\.
+   The model details tab opens\.
 
 1. In the **Actions** dropdown menu in the top right corner of the model details tab, choose **Delete**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry/delete-mpg-btn.png)

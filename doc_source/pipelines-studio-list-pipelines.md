@@ -8,13 +8,12 @@ This procedure shows you how to directly find a pipeline and view its details pa
 
 1. Select **Pipelines** from the menu\.
 
-1. Use search to narrow the list of pipelines\. 
+1. Use search to narrow the list of pipelines by name\.
 
-1. Open a pipeline to view details about the pipeline\. The pipeline details tab opens and displays a list of pipeline executions\. You can start an execution or choose one of the other tabs for more information about the pipeline\. Use the **Settings** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Settings_squid.png) \) to choose which columns to display\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/yosemite/execution-list.png)
+1. Select a pipeline name to view details about the pipeline\. The pipeline details tab opens and displays a list of pipeline executions\. You can start an execution or choose one of the other tabs for more information about the pipeline\. Use the **Property Inspector** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/gears.png) \) to choose which columns to display\.
 
 1. From the pipeline details page, choose one of the following tabs to view details about the pipeline:
-   + **Executions** – Details about the executions\. You can start an execution from this tab or the **Graph** tab\.
+   + **Executions** – Details about the executions\. You can create an execution from this tab or the **Graph** tab\.
    + **Graph** – The DAG for the pipeline\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/yosemite/pipeline-graph.png)
    + **Parameters** – Includes the model approval status\.  

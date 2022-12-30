@@ -20,7 +20,7 @@ You can choose from one of the following edge devices:
 | imx8qm | NXP imx8 | Linux | ARM64 |  |  | 
 | imx8mplus | i\.MX 8M Plus | Linux | ARM64 | NPU |  | 
 | jacinto\_tda4vm | TDA4VM | Linux | ARM | TDA4VM |  | 
-| jetson\_nano |  | Linux | ARM64 | NVIDIA | \{'gpu\-code': 'sm\_53', 'trt\-ver': '5\.0\.6', 'cuda\-ver': '10\.0'\} | 
+| jetson\_nano |  | Linux | ARM64 | NVIDIA | \{'gpu\-code': 'sm\_53', 'trt\-ver': '5\.0\.6', 'cuda\-ver': '10\.0'\}For `TensorFlow2`, `{'JETPACK_VERSION': '4.6', 'gpu_code': 'sm_72'}` | 
 | jetson\_tx1 |  | Linux | ARM64 | NVIDIA | \{'gpu\-code': 'sm\_53', 'trt\-ver': '6\.0\.1', 'cuda\-ver': '10\.0'\} | 
 | jetson\_tx2 |  | Linux | ARM64 | NVIDIA | \{'gpu\-code': 'sm\_62', 'trt\-ver': '6\.0\.1', 'cuda\-ver': '10\.0'\} | 
 | jetson\_xavier |  | Linux | ARM64 | NVIDIA | \{'gpu\-code': 'sm\_72', 'trt\-ver': '5\.1\.6', 'cuda\-ver': '10\.0'\} | 

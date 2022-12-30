@@ -1,10 +1,10 @@
 # Run a SageMaker Distributed Model Parallel Training Job with Tensor Parallelism<a name="model-parallel-extended-features-pytorch-tensor-parallelism-examples"></a>
 
 In this section, you learn:
-+ How to configure a SageMaker PyTorch estimator and the SageMaker distributed model parallelism option to use tensor parallelism\.
++ How to configure a SageMaker PyTorch estimator and the SageMaker model parallelism option to use tensor parallelism\.
 + How to adapt your training script using the extended `smdistributed.modelparallel` modules for tensor parallelism\.
 
-To learn more about the `smdistributed.modelparallel` modules, see the [SageMaker distributed model parallel APIs](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel.html) in the *SageMaker Python SDK documentation*\.
+To learn more about the `smdistributed.modelparallel` modules, see the [SageMaker model parallel APIs](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel.html) in the *SageMaker Python SDK documentation*\.
 
 **Topics**
 + [Tensor parallelism alone](#model-parallel-extended-features-pytorch-tensor-parallelism-alone)
@@ -15,7 +15,7 @@ To learn more about the `smdistributed.modelparallel` modules, see the [SageMak
 The following is an example of a distributed training option to activate tensor parallelism alone, without pipeline parallelism\. Configure the `mpi_options` and `smp_options` dictionaries to specify distributed training options to the SageMaker `PyTorch` estimator\.
 
 **Note**  
-Extended memory\-saving features are available through Deep Learning Containers for PyTorch, which implements the SageMaker distributed model parallel library v1\.6\.0 or later\.
+Extended memory\-saving features are available through Deep Learning Containers for PyTorch, which implements the SageMaker model parallelism library v1\.6\.0 or later\.
 
 **Configure a SageMaker PyTorch estimator**
 
@@ -59,7 +59,7 @@ To find a complete list of parameters for `distribution`, see [Configuration Par
 
 **Adapt your PyTorch training script**
 
-The following example training script shows how to adapt the SageMaker distributed model parallelism library to a training script\. In this example, it is assumed that the script is named `your_training_script.py`\. 
+The following example training script shows how to adapt the SageMaker model parallelism library to a training script\. In this example, it is assumed that the script is named `your_training_script.py`\. 
 
 ```
 import torch
@@ -145,10 +145,10 @@ train(model, device, train_loader, optimizer)
 
 ## Tensor parallelism combined with pipeline parallelism<a name="model-parallel-extended-features-pytorch-tensor-and-pipeline-parallelism"></a>
 
-The following is an example of a distributed training option that enables tensor parallelism combined with pipeline parallelism\. Set up the `mpi_options` and `smp_options` parameters to specify distributed model parallel options with tensor parallelism when you configure a SageMaker `PyTorch` estimator\.
+The following is an example of a distributed training option that enables tensor parallelism combined with pipeline parallelism\. Set up the `mpi_options` and `smp_options` parameters to specify model parallel options with tensor parallelism when you configure a SageMaker `PyTorch` estimator\.
 
 **Note**  
-Extended memory\-saving features are available through Deep Learning Containers for PyTorch, which implements the SageMaker distributed model parallel library v1\.6\.0 or later\.
+Extended memory\-saving features are available through Deep Learning Containers for PyTorch, which implements the SageMaker model parallelism library v1\.6\.0 or later\.
 
 **Configure a SageMaker PyTorch estimator**
 
@@ -190,7 +190,7 @@ smp_estimator.fit('s3://my_bucket/my_training_data/')  
 
 <a name="model-parallel-extended-features-pytorch-tensor-and-pipeline-parallelism-script"></a>**Adapt your PyTorch training script**
 
-The following example training script shows how to adapt the SageMaker distributed model parallelism library to a training script\. Note that the training script now includes the `smp.step` decorator: 
+The following example training script shows how to adapt the SageMaker model parallelism library to a training script\. Note that the training script now includes the `smp.step` decorator: 
 
 ```
 import torch

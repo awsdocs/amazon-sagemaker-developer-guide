@@ -11,9 +11,9 @@ To track the latest updates of the library, see the [SageMaker Model Parallel Re
 **Topics**
 + [Introduction to Model Parallelism](model-parallel-intro.md)
 + [Supported Frameworks and AWS Regions](distributed-model-parallel-support.md)
-+ [Core Features of the SageMaker Model Parallel Library](model-parallel-core-features.md)
++ [Core Features of the SageMaker Model Parallelism Library](model-parallel-core-features.md)
 + [Run a SageMaker Distributed Training Job with Model Parallelism](model-parallel-use-api.md)
 + [Extended Features of the SageMaker Model Parallel Library for PyTorch](model-parallel-extended-features-pytorch.md)
-+ [SageMaker Distributed Model Parallel Best Practices](model-parallel-best-practices.md)
-+ [SageMaker Distributed Model Parallel Configuration Tips and Pitfalls](model-parallel-customize-tips-pitfalls.md)
++ [SageMaker Distributed Model Parallelism Best Practices](model-parallel-best-practices.md)
++ [The SageMaker Distributed Model Parallelism Library Configuration Tips and Pitfalls](model-parallel-customize-tips-pitfalls.md)
 + [Model Parallel Troubleshooting](distributed-troubleshooting-model-parallel.md)

@@ -4,10 +4,9 @@ This procedure shows you how to view a pipeline execution\. For information on h
 
 **To view details of a pipeline execution**
 
-1. In the execution list, open an execution to view details about the execution\. The execution details tab opens and displays a graph of the steps in the pipeline\. You can choose one of the other tabs to view information about the pipeline execution, which is similar to that shown when viewing the pipeline details\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/yosemite/execution-list.png)
+1. In the execution list, open an execution to view details about the execution\. The execution details tab opens and displays a graph of the steps in the pipeline\. You can choose one of the other tabs to view information about the pipeline execution, which is similar to that shown when viewing the pipeline details\.
 
-1. Use search to find a step in the graph\. Type characters that match a step name\. You can drag the graph around or use the resizing icons on the lower\-left side of the graph\. The inset on the lower\-right side of the graph displays where you are in the graph\.  
+1. Use search to find a step in the graph\. Type characters that match a step name\. You can drag the graph around or use the resizing icons on the lower\-right side of the graph\. The inset on the lower\-right side of the graph displays where you are in the graph\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/yosemite/execution-graph-w-input.png)
 
 1. Choose one of the steps in the graph to see details about the step\. In the preceding screenshot, a training step is chosen and displays the following tabs:

@@ -30,7 +30,7 @@ You can use the SageMaker API to define [hyperparameter ranges](https://docs.aws
 The `ParameterRanges` field has three subfields: categorical, integer, and continuous\. You can define up to 30 total \(categorical \+ integer \+ continuous\) tunable hyperparameters to search over\. 
 
 **Note**  
-Each value of a categorical hyperparameter range counts as a hyperparameter against the limit\. 
+Each categorical hyperparameter can have at most 30 different values\.
 
 Hyperparameter ranges have the following structure:
 

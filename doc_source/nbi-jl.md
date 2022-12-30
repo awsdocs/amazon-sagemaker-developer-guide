@@ -57,7 +57,9 @@ create-notebook-instance --notebook-instance-name <NEW_NOTEBOOK_NAME> \
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1.  Navigate to the **Notebook instances** page\. 
+1. From the left navigation, select **Notebook**\.
+
+1.  From the dropdown menu, select **Notebook instances** to navigate to the **Notebook instances** page\. 
 
 1.  From the list of notebook instances, select your notebook instance name\. 
 

@@ -1,12 +1,12 @@
 # Modify a PyTorch Training Script<a name="model-parallel-customize-training-script-pt"></a>
 
-In this section, you learn how to modify PyTorch training scripts to configure the SageMaker distributed model parallel library for auto\-partitioning and manual partitioning\.
+In this section, you learn how to modify PyTorch training scripts to configure the SageMaker model parallelism library for auto\-partitioning and manual partitioning\.
 
 **Note**  
 To find which PyTorch versions are supported by the library, see [Supported Frameworks and AWS Regions](distributed-model-parallel-support.md)\.
 
 **Tip**  
-For end\-to\-end notebook examples that demonstrate how to use a PyTorch training script with the SageMaker distributed model parallel library, see [PyTorch Examples](distributed-training-notebook-examples.md#distributed-training-notebook-examples-pytorch)\.
+For end\-to\-end notebook examples that demonstrate how to use a PyTorch training script with the SageMaker model parallelism library, see [PyTorch Examples](distributed-training-notebook-examples.md#distributed-training-notebook-examples-pytorch)\.
 
 Note that auto\-partitioning is enabled by default\. Unless otherwise specified, the following scripts use auto\-partitioning\. 
 
@@ -18,7 +18,7 @@ Note that auto\-partitioning is enabled by default\. Unless otherwise specified,
 
 ## PyTorch<a name="model-parallel-customize-training-script-pt-16"></a>
 
-The following training script changes are required to run a PyTorch training script with SageMaker's distributed model parallel library:
+The following training script changes are required to run a PyTorch training script with SageMaker's model parallelism library:
 
 1. Import and initialize the library with [https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/v1.2.0/smd_model_parallel_common_api.html#smp.init](https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/v1.2.0/smd_model_parallel_common_api.html#smp.init)\.
 
@@ -46,7 +46,7 @@ For FP16 training, you need to set up static or dynamic loss scaling\. For more 
 
 1. Set `drop_last=True` in `DataLoader`\. Alternatively, manually skip a batch in the training loop if the batch size is not divisible by the number of microbatches\.
 
-To learn more about the SageMaker's distributed model parallel library API, refer to the [API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel.html)\. 
+To learn more about the SageMaker's model parallelism library API, refer to the [API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel.html)\. 
 
 ```
 import torch
@@ -131,7 +131,7 @@ train(model, device, train_loader, optimizer)
 
 Use [https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/v1.2.0/smd_model_parallel_pytorch.html#smp.DistributedOptimizer](https://sagemaker.readthedocs.io/en/stable/api/training/smp_versions/v1.2.0/smd_model_parallel_pytorch.html#smp.DistributedOptimizer) context managers to place modules in specific devices\. Any module not placed in any `smp.partition` contexts is placed in the `default_partition`\. The `default_partition` needs to be provided if `auto_partition` is set to `False`\. The modules that are created within a specific `smp.partition` context are placed on the corresponding partition\.
 
-To learn more about the SageMaker's distributed model parallel library API, refer to the [API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel.html)\. 
+To learn more about the SageMaker's model parallelism library API, refer to the [API documentation](https://sagemaker.readthedocs.io/en/stable/api/training/smd_model_parallel.html)\. 
 
 ```
 import torch
@@ -217,13 +217,13 @@ train(model, device, train_loader, optimizer)
 
 ## Important Considerations<a name="model-parallel-pt-considerations"></a>
 
-When you configure a PyTorch training script using SageMaker's distributed model parallel library, you should be aware of the following:
+When you configure a PyTorch training script using SageMaker's model parallelism library, you should be aware of the following:
 + If you are using an optimization technique that relies on global gradient norms, for example gradient norm from the entire model, such as some variants of LAMB optimizer or global gradient clipping, you need to gather all the norms across the model partitions for correctness\. You can use the library’s communication basic data types to do this\.
 + All `torch.Tensor` arguments to the forward methods of the `nn.Modules` in your model must be used in the computation of the module output\. In other words, the library does not support the case where there is a `torch.Tensor` argument to a module on which the module output does not depend\.
 + The argument to the `smp.DistributedModel.backward()` call must depend on all model outputs\. In other words, there cannot be an output from the `smp.DistributedModel.forward` call that is not used in the computation of the tensor that is fed into the `smp.DistributedModel.backward` call\.
 + If there are `torch.cuda.synchronize()` calls in your code, you might need to call `torch.cuda.set_device(smp.local_rank())` immediately before the synchronize call\. Otherwise unnecessary CUDA contexts might be created in device 0, which will needlessly consume memory\.
 + Since the library places `nn.Modules` on different devices, the modules in the model must not depend on any global state that is modified inside `smp.step`\. Any state that remains fixed throughout training, or that is modified outside `smp.step` in a way that is visible to all processes, is allowed\.
-+ You don’t need to move the model to GPU \(for example, using `model.to(device)`\) when using the library\. If you try to move the model to GPU before the model is partitioned \(before the first `smp.step` call\), the move call is ignored\. The library automatically moves the part of the model assigned to a rank to its GPU\. Once training with the library starts, don’t move the model to CPU and use it, as it won’t have correct parameters for modules not assigned to the partition held by the process\. If you want to retrain a model or use it for inference without the library after it was trained using the model parallel library, the recommended way is to save the full model using our checkpointing API and load it back to a regular PyTorch Module\.
++ You don’t need to move the model to GPU \(for example, using `model.to(device)`\) when using the library\. If you try to move the model to GPU before the model is partitioned \(before the first `smp.step` call\), the move call is ignored\. The library automatically moves the part of the model assigned to a rank to its GPU\. Once training with the library starts, don’t move the model to CPU and use it, as it won’t have correct parameters for modules not assigned to the partition held by the process\. If you want to retrain a model or use it for inference without the library after it was trained using the model parallelism library, the recommended way is to save the full model using our checkpointing API and load it back to a regular PyTorch Module\.
 + If you have a list of modules such that output of one feeds into another, replacing that list with `nn.Sequential` can significantly improve performance\.
 + The weight update \(`optimizer.step()`\) needs to happen outside of `smp.step` because that is when the entire backward pass is done and gradients are ready\. When using a hybrid model with model and data parallelism, at this point, Allreduce of gradients is also guaranteed to finish\.
 + When using the library in combination with data parallelism, make sure that the number of batches on all data parallel ranks is the same so that Allreduce does not hang waiting for a rank which is not participating in the step\.
@@ -296,7 +296,7 @@ When you configure a PyTorch training script using SageMaker's distributed model
 
 ## Unsupported Framework Features<a name="model-parallel-pt-unsupported-features"></a>
 
-The following PyTorch features are unsupported by SageMaker's distributed model parallel library:
+The following PyTorch features are unsupported by SageMaker's model parallelism library:
 + If you use data parallelism with the native [PyTorch DDP](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html), the [https://pytorch.org/docs/stable/generated/torch.nn.parallel.DistributedDataParallel.html](https://pytorch.org/docs/stable/generated/torch.nn.parallel.DistributedDataParallel.html) wrapper module is not supported by the library\. The library internally manages integrating with PyTorch DDP, including parameter broadcast and gradient AllReduce\. When using the library, module buffers are only broadcast once at the start of training\. If your model has module buffers that need to be synchronized across data parallel groups at each step, you can do so through the `torch.distributed` API, using the process group that can be obtained via `smp.get_dp_process_group()`\.
 + For mixed precision training, the `apex.amp` module is not supported\. The recommended way to use the library with automatic mixed\-precision is to use `torch.cuda.amp`, with the exception of using `smp.amp.GradScaler` instead of the implementation in torch\.
 + `torch.jit.ScriptModules` or `ScriptFunctions` are not supported by `smp.DistributedModel`\.

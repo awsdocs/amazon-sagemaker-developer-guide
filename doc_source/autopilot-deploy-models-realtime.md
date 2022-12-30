@@ -4,7 +4,7 @@ Real\-time inference is ideal for inference workloads where you have real\-time,
 
 To deploy the model that produced the best validation metric in an Autopilot experiment, you have several options\. For example, when using Autopilot in SageMaker Studio, you can deploy the model automatically or manually\. You can also use SageMaker APIs to manually deploy an Autopilot model\. 
 
-The following tabs show three options for deploying your model\. To see the code examples for each option, open each tab\.
+The following tabs show three options for deploying your model\. These instructions assume that you have already created a model in Autopilot\. If you don't have a model, see [Create an Amazon SageMaker Autopilot experiment](autopilot-automate-model-development-create-experiment.md)\. To see examples for each option, open each tab\.
 
 ## Deploy using the Autopilot User Interface \(UI\)<a name="autopilot-deploy-models-realtime-ui"></a>
 
@@ -14,18 +14,20 @@ The Autopilot UI contains helpful dropdown menus, toggles, tooltips, and more to
 **Automatic deployment will fail if either the default resource quota or your customer quota for endpoint instances in a Region is too limited\.** In hyperparameter optimization \(HPO\) mode, you are required to have at least two ml\.m5\.2xlarge instances\. In ensembling mode, you are required to have at least one ml\.m5\.12xlarge instance\. If you encounter a failure related to quotas, you can [request a service limit increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html) for SageMaker endpoint instances\.
 + **Manually**: To manually deploy the best model from an Autopilot experiment to an endpoint, toggle the **Auto deploy** value to **No** when creating the experiment in SageMaker Studio\. 
 
-  After your Autopilot experiment has been created, select the model that you want to deploy under **Model name**\. Then select the orange **Deployment and advanced settings** button located on the right of the leaderboard\. This opens a new tab\.
+  After your Autopilot experiment has been created, select the model that you want to deploy under **Model name**\. Then select the orange **Deploy model** button located on the right of the leaderboard\. This opens a new tab\.
 
-  Configure the endpoint name, instance type, and other optional information\. Select the orange **Deploy model** to deploy to an endpoint\.
+  Choose **Make real\-time predictions** at the top of the leaderboard\.
+
+  Configure the endpoint name, instance type, and other optional information\. If you choose to save prediction requests or prediction responses, you will be prompted for additional information\. This information includes specifying the location you want to store the information, the percentage of the output you want to store, and the type of response content that you want to store\. Select the orange **Deploy to endpoint** button to deploy your model\.
 
   Check the progress of the endpoint creation process in the [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) by navigating to the Endpoints section\. That section is located in the **Inference** dropdown menu in the navigation panel\. 
 
-  After the endpoint status changes from **Creating** to **In Service**, return to Studio and invoke the endpoint\.  
+  After the endpoint status changes from **Creating** to **InService**, as shown below, return to Studio and invoke the endpoint\.  
 ![\[SageMaker console: Endpoints page to create an endpoint or check endpoint status.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-check-progress.PNG)
 
 ## Deploy using SageMaker APIs<a name="autopilot-deploy-models-api"></a>
 
-You can also obtain real\-time inference by deploying your model using **API calls**\. This section shows the five general steps of this process using AWS Command Line Interface \(AWS CLI\) code snippets\. 
+You can also obtain real\-time inference by deploying your model using **API calls**\. This section shows the five steps of this process using AWS Command Line Interface \(AWS CLI\) code snippets\. 
 
 For complete code examples for both AWS CLI commands and AWS SDK for Python \(Boto3\), open the tabs directly following these steps\.
 

@@ -31,6 +31,7 @@ The following topics show you how to use the Model Registry\.
 + [Register a Model Version](model-registry-version.md)
 + [View Model Groups and Versions](model-registry-view.md)
 + [View the Details of a Model Version](model-registry-details.md)
++ [Share Models with SageMaker Canvas Users](model-registry-share-canvas.md)
 + [Delete a Model Version](model-registry-delete-model-version.md)
 + [Update the Approval Status of a Model](model-registry-approve.md)
 + [Deploy a Model from the Registry](model-registry-deploy.md)

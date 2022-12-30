@@ -10,7 +10,7 @@ After you create a project, view the resources associated with the project in Am
 
 1. Select **Deployments** from the menu, and then select **Projects**\.
 
-1. Double\-click the name of the project for which you want to view details\.
+1. Select the name of the project for which you want to view details\.
 
    A tab with the project details appears\.
 

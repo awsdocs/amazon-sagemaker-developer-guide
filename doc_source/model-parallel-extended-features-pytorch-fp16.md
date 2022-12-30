@@ -3,7 +3,7 @@
 For FP16 training, apply the following modifications to your training script and estimator\.
 
 **Note**  
-This feature is available in the SageMaker model parallel library v1\.10\.0 and later\.
+This feature is available in the SageMaker model parallelism library v1\.10\.0 and later\.
 
 **Adapt your PyTorch training script**
 

@@ -19,7 +19,7 @@ This procedure demonstrates how to create an MLOps project using Amazon SageMake
 
    The **Create project** tab opens displaying a list of available templates\.
 
-1. For **SageMaker project templates**, choose **SageMaker templates**\. For more information about project templates, see [MLOps Project Templates](sagemaker-projects-templates.md)\.
+1. If not selected already, choose **SageMaker templates**\. For more information about project templates, see [MLOps Project Templates](sagemaker-projects-templates.md)\.
 
 1. Choose **MLOps template for model building, training, and deployment**\.
 

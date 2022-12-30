@@ -16,13 +16,22 @@ You can share models or notebooks through the **Shared models** section of the S
 
 There are three main options for filtering shared models and notebooks:
 
-1. **Shared by me** – Models and notebooks that you shared to JumpStart\.
+1. **Shared by me** – Models and notebooks that you shared to either JumpStart or SageMaker Canvas\.
 
 1. **Shared with me** – Models and notebooks shared with you
 
 1. **Shared by my organization** – All models and notebooks that are shared to anyone in your organization
 
 You can also sort your models and notebooks based on the time they were last updated or by ascending or descending alphabetical order\. Choose the filter \(![\[The icon to filter shared models and notebooks in JumpStart.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/jumpstart/jumpstart-filter-icon.png)\) icon to further sort your selections\.
+
+### Share tabular models with SageMaker Canvas users<a name="jumpstart-content-sharing-access-canvas"></a>
+
+In addition to sharing models with your organization, you can also share models with collaborators that use SageMaker Canvas\. If you share models to SageMaker Canvas, your collaborators can import those models into SageMaker Canvas and use them to generate predictions\. 
+
+**Important**  
+Important: You can only share tabular models to SageMaker Canvas\.
+
+You can filter for models and notebooks shared to and from SageMaker Canvas by selecting the filter \(![\[The icon to filter shared models and notebooks in JumpStart.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/jumpstart/jumpstart-filter-icon.png)\) icon in the **Shared by me** or **Shared with me** tabs\. For more information about how to share a model to SageMaker Canvas, see [Bring Your Own Model Into Canvas](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas-byom.html)\.
 
 ## Share models and notebooks through the Studio UI<a name="jumpstart-content-sharing-ui"></a>
 
@@ -51,6 +60,9 @@ First, add the basic descriptive information about your model\. This information
 #### Enable training<a name="jumpstart-content-sharing-training"></a>
 
 When adding a model to share, you can optionally provide a training environment and allow collaborators in your organization to train the shared model\. 
+
+**Note**  
+If you are adding a tabular model, you also need to specify a column format and target column to enable training\. For more information, see [Amazon SageMaker Canvas](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas.html) in the *Amazon SageMaker Developer Guide\.*
 
 1. Add a container to use for model training\. You can select a container used for an existing training job, bring your own container in Amazon ECR, or use an Amazon SageMaker Deep Learning Container\. 
 

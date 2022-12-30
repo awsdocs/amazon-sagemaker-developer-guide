@@ -7,7 +7,7 @@ You can use SageMaker search to:
 + Find the best performing model by reviewing training job and model metrics, such as training loss or validation accuracy\.
 + Trace a model's lineage to the training job and its related resources, such as the training datasets\.
 
-This topic covers searching from the SageMaker console and the SageMaker API\. For information on searching in Amazon SageMaker Studio, see [Search Experiments Using Studio](experiments-search-studio.md)\.
+This topic covers searching from the SageMaker console and the SageMaker API\.
 
 **Topics**
 + [Sample Notebooks for Managing ML Experiments](#search-sample-notebooks)

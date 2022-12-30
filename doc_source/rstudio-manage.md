@@ -14,6 +14,7 @@
 + [RStudio Connect URL](rstudio-configure-connect.md)
 + [RStudio Package Manager](rstudio-configure-pm.md)
 + [Create an Amazon SageMaker Domain with RStudio using the AWS CLI](rstudio-create-cli.md)
++ [Add RStudio support to an existing Domain](rstudio-add-existing.md)
 + [Bring your own image to RStudio on SageMaker](rstudio-byoi.md)
 + [Manage users](rstudio-create-user.md)
 + [RStudio administrative dashboard](rstudio-admin.md)

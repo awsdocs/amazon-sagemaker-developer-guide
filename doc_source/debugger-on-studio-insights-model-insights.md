@@ -13,7 +13,3 @@ To load model insights content, enable the [CreateXgboostReport](debugger-built-
 For more information about the content on the model insights tab, see [Debugger XGBoost Training Report Walkthrough](https://docs.aws.amazon.com/sagemaker/latest/dg/debugger-training-xgboost-report.html#debugger-training-xgboost-report-walkthrough)\.
 
 To download the HTML report, follow the instructions at [Download the Debugger XGBoost Training Report](https://docs.aws.amazon.com/sagemaker/latest/dg/debugger-training-xgboost-report.html#debugger-training-xgboost-report-download)\.
-
-The following GIF image shows an example view of the **Model insights** tab for a SageMaker XGBoost training job\.
-
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/debugger/debugger-studio-insights-model-xgboost.gif)

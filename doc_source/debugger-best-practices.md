@@ -21,7 +21,7 @@ You can choose a machine learning framework and use SageMaker pre\-built trainin
 
 ## Use Studio Debugger Insights Dashboard<a name="debugger-best-practices-studio-dashboard"></a>
 
-With Studio Debugger insights dashboard, you are in control of your training jobs\. Use the Studio Debugger dashboards to keep your model performance on Amazon EC2 instances in control and optimized\. For any SageMaker training jobs running on Amazon EC2 instance, Debugger monitors resource utilization and basic model output data \(loss and accuracy values\)\. Through the Studio Debugger dashboards, gain insights into your training jobs and improve your model training performance\. To learn more, see [Amazon SageMaker Debugger in Amazon SageMaker Studio](debugger-on-studio.md)\.
+With Studio Debugger insights dashboard, you are in control of your training jobs\. Use the Studio Debugger dashboards to keep your model performance on Amazon EC2 instances in control and optimized\. For any SageMaker training jobs running on Amazon EC2 instance, Debugger monitors resource utilization and basic model output data \(loss and accuracy values\)\. Through the Studio Debugger dashboards, gain insights into your training jobs and improve your model training performance\. To learn more, see [Amazon SageMaker Debugger in Amazon SageMaker Studio Experiments](debugger-on-studio.md)\.
 
 ## Download Debugger Reports and Gain More Insights<a name="debugger-best-practices-download-reports"></a>
 

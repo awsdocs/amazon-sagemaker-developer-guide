@@ -26,5 +26,4 @@ To view a list of the model versions in a model group, complete the following st
 
 1. From the model groups list, choose the model group you want to view\.
 
-1. A new tab appears with a list of the model versions in the model group, as shown in the following image\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry/model-versions.png)
+1. A new tab appears with a list of the model versions in the model group\.

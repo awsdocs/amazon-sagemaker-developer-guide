@@ -1,6 +1,6 @@
 # Multiple Domains Overview<a name="domain-multiple"></a>
 
- Amazon SageMaker supports the creation of multiple Amazon SageMaker Domains in a single AWS Region for each account\. Additional Domains in a Region have the same features and capabilities as the first Domain in a Region\. Each Domain can have distinct Domain settings\. User profiles cannot be added to multiple Domains in a single Region within the same account\. For more information about Domain limits, see [Amazon SageMaker endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/sagemaker.html)\. 
+ Amazon SageMaker supports the creation of multiple Amazon SageMaker Domains in a single AWS Region for each account\. Additional Domains in a Region have the same features and capabilities as the first Domain in a Region\. Each Domain can have distinct Domain settings\. The same user profile cannot be added to multiple Domains in a single Region within the same account\. For more information about Domain limits, see [Amazon SageMaker endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/sagemaker.html)\. 
 
 **Topics**
 + [Scoping each Domain](#domain-multiple-scoping)

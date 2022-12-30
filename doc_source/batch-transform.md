@@ -12,10 +12,10 @@ To filter input data before performing inferences or to associate input records 
 + [Use Batch Transform to Get Inferences from Large Datasets](#batch-transform-large-datasets)
 + [Speed up a Batch Transform Job](#batch-transform-reduce-time)
 + [Use Batch Transform to Test Production Variants](#batch-transform-test-variants)
-+ [Batch Transform Errors](#batch-transform-errors)
 + [Batch Transform Sample Notebooks](#batch-transform-notebooks)
 + [Associate Prediction Results with Input Records](batch-transform-data-processing.md)
 + [Storage in Batch Transform](batch-transform-storage.md)
++ [Troubleshooting](batch-transform-errors.md)
 
 ## Use Batch Transform to Get Inferences from Large Datasets<a name="batch-transform-large-datasets"></a>
 
@@ -55,7 +55,7 @@ Inference3-Attribute1, Inference3-Attribute2, Inference3-Attribute3, ..., Infere
 InferenceN-Attribute1, InferenceN-Attribute2, InferenceN-Attribute3, ..., InferenceN-AttributeM
 ```
 
-To combine the results of multiple output files into a single output file, set the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformOutput.html#SageMaker-Type-TransformOutput-AssembleWith             ](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformOutput.html#SageMaker-Type-TransformOutput-AssembleWith             ) parameter to `Line`\.
+If you set [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformInput.html#SageMaker-Type-TransformInput-SplitType             ](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformInput.html#SageMaker-Type-TransformInput-SplitType             ) to `Line`, you can set the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformOutput.html#SageMaker-Type-TransformOutput-AssembleWith             ](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformOutput.html#SageMaker-Type-TransformOutput-AssembleWith             ) parameter to `Line` to concatenate the output records with a line delimiter\. This does not change the number of output files\. The number of output files is equal to the number of input files, and using `AssembleWith` does not merge files\. If you don't specify the `AssembleWith` parameter, by default the output records are concatenated in a binary format\.
 
 When the input data is very large and is transmitted using HTTP chunked encoding, to stream the data to the algorithm, set [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html#SageMaker-CreateTransformJob-request-MaxPayloadInMB](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html#SageMaker-CreateTransformJob-request-MaxPayloadInMB) to `0`\. Amazon SageMaker built\-in algorithms don't support this feature\.
 
@@ -68,16 +68,6 @@ If you are using the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/
 ## Use Batch Transform to Test Production Variants<a name="batch-transform-test-variants"></a>
 
 To test different models or various hyperparameter settings, create a separate transform job for each new model variant and use a validation dataset\. For each transform job, specify a unique model name and location in Amazon S3 for the output file\. To analyze the results, use [Inference Pipeline Logs and Metrics](inference-pipeline-logs-metrics.md)\.
-
-## Batch Transform Errors<a name="batch-transform-errors"></a>
-
-SageMaker uses the Amazon S3 [Multipart Upload API](https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html) to upload results from a batch transform job to Amazon S3\. If an error occurs, the uploaded results are removed from Amazon S3\. In some cases, such as when a network outage occurs, an incomplete multipart upload might remain in Amazon S3\. To avoid incurring storage charges, we recommend that you add the [S3 bucket policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config) to the S3 bucket lifecycle rules\. This policy deletes incomplete multipart uploads that might be stored in the S3 bucket\. For more information, see [Object Lifecycle Management](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html)\.
-
-If a batch transform job fails to process an input file because of a problem with the dataset, SageMaker marks the job as `failed`\. If an input file contains a bad record, the transform job doesn't create an output file for that input file because doing so prevents it from maintaining the same order in the transformed data as in the input file\. When your dataset has multiple input files, a transform job continues to process input files even if it fails to process one\. The processed files still generate useable results\.
-
-Exceeding the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html#SageMaker-CreateTransformJob-request-MaxPayloadInMB](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTransformJob.html#SageMaker-CreateTransformJob-request-MaxPayloadInMB) limit causes an error\. This might happen with a large dataset if it can't be split, the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformInput.html#SageMaker-Type-TransformInput-SplitType](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TransformInput.html#SageMaker-Type-TransformInput-SplitType) parameter is set to `none`, or individual records within the dataset exceed the limit\.
-
-If you are using your own algorithms, you can use placeholder text, such as `ERROR`, when the algorithm finds a bad record in an input file\. For example, if the last record in a dataset is bad, the algorithm places the placeholder text for that record in the output file\.
 
 ## Batch Transform Sample Notebooks<a name="batch-transform-notebooks"></a>
 

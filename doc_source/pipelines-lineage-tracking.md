@@ -21,19 +21,15 @@ Lineage tracking in Studio is centered around a directed acyclic graph \(DAG\)\.
 
 1. In the menu, select **Pipelines**\.
 
-1. Use the **Search** box to filter the pipelines list\. To view all available columns, drag the right border of the pane to the right\. For more information, see [Search Experiments Using Amazon SageMaker Studio](experiments-search-studio.md)\.
+1. Use the **Search** box to filter the pipelines list\.
 
-   The following screenshot shows the list filtered by a name that starts with "aba" and that was created on 12/5/20\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/yosemite/pipeline-tutorial-search.png)
-
-1. Double\-click the `AbalonePipeline` pipeline to view the execution list and other details about the pipeline\. The following screenshot shows the **TABLE PROPERTIES** pane open where you can choose which properties to view\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/yosemite/pipeline-tutorial-executions.png)
+1. Double\-click the `AbalonePipeline` pipeline to view the execution list and other details about the pipeline\. Choose the **Property Inspector** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/gears.png) \) in the right sidebar to open the **TABLE PROPERTIES** pane, where you can choose which properties to view\.
 
 1. Choose the **Settings** tab and then choose **Download pipeline definition file**\. You can view the file to see how the pipeline graph was defined\.
 
 1. On the **Execution** tab, double\-click the first row in the execution list to view its execution graph and other details about the execution\. Note that the graph matches the diagram displayed at the beginning of the tutorial\.
 
-   You can drag the graph around \(select an area not on the graph itself\) or use the resizing icons on the lower\-left side of the graph\. The inset on the lower\-right side of the graph displays your location in the graph\.  
+   You can drag the graph around \(select an area not on the graph itself\) or use the resizing icons on the lower\-right side of the graph\. The inset on the lower\-right side of the graph displays your location in the graph\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/yosemite/pipeline-tutorial-execution-graph.png)
 
 1. On the **Graph** tab, choose the `AbaloneProcess` step to view details about the step\.  

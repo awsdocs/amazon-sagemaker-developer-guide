@@ -36,8 +36,7 @@ The following procedure shows how to manually change the approval status from `A
 
 1. From the model groups list, choose the model group you want to view\. A new tab opens with a list of the model versions in the group\.
 
-1. In the list of model versions, right\-click the model version you want to update and choose **Update model version status**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry/update-model-status-2.png)
+1. In the list of model versions, right\-click the model version you want to update and choose **Update model version status**\.
 
 1. In the **Update model version status** dialog box, for **Status** choose **Rejected**, and then choose **Update status**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry/approve-model.png)

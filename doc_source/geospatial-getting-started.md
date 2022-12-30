@@ -29,7 +29,11 @@ When you sign up for Amazon Web Services \(AWS\), your AWS account is automatica
 
 1. AWS sends you a confirmation email after the sign up process is complete\. At any time, you can view your current account activity and manage your account by going to [https://aws\.amazon\.com/](https://aws.amazon.com/) and choosing **My Account**\.
 
-## Step 2: Setup the SageMaker geospatial UI and SageMaker Studio notebook with a SageMaker geospatial image<a name="geospatial-sdk-console-setup"></a>
+## Step 2: Create an execution role and trust policy<a name="geospatial-role-setup"></a>
+
+As a managed service, Amazon SageMaker geospatial capabilities perform operations on your behalf on the AWS hardware that is managed by SageMaker\. It can perform only operations that the user permits\. To work with SageMaker geospatial you need to setup a user role and an execution role\. See [Amazon SageMaker geospatial capability roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-geospatial-roles.html) to learn more\.
+
+## Step 3: Setup the SageMaker geospatial UI and SageMaker Studio notebook with a SageMaker geospatial image<a name="geospatial-sdk-console-setup"></a>
 
 See [Onboard to Amazon SageMaker Domain](https://docs.aws.amazon.com/sagemaker/latest/dg/gs-studio-onboard.html), which provides you with steps to create a Domain, giving you access to Amazon SageMaker Studio and Amazon SageMaker geospatial capabilities\.
 

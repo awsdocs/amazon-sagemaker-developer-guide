@@ -1,12 +1,12 @@
 # Distributed Training in Amazon SageMaker<a name="distributed-training"></a>
 
-SageMaker provides distributed training libraries and supports various distributed training options for deep learning tasks such as computer vision \(CV\) and natural language processing \(NLP\)\. SageMaker’s distributed training libraries make it easier for you to write highly scalable and cost\-effective custom data parallel and model parallel deep learning training jobs\. You can also use other distributed training frameworks and packages such as PyTorch DistributedDataParallel \(DDP\), `torchrun`, MPI \(`mpirun`\), and parameter server\. Throughout the documentation, instructions and examples focus on how to set up the distributed training options for deep learning tasks using the SageMaker Python SDK\.
+SageMaker provides distributed training libraries and supports various distributed training options for deep learning tasks such as computer vision \(CV\) and natural language processing \(NLP\)\. With SageMaker’s distributed training libraries, you can run highly scalable and cost\-effective custom data parallel and model parallel deep learning training jobs\. You can also use other distributed training frameworks and packages such as PyTorch DistributedDataParallel \(DDP\), `torchrun`, MPI \(`mpirun`\), and parameter server\. Throughout the documentation, instructions and examples focus on how to set up the distributed training options for deep learning tasks using the SageMaker Python SDK\.
 
 ## Get Started with Distributed Training<a name="distributed-training-get-started"></a>
 
-If you’re familiar with distributed training, choose one of the following options that matches with your preferred strategy or framework to get started\. If you want to learn about distributed training in general, see [Basic Distributed Training Concepts](#distributed-training-basic-concepts)\.
+If you’re familiar with distributed training, choose one of the following options that matches your preferred strategy or framework to get started\. If you want to learn about distributed training in general, see [Basic Distributed Training Concepts](#distributed-training-basic-concepts)\.
 
-The SageMaker distributed training libraries are optimized for the SageMaker training environment, help adapt your distributed training jobs to SageMaker, and improve training speed and throughput\. The libraries offer both data parallel and model parallel training strategies\. They combine software and hardware technologies to improve inter\-GPU and inter\-node communications, and extends SageMaker’s training capabilities with built\-in options that require minimal code changes to your training scripts\. 
+The SageMaker distributed training libraries are optimized for the SageMaker training environment, help adapt your distributed training jobs to SageMaker, and improve training speed and throughput\. The libraries offer both data parallel and model parallel training strategies\. They combine software and hardware technologies to improve inter\-GPU and inter\-node communications, and extend SageMaker’s training capabilities with built\-in options that require minimal code changes to your training scripts\. 
 + To use SageMaker's data parallelism library, configure the `distribution` parameter of the SageMaker framework estimators\. Supported framework estimators are [PyTorch](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/sagemaker.pytorch.html#pytorch-estimator) and [TensorFlow](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/sagemaker.tensorflow.html#tensorflow-estimator)\. The following code example shows how to set a framework estimator for distributed training with the data parallelism library on two `ml.p4d.24xlarge` instances\.
 
   ```
@@ -20,7 +20,7 @@ The SageMaker distributed training libraries are optimized for the SageMaker tra
   )
   ```
 
-  To learn how to prepare your training script and launch a distributed training job, proceed to [SageMaker's data parallelism library](data-parallel.md) \(see also [Distributed Training APIs](https://sagemaker.readthedocs.io/en/stable/api/training/distributed.html#the-sagemaker-distributed-data-parallel-library) in the *SageMaker Python SDK documentation*\)\.
+  To learn how to prepare your training script and launch a distributed training job, see [SageMaker's data parallelism library](data-parallel.md) \(see also [Distributed Training APIs](https://sagemaker.readthedocs.io/en/stable/api/training/distributed.html#the-sagemaker-distributed-data-parallel-library) in the *SageMaker Python SDK documentation*\)\.
 + To use SageMaker's model parallelism library, configure the `distribution` parameter of the SageMaker framework estimators\. Supported framework estimators are [PyTorch](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/sagemaker.pytorch.html#pytorch-estimator) and [TensorFlow](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/sagemaker.tensorflow.html#tensorflow-estimator)\. The following code example shows how to construct a framework estimator for distributed training with the model parallelism library on two `ml.p4d.24xlarge` instances\.
 
   ```
@@ -49,7 +49,7 @@ The SageMaker distributed training libraries are optimized for the SageMaker tra
   )
   ```
 
-  To learn how to prepare your training script, configure distribution parameters, and launch a distributed training job, proceed to [SageMaker's model parallelism library](model-parallel.md) \(see also [Distributed Training APIs](https://sagemaker.readthedocs.io/en/stable/api/training/distributed.html#the-sagemaker-distributed-model-parallel-library) in the *SageMaker Python SDK documentation*\)\.
+  To learn how to prepare your training script, configure distribution parameters, and launch a distributed training job, see [SageMaker's model parallelism library](model-parallel.md) \(see also [Distributed Training APIs](https://sagemaker.readthedocs.io/en/stable/api/training/distributed.html#the-sagemaker-distributed-model-parallel-library) in the *SageMaker Python SDK documentation*\)\.
 
 SageMaker also supports the following options to operate `mpirun` and `torchrun` in the backend\.
 + To use [PyTorch DistributedDataParallel \(DDP\)](https://pytorch.org/docs/master/generated/torch.nn.parallel.DistributedDataParallel.html) in SageMaker, add `distribution={"pytorchddp": {"enabled": True}}` to your PyTorch estimator\. For more information, see also [PyTorch Distributed Training](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/using_pytorch.html#distributed-pytorch-training) and [SageMaker PyTorch Estimator](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/sagemaker.pytorch.html#pytorch-estimator)'s `distribution` argument in the *SageMaker Python SDK documentation*\.
@@ -66,7 +66,7 @@ With the `pytorchddp` distribution option, SageMaker operates `mpirun` in the ba
       distribution={"pytorchddp": {"enabled": True}}  # runs mpirun in the backend
   )
   ```
-+ SageMaker supports the [PyTorch `torchrun` launcher](https://pytorch.org/docs/stable/elastic/run.html) for distributed training on Amazon EC2 Trn1 instances powered by [AWS Trainium](http://aws.amazon.com/machine-learning/trainium/) device, the second generation purpose\-built machine learning accelerator from AWS\. Each Trn1 instance consists of up to 16 Trainium devices, and each Trainium device consists of two [NeuronCores](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/general/arch/neuron-hardware/neuroncores-arch.html#neuroncores-v2-arch)\. For specs of the AWS Trainium devices, see [Trainium Architecture](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/general/arch/neuron-hardware/trn1-arch.html#id2) in the *AWS Neuron Documentation*\.
++ SageMaker supports the [PyTorch `torchrun` launcher](https://pytorch.org/docs/stable/elastic/run.html) for distributed training on Amazon EC2 Trn1 instances powered by the [AWS Trainium](http://aws.amazon.com/machine-learning/trainium/) device, the second generation purpose\-built machine learning accelerator from AWS\. Each Trn1 instance consists of up to 16 Trainium devices, and each Trainium device consists of two [NeuronCores](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/general/arch/neuron-hardware/neuroncores-arch.html#neuroncores-v2-arch)\. For specs of the AWS Trainium devices, see [Trainium Architecture](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/general/arch/neuron-hardware/trn1-arch.html#id2) in the *AWS Neuron Documentation*\.
 **Note**  
 The `torchrun` launcher option is currently available only for distributed training on Amazon EC2 Trn1 instances\.
 
@@ -95,7 +95,7 @@ To run your PyTorch training job on Trn1 instances with SageMaker, you should mo
 
   For more information, see [Distributed Training with PyTorch Neuron on Trn1 instances](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/using_pytorch.html#id24) and [SageMaker PyTorch Estimator](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/sagemaker.pytorch.html#pytorch-estimator)'s `distribution` argument in the *SageMaker Python SDK documentation*\.
 + To use MPI in SageMaker, add `distribution={"mpi": {"enabled": True}}` to your estimator\. The MPI distribution option is available for the following frameworks: MXNet, PyTorch, and TensorFlow\.
-+ To use parameter server in SageMaker, add `distribution={"parameter_server": {"enabled": True}}` to your estimator\. The parameter server option is available for the following frameworks: MXNet, PyTorch, and TensorFlow\. 
++ To use a parameter server in SageMaker, add `distribution={"parameter_server": {"enabled": True}}` to your estimator\. The parameter server option is available for the following frameworks: MXNet, PyTorch, and TensorFlow\. 
 **Tip**  
 For more information about using the MPI and parameter server options per framework, use the following links to the *SageMaker Python SDK documentation*\.  
 [MXNet Distributed Training](https://sagemaker.readthedocs.io/en/stable/frameworks/mxnet/using_mxnet.html#distributed-training) and [SageMaker MXNet Estimator](https://sagemaker.readthedocs.io/en/stable/frameworks/mxnet/sagemaker.mxnet.html#mxnet-estimator)'s `distribution` argument

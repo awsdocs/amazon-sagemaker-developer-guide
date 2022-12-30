@@ -60,21 +60,13 @@ This procedure demonstrates how to update an MLOps project in Amazon SageMaker S
 
 1. Select **Deployments** from the menu, and then select **Projects**\. A list of your projects appears\.
 
-1. You can open the **Project update** dialog box in one of the following ways:
+1. Select the name of the project you want to update in the projects list\.
 
-   1. You can open it from the projects list\.
+1. Choose **Update** from the **Actions** menu in the upper\-right corner of the project tab\.
 
-      Right\-click the target project and choose **Update** from the dropdown list\.
+1. In the **Update project** dialog box, you can edit the **Description** and listed template parameters\.
 
-   1. You can open it from the project tab\.
-
-      1. Double\-click the project in the projects list\.
-
-      1. Choose **Update** from the **Actions** menu in the upper\-right corner of the project tab\.
-
-1. In the **Update project** dialog box, you can edit the **Description**, template version, and template parameters\.
-
-1. Choose **Show Diff**\.
+1. Choose **View difference**\.
 
    A dialog box displays your original and updated project settings\. Any change in your project settings can modify or delete resources in the current project\. The dialog box displays these changes as well\.
 

@@ -12,12 +12,11 @@ To delete a model version in Amazon SageMaker Studio, complete the following ste
 
 1. Choose **Models**, and then **Model registry**\. A list of your model groups appears\.
 
-1. From the model groups list, double\-click the model group of the model version you want to delete\.
+1. From the model groups list, select the model group of the model version you want to delete\.
 
-   The model details tab opens to the right\.
+   The model details tab opens\.
 
-1. From the list of model versions in the model details tab, double\-click the model version you want to delete\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry/model-registry-choose-model-version.png)
+1. From the list of model versions in the model details tab, double\-click the model version you want to delete\.
 
 1. Choose the **Settings** tab\.
 

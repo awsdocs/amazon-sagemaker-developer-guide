@@ -39,12 +39,66 @@ The simplest way to grant your role permission to use the key is to modify the k
 
 The less preferred method is to modify the user’s IAM role to grant the user permissions to use or manage the KMS key\. If you use this method, the KMS key policy must also allow access management through IAM\. To learn how to grant permission to a KMS key through the user’s IAM role, see [Specifying KMS keys in IAM policy statements](https://docs.aws.amazon.com/kms/latest/developerguide/cmks-in-iam-policies.html) in the *AWS KMS Developer Guide*\.
 
+### Prerequisites for time series forecasting<a name="canvas-kms-app-data-prereqs-time-series"></a>
+
+To use your AWS KMS key to encrypt time series forecasting models in SageMaker Canvas, you must modify the key policy for the KMS key used to store objects to Amazon S3\. Your key policy must grant permissions to the `[AmazonSageMakerCanvasForecastRole](https://docs.aws.amazon.com/sagemaker/latest/dg/security-iam-awsmanpol-canvas.html#security-iam-awsmanpol-AmazonSageMakerCanvasForecastAccess)`, which SageMaker creates when you [grant time series forecasting permissions for your users](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas-set-up-forecast.html)\. Amazon Forecast uses the `AmazonSageMakerCanvasForecastRole` to perform time series forecasting operations in SageMaker Canvas\. Your KMS key must grant permissions to this role in order to ensure data is encrypted for time series forecasting\.
+
+To modify the permissions of your KMS key policy to allow encrypted time series forecasting, do the following\.
+
+1. Open the [AWS KMS console](https://console.aws.amazon.com/kms/))\.
+
+1. In the **Key Policy** section, choose **Switch to policy view**\.
+
+1. Modify the key's policy to have the permissions specified in the following example:
+
+   ```
+   {
+               "Sid": "Enable IAM User Permissions for Amazon Forecast KMS access",
+               "Effect": "Allow",
+               "Principal": {
+                   "AWS": "<arn:aws:iam::111122223333:role/service-role/AmazonSagemakerCanvasForecastRole-444455556666>"
+               },
+               "Action": [
+                   "kms:DescribeKey",
+                   "kms:CreateGrant",
+                   "kms:RetireGrant",
+                   "kms:GenerateDataKey",
+                   "kms:GenerateDataKeyWithoutPlainText",
+                   "kms:Decrypt"
+               ],
+               "Resource": "*"
+   }
+   ```
+
+1. Choose **Save changes**\.
+
+You can now use your KMS key to encrypt time series forecasting operations in SageMaker Canvas\.
+
+**Note**  
+The following permissions are only required if you are using the [IAM role setup method](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas-set-up-forecast.html#canvas-set-up-forecast-iam) to configure time series forecasting\. Add the following permissions policy to your user's IAM role\. You must also update the key policy with updated policies required for Amazon Forecast\. For more information about the permissions required for time series forecasting, see [Grant Your Users Permissions to Perform Time Series Forecasting](canvas-set-up-forecast.md)\.
+
+```
+{
+            "Sid": "Enable IAM User Permissions for Amazon Forecast KMS access",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "<arn:aws:iam::111122223333:role/AmazonSageMaker-ExecutionRole-111122223333444>"
+            },
+            "Action": [
+                    "kms:Decrypt", 
+                    "kms:DescribeKey",
+                    "kms:CreateGrant",
+                    "kms:RetireGrant",
+                    "kms:GenerateDataKey" 
+                    "kms:GenerateDataKeyWithoutPlainText",
+            ],
+            "Resource": "*"
+}
+```
+
 ### Encrypt your data in the SageMaker Canvas application<a name="canvas-kms-app-data-app"></a>
 
 The first KMS key you can use in SageMaker Canvas is used for encrypting application data stored on Amazon Elastic Block Store \(EBS\) volumes and in the Amazon Elastic File System that SageMaker creates in your Domain\. SageMaker Canvas encrypts your data with this key in the underlying application and temporary storage systems created when using compute instances for building models and generating insights\. SageMaker Canvas passes the key to other AWS services, such as Autopilot, whenever SageMaker Canvas initiates jobs with them to process your data\.
-
-**Note**  
-For time series forecast models, SageMaker Canvas uses an AWS managed KMS key instead of a key that you specify\.
 
 You can specify this key by setting the `KmsKeyID` in the `CreateDomain` API call or while doing the Standard Domain setup in the console\. If you don’t specify your own KMS key, SageMaker uses a default AWS managed KMS key to encrypt your data in the SageMaker Canvas application\.
 
@@ -79,11 +133,8 @@ Your users might have datasets that have been encrypted with a KMS key\. While t
 To grant your user permissions to import encrypted datasets from Amazon S3 into SageMaker Canvas, add the following permissions to the IAM execution role that you've used for the user profile\.
 
 ```
-      "kms:Encrypt",
       "kms:Decrypt",
-      "kms:ReEncrypt*",
-      "kms:GenerateDataKey*",
-      "kms:DescribeKey"
+      "kms:GenerateDataKey"
 ```
 
 To learn how to edit the IAM permissions for a role, see [Adding and removing IAM identity permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html) in the *IAM User Guide*\. For more information about KMS keys, see [Key policies in AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html) in the *AWS KMS Developer Guide*\.
@@ -114,4 +165,8 @@ A: SageMaker Canvas uses the default SageMaker S3 bucket to store duplicates of 
 
 ### Q: What use cases are supported for using KMS keys with SageMaker Canvas?<a name="canvas-kms-faqs-6"></a>
 
-A: With SageMaker Canvas, you can use your own encryption keys with AWS KMS for regression, multi\-class classification, and binary classification models, as well as batch inference for these models\. SageMaker Canvas doesn't currently support using customer\-managed encryption keys for time series forecasting models\.
+A: With SageMaker Canvas, you can use your own encryption keys with AWS KMS for building regression, binary and multi\-class classification, and time series forecasting models, as well as for batch inference with your model\.
+
+### Q: Can I encrypt time series forecasting models in SageMaker Canvas?<a name="canvas-kms-faqs-7"></a>
+
+A: Yes\. You must give your KMS key additional permissions in order to perform encrypted time series forecasting\. For more information about how to modify your key’s policy in order to grant time series forecasting permissions, see [Prerequisites for time series forecasting](#canvas-kms-app-data-prereqs-time-series)\.
