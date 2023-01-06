@@ -21,6 +21,9 @@ In order to execute a pipeline locally, the `sagemaker_session` fields associate
 
 ```
 from sagemaker.workflow.pipeline_context import LocalPipelineSession
+from sagemaker.pytorch import PyTorch
+from sagemaker.workflow.steps import TrainingStep
+from sagemaker.workflow.pipeline import Pipeline
 
 local_pipeline_session = LocalPipelineSession()
 
