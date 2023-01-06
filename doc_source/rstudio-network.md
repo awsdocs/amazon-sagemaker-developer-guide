@@ -8,7 +8,7 @@ The following topic describes network access and data storage considerations for
 
  **Use RStudio in VPC\-only mode**
 
-RStudio in Amazon SageMaker supports [AWS PrivateLink](https://docs.aws.amazon.com/https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-services-overview.html) integration\. With this integration, you can use RStudio on SageMaker in VPC\-only mode without direct access to the internet\. When you use RStudio in VPC\-only mode, your security groups are automatically managed by the service\. This includes connectivity between your RServer and your RSessions\.
+RStudio in Amazon SageMaker supports [AWS PrivateLink](https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-services-overview.html) integration\. With this integration, you can use RStudio on SageMaker in VPC\-only mode without direct access to the internet\. When you use RStudio in VPC\-only mode, your security groups are automatically managed by the service\. This includes connectivity between your RServer and your RSessions\.
 
 The following are required to use RStudio in VPC\-only mode\. For more information on selecting a VPC, see [Choose a VPC](onboard-vpc.md)\.
 + A private subnet with either access the internet to make a call to Amazon SageMaker & License Manager, or Amazon Virtual Private Cloud \(Amazon VPC\) endpoints for both Amazon SageMaker & License Manager\.
