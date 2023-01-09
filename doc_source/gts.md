@@ -7,6 +7,12 @@ Collecting and labeling data in dynamic environments with variations in object s
 
 **Note**  
  Ground Truth synthetic data does not support PHI, PCI, or FedRAMP certified data, and you should not provide this data to Ground Truth synthetic data\. 
+
+Ground Truth synthetic data has the following functionalities\.
++ Full 3D scenes and multiple cameras in a scene
++ Ground truth depth maps that provide 3D depth data for all generated images
++ Sequences of images \(video\) from multiple synchronized cameras
++ A moving conveyor belt that supports dynamic scenes
 <a name="how-do-i-use-gts"></a>
 **How do I use Ground Truth Synthetic Data?**  
 If you are a first\-time user of Ground Truth synthetic data, we recommend that you follow the procedures outlined in the [Getting Started with Amazon SageMaker Ground Truth Synthetic Data](gts-getting-started.md) section\.
