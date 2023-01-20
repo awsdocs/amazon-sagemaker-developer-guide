@@ -2,6 +2,8 @@
 
 When you build complex machine learning systems like deep learning neural networks, exploring all of the possible combinations is impractical\. Hyperparameter tuning can accelerate your productivity by trying many variations of a model\. It looks for the best model automatically by focusing on the most promising combinations of hyperparameter values within the ranges that you specify\. To get good results, you need to choose the right ranges to explore\. 
 
+Use the [API reference guide](https://docs.aws.amazon.com/sagemaker/latest/APIReference/Welcome.html?icmpid=docs_sagemaker_lp) to understand how to interact with hyperparameter tuning\. The examples on this page can be found in the [HyperParameterTuningJobConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobConfig.html) and [HyperbandStrategyConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperbandStrategyConfig.html) APIs\.
+
 **Note**  
 Because the algorithm itself is stochastic, it’s possible that the hyperparameter tuning model will fail to converge on the best answer, even if the best possible combination of values is within the ranges that you choose\.
 

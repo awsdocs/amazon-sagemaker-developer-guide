@@ -4,7 +4,7 @@ To use Amazon SageMaker Inference Recommender, first make sure you have met the 
 
 **Note**  
 The following code examples use Python\. Remove the `!` prefix character if you run any of the following code samples in your terminal or AWS CLI\.
-This example uses the `conda_pytorch_p36_latest` kernel within a Amazon SageMaker Notebook instance\. This kernel is provided by SageMaker and uses Python 3\.6 and PyTorch 1\.7\.1\. For more information about SageMaker Notebooks, see [Use Amazon SageMaker Notebook Instances](nbi.md)\.
+This example uses the `conda_pytorch_p36_latest` kernel within a Amazon SageMaker Notebook instance\. This kernel is provided by SageMaker and uses Python 3\.6 and PyTorch 1\.7\.1\. For more information about SageMaker Notebooks, see [Amazon SageMaker Notebook Instances](nbi.md)\.
 
 1. **Create an IAM role for Amazon SageMaker\.**
 

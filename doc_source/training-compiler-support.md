@@ -49,7 +49,7 @@ Please contact AWS support to request an increase for this limit.
 
 ## Tested Models<a name="training-compiler-tested-models"></a>
 
-The following table includes a list of the models that have been tested with SageMaker Training Compiler\. For reference, the largest batch size that is able to fit into memory is also included alongside other training parameters\. SageMaker Training Compiler can change the memory footprint of the model training process; as a result, a larger batch size can often be used during the training process, further decreasing total training time\. You must retune your model with the compiler enabled to find this increased batch size\. To save time, use the reference table to pick up the largest batch sizes that can be used with the tested models\.
+The following table includes a list of the models that have been tested with SageMaker Training Compiler\. For reference, the largest batch size that is able to fit into memory is also included alongside other training parameters\. SageMaker Training Compiler can change the memory footprint of the model training process; as a result, a larger batch size can often be used during the training process, further decreasing total training time\. In some cases, SageMaker Training Compiler intelligently promotes caching which leads to a decrease in the largest batch size that can fit on the GPU\. You must retune your model hyperparameters and find an optimal batch size for your case\. To save time, use the following reference tables to look up a batch size that can be a good starting point for your use case\.
 
 **Note**  
 The batch sizes are local batch size that fit into each individual GPU in the respective instance type\. You should also adjust the learning rate when changing the batch size\.
@@ -80,6 +80,63 @@ The following models are tested for training jobs for all combinations of single
 | distilbert\-base\-uncased | wikitext\-103\-v1 | ml\.p4d\.24xlarge | float16 | 512 |  | 160 | 
 | gpt2 | wikitext\-103\-v1 | ml\.p4d\.24xlarge | float16 | 512 |  | 25 | 
 | roberta\-base | wikitext\-103\-v1 | ml\.p4d\.24xlarge | float16 | 512 |  | 64 | 
+
+### TensorFlow 2\.11\.0<a name="training-compiler-tested-models-tf2110"></a>
+
+**Computer Vision \(CV\) models**
+
+Tested using [TensorFlow Model Garden](https://github.com/tensorflow/models) with Automatic Mixed Precision \(AMP\) as indicated\.
+
+
+| Single/multi\-node single/multi\-GPU | Model | Dataset | Instance type | Precision | Batch size for native frameworks  | Batch size for SageMaker Training Compiler  | 
+| --- | --- | --- | --- | --- | --- | --- | 
+| MaskRCNN\-ResNet50\-FPN | COCO\-2017 | ml\.g5\.2xlarge | float16 | 6 | 8 | 
+| MaskRCNN\-ResNet50\-FPN | COCO\-2017 | ml\.p3\.2xlarge | float16 | 4 | 6 | 
+| ResNet50 | ImageNet | ml\.g5\.2xlarge | float16 | 192 | 256 | 
+| ResNet50 | ImageNet | ml\.p3\.2xlarge | float16 | 256 | 256 | 
+| ResNet101 | ImageNet | ml\.g5\.2xlarge | float16 | 128 | 256 | 
+| ResNet101 | ImageNet | ml\.p3\.2xlarge | float16 | 128 | 128 | 
+| ResNet152 | ImageNet | ml\.g5\.2xlarge | float16 | 128 | 224 | 
+| ResNet152 | ImageNet | ml\.p3\.2xlarge | float16 | 128 | 128 | 
+| VisionTransformer | ImageNet | ml\.g5\.2xlarge | float16 | 112 | 144 | 
+| VisionTransformer | ImageNet | ml\.p3\.2xlarge | float16 | 96 | 128 | 
+
+**Natural Language Processing \(NLP\) models**
+
+Tested using [Transformer models](https://github.com/huggingface/transformers) with `Sequence_Len=128` and Automatic Mixed Precision \(AMP\) as indicated\.
+
+
+| Single/multi\-node single/multi\-GPU | Model | Dataset | Instance type | Precision | Batch size for native frameworks  | Batch size for SageMaker Training Compiler  | 
+| --- | --- | --- | --- | --- | --- | --- | 
+| albert\-base\-v2 | wikitext\-2\-raw\-v1 | ml\.g5\.2xlarge | float16 | 160 | 197 | 
+| albert\-base\-v2 | wikitext\-2\-raw\-v1 | ml\.p3\.2xlarge | float16 | 95 | 127 | 
+| bert\-base\-uncased | wikitext\-2\-raw\-v1 | ml\.g5\.2xlarge | float16 | 160 | 128 | 
+| bert\-base\-uncased | wikitext\-2\-raw\-v1 | ml\.p3\.2xlarge | float16 | 104 | 111 | 
+| bert\-large\-uncased | wikitext\-2\-raw\-v1 | ml\.g5\.2xlarge | float16 | 65 | 48 | 
+| bert\-large\-uncased | wikitext\-2\-raw\-v1 | ml\.p3\.2xlarge | float16 | 40 | 35 | 
+| camembert\-base | wikitext\-2\-raw\-v1 | ml\.g5\.2xlarge | float16 | 128 | 162 | 
+| camembert\-base | wikitext\-2\-raw\-v1 | ml\.p3\.2xlarge | float16 | 105 | 111 | 
+| distilbert\-base\-uncased | wikitext\-2\-raw\-v1 | ml\.g5\.2xlarge | float16 | 256 | 264 | 
+| distilbert\-base\-uncased | wikitext\-2\-raw\-v1 | ml\.p3\.2xlarge | float16 | 128 | 169 | 
+| gpt2 | wikitext\-2\-raw\-v1 | ml\.g5\.2xlarge | float16 | 128 | 120 | 
+| gpt2 | wikitext\-2\-raw\-v1 | ml\.p3\.2xlarge | float16 | 80 | 83 | 
+| jplu/tf\-xlm\-roberta\-base | wikitext\-2\-raw\-v1 | ml\.g5\.2xlarge | float16 | 32 | 32 | 
+| jplu/tf\-xlm\-roberta\-base | wikitext\-2\-raw\-v1 | ml\.p3\.2xlarge | float16 | 32 | 36 | 
+| microsoft/mpnet\-base | wikitext\-2\-raw\-v1 | ml\.g5\.2xlarge | float16 | 144 | 160 | 
+| microsoft/mpnet\-base | wikitext\-2\-raw\-v1 | ml\.p3\.2xlarge | float16 | 106 | 110 | 
+| roberta\-base | wikitext\-2\-raw\-v1 | ml\.g5\.2xlarge | float16 | 128 | 128 | 
+| roberta\-base | wikitext\-2\-raw\-v1 | ml\.p3\.2xlarge | float16 | 72 | 98 | 
+| albert\-base\-v2 | wikitext\-2\-raw\-v1 | ml\.g5\.48xlarge | float16 | 128 | 192 | 
+| albert\-base\-v2 | wikitext\-2\-raw\-v1 | ml\.p3\.16xlarge | float16 | 95 | 96 | 
+| distilbert\-base\-uncased | wikitext\-2\-raw\-v1 | ml\.g5\.48xlarge | float16 | 256 | 256 | 
+| distilbert\-base\-uncased | wikitext\-2\-raw\-v1 | ml\.p3\.16xlarge | float16 | 140 | 184 | 
+| google/electra\-small\-discriminator | wikitext\-2\-raw\-v1 | ml\.g5\.48xlarge | float16 | 256 | 384 | 
+| google/electra\-small\-discriminator | wikitext\-2\-raw\-v1 | ml\.p3\.16xlarge | float16 | 256 | 268 | 
+| gpt2 | wikitext\-2\-raw\-v1 | ml\.g5\.48xlarge | float16 | 116 | 116 | 
+| gpt2 | wikitext\-2\-raw\-v1 | ml\.p3\.16xlarge | float16 | 85 | 83 | 
+| gpt2 | wikitext\-2\-raw\-v1 | ml\.p4d\.24xlarge | float16 | 94 | 110 | 
+| microsoft/mpnet\-base | wikitext\-2\-raw\-v1 | ml\.g5\.48xlarge | float16 | 187 | 164 | 
+| microsoft/mpnet\-base | wikitext\-2\-raw\-v1 | ml\.p3\.16xlarge | float16 | 106 | 111 | 
 
 ### TensorFlow 2\.10\.0<a name="training-compiler-tested-models-tf2100"></a>
 

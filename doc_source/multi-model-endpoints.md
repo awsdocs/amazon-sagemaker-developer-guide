@@ -89,7 +89,7 @@ To learn more about how to use multi\-model endpoints, you can try the following
 + Example for multi\-model endpoints using GPU backed instances:
   + [Run mulitple deep learning models on GPUs with Amazon SageMaker Multi\-model endpoints \(MME\)](https://github.com/aws/amazon-sagemaker-examples/blob/main/multi-model-endpoints/mme-on-gpu/cv/resnet50_mme_with_gpu.ipynb) – This notebook shows how to use an NVIDIA Triton Inference container to deploy ResNet\-50 models to a multi\-model endpoint\.
 
-For instructions on how to create and access Jupyter notebook instances that you can use to run the previous examples in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. After you've created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all the SageMaker samples\. The multi\-model endpoint notebooks are located in the **ADVANCED FUNCTIONALITY** section\. To open a notebook, choose its **Use** tab and choose **Create copy**\.
+For instructions on how to create and access Jupyter notebook instances that you can use to run the previous examples in SageMaker, see [Amazon SageMaker Notebook Instances](nbi.md)\. After you've created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all the SageMaker samples\. The multi\-model endpoint notebooks are located in the **ADVANCED FUNCTIONALITY** section\. To open a notebook, choose its **Use** tab and choose **Create copy**\.
 
 For more information about use cases for multi\-model endpoints, see the following blogs and resources:
 + Video: [Hosting thousands of models on SageMaker](https://www.youtube.com/watch?v=XqCNTWmHsLc&t=751s)

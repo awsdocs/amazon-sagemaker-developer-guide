@@ -14,11 +14,9 @@ The Autopilot UI contains helpful dropdown menus, toggles, tooltips, and more to
 **Automatic deployment will fail if either the default resource quota or your customer quota for endpoint instances in a Region is too limited\.** In hyperparameter optimization \(HPO\) mode, you are required to have at least two ml\.m5\.2xlarge instances\. In ensembling mode, you are required to have at least one ml\.m5\.12xlarge instance\. If you encounter a failure related to quotas, you can [request a service limit increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html) for SageMaker endpoint instances\.
 + **Manually**: To manually deploy the best model from an Autopilot experiment to an endpoint, toggle the **Auto deploy** value to **No** when creating the experiment in SageMaker Studio\. 
 
-  After your Autopilot experiment has been created, select the model that you want to deploy under **Model name**\. Then select the orange **Deploy model** button located on the right of the leaderboard\. This opens a new tab\.
+  After your Autopilot experiment has been created, select the model that you want to deploy under **Model name**\. Then select the orange **Deployment and advanced settings** button located on the right of the leaderboard\. This opens a new tab\.
 
-  Choose **Make real\-time predictions** at the top of the leaderboard\.
-
-  Configure the endpoint name, instance type, and other optional information\. If you choose to save prediction requests or prediction responses, you will be prompted for additional information\. This information includes specifying the location you want to store the information, the percentage of the output you want to store, and the type of response content that you want to store\. Select the orange **Deploy to endpoint** button to deploy your model\.
+  Configure the endpoint name, instance type, and other optional information\. Select the orange **Deploy model** to deploy to an endpoint\.
 
   Check the progress of the endpoint creation process in the [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) by navigating to the Endpoints section\. That section is located in the **Inference** dropdown menu in the navigation panel\. 
 

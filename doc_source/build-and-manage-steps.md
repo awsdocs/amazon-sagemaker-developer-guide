@@ -206,7 +206,7 @@ The following example shows how to create a definition using `AutoMLStep`\.
 
 ```
 from sagemaker.workflow.pipeline_context import PipelineSession
-from sagemaker.workflow.steps import AutoMLStep
+from sagemaker.workflow.automl_step import AutoMLStep
 
 pipeline_session = PipelineSession()
 

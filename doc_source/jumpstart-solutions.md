@@ -29,7 +29,7 @@ Time series data is categorized as *univariate* and *multi\-variate*\. For examp
 
 | Solution name  | Description  | Get started  | 
 | --- | --- | --- | 
-| Demand forecasting  | Demand forecasting for multivariate time series data using three state\-of\-the\-art time series forecasting algorithms: [LSTNet](https://ts.gluon.ai/api/gluonts/gluonts.model.lstnet.html), [Prophet](https://facebook.github.io/prophet/), and [SageMaker DeepAR](https://docs.aws.amazon.com/sagemaker/latest/dg/deepar.html)\. |  [GitHub »](https://github.com/awslabs/sagemaker-deep-demand-forecast)  | 
+| Demand forecasting  | Demand forecasting for multivariate time series data using three state\-of\-the\-art time series forecasting algorithms: [LSTNet](https://ts.gluon.ai/stable/api/gluonts/gluonts.model.lstnet.html), [Prophet](https://facebook.github.io/prophet/), and [SageMaker DeepAR](https://docs.aws.amazon.com/sagemaker/latest/dg/deepar.html)\. |  [GitHub »](https://github.com/awslabs/sagemaker-deep-demand-forecast)  | 
 
 ## Credit rating prediction<a name="jumpstart-solutions-credit-prediction"></a>
 

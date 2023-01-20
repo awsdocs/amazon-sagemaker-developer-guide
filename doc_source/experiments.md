@@ -22,6 +22,7 @@ SageMaker Experiments is generally available in all AWS commercial [Regions](htt
 + [View, search, and compare experiment runs](experiments-view-compare.md)
 + [SageMaker integrations](experiments-sm-integrations.md)
 + [Example notebooks for Amazon SageMaker Experiments](experiments-tutorials.md)
++ [Monitor experiment training metrics with AWS CloudTrail](experiments-monitoring.md)
 + [Clean Up Amazon SageMaker Experiment Resources](experiments-cleanup.md)
 + [Additional supported SDK](experiments-additional-sdk.md)
 + [Experiments FAQs](experiment-faq.md)

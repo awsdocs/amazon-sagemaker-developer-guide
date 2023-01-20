@@ -8,7 +8,9 @@ The following topics show how to acquire and validate a license granted by RStud
 
  **Get an RStudio license** 
 
-1. If you don't have an RStudio license, you may purchase one at [RStudio Pricing](https://www.rstudio.com/pricing/) or by contacting [sales@rstudio\.com](mailto:sales@rstudio.com)\. When buying or updating an RStudio license, you must provide the AWS Account that will host your Amazon SageMaker Domain\. 
+1. If you don't have an RStudio license, you may purchase one from the AWS Marketplace or from RStudio PBC directly\.
+   + To purchase a subscription from the AWS Marketplace, complete the steps in [Subscribing to an AMI product with contract pricing public offer](https://docs.aws.amazon.com/marketplace/latest/buyerguide/buyer-ami-contracts.html#sub-public-AMI-contract) by searching for **RStudio Workbench**\.
+   + To purchase from RStudio PBC directly, navigate to [RStudio Pricing](https://www.rstudio.com/pricing/) or contact [sales@rstudio\.com](mailto:sales@rstudio.com)\. When buying or updating an RStudio license, you must provide the AWS Account that will host your Amazon SageMaker Domain\. 
 
    If you have an existing RStudio license, contact your RStudio Sales representative or [sales@rstudio\.com](mailto:sales@rstudio.com) to add RStudio on Amazon SageMaker to your existing RStudio Workbench Enterprise license, or to convert your RStudio Workbench Standard license\. The RStudio Sales representative will send you the appropriate electronic order form\.
 

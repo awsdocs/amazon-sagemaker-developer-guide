@@ -1,9 +1,9 @@
-# API reference guide for Amazon SageMaker Autopilot<a name="autopilot-reference"></a>
+# API Reference guide for Amazon SageMaker Autopilot<a name="autopilot-reference"></a>
 
-Amazon SageMaker provides API reference documentation that describes all of the REST operations and data types used by Autopilot and a higher\-level level [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) that you can use to create and manage AutoML jobs\. It also provides a command line interface \(CLI\), an AWS SDK for Python \(Boto\) for clients of SageMaker services, and SDKs for \.NET, C\+\+, Go, Java, JavaScript, PHP V3, and Ruby V3\. The following sections describe these Autopilot programming interfaces\.
+Amazon SageMaker provides API Reference documentation that describes all of the REST operations and data types used by Autopilot and a higher\-level level [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) that you can use to create and manage AutoML jobs\. It also provides a command line interface \(CLI\), an AWS SDK for Python \(Boto\) for clients of SageMaker services, and SDKs for \.NET, C\+\+, Go, Java, JavaScript, PHP V3, and Ruby V3\. The following sections describe these Autopilot programming interfaces\.
 
 **Topics**
-+ [SageMaker API reference](#autopilot-api-reference)
++ [SageMaker API Reference](#autopilot-api-reference)
 + [[Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)](#autopilot-sagemaker-python-sdk)
 + [AWS Command Line Interface \(CLI\)](#autopilot-cli)
 + [AWS SDK for Python \(Boto\)](#autopilot-aws-sdk-for-python-boto3)
@@ -15,7 +15,7 @@ Amazon SageMaker provides API reference documentation that describes all of the 
 + [AWS SDK for PHP V3](#autopilot-aws-sdk-for-php)
 + [AWS SDK for Ruby V3](#autopilot-aws-sdk-for-ruby)
 
-## SageMaker API reference<a name="autopilot-api-reference"></a>
+## SageMaker API Reference<a name="autopilot-api-reference"></a>
 
 This API provides HTTP service APIs for creating and managing Amazon SageMaker Autopilot resources\.
 
@@ -74,7 +74,7 @@ The [AWS CLI](https://awscli.amazonaws.com/v2/documentation/api/latest/reference
 
 ## AWS SDK for Python \(Boto\)<a name="autopilot-aws-sdk-for-python-boto3"></a>
 
-Boto is the Amazon Web Services \(AWS\) SDK for Python\. It enables Python developers to create, configure, and manage AWS services such as SageMaker\. Boto provides a low\-level [Client](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#client) API that maps to the underlying SageMaker service API\. Here is a list of the methods used to manage AutoML jobs with the Client class\.
+Boto is the Amazon Web Services \(AWS\) SDK for Python\. It enables Python developers to create, configure, and manage AWS services such as SageMaker\. Boto provides a low\-level [Client](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#client) API that maps to the underlying SageMaker service API\. Here is a list of the methods used to manage AutoML jobs with the client class\.
 + [https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_auto_ml_job](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_auto_ml_job)
 + [https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.describe_auto_ml_job](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.describe_auto_ml_job)
 + [https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.list_auto_ml_jobs](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.list_auto_ml_jobs)
@@ -83,7 +83,7 @@ Boto is the Amazon Web Services \(AWS\) SDK for Python\. It enables Python devel
 
 ## AWS SDK for \.NET<a name="autopilot-aws-sdk-for-dotnet"></a>
 
-The \.NET SDK enables developers to create, configure, and manage AWS services such as SageMaker\. The API maps to the underlying SageMaker service API\. Here is a list of the methods used to manage AutoML jobs with the Client class\.
+The \.NET SDK enables developers to create, configure, and manage AWS services such as SageMaker\. The API maps to the underlying SageMaker service API\. Here is a list of the methods used to manage AutoML jobs with the client class\.
 + [https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html?page=SageMaker/MSageMakerCreateAutoMLJobCreateAutoMLJobRequest.html](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html?page=SageMaker/MSageMakerCreateAutoMLJobCreateAutoMLJobRequest.html)
 + [https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html?page=SageMaker/MSageMakerDescribeAutoMLJobDescribeAutoMLJobRequest.html](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html?page=SageMaker/MSageMakerDescribeAutoMLJobDescribeAutoMLJobRequest.html)
 + [https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html?page=SageMaker/MSageMakerListAutoMLJobsListAutoMLJobsRequest.html](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html?page=SageMaker/MSageMakerListAutoMLJobsListAutoMLJobsRequest.html)
@@ -92,11 +92,11 @@ The \.NET SDK enables developers to create, configure, and manage AWS services s
 
 ## AWS SDK for C\+\+<a name="autopilot-aws-sdk-for-c-plus-plus"></a>
 
-The C\+\+ SDK enables developers to create, configure, and manage AWS services such as SageMaker\. The API maps to the underlying SageMaker service API\. For information on the methods used to manage AutoML jobs with the Client class, see [https://sdk.amazonaws.com/cpp/api/LATEST/class_aws_1_1_sage_maker_1_1_sage_maker_client.html](https://sdk.amazonaws.com/cpp/api/LATEST/class_aws_1_1_sage_maker_1_1_sage_maker_client.html)\.
+The C\+\+ SDK enables developers to create, configure, and manage AWS services such as SageMaker\. The API maps to the underlying SageMaker service API\. For information on the methods used to manage AutoML jobs with the client class, see [https://sdk.amazonaws.com/cpp/api/LATEST/class_aws_1_1_sage_maker_1_1_sage_maker_client.html](https://sdk.amazonaws.com/cpp/api/LATEST/class_aws_1_1_sage_maker_1_1_sage_maker_client.html)\.
 
 ## AWS SDK for Go<a name="autopilot-aws-sdk-for-go"></a>
 
-The Go SDK enables developers to create, configure, and manage AWS services such as SageMaker\. The API maps to the underlying SageMaker service API\. Here is a list of the methods used to manage AutoML jobs with the Client class\.
+The Go SDK enables developers to create, configure, and manage AWS services such as SageMaker\. The API maps to the underlying SageMaker service API\. Here is a list of the methods used to manage AutoML jobs with the client class\.
 + [https://docs.aws.amazon.com/sdk-for-go/api/service/sagemaker/#SageMaker.CreateAutoMLJob](https://docs.aws.amazon.com/sdk-for-go/api/service/sagemaker/#SageMaker.CreateAutoMLJob)
 + [https://docs.aws.amazon.com/sdk-for-go/api/service/sagemaker/#SageMaker.DescribeAutoMLJob](https://docs.aws.amazon.com/sdk-for-go/api/service/sagemaker/#SageMaker.DescribeAutoMLJob)
 + [https://docs.aws.amazon.com/sdk-for-go/api/service/sagemaker/#SageMaker.ListAutoMLJobs](https://docs.aws.amazon.com/sdk-for-go/api/service/sagemaker/#SageMaker.ListAutoMLJobs)
@@ -105,7 +105,7 @@ The Go SDK enables developers to create, configure, and manage AWS services such
 
 ## AWS SDK for Java<a name="autopilot-aws-sdk-for-java"></a>
 
-The Java SDK enables developers to create, configure, and manage AWS services such as SageMaker\. The API maps to the underlying SageMaker service API\. Here is a list of the methods used to manage AutoML jobs with the Client class\.
+The Java SDK enables developers to create, configure, and manage AWS services such as SageMaker\. The API maps to the underlying SageMaker service API\. Here is a list of the methods used to manage AutoML jobs with the client class\.
 + [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sagemaker/AmazonSageMaker.html#createAutoMLJob-com.amazonaws.services.sagemaker.model.CreateAutoMLJobRequest-](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sagemaker/AmazonSageMaker.html#createAutoMLJob-com.amazonaws.services.sagemaker.model.CreateAutoMLJobRequest-)
 + [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sagemaker/AmazonSageMaker.html#describeAutoMLJob-com.amazonaws.services.sagemaker.model.DescribeAutoMLJobRequest-](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sagemaker/AmazonSageMaker.html#describeAutoMLJob-com.amazonaws.services.sagemaker.model.DescribeAutoMLJobRequest-)
 + [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sagemaker/AmazonSageMaker.html#listAutoMLJobs-com.amazonaws.services.sagemaker.model.ListAutoMLJobsRequest-](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sagemaker/AmazonSageMaker.html#listAutoMLJobs-com.amazonaws.services.sagemaker.model.ListAutoMLJobsRequest-)
@@ -114,7 +114,7 @@ The Java SDK enables developers to create, configure, and manage AWS services su
 
 ## AWS SDK for JavaScript<a name="autopilot-aws-sdk-for-javascript"></a>
 
-The JavaScript SDK enables developers to create, configure, and manage AWS services such as SageMaker\. The API maps to the underlying SageMaker service API\. Here is a list of the methods used to manage AutoML jobs with the Client class\.
+The JavaScript SDK enables developers to create, configure, and manage AWS services such as SageMaker\. The API maps to the underlying SageMaker service API\. Here is a list of the methods used to manage AutoML jobs with the client class\.
 + [https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SageMaker.html#createAutoMLJob-property](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SageMaker.html#createAutoMLJob-property)
 + [https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SageMaker.html#describeAutoMLJob-property](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SageMaker.html#describeAutoMLJob-property)
 + [https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SageMaker.html#listAutoMLJobs-property](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SageMaker.html#listAutoMLJobs-property)
@@ -123,7 +123,7 @@ The JavaScript SDK enables developers to create, configure, and manage AWS servi
 
 ## AWS SDK for PHP V3<a name="autopilot-aws-sdk-for-php"></a>
 
-The PHP V3 SDK enables developers to create, configure, and manage AWS services such as SageMaker\. The API maps to the underlying SageMaker service API\. Here is a list of the methods used to manage AutoML jobs with the Client class\.
+The PHP V3 SDK enables developers to create, configure, and manage AWS services such as SageMaker\. The API maps to the underlying SageMaker service API\. Here is a list of the methods used to manage AutoML jobs with the client class\.
 + [https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-sagemaker-2017-07-24.html#createautomljob](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-sagemaker-2017-07-24.html#createautomljob)
 + [https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-sagemaker-2017-07-24.html#describeautomljob](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-sagemaker-2017-07-24.html#describeautomljob)
 + [https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-sagemaker-2017-07-24.html#listautomljobs](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-sagemaker-2017-07-24.html#listautomljobs)
@@ -132,7 +132,7 @@ The PHP V3 SDK enables developers to create, configure, and manage AWS services 
 
 ## AWS SDK for Ruby V3<a name="autopilot-aws-sdk-for-ruby"></a>
 
-The Ruby V3 SDK enables developers to create, configure, and manage AWS services such as SageMaker\. The API maps to the underlying SageMaker service API\. Here is a list of the methods used to manage AutoML jobs with the Client class\.
+The Ruby V3 SDK enables developers to create, configure, and manage AWS services such as SageMaker\. The API maps to the underlying SageMaker service API\. Here is a list of the methods used to manage AutoML jobs with the client class\.
 + [https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/SageMaker/Client.html#create_auto_ml_job-instance_method](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/SageMaker/Client.html#create_auto_ml_job-instance_method)
 + [https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/SageMaker/Client.html#describe_auto_ml_job-instance_method](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/SageMaker/Client.html#describe_auto_ml_job-instance_method)
 + [https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/SageMaker/Client.html#list_auto_ml_jobs-instance_method](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/SageMaker/Client.html#list_auto_ml_jobs-instance_method)

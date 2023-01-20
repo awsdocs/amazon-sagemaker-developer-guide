@@ -28,9 +28,9 @@ Geospatial data represents features or objects on the earth’s surface\. The fi
 
 Along with this, you can access data from a catalog of geospatial data providers\. Currently, the data collections available include: 
 + [ USGS Landsat](https://www.usgs.gov/centers/eros/data-citation?qt-science_support_page_related_con=0#qt-science_support_page_related_con)
-+ [Sentinel\-2](https://www.usgs.gov/centers/eros/data-citation?qt-science_support_page_related_con=0#qt-science_support_page_related_con)
++ [Sentinel\-2](https://sentinel.esa.int/web/sentinel/missions/sentinel-2)
 
-You can also bring your own [Planet](https://www.planet.com/) data by ordering it\. Planet is one the leading daily satellite data providers\. After Planet delivers the data to you, you need to provide the [order manifest](https://developers.planet.com/apis/orders/delivery/) file included in the Planet data to SageMaker\.
+You can also bring your own [Planet](https://www.planet.com/) data by ordering it\. Planet is one of the leading daily satellite data providers\. After Planet delivers the data to you, you need to provide the [order manifest](https://developers.planet.com/apis/orders/delivery/) file included in the Planet data to SageMaker\.
 
 **Topics**
 + [Getting Started with Amazon SageMaker geospatial capabilities](geospatial-getting-started.md)

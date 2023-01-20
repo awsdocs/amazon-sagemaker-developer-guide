@@ -1,28 +1,25 @@
 # Configure and Launch a Hyperparameter Tuning Job<a name="automatic-model-tuning-ex-tuning-job"></a>
 
-A hyperparameter is a high\-level parameter that influences the learning process during model training\. To get the best model predictions, you can optimize a hyperparameter configuration or set hyperparameter values\. The process of finding an optimal configuration is called hyperparameter tuning\. To configure and launch a hyperparameter tuning job, complete the steps in these guides\.
+To configure and launch a hyperparameter tuning job, complete the following steps\.
 
 **Topics**
-+ [Settings for the hyperparameter tuning job](#automatic-model-tuning-ex-low-tuning-config)
-+ [Configure the training jobs](#automatic-model-tuning-ex-low-training-def)
-+ [Name and launch the hyperparameter tuning job](#automatic-model-tuning-ex-low-launch)
++ [Specify the Hyperparameter Tuning Job Settings](#automatic-model-tuning-ex-low-tuning-config)
++ [Configure the Training Jobs](#automatic-model-tuning-ex-low-training-def)
++ [Name and Launch the Hyperparameter Tuning Job](#automatic-model-tuning-ex-low-launch)
++ [Next Step](#automatic-model-tuning-ex-next-monitor)
 
-## Settings for the hyperparameter tuning job<a name="automatic-model-tuning-ex-low-tuning-config"></a>
+## Specify the Hyperparameter Tuning Job Settings<a name="automatic-model-tuning-ex-low-tuning-config"></a>
 
-To specify settings for the hyperparameter tuning job, define a JSON object when you create the tuning job\. Pass this JSON object as the value of the `HyperParameterTuningJobConfig` parameter to the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html) API\.
+To specify settings for the hyperparameter tuning job, you define a JSON object\. You pass the object as the value of the `HyperParameterTuningJobConfig` parameter to [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html) when you create the tuning job\.
 
-In this JSON object, specify the following:
-+ `HyperParameterTuningJobObjective` – The objective metric used to evaluate the performance of the training job launched by the hyperparameter tuning job\.
-+ `ParameterRanges` – The range of values that a tunable hyperparameter can use during optimization\. For more information, see [Define Hyperparameter Ranges](automatic-model-tuning-define-ranges.md)
-+ `RandomSeed` – A value used to initialize a pseudo\-random number generator\. Setting a random seed will allow the hyperparameter tuning search strategies to produce more consistent configurations for the same tuning job \(optional\)\.
-+ `ResourceLimits` – The maximum number of training and parallel training jobs that the hyperparameter tuning job can use\.
-
+In this JSON object, you specify:
++ The ranges of hyperparameters that you want to tune\. For more information, see [Define Hyperparameter Ranges](automatic-model-tuning-define-ranges.md)
++ The limits of the resource that the hyperparameter tuning job can consume\.
++ The objective metric for the hyperparameter tuning job\. An *objective metric* is the metric that the hyperparameter tuning job uses to evaluate the training job that it launches\.
 **Note**  
-If you use your own algorithm for hyperparameter tuning, rather than a SageMaker [built\-in algorithm](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html), you must define metrics for your algorithm\. For more information, see [Define Metrics](automatic-model-tuning-define-metrics.md)\.
+To use your own algorithm for hyperparameter tuning, you need to define metrics for your algorithm\. For information,see [Define metricsSpecify environment variables](automatic-model-tuning-define-metrics-variables.md#automatic-model-tuning-define-metrics)\.
 
-The following code example shows how to configure a hyperparameter tuning job using the built\-in [XGBoost algorithm](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost.html)\. The code example shows how to define ranges for the `eta`, `alpha`, `min_child_weight`, and `max_depth` hyperparameters\. For more information about these and other hyperparameters see [XGBoost Parameters](https://xgboost.readthedocs.io/en/release_1.2.0/parameter.html)\. 
-
-In this code example, the objective metric for the hyperparameter tuning job finds the hyperparameter configuration that maximizes `validation:auc`\. SageMaker built\-in algorithms automatically write the objective metric to CloudWatch Logs\. The following code example also shows how to set a `RandomSeed`\. 
+The hyperparameter tuning job defines ranges for the `eta`, `alpha`, `min_child_weight`, and `max_depth` hyperparameters of the [XGBoost Algorithm](xgboost.md) built\-in algorithm\. The objective metric for the hyperparameter tuning job maximizes the `validation:auc` metric that the algorithm sends to CloudWatch Logs\.
 
 ```
 tuning_job_config = {
@@ -62,28 +59,25 @@ tuning_job_config = {
       "MetricName": "validation:auc",
       "Type": "Maximize"
     }
-    "RandomSeed" : 123
   }
 ```
 
-## Configure the training jobs<a name="automatic-model-tuning-ex-low-training-def"></a>
+## Configure the Training Jobs<a name="automatic-model-tuning-ex-low-training-def"></a>
 
-The hyperparameter tuning job will launch training jobs to find an optimal configuration of hyperparameters\. These training jobs should be configured using the SageMaker [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html) API\. 
+To configure the training jobs that the tuning job launches, define a JSON object that you pass as the value of the `TrainingJobDefinition` parameter of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html) call\.
 
-To configure the training jobs, define a JSON object and pass it as the value of the `TrainingJobDefinition` parameter inside `CreateHyperParameterTuningJob`\.
+In this JSON object, you specify:
++ Optional—Metrics that the training jobs emit\.
+**Note**  
+Define metrics only when you use a custom training algorithm\. Because this example uses a built\-in algorithm, you don't specify metrics\. For information about defining metrics, see [Define metricsSpecify environment variables](automatic-model-tuning-define-metrics-variables.md#automatic-model-tuning-define-metrics)\.
++ The container image that specifies the training algorithm\.
++ The input configuration for your training and test data\.
++ The storage location for the algorithm's output\. Specify the S3 bucket where you want to store the output of the training jobs\.
++ The values of algorithm hyperparameters that are not tuned in the tuning job\.
++ The type of instance to use for the training jobs\.
++ The stopping condition for the training jobs\. This is the maximum duration for each training job\.
 
-In this JSON object, you can specify the following: 
-+ `AlgorithmSpecification` – The [registry path](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html) of the Docker image containing the training algorithm and related metadata\. To specify an algorithm, you can use your own [custom built algorithm](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html) inside a [Docker](https://docs.docker.com/get-started/overview/) container or a [SageMaker built\-in algorithm](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html) \(required\)\.
-+ `InputDataConfig` – The input configuration, including the `ChannelName`, `ContentType`, and data source for your training and test data \(required\)\.
-+ `OutputDataConfig` – The Amazon S3 bucket storage location for the output of the training jobs \(required\)\.
-+ `ResourceConfig` – The configuration for the instance that you use to run the training jobs\. The resource configuration includes the number of instances, type and maximum volume size used for training and scratch space *per instance* in GB \(required\)\.
-+ `RoleArn` – The [Amazon Resource Name](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) \(ARN\) of an AWS Identity and Access Management \(IAM\) role that SageMaker uses to perform tasks\. Tasks include reading input data, downloading a Docker image, writing model artifacts to an S3 bucket, writing logs to Amazon CloudWatch Logs, and writing metrics to Amazon CloudWatch \(required\)\.
-+ `StoppingCondition` – The maximum runtime in seconds that a training job can run before being stopped\. This value should be greater than the time needed to train your model \(required\)\.
-+ `MetricDefinitions` – The name and regular expression that defines any metrics that the training jobs emit\. Define metrics only when you use a custom training algorithm\. The example in the following code uses a built\-in algorithm, which already has metrics defined\. For information about defining metrics \(optional\), see [Define Metrics](automatic-model-tuning-define-metrics.md)\.
-+ `TrainingImage` – The [Docker](https://docs.docker.com/get-started/overview/)container image that specifies the training algorithm \(optional\)\.
-+ `StaticHyperParameters` – The name and values of hyperparameters that are not tuned in the tuning job \(optional\)\.
-
-The following code example sets static values for the `eval_metric`, `num_round`, `objective`, `rate_drop`, and `tweedie_variance_power` parameters of the [XGBoost Algorithm](xgboost.md) built\-in algorithm\.
+In this example, we set static values for the `eval_metric`, `num_round`, `objective`, `rate_drop`, and `tweedie_variance_power` parameters of the [XGBoost Algorithm](xgboost.md) built\-in algorithm\.
 
 ------
 #### [ SageMaker Python SDK v1 ]
@@ -212,9 +206,9 @@ training_job_definition = {
 
 ------
 
-## Name and launch the hyperparameter tuning job<a name="automatic-model-tuning-ex-low-launch"></a>
+## Name and Launch the Hyperparameter Tuning Job<a name="automatic-model-tuning-ex-low-launch"></a>
 
-After you configure the hyperparameter tuning job, you can launch it by calling the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html) API\. The following code example uses `tuning_job_config` and `training_job_definition`\. These were defined in the previous two code examples to create a hyperparameter tuning job\.
+Now you can provide a name for the hyperparameter tuning job and then launch it by calling the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html) API\. Pass `tuning_job_config`, and `training_job_definition` that you created in previous steps as the values of the parameters\.
 
 ```
 tuning_job_name = "MyTuningJob"
@@ -222,3 +216,7 @@ smclient.create_hyper_parameter_tuning_job(HyperParameterTuningJobName = tuning_
                                            HyperParameterTuningJobConfig = tuning_job_config,
                                            TrainingJobDefinition = training_job_definition)
 ```
+
+## Next Step<a name="automatic-model-tuning-ex-next-monitor"></a>
+
+[Monitor the Progress of a Hyperparameter Tuning Job](automatic-model-tuning-monitor.md)

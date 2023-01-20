@@ -17,7 +17,7 @@ You should also prepare your dataset and algorithm so that they work in SageMake
 
 **Topics**
 + [How Hyperparameter Tuning Works](automatic-model-tuning-how-it-works.md)
-+ [Define Metrics](automatic-model-tuning-define-metrics.md)
++ [Define metrics and environment variables](automatic-model-tuning-define-metrics-variables.md)
 + [Define Hyperparameter Ranges](automatic-model-tuning-define-ranges.md)
 + [Tune Multiple Algorithms with Hyperparameter Optimization to Find the Best Model](multiple-algorithm-hpo.md)
 + [Example: Hyperparameter Tuning Job](automatic-model-tuning-ex.md)
