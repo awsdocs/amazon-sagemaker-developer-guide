@@ -20,8 +20,8 @@ The following sections show how to attach a Git repo URL to your Domain and user
 The following command attaches a Git repo URL to an existing Domain\.
 
 ```
-aws sagemaker update-domain --region region --domain-name domain-name \
-    --domain-settings JupyterServerAppSettings={CodeRepositories=[{RepositoryUrl="repository"}]}
+aws sagemaker update-domain --region region --domain-id domain-id \
+    --default-user-settings JupyterServerAppSettings={CodeRepositories=[{RepositoryUrl="repository"}]}
 ```
 
 ### Attach to a user profile<a name="studio-git-attach-cli-attach-userprofile"></a>
@@ -29,6 +29,6 @@ aws sagemaker update-domain --region region --domain-name domain-name \
 The following shows how to attach a Git repo URL to an existing user profile\.
 
 ```
-aws sagemaker update-user-profile --domain-name domain-name --user-profile-name user-name\
+aws sagemaker update-user-profile --domain-id domain-id --user-profile-name user-name\
     --user-settings JupyterServerAppSettings={CodeRepositories=[{RepositoryUrl="repository"}]}
 ```

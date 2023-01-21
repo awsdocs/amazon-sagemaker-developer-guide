@@ -6,7 +6,7 @@ Create an Amazon SageMaker experiment to track your machine learning \(ML\) work
 
 The following components make up the building blocks of an experiment in Amazon SageMaker\.
 + `experiment`: An experiment is a collection of runs\. When you initialize a run in your training loop, you include the name of the experiment that the run belongs to\. Experiment names must be unique within your AWS account\. 
-+ `Run`: A run consists of all the inputs, parameters, configurations, and results for one interation of model training\. Initialize an experiment run for tracking a training job with `Run.init()`\.
++ `Run`: A run consists of all the inputs, parameters, configurations, and results for one interaction of model training\. Initialize an experiment run for tracking a training job with `Run.init()`\.
 **Note**  
 We recommend that you initialize a `Run` object in a Jupyter Notebook, and create the SageMaker job for your experiment within the context of this `Run` object initialization\. To refer to this `Run` object in script mode, use the `load_run()` method\. For examples, see [Example notebooks for Amazon SageMaker Experiments](experiments-tutorials.md)\.
 **Note**  

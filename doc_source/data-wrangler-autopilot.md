@@ -46,4 +46,4 @@ You can export the dataset from a join to Amazon S3\. You can create a new flow 
 
 1. Choose **Create experiment**\.
 
-For more information about model training and deployment, see [Create an Amazon SageMaker Autopilot experiment](autopilot-automate-model-development-create-experiment.md)\. Autopilot shows you analyses about the best model's performance\. For more information about model performance, see [Autopilot Model Insights](autopilot-model-insights.md)\.
+For more information about model training and deployment, see [Create an Amazon SageMaker Autopilot experiment](autopilot-automate-model-development-create-experiment.md)\. Autopilot shows you analyses about the best model's performance\. For more information about model performance, see [View an Autopilot Model Performance Report](autopilot-model-insights.md)\.

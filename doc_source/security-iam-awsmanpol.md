@@ -29,6 +29,7 @@ You can also create your own custom IAM policies to allow permissions for Amazon
 + [AWS managed policies for Amazon SageMaker geospatial](security-iam-awsmanpol-geospatial.md)
 + [AWS Managed Policies for Amazon SageMaker Ground Truth](security-iam-awsmanpol-ground-truth.md)
 + [AWS Managed Policies for SageMaker Model Governance](security-iam-awsmanpol-governance.md)
++ [AWS Managed Policies for SageMaker Notebooks](security-iam-awsmanpol-notebooks.md)
 + [AWS Managed Policies for SageMaker Pipelines](security-iam-awsmanpol-pipelines.md)
 + [AWS Managed Policies for SageMaker projects and JumpStart](security-iam-awsmanpol-sc.md)
 + [SageMaker Updates to AWS Managed Policies](#security-iam-awsmanpol-updates)
@@ -654,7 +655,7 @@ This policy includes the following permissions\.
 
 ## SageMaker Updates to AWS Managed Policies<a name="security-iam-awsmanpol-updates"></a>
 
-View details about updates to AWS managed policies for SageMaker since this service began tracking these changes\. For automatic alerts about changes to this page, subscribe to the RSS feed on the [SageMaker document history](https://docs.aws.amazon.com/sagemaker/latest/dg/doc-history.html) page\.
+View details about updates to AWS managed policies for SageMaker since this service began tracking these changes\.
 
 
 | Policy | Version | Change | Date | 

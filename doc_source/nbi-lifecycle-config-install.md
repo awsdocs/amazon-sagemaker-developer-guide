@@ -11,7 +11,7 @@ We do not recommend storing sensitive information in your lifecycle configuratio
 
   ```
   #!/bin/bash
-  sudo -u ec2-user -i <<'EOF'
+  sudo -u ec2-user -i <<EOF
   
   # This will affect only the Jupyter kernel called "conda_python3".
   source activate python3
@@ -29,7 +29,7 @@ We do not recommend storing sensitive information in your lifecycle configuratio
 
   ```
   #!/bin/bash
-  sudo -u ec2-user -i <<'EOF'
+  sudo -u ec2-user -i <<EOF
   
   # Note that "base" is special environment name, include it there as well.
   for env in base /home/ec2-user/anaconda3/envs/*; do

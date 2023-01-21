@@ -154,3 +154,6 @@ To edit a step, do the following\.
 The following image shows an example of editing a step\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/data-flow-table-edit-step.png)
+
+**Note**  
+You can use the shared spaces within your Amazon SageMaker Domain to work collaboratively on your Data Wrangler flows\. Within a shared space, you and your collaborators can edit a flow file in real\-time\. However, neither you nor your collaborators can see the changes in real\-time\. When anyone makes a change to the Data Wrangler flow, they must save it immediately\. When someone saves a file, a collaborator won’t be able to see it unless the close the file and reopen it\. Any changes that aren’t saved by one person are overwritten by the person who saved their changes\.

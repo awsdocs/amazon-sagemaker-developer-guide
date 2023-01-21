@@ -1,50 +1,35 @@
 # Best Practices for Hyperparameter Tuning<a name="automatic-model-tuning-considerations"></a>
 
-Hyperparameter optimization \(HPO\) is not a fully\-automated process\. To improve optimization, follow these best practices for hyperparameter tuning\.
+Hyperparameter optimization is not a fully\-automated process\. To improve optimization, use the following guidelines when you create hyperparameters\.
 
 **Topics**
-+ [Choosing a tuning strategy](#automatic-model-tuning-strategy)
-+ [Choosing the number of hyperparameters](#automatic-model-tuning-num-hyperparameters)
-+ [Choosing hyperparameter ranges](#automatic-model-tuning-choosing-ranges)
-+ [Using the correct scales for hyperparameters](#automatic-model-tuning-log-scales)
-+ [Choosing the best number of parallel training jobs](#automatic-model-tuning-parallelism)
-+ [Running training jobs on multiple instances](#automatic-model-tuning-distributed-metrics)
-+ [Using a random seed to reproduce hyperparameter configurations](#automatic-model-tuning-random-seed)
++ [Choosing a Strategy](#automatic-model-tuning-strategy)
++ [Choosing the Number of Hyperparameters](#automatic-model-tuning-num-hyperparameters)
++ [Choosing Hyperparameter Ranges](#automatic-model-tuning-choosing-ranges)
++ [Using Logarithmic Scales for Hyperparameters](#automatic-model-tuning-log-scales)
++ [Choosing the Best Number of Concurrent Training Jobs](#automatic-model-tuning-parallelism)
++ [Running Training Jobs on Multiple Instances](#automatic-model-tuning-distributed-metrics)
 
-## Choosing a tuning strategy<a name="automatic-model-tuning-strategy"></a>
+## Choosing a Strategy<a name="automatic-model-tuning-strategy"></a>
 
-For large jobs, using the [Hyperband](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html#automatic-tuning-hyperband) tuning strategy can reduce computation time\. Hyperband has an early stopping mechanism to stop under\-performing jobs\. Hyperband can also reallocate resources towards well\-utilized hyperparameter configurations and run parallel jobs\. For smaller training jobs using less runtime, use either [random search](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html#automatic-tuning-random-search) or [Bayesian optimization](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html#automatic-tuning-bayesian-optimization.title)\. 
+For large jobs, using Hyperband can reduce computation time by utilizing its internal early stopping mechanism, reallocation of resources and ability to run parallel jobs\. If runtime and resources are limited, use either random search or Bayesian optimization instead\. Bayesian optimization uses information gathered from prior runs to make increasingly informed decisions about improving hyperparameter configurations in the next run\. Because of its sequential nature, Bayesian optimization cannot massively scale\. Random search is able to run large numbers of parallel jobs\. Consider using grid search if it is important to be able to reproduce results of a tuning job, or if simplicity and transparency of the optimization algorithm are important\. Grid search is also a good option when it is important to explore the entire hyperparameter search space evenly\. 
 
-Use Bayesian optimization to make increasingly informed decisions about improving hyperparameter configurations in the next run\. Bayesian optimization uses information gathered from prior runs to improve subsequent runs\. Because of its sequential nature, Bayesian optimization cannot massively scale\. 
+## Choosing the Number of Hyperparameters<a name="automatic-model-tuning-num-hyperparameters"></a>
 
-Use random search to run a large number of parallel jobs\. In random search, subsequent jobs do not depend on the results from prior jobs and can be run independently\. Compared to other strategies, random search is able to run the largest number of parallel jobs\. 
+The computational complexity of a hyperparameter tuning job depends primarily on the number of hyperparameters whose range of values Amazon SageMaker has to search through during optimization\. Although you can simultaneously specify up to 20 hyperparameters to optimize for a tuning job, limiting your search to a much smaller number is likely to give you better results\.
 
-Use [grid search](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html#automatic-tuning-grid-search) to reproduce results of a tuning job, or if simplicity and transparency of the optimization algorithm are important\. You can also use grid search to explore the entire hyperparameter search space evenly\. Grid search methodically searches through every hyperparameter combination to find optimal hyperparameter values\. Unlike grid search, Bayesian optimization, random search and Hyperband all draw hyperparameters randomly from the search space\. Because grid search analyzes every combination of hyperparameters, optimal hyperparameter values will be identical between tuning jobs that use the same hyperparameters\. 
+## Choosing Hyperparameter Ranges<a name="automatic-model-tuning-choosing-ranges"></a>
 
-## Choosing the number of hyperparameters<a name="automatic-model-tuning-num-hyperparameters"></a>
+The range of values for hyperparameters that you choose to search can significantly affect the success of hyperparameter optimization\. Although you might want to specify a very large range that covers every possible value for a hyperparameter, you get better results by limiting your search to a small range of values\. If you know that you get the best metric values within a subset of the possible range, consider limiting the range to that subset\.
 
-During optimization, the computational complexity of a hyperparameter tuning job depends on the following:
-+ The number of hyperparameters
-+ The range of values that Amazon SageMaker has to search
+## Using Logarithmic Scales for Hyperparameters<a name="automatic-model-tuning-log-scales"></a>
 
-Although you can simultaneously specify up to 30 hyperparameters, limiting your search to a smaller number can reduce computation time\. Reducing computation time allows SageMaker to converge more quickly to an optimal hyperparameter configuration\.
+During hyperparameter tuning, SageMaker attempts to ﬁgure out if your hyperparameters are log\-scaled or linear\-scaled\. Initially, it assumes that hyperparameters are linear\-scaled\. If they are in fact log\-scaled, it might take some time for SageMaker to discover that fact\. If you know that a hyperparameter is log\-scaled and can convert it yourself, doing so could improve hyperparameter optimization\.
 
-## Choosing hyperparameter ranges<a name="automatic-model-tuning-choosing-ranges"></a>
+## Choosing the Best Number of Concurrent Training Jobs<a name="automatic-model-tuning-parallelism"></a>
 
-The range of values that you choose to search can adversely affect hyperparameter optimization\. For example, a range that covers every possible hyperparameter value can lead to large compute times and a model that doesn't generalize well to unseen data\. If you know that using a subset of the largest possible range is appropriate for your use case, consider limiting the range to that subset\.
+When setting the resource limit [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ResourceLimits.html#MaxParallelTrainingJobs](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ResourceLimits.html#MaxParallelTrainingJobs) for the maximum number of concurrent training jobs that a hyperparameter tuning job can launch, consider the following tradeoff\. Running more hyperparameter tuning jobs concurrently gets more work done quickly, but a tuning job improves only through successive rounds of experiments\. Typically, running one training job at a time achieves the best results with the least amount of compute time\.
 
-## Using the correct scales for hyperparameters<a name="automatic-model-tuning-log-scales"></a>
+## Running Training Jobs on Multiple Instances<a name="automatic-model-tuning-distributed-metrics"></a>
 
-During hyperparameter tuning, SageMaker attempts to infer if your hyperparameters are log\-scaled or linear\-scaled\. Initially, SageMaker assumes linear scaling for hyperparameters\. If hyperparameters are log\-scaled, choosing the correct scale will make your search more efficient\. You can also select `Auto` for `ScalingType` in the [CreateHyperParameterTuningJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html) API if you want SageMaker to detect the scale for you\.
-
-## Choosing the best number of parallel training jobs<a name="automatic-model-tuning-parallelism"></a>
-
-You can use the results of previous trials to improve the performance of subsequent trials\. Choose the largest number of parallel jobs that would provide a meaningful incremental result that is also within your region and account compute constraints\. Use the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ResourceLimits.html#MaxParallelTrainingJobs](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ResourceLimits.html#MaxParallelTrainingJobs) field to limit the number of training jobs that a hyperparameter tuning job can launch in parallel\. For more information, see [Running multiple HPO jobs in parallel on Amazon SageMaker](http://aws.amazon.com/blogs/machine-learning/running-multiple-hpo-jobs-in-parallel-on-amazon-sagemaker)\.
-
-## Running training jobs on multiple instances<a name="automatic-model-tuning-distributed-metrics"></a>
-
-When a training job runs on multiple machines in distributed mode, each machine emits an objective metric\. HPO can only use one of these emitted objective metrics to evaluate model performance, In distributed mode, HPO uses the objective metric that was reported by the last running job across all instances\. 
-
-## Using a random seed to reproduce hyperparameter configurations<a name="automatic-model-tuning-random-seed"></a>
-
-You can specify an integer as a random seed for hyperparameter tuning and use that seed during hyperparameter generation\. Later, you can use the same seed to reproduce hyperparameter configurations that are consistent with your previous results\. For random search and Hyperband strategies, using the same random seed can provide up to 100% reproducibility of the previous hyperparameter configuration for the same tuning job\. For Bayesian strategy, using the same random seed will improve reproducibility for the same tuning job\.
+When a training job runs on multiple instances, hyperparameter tuning uses the last\-reported objective metric value from all instances of that training job as the value of the objective metric for that training job\. Design distributed training jobs so that the objective metric reported is the one that you want\.

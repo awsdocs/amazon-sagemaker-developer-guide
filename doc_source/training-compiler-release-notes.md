@@ -2,6 +2,26 @@
 
 See the following release notes to track the latest updates for Amazon SageMaker Training Compiler\.
 
+## SageMaker Training Compiler Release Notes: January 9, 2023<a name="training-compiler-release-notes-20230109"></a>
+
+**Breaking Changes**
++ `tf.keras.optimizers.Optimizer` points to a new optimizer in TensorFlow 2\.11\.0 and later\. The old optimizers are moved to `tf.keras.optimizers.legacy`\. You might encounter job failure due to the breaking change when you do the following\. 
+  + Load checkpoints from an old optimizer\. We recommend you to switch to use the legacy optimizers\.
+  + Use TensorFlow v1\. We recommend you to migrate to TensorFlow v2, or switch to the legacy optimizers if you need to continue using TensorFlow v1\.
+
+  For more detailed list of breaking changes from the optimizer changes, see the [official TensorFlow v2\.11\.0 release notes](https://github.com/tensorflow/tensorflow/releases/tag/v2.11.0) in the TensorFlow GitHub repository\.
+
+**Migration to AWS Deep Learning Containers**
+
+This release passed benchmark testing and is migrated to the following AWS Deep Learning Container:
++ TensorFlow v2\.11\.0
+
+  ```
+  763104351884.dkr.ecr.<region>.amazonaws.com/tensorflow-training:2.11.0-gpu-py39-cu112-ubuntu20.04-sagemaker
+  ```
+
+  To find a complete list of the prebuilt containers with Amazon SageMaker Training Compiler, see [Supported Frameworks, AWS Regions, Instance Types, and Tested Models](training-compiler-support.md)\.
+
 ## SageMaker Training Compiler Release Notes: December 8, 2022<a name="training-compiler-release-notes-20221208"></a>
 
 **Bug Fixes**

@@ -1,9 +1,9 @@
 # Example Notebooks<a name="howitworks-nbexamples"></a>
 
-Your notebook instance contains example notebooks provided by Amazon SageMaker\. The example notebooks contain code that shows how to apply machine learning solutions by using SageMaker\. Notebook instances use the `nbexamples` Jupyter extension, which enables you to view a read\-only version of an example notebook or create a copy of it so that you can modify and run it\. For more information about the `nbexamples` extension, see [https://github\.com/danielballan/nbexamples](https://github.com/danielballan/nbexamples)\. For information about example notebooks for SageMaker Studio, see [Use Amazon SageMaker Studio Notebooks](notebooks.md)\.
+Your notebook instance contains example notebooks provided by Amazon SageMaker\. The example notebooks contain code that shows how to apply machine learning solutions by using SageMaker\. Notebook instances use the `nbexamples` Jupyter extension, which enables you to view a read\-only version of an example notebook or create a copy of it that you can modify and run\. For more information about the `nbexamples` extension, see [https://github\.com/danielballan/nbexamples](https://github.com/danielballan/nbexamples)\. For information about example notebooks for SageMaker Studio, see [Use Amazon SageMaker Studio Notebooks](notebooks.md)\.
 
 **Note**  
-Example notebooks typically download datasets from the internet\. If you disable SageMaker\-provided internet access when you create you notebook instance, example notebooks might not work\. For more information, see [Connect a Notebook Instance in a VPC to External Resources](appendix-notebook-and-internet-access.md)\.
+Example notebooks typically download datasets from the internet\. If you disable SageMaker\-provided internet access when you create your notebook instance, example notebooks might not work\. For more information, see [Connect a Notebook Instance in a VPC to External Resources](appendix-notebook-and-internet-access.md)\.
 
 ## Use or View Example Notebooks in Jupyter Classic<a name="view-use-nbexamples-jupyter"></a>
 

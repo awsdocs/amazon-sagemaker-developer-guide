@@ -26,7 +26,6 @@ You can search for features using either Amazon SageMaker Studio or the [https:/
 | Feature Group Name | [FeatureGroupName](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_FeatureGroup.html) | Yes | 
 | Creation Status | [FeatureGroupStatus](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_FeatureGroup.html) | Yes | 
 | Last Update Status | [LastUpdateStatus](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_LastUpdateStatus.html) | No | 
-| Last Update Status | LastUpdateStatus | No | 
 | Record Identfier Feature Name | RecordIdentifierFeatureName | Yes | 
 | Offline Store Configuration | [OfflineStoreConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_OfflineStoreConfig.html) | No | 
 | Offline Store Status | [OfflineStoreStatus](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_OfflineStoreStatus.html) | Yes | 

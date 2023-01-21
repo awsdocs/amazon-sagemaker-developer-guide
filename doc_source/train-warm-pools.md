@@ -86,7 +86,7 @@ Request a warm pool quota increase using the AWS Service Quotas console\.
 **Note**  
 All warm pool instance usage counts toward your SageMaker training resource limit\. Increasing your warm pool resource limit does not increase your instance limit, but allocates a subset of your resource limit to warm pool training\.
 
-1. Open the [AWS Service Quotas console](https://console.aws.amazon.com/servicequotas/home)\.
+1. Open the [AWS Service Quotas console](https://console.aws.amazon.com/servicequotas/home/)\.
 
 1. On the left\-hand navigation panel, choose **AWS services**\.
 
@@ -100,7 +100,7 @@ All warm pool instance usage counts toward your SageMaker training resource limi
 
 1. Choose **Request**\.
 
-There is a limit on the number of instances that you can retain for each warm pool, which is determined by instance type\. You can check your resource limits in the [AWS Service Quotas console](https://console.aws.amazon.com/servicequotas/home) or directly using the [list\-service\-quotas](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html) AWS CLI command\. For more information on AWS Service Quotas, see [Requesting a quota increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html) in the *Service Quotas User Guide*\. 
+There is a limit on the number of instances that you can retain for each warm pool, which is determined by instance type\. You can check your resource limits in the [AWS Service Quotas console](https://console.aws.amazon.com/servicequotas/home/) or directly using the [list\-service\-quotas](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html) AWS CLI command\. For more information on AWS Service Quotas, see [Requesting a quota increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html) in the *Service Quotas User Guide*\. 
 
 You can also use [AWS Support Center](https://support.console.aws.amazon.com) to request a warm pool quota increase\. For a list of available instance types according to Region, see [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/) and choose **Training** in the **On\-Demand Pricing** table\.
 
@@ -166,7 +166,7 @@ estimator = TensorFlow(
 estimator.fit('s3://my_bucket/my_training_data/')
 ```
 
-Next, create a second matching training job\. In this example, we create `my-training-job-2`, which has all of the necessary attributes to match with `my-training-job-1`, but has a different hyperparameter for experimentation\. The second training job reuses the warm pool and starts up faster than the first training job\. For more information on which attributes need to match, see [Matching training jobs](#train-warm-pools-matching-criteria)\.
+Next, create a second matching training job\. In this example, we create `my-training-job-2`, which has all of the necessary attributes to match with `my-training-job-1`, but has a different hyperparameter for experimentation\. The second training job reuses the warm pool and starts up faster than the first training job\. The following code example uses a Tensorflow estimator\. The warm pool feature can be used with any training algorithm that runs on Amazon SageMaker\. For more information on which attributes need to match, see [Matching training jobs](#train-warm-pools-matching-criteria)\.
 
 ```
 # Creates an example estimator
@@ -244,7 +244,7 @@ The warm pool automatically terminates when it exceeds the designated `KeepAlive
 
 You cannot create or update a warm pool through the console, but you can use the console to check the warm pool status and billable time of specific training jobs\. You can also use the console to see which matching training job reused the warm pool\.
 
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/ec2/) and choose **Training jobs** from the navigation pane\. The warm pool status of each training job is visible in the **Warm pool status** column\.
+1. Open the [Amazon SageMaker console](https://console.aws.amazon.com/ec2/) and choose **Training jobs** from the navigation pane\. The warm pool status of each training job is visible in the **Warm pool status** column\.
 
 1. Select a training job ID for more information\.
 

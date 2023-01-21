@@ -65,7 +65,7 @@ You can choose one of the built\-in algorithms, your own algorithm, your own con
 + If you plan to supply your data using a \.CSV file from Amazon S3, you should select the file\.
 
 **Metrics**  
-When you choose a built\-in algorithm, metrics are provided for you\. If you choose your own algorithm, you need to define your metrics\. You can define up to 20 metrics for your tuning job to monitor, one of which must be chosen as the objective metric\. For more information on how to define a metric for a tuning job, see [Define Metrics](automatic-model-tuning-define-metrics.md)\.
+When you choose a built\-in algorithm, metrics are provided for you\. If you choose your own algorithm, you need to define your metrics\. You can define up to 20 metrics for your tuning job to monitor, one of which must be chosen as the objective metric\. For more information on how to define a metric for a tuning job, see [Define metricsSpecify environment variables](automatic-model-tuning-define-metrics-variables.md#automatic-model-tuning-define-metrics)\.
 
 **Objective Metric**  
 To find the best training job, set an objective metric and whether to maximize or minimize it\. After the training job is complete, you can view the tuning job detail page for a summary of the best training job found using this objective metric\. 

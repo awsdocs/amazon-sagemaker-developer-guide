@@ -25,6 +25,6 @@ There are no additional costs for using this feature\. You pay only for the inst
 
 ## Sample Notebooks for Inference Pipelines<a name="inference-pipeline-sample-notebooks"></a>
 
-For an example that shows how to create and deploy inference pipelines, see the [Training using SparkML on EMR and hosting on SageMaker](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker-python-sdk/sparkml_serving_emr_mleap_abalone) sample notebook\. For instructions on creating and accessing Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. 
+For an example that shows how to create and deploy inference pipelines, see the [Training using SparkML on EMR and hosting on SageMaker](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker-python-sdk/sparkml_serving_emr_mleap_abalone) sample notebook\. For instructions on creating and accessing Jupyter notebook instances that you can use to run the example in SageMaker, see [Amazon SageMaker Notebook Instances](nbi.md)\. 
 
 To see a list of all the SageMaker samples, after creating and opening a notebook instance, choose the **SageMaker Examples** tab\. There are three inference pipeline notebooks\. The first two inference pipeline notebooks just described are located in the `advanced_functionality` folder and the third notebook is in the `sagemaker-python-sdk` folder\. To open a notebook, choose its **Use** tab, then choose **Create copy**\.

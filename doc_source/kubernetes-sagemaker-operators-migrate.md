@@ -13,7 +13,7 @@ The latest SageMaker Operators for Kubernetes are not backwards compatible\.
 + [Prerequisites](#migrate-resources-to-new-operators-prerequisites)
 + [Adopt resources](#migrate-resources-to-new-operators-steps)
 + [Clean up old resources](#migrate-resources-to-new-operators-cleanup)
-+ [Tutorials](#migrate-resources-to-new-operators-tutorials)
++ [Use the new SageMaker Operators for Kubernetes](#migrate-resources-to-new-operators-tutorials)
 
 ## Prerequisites<a name="migrate-resources-to-new-operators-prerequisites"></a>
 
@@ -109,7 +109,7 @@ For a list of all supported SageMaker resources, refer to the [ACK API Reference
 
 ## Clean up old resources<a name="migrate-resources-to-new-operators-cleanup"></a>
 
-After the new SageMaker Operators for Kubernetes adopt your resources, it is time to uninstall old operators and clean up old resources\.
+After the new SageMaker Operators for Kubernetes adopt your resources, you can uninstall old operators and clean up old resources\.
 
 ### Step 1: Uninstall the old operator<a name="migrate-resources-to-new-operators-uninstall"></a>
 
@@ -140,8 +140,6 @@ do
 done
 ```
 
-## Tutorials<a name="migrate-resources-to-new-operators-tutorials"></a>
+## Use the new SageMaker Operators for Kubernetes<a name="migrate-resources-to-new-operators-tutorials"></a>
 
-For more in\-depth guides on installing and using the new SageMaker Operator for Kubernetes, see the following tutorials:
-+ [Machine Learning with the ACK SageMaker Controller](https://aws-controllers-k8s.github.io/community/docs/tutorials/sagemaker-example/)
-+ [Scale SageMaker Workloads with Application Auto Scaling](https://aws-controllers-k8s.github.io/community/docs/tutorials/autoscaling-example/)
+For in\-depth guides on using the new SageMaker Operators for Kubernetes, see [Use SageMaker Operators for Kubernetes](kubernetes-sagemaker-operators-ack.md#kubernetes-sagemaker-operators-ack-use)

@@ -14,6 +14,8 @@ Soft limits can be increased based on your needs\.
 + **Maximum number of concurrent feature group creation workflows:** 4\.
 + **BatchGetRecord API:** Can contain as many as 100 records and can query up to 10 feature groups\. 
 
+For information about service quotas, see [AWS service quotas](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html)\. For information about requesting an increase to a quota, see [Requesting a quota increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html)\. 
+
 ## Naming Rules<a name="feature-store-naming-rules"></a>
 +  **Reserved Words:** The following are reserved words and cannot be used as feature names in feature definitions: `is_deleted`, `write_time`, and `api_invocation_time`\. 
 

@@ -104,7 +104,7 @@ response = sg_client.start_earth_observation_job(
 )
 ```
 
-After your EOJ is created, the `Arn` is returned to you\. You use the `Arn` to identify a job and perform further operations\. To get the status of a job, you can run `sg_client.get_earth_onservation_job(Arn = response['Arn'])`\. 
+After your EOJ is created, the `Arn` is returned to you\. You use the `Arn` to identify a job and perform further operations\. To get the status of a job, you can run `sg_client.get_earth_observation_job(Arn = response['Arn'])`\. 
 
 The following example shows how you can visualize the EOJ inputs and outputs\.
 
