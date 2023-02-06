@@ -9,17 +9,21 @@ The following demonstrates how to use Amazon SageMaker Inference Recommender to 
 
 ## Create an instance recommendation<a name="instance-recommendation-create"></a>
 
-Create an instance recommendation programmaticially using AWS SDK for Python \(Boto3\), with the AWS CLI, or interactively using Studio\. Specify a job name for your instance recommendation, an AWS IAM role ARN, an input configuration, and your model package ARN when you registered your model with the model registry\.
+Create an instance recommendation programmaticially using AWS SDK for Python \(Boto3\), with the AWS CLI, or interactively using Studio\. Specify a job name for your instance recommendation, an AWS IAM role ARN, an input configuration, and either a model package ARN when you registered your model with Model Registry, or your model name and a `ContainerConfig` dictionary from when you created your model in the **Prerequisites** section\.
 
 ------
 #### [ AWS SDK for Python \(Boto3\) ]
 
 Use the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateInferenceRecommendationsJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateInferenceRecommendationsJob.html) API to get an instance endpoint recommendation\. Set the `JobType` field to `'Default'` for instance endpoint recommendation jobs\. In addition, provide the following:
 + The Amazon Resource Name \(ARN\) of an IAM role that enables Inference Recommender to perform tasks on your behalf\. Define this for the `RoleArn` field\.
-+ The ARN of the versioned model package you created when you registered your model with the model registry\. Define this for `ModelPackageVersionArn` in the `InputConfig` field\.
++ Inference Recommender supports either one model package ARN or a model name as input\. Specify one of the following:
+  + The ARN of the versioned model package you created when you registered your model with the model registry\. Define this for `ModelPackageVersionArn` in the `InputConfig` field\.
+  + The name of the model you created\. Define this for `ModelName` in the `InputConfig` field\. Also, provide the `ContainerConfig` dictionary, which includes the required fields that need to be provided with the model name\. Define this for `ContainerConfig` in the `InputConfig` field\.
 + Provide a name for your Inference Recommender recommendation job for the `JobName` field\. The Inference Recommender job name must be unique within the AWS Region and within your AWS account\.
 
-Import the AWS SDK for Python \(Boto3\) package and create a SageMaker client object using the client class\. If you followed the steps in the **Prerequisites** section, the model package group ARN was stored in a variable named `model_package_arn`\.
+Import the AWS SDK for Python \(Boto3\) package and create a SageMaker client object using the client class\. If you followed the steps in the **Prerequisites** section, only specify one of the following:
++ Option 1: If you would like to create an inference recommendations job with a model package ARN, then store the model package group ARN in a variable named `model_package_arn`\.
++ Option 2: If you would like to create an inference recommendations job with a model name and `ContainerConfig`, store the model name in a variable named `model_name` and the `ContainerConfig` dictionary in a variable named `container_config`\.
 
 ```
 # Create a low-level SageMaker service client.
@@ -27,9 +31,16 @@ import boto3
 aws_region = '<INSERT>'
 sagemaker_client = boto3.client('sagemaker', region_name=aws_region) 
 
+# Provide only one of model package ARN or model name, not both.
 # Provide your model package ARN that was created when you registered your 
 # model with Model Registry 
 model_package_arn = '<INSERT>'
+## Uncomment if you would like to create an inference recommendations job with a
+## model name instead of a model package ARN, and comment out model_package_arn above
+## Provide your model name
+# model_name = '<INSERT>'
+## Provide your contaienr config 
+# container_config = '<INSERT>'
 
 # Provide a unique job name for SageMaker Inference Recommender job
 job_name = '<INSERT>'
@@ -45,8 +56,13 @@ sagemaker_client.create_inference_recommendations_job(
     JobName = job_name,
     JobType = job_type,
     RoleArn = role_arn,
+    # Provide only one of model package ARN or model name, not both. 
+    # If you would like to create an inference recommendations job with a model name,
+    # uncomment ModelName and ContainerConfig, and comment out ModelPackageVersionArn.
     InputConfig = {
         'ModelPackageVersionArn': model_package_arn
+        # 'ModelName': model_name,
+        # 'ContainerConfig': container_config
     }
 )
 ```
@@ -58,8 +74,12 @@ See the [Amazon SageMaker API Reference Guide](https://docs.aws.amazon.com/sagem
 
 Use the `create-inference-recommendations-job` API to get an instance endpoint recommendation\. Set the `job-type` field to `'Default'` for instance endpoint recommendation jobs\. In addition, provide the following:
 + The Amazon Resource Name \(ARN\) of an IAM role that enables Amazon SageMaker Inference Recommender to perform tasks on your behalf\. Define this for the `role-arn` field\.
-+ The ARN of the versioned model package you created when you registered your model with Model Registry\. Define this for `ModelPackageVersionArn` in the `input-config` field\.
++ Inference Recommender supports either one model package ARN or a model name as input\. Specify one of the following
+  + The ARN of the versioned model package you created when you registered your model with Model Registry\. Define this for `ModelPackageVersionArn` in the `input-config` field\.
+  + The name of the model you created\. Define this for `ModelName` in the `input-config` field\. Also, provide the `ContainerConfig` dictionary which includes the required fields that need to be provided with the model name\. Define this for `ContainerConfig` in the `input-config` field\.
 + Provide a name for your Inference Recommender recommendation job for the `job-name` field\. The Inference Recommender job name must be unique within the AWS Region and within your AWS account\.
+
+To create an inference recommendation jobs with a model package ARN, use the following example:
 
 ```
 aws sagemaker create-inference-recommendations-job 
@@ -69,6 +89,32 @@ aws sagemaker create-inference-recommendations-job
     --role-arn arn:aws:iam::<account:role/*>\
     --input-config "{
         \"ModelPackageVersionArn\": \"arn:aws:sagemaker:<region:account:role/*>\",
+        }"
+```
+
+To create an inference recommendation jobs with a model name and `ContainerConfig`, use the following example:
+
+```
+aws sagemaker create-inference-recommendations-job 
+    --region <region>\
+    --job-name <job_name>\
+    --job-type Default\
+    --role-arn arn:aws:iam::<account:role/*>\
+    --input-config "{
+        \"ModelName\": \"model-name\",
+        \"ContainerConfig\" : {
+                \"Domain\": \"COMPUTER_VISION\",
+                \"Framework\": \"PYTORCH\",
+                \"FrameworkVersion\": \"1.7.1\",
+                \"NearestModelName\": \"resnet18\",
+                \"PayloadConfig\": 
+                    {
+                        \"SamplePayloadUrl\": \"s3://{bucket}/{payload_s3_key}\", 
+                        \"SupportedContentTypes\": [\"image/jpeg\"]
+                    },
+                \"DataInputConfig\": \"[[1,3,256,256]]\",
+                \"Task\": \"IMAGE_CLASSIFICATION\",
+            },
         }"
 ```
 

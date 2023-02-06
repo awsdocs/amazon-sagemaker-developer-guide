@@ -1,6 +1,6 @@
 # Interpret recommendation results<a name="inference-recommender-interpret-results"></a>
 
-Each Inference Recommender job result includes `InstanceType`, `InitialInstanceCount`, and `EnvironmentParameters`, which are tuned environment variable parameters for your container to improve its latency and throughput\. The results also include performance and cost metrics such as `MaxInvocations`, `ModelLatency`, `CostPerHour`, and `CostPerInference`\. 
+Each Inference Recommender job result includes `InstanceType`, `InitialInstanceCount`, and `EnvironmentParameters`, which are tuned environment variable parameters for your container to improve its latency and throughput\. The results also include performance and cost metrics such as `MaxInvocations`, `ModelLatency`, `CostPerHour`, `CostPerInference`, `CpuUtilization`, and `MemoryUtilization`\.
 
 In the table below we provide a description of these metrics\. These metrics can help you narrow down your search for the best endpoint configuration that suits your use case\. For example, if your motivation is overall price performance with an emphasis on throughput, then you should focus on `CostPerInference`\. 
 
@@ -11,6 +11,8 @@ In the table below we provide a description of these metrics\. These metrics can
 |  `MaximumInvocations`  |  The maximum number of `InvokeEndpoint` requests sent to a model endpoint in a minute\. Units: None  | Throughput\-focused workloads such as video processing or batch inference | 
 |  `CostPerHour`  |  The estimated cost per hour for your real\-time endpoint\. Units: US Dollars  | Cost sensitive workloads with no latency deadlines | 
 |  `CostPerInference`  |  The estimated cost per inference call for your real\-time endpoint\. Units: US Dollars  | Maximize overall price performance with a focus on throughput | 
+|  `CpuUtilization`  |  The expected CPU utilization at maximum invocations per minute for the endpoint instance\. Units: Percent  | Understand instance health during benchmarking by having visibility into core CPU utilization of the instance | 
+|  `MemoryUtilization`  |  The expected memory utilization at maximum invocations per minute for the endpoint instance\. Units: Percent  | Understand instance health during benchmarking by having visibility into core memory utilization of the instance | 
 
 In some cases you might want to explore other [SageMaker Endpoint Invocation metrics](https://docs.aws.amazon.com/sagemaker/latest/dg/monitoring-cloudwatch.html#cloudwatch-metrics-endpoint-invocation) such as `CPUUtilization`\. Every Inference Recommender job result includes the names of endpoints spun up during the load test\. You can use CloudWatch to review the logs for these endpoints even after they’ve been deleted\.
 
@@ -19,5 +21,7 @@ The following image is an example of CloudWatch metrics and charts you can revie
 ![\[Charts for the following CloudWatch metrics: Invocations, ModelLatency, OverheadLatency, CPUUtilization, MemoryUtilization, DiskUtilization, Invocation4XXErrors, Invocation5XXErrors, and InvocationsPerInstance.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/inference-recommender-cw-metrics.png)
 
 For full descriptions of the CloudWatch metrics used in the preceding charts, see [SageMaker Endpoint Invocation metrics](https://docs.aws.amazon.com/sagemaker/latest/dg/monitoring-cloudwatch.html#cloudwatch-metrics-endpoint-invocation)\.
+
+You can also see performance metrics like `ClientInvocations` and `NumberOfUsers` published by Inference Recommender in the `/aws/sagemaker/InferenceRecommendationsJobs` namespace\. For a full list of metrics and descriptions published by Inference Recommender, see [SageMaker Inference Recommender Jobs Metrics](monitoring-cloudwatch.md#cloudwatch-metrics-inference-recommender)\.
 
 See the [Amazon SageMaker Inference Recommender \- CloudWatch Metrics](https://github.com/aws/amazon-sagemaker-examples/blob/main/sagemaker-inference-recommender/tensorflow-cloudwatch/tf-cloudwatch-inference-recommender.ipynb) Jupyter notebook in the [amazon\-sagemaker\-examples](https://github.com/aws/amazon-sagemaker-examples) Github repository for an example of how to use the AWS SDK for Python \(Boto3\) to explore CloudWatch metrics for your endpoints\.

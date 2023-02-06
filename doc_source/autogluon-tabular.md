@@ -14,7 +14,7 @@ You can use AutoGluon\-Tabular as an Amazon SageMaker built\-in algorithm\. The 
   ```
   from sagemaker import image_uris, model_uris, script_uris
   
-  train_model_id, train_model_version, train_scope = "autogluon-regression-ensemble", "*", "training"
+  train_model_id, train_model_version, train_scope = "autogluon-classification-ensemble", "*", "training"
   training_instance_type = "ml.p3.2xlarge"
   
   # Retrieve the docker image
@@ -38,9 +38,10 @@ You can use AutoGluon\-Tabular as an Amazon SageMaker built\-in algorithm\. The 
   
   # Sample training data is available in this bucket
   training_data_bucket = f"jumpstart-cache-prod-{aws_region}"
-  training_data_prefix = "training-datasets/tabular_multiclass/"
+  training_data_prefix = "training-datasets/tabular_binary/"
   
-  training_dataset_s3_path = f"s3://{training_data_bucket}/{training_data_prefix}"
+  training_dataset_s3_path = f"s3://{training_data_bucket}/{training_data_prefix}/train"
+  validation_dataset_s3_path = f"s3://{training_data_bucket}/{training_data_prefix}/validation"
   
   output_bucket = sess.default_bucket()
   output_prefix = "jumpstart-example-tabular-training"
@@ -49,7 +50,7 @@ You can use AutoGluon\-Tabular as an Amazon SageMaker built\-in algorithm\. The 
   
   from sagemaker import hyperparameters
   
-  # Retrieve the default hyper-parameters for training the model
+  # Retrieve the default hyperparameters for training the model
   hyperparameters = hyperparameters.retrieve_default(
       model_id=train_model_id, model_version=train_model_version
   )
@@ -81,7 +82,10 @@ You can use AutoGluon\-Tabular as an Amazon SageMaker built\-in algorithm\. The 
   
   # Launch a SageMaker Training job by passing the S3 path of the training data
   tabular_estimator.fit(
-      {"training": training_dataset_s3_path}, logs=True, job_name=training_job_name
+      {
+          "training": training_dataset_s3_path,
+          "validation": validation_dataset_s3_path,
+      }, logs=True, job_name=training_job_name
   )
   ```
 
@@ -101,10 +105,21 @@ The SageMaker implementation of AutoGluon\-Tabular supports CSV for training and
 For CSV training, the algorithm assumes that the target variable is in the first column and that the CSV does not have a header record\.   
 For CSV inference, the algorithm assumes that CSV input does not have the label column\. 
 
-Be mindful of how to format your training data for input to the AutoGluon\-Tabular model\. You must provide the path to an Amazon S3 bucket containing subdirectories for your training and optional validation data\.
-+ **Training data input format**: Your training data should be in a subdirectory named `train/` that contains a `data.csv` file\. The target variables should be in the first column of `data.csv`\. The predictor variables \(features\) should be in the remaining columns\.
-+ **Validation data input format**: You can optionally include another directory called `validation/` that also has a `data.csv` file\. The validation data is used to compute a validation score at the end of each boosting iteration\. Early stopping is applied when the validation score stops improving\. If the validation data is not provided, then a fraction of your training data is randomly sampled to serve as the validation data\. This fraction is selected based on the number of rows in your training data\. For more information see [Tabular Prediction](https://auto.gluon.ai/stable/api/autogluon.predictor.html#module-0) in the AutoGluon documentation\.
+**Input format for training data, validation data, and categorical features**
 
+Be mindful of how to format your training data for input to the AutoGluon\-Tabular model\. You must provide the path to an Amazon S3 bucket that contains your training and validation data\. You can also include a list of categorical features\. Use both the `training` and `validation` channels to provide your input data\. Alternatively, you can use only the `training` channel\.
+
+**Use both the `training` and `validation` channels**
+
+You can provide your input data by way of two S3 paths, one for the `training` channel and one for the `validation` channel\. Each S3 path can either be an S3 prefix that points to one or more CSV files or a full S3 path pointing to one specific CSV file\. The target variables should be in the first column of your CSV file\. The predictor variables \(features\) should be in the remaining columns\. If multiple CSV files are provided for the `training` or `validation` channels, the AutoGluon\-Tabular algorithm concatenates the files\. The validation data is used to compute a validation score at the end of each boosting iteration\. Early stopping is applied when the validation score stops improving\.
+
+If your predictors include categorical features, you can provide a JSON file named `categorical_index.json` in the same location as your training data file or files\. If you provide a JSON file for categorical features, your `training` channel must point to an S3 prefix and not a specific CSV file\. This file should contain a Python dictionary where the key is the string `"cat_index_list"` and the value is a list of unique integers\. Each integer in the value list should indicate the column index of the corresponding categorical features in your training data CSV file\. Each value should be a positive integer \(greater than zero because zero represents the target value\), less than the `Int32.MaxValue` \(2147483647\), and less than the total number of columns\. There should only be one categorical index JSON file\.
+
+**Use only the `training` channel**:
+
+You can alternatively provide your input data by way of a single S3 path for the `training` channel\. This S3 path should point to a directory with a subdirectory named `training/` that contains one or more CSV files\. You can optionally include another subdirectory in the same location called `validation/` that also has one or more CSV files\. If the validation data is not provided, then 20% of your training data is randomly sampled to serve as the validation data\. If your predictors include categorical features, you can provide a JSON file named `categorical_index.json` in the same location as your data subdirectories\.
+
+**Note**  
 For CSV training input mode, the total memory available to the algorithm \(instance count multiplied by the memory available in the `InstanceType`\) must be able to hold the training dataset\.
 
 SageMaker AutoGluon\-Tabular uses the `autogluon.tabular.TabularPredictor` module to serialize or deserialize the model, which can be used for saving or loading the model\.

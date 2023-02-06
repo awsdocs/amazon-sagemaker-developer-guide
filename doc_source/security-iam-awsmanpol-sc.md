@@ -22,7 +22,7 @@ The [AmazonSageMakerServiceCatalogProductsLaunchRole](https://console.aws.amazon
 
 This service role policy is used by the AWS Service Catalog service to provision products from the Amazon SageMaker portfolio\. The policy grants permissions to a set of related AWS services including AWS CodePipeline, AWS CodeBuild, AWS CodeCommit, AWS Glue, AWS CloudFormation, and others\.
 
-The `AmazonSageMakerAdmin-ServiceCatalogProductsServiceRolePolicy` policy is intended to be used by the `AmazonSageMakerServiceCatalogProductsLaunchRole` role created from the SageMaker console\. The policy adds permissions to provision AWS resources for SageMaker projects and JumpStart using AWS Service Catalog to a customer's account\.
+The `AmazonSageMakerAdmin-ServiceCatalogProductsServiceRolePolicy` policy is intended to be used by the `AmazonSageMakerServiceCatalogProductsLaunchRole` role created from the SageMaker console\. The policy adds permissions to provision AWS resources for SageMaker projects and JumpStart using Service Catalog to a customer's account\.
 
 **Permissions details**
 

@@ -8,7 +8,7 @@ To create and use a locally available execution role, you can use the following 
 
 ## Create an execution role<a name="sagemaker-geospatial-roles-create-execution-role"></a>
 
-To work with SageMaker geospatial you need to setup a user role and an execution role\. A user role is an AWS identity with permission policies that determine what the user can and can not do within AWS\. An execution role is an IAM role that grants the service permission to access your AWS resources\. An execution role consists of permissions and trust policy\. The trust policy specifies which principals have the permission to assume the role\.
+To work with SageMaker geospatial capabilities you need to setup a user role and an execution role\. A user role is an AWS identity with permission policies that determine what the user can and can not do within AWS\. An execution role is an IAM role that grants the service permission to access your AWS resources\. An execution role consists of permissions and trust policy\. The trust policy specifies which principals have the permission to assume the role\.
 
 Use the following procedure to create an execution role with the IAM managed policy, `AmazonSageMakerGeospatialFullAccess`, attached\. If your use case requires more granular permissions, use other sections of this guide to create an execution role that meets your business needs\.
 
@@ -51,8 +51,7 @@ You attach the following trust policy to the IAM role, which grants SageMaker pr
             "Effect": "Allow",
             "Principal": {
                 "Service": [
-                    "sagemaker-geospatial.amazonaws.com",
-                    "sagemaker.amazonaws.com"
+                    "sagemaker-geospatial.amazonaws.com"
                 ]
             },
             "Action": "sts:AssumeRole"

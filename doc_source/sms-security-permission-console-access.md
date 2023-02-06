@@ -1,13 +1,13 @@
 # Grant IAM Permission to Use the Amazon SageMaker Ground Truth Console<a name="sms-security-permission-console-access"></a>
 
-To use the Ground Truth area of the SageMaker console, you need to grant permission to an IAM entity to access SageMaker and other AWS services that Ground Truth interacts with\. Required permissions to access other AWS services depends on your use\-case: 
+To use the Ground Truth area of the SageMaker console, you need to grant permission to an entity to access SageMaker and other AWS services that Ground Truth interacts with\. Required permissions to access other AWS services depends on your use\-case: 
 + Amazon S3 permissions are required for all use cases\. These permissions must grant access to the Amazon S3 buckets that contain input and output data\. 
 + AWS Marketplace permissions are required to use a vendor workforce\.
 + Amazon Cognito permission are required for private work team setup\.
 + AWS KMS permissions are required to view available AWS KMS keys that can be used for output data encryption\.
 + IAM permissions are required to either list pre\-existing execution roles, or to create a new one\. Additionally, you must use add a `PassRole` permission to allow SageMaker to use the execution role chosen to start the labeling job\.
 
-The following sections list policies you may want to grant to an IAM role to use one or more functions of Ground Truth\. 
+The following sections list policies you may want to grant to a role to use one or more functions of Ground Truth\. 
 
 **Topics**
 + [Ground Truth Console Permissions](#sms-security-permissions-console-all)
@@ -17,7 +17,7 @@ The following sections list policies you may want to grant to an IAM role to use
 
 ## Ground Truth Console Permissions<a name="sms-security-permissions-console-all"></a>
 
-To grant permission to an IAM user or role to use the Ground Truth area of the SageMaker console to create a labeling job, attach the following policy to the user or role\. The following policy will give an IAM role permission to create a labeling job using a [built\-in task type](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html) task type\. If you want to create a custom labeling workflow, add the policy in [Custom Labeling Workflow Permissions](#sms-security-permissions-custom-workflow) to the following policy\. Each `Statement` included in the following policy is described below this code block\.
+To grant permission to a user or role to use the Ground Truth area of the SageMaker console to create a labeling job, attach the following policy to the user or role\. The following policy will give an IAM role permission to create a labeling job using a [built\-in task type](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html) task type\. If you want to create a custom labeling workflow, add the policy in [Custom Labeling Workflow Permissions](#sms-security-permissions-custom-workflow) to the following policy\. Each `Statement` included in the following policy is described below this code block\.
 
 ```
 {
@@ -138,9 +138,9 @@ This statement gives the user permission to describe, list, and create resources
 
 `ListAndCreateExecutionRoles`
 
-This statement gives a user permission to list \(`ListRoles`\) and create \(`CreateRole`\) IAM roles in your account\. It also grants the user permission to create \(`CreatePolicy`\) policies and attach \(`AttachRolePolicy`\) policies to IAM entities\. These are required to list, select, and if required, create an execution role in the console\. 
+This statement gives a user permission to list \(`ListRoles`\) and create \(`CreateRole`\) IAM roles in your account\. It also grants the user permission to create \(`CreatePolicy`\) policies and attach \(`AttachRolePolicy`\) policies to entities\. These are required to list, select, and if required, create an execution role in the console\. 
 
-If you have already created an execution role, and want to narrow the scope of this statement so that users can only select that role in the console, specify the ARNs of the IAM roles you want the user to have permission to view in `Resource` and remove the actions `CreateRole`, `CreatePolicy`, and `AttachRolePolicy`\.
+If you have already created an execution role, and want to narrow the scope of this statement so that users can only select that role in the console, specify the ARNs of the roles you want the user to have permission to view in `Resource` and remove the actions `CreateRole`, `CreatePolicy`, and `AttachRolePolicy`\.
 
 `AccessAwsMarketplaceSubscriptions`
 
@@ -148,7 +148,7 @@ These permissions are required to view and choose vendor work teams that you are
 
 `PassRoleForExecutionRoles`
 
-This is required to give the labeling job creator permission to preview the worker UI and verify that input data, labels, and instructions display correctly\. This statement gives an IAM entity permissions to pass the IAM execution role used to create the labeling job to SageMaker to render and preview the worker UI\. To narrow the scope of this policy, add the role ARN of the execution role used to create the labeling job under `Resource`\.
+This is required to give the labeling job creator permission to preview the worker UI and verify that input data, labels, and instructions display correctly\. This statement gives an entity permissions to pass the IAM execution role used to create the labeling job to SageMaker to render and preview the worker UI\. To narrow the scope of this policy, add the role ARN of the execution role used to create the labeling job under `Resource`\.
 
 **`GroundTruthConsole`**
 + `groundtruthlabeling` – This allows a user to perform actions required to use certain features of the Ground Truth console\. These include permissions to describe the labeling job status \(`DescribeConsoleJob`\), list all dataset objects in the input manifest file \(`ListDatasetObjects`\), filter the dataset if dataset sampling is selected \(`RunFilterOrSampleDatasetJob`\), and to generate input manifest files if automated data labeling is used \(`RunGenerateManifestByCrawlingJob`\)\. These actions are only available when using the Ground Truth console and cannot be called directly using an API\.
@@ -158,7 +158,7 @@ This is required to give the labeling job creator permission to preview the work
 
 ## Custom Labeling Workflow Permissions<a name="sms-security-permissions-custom-workflow"></a>
 
-Add the following statement to a policy similar to the one in [Ground Truth Console Permissions](#sms-security-permissions-console-all) to give an IAM user permission to select pre\-existing pre\-annotation and post\-annotation Lambda functions while [creating a custom labeling workflow](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-custom-templates.html)\.
+Add the following statement to a policy similar to the one in [Ground Truth Console Permissions](#sms-security-permissions-console-all) to give a user permission to select pre\-existing pre\-annotation and post\-annotation Lambda functions while [creating a custom labeling workflow](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-custom-templates.html)\.
 
 ```
 {
@@ -172,7 +172,7 @@ Add the following statement to a policy similar to the one in [Ground Truth Cons
 }
 ```
 
-To learn how to give an IAM entity permission to create and test pre\-annotation and post\-annotation Lambda functions, see [Required Permissions To Use Lambda With Ground Truth](http://docs.aws.amazon.com/sagemaker/latest/dg/sms-custom-templates-step3-lambda-permissions.html)\.
+To learn how to give an entity permission to create and test pre\-annotation and post\-annotation Lambda functions, see [Required Permissions To Use Lambda With Ground Truth](http://docs.aws.amazon.com/sagemaker/latest/dg/sms-custom-templates-step3-lambda-permissions.html)\.
 
 ## Private Workforce Permissions<a name="sms-security-permission-workforce-creation"></a>
 
@@ -211,7 +211,7 @@ To learn more about creating private workforce using Amazon Cognito, see [Create
 
 ## Vendor Workforce Permissions<a name="sms-security-permissions-workforce-creation-vendor"></a>
 
-You can add the following statement to the policy in [Grant IAM Permission to Use the Amazon SageMaker Ground Truth Console](#sms-security-permission-console-access) to grant an IAM entity permission to subscribe to a [vendor workforce](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management-vendor.html)\.
+You can add the following statement to the policy in [Grant IAM Permission to Use the Amazon SageMaker Ground Truth Console](#sms-security-permission-console-access) to grant an entity permission to subscribe to a [vendor workforce](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management-vendor.html)\.
 
 ```
 {

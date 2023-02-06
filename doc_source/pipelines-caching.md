@@ -4,7 +4,7 @@ When you use step signature caching, SageMaker Pipelines tries to find a previou
 
 You must opt in to step caching — it is off by default\. When you turn on step caching, you must also define a timeout\. This timeout defines how old a previous run can be to remain a candidate for reuse\.
 
-Step caching only considers successful runs — it never reuses failed runs\. A previous run of a pipeline step is considered successful when the run itself and the entire pipeline are both successful\. When multiple successful runs exist within the timeout period, SageMaker Pipelines uses the result for the most recent successful run\. If no successful runs match in the timeout period, SageMaker Pipelines reruns the step\. If the executor finds a previous run that meets the criteria but is still in progress, both steps continue running and update the cache if they're successful\.
+Step caching only considers successful runs — it never reuses failed runs\. When multiple successful runs exist within the timeout period, SageMaker Pipelines uses the result for the most recent successful run\. If no successful runs match in the timeout period, SageMaker Pipelines reruns the step\. If the executor finds a previous run that meets the criteria but is still in progress, both steps continue running and update the cache if they're successful\.
 
 Step caching is only scoped for individual pipelines, so you can’t reuse a step from another pipeline even if there is a step signature match\.
 

@@ -1,6 +1,6 @@
 # Run SageMaker Clarify Processing Jobs for Bias Analysis and Explainability<a name="clarify-processing-job-run"></a>
 
-You use SageMaker Clarify processing jobs to analyze potential sources of bias in your training data and to check your trained model for bias\. For the procedure to analyze the data in SageMaker Studio, see [Generate Reports for Bias in Pretraining Data in SageMaker Studio](clarify-data-bias-reports-ui.md)\. The focus here is on posttraining bias metric and SHAP values for explainability\. Model predictions can be a source of bias \(for example, if they make predictions that more frequently produce a negative result for one group than another\)\. SageMaker Clarify is integrated with SageMaker Experiments so that after a model has been trained, you can identify attributes you would like to check for bias \(for example, income\)\. SageMaker runs a set of algorithms to check the trained model and provides you with a visual report on the different types of bias for each attribute, such as whether high\-income earners receive more positive predictions compared to low\-income earners\.
+You use SageMaker Clarify processing jobs to analyze potential sources of bias in your training data and to check your trained model for bias\. For the procedure to analyze the data in SageMaker Studio, see [Generate Reports for Bias in Pretraining Data in SageMaker Studio](clarify-data-bias-reports-ui.md)\. The focus here is on post\-training bias metric and SHAP values for explainability\. Model predictions can be a source of bias \(for example, if they make predictions that more frequently produce a negative result for one group than another\)\. SageMaker Clarify is integrated with SageMaker Experiments so that after a model has been trained, you can identify attributes you would like to check for bias \(for example, income\)\. SageMaker runs a set of algorithms to check the trained model and provides you with a visual report on the different types of bias for each attribute, such as whether high\-income earners receive more positive predictions compared to low\-income earners\.
 
 **Topics**
 + [Compute Resources Required for SageMaker Clarify Processing Jobs](#clarify-processing-job-run-resources)
@@ -17,7 +17,7 @@ Take the following into consideration when determining the compute resources you
 
 ## Run the Clarify Processing Job<a name="clarify-processing-job-run-code"></a>
 
-For an example notebook with instructions on how to run a SageMaker Clarify processing job in Studio to detect posttraining model bias, see [Explainability and bias detection with Amazon SageMaker Clarify](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker_processing/fairness_and_explainability/fairness_and_explainability.html)\.
+For an example notebook with instructions on how to run a SageMaker Clarify processing job in Studio to detect post\-training model bias, see [Explainability and bias detection with Amazon SageMaker Clarify](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-clarify/fairness_and_explainability/fairness_and_explainability.html)\.
 
 If you need instructions on how to open a notebook in Amazon SageMaker Studio, see [Create or Open an Amazon SageMaker Studio Notebook](notebooks-create-open.md)\. The following code samples are taken from the example notebook listed previously\.
 
@@ -61,7 +61,7 @@ bias_config = clarify.BiasConfig(
                 facet_values_or_threshold=[0])
 ```
 
-You can run both the pretraining and posttraining analysis in the processing job at the same time with `run_bias()`\. 
+You can run both the pre\-training and post\-training analysis in the processing job at the same time with `run_bias()`\. 
 
 ```
 clarify_processor.run_bias(
@@ -131,7 +131,7 @@ SHAP values are in the `“explanations”` section\. Values correspond to the g
     }
 ```
 
-The bias metrics are in the pretraining and posttraining bias metrics sections\.
+The bias metrics are in the pre\-training and post\-training bias metrics sections\.
 
 ```
 {

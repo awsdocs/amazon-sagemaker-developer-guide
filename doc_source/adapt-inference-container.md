@@ -134,7 +134,7 @@ ENTRYPOINT ["python", "/usr/local/bin/entrypoint.py"]
 
 ## Step 5: Build and Register Your Container<a name="byoc-inference-build-register"></a>
 
-Now you can build your container and register it in Amazon Elastic Container Registry \(Amazon ECR\)\. The following shell script from the sample notebook builds the container and uploads it to an Amazon ECR repository in your AWS account\.
+Now you can build your container and register it\. The following shell script from the sample notebook builds the container and uploads it to an Amazon ECR repository in your AWS account\.
 
 **Note**  
 SageMaker hosting supports using inference containers that are stored in repositories other than Amazon ECR\. For information, see [Use a Private Docker Registry for Real\-Time Inference Containers](your-algorithms-containers-inference-private.md)\.

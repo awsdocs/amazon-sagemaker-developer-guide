@@ -27,14 +27,16 @@ The following example creates a multi\-container model for direct invocation\.
 1. Create container elements and `InferenceExecutionConfig` with direct invocation\.
 
    ```
-   container1 = { 'Image':        '123456789012.dkr.ecr.us-east-1.amazonaws.com/myimage1:mytag',
-                   'ContainerHostname': 'firstContainer'}
-   
-   container2 = { 'Image':        '123456789012.dkr.ecr.us-east-1.amazonaws.com/myimage2:mytag',
-                   'ContainerHostname': 'secondContainer'
+   container1 = {
+                    'Image': '123456789012.dkr.ecr.us-east-1.amazonaws.com/myimage1:mytag',
+                    'ContainerHostname': 'firstContainer'
                 }
-   inferenceExecutionConfig = {'Mode': 'Direct'
-                            }
+   
+   container2 = {
+                    'Image': '123456789012.dkr.ecr.us-east-1.amazonaws.com/myimage2:mytag',
+                    'ContainerHostname': 'secondContainer'
+                }
+   inferenceExecutionConfig = {'Mode': 'Direct'}
    ```
 
 1. Create the model with the container elements and set the `InferenceExecutionConfig` field\.
@@ -44,13 +46,14 @@ The following example creates a multi\-container model for direct invocation\.
    sm_client = boto3.Session().client('sagemaker')
    
    response = sm_client.create_model(
-                 ModelName        = 'my-direct-mode-model-name',
-                 InferenceExecutionConfig = inferenceExecutionConfig,
-                 ExecutionRoleArn = role,
-                 Containers       = [container1, container2])
+                  ModelName = 'my-direct-mode-model-name',
+                  InferenceExecutionConfig = inferenceExecutionConfig,
+                  ExecutionRoleArn = role,
+                  Containers = [container1, container2]
+              )
    ```
 
-To create an endoint, you would then call [create\_endpoint\_config](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_endpoint_config) and [create\_endpoint](https://docs.aws.amazon.com/https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_endpoint) as you would to create any other endpoint\.
+To create an endoint, you would then call [create\_endpoint\_config](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_endpoint_config) and [create\_endpoint](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_endpoint) as you would to create any other endpoint\.
 
 ## Update a multi\-container endpoint<a name="multi-container-update"></a>
 

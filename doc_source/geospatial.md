@@ -13,7 +13,7 @@
 You can use SageMaker geospatial capabilities to make predictions on geospatial data faster than do\-it\-yourself solutions\. SageMaker geospatial capabilities make it easier to access geospatial data from your existing customer data lakes, open\-source datasets, and other SageMaker geospatial data providers\. SageMaker geospatial capabilities minimize the need for building custom infrastructure and data preprocessing functions by offering purpose\-built algorithms for efficient data preparation, model training, and inference\. You can also create and share custom visualizations and data with your company from Amazon SageMaker Studio\. SageMaker geospatial capabilities offer pre\-trained models for common uses in agriculture, real estate, insurance, and financial services\.
 
 **Note**  
-Currently, SageMaker geospatial capabilities are only supported in the US West \(Oregon\) Region for public preview\.
+Currently, SageMaker geospatial capabilities are only supported in the US West \(Oregon\) Region for public preview\. To view Amazon SageMaker geospatial capabilities, choose the name of the currently displayed Region in the navigation bar of the console\. Then choose the US West \(Oregon\) Region\.
 <a name="how-use-geo"></a>
 **How can I use SageMaker geospatial capabilities?**  
 You can use SageMaker geospatial capabilities in two ways\.

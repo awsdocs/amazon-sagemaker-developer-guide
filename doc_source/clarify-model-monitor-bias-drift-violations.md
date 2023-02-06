@@ -5,7 +5,7 @@ Bias drift jobs evaluate the baseline constraints provided by the [baseline conf
 Here is the schema of the bias drift violations file\.
 + `facet` – The name of the facet, provided by the monitoring job analysis configuration facet `name_or_index`\. 
 + `facet_value` – The value of the facet, provided by the monitoring job analysis configuration facet `value_or_threshold`\.
-+ `metric_name` – The short name of the bias metric\. For example, "CI" for class imbalance\. See [Measure Pretraining Bias](clarify-measure-data-bias.md) for the short names of each of the pretraining bias metrics and [Measure Posttraining Data and Model Bias](clarify-measure-post-training-bias.md) for the short names of each of the posttraining bias metrics\.
++ `metric_name` – The short name of the bias metric\. For example, "CI" for class imbalance\. See [Measure Pretraining Bias](clarify-measure-data-bias.md) for the short names of each of the pretraining bias metrics and [Measure Post\-training Data and Model Bias](clarify-measure-post-training-bias.md) for the short names of each of the posttraining bias metrics\.
 + `constraint_check_type` – The type of violation monitored\. Currently only `bias_drift_check` is supported\.
 + `description` – A descriptive message to explain the violation\.
 

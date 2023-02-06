@@ -65,7 +65,7 @@ The following example of a VPC endpoint policy specifies that all users that hav
 
 Users outside your VPC can connect to SageMaker Studio over the internet even if you set up an interface endpoint in your VPC\.
 
-To allow access to only connections made from within your VPC, create an AWS Identity and Access Management \(IAM\) policy to that effect\. Add that policy to every IAM user, group, or role used to access Studio\. This feature is only supported in IAM mode, and is not supported in IAM Identity Center mode\. The following examples demonstrate how to create such policies\.
+To allow access to only connections made from within your VPC, create an AWS Identity and Access Management \(IAM\) policy to that effect\. Add that policy to every user, group, or role used to access Studio\. This feature is only supported in IAM mode, and is not supported in IAM Identity Center mode\. The following examples demonstrate how to create such policies\.
 
 **Important**  
 If you apply an IAM policy similar to one of the following examples, users can't access SageMaker Studio or the specified SageMaker APIs through the SageMaker console\. To access Studio, users must use a presigned URL or call the SageMaker APIs directly\.

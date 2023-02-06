@@ -92,7 +92,7 @@ The \.NET SDK enables developers to create, configure, and manage AWS services s
 
 ## AWS SDK for C\+\+<a name="autopilot-aws-sdk-for-c-plus-plus"></a>
 
-The C\+\+ SDK enables developers to create, configure, and manage AWS services such as SageMaker\. The API maps to the underlying SageMaker service API\. For information on the methods used to manage AutoML jobs with the client class, see [https://sdk.amazonaws.com/cpp/api/LATEST/class_aws_1_1_sage_maker_1_1_sage_maker_client.html](https://sdk.amazonaws.com/cpp/api/LATEST/class_aws_1_1_sage_maker_1_1_sage_maker_client.html)\.
+The C\+\+ SDK enables developers to create, configure, and manage AWS services such as SageMaker\. The API maps to the underlying SageMaker service API\. For information on the methods used to manage AutoML jobs with the client class, see [AWS::SageMaker::SageMakerClient Class Reference](https://sdk.amazonaws.com/cpp/api/LATEST/aws-cpp-sdk-sagemaker/html/annotated.html)\.
 
 ## AWS SDK for Go<a name="autopilot-aws-sdk-for-go"></a>
 

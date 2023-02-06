@@ -20,11 +20,11 @@ The following procedures show how you can configure these settings to use SageMa
 
 ### Step 1: Onboard to Amazon SageMaker Domain<a name="canvas-vpc-configure-onboard"></a>
 
-To send SageMaker Canvas traffic to a network interface in your own VPC instead of over the internet, specify the VPC you want to use when onboarding to [Amazon SageMaker Domain](gs-studio-onboard.md)\. Choose **Standard setup** and do the following procedure when configuring the **Network and Storage Section** for the Domain\.
+To send SageMaker Canvas traffic to a network interface in your own VPC instead of over the internet, specify the VPC you want to use when onboarding to [Amazon SageMaker Domain](gs-studio-onboard.md)\. You must also specify at least two subnets in your VPC that SageMaker can use\. Choose **Standard setup** and do the following procedure when configuring the **Network and Storage Section** for the Domain\.
 
 1. Select your desired **VPC**\.
 
-1. Choose one or more **Subnets**\. If you don’t specify a subnet, SageMaker uses all of the subnets\.
+1. Choose two or more **Subnets**\. If you don’t specify the subnets, SageMaker uses all of the subnets in the VPC\.
 
 1. Choose one or more **Security group\(s\)**\.
 
@@ -32,7 +32,10 @@ To send SageMaker Canvas traffic to a network interface in your own VPC instead 
 
 After disabling internet access, finish the onboarding process to set up your Domain\. For more information about the VPC settings for Amazon SageMaker Domain, see [Choose a VPC](onboard-vpc.md)\.
 
-### Step 2: Configure VPC endpoints<a name="canvas-vpc-configure-endpoints"></a>
+### Step 2: Configure VPC endpoints and access<a name="canvas-vpc-configure-endpoints"></a>
+
+**Note**  
+In order to configure Canvas in your own VPC, you must enable private DNS hostnames for your VPC endpoints\. For more information, see [Connect to SageMaker Through a VPC Interface Endpoint](https://docs.aws.amazon.com/sagemaker/latest/dg/interface-vpc-endpoint.html)\.
 
 SageMaker Canvas only accesses other AWS services to manage and store data for its functionality\. For example, it connects to Amazon Redshift if your users access an Amazon Redshift database\. It can connect to an AWS service such as Amazon Redshift using an internet connection or a VPC endpoint\. Use VPC endpoints if you want to set up connections from your VPC to AWS services that don't use the public internet\.
 
@@ -57,6 +60,35 @@ The following are the VPC endpoints for each service you can use with SageMaker 
 |  Amazon CloudWatch  |  com\.amazonaws\.*Region*\.monitoring  | Interface | 
 |  Amazon CloudWatch Logs  |  com\.amazonaws\.*Region*\.logs  | Interface | 
 |  Amazon Forecast  |  com\.amazonaws\.*Region*\.forecast com\.amazonaws\.*Region*\.forecastquery  | Interface | 
+
+You must also add the following endpoint policy for Amazon S3 to control AWS principal access to your VPC endpoint\. For information about how to update your VPC endpoint policy, see [Control access to VPC endpoints using endpoint policies](https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-access.html)\.
+
+```
+{
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:DeleteObject",
+                "s3:CreateBucket",
+                "s3:GetBucketCors",
+                "s3:GetBucketLocation"
+            ],
+            "Resource": [
+                "arn:aws:s3:::*SageMaker*",
+                "arn:aws:s3:::*Sagemaker*",
+                "arn:aws:s3:::*sagemaker*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListBucket",
+                "s3:ListAllMyBuckets"
+            ],
+            "Resource": "*"
+        }
+```
 
 ### Step 3: Grant IAM permissions<a name="canvas-vpc-configure-permissions"></a>
 

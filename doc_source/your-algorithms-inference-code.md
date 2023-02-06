@@ -87,7 +87,12 @@ To obtain inferences, the client application sends a POST request to the SageMak
 
 
 
-The `CreateEndpoint` and `UpdateEndpoint` API calls result in SageMaker starting new inference containers\. Soon after container startup, SageMaker starts sending periodic GET requests to the `/ping` endpoint\.
+SageMaker launches new inference containers in the following situations:
++ Responding to `CreateEndpoint`, `UpdateEndpoint`, and `UpdateEndpointWeightsAndCapacities` API calls
++ Security patching
++ Replacing unhealthy instances
+
+Soon after container startup, SageMaker starts sending periodic GET requests to the `/ping` endpoint\.
 
 The simplest requirement on the container is to respond with an HTTP 200 status code and an empty body\. This indicates to SageMaker that the container is ready to accept inference requests at the `/invocations` endpoint\.
 
