@@ -18,7 +18,7 @@ The **Status** column displays the status of the app, such as **Ready**, **Pendi
 
 ## Delete app<a name="canvas-manage-apps-delete"></a>
 
-If you want to end your SageMaker Canvas session, you can either log out from the SageMaker Canvas application or delete your application from the SageMaker console\. A *session* is the period of time from when you start using SageMaker Canvas to the point when you stop using it\. Deleting the application only ends the session\. Models and datasets aren’t affected, but Quick build tasks are cancelled\. The billing for the session also stops\. 
+If you want to end your SageMaker Canvas session, you can either log out from the SageMaker Canvas application or delete your application from the SageMaker console\. A *session* is the period of time from when you start using SageMaker Canvas to the point when you stop using it\. Deleting the application only ends the session\. Models and datasets aren’t affected, but Quick build tasks automatically restart when you log in again\. The billing for the session also stops\. 
 
 Use the following procedure to delete your SageMaker Canvas application\.
 

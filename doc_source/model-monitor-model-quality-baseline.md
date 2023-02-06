@@ -59,7 +59,7 @@ To create a baseline job use the `ModelQualityMonitor` class provided by the Sag
 
    We recommend that you view the generated constraints and modify them as necessary before using them for monitoring\. For example, if a constraint is too aggressive, you might get more alerts for violations than you want\.
 
-   If your constraint contains numbers expressed in scientific notation, you will need to convert them to float\. The follow python [preprocessing script](https://docs.aws.amazon.com/https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-pre-and-post-processing.html#model-monitor-pre-processing-script) example shows how to convert numbers in scientific notation to float\. 
+   If your constraint contains numbers expressed in scientific notation, you will need to convert them to float\. The following python [preprocessing script](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-pre-and-post-processing.html#model-monitor-pre-processing-script) example shows how to convert numbers in scientific notation to float\. 
 
    ```
    import csv

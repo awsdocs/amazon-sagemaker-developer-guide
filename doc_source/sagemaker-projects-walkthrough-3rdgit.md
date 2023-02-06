@@ -171,7 +171,7 @@ To delete the AWS CloudFormation stack and the Amazon S3 bucket, you need to be 
 
 1. Confirm your choice by choosing **Delete** from the **Delete Project** window\.
 
-   This deletes the AWS Service Catalog provisioned product that the project created\. This includes the CodeCommit, CodePipeline, and CodeBuild resources created for the project\.
+   This deletes the Service Catalog provisioned product that the project created\. This includes the CodeCommit, CodePipeline, and CodeBuild resources created for the project\.
 
 1. Delete the AWS CloudFormation stacks that the project created\. There are two stacks, one for staging and one for production\. The names of the stacks are **sagemaker\-*projectname*\-*project\-id*\-deploy\-staging** and **sagemaker\-*projectname*\-*project\-id*\-deploy\-prod**, where *projectname* is the name of your project, and *project\-id* is the ID of your project\.
 

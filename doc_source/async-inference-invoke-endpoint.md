@@ -5,7 +5,10 @@ Get inferences from the model hosted at your asynchronous endpoint with `InvokeE
 **Note**  
 If you have not done so already, upload your inference data \(e\.g\., machine learning model, sample data\) to Amazon S3\.
 
-Specify the location of your inference data in the `InputLocation` field and the name of your endpoint for `EndpointName`:
+Specify the following fields in your request:
++ For `InputLocation`, specify the location of your inference data\.
++ For `EndpointName`, specify the name of your endpoint\.
++ \(Optional\) For `InvocationTimeoutSeconds`, you can set the max timeout for the requests\. You can set this value to a maximum of 3600 seconds \(one hour\) on a per\-request basis\. If you don't specify this field in your request, by default the request times out at 15 minutes\.
 
 ```
 # Create a low-level client representing Amazon SageMaker Runtime
@@ -22,7 +25,8 @@ endpoint_name='<endpoint-name>'
 # from the model hosted at the specified endpoint.
 response = sagemaker_runtime.invoke_endpoint_async(
                             EndpointName=endpoint_name, 
-                            InputLocation=input_location)
+                            InputLocation=input_location,
+                            InvocationTimeoutSeconds=3600)
 ```
 
 You receive a response as a JSON string with your request ID and the name of the Amazon S3 bucket that will have the response to the API call after it is processed\.

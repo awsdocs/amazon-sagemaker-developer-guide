@@ -11,7 +11,7 @@ Use the following information to help you diagnose and fix common issues that yo
 
 ## I Am Not Authorized to Perform an Action in SageMaker<a name="security_iam_troubleshoot-no-permissions"></a>
 
-If the AWS Management Console tells you that you're not authorized to perform an action, then you must contact your administrator for assistance\. Your administrator is the person that provided you with your user name and password\.
+If the AWS Management Console tells you that you're not authorized to perform an action, then you must contact your administrator for assistance\. Your administrator is the person that provided you with your sign\-in credentials\.
 
 The following example error occurs when the `mateojackson` IAM user tries to use the console to view details about a training job but does not have `sagemaker:sagemaker:DescribeTrainingJob` permissions\.
 

@@ -44,7 +44,7 @@ This policy includes the following permissions\.
 + `application-autoscaling` – Allows principals to automatically scale a SageMaker real\-time inference endpoint\.
 + `athena` – Allows principals to query a list of data catalogs, databases, and table metadata from Amazon Athena\.
 + `aws-marketplace` – Allows principals to view AWS AI Marketplace subscriptions\. You need this if you want to access SageMaker software subscribed in AWS Marketplace\.
-+ `cloudformation` – Allows principals to get AWS CloudFormation templates for using SageMaker JumpStart solutions and Pipelines\. SageMaker JumpStart creates resources necessary to run end\-to\-end machine learning solutions that tie SageMaker to other AWS services\. SageMaker Pipelines creates new projects that are backed by AWS Service Catalog\.
++ `cloudformation` – Allows principals to get AWS CloudFormation templates for using SageMaker JumpStart solutions and Pipelines\. SageMaker JumpStart creates resources necessary to run end\-to\-end machine learning solutions that tie SageMaker to other AWS services\. SageMaker Pipelines creates new projects that are backed by Service Catalog\.
 + `cloudwatch` – Allows principals to post CloudWatch metrics, interact with alarms, and upload logs to CloudWatch Logs in your account\.
 + `codebuild` – Allows principals to store AWS CodeBuild artifacts for SageMaker Pipeline and Projects\.
 + `codecommit` – Needed for AWS CodeCommit integration with SageMaker notebook instances\.
@@ -67,7 +67,7 @@ This policy includes the following permissions\.
 + `sagemaker` – Allows principals to list tags on Amazon SageMaker user profiles, and add tags to SageMaker apps\. Also allows principals to describe and list spaces\.
 + `sagemaker` and `sagemaker-geospatial` – Allows principals access to all Amazon SageMaker resources except domains, user profiles, apps, spaces, and flow\-definitions\.
 + `secretsmanager` – Allows principals to have full access to AWS Secrets Manager\. The principals can securely encrypt, store, and retrieve credentials for databases and other services\. This is also needed for SageMaker notebook instances with SageMaker code repositories that use GitHub\.
-+ `servicecatalog` – Allows principals to use AWS Service Catalog\. The principals can create, get a list of, update, or terminate provisioned products, such as servers, databases, websites, or applications deployed using AWS resources\. This is needed for SageMaker JumpStart and Projects to find and read service catalog products and launch AWS resources in user accounts\.
++ `servicecatalog` – Allows principals to use Service Catalog\. The principals can create, get a list of, update, or terminate provisioned products, such as servers, databases, websites, or applications deployed using AWS resources\. This is needed for SageMaker JumpStart and Projects to find and read service catalog products and launch AWS resources in user accounts\.
 + `sns` – Allows principals to get a list of Amazon SNS topics\. This is needed for endpoints with Async Inference enabled for notifying users that their inference has completed\.
 + `states` – Needed for SageMaker JumpStart and Pipelines to use a service catalog to create step function resources\.
 + `tag` – Needed for SageMaker Pipelines to render in Studio\. Studio needs resources tagged with particular `sagemaker:project-id` tag\-key\. This requires the `tag:GetResources` permission\.

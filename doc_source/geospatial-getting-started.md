@@ -9,7 +9,7 @@
 
 This guide demonstrates how to complete the necessary steps to satisfy the prerequisites for using SageMaker geospatial capabilities\.
 
-To use SageMaker geospatial you need to have an AWS account\. If you already have an AWS account, skip this step\.
+To use SageMaker geospatial capabilities you need to have an AWS account\. If you already have an AWS account, skip this step\.
 
 ## Sign up for an AWS account<a name="sign-up-for-aws"></a>
 
@@ -53,13 +53,16 @@ After you sign up for an AWS account, create an administrative user so that you 
 
 ## Create an execution role and trust policy<a name="geospatial-role-setup"></a>
 
-As a managed service, Amazon SageMaker geospatial capabilities perform operations on your behalf on the AWS hardware that is managed by SageMaker\. It can perform only operations that the user permits\. To work with SageMaker geospatial you need to setup a user role and an execution role\. See [Amazon SageMaker geospatial capability roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-geospatial-roles.html) to learn more\.
+As a managed service, Amazon SageMaker geospatial capabilities perform operations on your behalf on the AWS hardware that is managed by SageMaker\. It can perform only operations that the user permits\. To work with SageMaker geospatial capabilities you need to setup a user role and an execution role\. See [Amazon SageMaker geospatial capability roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-geospatial-roles.html) to learn more\.
 
 ## Setup the SageMaker geospatial UI and SageMaker Studio notebook with a SageMaker geospatial image<a name="geospatial-sdk-console-setup"></a>
 
 See [Onboard to Amazon SageMaker Domain](https://docs.aws.amazon.com/sagemaker/latest/dg/gs-studio-onboard.html), which provides you with steps to create a Domain, giving you access to Amazon SageMaker Studio and Amazon SageMaker geospatial capabilities\.
 
 **To use the SageMaker geospatial UI:**
+
+**Note**  
+Currently, SageMaker geospatial capabilities are only supported in the US West \(Oregon\) Region for public preview\. To view Amazon SageMaker geospatial capabilities, choose the name of the currently displayed Region in the navigation bar of the console\. Then choose the US West \(Oregon\) Region\.
 
 Within the Studio UI, choose **Geospatial** under **Data** from the left navigation panel on the **Home** menu\.
 

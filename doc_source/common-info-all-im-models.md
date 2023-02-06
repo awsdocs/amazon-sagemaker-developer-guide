@@ -16,7 +16,7 @@ The following table lists parameters for each of the algorithms provided by Amaz
 | K\-Means | train and \(optionally\) test | File or Pipe | recordIO\-protobuf or CSV | CPU or GPUCommon \(single GPU device on one or more instances\) | No | 
 | K\-Nearest\-Neighbors \(k\-NN\) | train and \(optionally\) test | File or Pipe | recordIO\-protobuf or CSV | CPU or GPU \(single GPU device on one or more instances\) | Yes | 
 | LDA | train and \(optionally\) test | File or Pipe | recordIO\-protobuf or CSV | CPU \(single instance only\) | No | 
-| LightGBM | training and \(optionally\) validation | File | CSV | CPU \(single instance only\) | No | 
+| LightGBM | train/training and \(optionally\) validation | File | CSV | CPU | Yes | 
 | Linear Learner | train and \(optionally\) validation, test, or both | File or Pipe | recordIO\-protobuf or CSV | CPU or GPU | Yes | 
 | Neural Topic Model | train and \(optionally\) validation, test, or both | File or Pipe | recordIO\-protobuf or CSV | CPU or GPU | Yes | 
 | Object2Vec | train and \(optionally\) validation, test, or both | File | JSON Lines  | CPU or GPU \(single instance only\) | No | 

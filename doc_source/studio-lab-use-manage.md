@@ -45,7 +45,7 @@ For a list of all of the packages currently installed in your environment, run t
 
 ## Managing conda environments<a name="studio-lab-use-manage-conda"></a>
 
- The following sections give information about your default conda environment, how to customize it, and how to add new conda environments\. For more information about conda environments, see [Conda environments](https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html)\. For a list of sample environments that you can install into Studio Lab, see [Creating Custom Conda Environments](https://github.com/aws/studio-lab-examples/tree/main/custom-environments)\. To use these sample environment YAML files with Studio Lab, see [Step 4 – Import your Studio Lab Conda environments in Studio](studio-lab-use-migrate.md#studio-lab-use-migrate-step4)\. 
+ The following sections give information about your default conda environment, how to customize it, and how to add new conda environments\. For more information about conda environments, see [Conda environments](https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html)\. For a list of sample environments that you can install into Studio Lab, see [Creating Custom Conda Environments](https://github.com/aws/studio-lab-examples/tree/main/custom-environments)\. To use these sample environment YAML files with Studio Lab, see [Step 4: Install your Studio Lab Conda environments in Studio](studio-lab-use-migrate.md#studio-lab-use-migrate-step4)\. 
 
 ### Your default environment<a name="studio-lab-use-manage-conda-default"></a>
 

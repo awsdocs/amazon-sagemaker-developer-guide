@@ -26,10 +26,10 @@ In the JSON configuration file, you can specify the following parameters\.
     + `"features": ["pdp_feature_1", "pdp_feature_2"…] `– \(Optional\) The list of feature names or indices for which partial dependence plots are to be computed and plotted\. If SHAP is not requested, the features must be provided\.
     + `"grid_resolution" ` – \(Required\) Used for numerical features\. Represents that number of buckets into which the range of numerical values is divided\. This specifies the granularity of the grid for the PDP plot\.
     + `"top_k_features" ` – \(Optional\) If the `features` parameter is not provided, and `shap` is provided, Clarify chooses the top `k` features based on SHAP attributions\. You can set this value to specify how many of the top features must be used for PDP plots\. The default is 10\.
-  + `"post_training_bias"` – \(Optional\) Section on posttraining bias metrics\.
-    + `"methods"` – A list of posttraining metrics to be computed\.
-  + `"pre_training_bias"` – \(Optional\) Section on pretraining bias metrics\.
-    + `"methods"` – A list of pretraining metrics to be computed\.
+  + `"post_training_bias"` – \(Optional\) Section on post\-training bias metrics\.
+    + `"methods"` – A list of post\-training metrics to be computed\.
+  + `"pre_training_bias"` – \(Optional\) Section on pre\-training bias metrics\.
+    + `"methods"` – A list of pre\-training metrics to be computed\.
   + `"shap"` – \(Optional\) Section on SHAP value computation\.
     + `"agg_method"` – Aggregation method for global SHAP values\. Valid values are as follows:
       + `"mean_abs"` – Mean of absolute SHAP values for all instances\.
@@ -67,7 +67,7 @@ In the JSON configuration file, you can specify the following parameters\.
   + `"label_headers"` – \(Optional\) A list of values that the `"label"` takes in the dataset\. Associates the scores returned by the model endpoint with their corresponding label values\. Used to extract the label value with the highest score as the predicted label\.
   + `"model_name"` – Model name created by `CreateModel` API, with container mode as `SingleModel`\.
   + `"probability"` – \(Optional\) Index or JMESPath location in the model output for probabilities or scores to be used for explainability\. If the model output is JSON Lines with a list of labels and probabilities, for example, then the label that corresponds to the maximum probability is selected for bias computations\. For explainability method, currently all probabilities are explained\.
-  + `"target_model"` – \(Optional\) Sets the target model name when using a multi\-model endpoint\. For more information about multi\-model endpoints, see [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint_RequestSyntax](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint_RequestSyntax)\.
+  + `"target_model"` – \(Optional\) Sets the target model name when using a multi\-model endpoint\. For more information about multi\-model endpoints, see [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html#API_runtime_InvokeEndpoint_RequestSyntax](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html#API_runtime_InvokeEndpoint_RequestSyntax)\.
 + `"probability_threshold"` – \(Optional\) A float value to indicate the threshold to select the binary label in the case of binary classification\. This parameter is used in object detection to filter out objects detected with confidence scores lower than the `probability_threshold` value\. The default value is 0\.5\.
 + `"report"` – \(Optional\) Section on report parameters\. A report is generated if this section is present\.
   + `"name"` – \(Optional\) Filename prefix for the report notebook and PDF file\. The default name is `"report"`\. 

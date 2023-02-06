@@ -16,9 +16,13 @@ This topic describes how you can attach an existing custom SageMaker image versi
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1. In the left navigation pane, choose **Control Panel**\.
+1. In the left navigation pane, choose **Domains**\.
 
-1. On the **Control Panel**, under **Custom SageMaker Studio images attached to domain**, choose **Attach image**\.
+1. From the **Domains** page, select the Domain to attach the image to\.
+
+1. From the **Domain details** page, select the **Environment** tab\.
+
+1. On the **Environment** tab, under **Custom SageMaker Studio images attached to domain**, choose **Attach image**\.
 
 1. For **Image source**, choose **Existing image**\.
 
@@ -28,21 +32,21 @@ This topic describes how you can attach an existing custom SageMaker image versi
 
 1. Choose **Next**\.
 
-1. Enter values for **Image name**, **Image display name**, and **Description**\.
+1. Verify the values for **Image name**, **Image display name**, and **Description**\.
 
 1. Choose the IAM role\. For more information, see [Create a custom SageMaker image](studio-byoi-create.md)\.
 
 1. \(Optional\) Add tags for the image\.
 
-1. Choose **Next**\.
+1. Specify the EFS mount path\. This is the path within the image to mount the user's Amazon Elastic File System \(EFS\) home directory\.
 
-1. Under **Studio configuration**, enter or change the following settings\. For information on how to get the kernel information from the image, see [DEVELOPMENT](https://github.com/aws-samples/sagemaker-studio-custom-image-samples/blob/main/DEVELOPMENT.md) in the SageMaker Studio Custom Image Samples repository\. For more information, see the **Kernel discovery** and **User data** sections of [Custom SageMaker image specifications](studio-byoi-specs.md)\.
-   + EFS mount path – The path within the image to mount the user's Amazon Elastic File System \(EFS\) home directory\.
-   + Kernel:
-     + For **Kernel name**, enter the name of an existing kernel in the image\.
-     + \(Optional\) For **Kernel display name**, enter the display name for the kernel\.
-     + Choose **Add kernel**\.
-   + \(Optional\) Configuration tags – Choose **Add new tag** and then add a configuration tag\.
+1. For **Image type**, select **SageMaker Studio image**
+
+1. For **Kernel name**, enter the name of an existing kernel in the image\. For information on how to get the kernel information from the image, see [DEVELOPMENT](https://github.com/aws-samples/sagemaker-studio-custom-image-samples/blob/main/DEVELOPMENT.md) in the SageMaker Studio Custom Image Samples repository\. For more information, see the **Kernel discovery** and **User data** sections of [Custom SageMaker image specifications](studio-byoi-specs.md)\.
+
+1. \(Optional\) For **Kernel display name**, enter the display name for the kernel\.
+
+1. Choose **Add kernel**\.
 
 1. Choose **Submit**\. 
 
@@ -137,9 +141,6 @@ The following section demonstrates how to create a new domain with the version a
 
 If you have onboarded to a SageMaker domain, you can attach the custom image to your current domain\. For more information about onboarding to a SageMaker domain, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\. You don't need to specify the VPC information and execution role when attaching a custom image to your current domain\. After you attach the version, you must delete all the apps in your domain and reopen Studio\. For information about deleting the apps, see [Delete an Amazon SageMaker Domain](gs-studio-delete-domain.md)\.
 
-**Note**  
-You can have only one domain\. If you have onboarded to SageMaker domain, you must delete your current domain before you can use this method\. For more information, see [Delete an Amazon SageMaker Domain](gs-studio-delete-domain.md)\.
-
 You perform the following steps to add the SageMaker image to your current domain\.
 + Get your `DomainID` from SageMaker control panel\.
 + Use the `DomainID` to get the `DefaultUserSettings` for the domain\.
@@ -150,10 +151,13 @@ You perform the following steps to add the SageMaker image to your current domai
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1. From the top left of the navigation pane, choose **Control Panel**\.
+1. In the left navigation pane, choose **Domains**\.
 
-1. From the **Control Panel**, under **Domain**, find the `DomainId`\. The ID is in the following format: `d-xxxxxxxxxxxx`\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-byoi-id.png)
+1. From the **Domains** page, select the Domain to attach the image to\.
+
+1. From the **Domain details** page, select the **Domain settings** tab\.
+
+1. From the **Domain settings** tab, under **General settings**, find the `DomainId`\. The ID is in the following format: `d-xxxxxxxxxxxx`\.
 
 1. Use the domain ID to get the description of the domain\.
 
@@ -216,5 +220,3 @@ You perform the following steps to add the SageMaker image to your current domai
 ## View the attached image in the SageMaker control panel<a name="studio-byoi-sdk-view"></a>
 
 After you create the custom SageMaker image and attach it to your domain, the image appears in the custom images list in the control panel\.
-
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-byoi-custom-image-list.png)

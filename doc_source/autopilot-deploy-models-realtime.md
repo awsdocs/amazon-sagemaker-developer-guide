@@ -8,19 +8,31 @@ The following tabs show three options for deploying your model\. These instructi
 
 ## Deploy using the Autopilot User Interface \(UI\)<a name="autopilot-deploy-models-realtime-ui"></a>
 
-The Autopilot UI contains helpful dropdown menus, toggles, tooltips, and more to help you navigate through model deployment\.
-+ **Automatically**: To automatically deploy the best model from an Autopilot experiment to an endpoint, toggle the **Auto deploy** value to **Yes** when [creating the experiment](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development-create-experiment.html) in SageMaker Studio\. 
+The Autopilot UI contains helpful dropdown menus, toggles, tooltips, and more to help you navigate through model deployment\. You can deploy using either one of the following procedures: Automatic or Manual\.
++ **Automatic Deployment**: To automatically deploy the best model from an Autopilot experiment to an endpoint
+
+  1. [Create an experiment](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development-create-experiment.html) in SageMaker Studio\. 
+
+  1. Toggle the **Auto deploy** value to **Yes**\.
 **Note**  
 **Automatic deployment will fail if either the default resource quota or your customer quota for endpoint instances in a Region is too limited\.** In hyperparameter optimization \(HPO\) mode, you are required to have at least two ml\.m5\.2xlarge instances\. In ensembling mode, you are required to have at least one ml\.m5\.12xlarge instance\. If you encounter a failure related to quotas, you can [request a service limit increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html) for SageMaker endpoint instances\.
-+ **Manually**: To manually deploy the best model from an Autopilot experiment to an endpoint, toggle the **Auto deploy** value to **No** when creating the experiment in SageMaker Studio\. 
++ **Manual Deployment**: To manually deploy the best model from an Autopilot experiment to an endpoint
 
-  After your Autopilot experiment has been created, select the model that you want to deploy under **Model name**\. Then select the orange **Deployment and advanced settings** button located on the right of the leaderboard\. This opens a new tab\.
+  1. [Create an experiment](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development-create-experiment.html) in SageMaker Studio\. 
 
-  Configure the endpoint name, instance type, and other optional information\. Select the orange **Deploy model** to deploy to an endpoint\.
+  1. Toggle the **Auto deploy** value to **No**\. 
 
-  Check the progress of the endpoint creation process in the [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) by navigating to the Endpoints section\. That section is located in the **Inference** dropdown menu in the navigation panel\. 
+  1. Select the model that you want to deploy under **Model name**\.
 
-  After the endpoint status changes from **Creating** to **InService**, as shown below, return to Studio and invoke the endpoint\.  
+  1. Select the orange **Deployment and advanced settings** button located on the right of the leaderboard\. This opens a new tab\.
+
+  1. Configure the endpoint name, instance type, and other optional information\.
+
+  1.  Select the orange **Deploy model** to deploy to an endpoint\.
+
+  1. Check the progress of the endpoint creation process in the [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) by navigating to the Endpoints section\. That section is located in the **Inference** dropdown menu in the navigation panel\. 
+
+  1. After the endpoint status changes from **Creating** to **InService**, as shown below, return to Studio and invoke the endpoint\.  
 ![\[SageMaker console: Endpoints page to create an endpoint or check endpoint status.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/autopilot/autopilot-check-progress.PNG)
 
 ## Deploy using SageMaker APIs<a name="autopilot-deploy-models-api"></a>

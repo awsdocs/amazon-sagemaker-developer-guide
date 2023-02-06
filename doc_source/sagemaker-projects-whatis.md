@@ -10,7 +10,7 @@ While notebooks are helpful for model building and experimentation, a team of da
 
 Every organization has its own set of standards and practices that provide security and governance for its AWS environment\. SageMaker provides a set of first\-party templates for organizations that want to quickly get started with ML workflows and CI/CD\. The templates include projects that use AWS\-native services for CI/CD, such as AWS CodeBuild, AWS CodePipeline, and AWS CodeCommit\. The templates also offer the option to create projects that use third\-party tools, such as Jenkins and GitHub\. For a list of the project templates that SageMaker provides, see [Use SageMaker\-Provided Project Templates](sagemaker-projects-templates-sm.md)\.
 
-Organizations often need tight control over the MLOps resources that they provision and manage\. Such responsibility assumes certain tasks, including configuring IAM roles and policies, enforcing resource tags, enforcing encryption, and decoupling resources across multiple accounts\. SageMaker Projects can support all these tasks through custom template offerings where organizations use AWS CloudFormation templates to define the resources needed for an ML workflow\. Data Scientists can choose a template to bootstrap and pre\-configure their ML workflow\. These custom templates are created as AWS Service Catalog products and you can provision them in the Studio UI under **Organization Templates**\. The AWS Service Catalog is a service that helps organizations create and manage catalogs of products that are approved for use on AWS\. For more information about creating custom templates, see [Build Custom SageMaker Project Templates – Best Practices](http://aws.amazon.com/blogs/machine-learning/build-custom-sagemaker-project-templates-best-practices/)\.
+Organizations often need tight control over the MLOps resources that they provision and manage\. Such responsibility assumes certain tasks, including configuring IAM roles and policies, enforcing resource tags, enforcing encryption, and decoupling resources across multiple accounts\. SageMaker Projects can support all these tasks through custom template offerings where organizations use AWS CloudFormation templates to define the resources needed for an ML workflow\. Data Scientists can choose a template to bootstrap and pre\-configure their ML workflow\. These custom templates are created as Service Catalog products and you can provision them in the Studio UI under **Organization Templates**\. The Service Catalog is a service that helps organizations create and manage catalogs of products that are approved for use on AWS\. For more information about creating custom templates, see [Build Custom SageMaker Project Templates – Best Practices](http://aws.amazon.com/blogs/machine-learning/build-custom-sagemaker-project-templates-best-practices/)\.
 
 SageMaker Projects can help you manage your Git repositories so that you can collaborate more efficiently across teams, ensure code consistency, and support CI/CD\. SageMaker Projects can help you with the following tasks:
 + Organize all entities of the ML lifecycle under one project\.
@@ -38,7 +38,7 @@ Each SageMaker project has a unique name and ID that are applied as tags to all 
 + Registered models
 + Deployed models \(endpoints\)
 + Datasets
-+ AWS Service Catalog products
++ Service Catalog products
 + CodePipeline and Jenkins pipelines
 + CodeCommit and third\-party Git repositories
 

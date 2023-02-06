@@ -14,7 +14,7 @@ Use the following sections to learn how to create the IAM entities and grant per
 
 ## Grant Permission to Create and Select an AWS Lambda Function<a name="sms-custom-templates-step3-postlambda-create-perms"></a>
 
-If you do not require granular permissions to develop pre\-annotation and post\-annotation Lambda functions, you can attach the AWS managed policy `AWSLambda_FullAccess` to an IAM user or role\. This policy grants broad permissions to use all Lambda features, as well as permission to perform actions in other AWS services with which Lambda interacts\.
+If you do not require granular permissions to develop pre\-annotation and post\-annotation Lambda functions, you can attach the AWS managed policy `AWSLambda_FullAccess` to a user or role\. This policy grants broad permissions to use all Lambda features, as well as permission to perform actions in other AWS services with which Lambda interacts\.
 
 To create a more granular policy for security\-sensitive use cases, refer to the documentation [Identity\-based IAM policies for Lambda](https://docs.aws.amazon.com/lambda/latest/dg/access-control-identity-based.html) in the to AWS Lambda Developer Guide to learn how to create an IAM policy that fits your use case\. 
 

@@ -60,7 +60,7 @@ Each training job definition for a tuning job requires a name, permission to acc
 
 **Algorithm Options**  
 You can choose one of the built\-in algorithms, your own algorithm, your own container with an algorithm, or you can subscribe to an algorithm from AWS Marketplace\. 
-+ If you choose a built\-in algorithm, it has the ECR image information prepopulated\.
++ If you choose a built\-in algorithm, it has the ECR image information pre\-populated\.
 + If you choose your own container, you must specify the ECR image information\. You can select the input mode for the algorithm as file or pipe\.
 + If you plan to supply your data using a \.CSV file from Amazon S3, you should select the file\.
 

@@ -68,7 +68,7 @@ aws sagemaker \
 
 ### Step 3 \- Activate RStudio by calling the UpdateDomain API<a name="rstudio-add-existing-enable-step3"></a>
 
-1.  Call the [UpdateDomain](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateDomain.html) API to add support for RStudio on SageMaker\. The `defaultusersettings` parameter is only needed if you have refactored the default security groups for your user profiles or would like to change the default RStudio access status of new user profiles created in your Domain\. 
+1.  Call the [UpdateDomain](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateDomain.html) API to add support for RStudio on SageMaker\. The `defaultusersettings` parameter is only needed if you have refactored the default security groups for your user profiles\. 
    +  For `VPCOnly` mode: 
 
      ```
@@ -77,7 +77,7 @@ aws sagemaker \
          --domain-id <DOMAIN_ID> \
          --app-security-group-management Service \
          --domain-settings-for-update RStudioServerProDomainSettingsForUpdate={DomainExecutionRoleArn=<DOMAIN_EXECUTION_ROLE_ARN>} \
-         --default-user-settings "{\"SecurityGroups\": [\"<SECURITY_GROUP>\", \"<SECURITY_GROUP>\"]}", "{\"RStudioServerProAppSettings\": {\"AccessStatus\": \"ENABLED\", \"userGroup\":\"R_STUDIO_USER\"}}"
+         --default-user-settings "{\"SecurityGroups\": [\"<SECURITY_GROUP>\", \"<SECURITY_GROUP>\"]}"
      ```
    +  For `PublicInternetOnly` mode: 
 
@@ -86,7 +86,7 @@ aws sagemaker \
          update-domain \
          --domain-id <DOMAIN_ID> \
          --domain-settings-for-update RStudioServerProDomainSettingsForUpdate={DomainExecutionRoleArn=<DOMAIN_EXECUTION_ROLE_ARN>} \
-         --default-user-settings "{\"SecurityGroups\": [\"<SECURITY_GROUP>\", \"<SECURITY_GROUP>\"]}", "{\"RStudioServerProAppSettings\": {\"AccessStatus\": \"ENABLED\", \"userGroup\":\"R_STUDIO_USER\"}}"
+         --default-user-settings "{\"SecurityGroups\": [\"<SECURITY_GROUP>\", \"<SECURITY_GROUP>\"]}"
      ```
 
 1. Verify that the Domain status is `InService`\. After the Domain status is `InService`, support for RStudio on SageMaker is added\.

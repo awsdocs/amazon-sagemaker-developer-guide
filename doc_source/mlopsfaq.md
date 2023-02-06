@@ -121,7 +121,7 @@ You can use a SageMaker Projects template to implement image\-building CI/CD\. W
 
 ## Q\. How do I provide SageMaker Project access to specific user profiles in Amazon SageMaker Studio?<a name="collapsible-section-10"></a>
 
-Since SageMaker Projects is backed by AWS Service Catalog, you must add each role that requires access to SageMaker Projects to the **Amazon SageMaker Solutions and ML Ops products** Portfolio in the service catalog\. You can do this on the **Groups, roles, and users** tab, as shown in the following image\. If each user profile in Studio has a different role, you should add each of those roles to the service catalog\. You can also do this while creating a user profile in Studio\.
+Since SageMaker Projects is backed by Service Catalog, you must add each role that requires access to SageMaker Projects to the **Amazon SageMaker Solutions and ML Ops products** Portfolio in the service catalog\. You can do this on the **Groups, roles, and users** tab, as shown in the following image\. If each user profile in Studio has a different role, you should add each of those roles to the service catalog\. You can also do this while creating a user profile in Studio\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/projects/project-access3.png)
 
