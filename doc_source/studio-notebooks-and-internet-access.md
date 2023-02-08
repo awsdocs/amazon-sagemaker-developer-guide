@@ -28,7 +28,7 @@ You can configure only subnets with a default tenancy VPC in which your instance
 
 3. If you want to allow internet access, you must use a [NAT gateway](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with) with access to the internet, for example through an [internet gateway](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html)\.
 
-4. If you don't want to allow internet access, [create interface VPC endpoints](https://docs.aws.amazon.com/vpc/latest/privatelink/vpce-interface.html) \(AWS PrivateLink\) to allow Studio to access the following services with the corresponding service names\. Ensure that you enabled the private DNS name for all VPC endpoints. You must also associate the security groups for your VPC with these endpoints\.
+4. If you don't want to allow internet access, [create interface VPC endpoints](https://docs.aws.amazon.com/vpc/latest/privatelink/vpce-interface.html) \(AWS PrivateLink\) to allow Studio to access the following services with the corresponding service names\. You must also associate the security groups for your VPC with these endpoints\.
    + SageMaker API : `com.amazonaws.us-east-1.sagemaker.api`
    + SageMaker runtime: `com.amazonaws.us-east-1.sagemaker.runtime`\. This is required to run Studio notebooks and to train and host models\.
    + Amazon S3: `com.amazonaws.us-east-1.s3`\.
