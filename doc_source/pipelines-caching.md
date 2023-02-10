@@ -178,7 +178,7 @@ The following list shows each pipeline step type and the attributes that, if cha
 ### [Processing step](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateProcessingJob.html)<a name="collapsible-caching-section-1"></a>
 + AppSpecification
 + Environment
-+ ProcessingInputs\. This attribute contains information about the preprocessing script\. If the contents of the preprocessing script change, the processing step is rerun\.
++ ProcessingInputs\. This attribute contains information about the preprocessing script\.
 
   
 
@@ -189,7 +189,7 @@ The following list shows each pipeline step type and the attributes that, if cha
 + DebugRuleConfigurations
 + Environment
 + HyperParameters
-+ InputDataConfig\. This attribute contains information about the training script\. If the contents of the training script change, the training step is rerun\.
++ InputDataConfig\. This attribute contains information about the training script\.
 
   
 

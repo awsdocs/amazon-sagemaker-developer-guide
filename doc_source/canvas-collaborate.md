@@ -16,7 +16,7 @@ Model collaboration is different from [Bring your own model to SageMaker Canvas]
 
 ## Prerequisites<a name="canvas-collaborate-prereqs"></a>
 
-Before a Canvas user and Studio user can collaborate on models, both of the users must have AWS Identity and Access Management \(IAM\) permissions to share models\. If you haven’t already set up permissions, see [Grant Users Permissions to Collaborate with Studio](canvas-collaborate-permissions.md)\.
+Before a Canvas user and Studio user can collaborate on models, the users' IAM role must have AWS Identity and Access Management \(IAM\) permissions to share models\. If you haven’t already set up permissions, see [Grant Users Permissions to Collaborate with Studio](canvas-collaborate-permissions.md)\.
 
 The Canvas user must also have a Standard build model trained in Canvas and ready to share\.
 

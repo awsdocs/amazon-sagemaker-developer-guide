@@ -1,6 +1,6 @@
 # CloudWatch Metrics for Bias Drift Analysis<a name="clarify-model-monitor-bias-drift-cw"></a>
 
-This guide shows CloudWatch metrics and their properties that you can use for bias drift analysis in SageMaker Clarify\. Bias drift monitoring jobs compute both [pretraining bias metrics](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-data-bias.html) and [posttraining bias metrics](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html), and publish them to the following CloudWatch namespace:
+This guide shows CloudWatch metrics and their properties that you can use for bias drift analysis in SageMaker Clarify\. Bias drift monitoring jobs compute both [pre\-training bias metrics](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-data-bias.html) and [post\-training bias metrics](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html), and publish them to the following CloudWatch namespace:
 + For real\-time endpoints: `aws/sagemaker/Endpoints/bias-metrics`
 + For batch transform jobs: `aws/sagemaker/ModelMonitoring/bias-metrics` 
 

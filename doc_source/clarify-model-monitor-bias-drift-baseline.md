@@ -1,6 +1,6 @@
 # Create a Bias Drift Baseline<a name="clarify-model-monitor-bias-drift-baseline"></a>
 
-After you have configured your application to capture real\-time or batch transform inference data, the first task to monitor for bias drift is to create a baseline\. This involves configuring the data inputs, which groups are sensitive, how the predictions are captured, and the model and its posttraining bias metrics\. Then you need to start the baselining job\.
+After you have configured your application to capture real\-time or batch transform inference data, the first task to monitor for bias drift is to create a baseline\. This involves configuring the data inputs, which groups are sensitive, how the predictions are captured, and the model and its post\-training bias metrics\. Then you need to start the baselining job\.
 
 Model bias monitor can detect bias drift of ML models on a regular basis\. Similar to the other monitoring types, the standard procedure of creating a model bias monitor is first baselining and then establishing a monitoring schedule\.
 
@@ -25,7 +25,7 @@ model_bias_data_config = DataConfig(
 )
 ```
 
-`BiasConfig` is the configuration of the sensitive groups in the dataset\. Typically, bias is measured by computing a metric and comparing it across groups\. The group of interest is called the *facet*\. For posttraining bias, you should also take the positive label into account\.
+`BiasConfig` is the configuration of the sensitive groups in the dataset\. Typically, bias is measured by computing a metric and comparing it across groups\. The group of interest is called the *facet*\. For post\-training bias, you should also take the positive label into account\.
 
 ```
 model_bias_config = BiasConfig(
@@ -43,7 +43,7 @@ model_predicted_label_config = ModelPredictedLabelConfig(
 )
 ```
 
-`ModelConfig` is the configuration related to the model to be used for inferencing\. In order to compute posttraining bias metrics, the computation needs to get inferences for the model name provided\. To accomplish this, the processing job uses the model to create an ephemeral endpoint \(also known as *shadow endpoint*\)\. The processing job deletes the shadow endpoint after the computations are completed\. This configuration is also used by the explainability monitor\.
+`ModelConfig` is the configuration related to the model to be used for inferencing\. In order to compute post\-training bias metrics, the computation needs to get inferences for the model name provided\. To accomplish this, the processing job uses the model to create an ephemeral endpoint \(also known as *shadow endpoint*\)\. The processing job deletes the shadow endpoint after the computations are completed\. This configuration is also used by the explainability monitor\.
 
 ```
 model_config = ModelConfig(

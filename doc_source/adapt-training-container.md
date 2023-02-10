@@ -173,7 +173,7 @@ Remember that `docker` looks for a file specifically called `Dockerfile` without
 
 ## Step 5: Push the container to Amazon Elastic Container Registry \(Amazon ECR\)<a name="byoc-training-step5"></a>
 
-1. After you successfully run the local mode test, you can push the Docker container to [Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) and use it to run training jobs\. If you want to use a private Docker registry instead of Amazon ECR, see [Push your training container to a private registry](https://docs.aws.amazon.com/sagemaker/latest/dg/docker-containers-adapt-your-own-private-registory.html)\.
+1. After you successfully run the local mode test, you can push the Docker container to [Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) and use it to run training jobs\. If you want to use a private Docker registry instead of Amazon ECR, see [Push your training container to a private registry](https://docs.aws.amazon.com/sagemaker/latest/dg/docker-containers-adapt-your-own-private-registry.html)\.
 
    Run the following command lines in a notebook cell\.
 

@@ -66,7 +66,7 @@ tuning_job_config = {
     "HyperParameterTuningJobObjective": {
       "MetricName": "validation:auc",
       "Type": "Maximize"
-    }
+    },
     "RandomSeed" : 123
   }
 ```

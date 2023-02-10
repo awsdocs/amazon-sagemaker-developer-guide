@@ -53,7 +53,7 @@ To modify the permissions of your KMS key policy to allow encrypted time series 
 
    ```
    {
-               "Sid": "Enable IAM User Permissions for Amazon Forecast KMS access",
+               "Sid": "Enable IAM Permissions for Amazon Forecast KMS access",
                "Effect": "Allow",
                "Principal": {
                    "AWS": "<arn:aws:iam::111122223333:role/service-role/AmazonSagemakerCanvasForecastRole-444455556666>"
@@ -79,7 +79,7 @@ The following permissions are only required if you are using the [IAM role setup
 
 ```
 {
-            "Sid": "Enable IAM User Permissions for Amazon Forecast KMS access",
+            "Sid": "Enable IAM Permissions for Amazon Forecast KMS access",
             "Effect": "Allow",
             "Principal": {
                 "AWS": "<arn:aws:iam::111122223333:role/AmazonSageMaker-ExecutionRole-111122223333444>"

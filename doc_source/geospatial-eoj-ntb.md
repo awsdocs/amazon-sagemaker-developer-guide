@@ -102,46 +102,63 @@ response = sg_client.start_earth_observation_job(
     JobConfig = eoj_config, 
     ExecutionRoleArn = execution_role
 )
+my_eoj_arn = response['Arn']
 ```
 
-After your EOJ is created, the `Arn` is returned to you\. You use the `Arn` to identify a job and perform further operations\. To get the status of a job, you can run `sg_client.get_earth_observation_job(Arn = response['Arn'])`\. 
+After your EOJ is created, the `Arn` is returned to you\. You use the `Arn` to identify a job and perform further operations\. To get the status of a job, you can run `sg_client.get_earth_observation_job(Arn = response['Arn'])`\.
 
-The following example shows how you can visualize the EOJ inputs and outputs\.
+The following example shows how to query the status of an EOJ until it is completed\.
 
 ```
-# creates an instance of the map to add EOJ input/output layer
+import time
+import datetime
+
+# check status of created Earth Observation Job and wait until it is completed
+response = sg_client.get_earth_observation_job(Arn = my_eoj_arn)
+while response['Status'] != 'COMPLETED':
+    response = sg_client.get_earth_observation_job(Arn = my_eoj_arn)
+    print("Earth Observation Job status: {} (Last update: {})".format(response['Status'], datetime.datetime.now()), end='\r')
+    time.sleep(30)
+```
+
+After the EOJ is completed, you can visualize the EOJ outputs directly in the notebook\. The following example shows you how an interactive map can be rendered\.
+
+```
 map = sagemaker_geospatial_map.create_map({
-    'is_raster': True
+'is_raster': True
 })
 map.set_sagemaker_geospatial_client(sg_client)
-
-## use the EOJ arn above
-arn_to_visualize = response['Arn']
-
 # render the map
 map.render()
+```
 
-# visualize AoI
+The following example shows how the map can be centered on an area of interest and the input and output of the EOJ can be rendered as separate layers within the map\.
+
+```
+# visualize the area of interest
 config = {
-     'label': 'Seattle AoI'
+'label': 'Seattle AoI'
 }
-aoi_layer=map.visualize_eoj_aoi(Arn=arn_to_visualize, config=config)
-
+aoi_layer = map.visualize_eoj_aoi(Arn = my_eoj_arn, config = config)
 # visualize input
 start_date = "2022-11-01T00:00:00Z"
 end_date = "2022-11-22T23:59:59Z"
 config = {
-    'label': 'Input'
+'label': 'Input'
 }
-input_layer=map.visualize_eoj_input(Arn = arn_to_visualize, config = config , start_date = start_date, end_date = end_date)
-
+input_layer = map.visualize_eoj_input(Arn = my_eoj_arn, config = config, time_range_filter={
+"start_date": start_date,
+"end_date": end_date
+})
 # visualize output, EOJ needs to be in completed status
 start_date = "2022-11-01T00:00:00Z"
 end_date = "2022-11-22T23:59:59Z"
-
 config = {
-   'preset': 'singleBand',
-   'band_name': 'mask'
+'preset': 'singleBand',
+'band_name': 'mask'
 }
-output_layer = map.visualize_eoj_output(Arn = arn_to_visualize, config = config, start_date = start_date, end_date = end_date)
+output_layer = map.visualize_eoj_output(Arn = my_eoj_arn, config = config, time_range_filter={
+"start_date": start_date,
+"end_date": end_date
+})
 ```
