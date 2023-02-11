@@ -102,7 +102,7 @@ You do not pay a monthly fee for AWS owned customer managed keys\. Customer mana
 
 ## Accessing Data in Your Online Store<a name="feature-store-accessing-data-online-store"></a>
 
- The **caller \(either IAM user or IAM role\)** to **ALL DataPlane operations \(Put, Get, DeleteRecord\)** must have below permissions on the customer managed key: 
+ The **caller \(either user or role\)** to **ALL DataPlane operations \(Put, Get, DeleteRecord\)** must have below permissions on the customer managed key: 
 
 ```
 "kms:Decrypt"

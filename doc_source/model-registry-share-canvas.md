@@ -1,0 +1,3 @@
+# Share Models with SageMaker Canvas Users<a name="model-registry-share-canvas"></a>
+
+You might have a model registered in your model registry that you want to share with a user in SageMaker Canvas\. You can share a model that’s been trained outside of SageMaker as long as it’s registered in your model registry\. With this functionality, SageMaker Canvas users can import models that you’ve trained and generate predictions with them\. For more information about how to share a model with a SageMaker Canvas user, see [Bring your own model to SageMaker Canvas](canvas-byom.md)\.

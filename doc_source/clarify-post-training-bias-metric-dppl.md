@@ -12,7 +12,7 @@ Where:
 + q'a = n'a\(1\)/na is the predicted proportion of facet *a* who get a positive outcome of value 1\. In our example, the proportion of a middle\-aged facet predicted to get granted a loan\. Here n'a\(1\) represents the number of members of facet *a* who get a positive predicted outcome of value 1 and na the is number of members of facet *a*\. 
 + q'd = n'd\(1\)/nd is the predicted proportion of facet *d* who get a positive outcome of value 1\. In our example, a facet of older and younger people predicted to get granted a loan\. Here n'd\(1\) represents the number of members of facet *d* who get a positive predicted outcome and nd the is number of members of facet *d*\. 
 
-If DPPL is close enough to 0, it means that posttraining *demographic parity* has been achieved\.
+If DPPL is close enough to 0, it means that post\-training *demographic parity* has been achieved\.
 
 For binary and multicategory facet labels, the normalized DPL values range over the interval \[\-1, 1\]\. For continuous labels, the values vary over the interval \(\-∞, \+∞\)\. 
 + Positive DPPL values indicate that facet *a* has a higher proportion of predicted positive outcomes when compared with facet *d*\. 

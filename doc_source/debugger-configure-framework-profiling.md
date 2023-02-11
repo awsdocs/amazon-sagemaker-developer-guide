@@ -95,8 +95,10 @@ If you want to specify target steps or target time intervals to profile your tra
 
 You can use the following profiling configuration classes to manage the framework profiling options:
 + [DetailedProfilingConfig](https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html#sagemaker.debugger.DetailedProfilingConfig) – Specify a target step or time range to profile framework operations using the native framework profilers \(TensorFlow profiler and PyTorch profiler\)\. For example, if using TensorFlow, the Debugger hooks enable the TensorFlow profiler to collect TensorFlow\-specific framework metrics\. Detailed profiling enables you to profile all framework operators at a pre\-step \(before the first step\), within steps, and between steps of a training job\.
+**Warning**  
+The detailed framework profiling feature discontinues support for TensorFlow v2\.11 and later\. To use the detailed profiling feature, use previous versions of TensorFlow between v2\.3\.1 and v2\.10\.0\.
 **Note**  
-Detailed profiling might significantly increase GPU memory consumption\. IWe do not recommend enabling detailed profiling for more than a couple of steps\.
+Detailed profiling might significantly increase GPU memory consumption\. We do not recommend enabling detailed profiling for more than a couple of steps\.
 + [DataloaderProfilingConfig](https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html#sagemaker.debugger.DataloaderProfilingConfig) – Specify a target step or time range to profile deep learning framework data loader processes\. Debugger collects every data loader event of the frameworks\.
 **Note**  
 Data loader profiling might lower the training performance while collecting information from data loaders\. We don't recommend enabling data loader profiling for more than a couple of steps\.  

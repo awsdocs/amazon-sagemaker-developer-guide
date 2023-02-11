@@ -1,9 +1,11 @@
 # How Hyperparameter Tuning Works<a name="automatic-model-tuning-how-it-works"></a>
 
-When you build complex machine learning systems like deep learning neural networks, exploring all of the possible combinations is impractical\. Hyperparameter tuning can accelerate your productivity by trying many variations of a model\. It looks for the best model automatically by focusing on the most promising combinations of hyperparameter values within the ranges that you specify\. To get good results, you need to choose the right ranges to explore\. 
+When you build complex machine learning systems like deep learning neural networks, exploring all of the possible combinations is impractical\. Hyperparameter tuning can accelerate your productivity by trying many variations of a model\. It looks for the best model automatically by focusing on the most promising combinations of hyperparameter values within the ranges that you specify\. To get good results, you must choose the right ranges to explore\. 
+
+Use the [API reference guide](https://docs.aws.amazon.com/sagemaker/latest/APIReference/Welcome.html?icmpid=docs_sagemaker_lp) to understand how to interact with hyperparameter tuning\. The examples on this page can be found in the [HyperParameterTuningJobConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobConfig.html) and [HyperbandStrategyConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperbandStrategyConfig.html) APIs\.
 
 **Note**  
-Because the algorithm itself is stochastic, it’s possible that the hyperparameter tuning model will fail to converge on the best answer, even if the best possible combination of values is within the ranges that you choose\.
+Because the algorithm itself is stochastic, it’s possible that the hyperparameter tuning model will fail to converge on the best answer\. This can occur even if the best possible combination of values is within the ranges that you choose\.
 
 ## Grid Search<a name="automatic-tuning-grid-search"></a>
 
@@ -13,7 +15,7 @@ Because the algorithm itself is stochastic, it’s possible that the hyperparame
 
 When using random search, hyperparameter tuning chooses a random combination of values from within the ranges that you specify for hyperparameters for each training job it launches\. Because the choice of hyperparameter values doesn't depend on the results of previous training jobs, you can run the maximum number of concurrent training jobs without affecting the performance of the tuning\.
 
-For an example notebook that uses random search, see [https://github\.com/awslabs/amazon\-sagemaker\-examples/blob/master/hyperparameter\_tuning/xgboost\_random\_log/hpo\_xgboost\_random\_log\.ipynb](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/hyperparameter_tuning/xgboost_random_log/hpo_xgboost_random_log.ipynb)\.
+For an example notebook that uses random search, see the [ Random search and hyperparameter scaling with SageMaker XGBoost and Automatic Model Tuning](https://github.com/awslabs/amazon-sagemaker-examples/blob/master/hyperparameter_tuning/xgboost_random_log/hpo_xgboost_random_log.ipynb) notebook\.
 
 ## Bayesian Optimization<a name="automatic-tuning-bayesian-optimization.title"></a>
 
@@ -56,7 +58,7 @@ For more information about Hyperband, see the following links:
 
 ### Hyperband with early stopping<a name="automatic-tuning-hyperband-early-stopping"></a>
 
-Training jobs can be stopped early when they are unlikely to improve the objective metric of the hyperparameter tuning job\. This can help both reduce compute time and avoid overfitting your model\. Hyperband uses an advanced internal mechanism to apply early stopping\. Thus, the parameter `TrainingJobEarlyStoppingType` in the `HyperParameterTuningJobConfig` API must be set to `OFF` when using Hyperband's internal early stopping feature\.
+Training jobs can be stopped early when they are unlikely to improve the objective metric of the hyperparameter tuning job\. This can help reduce compute time and avoid overfitting your model\. Hyperband uses an advanced internal mechanism to apply early stopping\. Thus, the parameter `TrainingJobEarlyStoppingType` in the `HyperParameterTuningJobConfig` API must be set to `OFF` when using the Hyperband internal early stopping feature\.
 
 **Note**  
-Hyperparameter tuning might not improve your model\. It is an advanced tool for building machine solutions, and, as such, should be considered part of the scientific development process\. 
+Hyperparameter tuning might not improve your model\. It is an advanced tool for building machine solutions\. As such, it should be considered part of the scientific development process\. 

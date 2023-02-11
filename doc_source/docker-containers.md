@@ -6,7 +6,7 @@ Amazon SageMaker makes extensive use of *Docker containers* for build and runtim
 + [Scenarios for Running Scripts, Training Algorithms, or Deploying Models with SageMaker](#container-scenarios)
 + [Docker Container Basics](docker-basics.md)
 + [Use Prebuilt SageMaker Docker images](docker-containers-prebuilt.md)
-+ [Adapting Your Own Docker Container to Work with SageMaker](docker-containers-adapt-your-own.md)
++ [Adapting your own Docker container to work with SageMaker](docker-containers-adapt-your-own.md)
 + [Create a container with your own algorithms and models](docker-containers-create.md)
 + [Example Notebooks: Use Your Own Algorithm or Model](docker-containers-notebooks.md)
 + [Troubleshooting your Docker containers](docker-containers-troubleshooting.md)

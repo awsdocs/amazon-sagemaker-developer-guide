@@ -56,7 +56,7 @@ To train a model in SageMaker, you create a training job\. In the request, you p
 + For greater accuracy, add the optional `extra_center_factor` string\. 
 + To specify the strategy that you want to use to determine the initial cluster centers, add the `init_method` string and set its value to `random` or `k-means++`\.
 
-For more information about the SageMaker k\-means estimator, see [K\-means](https://sagemaker.readthedocs.io/en/stable/algorithms/kmeans.html) in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) documentation\.
+For more information about the SageMaker k\-means estimator, see [K\-means](https://sagemaker.readthedocs.io/en/stable/algorithms/unsupervised/kmeans.html) in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) documentation\.
 
 You now have an initial set of cluster centers\. 
 

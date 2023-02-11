@@ -5,7 +5,7 @@ Bias drift jobs evaluate the baseline constraints provided by the [baseline conf
 Here is the schema of the bias drift violations file\.
 + `facet` – The name of the facet, provided by the monitoring job analysis configuration facet `name_or_index`\. 
 + `facet_value` – The value of the facet, provided by the monitoring job analysis configuration facet `value_or_threshold`\.
-+ `metric_name` – The short name of the bias metric\. For example, "CI" for class imbalance\. See [Measure Pretraining Bias](clarify-measure-data-bias.md) for the short names of each of the pretraining bias metrics and [Measure Posttraining Data and Model Bias](clarify-measure-post-training-bias.md) for the short names of each of the posttraining bias metrics\.
++ `metric_name` – The short name of the bias metric\. For example, "CI" for class imbalance\. See [Measure Pretraining Bias](clarify-measure-data-bias.md) for the short names of each of the pre\-training bias metrics and [Measure Post\-training Data and Model Bias](clarify-measure-post-training-bias.md) for the short names of each of the post\-training bias metrics\.
 + `constraint_check_type` – The type of violation monitored\. Currently only `bias_drift_check` is supported\.
 + `description` – A descriptive message to explain the violation\.
 
@@ -22,7 +22,7 @@ Here is the schema of the bias drift violations file\.
 }
 ```
 
-If the value of a bias metric in the baseline constraints file is different from its peer in the job analysis results file \(*analysis\.json*\), the monitoring jobs log a violation\. The following output provides an example of several logged violations\.
+A bias metric is used to measure the level of equality in a distribution\. A value close to zero indicates that the distribution is more balanced\. If the value of a bias metric in the job analysis results file \(analysis\.json\) is worse than its corresponding value in the baseline constraints file, a violation is logged\. As an example, if the baseline constraint for the DPPL bias metric is `0.2`, and the analysis result is `0.1`, no violation is logged because `0.1` is closer to `0` than `0.2`\. However, if the analysis result is `-0.3`, a violation is logged because it is farther from `0` than the baseline constraint of `0.2`\.
 
 ```
 {

@@ -1,4 +1,4 @@
-# Amazon SageMaker Domain<a name="studio-entity-status"></a>
+# Amazon SageMaker Domain<a name="sm-domain"></a>
 
 Amazon SageMaker Domain supports SageMaker machine learning \(ML\) environments\. A SageMaker Domain is composed of the following entities\. For onboarding steps to create a Domain, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 +  *Domain*: An Amazon SageMaker Domain consists of an associated Amazon Elastic File System \(Amazon EFS\) volume; a list of authorized users; and a variety of security, application, policy, and Amazon Virtual Private Cloud \(Amazon VPC\) configurations\. Users within a Domain can share notebook files and other artifacts with each other\. An account can have multiple Domains\. For more information about multiple Domains, see [Multiple Domains Overview](domain-multiple.md)\.

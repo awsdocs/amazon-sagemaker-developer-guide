@@ -1,16 +1,16 @@
-# Configure AWS Service Catalog Products<a name="configure-service-catalog-templates"></a>
+# Configure Service Catalog Products<a name="configure-service-catalog-templates"></a>
 
-In this guide, you get parameters for configuring AWS Service Catalog products so you can discover CloudFormation \(CFN\) templates\. CFN templates are used to create and manage Amazon EMR clusters\. The AWS Service Catalog product can associate with an AWS Service Catalog portfolio that is shared with the Studio execution role IAM entity\.
+In this guide, you get parameters for configuring Service Catalog products so you can discover CloudFormation \(CFN\) templates\. CFN templates are used to create and manage Amazon EMR clusters\. The Service Catalog product can associate with an Service Catalog portfolio that is shared with the Studio execution role IAM entity\.
 
-To enable Amazon EMR cluster management from Studio, you need a CloudFormation \(CFN\) template with Amazon EMR cluster details and configurable parameters\. For information about how you can use CloudFormation, see [Getting started with CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/GettingStarted.html)\. For more information about AWS Service Catalog products, see [Step 4: Create an AWS Service Catalog Product](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/getstarted-product.html)\.
+To enable Amazon EMR cluster management from Studio, you need a CloudFormation \(CFN\) template with Amazon EMR cluster details and configurable parameters\. For information about how you can use CloudFormation, see [Getting started with CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/GettingStarted.html)\. For more information about Service Catalog products, see [Step 4: Create an AWS Service Catalog Product](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/getstarted-product.html)\.
 
-The AWS Service Catalog product with the Amazon EMR resource must have the following tags: 
+The Service Catalog product with the Amazon EMR resource must have the following tags: 
 
 ```
 sagemaker:studio-visibility:emr true
 ```
 
-The CFN templates in the AWS Service Catalog product must have the following mandatory stack parameters:
+The CFN templates in the Service Catalog product must have the following mandatory stack parameters:
 
 ```
 SageMakerProjectName:
@@ -22,7 +22,7 @@ Type: String
 Description: Service generated Id of the project.
 ```
 
-For more information about creating AWS Service Catalog portfolios and products, see [Step 3: Create an AWS Service Catalog Portfolio](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/getstarted-portfolio.html) and its subsequent sections\.
+For more information about creating Service Catalog portfolios and products, see [Step 3: Create an AWS Service Catalog Portfolio](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/getstarted-portfolio.html) and its subsequent sections\.
 
 **Optional template parameters**
 

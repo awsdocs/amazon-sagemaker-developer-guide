@@ -25,7 +25,7 @@ To deploy the trained model for inference, use the SageMaker hosting service\. D
 
 ## Semantic Segmentation Sample Notebooks<a name="semantic-segmentation-sample-notebooks"></a>
 
-For a sample Jupyter notebook that uses the SageMaker semantic segmentation algorithm to train a model and deploy it to perform inferences, see the [Semantic Segmentation Example](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/semantic_segmentation_pascalvoc/semantic_segmentation_pascalvoc.html)\. For instructions on how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. 
+For a sample Jupyter notebook that uses the SageMaker semantic segmentation algorithm to train a model and deploy it to perform inferences, see the [Semantic Segmentation Example](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/semantic_segmentation_pascalvoc/semantic_segmentation_pascalvoc.html)\. For instructions on how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Amazon SageMaker Notebook Instances](nbi.md)\. 
 
 To see a list of all of the SageMaker samples, create and open a notebook instance, and choose the **SageMaker Examples** tab\. The example semantic segmentation notebooks are located under **Introduction to Amazon algorithms**\. To open a notebook, choose its **Use** tab, and choose **Create copy**\.
 

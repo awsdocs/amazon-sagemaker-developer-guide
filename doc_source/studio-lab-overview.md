@@ -72,7 +72,7 @@ When compute time for Studio Lab reaches its time limit, the instance stops all 
 
 Studio Lab automatically saves your environment when you update your environment and every time you create a new file\. Custom\-installed extensions and packages persist even after your runtime has ended\.
 
-File edits are periodically saved, but are not saved when your runtime ends\. To ensure that you do not lose your progress, save your work manually\. If you have content in your Studio Lab project that you don’t want to lose, we recommend that you back up your content elsewhere\. For more information about exporting your environment and files, see [Export Amazon SageMaker Studio Lab environment to Amazon SageMaker Studio](studio-lab-use-migrate.md)\.
+File edits are periodically saved, but are not saved when your runtime ends\. To ensure that you do not lose your progress, save your work manually\. If you have content in your Studio Lab project that you don’t want to lose, we recommend that you back up your content elsewhere\. For more information about exporting your environment and files, see [Export an Amazon SageMaker Studio Lab environment to Amazon SageMaker Studio](studio-lab-use-migrate.md)\.
 
 During long computation, you do not need to keep your project open\. For example, you can start training a model, then close your browser\. The instance keeps running for up to 12 hours on CPU instances and 4 hours on GPU instances\. You can then sign in later to continue your work\.  
 

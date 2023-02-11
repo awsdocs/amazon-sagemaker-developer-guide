@@ -1,6 +1,6 @@
 # Onboard to Amazon SageMaker Domain<a name="gs-studio-onboard"></a>
 
-An Amazon SageMaker Domain consists of an associated Amazon Elastic File System \(Amazon EFS\) volume; a list of authorized users; and a variety of security, application, policy, and Amazon Virtual Private Cloud \(Amazon VPC\) configurations\. To use Amazon SageMaker Studio, Amazon SageMaker Studio notebooks, and RStudio, you must complete the Amazon SageMaker Domain onboarding process using the SageMaker console or the AWS CLI\. For more information about Amazon SageMaker Domains, see [Amazon SageMaker Machine Learning Environments](domain.md)\.
+An Amazon SageMaker Domain consists of an associated Amazon Elastic File System \(Amazon EFS\) volume; a list of authorized users; and a variety of security, application, policy, and Amazon Virtual Private Cloud \(Amazon VPC\) configurations\. To use Amazon SageMaker Studio, Amazon SageMaker Studio notebooks, and RStudio, you must complete the Amazon SageMaker Domain onboarding process using the SageMaker console or the AWS CLI\. For more information about Amazon SageMaker Domains, see [Amazon SageMaker Domain](sm-domain.md)\.
 
 When onboarding, you can choose to use either AWS IAM Identity Center \(successor to AWS Single Sign\-On\) \(IAM Identity Center\) or AWS Identity and Access Management \(IAM\) for authentication methods\. When you use IAM authentication, you can choose either the **Quick setup** or the **Standard setup** procedure\. RStudio setup is only available when using the **Standard setup** procedure\.
 

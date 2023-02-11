@@ -4,7 +4,7 @@ To use Amazon SageMaker Inference Recommender, first make sure you have met the 
 
 **Note**  
 The following code examples use Python\. Remove the `!` prefix character if you run any of the following code samples in your terminal or AWS CLI\.
-This example uses the `conda_pytorch_p36_latest` kernel within a Amazon SageMaker Notebook instance\. This kernel is provided by SageMaker and uses Python 3\.6 and PyTorch 1\.7\.1\. For more information about SageMaker Notebooks, see [Use Amazon SageMaker Notebook Instances](nbi.md)\.
+This example uses the `conda_pytorch_p36_latest` kernel within a Amazon SageMaker Notebook instance\. This kernel is provided by SageMaker and uses Python 3\.6 and PyTorch 1\.7\.1\. For more information about SageMaker Notebooks, see [Amazon SageMaker Notebook Instances](nbi.md)\.
 
 1. **Create an IAM role for Amazon SageMaker\.**
 
@@ -191,7 +191,11 @@ This example uses the `conda_pytorch_p36_latest` kernel within a Amazon SageMake
    sample_payload_url= f"s3://{bucket}/{payload_s3_key}"
    ```
 
-1. **Register your model in the model registry**
+1. **Prepare your model input for the recommendations job**
+
+   For the last prerequisite, you have two options to prepare your model input\. You can either register your model with SageMaker Model Registry, which you can use to catalog models for production, or you can create a SageMaker model and specify it in the `ContainerConfig` field when creating a recommendations job\. The first option is best if you want to take advantage of the features that [Model Registry](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry.html) provides, such as managing model versions and automating model deployment\. The second option is ideal if you want to get started quickly\. For the first option, go to step 7\. For the second option, skip step 7 and go to step 8\.
+
+1. **Option 1: Register your model in the model registry**
 
    With SageMaker Model Registry, you can catalog models for production, manage model versions, associate metadata \(such as training metrics\) with a model, manage the approval status of a model, deploy models to production, and automate model deployment with CI/CD\.
 
@@ -310,4 +314,85 @@ Note: You do not need to approve the model package to create an Inference Recomm
       model_package_arn = model_package_response["ModelPackageArn"]
       
       print('ModelPackage Version ARN : {}'.format(model_package_arn))
+      ```
+
+1. **Option 2: Create a model and configure the `ContainerConfig` field**
+
+   Use this option if you want to start an inference recommendations job and don't need to register your model in the Model Registry\. In the following steps, you create a model in SageMaker and configure the `ContainerConfig` field as input for the recommendations job\.
+
+   1. **Create a model**
+
+      Create a model with the `CreateModel` API\. For an example that calls this method when deploying a model to SageMaker Hosting, see [Create a Model \(AWS SDK for Python \(Boto3\)\)](https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints-deployment.html#realtime-endpoints-deployment-create-model)\.
+
+      In a previous step, we downloaded a pre\-trained ResNet18 model and stored it in an Amazon S3 bucket in a directory called `models`\. We retrieved a PyTorch \(v1\.7\.1\) Deep Learning Container inference image and stored the URI in a variable called `image_uri`\. We use those variables in the following code example where we define a dictionary used as input to the `[CreateModel](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html#sagemaker-CreateModel-request-ModelName)` API\.
+
+      ```
+      model_name = '<name_of_the_model>'
+      # Role to give SageMaker permission to access AWS services.
+      sagemaker_role= "arn:aws:iam::<region>:<account>:role/*"
+      
+      # Provide the Amazon S3 URI of your compressed tarfile
+      # so that Model Registry knows where to find your model artifacts
+      bucket_prefix='models'
+      bucket = '<your-bucket-name>' # Provide the name of your S3 bucket
+      model_s3_key = f"{bucket_prefix}/test.tar.gz"
+      model_url= f"s3://{bucket}/{model_s3_key}"
+      
+      #Create model
+      create_model_response = sagemaker_client.create_model(
+          ModelName = model_name,
+          ExecutionRoleArn = sagemaker_role, 
+          PrimaryContainer = {
+              'Image': image_uri,
+              'ModelDataUrl': model_url,
+          })
+      ```
+
+   1. **Configure the `ContainerConfig` field**
+
+      Next, you must configure the [ContainerConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RecommendationJobInputConfig.html#sagemaker-Type-RecommendationJobInputConfig-ContainerConfig) field with the model you just created and specify the following parameters in it:
+      + `Domain`: The machine learning domain of the model and its components, such as computer vision or natural language processing\.
+      + `Task`: The machine learning task that the model accomplishes, such as image classification or object detection\.
+      + `PayloadConfig`: The configuration for the payload for a recommendation job\. For more information about the subfields, see `[RecommendationJobPayloadConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RecommendationJobPayloadConfig.html#sagemaker-Type-RecommendationJobPayloadConfig-SamplePayloadUrl)`\.
+      + `Framework`: The machine learning framework of the container image, such as PyTorch\.
+      + `FrameworkVersion`: The framework version of the container image\.
+      + \(Optional\) `SupportedInstanceTypes`: A list of the instance types that are used to generate inferences in real\-time\.
+
+      If you use the `SupportedInstanceTypes` parameter, Inference Recommender limits the search space for instance types during a `Default` job\. Use this parameter if you have budget constraints or know there's a specific set of instance types that can support your model and container image\.
+
+      In the following code example, we use the previously defined parameters, along with `NearestModelName`, to define a dictionary used as input to the `[CreateInferenceRecommendationsJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateInferenceRecommendationsJob.html)` API\.
+
+      ```
+      ## Uncomment if you did not store the domain and task in a previous step
+      #ml_domain = 'COMPUTER_VISION'
+      #ml_task = 'IMAGE_CLASSIFICATION'
+      
+      ## Uncomment if you did not store the framework and framework version in a previous step
+      #framework = 'PYTORCH'
+      #framework_version = '1.7.1'
+      
+      # The name of the ML model as standardized by common model zoos
+      nearest_model_name = 'resnet18'
+      
+      # The supported MIME types for input and output data. In this example, 
+      # we are using images as input
+      input_content_type='image/jpeg'
+      
+      # Optional: Used for optimizing your model using SageMaker Neo
+      # PyTorch uses NCHW format for images
+      data_input_configuration = "[[1,3,256,256]]"
+      
+      # Create a dictionary to use as input for creating an inference recommendation job
+      container_config = {
+              "Domain": ml_domain,
+              "Framework": framework.upper(), 
+              "FrameworkVersion": framework_version,
+              "NearestModelName": nearest_model_name,
+              "PayloadConfig": { 
+                  "SamplePayloadUrl": sample_payload_url,
+                  "SupportedContentTypes": [ input_content_type ]
+               },
+              "DataInputConfig": data_input_configuration
+              "Task": ml_task,
+              }
       ```

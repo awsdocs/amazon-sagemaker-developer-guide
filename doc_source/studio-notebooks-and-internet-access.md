@@ -18,7 +18,9 @@ To prevent SageMaker from providing internet access to your Studio notebooks, yo
 
 When you choose `VpcOnly`, follow these steps:
 
-1. Ensure your subnets have the required number of IP addresses needed\.The expected number of IP addresses needed per user can vary based on use case\. We recommend between 2 and 4 IP addresses per user\. The total IP address capacity for a Studio domain is the sum of available IP addresses for each subnet provided when the domain is created\. Ensure that your estimated IP address usage does not exceed the capacity supported by the number of subnets you provide\. Additionally, using subnets distributed across many availability zones can aid in IP address availability\. For more information, see [VPC and subnet sizing for IPv4](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#vpc-sizing-ipv4)\.
+1. You must use private subnets only\. You cannot use public subnets in `VpcOnly` mode\.
+
+1. Ensure your subnets have the required number of IP addresses needed\. The expected number of IP addresses needed per user can vary based on use case\. We recommend between 2 and 4 IP addresses per user\. The total IP address capacity for a Studio domain is the sum of available IP addresses for each subnet provided when the domain is created\. Ensure that your estimated IP address usage does not exceed the capacity supported by the number of subnets you provide\. Additionally, using subnets distributed across many availability zones can aid in IP address availability\. For more information, see [VPC and subnet sizing for IPv4](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#vpc-sizing-ipv4)\.
 **Note**  
 You can configure only subnets with a default tenancy VPC in which your instance runs on shared hardware\. For more information on the tenancy attribute for VPCs, see [Dedicated Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html)\.
 
@@ -34,6 +36,10 @@ You can configure only subnets with a default tenancy VPC in which your instance
    + Amazon S3: `com.amazonaws.us-east-1.s3`\.
    + To use SageMaker Projects: `com.amazonaws.us-east-1.servicecatalog`\.
    + Any other AWS services you require\.
+
+    If you use the [SageMaker Python SDK](https://sagemaker.readthedocs.io/en/stable/) to run remote training jobs, you must also create the following Amazon VPC endpoints\.
+   + AWS Security Token Service: `com.amazonaws.us-east-1.sts`
+   + Amazon CloudWatch: `com.amazonaws.us-east-1.logs`\. This is required to allow SageMaker Python SDK to get the remote training job status from Amazon CloudWatch\.
 
 **Note**  
 For a customer working within VPC mode, company firewalls can cause connection issues with SageMaker Studio or between JupyterServer and the KernelGateway\. Make the following checks if you encounter one of these issues when using SageMaker Studio from behind a firewall\.  

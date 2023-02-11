@@ -38,6 +38,13 @@ When you kick off an Inference Recommender job, you should see endpoints being c
 
 1. Search for the log group called `/aws/sagemaker/Endpoints/sm-epc-*`\. Select the log group based on your most recent Inference Recommender job\.
 
+You can also troubleshoot your job by checking the Inference Recommender CloudWatch logs\. The Inference Recommender logs, which are published in the `/aws/sagemaker/InferenceRecommendationsJobs` CloudWatch log group, give a high level view on the progress of the job in the `<jobName>/execution` log stream\. You can find detailed information on each of the endpoint configurations being tested in the `<jobName>/Endpoint/<endpointName>` log stream\.
+
+**Overview of the Inference Recommender log streams**
++ `<jobName>/execution` contains overall job information such as endpoint configurations scheduled for benchmarking, compilation job skip reason, and validation failure reason\.
++ `<jobName>/Endpoint/<endpointName>` contains information such as resource creation progress, test configuration, load test stop reason, and resource cleanup status\.
++ `<jobName>/CompilationJob/<compilationJobName>` contains information on compilation jobs created by Inference Recommender, such as the compilation job configuration and compilation job status\.
+
 ## Check benchmarks<a name="inference-recommender-troubleshooting-check-benchmarks"></a>
 
 When you kick off an Inference Recommender job, Inference Recommender creates several benchmarks to evaluate the performance of your model on different instance types\. You can use the [ListInferenceRecommendationsJobSteps](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListInferenceRecommendationsJobSteps.html) API to view the details for all the benchmarks\. If you have a failed benchmark, you can see the failure reasons as part of the results\.

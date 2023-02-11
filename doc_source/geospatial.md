@@ -13,7 +13,7 @@
 You can use SageMaker geospatial capabilities to make predictions on geospatial data faster than do\-it\-yourself solutions\. SageMaker geospatial capabilities make it easier to access geospatial data from your existing customer data lakes, open\-source datasets, and other SageMaker geospatial data providers\. SageMaker geospatial capabilities minimize the need for building custom infrastructure and data preprocessing functions by offering purpose\-built algorithms for efficient data preparation, model training, and inference\. You can also create and share custom visualizations and data with your company from Amazon SageMaker Studio\. SageMaker geospatial capabilities offer pre\-trained models for common uses in agriculture, real estate, insurance, and financial services\.
 
 **Note**  
-Currently, SageMaker geospatial capabilities are only supported in the US West \(Oregon\) Region for public preview\.
+Currently, SageMaker geospatial capabilities are only supported in the US West \(Oregon\) Region for public preview\. To view Amazon SageMaker geospatial capabilities, choose the name of the currently displayed Region in the navigation bar of the console\. Then choose the US West \(Oregon\) Region\.
 <a name="how-use-geo"></a>
 **How can I use SageMaker geospatial capabilities?**  
 You can use SageMaker geospatial capabilities in two ways\.
@@ -28,9 +28,9 @@ Geospatial data represents features or objects on the earth’s surface\. The fi
 
 Along with this, you can access data from a catalog of geospatial data providers\. Currently, the data collections available include: 
 + [ USGS Landsat](https://www.usgs.gov/centers/eros/data-citation?qt-science_support_page_related_con=0#qt-science_support_page_related_con)
-+ [Sentinel\-2](https://www.usgs.gov/centers/eros/data-citation?qt-science_support_page_related_con=0#qt-science_support_page_related_con)
++ [Sentinel\-2](https://sentinel.esa.int/web/sentinel/missions/sentinel-2)
 
-You can also bring your own [Planet](https://www.planet.com/) data by ordering it\. Planet is one the leading daily satellite data providers\. After Planet delivers the data to you, you need to provide the [order manifest](https://developers.planet.com/apis/orders/delivery/) file included in the Planet data to SageMaker\.
+You can also bring your own [Planet](https://www.planet.com/) data by ordering it\. Planet is one of the leading daily satellite data providers\. After Planet delivers the data to you, you need to provide the [order manifest](https://developers.planet.com/apis/orders/delivery/) file included in the Planet data to SageMaker\.
 
 **Topics**
 + [Getting Started with Amazon SageMaker geospatial capabilities](geospatial-getting-started.md)

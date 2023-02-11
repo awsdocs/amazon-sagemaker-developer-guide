@@ -105,7 +105,7 @@ After the training job has completed, the newly trained model artifacts are stor
 
 ## Perform Incremental Training \(API\)<a name="incremental-training-api"></a>
 
-This example shows how to use SageMaker APIs to train a model using the SageMaker image classification algorithm and the [Caltech 256 Image Dataset](http://www.vision.caltech.edu/Image_Datasets/Caltech256/), then train a new model using the first one\. It uses Amazon S3 for input and output sources\. Please see the [incremental training sample notebook](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/object_detection_pascalvoc_coco/object_detection_incremental_training.html) for more details on using incremental training\.
+This example shows how to use SageMaker APIs to train a model using the SageMaker image classification algorithm and the [Caltech 256 Image Dataset](https://data.caltech.edu/records/nyy15-4j048), then train a new model using the first one\. It uses Amazon S3 for input and output sources\. Please see the [incremental training sample notebook](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/object_detection_pascalvoc_coco/object_detection_incremental_training.html) for more details on using incremental training\.
 
 **Note**  
 In this example we used the original datasets in the incremental training, however you can use different datasets, such as ones that contain newly added samples\. Upload the new datasets to S3 and make adjustments to the `data_channels` variable used to train the new model\.

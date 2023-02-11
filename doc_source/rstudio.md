@@ -5,6 +5,7 @@ RStudio is an integrated development environment for R, with a console, syntax\-
 RStudio allows customers to create data science insights using an R environment\. With RStudio integration, you can launch an RStudio environment in the Domain to run your RStudio workflows on SageMaker resources\. For more information about RStudio, see the [RStudio website](https://www.rstudio.com/products/workbench/)\.
 
 **Topics**
++ [Region availability](#rstudio-region)
 + [RStudio components](#rstudio-components)
 + [Differences from RStudio Workbench](#rstudio-differences)
 + [Manage RStudio on Amazon SageMaker](rstudio-manage.md)
@@ -20,7 +21,29 @@ SageMaker integrates RStudio through the creation of a RStudioServerPro app\.
 
  For information on the onboarding steps to create a Domain with RStudio enabled, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
- For information about the AWS Regions that RStudio on SageMaker is supported in, see [Supported Regions and Quotas](regions-quotas.md)\.
+## Region availability<a name="rstudio-region"></a>
+
+The following table gives information about the AWS Regions that RStudio on SageMaker is supported in\.
+
+
+|  Region name  |  Region  | 
+| --- | --- | 
+|  US East \(Ohio\)  |  us\-east\-2  | 
+|  US East \(N\. Virginia\)  |  us\-east\-1  | 
+|  US West \(N\. California\)  |  us\-west\-1  | 
+|  US West \(Oregon\)  |  us\-west\-2  | 
+|  Asia Pacific \(Mumbai\)  |  ap\-south\-1  | 
+|  Asia Pacific \(Seoul\)  |  ap\-northeast\-2  | 
+|  Asia Pacific \(Singapore\)  |  ap\-southeast\-1  | 
+|  Asia Pacific \(Sydney\)  |  ap\-southeast\-2  | 
+|  Asia Pacific \(Tokyo\)  |  ap\-northeast\-1  | 
+|  Canada \(Central\)  |  ca\-central\-1  | 
+|  Europe \(Frankfurt\)  |  eu\-central\-1  | 
+|  Europe \(Ireland\)  |  eu\-west\-1  | 
+|  Europe \(London\)  |  eu\-west\-2  | 
+|  Europe \(Paris\)  |  eu\-west\-3  | 
+|  Europe \(Stockholm\)  |  eu\-north\-1  | 
+|  South America \(São Paulo\)  |  sa\-east\-1  | 
 
 ## RStudio components<a name="rstudio-components"></a>
 + *RStudioServerPro*: The RStudioServerPro app is a multiuser app that is a shared resource among all user profiles in the Domain\. Once an RStudio app is created in a Domain, the admin can give permissions to users in the Domain\.  
@@ -38,3 +61,4 @@ RStudio on Amazon SageMaker has some significant differences from [RStudio Workb
 + Project sharing, realtime collaboration, and Job Launcher are not currently supported when using RStudio on Amazon SageMaker\.
 + When using RStudio on SageMaker, the RStudio IDE runs on Amazon SageMaker instances for on\-demand containerized compute resources\. 
 + RStudio on SageMaker only supports the RStudio IDE and does not support other IDEs supported by an RStudio Workbench installation\.
++ RStudio on SageMaker only supports the RStudio version specified in [Upgrade the RStudio Version ](rstudio-version.md)\.

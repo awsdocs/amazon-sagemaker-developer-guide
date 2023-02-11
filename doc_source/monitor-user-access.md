@@ -9,6 +9,7 @@ You can get information about which specific user performed an action in an AWS 
 ## Prerequisites<a name="monitor-user-access-prereq"></a>
 + Install and configure the AWS Command Line Interface following the steps in [Installing or updating the latest version of the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)\.
 + Ensure that Studio users in your domain don’t have a policy that allows them to update or modify the Studio domain\.  
++ To turn on or turn off `sourceIdentity` propagation, all apps in the domain must be in the `Stopped` or `Deleted` state\. For more information about how to stop and shut down apps, see [Shut down and Update Studio Apps](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-tasks-update-apps.html)\.
 + All execution roles must have the following trust policy permissions: 
   + Any role that the Studio domain's execution role assumes must have the `sts:SetSourceIdentity` permission in the trust policy as follows\.
 
@@ -33,7 +34,7 @@ You can get information about which specific user performed an action in an AWS 
     + Permissions for `sts:SetSourceIdentity` are required in both the permissions policy of the principal that is assuming the role, and in the role trust policy of the target role\. Otherwise, the assume role operation will fail\.
     +  This role chaining can happen in Studio or any other downstream service, such as Amazon EMR\. For more information about role chaining, see [Roles terms and concepts](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html)\. 
 
-## Enable `sourceIdentity`<a name="monitor-user-access-enable"></a>
+## Turn on `sourceIdentity`<a name="monitor-user-access-enable"></a>
 
 The ability to propagate the user profile name as the `sourceIdentity` in Studio is turned off by default\.
 
@@ -77,10 +78,7 @@ update-domain
 
 ## Turn off `sourceIdentity`<a name="monitor-user-access-disable"></a>
 
- You can also turn off the propagation of the user profile name as the `sourceIdentity` using the AWS CLI\. This occurs during domain update by passing the `DISABLED` value for the `--role-session-context-config` parameter as part of the `update-domain` API call\.
-
-**Note**  
-To update this configuration, all apps in the domain must be in the `Stopped` or `Deleted` state\. For more information about how to stop and shut down apps, see [Shut down and Update Studio Apps](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-tasks-update-apps.html)\.
+You can also turn off the propagation of the user profile name as the `sourceIdentity` using the AWS CLI\. This occurs during domain update by passing the `ExecutionRoleIdentityConfig=DISABLED` value for the `--domain-settings-for-update` parameter as part of the `update-domain` API call\.
 
 In the AWS CLI, use the following code to disable the propagation of the user profile name as the `sourceIdentity`\.
 

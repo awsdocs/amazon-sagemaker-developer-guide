@@ -40,4 +40,4 @@ Removing a production variant that has automatic scaling configured\.
 If you delete an endpoint, Application Auto Scaling checks to see whether any of the models on that endpoint are targets for automatic scaling\. If any are and you have permission to deregister the model, Application Auto Scaling deregisters those models as scalable targets without notifying you\. If you use a custom permission policy that doesn't provide permission for the [DeleteScalingPolicy](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DeleteScalingPolicy.html) and [DeregisterScalableTarget](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DeregisterScalableTarget.html) actions, you must delete automatic scaling policies and deregister scalable targets and before deleting the endpoint\.
 
 **Note**  
-You, as an IAM user, might not have sufficient permission to delete an endpoint if another IAM user configured automatic scaling for a variant on that endpoint\.
+As an IAM user, you might not have sufficient permission to delete an endpoint if another user configured automatic scaling for a variant on that endpoint\.

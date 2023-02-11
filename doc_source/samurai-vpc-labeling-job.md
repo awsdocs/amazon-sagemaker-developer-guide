@@ -38,7 +38,7 @@ Terminate the job using the console or the AWS CLI\.
 You can restrict Amazon S3 bucket access to users in your VPC using an [AWS PrivateLink](http://aws.amazon.com/privatelink/) endpoint\. For example, the following S3 bucket policy allows access to a specific bucket, `<bucket-name>`, from `<vpc>` and the endpoint `<vpc-endpoint>` only\. When you modify this policy, you must replace all *red\-italized text* with your resources and specifications\.
 
 **Note**  
-The following policy *denies* all entities *other than* users within a VPC to perform the actions listed in `Action`\. If you do not include actions in this list, they are still accessible to any entity that has access to this bucket and permission to perform those actions\. For example, if an IAM user has permission to perform `GetBucketLocation` on your Amazon S3 bucket, the policy below does not restrict the user from performing this action outside of your VPC\.
+The following policy *denies* all entities *other than* users within a VPC to perform the actions listed in `Action`\. If you do not include actions in this list, they are still accessible to any entity that has access to this bucket and permission to perform those actions\. For example, if a user has permission to perform `GetBucketLocation` on your Amazon S3 bucket, the policy below does not restrict the user from performing this action outside of your VPC\.
 
 ```
 {
@@ -133,7 +133,7 @@ For example, the following policy restricts `GetObject` and `PutObject` actions 
 }
 ```
 
-If you want an IAM user to have permission to launch a labeling job using the Ground Truth console, you must also add the IAM user's ARN to the bucket policy using the `aws:PrincipalArn` condition\. This user must also have permission to perform the following Amazon S3 actions on the bucket you use to launch the labeling job\.
+If you want a user to have permission to launch a labeling job using the Ground Truth console, you must also add the user's ARN to the bucket policy using the `aws:PrincipalArn` condition\. This user must also have permission to perform the following Amazon S3 actions on the bucket you use to launch the labeling job\.
 
 ```
 "s3:GetObject",

@@ -9,13 +9,13 @@
 
 This guide demonstrates how to complete the necessary steps to satisfy the prerequisites for using SageMaker geospatial capabilities\.
 
-## Step 1: Create an AWS account<a name="geospatial-setup"></a>
+To use SageMaker geospatial capabilities you need to have an AWS account\. If you already have an AWS account, skip this step\.
 
-To use SageMaker geospatial you need to have an AWS account\. If you already have an AWS account, skip this step\.
+## Sign up for an AWS account<a name="sign-up-for-aws"></a>
 
-When you sign up for Amazon Web Services \(AWS\), your AWS account is automatically signed up for all AWS services, including SageMaker\.
+If you do not have an AWS account, complete the following steps to create one\.
 
-**To create an AWS account**
+**To sign up for an AWS account**
 
 1. Open [https://portal\.aws\.amazon\.com/billing/signup](https://portal.aws.amazon.com/billing/signup)\.
 
@@ -25,28 +25,55 @@ When you sign up for Amazon Web Services \(AWS\), your AWS account is automatica
 
    When you sign up for an AWS account, an *AWS account root user* is created\. The root user has access to all AWS services and resources in the account\. As a security best practice, [assign administrative access to an administrative user](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html), and use only the root user to perform [tasks that require root user access](https://docs.aws.amazon.com/accounts/latest/reference/root-user-tasks.html)\.
 
-1. Write down your AWS account ID, because you need it for the next task\.
+AWS sends you a confirmation email after the sign\-up process is complete\. At any time, you can view your current account activity and manage your account by going to [https://aws\.amazon\.com/](https://aws.amazon.com/) and choosing **My Account**\.
 
-1. AWS sends you a confirmation email after the sign up process is complete\. At any time, you can view your current account activity and manage your account by going to [https://aws\.amazon\.com/](https://aws.amazon.com/) and choosing **My Account**\.
+## Create an administrative user<a name="create-an-admin"></a>
 
-## Step 2: Create an execution role and trust policy<a name="geospatial-role-setup"></a>
+After you sign up for an AWS account, create an administrative user so that you don't use the root user for everyday tasks\.
 
-As a managed service, Amazon SageMaker geospatial capabilities perform operations on your behalf on the AWS hardware that is managed by SageMaker\. It can perform only operations that the user permits\. To work with SageMaker geospatial you need to setup a user role and an execution role\. See [Amazon SageMaker geospatial capability roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-geospatial-roles.html) to learn more\.
+**Secure your AWS account root user**
 
-## Step 3: Setup the SageMaker geospatial UI and SageMaker Studio notebook with a SageMaker geospatial image<a name="geospatial-sdk-console-setup"></a>
+1.  Sign in to the [AWS Management Console](https://console.aws.amazon.com/) as the account owner by choosing **Root user** and entering your AWS account email address\. On the next page, enter your password\.
+
+   For help signing in by using root user, see [Signing in as the root user](https://docs.aws.amazon.com/signin/latest/userguide/console-sign-in-tutorials.html#introduction-to-root-user-sign-in-tutorial) in the *AWS Sign\-In User Guide*\.
+
+1. Turn on multi\-factor authentication \(MFA\) for your root user\.
+
+   For instructions, see [Enable a virtual MFA device for your AWS account root user \(console\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html#enable-virt-mfa-for-root) in the *IAM User Guide*\.
+
+**Create an administrative user**
++ For your daily administrative tasks, grant administrative access to an administrative user in AWS IAM Identity Center \(successor to AWS Single Sign\-On\)\.
+
+  For instructions, see [Getting started](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html) in the *AWS IAM Identity Center \(successor to AWS Single Sign\-On\) User Guide*\.
+
+**Sign in as the administrative user**
++ To sign in with your IAM Identity Center user, use the sign\-in URL that was sent to your email address when you created the IAM Identity Center user\.
+
+  For help signing in using an IAM Identity Center user, see [Signing in to the AWS access portal](https://docs.aws.amazon.com/signin/latest/userguide/iam-id-center-sign-in-tutorial.html) in the *AWS Sign\-In User Guide*\.
+
+## Create an execution role and trust policy<a name="geospatial-role-setup"></a>
+
+As a managed service, Amazon SageMaker geospatial capabilities perform operations on your behalf on the AWS hardware that is managed by SageMaker\. It can perform only operations that the user permits\. To work with SageMaker geospatial capabilities you need to setup a user role and an execution role\. See [Amazon SageMaker geospatial capability roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-geospatial-roles.html) to learn more\.
+
+## Setup the SageMaker geospatial UI and SageMaker Studio notebook with a SageMaker geospatial image<a name="geospatial-sdk-console-setup"></a>
 
 See [Onboard to Amazon SageMaker Domain](https://docs.aws.amazon.com/sagemaker/latest/dg/gs-studio-onboard.html), which provides you with steps to create a Domain, giving you access to Amazon SageMaker Studio and Amazon SageMaker geospatial capabilities\.
 
 **To use the SageMaker geospatial UI:**
 
+**Note**  
+Currently, SageMaker geospatial capabilities are only supported in the US West \(Oregon\) Region for public preview\. To view Amazon SageMaker geospatial capabilities, choose the name of the currently displayed Region in the navigation bar of the console\. Then choose the US West \(Oregon\) Region\.
+
 Within the Studio UI, choose **Geospatial** under **Data** from the left navigation panel on the **Home** menu\.
 
 **To use a SageMaker Studio notebook with a SageMaker geospatial image:**
 
-1. From the **Launcher**, choose **Create Notebook**\.
+1. From the **Launcher**, choose **Change environment** under **Notebooks and compute resources**\.
 
-1. Next, the **Set up environment** dialog opens\.
+1. Next, the **Change environment** dialog opens\.
 
 1. Select the **Image** dropdown and choose **Geospatial 1\.0**\. The **Instance type** should be **ml\.m5\.4xlarge**\. Do not change the default values for other settings\.
 
 1. Choose **Select**\.
+
+1. Choose **Create notebook**\.

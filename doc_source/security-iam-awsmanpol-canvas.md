@@ -273,7 +273,7 @@ This AWS managed policy includes the following permissions\.
 
 ## Amazon SageMaker updates to Amazon SageMaker Canvas managed policies<a name="security-iam-awsmanpol-canvas-updates"></a>
 
-View details about updates to AWS managed policies for SageMaker Canvas since this service began tracking these changes\. For automatic alerts about changes to this page, subscribe to the RSS feed on the SageMaker [Document history page\.](doc-history.md)
+View details about updates to AWS managed policies for SageMaker Canvas since this service began tracking these changes\.
 
 
 | Policy | Version | Change | Date | 

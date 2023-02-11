@@ -8,6 +8,7 @@ You can monitor Amazon SageMaker using Amazon CloudWatch, which collects raw dat
 + [SageMaker Endpoint Invocation Metrics](#cloudwatch-metrics-endpoint-invocation)
 + [SageMaker Multi\-Model Endpoint Metrics](#cloudwatch-metrics-multimodel-endpoints)
 + [SageMaker Jobs and Endpoint Metrics](#cloudwatch-metrics-jobs)
++ [SageMaker Inference Recommender Jobs Metrics](#cloudwatch-metrics-inference-recommender)
 + [SageMaker Ground Truth Metrics](#cloudwatch-metrics-ground-truth)
 + [Amazon SageMaker Feature Store Metrics](#cloudwatch-metrics-feature-store)
 + [SageMaker Pipelines Metrics](#cloudwatch-metrics-pipelines)
@@ -116,6 +117,28 @@ If you want to profile your training job with a finer resolution down to 100\-mi
 | Dimension | Description | 
 | --- | --- | 
 | Host |  For processing jobs, the value for this dimension has the format `[processing-job-name]/algo-[instance-number-in-cluster]`\. Use this dimension to filter instance metrics for the specified processing job and instance\. This dimension format is present only in the `/aws/sagemaker/ProcessingJobs` namespace\. For training jobs, the value for this dimension has the format `[training-job-name]/algo-[instance-number-in-cluster]`\. Use this dimension to filter instance metrics for the specified training job and instance\. This dimension format is present only in the `/aws/sagemaker/TrainingJobs` namespace\. For batch transform jobs, the value for this dimension has the format `[transform-job-name]/[instance-id]`\. Use this dimension to filter instance metrics for the specified batch transform job and instance\. This dimension format is present only in the `/aws/sagemaker/TransformJobs` namespace\.  | 
+
+## SageMaker Inference Recommender Jobs Metrics<a name="cloudwatch-metrics-inference-recommender"></a>
+
+The `/aws/sagemaker/InferenceRecommendationsJobs` namespace includes the following metrics for inference recommendation jobs\.
+
+**Inference Recommender Metrics**
+
+
+| Metric | Description | 
+| --- | --- | 
+| ClientInvocations |  The number of `InvokeEndpoint` requests sent to a model endpoint, as recognized by Inference Recommender\. To get the total number of requests sent to a model endpoint, use the `Sum` statistic\. Units: None Valid statistics: Sum  | 
+| ClientInvocationErrors |  The number of `InvokeEndpoint` requests that failed, as recognized by Inference Recommender\. Units: None Valid statistics: Sum  | 
+| ClientLatency |  The interval of time taken by a model to respond, as recognized by Inference Recommender\. Note that the time is in milliseconds, whereas the `ModelLatency` endpoint invocation metric is in microseconds\. Units: Milliseconds Valid statistics: Average, Sum, Min, Max, Sample Count, Percentiles  | 
+| NumberOfUsers |  The number of users sending `InvokeEndpoint` requests sent to a model endpoint\. Units: None Valid statistics: Max, Min, Average  | 
+
+**Dimensions for Inference Recommender Job Metrics**
+
+
+| Dimension | Description | 
+| --- | --- | 
+| JobName |  Filters Inference Recommender job metrics for the specified Inference Recommender job\.  | 
+| EndpointName |  Filters Inference Recommender job metrics for the specified endpoint\.  | 
 
 ## SageMaker Ground Truth Metrics<a name="cloudwatch-metrics-ground-truth"></a>
 

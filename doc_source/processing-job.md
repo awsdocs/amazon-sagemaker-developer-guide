@@ -17,7 +17,7 @@ For a sample notebook that shows how to run scikit\-learn scripts to perform dat
 
 For a sample notebook that shows how to use Amazon SageMaker Processing to perform distributed data preprocessing with Spark, see [Distributed Processing \(Spark\)](https://github.com/awslabs/amazon-sagemaker-examples/tree/master/sagemaker_processing/feature_transformation_with_sagemaker_processing)\. This notebook also shows how to train a regression model using XGBoost on the preprocessed dataset\.
 
-For instructions on how to create and access Jupyter notebook instances that you can use to run these samples in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. After you have created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all the SageMaker samples\. To open a notebook, choose its **Use** tab and choose **Create copy**\.
+For instructions on how to create and access Jupyter notebook instances that you can use to run these samples in SageMaker, see [Amazon SageMaker Notebook Instances](nbi.md)\. After you have created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all the SageMaker samples\. To open a notebook, choose its **Use** tab and choose **Create copy**\.
 
 ## Monitor Amazon SageMaker Processing Jobs with CloudWatch Logs and Metrics<a name="processing-job-cloudwatch"></a>
 

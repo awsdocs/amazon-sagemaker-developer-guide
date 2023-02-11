@@ -5,12 +5,16 @@
 Soft limits can be increased based on your needs\.
 +  **Maximum number of feature groups per AWS account:** Soft limit of 100\.
 +  **Maximum number of feature definitions per feature group:** 2500\.
++  **Maximum number of read request units per record identifier:** 2400\.
++  **Maximum number of write request units per record identifier:** 500\.
 +  **Maximum Transactions per second \(TPS\) per API per AWS account:** Soft limit of 10000 TPS per API excluding the `BatchGetRecord` API call, which has a soft limit of 500 TPS\.
 +  **Maximum size of a record:** 350KB\.
 +  **Maximum size of a record identifier:** 2KB\. 
 +  **Maximum size of a feature value:** 350KB\.
 + **Maximum number of concurrent feature group creation workflows:** 4\.
 + **BatchGetRecord API:** Can contain as many as 100 records and can query up to 10 feature groups\. 
+
+For information about service quotas, see [AWS service quotas](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html)\. For information about requesting an increase to a quota, see [Requesting a quota increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html)\. 
 
 ## Naming Rules<a name="feature-store-naming-rules"></a>
 +  **Reserved Words:** The following are reserved words and cannot be used as feature names in feature definitions: `is_deleted`, `write_time`, and `api_invocation_time`\. 

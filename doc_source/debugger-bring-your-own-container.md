@@ -12,7 +12,7 @@ For an end\-to\-end example of using Debugger with a custom training container, 
 + [Build a Custom Training Container and Debug Training Jobs with Debugger](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-debugger/build_your_own_container_with_debugger/debugger_byoc.html)
 
 **Tip**  
-This custom container with Debugger guide is an extension of the [Adapting Your Own Training Container](adapt-training-container.md) guide which walks you thorough how to build and push your custom training container to Amazon ECR\.
+This custom container with Debugger guide is an extension of the [Adapting your own training container](adapt-training-container.md) guide which walks you thorough how to build and push your custom training container to Amazon ECR\.
 
 ## Prepare to Build a Custom Training Container<a name="debugger-bring-your-own-container-1"></a>
 
