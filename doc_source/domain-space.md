@@ -37,3 +37,7 @@ To use shared spaces, Jupyter Server version 2 is required\. Certain JupyterLab 
 conda activate studio
 pip install jupyter-server==2.0.0rc3
 ```
+
+ **Attach a lifecycle configuration to a shared space** 
+
+To attach a lifecycle configuration to a shared space, you must use the AWS CLI\. For more information about creating and attaching lifecycle configurations, see [Creating and Associating a Lifecycle Configuration](studio-lcc-create.md)

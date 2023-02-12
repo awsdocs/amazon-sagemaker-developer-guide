@@ -67,7 +67,7 @@ If you want to use an existing IAM role, make sure that it has the IAM policy `A
 
 Your user should now have permission to do time series forecasting in SageMaker Canvas\.
 
-You can also remove permissions from a user by using the preceding procedure and turning off the **Enable time series forecasting** option\.
+You can also remove your user's permissions by using the preceding procedure and turning off the **Enable time series forecasting** option\.
 
 ## IAM role setup method<a name="canvas-set-up-forecast-iam"></a>
 
@@ -92,8 +92,7 @@ To configure an IAM role with the manual method, use the following procedure\.
 
 1. Under **Permissions**, choose **Add permissions**\.
 
-1. Choose **Attach policies**\.  
-![\[Screenshot of the Attach policies button under Add permissions.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/canvas-add-permissions.png)
+1. Choose **Attach policies**\.
 
 1. Search for the `[AmazonSageMakerCanvasForecastAccess](https://docs.aws.amazon.com/sagemaker/latest/dg/security-iam-awsmanpol-canvas.html#security-iam-awsmanpol-AmazonSageMakerCanvasForecastAccess)` managed policy and select it\. Choose **Attach policies** to attach the policy to the role\.
 
