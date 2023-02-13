@@ -47,7 +47,7 @@ The following policy shows how to limit the JupyterLab version at the Domain lev
             ],
             "Resource": "*",
             "Condition": {
-                "ForAllValues:StringLike": {
+                "ForAnyValue:StringLike": {
                     "sagemaker:ImageArns": "*image/jupyter-server-3"
                 }
             }
@@ -71,7 +71,7 @@ The following policy shows how to limit the JupyterLab version at the user prof
             ],
             "Resource": "*",
             "Condition": {
-                "ForAllValues:StringLike": {
+                "ForAnyValue:StringLike": {
                     "sagemaker:ImageArns": "*image/jupyter-server-3"
                 }
             }
@@ -80,7 +80,7 @@ The following policy shows how to limit the JupyterLab version at the user prof
 }
 ```
 
-The following policy shows how to limit the JupyterLab version at the application level\. 
+The following policy shows how to limit the JupyterLab version at the application level\. The `CreateApp` request must include the image ARN for this policy to apply\.
 
 ```
 {
@@ -92,7 +92,7 @@ The following policy shows how to limit the JupyterLab version at the applicati
             "Action": "sagemaker:CreateApp",
             "Resource": "*",
             "Condition": {
-                "ForAllValues:StringLike": {
+                "ForAnyValue:StringLike": {
                     "sagemaker:ImageArns": "*image/jupyter-server-3"
                 }
             }

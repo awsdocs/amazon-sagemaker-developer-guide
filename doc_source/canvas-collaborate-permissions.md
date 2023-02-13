@@ -43,4 +43,4 @@ To add the permissions to the users’ IAM role, do the following:
 
 1. Choose **Attach policies** to attach the policy to the role\.
 
-For more information about AWS managed policies, see [Managed policies and inline policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html) in the *AWS IAM User Guide*\.
+For more information about AWS managed policies, see [Managed policies and inline policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html) in the *IAM User Guide*\.

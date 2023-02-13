@@ -47,7 +47,7 @@ To add Amazon Redshift as a service principal to the IAM role, do the following\
 
 1. After editing the trust policy, choose **Update policy**\.
 
-You should now have an IAM role that has the policy `AmazonRedshiftFullAccess` attached to it and a trust relationship established with Amazon Redshift, giving users permission to import Amazon Redshift data into SageMaker Canvas\. For more information about AWS managed policies, see [Managed policies and inline policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html) in the *AWS IAM User Guide*\.
+You should now have an IAM role that has the policy `AmazonRedshiftFullAccess` attached to it and a trust relationship established with Amazon Redshift, giving users permission to import Amazon Redshift data into SageMaker Canvas\. For more information about AWS managed policies, see [Managed policies and inline policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html) in the *IAM User Guide*\.
 
 ## Associate the IAM role with your Amazon Redshift cluster<a name="canvas-redshift-permissions-cluster"></a>
 
