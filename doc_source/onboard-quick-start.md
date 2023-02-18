@@ -36,7 +36,7 @@ For information on how to onboard using AWS IAM Identity Center \(successor to A
 
 1. Choose **Save and continue**\.
 **Note**  
-If you receive an error message that you need to create a VPC, see [Choose a VPC](onboard-vpc.md)\.
+If you receive an error message that you need to create an Amazon VPC, see [Choose an Amazon VPC](onboard-vpc.md)\.
 
    When **Status** is **Ready**, the user name that you specified is enabled\.
 

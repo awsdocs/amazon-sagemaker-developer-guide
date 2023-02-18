@@ -51,11 +51,13 @@ The following shows how to attach a lifecycle configuration to your existing dom
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1. From the left navigation panel, choose **Control panel**\.
+1. From the left navigation panel, choose **Domains**\.
 
-1. From the **Control panel**, choose the **Lifecycle configurations** tab\.
+1. From the list of Domains, select the Domain to attach the lifecycle configuration to\.
 
-1. Choose **Attach**\.
+1. From the **Domain details**, choose the **Environment** tab\.
+
+1. Under **Lifecycle configurations for personal Studio apps**, choose **Attach**\.
 
 1. Under **Source**, choose **Existing configuration**\.
 
@@ -69,9 +71,11 @@ The following shows how to attach a lifecycle configuration to your existing use
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1. From the left navigation panel, choose **Control panel**\.
+1. From the left navigation panel, choose **Domains**\.
 
-1. Under **Users**, select the user profile\.
+1. From the list of Domains, select the Domain that contains the user profile to attach the lifecycle configuration to\.
+
+1. Under **User profiles**, select the user profile\.
 
 1. From the **User Details** page, choose **Edit**\.
 

@@ -18,6 +18,10 @@ SageMaker Hyperparameter Optimzation \(HPO\) jobs \(also known as tuning jobs\) 
 
 You can use SageMaker Experiments to track metrics from training jobs, processing jobs, and transform jobs\.
 
+## Q\. Why do I see experiments and runs in the Experiments Studio UI that I did not create using the SageMaker Python SDK?<a name="experiments-faqs-show-jobs"></a>
+
+Experiment runs that are automatically created by SageMaker jobs and containers are visible in the Experiments Studio UI by default\. To hide runs created by SageMaker jobs for a given experiment, choose the settings icon \(![\[The settings icon for Studio.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Settings_squid.png)\) and toggle **Show jobs**\.
+
 ## Q\. Is the SageMaker Experiments SDK still supported?<a name="experiments-faqs-sdk"></a>
 
 Yes, the SageMaker Experiments SDK is still supported\. However, as of [v2\.123\.0](https://github.com/aws/sagemaker-python-sdk/releases/tag/v2.123.0), SageMaker Experiments is fully integrated with the SageMaker Python SDK\. We recommend using the SageMaker Python SDK to create experiments and runs\. For more information, see [Create an Amazon SageMaker Experiment](experiments-create.md)\.

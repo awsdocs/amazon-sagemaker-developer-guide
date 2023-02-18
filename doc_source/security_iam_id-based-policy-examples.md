@@ -28,7 +28,7 @@ For more information about best practices in IAM, see [Security best practices i
 
 ## Using the SageMaker Console<a name="security_iam_id-based-policy-examples-console"></a>
 
-To access the Amazon SageMaker console, you must have a minimum set of permissions\. These permissions must allow you to list and view details about the SageMaker resources in your AWS account\. If you create an identity\-based policy that is more restrictive than the minimum required permissions, the console won't function as intended for entities \(IAM users or roles\) with that policy\.
+To access the Amazon SageMaker console, you must have a minimum set of permissions\. These permissions must allow you to list and view details about the SageMaker resources in your AWS account\. If you create an identity\-based policy that is more restrictive than the minimum required permissions, the console won't function as intended for entities \(users or roles\) with that policy\.
 
 To ensure that those entities can still use the SageMaker console, also attach the following AWS managed policy to the entities\. For more information, see [Adding Permissions to a User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_change-permissions.html#users_change_permissions-add-console) in the *IAM User Guide*:
 
@@ -630,11 +630,11 @@ SageMaker training provides a secure infrastructure for the training algorithm t
 
 **Topics**
 + [Restrict an IAM User to Specific Directories and Access Modes](#access-fs-condition-keys-ex-dirs)
-+ [Restrict an IAM User to a Specific File System](#access-fs-condition-keys-ex-fs)
++ [Restrict a User to a Specific File System](#access-fs-condition-keys-ex-fs)
 
 #### Restrict an IAM User to Specific Directories and Access Modes<a name="access-fs-condition-keys-ex-dirs"></a>
 
-The policy below restricts an IAM user to the `/sagemaker/xgboost-dm/train` and `/sagemaker/xgboost-dm/validation` directories of an EFS file system to `ro` \(read\-only\) AccessMode:
+The policy below restricts a user to the `/sagemaker/xgboost-dm/train` and `/sagemaker/xgboost-dm/validation` directories of an EFS file system to `ro` \(read\-only\) AccessMode:
 
 **Note**  
 When a directory is allowed, all of its subdirectories are also accessible by the training algorithm\. POSIX permissions are ignored\.
@@ -681,9 +681,9 @@ When a directory is allowed, all of its subdirectories are also accessible by th
 }
 ```
 
-#### Restrict an IAM User to a Specific File System<a name="access-fs-condition-keys-ex-fs"></a>
+#### Restrict a User to a Specific File System<a name="access-fs-condition-keys-ex-fs"></a>
 
-To prevent a malicious algorithm using a user space client from accessing any file system directly in your account, you can restrict networking traffic by allowing ingress from a specific security group\. In the following example, the IAM user can only use the specified security group to access the file system:
+To prevent a malicious algorithm using a user space client from accessing any file system directly in your account, you can restrict networking traffic by allowing ingress from a specific security group\. In the following example, the user can only use the specified security group to access the file system:
 
 ```
 {
@@ -716,8 +716,8 @@ To prevent a malicious algorithm using a user space client from accessing any fi
 ```
 
 Although the above example can restrict an algorithm to a specific file system, it does not prevent an algorithm from accessing any directory within that file system using the user space client\. To mitigate this, you can:
-+ Ensure that the file system only contains data that you trust your IAM users to access
-+ Create an IAM role that restricts your IAM users to launching training jobs with algorithms from approved ECR repositories
++ Ensure that the file system only contains data that you trust your users to access
++ Create an IAM role that restricts your users to launching training jobs with algorithms from approved ECR repositories
 
 For more information on how to use roles with SageMaker, see [SageMaker Roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html)\. 
 
@@ -725,7 +725,7 @@ For more information on how to use roles with SageMaker, see [SageMaker Roles](h
 
 Restrict an AWS user to creating training jobs from within a Amazon VPC\. When a training job is created within a VPC, you can use VPC flow logs to monitor all traffic to and from the training cluster\. For information about using VPC flow logs, see [VPC Flow Logs](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html) in the *Amazon Virtual Private Cloud User Guide*\.
 
-The following policy enforces that a training job is created by an IAM user calling [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) from within a VPC:
+The following policy enforces that a training job is created by a user calling [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html) from within a VPC:
 
 ```
 {
@@ -757,7 +757,7 @@ The following policy enforces that a training job is created by an IAM user call
 
 ### Restrict Access to Workforce Types for Ground Truth Labeling Jobs and Amazon A2I Human Review Workflows<a name="sagemaker-condition-keys-labeling"></a>
 
-Amazon SageMaker Ground Truth and Amazon Augmented AI work teams fall into one of three [workforce types](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management.html): public \(with Amazon Mechanical Turk\), private, and vendor\. To restrict IAM user access to a specific work team using one of these types or the work team ARN, use the `sagemaker:WorkteamType` and/or the `sagemaker:WorkteamArn` condition keys\. For the `sagemaker:WorkteamType` condition key, use [string condition operators](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html#Conditions_String)\. For the `sagemaker:WorkteamArn` condition key, use [Amazon Resource Name \(ARN\) condition operators](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html#Conditions_ARN)\. If the user attempts to create a labeling job with a restricted work team, SageMaker returns an access denied error\. 
+Amazon SageMaker Ground Truth and Amazon Augmented AI work teams fall into one of three [workforce types](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management.html): public \(with Amazon Mechanical Turk\), private, and vendor\. To restrict user access to a specific work team using one of these types or the work team ARN, use the `sagemaker:WorkteamType` and/or the `sagemaker:WorkteamArn` condition keys\. For the `sagemaker:WorkteamType` condition key, use [string condition operators](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html#Conditions_String)\. For the `sagemaker:WorkteamArn` condition key, use [Amazon Resource Name \(ARN\) condition operators](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html#Conditions_ARN)\. If the user attempts to create a labeling job with a restricted work team, SageMaker returns an access denied error\. 
 
 The policies below demonstrate different ways to use the `sagemaker:WorkteamType` and `sagemaker:WorkteamArn` condition keys with appropriate condition operators and valid condition values\. 
 
@@ -826,7 +826,7 @@ The following policies show how to restrict access to a public work team using t
 
 ### Enforce Encryption of Input Data<a name="sagemaker-condition-kms"></a>
 
-The following policy restricts an IAM user to specify a AWS KMS key to encrypt input data when creating training, hyperparameter tuning, and labeling jobs by using the `sagemaker:VolumeKmsKey` condition key:
+The following policy restricts a user to specify a AWS KMS key to encrypt input data when creating training, hyperparameter tuning, and labeling jobs by using the `sagemaker:VolumeKmsKey` condition key:
 
 ```
 {
@@ -855,7 +855,7 @@ The following policy restricts an IAM user to specify a AWS KMS key to encrypt i
 
 ### Enforce Encryption of Notebook Instance Storage Volume<a name="sagemaker-condition-kms-nbi"></a>
 
-The following policy restricts an IAM user to specify an AWS KMS key to encrypt the attached storage volume when creating or updating a notebook instance by using the `sagemaker:VolumeKmsKey` condition key:
+The following policy restricts a user to specify an AWS KMS key to encrypt the attached storage volume when creating or updating a notebook instance by using the `sagemaker:VolumeKmsKey` condition key:
 
 ```
 {
@@ -881,7 +881,7 @@ The following policy restricts an IAM user to specify an AWS KMS key to encrypt 
 
 ### Enforce Network Isolation for Training Jobs<a name="sagemaker-condition-isolation"></a>
 
-The following policy restricts an IAM user to enable network isolation when creating training jobs by using the `sagemaker:NetworkIsolation` condition key:
+The following policy restricts a user to enable network isolation when creating training jobs by using the `sagemaker:NetworkIsolation` condition key:
 
 ```
 {
@@ -907,7 +907,7 @@ The following policy restricts an IAM user to enable network isolation when crea
 
 ### Enforce a Specific Instance Type for Training Jobs<a name="sagemaker-condition-instance"></a>
 
-The following policy restricts an IAM user to use a specific instance type when creating training jobs by using the `sagemaker:InstanceTypes` condition key:
+The following policy restricts a user to use a specific instance type when creating training jobs by using the `sagemaker:InstanceTypes` condition key:
 
 ```
 {
@@ -934,7 +934,7 @@ The following policy restricts an IAM user to use a specific instance type when 
 
 ### Enforce a Specific EI Accelerator for Training Jobs<a name="sagemaker-condition-ei"></a>
 
-The following policy restricts an IAM user to use a specific elastic inference \(EI\) accelerator, if an accelerator is provided, when creating or updating notebook instances and when creating endpoint configurations by using the `sagemaker:AcceleratorTypes` condition key:
+The following policy restricts a user to use a specific elastic inference \(EI\) accelerator, if an accelerator is provided, when creating or updating notebook instances and when creating endpoint configurations by using the `sagemaker:AcceleratorTypes` condition key:
 
 ```
 {
@@ -964,7 +964,7 @@ The following policy restricts an IAM user to use a specific elastic inference \
 
 You can disable both internet access and root access to notebook instances to help make them more secure\. For information about controlling root access to a notebook instance, see [Control root access to a SageMaker notebook instance](nbi-root-access.md)\. for information about disabling internet access for a notebook instance, see [Connect a Notebook Instance in a VPC to External Resources](appendix-notebook-and-internet-access.md)\.
 
-The following policy requires an IAM user to disable network access when creating instance, and disable root access when creating or updating a notebook instance\. 
+The following policy requires a user to disable network access when creating instance, and disable root access when creating or updating a notebook instance\. 
 
 ```
 {

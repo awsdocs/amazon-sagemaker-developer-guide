@@ -44,7 +44,7 @@ Use the following procedure to configure the general settings\.
    1. Choose **Create role**\. SageMaker creates a new IAM `AmazonSageMaker-ExecutionPolicy` role with the [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) policy attached\.
 
 1. Under **Network and storage**, specify the following:
-   + Your VPC information – For more information, see [Choose a VPC](onboard-vpc.md) and [Configure Amazon SageMaker Canvas in a VPC without internet access](canvas-vpc.md)\.
+   + Your VPC information – For more information, see [Choose an Amazon VPC](onboard-vpc.md) and [Configure Amazon SageMaker Canvas in a VPC without internet access](canvas-vpc.md)\.
    + \(Optional\) **Encryption key** – SageMaker uses an AWS KMS key to encrypt your Amazon Elastic File System \(Amazon EFS\) and Amazon Elastic Block Store \(Amazon EBS\) file systems\. By default, it uses an AWS managed key\. To use a customer managed key, enter its key ID or Amazon Resource Name \(ARN\)\. For more information, see [Protect Data at Rest Using Encryption](encryption-at-rest.md)\.
 **Note**  
 Encryption in transit is only available for Amazon SageMaker Studio\.

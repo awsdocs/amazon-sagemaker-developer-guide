@@ -54,6 +54,61 @@ The following table includes a list of the models that have been tested with Sag
 **Note**  
 The batch sizes are local batch size that fit into each individual GPU in the respective instance type\. You should also adjust the learning rate when changing the batch size\.
 
+### PyTorch 1\.13\.1<a name="training-compiler-tested-models-pt1131"></a>
+
+**Natural language processing \(NLP\) models**
+
+The following models are tested for training jobs for all combinations of single\-node and multi\-node with single or multi GPU cores and Automatic Mixed Precision \(AMP\) as indicated\.
+
+
+| Single\-node/multi\-node single\-GPU/multi\-GPU | Model | Dataset | Instance type | Precision | Sequence Length | Batch size for native frameworks  | Batch size for SageMaker Training Compiler  | 
+| --- | --- | --- | --- | --- | --- | --- | --- | 
+| albert\-base\-v2 | wikitext\-2\-raw\-v1 | g4dn\.16xlarge | float16 | 128 | 80 | 192 | 
+| albert\-base\-v2 | wikitext\-2\-raw\-v1 | g5\.4xlarge | float16 | 128 | 128 | 332 | 
+| albert\-base\-v2 | wikitext\-2\-raw\-v1 | p3\.2xlarge | float16 | 128 | 80 | 224 | 
+| bert\-base\-uncased | wikitext\-2\-raw\-v1 | g5\.4xlarge | float16 | 128 | 160 | 288 | 
+| camembert\-base | wikitext\-2\-raw\-v1 | g5\.4xlarge | float16 | 128 | 160 | 280 | 
+| distilbert\-base\-uncased | wikitext\-2\-raw\-v1 | g5\.4xlarge | float16 | 128 | 240 | 472 | 
+| distilgpt2 | wikitext\-2\-raw\-v1 | g4dn\.16xlarge | float16 | 128 | 77 | 128 | 
+| distilgpt2 | wikitext\-2\-raw\-v1 | g5\.4xlarge | float16 | 128 | 138 | 390 | 
+| distilgpt2 | wikitext\-2\-raw\-v1 | p3\.2xlarge | float16 | 128 | 96 | 256 | 
+| distilroberta\-base | wikitext\-2\-raw\-v1 | g4dn\.16xlarge | float16 | 128 | 96 | 192 | 
+| distilroberta\-base | wikitext\-2\-raw\-v1 | g5\.4xlarge | float16 | 128 | 171 | 380 | 
+| distilroberta\-base | wikitext\-2\-raw\-v1 | p3\.2xlarge | float16 | 128 | 112 | 256 | 
+| gpt2 | wikitext\-2\-raw\-v1 | g4dn\.16xlarge | float16 | 128 | 52 | 152 | 
+| gpt2 | wikitext\-2\-raw\-v1 | g5\.4xlarge | float16 | 128 | 84 | 240 | 
+| gpt2 | wikitext\-2\-raw\-v1 | p3\.2xlarge | float16 | 128 | 58 | 164 | 
+| microsoft/deberta\-base | wikitext\-2\-raw\-v1 | g4dn\.16xlarge | float16 | 128 | 48 | 128 | 
+| microsoft/deberta\-base | wikitext\-2\-raw\-v1 | g5\.4xlarge | float16 | 128 | 84 | 207 | 
+| microsoft/deberta\-base | wikitext\-2\-raw\-v1 | p3\.2xlarge | float16 | 128 | 53 | 133 | 
+| roberta\-base | wikitext\-2\-raw\-v1 | g5\.4xlarge | float16 | 128 | 125 | 224 | 
+| facebook/bart\-base | xsum | g4dn\.16xlarge | float16 | 128 | 10 | 16 | 
+| facebook/bart\-base | xsum | g5\.4xlarge | float16 | 128 | 16 | 32 | 
+| facebook/bart\-large | xsum | g5\.4xlarge | float16 | 128 | 5 | 8 | 
+| facebook/bart\-large | xsum | p3\.2xlarge | float16 | 128 | 2 | 4 | 
+| xlm\-roberta\-base | wikitext\-2\-raw\-v1 | g4dn\.16xlarge | float16 | 128 | 16 | 31 | 
+| xlm\-roberta\-base | wikitext\-2\-raw\-v1 | p3\.2xlarge | float16 | 128 | 18 | 50 | 
+| xlnet\-base\-cased | wikitext\-2\-raw\-v1 | g5\.4xlarge | float16 | 128 | 128 | 240 | 
+| bert\-base\-uncased | wikitext\-103\-v1 | g5\.48xlarge | float16 | 512 | 29 | 50 | 
+| distilbert\-base\-uncased | wikitext\-103\-v1 | g5\.48xlarge | float16 | 512 | 45 | 64 | 
+| gpt2 | wikitext\-103\-v1 | g5\.48xlarge | float16 | 512 | 18 | 45 | 
+| roberta\-base | wikitext\-103\-v1 | g5\.48xlarge | float16 | 512 | 23 | 44 | 
+| gpt2 | wikitext\-103\-v1 | p4d\.24xlarge | float16 | 512 | 36 | 64 | 
+
+**Computer Vision \(CV\) models**
+
+Tested using [TensorFlow Model Garden](https://github.com/tensorflow/models) with Automatic Mixed Precision \(AMP\) as indicated\.
+
+
+| Single/multi\-node single/multi\-GPU | Model | Dataset | Instance type | Precision | Batch size for native frameworks  | Batch size for SageMaker Training Compiler  | 
+| --- | --- | --- | --- | --- | --- | --- | 
+| ResNet152 | food101 | g4dn\.16xlarge | float16 | 128 | 144 | 
+| ResNet152 | food101 | g5\.4xlarge | float16 | 128 | 192 | 
+| ResNet152 | food101 | p3\.2xlarge | float16 | 152 | 156 | 
+| ViT | food101 | g4dn\.16xlarge | float16 | 512 | 512 | 
+| ViT | food101 | g5\.4xlarge | float16 | 992 | 768 | 
+| ViT | food101 | p3\.2xlarge | float16 | 848 | 768 | 
+
 ### PyTorch 1\.12\.0<a name="training-compiler-tested-models-pt1120"></a>
 
 **Natural language processing \(NLP\) models**

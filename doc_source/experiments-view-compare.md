@@ -21,7 +21,9 @@ Amazon SageMaker Studio provides an experiments browser that you can use to view
    It might take a moment for the list to refresh and display a new experiment or experiment run\. You can click **Refresh** to update the page\. Your experiment list should look similar to the following:  
 ![\[A list of experiments in the SageMaker Experiments UI\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/experiments/experiments-overview.png)
 
-1. In the experiments list, double\-click an experiment to display a list of the runs in the experiment\.  
+1. In the experiments list, double\-click an experiment to display a list of the runs in the experiment\.
+**Note**  
+Experiment runs that are automatically created by SageMaker jobs and containers are visible in the Experiments Studio UI by default\. To hide runs created by SageMaker jobs for a given experiment, choose the settings icon \(![\[The settings icon for Studio.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Settings_squid.png)\) and toggle **Show jobs**\.  
 ![\[A list of experiment runs in the SageMaker Experiments UI\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/experiments/experiments-runs-overview.png)
 
 1. Double\-click a run to display information about a specific run\.

@@ -797,7 +797,7 @@ The Amazon EMR step requires that `EMRStepConfig` include the Amazon S3 location
 
 **Note**  
 Amazon EMR steps require that the role passed to your pipeline has additional permissions\. You should attach the [AWS managed policy: `AmazonSageMakerPipelinesIntegrations`](https://docs.aws.amazon.com/sagemaker/latest/dg/security-iam-awsmanpol-pipelines.html#security-iam-awsmanpol-AmazonSageMakerPipelinesIntegrations) to your pipeline role, or ensure that the role includes the permissions in that policy\. If you are launching a new job on a new Amazon EMR cluster, you need to add additional permissions\. See the following discussion for details\.
-Amazon EMR on EKS is not supported\.
+EMR step is not supported on EMR serverless, nor on Amazon EMR on EKS\.
 If you process an EMR step on a running cluster, you can only use a cluster that is in one of the following states: `STARTING`, `BOOTSTRAPPING`, `RUNNING`, or `WAITING`\.
 If you process EMR steps on a running cluster, you can have at most 256 EMR steps in a `PENDING` state on an EMR cluster\. EMR steps submitted beyond this limit result in pipeline execution failure\. You may consider using [Retry Policy for Pipeline Steps](pipelines-retry-policy.md)\.
 You can specify either cluster ID or cluster configuration, but not both\.

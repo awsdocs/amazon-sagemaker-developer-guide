@@ -62,7 +62,7 @@ The first few lines define:
 + `sagemaker_role`: A string variable with the SageMaker IAM role Amazon Resource Name \(ARN\)\.
 + `aws_region`: A string variable with the name of your AWS region\.
 
-Import the `image_uris` module from the SageMaker Python SDK\. Use the `retrieve()` function to retrieve the Amazon ECR URI for the Docker image matching the given arguments\. Provide both the name of the framework or algorithm \(`framework` field\) along with the version of the framework or algorithm \(`version` field\)\. For a list of built\-in Docker images provided by AWS, see [Available Deep Learning Containers Images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md)\. For more information on how to bring your own image, see [Use Your Own Inference Code](your-algorithms-inference-main.md)\.
+Import the `image_uris` module from the SageMaker Python SDK\. Use the `retrieve()` function to retrieve the Amazon ECR URI for the Docker image matching the given arguments\. Provide both the name of the framework or algorithm \(`framework` field\) along with the version of the framework or algorithm \(`version` field\)\. For a list of built\-in Docker images provided by AWS, see [Available Deep Learning Containers Images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md)\. For more information on how to bring your own image, see [Use your own inference code](your-algorithms-inference-main.md)\.
 
 ```
 from sagemaker import image_uris
@@ -119,7 +119,7 @@ The first few lines define:
 + `sagemaker_role`: A string variable with the SageMaker IAM role Amazon Resource Name \(ARN\)\.
 + `aws_region`: A string variable with the name of your AWS region\.
 
-Import the `image_uris` module from the SageMaker Python SDK\. Use the `retrieve()` function to retrieve the Amazon ECR URI for the Docker image matching the given arguments\. Provide both the name of the framework or algorithm \(`framework` field\) along with the version of the framework or algorithm \(`version` field\)\. For a list of built\-in Docker images provided by AWS, see [Available Deep Learning Containers Images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md)\. For more information on how to bring your own image, see [Use Your Own Inference Code](your-algorithms-inference-main.md)\.
+Import the `image_uris` module from the SageMaker Python SDK\. Use the `retrieve()` function to retrieve the Amazon ECR URI for the Docker image matching the given arguments\. Provide both the name of the framework or algorithm \(`framework` field\) along with the version of the framework or algorithm \(`version` field\)\. For a list of built\-in Docker images provided by AWS, see [Available Deep Learning Containers Images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md)\. For more information on how to bring your own image, see [Use your own inference code](your-algorithms-inference-main.md)\.
 
 ```
 from sagemaker import image_uris
@@ -264,7 +264,7 @@ You do not need to define an endpoint configuration for real\-time endpoints if 
 
 ------
 
-## Deploy your model<a name="w1528aac25c29b7b9b7c29"></a>
+## Deploy your model<a name="w1536aac25c29b7b9b7c29"></a>
 
 Deploy your model and create an HTTPS endpoint\.
 

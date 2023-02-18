@@ -98,13 +98,14 @@ Customer churn, or rate of attrition, is a costly problem faced by a wide range 
 
 ## Personalized recommendations<a name="jumpstart-solutions-recommendations"></a>
 
-You can use JumpStart solutions to analyze customer identity graphs or user sessions to better understand and predict customer behavior\. Use the following solutions for personalized recommendations to model customer identity across multiple devices or to determine the likelihood of a customer making a purchase\. 
+You can use JumpStart solutions to analyze customer identity graphs or user sessions to better understand and predict customer behavior\. Use the following solutions for personalized recommendations to model customer identity across multiple devices, to determine the likelihood of a customer making a purchase, or to create a custom movie recommender based on past customer behavior\. 
 
 
 | Solution name  | Description  | Get started  | 
 | --- | --- | --- | 
 | Entity resolution in identity graphs with deep graph library  | Perform cross\-device entity linking for online advertising by training a [graph convolutional network](https://arxiv.org/pdf/1703.06103.pdf) with [deep graph library](https://www.dgl.ai/)\. |  [GitHub »](https://github.com/awslabs/sagemaker-graph-entity-resolution)  | 
 | Purchase modeling | Predict whether a customer will make a purchase by training a [SageMaker XGBoost](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost.html) model\. |  [GitHub »](https://github.com/awslabs/sagemaker-purchase-modelling)  | 
+| Customized recommender system |  Train and deploy a custom recommender system that generates movie suggestions for a customer based on past behavior using Neural Collaborative Filtering in SageMaker\.  |  Find in Amazon SageMaker Studio\.  | 
 
 ## Reinforcement learning<a name="jumpstart-solutions-reinforcement-learning"></a>
 

@@ -134,7 +134,7 @@ Data Wrangler interpolates non\-numeric features by copying from either of the i
 
 ## Custom Transforms<a name="data-wrangler-transform-custom"></a>
 
-The **Custom Transforms** group allows you to use Python \(User\-Defined Function\), PySpark, pandas, or PySpark \(SQL\) to define custom transformations\. For all three options, you use the variable `df` to access the dataframe to which you want to apply the transform\. If you're not using Python \(User\-Defined Function\), you don't need to include a return statement\. Choose **Preview** to preview the result of the custom transform\. Choose **Add** to add the custom transform to your list of **Previous steps**\.
+The **Custom Transforms** group allows you to use Python \(User\-Defined Function\), PySpark, pandas, or PySpark \(SQL\) to define custom transformations\. For all three options, you use the variable `df` to access the dataframe to which you want to apply the transform\. To apply your custom code to your dataframe, assign the dataframe with the transformations that you've made to the `df` variable\. If you're not using Python \(User\-Defined Function\), you don't need to include a return statement\. Choose **Preview** to preview the result of the custom transform\. Choose **Add** to add the custom transform to your list of **Previous steps**\.
 
 You can import the popular libraries with an `import` statement in the custom transform code block, such as the following:
 + NumPy version 1\.19\.0

@@ -26,7 +26,7 @@ For information that fits your use case, see one of the following options\.
 ### For single GPU training<a name="training-compiler-estimator-pytorch-single"></a>
 
 ------
-#### [ PyTorch v1\.12\.0 ]
+#### [ PyTorch v1\.12\.0 and later ]
 
 To compile and train a PyTorch model, configure a SageMaker PyTorch estimator with SageMaker Training Compiler as shown in the following code example\.
 
@@ -57,7 +57,7 @@ pytorch_estimator=PyTorch(
     source_dir='path-to-requirements-file', # Optional. Add this if need to install additional packages.
     instance_count=1,
     instance_type='ml.p3.2xlarge',
-    framework_version='1.12.0',
+    framework_version='1.13.1',
     py_version='py3',
     hyperparameters=hyperparameters,
     compiler_config=TrainingCompilerConfig(),
@@ -158,7 +158,7 @@ pytorch_estimator=PyTorch(
     source_dir='path-to-requirements-file', # Optional. Add this if need to install additional packages.
     instance_count=instance_count,
     instance_type=instance_type,
-    framework_version='1.12.0',
+    framework_version='1.13.1',
     py_version='py3',
     hyperparameters=hyperparameters,
     compiler_config=TrainingCompilerConfig(),
