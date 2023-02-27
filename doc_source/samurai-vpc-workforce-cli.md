@@ -158,7 +158,7 @@ Use the following command to restrict public access to the worker portal\.
 
 ```
 aws sagemaker update-workforce --region us-west-2 \
---workforce-name workforce-demo --source-ip-config '{"Cidrs":["0.0.0.0/0"]}'
+--workforce-name workforce-demo --source-ip-config '{"Cidrs":["10.0.0.0/16"]}'
 ```
 
 After the `sourceIpConfig` is set on the workforce, the workers can access the worker portal in VPC but not through public internet\.

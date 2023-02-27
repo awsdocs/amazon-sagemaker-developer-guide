@@ -789,19 +789,19 @@ data_quality_check_step = QualityCheckStep(
 )
 ```
 
-### Amazon EMR Step<a name="step-type-emr"></a>
+### EMR Step<a name="step-type-emr"></a>
 
-You can use the Amazon SageMaker Model Building Pipelines [Amazon EMR](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-overview.html) step to process [ EMR steps](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-work-with-steps.html) on a running Amazon EMR cluster or have the pipeline create and manage an Amazon EMR cluster for you\. For more information about Amazon EMR, see [Getting started with Amazon EMR](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-gs.html)\.
+You can use the Amazon SageMaker Model Building Pipelines [EMR](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-overview.html) step to process [Amazon EMR steps](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-work-with-steps.html) on a running Amazon EMR cluster or have the pipeline create and manage an Amazon EMR cluster for you\. For more information about Amazon EMR, see [Getting started with Amazon EMR](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-gs.html)\.
 
-The Amazon EMR step requires that `EMRStepConfig` include the Amazon S3 location of the JAR file to be used by the Amazon EMR cluster and any arguments to be passed\. You also provide the Amazon EMR cluster ID if you want to run the step on a running EMR cluster, or the cluster configuration if you want the EMR step to run on a cluster that it creates, manages, and terminates for you\. The following sections include examples demonstrating both methods\.
+The EMR step requires that `EMRStepConfig` include the location of the JAR file to be used by the Amazon EMR cluster and any arguments to be passed\. You also provide the Amazon EMR cluster ID if you want to run the step on a running EMR cluster, or the cluster configuration if you want the EMR step to run on a cluster that it creates, manages, and terminates for you\. The following sections include examples and links to sample notebooks demonstrating both methods\.
 
 **Note**  
-Amazon EMR steps require that the role passed to your pipeline has additional permissions\. You should attach the [AWS managed policy: `AmazonSageMakerPipelinesIntegrations`](https://docs.aws.amazon.com/sagemaker/latest/dg/security-iam-awsmanpol-pipelines.html#security-iam-awsmanpol-AmazonSageMakerPipelinesIntegrations) to your pipeline role, or ensure that the role includes the permissions in that policy\. If you are launching a new job on a new Amazon EMR cluster, you need to add additional permissions\. See the following discussion for details\.
+EMR steps require that the role passed to your pipeline has additional permissions\. You should attach the [AWS managed policy: `AmazonSageMakerPipelinesIntegrations`](https://docs.aws.amazon.com/sagemaker/latest/dg/security-iam-awsmanpol-pipelines.html#security-iam-awsmanpol-AmazonSageMakerPipelinesIntegrations) to your pipeline role, or ensure that the role includes the permissions in that policy\.
 EMR step is not supported on EMR serverless, nor on Amazon EMR on EKS\.
 If you process an EMR step on a running cluster, you can only use a cluster that is in one of the following states: `STARTING`, `BOOTSTRAPPING`, `RUNNING`, or `WAITING`\.
 If you process EMR steps on a running cluster, you can have at most 256 EMR steps in a `PENDING` state on an EMR cluster\. EMR steps submitted beyond this limit result in pipeline execution failure\. You may consider using [Retry Policy for Pipeline Steps](pipelines-retry-policy.md)\.
 You can specify either cluster ID or cluster configuration, but not both\.
-The Amazon EMR step relies on Amazon EventBridge to monitor changes in the EMR step or cluster state\. If you process your Amazon EMR job on a running cluster, the EMR step uses the `SageMakerPipelineExecutionEMRStepStatusUpdateRule` rule to monitor EMR step state\. If you process your job on a cluster that the EMR step creates for you, the step uses the `SageMakerPipelineExecutionEMRClusterStatusRule` rule to monitor changes in cluster state\. If you see either of these EventBridge rules in your AWS account, do not delete them or else your EMR step may not complete\.
+The EMR step relies on Amazon EventBridge to monitor changes in the EMR step or cluster state\. If you process your Amazon EMR job on a running cluster, the EMR step uses the `SageMakerPipelineExecutionEMRStepStatusUpdateRule` rule to monitor EMR step state\. If you process your job on a cluster that the EMR step creates for you, the step uses the `SageMakerPipelineExecutionEMRClusterStatusRule` rule to monitor changes in cluster state\. If you see either of these EventBridge rules in your AWS account, do not delete them or else your EMR step may not complete\.
 
 **Launch a new job on a running Amazon EMR cluster**
 
@@ -811,7 +811,7 @@ If you want to launch a new job on a running Amazon EMR cluster, you pass the cl
 from sagemaker.workflow.emr_step import EMRStep, EMRStepConfig
 
 emr_config = EMRStepConfig(
-    jar="s3://path/to/jar/MyJar.jar", # required, S3 path to jar
+    jar="jar-location", # required, path to jar file used
     args=["--verbose", "--force"], # optional list of arguments to pass to the jar
     main_class="com.my.Main1", # optional main class, this can be omitted if jar above has a manifest 
     properties=[ # optional list of Java properties that are set when the step runs
@@ -839,57 +839,11 @@ step_emr = EMRStep (
 )
 ```
 
+For a sample notebook that guides you through a complete example, see [ SageMaker Pipelines EMR Step With Running EMR Cluster](https://github.com/aws/amazon-sagemaker-examples/blob/main/sagemaker-pipelines/tabular/emr-step/sagemaker-pipelines-emr-step-with-running-emr-cluster.ipynb)\.
+
 **Launch a new job on a new Amazon EMR cluster**
 
-If you want to launch a new job on a new cluster that `EMRStep` creates for you, you need to add additional permissions\. Grant these permissions, as shown in the following policy, in your SageMaker pipeline execution IAM role:
-
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "iam:PassRole"
-            ],
-            "Resource": "arn:aws:iam::*:role/*",
-            "Condition": {
-                "StringEquals": {
-                    "iam:PassedToService": [
-                        "elasticmapreduce.amazonaws.com",
-                        "ec2.amazonaws.com"
-                    ]
-                }
-            }
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "events:DescribeRule",
-                "events:PutRule",
-                "events:PutTargets"
-            ],
-            "Resource": [
-                "arn:aws:events:*:*:rule/SageMakerPipelineExecutionEMRClusterStatusUpdateRule"
-            ]
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "elasticmapreduce:RunJobFlow",
-                "elasticmapreduce:DescribeCluster",
-                "elasticmapreduce:TerminateJobFlows",
-                "elasticmapreduce:ListSteps"
-            ],
-            "Resource": [
-                "arn:aws:elasticmapreduce:*:*:cluster/*"
-            ]
-        }
-    ]
-}
-```
-
-To create your `EMRStep` pipeline step, provide your cluster configuration as a dictionary with the same structure as a [RunJobFlow](https://docs.aws.amazon.com/emr/latest/APIReference/API_RunJobFlow.html) request\. However, do not include the following fields in your cluster configuration:
+If you want to launch a new job on a new cluster that `EMRStep` creates for you, provide your cluster configuration as a dictionary with the same structure as a [RunJobFlow](https://docs.aws.amazon.com/emr/latest/APIReference/API_RunJobFlow.html) request\. However, do not include the following fields in your cluster configuration:
 + \[`Name`\]
 + \[`Steps`\]
 + \[`AutoTerminationPolicy`\]
@@ -898,13 +852,13 @@ To create your `EMRStep` pipeline step, provide your cluster configuration as a 
 
 All other `RunJobFlow` arguments are available for use in your cluster configuration\. For details about the request syntax, see [RunJobFlow](https://docs.aws.amazon.com/emr/latest/APIReference/API_RunJobFlow.html)\.
 
-The following example passes a cluster configuration to an Amazon EMR step definition, which prompts the step to launch a new job on a new EMR cluster\.
+The following example passes a cluster configuration to an EMR step definition, which prompts the step to launch a new job on a new EMR cluster\. The EMR cluster configuration in this example includes specifications for primary and core EMR cluster nodes\. For more information about Amazon EMR node types, see [ Understand node types: primary, core, and task nodes](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-master-core-task-nodes.html)\.
 
 ```
 from sagemaker.workflow.emr_step import EMRStep, EMRStepConfig
 
 emr_step_config = EMRStepConfig(
-    jar="s3://path/to/jar/MyJar.jar", # required, S3 path to jar
+    jar="jar-location", # required, path to jar file used
     args=["--verbose", "--force"], # optional list of arguments to pass to the jar
     main_class="com.my.Main1", # optional main class, this can be omitted if jar above has a manifest 
     properties=[ # optional list of Java properties that are set when the step runs
@@ -925,17 +879,27 @@ emr_step_config = EMRStepConfig(
 
 # include your cluster configuration as a dictionary
 emr_cluster_config = {
+    "Applications": [
+        {
+            "Name": "Spark", 
+        }
+    ],
     "Instances":{
         "InstanceGroups":[
             {
                 "InstanceRole": "MASTER",
                 "InstanceCount": 1,
-                "InstanceType": "m4.large"
+                "InstanceType": "m5.2xlarge"
+            },
+            {
+                "InstanceRole": "CORE",
+                "InstanceCount": 2,
+                "InstanceType": "m5.2xlarge"
             }
         ]
     },
-    "BootstrapActions": [],
-    "ReleaseLabel": "emr-5.14.0",
+    "BootstrapActions":[],
+    "ReleaseLabel": "emr-6.6.0",
     "JobFlowRole": "job-flow-role",
     "ServiceRole": "service-role"
 }
@@ -949,6 +913,8 @@ emr_step = EMRStep(
     cluster_config=emr_cluster_config
 )
 ```
+
+For a sample notebook that guides you through a complete example, see [ SageMaker Pipelines EMR Step With Cluster Lifecycle Management](https://github.com/aws/amazon-sagemaker-examples/blob/main/sagemaker-pipelines/tabular/emr-step/sagemaker-pipelines-emr-step-with-cluster-lifecycle-management.ipynb)\.
 
 ### Fail Step<a name="step-type-fail"></a>
 

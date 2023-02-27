@@ -21,9 +21,11 @@ This procedure is part of the Amazon SageMaker Domain onboarding process when yo
 
 1. Choose one or more subnets\. If you don't choose any subnets, SageMaker uses all the subnets in the Amazon VPC\. We recommend that you use multiple subnets that are not created in constrained Availability Zones\. Using subnets in these constrained Availability Zones can result in insufficient capacity errors and longer application creation times\. For more information about constrained Availability Zones, see [Availability Zones](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-availability-zones)\.
 
-1. Select the network access type\.
+1. Select the network access type\. 
+**Note**  
+If **VPC only** is selected, SageMaker automatically applies the security group settings defined for the Domain to all shared spaces created in the Domain\. If **Public internet only** is selected, SageMaker does not apply the security group settings to shared spaces created in the Domain\.
    + **Public internet only** – Non\-Amazon EFS traffic goes through a SageMaker managed Amazon VPC, which allows internet access\. Traffic between the Domain and your Amazon EFS volume is through the specified Amazon VPC\.
-   + **VPC only** – All SageMaker traffic is through the specified Amazon VPC and subnets\. Internet access is disabled by default\.
+   + **VPC only** – All SageMaker traffic is through the specified Amazon VPC and subnets\. You must use a subnet that does not have direct internet access in **VPC only** mode\. Internet access is disabled by default\.
 
 1. Choose the security groups\. If you chose **Public internet only**, this step is optional\. If you chose **VPC only**, this step is required\.
 **Note**  

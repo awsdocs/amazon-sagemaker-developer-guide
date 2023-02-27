@@ -2,6 +2,9 @@
 
 After you create your baseline, you can call the `create_monitoring_schedule()` method of your `ModelQualityMonitor` class instance to schedule an hourly model quality monitor\. The following sections show you how to create a model quality monitor for a model deployed to a real\-time endpoint as well as for a batch transform job\.
 
+**Important**  
+You can specify either a batch transform input or an endpoint input, but not both, when you create your monitoring schedule\.
+
 Unlike data quality monitoring, you need to supply Ground Truth labels if you want to monitor model quality\. However, Ground Truth labels could be delayed\. To address this, specify offsets when you create your monitoring schedule\. 
 
 ## Model monitor offsets<a name="model-monitor-model-quality-schedule-offsets"></a>

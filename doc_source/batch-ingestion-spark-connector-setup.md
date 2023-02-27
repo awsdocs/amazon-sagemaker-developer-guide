@@ -2,7 +2,7 @@
 
 ## Introduction<a name="batch-ingestion-spark-connector-introduction"></a>
 
-Amazon SageMaker Feature Store supports batch data ingestion with Spark, using your existing ETL pipeline\. It can be a pipeline on Amazon EMR, GIS, a AWS Glue Job, a Amazon SageMaker Processing job, or a Amazon SageMaker Studio Notebook\.
+Amazon SageMaker Feature Store supports batch data ingestion with Spark, using your existing ETL pipeline\. It can be a pipeline on Amazon EMR, GIS, a AWS Glue Job, a Amazon SageMaker Processing job, or a SageMaker Notebook\.
 
 Methods for installing and implementing batch data ingestion are provided for Python and Scala\. Python developers can use the `sagemaker-feature-store-pyspark` Python library for local development and installation on Amazon EMR\. They can also run it from their Jupyter Notebooks\. Scala developers can use the Feature Store Spark connector available in Maven\.
 
@@ -80,12 +80,12 @@ sudo -E pip3 install sagemaker-feature-store-pyspark-3.1 --no-binary :all: --ver
 **Note**  
 If you want to install the dependent jars automatically to SPARK\_HOME, do not use the bootstrap step\.
 
- **Installation on a Amazon SageMaker Studio Notebook** 
+ **Installation on a SageMaker Notebook** 
 
 Install a version of PySpark that's compatible with the Spark connector using the following commands:
 
 ```
-!pip3 install pyspark==3.1 
+!pip3 install pyspark==3.1.1 
 !pip3 install sagemaker-feature-store-pyspark-3.1 --no-binary :all:
 ```
 
@@ -277,13 +277,13 @@ feature_store_manager.ingest_data(input_data_frame=df, feature_group_arn=feature
 
 # To select the target stores for ingestion, you can specify the target store as the paramter
 # If OnlineStore is selected, the connector will leverage PutRecord API to ingest your data in stream
-feature_store_manager.ingest_data(input_data_frame=df, feature_group_arn=feature_group_arn, ["OfflineStore", "OnlineStore"])
+feature_store_manager.ingest_data(input_data_frame=df, feature_group_arn=feature_group_arn, target_stores=["OfflineStore", "OnlineStore"])
 
 # If only OfflineStore is selected, the connector will batch write the data to offline store directly
-feature_store_manager.ingest_data(input_data_frame=df, feature_group_arn=feature_group_arn, ["OfflineStore"])
+feature_store_manager.ingest_data(input_data_frame=df, feature_group_arn=feature_group_arn, target_stores=["OfflineStore"])
 
 # To retrieve the records failed to be ingested by spark connector
-failed_records_df = feature_store_manager.get_failed_stream_ingestion_dataframe()
+failed_records_df = feature_store_manager.get_failed_stream_ingestion_data_frame()
 ```
 
  **Submit a Spark Job** 
