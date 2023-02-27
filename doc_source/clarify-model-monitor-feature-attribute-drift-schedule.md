@@ -2,6 +2,9 @@
 
 After you create your SHAP baseline, you can call the `create_monitoring_schedule()` method of your `ModelExplainabilityMonitor` class instance to schedule an hourly model explainability monitor\. The following sections show you how to create a model explainability monitor for a model deployed to a real\-time endpoint as well as for a batch transform job\.
 
+**Important**  
+You can specify either a batch transform input or an endpoint input, but not both, when you create your monitoring schedule\.
+
 If a baselining job has been submitted, the monitor automatically picks up analysis configuration from the baselining job\. However, if you skip the baselining step or the capture dataset has a different nature from the training dataset, you have to provide the analysis configuration\. `ModelConfig` is required by `ExplainabilityAnalysisConfig` for the same reason that it's required for the baselining job\. Note that only features are required for computing feature attribution, so you should exclude Ground Truth labeling\.
 
 ## Feature attribution drift monitoring for models deployed to real\-time endpoint<a name="model-monitor-explain-quality-rt"></a>

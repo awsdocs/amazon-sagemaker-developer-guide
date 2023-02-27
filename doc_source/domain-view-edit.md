@@ -40,6 +40,7 @@ aws sagemaker list-domains --region region
 + If `DefaultUserSettings` and `DefaultSpaceSettings` are set, they cannot be unset\.
 + `DefaultUserSettings.ExecutionRole` can only be updated if there are no applications running in any user profile within the Domain\. This value cannot be unset\.
 + `DefaultSpaceSettings.ExecutionRole` can only be updated if there are no applications running in any of shared spaces within the Domain\. This value cannot be unset\.
++ If the Domain was created in **VPC only** mode, SageMaker automatically applies updates to the security group settings defined for the Domain to all shared spaces created in the Domain\.
 + `DomainId` cannot be updated\.
 
  The following section shows how to edit Domain settings from the SageMaker console or the AWS CLI\. 

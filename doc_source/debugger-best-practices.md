@@ -21,11 +21,11 @@ You can choose a machine learning framework and use SageMaker pre\-built trainin
 
 ## Use Studio Debugger Insights Dashboard<a name="debugger-best-practices-studio-dashboard"></a>
 
-With Studio Debugger insights dashboard, you are in control of your training jobs\. Use the Studio Debugger dashboards to keep your model performance on Amazon EC2 instances in control and optimized\. For any SageMaker training jobs running on Amazon EC2 instance, Debugger monitors resource utilization and basic model output data \(loss and accuracy values\)\. Through the Studio Debugger dashboards, gain insights into your training jobs and improve your model training performance\. To learn more, see [Amazon SageMaker Debugger in Amazon SageMaker Studio Experiments](debugger-on-studio.md)\.
+With Studio Debugger insights dashboard, you are in control of your training jobs\. Use the Studio Debugger dashboards to keep your model performance on Amazon EC2 instances in control and optimized\. For any SageMaker training jobs running on Amazon EC2 instance, Debugger monitors resource utilization and basic model output data \(loss and accuracy values\)\. Through the Studio Debugger dashboards, gain insights into your training jobs and improve your model training performance\. To learn more, see [Amazon SageMaker Debugger UI in Amazon SageMaker Studio Experiments](debugger-on-studio.md)\.
 
 ## Download Debugger Reports and Gain More Insights<a name="debugger-best-practices-download-reports"></a>
 
-You can view aggregated results and gain insights in Debugger reports\. Debugger aggregates training and profiling results collected from the built\-in rule analysis into a report per training job\. You can find more detailed information about your training results through the Debugger reports\. To learn more, see [SageMaker Debugger Interactive Reports](debugger-report.md)\.
+You can view aggregated results and gain insights in Debugger reports\. Debugger aggregates training and profiling results collected from the built\-in rule analysis into a report per training job\. You can find more detailed information about your training results through the Debugger reports\. To learn more, see [SageMaker Debugger Interactive Report](debugger-report.md)\.
 
 ## Capture Data from Your Training Job and Save Data to Amazon S3<a name="debugger-best-practices-capture-tensor"></a>
 
@@ -57,7 +57,7 @@ With Amazon SageMaker Debugger monitoring, you can measure hardware system resou
 
 To learn how to enable Debugger system monitoring, see [Configure Debugger Using Amazon SageMaker Python SDK](debugger-configuration-for-profiling.md) and then [Configure Debugger Monitoring Hardware System Resource Utilization](debugger-configure-system-monitoring.md)\.
 
-For a full list of available built\-in rules for monitoring, see [Debugger Built\-in Rules for Monitoring Hardware System Resource Utilization \(System Metrics\)](debugger-built-in-rules.md#built-in-rules-monitoring)\.
+For a full list of available built\-in rules for monitoring, see [Debugger built\-in rules for profiling hardware system resource utilization \(system metrics\)](debugger-built-in-rules.md#built-in-rules-monitoring)\.
 
 ## Profiling Framework Operations<a name="debugger-best-practices-profile-framework"></a>
 
@@ -65,7 +65,7 @@ With Amazon SageMaker Debugger profiling you can profile deep learning framework
 
 To learn how to configure Debugger for framework profiling, see [Configure Debugger Using Amazon SageMaker Python SDK](debugger-configuration-for-profiling.md) and then [Configure Debugger Framework Profiling](debugger-configure-framework-profiling.md)\.
 
-For a complete list of available built\-in rules for profiling, see [Debugger Built\-in Rules for Profiling Framework Metrics](debugger-built-in-rules.md#built-in-rules-profiling)\.
+For a complete list of available built\-in rules for profiling, see [Debugger built\-in rules for profiling framework metrics](debugger-built-in-rules.md#built-in-rules-profiling)\.
 
 ## Debugging Model Output Tensors<a name="debugger-best-practices-debug-tensors"></a>
 
@@ -73,4 +73,4 @@ Debugging is available for deep learning frameworks using AWS Deep Learning Cont
 
 To learn how to configure Debugger for debugging output tensors, see [Step 2: Launch and Debug Training Jobs Using SageMaker Python SDK](debugger-configuration-for-debugging.md) and then [Configure SageMaker Debugger to Save Tensors](debugger-configure-hook.md)\.
 
-For a full list of available built\-in rules for debugging, see [Debugger Built\-in Rules for Debugging Model Training Data \(Output Tensors\)](debugger-built-in-rules.md#built-in-rules-debugging)\.
+For a full list of available built\-in rules for debugging, see [Debugger built\-in rules for debugging model training data \(output tensors\)](debugger-built-in-rules.md#built-in-rules-debugging)\.

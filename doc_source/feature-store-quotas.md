@@ -1,12 +1,16 @@
 # Quotas, Naming Rules and Data Types<a name="feature-store-quotas"></a>
 
+## Quota Terminologies<a name="feature-store-terminologies"></a>
++  Read Request Unit \(RRU\): Measure of read throughput, where the number of RRUs per read request is equal to the ceiling of read record's size divided into 4KB chunks\. The minimum RRU per request is 0\. 
++  Write Request Unit \(WRU\): Measure of write throughput, where the number of WRUs per write request is equal to the ceiling of the written record's size divided into 1KB chunks\. The minimum WRU per request is 1 \(including delete operations\)\. 
+
 ## Limits and Quotas<a name="feature-store-limits-quotas"></a>
 **Note**  
 Soft limits can be increased based on your needs\.
 +  **Maximum number of feature groups per AWS account:** Soft limit of 100\.
 +  **Maximum number of feature definitions per feature group:** 2500\.
-+  **Maximum number of read request units per record identifier:** 2400\.
-+  **Maximum number of write request units per record identifier:** 500\.
++  **Maximum number of RRU per record identifier:** 2400 RRU per second\.
++  **Maximum number of WRU per record identifier:** 500 WRU per second\.
 +  **Maximum Transactions per second \(TPS\) per API per AWS account:** Soft limit of 10000 TPS per API excluding the `BatchGetRecord` API call, which has a soft limit of 500 TPS\.
 +  **Maximum size of a record:** 350KB\.
 +  **Maximum size of a record identifier:** 2KB\. 

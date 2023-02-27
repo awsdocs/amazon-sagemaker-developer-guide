@@ -35,7 +35,7 @@ sagemaker_client.create_endpoint_config(
             "VolumeSizeInGB": 256, # Specify the size of the Amazon EBS volume.
             "ModelDataDownloadTimeoutInSeconds": 1800, # Specify the model download timeout in seconds.
             "ContainerStartupHealthCheckTimeoutInSeconds": 1800, # Specify the health checkup timeout in seconds
-	      },
+        },
     ],
 )
 

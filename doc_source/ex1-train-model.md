@@ -72,7 +72,7 @@ If you run this installation in your exiting SageMaker Studio or notebook instan
    + `volume_size` – The size, in GB, of the EBS storage volume to attach to the training instance\. This must be large enough to store training data if you use `File` mode \(`File` mode is on by default\)\.
    + `output_path` – The path to the S3 bucket where SageMaker stores the model artifact and training results\.
    + `sagemaker_session` – The session object that manages interactions with SageMaker API operations and other AWS service that the training job uses\.
-   + `rules` – Specify a list of SageMaker Debugger built\-in rules\. In this example, the `create_xgboost_report()` rule creates an XGBoost report that provides insights into the training progress and results\. For more information, see [SageMaker Debugger XGBoost Training Report](debugger-training-xgboost-report.md)\.
+   + `rules` – Specify a list of SageMaker Debugger built\-in rules\. In this example, the `create_xgboost_report()` rule creates an XGBoost report that provides insights into the training progress and results\. For more information, see [SageMaker Debugger XGBoost Training Report](debugger-report-xgboost.md#debugger-training-xgboost-report)\.
 **Tip**  
 If you want to run distributed training of large sized deep learning models, such as convolutional neural networks \(CNN\) and natural language processing \(NLP\) models, use SageMaker Distributed for data parallelism or model parallelism\. For more information, see [Distributed Training in Amazon SageMaker](distributed-training.md)\.
 

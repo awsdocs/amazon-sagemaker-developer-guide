@@ -5,5 +5,6 @@ To prepare your training script and run training jobs with SageMaker Debugger to
 **Topics**
 + [Step 1: Adapt Your Training Script to Register a Hook](debugger-modify-script.md)
 + [Step 2: Launch and Debug Training Jobs Using SageMaker Python SDK](debugger-configuration-for-debugging.md)
++ [SageMaker Debugger Interactive Report for XGBoost](debugger-report-xgboost.md)
 + [Action on Amazon SageMaker Debugger Rules](debugger-action-on-rules.md)
 + [Visualize Amazon SageMaker Debugger Output Tensors in TensorBoard](debugger-enable-tensorboard-summaries.md)
