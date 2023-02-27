@@ -114,7 +114,7 @@ To use asynchronous endpoints, first make sure you have met these prerequisites\
 
    SageMaker provides containers for its built\-in algorithms and prebuilt Docker images for some of the most common machine learning frameworks, such as Apache MXNet, TensorFlow, PyTorch, and Chainer\. For a full list of the available SageMaker images, see [Available Deep Learning Containers Images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md)\. If you choose to use a SageMaker provided container, you can increase the endpoint timeout and payload sizes from the default by setting the environment variables in the container\. To learn how to set the different environment variables for each framework, see the Create a Model step of creating an asynchronous endpoint\.
 
-   If none of the existing SageMaker containers meet your needs and you don't have an existing container of your own, you may need to create a new Docker container\. See [Use Your Own Inference Code](your-algorithms-inference-main.md) for information on how to create your Docker image\.
+   If none of the existing SageMaker containers meet your needs and you don't have an existing container of your own, you may need to create a new Docker container\. See [Use your own inference code](your-algorithms-inference-main.md) for information on how to create your Docker image\.
 
 1. **Create an Amazon SNS topic \(optional\)**
 

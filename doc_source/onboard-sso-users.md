@@ -47,7 +47,7 @@ This topic describes how to onboard to Amazon SageMaker Domain using authenticat
    1. Choose **Create role**\. SageMaker creates a new IAM `AmazonSageMaker-ExecutionPolicy` role with the [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) policy attached\.
 
 1. Under **Network and storage**, specify the following:
-   + Your VPC information – For more information, see [Choose a VPC](onboard-vpc.md)\.
+   + Your Amazon Virtual Private Cloud \(Amazon VPC\) information – For more information, see [Choose an Amazon VPC](onboard-vpc.md)\.
    + \(Optional\) **Encryption key** – SageMaker uses an AWS KMS key to encrypt your Amazon Elastic File System \(Amazon EFS\) and Amazon Elastic Block Store \(Amazon EBS\) file systems\. By default, it uses an AWS managed key\. To use a customer managed key, enter its key ID or Amazon Resource Name \(ARN\)\. For more information, see [Protect Data at Rest Using Encryption](encryption-at-rest.md)\.
 **Note**  
 Encryption in transit is only available for Amazon SageMaker Studio\.
@@ -135,19 +135,19 @@ Use the following commands to onboard to a Domain using authentication using IAM
    aws iam attach-role-policy --role-name execution-role-name --policy-arn arn:aws:iam::aws:policy/AmazonSageMakerFullAccess
    ```
 
-1. Get the default VPC of your account\.
+1. Get the default Amazon Virtual Private Cloud \(Amazon VPC\) of your account\.
 
    ```
    aws --region region ec2 describe-vpcs --filters Name=isDefault,Values=true --query "Vpcs[0].VpcId" --output text
    ```
 
-1. Get the list of subnets in the default VPC\.
+1. Get the list of subnets in the default Amazon VPC\.
 
    ```
    aws --region region ec2 describe-subnets --filters Name=vpc-id,Values=default-vpc-id --query "Subnets[*].SubnetId" --output json
    ```
 
-1. Create a Domain by passing the default VPC ID, subnets, and execution role ARN\. You must also pass a SageMaker image ARN\. For information on the available JupyterLab version ARNs, see [Setting a default JupyterLab version](studio-jl.md#studio-jl-set)\.
+1. Create a Domain by passing the default Amazon VPC ID, subnets, and execution role ARN\. You must also pass a SageMaker image ARN\. For information on the available JupyterLab version ARNs, see [Setting a default JupyterLab version](studio-jl.md#studio-jl-set)\.
 
    ```
    aws --region region sagemaker create-domain --domain-name domain-name --vpc-id default-vpc-id --subnet-ids subnet-ids --auth-mode SSO --default-user-settings "ExecutionRole=arn:aws:iam::account-number:role/execution-role-name,JupyterServerAppSettings={DefaultResourceSpec={InstanceType=system,SageMakerImageArn=image-arn}}" \ --query DomainArn --output text

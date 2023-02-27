@@ -18,7 +18,7 @@ The IAM Role must start with `SageMaker*`
    + Next, choose **Attach policies**\.
    + Search for **AmazonSageMakerEdgeDeviceFleetPolicy**\.
    + Select **AmazonSageMakerFullAccess** \(This is an optional step that makes it easier for you to reuse this IAM role in model compilation and packaging\)\.
-   + Choose **Add inline policy**\.
+   + Add required permissions to a role's permissions policy, don't attach inline policies to IAM users\.
 
      ```
      {

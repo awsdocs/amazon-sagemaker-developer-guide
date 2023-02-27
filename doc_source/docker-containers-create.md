@@ -4,4 +4,4 @@ If none of the existing SageMaker containers meet your needs and you don't have 
 
 **Topics**
 + [Use Your Own Training Algorithms](your-algorithms-training-algo.md)
-+ [Use Your Own Inference Code](your-algorithms-inference-main.md)
++ [Use your own inference code](your-algorithms-inference-main.md)

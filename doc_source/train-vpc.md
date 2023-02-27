@@ -36,6 +36,8 @@ When configuring the private VPC for your SageMaker training jobs, use the follo
 
 ### Ensure That Subnets Have Enough IP Addresses<a name="train-vpc-ip"></a>
 
+Training instances that *don't use* an Elastic Fabric Adapter \(EFA\) should have at least 2 private IP addresses\. Training instances that use an EFA should have at least 5 private IP addresses\. For more information, see [Multiple IP addresses](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/MultipleIP.html) in the Amazon EC2 User Guide\.
+
 Your VPC subnets should have at least two private IP addresses for each instance in a training job\. For more information, see [VPC and Subnet Sizing for IPv4](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html#vpc-sizing-ipv4) in the *Amazon VPC User Guide*\.
 
 ### Create an Amazon S3 VPC Endpoint<a name="train-vpc-s3"></a>

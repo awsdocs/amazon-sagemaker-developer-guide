@@ -24,6 +24,10 @@ To use Studio Lab, you must start your project runtime\. This runtime gives you 
 
 1.  Select **Start runtime**\. 
 
+1.  Enter a mobile phone number to associate with your Amazon SageMaker Studio Lab account and choose **Continue**\. For more information, please see the [Studio Lab FAQ](https://studiolab.sagemaker.aws/faq)\. 
+
+1.  Enter the 6\-digit code sent to the associated mobile phone number and choose **Verify**\. 
+
 1.  After the runtime is running, select **Open project** to open the project runtime environment in a new browser tab\. 
 
 ## Stop the project runtime<a name="studio-lab-manage-runtime-stop"></a>

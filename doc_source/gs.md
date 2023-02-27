@@ -1,6 +1,6 @@
 # Get Started with Amazon SageMaker<a name="gs"></a>
 
-Before you can use Amazon SageMaker, you must sign up for an AWS account and create an IAM admin user by following the steps in [Set Up Amazon SageMaker Prerequisites](gs-set-up.md)\. 
+Before you can use Amazon SageMaker, you must sign up for an AWS account and create an administrative user by following the steps in [Set Up Amazon SageMaker Prerequisites](gs-set-up.md)\. 
 
 Amazon SageMaker Studio Lab does not require an AWS account or IAM integration\.
 

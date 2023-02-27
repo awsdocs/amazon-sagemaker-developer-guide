@@ -1215,3 +1215,312 @@ For each frame in the sequence, you see the `frame-number`, `frame-name`, if app
     ]
 }
 ```
+
+## 3D\-2D Object Tracking Point Cloud Object Tracking Output<a name="sms-output-3d-2d-point-cloud-object-tracking"></a>
+
+The following is an example of an output manifest file from a 3D point cloud object tracking labeling job\. The *red, italicized text* in the examples below depends on labeling job specifications and output data\. The ellipses \(*\.\.\.*\) denote a continuation of that list, where additional objects with the same format as the proceeding object can appear\.
+
+In addition to the standard elements, the metadata includes a class map that lists each class that has at least one label in the sequence\. If one or more cuboids were modified, there is an `adjustment-status` parameter in the metadata for audit workflows that is set to `adjusted`\. 
+
+```
+{
+  "source-ref": "s3://iad-groundtruth-lidar-test-bucket/artifacts/gt-point-cloud-demos/sequences/seq2.json",
+  "source-ref-metadata": {
+    "json-paths": [
+      "number-of-frames",
+      "prefix",
+      "frames{frame-no, frame}"
+    ]
+  },
+  "3D2D-linking-ref": "s3://iad-groundtruth-lidar-test-bucket/xyz/3D2D-linking/annotations/consolidated-annotation/output/0/SeqLabel.json",
+  "3D2D-linking-ref-metadata": {
+    "objects": [
+      {
+        "frame-no": 0,
+        "confidence": []
+      },
+      {
+        "frame-no": 1,
+        "confidence": []
+      },
+      {
+        "frame-no": 2,
+        "confidence": []
+      },
+      {
+        "frame-no": 3,
+        "confidence": []
+      },
+      {
+        "frame-no": 4,
+        "confidence": []
+      },
+      {
+        "frame-no": 5,
+        "confidence": []
+      },
+      {
+        "frame-no": 6,
+        "confidence": []
+      },
+      {
+        "frame-no": 7,
+        "confidence": []
+      },
+      {
+        "frame-no": 8,
+        "confidence": []
+      },
+      {
+        "frame-no": 9,
+        "confidence": []
+      }
+    ],
+    "class-map": {
+      "0": "Car"
+    },
+    "type": "groundtruth/point_cloud_object_tracking",
+    "human-annotated": "yes",
+    "creation-date": "2023-01-19T02:55:10.206508",
+    "job-name": "mcm-linking"
+  },
+  "3D2D-linking-chain-ref": "s3://iad-groundtruth-lidar-test-bucket/xyz/3D2D-linking-chain/annotations/consolidated-annotation/output/0/SeqLabel.json",
+  "3D2D-linking-chain-ref-metadata": {
+    "objects": [
+      {
+        "frame-no": 0,
+        "confidence": []
+      },
+      {
+        "frame-no": 1,
+        "confidence": []
+      },
+      {
+        "frame-no": 2,
+        "confidence": []
+      },
+      {
+        "frame-no": 3,
+        "confidence": []
+      },
+      {
+        "frame-no": 4,
+        "confidence": []
+      },
+      {
+        "frame-no": 5,
+        "confidence": []
+      },
+      {
+        "frame-no": 6,
+        "confidence": []
+      },
+      {
+        "frame-no": 7,
+        "confidence": []
+      },
+      {
+        "frame-no": 8,
+        "confidence": []
+      },
+      {
+        "frame-no": 9,
+        "confidence": []
+      }
+    ],
+    "class-map": {
+      "0": "Car"
+    },
+    "type": "groundtruth/point_cloud_object_tracking",
+    "human-annotated": "yes",
+    "creation-date": "2023-01-19T03:29:49.149935",
+    "job-name": "3d2d-linking-chain"
+  }
+}
+```
+
+In the above example, the cuboid data for each frame in `seq2.json` is in `SeqLabel.json` in the Amazon S3 location, `s3://<customerOutputLocation>/<labelingJobName>/annotations/consolidated-annotation/output/<datasetObjectId>/SeqLabel.json`\. The following is an example of this label sequence file\.
+
+For each frame in the sequence, you see the `frame-number`, `frame-name`, if applicable, `frame-attributes`, and a list of `annotations`\. This list contains 3D cubiods that were drawn for that frame\. Each annotation includes the following information: 
++ An `object-name` in the format `<class>:<integer>` where `class` identifies the label category and `integer` is a unique ID across the dataset\.
++ When workers draw a cuboid, it is associated with a unique `object-id` which is associated with all cuboids that identify the same object across multiple frames\.
++ Each class, or label category, that you specified in your input manifest is associated with a `class-id`\. Use the `class-map` to identify the class associated with each class ID\.
++ `center-x`, `center-y`, and `center-z` are the coordinates of the center of the cuboid, in the same coordinate system as the 3D point cloud input data used in your labeling job\.
++ `length`, `width`, and `height` describe the dimensions of the cuboid\. 
++ `yaw` is used to describe the orientation \(heading\) of the cuboid in radians\.
+**Note**  
+`yaw` is now in the right\-handed Cartesian system\. Since this feature was added on September 02, 2022 19:02:17 UTC, you can convert the `yaw` measurement in the output data prior to that using the following \(all units are in radians\):  
+
+  ```
+  old_yaw_in_output = pi - yaw
+  ```
++ In our definition, \+x is to the right, \+y is to the forward, and \+z is up from the ground plane\. The rotation order is x \- y \- z\. The `roll`, `pitch` and `yaw` are represented in the right\-handed Cartesian system\. In 3D space, `roll` is along the x\-axis, `pitch` is along the y\-axis and `yaw` is along the z\-axis\. All three are counterclockwise\.
++ If you included label attributes in your input manifest file for a given class, a `label-category-attributes` parameter is included for all cuboids for which workers selected label attributes\. 
+
+```
+{
+  "lidar": {
+    "tracking-annotations": [
+      {
+        "frame-number": 0,
+        "frame-name": "0.txt.pcd",
+        "annotations": [
+          {
+            "label-category-attributes": {
+              "Type": "Sedan"
+            },
+            "object-name": "Car:1",
+            "class-id": 0,
+            "center-x": 12.172361721602815,
+            "center-y": 120.23067521992364,
+            "center-z": 1.590525771183712,
+            "length": 4,
+            "width": 2,
+            "height": 2,
+            "roll": 0,
+            "pitch": 0,
+            "yaw": 0,
+            "object-id": "505b39e0-97a4-11ed-8903-dd5b8b903715"
+          },
+          {
+            "label-category-attributes": {},
+            "object-name": "Car:4",
+            "class-id": 0,
+            "center-x": 17.192725195301094,
+            "center-y": 114.55705365827872,
+            "center-z": 1.590525771183712,
+            "length": 4,
+            "width": 2,
+            "height": 2,
+            "roll": 0,
+            "pitch": 0,
+            "yaw": 0,
+            "object-id": "1afcb670-97a9-11ed-9a84-ff627d099e16"
+          }
+        ],
+        "frame-attributes": {}
+      },
+      {
+        "frame-number": 1,
+        "frame-name": "1.txt.pcd",
+        "annotations": [
+          {
+            "label-category-attributes": {
+              "Type": "Sedan"
+            },
+            "object-name": "Car:1",
+            "class-id": 0,
+            "center-x": -1.6841480600695489,
+            "center-y": 126.20198882749516,
+            "center-z": 1.590525771183712,
+            "length": 4,
+            "width": 2,
+            "height": 2,
+            "roll": 0,
+            "pitch": 0,
+            "yaw": 0,
+            "object-id": "505b39e0-97a4-11ed-8903-dd5b8b903715"
+          },
+          {
+            "label-category-attributes": {},
+            "object-name": "Car:4",
+            "class-id": 0,
+            "center-x": 17.192725195301094,
+            "center-y": 114.55705365827872,
+            "center-z": 1.590525771183712,
+            "length": 4,
+            "width": 2,
+            "height": 2,
+            "roll": 0,
+            "pitch": 0,
+            "yaw": 0,
+            "object-id": "1afcb670-97a9-11ed-9a84-ff627d099e16"
+          }
+        ],
+        "frame-attributes": {}
+      },
+      {
+        "frame-number": 2,
+        "frame-name": "2.txt.pcd",
+        "annotations": [
+          {
+            "label-category-attributes": {
+              "Type": "Sedan"
+            },
+            "object-name": "Car:1",
+            "class-id": 0,
+            "center-x": -1.6841480600695489,
+            "center-y": 126.20198882749516,
+            "center-z": 1.590525771183712,
+            "length": 4,
+            "width": 2,
+            "height": 2,
+            "roll": 0,
+            "pitch": 0,
+            "yaw": 0,
+            "object-id": "505b39e0-97a4-11ed-8903-dd5b8b903715"
+          },
+          {
+            "label-category-attributes": {},
+            "object-name": "Car:4",
+            "class-id": 0,
+            "center-x": 17.192725195301094,
+            "center-y": 114.55705365827872,
+            "center-z": 1.590525771183712,
+            "length": 4,
+            "width": 2,
+            "height": 2,
+            "roll": 0,
+            "pitch": 0,
+            "yaw": 0,
+            "object-id": "1afcb670-97a9-11ed-9a84-ff627d099e16"
+          }
+        ],
+        "frame-attributes": {}
+      }
+    ]
+  },
+  "camera-0": {
+    "tracking-annotations": [
+      {
+        "frame-no": 0,
+        "frame": "0.txt.pcd",
+        "annotations": [
+          {
+            "label-category-attributes": {
+              "Occlusion": "Partial"
+            },
+            "object-name": "Car:2",
+            "class-id": 0,
+            "width": 223,
+            "height": 164,
+            "top": 225,
+            "left": 486,
+            "object-id": "5229df60-97a4-11ed-8903-dd5b8b903715"
+          }
+        ],
+        "frame-attributes": {}
+      },
+      {
+        "frame-no": 1,
+        "frame": "1.txt.pcd",
+        "annotations": [
+          {
+            "label-category-attributes": {},
+            "object-name": "Car:4",
+            "class-id": 0,
+            "width": 252,
+            "height": 246,
+            "top": 237,
+            "left": 473,
+            "object-id": "1afcb670-97a9-11ed-9a84-ff627d099e16"
+          }
+        ],
+        "frame-attributes": {}
+      }
+    ]
+  }
+}
+```
+
+The cuboid and bounding box for an object are linked through a common object\-id\.

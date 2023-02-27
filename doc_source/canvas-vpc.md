@@ -6,11 +6,11 @@ When the SageMaker Canvas application is running in the AWS managed VPC, it can 
 
 However, if you have security requirements to control access to your data and job containers, we recommend that you configure SageMaker Canvas and your VPC so that your data and containers aren’t accessible over the internet\. SageMaker uses the VPC configuration settings you specify when setting up your Domain for SageMaker Canvas\.
 
-If you want to configure your SageMaker Canvas application without internet access, you must configure your VPC settings when you onboard to [Amazon SageMaker Domain](gs-studio-onboard.md), set up VPC endpoints, and grant the necessary AWS Identity and Access Management permissions\. For information about configuring a VPC in Amazon SageMaker, see [Choose a VPC](onboard-vpc.md)\. The following sections describe how to run SageMaker Canvas in a VPC without public internet access\.
+If you want to configure your SageMaker Canvas application without internet access, you must configure your VPC settings when you onboard to [Amazon SageMaker Domain](gs-studio-onboard.md), set up VPC endpoints, and grant the necessary AWS Identity and Access Management permissions\. For information about configuring a VPC in Amazon SageMaker, see [Choose an Amazon VPC](onboard-vpc.md)\. The following sections describe how to run SageMaker Canvas in a VPC without public internet access\.
 
 ## Configure Amazon SageMaker Canvas in a VPC without internet access<a name="canvas-vpc-configure"></a>
 
-You can send traffic from SageMaker Canvas to other AWS services through your own VPC\. If your own VPC doesn't have public internet access and you've set up your Domain in **VPC only** mode, then SageMaker Canvas won't have public internet access as well\. This includes all requests, such as accessing datasets in Amazon S3 or training jobs for standard builds, and the requests go through VPC endpoints in your VPC instead of the public internet\. When you onboard to Domain and [Choose a VPC](onboard-vpc.md), you can specify your own VPC as the default VPC for the Domain, along with your desired security group and subnet settings\. Then, SageMaker creates a network interface in your VPC that SageMaker Canvas uses to access VPC endpoints in your VPC\. Note that the security group and subnet settings are set after you finish onboarding to Domain\.
+You can send traffic from SageMaker Canvas to other AWS services through your own VPC\. If your own VPC doesn't have public internet access and you've set up your Domain in **VPC only** mode, then SageMaker Canvas won't have public internet access as well\. This includes all requests, such as accessing datasets in Amazon S3 or training jobs for standard builds, and the requests go through VPC endpoints in your VPC instead of the public internet\. When you onboard to Domain and [Choose an Amazon VPC](onboard-vpc.md), you can specify your own VPC as the default VPC for the Domain, along with your desired security group and subnet settings\. Then, SageMaker creates a network interface in your VPC that SageMaker Canvas uses to access VPC endpoints in your VPC\. Note that the security group and subnet settings are set after you finish onboarding to Domain\.
 
 When onboarding to Domain, if you choose **Public internet only** as the network access type, the VPC is SageMaker managed and allows internet access\.
 
@@ -30,7 +30,7 @@ To send SageMaker Canvas traffic to a network interface in your own VPC instead 
 
 1. Choose **VPC Only** to turn off direct internet access in the AWS managed VPC where SageMaker Canvas is hosted\.
 
-After disabling internet access, finish the onboarding process to set up your Domain\. For more information about the VPC settings for Amazon SageMaker Domain, see [Choose a VPC](onboard-vpc.md)\.
+After disabling internet access, finish the onboarding process to set up your Domain\. For more information about the VPC settings for Amazon SageMaker Domain, see [Choose an Amazon VPC](onboard-vpc.md)\.
 
 ### Step 2: Configure VPC endpoints and access<a name="canvas-vpc-configure-endpoints"></a>
 

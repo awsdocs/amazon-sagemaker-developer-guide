@@ -1,4 +1,4 @@
-# Use Your Own Inference Code<a name="your-algorithms-inference-main"></a>
+# Use your own inference code<a name="your-algorithms-inference-main"></a>
 
 You can use Amazon SageMaker to interact with Docker containers and run your own inference code in one of two ways:
 + To use your own inference code with a persistent endpoint to get one prediction at a time, use SageMaker hosting services\.

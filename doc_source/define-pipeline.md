@@ -105,7 +105,7 @@ The number of rings in the abalone shell is a good approximation for its age usi
 1. Download a second dataset for batch transformation after your model is created\.
 
    ```
-   local_path = "data/abalone-dataset-batch"
+   local_path = "data/abalone-dataset-batch.csv"
    
    s3 = boto3.resource("s3")
    s3.Bucket(f"sagemaker-servicecatalog-seedcode-{region}").download_file(

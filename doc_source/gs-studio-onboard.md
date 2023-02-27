@@ -24,4 +24,4 @@ Authentication using IAM Identity Center provides the following benefits over IA
 + [Onboard to Amazon SageMaker Domain Using Quick setup](onboard-quick-start.md)
 + [Onboard to Amazon SageMaker Domain Using IAM Identity Center](onboard-sso-users.md)
 + [Onboard to Amazon SageMaker Domain Using IAM](onboard-iam.md)
-+ [Choose a VPC](onboard-vpc.md)
++ [Choose an Amazon VPC](onboard-vpc.md)
