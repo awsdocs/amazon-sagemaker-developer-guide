@@ -96,6 +96,6 @@ Soon after container startup, SageMaker starts sending periodic GET requests to 
 
 The simplest requirement on the container is to respond with an HTTP 200 status code and an empty body\. This indicates to SageMaker that the container is ready to accept inference requests at the `/invocations` endpoint\.
 
-If the container does not begin to pass health checks, by consistently responding with 200s, during the 4 minutes after startup, `CreateEndPoint` will fail, leaving the endpoint in a failed state, and the update requested by `UpdateEndpoint` will not be completed\.
+If the container does not begin to pass health checks, by consistently responding with 200s, during the 4 minutes after startup, new instance launch will fail\. This will cause `CreateEndPoint` to fail, leaving the endpoint in a failed state\. The update requested by `UpdateEndpoint` will not be completed, security patches would not be applied, and unhealthy instances will not be replaced\.
 
 While the minimum bar is for the container to return a static 200, a container developer can use this functionality to perform deeper checks\. The request timeout on `/ping` attempts is 2 seconds\.

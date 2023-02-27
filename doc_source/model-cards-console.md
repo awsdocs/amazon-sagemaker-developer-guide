@@ -14,7 +14,7 @@ If your model is an AWS resource, specify the exact model name in this field to 
 
 If your model is not an AWS resource, provide a unique name for your model\. To add a model as an AWS resource, see [Create a model](https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints-deployment.html#realtime-endpoints-deployment-create-model) in the *Amazon SageMaker Developer Guide*\. Alternatively, you can add your model as a model package using [SageMaker Marketplace](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-marketplace.html) or [SageMaker Model Registry](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry.html)\.
 
-For more information on intended uses, see [](model-cards.md#model-cards-intended-uses)\. For more information on risk ratings, see [Risk ratings](model-cards.md#model-cards-risk-rating)\. 
+For more information on intended uses, see [Intended uses of a model](model-cards.md#model-cards-intended-uses)\. For more information on risk ratings, see [Risk ratings](model-cards.md#model-cards-risk-rating)\. 
 
 ### Step 2: Enter training details<a name="model-cards-console-create-enter-training-details"></a>
 

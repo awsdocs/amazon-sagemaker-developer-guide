@@ -2,6 +2,28 @@
 
 See the following release notes to track the latest updates for Amazon SageMaker Training Compiler\.
 
+## SageMaker Training Compiler Release Notes: February 13, 2023<a name="training-compiler-release-notes-20230213"></a>
+
+**Currency Updates**
++ Added support for PyTorch v1\.13\.1
+
+**Bug Fixes**
++ Fixed a race condition issue on GPU which was causing NAN loss in some models like vision transformer \(ViT\) models\.
+
+**Other Changes**
++ SageMaker Training Compiler improves performance by letting PyTorch/XLA to automatically override the optimizers \(such as SGD, Adam, AdamW\) in `torch.optim` or `transformers.optimization` with the syncfree versions of them in `torch_xla.amp.syncfree` \(such as `torch_xla.amp.syncfree.SGD`, `torch_xla.amp.syncfree.Adam`, `torch_xla.amp.syncfree.AdamW`\)\. You don't need to change those code lines where you define optimizers in your training script\.
+
+**Migration to AWS Deep Learning Containers**
+
+This release passed benchmark testing and is migrated to the following AWS Deep Learning Container:
++ PyTorch v1\.13\.1
+
+  ```
+  763104351884.dkr.ecr.us-west-2.amazonaws.com/pytorch-trcomp-training:1.13.1-gpu-py39-cu117-ubuntu20.04-sagemaker
+  ```
+
+  To find a complete list of the prebuilt containers with Amazon SageMaker Training Compiler, see [Supported Frameworks, AWS Regions, Instance Types, and Tested Models](training-compiler-support.md)\.
+
 ## SageMaker Training Compiler Release Notes: January 9, 2023<a name="training-compiler-release-notes-20230109"></a>
 
 **Breaking Changes**

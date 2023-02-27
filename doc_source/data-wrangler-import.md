@@ -159,6 +159,8 @@ Use the following procedure to import multiple files\.
 
 ------
 
+You can use parameters to quickly change the data that you're importing into a Data Wrangler flow\. For more information, see [Reusing Data Flows for Different Datasets](data-wrangler-parameterize.md)\.
+
 ## Import data from Athena<a name="data-wrangler-import-athena"></a>
 
 Use Amazon Athena to import your data from Amazon Simple Storage Service \(Amazon S3\) into Data Wrangler\. In Athena, you write standard SQL queries to select the data that you're importing from Amazon S3\. For more information, see [What is Amazon Athena?](https://docs.aws.amazon.com/athena/latest/ug/what-is.html)

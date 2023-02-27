@@ -132,7 +132,7 @@ This example uses the `conda_pytorch_p36_latest` kernel within a Amazon SageMake
 
    SageMaker provides containers for its built\-in algorithms and prebuilt Docker images for some of the most common machine learning frameworks, such as Apache MXNet, TensorFlow, PyTorch, and Chainer\. For a full list of the available SageMaker images, see [Available Deep Learning Containers Images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md)\.
 
-   If none of the existing SageMaker containers meet your needs and you don't have an existing container of your own, create a new Docker image\. See [Use Your Own Inference Code](your-algorithms-inference-main.md) for information about how to create your Docker image\.
+   If none of the existing SageMaker containers meet your needs and you don't have an existing container of your own, create a new Docker image\. See [Use your own inference code](your-algorithms-inference-main.md) for information about how to create your Docker image\.
 
    The following demonstrates how to retrieve a PyTorch version 1\.7\.1 inference image using the SageMaker Python SDK:
 

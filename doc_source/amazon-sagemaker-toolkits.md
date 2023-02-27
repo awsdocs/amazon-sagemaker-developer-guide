@@ -39,7 +39,7 @@ In a hosting or batch transform container, the model files are located in the sa
 └── <model files>
 ```
 
-For more information, see [Use Your Own Inference Code](your-algorithms-inference-main.md)\.
+For more information, see [Use your own inference code](your-algorithms-inference-main.md)\.
 
 ## Single Versus Multiple Containers<a name="sagemaker-toolkits-separate-images"></a>
 

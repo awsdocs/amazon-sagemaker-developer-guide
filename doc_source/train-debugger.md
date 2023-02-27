@@ -55,3 +55,4 @@ The SageMaker Debugger developer guide walks you through the following topics\.
 + [Configure Debugger Using Amazon SageMaker API](debugger-createtrainingjob-api.md)
 + [Best Practices for Amazon SageMaker Debugger](debugger-best-practices.md)
 + [Amazon SageMaker Debugger Advanced Topics and Reference Documentation](debugger-reference.md)
++ [Amazon SageMaker Debugger Release Notes](debugger-release-notes.md)

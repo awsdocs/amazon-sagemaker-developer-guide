@@ -50,7 +50,7 @@ sagemaker update-domain \
 aws --region region \
 sagemaker update-domain \
 --domain-id domain-id \
---default-space-settings "ExecutionRole=execution-role-arn,JupyterServerAppSettings={DefaultResourceSpec={InstanceType=system,SageMakerImageArn=sagemaker-image-arn},SecurityGroups=[security-groups]}"
+--default-space-settings "ExecutionRole=execution-role-arn,JupyterServerAppSettings={DefaultResourceSpec={InstanceType=system,SageMakerImageArn=sagemaker-image-arn}},SecurityGroups=[security-groups]"
 ```
 
  Verify that the default shared space settings have been updated\. 

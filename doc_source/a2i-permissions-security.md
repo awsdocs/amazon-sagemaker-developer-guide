@@ -128,25 +128,16 @@ This policy grants permission to a user to invoke API operations from the SageMa
 **Note**  
 You can also attach the `AmazonAugmentedAIFullAccess` policy to an IAM role that is used to create and start a human loop\. 
 
-**To create the required user**
+To provide access, add permissions to your users, groups, or roles:
++ Users and groups in AWS IAM Identity Center \(successor to AWS Single Sign\-On\):
 
-1. Sign in to the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\.
+  Create a permission set\. Follow the instructions in [Create a permission set](https://docs.aws.amazon.com/singlesignon/latest/userguide/howtocreatepermissionset.html) in the *AWS IAM Identity Center \(successor to AWS Single Sign\-On\) User Guide*\.
++ Users managed in IAM through an identity provider:
 
-1. Choose **Users** and choose an existing user, or create a new user by choosing **Add user**\. To learn how to create a new user, see [Creating an IAM User in Your AWS Account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) in the *AWS Identity and Access Management User Guide*\.
-   + If you chose to attach the policy to an existing user, choose **Add permissions**\.
-   + While creating a new user, follow the next step on the **Set permissions** page\.
-
-1. Choose **Attach existing policies directly**\.
-
-1. In the **Search** bar, enter `AmazonAugmentedAIFullAccess` and check the box next to that policy\. 
-
-   To enable this user to create a flow definition with the public work team, also attach the `AmazonSageMakerMechanicalTurkAccess` managed policy\. 
-
-1. After attaching the policy or policies:
-
-   1. If you are using an existing user, choose **Next: Review**, and then choose **Add permissions**\.
-
-   1. If you are creating a new user, choose **Next: Tags** and complete the process of creating your user\. 
+  Create a role for identity federation\. Follow the instructions in [Creating a role for a third\-party identity provider \(federation\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp.html) in the *IAM User Guide*\.
++ IAM users:
+  + Create a role that your user can assume\. Follow the instructions in [Creating a role for an IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) in the *IAM User Guide*\.
+  + \(Not recommended\) Attach a policy directly to a user or add a user to a user group\. Follow the instructions in [Adding permissions to a user \(console\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_change-permissions.html#users_change_permissions-add-console) in the *IAM User Guide*\.
 
 For more information, see [Adding and Removing IAM Identity Permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html) in the *AWS Identity and Access Management User Guide*\.
 
@@ -157,25 +148,16 @@ To create a user that has permission to invoke the API operations used by the bu
 **Note**  
 You can also attach the `AmazonAugmentedAIIntegratedAPIAccess` policy to an IAM role that is used to create and start a human loop\. 
 
-**To create the required user**
+To provide access, add permissions to your users, groups, or roles:
++ Users and groups in AWS IAM Identity Center \(successor to AWS Single Sign\-On\):
 
-1. Sign in to the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\.
+  Create a permission set\. Follow the instructions in [Create a permission set](https://docs.aws.amazon.com/singlesignon/latest/userguide/howtocreatepermissionset.html) in the *AWS IAM Identity Center \(successor to AWS Single Sign\-On\) User Guide*\.
++ Users managed in IAM through an identity provider:
 
-1. Choose **Users** and choose an existing user, or create a new user by choosing **Add user**\. To learn how to create a new user, see [Creating an IAM User in Your AWS Account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) in the *AWS Identity and Access Management User Guide*\.
-   + If you chose to attach the policy to an existing user, choose **Add permissions**\.
-   + If you are creating a new user, follow the next step on the **Set permissions** page\.
-
-1. Choose **Attach existing policies directly**\.
-
-1. In the **Search** bar, enter `AmazonAugmentedAIIntegratedAPIAccess` and select the box next to that policy\. 
-
-   To allow this user to create a flow definition using Amazon Mechanical Turk, also attach the `AmazonSageMakerMechanicalTurkAccess` managed policy\. 
-
-1. After attaching the policy or policies:
-
-   1. If you are using an existing user, choose **Next: Review**, and then choose **Add permissions**\.
-
-   1. If you are creating a new user, choose **Next: Tags** and complete the process of creating your user\. 
+  Create a role for identity federation\. Follow the instructions in [Creating a role for a third\-party identity provider \(federation\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp.html) in the *IAM User Guide*\.
++ IAM users:
+  + Create a role that your user can assume\. Follow the instructions in [Creating a role for an IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) in the *IAM User Guide*\.
+  + \(Not recommended\) Attach a policy directly to a user or add a user to a user group\. Follow the instructions in [Adding permissions to a user \(console\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_change-permissions.html#users_change_permissions-add-console) in the *IAM User Guide*\.
 
 For more information, see [Adding and Removing IAM Identity Permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html) in the *AWS Identity and Access Management User Guide*\.
 

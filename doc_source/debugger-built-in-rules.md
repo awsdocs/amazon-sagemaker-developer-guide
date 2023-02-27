@@ -1,9 +1,9 @@
 # List of Debugger Built\-in Rules<a name="debugger-built-in-rules"></a>
 
-Use the Debugger built\-in rules provided by Amazon SageMaker Debugger and analyze tensors emitted while training your models\. The Debugger built\-in rules monitor various common conditions that are critical for the success of a training job\. You can call the built\-in rules using [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) or the low\-level SageMaker API operations\. Depending on deep learning frameworks of your choice, there are four scopes of validity for the built\-in rules as shown in the following table\.
+Use the Debugger built\-in rules provided by Amazon SageMaker Debugger and analyze metrics and tensors collected while training your models\. The Debugger built\-in rules monitor various common conditions that are critical for the success of a training job\. You can call the built\-in rules using [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) or the low\-level SageMaker API operations\. There's no additional cost for using the built\-in rules\. For more information about billing, see the [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/) page\.
 
 **Note**  
-The maximum numbers of built\-in rules for a training job are 20 for `ProfilerRule` and 20 for `Rule`\. SageMaker Debugger fully manages the built\-in rules and analyzes your training job in parallel\. For more information about billing, see the **Amazon SageMaker Studio is available at no additional charge** section of the [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/) page\.
+The maximum numbers of built\-in rules that you can attach to a training job are 20 for `ProfilerRule` and 20 for `Rule`\. SageMaker Debugger fully manages the built\-in rules and analyzes your training job synchronously\.
 
 **Important**  
 To use the new Debugger features, you need to upgrade the SageMaker Python SDK and the SMDebug client library\. In your iPython kernel, Jupyter notebook, or JupyterLab environment, run the following code to install the latest versions of the libraries and restart the kernel\.  
@@ -20,21 +20,21 @@ IPython.Application.instance().kernel.do_shutdown(True)
 The following rules are the Debugger built\-in rules that are callable using the `ProfilerRule.sagemaker` classmethod\.
 
 
-**Debugger Built\-in Rules for Generating Profiling Reports**  
+**Debugger built\-in rule for generating the profiling report**  
 
 | Scope of Validity | Built\-in Rules | 
 | --- | --- | 
 | Profiling Report for any SageMaker training job |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html)  | 
 
 
-**Debugger Built\-in Rules for Monitoring Hardware System Resource Utilization \(System Metrics\)**  
+**Debugger built\-in rules for profiling hardware system resource utilization \(system metrics\)**  
 
 | Scope of Validity | Built\-in Rules | 
 | --- | --- | 
 | Generic system monitoring rules for any SageMaker training job |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html)  | 
 
 
-**Debugger Built\-in Rules for Profiling Framework Metrics**  
+**Debugger built\-in rules for profiling framework metrics**  
 
 | Scope of Validity | Built\-in Rules | 
 | --- | --- | 
@@ -45,14 +45,14 @@ The following rules are the Debugger built\-in rules that are callable using the
 The following rules are the Debugger built\-in rules that are callable using the `Rule.sagemaker` classmethod\.
 
 
-**Debugger Built\-in Rules for Generating Training Reports**  
+**Debugger built\-in rules for generating training reports**  
 
 | Scope of Validity | Built\-in Rules | 
 | --- | --- | 
 | Training Report for SageMaker XGboost training job |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html)  | 
 
 
-**Debugger Built\-in Rules for Debugging Model Training Data \(Output Tensors\)**  
+**Debugger built\-in rules for debugging model training data \(output tensors\)**  
 
 | Scope of Validity | Built\-in Rules | 
 | --- | --- | 
@@ -111,7 +111,7 @@ To find available keys for the `rule_parameters` parameter, see the parameter de
 
 Sample rule configuration codes are provided for each built\-in rule below the parameter description tables\.
 + For a full instruction and examples of using the Debugger built\-in rules, see [Debugger Built\-in Rules Example Code](use-debugger-built-in-rules.md#debugger-deploy-built-in-rules)\.
-+ For a full instruction of using the built\-in rules with the low\-level SageMaker API operations, see [Configure Debugger Using Amazon SageMaker API](debugger-createtrainingjob-api.md)\.
++ For a full instruction on using the built\-in rules with the low\-level SageMaker API operations, see [Configure Debugger Using Amazon SageMaker API](debugger-createtrainingjob-api.md)\.
 
 ## ProfilerReport<a name="profiler-report"></a>
 
@@ -146,7 +146,7 @@ rules=[
 ]
 ```
 
-
+To explore what's in the profiler report, see [SageMaker Debugger Profiling Report](https://docs.aws.amazon.com/sagemaker/latest/dg/debugger-profiling-report.html)\. Also, because this rule activates all of the profiling rules, you can also check the rule analysis status using the [SageMaker Debugger UI in SageMaker Studio Experiments](https://docs.aws.amazon.com/sagemaker/latest/dg/debugger-on-studio.html)\.
 
 
 **Parameter Descriptions for the OverallSystemUsage Rule**  

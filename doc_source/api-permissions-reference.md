@@ -7,6 +7,9 @@ Except for the `ListTags` API, resource\-level restrictions are not available on
 
 To express conditions in your Amazon SageMaker policies, you can use AWS\-wide condition keys\. For a complete list of AWS\-wide keys, see [Available Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html#AvailableKeys) in the *IAM User Guide*\. 
 
+**Warning**  
+Some SageMaker API actions may still be accessible through the`[Search API](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Search.html)`\. For example, if a user has an IAM policy that denies permissions to a `Describe` call for a particular SageMaker resource, that user can still access the description information through the Search API\. To fully restrict user access to `Describe` calls, you must also restrict access to the Search API\. For a list of SageMaker resources that are accessible through the Search API, see the [SageMaker Search AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/sagemaker/search.html#options)\. 
+
 Use the scroll bars to see the rest of the table\.
 
 
@@ -146,6 +149,7 @@ Use the scroll bars to see the rest of the table\.
 |  [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListWorkteams.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListWorkteams.html)  |  `sagemaker:ListWorkteams`  |  `*`  | 
 |  [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_PutModelPackageGroupPolicy.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_PutModelPackageGroupPolicy.html)  |  `sagemaker:PutModelPackageGroupPolicy`  |  `arn:aws:sagemaker:region:account-id:model-package-group/modelPackageGroupName`  | 
 |  [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RetryPipelineExecution.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RetryPipelineExecution.html)  |  `sagemaker:RetryPipelineExecution`  |  `arn:aws-partition:sagemaker:region:account-id:pipeline/pipeline-name/execution/execution-id`  | 
+|  [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Search.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Search.html)  |  `sagemaker:Search`  |  `*`  | 
 |  [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_SendPipelineExecutionStepFailure.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_SendPipelineExecutionStepFailure.html)  |  `sagemaker:SendPipelineExecutionStepFailure`  |  `*`  | 
 |  [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_SendPipelineExecutionStepSuccess.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_SendPipelineExecutionStepSuccess.html)  |  `sagemaker:SendPipelineExecutionStepSuccess`  |  `*`  | 
 |  `[StartHumanLoop](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/API_StartHumanLoop.html)`  |  `sagemaker:StartHumanLoop`  |  `arn:aws:sagemaker:region:account-id:human-loop/humanLoopName`  | 

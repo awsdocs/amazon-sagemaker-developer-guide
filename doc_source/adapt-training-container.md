@@ -420,3 +420,8 @@ estimator.fit()
 1. Open the [IAM console](https://console.aws.amazon.com/iam/) and delete the IAM role\. If you created permission policies, you can delete them, too\. 
 **Note**  
  The Docker container shuts down automatically after it has run\. You don't need to delete it\.
+
+## Blogs and Case Studies<a name="byoc-blogs-and-examples"></a>
+
+The following blogs discuss case studies about using custom training containers in Amazon SageMaker\.
++ [Why bring your own container to Amazon SageMaker and how to do it right](https://medium.com/@pandey.vikesh/why-bring-your-own-container-to-amazon-sagemaker-and-how-to-do-it-right-bc158fe41ed1), *Medium* \(January 20th, 2023\)

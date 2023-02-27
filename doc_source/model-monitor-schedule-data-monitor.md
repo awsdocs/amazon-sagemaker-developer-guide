@@ -2,6 +2,9 @@
 
 After you create your baseline, you can call the `create_monitoring_schedule()` method of your `DefaultModelMonitor` class instance to schedule an hourly data quality monitor\. The following sections show you how to create a data quality monitor for a model deployed to a real\-time endpoint as well as for a batch transform job\.
 
+**Important**  
+You can specify either a batch transform input or an endpoint input, but not both, when you create your monitoring schedule\.
+
 ## Data quality monitoring for models deployed to real\-time endpoints<a name="model-monitor-data-quality-rt"></a>
 
 To schedule a data quality monitor for a real\-time endpoint, pass your `EndpointInput` instance to the `endpoint_input` argument of your `DefaultModelMonitor` instance, as shown in the following code sample:

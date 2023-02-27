@@ -239,3 +239,6 @@ torch_xla.amp.syncfree.AdamW
 ```
 
 These `syncfree` optimizers should be paired with `torch_xla.amp.GradScaler` for gradient scaling/unscaling\.
+
+**Tip**  
+Starting PyTorch 1\.13\.1, SageMaker Training Compiler improves performance by letting PyTorch/XLA to automatically override the optimizers \(such as SGD, Adam, AdamW\) in `torch.optim` or `transformers.optimization` with the syncfree versions of them in `torch_xla.amp.syncfree` \(such as `torch_xla.amp.syncfree.SGD`, `torch_xla.amp.syncfree.Adam`, `torch_xla.amp.syncfree.AdamW`\)\. You don't need to change those code lines where you define optimizers in your training script\.

@@ -4,7 +4,7 @@ The SageMaker Python SDK supports managed training of models with ML frameworks 
 
 **Topics**
 + [Using the SageMaker TensorFlow and PyTorch Estimators](#model-parallel-using-sagemaker-pysdk)
-+ [Extend a Prebuilt Docker Container that Contains SageMaker's Distributed Model Parallel Library](#model-parallel-customize-container)
++ [Extend a Pre\-built Docker Container that Contains SageMaker's Distributed Model Parallel Library](#model-parallel-customize-container)
 + [Create Your Own Docker Container with the SageMaker Distributed Model Parallel Library](#model-parallel-bring-your-own-container)
 
 ## Using the SageMaker TensorFlow and PyTorch Estimators<a name="model-parallel-using-sagemaker-pysdk"></a>
@@ -151,9 +151,9 @@ Use the following resources to learn more about using the model parallelism feat
 + We recommend you use a SageMaker notebook instance if you are new users\. To see an example of how you can launch a training job using a SageMaker notebook instance, see [Amazon SageMaker Distributed Training Notebook Examples](distributed-training-notebook-examples.md)\.
 + You can also submit a distributed training job from your machine using AWS CLI\. To set up AWS CLI on your machine, see [set up your AWS credentials and Region for development](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-credentials.html)\.
 
-## Extend a Prebuilt Docker Container that Contains SageMaker's Distributed Model Parallel Library<a name="model-parallel-customize-container"></a>
+## Extend a Pre\-built Docker Container that Contains SageMaker's Distributed Model Parallel Library<a name="model-parallel-customize-container"></a>
 
-To extend a prebuilt container and use SageMaker's model parallelism library, you must use one of the available AWS Deep Learning Containers \(DLC\) images for PyTorch or TensorFlow\. The SageMaker model parallelism library is included in the TensorFlow \(2\.3\.0 and later\) and PyTorch \(1\.6\.0 and later\) DLC images with CUDA \(`cuxyz`\)\. For a complete list of DLC images, see [Available Deep Learning Containers Images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md) in the *AWS Deep Learning Containers GitHub repository*\.
+To extend a pre\-built container and use SageMaker's model parallelism library, you must use one of the available AWS Deep Learning Containers \(DLC\) images for PyTorch or TensorFlow\. The SageMaker model parallelism library is included in the TensorFlow \(2\.3\.0 and later\) and PyTorch \(1\.6\.0 and later\) DLC images with CUDA \(`cuxyz`\)\. For a complete list of DLC images, see [Available Deep Learning Containers Images](https://github.com/aws/deep-learning-containers/blob/master/available_images.md) in the *AWS Deep Learning Containers GitHub repository*\.
 
 **Tip**  
 We recommend that you use the image that contains the latest version of TensorFlow or PyTorch to access the most up\-to\-date version of the SageMaker model parallelism library\.
@@ -176,7 +176,7 @@ ENV SAGEMAKER_SUBMIT_DIRECTORY /opt/ml/code
 Additionally, when you define a PyTorch or TensorFlow estimator, you must specify that the `entry_point` for your training script\. This should be the same path identified with `ENV SAGEMAKER_SUBMIT_DIRECTORY` in your Dockerfile\. 
 
 **Tip**  
-You must push this Docker container to Amazon Elastic Container Registry \(Amazon ECR\) and use the image URI \(`image_uri`\) to define a SageMaker estimator for training\. For more information, see [Extend a Prebuilt Container](https://docs.aws.amazon.com/sagemaker/latest/dg/prebuilt-containers-extend.html)\. 
+You must push this Docker container to Amazon Elastic Container Registry \(Amazon ECR\) and use the image URI \(`image_uri`\) to define a SageMaker estimator for training\. For more information, see [Extend a Pre\-built Container](prebuilt-containers-extend.md)\. 
 
 After you finish hosting the Docker container and retrieving the image URI of the container, create a SageMaker `PyTorch` estimator object as follows\. This example assumes that you have already defined `smp_options` and `mpi_options`\. 
 
