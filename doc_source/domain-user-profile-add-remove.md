@@ -64,17 +64,17 @@
 To create a user profile in a Domain from the AWS CLI, run the following command from the terminal of your local machine\. For information about the available JupyterLab version ARNs, see [Setting a default JupyterLab version](studio-jl.md#studio-jl-set)\.
 
 ```
-aws --region region \
+aws --region region \
 sagemaker create-user-profile \
---domain-id domain-id \
+--domain-id domain-id \
 --user-profile-name user-name \
 --user-settings '{
-  "JupyterServerAppSettings": {
-    "DefaultResourceSpec": {
-      "SageMakerImageArn": "sagemaker-image-arn",
-      "InstanceType": "system"
-    }
-  }
+  "JupyterServerAppSettings": {
+    "DefaultResourceSpec": {
+      "SageMakerImageArn": "sagemaker-image-arn",
+      "InstanceType": "system"
+    }
+  }
 }'
 ```
 
