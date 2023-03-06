@@ -242,13 +242,15 @@ The warm pool automatically terminates when it exceeds the designated `KeepAlive
 
 ### Using the Amazon SageMaker console<a name="train-warm-pools-how-to-use-sagemaker-console"></a>
 
-You cannot create or update a warm pool through the console, but you can use the console to check the warm pool status and billable time of specific training jobs\. You can also use the console to see which matching training job reused the warm pool\.
+Through the console, you can create a warm pool, release a warm pool, or check the warm pool status and billable time of specific training jobs\. You can also see which matching training job reused a warm pool\.
 
-1. Open the [Amazon SageMaker console](https://console.aws.amazon.com/ec2/) and choose **Training jobs** from the navigation pane\. The warm pool status of each training job is visible in the **Warm pool status** column\.
+1. Open the [Amazon SageMaker console](https://console.aws.amazon.com/ec2/) and choose **Training jobs** from the navigation pane\. If applicable, the warm pool status of each training job is visible in the **Warm pool status** column and the time left for an active warm pool is visible in the **Time left** column\.
 
-1. Select a training job ID for more information\.
+1. To create a training job that uses a warm pool from the console, choose **Create training job**\. Then, be sure to specify a value for the **Keep alive period** field when configuring your training job resources\. This value must be an integer between 1 and 3600, which represents duration of time in seconds\.
 
-1. Scroll down to the **Warm pool status** section to find the warm pool status, the time left if the warm pool status is `Available`, the warm pool billable seconds, and the name of the training job that reused the warm pool if the warm pool status is `Reused`\.
+1. To release a warm pool from the console, select a specific training job and choose **Release cluster** from the **Actions **dropdown menu\.
+
+1. To see more information about a warm pool, choose a training job name\. In the job details page, scroll down to the **Warm pool status** section to find the warm pool status, the time left if the warm pool status is `Available`, the warm pool billable seconds, and the name of the training job that reused the warm pool if the warm pool status is `Reused`\.
 
 ### Using the low\-level SageMaker APIs<a name="train-warm-pools-how-to-use-low-level-apis"></a>
 

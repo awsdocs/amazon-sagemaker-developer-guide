@@ -2,18 +2,13 @@
 
 Amazon SageMaker Autopilot generates an ordered [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ContainerDefinition.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ContainerDefinition.html) list\. This can be used to build a model to deploy in a machine learning pipeline\. This model can be used for online hosting and inference\. 
 
-Customers can access the list of inference container definitions with the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListCandidateForAutoMLJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListCandidateForAutoMLJob.html) API\. The list of inference container definitions that represent the best candidate is also available in the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAutoMLJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAutoMLJob.html) response\.
-
-**Topics**
-+ [Inference container definitions for regression and classification problem types](#autopilot-problem-type-container-output)
+Customers can list inference container definitions with the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListCandidateForAutoMLJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListCandidateForAutoMLJob.html) API\. The list of inference container definitions that represent the best candidate is also available in the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAutoMLJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAutoMLJob.html) response\.
 
 ## Inference container definitions for regression and classification problem types<a name="autopilot-problem-type-container-output"></a>
 
-### <a name="autopilot-problem-type-container-output-hpo"></a>
+Autopilot generates inference containers specific to the [training mode](sagemaker/latest/dg/autopilot-model-support-validation.html#autopilot-training-mode) and the [problem type](sagemaker/latest/dg/autopilot-datasets-problem-types.html#autopilot-problem-types) of the job\.
 
-This section provides details about container definitions for hyperparameter optimization \(HPO\) mode\. 
-
-Autopilot generates inference containers specific to the problem type of the job\.
+### Container definitions for hyperparameter optimization \(HPO\) mode<a name="autopilot-problem-type-container-output-hpo"></a>
 + **Regression**: HPO generates two containers:
 
   1. A feature engineering container that transforms the original features into features that the regression algorithms can train on\.
@@ -29,15 +24,17 @@ Autopilot generates inference containers specific to the problem type of the job
 
 ### Container definitions for ensembling mode<a name="autopilot-problem-type-container-output-ensemble"></a>
 
-In [ensembling mode](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-model-support-validation.html#autopilot-algorithm-support-ensembling), both regression and classification problem types have only one inference container\. This inference container transforms the features and generates the predictions based on problem type\. 
+In ensembling mode, both regression and classification problem types have only one inference container\. This inference container transforms the features and generates the predictions based on problem type\. 
+
+## Inference responses per problem type<a name="autopilot-problem-type-inference-response"></a>
 
 ### Inference responses for classification models<a name="autopilot-problem-type-inference-response-classification"></a>
 
-In this section, you'll learn to select inference responses for Autopilot classification models in ensembling mode\.
-
 For classification inference containers, you can select the content of the inference response by using four predefined keys:
 + `predicted_label`: The label with the highest probability of predicting the correct label, as determined by Autopilot\.
-+ `probability`: The probability of the `True` class for binary classification\. The probability of the `predicted_label` for multiclass classification\.
++ `probability`: 
+  + **HPO models:** The probability of the `True` class for binary classification\. The probability of the `predicted_label` for multiclass classification\.
+  + **Ensemble models:** The probability of the `predicted_label` for binary and multiclass classification\.
 + `probabilities`: The list of probabilities for all corresponding classes\.
 + `labels`: The list of all labels\.
 
@@ -46,7 +43,7 @@ By default, inference containers are configured to generate only the `predicted_
 + `SAGEMAKER_INFERENCE_INPUT`: This should be set to the keys that the container expects in input payload\.
 + `SAGEMAKER_INFERENCE_OUTPUT`: This should be populated with the set of keys that the container outputs\.
 
-#### Inference responses for classification models in HPO mode<a name="autopilot-problem-type-inference-response-classification-hpo"></a>
+### Inference responses for classification models in HPO mode<a name="autopilot-problem-type-inference-response-classification-hpo"></a>
 
 This section shows how to configure the inference response from classification models using hyperparameter optimization \(HPO\) mode\.
 
@@ -74,7 +71,7 @@ containers[2]['Environment'].update({'SAGEMAKER_INFERENCE_OUTPUT': 'predicted_la
 
 The following collapsible sections provide code examples for AWS SDK for Python \(Boto3\) and for SageMaker SDK for Python\. Each section shows how to select the content of the inference responses in HPO mode for the respective code example\.
 
-##### AWS SDK for Python \(Boto3\)<a name="autopilot-problem-type-inference-response-classification-hpo-boto3"></a>
+#### AWS SDK for Python \(Boto3\)<a name="autopilot-problem-type-inference-response-classification-hpo-boto3"></a>
 
 ```
 import boto3
@@ -125,7 +122,7 @@ response = sm_client.create_transform_job(
 )
 ```
 
-##### SageMaker SDK for Python<a name="autopilot-problem-type-inference-response-classification-hpo-sdk"></a>
+#### SageMaker SDK for Python<a name="autopilot-problem-type-inference-response-classification-hpo-sdk"></a>
 
 ```
 from sagemaker import AutoML
@@ -147,7 +144,7 @@ aml_transformer.transform('<S3 input uri>',
                           wait=True)
 ```
 
-#### Inference responses for classification models in ensembling mode<a name="autopilot-problem-type-inference-response-classification-ensemble"></a>
+### Inference responses for classification models in ensembling mode<a name="autopilot-problem-type-inference-response-classification-ensemble"></a>
 
 This section shows how to configure the inference response from classification models using ensembling mode\. 
 
@@ -163,7 +160,7 @@ containers[0]['Environment'].update({'SAGEMAKER_INFERENCE_OUTPUT': 'predicted_la
 
 The following collapsible section provides a code example for selecting the content of the inference responses in ensembling mode\. The example uses AWS SDK for Python \(Boto3\)\.
 
-##### AWS SDK for Python \(Boto3\)<a name="autopilot-problem-type-inference-response-classification-ensembling-boto3"></a>
+#### AWS SDK for Python \(Boto3\)<a name="autopilot-problem-type-inference-response-classification-ensembling-boto3"></a>
 
 ```
 import boto3
@@ -213,7 +210,7 @@ response = sm_client.create_transform_job(
 
 The following collapsible section provides a code example that is identical to the SageMaker SDK for Python example for HPO\. It is included for your convenience\.
 
-##### SageMaker SDK for Python<a name="autopilot-problem-type-inference-response-classification-ensembling-sdk"></a>
+#### SageMaker SDK for Python<a name="autopilot-problem-type-inference-response-classification-ensembling-sdk"></a>
 
 The following HPO code example uses SageMaker SDK for Python\.
 

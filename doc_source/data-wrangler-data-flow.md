@@ -135,9 +135,6 @@ You can delete an individual step for nodes in your data flow that have a single
 
 You can edit each step that you've added in your Data Wrangler flow\. By editing steps, you can change the transformations or the data types of the columns\. You can edit the steps to make changes with which you can perform better analyses\.
 
-**Important**  
-You can't currently edit a source node for SaaS data sources or Amazon Athena\.
-
 There are many ways that you can edit a step\. Some examples include changing the imputation method or changing the threshold for considering a value to be an outlier\.
 
 Use the following procedure to edit a step\.

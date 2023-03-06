@@ -1,4 +1,4 @@
-# Create a Dataset From Your Feature Groups<a name="feature-store-athena-glue-integration"></a>
+# Create a Dataset From Your Feature Groups<a name="feature-store-create-a-dataset"></a>
 
  After a Feature Store feature group has been created in an offline store, you can choose to use the following methods to get your data:
 + Using the Amazon SageMaker Python SDK
@@ -44,7 +44,7 @@ feature_store_session = Session(
 feature_store = FeatureStore(feature_store_session)
 ```
 
-The following code shows an example of creating a dataset from multiple feature groups\.
+The following code shows an example of creating a dataset from multiple feature groups\. The following code snippet uses the example feature groups "*base\_fg\_name*", "*first\_fg\_name*", and "*second\_fg\_name*", which may not exist or have the same schema within your Feature Store\. It is recommended to replace these feature groups with feature groups that exist within your Feature Store\. For information on how to create a feature group, see [Step 3: Create feature groups](feature-store-introduction-notebook.md#feature-store-set-up-feature-groups-introduction)\. 
 
 ```
 s3_bucket_name = "offline-store-sdk-test" 
@@ -101,11 +101,11 @@ The [Feature Store APIs](https://sagemaker.readthedocs.io/en/stable/api/prep_dat
 The *base* feature group is an important concept for joins\. The base feature group is the feature group that has other feature groups or the pandas dataframe joined to it\. For each dataset
 
 You can add the following optional methods to the `create_dataset` function to configure how you're creating dataset:
-+ `with_feature_group` – Performs an inner join between the base feature group and another feature group using the record identifier and the target feature name in the base feature group\. The following provides information about the paramters that you specify:
++ `with_feature_group` – Performs an inner join between the base feature group and another feature group using the record identifier and the target feature name in the base feature group\. The following provides information about the parameters that you specify:
   + `feature_group` – The feature group that you're joining\.
   + `target_feature_name_in_base` – The name of the feature in the base feature group that you're using as a key in the join\. The record identifier in the other feature groups are the other keys that Feature Store uses in the join\.
   + `included_feature_names` – A list of strings representing the feature names of the base feature group\. You can use the field to specify the features that you want to include in the dataset\.
-+ `event_time_range` – Creates a dataset using the event time range that you specify\.
++ `with_event_time_range` – Creates a dataset using the event time range that you specify\.
 + `as_of` – Creates a dataset up to a timestamp that you specify\. For example, if you specify `datetime(2021, 11, 28, 23, 55, 59, 342380)` as the value, creates a dataset up to November 28th, 2021\.
 + `point_time_accurate_join` – Creates a dataset where all of the event time values of the base feature group is less than all the event time values of the feature group or pandas dataframe that you're joining\.
 + `include_duplicated_records` – Keeps duplicated values in the feature groups\.
@@ -170,27 +170,6 @@ feature_store.create_dataset(
     output_path="s3://example-s3-file-path"
 ).as_of(datetime(2021, 11, 28, 23, 55, 59, 342380)
 ).to_csv_file() # example datetime values
-```
-
-The following code uses a point in time accurate join\. The event time values of the base feature group come before the event time values of the target feature group\.
-
-```
-fg1 = FeatureGroup("fg1")
-fg2 = FeatureGroup("fg2")
-events = [['2020-02-01T08:30:00Z', 6, 1],
-          ['2020-02-02T10:15:30Z', 5, 2],
-          ['2020-02-03T13:20:59Z', 1, 3],
-          ['2021-01-01T00:00:00Z', 1, 4]]
-df = pd.DataFrame(events, columns=['event_time', 'customer-id', 'title-id']) 
-feature_store.create_dataset(
-    base=df, 
-    event_time_identifier_feature_name='event_time', 
-    record_identifier_feature_name='customer_id',
-    output_path="s3://example-s3-file-path
-).with_feature_group(fg1, "customer-id"
-).with_feature_group(fg2, "title-id"
-).point_in_time_accurate_join(
-).to_csv_file()
 ```
 
 ## Sample Amazon Athena Queries<a name="feature-store-athena-sample-queries"></a>

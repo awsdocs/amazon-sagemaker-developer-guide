@@ -220,6 +220,19 @@ def preprocess_handler(inference_record):
     return {i : None if x == -1 else x for i, x in enumerate(input_data.split(","))}
 ```
 
+### Custom logging for preprocessing script<a name="model-monitor-pre-processing-custom-logging"></a>
+
+ If your preprocessing script returns an error, check the exception messages logged to CloudWatch to debug\. You can access the logger on CloudWatch through the `preprocess_handler` interface\. You can log any information you need from your script to CloudWatch\. This can be useful when debug your preprocessing script\. The following example shows how you can use the `preprocess_handler` interface to log to CloudWatch 
+
+```
+def preprocess_handler(inference_record, logger):
+    logger.info(f"I'm a processing record: {inference_record}")
+    logger.debug(f"I'm debugging a processing record: {inference_record}")
+    logger.warning(f"I'm processing record with missing value: {inference_record}")
+    logger.error(f"I'm a processing record with bad value: {inference_record}")
+    return inference_record
+```
+
 ## Postprocessing Script<a name="model-monitor-post-processing-script"></a>
 
 Use a postprocessing script when you want to extend the code following a successful monitoring run\.

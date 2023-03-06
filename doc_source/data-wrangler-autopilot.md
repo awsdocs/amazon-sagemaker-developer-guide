@@ -30,7 +30,7 @@ To train and deploy a model directly from your data flow, do the following\.
 
 1. Choose **Next: Training method**\.
 
-1. Choose a training method\. For more information, see [](autopilot-model-support-validation.md#autopilot-training-mode)\.
+1. Choose a training method\. For more information, see [Training modes](autopilot-model-support-validation.md#autopilot-training-mode)\.
 
 1. \(Optional\) For **Auto deploy endpoint**, specify a name for the endpoint\.
 

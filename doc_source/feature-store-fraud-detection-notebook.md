@@ -65,7 +65,7 @@ transformed_transaction_data = pd.concat([transaction_data, encoded_card_type, e
 transformed_transaction_data = transformed_transaction_data.rename(columns={"card_bank_american express": "card_bank_american_express"})
 ```
 
-## Step 3: Set Up Feature Groups<a name="feature-store-set-up-feature-groups"></a>
+## Step 3: Set Up Feature Groups<a name="feature-store-set-up-feature-groups-fraud-detection"></a>
 
 When you set up your feature groups, you need to customize the feature names with a unique name and set up each feature group with the `FeatureGroup` class\.  
 

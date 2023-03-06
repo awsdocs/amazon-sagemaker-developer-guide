@@ -1,14 +1,16 @@
 # Attach a custom SageMaker image<a name="studio-byoi-attach"></a>
 
-To use a custom SageMaker image, you must attach a version of the image to your domain\. When you attach an image version, it appears in the SageMaker Studio Launcher and is available in the **Select image** dropdown list, which users use to launch an activity or change the image used by a notebook\.
+To use a custom SageMaker image, you must attach a version of the image to your domain or shared space\. When you attach an image version, it appears in the SageMaker Studio Launcher and is available in the **Select image** dropdown list, which users use to launch an activity or change the image used by a notebook\.
 
-To make a custom SageMaker image available to all users within a domain, you attach the image to the domain\. To make an image available to a single user, you attach the image to the user's profile\. When you attach an image, SageMaker uses the latest image version by default\. You can also attach a specific image version\. After you attach the version, you can choose the version from the SageMaker Launcher or the image selector when you launch a notebook\.
+To make a custom SageMaker image available to all users within a domain, you attach the image to the domain\. To make an image available to all users within a shared space, you can attach the image to the shared space\. To make an image available to a single user, you attach the image to the user's profile\. When you attach an image, SageMaker uses the latest image version by default\. You can also attach a specific image version\. After you attach the version, you can choose the version from the SageMaker Launcher or the image selector when you launch a notebook\.
 
 There is a limit to the number of image versions that can be attached at any given time\. After you reach the limit, you must detach a version in order to attach another version of the image\.
 
-The following sections demonstrate how to attach a custom SageMaker image to your domain using either the SageMaker console or the AWS CLI\.
+The following sections demonstrate how to attach a custom SageMaker image to your domain using either the SageMaker console or the AWS CLI\. You can only attach a custom image to a share space using the AWS CLI\.
 
-## Attach the SageMaker image using the Console<a name="studio-byoi-attach-existing"></a>
+## Attach the SageMaker image to a Domain<a name="studio-byoi-attach-domain"></a>
+
+### Attach the SageMaker image using the Console<a name="studio-byoi-attach-existing"></a>
 
 This topic describes how you can attach an existing custom SageMaker image version to your domain using the SageMaker control panel\. You can also create a custom SageMaker image and image version, and then attach that version to your domain\. For the procedure to create an image and image version, see [Create a custom SageMaker image](studio-byoi-create.md)\.
 
@@ -52,11 +54,11 @@ This topic describes how you can attach an existing custom SageMaker image versi
 
    1. Wait for the image version to be attached to the domain\. When attached, the version is displayed in the **Custom images** list and briefly highlighted\.
 
-## Attach the SageMaker image using the AWS CLI<a name="studio-byoi-sdk-attach"></a>
+### Attach the SageMaker image using the AWS CLI<a name="studio-byoi-sdk-attach"></a>
 
 The following sections demonstrate how to attach a custom SageMaker image when creating a new domain or updating your existing domain using the AWS CLI\.
 
-### Attach the SageMaker image to a new domain<a name="studio-byoi-sdk-attach-new-domain"></a>
+#### Attach the SageMaker image to a new domain<a name="studio-byoi-sdk-attach-new-domain"></a>
 
 The following section demonstrates how to create a new domain with the version attached\. These steps require that you specify the Amazon Virtual Private Cloud \(VPC\) information and execution role required to create the domain\. You perform the following steps to create the domain and attach the custom SageMaker image:
 + Get your default VPC ID and subnet IDs\.
@@ -137,7 +139,7 @@ The following section demonstrates how to create a new domain with the version a
    }
    ```
 
-### Attach the SageMaker image to your current domain<a name="studio-byoi-sdk-attach-current-domain"></a>
+#### Attach the SageMaker image to your current domain<a name="studio-byoi-sdk-attach-current-domain"></a>
 
 If you have onboarded to a SageMaker domain, you can attach the custom image to your current domain\. For more information about onboarding to a SageMaker domain, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\. You don't need to specify the VPC information and execution role when attaching a custom image to your current domain\. After you attach the version, you must delete all the apps in your domain and reopen Studio\. For information about deleting the apps, see [Delete an Amazon SageMaker Domain](gs-studio-delete-domain.md)\.
 
@@ -217,6 +219,92 @@ You perform the following steps to add the SageMaker image to your current domai
    }
    ```
 
-## View the attached image in the SageMaker control panel<a name="studio-byoi-sdk-view"></a>
+## Attach the SageMaker image to a shared space<a name="studio-byoi-attach-shared-space"></a>
 
-After you create the custom SageMaker image and attach it to your domain, the image appears in the custom images list in the control panel\.
+You can only attach the SageMaker image to a shared space using the AWS CLI\. After you attach the version, you must delete all of the applications in your shared space and reopen Studio\. For information about deleting the apps, see [Delete an Amazon SageMaker Domain](gs-studio-delete-domain.md)\.
+
+You perform the following steps to add the SageMaker image to a shared space\.
++ Get your `DomainID` from SageMaker control panel\.
++ Use the `DomainID` to get the `DefaultSpaceSettings` for the domain\.
++ Add the `ImageName` and `AppImageConfig` as a `CustomImage` to the `DefaultSpaceSettings`\.
++ Update your domain to include the custom image for the shared space\.
+
+**To add the custom SageMaker image to your shared space**
+
+1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
+
+1. In the left navigation pane, choose **Domains**\.
+
+1. From the **Domains** page, select the Domain to attach the image to\.
+
+1. From the **Domain details** page, select the **Domain settings** tab\.
+
+1. From the **Domain settings** tab, under **General settings**, find the `DomainId`\. The ID is in the following format: `d-xxxxxxxxxxxx`\.
+
+1. Use the domain ID to get the description of the domain\.
+
+   ```
+   aws sagemaker describe-domain \
+       --domain-id <d-xxxxxxxxxxxx>
+   ```
+
+   The response should look similar to the following\.
+
+   ```
+   {
+       "DomainId": "d-xxxxxxxxxxxx",
+       ...
+       "DefaultSpaceSettings": {
+         "KernelGatewayAppSettings": {
+           "CustomImages": [
+           ],
+           ...
+         }
+       }
+   }
+   ```
+
+1. Save the default space settings section of the response to a file named `default-space-settings.json`\.
+
+1. Insert the `ImageName` and `AppImageConfigName` from the previous steps as a custom image\. Because `ImageVersionNumber` isn't specified, the latest version of the image is used, which is the only version in this case\.
+
+   ```
+   {
+       "DefaultSpaceSettings": {
+           "KernelGatewayAppSettings": { 
+              "CustomImages": [ 
+                 { 
+                    "ImageName": "string",
+                    "AppImageConfigName": "string"
+                 }
+              ],
+              ...
+           }
+       }
+   }
+   ```
+
+1. Use the domain ID and default space settings file to update your domain\.
+
+   ```
+   aws sagemaker update-domain \
+       --domain-id <d-xxxxxxxxxxxx> \
+       --cli-input-json file://default-space-settings.json
+   ```
+
+   The response should look similar to the following\.
+
+   ```
+   {
+       "DomainArn": "arn:aws:sagemaker:us-east-2:acct-id:domain/d-xxxxxxxxxxxx"
+   }
+   ```
+
+## View the attached image in SageMaker<a name="studio-byoi-sdk-view"></a>
+
+After you create the custom SageMaker image and attach it to your domain, the image appears in the **Environment** tab of the Domain\. You can only view the attached images for shared spaces using the AWS CLI by using the following command\.
+
+```
+aws sagemaker describe-domain \
+    --domain-id <d-xxxxxxxxxxxx>
+```
