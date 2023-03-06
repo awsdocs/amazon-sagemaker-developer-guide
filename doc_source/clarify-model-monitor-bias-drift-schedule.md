@@ -5,7 +5,7 @@ After you create your baseline, you can call the `create_monitoring_schedule()` 
 **Important**  
 You can specify either a batch transform input or an endpoint input, but not both, when you create your monitoring schedule\.
 
-Unlike data quality monitoring, you need to supply Ground Truth labels if you want to monitor model quality\. However, Ground Truth labels could be delayed\. To address this, specify offsets when you create your monitoring schedule\. For details about how to create time offsets, see [](model-monitor-model-quality-schedule.md#model-monitor-model-quality-schedule-offsets)\. 
+Unlike data quality monitoring, you need to supply Ground Truth labels if you want to monitor model quality\. However, Ground Truth labels could be delayed\. To address this, specify offsets when you create your monitoring schedule\. For details about how to create time offsets, see [Model monitor offsets](model-monitor-model-quality-schedule.md#model-monitor-model-quality-schedule-offsets)\. 
 
 If you have submitted a baselining job, the monitor automatically picks up analysis configuration from the baselining job\. If you skip the baselining step or the capture dataset has a different nature from the training dataset, you must provide the analysis configuration\.
 

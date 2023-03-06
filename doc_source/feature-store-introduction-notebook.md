@@ -47,7 +47,7 @@ The following diagram illustrates the steps the data goes through before it is i
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/feature-store-intro-diagram.png)
 
-## Step 3: Create feature groups<a name="feature-store-set-up-feature-groups"></a>
+## Step 3: Create feature groups<a name="feature-store-set-up-feature-groups-introduction"></a>
 
 We first start by creating feature group names for customer\_data and orders\_data\. Following this, we create two Feature Groups, one for `customer_data` and another for `orders_data`\.
 

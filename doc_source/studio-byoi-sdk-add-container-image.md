@@ -36,7 +36,7 @@ The Amazon ECR repository must be in the same AWS Region as Studio\.
 1. Build the `Dockerfile` using the Studio image build CLI\. The period \(\.\) specifies that the Dockerfile should be in the context of the build command\. This command builds the image and uploads the built image to the ECR repo\. It then outputs the image URI\.
 
    ```
-   sm-docker build . -t smstudio-custom -t <acct-id>.dkr.ecr.<region>.amazonaws.com/smstudio-custom:custom
+   sm-docker build . -repository smstudio-custom:custom
    ```
 
    The response should look similar to the following\.

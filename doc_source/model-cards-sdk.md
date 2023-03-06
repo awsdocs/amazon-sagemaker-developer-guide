@@ -14,7 +14,7 @@ To use model cards with the SageMaker Python SDK, you first need to establish a 
 Define an overview of your model\.
 
 ```
-model_overview = ModelOverview.from_name(
+model_overview = ModelOverview.from_model_name(
 model_name=model_name,
 sagemaker_session=sagemaker_session,
 model_description="A-description-of-your-model",

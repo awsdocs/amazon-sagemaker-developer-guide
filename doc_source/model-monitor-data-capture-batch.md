@@ -1,6 +1,6 @@
 # Capture data from batch transform job<a name="model-monitor-data-capture-batch"></a>
 
-The steps required to turn on data capture for your batch transform job are similar whether you use the AWS SDK for Python \(Boto\) or the SageMaker Python SDK\. If you use the AWS SDK, define the [DataCaptureConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DataCaptureConfig.html) dictionary, along with required fields, within the `CreateTransformJob` method to turn on data capture\. If you use the SageMaker Python SDK, import the `BatchDataCaptureConfig` class and initialize an instance from this class\. Then, pass this object to the `batch_transform_data_capture_config` parameter of your transform job instance\.
+The steps required to turn on data capture for your batch transform job are similar whether you use the AWS SDK for Python \(Boto\) or the SageMaker Python SDK\. If you use the AWS SDK, define the [DataCaptureConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DataCaptureConfig.html) dictionary, along with required fields, within the `CreateTransformJob` method to turn on data capture\. If you use the SageMaker Python SDK, import the `BatchDataCaptureConfig` class and initialize an instance from this class\. Then, pass this object to the `batch_data_capture_config` parameter of your transform job instance\.
 
 To use the proceeding code snippets, replace the *italicized placeholder text* in the example code with your own information\.
 
@@ -71,7 +71,7 @@ model_name = "<inference_model_name>"
 transformer = Transformer(
     model_name=<model_name>,
     ...
-    batch_transform_data_capture_config=BatchDataCaptureConfig(
+    batch_data_capture_config=BatchDataCaptureConfig(
         destination_s3_uri=data_capture_destination,
         kms_key_id="<kms_key>",
         generate_inference_id=True,

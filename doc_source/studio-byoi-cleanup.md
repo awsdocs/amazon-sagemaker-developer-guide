@@ -21,11 +21,11 @@ When you detach an image from a domain, all versions of the image are detached\.
 
 ## Clean up resources from the AWS CLI<a name="studio-byoi-sdk-cleanup"></a>
 
-The following section shows how to clean up resources from the SageMaker console\.
+The following section shows how to clean up resources from the AWS CLI\.
 
 **To clean up resources**
 
-1. Detach the image and image versions from your domain by passing an empty custom image list to the domain\. Open the `default-user-settings.json` file you created in [](studio-byoi-attach.md#studio-byoi-sdk-attach-current-domain)\.
+1. Detach the image and image versions from your domain by passing an empty custom image list to the domain\. Open the `default-user-settings.json` file you created in [Attach the SageMaker image to your current domain](studio-byoi-attach.md#studio-byoi-sdk-attach-current-domain)\. To detach the image and image version from a shared space, open the `default-space-settings.json` file\.
 
 1. Delete the custom images and then save the file\.
 
@@ -40,7 +40,7 @@ The following section shows how to clean up resources from the SageMaker console
    }
    ```
 
-1. Use the domain ID and default user settings file to update your domain\.
+1. Use the domain ID and default user settings file to update your domain\. To update your shared space, use the default space settings file\.
 
    ```
    aws sagemaker update-domain \

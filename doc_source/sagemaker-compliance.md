@@ -2,6 +2,9 @@
 
 Third\-party auditors assess the security and compliance of Amazon SageMaker as part of multiple AWS compliance programs\. These include SOC, PCI, FedRAMP, HIPAA, and others\.
 
+**Note**  
+If your use of Amazon SageMaker Studio in AWS East/West regions is subject to FedRAMP Moderate, use AWS Identity and Access Management \(IAM\) to configure authentication for Studio\. AWS IAM Identity Center \(successor to AWS Single Sign\-On\) is currently not in scope for FedRAMP Moderate \(East/West\)\.
+
 For a list of AWS services in scope of specific compliance programs, see [AWS Services in Scope by Compliance Program](http://aws.amazon.com/compliance/services-in-scope/)\. For general information, see [AWS Compliance Programs](http://aws.amazon.com/compliance/programs/)\.
 
 You can download third\-party audit reports using AWS Artifact\. For more information, see [Downloading Reports in AWS Artifact](https://docs.aws.amazon.com/artifact/latest/ug/downloading-documents.html)\.

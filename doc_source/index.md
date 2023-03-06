@@ -512,7 +512,7 @@ sponsored by Amazon.
    + [Find Features in Your Feature Groups](feature-store-search-metadata.md)
    + [Find Feature Groups in Your Feature Store](feature-store-search-feature-group-metadata.md)
    + [Adding Searchable Metadata to Your Features](feature-store-add-metadata.md)
-   + [Create a Dataset From Your Feature Groups](feature-store-athena-glue-integration.md)
+   + [Create a Dataset From Your Feature Groups](feature-store-create-a-dataset.md)
    + [Cross-Account Offline Store Access](feature-store-security-cross-account.md)
    + [Logging Feature Store operations by using AWS CloudTrail](feature-store-logging-using-cloudtrail.md)
    + [Security and Access Control](feature-store-security.md)

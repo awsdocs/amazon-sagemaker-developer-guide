@@ -4,7 +4,7 @@ This guide shows how to create an Amazon SageMaker Autopilot experiment \(that i
 
 You can use a user interface \(Amazon SageMaker Studio UI\) to help you populate the input, output, target, and parameters to run and evaluate an Autopilot experiment or use SageMaker API Reference\. The UI has descriptions, toggle switches, dropdown menus, radio buttons, and more to help you navigate creating your model candidates\. You can also view statistics while the experiment is running\. After it runs, you can compare trials and delve into the details of the pre\-processing steps, algorithms, and hyperparameter ranges of each model\. You also have the option to download their [explainability](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-explainability.html) and [performance](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-model-insights.html) reports\. Use the provided [ notebooks](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development-notebook-output.html ) to see the results of the automated data exploration or the candidate model definitions\.
 
-The following instructions show how to create an Amazon SageMaker Autopilot job as a pilot experiment using Studio UI or SageMaker API reference\. You name your experiment, provide locations for the input and output data, and specify which target data to predict\. Optionally, you can also specify the type of machine learning problem that you want to solve, choose your modeling strategy \(*stacked ensembles* or *hyperparameters optimization*\), and more\.
+The following instructions show how to create an Amazon SageMaker Autopilot job as a pilot experiment using Studio UI or SageMaker API reference\. You name your experiment, provide locations for the input and output data, and specify which target data to predict\. Optionally, you can also specify the type of machine learning problem that you want to solve, choose your modeling strategy \(*stacked ensembles* or *hyperparameters optimization*\), select the list of algorithms used by the Autopilot job to train the data, and more\.
 
 ## Create an Autopilot experiment using Studio<a name="autopilot-automate-model-development-create-experiment-ui"></a>
 
@@ -36,7 +36,7 @@ The following instructions show how to create an Amazon SageMaker Autopilot job 
 
 1. Choose **Next: Training method**\. The **Training method** tab opens\.
 
-1. In the **Training method** section, select your training option: **Ensembling**, **Hyperparameter optimization \(HPO\)**, or **Auto** to let Autopilot choose the training method automatically based on the dataset size\.  Each training mode runs a pre\-defined set of algorithms on your dataset to train model candidates\. 
+1. In the **Training method** section, select your training option: **Ensembling**, **Hyperparameter optimization \(HPO\)**, or **Auto** to let Autopilot choose the training method automatically based on the dataset size\. Each training mode runs a pre\-defined set of algorithms on your dataset to train model candidates\. By default, Autopilot pre\-select all the available algorithms for the given training mode\. You can run an Amazon SageMaker Autopilot training experiment with all the algorithms or choose your own subset\.
 
    For more information on the training modes and the available algorithms, see the **Autopilot training modes** section in the [Training modes and algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-model-support-validation.html) page\.
 
@@ -95,7 +95,7 @@ The following sections provide details of some additional parameters that you ca
 
 The set of algorithms run on your data to train your model candidates is dependent on your modeling strategy \(`ENSEMBLING` or `HYPERPARAMETER_TUNING`\)\. You can set the [ training method](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-model-support-validation.html) of an AutoML job with the `[AutoMLJobConfig\.Mode](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobConfig.html#sagemaker-Type-AutoMLJobConfig-Mode)` parameter\.
 
-If you keep it blank \(or `null`\), the `Mode` is inferred based on the size of your dataset\. 
+If you keep it blank \(or `null`\), the `Mode` is inferred based on the size of your dataset\.
 
 For information on Autopilot's *stacked ensembles* and *hyperparameters optimization* training methods, see [Training modes and algorithm support](autopilot-model-support-validation.md)
 

@@ -38,6 +38,6 @@ conda activate studio
 pip install jupyter-server==2.0.0rc3
 ```
 
- **Attach a lifecycle configuration to a shared space** 
+ **Customize a shared space** 
 
-To attach a lifecycle configuration to a shared space, you must use the AWS CLI\. For more information about creating and attaching lifecycle configurations, see [Creating and Associating a Lifecycle Configuration](studio-lcc-create.md)
+To attach a lifecycle configuration or custom image to a shared space, you must use the AWS CLI\. For more information about creating and attaching lifecycle configurations, see [Creating and Associating a Lifecycle Configuration](studio-lcc-create.md)\. For more information about creating and attaching custom images, see [Bring your own SageMaker image](studio-byoi.md)\.

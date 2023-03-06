@@ -4,7 +4,7 @@ This topic describes how you can create a custom SageMaker image using the SageM
 
 When you create an image from the console, SageMaker also creates an initial image version\. The image version represents a container image in [Amazon Elastic Container Registry \(ECR\)](https://console.aws.amazon.com/ecr/)\. The container image must satisfy the requirements to be used in Amazon SageMaker Studio\. For more information, see [Custom SageMaker image specifications](studio-byoi-specs.md)\. For information on testing your image locally and resolving common issues, see the [SageMaker Studio Custom Image Samples repo](https://github.com/aws-samples/sagemaker-studio-custom-image-samples/blob/main/DEVELOPMENT.md)\.
 
-After you have created your custom SageMaker image, you must attach it to your domain to use it with Studio\. For more information, see [Attach a custom SageMaker image](studio-byoi-attach.md)\.
+After you have created your custom SageMaker image, you must attach it to your domain or shared space to use it with Studio\. For more information, see [Attach a custom SageMaker image](studio-byoi-attach.md)\.
 
 ## Create a SageMaker image from the console<a name="studio-byoi-create-console"></a>
 
@@ -93,7 +93,7 @@ You perform the following steps to create a SageMaker image from the container i
    ```
    aws sagemaker describe-image-version \
        --image-name custom-image \
-       --version 1
+       --version-number 1
    ```
 
    The response should look similar to the following\.

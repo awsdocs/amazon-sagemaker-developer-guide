@@ -30,7 +30,7 @@ When you detach an image from a Domain, all versions of the image are detached\.
 
 **To clean up resources**
 
-1. Detach the image and image versions from your Domain by passing an empty custom image list to the Domain\. Open the `update-domain-input.json` file that you created in [](studio-byoi-attach.md#studio-byoi-sdk-attach-current-domain)\.
+1. Detach the image and image versions from your Domain by passing an empty custom image list to the Domain\. Open the `update-domain-input.json` file that you created in [Attach the SageMaker image to your current domain](studio-byoi-attach.md#studio-byoi-sdk-attach-current-domain)\.
 
 1. Delete the `RSessionAppSettings` custom images and then save the file\. Do not modify the `KernelGatewayAppSettings` custom images\.
 

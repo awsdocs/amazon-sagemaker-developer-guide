@@ -64,7 +64,7 @@ Upload the training file under the train channel, and optionally upload the vali
 
 ##### Train with Augmented Manifest Text Format<a name="blazingtext-data-formats-text-class-augmented-manifest"></a>
 
-The supervised mode also supports the augmented manifest format, which enables you to do training in pipe mode without needing to create RecordIO files\. While using the format, an S3 manifest file needs to be generated that contains the list of sentences and their corresponding labels\. The manifest file format should be in [JSON Lines](http://jsonlines.org/) format in which each line represents one sample\. The sentences are specified using the `source` tag and the label can be specified using the `label` tag\. Both `source` and `label` tags should be provided under the `AttributeNames` parameter value as specified in the request\.
+Supervised mode for CPU instances also supports the augmented manifest format, which enables you to do training in pipe mode without needing to create RecordIO files\. While using the format, an S3 manifest file needs to be generated that contains the list of sentences and their corresponding labels\. The manifest file format should be in [JSON Lines](http://jsonlines.org/) format in which each line represents one sample\. The sentences are specified using the `source` tag and the label can be specified using the `label` tag\. Both `source` and `label` tags should be provided under the `AttributeNames` parameter value as specified in the request\.
 
 ```
 {"source":"linux ready for prime time , intel says , despite all the linux hype", "label":1}

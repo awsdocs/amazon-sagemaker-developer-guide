@@ -406,20 +406,20 @@ You can use Amazon EMR as a data source for your Amazon SageMaker Data Wrangler 
 **Important**  
 You must meet the following prerequisites to connect to an Amazon EMR cluster:  
 You have an Amazon VPC in the Region that you're using to launch Amazon SageMaker Studio and Amazon EMR\.
-You must do one of the following:  
-Launch Amazon EMR and Amazon SageMaker Studio in the same private subnet\.
-Launch Amazon EMR and Amazon SageMaker Studio in different private subnets\.
+Both Amazon EMR and Amazon SageMaker Studio must be launched in private subnets\. They can be in the same subnet or in different ones\.
 Amazon SageMaker Studio must be in VPC\-only mode\.  
 For more information about creating a VPC, see [Create a VPC](https://docs.aws.amazon.com/vpc/latest/userguide/working-with-vpcs.html#Create-VPC)\.  
 For more information about creating a VPC, see [Connect SageMaker Studio Notebooks in a VPC to External Resources](https://docs.aws.amazon.com/vpc/latest/userguide/studio-notebooks-and-internet-access.html)\.
 The Amazon EMR clusters that you're running must be in the same Amazon VPC\.
 The Amazon EMR clusters and the Amazon VPC must be in the same AWS account\.
-Your Amazon EMR clusters are running Presto\. They must allow inbound traffic from Studio security groups on port 8889\.
+Your Amazon EMR clusters are running Hive or Presto\.  
+Hive clusters must allow inbound traffic from Studio security groups on port 10000\.
+Presto clusters must allow inbound traffic from Studio security groups on port 8889\.
 Amazon SageMaker Studio must run Jupyter Lab Version 3\. For information about updating the Jupyter Lab Version, see [View and update the JupyterLab version of an application from the console](studio-jl.md#studio-jl-view)\.
 Amazon SageMaker Studio has an IAM role that controls users access\. The default IAM role that you're using to run Amazon SageMaker Studio doesn't have policies that you can give you access Amazon EMR clusters\. You must attach the policy granting permissions to the IAM role\. For more information, see [Required Permissions](studio-notebooks-emr-required-permissions.md)\.
 The IAM role must also have the following policy attached `secretsmanager:PutResourcePolicy`\.
 If you're using a Studio domain that you've already created, make sure that its `AppNetworkAccessType` is in VPC\-only mode\. For information about updating a domain to use VPC\-only mode, see [Shut down and Update SageMaker Studio](studio-tasks-update-studio.md)\.
-You must have Presto installed on your cluster\.
+You must have Hive or Presto installed on your cluster\.
 The Amazon EMR release must be version 5\.5\.0 or later\.  
 Amazon EMR supports auto termination\. Auto termination stops idle clusters from running and prevents you from incurring costs\. The following are the releases that support auto termination:  
 For 6\.x releases, version 6\.1\.0 or later\.
@@ -476,6 +476,8 @@ For 6\.x releases, releases 6\.1\.0 or later
 For 5\.x releases, releases 5\.30\.0 or later
 Auto termination stops idle clusters from running and prevent you from incurring costs\.
 
+1. \(Optional\) For **Applications**, choose **Presto**\.
+
 1. Choose the application that you're running on the cluster\.
 
 1. Under **Networking**, for **Hardware configuration**, specify the hardware configuration settings\.
@@ -488,8 +490,20 @@ For **Networking**, choose the VPC that is running Amazon SageMaker Studio and c
 
 For a tutorial about creating an Amazon EMR cluster, see [Getting started with Amazon EMR](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-gs.html)\. For information about best practices for configuring a cluster, see [Considerations and best practices](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-ha-considerations.html)\.
 
+**Note**  
+For security best practices, Data Wrangler can only connect to VPCs on private subnets\. You won't be able to connect to the master node unless you use AWS Systems Manager for your EMR instances\. For more information, see [Securing access to EMR clusters using AWS Systems Manager](http://aws.amazon.com/blogs/big-data/securing-access-to-emr-clusters-using-aws-systems-manager/)\.
+
+You can currently use the following methods to access and Amazon EMR cluster:
++ No authentication
++ Lightweight Directory Access Protocol \(LDAP\)
+
+Use the following sections to create a Presto or Hive Amazon EMR cluster with LDAP activated\.
+
+------
+#### [ Presto ]
+
 **Important**  
-To use AWS Glue as metastore for Presto tables, select **Use** for **Presto table metadata** to store the results of your Amazon EMR queries in a AWS Glue data catalog when launching EMR clusters\. Storing the query results in a AWS Glue data catalog can save you from incurring charges\.  
+To use AWS Glue as a metastore for Presto tables, select **Use** for **Presto table metadata** to store the results of your Amazon EMR queries in a AWS Glue data catalog when you're launching an EMR cluster\. Storing the query results in a AWS Glue data catalog can save you from incurring charges\.  
 To be able to query large datasets on Amazon EMR clusters, add the following properties to Presto configuration file on your EMR clusters:  
 
 ```
@@ -500,16 +514,109 @@ To be able to query large datasets on Amazon EMR clusters, add the following pro
 You can also modify the configuration settings when you launch the Amazon EMR cluster\.  
 The configuration file for your Amazon EMR cluster is located under the following path: `/etc/presto/conf/config.properties`\.
 
+Use the following procedure to create a Presto cluster with LDAP activated,\.
+
+To create a cluster, do the following\.
+
+1. Navigate to the AWS Management Console\.
+
+1. In the search bar, specify **Amazon EMR**\.
+
+1. Choose **Create cluster**\.
+
+1. For **Cluster name**, specify the name of your cluster\.
+
+1. For **Release**, select the release version of the cluster\.
 **Note**  
-For security best practices, Data Wrangler can only connect to VPCs on private subnets\. You won't be able to connect to the master node unless you use AWS Systems Manager for your EMR instances\. For more information, see [Securing access to EMR clusters using AWS Systems Manager](http://aws.amazon.com/blogs/big-data/securing-access-to-emr-clusters-using-aws-systems-manager/)\.
+Amazon EMR supports auto termination for the following releases:  
+For 6\.x releases, releases 6\.1\.0 or later
+For 5\.x releases, releases 5\.30\.0 or later
+Auto termination stops idle clusters from running and prevent you from incurring costs\.
 
-You can currently use the following methods to access and Amazon EMR cluster:
-+ No authentication
-+ Lightweight Directory Access Protocol \(LDAP\)
+1. Choose the application that you're running on the cluster\.
 
-The following sections show how you can configure LDAP for a Presto cluster\.
+1. Under **Networking**, for **Hardware configuration**, specify the hardware configuration settings\.
+**Important**  
+For **Networking**, choose the VPC that is running Amazon SageMaker Studio and choose a private subnet\.
 
-Presto LDAP requires access to the Presto coordinator need to be through HTTPS\. Once the LDAP server has been setup to be able to authenticate Presto from EMR cluster via port 636, enable SSL for Presto coordinator, add or modify the following configurations for Presto:
+1. Under **Security and access**, specify the security settings\.
+
+1. Choose **Create**\.
+
+------
+#### [ Hive ]
+
+**Important**  
+To use AWS Glue as a metastore for Hive tables, select **Use** for **Hive table metadata** to store the results of your Amazon EMR queries in a AWS Glue data catalog when you're launching an EMR cluster\. Storing the query results in a AWS Glue data catalog can save you from incurring charges\.  
+To be able to query large datasets on Amazon EMR clusters, add the following properties to Hive configuration file on your EMR clusters:  
+
+```
+[{"classification":"hive-site", "properties"
+:{"hive.resultset.use.unique.column.names":"false"}}]
+```
+You can also modify the configuration settings when you launch the Amazon EMR cluster\.  
+The configuration file for your Amazon EMR cluster is located under the following path: `/etc/hive/conf/hive-site.xml`\. You can specify the following property and restart the cluster:  
+
+```
+<property>
+    <name>hive.resultset.use.unique.column.names</name>
+    <value>false</value>
+</property>
+```
+
+Use the following procedure to create a Hive cluster with LDAP activated,\.
+
+To create a Hive cluster with LDAP activated, do the following\.
+
+1. Navigate to the AWS Management Console\.
+
+1. In the search bar, specify **Amazon EMR**\.
+
+1. Choose **Create cluster**\.
+
+1. Choose **Go to advanced options**\.
+
+1. For **Release**, select an Amazon EMR release version\.
+
+1. The **Hive** configuration option is selected by default\. Make sure the **Hive** option has a checkbox next to it\.
+
+1. \(Optional\) You can also select **Presto** as a configuration option to activate both Hive and Presto on your cluster\.
+
+1. \(Optional\) Select **Use for Hive table metadata** to store the results of your Amazon EMR queries in a AWS Glue data catalog\. Storing the query results in a AWS Glue catalog can save you from incurring charges\. For more information, see [Using the AWS Glue Data Catalog as the metastore for Hive](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hive-metastore-glue.html)\.
+**Note**  
+Storing the query results in a data catalog requires Amazon EMR version 5\.8\.0 or later\.
+
+1. Under **Enter configuration**, specify the following JSON:
+
+   ```
+   [
+     {
+       "classification": "hive-site",
+       "properties": {
+         "hive.server2.authentication.ldap.baseDN": "dc=example,dc=org",
+         "hive.server2.authentication": "LDAP",
+         "hive.server2.authentication.ldap.url": "ldap://ldap-server-dns-name:389"
+       }
+     }
+   ]
+   ```
+**Note**  
+As a security best practice, we recommend enabling SSL for HiveServer by adding a few properties in the preceding hive\-site JSON\. For more information, see [Enable SSL on HiveServer2](https://docs.cloudera.com/HDPDocuments/HDP3/HDP-3.0.1/configuring-wire-encryption/content/enable_ssl_on_hiveserver2.html)\.
+
+1. Specify the remaining cluster settings and create a cluster\.
+
+------
+
+Use the following sections to use LDAP authentication for Amazon EMR clusters that you've already created\.
+
+------
+#### [ LDAP for Presto ]
+
+Using LDAP on a cluster running Presto requires access to the Presto coordinator through HTTPS\. Do the following to provide access:
++ Activate access on port 636
++ Enable SSL for the Presto coordinator
+
+Use the following template to configure Presto:
 
 ```
 - Classification: presto-config
@@ -520,7 +627,7 @@ Presto LDAP requires access to the Presto coordinator need to be through HTTPS\.
         http-server.http.port: '8899'
         node-scheduler.include-coordinator: 'true'
         http-server.https.keystore.path: '/path/to/keystore/path/for/presto'
-        http-server.https.keystore.key: 'kestore-key-password'
+        http-server.https.keystore.key: 'keystore-key-password'
         discovery.uri: 'http://master-node-dns-name:8899'
 - Classification: presto-password-authenticator
      ConfigurationProperties:
@@ -537,6 +644,28 @@ For information about setting up LDAP in Presto, see the following resources:
 
 **Note**  
 As a security best practice, we recommend enabling SSL for Presto\. For more information, see [Secure Internal Communication](https://prestodb.io/docs/current/security/internal-communication.html)\.
+
+------
+#### [ LDAP for Hive ]
+
+To use LDAP for Hive for a cluster that you've created, use the following procedure [Reconfigure an instance group in the console\.](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-configure-apps-running-cluster.html#emr-configure-apps-running-cluster-considerations)
+
+You're specifying the name of the cluster to which you're connecting\.
+
+```
+[
+  {
+    "classification": "hive-site",
+    "properties": {
+      "hive.server2.authentication.ldap.baseDN": "dc=example,dc=org",
+      "hive.server2.authentication": "LDAP",
+      "hive.server2.authentication.ldap.url": "ldap://ldap-server-dns-name:389"
+    }
+  }
+]
+```
+
+------
 
 Use the following procedure to import data from a cluster\.
 
@@ -592,10 +721,17 @@ To store the JDBC URL as a secret, do the following\.
 
 1. For **Key/value pairs**, specify `jdbcURL` as the key and a valid JDBC URL as the value\.
 
-   The following list shows the valid JBDC URL formats for the different possible configurations\.
+   The format of a valid JDBC URL depends on whether you use authentication and whether you use Hive or Presto as the query engine\. The following list shows the valid JBDC URL formats for the different possible configurations\.
+   + Hive, no authentication – `jdbc:hive2://emr-cluster-master-public-dns:10000/;`
+   + Hive, LDAP authentication – jdbc:hive2://*emr\-cluster\-master\-public\-dns\-name*:10000/;AuthMech=3;UID=david;PWD=welcome123;
+   + For Hive with SSL enabled, the JDBC URL format depends on whether you use a Java Keystore File for the TLS configuration\. The Java Keystore File helps verify the identity of the master node of the Amazon EMR cluster\. To use a Java Keystore File, generate it on an EMR cluster and upload it to Data Wrangler\. To generate a file, use the following command on the Amazon EMR cluster, `keytool -genkey -alias hive -keyalg RSA -keysize 1024 -keystore hive.jks`\. For information about running commands on an Amazon EMR cluster, see [Securing access to EMR clusters using AWS Systems Manager](http://aws.amazon.com/blogs/big-data/securing-access-to-emr-clusters-using-aws-systems-manager/)\. To upload a file, choose the upward arrow on the left\-hand navigation of the Data Wrangler UI\.
+
+     The following are the valid JDBC URL formats for Hive with SSL enabled:
+     + Without a Java Keystore File – `jdbc:hive2://emr-cluster-master-public-dns:10000/;AuthMech=3;UID=user-name;PWD=password;SSL=1;AllowSelfSignedCerts=1;`
+     + With a Java Keystore File – `jdbc:hive2://emr-cluster-master-public-dns:10000/;AuthMech=3;UID=user-name;PWD=password;SSL=1;SSLKeyStore=/home/sagemaker-user/data/Java-keystore-file-name;SSLKeyStorePwd=Java-keystore-file-passsword;`
    + Presto, no authentication – jdbc:presto://*emr\-cluster\-master\-public\-dns*:8889/;
-   + For Presto with SSL enabled, the JDBC URL format depends on whether you use a Java Keystore File for the TLS configuration\. The Java Keystore File helps verify the identity of the master node of the Amazon EMR cluster\. To use a Java Keystore File, generate it on an EMR cluster and upload it to Data Wrangler\. To upload a file, choose the upward arrow on the left\-hand navigation of the Data Wrangler UI\. For information about creating a Java Keystore File for Presto, see [Java Keystore File for TLS](https://prestodb.io/docs/current/security/tls.html#server-java-keystore)\. For information about running commands on an Amazon EMR cluster, see [Securing access to EMR clusters using AWS Systems Manager](http://aws.amazon.com/blogs/big-data/securing-access-to-emr-clusters-using-aws-systems-manager/)\.
-     + Wihtout a Java Keystore File – `jdbc:presto://emr-cluster-master-public-dns:8889/;SSL=1;AuthenticationType=LDAP Authentication;UID=user-name;PWD=password;AllowSelfSignedServerCert=1;AllowHostNameCNMismatch=1;`
+   + For Presto with LDAP authentication and SSL enabled, the JDBC URL format depends on whether you use a Java Keystore File for the TLS configuration\. The Java Keystore File helps verify the identity of the master node of the Amazon EMR cluster\. To use a Java Keystore File, generate it on an EMR cluster and upload it to Data Wrangler\. To upload a file, choose the upward arrow on the left\-hand navigation of the Data Wrangler UI\. For information about creating a Java Keystore File for Presto, see [Java Keystore File for TLS](https://prestodb.io/docs/current/security/tls.html#server-java-keystore)\. For information about running commands on an Amazon EMR cluster, see [Securing access to EMR clusters using AWS Systems Manager](http://aws.amazon.com/blogs/big-data/securing-access-to-emr-clusters-using-aws-systems-manager/)\.
+     + Without a Java Keystore File – `jdbc:presto://emr-cluster-master-public-dns:8889/;SSL=1;AuthenticationType=LDAP Authentication;UID=user-name;PWD=password;AllowSelfSignedServerCert=1;AllowHostNameCNMismatch=1;`
      + With a Java Keystore File – `jdbc:presto://emr-cluster-master-public-dns:8889/;SSL=1;AuthenticationType=LDAP Authentication;SSLTrustStorePath=/home/sagemaker-user/data/Java-keystore-file-name;SSLTrustStorePwd=Java-keystore-file-passsword;UID=user-name;PWD=password;`
 
 Throughout the process of importing data from an Amazon EMR cluster, you might run into issues\. For information about troubleshooting them, see [Troubleshooting issues with Amazon EMR](data-wrangler-trouble-shooting.md#data-wrangler-trouble-shooting-emr)\.

@@ -36,7 +36,7 @@ Although some of the parameters are common between the Text Classification and W
 | --- | --- | 
 | mode |  The training mode\. **Required** Valid values: `supervised`  | 
 | buckets |  The number of hash buckets to use for word n\-grams\. **Optional** Valid values: Positive integer Default value: 2000000  | 
-| early\_stopping |  Whether to stop training if validation accuracy doesn't improve after a `patience` number of epochs\. **Optional** Valid values: \(Boolean\) `True` or `False` Default value: `False`  | 
+| early\_stopping |  Whether to stop training if validation accuracy doesn't improve after a `patience` number of epochs\. Note that a validation channel is required if early stopping is used\. **Optional** Valid values: \(Boolean\) `True` or `False` Default value: `False`  | 
 | epochs |  The maximum number of complete passes through the training data\. **Optional** Valid values: Positive integer Default value: 5  | 
 | learning\_rate |  The step size used for parameter updates\. **Optional** Valid values: Positive float Default value: 0\.05  | 
 | min\_count |  Words that appear less than `min_count` times are discarded\. **Optional** Valid values: Non\-negative integer Default value: 5  | 
