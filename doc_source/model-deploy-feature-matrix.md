@@ -24,7 +24,7 @@
 | Protocols supported | HTTP\(S\) | HTTP\(S\) | HTTP\(S\) | HTTP\(S\) | N/A | 
 | Payload size | < 6 MB | ≤ 100 MB | ≤ 1 GB | ≤ 4 MB |  | 
 | HTTP chunked encoding | Framework dependent, 1P not supported | N/A | Framework dependent, 1P not supported | Framework dependent, 1P not supported | N/A | 
-| Request timeout | < 60 seconds | Days | < 15 minutes | < 60 seconds | N/A | 
+| Request timeout | < 60 seconds | Days | < 1 hour | < 60 seconds | N/A | 
 | [Deployment guardrails](deployment-guardrails.md) | ✓ |  | ✓ | All\-at\-once traffic fall back | N/A | 
 | [Shadow testing](shadow-tests.md) | ✓ |  |  |  | N/A | 
 | Scale to zero |  | N/A | ✓ | ✓ | N/A | 

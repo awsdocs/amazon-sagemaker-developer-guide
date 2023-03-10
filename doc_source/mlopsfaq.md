@@ -129,6 +129,68 @@ Since SageMaker Projects is backed by Service Catalog, you must add each role th
 
 Each step in the pipeline uses the underlying SageMaker APIs for the corresponding jobs\. For example, `TrainingStep` invokes the `CreateTrainingJob` API and the step properties correspond to the response from `DescribeTrainingJob`\. The response output can be found in the API reference link for [DescribeTrainingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html)\. You can follow the same procedure to get the properties for [TransformStep](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTransformJob.html), [ ProcessingStep](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeProcessingJob.html), [TuningStep](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeHyperParameterTuningJob.html), and [CreateModelStep](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html)\. For more information about pipeline steps, see [Pipeline Steps](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps.html)\. 
 
-## Q\. What’s the best way to reproduce my model in SageMaker?<a name="collapsible-section-12"></a>
+## Q\. In SageMaker Pipelines, can I specify a unique output path for a pipeline step so that its output data will not be overridden by future runs?<a name="collapsible-section-12"></a>
+
+Yes, you can use [ExecutionVariables](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#execution-variables) and the [ Join](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#execution-variables) function to specify your output location\. `ExecutionVariables` is resolved at runtime\. For instance, `ExecutionVariables.PIPELINE_EXECUTION_ID` is resolved to the ID of the current execution, which can be used as a unique identifier across different runs\.
+
+```
+from sagemaker.workflow.execution_variables import ExecutionVariables
+
+processor_run_args = sklearn_processor.run(
+    outputs=[
+        ProcessingOutput(
+            output_name="train",
+            source="/opt/ml/processing/train",
+            destination=Join(
+                on="/",
+                values=[
+                    "s3:/",
+                    default_bucket,
+                    base_job_prefix,
+                    ExecutionVariables.PIPELINE_EXECUTION_ID,
+                    "PreprocessData",
+                ],
+            ),
+        ),
+        ProcessingOutput(
+            output_name="validation",
+            source="/opt/ml/processing/validation",
+            destination=Join(
+                on="/",
+                values=[
+                    "s3:/",
+                    default_bucket,
+                    base_job_prefix,
+                    ExecutionVariables.PIPELINE_EXECUTION_ID,
+                    "PreprocessData",
+                ],
+            ),
+        ),
+        ProcessingOutput(
+            output_name="test",
+            source="/opt/ml/processing/test",
+            destination=Join(
+                on="/",
+                values=[
+                    "s3:/",
+                    default_bucket,
+                    base_job_prefix,
+                    ExecutionVariables.PIPELINE_EXECUTION_ID,
+                    "PreprocessData",
+                ],
+            ),
+        ),
+    ],
+    code="code/preprocess.py",
+    arguments=["--input-data", input_data],
+)
+
+step_process = ProcessingStep(
+    name="MyPreprocessingStep",
+    step_args=processor_run_args,
+)
+```
+
+## Q\. What’s the best way to reproduce my model in SageMaker?<a name="collapsible-section-13"></a>
 
 SageMaker’s Lineage Tracking service works in the backend to track all the metadata associated with your model training and deployment workflows\. This includes your training jobs, datasets used, pipelines, endpoints, and the actual models\. You can query the lineage service at any point to find the exact artifacts used to train a model\. Using those artifacts, you can recreate the same ML workflow to reproduce the model as long as you have access to the exact dataset that was used\. A trial component tracks the training job\. This trial component has all the parameters used as part of the training job\. If you don’t need to rerun the entire workflow, you can reproduce the training job to derive the same model\.

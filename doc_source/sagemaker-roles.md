@@ -169,7 +169,7 @@ For more information about IAM roles, see [IAM Roles](http://docs.aws.amazon.com
 + [CreateProcessingJob API: Execution Role Permissions](#sagemaker-roles-createprocessingjob-perms)
 + [CreateTrainingJob API: Execution Role Permissions](#sagemaker-roles-createtrainingjob-perms)
 + [CreateModel API: Execution Role Permissions](#sagemaker-roles-createmodel-perms)
-+ [SageMaker geospatial capability roles](sagemaker-geospatial-roles.md)
++ [SageMaker geospatial capabilities roles](sagemaker-geospatial-roles.md)
 
 ## CreateAutoMLJob API: Execution Role Permissions<a name="sagemaker-roles-autopilot-perms"></a>
 
@@ -1042,6 +1042,9 @@ In the preceding policy, you scope the policy as follows:
 + Scope Amazon ECR permissions to a specific registry path that you specify as the `PrimaryContainer.Image` and `SecondaryContainer.Image` in a `CreateModel` request\.
 
 The `cloudwatch` and `logs` actions are applicable for "\*" resources\. For more information, see [CloudWatch Resources and Operations](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/iam-access-control-overview-cw.html#CloudWatch_ARN_Format) in the Amazon CloudWatch User Guide\.
+
+**Note**  
+If you plan to use the [SageMaker deployment guardrails feature](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails.html) for model deployment in production, ensure that your execution role has permission to perform the `cloudwatch:DescribeAlarms` action on your auto\-rollback alarms\.
 
 If you specify a private VPC for your model, add the following permissions:
 

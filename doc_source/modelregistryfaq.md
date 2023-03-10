@@ -11,3 +11,7 @@ A model package is the actual model that is registered into the model registry a
 ## Q\. How does a model registry differ from Amazon Elastic Container Registry \(Amazon ECR\)?<a name="collapsible-section-9mr"></a>
 
 SageMaker’s Model Registry is a metadata store for your machine learning models\. Amazon Elastic Container Registry is a repository that stores all of your containers\. Within the model registry, models are versioned and registered as model packages within model groups\. Each model package contains an Amazon S3 URI to the model files associated with the trained model and an Amazon ECR URI that points to the container used while serving the model\. 
+
+## Q\. How do I tag model packages in the SageMaker Model Registry?<a name="collapsible-section-10mr"></a>
+
+Model packages in the SageMaker Model Registry do not support tags—these are versioned model packages\. Instead, you can add key value pairs using `CustomerMetadataProperties`\. Model package groups in the model registry support tagging\. 

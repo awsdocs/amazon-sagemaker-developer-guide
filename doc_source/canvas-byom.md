@@ -19,9 +19,11 @@ To bring your model into SageMaker Canvas, complete the following prerequisites:
 
   1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-  1. In the navigation panel, choose **Control panel**\.
+  1. In the navigation panel, choose **Domains**\.
 
-  1. Under **Users**, you can find all of the user profile names in the Domain\. Keep the user profile name ready for the first step of the following tutorial\.
+  1. From the list of **Domains**, choose your Domain\. This opens the **Domain details** page, where you can find all of the **User profiles** for the Domain\.
+
+  Keep the user profile name ready for the first step of the following tutorial\.
 
 If your SageMaker Canvas app is running in a private customer VPC, any Autopilot models shared from Studio must use Autopilot HPO mode to support generating predictions in Canvas\. For more information about HPO mode, see [Training modes and algorithm support](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-model-support-validation.html) in the Autopilot documentation\.
 
@@ -42,7 +44,7 @@ To share a model from Autopilot to Canvas, use the following procedure\.
 
 1. Open your Amazon SageMaker Studio application\.
 
-1. Choose the home icon \(![\[Home icon in Studio\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
+1. In the side navigation pane, choose the **Home** icon \(![\[Home icon in Studio\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
 
 1. In the side navigation bar of Studio, choose **AutoML** to open Autopilot\.
 
@@ -72,11 +74,11 @@ To share a model from JumpStart to Canvas, use the following procedure\.
 
 1. Open your Amazon SageMaker Studio application\.
 
-1. Choose the home icon \(![\[Home icon in Studio\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
+1. In the side navigation pane, choose the **Home** icon \(![\[Home icon in Studio\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
 
-1. In the side navigation bar of Studio, choose **Quick start solutions**\.
+1. In the side navigation bar that opens, choose **SageMaker JumpStart**\.
 
-1. Choose **Launched Quick start assets** to open the page that lists your JumpStart training jobs, models, and endpoints\.
+1. Choose **Launched JumpStart assets** to open the page that lists your JumpStart training jobs, models, and endpoints\.
 
 1. Choose the **Training jobs** tab to view the list of your model training jobs\.
 
@@ -106,9 +108,9 @@ To share a model version from Model Registry to Canvas, use the following proced
 
 1. Open your Amazon SageMaker Studio application\.
 
-1. Choose the home icon \(![\[Home icon in Studio\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
+1. In the side navigation pane, choose the **Home** icon \(![\[Home icon in Studio\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
 
-1. In the side navigation bar of Studio, choose **Models**\.
+1. In the side navigation bar that opens, choose **Models**\.
 
 1. Select **Model Registry** from the dropdown list to open the Model Registry page and show all of the model groups registered in your account\.
 
@@ -162,7 +164,7 @@ To share an Autopilot model from the **Shared models and notebooks** page, use t
 
 1. Open your Amazon SageMaker Studio application\.
 
-1. Choose the home icon \(![\[Home icon in Studio\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
+1. In the side navigation pane, choose the **Home** icon \(![\[Home icon in Studio\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
 
 1. In the side navigation bar of Studio, choose **Models**\.
 

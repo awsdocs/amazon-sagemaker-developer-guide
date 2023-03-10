@@ -2,6 +2,8 @@
 
 The Amazon SageMaker Studio interface is based on JupyterLab, which is a web\-based interactive development environment for notebooks, code, and data\. Studio now supports using both JupyterLab 1 and JupyterLab 3\. The default version of JupyterLab in Studio is JupyterLab 3\. If you created your Amazon SageMaker Domain and user profile using the AWS Management Console before 08/31/2022 or using the AWS Command Line Interface before 02/22/23, then your Studio instance defaults to JupyterLab 1\. After 08/31/2022, JupyterLab version 1 on Amazon SageMaker Studio only receives security fixes\. You can choose the version that you want to run\. However, you can run only a single instance of JupyterLab at one time per user profile\. You can’t run multiple versions of JupyterLab simultaneously\.
 
+After 03/31/23, Studio only supports the creation of JupyterLab 3 applications\. After that date, Studio stops supporting JupyterLab 1 application creation\. On 04/30/2023, Studio removes all existing applications that run JupyterLab 1\. Update your existing JupyterLab1 applications to JupyterLab 3 before 04/30/2023 following the steps in [View and update the JupyterLab version of an application from the console](#studio-jl-view)\.
+
 **Topics**
 + [JupyterLab 3](#jl3)
 + [Restricting default JupyterLab version using an IAM policy condition key](#iam-policy)

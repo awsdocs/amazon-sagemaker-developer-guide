@@ -4,6 +4,9 @@ Amazon CloudWatch alarms are a prerequisite for using baking periods in deployme
 
 To learn more about Amazon CloudWatch, see [What is Amazon CloudWatch?](https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html) in the *Amazon CloudWatch User Guide*\.
 
+**Note**  
+Ensure that your IAM execution role has permission to perform the `cloudwatch:DescribeAlarms` action on the auto\-rollback alarms you specify\.
+
 ## Alarm Examples<a name="deployment-guardrails-configuration-alarm-examples"></a>
 
 To help you get started, we provide the following examples to demonstrate the capabilities of CloudWatch alarms\. In addition to using or modifying the following examples, you can create your own alarms and configure the alarms to monitor various metrics on the specified fleets for a certain period of time\. To see more SageMaker metrics and dimensions you can add to your alarms, see [Monitor Amazon SageMaker with Amazon CloudWatch](monitoring-cloudwatch.md)\.

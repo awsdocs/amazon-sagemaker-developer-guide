@@ -38,3 +38,4 @@ You can also bring your own [Planet](https://www.planet.com/) data by ordering i
 + [Vector Enrichment Jobs](geospatial-vej.md)
 + [Visualization Using SageMaker geospatial capabilities](geospatial-visualize.md)
 + [Amazon SageMaker geospatial Map SDK](geospatial-notebook-sdk.md)
++ [SageMaker geospatial capabilities FAQ](geospatial-faq.md)

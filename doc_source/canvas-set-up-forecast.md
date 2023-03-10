@@ -48,7 +48,11 @@ You can configure time series forecasting permissions for individual users in an
 
 1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1. In the **Control Panel**, in the **Users** panel, select the name of the user whose permissions you want to edit\.
+1. Choose **Domains**\.
+
+1. On the **Domains** page, choose your Domain\.
+
+1. In the **User profiles** tab, select the name of the user whose permissions you want to edit\.
 
 1. On the **User Details** page, choose **Edit**\.
 
@@ -77,9 +81,13 @@ The following section shows you how to create the trust relationship and attach 
 
 To configure an IAM role with the manual method, use the following procedure\.
 
-1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) and choose **Control Panel**\.
+1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1. From the list of **Users**, select the profile of the user you to whom want to grant time series forecasting permissions\.
+1. Choose **Domains**\.
+
+1. On the **Domains** page, choose your Domain\.
+
+1. From the list of **User profiles**, select the profile of the user you to whom want to grant time series forecasting permissions\.
 
 1. Under **Details**, copy or make a note of the name of the user's **Execution role**\. The name of the IAM role should be similar to the following: `AmazonSageMaker-ExecutionRole-111122223333444`\.  
 ![\[Screenshot of the user's profile in the SageMaker console.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/canvas-find-role.png)
