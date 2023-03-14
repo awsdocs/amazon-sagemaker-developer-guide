@@ -27,9 +27,11 @@ You should also have the user profile name of the Studio user with whom you want
 
 1. Open the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1. In the navigation panel, choose **Control panel**\.
+1. In the navigation panel, choose **Domains**\.
 
-1. Under **Users**, you can find all of the user profile names in the Domain\. Keep the user profile name ready for the first step of the following tutorial\.
+1. From the list of **Domains**, choose your Domain\. This opens the **Domain details** page, where you can find all of the **User profiles** for the Domain\.
+
+Keep the user profile name ready for the first step of the following tutorial\.
 
 ## Canvas users: Share a model with Studio users<a name="canvas-collaborate-share"></a>
 
@@ -67,9 +69,9 @@ Choose **View shared models** to open the **Shared models and notebooks** page i
 
 1. Open your Amazon SageMaker Studio application\.
 
-1. Choose the home icon \(![\[Home icon in Studio\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
+1. In the side navigation pane, choose the **Home** icon \(![\[Home icon in Studio\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
 
-1. In the side navigation bar of Studio, choose **Models**\.
+1. In the side navigation bar that opens, choose **Models**\.
 
 1. In the dropdown list, choose **Shared models** to open the **Shared models and notebooks** page\.
 

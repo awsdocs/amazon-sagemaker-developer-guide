@@ -1,8 +1,8 @@
 # SageMaker endpoint parameters for large model inference<a name="realtime-endpoints-large-model-hosting"></a>
 
- You can customize the following parameters to facilitate low\-latency LMI with SageMaker: 
+ You can customize the following parameters to facilitate low\-latency large model inference \(LMI\) with SageMaker: 
 +  **Maximum Amazon EBS volume size on the instance \(`VolumeSizeInGB`\)** – If the size of the model is larger than 30 GB and you are using an instance without a local disk, you should increase this parameter to be slightly larger than the size of your model\. 
-+  **Health check timeout quota \(`ContainerStartupHealthCheckTimeoutInSeconds`\)** – If your container is correctly setup and the CloudWatch logs indicate a health check timeout, you should increase this quota so the container has enough time to respond to health checks\. 
++  **Health check timeout quota \(`ContainerStartupHealthCheckTimeoutInSeconds`\)** – If your container is correctly set up and the CloudWatch logs indicate a health check timeout, you should increase this quota so the container has enough time to respond to health checks\. 
 +  **Model download timeout quota \(`ModelDataDownloadTimeoutInSeconds`\)** – If the size of your model is larger than 40 GB, then you should increase this quota to provide sufficient time to download the model from Amazon S3 to the instance\. 
 
  For more information on low latency inference with large models, see [ Deploy large models on Amazon SageMaker using DJL Serving and DeepSpeed model parallel inference](http://aws.amazon.com/blogs/machine-learning/deploy-large-models-on-amazon-sagemaker-using-djlserving-and-deepspeed-model-parallel-inference/)\. The following code snippet demonstrates how to programatically configure the aforementioned parameters\. Replace the *italicized placeholder text* in the example with your own information\. 

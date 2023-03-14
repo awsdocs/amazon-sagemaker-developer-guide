@@ -35,11 +35,17 @@ You can also turn on or turn off local upload permissions for an existing Domain
 
 1. Go to the [Amazon SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-1. In the **Control Panel**, choose **Edit domain settings**\.
+1. Choose **Domains**in the navigation pane\.
 
-1. Go to **Canvas settings**\.
+1. From the list of **Domains**, choose your Domain\.
 
-1. Select or deselect **Local file upload**\.
+1. On the **Domain settings** page, choose the **Domain settings**, tab\.
+
+1. Choose **Edit**\.
+
+1. In the navigation pane, choose **Canvas settings**\.
+
+1. Select or deselect **Enable local file upload**\.
 
 1. Finish any other modifications you want to make to the Domain, and then choose **Submit** to submit your changes\.
 

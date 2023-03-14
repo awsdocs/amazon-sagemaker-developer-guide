@@ -11,8 +11,8 @@ Where:
 + FNa are the false negatives predicted for facet *a*\.
 + TPd are the true positives predicted for facet *d*\.
 + FNd are the false negatives predicted for facet *d*\.
-+ TPRa = TPa/\(TPa \+ FNa\) is the recall for facet *a*\. or its true positive rate\.
-+ TPRd TPd/\(TPd \+ FNd\) is the recall for facet *d*\. or its true positive rate\.
++ TPRa = TPa/\(TPa \+ FNa\) is the recall for facet *a*, or its true positive rate\.
++ TPRd TPd/\(TPd \+ FNd\) is the recall for facet *d*, or its true positive rate\.
 
 For example, consider the following confusion matrices for facets *a* and *d*\.
 

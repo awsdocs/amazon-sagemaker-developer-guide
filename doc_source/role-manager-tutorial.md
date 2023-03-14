@@ -1,8 +1,89 @@
 # Using the role manager<a name="role-manager-tutorial"></a>
 
-To access Amazon SageMaker Role Manager, go to the Amazon SageMaker console and choose **Getting Started** in the navigation pane\. In the **Configure role** section, choose **Create a role**\.
+You can use the Amazon SageMaker Role Manager from the following locations on the left\-hand navigation of the Amazon SageMaker console:
++ **Getting started** – Quickly add permissions policies for your users\.
++ **Domains** – Add permissions policies for users within a Amazon SageMaker Domain\.
++ **Notebooks** – Add least permissions for users who create and run notebooks\.
++ **Training** – Add least permissions for users who create and manage training jobs\.
++ **Inference** – Add least permissions for users who deploy and manage models for inference\.
 
-Alternatively, you can access Amazon SageMaker Role Manager when setting up a domain or user profile through the **Control Panel**\. To access the role manager when setting up a domain or user profile, choose **Create a new role** and then choose **Create role using Amazon SageMaker Role Manager**\. 
+You can use the following are procedures to start the process of creating a role from different locations in the SageMaker console\.
+
+## Getting started<a name="role-manager-tutorial-getting-started"></a>
+
+If you're using SageMaker for the first time, we recommend creating a role from the **Getting started** section\.
+
+To create a role using Amazon SageMaker Role Manager, do the following\.
+
+1. Open the Amazon SageMaker console\.
+
+1. On the left\-hand navigation, choose **Getting started**\.
+
+1. Choose **Create a role**\.
+
+## Domains<a name="role-manager-tutorial-domain"></a>
+
+You can create a role using Amazon SageMaker Role Manager when you start the process of creating a Amazon SageMaker Domain\.
+
+To create a role using Amazon SageMaker Role Manager, do the following\.
+
+1. Open the Amazon SageMaker console\.
+
+1. On the left\-hand navigation, choose **Domains**\.
+
+1. Choose **Create domain**\.
+
+1. Choose **Create role using the role creation wizard**\.
+
+## Notebook<a name="role-manager-tutorial-notebook"></a>
+
+You can create a role using Amazon SageMaker Role Manager when you start the process of creating a notebook\.
+
+To create a role using Amazon SageMaker Role Manager, do the following\.
+
+1. Open the Amazon SageMaker console\.
+
+1. On the left\-hand navigation, select **Notebook**\.
+
+1. Choose **Notebook instances**\.
+
+1. Choose **Create notebook instance**\.
+
+1. Choose **Create role using the role creation wizard**\.
+
+## Training<a name="role-manager-tutorial-training"></a>
+
+You can create a role using Amazon SageMaker Role Manager when you start the process of creating a training job\.
+
+To create a role using Amazon SageMaker Role Manager, do the following\.
+
+1. Open the Amazon SageMaker console\.
+
+1. On the left\-hand navigation, choose **Training**\.
+
+1. Select **Training jobs**\.
+
+1. Choose **Create training job**\.
+
+1. Choose **Create role using the role creation wizard**\.
+
+## Inference<a name="role-manager-tutorial-inference"></a>
+
+You can create a role using Amazon SageMaker Role Manager when you start the process of deploying a model for inference\.
+
+To create a role using Amazon SageMaker Role Manager, do the following\.
+
+1. Open the Amazon SageMaker console\.
+
+1. On the left\-hand navigation, choose **Inference**\.
+
+1. Select **Models**\.
+
+1. Choose **Create model**\.
+
+1. Choose **Create role using the role creation wizard**\.
+
+After you've completed one of the preceding procedures, use the information in the following sections to help you create the role\.
 
 ## Prerequisites<a name="role-manager-tutorial-prerequisites"></a>
 

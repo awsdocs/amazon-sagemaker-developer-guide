@@ -105,6 +105,9 @@ You can add the following optional methods to the `create_dataset` function to c
   + `feature_group` – The feature group that you're joining\.
   + `target_feature_name_in_base` – The name of the feature in the base feature group that you're using as a key in the join\. The record identifier in the other feature groups are the other keys that Feature Store uses in the join\.
   + `included_feature_names` – A list of strings representing the feature names of the base feature group\. You can use the field to specify the features that you want to include in the dataset\.
+  + `feature_name_in_target` – Optional string representing the feature in the target feature group that will be compared to the target feature in the base feature group\.
+  + `join_comparator` – Optional `JoinComparatorEnum` representing the comparator used when joining the target feature in the base feature group and the feature in the target feature group\. These `JoinComparatorEnum` values can be `GREATER_THAN`, `GREATER_THAN_OR_EQUAL_TO`, `LESS_THAN`, `LESS_THAN_OR_EQUAL_TO`, `NOT_EQUAL_TO` or `EQUALS` by default\.
+  + `join_type` – Optional `JoinTypeEnum` representing the type of join between the base and target feature groups\. These `JoinTypeEnum` values can be `LEFT_JOIN`, `RIGHT_JOIN`, `FULL_JOIN`, `CROSS_JOIN` or `INNER_JOIN` by default\.
 + `with_event_time_range` – Creates a dataset using the event time range that you specify\.
 + `as_of` – Creates a dataset up to a timestamp that you specify\. For example, if you specify `datetime(2021, 11, 28, 23, 55, 59, 342380)` as the value, creates a dataset up to November 28th, 2021\.
 + `point_time_accurate_join` – Creates a dataset where all of the event time values of the base feature group is less than all the event time values of the feature group or pandas dataframe that you're joining\.

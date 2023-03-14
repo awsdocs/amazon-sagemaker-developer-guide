@@ -53,7 +53,7 @@ After you sign up for an AWS account, create an administrative user so that you 
 
 ## Create an execution role and trust policy<a name="geospatial-role-setup"></a>
 
-As a managed service, Amazon SageMaker geospatial capabilities perform operations on your behalf on the AWS hardware that is managed by SageMaker\. It can perform only operations that the user permits\. To work with SageMaker geospatial capabilities you need to setup a user role and an execution role\. See [Amazon SageMaker geospatial capability roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-geospatial-roles.html) to learn more\.
+As a managed service, Amazon SageMaker geospatial capabilities perform operations on your behalf on the AWS hardware that is managed by SageMaker\. It can perform only operations that the user permits\. To work with SageMaker geospatial capabilities you need to setup a user role and an execution role\. See [Amazon SageMaker geospatial capabilities roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-geospatial-roles.html) to learn more\.
 
 ## Setup the SageMaker geospatial UI and SageMaker Studio notebook with a SageMaker geospatial image<a name="geospatial-sdk-console-setup"></a>
 

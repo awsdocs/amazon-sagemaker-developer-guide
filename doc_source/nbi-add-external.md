@@ -34,6 +34,9 @@ Due to how Conda resolves the dependency graph, installing packages from conda\-
 
 The Deep Learning AMI comes with many conda environments and many packages preinstalled\. Due to the number of packages preinstalled, finding a set of packages that are guaranteed to be compatible is difficult\. You may see a warning "The environment is inconsistent, please check the package plan carefully"\. Despite this warning, SageMaker ensures that all the SageMaker provided environments are correct\. SageMaker cannot guarantee that any user installed packages will function correctly\.
 
+**Note**  
+Users of SageMaker, AWS Deep Learning AMI and Amazon EMR can access the commercial Anaconda repository without taking a commercial license through February 1, 2024 when using Anaconda in those services\. For any usage outside of these three services, customers are responsible for determining their own Anaconda license requirements\.
+
 Conda has two methods for activating environments: conda activate/deactivate, and source activate/deactivate\. For more information, see [Should I use 'conda activate' or 'source activate' in Linux](https://stackoverflow.com/questions/49600611/python-anaconda-should-i-use-conda-activate-or-source-activate-in-linux)\.
 
 SageMaker supports moving Conda environments onto the Amazon EBS volume, which is persisted when the instance is stopped\. The environments aren't persisted when the environments are installed to the root volume, which is the default behavior\. For an example lifecycle script, see [persistent\-conda\-ebs](https://github.com/aws-samples/amazon-sagemaker-notebook-instance-lifecycle-config-samples/tree/master/scripts/persistent-conda-ebs)\.

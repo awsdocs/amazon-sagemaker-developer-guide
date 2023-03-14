@@ -27,11 +27,13 @@ For you to set up Amazon SageMaker Canvas, your version of Amazon SageMaker Stud
 
 1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Choose **Control Panel** at the top left of the page\.
+1. Choose **Domains** in the navigation pane\.
 
-1. On the **Control Panel** page, under **Choose setup method**, choose **Standard setup**\.
+1. On the **Domains** page, choose **Create domain**
 
-1. Select **Configure**\.
+1. Choose **Standard setup**\.
+
+1. Choose **Configure**\.
 
 Use the following procedure to configure the general settings\.
 
@@ -91,11 +93,11 @@ You can now access SageMaker Canvas by doing the following\.
 
 1. Navigate to the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Under **Control Panel**, choose **Canvas**\.
+1. In the navigation pane, choose **Canvas**\.
 
-1. Choose **Launch app**\.
+1. In the **Get Started** box, select your user profile from the dropdown\.
 
-1. Choose **Canvas**\.
+1. Choose **Open Canvas** to open the application\.
 
 SageMaker Canvas creates an Amazon S3 bucket with a name that uses the following pattern: `sagemaker-Region-your-account-id`\.
 

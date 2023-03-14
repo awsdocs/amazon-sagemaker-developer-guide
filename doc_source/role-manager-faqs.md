@@ -4,7 +4,7 @@ Refer to the following FAQ items for answers to commonly asked questions about A
 
 ## Q\. How can I access Amazon SageMaker Role Manager?<a name="role-manager-faqs-access"></a>
 
-A: You can access Amazon SageMaker Role Manager either through the **Getting Started** or **Control Panel** sections in the Amazon SageMaker console\. If you choose **Getting Started** in the navigation pane, scroll down to the **Configure role** section and choose **Create a role**\. Alternatively, you can access Amazon SageMaker Role Manager when setting up a domain or user profile through the control panel\. To access the role manager when setting up a domain or user profile, choose **Create a new role** and then choose **Create role using Amazon SageMaker Role Manager**\. 
+A: You can access Amazon SageMaker Role Manager through multiple location in the Amazon SageMaker console\. For information about accessing role manager and using it to create a role, see [Using the role manager](role-manager-tutorial.md)\.
 
 ## Q\. What are personas?<a name="role-manager-faqs-personas"></a>
 

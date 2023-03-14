@@ -1,4 +1,4 @@
-# SageMaker geospatial capability roles<a name="sagemaker-geospatial-roles"></a>
+# SageMaker geospatial capabilities roles<a name="sagemaker-geospatial-roles"></a>
 
 As a managed service, Amazon SageMaker geospatial capabilities perform operations on your behalf on the AWS hardware that is managed by SageMaker\. It can perform only operations that the user permits\.
 
