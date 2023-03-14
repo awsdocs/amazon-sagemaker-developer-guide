@@ -2,7 +2,7 @@
 
 After you train your machine learning model, you can deploy it using Amazon SageMaker to get predictions in any of the following ways, depending on your use case:
 + For persistent, real\-time endpoints that make one prediction at a time, use SageMaker real\-time hosting services\. See [Real\-time inference](realtime-endpoints.md)\.
-+ Workloads that have idle periods between traffic spurts and can tolerate cold starts, use Serverless Inference\. See [Serverless Inference \(Preview\)](serverless-endpoints.md)\.
++ Workloads that have idle periods between traffic spurts and can tolerate cold starts, use Serverless Inference\. See [Serverless Inference](serverless-endpoints.md)\.
 + Requests with large payload sizes up to 1GB, long processing times, and near real\-time latency requirements, use Amazon SageMaker Asynchronous Inference\. See [Asynchronous inference](async-inference.md)\.
 + To get predictions for an entire dataset, use SageMaker batch transform\. See [Use Batch Transform](batch-transform.md)\.
 

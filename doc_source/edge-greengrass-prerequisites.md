@@ -1,8 +1,8 @@
 # Prerequisites<a name="edge-greengrass-prerequisites"></a>
 
-SageMaker Edge Manager uses AWS IoT Greengrass V2 to simplify the deployment of the Edge Manager agent, your machine learning models, and your inference application to your device\(s\) with the use of components\. To make it easier to maintain your AWS IAM roles, Edge Manager allows you to reuse your existing AWS IoT role alias\. If you do not have one yet, Edge Manager generates a role alias as part of the Edge Manager packaging job\. You no longer need to associate a role alias generated from the SageMaker Edge Manager packaging job with your AWS IoT Role\. 
+SageMaker Edge Manager uses AWS IoT Greengrass V2 to simplify the deployment of the Edge Manager agent, your machine learning models, and your inference application to your devices with the use of components\. To make it easier to maintain your AWS IAM roles, Edge Manager allows you to reuse your existing AWS IoT role alias\. If you do not have one yet, Edge Manager generates a role alias as part of the Edge Manager packaging job\. You no longer need to associate a role alias generated from the SageMaker Edge Manager packaging job with your AWS IoT role\. 
 
-Before you start, you must:
+Before you start, you must complete the following prerequisites:
 
 1. Install the AWS IoT Greengrass Core software\. For detailed information, see [Install the AWS IoT Greengrass Core software](https://docs.aws.amazon.com/greengrass/v2/developerguide/getting-started.html#install-greengrass-v2)\.
 
@@ -18,7 +18,7 @@ The IAM Role must start with `SageMaker*`
    + Next, choose **Attach policies**\.
    + Search for **AmazonSageMakerEdgeDeviceFleetPolicy**\.
    + Select **AmazonSageMakerFullAccess** \(This is an optional step that makes it easier for you to reuse this IAM role in model compilation and packaging\)\.
-   + Select **Add inline policy**\.
+   + Add required permissions to a role's permissions policy, don't attach inline policies to IAM users\.
 
      ```
      {
@@ -36,9 +36,9 @@ The IAM Role must start with `SageMaker*`
          ]
      }
      ```
-   + Click **Attach policy**\.
-   + Select **Trust relationship**\.
-   + Click **Edit trust relationship**\.
+   + Choose **Attach policy**\.
+   + Choose **Trust relationship**\.
+   + Choose **Edit trust relationship**\.
    + Replace the content with the following\.
 
      ```
@@ -67,7 +67,7 @@ The IAM Role must start with `SageMaker*`
 
 1. Register your device with the same name as your AWS IoT thing name created during the AWS IoT Greengrass V2 setup\.
 
-1. Create at least one custom private AWS IoT Greengrass component\. This component is the application that runs inference on the device\. See [Create a Hello World custom component](edge-greengrass-custom-component.md#edge-greengrass-create-custom-component-how)
+1. Create at least one custom private AWS IoT Greengrass component\. This component is the application that runs inference on the device\. For more information, see [Create a Hello World custom component](edge-greengrass-custom-component.md#edge-greengrass-create-custom-component-how)
 
 **Note**  
 The SageMaker Edge Manager and AWS IoT Greengrass integration only works for AWS IoT Greengrass v2\.

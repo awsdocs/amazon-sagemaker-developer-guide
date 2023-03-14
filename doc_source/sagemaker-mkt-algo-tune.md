@@ -39,7 +39,7 @@ You can create use an algorithm resource to create a hyperparameter tuning job b
 
    1. Choose **Next**\.
 
-   1. For **Objective metric**, choose the metric that the hyperparameter tuning job uses to determine the best combination of hyperparameters, and choose whether to minimize or maximize this metric\. For more information, see [View the Best Training Job](automatic-model-tuning-monitor.md#automatic-model-tuning-best-training-job)\.
+   1. For **Objective metric**, choose the metric that the hyperparameter tuning job uses to determine the best combination of hyperparameters, and choose whether to minimize or maximize this metric\. For more information, see [View the Best Training Job](automatic-model-tuning-ex-tuning-job.md#automatic-model-tuning-best-training-job)\.
 
    1. For **Hyperparameter configuration**, choose ranges for the tunable hyperparameters that you want the tuning job to search, and set static values for hyperparameters that you want to remain constant in all training jobs that the hyperparameter tuning job launches\. For more information, see [Define Hyperparameter Ranges](automatic-model-tuning-define-ranges.md)\.
 

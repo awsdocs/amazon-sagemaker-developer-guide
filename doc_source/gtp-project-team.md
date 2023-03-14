@@ -1,6 +1,6 @@
 # Create a Project Team<a name="gtp-project-team"></a>
 
-A project team provides access to the members from your organization or team to track projects, view metrics, and review annotations\. You can create a Ground Truth Plus project team once you have shared your data in an Amazon S3 bucket\.
+A project team provides access to the members from your organization or team to track projects, view metrics, and review annotations\. You can create a SageMaker Ground Truth Plus project team once you have shared your data in an Amazon S3 bucket\.
 
 To add team members using Amazon Cognito, you have two options:
 
@@ -13,7 +13,7 @@ To add team members using Amazon Cognito, you have two options:
    1. Choose **Create project team**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/gtb-project-team.png)
 
-   1. Your team members receive an email inviting them to join the Ground Truth Plus project team as shown in the following image\.   
+   1. Your team members receive an email inviting them to join the SageMaker Ground Truth Plus project team as shown in the following image\.   
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/gtb-email-preview.png)
 
 1. Import team members from existing Amazon Cognito user groups\.

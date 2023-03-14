@@ -19,7 +19,7 @@ While Studio Lab provides free access to AWS compute resources, Amazon SageMaker
 
 Studio also supports fine\-grained access control and security by using AWS Identity and Access Management \(IAM\), Amazon Virtual Private Cloud \(Amazon VPC\), and AWS Key Management Service \(AWS KMS\)\. Studio Lab does not support these Studio features, nor does it support the use of estimators and built\-in SageMaker algorithms\.
 
-To export your Studio Lab projects for use with Studio, see [Export Amazon SageMaker Studio Lab environment to Amazon SageMaker Studio](studio-lab-use-migrate.md)\.
+To export your Studio Lab projects for use with Studio, see [Export an Amazon SageMaker Studio Lab environment to Amazon SageMaker Studio](studio-lab-use-migrate.md)\.
 
 The following topics give information about Studio Lab and how to use it
 

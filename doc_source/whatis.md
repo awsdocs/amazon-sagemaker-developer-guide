@@ -1,108 +1,17 @@
 # What Is Amazon SageMaker?<a name="whatis"></a>
 
-Amazon SageMaker is a fully managed machine learning service\. With SageMaker, data scientists and developers can quickly and easily build and train machine learning models, and then directly deploy them into a production\-ready hosted environment\. It provides an integrated Jupyter authoring notebook instance for easy access to your data sources for exploration and analysis, so you don't have to manage servers\. It also provides common machine learning algorithms that are optimized to run efficiently against extremely large data in a distributed environment\. With native support for bring\-your\-own\-algorithms and frameworks, SageMaker offers flexible distributed training options that adjust to your specific workflows\. Deploy a model into a secure and scalable environment by launching it with a few clicks from SageMaker Studio or the SageMaker console\. Training and hosting are billed by minutes of usage, with no minimum fees and no upfront commitments\.
+Amazon SageMaker is a fully managed machine learning service\. With SageMaker, data scientists and developers can quickly and easily build and train machine learning models, and then directly deploy them into a production\-ready hosted environment\. It provides an integrated Jupyter authoring notebook instance for easy access to your data sources for exploration and analysis, so you don't have to manage servers\. It also provides common machine learning algorithms that are optimized to run efficiently against extremely large data in a distributed environment\. With native support for bring\-your\-own\-algorithms and frameworks, SageMaker offers flexible distributed training options that adjust to your specific workflows\. Deploy a model into a secure and scalable environment by launching it with a few clicks from SageMaker Studio or the SageMaker console\.
 
-This guide includes information and tutorials on SageMaker features\. For additional information, see [Amazon SageMaker developer resources](https://aws.amazon.com/sagemaker/developer-resources/)\.
+This guide includes information and tutorials on SageMaker features\. For additional information, see [Amazon SageMaker developer resources](http://aws.amazon.com/sagemaker/developer-resources/)\.
 
 **Topics**
-+ [Amazon SageMaker Features](#whatis-features)
++ [Amazon SageMaker Features](whatis-features-alpha.md)
 + [Amazon SageMaker Pricing](#whatis-pricing)
 + [Are You a First\-time User of Amazon SageMaker?](#first-time-user)
 
-## Amazon SageMaker Features<a name="whatis-features"></a>
-
-Amazon SageMaker includes the following features:
-
-**[SageMaker Studio](studio.md)**  
-An integrated machine learning environment where you can build, train, deploy, and analyze your models all in the same application\.
-
-**[SageMaker Canvas](canvas.md)**  
-An auto ML service that gives people with no coding experience the ability to build models and make predictions with them\.
-
-**[SageMaker Ground Truth Plus](gtp.md)**  
-A turnkey data labeling feature to create high\-quality training datasets without having to build labeling applications and manage the labeling workforce on your own\.
-
-**[SageMaker Studio Lab](studio-lab.md)**  
-A free service that gives customers access to AWS compute resources in an environment based on open\-source JupyterLab\.
-
-**[SageMaker Training Compiler](training-compiler.md)**  
-Train deep learning models faster on scalable GPU instances managed by SageMaker\.
-
-**[SageMaker Studio Universal Notebook](studio-notebooks-emr-cluster.md)**  
-Easily discover, connect to, create, terminate and manage Amazon EMR clusters in single account and cross account configurations directly from SageMaker Studio\.
-
-**[SageMaker Serverless Endpoints](serverless-endpoints.md)**  
-A serverless endpoint option for hosting your ML model\. Automatically scales in capacity to serve your endpoint traffic\. Removes the need to select instance types or manage scaling policies on an endpoint\.
-
-**[SageMaker Inference Recommender](inference-recommender.md)**  
-Get recommendations on inference instance types and configurations \(e\.g\. instance count, container parameters and model optimizations\) to use your ML models and workloads\.
-
-**[SageMaker Model Registry](model-registry.md)**  
-Versioning, artifact and lineage tracking, approval workflow, and cross account support for deployment of your machine learning models\.
-
-**[SageMaker Projects](sagemaker-projects.md)**  
-Create end\-to\-end ML solutions with CI/CD by using SageMaker projects\.
-
-**[SageMaker Model Building Pipelines](pipelines.md)**  
-Create and manage machine learning pipelines integrated directly with SageMaker jobs\.
-
-**[SageMaker ML Lineage Tracking](lineage-tracking.md)**  
-Track the lineage of machine learning workflows\.
-
-**[SageMaker Data Wrangler](data-wrangler.md)**  
-Import, analyze, prepare, and featurize data in SageMaker Studio\. You can integrate Data Wrangler into your machine learning workflows to simplify and streamline data pre\-processing and feature engineering using little to no coding\. You can also add your own Python scripts and transformations to customize your data prep workflow\.
-
-**[SageMaker Feature Store](feature-store.md)**  
-A centralized store for features and associated metadata so features can be easily discovered and reused\. You can create two types of stores, an Online or Offline store\. The Online Store can be used for low latency, real\-time inference use cases and the Offline Store can be used for training and batch inference\.
-
-**[SageMaker JumpStart](studio-jumpstart.md)**  
-Learn about SageMaker features and capabilities through curated 1\-click solutions, example notebooks, and pretrained models that you can deploy\. You can also fine\-tune the models and deploy them\.
-
-**[SageMaker Clarify](clarify-fairness-and-explainability.md)**  
-Improve your machine learning models by detecting potential bias and help explain the predictions that models make\.
-
-**[SageMaker Edge Manager](edge.md)**  
-Optimize custom models for edge devices, create and manage fleets and run models with an efficient runtime\.
-
-**[SageMaker Ground Truth](sms.md)**  
-High\-quality training datasets by using workers along with machine learning to create labeled datasets\.
-
-**[Amazon Augmented AI](a2i-use-augmented-ai-a2i-human-review-loops.md)**  
-Build the workflows required for human review of ML predictions\. Amazon A2I brings human review to all developers, removing the undifferentiated heavy lifting associated with building human review systems or managing large numbers of human reviewers\.
-
-**[SageMaker Studio Notebooks](notebooks.md)**  
-The next generation of SageMaker notebooks that include AWS Single Sign\-On \(AWS SSO\) integration, fast start\-up times, and single\-click sharing\.
-
-**[SageMaker Experiments](experiments.md)**  
-Experiment management and tracking\. You can use the tracked data to reconstruct an experiment, incrementally build on experiments conducted by peers, and trace model lineage for compliance and audit verifications\.
-
-**[SageMaker Debugger](train-debugger.md)**  
-Inspect training parameters and data throughout the training process\. Automatically detect and alert users to commonly occurring errors such as parameter values getting too large or small\.
-
-**[SageMaker Autopilot](autopilot-automate-model-development.md)**  
-Users without machine learning knowledge can quickly build classification and regression models\.
-
-**[SageMaker Model Monitor](model-monitor.md)**  
-Monitor and analyze models in production \(endpoints\) to detect data drift and deviations in model quality\.
-
-**[SageMaker Neo](neo.md)**  
-Train machine learning models once, then run anywhere in the cloud and at the edge\.
-
-**[SageMaker Elastic Inference](ei.md)**  
-Speed up the throughput and decrease the latency of getting real\-time inferences\.
-
-**[Reinforcement Learning](reinforcement-learning.md)**  
-Maximize the long\-term reward that an agent receives as a result of its actions\.
-
-**[Preprocessing](processing-job.md)**  
-Analyze and preprocess data, tackle feature engineering, and evaluate models\.
-
-**[Batch Transform](batch-transform.md)**  
-Preprocess datasets, run inference when you don't need a persistent endpoint, and associate input records with inferences to assist the interpretation of results\.
-
 ## Amazon SageMaker Pricing<a name="whatis-pricing"></a>
 
-As with other AWS products, there are no contracts or minimum commitments for using Amazon SageMaker\. For more information about the cost of using SageMaker, see [SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/)\.
+As with other AWS products, there are no contracts or minimum commitments for using Amazon SageMaker\. Training and hosting are billed by minutes of usage, with no minimum fees and no upfront commitments\. For more information about the cost of using SageMaker, see [SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing/)\.
 
 ## Are You a First\-time User of Amazon SageMaker?<a name="first-time-user"></a>
 

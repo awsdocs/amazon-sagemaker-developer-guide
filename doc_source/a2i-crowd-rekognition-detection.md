@@ -2,19 +2,19 @@
 
 A widget to enable human review of an Amazon Rekognition image moderation result\.
 
-### Attributes<a name="rekognition-attributes"></a>
+## Attributes<a name="rekognition-attributes"></a>
 
 The following attributes are supported by this element\.
 
-#### header<a name="rekognition-attributes-header"></a>
+### header<a name="rekognition-attributes-header"></a>
 
 This is the text that is displayed as the header\.
 
-#### src<a name="rekognition-attributes-src"></a>
+### src<a name="rekognition-attributes-src"></a>
 
 This is a link to the image to be analyzed by the worker\. 
 
-#### categories<a name="rekognition-attributes-categories"></a>
+### categories<a name="rekognition-attributes-categories"></a>
 
 This supports `categories` as an array of strings **or** an array of objects where each object has a `name` field\.
 
@@ -25,32 +25,32 @@ If the categories come in as objects, the following applies:
 If the categories come in as strings, the following applies:
 + The returned answer is an array of all the strings that were selected\.
 
-#### exclusion\-category<a name="rekognition-attributes-exclusion-category"></a>
+### exclusion\-category<a name="rekognition-attributes-exclusion-category"></a>
 
 By setting this attribute you create a button underneath the categories in the UI\. 
 + When a user chooses the button, all categories are deselected and disabled\.
 + Choosing the button again re\-enables the categories so that users can choose them\.
 + If you submit after choosing the button, it returns an empty array\.
 
-### Element Hierarchy<a name="rekognition-crowd-element-hierarchy"></a>
+## Element Hierarchy<a name="rekognition-crowd-element-hierarchy"></a>
 
 This element has the following parent and child elements\.
 + Parent elements – crowd\-form
 + Child elements – [full\-instructions](#rek-full-instructions), [short\-instructions](#rek-short-instructions) 
 
-### AWS Regions<a name="rek-crowd-regions"></a>
+## AWS Regions<a name="rek-crowd-regions"></a>
 
 The following AWS Regions are supported by this element\. You can use custom HTML and CSS code within these Regions to format your instructions to workers\. For example, use the `short-instructions` section to provide good and bad examples of how to complete a task\. 
 
-#### full\-instructions<a name="rek-full-instructions"></a>
+### full\-instructions<a name="rek-full-instructions"></a>
 
 General instructions about how to work with the widget\. 
 
-#### short\-instructions<a name="rek-short-instructions"></a>
+### short\-instructions<a name="rek-short-instructions"></a>
 
 Important task\-specific instructions that are displayed in a prominent place\. 
 
-### Example Worker Template with the crowd Element<a name="rek-crowd-element-example"></a>
+## Example Worker Template with the crowd Element<a name="rek-crowd-element-example"></a>
 
 An example of a worker template using the crowd element would look like the following\.
 
@@ -140,7 +140,7 @@ Visuals depicting death by hanging</p>
 </crowd-form>
 ```
 
-### Output<a name="rek-crowd-element-output"></a>
+## Output<a name="rek-crowd-element-output"></a>
 
 The following is a sample of the output from this element\. For details about this output, see Amazon Rekognition [DetectModerationLabels](https://docs.aws.amazon.com/rekognition/latest/dg/API_DetectModerationLabels.html) API documentation\. 
 

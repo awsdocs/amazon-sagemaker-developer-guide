@@ -1,7 +1,7 @@
 # Stop Training Jobs Early<a name="automatic-model-tuning-early-stopping"></a>
 
 Stop the training jobs that a hyperparameter tuning job launches early when they are not improving significantly as measured by the objective metric\. Stopping training jobs early can help reduce compute time and helps you avoid overfitting your model\. To configure a hyperparameter tuning job to stop training jobs early, do one of the following:
-+ If you are using the AWS SDK for Python \(Boto 3\), set the `TrainingJobEarlyStoppingType` field of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobConfig.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobConfig.html) object that you use to configure the tuning job to `AUTO`\.
++ If you are using the AWS SDK for Python \(Boto3\), set the `TrainingJobEarlyStoppingType` field of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobConfig.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobConfig.html) object that you use to configure the tuning job to `AUTO`\.
 + If you are using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io), set the `early_stopping_type` parameter of the [HyperParameterTuner](https://sagemaker.readthedocs.io/en/stable/tuner.html) object to `Auto`\.
 + In the Amazon SageMaker console, in the **Create hyperparameter tuning job** workflow, under **Early stopping**, choose **Auto**\.
 
@@ -17,10 +17,14 @@ When you enable early stopping for a hyperparameter tuning job, SageMaker evalua
 ## Algorithms That Support Early Stopping<a name="automatic-tuning-early-stopping-algos"></a>
 
 To support early stopping, an algorithm must emit objective metrics for each epoch\. The following built\-in SageMaker algorithms support early stopping:
++ [LightGBM](lightgbm.md)
++ [CatBoost](catboost.md)
++ [AutoGluon\-Tabular](autogluon-tabular.md)
++ [TabTransformer](tabtransformer.md)
 + [Linear Learner Algorithm](linear-learner.md)—Supported only if you use `objective_loss` as the objective metric\.
 + [XGBoost Algorithm](xgboost.md)
-+ [Image Classification Algorithm](image-classification.md)
-+ [Object Detection Algorithm](object-detection.md)
++ [Image Classification \- MXNet](image-classification.md)
++ [Object Detection \- MXNet](object-detection.md)
 + [Sequence\-to\-Sequence Algorithm](seq-2-seq.md)
 + [IP Insights](ip-insights.md)
 

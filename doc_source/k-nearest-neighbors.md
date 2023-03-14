@@ -50,14 +50,10 @@ For more information on input and output file formats, see [Data Formats for k\-
 
 For a sample notebook that uses the SageMaker k\-nearest neighbor algorithm to predict wilderness cover types from geological and forest service data, see the [K\-Nearest Neighbor Covertype ](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/k_nearest_neighbors_covtype/k_nearest_neighbors_covtype.html)\. 
 
-Use a Jupyter notebook instance to run the example in SageMaker\. To learn how to create and open a Jupyter notebook instance in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the SageMaker example notebooks\. Find K\-Nearest Neighbor notebooks in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.
+Use a Jupyter notebook instance to run the example in SageMaker\. To learn how to create and open a Jupyter notebook instance in SageMaker, see [Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the SageMaker example notebooks\. Find K\-Nearest Neighbor notebooks in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.
 
 ## EC2 Instance Recommendation for the k\-NN Algorithm<a name="kNN-instances"></a>
 
-### Instance Recommendation for Training with the k\-NN Algorithm<a name="kNN-instances-training"></a>
-
-To start, try running training on a CPU, using, for example, an ml\.m5\.2xlarge instance, or on a GPU using, for example, an ml\.p2\.xlarge instance\.
-
-### Instance Recommendation for Inference with the k\-NN Algorithm<a name="kNN-instances-inference"></a>
+We recommend training on a CPU instance \(such as ml\.m5\.2xlarge\) or on a GPU instance\. The k\-NN algorithm supports P2, P3, G4dn, and G5 GPU instance families for training and inference\.
 
 Inference requests from CPUs generally have a lower average latency than requests from GPUs because there is a tax on CPU\-to\-GPU communication when you use GPU hardware\. However, GPUs generally have higher throughput for larger batches\.

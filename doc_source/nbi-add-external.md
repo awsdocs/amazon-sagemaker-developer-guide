@@ -23,7 +23,7 @@ You can install packages using the following methods:
   + `%pip install`
 + The Jupyter terminal – You can install packages using pip and conda directly\.
 
-From within a notebook you can use the system command syntax \(lines starting with \!\) to install packages, for example, `!pip install` and `!conda install`\. More recently, new commands have been added to IPython: `%pip` and `%conda`\. These commands are the recommended way to install packages from a notebook as they correctly take into account the activate environment or interpreter being used\. For more information, see [Add %pip and %conda magic functions](https://github.com/ipython/ipython/pull/11524)\.
+From within a notebook you can use the system command syntax \(lines starting with \!\) to install packages, for example, `!pip install` and `!conda install`\. More recently, new commands have been added to IPython: `%pip` and `%conda`\. These commands are the recommended way to install packages from a notebook as they correctly take into account the active environment or interpreter being used\. For more information, see [Add %pip and %conda magic functions](https://github.com/ipython/ipython/pull/11524)\.
 
 ### Conda<a name="nbi-add-external-tools-conda"></a>
 
@@ -33,6 +33,9 @@ Conda is an open source package management system and environment management sys
 Due to how Conda resolves the dependency graph, installing packages from conda\-forge can take significantly longer \(in the worst cases, upwards of 10 minutes\)\.
 
 The Deep Learning AMI comes with many conda environments and many packages preinstalled\. Due to the number of packages preinstalled, finding a set of packages that are guaranteed to be compatible is difficult\. You may see a warning "The environment is inconsistent, please check the package plan carefully"\. Despite this warning, SageMaker ensures that all the SageMaker provided environments are correct\. SageMaker cannot guarantee that any user installed packages will function correctly\.
+
+**Note**  
+Users of SageMaker, AWS Deep Learning AMI and Amazon EMR can access the commercial Anaconda repository without taking a commercial license through February 1, 2024 when using Anaconda in those services\. For any usage outside of these three services, customers are responsible for determining their own Anaconda license requirements\.
 
 Conda has two methods for activating environments: conda activate/deactivate, and source activate/deactivate\. For more information, see [Should I use 'conda activate' or 'source activate' in Linux](https://stackoverflow.com/questions/49600611/python-anaconda-should-i-use-conda-activate-or-source-activate-in-linux)\.
 

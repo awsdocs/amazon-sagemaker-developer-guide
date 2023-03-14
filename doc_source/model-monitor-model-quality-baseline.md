@@ -2,7 +2,7 @@
 
 Create a baseline job that compares your model predictions with ground truth labels in a baseline dataset that you have stored in Amazon S3\. Typically, you use a training dataset as the baseline dataset\. The baseline job calculates metrics for the model and suggests constraints to use to monitor model quality drift\.
 
-To create a baseline job, you need to have a dataset that contains predictions from your model along with labels that represent the ground truth for your data\.
+To create a baseline job, you need to have a dataset that contains predictions from your model along with labels that represent the Ground Truth for your data\.
 
 To create a baseline job use the `ModelQualityMonitor` class provided by the SageMaker Python SDK, and complete the following steps\.
 
@@ -58,6 +58,28 @@ To create a baseline job use the `ModelQualityMonitor` class provided by the Sag
    ```
 
    We recommend that you view the generated constraints and modify them as necessary before using them for monitoring\. For example, if a constraint is too aggressive, you might get more alerts for violations than you want\.
+
+   If your constraint contains numbers expressed in scientific notation, you will need to convert them to float\. The following python [preprocessing script](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-pre-and-post-processing.html#model-monitor-pre-processing-script) example shows how to convert numbers in scientific notation to float\. 
+
+   ```
+   import csv
+   
+   def fix_scientific_notation(col):
+       try:
+           return format(float(col), "f")
+       except:
+           return col
+   
+   def preprocess_handler(csv_line):
+       reader = csv.reader([csv_line])
+       csv_record = next(reader)
+       #skip baseline header, change HEADER_NAME to the first column's name
+       if csv_record[0] == “HEADER_NAME”:
+          return []
+       return { str(i).zfill(20) : fix_scientific_notation(d) for i, d in enumerate(csv_record)}
+   ```
+
+   You can add your pre\-processing script to a baseline or monitoring schedule as a `record_preprocessor_script`, as defined in the [Model Monitor](https://sagemaker.readthedocs.io/en/stable/api/inference/model_monitor.html) documentation\.
 
 1. When you are satisfied with the constraints, pass them as the `constraints` parameter when you create a monitoring schedule\. For more information, see [Schedule Model Quality Monitoring Jobs](model-monitor-model-quality-schedule.md)\.
 

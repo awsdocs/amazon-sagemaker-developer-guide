@@ -4,6 +4,15 @@ You can connect to Amazon SageMaker Studio from your [Amazon Virtual Private Clo
 
 SageMaker Studio supports interface endpoints that are powered by [AWS PrivateLink](https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-services-overview.html)\. Each interface endpoint is represented by one or more [Elastic network interfaces](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html) with private IP addresses in your VPC subnets\.
 
+Studio supports interface endpoints in all AWS Regions where both [Amazon SageMaker](http://aws.amazon.com/sagemaker/pricing/) and [Amazon VPC](http://aws.amazon.com/vpc/pricing/) are available\.
+
+**Topics**
++ [Create a VPC Endpoint](#studio-interface-endpoint-create)
++ [Create a VPC Endpoint Policy for SageMaker Studio](#studio-private-link-policy)
++ [Allow Access Only from Within Your VPC](#studio-private-link-restrict)
+
+## Create a VPC Endpoint<a name="studio-interface-endpoint-create"></a>
+
 You can create an interface endpoint to connect to Studio with either the AWS console or the AWS Command Line Interface \(AWS CLI\)\. For instructions, see [Creating an interface endpoint](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#create-interface-endpoint)\. Make sure that you create interface endpoints for all of the subnets in your VPC from which you want to connect to Studio\. 
 
 When you create an interface endpoint, ensure that the security groups on your endpoint allow inbound access for HTTPS traffic from the security groups associated with SageMaker Studio\. For more information, see [Control access to services with VPC endpoints](https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-access.html#vpc-endpoints-security-groups)\.
@@ -11,13 +20,7 @@ When you create an interface endpoint, ensure that the security groups on your e
 **Note**  
 In addition to creating an interface endpoint to connect to SageMaker Studio, create an interface endpoint to connect to the Amazon SageMaker API\. When users call [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreatePresignedDomainUrl.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreatePresignedDomainUrl.html) to get the URL to connect to Studio, that call goes through the interface endpoint used to connect to the SageMaker API\.
 
-When you create the interface endpoint, specify **aws\.sagemaker\.*Region*\.studio** as the service name\. After you create the interface endpoint, enable private DNS for your endpoint\. Anyone who uses the SageMaker API, the AWS CLI, or the console to connect to SageMaker Studio from within the VPC connects to Studio through the interface endpoint instead of the public internet\. You also need to set up a custom DNS with private hosted zones for the Amazon VPC endpoint so SageMaker Studio can access the SageMaker API using the `api.sagemaker.$region.amazonaws.com` endpoint rather than using the VPC endpoint URL\. For instructions on setting up a private hosted zone, see [Working with private hosted zones](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-private.html)\.
-
-Studio supports interface endpoints in all AWS Regions where both [Amazon SageMaker](http://aws.amazon.com/sagemaker/pricing/) and [Amazon VPC](http://aws.amazon.com/vpc/pricing/) are available\.
-
-**Topics**
-+ [Create a VPC Endpoint Policy for SageMaker Studio](#studio-private-link-policy)
-+ [Allow Access Only from Within Your VPC](#studio-private-link-restrict)
+When you create the interface endpoint, specify **aws\.sagemaker\.*Region*\.studio** as the service name\. After you create the interface endpoint, enable private DNS for your endpoint\. When you connect to SageMaker Studio from within the VPC using the SageMaker API, the AWS CLI, or the console, you connect through the interface endpoint instead of the public internet\. You also need to set up a custom DNS with private hosted zones for the Amazon VPC endpoint so SageMaker Studio can access the SageMaker API using the `api.sagemaker.$region.amazonaws.com` endpoint rather than using the VPC endpoint URL\. For instructions on setting up a private hosted zone, see [Working with private hosted zones](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-private.html)\.
 
 ## Create a VPC Endpoint Policy for SageMaker Studio<a name="studio-private-link-policy"></a>
 
@@ -34,7 +37,7 @@ To use a VPC endpoint with SageMaker Studio, your endpoint policy must allow the
    {
      "Action": "sagemaker:CreateApp",
      "Effect": "Allow",
-     "Resource": "arn:aws:sagemaker:us-west-2:acct-id:user-profile/domain-id/*",
+     "Resource": "arn:aws:sagemaker:us-west-2:acct-id:app/domain-id/*",
      "Principal": "*"
    }
  ]
@@ -62,7 +65,7 @@ The following example of a VPC endpoint policy specifies that all users that hav
 
 Users outside your VPC can connect to SageMaker Studio over the internet even if you set up an interface endpoint in your VPC\.
 
-To allow access to only connections made from within your VPC, create an AWS Identity and Access Management \(IAM\) policy to that effect\. Add that policy to every IAM user, group, or role used to access Studio\. This feature is only supported in IAM mode, and is not supported in SSO mode\. The following examples demonstrate how to create such policies\.
+To allow access to only connections made from within your VPC, create an AWS Identity and Access Management \(IAM\) policy to that effect\. Add that policy to every user, group, or role used to access Studio\. This feature is only supported in IAM mode, and is not supported in IAM Identity Center mode\. The following examples demonstrate how to create such policies\.
 
 **Important**  
 If you apply an IAM policy similar to one of the following examples, users can't access SageMaker Studio or the specified SageMaker APIs through the SageMaker console\. To access Studio, users must use a presigned URL or call the SageMaker APIs directly\.

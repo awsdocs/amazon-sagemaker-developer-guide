@@ -2,7 +2,7 @@
 
 
 
-Amazon SageMaker Model Monitor provides a prebuilt container with ability to analyze the data captured from endpoints for tabular datasets\. If you would like to bring your own container, Model Monitor provides extension points which you can leverage\.
+Amazon SageMaker Model Monitor provides a prebuilt container with ability to analyze the data captured from endpoints or batch transform jobs for tabular datasets\. If you would like to bring your own container, Model Monitor provides extension points which you can leverage\.
 
 Under the hood, when you create a `MonitoringSchedule`, Model Monitor ultimately kicks off processing jobs\. Hence the container needs to be aware of the processing job contract documented in the [Build Your Own Processing Container \(Advanced Scenario\)](build-your-own-processing-container.md) topic\. Note that Model Monitor kicks off the processing job on your behalf per the schedule\. While invoking, Model Monitor sets up additional environment variables for you so that your container has enough context to process the data for that particular execution of the scheduled monitoring\. For additional information on container inputs, see the [Container Contract Inputs](model-monitor-byoc-contract-inputs.md)\.
 

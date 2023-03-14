@@ -1,6 +1,6 @@
-# Adapting Your Own Docker Container to Work with SageMaker<a name="docker-containers-adapt-your-own"></a>
+# Adapting your own Docker container to work with SageMaker<a name="docker-containers-adapt-your-own"></a>
 
-You can adapt an existing Docker image to work with SageMaker\. You may need to use an existing, external Docker image with SageMaker when you have a container that satisfies feature or safety requirements that are not currently supported by a prebuilt SageMaker image\. There are two toolkits that allow you to bring your own container and adapt it to work with SageMaker:
+You can adapt an existing Docker image to work with SageMaker\. You may need to use an existing, external Docker image with SageMaker when you have a container that satisfies feature or safety requirements that are not currently supported by a pre\-built SageMaker image\. There are two toolkits that allow you to bring your own container and adapt it to work with SageMaker:
 + [SageMaker Training Toolkit](https://github.com/aws/sagemaker-training-toolkit)
 + [SageMaker Inference Toolkit](https://github.com/aws/sagemaker-inference-toolkit)
 
@@ -9,7 +9,7 @@ The following topics show how to adapt your existing image using the SageMaker T
 **Topics**
 + [Individual Framework Libraries](#docker-containers-adapt-your-own-frameworks)
 + [Using the SageMaker Training and Inference Toolkits](amazon-sagemaker-toolkits.md)
-+ [Adapting Your Own Training Container](adapt-training-container.md)
++ [Adapting your own training container](adapt-training-container.md)
 + [Adapting Your Own Inference Container](adapt-inference-container.md)
 
 ## Individual Framework Libraries<a name="docker-containers-adapt-your-own-frameworks"></a>

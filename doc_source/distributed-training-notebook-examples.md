@@ -9,41 +9,52 @@ The examples are set up to use `p3.16xlarge` instances for the worker nodes, but
 ## Blogs and Case Studies<a name="distributed-training-notebook-examples-blog"></a>
 
 The following blogs discuss case studies about using the SageMaker distributed training libraries\.
-+ [Hyundai reduces ML model training time for autonomous driving models using Amazon SageMaker](https://aws.amazon.com/blogs/machine-learning/hyundai-reduces-training-time-for-autonomous-driving-models-using-amazon-sagemaker/)
-+ [Distributed Training: Train BART/T5 for Summarization using Transformers and Amazon SageMaker](https://huggingface.co/blog/sagemaker-distributed-training-seq2seq) in the *HuggingFace documentation*
+
+**The SageMaker data parallelism library**
++ [How I trained 10TB for Stable Diffusion on SageMaker](https://medium.com/@emilywebber/how-i-trained-10tb-for-stable-diffusion-on-sagemaker-39dcea49ce32) in *Medium* \(November 29, 2022\)
++ [Run PyTorch Lightning and native PyTorch DDP on Amazon SageMaker Training, featuring Amazon Search ](http://aws.amazon.com/blogs/machine-learning/run-pytorch-lightning-and-native-pytorch-ddp-on-amazon-sagemaker-training-featuring-amazon-search/), *AWS Machine Learning Blog* \(August 18, 2022\)
++ [Training YOLOv5 on AWS with PyTorch and the SageMaker distributed data parallel library](https://medium.com/@sitecao/training-yolov5-on-aws-with-pytorch-and-sagemaker-distributed-data-parallel-library-a196ab01409b), *Medium* \(May 6, 2022\)
++ [Speed up EfficientNet model training on SageMaker with PyTorch and the SageMaker distributed data parallel library](https://medium.com/@dangmz/speed-up-efficientnet-model-training-on-amazon-sagemaker-with-pytorch-and-sagemaker-distributed-dae4b048c01a), *Medium* \(March 21, 2022\)
++ [Speed up EfficientNet training on AWS with the SageMaker distributed data parallel library](https://towardsdatascience.com/speed-up-efficientnet-training-on-aws-by-up-to-30-with-sagemaker-distributed-data-parallel-library-2dbf6d1e18e8), *Towards Data Science* \(January 12, 2022\)
++ [Hyundai reduces ML model training time for autonomous driving models using Amazon SageMaker](http://aws.amazon.com/blogs/machine-learning/hyundai-reduces-training-time-for-autonomous-driving-models-using-amazon-sagemaker/), *AWS Machine Learning Blog* \(June 25, 2021\)
++ [Distributed Training: Train BART/T5 for Summarization using Transformers and Amazon SageMaker](https://huggingface.co/blog/sagemaker-distributed-training-seq2seq), the *Hugging Face website* \(April 8, 2021\)
+
+**The SageMaker model parallelism library**
++ [New performance improvements in the Amazon SageMaker model parallelism library](http://aws.amazon.com/blogs/machine-learning/new-performance-improvements-in-amazon-sagemaker-model-parallel-library/), *AWS Machine Learning Blog* \(December 16, 2022\)
++ [Train gigantic models with near\-linear scaling using sharded data parallelism on Amazon SageMaker](http://aws.amazon.com/blogs/machine-learning/train-gigantic-models-with-near-linear-scaling-using-sharded-data-parallelism-on-amazon-sagemaker/), *AWS Machine Learning Blog* \(October 31, 2022\)
 
 ## PyTorch Examples<a name="distributed-training-notebook-examples-pytorch"></a>
 
-**SageMaker Distributed Data Parallel**
-+ [CNN with PyTorch 1\.6 and SageMaker Data Parallel](https://sagemaker-examples.readthedocs.io/en/latest/training/distributed_training/pytorch/data_parallel/mnist/pytorch_smdataparallel_mnist_demo.html)
-+ [MaskRCNN with PyTorch 1\.6 and SageMaker Data Parallel](https://sagemaker-examples.readthedocs.io/en/latest/training/distributed_training/pytorch/data_parallel/maskrcnn/pytorch_smdataparallel_maskrcnn_demo.html)
-+ [BERT with PyTorch 1\.6 and SageMaker Data Parallel](https://sagemaker-examples.readthedocs.io/en/latest/training/distributed_training/pytorch/data_parallel/bert/pytorch_smdataparallel_bert_demo.html)
+**The SageMaker data parallelism library**
++ [CNN with PyTorch 1\.6 and the SageMaker data parallelism library](https://sagemaker-examples.readthedocs.io/en/latest/training/distributed_training/pytorch/data_parallel/mnist/pytorch_smdataparallel_mnist_demo.html)
++ [MaskRCNN with PyTorch 1\.6 and the SageMaker data parallelism library](https://sagemaker-examples.readthedocs.io/en/latest/training/distributed_training/pytorch/data_parallel/maskrcnn/pytorch_smdataparallel_maskrcnn_demo.html)
++ [BERT with PyTorch 1\.6 and the SageMaker data parallelism library](https://sagemaker-examples.readthedocs.io/en/latest/training/distributed_training/pytorch/data_parallel/bert/pytorch_smdataparallel_bert_demo.html)
 
-**SageMaker Distributed Model Parallel**
-+ [Train GPT\-2 with PyTorch 1\.8\.1 and Tensor Parallelism Using the SageMaker Model Parallelism Library](https://sagemaker-examples.readthedocs.io/en/latest/training/distributed_training/pytorch/model_parallel/gpt2/smp-train-gpt-simple.html)
-+ [BERT with PyTorch 1\.6 and SageMaker Model Parallel](https://sagemaker-examples.readthedocs.io/en/latest/training/distributed_training/pytorch/model_parallel/bert/smp_bert_tutorial.html)
+**The SageMaker model parallelism library**
++ [Train GPT\-2 with PyTorch 1\.8\.1 and Tensor Parallelism Using the SageMaker model parallelism library](https://sagemaker-examples.readthedocs.io/en/latest/training/distributed_training/pytorch/model_parallel/gpt2/smp-train-gpt-simple.html)
++ [BERT with PyTorch 1\.6 and the SageMaker model parallelism library](https://sagemaker-examples.readthedocs.io/en/latest/training/distributed_training/pytorch/model_parallel/bert/smp_bert_tutorial.html)
 
 ## TensorFlow Examples<a name="distributed-training-notebook-examples-tensorflow"></a>
 
-**SageMaker Distributed Data Parallel **
-+ [CNN with TensorFlow 2\.3\.1 and SageMaker Data Parallel](https://sagemaker-examples.readthedocs.io/en/latest/training/distributed_training/tensorflow/data_parallel/mnist/tensorflow2_smdataparallel_mnist_demo.html)
-+ [MaskRCNN with TensorFlow 2\.3\.1 and SageMaker Data Parallel](https://sagemaker-examples.readthedocs.io/en/latest/training/distributed_training/tensorflow/data_parallel/maskrcnn/tensorflow2_smdataparallel_maskrcnn_demo.html)
-+ [BERT with TensorFlow 2\.3\.1 and SageMaker Data Parallel](https://sagemaker-examples.readthedocs.io/en/latest/training/distributed_training/tensorflow/data_parallel/bert/tensorflow2_smdataparallel_bert_demo.html)
+**The SageMaker data parallelism library**
++ [CNN with TensorFlow 2\.3\.1 and the SageMaker data parallelism library](https://sagemaker-examples.readthedocs.io/en/latest/training/distributed_training/tensorflow/data_parallel/mnist/tensorflow2_smdataparallel_mnist_demo.html)
++ [MaskRCNN with TensorFlow 2\.3\.1 and the SageMaker data parallelism library](https://sagemaker-examples.readthedocs.io/en/latest/training/distributed_training/tensorflow/data_parallel/maskrcnn/tensorflow2_smdataparallel_maskrcnn_demo.html)
++ [BERT with TensorFlow 2\.3\.1 and the SageMaker data parallelism library](https://sagemaker-examples.readthedocs.io/en/latest/training/distributed_training/tensorflow/data_parallel/bert/tensorflow2_smdataparallel_bert_demo.html)
 
-**SageMaker Distributed Model Parallel**
-+ [CNN with TensorFlow 2\.3\.1 and SageMaker Model Parallel](https://sagemaker-examples.readthedocs.io/en/latest/training/distributed_training/tensorflow/model_parallel/mnist/tensorflow_smmodelparallel_mnist.html)
+**The SageMaker model parallelism library**
++ [CNN with TensorFlow 2\.3\.1 and the SageMaker model parallelism library](https://sagemaker-examples.readthedocs.io/en/latest/training/distributed_training/tensorflow/model_parallel/mnist/tensorflow_smmodelparallel_mnist.html)
 
 ## HuggingFace Examples<a name="distributed-training-notebook-examples-huggingface"></a>
 
 The following HuggingFace on SageMaker examples are available in the [HuggingFace notebooks repository](https://github.com/huggingface/notebooks/tree/master/sagemaker)\.
 
-**SageMaker Distributed Data Parallel **
+**The SageMaker data parallelism library**
 + [HuggingFace Distributed Data Parallel Training in PyTorch on SageMaker \- Distributed Question Answering](https://github.com/huggingface/notebooks/blob/master/sagemaker/03_distributed_training_data_parallelism/sagemaker-notebook.ipynb)
 + [HuggingFace Distributed Data Parallel Training in PyTorch on SageMaker \- Distributed Text Summarization](https://github.com/huggingface/notebooks/blob/master/sagemaker/08_distributed_summarization_bart_t5/sagemaker-notebook.ipynb)
 + [HuggingFace Distributed Data Parallel Training in TensorFlow on SageMaker](https://github.com/huggingface/notebooks/blob/master/sagemaker/07_tensorflow_distributed_training_data_parallelism/sagemaker-notebook.ipynb)
 
-**SageMaker Distributed Model Parallel**
-+ [HuggingFace with TensorFlow Distributed Model Parallel Training on SageMaker](https://github.com/huggingface/notebooks/blob/master/sagemaker/04_distributed_training_model_parallelism/sagemaker-notebook.ipynb)
+**The SageMaker model parallelism library**
++ [HuggingFace with TensorFlow Distributed model parallelism library Training on SageMaker](https://github.com/huggingface/notebooks/blob/master/sagemaker/04_distributed_training_model_parallelism/sagemaker-notebook.ipynb)
 
 ## How to Access or Download the SageMaker Distributed Training Notebook Examples<a name="distributed-training-notebook-examples-setup"></a>
 
@@ -70,7 +81,7 @@ To download and use the aforementioned example notebooks, do the following to cl
 1. In the command line, navigate to the SageMaker folder\.
 
    ```
-   $ cd SageMaker
+   cd SageMaker
    ```
 
 1. Clone the [SageMaker examples GitHub repository](https://github.com/aws/amazon-sagemaker-examples.git)\.

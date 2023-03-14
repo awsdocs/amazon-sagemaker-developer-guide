@@ -6,13 +6,15 @@ After you create a project, view the resources associated with the project in Am
 
 1. Sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
-1. Choose **Components and registries**, and then choose **Projects**\.
+1. In the Studio sidebar, choose the **Home** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
 
-1. Double\-click the name of the project for which you want to view details\.
+1. Select **Deployments** from the menu, and then select **Projects**\.
+
+1. Select the name of the project for which you want to view details\.
 
    A tab with the project details appears\.
 
-On the product details tab, you can view the following entities associated with the project\.
+On the project details tab, you can view the following entities associated with the project\.
 + Repositories: Code repositories \(repos\) associated with this project\. If you use a SageMaker\-provided template when you create your project, it creates a AWS CodeCommit repo or a third\-party Git repo\. For more information about CodeCommit, see [What is AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)\.
 + Pipelines: SageMaker ML pipelines that define steps to prepare data, train, and deploy models\. For information about SageMaker ML pipelines, see [Create and Manage SageMaker Pipelines](pipelines-build.md)\.
 + Experiments: One or more Amazon SageMaker Autopilot experiments associated with the project\. For information about Autopilot, see [Automate model development with Amazon SageMaker Autopilot](autopilot-automate-model-development.md)\.

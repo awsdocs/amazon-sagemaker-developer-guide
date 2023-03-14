@@ -1,6 +1,6 @@
 # Getting started with using Amazon SageMaker Canvas<a name="canvas-getting-started"></a>
 
-This guide tells you how to get started with using SageMaker Canvas\. If you're an IT administrator, see [Setting up and managing Amazon SageMaker Canvas \(for IT administrators\)](canvas-setting-up.md) to set up SageMaker Canvas for your users\.
+This guide tells you how to get started with using SageMaker Canvas\. If you're an IT administrator, see [Setting Up and Managing Amazon SageMaker Canvas \(for IT Administrators\)](canvas-setting-up.md) to set up SageMaker Canvas for your users\.
 
 If you're a business user or analyst, read the following sections\.
 
@@ -17,20 +17,23 @@ If you're a business user or analyst, read the following sections\.
 To set up Amazon SageMaker Canvas, you either contact your administrator or do the following:
 + Set up an Amazon SageMaker Domain
 + Optional: Give yourself the ability to upload local files
-+ Optional: Give yourself the ability to do time series forecasts
++ Optional: Give yourself permissions to do time series forecasts
++ Optional: Give yourself permissions to import Amazon Redshift data
 
 **Important**  
-For you to set up Amazon SageMaker Canvas, your version of Amazon SageMaker Studio must be 3\.19\.0 or later\. For information about updating Amazon SageMaker Studio, see [Update SageMaker Studio](studio-tasks-update-studio.md)\.
+For you to set up Amazon SageMaker Canvas, your version of Amazon SageMaker Studio must be 3\.19\.0 or later\. For information about updating Amazon SageMaker Studio, see [Shut down and Update SageMaker Studio](studio-tasks-update-studio.md)\.
 
-**To onboard to Domain using AWS SSO**
+**To onboard to Domain using IAM Identity Center**
 
 1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Choose **SageMaker Domain** at the top left of the page\.
+1. Choose **Domains** in the navigation pane\.
 
-1. On the **SageMaker Domain** page, under **Choose setup method**, choose **Standard setup**\.
+1. On the **Domains** page, choose **Create domain**
 
-1. Select **Configure**\.
+1. Choose **Standard setup**\.
+
+1. Choose **Configure**\.
 
 Use the following procedure to configure the general settings\.
 
@@ -43,28 +46,58 @@ Use the following procedure to configure the general settings\.
    1. Choose **Create role**\. SageMaker creates a new IAM `AmazonSageMaker-ExecutionPolicy` role with the [AmazonSageMakerFullAccess](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/AmazonSageMakerFullAccess) policy attached\.
 
 1. Under **Network and storage**, specify the following:
-   + Your VPC information – For more information, see [Choose a VPC](onboard-vpc.md) and [Run Amazon SageMaker Canvas in a VPC](canvas-vpc.md)\.
+   + Your VPC information – For more information, see [Choose an Amazon VPC](onboard-vpc.md) and [Configure Amazon SageMaker Canvas in a VPC without internet access](canvas-vpc.md)\.
    + \(Optional\) **Encryption key** – SageMaker uses an AWS KMS key to encrypt your Amazon Elastic File System \(Amazon EFS\) and Amazon Elastic Block Store \(Amazon EBS\) file systems\. By default, it uses an AWS managed key\. To use a customer managed key, enter its key ID or Amazon Resource Name \(ARN\)\. For more information, see [Protect Data at Rest Using Encryption](encryption-at-rest.md)\.
 **Note**  
 Encryption in transit is only available for Amazon SageMaker Studio\.
 
 1. Select **Next**\. 
 
-Use the following procedure to configure Amazon SageMaker Studio\.
+If you want to collaborate with Studio users and share models, you must add additional permissions to the AWS Identity and Access Management \(IAM\) role you chose when setting up the user profile\. For instructions on how to add the policy to the role, see [Grant Users Permissions to Collaborate with Studio](canvas-collaborate-permissions.md)\.
 
-1. Under **Notebook Sharing Configuration**, turn on notebook sharing\.
+Use the following procedure to configure the SageMaker Canvas settings\.
 
-1. Select **Next**\. 
+1. For the **Canvas base permissions configuration**, leave the **Enable Canvas base permissions** option turned on \(it is turned on by default\)\. This establishes the minimum required permissions to use the SageMaker Canvas app\.
+
+1. \(Optional\) For the **Time series forecasting configuration**, leave the **Enable time series forecasting** option turned on to give your users permissions to do time series forecasting in SageMaker Canvas \(it is turned on by default\)\.
+
+1. \(Optional\) If you left **Enable time series forecasting** turned on, select **Create and use a new execution role**, or select **Use an existing execution role** if you already have an IAM role with the required Amazon Forecast permissions attached \(for more information, see the [IAM role setup method](canvas-set-up-forecast.md#canvas-set-up-forecast-iam)\)\.
+
+1. \(Optional\) Add **Tags** to track your cost and usage trends in AWS Billing and Cost Management\. SageMaker adds the tags you specify in the Domain to all of the SageMaker Canvas apps you create in the Domain\. For more information about billing and tags, see [Manage billing and cost in SageMaker Canvas](canvas-manage-cost.md)\.
+
+1. Finish making any other changes to your Domain setup, and then choose **Submit**\.
+
+If you encounter an error during post\-building analysis that tells you to increase your quota for `ml.m5.2xlarge` instances, use the following information to resolve the issue\. To allow SageMaker Canvas to complete post\-building analysis of models, you must increase the SageMaker Hosting endpoint limit for the `ml.m5.2xlarge` instance type to a non\-zero value in your AWS account\. After building a model, SageMaker Canvas hosts the model on a SageMaker Hosting endpoint and uses the endpoint to generate the post\-building analysis\. If you don't increase the default account limit of 0 for `ml.m5.2xlarge` instances, SageMaker Canvas cannot complete this step and generates an error during post\-building analysis\.
+
+Use the following procedure to request a limit increase for your account\.
+
+1. Open the [AWS Support Center console](https://console.aws.amazon.com/support/home#/case/create)\.
+
+1. On the **AWS Support Center** page, choose **Create Case** and then choose **Service limit increase**\.
+
+1. In the **Case classification** panel under **Limit type**, search for SageMaker\.
+
+1. In the **Request** panel, choose the **Region** that you are working in\. For **Resource Type**, choose **SageMaker Hosting**\.
+
+1. For **Limit**, choose **ml\.m5\.2xlarge** instances\.
+
+1. For **New Limit Value**, verify that the value is at least **1**\.
+
+1. In **Case description**, provide a brief explanation of why you need the **Service limit increase**\. For example, "SageMaker Canvas uses this instance type for model analysis\."
+
+1. In **Contact options**, provide some details about how you would like to be contacted by the AWS service support team on the status of your **Service limit increase** request\.
+
+1. Choose **Submit**\.
 
 You can now access SageMaker Canvas by doing the following\.
 
 1. Navigate to the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Under **SageMaker Domain**, choose **Canvas**\.
+1. In the navigation pane, choose **Canvas**\.
 
-1. Choose **Launch app**\.
+1. In the **Get Started** box, select your user profile from the dropdown\.
 
-1. Choose **Canvas**\.
+1. Choose **Open Canvas** to open the application\.
 
 SageMaker Canvas creates an Amazon S3 bucket with a name that uses the following pattern: `sagemaker-Region-your-account-id`\.
 
@@ -105,43 +138,19 @@ To attach a CORS policy, use the following procedure\.
 
 After updating the CORS policy, you still might not be successful in uploading your files\. The browser might be caching the CORS settings from a previous upload attempt\. If you're running into issues, clear your browser cache and try again\.
 
-You might want to give yourself the ability to perform forecasts on time series data\.
+You might want to give yourself the ability to perform forecasts on time series data\. You can add time series forecasting permissions when setting up your Domain, or you can edit the permissions for a user profile after creating your Domain\. The required permissions are the `AmazonSageMakerCanvasForecastAccess` managed policy and a trust relationship with Amazon Forecast to the AWS IAM role you chose when setting up the user profile\. For instructions on how to add these permissions to your IAM role, see [Grant Your Users Permissions to Perform Time Series Forecasting](canvas-set-up-forecast.md)\.
 
-To give yourself the ability to do time series forecasting, add `AmazonForecastFullAccess` to your IAM role\.
-
-1. Add the `AmazonForecastFullAccess` AWS managed policy to your IAM role\.
-
-1. Add the following trust relationship to the IAM role\.
-
-```
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Service": [
-            "sagemaker.amazonaws.com", # Already present
-            "forecast.amazonaws.com"   # This needs to be added
-        ]
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-```
-
-For information about AWS managed policies, see [Managed policies and inline policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)\.
+If you want to import data from Amazon Redshift, you must give yourself additional permissions\. You must add the `AmazonRedshiftFullAccess` managed policy to the AWS IAM role you chose when setting up the user profile\. For instructions on how to add the policy to the role, see [Grant Users Permissions to Import Amazon Redshift Data](canvas-redshift-permissions.md)\.
 
 ## Step 1: Log in to Amazon SageMaker Canvas as a business user<a name="canvas-getting-started-step1"></a>
 
-Contact your administrator to guide you through the process of setting up Amazon SageMaker Canvas\. When you gain access, you see the following page\. You can choose **Getting Started** for a walkthrough of the service\.
+Contact your administrator to guide you through the process of setting up Amazon SageMaker Canvas\. When you log into SageMaker Canvas for the first time, there is a welcome message with quick getting started tutorials that you can follow for a walkthrough of the SageMaker Canvas application\.
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/canvas-get-started.png)
+![\[Screenshot of the welcome message with the getting started tutorials in the SageMaker Canvas application.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/canvas-sample-datasets-getting-started.png)
 
-The following image shows the beginning of the **Getting Started** tutorial\.
+You can follow the **Get started with Canvas** tutorial for a high\-level overview of the SageMaker Canvas application\. There are also shorter tutorials that guide you through the individual steps of using SageMaker Canvas\. These tutorials show you how to import a dataset, build a model, analyze the results of a built model, and generate predictions with your model\. You can revisit the tutorials at any time by choosing the **Help** button and then choosing **Quick tutorials** on the left navigation bar inside the SageMaker Canvas application\.
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/canvas-get-started-page.png)
+![\[Screenshot of the help panel in the SageMaker Canvas application where you can access the getting started tutorials.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/canvas-sample-datasets-help-pane.png)
 
 ## Step 2: Import and manage data<a name="canvas-getting-started-step2"></a>
 
@@ -226,7 +235,7 @@ The following image shows how choosing **Preview model** quickly creates an anal
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/canvas-build/canvas-build-preview-model.png)
 
-After you start model building, Amazon SageMaker Canvas automatically cleans and pre\-processes your data\. It builds up to 250 models and chooses the one that is the most accurate\. The time it takes for Amazon SageMaker Canvas to build a model depends on whether you're doing a **Quick build** or a **Standard build** and the size of the dataset\. A **Quick build** usually takes 2\-15 minutes to build, whereas a **Standard build** usually takes 2\-4 hours to build\. You can safely navigate away from the model building page and come back to it when SageMaker Canvas finishes building your model\.
+After you start model building, Amazon SageMaker Canvas automatically cleans and pre\-processes your data\. It builds up to 250 models and chooses the one that is the most accurate\. The time it takes for Amazon SageMaker Canvas to build a model depends on whether you're doing a **Quick build** or a **Standard build** and the size of the dataset\. A **Quick build** usually takes 2\-20 minutes to build, whereas a **Standard build** usually takes 2\-4 hours to build\. You can safely navigate away from the model building page and come back to it when SageMaker Canvas finishes building your model\.
 
 The following image shows the process of model building\.
 
@@ -244,46 +253,49 @@ You can use the **Scoring** tab to get visualizations and metrics on your model'
 
 ## Step 5: Make predictions<a name="canvas-getting-started-step5"></a>
 
-You might not be able to make predictions on some datasets because they might have incompatible schemas\. A schema is the organizational structure\. For a dataset, it is the names of the columns and the data type of the data in the columns\.
-
-An incompatible schema might happen for one of the following reasons:
-+ The dataset that you're using to make predictions has fewer columns than the dataset that you're using to build the model\.
-+ The data types in the columns you used to build the dataset might be different from the data types in dataset that you're using to make predictions\.
-+ The dataset that you're using to make predictions and the dataset that you've used to build the model have column names that don't match\. The column names are case sensitive\. "Column1" is not the same as "column1"\.
-
 You can make one of the following types of predictions\.
 + Batch – Predictions for an entire dataset\.
 + Single – Predictions for a single value that you specify\.
-
-Use the following procedure to make batch predictions\.
-
-To make batch predictions, choose a dataset and generate predictions for it\.
-
-1. Choose **Select Dataset**\.
-
-1. Choose the dataset\.
-
-1. Choose **Update Prediction**\.
 
 For each set of predictions, SageMaker Canvas returns the following:
 + The predicted values
 + The probability of the predicted value being correct
 + The dataset that you've specified for generating predictions
 
-You can download the model's predictions as a \.csv file\.
-
-The following images visualize the preceding procedure\.
-
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/beta-2-pred-1.png)
-
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/beta-2-pred-2.png)
-
-Use the following procedure to make a prediction for a row in the dataset\.
+Use the following procedure to make a single prediction with your model\.
 
 1. Choose **Single prediction**\.
 
 1. Change the input values to see how the predicted value changes from the average prediction\.
 
-1. Choose **Update Prediction**\.
+1. Choose **Update** to get the new prediction\.
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/beta-2-pred-3.png)
+![\[Screenshot of a single prediction in the SageMaker Canvas application.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/beta-2-pred-3.png)
+
+To make batch predictions, choose a dataset and use the following procedure to generate batch predictions\.
+
+1. Choose **Batch prediction**\.
+
+1. Choose **Select Dataset**\.
+
+1. Choose the dataset\.
+
+1. Choose **Generate predictions**\.
+
+The following images visualize the preceding procedure\.
+
+![\[Screenshot of selecting batch prediction in the SageMaker Canvas application\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/beta-2-pred-1.png)
+
+![\[Screenshot of selecting a dataset for batch prediction in the SageMaker Canvas application\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/beta-2-pred-2.png)
+
+For batch predictions, you can download the model's predictions as a \.csv file\. When the **Status** of the predictions output is **Ready**, you can download the file by choosing the **More options** icon \(![\[More options icon for the output CSV file.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/canvas/more-options-icon.png)\) and then choosing **Download**\. If you dropped any columns when building your model, SageMaker Canvas adds the dropped columns back to the batch predictions\.
+
+**Note**  
+SageMaker Canvas does not add the dropped columns to your batch predictions for time series models\.
+
+You might not be able to make predictions on some datasets because they might have incompatible schemas\. A schema is the organizational structure\. For a dataset, it is the names of the columns and the data type of the data in the columns\.
+
+An incompatible schema might happen for one of the following reasons:
++ The dataset that you're using to make predictions has fewer columns than the dataset that you're using to build the model\.
++ The data types in the columns you used to build the dataset might be different from the data types in dataset that you're using to make predictions\.
++ The dataset that you're using to make predictions and the dataset that you've used to build the model have column names that don't match\. The column names are case sensitive\. "Column1" is not the same as "column1"\.

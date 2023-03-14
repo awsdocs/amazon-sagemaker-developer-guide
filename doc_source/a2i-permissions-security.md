@@ -7,9 +7,9 @@ When using Amazon Augmented AI \(Amazon A2I\) to create a human review workflow 
   This role must also have a trust policy attached to give SageMaker permission to assume the role\. This allows Amazon A2I to perform actions in accordance with permissions that you attach to the role\. 
 
   See [Add Permissions to the IAM Role Used to Create a Flow Definition](#a2i-human-review-permissions-s3) for example policies that you can modify and attach to the role you use to create a flow definition\. These are the policies that are attached to the IAM role that is created in the **Human review workflows** section of the Amazon A2I area of the SageMaker console\. 
-+ To create and start human loops, you either use an API operation from a built\-in task type \(such as `DetectModerationLabel` or `AnalyzeDocument`\) or the Amazon A2I Runtime API operation `StartHumanLoop` in a custom ML application\. You need to attach the `AmazonAugmentedAIFullAccess` managed policy to the IAM user that invokes these API operations to grant permission to these services to use Amazon A2I operations\. To learn how, see [Create an IAM User That Can Invoke Amazon A2I API Operations](#create-user-grants)\.
++ To create and start human loops, you either use an API operation from a built\-in task type \(such as `DetectModerationLabel` or `AnalyzeDocument`\) or the Amazon A2I Runtime API operation `StartHumanLoop` in a custom ML application\. You need to attach the `AmazonAugmentedAIFullAccess` managed policy to the user that invokes these API operations to grant permission to these services to use Amazon A2I operations\. To learn how, see [Create a User That Can Invoke Amazon A2I API Operations](#create-user-grants)\.
 
-  This policy does *not* grant permission to invoke the API operations of the AWS service associated with built\-in task types\. For example, `AmazonAugmentedAIFullAccess` does not grant permission to call the Amazon Rekognition `DetectModerationLabel` API operation or Amazon Textract `AnalyzeDocument` API operation\. You can use the more general policy, `AmazonAugmentedAIIntegratedAPIAccess`, to grant these permissions\. For more information, see [Create an IAM User With Permissions to Invoke Amazon A2I, Amazon Textract, and Amazon Rekognition API Operations](#a2i-grant-general-permission)\. This is a good option when you want to grant an IAM user broad permissions to use Amazon A2I and integrated AWS services' API operations\. 
+  This policy does *not* grant permission to invoke the API operations of the AWS service associated with built\-in task types\. For example, `AmazonAugmentedAIFullAccess` does not grant permission to call the Amazon Rekognition `DetectModerationLabel` API operation or Amazon Textract `AnalyzeDocument` API operation\. You can use the more general policy, `AmazonAugmentedAIIntegratedAPIAccess`, to grant these permissions\. For more information, see [Create a User With Permissions to Invoke Amazon A2I, Amazon Textract, and Amazon Rekognition API Operations](#a2i-grant-general-permission)\. This is a good option when you want to grant a user broad permissions to use Amazon A2I and integrated AWS services' API operations\. 
 
   If you want to configure more granular permissions, see [Amazon Rekognition Identity\-Based Policy Examples](https://docs.aws.amazon.com/rekognition/latest/dg/security_iam_id-based-policy-examples.html) and [Amazon Textract Identity\-Based Policy Examples](https://docs.aws.amazon.com/textract/latest/dg/security_iam_id-based-policy-examples.html) for identity\-based policies you can use to grant permission to use these individual services\.
 + To preview your custom worker task UI template, you need an IAM role with permissions to read Amazon S3 objects that get rendered on your user interface\. See a policy example in [Enable Worker Task Template Previews ](#permissions-for-worker-task-templates-augmented-ai)\.
@@ -17,8 +17,8 @@ When using Amazon Augmented AI \(Amazon A2I\) to create a human review workflow 
 **Topics**
 + [CORS Permission Requirement](#a2i-cors-update)
 + [Add Permissions to the IAM Role Used to Create a Flow Definition](#a2i-human-review-permissions-s3)
-+ [Create an IAM User That Can Invoke Amazon A2I API Operations](#create-user-grants)
-+ [Create an IAM User With Permissions to Invoke Amazon A2I, Amazon Textract, and Amazon Rekognition API Operations](#a2i-grant-general-permission)
++ [Create a User That Can Invoke Amazon A2I API Operations](#create-user-grants)
++ [Create a User With Permissions to Invoke Amazon A2I, Amazon Textract, and Amazon Rekognition API Operations](#a2i-grant-general-permission)
 + [Enable Worker Task Template Previews](#permissions-for-worker-task-templates-augmented-ai)
 + [Using Amazon A2I with AWS KMS Encrypted Buckets](#a2i-kms-encryption)
 + [Additional Permissions and Security Resources](#additional-security-resources-augmented-ai)
@@ -117,65 +117,47 @@ For more information about creating and managing IAM roles and policies, see the
 + To learn how to create IAM policies, see [Creating IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html)\. 
 + To learn how to attach an IAM policy to a role, see [Adding and Removing IAM Identity Permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html)\.
 
-## Create an IAM User That Can Invoke Amazon A2I API Operations<a name="create-user-grants"></a>
+## Create a User That Can Invoke Amazon A2I API Operations<a name="create-user-grants"></a>
 
-To use Amazon A2I to create and start human loops for Amazon Rekognition, Amazon Textract, or the Amazon A2I runtime API, you must use an IAM user that has permissions to invoke Amazon A2I operations\. To do this, use the IAM console to attach the [https://console.aws.amazon.com/iam/home?region=us-east-2#/policies/arn:aws:iam::aws:policy/AmazonAugmentedAIFullAccess$jsonEditor](https://console.aws.amazon.com/iam/home?region=us-east-2#/policies/arn:aws:iam::aws:policy/AmazonAugmentedAIFullAccess$jsonEditor) managed policy to a new or existing IAM user\. 
+To use Amazon A2I to create and start human loops for Amazon Rekognition, Amazon Textract, or the Amazon A2I runtime API, you must use a user that has permissions to invoke Amazon A2I operations\. To do this, use the IAM console to attach the [https://console.aws.amazon.com/iam/home?region=us-east-2#/policies/arn:aws:iam::aws:policy/AmazonAugmentedAIFullAccess$jsonEditor](https://console.aws.amazon.com/iam/home?region=us-east-2#/policies/arn:aws:iam::aws:policy/AmazonAugmentedAIFullAccess$jsonEditor) managed policy to a new or existing user\. 
 
-This policy grants permission to an IAM user to invoke API operations from the SageMaker API for flow definition creation and management and the Amazon Augmented AI Runtime API for human loop creation and management\. To learn more about these API operations, see [Use APIs in Amazon Augmented AI](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-api-references.html)\.
+This policy grants permission to a user to invoke API operations from the SageMaker API for flow definition creation and management and the Amazon Augmented AI Runtime API for human loop creation and management\. To learn more about these API operations, see [Use APIs in Amazon Augmented AI](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-api-references.html)\.
 
 `AmazonAugmentedAIFullAccess` does not grant permissions to use Amazon Rekognition or Amazon Textract API operations\. 
 
 **Note**  
 You can also attach the `AmazonAugmentedAIFullAccess` policy to an IAM role that is used to create and start a human loop\. 
 
-**To create the required IAM user**
+To provide access, add permissions to your users, groups, or roles:
++ Users and groups in AWS IAM Identity Center \(successor to AWS Single Sign\-On\):
 
-1. Sign in to the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\.
+  Create a permission set\. Follow the instructions in [Create a permission set](https://docs.aws.amazon.com/singlesignon/latest/userguide/howtocreatepermissionset.html) in the *AWS IAM Identity Center \(successor to AWS Single Sign\-On\) User Guide*\.
++ Users managed in IAM through an identity provider:
 
-1. Choose **Users** and choose an existing user, or create a new user by choosing **Add user**\. To learn how to create a new user, see [Creating an IAM User in Your AWS Account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) in the *AWS Identity and Access Management User Guide*\.
-   + If you chose to attach the policy to an existing user, choose **Add permissions**\.
-   + While creating a new user, follow the next step on the **Set permissions** page\.
-
-1. Choose **Attach existing policies directly**\.
-
-1. In the **Search** bar, enter `AmazonAugmentedAIFullAccess` and check the box next to that policy\. 
-
-   To enable this IAM user to create a flow definition with the public work team, also attach the `AmazonSageMakerMechanicalTurkAccess` managed policy\. 
-
-1. After attaching the policy or policies:
-
-   1. If you are using an existing user, choose **Next: Review**, and then choose **Add permissions**\.
-
-   1. If you are creating a new user, choose **Next: Tags** and complete the process of creating your user\. 
+  Create a role for identity federation\. Follow the instructions in [Creating a role for a third\-party identity provider \(federation\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp.html) in the *IAM User Guide*\.
++ IAM users:
+  + Create a role that your user can assume\. Follow the instructions in [Creating a role for an IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) in the *IAM User Guide*\.
+  + \(Not recommended\) Attach a policy directly to a user or add a user to a user group\. Follow the instructions in [Adding permissions to a user \(console\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_change-permissions.html#users_change_permissions-add-console) in the *IAM User Guide*\.
 
 For more information, see [Adding and Removing IAM Identity Permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html) in the *AWS Identity and Access Management User Guide*\.
 
-## Create an IAM User With Permissions to Invoke Amazon A2I, Amazon Textract, and Amazon Rekognition API Operations<a name="a2i-grant-general-permission"></a>
+## Create a User With Permissions to Invoke Amazon A2I, Amazon Textract, and Amazon Rekognition API Operations<a name="a2i-grant-general-permission"></a>
 
-To create an IAM user that has permission to invoke the API operations used by the built\-in task types \(that is, `DetectModerationLables` for Amazon Rekognition and `AnalyzeDocument` for Amazon Textract\) and permission to use all Amazon A2I API operations, attach the IAM managed policy, `AmazonAugmentedAIIntegratedAPIAccess`\. You may want to use this policy when you want to grant broad permissions to an IAM user using Amazon A2I with more than one task type\. To learn more about these API operations, see [Use APIs in Amazon Augmented AI](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-api-references.html)\.
+To create a user that has permission to invoke the API operations used by the built\-in task types \(that is, `DetectModerationLables` for Amazon Rekognition and `AnalyzeDocument` for Amazon Textract\) and permission to use all Amazon A2I API operations, attach the IAM managed policy, `AmazonAugmentedAIIntegratedAPIAccess`\. You may want to use this policy when you want to grant broad permissions to a user using Amazon A2I with more than one task type\. To learn more about these API operations, see [Use APIs in Amazon Augmented AI](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-api-references.html)\.
 
 **Note**  
 You can also attach the `AmazonAugmentedAIIntegratedAPIAccess` policy to an IAM role that is used to create and start a human loop\. 
 
-**To create the required IAM user**
+To provide access, add permissions to your users, groups, or roles:
++ Users and groups in AWS IAM Identity Center \(successor to AWS Single Sign\-On\):
 
-1. Sign in to the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\.
+  Create a permission set\. Follow the instructions in [Create a permission set](https://docs.aws.amazon.com/singlesignon/latest/userguide/howtocreatepermissionset.html) in the *AWS IAM Identity Center \(successor to AWS Single Sign\-On\) User Guide*\.
++ Users managed in IAM through an identity provider:
 
-1. Choose **Users** and choose an existing user, or create a new user by choosing **Add user**\. To learn how to create a new user, see [Creating an IAM User in Your AWS Account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) in the *AWS Identity and Access Management User Guide*\.
-   + If you chose to attach the policy to an existing user, choose **Add permissions**\.
-   + If you are creating a new user, follow the next step on the **Set permissions** page\.
-
-1. Choose **Attach existing policies directly**\.
-
-1. In the **Search** bar, enter `AmazonAugmentedAIIntegratedAPIAccess` and select the box next to that policy\. 
-
-   To allow this IAM user to create a flow definition using Amazon Mechanical Turk, also attach the `AmazonSageMakerMechanicalTurkAccess` managed policy\. 
-
-1. After attaching the policy or policies:
-
-   1. If you are using an existing user, choose **Next: Review**, and then choose **Add permissions**\.
-
-   1. If you are creating a new user, choose **Next: Tags** and complete the process of creating your user\. 
+  Create a role for identity federation\. Follow the instructions in [Creating a role for a third\-party identity provider \(federation\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp.html) in the *IAM User Guide*\.
++ IAM users:
+  + Create a role that your user can assume\. Follow the instructions in [Creating a role for an IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) in the *IAM User Guide*\.
+  + \(Not recommended\) Attach a policy directly to a user or add a user to a user group\. Follow the instructions in [Adding permissions to a user \(console\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_change-permissions.html#users_change_permissions-add-console) in the *IAM User Guide*\.
 
 For more information, see [Adding and Removing IAM Identity Permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html) in the *AWS Identity and Access Management User Guide*\.
 

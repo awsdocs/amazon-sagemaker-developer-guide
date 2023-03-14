@@ -4,7 +4,7 @@ Algorithmic bias, discrimination, fairness, and related topics have been studied
 
 Bias can be measured before training and after training, and monitored against baselines after deploying models to endpoints for inference\. Pretraining bias metrics are designed to detect and measure bias in the raw data before it is used to train a model\. The metrics used are model\-agnostic because they do not depend on any model outputs\. However, there are different concepts of fairness that require distinct measures of bias\. Amazon SageMaker Clarify provides bias metrics to quantify various fairness criteria\.
 
-For additional information about bias metrics, see [Fairness Measures for Machine Learning in Finance](https://pages.awscloud.com/rs/112-TZM-766/images/Fairness.Measures.for.Machine.Learning.in.Finance.pdf)\.
+For additional information about bias metrics, see [Learn How Amazon SageMaker Clarify Helps Detect Bias](http://aws.amazon.com/blogs/machine-learning/learn-how-amazon-sagemaker-clarify-helps-detect-bias) and [Fairness Measures for Machine Learning in Finance](https://pages.awscloud.com/rs/112-TZM-766/images/Fairness.Measures.for.Machine.Learning.in.Finance.pdf)\.
 
 ## Amazon SageMaker Clarify Terms for Bias and Fairness<a name="clarify-bias-and-fairness-terms"></a>
 
@@ -55,7 +55,7 @@ The probability, as predicted by the model, of a sample having a positive or neg
 ## Sample Notebooks<a name="clarify-data-bias-sample-notebooks"></a>
 
 Amazon SageMaker Clarify provides the following sample notebook for bias detection:
-+ [Explainability and bias detection with Amazon SageMaker Clarify](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker_processing/fairness_and_explainability/fairness_and_explainability.html) – Use SageMaker Clarify to create a processing job for the detecting bias and explaining model predictions with feature attributions\.
++ [Explainability and bias detection with Amazon SageMaker Clarify](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-clarify/fairness_and_explainability/fairness_and_explainability.html) – Use SageMaker Clarify to create a processing job for detecting bias and explaining model predictions with feature attributions\.
 
 This notebook has been verified to run in Amazon SageMaker Studio only\. If you need instructions on how to open a notebook in Amazon SageMaker Studio, see [Create or Open an Amazon SageMaker Studio Notebook](notebooks-create-open.md)\. If you're prompted to choose a kernel, choose **Python 3 \(Data Science\)**\. 
 

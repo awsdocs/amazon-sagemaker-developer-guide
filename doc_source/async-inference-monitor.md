@@ -30,6 +30,7 @@ These metrics are published for endpoints enabled for asynchronous inference\. T
 | `ApproximateBacklogSize` | The number of items in the queue for an endpoint that are currently being processed or yet to be processed\. | Units: Count Valid statistics: Average, Max, Min  | 
 | `ApproximateBacklogSizePerInstance` | Number of items in the queue divided by the number of instances behind an endpoint\. This metric is primarily used for setting up application autoscaling for an async\-enabled endpoint\. | Units: CountValid statistics: Average, Max, Min | 
 | `ApproximateAgeOfOldestRequest` | Age of the oldest request in the queue\. | Units: SecondsValid statistics: Average, Max, Min | 
+| `HasBacklogWithoutCapacity` | The value of this metric is `1` when there are requests in the queue but zero instances behind the endpoint\. The value is `0` at all other times\. You can use this metric for autoscaling your endpoint up from zero instances upon receiving a new request in the queue\. | Units: CountValid statistics: Average | 
 
 The following metrics are published with the `EndpointName` and `VariantName` dimensions:
 
@@ -44,7 +45,7 @@ The following metrics are published with the `EndpointName` and `VariantName` di
 | `ExpiredRequests` | Number of requests in the queue that fail due to reaching their specified request TTL\. | Units: CountValid statistics: Sum | 
 | `InvocationFailures` | If an invocation fails for any reason\. | Units: CountValid statistics: Sum | 
 | `InvocationsProcesssed` | Number of async invocations processed by the endpoint\. | Units: CountValid statistics: Sum | 
-| `TimeInBacklog` | Total time the request was queued before being processed\. This does not include the actual processing time \(i\.e\. downloading time, uploading time, model latency\)\. | Units: MicrosecondsValid statistics: Average, Sum, Min, Max, Sample Count | 
+| `TimeInBacklog` | Total time the request was queued before being processed\. This does not include the actual processing time \(i\.e\. downloading time, uploading time, model latency\)\. | Units: MillisecondsValid statistics: Average, Sum, Min, Max, Sample Count | 
 | `TotalProcessingTime` | Time the inference request was recieved by SageMaker to the time the request finished processing\. This includes time in backlog and time to upload and send response notifications, if any\. | Units: MillisecondsValid statistics: Average, Sum, Min, Max, Sample Count | 
 
 Amazon SageMaker Asynchronous Inference also includes host\-level metrics\. For information on host\-level metrics, see [SageMaker Jobs and Endpoint Metrics](https://docs.aws.amazon.com/sagemaker/latest/dg/monitoring-cloudwatch.html#cloudwatch-metrics-jobs)\.

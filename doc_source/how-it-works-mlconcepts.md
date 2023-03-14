@@ -23,7 +23,7 @@ The following diagram illustrates the typical workflow for creating a machine le
    In SageMaker, you preprocess example data in a Jupyter notebook on your notebook instance\. You use your notebook to fetch your dataset, explore it, and prepare it for model training\. For more information, see [Explore, Analyze, and Process Data](how-it-works-notebooks-instances.md)\. For more information about preparing data in AWS Marketplace, see [data preparation](https://aws.amazon.com/marketplace/search/results?searchTerms=data+preparation&spellCheck=false&page=1)\. 
 
 1. **Train a model**—Model training includes both training and evaluating the model, as follows: 
-   + **Training the model**— To train a model, you need an algorithm\. The algorithm you choose depends on a number of factors\. For a quick, out\-of\-the\-box solution, you might be able to use one of the algorithms that SageMaker provides\. For a list of algorithms provided by SageMaker and related considerations, see [Use Amazon SageMaker Built\-in Algorithms](algos.md)\.
+   + **Training the model**— To train a model, you need an algorithm or a pre\-trained base model\. The algorithm you choose depends on a number of factors\. For a quick, out\-of\-the\-box solution, you might be able to use one of the algorithms that SageMaker provides\. For a list of algorithms provided by SageMaker and related considerations, see [Use Amazon SageMaker Built\-in Algorithms or Pre\-trained Models](algos.md)\. For a UI\-based training solution that provides algorithms and models, see [SageMaker JumpStart](studio-jumpstart.md)\.
 
       
 

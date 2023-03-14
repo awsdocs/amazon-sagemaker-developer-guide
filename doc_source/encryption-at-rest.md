@@ -4,4 +4,5 @@ To protect your Amazon SageMaker Studio notebooks and SageMaker notebook instanc
 
 **Topics**
 + [Studio notebooks](encryption-at-rest-studio.md)
-+ [Notebook instances and SageMaker jobs](encryption-at-rest-nbi.md)
++ [Notebook instances, SageMaker jobs, and Endpoints](encryption-at-rest-nbi.md)
++ [SageMaker geospatial capabilities](geospatial-encryption-at-rest.md)

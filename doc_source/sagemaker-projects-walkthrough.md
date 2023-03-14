@@ -1,11 +1,11 @@
 # SageMaker MLOps Project Walkthrough<a name="sagemaker-projects-walkthrough"></a>
 
-This walkthrough demonstrates how to use MLOps projects to create a CI/CD system to build, train, and deploy models\.
+This walkthrough uses the template [MLOps template for model building, training, and deployment](sagemaker-projects-templates-sm.md#sagemaker-projects-templates-code-commit) to demonstrate using MLOps projects to create a CI/CD system to build, train, and deploy models\.
 
 **Prerequisites**
 
 To complete this walkthrough, you need:
-+ An AWS SSO or IAM account to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
++ An IAM account or IAM Identity Center to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 + Permission to use SageMaker\-provided project templates\. For information, see [SageMaker Studio Permissions Required to Use Projects](sagemaker-projects-studio-updates.md)\.
 + Basic familiarity with the Studio user interface\. For information, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
 
@@ -25,17 +25,22 @@ In this step, you create a SageMaker MLOps project by using a SageMaker\-provide
 
 1. Sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
-1. Choose **Components and registries**, and then select **Projects** from the dropdown list\.
+1. In the Studio sidebar, choose the **Home** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
+
+1. Select **Deployments** from the menu, and then select **Projects**\.
 
 1. Choose **Create project**\.
 
    The **Create project** tab appears\.
 
-1. For **SageMaker project templates**, choose **Organization templates**, then choose **MLOps template for model building, training, and deployment**\.
+1. If not selected already, choose **SageMaker templates**, then choose **MLOps template for model building, training, and deployment**\.
 
 1. For **Project details**, enter a name and description for your project\.
 
-When the project appears in the **Projects** list with a **Status** of **Created**, move on to the next step\.
+When the project appears in the **Projects** list with a **Status** of **Create completed**, move on to the next step\.
+
+**Important**  
+As of July 25, 2022, we require additional roles to use project templates\. If you see the error message **CodePipeline is not authorized to perform AssumeRole on role arn:aws:iam::xxx:role/service\-role/AmazonSageMakerServiceCatalogProductsCodePipelineRole**, see Steps 5\-6 of [SageMaker Studio Permissions Required to Use Projects](sagemaker-projects-studio-updates.md) for a complete list of required roles and instructions on how to create them\.
 
 ## Step 2: Clone the Code Repository<a name="sagemaker-proejcts-walkthrough-clone"></a>
 
@@ -43,9 +48,11 @@ After you create the project, two CodeCommit repositories are created in the pro
 
 **To clone the code repository**
 
-1. Choose **Components and registries**, and then select **Projects** from the dropdown list\.
+1. In the Studio sidebar, choose the **Home** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
 
-1. Find the name of the project you created in the previous step and double\-click on it to open the project tab for your project\.
+1. Select **Deployments** from the menu, and then select **Projects**\.
+
+1. Select the project you created in the previous step to open the project tab for your project\.
 
 1. In the project tab, choose **Repositories**, and in the **Local path** column for the repository that ends with **modelbuild**, choose **clone repo\.\.\.**\.
 
@@ -71,7 +78,7 @@ Now make a change to the pipeline code that builds the model and check in the ch
 
    Change `ml.m5.xlarge` to `ml.m5.large`, then type `Ctrl+S` to save the change\.
 
-1. Choose the **Git** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Git_squid.png) \)\. Stage, commit, and push the change in `pipeline.py`\. For information about using Git in Studio, see [Clone a Git Repository in SageMaker Studio](studio-tasks-git.md)\.  
+1. Choose the **Git** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Git_squid.png) \)\. Stage, commit, and push the change in `pipeline.py`\. Also, enter a summary in the **Summary** field and an optional description in the **Description** field\. For information about using Git in Studio, see [Clone a Git Repository in SageMaker Studio](studio-tasks-git.md)\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/projects/projects-walkthrough-commit.png)
 
 After pushing your code change, the MLOps system initiates a run of the pipeline that creates a new model version\. In the next step, you approve the new model version to deploy it to production\.
@@ -82,15 +89,17 @@ Now you approve the new model version that was created in the previous step to i
 
 **To approve the model version**
 
-1. Choose **Components and registries**, and then select **Projects** from the dropdown list\.
+1. In the Studio sidebar, choose the **Home** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
 
-1. Find the name of the project you created in the first step and double\-click on it to open the project tab for your project\.
+1. Select **Deployments** from the menu, and then select **Projects**\.
+
+1. Select the name of the project you created in the first step to open the project tab for your project\.
 
 1. In the project tab, choose **Model groups**, then double\-click the name of the model group that appears\.
 
    The model group tab appears\.
 
-1. In the model group tab, double\-click **Version 2**\. The **Version 2** tab opens\. Choose **Update status**
+1. In the model group tab, double\-click **Version 1**\. The **Version 1** tab opens\. Choose **Update status**\.
 
 1. In the model **Update model version status** dialog box, in the **Status** dropdown list, select **Approve**, then choose **Update status**\.
 
@@ -122,9 +131,9 @@ To stop incurring charges, clean up the resources that were created in this walk
 **Note**  
 To delete the AWS CloudFormation stack and the Amazon S3 bucket, you need to be an administrator in Studio\. If you are not an administrator, ask your administrator to complete those steps\.
 
-1. In the Studio sidebar, choose the **SageMaker resources** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png)\)\.
+1. In the Studio sidebar, choose the **Home** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
 
-1. Choose **Projects** from the dropdown list\.
+1. Select **Deployments** from the menu, and then select **Projects**\.
 
 1. Select the target project from the dropdown list\. If you don’t see your project, type the project name and apply the filter to find your project\.
 
@@ -138,7 +147,7 @@ To delete the AWS CloudFormation stack and the Amazon S3 bucket, you need to be 
 
       Right\-click the target project and choose ** Delete** from the dropdown list\.
 **Note**  
-This functionality is supported in Studio version v3\.17\.1 or higher\. For more information, see [Update SageMaker Studio](studio-tasks-update-studio.md)\.
+This functionality is supported in Studio version v3\.17\.1 or higher\. For more information, see [Shut down and Update SageMaker Studio](studio-tasks-update-studio.md)\.
 
    1. 
 
@@ -150,7 +159,7 @@ This functionality is supported in Studio version v3\.17\.1 or higher\. For more
 
 1. Confirm your choice by choosing **Delete** from the **Delete Project** window\.
 
-   This deletes the AWS Service Catalog provisioned product that the project created\. This includes the CodeCommit, CodePipeline, and CodeBuild resources created for the project\.
+   This deletes the Service Catalog provisioned product that the project created\. This includes the CodeCommit, CodePipeline, and CodeBuild resources created for the project\.
 
 1. Delete the AWS CloudFormation stacks that the project created\. There are two stacks, one for staging and one for production\. The names of the stacks are **sagemaker\-*projectname*\-*project\-id*\-deploy\-staging** and **sagemaker\-*projectname*\-*project\-id*\-deploy\-prod**, where *projectname* is the name of your project, and *project\-id* is the ID of your project\.
 

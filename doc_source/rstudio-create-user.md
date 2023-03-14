@@ -17,46 +17,9 @@ If a user is authorized, they can be given one of the following levels of access
 
 The following topics show how to create a user in your RStudio\-enabled Amazon SageMaker Domain\.
 
- **Create user IAM** 
+ **Create user console** 
 
-The following procedure shows how to add users to a Amazon SageMaker Domain created using IAM\. For more information about using IAM with Amazon SageMaker, see [How Amazon SageMaker Works with IAM ](https://docs.aws.amazon.com/sagemaker/latest/dg/security_iam_service-with-iam.html)\. 
-
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
-
-1.  Navigate to the **Amazon SageMaker Domain Control Panel**\.
-
-1. Select **Add user**\. This opens a new **User Settings** page\.
-
-1.  Under **User profile**, enter a name for your user and select an IAM role\. You can create a new IAM role or use an existing role\. The IAM role must have the `AmazonSageMakerFullAccess` policy attached\.
-
-1.  Select **Next**\.
-
-1.  Under **SageMaker Projects and Jumpstart**, select whether to enable Amazon SageMaker project templates and Amazon SageMaker JumpStart for Studio users\.
-
-1.  Select **Next**\.
-
-1.  Under **RStudio Workbench**, verify that an RStudio Workbench license is detected\.
-
-1. Under **License Authorization**, select whether you want to create the user with one of the following authorizations\.
-   +  Unauthorized 
-   +  RStudio Admin 
-   +  RStudio User 
-
-1. Select **Submit**\.
-
- **Create user SSO** 
-
-The following procedure shows how to add users to a Amazon SageMaker Domain created using AWS Single Sign\-On\. For information about AWS Single Sign\-On, see [What is AWS Single Sign\-On?](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html)\. 
-
-1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
-
-1.  Navigate to the **Amazon SageMaker Domain Control Panel**\.
-
-1.  Select **Assign users and groups**\. This opens a new Assign users and groups page\. 
-
-1.  Select a user or group from the list\. For information about adding users and groups, see [Manage identities in AWSAWS SSO](https://docs.aws.amazon.com/singlesignon/latest/userguide/manage-your-identity-source-sso.html)\. 
-
-1.  Select **Assign users and groups**\. 
+To create a user in your RStudio\-enabled Amazon SageMaker Domain from the console, complete the steps in [Add user profiles](domain-user-profile-add-remove.md#domain-user-profile-add)\.
 
  **Create user CLI** 
 
@@ -69,7 +32,7 @@ aws sagemaker create-user-profile --region <REGION> \
     --user-settings RStudioServerProAppSettings={UserGroup=<USER-GROUP>}
 ```
 
-The following command shows how to add users to a Amazon SageMaker Domain with AWS SSO authentication\. A user can belong to either the `R_STUDIO_USER` or `R_STUDIO_ADMIN` User group\. 
+The following command shows how to add users to a Amazon SageMaker Domain with authentication using IAM Identity Center\. A user can belong to either the `R_STUDIO_USER` or `R_STUDIO_ADMIN` User group\. 
 
 ```
 aws sagemaker create-user-profile --region <REGION> \
@@ -88,7 +51,7 @@ You cannot update the authorization of an existing user\. You must delete the ex
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1.  Navigate to the **Amazon SageMaker Domain Control Panel**\.
+1.  Navigate to the **Control Panel**\.
 
 1.  Select a user name from the list of users\. This opens a new page with details about the user profile and the apps that are running\. 
 

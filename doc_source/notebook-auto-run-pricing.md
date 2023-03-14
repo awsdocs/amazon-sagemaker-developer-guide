@@ -1,0 +1,3 @@
+# Pricing for scheduled notebook jobs<a name="notebook-auto-run-pricing"></a>
+
+When you schedule SageMaker Studio notebook jobs, your Jupyter notebooks run on SageMaker training instances\. After you select an **Image** and **Kernel** in your **Create Job** form, the form provides a list of available compute types\. You are charged for the compute type you choose, based on the combined duration of use for all notebook jobs that run from the job definition\. If you don’t specify a compute type, then Studio assigns you a default Amazon EC2 instance type of `ml.m5.large`\. For a breakdown of SageMaker Studio pricing by compute type, see [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing)\.

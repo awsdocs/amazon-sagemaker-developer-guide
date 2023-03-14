@@ -4,7 +4,7 @@ Amazon SageMaker Studio Lab consists of the following components\. The following
 
 **Topics**
 + [Landing page](#studio-lab-overview-landing)
-+ [User account](#studio-lab-overview-account)
++ [Studio Lab account](#studio-lab-overview-account)
 + [Project overview page](#studio-lab-overview-project-overview)
 + [Preview page](#studio-lab-overview-preview)
 + [Project](#studio-lab-overview-project)
@@ -14,15 +14,15 @@ Amazon SageMaker Studio Lab consists of the following components\. The following
 
 ## Landing page<a name="studio-lab-overview-landing"></a>
 
-You can request an account and sign in to an existing account on your landing page\. To navigate to the landing page, see the [Amazon SageMaker Studio Lab website](https://studiolab.sagemaker.aws/)\. For more information about creating a user account, see [Onboard to Amazon SageMaker Studio Lab](studio-lab-onboard.md)\.
+You can request an account and sign in to an existing account on your landing page\. To navigate to the landing page, see the [Amazon SageMaker Studio Lab website](https://studiolab.sagemaker.aws/)\. For more information about creating a Studio Lab account, see [Onboard to Amazon SageMaker Studio Lab](studio-lab-onboard.md)\.
 
 The following screenshot shows the Studio Lab landing page interface for requesting a user account and signing in\.
 
 ![\[The Amazon SageMaker Studio Lab landing page layout.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio-lab-landing.png)
 
-## User account<a name="studio-lab-overview-account"></a>
+## Studio Lab account<a name="studio-lab-overview-account"></a>
 
-Your user account gives you access to Studio Lab\. For more information about creating a user account, see [Onboard to Amazon SageMaker Studio Lab](studio-lab-onboard.md)\.
+Your Studio Lab account gives you access to Studio Lab\. For more information about creating a user account, see [Onboard to Amazon SageMaker Studio Lab](studio-lab-onboard.md)\.
 
 ## Project overview page<a name="studio-lab-overview-project-overview"></a>
 
@@ -38,7 +38,23 @@ The following screenshot shows a project overview in the Studio Lab user interfa
 
 ## Preview page<a name="studio-lab-overview-preview"></a>
 
-On this page, you can access a read\-only preview of your Jupyter notebook and copy that notebook into your project\. To navigate to this page, you must follow the steps in [Use GitHub resources](studio-lab-use-external.md#studio-lab-use-external-clone-github)\.
+On this page, you can access a read\-only preview of a Jupyter notebook\. You can not execute the notebook from preview, but you can copy that notebook into your project\. For many customers, this may be the first Studio Lab page that customers see, as they may be opening a notebook from GitHub notebook\. For more information on how to use GitHub resources, see [Use GitHub resources](studio-lab-use-external.md#studio-lab-use-external-clone-github)\. 
+
+To copy the notebook preview to your Studio Lab project:
+
+1.  Sign in to your Studio Lab account\. For more information about creating a Studio Lab account, see [Onboard to Amazon SageMaker Studio Lab](studio-lab-onboard.md)\. 
+
+1.  Under **Notebook compute instance**, choose a compute instance type\. For more information about compute instance types, see [Compute instance type](#studio-lab-overview-project-compute)\. 
+
+1.  Choose **Start runtime**\. 
+
+1.  One time setup, for first time starting runtime using your Studio Lab account: 
+
+   1.  Enter a mobile phone number to associate with your Amazon SageMaker Studio Lab account and choose **Continue**\. 
+
+   1.  Enter the 6\-digit code sent to the associated mobile phone number and choose **Verify**\. 
+
+1.  Choose **Copy to project**\. 
 
 ## Project<a name="studio-lab-overview-project"></a>
 
@@ -72,7 +88,7 @@ When compute time for Studio Lab reaches its time limit, the instance stops all 
 
 Studio Lab automatically saves your environment when you update your environment and every time you create a new file\. Custom\-installed extensions and packages persist even after your runtime has ended\.
 
-File edits are periodically saved, but are not saved when your runtime ends\. To ensure that you do not lose your progress, save your work manually\. If you have content in your Studio Lab project that you don’t want to lose, we recommend that you back up your content elsewhere\. For more information about exporting your environment and files, see [Export Amazon SageMaker Studio Lab environment to Amazon SageMaker Studio](studio-lab-use-migrate.md)\.
+File edits are periodically saved, but are not saved when your runtime ends\. To ensure that you do not lose your progress, save your work manually\. If you have content in your Studio Lab project that you don’t want to lose, we recommend that you back up your content elsewhere\. For more information about exporting your environment and files, see [Export an Amazon SageMaker Studio Lab environment to Amazon SageMaker Studio](studio-lab-use-migrate.md)\.
 
 During long computation, you do not need to keep your project open\. For example, you can start training a model, then close your browser\. The instance keeps running for up to 12 hours on CPU instances and 4 hours on GPU instances\. You can then sign in later to continue your work\.  
 

@@ -8,7 +8,7 @@ Use the following instructions to configure a human loop with Amazon Rekognition
 
 To create and start a human loop, you must attach the `AmazonAugmentedAIFullAccess` policy to the AWS Identity and Access Management \(IAM\) user or role that configures or starts the human loop\. This is the identity that you use to configure the human loop using `HumanLoopConfig` for built\-in task types\. For custom task types, this is the identity that you use to call `StartHumanLoop`\.
 
-Additionally, when using a built\-in task type, your IAM user or role must have permission to invoke API operations of the AWS service associated with your task type\. For example, if you are using Amazon Rekognition with Augmented AI, you must attach permissions required to call `DetectModerationLabels`\. For examples of identity\-based policies you can use to grant these permissions, see [Amazon Rekognition Identity\-Based Policy Examples](https://docs.aws.amazon.com/rekognition/latest/dg/security_iam_id-based-policy-examples.html) and [Amazon Textract Identity\-Based Policy Examples](https://docs.aws.amazon.com/textract/latest/dg/security_iam_id-based-policy-examples.html)\. You can also use the more general policy `AmazonAugmentedAIIntegratedAPIAccess` to grant these permissions\. For more information, see [Create an IAM User With Permissions to Invoke Amazon A2I, Amazon Textract, and Amazon Rekognition API Operations](a2i-permissions-security.md#a2i-grant-general-permission)\. 
+Additionally, when using a built\-in task type, your user or role must have permission to invoke API operations of the AWS service associated with your task type\. For example, if you are using Amazon Rekognition with Augmented AI, you must attach permissions required to call `DetectModerationLabels`\. For examples of identity\-based policies you can use to grant these permissions, see [Amazon Rekognition Identity\-Based Policy Examples](https://docs.aws.amazon.com/rekognition/latest/dg/security_iam_id-based-policy-examples.html) and [Amazon Textract Identity\-Based Policy Examples](https://docs.aws.amazon.com/textract/latest/dg/security_iam_id-based-policy-examples.html)\. You can also use the more general policy `AmazonAugmentedAIIntegratedAPIAccess` to grant these permissions\. For more information, see [Create a User With Permissions to Invoke Amazon A2I, Amazon Textract, and Amazon Rekognition API Operations](a2i-permissions-security.md#a2i-grant-general-permission)\. 
 
 To create and start a human loop, you need a flow definition ARN\. To learn how to create a flow definition \(or human review workflow\), see [Create a Human Review Workflow](a2i-create-flow-definition.md)\.
 
@@ -166,7 +166,7 @@ response = a2i_runtime_client.start_human_loop(
     HumanLoopName='human_loop_name',
     FlowDefinitionArn='arn:aws:sagemaker:aws-region:xyz:flow-definition/flow_def_name',
     HumanLoopInput={
-        'InputContent': '{"InputContent": "{\"prompt\":\"What is the answer?\"}"}'    
+        'InputContent': '{"InputContent": {\"prompt\":\"What is the answer?\"}}'    
     },
     DataAttributes={
         'ContentClassifiers': [

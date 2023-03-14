@@ -3,7 +3,7 @@
 This procedure demonstrates how to create an MLOps project using Amazon SageMaker Studio\.
 
 **Prerequisites**
-+ An AWS SSO or IAM account to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
++ An IAM account or IAM Identity Center to sign in to Studio\. For information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 + Permission to use SageMaker\-provided project templates\. For information, see [SageMaker Studio Permissions Required to Use Projects](sagemaker-projects-studio-updates.md)\.
 + Basic familiarity with the Studio user interface\. For information, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
 
@@ -11,15 +11,15 @@ This procedure demonstrates how to create an MLOps project using Amazon SageMake
 
 1. Sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
-1. In the Studio sidebar, choose the **SageMaker resources** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png)\)\.
+1. In the Studio sidebar, choose the **Home** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
 
-1. Select **Projects** from the dropdown list\.
+1. Select **Deployments** from the menu, and then select **Projects**\.
 
 1. Choose **Create project**\.
 
    The **Create project** tab opens displaying a list of available templates\.
 
-1. For **SageMaker project templates**, choose **SageMaker templates**\. For more information about project templates, see [MLOps Project Templates](sagemaker-projects-templates.md)\.
+1. If not selected already, choose **SageMaker templates**\. For more information about project templates, see [MLOps Project Templates](sagemaker-projects-templates.md)\.
 
 1. Choose **MLOps template for model building, training, and deployment**\.
 

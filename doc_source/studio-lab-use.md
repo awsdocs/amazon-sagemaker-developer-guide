@@ -9,5 +9,5 @@
 + [Manage your environment](studio-lab-use-manage.md)
 + [Use external resources in Amazon SageMaker Studio Lab](studio-lab-use-external.md)
 + [Get notebook differences](studio-lab-use-diff.md)
-+ [Export Amazon SageMaker Studio Lab environment to Amazon SageMaker Studio](studio-lab-use-migrate.md)
++ [Export an Amazon SageMaker Studio Lab environment to Amazon SageMaker Studio](studio-lab-use-migrate.md)
 + [Shut down resources](studio-lab-use-shutdown.md)

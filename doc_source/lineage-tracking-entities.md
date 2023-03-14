@@ -2,7 +2,7 @@
 
 Tracking entities maintain a representation of all the elements of your end\-to\-end machine learning workflow\. You can use this representation to establish model governance, reproduce your workflow, and maintain a record of your work history\.
 
-Amazon SageMaker automatically creates tracking entities for trial components and their associated trials and experiments when you create SageMaker jobs such as processing jobs, training jobs, and batch transform jobs\. In additional to auto tracking, you can also [Manually Create Tracking Entities](lineage-tracking-manual-creation.md) to model custom steps in your workflow\. For more information, see [Manage Machine Learning with Amazon SageMaker Experiments](experiments.md)\.
+Amazon SageMaker automatically creates tracking entities for trial components and their associated trials and experiments when you create SageMaker jobs such as processing jobs, training jobs, and batch transform jobs\. In additional to auto tracking, you can also [Manually Create Tracking Entities](lineage-tracking-manual-creation.md) to model custom steps in your workflow\. For more information, see [Manage Machine Learning with Amazon SageMaker ExperimentsSupported AWS Regions](experiments.md)\.
 
 SageMaker also automatically creates tracking entities for the other steps in a workflow so you can track the workflow from end to end\. For more information, see [Amazon SageMaker–Created Tracking Entities](lineage-tracking-auto-creation.md)\.
 

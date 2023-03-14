@@ -7,8 +7,10 @@ Use the path as follows:
 + To create a model \([create\_model](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.create_model)\), specify the Docker registry path \(`Image`\) for the inference image \(`PrimaryContainer Image`\)\. SageMaker launches machine learning compute instances that are based on the endpoint configuration and deploys the model, which includes the artifacts \(the result of model training\)\.
 
 **Note**  
-For the registry path, use the `:1` version tag to ensure that you are using a stable version of the algorithm/DLC\. You can reliably host a model trained using an image with the `:1` tag on an inference image that has the `:1` tag\. Using the `:latest` tag in the registry path provides you with the most up\-to\-date version of the algorithm/DLC, but might cause problems with backward compatibility\. Avoid using the `:latest` tag for production purposes\.  
-For XGBoost, do not use `:latest` or `:1`\. Use the specific version you require, such as `:0.90-1-cpu-py3`, `:0.90-2-cpu-py3`, `:1.0-1-cpu-py3`, or `:1.2-1`\.
+For the registry path, use the `:1` version tag to ensure that you are using a stable version of the algorithm/DLC\. You can reliably host a model trained using an image with the `:1` tag on an inference image that has the `:1` tag\. Using the `:latest` tag in the registry path provides you with the most up\-to\-date version of the algorithm/DLC, but might cause problems with backward compatibility\. Avoid using the `:latest` tag for production purposes\.
+
+**Important**  
+When you retrieve the SageMaker XGBoost image URI, do not use `:latest` or `:1` for the image URI tag\. You must specify one of the [Supported versions](xgboost.md#xgboost-supported-versions) to choose the SageMaker\-managed XGBoost container with the native XGBoost package version that you want to use\. To find the package version migrated into the SageMaker XGBoost containers, see [Docker Registry Paths and Example Code](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html), choose your AWS Region, and navigate to the **XGBoost \(algorithm\)** section\.
 
 To find the registry path, choose the AWS Region, then choose the algorithm or DLC\.
 
@@ -24,6 +26,7 @@ To find the registry path, choose the AWS Region, then choose the algorithm or D
 + [Asia Pacific \(Seoul\)](ecr-ap-northeast-2.md)
 + [Asia Pacific \(Singapore\)](ecr-ap-southeast-1.md)
 + [Asia Pacific \(Sydney\)](ecr-ap-southeast-2.md)
++ [Asia Pacific \(Jakarta\)](ecr-ap-southeast-3.md)
 + [Asia Pacific \(Tokyo\)](ecr-ap-northeast-1.md)
 + [Canada \(Central\)](ecr-ca-central-1.md)
 + [China \(Beijing\)](ecr-cn-north-1.md)

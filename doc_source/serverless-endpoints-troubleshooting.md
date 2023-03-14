@@ -1,12 +1,5 @@
 # Troubleshooting<a name="serverless-endpoints-troubleshooting"></a>
 
-
-****  
-
-|  | 
-| --- |
-| Serverless Inference is in preview release for Amazon SageMaker and is subject to change\. We do not recommend using this feature in production environments\. | 
-
 If you are having trouble with Serverless Inference, refer to the following troubleshooting tips\.
 
 ## Container issues<a name="serverless-endpoints-troubleshooting-containers"></a>

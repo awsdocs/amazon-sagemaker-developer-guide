@@ -4,23 +4,23 @@
 
 ## Open RStudio Launcher<a name="rstudio-launcher-open"></a>
 
-### Open RStudio Launcher from the Amazon SageMaker Domain Console Panel<a name="rstudio-launcher-console"></a>
+### Open RStudio Launcher from the Amazon SageMaker Console<a name="rstudio-launcher-console"></a>
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1.  Navigate to the **Amazon SageMaker Domain Control Panel**\.
+1.  From the left navigation, select **RStudio**\.
 
-1.  After your user has been created, select **Launch app**\. 
+1.  Under **Get Started**, select the domain and user profile to launch\.
 
-1.  Select either **Studio** or **RStudio** to launch a new app of that type\. 
+1.  Choose **Launch RStudio**\.
 
 ### Open RStudio Launcher from the AWS CLI<a name="rstudio-launcher-cli"></a>
 
 The procedure to open the RStudio Launcher using the AWS CLI differs depending on the method used to manage your users\. 
 
- **SSO** 
+ **IAM Identity Center** 
 
-1.  Use the AWS SSO portal to open your Amazon SageMaker Domain\. 
+1.  Use the AWS access portal to open your Amazon SageMaker Domain\. 
 
 1.  Modify the URL path to “/rstudio/default” as follows\. 
 
@@ -63,6 +63,8 @@ The procedure to open the RStudio Launcher using the AWS CLI differs depending o
 1.  Select Start Session\. 
 
 1.  After your session has been created, you can start it by selecting the name\.  
+**Note**  
+If you receive a warning that there is a version mismatch between your RSession and RStudioServerPro apps, then you must upgrade the version of your RStudioServerPro app\. For more information, see [Upgrade the RStudio Version ](rstudio-version.md)\.
 
 ## Suspend your RSessions<a name="rstudio-launcher-suspend"></a>
 

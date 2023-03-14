@@ -1,42 +1,42 @@
-# Model support, metrics, and validation<a name="autopilot-model-support-validation"></a>
+# Training modes and algorithm support<a name="autopilot-model-support-validation"></a>
 
-Amazon SageMaker Autopilot supports three types of machine learning algorithms to address machine learning problems, reports on various quality and objective metrics, and uses cross\-validation automatically when needed\.
+Amazon SageMaker Autopilot supports different training modes and algorithms to address machine learning problems, report on quality and objective metrics, and to use cross\-validation automatically, when needed\.
 
-**Topics**
-+ [Autopilot algorithm support](#autopilot-algorithm-suppprt)
-+ [Autopilot candidate metrics](#autopilot-metrics)
-+ [Autopilot cross\-validation](#autopilot-cross-validation)
+## Training modes<a name="autopilot-training-mode"></a>
 
-## Autopilot algorithm support<a name="autopilot-algorithm-suppprt"></a>
+SageMaker Autopilot can automatically select the training method based on the dataset size, or you can select it manually\. The choices are as follows:
++ **Ensembling** – Autopilot uses the [AutoGluon](https://auto.gluon.ai/stable/tutorials/tabular_prediction/index.html) library to train several base models\. To find the best combination for your dataset, ensemble mode runs 10 trials with different model and meta parameter settings\. Then Autopilot combines these models using a stacking ensemble method to create an optimal predictive model\. For a list of algorithms that Autopilot supports in ensembling mode, see the following **Algorithm support** section\.
++ **Hyperparameter optimization \(HPO\)** – Autopilot finds the best version of a model by tuning hyperparameters using Bayesian optimization or multi\-fidelity optimization while running training jobs on your dataset\. HPO mode selects the algorithms that are most relevant to your dataset and selects the best range of hyperparameters to tune your models\. To tune your models, HPO mode runs up to 100 trials \(default\) to find the optimal hyperparameters settings within the selected range\. If your dataset size is less than 100 MB, Autopilot uses Bayesian optimization\. Autopilot chooses multi\-fidelity optimization if your dataset is larger than 100 MB\.
 
-The three types of machine learning algorithms supported by Autopilot are:
-+  [Linear Learner Algorithm](linear-learner.md): a supervised learning algorithms used for solving either classification or regression problems\.
-+ [XGBoost Algorithm](xgboost.md): a supervised learning algorithm that attempts to accurately predict a target variable by combining an ensemble of estimates from a set of simpler and weaker models\.
-+ Deep Learning Algorithm: a multilayer perceptron \(MLP\), a feedforward artificial neural network that can handle data that is not linearly separable\.
+  In multi\-fidelity optimization, metrics are continuously emitted from the training containers\. A trial that is performing poorly against a selected objective metric is stopped early\. A trial that is performing well is allocated more resources\. 
+
+  For a list of algorithms that Autopilot supports in HPO mode, see the following **Algorithm support** section\. 
++ **Auto** – Autopilot automatically chooses either ensembling mode or HPO mode based on your dataset size\. If your dataset is larger than 100 MB, Autopilot chooses HPO\. Otherwise, it chooses ensembling mode\. Autopilot can fail to read the size of your dataset in the following cases\.
+  + If you enable Virtual Private Cloud \(VPC\) mode, for an AutoML job but the S3 bucket containing the dataset only allows access from the VPC\.
+  + The input [S3DataType](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLS3DataSource.html#sagemaker-Type-AutoMLS3DataSource-S3DataType) of your dataset is a `ManifestFile`\.
+  + The input [S3Uri](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLS3DataSource.html#sagemaker-Type-AutoMLS3DataSource-S3Uri) contains more than 1000 items\.
+
+  If Autopilot is unable to read your dataset size, it defaults to choosing HPO mode\.
 
 **Note**  
-You do not need to specify an algorithm to use for your machine learning problem\. Autopilot automatically selects the appropriate algorithm to train\. 
+For optimal runtime and performance, use ensemble training mode for datasets that are smaller than 100 MB\.
 
-## Autopilot candidate metrics<a name="autopilot-metrics"></a>
+## Algorithm support<a name="autopilot-algorithm-support"></a>
 
-Amazon SageMaker Autopilot produces metrics used to measure the predictive quality of machine learning model candidates\. The metrics calculated for candidates are specified using an array of [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_MetricDatum.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_MetricDatum.html) types\. The following list contains the names of the metrics currently available\.
-+ `MSE`: The mean squared error \(MSE\) is the average of the squared differences between the predicted and actual values\. It is used for regression\. MSE values are always positive: the better a model is at predicting the actual values, the smaller the MSE value is\.
-+ `Accuracy`: The ratio of the number of correctly classified items to the total number of \(correctly and incorrectly\) classified items\. It is used for binary and multiclass classification\. It measures how close the predicted class values are to the actual values\. Accuracy values vary between zero and one: one indicates perfect accuracy and zero indicates perfect inaccuracy\.
-+ `F1`: The F1 score is the harmonic mean of the precision and recall\. It is used for binary classification into classes traditionally referred to as positive and negative\. Predictions are said to be true when they match their actual \(correct\) class and false when they do not\. Precision is the ratio of the true positive predictions to all positive predictions \(including the false positives\) in a dataset and measures the quality of the prediction when it predicts the positive class\. Recall \(or sensitivity\) is the ratio of the true positive predictions to all actual positive instances and measures how completely a model predicts the actual class members in a dataset\. The standard F1 score weighs precision and recall equally\. But which metric is paramount typically depends on specific aspects of a problem\. F1 scores vary between zero and one: one indicates the best possible performance and zero the worst\.
-+ `AUC`: The area under the curve \(AUC\) metric is used to compare and evaluate binary classification by algorithms such as logistic regression that return probabilities\. A threshold is needed to map the probabilities into classifications\. The relevant curve is the receiver operating characteristic curve that plots the true positive rate \(TPR\) of predictions \(or recall\) against the false positive rate \(FPR\) as a function of the threshold value, above which a prediction is considered positive\. Increasing the threshold results in fewer false positives but more false negatives\. AUC is the area under this receiver operating characteristic curve and so provides an aggregated measure of the model performance across all possible classification thresholds\. AUC scores vary between zero and one: a score of one indicates perfect accuracy and a score of one half indicates that the prediction is not better than a random classifier\. 
-+ `F1macro`: The F1macro score applies F1 scoring to multiclass classification\. In this context, you have multiple classes to predict\. You just calculate the precision and recall for each class as you did for the positive class in binary classification\. Then, use these values to calculate the F1 score for each class and average them to obtain the F1macro score\. F1macro scores vary between zero and one: one indicates the best possible performance and zero the worst\.
+In **HPO mode**, Autopilot supports the following types of machine learning algorithms:
++  [Linear learner](https://docs.aws.amazon.com/sagemaker/latest/dg/linear-learner.html) – A supervised learning algorithm that can solve either classification or regression problems\.
++ [XGBoost](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost.html) – A supervised learning algorithm that attempts to accurately predict a target variable by combining an ensemble of estimates from a set of simpler and weaker models\.
++ Deep learning algorithm – A multilayer perceptron \(MLP\) and feedforward artificial neural network\. This algorithm can handle data that is not linearly separable\.
 
-The metrics automatically calculated for a candidate model are determined by the type of problem being addressed\.
-+ regression: `MSE`
-+ binary classification: `Accuracy`, `F1`, `AUC`
-+ multiclass classification: `Accuracy`, `F1macro`
+**Note**  
+You don't need to specify an algorithm to use for your machine learning problem\. Autopilot automatically selects the appropriate algorithm to train\. 
 
-## Autopilot cross\-validation<a name="autopilot-cross-validation"></a>
-
-Autopilot uses the k\-fold cross\-validation method automatically when needed\. You can use this method to assess how well a model trained on a dataset can predict the values of an unseen validation dataset drawn from the same population\. This method is especially important, for example, when training on datasets that have a limited number of training instances\. It can protect against problems like overfitting and selection bias that can prevent a model from being more generally applicable to the population sampled\.
-
-For example, the Boston Housing dataset contains only 861 samples\. If you try to build a model to predict house sale prices using this dataset without cross\-validation, you risk training on a dataset that is not representative of the Boston housing stock\. Typically, you would split the data only once into training and validation subsets\. If the training fold happened to contain data mainly from suburbs that were not representative of the rest of the city, you would likely overfit on this biased selection\. Cross\-validation reduces the risk of these errors by making full and randomized use of the available data for training and validation\.
-
-K\-fold cross\-validation randomly splits a training dataset into *k* equally sized subsamples or folds\. Then models are trained on *k\-1* folds and tested against the remaining fold, which is retained as a validation dataset\. The process is repeated *k* times, using each fold once as the validation dataset\. Autopilot applies the cross\-validation method to datasets with 50,000 or fewer training instances\. It uses a *k* value of 5 on the candidate algorithms used to model the dataset\. Multiple models are trained on different splits and the models are stored separately\. When the training procedure is finished, the validation metrics for each of the models are averaged to produce a single estimation metric\. When cross\-validation is applied by Autopilot to smaller datasets, the training time increases 20% on average\. If your dataset is complicated, the training time may increase more significantly\. For predictions, Autopilot uses the ensemble of cross\-validation models from the trial with the best validation metric\.
-
-You can see the training and validation metrics from each fold in your `/aws/sagemaker/TrainingJobs` CloudWatch Logs\. For more information about CloudWatch Logs, see [Log Amazon SageMaker Events with Amazon CloudWatch](logging-cloudwatch.md)\. The validation metric for the models trained by Autopilot is presented as the objective metric in model leader board\. Autopilot uses the default validation metric for each problem type it handles unless you specify otherwise\. For more information on the metrics Autopilot uses, see [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobObjective.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobObjective.html)\. You can deploy Autopilot models built using cross\-validation just as you would any other Autopilot or SageMaker model\.
+In **ensembling mode**, the following are types of machine learning algorithms that Autopilot supports: 
++ [LightGBM](https://docs.aws.amazon.com/sagemaker/latest/dg/lightgbm.html) – An optimized framework that uses tree\-based algorithms with gradient boosting\. This algorithm uses trees that grow in breadth, rather than depth, and is highly optimized for speed\.
++ [CatBoost](https://docs.aws.amazon.com/sagemaker/latest/dg/catboost.html) – A framework that uses tree\-based algorithms with gradient boosting\. Optimized for handling categorical variables\.
++ [XGBoost](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost.html) – A framework that uses tree\-based algorithms with gradient boosting that grows in depth, rather than breadth\. 
++ [Random Forest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) – A tree\-based algorithm that uses several decision trees on random sub\-samples of the data with replacement\. The trees are split into optimal nodes at each level\. The decisions of each tree are averaged together to prevent overfitting and improve predictions\.
++ [Extra Trees](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html#sklearn.ensemble.ExtraTreesClassifier) – A tree\-based algorithm that uses several decision trees on the entire dataset\. The trees are split randomly at each level\. The decisions of each tree are averaged to prevent overfitting and to improve predictions\. Extra trees add a degree of randomization in comparison to the random forest algorithm\.
++ [Linear Models](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.linear_model) – A framework that uses a linear equation to model the relationship between two variables in observed data\.
++ Neural network torch – A neural network model that's implemented using [Pytorch](https://pytorch.org/)\.
++ Neural network fast\.ai – A neural network model that's implemented using [fast\.ai](https://www.fast.ai/)\.

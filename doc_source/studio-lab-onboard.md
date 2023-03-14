@@ -27,6 +27,12 @@ Your account request must be approved before you can register for a Studio Lab a
 
 Note: Your account request is denied if your email has been associated with activity that violates our [Terms of Service](http://aws.amazon.com/service-terms/) or other agreements\. 
 
+### Referral codes<a name="studio-lab-onboard-request-referral"></a>
+
+Studio Lab referral codes enable new account requests to be automatically approved to support machine learning events like workshops, hackathons, and classes\. With a referral code, a trusted host can get their participants immediate access to Studio Lab\. After an account has been created using a referral code, the account continues to exist after the expiration of the code\.
+
+To get a referral code, contact [Sales Support](http://aws.amazon.com/contact-us/sales-support/)\. To use a referral code, enter the code as part of the account request form\.
+
 ## Create a Studio Lab account<a name="studio-lab-onboard-register"></a>
 
 After your request is approved, complete the following steps to create your Studio Lab account\.

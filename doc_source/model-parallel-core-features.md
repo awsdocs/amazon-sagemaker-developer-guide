@@ -1,6 +1,6 @@
-# Core Features of the SageMaker Model Parallel Library<a name="model-parallel-core-features"></a>
+# Core Features of the SageMaker Model Parallelism Library<a name="model-parallel-core-features"></a>
 
-Amazon SageMaker's model parallel library makes model parallelism more accessible by providing automated model splitting and sophisticated pipeline execution scheduling\. The model splitting algorithms can optimize for speed or memory consumption\. The library also supports manual partitioning\. When you use the library, training is executed in a pipelined fashion over microbatches to maximize GPU usage\.
+Amazon SageMaker's model parallelism library makes model parallelism more accessible by providing automated model splitting and sophisticated pipeline execution scheduling\. The model splitting algorithms can optimize for speed or memory consumption\. The library also supports manual partitioning\. When you use the library, training is executed in a pipelined fashion over microbatches to maximize GPU usage\.
 
 You can configure these features using a few lines of code when you create your training script and define your SageMaker `PyTorch` or `TensorFlow` estimators\. Use the following sections to learn more about these core features of the library\.
 
@@ -9,7 +9,7 @@ The SageMaker distributed training libraries are available only through the AWS 
 
 ## Automated Model Splitting<a name="model-parallel-automated-model-splitting"></a>
 
-When you use SageMaker's model parallel library, you can take advantage of *automated model splitting*, also referred to as *automated model partitioning*\. The library uses a partitioning algorithm that balances memory, minimizes communication between devices, and optimizes performance\. You can configure the automated partitioning algorithm to optimize for speed or memory\. 
+When you use SageMaker's model parallelism library, you can take advantage of *automated model splitting*, also referred to as *automated model partitioning*\. The library uses a partitioning algorithm that balances memory, minimizes communication between devices, and optimizes performance\. You can configure the automated partitioning algorithm to optimize for speed or memory\. 
 
 Alternatively, you can use manual model splitting\. We recommend automated model splitting, unless you are very familiar with the model architecture and have a good idea of how to efficiently partition your model\.
 
@@ -23,23 +23,23 @@ The auto\-partition design adapts to the characteristics of the framework, and t
 
 #### Automated Model Splitting with PyTorch<a name="model-parallel-auto-model-split-pt"></a>
 
-During the first training step, the model parallel library internally runs a tracing step that is meant to construct the model graph and determine the tensor and parameter shapes\. After this tracing step, the library constructs a tree, which consists of the nested `nn.Module` objects in the model, as well as additional data gathered from tracing, such as the amount of stored `nn.Parameters`, and execution time for each `nn.Module`\. 
+During the first training step, the model parallelism library internally runs a tracing step that is meant to construct the model graph and determine the tensor and parameter shapes\. After this tracing step, the library constructs a tree, which consists of the nested `nn.Module` objects in the model, as well as additional data gathered from tracing, such as the amount of stored `nn.Parameters`, and execution time for each `nn.Module`\. 
 
 Next, the library traverses this tree from the root and runs a partitioning algorithm that assigns each `nn.Module` to a device, which balances computational load \(measured by module execution time\) and memory use \(measured by the total stored `nn.Parameter` size and activations\)\. If multiple `nn.Modules` share the same `nn.Parameter`, then these modules are placed on the same device to avoid maintaining multiple versions of the same parameter\. Once the partitioning decision is made, the assigned modules and weights are loaded to their devices\.
 
 #### Automated Model Splitting with TensorFlow<a name="model-parallel-auto-model-split-tf"></a>
 
-The model parallel library analyzes the sizes of the trainable variables and the graph structure, and internally uses a graph partitioning algorithm\. This algorithm comes up with a device assignment for each operation, with the objective of minimizing the amount of communication needed across devices, subject to two constraints: 
+The model parallelism library analyzes the sizes of the trainable variables and the graph structure, and internally uses a graph partitioning algorithm\. This algorithm comes up with a device assignment for each operation, with the objective of minimizing the amount of communication needed across devices, subject to two constraints: 
 + Balancing the number of variables stored in each device
 + Balancing the number of operations executed in each device
 
-If you specify `speed` for `optimize` \(in the model parallel parameters in the Python SDK\), the library tries to balance the number of operations and `tf.Variable` objects in each device\. Otherwise, it tries to balance the total size of `tf.Variables`\.
+If you specify `speed` for `optimize` \(in the model parallelism parameters in the Python SDK\), the library tries to balance the number of operations and `tf.Variable` objects in each device\. Otherwise, it tries to balance the total size of `tf.Variables`\.
 
 Once the partitioning decision is made, the library creates a serialized representation of the subgraph that each device needs to execute and imports them onto each device\. While partitioning, the library places operations that consume the same `tf.Variable` and operations that are part of the same Keras layer onto the same device\. It also respects the colocation constraints imposed by TensorFlow\. This means that, for example, if there are two Keras layers that share a `tf.Variable`, then all operations that are part of these layers are placed on a single device\.
 
 #### Comparison of Automated Model Splitting Between Frameworks<a name="model-parallel-auto-model-split-comparison"></a>
 
-In TensorFlow, the fundamental unit of computation is a `tf.Operation`, and TensorFlow represents the model as a directed acyclic graph \(DAG\) of `tf.Operation`s, and therefore model parallel library partitions this DAG so that each node goes to one device\. Crucially, `tf.Operation` objects are sufficiently rich with customizable attributes, and they are universal in the sense that every model is guaranteed to consist of a graph of such objects\. 
+In TensorFlow, the fundamental unit of computation is a `tf.Operation`, and TensorFlow represents the model as a directed acyclic graph \(DAG\) of `tf.Operation`s, and therefore the model parallelism library partitions this DAG so that each node goes to one device\. Crucially, `tf.Operation` objects are sufficiently rich with customizable attributes, and they are universal in the sense that every model is guaranteed to consist of a graph of such objects\. 
 
 PyTorch on the other hand, does not have an equivalent notion of operation that is sufficiently rich and universal\. The closest unit of computation in PyTorch that has these characteristics is an `nn.Module`, which is at a much higher granularity level, and this is why the library does partitioning at this level in PyTorch\.
 
@@ -47,11 +47,11 @@ PyTorch on the other hand, does not have an equivalent notion of operation that 
 
 If you want to manually specify how your model is partitioned across devices, you can use manual model splitting by using `smp.partition` context managers\. 
 
-To use this option, set `auto_partition` to `False`, and define a `default_partition` in the SageMaker Python SDK\. Any operation that is not explicitly placed on a partition through the `smp.partition` context manager is executed on the `default_partition`\. In this case, the automated splitting logic is bypassed, and each operation is placed based on your specification\. Based on the resulting graph structure, the model parallel library creates a pipelined execution schedule automatically\.
+To use this option, set `auto_partition` to `False`, and define a `default_partition` in the SageMaker Python SDK\. Any operation that is not explicitly placed on a partition through the `smp.partition` context manager is executed on the `default_partition`\. In this case, the automated splitting logic is bypassed, and each operation is placed based on your specification\. Based on the resulting graph structure, the model parallelism library creates a pipelined execution schedule automatically\.
 
 ## Pipeline Execution Schedule<a name="model-parallel-pipeline-execution"></a>
 
-A core feature of SageMaker's distributed model parallel library is *pipelined execution*, which determines the order in which computations are made and data is processed across devices during model training\. Pipelining is a technique to achieve true parallelization in model parallelism, by having the GPUs compute simultaneously on different data samples, and to overcome the performance loss due to sequential computation\.
+A core feature of SageMaker's model parallelism library is *pipelined execution*, which determines the order in which computations are made and data is processed across devices during model training\. Pipelining is a technique to achieve true parallelization in model parallelism, by having the GPUs compute simultaneously on different data samples, and to overcome the performance loss due to sequential computation\.
 
 Pipelining is based on splitting a mini\-batch into microbatches, which are fed into the training pipeline one\-by\-one and follow an execution schedule defined by the library runtime\. A *microbatch* is a smaller subset of a given training mini\-batch\. The pipeline schedule determines which microbatch is executed by which device for every time slot\. 
 
@@ -75,11 +75,11 @@ A simple pipeline, by contrast, finishes running the forward pass for each micro
 
 ### Pipelining Execution in Specific Frameworks<a name="model-parallel-pipeline-frameworks"></a>
 
-Use the following sections to learn about the framework\-specific pipeline scheduling decisions SageMaker's distributed model parallel library makes for Tensorflow and PyTorch\. 
+Use the following sections to learn about the framework\-specific pipeline scheduling decisions SageMaker's model parallelism library makes for Tensorflow and PyTorch\. 
 
 #### Pipeline Execution with TensorFlow<a name="model-parallel-pipeline-execution-interleaved-tf"></a>
 
-The following image is an example of a TensorFlow graph partitioned by the model parallel library, using automated model splitting\. When a graph is split, each resulting subgraph is replicated B times \(except for the variables\), where B is the number of microbatches\. In this figure, each subgraph is replicated 2 times \(B=2\)\. An `SMPInput` operation is inserted at each input of a subgraph, and an `SMPOutput` operation is inserted at each output\. These operations communicate with the library backend to transfer tensors to and from each other\.
+The following image is an example of a TensorFlow graph partitioned by the model parallelism library, using automated model splitting\. When a graph is split, each resulting subgraph is replicated B times \(except for the variables\), where B is the number of microbatches\. In this figure, each subgraph is replicated 2 times \(B=2\)\. An `SMPInput` operation is inserted at each input of a subgraph, and an `SMPOutput` operation is inserted at each output\. These operations communicate with the library backend to transfer tensors to and from each other\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/distributed/model-parallel/interleaved-pipeline-tf.png)
 
@@ -93,7 +93,7 @@ Once the gradients from all microbatches in a single mini\-batch are computed, t
 
 #### Pipeline Execution with PyTorch<a name="model-parallel-pipeline-execution-interleaved-pt"></a>
 
-Conceptually, pipelining follows a similar idea in PyTorch\. However, since PyTorch does not involve static graphs and so the model parallel library's PyTorch feature uses a more dynamic pipelining paradigm\. 
+Conceptually, pipelining follows a similar idea in PyTorch\. However, since PyTorch does not involve static graphs and so the model parallelism library's PyTorch feature uses a more dynamic pipelining paradigm\. 
 
 As in TensorFlow, each batch is split into a number of microbatches, which are executed one at a time on each device\. However, the execution schedule is handled via execution servers launched on each device\. Whenever the output of a submodule that is placed on another device is needed on the current device, an execution request is sent to the execution server of the remote device along with the input tensors to the submodule\. The server then executes this module with the given inputs and returns the response to the current device\.
 

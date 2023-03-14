@@ -25,7 +25,7 @@ SageMaker Training Compiler supports the most popular deep learning models from 
 
 **Q\. What happens if I enable SageMaker Training Compiler with a model that isn't tested?**
 
-For an untested model, you might need to first modify the training script to be compatible with SageMaker Training Compiler\. For more information, see [Bring Your Own Deep Learning Model](training-compiler-modify-scripts.md) and follow the instructions describing how to prepare your training script\.
+For an untested model, you might need to first modify the training script to be compatible with SageMaker Training Compiler\. For more information, see [Bring Your Own Deep Learning Model](training-compiler-modify-scripts.md) and follow the instructions on how to prepare your training script\.
 
 Once you have updated your training script, you can start the training job\. The compiler proceeds to compile the model\. However, training speed may not increase and might even decrease relative to the baseline with an untested model\. You might need to retune training parameters such as `batch_size` and `learning_rate` to achieve any speedup benefits\.
 
@@ -37,7 +37,7 @@ No, not necessarily\. First, SageMaker Training Compiler adds some compilation o
 
 Additionally, as with any model training process, training with suboptimal parameters can increase training time\. SageMaker Training Compiler can change the characteristics of the training job by, for example, changing the memory footprint of the job\. Because of these differences, you might need to retune your training job parameters to speed up training\. A reference table specifying the best performing parameters for training jobs with different instance types and models can be found at [Tested Models](training-compiler-support.md#training-compiler-tested-models)\.
 
-Finally, some code in a training script might add additional overhead or disrupt the compiled computation graph and slow training\. If working with a customized or untested model, see the instructions at [Best Practices to Enable SageMaker Training Compiler for PyTorch without the Hugging Face Trainer API](training-compiler-pytorch-models.md#training-compiler-pytorch-models-best-practices)\.
+Finally, some code in a training script might add additional overhead or disrupt the compiled computation graph and slow training\. If working with a customized or untested model, see the instructions at [Best Practices to Use SageMaker Training Compiler with PyTorch/XLA](training-compiler-pytorch-models.md#training-compiler-pytorch-models-best-practices)\.
 
 **Q\. Can I always use a larger batch size with SageMaker Training Compiler? **
 
@@ -53,4 +53,4 @@ SageMaker Training Compiler is compatible with SageMaker Debugger, but Debugger 
 
 **Q\. Does SageMaker Training Compiler support custom containers \(bring your own container\)?**
 
-No, SageMaker Training Compiler is provided through AWS Deep Learning Containers with Training Compiler implemented\. For more information, see [Supported Frameworks](training-compiler-support.md#training-compiler-supported-frameworks)\. If you need further support, reach out to the SageMaker team through [AWS Support](https://console.aws.amazon.com/support/) or [AWS Developer Forums for Amazon SageMaker](https://forums.aws.amazon.com/forum.jspa?forumID=285)\.
+SageMaker Training Compiler is provided through AWS Deep Learning Containers, and you can extend a subset of the containers to customize for your use\-case\. Containers that are extended from AWS DLCs are supported by SageMaker Training Compiler\. For more information, see [Supported Frameworks](https://docs.aws.amazon.com/sagemaker/latest/dg/training-compiler-support.html#training-compiler-supported-frameworks) and [Using the SageMaker Python SDK and Extending SageMaker Framework Deep Learning Containers](training-compiler-enable-tensorflow.md#training-compiler-enable-tensorflow-sdk-extend-container)\. If you need further support, reach out to the SageMaker team through [AWS Support](https://console.aws.amazon.com/support/) or [AWS Developer Forums for Amazon SageMaker](https://forums.aws.amazon.com/forum.jspa?forumID=285)\.

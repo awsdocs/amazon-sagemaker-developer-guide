@@ -19,7 +19,7 @@ You have the following options for downloading the Spark library provided by Sag
   + Use pip install:
 
     ```
-    $ pip install sagemaker_pyspark
+    pip install sagemaker_pyspark
     ```
   + In a notebook instance, create a new notebook that uses either the `Sparkmagic (PySpark)` or the `Sparkmagic (PySpark3)` kernel and connect to a remote Amazon EMR cluster\. 
 **Note**  

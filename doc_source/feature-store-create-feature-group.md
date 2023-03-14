@@ -2,7 +2,7 @@
 
  A `FeatureGroup` is the main Feature Store resource that contains the metadata for all the data stored in Amazon SageMaker Feature Store\. A feature group is a logical grouping of features, defined in the feature store, to describe records\. A feature group’s definition is composed of a list of feature definitions, a record identifier name, and configurations for its online and offline store\. The example code in this topic uses the SageMaker Python SDK\. The underlying APIs are available for developers using other languages\. 
 
- Prior to using a feature store you typically load your dataset, run transformations, and set up your features for ingestion\. This process has a lot of variation and is highly dependent on your data\. The example code in the following topics refer to the [ Introduction to Feature Store](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-featurestore/feature_store_introduction.html), [Fraud Detection with Amazon SageMaker FeatureStore](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-featurestore/sagemaker_featurestore_fraud_detection_python_sdk.html) example notebooks respectively\. We recommend that you run this notebook in Amazon SageMaker Studio because the code in this guide is conceptual and not fully functional if copied\. 
+ Prior to using a feature store you typically load your dataset, run transformations, and set up your features for ingestion\. This process has a lot of variation and is highly dependent on your data\. The example code in the following topics refer to the [ Introduction to Feature Store](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-featurestore/feature_store_introduction.html), [Fraud Detection with Amazon SageMaker Feature Store](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-featurestore/sagemaker_featurestore_fraud_detection_python_sdk.html) example notebooks respectively\. We recommend that you run this notebook in Amazon SageMaker Studio because the code in this guide is conceptual and not fully functional if copied\. 
 
  Feature Store supports the following data types: `String`, `Fractional` \(IEEE 64\-bit floating point value\), and `Integral` \(Int64 \- 64 bit signed integral value\)\. The default type is set to `String`\. This means that, if a column in your dataset is not a `float` or `long` type, it defaults to `String` in your feature store\. 
 
@@ -10,4 +10,15 @@
 
 The default behavior when a new feature record is added with an already existing record ID is as follows\. In the offline store, the new record will be appended\. In the online store, if the event time of the new record is less than the existing event time than nothing will happen, however if the event time of the new record is greater than or equal to the existing event time, the record will be over written\.
 
-## <a name="w2379aac23c27b9c13"></a>
+When you create a new feature group you can choose one of the following table formats:
++ AWS Glue \(Default\)
++ Apache Iceberg
+
+Ingesting data, especially when streaming, can result in a large number of small files deposited into the offline store\. This can negatively impact query performance due the higher number of file operations required\. To avoid potential performance issues, use the Apache Iceberg table format when creating new feature groups\. With Iceberg you can compact the small data files into fewer large files in the partition, resulting in significantly faster queries\. This compaction operation is concurrent and does not affect ongoing read and write operations on the feature group\. If you choose the Iceberg option when creating new feature groups, Amazon SageMaker Feature Store will create the Iceberg tables using Parquet file format, and register the tables with the AWS Glue Data Catalog\.
+
+**Important**  
+Note that for feature groups in Iceberg table format, you must specify `String` as the value for the event time\. If you specify any other type, you can't create the feature group successfully\.
+
+**Topics**
++ [Introduction to Feature Store](feature-store-introduction-notebook.md)
++ [Fraud Detection with Feature Store](feature-store-fraud-detection-notebook.md)

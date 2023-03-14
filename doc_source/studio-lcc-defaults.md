@@ -10,7 +10,7 @@ To set up a default Lifecycle Configuration, it must be added to the `DefaultRes
 + **KernelGateway apps:** When added to the `DefaultResourceSpec` of a KernelGateway app, Studio defaults to selecting the Lifecycle Configuration script from the Studio launcher\. Users can launch a notebook or terminal with the default script selected or they can select a different one from the list of Lifecycle Configurations\.
 
 **Note**  
-A default KernelGateway Lifecycle Configuration specified in `DefaultResourceSpec` applies to all KernelGateway images in the Studio Domain unless the user selects a different script from the list presented in the Studio launcher\. The default script also runs if `No Script` is selected by the user\. For more information on selecting a script, see [Step 3: Choose a Lifecycle Configuration while launching a new App](studio-lcc-create.md#create-kgw)\.
+A default KernelGateway Lifecycle Configuration specified in `DefaultResourceSpec` applies to all KernelGateway images in the Studio Domain unless the user selects a different script from the list presented in the Studio launcher\. The default script also runs if `No Script` is selected by the user\. For more information on selecting a script, see [Step 3: Launch an application with the Lifecycle Configuration](studio-lcc-create-console.md#studio-lcc-create-console-step3)\.
 
 **Associate a default Lifecycle Configuration when creating a new Domain or UserProfile**
 

@@ -1,12 +1,5 @@
 # Invoke a serverless endpoint<a name="serverless-endpoints-invoke"></a>
 
-
-****  
-
-|  | 
-| --- |
-| Serverless Inference is in preview release for Amazon SageMaker and is subject to change\. We do not recommend using this feature in production environments\. | 
-
 In order to perform inference using a serverless endpoint, you must send an HTTP request to the endpoint\. You can use the [InvokeEndpoint](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html) API or the AWS CLI, which make a `POST` request to invoke your endpoint\. The maximum request and response payload size for serverless invocations is 4 MB\. Note that a cold start \(or a delay in spinning up compute resources\) on the endpoint may delay the response time to up to 4 minutes:
 + The model must download and the server must respond successfully to `/ping` within 3 minutes\.
 + The timeout for the container to respond to inference requests to `/invocations` is 1 minute\.
@@ -27,7 +20,7 @@ endpoint_name = "<your-endpoint-name>"
 content_type = "<request-mime-type>"
 payload = <your-request-body>
 
-response = client.invoke_endpoint(
+response = runtime.invoke_endpoint(
     EndpointName=endpoint_name,
     ContentType=content_type,
     Body=payload

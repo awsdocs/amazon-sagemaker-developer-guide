@@ -4,7 +4,7 @@
 
 **Topics**
 + [Base image](#studio-lab-use-manage-base)
-+ [Managing Conda environments](#studio-lab-use-manage-conda)
++ [Managing conda environments](#studio-lab-use-manage-conda)
 
 ## Base image<a name="studio-lab-use-manage-base"></a>
 
@@ -43,13 +43,13 @@ For a list of all of the packages currently installed in your environment, run t
 %pip list
 ```
 
-## Managing Conda environments<a name="studio-lab-use-manage-conda"></a>
+## Managing conda environments<a name="studio-lab-use-manage-conda"></a>
 
- The following sections give information about your default Conda environment, how to customize it, and how to add new Conda environments\. For more information about Conda environments, see [Conda environments](https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html)\. For a list of sample environments that you can install into Studio Lab, see [Creating Custom Conda Environments](https://github.com/aws/studio-lab-examples/tree/main/custom-environments)\. To use these sample environment YAML files with Studio Lab, see [Step 4 – Import your Studio Lab Conda environments in Studio](studio-lab-use-migrate.md#studio-lab-use-migrate-step4)\. 
+ The following sections give information about your default conda environment, how to customize it, and how to add new conda environments\. For more information about conda environments, see [Conda environments](https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html)\. For a list of sample environments that you can install into Studio Lab, see [Creating Custom Conda Environments](https://github.com/aws/studio-lab-examples/tree/main/custom-environments)\. To use these sample environment YAML files with Studio Lab, see [Step 4: Install your Studio Lab Conda environments in Studio](studio-lab-use-migrate.md#studio-lab-use-migrate-step4)\. 
 
 ### Your default environment<a name="studio-lab-use-manage-conda-default"></a>
 
- Studio Lab uses Conda environments to encapsulate the software packages that are needed to run notebooks\. Your project contains a default Conda environment, named `default`, with the [IPython kernel](https://ipython.readthedocs.io/en/stable/)\. This environment serves as the default kernel for your Jupyter notebooks\.
+ Studio Lab uses conda environments to encapsulate the software packages that are needed to run notebooks\. Your project contains a default conda environment, named `default`, with the [IPython kernel](https://ipython.readthedocs.io/en/stable/)\. This environment serves as the default kernel for your Jupyter notebooks\.
 
 ### Customize your environment<a name="studio-lab-use-manage-conda-default-customize"></a>
 
@@ -64,38 +64,58 @@ Installed packages count against your 15 GB of instance storage\.
 
 We don't recommend using the `!pip` or `!conda` commands because they can behave in unexpected ways when you have multiple environments\. After you install new packages to your environment, restart the kernel to ensure that the packages work in your notebook\.
 
-### Create and activate new Conda environments<a name="studio-lab-use-manage-conda-new-conda"></a>
+### Create and activate new conda environments<a name="studio-lab-use-manage-conda-new-conda"></a>
 
-If you would like to maintain multiple environments for different use cases, you can create new Conda environments in your project\. The following sections show how to create and activate new Conda environments\. For a Jupyter notebook that shows how to create a custom environment, see [Setting up a Custom Environment in SageMaker Studio Lab](https://github.com/aws/studio-lab-examples/blob/main/custom-environments/custom_environment.ipynb)\.
+If you would like to maintain multiple environments for different use cases, you can create new conda environments in your project\. The following sections show how to create and activate new conda environments\. For a Jupyter notebook that shows how to create a custom environment, see [Setting up a Custom Environment in SageMaker Studio Lab](https://github.com/aws/studio-lab-examples/blob/main/custom-environments/custom_environment.ipynb)\.
 
 **Note**  
 Maintaining multiple environments in your project decreases your available memory\.
 
  **Create** 
 
- To create a new Conda environment, run the following Conda command from your terminal\. This example creates a new environment with Python 3\.9\. 
+ To create a new conda environment, run the following conda command from your terminal\. This example creates a new environment with Python 3\.9\. 
 
 ```
-$ conda create --name <ENVIRONMENT_NAME> python=3.9
+conda create --name <ENVIRONMENT_NAME> python=3.9
 ```
 
  **Activate** 
 
- To activate any Conda environment, run the following command in the terminal\.
+ To activate any conda environment, run the following command in the terminal\.
 
 ```
-$ conda activate <ENVIRONMENT_NAME>
+conda activate <ENVIRONMENT_NAME>
 ```
 
- When you run this command, any packages installed using Conda or pip are installed in the environment\. 
+ When you run this command, any packages installed using conda or pip are installed in the environment\. 
 
- To use your new Conda environments with notebooks, make sure the `ipykernel` package is installed in the environment\.
+ To use your new conda environments with notebooks, make sure the `ipykernel` package is installed in the environment\.
 
 ```
-$ conda install ipykernel
+conda install ipykernel
 ```
 
  After you have created the environment, you can select it as the kernel for your notebook\. 
+
+### Using Sample Studio Lab Environments<a name="studio-lab-use-manage-conda-sample"></a>
+
+Studio Lab provides sample custom environments through the [SageMaker Studio Lab Sample Notebooks](https://github.com/aws/studio-lab-examples) repository\. The following shows how to clone and build these environments\.
+
+1. Navigate to your root directory and open the Getting Started notebook\.
+
+1. Click the **Clone SageMaker Studio Lab Examples** button to clone the SageMaker Studio Lab Sample Notebooks repository\.
+
+1. Navigate to the `studio-lab-examples/custom-environments` directory in File Browser\.
+
+1. Open the directory for the environment that you want to build\.
+
+1. Right click the `.yml` file in the folder, then select **Build Conda Environment**\.
+
+1. After your conda environment has finished building, use the following command to activate it\. You can then use the environment\.
+
+   ```
+   conda activate ENVIRONMENT_NAME
+   ```
 
 ### Installing JupyterLab and Jupyter Server extensions<a name="studio-lab-use-manage-conda-jupyter"></a>
 
@@ -106,13 +126,13 @@ $ conda install ipykernel
 1.  Open the terminal and activate the `studiolab` environment\. 
 
    ```
-   $ conda activate studiolab
+   conda activate studiolab
    ```
 
 1.  Install the JupyterLab or Jupyter Server extension\. 
 
    ```
-   $ conda install <JUPYTER_EXTENSION>
+   conda install <JUPYTER_EXTENSION>
    ```
 
 1.  Navigate to the Studio Lab project overview page\. 
@@ -126,10 +146,10 @@ $ conda install ipykernel
  To remove all of your files and reset your project, run the following command from the terminal\. 
 
 ```
-rm -rf .*
+rm -rf *.*
 ```
 
- The following command deletes a Conda environment from your project\. 
+ The following command deletes a conda environment from your project\. 
 
 ```
 conda remove --name <ENVIRONMENT_NAME> --all

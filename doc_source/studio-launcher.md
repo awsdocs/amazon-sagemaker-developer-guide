@@ -1,22 +1,17 @@
 # Use the Amazon SageMaker Studio Launcher<a name="studio-launcher"></a>
 
-You can use the Amazon SageMaker Studio Launcher to create notebooks and text files, and launch terminals and interactive Python shells\.
+You can use the Amazon SageMaker Studio Launcher to create notebooks and text files, and to launch terminals and interactive Python shells\.
 
 You can open Studio Launcher in any of the following ways:
-+ Choose **Amazon SageMaker Studio** at the top\-left of Studio\.
++ Choose **Amazon SageMaker Studio** at the top left of the Studio interface\.
 + Use the keyboard shortcut `Ctrl + Shift + L`\.
 + From the Studio menu, choose **File** and then choose **New Launcher**\.
-+ If the Studio file browser is open, choose the plus \(**\+**\) sign on the Studio file browser menu\.
++ If the SageMaker file browser is open, choose the plus \(**\+**\) sign in the Studio file browser menu\.
++ In the **Quick actions** section of the **Home** tab, choose **Open Launcher**\. The Launcher opens in a new tab\. The **Quick actions** section is visible by default but can be toggled off\. Choose **Customize Layout** to turn this section back on\.
 
-The Launcher opens in a new tab in Studio\. Your screen should look similar to the following:
+![\[SageMaker Studio launcher.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-new-launcher.png)
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-new-launcher.png)
-
-The Launcher consists of following sections:
-+ **Get started** – Provides material to get started using SageMaker Studio, such as videos and tutorials, and one\-click solutions for machine learning problems\.
-+ **ML tasks and components** – Create machine learning tasks and components, such as new feature groups, data flows, and projects\.
-+ **Notebooks and compute resources** – Create a notebook, open an image terminal, or open a Python console\.
-+ **Utilities and files** – Show contextual help from a notebook, create files, or open a system terminal\.
+The Launcher consists of the following two sections:
 
 **Topics**
 + [Notebooks and compute resources](#studio-launcher-launch)
@@ -24,14 +19,23 @@ The Launcher consists of following sections:
 
 ## Notebooks and compute resources<a name="studio-launcher-launch"></a>
 
-To create or launch an item, choose the SageMaker image that you want the item to run in from the **SageMaker image** dropdown menu\. You can also select the Lifecycle Configuration script that you want to run\. For more information, see [Use Lifecycle Configurations with Amazon SageMaker Studio](studio-lcc.md)\. Next, choose the item\. When you choose an item from this section, you might incur additional usage charges\. For more information, see [Usage Metering](notebooks-usage-metering.md)\.
+In this section, you can create a notebook, open an image terminal, or open a Python console\.
+
+To create or launch one of those items:
+
+1. Choose **Change environment** to select a SageMaker image, a kernel, an instance type, and, optionally, add a lifecycle configuration script that runs on image start\-up\. For more information on lifecycle configuration scripts, see [Use Lifecycle Configurations with Amazon SageMaker Studio](studio-lcc.md)\. For more information about kernel updates, see [Change an Image or a Kernel](notebooks-run-and-manage-change-image.md)\.
+
+1. Select an item\.
+
+**Note**  
+When you choose an item from this section, you might incur additional usage charges\. For more information, see [Usage Metering](notebooks-usage-metering.md)\.
 
 The following items are available:
 + **Notebook**
 
-  Launches the notebook in a kernel session on the chosen SageMaker image\. For more information, see [Change a Kernel](notebooks-run-and-manage-change-image.md)\.
+  Launches the notebook in a kernel session on the chosen SageMaker image\.
 
-  Creates the notebook in the folder that you have currently selected in the file browser\. To view the file browser, in the left sidebar of Studio, choose the **File Browser** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/File_browser_squid.png)\)\.
+  Creates the notebook in the folder that you have currently selected in the file browser\. To view the file browser, in the left sidebar of Studio, choose the **File Browser** icon\.
 + **Console**
 
   Launches the shell in a kernel session on the chosen SageMaker image\.
@@ -41,14 +45,17 @@ The following items are available:
 
   Launches the terminal in a terminal session on the chosen SageMaker image\.
 
-  Opens the terminal in the root folder for the user \(as shown by the Home folder in the file browser\)\.
+  Opens the terminal in the root folder for the user \(as shown by the **Home** folder in the file browser\)\.
 
 **Note**  
-CPU instances are launched on a `ml.t3.medium` instance, while GPU instances are launched on a `ml.g4dn.xlarge` instance\.
+By default, CPU instances launch on a `ml.t3.medium` instance, while GPU instances launch on a `ml.g4dn.xlarge` instance\.
 
 ## Utilities and files<a name="studio-launcher-other"></a>
 
-Items in this section run in the context of SageMaker Studio and don't incur usage charges\.
+In this section, you can add contextual help in a notebook; create Python, Markdown and text files; and open a system terminal\.
+
+**Note**  
+Items in this section run in the context of Amazon SageMaker Studio and don't incur usage charges\.
 
 The following items are available:
 + **Show Contextual Help**
@@ -56,10 +63,10 @@ The following items are available:
   Opens a new tab that displays contextual help for functions in a Studio notebook\. To display the help, choose a function in an active notebook\. To make it easier to see the help in context, drag the help tab so that it's adjacent to the notebook tab\. To open the help tab from within a notebook, press `Ctrl + I`\.
 
   The following screenshot shows the contextual help for the `Experiment.create` method\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-context-help.png)
+![\[SageMaker Studio contextual help.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/studio-context-help.png)
 + **System terminal**
 
-  Opens a bash shell in the root folder for the user \(as shown by the Home folder in the file browser\)\.
+  Opens a `bash` shell in the root folder for the user \(as shown by the **Home** folder in the file browser\)\.
 + **Text File** and **Markdown File**
 
-  Creates a file of the associated type in the folder that you have currently selected in the file browser\. To view the file browser, in the left sidebar, choose the **File Browser** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/File_browser_squid.png)\)\.
+  Creates a file of the associated type in the folder that you have currently selected in the file browser\. To view the file browser, in the left sidebar, choose the **File Browser** icon \(![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/folder.png)\)\.

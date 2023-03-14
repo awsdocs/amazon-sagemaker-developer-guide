@@ -1,4 +1,4 @@
-# Create a Notebook<a name="automatic-model-tuning-ex-notebook"></a>
+# Create a Notebook Instance<a name="automatic-model-tuning-ex-notebook"></a>
 
 Create a Jupyter notebook that contains a pre\-installed environment with the default Anaconda installation and Python3\. 
 
@@ -6,7 +6,7 @@ Create a Jupyter notebook that contains a pre\-installed environment with the de
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Open a running  notebook instance, by choosing **Open** next to its name\. The Jupyter notebook server page appears:
+1. Open a running notebook instance, by choosing **Open** next to its name\. The Jupyter notebook server page appears:
 
      
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/notebook-dashboard.png)

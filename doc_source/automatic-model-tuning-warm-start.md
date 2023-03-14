@@ -5,12 +5,10 @@ Use warm start to start a hyperparameter tuning job using one or more previous t
 **Note**  
 Warm start tuning jobs typically take longer to start than standard hyperparameter tuning jobs, because the results from the parent jobs have to be loaded before the job can start\. The increased time depends on the total number of training jobs launched by the parent jobs\.
 
-
-
-Reasons you might want to consider warm start include:
-+ You want to gradually increase the number of training jobs over several tuning jobs based on the results you see after each iteration\.
-+ You get new data, and want to tune a model using the new data\.
-+ You want to change the ranges of hyperparameters that you used in a previous tuning job, change static hyperparameters to tunable, or change tunable hyperparameters to static values\.
+Reasons to consider warm start include the following:
++ To gradually increase the number of training jobs over several tuning jobs based on results after each iteration\.
++ To tune a model using new data that you received\.
++ To change hyperparameter ranges that you used in a previous tuning job, change static hyperparameters to tunable, or change tunable hyperparameters to static values\.
 + You stopped a previous hyperparameter job early or it stopped unexpectedly\.
 
 **Topics**
@@ -38,7 +36,7 @@ The following restrictions apply to all warm start tuning jobs:
 + The objective metric used in the new tuning job must be the same as the objective metric used in the parent jobs\.
 + The total number of static plus tunable hyperparameters must remain the same between parent jobs and the new tuning job\. Because of this, if you think you might want to use a hyperparameter as tunable in a future warm start tuning job, you should add it as a static hyperparameter when you create a tuning job\.
 + The type of each hyperparameter \(continuous, integer, categorical\) must not change between parent jobs and the new tuning job\.
-+ The number of total changes from tunable hyperparameters in the parent jobs to static hyperparameters in the new tuning job, plus the number of changes in the values of static hyperparameters cannot be more than 10\. Each value in a categorical hyperparameter counts against this limit\. For example, if the parent job has a tunable categorical hyperparameter with the possible values `red` and `blue`, you change that hyperparameter to static in the new tuning job, that counts as 2 changes against the allowed total of 10\. If the same hyperparameter had a static value of `red` in the parent job, and you change the static value to `blue` in the new tuning job, it also counts as 2 changes\.
++ The number of total changes from tunable hyperparameters in the parent jobs to static hyperparameters in the new tuning job, plus the number of changes in the values of static hyperparameters cannot be more than 10\. For example, if the parent job has a tunable categorical hyperparameter with the possible values `red` and `blue`, you change that hyperparameter to static in the new tuning job, that counts as 2 changes against the allowed total of 10\. If the same hyperparameter had a static value of `red` in the parent job, and you change the static value to `blue` in the new tuning job, it also counts as 2 changes\.
 + Warm start tuning is not recursive\. For example, if you create `MyTuningJob3` as a warm start tuning job with `MyTuningJob2` as a parent job, and `MyTuningJob2` is itself an warm start tuning job with a parent job `MyTuningJob1`, the information that was learned when running `MyTuningJob1` is not used for `MyTuningJob3`\. If you want to use the information from `MyTuningJob1`, you must explicitly add it as a parent for `MyTuningJob3`\.
 + The training jobs launched by every parent job in a warm start tuning job count against the 500 maximum training jobs for a tuning job\.
 + Hyperparameter tuning jobs created before October 1, 2018 cannot be used as parent jobs for warm start tuning jobs\.
@@ -91,7 +89,7 @@ To use the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) to ru
 
 For more information about using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) for hyperparameter tuning, see [https://github\.com/aws/sagemaker\-python\-sdk\#sagemaker\-automatic\-model\-tuning](https://github.com/aws/sagemaker-python-sdk#sagemaker-automatic-model-tuning)\.
 
-This example uses an estimator that uses the [Image Classification Algorithm](image-classification.md) algorithm for training\. The following code sets the hyperparameter ranges that the warm start tuning job searches within to find the best combination of values\. For information about setting hyperparameter ranges, see [Define Hyperparameter Ranges](automatic-model-tuning-define-ranges.md)\.
+This example uses an estimator that uses the [Image Classification \- MXNet](image-classification.md) algorithm for training\. The following code sets the hyperparameter ranges that the warm start tuning job searches within to find the best combination of values\. For information about setting hyperparameter ranges, see [Define Hyperparameter Ranges](automatic-model-tuning-define-ranges.md)\.
 
 ```
 hyperparameter_ranges = {'learning_rate': ContinuousParameter(0.0, 0.1),
@@ -101,11 +99,10 @@ hyperparameter_ranges = {'learning_rate': ContinuousParameter(0.0, 0.1),
 The following code configures the warm start tuning job by creating a `WarmStartConfig` object\.
 
 ```
-from sagemaker.tuner import WarmStartConfig,
-          WarmStartTypes
+from sagemaker.tuner import WarmStartConfig,WarmStartTypes
 
 parent_tuning_job_name = "MyParentTuningJob"
-warm_start_config = WarmStartConfig(type=WarmStartTypes.IDENTICAL_DATA_AND_ALGORITHM, parents={parent_tuning_job_name})
+warm_start_config = WarmStartConfig(warm_start_type=WarmStartTypes.IDENTICAL_DATA_AND_ALGORITHM, parents={parent_tuning_job_name})
 ```
 
 Now set the values for static hyperparameters, which are hyperparameters that keep the same value for every training job that the warm start tuning job launches\. In the following code, `imageclassification` is an estimator that was created previously\.

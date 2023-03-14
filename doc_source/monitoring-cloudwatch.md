@@ -8,8 +8,9 @@ You can monitor Amazon SageMaker using Amazon CloudWatch, which collects raw dat
 + [SageMaker Endpoint Invocation Metrics](#cloudwatch-metrics-endpoint-invocation)
 + [SageMaker Multi\-Model Endpoint Metrics](#cloudwatch-metrics-multimodel-endpoints)
 + [SageMaker Jobs and Endpoint Metrics](#cloudwatch-metrics-jobs)
++ [SageMaker Inference Recommender Jobs Metrics](#cloudwatch-metrics-inference-recommender)
 + [SageMaker Ground Truth Metrics](#cloudwatch-metrics-ground-truth)
-+ [SageMaker Feature Store Metrics](#cloudwatch-metrics-feature-store)
++ [Amazon SageMaker Feature Store Metrics](#cloudwatch-metrics-feature-store)
 + [SageMaker Pipelines Metrics](#cloudwatch-metrics-pipelines)
 
 ## SageMaker Endpoint Invocation Metrics<a name="cloudwatch-metrics-endpoint-invocation"></a>
@@ -27,6 +28,7 @@ For information about how long CloudWatch metrics are retained for, see [GetMetr
 | --- | --- | 
 | Invocation4XXErrors |  The number of `InvokeEndpoint` requests where the model returned a 4xx HTTP response code\. For each 4xx response, 1 is sent; otherwise, 0 is sent\. Units: None Valid statistics: Average, Sum  | 
 | Invocation5XXErrors |  The number of `InvokeEndpoint` requests where the model returned a 5xx HTTP response code\. For each 5xx response, 1 is sent; otherwise, 0 is sent\. Units: None Valid statistics: Average, Sum  | 
+| InvocationModelErrors |  The number of model invocation requests which did not result in 2XX HTTP response\. This includes 4XX/5XX status codes, low\-level socket errors, malformed HTTP responses, and request timeouts\. For each error response, 1 is sent; otherwise, 0 is sent\. Units: None Valid statistics: Average, Sum  | 
 | Invocations |  The number of `InvokeEndpoint` requests sent to a model endpoint\.  To get the total number of requests sent to a model endpoint, use the Sum statistic\. Units: None Valid statistics: Sum  | 
 | InvocationsPerInstance |  The number of invocations sent to a model, normalized by `InstanceCount` in each ProductionVariant\. 1/`numberOfInstances` is sent as the value on each request, where `numberOfInstances` is the number of active instances for the ProductionVariant behind the endpoint at the time of the request\. Units: None Valid statistics: Sum  | 
 | ModelLatency |  The interval of time taken by a model to respond as viewed from SageMaker\. This interval includes the local communication times taken to send the request and to fetch the response from the container of a model and the time taken to complete the inference in the container\. Units: Microseconds Valid statistics: Average, Sum, Min, Max, Sample Count  | 
@@ -116,6 +118,28 @@ If you want to profile your training job with a finer resolution down to 100\-mi
 | --- | --- | 
 | Host |  For processing jobs, the value for this dimension has the format `[processing-job-name]/algo-[instance-number-in-cluster]`\. Use this dimension to filter instance metrics for the specified processing job and instance\. This dimension format is present only in the `/aws/sagemaker/ProcessingJobs` namespace\. For training jobs, the value for this dimension has the format `[training-job-name]/algo-[instance-number-in-cluster]`\. Use this dimension to filter instance metrics for the specified training job and instance\. This dimension format is present only in the `/aws/sagemaker/TrainingJobs` namespace\. For batch transform jobs, the value for this dimension has the format `[transform-job-name]/[instance-id]`\. Use this dimension to filter instance metrics for the specified batch transform job and instance\. This dimension format is present only in the `/aws/sagemaker/TransformJobs` namespace\.  | 
 
+## SageMaker Inference Recommender Jobs Metrics<a name="cloudwatch-metrics-inference-recommender"></a>
+
+The `/aws/sagemaker/InferenceRecommendationsJobs` namespace includes the following metrics for inference recommendation jobs\.
+
+**Inference Recommender Metrics**
+
+
+| Metric | Description | 
+| --- | --- | 
+| ClientInvocations |  The number of `InvokeEndpoint` requests sent to a model endpoint, as recognized by Inference Recommender\. To get the total number of requests sent to a model endpoint, use the `Sum` statistic\. Units: None Valid statistics: Sum  | 
+| ClientInvocationErrors |  The number of `InvokeEndpoint` requests that failed, as recognized by Inference Recommender\. Units: None Valid statistics: Sum  | 
+| ClientLatency |  The interval of time taken by a model to respond, as recognized by Inference Recommender\. Note that the time is in milliseconds, whereas the `ModelLatency` endpoint invocation metric is in microseconds\. Units: Milliseconds Valid statistics: Average, Sum, Min, Max, Sample Count, Percentiles  | 
+| NumberOfUsers |  The number of users sending `InvokeEndpoint` requests sent to a model endpoint\. Units: None Valid statistics: Max, Min, Average  | 
+
+**Dimensions for Inference Recommender Job Metrics**
+
+
+| Dimension | Description | 
+| --- | --- | 
+| JobName |  Filters Inference Recommender job metrics for the specified Inference Recommender job\.  | 
+| EndpointName |  Filters Inference Recommender job metrics for the specified endpoint\.  | 
+
 ## SageMaker Ground Truth Metrics<a name="cloudwatch-metrics-ground-truth"></a>
 
 **Ground Truth Metrics**
@@ -144,9 +168,9 @@ If you want to profile your training job with a finer resolution down to 100\-mi
 | --- | --- | 
 | LabelingJobName |  Filters dataset object count metrics for a labeling job\.  | 
 
-## SageMaker Feature Store Metrics<a name="cloudwatch-metrics-feature-store"></a>
+## Amazon SageMaker Feature Store Metrics<a name="cloudwatch-metrics-feature-store"></a>
 
-**Feature Store Metrics**
+**Feature Store Consumption Metrics**
 
 
 | Metric | Description | 
@@ -154,12 +178,31 @@ If you want to profile your training job with a finer resolution down to 100\-mi
 | ConsumedReadRequestsUnits |  The number of consumed read units over the specified time period\. You can retrieve the consumed read units for a feature store runtime operation and its corresponding feature group\. Units: None Valid statistics: All  | 
 | ConsumedWriteRequestsUnits |  The number of consumed write units over the specified time period\. You can retrieve the consumed write units for a feature store runtime operation and its corresponding feature group\. Units: None Valid statistics: All  | 
 
-**Dimensions for Feature Store Metrics**
+**Dimensions for Feature Store Consumption Metrics**
 
 
 | Dimension | Description | 
 | --- | --- | 
-| FeatureGroupName, OperationName |  Filters feature store runtime operation metrics of the specified feature group\.  | 
+| FeatureGroupName, OperationName |  Filters feature store runtime consumption metrics of the feature group and the operation that you've specified\.  | 
+
+**Feature Store Operational Metrics**
+
+
+| Metric | Description | 
+| --- | --- | 
+| Invocations |  The number of requests made to the feature store runtime operations over the specified time period\. Units: None Valid statistics: Sum  | 
+| Operation4XXErrors |  The number of requests made to the Feature Store runtime operations where the operation returned a 4xx HTTP response code\. For each 4xx response, 1 is sent; otherwise, 0 is sent\. Units: None Valid statistics: Average, Sum  | 
+| Operation5XXErrors | The number of requests made to the feature store runtime operations where the operation returned a 5xx HTTP response code\. For each 5xx response, 1 is sent; otherwise, 0 is sent\. Units: None Valid statistics: Average, Sum  | 
+| ThrottledRequests |  The number of requests made to the feature store runtime operations where the request got throttled\. For each throttled request, 1 is sent; otherwise, 0 is sent\. Units: None Valid statistics: Average, Sum  | 
+| Latency |  The time interval to process requests made to the Feature Store runtime operations\. This interval is measured from the time SageMaker receives the request until it returns a response to the client\. Units: Microseconds Valid statistics: Average, Sum, Min, Max, Sample Count, Percentiles  | 
+
+**Dimensions for Feature Store Operational Metrics**
+
+
+| Dimension | Description | 
+| --- | --- | 
+|  `FeatureGroupName`, `OperationName`  | Filters feature store runtime operational metrics of the feature group and the operation that you've specified\. You can use these dimensions for non batch operations, such as GetRecord, PutRecord, and DeleteRecord\. | 
+| OperationName |  Filters feature store runtime operational metrics for the operation that you've specified\. You can use this dimension for batch operations such as BatchGetRecord\.  | 
 
 ## SageMaker Pipelines Metrics<a name="cloudwatch-metrics-pipelines"></a>
 

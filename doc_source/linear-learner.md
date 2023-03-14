@@ -37,7 +37,9 @@ For more information on input and output file formats, see [Linear learner respo
 
 ## EC2 instance recommendation for the linear learner algorithm<a name="ll-instances"></a>
 
-You can train the linear learner algorithm on single\- or multi\-machine CPU and GPU instances\. During testing, we have not found substantial evidence that multi\-GPU computers are faster than single\-GPU computers\. Results can vary, depending on your specific use case\.
+The linear learner algorithm supports both CPU and GPU instances for training and inference\. For GPU, the linear learner algorithm supports P2, P3, G4dn, and G5 GPU families\.
+
+During testing, we have not found substantial evidence that multi\-GPU instances are faster than single\-GPU instances\. Results can vary, depending on your specific use case\.
 
 ## Linear learner sample notebooks<a name="ll-sample-notebooks"></a>
 
@@ -51,4 +53,4 @@ You can train the linear learner algorithm on single\- or multi\-machine CPU and
 |  [How to Build a Multiclass Classifier?](https://sagemaker-examples.readthedocs.io/en/latest/scientific_details_of_algorithms/linear_learner_multiclass_classification/linear_learner_multiclass_classification.html)  |   Using UCI's Covertype dataset, we demonstrate how to train a multiclass classifier\.   | 
 |  [How to Build a Machine Learning \(ML\) Pipeline for Inference? ](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-python-sdk/scikit_learn_inference_pipeline/Inference%20Pipeline%20with%20Scikit-learn%20and%20Linear%20Learner.html)  |   Using a Scikit\-learn container, we demonstrate how to build an end\-to\-end ML pipeline\.   | 
 
- For instructions on how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. After you have created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all of the SageMaker samples\. The topic modeling example notebooks using the linear learning algorithm are located in the **Introduction to Amazon algorithms** section\. To open a notebook, choose its **Use** tab and choose **Create copy**\. 
+ For instructions on how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Amazon SageMaker Notebook Instances](nbi.md)\. After you have created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all of the SageMaker samples\. The topic modeling example notebooks using the linear learning algorithm are located in the **Introduction to Amazon algorithms** section\. To open a notebook, choose its **Use** tab and choose **Create copy**\. 

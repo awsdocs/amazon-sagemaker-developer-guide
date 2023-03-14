@@ -8,6 +8,9 @@ For more information on NVIDIA Triton Inference Server see the [Triton documenta
 
 ## Inference<a name="triton-inference"></a>
 
+**Note**  
+The Triton Python backend uses shared memory \(SHMEM\) to connect your code to Triton\. SageMaker Inference provides up to half of the instance memory as SHMEM so you can use an instance with more memory for larger SHMEM size\.
+
 For inference, you can use your trained ML models with Triton Inference Server to deploy an inference job with SageMaker\.
 
 Some of the key features of Triton Inference Server Container are:

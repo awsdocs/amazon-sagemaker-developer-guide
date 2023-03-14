@@ -1,14 +1,14 @@
-# Extend a Prebuilt Container<a name="prebuilt-containers-extend"></a>
+# Extend a Pre\-built Container<a name="prebuilt-containers-extend"></a>
 
-If a prebuilt SageMaker container doesn't fulfill all of your requirements, you can extend the existing image to accommodate your needs\. Even if there is direct support for your environment or framework, you may want to add additional functionality or configure your container environment differently\. By extending a prebuilt image, you can leverage the included deep learning libraries and settings without having to create an image from scratch\. You can extend the container to add libraries, modify settings, and install additional dependencies\. 
+If a pre\-built SageMaker container doesn't fulfill all of your requirements, you can extend the existing image to accommodate your needs\. Even if there is direct support for your environment or framework, you may want to add additional functionality or configure your container environment differently\. By extending a pre\-built image, you can leverage the included deep learning libraries and settings without having to create an image from scratch\. You can extend the container to add libraries, modify settings, and install additional dependencies\. 
 
-The following tutorial shows how to extend a prebuilt SageMaker image and publish it to Amazon ECR\.
+The following tutorial shows how to extend a pre\-built SageMaker image and publish it to Amazon ECR\.
 
 **Topics**
-+ [Requirements to Extend a Prebuilt Container](#prebuilt-containers-extend-required)
++ [Requirements to Extend a Pre\-built Container](#prebuilt-containers-extend-required)
 + [Extend SageMaker Containers to Run a Python Script](#prebuilt-containers-extend-tutorial)
 
-## Requirements to Extend a Prebuilt Container<a name="prebuilt-containers-extend-required"></a>
+## Requirements to Extend a Pre\-built Container<a name="prebuilt-containers-extend-required"></a>
 
 To extend a pre\-built SageMaker image, you need to set the following environment variables within your Dockerfile\. For more information on environment variables with SageMaker containers, see the [SageMaker Training Toolkit GitHub repo](https://github.com/aws/sagemaker-training-toolkit/blob/master/ENVIRONMENT_VARIABLES.md)\.
 + `SAGEMAKER_SUBMIT_DIRECTORY`: The directory within the container in which the Python script for training is located\.
@@ -52,7 +52,7 @@ To run your own training model using the SageMaker containers, build a Docker co
 
    1. Choose **Create notebook instance**\. 
 
-1. On the **Notebook instances** page, the **Status** is **Pending**\. It can take a few minutes for Amazon SageMaker to launch a machine learning compute instance—in this case, it launches a notebook instance—and attach an ML storage volume to it\. The notebook instance has a preconfigured Jupyter notebook server and a set of Anaconda libraries\. For more information, see [  CreateNotebookInstance](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstance.html)\. 
+1. On the **Notebook instances** page, the **Status** is **Pending**\. It can take a few minutes for Amazon CloudWatch Internet Monitor to launch a machine learning compute instance—in this case, it launches a notebook instance—and attach an ML storage volume to it\. The notebook instance has a preconfigured Jupyter notebook server and a set of Anaconda libraries\. For more information, see [  CreateNotebookInstance](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstance.html)\. 
 
    
 

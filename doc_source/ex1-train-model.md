@@ -1,6 +1,6 @@
 # Step 4: Train a Model<a name="ex1-train-model"></a>
 
-The [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) provides framework estimators and generic estimators to train your model while orchestrating the machine learning \(ML\) lifecycle accessing the SageMaker features for training and the AWS infrastructures, such as Amazon Elastic Container Registry \(Amazon ECR\), Amazon Elastic Compute Cloud \(Amazon EC2\), Amazon Simple Storage Service \(Amazon S3\)\. For more information about SageMaker built\-in framework estimators and algorithm estimators, see [Frameworks](https://sagemaker.readthedocs.io/en/stable/frameworks/index.html) and [First\-Party Algorithms](https://sagemaker.readthedocs.io/en/stable/algorithms/index.html) respectively in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) documentation\.
+The [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) provides framework estimators and generic estimators to train your model while orchestrating the machine learning \(ML\) lifecycle accessing the SageMaker features for training and the AWS infrastructures, such as Amazon Elastic Container Registry \(Amazon ECR\), Amazon Elastic Compute Cloud \(Amazon EC2\), Amazon Simple Storage Service \(Amazon S3\)\. For more information about SageMaker built\-in framework estimators, see [Frameworks](https://sagemaker.readthedocs.io/en/stable/frameworks/index.html)in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) documentation\. For more information about built\-in algorithms, see [Use Amazon SageMaker Built\-in Algorithms or Pre\-trained Models](algos.md)\.
 
 **Topics**
 + [Choose the Training Algorithm](#ex1-train-model-select-algorithm)
@@ -72,9 +72,9 @@ If you run this installation in your exiting SageMaker Studio or notebook instan
    + `volume_size` – The size, in GB, of the EBS storage volume to attach to the training instance\. This must be large enough to store training data if you use `File` mode \(`File` mode is on by default\)\.
    + `output_path` – The path to the S3 bucket where SageMaker stores the model artifact and training results\.
    + `sagemaker_session` – The session object that manages interactions with SageMaker API operations and other AWS service that the training job uses\.
-   + `rules` – Specify a list of SageMaker Debugger built\-in rules\. In this example, the `create_xgboost_report()` rule creates an XGBoost report that provides insights into the training progress and results\. For more information, see [SageMaker Debugger XGBoost Training Report](debugger-training-xgboost-report.md)\.
+   + `rules` – Specify a list of SageMaker Debugger built\-in rules\. In this example, the `create_xgboost_report()` rule creates an XGBoost report that provides insights into the training progress and results\. For more information, see [SageMaker Debugger XGBoost Training Report](debugger-report-xgboost.md#debugger-training-xgboost-report)\.
 **Tip**  
-If you want to run distributed training of large sized deep learning models, such as convolutional neural networks \(CNN\) and natural language processing \(NLP\) models, use SageMaker Distributed for data parallelism or model parallelism\. For more information, see [Amazon SageMaker Distributed Training Libraries](distributed-training.md)\.
+If you want to run distributed training of large sized deep learning models, such as convolutional neural networks \(CNN\) and natural language processing \(NLP\) models, use SageMaker Distributed for data parallelism or model parallelism\. For more information, see [Distributed Training in Amazon SageMaker](distributed-training.md)\.
 
 1. Set the hyperparameters for the XGBoost algorithm by calling the `set_hyperparameters` method of the estimator\. For a complete list of XGBoost hyperparameters, see [XGBoost Hyperparameters](xgboost_hyperparameters.md)\.
 
@@ -119,7 +119,7 @@ You can also tune the hyperparameters using the SageMaker hyperparameter optimiz
    Run the following code to specify the S3 bucket URI where the Debugger training reports are generated and check if the reports exist\.
 
    ```
-   rule_output_path = xgb_model.output_path + "/" + xgb_model.latest_training_job.name + "/rule-output"
+   rule_output_path = xgb_model.output_path + "/" + xgb_model.latest_training_job.job_name + "/rule-output"
    ! aws s3 ls {rule_output_path} --recursive
    ```
 
@@ -147,7 +147,7 @@ You can also tune the hyperparameters using the SageMaker hyperparameter optimiz
    ```
 **Tip**  
 If the HTML reports do not render plots in the JupyterLab view, you must choose **Trust HTML** at the top of the reports\.  
-To identify training issues, such as overfitting, vanishing gradients, and other problems that prevents your model from converging, use SageMaker Debugger and take automated actions while prototyping and training your ML models\. For more information, see [Amazon SageMaker Debugger](train-debugger.md)\. To find a complete analysis of model parameters, see the [Explainability with Amazon SageMaker Debugger](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-debugger/xgboost_census_explanations/xgboost-census-debugger-rules.html#Explainability-with-Amazon-SageMaker-Debugger) example notebook\. 
+To identify training issues, such as overfitting, vanishing gradients, and other problems that prevents your model from converging, use SageMaker Debugger and take automated actions while prototyping and training your ML models\. For more information, see [Debug and Profile Training Jobs Using Amazon SageMaker Debugger](train-debugger.md)\. To find a complete analysis of model parameters, see the [Explainability with Amazon SageMaker Debugger](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker-debugger/xgboost_census_explanations/xgboost-census-debugger-rules.html#Explainability-with-Amazon-SageMaker-Debugger) example notebook\. 
 
 You now have a trained XGBoost model\. SageMaker stores the model artifact in your S3 bucket\. To find the location of the model artifact, run the following code to print the model\_data attribute of the `xgb_model` estimator:
 

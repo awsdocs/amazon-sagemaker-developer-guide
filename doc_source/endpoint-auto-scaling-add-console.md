@@ -1,16 +1,16 @@
-# Configure model autoscaling with the console<a name="endpoint-auto-scaling-add-console"></a>
+# Configure model auto scaling with the console<a name="endpoint-auto-scaling-add-console"></a>
 
-**To configure autoscaling for a model using the console**
+**To configure auto scaling for a model using the console**
 
 1. Open the Amazon SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)\.
 
-1. In the navigation pane, choose **Endpoints**\. 
+1. In the navigation pane, open Inference and choose **Endpoints**\. 
 
 1. Choose the endpoint that you want to configure\.
 
 1. For **Endpoint runtime settings**, choose the model variant that you want to configure\.
 
-1. For **Endpoint runtime settings**, choose **Configure autoscaling**\.
+1. For **Endpoint runtime settings**, choose **Configure auto scaling**\.
 
    The **Configure variant automatic scaling** page appears\.
 
@@ -24,9 +24,9 @@
 
 1. For **Scale\-in cool down \(seconds\)** and **Scale\-out cool down \(seconds\)**, type the number seconds for each cool down period\. Assuming that the order in the list is based on either most important to less important of first applied to last applied\.
 
-1. Select **Disable scale in** to prevent the scaling policy from deleting variant instances if you want to ensure that your variant scales out to address increased traffic, but are not concerned with removing instances to reduce costs when traffic decreases, disable scale\-in activities\.
+1. Select **Deactivate scale in** to prevent the scaling policy from deleting variant instances if you want to ensure that your variant scales out to address increased traffic, but are not concerned with removing instances to reduce costs when traffic decreases, deactivate scale\-in activities\.
 
-   Scale\-out activities are always enabled so that the scaling policy can create endpoint instances as needed\.
+   Scale\-out activities are always activated so that the scaling policy can create endpoint instances as needed\.
 
 1. Choose **Save**\.
 
@@ -35,4 +35,4 @@ This procedure registers a model as a scalable target with Application Auto Scal
 + The permissions are sufficient
 + You aren't registering a variant with an instance that is a burstable performance instance such as T2
 **Note**  
-SageMaker doesn't support autoscaling for burstable instances such as T2, because they already allow for increased capacity under increased workloads\. For information about burstable performance instances, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
+SageMaker doesn't support auto scaling for burstable instances such as T2, because they already allow for increased capacity under increased workloads\. For information about burstable performance instances, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.

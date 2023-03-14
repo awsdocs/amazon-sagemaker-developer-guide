@@ -141,6 +141,9 @@ aws sagemaker create-presigned-notebook-instance-url --notebook-instance-name my
 }
 ```
 
+**Note**  
+The presigned url generated can be used from anywhere on the internet\.
+
 For both of these calls, if you did not enable private DNS hostnames for your VPC endpoint, or if you are using a version of the AWS SDK that was released before August 13, 2018, you must specify the endpoint URL in the call\. For example, the call to `create-presigned-notebook-instance-url` is:
 
 ```

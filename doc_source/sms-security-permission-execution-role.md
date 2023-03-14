@@ -189,7 +189,7 @@ If you create a streaming labeling job, you must add a policy similar to the fol
 
 ## Execution Role Requirements for Custom Task Types<a name="sms-security-permission-execution-role-custom-tt"></a>
 
-If you want to create a [custom labeling workflow](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-custom-templates.html), add the following statement to an execution role policy like the ones found in [](#sms-security-permission-execution-role-built-in-tt) or [Built\-In Task Types \(Streaming\) Execution Role Requirements](#sms-security-permission-execution-role-built-in-tt-streaming)\.
+If you want to create a [custom labeling workflow](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-custom-templates.html), add the following statement to an execution role policy like the ones found in [Built\-In Task Types \(Non\-streaming\) Execution Role Requirements](#sms-security-permission-execution-role-built-in-tt) or [Built\-In Task Types \(Streaming\) Execution Role Requirements](#sms-security-permission-execution-role-built-in-tt-streaming)\.
 
 This policy gives the execution role permission to `Invoke` your pre\-annotation and post\-annotation Lambda functions\.
 
@@ -211,7 +211,7 @@ This policy gives the execution role permission to `Invoke` your pre\-annotation
 
 If you want to create a labeling job with [automated data labeling](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-automated-labeling.html) enabled, you must 1\) add one policy to the IAM policy attached to the execution role and 2\) update the trust policy of the execution role\. 
 
-The following statement allows the IAM execution role to be passed to SageMaker so that it can be used to run the training and inference jobs used for active learning and automated data labeling respectively\. Add this statement to an execution role policy like the ones found in [](#sms-security-permission-execution-role-built-in-tt) or [Built\-In Task Types \(Streaming\) Execution Role Requirements](#sms-security-permission-execution-role-built-in-tt-streaming)\. Replace `arn:aws:iam::<account-number>:role/<role-name>` with the execution role ARN\. You can find your IAM role ARN in the IAM console under **Roles**\. 
+The following statement allows the IAM execution role to be passed to SageMaker so that it can be used to run the training and inference jobs used for active learning and automated data labeling respectively\. Add this statement to an execution role policy like the ones found in [Built\-In Task Types \(Non\-streaming\) Execution Role Requirements](#sms-security-permission-execution-role-built-in-tt) or [Built\-In Task Types \(Streaming\) Execution Role Requirements](#sms-security-permission-execution-role-built-in-tt-streaming)\. Replace `arn:aws:iam::<account-number>:role/<role-name>` with the execution role ARN\. You can find your IAM role ARN in the IAM console under **Roles**\. 
 
 ```
 {

@@ -1,6 +1,6 @@
 # Querying Lineage Entities<a name="querying-lineage-entities"></a>
 
-Amazon SageMaker automatically generates graphs of lineage entities as you use them\. You can query this data to answer a variety of questions\. For example, you can query your lineage entities to: 
+Amazon SageMaker automatically generates graphs of lineage entities as you use them\. You can query this data to answer a variety of questions\. You can query your lineage entities to: 
 + Retrieve all data sets that went into the creation of a model\.
 + Retrieve all jobs that went into the creation of an endpoint\.
 + Retrieve all models that use a data set\.
@@ -8,20 +8,37 @@ Amazon SageMaker automatically generates graphs of lineage entities as you use t
 + Retrieve which endpoints are derived from a certain data set\.
 + Retrieve the pipeline execution that created a training job\.
 + Retrieve the relationships between entities for investigation, governance, and reproducibility\.
++ Retrieve all downstream trials that use the artifact\.
++ Retrieve all upstream trials that use the artifact\.
++ Retrieve a list of artifacts that use the provided S3 uri\.
++ Retrieve upstream artifacts that use the dataset artifact\.
++ Retrieve downstream artifacts that use the dataset artifact\.
++ Retrieve datasets that use the image artifact\.
++ Retrieve actions that use the context\.
++ Retrieve processing jobs that use the endpoint\.
++ Retrieve transform jobs that use the endpoint\.
++ Retrieve trial components that use the endpoint\.
++ Retrieve the ARN for the pipeline execution associated with the model package group\.
++ Retrieve all artifacts that use the action\.
++ Retrieve all upstream datasets that use the model package approval action\.
++ Retrieve model package from model package approval action\.
++ Retrieve downstream endpoint contexts that use the endpoint\.
++ Retrieve the ARN for the pipeline execution associated with the trial component\.
++ Retrieve datasets that use the trial component\.
++ Retrieve models that use the trial component\.
 + Explore your lineage for visualization\.
-
-  
-
-**Topics**
-+ [Getting Started with Querying Lineage Entities](#querying-lineage-entities-getting-started)
 
 **Limitations**
 + Lineage querying is not available in the following Regions:
+  + Africa \(Cape Town\) – af\-south
+  + Asia Pacific \(Jakarta\) – ap\-southeast\-3
   + Asia Pacific \(Osaka\) – ap\-northeast\-3
   + Europe \(Milan\) – eu\-south\-1
-  + Africa \(Cape Town\) – af\-south
 + The maximum depth of relationships to discover is currently limited to 10\.
 + Filtering is limited to the following properties: last modified date, created date, type, and lineage entity type\. 
+
+**Topics**
++ [Getting Started with Querying Lineage Entities](#querying-lineage-entities-getting-started)
 
 ## Getting Started with Querying Lineage Entities<a name="querying-lineage-entities-getting-started"></a>
 

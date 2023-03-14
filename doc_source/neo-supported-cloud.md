@@ -14,8 +14,8 @@ SageMaker Neo supports the following deep learning frameworks for CPU and GPU cl
 | MXNet | 1\.8\.0 | Supports 1\.8\.0 or earlier | Image Classification, Object Detection, Semantic Segmentation, Pose Estimation, Activity Recognition | One symbol file \(\.json\) and one parameter file \(\.params\) | GluonCV v0\.8\.0 | 
 | ONNX | 1\.7\.0 | Supports 1\.7\.0 or earlier | Image Classification, SVM | One model file \(\.onnx\) |  | 
 | Keras | 2\.2\.4 | Supports 2\.2\.4 or earlier | Image Classification | One model definition file \(\.h5\) |  | 
-| PyTorch | 1\.4, 1\.5, 1\.6, 1\.7 or 1\.8 | Supports 1\.4, 1\.5, 1\.6, 1\.7 and 1\.8 | Image Classification | One model definition file \(\.pt or \.pth\) with input dtype of float32 |  | 
-| TensorFlow | 1\.15\.0 | Supports 1\.15\.0 or earlier | Image Classification | For saved models, one \.pb or one \.pbtxt file and a variables directory that contains variables For frozen models, only one \.pb or \.pbtxt file |  | 
+| PyTorch | 1\.4, 1\.5, 1\.6, 1\.7, 1\.8, or 1\.12 | Supports 1\.4, 1\.5, 1\.6, 1\.7, 1\.8, and 1\.12 | Image Classification | One model definition file \(\.pt or \.pth\) with input dtype of float32 |  | 
+| TensorFlow | 1\.15\.3 or 2\.9 | Supports 1\.15\.3 and 2\.9 | Image Classification | For saved models, one \.pb or one \.pbtxt file and a variables directory that contains variables For frozen models, only one \.pb or \.pbtxt file |  | 
 | XGBoost | 1\.3\.3 | Supports 1\.3\.3 or earlier | Decision Trees | One XGBoost model file \(\.model\) where the number of nodes in a tree is less than 2^31 |  | 
 
 **Note**  
@@ -49,9 +49,9 @@ The default is set to `"float32"`\.
 
 | Framework | Framework Version | Model Version | Models | Model Formats \(packaged in \*\.tar\.gz\) | Toolkits | 
 | --- | --- | --- | --- | --- | --- | 
-| MXNet | 1\.5\.1 | Supports 1\.5\.1 or earlier | Image Classification, Object Detection, Semantic Segmentation, Pose Estimation, Activity Recognition | One symbol file \(\.json\) and one parameter file \(\.params\) | GluonCV v0\.8\.0 | 
-| PyTorch | 1\.7\.1 | Supports 1\.7\.1 or earlier | Image Classification | One model definition file \(\.pt or \.pth\) with input dtype of float32 |  | 
-| TensorFlow | 1\.15\.0 | Supports 1\.15\.0 or earlier | Image Classification | For saved models, one \.pb or one \.pbtxt file and a variables directory that contains variables For frozen models, only one \.pb or \.pbtxt file |  | 
+| MXNet | 1\.5 or 1\.8  | Supports 1\.8, 1\.5 and earlier | Image Classification, Object Detection, Semantic Segmentation, Pose Estimation, Activity Recognition | One symbol file \(\.json\) and one parameter file \(\.params\) | GluonCV v0\.8\.0 | 
+| PyTorch | 1\.7, 1\.8 or 1\.9 | Supports 1\.9 and earlier | Image Classification | One model definition file \(\.pt or \.pth\) with input dtype of float32 |  | 
+| TensorFlow | 1\.15 or 2\.5 | Supports 2\.5, 1\.15 and earlier | Image Classification | For saved models, one \.pb or one \.pbtxt file and a variables directory that contains variables For frozen models, only one \.pb or \.pbtxt file |  | 
 
 **Note**  
  “Model Version” is the version of the framework used to train and export the model\. 

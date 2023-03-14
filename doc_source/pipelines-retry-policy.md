@@ -6,11 +6,13 @@ The retry policy only supports the following pipeline steps:
 + [Processing Step](build-and-manage-steps.md#step-type-processing) 
 + [Training Step](build-and-manage-steps.md#step-type-training) 
 + [Tuning Step](build-and-manage-steps.md#step-type-tuning) 
-**Note**  
-The SageMaker hyperparameter tuning job already conducts retries internally so it does not retry the `SageMaker.JOB_INTERNAL_ERROR` exception type, even if a retry policy is configured\. If you really want to retry, you can program your own [ Retry Strategy](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RetryStrategy.html) using the SageMaker API\.
++ [AutoML Step](build-and-manage-steps.md#step-type-automl) 
 + [CreateModel Step](build-and-manage-steps.md#step-type-create-model) 
 + [RegisterModel Step](build-and-manage-steps.md#step-type-register-model) 
 + [Transform Step](build-and-manage-steps.md#step-type-transform) 
+
+**Note**  
+Jobs running inside both the tuning and AutoML steps conduct retries internally and will not retry the `SageMaker.JOB_INTERNAL_ERROR` exception type, even if a retry policy is configured\. You can program your own [ Retry Strategy](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_RetryStrategy.html) using the SageMaker API\.
 
 
 
@@ -97,23 +99,23 @@ step_train = TrainingStep(
                 StepExceptionTypeEnum.SERVICE_FAULT, 
                 StepExceptionTypeEnum.THROTTLING
             ],
-            expire_after_min=5,
+            expire_after_mins=5,
             interval_seconds=10,
             backoff_rate=2.0 
         ),
         // retry when resource limit quota gets exceeded
         SageMakerJobStepRetryPolicy(
-            exception_types=[SageMakerJobExceptionTypeEnum.RESOURCE_LIMIT]
-            expire_after_min=120,
+            exception_types=[SageMakerJobExceptionTypeEnum.RESOURCE_LIMIT],
+            expire_after_mins=120,
             interval_seconds=60,
             backoff_rate=2.0
         ),
         // retry when job failed due to transient error or EC2 ICE.
         SageMakerJobStepRetryPolicy(
             failure_reason_types=[
-                SageMakerJobExceptionTypeEnum.JOB_INTERNAL_ERROR,
-                SageMakerJobExceptionTypeEnum.JOB_CAPACITY_ERROR,
-            ]
+                SageMakerJobExceptionTypeEnum.INTERNAL_ERROR,
+                SageMakerJobExceptionTypeEnum.CAPACITY_ERROR,
+            ],
             max_attempts=10,
             interval_seconds=30,
             backoff_rate=2.0
@@ -121,3 +123,5 @@ step_train = TrainingStep(
     ]
 )
 ```
+
+For more information on configuring retry behavior for certain step types, see *[Amazon SageMaker Model Building Pipelines \- Retry Policy](https://sagemaker.readthedocs.io/en/stable/amazon_sagemaker_model_building_pipeline.html#retry-policy)* in the Amazon SageMaker Python SDK documentation\.

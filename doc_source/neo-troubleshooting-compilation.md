@@ -6,6 +6,7 @@ This section contains information about how to understand and prevent common com
 + [How to Use This Page](#neo-troubleshooting-compilation-how-to-use)
 + [Framework\-Related Errors](#neo-troubleshooting-compilation-framework-related-errors)
 + [Infrastructure\-Related Errors](#neo-troubleshooting-compilation-infrastructure-errors)
++ [Check your compilation log](#neo-troubleshooting-compilation-logs)
 
 ## How to Use This Page<a name="neo-troubleshooting-compilation-how-to-use"></a>
 
@@ -13,9 +14,11 @@ Attempt to resolve your error by the going through these sections in the followi
 
 1. Check that the input of your compilation job satisfies the input requirements\. See [What input data shapes does SageMaker Neo expect?](neo-compilation-preparing-model.md#neo-job-compilation-expected-inputs)
 
-1.  Check common [framework\-specific errors](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-troubleshooting.html#neo-troubleshooting-compilation-framework-related-errors)\. 
+1.  Check common [framework\-specific errors](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-troubleshooting-compilation.html#neo-troubleshooting-compilation-framework-related-errors)\. 
 
-1.  Check if your error is an [infrastructure error](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-troubleshooting.html#neo-troubleshooting-compilation-infrastructure-errors)\. 
+1.  Check if your error is an [infrastructure error](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-troubleshooting-compilation.html#neo-troubleshooting-compilation-infrastructure-errors)\. 
+
+1. Check your [compilation log](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-troubleshooting-compilation.html#neo-troubleshooting-compilation-logs)\.
 
 ## Framework\-Related Errors<a name="neo-troubleshooting-compilation-framework-related-errors"></a>
 
@@ -53,3 +56,15 @@ Attempt to resolve your error by the going through these sections in the followi
 |   `ClientError: InputConfiguration: S3 object does not exist. Bucket: <bucket>, Key: <bucket key>`   |  Check the Amazon S3 URI your provided\.  | 
 |   ` ClientError: InputConfiguration: Bucket <bucket name> is in region <region name> which is different from AWS Sagemaker service region <service region> `   |   Create an Amazon S3 bucket that is in the same region as the service\.   | 
 |   ` ClientError: InputConfiguration: Unable to untar input model. Please confirm the model is a tar.gz file `   |   Check that your model in Amazon S3 is compressed into a `tar.gz` file\.   | 
+
+## Check your compilation log<a name="neo-troubleshooting-compilation-logs"></a>
+
+1. Navigate to Amazon CloudWatch at [https://console\.aws\.amazon\.com/cloudwatch/](https://console.aws.amazon.com/cloudwatch/)\.
+
+1. Select the region you created the compilation job from the **Region** dropdown list in the top right\.
+
+1. In the navigation pane of the Amazon CloudWatch, choose **Logs**\. Select **Log groups**\.
+
+1. Search for the log group called `/aws/sagemaker/CompilationJobs`\. Select the log group\.
+
+1. Search for the logstream named after the compilation job name\. Select the log stream\.

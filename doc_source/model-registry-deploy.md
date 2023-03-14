@@ -1,4 +1,4 @@
-# Deploy a Model in the Registry<a name="model-registry-deploy"></a>
+# Deploy a Model from the Registry<a name="model-registry-deploy"></a>
 
 After you register a model version and approve it for deployment, deploy it to a SageMaker endpoint for real\-time inference\.
 
@@ -7,11 +7,11 @@ When you create an MLOps project and choose an MLOps project template that inclu
 You can also enable an AWS account to deploy model versions that were created in a different account by adding a cross\-account resource policy\. For example, one team in your organization might be responsible for training models, and a different team is responsible for deploying and updating models\.
 
 **Topics**
-+ [Deploy a Model in the Registry \(SageMaker SDK\)](#model-registry-deploy-smsdk)
-+ [Deploy a Model in the Registry \(Boto3\)](#model-registry-deploy-api)
++ [Deploy a Model from the Registry \(SageMaker SDK\)](#model-registry-deploy-smsdk)
++ [Deploy a Model from the Registry \(Boto3\)](#model-registry-deploy-api)
 + [Deploy a Model Version from a Different Account](#model-registry-deploy-xaccount)
 
-## Deploy a Model in the Registry \(SageMaker SDK\)<a name="model-registry-deploy-smsdk"></a>
+## Deploy a Model from the Registry \(SageMaker SDK\)<a name="model-registry-deploy-smsdk"></a>
 
 To deploy a model version using the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io) use the following code snippet:
 
@@ -26,7 +26,7 @@ model = ModelPackage(role=role,
 model.deploy(initial_instance_count=1, instance_type='ml.m5.xlarge')
 ```
 
-## Deploy a Model in the Registry \(Boto3\)<a name="model-registry-deploy-api"></a>
+## Deploy a Model from the Registry \(Boto3\)<a name="model-registry-deploy-api"></a>
 
 To deploy a model version using the AWS SDK for Python \(Boto3\), complete the following steps:
 
@@ -146,6 +146,19 @@ s3 = boto3.client('s3')
 response = s3.put_bucket_policy(
     Bucket = bucket,
     Policy = bucket_policy)
+
+# Create the KMS grant for encryption in the source account to the
+# model registry account model package group
+client = boto3.client('kms')
+
+response = client.create_grant(
+    GranteePrincipal=cross_account_id,
+    KeyId=kms_key_id
+    Operations=[
+        'Decrypt',
+        'GenerateDataKey',
+    ],
+)
 
 # 3. Create a policy for access to the model package group.
 model_package_group_policy = {

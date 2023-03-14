@@ -1,6 +1,6 @@
-# Create a Monitoring Schedule with an AWS CloudFormation Custom Resource<a name="model-monitor-cloudformation-monitoring-schedules"></a>
+# Create a Monitoring Schedule for a Real\-time Endpoint with an AWS CloudFormation Custom Resource<a name="model-monitor-cloudformation-monitoring-schedules"></a>
 
-To use AWS CloudFormation to create a monitoring schedule, use an AWS CloudFormation custom resource\. The custom resource is in Python\. To deploy it, see [Python Lambda deployment](https://docs.aws.amazon.com/lambda/latest/dg/lambda-python-how-to-create-deployment-package.html)\.
+If you are using a real\-time endpoint, you can use a AWS CloudFormation custom resource to create a monitoring schedule\. The custom resource is in Python\. To deploy it, see [Python Lambda deployment](https://docs.aws.amazon.com/lambda/latest/dg/lambda-python-how-to-create-deployment-package.html)\.
 
 ## Custom Resource<a name="model-monitor-cloudformation-custom-resource"></a>
 

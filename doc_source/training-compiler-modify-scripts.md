@@ -7,8 +7,8 @@ This guide walks you through how to adapt your training script for a compiler\-a
 Choose one of the following topics depending on the framework you use\.
 
 **Topics**
-+ [TensorFlow Models](training-compiler-tensorflow-models.md)
-+ [PyTorch Models](training-compiler-pytorch-models.md)
++ [PyTorch](training-compiler-pytorch-models.md)
++ [TensorFlow](training-compiler-tensorflow-models.md)
 
 **Note**  
-After you finish preparing your training script, you can run a SageMaker training job using the SageMaker framework estimator classes\. For more information, see the previous topic at [Enable SageMaker Training Compiler Using the SageMaker Python SDK](training-compiler-enable.md#training-compiler-enable-pysdk)\.
+After you finish preparing your training script, you can run a SageMaker training job using the SageMaker framework estimator classes\. For more information, see the previous topic at [Enable SageMaker Training Compiler](training-compiler-enable.md)\.

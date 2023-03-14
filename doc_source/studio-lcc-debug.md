@@ -59,10 +59,15 @@ In this case, your Lifecycle Configuration is specified in the Studio Launcher w
 To resolve this error, use the Studio launcher to select a different Lifecycle Configuration or select `No script`\.
 
 **Note**  
-A default KernelGateway Lifecycle Configuration specified in `DefaultResourceSpec` applies to all KernelGateway images in the Studio Domain unless the user selects a different script from the list presented in the Studio launcher\. The default script also runs if `No Script` is selected by the user\. For more information on selecting a script, see [Step 3: Choose a Lifecycle Configuration while launching a new App](studio-lcc-create.md#create-kgw)\.
+A default KernelGateway Lifecycle Configuration specified in `DefaultResourceSpec` applies to all KernelGateway images in the Studio Domain unless the user selects a different script from the list presented in the Studio launcher\. The default script also runs if `No Script` is selected by the user\. For more information on selecting a script, see [Step 3: Launch an application with the Lifecycle Configuration](studio-lcc-create-console.md#studio-lcc-create-console-step3)\.
 
 ## Lifecycle Config timeout<a name="studio-lcc-debug-timeout"></a>
 
 There is a Lifecycle Configuration timeout limitation of 5 minutes\. If a Lifecycle Configuration script takes longer than 5 minutes to run, Studio throws an error\.
 
-To resolve this error, ensure that your Lifecycle Configuration script completes in less than 5 minutes\.
+To resolve this error, ensure that your Lifecycle Configuration script completes in less than 5 minutes\. 
+
+To help decrease the run time of scripts, try the following:
++ Cut down on necessary steps\. For example, limit which conda environments to install large packages in\.
++ Run tasks in parallel processes\.
++ Use the `nohup` command in your script\.

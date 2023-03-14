@@ -30,49 +30,49 @@ The following is an example of an HTML worker task template built using this cro
 </crowd-form>
 ```
 
-### Attributes<a name="image-classifier-multi-attributes"></a>
+## Attributes<a name="image-classifier-multi-attributes"></a>
 
 The following attributes are supported by the `crowd-image-classifier-multi-select` element\. Each attribute accepts a string value or string values\.
 
-#### categories<a name="image-classifier-multi-attributes-categories"></a>
+### categories<a name="image-classifier-multi-attributes-categories"></a>
 
 Required\. A JSON\-formatted array of strings, each of which is a category that a worker can assign to the image\. A worker must choose at least one category and can choose all categories\. 
 
-#### header<a name="image-classifier-multi-attributes-header"></a>
+### header<a name="image-classifier-multi-attributes-header"></a>
 
 Required\. The text to display above the image\. This is typically a question or simple instruction for workers\.
 
-#### name<a name="image-classifier-multi-attributes-name"></a>
+### name<a name="image-classifier-multi-attributes-name"></a>
 
 Required\. The name of this widget\. In the form output, the name is used as a key for the widget's input\.
 
-#### src<a name="image-classifier-multi-attributes-src"></a>
+### src<a name="image-classifier-multi-attributes-src"></a>
 
 Required\. The URL of the image to be classified\. 
 
-#### exclusion\-category<a name="image-classifier-multi-attributes-exclusion-category"></a>
+### exclusion\-category<a name="image-classifier-multi-attributes-exclusion-category"></a>
 
 Optional\. A JSON\-formatted string with the following format: `"{ text: 'default-value' }"`\. This attribute sets a default value that workers can choose if none of the labels applies to the image shown in the worker UI\.
 
-### Element Hierarchy<a name="image-classifier-multi-element-hierarchy"></a>
+## Element Hierarchy<a name="image-classifier-multi-element-hierarchy"></a>
 
 This element has the following parent and child elements:
 + **Parent elements**: [crowd\-form](sms-ui-template-crowd-form.md)
 + **Child elements**: [full\-instructions](sms-ui-template-crowd-image-classifier.md#image-classifier-regions-full-instructions), [short\-instructions](sms-ui-template-crowd-image-classifier.md#image-classifier-regions-short-instructions), [worker\-comment](sms-ui-template-crowd-image-classifier.md#image-classifier-regions-worker-comment)
 
-### Regions<a name="image-classifier-multi-regions"></a>
+## Regions<a name="image-classifier-multi-regions"></a>
 
 This element uses the following regions
 
-#### full\-instructions<a name="image-classifier-multi-regions-full-instructions"></a>
+### full\-instructions<a name="image-classifier-multi-regions-full-instructions"></a>
 
 General instructions for the worker on how to classify an image\.
 
-#### short\-instructions<a name="image-classifier-multi-regions-short-instructions"></a>
+### short\-instructions<a name="image-classifier-multi-regions-short-instructions"></a>
 
 Important task\-specific instructions\. These instructions are displayed prominently\.
 
-### Output<a name="image-classifier-multi-output"></a>
+## Output<a name="image-classifier-multi-output"></a>
 
 The output of this element is a string that specifies one or more of the values defined in the `categories` attribute of the `<crowd-image-classifier-multi-select>` element\.
 
@@ -89,7 +89,7 @@ The following is a sample of output from this element\.
 ]
 ```
 
-### See Also<a name="image-classifier-multi-see-also"></a>
+## See Also<a name="image-classifier-multi-see-also"></a>
 
 For more information, see the following:
 + [Image Classification \(Multi\-label\)](sms-image-classification-multilabel.md)

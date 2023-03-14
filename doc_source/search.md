@@ -7,7 +7,7 @@ You can use SageMaker search to:
 + Find the best performing model by reviewing training job and model metrics, such as training loss or validation accuracy\.
 + Trace a model's lineage to the training job and its related resources, such as the training datasets\.
 
-This topic covers searching from the SageMaker console and the SageMaker API\. For information on searching in Amazon SageMaker Studio, see [Search Experiments Using Studio](experiments-search-studio.md)\.
+This topic covers searching from the SageMaker console and the SageMaker API\.
 
 **Topics**
 + [Sample Notebooks for Managing ML Experiments](#search-sample-notebooks)
@@ -20,7 +20,7 @@ This topic covers searching from the SageMaker console and the SageMaker API\. F
 
 For a sample notebook that uses Amazon SageMaker model tracking capability to manage ML experiments, see [Managing ML Experimentation using Amazon SageMaker Model Tracking Capability](https://sagemaker-examples.readthedocs.io/en/latest/advanced_functionality/search/ml_experiment_management_using_search.html)\. 
 
-For instructions on how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. After you have created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all of the SageMaker samples\. The notebook for managing ML experiments is located in the **Advanced Functionality** section\. To open a notebook, choose its **Use** tab, and choose **Create copy**\. If you have questions, post them on the [Amazon Machine Learning Developer Forum](https://forums.aws.amazon.com/forum.jspa?forumID=285)\.
+For instructions on how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Amazon SageMaker Notebook Instances](nbi.md)\. After you have created a notebook instance and opened it, choose the **SageMaker Examples** tab to see a list of all of the SageMaker samples\. The notebook for managing ML experiments is located in the **Advanced Functionality** section\. To open a notebook, choose its **Use** tab, and choose **Create copy**\. If you have questions, post them on the [Amazon Machine Learning Developer Forum](https://forums.aws.amazon.com/forum.jspa?forumID=285)\.
 
 ## Organize, Find, and Evaluate Training Jobs \(Console\)<a name="search-organize-console"></a>
 

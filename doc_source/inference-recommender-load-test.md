@@ -14,8 +14,17 @@ Create a load test programmaticially using AWS SDK for Python \(Boto3\), with th
 Use the `CreateInferenceRecommendationsJob` API to create an Inference Recommender load test\. Specify `Advanced` for the `JobType` field and provide: 
 + A job name for your load test \(`JobName`\)\. The job name must be unique within your AWS Region and within your AWS account\.
 + The Amazon Resource Name \(ARN\) of an IAM role that enables Inference Recommender to perform tasks on your behalf\. Define this for the `RoleArn` field\.
-+ A traffic pattern of the load test \(`TrafficPattern`\)\.
-+ An endpoint configuration dictionary \(`InputConfig`\) where you specify an AWS instance type against which to run benchmarks\.
++ An endpoint configuration dictionary \(`InputConfig`\) where you specify the following:
+  + For `TrafficPattern`, do the following:
+    + For `TrafficType`, specify `PHASES`\.
+    + For `Phases`, specify the `InitialNumberOfUsers` \(how many concurrent users to start with, with a minimum of 1 and a maximum of 3\), `SpawnRate` \(the number of users to be spawned in a minute for a specific phase of load testing, with a minimum of 0 and maximum of 3\), and `DurationInSeconds` \(how long the traffic phase should be, with a minimum of 120 and maximum of 3600\)\.
+**Note**  
+A user is defined as a system\-generated actor that runs in a loop and invokes requests to an endpoint as part of Inference Recommender\. For a typical XGBoost container running on an `ml.c5.large` instance, endpoints can reach 30,000 invocations per minute \(500 tps\) with just 15\-20 users\.
+  + For `ResourceLimit`, specify `MaxNumberOfTests` \(the maximum number of benchmarking load tests for an Inference Recommender job, with a minimum of 1 and a maximum of 10\) and `MaxParallelOfTests` \(the maximum number of parallel benchmarking load tests for an Inference Recommender job, with a minimum of 1 and a maximum of 10\)\.
+  + For `EndpointConfigurations`, specify the `InstanceType`, or the instance type on which you want to run your load tests\.
++ A stopping conditions dictionary \(`StoppingConditions`\), where if any of the conditions are met, the Inference Recommender job stops\. For this example, specify the following fields in the dictionary:
+  + For `MaxInvocations`, specify the maximum number of requests per minute expected for the endpoint, with a minimum of 1 and a maximum of 30,000\.
+  + For `ModelLatencyThresholds`, specify `Percentile` \(the model latency percentile threshold\) and `ValueInMilliseconds` \(the model latency percentile value in milliseconds\)\.
 
 ```
 # Create a low-level SageMaker service client.
@@ -42,25 +51,25 @@ sagemaker_client.create_inference_recommendations_job(
                         RoleArn=role_arn,
                         InputConfig={
                             'ModelPackageVersionArn': model_package_arn,
-                            "JobDuration": 7200,
+                            "JobDurationInSeconds": 7200,
                             'TrafficPattern' : {
                                 'TrafficType': 'PHASES',
                                 'Phases': [
                                     {
-                                        'InitialNumberOfUser': 1,
-                                        'SpawnRate': 60,
-                                        'Duration': 300
+                                        'InitialNumberOfUsers': 1,
+                                        'SpawnRate': 1,
+                                        'DurationInSeconds': 120
                                     },
                                     {
-                                        'InitialNumberOfUser': 5,
+                                        'InitialNumberOfUsers': 1,
                                         'SpawnRate': 1,
-                                        'Duration': 300
+                                        'DurationInSeconds': 120
                                     }
                                 ]
                             },
-                            'ResourceLimits': {
+                            'ResourceLimit': {
                                         'MaxNumberOfTests': 10,
-                                        'MaxParallelTests': 3
+                                        'MaxParallelOfTests': 3
                                 },
                             "EndpointConfigurations" : [{
                                         'InstanceType': 'ml.c5.xlarge'
@@ -73,8 +82,11 @@ sagemaker_client.create_inference_recommendations_job(
                                     }]
                         },
                         StoppingConditions={
-                            'MaximumInvocations': 1000,
-                            'ModelLatencyThresholds':[{'Percentile': 'P95', 'Value': 100}]
+                            'MaxInvocations': 1000,
+                            'ModelLatencyThresholds':[{
+                                'Percentile': 'P95', 
+                                'ValueInMilliseconds': 100
+                            }]
                         }
                 )
 ```
@@ -87,8 +99,17 @@ See the [Amazon SageMaker API Reference Guide](https://docs.aws.amazon.com/sagem
 Use the `create-inference-recommendations-job` API to create an Inference Recommender load test\. Specify `Advanced` for the `JobType` field and provide: 
 + A job name for your load test \(`job-name`\)\. The job name must be unique within your AWS region and within your AWS account\.
 + The Amazon Resource Name \(ARN\) of an IAM role that enables Inference Recommender to perform tasks on your behalf\. Define this for the `role-arn` field\.
-+ A traffic pattern of the load test \(`TrafficPattern`\)\.
-+ An endpoint configuration dictionary \(`input-config`\) where you specify an AWS instance type for running benchmarks against\.
++ An endpoint configuration dictionary \(`input-config`\) where you specify the following:
+  + For `TrafficPattern`, do the following:
+    + For `TrafficType`, specify `PHASES`\.
+    + For `Phases`, specify the `InitialNumberOfUsers` \(how many concurrent users to start with, with a minimum of 1 and a maximum of 3\), `SpawnRate` \(the number of users to be spawned in a minute for a specific phase of load testing, with a minimum of 0 and maximum of 3\), and `DurationInSeconds` \(how long the traffic phase should be, with a minimum of 120 and maximum of 3600\)\.
+**Note**  
+A user is defined as a system\-generated actor that runs in a loop and invokes requests to an endpoint as part of Inference Recommender\. For a typical XGBoost container running on an `ml.c5.large` instance, endpoints can reach 30,000 invocations per minute \(500 tps\) with just 15\-20 users\.
+  + For `ResourceLimit`, specify `MaxNumberOfTests` \(the maximum number of benchmarking load tests for an Inference Recommender job, with a minimum of 1 and a maximum of 10\) and `MaxParallelOfTests` \(the maximum number of parallel benchmarking load tests for an Inference Recommender job, with a minimum of 1 and a maximum of 10\)\.
+  + For `EndpointConfigurations`, specify the `InstanceType`, or the instance type on which you want to run your load tests\.
++ A stopping conditions dictionary \(`stopping-conditions`\), where if any of the conditions are met, the Inference Recommender job stops\. For this example, specify the following fields in the dictionary:
+  + For `MaxInvocations`, specify the maximum number of requests per minute expected for the endpoint, with a minimum of 1 and a maximum of 30,000\.
+  + For `ModelLatencyThresholds`, specify `Percentile` \(the model latency percentile threshold\) and `ValueInMilliseconds` \(the model latency percentile value in milliseconds\)\.
 
 ```
 aws sagemaker create-inference-recommendations-job\
@@ -98,14 +119,14 @@ aws sagemaker create-inference-recommendations-job\
     --role-arn arn:aws:iam::<account>:role/*\
     --input-config "{
         \"ModelPackageVersionArn\": \"arn:aws:sagemaker:<region>:<account>:role/*\",
-        \"JobDuration\": 7200,                                
+        \"JobDurationInSeconds\": 7200,                                
         \"TrafficPattern\" : {
                 \"TrafficType\": \"PHASES\",
                 \"Phases\": [
                     {
                         \"InitialNumberOfUsers\": 1,
                         \"SpawnRate\": 60,
-                        \"Duration\": 300
+                        \"DurationInSeconds\": 300
                     }
                 ]
             },
@@ -126,11 +147,11 @@ aws sagemaker create-inference-recommendations-job\
             ]
         }"
     --stopping-conditions "{
-        \"MaximumInvocations\": 1000,
+        \"MaxInvocations\": 1000,
         \"ModelLatencyThresholds\":[
                 {
                     \"Percentile\": \"P95\", 
-                    \"Value\": 100
+                    \"ValueInMilliseconds\": 100
                 }
         ]
     }"
@@ -141,9 +162,13 @@ aws sagemaker create-inference-recommendations-job\
 
 Create a load test with Studio\.
 
-1. In the left sidebar of Studio, choose the **Components and registries** icon\.
+1. In your Studio application, choose the home icon \(![\[Home icon in Studio\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
 
-1. Select **Inference Recommender Jobs** from the dropdown list\. A new tab titled **Create inference recommender job** opens in the right pane\. 
+1. In the left sidebar of Studio, choose **Deployments**\.
+
+1. Choose **Inference recommender** from the dropdown list\.
+
+1. Choose **Create inference recommender job**\. A new tab titled **Create inference recommender job** opens\.
 
 1. Select the name of your model group from the dropdown **Model group** field\. The list includes all the model groups registered with the model registry in your account, including models registered outside of Studio\.
 
@@ -206,7 +231,7 @@ Collect metrics with the `DescribeInferenceRecommendationsJob` API\. Specify the
 
 ```
 load_test_response = sagemaker_client.describe_inference_recommendations_job(
-                                                        job_name=load_test_job_name
+                                                        JobName=load_test_job_name
                                                         )
 ```
 
@@ -229,7 +254,7 @@ This returns a JSON response similar to the following:
     'LastModifiedTime': datetime.datetime(2021, 10, 26, 19, 46, 31, 399000, tzinfo=tzlocal()), 
     'InputConfig': {
         'ModelPackageVersionArn': 'arn:aws:sagemaker:region:account-id:model-package/resource-id', 
-        'JobDuration': 7200, 
+        'JobDurationInSeconds': 7200, 
         'TrafficPattern': {
             'TrafficType': 'PHASES'
             }, 
@@ -242,15 +267,18 @@ This returns a JSON response similar to the following:
             }]
         }, 
     'StoppingConditions': {
-        'MaximumInvocations': 1000, 
-        'ModelLatencyThresholds': [{'Percentile': 'P95', 'Value': 100}]}, 
+        'MaxInvocations': 1000, 
+        'ModelLatencyThresholds': [{
+            'Percentile': 'P95', 
+            'ValueInMilliseconds': 100}
+            ]}, 
     'InferenceRecommendations': [{
         'Metrics': {
-        'CostPerHour': 0.6899999976158142, 
-        'CostPerInference': 1.0332434612791985e-05, 
-        'MaximumInvocations': 1113, 
-        'ModelLatency': 100000
-        }, 
+            'CostPerHour': 0.6899999976158142, 
+            'CostPerInference': 1.0332434612791985e-05, 
+            'MaximumInvocations': 1113, 
+            'ModelLatency': 100000
+            }, 
     'EndpointConfiguration': {
         'EndpointName': 'endpoint-name', 
         'VariantName': 'variant-name', 
@@ -281,6 +309,8 @@ The `InferenceRecommendations` dictionary contains a list of Inference Recommend
 
 The `EndpointConfiguration` nested dictionary contains the instance type \(`InstanceType`\) recommendation along with the endpoint and variant name \(a deployed AWS machine learning model\) used during the recommendation job\. You can use the endpoint and variant name for monitoring in Amazon CloudWatch Events\. See [Monitor Amazon SageMaker with Amazon CloudWatch](monitoring-cloudwatch.md) for more information\.
 
+The `EndpointConfiguration` nested dictionary also contains the instance count \(`InitialInstanceCount`\) recommendation\. This is the number of instances that you should provision in the endpoint to meet the `MaxInvocations` specified in the `StoppingConditions`\. For example if the `InstanceType` is `ml.m5.large` and the `InitialInstanceCount` is `2`, then you should provision 2 `ml.m5.large` instances for your endpoint so that it can handle the TPS specified in the `MaxInvocations` stopping condition\.
+
 The `Metrics` nested dictionary contains information about the estimated cost per hour \(`CostPerHour`\) for your real\-time endpoint in US dollars, the estimated cost per inference \(`CostPerInference`\) for your real\-time endpoint, the maximum number of `InvokeEndpoint` requests sent to the endpoint, and the model latency \(`ModelLatency`\), which is the interval of time \(in microseconds\) that your model took to respond to SageMaker\. The model latency includes the local communication times taken to send the request and to fetch the response from the model container and the time taken to complete the inference in the container\.
 
 ------
@@ -305,7 +335,7 @@ This returns a response similar to the following:
     'LastModifiedTime': datetime.datetime(2021, 10, 26, 19, 46, 31, 399000, tzinfo=tzlocal()), 
     'InputConfig': {
         'ModelPackageVersionArn': 'arn:aws:sagemaker:region:account-id:model-package/resource-id', 
-        'JobDuration': 7200, 
+        'JobDurationInSeconds': 7200, 
         'TrafficPattern': {
             'TrafficType': 'PHASES'
             }, 
@@ -318,11 +348,11 @@ This returns a response similar to the following:
             }]
         }, 
     'StoppingConditions': {
-        'MaximumInvocations': 1000, 
+        'MaxInvocations': 1000, 
         'ModelLatencyThresholds': [{
             'Percentile': 'P95', 
-            'Value': 100
-                }]
+            'ValueInMilliseconds': 100
+            }]
         }, 
     'InferenceRecommendations': [{
         'Metrics': {
@@ -390,7 +420,7 @@ Specify the job name of the load test for the `JobName` field:
 
 ```
 sagemaker_client.stop_inference_recommendations_job(
-                                    job_name=<INSERT>
+                                    JobName='<INSERT>'
                                     )
 ```
 

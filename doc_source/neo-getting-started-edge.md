@@ -19,7 +19,7 @@ You do not need to add the `‘AmazonSageMakerFullAccess’` IAM policy
 #### [ Terminal ]
 
    ```
-   $ pip install boto3
+   pip install boto3
    ```
 
 ------
@@ -139,10 +139,10 @@ You do not need to add the `‘AmazonSageMakerFullAccess’` IAM policy
 #### [ CLI ]
 
    ```
-   $ aws s3 mb s3://'name-of-your-bucket' --region specify-your-region 
+   aws s3 mb s3://'name-of-your-bucket' --region specify-your-region 
    
    # Check your bucket exists
-   $ aws s3 ls s3://'name-of-your-bucket'/
+   aws s3 ls s3://'name-of-your-bucket'/
    ```
 
 ------
@@ -193,7 +193,7 @@ You do not need to add the `‘AmazonSageMakerFullAccess’` IAM policy
    Replace `your-model-filename` and `your-S3-bucket` with the name of your S3 bucket\. 
 
    ```
-   $ aws s3 cp your-model-filename s3://your-S3-bucket
+   aws s3 cp your-model-filename s3://your-S3-bucket
    ```
 
 ------

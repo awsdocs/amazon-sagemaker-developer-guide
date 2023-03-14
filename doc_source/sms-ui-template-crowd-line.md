@@ -37,15 +37,15 @@ The following is an example of a Liquid template that uses the `<crowd-line>` el
 </crowd-form>
 ```
 
-### Attributes<a name="line-attributes"></a>
+## Attributes<a name="line-attributes"></a>
 
 The following attributes are supported by this element\.
 
-#### header<a name="line-attributes-header"></a>
+### header<a name="line-attributes-header"></a>
 
 Optional\. The text to display above the image\. This is typically a question or simple instruction for the worker\.
 
-#### initial\-value<a name="line-attributes-initialValue"></a>
+### initial\-value<a name="line-attributes-initialValue"></a>
 
 Optional\. An array of JSON objects, each of which sets a line when the component is loaded\. Each JSON object in the array contains the following properties:
 + **label** – The text assigned to the line as part of the labeling task\. This text must match one of the labels defined in the *labels* attribute of the `<crowd-line>` element\.
@@ -86,51 +86,51 @@ initial-value="{
 
 Lines set via the `initial-value` property can be adjusted\. Whether or not a worker answer was adjusted is tracked via an `initialValueModified` boolean in the worker answer output\.
 
-#### labels<a name="line-attributes-labels"></a>
+### labels<a name="line-attributes-labels"></a>
 
 Required\. A JSON formatted array of strings, each of which is a label that a worker can assign to the line\. 
 
 **Limit:** 10 labels
 
-#### label\-colors<a name="line-attributes-label-colors"></a>
+### label\-colors<a name="line-attributes-label-colors"></a>
 
 Optional\. An array of strings\. Each string is a hexadecimal \(hex\) code for a label\.
 
-#### name<a name="line-attributes-name"></a>
+### name<a name="line-attributes-name"></a>
 
 Required\. The name of this widget\. It's used as a key for the widget's input in the form output\.
 
-#### src<a name="line-attributes-src"></a>
+### src<a name="line-attributes-src"></a>
 
 Required\. The URL of the image on which to draw lines\. 
 
-### Regions<a name="line-regions"></a>
+## Regions<a name="line-regions"></a>
 
 The following regions are required by this element\.
 
-#### full\-instructions<a name="line-regions-full-instructions"></a>
+### full\-instructions<a name="line-regions-full-instructions"></a>
 
 General instructions about how to draw lines\. 
 
-#### short\-instructions<a name="line-regions-short-instructions"></a>
+### short\-instructions<a name="line-regions-short-instructions"></a>
 
 Important task\-specific instructions that are displayed in a prominent place\.
 
-### Element Hierarchy<a name="line-element-hierarchy"></a>
+## Element Hierarchy<a name="line-element-hierarchy"></a>
 
 This element has the following parent and child elements\.
 + **Parent elements**: [crowd\-form](sms-ui-template-crowd-form.md)
 + **Child elements**: [short\-instructions](#line-regions-short-instructions), [full\-instructions](#line-regions-full-instructions)
 
-### Output<a name="line-output"></a>
+## Output<a name="line-output"></a>
 
-#### inputImageProperties<a name="line-output-inputImageProperties"></a>
+### inputImageProperties<a name="line-output-inputImageProperties"></a>
 
 A JSON object that specifies the dimensions of the image that is being annotated by the worker\. This object contains the following properties\.
 + **height** – The height, in pixels, of the image\.
 + **width** – The width, in pixels, of the image\.
 
-#### lines<a name="line-output-labelMappings"></a>
+### lines<a name="line-output-labelMappings"></a>
 
 A JSON Array containing objects with the line labels and vertices\.
 + **label** – The label given to a line\.
@@ -178,7 +178,7 @@ The following is an example of output from this element\.
   }
 ```
 
-### See Also<a name="line-see-also"></a>
+## See Also<a name="line-see-also"></a>
 
 For more information, see the following\.
 + [Use Amazon SageMaker Ground Truth to Label Data](sms.md)

@@ -22,7 +22,10 @@ Warm start is compatible only with tuning jobs created after October 1, 2018\. F
 To reduce compute time and avoid overfitting your model, training jobs can be stopped early when they are unlikely to improve the current best objective metric of the hyperparameter tuning job\.\. Like warm start, this feature is only available when tuning a single algorithm\. This is an automatic feature without configuration options, and it’s disabled by default\. For more information on how early stopping works, the algorithms that support it, and how to use it with your own algorithms, see [Stop Training Jobs Early](automatic-model-tuning-early-stopping.html)\.
 
 **Tuning Strategy**  
-Tuning strategy can be either random or Bayesian\. It specifies how the automatic tuning searches over specified hyperparameter ranges\. You specify the ranges in a later step\. Random search chooses random combinations of values from the specified ranges and can be run concurently\. Bayesian search chooses values based on what is likely to get the best result given what is known about the history of previous selections\. For more information search strategies, see [How Hyperparameter Tuning Works](automatic-model-tuning-how-it-works.html)\. 
+Tuning strategy can be either random, Bayesian or Hyperband\. These selections specify how automatic tuning algorithms search over specified hyperparameter ranges \(selected in a later step\)\. Random search chooses random combinations of values from the specified ranges and can be run sequentially or in parallel\. Bayesian optimization chooses values based on what is likely to get the best result given what is known about the history of previous selections\. Hyperband uses a multi\-fidelity strategy that dynamically allocates resources towards well\-utilized jobs and automatically stops those that underperform\. The new configuration that starts after stopping other configurations is chosen randomly\. Hyperband can only be used with iterative algorithms\. For more information search strategies, see [How Hyperparameter Tuning Works](automatic-model-tuning-how-it-works.html)\.
+
+**Note**  
+Hyperband uses an advanced internal mechanism to apply early stopping\. Thus, the parameter `TrainingJobEarlyStoppingType` in the `HyperParameterTuningJobConfig` API must be set to `OFF` when using Hyperband's internal early stopping feature\.
 
 **Tags**  
 You enter tags as key\-value pairs to assign metadata to tuning jobs to help you manage them\. Values are not required\. You can use just the key\. To see the keys associated with a job, choose the **Tags** tab on the details page for tuning job\. For more information about using tags for tuning jobs, see [Manage Hyperparameter Tuning and Training Jobs](multiple-algorithm-hpo-manage-tuning-jobs.md)
@@ -57,12 +60,12 @@ Each training job definition for a tuning job requires a name, permission to acc
 
 **Algorithm Options**  
 You can choose one of the built\-in algorithms, your own algorithm, your own container with an algorithm, or you can subscribe to an algorithm from AWS Marketplace\. 
-+ If you choose a built\-in algorithm, it has the ECR image information prepopulated\.
++ If you choose a built\-in algorithm, it has the ECR image information pre\-populated\.
 + If you choose your own container, you must specify the ECR image information\. You can select the input mode for the algorithm as file or pipe\.
 + If you plan to supply your data using a \.CSV file from Amazon S3, you should select the file\.
 
 **Metrics**  
-When you choose a built\-in algorithm, metrics are provided for you\. If you choose your own algorithm, you need to define your metrics\. You can define up to 20 metrics for your tuning job to monitor, one of which must be chosen as the objective metric\. For more information on how to define a metric for a tuning job, see [Define Metrics](automatic-model-tuning-define-metrics.md)\.
+When you choose a built\-in algorithm, metrics are provided for you\. If you choose your own algorithm, you need to define your metrics\. You can define up to 20 metrics for your tuning job to monitor, one of which must be chosen as the objective metric\. For more information on how to define a metric for a tuning job, see [Define metricsSpecify environment variables](automatic-model-tuning-define-metrics-variables.md#automatic-model-tuning-define-metrics)\.
 
 **Objective Metric**  
 To find the best training job, set an objective metric and whether to maximize or minimize it\. After the training job is complete, you can view the tuning job detail page for a summary of the best training job found using this objective metric\. 

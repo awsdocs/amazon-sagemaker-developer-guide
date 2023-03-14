@@ -59,7 +59,7 @@ The following is a sample configuration file:
 
 ## Calibration Images<a name="neo-troubleshooting-target-devices-ambarella-calibration-images"></a>
 
-Quantize your trained model by providing calibration images\. Quantizing your model improves the the performance of the CVFlow engine on an Ambarella System on a Chip \(SoC\)\. The Ambarella toolchain uses the calibration images to determine how each layer in the model should be quantized to achieve optimal performance and accuracy\. Each layer is quantized independently to INT8 or INT16 formats\. The final model has a mix of INT8 and INT16 layers after quantization\.
+Quantize your trained model by providing calibration images\. Quantizing your model improves the performance of the CVFlow engine on an Ambarella System on a Chip \(SoC\)\. The Ambarella toolchain uses the calibration images to determine how each layer in the model should be quantized to achieve optimal performance and accuracy\. Each layer is quantized independently to INT8 or INT16 formats\. The final model has a mix of INT8 and INT16 layers after quantization\.
 
 **How many images should you use?**
 
@@ -80,3 +80,7 @@ Yes\. You can convert the images to the binary format with open\-source packages
 ## Mean and Scale<a name="neo-troubleshooting-target-devices-ambarella-mean-scale"></a>
 
 You can specify mean and scaling pre\-processing options to the Amberalla toolchain\. These operations are embedded into the network and are applied during inference on each input\. Do not provide processed data if you specify the mean or scale\. More specifically, do not provide data you have subtracted the mean from or have applied scaling to\.
+
+## Check your compilation log<a name="neo-troubleshooting-target-devices-ambarella-compilation"></a>
+
+For information on checking compilation log for Ambarella devices, see [Check your compilation log](neo-troubleshooting-compilation.md#neo-troubleshooting-compilation-logs)\.

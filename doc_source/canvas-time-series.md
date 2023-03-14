@@ -11,8 +11,22 @@ You can make a time series forecast for the following examples:
 + Forecasting how a 10% reduction in the price of a product affects sales over a time period\.
 
 To make a time series forecast, your dataset must have the following:
-+ A timestamp column with all values having the `datetime` type using the format: `yyyy-MM-dd HH:mm:ss`\.
++ A timestamp column with all values having the `datetime` type\.
 + A target column that has the values that you're using to forecast future values\.
+
+The `datetime` values in the timestamp column must use one of the following formats:
++ `YYYY-MM-DD HH:MM:SS`
++ `YYYY-MM-DDTHH:MM:SSZ`
++ `YYYY-MM-DD`
++ `MM/DD/YY`
++ `MM/DD/YY HH:MM`
++ `MM/DD/YYYY`
++ `YYYY/MM/DD HH:MM:SS`
++ `YYYY/MM/DD`
++ `DD/MM/YYYY`
++ `DD/MM/YY`
++ `DD-MM-YY`
++ `DD-MM-YYYY`
 
 You can make forecasts for the following intervals:
 + 1 min
@@ -33,7 +47,7 @@ Ice cream sales might increase when the weather is warmer\. A decrease in the pr
 
 You might have missing data for different reasons\. The reason for your missing data might inform how you want Amazon SageMaker Canvas to impute it\. For example, your organization might use an automatic system that only tracks when a sale happens\. If you're using a dataset that comes from this type of automatic system, you have missing values in the target column\.
 
-For missing values in the dataset, you can either choose the imputation method that SageMaker Canvas suggests, or choose a different method\.
+For missing values in the dataset, SageMaker Canvas imputes the missing values for you\.
 
 **Important**  
 If you have missing values in the target column, we recommend using a dataset that doesn't have them\. SageMaker Canvas uses the target column to forecast future values\. Missing values in the target column can greatly reduce the accuracy of the forecast\.

@@ -123,7 +123,7 @@ For this tutorial, you use one of the following APIs:
 + If you chose the Amazon Rekognition task type, you use the `[DetectModerationLabels](https://docs.aws.amazon.com/rekognition/latest/dg/API_DetectModerationLabels.html)` operation\.
 
 You can interact with these APIs using a SageMaker notebook instance \(recommended for new users\) or the AWS Command Line Interface \(AWS CLI\)\. Choose one of the following to learn more about these options:
-+ To learn more about and set up a notebook instance, see [Use Amazon SageMaker Notebook Instances](nbi.md)\.
++ To learn more about and set up a notebook instance, see [Amazon SageMaker Notebook Instances](nbi.md)\.
 + To learn more about and get started using the AWS CLI, see [What Is the AWS Command Line Interface?](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html) in the *AWS Command Line Interface User Guide*\.
 
 Select your task type in the following table to see example requests for Amazon Textract and Amazon Rekognition using the AWS SDK for Python \(Boto3\)\. 

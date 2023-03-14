@@ -1,6 +1,6 @@
 # Conditional Demographic Disparity in Predicted Labels \(CDDPL\)<a name="clarify-post-training-bias-metric-cddpl"></a>
 
-The demographic disparity metric \(DDPL\) determines whether facet *d* has a larger proportion of the predicted rejected labels than of the predicted accepted labels\. It enables a comparison of difference in predicted rejection proportion and predicted acceptance proportion across facets\. This metric is exactly the same as the pretraining CDD metric except that it is computed off the predicted labels instead of the observed ones\. This metric lies in the range \(\-1,\+1\)\.
+The demographic disparity metric \(DDPL\) determines whether facet *d* has a larger proportion of the predicted rejected labels than of the predicted accepted labels\. It enables a comparison of difference in predicted rejection proportion and predicted acceptance proportion across facets\. This metric is exactly the same as the pre\-training CDD metric except that it is computed off the predicted labels instead of the observed ones\. This metric lies in the range \(\-1,\+1\)\.
 
 The formula for the demographic disparity predictions for labels of facet *d* is as follows: 
 

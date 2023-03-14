@@ -8,12 +8,16 @@
 
 **Topics**
 + [RStudio license](rstudio-license.md)
++ [Upgrade the RStudio Version](rstudio-version.md)
 + [Network and Storage](rstudio-network.md)
 + [RStudioServerPro instance type](rstudio-select-instance.md)
 + [RStudio Connect URL](rstudio-configure-connect.md)
 + [RStudio Package Manager](rstudio-configure-pm.md)
 + [Create an Amazon SageMaker Domain with RStudio using the AWS CLI](rstudio-create-cli.md)
++ [Add RStudio support to an existing Domain](rstudio-add-existing.md)
++ [Bring your own image to RStudio on SageMaker](rstudio-byoi.md)
 + [Manage users](rstudio-create-user.md)
 + [RStudio administrative dashboard](rstudio-admin.md)
++ [Shut down and restart RStudio](rstudio-shutdown.md)
 + [Manage billing and cost](rstudio-billing.md)
 + [Diagnose issues and get support](rstudio-troubleshooting.md)

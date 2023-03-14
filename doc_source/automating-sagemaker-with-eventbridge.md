@@ -21,6 +21,7 @@ Some examples of the actions that can be automatically triggered include the fol
 + [SageMaker image state change](#eventbridge-image-state)
 + [SageMaker image version state change](#eventbridge-image-version-state)
 + [Endpoint deployment state change](#eventbridge-deployment-state)
++ [Model card state change](#eventbridge-model-card-state)
 
 ## Training job state change<a name="eventbridge-training"></a>
 
@@ -641,3 +642,42 @@ The following secondary deployment statuses are also available for endpoints \(f
 + `Baking`: waiting period to monitor the CloudWatch alarms in the auto\-rollback configuration\.
 
   Example message: `"Baking for X seconds (TerminationWaitInSeconds) with traffic enabled on full capacity of Y instance(s)."`
+
+## Model card state change<a name="eventbridge-model-card-state"></a>
+
+Indicates a change in the status of an Amazon SageMaker Model Card\. For more information about model cards, see [Amazon SageMaker Model Cards](model-cards.md)\.
+
+```
+{
+    "version": "0",
+    "id": "aa7a9c4f-2caa-4d04-a6de-e67227ba4302",
+    "detail-type": "SageMaker Model Card State Change",
+    "source": "aws.sagemaker",
+    "account": "123456789012",
+    "time": "2022-11-30T00:00:00Z",
+    "region": "us-east-1",
+    "resources": [
+        "arn:aws:sagemaker:us-east-1:123456789012:model-card/example-card"
+    ],
+    "detail": {
+        "ModelCardVersion": 2,
+        "LastModifiedTime": "2022-12-03T00:09:44.893854735Z",
+        "LastModifiedBy": {
+            "DomainId": "us-east-1",
+            "UserProfileArn": "arn:aws:sagemaker:us-east-1:123456789012:user-profile/user",
+            "UserProfileName": "user"
+        },
+        "CreationTime": "2022-12-03T00:09:33.084Z",
+        "CreatedBy": {
+            "DomainId": "us-east-1",
+            "UserProfileArn": "arn:aws:sagemaker:us-east-1:123456789012:user-profile/user",
+            "UserProfileName": "user"
+        },
+        "ModelCardName": "example-card",
+        "ModelId": "example-model",
+        "ModelCardStatus": "Draft",
+        "AccountId": "123456789012",
+        "SecurityConfig": {}
+    }
+}
+```

@@ -3,23 +3,27 @@
 Instance recommendation jobs run a set of load tests on recommended instance types\. Inference recommendation jobs use performance metrics that are based on load tests using the sample data you provided during model version registration\.
 
 **Note**  
-Before you create an Inference Recommender recommendation job, make sure you have satisfied the prerequisites\.
+Before you create an Inference Recommender recommendation job, make sure you have satisfied the [Prerequisites](inference-recommender-prerequisites.md)\.
 
 The following demonstrates how to use Amazon SageMaker Inference Recommender to create an instance recommendation based on your model type using the AWS SDK for Python \(Boto3\), AWS CLI, and Amazon SageMaker Studio\.
 
 ## Create an instance recommendation<a name="instance-recommendation-create"></a>
 
-Create an instance recommendation programmaticially using AWS SDK for Python \(Boto3\), with the AWS CLI, or interactively using Studio\. Specify a job name for your instance recommendation, an AWS IAM role ARN, an input configuration, and your model package ARN when you registered your model with the model registry\.
+Create an instance recommendation programmaticially using AWS SDK for Python \(Boto3\), with the AWS CLI, or interactively using Studio\. Specify a job name for your instance recommendation, an AWS IAM role ARN, an input configuration, and either a model package ARN when you registered your model with Model Registry, or your model name and a `ContainerConfig` dictionary from when you created your model in the **Prerequisites** section\.
 
 ------
 #### [ AWS SDK for Python \(Boto3\) ]
 
 Use the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateInferenceRecommendationsJob.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateInferenceRecommendationsJob.html) API to get an instance endpoint recommendation\. Set the `JobType` field to `'Default'` for instance endpoint recommendation jobs\. In addition, provide the following:
 + The Amazon Resource Name \(ARN\) of an IAM role that enables Inference Recommender to perform tasks on your behalf\. Define this for the `RoleArn` field\.
-+ The ARN of the versioned model package you created when you registered your model with the model registry\. Define this for `ModelPackageVersionArn` in the `InputConfig` field\.
++ Inference Recommender supports either one model package ARN or a model name as input\. Specify one of the following:
+  + The ARN of the versioned model package you created when you registered your model with the model registry\. Define this for `ModelPackageVersionArn` in the `InputConfig` field\.
+  + The name of the model you created\. Define this for `ModelName` in the `InputConfig` field\. Also, provide the `ContainerConfig` dictionary, which includes the required fields that need to be provided with the model name\. Define this for `ContainerConfig` in the `InputConfig` field\.
 + Provide a name for your Inference Recommender recommendation job for the `JobName` field\. The Inference Recommender job name must be unique within the AWS Region and within your AWS account\.
 
-Import the AWS SDK for Python \(Boto3\) package and create a SageMaker client object using the client class\. If you followed the steps in the **Prerequisites** section, the model package group ARN was stored in a variable named `model_package_arn`\.
+Import the AWS SDK for Python \(Boto3\) package and create a SageMaker client object using the client class\. If you followed the steps in the **Prerequisites** section, only specify one of the following:
++ Option 1: If you would like to create an inference recommendations job with a model package ARN, then store the model package group ARN in a variable named `model_package_arn`\.
++ Option 2: If you would like to create an inference recommendations job with a model name and `ContainerConfig`, store the model name in a variable named `model_name` and the `ContainerConfig` dictionary in a variable named `container_config`\.
 
 ```
 # Create a low-level SageMaker service client.
@@ -27,9 +31,16 @@ import boto3
 aws_region = '<INSERT>'
 sagemaker_client = boto3.client('sagemaker', region_name=aws_region) 
 
+# Provide only one of model package ARN or model name, not both.
 # Provide your model package ARN that was created when you registered your 
 # model with Model Registry 
 model_package_arn = '<INSERT>'
+## Uncomment if you would like to create an inference recommendations job with a
+## model name instead of a model package ARN, and comment out model_package_arn above
+## Provide your model name
+# model_name = '<INSERT>'
+## Provide your contaienr config 
+# container_config = '<INSERT>'
 
 # Provide a unique job name for SageMaker Inference Recommender job
 job_name = '<INSERT>'
@@ -45,8 +56,13 @@ sagemaker_client.create_inference_recommendations_job(
     JobName = job_name,
     JobType = job_type,
     RoleArn = role_arn,
+    # Provide only one of model package ARN or model name, not both. 
+    # If you would like to create an inference recommendations job with a model name,
+    # uncomment ModelName and ContainerConfig, and comment out ModelPackageVersionArn.
     InputConfig = {
         'ModelPackageVersionArn': model_package_arn
+        # 'ModelName': model_name,
+        # 'ContainerConfig': container_config
     }
 )
 ```
@@ -58,8 +74,12 @@ See the [Amazon SageMaker API Reference Guide](https://docs.aws.amazon.com/sagem
 
 Use the `create-inference-recommendations-job` API to get an instance endpoint recommendation\. Set the `job-type` field to `'Default'` for instance endpoint recommendation jobs\. In addition, provide the following:
 + The Amazon Resource Name \(ARN\) of an IAM role that enables Amazon SageMaker Inference Recommender to perform tasks on your behalf\. Define this for the `role-arn` field\.
-+ The ARN of the versioned model package you created when you registered your model with Model Registry\. Define this for `ModelPackageVersionArn` in the `input-config` field\.
++ Inference Recommender supports either one model package ARN or a model name as input\. Specify one of the following
+  + The ARN of the versioned model package you created when you registered your model with Model Registry\. Define this for `ModelPackageVersionArn` in the `input-config` field\.
+  + The name of the model you created\. Define this for `ModelName` in the `input-config` field\. Also, provide the `ContainerConfig` dictionary which includes the required fields that need to be provided with the model name\. Define this for `ContainerConfig` in the `input-config` field\.
 + Provide a name for your Inference Recommender recommendation job for the `job-name` field\. The Inference Recommender job name must be unique within the AWS Region and within your AWS account\.
+
+To create an inference recommendation jobs with a model package ARN, use the following example:
 
 ```
 aws sagemaker create-inference-recommendations-job 
@@ -72,14 +92,42 @@ aws sagemaker create-inference-recommendations-job
         }"
 ```
 
+To create an inference recommendation jobs with a model name and `ContainerConfig`, use the following example:
+
+```
+aws sagemaker create-inference-recommendations-job 
+    --region <region>\
+    --job-name <job_name>\
+    --job-type Default\
+    --role-arn arn:aws:iam::<account:role/*>\
+    --input-config "{
+        \"ModelName\": \"model-name\",
+        \"ContainerConfig\" : {
+                \"Domain\": \"COMPUTER_VISION\",
+                \"Framework\": \"PYTORCH\",
+                \"FrameworkVersion\": \"1.7.1\",
+                \"NearestModelName\": \"resnet18\",
+                \"PayloadConfig\": 
+                    {
+                        \"SamplePayloadUrl\": \"s3://{bucket}/{payload_s3_key}\", 
+                        \"SupportedContentTypes\": [\"image/jpeg\"]
+                    },
+                \"DataInputConfig\": \"[[1,3,256,256]]\",
+                \"Task\": \"IMAGE_CLASSIFICATION\",
+            },
+        }"
+```
+
 ------
 #### [ Amazon SageMaker Studio ]
 
 Create an instance recommendation job in Studio\.
 
-1. In the left sidebar of Amazon SageMaker, choose the **Components and registries** icon\.
+1. In your Studio application, choose the home icon \(![\[Home icon in Studio\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png)\)\.
 
-1. Select **Model Registry** from the dropdown list to display models you have registered with the model registry\.
+1. In the left sidebar of Studio, choose **Models**\.
+
+1. Choose **Model Registry** from the dropdown list to display models you have registered with the model registry\.
 
    The left panel displays a list of model groups\. The list includes all the model groups registered with the model registry in your account, including models registered outside of Studio\.
 
@@ -111,7 +159,7 @@ Once an instance recommendation is complete, you can use `DescribeInferenceRecom
 ```
 job_name='<INSERT>'
 response = sagemaker_client.describe_inference_recommendations_job(
-                    job_name=job_name)
+                    JobName=job_name)
 ```
 
 Print the response object\. The previous code sample stored the response in a variable name `response`\.
@@ -133,7 +181,7 @@ This returns a JSON response similar to the following:
     'LastModifiedTime': datetime.datetime(2021, 10, 26, 20, 25, 1, 997000, tzinfo=tzlocal()), 
     'InputConfig': {
                 'ModelPackageVersionArn': 'arn:aws:sagemaker:region:account-id:model-package/resource-id', 
-                'JobDuration': 0
+                'JobDurationInSeconds': 0
                 }, 
     'InferenceRecommendations': [{
             'Metrics': {
@@ -157,17 +205,19 @@ This returns a JSON response similar to the following:
             'Metrics': {
                 'CostPerHour': 0.11500000208616257, 
                 'CostPerInference': 2.92620870823157e-06, 
-                'MaximumInvocations': 655, 'ModelLatency': 826019}, 
-                'EndpointConfiguration': {
-                    'EndpointName': 'endpoint-name', 
-                    'VariantName': 'variant-name', 
-                    'InstanceType': 'ml.c5d.large', 
-                    'InitialInstanceCount': 1
-                    }, 
-                'ModelConfiguration': {
-                    'Compiled': False, 
-                    'EnvironmentParameters': []
-                    }
+                'MaximumInvocations': 655, 
+                'ModelLatency': 826019
+                }, 
+            'EndpointConfiguration': {
+                'EndpointName': 'endpoint-name', 
+                'VariantName': 'variant-name', 
+                'InstanceType': 'ml.c5d.large', 
+                'InitialInstanceCount': 1
+                }, 
+            'ModelConfiguration': {
+                'Compiled': False, 
+                'EnvironmentParameters': []
+                }
             }, 
             {
                 'Metrics': {
@@ -207,7 +257,7 @@ The `InferenceRecommendations` dictionary contains a list of Inference Recommend
 
 The `EndpointConfiguration` nested dictionary contains the instance type \(`InstanceType`\) recommendation along with the endpoint and variant name \(a deployed AWS machine learning model\) that was used during the recommendation job\. You can use the endpoint and variant name for monitoring in Amazon CloudWatch Events\. See [Monitor Amazon SageMaker with Amazon CloudWatch](monitoring-cloudwatch.md) for more information\.
 
-The `Metrics` nested dictionary contains information about the estimated cost per hour \(`CostPerHour`\) for your real\-time endpoint in US dollars, the estimated cost per inference \(`CostPerInference`\) for your real\-time endpoint, the maximum number of `InvokeEndpoint` requests sent to the endpoint, and the model latency \(`ModelLatency`\), which is the interval of time \(in microseconds\) that your model took to respond to SageMaker\. The model latency includes the local communication times taken to send the request and to fetch the response from the container of a model and the time taken to complete the inference in the container\.
+The `Metrics` nested dictionary contains information about the estimated cost per hour \(`CostPerHour`\) for your real\-time endpoint in US dollars, the estimated cost per inference \(`CostPerInference`\) in US dollars for your real\-time endpoint, the expected maximum number of `InvokeEndpoint` requests per minute sent to the endpoint \(`MaxInvocations`\), and the model latency \(`ModelLatency`\), which is the interval of time \(in milliseconds\) that your model took to respond to SageMaker\. The model latency includes the local communication times taken to send the request and to fetch the response from the container of a model and the time taken to complete the inference in the container\.
 
 ------
 #### [ AWS CLI ]
@@ -233,7 +283,7 @@ The JSON response similar should resemble the following:
     'LastModifiedTime': datetime.datetime(2021, 10, 26, 20, 25, 1, 997000, tzinfo=tzlocal()), 
     'InputConfig': {
                 'ModelPackageVersionArn': 'arn:aws:sagemaker:region:account-id:model-package/resource-id', 
-                'JobDuration': 0
+                'JobDurationInSeconds': 0
                 }, 
     'InferenceRecommendations': [{
             'Metrics': {
@@ -257,17 +307,19 @@ The JSON response similar should resemble the following:
             'Metrics': {
                 'CostPerHour': 0.11500000208616257, 
                 'CostPerInference': 2.92620870823157e-06, 
-                'MaximumInvocations': 655, 'ModelLatency': 826019}, 
-                'EndpointConfiguration': {
-                    'EndpointName': 'endpoint-name', 
-                    'VariantName': 'variant-name', 
-                    'InstanceType': 'ml.c5d.large', 
-                    'InitialInstanceCount': 1
-                    }, 
-                'ModelConfiguration': {
-                    'Compiled': False, 
-                    'EnvironmentParameters': []
-                    }
+                'MaximumInvocations': 655, 
+                'ModelLatency': 826019
+                }, 
+            'EndpointConfiguration': {
+                'EndpointName': 'endpoint-name', 
+                'VariantName': 'variant-name', 
+                'InstanceType': 'ml.c5d.large', 
+                'InitialInstanceCount': 1
+                }, 
+            'ModelConfiguration': {
+                'Compiled': False, 
+                'EnvironmentParameters': []
+                }
             }, 
             {
                 'Metrics': {
@@ -307,7 +359,9 @@ The `InferenceRecommendations` dictionary contains a list of Inference Recommend
 
 The `EndpointConfiguration` nested dictionary contains the instance type \(`InstanceType`\) recommendation along with the endpoint and variant name \(a deployed AWS machine learning model\) used during the recommendation job\. You can use the endpoint and variant name for monitoring in Amazon CloudWatch Events\. See [Monitor Amazon SageMaker with Amazon CloudWatch](monitoring-cloudwatch.md) for more information\.
 
-The `Metrics` nested dictionary contains information about the estimated cost per hour \(`CostPerHour`\) for your real\-time endpoint in US dollars, the estimated cost per inference \(`CostPerInference`\) for your real\-time endpoint, the maximum number of `InvokeEndpoint` requests sent to the endpoint, and the model latency \(`ModelLatency`\), which is the interval of time \(in microseconds\) that your model took to respond to Inference Recommender\. The model latency includes the local communication times taken to send the request and to fetch the response from the container of a model and the time taken to complete the inference in the container\.
+The `Metrics` nested dictionary contains information about the estimated cost per hour \(`CostPerHour`\) for your real\-time endpoint in US dollars, the estimated cost per inference \(`CostPerInference`\) in US dollars for your real\-time endpoint, the expected maximum number of `InvokeEndpoint` requests per minute sent to the endpoint \(`MaxInvocations`\), and the model latency \(`ModelLatency`\), which is the interval of time \(in milliseconds\) that your model took to respond to SageMaker\. The model latency includes the local communication times taken to send the request and to fetch the response from the container of a model and the time taken to complete the inference in the container\.
+
+For more information about interpreting the results of your recommendation job, see [Interpret recommendation results](inference-recommender-interpret-results.md)\.
 
 ------
 #### [ Amazon SageMaker Studio ]
@@ -335,7 +389,7 @@ Specify the name of the instance recommendation job for the `JobName` field:
 
 ```
 sagemaker_client.stop_inference_recommendations_job(
-                                    job_name='<INSERT>'
+                                    JobName='<INSERT>'
                                     )
 ```
 

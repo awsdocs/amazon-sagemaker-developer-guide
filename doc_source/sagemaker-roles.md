@@ -150,7 +150,10 @@ You attach the following trust policy to the IAM role which grants SageMaker pri
 The permissions that you need to grant to the role vary depending on the API that you call\. The following sections explain these permissions\.
 
 **Note**  
-Instead of managing permissions by crafting a permission policy, you can use the AWS\-managed `AmazonSageMakerFullAccess` permission policy\. The permissions in this policy are fairly broad, to allow for any actions you might want to perform in SageMaker\. For a listing of the policy including information about the reasons for adding many of the permissions, see [`AmazonSageMakerFullAccess`](security-iam-awsmanpol.md#security-iam-awsmanpol-AmazonSageMakerFullAccess)\. If you prefer to create custom policies and manage permissions to scope the permissions only to the actions you need to perform with the execution role, see the following topics\.
+Instead of managing permissions by crafting a permission policy, you can use the AWS\-managed `AmazonSageMakerFullAccess` permission policy\. The permissions in this policy are fairly broad, to allow for any actions you might want to perform in SageMaker\. For a listing of the policy including information about the reasons for adding many of the permissions, see [AWS managed policy: AmazonSageMakerFullAccess](security-iam-awsmanpol.md#security-iam-awsmanpol-AmazonSageMakerFullAccess)\. If you prefer to create custom policies and manage permissions to scope the permissions only to the actions you need to perform with the execution role, see the following topics\.
+
+**Important**  
+If you're running into issues, see [Troubleshooting Amazon SageMaker Identity and Access](security_iam_troubleshoot.md)\.
 
 For more information about IAM roles, see [IAM Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in the *IAM User Guide*\.
 
@@ -166,6 +169,7 @@ For more information about IAM roles, see [IAM Roles](http://docs.aws.amazon.com
 + [CreateProcessingJob API: Execution Role Permissions](#sagemaker-roles-createprocessingjob-perms)
 + [CreateTrainingJob API: Execution Role Permissions](#sagemaker-roles-createtrainingjob-perms)
 + [CreateModel API: Execution Role Permissions](#sagemaker-roles-createmodel-perms)
++ [SageMaker geospatial capabilities roles](sagemaker-geospatial-roles.md)
 
 ## CreateAutoMLJob API: Execution Role Permissions<a name="sagemaker-roles-autopilot-perms"></a>
 
@@ -274,7 +278,7 @@ If you specify a volume KMS key in the resource configuration of your AutoML job
 
 ## CreateDomain API: Execution Role Permissions<a name="sagemaker-roles-createdomain-perms"></a>
 
-The execution role for AWS SSO domains and the user/execution role for IAM domains need the following permissions when you pass an AWS KMS customer managed key as the `KmsKeyId` in the `CreateDomain` API request\. The permissions are enforced during the `CreateApp` API call\.
+The execution role for domains with IAM Identity Center and the user/execution role for IAM domains need the following permissions when you pass an AWS KMS customer managed key as the `KmsKeyId` in the `CreateDomain` API request\. The permissions are enforced during the `CreateApp` API call\.
 
 For an execution role that you can pass in the `CreateDomain` API request, you can attach the following permission policy to the role:
 
@@ -761,7 +765,7 @@ In the preceding policy, you scope the policy as follows:
 
 The `cloudwatch` and `logs` actions are applicable for "\*" resources\. For more information, see [CloudWatch Resources and Operations](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/iam-access-control-overview-cw.html#CloudWatch_ARN_Format) in the Amazon CloudWatch User Guide\.
 
-If you specify a private VPC for your processing job, add the following permissions:
+If you specify a private VPC for your processing job, add the following permissions\. Don't scope in the policy with any conditions or resource filters\. Otherwise, the validation checks that occur during the creation of the processing job fail\.
 
 ```
 {
@@ -1037,7 +1041,10 @@ In the preceding policy, you scope the policy as follows:
 + Scope S3 permissions to objects that you specify in the `PrimaryContainer.ModelDataUrl` in a [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html) request\.
 + Scope Amazon ECR permissions to a specific registry path that you specify as the `PrimaryContainer.Image` and `SecondaryContainer.Image` in a `CreateModel` request\.
 
-The `cloudwatch` and `logs` actions are applicable for "\*" resources\. For more information, see [CloudWatch Resources and Operations](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/iam-access-control-overview-cw.html#CloudWatch_ARN_Format) in the Amazon CloudWatch User Guide\.
+The `cloudwatch` and `logs` actions are applicable for "\*" resources\. For more information, see [CloudWatch Resources and Operations](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/iam-access-control-overview-cw.html#CloudWatch_ARN_Format) in the Amazon CloudWatch User Guide\.
+
+**Note**  
+If you plan to use the [SageMaker deployment guardrails feature](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails.html) for model deployment in production, ensure that your execution role has permission to perform the `cloudwatch:DescribeAlarms` action on your auto\-rollback alarms\.
 
 If you specify a private VPC for your model, add the following permissions:
 

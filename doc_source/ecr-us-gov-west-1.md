@@ -49,12 +49,22 @@ SageMaker Python SDK example to retrieve registry path\.
 
 ```
 from sagemaker import image_uris
-image_uris.retrieve(framework='autogluon',region='us-gov-west-1',image_scope='inference')
+image_uris.retrieve(framework='autogluon',region='us-gov-west-1',image_scope='inference',version='0.4')
 ```
 
 
 | Registry path | Version | Job types \(image scope\) | 
 | --- | --- | --- | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/autogluon\-training:<tag> | 0\.5\.2 | training | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/autogluon\-inference:<tag> | 0\.5\.2 | inference | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/autogluon\-training:<tag> | 0\.4\.3 | training | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/autogluon\-inference:<tag> | 0\.4\.3 | inference | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/autogluon\-training:<tag> | 0\.4\.2 | training | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/autogluon\-inference:<tag> | 0\.4\.2 | inference | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/autogluon\-training:<tag> | 0\.4\.0 | training | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/autogluon\-inference:<tag> | 0\.4\.0 | inference | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/autogluon\-training:<tag> | 0\.3\.2 | training | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/autogluon\-inference:<tag> | 0\.3\.2 | inference | 
 | 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/autogluon\-training:<tag> | 0\.3\.1 | training | 
 | 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/autogluon\-inference:<tag> | 0\.3\.1 | inference | 
 
@@ -156,6 +166,10 @@ image_uris.retrieve(framework='huggingface',region='us-gov-west-1',version='4.4.
 
 | Registry path | Version | Job types \(image scope\) | 
 | --- | --- | --- | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/huggingface\-pytorch\-training:<tag> | 4\.17\.0 | training | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/huggingface\-tensorflow\-training:<tag> | 4\.17\.0 | training | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/huggingface\-pytorch\-inference:<tag> | 4\.17\.0 | inference | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/huggingface\-tensorflow\-inference:<tag> | 4\.17\.0 | inference | 
 | 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/huggingface\-pytorch\-training:<tag> | 4\.12\.3 | training | 
 | 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/huggingface\-tensorflow\-training:<tag> | 4\.12\.3 | training | 
 | 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/huggingface\-pytorch\-inference:<tag> | 4\.12\.3 | inference | 
@@ -223,6 +237,7 @@ image_uris.retrieve(framework='inferentia-mxnet',region='us-gov-west-1',version=
 
 | Registry path | Version | Job types \(image scope\) | Processor types | Python versions | 
 | --- | --- | --- | --- | --- | 
+| 263933020539\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-neo\-mxnet:<tag> | 1\.8 | inference | inf | py3 | 
 | 263933020539\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-neo\-mxnet:<tag> | 1\.5\.1 | inference | inf | py3 | 
 
 ## Inferentia PyTorch \(DLC\)<a name="inferentia-pytorch-us-gov-west-1.title"></a>
@@ -231,13 +246,15 @@ SageMaker Python SDK example to retrieve registry path\.
 
 ```
 from sagemaker import image_uris
-image_uris.retrieve(framework='inferentia-pytorch',region='us-gov-west-1',version='1.5.1',py_version='py3')
+image_uris.retrieve(framework='inferentia-pytorch',region='us-gov-west-1',version='1.9',py_version='py3')
 ```
 
 
 | Registry path | Version | Job types \(image scope\) | Processor types | Python versions | 
 | --- | --- | --- | --- | --- | 
-| 263933020539\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-neo\-pytorch:<tag> | 1\.5\.1 | inference | inf | py3 | 
+| 263933020539\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-neo\-pytorch:<tag> | 1\.9 | inference | inf | py3 | 
+| 263933020539\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-neo\-pytorch:<tag> | 1\.8 | inference | inf | py3 | 
+| 263933020539\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-neo\-pytorch:<tag> | 1\.7 | inference | inf | py3 | 
 
 ## K\-Means \(algorithm\)<a name="kmeans-us-gov-west-1.title"></a>
 
@@ -307,6 +324,8 @@ image_uris.retrieve(framework='mxnet',region='us-gov-west-1',version='1.4.1',py_
 
 | Registry path | Version | Job types \(image scope\) | Processor types | Python versions | 
 | --- | --- | --- | --- | --- | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/mxnet\-training:<tag> | 1\.9\.0 | training | CPU, GPU | py38 | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/mxnet\-inference:<tag> | 1\.9\.0 | inference | CPU, GPU | py38 | 
 | 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/mxnet\-training:<tag> | 1\.8\.0 | training | CPU, GPU | py37 | 
 | 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/mxnet\-inference:<tag> | 1\.8\.0 | inference | CPU, GPU | py37 | 
 | 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/mxnet\-training:<tag> | 1\.7\.0 | training | CPU, GPU | py3 | 
@@ -404,6 +423,8 @@ image_uris.retrieve(framework='neo-pytorch',region='us-gov-west-1',version='1.6'
 
 | Registry path | Version | Job types \(image scope\) | Processor types | Python versions | 
 | --- | --- | --- | --- | --- | 
+| 263933020539\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-inference\-pytorch:<tag> | 1\.8 | inference | CPU, GPU | py3 | 
+| 263933020539\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-inference\-pytorch:<tag> | 1\.7 | inference | CPU, GPU | py3 | 
 | 263933020539\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-inference\-pytorch:<tag> | 1\.6 | inference | CPU, GPU | py3 | 
 | 263933020539\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-inference\-pytorch:<tag> | 1\.5 | inference | CPU, GPU | py3 | 
 | 263933020539\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-inference\-pytorch:<tag> | 1\.4 | inference | CPU, GPU | py3 | 
@@ -420,6 +441,7 @@ image_uris.retrieve(framework='neo-tensorflow',region='us-gov-west-1',version='1
 
 | Registry path | Version | Job types \(image scope\) | Processor types | Python versions | 
 | --- | --- | --- | --- | --- | 
+| 263933020539\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-inference\-tensorflow:<tag> | 2\.4\.2 | inference | CPU, GPU | py3 | 
 | 263933020539\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-inference\-tensorflow:<tag> | 1\.15\.3 | inference | CPU, GPU | py3 | 
 
 ## Neo XGBoost \(algorithm\)<a name="xgboost-neo-us-gov-west-1.title"></a>
@@ -490,6 +512,14 @@ image_uris.retrieve(framework='pytorch',region='us-gov-west-1',version='1.8.0',p
 
 | Registry path | Version | Job types \(image scope\) | Processor types | Python versions | 
 | --- | --- | --- | --- | --- | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.12\.0 | inference | CPU, GPU | py38 | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.12\.0 | training | CPU, GPU | py38 | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.11\.0 | inference | CPU, GPU | py38 | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.11\.0 | training | CPU, GPU | py38 | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.10\.2 | inference | CPU, GPU | py38 | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.10\.2 | training | CPU, GPU | py38 | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.10\.0 | inference | CPU, GPU | py38 | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.10\.0 | training | CPU, GPU | py38 | 
 | 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.9\.1 | inference | CPU, GPU | py38 | 
 | 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/pytorch\-training:<tag> | 1\.9\.1 | training | CPU, GPU | py38 | 
 | 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/pytorch\-inference:<tag> | 1\.9\.0 | inference | CPU, GPU | py38 | 
@@ -541,10 +571,11 @@ image_uris.retrieve(framework='sklearn',region='us-gov-west-1',version='0.23-1',
 ```
 
 
-| Registry path | Version | Job types \(image scope\) | 
-| --- | --- | --- | 
-| 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-scikit\-learn:<tag> | 0\.23\-1 | inference, training | 
-| 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-scikit\-learn:<tag> | 0\.20\.0 | inference, training | 
+| Registry path | Version | Package version | Job types \(image scope\) | 
+| --- | --- | --- | --- | 
+| 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-scikit\-learn:<tag> | 1\.0\-1 | 1\.0\.2 | inference, training | 
+| 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-scikit\-learn:<tag> | 0\.23\-1 | 0\.23\.2 | inference, training | 
+| 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-scikit\-learn:<tag> | 0\.20\.0 | 0\.20\.0 | inference, training | 
 
 ## Semantic Segmentation \(algorithm\)<a name="semantic-segmentation-us-gov-west-1.title"></a>
 
@@ -586,6 +617,7 @@ image_uris.retrieve(framework='spark',region='us-gov-west-1',version='3.0',image
 
 | Registry path | Version | Job types \(image scope\) | 
 | --- | --- | --- | 
+| 271483468897\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-spark\-processing:<tag> | 3\.1 | processing | 
 | 271483468897\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-spark\-processing:<tag> | 3\.0 | processing | 
 | 271483468897\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-spark\-processing:<tag> | 2\.4 | processing | 
 
@@ -616,6 +648,16 @@ image_uris.retrieve(framework='tensorflow',region='us-gov-west-1',version='1.12.
 
 | Registry path | Version | Job types \(image scope\) | Processor types | Python versions | 
 | --- | --- | --- | --- | --- | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.9\.1 | training | CPU, GPU | py39 | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.8\.0 | inference | CPU, GPU | \- | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.8\.0 | training | CPU, GPU | py39 | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.7\.1 | training | CPU, GPU | py38 | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.7\.0 | inference | CPU, GPU | \- | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.6\.3 | inference | CPU, GPU | \- | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.6\.3 | training | CPU, GPU | py38 | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.6\.2 | training | CPU, GPU | py38 | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.6\.0 | inference | CPU, GPU | \- | 
+| 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.6\.0 | training | CPU, GPU | py38 | 
 | 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/tensorflow\-inference:<tag> | 2\.5\.1 | inference | CPU, GPU | \- | 
 | 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.5\.1 | training | CPU, GPU | py37 | 
 | 442386744353\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/tensorflow\-training:<tag> | 2\.5\.0 | training | CPU, GPU | py37 | 
@@ -725,6 +767,7 @@ image_uris.retrieve(framework='inferentia-tensorflow',region='us-gov-west-1',ver
 
 | Registry path | Version | Job types \(image scope\) | Processor types | Python versions | 
 | --- | --- | --- | --- | --- | 
+| 263933020539\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-neo\-tensorflow:<tag> | 2\.5\.2 | inference | inf | py3 | 
 | 263933020539\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-neo\-tensorflow:<tag> | 1\.15\.0 | inference | inf | py3 | 
 
 ## Tensorflow Ray \(DLC\)<a name="ray-tensorflow-us-gov-west-1.title"></a>
@@ -750,16 +793,17 @@ SageMaker Python SDK example to retrieve registry path\.
 
 ```
 from sagemaker import image_uris
-image_uris.retrieve(framework='xgboost',region='us-gov-west-1',version='1.2-1')
+image_uris.retrieve(framework='xgboost',region='us-gov-west-1',version='1.5-1')
 ```
 
 
-| Registry path | Version | Job types \(image scope\) | 
-| --- | --- | --- | 
-| 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.3\-1 | inference, training | 
-| 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.2\-2 | inference, training | 
-| 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.2\-1 | inference, training | 
-| 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.0\-1 | inference, training | 
-| 226302683700\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/xgboost:<tag> | 1 | inference, training | 
-| 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 0\.90\-2 | inference, training | 
-| 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 0\.90\-1 | inference, training | 
+| Registry path | Version | Package version | Job types \(image scope\) | 
+| --- | --- | --- | --- | 
+| 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.5\-1 | 1\.5\.2 | inference, training | 
+| 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.3\-1 | 1\.3\.3 | inference, training | 
+| 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.2\-2 | 1\.2\.0 | inference, training | 
+| 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.2\-1 | 1\.2\.0 | inference, training | 
+| 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 1\.0\-1 | 1\.0 | inference, training | 
+| 226302683700\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/xgboost:<tag> | 1 | 0\.72 | inference, training | 
+| 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 0\.90\-2 | 0\.90 | inference, training | 
+| 414596584902\.dkr\.ecr\.us\-gov\-west\-1\.amazonaws\.com/sagemaker\-xgboost:<tag> | 0\.90\-1 | 0\.90 | inference, training | 

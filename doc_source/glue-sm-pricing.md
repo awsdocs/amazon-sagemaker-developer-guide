@@ -1,0 +1,7 @@
+# AWS Glue Interactive Session Pricing<a name="glue-sm-pricing"></a>
+
+When you use AWS Glue Interactive Sessions on SageMaker Studio notebooks, you are charged separately for resource usage on AWS Glue and Studio notebooks\.
+
+AWS charges for Glue Interactive Sessions based on how long the session is active and the number of Data Processing Units \(DPU\) used\. You are charged an hourly rate for the number of DPUs used to run your workloads, billed in increments of one second\. Glue Interactive Sessions assigns a default of five DPUs and requires a minimum of two DPUs\. There is also a one\-minute minimum billing duration for each interactive session\. To see the AWS Glue rates and pricing examples, or to estimate your costs using the AWS Pricing Calculator, see [AWS Glue pricing ](http://aws.amazon.com/glue/pricing)\.
+
+Your SageMaker Studio notebook runs on an Amazon EC2 instance and you are charged for the instance type you choose, based on the duration of use\. Studio assigns you a default EC2 instance type of `ml-t3-medium` when you select the `SparkAnalytics` image and associated kernel\. You can change the instance type for of your Studio notebook to suit your workload\. For information about SageMaker Studio pricing, see [Amazon SageMaker Pricing](http://aws.amazon.com/sagemaker/pricing)\.

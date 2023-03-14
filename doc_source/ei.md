@@ -1,8 +1,52 @@
 # Use Amazon SageMaker Elastic Inference \(EI\)<a name="ei"></a>
 
-By using Amazon Elastic Inference \(EI\), you can speed up the throughput and decrease the latency of getting real\-time inferences from your deep learning models that are deployed as [Amazon SageMaker hosted models](https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html), but at a fraction of the cost of using a GPU instance for your endpoint\. EI allows you to add inference acceleration to a hosted endpoint for a fraction of the cost of using a full GPU instance\. Add an EI accelerator in one of the available sizes to a deployable model in addition to a CPU instance type, and then add that model as a production variant to an endpoint configuration that you use to deploy a hosted endpoint\. You can also add an EI accelerator to a SageMaker [notebook instance](sagemaker/latest/dg/nbi.html) so that you can test and evaluate inference performance when you are building your models\. 
+Starting April 15, 2023, AWS will not onboard new customers to Amazon Elastic Inference \(EI\), and will help current customers migrate their workloads to options that offer better price and performance\. After April 15, 2023, new customers will not be able to launch instances with Amazon EI accelerators in Amazon SageMaker, Amazon ECS, or Amazon EC2\. However, customers who have used Amazon EI at least once during the past 30\-day period are considered current customers and will be able to continue using the service\.
 
-Elastic Inference is supported in EI\-enabled versions of TensorFlow, Apache MXNet, and PyTorch\. To use any other deep learning framework, export your model by using ONNX, and then import your model into MXNet\. You can then use your model with EI as an MXNet model\. For information about importing an ONNX model into MXNet, see [Importing an ONNX model into MXNet](https://docs.aws.amazon.com/dlami/latest/devguide/onnx.html)\.
+Machine learning \(ML\) on AWS helps you innovate faster with the most comprehensive set of ML services and infrastructure made available in a low\-cost, pay as\-you\-go usage model\. AWS continuously delivers better performing and lower cost infrastructure for ML inference workloads\. AWS launched Amazon Elastic Inference \(EI\) in 2018 to enable customers to attach low\-cost GPU\-powered acceleration to Amazon EC2, Amazon SageMaker instances, or Amazon Elastic Container Service \(ECS\) tasks to reduce the cost of running deep learning inference by up to 75% compared to standalone GPU based instances such as Amazon EC2 P4d and Amazon EC2 G5\. In 2019, AWS launched AWS Inferentia, Amazon's first custom silicon designed to accelerate deep learning workloads by providing high performance inference in the cloud\. Amazon EC2 Inf1 instances based on AWS Inferentia chips deliver up 2\.3x higher throughput and up to 70% lower cost per inference than comparable current generation GPU\-based Amazon EC2 instances\. With the availability of new accelerated compute options such as AWS Inferentia and Amazon EC2 G5 instances, the benefit of attaching a fractional GPU to a CPU host instance using Amazon EI has diminished\. For example, customers hosting models on Amazon EI who move to `ml.inf1.xlarge` instances can get up to 56% in cost savings and 2x performance improvement\.
+
+Customers can use Amazon SageMaker Inference Recommender to help them choose the best alternative instances to Amazon EI for deploying their ML models\.
+
+**Frequently asked questions**
+
+1. **Why is Amazon encouraging customers to move workloads from Amazon Elastic Inference \(EI\) to newer hardware acceleration options such as AWS Inferentia?**
+
+   Customers get better performance at a much better price than Amazon EI with new hardware accelerator options such as [AWS Inferentia](http://aws.amazon.com/machine-learning/inferentia/) for their inference workloads\. AWS Inferentia is designed to provide high performance inference in the cloud, to drive down the total cost of inference, and to make it easy for developers to integrate machine learning into their business applications\. To enable customers to benefit from such newer generation hardware accelerators, we will not onboard new customers to Amazon EI after April 15, 2023\.
+
+1. **Which AWS services are impacted by the move to stop onboarding new customers to Amazon Elastic Inference \(EI\)?**
+
+   This announcement will affect Amazon EI accelerators attached to any Amazon EC2, Amazon SageMaker instances, or Amazon Elastic Container Service \(ECS\) tasks\. In Amazon SageMaker, this applies to both endpoints and notebook kernels using Amazon EI accelerators\.
+
+1. **Will I be able to create a new Amazon Elastic Inference \(EI\) accelerator after April 15, 2023?**
+
+   No, if you are a new customer and have not used Amazon EI in the past 30 days, then you will not be able create a new Amazon EI instance in your AWS account after April 15, 2023\. However, if you have used an Amazon EI accelerator at least once in the past 30 days, you can attach a new Amazon EI accelerator to your instance\.
+
+1. **We currently use Amazon Elastic Inference \(EI\) accelerators\. Will we be able to continue using them after April 15, 2023?**
+
+   Yes, you will be able use Amazon EI accelerators\. We recommend that you migrate your current ML Inference workloads running on Amazon EI to other hardware accelerator options at your earliest convenience\. 
+
+1. **How do I evaluate alternative instance options for my current Amazon SageMaker Inference Endpoints?**
+
+   [Amazon SageMaker Inference Recommender](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-recommender.html) can help you identify cost\-effective deployments to migrate existing workloads from Amazon Elastic Inference \(EI\) to an appropriate ML instance supported by SageMaker\.
+
+1. **How do I change the instance type for my existing endpoint in Amazon SageMaker?**
+
+   You can change the instance type for your existing endpoint by doing the following:
+
+   1. First, [create a new EndpointConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html) that uses the new instance type\. If you have an autoscaling policy, [delete the existing autoscaling policy](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling-delete.html)\.
+
+   1. Call [UpdateEndpoint](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateEndpoint.html) while specifying your newly created EndpointConfig\.
+
+   1. Wait for your endpoint to change status to `InService`\. This will take approximately 10\-15 minutes\.
+
+   1. Finally, if you need autoscaling for your new endpoint, create a new autoscaling policy for this new endpoint and ProductionVariant\.
+
+1. **How do I change the instance type for my existing [Amazon SageMaker Notebook Instance](https://docs.aws.amazon.com/sagemaker/latest/dg/nbi.html) using Amazon Elastic Inference \(EI\)?**
+
+   Choose **Notebook instances** in the SageMaker console, and then choose the Notebook Instance you want to update\. Make sure the Notebook Instance has a `Stopped` status\. Finally, you can choose **Edit** and change your instance type\. Make sure that, when your Notebook Instance starts up, you select the right kernel for your new instance\.
+
+1. **Is there a specific instance type which is a good alternative to Amazon Elastic Inference \(EI\)?**
+
+   Every machine learning workload is unique\. We recommend using [Amazon SageMaker Inference Recommender](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-recommender.html) to help you identify the right instance type for your ML workload, performance requirements, and budget\. [AWS Inferentia](http://aws.amazon.com/machine-learning/inferentia/), specifically `inf1.xlarge`, is the best high performance and low\-cost alternative for Amazon EI customers\.
 
 **Topics**
 + [How EI Works](#ei-how-it-works)
@@ -72,7 +116,7 @@ If you need to create a custom container for deploying your model that is comple
 
 ## Use EI with SageMaker Built\-in Algorithms<a name="ei-built-in"></a>
 
-Currently, the [Image Classification Algorithm](image-classification.md) and [Object Detection Algorithm](object-detection.md) built\-in algorithms support EI\. For an example that uses the Image Classification algorithm with EI, see [End\-to\-End Multiclass Image Classification Example](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-fulltraining.html)\.
+Currently, the [Image Classification \- MXNet](image-classification.md) and [Object Detection \- MXNet](object-detection.md) built\-in algorithms support EI\. For an example that uses the Image Classification algorithm with EI, see [End\-to\-End Multiclass Image Classification Example](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-fulltraining.html)\.
 
 ## EI Sample Notebooks<a name="ei-intro-sample-nb"></a>
 

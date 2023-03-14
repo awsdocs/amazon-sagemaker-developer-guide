@@ -74,9 +74,51 @@ For classification, the target leakage analysis uses the area under the receiver
 
 The AUC \- ROC curve provides a predictive metric, computed individually for each column using cross\-validation, on a sample of up to around 1000 rows\. A score of 1 indicates perfect predictive abilities, which often indicates target leakage\. A score of 0\.5 or lower indicates that the information on the column could not provide, on its own, any useful information towards predicting the target\. Although it can happen that a column is uninformative on its own but is useful in predicting the target when used in tandem with other features, a low score could indicate the feature is redundant\.
 
-For example, the following image shows a target leakage report for a diabetes classification problem, that is, predicting if a person has diabetes or not\. An AUC \- ROC curve is used to calculate the predictive ability of five features, and all are determined to be safe from target leakage\. 
+For example, the following image shows a target leakage report for a diabetes classification problem, that is, predicting if a person has diabetes or not\. An AUC \- ROC curve is used to calculate the predictive ability of five features, and all are determined to be safe from target leakage\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/target-leakage.png)
+
+## Multicollinearity<a name="data-wrangler-multicollinearity"></a>
+
+Multicollinearity is a circumstance where two or more predictor variables are related to each other\. The predictor variables are the features in your dataset that you're using to predict a target variable\. When you have multicollinearity, the predictor variables are not only predictive of the target variable, but also predictive of each other\.
+
+You can use the **Variance Inflation Factor \(VIF\)**, **Principal Component Analysis \(PCA\)**, or **Lasso feature selection** as measures for the multicollinearity in your data\. For more information, see the following\.
+
+------
+#### [ Variance Inflation Factor \(VIF\) ]
+
+The Variance Inflation Factor \(VIF\) is a measure of collinearity among variable pairs\. Data Wrangler returns a VIF score as a measure of how closely the variables are related to each other\. A VIF score is a positive number that is greater than or equal to 1\.
+
+A score of 1 means that the variable is uncorrelated with the other variables\. Scores greater than 1 indicate higher correlation\.
+
+Theoretically, you can have a VIF score with a value of infinity\. Data Wrangler clips high scores to 50\. If you have a VIF score greater than 50, Data Wrangler sets the score to 50\.
+
+You can use the following guidelines to interpret your VIF scores:
++ A VIF score less than or equal to 5 indicates that the variables are moderately correlated with the other variables\.
++ A VIF score greater than or equal to 5 indicates that the variables are highly correlated with the other variables\.
+
+------
+#### [ Principle Component Analysis \(PCA\) ]
+
+Principal Component Analysis \(PCA\) measures the variance of the data along different directions in the feature space\. The feature space consists of all the predictor variables that you use to predict the target variable in your dataset\.
+
+For example, if you're trying to predict who survived on the *RMS Titanic* after it hit an iceberg, your feature space can include the passengers' age, gender, and the fare that they paid\.
+
+From the feature space, PCA generates an ordered list of variances\. These variances are also known as singular values\. The values in the list of variances are greater than or equal to 0\. We can use them to determine how much multicollinearity there is in our data\.
+
+When the numbers are roughly uniform, the data has very few instances of multicollinearity\. When there is a lot of variability among the values, we have many instances of multicollinearity\. Before it performs PCA, Data Wrangler normalizes each feature to have a mean of 0 and a standard deviation of 1\.
+
+**Note**  
+PCA in this circumstance can also be referred to as Singular Value Decomposition \(SVD\)\.
+
+------
+#### [ Lasso feature selection ]
+
+Lasso feature selection uses the L1 regularization technique to only include the most predictive features in your dataset\.
+
+For both classification and regression, the regularization technique generates a coefficient for each feature\. The absolute value of the coefficient provides an importance score for the feature\. A higher importance score indicates that it is more predictive of the target variable\. A common feature selection method is to use all the features that have a non\-zero lasso coefficient\.
+
+------
 
 ## Detect Anomalies In Time Series Data<a name="data-wrangler-time-series-anomaly-detection"></a>
 
@@ -106,7 +148,7 @@ You can determine whether there's seasonality in your time series data by using 
 
 You can use the following procedure to perform a **Seasonal\-Trend decomposition** analysis\.
 
-1. Open your Data Wrangler data flow\.\.
+1. Open your Data Wrangler data flow\.
 
 1. In your data flow, under **Data types**, choose the **\+**, and select **Add analysis**\.
 
@@ -169,3 +211,38 @@ chart = bar + rule
 1. Choose **Save** to add your visualization\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/custom-visualization.png)
+
+If you don’t know how to use the Altair visualization package in Python, you can use custom code snippets to help you get started\.
+
+Data Wrangler has a searchable collection of visualization snippets\. To use a visualization snippet, choose **Search example snippets** and specify a query in the search bar\.
+
+The following example uses the **Binned scatterplot** code snippet\. It plots a histogram for 2 dimensions\.
+
+The snippets have comments to help you understand the changes that you need to make to the code\. You usually need to specify the column names of your dataset in the code\.
+
+```
+import altair as alt
+
+# Specify the number of top rows for plotting
+rows_number = 1000
+df = df.head(rows_number)  
+# You can also choose bottom rows or randomly sampled rows
+# df = df.tail(rows_number)
+# df = df.sample(rows_number)
+
+
+chart = (
+    alt.Chart(df)
+    .mark_circle()
+    .encode(
+        # Specify the column names for binning and number of bins for X and Y axis
+        x=alt.X("col1:Q", bin=alt.Bin(maxbins=20)),
+        y=alt.Y("col2:Q", bin=alt.Bin(maxbins=20)),
+        size="count()",
+    )
+)
+
+# :Q specifies that label column has quantitative type.
+# For more details on Altair typing refer to
+# https://altair-viz.github.io/user_guide/encoding.html#encoding-data-types
+```

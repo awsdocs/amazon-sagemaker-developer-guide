@@ -1,15 +1,19 @@
-# Manage Your EFS Storage Volume in SageMaker Studio<a name="studio-tasks-manage-storage"></a>
+# Manage Your Amazon EFS Storage Volume in SageMaker Studio<a name="studio-tasks-manage-storage"></a>
 
-The first time a user on your team onboards to Amazon SageMaker Studio, Amazon SageMaker creates an Amazon Elastic File System \(Amazon EFS\) volume for the team\. A home directory is created in the volume for each user who onboards to Studio as part of your team\. Notebook files and data files are stored in these directories\. Users don't have access to other team member's home directories\.
+The first time a user on your team onboards to Amazon SageMaker Studio, Amazon SageMaker creates an Amazon Elastic File System \(Amazon EFS\) volume for the team\. A home directory is created in the volume for each user who onboards to Studio as part of your team\. Notebook files and data files are stored in these directories\. Users don't have access to other team member's home directories\. Amazon SageMaker Domain does not support mounting custom or additional Amazon EFS volumes\.
 
 **Important**  
 Don't delete the Amazon EFS volume\. If you delete it, the domain will no longer function and all of your users will lose their work\.
 
 **To find your Amazon EFS volume**
 
-1. From the SageMaker Studio Control Panel, under **Studio Summary**, find the **Studio ID**\. The ID will be in the following format: `d-xxxxxxxxxxxx`\.
+1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Pass the `Studio ID`, as `DomainId`, to the [describe\_domain](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.describe_domain) method\.
+1. Choose **Control Panel** at the top left of the page\.
+
+1. From the **Control Panel**, under **Domain**, find the **Domain ID**\. The ID will be in the following format: `d-xxxxxxxxxxxx`\.
+
+1. Pass the `Domain ID`, as `DomainId`, to the [describe\_domain](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker.Client.describe_domain) method\.
 
 1. In the response from `describe_domain`, note the value for the `HomeEfsFileSystemId` key\. This is the Amazon EFS file system ID\.
 

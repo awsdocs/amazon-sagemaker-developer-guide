@@ -1,6 +1,6 @@
 # Adapting Your Own Inference Container<a name="adapt-inference-container"></a>
 
-If none of the Amazon SageMaker prebuilt inference containers suffice for your situation, and you want to use your own Docker container, use the [SageMaker Inference Toolkit](https://github.com/aws/sagemaker-inference-toolkit) to adapt your container to work with SageMaker hosting\. To adapt your container to work with SageMaker hosting, create the inference code in one or more Python script files and a Dockerfile that imports the inference toolkit\.
+If none of the Amazon SageMaker pre\-built inference containers suffice for your situation, and you want to use your own Docker container, use the [SageMaker Inference Toolkit](https://github.com/aws/sagemaker-inference-toolkit) to adapt your container to work with SageMaker hosting\. To adapt your container to work with SageMaker hosting, create the inference code in one or more Python script files and use a Dockerfile that imports the inference toolkit\.
 
 The inference code includes an inference handler, a handler service, and an entrypoint\. In this example, they are stored as three separate Python files\. All three of these Python files must be in the same directory as your Dockerfile\.
 
@@ -10,9 +10,11 @@ For an example Jupyter notebook that shows a complete example of extending a con
 
 The SageMaker inference toolkit is built on the multi\-model server \(MMS\)\. MMS expects a Python script that implements functions to load the model, pre\-process input data, get predictions from the model, and process the output data in a model handler\.
 
+Optionally, you can use the `context` argument in the functions you implement to access additional serving information, such as a GPU ID or the batch size\. If you are using multiple GPUs, you must specify the `context` argument in the `predict_fn` function to select a GPU for prediction\. For more information about the `context` argument and how to use it, see the examples in [The SageMaker PyTorch Model Server](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/using_pytorch.html#id3) in the *SageMaker Python SDK*\.
+
 ### The model\_fn Function<a name="byoc-inference-handler-modelfn"></a>
 
-There are default implementations for the `model_fn` function, named `default_model_fn`, on the SageMaker PyTorch and MXNet Inference toolkits\. The default implementation loads models saved using torchscript, of the form `.pt` or `.pth`\. If your model requires custom methods to load, or you want to perform extra steps when loading your model, you must implement the `model_fn` function\. The following simple example shows an implementation of a `model_fn` function that loads a PyTorch model:
+There are default implementations for the `model_fn` function, named `default_model_fn`, on the SageMaker PyTorch and MXNet Inference toolkits\. The default implementation loads models saved using torchscript, of the form `.pt` or `.pt`\. If your model requires custom methods to load, or you want to perform extra steps when loading your model, you must implement the `model_fn` function\. The following simple example shows an implementation of a `model_fn` function that loads a PyTorch model:
 
 ```
 def model_fn(self, model_dir):
@@ -25,7 +27,7 @@ def model_fn(self, model_dir):
     return model.to(device)
 ```
 
-### The input\_fn Function<a name="byoc-inference-handler-inputfn"></a>
+### The input Function<a name="byoc-inference-handler-inputfn"></a>
 
 The `input_fn` function is responsible for deserializing your input data so that it can be passed to your model\. It takes input data and content type as parameters, and returns deserialized data\. The SageMaker inference toolkit provides a default implementation that deserializes the following content types:
 + JSON
@@ -132,7 +134,7 @@ ENTRYPOINT ["python", "/usr/local/bin/entrypoint.py"]
 
 ## Step 5: Build and Register Your Container<a name="byoc-inference-build-register"></a>
 
-Now you can build your container and register it in Amazon Elastic Container Registry \(Amazon ECR\)\. The following shell script from the sample notebook builds the container and uploads it to an Amazon ECR repository in your AWS account\.
+Now you can build your container and register it\. The following shell script from the sample notebook builds the container and uploads it to an Amazon ECR repository in your AWS account\.
 
 **Note**  
 SageMaker hosting supports using inference containers that are stored in repositories other than Amazon ECR\. For information, see [Use a Private Docker Registry for Real\-Time Inference Containers](your-algorithms-containers-inference-private.md)\.
@@ -174,4 +176,4 @@ docker tag ${algorithm_name} ${fullname}
 docker push ${fullname}
 ```
 
-You can now use this container to deploy endpoints in SageMaker\. For an example of how to deploy an endpoint in SageMaker, see [Deploy the Model to SageMaker Hosting Services](ex1-model-deployment.md#ex1-deploy-model)\.
+You can now use this container to deploy endpoints in SageMaker\. For an example of how to deploy an endpoint in SageMaker, see [Amazon SageMaker Multi\-Model Endpoints using your own algorithm container](https://sagemaker-examples.readthedocs.io/en/latest/advanced_functionality/multi_model_bring_your_own/multi_model_endpoint_bring_your_own.html)\.

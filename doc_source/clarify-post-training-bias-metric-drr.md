@@ -6,7 +6,7 @@ The formula for difference in rejection rates between facets *a* and *d*:
 
         DRR = TNd/\(TNd \+ FNd\) \- TNa/\(TNa \+ FNa\) 
 
-Where:
+The components for the previous DRR equation are as follows\.
 + TNd are the true negatives predicted for facet *d*\.
 + FNd are the false negatives predicted for facet *d*\.
 + TPa are the true negatives predicted for facet *a*\.

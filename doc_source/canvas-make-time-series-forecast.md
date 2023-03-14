@@ -15,7 +15,7 @@ To make a time\-series forecast, do the following\.
 1. Specify the following fields:
    + **Item ID column** – The column that contains unique identifiers for each item in your dataset\. For example, an SKU number uniquely identifies an item\.
    + Optional: **Group column** – Groups the time series forecast by values in the column\. For example, you can group your forecast for an item by store\.
-   + **Time stamp column** – The column containing the time stamps in your dataset\.
+   + **Time stamp column** – The column containing the time stamps in your dataset\. For a list of the supported `datetime` formats for this column, see [Time Series Forecasts in Amazon SageMaker Canvas](canvas-time-series.md)\.
    + **Future timestamp** – A timestamp that indicates a future forecast time\. SageMaker Canvas forecasts values up to the point in time specified by the timestamp\.
    + Optional: **Holiday schedule** – Activate the holiday schedule to use a country's holiday schedule\. Use it to make your forecasts with holiday data more accurate\.
 
@@ -27,7 +27,7 @@ Missing future values are missing values in the target column\. SageMaker Canvas
 
 Missing values are values that are missing in any column other than the target column\. With missing values that aren't in the target column, it's helpful to note the following:
 + They generally don't reduce the accuracy of your forecast as much as missing future values\.
-+ SageMaker Canvas automatically imputes the missing values\. You can also specify the imputation method yourself\.
++ SageMaker Canvas automatically imputes the missing values\.
 
 You can evaluate the model by seeing how close the predictions are within the actual value\. You can also use the **Column Impact** metric to determine the direction and magnitude of the column's impact on the model's predictions\. For example, in the following image, holidays had the largest positive impact on the forecast for demand\. Price had the largest negative impact on demand\.
 

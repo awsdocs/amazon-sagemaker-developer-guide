@@ -4,7 +4,7 @@ The following Jupyter notebooks show how to use your own algorithms or pretraine
 
 ## Setup<a name="docker-containers-notebooks-setup"></a>
 
-1. Create a SageMaker notebook instance\. For instructions on how to create and access Jupyter notebook instances, see [Use Amazon SageMaker Notebook Instances](nbi.md)\.
+1. Create a SageMaker notebook instance\. For instructions on how to create and access Jupyter notebook instances, see [Amazon SageMaker Notebook Instances](nbi.md)\.
 
 1. Open the notebook instance you created\.
 

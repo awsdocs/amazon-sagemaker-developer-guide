@@ -9,7 +9,7 @@ To compile a model, SageMaker Neo requires the following information:
    If you followed the prerequisites, the name of your bucket is stored in a variable named `bucket`\. The following code snippet shows how to list all of your buckets using the AWS CLI: 
 
    ```
-   $ aws s3 ls
+   aws s3 ls
    ```
 
    For example: 

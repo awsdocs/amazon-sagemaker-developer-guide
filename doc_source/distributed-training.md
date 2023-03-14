@@ -1,29 +1,106 @@
-# Amazon SageMaker Distributed Training Libraries<a name="distributed-training"></a>
+# Distributed Training in Amazon SageMaker<a name="distributed-training"></a>
 
-SageMaker provides distributed training libraries for data parallelism and model parallelism\. The libraries are optimized for the SageMaker training environment, help adapt your distributed training jobs to SageMaker, and improve training speed and throughput\.
-
-**Topics**
-+ [Get Started with Distributed Training](#distributed-training-get-started)
-+ [Basic Distributed Training Concepts](#distributed-training-basic-concepts)
-+ [Advanced Concepts](#distributed-training-advanced-concepts)
-+ [Strategies](#distributed-training-strategies)
-+ [Optimize Distributed Training](#distributed-training-optimize)
-+ [Scenarios](#distributed-training-scenarios)
-+ [SageMaker Built\-In Distributed Training Features](#distributed-training-built-in)
-+ [SageMaker's Distributed Data Parallel Library](data-parallel.md)
-+ [SageMaker's Distributed Model Parallel](model-parallel.md)
-+ [Amazon SageMaker Distributed Training Notebook Examples](distributed-training-notebook-examples.md)
+SageMaker provides distributed training libraries and supports various distributed training options for deep learning tasks such as computer vision \(CV\) and natural language processing \(NLP\)\. With SageMaker’s distributed training libraries, you can run highly scalable and cost\-effective custom data parallel and model parallel deep learning training jobs\. You can also use other distributed training frameworks and packages such as PyTorch DistributedDataParallel \(DDP\), `torchrun`, MPI \(`mpirun`\), and parameter server\. Throughout the documentation, instructions and examples focus on how to set up the distributed training options for deep learning tasks using the SageMaker Python SDK\.
 
 ## Get Started with Distributed Training<a name="distributed-training-get-started"></a>
 
-If you’re familiar with distributed training, follow one of the links to your preferred strategy or framework to get started\. Otherwise, continue on to the next section to learn some distributed training concepts\. 
+If you’re familiar with distributed training, choose one of the following options that matches your preferred strategy or framework to get started\. If you want to learn about distributed training in general, see [Basic Distributed Training Concepts](#distributed-training-basic-concepts)\.
 
- **SageMaker distributed training libraries:** 
-+  [SageMaker's Distributed Data Parallel Library](data-parallel.md) 
-+  [SageMaker's Distributed Model Parallel](model-parallel.md) 
+The SageMaker distributed training libraries are optimized for the SageMaker training environment, help adapt your distributed training jobs to SageMaker, and improve training speed and throughput\. The libraries offer both data parallel and model parallel training strategies\. They combine software and hardware technologies to improve inter\-GPU and inter\-node communications, and extend SageMaker’s training capabilities with built\-in options that require minimal code changes to your training scripts\. 
++ To use SageMaker's data parallelism library, configure the `distribution` parameter of the SageMaker framework estimators\. Supported framework estimators are [PyTorch](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/sagemaker.pytorch.html#pytorch-estimator) and [TensorFlow](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/sagemaker.tensorflow.html#tensorflow-estimator)\. The following code example shows how to set a framework estimator for distributed training with the data parallelism library on two `ml.p4d.24xlarge` instances\.
 
+  ```
+  from sagemaker.framework import Framework
+  
+  estimator = Framework(
+      ...,
+      instance_count=2,
+      instance_type="ml.p4d.24xlarge",
+      distribution={"smdistributed" : {"dataparallel" : {"enabled" : True}}}
+  )
+  ```
+
+  To learn how to prepare your training script and launch a distributed training job, see [SageMaker's data parallelism library](data-parallel.md) \(see also [Distributed Training APIs](https://sagemaker.readthedocs.io/en/stable/api/training/distributed.html#the-sagemaker-distributed-data-parallel-library) in the *SageMaker Python SDK documentation*\)\.
++ To use SageMaker's model parallelism library, configure the `distribution` parameter of the SageMaker framework estimators\. Supported framework estimators are [PyTorch](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/sagemaker.pytorch.html#pytorch-estimator) and [TensorFlow](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/sagemaker.tensorflow.html#tensorflow-estimator)\. The following code example shows how to construct a framework estimator for distributed training with the model parallelism library on two `ml.p4d.24xlarge` instances\.
+
+  ```
+  from sagemaker.framework import Framework
+  
+  distribution={
+      "smdistributed": {
+          "modelparallel": {
+              "enabled":True,
+              "parameters": {
+                  ...   # enter parameter key-value pairs here
+              }
+          },
+      },
+      "mpi": {
+          "enabled" : True,
+          ...           # enter parameter key-value pairs here
+      }
+  }
+  
+  estimator = Framework(
+      ...,
+      instance_count=2,
+      instance_type="ml.p4d.24xlarge",
+      distribution=distribution
+  )
+  ```
+
+  To learn how to prepare your training script, configure distribution parameters, and launch a distributed training job, see [SageMaker's model parallelism library](model-parallel.md) \(see also [Distributed Training APIs](https://sagemaker.readthedocs.io/en/stable/api/training/distributed.html#the-sagemaker-distributed-model-parallel-library) in the *SageMaker Python SDK documentation*\)\.
+
+SageMaker also supports the following options to operate `mpirun` and `torchrun` in the backend\.
++ To use [PyTorch DistributedDataParallel \(DDP\)](https://pytorch.org/docs/master/generated/torch.nn.parallel.DistributedDataParallel.html) in SageMaker, add `distribution={"pytorchddp": {"enabled": True}}` to your PyTorch estimator\. For more information, see also [PyTorch Distributed Training](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/using_pytorch.html#distributed-pytorch-training) and [SageMaker PyTorch Estimator](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/sagemaker.pytorch.html#pytorch-estimator)'s `distribution` argument in the *SageMaker Python SDK documentation*\.
 **Note**  
-The SageMaker distributed training libraries are available only through the AWS deep learning containers for the TensorFlow, PyTorch, and HuggingFace frameworks within the SageMaker training platform\. To use the libraries, you must use the SageMaker Python SDK or the SageMaker APIs through SDK for Python \(Boto3\) or AWS Command Line Interface\. Throughout the documentation, instructions and examples focus on how to use the distributed training libraries with the SageMaker Python SDK\.
+With the `pytorchddp` distribution option, SageMaker operates `mpirun` in the backend\.
+
+  ```
+  from sagemaker.pytorch import PyTorch
+  
+  estimator = PyTorch(
+      ...,
+      instance_count=2,
+      instance_type="ml.p4d.24xlarge",
+      distribution={"pytorchddp": {"enabled": True}}  # runs mpirun in the backend
+  )
+  ```
++ SageMaker supports the [PyTorch `torchrun` launcher](https://pytorch.org/docs/stable/elastic/run.html) for distributed training on Amazon EC2 Trn1 instances powered by the [AWS Trainium](http://aws.amazon.com/machine-learning/trainium/) device, the second generation purpose\-built machine learning accelerator from AWS\. Each Trn1 instance consists of up to 16 Trainium devices, and each Trainium device consists of two [NeuronCores](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/general/arch/neuron-hardware/neuroncores-arch.html#neuroncores-v2-arch)\. For specs of the AWS Trainium devices, see [Trainium Architecture](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/general/arch/neuron-hardware/trn1-arch.html#id2) in the *AWS Neuron Documentation*\.
+**Note**  
+The `torchrun` launcher option is currently available only for distributed training on Amazon EC2 Trn1 instances\.
+
+  To train on the Trainium\-powered instances, you only need to specify the code name of the Trn1 instances, `ml.trn1.*`, in string to the `instance_type` argument of the SageMaker PyTorch estimator class\. To find available Trn1 instance types, see [AWS Trn1 Architecture](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/general/arch/neuron-hardware/trn1-arch.html#aws-trn1-arch) in the *AWS Neuron documentation*\.
+**Note**  
+SageMaker Training on Amazon EC2 Trn1 instances is currently available only for PyTorch\.
+
+  To operate `torchrun` for distributed training on Trn1 instances, add `distribution={"torch_distributed": {"enabled": True}}` to the PyTorch estimator\.
+
+  The following code shows an example of constructing a SageMaker PyTorch estimator to run distributed training on two `ml.trn1.32xlarge` instances with the `torch_distributed` distribution option\.
+**Note**  
+To run your PyTorch training job on Trn1 instances with SageMaker, you should modify your training script to initialize process groups with the `xla` backend and use [PyTorch/XLA](https://pytorch.org/xla/release/1.12/index.html)\. To support the XLA adoption process, the AWS Neuron SDK provides PyTorch Neuron that uses XLA to make conversion of PyTorch operations to Trainium instructions\. To learn how to modify your training script, see [Developer Guide for Training with PyTorch Neuron \(`torch-neuronx`\)](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/frameworks/torch/torch-neuronx/programming-guide/training/pytorch-neuron-programming-guide.html) in the *AWS Neuron Documentation*\.
+
+  ```
+  from sagemaker.pytorch import PyTorch
+  
+  estimator = PyTorch(
+      ...,
+      instance_count=2,
+      instance_type="ml.trn1.32xlarge",
+      distribution={"torch_distributed": {"enabled": True}}   # runs torchrun in the backend
+  )
+  ```
+
+  When you launch a training job on Trn1 instances using the SageMaker Python SDK, SageMaker automatically picks up and runs the right container from [Neuron Containers](https://github.com/aws/deep-learning-containers/blob/master/available_images.md#neuron-containers) provided by AWS Deep Learning Containers\. The Neuron Containers are prepackaged with training environment settings and dependencies for easier adaptation of your training job to the SageMaker Training platform and Amazon EC2 Trn1 instances\.
+
+  For more information, see [Distributed Training with PyTorch Neuron on Trn1 instances](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/using_pytorch.html#id24) and [SageMaker PyTorch Estimator](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/sagemaker.pytorch.html#pytorch-estimator)'s `distribution` argument in the *SageMaker Python SDK documentation*\.
++ To use MPI in SageMaker, add `distribution={"mpi": {"enabled": True}}` to your estimator\. The MPI distribution option is available for the following frameworks: MXNet, PyTorch, and TensorFlow\.
++ To use a parameter server in SageMaker, add `distribution={"parameter_server": {"enabled": True}}` to your estimator\. The parameter server option is available for the following frameworks: MXNet, PyTorch, and TensorFlow\. 
+**Tip**  
+For more information about using the MPI and parameter server options per framework, use the following links to the *SageMaker Python SDK documentation*\.  
+[MXNet Distributed Training](https://sagemaker.readthedocs.io/en/stable/frameworks/mxnet/using_mxnet.html#distributed-training) and [SageMaker MXNet Estimator](https://sagemaker.readthedocs.io/en/stable/frameworks/mxnet/sagemaker.mxnet.html#mxnet-estimator)'s `distribution` argument
+[PyTorch Distributed Training](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/using_pytorch.html#distributed-pytorch-training) and [SageMaker PyTorch Estimator](https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/sagemaker.pytorch.html#pytorch-estimator)'s `distribution` argument
+[TensorFlow Distributed Training](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/using_tf.html#distributed-training) and [SageMaker TensorFlow Estimator](https://sagemaker.readthedocs.io/en/stable/frameworks/tensorflow/sagemaker.tensorflow.html#tensorflow-estimator)'s `distribution` argument\.
 
 ## Basic Distributed Training Concepts<a name="distributed-training-basic-concepts"></a>
 
@@ -48,14 +125,6 @@ The SageMaker distributed training libraries are available only through the AWS 
 + **Data parallelism**: A strategy in distributed training where a training dataset is split up across multiple processing nodes \(such as AWS ML Instances\), and each processing node contains a *replica* of the model\. Each node receives different batches of training data, performs a forward and backward pass, and shares weight updates with the other nodes for synchronization before moving on to the next batch and ultimately another epoch\.
 + **Model parallelism**: A strategy in distributed training where the model partitioned across multiple processing nodes \(such as AWS ML Instances\)\. The model might be complex and have a large number of hidden layers and weights, making it unable to fit in the memory of a single node\. Each node carries a subset of the model, through which the data flows and the transformations are shared and compiled\. The efficiency of model parallelism, in terms of GPU utilization and training time, is heavily dependent on how the model is partitioned and the execution schedule used to perform forward and backward passes\.
 + **Pipeline Execution Schedule** \(**Pipelining**\): The pipeline execution schedule determines the order in which computations \(micro\-batches\) are made and data is processed across devices during model training\. Pipelining is a technique to achieve true parallelization in model parallelism and overcome the performance loss due to sequential computation by having the GPUs compute simultaneously on different data samples\. To learn more, see [Pipeline Execution Schedule](https://docs.aws.amazon.com/sagemaker/latest/dg/model-parallel-core-features.html#model-parallel-pipeline-execution)\. 
-
-**Example**
-
-The following example demonstrates how these terms might be used to describe a training job that uses hybrid model and data parallelism:
-
-A 2\-way data parallelism and 4\-way model parallelism training job is launched with a global batch size of 64 images\. This training job requires a total of 8 GPUs\. Each of the two model replicas processes a per\-replica batch of size 32\. During the forward and backward pass, a per\-replica batch is further divided up into micro\-batches\. These micro\-batches are processed in an interleaved fashion using a pipelined execution schedule\.
-
-The training dataset includes 640 images, and so a single epoch takes 10 iterations\.
 
 ## Advanced Concepts<a name="distributed-training-advanced-concepts"></a>
 
@@ -87,8 +156,8 @@ If you are training with a large dataset, start with a data parallel approach\. 
 Try gradient compression \(FP16, INT8\):
 + On NVIDIA TensorCore\-equipped hardware, using [mixed precision training](https://docs.nvidia.com/deeplearning/performance/mixed-precision-training/index.html) creates both speed\-up and memory consumption reduction\.
 + SageMaker's distributed data parallelism library supports Automatic Mixed Precision \(AMP\) out of the box\. No extra action is needed to enable AMP other than the framework\-level modifications to your training script\. If gradients are in FP16, the SageMaker data parallelism library runs its `AllReduce` operation in FP16\. For more information about implementing AMP APIs to your training script, see the following resources:
-  + [Frameworks \- PyTorch](https://docs.nvidia.com/deeplearning/performance/mixed-precision-training/index.html#pytorch) in the *NVIDIA Deep Learning Performace documentation*
-  + [Frameworks \- TensorFlow](https://docs.nvidia.com/deeplearning/performance/mixed-precision-training/index.html#tensorflow) in the *NVIDIA Deep Learning Performace documentation*
+  + [Frameworks \- PyTorch](https://docs.nvidia.com/deeplearning/performance/mixed-precision-training/index.html#pytorch) in the *NVIDIA Deep Learning Performance documentation*
+  + [Frameworks \- TensorFlow](https://docs.nvidia.com/deeplearning/performance/mixed-precision-training/index.html#tensorflow) in the *NVIDIA Deep Learning Performance documentation*
   + [Automatic Mixed Precision for Deep Learning](https://developer.nvidia.com/automatic-mixed-precision) in the *NVIDIA Developer Docs*
   + [Introducing native PyTorch automatic mixed precision for faster training on NVIDIA GPUs](https://pytorch.org/blog/accelerating-training-on-nvidia-gpus-with-pytorch-automatic-mixed-precision/) in the *PyTorch Blog*
   + [TensorFlow mixed precision APIs](https://www.tensorflow.org/guide/mixed_precision) in the *TensorFlow documentation*
@@ -104,8 +173,8 @@ Start with model\-parallel training when:
 + Due to your model size, you’re facing limitations in choosing larger batch sizes, such as if your model weights take up most of your GPU memory and you are forced to choose a smaller, suboptimal batch size\.  
 
 To learn more about the SageMaker distributed libraries, see the following:
-+  [SageMaker's Distributed Data Parallel Library](data-parallel.md) 
-+  [SageMaker's Distributed Model Parallel](model-parallel.md) 
++  [SageMaker's Data Parallelism Library](data-parallel.md) 
++  [SageMaker's Model Parallelism Library](model-parallel.md) 
 
 ## Optimize Distributed Training<a name="distributed-training-optimize"></a>
 
@@ -165,7 +234,7 @@ If you want to scale your training even further, you can use more instances\. Ho
 
 If you have made the jump from a single GPU on a `p3.2xlarge` to four GPUs on a `p3.8xlarge`, but decide that you require more processing power, you may see better performance and incur lower costs if you choose a `p3.16xlarge` before trying to increase instance count\. Depending on the libraries you use, when you keep your training on a single instance, performance is better and costs are lower than a scenario where you use multiple instances\.
 
-When you are ready to scale the number of instances, you can do this with SageMaker Python SDK's `estimator` function by setting your `instance_count`\. For example, you can set `instance_type = p3.16xlarge` and   `instance_count = 2`\. Instead of the eight GPUs on a single `p3.16xlarge`, you have 16 GPUs across two identical instances\. The following chart shows [scaling and throughput starting with eight GPUs](https://aws.amazon.com/blogs/machine-learning/scalable-multi-node-training-with-tensorflow/) on a single instance and increasing to 64 instances for a total of 256 GPUs\. 
+When you are ready to scale the number of instances, you can do this with SageMaker Python SDK `estimator` function by setting your `instance_count`\. For example, you can set `instance_type = p3.16xlarge` and   `instance_count = 2`\. Instead of the eight GPUs on a single `p3.16xlarge`, you have 16 GPUs across two identical instances\. The following chart shows [scaling and throughput starting with eight GPUs](https://aws.amazon.com/blogs/machine-learning/scalable-multi-node-training-with-tensorflow/) on a single instance and increasing to 64 instances for a total of 256 GPUs\. 
 
  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/distributed/Distributed-Training-in-SageMaker-image.png) 
 
@@ -173,24 +242,16 @@ When you are ready to scale the number of instances, you can do this with SageMa
 
 With multiple instances, it's important to understand the network that connects the instances, how they read the training data, and how they share information between themselves \(for example, communication between the nodes in the cluster when doing an `AllReduce` operation\)\. 
 
-First, your instances need to be in the same Region and same Availability Zone\. For example, instances in us\-west\-2 must all be in us\-west\-2a\. When you use the SageMaker Python SDK, this is handled for you\. If you use Amazon EC2 and orchestrate your own training clusters, you need to be aware of this, or your training speeds suffer\. 
+First, your instances need to be in the same Region and same Availability Zone\. For example, instances in `us-west-2` must all be in `us-west-2a`\. When you use the SageMaker Python SDK, this is handled for you\. If you use Amazon EC2 and orchestrate your own training clusters, you need to be aware of this, or your training speeds suffer\. 
 
 Your training data should also be in the same Availability Zone\. When you use a SageMaker estimator, you pass in the Region and the S3 bucket, and if the data is not in the Region you set, you get an error\.  
 
 ### Optimized GPU, Network, and Storage<a name="optimized-GPU"></a>
 
-The `p3dn.24xlarge` instance type was designed for fast local storage and a fast network backplane with up to 100 gigabits, and we highly recommend it as the most performant option for distributed training\. SageMaker supports streaming data modes from S3, referred to as `pipe` mode\. For HPC loads like distributed training, we recommend [Amazon Fsx](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html) for your file storage\. 
+The `p3dn.24xlarge` instance type was designed for fast local storage and a fast network backplane with up to 100 gigabits, and we highly recommend it as the most performant option for distributed training\. SageMaker supports streaming data modes from S3, referred to as `pipe` mode\. For HPC loads like distributed training, we recommend [Amazon FSx](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html) for your file storage\. 
 
 ### Custom Training Scripts<a name="custom-training-scripts"></a>
 
 While SageMaker makes it simple to deploy and scale the number of instances and GPUs, depending on your framework of choice, managing the data and results can be very challenging, which is why external supporting libraries are often used\. This most basic form of distributed training requires modification of your training script to manage the data distribution\. 
 
 SageMaker also supports Horovod and implementations of distributed training native to each major deep learning framework\. If you choose to use examples from these frameworks, you can follow SageMaker’s [container guide](https://docs.aws.amazon.com/sagemaker/latest/dg/docker-containers.html) for Deep Learning Containers, and various [example notebooks](https://sagemaker-examples.readthedocs.io/en/latest/training/bring_your_own_container.html) that demonstrate implementations\. 
-
-## SageMaker Built\-In Distributed Training Features<a name="distributed-training-built-in"></a>
-
-The [SageMaker built\-in libraries of algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html) consists of 18 popular machine learning algorithms\. Many of them were rewritten from scratch to be scalable and distributed out of the box\. If you want to use distributed **deep learning** training code, we recommend Amazon SageMaker’s distributed training libraries\. SageMaker’s distributed training libraries make it easier for you to write highly scalable and cost\-effective custom data parallel and model parallel deep learning training jobs\. 
-
-SageMaker distributed training libraries offer both data parallel and model parallel training strategies\. It combines software and hardware technologies to improve inter\-GPU and inter\-node communications\. It extends SageMaker’s training capabilities with built\-in options that require only small code changes to your training scripts\.  
-+  [SageMaker's Distributed Data Parallel Library](data-parallel.md) 
-+  [SageMaker's Distributed Model Parallel](model-parallel.md) 

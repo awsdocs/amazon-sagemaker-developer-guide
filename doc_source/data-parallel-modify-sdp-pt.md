@@ -2,14 +2,6 @@
 
 In the SageMaker data parallel library v1\.4\.0 and later, the library is available as a backend option for the [PyTorch distributed package](https://pytorch.org/tutorials/beginner/dist_overview.html)\. You only need to import the library once at the top of your training script and set it as the PyTorch distributed backend during initialization\. With the single line of backend specification, you can keep your PyTorch training script unchanged and directly use the PyTorch distributed modules\. To find the latest API documentation for the library, see the [SageMaker distributed data parallel APIs for PyTorch](https://sagemaker.readthedocs.io/en/stable/api/training/sdp_versions/latest/smd_data_parallel_pytorch.html) in the *SageMaker Python SDK documentation*\. To learn more about the PyTorch distributed package and backend options, see [Distributed communication package \- torch\.distributed](https://pytorch.org/docs/stable/distributed.html)\.
 
-
-**PyTorch versions supported by SageMaker and the SageMaker distributed data parallel library**  
-
-| PyTorch version | SageMaker distributed data parallel library version | `smdistributed-dataparallel` integrated image URI | 
-| --- | --- | --- | 
-| v1\.10\.2 |  smdistributed\-dataparallel==v1\.4\.0  |  763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/pytorch\-training:1\.10\.2\-gpu\-py38\-cu113\-ubuntu20\.04\-sagemaker  | 
-| v1\.8\.1 | smdistributed\-dataparallel==v1\.3\.0  | 763104351884\.dkr\.ecr\.<region>\.amazonaws\.com/pytorch\-training:1\.8\.1\-gpu\-py36\-cu111\-ubuntu18\.04 | 
-
 **Important**  
 Because the SageMaker distributed data parallelism library v1\.4\.0 and later works as a backend of PyTorch distributed, the following [smdistributed APIs](https://sagemaker.readthedocs.io/en/stable/api/training/sdp_versions/latest/smd_data_parallel_pytorch.html#pytorch-api) for the PyTorch distributed package are deprecated\.  
 `smdistributed.dataparallel.torch.distributed` is deprecated\. Use the [torch\.distributed](https://pytorch.org/docs/stable/distributed.html) package instead\.
@@ -30,7 +22,7 @@ dist.init_process_group(backend='smddp')
 **Note**  
 The `smddp` backend currently does not support creating subprocess groups with the `torch.distributed.new_group()` API\. You cannot use the `smddp` backend concurrently with other process group backends such as NCCL and Gloo\.
 
-If you already have a working PyTorch script and only need to add the backend specification, you can proceed to [Using the SageMaker PyTorch Estimator](data-parallel-use-api.md#data-parallel-pytorch-api) in the [Step 2: Launch a SageMaker Distributed Training Job Using the SageMaker Python SDK](data-parallel-use-api.md) topic\. 
+If you already have a working PyTorch script and only need to add the backend specification, you can proceed to [Using the SageMaker Framework Estimators For PyTorch and TensorFlow](data-parallel-use-api.md#data-parallel-framework-estimator) in the [Step 2: Launch a SageMaker Distributed Training Job Using the SageMaker Python SDK](data-parallel-use-api.md) topic\. 
 
 If you still need to modify your training script to properly use the PyTorch distributed package, follow the rest of the procedures on this page\.
 

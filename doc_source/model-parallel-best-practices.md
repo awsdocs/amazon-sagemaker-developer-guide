@@ -1,4 +1,4 @@
-# SageMaker Distributed Model Parallel Best Practices<a name="model-parallel-best-practices"></a>
+# SageMaker Distributed Model Parallelism Best Practices<a name="model-parallel-best-practices"></a>
 
 Use the following guidelines when you run a distributed training job with the SageMaker model parallel library\.
 
@@ -47,7 +47,7 @@ If a model can fit well using a subset of the library's features, adding more mo
 
 ### Reference configurations<a name="model-parallel-best-practices-configuration-reference"></a>
 
-The SageMaker distributed model parallel training team provides the following reference points based on experiments with the GPT\-2 model, the sequence length of 512, and the vocabulary size of 50,000\. 
+The SageMaker model parallelism training team provides the following reference points based on experiments with the GPT\-2 model, the sequence length of 512, and the vocabulary size of 50,000\. 
 
 
 | The number of model parameters | Instance type | Pipeline parallelism | Tensor parallelism | Optimizer state sharding | Activation checkpointing | Prescaled batch | Batch size | 
@@ -59,7 +59,7 @@ The SageMaker distributed model parallel training team provides the following re
 You can extrapolate from the preceding configurations to estimate GPU memory usage for your model configuration\. For example, if you increase the sequence length for a 10\-billion\-parameter model or increase the size of the model to 20 billion, you might want to lower batch size first\. If the model still doesn’t fit, try increasing the degree of tensor parallelism\.
 
 ## Modifying Your Training Script<a name="model-parallel-best-practices-modify-training-script"></a>
-+ Before you use the SageMaker model parallel library’s features in your training script, review [SageMaker Distributed Model Parallel Configuration Tips and Pitfalls](model-parallel-customize-tips-pitfalls.md)\.
++ Before you use the SageMaker model parallel library’s features in your training script, review [The SageMaker Distributed Model Parallelism Library Configuration Tips and Pitfalls](model-parallel-customize-tips-pitfalls.md)\.
 + To launch a training job faster, use the [SageMaker local mode](https://sagemaker.readthedocs.io/en/stable/overview.html?highlight=local%20mode#local-mode)\. This helps you quickly run a training job locally on a SageMaker notebook instance\. Depending on the scale of the ML instance on which your SageMaker notebook instance is running, you might need to adjust the size of your model by changing the model configurations, such as the hidden width, number of transformer layers, and attention heads\. Validate if the reduced model runs well on the notebook instance before using a large cluster for training the full model\. 
 
 ## Monitoring and Logging a Training Job Using the SageMaker Console and Amazon CloudWatch<a name="model-parallel-best-practices-monitoring"></a>

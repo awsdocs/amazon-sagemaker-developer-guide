@@ -1,15 +1,68 @@
 # Clean Up Amazon SageMaker Experiment Resources<a name="experiments-cleanup"></a>
 
-To avoid incurring unnecessary charges, delete the Amazon SageMaker Experiment resources you no longer need\. You can't delete Experiment resources through the SageMaker Management Console or the Amazon SageMaker Studio UI\. This topic shows you how to clean up these resources using Boto3 and the Experiments SDK\. For more information about the Experiments SDK, see [sagemaker\-experiments](https://github.com/aws/sagemaker-experiments)\.
-
-To delete the experiment, you must delete all trials in the experiment\. To delete a trial, you must remove all trial components from the trial\. To delete a trial component, you must remove the component from all trials\.
-
-**Note**  
-Trial components can exist independent of trials and experiments\. You do not have to delete them\. If you want to reuse them, comment out `tc.delete()` in the code\.
+To avoid incurring unnecessary charges, delete the Amazon SageMaker Experiment resources you no longer need\. You can't delete Experiment resources through the SageMaker Management Console or the Amazon SageMaker Studio UI\. This topic shows you how to clean up these resources using the SageMaker Python SDK, Boto3, and the Experiments SDK\.
 
 **Topics**
-+ [Clean Up Using the Experiments SDK](#experiments-cleanup-smsdk)
++ [Clean Up Using the SageMaker Python SDK](#experiments-cleanup-smpythonsdk)
 + [Clean Up Using the Python SDK \(Boto3\)](#experiments-cleanup-boto3)
++ [Clean Up Using the Experiments SDK](#experiments-cleanup-smsdk)
+
+## Clean Up Using the SageMaker Python SDK<a name="experiments-cleanup-smpythonsdk"></a>
+
+**To clean up using the SageMaker Python SDK**
+
+```
+from sagemaker.experiments.experiment import _Experiment
+
+exp = _Experiment.load(experiment_name=experiment_name, sagemaker_session=sm_session)
+exp._delete_all(action="--force")
+```
+
+## Clean Up Using the Python SDK \(Boto3\)<a name="experiments-cleanup-boto3"></a>
+
+**To clean up using Boto 3**
+
+```
+import boto3
+sm = boto3.Session().client('sagemaker')
+```
+
+**Define cleanup\_boto3**
+
+```
+def cleanup_boto3(experiment_name):
+    trials = sm.list_trials(ExperimentName=experiment_name)['TrialSummaries']
+    print('TrialNames:')
+    for trial in trials:
+        trial_name = trial['TrialName']
+        print(f"\n{trial_name}")
+
+        components_in_trial = sm.list_trial_components(TrialName=trial_name)
+        print('\tTrialComponentNames:')
+        for component in components_in_trial['TrialComponentSummaries']:
+            component_name = component['TrialComponentName']
+            print(f"\t{component_name}")
+            sm.disassociate_trial_component(TrialComponentName=component_name, TrialName=trial_name)
+            try:
+                # comment out to keep trial components
+                sm.delete_trial_component(TrialComponentName=component_name)
+            except:
+                # component is associated with another trial
+                continue
+            # to prevent throttling
+            time.sleep(.5)
+        sm.delete_trial(TrialName=trial_name)
+    sm.delete_experiment(ExperimentName=experiment_name)
+    print(f"\nExperiment {experiment_name} deleted")
+```
+
+**Call cleanup\_boto3**
+
+```
+# Use experiment name not display name
+experiment_name = "experiment-name"
+cleanup_boto3(experiment_name)
+```
 
 ## Clean Up Using the Experiments SDK<a name="experiments-cleanup-smsdk"></a>
 
@@ -60,50 +113,4 @@ experiment_to_cleanup = Experiment.load(
     experiment_name="experiment-name")
 
 cleanup_sme_sdk(experiment_to_cleanup)
-```
-
-## Clean Up Using the Python SDK \(Boto3\)<a name="experiments-cleanup-boto3"></a>
-
-**To clean up using Boto 3**
-
-```
-import boto3
-sm = boto3.Session().client('sagemaker')
-```
-
-**Define cleanup\_boto3**
-
-```
-def cleanup_boto3(experiment_name):
-    trials = sm.list_trials(ExperimentName=experiment_name)['TrialSummaries']
-    print('TrialNames:')
-    for trial in trials:
-        trial_name = trial['TrialName']
-        print(f"\n{trial_name}")
-
-        components_in_trial = sm.list_trial_components(TrialName=trial_name)
-        print('\tTrialComponentNames:')
-        for component in components_in_trial['TrialComponentSummaries']:
-            component_name = component['TrialComponentName']
-            print(f"\t{component_name}")
-            sm.disassociate_trial_component(TrialComponentName=component_name, TrialName=trial_name)
-            try:
-                # comment out to keep trial components
-                sm.delete_trial_component(TrialComponentName=component_name)
-            except:
-                # component is associated with another trial
-                continue
-            # to prevent throttling
-            time.sleep(.5)
-        sm.delete_trial(TrialName=trial_name)
-    sm.delete_experiment(ExperimentName=experiment_name)
-    print(f"\nExperiment {experiment_name} deleted")
-```
-
-**Call cleanup\_boto3**
-
-```
-# Use experiment name not display name
-experiment_name = "experiment-name"
-cleanup_boto3(experiment_name)
 ```

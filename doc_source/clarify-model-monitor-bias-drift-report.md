@@ -26,4 +26,4 @@ if last_model_bias_monitor_execution:
         print(model_bias_violations.body_dict)
 ```
 
-In SageMaker Studio, you can see visualizations of the analysis results and CloudWatch metrics by choosing the **Endpoints** tab, and then double\-clicking the endpoint\.
+If your model is deployed to a real\-time endpoint, you can see visualizations in SageMaker Studio of the analysis results and CloudWatch metrics by choosing the **Endpoints** tab, and then double\-clicking the endpoint\.

@@ -1,8 +1,8 @@
 # Property Files and `JsonGet`<a name="build-and-manage-propertyfile"></a>
 
-You use property files to store information from the output of a processing step\. This is particularly useful when analyzing the results of a processing step to decide how a conditional step should be executed\. The `JsonGet` function processes a property file and enables you to use JsonPath notation to query the property JSON file\. For more information on JsonPath notation, see the [JsonPath repo](https://github.com/json-path/JsonPath)\.
+Use property files to store information from the output of a processing step\. This is particularly useful when analyzing the results of a processing step to decide how a conditional step should be executed\. The `JsonGet` function processes a property file and enables you to use JsonPath notation to query the property JSON file\. For more information on JsonPath notation, see the [JsonPath repo](https://github.com/json-path/JsonPath)\.
 
-To store a property file for later use, you must first create a `PropertyFile` instance with the following format\. The `path` parameter is the name of the JSON file to which the property file is saved\. `output_name` must match the `output_name` of the `ProcessingOutput` that you define in your processing step\. This enables the property file to capture the `ProcessingOutput` in the step\.
+To store a property file for later use, you must first create a `PropertyFile` instance with the following format\. The `path` parameter is the name of the JSON file to which the property file is saved\. Any `output_name` must match the `output_name` of the `ProcessingOutput` that you define in your processing step\. This enables the property file to capture the `ProcessingOutput` in the step\.
 
 ```
 from sagemaker.workflow.properties import PropertyFile
@@ -32,3 +32,5 @@ cond_lte = ConditionLessThanOrEqualTo(
     right=6.0
 )
 ```
+
+For more in\-depth examples, see *[Property File](https://sagemaker.readthedocs.io/en/stable/amazon_sagemaker_model_building_pipeline.html#property-file)* in the [Amazon SageMaker Python SDK](https://sagemaker.readthedocs.io)\.

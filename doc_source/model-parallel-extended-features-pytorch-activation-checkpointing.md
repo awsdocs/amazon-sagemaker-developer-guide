@@ -4,12 +4,12 @@
 
 ## How to Use Activation Checkpointing<a name="model-parallel-extended-for-pytorch-activation-checkpointing-how-to-use"></a>
 
-With `smdistributed.modelparallel`, you can use activation checkpointing at the granularity of a module\. For all `torch.nn` modules except `torch.nn.Sequential`, you can only checkpoint a module tree if it lies within one partition from the perspective of pipeline parallelism\. In case of the `torch.nn.Sequential` module, each module tree inside the sequential module needs to completely lie within one partition for activation checkpointing to work\. When you use manual partitioning, you need to be aware of these restrictions\.
+With `smdistributed.modelparallel`, you can use activation checkpointing at the granularity of a module\. For all `torch.nn` modules except `torch.nn.Sequential`, you can only checkpoint a module tree if it lies within one partition from the perspective of pipeline parallelism\. In case of the `torch.nn.Sequential` module, each module tree inside the sequential module must lie completely within one partition for activation checkpointing to work\. When you use manual partitioning, be aware of these restrictions\.
 
 When you use [automated model partitioning](https://docs.aws.amazon.com/sagemaker/latest/dg/model-parallel-core-features.html#model-parallel-automated-model-splitting), you can find the partitioning assignment logs starting with `Partition assignments:` in the training job logs\. If a module is partitioned across multiple ranks \(for example, with one descendant on one rank and another descendant on a different rank\), the library ignores the attempt to checkpoint the module and raises a warning message that the module won't be checkpointed\.
 
 **Note**  
-The SageMaker model parallel library supports both overlapping and non\-overlapping `allreduce` in combination with checkpointing\. 
+The SageMaker model parallelism library supports both overlapping and non\-overlapping `allreduce` operation in combination with checkpointing\. 
 
 **Note**  
 PyTorch’s native checkpointing API is not compatible with `smdistributed.modelparallel`\.
@@ -63,7 +63,7 @@ class Net(nn.Module):
         return F.log_softmax(x, 1)
 ```
 
-**Example 3:** The following sample code shows how to use activation checkpointing when you import a prebuilt model from a library, such as PyTorch and Hugging Face Transformers\. Whether you checkpoint sequential modules or not, you need to do the following: 
+**Example 3:** The following sample code shows how to use activation checkpointing when you import a prebuilt model from a library, such as PyTorch and Hugging Face Transformers\. Whether you checkpoint sequential modules or not, do the following: 
 
 1. Wrap the model by `smp.DistributedModel()`\.
 

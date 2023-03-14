@@ -30,15 +30,13 @@ The following procedure shows how to manually change the approval status from `A
 
 1. Sign in to Studio\. For more information, see [Onboard to Amazon SageMaker Domain](gs-studio-onboard.md)\.
 
-1. In the left navigation pane, choose the **Components and registries** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Components_registries.png) \)\.
+1. In the left navigation pane, choose the **Home** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/house.png) \)\.
 
-1. Choose **Model registry**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry/model-registry.png)
+1. Choose **Models**, and then **Model registry**\.
 
 1. From the model groups list, choose the model group you want to view\. A new tab opens with a list of the model versions in the group\.
 
-1. In the list of model versions, right\-click the model version you want to update and choose **Update model version status**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry/update-model-status-2.png)
+1. In the list of model versions, right\-click the model version you want to update and choose **Update model version status**\.
 
 1. In the **Update model version status** dialog box, for **Status** choose **Rejected**, and then choose **Update status**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/model_registry/approve-model.png)

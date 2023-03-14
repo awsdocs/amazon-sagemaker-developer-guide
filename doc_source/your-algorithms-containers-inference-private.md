@@ -140,8 +140,8 @@ def handler(event, context):
 ```
 
 Depending on how you set up authentication for your private Docker registry, the credentials that your Lambda function returns can mean either of the following:
-+ If you set up your private Docker registry to use basic authentication, this is the *username* and *password* to authenticate to the registry\.
-+ If you set up your private Docker registry to use bearer token authentication, the *username* and *password* are sent to your authorization server, which returns a Bearer token that can then be used to authenticate to the private Docker registry\.
++ If you set up your private Docker registry to use basic authentication, provide the sign\-in credentials to authenticate to the registry\.
++ If you set up your private Docker registry to use bearer token authentication, the sign\-in credentials are sent to your authorization server, which returns a Bearer token that can then be used to authenticate to the private Docker registry\.
 
 ## Give your execution role permission to Lambda<a name="inference-private-docker-perms"></a>
 

@@ -1,6 +1,6 @@
-# Image Classification Algorithm<a name="image-classification"></a>
+# Image Classification \- MXNet<a name="image-classification"></a>
 
-The Amazon SageMaker image classification algorithm is a supervised learning algorithm that supports multi\-label classification\. It takes an image as input and outputs one or more labels assigned to that image\. It uses a convolutional neural network \(ResNet\) that can be trained from scratch or trained using transfer learning when a large number of training images are not available\. 
+The Amazon SageMaker image classification algorithm is a supervised learning algorithm that supports multi\-label classification\. It takes an image as input and outputs one or more labels assigned to that image\. It uses a convolutional neural network that can be trained from scratch or trained using transfer learning when a large number of training images are not available 
 
 The recommended input format for the Amazon SageMaker image classification algorithms is Apache MXNet [RecordIO](https://mxnet.apache.org/api/faq/recordio)\. However, you can also use raw images in \.jpg or \.png format\. Refer to [this discussion](https://mxnet.apache.org/api/architecture/note_data_loading) for a broad overview of efficient data preparation and loading for machine learning systems\. 
 
@@ -104,10 +104,8 @@ For more details on training and inference, see the image classification sample 
 
 ## EC2 Instance Recommendation for the Image Classification Algorithm<a name="IC-instances"></a>
 
-For image classification, we support the following GPU instances for training: `ml.p2.xlarge`, `ml.p2.8xlarge`, `ml.p2.16xlarge`, `ml.p3.2xlarge`, `ml.p3.8xlarge`and `ml.p3.16xlarge`\. We recommend using GPU instances with more memory for training with large batch sizes\. However, both CPU \(such as C4\) and GPU \(such as P2 and P3\) instances can be used for the inference\. You can also run the algorithm on multi\-GPU and multi\-machine settings for distributed training\.
-
-Both P2 and P3 instances are supported in the image classification algorithm\.
+For image classification, we support P2, P3, G4dn, and G5 instances\. We recommend using GPU instances with more memory for training with large batch sizes\. You can also run the algorithm on multi\-GPU and multi\-machine settings for distributed training\. Both CPU \(such as C4\) and GPU \(P2, P3, G4dn, or G5\) instances can be used for inference\.
 
 ## Image Classification Sample Notebooks<a name="IC-sample-notebooks"></a>
 
-For a sample notebook that uses the SageMaker image classification algorithm to train a model on the [caltech\-256 dataset](http://www.vision.caltech.edu/Image_Datasets/Caltech256/) and then to deploy it to perform inferences, see the [End\-to\-End Multiclass Image Classification Example](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-fulltraining.html)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the SageMaker samples\. The example image classification notebooks are located in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.
+For a sample notebook that uses the SageMaker image classification algorithm to train a model on the caltech\-256 dataset and then to deploy it to perform inferences, see the [End\-to\-End Multiclass Image Classification Example](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/imageclassification_caltech/Image-classification-fulltraining.html)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Amazon SageMaker Notebook Instances](nbi.md)\. Once you have created a notebook instance and opened it, select the **SageMaker Examples** tab to see a list of all the SageMaker samples\. The example image classification notebooks are located in the **Introduction to Amazon algorithms** section\. To open a notebook, click on its **Use** tab and select **Create copy**\.

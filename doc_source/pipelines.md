@@ -8,7 +8,7 @@ SageMaker Pipelines is integrated directly with SageMaker, so you don't need to 
 
 **SageMaker Python SDK Integration**
 
-Because SageMaker Pipelines is integrated with the SageMaker Python SDK, you can create your pipelines programmatically using a high\-level Python interface that you might already be familiar with\.  To view the SageMaker Python SDK documentation, see [Pipelines](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html)\.
+Because SageMaker Pipelines is integrated with the SageMaker Python SDK, you can create your pipelines programmatically using a high\-level Python interface that you might already be familiar with\.  To view the SageMaker Python SDK API reference, see [Pipelines](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html)\. For SageMaker Python SDK code examples, see [Amazon SageMaker Model Building Pipelines](https://sagemaker.readthedocs.io/en/stable/amazon_sagemaker_model_building_pipeline.html)\.
 
 **SageMaker Studio Integration**
 

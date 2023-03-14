@@ -1,18 +1,18 @@
-# Get Notebook and App Metadata<a name="notebooks-run-and-manage-metadata"></a>
+# Get Studio Notebook and App Metadata<a name="notebooks-run-and-manage-metadata"></a>
 
-You can access notebook metadata and App metadata using the Amazon SageMaker UI\.
+You can access notebook metadata and App metadata using the Amazon SageMaker Studio UI\.
 
 **Topics**
-+ [Get Notebook Metadata](#notebooks-run-and-manage-metadata-notebook)
++ [Get Studio Notebook Metadata](#notebooks-run-and-manage-metadata-notebook)
 + [Get App Metadata](#notebooks-run-and-manage-metadata-app)
 
-## Get Notebook Metadata<a name="notebooks-run-and-manage-metadata-notebook"></a>
+## Get Studio Notebook Metadata<a name="notebooks-run-and-manage-metadata-notebook"></a>
 
-Jupyter notebooks contain optional metadata that you can access through the Amazon SageMaker UI\.
+Jupyter notebooks contain optional metadata that you can access through the Amazon SageMaker Studio UI\.
 
-**To view the notebook metadata**
+**To view the notebook metadata:**
 
-1. In the left sidebar, choose the **Notebook Tools** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Notebook_tools_squid.png)\)\. The icon only displays when there's a notebook available in Studio\.
+1. In the right sidebar, choose the **Property Inspector** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/gears.png)\)\. 
 
 1. Open the **Advanced Tools** section\.
 
@@ -36,7 +36,7 @@ The metadata should look similar to the following\.
         "name": "python",
         "nbconvert_exporter": "python",
         "pygments_lexer": "ipython3",
-        "version": "3.7.6"
+        "version": "3.7.10"
     }
 }
 ```
@@ -54,23 +54,24 @@ Additional metadata might be included for internal use by Studio and is subject 
 
 **To get the App metadata**
 
-1. In the center of the notebook menu, choose the **Launch Terminal** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/icons/Launch_terminal.png)\)\. This opens a terminal in the SageMaker image that the notebook runs in\.
+1. In the center of the notebook menu, choose the **Launch Terminal** icon \( ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/icons/notebook-launch-terminal.png)\)\. This opens a terminal in the SageMaker image that the notebook runs in\.
 
 1. Run the following commands to display the contents of the `resource-metadata.json` file\.
 
    ```
-   cd /opt/ml/metadata/
+   $ cd /opt/ml/metadata/
    cat resource-metadata.json
    ```
 
-The file should look similar to the following\.
+   The file should look similar to the following\.
 
-```
-{
-    "AppType": "KernelGateway",
-    "DomainId": "d-xxxxxxxxxxxx",
-    "UserProfileName": "profile-name",
-    "ResourceArn": "arn:aws:sagemaker:us-east-2:account-id:app/d-xxxxxxxxxxxx/profile-name/KernelGateway/datascience--1-0-ml-t3-medium",
-    "ResourceName": "datascience--1-0-ml"
-}
-```
+   ```
+   {
+       "AppType": "KernelGateway",
+       "DomainId": "d-xxxxxxxxxxxx",
+       "UserProfileName": "profile-name",
+       "ResourceArn": "arn:aws:sagemaker:us-east-2:account-id:app/d-xxxxxxxxxxxx/profile-name/KernelGateway/datascience--1-0-ml-t3-medium",
+       "ResourceName": "datascience--1-0-ml",
+       "AppImageVersion":""
+   }
+   ```

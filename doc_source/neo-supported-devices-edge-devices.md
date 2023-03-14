@@ -12,6 +12,7 @@ You can choose from one of the following edge devices:
 | Device List | System on a Chip \(SoC\) | Operating System | Architecture | Accelerator | Compiler Options Example | 
 | --- | --- | --- | --- | --- | --- | 
 | aisage |  | Linux | ARM64 | Mali |  | 
+| amba\_cv2 | CV2 | Arch Linux | ARM64 | cvflow |  | 
 | amba\_cv22 | CV22 | Arch Linux | ARM64 | cvflow |  | 
 | amba\_cv25 | CV25 | Arch Linux | ARM64 | cvflow |  | 
 | coreml |  | iOS, macOS |  |  | \{"class\_labels": "imagenet\_labels\_1000\.txt"\} | 
@@ -19,14 +20,14 @@ You can choose from one of the following edge devices:
 | imx8qm | NXP imx8 | Linux | ARM64 |  |  | 
 | imx8mplus | i\.MX 8M Plus | Linux | ARM64 | NPU |  | 
 | jacinto\_tda4vm | TDA4VM | Linux | ARM | TDA4VM |  | 
-| jetson\_nano |  | Linux | ARM64 | NVIDIA | \{'gpu\-code': 'sm\_53', 'trt\-ver': '5\.0\.6', 'cuda\-ver': '10\.0'\} | 
+| jetson\_nano |  | Linux | ARM64 | NVIDIA | \{'gpu\-code': 'sm\_53', 'trt\-ver': '5\.0\.6', 'cuda\-ver': '10\.0'\}For `TensorFlow2`, `{'JETPACK_VERSION': '4.6', 'gpu_code': 'sm_72'}` | 
 | jetson\_tx1 |  | Linux | ARM64 | NVIDIA | \{'gpu\-code': 'sm\_53', 'trt\-ver': '6\.0\.1', 'cuda\-ver': '10\.0'\} | 
 | jetson\_tx2 |  | Linux | ARM64 | NVIDIA | \{'gpu\-code': 'sm\_62', 'trt\-ver': '6\.0\.1', 'cuda\-ver': '10\.0'\} | 
 | jetson\_xavier |  | Linux | ARM64 | NVIDIA | \{'gpu\-code': 'sm\_72', 'trt\-ver': '5\.1\.6', 'cuda\-ver': '10\.0'\} | 
 | qcs605 |  | Android | ARM64 | Mali | \{'ANDROID\_PLATFORM': 27\} | 
 | qcs603 |  | Android | ARM64 | Mali | \{'ANDROID\_PLATFORM': 27\} | 
 | rasp3b | ARM A56 | Linux | ARM\_EABIHF |  | \{'mattr': \['\+neon'\]\} | 
-| rasp4 | ARM A72 |  |  |  |  | 
+| rasp4b | ARM A72 |  |  |  |  | 
 | rk3288 |  | Linux | ARM\_EABIHF | Mali |  | 
 | rk3399 |  | Linux | ARM64 | Mali |  | 
 | sbe\_c |  | Linux | x86\_64 |  | \{'mcpu': 'core\-avx2'\} | 

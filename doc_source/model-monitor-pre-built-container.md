@@ -1,6 +1,6 @@
 # Amazon SageMaker Model Monitor prebuilt container<a name="model-monitor-pre-built-container"></a>
 
-SageMaker provides a built\-in image called `sagemaker-model-monitor-analyzer` that provides you with a range of model monitoring capabilities, including constraint suggestion, statistics generation, constraint validation against a baseline, and emitting Amazon CloudWatch metrics\. This image is based on Spark and is built with [Deequ](https://github.com/awslabs/deequ)\. 
+SageMaker provides a built\-in image called `sagemaker-model-monitor-analyzer` that provides you with a range of model monitoring capabilities, including constraint suggestion, statistics generation, constraint validation against a baseline, and emitting Amazon CloudWatch metrics\. This image is based on Spark version 3\.3\.0 and is built with [Deequ](https://github.com/awslabs/deequ) version 2\.0\.2\.
 
 **Note**  
 You can not pull the built\-in `sagemaker-model-monitor-analyzer` image directly\. You can use the `sagemaker-model-monitor-analyzer` image when you submit a baseline processing or monitoring job using one of the AWS SDKs\.
@@ -32,6 +32,7 @@ The following table lists the supported values for account IDs and corresponding
 | 126357580389 | ap\-south\-1 | 
 | 245545462676 | ap\-southeast\-1 | 
 | 563025443158 | ap\-southeast\-2 | 
+| 669540362728 | ap\-southeast\-3 | 
 | 536280801234 | ca\-central\-1 | 
 | 453000072557 | cn\-north\-1 | 
 | 453252182341 | cn\-northwest\-1 | 

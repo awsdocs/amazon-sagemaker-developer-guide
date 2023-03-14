@@ -1,12 +1,16 @@
 # RStudio license<a name="rstudio-license"></a>
 
-RStudio on Amazon SageMaker is a paid product and requires that each user is appropriately licensed\. Amazon SageMaker does not sell or provide RStudio licenses\. RStudio on Amazon SageMaker requires a separate product license from RStudio\. For customers of RStudio Workbench Enterprise, licenses are issued at no additional cost\. 
+RStudio on Amazon SageMaker is a paid product and requires that each user is appropriately licensed\. Licenses for RStudio on Amazon SageMaker may be obtained from RStudio PBC directly, or by purchasing a subscription to RStudio Workbench on AWS Marketplace\. For existing customers of RStudio Workbench Enterprise, licenses are issued at no additional cost\. 
 
-To use an RStudio license with Amazon SageMaker, you must first have a valid RStudio license registered with AWS License Manager\. For more information about registering a license with AWS License Manager, see [Seller issued licenses in AWS License Manager](https://docs.aws.amazon.com/license-manager/latest/userguide/seller-issued-licenses.html)\. The following topics show how to acquire and validate an RStudio license\.
+To use an RStudio license with Amazon SageMaker, you must first have a valid RStudio license registered with AWS License Manager\. Subscriptions to RStudio Workbench on AWS Marketplace automatically trigger license creation with AWS License Manager\. For licenses purchased directly through Rstudio PBC, a licenses grant for your AWS Account must be created\. Contact RStudio for direct license purchases or to enable existing licenses in AWS License Manager\. For more information about registering a license with AWS License Manager, see [Seller issued licenses in AWS License Manager](https://docs.aws.amazon.com/license-manager/latest/userguide/seller-issued-licenses.html)\. 
+
+The following topics show how to acquire and validate a license granted by RStudio PBC\.
 
  **Get an RStudio license** 
 
-1. If you don't have an RStudio license, you may purchase one at [RStudio Pricing](https://www.rstudio.com/pricing/) or by contacting [sales@rstudio\.com](mailto:sales@rstudio.com)\. When buying or updating an RStudio license, you must provide the AWS Account that will host your Amazon SageMaker Domain\. 
+1. If you don't have an RStudio license, you may purchase one from the AWS Marketplace or from RStudio PBC directly\.
+   + To purchase a subscription from the AWS Marketplace, complete the steps in [Subscribing to an AMI product with contract pricing public offer](https://docs.aws.amazon.com/marketplace/latest/buyerguide/buyer-ami-contracts.html#sub-public-AMI-contract) by searching for **Posit Workbench**\.
+   + To purchase from RStudio PBC directly, navigate to [RStudio Pricing](https://www.rstudio.com/pricing/) or contact [sales@rstudio\.com](mailto:sales@rstudio.com)\. When buying or updating an RStudio license, you must provide the AWS Account that will host your Amazon SageMaker Domain\. 
 
    If you have an existing RStudio license, contact your RStudio Sales representative or [sales@rstudio\.com](mailto:sales@rstudio.com) to add RStudio on Amazon SageMaker to your existing RStudio Workbench Enterprise license, or to convert your RStudio Workbench Standard license\. The RStudio Sales representative will send you the appropriate electronic order form\.
 
@@ -27,14 +31,6 @@ To use an RStudio license with Amazon SageMaker, you must first have a valid RSt
 1. Select the license grant with `RSW-SageMaker` as the `Product name` and select **View**\.
 
 1. From the license detail page, select **Accept & activate license**\. 
-
- **Get information about your RStudio license usage** 
-
-To share how many users are using your RStudio license, you must get information on this usage from Amazon SageMaker\. You export your usage information, then report it to RStudio PBC\. You can get information about your license usage from AWS License Manager or the RStudio administrative dashboard\. The following shows how to collect and export this information\.  
-
- **AWS License Manager** 
-
- AWS License Manager keeps track of your usage for granted licenses and can generate reports of that usage\. For information on how to generate AWS License Manager usage reports, see [License Reporting in License Manager](https://docs.aws.amazon.com/license-manager/latest/userguide/license-reporting.html)\. 
 
  **RStudio administrative dashboard** 
 

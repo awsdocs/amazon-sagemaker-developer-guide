@@ -19,7 +19,7 @@ You need to specify subnets and security groups when configuring your private Am
 ### SageMaker Clarify Job Amazon VPC Subnets and Security Groups<a name="clarify-vpc-job"></a>
 
 Subnets and security groups in your private Amazon VPC can be assigned to a SageMaker Clarify job in various ways, depending on how you create the job\.
-+ **SageMaker console**: Provide this information when you create the job in the **SageMaker Dashboard**\. From the **Processing** menu, choose **Processing jobs**, then choose **Create processing job**\. Select the **VPC** option in the **Network** panel and provide the subnets and security groups using the dropdown lists\. Make sure network isolation option provided in this panel is set to disabled\.
++ **SageMaker console**: Provide this information when you create the job in the **SageMaker Dashboard**\. From the **Processing** menu, choose **Processing jobs**, then choose **Create processing job**\. Select the **VPC** option in the **Network** panel and provide the subnets and security groups using the drop\-down lists\. Make sure network isolation option provided in this panel is turned off\.
 + **SageMaker API**: Use the `NetworkConfig.VpcConfig` request parameter of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateProcessingJob](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateProcessingJob) API, as shown in the following example:
 
   ```
@@ -54,12 +54,12 @@ Subnets and security groups in your private Amazon VPC can be assigned to a Sage
 
 SageMaker uses the information to create network interfaces and attach them to the SageMaker Clarify job\. The network interfaces provide a SageMaker Clarify job with a network connection within your Amazon VPC that is not connected to the public internet\. They also enable the SageMaker Clarify job to connect to resources in your private Amazon VPC\.
 
+**Note**  
+The network isolation option of the SageMaker Clarify job must be turned off \(by default the option is turned off\) so that the SageMaker Clarify job can communicate with the shadow endpoint\.
+
 ### Configure a Model Amazon VPC for Inference<a name="clarify-vpc-model"></a>
 
 In order to compute post\-training bias metrics and explainability, the SageMaker Clarify job needs to get inferences from the SageMaker model that is specified by the `model_name` parameter of the [analysis configuration](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-configure-processing-jobs.html#clarify-processing-job-configure-analysis) for the SageMaker Clarify processing job\. Alternatively, if you use the `SageMakerClarifyProcessor` API in the SageMaker Python SDK, the job needs to get the `model_name` specified by the [ModelConfig](https://sagemaker.readthedocs.io/en/stable/api/training/processing.html?highlight=Processor#sagemaker.clarify.ModelConfig) class\. To accomplish this, the SageMaker Clarify job creates an ephemeral endpoint with the model, known as a *shadow endpoint*, and then applies the Amazon VPC configuration of the model to the shadow endpoint\.
-
-**Note**  
-The network isolation option of both the SageMaker Clarify job and the model must be disabled \(by default the option is disabled\) so that the SageMaker Clarify job can communicate with the shadow endpoint\.
 
 To specify subnets and security groups in your private Amazon VPC to the SageMaker model, use the `VpcConfig` request parameter of the [https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel) API or provide this information when you create the model using the SageMaker dashboard in the console\. The following is an example of the `VpcConfig` parameter that you include in your call to `CreateModel`: 
 

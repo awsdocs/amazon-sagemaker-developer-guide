@@ -19,10 +19,9 @@ Your pipeline requires an IAM pipeline execution role that is passed to SageMake
   ```
   {
       "Action": [
-          "s3:GetObject",
-          "s3:HeadObject"
+          "s3:GetObject"
       ],
-      "Resource": "arn:aws:s3:::<your-bucket-arn>/*",
+      "Resource": "arn:aws:s3:::<your-bucket-name>/*",
       "Effect": "Allow"
   }
   ```

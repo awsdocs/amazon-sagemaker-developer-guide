@@ -4,7 +4,7 @@ Delete endpoints to stop incurring charges\.
 
 ## Delete Endpoint<a name="realtime-endpoints-delete-endpoint"></a>
 
-Delete your endpoint programmaticially using AWS SDK for Python \(Boto3\), with the AWS CLI, or interactively using the SageMaker console\.
+Delete your endpoint programmatically using AWS SDK for Python \(Boto3\), with the AWS CLI, or interactively using the SageMaker console\.
 
 SageMaker frees up all of the resources that were deployed when the endpoint was created\. Deleting an endpoint will not delete the endpoint configuration or the SageMaker model\. See [Delete Endpoint Configuration](#realtime-endpoints-delete-endpoint-config) and [Delete Model](#realtime-endpoints-delete-model) for information on how to delete your endpoint configuration and SageMaker model\.
 
@@ -45,7 +45,7 @@ Delete your endpoint interactively with the SageMaker console\.
 
 1. In the SageMaker console at [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) navigation menu, choose **Inference**\.
 
-1. Choose **Endpoints** from the dropdown menu\. A list of endpoints created in you AWS account will appear by name, Amazon Resource Name \(ARN\), creation time, status, and a time stamp of when the endpoint was last updated\.
+1. Choose **Endpoints** from the drop down menu\. A list of endpoints created in you AWS account will appear by name, Amazon Resource Name \(ARN\), creation time, status, and a time stamp of when the endpoint was last updated\.
 
 1. Select the endpoint you want to delete\.
 
@@ -159,7 +159,7 @@ model_name='<model_name>'
 # Create a low-level SageMaker service client.
 sagemaker_client = boto3.client('sagemaker', region_name=aws_region)
 
-# Delete endpoint configuration
+# Delete model
 sagemaker_client.delete_model(ModelName=model_name)
 ```
 
@@ -177,8 +177,6 @@ response = sagemaker_client.describe_endpoint_config(EndpointConfigName=endpoint
 
 # Delete endpoint
 model_name = response['ProductionVariants'][0]['ModelName']
-                        
-# Delete endpoint configuration
 sagemaker_client.delete_model(ModelName=model_name)
 ```
 

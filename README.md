@@ -1,6 +1,8 @@
 ## Amazon Sagemaker Developer Guide
 
-The open source version of the Amazon SageMaker docs
+The open source version of the [Amazon SageMaker docs](https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html).
+
+### [Table of Contents](https://github.com/awsdocs/amazon-sagemaker-developer-guide/blob/master/doc_source/index.md)
 
 ## License Summary
 

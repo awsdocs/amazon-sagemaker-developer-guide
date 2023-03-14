@@ -27,7 +27,7 @@ For inference, IP Insights supports `text/csv`, `application/json`, and `applica
 
 ## EC2 Instance Recommendation for the IP Insights Algorithm<a name="ip-insights-instances"></a>
 
-The SageMaker IP Insights algorithm can run on both GPU and CPU instances\. For training jobs, we recommend using GPU instances\. However, for certain workloads with large training datasets, distributed CPU instances might reduce training costs\. For inference, we recommend using CPU instances\.
+The SageMaker IP Insights algorithm can run on both GPU and CPU instances\. For training jobs, we recommend using GPU instances\. However, for certain workloads with large training datasets, distributed CPU instances might reduce training costs\. For inference, we recommend using CPU instances\. IP Insights supports P2, P3, G4dn, and G5 GPU families\.
 
 ### GPU Instances for the IP Insights Algorithm<a name="ip-insights-instances-gpu"></a>
 
@@ -52,4 +52,4 @@ The values for the `mini_batch_size`, `num_ip_encoder_layers`, `random_negative_
 
 ## IP Insights Sample Notebooks<a name="ip-insights-sample-notebooks"></a>
 
-For a sample notebook that shows how to train the SageMaker IP Insights algorithm and perform inferences with it, see [An Introduction to the SageMakerIP Insights Algorithm ](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/ipinsights_login/ipinsights-tutorial.html)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Use Amazon SageMaker Notebook Instances](nbi.md)\. After creating a notebook instance, choose the **SageMaker Examples** tab to see a list of all the SageMaker examples\. To open a notebook, choose its **Use** tab and choose **Create copy**\.
+For a sample notebook that shows how to train the SageMaker IP Insights algorithm and perform inferences with it, see [An Introduction to the SageMakerIP Insights Algorithm ](https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_amazon_algorithms/ipinsights_login/ipinsights-tutorial.html)\. For instructions how to create and access Jupyter notebook instances that you can use to run the example in SageMaker, see [Amazon SageMaker Notebook Instances](nbi.md)\. After creating a notebook instance, choose the **SageMaker Examples** tab to see a list of all the SageMaker examples\. To open a notebook, choose its **Use** tab and choose **Create copy**\.
