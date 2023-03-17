@@ -1,4 +1,4 @@
-# Difference in Conditional Acceptance \(DCAcc\)<a name="clarify-post-training-bias-metric-dca"></a>
+# Difference in Conditional Acceptance \(DCAcc\)<a name="clarify-post-training-bias-metric-dcacc"></a>
 
 This metric compares the observed labels to the labels predicted by the model and assesses whether this is the same across facets for predicted positive outcomes\. This metric comes close to mimicking human bias in that it quantifies how many more positive outcomes a model predicted \(labels y’\) for a certain facet as compared to what was observed in the training dataset \(labels y\)\. For example, if there were more acceptances \(a positive outcome\) observed in the training dataset for loan applications for a middle\-aged group \(facet *a*\) than predicted by the model based on qualifications as compared to the facet containing other age groups \(facet *d*\), this might indicate potential bias in the way loans were approved favoring the middle\-aged group\. 
 

@@ -13,8 +13,8 @@ This AWS managed policy grants permissions commonly needed to use Amazon SageMak
 **Permissions details**
 
 This policy includes the following permissions\.
-+ `elasticfilesystem` – Allows principals to create and delete Amazon Elastic File System \(EFS\) file systems, access points, and mount targets\. These are limited to those tagged with the key *ManagedByAmazonSageMakerResource*\.
-+ `ec2` – Allows principals to create network interfaces and security groups for Amazon Elastic Compute Cloud \(EC2\) instances\.
++ `elasticfilesystem` – Allows principals to create and delete Amazon Elastic File System \(EFS\) file systems, access points, and mount targets\. These are limited to those tagged with the key *ManagedByAmazonSageMakerResource*\. Allows principals to describe all EFS file systems, access points, and mount targets\. Allows principals to create or overwrite tags for EFS access points and mount targets\.
++ `ec2` – Allows principals to create network interfaces and security groups for Amazon Elastic Compute Cloud \(EC2\) instances\. Also allows principals to create and overwrite tags for these resources\.
 + `sso` – Allows principals to add and delete managed application instances to AWS IAM Identity Center \(successor to AWS Single Sign\-On\)\.
 + `sagemaker` – Allows principals to create and read SageMaker user profiles\.
 
@@ -36,8 +36,7 @@ This policy includes the following permissions\.
         {
             "Effect": "Allow",
             "Action": [
-                "elasticfilesystem:DeleteAccessPoint",
-                "elasticfilesystem:DescribeAccessPoints"
+                "elasticfilesystem:DeleteAccessPoint"
             ],
             "Resource": "arn:aws:elasticfilesystem:*:*:access-point/*",
             "Condition": {
@@ -73,10 +72,24 @@ This policy includes the following permissions\.
         {
             "Effect": "Allow",
             "Action": [
+                "elasticfilesystem:DescribeAccessPoints",
                 "elasticfilesystem:DescribeFileSystems",
                 "elasticfilesystem:DescribeMountTargets"
             ],
             "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "elasticfilesystem:TagResource",
+            "Resource": [
+                "arn:aws:elasticfilesystem:*:*:access-point/*",
+                "arn:aws:elasticfilesystem:*:*:file-system/*"
+            ],
+            "Condition": {
+                "StringLike": {
+                    "aws:ResourceTag/ManagedByAmazonSageMakerResource": "*"
+                }
+            }
         },
         {
             "Effect": "Allow",
@@ -147,5 +160,6 @@ View details about updates to AWS managed policies for Amazon SageMaker since th
 
 | Policy | Version | Change | Date | 
 | --- | --- | --- | --- | 
-|  [AmazonSageMakerNotebooksServiceRolePolicy](#security-iam-awsmanpol-AmazonSageMakerNotebooksServiceRolePolicy)  | 6 |  Added permissions for `elasticfilesystem:CreateAccessPoint`, `elasticfilesystem:DeleteAccessPoint`, and `elasticfilesystem:DescribeAccessPoints`\.  | January 12, 2023 | 
+|  [AmazonSageMakerNotebooksServiceRolePolicy](#security-iam-awsmanpol-AmazonSageMakerNotebooksServiceRolePolicy)  | 7 |  Added `elasticfilesystem:TagResource` permission\.  | March 9, 2023 | 
+| AmazonSageMakerNotebooksServiceRolePolicy | 6 |  Added permissions for `elasticfilesystem:CreateAccessPoint`, `elasticfilesystem:DeleteAccessPoint`, and `elasticfilesystem:DescribeAccessPoints`\.  | January 12, 2023 | 
 |  |  |  SageMaker started tracking changes for its AWS managed policies\.  | June 1, 2021 | 

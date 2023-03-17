@@ -834,11 +834,15 @@ Data Wrangler doesn't support Common Table Expressions \(CTE\) or temporary tabl
 
 You can use Snowflake as a data source in SageMaker Data Wrangler to prepare data in Snowflake for machine learning\.
 
-With Snowflake as a data source in Data Wrangler, you can quickly connect to Snowflake without writing a single line of code\. Additionally, you can join your data in Snowflake with data stored in Amazon S3 and data queried through Amazon Athena and Amazon Redshift to prepare data for machine learning\. 
+With Snowflake as a data source in Data Wrangler, you can quickly connect to Snowflake without writing a single line of code\. You can join your data in Snowflake with data from any other data source in Data Wrangler\.
 
 Once connected, you can interactively query data stored in Snowflake, transform data with more than 300 preconfigured data transformations, understand data and identify potential errors and extreme values with a set of robust preconfigured visualization templates, quickly identify inconsistencies in your data preparation workflow, and diagnose issues before models are deployed into production\. Finally, you can export your data preparation workflow to Amazon S3 for use with other SageMaker features such as Amazon SageMaker Autopilot, Amazon SageMaker Feature Store and Amazon SageMaker Model Building Pipelines\.
 
 You can encrypt the output of your queries using an AWS Key Management Service key that you've created\. For more information about AWS KMS, see [AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)\.
+
+**Topics**
++ [Administrator Guide](#data-wrangler-snowflake-admin)
++ [Data Scientist Guide](#data-wrangler-snowflake-ds)
 
 ### Administrator Guide<a name="data-wrangler-snowflake-admin"></a>
 
@@ -848,240 +852,202 @@ To learn more about granular access control and best practices, see [Security Ac
 This section is for Snowflake administrators who are setting up access to Snowflake from within SageMaker Data Wrangler\.
 
 **Important**  
-Your administrator is responsible for managing and monitoring the access control within Snowflake\. This includes what data a user can access, what storage integration a user can use, and what queries a user can run\. Data Wrangler does not add a layer of access control with respect to Snowflake\. 
+You are responsible for managing and monitoring the access control within Snowflake\. This includes what data a user can access, what storage integration a user can use, and what queries a user can run\. Data Wrangler does not add a layer of access control with respect to Snowflake\.   
+Access control includes the following:  
+The data that a user accesses\.
+The storage integration that provides Snowflake the ability to write query results to an Amazon S3 bucket
+The queries that a user can run\.
+Data Wrangler does not add a layer of access control to Snowflake\. For more information, see [Configure Snowflake Data Import Permissions](#data-wrangler-snowflake-admin-config)\.
 
 **Important**  
 Note that granting monitor privileges can permit users to see details within an object, such as queries or usage within a warehouse\. 
 
-#### Configure Snowflake with Data Wrangler<a name="data-wrangler-snowflake-admin-config"></a>
+#### Configure Snowflake Data Import Permissions<a name="data-wrangler-snowflake-admin-config"></a>
 
-To import data from Snowflake, Snowflake admins must configure access from Data Wrangler using Amazon S3\.
+To import data from Snowflake, configure access from Data Wrangler using Amazon S3\.
 
 This feature is currently not available in the opt\-in Regions\.
 
-To configure access, follow these steps\.
+Snowflake requires the following permissions on an S3 bucket and directory to be able to access files in the directory:
++ `s3:GetObject`
++ `s3:GetObjectVersion`
++ `s3:ListBucket`
++ `s3:ListObjects`
++ `s3:GetBucketLocation`
 
-1. Configure access permissions for the S3 bucket\.
+**Create an IAM policy**
 
-   **AWS Access Control Requirements**
+You must create an IAM policy to configure access permissions for Snowflake to load and unload data from an Amazon S3 bucket\.
 
-   Snowflake requires the following permissions on an S3 bucket and directory to be able to access files in the directory\. 
-   + `s3:GetObject`
-   + `s3:GetObjectVersion`
-   + `s3:ListBucket`
-   + `s3:ListObjects`
-   + `s3:GetBucketLocation`
+The following is the JSON policy document that you use to create the policy:
 
-   **Create an IAM policy**
+```
+# Example policy for S3 write access
+# This needs to be updated
+{
+"Version": "2012-10-17",
+"Statement": [
+  {
+    "Effect": "Allow",
+    "Action": [
+        "s3:PutObject",
+        "s3:GetObject",
+        "s3:GetObjectVersion",
+        "s3:DeleteObject",
+        "s3:DeleteObjectVersion"
+    ],
+    "Resource": "arn:aws:s3:::bucket/prefix/*"
+  },
+  {
+    "Effect": "Allow",
+    "Action": [
+        "s3:ListBucket"
+    ],
+    "Resource": "arn:aws:s3:::bucket/",
+    "Condition": {
+        "StringLike": {
+            "s3:prefix": ["prefix/*"]
+        }
+    }
+  }
+ ]
+}
+```
 
-   The following steps describe how to configure access permissions for Snowflake in your AWS Management Console so you can use an S3 bucket to load and unload data: 
-   + Log in to the AWS Management Console\.
-   + From the home dashboard, choose **IAM**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/iam.png)
-   + Choose **Policies**\.
-   + Choose **Create Policy**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/create_policy.png)
-   + Select the **JSON** tab\.
-   + Add a policy document that allows Snowflake to access the S3 bucket and directory\. 
+For information and procedures about creating policies with policy documents, see [Creating IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html)\.
 
-     The following policy \(in JSON format\) provides Snowflake with the required permissions to load and unload data using a single bucket and directory path\. Make sure to replace `bucket` and `prefix` with your actual bucket name and directory path prefix\.
+For documentation that provides an overview of using IAM permissions with Snowflake, see the following resources:
++ [What is IAM?](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)
++ [Create the IAM Role in AWS](https://docs.snowflake.com/en/user-guide/data-load-s3-config-storage-integration.html#step-2-create-the-iam-role-in-aws)
++ [Create a Cloud Storage Integration in Snowflake](https://docs.snowflake.com/en/user-guide/data-load-s3-config-storage-integration.html#step-3-create-a-cloud-storage-integration-in-snowflake)
++ [Retrieve the AWS IAM User for your Snowflake Account](https://docs.snowflake.com/en/user-guide/data-load-s3-config-storage-integration.html#step-4-retrieve-the-aws-iam-user-for-your-snowflake-account)
++ [Grant the IAM User Permissions to Access Bucket](https://docs.snowflake.com/en/user-guide/data-load-s3-config-storage-integration.html#step-5-grant-the-iam-user-permissions-to-access-bucket-objects)\.
 
-     ```
-     # Example policy for S3 write access
-     # This needs to be updated
-     {
-     "Version": "2012-10-17",
-     "Statement": [
-       {
-         "Effect": "Allow",
-         "Action": [
-             "s3:PutObject",
-             "s3:GetObject",
-             "s3:GetObjectVersion",
-             "s3:DeleteObject",
-             "s3:DeleteObjectVersion"
-         ],
-         "Resource": "arn:aws:s3:::bucket/prefix/*"
-       },
-       {
-         "Effect": "Allow",
-         "Action": [
-             "s3:ListBucket"
-         ],
-         "Resource": "arn:aws:s3:::bucket/",
-         "Condition": {
-             "StringLike": {
-                 "s3:prefix": ["prefix/*"]
-             }
-         }
-       }
-      ]
-     }
-     ```
-   + Choose **Next: Tags**\.
-   + Choose **Next: Review**\.
+To grant the data scientist's Snowflake role usage permission to the storage integration, you must run `GRANT USAGE ON INTEGRATION integration_name TO snowflake_role;`\.
++ `integration_name` is the name of your storage integration\.
++ `snowflake_role` is the name of the default [Snowflake role](https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#roles) given to the data scientist user\.
 
-     Enter the policy name \(such as `snowflake_access`\) and an optional description\. Choose **Create policy**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/create_policy_review.png)
+#### Setting up Snowflake OAuth Access<a name="data-wrangler-snowflake-oauth-setup"></a>
 
-1. [Create the IAM Role in AWS](https://docs.snowflake.com/en/user-guide/data-load-s3-config-storage-integration.html#step-2-create-the-iam-role-in-aws)\.
+Instead of having your users directly enter their credentials into Data Wrangler, you can have them use an identity provider to access Snowflake\. The following are links to the Snowflake documentation for the identity providers that Data Wrangler supports\.
++ [Azure AD](https://docs.snowflake.com/en/user-guide/oauth-azure.html)
++ [Okta](https://docs.snowflake.com/en/user-guide/oauth-okta.html)
++ [Ping Federate](https://docs.snowflake.com/en/user-guide/oauth-pingfed.html)
 
-1. [Create a Cloud Storage Integration in Snowflake](https://docs.snowflake.com/en/user-guide/data-load-s3-config-storage-integration.html#step-3-create-a-cloud-storage-integration-in-snowflake)\.
+Use the documentation from the preceding links to set up access to your identity provider\. The information and procedures in this section help you understand how to properly use the documentation to access Snowflake within Data Wrangler\.
 
-1. [Retrieve the AWS IAM User for your Snowflake Account](https://docs.snowflake.com/en/user-guide/data-load-s3-config-storage-integration.html#step-4-retrieve-the-aws-iam-user-for-your-snowflake-account)\.
+Your identity provider needs to recognize Data Wrangler as an application\. Use the following procedure to register Data Wrangler as an application within the identity provider:
 
-1. [Grant the IAM User Permissions to Access Bucket](https://docs.snowflake.com/en/user-guide/data-load-s3-config-storage-integration.html#step-5-grant-the-iam-user-permissions-to-access-bucket-objects)\.
+1. Select the configuration that starts the process of registering Data Wrangler as an application\.
 
-1. Grant the data scientist's Snowflake role usage permission to the storage integration\.
-   + In the Snowflake console, run `GRANT USAGE ON INTEGRATION integration_name TO snowflake_role;`
-     + `integration_name` is the name of your storage integration\.
-     + `snowflake_role` is the name of the default [Snowflake role](https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#roles) given to the data scientist user\.
+1. Provide the users within the identity provider access to Data Wrangler\.
 
-#### Provide information to the data scientist<a name="data-wrangler-snowflake-admin-ds-info"></a>
+1. Turn on OAuth client authentication by storing the client credentials as an AWS Secrets Manager secret\.
 
-Provide the data scientist with the information that they need to access Snowflake from Amazon SageMaker Data Wrangler\.
-
-1. To allow your data scientist to access Snowflake from SageMaker Data Wrangler, provide them with one of the following:
-   + A Snowflake account name, user name, and password\.
-   + A secret created with [AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) and the ARN of the secret\. Use the following procedure below to create the secret for Snowflake if you choose this option\.
+1. Specify a redirect URL using the following format: https://*Domain\-ID*\.studio\.*AWS Region*\.sagemaker\.aws/jupyter/default/lab
 **Important**  
-If your data scientists use the **Snowflake Credentials \(User name and Password\)** option to connect to Snowflake, you can use [Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) to store the credentials in a secret\. Secrets Manager rotates secrets as part of a best practice security plan\. The secret created in Secrets Manager is only accessible with the Studio role configured when you set up a Studio user profile\. This requires you to add this permission, `secretsmanager:PutResourcePolicy`, to the policy that is attached to your Studio role\.  
-We strongly recommend that you scope the role policy to use different roles for different groups of Studio users\. You can add additional resource\-based permissions for the Secrets Manager secrets\. See [Manage Secret Policy](https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage_secret-policy.html) for condition keys you can use\.  
-For information about creating a secret, see [Create a secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_secret.html)\. You're charged for the secrets that you create\.
+You're specifying the Amazon SageMaker Domain ID and AWS Region that you're using to run Data Wrangler\.
+**Important**  
+You must register a URL for each Amazon SageMaker Domain and AWS Region where you're running Data Wrangler\. Users from a Domain and AWS Region that don't have redirect URLs set up for them won't be able to authenticate with the identity provider to access the Snowflake connection\.
 
-1. Provide the data scientist with the name of the storage integration you created in Step 3: [Create a Cloud Storage Integration in Snowflake](                                      https://docs.snowflake.com/en/user-guide/data-load-s3-config-storage-integration.html#step-3-create-a-cloud-storage-integration-in-snowflake)\. This is the name of the new integration and is called `integration_name` in the `CREATE INTEGRATION` SQL command you ran, which is shown in the following snippet: 
+1. Make sure that the authorization code and refresh token grant types are allowed for the Data Wrangler application\.
 
-   ```
-     CREATE STORAGE INTEGRATION integration_name
-     TYPE = EXTERNAL_STAGE
-     STORAGE_PROVIDER = S3
-     ENABLED = TRUE
-     STORAGE_AWS_ROLE_ARN = 'iam_role'
-     [ STORAGE_AWS_OBJECT_ACL = 'bucket-owner-full-control' ]
-     STORAGE_ALLOWED_LOCATIONS = ('s3://bucket/path/', 's3://bucket/path/')
-     [ STORAGE_BLOCKED_LOCATIONS = ('s3://bucket/path/', 's3://bucket/path/') ]
-   ```
+Within your identity provider, you must set up a server that sends OAuth tokens to Data Wrangler at the user level\. The server sends the tokens with Snowflake as the audience\.
 
-### Data Scientist Guide<a name="data-wrangler-snowflake-ds"></a>
+Snowflake uses the concept of roles that are distinct role the IAM roles used in AWS\. You must configure the identity provider to use any role to use the default role associated with the Snowflake account\. For example, if a user has `systems administrator` as the default role in their Snowflake profile, the connection from Data Wrangler to Snowflake uses `systems administrator` as the role\.
 
-This section outlines how to access your Snowflake data warehouse from within SageMaker Data Wrangler and how to use Data Wrangler features\.
+Use the following procedure to set up the server\.
+
+To set up the server, do the following\. You're working within Snowflake for all steps except the last one\.
+
+1. Start setting up the server or API\.
+
+1. Configure the authorization server to use the authorization code and refresh token grant types\.
+
+1. Specify the lifetime of the access token\.
+
+1. Set the refresh token idle timeout\. The idle timeout is the time that the refresh token expires if it's not used\.
+**Note**  
+If you're scheduling jobs in Data Wrangler, we recommend making the idle timeout time greater than the frequency of the processing job\. Otherwise, some processing jobs might fail because the refresh token expired before they could run\. When the refresh token expires, the user must re\-authenticate by accessing the connection that they've made to Snowflake through Data Wrangler\.
+
+1. Specify `session:role-any` as the new scope\.
+**Note**  
+For Azure AD, copy the unique identifier for the scope\. Data Wrangler requires you to provide it with the identifier\.
+
+1. 
+**Important**  
+Within the External OAuth Security Integration for Snowflake, enable `external_oauth_any_role_mode`\.
 
 **Important**  
-Note: Your administrator needs to follow the Administer Guide set up in the preceding section before you can use Data Wrangler within Snowflake\. 
+Data Wrangler doesn't support rotating refresh tokens\. Using rotating refresh tokens might result in access failures or users needing to log in frequently\.
 
-Use the following procedure to open Amazon SageMaker Studio and see which version you're running\.
-
-To open Studio and check its version, see the following procedure\.
-
-1. Use the steps in [Prerequisites](data-wrangler-getting-started.md#data-wrangler-getting-started-prerequisite) to access Data Wrangler through Amazon SageMaker Studio\.
-
-1. Next to the user you want to use to launch Studio, select **Launch app**\.
-
-1. Choose **Studio**\.
-
-1. After Studio loads, select **File**, then **New**, and then **Terminal**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/terminal.png)
-
-1. Once you have launched Studio, select **File**, then **New**, and then **Terminal**\.
-
-1. Enter `cat /opt/conda/share/jupyter/lab/staging/yarn.lock | grep -A 1 "@amzn/sagemaker-ui-data-prep-plugin@"` to print the version of your Studio instance\. You must have Studio version 1\.3\.0 to use Snowflake\.   
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/cat-command.png)
-
-Use the following procedure to check that you're running version 1\.3\.0 or greater\.
-
-To check the version of Studio, do the following\.
-
-1. If you do not have this version, then update your Studio version\. To do this, close your Studio window and navigate to the [SageMaker Studio Console](https://console.aws.amazon.com/sagemaker)\.
-
-1. Next, select the user you are using to access Studio and then select **Delete app**\. After the deletion is complete, launch Studio again by selecting **Open Studio**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/user-details.png)
-
-1. Follow Step 3 again to verify that your Studio version is 1\.3\.0\.
-
-Use the following procedure to connect to Snowflake\.
-
-1. Create a new data flow from within Data Wrangler
-
-   Once you have accessed Data Wrangler from within Studio and have version 1\.3\.0, select the **\+** sign on the **New data flow** card under **ML tasks and components**\. This creates a new directory in Studio with a \.flow file inside, which contains your data flow\. The \.flow file automatically opens in Studio\.   
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/studio-ml.png)
-
-   Alternatively, you can also create a new flow by selecting **File**, then **New**, and then choosing **Flow**\.   
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/studio-flow.png)
-
-   When you create a new \.flow file in Studio, you may see a message at the top of the Data Wrangler interface that says: 
-
-   **Connecting to engine**
-
-   **Establishing connection to engine\.\.\.**
-
-1. Connect to Snowflake\.
-
-   There are two ways to connect to Snowflake from within Data Wrangler\. You only need to choose one of the two ways\. 
-
-   1. Specify your Snowflake credentials \(account name, user name, and password\) in Data Wrangler\. 
-
-   1. Provide an Amazon Resource Name \(ARN\) of a secret\. 
 **Important**  
-If you do not have your Snowflake credentials or ARN, reach out to your administrator\. Your administrator can tell you which of the preceding methods to use to connect to Snowflake\.
+If the refresh token expires, your users must reauthenticate by accessing the connection that they've made to Snowflake through Data Wrangler\.
 
-   Start on the **Import** data screen and first select **Add data source** from the dropdown menu, and then select **Snowflake**\. 
+After you've set up the OAuth provider, you provide Data Wrangler with the information it needs to connect to the provider\. You can use the documentation from your identity provider to get values for the following fields:
++ Token URL – The URL of the token that the identity provider sends to Data Wrangler\.
++ Authorization URL – The URL of the authorization server of the identity provider\.
++ Client ID – The ID of the identity provider\.
++ Client secret – The secret that only the authorization server or API recognizes\.
++ \(Azure AD only\) The OAuth scope credentials that you've copied\.
 
-Choose an authentication method\. For this step, as previously mentioned, you can use your Snowflake credentials or ARN name\. One of the two is** provided by your administrator\. [https://console\.aws\.amazon\.com/sagemaker/](https://console.aws.amazon.com/sagemaker/)**
+You store the fields and values in a AWS Secrets Manager secret and add it to the Amazon SageMaker Studio Lifecycle Configuration that you're using for Data Wrangler\. A Lifecycle Configuration is a shell script\. Use it to make the Amazon Resource Name \(ARN\) of the secret accessible to Data Wrangler\. For information about creating secrets see [Move hardcoded secrets to AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/hardcoded.html)\. For information about using lifecycle configurations in Studio, see [Use Lifecycle Configurations with Amazon SageMaker Studio](studio-lcc.md)\.
 
-Next, we explain both authentication methods and provide screenshots for each\. 
-
-1. **Snowflake Credentials Option**\.
-
-   Select the **Basic** \(user name and password\) option from the **Authentication method** dropdown list\. Then, enter your credentials in the following fields: 
-   + **Storage integration**: Provide the name of the storage integration\. Your administrator provides this name\. 
-   + **Snowflake account name**: The full name of your Snowflake account\.
-   + **User name**: Snowflake account user name\.
-   + **Password**: Snowflake account password\.
-   + **Connection name**: Choose a connection name for your choice\.
-   + \(Optional\) **KMS key ID**: Choose the AWS KMS key to encrypt the output of the Snowflake query\. For more information about AWS Key Management Service, see [https://docs.aws.amazon.com/kms/latest/developerguide/overview.html](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)\. If you don't specify a AWS KMS key, Data Wrangler uses the default SSE\-KMS encryption method\.
-
-   Select **Connect**\. 
-
-   The following screenshot shows how to complete these fields\.   
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/snowflake-connection.png)
-
-1. **ARN Option**
-
-   Select the ARN option from the **Authentication method** dropdown list\. Then, provide your ARN name under **Secrets Manager ARN** and your **Storage integration**, which is provided by your administrator\. If you've created a KMS key, you can specify its ID for **KMS key ID**\. For more information about AWS Key Management Service, see [https://docs.aws.amazon.com/kms/latest/developerguide/overview.html](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)\. Create a **Connection name** and select **Connect**, as shown in the following screenshot\.   
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/snowflake-connection-complete.png)
-
-1. The workflow at this point is to connect your Snowflake account to Data Wrangler, then run some queries on your data and then finally use Data Wrangler for performing data transformations\.
-
-   The following steps explain the import and querying step from within Data Wrangler\.
-
-   After creating your Snowflake connection, you are taken to the **Import data from Snowflake** screen, as shown in the following screenshot\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/import-snowflake.png)
-
-   From here, select your warehouse\. You can also optionally select your database and schema, in which case the written query should specify them\. If **Database** and **Schema** are provided in the dropdown list, the written query does not need to specify the database and schema names\.
-
-   Your schemas and tables from your Snowflake account are listed in the left panel\. You can select and unravel these entities\. When you select a specific table, select the eye icon on the right side of each table name to preview the table\.
 **Important**  
-If you're importing a dataset with columns of type `TIMESTAMP_TZ` or `TIMESTAMP_LTZ`, add `::string` to the column names of your query\. For more information, see [How To: Unload TIMESTAMP\_TZ and TIMESTAMP\_LTZ data to a Parquet file](https://community.snowflake.com/s/article/How-To-Unload-Timestamp-data-in-a-Parquet-file)\.
+Before you create a Secrets Manager secret, make sure that the SageMaker execution role that you're using for Amazon SageMaker Studio has permissions to create and update secrets in Secrets Manager\. For more information about adding permissions, see [Example: Permission to create secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html#auth-and-access_examples_create)\.
 
-   The following screenshot shows the panel with your data warehouses, databases, and schemas, along with the eye icon with which you can preview your table\. Once you select the **Preview Table** icon, the schema preview of that table is generated\. You must select a warehouse before you can preview a table\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/studio-panel-snowflake.png)
+For Okta and Ping Federate, the following is the format of the secret:
 
-   After selecting a data warehouse, database and schema, you can now write queries and run them\. The output of your query shows under **Query results**, as shown in the following screenshot\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/snowflake-queries.png)
+```
+{
+    "token_url":"https://identityprovider.com/oauth2/example-portion-of-URL-path/v2/token",
+    "client_id":"example-client-id",
+    "client_secret":"example-client-secret",
+    "identity_provider":"OKTA"|"PING_FEDERATE",
+    "authorization_url":"https://identityprovider.com/oauth2/example-portion-of-URL-path/v2/authorize"
+}
+```
 
-   Once you have settled on the output of your query, you can then import the output of your query into a Data Wrangler flow to perform data transformations\. 
+For Azure AD, the following is the format of the secret:
 
-   To do this, select **Import**, then specify a name and select **Go**, as shown in the following screenshot\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/snowflake-import.png)
+```
+{
+    "token_url":"https://identityprovider.com/oauth2/example-portion-of-URL-path/v2/token",
+    "client_id":"example-client-id",
+    "client_secret":"example-client-secret",
+    "identity_provider":"AZURE_AD",
+    "authorization_url":"https://identityprovider.com/oauth2/example-portion-of-URL-path/v2/authorize",
+    "datasource_oauth_scope":"api://appuri/session:role-any)"
+}
+```
 
-   From here, transition to the **Data flow** screen to prepare your data transformation, as shown in the following screenshot\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/snowflake-transition.png)
+You must have a LifeCycle configuration that uses the Secrets Manager secret that you've created\. You can either create the LifeCycle configuration or modify one that has already been created\. The configuration must use the following script\.
 
-### Private Connectivity between Data Wrangler and Snowflake via AWS PrivateLink<a name="data-wrangler-security-snowflake-vpc"></a>
+```
+#!/bin/bash
+
+set -eux
+
+## Script Body
+
+cat > ~/.snowflake_identity_provider_oauth_config <<EOL
+{
+    "secret_arn": "example-secret-arn"
+}
+EOL
+```
+
+For information about setting up Lifecycle Configurations, see [Creating and Associating a Lifecycle Configuration](studio-lcc-create.md)\. When you're going through the process of setting up, do the following:
++ Set the application type of the configuration to `Jupyter Server`\.
++ Attach the configuration to the Amazon SageMaker Domain that has your users\.
++ Have the configuration run by default\. It must run every time a user logs into Studio\. Otherwise, the credentials saved in the configuration won't be available to your users when they're using Data Wrangler\.
++ The Lifecycle Configuration creates a file with the name, `snowflake_identity_provider_oauth_config` in the user's home folder\. The file contains the Secrets Manager secret\. Make sure that it's in the user's home folder every time the Jupyter Server's instance is initialized\.
+
+#### Private Connectivity between Data Wrangler and Snowflake via AWS PrivateLink<a name="data-wrangler-security-snowflake-vpc"></a>
 
 This section explains how to use AWS PrivateLink to establish a private connection between Data Wrangler and Snowflake\. The steps are explained in the following sections\. 
 
-#### Create a VPC<a name="data-wrangler-snowflake-snowflake-vpc-setup"></a>
+##### Create a VPC<a name="data-wrangler-snowflake-snowflake-vpc-setup"></a>
 
 If you do not have a VPC set up, then follow the [Create a new VPC](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/gsg_create_vpc.html#create_vpc) instructions to create one\.
 
@@ -1093,7 +1059,7 @@ Once you have a chosen VPC you would like to use for establishing a private conn
 **Important**  
 As described in Snowflake's documentation, enabling your Snowflake account can take up to two business days\. 
 
-#### Set up Snowflake AWS PrivateLink Integration<a name="data-wrangler-snowflake-snowflake-vpc-privatelink-setup"></a>
+##### Set up Snowflake AWS PrivateLink Integration<a name="data-wrangler-snowflake-snowflake-vpc-privatelink-setup"></a>
 
 After AWS PrivateLink is activated, retrieve the AWS PrivateLink configuration for your Region by running the following command in a Snowflake worksheet\. Log into your Snowflake console and enter the following under **Worksheets**: `select SYSTEM$GET_PRIVATELINK_CONFIG();` 
 
@@ -1146,7 +1112,7 @@ After AWS PrivateLink is activated, retrieve the AWS PrivateLink configuration f
 
    Retrieve the topmost record in the DNS names list\. This can be differentiated from other DNS names because it only includes the Region name \(such as `us-west-2`\), and no Availability Zone letter notation \(such as `us-west-2a`\)\. Store this information for later use\.
 
-#### Configure DNS for Snowflake Endpoints in your VPC<a name="data-wrangler-snowflake-vpc-privatelink-dns"></a>
+##### Configure DNS for Snowflake Endpoints in your VPC<a name="data-wrangler-snowflake-vpc-privatelink-dns"></a>
 
 This section explains how to configure DNS for Snowflake endpoints in your VPC\. This allows your VPC to resolve requests to the Snowflake AWS PrivateLink endpoint\. 
 
@@ -1181,7 +1147,7 @@ This section explains how to configure DNS for Snowflake endpoints in your VPC\.
      1. Repeat the preceding steps for the OCSP record we notated as `privatelink-ocsp-url`, starting with `ocsp` through the 8\-character Snowflake ID for the record name \(such as `ocsp.xxxxxxxx`\)\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/snowflake-quick-create-ocsp.png)
 
-#### Configure Route 53 Resolver Inbound Endpoint for your VPC<a name="data-wrangler-snowflake-vpc-privatelink-route53"></a>
+##### Configure Route 53 Resolver Inbound Endpoint for your VPC<a name="data-wrangler-snowflake-vpc-privatelink-route53"></a>
 
 This section explains how to configure Route 53 resolvers inbound endpoints for your VPC\.
 
@@ -1212,7 +1178,7 @@ This section explains how to configure Route 53 resolvers inbound endpoints for 
 1. Once the inbound endpoint is created, note the two IP addresses for the resolvers\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/snowflake-ip-addresses-2.png)
 
-#### SageMaker VPC Endpoints<a name="data-wrangler-snowflake-sagemaker-vpc-endpoints"></a>
+##### SageMaker VPC Endpoints<a name="data-wrangler-snowflake-sagemaker-vpc-endpoints"></a>
 
  This section explains how to create VPC endpoints for the following: Amazon SageMaker Studio, SageMaker Notebooks, the SageMaker API, SageMaker Runtime, and Amazon SageMaker Feature Store Runtime\.
 
@@ -1250,7 +1216,7 @@ This section explains how to configure Route 53 resolvers inbound endpoints for 
 
 1. Choose **Create Endpoint**\.
 
-#### <a name="data-wrangler-snowflake-sagemaker-vpc-endpoints-studio-configuration"></a>
+##### <a name="data-wrangler-snowflake-sagemaker-vpc-endpoints-studio-configuration"></a>
 
 **Configure Studio and Data Wrangler**
 
@@ -1309,6 +1275,197 @@ This section explains how to configure Studio and Data Wrangler\.
 
 1. Create a data flow \(follow the data scientist guide outlined in a preceding section\)\. 
    + When adding a Snowflake connection, enter the value of `privatelink-account-name` \(from the *Set up Snowflake PrivateLink Integration* step\) into the **Snowflake account name \(alphanumeric\)** field, instead of the plain Snowflake account name\. Everything else is left unchanged\.
+
+#### Provide information to the data scientist<a name="data-wrangler-snowflake-admin-ds-info"></a>
+
+Provide the data scientist with the information that they need to access Snowflake from Amazon SageMaker Data Wrangler\.
+
+1. To allow your data scientist to access Snowflake from SageMaker Data Wrangler, provide them with one of the following:
+   + For Basic Authentication, a Snowflake account name, user name, and password\.
+   + For OAuth, a user name and password in the identity provider\.
+   + For ARN, the Secrets Manager secret Amazon Resource Name \(ARN\)\.
+   + A secret created with [AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) and the ARN of the secret\. Use the following procedure below to create the secret for Snowflake if you choose this option\.
+**Important**  
+If your data scientists use the **Snowflake Credentials \(User name and Password\)** option to connect to Snowflake, you can use [Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) to store the credentials in a secret\. Secrets Manager rotates secrets as part of a best practice security plan\. The secret created in Secrets Manager is only accessible with the Studio role configured when you set up a Studio user profile\. This requires you to add this permission, `secretsmanager:PutResourcePolicy`, to the policy that is attached to your Studio role\.  
+We strongly recommend that you scope the role policy to use different roles for different groups of Studio users\. You can add additional resource\-based permissions for the Secrets Manager secrets\. See [Manage Secret Policy](https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage_secret-policy.html) for condition keys you can use\.  
+For information about creating a secret, see [Create a secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_secret.html)\. You're charged for the secrets that you create\.
+
+1. Provide the data scientist with the name of the storage integration you created in Step 3: [Create a Cloud Storage Integration in Snowflake](                                      https://docs.snowflake.com/en/user-guide/data-load-s3-config-storage-integration.html#step-3-create-a-cloud-storage-integration-in-snowflake)\. This is the name of the new integration and is called `integration_name` in the `CREATE INTEGRATION` SQL command you ran, which is shown in the following snippet: 
+
+   ```
+     CREATE STORAGE INTEGRATION integration_name
+     TYPE = EXTERNAL_STAGE
+     STORAGE_PROVIDER = S3
+     ENABLED = TRUE
+     STORAGE_AWS_ROLE_ARN = 'iam_role'
+     [ STORAGE_AWS_OBJECT_ACL = 'bucket-owner-full-control' ]
+     STORAGE_ALLOWED_LOCATIONS = ('s3://bucket/path/', 's3://bucket/path/')
+     [ STORAGE_BLOCKED_LOCATIONS = ('s3://bucket/path/', 's3://bucket/path/') ]
+   ```
+
+### Data Scientist Guide<a name="data-wrangler-snowflake-ds"></a>
+
+Use the following to connect Snowflake and access your data in Data Wrangler\.
+
+**Important**  
+Your administrator needs to use the information in the preceding sections to set up Snowflake\. If you're running into issues, contact them for troubleshooting help\.
+
+You must use Studio version 1\.3\.0 or later\. Use the following procedure to open Amazon SageMaker Studio and see which version you're running\.
+
+To open Studio and check its version, see the following procedure\.
+
+1. Use the steps in [Prerequisites](data-wrangler-getting-started.md#data-wrangler-getting-started-prerequisite) to access Data Wrangler through Amazon SageMaker Studio\.
+
+1. Next to the user you want to use to launch Studio, select **Launch app**\.
+
+1. Choose **Studio**\.
+
+1. After Studio loads, select **File**, then **New**, and then **Terminal**\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/terminal.png)
+
+1. Once you have launched Studio, select **File**, then **New**, and then **Terminal**\.
+
+1. Enter `cat /opt/conda/share/jupyter/lab/staging/yarn.lock | grep -A 1 "@amzn/sagemaker-ui-data-prep-plugin@"` to print the version of your Studio instance\. You must have Studio version 1\.3\.0 to use Snowflake\.   
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/studio/mohave/cat-command.png)
+
+You can update Amazon SageMaker Studio from within the AWS Management Console\. For more information about updating Studio, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
+
+You can connect to Snowflake in one of the following ways:
++ Specifying your Snowflake credentials \(account name, user name, and password\) in Data Wrangler\. 
++ Providing an Amazon Resource Name \(ARN\) of a secret containing the credentials\.
++ Using an open standard for access delegation \(OAuth\) provider that connects to Snowflake\. Your administrator can give you access to one of the following OAuth providers:
+  + [Azure AD](https://docs.snowflake.com/en/user-guide/oauth-azure.html)
+  + [Okta](https://docs.snowflake.com/en/user-guide/oauth-okta.html)
+  + [Ping Federate](https://docs.snowflake.com/en/user-guide/oauth-pingfed.html)
+
+Talk to your administrator about the method that you need to use to connect to Snowflake\.
+
+The following sections have information about how you can connect to Snowflake using the preceding methods\.
+
+------
+#### [ Specifying your Snowflake Credentials ]
+
+**To import a dataset into Data Wrangler from Snowflake using your credentials**
+
+1. Sign into [Amazon SageMaker Console](https://console.aws.amazon.com/sagemaker)\.
+
+1. Choose **Studio**\.
+
+1. Choose **Launch app**\.
+
+1. From the dropdown list, select **Studio**\.
+
+1. Choose the Home icon\.
+
+1. Choose **Data**\.
+
+1. Choose **Data Wrangler**\.
+
+1. Choose **Import data**\.
+
+1. Under **Available**, choose **Snowflake**\.
+
+1. For **Authentication method**, choose **Basic Username\-Password**\.
+
+1. Specify the following:
+   + **Snowflake account name \(alphanumeric\)** – The full name of the Snowflake account\.
+   + **Username** – The username that you use to access the account\.
+   + **Password** – The password associated with the username\.
+   + **Storage integration** – Your administrator you with the storage integration information\. It's the configuration that specifies the IAM role that Snowflake uses to save the query results to an Amazon S3 bucket\.
+   + **Connection name** – The name that you're specifying to uniquely identify the connection\.
+   + \(Optional\) **KMS key ID** – A KMS key that you've created\. You can specify its ARN to encrypt the output of the Snowflake query\. Otherwise, Data Wrangler uses the default encryption\.
+
+1. Choose **Connect**\.
+
+------
+#### [ Providing an Amazon Resource Name \(ARN\) ]
+
+**To import a dataset into Data Wrangler from Snowflake using an ARN**
+
+1. Sign into [Amazon SageMaker Console](https://console.aws.amazon.com/sagemaker)\.
+
+1. Choose **Studio**\.
+
+1. Choose **Launch app**\.
+
+1. From the dropdown list, select **Studio**\.
+
+1. Choose the Home icon\.
+
+1. Choose **Data**\.
+
+1. Choose **Data Wrangler**\.
+
+1. Choose **Import data**\.
+
+1. Under **Available**, choose **Snowflake**\.
+
+1. For **Authentication method**, choose **ARN**\.
+
+1. Specify the following:
+   + **Secrets Manager ARN** – The ARN of the AWS Secrets Manager secret used to store the credentials used to connect to Snowflake\.
+   + **Storage integration** – Your administrator you with the storage integration information\. It's the configuration that specifies the IAM role that Snowflake uses to save the query results to an Amazon S3 bucket\.
+   + **KMS key ID** – Your administrator provides 
+   + **Connection name** – The name that you're specifying for the connection\. You can choose the connection 
+   + \(Optional\) **KMS key ID** – A KMS key that you've created\. It's used to encrypt the output of the Snowflake query\.
+
+1. Choose **Connect**\.
+
+------
+#### [ Using an OAuth Connection ]
+
+**Important**  
+Your administrator customized your Studio environment to provide the functionality you're using to use an OAuth connection\. You might need to restart the Jupyter server application to use the functionality\.  
+Use the following procedure to update the Jupyter server application\.  
+Within Studio, choose **File**
+Choose **Shut down**\.
+Choose **Shut down server**\.
+Close the tab or window that you're using to access Studio\.
+From the Amazon SageMaker console, open Studio\.
+
+**To import a dataset into Data Wrangler from Snowflake using your credentials**
+
+1. Sign into [Amazon SageMaker Console](https://console.aws.amazon.com/sagemaker)\.
+
+1. Choose **Studio**\.
+
+1. Choose **Launch app**\.
+
+1. From the dropdown list, select **Studio**\.
+
+1. Choose the Home icon\.
+
+1. Choose **Data**\.
+
+1. Choose **Data Wrangler**\.
+
+1. Choose **Import data**\.
+
+1. Under **Available**, choose **Snowflake**\.
+
+1. For **Authentication method**, choose **OAuth**\.
+
+1. Specify the following:
+   + **Connection name** – The name that you're specifying to uniquely identify the connection\.
+   + **Snowflake account name \(alphanumeric\)** – The full name of the Snowflake account\.
+   + \(Optional\) **KMS key ID** – A KMS key that you've created\. You can specify its ARN to encrypt the output of the Snowflake query\. Otherwise, Data Wrangler uses the default encryption\.
+
+1. Choose **Connect**\.
+
+------
+
+You can begin the process of importing your data from Snowflake after you've connected to it\.
+
+Within Data Wrangler, you can view your data warehouses, databases, and schemas, along with the eye icon with which you can preview your table\. After you select the **Preview Table** icon, the schema preview of that table is generated\. You must select a warehouse before you can preview a table\.
+
+**Important**  
+If you're importing a dataset with columns of type `TIMESTAMP_TZ` or `TIMESTAMP_LTZ`, add `::string` to the column names of your query\. For more information, see [How To: Unload TIMESTAMP\_TZ and TIMESTAMP\_LTZ data to a Parquet file](https://community.snowflake.com/s/article/How-To-Unload-Timestamp-data-in-a-Parquet-file)\.
+
+After you select a data warehouse, database and schema, you can now write queries and run them\. The output of your query shows under **Query results**\.
+
+After you have settled on the output of your query, you can then import the output of your query into a Data Wrangler flow to perform data transformations\. 
+
+After you've queried your data, navigate to the **Data flow** screen to start transforming your data\.
 
 ## Import Data From Software as a Service \(SaaS\) Platforms<a name="data-wrangler-import-saas"></a>
 

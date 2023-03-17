@@ -17,37 +17,42 @@ The following procedures show how to grant **Projects** permissions after you on
 
 1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-1. Choose **Control Panel**\.
+1. Choose **Domains**\.
+
+1. Choose **Create domain**\.
 
 1. If you choose **Quick setup** to set up your SageMaker Domain, you have permissions to use project templates by default\.
 
 1. If you choose **Standard setup** to set up your SageMaker Domain, make sure you turn on the following options when you configure Studio settings:
    + **Enable Amazon SageMaker project templates and Amazon SageMaker JumpStart for this account**
    + **Enable Amazon SageMaker project templates and Amazon SageMaker JumpStart for Studio users**
-   + **Create the roles which are needed to use the latest updated AWS Service catalog of products for Projects and JumpStart**
 
 1. To confirm that your SageMaker Domain has active project template permissions:
 
    1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-   1. Choose **Control Panel**\.
+   1. Choose **Domains**\.
 
-   1. Choose the **Settings** icon in the upper\-right corner of the **Domain** card\.
+   1. Select your domain\.
 
-   1. Choose **Studio Settings** in the left side panel\.
+   1. Choose the **Domain Settings** tab\.
 
-   1. Under **Projects and JumpStart**, make sure the following options are turned on:
+   1. Under **SageMaker Projects and JumpStart**, make sure the following options are turned on:
       + **Enable Amazon SageMaker project templates and Amazon SageMaker JumpStart for this account**
       + **Enable Amazon SageMaker project templates and Amazon SageMaker JumpStart for Studio users**
-      + **Create the roles which are needed to use the latest updated AWS Service catalog of products for Projects and JumpStart**
 
 1. To view a list of your roles:
 
    1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
-   1. Choose **Control Panel**\.
+   1. Choose **Domains**\.
 
-      A list of your roles appears in the `Apps` card under `Projects`\.
+   1. Select your domain\.
+
+   1. Choose the **Domain Settings** tab\.
+
+   1. A list of your roles appears in the `Apps` card under the **Studio** tab\.
 **Important**  
 As of July 25, we require additional roles to use project templates\. Here is the complete list of roles you should see under `Projects`:  
-`AmazonSageMakerServiceCatalogProductsLaunchRole` `AmazonSageMakerServiceCatalogProductsUseRole` `AmazonSageMakerServiceCatalogProductsApiGatewayRole` `AmazonSageMakerServiceCatalogProductsCloudformationRole` `AmazonSageMakerServiceCatalogProductsCodeBuildRole` `AmazonSageMakerServiceCatalogProductsCodePipelineRole` `AmazonSageMakerServiceCatalogProductsEventsRole` `AmazonSageMakerServiceCatalogProductsFirehoseRole` `AmazonSageMakerServiceCatalogProductsGlueRole` `AmazonSageMakerServiceCatalogProductsLambdaRole` `AmazonSageMakerServiceCatalogProductsExecutionRole`
+`AmazonSageMakerServiceCatalogProductsLaunchRole` `AmazonSageMakerServiceCatalogProductsUseRole` `AmazonSageMakerServiceCatalogProductsApiGatewayRole` `AmazonSageMakerServiceCatalogProductsCloudformationRole` `AmazonSageMakerServiceCatalogProductsCodeBuildRole` `AmazonSageMakerServiceCatalogProductsCodePipelineRole` `AmazonSageMakerServiceCatalogProductsEventsRole` `AmazonSageMakerServiceCatalogProductsFirehoseRole` `AmazonSageMakerServiceCatalogProductsGlueRole` `AmazonSageMakerServiceCatalogProductsLambdaRole` `AmazonSageMakerServiceCatalogProductsExecutionRole`  
+For descriptions of these roles, see [AWS Managed Policies for SageMaker projects and JumpStart](security-iam-awsmanpol-sc.md)\.

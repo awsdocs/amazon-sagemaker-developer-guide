@@ -90,9 +90,9 @@ If the facet dataset or the main dataset is split across multiple files, an iden
     + **methods** – An array that contains any of the post\-training bias metrics from the following list that you want to compute\. Set `methods` to **all** to compute all post\-training bias metrics\. As an example, the array `["DPPL", "DI"]` computes the **Difference in Positive Proportions in Predicted Labels** and **Disparate Impact**\. The available methods are as follows\.
       + `DPPL` for [Difference in Positive Proportions in Predicted Labels](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-post-training-bias-metric-dppl.html)
       + `DI`for [Disparate Impact](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-post-training-bias-metric-di.html)
-      + `DCA` for [Difference in Conditional Acceptance](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-post-training-bias-metric-dca.html)
+      + `DCA` for [Difference in Conditional Acceptance](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-post-training-bias-metric-dcacc.html)
       + `DCR` for [Difference in Conditional Rejection](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-post-training-bias-metric-dcr.html)
-      + `SD for [Specificity difference](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-post-training-bias-metric-sd.html)`
+      + `SD` for [Specificity difference](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-post-training-bias-metric-sd.html)
       + `RD` for [Recall Difference](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-post-training-bias-metric-rd.html)
       + `DAR` for [Difference in Acceptance Rates](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-post-training-bias-metric-dar.html)
       + `DRR` for [Difference in Rejection Rates](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-post-training-bias-metric-drr.html)

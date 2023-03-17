@@ -24,5 +24,5 @@ Before you get started, make sure you meet the following prerequisites:
 + Use Amazon EMR version 6\.9 or above\.
 + Use JupyterLab version 3 in the Studio Jupyter server application configuration\. This version supports Studio connection to Amazon EMR clusters using runtime roles\.
 + Allow the use of runtime roles in your cluster’s security configuration\. For more information, see [ Runtime roles for Amazon EMR steps](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-steps-runtime-roles.html)\.
-+ Create a notebook with any of the kernels listed in [Connect to an Amazon EMR Cluster from Studio](studio-notebooks-emr-cluster-connect.md)\.
++ Create a notebook with any of the kernels listed in [Connect to a cluster from Studio](studio-notebooks-emr-cluster-connect.md)\.
 + Make sure you review the instructions in [Set Up Studio to Use Runtime IAM Roles](studio-notebooks-emr-cluster-iam.md) to configure runtime roles with Studio\.

@@ -89,7 +89,7 @@ You can use AutoGluon\-Tabular as an Amazon SageMaker built\-in algorithm\. The 
   )
   ```
 
-  For more information about how to set up the AutoGluon\-Tabular as a built\-in algorithm, see the following notebook examples\.
+  For more information about how to set up the AutoGluon\-Tabular as a built\-in algorithm, see the following notebook examples\. Any S3 bucket used in these examples must be in the same AWS Region as the notebook instance used to run them\.
   + [Tabular classification with Amazon SageMaker AutoGluon\-Tabular algorithm](https://github.com/aws/amazon-sagemaker-examples/blob/main/introduction_to_amazon_algorithms/autogluon_tabular/Amazon_Tabular_Classification_AutoGluon.ipynb)
   + [Tabular regression with Amazon SageMaker AutoGluon\-Tabular algorithm](https://github.com/aws/amazon-sagemaker-examples/blob/main/introduction_to_amazon_algorithms/autogluon_tabular/Amazon_Tabular_Regression_AutoGluon.ipynb)
 

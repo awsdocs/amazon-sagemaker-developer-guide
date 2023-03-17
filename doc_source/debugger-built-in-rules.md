@@ -40,6 +40,13 @@ The following rules are the Debugger built\-in rules that are callable using the
 | --- | --- | 
 | Profiling rules for deep learning frameworks \(TensorFlow and PyTorch\) |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html)  | 
 
+**Warning**  
+SageMaker Debugger deprecates the framework profiling feature starting from TensorFlow 2\.11 and PyTorch 2\.0\. You can still use the feature in the previous versions of the frameworks and SDKs as follows\.   
+SageMaker Python SDK <= v2\.130\.0
+PyTorch >= v1\.6\.0, < v2\.0
+TensorFlow >= v2\.3\.1, < v2\.11
+With the deprecation, SageMaker Debugger also discontinues support for the three `ProfilerRules` for framework profiling\. See also [Amazon SageMaker Debugger Release Notes: March 16, 2023](debugger-release-notes.md#debugger-release-notes-20230315)\.
+
 ## Debugger Rule<a name="debugger-built-in-rules-Rule"></a>
 
 The following rules are the Debugger built\-in rules that are callable using the `Rule.sagemaker` classmethod\.

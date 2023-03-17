@@ -58,7 +58,7 @@ View options that enable workers to easily hide or view label text, a ground mes
 **Assistive Labeling Tools**  
 Ground Truth helps workers annotate 3D point clouds faster and more accurately using UX, machine learning and computer vision powered assistive labeling tools for 3D point cloud object tracking tasks\. The following assistive labeling tools are available for this task type:
 + **Label autofill** – When a worker adds a cuboid to a frame, a cuboid with the same dimensions and orientation is automatically added to all frames in the sequence\. 
-+ **Label interpolation** – After a worker has labeled a single object in two frames, Ground Truth uses those annotations to interpolate the movement of that object between those two frames\.
++ **Label interpolation** – After a worker has labeled a single object in two frames, Ground Truth uses those annotations to interpolate the movement of that object between those two frames\. Label interpolation can be turned on and off\.
 + **Bulk label and attribute management** – Workers can add, delete, and rename annotations, label category attributes, and frame attributes in bulk\. 
   + Workers can manually delete annotations for a given object before or after a frame\. For example, a worker can delete all labels for an object after frame 10 if that object is no longer located in the scene after that frame\. 
   + If a worker accidentally bulk deletes all annotations for a object, they can add them back\. For example, if a worker deletes all annotations for an object before frame 100, they can bulk add them to those frames\. 

@@ -14,8 +14,8 @@ While the model lineage graph can help you view the steps in individual workflow
 
 1. Choose **Governance** in the left panel\.
 
-1. Choose **SageMaker Model Dashboard**\.
+1. Choose **Model Dashboard**\.
 
-1. In the **Models** section of the SageMaker Model Dashboard, select the model name of the lineage graph you want to view\.
+1. In the **Models** section of the Model Dashboard, select the model name of the lineage graph you want to view\.
 
 1. Choose **View lineage** in the **Model Overview** section\.

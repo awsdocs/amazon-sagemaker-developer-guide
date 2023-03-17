@@ -1,4 +1,4 @@
-# Connect to an Amazon EMR Cluster from Studio<a name="studio-notebooks-emr-cluster-connect"></a>
+# Connect to a cluster from Studio<a name="studio-notebooks-emr-cluster-connect"></a>
 
 When you connect to your Amazon EMR cluster from Amazon SageMaker Studio, you can use the Kerberos, Lightweight Directory Access Protocol \(LDAP\), or runtime IAM role authentication methods\. To set up Amazon EMR clusters that use Kerberos or LDAP authentication, you can refer to AWS CloudFormation templates that create and configure the clusters for you\. To access these CloudFormation resources, see the [ Amazon EMR CloudFormation Templates GitHub repository](https://github.com/aws-samples/sagemaker-studio-emr/tree/main/cloudformation/getting_started)\. Alternatively, if you want to connect to your Amazon EMR clusters using runtime IAM roles, see [Connect to an Amazon EMR Cluster from Studio Using Runtime IAM Roles](studio-notebooks-emr-cluster-rbac.md)\.
 
@@ -10,7 +10,7 @@ This guide explains how you can connect to an Amazon EMR cluster from Studio whe
 + SparkAnalytics 2\.0 – SparkMagic and PySpark kernels
 + SparkMagic – SparkMagic and PySpark kernels
 
-## Connect to your Amazon EMR cluster using Studio UI options<a name="connect-emr-clusters-ui-options"></a>
+## Connect to a cluster using Studio UI<a name="connect-emr-clusters-ui-options"></a>
 
 Before you connect to your Amazon EMR cluster for the first time, make sure you meet all the prerequisites listed in [Prepare Data using Amazon EMR](studio-notebooks-emr-cluster.md)\. To connect to your cluster using Studio UI options, complete the following steps:
 
@@ -52,57 +52,83 @@ Before you connect to your Amazon EMR cluster for the first time, make sure you 
 
 For more information about required permissions, see [Required Permissions](studio-notebooks-emr-required-permissions.md)\.
 
-## Connect to your Amazon EMR clusters across accounts<a name="connect-emr-clusters-across-accounts"></a>
+## Connect to a cluster with HTTPS<a name="connect-emr-clusters-ssl"></a>
+
+If you have configured your Amazon EMR cluster with transit encryption enabled and Livy server for HTTPS and would like Studio to communicate with Amazon EMR using HTTPS, you need to configure Studio to access your certificate key\.
+
+For self\-signed or local Certificate Authority \(CA\) signed certificates, you can do this in two steps:
+
+1. Download the PEM file of your certificate to your local file system using one of the following options:
+   + Jupyter’s built\-in file upload function\.
+   + A notebook cell\.
+   + A lifecycle configuration \(LCC\) script\.
+
+     For information on how to use an LCC script, see [Customize a Notebook Instance Using a Lifecycle Configuration Script](https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html)
+
+1. Enable the validation of the certificate by providing the path to your certificate in the `--verify-certificate` argument of your connection command\.
+
+   ```
+   %sm_analytics emr connect --cluster-id cluster_id \
+       --verify-certificate /home/user/certificateKey.pem ...
+   ```
+
+For public CA issued certificates, set the certificate validation by setting the `--verify-certificate` parameter as `true`\.
+
+Alternatively, you can disable the certificate validation by setting the `--verify-certificate` parameter as `false`\.
+
+You can find the list of available connection commands to an Amazon EMR cluster in [Connect to a cluster using notebook commands](#connect-emr-clusters-manual)\.
+
+## Connect to a cluster across accounts<a name="connect-emr-clusters-across-accounts"></a>
 
 When you choose a cluster \(in step 5 of the instructions in the previous section\), all Amazon EMR clusters from both your Studio and remote accounts appear if you set up cross\-account discoverability and connectivity\. After you connect to your cluster \(in step 6\), Studio initiates a connection to the Amazon EMR cluster in the remote account\. For instructions about how to set up cross\-account Amazon EMR access, see [ Create and manage Amazon EMR Clusters from SageMaker Studio to run interactive Spark and ML workloads – Part 2](http://aws.amazon.com/blogs/machine-learning/part-2-create-and-manage-amazon-emr-clusters-from-sagemaker-studio-to-run-interactive-spark-and-ml-workloads/)\.
 
-## Connect to your Amazon EMR clusters using notebook commands<a name="connect-emr-clusters-manual"></a>
+## Connect to a cluster using notebook commands<a name="connect-emr-clusters-manual"></a>
 
 You can manually connect to your Amazon EMR cluster whether or not your Studio application and cluster reside in the same account\. If you are connecting to your cluster for the first time, make sure you meet all the prerequisites listed in [Prepare Data using Amazon EMR](studio-notebooks-emr-cluster.md)\.
 
 For each of the following authentication types, use the specified command to manually connect to your cluster from your notebook\.
++ **Kerberos**
 
-**Kerberos**
+  Append the `--assumable-role-arn` argument if you need cross\-account Amazon EMR access\. Append the `--verify-certificate` argument if you connect to your cluster with HTTPS\.
 
-Append the `--assumable-role-arn` argument if you need cross\-account Amazon EMR access\.
+  ```
+  %load_ext sagemaker_studio_analytics_extension.magics
+  %sm_analytics emr connect --cluster-id cluster_id \
+  --auth-type Kerberos --language python 
+  [--assumable-role-arn EMR_access_role_ARN ] 
+  [--verify-certificate /home/user/certificateKey.pem]
+  ```
++ **LDAP**
 
-```
-%load_ext sagemaker_studio_analytics_extension.magics
-%sm_analytics emr connect --cluster-id cluster_id 
---auth-type Kerberos --language python
-[--assumable-role-arn EMR_access_role_ARN]
-```
+  Append the `--assumable-role-arn` argument if you need cross\-account Amazon EMR access\. Append the `--verify-certificate` argument if you connect to your cluster with HTTPS\.
 
-**LDAP**
+  ```
+  %load_ext sagemaker_studio_analytics_extension.magics
+  %sm_analytics emr connect --cluster-id cluster_id \
+  --auth-type Basic_Access --language python 
+  [--assumable-role-arn EMR_access_role_ARN ]
+  [--verify-certificate /home/user/certificateKey.pem]
+  ```
++ **NoAuth**
 
-Append the `--assumable-role-arn` argument if you need cross\-account Amazon EMR access\.
+  Append the `--assumable-role-arn` argument if you need cross\-account Amazon EMR access\. Append the `--verify-certificate` argument if you connect to your cluster with HTTPS\.
 
-```
-%load_ext sagemaker_studio_analytics_extension.magics
-%sm_analytics emr connect --cluster-id cluster_id 
---auth-type Basic_Access --language python  
-[--assumable-role-arn EMR_access_role_ARN]
-```
+  ```
+  %load_ext sagemaker_studio_analytics_extension.magics
+  %sm_analytics emr connect --cluster-id cluster_id \
+  --auth-type None --language python
+  [--assumable-role-arn EMR_access_role_ARN ]
+  [--verify-certificate /home/user/certificateKey.pem]
+  ```
++ **Runtime IAM roles**
 
-**NoAuth**
+  Append the `--assumable-role-arn` argument if you need cross\-account Amazon EMR access\. Append the `--verify-certificate` argument if you connect to your cluster with HTTPS\.
 
-Append the `--assumable-role-arn` argument if you need cross\-account Amazon EMR access\.
-
-```
-%load_ext sagemaker_studio_analytics_extension.magics
-%sm_analytics emr connect --cluster-id cluster_id 
---auth-type None --language python  
-[--assumable-role-arn EMR_access_role_ARN]
-```
-
-**Runtime IAM roles**
-
-Append the `--assumable-role-arn` argument if you need cross\-account Amazon EMR access\.
-
-```
-%load_ext sagemaker_studio_analytics_extension.magics
-%sm_analytics emr connect --cluster-id cluster_id \
---auth-type Basic_Access \
---emr-execution-role-arn arn:aws:iam::studio_account_id:role/emr-execution-role-name
-[--assumable-role-arn EMR_access_role_ARN]
-```
+  ```
+  %load_ext sagemaker_studio_analytics_extension.magics
+  %sm_analytics emr connect --cluster-id cluster_id \
+  --auth-type Basic_Access \
+  --emr-execution-role-arn arn:aws:iam::studio_account_id:role/emr-execution-role-name
+  [--assumable-role-arn EMR_access_role_ARN]
+  [--verify-certificate /home/user/certificateKey.pem]
+  ```

@@ -97,7 +97,7 @@ If using a Jupyter notebook server, run `!pwd` to double check the current worki
 
 **Note**  
 If you started your training job without configuring the Debugger\-specific parameters, Debugger generates the report based only on the system monitoring rules because the Debugger parameters are not configured to save framework metrics\. To enable framework metrics profiling and receive an extended Debugger profiling report, configure the `profiler_config` parameter when constructing or updating SageMaker estimators\.  
-To learn how to configure the `profiler_config` parameter before starting a training job, see [Configure Debugger Framework Profiling](debugger-configure-framework-profiling.md)\.  
+To learn how to configure the `profiler_config` parameter before starting a training job, see [Configure Debugger for Framework Profiling](debugger-configure-framework-profiling.md)\.  
 To update the current training job and enable framework metrics profiling, see [Update Debugger Framework Profiling Configuration](debugger-update-monitoring-profiling.md)\.
 
 ### Debugger Profiling Report Walkthrough<a name="debugger-profiling-report-walkthrough"></a>

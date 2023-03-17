@@ -40,8 +40,8 @@ If you want to connect to Amazon EMR with Kerberos authentication, you must inst
 
 **Topics**
 + [Bring your own image](#studio-notebooks-emr-process-byoi)
-+ [Discover Amazon EMR Clusters from Studio](discover-emr-clusters.md)
-+ [Connect to an Amazon EMR Cluster from Studio](studio-notebooks-emr-cluster-connect.md)
++ [Discover Amazon EMR clusters from Studio](discover-emr-clusters.md)
++ [Connect to a cluster from Studio](studio-notebooks-emr-cluster-connect.md)
 + [Troubleshoot and Monitor Workloads in Amazon EMR](studio-notebooks-emr-cluster-trouble-shoot.md)
 + [Manage Amazon EMR Clusters from Studio](manage-emr-clusters-from-studio.md)
 + [Required Permissions](studio-notebooks-emr-required-permissions.md)

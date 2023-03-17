@@ -55,7 +55,7 @@ After you sign up for an AWS account, create an administrative user so that you 
 
 As a managed service, Amazon SageMaker geospatial capabilities perform operations on your behalf on the AWS hardware that is managed by SageMaker\. It can perform only operations that the user permits\. To work with SageMaker geospatial capabilities you need to setup a user role and an execution role\. See [Amazon SageMaker geospatial capabilities roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-geospatial-roles.html) to learn more\.
 
-## Setup the SageMaker geospatial UI and SageMaker Studio notebook with a SageMaker geospatial image<a name="geospatial-sdk-console-setup"></a>
+## Setup the SageMaker geospatial UI<a name="geospatial-sdk-console-setup"></a>
 
 See [Onboard to Amazon SageMaker Domain](https://docs.aws.amazon.com/sagemaker/latest/dg/gs-studio-onboard.html), which provides you with steps to create a Domain, giving you access to Amazon SageMaker Studio and Amazon SageMaker geospatial capabilities\.
 
@@ -65,15 +65,3 @@ See [Onboard to Amazon SageMaker Domain](https://docs.aws.amazon.com/sagemaker/l
 Currently, SageMaker geospatial capabilities are only supported in the US West \(Oregon\) Region for public preview\. To view Amazon SageMaker geospatial capabilities, choose the name of the currently displayed Region in the navigation bar of the console\. Then choose the US West \(Oregon\) Region\.
 
 Within the Studio UI, choose **Geospatial** under **Data** from the left navigation panel on the **Home** menu\.
-
-**To use a SageMaker Studio notebook with a SageMaker geospatial image:**
-
-1. From the **Launcher**, choose **Change environment** under **Notebooks and compute resources**\.
-
-1. Next, the **Change environment** dialog opens\.
-
-1. Select the **Image** dropdown and choose **Geospatial 1\.0**\. The **Instance type** should be **ml\.m5\.4xlarge**\. Do not change the default values for other settings\.
-
-1. Choose **Select**\.
-
-1. Choose **Create notebook**\.

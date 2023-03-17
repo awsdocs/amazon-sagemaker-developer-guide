@@ -1,4 +1,4 @@
-# Configure Debugger Monitoring Hardware System Resource Utilization<a name="debugger-configure-system-monitoring"></a>
+# Configure Debugger for Monitoring Resource Utilization<a name="debugger-configure-system-monitoring"></a>
 
 To adjust Debugger system monitoring time intervals, use the `ProfilerConfig` API operation to create a parameter object while constructing a SageMaker framework or generic estimator depending on your preference\.
 

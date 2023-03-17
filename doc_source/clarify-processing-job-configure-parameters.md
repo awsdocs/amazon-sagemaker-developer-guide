@@ -199,7 +199,7 @@ sagemaker_client.create_processing_job(
 )
 ```
 
-For an example notebook with instructions for running a SageMaker Clarify processing job using AWS SDK for Python, see [Fairness and Explainability with SageMaker Clarify using AWS SDK for Python](http://github.com/aws/amazon-sagemaker-examples/blob/main/sagemaker-clarify/fairness_and_explainability/fairness_and_explainability_boto3.ipynb)\.
+For an example notebook with instructions for running a SageMaker Clarify processing job using AWS SDK for Python, see [Fairness and Explainability with SageMaker Clarify using AWS SDK for Python](http://github.com/aws/amazon-sagemaker-examples/blob/main/sagemaker-clarify/fairness_and_explainability/fairness_and_explainability_boto3.ipynb)\. Any S3 bucket used in the notebook must be in the same AWS Region as the notebook instance that accesses the it\.
 
 ## Configure a Clarify processing job using the SageMaker Python SDK<a name="clarify-processing-job-configure-parameters-SM-SDK"></a>
 

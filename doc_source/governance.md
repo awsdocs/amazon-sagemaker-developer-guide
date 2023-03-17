@@ -20,4 +20,4 @@ For more information, see [Amazon SageMaker Model Cards](model-cards.md)\.
 
 Amazon SageMaker Model Dashboard is a pre\-built, visual overview of all the models in your account\. SageMaker Model Dashboard integrates valuable information from Amazon SageMaker Model Monitor, Transform Jobs, Endpoints, ML Lineage Tracking and Amazon CloudWatch so you can access high\-level model information and track model performance in one unified view\.
 
-For more information, see [SageMaker Model Dashboard](model-dashboard.md)\.
+For more information, see [Amazon SageMaker Model Dashboard](model-dashboard.md)\.

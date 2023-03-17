@@ -67,7 +67,7 @@ To run your own training model, build a Docker container using the [Amazon SageM
 
    1.  On the left directory navigation pane, the text file name might automatically be named `untitled.txt`\. To rename the file, right\-click the file, choose **Rename**, rename the file as `Dockerfile` without the `.txt` extension, and then press `Ctrl+s` or `Command+s` to save the file\.
 
-1.  Create or upload a training script `train.py` in the `docker_test_folder`\. You can use the following example script for this exercise\. 
+1. Upload a training script `train.py` to the `docker_test_folder`\. You can use the following example script for this exercise\. 
 
    ```
    import tensorflow as tf
@@ -95,7 +95,7 @@ To run your own training model, build a Docker container using the [Amazon SageM
 
 ## Step 3: Build the container<a name="byoc-training-step3"></a>
 
-1. In the JupyterLab home directory, open a Jupyter notebook\. To open a new notebook, choose the **New Launch** icon and then choose **conda\_tensorflow2\_p36** in the **Notebook** section\. 
+1. In the JupyterLab home directory, open a Jupyter notebook\. To open a new notebook, choose the **New Launch** icon and then choose **conda\_tensorflow2\_p39** in the **Notebook** section\. 
 
 1. Run the following command in the first notebook cell to change to the `docker_test_folder` directory:
 
@@ -133,7 +133,7 @@ Remember that `docker` looks for a file specifically called `Dockerfile` without
 
 ## Step 4: Test the container<a name="byoc-training-step4"></a>
 
-1. To test the container locally in the notebook instance, open a Jupyter notebook\. Choose **New Launcher** and choose **Notebook** in **`conda_tensorflow_p36`** framework\. 
+1. To test the container locally in the notebook instance, open a Jupyter notebook\. Choose **New Launcher** and choose **Notebook** in **`conda_tensorflow_p39`** framework\. 
 
 1. Paste the following example script into the notebook code cell to configure a SageMaker Estimator\.
 

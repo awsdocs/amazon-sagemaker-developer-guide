@@ -1,22 +1,22 @@
-# SageMaker Model Dashboard FAQ<a name="model-dashboard-faqs"></a>
+# Model Dashboard FAQ<a name="model-dashboard-faqs"></a>
 
 Refer to the following FAQ topics for answers to commonly asked questions about Amazon SageMaker Model Dashboard\.
 
-## Q\. What is SageMaker Model Dashboard?<a name="model-dashboard-faqs-whatis"></a>
+## Q\. What is Model Dashboard?<a name="model-dashboard-faqs-whatis"></a>
 
-Amazon SageMaker Model Dashboard is a centralized repository of all models created in your account\. The models are generally the outputs of SageMaker training jobs, but you can also import models trained elsewhere and host them on SageMaker\. SageMaker Model Dashboard provides a single interface for IT administrators, model risk managers, and business leaders to track all deployed models and aggregates data from multiple AWS services to provide indicators about how your models are performing\. You can view details about model endpoints, batch transform jobs, and monitoring jobs for additional insights into model performance\. The dashboard’s visual display helps you quickly identify which models have missing or inactive monitors so you can ensure all models are periodically checked for data drift, model drift, bias drift, and feature attribution drift\. Lastly, the dashboard’s ready access to model details helps you dive deep so you can access logs, infrastructure\-related information, and resources to help you debug monitoring failures\.
+Amazon SageMaker Model Dashboard is a centralized repository of all models created in your account\. The models are generally the outputs of SageMaker training jobs, but you can also import models trained elsewhere and host them on SageMaker\. Model Dashboard provides a single interface for IT administrators, model risk managers, and business leaders to track all deployed models and aggregates data from multiple AWS services to provide indicators about how your models are performing\. You can view details about model endpoints, batch transform jobs, and monitoring jobs for additional insights into model performance\. The dashboard’s visual display helps you quickly identify which models have missing or inactive monitors so you can ensure all models are periodically checked for data drift, model drift, bias drift, and feature attribution drift\. Lastly, the dashboard’s ready access to model details helps you dive deep so you can access logs, infrastructure\-related information, and resources to help you debug monitoring failures\.
 
-## Q\. What are the prerequisites to use SageMaker Model Dashboard?<a name="model-dashboard-faqs-access"></a>
+## Q\. What are the prerequisites to use Model Dashboard?<a name="model-dashboard-faqs-access"></a>
 
 You should have one or more models created in SageMaker, either trained on SageMaker or externally trained\. While this is not a mandatory prerequisite, you gain the most value from the dashboard if you set up model monitoring jobs via Amazon SageMaker Model Monitor for models deployed to endpoints\.
 
-## Q\. Who should use SageMaker Model Dashboard?<a name="model-dashboard-faqs-users"></a>
+## Q\. Who should use Model Dashboard?<a name="model-dashboard-faqs-users"></a>
 
-Model risk managers, ML practitioners, data scientists and business leaders can get a comprehensive overview of models using the SageMaker Model Dashboard\. The dashboard aggregates and displays data from Amazon SageMaker Model Cards, Endpoints and Model Monitor services to display valuable information such as model metadata from the model card and model registry, endpoints where the models are deployed, and insights from model monitoring\.
+Model risk managers, ML practitioners, data scientists and business leaders can get a comprehensive overview of models using the Model Dashboard\. The dashboard aggregates and displays data from Amazon SageMaker Model Cards, Endpoints and Model Monitor services to display valuable information such as model metadata from the model card and model registry, endpoints where the models are deployed, and insights from model monitoring\.
 
-## Q\. How do I use SageMaker Model Dashboard?<a name="model-dashboard-faqs-how"></a>
+## Q\. How do I use Model Dashboard?<a name="model-dashboard-faqs-how"></a>
 
-SageMaker Model Dashboard is available out of the box with Amazon SageMaker and does not require any prior configuration\. However, if you have set up model monitoring jobs using SageMaker Model Monitor and Clarify, you use Amazon CloudWatch to configure alerts that raise a flag in the dashboard when model performance deviates from an acceptable range\. You can create and add new model cards to the dashboard, and view all the monitoring results associated with endpoints\. SageMaker Model Dashboard currently does not support cross\-account models\.
+Model Dashboard is available out of the box with Amazon SageMaker and does not require any prior configuration\. However, if you have set up model monitoring jobs using SageMaker Model Monitor and Clarify, you use Amazon CloudWatch to configure alerts that raise a flag in the dashboard when model performance deviates from an acceptable range\. You can create and add new model cards to the dashboard, and view all the monitoring results associated with endpoints\. Model Dashboard currently does not support cross\-account models\.
 
 ## Q\. What is Amazon SageMaker Model Monitor?<a name="model-dashboard-faqs-what"></a>
 

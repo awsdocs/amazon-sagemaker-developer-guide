@@ -1,6 +1,13 @@
-# Configure Debugger Framework Profiling<a name="debugger-configure-framework-profiling"></a>
+# Configure Debugger for Framework Profiling<a name="debugger-configure-framework-profiling"></a>
 
 To enable Debugger framework profiling, configure the `framework_profile_params` parameter when you construct an estimator\. Debugger framework profiling collects framework metrics, such as data from initialization stage, data loader processes, Python operators of deep learning frameworks and training scripts, detailed profiling within and between steps, with cProfile or Pyinstrument options\. Using the `FrameworkProfile` class, you can configure custom framework profiling options\. 
+
+**Warning**  
+SageMaker Debugger deprecates the framework profiling feature starting from TensorFlow 2\.11 and PyTorch 2\.0\. You can still use the feature in the previous versions of the frameworks and SDKs as follows\.   
+SageMaker Python SDK <= v2\.130\.0
+PyTorch >= v1\.6\.0, < v2\.0
+TensorFlow >= v2\.3\.1, < v2\.11
+See also [Amazon SageMaker Debugger Release Notes: March 16, 2023](debugger-release-notes.md#debugger-release-notes-20230315)\.
 
 **Note**  
 Before getting started with Debugger framework profiling, verify that the framework used to build your model is supported by Debugger for framework profiling\. For more information, see [Supported Frameworks and Algorithms](debugger-supported-frameworks.md)\.   
@@ -95,8 +102,6 @@ If you want to specify target steps or target time intervals to profile your tra
 
 You can use the following profiling configuration classes to manage the framework profiling options:
 + [DetailedProfilingConfig](https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html#sagemaker.debugger.DetailedProfilingConfig) – Specify a target step or time range to profile framework operations using the native framework profilers \(TensorFlow profiler and PyTorch profiler\)\. For example, if using TensorFlow, the Debugger hooks enable the TensorFlow profiler to collect TensorFlow\-specific framework metrics\. Detailed profiling enables you to profile all framework operators at a pre\-step \(before the first step\), within steps, and between steps of a training job\.
-**Warning**  
-The detailed framework profiling feature discontinues support for TensorFlow v2\.11 and later\. To use the detailed profiling feature, use previous versions of TensorFlow between v2\.3\.1 and v2\.10\.0\.
 **Note**  
 Detailed profiling might significantly increase GPU memory consumption\. We do not recommend enabling detailed profiling for more than a couple of steps\.
 + [DataloaderProfilingConfig](https://sagemaker.readthedocs.io/en/stable/api/training/debugger.html#sagemaker.debugger.DataloaderProfilingConfig) – Specify a target step or time range to profile deep learning framework data loader processes\. Debugger collects every data loader event of the frameworks\.

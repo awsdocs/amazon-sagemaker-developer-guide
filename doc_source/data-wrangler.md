@@ -19,6 +19,9 @@ To start using Data Wrangler, see [Get Started with Data Wrangler](data-wrangler
 **Important**  
 Data Wrangler no longer supports Jupyter Lab Version 1 \(JL1\)\. To access the latest features and updates, update to Jupyter Lab Version 3\. For more information about upgrading, see [View and update the JupyterLab version of an application from the console](studio-jl.md#studio-jl-view)\.
 
+**Important**  
+The information and procedures in this guide use the latest version of Amazon SageMaker Studio\. For information about updating Studio to the latest version, see [Amazon SageMaker Studio UI Overview](studio-ui.md)\.
+
 **Topics**
 + [Get Started with Data Wrangler](data-wrangler-getting-started.md)
 + [Import](data-wrangler-import.md)

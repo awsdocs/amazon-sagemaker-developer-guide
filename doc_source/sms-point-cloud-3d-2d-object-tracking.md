@@ -19,9 +19,9 @@ Ground Truth provides workers with a web portal and tools to complete your 3D\-2
 
 ![\[The worker task interface used for the 3D-2D point cloud object tracking annotation task.\]](http://docs.aws.amazon.com/sagemaker/latest/dg/images/sms-sensor-fusion.png)
 
-Once workers add a single cuboid, that cuboid is replicated in all frames of the sequence with the same ID\. Once workers adjust the cuboid in another frame, Ground Truth interpolates the movement of that object and adjust all cuboids between the manually adjusted frames\.
+Once workers add a single cuboid, that cuboid is replicated in all frames of the sequence with the same ID\. Once workers adjust the cuboid in another frame, Ground Truth interpolates the movement of that object and adjust all cuboids between the manually adjusted frames\. The accuracy of the cuboid to image projection is based on accuracy of calibrations captured in the extrinsics and intrinsics data\.
 
-If you provide camera data for sensor fusion, images are matched up with scenes in point cloud frames\.
+If you provide camera data for sensor fusion, images are matched up with scenes in point cloud frames\. Note that the camera data should be closely synchronized with the point cloud data\. The manifest file holds the extrinsics and intrinsics and pose to allow the cuboid projection on the camera image to be shown\.
 
 Worker can navigate in the 3D scene using their keyboard and mouse\. They can:
 + Double click on specific objects in the point cloud to zoom into them\.
@@ -47,7 +47,7 @@ Additional view options enable workers to easily hide or view label text, a grou
 **Assistive Labeling Tools**  
 Ground Truth helps workers annotate 3D point clouds faster and more accurately using UX, machine learning and computer vision powered assistive labeling tools for 3D point cloud object tracking tasks\. The following assistive labeling tools are available for this task type:
 + **Label autofill** – When a worker adds a cuboid to a frame, a cuboid with the same dimensions, orientation and xyz position is automatically added to all frames in the sequence\. 
-+ **Label interpolation** – After a worker has labeled a single object in two frames, Ground Truth uses those annotations to interpolate the movement of that object between all the frames\. For example, if a worker working with 5 frames adds a cuboid in frame 2, it is copied to all the 5 frames\. If the worker then makes adjustments in frame 4, frame 2 and 4 now act as two points, through which a line is fit\. The cuboid is then interpolated in frames 1,3 and 5\.
++ **Label interpolation** – After a worker has labeled a single object in two frames, Ground Truth uses those annotations to interpolate the movement of that object between all the frames\. Label interpolation can be turned on and off\. It is on by default\. For example, if a worker working with 5 frames adds a cuboid in frame 2, it is copied to all the 5 frames\. If the worker then makes adjustments in frame 4, frame 2 and 4 now act as two points, through which a line is fit\. The cuboid is then interpolated in frames 1,3 and 5\.
 + **Bulk label and attribute management** – Workers can add, delete, and rename annotations, label category attributes, and frame attributes in bulk\.
   + Workers can manually delete annotations for a given object before and after a frame, or in all frames\. For example, a worker can delete all labels for an object after frame 10 if that object is no longer located in the scene after that frame\. 
   + If a worker accidentally bulk deletes all annotations for a object, they can add them back\. For example, if a worker deletes all annotations for an object before frame 100, they can bulk add them to those frames\. 

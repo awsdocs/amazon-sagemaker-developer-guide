@@ -55,7 +55,7 @@ SageMaker Debugger also provides visualizations through Studio and its profiling
 
 With Amazon SageMaker Debugger monitoring, you can measure hardware system resource utilization of Amazon EC2 instances\. Monitoring is available for any SageMaker training job constructed with the SageMaker framework estimators \(TensorFlow, PyTorch, and MXNet\) and the generic SageMaker estimator \(SageMaker built\-in algorithms and your own custom containers\)\. Debugger built\-in rules for monitoring detect system bottleneck issues and notify you when they detect the bottleneck issues\.
 
-To learn how to enable Debugger system monitoring, see [Configure Debugger Using Amazon SageMaker Python SDK](debugger-configuration-for-profiling.md) and then [Configure Debugger Monitoring Hardware System Resource Utilization](debugger-configure-system-monitoring.md)\.
+To learn how to enable Debugger system monitoring, see [Configure Debugger Using Amazon SageMaker Python SDK](debugger-configuration-for-profiling.md) and then [Configure Debugger for Monitoring Resource Utilization](debugger-configure-system-monitoring.md)\.
 
 For a full list of available built\-in rules for monitoring, see [Debugger built\-in rules for profiling hardware system resource utilization \(system metrics\)](debugger-built-in-rules.md#built-in-rules-monitoring)\.
 
@@ -63,7 +63,7 @@ For a full list of available built\-in rules for monitoring, see [Debugger built
 
 With Amazon SageMaker Debugger profiling you can profile deep learning frameworks operations\. You can profile your model training with the SageMaker TensorFlow training containers, the SageMaker PyTorch framework containers, and your own training containers\. Using the profiling feature of Debugger, you can drill down into the Python operators and functions that are executed to perform the training job\. Debugger supports detailed profiling, Python profiling, data loader profiling, and Horovod distributed training profiling\. You can merge the profiled timelines to correlate with the system bottlenecks\. Debugger built\-in rules for profiling watch framework operation related issues, including excessive training initialization time due to data downloading before training starts and step duration outliers in training loops\. 
 
-To learn how to configure Debugger for framework profiling, see [Configure Debugger Using Amazon SageMaker Python SDK](debugger-configuration-for-profiling.md) and then [Configure Debugger Framework Profiling](debugger-configure-framework-profiling.md)\.
+To learn how to configure Debugger for framework profiling, see [Configure Debugger Using Amazon SageMaker Python SDK](debugger-configuration-for-profiling.md) and then [Configure Debugger for Framework Profiling](debugger-configure-framework-profiling.md)\.
 
 For a complete list of available built\-in rules for profiling, see [Debugger built\-in rules for profiling framework metrics](debugger-built-in-rules.md#built-in-rules-profiling)\.
 

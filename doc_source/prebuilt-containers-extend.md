@@ -264,7 +264,7 @@ To run your own training model using the SageMaker containers, build a Docker co
 
 ### Step 3: Build the Container<a name="extend-step3"></a>
 
-1. In the JupyterLab home directory, open a Jupyter notebook\. To open a new notebook, choose the **New Launch** icon and then choose **conda\_pytorch\_p36** in the **Notebook** section\. 
+1. In the JupyterLab home directory, open a Jupyter notebook\. To open a new notebook, choose the **New Launch** icon and then choose **conda\_pytorch\_p39** in the **Notebook** section\. 
 
 1. Run the following command in the first notebook cell to change to the `docker_test_folder` directory:
 
@@ -308,7 +308,7 @@ Remember that `docker` looks for a file specifically called `Dockerfile` without
 
 ### Step 4: Test the Container<a name="extend-step4"></a>
 
-1. To test the container locally in the notebook instance, open a Jupyter notebook\. Choose **New Launcher** and choose **Notebook** in **`conda_pytorch_p36`** framework\. The rest of the code snippets must run from the Jupyter notebook instance\.
+1. To test the container locally in the notebook instance, open a Jupyter notebook\. Choose **New Launcher** and choose **Notebook** in **`conda_pytorch_p39`** framework\. The rest of the code snippets must run from the Jupyter notebook instance\.
 
 1. Download the CIFAR\-10 dataset\.
 

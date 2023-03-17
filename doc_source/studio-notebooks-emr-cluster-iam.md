@@ -6,7 +6,7 @@ To establish runtime role authentication for your Amazon EMR clusters, configure
 
 If your Amazon EMR cluster resides in your Studio account, add the basic policy to connect to your Amazon EMR cluster and set permissions to call the Amazon EMR API `GetClusterSessionCredentials`, which gives you access to the cluster\. Complete the following steps to add necessary permissions to your Studio execution policy:
 
-1. Add the required IAM policy to connect to Amazon EMR clusters\. For details, see [Discover Amazon EMR Clusters from Studio](discover-emr-clusters.md)\.
+1. Add the required IAM policy to connect to Amazon EMR clusters\. For details, see [Discover Amazon EMR clusters from Studio](discover-emr-clusters.md)\.
 
 1. Grant permission to call the Amazon EMR API `GetClusterSessionCredentials` when you pass one or more permitted Amazon EMR execution roles specified in the policy\.
 

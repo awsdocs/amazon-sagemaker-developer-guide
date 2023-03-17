@@ -1,6 +1,6 @@
 # View and edit alerts<a name="model-dashboard-alerts"></a>
 
-The SageMaker Model Dashboard displays alerts you configured in Amazon CloudWatch\. You can modify the alert criteria within the dashboard itself\. The alert criteria depend upon two parameters:
+The Model Dashboard displays alerts you configured in Amazon CloudWatch\. You can modify the alert criteria within the dashboard itself\. The alert criteria depend upon two parameters:
 + **Datapoints to alert**: Within the evaluation period, how many execution failures raise an alert\.
 + **Evaluation period**: The number of most recent monitoring executions to consider when evaluating alert status\.
 
@@ -20,9 +20,9 @@ Within the monitor details page, you can view your alert history, edit existing 
 
 1. Choose **Governance** in the left panel\.
 
-1. Choose **SageMaker Model Dashboard**\.
+1. Choose **Model Dashboard**\.
 
-1. In the **Models** section of the SageMaker Model Dashboard, select the model name of the alert history you want to view\.
+1. In the **Models** section of the Model Dashboard, select the model name of the alert history you want to view\.
 
 1. In the **Schedule name** column, select the monitor name of the alert history you want to view\.
 
@@ -41,15 +41,15 @@ Within the monitor details page, you can view your alert history, edit existing 
 
 ## Edit alert criteria<a name="model-dashboard-alerts-edit"></a>
 
-**To edit an alert in the SageMaker Model Dashboard, complete the following steps:**
+**To edit an alert in the Model Dashboard, complete the following steps:**
 
 1. Open the [SageMaker console](https://console.aws.amazon.com/sagemaker/)\.
 
 1. Choose **Governance** in the left panel\.
 
-1. Choose **SageMaker Model Dashboard**\.
+1. Choose **Model Dashboard**\.
 
-1. In the **Models** section of the SageMaker Model Dashboard, select the model name of the alert you want to modify\.
+1. In the **Models** section of the Model Dashboard, select the model name of the alert you want to modify\.
 
 1. Choose the radio box next to the monitor schedule of the alert you want to modify\.
 

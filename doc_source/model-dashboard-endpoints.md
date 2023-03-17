@@ -1,10 +1,10 @@
 # View Endpoint Status<a name="model-dashboard-endpoints"></a>
 
-If you want to use your trained model to perform inference on live data, you deploy your model to a real\-time endpoint\. To ensure appropriate latency of your predictions, you want to make sure the instances that host your model are running efficiently\. SageMaker Model Dashboard’s endpoint monitoring feature displays real\-time information about your endpoint configuration and helps you track endpoint performance with metrics\. 
+If you want to use your trained model to perform inference on live data, you deploy your model to a real\-time endpoint\. To ensure appropriate latency of your predictions, you want to make sure the instances that host your model are running efficiently\. Model Dashboard’s endpoint monitoring feature displays real\-time information about your endpoint configuration and helps you track endpoint performance with metrics\. 
 
 **Monitor settings**
 
-The SageMaker Model Dashboard links to existing SageMaker endpoint details pages which display real\-time graphs of metrics you can select in Amazon CloudWatch\. Within your dashboard, you can track these metrics as your endpoint is handling real\-time inference requests\. Some metrics you can select are the following:
+The Model Dashboard links to existing SageMaker endpoint details pages which display real\-time graphs of metrics you can select in Amazon CloudWatch\. Within your dashboard, you can track these metrics as your endpoint is handling real\-time inference requests\. Some metrics you can select are the following:
 + `CpuUtilization`: The sum of each individual CPU core's utilization, with each ranging from 0%–100%\.
 + `MemoryUtilization`: The percentage of memory used by the containers on an instance, ranging from 0%–100%\.
 + `DiskUtilization`: The percentage of disk space used by the containers on an instance, ranging from 0%–100%\.
@@ -13,7 +13,7 @@ For the complete list of metrics you can view in real time, see [Monitor Amazon 
 
 **Runtime settings**
 
-Amazon SageMaker supports automatic scaling \(auto scaling\) for your hosted models\. Auto scaling dynamically adjusts the number of instances provisioned for a model in response to changes in your workload\. When the workload increases, auto scaling brings more instances online\. When the workload decreases, auto scaling removes unnecessary instances so that you don't pay for provisioned instances that you aren't using\. You can customize the following runtime settings in the SageMaker Model Dashboard:
+Amazon SageMaker supports automatic scaling \(auto scaling\) for your hosted models\. Auto scaling dynamically adjusts the number of instances provisioned for a model in response to changes in your workload\. When the workload increases, auto scaling brings more instances online\. When the workload decreases, auto scaling removes unnecessary instances so that you don't pay for provisioned instances that you aren't using\. You can customize the following runtime settings in the Model Dashboard:
 + *Update weights*: Change the amount of workload assigned to each instance with numerical weighting\. For more information about instance weighting during auto scaling, see [Configure instance weighting for Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-mixed-instances-groups-instance-weighting.html)\.
 + *Update instance count*: Change the number of total instances that can service your workload when it increases\.
 
@@ -37,8 +37,8 @@ For more information about endpoint configuration settings, see [CreateEndpointC
 
 1. Choose **Governance** in the left panel\.
 
-1. Choose **SageMaker Model Dashboard**\.
+1. Choose **Model Dashboard**\.
 
-1. In the **Models** section of the SageMaker Model Dashboard, select the model name of the endpoint you want to view\.
+1. In the **Models** section of the Model Dashboard, select the model name of the endpoint you want to view\.
 
 1. Select the endpoint name in the **Endpoints** section\.

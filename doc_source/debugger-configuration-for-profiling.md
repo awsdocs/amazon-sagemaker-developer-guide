@@ -195,7 +195,7 @@ estimator.fit(wait=False)
 ------
 
 The following provides brief descriptions of the parameters\.
-+ `profiler_config` – Configure Debugger to collect system metrics and framework metrics from your training job and save into your secured S3 bucket URI or local machine\. You can set how frequently or loosely collect the system metrics\. To learn how to configure the `profiler_config` parameter, see [Configure Debugger Monitoring Hardware System Resource Utilization](debugger-configure-system-monitoring.md) and [Configure Debugger Framework Profiling](debugger-configure-framework-profiling.md)\.
++ `profiler_config` – Configure Debugger to collect system metrics and framework metrics from your training job and save into your secured S3 bucket URI or local machine\. You can set how frequently or loosely collect the system metrics\. To learn how to configure the `profiler_config` parameter, see [Configure Debugger for Monitoring Resource Utilization](debugger-configure-system-monitoring.md) and [Configure Debugger for Framework Profiling](debugger-configure-framework-profiling.md)\.
 + `rules` – Configure this parameter to activate SageMaker Debugger built\-in rules that you want to run in parallel\. Make sure that your training job has access to this S3 bucket\. The rules runs on processing containers and automatically analyze your training job to find computational and operational performance issues\. The [ProfilerReport](https://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html#profiler-report) rule is the most integrated rule that runs all built\-in profiling rules and saves the profiling results as a report into your secured S3 bucket\. To learn how to configure the `rules` parameter, see [Configure Debugger Built\-in Rules](use-debugger-built-in-rules.md)\.
 
 **Note**  
@@ -205,7 +205,7 @@ See the following topics to find out how to configure the Debugger\-specific par
 
 **Topics**
 + [Construct a SageMaker Estimator with SageMaker Debugger](#debugger-configuration-structure-profiler)
-+ [Configure Debugger Monitoring Hardware System Resource Utilization](debugger-configure-system-monitoring.md)
-+ [Configure Debugger Framework Profiling](debugger-configure-framework-profiling.md)
++ [Configure Debugger for Monitoring Resource Utilization](debugger-configure-system-monitoring.md)
++ [Configure Debugger for Framework Profiling](debugger-configure-framework-profiling.md)
 + [Updating Debugger System Monitoring and Framework Profiling Configuration while a Training Job is Running](debugger-update-monitoring-profiling.md)
 + [Turn Off Debugger](debugger-turn-off-profiling.md)

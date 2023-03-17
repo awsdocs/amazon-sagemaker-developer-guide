@@ -3,7 +3,7 @@
  Amazon SageMaker allows you to securely connect to the Docker containers on which your models are deployed on for Inference using AWS Systems Manager \(SSM\)\. This gives you shell level access to the container so that you can debug the processes running within the container and log commands and responses with Amazon CloudWatch\. You can also set up an AWS PrivateLink connection to the ML instances that host your containers for accessing the containers via SSM privately\. 
 
 **Warning**  
- Enabling SSM access can impact the performance of your endpoint\. We recommend using this feature with your dev or test endpoints and not with the endpoints in production\. Also, SageMaker automatically applies security patches, and replaces or terminates faulty enpoint instances within 10 minutes\. However for endpoints with SSM enabled production variants, SageMaker delays security patching and replacing or terminating faulty endpoint instances by a day, to allow you to debug\. 
+ Enabling SSM access can impact the performance of your endpoint\. We recommend using this feature with your dev or test endpoints and not with the endpoints in production\. Also, SageMaker automatically applies security patches, and replaces or terminates faulty endpoint instances within 10 minutes\. However for endpoints with SSM enabled production variants, SageMaker delays security patching and replacing or terminating faulty endpoint instances by a day, to allow you to debug\. 
 
  The following sections detail how you can use this feature\. 
 
@@ -37,7 +37,7 @@
 
 ### Endpoint IAM permissions<a name="ssm-access-iam-endpoint"></a>
 
- If you have enabled SSM access for an endopint instance, SageMaker starts and manages the [SSM agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html) when it initiates the endpoint instance\. To allow the SSM agent to communicate with the SSM services, add the following policy to the execution role that the endpoint runs under\. 
+ If you have enabled SSM access for an endpoint instance, SageMaker starts and manages the [SSM agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html) when it initiates the endpoint instance\. To allow the SSM agent to communicate with the SSM services, add the following policy to the execution role that the endpoint runs under\. 
 
 ```
 {
@@ -98,7 +98,7 @@
 
 ## SSM access with AWS PrivateLink<a name="ssm-access-privatelink"></a>
 
- If your endpoints run within a virtual private cloud \(VPC\) that is not connected to the public internet, you can use AWS PrivateLink to enable SSM\. AWS PrivateLink restricts all network traffic between your enpoint instances, SSM, and Amazon EC2 to the Amazon network\. For more information on how to setup SSM access with AWS PrivateLink, see [Set up a VPC endpoint for Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-getting-started-privatelink.html)\. 
+ If your endpoints run within a virtual private cloud \(VPC\) that is not connected to the public internet, you can use AWS PrivateLink to enable SSM\. AWS PrivateLink restricts all network traffic between your endpoint instances, SSM, and Amazon EC2 to the Amazon network\. For more information on how to setup SSM access with AWS PrivateLink, see [Set up a VPC endpoint for Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-getting-started-privatelink.html)\. 
 
 ## Logging with Amazon CloudWatch Logs<a name="ssm-access-logging"></a>
 
@@ -123,4 +123,4 @@ aws ssm start-session --target sagemaker-endpoint:prod-image-classifier_variant1
 **Note**  
  You cannot connect to 1P algorithm containers or containers of models obtained from SageMaker MarketPlace with SSM\. However you can connect to deep learning containers \(DLCs\) provided by AWS or any custom container that you own\. 
  If you have enabled network isolation for a model container that prevents it from making outbound network calls, you cannot start an SSM session for that container\. 
- You can only access one container from one SSM session\. To access another container, even if it is behind the same endpoint, start a new SSM session with the target ID of thath endpoint\. 
+ You can only access one container from one SSM session\. To access another container, even if it is behind the same endpoint, start a new SSM session with the target ID of that endpoint\. 
