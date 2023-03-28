@@ -47,11 +47,14 @@ aws sagemaker update-user-profile --domain-id <DOMAIN-ID> \
 --user-profile-name <USER-PROFILE-NAME> \
 --region <REGION> \
 --user-settings '{
-"KernelGatewayAppSettings": {
-    "DefaultResourceSpec": {
-            "InstanceType": "ml.t3.medium",
-            "LifecycleConfigArn": "<LIFECYCLE-CONFIGURATION-ARN>"
-         }
-  }
+	"KernelGatewayAppSettings": {
+		"DefaultResourceSpec": {
+			"InstanceType": "ml.t3.medium",
+			"LifecycleConfigArn": "<LIFECYCLE-CONFIGURATION-ARN>"
+		},
+		"LifecycleConfigArns": [
+			"<LIFECYCLE-CONFIGURATION-ARN>"
+		]
+	}
 }'
 ```
