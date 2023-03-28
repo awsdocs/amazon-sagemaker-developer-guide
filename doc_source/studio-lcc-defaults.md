@@ -43,15 +43,17 @@ To associate a Lifecycle Configuration when updating an existing Studio Domain o
 The Lifecycle Configuration ARN should be placed in 2 places, the `DefaultResourceSpec` and the `LifecycleConfigArns` list in `KernelGatewayAppSettings`\. For example, the following API call updates a UserProfile with an associated Lifecycle Configuration\.
 
 ```
-aws sagemaker update-user-profile --domain-id <DOMAIN-ID> \
---user-profile-name <USER-PROFILE-NAME> \
---region <REGION> \
+aws sagemaker update-user-profile --domain-id d-cnfvrxpcrsvs \
+--user-profile-name portfolio-data-dev \
 --user-settings '{
-"KernelGatewayAppSettings": {
-    "DefaultResourceSpec": {
-            "InstanceType": "ml.t3.medium",
-            "LifecycleConfigArn": "<LIFECYCLE-CONFIGURATION-ARN>"
-         }
-  }
+	"KernelGatewayAppSettings": {
+		"DefaultResourceSpec": {
+			"InstanceType": "ml.t3.medium",
+			"LifecycleConfigArn": "<LIFECYCLE-CONFIGURATION-ARN>"
+		},
+		"LifecycleConfigArns": [
+			"<LIFECYCLE-CONFIGURATION-ARN>"
+		]
+	}
 }'
 ```
