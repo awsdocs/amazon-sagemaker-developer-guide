@@ -52,7 +52,7 @@ ARG NB_UID="1000"
 ARG NB_GID="100"
 
 RUN \
-    yum install --assumeyes python3 shadow-utils && \
+    yum install --assumeyes gcc python3-devel shadow-utils && \
     useradd --create-home --shell /bin/bash --gid "${NB_GID}" --uid ${NB_UID} ${NB_USER} && \
     yum clean all && \
     python3 -m pip install ipykernel && \
