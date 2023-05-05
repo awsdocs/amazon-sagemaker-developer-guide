@@ -23,6 +23,7 @@ exp._delete_all(action="--force")
 **To clean up using Boto 3**
 
 ```
+import time
 import boto3
 sm = boto3.Session().client('sagemaker')
 ```
