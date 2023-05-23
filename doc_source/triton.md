@@ -4,7 +4,7 @@ SageMaker enables customers to deploy a model using custom code with NVIDIA Trit
 
 You can use the Triton Inference Server Container with SageMaker Python SDK as you would any other container in your SageMaker models\. However, using the SageMaker Python SDK is optional\. You can use Triton Inference Server Containers with the AWS CLI and AWS SDK for Python \(Boto3\)\. 
 
-For more information on NVIDIA Triton Inference Server see the [Triton documentation](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/index.html)\.
+For more information on NVIDIA Triton Inference Server see the [Triton documentation](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/index.html)\.
 
 ## Inference<a name="triton-inference"></a>
 
