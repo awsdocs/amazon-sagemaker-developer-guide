@@ -1,7 +1,0 @@
-# How Object Detection Works<a name="algo-object-detection-tech-notes"></a>
-
-The object detection algorithm identifies and locates all instances of objects in an image from a known collection of object categories\. The algorithm takes an image as input and outputs the category that the object belongs to, along with a confidence score that it belongs to the category\. The algorithm also predicts the object's location and scale with a rectangular bounding box\. Amazon SageMaker Object Detection uses the [Single Shot multibox Detector \(SSD\)](https://arxiv.org/pdf/1512.02325.pdf) algorithm that takes a convolutional neural network \(CNN\) pretrained for classification task as the base network\. SSD uses the output of intermediate layers as features for detection\. 
-
-Various CNNs such as [VGG](https://arxiv.org/pdf/1409.1556.pdf) and [ResNet](https://arxiv.org/pdf/1603.05027.pdf) have achieved great performance on the image classification task\. Object detection in Amazon SageMaker supports both VGG\-16 and ResNet\-50 as a base network for SSD\. The algorithm can be trained in full training mode or in transfer learning mode\. In full training mode, the base network is initialized with random weights and then trained on user data\. In transfer learning mode, the base network weights are loaded from pretrained models\.
-
-The object detection algorithm uses standard data augmentation operations, such as flip, rescale, and jitter, on the fly internally to help avoid overfitting\.

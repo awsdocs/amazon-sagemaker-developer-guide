@@ -1,9 +1,0 @@
-# Amazon SageMaker Autopilot explainability<a name="autopilot-explainability"></a>
-
-Amazon SageMaker Autopilot uses tools provided by Amazon SageMaker Clarify to help explain how machine learning \(ML\) models make predictions\. These tools can help ML modelers, developers, and other internal stakeholders understand model characteristics before deployment\. Both consumers and regulators rely on transparency in machine learning in order to accept decisions made on model predictions\. You can also use tools to debug predictions provided by a model after it's deployed\. The Autopilot explanatory functionality uses a model\-agnostic feature attribution approach\. You can use this to understand why a model made a prediction after training, and use it to provide per\-instance explanation during inference\. The implementation includes a scalable and efficient implementation of [SHAP](https://papers.nips.cc/paper/2017/file/8a20a8621978632d76c43dfd28b67767-Paper.pdf)\. This is based on the concept of a Shapley value from the field of cooperative game theory that assigns each feature an importance value for a particular prediction\.
-
-You can use explanations for auditing and meeting regulatory requirements, building trust in the model, supporting human decision\-making, and debugging and improving model performance\.
-
-For additional information on Shapely values and baselines, see [Feature Attributions that Use Shapley Values](clarify-shapley-values.md) and [SHAP Baselines for Explainability](clarify-feature-attribute-shap-baselines.md)\.
-
-For a guide to the Amazon SageMaker Clarify documentation, see [Guide to the SageMaker Clarify Documentation](clarify-fairness-and-explainability.md#clarify-fairness-and-explainability-toc)\.

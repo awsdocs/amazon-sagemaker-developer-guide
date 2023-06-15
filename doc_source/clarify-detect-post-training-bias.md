@@ -1,9 +1,0 @@
-# Detect Post\-training Data and Model Bias with Amazon SageMaker Clarify<a name="clarify-detect-post-training-bias"></a>
-
-Post\-training bias analysis can help reveal biases that might have emanated from biases in the data, or from biases introduced by the classification and prediction algorithms\. These analyses take into consideration the data, including the labels, and the predictions of a model\. You assess performance by analyzing predicted labels or by comparing the predictions with the observed target values in the data with respect to groups with different attributes\. There are different notions of fairness, each requiring different bias metrics to measure\.
-
-There are legal concepts of fairness that might not be easy to capture because they are hard to detect\. For example, the US concept of disparate impact that occurs when a group, referred to as a less favored facet * d*, experiences an adverse effect even when the approach taken appears to be fair\. This type of bias might not be due to a machine learning model, but might still be detectable by post\-training bias analysis\.
-
-Amazon SageMaker Clarify tries to ensure a consistent use of terminology\. For a list of terms and their definitions, see [Amazon SageMaker Clarify Terms for Bias and Fairness](clarify-detect-data-bias.md#clarify-bias-and-fairness-terms)\.
-
-For additional information about post\-training bias metrics, see [Learn How Amazon SageMaker Clarify Helps Detect Bias](http://aws.amazon.com/blogs/machine-learning/learn-how-amazon-sagemaker-clarify-helps-detect-bias/) and [Fairness Measures for Machine Learning in Finance\.](https://pages.awscloud.com/rs/112-TZM-766/images/Fairness.Measures.for.Machine.Learning.in.Finance.pdf)\.

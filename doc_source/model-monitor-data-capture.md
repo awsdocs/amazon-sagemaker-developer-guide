@@ -1,7 +1,0 @@
-# Capture data<a name="model-monitor-data-capture"></a>
-
-To log the inputs to your endpoint and the inference outputs from your deployed model to Amazon S3, you can enable a feature called *Data Capture*\. *Data Capture* is commonly used to record information that can be used for training, debugging, and monitoring\. Amazon SageMaker Model Monitor automatically parses this captured data and compares metrics from this data with a baseline that you create for the model\. For more information about Model Monitor see [Monitor models for data and model quality, bias, and explainability](model-monitor.md)\.
-
-You can implement *Data Capture* for both real\-time and batch model\-monitor modes using the AWS SDK for Python \(Boto\) or the SageMaker Python SDK\. For a real\-time endpoint, you will specify your *Data Capture* configuration when you create your endpoint\. Due to the persistent nature of your real\-time endpoint, you can configure additional options to turn data capturing on or off at certain times, or change the sampling frequency\. You can also choose to encrypt your inference data\.
-
-For a batch transform job, you can enable *Data Capture* if you want to run on\-schedule model monitoring or continuous model\-monitoring for regular, periodic batch transform jobs\. You will specify your *Data Capture* configuration when you create your batch transform job\. Within this configuration, you have the option to turn on encryption or generate the inference ID with your output, which helps you match your captured data to Ground Truth data\.

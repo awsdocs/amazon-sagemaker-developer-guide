@@ -1,8 +1,0 @@
-# Explore, Analyze, and Process Data<a name="how-it-works-notebooks-instances"></a>
-
-Before using a dataset to train a model, data scientists typically explore, analyze, and preprocess it\.
-
-Amazon SageMaker Processing enables running jobs to preprocess and postprocess data, perform feature engineering, and evaluate models on SageMaker easily and at scale\. When combined with the other critical machine learning tasks provided by SageMaker, such as training and hosting, Processing provides you with the benefits of a fully managed machine learning environment, including all the security and compliance support built into SageMaker\. With Processing, you have the flexibility to use the built\-in data processing containers or to bring your own containers and submit custom jobs to run on managed infrastructure\. After you submit a job, SageMaker launches the compute instances, processes and analyzes the input data, and releases the resources upon completion\. For more information, see [Process Data](processing-job.md)\.
-+ For information about how to run your own data processing scripts, see [Data Processing with scikit\-learn](use-scikit-learn-processing-container.md)\.
-+ For information about how to build your own processing container to run scripts, see [Build Your Own Processing Container \(Advanced Scenario\)](build-your-own-processing-container.md)\.
-+ For information about how to perform exploratory data analysis \(EDA\) with a visual no\-code interface, see [Prepare ML Data with Amazon SageMaker Data Wrangler](data-wrangler.md)\.

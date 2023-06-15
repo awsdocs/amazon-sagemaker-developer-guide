@@ -1,5 +1,0 @@
-# Updating and deleting Lifecycle Configurations<a name="studio-lcc-delete"></a>
-
-A Lifecycle Configuration script cannot be changed after it has been created\. To update your script, you must create a new Lifecycle Configuration script and use the [update\-domain](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateDomain.html) and [update\-user\-profile](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateUserProfile.html) APIs to attach the Lifecycle Configuration script to the respective Domain or UserProfile\. For more information, see [Creating and Associating a Lifecycle Configuration](studio-lcc-create.md)\.
-
-To delete an existing Lifecycle Configuration, use the [DeleteStudioLifecycleConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteStudioLifecycleConfig.html) API\. To successfully delete a Lifecycle Configuration, no running Apps can be using it\.
